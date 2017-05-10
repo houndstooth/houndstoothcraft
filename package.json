@@ -1,0 +1,12 @@
+{
+  "name": "web-render",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-dev-server --hot --entry ./index.js"
+  },
+  "devDependencies": {
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5",
+    "test-npm-import": "houndstooth/test-npm-import"
+  }
+}

@@ -1,0 +1,1 @@
+import 'test-npm-import'

@@ -1,3 +1,6 @@
 [submodule "cmyktooth"]
 	path = cmyktooth
 	url = git@github.com:houndstooth/cmyktooth.git
+[submodule "houndsmorphosis"]
+	path = houndsmorphosis
+	url = git@github.com:houndstooth/houndsmorphosis.git

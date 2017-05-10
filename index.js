@@ -1,3 +1,3 @@
-import testSubmodule from './test-submodule/index'
+import { testMe } from './test-submodule/index'
 
-testSubmodule.testMe('guy')
+testMe('guy')

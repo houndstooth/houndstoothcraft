@@ -1,0 +1,1 @@
+export default iterations => [ ...Array(iterations).keys() ].map(k => k + 1)

@@ -1,5 +1,9 @@
 const CANVAS_SIZE = 1000
+const UNIT = 1
+const END_ITERATION = 32
 
 export {
-	CANVAS_SIZE
+	CANVAS_SIZE,
+	UNIT,
+	END_ITERATION
 }

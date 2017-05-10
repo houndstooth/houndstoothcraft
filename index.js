@@ -1,1 +1,3 @@
-import 'test-npm-import'
+import testNpmImport from 'test-npm-import'
+
+testNpmImport.testMe('guy')

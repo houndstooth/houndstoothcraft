@@ -1,3 +1,3 @@
-import testNpmImport from 'test-npm-import'
+import testSubmodule from './test-submodule/test-submodule'
 
-testNpmImport.testMe('guy')
+testSubmodule.testMe('guy')

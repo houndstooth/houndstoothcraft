@@ -1,4 +1,4 @@
-import { CANVAS_SIZE } from './customize'
+import { CANVAS_SIZE } from '../common/customize'
 
 const canvas = document.querySelector('canvas')
 canvas.width = CANVAS_SIZE

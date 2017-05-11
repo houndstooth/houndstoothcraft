@@ -1,4 +1,4 @@
-import { UNIT } from '../shared/customize'
+import { UNIT } from '../common/customize'
 
 export default ({ctx, origin, size}) => {
 	ctx.beginPath()

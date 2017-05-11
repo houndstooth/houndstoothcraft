@@ -1,7 +1,8 @@
 import ctx from './ctx'
 import { UNIT } from '../common/customize'
 
-export default ({ origin, size }) => {
+export default ({ origin, size, color }) => {
+	ctx.fillStyle = color
 	ctx.beginPath()
 
 	ctx.moveTo(

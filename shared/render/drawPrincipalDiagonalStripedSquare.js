@@ -1,58 +1,79 @@
-import ctx from './ctx'
+import render from './render'
 import { UNIT } from '../common/customize'
 
 export default ({ origin, size, originColor, otherColor }) => {
 	const sizedUnit = size * UNIT
 
-	ctx.beginPath()
-	//top right (move to)
-	ctx.moveTo(origin[ 0 ] + sizedUnit, origin[ 1 ])
-	//top middle
-	ctx.lineTo(origin[ 0 ] + sizedUnit / 2, origin[ 1 ])
-	//middle right
-	ctx.lineTo(origin[ 0 ] + sizedUnit, origin[ 1 ] + sizedUnit / 2)
-	//close and fill origin color
-	ctx.closePath()
-	ctx.fillStyle = originColor
-	ctx.fill()
+	const topRightTriangleCoordinates = [
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit / 2,
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit / 2
+		]
+	]
 
-	ctx.beginPath()
-	//top middle (move to)
-	ctx.moveTo(origin[ 0 ] + sizedUnit / 2, origin[ 1 ])
-	//top left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ])
-	//bottom right
-	ctx.lineTo(origin[ 0 ] + sizedUnit, origin[ 1 ] + sizedUnit)
-	//middle right
-	ctx.lineTo(origin[ 0 ] + sizedUnit, origin[ 1 ] + sizedUnit / 2)
-	//close and fill other color
-	ctx.closePath()
-	ctx.fillStyle = otherColor
-	ctx.fill()
+	const topRightTrapezoidCoordinates = [
+		[
+			origin[ 0 ],
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit / 2
+		],
+		[
+			origin[ 0 ] + sizedUnit / 2,
+			origin[ 1 ]
+		]
+	]
 
-	ctx.beginPath()
-	//bottom right (move to)
-	ctx.moveTo(origin[ 0 ] + sizedUnit, origin[ 1 ] + sizedUnit)
-	//top left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ])
-	//middle left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ] + sizedUnit / 2)
-	//bottom middle
-	ctx.lineTo(origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit)
-	//close and fill origin color
-	ctx.closePath()
-	ctx.fillStyle = originColor
-	ctx.fill()
+	const bottomLeftTrapezoidCoordinates = [
+		[
+			origin[ 0 ],
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit
+		],
+		[
+			origin[ 0 ] + sizedUnit / 2,
+			origin[ 1 ] + sizedUnit
+		],
+		[
+			origin[ 0 ],
+			origin[ 1 ] + sizedUnit / 2
+		]
+	]
 
-	ctx.beginPath()
-	//bottom middle (move to)
-	ctx.moveTo(origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit)
-	//middle left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ] + sizedUnit / 2)
-	//bottom left
-	ctx.lineTo(origin[ 0 ], origin[ 1 ] + sizedUnit)
-	//close and fill other color
-	ctx.closePath()
-	ctx.fillStyle = otherColor
-	ctx.fill()
+	const bottomLeftTriangleCoordinates = [
+		[
+			origin[ 0 ],
+			origin[ 1 ] + sizedUnit
+		],
+		[
+			origin[ 0 ],
+			origin[ 1 ] + sizedUnit / 2
+		],
+		[
+			origin[ 0 ] + sizedUnit / 2,
+			origin[ 1 ] + sizedUnit
+		]
+	]
+
+	render({ color: originColor, coordinates: topRightTriangleCoordinates })
+	render({ color: otherColor, coordinates: topRightTrapezoidCoordinates })
+	render({ color: originColor, coordinates: bottomLeftTrapezoidCoordinates })
+	render({ color: otherColor, coordinates: bottomLeftTriangleCoordinates })
 }

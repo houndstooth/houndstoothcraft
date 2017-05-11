@@ -1,27 +1,27 @@
-import ctx from './ctx'
 import { UNIT } from '../common/customize'
+import render from './render'
 
 export default ({ origin, size, color }) => {
-	ctx.fillStyle = color
-	ctx.beginPath()
+	const sizedUnit = UNIT * size
 
-	ctx.moveTo(
-		origin[ 0 ],
-		origin[ 1 ]
-	)
-	ctx.lineTo(
-		origin[ 0 ] + (UNIT * size),
-		origin[ 1 ]
-	)
-	ctx.lineTo(
-		origin[ 0 ] + (UNIT * size),
-		origin[ 1 ] + (UNIT * size)
-	)
-	ctx.lineTo(
-		origin[ 0 ],
-		origin[ 1 ] + (UNIT * size)
-	)
+	const coordinates = [
+		[
+			origin[ 0 ],
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit
+		],
+		[
+			origin[ 0 ],
+			origin[ 1 ] + sizedUnit
+		]
+	]
 
-	ctx.closePath()
-	ctx.fill()
+	render({ color, coordinates })
 }

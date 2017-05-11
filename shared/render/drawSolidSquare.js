@@ -1,6 +1,7 @@
+import ctx from './ctx'
 import { UNIT } from '../common/customize'
 
-export default ({ctx, origin, size}) => {
+export default ({ origin, size }) => {
 	ctx.beginPath()
 
 	ctx.moveTo(

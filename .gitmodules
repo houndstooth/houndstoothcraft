@@ -10,3 +10,6 @@
 [submodule "ginghoundstootham"]
 	path = ginghoundstootham
 	url = git@github.com:houndstooth/ginghoundstootham.git
+[submodule "gingham-chevron-continuum"]
+	path = gingham-chevron-continuum
+	url = git@github.com:houndstooth/gingham-chevron-continuum.git

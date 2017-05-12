@@ -1,5 +1,7 @@
-import { execute } from './cmyktooth/index'
+import { cmyktooth } from './cmyktooth/index'
 import { houndsmorphosis } from './houndsmorphosis/index'
+import { standard } from './standard/index'
 
-// execute()
-houndsmorphosis()
+// cmyktooth()
+// houndsmorphosis()
+standard()

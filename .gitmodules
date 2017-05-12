@@ -4,3 +4,6 @@
 [submodule "houndsmorphosis"]
 	path = houndsmorphosis
 	url = git@github.com:houndstooth/houndsmorphosis.git
+[submodule "standard"]
+	path = standard
+	url = git@github.com:houndstooth/standard.git

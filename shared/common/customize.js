@@ -1,9 +1,11 @@
 const CANVAS_SIZE = 1000
 const UNIT = 1
 const END_ITERATION = 32
+const GRID_SIZE = 33
 
 export {
 	CANVAS_SIZE,
 	UNIT,
-	END_ITERATION
+	END_ITERATION,
+	GRID_SIZE
 }

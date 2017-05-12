@@ -3,11 +3,15 @@ const UNIT = 1
 const END_ITERATION = 32
 const GRID_SIZE = 33
 const SQUARE_SIZE = 25
+const COLOR_A = "WHITE"
+const COLOR_B = "BLACK"
 
 export {
 	CANVAS_SIZE,
 	UNIT,
 	END_ITERATION,
 	GRID_SIZE,
-	SQUARE_SIZE
+	SQUARE_SIZE,
+	COLOR_A,
+	COLOR_B
 }

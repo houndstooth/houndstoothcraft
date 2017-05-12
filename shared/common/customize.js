@@ -5,6 +5,7 @@ const GRID_SIZE = 33
 const SQUARE_SIZE = 25
 const COLOR_A = "WHITE"
 const COLOR_B = "BLACK"
+const FRAME_RATE = 1000 / 60
 
 export {
 	CANVAS_SIZE,
@@ -13,5 +14,6 @@ export {
 	GRID_SIZE,
 	SQUARE_SIZE,
 	COLOR_A,
-	COLOR_B
+	COLOR_B,
+	FRAME_RATE
 }

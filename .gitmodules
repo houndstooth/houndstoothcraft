@@ -7,3 +7,6 @@
 [submodule "standard"]
 	path = standard
 	url = git@github.com:houndstooth/standard.git
+[submodule "ginghoundstootham"]
+	path = ginghoundstootham
+	url = git@github.com:houndstooth/ginghoundstootham.git

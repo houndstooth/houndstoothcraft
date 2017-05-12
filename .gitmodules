@@ -13,3 +13,6 @@
 [submodule "gingham-chevron-continuum"]
 	path = gingham-chevron-continuum
 	url = git@github.com:houndstooth/gingham-chevron-continuum.git
+[submodule "gongram"]
+	path = gongram
+	url = git@github.com:houndstooth/gongram.git

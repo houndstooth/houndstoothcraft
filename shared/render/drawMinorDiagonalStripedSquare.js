@@ -1,7 +1,9 @@
 import render from './render'
 import { UNIT } from '../common/customize'
+import scaleOrigin from '../utilities/scaleOrigin'
 
-export default ({ origin, size, originColor, otherColor }) => {
+export default ({ origin, size, originColor, otherColor, scaleFromCenter }) => {
+	origin = scaleOrigin({ origin, scaleFromCenter })
 	const sizedUnit = size * UNIT
 
 	const topLeftTriangleCoordinates = [

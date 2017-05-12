@@ -1,7 +1,9 @@
-import { UNIT } from '../common/customize'
 import render from './render'
+import { UNIT } from '../common/customize'
+import scaleOrigin from '../utilities/scaleOrigin'
 
-export default ({ origin, size, color }) => {
+export default ({ origin, size, color, scaleFromCenter }) => {
+	origin = scaleOrigin({ origin, scaleFromCenter })
 	const sizedUnit = UNIT * size
 
 	const coordinates = [

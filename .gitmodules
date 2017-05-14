@@ -16,3 +16,6 @@
 [submodule "gongram"]
 	path = gongram
 	url = git@github.com:houndstooth/gongram.git
+[submodule "houndazzle"]
+	path = houndazzle
+	url = git@github.com:houndstooth/houndazzle.git

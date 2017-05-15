@@ -7,11 +7,11 @@ import { houndazzle } from './houndazzle/index'
 import { derasterized } from './derasterized/index'
 
 
-// cmyktooth()
+cmyktooth()
 // houndsmorphosis()
 // standard()
 // ginghamChevronContinuum()
 // ginghamChevronContinuumAnimated()
 // gongram()
 // houndazzle()
-derasterized()
+// derasterized()

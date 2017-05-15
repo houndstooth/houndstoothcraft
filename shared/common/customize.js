@@ -6,6 +6,7 @@ const SQUARE_SIZE = 32
 const COLOR_A = "WHITE"
 const COLOR_B = "BLACK"
 const FRAME_RATE = 1000 / 60
+const STRIPE_COUNT = 4
 
 export {
 	CANVAS_SIZE,
@@ -15,5 +16,6 @@ export {
 	SQUARE_SIZE,
 	COLOR_A,
 	COLOR_B,
-	FRAME_RATE
+	FRAME_RATE,
+	STRIPE_COUNT
 }

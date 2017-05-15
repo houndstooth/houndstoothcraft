@@ -4,6 +4,7 @@ import { standard } from './standard/index'
 import { ginghamChevronContinuum, ginghamChevronContinuumAnimated } from './gingham-chevron-continuum/index'
 import { gongram } from './gongram/index'
 import { houndazzle } from './houndazzle/index'
+import { derasterized } from './derasterized/index'
 
 
 // cmyktooth()
@@ -12,4 +13,5 @@ import { houndazzle } from './houndazzle/index'
 // ginghamChevronContinuum()
 // ginghamChevronContinuumAnimated()
 // gongram()
-houndazzle()
+// houndazzle()
+derasterized()

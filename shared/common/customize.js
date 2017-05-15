@@ -7,6 +7,7 @@ const COLOR_A = "WHITE"
 const COLOR_B = "BLACK"
 const FRAME_RATE = 1000 / 60
 const STRIPE_COUNT = 4
+const SWITCHEROO = true
 
 export {
 	CANVAS_SIZE,
@@ -17,5 +18,6 @@ export {
 	COLOR_A,
 	COLOR_B,
 	FRAME_RATE,
-	STRIPE_COUNT
+	STRIPE_COUNT,
+	SWITCHEROO
 }

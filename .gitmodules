@@ -19,3 +19,6 @@
 [submodule "houndazzle"]
 	path = houndazzle
 	url = git@github.com:houndstooth/houndazzle.git
+[submodule "derasterized"]
+	path = derasterized
+	url = git@github.com:houndstooth/derasterized.git

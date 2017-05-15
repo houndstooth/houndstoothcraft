@@ -1,7 +1,45 @@
-import { CANVAS_SIZE } from './customize'
+import { CANVAS_SIZE, COLOR_A, COLOR_B } from './customize'
 
 const CENTER = [ CANVAS_SIZE / 2, CANVAS_SIZE / 2 ]
+const STANDARD_SUPERTILE = [
+	[
+		"STRIPED_A",
+		COLOR_B
+	],
+	[
+		COLOR_A,
+		"STRIPED_B"
+	]
+]
+const SWITCHEROO_SUPERTILE = [
+	[
+		"STRIPED_A",
+		COLOR_A,
+		"STRIPED_B",
+		COLOR_A
+	],
+	[
+		COLOR_B,
+		"STRIPED_A",
+		COLOR_B,
+		"STRIPED_B"
+	],
+	[
+		"STRIPED_B",
+		COLOR_A,
+		"STRIPED_A",
+		COLOR_A
+	],
+	[
+		COLOR_B,
+		"STRIPED_B",
+		COLOR_B,
+		"STRIPED_A"
+	]
+]
 
 export {
-	CENTER
+	CENTER,
+	STANDARD_SUPERTILE,
+	SWITCHEROO_SUPERTILE
 }

@@ -1,8 +1,8 @@
 const CANVAS_SIZE = 1000
 const UNIT = 1
 const END_ITERATION = 32
-const GRID_SIZE = 33
-const SQUARE_SIZE = 25
+const GRID_SIZE = 32
+const SQUARE_SIZE = 32
 const COLOR_A = "WHITE"
 const COLOR_B = "BLACK"
 const FRAME_RATE = 1000 / 60

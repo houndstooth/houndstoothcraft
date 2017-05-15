@@ -2,6 +2,8 @@ import render from './render'
 import { UNIT } from '../common/customize'
 import scaleOrigin from '../utilities/scaleOrigin'
 
+// THIS SHOULD NOW JUST BE ACCOMPLISHED BY ROTATING THE MINOR DIAGONAL VERSION
+
 export default ({ origin, size, originColor, otherColor, scaleFromCenter }) => {
 	origin = scaleOrigin({ origin, scaleFromCenter })
 	const sizedUnit = size * UNIT

@@ -1,6 +1,4 @@
-export default ({ coordinates, rotation }) => {
-	const origin = coordinates[ 0 ]
-
+export default ({ origin, coordinates, rotation }) => {
 	return coordinates.map(coordinate => {
 		const sin = Math.sin(rotation)
 		const cos = Math.cos(rotation)

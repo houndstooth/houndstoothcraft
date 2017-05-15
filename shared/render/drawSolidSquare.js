@@ -26,7 +26,7 @@ export default ({ origin, size, color, scaleFromCenter, rotation }) => {
 		]
 	]
 
-	if (rotation) coordinates = rotateCoordinates({ coordinates, rotation })
+	if (rotation) coordinates = rotateCoordinates({ origin, coordinates, rotation })
 
 	render({ color, coordinates })
 }

@@ -1,5 +1,6 @@
 import render from './render'
-import { UNIT } from '../common/customize'
+import { UNIT, STRIPE_ROTATION, BASE_STRIPE_DIAGONAL } from '../common/customize'
+import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../common/constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 import scalePoint from '../utilities/scalePoint'
 
@@ -101,6 +102,15 @@ export default ({ origin, center, size, originColor, otherColor, scaleFromGridCe
 		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: topLeftTrapezoidCoordinates, rotation: rotationAboutOrigin })
 		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: bottomRightTrapezoidCoordinates, rotation: rotationAboutOrigin })
 		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: bottomRightTriangleCoordinates, rotation: rotationAboutOrigin })
+	}
+
+	const offset = BASE_STRIPE_DIAGONAL === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
+	const extraRotation = offset + STRIPE_ROTATION
+	if (extraRotation !== 0) {
+		topLeftTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTriangleCoordinates, rotation: extraRotation })
+		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTrapezoidCoordinates, rotation: extraRotation })
+		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTrapezoidCoordinates, rotation: extraRotation })
+		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTriangleCoordinates, rotation: extraRotation })
 	}
 
 	render({ color: originColor, coordinates: topLeftTriangleCoordinates })

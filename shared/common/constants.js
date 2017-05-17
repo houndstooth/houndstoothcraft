@@ -4,24 +4,12 @@ const CENTER = [ CANVAS_SIZE / 2, CANVAS_SIZE / 2 ]
 
 const STANDARD_SUPERTILE = [
 	[
-		{
-			originColor: COLOR_A,
-			otherColor: COLOR_A
-		},
-		{
-			originColor: COLOR_B,
-			otherColor: COLOR_A
-		}
+		"SOLID_A",
+		"STRIPED_B"
 	],
 	[
-		{
-			originColor: COLOR_A,
-			otherColor: COLOR_B
-		},
-		{
-			originColor: COLOR_B,
-			otherColor: COLOR_B
-		}
+		"STRIPED_A",
+		"SOLID_B"
 	]
 ]
 
@@ -47,26 +35,26 @@ const SQUARE_TYPE_TO_COLORS_MAPPING = {
 const SWITCHEROO_SUPERTILE = [
 	[
 		"STRIPED_A",
-		COLOR_A,
+		"SOLID_A",
 		"STRIPED_B",
-		COLOR_A
+		"SOLID_A"
 	],
 	[
-		COLOR_B,
+		"SOLID_B",
 		"STRIPED_A",
-		COLOR_B,
+		"SOLID_B",
 		"STRIPED_B"
 	],
 	[
 		"STRIPED_B",
-		COLOR_A,
+		"SOLID_A",
 		"STRIPED_A",
-		COLOR_A
+		"SOLID_A"
 	],
 	[
-		COLOR_B,
+		"SOLID_B",
 		"STRIPED_B",
-		COLOR_B,
+		"SOLID_B",
 		"STRIPED_A"
 	]
 ]

@@ -1,8 +1,9 @@
 import render from './render'
-import { UNIT, STRIPE_ROTATION, BASE_STRIPE_DIAGONAL } from '../common/customize'
+import { UNIT, STRIPE_ROTATION, BASE_STRIPE_DIAGONAL, STRIPE_COUNT } from '../common/customize'
 import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../common/constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 import scalePoint from '../utilities/scalePoint'
+import iterator from '../utilities/iterator'
 
 export default ({ origin, center, size, originColor, otherColor, scaleFromGridCenter, rotationAboutCenter, rotationAboutOrigin }) => {
 	const sizedUnit = size * UNIT
@@ -22,99 +23,88 @@ export default ({ origin, center, size, originColor, otherColor, scaleFromGridCe
 		console.log('neither origin nor center provided!')
 	}
 
-	let topLeftTriangleCoordinates = [
-		[
-			origin[ 0 ],
-			origin[ 1 ]
-		],
-		[
-			origin[ 0 ] + sizedUnit / 2,
-			origin[ 1 ]
-		],
-		[
-			origin[ 0 ],
-			origin[ 1 ] + sizedUnit / 2
-		]
-	]
+	let color
+	let stripeWidthInTermsOfPerimeter = 2 / STRIPE_COUNT
+	let currentPositionAlongPerimeter
 
-	let topLeftTrapezoidCoordinates = [
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ]
-		],
-		[
-			origin[ 0 ],
-			origin[ 1 ] + sizedUnit
-		],
-		[
-			origin[ 0 ],
-			origin[ 1 ] + sizedUnit / 2
-		],
-		[
-			origin[ 0 ] + sizedUnit / 2,
-			origin[ 1 ]
-		]
-	]
+	iterator(STRIPE_COUNT).forEach(i => {
+		currentPositionAlongPerimeter = i * stripeWidthInTermsOfPerimeter
+		color = i % 2 === 0 ? originColor : otherColor
 
-	let bottomRightTrapezoidCoordinates = [
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ]
-		],
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + sizedUnit / 2
-		],
-		[
-			origin[ 0 ] + sizedUnit / 2,
-			origin[ 1 ] + sizedUnit
-		],
-		[
-			origin[ 0 ],
-			origin[ 1 ] + sizedUnit
-		]
-	]
+		let coordinates = []
 
-	let bottomRightTriangleCoordinates = [
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + sizedUnit
-		],
-		[
-			origin[ 0 ] + sizedUnit / 2,
-			origin[ 1 ] + sizedUnit
-		],
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + sizedUnit / 2
-		]
-	]
+		if (currentPositionAlongPerimeter <= 1) {
+			coordinates.push([
+				origin[ 0 ] + currentPositionAlongPerimeter * sizedUnit,
+				origin[ 1 ]
+			])
+		} else {
+			coordinates.push([
+				origin[ 0 ] + sizedUnit,
+				origin[ 1 ] + (currentPositionAlongPerimeter - 1) * sizedUnit
+			])
+		}
 
-	if (rotationAboutCenter) {
-		topLeftTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTriangleCoordinates, rotation: rotationAboutCenter })
-		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTrapezoidCoordinates, rotation: rotationAboutCenter })
-		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTrapezoidCoordinates, rotation: rotationAboutCenter })
-		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTriangleCoordinates, rotation: rotationAboutCenter })
-	}
+		if ((currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) <= 1) {
 
-	if (rotationAboutOrigin) {
-		topLeftTriangleCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: topLeftTriangleCoordinates, rotation: rotationAboutOrigin })
-		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: topLeftTrapezoidCoordinates, rotation: rotationAboutOrigin })
-		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: bottomRightTrapezoidCoordinates, rotation: rotationAboutOrigin })
-		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: bottomRightTriangleCoordinates, rotation: rotationAboutOrigin })
-	}
+			coordinates.push([
+				origin[ 0 ] + (currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) * sizedUnit,
+				origin[ 1 ]
+			])
+			coordinates.push([
+				origin[ 0 ],
+				origin[ 1 ] + (currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) * sizedUnit
+			])
+		} else {
+			if (currentPositionAlongPerimeter <= 1) {
+				coordinates.push([
+					origin[ 0 ] + sizedUnit,
+					origin[ 1 ]
+				])
+			}
 
-	const offset = BASE_STRIPE_DIAGONAL === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const extraRotation = offset + STRIPE_ROTATION
-	if (extraRotation !== 0) {
-		topLeftTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTriangleCoordinates, rotation: extraRotation })
-		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTrapezoidCoordinates, rotation: extraRotation })
-		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTrapezoidCoordinates, rotation: extraRotation })
-		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTriangleCoordinates, rotation: extraRotation })
-	}
+			coordinates.push([
+				origin[ 0 ] + sizedUnit,
+				origin[ 1 ] + (currentPositionAlongPerimeter - 1 + stripeWidthInTermsOfPerimeter) * sizedUnit
+			])
+			coordinates.push([
+				origin[ 0 ] + (currentPositionAlongPerimeter - 1 + stripeWidthInTermsOfPerimeter) * sizedUnit,
+				origin[ 1 ] + sizedUnit
+			])
+		}
 
-	render({ color: originColor, coordinates: topLeftTriangleCoordinates })
-	render({ color: otherColor, coordinates: topLeftTrapezoidCoordinates })
-	render({ color: originColor, coordinates: bottomRightTrapezoidCoordinates })
-	render({ color: otherColor, coordinates: bottomRightTriangleCoordinates })
+		if (currentPositionAlongPerimeter <= 1) {
+			if ((currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) > 1) {
+				coordinates.push([
+					origin[ 0 ] ,
+					origin[ 1 ] + sizedUnit
+				])
+			}
+			coordinates.push([
+				origin[ 0 ],
+				origin[ 1 ] + currentPositionAlongPerimeter * sizedUnit
+			])
+		} else {
+			coordinates.push([
+				origin[ 0 ] + (currentPositionAlongPerimeter - 1) * sizedUnit,
+				origin[ 1 ] + sizedUnit
+			])
+		}
+
+		if (rotationAboutCenter) {
+			coordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: coordinates, rotation: rotationAboutCenter })
+		}
+
+		if (rotationAboutOrigin) {
+			coordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: coordinates, rotation: rotationAboutOrigin })
+		}
+
+		const offset = BASE_STRIPE_DIAGONAL === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
+		const extraRotation = offset + STRIPE_ROTATION
+		if (extraRotation !== 0) {
+			coordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: coordinates, rotation: extraRotation })
+		}
+
+		render({color, coordinates})
+	})
 }

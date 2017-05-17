@@ -1,13 +1,13 @@
 const CANVAS_SIZE = 1000
 const UNIT = 1
-const END_ITERATION = 2
-const GRID_SIZE = 3
+const END_ITERATION = 32
+const GRID_SIZE = 16
 const SQUARE_SIZE = 160
 const COLOR_A = "WHITE"
 const COLOR_B = "BLACK"
 const FRAME_RATE = 1000 / 60
 const STRIPE_COUNT = 4
-const SWITCHEROO = true
+const SWITCHEROO = false
 
 export {
 	CANVAS_SIZE,

@@ -1,11 +1,25 @@
 import render from './render'
 import { UNIT } from '../common/customize'
-import scaleOrigin from '../utilities/scaleOrigin'
-import rotateCoordinates from '../utilities/rotateCoordinates'
+import scalePoint from '../utilities/scalePoint'
+import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
-export default ({ origin, size, color, scaleFromCenter, rotation }) => {
-	origin = scaleOrigin({ origin, scaleFromCenter })
-	const sizedUnit = UNIT * size
+export default ({ origin, center, size, color, scaleFromGridCenter, rotationAboutCenter, rotationAboutOrigin }) => {
+	const sizedUnit = size * UNIT
+	if (origin) {
+		origin = scalePoint({ point: origin, scaleFromGridCenter })
+		center = [
+			origin[ 0 ] + sizedUnit / 2,
+			origin[ 1 ] + sizedUnit / 2
+		]
+	} else if (center) {
+		center = scalePoint({ point: center, scaleFromGridCenter })
+		origin = [
+			center[ 0 ] - sizedUnit / 2,
+			center[ 1 ] - sizedUnit / 2
+		]
+	} else {
+		console.log('neither origin nor center provided!')
+	}
 
 	let coordinates = [
 		[
@@ -26,7 +40,8 @@ export default ({ origin, size, color, scaleFromCenter, rotation }) => {
 		]
 	]
 
-	if (rotation) coordinates = rotateCoordinates({ origin, coordinates, rotation })
+	if (rotationAboutCenter) coordinates = rotateCoordinatesAboutPoint({ point: center, coordinates, rotation: rotationAboutCenter })
+	if (rotationAboutOrigin) coordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates, rotation: rotationAboutOrigin })
 
 	render({ color, coordinates })
 }

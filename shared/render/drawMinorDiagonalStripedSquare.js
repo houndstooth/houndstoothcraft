@@ -1,11 +1,25 @@
 import render from './render'
 import { UNIT } from '../common/customize'
-import rotateCoordinates from '../utilities/rotateCoordinates'
-import scaleOrigin from '../utilities/scaleOrigin'
+import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
+import scalePoint from '../utilities/scalePoint'
 
-export default ({ origin, size, originColor, otherColor, scaleFromCenter, rotation }) => {
-	origin = scaleOrigin({ origin, scaleFromCenter })
+export default ({ origin, center, size, originColor, otherColor, scaleFromGridCenter, rotationAboutCenter, rotationAboutOrigin }) => {
 	const sizedUnit = size * UNIT
+	if (origin) {
+		origin = scalePoint({ point: origin, scaleFromGridCenter })
+		center = [
+			origin[ 0 ] + sizedUnit / 2,
+			origin[ 1 ] + sizedUnit / 2
+		]
+	} else if (center) {
+		center = scalePoint({ point: center, scaleFromGridCenter })
+		origin = [
+			center[ 0 ] - sizedUnit / 2,
+			center[ 1 ] - sizedUnit / 2
+		]
+	} else {
+		console.log('neither origin nor center provided!')
+	}
 
 	let topLeftTriangleCoordinates = [
 		[
@@ -75,11 +89,18 @@ export default ({ origin, size, originColor, otherColor, scaleFromCenter, rotati
 		]
 	]
 
-	if (rotation) {
-		topLeftTriangleCoordinates = rotateCoordinates({ origin, coordinates: topLeftTriangleCoordinates, rotation })
-		topLeftTrapezoidCoordinates = rotateCoordinates({ origin, coordinates: topLeftTrapezoidCoordinates, rotation })
-		bottomRightTrapezoidCoordinates = rotateCoordinates({ origin, coordinates: bottomRightTrapezoidCoordinates, rotation })
-		bottomRightTriangleCoordinates = rotateCoordinates({ origin, coordinates: bottomRightTriangleCoordinates, rotation })
+	if (rotationAboutCenter) {
+		topLeftTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTriangleCoordinates, rotation: rotationAboutCenter })
+		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: topLeftTrapezoidCoordinates, rotation: rotationAboutCenter })
+		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTrapezoidCoordinates, rotation: rotationAboutCenter })
+		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: center, coordinates: bottomRightTriangleCoordinates, rotation: rotationAboutCenter })
+	}
+
+	if (rotationAboutOrigin) {
+		topLeftTriangleCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: topLeftTriangleCoordinates, rotation: rotationAboutOrigin })
+		topLeftTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: topLeftTrapezoidCoordinates, rotation: rotationAboutOrigin })
+		bottomRightTrapezoidCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: bottomRightTrapezoidCoordinates, rotation: rotationAboutOrigin })
+		bottomRightTriangleCoordinates = rotateCoordinatesAboutPoint({ point: origin, coordinates: bottomRightTriangleCoordinates, rotation: rotationAboutOrigin })
 	}
 
 	render({ color: originColor, coordinates: topLeftTriangleCoordinates })

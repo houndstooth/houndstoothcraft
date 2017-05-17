@@ -1,11 +1,11 @@
 import render from './render'
 import { UNIT } from '../common/customize'
-import scaleOrigin from '../utilities/scaleOrigin'
+import scalePoint from '../utilities/scalePoint'
 
 // THIS SHOULD NOW JUST BE ACCOMPLISHED BY ROTATING THE MINOR DIAGONAL VERSION
 
-export default ({ origin, size, originColor, otherColor, scaleFromCenter }) => {
-	origin = scaleOrigin({ origin, scaleFromCenter })
+export default ({ origin, size, originColor, otherColor, scaleFromGridCenter }) => {
+	origin = scalePoint({ point: origin, scaleFromGridCenter })
 	const sizedUnit = size * UNIT
 
 	const topRightTriangleCoordinates = [

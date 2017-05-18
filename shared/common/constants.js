@@ -14,22 +14,10 @@ const STANDARD_SUPERTILE = [
 ]
 
 const SQUARE_TYPE_TO_COLORS_MAPPING = {
-	"SOLID_A": {
-		originColor: COLOR_A,
-		otherColor: COLOR_A
-	},
-	"SOLID_B": {
-		originColor: COLOR_B,
-		otherColor: COLOR_B
-	},
-	"STRIPED_A": {
-		originColor: COLOR_A,
-		otherColor: COLOR_B
-	},
-	"STRIPED_B": {
-		originColor: COLOR_B,
-		otherColor: COLOR_A
-	}
+	"SOLID_A": [ COLOR_A, COLOR_A ],
+	"SOLID_B": [ COLOR_B, COLOR_B ],
+	"STRIPED_A": [ COLOR_A, COLOR_B ],
+	"STRIPED_B": [ COLOR_B, COLOR_A ]
 }
 
 const SWITCHEROO_SUPERTILE = [

@@ -1,14 +1,13 @@
 import { GINGHAM_MODE } from '../common/customize'
 import mixColors from './mixColors'
 
-export default ({originColor: previousOriginColor, otherColor: previousOtherColor}) => {
-	let originColor, otherColor
+export default ({ colors }) => {
+	let mixedColors = []
 	if (GINGHAM_MODE) {
-		originColor = mixColors(previousOriginColor, previousOtherColor)
-		otherColor = mixColors(previousOriginColor, previousOtherColor)
+		mixedColors[ 0 ] = mixColors(colors[ 0 ], colors[ 1 ])
+		mixedColors[ 1 ] = mixedColors[ 0 ]
 	} else {
-		originColor = previousOriginColor
-		otherColor = previousOtherColor
+		mixedColors = colors
 	}
-	return { originColor, otherColor }
+	return mixedColors
 }

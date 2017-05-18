@@ -1,6 +1,5 @@
-import { UNIT, SQUARE_SIZE } from '../common/customize'
+import { UNIT, SQUARE_SIZE, FLIP_GRAIN } from '../common/customize'
 import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
-import maybeFlipGrain from '../utilities/maybeFlipGrain'
 import maybeMixColors from '../utilities/maybeMixColors'
 import drawStandardStripes from '../../standard/render/drawStandardStripes'
 import drawHarmonicShrinkingStripes from '../../gingham-chevron-continuum/render/drawHarmonicShrinkingStripes'
@@ -11,8 +10,7 @@ export default ({
 					y,
 					center: initialCenter,
 					size,
-					originColor: providedOriginColor,
-					otherColor: providedOtherColor,
+					colors,
 					scaleFromGridCenter,
 					rotationAboutCenter,
 					rotationAboutOrigin,
@@ -29,24 +27,9 @@ export default ({
 		sizedUnit
 	})
 
-	let initialOriginColor, initialOtherColor
-	if (!providedOriginColor) {
-		const { originColor: calculatedOriginColor, otherColor: calculatedOtherColor } = calculateColors({ x, y })
-		initialOriginColor = calculatedOriginColor
-		initialOtherColor = calculatedOtherColor
-	} else {
-		initialOriginColor = providedOriginColor
-		initialOtherColor = providedOtherColor
-	}
-
-	let { originColor: nextOriginColor, otherColor: nextOtherColor } = maybeFlipGrain({
-		originColor: initialOriginColor,
-		otherColor: initialOtherColor
-	})
-	const { originColor, otherColor } = maybeMixColors({
-		originColor: nextOriginColor,
-		otherColor: nextOtherColor
-	})
+	if (!colors) colors = calculateColors({ x, y })
+	colors = FLIP_GRAIN ? colors.reverse() : colors
+	colors = maybeMixColors({ colors })
 
 	const stripesFunction = harmonicShrinkingStripes ? drawHarmonicShrinkingStripes : drawStandardStripes
 	stripesFunction({
@@ -55,8 +38,7 @@ export default ({
 		origin,
 		rotationAboutCenter,
 		rotationAboutOrigin,
-		originColor,
-		otherColor,
+		colors,
 		harmonicShrinkingStripes
 	})
 }

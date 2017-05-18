@@ -5,9 +5,9 @@ import { ginghamChevronContinuum, ginghamChevronContinuumAnimated } from './ging
 import { houndazzle } from './houndazzle/index'
 
 
-// cmyktooth()
+cmyktooth()
 // houndsmorphosis()
-standard()
+// standard()
 // ginghamChevronContinuum()
 // ginghamChevronContinuumAnimated()
 // houndazzle()

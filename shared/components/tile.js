@@ -2,7 +2,7 @@ import { UNIT } from '../common/customize'
 import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
 import maybeFlipGrain from '../utilities/maybeFlipGrain'
 import maybeMixColors from '../utilities/maybeMixColors'
-import drawStandardStripes from './drawStandardStripes'
+import drawStandardStripes from '../../standard/render/drawStandardStripes'
 import drawHarmonicShrinkingStripes from '../../gingham-chevron-continuum/render/drawHarmonicShrinkingStripes'
 
 export default ({

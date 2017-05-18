@@ -6,7 +6,6 @@ export default ({ color, coordinates, customContext }) => {
 	const context = customContext ? customContext : ctx
 
 	context.fillStyle = color
-	context.strokeStyle = color
 	context.beginPath()
 
 	context.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])
@@ -14,5 +13,4 @@ export default ({ color, coordinates, customContext }) => {
 
 	context.closePath()
 	context.fill()
-	context.stroke()
 }

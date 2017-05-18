@@ -1,9 +1,12 @@
-import { STANDARD_SUPERTILE, SWITCHEROO_SUPERTILE, SQUARE_TYPE_TO_COLORS_MAPPING } from '../common/constants'
-import { SWITCHEROO } from '../common/customize'
+import { SQUARE_TYPE_TO_COLORS_MAPPING } from '../common/constants'
 import supertileEntry from './supertileEntry'
+import calculateSupertile from './calculateSupertile'
 
 export default ({ x, y }) => {
-	return SQUARE_TYPE_TO_COLORS_MAPPING[
-		supertileEntry({ x, y, supertile: SWITCHEROO ? SWITCHEROO_SUPERTILE : STANDARD_SUPERTILE })
-	]
+	const entry = supertileEntry({ x, y, supertile: calculateSupertile() })
+	if (typeof entry === 'string') {
+		return SQUARE_TYPE_TO_COLORS_MAPPING[ entry ]
+	}
+
+	return entry
 }

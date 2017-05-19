@@ -5,8 +5,7 @@ import calculateColors from '../utilities/calculateColors'
 import calculateStripes from '../utilities/calculateStripes'
 
 export default ({
-					x,
-					y,
+					origin: initialOrigin,
 					center: initialCenter,
 					size,
 					colors,
@@ -17,17 +16,17 @@ export default ({
 					stripeCount
 				}) => {
 
+	colors = colors || calculateColors({ origin: initialOrigin })
+
 	size = size || SQUARE_SIZE
 	const sizedUnit = size * UNIT
+
 	const { origin, center } = calculateOriginAndCenter({
-		x,
-		y,
+		initialOrigin,
 		initialCenter,
 		scaleFromGridCenter,
 		sizedUnit
 	})
-
-	colors = colors || calculateColors({ x, y })
 
 	stripeCount = stripeCount || STRIPE_COUNT
 	stripes = stripes || calculateStripes({ stripeCount })

@@ -1,10 +1,11 @@
 import render from './render'
 import calculateAnIndividualStripesCoordinates from '../utilities/calculateAnIndividualStripesCoordinates'
 import maybeRotateStripe from '../utilities/maybeRotateStripe'
+import calculateColor from '../../shared/utilities/calculateColor'
 
 export default ({ sizedUnit, center, origin, rotationAboutCenter, rotationAboutOrigin, colors, stripes }) => {
 	stripes.forEach((currentPositionAlongPerimeter, index) => {
-		const color = colors[ index % 2 ]
+		const color = calculateColor({ colors, index })
 		const nextPositionAlongPerimeter = stripes[ index + 1 ] || 2
 
 		let coordinates = calculateAnIndividualStripesCoordinates({

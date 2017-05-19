@@ -6,7 +6,7 @@ import calculateDerasterizedByAreaStripe from '../../derasterized/utilities/calc
 
 const PERIMETER_SCALAR = 2
 
-export default ({ stripeCount }) => iterator(stripeCount).map(stripeIndex => {
+export default ({ stripeCount }) => iterator(Math.ceil(stripeCount)).map(stripeIndex => {
 	let stripe
 	if (STRIPE_STYLE === 'DERASTERIZED_BY_AREA') {
 		stripe = calculateDerasterizedByAreaStripe({ stripeCount, stripeIndex })

@@ -1,9 +1,8 @@
-import { UNIT, SQUARE_SIZE, FLIP_GRAIN } from '../common/customize'
+import { UNIT, SQUARE_SIZE, STRIPE_COUNT } from '../common/customize'
 import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
-import maybeMixColors from '../utilities/maybeMixColors'
-import drawStandardStripes from '../../standard/render/drawStandardStripes'
-import drawHarmonicShrinkingStripes from '../../gingham-chevron-continuum/render/drawHarmonicShrinkingStripes'
+import drawStripes from '../render/drawStripes'
 import calculateColors from '../utilities/calculateColors'
+import calculateStripes from '../utilities/calculateStripes'
 
 export default ({
 					x,
@@ -14,7 +13,8 @@ export default ({
 					scaleFromGridCenter,
 					rotationAboutCenter,
 					rotationAboutOrigin,
-					harmonicShrinkingStripes
+					stripes,
+					stripeCount
 				}) => {
 
 	size = size || SQUARE_SIZE
@@ -27,18 +27,18 @@ export default ({
 		sizedUnit
 	})
 
-	if (!colors) colors = calculateColors({ x, y })
-	colors = FLIP_GRAIN ? colors.reverse() : colors
-	colors = maybeMixColors({ colors })
+	colors = colors || calculateColors({ x, y })
 
-	const stripesFunction = harmonicShrinkingStripes ? drawHarmonicShrinkingStripes : drawStandardStripes
-	stripesFunction({
+	stripeCount = stripeCount || STRIPE_COUNT
+	stripes = stripes || calculateStripes({ stripeCount })
+
+	drawStripes({
 		sizedUnit,
 		center,
 		origin,
 		rotationAboutCenter,
 		rotationAboutOrigin,
 		colors,
-		harmonicShrinkingStripes
+		stripes
 	})
 }

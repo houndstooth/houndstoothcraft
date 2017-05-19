@@ -1,4 +1,4 @@
-export default ({ stripeWidthInTermsOfPerimeter, currentPositionAlongPerimeter, sizedUnit, origin }) => {
+export default ({ currentPositionAlongPerimeter, nextPositionAlongPerimeter, sizedUnit, origin }) => {
 	let coordinates = []
 
 	if (currentPositionAlongPerimeter <= 1) {
@@ -13,14 +13,14 @@ export default ({ stripeWidthInTermsOfPerimeter, currentPositionAlongPerimeter, 
 		])
 	}
 
-	if ((currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) <= 1) {
+	if ((nextPositionAlongPerimeter) <= 1) {
 		coordinates.push([
-			origin[ 0 ] + (currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) * sizedUnit,
+			origin[ 0 ] + (nextPositionAlongPerimeter) * sizedUnit,
 			origin[ 1 ]
 		])
 		coordinates.push([
 			origin[ 0 ],
-			origin[ 1 ] + (currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) * sizedUnit
+			origin[ 1 ] + (nextPositionAlongPerimeter) * sizedUnit
 		])
 	} else {
 		if (currentPositionAlongPerimeter <= 1) {
@@ -32,18 +32,18 @@ export default ({ stripeWidthInTermsOfPerimeter, currentPositionAlongPerimeter, 
 
 		coordinates.push([
 			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (currentPositionAlongPerimeter - 1 + stripeWidthInTermsOfPerimeter) * sizedUnit
+			origin[ 1 ] + (nextPositionAlongPerimeter - 1) * sizedUnit
 		])
 		coordinates.push([
-			origin[ 0 ] + (currentPositionAlongPerimeter - 1 + stripeWidthInTermsOfPerimeter) * sizedUnit,
+			origin[ 0 ] + (nextPositionAlongPerimeter - 1) * sizedUnit,
 			origin[ 1 ] + sizedUnit
 		])
 	}
 
 	if (currentPositionAlongPerimeter <= 1) {
-		if ((currentPositionAlongPerimeter + stripeWidthInTermsOfPerimeter) > 1) {
+		if ((nextPositionAlongPerimeter) > 1) {
 			coordinates.push([
-				origin[ 0 ] ,
+				origin[ 0 ],
 				origin[ 1 ] + sizedUnit
 			])
 		}

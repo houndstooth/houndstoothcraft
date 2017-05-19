@@ -22,3 +22,9 @@
 [submodule "derasterized"]
 	path = derasterized
 	url = git@github.com:houndstooth/derasterized.git
+[submodule "harmonitooth"]
+	path = harmonitooth
+	url = git@github.com:houndstooth/harmonitooth.git
+[submodule "gingham-chevron-continuum-animated"]
+	path = gingham-chevron-continuum-animated
+	url = git@github.com:houndstooth/gingham-chevron-continuum-animated.git

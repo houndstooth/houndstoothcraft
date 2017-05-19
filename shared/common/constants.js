@@ -4,12 +4,12 @@ const CENTER = [ CANVAS_SIZE / 2, CANVAS_SIZE / 2 ]
 
 const STANDARD_SUPERTILE = [
 	[
-		"SOLID_A",
-		"STRIPED_B"
+		"STRIPED_B",
+		"SOLID_A"
 	],
 	[
-		"STRIPED_A",
-		"SOLID_B"
+		"SOLID_B",
+		"STRIPED_A"
 	]
 ]
 

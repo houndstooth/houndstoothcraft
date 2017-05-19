@@ -7,9 +7,9 @@ import { harmonitooth } from './harmonitooth/index'
 import { houndazzle } from './houndazzle/index'
 
 
-cmyktooth()
+// cmyktooth()
 // houndsmorphosis()
-// standard()
+standard()
 // ginghamChevronContinuum()
 // ginghamChevronContinuumAnimated()
 // harmonitooth()

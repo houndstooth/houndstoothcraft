@@ -9,8 +9,8 @@ import { houndazzle } from './houndazzle/index'
 
 // cmyktooth()
 // houndsmorphosis()
-// standard()
+standard()
 // ginghamChevronContinuum()
 // ginghamChevronContinuumAnimated()
 // harmonitooth()
-houndazzle()
+// houndazzle()

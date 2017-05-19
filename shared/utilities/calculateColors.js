@@ -7,7 +7,7 @@ import { FLIP_GRAIN } from '../common/customize'
 export default ({ origin, colors }) => {
 	if (!colors) {
 		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
-		colors = typeof entry === 'string' ? SQUARE_TYPE_TO_COLORS_MAPPING[ entry ] : entry
+		colors = typeof entry === 'string' ? SQUARE_TYPE_TO_COLORS_MAPPING[ entry ].slice() : entry.slice()
 	}
 
 	colors = FLIP_GRAIN ? colors.reverse() : colors

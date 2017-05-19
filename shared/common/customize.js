@@ -1,18 +1,18 @@
 const CANVAS_SIZE = 1000
 const UNIT = 1
-const END_ITERATION = 16
-const GRID_SIZE = 128
+const END_ITERATION = 8
+const GRID_SIZE = 16
 const SQUARE_SIZE = 160
 const COLOR_A = { 'r': 255, 'g': 255, 'b': 255, 'a': 1 }
 const COLOR_B = { 'r': 0, 'g': 0, 'b': 0, 'a': 1 }
 const FRAME_RATE = 1000 / 60
 const STRIPE_COUNT = 4
 const SWITCHEROO = false
-const FLIP_GRAIN = true
+const FLIP_GRAIN = false
 const STRIPE_ROTATION = 0
 const BASE_STRIPE_DIAGONAL = "MINOR" // "PRINCIPAL"
 const GINGHAM_MODE = false
-const GONGRAM = false
+const GONGRAM = true
 
 const STRIPE_STYLE = "STANDARD"
 // const STRIPE_STYLE = "DERASTERIZED_BY_AREA"

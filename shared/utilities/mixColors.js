@@ -1,7 +1,12 @@
 import iterator from '../../shared/utilities/iterator'
 
-export default (xColor, yColor) => {
-	let result = "#"
-	iterator(3, {oneIndexed: true}).forEach(i => result += xColor[ i ] === yColor[ i ] ? xColor[ i ] : "8")
-	return result
+export default ({ colors }) => {
+    let mixedColor = {}
+
+    mixedColor.r = Math.floor((colors[0].r + colors[1].r) / 2)
+    mixedColor.g = Math.floor((colors[0].g + colors[1].g) / 2)
+    mixedColor.b = Math.floor((colors[0].b + colors[1].b) / 2)
+    mixedColor.a = (colors[0].a + colors[1].a) / 2
+
+    return [mixedColor, mixedColor]
 }

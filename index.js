@@ -8,8 +8,8 @@ import { houndazzle } from './houndazzle/index'
 
 
 // cmyktooth()
-// houndsmorphosis()
-standard()
+houndsmorphosis()
+// standard()
 // ginghamChevronContinuum()
 // ginghamChevronContinuumAnimated()
 // harmonitooth()

@@ -16,7 +16,7 @@ export default ({
 					stripeCount
 				}) => {
 
-	colors = colors || calculateColors({ origin: initialOrigin })
+	colors = calculateColors({ origin: initialOrigin, colors })
 
 	size = size || SQUARE_SIZE
 	const sizedUnit = size * UNIT

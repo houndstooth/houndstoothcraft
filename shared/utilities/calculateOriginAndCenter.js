@@ -1,9 +1,11 @@
 import scalePoint from './scalePoint'
-import { SQUARE_SIZE } from '../common/customize'
+import state from '../../state'
 
 export default ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
+	const tileSize = state.shared.tileSize
+	
 	if (origin) {
-		origin = [ origin[ 0 ] * SQUARE_SIZE, origin[ 1 ] * SQUARE_SIZE ]
+		origin = [ origin[ 0 ] * tileSize, origin[ 1 ] * tileSize ]
 		origin = scalePoint({ point: origin, scaleFromGridCenter })
 		center = [
 			origin[ 0 ] + sizedUnit / 2,

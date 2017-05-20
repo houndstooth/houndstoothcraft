@@ -1,6 +1,7 @@
-import { CANVAS_SIZE, COLOR_A, COLOR_B } from './customize'
+import state from '../../state'
+const { canvasSize, colorA, colorB } = state.shared
 
-const CENTER = [ CANVAS_SIZE / 2, CANVAS_SIZE / 2 ]
+const CENTER = [ canvasSize / 2, canvasSize / 2 ]
 
 const STANDARD_SUPERTILE = [
 	[ "STRIPED_B", "SOLID_A" ],
@@ -8,10 +9,10 @@ const STANDARD_SUPERTILE = [
 ]
 
 const SQUARE_TYPE_TO_COLORS_MAPPING = {
-	"SOLID_A": [ COLOR_A, COLOR_A ],
-	"SOLID_B": [ COLOR_B, COLOR_B ],
-	"STRIPED_A": [ COLOR_A, COLOR_B ],
-	"STRIPED_B": [ COLOR_B, COLOR_A ]
+	"SOLID_A": [ colorA, colorA ],
+	"SOLID_B": [ colorB, colorB ],
+	"STRIPED_A": [ colorA, colorB ],
+	"STRIPED_B": [ colorB, colorA ]
 }
 
 const MINOR_DIAGONAL_OFFSET = 0

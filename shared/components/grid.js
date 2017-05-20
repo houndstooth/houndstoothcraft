@@ -1,10 +1,11 @@
 import iterator from '../utilities/iterator'
-import { GRID_SIZE } from '../common/customize'
+import state from '../../state'
 
-export default ({ tile, options }) => {
-	iterator(GRID_SIZE).forEach(x => {
-		iterator(GRID_SIZE).forEach(y => {
-			tile({ origin: [x, y], options })
+export default ({ tile }) => {
+    const gridSize = state.shared.gridSize
+	iterator(gridSize).forEach(x => {
+		iterator(gridSize).forEach(y => {
+			tile({ origin: [ x, y ] })
 		})
 	})
 }

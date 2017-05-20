@@ -1,4 +1,4 @@
-import { BASE_STRIPE_DIAGONAL, STRIPE_ROTATION } from '../common/customize'
+import state from '../../state'
 import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../common/constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
@@ -19,8 +19,8 @@ export default ({coordinates, center, origin, rotationAboutCenter, rotationAbout
 		})
 	}
 
-	const offset = BASE_STRIPE_DIAGONAL === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const extraRotation = offset + STRIPE_ROTATION
+	const offset = state.shared.baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
+	const extraRotation = offset + state.shared.tileRotationAboutTileCenter
 	if (extraRotation !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,

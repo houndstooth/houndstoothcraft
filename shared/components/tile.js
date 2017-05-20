@@ -1,8 +1,8 @@
-import { UNIT, SQUARE_SIZE, STRIPE_COUNT } from '../common/customize'
 import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
 import drawStripes from '../render/drawStripes'
 import calculateColors from '../utilities/calculateColors'
 import calculateStripes from '../utilities/calculateStripes'
+import state from '../../state'
 
 export default ({
 					origin: initialOrigin,
@@ -15,11 +15,12 @@ export default ({
 					stripes,
 					stripeCount
 				}) => {
+	const { unit, tileSize, stripeCount: stateStripeCount } = state.shared
 
 	colors = calculateColors({ origin: initialOrigin, colors })
 
-	size = size || SQUARE_SIZE
-	const sizedUnit = size * UNIT
+	size = size || tileSize
+	const sizedUnit = size * unit
 
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,
@@ -28,7 +29,7 @@ export default ({
 		sizedUnit
 	})
 
-	stripeCount = stripeCount || STRIPE_COUNT
+	stripeCount = stripeCount || stateStripeCount
 	stripes = stripes || calculateStripes({ stripeCount })
 
 	drawStripes({

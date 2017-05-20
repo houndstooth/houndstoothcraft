@@ -1,7 +1,8 @@
-import { CANVAS_SIZE } from '../common/customize'
+import state from '../../state'
 
 const canvas = document.querySelector('canvas')
-canvas.width = CANVAS_SIZE
-canvas.height = CANVAS_SIZE
+const canvasSize = state.shared.canvasSize
+canvas.width = canvasSize
+canvas.height = canvasSize
 
 export default canvas.getContext('2d')

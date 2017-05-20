@@ -27,7 +27,7 @@ export default {
         colorA: BLACK,
         colorB: WHITE,
         frameRate: 1000 / 60,
-        animating: false,
+        animating: true,
         stripeCount: 4,
         switcheroo: false,
         flipGrain: false,

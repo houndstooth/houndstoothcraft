@@ -12,7 +12,7 @@ export default {
         stripeCountIncreasePerDiagonal: null
     },
     ginghamChevronContinuumAnimated: {
-        thinningRate: thinningRate => thinningRate * 1.005
+        thinningRate: null // thinningRate => thinningRate * 1.005
     },
     houndazzle: {
         substripeCount: null,

@@ -1,14 +1,14 @@
 import state from './state'
 import animation from './animation'
 
-import cmyktooth from './cmyktooth/index'
-import houndsmorphosis from './houndsmorphosis/index'
-import standard from './standard/index'
-import ginghamChevronContinuum from './gingham-chevron-continuum/index'
-import ginghamChevronContinuumStripesDrawnAcrossEntireGridInsteadOfByIndividualTileToBeOptimizedForAnimation from './gingham-chevron-continuum-animated/index'
-import houndazzle from './houndazzle/index'
+import cmyktooth from './cmyktooth/cmyktooth'
+import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
+import standard from './standard/standard'
+import ginghamChevronContinuum from './gingham-chevron-continuum/ginghamChevronContinuum'
+import ginghamChevronContinuumOptimizedForAnimation from './gingham-chevron-continuum-animated/ginghamChevronContinuumOptimizedForAnimation'
+import houndazzle from './houndazzle/houndazzle'
 
-const pattern = standard
+const pattern = cmyktooth
 
 if (state.shared.animating) {
     setInterval(() => {

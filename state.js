@@ -5,7 +5,7 @@ export default {
         startIteration: 0, //this should probably be generalized
         cmykColorsMode: true,
         layerColor: null,
-        orientation: null
+        layerRotation: 0
     },
     ginghamChevronContinuum: {
         continuumStartsAtStripeCount: 3,
@@ -35,6 +35,7 @@ export default {
         baseStripeDiagonal: 'MINOR', // 'PRINICIPAL'
         ginghamMode: false,
         gongramColors: false,
+        gridRotationAboutCenter: -1,
         stripeStyle: 'STANDARD'
         // stripeStyle: 'DERASTERIZED_BY_AREA'
         // stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc

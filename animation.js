@@ -5,7 +5,7 @@ export default {
         startIteration: null,
         cmykColorsMode: null,
         layerColor: null,
-        orientation: null
+        layerRotation: null
     },
     ginghamChevronContinuum: {
         continuumStartsAtStripeCount: null,
@@ -35,6 +35,7 @@ export default {
         baseStripeDiagonal: null,
         ginghamMode: null,
         gongramColors: null,
+        gridRotationAboutCenter: gridRotationAboutCenter => gridRotationAboutCenter * 1.005,
         stripeStyle: null
     }
 }

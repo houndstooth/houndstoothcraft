@@ -1,5 +1,5 @@
 import state from '../../state'
-import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../constants'
+import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET, CENTER } from '../constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
 export default ({coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin }) => {
@@ -26,6 +26,14 @@ export default ({coordinates, center, origin, rotationAboutCenter, rotationAbout
 			point: center,
 			coordinates: coordinates,
 			rotation: extraRotation
+		})
+	}
+
+	if (state.shared.gridRotationAboutCenter) {
+		coordinates = rotateCoordinatesAboutPoint({
+			point: CENTER,
+			coordinates: coordinates,
+			rotation: state.shared.gridRotationAboutCenter
 		})
 	}
 

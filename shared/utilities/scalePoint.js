@@ -1,4 +1,4 @@
-import { CENTER } from '../common/constants'
+import { CENTER } from '../constants'
 import state from '../../state'
 
 export default ({ point, scaleFromGridCenter }) => {

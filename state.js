@@ -1,4 +1,4 @@
-import { BLACK, WHITE } from './shared/common/colors'
+import { BLACK, WHITE } from './shared/render/colors'
 
 export default {
     cmyktooth: {

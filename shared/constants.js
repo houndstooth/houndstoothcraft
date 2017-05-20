@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 const { canvasSize, colorA, colorB } = state.shared
 
 const CENTER = [ canvasSize / 2, canvasSize / 2 ]

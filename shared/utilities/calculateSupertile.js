@@ -1,4 +1,4 @@
-import { STANDARD_SUPERTILE } from '../common/constants'
+import { STANDARD_SUPERTILE } from '../constants'
 import { GONGRAM_SUPERTILE } from '../../gongram/constants'
 import state from '../../state'
 

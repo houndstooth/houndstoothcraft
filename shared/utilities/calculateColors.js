@@ -1,4 +1,4 @@
-import { SQUARE_TYPE_TO_COLORS_MAPPING } from '../common/constants'
+import { SQUARE_TYPE_TO_COLORS_MAPPING } from '../constants'
 import supertileEntry from './supertileEntry'
 import calculateSupertile from './calculateSupertile'
 import mixColors from './mixColors'

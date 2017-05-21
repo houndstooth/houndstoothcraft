@@ -12,7 +12,7 @@ export default {
     },
     houndazzle: {
         substripeCount: 16,
-        dazzleContinuum: false
+        dazzleContinuum: true
     },
     shared: {
         canvasSize: 1000,

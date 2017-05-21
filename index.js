@@ -10,7 +10,7 @@ import standard from './standard/standard'
 import ginghamChevronContinuumOptimizedForAnimation from './gingham-chevron-continuum-animated/ginghamChevronContinuumOptimizedForAnimation'
 import houndazzle from './houndazzle/houndazzle'
 
-const pattern = cmyktooth
+const pattern = houndazzle
 
 const { animating, frameRate } = state.animation
 

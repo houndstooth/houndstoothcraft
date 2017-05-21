@@ -23,7 +23,7 @@ export default {
         colorA: null,
         colorB: null,
         stripeCount: {
-            baseCount: p => p * 1.005,
+            baseCount: null, //p => p * 1.005,
             ginghamChevronContinuum: {
                 on: null,
                 continuumStartsAtStripeCount: null,
@@ -36,11 +36,12 @@ export default {
         baseStripeDiagonal: null,
         ginghamMode: null,
         gongramColors: null,
-        gridRotationAboutCenter: p => p + Math.PI / 360,
+        gridRotationAboutCenter: null, //p => p + Math.PI / 360,
         stripeStyle: null
     },
     animation: {
         frameRate: null,
-        animating: null
+        animating: null,
+        refreshCanvas: null
     }
 }

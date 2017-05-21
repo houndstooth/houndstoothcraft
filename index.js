@@ -10,14 +10,14 @@ import standard from './standard/standard'
 import ginghamChevronContinuumOptimizedForAnimation from './gingham-chevron-continuum-animated/ginghamChevronContinuumOptimizedForAnimation'
 import houndazzle from './houndazzle/houndazzle'
 
-const pattern = houndazzle
+const pattern = cmyktooth
 
-const { animating, frameRate } = state.animation
+const { animating, frameRate, refreshCanvas } = state.animation
 
 if (animating) {
     let animations = prepare({ animationObject: animation, nestedPropertyPath: [], animations: [] })
     setInterval(() => {
-        clear()
+        if (refreshCanvas) clear()
         pattern()
         animate({ animations })
     }, frameRate)

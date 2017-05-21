@@ -6,7 +6,7 @@ import state from '../../state'
 
 const PERIMETER_SCALAR = 2
 
-export default ({ stripeCount }) => iterator(Math.ceil(stripeCount)).map(stripeIndex => {
+export default ({ stripeCount }) => iterator(stripeCount).map(stripeIndex => {
 	const stripeStyle = state.shared.stripeStyle
 	
 	let stripe

@@ -5,6 +5,7 @@ import calculateColors from '../utilities/calculateColors'
 import calculateStripes from '../utilities/calculateStripes'
 import isOnCanvas from '../utilities/isOnCanvas'
 import colorsAreTheSame from '../utilities/colorsAreTheSame'
+import calculateGinghamChevronContinuumStripeCount from '../../gingham-chevron-continuum/utilities/calculateGinghamChevronContinuumStripeCount'
 import state from '../../state'
 
 export default ({
@@ -29,6 +30,7 @@ export default ({
 		scaleFromGridCenter,
 		sizedUnit
 	})
+	initialOrigin = initialOrigin || initialCenter
 
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
@@ -44,7 +46,9 @@ export default ({
 			color: colors[0]
 		})
 	} else {
-		stripeCount = stripeCount || stateStripeCount
+		stripeCount = stripeCount || stateStripeCount.baseCount
+		if (stateStripeCount.ginghamChevronContinuum.on) stripeCount = calculateGinghamChevronContinuumStripeCount({ origin: initialOrigin })
+
 		stripes = stripes || calculateStripes({ stripeCount })
 
 		drawStripes({

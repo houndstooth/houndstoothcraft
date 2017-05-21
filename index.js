@@ -7,7 +7,6 @@ import animation from './animation/animation'
 import cmyktooth from './cmyktooth/cmyktooth'
 import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 import standard from './standard/standard'
-import ginghamChevronContinuum from './gingham-chevron-continuum/ginghamChevronContinuum'
 import ginghamChevronContinuumOptimizedForAnimation from './gingham-chevron-continuum-animated/ginghamChevronContinuumOptimizedForAnimation'
 import houndazzle from './houndazzle/houndazzle'
 

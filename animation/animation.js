@@ -7,10 +7,6 @@ export default {
         layerColor: null,
         layerRotation: null
     },
-    ginghamChevronContinuum: {
-        continuumStartsAtStripeCount: null,
-        stripeCountIncreasePerDiagonal: null
-    },
     ginghamChevronContinuumAnimated: {
         thinningRate: null // thinningRate => thinningRate * 1.005
     },
@@ -26,7 +22,14 @@ export default {
         tileSize: null,
         colorA: null,
         colorB: null,
-        stripeCount: p => p * 1.005,
+        stripeCount: {
+            baseCount: p => p * 1.005,
+            ginghamChevronContinuum: {
+                on: null,
+                continuumStartsAtStripeCount: null,
+                stripeCountIncreasePerDiagonal: null
+            }
+        },
         switcheroo: null,
         flipGrain: null,
         tileRotationAboutTileCenter: null,

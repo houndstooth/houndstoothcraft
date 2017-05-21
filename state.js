@@ -1,4 +1,4 @@
-import { BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW } from './shared/render/colors'
+import { BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, TRANSPARENT } from './shared/render/colors'
 
 export default {
     cmyktooth: {
@@ -13,20 +13,20 @@ export default {
         dazzleContinuum: true
     },
     houndsmorphosis: {
-        endIteration: 32
+        endIteration: 13
     },
     shared: {
         canvasSize: 1000,
         unit: 1,
-        gridSize: 8,
+        gridSize: 16,
         tileSize: 100,
         colorA: BLACK,
-        colorB: WHITE,
+        colorB: TRANSPARENT,
         stripeCount: {
-            baseCount: 16,
+            baseCount: 4,
             // might be cool to try replacing this with a function, and when "off" it's just a function that always returns a simple baseCount
             ginghamChevronContinuum: {
-                on: true,
+                on: false,
                 style: 'FLUID', //'ALIGNING', //
                 //note - fluid style overrides stripeStyle... how to account for this in this state model?
                 fluid: {
@@ -45,6 +45,7 @@ export default {
         ginghamMode: false, //this should go into the stripes bucket, because it obviates them all
         gongramColors: false,
         gridRotationAboutCenter: 0,
+        opacity: .5,
         stripeStyle: 'STANDARD'
         // stripeStyle: 'DERASTERIZED_BY_AREA'
         // stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc
@@ -54,5 +55,9 @@ export default {
         frameRate: 1000 / 60,
         animating: true,
         refreshCanvas: true
+    },
+    iteration: {
+        startIteration: 0,
+        endIteration: 8
     }
 }

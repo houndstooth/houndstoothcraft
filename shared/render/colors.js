@@ -6,6 +6,7 @@ const BLUE = { 'r': 0, 'g': 0, 'b': 255, 'a': 1 }
 const CYAN = {'r': 0, 'g': 255, 'b': 255, 'a': 1}
 const MAGENTA = {'r': 255, 'g': 0, 'b': 255, 'a': 1}
 const YELLOW = {'r': 255, 'g': 255, 'b': 0, 'a': 1}
+const TRANSPARENT = {'a': 0}
 
 export {
     BLACK,
@@ -15,5 +16,6 @@ export {
     BLUE,
     CYAN,
     MAGENTA,
-    YELLOW
+    YELLOW,
+    TRANSPARENT
 }

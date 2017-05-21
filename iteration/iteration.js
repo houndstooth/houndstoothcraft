@@ -17,26 +17,23 @@ export default {
     },
     shared: {
         canvasSize: null,
-        unit: p => p * 1.0005,
+        unit: null, //p => p * 1.005,
         endIteration: null,
         gridSize: null,
         tileSize: null,
         colorA: null,
         colorB: null,
         stripeCount: {
-            baseCount: p => p * 1.0005,
+            baseCount: null,
             ginghamChevronContinuum: {
                 on: null,
                 style: null,
                 fluid: {
-                    thinningRate: null //p => p * 1.0000002
+                    thinningRate: null
                 },
-                // yeah, these ones are no good for animation
-                // because it's not fluid, they just snap here to there over thresholds
-                // only for positioning for a static
                 aligning: {
-                    continuumStartsAtStripeCount: null, //p => p * 1.01,
-                    stripeCountIncreasePerDiagonal: null, //p => p * 1.005
+                    continuumStartsAtStripeCount: null,
+                    stripeCountIncreasePerDiagonal: null, 
                 }
             }
         },
@@ -46,7 +43,7 @@ export default {
         baseStripeDiagonal: null,
         ginghamMode: null,
         gongramColors: null,
-        gridRotationAboutCenter: p => p + Math.PI / 360,
+        gridRotationAboutCenter: p => p + Math.PI / 4,
         stripeStyle: null,
         opacity: null
     },
@@ -54,5 +51,9 @@ export default {
         frameRate: null,
         animating: null,
         refreshCanvas: null
+    },
+    iteration: {
+        startIteration: null,
+        endIteration: null
     }
 }

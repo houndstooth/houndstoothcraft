@@ -1,7 +1,5 @@
 import state from '../state'
-const { canvasSize, colorA, colorB } = state.shared
-
-const CENTER = [ canvasSize / 2, canvasSize / 2 ]
+const { colorA, colorB } = state.shared
 
 const STANDARD_SUPERTILE = [
 	[ "STRIPED_B", "SOLID_A" ],
@@ -19,7 +17,6 @@ const MINOR_DIAGONAL_OFFSET = 0
 const PRINCIPAL_DIAGONAL_OFFSET = Math.PI / 2
 
 export {
-	CENTER,
 	STANDARD_SUPERTILE,
 	MINOR_DIAGONAL_OFFSET,
 	PRINCIPAL_DIAGONAL_OFFSET,

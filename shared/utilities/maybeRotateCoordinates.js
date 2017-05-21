@@ -1,5 +1,5 @@
 import state from '../../state'
-import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET, CENTER } from '../constants'
+import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
 export default ({ coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin }) => {
@@ -19,8 +19,10 @@ export default ({ coordinates, center, origin, rotationAboutCenter, rotationAbou
 		})
 	}
 
-	const offset = state.shared.baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const extraRotation = offset + state.shared.tileRotationAboutTileCenter
+	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state.shared
+
+	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
+	const extraRotation = offset + tileRotationAboutTileCenter
 	if (extraRotation !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
@@ -29,11 +31,11 @@ export default ({ coordinates, center, origin, rotationAboutCenter, rotationAbou
 		})
 	}
 
-	if (state.shared.gridRotationAboutCenter) {
+	if (gridRotationAboutCenter) {
 		coordinates = rotateCoordinatesAboutPoint({
-			point: CENTER,
+			point: [ canvasSize / 2, canvasSize / 2],
 			coordinates: coordinates,
-			rotation: state.shared.gridRotationAboutCenter
+			rotation: gridRotationAboutCenter
 		})
 	}
 

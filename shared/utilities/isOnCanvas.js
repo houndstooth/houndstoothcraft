@@ -1,16 +1,18 @@
 import state from '../../state'
-import { CENTER } from '../constants'
 import rotateCoordinatesAboutPoint from './rotateCoordinatesAboutPoint'
 import calculateSquare from './calculateSquare'
 
 export default ({ center, sizedUnit }) => {
     let vertices = calculateSquare({ center, sizedUnit })
 
+    const { canvasSize, gridRotationAboutCenter } = state.shared
+    const canvasCenter = [ canvasSize / 2, canvasSize / 2]
+
     if (state.shared.gridRotationAboutCenter) {
         vertices = rotateCoordinatesAboutPoint({
-            point: CENTER,
+            point: canvasCenter,
             coordinates: vertices,
-            rotation: state.shared.gridRotationAboutCenter
+            rotation: gridRotationAboutCenter
         })
     }
 

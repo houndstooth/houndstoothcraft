@@ -1,6 +1,6 @@
 import render from './render'
 import calculateAnIndividualStripesCoordinates from '../utilities/calculateAnIndividualStripesCoordinates'
-import maybeRotateStripe from '../utilities/maybeRotateStripe'
+import maybeRotateCoordinates from '../utilities/maybeRotateCoordinates'
 import calculateColor from '../../shared/utilities/calculateColor'
 
 export default ({ sizedUnit, center, origin, rotationAboutCenter, rotationAboutOrigin, colors, stripes }) => {
@@ -14,7 +14,7 @@ export default ({ sizedUnit, center, origin, rotationAboutCenter, rotationAboutO
 			sizedUnit,
 			origin
 		})
-		coordinates = maybeRotateStripe({ coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin })
+		coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin })
 
 		render({ color, coordinates })
 	})

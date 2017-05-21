@@ -1,7 +1,10 @@
 import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
 import drawStripes from '../render/drawStripes'
+import drawSquare from '../render/drawSquare'
 import calculateColors from '../utilities/calculateColors'
 import calculateStripes from '../utilities/calculateStripes'
+import isOnCanvas from '../utilities/isOnCanvas'
+import colorsAreTheSame from '../utilities/colorsAreTheSame'
 import state from '../../state'
 
 export default ({
@@ -17,8 +20,6 @@ export default ({
 				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount } = state.shared
 
-	colors = calculateColors({ origin: initialOrigin, colors })
-
 	size = size || tileSize
 	const sizedUnit = size * unit
 
@@ -29,16 +30,31 @@ export default ({
 		sizedUnit
 	})
 
-	stripeCount = stripeCount || stateStripeCount
-	stripes = stripes || calculateStripes({ stripeCount })
+	// if (!isOnCanvas({ center, sizedUnit })) return
 
-	drawStripes({
-		sizedUnit,
-		center,
-		origin,
-		rotationAboutCenter,
-		rotationAboutOrigin,
-		colors,
-		stripes
-	})
+	colors = calculateColors({ origin: initialOrigin, colors })
+
+	if (colorsAreTheSame({ colors })) {
+		drawSquare({
+			sizedUnit,
+			center,
+			origin,
+			rotationAboutCenter,
+			rotationAboutOrigin,
+			color: colors[0]
+		})
+	} else {
+		stripeCount = stripeCount || stateStripeCount
+		stripes = stripes || calculateStripes({ stripeCount })
+
+		drawStripes({
+			sizedUnit,
+			center,
+			origin,
+			rotationAboutCenter,
+			rotationAboutOrigin,
+			colors,
+			stripes
+		})
+	}
 }

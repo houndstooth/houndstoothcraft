@@ -1,6 +1,8 @@
 import state from './state'
-import animation from './animation'
-import ctx from './shared/render/ctx'
+import clear from './shared/render/clear'
+import prepare from './animation/prepare'
+import animate from './animation/animate'
+import animation from './animation/animation'
 
 import cmyktooth from './cmyktooth/cmyktooth'
 import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
@@ -9,29 +11,17 @@ import ginghamChevronContinuum from './gingham-chevron-continuum/ginghamChevronC
 import ginghamChevronContinuumOptimizedForAnimation from './gingham-chevron-continuum-animated/ginghamChevronContinuumOptimizedForAnimation'
 import houndazzle from './houndazzle/houndazzle'
 
-const pattern = standard
+const pattern = cmyktooth
 
-if (state.shared.animating) {
+const { animating, frameRate } = state.animation
+
+if (animating) {
+    let animations = prepare({ animationObject: animation, nestedPropertyPath: [], animations: [] })
     setInterval(() => {
-        ctx.clearRect(0, 0, state.shared.canvasSize, state.shared.canvasSize)
+        clear()
         pattern()
-        animate({ animationObject: animation, nestedKeyPath: [] })
-    }, state.shared.frameRate)
+        animate({ animations })
+    }, frameRate)
 } else {
     pattern()
-}
-
-
-const animate = ({ animationObject, nestedKeyPath }) => {
-    Object.entries(animationObject).forEach(([key, value]) => {
-        if (typeof value == 'function') {
-            let thingToCallItOn = state
-            nestedKeyPath.forEach(pathStep => thingToCallItOn = thingToCallItOn[pathStep])
-            thingToCallItOn[key] = value(thingToCallItOn[key])
-        } else if (value) {
-            const deeperPath = nestedKeyPath.slice()
-            deeperPath.push(key)
-            animate({ animationObject: value, nestedKeyPath: deeperPath })
-        }
-    })
 }

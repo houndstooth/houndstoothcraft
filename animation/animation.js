@@ -20,22 +20,24 @@ export default {
     },
     shared: {
         canvasSize: null,
-        unit: null,
+        unit: p => p * 1.005,
         endIteration: null,
         gridSize: null,
         tileSize: null,
         colorA: null,
         colorB: null,
-        frameRate: null,
-        animating: null,
-        stripeCount: stripeCount => stripeCount * 1.005,
+        stripeCount: p => p * 1.005,
         switcheroo: null,
         flipGrain: null,
         tileRotationAboutTileCenter: null,
         baseStripeDiagonal: null,
         ginghamMode: null,
         gongramColors: null,
-        gridRotationAboutCenter: gridRotationAboutCenter => gridRotationAboutCenter * 1.005,
+        gridRotationAboutCenter: p => p + Math.PI / 360,
         stripeStyle: null
+    },
+    animation: {
+        frameRate: null,
+        animating: null
     }
 }

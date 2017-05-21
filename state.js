@@ -1,8 +1,8 @@
-import { BLACK, WHITE } from './shared/render/colors'
+import { BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW } from './shared/render/colors'
 
 export default {
     cmyktooth: {
-        startIteration: 0, //this should probably be generalized
+        startIteration: 0, //this should probably be generalized, no wait, opposite, because anything could have its own iterations
         cmykColorsMode: true,
         layerColor: null,
         layerRotation: 0
@@ -22,23 +22,25 @@ export default {
         canvasSize: 1000,
         unit: 1,
         endIteration: 32,
-        gridSize: 16,
-        tileSize: 80,
+        gridSize: 11,
+        tileSize: 100,
         colorA: BLACK,
         colorB: WHITE,
-        frameRate: 1000 / 60,
-        animating: true,
         stripeCount: 4,
         switcheroo: false,
         flipGrain: false,
-        tileRotationAboutTileCenter: 0, // i htought i changed this already, but should be rotation of each tile about its center
+        tileRotationAboutTileCenter: 0,
         baseStripeDiagonal: 'MINOR', // 'PRINICIPAL'
         ginghamMode: false,
         gongramColors: false,
-        gridRotationAboutCenter: -1,
+        gridRotationAboutCenter: 0,
         stripeStyle: 'STANDARD'
         // stripeStyle: 'DERASTERIZED_BY_AREA'
         // stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc
         // stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
+    },
+    animation: {
+        frameRate: 1000 / 60,
+        animating: true
     }
 }

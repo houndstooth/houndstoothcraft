@@ -2,7 +2,7 @@ import state from '../../state'
 import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET, CENTER } from '../constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
-export default ({coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin }) => {
+export default ({ coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin }) => {
 	if (rotationAboutCenter) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,

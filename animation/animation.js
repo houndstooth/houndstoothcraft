@@ -3,6 +3,7 @@
 export default {
     cmyktooth: {
         startIteration: null,
+        endIteration: null,
         cmykColorsMode: null,
         layerColor: null,
         layerRotation: null
@@ -10,6 +11,9 @@ export default {
     houndazzle: {
         substripeCount: null,
         dazzleContinuum: null
+    },
+    houndsmorphosis: {
+        endIteration: null
     },
     shared: {
         canvasSize: null,

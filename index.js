@@ -9,7 +9,7 @@ import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 import standard from './standard/standard'
 import houndazzle from './houndazzle/houndazzle'
 
-const pattern = cmyktooth
+const pattern = houndsmorphosis
 
 const { animating, frameRate, refreshCanvas } = state.animation
 

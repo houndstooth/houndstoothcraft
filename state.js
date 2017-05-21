@@ -2,7 +2,8 @@ import { BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW } from './shared/
 
 export default {
     cmyktooth: {
-        startIteration: 0, //this should probably be generalized, no wait, opposite, because anything could have its own iterations
+        startIteration: 0,
+        endIteration: 4,
         cmykColorsMode: true,
         layerColor: null,
         layerRotation: 0
@@ -11,10 +12,12 @@ export default {
         substripeCount: 16,
         dazzleContinuum: true
     },
+    houndsmorphosis: {
+        endIteration: 32
+    },
     shared: {
         canvasSize: 1000,
         unit: 1,
-        endIteration: 4,
         gridSize: 8,
         tileSize: 100,
         colorA: BLACK,
@@ -38,8 +41,8 @@ export default {
         switcheroo: false,
         flipGrain: false,
         tileRotationAboutTileCenter: 0,
-        baseStripeDiagonal: 'MINOR', // 'PRINICIPAL'
-        ginghamMode: false,
+        baseStripeDiagonal: 'MINOR', // 'PRINICIPAL' //then maybe within stripes there should be like a stripe orientation config
+        ginghamMode: false, //this should go into the stripes bucket, because it obviates them all
         gongramColors: false,
         gridRotationAboutCenter: 0,
         stripeStyle: 'STANDARD'

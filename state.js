@@ -2,7 +2,7 @@ import { BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW } from './shared/
 
 export default {
     cmyktooth: {
-        startIteration: 5, //this should probably be generalized, no wait, opposite, because anything could have its own iterations
+        startIteration: 0, //this should probably be generalized, no wait, opposite, because anything could have its own iterations
         cmykColorsMode: true,
         layerColor: null,
         layerRotation: 0
@@ -14,8 +14,8 @@ export default {
     shared: {
         canvasSize: 1000,
         unit: 1,
-        endIteration: 5,
-        gridSize: 6,
+        endIteration: 4,
+        gridSize: 8,
         tileSize: 100,
         colorA: BLACK,
         colorB: WHITE,
@@ -23,7 +23,7 @@ export default {
             baseCount: 16,
             // might be cool to try replacing this with a function, and when "off" it's just a function that always returns a simple baseCount
             ginghamChevronContinuum: {
-                on: false,
+                on: true,
                 style: 'FLUID', //'ALIGNING', //
                 //note - fluid style overrides stripeStyle... how to account for this in this state model?
                 fluid: {
@@ -42,14 +42,14 @@ export default {
         ginghamMode: false,
         gongramColors: false,
         gridRotationAboutCenter: 0,
-        // stripeStyle: 'STANDARD'
+        stripeStyle: 'STANDARD'
         // stripeStyle: 'DERASTERIZED_BY_AREA'
         // stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc
-        stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
+        // stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
     },
     animation: {
         frameRate: 1000 / 60,
-        animating: false,
+        animating: true,
         refreshCanvas: true
     }
 }

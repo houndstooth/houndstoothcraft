@@ -28,7 +28,6 @@ export default ({
 		scaleFromGridCenter,
 		sizedUnit
 	})
-	initialOrigin = initialOrigin || initialCenter
 
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
@@ -53,7 +52,7 @@ export default ({
 			} else if (stateStripeCount.ginghamChevronContinuum.style == 'FLUID') {
 				// it's nice to do this at the tile level, but wasteful computationally
 				// maybe it's smart to cache the overall stripes answer locally, ie in this file
-				stripes = calculateFluidGinghamChevronContinuumStripes({ origin: initialOrigin})
+				stripes = calculateFluidGinghamChevronContinuumStripes({ origin: initialOrigin })
 			}
 		}
 		stripes = stripes || calculateStripes({ stripeCount })

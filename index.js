@@ -22,5 +22,7 @@ if (animating) {
         animate({ animations })
     }, frameRate)
 } else {
+    // console.time('pattern');
     pattern()
+    // console.timeEnd('pattern');
 }

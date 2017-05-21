@@ -6,6 +6,7 @@ import calculateColor from '../../shared/utilities/calculateColor'
 export default ({ sizedUnit, center, origin, rotationAboutCenter, rotationAboutOrigin, colors, stripes }) => {
 	stripes.forEach((currentPositionAlongPerimeter, index) => {
 		const color = calculateColor({ colors, index })
+		if (color.a == 0) return
 		const nextPositionAlongPerimeter = stripes[ index + 1 ] || 2
 
 		let coordinates = calculateAnIndividualStripesCoordinates({

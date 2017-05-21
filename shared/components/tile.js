@@ -37,13 +37,15 @@ export default ({
 	colors = calculateColors({ origin: initialOrigin, colors })
 
 	if (colorsAreTheSame({ colors })) {
+		const color = colors[0]
+		if (color.a == 0) return
 		drawSquare({
 			sizedUnit,
 			center,
 			origin,
 			rotationAboutCenter,
 			rotationAboutOrigin,
-			color: colors[0]
+			color
 		})
 	} else {
 		stripeCount = stripeCount || stateStripeCount.baseCount

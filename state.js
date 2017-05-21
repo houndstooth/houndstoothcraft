@@ -44,7 +44,7 @@ export default {
     },
     animation: {
         frameRate: 1000 / 60,
-        animating: true,
+        animating: false,
         refreshCanvas: false
     }
 }

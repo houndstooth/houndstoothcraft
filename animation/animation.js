@@ -20,7 +20,7 @@ export default {
         colorA: null,
         colorB: null,
         stripeCount: {
-            baseCount: null, //p => p * 1.005,
+            baseCount: p => p * 1.005,
             ginghamChevronContinuum: {
                 on: null,
                 style: null,

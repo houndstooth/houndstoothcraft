@@ -15,16 +15,16 @@ export default {
         canvasSize: 1000,
         unit: 1,
         endIteration: 5,
-        gridSize: 11,
+        gridSize: 6,
         tileSize: 100,
         colorA: BLACK,
         colorB: WHITE,
         stripeCount: {
-            baseCount: 4,
+            baseCount: 16,
             // might be cool to try replacing this with a function, and when "off" it's just a function that always returns a simple baseCount
             ginghamChevronContinuum: {
-                on: true,
-                style: 'FLUID', //'ALIGNING', 
+                on: false,
+                style: 'FLUID', //'ALIGNING', //
                 //note - fluid style overrides stripeStyle... how to account for this in this state model?
                 fluid: {
                     thinningRate: 1
@@ -42,14 +42,14 @@ export default {
         ginghamMode: false,
         gongramColors: false,
         gridRotationAboutCenter: 0,
-        stripeStyle: 'STANDARD'
+        // stripeStyle: 'STANDARD'
         // stripeStyle: 'DERASTERIZED_BY_AREA'
         // stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc
-        // stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
+        stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
     },
     animation: {
-        frameRate: 1000,
-        animating: true,
+        frameRate: 1000 / 60,
+        animating: false,
         refreshCanvas: true
     }
 }

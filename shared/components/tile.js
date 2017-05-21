@@ -6,6 +6,7 @@ import calculateStripes from '../utilities/calculateStripes'
 import isOnCanvas from '../utilities/isOnCanvas'
 import colorsAreTheSame from '../utilities/colorsAreTheSame'
 import calculateGinghamChevronContinuumStripeCount from '../../gingham-chevron-continuum/utilities/calculateGinghamChevronContinuumStripeCount'
+import calculateFluidGinghamChevronContinuumStripes from '../../gingham-chevron-continuum-animated/utilities/calculateFluidGinghamChevronContinuumStripes'
 import state from '../../state'
 
 export default ({
@@ -14,10 +15,7 @@ export default ({
 					size,
 					colors,
 					scaleFromGridCenter,
-					rotationAboutCenter,
-					rotationAboutOrigin,
-					stripes,
-					stripeCount
+					rotationAboutCenter
 				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount } = state.shared
 
@@ -44,13 +42,20 @@ export default ({
 			center,
 			origin,
 			rotationAboutCenter,
-			rotationAboutOrigin,
 			color
 		})
 	} else {
-		stripeCount = stripeCount || stateStripeCount.baseCount
-		if (stateStripeCount.ginghamChevronContinuum.on) stripeCount = calculateGinghamChevronContinuumStripeCount({ origin: initialOrigin })
-
+		let stripes
+		let stripeCount = stateStripeCount.baseCount
+		if (stateStripeCount.ginghamChevronContinuum.on) {
+			if (stateStripeCount.ginghamChevronContinuum.style == 'ALIGNING') {
+				stripeCount = calculateGinghamChevronContinuumStripeCount({ origin: initialOrigin })
+			} else if (stateStripeCount.ginghamChevronContinuum.style == 'FLUID') {
+				// it's nice to do this at the tile level, but wasteful computationally
+				// maybe it's smart to cache the overall stripes answer locally, ie in this file
+				stripes = calculateFluidGinghamChevronContinuumStripes({ origin: initialOrigin})
+			}
+		}
 		stripes = stripes || calculateStripes({ stripeCount })
 
 		drawStripes({
@@ -58,7 +63,6 @@ export default ({
 			center,
 			origin,
 			rotationAboutCenter,
-			rotationAboutOrigin,
 			colors,
 			stripes
 		})

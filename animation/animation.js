@@ -7,16 +7,13 @@ export default {
         layerColor: null,
         layerRotation: null
     },
-    ginghamChevronContinuumAnimated: {
-        thinningRate: null // thinningRate => thinningRate * 1.005
-    },
     houndazzle: {
         substripeCount: null,
         dazzleContinuum: null
     },
     shared: {
         canvasSize: null,
-        unit: p => p * 1.005,
+        unit: null, //p => p * 1.005,
         endIteration: null,
         gridSize: null,
         tileSize: null,
@@ -26,8 +23,17 @@ export default {
             baseCount: null, //p => p * 1.005,
             ginghamChevronContinuum: {
                 on: null,
-                continuumStartsAtStripeCount: null,
-                stripeCountIncreasePerDiagonal: null
+                style: null,
+                fluid: {
+                    thinningRate: p => p * 1.002
+                },
+                // yeah, these ones are no good for animation
+                // because it's not fluid, they just snap here to there over thresholds
+                // only for positioning for a static
+                aligning: {
+                    continuumStartsAtStripeCount: null, //p => p * 1.01,
+                    stripeCountIncreasePerDiagonal: null, //p => p * 1.005
+                }
             }
         },
         switcheroo: null,

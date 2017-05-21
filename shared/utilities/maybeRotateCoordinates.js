@@ -2,7 +2,7 @@ import state from '../../state'
 import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
-export default ({ coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin }) => {
+export default ({ coordinates, center, origin, rotationAboutCenter }) => {
 	if (rotationAboutCenter) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
@@ -11,13 +11,13 @@ export default ({ coordinates, center, origin, rotationAboutCenter, rotationAbou
 		})
 	}
 
-	if (rotationAboutOrigin) {
-		coordinates = rotateCoordinatesAboutPoint({
-			point: origin,
-			coordinates: coordinates,
-			rotation: rotationAboutOrigin
-		})
-	}
+	// if (rotationAboutOrigin) {
+	// 	coordinates = rotateCoordinatesAboutPoint({
+	// 		point: origin,
+	// 		coordinates: coordinates,
+	// 		rotation: rotationAboutOrigin
+	// 	})
+	// }
 
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state.shared
 

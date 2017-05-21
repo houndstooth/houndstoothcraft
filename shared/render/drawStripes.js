@@ -3,7 +3,7 @@ import calculateAnIndividualStripesCoordinates from '../utilities/calculateAnInd
 import maybeRotateCoordinates from '../utilities/maybeRotateCoordinates'
 import calculateColor from '../../shared/utilities/calculateColor'
 
-export default ({ sizedUnit, center, origin, rotationAboutCenter, rotationAboutOrigin, colors, stripes }) => {
+export default ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes }) => {
 	stripes.forEach((currentPositionAlongPerimeter, index) => {
 		const color = calculateColor({ colors, index })
 		if (color.a == 0) return
@@ -15,7 +15,7 @@ export default ({ sizedUnit, center, origin, rotationAboutCenter, rotationAboutO
 			sizedUnit,
 			origin
 		})
-		coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter, rotationAboutOrigin })
+		coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
 
 		render({ color, coordinates })
 	})

@@ -7,9 +7,6 @@ export default {
         layerColor: null,
         layerRotation: 0
     },
-    ginghamChevronContinuumAnimated: {
-        thinningRate: 1 // shouldn't this just be replaced with the same as non-animated, and just be like the initial rate?
-    },
     houndazzle: {
         substripeCount: 16,
         dazzleContinuum: true
@@ -17,17 +14,25 @@ export default {
     shared: {
         canvasSize: 1000,
         unit: 1,
-        endIteration: 8,
+        endIteration: 5,
         gridSize: 11,
         tileSize: 100,
         colorA: BLACK,
         colorB: WHITE,
         stripeCount: {
             baseCount: 4,
+            // might be cool to try replacing this with a function, and when "off" it's just a function that always returns a simple baseCount
             ginghamChevronContinuum: {
                 on: true,
-                continuumStartsAtStripeCount: 3,
-                stripeCountIncreasePerDiagonal: 2
+                style: 'FLUID', //'ALIGNING', 
+                //note - fluid style overrides stripeStyle... how to account for this in this state model?
+                fluid: {
+                    thinningRate: 1
+                },
+                aligning: {
+                    continuumStartsAtStripeCount: 3,
+                    stripeCountIncreasePerDiagonal: 2
+                }
             },
         },
         switcheroo: false,
@@ -43,8 +48,8 @@ export default {
         // stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
     },
     animation: {
-        frameRate: 1000 / 60,
-        animating: false,
-        refreshCanvas: false
+        frameRate: 1000,
+        animating: true,
+        refreshCanvas: true
     }
 }

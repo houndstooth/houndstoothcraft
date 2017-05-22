@@ -1,5 +1,5 @@
 import state from '../state'
-const { colorA, colorB } = state.shared
+// const { colorA, colorB } = state.shared
 
 const STANDARD_SUPERTILE = [
 	[ "STRIPED_B", "SOLID_A" ],
@@ -7,10 +7,10 @@ const STANDARD_SUPERTILE = [
 ]
 
 const SQUARE_TYPE_TO_COLORS_MAPPING = {
-	"SOLID_A": [ colorA, colorA ],
-	"SOLID_B": [ colorB, colorB ],
-	"STRIPED_A": [ colorA, colorB ],
-	"STRIPED_B": [ colorB, colorA ]
+	"SOLID_A": [ 'colorA', 'colorA' ],
+	"SOLID_B": [ 'colorB', 'colorB' ],
+	"STRIPED_A": [ 'colorA', 'colorB' ],
+	"STRIPED_B": [ 'colorB', 'colorA' ]
 }
 
 const MINOR_DIAGONAL_OFFSET = 0

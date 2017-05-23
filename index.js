@@ -1,13 +1,13 @@
-import state from './state'
+import state from './shared/application/state'
 
-import setupState from './setupState'
+import setupState from './shared/application/setupState'
 import setupCanvas from './shared/render/setupCanvas'
 
-import iteration from './iteration/iteration'
-import prepareIterations from './iteration/prepare'
+import iterations from './shared/application/iterations'
+import prepareFunctionsPerStateProperty from './shared/application/prepareFunctionsPerStateProperty'
 
-import executePattern from './executePattern'
-import executeAnimation from './executeAnimation'
+import executePattern from './shared/application/executePattern'
+import executeAnimation from './shared/application/executeAnimation'
 
 // import standard from './standard/standard'
 // import cmyktooth from './cmyktooth/cmyktooth'
@@ -20,5 +20,5 @@ setupCanvas()
 const execute = state.animation.animating ? executeAnimation : executePattern
 execute({
 	pattern: houndsmorphosis,
-	iterations: prepareIterations({ iterationObject: iteration, nestedPropertyPath: [], iterations: [] })
+	iterations: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations})
 })

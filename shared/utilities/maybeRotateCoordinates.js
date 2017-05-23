@@ -1,5 +1,5 @@
-import state from '../../state'
-import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../constants'
+import state from '../application/state'
+import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../application/constants'
 import rotateCoordinatesAboutPoint from '../utilities/rotateCoordinatesAboutPoint'
 
 export default ({ coordinates, center, origin, rotationAboutCenter }) => {

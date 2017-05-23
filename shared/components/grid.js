@@ -1,5 +1,5 @@
 import iterator from '../utilities/iterator'
-import state from '../../state'
+import state from '../application/state'
 
 export default ({ tile }) => {
     const gridSize = state.shared.gridSize

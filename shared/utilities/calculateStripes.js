@@ -2,7 +2,7 @@ import iterator from './iterator'
 import calculateHarmonicContinuumSegmentStripe from '../../harmonitooth/utilities/calculateHarmonicContinuumSegmentStripe'
 import calculateHarmonicContinuumStripe from '../../harmonitooth/utilities/calculateHarmonicContinuumStripe'
 import calculateDerasterizedByAreaStripe from '../../derasterized/utilities/calculateDerasterizedByAreaStripe'
-import state from '../../state'
+import state from '../application/state'
 
 const PERIMETER_SCALAR = 2
 

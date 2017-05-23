@@ -1,10 +1,10 @@
-import animate from './animation/animate'
-import animation from './animation/animation'
-import prepareAnimations from './animation/prepare'
+import animations from './animations'
+import prepareFunctionsPerStateProperty from './prepareFunctionsPerStateProperty'
+import callFunctionsPerStateProperty from './callFunctionsPerStateProperty'
 
 import executeIteration from './executeIteration'
 
-import clear from './shared/render/clear'
+import clear from '../render/clear'
 
 import state from './state'
 import resetState from './resetState'
@@ -13,18 +13,19 @@ import resetState from './resetState'
 export default ({ pattern, iterations }) => {
 	const { frameRate, refreshCanvas } = state.animation
 
-	let animations = prepareAnimations({ animationObject: animation, nestedPropertyPath: [], animations: [] })
 	setInterval(() => {
 		if (refreshCanvas) clear()
 
 		if (state.iteration.iterating) {
 			const preIterationState = Object.assign({}, state)
 			executeIteration({ pattern, iterations })
-			resetState({ objectToResetStateTo: preIterationState})
+			resetState({ objectToResetStateTo: preIterationState })
 		} else {
 			pattern()
 		}
 
-		animate({ animations })
+		callFunctionsPerStateProperty({
+			functionObjects: prepareFunctionsPerStateProperty({ objectWithFunctions: animations })
+		})
 	}, frameRate)
 }

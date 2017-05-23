@@ -1,5 +1,5 @@
 import scalePoint from './scalePoint'
-import state from '../../state'
+import state from '../application/state'
 
 export default ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
 	const tileSize = state.shared.tileSize

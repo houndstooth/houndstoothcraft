@@ -1,5 +1,5 @@
 import state from './state'
-import iterate from './iteration/iterate'
+import callFunctionsPerStateProperty from './callFunctionsPerStateProperty'
 
 export default ({ pattern, iterations }) => {
 	const { startIteration, endIteration } = state.iteration
@@ -8,6 +8,6 @@ export default ({ pattern, iterations }) => {
 		if (n >= startIteration) {
 			pattern()
 		}
-		iterate({ iterations })
+		callFunctionsPerStateProperty({ functionObjects: iterations })
 	}
 }

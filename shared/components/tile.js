@@ -7,7 +7,7 @@ import isOnCanvas from '../utilities/isOnCanvas'
 import colorsAreTheSame from '../utilities/colorsAreTheSame'
 import calculateGinghamChevronContinuumStripeCount from '../../gingham-chevron-continuum/utilities/calculateGinghamChevronContinuumStripeCount'
 import calculateFluidGinghamChevronContinuumStripes from '../../gingham-chevron-continuum-animated/utilities/calculateFluidGinghamChevronContinuumStripes'
-import state from '../../state'
+import state from '../application/state'
 
 export default ({
 					origin: initialOrigin,

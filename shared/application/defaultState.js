@@ -1,4 +1,4 @@
-import { BLACK, TRANSPARENT } from './shared/render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
+import { BLACK, TRANSPARENT } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
 	cmyktooth: {

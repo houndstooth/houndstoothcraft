@@ -3,7 +3,7 @@ import supertileEntry from './supertileEntry'
 import calculateSupertile from './calculateSupertile'
 import mixColors from './mixColors'
 import maybeSwitcherooColors from './maybeSwitcherooColors'
-import state from '../../state'
+import state from '../application/state'
 import maybeRealignColors from '../../gingham-chevron-continuum-animated/utilities/maybeRealignColors'
 
 export default ({ origin, colors }) => {

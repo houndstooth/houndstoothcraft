@@ -1,5 +1,5 @@
 import ctx from './ctx'
-import state from '../../state'
+import state from '../application/state'
 
 export default () => {
     const canvasSize = state.shared.canvasSize

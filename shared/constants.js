@@ -1,6 +1,3 @@
-import state from '../state'
-// const { colorA, colorB } = state.shared
-
 const STANDARD_SUPERTILE = [
 	[ "STRIPED_B", "SOLID_A" ],
 	[ "SOLID_B", "STRIPED_A" ]

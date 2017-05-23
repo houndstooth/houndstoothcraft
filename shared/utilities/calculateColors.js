@@ -1,4 +1,4 @@
-import { SQUARE_TYPE_TO_COLORS_MAPPING } from '../constants'
+import convertSquareTypeToColors from './convertSquareTypeToColors'
 import supertileEntry from './supertileEntry'
 import calculateSupertile from './calculateSupertile'
 import mixColors from './mixColors'
@@ -13,16 +13,8 @@ export default ({ origin, colors }) => {
 
 	if (!colors) {
 		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
-
-		if (typeof entry === 'string') {
-			const colorKeys = SQUARE_TYPE_TO_COLORS_MAPPING[ entry ].slice()
-			colors = [ state.shared[ colorKeys[ 0 ] ], state.shared[ colorKeys[ 1 ] ] ]
-		} else {
-			colors = entry.slice()
-		}
+		colors = typeof entry === 'string' ? convertSquareTypeToColors({ squareType: entry }) : entry.slice()
 	}
-
-	// console.log(colors)
 
 	colors = flipGrain ? colors.reverse() : colors
 	colors = ginghamMode ? mixColors({ colors }) : colors

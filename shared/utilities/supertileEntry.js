@@ -1,1 +1,0 @@
-export default ({ supertile, origin }) => supertile[ origin[ 0 ] % supertile.length ][ origin[ 1 ] % supertile[ 0 ].length ]

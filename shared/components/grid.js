@@ -1,8 +1,8 @@
 import iterator from '../utilities/iterator'
-import state from '../application/state'
+import state from '../state/state'
 
 export default ({ tile }) => {
-    const gridSize = state.shared.gridSize
+	const gridSize = state.shared.gridSize
 	iterator(gridSize).forEach(x => {
 		iterator(gridSize).forEach(y => {
 			tile({ origin: [ x, y ] })

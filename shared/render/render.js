@@ -1,5 +1,10 @@
 import ctx from './ctx'
-import parseColor from './parseColor'
+
+const parseColor = ({ color }) => {
+	const { r, g, b, a } = color
+	let colorString = 'rgba(' + [ r, g, b, a ].join(', ') + ')'
+	return colorString
+}
 
 export default ({ color, coordinates, customContext }) => {
 	if (!coordinates.length) return

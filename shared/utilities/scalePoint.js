@@ -1,4 +1,4 @@
-import state from '../application/state'
+import state from '../state/state'
 
 export default ({ point, scaleFromGridCenter }) => {
 	const { unit, canvasSize } = state.shared

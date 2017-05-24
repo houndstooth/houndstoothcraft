@@ -1,4 +1,4 @@
-import state from '../application/state'
+import state from '../state/state'
 import canvas from './canvas'
 
 export default () => {

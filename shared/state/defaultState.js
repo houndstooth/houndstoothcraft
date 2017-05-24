@@ -1,13 +1,6 @@
 import { BLACK, TRANSPARENT } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
-	cmyktooth: {
-		startIteration: 0,
-		endIteration: 4,
-		cmykColorsMode: true,
-		layerColor: null,
-		layerRotation: 0
-	},
 	houndazzle: {
 		substripeCount: 16,
 		dazzleContinuum: true
@@ -47,7 +40,7 @@ export default {
 		gridRotationAboutCenter: 0,
 		opacity: 1,
 		supertileOffset: [ 0, 0 ],
-		originAtGridCenter: false,
+		offsetOrigin: [ 0, 0 ],
 		negativeGridToo: false,
 		stripeStyle: 'STANDARD'
 		// stripeStyle: 'DERASTERIZED_BY_AREA'

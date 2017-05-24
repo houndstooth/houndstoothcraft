@@ -1,12 +1,13 @@
 import setupCanvas from './shared/render/setupCanvas'
 import clear from './shared/render/clear'
+import defaultIterations from './shared/state/defaultIterations'
 import iterations from './shared/state/iterations'
+import overrideIterations from './shared/state/overrideIterations'
 import animations from './shared/state/animations'
 import defaultState from './shared/state/defaultState'
 import overrideState from './shared/state/overrideState'
 import state from './shared/state/state'
 import standard from './standard/standard'
-// import cmyktooth from './cmyktooth/cmyktooth'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
 
@@ -39,6 +40,14 @@ const accessStateObjectWithProperty = ({ nestedPropertyPath }) => {
 	return stateObjectWithProperty
 }
 
+const accessIterationsObjectWithProperty = ({ nestedPropertyPath }) => {
+	let iterationsObjectWithProperty = iterations
+	nestedPropertyPath.forEach(pathStep => {
+		iterationsObjectWithProperty = iterationsObjectWithProperty[ pathStep ]
+	})
+	return iterationsObjectWithProperty
+}
+
 const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
@@ -53,7 +62,13 @@ const resetState = ({ objectToResetStateTo }) => {
 	})
 }
 
-const prepareState = ({ stateOverridesObject, nestedPropertyPath }) => {
+const resetIterations = ({ objectToResetIterationsTo }) => {
+	Object.keys(objectToResetIterationsTo).forEach(key => {
+		iterations[ key ] = Object.assign({}, objectToResetIterationsTo[ key ])
+	})
+}
+
+const prepareState = ({ stateOverridesObject, nestedPropertyPath = [] }) => {
 	Object.entries(stateOverridesObject).forEach(([ propertyName, stateOverrideProperty ]) => {
 		if (typeof stateOverrideProperty === 'object') {
 			prepareState({
@@ -67,9 +82,28 @@ const prepareState = ({ stateOverridesObject, nestedPropertyPath }) => {
 	})
 }
 
+const prepareIterations = ({ iterationsOverridesObject, nestedPropertyPath = [] }) => {
+	Object.entries(iterationsOverridesObject).forEach(([ propertyName, iterationsOverrideProperty ]) => {
+		if (typeof iterationsOverrideProperty === 'object') {
+			prepareIterations({
+				iterationsOverridesObject: iterationsOverrideProperty,
+				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
+			})
+		} else {
+			let iterationsObjectWithProperty = accessIterationsObjectWithProperty({ nestedPropertyPath })
+			iterationsObjectWithProperty[ propertyName ] = iterationsOverrideProperty
+		}
+	})
+}
+
 const setupState = () => {
 	resetState({ objectToResetStateTo: defaultState })
-	prepareState({ stateOverridesObject: overrideState, nestedPropertyPath: [] })
+	prepareState({ stateOverridesObject: overrideState })
+}
+
+const setupIterations = () => {
+	resetIterations({ objectToResetIterationsTo: defaultIterations })
+	prepareIterations({ iterationsOverridesObject: overrideIterations })
 }
 
 const executeIteration = ({ pattern, iterations }) => {
@@ -114,6 +148,7 @@ const executeAnimation = ({ pattern, iterations }) => {
 }
 
 setupState()
+setupIterations()
 setupCanvas()
 
 const execute = state.animation.animating ? executeAnimation : executePattern

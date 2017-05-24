@@ -1,11 +1,4 @@
 export default {
-	cmyktooth: {
-		startIteration: null,
-		endIteration: null,
-		cmykColorsMode: null,
-		layerColor: null,
-		layerRotation: null
-	},
 	houndazzle: {
 		substripeCount: null,
 		dazzleContinuum: null
@@ -45,8 +38,11 @@ export default {
 		ginghamMode: null,
 		gongramColors: null,
 		gridRotationAboutCenter: p => p + Math.PI / 360,
+		opacity: null,
+		supertileOffset: null,
+		offsetOrigin: null,
+		negativeGridToo: null,
 		stripeStyle: null,
-		opacity: null
 	},
 	animation: {
 		frameRate: null,

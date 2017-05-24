@@ -233,7 +233,7 @@ const colorsAreTheSame = ({ colors }) => {
 }
 
 const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
-	const { tileSize, originAtGridCenter, canvasSize } = state.shared
+	const { tileSize, offsetOrigin, canvasSize } = state.shared
 
 	if (center) {
 		center = scalePoint({ point: center, scaleFromGridCenter })
@@ -252,11 +252,11 @@ const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center
 		console.log('neither origin nor center provided!')
 	}
 
-	if (originAtGridCenter) {
-		origin[ 0 ] += canvasSize / 2
-		origin[ 1 ] += canvasSize / 2
-		center[ 0 ] += canvasSize / 2
-		center[ 1 ] += canvasSize / 2
+	if (offsetOrigin) {
+		origin[ 0 ] += offsetOrigin[ 0 ]
+		origin[ 1 ] += offsetOrigin[ 1 ]
+		center[ 0 ] += offsetOrigin[ 0 ]
+		center[ 1 ] += offsetOrigin[ 1 ]
 	}
 
 	return { origin, center }

@@ -1,18 +1,19 @@
-// import { } from '../render/colors' // WHITE, BLACK, TRANSPARENT, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
-
-const CMYKTOOTH_SIZE = 1000
+import cmyktooth from '../../cmyktooth/cmyktooth'
+const GRID_SIZE = 31
+const OFFSET_GRID = GRID_SIZE % 2 === 0 ? (GRID_SIZE / 2) % 2 : ((GRID_SIZE + 1) / 2) % 2
 
 export default {
 	shared: {
-		tileSize: CMYKTOOTH_SIZE,
-		canvasSize: CMYKTOOTH_SIZE,
+		tileSize: cmyktooth.CMYKTOOTH_SIZE,
+		canvasSize: cmyktooth.CMYKTOOTH_SIZE,
+		gridSize: GRID_SIZE,
 		opacity: .5,
-		supertileOffset: [ 0, 1 ],
-		originAtGridCenter: true,
+		supertileOffset: [ OFFSET_GRID === 1 ? 0 : 1, OFFSET_GRID ],
 		negativeGridToo: true
 	},
 	iteration: {
 		iterating: true,
-		endIteration: 4
+		startIteration: 0,
+		endIteration: 16
 	}
 }

@@ -6,7 +6,10 @@ export default {
 	shared: {
 		tileSize: CMYKTOOTH_SIZE,
 		canvasSize: CMYKTOOTH_SIZE,
-		opacity: .5
+		opacity: .5,
+		supertileOffset: [ 0, 1 ],
+		originAtGridCenter: true,
+		negativeGridToo: true
 	},
 	iteration: {
 		iterating: true,

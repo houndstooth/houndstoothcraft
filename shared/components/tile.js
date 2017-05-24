@@ -233,7 +233,7 @@ const colorsAreTheSame = ({ colors }) => {
 }
 
 const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
-	const tileSize = state.shared.tileSize
+	const { tileSize, originAtGridCenter, canvasSize } = state.shared
 
 	if (center) {
 		center = scalePoint({ point: center, scaleFromGridCenter })
@@ -252,10 +252,26 @@ const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center
 		console.log('neither origin nor center provided!')
 	}
 
+	if (originAtGridCenter) {
+		origin[ 0 ] += canvasSize / 2
+		origin[ 1 ] += canvasSize / 2
+		center[ 0 ] += canvasSize / 2
+		center[ 1 ] += canvasSize / 2
+	}
+
 	return { origin, center }
 }
 
-const supertileEntry = ({ supertile, origin }) => supertile[ origin[ 0 ] % supertile.length ][ origin[ 1 ] % supertile[ 0 ].length ]
+const supertileEntry = ({ supertile, origin }) => {
+	const { supertileOffset } = state.shared
+	const supertileWidth = supertile.length
+	const supertileHeight = supertile[ 0 ].length
+	let x = origin[ 0 ] + supertileOffset[ 0 ]
+	let y = origin[ 1 ] + supertileOffset[ 1 ]
+	while (x < 0) x += supertileWidth
+	while (y < 0) y += supertileHeight
+	return supertile[ x % supertileWidth ][ y % supertileHeight ]
+}
 
 const calculateColors = ({ origin, colors }) => {
 	const { flipGrain, ginghamMode, switcheroo, stripeCount, opacity } = state.shared

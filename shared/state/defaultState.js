@@ -46,6 +46,9 @@ export default {
 		gongramColors: false,
 		gridRotationAboutCenter: 0,
 		opacity: 1,
+		supertileOffset: [ 0, 0 ],
+		originAtGridCenter: false,
+		negativeGridToo: false,
 		stripeStyle: 'STANDARD'
 		// stripeStyle: 'DERASTERIZED_BY_AREA'
 		// stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc

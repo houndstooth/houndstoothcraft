@@ -1,3 +1,7 @@
+let cmykIterator = 1
+import { BLACK, CYAN, MAGENTA, YELLOW } from '../render/colors'
+const CMYK_COLORS = [ YELLOW, BLACK, CYAN, MAGENTA ]
+
 export default {
 	cmyktooth: {
 		startIteration: null,
@@ -18,8 +22,11 @@ export default {
 		unit: null, //p => p * 1.005,
 		endIteration: null,
 		gridSize: null,
-		tileSize: null,
-		colorA: null,
+		tileSize: p => p / Math.sqrt(2),
+		colorA: () => {
+			cmykIterator++
+			return CMYK_COLORS[ cmykIterator % 4 ]
+		},
 		colorB: null,
 		stripeCount: {
 			baseCount: null,
@@ -41,9 +48,9 @@ export default {
 		baseStripeDiagonal: null,
 		ginghamMode: null,
 		gongramColors: null,
-		gridRotationAboutCenter: p => p + Math.PI / 4,
+		gridRotationAboutCenter: p => p + (Math.PI / 4),
 		stripeStyle: null,
-		opacity: null
+		opacity: () => 1 / (cmykIterator + 1)
 	},
 	animation: {
 		frameRate: null,

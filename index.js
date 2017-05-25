@@ -32,78 +32,52 @@ const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyP
 	return functionsArray
 }
 
-const accessStateObjectWithProperty = ({ nestedPropertyPath }) => {
-	let stateObjectWithProperty = state
+const accessChildObject = ({ parentObject, nestedPropertyPath }) => {
+	let childObject = parentObject
 	nestedPropertyPath.forEach(pathStep => {
-		stateObjectWithProperty = stateObjectWithProperty[ pathStep ]
+		childObject = childObject[ pathStep ]
 	})
-	return stateObjectWithProperty
-}
-
-const accessIterationsObjectWithProperty = ({ nestedPropertyPath }) => {
-	let iterationsObjectWithProperty = iterations
-	nestedPropertyPath.forEach(pathStep => {
-		iterationsObjectWithProperty = iterationsObjectWithProperty[ pathStep ]
-	})
-	return iterationsObjectWithProperty
+	return childObject
 }
 
 const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
-		let stateObjectToCallFunctionOn = accessStateObjectWithProperty({ nestedPropertyPath, propertyName })
+		let stateObjectToCallFunctionOn = accessChildObject({ parentObject: state, nestedPropertyPath })
 		stateObjectToCallFunctionOn[ propertyName ] = fn(stateObjectToCallFunctionOn[ propertyName ])
 	})
 }
 
-const resetState = ({ objectToResetStateTo }) => {
-	Object.keys(objectToResetStateTo).forEach(key => {
-		state[ key ] = Object.assign({}, objectToResetStateTo[ key ])
-	})
+// Because these objects are read-only at the top level due to being imported as modules,
+// as an inconvenience we must reassign each of their immediate keys.
+const resetObject = ({ objectToReset, objectToResetTo }) => {
+	Object.keys(objectToResetTo).forEach(key => objectToReset[ key ] = objectToResetTo[ key ])
 }
 
-const resetIterations = ({ objectToResetIterationsTo }) => {
-	Object.keys(objectToResetIterationsTo).forEach(key => {
-		iterations[ key ] = Object.assign({}, objectToResetIterationsTo[ key ])
-	})
-}
-
-const prepareState = ({ stateOverridesObject, nestedPropertyPath = [] }) => {
-	Object.entries(stateOverridesObject).forEach(([ propertyName, stateOverrideProperty ]) => {
-		if (typeof stateOverrideProperty === 'object') {
-			prepareState({
-				stateOverridesObject: stateOverrideProperty,
+const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
+	Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
+		if (typeof overridingProperty === 'object') {
+			applyOverrides({
+				objectWithPropertiesToOverride,
+				overrides: overridingProperty,
 				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
 			})
 		} else {
-			let stateObjectWithProperty = accessStateObjectWithProperty({ nestedPropertyPath })
-			stateObjectWithProperty[ propertyName ] = stateOverrideProperty
+			let objectWithPropertyToOverride = accessChildObject({ parentObject: objectWithPropertiesToOverride, nestedPropertyPath })
+			objectWithPropertyToOverride[ propertyName ] = overridingProperty
 		}
 	})
 }
 
-const prepareIterations = ({ iterationsOverridesObject, nestedPropertyPath = [] }) => {
-	Object.entries(iterationsOverridesObject).forEach(([ propertyName, iterationsOverrideProperty ]) => {
-		if (typeof iterationsOverrideProperty === 'object') {
-			prepareIterations({
-				iterationsOverridesObject: iterationsOverrideProperty,
-				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
-			})
-		} else {
-			let iterationsObjectWithProperty = accessIterationsObjectWithProperty({ nestedPropertyPath })
-			iterationsObjectWithProperty[ propertyName ] = iterationsOverrideProperty
-		}
-	})
+const setup = () => {
+	setupObject({ objectToSetup: state, defaults: defaultState, overrides: overrideState })
+	setupObject({ objectToSetup: iterations, defaults: defaultIterations, overrides: overrideIterations })
+	setupCanvas()
 }
 
-const setupState = () => {
-	resetState({ objectToResetStateTo: defaultState })
-	prepareState({ stateOverridesObject: overrideState })
-}
-
-const setupIterations = () => {
-	resetIterations({ objectToResetIterationsTo: defaultIterations })
-	prepareIterations({ iterationsOverridesObject: overrideIterations })
+const setupObject = ({ objectToSetup, defaults, overrides }) => {
+	resetObject({ objectToReset: objectToSetup, objectToResetTo: defaults })
+	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }
 
 const executeIteration = ({ pattern, iterations }) => {
@@ -136,7 +110,7 @@ const executeAnimation = ({ pattern, iterations }) => {
 		if (state.iteration.iterating) {
 			const preIterationState = Object.assign({}, state)
 			executeIteration({ pattern, iterations })
-			resetState({ objectToResetStateTo: preIterationState })
+			resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
 			pattern()
 		}
@@ -147,9 +121,7 @@ const executeAnimation = ({ pattern, iterations }) => {
 	}, frameRate)
 }
 
-setupState()
-setupIterations()
-setupCanvas()
+setup()
 
 const execute = state.animation.animating ? executeAnimation : executePattern
 execute({

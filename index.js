@@ -3,6 +3,8 @@ import clear from './shared/render/clear'
 import defaultIterations from './shared/state/defaultIterations'
 import iterations from './shared/state/iterations'
 import overrideIterations from './shared/state/overrideIterations'
+import overrideAnimations from './shared/state/overrideAnimations'
+import defaultAnimations from './shared/state/defaultAnimations'
 import animations from './shared/state/animations'
 import defaultState from './shared/state/defaultState'
 import overrideState from './shared/state/overrideState'
@@ -10,6 +12,7 @@ import state from './shared/state/state'
 import standard from './standard/standard'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
+import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 
 const deeperPath = ({ nestedPropertyPath, propertyName }) => {
 	const deeperPath = nestedPropertyPath.slice()
@@ -56,7 +59,7 @@ const resetObject = ({ objectToReset, objectToResetTo }) => {
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
 	Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
-		if (typeof overridingProperty === 'object') {
+		if (overridingProperty && typeof overridingProperty === 'object') {
 			applyOverrides({
 				objectWithPropertiesToOverride,
 				overrides: overridingProperty,
@@ -69,14 +72,32 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 	})
 }
 
-const setup = () => {
-	setupObject({ objectToSetup: state, defaults: defaultState, overrides: overrideState })
-	setupObject({ objectToSetup: iterations, defaults: defaultIterations, overrides: overrideIterations })
+const setup = ({ presets }) => {
+	const { presetState, presetIterations, presetAnimations } = processPresets({ presets })
+	setupObject({ objectToSetup: state, defaults: defaultState, presets: presetState, overrides: overrideState })
+	setupObject({ objectToSetup: iterations, defaults: defaultIterations, presets: presetIterations, overrides: overrideIterations })
+	setupObject({ objectToSetup: animations, defaults: defaultAnimations, presets: presetAnimations, overrides: overrideAnimations })
 	setupCanvas()
 }
 
-const setupObject = ({ objectToSetup, defaults, overrides }) => {
+const processPresets = ({ presets }) => {
+	// have one source of all null setup keys
+	const presetState = Object.assign({}, defaultState)
+	const presetIterations = Object.assign({}, defaultIterations)
+	const presetAnimations = Object.assign({}, defaultAnimations)
+
+	presets.forEach(preset => {
+		applyOverrides({ objectWithPropertiesToOverride: presetState, overrides: preset.state })
+		applyOverrides({ objectWithPropertiesToOverride: presetIterations, overrides: preset.iterations })
+		applyOverrides({ objectWithPropertiesToOverride: presetAnimations, overrides: preset.animations })
+	})
+
+	return { presetState, presetIterations, presetAnimations }
+}
+
+const setupObject = ({ objectToSetup, defaults, presets, overrides }) => {
 	resetObject({ objectToReset: objectToSetup, objectToResetTo: defaults })
+	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: presets })
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }
 
@@ -121,7 +142,7 @@ const executeAnimation = ({ pattern, iterations }) => {
 	}, frameRate)
 }
 
-setup()
+setup({ presets: [ cmyktoothPreset ]})
 
 const execute = state.animation.animating ? executeAnimation : executePattern
 execute({

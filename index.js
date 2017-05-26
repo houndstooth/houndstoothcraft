@@ -13,7 +13,8 @@ import state from './shared/state/state'
 import standard from './standard/standard'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
-import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
+// import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
+import ginghamChevronContinuumAnimatedPreset from './gingham-chevron-continuum-animated/ginghamChevronContinuumAnimatedPreset'
 
 const deeperPath = ({ nestedPropertyPath, propertyName }) => {
 	const deeperPath = nestedPropertyPath.slice()
@@ -83,10 +84,9 @@ const setup = ({ presets }) => {
 }
 
 const processPresets = ({ presets }) => {
-	// have one source of all null setup keys
-	const presetState = Object.assign({}, defaultState)
-	const presetIterations = Object.assign({}, defaultIterations)
-	const presetAnimations = Object.assign({}, defaultAnimations)
+	const presetState = {}
+	const presetIterations = {}
+	const presetAnimations = {}
 
 	presets.forEach(preset => {
 		applyOverrides({ objectWithPropertiesToOverride: presetState, overrides: preset.state })
@@ -152,8 +152,11 @@ const execute = ({ pattern }) => {
 }
 
 const animating = true
-const iterating = true
+const iterating = false
 const pattern = standard
-const presets = [ /*cmyktoothPreset*/ ]
+const presets = [
+	// cmyktoothPreset,
+	ginghamChevronContinuumAnimatedPreset
+]
 setup({ presets })
 execute({ pattern })

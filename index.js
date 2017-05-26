@@ -11,6 +11,8 @@ import overrideState from './shared/state/overrideState'
 import currentIteration from './shared/state/currentIteration'
 import state from './shared/state/state'
 import standard from './standard/standard'
+import canvas from './shared/render/canvas'
+import fileSaver from 'file-saver'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
@@ -137,10 +139,18 @@ const executePattern = ({ pattern, iterationFunctions }) => {
 	}
 }
 
+
 const executeAnimation = ({ pattern, iterationFunctions }) => {
 	const { frameRate, refreshCanvas } = state.animation
 
+	let lastSavedFrame = 0
+	let currentFrame = 0
 	setInterval(() => {
+		if (exportFrames) {
+			if (currentFrame > lastSavedFrame) return
+			currentFrame++
+		}
+
 		if (refreshCanvas) clear()
 
 		if (iterating) {
@@ -149,6 +159,13 @@ const executeAnimation = ({ pattern, iterationFunctions }) => {
 			resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
 			pattern()
+		}
+
+		if (exportFrames) {
+			canvas.toBlob(blob => {
+				lastSavedFrame++
+				fileSaver.saveAs(blob, lastSavedFrame + ".png")
+			})
 		}
 
 		callFunctionsPerStateProperty({
@@ -167,6 +184,7 @@ const execute = ({ pattern }) => {
 
 const animating = true
 const iterating = false
+const exportFrames = true
 const pattern = standard
 const presets = [
 	// cmyktoothPreset,

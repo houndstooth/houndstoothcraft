@@ -20,15 +20,11 @@ export default {
 			// might be cool to try replacing this with a function, and when "off" it's just a function that always returns a simple baseCount
 			ginghamChevronContinuum: {
 				on: false,
-				style: 'FLUID', //'ALIGNING', //
-				//note - fluid style overrides stripeStyle... how to account for this in this state model?
-				fluid: {
-					thinningRate: 1
-				},
-				aligning: {
-					continuumStartsAtStripeCount: 3,
-					stripeCountIncreasePerDiagonal: 2
-				}
+				thinningRate: 1,
+				// manualConfig: {
+				// 	continuumStartsAtStripeCount: 3,
+				// 	stripeCountIncreasePerDiagonal: 2
+				// }
 			},
 		},
 		switcheroo: false,

@@ -1,7 +1,6 @@
 import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET, STANDARD_SUPERTILE } from '../application/constants'
 import calculateDerasterizedByAreaStripe from '../../derasterized/calculateDerasterizedByAreaStripe'
-import calculateGinghamChevronContinuumStripeCount from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripeCount'
-import calculateFluidGinghamChevronContinuumStripes from '../../gingham-chevron-continuum-animated/calculateFluidGinghamChevronContinuumStripes'
+import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum-animated/calculateGinghamChevronContinuumStripes'
 import maybeRealignColors from '../../gingham-chevron-continuum-animated/maybeRealignColors'
 import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
 import calculateHarmonicContinuumSegmentStripe from '../../harmonitooth/calculateHarmonicContinuumSegmentStripe'
@@ -275,8 +274,6 @@ const supertileEntry = ({ supertile, origin }) => {
 
 const calculateColors = ({ origin, colors }) => {
 	const { flipGrain, ginghamMode, switcheroo, stripeCount, opacity } = state.shared
-	const { style, on } = stripeCount.ginghamChevronContinuum
-	const fluid = on && style === 'FLUID'
 
 	if (!colors) {
 		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
@@ -286,7 +283,7 @@ const calculateColors = ({ origin, colors }) => {
 	colors = flipGrain ? colors.reverse() : colors
 	colors = ginghamMode ? mixColors({ colors }) : colors
 	colors = switcheroo ? maybeSwitcherooColors({ colors, origin }) : colors
-	colors = fluid ? maybeRealignColors({ colors, origin }) : colors
+	colors = stripeCount.ginghamChevronContinuum.on ? maybeRealignColors({ colors, origin }) : colors
 
 	if (opacity < 1) {
 		let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]
@@ -357,13 +354,7 @@ export default ({
 		let stripes
 		let stripeCount = stateStripeCount.baseCount
 		if (stateStripeCount.ginghamChevronContinuum.on) {
-			if (stateStripeCount.ginghamChevronContinuum.style === 'ALIGNING') {
-				stripeCount = calculateGinghamChevronContinuumStripeCount({ origin: initialOrigin })
-			} else if (stateStripeCount.ginghamChevronContinuum.style === 'FLUID') {
-				// it's nice to do this at the tile level, but wasteful computationally
-				// maybe it's smart to cache the overall stripes answer locally, ie in this file
-				stripes = calculateFluidGinghamChevronContinuumStripes({ origin: initialOrigin })
-			}
+			stripes = calculateGinghamChevronContinuumStripes({ origin: initialOrigin })
 		}
 		stripes = stripes || calculateStripes({ stripeCount })
 

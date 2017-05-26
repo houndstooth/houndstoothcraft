@@ -8,6 +8,7 @@ import defaultAnimations from './shared/state/defaultAnimations'
 import animations from './shared/state/animations'
 import defaultState from './shared/state/defaultState'
 import overrideState from './shared/state/overrideState'
+import currentIteration from './shared/state/currentIteration'
 import state from './shared/state/state'
 import standard from './standard/standard'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
@@ -101,20 +102,19 @@ const setupObject = ({ objectToSetup, defaults, presets, overrides }) => {
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }
 
-const executeIteration = ({ pattern, iterations }) => {
+const executeIteration = ({ pattern, iterationFunctions }) => {
+	currentIteration.currentIteration = 0
 	const { startIteration, endIteration } = state.iteration
 
 	for (let n = 0; n <= endIteration; n++) {
-		if (n >= startIteration) {
-			pattern()
-		}
-		callFunctionsPerStateProperty({ functionObjects: iterations })
+		if (n >= startIteration) pattern()
+		callFunctionsPerStateProperty({ functionObjects: iterationFunctions })
 	}
 }
 
-const executePattern = ({ pattern, iterations }) => {
+const executePattern = ({ pattern, iterationFunctions }) => {
 	if (state.iteration.iterating) {
-		executeIteration({ pattern, iterations })
+		executeIteration({ pattern, iterationFunctions })
 	} else {
 		// console.time('pattern');
 		pattern()
@@ -122,15 +122,15 @@ const executePattern = ({ pattern, iterations }) => {
 	}
 }
 
-const executeAnimation = ({ pattern, iterations }) => {
+const executeAnimation = ({ pattern, iterationFunctions }) => {
 	const { frameRate, refreshCanvas } = state.animation
 
 	setInterval(() => {
 		if (refreshCanvas) clear()
 
 		if (state.iteration.iterating) {
-			const preIterationState = Object.assign({}, state)
-			executeIteration({ pattern, iterations })
+			const preIterationState = JSON.parse(JSON.stringify(state))
+			executeIteration({ pattern, iterationFunctions })
 			resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
 			pattern()
@@ -147,5 +147,5 @@ setup({ presets: [ cmyktoothPreset ]})
 const execute = state.animation.animating ? executeAnimation : executePattern
 execute({
 	pattern: standard,
-	iterations: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
+	iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
 })

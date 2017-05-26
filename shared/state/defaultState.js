@@ -44,7 +44,7 @@ export default {
 		negativeGridToo: false,
 		stripeStyle: 'STANDARD'
 		// stripeStyle: 'DERASTERIZED_BY_AREA'
-		// stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc
+		// stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc when doing aligning style
 		// stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
 	},
 	animation: {

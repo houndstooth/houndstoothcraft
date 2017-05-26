@@ -14,7 +14,8 @@ import standard from './standard/standard'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
-import ginghamChevronContinuumAnimatedPreset from './gingham-chevron-continuum-animated/ginghamChevronContinuumAnimatedPreset'
+// import ginghamChevronContinuumAnimatedPreset from './gingham-chevron-continuum-animated/ginghamChevronContinuumAnimatedPreset'
+import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 
 const deeperPath = ({ nestedPropertyPath, propertyName }) => {
 	const deeperPath = nestedPropertyPath.slice()
@@ -69,7 +70,10 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
 			})
 		} else {
-			let objectWithPropertyToOverride = accessChildObjectOrCreatePath({ parentObject: objectWithPropertiesToOverride, nestedPropertyPath })
+			let objectWithPropertyToOverride = accessChildObjectOrCreatePath({
+				parentObject: objectWithPropertiesToOverride,
+				nestedPropertyPath
+			})
 			objectWithPropertyToOverride[ propertyName ] = overridingProperty
 		}
 	})
@@ -78,8 +82,18 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 const setup = ({ presets }) => {
 	const { presetState, presetIterations, presetAnimations } = processPresets({ presets })
 	setupObject({ objectToSetup: state, defaults: defaultState, presets: presetState, overrides: overrideState })
-	setupObject({ objectToSetup: iterations, defaults: defaultIterations, presets: presetIterations, overrides: overrideIterations })
-	setupObject({ objectToSetup: animations, defaults: defaultAnimations, presets: presetAnimations, overrides: overrideAnimations })
+	setupObject({
+		objectToSetup: iterations,
+		defaults: defaultIterations,
+		presets: presetIterations,
+		overrides: overrideIterations
+	})
+	setupObject({
+		objectToSetup: animations,
+		defaults: defaultAnimations,
+		presets: presetAnimations,
+		overrides: overrideAnimations
+	})
 	setupCanvas()
 }
 
@@ -156,7 +170,8 @@ const iterating = false
 const pattern = standard
 const presets = [
 	// cmyktoothPreset,
-	ginghamChevronContinuumAnimatedPreset
+	// ginghamChevronContinuumAnimatedPreset,
+	harmonitoothPreset
 ]
 setup({ presets })
 execute({ pattern })

@@ -36,9 +36,10 @@ const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyP
 	return functionsArray
 }
 
-const accessChildObject = ({ parentObject, nestedPropertyPath }) => {
+const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => {
 	let childObject = parentObject
 	nestedPropertyPath.forEach(pathStep => {
+		if (!childObject[ pathStep ]) childObject[ pathStep ] = {}
 		childObject = childObject[ pathStep ]
 	})
 	return childObject
@@ -47,7 +48,7 @@ const accessChildObject = ({ parentObject, nestedPropertyPath }) => {
 const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
-		let stateObjectToCallFunctionOn = accessChildObject({ parentObject: state, nestedPropertyPath })
+		let stateObjectToCallFunctionOn = accessChildObjectOrCreatePath({ parentObject: state, nestedPropertyPath })
 		stateObjectToCallFunctionOn[ propertyName ] = fn(stateObjectToCallFunctionOn[ propertyName ])
 	})
 }
@@ -67,7 +68,7 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
 			})
 		} else {
-			let objectWithPropertyToOverride = accessChildObject({ parentObject: objectWithPropertiesToOverride, nestedPropertyPath })
+			let objectWithPropertyToOverride = accessChildObjectOrCreatePath({ parentObject: objectWithPropertiesToOverride, nestedPropertyPath })
 			objectWithPropertyToOverride[ propertyName ] = overridingProperty
 		}
 	})
@@ -113,7 +114,7 @@ const executeIteration = ({ pattern, iterationFunctions }) => {
 }
 
 const executePattern = ({ pattern, iterationFunctions }) => {
-	if (state.iteration.iterating) {
+	if (iterating) {
 		executeIteration({ pattern, iterationFunctions })
 	} else {
 		// console.time('pattern');
@@ -128,7 +129,7 @@ const executeAnimation = ({ pattern, iterationFunctions }) => {
 	setInterval(() => {
 		if (refreshCanvas) clear()
 
-		if (state.iteration.iterating) {
+		if (iterating) {
 			const preIterationState = JSON.parse(JSON.stringify(state))
 			executeIteration({ pattern, iterationFunctions })
 			resetObject({ objectToReset: state, objectToResetTo: preIterationState })
@@ -142,10 +143,17 @@ const executeAnimation = ({ pattern, iterationFunctions }) => {
 	}, frameRate)
 }
 
-setup({ presets: [ cmyktoothPreset ]})
+const execute = ({ pattern }) => {
+	const executionFunction = animating ? executeAnimation : executePattern
+	executionFunction({
+		pattern,
+		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
+	})
+}
 
-const execute = state.animation.animating ? executeAnimation : executePattern
-execute({
-	pattern: standard,
-	iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
-})
+const animating = true
+const iterating = true
+const pattern = standard
+const presets = [ /*cmyktoothPreset*/ ]
+setup({ presets })
+execute({ pattern })

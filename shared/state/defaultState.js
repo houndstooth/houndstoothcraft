@@ -48,12 +48,10 @@ export default {
 		// stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
 	},
 	animation: {
-		animating: false,
 		frameRate: 1000 / 60,
 		refreshCanvas: true
 	},
 	iteration: {
-		iterating: false,
 		startIteration: 0,
 		endIteration: 8
 	}

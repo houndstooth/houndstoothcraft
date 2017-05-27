@@ -17,13 +17,13 @@ export default {
 		colorB: TRANSPARENT,
 		stripeCount: {
 			baseCount: 4,
-			// might be cool to try replacing this with a function, and when "off" it's just a function that always returns a simple baseCount
 			ginghamChevronContinuum: {
 				on: false,
 				thinningRate: 1,
+				offset: 0,
 				// manualConfig: {
-				// 	continuumStartsAtStripeCount: 3,
-				// 	stripeCountIncreasePerDiagonal: 2
+				// 	continuumStartsAtStripeCount: 1,
+				// 	stripeCountIncreasePerDiagonal: 1
 				// }
 			},
 		},

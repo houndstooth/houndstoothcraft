@@ -19,12 +19,8 @@ export default {
 			baseCount: 4,
 			ginghamChevronContinuum: {
 				on: false,
-				thinningRate: 1,
-				offset: 0,
-				// manualConfig: {
-				// 	continuumStartsAtStripeCount: 1,
-				// 	stripeCountIncreasePerDiagonal: 1
-				// }
+				continuumStartsAtStripeCount: 1,
+				stripeCountIncreasePerDiagonal: 1
 			},
 		},
 		switcheroo: false,

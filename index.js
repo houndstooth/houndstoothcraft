@@ -16,7 +16,7 @@ import fileSaver from 'file-saver'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
-import ginghamChevronContinuumAnimatedPreset from './gingham-chevron-continuum-animated/ginghamChevronContinuumAnimatedPreset'
+import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 
 const deeperPath = ({ nestedPropertyPath, propertyName }) => {
@@ -187,7 +187,7 @@ const exportFrames = false
 const pattern = standard
 const presets = [
 	// cmyktoothPreset,
-	ginghamChevronContinuumAnimatedPreset,
+	ginghamChevronContinuumPreset,
 	// harmonitoothPreset
 ]
 setup({ presets })

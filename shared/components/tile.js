@@ -12,10 +12,12 @@ import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
 import scalePoint from '../utilities/scalePoint'
+import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
+import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 
 const PERIMETER_SCALAR = 2
 
-const calculateTile = ({ center, sizedUnit }) => {
+const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
 	return [
 		[
@@ -81,21 +83,80 @@ const maybeRotateCoordinates = ({ coordinates, center, /* origin,*/ rotationAbou
 	return coordinates
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes }) => {
-	stripes.forEach((currentPositionAlongPerimeter, index) => {
-		const color = calculateColor({ colors, index })
-		if (color.a === 0) return
-		const nextPositionAlongPerimeter = stripes[ index + 1 ] || 2
+const drawShape = ({
+					   substripeUnit,
+					   stripeUnit,
+					   underlyingColor,
+					   substripeIndex,
+					   colors,
+					   currentPositionAlongPerimeter,
+					   sizedUnit,
+					   stripeIndex,
+					   center,
+					   origin,
+					   rotationAboutCenter,
+					   coordinatesFunction,
+					   nextPositionAlongPerimeter
+				   }) => {
+	const color = calculateColor({ colors, stripeIndex, substripeIndex })
+	if (color.a === 0) return
 
-		let coordinates = calculateAnIndividualStripesCoordinates({
-			currentPositionAlongPerimeter,
-			nextPositionAlongPerimeter,
-			sizedUnit,
-			origin
-		})
-		coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
+	let coordinates = coordinatesFunction({
+		currentPositionAlongPerimeter,
+		nextPositionAlongPerimeter,
+		sizedUnit,
+		origin,
+		center,
+		substripeUnit,
+		stripeUnit,
+		underlyingColor,
+		substripeIndex,
+		stripeIndex
+	})
+	if (!coordinates) return
 
-		render({ color, coordinates })
+	coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
+	render({ color, coordinates })
+}
+
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount }) => {
+	const { substripeCount } = state.shared.colors.houndazzle
+	const substripeUnit = sizedUnit / substripeCount
+	const stripeUnit = sizedUnit * 2 / stripeCount
+	const underlyingColor = calculateColor({ colors, stripeIndex: 0 }) === state.shared.colors.colorA ? 0 : 1
+
+	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
+		if (state.shared.colors.houndazzle.on) {
+			iterator(substripeCount).forEach(substripeIndex => {
+				drawShape({
+					colors,
+					currentPositionAlongPerimeter,
+					sizedUnit,
+					stripeIndex,
+					center,
+					origin,
+					rotationAboutCenter,
+					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
+					substripeUnit,
+					stripeUnit,
+					underlyingColor,
+					substripeIndex
+				})
+			})
+		} else {
+			const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
+			drawShape({
+				colors,
+				currentPositionAlongPerimeter,
+				sizedUnit,
+				stripeIndex,
+				center,
+				origin,
+				rotationAboutCenter,
+				coordinatesFunction: calculateAnIndividualStripesCoordinates,
+				nextPositionAlongPerimeter
+			})
+		}
 	})
 }
 
@@ -163,17 +224,50 @@ const calculateAnIndividualStripesCoordinates = ({ currentPositionAlongPerimeter
 }
 
 const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) => {
-	let coordinates = calculateTile({ center, sizedUnit })
-	coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
-	render({ color, coordinates })
+	const { colorA, colorB } = state.shared.colors
+	const underlyingColor = color !== colorB ? 0 : 1
+	const { substripeCount } = state.shared.colors.houndazzle
+	const substripeUnit = sizedUnit / substripeCount
+
+	if (state.shared.colors.houndazzle.on) {
+		iterator(substripeCount).forEach(substripeIndex => {
+			drawShape({
+				substripeUnit,
+				substripeIndex,
+				stripeIndex: underlyingColor,
+				colors: [ colorA, colorB ],
+				origin,
+				sizedUnit,
+				rotationAboutCenter,
+				underlyingColor,
+				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates
+			})
+		})
+	} else {
+		drawShape({
+			colors: [ color, color ],
+			center,
+			sizedUnit,
+			origin,
+			rotationAboutCenter,
+			coordinatesFunction: calculateSquareCoordinates
+		})
+	}
 }
 
 const mixColors = ({ colors }) => {
 	let mixedColor = {}
 
-	mixedColor.r = Math.floor((colors[ 0 ].r || 0 + colors[ 1 ].r || 0) / 2)
-	mixedColor.g = Math.floor((colors[ 0 ].g || 0 + colors[ 1 ].g || 0) / 2)
-	mixedColor.b = Math.floor((colors[ 0 ].b || 0 + colors[ 1 ].b || 0) / 2)
+	const firstR = colors[ 0 ].r || 0
+	const firstG = colors[ 0 ].g || 0
+	const firstB = colors[ 0 ].b || 0
+	const secondR = colors[ 1 ].r || 0
+	const secondG = colors[ 1 ].g || 0
+	const secondB = colors[ 1 ].b || 0
+
+	mixedColor.r = Math.floor((firstR + secondR) / 2)
+	mixedColor.g = Math.floor((firstG + secondG) / 2)
+	mixedColor.b = Math.floor((firstB + secondB) / 2)
 	mixedColor.a = (colors[ 0 ].a + colors[ 1 ].a) / 2
 
 	return [ mixedColor, mixedColor ]
@@ -195,7 +289,7 @@ const maybeSwitcherooColors = ({ colors, origin }) => {
 }
 
 // const isOnCanvas = ({ center, sizedUnit }) => {
-// 	let vertices = calculateTile({ center, sizedUnit })
+// 	let vertices = calculateSquareCoordinates({ center, sizedUnit })
 //
 // 	const { canvasSize, gridRotationAboutCenter } = state.shared
 // 	const canvasCenter = [ canvasSize / 2, canvasSize / 2]
@@ -366,7 +460,8 @@ export default ({
 			origin,
 			rotationAboutCenter,
 			colors,
-			stripes
+			stripes,
+			stripeCount
 		})
 	}
 }

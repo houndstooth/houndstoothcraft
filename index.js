@@ -10,14 +10,15 @@ import defaultState from './shared/state/defaultState'
 import overrideState from './shared/state/overrideState'
 import currentIteration from './shared/state/currentIteration'
 import state from './shared/state/state'
-// import standard from './standard/standard'
+import standard from './standard/standard'
 import canvas from './shared/render/canvas'
 import fileSaver from 'file-saver'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
-import houndazzle from './houndazzle/houndazzle'
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 // import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
+import houndazzlePreset from './houndazzle/houndazzlePreset'
+// import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
 
 const deeperPath = ({ nestedPropertyPath, propertyName }) => {
 	const deeperPath = nestedPropertyPath.slice()
@@ -185,11 +186,13 @@ const execute = ({ pattern }) => {
 const animating = false
 const iterating = false
 const exportFrames = false
-const pattern = houndazzle
+const pattern = standard
 const presets = [
 	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
-	// harmonitoothPreset
+	// harmonitoothPreset,
+	houndazzlePreset,
+	// houndazzleContinuumPreset
 ]
 setup({ presets })
 // console.log(state)

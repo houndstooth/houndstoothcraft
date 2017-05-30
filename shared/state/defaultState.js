@@ -1,4 +1,4 @@
-import { BLACK, WHITE } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, TRANSPARENT
+import { BLACK, TRANSPARENT } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
 	houndsmorphosis: {
@@ -12,12 +12,12 @@ export default {
 		colors: {
 			gongramColors: false,
 			houndazzle: {
-				// on: false,
+				on: false,
 				substripeCount: 16,
-				dazzleContinuum: true // probably want to make this an object with { on, initial, delta } too
+				dazzleContinuum: false
 			},
 			colorA: BLACK,
-			colorB: WHITE,
+			colorB: TRANSPARENT,
 			colorAssignment: {
 				switcheroo: false,
 				flipGrain: false,

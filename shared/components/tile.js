@@ -119,11 +119,21 @@ const drawShape = ({
 	render({ color, coordinates })
 }
 
+const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
+	if (colorOne.r !== colorTwo.r) return false
+	if (colorOne.g !== colorTwo.g) return false
+	if (colorOne.b !== colorTwo.b) return false
+	return true
+}
+
 const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount }) => {
 	const { substripeCount } = state.shared.colors.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 	const stripeUnit = sizedUnit * 2 / stripeCount
-	const underlyingColor = calculateColor({ colors, stripeIndex: 0 }) === state.shared.colors.colorA ? 0 : 1
+
+	const colorOne = calculateColor({ colors, stripeIndex: 0 })
+	const colorTwo = state.shared.colors.colorA
+	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
 
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		if (state.shared.colors.houndazzle.on) {
@@ -235,7 +245,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 	const { colorA, colorB } = state.shared.colors
 	const colors = fadeColors({ colors: [ colorA, colorB ] })
 
-	const underlyingColor = color !== colorB ? 0 : 1
+	const underlyingColor = colorsAreTheSameHue({ colorOne: color, colorTwo: colorB }) ? 1 : 0
 	const { substripeCount } = state.shared.colors.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 

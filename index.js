@@ -14,7 +14,7 @@ import standard from './standard/standard'
 import canvas from './shared/render/canvas'
 import fileSaver from 'file-saver'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
-// import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
+import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 // import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 import houndazzlePreset from './houndazzle/houndazzlePreset'
@@ -184,11 +184,11 @@ const execute = ({ pattern }) => {
 }
 
 const animating = false
-const iterating = false
+const iterating = true
 const exportFrames = false
 const pattern = standard
 const presets = [
-	// cmyktoothPreset,
+	cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	houndazzlePreset,

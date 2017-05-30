@@ -438,7 +438,7 @@ export default ({
 
 	if (colorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
-		if (color.a === 0) return
+		if (color.a === 0 && !state.shared.colors.houndazzle.on) return
 		drawSquare({
 			sizedUnit,
 			center,

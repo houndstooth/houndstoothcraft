@@ -1,10 +1,6 @@
-import { BLACK, TRANSPARENT } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
+import { BLACK, WHITE } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, TRANSPARENT
 
 export default {
-	houndazzle: {
-		substripeCount: 16,
-		dazzleContinuum: true
-	},
 	houndsmorphosis: {
 		endIteration: 32
 	},
@@ -15,8 +11,13 @@ export default {
 		tileSize: 50,
 		colors: {
 			gongramColors: false,
+			houndazzle: {
+				// on: false,
+				substripeCount: 16,
+				dazzleContinuum: true // probably want to make this an object with { on, initial, delta } too
+			},
 			colorA: BLACK,
-			colorB: TRANSPARENT,
+			colorB: WHITE,
 			colorAssignment: {
 				switcheroo: false,
 				flipGrain: false,

@@ -8,14 +8,14 @@ import calculateHarmonicContinuumStripe from '../../harmonitooth/calculateHarmon
 import render from '../render/render'
 import state from '../state/state'
 import calculateColor from '../utilities/calculateColor'
-import convertSquareTypeToColors from '../utilities/convertSquareTypeToColors'
+import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
 import scalePoint from '../utilities/scalePoint'
 
 const PERIMETER_SCALAR = 2
 
-const calculateSquare = ({ center, sizedUnit }) => {
+const calculateTile = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
 	return [
 		[
@@ -163,7 +163,7 @@ const calculateAnIndividualStripesCoordinates = ({ currentPositionAlongPerimeter
 }
 
 const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) => {
-	let coordinates = calculateSquare({ center, sizedUnit })
+	let coordinates = calculateTile({ center, sizedUnit })
 	coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
 	render({ color, coordinates })
 }
@@ -195,7 +195,7 @@ const maybeSwitcherooColors = ({ colors, origin }) => {
 }
 
 // const isOnCanvas = ({ center, sizedUnit }) => {
-// 	let vertices = calculateSquare({ center, sizedUnit })
+// 	let vertices = calculateTile({ center, sizedUnit })
 //
 // 	const { canvasSize, gridRotationAboutCenter } = state.shared
 // 	const canvasCenter = [ canvasSize / 2, canvasSize / 2]
@@ -279,7 +279,7 @@ const calculateColors = ({ origin, colors }) => {
 
 	if (!colors) {
 		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
-		colors = typeof entry === 'string' ? convertSquareTypeToColors({ squareType: entry }) : entry.slice()
+		colors = typeof entry === 'string' ? convertTileTypeToColors({ tileType: entry }) : entry.slice()
 	}
 
 	colors = flipGrain ? colors.reverse() : colors

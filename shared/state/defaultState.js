@@ -16,7 +16,7 @@ export default {
 		colorA: BLACK,
 		colorB: TRANSPARENT,
 		stripeCount: {
-			ginghamMode: true,
+			ginghamMode: false,
 			baseCount: 4,
 			ginghamChevronContinuum: {
 				on: false,

@@ -181,7 +181,7 @@ const execute = ({ pattern }) => {
 	})
 }
 
-const animating = true
+const animating = false
 const iterating = false
 const exportFrames = false
 const pattern = standard

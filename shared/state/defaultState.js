@@ -16,6 +16,7 @@ export default {
 		colorA: BLACK,
 		colorB: TRANSPARENT,
 		stripeCount: {
+			ginghamMode: true,
 			baseCount: 4,
 			ginghamChevronContinuum: {
 				on: false,
@@ -27,7 +28,6 @@ export default {
 		flipGrain: false,
 		tileRotationAboutTileCenter: 0,
 		baseStripeDiagonal: 'MINOR', // 'PRINICIPAL' //then maybe within stripes there should be like a stripe orientation config
-		ginghamMode: false, //this should go into the stripes bucket, because it obviates them all
 		gongramColors: false,
 		gridRotationAboutCenter: 0,
 		opacity: 1,

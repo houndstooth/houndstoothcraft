@@ -171,9 +171,9 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 const mixColors = ({ colors }) => {
 	let mixedColor = {}
 
-	mixedColor.r = Math.floor((colors[ 0 ].r + colors[ 1 ].r) / 2)
-	mixedColor.g = Math.floor((colors[ 0 ].g + colors[ 1 ].g) / 2)
-	mixedColor.b = Math.floor((colors[ 0 ].b + colors[ 1 ].b) / 2)
+	mixedColor.r = Math.floor((colors[ 0 ].r || 0 + colors[ 1 ].r || 0) / 2)
+	mixedColor.g = Math.floor((colors[ 0 ].g || 0 + colors[ 1 ].g || 0) / 2)
+	mixedColor.b = Math.floor((colors[ 0 ].b || 0 + colors[ 1 ].b || 0) / 2)
 	mixedColor.a = (colors[ 0 ].a + colors[ 1 ].a) / 2
 
 	return [ mixedColor, mixedColor ]
@@ -273,7 +273,8 @@ const supertileEntry = ({ supertile, origin }) => {
 }
 
 const calculateColors = ({ origin, colors }) => {
-	const { flipGrain, ginghamMode, switcheroo, stripeCount, opacity } = state.shared
+	const { flipGrain, switcheroo, stripeCount, opacity } = state.shared
+	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
 		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
@@ -283,7 +284,7 @@ const calculateColors = ({ origin, colors }) => {
 	colors = flipGrain ? colors.reverse() : colors
 	colors = ginghamMode ? mixColors({ colors }) : colors
 	colors = switcheroo ? maybeSwitcherooColors({ colors, origin }) : colors
-	colors = stripeCount.ginghamChevronContinuum.on ? maybeRealignColors({ colors, origin }) : colors
+	colors = ginghamChevronContinuum.on ? maybeRealignColors({ colors, origin }) : colors
 
 	if (opacity < 1) {
 		let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]

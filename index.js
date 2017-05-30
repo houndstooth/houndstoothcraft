@@ -187,7 +187,7 @@ const exportFrames = false
 const pattern = standard
 const presets = [
 	// cmyktoothPreset,
-	ginghamChevronContinuumPreset,
+	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset
 ]
 setup({ presets })

@@ -13,8 +13,17 @@ export default {
 		unit: 1,
 		gridSize: 16,
 		tileSize: 50,
-		colorA: BLACK,
-		colorB: TRANSPARENT,
+		colors: {
+			gongramColors: false,
+			colorA: BLACK,
+			colorB: TRANSPARENT,
+			colorAssignment: {
+				switcheroo: false,
+				flipGrain: false,
+				supertileOffset: [ 0, 0 ]
+			},
+			opacity: 1
+		},
 		stripeCount: {
 			ginghamMode: false,
 			baseCount: 4,
@@ -22,16 +31,11 @@ export default {
 				on: false,
 				initial: 1,
 				delta: 1
-			},
+			}
 		},
-		switcheroo: false,
-		flipGrain: false,
 		tileRotationAboutTileCenter: 0,
 		baseStripeDiagonal: 'MINOR', // 'PRINICIPAL' //then maybe within stripes there should be like a stripe orientation config
-		gongramColors: false,
 		gridRotationAboutCenter: 0,
-		opacity: 1,
-		supertileOffset: [ 0, 0 ],
 		offsetOrigin: [ 0, 0 ],
 		negativeGridToo: false,
 		stripeStyle: 'STANDARD'

@@ -232,7 +232,7 @@ const colorsAreTheSame = ({ colors }) => {
 }
 
 const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
-	const { tileSize, offsetOrigin, canvasSize } = state.shared
+	const { tileSize, offsetOrigin } = state.shared
 
 	if (center) {
 		center = scalePoint({ point: center, scaleFromGridCenter })
@@ -262,7 +262,7 @@ const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center
 }
 
 const supertileEntry = ({ supertile, origin }) => {
-	const { supertileOffset } = state.shared
+	const { supertileOffset } = state.shared.colors.colorAssignment
 	const supertileWidth = supertile.length
 	const supertileHeight = supertile[ 0 ].length
 	let x = origin[ 0 ] + supertileOffset[ 0 ]
@@ -273,7 +273,8 @@ const supertileEntry = ({ supertile, origin }) => {
 }
 
 const calculateColors = ({ origin, colors }) => {
-	const { flipGrain, switcheroo, stripeCount, opacity } = state.shared
+	const { stripeCount, colors: stateColors } = state.shared
+	const { opacity, colorAssignment: { flipGrain, switcheroo } } = stateColors
 	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
@@ -315,7 +316,7 @@ const calculateStripes = ({ stripeCount }) => iterator(stripeCount).map(stripeIn
 	return stripe * PERIMETER_SCALAR
 })
 
-const calculateSupertile = () => state.shared.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
+const calculateSupertile = () => state.shared.colors.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
 
 export default ({
 					origin: initialOrigin,

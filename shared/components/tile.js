@@ -223,8 +223,18 @@ const calculateAnIndividualStripesCoordinates = ({ currentPositionAlongPerimeter
 	return coordinates
 }
 
+const fadeColors = ({ colors }) => {
+	const { opacity } = state.shared.colors
+	let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]
+	newColors[ 0 ].a = colors[ 0 ].a * opacity
+	newColors[ 1 ].a = colors[ 1 ].a * opacity
+	return newColors
+}
+
 const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) => {
 	const { colorA, colorB } = state.shared.colors
+	const colors = fadeColors({ colors: [ colorA, colorB ] })
+
 	const underlyingColor = color !== colorB ? 0 : 1
 	const { substripeCount } = state.shared.colors.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
@@ -235,7 +245,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 				substripeUnit,
 				substripeIndex,
 				stripeIndex: underlyingColor,
-				colors: [ colorA, colorB ],
+				colors,
 				origin,
 				sizedUnit,
 				rotationAboutCenter,
@@ -381,12 +391,7 @@ const calculateColors = ({ origin, colors }) => {
 	colors = switcheroo ? maybeSwitcherooColors({ colors, origin }) : colors
 	colors = ginghamChevronContinuum.on ? maybeRealignColors({ colors, origin }) : colors
 
-	if (opacity < 1) {
-		let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]
-		newColors[ 0 ].a = colors[ 0 ].a * opacity
-		newColors[ 1 ].a = colors[ 1 ].a * opacity
-		colors = newColors
-	}
+	if (opacity < 1) colors = fadeColors({ colors })
 
 	return colors
 }

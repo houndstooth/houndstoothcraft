@@ -136,6 +136,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
 
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
+		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.colors.houndazzle.on) {
 			iterator(substripeCount).forEach(substripeIndex => {
 				drawShape({
@@ -150,11 +151,11 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 					substripeUnit,
 					stripeUnit,
 					underlyingColor,
-					substripeIndex
+					substripeIndex,
+					nextPositionAlongPerimeter
 				})
 			})
 		} else {
-			const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
 			drawShape({
 				colors,
 				currentPositionAlongPerimeter,

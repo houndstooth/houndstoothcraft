@@ -15,8 +15,8 @@ import canvas from './shared/render/canvas'
 import fileSaver from 'file-saver'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 // import houndazzle from './houndazzle/houndazzle'
-// import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
-import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
+import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
+// import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 
 const deeperPath = ({ nestedPropertyPath, propertyName }) => {
@@ -120,12 +120,13 @@ const setupObject = ({ objectToSetup, defaults, presets, overrides }) => {
 }
 
 const executeIteration = ({ pattern, iterationFunctions }) => {
-	currentIteration.currentIteration = 0
+	currentIteration.i = 0
 	const { startIteration, endIteration } = state.iteration
 
 	for (let n = 0; n <= endIteration; n++) {
 		if (n >= startIteration) pattern()
 		callFunctionsPerStateProperty({ functionObjects: iterationFunctions })
+		currentIteration.i++
 	}
 }
 
@@ -182,11 +183,11 @@ const execute = ({ pattern }) => {
 }
 
 const animating = false
-const iterating = false
+const iterating = true
 const exportFrames = false
 const pattern = standard
 const presets = [
-	// cmyktoothPreset,
+	cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset
 ]

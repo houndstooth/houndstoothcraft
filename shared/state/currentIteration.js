@@ -1,3 +1,3 @@
 export default {
-    currentIteration: 0
+    i: 0
 }

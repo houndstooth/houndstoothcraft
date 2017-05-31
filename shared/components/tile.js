@@ -4,7 +4,7 @@ import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColo
 import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
 import render from '../render/render'
 import state from '../state/state'
-import calculateColor from '../utilities/calculateColor'
+import colorUtilities from '../utilities/colors'
 import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
@@ -94,7 +94,7 @@ const drawShape = ({
 					   coordinatesFunction,
 					   nextPositionAlongPerimeter
 				   }) => {
-	const color = calculateColor({ colors, stripeIndex, substripeIndex })
+	const color = colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
 	if (color.a === 0) return
 
 	let coordinates = coordinatesFunction({
@@ -127,7 +127,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 	const substripeUnit = sizedUnit / substripeCount
 	const stripeUnit = sizedUnit * 2 / stripeCount
 
-	const colorOne = calculateColor({ colors, stripeIndex: 0 })
+	const colorOne = colorUtilities.calculateColor({ colors, stripeIndex: 0 })
 	const colorTwo = state.shared.colors.colorA
 	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
 

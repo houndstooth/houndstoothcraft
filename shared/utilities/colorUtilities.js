@@ -1,5 +1,3 @@
-import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
-import { STANDARD_SUPERTILE, TILE_TYPE_TO_COLORS_INDICES_MAPPING } from '../application/constants'
 import state from '../state/state'
 import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
 
@@ -10,22 +8,18 @@ const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
 	return colors[ index ]
 }
 
-const convertTileTypeToColors = ({ tileType }) => {
-	const colorsIndices = TILE_TYPE_TO_COLORS_INDICES_MAPPING[ tileType ].slice()
-	return [
-		state.shared.color.colors[ colorsIndices[ 0 ] ],
-		state.shared.color.colors[ colorsIndices[ 1 ] ]
-	]
-}
-
 const calculateColors = ({ origin, colors }) => {
 	const { stripeCount, color } = state.shared
-	const { opacity, colorAssignment: { flipGrain, switcheroo } } = color
+	const { opacity, colors: stateColors, colorAssignment: { flipGrain, switcheroo, mode } } = color
 	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
-		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
-		colors = typeof entry === 'string' ? convertTileTypeToColors({ tileType: entry }) : entry.slice()
+		if (mode === 'SUPERTILE') {
+			const entry = supertileEntry({ origin })
+			colors = [ stateColors[ entry[ 0 ] ], stateColors[ entry[ 1 ] ] ]
+		} else if (mode === 'WEAVE') {
+			// implement later
+		}
 	}
 
 	colors = flipGrain ? colors.reverse() : colors
@@ -38,18 +32,16 @@ const calculateColors = ({ origin, colors }) => {
 	return colors
 }
 
-const supertileEntry = ({ supertile, origin }) => {
-	const { supertileOffset } = state.shared.color.colorAssignment
-	const supertileWidth = supertile.length
-	const supertileHeight = supertile[ 0 ].length
-	let x = origin[ 0 ] + supertileOffset[ 0 ]
-	let y = origin[ 1 ] + supertileOffset[ 1 ]
+const supertileEntry = ({ origin }) => {
+	const { offset, tiles } = state.shared.color.colorAssignment.supertile
+	const supertileWidth = tiles.length
+	const supertileHeight = tiles[ 0 ].length
+	let x = origin[ 0 ] + offset[ 0 ]
+	let y = origin[ 1 ] + offset[ 1 ]
 	while (x < 0) x += supertileWidth
 	while (y < 0) y += supertileHeight
-	return supertile[ x % supertileWidth ][ y % supertileHeight ]
+	return tiles[ x % supertileWidth ][ y % supertileHeight ]
 }
-
-const calculateSupertile = () => state.shared.color.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
 
 const mixColors = ({ colors }) => {
 	let mixedColor = {}
@@ -107,7 +99,6 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 
 export default {
 	calculateColor,
-	convertTileTypeToColors,
 	calculateColors,
 	fadeColors,
 	colorsAreTheSame,

@@ -1,6 +1,7 @@
 import render from '../render/render'
 import state from '../state/state'
 import iterator from '../utilities/iterator'
+import wrappedIndex from '../utilities/wrappedIndex'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import rotationUtilities from '../utilities/rotationUtilities'
@@ -8,26 +9,15 @@ import calculateStripes from '../utilities/calculateStripes'
 import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
+import calculateOrientations from '../../houndazzle/calculateOrientations'
 
 const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
 	return [
-		[
-			center[ 0 ] - halfSizedUnit,
-			center[ 1 ] - halfSizedUnit
-		],
-		[
-			center[ 0 ] + halfSizedUnit,
-			center[ 1 ] - halfSizedUnit
-		],
-		[
-			center[ 0 ] + halfSizedUnit,
-			center[ 1 ] + halfSizedUnit
-		],
-		[
-			center[ 0 ] - halfSizedUnit,
-			center[ 1 ] + halfSizedUnit
-		]
+		[ center[ 0 ] - halfSizedUnit, center[ 1 ] - halfSizedUnit ],
+		[ center[ 0 ] + halfSizedUnit, center[ 1 ] - halfSizedUnit ],
+		[ center[ 0 ] + halfSizedUnit, center[ 1 ] + halfSizedUnit ],
+		[ center[ 0 ] - halfSizedUnit, center[ 1 ] + halfSizedUnit ]
 	]
 }
 
@@ -96,18 +86,18 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 }
 
 const drawShape = ({
-					   origin,
-					   center,
-					   colors,
-						color,
-					   stripeIndex,
-					   substripeIndex,
-					   rotationAboutCenter,
-					   sizedUnit,
-					   coordinatesFunction,
-					   coordinatesFunctionArguments,
-				   }) => {
-	color = color || colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
+	origin,
+	center,
+	colors,
+	color,
+	stripeIndex,
+	substripeIndex,
+	rotationAboutCenter,
+	sizedUnit,
+	coordinatesFunction,
+	coordinatesFunctionArguments,
+}) => {
+	color = color || wrappedIndex({ array: colors, index: stripeIndex })
 	if (color.a === 0) return
 
 	let coordinates = coordinatesFunction({ origin, center, stripeIndex, substripeIndex, sizedUnit, coordinatesFunctionArguments })
@@ -117,10 +107,7 @@ const drawShape = ({
 	render({ color, coordinates })
 }
 
-const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, dazzleColor }) => {
-	// const { fadeColors } = colorUtilities
-	// const colors = fadeColors({ colors: state.shared.color.colors })
-
+const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, dazzleColor, orientation }) => {
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 
@@ -134,7 +121,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 				rotationAboutCenter,
 				sizedUnit,
 				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
-				coordinatesFunctionArguments: { substripeUnit }
+				coordinatesFunctionArguments: { substripeUnit, orientation }
 			})
 		})
 	} else {
@@ -149,7 +136,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 	}
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount, dazzleColors }) => {
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount, dazzleColors, orientations }) => {
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 	const stripeUnit = sizedUnit * 2 / stripeCount
@@ -157,6 +144,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.color.houndazzle.on) {
+			const orientation = orientations[stripeIndex % orientations.length]
 			iterator(substripeCount).forEach(substripeIndex => {
 				drawShape({
 					origin,
@@ -171,7 +159,8 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 						currentPositionAlongPerimeter,
 						nextPositionAlongPerimeter,
 						substripeUnit,
-						stripeUnit
+						stripeUnit,
+						orientation
 					}
 				})
 			})
@@ -216,11 +205,14 @@ export default ({
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
 	colors = calculateColors({ origin: initialOrigin, colors, color: state.shared.color })
-	const dazzleColors = calculateColors({ origin: initialOrigin, colors, color: state.shared.color.houndazzle.color })
+	let dazzleColors
+	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: state.shared.color.houndazzle.color })
+	const orientations = calculateOrientations({ origin: initialOrigin })
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
 		const dazzleColor = dazzleColors[ 0 ]
+		const orientation = orientations[ 0 ]
 		if (color.a === 0 && !state.shared.color.houndazzle.on) return
 		drawSquare({
 			sizedUnit,
@@ -228,7 +220,8 @@ export default ({
 			origin,
 			rotationAboutCenter,
 			color,
-			dazzleColor
+			dazzleColor,
+			orientation
 		})
 	} else {
 		let stripes
@@ -246,7 +239,8 @@ export default ({
 			colors,
 			stripes,
 			stripeCount,
-			dazzleColors
+			dazzleColors,
+			orientations
 		})
 	}
 }

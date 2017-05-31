@@ -1,13 +1,6 @@
 import state from '../state/state'
 import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
 
-const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
-	stripeIndex = stripeIndex || 0
-	substripeIndex = substripeIndex || 0
-	const index = ( stripeIndex + substripeIndex ) % colors.length
-	return colors[ index ]
-}
-
 const calculateWeaveColors = ({ origin, color }) => {
 	const { colors, colorAssignment } = color
 	const { offset, weave } = colorAssignment
@@ -16,6 +9,17 @@ const calculateWeaveColors = ({ origin, color }) => {
 		colors[ rows[ Math.abs((origin[ 1 ] + offset[ 0 ]) % rows.length) ] ],
 		colors[ columns[ Math.abs((origin[ 0 ] + offset[ 1 ]) % columns.length) ] ]
 	]
+}
+
+const calculateSupertileColors = ({ origin, color }) => {
+	const { colors, colorAssignment } = color
+	const { offset, supertile } = colorAssignment
+	const supertileWidth = supertile.length
+	const supertileHeight = supertile[ 0 ].length
+	let x = origin[ 0 ] + offset[ 0 ]
+	let y = origin[ 1 ] + offset[ 1 ]
+	const entry = supertile[ Math.abs(x % supertileWidth) ][ Math.abs(y % supertileHeight) ]
+	return entry.map(index => colors[ index ])
 }
 
 const calculateColors = ({ origin, colors, color }) => {
@@ -36,17 +40,6 @@ const calculateColors = ({ origin, colors, color }) => {
 	if (opacity < 1) colors = fadeColors({ colors })
 
 	return colors
-}
-
-const calculateSupertileColors = ({ origin, color }) => {
-	const { colors, colorAssignment } = color
-	const { offset, supertile } = colorAssignment
-	const supertileWidth = supertile.length
-	const supertileHeight = supertile[ 0 ].length
-	let x = origin[ 0 ] + offset[ 0 ]
-	let y = origin[ 1 ] + offset[ 1 ]
-	const entry = supertile[ Math.abs(x % supertileWidth) ][ Math.abs(y % supertileHeight) ]
-	return entry.map(index => colors[ index ])
 }
 
 const mixColors = ({ colors }) => {
@@ -103,9 +96,6 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 }
 
 export default {
-	calculateColor,
 	calculateColors,
-	fadeColors,
-	allColorsAreTheSame,
-	colorsAreTheSameHue
+	allColorsAreTheSame
 }

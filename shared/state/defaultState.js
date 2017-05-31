@@ -1,4 +1,4 @@
-import { BLACK, TRANSPARENT, STANDARD_SUPERTILE } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
+import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
 	houndsmorphosis: {
@@ -22,13 +22,8 @@ export default {
 				flipGrain: false,
 				mode: 'WEAVE', // 'SUPERTILE'
 				offset: [ 0, 0 ],
-				supertile: {
-					tiles: STANDARD_SUPERTILE
-				},
-				weave: {
-					rows: [ 0, 1 ],
-					columns: [ 1, 0 ]
-				}
+				supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
+				weave: { rows: [ 0, 1 ], columns: [ 1, 0 ] }
 			},
 			opacity: 1
 		},

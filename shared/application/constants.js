@@ -1,14 +1,3 @@
-const STANDARD_SUPERTILE = [
-	[
-		[ 1, 0 ],
-		[ 0, 0 ]
-	],
-	[
-		[ 1, 1 ],
-		[ 0, 1 ]
-	]
-]
-
 const MINOR_DIAGONAL_OFFSET = 0
 const PRINCIPAL_DIAGONAL_OFFSET = Math.PI / 2
 
@@ -25,7 +14,6 @@ const TRANSPARENT = { 'a': 0 }
 const PERIMETER_SCALAR = 2
 
 export {
-	STANDARD_SUPERTILE,
 	MINOR_DIAGONAL_OFFSET,
 	PRINCIPAL_DIAGONAL_OFFSET,
 	PERIMETER_SCALAR,

@@ -41,12 +41,11 @@ const calculateColors = ({ origin, colors }) => {
 const calculateSupertileColors = ({ origin }) => {
 	const { colors, colorAssignment } = state.shared.color
 	const { offset, supertile } = colorAssignment
-	const { tiles } = supertile
-	const supertileWidth = tiles.length
-	const supertileHeight = tiles[ 0 ].length
+	const supertileWidth = supertile.length
+	const supertileHeight = supertile[ 0 ].length
 	let x = origin[ 0 ] + offset[ 0 ]
 	let y = origin[ 1 ] + offset[ 1 ]
-	const entry = tiles[ Math.abs(x % supertileWidth) ][ Math.abs(y % supertileHeight) ]
+	const entry = supertile[ Math.abs(x % supertileWidth) ][ Math.abs(y % supertileHeight) ]
 	return entry.map(index => colors[ index ])
 }
 

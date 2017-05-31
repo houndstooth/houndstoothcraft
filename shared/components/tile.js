@@ -8,11 +8,10 @@ import calculateColor from '../utilities/calculateColor'
 import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
-import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
+import position from '../utilities/position'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import calculateStripes from '../utilities/calculateStripes'
-// import isOnCanvas from '../utilities/isOnCanvas'
 
 const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
@@ -357,6 +356,8 @@ export default ({
 
 	size = size || tileSize
 	const sizedUnit = size * unit
+
+	const { calculateOriginAndCenter /*, isOnCanvas */ } = position
 
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,

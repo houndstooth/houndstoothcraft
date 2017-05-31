@@ -1,10 +1,7 @@
 import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET, STANDARD_SUPERTILE } from '../application/constants'
-import calculateDerasterizedByAreaStripe from '../../derasterized/calculateDerasterizedByAreaStripe'
 import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
 import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
-import calculateHarmonicContinuumSegmentStripe from '../../harmonitooth/calculateHarmonicContinuumSegmentStripe'
-import calculateHarmonicContinuumStripe from '../../harmonitooth/calculateHarmonicContinuumStripe'
 import render from '../render/render'
 import state from '../state/state'
 import calculateColor from '../utilities/calculateColor'
@@ -14,9 +11,8 @@ import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
 import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
+import calculateStripes from '../utilities/calculateStripes'
 // import isOnCanvas from '../utilities/isOnCanvas'
-
-const PERIMETER_SCALAR = 2
 
 const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
@@ -346,25 +342,6 @@ const calculateColors = ({ origin, colors }) => {
 
 	return colors
 }
-
-const calculateStripes = ({ stripeCount }) => iterator(stripeCount).map(stripeIndex => {
-	const stripeStyle = state.shared.stripeStyle
-
-	let stripe
-	if (stripeStyle === 'DERASTERIZED_BY_AREA') {
-		stripe = calculateDerasterizedByAreaStripe({ stripeCount, stripeIndex })
-	} else if (stripeStyle === 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID') {
-		stripe = calculateHarmonicContinuumSegmentStripe({ stripeCount, stripeIndex })
-	} else if (stripeStyle === 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE') {
-		stripe = calculateHarmonicContinuumStripe({ stripeCount, stripeIndex })
-	} else if (stripeStyle === 'STANDARD') {
-		stripe = stripeIndex / stripeCount
-	} else {
-		console.log('stripe style not set!')
-	}
-
-	return stripe * PERIMETER_SCALAR
-})
 
 const calculateSupertile = () => state.shared.colors.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
 

@@ -23,11 +23,14 @@ const MAGENTA = { 'r': 255, 'g': 0, 'b': 255, 'a': 1 }
 const YELLOW = { 'r': 255, 'g': 255, 'b': 0, 'a': 1 }
 const TRANSPARENT = { 'a': 0 }
 
+const PERIMETER_SCALAR = 2
+
 export {
 	STANDARD_SUPERTILE,
 	MINOR_DIAGONAL_OFFSET,
 	PRINCIPAL_DIAGONAL_OFFSET,
 	TILE_TYPE_TO_COLORS_MAPPING,
+	PERIMETER_SCALAR,
 	BLACK,
 	WHITE,
 	RED,

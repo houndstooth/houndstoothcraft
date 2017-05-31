@@ -4,11 +4,11 @@ import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColo
 import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
 import render from '../render/render'
 import state from '../state/state'
-import colorUtilities from '../utilities/colors'
+import colorUtilities from '../utilities/colorUtilities'
 import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
-import position from '../utilities/position'
+import positionUtilities from '../utilities/positionUtilities'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import calculateStripes from '../utilities/calculateStripes'
@@ -357,7 +357,7 @@ export default ({
 	size = size || tileSize
 	const sizedUnit = size * unit
 
-	const { calculateOriginAndCenter /*, isOnCanvas */ } = position
+	const { calculateOriginAndCenter /*, isOnCanvas */ } = positionUtilities
 
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,

@@ -1,16 +1,15 @@
 import setupCanvas from './shared/render/setupCanvas'
 import clear from './shared/render/clear'
+import currentIteration from './shared/state/currentIteration'
 import defaultIterations from './shared/state/defaultIterations'
-import iterations from './shared/state/iterations'
 import overrideIterations from './shared/state/overrideIterations'
-import overrideAnimations from './shared/state/overrideAnimations'
+import iterations from './shared/state/iterations'
 import defaultAnimations from './shared/state/defaultAnimations'
+import overrideAnimations from './shared/state/overrideAnimations'
 import animations from './shared/state/animations'
 import defaultState from './shared/state/defaultState'
 import overrideState from './shared/state/overrideState'
-import currentIteration from './shared/state/currentIteration'
 import state from './shared/state/state'
-import standard from './standard/standard'
 import canvas from './shared/render/canvas'
 import fileSaver from 'file-saver'
 
@@ -177,7 +176,9 @@ const execute = ({ pattern }) => {
 	})
 }
 
-import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
+import standard from './standard/standard'
+// import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
+
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 // import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
@@ -187,7 +188,7 @@ import houndazzlePreset from './houndazzle/houndazzlePreset'
 const animating = false
 const iterating = false
 const exportFrames = false
-const pattern = houndsmorphosis
+const pattern = standard
 const presets = [
 	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,

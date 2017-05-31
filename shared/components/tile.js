@@ -1,16 +1,13 @@
-import { STANDARD_SUPERTILE } from '../application/constants'
-import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
-import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
-import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
 import render from '../render/render'
 import state from '../state/state'
-import colorUtilities from '../utilities/colorUtilities'
 import iterator from '../utilities/iterator'
+import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import rotationUtilities from '../utilities/rotationUtilities'
+import calculateStripes from '../utilities/calculateStripes'
+import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
-import calculateStripes from '../utilities/calculateStripes'
 
 const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
@@ -32,94 +29,6 @@ const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 			center[ 1 ] + halfSizedUnit
 		]
 	]
-}
-
-const drawShape = ({
-					   substripeUnit,
-					   stripeUnit,
-					   underlyingColor,
-					   substripeIndex,
-					   colors,
-					   currentPositionAlongPerimeter,
-					   sizedUnit,
-					   stripeIndex,
-					   center,
-					   origin,
-					   rotationAboutCenter,
-					   coordinatesFunction,
-					   nextPositionAlongPerimeter
-				   }) => {
-	const color = colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
-	if (color.a === 0) return
-
-	let coordinates = coordinatesFunction({
-		currentPositionAlongPerimeter,
-		nextPositionAlongPerimeter,
-		sizedUnit,
-		origin,
-		center,
-		substripeUnit,
-		stripeUnit,
-		underlyingColor,
-		substripeIndex,
-		stripeIndex
-	})
-	if (!coordinates) return
-
-	coordinates = rotationUtilities.maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
-	render({ color, coordinates })
-}
-
-const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
-	if (colorOne.r !== colorTwo.r) return false
-	if (colorOne.g !== colorTwo.g) return false
-	if (colorOne.b !== colorTwo.b) return false
-	return true
-}
-
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount }) => {
-	const { substripeCount } = state.shared.colors.houndazzle
-	const substripeUnit = sizedUnit / substripeCount
-	const stripeUnit = sizedUnit * 2 / stripeCount
-
-	const colorOne = colorUtilities.calculateColor({ colors, stripeIndex: 0 })
-	const colorTwo = state.shared.colors.colorA
-	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
-
-	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
-		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
-		if (state.shared.colors.houndazzle.on) {
-			iterator(substripeCount).forEach(substripeIndex => {
-				drawShape({
-					colors,
-					currentPositionAlongPerimeter,
-					sizedUnit,
-					stripeIndex,
-					center,
-					origin,
-					rotationAboutCenter,
-					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
-					substripeUnit,
-					stripeUnit,
-					underlyingColor,
-					substripeIndex,
-					nextPositionAlongPerimeter
-				})
-			})
-		} else {
-			drawShape({
-				colors,
-				currentPositionAlongPerimeter,
-				sizedUnit,
-				stripeIndex,
-				center,
-				origin,
-				rotationAboutCenter,
-				coordinatesFunction: calculateStripeCoordinates,
-				nextPositionAlongPerimeter
-			})
-		}
-	})
 }
 
 const calculateStripeCoordinates = ({ currentPositionAlongPerimeter, nextPositionAlongPerimeter, sizedUnit, origin }) => {
@@ -185,16 +94,45 @@ const calculateStripeCoordinates = ({ currentPositionAlongPerimeter, nextPositio
 	return coordinates
 }
 
-const fadeColors = ({ colors }) => {
-	const { opacity } = state.shared.colors
-	let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]
-	newColors[ 0 ].a = colors[ 0 ].a * opacity
-	newColors[ 1 ].a = colors[ 1 ].a * opacity
-	return newColors
+const drawShape = ({
+					   substripeUnit,
+					   stripeUnit,
+					   underlyingColor,
+					   substripeIndex,
+					   colors,
+					   currentPositionAlongPerimeter,
+					   sizedUnit,
+					   stripeIndex,
+					   center,
+					   origin,
+					   rotationAboutCenter,
+					   coordinatesFunction,
+					   nextPositionAlongPerimeter
+				   }) => {
+	const color = colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
+	if (color.a === 0) return
+
+	let coordinates = coordinatesFunction({
+		currentPositionAlongPerimeter,
+		nextPositionAlongPerimeter,
+		sizedUnit,
+		origin,
+		center,
+		substripeUnit,
+		stripeUnit,
+		underlyingColor,
+		substripeIndex,
+		stripeIndex
+	})
+	if (!coordinates) return
+
+	coordinates = rotationUtilities.maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
+	render({ color, coordinates })
 }
 
 const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) => {
 	const { colorA, colorB } = state.shared.colors
+	const { fadeColors, colorsAreTheSameHue } = colorUtilities
 	const colors = fadeColors({ colors: [ colorA, colorB ] })
 
 	const underlyingColor = colorsAreTheSameHue({ colorOne: color, colorTwo: colorB }) ? 1 : 0
@@ -227,77 +165,51 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 	}
 }
 
-const mixColors = ({ colors }) => {
-	let mixedColor = {}
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount }) => {
+	const { substripeCount } = state.shared.colors.houndazzle
+	const substripeUnit = sizedUnit / substripeCount
+	const stripeUnit = sizedUnit * 2 / stripeCount
+	const { calculateColor, colorsAreTheSameHue } = colorUtilities
 
-	const firstR = colors[ 0 ].r || 0
-	const firstG = colors[ 0 ].g || 0
-	const firstB = colors[ 0 ].b || 0
-	const secondR = colors[ 1 ].r || 0
-	const secondG = colors[ 1 ].g || 0
-	const secondB = colors[ 1 ].b || 0
+	const colorOne = calculateColor({ colors, stripeIndex: 0 })
+	const colorTwo = state.shared.colors.colorA
+	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
 
-	mixedColor.r = Math.floor((firstR + secondR) / 2)
-	mixedColor.g = Math.floor((firstG + secondG) / 2)
-	mixedColor.b = Math.floor((firstB + secondB) / 2)
-	mixedColor.a = (colors[ 0 ].a + colors[ 1 ].a) / 2
-
-	return [ mixedColor, mixedColor ]
+	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
+		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
+		if (state.shared.colors.houndazzle.on) {
+			iterator(substripeCount).forEach(substripeIndex => {
+				drawShape({
+					colors,
+					currentPositionAlongPerimeter,
+					sizedUnit,
+					stripeIndex,
+					center,
+					origin,
+					rotationAboutCenter,
+					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
+					substripeUnit,
+					stripeUnit,
+					underlyingColor,
+					substripeIndex,
+					nextPositionAlongPerimeter
+				})
+			})
+		} else {
+			drawShape({
+				colors,
+				currentPositionAlongPerimeter,
+				sizedUnit,
+				stripeIndex,
+				center,
+				origin,
+				rotationAboutCenter,
+				coordinatesFunction: calculateStripeCoordinates,
+				nextPositionAlongPerimeter
+			})
+		}
+	})
 }
-
-const maybeSwitcherooColors = ({ colors, origin }) => {
-	const xMod = origin[ 0 ] % 4
-	const yMod = origin[ 1 ] % 4
-	if (
-		(xMod === 1 && yMod === 1) ||
-		(xMod === 3 && yMod === 3) ||
-		(xMod === 2 && yMod === 0) ||
-		(xMod === 0 && yMod === 2)
-	) {
-		return colors.reverse()
-	}
-
-	return colors
-}
-
-const colorsAreTheSame = ({ colors }) => {
-	const colorOne = colors[ 0 ]
-	const colorTwo = colors[ 1 ]
-	return colorOne.a === colorTwo.a && colorsAreTheSameHue({ colorOne, colorTwo })
-}
-
-const supertileEntry = ({ supertile, origin }) => {
-	const { supertileOffset } = state.shared.colors.colorAssignment
-	const supertileWidth = supertile.length
-	const supertileHeight = supertile[ 0 ].length
-	let x = origin[ 0 ] + supertileOffset[ 0 ]
-	let y = origin[ 1 ] + supertileOffset[ 1 ]
-	while (x < 0) x += supertileWidth
-	while (y < 0) y += supertileHeight
-	return supertile[ x % supertileWidth ][ y % supertileHeight ]
-}
-
-const calculateColors = ({ origin, colors }) => {
-	const { stripeCount, colors: stateColors } = state.shared
-	const { opacity, colorAssignment: { flipGrain, switcheroo } } = stateColors
-	const { ginghamMode, ginghamChevronContinuum } = stripeCount
-
-	if (!colors) {
-		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
-		colors = typeof entry === 'string' ? colorUtilities.convertTileTypeToColors({ tileType: entry }) : entry.slice()
-	}
-
-	colors = flipGrain ? colors.reverse() : colors
-	colors = ginghamMode ? mixColors({ colors }) : colors
-	colors = switcheroo ? maybeSwitcherooColors({ colors, origin }) : colors
-	colors = ginghamChevronContinuum.on ? maybeRealignColors({ colors, origin }) : colors
-
-	if (opacity < 1) colors = fadeColors({ colors })
-
-	return colors
-}
-
-const calculateSupertile = () => state.shared.colors.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
 
 export default ({
 					origin: initialOrigin,
@@ -313,6 +225,7 @@ export default ({
 	const sizedUnit = size * unit
 
 	const { calculateOriginAndCenter /*, isOnCanvas */ } = transpositionUtilities
+	const { calculateColors, colorsAreTheSame } = colorUtilities
 
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,

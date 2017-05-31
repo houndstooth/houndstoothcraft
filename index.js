@@ -177,19 +177,19 @@ const execute = ({ pattern }) => {
 	})
 }
 
-// import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
-import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
+import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
+// import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 // import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 import houndazzlePreset from './houndazzle/houndazzlePreset'
 // import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
 
 const animating = false
-const iterating = true
+const iterating = false
 const exportFrames = false
-const pattern = standard
+const pattern = houndsmorphosis
 const presets = [
-	cmyktoothPreset,
+	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	houndazzlePreset,

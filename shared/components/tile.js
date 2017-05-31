@@ -5,7 +5,6 @@ import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
 import render from '../render/render'
 import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
-import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import rotationUtilities from '../utilities/rotationUtilities'
@@ -285,7 +284,7 @@ const calculateColors = ({ origin, colors }) => {
 
 	if (!colors) {
 		const entry = supertileEntry({ origin, supertile: calculateSupertile() })
-		colors = typeof entry === 'string' ? convertTileTypeToColors({ tileType: entry }) : entry.slice()
+		colors = typeof entry === 'string' ? colorUtilities.convertTileTypeToColors({ tileType: entry }) : entry.slice()
 	}
 
 	colors = flipGrain ? colors.reverse() : colors

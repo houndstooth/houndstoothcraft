@@ -186,13 +186,13 @@ import houndazzlePreset from './houndazzle/houndazzlePreset'
 import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
 import gongramPreset from './gongram/gongramPreset'
 
-const animating = false
+const animating = true
 const iterating = false
 const exportFrames = false
 const pattern = standard
 const presets = [
 	// cmyktoothPreset,
-	// ginghamChevronContinuumPreset,
+	ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	houndazzlePreset,
 	// gongramPreset,

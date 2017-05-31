@@ -1,7 +1,8 @@
 import state from '../state/state'
 import wrappedIndex from './wrappedIndex'
+import maybeRealign from '../../gingham-chevron-continuum/maybeRealign'
 
-const calculateSetForTile = ({ origin, grid }) => {
+const calculateSetForTile = ({ origin, grid, gccOn }) => {
     const { set, assignment } = grid
     const { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
@@ -23,6 +24,7 @@ const calculateSetForTile = ({ origin, grid }) => {
 
     setForTile = flipGrain ? setForTile.reverse() : setForTile
     setForTile = switcheroo ? maybeSwitcheroo({ setForTile, origin }) : setForTile
+    setForTile = gccOn ? maybeRealign({ setForTile, origin }) : setForTile
 
     return setForTile
 }

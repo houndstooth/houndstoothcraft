@@ -1,20 +1,11 @@
 import state from '../state/state'
-import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
 import gridUtilities from './gridUtilities'
 
 const calculateColors = ({ origin, colors, color }) => {
 	const { ginghamMode, ginghamChevronContinuum } = state.shared.stripeCount
 
-	if (!colors) {
-		colors = gridUtilities.calculateSetForTile({ origin, grid: color })
-	}
-
-	if (ginghamMode) {
-		colors = mixColors({ colors })
-	} else if (ginghamChevronContinuum.on) {
-		colors = maybeRealignColors({ colors, origin })
-	}
-	
+	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: color, gccOn: ginghamChevronContinuum.on })
+	if (ginghamMode) colors = mixColors({ colors })
 	if (color.opacity < 1) colors = fadeColors({ colors })
 
 	return colors

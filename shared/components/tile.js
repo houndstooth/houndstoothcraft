@@ -206,10 +206,12 @@ export default ({
 
 	colors = calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
+	const gccOn = stateStripeCount.ginghamChevronContinuum.on
+
 	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
 	let dazzleColors
 	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })
-	const orientations = gridUtilities.calculateSetForTile({ origin: initialOrigin, grid: stateOrientation })
+	const orientations = gridUtilities.calculateSetForTile({ origin: initialOrigin, grid: stateOrientation, gccOn })
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
@@ -228,7 +230,7 @@ export default ({
 	} else {
 		let stripes
 		let stripeCount = stateStripeCount.baseCount
-		if (stateStripeCount.ginghamChevronContinuum.on) {
+		if (gccOn) {
 			stripes = calculateGinghamChevronContinuumStripes({ origin: initialOrigin })
 		}
 		stripes = stripes || calculateStripes({ stripeCount })

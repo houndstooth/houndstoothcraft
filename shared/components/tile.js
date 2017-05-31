@@ -1,4 +1,4 @@
-import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET, STANDARD_SUPERTILE } from '../application/constants'
+import { STANDARD_SUPERTILE } from '../application/constants'
 import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
 import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
@@ -7,8 +7,8 @@ import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
 import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
-import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
-import positionUtilities from '../utilities/positionUtilities'
+import transpositionUtilities from '../utilities/transpositionUtilities'
+import rotationUtilities from '../utilities/rotationUtilities'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import calculateStripes from '../utilities/calculateStripes'
@@ -33,50 +33,6 @@ const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 			center[ 1 ] + halfSizedUnit
 		]
 	]
-}
-
-const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
-	return coordinates.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
-}
-
-const maybeRotateCoordinates = ({ coordinates, center, /* origin,*/ rotationAboutCenter }) => {
-	if (rotationAboutCenter) {
-		coordinates = rotateCoordinatesAboutPoint({
-			point: center,
-			coordinates: coordinates,
-			rotation: rotationAboutCenter
-		})
-	}
-
-	// if (rotationAboutOrigin) {
-	// 	coordinates = rotateCoordinatesAboutPoint({
-	// 		point: origin,
-	// 		coordinates: coordinates,
-	// 		rotation: rotationAboutOrigin
-	// 	})
-	// }
-
-	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state.shared
-
-	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const extraRotation = offset + tileRotationAboutTileCenter
-	if (extraRotation !== 0) {
-		coordinates = rotateCoordinatesAboutPoint({
-			point: center,
-			coordinates: coordinates,
-			rotation: extraRotation
-		})
-	}
-
-	if (gridRotationAboutCenter) {
-		coordinates = rotateCoordinatesAboutPoint({
-			point: [ canvasSize / 2, canvasSize / 2 ],
-			coordinates: coordinates,
-			rotation: gridRotationAboutCenter
-		})
-	}
-
-	return coordinates
 }
 
 const drawShape = ({
@@ -111,7 +67,7 @@ const drawShape = ({
 	})
 	if (!coordinates) return
 
-	coordinates = maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
+	coordinates = rotationUtilities.maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
 	render({ color, coordinates })
 }
 
@@ -357,7 +313,7 @@ export default ({
 	size = size || tileSize
 	const sizedUnit = size * unit
 
-	const { calculateOriginAndCenter /*, isOnCanvas */ } = positionUtilities
+	const { calculateOriginAndCenter /*, isOnCanvas */ } = transpositionUtilities
 
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,

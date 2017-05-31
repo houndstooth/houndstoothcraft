@@ -116,7 +116,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 			drawShape({
 				origin,
 				center,
-				color: substripeIndex % 2 === 0 ? color : dazzleColor,
+				color: substripeIndex % 2 === 1 ? color : dazzleColor,
 				substripeIndex,
 				rotationAboutCenter,
 				sizedUnit,

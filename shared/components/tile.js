@@ -31,7 +31,8 @@ const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	]
 }
 
-const calculateStripeCoordinates = ({ currentPositionAlongPerimeter, nextPositionAlongPerimeter, sizedUnit, origin }) => {
+const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArguments }) => {
+	const { currentPositionAlongPerimeter, nextPositionAlongPerimeter } = coordinatesFunctionArguments
 	let coordinates = []
 
 	if (currentPositionAlongPerimeter <= 1) {
@@ -95,35 +96,20 @@ const calculateStripeCoordinates = ({ currentPositionAlongPerimeter, nextPositio
 }
 
 const drawShape = ({
-					   substripeUnit,
-					   stripeUnit,
-					   underlyingColor,
-					   substripeIndex,
-					   colors,
-					   currentPositionAlongPerimeter,
-					   sizedUnit,
-					   stripeIndex,
-					   center,
 					   origin,
+					   center,
+					   colors,
+					   stripeIndex,
+					   substripeIndex,
 					   rotationAboutCenter,
+					   sizedUnit,
 					   coordinatesFunction,
-					   nextPositionAlongPerimeter
+					   coordinatesFunctionArguments
 				   }) => {
 	const color = colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
 	if (color.a === 0) return
 
-	let coordinates = coordinatesFunction({
-		currentPositionAlongPerimeter,
-		nextPositionAlongPerimeter,
-		sizedUnit,
-		origin,
-		center,
-		substripeUnit,
-		stripeUnit,
-		underlyingColor,
-		substripeIndex,
-		stripeIndex
-	})
+	let coordinates = coordinatesFunction({ origin, center, stripeIndex, substripeIndex, sizedUnit, coordinatesFunctionArguments })
 	if (!coordinates) return
 
 	coordinates = rotationUtilities.maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
@@ -142,25 +128,26 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 	if (state.shared.colors.houndazzle.on) {
 		iterator(substripeCount).forEach(substripeIndex => {
 			drawShape({
-				substripeUnit,
-				substripeIndex,
-				stripeIndex: underlyingColor,
-				colors,
 				origin,
-				sizedUnit,
+				center,
+				colors,
+				stripeIndex: underlyingColor,
+				substripeIndex,
 				rotationAboutCenter,
+				sizedUnit,
 				underlyingColor,
-				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates
+				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
+				coordinatesFunctionArguments: { substripeUnit, underlyingColor }
 			})
 		})
 	} else {
 		drawShape({
-			colors: [ color, color ],
-			center,
-			sizedUnit,
 			origin,
+			center,
+			colors: [ color, color ],
 			rotationAboutCenter,
-			coordinatesFunction: calculateSquareCoordinates
+			sizedUnit,
+			coordinatesFunction: calculateSquareCoordinates,
 		})
 	}
 }
@@ -180,32 +167,33 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 		if (state.shared.colors.houndazzle.on) {
 			iterator(substripeCount).forEach(substripeIndex => {
 				drawShape({
+					origin,
+					center,
 					colors,
-					currentPositionAlongPerimeter,
+					rotationAboutCenter,
 					sizedUnit,
 					stripeIndex,
-					center,
-					origin,
-					rotationAboutCenter,
-					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
-					substripeUnit,
-					stripeUnit,
-					underlyingColor,
 					substripeIndex,
-					nextPositionAlongPerimeter
+					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
+					coordinatesFunctionArguments: {
+						currentPositionAlongPerimeter,
+						nextPositionAlongPerimeter,
+						substripeUnit,
+						stripeUnit,
+						underlyingColor
+					}
 				})
 			})
 		} else {
 			drawShape({
+				origin,
+				center,
 				colors,
-				currentPositionAlongPerimeter,
+				rotationAboutCenter,
 				sizedUnit,
 				stripeIndex,
-				center,
-				origin,
-				rotationAboutCenter,
 				coordinatesFunction: calculateStripeCoordinates,
-				nextPositionAlongPerimeter
+				coordinatesFunctionArguments: { currentPositionAlongPerimeter, nextPositionAlongPerimeter }
 			})
 		}
 	})

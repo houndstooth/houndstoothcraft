@@ -1,4 +1,4 @@
-import { BLACK, TRANSPARENT } from '../render/colors' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
+import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
 	houndsmorphosis: {

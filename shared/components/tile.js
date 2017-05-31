@@ -99,14 +99,15 @@ const drawShape = ({
 					   origin,
 					   center,
 					   colors,
+						color,
 					   stripeIndex,
 					   substripeIndex,
 					   rotationAboutCenter,
 					   sizedUnit,
 					   coordinatesFunction,
-					   coordinatesFunctionArguments
+					   coordinatesFunctionArguments,
 				   }) => {
-	const color = colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
+	color = color || colorUtilities.calculateColor({ colors, stripeIndex, substripeIndex })
 	if (color.a === 0) return
 
 	let coordinates = coordinatesFunction({ origin, center, stripeIndex, substripeIndex, sizedUnit, coordinatesFunctionArguments })
@@ -116,11 +117,10 @@ const drawShape = ({
 	render({ color, coordinates })
 }
 
-const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) => {
-	const { fadeColors, colorsAreTheSameHue } = colorUtilities
-	const colors = fadeColors({ colors: state.shared.color.colors })
+const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, dazzleColor }) => {
+	// const { fadeColors } = colorUtilities
+	// const colors = fadeColors({ colors: state.shared.color.colors })
 
-	const underlyingColor = colorsAreTheSameHue({ colorOne: color, colorTwo: state.shared.color.colors[ 1 ] }) ? 1 : 0
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 
@@ -129,37 +129,30 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 			drawShape({
 				origin,
 				center,
-				colors,
-				stripeIndex: underlyingColor,
+				color: substripeIndex % 2 === 0 ? color : dazzleColor,
 				substripeIndex,
 				rotationAboutCenter,
 				sizedUnit,
-				underlyingColor,
 				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
-				coordinatesFunctionArguments: { substripeUnit, underlyingColor }
+				coordinatesFunctionArguments: { substripeUnit }
 			})
 		})
 	} else {
 		drawShape({
 			origin,
 			center,
-			colors: [ color, color ],
+			color,
 			rotationAboutCenter,
 			sizedUnit,
-			coordinatesFunction: calculateSquareCoordinates,
+			coordinatesFunction: calculateSquareCoordinates
 		})
 	}
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount }) => {
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount, dazzleColors }) => {
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 	const stripeUnit = sizedUnit * 2 / stripeCount
-	const { calculateColor, colorsAreTheSameHue } = colorUtilities
-
-	const colorOne = calculateColor({ colors, stripeIndex: 0 })
-	const colorTwo = state.shared.color.colors[ 0 ]
-	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
 
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
@@ -168,7 +161,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 				drawShape({
 					origin,
 					center,
-					colors,
+					colors: substripeIndex % 2 === 0 ? colors : dazzleColors,
 					rotationAboutCenter,
 					sizedUnit,
 					stripeIndex,
@@ -178,8 +171,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 						currentPositionAlongPerimeter,
 						nextPositionAlongPerimeter,
 						substripeUnit,
-						stripeUnit,
-						underlyingColor
+						stripeUnit
 					}
 				})
 			})
@@ -223,17 +215,20 @@ export default ({
 
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
-	colors = calculateColors({ origin: initialOrigin, colors })
+	colors = calculateColors({ origin: initialOrigin, colors, color: state.shared.color })
+	const dazzleColors = calculateColors({ origin: initialOrigin, colors, color: state.shared.color.houndazzle.color })
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
+		const dazzleColor = dazzleColors[ 0 ]
 		if (color.a === 0 && !state.shared.color.houndazzle.on) return
 		drawSquare({
 			sizedUnit,
 			center,
 			origin,
 			rotationAboutCenter,
-			color
+			color,
+			dazzleColor
 		})
 	} else {
 		let stripes
@@ -250,7 +245,8 @@ export default ({
 			rotationAboutCenter,
 			colors,
 			stripes,
-			stripeCount
+			stripeCount,
+			dazzleColors
 		})
 	}
 }

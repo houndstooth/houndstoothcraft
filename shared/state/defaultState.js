@@ -1,4 +1,4 @@
-import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
+import { BLACK, RED } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
 	houndsmorphosis: {
@@ -10,12 +10,30 @@ export default {
 		gridSize: 16,
 		tileSize: 50,
 		color: {
-			colors: [ BLACK, TRANSPARENT ],
+			colors: [ BLACK, RED ],
 			gongramColors: false,
 			houndazzle: {
 				on: false,
 				substripeCount: 16,
-				dazzleContinuum: false
+				dazzleContinuum: false,
+				orientation: {
+					orientations: [ 'VERTICAL', 'HORIZONTAL' ],
+					orientationAssignment: {
+						supertile: [ [ [ 0, 1 ], [ 1, 1 ] ], [ [ 0, 0 ], [ 1, 0 ] ] ],
+						weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
+					},
+				},
+				color: {
+					colors: [ BLACK, RED ],
+					colorAssignment: {
+						switcheroo: false,
+						flipGrain: false,
+						mode: 'WEAVE', // 'SUPERTILE'
+						offset: [ 0, 0 ],
+						supertile: [ [ [ 0, 1 ], [ 1, 1 ] ], [ [ 0, 0 ], [ 1, 0 ] ] ],
+						weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
+					},
+				}
 			},
 			colorAssignment: {
 				switcheroo: false,

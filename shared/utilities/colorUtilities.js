@@ -8,8 +8,8 @@ const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
 	return colors[ index ]
 }
 
-const calculateWeaveColors = ({ origin }) => {
-	const { colors, colorAssignment } = state.shared.color
+const calculateWeaveColors = ({ origin, color }) => {
+	const { colors, colorAssignment } = color
 	const { offset, weave } = colorAssignment
 	const { rows, columns } = weave
 	return [
@@ -18,14 +18,14 @@ const calculateWeaveColors = ({ origin }) => {
 	]
 }
 
-const calculateColors = ({ origin, colors }) => {
-	const { stripeCount, color } = state.shared
+const calculateColors = ({ origin, colors, color }) => {
+	const { stripeCount } = state.shared
 	const { opacity, colorAssignment: { flipGrain, switcheroo, mode } } = color
 	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
 		const calculateColorFunction = mode === 'SUPERTILE' ? calculateSupertileColors : calculateWeaveColors
-		colors = calculateColorFunction({ origin })
+		colors = calculateColorFunction({ origin, color })
 	}
 
 	colors = flipGrain ? colors.reverse() : colors
@@ -38,8 +38,8 @@ const calculateColors = ({ origin, colors }) => {
 	return colors
 }
 
-const calculateSupertileColors = ({ origin }) => {
-	const { colors, colorAssignment } = state.shared.color
+const calculateSupertileColors = ({ origin, color }) => {
+	const { colors, colorAssignment } = color
 	const { offset, supertile } = colorAssignment
 	const supertileWidth = supertile.length
 	const supertileHeight = supertile[ 0 ].length

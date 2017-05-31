@@ -4,7 +4,7 @@ import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColo
 const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
 	stripeIndex = stripeIndex || 0
 	substripeIndex = substripeIndex || 0
-	const index = ( stripeIndex + substripeIndex ) % 2
+	const index = ( stripeIndex + substripeIndex ) % colors.length
 	return colors[ index ]
 }
 
@@ -15,8 +15,7 @@ const calculateColors = ({ origin, colors }) => {
 
 	if (!colors) {
 		if (mode === 'SUPERTILE') {
-			const entry = supertileEntry({ origin })
-			colors = [ stateColors[ entry[ 0 ] ], stateColors[ entry[ 1 ] ] ]
+			colors = supertileEntry({ origin }).map(index => stateColors[ index ])
 		} else if (mode === 'WEAVE') {
 			// implement later
 		}
@@ -44,30 +43,24 @@ const supertileEntry = ({ origin }) => {
 }
 
 const mixColors = ({ colors }) => {
-	let mixedColor = {}
+	const totalColor = { r: 0, g: 0, b: 0, a: 0 }
+	colors.forEach(color => {
+		totalColor.r += color.r || 0
+		totalColor.g += color.g || 0
+		totalColor.b += color.b || 0
+		totalColor.a += color.a
+	})
 
-	const firstR = colors[ 0 ].r || 0
-	const firstG = colors[ 0 ].g || 0
-	const firstB = colors[ 0 ].b || 0
-	const secondR = colors[ 1 ].r || 0
-	const secondG = colors[ 1 ].g || 0
-	const secondB = colors[ 1 ].b || 0
-
-	mixedColor.r = Math.floor((firstR + secondR) / 2)
-	mixedColor.g = Math.floor((firstG + secondG) / 2)
-	mixedColor.b = Math.floor((firstB + secondB) / 2)
-	mixedColor.a = (colors[ 0 ].a + colors[ 1 ].a) / 2
-
-	return [ mixedColor, mixedColor ]
+	const colorsCount = colors.length
+	return [{
+		r: Math.floor(totalColor.r / colorsCount),
+		g: Math.floor(totalColor.g / colorsCount),
+		b: Math.floor(totalColor.b / colorsCount),
+		a: totalColor.a / colorsCount
+	}]
 }
 
-const fadeColors = ({ colors }) => {
-	const { opacity } = state.shared.color
-	let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]
-	newColors[ 0 ].a = colors[ 0 ].a * opacity
-	newColors[ 1 ].a = colors[ 1 ].a * opacity
-	return newColors
-}
+const fadeColors = ({ colors }) => colors.map(color => Object.assign({}, color, { a: color.a * state.shared.color.opacity }))
 
 const maybeSwitcherooColors = ({ colors, origin }) => {
 	const xMod = origin[ 0 ] % 4
@@ -84,9 +77,14 @@ const maybeSwitcherooColors = ({ colors, origin }) => {
 	return colors
 }
 
-const colorsAreTheSame = ({ colors }) => {
-	const colorOne = colors[ 0 ]
-	const colorTwo = colors[ 1 ]
+const allColorsAreTheSame = ({ colors }) => {
+	for (let i = 0; i < colors.length - 1; i++) {
+		if (!colorsAreTheSame({ colorOne: colors[ i ], colorTwo: colors[ i + 1 ] })) return false
+	}
+	return true
+}
+
+const colorsAreTheSame = ({ colorOne, colorTwo }) => {
 	return colorOne.a === colorTwo.a && colorsAreTheSameHue({ colorOne, colorTwo })
 }
 
@@ -101,6 +99,6 @@ export default {
 	calculateColor,
 	calculateColors,
 	fadeColors,
-	colorsAreTheSame,
+	allColorsAreTheSame,
 	colorsAreTheSameHue
 }

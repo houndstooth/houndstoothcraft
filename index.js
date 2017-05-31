@@ -59,7 +59,7 @@ const resetObject = ({ objectToReset, objectToResetTo }) => {
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
 	Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
-		if (overridingProperty && typeof overridingProperty === 'object') {
+		if (overridingProperty && typeof overridingProperty === 'object' && !overridingProperty.length) {
 			applyOverrides({
 				objectWithPropertiesToOverride,
 				overrides: overridingProperty,
@@ -176,26 +176,26 @@ const execute = ({ pattern }) => {
 	})
 }
 
-// import standard from './standard/standard'
-import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
+import standard from './standard/standard'
+// import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 // import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
-// import houndazzlePreset from './houndazzle/houndazzlePreset'
+import houndazzlePreset from './houndazzle/houndazzlePreset'
 // import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
-import gongramPreset from './gongram/gongramPreset'
+// import gongramPreset from './gongram/gongramPreset'
 
 const animating = false
 const iterating = false
 const exportFrames = false
-const pattern = houndsmorphosis
+const pattern = standard
 const presets = [
 	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
-	// houndazzlePreset,
-	gongramPreset,
+	houndazzlePreset,
+	// gongramPreset,
 	// houndazzleContinuumPreset
 ]
 setup({ presets })

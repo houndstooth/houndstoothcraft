@@ -212,7 +212,7 @@ export default ({
 	const sizedUnit = size * unit
 
 	const { calculateOriginAndCenter /*, isOnCanvas */ } = transpositionUtilities
-	const { calculateColors, colorsAreTheSame } = colorUtilities
+	const { calculateColors, allColorsAreTheSame } = colorUtilities
 
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,
@@ -225,7 +225,7 @@ export default ({
 
 	colors = calculateColors({ origin: initialOrigin, colors })
 
-	if (colorsAreTheSame({ colors })) {
+	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
 		if (color.a === 0 && !state.shared.color.houndazzle.on) return
 		drawSquare({

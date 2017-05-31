@@ -11,7 +11,7 @@ import calculateColor from '../utilities/calculateColor'
 import convertTileTypeToColors from '../utilities/convertTileTypeToColors'
 import iterator from '../utilities/iterator'
 import rotateCoordinateAboutPoint from '../utilities/rotateCoordinateAboutPoint'
-import scalePoint from '../utilities/scalePoint'
+import calculateOriginAndCenter from '../utilities/calculateOriginAndCenter'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 
@@ -340,36 +340,6 @@ const colorsAreTheSame = ({ colors }) => {
 	const colorOne = colors[ 0 ]
 	const colorTwo = colors[ 1 ]
 	return colorOne.a === colorTwo.a && colorsAreTheSameHue({ colorOne, colorTwo })
-}
-
-const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
-	const { tileSize, offsetOrigin } = state.shared
-
-	if (center) {
-		center = scalePoint({ point: center, scaleFromGridCenter })
-		origin = [
-			center[ 0 ] - sizedUnit / 2,
-			center[ 1 ] - sizedUnit / 2
-		]
-	} else if (origin) {
-		origin = [ origin[ 0 ] * tileSize, origin[ 1 ] * tileSize ]
-		origin = scalePoint({ point: origin, scaleFromGridCenter })
-		center = [
-			origin[ 0 ] + sizedUnit / 2,
-			origin[ 1 ] + sizedUnit / 2
-		]
-	} else {
-		console.log('neither origin nor center provided!')
-	}
-
-	if (offsetOrigin) {
-		origin[ 0 ] += offsetOrigin[ 0 ]
-		origin[ 1 ] += offsetOrigin[ 1 ]
-		center[ 0 ] += offsetOrigin[ 0 ]
-		center[ 1 ] += offsetOrigin[ 1 ]
-	}
-
-	return { origin, center }
 }
 
 const supertileEntry = ({ supertile, origin }) => {

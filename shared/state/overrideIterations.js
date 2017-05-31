@@ -1,7 +1,7 @@
 export default {
 	// shared: {
 	// 	tileSize: p => p / 2,
-	// 	colors: {
+	// 	color: {
 	// 		opacity: p => p / 2
 	// 	}
 	// }

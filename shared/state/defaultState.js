@@ -9,7 +9,7 @@ export default {
 		unit: 1,
 		gridSize: 16,
 		tileSize: 50,
-		colors: {
+		color: {
 			gongramColors: false,
 			houndazzle: {
 				on: false,

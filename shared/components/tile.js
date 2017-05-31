@@ -117,15 +117,15 @@ const drawShape = ({
 }
 
 const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) => {
-	const { colorA, colorB } = state.shared.colors
+	const { colorA, colorB } = state.shared.color
 	const { fadeColors, colorsAreTheSameHue } = colorUtilities
 	const colors = fadeColors({ colors: [ colorA, colorB ] })
 
 	const underlyingColor = colorsAreTheSameHue({ colorOne: color, colorTwo: colorB }) ? 1 : 0
-	const { substripeCount } = state.shared.colors.houndazzle
+	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 
-	if (state.shared.colors.houndazzle.on) {
+	if (state.shared.color.houndazzle.on) {
 		iterator(substripeCount).forEach(substripeIndex => {
 			drawShape({
 				origin,
@@ -153,18 +153,18 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color }) =
 }
 
 const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount }) => {
-	const { substripeCount } = state.shared.colors.houndazzle
+	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 	const stripeUnit = sizedUnit * 2 / stripeCount
 	const { calculateColor, colorsAreTheSameHue } = colorUtilities
 
 	const colorOne = calculateColor({ colors, stripeIndex: 0 })
-	const colorTwo = state.shared.colors.colorA
+	const colorTwo = state.shared.color.colorA
 	const underlyingColor = colorsAreTheSameHue({ colorOne, colorTwo }) ? 0 : 1
 
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
-		if (state.shared.colors.houndazzle.on) {
+		if (state.shared.color.houndazzle.on) {
 			iterator(substripeCount).forEach(substripeIndex => {
 				drawShape({
 					origin,
@@ -228,7 +228,7 @@ export default ({
 
 	if (colorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
-		if (color.a === 0 && !state.shared.colors.houndazzle.on) return
+		if (color.a === 0 && !state.shared.color.houndazzle.on) return
 		drawSquare({
 			sizedUnit,
 			center,

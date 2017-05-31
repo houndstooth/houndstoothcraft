@@ -13,14 +13,14 @@ const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
 const convertTileTypeToColors = ({ tileType }) => {
 	const colorKeys = TILE_TYPE_TO_COLORS_MAPPING[ tileType ].slice()
 	return [
-		state.shared.colors[ colorKeys[ 0 ] ],
-		state.shared.colors[ colorKeys[ 1 ] ]
+		state.shared.color[ colorKeys[ 0 ] ],
+		state.shared.color[ colorKeys[ 1 ] ]
 	]
 }
 
 const calculateColors = ({ origin, colors }) => {
-	const { stripeCount, colors: stateColors } = state.shared
-	const { opacity, colorAssignment: { flipGrain, switcheroo } } = stateColors
+	const { stripeCount, color } = state.shared
+	const { opacity, colorAssignment: { flipGrain, switcheroo } } = color
 	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
@@ -39,7 +39,7 @@ const calculateColors = ({ origin, colors }) => {
 }
 
 const supertileEntry = ({ supertile, origin }) => {
-	const { supertileOffset } = state.shared.colors.colorAssignment
+	const { supertileOffset } = state.shared.color.colorAssignment
 	const supertileWidth = supertile.length
 	const supertileHeight = supertile[ 0 ].length
 	let x = origin[ 0 ] + supertileOffset[ 0 ]
@@ -49,7 +49,7 @@ const supertileEntry = ({ supertile, origin }) => {
 	return supertile[ x % supertileWidth ][ y % supertileHeight ]
 }
 
-const calculateSupertile = () => state.shared.colors.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
+const calculateSupertile = () => state.shared.color.gongramColors ? GONGRAM_SUPERTILE : STANDARD_SUPERTILE
 
 const mixColors = ({ colors }) => {
 	let mixedColor = {}
@@ -70,7 +70,7 @@ const mixColors = ({ colors }) => {
 }
 
 const fadeColors = ({ colors }) => {
-	const { opacity } = state.shared.colors
+	const { opacity } = state.shared.color
 	let newColors = [ Object.assign({}, colors[ 0 ]), Object.assign({}, colors[ 1 ]) ]
 	newColors[ 0 ].a = colors[ 0 ].a * opacity
 	newColors[ 1 ].a = colors[ 1 ].a * opacity

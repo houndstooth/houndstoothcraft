@@ -164,14 +164,14 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 				center,
 				origin,
 				rotationAboutCenter,
-				coordinatesFunction: calculateAnIndividualStripesCoordinates,
+				coordinatesFunction: calculateStripeCoordinates,
 				nextPositionAlongPerimeter
 			})
 		}
 	})
 }
 
-const calculateAnIndividualStripesCoordinates = ({ currentPositionAlongPerimeter, nextPositionAlongPerimeter, sizedUnit, origin }) => {
+const calculateStripeCoordinates = ({ currentPositionAlongPerimeter, nextPositionAlongPerimeter, sizedUnit, origin }) => {
 	let coordinates = []
 
 	if (currentPositionAlongPerimeter <= 1) {
@@ -339,11 +339,7 @@ const maybeSwitcherooColors = ({ colors, origin }) => {
 const colorsAreTheSame = ({ colors }) => {
 	const colorOne = colors[ 0 ]
 	const colorTwo = colors[ 1 ]
-	if (colorOne.r !== colorTwo.r) return false
-	if (colorOne.g !== colorTwo.g) return false
-	if (colorOne.b !== colorTwo.b) return false
-	if (colorOne.a !== colorTwo.a) return false
-	return true
+	return colorOne.a === colorTwo.a && colorsAreTheSameHue({ colorOne, colorTwo })
 }
 
 const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {

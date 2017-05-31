@@ -3,11 +3,11 @@ const STANDARD_SUPERTILE = [
 	[ "SOLID_B", "STRIPED_A" ]
 ]
 
-const TILE_TYPE_TO_COLORS_MAPPING = {
-	"SOLID_A": [ 'colorA', 'colorA' ],
-	"SOLID_B": [ 'colorB', 'colorB' ],
-	"STRIPED_A": [ 'colorA', 'colorB' ],
-	"STRIPED_B": [ 'colorB', 'colorA' ]
+const TILE_TYPE_TO_COLORS_INDICES_MAPPING = {
+	"SOLID_A": [ 0, 0 ],
+	"SOLID_B": [ 1, 1 ],
+	"STRIPED_A": [ 0, 1 ],
+	"STRIPED_B": [ 1, 0 ]
 }
 
 const MINOR_DIAGONAL_OFFSET = 0
@@ -29,7 +29,7 @@ export {
 	STANDARD_SUPERTILE,
 	MINOR_DIAGONAL_OFFSET,
 	PRINCIPAL_DIAGONAL_OFFSET,
-	TILE_TYPE_TO_COLORS_MAPPING,
+	TILE_TYPE_TO_COLORS_INDICES_MAPPING,
 	PERIMETER_SCALAR,
 	BLACK,
 	WHITE,

@@ -10,14 +10,13 @@ export default {
 		gridSize: 16,
 		tileSize: 50,
 		color: {
+			colors: [ BLACK, TRANSPARENT ],
 			gongramColors: false,
 			houndazzle: {
 				on: false,
 				substripeCount: 16,
 				dazzleContinuum: false
 			},
-			colorA: BLACK,
-			colorB: TRANSPARENT,
 			colorAssignment: {
 				switcheroo: false,
 				flipGrain: false,

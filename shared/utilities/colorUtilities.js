@@ -1,5 +1,5 @@
 import { GONGRAM_SUPERTILE } from '../../gongram/gongramConstants'
-import { STANDARD_SUPERTILE, TILE_TYPE_TO_COLORS_MAPPING } from '../application/constants'
+import { STANDARD_SUPERTILE, TILE_TYPE_TO_COLORS_INDICES_MAPPING } from '../application/constants'
 import state from '../state/state'
 import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
 
@@ -11,10 +11,10 @@ const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
 }
 
 const convertTileTypeToColors = ({ tileType }) => {
-	const colorKeys = TILE_TYPE_TO_COLORS_MAPPING[ tileType ].slice()
+	const colorsIndices = TILE_TYPE_TO_COLORS_INDICES_MAPPING[ tileType ].slice()
 	return [
-		state.shared.color[ colorKeys[ 0 ] ],
-		state.shared.color[ colorKeys[ 1 ] ]
+		state.shared.color.colors[ colorsIndices[ 0 ] ],
+		state.shared.color.colors[ colorsIndices[ 1 ] ]
 	]
 }
 

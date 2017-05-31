@@ -8,17 +8,24 @@ const calculateColor = ({ colors, stripeIndex, substripeIndex }) => {
 	return colors[ index ]
 }
 
+const calculateWeaveColors = ({ origin }) => {
+	const { colors, colorAssignment } = state.shared.color
+	const { offset, weave } = colorAssignment
+	const { rows, columns } = weave
+	return [
+		colors[ rows[ Math.abs((origin[ 1 ] + offset[ 0 ]) % rows.length) ] ],
+		colors[ columns[ Math.abs((origin[ 0 ] + offset[ 1 ]) % columns.length) ] ]
+	]
+}
+
 const calculateColors = ({ origin, colors }) => {
 	const { stripeCount, color } = state.shared
-	const { opacity, colors: stateColors, colorAssignment: { flipGrain, switcheroo, mode } } = color
+	const { opacity, colorAssignment: { flipGrain, switcheroo, mode } } = color
 	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
-		if (mode === 'SUPERTILE') {
-			colors = supertileEntry({ origin }).map(index => stateColors[ index ])
-		} else if (mode === 'WEAVE') {
-			// implement later
-		}
+		const calculateColorFunction = mode === 'SUPERTILE' ? calculateSupertileColors : calculateWeaveColors
+		colors = calculateColorFunction({ origin })
 	}
 
 	colors = flipGrain ? colors.reverse() : colors
@@ -31,15 +38,16 @@ const calculateColors = ({ origin, colors }) => {
 	return colors
 }
 
-const supertileEntry = ({ origin }) => {
-	const { offset, tiles } = state.shared.color.colorAssignment.supertile
+const calculateSupertileColors = ({ origin }) => {
+	const { colors, colorAssignment } = state.shared.color
+	const { offset, supertile } = colorAssignment
+	const { tiles } = supertile
 	const supertileWidth = tiles.length
 	const supertileHeight = tiles[ 0 ].length
 	let x = origin[ 0 ] + offset[ 0 ]
 	let y = origin[ 1 ] + offset[ 1 ]
-	while (x < 0) x += supertileWidth
-	while (y < 0) y += supertileHeight
-	return tiles[ x % supertileWidth ][ y % supertileHeight ]
+	const entry = tiles[ Math.abs(x % supertileWidth) ][ Math.abs(y % supertileHeight) ]
+	return entry.map(index => colors[ index ])
 }
 
 const mixColors = ({ colors }) => {
@@ -52,12 +60,12 @@ const mixColors = ({ colors }) => {
 	})
 
 	const colorsCount = colors.length
-	return [{
+	return [ {
 		r: Math.floor(totalColor.r / colorsCount),
 		g: Math.floor(totalColor.g / colorsCount),
 		b: Math.floor(totalColor.b / colorsCount),
 		a: totalColor.a / colorsCount
-	}]
+	} ]
 }
 
 const fadeColors = ({ colors }) => colors.map(color => Object.assign({}, color, { a: color.a * state.shared.color.opacity }))

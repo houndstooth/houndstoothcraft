@@ -20,15 +20,15 @@ export default {
 			colorAssignment: {
 				switcheroo: false,
 				flipGrain: false,
-				mode: 'SUPERTILE', // 'WEAVE'
+				mode: 'WEAVE', // 'SUPERTILE'
+				offset: [ 0, 0 ],
 				supertile: {
-					tiles: STANDARD_SUPERTILE,
-					offset: [ 0, 0 ]
+					tiles: STANDARD_SUPERTILE
 				},
-				// weave: {
-				// 	rows: [ 'colorA', 'colorB' ],
-				// 	columns: [ 'colorA', 'colorB' ]
-				// }
+				weave: {
+					rows: [ 0, 1 ],
+					columns: [ 1, 0 ]
+				}
 			},
 			opacity: 1
 		},

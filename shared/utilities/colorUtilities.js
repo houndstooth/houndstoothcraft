@@ -1,35 +1,14 @@
 import state from '../state/state'
 import maybeRealignColors from '../../gingham-chevron-continuum/maybeRealignColors'
-
-const calculateWeaveColors = ({ origin, color }) => {
-	const { colors, colorAssignment } = color
-	const { offset, weave } = colorAssignment
-	const { rows, columns } = weave
-	return [
-		colors[ rows[ Math.abs((origin[ 1 ] + offset[ 0 ]) % rows.length) ] ],
-		colors[ columns[ Math.abs((origin[ 0 ] + offset[ 1 ]) % columns.length) ] ]
-	]
-}
-
-const calculateSupertileColors = ({ origin, color }) => {
-	const { colors, colorAssignment } = color
-	const { offset, supertile } = colorAssignment
-	const supertileWidth = supertile.length
-	const supertileHeight = supertile[ 0 ].length
-	let x = origin[ 0 ] + offset[ 0 ]
-	let y = origin[ 1 ] + offset[ 1 ]
-	const entry = supertile[ Math.abs(x % supertileWidth) ][ Math.abs(y % supertileHeight) ]
-	return entry.map(index => colors[ index ])
-}
+import gridUtilities from './gridUtilities'
 
 const calculateColors = ({ origin, colors, color }) => {
 	const { stripeCount } = state.shared
-	const { opacity, colorAssignment: { flipGrain, switcheroo, mode } } = color
+	const { opacity, assignment: { flipGrain, switcheroo, mode } } = color
 	const { ginghamMode, ginghamChevronContinuum } = stripeCount
 
 	if (!colors) {
-		const calculateColorFunction = mode === 'SUPERTILE' ? calculateSupertileColors : calculateWeaveColors
-		colors = calculateColorFunction({ origin, color })
+		colors = gridUtilities.calculateEntry({ origin, grid: color })
 	}
 
 	colors = flipGrain ? colors.reverse() : colors

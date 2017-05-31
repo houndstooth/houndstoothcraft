@@ -5,11 +5,11 @@ import wrappedIndex from '../utilities/wrappedIndex'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import rotationUtilities from '../utilities/rotationUtilities'
+import gridUtilities from '../utilities/gridUtilities'
 import calculateStripes from '../utilities/calculateStripes'
 import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
-import calculateOrientations from '../../houndazzle/calculateOrientations'
 
 const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
@@ -144,7 +144,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.color.houndazzle.on) {
-			const orientation = orientations[stripeIndex % orientations.length]
+			const orientation = wrappedIndex({ array: orientations, index: stripeIndex })
 			iterator(substripeCount).forEach(substripeIndex => {
 				drawShape({
 					origin,
@@ -187,7 +187,7 @@ export default ({
 					scaleFromGridCenter,
 					rotationAboutCenter
 				}) => {
-	const { unit, tileSize, stripeCount: stateStripeCount } = state.shared
+	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
 
 	size = size || tileSize
 	const sizedUnit = size * unit
@@ -204,10 +204,12 @@ export default ({
 
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
-	colors = calculateColors({ origin: initialOrigin, colors, color: state.shared.color })
+	colors = calculateColors({ origin: initialOrigin, colors, color: stateColor })
+
+	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
 	let dazzleColors
-	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: state.shared.color.houndazzle.color })
-	const orientations = calculateOrientations({ origin: initialOrigin })
+	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })
+	const orientations = gridUtilities.calculateEntry({ origin: initialOrigin, grid: stateOrientation })
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]

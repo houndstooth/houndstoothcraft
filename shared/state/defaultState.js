@@ -10,15 +10,15 @@ export default {
 		gridSize: 16,
 		tileSize: 50,
 		color: {
-			colors: [ BLACK, TRANSPARENT ],
+			set: [ BLACK, TRANSPARENT ],
 			gongramColors: false,
 			houndazzle: {
 				on: false,
 				substripeCount: 16,
 				dazzleContinuum: false,
 				orientation: {
-					orientations: [ 'HORIZONTAL', 'VERTICAL' ],
-					orientationAssignment: {
+					set: [ 'HORIZONTAL', 'VERTICAL' ],
+					assignment: {
 						switcheroo: false,
 						flipGrain: false,
 						mode: 'WEAVE', // 'SUPERTILE'
@@ -28,8 +28,8 @@ export default {
 					},
 				},
 				color: {
-					colors: [ BLACK, TRANSPARENT ],
-					colorAssignment: {
+					set: [ BLACK, TRANSPARENT ],
+					assignment: {
 						switcheroo: false,
 						flipGrain: false,
 						mode: 'WEAVE', // 'SUPERTILE'
@@ -39,7 +39,7 @@ export default {
 					},
 				}
 			},
-			colorAssignment: {
+			assignment: {
 				switcheroo: false,
 				flipGrain: false,
 				mode: 'WEAVE', // 'SUPERTILE'

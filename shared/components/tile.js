@@ -209,7 +209,7 @@ export default ({
 	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
 	let dazzleColors
 	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })
-	const orientations = gridUtilities.calculateEntry({ origin: initialOrigin, grid: stateOrientation })
+	const orientations = gridUtilities.calculateSetForTile({ origin: initialOrigin, grid: stateOrientation })
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]

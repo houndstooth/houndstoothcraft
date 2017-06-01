@@ -123,10 +123,10 @@ const drawShape = ({
 	render({ color, coordinates })
 }
 
-const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, dazzleColors, dazzleOrientations }) => {
+const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, dazzle }) => {
 	const color = colors[ 0 ]
-	const dazzleColor = dazzleColors[ 0 ]
-	const orientation = dazzleOrientations[ 0 ]
+	const dazzleColor = dazzle.colors[ 0 ]
+	const orientation = dazzle.orientations[ 0 ]
 	if (color.a === 0 && dazzleColor.a === 0) return
 
 	if (state.shared.color.mode === 'HOUNDAZZLE') {
@@ -159,14 +159,14 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, da
 	}
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzleColors, dazzleOrientations }) => {
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzle }) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.color.mode === 'HOUNDAZZLE') {
-			const orientation = wrappedIndex({ array: dazzleOrientations, index: stripeIndex })
+			const orientation = wrappedIndex({ array: dazzle.orientations, index: stripeIndex })
 			const { substripeCount } = state.shared.color.houndazzle
 			iterator(substripeCount).forEach(substripeIndex => {
-				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzleColors })
+				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors })
 				drawShape({
 					origin,
 					center,
@@ -206,8 +206,7 @@ export default ({
 					colors,
 					scaleFromGridCenter,
 					rotationAboutCenter,
-					dazzleColors: initialDazzleColors,
-					dazzleOrientations: initialDazzleOrientations
+					initialDazzle
 				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
 
@@ -225,15 +224,11 @@ export default ({
 
 	colors = colorUtilities.calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
-	const { dazzleColors, dazzleOrientations } = calculateDazzleForTile({
-		origin: initialOrigin,
-		dazzleColors: initialDazzleColors,
-		dazzleOrientations: initialDazzleOrientations
-	})
+	const dazzle = calculateDazzleForTile({ origin: initialOrigin, initialDazzle })
 
-	const uniformTile = colorUtilities.tileIsUniform({ colors, dazzleColors, dazzleOrientations })
+	const uniformTile = colorUtilities.tileIsUniform({ colors, dazzle })
 	const drawFunction = uniformTile ? drawSquare : drawStripes
-	const drawArguments = { sizedUnit, center, origin, rotationAboutCenter, colors, dazzleColors, dazzleOrientations }
+	const drawArguments = { sizedUnit, center, origin, rotationAboutCenter, colors, dazzle }
 	if (!uniformTile) drawArguments.stripes = calculateStripes({
 		stripeCount: stateStripeCount.baseCount,
 		origin: initialOrigin

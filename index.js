@@ -177,14 +177,14 @@ const execute = ({ pattern }) => {
 }
 
 import standard from './standard/standard'
-import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
+// import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 
-import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
+// import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
-import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
+// import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 import houndazzlePreset from './houndazzle/houndazzlePreset'
-import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
-import gongramPreset from './gongram/gongramPreset'
+// import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
+// import gongramPreset from './gongram/gongramPreset'
 
 const animating = true
 const iterating = false

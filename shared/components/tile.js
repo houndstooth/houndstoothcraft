@@ -5,11 +5,11 @@ import wrappedIndex from '../utilities/wrappedIndex'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import rotationUtilities from '../utilities/rotationUtilities'
-import gridUtilities from '../utilities/gridUtilities'
 import calculateStripes from '../utilities/calculateStripes'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import substripeModulus from '../../houndazzle/substripeModulus'
+import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 
 const calculateSquareCoordinates = ({ origin, sizedUnit }) => {
 	return [
@@ -206,8 +206,8 @@ export default ({
 					colors,
 					scaleFromGridCenter,
 					rotationAboutCenter,
-					dazzleColors,
-					dazzleOrientations
+					dazzleColors: initialDazzleColors,
+					dazzleOrientations: initialDazzleOrientations
 				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
 
@@ -225,16 +225,11 @@ export default ({
 
 	colors = colorUtilities.calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
-	dazzleColors = colorUtilities.calculateColors({
+	const { dazzleColors, dazzleOrientations } = calculateDazzleForTile({
 		origin: initialOrigin,
-		colors: dazzleColors,
-		color: stateColor.houndazzle.color
+		dazzleColors: initialDazzleColors,
+		dazzleOrientations: initialDazzleOrientations
 	})
-	dazzleOrientations = dazzleOrientations || gridUtilities.calculateSetForTile({
-			origin: initialOrigin,
-			grid: stateColor.houndazzle.orientation,
-			gccOn: stateStripeCount.mode === 'GINGHAM_CHEVRON_CONTINUUM'
-		})
 
 	const uniformTile = colorUtilities.tileIsUniform({ colors, dazzleColors, dazzleOrientations })
 	const drawFunction = uniformTile ? drawSquare : drawStripes

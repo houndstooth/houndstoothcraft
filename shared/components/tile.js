@@ -12,13 +12,24 @@ import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/c
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import substripeModulus from '../../houndazzle/substripeModulus'
 
-const calculateSquareCoordinates = ({ center, sizedUnit }) => {
-	const halfSizedUnit = sizedUnit / 2
+const calculateSquareCoordinates = ({ origin, sizedUnit }) => {
 	return [
-		[ center[ 0 ] - halfSizedUnit, center[ 1 ] - halfSizedUnit ],
-		[ center[ 0 ] + halfSizedUnit, center[ 1 ] - halfSizedUnit ],
-		[ center[ 0 ] + halfSizedUnit, center[ 1 ] + halfSizedUnit ],
-		[ center[ 0 ] - halfSizedUnit, center[ 1 ] + halfSizedUnit ]
+		[
+			origin[ 0 ],
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ]
+		],
+		[
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit
+		],
+		[
+			origin[ 0 ],
+			origin[ 1 ] + sizedUnit
+		]
 	]
 }
 
@@ -87,21 +98,26 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 }
 
 const drawShape = ({
-	origin, //need
-	center, //need
-	colors,
-	color,
-	stripeIndex,
-	substripeIndex,
-	rotationAboutCenter, //need
-	sizedUnit,
-	coordinatesFunction,
-	coordinatesFunctionArguments,
-}) => {
+					   // need one or the other. origin when stripes, center when square.
+					   origin,
+					   center,
+
+					   // optional, for maybe rotate
+					   rotationAboutCenter,
+
+					   // need one or the other. colors when stripes, color when square.
+					   colors,
+					   color,
+
+					   stripeIndex,
+					   sizedUnit,
+					   coordinatesFunction,
+					   coordinatesFunctionArguments,
+				   }) => {
 	color = color || wrappedIndex({ array: colors, index: stripeIndex })
 	if (color.a === 0) return
 
-	let coordinates = coordinatesFunction({ origin, center, stripeIndex, substripeIndex, sizedUnit, coordinatesFunctionArguments })
+	let coordinates = coordinatesFunction({ origin, sizedUnit, coordinatesFunctionArguments })
 	if (!coordinates) return
 
 	coordinates = rotationUtilities.maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
@@ -117,13 +133,13 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 				origin,
 				center,
 				color: maybeDazzleColor,
-				substripeIndex,
 				rotationAboutCenter,
 				sizedUnit,
 				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
 				coordinatesFunctionArguments: {
 					substripeUnit: sizedUnit / substripeCount,
-					orientation
+					orientation,
+					substripeIndex
 				}
 			})
 		})
@@ -154,13 +170,13 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 					rotationAboutCenter,
 					sizedUnit,
 					stripeIndex,
-					substripeIndex,
 					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
 					coordinatesFunctionArguments: {
 						stripeStart,
 						stripeEnd,
 						substripeUnit: sizedUnit / substripeCount,
-						orientation
+						orientation,
+						substripeIndex
 					}
 				})
 			})
@@ -180,15 +196,15 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 }
 
 export default ({
-	origin: initialOrigin,
-	center: initialCenter,
-	size,
-	colors,
-	dazzleColors,
-	dazzleOrientations,
-	scaleFromGridCenter,
-	rotationAboutCenter
-}) => {
+					origin: initialOrigin,
+					center: initialCenter,
+					size,
+					colors,
+					dazzleColors,
+					dazzleOrientations,
+					scaleFromGridCenter,
+					rotationAboutCenter
+				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
 
 	size = size || tileSize
@@ -210,7 +226,11 @@ export default ({
 	const { calculateSetForTile } = gridUtilities
 	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
 	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })
-	dazzleOrientations = dazzleOrientations || calculateSetForTile({ origin: initialOrigin, grid: stateOrientation, gccOn })
+	dazzleOrientations = dazzleOrientations || calculateSetForTile({
+			origin: initialOrigin,
+			grid: stateOrientation,
+			gccOn
+		})
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]

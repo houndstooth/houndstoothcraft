@@ -11,8 +11,8 @@ export default {
 		tileSize: 50,
 		color: {
 			set: [ BLACK, TRANSPARENT ],
+			mode: 'STANDARD', // 'HOUNDAZZLE'
 			houndazzle: {
-				on: false,
 				substripeCount: 16,
 				dazzleContinuum: false,
 				orientation: { set: [ 'HORIZONTAL', 'VERTICAL' ] }

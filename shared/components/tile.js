@@ -112,7 +112,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 
-	if (state.shared.color.houndazzle.on) {
+	if (state.shared.color.mode === 'HOUNDAZZLE') {
 		iterator(substripeCount).forEach(substripeIndex => {
 			const maybeDazzleColor = substripeModulus({ substripeIndex, nonDazzle: color, dazzle: dazzleColor })
 			drawShape({
@@ -144,7 +144,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
-		if (state.shared.color.houndazzle.on) {
+		if (state.shared.color.mode === 'HOUNDAZZLE') {
 			const orientation = wrappedIndex({ array: orientations, index: stripeIndex })
 			iterator(substripeCount).forEach(substripeIndex => {
 				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzleColors })
@@ -217,7 +217,7 @@ export default ({
 		const color = colors[ 0 ]
 		const dazzleColor = dazzleColors[ 0 ]
 		const orientation = dazzleOrientations[ 0 ]
-		if (color.a === 0 && !state.shared.color.houndazzle.on) return
+		if (color.a === 0 && state.shared.color.mode !== 'HOUNDAZZLE') return
 		drawSquare({
 			sizedUnit,
 			center,

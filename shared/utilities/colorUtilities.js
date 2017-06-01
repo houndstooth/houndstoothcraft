@@ -1,12 +1,14 @@
 import state from '../state/state'
 import gridUtilities from './gridUtilities'
 
-const calculateColors = ({ origin, colors, color }) => {
+const calculateColors = ({ origin, colors, color: colorConfig }) => {
 	const { ginghamMode, ginghamChevronContinuum } = state.shared.stripeCount
 
-	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: color, gccOn: ginghamChevronContinuum.on })
+	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: colorConfig, gccOn: ginghamChevronContinuum.on })
 	if (ginghamMode) colors = mixColors({ colors })
-	if (color.opacity < 1) colors = fadeColors({ colors, colorConfig: color })
+
+	const opacity = colorConfig && colorConfig.opacity || state.shared.color.opacity
+	if (opacity < 1) colors = fadeColors({ colors, opacity })
 
 	return colors
 }
@@ -29,7 +31,7 @@ const mixColors = ({ colors }) => {
 	} ]
 }
 
-const fadeColors = ({ colors, colorConfig }) => colors.map(color => Object.assign({}, color, { a: color.a * colorConfig.opacity }))
+const fadeColors = ({ colors, opacity }) => colors.map(color => Object.assign({}, color, { a: color.a * opacity }))
 
 const allColorsAreTheSame = ({ colors }) => {
 	for (let i = 0; i < colors.length - 1; i++) {

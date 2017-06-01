@@ -3,7 +3,14 @@ import maybeRealign from '../../gingham-chevron-continuum/maybeRealign'
 import state from '../../shared/state/state'
 
 const calculateSetForTile = ({ origin, grid, gccOn }) => {
-	let { set, assignment } = grid
+	let { set, assignment } = grid || {}
+
+	let fallbackOffset = 0
+	if (!set) {
+		set = state.shared.color.set
+		fallbackOffset = 1
+	}
+
 	assignment = assignment || state.shared.color.assignment
 	const { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
@@ -14,12 +21,12 @@ const calculateSetForTile = ({ origin, grid, gccOn }) => {
 
 	if (mode === 'WEAVE') {
 		const { rows, columns } = weave
-		const columnsIndex = wrappedIndex({ array: columns, index: x })
-		const rowsIndex = wrappedIndex({ array: rows, index: y })
+		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
+		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
 		setForTile = [ set[ rowsIndex ], set[ columnsIndex ] ]
 	} else if (mode === 'SUPERTILE') {
-		const supertileColumn = wrappedIndex({ array: supertile, index: x })
-		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
+		const supertileColumn = wrappedIndex({ array: supertile, index: x + fallbackOffset })
+		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y + fallbackOffset })
 		setForTile = supertileEntry.map(index => set[ index ])
 	}
 

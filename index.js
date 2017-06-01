@@ -25,7 +25,7 @@ setup({ presets })
 
 execute({
 	pattern: standard,
-	iterating: false,
+	iterating: true,
 	animating: false,
 	exportFrames: false
 })

@@ -18,9 +18,6 @@ export default {
 				dazzleContinuum: false,
 				orientation: {
 					set: [ 'HORIZONTAL', 'VERTICAL' ]
-				},
-				color: {
-					set: [ TRANSPARENT, BLACK ]
 				}
 			},
 			assignment: {

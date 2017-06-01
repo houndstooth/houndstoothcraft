@@ -194,19 +194,12 @@ const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 	})
 }
 
-export default ({
-					address,
-					size,
-					colors,
-					scaleFromGridCenter,
-					rotation,
-					initialDazzle
-				}) => {
+export default ({ address, size, colors, rotation, initialDazzle }) => {
 	const { stripeCountConfig, colorConfig } = state.shared
 
 	const { calculateSizedUnit, calculateOrigin } = transpositionUtilities
 	const sizedUnit = calculateSizedUnit({ size })
-	const origin = calculateOrigin({ address, scaleFromGridCenter, sizedUnit })
+	const origin = calculateOrigin({ address, sizedUnit })
 
 	const { calculateColors, tileIsUniform } = colorUtilities
 	colors = calculateColors({ address, colors, colorConfig })

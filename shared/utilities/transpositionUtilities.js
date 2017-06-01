@@ -1,7 +1,7 @@
 import state from '../state/state'
 
-const scalePoint = ({ point, scaleFromGridCenter }) => {
-	const { unit, canvasSize } = state.shared
+const scalePoint = ({ point }) => {
+	const { unit, canvasSize, scaleFromGridCenter } = state.shared
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
 	if (scaleFromGridCenter) {
@@ -20,11 +20,11 @@ const scalePoint = ({ point, scaleFromGridCenter }) => {
 	return point
 }
 
-const calculateOrigin = ({ address, scaleFromGridCenter }) => {
+const calculateOrigin = ({ address }) => {
 	const { tileSize, offsetOrigin } = state.shared
 
 	let origin = [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ]
-	origin = scalePoint({ point: origin, scaleFromGridCenter })
+	origin = scalePoint({ point: origin })
 
 	if (offsetOrigin) {
 		origin[ 0 ] += offsetOrigin[ 0 ]

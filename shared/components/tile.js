@@ -207,7 +207,7 @@ export default ({
 	const { calculateColors, allColorsAreTheSame } = colorUtilities
 	colors = calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
-	const gccOn = stateStripeCount.ginghamChevronContinuum.on
+	const gccOn = stateStripeCount.mode === 'GINGHAM_CHEVRON_CONTINUUM'
 	const { calculateSetForTile } = gridUtilities
 	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
 	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })

@@ -2,10 +2,10 @@ import state from '../state/state'
 import gridUtilities from './gridUtilities'
 
 const calculateColors = ({ origin, colors, color: colorConfig }) => {
-	const { ginghamMode, ginghamChevronContinuum } = state.shared.stripeCount
+	const { mode } = state.shared.stripeCount
 
-	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: colorConfig, gccOn: ginghamChevronContinuum.on })
-	if (ginghamMode) colors = mixColors({ colors })
+	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: colorConfig, gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM' })
+	if (mode === 'GINGHAM') colors = mixColors({ colors })
 
 	const opacity = colorConfig && colorConfig.opacity || state.shared.color.opacity
 	if (opacity < 1) colors = fadeColors({ colors, opacity })

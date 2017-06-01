@@ -11,14 +11,11 @@ export default {
 		tileSize: 50,
 		color: {
 			set: [ BLACK, TRANSPARENT ],
-			gongramColors: false,
 			houndazzle: {
 				on: false,
 				substripeCount: 16,
 				dazzleContinuum: false,
-				orientation: {
-					set: [ 'HORIZONTAL', 'VERTICAL' ]
-				}
+				orientation: { set: [ 'HORIZONTAL', 'VERTICAL' ] }
 			},
 			assignment: {
 				switcheroo: false,
@@ -31,23 +28,19 @@ export default {
 			opacity: 1
 		},
 		stripeCount: {
-			ginghamMode: false,
+			mode: 'GINGHAM_CHEVRON_CONTINUUM', // 'GINGHAM', 'GINGHAM_CHEVRON_CONTINUUM'
 			baseCount: 4,
 			ginghamChevronContinuum: {
-				on: false,
 				initial: 1,
 				delta: 1
 			}
 		},
 		tileRotationAboutTileCenter: 0,
-		baseStripeDiagonal: 'MINOR', // 'PRINCIPAL' //then maybe within stripes there should be like a stripe orientation config
+		baseStripeDiagonal: 'MINOR', // 'PRINCIPAL'
 		gridRotationAboutCenter: 0,
 		offsetOrigin: [ 0, 0 ],
 		negativeGridToo: false,
-		stripeStyle: 'STANDARD'
-		// stripeStyle: 'DERASTERIZED_BY_AREA'
-		// stripeStyle: 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID' // good for gcc when doing aligning style
-		// stripeStyle: 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE' // good for harmonitooth, i.e. animating when full continuum in each tile
+		stripeStyle: 'STANDARD' // 'DERASTERIZED_BY_AREA', 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID', 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE'
 	},
 	animation: {
 		frameRate: 1000 / 60,

@@ -97,12 +97,10 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 }
 
 const drawShape = ({
-					   // need one or the other. origin when stripes, center when square.
 					   origin,
-					   center,
 
 					   // optional, for maybe rotate
-					   rotationAboutCenter,
+					   rotation,
 
 					   // need one or the other. colors when stripes, color when square.
 					   colors,
@@ -119,11 +117,12 @@ const drawShape = ({
 	let coordinates = coordinatesFunction({ origin, sizedUnit, coordinatesFunctionArguments })
 	if (!coordinates) return
 
-	coordinates = rotationUtilities.maybeRotateCoordinates({ coordinates, center, origin, rotationAboutCenter })
+	const { maybeRotateCoordinates, calculateCenter } = rotationUtilities
+	coordinates = maybeRotateCoordinates({ coordinates, center: calculateCenter({ origin, sizedUnit }), rotation })
 	render({ color, coordinates })
 }
 
-const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, dazzle }) => {
+const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	const color = colors[ 0 ]
 	const dazzleColor = dazzle.colors[ 0 ]
 	const orientation = dazzle.orientations[ 0 ]
@@ -135,9 +134,8 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, da
 			const maybeDazzleColor = substripeModulus({ substripeIndex, nonDazzle: color, dazzle: dazzleColor })
 			drawShape({
 				origin,
-				center,
 				color: maybeDazzleColor,
-				rotationAboutCenter,
+				rotation,
 				sizedUnit,
 				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
 				coordinatesFunctionArguments: {
@@ -150,16 +148,15 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, da
 	} else {
 		drawShape({
 			origin,
-			center,
 			color,
-			rotationAboutCenter,
+			rotation,
 			sizedUnit,
 			coordinatesFunction: calculateSquareCoordinates
 		})
 	}
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzle }) => {
+const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.color.mode === 'HOUNDAZZLE') {
@@ -169,9 +166,8 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors })
 				drawShape({
 					origin,
-					center,
 					colors: maybeDazzleColors,
-					rotationAboutCenter,
+					rotation,
 					sizedUnit,
 					stripeIndex,
 					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
@@ -187,9 +183,8 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 		} else {
 			drawShape({
 				origin,
-				center,
 				colors,
-				rotationAboutCenter,
+				rotation,
 				sizedUnit,
 				stripeIndex,
 				coordinatesFunction: calculateStripeCoordinates,
@@ -201,11 +196,10 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 
 export default ({
 					origin: initialOrigin,
-					center: initialCenter,
 					size,
 					colors,
 					scaleFromGridCenter,
-					rotationAboutCenter,
+					rotation,
 					initialDazzle
 				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
@@ -213,14 +207,7 @@ export default ({
 	size = size || tileSize
 	const sizedUnit = size * unit
 
-	const { calculateOriginAndCenter /*, isOnCanvas */ } = transpositionUtilities
-	const { origin, center } = calculateOriginAndCenter({
-		initialOrigin,
-		initialCenter,
-		scaleFromGridCenter,
-		sizedUnit
-	})
-	// if (!isOnCanvas({ center, sizedUnit })) return
+	const origin = transpositionUtilities.calculateOrigin({ initialOrigin, scaleFromGridCenter, sizedUnit })
 
 	colors = colorUtilities.calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
@@ -228,7 +215,7 @@ export default ({
 
 	const uniformTile = colorUtilities.tileIsUniform({ colors, dazzle })
 	const drawFunction = uniformTile ? drawSquare : drawStripes
-	const drawArguments = { sizedUnit, center, origin, rotationAboutCenter, colors, dazzle }
+	const drawArguments = { sizedUnit, origin, rotation, colors, dazzle }
 	if (!uniformTile) drawArguments.stripes = calculateStripes({
 		stripeCount: stateStripeCount.baseCount,
 		origin: initialOrigin

@@ -20,34 +20,18 @@ const scalePoint = ({ point, scaleFromGridCenter }) => {
 	return point
 }
 
-const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center, scaleFromGridCenter, sizedUnit }) => {
+const calculateOrigin = ({ initialOrigin, scaleFromGridCenter }) => {
 	const { tileSize, offsetOrigin } = state.shared
 
-	if (center) {
-		center = scalePoint({ point: center, scaleFromGridCenter })
-		origin = [
-			center[ 0 ] - sizedUnit / 2,
-			center[ 1 ] - sizedUnit / 2
-		]
-	} else if (origin) {
-		origin = [ origin[ 0 ] * tileSize, origin[ 1 ] * tileSize ]
-		origin = scalePoint({ point: origin, scaleFromGridCenter })
-		center = [
-			origin[ 0 ] + sizedUnit / 2,
-			origin[ 1 ] + sizedUnit / 2
-		]
-	} else {
-		console.log('neither origin nor center provided!')
-	}
+	let origin = [ initialOrigin[ 0 ] * tileSize, initialOrigin[ 1 ] * tileSize ]
+	origin = scalePoint({ point: origin, scaleFromGridCenter })
 
 	if (offsetOrigin) {
 		origin[ 0 ] += offsetOrigin[ 0 ]
 		origin[ 1 ] += offsetOrigin[ 1 ]
-		center[ 0 ] += offsetOrigin[ 0 ]
-		center[ 1 ] += offsetOrigin[ 1 ]
 	}
 
-	return { origin, center }
+	return origin
 }
 
 // const pointIsOnCanvas = point => {
@@ -78,6 +62,5 @@ const calculateOriginAndCenter = ({ initialOrigin: origin, initialCenter: center
 // }
 
 export default {
-	calculateOriginAndCenter,
-	//isOnCanvas
+	calculateOrigin
 }

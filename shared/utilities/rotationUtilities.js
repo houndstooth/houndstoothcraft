@@ -20,22 +20,16 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 	return coordinates.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
 }
 
-const maybeRotateCoordinates = ({ coordinates, center, /* origin,*/ rotationAboutCenter }) => {
-	if (rotationAboutCenter) {
+const calculateCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
+
+const maybeRotateCoordinates = ({ coordinates, center, rotation }) => {
+	if (rotation) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
 			coordinates: coordinates,
-			rotation: rotationAboutCenter
+			rotation
 		})
 	}
-
-	// if (rotationAboutOrigin) {
-	// 	coordinates = rotateCoordinatesAboutPoint({
-	// 		point: origin,
-	// 		coordinates: coordinates,
-	// 		rotation: rotationAboutOrigin
-	// 	})
-	// }
 
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state.shared
 
@@ -61,5 +55,6 @@ const maybeRotateCoordinates = ({ coordinates, center, /* origin,*/ rotationAbou
 }
 
 export default {
-	maybeRotateCoordinates
+	maybeRotateCoordinates,
+	calculateCenter
 }

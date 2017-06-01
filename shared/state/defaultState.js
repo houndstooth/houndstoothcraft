@@ -27,13 +27,10 @@ export default {
 			},
 			opacity: 1
 		},
-		stripeCount: {
+		stripeCountConfig: {
 			mode: 'STANDARD', // 'GINGHAM', 'GINGHAM_CHEVRON_CONTINUUM'
-			baseCount: 4,
-			ginghamChevronContinuum: {
-				initial: 1,
-				delta: 1
-			}
+			stripeCount: 4,
+			ginghamChevronContinuum: { initial: 1, delta: 1 }
 		},
 		tileRotationAboutTileCenter: 0,
 		baseStripeDiagonal: 'MINOR', // 'PRINCIPAL'

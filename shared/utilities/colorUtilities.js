@@ -3,7 +3,7 @@ import gridUtilities from './gridUtilities'
 import allOrientationsAreTheSame from '../../houndazzle/allOrientationsAreTheSame'
 
 const calculateColors = ({ address, colors, color: colorConfig }) => {
-	const { mode } = state.shared.stripeCount
+	const { mode } = state.shared.stripeCountConfig
 
 	if (!colors) colors = gridUtilities.calculateSetForTile({ address, grid: colorConfig, gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM' })
 	if (mode === 'GINGHAM') colors = mixColors({ colors })

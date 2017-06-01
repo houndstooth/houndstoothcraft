@@ -21,7 +21,6 @@ const presets = [
 ]
 
 setup({ presets })
-// console.log(state)
 
 execute({
 	pattern: standard,

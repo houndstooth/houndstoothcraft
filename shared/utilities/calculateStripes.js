@@ -8,7 +8,7 @@ import iterator from './iterator'
 
 export default ({ stripeCount, address }) => {
 	let stripes
-	if (state.shared.stripeCount.mode === 'GINGHAM_CHEVRON_CONTINUUM') {
+	if (state.shared.stripeCountConfig.mode === 'GINGHAM_CHEVRON_CONTINUUM') {
 		stripes = calculateGinghamChevronContinuumStripes({ address })
 	} else {
 		stripes = iterator(stripeCount).map(stripeIndex => {

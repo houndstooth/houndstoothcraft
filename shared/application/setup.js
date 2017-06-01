@@ -65,4 +65,5 @@ export default ({ presets }) => {
 		overrides: overrideAnimations
 	})
 	setupCanvas()
+	// console.log(state)
 }

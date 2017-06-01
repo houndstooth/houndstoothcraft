@@ -19,8 +19,8 @@ export default {
 	// 			}
 	// 		}
 	// 	},
-	// 	stripeCount: {
-	// 		baseCount: 7
+	// 	stripeCountConfig: {
+	// 		stripeCount: 7
 	// 	}
 	// },
 	// iteration: {

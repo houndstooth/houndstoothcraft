@@ -1,5 +1,6 @@
 import state from '../state/state'
 import gridUtilities from './gridUtilities'
+import allOrientationsAreTheSame from '../../houndazzle/allOrientationsAreTheSame'
 
 const calculateColors = ({ origin, colors, color: colorConfig }) => {
 	const { mode } = state.shared.stripeCount
@@ -51,7 +52,13 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 	return true
 }
 
+const tileIsUniform = ({ colors, dazzleColors, dazzleOrientations }) => {
+	return allColorsAreTheSame({ colors }) &&
+		allColorsAreTheSame({ colors: dazzleColors }) &&
+		allOrientationsAreTheSame({ orientations: dazzleOrientations })
+}
+
 export default {
 	calculateColors,
-	allColorsAreTheSame
+	tileIsUniform
 }

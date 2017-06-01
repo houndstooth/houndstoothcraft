@@ -7,11 +7,9 @@ import transpositionUtilities from '../utilities/transpositionUtilities'
 import rotationUtilities from '../utilities/rotationUtilities'
 import gridUtilities from '../utilities/gridUtilities'
 import calculateStripes from '../utilities/calculateStripes'
-import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import substripeModulus from '../../houndazzle/substripeModulus'
-import allOrientationsAreTheSame from '../../houndazzle/allOrientationsAreTheSame'
 
 const calculateSquareCoordinates = ({ origin, sizedUnit }) => {
 	return [
@@ -125,7 +123,12 @@ const drawShape = ({
 	render({ color, coordinates })
 }
 
-const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, dazzleColor, orientation }) => {
+const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, colors, dazzleColors, dazzleOrientations }) => {
+	const color = colors[ 0 ]
+	const dazzleColor = dazzleColors[ 0 ]
+	const orientation = dazzleOrientations[ 0 ]
+	if (color.a === 0 && dazzleColor.a === 0) return
+
 	if (state.shared.color.mode === 'HOUNDAZZLE') {
 		const { substripeCount } = state.shared.color.houndazzle
 		iterator(substripeCount).forEach(substripeIndex => {
@@ -156,11 +159,11 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 	}
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzleColors, orientations }) => {
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzleColors, dazzleOrientations }) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.color.mode === 'HOUNDAZZLE') {
-			const orientation = wrappedIndex({ array: orientations, index: stripeIndex })
+			const orientation = wrappedIndex({ array: dazzleOrientations, index: stripeIndex })
 			const { substripeCount } = state.shared.color.houndazzle
 			iterator(substripeCount).forEach(substripeIndex => {
 				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzleColors })
@@ -201,10 +204,10 @@ export default ({
 					center: initialCenter,
 					size,
 					colors,
-					dazzleColors,
-					dazzleOrientations,
 					scaleFromGridCenter,
-					rotationAboutCenter
+					rotationAboutCenter,
+					dazzleColors,
+					dazzleOrientations
 				}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
 
@@ -220,51 +223,25 @@ export default ({
 	})
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
-	const { calculateColors, allColorsAreTheSame } = colorUtilities
-	colors = calculateColors({ origin: initialOrigin, colors, color: stateColor })
+	colors = colorUtilities.calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
-	const gccOn = stateStripeCount.mode === 'GINGHAM_CHEVRON_CONTINUUM'
-	const { calculateSetForTile } = gridUtilities
-	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
-	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })
-	dazzleOrientations = dazzleOrientations || calculateSetForTile({
+	dazzleColors = colorUtilities.calculateColors({
+		origin: initialOrigin,
+		colors: dazzleColors,
+		color: stateColor.houndazzle.color
+	})
+	dazzleOrientations = dazzleOrientations || gridUtilities.calculateSetForTile({
 			origin: initialOrigin,
-			grid: stateOrientation,
-			gccOn
+			grid: stateColor.houndazzle.orientation,
+			gccOn: stateStripeCount.mode === 'GINGHAM_CHEVRON_CONTINUUM'
 		})
 
-	if (
-		allColorsAreTheSame({ colors }) &&
-		allColorsAreTheSame({ colors: dazzleColors }) &&
-		allOrientationsAreTheSame({ orientations: dazzleOrientations })
-	) {
-		const color = colors[ 0 ]
-		const dazzleColor = dazzleColors[ 0 ]
-		const orientation = dazzleOrientations[ 0 ]
-		if (color.a === 0 && state.shared.color.mode !== 'HOUNDAZZLE') return
-		drawSquare({
-			sizedUnit,
-			center,
-			origin,
-			rotationAboutCenter,
-			color,
-			dazzleColor,
-			orientation
-		})
-	} else {
-		let stripes
-		if (gccOn) stripes = calculateGinghamChevronContinuumStripes({ origin: initialOrigin })
-		stripes = stripes || calculateStripes({ stripeCount: stateStripeCount.baseCount })
-
-		drawStripes({
-			sizedUnit,
-			center,
-			origin,
-			rotationAboutCenter,
-			colors,
-			stripes,
-			dazzleColors,
-			orientations: dazzleOrientations
-		})
-	}
+	const uniformTile = colorUtilities.tileIsUniform({ colors, dazzleColors, dazzleOrientations })
+	const drawFunction = uniformTile ? drawSquare : drawStripes
+	const drawArguments = { sizedUnit, center, origin, rotationAboutCenter, colors, dazzleColors, dazzleOrientations }
+	if (!uniformTile) drawArguments.stripes = calculateStripes({
+		stripeCount: stateStripeCount.baseCount,
+		origin: initialOrigin
+	})
+	drawFunction(drawArguments)
 }

@@ -17,26 +17,10 @@ export default {
 				substripeCount: 16,
 				dazzleContinuum: false,
 				orientation: {
-					set: [ 'HORIZONTAL', 'VERTICAL' ],
-					assignment: {
-						switcheroo: false,
-						flipGrain: false,
-						mode: 'WEAVE', // 'SUPERTILE'
-						offset: [ 0, 0 ],
-						supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
-						weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-					}
+					set: [ 'HORIZONTAL', 'VERTICAL' ]
 				},
 				color: {
-					set: [ TRANSPARENT, BLACK ],
-					assignment: {
-						switcheroo: false,
-						flipGrain: false,
-						mode: 'WEAVE', // 'SUPERTILE'
-						offset: [ 0, 0 ],
-						supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
-						weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-					}
+					set: [ TRANSPARENT, BLACK ]
 				}
 			},
 			assignment: {
@@ -59,7 +43,7 @@ export default {
 			}
 		},
 		tileRotationAboutTileCenter: 0,
-		baseStripeDiagonal: 'MINOR', // 'PRINICIPAL' //then maybe within stripes there should be like a stripe orientation config
+		baseStripeDiagonal: 'MINOR', // 'PRINCIPAL' //then maybe within stripes there should be like a stripe orientation config
 		gridRotationAboutCenter: 0,
 		offsetOrigin: [ 0, 0 ],
 		negativeGridToo: false,

@@ -9,14 +9,14 @@ import standard from './standard/standard'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 import houndazzlePreset from './houndazzle/houndazzlePreset'
 // import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
-// import gongramPreset from './gongram/gongramPreset'
+import gongramPreset from './gongram/gongramPreset'
 
 const presets = [
 	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	houndazzlePreset,
-	// gongramPreset,
+	gongramPreset,
 	// houndazzleContinuumPreset
 ]
 

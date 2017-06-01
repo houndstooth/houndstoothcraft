@@ -1,8 +1,10 @@
 import wrappedIndex from './wrappedIndex'
 import maybeRealign from '../../gingham-chevron-continuum/maybeRealign'
+import state from '../../shared/state/state'
 
 const calculateSetForTile = ({ origin, grid, gccOn }) => {
-	const { set, assignment } = grid
+	let { set, assignment } = grid
+	assignment = assignment || state.shared.color.assignment
 	const { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	const x = origin[ 0 ] + offset[ 0 ]

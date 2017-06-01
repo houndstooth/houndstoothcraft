@@ -10,6 +10,7 @@ import calculateStripes from '../utilities/calculateStripes'
 import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
+import substripeModulus from '../../houndazzle/substripeModulus'
 
 const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 	const halfSizedUnit = sizedUnit / 2
@@ -113,10 +114,11 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 
 	if (state.shared.color.houndazzle.on) {
 		iterator(substripeCount).forEach(substripeIndex => {
+			const maybeDazzleColor = substripeModulus({ substripeIndex, nonDazzle: color, dazzle: dazzleColor })
 			drawShape({
 				origin,
 				center,
-				color: substripeIndex % 2 === 1 ? color : dazzleColor,
+				color: maybeDazzleColor,
 				substripeIndex,
 				rotationAboutCenter,
 				sizedUnit,
@@ -136,7 +138,7 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 	}
 }
 
-const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount, dazzleColors, orientations }) => {
+const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzleColors, orientations }) => {
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
 
@@ -145,10 +147,11 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 		if (state.shared.color.houndazzle.on) {
 			const orientation = wrappedIndex({ array: orientations, index: stripeIndex })
 			iterator(substripeCount).forEach(substripeIndex => {
+				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzleColors })
 				drawShape({
 					origin,
 					center,
-					colors: substripeIndex % 2 === 0 ? colors : dazzleColors,
+					colors: maybeDazzleColors,
 					rotationAboutCenter,
 					sizedUnit,
 					stripeIndex,
@@ -178,15 +181,15 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 }
 
 export default ({
-					origin: initialOrigin,
-					center: initialCenter,
-					size,
-					colors,
-					dazzleColors,
-					dazzleOrientations,
-					scaleFromGridCenter,
-					rotationAboutCenter
-				}) => {
+	origin: initialOrigin,
+	center: initialCenter,
+	size,
+	colors,
+	dazzleColors,
+	dazzleOrientations,
+	scaleFromGridCenter,
+	rotationAboutCenter
+}) => {
 	const { unit, tileSize, stripeCount: stateStripeCount, color: stateColor } = state.shared
 
 	size = size || tileSize
@@ -226,9 +229,8 @@ export default ({
 		})
 	} else {
 		let stripes
-		let stripeCount = stateStripeCount.baseCount
 		if (gccOn) stripes = calculateGinghamChevronContinuumStripes({ origin: initialOrigin })
-		stripes = stripes || calculateStripes({ stripeCount })
+		stripes = stripes || calculateStripes({ stripeCount: stateStripeCount.baseCount })
 
 		drawStripes({
 			sizedUnit,
@@ -237,7 +239,6 @@ export default ({
 			rotationAboutCenter,
 			colors,
 			stripes,
-			stripeCount,
 			dazzleColors,
 			orientations: dazzleOrientations
 		})

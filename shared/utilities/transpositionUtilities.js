@@ -20,10 +20,10 @@ const scalePoint = ({ point, scaleFromGridCenter }) => {
 	return point
 }
 
-const calculateOrigin = ({ initialOrigin, scaleFromGridCenter }) => {
+const calculateOrigin = ({ address, scaleFromGridCenter }) => {
 	const { tileSize, offsetOrigin } = state.shared
 
-	let origin = [ initialOrigin[ 0 ] * tileSize, initialOrigin[ 1 ] * tileSize ]
+	let origin = [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ]
 	origin = scalePoint({ point: origin, scaleFromGridCenter })
 
 	if (offsetOrigin) {

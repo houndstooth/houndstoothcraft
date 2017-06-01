@@ -2,7 +2,7 @@ import wrappedIndex from './wrappedIndex'
 import maybeRealign from '../../gingham-chevron-continuum/maybeRealign'
 import state from '../../shared/state/state'
 
-const calculateSetForTile = ({ origin, grid, gccOn }) => {
+const calculateSetForTile = ({ address, grid, gccOn }) => {
 	let { set, assignment } = grid || {}
 
 	let fallbackOffset = 0
@@ -15,8 +15,8 @@ const calculateSetForTile = ({ origin, grid, gccOn }) => {
 	let { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	offset = offset || state.shared.color.assignment.offset
-	const x = origin[ 0 ] + offset[ 0 ]
-	const y = origin[ 1 ] + offset[ 1 ]
+	const x = address[ 0 ] + offset[ 0 ]
+	const y = address[ 1 ] + offset[ 1 ]
 
 	let setForTile
 
@@ -32,15 +32,15 @@ const calculateSetForTile = ({ origin, grid, gccOn }) => {
 	}
 
 	setForTile = flipGrain ? setForTile.reverse() : setForTile
-	setForTile = switcheroo ? maybeSwitcheroo({ setForTile, origin }) : setForTile
-	setForTile = gccOn ? maybeRealign({ setForTile, origin }) : setForTile
+	setForTile = switcheroo ? maybeSwitcheroo({ setForTile, address }) : setForTile
+	setForTile = gccOn ? maybeRealign({ setForTile, address }) : setForTile
 
 	return setForTile
 }
 
-const maybeSwitcheroo = ({ setForTile, origin }) => {
-	const xMod = origin[ 0 ] % 4
-	const yMod = origin[ 1 ] % 4
+const maybeSwitcheroo = ({ setForTile, address }) => {
+	const xMod = address[ 0 ] % 4
+	const yMod = address[ 1 ] % 4
 	if (
 		(xMod === 1 && yMod === 1) ||
 		(xMod === 3 && yMod === 3) ||

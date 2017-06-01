@@ -195,7 +195,7 @@ const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 }
 
 export default ({
-					origin: initialOrigin,
+					address,
 					size,
 					colors,
 					scaleFromGridCenter,
@@ -207,18 +207,15 @@ export default ({
 	size = size || tileSize
 	const sizedUnit = size * unit
 
-	const origin = transpositionUtilities.calculateOrigin({ initialOrigin, scaleFromGridCenter, sizedUnit })
+	const origin = transpositionUtilities.calculateOrigin({ address, scaleFromGridCenter, sizedUnit })
 
-	colors = colorUtilities.calculateColors({ origin: initialOrigin, colors, color: stateColor })
+	colors = colorUtilities.calculateColors({ address, colors, color: stateColor })
 
-	const dazzle = calculateDazzleForTile({ origin: initialOrigin, initialDazzle })
+	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
 	const uniformTile = colorUtilities.tileIsUniform({ colors, dazzle })
 	const drawFunction = uniformTile ? drawSquare : drawStripes
 	const drawArguments = { sizedUnit, origin, rotation, colors, dazzle }
-	if (!uniformTile) drawArguments.stripes = calculateStripes({
-		stripeCount: stateStripeCount.baseCount,
-		origin: initialOrigin
-	})
+	if (!uniformTile) drawArguments.stripes = calculateStripes({ stripeCount: stateStripeCount.baseCount, address })
 	drawFunction(drawArguments)
 }

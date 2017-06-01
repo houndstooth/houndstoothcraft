@@ -6,10 +6,10 @@ import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-conti
 import state from '../../shared/state/state'
 import iterator from './iterator'
 
-export default ({ stripeCount, origin }) => {
+export default ({ stripeCount, address }) => {
 	let stripes
 	if (state.shared.stripeCount.mode === 'GINGHAM_CHEVRON_CONTINUUM') {
-		stripes = calculateGinghamChevronContinuumStripes({ origin })
+		stripes = calculateGinghamChevronContinuumStripes({ address })
 	} else {
 		stripes = iterator(stripeCount).map(stripeIndex => {
 			const stripeStyle = state.shared.stripeStyle

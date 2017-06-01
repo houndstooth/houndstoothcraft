@@ -7,13 +7,13 @@ export default ({ tile }) => {
 	if (negativeGridToo) {
 		iterator(gridSize * 2).forEach(x => {
 			iterator(gridSize * 2).forEach(y => {
-				tile({ origin: [ x - gridSize, y - gridSize ] })
+				tile({ address: [ x - gridSize, y - gridSize ] })
 			})
 		})
 	} else {
 		iterator(gridSize).forEach(x => {
 			iterator(gridSize).forEach(y => {
-				tile({ origin: [ x, y ] })
+				tile({ address: [ x, y ] })
 			})
 		})
 	}

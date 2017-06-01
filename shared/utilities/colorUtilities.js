@@ -2,10 +2,10 @@ import state from '../state/state'
 import gridUtilities from './gridUtilities'
 import allOrientationsAreTheSame from '../../houndazzle/allOrientationsAreTheSame'
 
-const calculateColors = ({ origin, colors, color: colorConfig }) => {
+const calculateColors = ({ address, colors, color: colorConfig }) => {
 	const { mode } = state.shared.stripeCount
 
-	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: colorConfig, gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM' })
+	if (!colors) colors = gridUtilities.calculateSetForTile({ address, grid: colorConfig, gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM' })
 	if (mode === 'GINGHAM') colors = mixColors({ colors })
 
 	const opacity = colorConfig && colorConfig.opacity || state.shared.color.opacity

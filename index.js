@@ -7,7 +7,7 @@ import standard from './standard/standard'
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
-// import houndazzlePreset from './houndazzle/houndazzlePreset'
+import houndazzlePreset from './houndazzle/houndazzlePreset'
 // import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
 // import gongramPreset from './gongram/gongramPreset'
 
@@ -15,7 +15,7 @@ const presets = [
 	// cmyktoothPreset,
 	ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
-	// houndazzlePreset,
+	houndazzlePreset,
 	// gongramPreset,
 	// houndazzleContinuumPreset
 ]

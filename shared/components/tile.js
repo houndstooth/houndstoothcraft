@@ -23,32 +23,32 @@ const calculateSquareCoordinates = ({ center, sizedUnit }) => {
 }
 
 const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArguments }) => {
-	const { currentPositionAlongPerimeter, nextPositionAlongPerimeter } = coordinatesFunctionArguments
+	const { stripeStart, stripeEnd } = coordinatesFunctionArguments
 	let coordinates = []
 
-	if (currentPositionAlongPerimeter <= 1) {
+	if (stripeStart <= 1) {
 		coordinates.push([
-			origin[ 0 ] + currentPositionAlongPerimeter * sizedUnit,
+			origin[ 0 ] + stripeStart * sizedUnit,
 			origin[ 1 ]
 		])
 	} else {
 		coordinates.push([
 			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (currentPositionAlongPerimeter - 1) * sizedUnit
+			origin[ 1 ] + (stripeStart - 1) * sizedUnit
 		])
 	}
 
-	if ((nextPositionAlongPerimeter) <= 1) {
+	if (stripeEnd <= 1) {
 		coordinates.push([
-			origin[ 0 ] + (nextPositionAlongPerimeter) * sizedUnit,
+			origin[ 0 ] + stripeEnd * sizedUnit,
 			origin[ 1 ]
 		])
 		coordinates.push([
 			origin[ 0 ],
-			origin[ 1 ] + (nextPositionAlongPerimeter) * sizedUnit
+			origin[ 1 ] + stripeEnd * sizedUnit
 		])
 	} else {
-		if (currentPositionAlongPerimeter <= 1) {
+		if (stripeStart <= 1) {
 			coordinates.push([
 				origin[ 0 ] + sizedUnit,
 				origin[ 1 ]
@@ -57,16 +57,16 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 
 		coordinates.push([
 			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (nextPositionAlongPerimeter - 1) * sizedUnit
+			origin[ 1 ] + (stripeEnd - 1) * sizedUnit
 		])
 		coordinates.push([
-			origin[ 0 ] + (nextPositionAlongPerimeter - 1) * sizedUnit,
+			origin[ 0 ] + (stripeEnd - 1) * sizedUnit,
 			origin[ 1 ] + sizedUnit
 		])
 	}
 
-	if (currentPositionAlongPerimeter <= 1) {
-		if ((nextPositionAlongPerimeter) > 1) {
+	if (stripeStart <= 1) {
+		if (stripeEnd > 1) {
 			coordinates.push([
 				origin[ 0 ],
 				origin[ 1 ] + sizedUnit
@@ -74,11 +74,11 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 		}
 		coordinates.push([
 			origin[ 0 ],
-			origin[ 1 ] + currentPositionAlongPerimeter * sizedUnit
+			origin[ 1 ] + stripeStart * sizedUnit
 		])
 	} else {
 		coordinates.push([
-			origin[ 0 ] + (currentPositionAlongPerimeter - 1) * sizedUnit,
+			origin[ 0 ] + (stripeStart - 1) * sizedUnit,
 			origin[ 1 ] + sizedUnit
 		])
 	}
@@ -87,13 +87,13 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 }
 
 const drawShape = ({
-	origin,
-	center,
+	origin, //need
+	center, //need
 	colors,
 	color,
 	stripeIndex,
 	substripeIndex,
-	rotationAboutCenter,
+	rotationAboutCenter, //need
 	sizedUnit,
 	coordinatesFunction,
 	coordinatesFunctionArguments,
@@ -109,10 +109,8 @@ const drawShape = ({
 }
 
 const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, dazzleColor, orientation }) => {
-	const { substripeCount } = state.shared.color.houndazzle
-	const substripeUnit = sizedUnit / substripeCount
-
 	if (state.shared.color.mode === 'HOUNDAZZLE') {
+		const { substripeCount } = state.shared.color.houndazzle
 		iterator(substripeCount).forEach(substripeIndex => {
 			const maybeDazzleColor = substripeModulus({ substripeIndex, nonDazzle: color, dazzle: dazzleColor })
 			drawShape({
@@ -123,7 +121,10 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 				rotationAboutCenter,
 				sizedUnit,
 				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
-				coordinatesFunctionArguments: { substripeUnit, orientation }
+				coordinatesFunctionArguments: {
+					substripeUnit: sizedUnit / substripeCount,
+					orientation
+				}
 			})
 		})
 	} else {
@@ -139,13 +140,11 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 }
 
 const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, dazzleColors, orientations }) => {
-	const { substripeCount } = state.shared.color.houndazzle
-	const substripeUnit = sizedUnit / substripeCount
-
-	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
-		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
+	stripes.forEach((stripeStart, stripeIndex) => {
+		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
 		if (state.shared.color.mode === 'HOUNDAZZLE') {
 			const orientation = wrappedIndex({ array: orientations, index: stripeIndex })
+			const { substripeCount } = state.shared.color.houndazzle
 			iterator(substripeCount).forEach(substripeIndex => {
 				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzleColors })
 				drawShape({
@@ -158,9 +157,9 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 					substripeIndex,
 					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
 					coordinatesFunctionArguments: {
-						currentPositionAlongPerimeter,
-						nextPositionAlongPerimeter,
-						substripeUnit,
+						stripeStart,
+						stripeEnd,
+						substripeUnit: sizedUnit / substripeCount,
 						orientation
 					}
 				})
@@ -174,7 +173,7 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 				sizedUnit,
 				stripeIndex,
 				coordinatesFunction: calculateStripeCoordinates,
-				coordinatesFunctionArguments: { currentPositionAlongPerimeter, nextPositionAlongPerimeter }
+				coordinatesFunctionArguments: { stripeStart, stripeEnd }
 			})
 		}
 	})

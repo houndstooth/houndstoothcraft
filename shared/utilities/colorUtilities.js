@@ -52,7 +52,7 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 	return true
 }
 
-const tileIsUniform = ({ colors, dazzle }) => {
+const isTileUniform = ({ colors, dazzle }) => {
 	return allColorsAreTheSame({ colors }) &&
 		allColorsAreTheSame({ colors: dazzle.colors }) &&
 		allOrientationsAreTheSame({ orientations: dazzle.orientations })
@@ -60,5 +60,5 @@ const tileIsUniform = ({ colors, dazzle }) => {
 
 export default {
 	calculateColors,
-	tileIsUniform
+	isTileUniform
 }

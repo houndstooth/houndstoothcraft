@@ -1,12 +1,9 @@
 import state from '../state/state'
-import iterator from '../utilities/iterator'
-import wrappedIndex from '../utilities/wrappedIndex'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import calculateStripes from '../utilities/calculateStripes'
 import getOutOfHereShape from '../../houndazzle/getOutOfHereShape'
-import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
-import substripeModulus from '../../houndazzle/substripeModulus'
+import getOutOfHereStripesShape from '../../houndazzle/getOutOfHereStripesShape'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 import shape from './shape'
 
@@ -95,8 +92,8 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 	return coordinates
 }
 
-const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
-	const shapeArguments = { origin, colors, rotation, sizedUnit}
+const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
+	const shapeArguments = { origin, colors, rotation, sizedUnit }
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 		shapeArguments.dazzle = dazzle
 		getOutOfHereShape(shapeArguments)
@@ -106,39 +103,17 @@ const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	}
 }
 
-const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) => {
+const stripedTile = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
+		const coordinatesFunctionArguments = { stripeStart, stripeEnd }
+		const shapeArguments = { origin, colors, rotation, sizedUnit, stripeIndex, coordinatesFunctionArguments }
 		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
-			const orientation = wrappedIndex({ array: dazzle.orientations, index: stripeIndex })
-			const { substripeCount } = state.shared.colorConfig.houndazzle
-			iterator(substripeCount).forEach(substripeIndex => {
-				shape({
-					origin,
-					colors: substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors }),
-					rotation,
-					sizedUnit,
-					stripeIndex,
-					coordinatesFunction: calculateSubstripeStripeUnionCoordinates,
-					coordinatesFunctionArguments: {
-						stripeStart,
-						stripeEnd,
-						substripeUnit: sizedUnit / substripeCount,
-						orientation,
-						substripeIndex
-					}
-				})
-			})
+			shapeArguments.dazzle = dazzle
+			getOutOfHereStripesShape(shapeArguments)
 		} else {
-			shape({
-				origin,
-				colors,
-				rotation,
-				sizedUnit,
-				stripeIndex,
-				coordinatesFunction: calculateStripeCoordinates,
-				coordinatesFunctionArguments: { stripeStart, stripeEnd }
-			})
+			shapeArguments.coordinatesFunction = calculateStripeCoordinates
+			shape(shapeArguments)
 		}
 	})
 }
@@ -150,14 +125,14 @@ export default ({ address, size, colors, rotation, initialDazzle }) => {
 	const sizedUnit = calculateSizedUnit({ size })
 	const origin = calculateOrigin({ address, sizedUnit })
 
-	const { calculateColors, tileIsUniform } = colorUtilities
+	const { calculateColors, isTileUniform } = colorUtilities
 	colors = calculateColors({ address, colors, colorConfig })
 
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
-	const uniformTile = tileIsUniform({ colors, dazzle })
-	const drawFunction = uniformTile ? drawSquare : drawStripes
-	const drawArguments = { sizedUnit, origin, rotation, colors, dazzle }
-	if (!uniformTile) drawArguments.stripes = calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address })
-	drawFunction(drawArguments)
+	const tileIsUniform = isTileUniform({ colors, dazzle })
+	const tileFunction = tileIsUniform ? uniformTile : stripedTile
+	const tileArguments = { sizedUnit, origin, rotation, colors, dazzle }
+	if (!tileIsUniform) tileArguments.stripes = calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address })
+	tileFunction(tileArguments)
 }

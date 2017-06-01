@@ -4,13 +4,13 @@ export default {
 	// shared: {
 	// 	unit: 10,
 	// 	gridSize: 2,
-	// 	color: {
+	// 	colorConfig: {
 	// 		assignment: {
 	// 			flipGrain: true,
 	// 			switcheroo: true
 	// 		}
 	// 		houndazzle: {
-	// 			color: {
+	// 			colorConfig: {
 	// 				set: [ GREEN, BLUE ],
 	// 				assignment: {
 	// 					mode: 'SUPERTILE',

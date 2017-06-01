@@ -128,8 +128,8 @@ const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	const orientation = dazzle.orientations[ 0 ]
 	if (color.a === 0 && dazzleColor.a === 0) return
 
-	if (state.shared.color.mode === 'HOUNDAZZLE') {
-		const { substripeCount } = state.shared.color.houndazzle
+	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
+		const { substripeCount } = state.shared.colorConfig.houndazzle
 		iterator(substripeCount).forEach(substripeIndex => {
 			const maybeDazzleColor = substripeModulus({ substripeIndex, nonDazzle: color, dazzle: dazzleColor })
 			drawShape({
@@ -159,9 +159,9 @@ const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
-		if (state.shared.color.mode === 'HOUNDAZZLE') {
+		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 			const orientation = wrappedIndex({ array: dazzle.orientations, index: stripeIndex })
-			const { substripeCount } = state.shared.color.houndazzle
+			const { substripeCount } = state.shared.colorConfig.houndazzle
 			iterator(substripeCount).forEach(substripeIndex => {
 				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors })
 				drawShape({
@@ -202,14 +202,14 @@ export default ({
 					rotation,
 					initialDazzle
 				}) => {
-	const { stripeCountConfig, color } = state.shared
+	const { stripeCountConfig, colorConfig } = state.shared
 
 	const { calculateSizedUnit, calculateOrigin } = transpositionUtilities
 	const sizedUnit = calculateSizedUnit({ size })
 	const origin = calculateOrigin({ address, scaleFromGridCenter, sizedUnit })
 
 	const { calculateColors, tileIsUniform } = colorUtilities
-	colors = calculateColors({ address, colors, color })
+	colors = calculateColors({ address, colors, colorConfig })
 
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 

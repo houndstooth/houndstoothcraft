@@ -2,19 +2,19 @@ import wrappedIndex from './wrappedIndex'
 import maybeRealign from '../../gingham-chevron-continuum/maybeRealign'
 import state from '../../shared/state/state'
 
-const calculateSetForTile = ({ address, grid, gccOn }) => {
-	let { set, assignment } = grid || {}
+const calculateSetForTile = ({ address, config, gccOn }) => {
+	let { set, assignment } = config || {}
 
 	let fallbackOffset = 0
 	if (!set) {
-		set = state.shared.color.set
+		set = state.shared.colorConfig.set
 		fallbackOffset = 1
 	}
 
-	assignment = assignment || state.shared.color.assignment
+	assignment = assignment || state.shared.colorConfig.assignment
 	let { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
-	offset = offset || state.shared.color.assignment.offset
+	offset = offset || state.shared.colorConfig.assignment.offset
 	const x = address[ 0 ] + offset[ 0 ]
 	const y = address[ 1 ] + offset[ 1 ]
 

@@ -9,13 +9,13 @@ export default {
 		unit: 1,
 		gridSize: 16,
 		tileSize: 50,
-		color: {
+		colorConfig: {
 			set: [ BLACK, TRANSPARENT ],
 			mode: 'STANDARD', // 'HOUNDAZZLE'
 			houndazzle: {
 				substripeCount: 16,
 				dazzleContinuum: false,
-				orientation: { set: [ 'HORIZONTAL', 'VERTICAL' ] }
+				orientationConfig: { set: [ 'HORIZONTAL', 'VERTICAL' ] }
 			},
 			assignment: {
 				switcheroo: false,

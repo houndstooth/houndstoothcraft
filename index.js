@@ -5,7 +5,7 @@ import standard from './standard/standard'
 // import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 
 // import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
-import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
+// import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 // import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 import houndazzlePreset from './houndazzle/houndazzlePreset'
 // import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
@@ -13,7 +13,7 @@ import houndazzlePreset from './houndazzle/houndazzlePreset'
 
 const presets = [
 	// cmyktoothPreset,
-	ginghamChevronContinuumPreset,
+	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	houndazzlePreset,
 	// gongramPreset,

@@ -12,8 +12,9 @@ const calculateSetForTile = ({ origin, grid, gccOn }) => {
 	}
 
 	assignment = assignment || state.shared.color.assignment
-	const { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
+	let { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
+	offset = offset || state.shared.color.assignment.offset
 	const x = origin[ 0 ] + offset[ 0 ]
 	const y = origin[ 1 ] + offset[ 1 ]
 

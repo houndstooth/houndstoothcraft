@@ -1,3 +1,5 @@
+// import { GREEN, BLUE } from '../application/constants'
+
 export default {
 	// shared: {
 	// 	unit: 10,
@@ -6,6 +8,15 @@ export default {
 	// 		assignment: {
 	// 			flipGrain: true,
 	// 			switcheroo: true
+	// 		}
+	// 		houndazzle: {
+	// 			color: {
+	// 				set: [ GREEN, BLUE ],
+	// 				assignment: {
+	// 					mode: 'SUPERTILE',
+	// 					supertile: [ [ [ 1, 0 ], [ 1, 0 ] ], [ [ 1, 0 ], [ 1, 0 ] ] ],
+	// 				}
+	// 			}
 	// 		}
 	// 	},
 	// 	stripeCount: {

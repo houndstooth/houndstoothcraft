@@ -11,6 +11,7 @@ import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-conti
 import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import substripeModulus from '../../houndazzle/substripeModulus'
+import allOrientationsAreTheSame from '../../houndazzle/allOrientationsAreTheSame'
 
 const calculateSquareCoordinates = ({ origin, sizedUnit }) => {
 	return [
@@ -232,7 +233,11 @@ export default ({
 			gccOn
 		})
 
-	if (allColorsAreTheSame({ colors })) {
+	if (
+		allColorsAreTheSame({ colors }) &&
+		allColorsAreTheSame({ colors: dazzleColors }) &&
+		allOrientationsAreTheSame({ orientations: dazzleOrientations })
+	) {
 		const color = colors[ 0 ]
 		const dazzleColor = dazzleColors[ 0 ]
 		const orientation = dazzleOrientations[ 0 ]

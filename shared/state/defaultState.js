@@ -28,7 +28,7 @@ export default {
 			opacity: 1
 		},
 		stripeCount: {
-			mode: 'GINGHAM_CHEVRON_CONTINUUM', // 'GINGHAM', 'GINGHAM_CHEVRON_CONTINUUM'
+			mode: 'STANDARD', // 'GINGHAM', 'GINGHAM_CHEVRON_CONTINUUM'
 			baseCount: 4,
 			ginghamChevronContinuum: {
 				initial: 1,

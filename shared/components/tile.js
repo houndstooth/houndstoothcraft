@@ -139,7 +139,6 @@ const drawSquare = ({ sizedUnit, center, origin, rotationAboutCenter, color, daz
 const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, stripes, stripeCount, dazzleColors, orientations }) => {
 	const { substripeCount } = state.shared.color.houndazzle
 	const substripeUnit = sizedUnit / substripeCount
-	const stripeUnit = sizedUnit * 2 / stripeCount
 
 	stripes.forEach((currentPositionAlongPerimeter, stripeIndex) => {
 		const nextPositionAlongPerimeter = stripes[ stripeIndex + 1 ] || 2
@@ -159,7 +158,6 @@ const drawStripes = ({ sizedUnit, center, origin, rotationAboutCenter, colors, s
 						currentPositionAlongPerimeter,
 						nextPositionAlongPerimeter,
 						substripeUnit,
-						stripeUnit,
 						orientation
 					}
 				})
@@ -229,9 +227,7 @@ export default ({
 	} else {
 		let stripes
 		let stripeCount = stateStripeCount.baseCount
-		if (gccOn) {
-			stripes = calculateGinghamChevronContinuumStripes({ origin: initialOrigin })
-		}
+		if (gccOn) stripes = calculateGinghamChevronContinuumStripes({ origin: initialOrigin })
 		stripes = stripes || calculateStripes({ stripeCount })
 
 		drawStripes({

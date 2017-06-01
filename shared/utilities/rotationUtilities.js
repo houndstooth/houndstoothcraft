@@ -1,5 +1,7 @@
 import state from '../state/state'
-import { MINOR_DIAGONAL_OFFSET, PRINCIPAL_DIAGONAL_OFFSET } from '../application/constants'
+
+const MINOR_DIAGONAL_OFFSET = 0
+const PRINCIPAL_DIAGONAL_OFFSET = Math.PI / 2
 
 const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 	const sin = Math.sin(rotation)

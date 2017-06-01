@@ -1,6 +1,3 @@
-const MINOR_DIAGONAL_OFFSET = 0
-const PRINCIPAL_DIAGONAL_OFFSET = Math.PI / 2
-
 const BLACK = { 'r': 0, 'g': 0, 'b': 0, 'a': 1 }
 const WHITE = { 'r': 255, 'g': 255, 'b': 255, 'a': 1 }
 const RED = { 'r': 255, 'g': 0, 'b': 0, 'a': 1 }
@@ -14,8 +11,6 @@ const TRANSPARENT = { 'a': 0 }
 const PERIMETER_SCALAR = 2
 
 export {
-	MINOR_DIAGONAL_OFFSET,
-	PRINCIPAL_DIAGONAL_OFFSET,
 	PERIMETER_SCALAR,
 	BLACK,
 	WHITE,

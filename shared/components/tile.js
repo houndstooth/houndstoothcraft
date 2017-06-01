@@ -98,20 +98,14 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 
 const drawShape = ({
 					   origin,
-
-					   // optional, for maybe rotate
 					   rotation,
-
-					   // need one or the other. colors when stripes, color when square.
 					   colors,
-					   color,
-
 					   stripeIndex,
 					   sizedUnit,
 					   coordinatesFunction,
 					   coordinatesFunctionArguments,
 				   }) => {
-	color = color || wrappedIndex({ array: colors, index: stripeIndex })
+	const color = wrappedIndex({ array: colors, index: stripeIndex })
 	if (color.a === 0) return
 
 	let coordinates = coordinatesFunction({ origin, sizedUnit, coordinatesFunctionArguments })
@@ -123,18 +117,13 @@ const drawShape = ({
 }
 
 const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
-	const color = colors[ 0 ]
-	const dazzleColor = dazzle.colors[ 0 ]
-	const orientation = dazzle.orientations[ 0 ]
-	if (color.a === 0 && dazzleColor.a === 0) return
-
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 		const { substripeCount } = state.shared.colorConfig.houndazzle
+		const orientation = dazzle.orientations[ 0 ]
 		iterator(substripeCount).forEach(substripeIndex => {
-			const maybeDazzleColor = substripeModulus({ substripeIndex, nonDazzle: color, dazzle: dazzleColor })
 			drawShape({
 				origin,
-				color: maybeDazzleColor,
+				colors: substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors }),
 				rotation,
 				sizedUnit,
 				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
@@ -148,7 +137,7 @@ const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	} else {
 		drawShape({
 			origin,
-			color,
+			colors,
 			rotation,
 			sizedUnit,
 			coordinatesFunction: calculateSquareCoordinates
@@ -163,10 +152,9 @@ const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 			const orientation = wrappedIndex({ array: dazzle.orientations, index: stripeIndex })
 			const { substripeCount } = state.shared.colorConfig.houndazzle
 			iterator(substripeCount).forEach(substripeIndex => {
-				const maybeDazzleColors = substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors })
 				drawShape({
 					origin,
-					colors: maybeDazzleColors,
+					colors: substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors }),
 					rotation,
 					sizedUnit,
 					stripeIndex,

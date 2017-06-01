@@ -14,7 +14,7 @@ const calculateSetForTile = ({ origin, grid, gccOn }) => {
 		const { rows, columns } = weave
 		const columnsIndex = wrappedIndex({ array: columns, index: x })
 		const rowsIndex = wrappedIndex({ array: rows, index: y })
-		setForTile = [ set[ columnsIndex ], set[ rowsIndex ] ]
+		setForTile = [ set[ rowsIndex ], set[ columnsIndex ] ]
 	} else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })

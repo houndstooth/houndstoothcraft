@@ -23,20 +23,20 @@ export default {
 						flipGrain: false,
 						mode: 'WEAVE', // 'SUPERTILE'
 						offset: [ 0, 0 ],
-						supertile: [ [ [ 0, 1 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 1, 0 ] ] ],
+						supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 						weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-					},
+					}
 				},
 				color: {
-					set: [ BLACK, TRANSPARENT ],
+					set: [ TRANSPARENT, BLACK ],
 					assignment: {
 						switcheroo: false,
 						flipGrain: false,
 						mode: 'WEAVE', // 'SUPERTILE'
 						offset: [ 0, 0 ],
-						supertile: [ [ [ 0, 1 ], [ 1, 1 ] ], [ [ 0, 0 ], [ 1, 0 ] ] ],
+						supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 						weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-					},
+					}
 				}
 			},
 			assignment: {
@@ -45,7 +45,7 @@ export default {
 				mode: 'WEAVE', // 'SUPERTILE'
 				offset: [ 0, 0 ],
 				supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
-				weave: { rows: [ 0, 1 ], columns: [ 1, 0 ] }
+				weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 			},
 			opacity: 1
 		},

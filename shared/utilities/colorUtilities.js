@@ -6,7 +6,7 @@ const calculateColors = ({ origin, colors, color }) => {
 
 	if (!colors) colors = gridUtilities.calculateSetForTile({ origin, grid: color, gccOn: ginghamChevronContinuum.on })
 	if (ginghamMode) colors = mixColors({ colors })
-	if (color.opacity < 1) colors = fadeColors({ colors })
+	if (color.opacity < 1) colors = fadeColors({ colors, colorConfig: color })
 
 	return colors
 }
@@ -29,7 +29,7 @@ const mixColors = ({ colors }) => {
 	} ]
 }
 
-const fadeColors = ({ colors }) => colors.map(color => Object.assign({}, color, { a: color.a * state.shared.color.opacity }))
+const fadeColors = ({ colors, colorConfig }) => colors.map(color => Object.assign({}, color, { a: color.a * colorConfig.opacity }))
 
 const allColorsAreTheSame = ({ colors }) => {
 	for (let i = 0; i < colors.length - 1; i++) {

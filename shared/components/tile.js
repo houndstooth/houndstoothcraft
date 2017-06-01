@@ -184,6 +184,8 @@ export default ({
 					center: initialCenter,
 					size,
 					colors,
+					dazzleColors,
+					dazzleOrientations,
 					scaleFromGridCenter,
 					rotationAboutCenter
 				}) => {
@@ -193,30 +195,27 @@ export default ({
 	const sizedUnit = size * unit
 
 	const { calculateOriginAndCenter /*, isOnCanvas */ } = transpositionUtilities
-	const { calculateColors, allColorsAreTheSame } = colorUtilities
-
 	const { origin, center } = calculateOriginAndCenter({
 		initialOrigin,
 		initialCenter,
 		scaleFromGridCenter,
 		sizedUnit
 	})
-
 	// if (!isOnCanvas({ center, sizedUnit })) return
 
+	const { calculateColors, allColorsAreTheSame } = colorUtilities
 	colors = calculateColors({ origin: initialOrigin, colors, color: stateColor })
 
 	const gccOn = stateStripeCount.ginghamChevronContinuum.on
-
+	const { calculateSetForTile } = gridUtilities
 	const { color: stateDazzleColor, orientation: stateOrientation } = stateColor.houndazzle
-	let dazzleColors
 	dazzleColors = calculateColors({ origin: initialOrigin, colors: dazzleColors, color: stateDazzleColor })
-	const orientations = gridUtilities.calculateSetForTile({ origin: initialOrigin, grid: stateOrientation, gccOn })
+	dazzleOrientations = dazzleOrientations || calculateSetForTile({ origin: initialOrigin, grid: stateOrientation, gccOn })
 
 	if (allColorsAreTheSame({ colors })) {
 		const color = colors[ 0 ]
 		const dazzleColor = dazzleColors[ 0 ]
-		const orientation = orientations[ 0 ]
+		const orientation = dazzleOrientations[ 0 ]
 		if (color.a === 0 && !state.shared.color.houndazzle.on) return
 		drawSquare({
 			sizedUnit,
@@ -244,7 +243,7 @@ export default ({
 			stripes,
 			stripeCount,
 			dazzleColors,
-			orientations
+			orientations: dazzleOrientations
 		})
 	}
 }

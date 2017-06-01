@@ -2,103 +2,20 @@ import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import calculateStripes from '../utilities/calculateStripes'
-import getOutOfHereShape from '../../houndazzle/getOutOfHereShape'
-import getOutOfHereStripesShape from '../../houndazzle/getOutOfHereStripesShape'
+import houndazzleSquare from '../../houndazzle/houndazzleSquare'
+import houndazzleStriped from '../../houndazzle/houndazzleStriped'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 import shape from './shape'
-
-const calculateSquareCoordinates = ({ origin, sizedUnit }) => {
-	return [
-		[
-			origin[ 0 ],
-			origin[ 1 ]
-		],
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ]
-		],
-		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + sizedUnit
-		],
-		[
-			origin[ 0 ],
-			origin[ 1 ] + sizedUnit
-		]
-	]
-}
-
-const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArguments }) => {
-	const { stripeStart, stripeEnd } = coordinatesFunctionArguments
-	let coordinates = []
-
-	if (stripeStart <= 1) {
-		coordinates.push([
-			origin[ 0 ] + stripeStart * sizedUnit,
-			origin[ 1 ]
-		])
-	} else {
-		coordinates.push([
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (stripeStart - 1) * sizedUnit
-		])
-	}
-
-	if (stripeEnd <= 1) {
-		coordinates.push([
-			origin[ 0 ] + stripeEnd * sizedUnit,
-			origin[ 1 ]
-		])
-		coordinates.push([
-			origin[ 0 ],
-			origin[ 1 ] + stripeEnd * sizedUnit
-		])
-	} else {
-		if (stripeStart <= 1) {
-			coordinates.push([
-				origin[ 0 ] + sizedUnit,
-				origin[ 1 ]
-			])
-		}
-
-		coordinates.push([
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (stripeEnd - 1) * sizedUnit
-		])
-		coordinates.push([
-			origin[ 0 ] + (stripeEnd - 1) * sizedUnit,
-			origin[ 1 ] + sizedUnit
-		])
-	}
-
-	if (stripeStart <= 1) {
-		if (stripeEnd > 1) {
-			coordinates.push([
-				origin[ 0 ],
-				origin[ 1 ] + sizedUnit
-			])
-		}
-		coordinates.push([
-			origin[ 0 ],
-			origin[ 1 ] + stripeStart * sizedUnit
-		])
-	} else {
-		coordinates.push([
-			origin[ 0 ] + (stripeStart - 1) * sizedUnit,
-			origin[ 1 ] + sizedUnit
-		])
-	}
-
-	return coordinates
-}
+import uniform from './uniform'
+import striped from './striped'
 
 const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	const shapeArguments = { origin, colors, rotation, sizedUnit }
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 		shapeArguments.dazzle = dazzle
-		getOutOfHereShape(shapeArguments)
+		houndazzleSquare(shapeArguments)
 	} else {
-		shapeArguments.coordinatesFunction = calculateSquareCoordinates
+		shapeArguments.coordinatesFunction = uniform
 		shape(shapeArguments)
 	}
 }
@@ -110,9 +27,9 @@ const stripedTile = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 		const shapeArguments = { origin, colors, rotation, sizedUnit, stripeIndex, coordinatesFunctionArguments }
 		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 			shapeArguments.dazzle = dazzle
-			getOutOfHereStripesShape(shapeArguments)
+			houndazzleStriped(shapeArguments)
 		} else {
-			shapeArguments.coordinatesFunction = calculateStripeCoordinates
+			shapeArguments.coordinatesFunction = striped
 			shape(shapeArguments)
 		}
 	})

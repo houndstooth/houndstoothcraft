@@ -61,6 +61,9 @@ const calculateOrigin = ({ address, scaleFromGridCenter }) => {
 // 	// 2. this one tile takes up the entire canvas (but all its edges and vertices are off)
 // }
 
+const calculateSizedUnit = ({ size }) => (size || state.shared.tileSize) * state.shared.unit
+
 export default {
-	calculateOrigin
+	calculateOrigin,
+	calculateSizedUnit
 }

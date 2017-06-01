@@ -1,15 +1,14 @@
-import render from '../render/render'
 import state from '../state/state'
 import iterator from '../utilities/iterator'
 import wrappedIndex from '../utilities/wrappedIndex'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
-import rotationUtilities from '../utilities/rotationUtilities'
 import calculateStripes from '../utilities/calculateStripes'
-import calculateHoundazzleSolidTileSubstripeCoordinates from '../../houndazzle/calculateHoundazzleSolidTileSubstripeCoordinates'
+import getOutOfHereShape from '../../houndazzle/getOutOfHereShape'
 import calculateSubstripeStripeUnionCoordinates from '../../houndazzle/calculateSubstripeStripeUnionCoordinates'
 import substripeModulus from '../../houndazzle/substripeModulus'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
+import shape from './shape'
 
 const calculateSquareCoordinates = ({ origin, sizedUnit }) => {
 	return [
@@ -96,52 +95,14 @@ const calculateStripeCoordinates = ({ origin, sizedUnit, coordinatesFunctionArgu
 	return coordinates
 }
 
-const drawShape = ({
-					   origin,
-					   rotation,
-					   colors,
-					   stripeIndex,
-					   sizedUnit,
-					   coordinatesFunction,
-					   coordinatesFunctionArguments,
-				   }) => {
-	const color = wrappedIndex({ array: colors, index: stripeIndex })
-	if (color.a === 0) return
-
-	let coordinates = coordinatesFunction({ origin, sizedUnit, coordinatesFunctionArguments })
-	if (!coordinates) return
-
-	const { maybeRotateCoordinates, calculateCenter } = rotationUtilities
-	coordinates = maybeRotateCoordinates({ coordinates, center: calculateCenter({ origin, sizedUnit }), rotation })
-	render({ color, coordinates })
-}
-
 const drawSquare = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
+	const shapeArguments = { origin, colors, rotation, sizedUnit}
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
-		const { substripeCount } = state.shared.colorConfig.houndazzle
-		const orientation = dazzle.orientations[ 0 ]
-		iterator(substripeCount).forEach(substripeIndex => {
-			drawShape({
-				origin,
-				colors: substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors }),
-				rotation,
-				sizedUnit,
-				coordinatesFunction: calculateHoundazzleSolidTileSubstripeCoordinates,
-				coordinatesFunctionArguments: {
-					substripeUnit: sizedUnit / substripeCount,
-					orientation,
-					substripeIndex
-				}
-			})
-		})
+		shapeArguments.dazzle = dazzle
+		getOutOfHereShape(shapeArguments)
 	} else {
-		drawShape({
-			origin,
-			colors,
-			rotation,
-			sizedUnit,
-			coordinatesFunction: calculateSquareCoordinates
-		})
+		shapeArguments.coordinatesFunction = calculateSquareCoordinates
+		shape(shapeArguments)
 	}
 }
 
@@ -152,7 +113,7 @@ const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 			const orientation = wrappedIndex({ array: dazzle.orientations, index: stripeIndex })
 			const { substripeCount } = state.shared.colorConfig.houndazzle
 			iterator(substripeCount).forEach(substripeIndex => {
-				drawShape({
+				shape({
 					origin,
 					colors: substripeModulus({ substripeIndex, nonDazzle: colors, dazzle: dazzle.colors }),
 					rotation,
@@ -169,7 +130,7 @@ const drawStripes = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 				})
 			})
 		} else {
-			drawShape({
+			shape({
 				origin,
 				colors,
 				rotation,

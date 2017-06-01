@@ -4,14 +4,8 @@ import animations from '../state/animations'
 import currentIteration from '../state/currentIteration'
 import clear from '../render/clear'
 import canvas from '../render/canvas'
-import resetObject from './resetObject'
+import applicationUtilities from '../utilities/applicationUtilities'
 import fileSaver from 'file-saver'
-
-const deeperPath = ({ nestedPropertyPath, propertyName }) => {
-	const deeperPath = nestedPropertyPath.slice()
-	deeperPath.push(propertyName)
-	return deeperPath
-}
 
 const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
@@ -20,7 +14,7 @@ const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyP
 		} else if (value) {
 			prepareFunctionsPerStateProperty({
 				objectWithFunctions: value,
-				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName: key }),
+				nestedPropertyPath: applicationUtilities.deeperPath({ nestedPropertyPath, propertyName: key }),
 				functionsArray
 			})
 		}
@@ -28,19 +22,10 @@ const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyP
 	return functionsArray
 }
 
-const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => {
-	let childObject = parentObject
-	nestedPropertyPath.forEach(pathStep => {
-		if (!childObject[ pathStep ]) childObject[ pathStep ] = {}
-		childObject = childObject[ pathStep ]
-	})
-	return childObject
-}
-
 const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
-		let stateObjectToCallFunctionOn = accessChildObjectOrCreatePath({ parentObject: state, nestedPropertyPath })
+		let stateObjectToCallFunctionOn = applicationUtilities.accessChildObjectOrCreatePath({ parentObject: state, nestedPropertyPath })
 		stateObjectToCallFunctionOn[ propertyName ] = fn(stateObjectToCallFunctionOn[ propertyName ])
 	})
 }
@@ -82,7 +67,7 @@ const executeAnimation = ({ pattern, iterating, exportFrames, iterationFunctions
 		if (iterating) {
 			const preIterationState = JSON.parse(JSON.stringify(state))
 			executeIteration({ pattern, iterationFunctions })
-			resetObject({ objectToReset: state, objectToResetTo: preIterationState })
+			applicationUtilities.resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
 			pattern()
 		}

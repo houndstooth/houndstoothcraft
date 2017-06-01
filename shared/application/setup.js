@@ -1,4 +1,4 @@
-import setupCanvas from './shared/render/setupCanvas'
+import setupCanvas from '../render/setupCanvas'
 import defaultIterations from '../state/defaultIterations'
 import overrideIterations from '../state/overrideIterations'
 import iterations from '../state/iterations'
@@ -8,9 +8,10 @@ import animations from '../state/animations'
 import defaultState from '../state/defaultState'
 import overrideState from '../state/overrideState'
 import state from '../state/state'
-import resetObject from './resetObject'
+import applicationUtilities from '../utilities/applicationUtilities'
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
+	const { deeperPath, accessChildObjectOrCreatePath } = applicationUtilities
 	Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
 		if (overridingProperty && typeof overridingProperty === 'object' && !overridingProperty.length) {
 			applyOverrides({
@@ -29,7 +30,7 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 }
 
 const setupObject = ({ objectToSetup, defaults, presets, overrides }) => {
-	resetObject({ objectToReset: objectToSetup, objectToResetTo: defaults })
+	applicationUtilities.resetObject({ objectToReset: objectToSetup, objectToResetTo: defaults })
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: presets })
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }

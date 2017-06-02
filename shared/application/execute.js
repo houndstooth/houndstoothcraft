@@ -2,6 +2,7 @@ import state from '../state/state'
 import iterations from '../state/iterations'
 import animations from '../state/animations'
 import currentIteration from '../state/currentIteration'
+import currentAnimation from '../state/currentAnimation'
 import clear from '../render/clear'
 import canvas from '../render/canvas'
 import applicationUtilities from '../utilities/applicationUtilities'
@@ -55,11 +56,10 @@ const executeAnimation = ({ pattern, iterating, exportFrames, iterationFunctions
 	const { frameRate, refreshCanvas } = state.animation
 
 	let lastSavedFrame = 0
-	let currentFrame = 0
 	setInterval(() => {
 		if (exportFrames) {
-			if (currentFrame > lastSavedFrame) return
-			currentFrame++
+			if (currentAnimation.i > lastSavedFrame) return
+			currentAnimation.i++
 		}
 
 		if (refreshCanvas) clear()

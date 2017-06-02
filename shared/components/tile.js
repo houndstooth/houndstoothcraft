@@ -4,16 +4,13 @@ import transpositionUtilities from '../utilities/transpositionUtilities'
 import calculateStripes from '../utilities/calculateStripes'
 import houndazzleShapeWrapper from '../../houndazzle/houndazzleShapeWrapper'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
-import shape from './shape'
-import square from '../shapes/square'
-import stripe from '../shapes/stripe'
+import standardShapeWrapper from './standardShapeWrapper'
 
 const uniformTile = (args) => {
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 		houndazzleShapeWrapper(args)
 	} else {
-		args.coordinatesFunction = square
-		shape(args)
+		standardShapeWrapper(args)
 	}
 }
 
@@ -24,8 +21,7 @@ const stripedTile = (args, stripes) => {
 		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 			houndazzleShapeWrapper(args)
 		} else {
-			args.coordinatesFunction = stripe
-			shape(args)
+			standardShapeWrapper(args)
 		}
 	})
 }

@@ -2,7 +2,7 @@ import iterator from '../utilities/iterator'
 import state from '../state/state'
 
 export default ({ tile }) => {
-	const { gridSize, negativeGridToo } = state.shared
+	const { gridSize, negativeGridToo } = state
 
 	if (negativeGridToo) {
 		iterator(gridSize * 2).forEach(x => {

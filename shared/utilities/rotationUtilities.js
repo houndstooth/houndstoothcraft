@@ -31,7 +31,7 @@ const maybeRotateCoordinates = ({ coordinates, center, rotation }) => {
 		})
 	}
 
-	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state.shared
+	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
 
 	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
 	const extraRotation = offset + tileRotationAboutTileCenter

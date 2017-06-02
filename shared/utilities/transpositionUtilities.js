@@ -1,7 +1,7 @@
 import state from '../state/state'
 
 const scalePoint = ({ point }) => {
-	const { unit, canvasSize, scaleFromGridCenter } = state.shared
+	const { unit, canvasSize, scaleFromGridCenter } = state
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
 	if (scaleFromGridCenter) {
@@ -21,7 +21,7 @@ const scalePoint = ({ point }) => {
 }
 
 const calculateOrigin = ({ address }) => {
-	const { tileSize, offsetOrigin } = state.shared
+	const { tileSize, offsetOrigin } = state
 
 	let origin = [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ]
 	origin = scalePoint({ point: origin })
@@ -35,17 +35,17 @@ const calculateOrigin = ({ address }) => {
 }
 
 // const pointIsOnCanvas = point => {
-// 	const canvasSize = state.shared.canvasSize
+// 	const canvasSize = state.canvasSize
 // 	return point[0] >= 0 && point[0] < canvasSize && point[1] >= 0 && point[1] < canvasSize
 // }
 
 // const isOnCanvas ({ center, sizedUnit }) => {
 // 	let vertices = calculateSquareCoordinates({ center, sizedUnit })
 //
-// 	const { canvasSize, gridRotationAboutCenter } = state.shared
+// 	const { canvasSize, gridRotationAboutCenter } = state
 // 	const canvasCenter = [ canvasSize / 2, canvasSize / 2]
 //
-// 	if (state.shared.gridRotationAboutCenter) {
+// 	if (state.gridRotationAboutCenter) {
 // 		vertices = rotateCoordinatesAboutPoint({
 // 			point: canvasCenter,
 // 			coordinates: vertices,
@@ -61,7 +61,7 @@ const calculateOrigin = ({ address }) => {
 // 	// 2. this one tile takes up the entire canvas (but all its edges and vertices are off)
 // }
 
-const calculateSizedUnit = ({ size }) => (size || state.shared.tileSize) * state.shared.unit
+const calculateSizedUnit = ({ size }) => (size || state.tileSize) * state.unit
 
 const calculateOriginAndSizedUnit = ({ address, size }) => {
 	const sizedUnit = calculateSizedUnit({ size })

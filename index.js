@@ -17,7 +17,7 @@ const presets = [
 	// harmonitoothPreset,
 	// houndazzlePreset,
 	// gongramPreset,
-	houndazzleContinuumPreset
+	// houndazzleContinuumPreset
 ]
 
 setup({ presets })

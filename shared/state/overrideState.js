@@ -1,7 +1,6 @@
 // import { GREEN, BLUE } from '../application/constants'
 
 export default {
-	// shared: {
 	// 	unit: 10,
 	// 	gridSize: 2,
 	// 	colorConfig: {
@@ -21,8 +20,7 @@ export default {
 	// 	},
 	// 	stripeCountConfig: {
 	// 		stripeCount: 7
-	// 	}
-	// },
+	// 	},
 	// iteration: {
 	// 	startIteration: 3,
 	// 	endIteration: 3

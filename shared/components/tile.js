@@ -19,7 +19,7 @@ const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	}
 }
 
-const stripedTile = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) => {
+const stripedTile = ({ sizedUnit, origin, rotation, colors, dazzle }, stripes) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
 		const coordinatesOptions = { stripeStart, stripeEnd }
@@ -46,9 +46,10 @@ export default ({ address, size, colors, rotation, initialDazzle }) => {
 
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
-	const tileIsUniform = isTileUniform({ colors, dazzle })
-	const tileFunction = tileIsUniform ? uniformTile : stripedTile
 	const tileArguments = { sizedUnit, origin, rotation, colors, dazzle }
-	if (!tileIsUniform) tileArguments.stripes = calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address })
-	tileFunction(tileArguments)
+	if (isTileUniform({ colors, dazzle })) {
+		uniformTile(tileArguments)
+	} else {
+		stripedTile(tileArguments, calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address }))
+	}
 }

@@ -70,5 +70,6 @@ const calculateOriginAndSizedUnit = ({ address, size }) => {
 }
 
 export default {
+	calculateSizedUnit,
 	calculateOriginAndSizedUnit
 }

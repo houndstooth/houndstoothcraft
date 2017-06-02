@@ -1,5 +1,5 @@
-export default ({ origin, sizedUnit, coordinatesFunctionArguments }) => {
-	const { stripeStart, stripeEnd } = coordinatesFunctionArguments
+export default ({ origin, sizedUnit, coordinatesOptions }) => {
+	const { stripeStart, stripeEnd } = coordinatesOptions
 	let coordinates = []
 
 	if (stripeStart <= 1) {

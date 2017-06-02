@@ -22,8 +22,8 @@ const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 const stripedTile = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
 		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
-		const coordinatesFunctionArguments = { stripeStart, stripeEnd }
-		const shapeArguments = { origin, colors, rotation, sizedUnit, stripeIndex, coordinatesFunctionArguments }
+		const coordinatesOptions = { stripeStart, stripeEnd }
+		const shapeArguments = { origin, colors, rotation, sizedUnit, stripeIndex, coordinatesOptions }
 		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 			shapeArguments.dazzle = dazzle
 			houndazzleShapeWrapper(shapeArguments)

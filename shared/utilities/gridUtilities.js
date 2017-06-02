@@ -24,11 +24,14 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 		const { rows, columns } = weave
 		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
 		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
-		setForTile = [ set[ rowsIndex ], set[ columnsIndex ] ]
+		setForTile = [
+			wrappedIndex({ array: set, index: rowsIndex }),
+			wrappedIndex({ array: set, index: columnsIndex })
+		]
 	} else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: x + fallbackOffset })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y + fallbackOffset })
-		setForTile = supertileEntry.map(index => set[ index ])
+		setForTile = supertileEntry.map(index => wrappedIndex({ array: set, index }))
 	}
 
 	setForTile = flipGrain ? setForTile.reverse() : setForTile

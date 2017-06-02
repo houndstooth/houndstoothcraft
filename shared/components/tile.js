@@ -6,26 +6,6 @@ import houndazzleShapeWrapper from '../../houndazzle/houndazzleShapeWrapper'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 import standardShapeWrapper from './standardShapeWrapper'
 
-const uniformTile = (args) => {
-	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
-		houndazzleShapeWrapper(args)
-	} else {
-		standardShapeWrapper(args)
-	}
-}
-
-const stripedTile = (args, stripes) => {
-	stripes.forEach((stripeStart, stripeIndex) => {
-		args.stripeIndex = stripeIndex
-		args.coordinatesOptions = { stripeStart, stripeEnd: stripes[ stripeIndex + 1 ] || 2 }
-		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
-			houndazzleShapeWrapper(args)
-		} else {
-			standardShapeWrapper(args)
-		}
-	})
-}
-
 export default ({ address, size, colors, rotation, initialDazzle }) => {
 	const { stripeCountConfig, colorConfig } = state.shared
 
@@ -36,9 +16,16 @@ export default ({ address, size, colors, rotation, initialDazzle }) => {
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
 	const args = { sizedUnit, origin, rotation, colors, dazzle }
+	const shapeWrapper = colorConfig.mode === 'HOUNDAZZLE' ? houndazzleShapeWrapper : standardShapeWrapper
+
 	if (colorUtilities.isTileUniform({ colors, dazzle })) {
-		uniformTile(args)
+		shapeWrapper(args)
 	} else {
-		stripedTile(args, calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address }))
+		const stripes = calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address })
+		stripes.forEach((stripeStart, stripeIndex) => {
+			args.stripeIndex = stripeIndex
+			args.coordinatesOptions = { stripeStart, stripeEnd: stripes[ stripeIndex + 1 ] || 2 }
+			shapeWrapper(args)
+		})
 	}
 }

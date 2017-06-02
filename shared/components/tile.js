@@ -21,6 +21,7 @@ export default ({ address, size, colors, rotation, initialDazzle }) => {
 		const stripes = calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address })
 		stripes.forEach((stripeStart, stripeIndex) => {
 			args.stripeIndex = stripeIndex
+			args.stripeCount = stripes.length
 			args.coordinatesOptions = { stripeStart, stripeEnd: stripes[ stripeIndex + 1 ] || 2 }
 			shapeWrapper(args)
 		})

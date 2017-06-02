@@ -5,8 +5,8 @@ import calculateStripes from '../utilities/calculateStripes'
 import houndazzleShapeWrapper from '../../houndazzle/houndazzleShapeWrapper'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 import shape from './shape'
-import uniform from './uniform'
-import striped from './striped'
+import square from '../shapes/square'
+import stripe from '../shapes/stripe'
 
 const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	const shapeArguments = { origin, colors, rotation, sizedUnit }
@@ -14,7 +14,7 @@ const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 		shapeArguments.dazzle = dazzle
 		houndazzleShapeWrapper(shapeArguments)
 	} else {
-		shapeArguments.coordinatesFunction = uniform
+		shapeArguments.coordinatesFunction = square
 		shape(shapeArguments)
 	}
 }
@@ -28,7 +28,7 @@ const stripedTile = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 			shapeArguments.dazzle = dazzle
 			houndazzleShapeWrapper(shapeArguments)
 		} else {
-			shapeArguments.coordinatesFunction = striped
+			shapeArguments.coordinatesFunction = stripe
 			shape(shapeArguments)
 		}
 	})

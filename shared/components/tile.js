@@ -2,8 +2,7 @@ import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import calculateStripes from '../utilities/calculateStripes'
-import houndazzleSquare from '../../houndazzle/houndazzleSquare'
-import houndazzleStriped from '../../houndazzle/houndazzleStriped'
+import houndazzleShapeWrapper from '../../houndazzle/houndazzleShapeWrapper'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 import shape from './shape'
 import uniform from './uniform'
@@ -13,7 +12,7 @@ const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
 	const shapeArguments = { origin, colors, rotation, sizedUnit }
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 		shapeArguments.dazzle = dazzle
-		houndazzleSquare(shapeArguments)
+		houndazzleShapeWrapper(shapeArguments)
 	} else {
 		shapeArguments.coordinatesFunction = uniform
 		shape(shapeArguments)
@@ -27,7 +26,7 @@ const stripedTile = ({ sizedUnit, origin, rotation, colors, stripes, dazzle }) =
 		const shapeArguments = { origin, colors, rotation, sizedUnit, stripeIndex, coordinatesFunctionArguments }
 		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
 			shapeArguments.dazzle = dazzle
-			houndazzleStriped(shapeArguments)
+			houndazzleShapeWrapper(shapeArguments)
 		} else {
 			shapeArguments.coordinatesFunction = striped
 			shape(shapeArguments)

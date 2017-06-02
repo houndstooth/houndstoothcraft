@@ -2,12 +2,16 @@
 
 export default {
 	// 	unit: 10,
-	// 	gridSize: 2,
-	// 	colorConfig: {
-	// 		assignment: {
+		gridSize: 200,
+		colorConfig: {
+			// set: [ GREEN, BLUE ]
+			assignment: {
 	// 			flipGrain: true,
 	// 			switcheroo: true
-	// 		}
+				mode: 'SUPERTILE',
+				supertile: [ [ [ 0, 0 ], [ 0, 1 ] ], [ [ 1, 1 ], [ 1, 0 ] ] ]
+
+			}
 	// 		houndazzle: {
 	// 			colorConfig: {
 	// 				set: [ GREEN, BLUE ],
@@ -17,7 +21,7 @@ export default {
 	// 				}
 	// 			}
 	// 		}
-	// 	},
+		},
 	// 	stripeCountConfig: {
 	// 		stripeCount: 7
 	// 	},

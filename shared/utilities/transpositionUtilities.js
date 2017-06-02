@@ -1,4 +1,5 @@
 import state from '../state/state'
+import triangularNumbers from '../../harmonitooth/triangularNumbers'
 
 const scalePoint = ({ point }) => {
 	const { unit, canvasSize, scaleFromGridCenter } = state
@@ -64,9 +65,29 @@ const calculateOrigin = ({ address }) => {
 const calculateSizedUnit = ({ size }) => (size || state.tileSize) * state.unit
 
 const calculateOriginAndSizedUnit = ({ address, size }) => {
-	const sizedUnit = calculateSizedUnit({ size })
-	const origin = calculateOrigin({ address, sizedUnit })
-	return { origin, sizedUnit}
+	const myScalar = 1
+	let sizedUnit, origin
+	if (state.houndsmorphosisMode) {
+		const initialSize = Math.ceil(address[ 1 ] / 2)
+		const baseLayerY = Math.floor(Math.pow(address[1] + 1, 2) / 4) 
+		const extraY = address[ 0 ] * initialSize
+
+		const growingSize = initialSize 
+
+
+
+		// const growingSize = initialSize + 1
+		sizedUnit = address[ 1 ] % 2 === 0 ? address[0] + Math.ceil(address[ 1 ]  / 2) + 1 : Math.floor(address[ 1 ]  / 2) + 1
+		let x = triangularNumbers.triangularNumber(address[ 0 ] + growingSize) - triangularNumbers.triangularNumber(growingSize)
+		// x -= Math.floor(address[1] / 2)
+		const y = baseLayerY + extraY
+		origin = [ x * myScalar, y * myScalar ]
+	} else {
+		sizedUnit = calculateSizedUnit({ size })
+		origin = calculateOrigin({ address, sizedUnit })
+	}
+
+	return { origin, sizedUnit: sizedUnit * myScalar }
 }
 
 export default {

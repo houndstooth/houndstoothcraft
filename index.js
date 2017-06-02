@@ -15,9 +15,9 @@ const presets = [
 	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
-	houndazzlePreset,
+	// houndazzlePreset,
 	// gongramPreset,
-	// houndazzleContinuumPreset
+	houndazzleContinuumPreset
 ]
 
 setup({ presets })

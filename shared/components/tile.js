@@ -8,28 +8,24 @@ import shape from './shape'
 import square from '../shapes/square'
 import stripe from '../shapes/stripe'
 
-const uniformTile = ({ sizedUnit, origin, rotation, colors, dazzle }) => {
-	const shapeArguments = { origin, colors, rotation, sizedUnit }
+const uniformTile = (args) => {
 	if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
-		shapeArguments.dazzle = dazzle
-		houndazzleShapeWrapper(shapeArguments)
+		houndazzleShapeWrapper(args)
 	} else {
-		shapeArguments.coordinatesFunction = square
-		shape(shapeArguments)
+		args.coordinatesFunction = square
+		shape(args)
 	}
 }
 
-const stripedTile = ({ sizedUnit, origin, rotation, colors, dazzle }, stripes) => {
+const stripedTile = (args, stripes) => {
 	stripes.forEach((stripeStart, stripeIndex) => {
-		const stripeEnd = stripes[ stripeIndex + 1 ] || 2
-		const coordinatesOptions = { stripeStart, stripeEnd }
-		const shapeArguments = { origin, colors, rotation, sizedUnit, stripeIndex, coordinatesOptions }
+		args.stripeIndex = stripeIndex
+		args.coordinatesOptions = { stripeStart, stripeEnd: stripes[ stripeIndex + 1 ] || 2 }
 		if (state.shared.colorConfig.mode === 'HOUNDAZZLE') {
-			shapeArguments.dazzle = dazzle
-			houndazzleShapeWrapper(shapeArguments)
+			houndazzleShapeWrapper(args)
 		} else {
-			shapeArguments.coordinatesFunction = stripe
-			shape(shapeArguments)
+			args.coordinatesFunction = stripe
+			shape(args)
 		}
 	})
 }
@@ -43,10 +39,10 @@ export default ({ address, size, colors, rotation, initialDazzle }) => {
 
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
-	const tileArguments = { sizedUnit, origin, rotation, colors, dazzle }
+	const args = { sizedUnit, origin, rotation, colors, dazzle }
 	if (colorUtilities.isTileUniform({ colors, dazzle })) {
-		uniformTile(tileArguments)
+		uniformTile(args)
 	} else {
-		stripedTile(tileArguments, calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address }))
+		stripedTile(args, calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address }))
 	}
 }

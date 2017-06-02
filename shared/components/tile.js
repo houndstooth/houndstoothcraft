@@ -37,17 +37,14 @@ const stripedTile = ({ sizedUnit, origin, rotation, colors, dazzle }, stripes) =
 export default ({ address, size, colors, rotation, initialDazzle }) => {
 	const { stripeCountConfig, colorConfig } = state.shared
 
-	const { calculateSizedUnit, calculateOrigin } = transpositionUtilities
-	const sizedUnit = calculateSizedUnit({ size })
-	const origin = calculateOrigin({ address, sizedUnit })
+	const { origin, sizedUnit } = transpositionUtilities.calculateOriginAndSizedUnit({ address, size })
 
-	const { calculateColors, isTileUniform } = colorUtilities
-	colors = calculateColors({ address, colors, colorConfig })
+	colors = colorUtilities.calculateColors({ address, colors, colorConfig })
 
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
 	const tileArguments = { sizedUnit, origin, rotation, colors, dazzle }
-	if (isTileUniform({ colors, dazzle })) {
+	if (colorUtilities.isTileUniform({ colors, dazzle })) {
 		uniformTile(tileArguments)
 	} else {
 		stripedTile(tileArguments, calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address }))

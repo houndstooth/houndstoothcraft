@@ -63,7 +63,12 @@ const calculateOrigin = ({ address }) => {
 
 const calculateSizedUnit = ({ size }) => (size || state.shared.tileSize) * state.shared.unit
 
+const calculateOriginAndSizedUnit = ({ address, size }) => {
+	const sizedUnit = calculateSizedUnit({ size })
+	const origin = calculateOrigin({ address, sizedUnit })
+	return { origin, sizedUnit}
+}
+
 export default {
-	calculateOrigin,
-	calculateSizedUnit
+	calculateOriginAndSizedUnit
 }

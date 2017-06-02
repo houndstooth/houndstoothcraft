@@ -1,9 +1,7 @@
 import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
-	houndsmorphosis: {
-		endIteration: 32
-	},
+	houndsmorphosisMode: false,
 	canvasSize: 800,
 	unit: 1,
 	gridSize: 16,

@@ -10,6 +10,7 @@ import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
 import houndazzlePreset from './houndazzle/houndazzlePreset'
 import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
 import gongramPreset from './gongram/gongramPreset'
+import houndsmorphosisPreset from './houndsmorphosis/houndsmorphosisPreset'
 
 const presets = [
 	// cmyktoothPreset,
@@ -17,7 +18,8 @@ const presets = [
 	// harmonitoothPreset,
 	// houndazzlePreset,
 	// gongramPreset,
-	// houndazzleContinuumPreset
+	// houndazzleContinuumPreset,
+	houndsmorphosisPreset
 ]
 
 setup({ presets })

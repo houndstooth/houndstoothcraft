@@ -37,7 +37,7 @@ const adjustOrigin = ({ origin }) => {
 
 const calculateSizedUnit = () => state.tileSize * state.unit
 
-const standard = ({ address }) => ({
+const standardOriginAndSizedUnit = ({ address }) => ({
 	sizedUnit: calculateSizedUnit(),
 	origin: adjustOrigin({ 
 		origin: [ address[ 0 ] * state.tileSize, address[ 1 ] * state.tileSize ] 

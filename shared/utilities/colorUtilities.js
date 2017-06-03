@@ -53,9 +53,14 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 }
 
 const isTileUniform = ({ colors, dazzle }) => {
-	return allColorsAreTheSame({ colors }) &&
-		allColorsAreTheSame({ colors: dazzle.colors }) &&
-		allOrientationsAreTheSame({ orientations: dazzle.orientations })
+	const colorsAreTheSame = allColorsAreTheSame({ colors })
+	if (state.colorConfig.mode === 'HOUNDAZZLE') {
+		return colorsAreTheSame && 
+			allColorsAreTheSame({ colors: dazzle.colors }) && 
+			allOrientationsAreTheSame({ orientations: dazzle.orientations })
+	} else {
+		return colorsAreTheSame
+	}
 }
 
 export default {

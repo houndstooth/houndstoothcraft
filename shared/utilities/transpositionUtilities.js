@@ -41,16 +41,16 @@ const calculateOrigin = ({ address }) => {
 	return adjustOrigin({ origin })
 }
 
-const calculateSizedUnit = ({ size }) => (size || state.tileSize) * state.unit
+const calculateSizedUnit = () => state.tileSize * state.unit
 
-const calculateOriginAndSizedUnit = ({ address, size }) => {
+const calculateOriginAndSizedUnit = ({ address }) => {
 	let sizedUnit, origin
 	if (state.houndsmorphosisMode) {
 		const { calculateHoundsmorphosisOrigin, calculateHoundsmorphosisSizedUnit } = houndsmorphosisTranspositionUtilities
 		sizedUnit = calculateHoundsmorphosisSizedUnit({ address })
 		origin = calculateHoundsmorphosisOrigin({ address })
 	} else {
-		sizedUnit = calculateSizedUnit({ size })
+		sizedUnit = calculateSizedUnit()
 		origin = calculateOrigin({ address, sizedUnit })
 	}
 	return { origin, sizedUnit }

@@ -3,8 +3,8 @@ import rotationUtilities from '../utilities/rotationUtilities'
 import wrappedIndex from '../utilities/wrappedIndex'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 
-export default ({ address, size, rotation, colors, stripeIndex, coordinatesFunction, coordinatesOptions }) => {
-	const { origin, sizedUnit } = transpositionUtilities.calculateOriginAndSizedUnit({ address, size })
+export default ({ address, rotation, colors, stripeIndex, coordinatesFunction, coordinatesOptions }) => {
+	const { origin, sizedUnit } = transpositionUtilities.calculateOriginAndSizedUnit({ address })
 
 	const color = wrappedIndex({ array: colors, index: stripeIndex })
 	if (color.a === 0) return

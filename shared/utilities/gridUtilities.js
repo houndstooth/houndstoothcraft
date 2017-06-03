@@ -29,9 +29,9 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 			wrappedIndex({ array: set, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
-		const supertileColumn = wrappedIndex({ array: supertile, index: x + fallbackOffset })
-		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y + fallbackOffset })
-		setForTile = supertileEntry.map(index => wrappedIndex({ array: set, index }))
+		const supertileColumn = wrappedIndex({ array: supertile, index: x })
+		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
+		setForTile = supertileEntry.map(index => wrappedIndex({ array: set, index: index + fallbackOffset }))
 	}
 
 	setForTile = flipGrain ? setForTile.reverse() : setForTile

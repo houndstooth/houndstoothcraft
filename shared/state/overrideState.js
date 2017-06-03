@@ -1,24 +1,14 @@
 // import { GREEN, BLUE } from '../application/constants'
 
 export default {
-	// 	unit: 10,
-		gridSize: 200,
-		colorConfig: {
+		// unit: 10,
+		// gridSize: 10,
+		// colorConfig: {
 			// set: [ GREEN, BLUE ]
-			assignment: {
+			// assignment: {
 	// 			flipGrain: true,
 	// 			switcheroo: true
-				mode: 'SUPERTILE',
-				supertile: [ 
-					[ [ 0, 0 ], [ 0, 2 ] ], 
-					[ [ 1, 1 ], [ 1, 2 ] ],
-					[ [ 2, 2 ], [ 2, 3 ] ],
-					[ [ 3, 3 ], [ 3, 4 ] ],
-					[ [ 4, 4 ], [ 4, 0 ] ],
-
-				]
-
-			}
+			// }
 	// 		houndazzle: {
 	// 			colorConfig: {
 	// 				set: [ GREEN, BLUE ],
@@ -28,7 +18,9 @@ export default {
 	// 				}
 	// 			}
 	// 		}
-		},
+		// },
+		// negativeGridToo: true,
+		// offsetOrigin: [ 500, 500 ],
 	// 	stripeCountConfig: {
 	// 		stripeCount: 7
 	// 	},

@@ -10,8 +10,11 @@ const TRANSPARENT = { 'a': 0 }
 
 const PERIMETER_SCALAR = 2
 
+const ANIMATION_RATE = 1.005
+
 export {
 	PERIMETER_SCALAR,
+	ANIMATION_RATE,
 	BLACK,
 	WHITE,
 	RED,

@@ -12,7 +12,7 @@ import applicationUtilities from '../utilities/applicationUtilities'
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
 	const { deeperPath, accessChildObjectOrCreatePath } = applicationUtilities
-	Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
+	overrides && Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
 		if (overridingProperty && typeof overridingProperty === 'object' && !overridingProperty.length) {
 			applyOverrides({
 				objectWithPropertiesToOverride,

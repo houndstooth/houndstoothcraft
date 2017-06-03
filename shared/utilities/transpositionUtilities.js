@@ -1,5 +1,5 @@
 import state from '../state/state'
-import houndsmorphosisTranspositionUtilities from '../../houndsmorphosis/houndsmorphosisTranspositionUtilities'
+import houndsmorphosisOriginAndSizedUnit from '../../houndsmorphosis/houndsmorphosisOriginAndSizedUnit'
 
 const scaleOrigin = ({ origin }) => {
 	const { unit, canvasSize, scaleFromGridCenter } = state
@@ -35,25 +35,18 @@ const adjustOrigin = ({ origin }) => {
 	return maybeOffsetOrigin({ origin })
 }
 
-const calculateOrigin = ({ address }) => {
-	const { tileSize, offsetOrigin } = state
-	let origin = [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ]
-	return adjustOrigin({ origin })
-}
-
 const calculateSizedUnit = () => state.tileSize * state.unit
 
+const standard = ({ address }) => ({
+	sizedUnit: calculateSizedUnit(),
+	origin: adjustOrigin({ 
+		origin: [ address[ 0 ] * state.tileSize, address[ 1 ] * state.tileSize ] 
+	})
+})
+
 const calculateOriginAndSizedUnit = ({ address }) => {
-	let sizedUnit, origin
-	if (state.houndsmorphosisMode) {
-		const { calculateHoundsmorphosisOrigin, calculateHoundsmorphosisSizedUnit } = houndsmorphosisTranspositionUtilities
-		sizedUnit = calculateHoundsmorphosisSizedUnit({ address })
-		origin = calculateHoundsmorphosisOrigin({ address })
-	} else {
-		sizedUnit = calculateSizedUnit()
-		origin = calculateOrigin({ address, sizedUnit })
-	}
-	return { origin, sizedUnit }
+	const originAndSizedUnitFunction = state.houndsmorphosisMode ? houndsmorphosisOriginAndSizedUnit : standardOriginAndSizedUnit
+	return originAndSizedUnitFunction({ address })
 }
 
 export default {

@@ -6,11 +6,29 @@ const quarterSquareNumber = n => Math.floor(Math.pow(n, 2) / 4)
 
 const trapezoidalNumber = ({ start, height }) => {
     return triangularNumber(start + height) - triangularNumber(start)
-} 
+}
+
+const termialRoot = ({ initial, delta, n }) => {
+    return ( 
+        Math.sqrt(
+            Math.pow(
+                2 * initial - delta, 
+                2
+            ) 
+            + 
+            8 * delta * n
+        ) 
+        - 
+        2 * initial + delta 
+    ) / ( 
+        2 * delta 
+    )
+}
 
 export default {
     triangularNumber,
     triangularRoot,
     quarterSquareNumber,
-    trapezoidalNumber
+    trapezoidalNumber,
+    termialRoot
 }

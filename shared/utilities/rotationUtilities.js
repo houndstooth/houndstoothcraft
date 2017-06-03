@@ -22,24 +22,16 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 
 const calculateCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
 
-const maybeRotateCoordinates = ({ coordinates, center, rotation }) => {
-	if (rotation) {
-		coordinates = rotateCoordinatesAboutPoint({
-			point: center,
-			coordinates: coordinates,
-			rotation
-		})
-	}
-
+const maybeRotateCoordinates = ({ coordinates, center }) => {
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
 
 	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const extraRotation = offset + tileRotationAboutTileCenter
-	if (extraRotation !== 0) {
+	const tileRotation = offset + tileRotationAboutTileCenter
+	if (tileRotation !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
 			coordinates: coordinates,
-			rotation: extraRotation
+			rotation: tileRotation
 		})
 	}
 

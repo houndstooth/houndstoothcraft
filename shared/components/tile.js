@@ -5,14 +5,14 @@ import houndazzleShapeWrapper from '../../houndazzle/houndazzleShapeWrapper'
 import calculateDazzleForTile from '../../houndazzle/calculateDazzleForTile'
 import standardShapeWrapper from './standardShapeWrapper'
 
-export default ({ address, rotation, initialDazzle }) => {
+export default ({ address, initialDazzle }) => {
 	const { stripeCountConfig, colorConfig } = state
 
 	const colors = colorUtilities.calculateColors({ address, colorConfig })
 
 	const dazzle = calculateDazzleForTile({ address, initialDazzle })
 
-	const args = { address, colors, rotation, dazzle }
+	const args = { address, colors, dazzle }
 	const shapeWrapper = colorConfig.mode === 'HOUNDAZZLE' ? houndazzleShapeWrapper : standardShapeWrapper
 
 	if (colorUtilities.isTileUniform({ colors, dazzle })) {

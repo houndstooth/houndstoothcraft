@@ -21,6 +21,7 @@ export default {
 		// },
 		// negativeGridToo: true,
 		// offsetOrigin: [ 500, 500 ],
+		// baseStripeDiagonal: 'PRINCIPAL',
 	// 	stripeCountConfig: {
 	// 		stripeCount: 7
 	// 	},

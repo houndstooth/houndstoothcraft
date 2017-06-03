@@ -3,7 +3,7 @@ import rotationUtilities from '../utilities/rotationUtilities'
 import wrappedIndex from '../utilities/wrappedIndex'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 
-export default ({ address, rotation, colors, stripeIndex, coordinatesFunction, coordinatesOptions }) => {
+export default ({ address, colors, stripeIndex, coordinatesFunction, coordinatesOptions }) => {
 	const { origin, sizedUnit } = transpositionUtilities.calculateOriginAndSizedUnit({ address })
 
 	const color = wrappedIndex({ array: colors, index: stripeIndex })
@@ -13,6 +13,6 @@ export default ({ address, rotation, colors, stripeIndex, coordinatesFunction, c
 	if (!coordinates) return
 
 	const { maybeRotateCoordinates, calculateCenter } = rotationUtilities
-	coordinates = maybeRotateCoordinates({ coordinates, center: calculateCenter({ origin, sizedUnit }), rotation })
+	coordinates = maybeRotateCoordinates({ coordinates, center: calculateCenter({ origin, sizedUnit }) })
 	render({ color, coordinates })
 }

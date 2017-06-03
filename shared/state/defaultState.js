@@ -30,7 +30,7 @@ export default {
 		ginghamChevronContinuum: { initial: 1, delta: 1 }
 	},
 	tileRotationAboutTileCenter: 0,
-	baseStripeDiagonal: 'MINOR', // 'PRINCIPAL'
+	baseStripeDiagonal: 'MINOR',
 	gridRotationAboutCenter: 0,
 	offsetOrigin: [ 0, 0 ],
 	negativeGridToo: false,

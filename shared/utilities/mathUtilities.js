@@ -2,7 +2,15 @@ const triangularNumber = n => n * (n + 1) / 2
 
 const triangularRoot = n => 0.5 * Math.sqrt(8 * n + 1) - 0.5
 
+const quarterSquareNumber = n => Math.floor(Math.pow(n, 2) / 4)
+
+const trapezoidalNumber = ({ start, height }) => {
+    return triangularNumber(start + height) - triangularNumber(start)
+} 
+
 export default {
     triangularNumber,
-    triangularRoot
+    triangularRoot,
+    quarterSquareNumber,
+    trapezoidalNumber
 }

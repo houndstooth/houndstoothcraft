@@ -1,5 +1,5 @@
 import state from '../state/state'
-import houndsmorphosisOriginAndSizedUnit from '../../houndsmorphosis/houndsmorphosisOriginAndSizedUnit'
+import houndsmorphosisOriginAndVector from '../../houndsmorphosis/houndsmorphosisOriginAndVector'
 
 const scaleOrigin = ({ origin }) => {
 	const { unit, canvasSize, scaleFromGridCenter } = state
@@ -35,22 +35,22 @@ const adjustOrigin = ({ origin }) => {
 	return maybeOffsetOrigin({ origin })
 }
 
-const calculateSizedUnit = () => state.tileSize * state.unit
+const calculateVector = () => [ state.vector[ 0 ] * state.unit, state.vector[ 1 ] * state.unit ]
 
-const standardOriginAndSizedUnit = ({ address }) => ({
-	sizedUnit: calculateSizedUnit(),
+const standardOriginAndVector = ({ address }) => ({
+	vector: calculateVector(),
 	origin: adjustOrigin({ 
-		origin: [ address[ 0 ] * state.tileSize, address[ 1 ] * state.tileSize ] 
+		origin: [ address[ 0 ] * state.vector[ 0 ], address[ 1 ] * state.vector[ 1 ] ] 
 	})
 })
 
-const calculateOriginAndSizedUnit = ({ address }) => {
-	const originAndSizedUnitFunction = state.houndsmorphosisMode ? houndsmorphosisOriginAndSizedUnit : standardOriginAndSizedUnit
-	return originAndSizedUnitFunction({ address })
+const calculateOriginAndVector = ({ address }) => {
+	const originAndVectorFunction = state.houndsmorphosisMode ? houndsmorphosisOriginAndVector : standardOriginAndVector
+	return originAndVectorFunction({ address })
 }
 
 export default {
 	adjustOrigin,
-	calculateSizedUnit,
-	calculateOriginAndSizedUnit
+	calculateVector,
+	calculateOriginAndVector
 }

@@ -25,8 +25,8 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
 		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
 		setForTile = [
-			wrappedIndex({ array: set, index: columnsIndex }),
-			wrappedIndex({ array: set, index: rowsIndex })
+			wrappedIndex({ array: set, index: rowsIndex }),
+			wrappedIndex({ array: set, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })

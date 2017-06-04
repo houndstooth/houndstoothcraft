@@ -1,5 +1,5 @@
 export default {
-	// 	tileSize: p => p / 2,
+	// 	vector: p => [ p[ 0 ] / 2, p[ 1 ] / 2 ],
 	// 	colorConfig: {
 	// 		opacity: p => p / 2
 	// 	}

@@ -1,20 +1,20 @@
-export default ({ origin, vector }) => {
+export default ({ origin, sizedUnit }) => {
 	return [
 		[
 			origin[ 0 ],
 			origin[ 1 ]
 		],
 		[
-			origin[ 0 ] + vector[ 0 ],
+			origin[ 0 ] + sizedUnit,
 			origin[ 1 ]
 		],
 		[
-			origin[ 0 ] + vector[ 0 ],
-			origin[ 1 ] + vector[ 1 ]
+			origin[ 0 ] + sizedUnit,
+			origin[ 1 ] + sizedUnit
 		],
 		[
 			origin[ 0 ],
-			origin[ 1 ] + vector[ 1 ]
+			origin[ 1 ] + sizedUnit
 		]
 	]
 }

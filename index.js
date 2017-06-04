@@ -2,6 +2,7 @@ import setup from './shared/application/setup'
 import execute from './shared/application/execute'
 
 import standard from './standard/standard'
+import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 
 import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'

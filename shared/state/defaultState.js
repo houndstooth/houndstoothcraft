@@ -5,7 +5,7 @@ export default {
 	canvasSize: 800,
 	unit: 1,
 	gridSize: 16,
-	vector: [ 50, 50 ],
+	tileSize: 50,
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],
 		mode: 'STANDARD', // 'HOUNDAZZLE'

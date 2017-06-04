@@ -13,12 +13,8 @@ export default ({ address, colors, stripeIndex, coordinatesFunction, coordinates
 	let coordinates = coordinatesFunction({ origin, sizedUnit, coordinatesOptions })
 	if (!coordinates) return
 
-	const { maybeRotateCoordinates, calculateCenter, calculateRotation } = rotationUtilities
-	coordinates = maybeRotateCoordinates({ 
-        coordinates, 
-        center: calculateCenter({ origin, sizedUnit }), 
-        rotation: calculateRotation({ address })
-    })
+	const { maybeRotateCoordinates, calculateCenter } = rotationUtilities
+	coordinates = maybeRotateCoordinates({ coordinates, center: calculateCenter({ origin, sizedUnit }) })
     
 	render({ color, coordinates })
 }

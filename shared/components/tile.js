@@ -10,7 +10,7 @@ export default ({ address }) => {
 
 	const colors = colorUtilities.calculateColors({ address, colorConfig })
 
-	const dazzle = calculateDazzle({ address })
+	const dazzle = colorConfig.mode === 'HOUNDAZZLE' && calculateDazzle({ address })
 
 	const args = { address, colors, dazzle }
 	const shapeWrapper = colorConfig.mode === 'HOUNDAZZLE' ? houndazzleShapeWrapper : standardShapeWrapper

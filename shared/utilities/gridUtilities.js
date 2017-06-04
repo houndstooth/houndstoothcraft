@@ -10,9 +10,10 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 		set = state.colorConfig.set
 		fallbackOffset = 1
 	}
+	
 
 	assignment = assignment || state.colorConfig.assignment
-	let { offset, mode, supertile, alternateSupertile, weave, flipGrain, switcheroo } = assignment
+	let { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	offset = offset || state.colorConfig.assignment.offset
 	const x = address[ 0 ] + offset[ 0 ]
@@ -25,11 +26,10 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
 		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
 		setForTile = [
-			wrappedIndex({ array: set, index: columnsIndex }),
-			wrappedIndex({ array: set, index: rowsIndex })
+			wrappedIndex({ array: set, index: rowsIndex }),
+			wrappedIndex({ array: set, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
-		if (state.houndsmorphosisMode && address[1] < 0) supertile = alternateSupertile
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
 		setForTile = supertileEntry.map(index => wrappedIndex({ array: set, index: index + fallbackOffset }))
@@ -38,6 +38,7 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 	setForTile = flipGrain ? setForTile.reverse() : setForTile
 	setForTile = switcheroo ? maybeSwitcheroo({ setForTile, address }) : setForTile
 	setForTile = gccOn ? maybeRealign({ setForTile, address }) : setForTile
+	if (state.houndsmorphosisMode && address[1] < 0) setForTile = setForTile.reverse()
 
 	return setForTile
 }

@@ -22,11 +22,11 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 
 const calculateCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
 
-const maybeRotateCoordinates = ({ coordinates, center }) => {
+const maybeRotateCoordinates = ({ coordinates, center, rotation }) => {
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
 
 	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const tileRotation = offset + tileRotationAboutTileCenter
+	const tileRotation = offset + tileRotationAboutTileCenter + rotation
 	if (tileRotation !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
@@ -46,7 +46,14 @@ const maybeRotateCoordinates = ({ coordinates, center }) => {
 	return coordinates
 }
 
+const calculateRotation = ({ address }) => {
+	let rotation = 0
+    if (state.houndsmorphosisMode && address[1] >= 0) rotation += Math.PI
+    return rotation
+}
+
 export default {
 	maybeRotateCoordinates,
-	calculateCenter
+	calculateCenter,
+	calculateRotation
 }

@@ -21,18 +21,17 @@ const scaleOrigin = ({ origin }) => {
 	return origin
 }
 
-const maybeOffsetOrigin = ({ origin }) => {
-	const offsetOrigin = state.offsetOrigin
-	if (offsetOrigin) {
-		origin[ 0 ] += offsetOrigin[ 0 ]
-		origin[ 1 ] += offsetOrigin[ 1 ]
-	}
-	return origin
+const offsetOrigin = ({ origin }) => {
+	return [
+		origin[ 0 ] += state.offsetOrigin[ 0 ],
+		origin[ 1 ] += state.offsetOrigin[ 1 ]
+	]
 }
 
 const adjustOrigin = ({ origin }) => {
 	origin = scaleOrigin({ origin })
-	return maybeOffsetOrigin({ origin })
+	if (state.offsetOrigin) origin = offsetOrigin({ origin })
+	return origin
 }
 
 const getSizedUnit = () => state.tileSize * state.unit

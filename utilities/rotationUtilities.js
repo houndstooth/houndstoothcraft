@@ -22,7 +22,9 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 
 const calculateCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
 
-const maybeRotateCoordinates = ({ coordinates, center }) => {
+const applyRotation = ({ coordinates, origin, sizedUnit }) => {
+	const center = calculateCenter({ origin, sizedUnit })
+
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
 
 	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
@@ -47,6 +49,5 @@ const maybeRotateCoordinates = ({ coordinates, center }) => {
 }
 
 export default {
-	maybeRotateCoordinates,
-	calculateCenter
+	applyRotation
 }

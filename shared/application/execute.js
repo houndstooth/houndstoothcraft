@@ -7,6 +7,7 @@ import clear from '../render/clear'
 import canvas from '../render/canvas'
 import applicationUtilities from '../utilities/applicationUtilities'
 import fileSaver from 'file-saver'
+import grid from '../components/grid'
 
 const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
@@ -31,28 +32,28 @@ const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	})
 }
 
-const executeIteration = ({ pattern, iterationFunctions }) => {
+const executeIteration = ({ iterationFunctions }) => {
 	currentIteration.i = 0
 	const { startIteration, endIteration } = state.iteration
 
 	for (let n = 0; n <= endIteration; n++) {
-		if (n >= startIteration) pattern()
+		if (n >= startIteration) grid()
 		callFunctionsPerStateProperty({ functionObjects: iterationFunctions })
 		currentIteration.i++
 	}
 }
 
-const executePattern = ({ pattern, iterating, iterationFunctions }) => {
+const executePattern = ({ iterating, iterationFunctions }) => {
 	if (iterating) {
-		executeIteration({ pattern, iterationFunctions })
+		executeIteration({ iterationFunctions })
 	} else {
-		// console.time('pattern');
-		pattern()
-		// console.timeEnd('pattern');
+		// console.time('grid');
+		grid()
+		// console.timeEnd('grid');
 	}
 }
 
-const executeAnimation = ({ pattern, iterating, exportFrames, iterationFunctions }) => {
+const executeAnimation = ({ iterating, exportFrames, iterationFunctions }) => {
 	const { frameRate, refreshCanvas } = state.animation
 
 	let lastSavedFrame = 0
@@ -66,10 +67,10 @@ const executeAnimation = ({ pattern, iterating, exportFrames, iterationFunctions
 
 		if (iterating) {
 			const preIterationState = JSON.parse(JSON.stringify(state))
-			executeIteration({ pattern, iterationFunctions })
+			executeIteration({ iterationFunctions })
 			applicationUtilities.resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
-			pattern()
+			grid()
 		}
 
 		if (exportFrames) {
@@ -85,10 +86,9 @@ const executeAnimation = ({ pattern, iterating, exportFrames, iterationFunctions
 	}, frameRate)
 }
 
-export default ({ pattern, iterating, animating, exportFrames }) => {
+export default ({ iterating, animating, exportFrames }) => {
 	const executionFunction = animating ? executeAnimation : executePattern
 	executionFunction({
-		pattern,
 		iterating,
 		exportFrames,
 		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })

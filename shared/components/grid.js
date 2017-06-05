@@ -1,7 +1,8 @@
 import iterator from '../utilities/iterator'
 import state from '../state/state'
+import tile from './tile'
 
-export default ({ tile }) => {
+export default () => {
 	const { gridSize, negativeGridToo } = state
 
 	if (negativeGridToo) {

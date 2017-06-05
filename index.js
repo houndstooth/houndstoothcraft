@@ -1,8 +1,6 @@
 import setup from './shared/application/setup'
 import execute from './shared/application/execute'
 
-import standard from './standard/standard'
-
 import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
 import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
@@ -24,7 +22,6 @@ const presets = [
 setup({ presets })
 
 execute({
-	pattern: standard,
 	iterating: true,
 	animating: false,
 	exportFrames: false

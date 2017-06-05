@@ -1,9 +1,9 @@
 import maybeRealign from '../variations/gingham-chevron-continuum/maybeRealign'
-import calculateHoundsmorphosisSupertile from '../variations/houndsmorphosis/calculateHoundsmorphosisSupertile'
+import getHoundsmorphosisSupertile from '../variations/houndsmorphosis/getHoundsmorphosisSupertile'
 import wrappedIndex from './wrappedIndex'
 import state from '../state/state'
 
-const calculateSetForTile = ({ address, config, gccOn }) => {
+const getSetForTile = ({ address, config, gccOn }) => {
 	let { set: setForPattern, assignment } = config || {}
 
 	let fallbackOffset = 0
@@ -30,7 +30,7 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 			wrappedIndex({ array: setForPattern, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
-		if (state.houndsmorphosisMode) supertile = calculateHoundsmorphosisSupertile({ address })
+		if (state.houndsmorphosisMode) supertile = getHoundsmorphosisSupertile({ address })
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
 		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForPattern, index: index + fallbackOffset }))
@@ -59,5 +59,5 @@ const maybeSwitcheroo = ({ setForTile, address }) => {
 }
 
 export default {
-	calculateSetForTile
+	getSetForTile
 }

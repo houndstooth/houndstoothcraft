@@ -20,10 +20,10 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 	return coordinates.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
 }
 
-const calculateCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
+const getCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
 
 const applyRotation = ({ coordinates, origin, sizedUnit }) => {
-	const center = calculateCenter({ origin, sizedUnit })
+	const center = getCenter({ origin, sizedUnit })
 
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
 

@@ -4,10 +4,10 @@ import allOrientationsAreTheSame from '../variations/houndazzle/allOrientationsA
 
 const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 
-const calculateColorsForTile = ({ address, colorConfig }) => {
+const getColorsForTile = ({ address, colorConfig }) => {
 	const { mode } = state.stripeCountConfig
 
-	let tileColors = gridUtilities.calculateSetForTile({
+	let tileColors = gridUtilities.getSetForTile({
 		address,
 		config: colorConfig,
 		gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM'
@@ -70,7 +70,7 @@ const isTileUniform = ({ tileColors, tileDazzle }) => {
 }
 
 export default {
-	calculateColorsForTile,
+	getColorsForTile,
 	isTileUniform,
 	parseColor
 }

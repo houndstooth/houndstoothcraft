@@ -4,7 +4,7 @@ import wrappedIndex from '../utilities/wrappedIndex'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 
 export default ({ address, tileColors, stripeIndex, coordinatesFunction, coordinatesOptions }) => {
-	const { origin, sizedUnit } = transpositionUtilities.calculateOriginAndSizedUnit({ address })
+	const { origin, sizedUnit } = transpositionUtilities.getOriginAndSizedUnit({ address })
 	if (!origin) return
 
 	const shapeColor = wrappedIndex({ array: tileColors, index: stripeIndex })

@@ -2,7 +2,6 @@ import setup from './shared/application/setup'
 import execute from './shared/application/execute'
 
 import standard from './standard/standard'
-import houndsmorphosis from './houndsmorphosis/houndsmorphosis'
 
 import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
 import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
@@ -13,10 +12,10 @@ import gongramPreset from './gongram/gongramPreset'
 import houndsmorphosisPreset from './houndsmorphosis/houndsmorphosisPreset'
 
 const presets = [
-	cmyktoothPreset,
-	ginghamChevronContinuumPreset,
+	// cmyktoothPreset,
+	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
-	houndazzlePreset,
+	// houndazzlePreset,
 	// gongramPreset,
 	// houndazzleContinuumPreset,
 	houndsmorphosisPreset

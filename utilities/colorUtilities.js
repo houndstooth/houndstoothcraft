@@ -2,20 +2,22 @@ import state from '../state/state'
 import gridUtilities from './gridUtilities'
 import allOrientationsAreTheSame from '../variations/houndazzle/allOrientationsAreTheSame'
 
-const calculateColors = ({ address, colorConfig }) => {
+const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
+
+const calculateColorsForTile = ({ address, colorConfig }) => {
 	const { mode } = state.stripeCountConfig
 
-	let colors = gridUtilities.calculateSetForTile({
+	let tileColors = gridUtilities.calculateSetForTile({
 		address,
 		config: colorConfig,
 		gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM'
 	})
-	if (mode === 'GINGHAM') colors = mixColors({ colors })
+	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = colorConfig && colorConfig.opacity || state.colorConfig.opacity
-	if (opacity < 1) colors = fadeColors({ colors, opacity })
+	if (opacity < 1) tileColors = fadeColors({ colors: tileColors, opacity })
 
-	return colors
+	return tileColors
 }
 
 const mixColors = ({ colors }) => {
@@ -56,18 +58,19 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 	return true
 }
 
-const isTileUniform = ({ colors, dazzle }) => {
-	const colorsAreTheSame = allColorsAreTheSame({ colors })
+const isTileUniform = ({ tileColors, tileDazzle }) => {
+	const colorsAreTheSame = allColorsAreTheSame({ colors: tileColors })
 	if (state.colorConfig.mode === 'HOUNDAZZLE') {
 		return colorsAreTheSame &&
-			allColorsAreTheSame({ colors: dazzle.colors }) &&
-			allOrientationsAreTheSame({ orientations: dazzle.orientations })
+			allColorsAreTheSame({ colors: tileDazzle.tileColors }) &&
+			allOrientationsAreTheSame({ orientations: tileDazzle.tileOrientations })
 	} else {
 		return colorsAreTheSame
 	}
 }
 
 export default {
-	calculateColors,
-	isTileUniform
+	calculateColorsForTile,
+	isTileUniform,
+	parseColor
 }

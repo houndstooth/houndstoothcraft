@@ -8,14 +8,14 @@ import standardShapeWrapper from './standardShapeWrapper'
 export default ({ address }) => {
 	const { stripeCountConfig, colorConfig } = state
 
-	const colors = colorUtilities.calculateColors({ address, colorConfig })
+	const tileColors = colorUtilities.calculateColorsForTile({ address, colorConfig })
 
-	const dazzle = colorConfig.mode === 'HOUNDAZZLE' && calculateDazzle({ address })
+	const tileDazzle = colorConfig.mode === 'HOUNDAZZLE' && calculateDazzle({ address })
 
-	const args = { address, colors, dazzle }
+	const args = { address, tileColors, tileDazzle }
 	const shapeWrapper = colorConfig.mode === 'HOUNDAZZLE' ? houndazzleShapeWrapper : standardShapeWrapper
 
-	if (colorUtilities.isTileUniform({ colors, dazzle })) {
+	if (colorUtilities.isTileUniform({ tileColors, tileDazzle })) {
 		shapeWrapper(args)
 	} else {
 		const stripes = calculateStripes({ stripeCount: stripeCountConfig.stripeCount, address })

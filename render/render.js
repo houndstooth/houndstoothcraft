@@ -1,11 +1,10 @@
 import ctx from './ctx'
+import colorUtilities from '../utilities/colorUtilities'
 
-const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
-
-export default ({ color, coordinates }) => {
+export default ({ shapeColor, coordinates }) => {
 	if (!coordinates.length) return
 
-	ctx.fillStyle = parseColor({ color })
+	ctx.fillStyle = colorUtilities.parseColor({ color: shapeColor })
 	ctx.beginPath()
 
 	ctx.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])

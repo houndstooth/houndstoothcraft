@@ -1,13 +1,13 @@
 import setup from './shared/application/setup'
 import execute from './shared/application/execute'
 
-import cmyktoothPreset from './cmyktooth/cmyktoothPreset'
-import ginghamChevronContinuumPreset from './gingham-chevron-continuum/ginghamChevronContinuumPreset'
-import harmonitoothPreset from './harmonitooth/harmonitoothPreset'
-import houndazzlePreset from './houndazzle/houndazzlePreset'
-import houndazzleContinuumPreset from './houndazzle/houndazzleContinuumPreset'
-import gongramPreset from './gongram/gongramPreset'
-import houndsmorphosisPreset from './houndsmorphosis/houndsmorphosisPreset'
+import cmyktoothPreset from './variations/cmyktooth/cmyktoothPreset'
+import ginghamChevronContinuumPreset from './variations/gingham-chevron-continuum/ginghamChevronContinuumPreset'
+import harmonitoothPreset from './variations/harmonitooth/harmonitoothPreset'
+import houndazzlePreset from './variations/houndazzle/houndazzlePreset'
+import houndazzleContinuumPreset from './variations/houndazzle/houndazzleContinuumPreset'
+import gongramPreset from './variations/gongram/gongramPreset'
+import houndsmorphosisPreset from './variations/houndsmorphosis/houndsmorphosisPreset'
 
 const presets = [
 	// cmyktoothPreset,

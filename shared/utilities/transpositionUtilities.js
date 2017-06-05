@@ -1,5 +1,5 @@
 import state from '../state/state'
-import houndsmorphosisOriginAndSizedUnit from '../../houndsmorphosis/houndsmorphosisOriginAndSizedUnit'
+import houndsmorphosisOriginAndSizedUnit from '../../variations/houndsmorphosis/houndsmorphosisOriginAndSizedUnit'
 
 const scaleOrigin = ({ origin }) => {
 	const { unit, canvasSize, scaleFromGridCenter } = state

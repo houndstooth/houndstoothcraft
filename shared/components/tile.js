@@ -1,8 +1,8 @@
 import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
 import calculateStripes from '../utilities/calculateStripes'
-import houndazzleShapeWrapper from '../../houndazzle/houndazzleShapeWrapper'
-import calculateDazzle from '../../houndazzle/calculateDazzle'
+import houndazzleShapeWrapper from '../../variations/houndazzle/houndazzleShapeWrapper'
+import calculateDazzle from '../../variations/houndazzle/calculateDazzle'
 import standardShapeWrapper from './standardShapeWrapper'
 
 export default ({ address }) => {

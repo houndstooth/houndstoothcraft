@@ -1,6 +1,6 @@
 import state from '../state/state'
 import gridUtilities from './gridUtilities'
-import allOrientationsAreTheSame from '../../houndazzle/allOrientationsAreTheSame'
+import allOrientationsAreTheSame from '../../variations/houndazzle/allOrientationsAreTheSame'
 
 const calculateColors = ({ address, colorConfig }) => {
 	const { mode } = state.stripeCountConfig

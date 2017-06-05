@@ -1,9 +1,10 @@
-import iterator from '../utilities/iterator'
+import codeUtilities from '../utilities/codeUtilities'
 import state from '../state/state'
 import tile from './tile'
 
 export default () => {
 	const { gridSize, negativeGridToo } = state
+	const { iterator } = codeUtilities
 
 	if (negativeGridToo) {
 		iterator(gridSize * 2).forEach(x => {

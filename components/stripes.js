@@ -4,14 +4,14 @@ import getHarmonicContinuumSegmentStripe from '../variations/harmonitooth/getHar
 import getHarmonicContinuumStripe from '../variations/harmonitooth/getHarmonicContinuumStripe'
 import getGinghamChevronContinuumStripes from '../variations/gingham-chevron-continuum/getGinghamChevronContinuumStripes'
 import state from '../state/state'
-import iterator from '../utilities/iterator'
+import codeUtilities from '../utilities/codeUtilities'
 
 export default ({ stripeCount, address }) => {
 	let stripes
 	if (state.stripeCountConfig.mode === 'GINGHAM_CHEVRON_CONTINUUM') {
 		stripes = getGinghamChevronContinuumStripes({ address })
 	} else {
-		stripes = iterator(stripeCount).map(stripeIndex => {
+		stripes = codeUtilities.iterator(stripeCount).map(stripeIndex => {
 			const stripeStyle = state.stripeStyle
 
 			let stripe

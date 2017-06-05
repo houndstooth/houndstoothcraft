@@ -1,9 +1,10 @@
 import realignSetForGinghamChevronContinuum from '../variations/gingham-chevron-continuum/realignSetForGinghamChevronContinuum'
 import getHoundsmorphosisSupertile from '../variations/houndsmorphosis/getHoundsmorphosisSupertile'
-import wrappedIndex from './wrappedIndex'
+import codeUtilities from './codeUtilities'
 import state from '../state/state'
 
 const getSetForTile = ({ address, config, gccOn }) => {
+	const { wrappedIndex } = codeUtilities
 	let { set: setForPattern, assignment } = config || {}
 
 	let fallbackOffset = 0

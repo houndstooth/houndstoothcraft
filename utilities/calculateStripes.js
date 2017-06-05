@@ -1,9 +1,9 @@
 import { PERIMETER_SCALAR } from '../application/constants'
-import calculateDerasterizedByAreaStripe from '../../derasterized/calculateDerasterizedByAreaStripe'
-import calculateHarmonicContinuumSegmentStripe from '../../harmonitooth/calculateHarmonicContinuumSegmentStripe'
-import calculateHarmonicContinuumStripe from '../../harmonitooth/calculateHarmonicContinuumStripe'
-import calculateGinghamChevronContinuumStripes from '../../gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
-import state from '../../shared/state/state'
+import calculateDerasterizedByAreaStripe from '../variations/derasterized/calculateDerasterizedByAreaStripe'
+import calculateHarmonicContinuumSegmentStripe from '../variations/harmonitooth/calculateHarmonicContinuumSegmentStripe'
+import calculateHarmonicContinuumStripe from '../variations/harmonitooth/calculateHarmonicContinuumStripe'
+import calculateGinghamChevronContinuumStripes from '../variations/gingham-chevron-continuum/calculateGinghamChevronContinuumStripes'
+import state from '../state/state'
 import iterator from './iterator'
 
 export default ({ stripeCount, address }) => {

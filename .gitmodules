@@ -1,27 +1,24 @@
 [submodule "cmyktooth"]
-	path = cmyktooth
+	path = variations/cmyktooth
 	url = git@github.com:houndstooth/cmyktooth.git
 [submodule "houndsmorphosis"]
-	path = houndsmorphosis
+	path = variations/houndsmorphosis
 	url = git@github.com:houndstooth/houndsmorphosis.git
-[submodule "standard"]
-	path = standard
-	url = git@github.com:houndstooth/standard.git
 [submodule "ginghoundstootham"]
-	path = ginghoundstootham
+	path = variations/ginghoundstootham
 	url = git@github.com:houndstooth/ginghoundstootham.git
 [submodule "gingham-chevron-continuum"]
-	path = gingham-chevron-continuum
+	path = variations/gingham-chevron-continuum
 	url = git@github.com:houndstooth/gingham-chevron-continuum.git
 [submodule "gongram"]
-	path = gongram
+	path = variations/gongram
 	url = git@github.com:houndstooth/gongram.git
 [submodule "houndazzle"]
-	path = houndazzle
+	path = variations/houndazzle
 	url = git@github.com:houndstooth/houndazzle.git
 [submodule "derasterized"]
-	path = derasterized
+	path = variations/derasterized
 	url = git@github.com:houndstooth/derasterized.git
 [submodule "harmonitooth"]
-	path = harmonitooth
+	path = variations/harmonitooth
 	url = git@github.com:houndstooth/harmonitooth.git

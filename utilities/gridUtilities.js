@@ -1,7 +1,7 @@
-import maybeRealign from '../../gingham-chevron-continuum/maybeRealign'
-import calculateHoundsmorphosisSupertile from '../../houndsmorphosis/calculateHoundsmorphosisSupertile'
+import maybeRealign from '../variations/gingham-chevron-continuum/maybeRealign'
+import calculateHoundsmorphosisSupertile from '../variations/houndsmorphosis/calculateHoundsmorphosisSupertile'
 import wrappedIndex from './wrappedIndex'
-import state from '../../shared/state/state'
+import state from '../state/state'
 
 const calculateSetForTile = ({ address, config, gccOn }) => {
 	let { set, assignment } = config || {}

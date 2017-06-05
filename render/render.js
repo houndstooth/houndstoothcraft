@@ -1,22 +1,16 @@
 import ctx from './ctx'
 
-const parseColor = ({ color }) => {
-	const { r, g, b, a } = color
-	let colorString = 'rgba(' + [ r, g, b, a ].join(', ') + ')'
-	return colorString
-}
+const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 
-export default ({ color, coordinates, customContext }) => {
+export default ({ color, coordinates }) => {
 	if (!coordinates.length) return
 
-	const context = customContext ? customContext : ctx
+	ctx.fillStyle = parseColor({ color })
+	ctx.beginPath()
 
-	context.fillStyle = parseColor({ color })
-	context.beginPath()
+	ctx.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])
+	coordinates.forEach(coordinate => ctx.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
 
-	context.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])
-	coordinates.forEach(coordinate => context.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
-
-	context.closePath()
-	context.fill()
+	ctx.closePath()
+	ctx.fill()
 }

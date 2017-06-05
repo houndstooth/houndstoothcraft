@@ -9,6 +9,15 @@ import applicationUtilities from '../utilities/applicationUtilities'
 import fileSaver from 'file-saver'
 import grid from '../components/grid'
 
+export default ({ iterating, animating, exportFrames }) => {
+	const executionFunction = animating ? executeAnimation : executePattern
+	executionFunction({
+		iterating,
+		exportFrames,
+		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
+	})
+}
+
 const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
 		if (typeof value === 'function') {
@@ -27,7 +36,10 @@ const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyP
 const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
-		let stateObjectToCallFunctionOn = applicationUtilities.accessChildObjectOrCreatePath({ parentObject: state, nestedPropertyPath })
+		let stateObjectToCallFunctionOn = applicationUtilities.accessChildObjectOrCreatePath({
+			parentObject: state,
+			nestedPropertyPath
+		})
 		stateObjectToCallFunctionOn[ propertyName ] = fn(stateObjectToCallFunctionOn[ propertyName ])
 	})
 }
@@ -84,13 +96,4 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions }) => {
 			functionObjects: prepareFunctionsPerStateProperty({ objectWithFunctions: animations })
 		})
 	}, frameRate)
-}
-
-export default ({ iterating, animating, exportFrames }) => {
-	const executionFunction = animating ? executeAnimation : executePattern
-	executionFunction({
-		iterating,
-		exportFrames,
-		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
-	})
 }

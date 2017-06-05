@@ -5,7 +5,11 @@ import allOrientationsAreTheSame from '../variations/houndazzle/allOrientationsA
 const calculateColors = ({ address, colorConfig }) => {
 	const { mode } = state.stripeCountConfig
 
-	let colors = gridUtilities.calculateSetForTile({ address, config: colorConfig, gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM' })
+	let colors = gridUtilities.calculateSetForTile({
+		address,
+		config: colorConfig,
+		gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM'
+	})
 	if (mode === 'GINGHAM') colors = mixColors({ colors })
 
 	const opacity = colorConfig && colorConfig.opacity || state.colorConfig.opacity
@@ -55,8 +59,8 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 const isTileUniform = ({ colors, dazzle }) => {
 	const colorsAreTheSame = allColorsAreTheSame({ colors })
 	if (state.colorConfig.mode === 'HOUNDAZZLE') {
-		return colorsAreTheSame && 
-			allColorsAreTheSame({ colors: dazzle.colors }) && 
+		return colorsAreTheSame &&
+			allColorsAreTheSame({ colors: dazzle.colors }) &&
 			allOrientationsAreTheSame({ orientations: dazzle.orientations })
 	} else {
 		return colorsAreTheSame

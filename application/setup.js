@@ -10,6 +10,25 @@ import overrideState from '../state/overrideState'
 import state from '../state/state'
 import applicationUtilities from '../utilities/applicationUtilities'
 
+export default ({ presets }) => {
+	const { presetState, presetIterations, presetAnimations } = processPresets({ presets })
+	setupObject({ objectToSetup: state, defaults: defaultState, presets: presetState, overrides: overrideState })
+	setupObject({
+		objectToSetup: iterations,
+		defaults: defaultIterations,
+		presets: presetIterations,
+		overrides: overrideIterations
+	})
+	setupObject({
+		objectToSetup: animations,
+		defaults: defaultAnimations,
+		presets: presetAnimations,
+		overrides: overrideAnimations
+	})
+	setupCanvas()
+	// console.log(state)
+}
+
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
 	const { deeperPath, accessChildObjectOrCreatePath } = applicationUtilities
 	overrides && Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
@@ -47,23 +66,4 @@ const processPresets = ({ presets }) => {
 	})
 
 	return { presetState, presetIterations, presetAnimations }
-}
-
-export default ({ presets }) => {
-	const { presetState, presetIterations, presetAnimations } = processPresets({ presets })
-	setupObject({ objectToSetup: state, defaults: defaultState, presets: presetState, overrides: overrideState })
-	setupObject({
-		objectToSetup: iterations,
-		defaults: defaultIterations,
-		presets: presetIterations,
-		overrides: overrideIterations
-	})
-	setupObject({
-		objectToSetup: animations,
-		defaults: defaultAnimations,
-		presets: presetAnimations,
-		overrides: overrideAnimations
-	})
-	setupCanvas()
-	// console.log(state)
 }

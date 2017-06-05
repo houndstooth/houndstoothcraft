@@ -11,7 +11,6 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 		set = state.colorConfig.set
 		fallbackOffset = 1
 	}
-	
 
 	assignment = assignment || state.colorConfig.assignment
 	let { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment

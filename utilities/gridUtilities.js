@@ -4,11 +4,11 @@ import wrappedIndex from './wrappedIndex'
 import state from '../state/state'
 
 const calculateSetForTile = ({ address, config, gccOn }) => {
-	let { set, assignment } = config || {}
+	let { set: setForPattern, assignment } = config || {}
 
 	let fallbackOffset = 0
-	if (!set) {
-		set = state.colorConfig.set
+	if (!setForPattern) {
+		setForPattern = state.colorConfig.set
 		fallbackOffset = 1
 	}
 
@@ -26,14 +26,14 @@ const calculateSetForTile = ({ address, config, gccOn }) => {
 		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
 		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
 		setForTile = [
-			wrappedIndex({ array: set, index: rowsIndex }),
-			wrappedIndex({ array: set, index: columnsIndex })
+			wrappedIndex({ array: setForPattern, index: rowsIndex }),
+			wrappedIndex({ array: setForPattern, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
 		if (state.houndsmorphosisMode) supertile = calculateHoundsmorphosisSupertile({ address })
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
-		setForTile = supertileEntry.map(index => wrappedIndex({ array: set, index: index + fallbackOffset }))
+		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForPattern, index: index + fallbackOffset }))
 	}
 
 	setForTile = flipGrain ? setForTile.reverse() : setForTile

@@ -1,7 +1,6 @@
 import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
-	houndsmorphosisMode: false,
 	canvasSize: 800,
 	unit: 1,
 	gridSize: 16,
@@ -18,7 +17,7 @@ export default {
 			switcheroo: false,
 			flipGrain: false,
 			mode: 'WEAVE', // 'SUPERTILE'
-			// offsetAddress: null,
+			offsetAddress: null,
 			supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 			weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 		},

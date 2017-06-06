@@ -1,8 +1,12 @@
 import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
-	canvasSize: 800,
-	unit: 1,
+	view: {
+		canvasSize: 800,
+		zoom: 1,
+		zoomOnCanvasCenter: true,
+		centerViewOnCenterOfTileAtZeroZeroAddress: false
+	},
 	gridSize: 16,
 	tileSize: 50,
 	colorConfig: {
@@ -32,10 +36,8 @@ export default {
 	baseStripeDiagonal: 'MINOR',
 	gridRotationAboutGridCenter: 0,
 	negativeGridToo: false,
-	centerViewOnCenterOfTileAtZeroZeroAddress: false,
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
-	scaleFromCanvasCenter: true,
 	animation: {
 		frameRate: 1000 / 60,
 		refreshCanvas: true

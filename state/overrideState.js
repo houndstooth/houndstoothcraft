@@ -1,7 +1,9 @@
 // import { BLUE, GREEN, RED, YELLOW } from '../application/constants'
 
 export default {
-	// unit: 10,
+	// view: {
+	// 	unit: 10
+	// },
 	// gridSize: 10,
 	// colorConfig: {
 	// 	set: [ GREEN, BLUE, RED, YELLOW ],

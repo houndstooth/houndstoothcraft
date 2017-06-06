@@ -3,11 +3,11 @@ import state from '../state/state'
 
 const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
-	let { set: setForPattern, assignment } = config || {}
+	let { set: setForGrid, assignment } = config || {}
 
 	let fallbackOffset = 0
-	if (!setForPattern) {
-		setForPattern = state.colorConfig.set
+	if (!setForGrid) {
+		setForGrid = state.colorConfig.set
 		fallbackOffset = 1
 	}
 
@@ -30,13 +30,13 @@ const getSetForTile = ({ address, config }) => {
 		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
 		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
 		setForTile = [
-			wrappedIndex({ array: setForPattern, index: rowsIndex }),
-			wrappedIndex({ array: setForPattern, index: columnsIndex })
+			wrappedIndex({ array: setForGrid, index: rowsIndex }),
+			wrappedIndex({ array: setForGrid, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
-		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForPattern, index: index + fallbackOffset }))
+		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForGrid, index: index + fallbackOffset }))
 	}
 
 	if (flipGrain) setForTile = setForTile.reverse()

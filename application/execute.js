@@ -10,7 +10,7 @@ import fileSaver from 'file-saver'
 import grid from '../components/grid'
 
 export default ({ iterating, animating, exportFrames }) => {
-	const executionFunction = animating ? executeAnimation : executePattern
+	const executionFunction = animating ? executeAnimation : executeGrid
 	executionFunction({
 		iterating,
 		exportFrames,
@@ -55,7 +55,7 @@ const executeIteration = ({ iterationFunctions }) => {
 	}
 }
 
-const executePattern = ({ iterating, iterationFunctions }) => {
+const executeGrid = ({ iterating, iterationFunctions }) => {
 	if (iterating) {
 		executeIteration({ iterationFunctions })
 	} else {

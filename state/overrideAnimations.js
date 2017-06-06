@@ -7,5 +7,7 @@ export default {
 	// stripeCountConfig: {
 	// 	stripeCount: p => p * ANIMATION_RATE / 10
 	// },
-	// gridRotationAboutGridCenter: p => p + Math.PI / 360
+	// grid: {
+	// 	gridRotationAboutGridCenter: p => p + Math.PI / 360
+	// }
 }

@@ -3,10 +3,10 @@ import state from '../state/state'
 import tile from './tile'
 
 export default () => {
-	const { gridSize, negativeGridToo } = state
+	const { gridSize, includeNegativeQuadrants } = state.grid
 	const { iterator } = codeUtilities
 
-	if (negativeGridToo) {
+	if (includeNegativeQuadrants) {
 		iterator(gridSize * 2).forEach(x => {
 			iterator(gridSize * 2).forEach(y => {
 				tile({ address: [ x - gridSize, y - gridSize ] })

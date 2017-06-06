@@ -4,7 +4,10 @@ export default {
 	// view: {
 	// 	unit: 10
 	// },
-	// gridSize: 10,
+	// grid: {
+	// 	gridSize: 10,
+	// 	includeNegativeQuadrants: true,
+	// },
 	// colorConfig: {
 	// 	set: [ GREEN, BLUE, RED, YELLOW ],
 	// 	assignment: {
@@ -23,7 +26,6 @@ export default {
 	// 		}
 	// 	}
 	// },
-	// negativeGridToo: true,
 	// baseStripeDiagonal: 'PRINCIPAL',
 	// stripeCountConfig: {
 	// 	stripeCount: 4

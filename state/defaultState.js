@@ -7,7 +7,11 @@ export default {
 		zoomOnCanvasCenter: true,
 		centerViewOnCenterOfTileAtZeroZeroAddress: false
 	},
-	gridSize: 16,
+	grid: {
+		gridSize: 16,
+		gridRotationAboutGridCenter: 0,
+		includeNegativeQuadrants: false
+	},
 	tileSize: 50,
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],
@@ -34,8 +38,6 @@ export default {
 	},
 	tileRotationAboutTileCenter: 0,
 	baseStripeDiagonal: 'MINOR',
-	gridRotationAboutGridCenter: 0,
-	negativeGridToo: false,
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
 	animation: {

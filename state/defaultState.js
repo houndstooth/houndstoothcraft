@@ -18,7 +18,7 @@ export default {
 			switcheroo: false,
 			flipGrain: false,
 			mode: 'WEAVE', // 'SUPERTILE'
-			// addressOffsetFunction: () => [ 0, 0 ],
+			// addressOffsetFunction: null,
 			supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 			weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 		},
@@ -35,7 +35,7 @@ export default {
 	offsetOrigin: [ 0, 0 ],
 	negativeGridToo: false,
 	// getOriginAndSizedUnit: null,
-	stripeStyle: 'STANDARD', // 'DERASTERIZED_BY_AREA', 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID', 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE',
+	// getStripePositions: null,
 	scaleFromGridCenter: true,
 	animation: {
 		frameRate: 1000 / 60,

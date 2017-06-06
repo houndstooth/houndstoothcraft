@@ -22,7 +22,7 @@ export default {
 	// 	}
 	// },
 	// negativeGridToo: true,
-	// originOffset: [ 500, 500 ],
+	// gridOriginOffset: [ 500, 500 ],
 	// baseStripeDiagonal: 'PRINCIPAL',
 	// stripeCountConfig: {
 	// 	stripeCount: 4

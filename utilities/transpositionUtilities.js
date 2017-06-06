@@ -22,14 +22,14 @@ const scaleOrigin = ({ origin }) => {
 
 const offsetOrigin = ({ origin }) => {
 	return [
-		origin[ 0 ] += state.originOffset[ 0 ],
-		origin[ 1 ] += state.originOffset[ 1 ]
+		origin[ 0 ] += state.gridOriginOffset[ 0 ],
+		origin[ 1 ] += state.gridOriginOffset[ 1 ]
 	]
 }
 
 const adjustOrigin = ({ origin }) => {
 	origin = scaleOrigin({ origin })
-	if (state.originOffset) origin = offsetOrigin({ origin })
+	if (state.gridOriginOffset) origin = offsetOrigin({ origin })
 	return origin
 }
 

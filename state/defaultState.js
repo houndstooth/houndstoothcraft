@@ -18,7 +18,7 @@ export default {
 			switcheroo: false,
 			flipGrain: false,
 			mode: 'WEAVE', // 'SUPERTILE'
-			offset: [ 0, 0 ],
+			// addressOffsetFunction: () => [ 0, 0 ],
 			supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 			weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 		},

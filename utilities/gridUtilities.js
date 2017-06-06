@@ -1,5 +1,4 @@
 import realignSetForGinghamChevronContinuum from '../variations/gingham-chevron-continuum/realignSetForGinghamChevronContinuum'
-import getHoundsmorphosisSupertile from '../variations/houndsmorphosis/getHoundsmorphosisSupertile'
 import codeUtilities from './codeUtilities'
 import state from '../state/state'
 
@@ -14,11 +13,16 @@ const getSetForTile = ({ address, config, gccOn }) => {
 	}
 
 	assignment = assignment || state.colorConfig.assignment
-	let { offset, mode, supertile, weave, flipGrain, switcheroo } = assignment
+	let { addressOffsetFunction, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
-	offset = offset || state.colorConfig.assignment.offset
-	const x = address[ 0 ] + offset[ 0 ]
-	const y = address[ 1 ] + offset[ 1 ]
+	let x = address[ 0 ]
+	let y = address[ 1 ]
+	addressOffsetFunction = addressOffsetFunction || state.colorConfig.assignment.addressOffsetFunction
+	if (addressOffsetFunction) {
+		const addressOffset = addressOffsetFunction({ address })
+		x += addressOffset[ 0 ]
+		y += addressOffset[ 1 ]
+	}
 
 	let setForTile
 
@@ -31,7 +35,6 @@ const getSetForTile = ({ address, config, gccOn }) => {
 			wrappedIndex({ array: setForPattern, index: columnsIndex })
 		]
 	} else if (mode === 'SUPERTILE') {
-		if (state.houndsmorphosisMode) supertile = getHoundsmorphosisSupertile({ address })
 		const supertileColumn = wrappedIndex({ array: supertile, index: x })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
 		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForPattern, index: index + fallbackOffset }))

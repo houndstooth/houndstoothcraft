@@ -33,9 +33,9 @@ export default {
 	baseStripeDiagonal: 'MINOR',
 	gridRotationAboutGridCenter: 0,
 	negativeGridToo: false,
-	// centerViewOnCenterOfTileAtZeroZeroAddress: null,
-	// getShapeOriginAndSizedUnit: null,
-	// getStripePositions: null,
+	centerViewOnCenterOfTileAtZeroZeroAddress: false,
+	getShapeOriginAndSizedUnit: null,
+	getStripePositions: null,
 	scaleFromCanvasCenter: true,
 	animation: {
 		frameRate: 1000 / 60,

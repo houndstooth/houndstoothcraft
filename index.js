@@ -14,7 +14,7 @@ const presets = [
 	ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	// houndazzlePreset,
-	// gongramPreset,
+	gongramPreset,
 	// houndazzleContinuumPreset,
 	// houndsmorphosisPreset
 ]

@@ -3,40 +3,38 @@ import state from '../state/state'
 
 const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
+
 	let { set: setForGrid, assignment } = config || {}
-
-	let fallbackOffset = 0
-	if (!setForGrid) {
-		setForGrid = state.colorConfig.set
-		fallbackOffset = 1
-	}
-
+	setForGrid = setForGrid || state.colorConfig.set
 	assignment = assignment || state.colorConfig.assignment
-	let { offsetAddress, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
-	let x = address[ 0 ]
-	let y = address[ 1 ]
+	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
+
+	offsetSetForGridIndex = offsetSetForGridIndex || state.colorConfig.assignment.offsetSetForGridIndex
 	offsetAddress = offsetAddress || state.colorConfig.assignment.offsetAddress
-	if (offsetAddress) {
-		const addressOffset = offsetAddress({ address })
-		x += addressOffset[ 0 ]
-		y += addressOffset[ 1 ]
-	}
+	mode = mode || state.colorConfig.assignment.mode
+	supertile = supertile || state.colorConfig.assignment.supertile
+	weave = weave || state.colorConfig.assignment.weave
+	flipGrain = flipGrain || state.colorConfig.assignment.flipGrain
+	switcheroo = mode || state.colorConfig.assignment.switcheroo
+
+	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
+	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
 
 	let setForTile
 
 	if (mode === 'WEAVE') {
 		const { rows, columns } = weave
-		const columnsIndex = wrappedIndex({ array: columns, index: x + fallbackOffset })
-		const rowsIndex = wrappedIndex({ array: rows, index: y + fallbackOffset })
+		const columnsIndex = wrappedIndex({ array: columns, index: address[ 0 ] + addressOffset[ 0 ] })
+		const rowsIndex = wrappedIndex({ array: rows, index: address[ 1 ] + addressOffset[ 1 ] })
 		setForTile = [
-			wrappedIndex({ array: setForGrid, index: rowsIndex }),
-			wrappedIndex({ array: setForGrid, index: columnsIndex })
+			wrappedIndex({ array: setForGrid, index: rowsIndex + setForGridIndexOffset }),
+			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset })
 		]
 	} else if (mode === 'SUPERTILE') {
-		const supertileColumn = wrappedIndex({ array: supertile, index: x })
-		const supertileEntry = wrappedIndex({ array: supertileColumn, index: y })
-		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForGrid, index: index + fallbackOffset }))
+		const supertileColumn = wrappedIndex({ array: supertile, index: address[ 0 ] + addressOffset[ 0 ] })
+		const supertileEntry = wrappedIndex({ array: supertileColumn, index: address[ 1 ] + addressOffset[ 1 ] })
+		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForGrid, index: index + setForGridIndexOffset }))
 	}
 
 	if (flipGrain) setForTile = setForTile.reverse()

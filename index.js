@@ -10,10 +10,10 @@ import gongramPreset from './variations/gongram/gongramPreset'
 import houndsmorphosisPreset from './variations/houndsmorphosis/houndsmorphosisPreset'
 
 const presets = [
-	cmyktoothPreset,
+	// cmyktoothPreset,
 	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
-	// houndazzlePreset,
+	houndazzlePreset,
 	// gongramPreset,
 	// houndazzleContinuumPreset,
 	// houndsmorphosisPreset
@@ -22,7 +22,7 @@ const presets = [
 setup({ presets })
 
 execute({
-	iterating: true,
+	iterating: false,
 	animating: false,
 	exportFrames: false
 })

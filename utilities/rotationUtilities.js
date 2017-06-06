@@ -1,18 +1,18 @@
 import state from '../state/state'
 
-const MINOR_DIAGONAL_OFFSET = 0
-const PRINCIPAL_DIAGONAL_OFFSET = Math.PI / 2
+const ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES = 0
+const ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES = Math.PI / 2
 
 const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 	const sin = Math.sin(rotation)
 	const cos = Math.cos(rotation)
 
-	const offsetX = coordinate[ 0 ] - point[ 0 ]
-	const offsetY = coordinate[ 1 ] - point[ 1 ]
+	const relativeX = coordinate[ 0 ] - point[ 0 ]
+	const relativeY = coordinate[ 1 ] - point[ 1 ]
 
 	return [
-		point[ 0 ] + offsetX * cos - offsetY * sin,
-		point[ 1 ] + offsetX * sin + offsetY * cos
+		point[ 0 ] + relativeX * cos - relativeY * sin,
+		point[ 1 ] + relativeX * sin + relativeY * cos
 	]
 }
 
@@ -27,8 +27,8 @@ const applyRotation = ({ coordinates, origin, sizedUnit }) => {
 
 	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
 
-	const offset = baseStripeDiagonal === "MINOR" ? MINOR_DIAGONAL_OFFSET : PRINCIPAL_DIAGONAL_OFFSET
-	const tileRotation = offset + tileRotationAboutTileCenter
+	const stripeDiagonalRotationOffset = baseStripeDiagonal === "MINOR" ? ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES : ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
+	const tileRotation = stripeDiagonalRotationOffset + tileRotationAboutTileCenter
 	if (tileRotation !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,

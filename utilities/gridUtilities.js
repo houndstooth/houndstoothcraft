@@ -16,7 +16,7 @@ const getSetForTile = ({ address, config }) => {
 	supertile = supertile || state.colorConfig.assignment.supertile
 	weave = weave || state.colorConfig.assignment.weave
 	flipGrain = flipGrain || state.colorConfig.assignment.flipGrain
-	switcheroo = mode || state.colorConfig.assignment.switcheroo
+	switcheroo = switcheroo || state.colorConfig.assignment.switcheroo
 
 	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
 	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]

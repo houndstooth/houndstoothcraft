@@ -11,18 +11,18 @@ import houndsmorphosisPreset from './variations/houndsmorphosis/houndsmorphosisP
 
 const presets = [
 	// cmyktoothPreset,
-	ginghamChevronContinuumPreset,
+	// ginghamChevronContinuumPreset,
 	// harmonitoothPreset,
 	// houndazzlePreset,
-	gongramPreset,
+	// gongramPreset,
 	// houndazzleContinuumPreset,
-	// houndsmorphosisPreset
+	houndsmorphosisPreset
 ]
 
 setup({ presets })
 
 execute({
 	iterating: false,
-	animating: true,
+	animating: false,
 	exportFrames: false
 })

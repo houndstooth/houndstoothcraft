@@ -34,6 +34,7 @@ export default {
 	gridRotationAboutCenter: 0,
 	offsetOrigin: [ 0, 0 ],
 	negativeGridToo: false,
+	// getOriginAndSizedUnit: null,
 	stripeStyle: 'STANDARD', // 'DERASTERIZED_BY_AREA', 'SEGMENT_OF_HARMONIC_CONTINUUM_ACROSS_GRID', 'FULL_HARMONIC_CONTINUUM_COMPRESSED_INTO_SINGLE_TILE',
 	scaleFromGridCenter: true,
 	animation: {

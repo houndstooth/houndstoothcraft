@@ -1,5 +1,4 @@
 import state from '../state/state'
-import getHoundsmorphosisOriginAndSizedUnit from '../variations/houndsmorphosis/getHoundsmorphosisOriginAndSizedUnit'
 
 const scaleOrigin = ({ origin }) => {
 	const { unit, canvasSize, scaleFromGridCenter } = state
@@ -44,7 +43,7 @@ const getStandardOriginAndSizedUnit = ({ address }) => ({
 })
 
 const getOriginAndSizedUnit = ({ address }) => {
-	const originAndSizedUnitFunction = state.houndsmorphosisMode ? getHoundsmorphosisOriginAndSizedUnit : getStandardOriginAndSizedUnit
+	const originAndSizedUnitFunction = state.getOriginAndSizedUnit || getStandardOriginAndSizedUnit
 	return originAndSizedUnitFunction({ address })
 }
 

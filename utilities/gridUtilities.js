@@ -1,8 +1,7 @@
-import realignSetForGinghamChevronContinuum from '../variations/gingham-chevron-continuum/realignSetForGinghamChevronContinuum'
 import codeUtilities from './codeUtilities'
 import state from '../state/state'
 
-const getSetForTile = ({ address, config, gccOn }) => {
+const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
 	let { set: setForPattern, assignment } = config || {}
 
@@ -13,7 +12,7 @@ const getSetForTile = ({ address, config, gccOn }) => {
 	}
 
 	assignment = assignment || state.colorConfig.assignment
-	let { addressOffsetFunction, mode, supertile, weave, flipGrain, switcheroo } = assignment
+	let { addressOffsetFunction, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	let x = address[ 0 ]
 	let y = address[ 1 ]
@@ -42,7 +41,11 @@ const getSetForTile = ({ address, config, gccOn }) => {
 
 	if (flipGrain) setForTile = setForTile.reverse()
 	if (switcheroo) setForTile = switcherooSet({ setForTile, address })
-	if (gccOn) setForTile = realignSetForGinghamChevronContinuum({ setForTile, address })
+
+	transformAssignedSet = transformAssignedSet || state.colorConfig.assignment.transformAssignedSet
+	if (transformAssignedSet) {
+		setForTile = transformAssignedSet({ setForTile, address })
+	}
 
 	return setForTile
 }

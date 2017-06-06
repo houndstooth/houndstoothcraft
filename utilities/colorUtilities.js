@@ -7,11 +7,7 @@ const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(
 const getColorsForTile = ({ address, colorConfig }) => {
 	const { mode } = state.stripeCountConfig
 
-	let tileColors = gridUtilities.getSetForTile({
-		address,
-		config: colorConfig,
-		gccOn: mode === 'GINGHAM_CHEVRON_CONTINUUM'
-	})
+	let tileColors = gridUtilities.getSetForTile({ address, config: colorConfig })
 	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = colorConfig && colorConfig.opacity || state.colorConfig.opacity

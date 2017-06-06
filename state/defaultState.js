@@ -12,7 +12,9 @@ export default {
 		gridRotationAboutGridCenter: 0,
 		includeNegativeQuadrants: false
 	},
-	tileSize: 50,
+	tile: {
+		tileSize: 50
+	},
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],
 		mode: 'STANDARD', // 'HOUNDAZZLE'
@@ -36,8 +38,7 @@ export default {
 		stripeCount: 4,
 		ginghamChevronContinuum: { initial: 1, delta: 1 }
 	},
-	tileRotationAboutTileCenter: 0,
-	baseStripeDiagonal: 'MINOR',
+	baseStripeDiagonal: 'MINOR', // 'PRINCIPAL'
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
 	animation: {

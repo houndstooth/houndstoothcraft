@@ -22,7 +22,7 @@ const adjustShapeOriginForZoom = ({ shapeOrigin }) => {
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ shapeOrigin }) => {
 	const canvasCenter = state.view.canvasSize / 2
-	const halfTileSize = state.tileSize / 2
+	const halfTileSize = state.tile.tileSize / 2
 	return [
 		shapeOrigin[ 0 ] + canvasCenter - halfTileSize,
 		shapeOrigin[ 1 ] + canvasCenter - halfTileSize
@@ -35,12 +35,12 @@ const adjustOrigin = ({ shapeOrigin }) => {
 	return shapeOrigin
 }
 
-const getSizedUnit = () => state.tileSize * state.view.zoom
+const getSizedUnit = () => state.tile.tileSize * state.view.zoom
 
 const getStandardShapeOriginAndSizedUnit = ({ address }) => ({
 	sizedUnit: getSizedUnit(),
 	shapeOrigin: adjustOrigin({
-		shapeOrigin: [ address[ 0 ] * state.tileSize, address[ 1 ] * state.tileSize ]
+		shapeOrigin: [ address[ 0 ] * state.tile.tileSize, address[ 1 ] * state.tile.tileSize ]
 	})
 })
 

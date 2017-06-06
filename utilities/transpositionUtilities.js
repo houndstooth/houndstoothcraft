@@ -20,16 +20,18 @@ const scaleShapeOrigin = ({ shapeOrigin }) => {
 	return shapeOrigin
 }
 
-const offsetShapeOrigin = ({ shapeOrigin }) => {
+const centerViewOnCenterOfTileAtZeroZeroAddress = ({ shapeOrigin }) => {
+	const canvasCenter = state.canvasSize / 2
+	const halfTileSize = state.tileSize / 2
 	return [
-		shapeOrigin[ 0 ] += state.gridOriginOffset[ 0 ],
-		shapeOrigin[ 1 ] += state.gridOriginOffset[ 1 ]
+		shapeOrigin[ 0 ] + canvasCenter - halfTileSize,
+		shapeOrigin[ 1 ] + canvasCenter - halfTileSize
 	]
 }
 
 const adjustOrigin = ({ shapeOrigin }) => {
 	shapeOrigin = scaleShapeOrigin({ shapeOrigin })
-	if (state.gridOriginOffset) shapeOrigin = offsetShapeOrigin({ shapeOrigin })
+	if (state.centerViewOnCenterOfTileAtZeroZeroAddress) shapeOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ shapeOrigin })
 	return shapeOrigin
 }
 

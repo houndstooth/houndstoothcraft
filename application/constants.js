@@ -8,6 +8,10 @@ const MAGENTA = { 'r': 255, 'g': 0, 'b': 255, 'a': 1 }
 const YELLOW = { 'r': 255, 'g': 255, 'b': 0, 'a': 1 }
 const TRANSPARENT = { 'a': 0 }
 
+const EIGHTH_OF_CIRCLE_ROTATION = Math.PI / 4
+const QUARTER_OF_CIRCLE_ROTATION = Math.PI / 2
+const HALF_OF_CIRCLE_ROTATION = Math.PI
+
 const PERIMETER_SCALAR = 2
 
 const ANIMATION_RATE = 1.005
@@ -23,5 +27,8 @@ export {
 	CYAN,
 	MAGENTA,
 	YELLOW,
-	TRANSPARENT
+	TRANSPARENT,
+	EIGHTH_OF_CIRCLE_ROTATION,
+	QUARTER_OF_CIRCLE_ROTATION,
+	HALF_OF_CIRCLE_ROTATION
 }

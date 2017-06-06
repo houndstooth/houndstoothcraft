@@ -32,7 +32,7 @@ export default {
 	tileRotationAboutTileCenter: 0,
 	baseStripeDiagonal: 'MINOR',
 	gridRotationAboutCenter: 0,
-	offsetOrigin: [ 0, 0 ],
+	// originOffset: null,
 	negativeGridToo: false,
 	// getOriginAndSizedUnit: null,
 	// getStripePositions: null,

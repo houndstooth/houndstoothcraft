@@ -72,8 +72,8 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions }) => {
 	setInterval(() => {
 		if (exportFrames) {
 			if (currentAnimation.i > lastSavedFrame) return
-			currentAnimation.i++
 		}
+		currentAnimation.i++
 
 		if (refreshCanvas) clear()
 

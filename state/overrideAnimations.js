@@ -1,13 +1,14 @@
 // import { ANIMATION_RATE } from '../application/constants'
+// import currentAnimation from '../../state/currentAnimation'
 
 export default {
-	// view: {
-	// 	zoom: p => p * ANIMATION_RATE
+	// viewConfig: {
+	// 	zoom: () => () => state.viewConfig.zoom * Math.pow(ANIMATION_RATE, currentAnimation.i)
 	// },
 	// stripeCountConfig: {
-	// 	stripeCount: p => p * ANIMATION_RATE / 10
+	// 	stripeCount: () => state.stripeCountConfig.stripeCount * Math.pow(ANIMATION_RATE / 10, currentAnimation.i)
 	// },
 	// grid: {
-	// 	gridRotationAboutGridCenter: p => p + Math.PI / 360
+	// 	gridRotationAboutGridCenter: () => currentAnimation.i * Math.PI / 360
 	// }
 }

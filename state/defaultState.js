@@ -1,18 +1,18 @@
 import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
 
 export default {
-	view: {
+	viewConfig: {
 		canvasSize: 800,
 		zoom: 1,
 		zoomOnCanvasCenter: true,
 		centerViewOnCenterOfTileAtZeroZeroAddress: false
 	},
-	grid: {
+	gridConfig: {
 		gridSize: 16,
 		gridRotationAboutGridCenter: 0,
 		includeNegativeQuadrants: false
 	},
-	tile: {
+	tileConfig: {
 		tileSize: 50
 	},
 	colorConfig: {

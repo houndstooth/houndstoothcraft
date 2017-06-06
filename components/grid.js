@@ -3,7 +3,7 @@ import state from '../state/state'
 import tile from './tile'
 
 export default () => {
-	const { gridSize, includeNegativeQuadrants } = state.grid
+	const { gridSize, includeNegativeQuadrants } = state.gridConfig
 	const { iterator } = codeUtilities
 
 	if (includeNegativeQuadrants) {

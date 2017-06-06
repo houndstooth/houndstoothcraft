@@ -26,7 +26,7 @@ const getShapeCenter = ({ shapeOrigin, sizedUnit }) => [ shapeOrigin[ 0 ] + size
 const applyRotationToShape = ({ coordinates, shapeOrigin, sizedUnit }) => {
 	const center = getShapeCenter({ shapeOrigin, sizedUnit })
 
-	const { baseStripeDiagonal, view: { canvasSize }, grid: { gridRotationAboutGridCenter } } = state
+	const { baseStripeDiagonal, viewConfig: { canvasSize }, gridConfig: { gridRotationAboutGridCenter } } = state
 
 	const stripeDiagonalRotationOffset = baseStripeDiagonal === "MINOR" ? ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES : ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
 	if (stripeDiagonalRotationOffset !== 0) {

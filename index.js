@@ -16,7 +16,7 @@ const presets = [
 	// houndazzlePreset,
 	// gongramPreset,
 	// houndazzleContinuumPreset,
-	// houndsmorphosisPreset
+	houndsmorphosisPreset
 ]
 
 setup({ presets })

@@ -1,10 +1,10 @@
 import state from '../state/state'
 
 const scaleOrigin = ({ origin }) => {
-	const { unit, canvasSize, scaleFromGridCenter } = state
+	const { unit, canvasSize, scaleFromCanvasCenter } = state
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
-	if (scaleFromGridCenter) {
+	if (scaleFromCanvasCenter) {
 		origin[ 0 ] -= canvasCenter[ 0 ]
 		origin[ 1 ] -= canvasCenter[ 1 ]
 	}
@@ -12,7 +12,7 @@ const scaleOrigin = ({ origin }) => {
 	origin[ 0 ] *= unit
 	origin[ 1 ] *= unit
 
-	if (scaleFromGridCenter) {
+	if (scaleFromCanvasCenter) {
 		origin[ 0 ] += canvasCenter[ 0 ]
 		origin[ 1 ] += canvasCenter[ 1 ]
 	}

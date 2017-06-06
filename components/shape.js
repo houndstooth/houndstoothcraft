@@ -15,7 +15,7 @@ export default ({ address, tileColors, stripeIndex, getCoordinates, coordinatesO
 	if (!getCoordinates) getCoordinates = coordinatesOptions ? stripe : square
 	let coordinates = getCoordinates({ origin, sizedUnit, coordinatesOptions })
 	if (!coordinates) return
-	coordinates = rotationUtilities.applyRotation({ coordinates, origin, sizedUnit })
+	coordinates = rotationUtilities.applyRotationToShape({ coordinates, origin, sizedUnit })
 
 	render({ shapeColor, coordinates })
 }

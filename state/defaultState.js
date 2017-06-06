@@ -31,12 +31,12 @@ export default {
 	},
 	tileRotationAboutTileCenter: 0,
 	baseStripeDiagonal: 'MINOR',
-	gridRotationAboutCenter: 0,
+	gridRotationAboutGridCenter: 0,
 	// gridOriginOffset: null,
 	negativeGridToo: false,
 	// getOriginAndSizedUnit: null,
 	// getStripePositions: null,
-	scaleFromGridCenter: true,
+	scaleFromCanvasCenter: true,
 	animation: {
 		frameRate: 1000 / 60,
 		refreshCanvas: true

@@ -20,28 +20,28 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 	return coordinates.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
 }
 
-const getCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
+const getShapeCenter = ({ origin, sizedUnit }) => [ origin[ 0 ] + sizedUnit / 2, origin[ 1 ] + sizedUnit / 2 ]
 
-const applyRotation = ({ coordinates, origin, sizedUnit }) => {
-	const center = getCenter({ origin, sizedUnit })
+const applyRotationToShape = ({ coordinates, origin, sizedUnit }) => {
+	const center = getShapeCenter({ origin, sizedUnit })
 
-	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutCenter } = state
+	const { baseStripeDiagonal, tileRotationAboutTileCenter, canvasSize, gridRotationAboutGridCenter } = state
 
 	const stripeDiagonalRotationOffset = baseStripeDiagonal === "MINOR" ? ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES : ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
-	const tileRotation = stripeDiagonalRotationOffset + tileRotationAboutTileCenter
-	if (tileRotation !== 0) {
+	const rotationFromTile = stripeDiagonalRotationOffset + tileRotationAboutTileCenter
+	if (rotationFromTile !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
 			coordinates: coordinates,
-			rotation: tileRotation
+			rotation: rotationFromTile
 		})
 	}
 
-	if (gridRotationAboutCenter) {
+	if (gridRotationAboutGridCenter) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: [ canvasSize / 2, canvasSize / 2 ],
 			coordinates: coordinates,
-			rotation: gridRotationAboutCenter
+			rotation: gridRotationAboutGridCenter
 		})
 	}
 
@@ -49,5 +49,5 @@ const applyRotation = ({ coordinates, origin, sizedUnit }) => {
 }
 
 export default {
-	applyRotation
+	applyRotationToShape
 }

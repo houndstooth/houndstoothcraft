@@ -6,16 +6,16 @@ import square from '../shapes/square'
 import stripe from '../shapes/stripe'
 
 export default ({ address, tileColors, stripeIndex, getCoordinates, coordinatesOptions }) => {
-	const { origin, sizedUnit } = transpositionUtilities.getOriginAndSizedUnit({ address })
-	if (!origin) return
+	const { shapeOrigin, sizedUnit } = transpositionUtilities.getShapeOriginAndSizedUnit({ address })
+	if (!shapeOrigin) return
 
 	const shapeColor = codeUtilities.wrappedIndex({ array: tileColors, index: stripeIndex })
 	if (shapeColor.a === 0) return
 
 	if (!getCoordinates) getCoordinates = coordinatesOptions ? stripe : square
-	let coordinates = getCoordinates({ origin, sizedUnit, coordinatesOptions })
+	let coordinates = getCoordinates({ shapeOrigin, sizedUnit, coordinatesOptions })
 	if (!coordinates) return
-	coordinates = rotationUtilities.applyRotationToShape({ coordinates, origin, sizedUnit })
+	coordinates = rotationUtilities.applyRotationToShape({ coordinates, shapeOrigin, sizedUnit })
 
 	render({ shapeColor, coordinates })
 }

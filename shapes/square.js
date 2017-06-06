@@ -1,20 +1,23 @@
-export default ({ origin, sizedUnit }) => {
+export default ({ shapeOrigin, sizedUnit }) => {
+	const x = shapeOrigin[ 0 ]
+	const y = shapeOrigin[ 1 ]
+
 	return [
 		[
-			origin[ 0 ],
-			origin[ 1 ]
+			x,
+			y
 		],
 		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ]
+			x + sizedUnit,
+			y
 		],
 		[
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + sizedUnit
+			x + sizedUnit,
+			y + sizedUnit
 		],
 		[
-			origin[ 0 ],
-			origin[ 1 ] + sizedUnit
+			x,
+			y + sizedUnit
 		]
 	]
 }

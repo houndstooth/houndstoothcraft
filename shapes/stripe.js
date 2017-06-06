@@ -1,61 +1,63 @@
-export default ({ origin, sizedUnit, coordinatesOptions }) => {
+export default ({ shapeOrigin, sizedUnit, coordinatesOptions }) => {
 	const { stripeStart, stripeEnd } = coordinatesOptions
 	let coordinates = []
+	const x = shapeOrigin[ 0 ]
+	const y = shapeOrigin[ 1 ]
 
 	if (stripeStart <= 1) {
 		coordinates.push([
-			origin[ 0 ] + stripeStart * sizedUnit,
-			origin[ 1 ]
+			x + stripeStart * sizedUnit,
+			y
 		])
 	} else {
 		coordinates.push([
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (stripeStart - 1) * sizedUnit
+			x + sizedUnit,
+			y + (stripeStart - 1) * sizedUnit
 		])
 	}
 
 	if (stripeEnd <= 1) {
 		coordinates.push([
-			origin[ 0 ] + stripeEnd * sizedUnit,
-			origin[ 1 ]
+			x + stripeEnd * sizedUnit,
+			y
 		])
 		coordinates.push([
-			origin[ 0 ],
-			origin[ 1 ] + stripeEnd * sizedUnit
+			x,
+			y + stripeEnd * sizedUnit
 		])
 	} else {
 		if (stripeStart <= 1) {
 			coordinates.push([
-				origin[ 0 ] + sizedUnit,
-				origin[ 1 ]
+				x + sizedUnit,
+				y
 			])
 		}
 
 		coordinates.push([
-			origin[ 0 ] + sizedUnit,
-			origin[ 1 ] + (stripeEnd - 1) * sizedUnit
+			x + sizedUnit,
+			y + (stripeEnd - 1) * sizedUnit
 		])
 		coordinates.push([
-			origin[ 0 ] + (stripeEnd - 1) * sizedUnit,
-			origin[ 1 ] + sizedUnit
+			x + (stripeEnd - 1) * sizedUnit,
+			y + sizedUnit
 		])
 	}
 
 	if (stripeStart <= 1) {
 		if (stripeEnd > 1) {
 			coordinates.push([
-				origin[ 0 ],
-				origin[ 1 ] + sizedUnit
+				x,
+				y + sizedUnit
 			])
 		}
 		coordinates.push([
-			origin[ 0 ],
-			origin[ 1 ] + stripeStart * sizedUnit
+			x,
+			y + stripeStart * sizedUnit
 		])
 	} else {
 		coordinates.push([
-			origin[ 0 ] + (stripeStart - 1) * sizedUnit,
-			origin[ 1 ] + sizedUnit
+			x + (stripeStart - 1) * sizedUnit,
+			y + sizedUnit
 		])
 	}
 

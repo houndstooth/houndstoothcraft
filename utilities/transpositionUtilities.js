@@ -1,54 +1,54 @@
 import state from '../state/state'
 
-const scaleOrigin = ({ origin }) => {
+const scaleShapeOrigin = ({ shapeOrigin }) => {
 	const { unit, canvasSize, scaleFromCanvasCenter } = state
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
 	if (scaleFromCanvasCenter) {
-		origin[ 0 ] -= canvasCenter[ 0 ]
-		origin[ 1 ] -= canvasCenter[ 1 ]
+		shapeOrigin[ 0 ] -= canvasCenter[ 0 ]
+		shapeOrigin[ 1 ] -= canvasCenter[ 1 ]
 	}
 
-	origin[ 0 ] *= unit
-	origin[ 1 ] *= unit
+	shapeOrigin[ 0 ] *= unit
+	shapeOrigin[ 1 ] *= unit
 
 	if (scaleFromCanvasCenter) {
-		origin[ 0 ] += canvasCenter[ 0 ]
-		origin[ 1 ] += canvasCenter[ 1 ]
+		shapeOrigin[ 0 ] += canvasCenter[ 0 ]
+		shapeOrigin[ 1 ] += canvasCenter[ 1 ]
 	}
 
-	return origin
+	return shapeOrigin
 }
 
-const offsetOrigin = ({ origin }) => {
+const offsetShapeOrigin = ({ shapeOrigin }) => {
 	return [
-		origin[ 0 ] += state.gridOriginOffset[ 0 ],
-		origin[ 1 ] += state.gridOriginOffset[ 1 ]
+		shapeOrigin[ 0 ] += state.gridOriginOffset[ 0 ],
+		shapeOrigin[ 1 ] += state.gridOriginOffset[ 1 ]
 	]
 }
 
-const adjustOrigin = ({ origin }) => {
-	origin = scaleOrigin({ origin })
-	if (state.gridOriginOffset) origin = offsetOrigin({ origin })
-	return origin
+const adjustOrigin = ({ shapeOrigin }) => {
+	shapeOrigin = scaleShapeOrigin({ shapeOrigin })
+	if (state.gridOriginOffset) shapeOrigin = offsetShapeOrigin({ shapeOrigin })
+	return shapeOrigin
 }
 
 const getSizedUnit = () => state.tileSize * state.unit
 
-const getStandardOriginAndSizedUnit = ({ address }) => ({
+const getStandardShapeOriginAndSizedUnit = ({ address }) => ({
 	sizedUnit: getSizedUnit(),
-	origin: adjustOrigin({
-		origin: [ address[ 0 ] * state.tileSize, address[ 1 ] * state.tileSize ]
+	shapeOrigin: adjustOrigin({
+		shapeOrigin: [ address[ 0 ] * state.tileSize, address[ 1 ] * state.tileSize ]
 	})
 })
 
-const getOriginAndSizedUnit = ({ address }) => {
-	const getOriginAndSizedUnit = state.getOriginAndSizedUnit || getStandardOriginAndSizedUnit
-	return getOriginAndSizedUnit({ address })
+const getShapeOriginAndSizedUnit = ({ address }) => {
+	const getShapeOriginAndSizedUnit = state.getShapeOriginAndSizedUnit || getStandardShapeOriginAndSizedUnit
+	return getShapeOriginAndSizedUnit({ address })
 }
 
 export default {
 	adjustOrigin,
 	getSizedUnit,
-	getOriginAndSizedUnit
+	getShapeOriginAndSizedUnit
 }

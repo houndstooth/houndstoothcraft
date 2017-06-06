@@ -34,7 +34,7 @@ export default {
 	gridRotationAboutGridCenter: 0,
 	// gridOriginOffset: null,
 	negativeGridToo: false,
-	// getOriginAndSizedUnit: null,
+	// getShapeOriginAndSizedUnit: null,
 	// getStripePositions: null,
 	scaleFromCanvasCenter: true,
 	animation: {

@@ -13,17 +13,17 @@ export default ({ address }) => {
 	const tileDazzle = colorConfig.mode === 'HOUNDAZZLE' && getDazzle({ address })
 
 	const args = { address, tileColors, tileDazzle }
-	const shapesFunction = colorConfig.mode === 'HOUNDAZZLE' ? houndazzleShapes : shape
+	const shapes = colorConfig.mode === 'HOUNDAZZLE' ? houndazzleShapes : shape
 
 	if (colorUtilities.isTileUniform({ tileColors, tileDazzle })) {
-		shapesFunction(args)
+		shapes(args)
 	} else {
 		const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address })
 		stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
 			args.stripeIndex = stripeIndex
 			args.stripeCount = stripePositionsForTile.length
 			args.coordinatesOptions = { stripeStart, stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || 2 }
-			shapesFunction(args)
+			shapes(args)
 		})
 	}
 }

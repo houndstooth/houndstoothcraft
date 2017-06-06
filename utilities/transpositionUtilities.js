@@ -43,8 +43,8 @@ const getStandardOriginAndSizedUnit = ({ address }) => ({
 })
 
 const getOriginAndSizedUnit = ({ address }) => {
-	const originAndSizedUnitFunction = state.getOriginAndSizedUnit || getStandardOriginAndSizedUnit
-	return originAndSizedUnitFunction({ address })
+	const getOriginAndSizedUnit = state.getOriginAndSizedUnit || getStandardOriginAndSizedUnit
+	return getOriginAndSizedUnit({ address })
 }
 
 export default {

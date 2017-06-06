@@ -12,13 +12,13 @@ const getSetForTile = ({ address, config }) => {
 	}
 
 	assignment = assignment || state.colorConfig.assignment
-	let { addressOffsetFunction, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
+	let { offsetAddress, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	let x = address[ 0 ]
 	let y = address[ 1 ]
-	addressOffsetFunction = addressOffsetFunction || state.colorConfig.assignment.addressOffsetFunction
-	if (addressOffsetFunction) {
-		const addressOffset = addressOffsetFunction({ address })
+	offsetAddress = offsetAddress || state.colorConfig.assignment.offsetAddress
+	if (offsetAddress) {
+		const addressOffset = offsetAddress({ address })
 		x += addressOffset[ 0 ]
 		y += addressOffset[ 1 ]
 	}

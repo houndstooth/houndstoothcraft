@@ -10,8 +10,8 @@ import fileSaver from 'file-saver'
 import grid from '../components/grid'
 
 export default ({ iterating, animating, exportFrames }) => {
-	const executionFunction = animating ? executeAnimation : executeGrid
-	executionFunction({
+	const execute = animating ? executeAnimation : executeGrid
+	execute({
 		iterating,
 		exportFrames,
 		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })

@@ -21,7 +21,7 @@ export default {
 		houndazzle: {
 			substripeCount: 16,
 			dazzleContinuum: false,
-			orientationConfig: { set: [ 'HORIZONTAL', 'VERTICAL' ] }
+			orientationConfig: null
 		},
 		assignment: {
 			switcheroo: false,

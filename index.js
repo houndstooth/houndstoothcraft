@@ -9,18 +9,21 @@ import houndazzleContinuumEffect from './effects/houndazzle/houndazzleContinuumE
 import gongramEffect from './effects/gongram/gongramEffect'
 import houndsmorphosisEffect from './effects/houndsmorphosis/houndsmorphosisEffect'
 
-const effects = [
-	// cmyktoothEffect,
-	// ginghamChevronContinuumEffect,
-	// harmonitoothEffect,
-	houndazzleEffect,
-	// gongramEffect,
-	// houndazzleContinuumEffect,
-	// houndsmorphosisEffect
-]
+const callMethodsToPreventReformattingToolsFromCleaningUpUnusedImportStatements = () => {
+	cmyktoothEffect()
+	ginghamChevronContinuumEffect()
+	harmonitoothEffect()
+	houndazzleEffect()
+	houndazzleContinuumEffect()
+	gongramEffect()
+	houndsmorphosisEffect()
+}
+callMethodsToPreventReformattingToolsFromCleaningUpUnusedImportStatements()
 
-const debugging = true
-setup({ effects, debugging })
+setup({
+	effects: [],
+	debugging: false
+})
 
 execute({
 	iterating: false,

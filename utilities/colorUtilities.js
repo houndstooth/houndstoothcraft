@@ -1,6 +1,6 @@
 import state from '../state/state'
 import gridUtilities from './gridUtilities'
-import allOrientationsAreTheSame from '../variations/houndazzle/allOrientationsAreTheSame'
+import allOrientationsAreTheSame from '../effects/houndazzle/allOrientationsAreTheSame'
 
 const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 

@@ -10,19 +10,19 @@ import overrideState from '../state/overrideState'
 import state from '../state/state'
 import applicationUtilities from '../utilities/applicationUtilities'
 
-export default ({ presets, debugging }) => {
-	const { presetState, presetIterations, presetAnimations } = processPresets({ presets })
-	setupObject({ objectToSetup: state, defaults: defaultState, presets: presetState, overrides: overrideState })
+export default ({ effects, debugging }) => {
+	const { effectState, effectIterations, effectAnimations } = processEffects({ effects })
+	setupObject({ objectToSetup: state, defaults: defaultState, effects: effectState, overrides: overrideState })
 	setupObject({
 		objectToSetup: iterations,
 		defaults: defaultIterations,
-		presets: presetIterations,
+		effects: effectIterations,
 		overrides: overrideIterations
 	})
 	setupObject({
 		objectToSetup: animations,
 		defaults: defaultAnimations,
-		presets: presetAnimations,
+		effects: effectAnimations,
 		overrides: overrideAnimations
 	})
 	setupCanvas()
@@ -48,22 +48,22 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 	})
 }
 
-const setupObject = ({ objectToSetup, defaults, presets, overrides }) => {
+const setupObject = ({ objectToSetup, defaults, effects, overrides }) => {
 	applicationUtilities.resetObject({ objectToReset: objectToSetup, objectToResetTo: defaults })
-	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: presets })
+	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: effects })
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }
 
-const processPresets = ({ presets }) => {
-	const presetState = {}
-	const presetIterations = {}
-	const presetAnimations = {}
+const processEffects = ({ effects }) => {
+	const effectState = {}
+	const effectIterations = {}
+	const effectAnimations = {}
 
-	presets.forEach(preset => {
-		applyOverrides({ objectWithPropertiesToOverride: presetState, overrides: preset.state })
-		applyOverrides({ objectWithPropertiesToOverride: presetIterations, overrides: preset.iterations })
-		applyOverrides({ objectWithPropertiesToOverride: presetAnimations, overrides: preset.animations })
+	effects.forEach(effect => {
+		applyOverrides({ objectWithPropertiesToOverride: effectState, overrides: effect.state })
+		applyOverrides({ objectWithPropertiesToOverride: effectIterations, overrides: effect.iterations })
+		applyOverrides({ objectWithPropertiesToOverride: effectAnimations, overrides: effect.animations })
 	})
 
-	return { presetState, presetIterations, presetAnimations }
+	return { effectState, effectIterations, effectAnimations }
 }

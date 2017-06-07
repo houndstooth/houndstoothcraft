@@ -1,8 +1,8 @@
 import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
 import stripeUtilities from '../utilities/stripeUtilities'
-import houndazzleShapes from '../variations/houndazzle/houndazzleShapes'
-import getDazzle from '../variations/houndazzle/getDazzle'
+import houndazzleShapes from '../effects/houndazzle/houndazzleShapes'
+import getDazzle from '../effects/houndazzle/getDazzle'
 import shape from './shape'
 
 export default ({ address }) => {

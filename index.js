@@ -1,26 +1,26 @@
 import setup from './application/setup'
 import execute from './application/execute'
 
-import cmyktoothPreset from './variations/cmyktooth/cmyktoothPreset'
-import ginghamChevronContinuumPreset from './variations/gingham-chevron-continuum/ginghamChevronContinuumPreset'
-import harmonitoothPreset from './variations/harmonitooth/harmonitoothPreset'
-import houndazzlePreset from './variations/houndazzle/houndazzlePreset'
-import houndazzleContinuumPreset from './variations/houndazzle/houndazzleContinuumPreset'
-import gongramPreset from './variations/gongram/gongramPreset'
-import houndsmorphosisPreset from './variations/houndsmorphosis/houndsmorphosisPreset'
+import cmyktoothEffect from './effects/cmyktooth/cmyktoothEffect'
+import ginghamChevronContinuumEffect from './effects/gingham-chevron-continuum/ginghamChevronContinuumEffect'
+import harmonitoothEffect from './effects/harmonitooth/harmonitoothEffect'
+import houndazzleEffect from './effects/houndazzle/houndazzleEffect'
+import houndazzleContinuumEffect from './effects/houndazzle/houndazzleContinuumEffect'
+import gongramEffect from './effects/gongram/gongramEffect'
+import houndsmorphosisEffect from './effects/houndsmorphosis/houndsmorphosisEffect'
 
-const presets = [
-	// cmyktoothPreset,
-	// ginghamChevronContinuumPreset,
-	// harmonitoothPreset,
-	houndazzlePreset,
-	// gongramPreset,
-	// houndazzleContinuumPreset,
-	// houndsmorphosisPreset
+const effects = [
+	// cmyktoothEffect,
+	// ginghamChevronContinuumEffect,
+	// harmonitoothEffect,
+	houndazzleEffect,
+	// gongramEffect,
+	// houndazzleContinuumEffect,
+	// houndsmorphosisEffect
 ]
 
 const debugging = true
-setup({ presets, debugging })
+setup({ effects, debugging })
 
 execute({
 	iterating: false,

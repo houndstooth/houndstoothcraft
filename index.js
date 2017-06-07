@@ -22,3 +22,15 @@ execute({
 	exportFrames: false,
 	performanceLogging: false
 })
+
+var elmApp = Elm.ElmRender.Main.fullscreen();
+
+elmApp.ports.check.subscribe(function(receivedFromElm) {
+	console.log('woooo', receivedFromElm)
+})
+
+var toSendToJavascript = 45
+setInterval(function() {
+	elmApp.ports.suggestions.send(toSendToJavascript)
+	toSendToJavascript++
+}, 1000)

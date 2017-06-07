@@ -1,4 +1,4 @@
-import { BLACK, TRANSPARENT } from '../application/constants' // WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
+import { BLACK, TRANSPARENT } from '../application/constants'
 
 export default {
 	viewConfig: {
@@ -17,7 +17,7 @@ export default {
 	},
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],
-		mode: 'STANDARD', // 'HOUNDAZZLE'
+		mode: 'STANDARD',
 		houndazzle: {
 			substripeCount: 16,
 			dazzleContinuum: false,
@@ -26,7 +26,7 @@ export default {
 		assignment: {
 			switcheroo: false,
 			flipGrain: false,
-			mode: 'WEAVE', // 'SUPERTILE'
+			mode: 'WEAVE',
 			offsetAddress: null,
 			supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 			weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
@@ -34,11 +34,11 @@ export default {
 		opacity: 1
 	},
 	stripeCountConfig: {
-		mode: 'STANDARD', // 'GINGHAM', 'GINGHAM_CHEVRON_CONTINUUM'
+		mode: 'STANDARD',
 		stripeCount: 4,
 		ginghamChevronContinuum: { initial: 1, delta: 1 }
 	},
-	baseStripeDiagonal: 'MINOR', // 'PRINCIPAL'
+	baseStripeDiagonal: 'MINOR',
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
 	animation: {

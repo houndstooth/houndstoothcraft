@@ -16,13 +16,15 @@ const presets = [
 	// houndazzlePreset,
 	// gongramPreset,
 	// houndazzleContinuumPreset,
-	houndsmorphosisPreset
+	// houndsmorphosisPreset
 ]
 
-setup({ presets })
+const debugging = true
+setup({ presets, debugging })
 
 execute({
 	iterating: false,
 	animating: false,
-	exportFrames: false
+	exportFrames: false,
+	performanceLogging: false
 })

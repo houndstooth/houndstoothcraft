@@ -10,7 +10,7 @@ import overrideState from '../state/overrideState'
 import state from '../state/state'
 import applicationUtilities from '../utilities/applicationUtilities'
 
-export default ({ presets }) => {
+export default ({ presets, debugging }) => {
 	const { presetState, presetIterations, presetAnimations } = processPresets({ presets })
 	setupObject({ objectToSetup: state, defaults: defaultState, presets: presetState, overrides: overrideState })
 	setupObject({
@@ -26,7 +26,7 @@ export default ({ presets }) => {
 		overrides: overrideAnimations
 	})
 	setupCanvas()
-	// console.log(state)
+	if (debugging) console.log(state)
 }
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {

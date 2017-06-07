@@ -9,13 +9,25 @@ import applicationUtilities from '../utilities/applicationUtilities'
 import fileSaver from 'file-saver'
 import grid from '../components/grid'
 
-export default ({ iterating, animating, exportFrames }) => {
+export default ({ iterating, animating, exportFrames, performanceLogging }) => {
 	const execute = animating ? executeAnimation : executeGrid
 	execute({
 		iterating,
 		exportFrames,
-		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations })
+		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations }),
+		performanceLogging,
+		animating
 	})
+}
+
+const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
+	if (performanceLogging) console.time('grid');
+	grid()
+	if (performanceLogging) {
+		if (animating) console.log('current animation frame: ', currentAnimation.i)
+		if (iterating) console.log('current iteration frame: ', currentIteration.i)
+		console.timeEnd('grid');
+	}
 }
 
 const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
@@ -44,28 +56,24 @@ const callFunctionsPerStateProperty = ({ functionObjects }) => {
 	})
 }
 
-const executeIteration = ({ iterationFunctions }) => {
+const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
 	currentIteration.i = 0
 	const { startIteration, endIteration } = state.iteration
 
 	for (let n = 0; n <= endIteration; n++) {
-		if (n >= startIteration) grid()
+		if (n >= startIteration) {
+			gridAndMaybeLogging({ performanceLogging, iterating, animating })
+		}
 		callFunctionsPerStateProperty({ functionObjects: iterationFunctions })
 		currentIteration.i++
 	}
 }
 
-const executeGrid = ({ iterating, iterationFunctions }) => {
-	if (iterating) {
-		executeIteration({ iterationFunctions })
-	} else {
-		// console.time('grid');
-		grid()
-		// console.timeEnd('grid');
-	}
+const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animating }) => {
+	iterating ? executeIteration({ iterationFunctions, performanceLogging, iterating, animating }) : gridAndMaybeLogging({ performanceLogging, iterating, animating })
 }
 
-const executeAnimation = ({ iterating, exportFrames, iterationFunctions }) => {
+const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
 	const { frameRate, refreshCanvas } = state.animation
 
 	let lastSavedFrame = 0
@@ -79,10 +87,10 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions }) => {
 
 		if (iterating) {
 			const preIterationState = JSON.parse(JSON.stringify(state))
-			executeIteration({ iterationFunctions })
+			executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
 			applicationUtilities.resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
-			grid()
+			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
 
 		if (exportFrames) {

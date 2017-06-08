@@ -5,21 +5,4 @@
 <body>
     <canvas ></canvas>
     <script src="bundle.js"></script>
-
-    <div id="main"></div>
-
-    <script src="main.js"></script>
-    <script>
-		var elmApp = Elm.ElmRender.Main.fullscreen();
-
-        elmApp.ports.check.subscribe(function(receivedFromElm) {
-        	console.log('woooo', receivedFromElm)
-        })
-
-        var toSendToJavascript = 0
-        setInterval(function() {
-			elmApp.ports.suggestions.send(toSendToJavascript)
-			toSendToJavascript++
-        }, 1000)
-    </script>
 </body>

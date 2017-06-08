@@ -1,4 +1,4 @@
 const elmApp = Elm.ElmRender.Main.fullscreen();
-elmApp.ports.check.subscribe(console.log)
+elmApp.ports.sendSomethingBackToTheJs.subscribe(console.log)
 
 export default elmApp

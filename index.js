@@ -11,13 +11,13 @@ import houndsmorphosisEffect from './effects/houndsmorphosis/houndsmorphosisEffe
 
 setup({
 	effects: [
-		harmonitoothEffect
+		cmyktoothEffect
 	],
 	debugging: false
 })
 
 execute({
-	iterating: false,
-	animating: true,
+	iterating: true,
+	animating: false,
 	performanceLogging: false
 })

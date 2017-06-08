@@ -5,6 +5,7 @@ import currentIteration from '../state/currentIteration'
 import currentAnimation from '../state/currentAnimation'
 import applicationUtilities from '../utilities/applicationUtilities'
 import grid from '../components/grid'
+import shapesForElm from '../render/shapesForElm'
 
 export default ({ iterating, animating, performanceLogging }) => {
 	const execute = animating ? executeAnimation : executeGrid
@@ -82,6 +83,8 @@ const executeAnimation = ({ iterating, iterationFunctions, performanceLogging, a
 		} else {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
+
+		shapesForElm.shapes = []
 
 		callFunctionsPerStateProperty({
 			functionObjects: prepareFunctionsPerStateProperty({ objectWithFunctions: animations })

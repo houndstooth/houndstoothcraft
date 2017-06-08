@@ -1,4 +1,3 @@
-import setupCanvas from '../render/setupCanvas'
 import defaultIterations from '../state/defaultIterations'
 import overrideIterations from '../state/overrideIterations'
 import iterations from '../state/iterations'
@@ -25,7 +24,6 @@ export default ({ effects, debugging }) => {
 		effects: effectAnimations,
 		overrides: overrideAnimations
 	})
-	setupCanvas()
 	if (debugging) console.log(state)
 }
 

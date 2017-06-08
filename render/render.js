@@ -1,15 +1,12 @@
-import ctx from './ctx'
 import colorUtilities from '../utilities/colorUtilities'
+import shapesForElm from './shapesForElm'
 
 export default ({ shapeColor, coordinates }) => {
 	if (!coordinates.length) return
 
-	ctx.fillStyle = colorUtilities.parseColor({ color: shapeColor })
-	ctx.beginPath()
+	const fill = colorUtilities.parseColor({ color: shapeColor })
 
-	ctx.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])
-	coordinates.forEach(coordinate => ctx.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
+	const points = coordinates.map(coordinate => coordinate.toString()).join(" ")
 
-	ctx.closePath()
-	ctx.fill()
+	shapesForElm.shapes.push({ fill, points })
 }

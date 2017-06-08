@@ -1,6 +1,8 @@
 import codeUtilities from '../utilities/codeUtilities'
 import state from '../state/state'
 import tile from './tile'
+import shapesForElm from '../render/shapesForElm'
+import elmApp from '../application/elmApp'
 
 export default () => {
 	const { gridSize, includeNegativeQuadrants } = state.gridConfig
@@ -19,4 +21,7 @@ export default () => {
 			})
 		})
 	}
+
+	elmApp.ports.shapes.send(shapesForElm.shapes)
+	shapesForElm.shapes = []
 }

@@ -42,7 +42,8 @@ export default {
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
 	animation: {
-		frameRate: 1000 / 60
+		frameRate: 1000 / 60,
+		refreshCanvas: true
 	},
 	iteration: {
 		startIteration: 0,

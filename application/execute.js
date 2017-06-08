@@ -3,13 +3,17 @@ import iterations from '../state/iterations'
 import animations from '../state/animations'
 import currentIteration from '../state/currentIteration'
 import currentAnimation from '../state/currentAnimation'
+import clear from '../render/clear'
+import canvas from '../render/canvas'
 import applicationUtilities from '../utilities/applicationUtilities'
+import fileSaver from 'file-saver'
 import grid from '../components/grid'
 
-export default ({ iterating, animating, performanceLogging }) => {
+export default ({ iterating, animating, exportFrames, performanceLogging }) => {
 	const execute = animating ? executeAnimation : executeGrid
 	execute({
 		iterating,
+		exportFrames,
 		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations }),
 		performanceLogging,
 		animating
@@ -69,11 +73,17 @@ const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animat
 	iterating ? executeIteration({ iterationFunctions, performanceLogging, iterating, animating }) : gridAndMaybeLogging({ performanceLogging, iterating, animating })
 }
 
-const executeAnimation = ({ iterating, iterationFunctions, performanceLogging, animating }) => {
-	const { frameRate } = state.animation
+const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
+	const { frameRate, refreshCanvas } = state.animation
 
+	let lastSavedFrame = 0
 	setInterval(() => {
+		if (exportFrames) {
+			if (currentAnimation.i > lastSavedFrame) return
+		}
 		currentAnimation.i++
+
+		if (refreshCanvas) clear()
 
 		if (iterating) {
 			const preIterationState = JSON.parse(JSON.stringify(state))
@@ -81,6 +91,13 @@ const executeAnimation = ({ iterating, iterationFunctions, performanceLogging, a
 			applicationUtilities.resetObject({ objectToReset: state, objectToResetTo: preIterationState })
 		} else {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
+		}
+
+		if (exportFrames) {
+			canvas.toBlob(blob => {
+				lastSavedFrame++
+				fileSaver.saveAs(blob, lastSavedFrame + ".png")
+			})
 		}
 
 		callFunctionsPerStateProperty({

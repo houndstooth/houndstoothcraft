@@ -11,13 +11,26 @@ import houndsmorphosisEffect from './effects/houndsmorphosis/houndsmorphosisEffe
 
 setup({
 	effects: [
-		harmonitoothEffect
+		gongramEffect
 	],
 	debugging: false
 })
 
 execute({
 	iterating: false,
-	animating: true,
+	animating: false,
+	exportFrames: false,
 	performanceLogging: false
 })
+
+var elmApp = Elm.ElmRender.Main.fullscreen();
+
+elmApp.ports.check.subscribe(function(receivedFromElm) {
+	console.log('woooo', receivedFromElm)
+})
+
+var toSendToJavascript = 45
+setInterval(function() {
+	elmApp.ports.suggestions.send(toSendToJavascript)
+	toSendToJavascript++
+}, 1000)

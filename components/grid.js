@@ -22,5 +22,6 @@ export default () => {
 		})
 	}
 
-	elmApp.ports.getShapesFromTheJs.send(shapesForElm.shapes)
+	elmApp.ports.shapes.send(shapesForElm.shapes)
+	shapesForElm.shapes = []
 }

@@ -1,13 +1,13 @@
 import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
-import standardTileFunction from './standardTileFunction'
+import standardShapes from './standardShapes'
 
 export default ({ address }) => {
 	const { colorConfig } = state
 
 	const tileColors = colorUtilities.getColorsForTile({ address, colorConfig })
 
-	const tileFunction = state.tileFunction || standardTileFunction
+	const shapes = state.shapes || standardShapes
 
-	tileFunction({ address, tileColors })
+	shapes({ address, tileColors })
 }

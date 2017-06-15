@@ -25,6 +25,7 @@ const combineShapesWithStripeShapes = args => {
 	if (!args.getCoordinates) args.getCoordinates = stripe
 	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address: args.address })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
+		args.colorsIndex = stripeIndex
 		args.stripeIndex = stripeIndex
 		args.stripeCount = stripePositionsForTile.length
 		args.coordinatesOptions = { stripeStart, stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || 2 }

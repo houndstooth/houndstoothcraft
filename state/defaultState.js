@@ -15,7 +15,8 @@ export default {
 	tileConfig: {
 		tileSize: 50,
 		collapseSameColoredShapesWithinTile: true,
-		isTileUniform: null
+		isTileUniform: null,
+		tileToShapes: null
 	},
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],
@@ -43,7 +44,6 @@ export default {
 	baseStripeDiagonal: 'MINOR',
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
-	shapes: null,
 	animation: {
 		frameRate: 1000 / 60,
 		refreshCanvas: true

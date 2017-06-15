@@ -1,6 +1,6 @@
-export default ({ shapeOrigin, sizedUnit }) => {
-	const x = shapeOrigin[ 0 ]
-	const y = shapeOrigin[ 1 ]
+export default ({ tileOrigin, sizedUnit }) => {
+	const x = tileOrigin[ 0 ]
+	const y = tileOrigin[ 1 ]
 
 	return [
 		[

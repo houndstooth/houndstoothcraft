@@ -42,7 +42,7 @@ export default {
 		ginghamChevronContinuum: { initial: 1, delta: 1 }
 	},
 	baseStripeDiagonal: 'MINOR',
-	getShapeOriginAndSizedUnit: null,
+	getTileOriginAndSizedUnit: null,
 	getStripePositions: null,
 	animation: {
 		frameRate: 1000 / 60,

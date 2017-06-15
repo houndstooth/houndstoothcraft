@@ -21,10 +21,10 @@ const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
 	return coordinates.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
 }
 
-const getShapeCenter = ({ shapeOrigin, sizedUnit }) => [ shapeOrigin[ 0 ] + sizedUnit / 2, shapeOrigin[ 1 ] + sizedUnit / 2 ]
+const getShapeCenter = ({ tileOrigin, sizedUnit }) => [ tileOrigin[ 0 ] + sizedUnit / 2, tileOrigin[ 1 ] + sizedUnit / 2 ]
 
-const applyRotationToShape = ({ coordinates, shapeOrigin, sizedUnit }) => {
-	const center = getShapeCenter({ shapeOrigin, sizedUnit })
+const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
+	const center = getShapeCenter({ tileOrigin, sizedUnit })
 
 	const { baseStripeDiagonal, viewConfig: { canvasSize }, gridConfig: { gridRotationAboutGridCenter } } = state
 

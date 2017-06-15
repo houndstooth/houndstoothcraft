@@ -1,8 +1,8 @@
-export default ({ shapeOrigin, sizedUnit, coordinatesOptions }) => {
+export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 	const { stripeStart, stripeEnd } = coordinatesOptions
 	let coordinates = []
-	const x = shapeOrigin[ 0 ]
-	const y = shapeOrigin[ 1 ]
+	const x = tileOrigin[ 0 ]
+	const y = tileOrigin[ 1 ]
 
 	if (stripeStart <= 1) {
 		coordinates.push([

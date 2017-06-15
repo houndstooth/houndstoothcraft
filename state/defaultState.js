@@ -41,6 +41,7 @@ export default {
 	baseStripeDiagonal: 'MINOR',
 	getShapeOriginAndSizedUnit: null,
 	getStripePositions: null,
+	shapes: null,
 	animation: {
 		frameRate: 1000 / 60,
 		refreshCanvas: true

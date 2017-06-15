@@ -13,7 +13,9 @@ export default {
 		includeNegativeQuadrants: false
 	},
 	tileConfig: {
-		tileSize: 50
+		tileSize: 50,
+		collapseSameColoredShapesWithinTile: true,
+		isTileUniform: null
 	},
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],

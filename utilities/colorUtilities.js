@@ -1,6 +1,5 @@
 import state from '../state/state'
 import gridUtilities from './gridUtilities'
-import allOrientationsAreTheSame from '../effects/houndazzle/allOrientationsAreTheSame'
 
 const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 
@@ -54,19 +53,11 @@ const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
 	return true
 }
 
-const isTileUniform = ({ tileColors, tileDazzle }) => {
-	const colorsAreTheSame = allColorsAreTheSame({ colors: tileColors })
-	if (state.colorConfig.mode === 'HOUNDAZZLE') {
-		return colorsAreTheSame &&
-			allColorsAreTheSame({ colors: tileDazzle.tileColors }) &&
-			allOrientationsAreTheSame({ orientations: tileDazzle.tileOrientations })
-	} else {
-		return colorsAreTheSame
-	}
-}
+const isTileUniform = ({ tileColors }) => allColorsAreTheSame({ colors: tileColors })
 
 export default {
 	getColorsForTile,
 	isTileUniform,
+	allColorsAreTheSame,
 	parseColor
 }

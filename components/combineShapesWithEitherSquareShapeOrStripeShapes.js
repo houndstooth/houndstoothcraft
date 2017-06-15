@@ -1,6 +1,8 @@
 import colorUtilities from '../utilities/colorUtilities'
 import stripeUtilities from '../utilities/stripeUtilities'
 import state from '../state/state'
+import square from '../shapes/square'
+import stripe from '../shapes/stripe'
 
 export default (args) => {
 	if (state.tileConfig.collapseSameColoredShapesWithinTile) {
@@ -14,9 +16,13 @@ export default (args) => {
 	combineShapesWithStripeShapes(args)
 }
 
-const combineShapesWithSquareShape = args => args.shapes(args)
+const combineShapesWithSquareShape = args => {
+	if (!args.getCoordinates) args.getCoordinates = square
+	args.shapes(args)
+}
 
 const combineShapesWithStripeShapes = args => {
+	if (!args.getCoordinates) args.getCoordinates = stripe
 	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address: args.address })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
 		args.stripeIndex = stripeIndex

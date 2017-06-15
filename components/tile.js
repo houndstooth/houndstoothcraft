@@ -1,7 +1,8 @@
 import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
-import tileToStandardShapes from './tileToStandardShapes'
+import shape from './shape'
 import transpositionUtilities from '../utilities/transpositionUtilities'
+import combineShapesWithStripeShapes from './combineShapesWithEitherSquareShapeOrStripeShapes'
 
 export default ({ address }) => {
 	const { colorConfig } = state
@@ -11,7 +12,8 @@ export default ({ address }) => {
 	const { tileOrigin, sizedUnit } = transpositionUtilities.getTileOriginAndSizedUnit({ address })
 	if (!tileOrigin) return
 
-	const tileToShapes = state.tileConfig.tileToShapes || tileToStandardShapes
+	const shapes = state.tileConfig.tileToShapes || shape
 
-	tileToShapes({ address, tileColors, tileOrigin, sizedUnit })
+	const options = state.gatherOptions && state.gatherOptions({ address })
+	combineShapesWithStripeShapes({ shapes, address, tileColors, tileOrigin, sizedUnit, options })
 }

@@ -41,6 +41,7 @@ export default {
 		stripeCount: 4,
 		ginghamChevronContinuum: { initial: 1, delta: 1 }
 	},
+	gatherOptions: null,
 	baseStripeDiagonal: 'MINOR',
 	getTileOriginAndSizedUnit: null,
 	getStripePositions: null,

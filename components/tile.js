@@ -3,6 +3,7 @@ import colorUtilities from '../utilities/colorUtilities'
 import shape from './shape'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import combineShapesWithStripeShapes from './combineShapesWithEitherSquareShapeOrStripeShapes'
+import gatherOptions from './gatherOptions'
 
 export default ({ address }) => {
 	const { colorConfig } = state
@@ -14,6 +15,6 @@ export default ({ address }) => {
 
 	const shapes = state.tileConfig.tileToShapes || shape
 
-	const options = state.gatherOptions && state.gatherOptions({ address })
+	const options = state.gatherOptions && gatherOptions({address})
 	combineShapesWithStripeShapes({ shapes, address, tileColors, tileOrigin, sizedUnit, options })
 }

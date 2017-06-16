@@ -23,7 +23,6 @@ export default ({ address }) => {
 		const isTileUniform = state.tileConfig.isTileUniform || colorUtilities.isTileUniform
 		if (isTileUniform({ tileColors, options })) {
 			shapes({
-				shapes,
 				getCoordinates: square,
 				address,
 				tileColors,
@@ -38,7 +37,6 @@ export default ({ address }) => {
 	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
 		shapes({
-			shapes,
 			getCoordinates: stripe,
 			address,
 			tileColors,

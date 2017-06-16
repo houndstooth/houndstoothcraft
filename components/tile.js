@@ -15,15 +15,18 @@ export default ({ address }) => {
 	const { tileOrigin, sizedUnit } = transpositionUtilities.getTileOriginAndSizedUnit({ address })
 	if (!tileOrigin) return
 
-	const shapes = state.tileConfig.tileToShapes || shape
+	const tileToShapes = state.tileConfig.tileToShapes || shape
+	const getCoordinates = {}
+	getCoordinates.whenTileIsUniform = state.tileConfig.getCoordinates.whenTileIsUniform || square
+	getCoordinates.whenTileIsMultiform = state.tileConfig.getCoordinates.whenTileIsMultiform || stripe
 
 	const options = state.gatherOptions && gatherOptions({ address })
 
 	if (state.tileConfig.collapseSameColoredShapesWithinTile) {
 		const isTileUniform = state.tileConfig.isTileUniform || colorUtilities.isTileUniform
 		if (isTileUniform({ tileColors, options })) {
-			shapes({
-				getCoordinates: square,
+			tileToShapes({
+				getCoordinates: getCoordinates.whenTileIsUniform,
 				address,
 				tileColors,
 				tileOrigin,
@@ -36,8 +39,8 @@ export default ({ address }) => {
 
 	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
-		shapes({
-			getCoordinates: stripe,
+		tileToShapes({
+			getCoordinates: getCoordinates.whenTileIsMultiform,
 			address,
 			tileColors,
 			tileOrigin,

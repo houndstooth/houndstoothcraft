@@ -16,7 +16,11 @@ export default {
 		tileSize: 50,
 		collapseSameColoredShapesWithinTile: true,
 		isTileUniform: null,
-		tileToShapes: null
+		tileToShapes: null,
+		getCoordinates: {
+			whenTileIsUniform: null,
+			whenTileIsMultiform: null
+		}
 	},
 	colorConfig: {
 		set: [ BLACK, TRANSPARENT ],

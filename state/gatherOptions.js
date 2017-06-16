@@ -1,4 +1,4 @@
-import state from '../state/state'
+import state from './state'
 
 export default ({ address }) => {
 	let options = {}

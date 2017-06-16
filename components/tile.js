@@ -4,8 +4,8 @@ import shape from './shape'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import gatherOptions from '../state/gatherOptions'
 import stripeUtilities from '../utilities/stripeUtilities'
-import square from '../shapes/square'
-import stripe from '../shapes/stripe'
+import squareCoordinates from '../shapes/squareCoordinates'
+import stripeCoordinates from '../shapes/stripeCoordinates'
 
 export default ({ address }) => {
 	const { colorConfig } = state
@@ -17,8 +17,8 @@ export default ({ address }) => {
 
 	const tileToShapes = state.tileConfig.tileToShapes || shape
 	const getCoordinates = {}
-	getCoordinates.whenTileIsUniform = state.tileConfig.getCoordinates.whenTileIsUniform || square
-	getCoordinates.whenTileIsMultiform = state.tileConfig.getCoordinates.whenTileIsMultiform || stripe
+	getCoordinates.whenTileIsUniform = state.tileConfig.getCoordinates.whenTileIsUniform || squareCoordinates
+	getCoordinates.whenTileIsMultiform = state.tileConfig.getCoordinates.whenTileIsMultiform || stripeCoordinates
 
 	const options = state.gatherOptions && gatherOptions({ address })
 

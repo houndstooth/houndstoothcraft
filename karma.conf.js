@@ -7,7 +7,6 @@ module.exports = config => {
         preprocessors: {
             'test/**/*.js': [ 'browserify' ]
         },
-        browsers: ['Chrome'],
         browserify: {
             debug: true,
             transform: [
@@ -20,7 +19,6 @@ module.exports = config => {
             ]
         },
         plugins: [ 
-            'karma-chrome-launcher', 
             'karma-browserify',
             'karma-jasmine',
             'karma-jasmine-html-reporter'

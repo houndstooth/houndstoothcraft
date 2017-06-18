@@ -1,36 +1,42 @@
-import test from 'ava'
+import 'jasmine'
 import applicationUtilities from '../../utilities/applicationUtilities'
 
-test('deeper path does not mutate the passed property path', t => {
-	const nestedPropertyPath = [ 'colorConfig', 'assignment' ]
-	const propertyName = 'set'
+describe("application utilities", () => {
+    describe('deeper path', () => {
+        it('does not mutate the passed property path', () => {
+            const nestedPropertyPath = [ 'colorConfig', 'assignment' ]
+            const propertyName = 'set'
 
-	const deeperPath = applicationUtilities.deeperPath({ nestedPropertyPath, propertyName })
+            const deeperPath = applicationUtilities.deeperPath({ nestedPropertyPath, propertyName })
 
-	t.deepEqual(deeperPath, [ 'colorConfig', 'assignment', 'set' ])
-	t.deepEqual(nestedPropertyPath, [ 'colorConfig', 'assignment' ])
-})
+            expect(deeperPath).toEqual([ 'colorConfig', 'assignment', 'set' ])
+            expect(nestedPropertyPath).toEqual([ 'colorConfig', 'assignment' ])
+        })
+    })
 
-test('reset object reassigns each of the immediate keys', t => {
-	const objectToReset = {
-		colorConfig: {
-			set: [ 0, 1 ]
-		},
-		mode: 'COOLNESS'
-	}
-	const objectToResetTo = {
-		mode: 'OG_NESS',
-		foo: 'bar'
-	}
+    describe('reset object', () => {
+        it('reassigns each of the immediate keys', () => {
+            const objectToReset = {
+                colorConfig: {
+                    set: [ 0, 1 ]
+                },
+                mode: 'COOLNESS'
+            }
+            const objectToResetTo = {
+                mode: 'OG_NESS',
+                foo: 'bar'
+            }
 
-	applicationUtilities.resetObject({ objectToReset, objectToResetTo })
+            applicationUtilities.resetObject({ objectToReset, objectToResetTo })
 
-	const expectedObject = {
-		colorConfig: {
-			set: [ 0, 1 ]
-		},
-		mode: 'OG_NESS',
-		foo: 'bar'
-	}
-	t.deepEqual(objectToReset, expectedObject)
+            const expectedObject = {
+                colorConfig: {
+                    set: [ 0, 1 ]
+                },
+                mode: 'OG_NESS',
+                foo: 'bar'
+            }
+            expect(objectToReset).toEqual(expectedObject)          
+        })
+    })
 })

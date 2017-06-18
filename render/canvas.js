@@ -1,3 +1,3 @@
-const canvas = document.querySelector('canvas')
-
+const canvas = document.createElement('canvas')
+document.body.appendChild(canvas)
 export default canvas

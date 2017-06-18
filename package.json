@@ -4,29 +4,25 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base dist",
     "deploy": "webpack -p && cf push houndstooth -b https://github.com/cloudfoundry/staticfile-buildpack.git -m 64m",
-    "test": "ava **/test/**/*.js",
+    "test": "karma start",
     "setup": "npm i && git submodule update --init --recursive && git submodule foreach git checkout master",
     "push-all": "git push && git submodule foreach git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
     "file-saver": "^1.3.3",
+    "jasmine": "^2.6.0",
+    "karma": "^1.7.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "path": "^0.12.7",
+    "watchify": "^3.9.0",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
-  },
-  "ava": {
-    "require": [
-      "babel-register"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
   }
 }

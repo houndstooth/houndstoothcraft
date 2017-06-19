@@ -16,7 +16,7 @@ export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 		])
 	}
 
-	if (stripeEnd <= 1) {
+	if (stripeEnd < 1) {
 		coordinates.push([
 			x + stripeEnd * sizedUnit,
 			y
@@ -26,7 +26,7 @@ export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 			y + stripeEnd * sizedUnit
 		])
 	} else {
-		if (stripeStart < 1) {
+		if (stripeStart <= 1) {
 			coordinates.push([
 				x + sizedUnit,
 				y
@@ -43,7 +43,7 @@ export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 		])
 	}
 
-	if (stripeStart < 1 && stripeStart > 0) {
+	if (stripeStart < 1) {
 		if (stripeEnd > 1) {
 			coordinates.push([
 				x,

@@ -5,7 +5,7 @@
     "start": "webpack-dev-server --hot --inline --content-base dist",
     "deploy": "webpack -p && cf push houndstooth -b https://github.com/cloudfoundry/staticfile-buildpack.git -m 64m",
     "test": "karma start",
-    "setup": "npm i && git config user.name \"Douglas Blumeyer\" && git config user.email douglas.blumeyer@gmail.com && git submodule update --init --recursive && git submodule foreach git checkout master && git submodule foreach git config user.name \"Douglas Blumeyer\" && git submodule foreach git config user.email douglas.blumeyer@gmail.com",
+    "setup": "npm i -g webpack && npm i && git config user.name \"Douglas Blumeyer\" && git config user.email douglas.blumeyer@gmail.com && git submodule update --init --recursive && git submodule foreach git checkout master && git submodule foreach git config user.name \"Douglas Blumeyer\" && git submodule foreach git config user.email douglas.blumeyer@gmail.com",
     "push-all": "git push && git submodule foreach git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r"
   },

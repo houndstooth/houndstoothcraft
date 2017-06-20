@@ -1,5 +1,5 @@
 import 'jasmine'
-import '../../vendor/canteen.min'
+
 import setup from '../../application/setup'
 import execute from '../../application/execute'
 import ctx from '../../render/ctx'

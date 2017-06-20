@@ -1,8 +1,6 @@
 import 'jasmine'
 
-import codeUtilities from '../../utilities/codeUtilities'
 import state from '../../state/state'
-import tile from '../../components/tile'
 import grid from '../../components/grid'
 
 describe('grid', () => {

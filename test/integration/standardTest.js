@@ -23,6 +23,12 @@ describe("Standard Houndstooth", () => {
         })
     })
 
+    // I think we'll end up not using the call stack as much
+    // Reason being: once you're doing that, shouldn't you just be unit testing
+    //   the coordinate and color functions?
+    // It seems like a more productively different approach
+    // i.e. a more appropriately integration-y approach
+    // to test the final pixel output, yeah?
     it("proves the concept of testing with call stack to canvas", () => {
         const stack = ctx.stack()
         console.log('canvas calls:', stack)
@@ -58,6 +64,10 @@ describe("Standard Houndstooth", () => {
         expect(pixel(sectorCenter({x: 3, y: 4, n: 5}))).toEqual({r: 0, g: 0, b: 0, a: 1})
         expect(pixel(sectorCenter({x: 4, y: 3, n: 5}))).toEqual({r: 0, g: 0, b: 0, a: 1})
         expect(pixel(sectorCenter({x: 4, y: 4, n: 5}))).toEqual({r: 0, g: 0, b: 0, a: 1})
+    })
+
+    it("repeats a 2x2 pattern of a solid black, solid white, and two b&w striped tiles", () => {
+        
     })
 })
 

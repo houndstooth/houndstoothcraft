@@ -2,7 +2,7 @@ import ctx from './ctx'
 import colorUtilities from '../utilities/colorUtilities'
 
 export default ({ shapeColor, coordinates }) => {
-	if (!coordinates.length) return
+	if (coordinates.length < 3) return
 
 	ctx.fillStyle = colorUtilities.parseColor({ color: shapeColor })
 	ctx.beginPath()

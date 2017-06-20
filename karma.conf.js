@@ -13,7 +13,8 @@ module.exports = config => {
                 [
                     'babelify',
                     {
-                        "presets": ["es2015"]
+                        "presets": ["es2015"],
+                        "plugins": ["rewire"]
                     }
                 ]
             ]

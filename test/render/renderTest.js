@@ -5,73 +5,73 @@ import ctx from '../../render/ctx'
 import colorUtilities from '../../utilities/colorUtilities'
 
 describe('render', () => {
-    const shapeColor = {}
-    const parsedColor = '#012345'
-    const ctxCallsOrder = []
-    
+	const shapeColor = {}
+	const parsedColor = '#012345'
+	const ctxCallsOrder = []
 
-    beforeEach(() => {
-        spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 
-        ctxCallsOrder.length = 0
-        ctx.beginPath = () => ctxCallsOrder.push({ method: 'beginPath' })
-        ctx.moveTo = (x, y) => ctxCallsOrder.push({ method: 'moveTo', x, y })
-        ctx.lineTo = (x, y) => ctxCallsOrder.push({ method: 'lineTo', x, y })
-        ctx.closePath = () => ctxCallsOrder.push({ method: 'closePath' })
-        ctx.fill = () => ctxCallsOrder.push({ method: 'fill' })
-    })
+	beforeEach(() => {
+		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 
-    it('returns early if there are no coordinates', () => {
-        const coordinates = []
+		ctxCallsOrder.length = 0
+		ctx.beginPath = () => ctxCallsOrder.push({ method: 'beginPath' })
+		ctx.moveTo = (x, y) => ctxCallsOrder.push({ method: 'moveTo', x, y })
+		ctx.lineTo = (x, y) => ctxCallsOrder.push({ method: 'lineTo', x, y })
+		ctx.closePath = () => ctxCallsOrder.push({ method: 'closePath' })
+		ctx.fill = () => ctxCallsOrder.push({ method: 'fill' })
+	})
 
-        render({ shapeColor, coordinates })
+	it('returns early if there are no coordinates', () => {
+		const coordinates = []
 
-        expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-        expect(ctxCallsOrder).toEqual([])
-    })
+		render({ shapeColor, coordinates })
 
-    it('returns early if there is only one coordinate, because a point has no area', () => {
-        const coordinates = [ [ 0, 1 ] ]
+		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
+		expect(ctxCallsOrder).toEqual([])
+	})
 
-        render({ shapeColor, coordinates })
+	it('returns early if there is only one coordinate, because a point has no area', () => {
+		const coordinates = [ [ 0, 1 ] ]
 
-        expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-        expect(ctxCallsOrder).toEqual([])
-    })
+		render({ shapeColor, coordinates })
 
-    it('returns early if there are only two coordinates, because a line has no area', () => {
-        const coordinates = [ [ 0, 1 ], [ 1, 1 ] ]
+		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
+		expect(ctxCallsOrder).toEqual([])
+	})
 
-        render({ shapeColor, coordinates })
+	it('returns early if there are only two coordinates, because a line has no area', () => {
+		const coordinates = [ [ 0, 1 ], [ 1, 1 ] ]
 
-        expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-        expect(ctxCallsOrder).toEqual([])
-    })
+		render({ shapeColor, coordinates })
 
-    describe('when there are at least three coordinates', () => {
-        beforeEach(() => {
-            const coordinates = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
+		expect(ctxCallsOrder).toEqual([])
+	})
 
-            render({ shapeColor, coordinates })
-        })
+	describe('when there are at least three coordinates', () => {
+		beforeEach(() => {
+			const coordinates = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
-        it('parses the shape\'s color', () => {
-            expect(colorUtilities.parseColor).toHaveBeenCalledWith({ color: shapeColor })
-        })
+			render({ shapeColor, coordinates })
+		})
 
-        it('assigns the parsed color to the context\'s fill style', () => {
-            expect(ctx.fillStyle).toEqual(parsedColor)
-        })
+		it('parses the shape\'s color', () => {
+			expect(colorUtilities.parseColor).toHaveBeenCalledWith({ color: shapeColor })
+		})
 
-        it('draws the path with the correct coordinates and fills it', () => {
-            expect(ctxCallsOrder).toEqual([
-                { method: 'beginPath' },
-                { method: 'moveTo', x: 0, y: 1 },
-                { method: 'lineTo', x: 1, y: 1 },
-                { method: 'lineTo', x: 1, y: 0 },
-                { method: 'closePath' },
-                { method: 'fill' }
-            ])
-        })
-    })
+		it('assigns the parsed color to the context\'s fill style', () => {
+			expect(ctx.fillStyle).toEqual(parsedColor)
+		})
+
+		it('draws the path with the correct coordinates and fills it', () => {
+			expect(ctxCallsOrder).toEqual([
+				{ method: 'beginPath' },
+				{ method: 'moveTo', x: 0, y: 1 },
+				{ method: 'lineTo', x: 1, y: 1 },
+				{ method: 'lineTo', x: 1, y: 0 },
+				{ method: 'closePath' },
+				{ method: 'fill' }
+			])
+		})
+	})
 })

@@ -21,12 +21,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging }) => {
 }
 
 const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
-	if (performanceLogging) console.time('grid');
+	if (performanceLogging) console.time('grid')
 	grid()
 	if (performanceLogging) {
 		if (animating) console.log('current animation frame: ', currentAnimation.i)
 		if (iterating) console.log('current iteration frame: ', currentIteration.i)
-		console.timeEnd('grid');
+		console.timeEnd('grid')
 	}
 }
 

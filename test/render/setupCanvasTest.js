@@ -5,12 +5,12 @@ import state from '../../state/state'
 import canvas from '../../render/canvas'
 
 describe('setupCanvas', () => {
-    it('sets the canvas\'s width and height with config', () => {
-        state.viewConfig.canvasSize = 400
+	it('sets the canvas\'s width and height with config', () => {
+		state.viewConfig.canvasSize = 400
 
-        setupCanvas()
+		setupCanvas()
 
-        expect(canvas.width).toEqual(400)
-        expect(canvas.height).toEqual(400)
-    })
+		expect(canvas.width).toEqual(400)
+		expect(canvas.height).toEqual(400)
+	})
 })

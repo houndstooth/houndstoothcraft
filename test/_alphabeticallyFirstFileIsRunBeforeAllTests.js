@@ -4,6 +4,6 @@ import state from '../state/state'
 import defaultState from '../state/defaultState'
 import applicationUtilities from '../utilities/applicationUtilities'
 
-beforeEach(function() {
+beforeEach(() => {
 	applicationUtilities.resetObject({ objectToReset: state, objectToResetTo: defaultState })
 })

@@ -5,12 +5,12 @@ import ctx from '../../render/ctx'
 import state from '../../state/state'
 
 describe('clear', () => {
-    it('wipes the entire canvas', () => {
-        spyOn(ctx, 'clearRect')
-        state.viewConfig.canvasSize = 500
+	it('wipes the entire canvas', () => {
+		spyOn(ctx, 'clearRect')
+		state.viewConfig.canvasSize = 500
 
-        clear()
+		clear()
 
-        expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, 500, 500)
-    })
+		expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, 500, 500)
+	})
 })

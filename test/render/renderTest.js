@@ -9,7 +9,6 @@ describe('render', () => {
 	const parsedColor = '#012345'
 	const ctxCallsOrder = []
 
-
 	beforeEach(() => {
 		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 

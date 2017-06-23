@@ -1,5 +1,5 @@
 import state from '../state/state'
-import { QUARTER_OF_CIRCLE_ROTATION } from '../application/constants'
+import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
 
 const ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES = 0
 const ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES = QUARTER_OF_CIRCLE_ROTATION

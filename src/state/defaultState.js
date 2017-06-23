@@ -1,4 +1,4 @@
-import { BLACK, TRANSPARENT } from '../application/constants'
+import { BLACK, TRANSPARENT } from '../constants'
 
 export default {
 	viewConfig: {

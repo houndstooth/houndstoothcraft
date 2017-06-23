@@ -1,8 +1,8 @@
 import 'jasmine'
 
-import render from '../../render/render'
-import ctx from '../../render/ctx'
-import colorUtilities from '../../utilities/colorUtilities'
+import render from '../../src/render/render'
+import ctx from '../../src/render/ctx'
+import colorUtilities from '../../src/utilities/colorUtilities'
 
 describe('render', () => {
 	const shapeColor = {}

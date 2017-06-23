@@ -1,5 +1,5 @@
-import setup from './application/setup'
-import execute from './application/execute'
+import setup from './setup'
+import execute from './execute'
 
 import cmyktoothEffect from './effects/cmyktooth/cmyktoothEffect'
 import ginghamChevronContinuumEffect from './effects/gingham-chevron-continuum/ginghamChevronContinuumEffect'

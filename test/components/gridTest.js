@@ -1,7 +1,7 @@
 import 'jasmine'
 
-import state from '../../state/state'
-import grid from '../../components/grid'
+import state from '../../src/state/state'
+import grid from '../../src/components/grid'
 
 describe('grid', () => {
 	let tileSpy

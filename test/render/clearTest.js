@@ -1,8 +1,8 @@
 import 'jasmine'
 
-import clear from '../../render/clear'
-import ctx from '../../render/ctx'
-import state from '../../state/state'
+import clear from '../../src/render/clear'
+import ctx from '../../src/render/ctx'
+import state from '../../src/state/state'
 
 describe('clear', () => {
 	it('wipes the entire canvas', () => {

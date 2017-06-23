@@ -1,10 +1,10 @@
 import 'jasmine'
 
-import setup from '../../application/setup'
-import execute from '../../application/execute'
-import ctx from '../../render/ctx'
-import state from '../../state/state'
-import { BLACK, TRANSPARENT } from '../../application/constants'
+import setup from '../../src/setup'
+import execute from '../../src/execute'
+import ctx from '../../src/render/ctx'
+import state from '../../src/state/state'
+import { BLACK, TRANSPARENT } from '../../src/constants'
 
 describe("Standard Houndstooth", () => {
 	beforeEach(() => {

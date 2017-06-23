@@ -1,6 +1,6 @@
 import 'jasmine'
 
-import squareCoordinates from '../../shapes/squareCoordinates'
+import squareCoordinates from '../../src/shapes/squareCoordinates'
 
 const tileOrigin = [ 2, 3 ]
 const sizedUnit = 5

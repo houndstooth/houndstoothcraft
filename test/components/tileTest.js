@@ -1,8 +1,8 @@
 import 'jasmine'
 
-import tile from '../../components/tile'
-import transpositionUtilities from '../../utilities/transpositionUtilities'
-import colorUtilities from '../../utilities/colorUtilities'
+import tile from '../../src/components/tile'
+import transpositionUtilities from '../../src/utilities/transpositionUtilities'
+import colorUtilities from '../../src/utilities/colorUtilities'
 
 describe('tile', () => {
 	const address = [ 3, 5 ]

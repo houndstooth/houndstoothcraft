@@ -1,5 +1,5 @@
 import 'jasmine'
-import applicationUtilities from '../../utilities/applicationUtilities'
+import applicationUtilities from '../../src/utilities/applicationUtilities'
 
 describe("application utilities", () => {
 	describe('deeper path', () => {

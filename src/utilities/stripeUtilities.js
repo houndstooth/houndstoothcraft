@@ -1,6 +1,6 @@
 import state from '../state/state'
-import codeUtilities from '../utilities/codeUtilities'
-import { PERIMETER_SCALAR } from '../application/constants'
+import codeUtilities from './codeUtilities'
+import { PERIMETER_SCALAR } from '../constants'
 
 const getStripePositionsForTile = ({ address }) => {
 	const getStripePositionsForTile = state.getStripePositions || standardStripePositions

@@ -1,13 +1,13 @@
-import state from '../state/state'
-import iterations from '../state/iterations'
-import animations from '../state/animations'
-import currentIteration from '../state/currentIteration'
-import currentAnimation from '../state/currentAnimation'
-import clear from '../render/clear'
-import canvas from '../render/canvas'
-import applicationUtilities from '../utilities/applicationUtilities'
+import state from './state/state'
+import iterations from './state/iterations'
+import animations from './state/animations'
+import currentIteration from './state/currentIteration'
+import currentAnimation from './state/currentAnimation'
+import clear from './render/clear'
+import canvas from './render/canvas'
+import applicationUtilities from './utilities/applicationUtilities'
 import fileSaver from 'file-saver'
-import grid from '../components/grid'
+import grid from './components/grid'
 
 export default ({ iterating, animating, exportFrames, performanceLogging }) => {
 	const execute = animating ? executeAnimation : executeGrid

@@ -1,8 +1,8 @@
 import 'jasmine'
 
-import shape from '../../components/shape'
-import codeUtilities from '../../utilities/codeUtilities'
-import rotationUtilities from '../../utilities/rotationUtilities'
+import shape from '../../src/components/shape'
+import codeUtilities from '../../src/utilities/codeUtilities'
+import rotationUtilities from '../../src/utilities/rotationUtilities'
 
 describe('shape', () => {
 	let renderSpy

@@ -1,6 +1,6 @@
 import 'jasmine'
 
-import stripeCoordinates from '../../shapes/stripeCoordinates'
+import stripeCoordinates from '../../src/shapes/stripeCoordinates'
 
 const tileOrigin = [ 0, 0 ]
 const sizedUnit = 1

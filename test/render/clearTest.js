@@ -7,7 +7,7 @@ import state from '../../state/state'
 describe('clear', () => {
 	it('wipes the entire canvas', () => {
 		spyOn(ctx, 'clearRect')
-		state.viewConfig.canvasSize = 500
+		state.viewConfig = { canvasSize: 500 }
 
 		clear()
 

@@ -6,7 +6,7 @@ import canvas from '../../render/canvas'
 
 describe('setupCanvas', () => {
 	it('sets the canvas\'s width and height with config', () => {
-		state.viewConfig.canvasSize = 400
+		state.viewConfig = { canvasSize: 400 }
 
 		setupCanvas()
 

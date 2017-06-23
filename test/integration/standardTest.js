@@ -1,6 +1,5 @@
 import 'jasmine'
 
-import setup from '../../src/setup'
 import execute from '../../src/execute'
 import ctx from '../../src/render/ctx'
 import state from '../../src/state/state'
@@ -8,11 +7,6 @@ import { BLACK, TRANSPARENT } from '../../src/constants'
 
 describe("Standard Houndstooth", () => {
 	beforeEach(() => {
-		setup({
-			effects: [],
-			debugging: false
-		})
-
 		state.tileConfig = {
 			tileSize: 50,
 			isTileUniform: null,
@@ -33,8 +27,14 @@ describe("Standard Houndstooth", () => {
 			assignment: {
 				mode: 'WEAVE',
 				weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-			}
+			},
+			opacity: 1
 		}
+		state.stripeCountConfig = {
+			mode: 'STANDARD',
+			stripeCount: 4
+		}
+		state.baseStripeDiagonal = 'MINOR'
 
 		execute({
 			iterating: false,

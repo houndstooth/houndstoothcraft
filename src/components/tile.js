@@ -6,6 +6,7 @@ import gatherOptions from '../state/gatherOptions'
 import stripeUtilities from '../utilities/stripeUtilities'
 import squareCoordinates from '../shapes/squareCoordinates'
 import stripeCoordinates from '../shapes/stripeCoordinates'
+import { PERIMETER_SCALAR } from '../constants'
 
 export default ({ address }) => {
 	const { tileOrigin, sizedUnit } = transpositionUtilities.getTileOriginAndSizedUnit({ address })
@@ -15,10 +16,10 @@ export default ({ address }) => {
 
 	const tileToShapes = state.tileConfig.tileToShapes || shape
 	const getCoordinates = {}
-	getCoordinates.whenTileIsUniform = state.tileConfig.getCoordinates.whenTileIsUniform || squareCoordinates
-	getCoordinates.whenTileIsMultiform = state.tileConfig.getCoordinates.whenTileIsMultiform || stripeCoordinates
+	getCoordinates.whenTileIsUniform = state.tileConfig.getCoordinates && state.tileConfig.getCoordinates.whenTileIsUniform || squareCoordinates
+	getCoordinates.whenTileIsMultiform = state.tileConfig.getCoordinates && state.tileConfig.getCoordinates.whenTileIsMultiform || stripeCoordinates
 
-	const options = state.gatherOptions && gatherOptions({ address })
+	const options = state.gatherOptions && state.gatherOptions({ address })
 
 	if (state.tileConfig.collapseSameColoredShapesWithinTile) {
 		const isTileUniform = state.tileConfig.isTileUniform || colorUtilities.isTileUniform
@@ -47,7 +48,7 @@ export default ({ address }) => {
 			colorsIndex: stripeIndex,
 			stripeIndex,
 			stripeCount: stripePositionsForTile.length,
-			coordinatesOptions: { stripeStart, stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || 2 }
+			coordinatesOptions: { stripeStart, stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || PERIMETER_SCALAR }
 		})
 	})
 }

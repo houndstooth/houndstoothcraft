@@ -2,6 +2,7 @@ import 'jasmine'
 
 import state from '../../src/state/state'
 import grid from '../../src/components/grid'
+import { GRID_SIZE } from '../../src/defaults'
 
 import _resetStatesForTest from '../_resetStatesForTest'
 beforeEach(() => _resetStatesForTest({ 
@@ -17,11 +18,31 @@ describe('grid', () => {
 	beforeEach(() => {
 		tileSpy = jasmine.createSpy()
 		grid.__Rewire__('tile', tileSpy)
-		state.gridConfig = { gridSize }
+	})
+
+	describe('when grid size is specified', () => {
+		beforeEach(() => {
+			state.gridConfig = { gridSize }
+		})
+
+		it('uses it', () => {
+			grid()
+
+			expect(tileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
+		})
+	})
+
+	describe('when grid size is not specified', () => {
+		it('defaults grid size', () => {
+			grid()
+
+			expect(tileSpy.calls.all().length).toBe(Math.pow(GRID_SIZE, 2))
+		})
 	})
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
+			state.gridConfig = { gridSize }
 			state.gridConfig.includeNegativeQuadrants = false
 		})
 
@@ -38,6 +59,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
+			state.gridConfig = { gridSize }
 			state.gridConfig.includeNegativeQuadrants = true
 		})
 

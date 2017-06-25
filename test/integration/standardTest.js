@@ -4,6 +4,7 @@ import execute from '../../src/execute'
 import ctx from '../../src/render/ctx'
 import state from '../../src/state/state'
 import { BLACK, TRANSPARENT } from '../../src/constants'
+import { TILE_SIZE } from '../../src/defaults'
 
 import _resetStatesForTest from '../_resetStatesForTest'
 beforeEach(() => _resetStatesForTest({ 
@@ -13,43 +14,7 @@ beforeEach(() => _resetStatesForTest({
 }))
 
 describe("Standard Houndstooth", () => {
-	beforeEach(() => {
-		state.tileConfig = {
-			tileSize: 50,
-			isTileUniform: null,
-			getCoordinates: {
-				whenTileIsUniform: null,
-				whenTileIsMultiform: null
-			}
-		}
-		state.gridConfig = {
-			gridSize: 2
-		}
-		state.viewConfig = {
-			canvasSize: 100,
-			zoom: 1
-		}
-		state.colorConfig = {
-			set: [ BLACK, TRANSPARENT ],
-			assignment: {
-				mode: 'WEAVE',
-				weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-			},
-			opacity: 1
-		}
-		state.stripeCountConfig = {
-			mode: 'STANDARD',
-			stripeCount: 4
-		}
-		state.baseStripeDiagonal = 'MINOR'
-
-		execute({
-			iterating: false,
-			animating: false,
-			exportFrames: false,
-			performanceLogging: false
-		})
-	})
+	beforeEach(() => execute())
 
 	it("has four stripes in a striped square", () => {
 		expect(pixel(sectorCenter({ x: 0, y: 0, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 0 })
@@ -81,6 +46,6 @@ const pixel = ([ x, y ]) => {
 }
 
 const sectorCenter = ({ x, y, n }) => {
-	const sectorSize = state.tileConfig.tileSize / n
+	const sectorSize = TILE_SIZE / n
 	return [ (x + 0.5) * sectorSize, (y + 0.5) * sectorSize ]
 }

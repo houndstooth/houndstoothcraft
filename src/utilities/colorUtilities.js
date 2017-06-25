@@ -1,16 +1,17 @@
 import state from '../state/state'
 import gridUtilities from './gridUtilities'
+import { OPACITY } from '../defaults'
 
 const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 
 const getColorsForTile = ({ address }) => {
 	const { colorConfig } = state
-	const { mode } = state.stripeCountConfig
+	const { mode } = state.stripeCountConfig || { mode: 'STANDARD' }
 
 	let tileColors = gridUtilities.getSetForTile({ address, config: colorConfig })
 	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
-	const opacity = colorConfig && colorConfig.opacity || state.colorConfig.opacity
+	const opacity = colorConfig && colorConfig.opacity || OPACITY
 	if (opacity < 1) tileColors = fadeColors({ colors: tileColors, opacity })
 
 	return tileColors

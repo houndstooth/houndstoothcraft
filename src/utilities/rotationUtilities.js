@@ -1,5 +1,6 @@
 import state from '../state/state'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
+import { CANVAS_SIZE, BASE_STRIPE_DIAGONAL } from '../defaults'
 
 const ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES = 0
 const ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES = QUARTER_OF_CIRCLE_ROTATION
@@ -26,9 +27,12 @@ const getShapeCenter = ({ tileOrigin, sizedUnit }) => [ tileOrigin[ 0 ] + sizedU
 const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 	const center = getShapeCenter({ tileOrigin, sizedUnit })
 
-	const { baseStripeDiagonal, viewConfig: { canvasSize }, gridConfig: { gridRotationAboutGridCenter } } = state
+	let { baseStripeDiagonal, viewConfig, gridConfig } = state
+	baseStripeDiagonal = baseStripeDiagonal || BASE_STRIPE_DIAGONAL
+	const canvasSize = viewConfig && viewConfig.canvasSize || CANVAS_SIZE
+	const gridRotationAboutGridCenter = gridConfig && gridConfig.gridRotationAboutGridCenter
 
-	const stripeDiagonalRotationOffset = baseStripeDiagonal === "MINOR" ? ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES : ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
+	const stripeDiagonalRotationOffset = baseStripeDiagonal === 'MINOR' ? ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES : ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
 	if (stripeDiagonalRotationOffset !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,

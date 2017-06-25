@@ -9,7 +9,7 @@ import applicationUtilities from './utilities/applicationUtilities'
 import fileSaver from 'file-saver'
 import grid from './components/grid'
 
-export default ({ iterating, animating, exportFrames, performanceLogging }) => {
+export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
 	execute({
 		iterating,

@@ -1,22 +1,23 @@
 import codeUtilities from './codeUtilities'
 import state from '../state/state'
+import { COLOR_SET, COLOR_ASSIGNMENT } from '../defaults'
 
 const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
 
 	let { set: setForGrid, assignment } = config || {}
-	setForGrid = setForGrid || state.colorConfig.set
-	assignment = assignment || state.colorConfig.assignment
+	setForGrid = setForGrid || COLOR_SET
+	assignment = assignment || COLOR_ASSIGNMENT
 
 	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
-	offsetSetForGridIndex = offsetSetForGridIndex || state.colorConfig.assignment.offsetSetForGridIndex
-	offsetAddress = offsetAddress || state.colorConfig.assignment.offsetAddress
-	mode = mode || state.colorConfig.assignment.mode
-	supertile = supertile || state.colorConfig.assignment.supertile
-	weave = weave || state.colorConfig.assignment.weave
-	flipGrain = flipGrain || state.colorConfig.assignment.flipGrain
-	switcheroo = switcheroo || state.colorConfig.assignment.switcheroo
+	offsetSetForGridIndex = offsetSetForGridIndex || COLOR_ASSIGNMENT.offsetSetForGridIndex
+	offsetAddress = offsetAddress || COLOR_ASSIGNMENT.offsetAddress
+	mode = mode || COLOR_ASSIGNMENT.mode
+	supertile = supertile || COLOR_ASSIGNMENT.supertile
+	weave = weave || COLOR_ASSIGNMENT.weave
+	flipGrain = flipGrain || COLOR_ASSIGNMENT.flipGrain
+	switcheroo = switcheroo || COLOR_ASSIGNMENT.switcheroo
 
 	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
 	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
@@ -40,7 +41,7 @@ const getSetForTile = ({ address, config }) => {
 	if (flipGrain) setForTile = setForTile.reverse()
 	if (switcheroo) setForTile = switcherooSet({ setForTile, address })
 
-	transformAssignedSet = transformAssignedSet || state.colorConfig.assignment.transformAssignedSet
+	transformAssignedSet = transformAssignedSet || COLOR_ASSIGNMENT.transformAssignedSet
 	if (transformAssignedSet) {
 		setForTile = transformAssignedSet({ setForTile, address })
 	}

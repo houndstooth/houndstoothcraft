@@ -1,11 +1,8 @@
 import setupCanvas from './render/setupCanvas'
-import defaultIterations from './state/defaultIterations'
 import overrideIterations from './state/overrideIterations'
 import iterations from './state/iterations'
-import defaultAnimations from './state/defaultAnimations'
 import overrideAnimations from './state/overrideAnimations'
 import animations from './state/animations'
-import defaultState from './state/defaultState'
 import overrideState from './state/overrideState'
 import state from './state/state'
 import applicationUtilities from './utilities/applicationUtilities'
@@ -13,16 +10,19 @@ import log from './log'
 
 export default ({ effects = [], logging } = {}) => {
 	const { effectState, effectIterations, effectAnimations } = processEffects({ effects })
-	setupObject({ objectToSetup: state, defaults: defaultState, effects: effectState, overrides: overrideState })
+
+	setupObject({ 
+		objectToSetup: state, 
+		effects: effectState, 
+		overrides: overrideState 
+	})
 	setupObject({
 		objectToSetup: iterations,
-		defaults: defaultIterations,
 		effects: effectIterations,
 		overrides: overrideIterations
 	})
 	setupObject({
 		objectToSetup: animations,
-		defaults: defaultAnimations,
 		effects: effectAnimations,
 		overrides: overrideAnimations
 	})
@@ -51,8 +51,8 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 	})
 }
 
-const setupObject = ({ objectToSetup, defaults, effects, overrides }) => {
-	applicationUtilities.resetObject({ objectToReset: objectToSetup, objectToResetTo: defaults })
+const setupObject = ({ objectToSetup, effects, overrides }) => {
+	Object.keys(objectToSetup).forEach(key => delete objectToSetup[key])
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: effects })
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }

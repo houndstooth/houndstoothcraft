@@ -1,7 +1,9 @@
 import state from '../state/state'
+import { TILE_SIZE, ZOOM } from '../defaults'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	const { zoom, canvasSize, zoomOnCanvasCenter } = state.viewConfig
+	let { zoom, canvasSize, zoomOnCanvasCenter } = state.viewConfig || {}
+	zoom = zoom || ZOOM
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
 	if (zoomOnCanvasCenter) {
@@ -31,18 +33,29 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 
 const adjustOrigin = ({ tileOrigin }) => {
 	tileOrigin = adjustTileOriginForZoom({ tileOrigin })
-	if (state.viewConfig.centerViewOnCenterOfTileAtZeroZeroAddress) tileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin })
+	if (state.viewConfig && state.viewConfig.centerViewOnCenterOfTileAtZeroZeroAddress) {
+		tileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin })
+	} 
 	return tileOrigin
 }
 
-const getSizedUnit = () => state.tileConfig.tileSize * state.viewConfig.zoom
+const getTileSize = () => state.tileConfig && state.tileConfig.tileSize || TILE_SIZE
 
-const getStandardTileOriginAndSizedUnit = ({ address }) => ({
-	sizedUnit: getSizedUnit(),
-	tileOrigin: adjustOrigin({
-		tileOrigin: [ address[ 0 ] * state.tileConfig.tileSize, address[ 1 ] * state.tileConfig.tileSize ]
-	})
-})
+const getSizedUnit = () => {
+	const tileSize = getTileSize()
+	const zoom = state.viewConfig && state.viewConfig.zoom || ZOOM
+	return tileSize * zoom
+}
+
+const getStandardTileOriginAndSizedUnit = ({ address }) => {
+	const tileSize = getTileSize()
+	return {
+		sizedUnit: getSizedUnit(),
+		tileOrigin: adjustOrigin({
+			tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ]
+		})
+	}
+}
 
 const getTileOriginAndSizedUnit = ({ address }) => {
 	const getTileOriginAndSizedUnit = state.getTileOriginAndSizedUnit || getStandardTileOriginAndSizedUnit

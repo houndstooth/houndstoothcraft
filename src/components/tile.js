@@ -14,18 +14,21 @@ export default ({ address }) => {
 
 	const tileColors = colorUtilities.getColorsForTile({ address })
 
-	const tileToShapes = state.tileConfig.tileToShapes || shape
-	const getCoordinates = {}
-	getCoordinates.whenTileIsUniform = state.tileConfig.getCoordinates && state.tileConfig.getCoordinates.whenTileIsUniform || squareCoordinates
-	getCoordinates.whenTileIsMultiform = state.tileConfig.getCoordinates && state.tileConfig.getCoordinates.whenTileIsMultiform || stripeCoordinates
+	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = state.tileConfig || {}
+	collapseSameColoredShapesWithinTile = typeof collapseSameColoredShapesWithinTile === 'undefined' ? true : collapseSameColoredShapesWithinTile
+
+	tileToShapes = tileToShapes || shape
+	const getCoordinatesHere = {}
+	getCoordinatesHere.whenTileIsUniform = getCoordinates && getCoordinates.whenTileIsUniform || squareCoordinates
+	getCoordinatesHere.whenTileIsMultiform = getCoordinates && getCoordinates.whenTileIsMultiform || stripeCoordinates
 
 	const options = state.gatherOptions && state.gatherOptions({ address })
 
-	if (state.tileConfig.collapseSameColoredShapesWithinTile) {
-		const isTileUniform = state.tileConfig.isTileUniform || colorUtilities.isTileUniform
+	if (collapseSameColoredShapesWithinTile) {
+		isTileUniform = isTileUniform || colorUtilities.isTileUniform
 		if (isTileUniform({ tileColors, options })) {
 			tileToShapes({
-				getCoordinates: getCoordinates.whenTileIsUniform,
+				getCoordinates: getCoordinatesHere.whenTileIsUniform,
 				address,
 				tileColors,
 				tileOrigin,
@@ -39,7 +42,7 @@ export default ({ address }) => {
 	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
 		tileToShapes({
-			getCoordinates: getCoordinates.whenTileIsMultiform,
+			getCoordinates: getCoordinatesHere.whenTileIsMultiform,
 			address,
 			tileColors,
 			tileOrigin,

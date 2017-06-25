@@ -12,12 +12,22 @@ beforeEach(() => _resetStatesForTest({
 }))
 
 describe('setupCanvas', () => {
-	it('sets the canvas\'s width and height with config', () => {
+	it('sets the canvas width and height with config, if provided', () => {
 		state.viewConfig = { canvasSize: 400 }
+        console.log('setting canvas size just for this test', Object.keys(state).length)
 
 		setupCanvas()
 
 		expect(canvas.width).toEqual(400)
 		expect(canvas.height).toEqual(400)
 	})
+
+    it('defaults the canvas width and height to 800, if not provided', () => {
+        console.log('NOT setting the canvas size for this test', Object.keys(state).length)
+
+        setupCanvas()
+
+        expect(canvas.width).toEqual(800)
+        expect(canvas.height).toEqual(800)
+    })
 })

@@ -1,9 +1,11 @@
 import codeUtilities from '../utilities/codeUtilities'
 import state from '../state/state'
 import tile from './tile'
+import { GRID_SIZE } from '../defaults'
 
 export default () => {
-	const { gridSize, includeNegativeQuadrants } = state.gridConfig
+	let { gridSize, includeNegativeQuadrants } = state.gridConfig || {}
+	gridSize = gridSize || GRID_SIZE
 	const { iterator } = codeUtilities
 
 	if (includeNegativeQuadrants) {

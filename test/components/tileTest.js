@@ -16,7 +16,7 @@ describe('tile', () => {
 		it('returns early, not getting colors', () => {
 			tile({ address })
 
-			expect(colorUtilities.getColorsForTile.notCalled)
+			expect(colorUtilities.getColorsForTile).not.toHaveBeenCalled()
 		})
 	})
 })

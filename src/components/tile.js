@@ -8,10 +8,10 @@ import squareCoordinates from '../shapes/squareCoordinates'
 import stripeCoordinates from '../shapes/stripeCoordinates'
 
 export default ({ address }) => {
-	const tileColors = colorUtilities.getColorsForTile({ address })
-
 	const { tileOrigin, sizedUnit } = transpositionUtilities.getTileOriginAndSizedUnit({ address })
 	if (!tileOrigin) return
+
+	const tileColors = colorUtilities.getColorsForTile({ address })
 
 	const tileToShapes = state.tileConfig.tileToShapes || shape
 	const getCoordinates = {}

@@ -1,7 +1,7 @@
 import 'jasmine'
 import applicationUtilities from '../../src/utilities/applicationUtilities'
 
-describe("application utilities", () => {
+describe('application utilities', () => {
 	describe('deeper path', () => {
 		it('does not mutate the passed property path', () => {
 			const nestedPropertyPath = [ 'colorConfig', 'assignment' ]
@@ -37,6 +37,36 @@ describe("application utilities", () => {
 				foo: 'bar'
 			}
 			expect(objectToReset).toEqual(expectedObject)
+		})
+	})
+
+	describe('accessChildObjectOrCreatePath', () => {
+		it('accesses child object if it exists', () => {
+			const expectedObject = {}
+			const parentObject = {
+				childPathFirstStep: {
+					childPathSecondStep: expectedObject
+				}
+			}
+			const nestedPropertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+
+			const childObject = applicationUtilities.accessChildObjectOrCreatePath({ parentObject, nestedPropertyPath })
+
+			expect(childObject).toBe(expectedObject)
+		})
+
+		it('creates the path for this object and sets it to an empty object if it does not exist', () => {
+			const parentObject = {}
+			const nestedPropertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+
+			const childObject = applicationUtilities.accessChildObjectOrCreatePath({ parentObject, nestedPropertyPath })
+
+			expect(childObject).toEqual({})
+			expect(parentObject).toEqual({
+				childPathFirstStep: {
+					childPathSecondStep: {}
+				}
+			})
 		})
 	})
 })

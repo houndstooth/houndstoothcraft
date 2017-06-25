@@ -9,8 +9,9 @@ import defaultState from './state/defaultState'
 import overrideState from './state/overrideState'
 import state from './state/state'
 import applicationUtilities from './utilities/applicationUtilities'
+import log from './log'
 
-export default ({ effects, debugging }) => {
+export default ({ effects = [], logging } = {}) => {
 	const { effectState, effectIterations, effectAnimations } = processEffects({ effects })
 	setupObject({ objectToSetup: state, defaults: defaultState, effects: effectState, overrides: overrideState })
 	setupObject({
@@ -25,8 +26,10 @@ export default ({ effects, debugging }) => {
 		effects: effectAnimations,
 		overrides: overrideAnimations
 	})
+
 	setupCanvas()
-	if (debugging) console.log(state)
+
+	if (logging) log(state)
 }
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {

@@ -11,7 +11,7 @@ import houndsmorphosisEffect from './effects/houndsmorphosis/houndsmorphosisEffe
 
 setup({
 	effects: [],
-	debugging: false
+	logging: false
 })
 
 execute({

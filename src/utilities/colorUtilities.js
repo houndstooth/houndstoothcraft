@@ -3,7 +3,8 @@ import gridUtilities from './gridUtilities'
 
 const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 
-const getColorsForTile = ({ address, colorConfig }) => {
+const getColorsForTile = ({ address }) => {
+	const { colorConfig } = state
 	const { mode } = state.stripeCountConfig
 
 	let tileColors = gridUtilities.getSetForTile({ address, config: colorConfig })

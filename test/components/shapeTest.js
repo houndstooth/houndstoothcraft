@@ -4,6 +4,13 @@ import shape from '../../src/components/shape'
 import codeUtilities from '../../src/utilities/codeUtilities'
 import rotationUtilities from '../../src/utilities/rotationUtilities'
 
+import _resetStatesForTest from '../_resetStatesForTest'
+beforeEach(() => _resetStatesForTest({ 
+    state: typeof state === 'undefined' ? {} : state, 
+    iterations: typeof iterations === 'undefined' ? {} : iterations, 
+    animations: typeof animations === 'undefined' ? {} : animations, 
+}))
+
 describe('shape', () => {
 	let renderSpy
 	let tileOrigin

@@ -6,6 +6,13 @@ const tileOrigin = [ 0, 0 ]
 const sizedUnit = 1
 let stripeStart, stripeEnd
 
+import _resetStatesForTest from '../_resetStatesForTest'
+beforeEach(() => _resetStatesForTest({ 
+    state: typeof state === 'undefined' ? {} : state, 
+    iterations: typeof iterations === 'undefined' ? {} : iterations, 
+    animations: typeof animations === 'undefined' ? {} : animations, 
+}))
+
 describe("stripe coordinates", () => {
 	describe('a stripe that starts at the top left corner', () => {
 		beforeEach(() => stripeStart = 0)

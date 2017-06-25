@@ -1,6 +1,13 @@
 import 'jasmine'
 import applicationUtilities from '../../src/utilities/applicationUtilities'
 
+import _resetStatesForTest from '../_resetStatesForTest'
+beforeEach(() => _resetStatesForTest({ 
+    state: typeof state === 'undefined' ? {} : state, 
+    iterations: typeof iterations === 'undefined' ? {} : iterations, 
+    animations: typeof animations === 'undefined' ? {} : animations, 
+}))
+
 describe('application utilities', () => {
 	describe('deeper path', () => {
 		it('does not mutate the passed property path', () => {

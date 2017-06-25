@@ -7,6 +7,13 @@ import colorUtilities from '../../src/utilities/colorUtilities'
 import stripeUtilities from '../../src/utilities/stripeUtilities'
 import { PERIMETER_SCALAR } from '../../src/constants'
 
+import _resetStatesForTest from '../_resetStatesForTest'
+beforeEach(() => _resetStatesForTest({ 
+    state: typeof state === 'undefined' ? {} : state, 
+    iterations: typeof iterations === 'undefined' ? {} : iterations, 
+    animations: typeof animations === 'undefined' ? {} : animations, 
+}))
+
 describe('tile', () => {
 	const address = [ 3, 5 ]
 

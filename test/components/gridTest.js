@@ -3,6 +3,13 @@ import 'jasmine'
 import state from '../../src/state/state'
 import grid from '../../src/components/grid'
 
+import _resetStatesForTest from '../_resetStatesForTest'
+beforeEach(() => _resetStatesForTest({ 
+    state: typeof state === 'undefined' ? {} : state, 
+    iterations: typeof iterations === 'undefined' ? {} : iterations, 
+    animations: typeof animations === 'undefined' ? {} : animations, 
+}))
+
 describe('grid', () => {
 	let tileSpy
 	const gridSize = 2

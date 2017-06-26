@@ -1,4 +1,3 @@
-import state from '../state/state'
 import colorUtilities from '../utilities/colorUtilities'
 import shape from './shape'
 import transpositionUtilities from '../utilities/transpositionUtilities'

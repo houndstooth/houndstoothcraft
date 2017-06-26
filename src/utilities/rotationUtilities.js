@@ -1,4 +1,3 @@
-import state from '../state/state'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
 import { BASE_STRIPE_DIAGONAL, CANVAS_SIZE } from '../defaults'
 

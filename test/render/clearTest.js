@@ -2,7 +2,6 @@ import 'jasmine'
 
 import clear from '../../src/render/clear'
 import ctx from '../../src/render/ctx'
-import state from '../../src/state/state'
 
 import _resetStatesForTest from '../_resetStatesForTest'
 beforeEach(() => _resetStatesForTest({ 

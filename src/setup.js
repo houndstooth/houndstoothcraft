@@ -4,7 +4,6 @@ import iterations from './state/iterations'
 import overrideAnimations from './state/overrideAnimations'
 import animations from './state/animations'
 import overrideState from './state/overrideState'
-import state from './state/state'
 import applicationUtilities from './utilities/applicationUtilities'
 import consoleWrapper from './consoleWrapper'
 

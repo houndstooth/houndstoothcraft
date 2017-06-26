@@ -1,4 +1,3 @@
-import state from './state/state'
 import iterations from './state/iterations'
 import animations from './state/animations'
 import currentIteration from './state/currentIteration'

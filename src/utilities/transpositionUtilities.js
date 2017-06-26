@@ -1,4 +1,3 @@
-import state from '../state/state'
 import { TILE_SIZE, ZOOM } from '../defaults'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
@@ -35,7 +34,7 @@ const adjustOrigin = ({ tileOrigin }) => {
 	tileOrigin = adjustTileOriginForZoom({ tileOrigin })
 	if (state.viewConfig && state.viewConfig.centerViewOnCenterOfTileAtZeroZeroAddress) {
 		tileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin })
-	} 
+	}
 	return tileOrigin
 }
 

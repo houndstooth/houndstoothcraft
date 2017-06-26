@@ -1,6 +1,5 @@
 import codeUtilities from './codeUtilities'
-import state from '../state/state'
-import { COLOR_SET, COLOR_ASSIGNMENT } from '../defaults'
+import { COLOR_ASSIGNMENT, COLOR_SET } from '../defaults'
 
 const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
@@ -35,7 +34,10 @@ const getSetForTile = ({ address, config }) => {
 	} else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: address[ 0 ] + addressOffset[ 0 ] })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: address[ 1 ] + addressOffset[ 1 ] })
-		setForTile = supertileEntry.map(index => wrappedIndex({ array: setForGrid, index: index + setForGridIndexOffset }))
+		setForTile = supertileEntry.map(index => wrappedIndex({
+			array: setForGrid,
+			index: index + setForGridIndexOffset
+		}))
 	}
 
 	if (flipGrain) setForTile = setForTile.reverse()

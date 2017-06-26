@@ -1,6 +1,5 @@
 import 'jasmine'
 
-import state from '../../src/state/state'
 import tile from '../../src/components/tile'
 import transpositionUtilities from '../../src/utilities/transpositionUtilities'
 import colorUtilities from '../../src/utilities/colorUtilities'
@@ -57,15 +56,11 @@ describe('tile', () => {
 	})
 
 	describe('when the tile is assigned an origin on the canvas', () => {
-		let whenTileIsMultiform
-		let gatherOptionsSpy
 		let stripePositionsForTile
-
 		let tileColors
 		let options
 		let tileOrigin
 		let sizedUnit
-
 		beforeEach(() => {
 			tileOrigin = [ 7, 11 ]
 			sizedUnit = 13

@@ -1,3 +1,4 @@
+import './state/state'
 import setup from './setup'
 import execute from './execute'
 

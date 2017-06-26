@@ -2,7 +2,6 @@ import 'jasmine'
 
 import execute from '../../src/execute'
 import ctx from '../../src/render/ctx'
-import state from '../../src/state/state'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 

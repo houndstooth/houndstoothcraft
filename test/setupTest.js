@@ -1,5 +1,4 @@
 import setup from '../src/setup'
-import state from '../src/state/state'
 import animations from '../src/state/animations'
 import iterations from '../src/state/iterations'
 import consoleWrapper from '../src/consoleWrapper'

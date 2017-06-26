@@ -1,5 +1,3 @@
-import state from './state'
-
 export default ({ address }) => {
 	let options = {}
 	Object.keys(state.gatherOptions).forEach(key => {

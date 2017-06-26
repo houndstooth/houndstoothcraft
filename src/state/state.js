@@ -1,1 +1,1 @@
-export default {}
+global.state = {}

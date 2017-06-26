@@ -1,4 +1,3 @@
-import state from '../state/state'
 import gridUtilities from './gridUtilities'
 import { OPACITY } from '../defaults'
 

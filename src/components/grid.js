@@ -1,5 +1,4 @@
 import codeUtilities from '../utilities/codeUtilities'
-import state from '../state/state'
 import tile from './tile'
 import { GRID_SIZE } from '../defaults'
 

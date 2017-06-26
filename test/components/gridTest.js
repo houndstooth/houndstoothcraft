@@ -1,6 +1,5 @@
 import 'jasmine'
 
-import state from '../../src/state/state'
 import grid from '../../src/components/grid'
 import { GRID_SIZE } from '../../src/defaults'
 

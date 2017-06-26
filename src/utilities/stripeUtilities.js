@@ -1,4 +1,3 @@
-import state from '../state/state'
 import codeUtilities from './codeUtilities'
 import { PERIMETER_SCALAR } from '../constants'
 import { STRIPE_COUNT } from '../defaults'

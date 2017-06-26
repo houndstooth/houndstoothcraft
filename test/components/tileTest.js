@@ -19,6 +19,7 @@ describe('tile', () => {
 	let shapeSpy
 	let squareCoordinatesSpy
 	let stripeCoordinatesSpy
+	let defaultGatherOptionsSpy
 
 	let getColorsForTileSpy
 	let colorUtilitiesIsTileUniformSpy
@@ -30,6 +31,8 @@ describe('tile', () => {
 		tile.__Rewire__('squareCoordinates', squareCoordinatesSpy)
 		stripeCoordinatesSpy = jasmine.createSpy()
 		tile.__Rewire__('stripeCoordinates', stripeCoordinatesSpy)
+		defaultGatherOptionsSpy = jasmine.createSpy()
+		tile.__Rewire__('gatherOptions', defaultGatherOptionsSpy)
 
 		getColorsForTileSpy = spyOn(colorUtilities, 'getColorsForTile')
 		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
@@ -39,6 +42,7 @@ describe('tile', () => {
 		tile.__ResetDependency__('shape')
 		tile.__ResetDependency__('squareCoordinates')
 		tile.__ResetDependency__('stripeCoordinates')
+		tile.__ResetDependency__('gatherOptions')
 	})
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
@@ -73,14 +77,31 @@ describe('tile', () => {
 			
 			state.tileConfig = {}
 
-			gatherOptionsSpy = jasmine.createSpy()
-			state.gatherOptions = gatherOptionsSpy
-
 			tileColors = {}
 			getColorsForTileSpy.and.returnValue(tileColors)
 
 			options = {}
-			gatherOptionsSpy.and.returnValue(options)
+			defaultGatherOptionsSpy.and.returnValue(options)
+		})
+
+		describe('if a function for gathering options is not specified', () => {
+			it('uses the default option gathering method', () => {
+				tile({ address })
+
+				expect(defaultGatherOptionsSpy).toHaveBeenCalled()
+			})
+		})
+
+		describe('if a function for gathering options is specified', () => {
+			it('uses it', () => {
+				const gatherOptionsSpy = jasmine.createSpy()
+				state.gatherOptions = gatherOptionsSpy
+
+				tile({ address })
+
+				expect(gatherOptionsSpy).toHaveBeenCalled()
+				expect(defaultGatherOptionsSpy).not.toHaveBeenCalled()
+			})
 		})
 
 		describe('if a function for converting a tile into shapes is not specified', () => {
@@ -112,7 +133,7 @@ describe('tile', () => {
 		it('gets options', () => {
 			tile({ address })
 
-			expect(gatherOptionsSpy).toHaveBeenCalledWith({ address })
+			expect(defaultGatherOptionsSpy).toHaveBeenCalledWith({ address })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
@@ -128,6 +149,7 @@ describe('tile', () => {
 					tile({ address })
 
 					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColors, options })
+					expect(colorUtilitiesIsTileUniformSpy).not.toHaveBeenCalled()
 				})
 			})
 

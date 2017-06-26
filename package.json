@@ -21,7 +21,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-webpack": "^2.0.3",
     "path": "^0.12.7",
-    "webpack": "^2.5.1",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.5"
   }
 }

@@ -1,6 +1,6 @@
 import state from '../state/state'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
-import { CANVAS_SIZE, BASE_STRIPE_DIAGONAL } from '../defaults'
+import { BASE_STRIPE_DIAGONAL, CANVAS_SIZE } from '../defaults'
 
 const ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES = 0
 const ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES = QUARTER_OF_CIRCLE_ROTATION

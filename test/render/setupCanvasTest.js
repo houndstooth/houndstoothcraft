@@ -1,8 +1,7 @@
 import 'jasmine'
-
 import setupCanvas from '../../src/render/setupCanvas'
-import state from '../../src/state/state'
 import canvas from '../../src/render/canvas'
+import { CANVAS_SIZE } from '../../src/defaults'
 
 import _resetStatesForTest from '../_resetStatesForTest'
 beforeEach(() => _resetStatesForTest({ 
@@ -22,12 +21,12 @@ describe('setupCanvas', () => {
 		expect(canvas.height).toEqual(400)
 	})
 
-    it('defaults the canvas width and height to 800, if not provided', () => {
+    it('defaults the canvas width and height, if not provided', () => {
         console.log('NOT setting the canvas size for this test', Object.keys(state).length)
 
         setupCanvas()
 
-        expect(canvas.width).toEqual(800)
-        expect(canvas.height).toEqual(800)
+        expect(canvas.width).toEqual(CANVAS_SIZE)
+        expect(canvas.height).toEqual(CANVAS_SIZE)
     })
 })

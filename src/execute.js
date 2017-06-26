@@ -8,6 +8,7 @@ import canvas from './render/canvas'
 import applicationUtilities from './utilities/applicationUtilities'
 import fileSaver from 'file-saver'
 import grid from './components/grid'
+import consoleWrapper from './consoleWrapper'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
@@ -21,12 +22,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 }
 
 const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
-	if (performanceLogging) console.time('grid')
+	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
 	if (performanceLogging) {
-		if (animating) console.log('current animation frame: ', currentAnimation.i)
-		if (iterating) console.log('current iteration frame: ', currentIteration.i)
-		console.timeEnd('grid')
+		if (animating) consoleWrapper.log('current animation frame: ', currentAnimation.i)
+		if (iterating) consoleWrapper.log('current iteration frame: ', currentIteration.i)
+		consoleWrapper.timeEnd('grid')
 	}
 }
 
@@ -70,7 +71,12 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 }
 
 const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animating }) => {
-	iterating ? executeIteration({ iterationFunctions, performanceLogging, iterating, animating }) : gridAndMaybeLogging({ performanceLogging, iterating, animating })
+	iterating ? executeIteration({
+		iterationFunctions,
+		performanceLogging,
+		iterating,
+		animating
+	}) : gridAndMaybeLogging({ performanceLogging, iterating, animating })
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {

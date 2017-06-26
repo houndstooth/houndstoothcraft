@@ -2,43 +2,40 @@ import setup from '../src/setup'
 import state from '../src/state/state'
 import animations from '../src/state/animations'
 import iterations from '../src/state/iterations'
+import consoleWrapper from '../src/consoleWrapper'
 
 import _resetStatesForTest from './_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
+beforeEach(() => _resetStatesForTest({
+	state: typeof state === 'undefined' ? {} : state,
+	iterations: typeof iterations === 'undefined' ? {} : iterations,
+	animations: typeof animations === 'undefined' ? {} : animations,
 }))
 
 describe('setup', () => {
-    it('logs the state when logging mode is on', () => {
-        const logSpy = jasmine.createSpy()
-        setup.__Rewire__('log', logSpy)
+	it('logs the state when logging mode is on', () => {
+		spyOn(consoleWrapper, 'log')
 
-        setup({ logging: true })
+		setup({ configurationLogging: true })
 
-        expect(logSpy).toHaveBeenCalledWith(state)
-        setup.__ResetDependency__('log')
-    })
+		expect(consoleWrapper.log).toHaveBeenCalledWith(state)
+	})
 
-    it('does not log the state when logging mode is not on', () => {
-        const logSpy = jasmine.createSpy()
-        setup.__Rewire__('log', logSpy)
+	it('does not log the state when logging mode is not on', () => {
+		spyOn(consoleWrapper, 'log')
 
-        setup()
+		setup()
 
-        expect(logSpy).not.toHaveBeenCalled()
-        setup.__ResetDependency__('log')
-    })
+		expect(consoleWrapper.log).not.toHaveBeenCalled()
+	})
 
-    it('sets up the canvas', () => {
-        const setupCanvasSpy = jasmine.createSpy()
-        setup.__Rewire__('setupCanvas', setupCanvasSpy)
+	it('sets up the canvas', () => {
+		const setupCanvasSpy = jasmine.createSpy()
+		setup.__Rewire__('setupCanvas', setupCanvasSpy)
 
-        setup()
+		setup()
 
-        expect(setupCanvasSpy).toHaveBeenCalled()
+		expect(setupCanvasSpy).toHaveBeenCalled()
 
-        setup.__ResetDependency__('setupCanvas')
-    })
+		setup.__ResetDependency__('setupCanvas')
+	})
 })

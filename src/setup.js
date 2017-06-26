@@ -6,15 +6,15 @@ import animations from './state/animations'
 import overrideState from './state/overrideState'
 import state from './state/state'
 import applicationUtilities from './utilities/applicationUtilities'
-import log from './log'
+import consoleWrapper from './consoleWrapper'
 
-export default ({ effects = [], logging } = {}) => {
+export default ({ effects = [], configurationLogging } = {}) => {
 	const { effectState, effectIterations, effectAnimations } = processEffects({ effects })
 
-	setupObject({ 
-		objectToSetup: state, 
-		effects: effectState, 
-		overrides: overrideState 
+	setupObject({
+		objectToSetup: state,
+		effects: effectState,
+		overrides: overrideState
 	})
 	setupObject({
 		objectToSetup: iterations,
@@ -29,7 +29,7 @@ export default ({ effects = [], logging } = {}) => {
 
 	setupCanvas()
 
-	if (logging) log(state)
+	if (configurationLogging) consoleWrapper.log(state)
 }
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
@@ -52,7 +52,7 @@ const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPrope
 }
 
 const setupObject = ({ objectToSetup, effects, overrides }) => {
-	Object.keys(objectToSetup).forEach(key => delete objectToSetup[key])
+	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: effects })
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }

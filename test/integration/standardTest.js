@@ -1,5 +1,3 @@
-import 'jasmine'
-
 import execute from '../../src/execute'
 import ctx from '../../src/render/ctx'
 import { TILE_SIZE } from '../../src/defaults'

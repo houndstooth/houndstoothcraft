@@ -1,3 +1,4 @@
+import 'jasmine'
 import '../src/settings/settings'
 
 beforeEach(() => {

@@ -1,5 +1,3 @@
-import 'jasmine'
-
 import shape from '../../src/components/shape'
 import codeUtilities from '../../src/utilities/codeUtilities'
 import rotationUtilities from '../../src/utilities/rotationUtilities'

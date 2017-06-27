@@ -1,4 +1,3 @@
-import 'jasmine'
 import setupCanvas from '../../src/render/setupCanvas'
 import canvas from '../../src/render/canvas'
 import { CANVAS_SIZE } from '../../src/defaults'

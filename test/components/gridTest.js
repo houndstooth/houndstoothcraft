@@ -1,4 +1,3 @@
-import 'jasmine'
 import grid from '../../src/components/grid'
 import { GRID_SIZE } from '../../src/defaults'
 

@@ -1,5 +1,3 @@
-import 'jasmine'
-
 import render from '../../src/render/render'
 import ctx from '../../src/render/ctx'
 import colorUtilities from '../../src/utilities/colorUtilities'

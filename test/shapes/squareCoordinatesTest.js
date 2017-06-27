@@ -1,11 +1,9 @@
-import 'jasmine'
-
 import squareCoordinates from '../../src/shapes/squareCoordinates'
 
-const tileOrigin = [ 2, 3 ]
-const sizedUnit = 5
-
 describe("square coordinates", () => {
+	const tileOrigin = [ 2, 3 ]
+	const sizedUnit = 5
+
 	it('makes a square in the correct place of the correct size', () => {
 		expect(squareCoordinates({ tileOrigin, sizedUnit })).toEqual([
 			[ 2, 3 ],

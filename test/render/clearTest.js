@@ -1,5 +1,3 @@
-import 'jasmine'
-
 import clear from '../../src/render/clear'
 import ctx from '../../src/render/ctx'
 import { CANVAS_SIZE } from '../../src/defaults'

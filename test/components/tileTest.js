@@ -1,5 +1,3 @@
-import 'jasmine'
-
 import tile from '../../src/components/tile'
 import transpositionUtilities from '../../src/utilities/transpositionUtilities'
 import colorUtilities from '../../src/utilities/colorUtilities'

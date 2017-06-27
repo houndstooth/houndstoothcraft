@@ -1,12 +1,10 @@
-import 'jasmine'
-
 import stripeCoordinates from '../../src/shapes/stripeCoordinates'
 
-const tileOrigin = [ 0, 0 ]
-const sizedUnit = 1
-let stripeStart, stripeEnd
-
 describe("stripe coordinates", () => {
+	const tileOrigin = [ 0, 0 ]
+	const sizedUnit = 1
+	let stripeStart, stripeEnd
+
 	describe('a stripe that starts at the top left corner', () => {
 		beforeEach(() => stripeStart = 0)
 

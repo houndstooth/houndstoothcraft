@@ -1,4 +1,3 @@
-import 'jasmine'
 import applicationUtilities from '../../src/utilities/applicationUtilities'
 
 describe('application utilities', () => {

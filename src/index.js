@@ -1,4 +1,5 @@
-import './state/state'
+import './settings/settings'
+import './settings/current'
 import setup from './setup'
 import execute from './execute'
 

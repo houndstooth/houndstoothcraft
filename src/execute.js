@@ -1,7 +1,3 @@
-import iterations from './state/iterations'
-import animations from './state/animations'
-import currentIteration from './state/currentIteration'
-import currentAnimation from './state/currentAnimation'
 import clear from './render/clear'
 import canvas from './render/canvas'
 import applicationUtilities from './utilities/applicationUtilities'
@@ -14,7 +10,7 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	execute({
 		iterating,
 		exportFrames,
-		iterationFunctions: prepareFunctionsPerStateProperty({ objectWithFunctions: iterations }),
+		iterationFunctions: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.iterations }),
 		performanceLogging,
 		animating
 	})
@@ -30,12 +26,12 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	}
 }
 
-const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
+const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
 		if (typeof value === 'function') {
 			functionsArray.push({ fn: value, nestedPropertyPath, propertyName: key })
 		} else if (value) {
-			prepareFunctionsPerStateProperty({
+			prepareFunctionsPerSettingsProperty({
 				objectWithFunctions: value,
 				nestedPropertyPath: applicationUtilities.deeperPath({ nestedPropertyPath, propertyName: key }),
 				functionsArray
@@ -45,27 +41,27 @@ const prepareFunctionsPerStateProperty = ({ objectWithFunctions, nestedPropertyP
 	return functionsArray
 }
 
-const callFunctionsPerStateProperty = ({ functionObjects }) => {
+const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
-		let stateObjectToCallFunctionOn = applicationUtilities.accessChildObjectOrCreatePath({
-			parentObject: state,
+		let settingsObjectToCallFunctionOn = applicationUtilities.accessChildObjectOrCreatePath({
+			parentObject: settings.initial,
 			nestedPropertyPath
 		})
-		stateObjectToCallFunctionOn[ propertyName ] = fn(stateObjectToCallFunctionOn[ propertyName ])
+		settingsObjectToCallFunctionOn[ propertyName ] = fn(settingsObjectToCallFunctionOn[ propertyName ])
 	})
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	currentIteration.i = 0
-	const { startIteration, endIteration } = state.iteration
+	current.iteration = 0
+	const { startIteration, endIteration } = settings.iterations
 
 	for (let n = 0; n <= endIteration; n++) {
 		if (n >= startIteration) {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
-		callFunctionsPerStateProperty({ functionObjects: iterationFunctions })
-		currentIteration.i++
+		callFunctionsPerSettingsProperty({ functionObjects: iterationFunctions })
+		current.iteration++
 	}
 }
 
@@ -79,21 +75,22 @@ const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animat
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
-	const { frameRate, refreshCanvas } = state.animation
+	let { frameRate, refreshCanvas } = settings.animations
+	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
 
 	let lastSavedFrame = 0
 	setInterval(() => {
 		if (exportFrames) {
-			if (currentAnimation.i > lastSavedFrame) return
+			if (current.animation > lastSavedFrame) return
 		}
-		currentAnimation.i++
+		current.animation++
 
 		if (refreshCanvas) clear()
 
 		if (iterating) {
-			const preIterationState = JSON.parse(JSON.stringify(state))
+			const preIterationSettings = JSON.parse(JSON.stringify(settings))
 			executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-			applicationUtilities.resetObject({ objectToReset: state, objectToResetTo: preIterationState })
+			applicationUtilities.resetObject({ objectToReset: settings, objectToResetTo: preIterationSettings })
 		} else {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
@@ -105,8 +102,8 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 			})
 		}
 
-		callFunctionsPerStateProperty({
-			functionObjects: prepareFunctionsPerStateProperty({ objectWithFunctions: animations })
+		callFunctionsPerSettingsProperty({
+			functionObjects: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
 		})
 	}, frameRate)
 }

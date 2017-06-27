@@ -1,7 +1,7 @@
 import colorUtilities from '../utilities/colorUtilities'
 import shape from './shape'
 import transpositionUtilities from '../utilities/transpositionUtilities'
-import gatherOptions from '../state/gatherOptions'
+import gatherOptions from '../settings/gatherOptions'
 import stripeUtilities from '../utilities/stripeUtilities'
 import squareCoordinates from '../shapes/squareCoordinates'
 import stripeCoordinates from '../shapes/stripeCoordinates'
@@ -13,7 +13,7 @@ export default ({ address }) => {
 
 	const tileColors = colorUtilities.getColorsForTile({ address })
 
-	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = state.tileConfig || {}
+	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = settings.initial.tileConfig || {}
 	collapseSameColoredShapesWithinTile = typeof collapseSameColoredShapesWithinTile === 'undefined' ? true : collapseSameColoredShapesWithinTile
 
 	tileToShapes = tileToShapes || shape
@@ -21,7 +21,7 @@ export default ({ address }) => {
 	getCoordinatesHere.whenTileIsUniform = getCoordinates && getCoordinates.whenTileIsUniform || squareCoordinates
 	getCoordinatesHere.whenTileIsMultiform = getCoordinates && getCoordinates.whenTileIsMultiform || stripeCoordinates
 
-	const gatherOptionsHere = state.gatherOptions || gatherOptions
+	const gatherOptionsHere = settings.initial.gatherOptions || gatherOptions
 	const options = gatherOptionsHere({ address })
 
 	if (collapseSameColoredShapesWithinTile) {

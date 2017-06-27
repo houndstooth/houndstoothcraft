@@ -1,34 +1,30 @@
 import setupCanvas from './render/setupCanvas'
-import overrideIterations from './state/overrideIterations'
-import iterations from './state/iterations'
-import overrideAnimations from './state/overrideAnimations'
-import animations from './state/animations'
-import overrideState from './state/overrideState'
+import overrides from './settings/overrides'
 import applicationUtilities from './utilities/applicationUtilities'
 import consoleWrapper from './consoleWrapper'
 
 export default ({ effects = [], configurationLogging } = {}) => {
-	const { effectState, effectIterations, effectAnimations } = processEffects({ effects })
+	const combinedEffects = combineEffects({ effects })
 
 	setupObject({
-		objectToSetup: state,
-		effects: effectState,
-		overrides: overrideState
+		objectToSetup: settings.initial,
+		effects: combinedEffects.initial,
+		overrides: overrides.initial
 	})
 	setupObject({
-		objectToSetup: iterations,
-		effects: effectIterations,
-		overrides: overrideIterations
+		objectToSetup: settings.iterations,
+		effects: combinedEffects.iterations,
+		overrides: overrides.iterations
 	})
 	setupObject({
-		objectToSetup: animations,
-		effects: effectAnimations,
-		overrides: overrideAnimations
+		objectToSetup: settings.animations,
+		effects: combinedEffects.animations,
+		overrides: overrides.animations
 	})
 
 	setupCanvas()
 
-	if (configurationLogging) consoleWrapper.log(state)
+	if (configurationLogging) consoleWrapper.log(settings)
 }
 
 const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
@@ -56,16 +52,16 @@ const setupObject = ({ objectToSetup, effects, overrides }) => {
 	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }
 
-const processEffects = ({ effects }) => {
-	const effectState = {}
-	const effectIterations = {}
-	const effectAnimations = {}
+const combineEffects = ({ effects }) => {
+	const initial = {}
+	const iterations = {}
+	const animations = {}
 
 	effects.forEach(effect => {
-		applyOverrides({ objectWithPropertiesToOverride: effectState, overrides: effect.state })
-		applyOverrides({ objectWithPropertiesToOverride: effectIterations, overrides: effect.iterations })
-		applyOverrides({ objectWithPropertiesToOverride: effectAnimations, overrides: effect.animations })
+		applyOverrides({ objectWithPropertiesToOverride: initial, overrides: effect.initial })
+		applyOverrides({ objectWithPropertiesToOverride: iterations, overrides: effect.iterations })
+		applyOverrides({ objectWithPropertiesToOverride: animations, overrides: effect.animations })
 	})
 
-	return { effectState, effectIterations, effectAnimations }
+	return { initial, iterations, animations }
 }

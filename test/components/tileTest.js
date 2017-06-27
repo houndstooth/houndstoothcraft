@@ -6,13 +6,6 @@ import colorUtilities from '../../src/utilities/colorUtilities'
 import stripeUtilities from '../../src/utilities/stripeUtilities'
 import { PERIMETER_SCALAR } from '../../src/constants'
 
-import _resetStatesForTest from '../_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
-}))
-
 describe('tile', () => {
 	const address = [ 3, 5 ]
 
@@ -75,7 +68,7 @@ describe('tile', () => {
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
 			
-			state.tileConfig = {}
+			settings.initial.tileConfig = {}
 
 			tileColors = {}
 			getColorsForTileSpy.and.returnValue(tileColors)
@@ -95,7 +88,7 @@ describe('tile', () => {
 		describe('if a function for gathering options is specified', () => {
 			it('uses it', () => {
 				const gatherOptionsSpy = jasmine.createSpy()
-				state.gatherOptions = gatherOptionsSpy
+				settings.initial.gatherOptions = gatherOptionsSpy
 
 				tile({ address })
 
@@ -115,7 +108,7 @@ describe('tile', () => {
 		describe('if a function for converting a tile into shapes is specified', () => {
 			it('uses it', () => {
 				const tileToShapesSpy = jasmine.createSpy()
-				state.tileConfig.tileToShapes = tileToShapesSpy
+				settings.initial.tileConfig.tileToShapes = tileToShapesSpy
 
 				tile({ address })
 
@@ -138,13 +131,13 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				state.tileConfig.collapseSameColoredShapesWithinTile = true
+				settings.initial.tileConfig.collapseSameColoredShapesWithinTile = true
 			})
 
 			describe('when a function for checking the uniformity of the tile is specified', () => {
 				it('uses it to see if the tile is uniform', () => {
 					const isTileUniformSpy = jasmine.createSpy()
-					state.tileConfig.isTileUniform = isTileUniformSpy
+					settings.initial.tileConfig.isTileUniform = isTileUniformSpy
 
 					tile({ address })
 
@@ -185,7 +178,7 @@ describe('tile', () => {
 				describe('if a function for getting uniform coordinates is specified', () => {
 					it('converts the tile into shapes using it', () => {
 						const whenTileIsUniform = () => {}
-						state.tileConfig.getCoordinates = { whenTileIsUniform }
+						settings.initial.tileConfig.getCoordinates = { whenTileIsUniform }
 
 						tile({ address })
 
@@ -238,7 +231,7 @@ describe('tile', () => {
 				describe('if a function for getting multiform coordinates is specified', () => {
 					it('converts the tile into shapes using it', () => {
 						const whenTileIsMultiform = () => {}
-						state.tileConfig.getCoordinates = { whenTileIsMultiform }
+						settings.initial.tileConfig.getCoordinates = { whenTileIsMultiform }
 
 						tile({ address })
 
@@ -325,7 +318,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				state.tileConfig.collapseSameColoredShapesWithinTile = false
+				settings.initial.tileConfig.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

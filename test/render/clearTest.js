@@ -2,21 +2,26 @@ import 'jasmine'
 
 import clear from '../../src/render/clear'
 import ctx from '../../src/render/ctx'
-
-import _resetStatesForTest from '../_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
-}))
+import { CANVAS_SIZE } from '../../src/defaults'
 
 describe('clear', () => {
-	it('wipes the entire canvas', () => {
-		spyOn(ctx, 'clearRect')
-		state.viewConfig = { canvasSize: 500 }
+	beforeEach(() => spyOn(ctx, 'clearRect'))
 
-		clear()
+	describe('when the canvas size is specified', () => {
+		it('wipes that amount of canvas', () => {
+			settings.initial.viewConfig = { canvasSize: 500 }
 
-		expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, 500, 500)
+			clear()
+
+			expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, 500, 500)
+		})
+	})
+
+	describe('when the canvas size is not specified', () => {
+		it('wipes the default amount of canvas', () => {
+			clear()
+
+			expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+		})
 	})
 })

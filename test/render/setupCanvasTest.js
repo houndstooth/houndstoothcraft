@@ -3,17 +3,9 @@ import setupCanvas from '../../src/render/setupCanvas'
 import canvas from '../../src/render/canvas'
 import { CANVAS_SIZE } from '../../src/defaults'
 
-import _resetStatesForTest from '../_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
-}))
-
 describe('setupCanvas', () => {
 	it('sets the canvas width and height with config, if provided', () => {
-		state.viewConfig = { canvasSize: 400 }
-        console.log('setting canvas size just for this test', Object.keys(state).length)
+		settings.initial.viewConfig = { canvasSize: 400 }
 
 		setupCanvas()
 
@@ -22,8 +14,6 @@ describe('setupCanvas', () => {
 	})
 
     it('defaults the canvas width and height, if not provided', () => {
-        console.log('NOT setting the canvas size for this test', Object.keys(state).length)
-
         setupCanvas()
 
         expect(canvas.width).toEqual(CANVAS_SIZE)

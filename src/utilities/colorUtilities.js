@@ -4,8 +4,8 @@ import { OPACITY } from '../defaults'
 const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
 
 const getColorsForTile = ({ address }) => {
-	const { colorConfig } = state
-	const { mode } = state.stripeCountConfig || { mode: 'STANDARD' }
+	const { colorConfig } = settings.initial
+	const { mode } = settings.initial.stripeCountConfig || { mode: 'STANDARD' }
 
 	let tileColors = gridUtilities.getSetForTile({ address, config: colorConfig })
 	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })

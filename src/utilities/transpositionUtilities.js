@@ -1,7 +1,7 @@
 import { TILE_SIZE, ZOOM } from '../defaults'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	let { zoom, canvasSize, zoomOnCanvasCenter } = state.viewConfig || {}
+	let { zoom, canvasSize, zoomOnCanvasCenter } = settings.initial.viewConfig || {}
 	zoom = zoom || ZOOM
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
@@ -22,8 +22,9 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasCenter = state.viewConfig.canvasSize / 2
-	const halfTileSize = state.tileConfig.tileSize / 2
+	const canvasCenter = settings.initial.viewConfig.canvasSize / 2
+	const tileSize = settings.initial.tileConfig && settings.initial.tileConfig.tileSize || TILE_SIZE
+	const halfTileSize = tileSize / 2
 	return [
 		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
 		tileOrigin[ 1 ] + canvasCenter - halfTileSize
@@ -32,17 +33,17 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 
 const adjustOrigin = ({ tileOrigin }) => {
 	tileOrigin = adjustTileOriginForZoom({ tileOrigin })
-	if (state.viewConfig && state.viewConfig.centerViewOnCenterOfTileAtZeroZeroAddress) {
+	if (settings.initial.viewConfig && settings.initial.viewConfig.centerViewOnCenterOfTileAtZeroZeroAddress) {
 		tileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin })
 	}
 	return tileOrigin
 }
 
-const getTileSize = () => state.tileConfig && state.tileConfig.tileSize || TILE_SIZE
+const getTileSize = () => settings.initial.tileConfig && settings.initial.tileConfig.tileSize || TILE_SIZE
 
 const getSizedUnit = () => {
 	const tileSize = getTileSize()
-	const zoom = state.viewConfig && state.viewConfig.zoom || ZOOM
+	const zoom = settings.initial.viewConfig && settings.initial.viewConfig.zoom || ZOOM
 	return tileSize * zoom
 }
 
@@ -57,7 +58,7 @@ const getStandardTileOriginAndSizedUnit = ({ address }) => {
 }
 
 const getTileOriginAndSizedUnit = ({ address }) => {
-	const getTileOriginAndSizedUnit = state.getTileOriginAndSizedUnit || getStandardTileOriginAndSizedUnit
+	const getTileOriginAndSizedUnit = settings.initial.getTileOriginAndSizedUnit || getStandardTileOriginAndSizedUnit
 	return getTileOriginAndSizedUnit({ address })
 }
 

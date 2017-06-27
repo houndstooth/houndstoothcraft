@@ -2,15 +2,7 @@ import 'jasmine'
 
 import execute from '../../src/execute'
 import ctx from '../../src/render/ctx'
-import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
-
-import _resetStatesForTest from '../_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
-}))
 
 describe("Standard Houndstooth", () => {
 	beforeEach(() => execute())

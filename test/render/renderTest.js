@@ -4,13 +4,6 @@ import render from '../../src/render/render'
 import ctx from '../../src/render/ctx'
 import colorUtilities from '../../src/utilities/colorUtilities'
 
-import _resetStatesForTest from '../_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
-}))
-
 describe('render', () => {
 	const shapeColor = {}
 	const parsedColor = '#012345'

@@ -1,14 +1,6 @@
 import 'jasmine'
-
 import grid from '../../src/components/grid'
 import { GRID_SIZE } from '../../src/defaults'
-
-import _resetStatesForTest from '../_resetStatesForTest'
-beforeEach(() => _resetStatesForTest({ 
-    state: typeof state === 'undefined' ? {} : state, 
-    iterations: typeof iterations === 'undefined' ? {} : iterations, 
-    animations: typeof animations === 'undefined' ? {} : animations, 
-}))
 
 describe('grid', () => {
 	let tileSpy
@@ -21,7 +13,7 @@ describe('grid', () => {
 
 	describe('when grid size is specified', () => {
 		beforeEach(() => {
-			state.gridConfig = { gridSize }
+			settings.initial.gridConfig = { gridSize }
 		})
 
 		it('uses it', () => {
@@ -41,8 +33,8 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			state.gridConfig = { gridSize }
-			state.gridConfig.includeNegativeQuadrants = false
+			settings.initial.gridConfig = { gridSize }
+			settings.initial.gridConfig.includeNegativeQuadrants = false
 		})
 
 		it('only makes tiles with positive addresses', () => {
@@ -58,8 +50,8 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			state.gridConfig = { gridSize }
-			state.gridConfig.includeNegativeQuadrants = true
+			settings.initial.gridConfig = { gridSize }
+			settings.initial.gridConfig.includeNegativeQuadrants = true
 		})
 
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {

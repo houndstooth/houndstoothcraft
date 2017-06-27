@@ -20,8 +20,8 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
 	if (performanceLogging) {
-		if (animating) consoleWrapper.log('current animation frame: ', currentAnimation.i)
-		if (iterating) consoleWrapper.log('current iteration frame: ', currentIteration.i)
+		if (animating) consoleWrapper.log('current animation frame: ' + current.animation)
+		if (iterating) consoleWrapper.log('current iteration frame: ' + current.iteration)
 		consoleWrapper.timeEnd('grid')
 	}
 }

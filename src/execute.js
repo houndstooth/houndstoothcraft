@@ -4,6 +4,7 @@ import applicationUtilities from './utilities/applicationUtilities'
 import fileSaver from 'file-saver'
 import grid from './components/grid'
 import consoleWrapper from './consoleWrapper'
+import { FRAME_RATE } from './defaults'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
@@ -75,7 +76,7 @@ const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animat
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
-	let { frameRate, refreshCanvas } = settings.initial.animation
+	let { frameRate, refreshCanvas } = settings.initial && settings.initial.animation || { frameRate: FRAME_RATE }
 	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
 
 	let lastSavedFrame = 0
@@ -103,7 +104,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 		}
 
 		callFunctionsPerSettingsProperty({
-			functionObjects: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.initial.animation })
+			functionObjects: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
 		})
 	}, frameRate)
 }

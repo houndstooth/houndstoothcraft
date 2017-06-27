@@ -5,6 +5,10 @@ const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
 
 	let { set: setForGrid, assignment } = config || {}
+	if (settings.initial.colorConfig) {
+		setForGrid = setForGrid || settings.initial.colorConfig.set
+		assignment = assignment || settings.initial.colorConfig.assignment
+	}
 	setForGrid = setForGrid || COLOR_SET
 	assignment = assignment || COLOR_ASSIGNMENT
 

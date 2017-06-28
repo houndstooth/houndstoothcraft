@@ -169,8 +169,63 @@ describe('execute', () => {
 						expect(animationFunctionCalls[ 3 ].args[ 0 ]).toBe(996)
 					})
 
-					it('calls iteration functions once for each iteration, each animation frame', () => {
-						//not yet implemented
+					it('calls iteration functions once for each iteration, each animation frame, starting over each animation frame', () => {
+						settings.initial.exampleConfig = { exampleProperty: 0 }
+
+						const animationFunction = jasmine.createSpy().and.callFake(p => p + 10)
+						settings.animations.exampleConfig = { exampleProperty: animationFunction }
+
+						const iterationFunction = jasmine.createSpy().and.callFake(p => p + 1)
+						settings.iterations.exampleConfig = { exampleProperty: iterationFunction }
+
+						execute({ iterating, animating, exportFrames, performanceLogging })
+
+						const animationFunctionCalls = animationFunction.calls.all()
+						expect(animationFunctionCalls.length).toBe(4)
+						expect(animationFunctionCalls[ 0 ].args[ 0 ]).toBe(0) // 9 ??
+						expect(animationFunctionCalls[ 1 ].args[ 0 ]).toBe(10) //28
+						expect(animationFunctionCalls[ 2 ].args[ 0 ]).toBe(20) //47
+						expect(animationFunctionCalls[ 3 ].args[ 0 ]).toBe(30) //66
+
+						const iterationFunctionCalls = iterationFunction.calls.all()
+						expect(iterationFunctionCalls.length).toBe(36)
+						expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(0)
+						expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(1)
+						expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(2)
+						expect(iterationFunctionCalls[ 3 ].args[ 0 ]).toBe(3)
+						expect(iterationFunctionCalls[ 4 ].args[ 0 ]).toBe(4)
+						expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(5)
+						expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(6)
+						expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(7)
+						expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(8)
+						
+						expect(iterationFunctionCalls[ 9 ].args[ 0 ]).toBe(1)
+						expect(iterationFunctionCalls[ 10 ].args[ 0 ]).toBe(2)
+						expect(iterationFunctionCalls[ 11 ].args[ 0 ]).toBe(3)
+						expect(iterationFunctionCalls[ 12 ].args[ 0 ]).toBe(4)
+						expect(iterationFunctionCalls[ 13 ].args[ 0 ]).toBe(5)
+						expect(iterationFunctionCalls[ 14 ].args[ 0 ]).toBe(6)
+						expect(iterationFunctionCalls[ 15 ].args[ 0 ]).toBe(7)
+						expect(iterationFunctionCalls[ 16 ].args[ 0 ]).toBe(8)
+						expect(iterationFunctionCalls[ 17 ].args[ 0 ]).toBe(9)
+						expect(iterationFunctionCalls[ 18 ].args[ 0 ]).toBe(1)
+						expect(iterationFunctionCalls[ 19 ].args[ 0 ]).toBe(2)
+						expect(iterationFunctionCalls[ 20 ].args[ 0 ]).toBe(3)
+						expect(iterationFunctionCalls[ 21 ].args[ 0 ]).toBe(4)
+						expect(iterationFunctionCalls[ 22 ].args[ 0 ]).toBe(5)
+						expect(iterationFunctionCalls[ 23 ].args[ 0 ]).toBe(6)
+						expect(iterationFunctionCalls[ 24 ].args[ 0 ]).toBe(7)
+						expect(iterationFunctionCalls[ 25 ].args[ 0 ]).toBe(8)
+						expect(iterationFunctionCalls[ 26 ].args[ 0 ]).toBe(9)
+						expect(iterationFunctionCalls[ 27 ].args[ 0 ]).toBe(1)
+						expect(iterationFunctionCalls[ 28 ].args[ 0 ]).toBe(2)
+						expect(iterationFunctionCalls[ 29 ].args[ 0 ]).toBe(3)
+						expect(iterationFunctionCalls[ 30 ].args[ 0 ]).toBe(4)
+						expect(iterationFunctionCalls[ 31 ].args[ 0 ]).toBe(5)
+						expect(iterationFunctionCalls[ 32 ].args[ 0 ]).toBe(6)
+						expect(iterationFunctionCalls[ 33 ].args[ 0 ]).toBe(7)
+						expect(iterationFunctionCalls[ 34 ].args[ 0 ]).toBe(8)
+						expect(iterationFunctionCalls[ 35 ].args[ 0 ]).toBe(9)
 					})
 				})
 

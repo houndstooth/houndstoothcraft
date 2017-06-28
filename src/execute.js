@@ -93,7 +93,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 		if (refreshCanvas) clear()
 
 		if (iterating) {
-			const preIterationSettings = JSON.parse(JSON.stringify(settings))
+			const preIterationSettings = JSON.parse(JSON.stringify(settings.initial))
 			executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
 			applicationUtilities.resetObject({ objectToReset: settings.initial, objectToResetTo: preIterationSettings })
 		} else {

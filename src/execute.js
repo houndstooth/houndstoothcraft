@@ -114,6 +114,5 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 	const stopCondition = () => current.animation >= endAnimationFrame
 
-	current.animator = animator({ animationFunction, frameRate, stopCondition})
-	current.animator.start()
+	animator({ animationFunction, frameRate, stopCondition})
 }

@@ -6,11 +6,9 @@ describe('execute', () => {
 
 	let consoleWrapperLogSpy
 	beforeEach(() => {
-		execute.__Rewire__('animator', ({ animationFunction, stopCondition }) => ({
-			start: () => {
-				while (!stopCondition()) animationFunction()
-			}
-		}))
+		execute.__Rewire__('animator', ({ animationFunction, stopCondition }) => {
+			while (!stopCondition()) animationFunction()
+		})
 		consoleWrapperLogSpy = spyOn(consoleWrapper, 'log')
 		spyOn(consoleWrapper, 'time')
 		spyOn(consoleWrapper, 'timeEnd')

@@ -1,5 +1,6 @@
 import 'jasmine'
 import '../src/settings/settings'
+import '../src/settings/current'
 
 beforeEach(() => {
 	Object.keys(settings.initial).forEach(key => delete settings.initial[key])

@@ -5,6 +5,7 @@ import fileSaver from 'file-saver'
 import grid from './components/grid'
 import consoleWrapper from './consoleWrapper'
 import { FRAME_RATE } from './defaults'
+import animator from './animator'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
@@ -55,7 +56,7 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
 	current.iteration = 0
-	const { startIteration, endIteration } = settings.initial.iteration
+	const { startIteration, endIteration } = settings.initial.iteration || { startIteration: 0, endIteration: 0 }
 
 	for (let n = 0; n <= endIteration; n++) {
 		if (n >= startIteration) {
@@ -76,15 +77,18 @@ const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animat
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
-	let { frameRate, refreshCanvas } = settings.initial && settings.initial.animation || { frameRate: FRAME_RATE }
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = settings.initial.animation || { frameRate: FRAME_RATE }
 	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
 
 	let lastSavedFrame = 0
-	setInterval(() => {
+
+	const animationFunction = () => {
 		if (exportFrames) {
 			if (current.animation > lastSavedFrame) return
 		}
 		current.animation++
+
+		if (current.animation < startAnimationFrame) return
 
 		if (refreshCanvas) clear()
 
@@ -106,5 +110,10 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 		callFunctionsPerSettingsProperty({
 			functionObjects: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
 		})
-	}, frameRate)
+	}
+
+	const stopCondition = () => current.animation >= endAnimationFrame
+
+	current.animator = animator({ animationFunction, frameRate, stopCondition})
+	current.animator.start()
 }

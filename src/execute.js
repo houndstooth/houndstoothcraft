@@ -55,7 +55,6 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	current.iteration = 0
 	const { startIteration, endIteration } = settings.initial.iteration || { startIteration: 0, endIteration: 0 }
 
 	for (let n = 0; n <= endIteration; n++) {
@@ -65,6 +64,7 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 		callFunctionsPerSettingsProperty({ functionObjects: iterationFunctions })
 		current.iteration++
 	}
+	current.iteration = 0
 }
 
 const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animating }) => {
@@ -95,7 +95,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 		if (iterating) {
 			const preIterationSettings = JSON.parse(JSON.stringify(settings))
 			executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-			applicationUtilities.resetObject({ objectToReset: settings, objectToResetTo: preIterationSettings })
+			applicationUtilities.resetObject({ objectToReset: settings.initial, objectToResetTo: preIterationSettings })
 		} else {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
@@ -114,5 +114,5 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 	const stopCondition = () => current.animation >= endAnimationFrame
 
-	animator({ animationFunction, frameRate, stopCondition})
+	animator({ animationFunction, frameRate, stopCondition })
 }

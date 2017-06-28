@@ -86,18 +86,20 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 		if (exportFrames) {
 			if (current.animation > lastSavedFrame) return
 		}
-		current.animation++
-
-		if (current.animation < startAnimationFrame) return
 
 		if (refreshCanvas) clear()
 
-		if (iterating) {
-			const preIterationSettings = JSON.parse(JSON.stringify(settings.initial))
-			executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-			applicationUtilities.resetObject({ objectToReset: settings.initial, objectToResetTo: preIterationSettings })
-		} else {
-			gridAndMaybeLogging({ performanceLogging, iterating, animating })
+		if (current.animation >= startAnimationFrame) {
+			if (iterating) {
+				const preIterationSettings = JSON.parse(JSON.stringify(settings.initial))
+				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
+				applicationUtilities.resetObject({
+					objectToReset: settings.initial,
+					objectToResetTo: preIterationSettings
+				})
+			} else {
+				gridAndMaybeLogging({ performanceLogging, iterating, animating })
+			}
 		}
 
 		if (exportFrames) {
@@ -110,9 +112,10 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 		callFunctionsPerSettingsProperty({
 			functionObjects: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
 		})
+		current.animation++
 	}
 
-	const stopCondition = () => current.animation >= endAnimationFrame
+	const stopCondition = () => current.animation > endAnimationFrame
 
 	animator({ animationFunction, frameRate, stopCondition })
 }

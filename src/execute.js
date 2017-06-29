@@ -77,7 +77,8 @@ const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animat
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
-	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = settings.initial.animation || { frameRate: FRAME_RATE }
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = settings.initial.animation || {}
+	frameRate = frameRate || FRAME_RATE
 	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
 
 	let lastSavedFrame = 0

@@ -15,6 +15,7 @@ describe('execute', () => {
 		spyOn(consoleWrapper, 'timeEnd')
 		gridSpy = jasmine.createSpy()
 		execute.__Rewire__('grid', gridSpy)
+		settings.initial.animation = { endAnimationFrame: 100 } //to avoid infinite animation
 	})
 
 	afterEach(() => {

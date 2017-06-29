@@ -1,5 +1,7 @@
 import execute from '../src/execute'
 import consoleWrapper from '../src/consoleWrapper'
+import canvas from '../src/render/canvas'
+import fileSaver from 'file-saver'
 
 describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging
@@ -15,7 +17,14 @@ describe('execute', () => {
 		spyOn(consoleWrapper, 'timeEnd')
 		gridSpy = jasmine.createSpy()
 		execute.__Rewire__('grid', gridSpy)
-		settings.initial.animation = { endAnimationFrame: 100 } //to avoid infinite animation
+
+		spyOn(fileSaver, 'saveAs')
+		spyOn(canvas, 'toBlob').and.callFake(fn => {
+			fn()
+			current.lastSavedFrame-- // to cancel out the real one
+		})
+
+		settings.initial.animation = { endAnimationFrame: 100 } // to avoid infinite animation
 	})
 
 	afterEach(() => {
@@ -328,6 +337,38 @@ describe('execute', () => {
 			expect(iterationFunctionCalls[ 33 ].args[ 0 ]).toBe(56)
 			expect(iterationFunctionCalls[ 34 ].args[ 0 ]).toBe(57)
 			expect(iterationFunctionCalls[ 35 ].args[ 0 ]).toBe(58)
+		})
+	})
+
+	describe('exporting frames (and of course animating)', () => {
+		const startAnimationFrame = 2
+		const endAnimationFrame = 5
+		beforeEach(() => {
+			animating = true
+			exportFrames = true
+			settings.initial.animation = {
+				startAnimationFrame,
+				endAnimationFrame,
+				frameRate: 0
+			}
+		})
+
+		it('saves the canvas for each animation frame', done => {
+			execute.__ResetDependency__('animator')
+
+			const interval = setInterval(() => {
+				current.lastSavedFrame++
+				if (current.lastSavedFrame >= endAnimationFrame) {
+					clearInterval(interval)
+					done()
+				}
+				expect(canvas.toBlob.calls.all().length).toBe(current.lastSavedFrame - startAnimationFrame)
+				const saveAsCalls = fileSaver.saveAs.calls.all()
+				expect(saveAsCalls.length).toBe(current.lastSavedFrame - startAnimationFrame)
+				expect(saveAsCalls[saveAsCalls.length - 1].args[1]).toEqual((current.lastSavedFrame - 1) + ".png")
+			}, 25)
+
+			execute({ iterating, animating, exportFrames, performanceLogging })
 		})
 	})
 })

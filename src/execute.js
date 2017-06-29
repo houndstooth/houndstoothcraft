@@ -81,16 +81,16 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 	frameRate = frameRate || FRAME_RATE
 	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
 
-	let lastSavedFrame = 0
+	current.lastSavedFrame = startAnimationFrame
 
 	const animationFunction = () => {
 		if (exportFrames) {
-			if (current.animation > lastSavedFrame) return
+			if (current.animation > current.lastSavedFrame) return
 		}
 
 		if (refreshCanvas) clear()
 
-		if (current.animation >= startAnimationFrame) {
+		if (!startAnimationFrame || current.animation >= startAnimationFrame) {
 			if (iterating) {
 				const preIterationSettings = JSON.parse(JSON.stringify(settings.initial))
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
@@ -101,13 +101,13 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 			} else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
 			}
-		}
 
-		if (exportFrames) {
-			canvas.toBlob(blob => {
-				lastSavedFrame++
-				fileSaver.saveAs(blob, lastSavedFrame + ".png")
-			})
+			if (exportFrames) {
+				canvas.toBlob(blob => {
+					fileSaver.saveAs(blob, current.lastSavedFrame + ".png")
+					current.lastSavedFrame++
+				})
+			}
 		}
 
 		callFunctionsPerSettingsProperty({

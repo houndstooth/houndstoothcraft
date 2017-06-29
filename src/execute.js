@@ -1,11 +1,10 @@
 import clear from './render/clear'
-import canvas from './render/canvas'
 import applicationUtilities from './utilities/applicationUtilities'
-import fileSaver from 'file-saver'
 import grid from './components/grid'
 import consoleWrapper from './consoleWrapper'
 import { FRAME_RATE } from './defaults'
 import animator from './animator'
+import exportFrame from './exportFrame'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
@@ -84,9 +83,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 	current.lastSavedFrame = startAnimationFrame
 
 	const animationFunction = () => {
-		if (exportFrames) {
-			if (current.animation > current.lastSavedFrame) return
-		}
+		if (exportFrames && current.animation > current.lastSavedFrame) return
 
 		if (refreshCanvas) clear()
 
@@ -103,10 +100,8 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 			}
 
 			if (exportFrames) {
-				canvas.toBlob(blob => {
-					fileSaver.saveAs(blob, current.lastSavedFrame + ".png")
-					current.lastSavedFrame++
-				})
+				console.log('wtf is export frame right now', exportFrame)
+				exportFrame()
 			}
 		}
 

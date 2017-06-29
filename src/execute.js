@@ -54,7 +54,9 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	const { startIteration, endIteration } = settings.initial.iteration || { startIteration: 0, endIteration: 0 }
+	let { startIteration, endIteration } = settings.initial.iteration || { }
+	startIteration = startIteration || 0
+	endIteration = endIteration || 0
 
 	for (let n = 0; n <= endIteration; n++) {
 		if (n >= startIteration) {

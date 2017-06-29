@@ -42,76 +42,86 @@ describe('execute', () => {
 				performanceLogging = true
 			})
 
-			describe('animating', () => {
-				describe('when animating', () => {
-					beforeEach(() => {
-						animating = true
-						settings.initial.animation = { endAnimationFrame: 10 }
-					})
+			describe('when not iterating nor animating', () => {
+				it('logs only the performance of the grid', () => {
+					execute({ iterating, animating, exportFrames, performanceLogging })
 
-					it('logs the current animation frame along with the performance measurement', () => {
-						execute({ iterating, animating, exportFrames, performanceLogging })
+					expect(consoleWrapper.time.calls.all().length).toBe(1)
+					expect(consoleWrapper.timeEnd.calls.all().length).toBe(1)
+					expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
+					expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
+				})
+			})
 
-						const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
-						consoleWrapperLogSpyCalls.forEach((call, index) => {
-							expect(call.args[ 0 ]).toEqual('current animation frame: ' + index)
-						})
-					})
+			describe('when iterating (but not animating)', () => {
+				beforeEach(() => {
+					iterating = true
+					settings.initial.iteration = { endIteration: 10 }
 				})
 
-				describe('when not animating', () => {
-					beforeEach(() => {
-						animating = false
+				it('logs the current iteration frame along with the performance measurement', () => {
+					execute({ iterating, animating, exportFrames, performanceLogging })
+
+					const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
+					expect(consoleWrapperLogSpyCalls.length).toBe(11)
+					consoleWrapperLogSpyCalls.forEach((call, index) => {
+						expect(call.args[ 0 ]).toBe('current iteration frame: ' + index)
 					})
 
-					it('does not log a current animation frame along with the performance measurement', () => {
-						execute({ iterating, animating, exportFrames, performanceLogging })
+					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
+					expect(consoleWrapperTimeCalls.length).toBe(11)
+					consoleWrapperTimeCalls.forEach(call => {
+						expect(call.args[ 0 ]).toBe('grid')
+					})
 
-						const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
-						consoleWrapperLogSpyCalls.forEach(call => {
-							expect(call.args[ 0 ]).not.toContain('current animation frame')
-						})
+					const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
+					expect(consoleWrapperTimeEndCalls.length).toBe(11)
+					consoleWrapperTimeEndCalls.forEach(call => {
+						expect(call.args[ 0 ]).toBe('grid')
 					})
 				})
 			})
 
-			describe('iterating', () => {
-				describe('when iterating', () => {
-					beforeEach(() => {
-						iterating = true
-					})
-
-					it('logs the current iteration frame along with the performance measurement', () => {
-						execute({ iterating, animating, exportFrames, performanceLogging })
-
-						const consoleWrapperCalls = consoleWrapper.log.calls.all()
-						consoleWrapperCalls.forEach((call, index) => {
-							expect(call.args[ 0 ]).toBe('current iteration frame: ' + index)
-						})
-					})
+			describe('when animating (but not iterating)', () => {
+				beforeEach(() => {
+					animating = true
+					settings.initial.animation = { endAnimationFrame: 10 }
 				})
 
-				describe('when not iterating', () => {
-					beforeEach(() => {
-						iterating = false
+				it('logs the current animation frame along with the performance measurement', () => {
+					execute({ iterating, animating, exportFrames, performanceLogging })
+
+					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
+					expect(consoleWrapperLogSpyCalls.length).toBe(11)
+					consoleWrapperLogSpyCalls.forEach((call, index) => {
+						expect(call.args[ 0 ]).toEqual('current animation frame: ' + index)
 					})
 
-					it('does not log a current iteration frame along with the performance measurement', () => {
-						execute({ iterating, animating, exportFrames, performanceLogging })
+					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
+					expect(consoleWrapperTimeCalls.length).toBe(11)
+					consoleWrapperTimeCalls.forEach(call => {
+						expect(call.args[ 0 ]).toBe('grid')
+					})
 
-						const consoleWrapperCalls = consoleWrapper.log.calls.all()
-						consoleWrapperCalls.forEach(call => {
-							expect(call.args[ 0 ]).not.toContain('current iteration frame')
-						})
+					const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
+					expect(consoleWrapperTimeEndCalls.length).toBe(11)
+					consoleWrapperTimeEndCalls.forEach(call => {
+						expect(call.args[ 0 ]).toBe('grid')
 					})
 				})
 			})
 
-			it('tracks performance of rendering a grid and logs it', () => {
-				execute({ iterating, animating, exportFrames, performanceLogging })
+			describe('when animating and iterating', () => {
+				beforeEach(() => {
+					iterating = true
+					animating = true
+					settings.initial.iteration = { endIteration: 10 }
+					settings.initial.animation = { endAnimationFrame: 10 }
+				})
 
-				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
+				it('logs the animation frames, iteration frames, and grid performance', () => {
+
+				})
 			})
 		})
 

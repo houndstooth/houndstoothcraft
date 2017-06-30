@@ -10,7 +10,7 @@ describe('tile', () => {
 	let shapeSpy
 	let squareCoordinatesSpy
 	let stripeCoordinatesSpy
-	let defaultGatherOptionsSpy
+	let gatherOptionsSpy
 
 	let getColorsForTileSpy
 	let colorUtilitiesIsTileUniformSpy
@@ -22,8 +22,8 @@ describe('tile', () => {
 		tile.__Rewire__('squareCoordinates', squareCoordinatesSpy)
 		stripeCoordinatesSpy = jasmine.createSpy()
 		tile.__Rewire__('stripeCoordinates', stripeCoordinatesSpy)
-		defaultGatherOptionsSpy = jasmine.createSpy()
-		tile.__Rewire__('gatherOptions', defaultGatherOptionsSpy)
+		gatherOptionsSpy = jasmine.createSpy()
+		tile.__Rewire__('gatherOptions', gatherOptionsSpy)
 
 		getColorsForTileSpy = spyOn(colorUtilities, 'getColorsForTile')
 		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
@@ -72,27 +72,13 @@ describe('tile', () => {
 			getColorsForTileSpy.and.returnValue(tileColors)
 
 			options = {}
-			defaultGatherOptionsSpy.and.returnValue(options)
+			gatherOptionsSpy.and.returnValue(options)
 		})
 
-		describe('if a function for gathering options is not specified', () => {
-			it('uses the default option gathering method', () => {
-				tile({ address })
+		it('gathers options', () => {
+			tile({ address })
 
-				expect(defaultGatherOptionsSpy).toHaveBeenCalled()
-			})
-		})
-
-		describe('if a function for gathering options is specified', () => {
-			it('uses it', () => {
-				const gatherOptionsSpy = jasmine.createSpy()
-				settings.initial.gatherOptions = gatherOptionsSpy
-
-				tile({ address })
-
-				expect(gatherOptionsSpy).toHaveBeenCalled()
-				expect(defaultGatherOptionsSpy).not.toHaveBeenCalled()
-			})
+			expect(gatherOptionsSpy).toHaveBeenCalled()
 		})
 
 		describe('if a function for converting a tile into shapes is not specified', () => {
@@ -124,7 +110,7 @@ describe('tile', () => {
 		it('gets options', () => {
 			tile({ address })
 
-			expect(defaultGatherOptionsSpy).toHaveBeenCalledWith({ address })
+			expect(gatherOptionsSpy).toHaveBeenCalledWith({ address })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {

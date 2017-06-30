@@ -21,8 +21,7 @@ export default ({ address }) => {
 	getCoordinatesHere.whenTileIsUniform = getCoordinates && getCoordinates.whenTileIsUniform || squareCoordinates
 	getCoordinatesHere.whenTileIsMultiform = getCoordinates && getCoordinates.whenTileIsMultiform || stripeCoordinates
 
-	const gatherOptionsHere = settings.initial.gatherOptions || gatherOptions
-	const options = gatherOptionsHere({ address })
+	const options = gatherOptions({ address })
 
 	if (collapseSameColoredShapesWithinTile) {
 		isTileUniform = isTileUniform || colorUtilities.isTileUniform

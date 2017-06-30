@@ -164,8 +164,8 @@ describe('application utilities', () => {
 	})
 
 	describe('applyOverrides', () => {
-		it('changes and adds properties to the object with properties to override, from the overrides object with matching structure', () => {
-			const objectWithPropertiesToOverride = {
+		it('changes and adds properties to the object with properties to be overridden, from the object with property overrides which as matching structure', () => {
+			const objectWithPropertiesToBeOverridden = {
 				propertyObjectOne: {
 					nestedPropertyObjectOneOne: {
 						property: 'yoda',
@@ -176,7 +176,7 @@ describe('application utilities', () => {
 					property: 'jedi',
 				}
 			}
-			const overrides = {
+			const objectWithPropertyOverrides = {
 				propertyObjectOne: {
 					nestedPropertyObjectOneOne: {
 						property: 'luke',
@@ -186,11 +186,13 @@ describe('application utilities', () => {
 					property: 'sith',
 				}
 			}
-			const nestedPropertyPath = undefined
 
-			applicationUtilities.applyOverrides({ objectWithPropertiesToOverride, overrides, nestedPropertyPath })
+			applicationUtilities.applyOverrides({ 
+				objectWithPropertiesToBeOverridden, 
+				objectWithPropertyOverrides
+			})
 
-			const expectedObject =  {
+			const expectedObjectWithPropertiesOverriden =  {
 				propertyObjectOne: {
 					nestedPropertyObjectOneOne: {
 						property: 'luke',
@@ -201,7 +203,7 @@ describe('application utilities', () => {
 					property: 'sith',
 				}
 			}
-			expect(objectWithPropertiesToOverride).toEqual(expectedObject)
+			expect(expectedObjectWithPropertiesOverriden).toEqual(objectWithPropertiesToBeOverridden)
 		})
 	})
 })

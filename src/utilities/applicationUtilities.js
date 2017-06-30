@@ -36,20 +36,21 @@ const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedProper
 	return functionsArray
 }
 
-const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
-	overrides && Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
+const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithPropertyOverrides, nestedPropertyPath = [] }) => {
+	if (!objectWithPropertyOverrides) return
+	Object.entries(objectWithPropertyOverrides).forEach(([ propertyName, overridingProperty ]) => {
 		if (overridingProperty && typeof overridingProperty === 'object' && !overridingProperty.length) {
 			applyOverrides({
-				objectWithPropertiesToOverride,
-				overrides: overridingProperty,
+				objectWithPropertiesToBeOverridden,
+				objectWithPropertyOverrides: overridingProperty,
 				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
 			})
 		} else {
-			let objectWithPropertyToOverride = accessChildObjectOrCreatePath({
-				parentObject: objectWithPropertiesToOverride,
+			let objectWithPropertyToBeOverridden = accessChildObjectOrCreatePath({
+				parentObject: objectWithPropertiesToBeOverridden,
 				nestedPropertyPath
 			})
-			objectWithPropertyToOverride[ propertyName ] = overridingProperty
+			objectWithPropertyToBeOverridden[ propertyName ] = overridingProperty
 		}
 	})
 }

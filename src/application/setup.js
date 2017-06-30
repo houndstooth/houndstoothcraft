@@ -29,8 +29,14 @@ export default ({ effects = [], configurationLogging } = {}) => {
 
 const setupObject = ({ objectToSetup, effects, overrides }) => {
 	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
-	applicationUtilities.applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: effects })
-	applicationUtilities.applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
+	applicationUtilities.applyOverrides({ 
+		objectWithPropertiesToBeOverridden: objectToSetup, 
+		objectWithPropertyOverrides: effects 
+	})
+	applicationUtilities.applyOverrides({
+		objectWithPropertiesToBeOverridden: objectToSetup, 
+		objectWithPropertyOverrides: overrides 
+	})
 }
 
 const combineEffects = ({ effects }) => {
@@ -41,9 +47,18 @@ const combineEffects = ({ effects }) => {
 	const { applyOverrides } = applicationUtilities
 
 	effects.forEach(effect => {
-		applyOverrides({ objectWithPropertiesToOverride: initial, overrides: effect.initial })
-		applyOverrides({ objectWithPropertiesToOverride: iterations, overrides: effect.iterations })
-		applyOverrides({ objectWithPropertiesToOverride: animations, overrides: effect.animations })
+		applyOverrides({ 
+			objectWithPropertiesToBeOverridden: initial, 
+			objectWithPropertyOverrides: effect.initial 
+		})
+		applyOverrides({ 
+			objectWithPropertiesToBeOverridden: iterations, 
+			objectWithPropertyOverrides: effect.iterations 
+		})
+		applyOverrides({ 
+			objectWithPropertiesToBeOverridden: animations, 
+			objectWithPropertyOverrides: effect.animations 
+		})
 	})
 
 	return { initial, iterations, animations }

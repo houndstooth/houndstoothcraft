@@ -30,34 +30,44 @@ describe('setup', () => {
 	})
 
 	it('sets up settings', () => {
-	    const effectOne = {
+		let propertyFunctionOneD = () => 'D'
+		let propertyFunctionOneE = () => 'E'
+		let propertyFunctionOneG = () => 'G'
+		let propertyFunctionOneH = () => 'H'
+		const effectOne = {
 	        initial: {
 	        	propertyA: 'A',
 				propertyB: 'B'
 			},
 	        animations: {
-				propertyD: 'D',
-				propertyE: 'E'
+				propertyD: propertyFunctionOneD,
+				propertyE: propertyFunctionOneE
 			},
 	        iterations: {
-				propertyG: 'G',
-				propertyH: 'H'
+				propertyG: propertyFunctionOneG,
+				propertyH: propertyFunctionOneH
 			}
 	    }
-	    const effectTwo = {
+
+		let propertyFunctionTwoD = () => 'd'
+		let propertyFunctionTwoF = () => 'f'
+		let propertyFunctionTwoG = () => 'g'
+		let propertyFunctionTwoI = () => 'i'
+		const effectTwo = {
 	        initial: {
 				propertyA: 'a',
 				propertyC: 'c'
 			},
 	        animations: {
-	        	propertyD: 'd',
-				propertyF: 'f'
+	        	propertyD: propertyFunctionTwoD,
+				propertyF: propertyFunctionTwoF
 			},
 	        iterations: {
-	        	propertyG: 'g',
-				propertyI: 'i'
+	        	propertyG: propertyFunctionTwoG,
+				propertyI: propertyFunctionTwoI
 			}
 	    }
+
 	    const effects = [ effectOne, effectTwo ]
 
 	    setup({ effects })
@@ -68,14 +78,14 @@ describe('setup', () => {
 			propertyC: 'c'
 		}))
 		expect(settings.animations).toEqual(jasmine.objectContaining({
-			propertyD: 'd',
-			propertyE: 'E',
-			propertyF: 'f'
+			propertyD: propertyFunctionTwoD,
+			propertyE: propertyFunctionOneE,
+			propertyF: propertyFunctionTwoF
 		}))
 		expect(settings.iterations).toEqual(jasmine.objectContaining({
-			propertyG: 'g',
-			propertyH: 'H',
-			propertyI: 'i'
+			propertyG: propertyFunctionTwoG,
+			propertyH: propertyFunctionOneH,
+			propertyI: propertyFunctionTwoI
 		}))
 	})
 })

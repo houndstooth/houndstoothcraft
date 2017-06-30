@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config')
-webpackConfig.entry = undefined;
+webpackConfig.entry = undefined
 
 module.exports = config => {
 	config.set({

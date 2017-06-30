@@ -27,35 +27,18 @@ export default ({ effects = [], configurationLogging } = {}) => {
 	if (configurationLogging) consoleWrapper.log(settings)
 }
 
-const applyOverrides = ({ objectWithPropertiesToOverride, overrides, nestedPropertyPath = [] }) => {
-	const { deeperPath, accessChildObjectOrCreatePath } = applicationUtilities
-	overrides && Object.entries(overrides).forEach(([ propertyName, overridingProperty ]) => {
-		if (overridingProperty && typeof overridingProperty === 'object' && !overridingProperty.length) {
-			applyOverrides({
-				objectWithPropertiesToOverride,
-				overrides: overridingProperty,
-				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
-			})
-		} else {
-			let objectWithPropertyToOverride = accessChildObjectOrCreatePath({
-				parentObject: objectWithPropertiesToOverride,
-				nestedPropertyPath
-			})
-			objectWithPropertyToOverride[ propertyName ] = overridingProperty
-		}
-	})
-}
-
 const setupObject = ({ objectToSetup, effects, overrides }) => {
 	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
-	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: effects })
-	applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
+	applicationUtilities.applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: effects })
+	applicationUtilities.applyOverrides({ objectWithPropertiesToOverride: objectToSetup, overrides: overrides })
 }
 
 const combineEffects = ({ effects }) => {
 	const initial = {}
 	const iterations = {}
 	const animations = {}
+
+	const { applyOverrides } = applicationUtilities
 
 	effects.forEach(effect => {
 		applyOverrides({ objectWithPropertiesToOverride: initial, overrides: effect.initial })

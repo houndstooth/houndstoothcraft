@@ -1,8 +1,5 @@
 import execute from '../src/execute'
 import consoleWrapper from '../src/consoleWrapper'
-// import canvas from '../src/render/canvas'
-// import fileSaver from 'file-saver'
-// import exportFrame from '../src/exportFrame'
 import animator from '../src/animator'
 
 describe('execute', () => {
@@ -11,6 +8,10 @@ describe('execute', () => {
 	let consoleWrapperLogSpy
 	let gridSpy
 	beforeEach(() => {
+		iterating = undefined
+		animating = undefined
+		exportFrames = undefined
+		performanceLogging = undefined
 		execute.__Rewire__('animator', ({ animationFunction, stopCondition }) => {
 			while (!stopCondition()) animationFunction()
 		})
@@ -20,20 +21,12 @@ describe('execute', () => {
 		gridSpy = jasmine.createSpy()
 		execute.__Rewire__('grid', gridSpy)
 
-		// spyOn(fileSaver, 'saveAs').and.callFake(() => {})
-		// spyOn(canvas, 'toBlob').and.callFake(fn => {
-		// 	fn()
-		// 	current.lastSavedFrame-- // to cancel out the real one
-		// })
-		
-
 		settings.initial.animation = { endAnimationFrame: 100 } // to avoid infinite animation
 	})
 
 	afterEach(() => {
 		execute.__ResetDependency__('grid')
 		execute.__ResetDependency__('animator')
-		// execute.__ResetDependency__('exportFrame')
 	})
 
 	describe('performance logging', () => {
@@ -368,32 +361,20 @@ describe('execute', () => {
 		})
 
 		it('saves the canvas for each animation frame', done => {
-			execute.__ResetDependency__('animator')
-			// animator.__Rewire__('exportFrame')
+			execute.__ResetDependency__('animator') // need to bring back the asynchronicity
 			const exportFrameSpy = jasmine.createSpy()
-			execute.__Rewire__('exportFrame', exportFrameSpy)
+			execute.__Rewire__('exportFrame', exportFrameSpy) // never reset this one, too dangerous
 
 			const interval = setInterval(() => {
 				current.lastSavedFrame++
 				if (current.lastSavedFrame >= endAnimationFrame) {
 					clearInterval(interval)
-					execute.__ResetDependency__('exportFrame')
 					done()
 				}
-				// expect(canvas.toBlob.calls.all().length).toBe(current.lastSavedFrame - startAnimationFrame)
-				// const saveAsCalls = fileSaver.saveAs.calls.all()
-				// expect(saveAsCalls.length).toBe(current.lastSavedFrame - startAnimationFrame)
-				// expect(saveAsCalls[saveAsCalls.length - 1].args[1]).toEqual((current.lastSavedFrame - 1) + ".png")
 				expect(exportFrameSpy.calls.all().length).toBe(current.lastSavedFrame - startAnimationFrame)
-			}, 25)
+			}, 100)
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
-
 		})
-
-		// afterEach(() => {
-									// animator.__ResetDependency__('exportFrame')
-
-		// })
 	})
 })

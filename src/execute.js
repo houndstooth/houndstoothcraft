@@ -8,10 +8,11 @@ import exportFrame from './exportFrame'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
+	const iterationFunctions = applicationUtilities.prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.iterations })
 	execute({
 		iterating,
 		exportFrames,
-		iterationFunctions: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.iterations }),
+		iterationFunctions,
 		performanceLogging,
 		animating
 	})
@@ -27,21 +28,6 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	}
 }
 
-const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
-	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
-		if (typeof value === 'function') {
-			functionsArray.push({ fn: value, nestedPropertyPath, propertyName: key })
-		} else if (value) {
-			prepareFunctionsPerSettingsProperty({
-				objectWithFunctions: value,
-				nestedPropertyPath: applicationUtilities.deeperPath({ nestedPropertyPath, propertyName: key }),
-				functionsArray
-			})
-		}
-	})
-	return functionsArray
-}
-
 const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
@@ -54,7 +40,7 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIteration, endIteration } = settings.initial.iteration || { }
+	let { startIteration, endIteration } = settings.initial.iteration || {}
 	startIteration = startIteration || 0
 	endIteration = endIteration || 0
 
@@ -84,6 +70,8 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 	current.lastSavedFrame = startAnimationFrame
 
+	const { deepClone, resetObject, prepareFunctionsPerSettingsProperty } = applicationUtilities
+
 	const animationFunction = () => {
 		if (exportFrames && current.animation > current.lastSavedFrame) return
 
@@ -91,25 +79,18 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 		if (!startAnimationFrame || current.animation >= startAnimationFrame) {
 			if (iterating) {
-				const preIterationSettings = JSON.parse(JSON.stringify(settings.initial))
+				const preIterationSettings = deepClone(settings.initial)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				applicationUtilities.resetObject({
-					objectToReset: settings.initial,
-					objectToResetTo: preIterationSettings
-				})
+				resetObject({ objectToReset: settings.initial, objectToResetTo: preIterationSettings })
 			} else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
 			}
 
-			if (exportFrames) {
-				console.log('wtf is export frame right now', exportFrame)
-				exportFrame()
-			}
+			if (exportFrames) exportFrame()
 		}
 
-		callFunctionsPerSettingsProperty({
-			functionObjects: prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
-		})
+		const functionObjects = prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
+		callFunctionsPerSettingsProperty({ functionObjects })
 		current.animation++
 	}
 

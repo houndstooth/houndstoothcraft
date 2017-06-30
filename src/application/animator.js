@@ -1,6 +1,6 @@
+import buildIntervalFunction from './buildIntervalFunction'
+
 export default ({ animationFunction, frameRate, stopCondition }) => {
-	const interval = setInterval(() => {
-		animationFunction()
-		if (stopCondition()) clearInterval(interval)
-	}, frameRate)
+    const intervalFunction = buildIntervalFunction({ animationFunction, stopCondition })
+    current.interval = setInterval(intervalFunction, frameRate)
 }

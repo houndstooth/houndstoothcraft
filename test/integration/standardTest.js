@@ -19,7 +19,7 @@ describe("Standard Houndstooth", () => {
 		expect(pixel(sectorCenter({ x: 3, y: 3, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 1 })
 	})
 
-	it("repeats a 2x2 pattern of a solid black, solid white, and two b&w striped tiles", () => {
+	xit("repeats a 2x2 pattern of a solid black, solid white, and two b&w striped tiles", () => {
 
 	})
 })

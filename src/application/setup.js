@@ -1,6 +1,6 @@
-import setupCanvas from './render/setupCanvas'
-import overrides from './settings/overrides'
-import applicationUtilities from './utilities/applicationUtilities'
+import setupCanvas from '../render/setupCanvas'
+import overrides from '../settings/overrides'
+import applicationUtilities from '../utilities/applicationUtilities'
 import consoleWrapper from './consoleWrapper'
 
 export default ({ effects = [], configurationLogging } = {}) => {

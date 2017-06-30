@@ -1,6 +1,6 @@
-import execute from '../src/execute'
-import consoleWrapper from '../src/consoleWrapper'
-import animator from '../src/animator'
+import execute from '../../src/application/execute'
+import consoleWrapper from '../../src/application/consoleWrapper'
+import animator from '../../src/application/animator'
 
 describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging

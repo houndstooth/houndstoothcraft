@@ -1,8 +1,8 @@
-import clear from './render/clear'
-import applicationUtilities from './utilities/applicationUtilities'
-import grid from './components/grid'
+import clear from '../render/clear'
+import applicationUtilities from '../utilities/applicationUtilities'
+import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
-import { FRAME_RATE } from './defaults'
+import { FRAME_RATE } from '../defaults'
 import animator from './animator'
 import exportFrame from './exportFrame'
 

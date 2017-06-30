@@ -1,6 +1,6 @@
-import exportFrame from '../src/exportFrame'
+import exportFrame from '../../src/application/exportFrame'
 import fileSaver from 'file-saver'
-import canvas from '../src/render/canvas'
+import canvas from '../../src/render/canvas'
 
 describe('export frame', () => {
 	beforeEach(() => {

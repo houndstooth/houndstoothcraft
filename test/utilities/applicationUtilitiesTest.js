@@ -1,5 +1,5 @@
 import applicationUtilities from '../../src/utilities/applicationUtilities'
-import consoleWrapper from '../../src/consoleWrapper'
+import consoleWrapper from '../../src/application/consoleWrapper'
 
 describe('application utilities', () => {
 	describe('deeper path', () => {

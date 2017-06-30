@@ -1,4 +1,4 @@
-import canvas from './render/canvas'
+import canvas from '../render/canvas'
 import fileSaver from 'file-saver'
 
 export default () => canvas.toBlob(blob => {

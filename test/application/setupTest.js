@@ -1,5 +1,5 @@
-import setup from '../src/setup'
-import consoleWrapper from '../src/consoleWrapper'
+import setup from '../../src/application/setup'
+import consoleWrapper from '../../src/application/consoleWrapper'
 
 describe('setup', () => {
 	it('logs the settings when logging mode is on', () => {

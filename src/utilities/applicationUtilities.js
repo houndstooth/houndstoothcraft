@@ -1,4 +1,4 @@
-import consoleWrapper from '../consoleWrapper'
+import consoleWrapper from '../application/consoleWrapper'
 
 const resetObject = ({ objectToReset, objectToResetTo }) => {
 	Object.keys(objectToResetTo).forEach(key => objectToReset[ key ] = objectToResetTo[ key ])

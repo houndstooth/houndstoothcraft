@@ -210,6 +210,16 @@ describe('execute', () => {
 			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(993)
 			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(992)
 		})
+
+		it('defaults the start iteration frame to 0 and the end to its default', () => {
+			settings.initial.iteration = {}
+			const iterationFunction = jasmine.createSpy()
+			settings.iterations.exampleConfig = { exampleProperty: iterationFunction }
+			
+			execute({ iterating, animating, exportFrames, performanceLogging })
+
+			expect(iterationFunction.calls.all().length).toBe(101)
+		})
 	})
 
 	describe('animating (but not iterating)', () => {

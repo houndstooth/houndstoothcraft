@@ -2,7 +2,7 @@ import clear from '../render/clear'
 import applicationUtilities from '../utilities/applicationUtilities'
 import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
-import { FRAME_RATE } from '../defaults'
+import { FRAME_RATE, END_ITERATION } from '../defaults'
 import animator from './animator'
 import exportFrame from './exportFrame'
 
@@ -42,7 +42,7 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
 	let { startIteration, endIteration } = settings.initial.iteration || {}
 	startIteration = startIteration || 0
-	endIteration = endIteration || 0
+	endIteration = endIteration || END_ITERATION
 
 	for (let n = 0; n <= endIteration; n++) {
 		if (n >= startIteration) {

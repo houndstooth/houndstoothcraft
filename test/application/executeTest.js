@@ -113,7 +113,29 @@ describe('execute', () => {
 				})
 
 				it('logs the animation frames, iteration frames, and grid performance', () => {
+					execute({ iterating, animating, exportFrames, performanceLogging })
 
+					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
+					expect(consoleWrapperLogSpyCalls.length).toBe(121)
+					consoleWrapperLogSpyCalls.forEach((call, index) => {
+						const animationFrame = Math.floor(index / 11)
+						const iterationFrame = index % 11
+						expect(call.args[ 0 ]).toEqual(
+							`current animation/iteration frame: ${animationFrame}/${iterationFrame}`
+						)
+					})
+
+					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
+					expect(consoleWrapperTimeCalls.length).toBe(121)
+					consoleWrapperTimeCalls.forEach(call => {
+						expect(call.args[ 0 ]).toBe('grid')
+					})
+
+					const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
+					expect(consoleWrapperTimeEndCalls.length).toBe(121)
+					consoleWrapperTimeEndCalls.forEach(call => {
+						expect(call.args[ 0 ]).toBe('grid')
+					})
 				})
 			})
 		})

@@ -22,8 +22,15 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
 	if (performanceLogging) {
-		if (animating) consoleWrapper.log('current animation frame: ' + current.animation)
-		if (iterating) consoleWrapper.log('current iteration frame: ' + current.iteration)
+		if (animating && iterating) {
+			consoleWrapper.log(
+				`current animation/iteration frame: ${current.animation}/${current.iteration}`
+			)
+		} else if (animating) {
+			consoleWrapper.log(`current animation frame: ${current.animation}`)
+		} else if (iterating) {
+			consoleWrapper.log(`current iteration frame: ${current.iteration}`)
+		}
 		consoleWrapper.timeEnd('grid')
 	}
 }
@@ -54,13 +61,12 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 	current.iteration = 0
 }
 
-const executeGrid = ({ iterating, iterationFunctions, performanceLogging, animating }) => {
-	iterating ? executeIteration({
-		iterationFunctions,
-		performanceLogging,
-		iterating,
-		animating
-	}) : gridAndMaybeLogging({ performanceLogging, iterating, animating })
+const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
+	if (iterating) {
+		executeIteration({ performanceLogging, iterating, iterationFunctions })
+	} else {
+		gridAndMaybeLogging({ performanceLogging, iterating })	
+	}
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {

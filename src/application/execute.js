@@ -82,9 +82,9 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 	const animationFunction = () => {
 		if (exportFrames && current.animation > current.lastSavedFrame) return
 
-		if (refreshCanvas) clear()
+		if (current.animation >= startAnimationFrame) {
+			if (refreshCanvas) clear()
 
-		if (!startAnimationFrame || current.animation >= startAnimationFrame) {
 			if (iterating) {
 				const preIterationSettings = deepClone(settings.initial)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })

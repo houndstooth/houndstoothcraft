@@ -1,6 +1,8 @@
 import execute from '../../src/application/execute'
 import consoleWrapper from '../../src/application/consoleWrapper'
 import animator from '../../src/application/animator'
+import clear from '../../src/render/clear'
+import { FRAME_RATE } from '../../src/defaults'
 
 describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging
@@ -292,6 +294,16 @@ describe('execute', () => {
 			expect(animationFunctionCalls[ 3 ].args[ 0 ]).toBe(997)
 			expect(animationFunctionCalls[ 4 ].args[ 0 ]).toBe(996)
 			expect(animationFunctionCalls[ 5 ].args[ 0 ]).toBe(995)
+		})
+
+		it('defaults refreshing the canvas to true, and calls clear once for every rendered frame', () => {
+			const clearSpy = jasmine.createSpy()
+			execute.__Rewire__('clear', clearSpy)
+
+			execute({ iterating, animating, exportFrames, performanceLogging })
+
+			expect(clearSpy.calls.all().length).toBe(4)
+			execute.__ResetDependency__('clear')
 		})
 	})
 

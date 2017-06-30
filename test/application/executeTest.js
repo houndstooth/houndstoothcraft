@@ -6,24 +6,29 @@ import { FRAME_RATE } from '../../src/defaults'
 
 describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging
-
-	let consoleWrapperLogSpy
-	let gridSpy
+	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy
 	beforeEach(() => {
 		iterating = undefined
 		animating = undefined
 		exportFrames = undefined
 		performanceLogging = undefined
-		execute.__Rewire__('animator', ({ animationFunction, stopCondition }) => {
-			while (!stopCondition()) animationFunction()
-		})
+
 		consoleWrapperLogSpy = spyOn(consoleWrapper, 'log')
 		spyOn(consoleWrapper, 'time')
 		spyOn(consoleWrapper, 'timeEnd')
+
 		gridSpy = jasmine.createSpy()
 		execute.__Rewire__('grid', gridSpy)
 
-		settings.initial.animation = { endAnimationFrame: 100 } // to avoid infinite animation
+		animatorSpy = jasmine.createSpy().and.callFake(({ animationFunction, stopCondition }) => {
+			while (!stopCondition()) animationFunction()
+		})
+		execute.__Rewire__('animator', animatorSpy)
+
+		exportFrameSpy = jasmine.createSpy()
+		execute.__Rewire__('exportFrame', exportFrameSpy) 
+
+		settings.initial.animation = { endAnimationFrame: 100 }
 	})
 
 	afterEach(() => {
@@ -262,6 +267,12 @@ describe('execute', () => {
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
+		it('calls the animator with the frame rate, which is defaulted', () => {
+			execute({ iterating, animating, exportFrames, performanceLogging })
+
+			expect(animatorSpy).toHaveBeenCalledWith(jasmine.objectContaining({ frameRate: FRAME_RATE }))
+		})
+
 		it('calls animation functions once for each animation, including before rendering starts', () => {
 			const animationFunction = jasmine.createSpy().and.callFake(p => p * 2)
 			settings.initial.exampleConfig = { exampleProperty: 1 }
@@ -400,14 +411,11 @@ describe('execute', () => {
 			settings.initial.animation = {
 				startAnimationFrame,
 				endAnimationFrame,
-				frameRate: 0
 			}
 		})
 
 		it('saves the canvas for each animation frame', done => {
-			execute.__ResetDependency__('animator') // need to bring back the asynchronicity
-			const exportFrameSpy = jasmine.createSpy()
-			execute.__Rewire__('exportFrame', exportFrameSpy) // never reset this one, too dangerous
+			execute.__ResetDependency__('animator')
 
 			const interval = setInterval(() => {
 				current.lastSavedFrame++

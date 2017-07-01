@@ -13,12 +13,12 @@ import execute from './application/execute'
 
 setup({
 	effects: [],
-	configurationLogging: false
+	configurationLogging: false,
 })
 
 execute({
 	iterating: false,
 	animating: false,
 	exportFrames: false,
-	performanceLogging: false
+	performanceLogging: false,
 })

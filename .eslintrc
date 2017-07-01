@@ -12,7 +12,7 @@
         "indent": [ "error", "tab" ],
         "quotes": [ "error", "single" ],
         "semi": [ "error", "never" ],
-        "comma-dangle": [ "error", "only-multiline" ],
+        "comma-dangle": [ "error", "always-multiline" ],
         "prefer-template": [ "error" ],
         "array-bracket-spacing": [ "error", "always" ],
         "object-curly-spacing": [ "error", "always" ],

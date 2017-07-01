@@ -5,19 +5,19 @@ export default ({ tileOrigin, sizedUnit }) => {
 	return [
 		[
 			x,
-			y
+			y,
 		],
 		[
 			x + sizedUnit,
-			y
+			y,
 		],
 		[
 			x + sizedUnit,
-			y + sizedUnit
+			y + sizedUnit,
 		],
 		[
 			x,
-			y + sizedUnit
-		]
+			y + sizedUnit,
+		],
 	]
 }

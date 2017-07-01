@@ -12,7 +12,7 @@ export default {
 	log,
 	time,
 	timeEnd,
-	warn
+	warn,
 }
 
 /* eslint-enable no-console */

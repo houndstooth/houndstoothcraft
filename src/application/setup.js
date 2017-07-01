@@ -9,17 +9,17 @@ export default ({ effects = [], configurationLogging } = {}) => {
 	setupObject({
 		objectToSetup: settings.initial,
 		effects: combinedEffects.initial,
-		overrides: overrides.initial
+		overrides: overrides.initial,
 	})
 	setupObject({
 		objectToSetup: settings.iterations,
 		effects: combinedEffects.iterations,
-		overrides: overrides.iterations
+		overrides: overrides.iterations,
 	})
 	setupObject({
 		objectToSetup: settings.animations,
 		effects: combinedEffects.animations,
-		overrides: overrides.animations
+		overrides: overrides.animations,
 	})
 
 	setupCanvas()
@@ -31,11 +31,11 @@ const setupObject = ({ objectToSetup, effects, overrides }) => {
 	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
 	settingsUtilities.applyOverrides({
 		objectWithPropertiesToBeOverridden: objectToSetup,
-		objectWithPropertyOverrides: effects
+		objectWithPropertyOverrides: effects,
 	})
 	settingsUtilities.applyOverrides({
 		objectWithPropertiesToBeOverridden: objectToSetup,
-		objectWithPropertyOverrides: overrides
+		objectWithPropertyOverrides: overrides,
 	})
 }
 
@@ -49,15 +49,15 @@ const combineEffects = ({ effects }) => {
 	effects.forEach(effect => {
 		applyOverrides({
 			objectWithPropertiesToBeOverridden: initial,
-			objectWithPropertyOverrides: effect.initial
+			objectWithPropertyOverrides: effect.initial,
 		})
 		applyOverrides({
 			objectWithPropertiesToBeOverridden: iterations,
-			objectWithPropertyOverrides: effect.iterations
+			objectWithPropertyOverrides: effect.iterations,
 		})
 		applyOverrides({
 			objectWithPropertiesToBeOverridden: animations,
-			objectWithPropertyOverrides: effect.animations
+			objectWithPropertyOverrides: effect.animations,
 		})
 	})
 

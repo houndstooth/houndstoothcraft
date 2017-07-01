@@ -1,5 +1,5 @@
 global.settings = {
 	animations: {},
 	iterations: {},
-	initial: {}
+	initial: {},
 }

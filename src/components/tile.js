@@ -50,7 +50,7 @@ export default ({ address }) => {
 			colorsIndex: stripeIndex,
 			stripeIndex,
 			stripeCount: stripePositionsForTile.length,
-			coordinatesOptions: { stripeStart, stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || PERIMETER_SCALAR }
+			coordinatesOptions: { stripeStart, stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || PERIMETER_SCALAR },
 		})
 	})
 }

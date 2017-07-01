@@ -6,7 +6,7 @@ const ZOOM = 1
 const COLOR_SET = [ BLACK, TRANSPARENT ]
 const COLOR_ASSIGNMENT = {
 	mode: 'WEAVE',
-	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] }
+	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
 }
 const OPACITY = 1
 const STRIPE_COUNT = 4
@@ -26,5 +26,5 @@ export {
 	BASE_STRIPE_DIAGONAL,
 	CANVAS_SIZE,
 	FRAME_RATE,
-	END_ITERATION
+	END_ITERATION,
 }

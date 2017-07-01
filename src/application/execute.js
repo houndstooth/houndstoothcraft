@@ -15,7 +15,7 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 		exportFrames,
 		iterationFunctions,
 		performanceLogging,
-		animating
+		animating,
 	})
 }
 
@@ -41,7 +41,7 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
 		let settingsObjectToCallFunctionOn = codeUtilities.accessChildObjectOrCreatePath({
 			parentObject: settings.initial,
-			nestedPropertyPath
+			nestedPropertyPath,
 		})
 		settingsObjectToCallFunctionOn[ propertyName ] = fn(settingsObjectToCallFunctionOn[ propertyName ])
 	})
@@ -99,8 +99,8 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 		callFunctionsPerSettingsProperty({
 			functionObjects: settingsUtilities.prepareFunctionsPerSettingsProperty({
-				objectWithFunctions: settings.animations
-			})
+				objectWithFunctions: settings.animations,
+			}),
 		})
 		current.animationFrame++
 	}

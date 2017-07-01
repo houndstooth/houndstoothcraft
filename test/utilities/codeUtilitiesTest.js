@@ -5,14 +5,14 @@ describe('code utilities', () => {
 		let iterator
 		beforeEach(() => iterator = codeUtilities.iterator )
 
-    	it('returns an array of integers counting up', () => {
-    		expect(iterator(5)).toEqual([ 0, 1, 2, 3, 4 ])
-    	})
+		it('returns an array of integers counting up', () => {
+			expect(iterator(5)).toEqual([ 0, 1, 2, 3, 4 ])
+		})
 
-    	it('can be one indexed', () => {
-    		const result = iterator(5, { oneIndexed: true })
-    		expect(result).toEqual([ 1, 2, 3, 4, 5 ])
-    	})
+		it('can be one indexed', () => {
+			const result = iterator(5, { oneIndexed: true })
+			expect(result).toEqual([ 1, 2, 3, 4, 5 ])
+		})
 	})
 
 	describe('wrapped index', () => {

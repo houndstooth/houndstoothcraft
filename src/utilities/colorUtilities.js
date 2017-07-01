@@ -6,9 +6,10 @@ const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorConfig }) => {
 	colorConfig = colorConfig || settings.initial.colorConfig
-	const { mode } = settings.initial.stripeCountConfig || { mode: 'STANDARD' }
 
 	let tileColors = gridUtilities.getSetForTile({ address, config: colorConfig })
+
+	const { mode } = settings.initial.stripeCountConfig || {}
 	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = colorConfig && colorConfig.opacity || OPACITY
@@ -35,7 +36,9 @@ const mixColors = ({ colors }) => {
 	} ]
 }
 
-const fadeColors = ({ colors, opacity }) => colors.map(color => Object.assign({}, color, { a: color.a * opacity }))
+const fadeColors = ({ colors, opacity }) => colors.map(color => {
+	return Object.assign({}, color, { a: color.a * opacity })
+})
 
 const allColorsAreTheSame = (colors) => {
 	for (let i = 0; i < colors.length - 1; i++) {

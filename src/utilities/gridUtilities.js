@@ -33,14 +33,14 @@ const getSetForTile = ({ address, config }) => {
 		const rowsIndex = wrappedIndex({ array: rows, index: address[ 1 ] + addressOffset[ 1 ] })
 		setForTile = [
 			wrappedIndex({ array: setForGrid, index: rowsIndex + setForGridIndexOffset }),
-			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset })
+			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset }),
 		]
 	} else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: address[ 0 ] + addressOffset[ 0 ] })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: address[ 1 ] + addressOffset[ 1 ] })
 		setForTile = supertileEntry.map(index => wrappedIndex({
 			array: setForGrid,
-			index: index + setForGridIndexOffset
+			index: index + setForGridIndexOffset,
 		}))
 	}
 
@@ -71,5 +71,5 @@ const switcherooSet = ({ setForTile, address }) => {
 }
 
 export default {
-	getSetForTile
+	getSetForTile,
 }

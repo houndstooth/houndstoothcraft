@@ -20,5 +20,5 @@ const perStripe = ({ getStripePosition }) => {
 
 export default {
 	getStripePositionsForTile,
-	perStripe
+	perStripe,
 }

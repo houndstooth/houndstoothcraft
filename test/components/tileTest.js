@@ -180,7 +180,7 @@ describe('tile', () => {
 						tileColors,
 						tileOrigin,
 						sizedUnit,
-						options
+						options,
 					}))
 				})
 			})
@@ -233,7 +233,7 @@ describe('tile', () => {
 						tileColors,
 						tileOrigin,
 						sizedUnit,
-						options
+						options,
 					}))
 				})
 
@@ -263,7 +263,7 @@ describe('tile', () => {
 					tile({ address })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-						stripeCount: stripePositionsForTile.length
+						stripeCount: stripePositionsForTile.length,
 					}))
 				})
 
@@ -275,26 +275,26 @@ describe('tile', () => {
 					expect(shapes[0].args[0]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
 							stripeStart: stripePositionsForTile[0],
-							stripeEnd: stripePositionsForTile[1]
-						}
+							stripeEnd: stripePositionsForTile[1],
+						},
 					}))
 					expect(shapes[1].args[0]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
 							stripeStart: stripePositionsForTile[1],
-							stripeEnd: stripePositionsForTile[2]
-						}
+							stripeEnd: stripePositionsForTile[2],
+						},
 					}))
 					expect(shapes[2].args[0]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
 							stripeStart: stripePositionsForTile[2],
-							stripeEnd: stripePositionsForTile[3]
-						}
+							stripeEnd: stripePositionsForTile[3],
+						},
 					}))
 					expect(shapes[3].args[0]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
 							stripeStart: stripePositionsForTile[3],
-							stripeEnd: PERIMETER_SCALAR
-						}
+							stripeEnd: PERIMETER_SCALAR,
+						},
 					}))
 				})
 			})	

@@ -13,7 +13,7 @@ const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 
 	return [
 		point[ 0 ] + relativeX * cos - relativeY * sin,
-		point[ 1 ] + relativeX * sin + relativeY * cos
+		point[ 1 ] + relativeX * sin + relativeY * cos,
 	]
 }
 
@@ -36,7 +36,7 @@ const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,
 			coordinates: coordinates,
-			rotation: stripeDiagonalRotationOffset
+			rotation: stripeDiagonalRotationOffset,
 		})
 	}
 
@@ -44,7 +44,7 @@ const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: [ canvasSize / 2, canvasSize / 2 ],
 			coordinates: coordinates,
-			rotation: gridRotationAboutGridCenter
+			rotation: gridRotationAboutGridCenter,
 		})
 	}
 
@@ -52,5 +52,5 @@ const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 }
 
 export default {
-	applyRotationToShape
+	applyRotationToShape,
 }

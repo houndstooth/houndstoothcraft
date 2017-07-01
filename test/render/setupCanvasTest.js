@@ -12,10 +12,10 @@ describe('setupCanvas', () => {
 		expect(canvas.height).toEqual(400)
 	})
 
-    it('defaults the canvas width and height, if not provided', () => {
-        setupCanvas()
+	it('defaults the canvas width and height, if not provided', () => {
+		setupCanvas()
 
-        expect(canvas.width).toEqual(CANVAS_SIZE)
-        expect(canvas.height).toEqual(CANVAS_SIZE)
-    })
+		expect(canvas.width).toEqual(CANVAS_SIZE)
+		expect(canvas.height).toEqual(CANVAS_SIZE)
+	})
 })

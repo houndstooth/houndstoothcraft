@@ -1,6 +1,6 @@
 import stripeCoordinates from '../../src/shapes/stripeCoordinates'
 
-describe("stripe coordinates", () => {
+describe('stripe coordinates', () => {
 	const tileOrigin = [ 0, 0 ]
 	const sizedUnit = 1
 	let stripeStart, stripeEnd
@@ -17,7 +17,7 @@ describe("stripe coordinates", () => {
 				expect(result).toEqual([
 					[ 0, 0 ],
 					[ 0.5, 0 ],
-					[ 0, 0.5 ]
+					[ 0, 0.5 ],
 				])
 			})
 		})
@@ -31,7 +31,7 @@ describe("stripe coordinates", () => {
 				expect(result).toEqual([
 					[ 0, 0 ],
 					[ 1, 0 ],
-					[ 0, 1 ]
+					[ 0, 1 ],
 				])
 			})
 		})
@@ -47,7 +47,7 @@ describe("stripe coordinates", () => {
 					[ 1, 0 ],
 					[ 1, 0.5 ],
 					[ 0.5, 1 ],
-					[ 0, 1 ]
+					[ 0, 1 ],
 				])
 			})
 		})
@@ -66,7 +66,7 @@ describe("stripe coordinates", () => {
 					[ 0.5, 0 ],
 					[ 0.75, 0 ],
 					[ 0, 0.75 ],
-					[ 0, 0.5 ]
+					[ 0, 0.5 ],
 				])
 			})
 		})
@@ -81,7 +81,7 @@ describe("stripe coordinates", () => {
 					[ 0.5, 0 ],
 					[ 1, 0 ],
 					[ 0, 1 ],
-					[ 0, 0.5 ]
+					[ 0, 0.5 ],
 				])
 			})
 		})
@@ -98,7 +98,7 @@ describe("stripe coordinates", () => {
 					[ 1, 0.5 ],
 					[ 0.5, 1 ],
 					[ 0, 1 ],
-					[ 0, 0.5 ]
+					[ 0, 0.5 ],
 				])
 			})
 		})
@@ -114,7 +114,7 @@ describe("stripe coordinates", () => {
 					[ 1, 0 ],
 					[ 1, 1 ],
 					[ 0, 1 ],
-					[ 0, 0.5 ]
+					[ 0, 0.5 ],
 				])
 			})
 		})
@@ -133,7 +133,7 @@ describe("stripe coordinates", () => {
 					[ 1, 0 ],
 					[ 1, 0.5 ],
 					[ 0.5, 1 ],
-					[ 0, 1 ]
+					[ 0, 1 ],
 				])
 			})
 		})
@@ -147,7 +147,7 @@ describe("stripe coordinates", () => {
 				expect(result).toEqual([
 					[ 1, 0 ],
 					[ 1, 1 ],
-					[ 0, 1 ]
+					[ 0, 1 ],
 				])
 			})
 		})
@@ -166,7 +166,7 @@ describe("stripe coordinates", () => {
 					[ 1, 0.5 ],
 					[ 1, 0.75 ],
 					[ 0.75, 1 ],
-					[ 0.5, 1 ]
+					[ 0.5, 1 ],
 				])
 			})
 		})
@@ -180,7 +180,7 @@ describe("stripe coordinates", () => {
 				expect(result).toEqual([
 					[ 1, 0.5 ],
 					[ 1, 1 ],
-					[ 0.5, 1 ]
+					[ 0.5, 1 ],
 				])
 			})
 		})

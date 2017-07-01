@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const log = msg => console.log(msg)
 
 const time = msg => console.time(msg)
@@ -12,3 +14,5 @@ export default {
 	timeEnd,
 	warn
 }
+
+/* eslint-enable no-console */

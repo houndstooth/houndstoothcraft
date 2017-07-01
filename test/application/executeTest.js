@@ -1,7 +1,5 @@
 import execute from '../../src/application/execute'
 import consoleWrapper from '../../src/application/consoleWrapper'
-import animator from '../../src/application/animator'
-import clear from '../../src/render/clear'
 import { FRAME_RATE } from '../../src/defaults'
 
 describe('execute', () => {
@@ -65,7 +63,7 @@ describe('execute', () => {
 					const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
-						expect(call.args[ 0 ]).toBe('current iteration frame: ' + index)
+						expect(call.args[ 0 ]).toBe(`current iteration frame: ${  index}`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -94,7 +92,7 @@ describe('execute', () => {
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
-						expect(call.args[ 0 ]).toEqual('current animation frame: ' + index)
+						expect(call.args[ 0 ]).toEqual(`current animation frame: ${  index}`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -190,7 +188,7 @@ describe('execute', () => {
 			animating = false
 			settings.initial.iteration = {
 				startIteration: 5,
-				endIteration: 8
+				endIteration: 8,
 			}
 		})
 
@@ -257,7 +255,7 @@ describe('execute', () => {
 			iterating = false
 			settings.initial.animation = {
 				startAnimationFrame: 2,
-				endAnimationFrame: 5
+				endAnimationFrame: 5,
 			}
 		})
 
@@ -324,11 +322,11 @@ describe('execute', () => {
 			iterating = true
 			settings.initial.iteration = {
 				startIteration: 5,
-				endIteration: 8
+				endIteration: 8,
 			}
 			settings.initial.animation = {
 				startAnimationFrame: 2,
-				endAnimationFrame: 5
+				endAnimationFrame: 5,
 			}
 		})
 

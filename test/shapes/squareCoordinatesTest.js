@@ -1,6 +1,6 @@
 import squareCoordinates from '../../src/shapes/squareCoordinates'
 
-describe("square coordinates", () => {
+describe('square coordinates', () => {
 	const tileOrigin = [ 2, 3 ]
 	const sizedUnit = 5
 
@@ -9,7 +9,7 @@ describe("square coordinates", () => {
 			[ 2, 3 ],
 			[ 7, 3 ],
 			[ 7, 8 ],
-			[ 2, 8 ]
+			[ 2, 8 ],
 		])
 	})
 })

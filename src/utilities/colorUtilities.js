@@ -1,7 +1,7 @@
 import gridUtilities from './gridUtilities'
 import { OPACITY } from '../defaults'
 
-const parseColor = ({ color: { r, g, b, a } }) => 'rgba(' + [ r, g, b, a ].join(', ') + ')'
+const parseColor = ({ color: { r, g, b, a } }) => `rgba(${  [ r, g, b, a ].join(', ')  })`
 
 const getColorsForTile = ({ address, colorConfig }) => {
 	colorConfig = colorConfig || settings.initial.colorConfig
@@ -30,7 +30,7 @@ const mixColors = ({ colors }) => {
 		r: Math.floor(totalColor.r / colorsCount),
 		g: Math.floor(totalColor.g / colorsCount),
 		b: Math.floor(totalColor.b / colorsCount),
-		a: totalColor.a / colorsCount
+		a: totalColor.a / colorsCount,
 	} ]
 }
 
@@ -60,5 +60,5 @@ export default {
 	getColorsForTile,
 	isTileUniform,
 	allColorsAreTheSame,
-	parseColor
+	parseColor,
 }

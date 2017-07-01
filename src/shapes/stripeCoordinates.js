@@ -52,35 +52,35 @@ export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 
 const pointAlongTopEdge = ({ x, y, sizedUnit }, { stripePosition }) => ([
 	x + stripePosition * sizedUnit,
-	y
+	y,
 ])
 
 const pointAlongLeftEdge = ({ x, y, sizedUnit }, { stripePosition }) => ([
 	x,
-	y + stripePosition * sizedUnit
+	y + stripePosition * sizedUnit,
 ])
 
 const pointAlongRightEdge = ({ x, y, sizedUnit }, { stripePosition }) => ([
 	x + sizedUnit,
-	y + (stripePosition - 1) * sizedUnit
+	y + (stripePosition - 1) * sizedUnit,
 ])
 
 const pointAlongBottomEdge = ({ x, y, sizedUnit }, { stripePosition }) => ([
 	x + (stripePosition - 1) * sizedUnit,
-	y + sizedUnit
+	y + sizedUnit,
 ])
 
 const pointInTopRightCorner = ({ x, y, sizedUnit }) => ([
 	x + sizedUnit,
-	y
+	y,
 ])
 
 const pointInBottomRightCorner = ({ x, y, sizedUnit }) => ([
 	x + sizedUnit,
-	y + sizedUnit
+	y + sizedUnit,
 ])
 
 const pointInBottomLeftCorner = ({ x, y, sizedUnit }) => ([
 	x,
-	y + sizedUnit
+	y + sizedUnit,
 ])

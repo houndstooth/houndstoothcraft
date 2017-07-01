@@ -27,7 +27,7 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 	const halfTileSize = tileSize / 2
 	return [
 		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
-		tileOrigin[ 1 ] + canvasCenter - halfTileSize
+		tileOrigin[ 1 ] + canvasCenter - halfTileSize,
 	]
 }
 
@@ -52,8 +52,8 @@ const getStandardTileOriginAndSizedUnit = ({ address }) => {
 	return {
 		sizedUnit: getSizedUnit(),
 		tileOrigin: adjustOrigin({
-			tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ]
-		})
+			tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ],
+		}),
 	}
 }
 
@@ -65,5 +65,5 @@ const getTileOriginAndSizedUnit = ({ address }) => {
 export default {
 	adjustOrigin,
 	getSizedUnit,
-	getTileOriginAndSizedUnit
+	getTileOriginAndSizedUnit,
 }

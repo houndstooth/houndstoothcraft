@@ -67,7 +67,7 @@ describe('render', () => {
 				{ method: 'lineTo', x: 1, y: 1 },
 				{ method: 'lineTo', x: 1, y: 0 },
 				{ method: 'closePath' },
-				{ method: 'fill' }
+				{ method: 'fill' },
 			])
 		})
 	})

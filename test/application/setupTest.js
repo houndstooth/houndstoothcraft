@@ -35,57 +35,57 @@ describe('setup', () => {
 		let propertyFunctionOneG = () => 'G'
 		let propertyFunctionOneH = () => 'H'
 		const effectOne = {
-	        initial: {
-	        	propertyA: 'A',
-				propertyB: 'B'
+			initial: {
+				propertyA: 'A',
+				propertyB: 'B',
 			},
-	        animations: {
+			animations: {
 				propertyD: propertyFunctionOneD,
-				propertyE: propertyFunctionOneE
+				propertyE: propertyFunctionOneE,
 			},
-	        iterations: {
+			iterations: {
 				propertyG: propertyFunctionOneG,
-				propertyH: propertyFunctionOneH
-			}
-	    }
+				propertyH: propertyFunctionOneH,
+			},
+		}
 
 		let propertyFunctionTwoD = () => 'd'
 		let propertyFunctionTwoF = () => 'f'
 		let propertyFunctionTwoG = () => 'g'
 		let propertyFunctionTwoI = () => 'i'
 		const effectTwo = {
-	        initial: {
+			initial: {
 				propertyA: 'a',
-				propertyC: 'c'
+				propertyC: 'c',
 			},
-	        animations: {
-	        	propertyD: propertyFunctionTwoD,
-				propertyF: propertyFunctionTwoF
+			animations: {
+				propertyD: propertyFunctionTwoD,
+				propertyF: propertyFunctionTwoF,
 			},
-	        iterations: {
-	        	propertyG: propertyFunctionTwoG,
-				propertyI: propertyFunctionTwoI
-			}
-	    }
+			iterations: {
+				propertyG: propertyFunctionTwoG,
+				propertyI: propertyFunctionTwoI,
+			},
+		}
 
-	    const effects = [ effectOne, effectTwo ]
+		const effects = [ effectOne, effectTwo ]
 
-	    setup({ effects })
+		setup({ effects })
 
-	    expect(settings.initial).toEqual(jasmine.objectContaining({
+		expect(settings.initial).toEqual(jasmine.objectContaining({
 			propertyA: 'a',
 			propertyB: 'B',
-			propertyC: 'c'
+			propertyC: 'c',
 		}))
 		expect(settings.animations).toEqual(jasmine.objectContaining({
 			propertyD: propertyFunctionTwoD,
 			propertyE: propertyFunctionOneE,
-			propertyF: propertyFunctionTwoF
+			propertyF: propertyFunctionTwoF,
 		}))
 		expect(settings.iterations).toEqual(jasmine.objectContaining({
 			propertyG: propertyFunctionTwoG,
 			propertyH: propertyFunctionOneH,
-			propertyI: propertyFunctionTwoI
+			propertyI: propertyFunctionTwoI,
 		}))
 	})
 })

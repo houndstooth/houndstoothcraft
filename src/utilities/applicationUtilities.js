@@ -27,7 +27,7 @@ const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedProper
 			prepareFunctionsPerSettingsProperty({
 				objectWithFunctions: value,
 				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName: key }),
-				functionsArray
+				functionsArray,
 			})
 		} else {
 			consoleWrapper.warn(`This object is supposed to be an object whose structure matches that of the initial settings, and whose leaf values are functions to be applied to those settings on each animation / iteration frame. However, you have provided a non-function ${value} at path ${nestedPropertyPath} ${key}`)
@@ -43,12 +43,12 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 			applyOverrides({
 				objectWithPropertiesToBeOverridden,
 				objectWithPropertyOverrides: overridingProperty,
-				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName })
+				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName }),
 			})
 		} else {
 			let objectWithPropertyToBeOverridden = accessChildObjectOrCreatePath({
 				parentObject: objectWithPropertiesToBeOverridden,
-				nestedPropertyPath
+				nestedPropertyPath,
 			})
 			objectWithPropertyToBeOverridden[ propertyName ] = overridingProperty
 		}
@@ -75,5 +75,5 @@ export default {
 	accessChildObjectOrCreatePath,
 	prepareFunctionsPerSettingsProperty,
 	applyOverrides,
-	deepClone
+	deepClone,
 }

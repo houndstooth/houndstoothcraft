@@ -18,23 +18,23 @@ describe('application utilities', () => {
 		it('reassigns each of the immediate keys', () => {
 			const objectToReset = {
 				colorConfig: {
-					set: [ 0, 1 ]
+					set: [ 0, 1 ],
 				},
-				mode: 'COOLNESS'
+				mode: 'COOLNESS',
 			}
 			const objectToResetTo = {
 				mode: 'OG_NESS',
-				foo: 'bar'
+				foo: 'bar',
 			}
 
 			applicationUtilities.resetObject({ objectToReset, objectToResetTo })
 
 			const expectedObject = {
 				colorConfig: {
-					set: [ 0, 1 ]
+					set: [ 0, 1 ],
 				},
 				mode: 'OG_NESS',
-				foo: 'bar'
+				foo: 'bar',
 			}
 			expect(objectToReset).toEqual(expectedObject)
 		})
@@ -45,8 +45,8 @@ describe('application utilities', () => {
 			const expectedObject = {}
 			const parentObject = {
 				childPathFirstStep: {
-					childPathSecondStep: expectedObject
-				}
+					childPathSecondStep: expectedObject,
+				},
 			}
 			const nestedPropertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
 
@@ -64,8 +64,8 @@ describe('application utilities', () => {
 			expect(childObject).toEqual({})
 			expect(parentObject).toEqual({
 				childPathFirstStep: {
-					childPathSecondStep: {}
-				}
+					childPathSecondStep: {},
+				},
 			})
 		})
 	})
@@ -83,7 +83,7 @@ describe('application utilities', () => {
 				anImmutableNumber,
 				anImmutableFunction,
 				anArray: originalArray,
-				immediateNestedObject: originalImmediateNestedObject
+				immediateNestedObject: originalImmediateNestedObject,
 			}
 
 			const actualObject = applicationUtilities.deepClone(originalObject)
@@ -117,13 +117,13 @@ describe('application utilities', () => {
 			objectWithFunctions = {
 				childPathFirstStep: {
 					childPathSecondStep: {
-						childPathFinalStep: propertyFunction
-					}
+						childPathFinalStep: propertyFunction,
+					},
 				},
 				secondChildPathFirstStep: {
 					secondChildPathFinalStep: secondPropertyFunction,
-					thingThatShouldNotBe: 'Great Old One'
-				}
+					thingThatShouldNotBe: 'Great Old One',
+				},
 			}
 			const nestedPropertyPath = undefined
 			const functionsArray = undefined
@@ -132,7 +132,7 @@ describe('application utilities', () => {
 			actualFunctionsArray = applicationUtilities.prepareFunctionsPerSettingsProperty({
 				objectWithFunctions,
 				nestedPropertyPath,
-				functionsArray
+				functionsArray,
 			})
 		})
 
@@ -141,13 +141,13 @@ describe('application utilities', () => {
 				{
 					fn: propertyFunction,
 					nestedPropertyPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
-					propertyName: 'childPathFinalStep'
+					propertyName: 'childPathFinalStep',
 				},
 				{
 					fn: secondPropertyFunction,
 					nestedPropertyPath: [ 'secondChildPathFirstStep' ],
-					propertyName: 'secondChildPathFinalStep'
-				}
+					propertyName: 'secondChildPathFinalStep',
+				},
 			]
 			expect(actualFunctionsArray).toEqual(expectedFunctionsArray)
 		})
@@ -169,39 +169,39 @@ describe('application utilities', () => {
 				propertyObjectOne: {
 					nestedPropertyObjectOneOne: {
 						property: 'yoda',
-						anotherProperty: 'death star'
-					}
+						anotherProperty: 'death star',
+					},
 				},
 				propertyObjectTwo: {
 					property: 'jedi',
-				}
+				},
 			}
 			const objectWithPropertyOverrides = {
 				propertyObjectOne: {
 					nestedPropertyObjectOneOne: {
 						property: 'luke',
-					}
+					},
 				},
 				propertyObjectTwo: {
 					property: 'sith',
-				}
+				},
 			}
 
 			applicationUtilities.applyOverrides({ 
 				objectWithPropertiesToBeOverridden, 
-				objectWithPropertyOverrides
+				objectWithPropertyOverrides,
 			})
 
 			const expectedObjectWithPropertiesOverriden =  {
 				propertyObjectOne: {
 					nestedPropertyObjectOneOne: {
 						property: 'luke',
-						anotherProperty: 'death star'
-					}
+						anotherProperty: 'death star',
+					},
 				},
 				propertyObjectTwo: {
 					property: 'sith',
-				}
+				},
 			}
 			expect(expectedObjectWithPropertiesOverriden).toEqual(objectWithPropertiesToBeOverridden)
 		})

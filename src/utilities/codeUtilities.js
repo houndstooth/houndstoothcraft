@@ -9,5 +9,5 @@ const wrappedIndex = ({ array, index = 0 }) => array[ Math.abs(index) % array.le
 
 export default {
 	iterator,
-	wrappedIndex
+	wrappedIndex,
 }

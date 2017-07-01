@@ -221,7 +221,7 @@ describe('execute', () => {
 		})
 
 		it('handles iteration functions of the iteration frame', () => {
-			const iterationFunction = jasmine.createSpy().and.callFake(() => 1000 - (current.iteration + 1))
+			const iterationFunction = jasmine.createSpy().and.callFake(() => 1000 - (current.iterationFrame + 1))
 			settings.initial.exampleConfig = { exampleProperty: 1000 }
 			settings.iterations.exampleConfig = { exampleProperty: iterationFunction }
 
@@ -291,7 +291,7 @@ describe('execute', () => {
 		})
 
 		it('handles animation functions of the current animation frame', () => {
-			const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (current.animation + 1))
+			const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (current.animationFrame + 1))
 			settings.initial.exampleConfig = { exampleProperty: 1000 }
 			settings.animations.exampleConfig = { exampleProperty: animationFunction }
 
@@ -344,7 +344,7 @@ describe('execute', () => {
 			const animationFunction = jasmine.createSpy().and.callFake(p => p + 100)
 			settings.animations.exampleConfig = { exampleProperty: animationFunction }
 
-			const iterationFunction = jasmine.createSpy().and.callFake(p => p + (current.iteration + 1))
+			const iterationFunction = jasmine.createSpy().and.callFake(p => p + (current.iterationFrame + 1))
 			settings.iterations.exampleConfig = { exampleProperty: iterationFunction }
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
@@ -418,12 +418,14 @@ describe('execute', () => {
 			execute.__ResetDependency__('animator')
 
 			const interval = setInterval(() => {
-				current.lastSavedFrame++
-				if (current.lastSavedFrame >= endAnimationFrame) {
+				current.lastSavedAnimationFrame++
+				if (current.lastSavedAnimationFrame >= endAnimationFrame) {
 					clearInterval(interval)
 					done()
 				}
-				expect(exportFrameSpy.calls.all().length).toBe(current.lastSavedFrame - startAnimationFrame)
+				expect(exportFrameSpy.calls.all().length).toBe(
+					current.lastSavedAnimationFrame - startAnimationFrame
+				)
 			}, 100)
 
 			execute({ iterating, animating, exportFrames, performanceLogging })

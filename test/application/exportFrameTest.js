@@ -4,7 +4,7 @@ import canvas from '../../src/render/canvas'
 
 describe('export frame', () => {
 	beforeEach(() => {
-		current.lastSavedFrame = 666
+		current.lastSavedAnimationFrame = 666
 		spyOn(canvas, 'toBlob').and.callFake(fn => fn())
 		spyOn(fileSaver, 'saveAs')
 
@@ -20,6 +20,6 @@ describe('export frame', () => {
 	})
 
 	it('increments the last saved frame', () => {
-		expect(current.lastSavedFrame).toBe(667)
+		expect(current.lastSavedAnimationFrame).toBe(667)
 	})
 })

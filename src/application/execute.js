@@ -24,12 +24,12 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	if (performanceLogging) {
 		if (animating && iterating) {
 			consoleWrapper.log(
-				`current animation/iteration frame: ${current.animation}/${current.iteration}`
+				`current animation/iteration frame: ${current.animationFrame}/${current.iterationFrame}`
 			)
 		} else if (animating) {
-			consoleWrapper.log(`current animation frame: ${current.animation}`)
+			consoleWrapper.log(`current animation frame: ${current.animationFrame}`)
 		} else if (iterating) {
-			consoleWrapper.log(`current iteration frame: ${current.iteration}`)
+			consoleWrapper.log(`current iteration frame: ${current.iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')
 	}
@@ -56,9 +56,9 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
 		callFunctionsPerSettingsProperty({ functionObjects: iterationFunctions })
-		current.iteration++
+		current.iterationFrame++
 	}
-	current.iteration = 0
+	current.iterationFrame = 0
 }
 
 const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
@@ -75,14 +75,14 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 	frameRate = frameRate || FRAME_RATE
 	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
 
-	current.lastSavedFrame = startAnimationFrame
+	current.lastSavedAnimationFrame = startAnimationFrame
 
 	const { deepClone, resetObject, prepareFunctionsPerSettingsProperty } = applicationUtilities
 
 	const animationFunction = () => {
-		if (exportFrames && current.animation > current.lastSavedFrame) return
+		if (exportFrames && current.animationFrame > current.lastSavedAnimationFrame) return
 
-		if (current.animation >= startAnimationFrame) {
+		if (current.animationFrame >= startAnimationFrame) {
 			if (refreshCanvas) clear()
 
 			if (iterating) {
@@ -98,10 +98,10 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 		const functionObjects = prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.animations })
 		callFunctionsPerSettingsProperty({ functionObjects })
-		current.animation++
+		current.animationFrame++
 	}
 
-	const stopCondition = () => current.animation > endAnimationFrame
+	const stopCondition = () => current.animationFrame > endAnimationFrame
 
 	animator({ animationFunction, frameRate, stopCondition })
 }

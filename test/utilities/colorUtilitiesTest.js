@@ -1,7 +1,7 @@
 import colorUtilities from '../../src/utilities/colorUtilities'
 
 describe('color utilities', () => {
-	describe('#getColorsForTile', () => {
+	xdescribe('#getColorsForTile', () => {
 
 	})
 
@@ -14,7 +14,7 @@ describe('color utilities', () => {
 	})
 
 	describe('#allColorsAreTheSame', () => {
-		it('returns true if all the colors in the list are the same', () => {
+		it('returns true if all of the colors in the list are the same', () => {
 			const colors = [
 				{ r: 150, g: 100, b: 50, a: 0.5 },
 				{ r: 150, g: 100, b: 50, a: 0.5 },
@@ -45,6 +45,41 @@ describe('color utilities', () => {
 				{ r: 150, g: 104, b: 50, a: 0.6 }
 			]
 			expect(colorUtilities.allColorsAreTheSame(colors)).toBe(false)
+		})
+	})
+
+	describe('#isTileUniform', () => {
+		it('returns true if all of the tile colors are the same', () => {
+			const tileColors = [
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 }
+			]
+			expect(colorUtilities.isTileUniform({ tileColors })).toBe(true)
+		})
+
+		it('returns false if any of the tile colors are different', () => {
+			const tileColors = [
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 101, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 50, a: 0.5 }
+			]
+			expect(colorUtilities.isTileUniform({ tileColors })).toBe(false)
+		})
+
+		it('returns false if all of the tile colors are different', () => {
+			const tileColors = [
+				{ r: 153, g: 100, b: 50, a: 0.5 },
+				{ r: 150, g: 100, b: 52, a: 0.5 },
+				{ r: 150, g: 144, b: 50, a: 0.7 },
+				{ r: 151, g: 101, b: 50, a: 0.5 },
+				{ r: 150, g: 104, b: 50, a: 0.6 }
+			]
+			expect(colorUtilities.isTileUniform({ tileColors })).toBe(false)
 		})
 	})
 })

@@ -1,6 +1,6 @@
 import setupCanvas from '../render/setupCanvas'
 import overrides from '../settings/overrides'
-import applicationUtilities from '../utilities/applicationUtilities'
+import settingsUtilities from '../utilities/settingsUtilities'
 import consoleWrapper from './consoleWrapper'
 
 export default ({ effects = [], configurationLogging } = {}) => {
@@ -29,11 +29,11 @@ export default ({ effects = [], configurationLogging } = {}) => {
 
 const setupObject = ({ objectToSetup, effects, overrides }) => {
 	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
-	applicationUtilities.applyOverrides({
+	settingsUtilities.applyOverrides({
 		objectWithPropertiesToBeOverridden: objectToSetup,
 		objectWithPropertyOverrides: effects
 	})
-	applicationUtilities.applyOverrides({
+	settingsUtilities.applyOverrides({
 		objectWithPropertiesToBeOverridden: objectToSetup,
 		objectWithPropertyOverrides: overrides
 	})
@@ -44,7 +44,7 @@ const combineEffects = ({ effects }) => {
 	const iterations = {}
 	const animations = {}
 
-	const { applyOverrides } = applicationUtilities
+	const { applyOverrides } = settingsUtilities
 
 	effects.forEach(effect => {
 		applyOverrides({

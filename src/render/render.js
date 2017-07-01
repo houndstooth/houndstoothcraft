@@ -4,7 +4,7 @@ import colorUtilities from '../utilities/colorUtilities'
 export default ({ shapeColor, coordinates }) => {
 	if (coordinates.length < 3) return
 
-	ctx.fillStyle = colorUtilities.parseColor({ color: shapeColor })
+	ctx.fillStyle = colorUtilities.parseColor(shapeColor)
 	ctx.beginPath()
 
 	ctx.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])

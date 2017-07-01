@@ -1,7 +1,8 @@
 import gridUtilities from './gridUtilities'
+import codeUtilities from './codeUtilities'
 import { OPACITY } from '../defaults'
 
-const parseColor = ({ color: { r, g, b, a } }) => `rgba(${  [ r, g, b, a ].join(', ')  })`
+const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorConfig }) => {
 	colorConfig = colorConfig || settings.initial.colorConfig
@@ -36,25 +37,14 @@ const mixColors = ({ colors }) => {
 
 const fadeColors = ({ colors, opacity }) => colors.map(color => Object.assign({}, color, { a: color.a * opacity }))
 
-const allColorsAreTheSame = ({ colors }) => {
+const allColorsAreTheSame = (colors) => {
 	for (let i = 0; i < colors.length - 1; i++) {
-		if (!colorsAreTheSame({ colorOne: colors[ i ], colorTwo: colors[ i + 1 ] })) return false
+		if (!codeUtilities.shallowEqual(colors[ i ], colors[ i + 1 ])) return false
 	}
 	return true
 }
 
-const colorsAreTheSame = ({ colorOne, colorTwo }) => {
-	return colorOne.a === colorTwo.a && colorsAreTheSameHue({ colorOne, colorTwo })
-}
-
-const colorsAreTheSameHue = ({ colorOne, colorTwo }) => {
-	if (colorOne.r !== colorTwo.r) return false
-	if (colorOne.g !== colorTwo.g) return false
-	if (colorOne.b !== colorTwo.b) return false
-	return true
-}
-
-const isTileUniform = ({ tileColors }) => allColorsAreTheSame({ colors: tileColors })
+const isTileUniform = ({ tileColors }) => allColorsAreTheSame(tileColors)
 
 export default {
 	getColorsForTile,

@@ -53,7 +53,7 @@ describe('render', () => {
 		})
 
 		it('parses the shape\'s color', () => {
-			expect(colorUtilities.parseColor).toHaveBeenCalledWith({ color: shapeColor })
+			expect(colorUtilities.parseColor).toHaveBeenCalledWith(shapeColor)
 		})
 
 		it('assigns the parsed color to the context\'s fill style', () => {

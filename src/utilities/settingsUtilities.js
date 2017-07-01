@@ -1,23 +1,5 @@
 import consoleWrapper from '../application/consoleWrapper'
-
-const resetObject = ({ objectToReset, objectToResetTo }) => {
-	Object.keys(objectToResetTo).forEach(key => objectToReset[ key ] = objectToResetTo[ key ])
-}
-
-const deeperPath = ({ nestedPropertyPath, propertyName }) => {
-	const deeperPath = nestedPropertyPath.slice()
-	deeperPath.push(propertyName)
-	return deeperPath
-}
-
-const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => {
-	let childObject = parentObject
-	nestedPropertyPath.forEach(pathStep => {
-		if (!childObject[ pathStep ]) childObject[ pathStep ] = {}
-		childObject = childObject[ pathStep ]
-	})
-	return childObject
-}
+import codeUtilities from './codeUtilities'
 
 const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
@@ -26,7 +8,7 @@ const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedProper
 		} else if (typeof value === 'object' && !(value instanceof Array)) {
 			prepareFunctionsPerSettingsProperty({
 				objectWithFunctions: value,
-				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName: key }),
+				nestedPropertyPath: codeUtilities.deeperPath({ nestedPropertyPath, propertyName: key }),
 				functionsArray,
 			})
 		} else {
@@ -43,10 +25,10 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 			applyOverrides({
 				objectWithPropertiesToBeOverridden,
 				objectWithPropertyOverrides: overridingProperty,
-				nestedPropertyPath: deeperPath({ nestedPropertyPath, propertyName }),
+				nestedPropertyPath: codeUtilities.deeperPath({ nestedPropertyPath, propertyName }),
 			})
 		} else {
-			let objectWithPropertyToBeOverridden = accessChildObjectOrCreatePath({
+			let objectWithPropertyToBeOverridden = codeUtilities.accessChildObjectOrCreatePath({
 				parentObject: objectWithPropertiesToBeOverridden,
 				nestedPropertyPath,
 			})
@@ -55,25 +37,7 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 	})
 }
 
-const deepClone = objectToClone => {
-	let clonedObject = {}
-	Object.entries(objectToClone).forEach(([ key, value ]) => {
-		if (value instanceof Array) {
-			clonedObject[key] = value.slice()
-		} else if (typeof value === 'object') {
-			clonedObject[key] = deepClone(value)
-		} else {
-			clonedObject[key] = value
-		}
-	})
-	return clonedObject
-}
-
 export default {
-	resetObject,
-	deeperPath,
-	accessChildObjectOrCreatePath,
 	prepareFunctionsPerSettingsProperty,
 	applyOverrides,
-	deepClone,
 }

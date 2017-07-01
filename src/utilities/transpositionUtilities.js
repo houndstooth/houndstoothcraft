@@ -1,7 +1,8 @@
-import { TILE_SIZE, ZOOM } from '../defaults'
+import { TILE_SIZE, ZOOM, CANVAS_SIZE } from '../defaults'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
 	let { zoom, canvasSize, zoomOnCanvasCenter } = settings.initial.viewConfig || {}
+	canvasSize = canvasSize || CANVAS_SIZE
 	zoom = zoom || ZOOM
 	const canvasCenter = [ canvasSize / 2, canvasSize / 2 ]
 
@@ -22,7 +23,8 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasCenter = settings.initial.viewConfig.canvasSize / 2
+	const canvasSize = settings.initial.viewConfig && settings.initial.viewConfig.canvasSize || CANVAS_SIZE
+	const canvasCenter = canvasSize / 2
 	const tileSize = settings.initial.tileConfig && settings.initial.tileConfig.tileSize || TILE_SIZE
 	const halfTileSize = tileSize / 2
 	return [

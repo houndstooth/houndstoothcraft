@@ -65,7 +65,7 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 	if (iterating) {
 		executeIteration({ performanceLogging, iterating, iterationFunctions })
 	} else {
-		gridAndMaybeLogging({ performanceLogging, iterating })	
+		gridAndMaybeLogging({ performanceLogging, iterating })
 	}
 }
 

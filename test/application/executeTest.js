@@ -24,7 +24,7 @@ describe('execute', () => {
 		execute.__Rewire__('animator', animatorSpy)
 
 		exportFrameSpy = jasmine.createSpy()
-		execute.__Rewire__('exportFrame', exportFrameSpy) 
+		execute.__Rewire__('exportFrame', exportFrameSpy)
 
 		settings.initial.animation = { endAnimationFrame: 100 }
 	})
@@ -242,7 +242,7 @@ describe('execute', () => {
 			settings.initial.iteration = {}
 			const iterationFunction = jasmine.createSpy()
 			settings.iterations.exampleConfig = { exampleProperty: iterationFunction }
-			
+
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
 			expect(iterationFunction.calls.all().length).toBe(101)

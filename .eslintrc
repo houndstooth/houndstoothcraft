@@ -17,7 +17,8 @@
         "array-bracket-spacing": [ "error", "always" ],
         "object-curly-spacing": [ "error", "always" ],
         "eol-last": [ "error", "always" ],
-        "linebreak-style": [ "error", "windows" ]
+        "linebreak-style": [ "error", "windows" ],
+        "no-trailing-spaces": [ "error" ]
     },
     "globals": {
         "settings": false,

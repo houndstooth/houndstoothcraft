@@ -7,8 +7,8 @@ describe('build animation function', () => {
 		spyOn(window, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy()
 		stopConditionSpy = jasmine.createSpy()
-		intervalFunction = buildIntervalFunction({ 
-			animationFunction: animationFunctionSpy, 
+		intervalFunction = buildIntervalFunction({
+			animationFunction: animationFunctionSpy,
 			stopCondition: stopConditionSpy,
 		})
 	})

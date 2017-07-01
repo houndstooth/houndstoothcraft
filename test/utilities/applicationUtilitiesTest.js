@@ -187,8 +187,8 @@ describe('application utilities', () => {
 				},
 			}
 
-			applicationUtilities.applyOverrides({ 
-				objectWithPropertiesToBeOverridden, 
+			applicationUtilities.applyOverrides({
+				objectWithPropertiesToBeOverridden,
 				objectWithPropertyOverrides,
 			})
 

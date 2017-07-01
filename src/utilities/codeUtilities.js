@@ -11,7 +11,7 @@ const wrappedIndex = ({ array, index = 0 }) => {
 		if (i === array.length) i = 0
 	} else {
 		i = index % array.length
-	} 
+	}
 	return array[ i ]
 }
 

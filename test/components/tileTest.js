@@ -65,7 +65,7 @@ describe('tile', () => {
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
-			
+
 			settings.initial.tileConfig = {}
 
 			tileColors = {}
@@ -297,7 +297,7 @@ describe('tile', () => {
 						},
 					}))
 				})
-			})	
+			})
 		})
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
@@ -307,7 +307,7 @@ describe('tile', () => {
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {
 				colorUtilitiesIsTileUniformSpy.and.returnValue(true)
-				
+
 				tile({ address })
 
 				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ address })

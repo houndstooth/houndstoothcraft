@@ -71,14 +71,15 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
+	const { deepClone, resetObject, defaultToTrue } = codeUtilities
+
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = settings.initial.animation || {}
 	startAnimationFrame = startAnimationFrame || 0
 	frameRate = frameRate || FRAME_RATE
-	refreshCanvas = typeof refreshCanvas === 'undefined' ? true : refreshCanvas
+	refreshCanvas = defaultToTrue(refreshCanvas)
 
 	current.lastSavedAnimationFrame = startAnimationFrame
 
-	const { deepClone, resetObject } = codeUtilities
 
 	const animationFunction = () => {
 		if (exportFrames && current.animationFrame > current.lastSavedAnimationFrame) return

@@ -7,6 +7,7 @@ const COLOR_SET = [ BLACK, TRANSPARENT ]
 const COLOR_ASSIGNMENT = {
 	mode: 'WEAVE',
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
+	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 }
 const OPACITY = 1
 const STRIPE_COUNT = 4

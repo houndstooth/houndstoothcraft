@@ -1,4 +1,5 @@
 import colorUtilities from '../utilities/colorUtilities'
+import codeUtilities from '../utilities/codeUtilities'
 import shape from './shape'
 import transpositionUtilities from '../utilities/transpositionUtilities'
 import gatherOptions from '../application/gatherOptions'
@@ -14,7 +15,7 @@ export default ({ address }) => {
 	const tileColors = colorUtilities.getColorsForTile({ address })
 
 	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = settings.initial.tileConfig || {}
-	collapseSameColoredShapesWithinTile = typeof collapseSameColoredShapesWithinTile === 'undefined' ? true : collapseSameColoredShapesWithinTile
+	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	tileToShapes = tileToShapes || shape
 	const getCoordinatesHere = {}

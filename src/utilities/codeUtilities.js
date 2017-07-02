@@ -53,6 +53,8 @@ const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => 
 	return childObject
 }
 
+const defaultToTrue = property => typeof property === 'undefined' ? true : property
+
 export default {
 	iterator,
 	wrappedIndex,
@@ -61,4 +63,5 @@ export default {
 	resetObject,
 	deeperPath,
 	accessChildObjectOrCreatePath,
+	defaultToTrue,
 }

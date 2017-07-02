@@ -4,29 +4,19 @@ import { COLOR_ASSIGNMENT, COLOR_SET } from '../defaults'
 const getSetForTile = ({ address, config }) => {
 	const { wrappedIndex } = codeUtilities
 
-	let { set: setForGrid, assignment } = config || {}
-	if (settings.initial.colorConfig) {
-		setForGrid = setForGrid || settings.initial.colorConfig.set
-		assignment = assignment || settings.initial.colorConfig.assignment
-	}
+	let { set: setForGrid, assignment } = config || settings.initial.colorConfig || {}
+
 	setForGrid = setForGrid || COLOR_SET
 	assignment = assignment || COLOR_ASSIGNMENT
 
 	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
 
-	offsetSetForGridIndex = offsetSetForGridIndex || COLOR_ASSIGNMENT.offsetSetForGridIndex
-	offsetAddress = offsetAddress || COLOR_ASSIGNMENT.offsetAddress
+	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
+	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
 	mode = mode || COLOR_ASSIGNMENT.mode
 	supertile = supertile || COLOR_ASSIGNMENT.supertile
 	weave = weave || COLOR_ASSIGNMENT.weave
-	flipGrain = flipGrain || COLOR_ASSIGNMENT.flipGrain
-	switcheroo = switcheroo || COLOR_ASSIGNMENT.switcheroo
-
-	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
-	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
-
 	let setForTile
-
 	if (mode === 'WEAVE') {
 		const { rows, columns } = weave
 		const columnsIndex = wrappedIndex({ array: columns, index: address[ 0 ] + addressOffset[ 0 ] })
@@ -46,11 +36,7 @@ const getSetForTile = ({ address, config }) => {
 
 	if (flipGrain) setForTile = setForTile.reverse()
 	if (switcheroo) setForTile = switcherooSet({ setForTile, address })
-
-	transformAssignedSet = transformAssignedSet || COLOR_ASSIGNMENT.transformAssignedSet
-	if (transformAssignedSet) {
-		setForTile = transformAssignedSet({ setForTile, address })
-	}
+	if (transformAssignedSet) setForTile = transformAssignedSet({ setForTile, address })
 
 	return setForTile
 }

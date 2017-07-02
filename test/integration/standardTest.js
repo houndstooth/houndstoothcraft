@@ -3,24 +3,65 @@ import ctx from '../../src/render/ctx'
 import { TILE_SIZE } from '../../src/defaults'
 
 describe('Standard Houndstooth', () => {
-	beforeEach(() => execute())
+	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w striped tiles, the striped tiles having four stripes each', () => {
+		let address
 
-	it('has four stripes in a striped square', () => {
-		expect(pixel(sectorCenter({ x: 0, y: 0, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 0 })
+		execute()
 
-		expect(pixel(sectorCenter({ x: 2, y: 0, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 1 })
-		expect(pixel(sectorCenter({ x: 1, y: 1, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 1 })
-		expect(pixel(sectorCenter({ x: 0, y: 2, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 1 })
+		const TRANSPARENT = { r: 0, g: 0, b: 0, a: 0 }
+		const BLACK = { r: 0, g: 0, b: 0, a: 1 }
 
-		expect(pixel(sectorCenter({ x: 3, y: 1, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 0 })
-		expect(pixel(sectorCenter({ x: 2, y: 2, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 0 })
-		expect(pixel(sectorCenter({ x: 1, y: 3, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 0 })
+		address = [ 0, 0 ]
+		expect(pixel(sectorCenter({ address, x: 0, y: 0, n: 4 }))).toEqual(TRANSPARENT)
 
-		expect(pixel(sectorCenter({ x: 3, y: 3, n: 4 }))).toEqual({ r: 0, g: 0, b: 0, a: 1 })
-	})
+		expect(pixel(sectorCenter({ address, x: 2, y: 0, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 1, y: 1, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 0, y: 2, n: 4 }))).toEqual(BLACK)
 
-	xit('repeats a 2x2 pattern of a solid black, solid white, and two b&w striped tiles', () => {
+		expect(pixel(sectorCenter({ address, x: 3, y: 1, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 2, y: 2, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 1, y: 3, n: 4 }))).toEqual(TRANSPARENT)
 
+		expect(pixel(sectorCenter({ address, x: 3, y: 3, n: 4 }))).toEqual(BLACK)
+
+		address = [ 0, 1 ]
+		expect(pixel(sectorCenter({ address, x: 0, y: 0, n: 4 }))).toEqual(BLACK)
+
+		expect(pixel(sectorCenter({ address, x: 2, y: 0, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 1, y: 1, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 0, y: 2, n: 4 }))).toEqual(BLACK)
+
+		expect(pixel(sectorCenter({ address, x: 3, y: 1, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 2, y: 2, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 1, y: 3, n: 4 }))).toEqual(BLACK)
+
+		expect(pixel(sectorCenter({ address, x: 3, y: 3, n: 4 }))).toEqual(BLACK)
+
+		address = [ 1, 0 ]
+		expect(pixel(sectorCenter({ address, x: 0, y: 0, n: 4 }))).toEqual(TRANSPARENT)
+
+		expect(pixel(sectorCenter({ address, x: 2, y: 0, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 1, y: 1, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 0, y: 2, n: 4 }))).toEqual(TRANSPARENT)
+
+		expect(pixel(sectorCenter({ address, x: 3, y: 1, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 2, y: 2, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 1, y: 3, n: 4 }))).toEqual(TRANSPARENT)
+
+		expect(pixel(sectorCenter({ address, x: 3, y: 3, n: 4 }))).toEqual(TRANSPARENT)
+
+		address = [ 1, 1 ]
+		expect(pixel(sectorCenter({ address, x: 0, y: 0, n: 4 }))).toEqual(BLACK)
+
+		expect(pixel(sectorCenter({ address, x: 2, y: 0, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 1, y: 1, n: 4 }))).toEqual(TRANSPARENT)
+		expect(pixel(sectorCenter({ address, x: 0, y: 2, n: 4 }))).toEqual(TRANSPARENT)
+
+		expect(pixel(sectorCenter({ address, x: 3, y: 1, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 2, y: 2, n: 4 }))).toEqual(BLACK)
+		expect(pixel(sectorCenter({ address, x: 1, y: 3, n: 4 }))).toEqual(BLACK)
+
+		expect(pixel(sectorCenter({ address, x: 3, y: 3, n: 4 }))).toEqual(TRANSPARENT)
 	})
 })
 
@@ -34,7 +75,10 @@ const pixel = ([ x, y ]) => {
 	}
 }
 
-const sectorCenter = ({ x, y, n }) => {
+const sectorCenter = ({ address, x, y, n }) => {
 	const sectorSize = TILE_SIZE / n
-	return [ (x + 0.5) * sectorSize, (y + 0.5) * sectorSize ]
+	return [
+		address[0] * TILE_SIZE + (x + 0.5) * sectorSize,
+		address[1] * TILE_SIZE + (y + 0.5) * sectorSize,
+	]
 }

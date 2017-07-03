@@ -88,7 +88,7 @@ describe('rotation utilities', () => {
 				sizedUnit = 5
 				settings.initial.gridConfig = { gridRotationAboutGridCenter: QUARTER_OF_CIRCLE_ROTATION }
 			})
-			
+
 			it('can rotate coordinates about the grid center', () => {
 				settings.initial.viewConfig = { canvasSize: 100 }
 

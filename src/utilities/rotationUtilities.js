@@ -31,7 +31,13 @@ const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 	const canvasSize = viewConfig && viewConfig.canvasSize || CANVAS_SIZE
 	const gridRotationAboutGridCenter = gridConfig && gridConfig.gridRotationAboutGridCenter
 
-	const stripeDiagonalRotationOffset = baseStripeDiagonal === 'MINOR' ? ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES : ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
+	let stripeDiagonalRotationOffset
+	if (baseStripeDiagonal === 'MINOR') {
+		stripeDiagonalRotationOffset = ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES
+	}
+	else {
+		stripeDiagonalRotationOffset = ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES
+	}
 	if (stripeDiagonalRotationOffset !== 0) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: center,

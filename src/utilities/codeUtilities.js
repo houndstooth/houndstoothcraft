@@ -9,7 +9,8 @@ const wrappedIndex = ({ array, index = 0 }) => {
 	if (index < 0) {
 		i = array.length - (Math.abs(index) % array.length)
 		if (i === array.length) i = 0
-	} else {
+	}
+	else {
 		i = index % array.length
 	}
 	return array[ i ]
@@ -25,9 +26,11 @@ const deepClone = objectToClone => {
 	Object.entries(objectToClone).forEach(([ key, value ]) => {
 		if (value instanceof Array) {
 			clonedObject[key] = value.slice()
-		} else if (typeof value === 'object') {
+		}
+		else if (typeof value === 'object') {
 			clonedObject[key] = deepClone(value)
-		} else {
+		}
+		else {
 			clonedObject[key] = value
 		}
 	})

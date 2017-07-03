@@ -12,21 +12,24 @@ export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 
 	if (stripeStartsInTopLeftHalf) {
 		coordinates.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeStart }))
-	} else {
+	}
+	else {
 		coordinates.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeStart }))
 	}
 
 	if (!stripeEndsInBottomRightHalf) {
 		coordinates.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeEnd }))
 		coordinates.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeEnd }))
-	} else {
+	}
+	else {
 		if (stripeStartsInTopLeftHalf) {
 			coordinates.push(pointInTopRightCorner(tileArgs))
 		}
 
 		if (stripeEndsInBottomRightCorner) {
 			coordinates.push(pointInBottomRightCorner(tileArgs))
-		} else {
+		}
+		else {
 			coordinates.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeEnd }))
 			coordinates.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeEnd }))
 		}
@@ -38,10 +41,12 @@ export default ({ tileOrigin, sizedUnit, coordinatesOptions }) => {
 				coordinates.push(pointInBottomLeftCorner(tileArgs))
 			}
 			coordinates.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeStart }))
-		} else {
+		}
+		else {
 			coordinates.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeStart }))
 		}
-	} else {
+	}
+	else {
 		if (stripeEndsInBottomRightHalf) {
 			coordinates.push(pointInBottomLeftCorner(tileArgs))
 		}

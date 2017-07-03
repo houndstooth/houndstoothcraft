@@ -27,9 +27,11 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 			consoleWrapper.log(
 				`current animation/iteration frame: ${current.animationFrame}/${current.iterationFrame}`
 			)
-		} else if (animating) {
+		}
+		else if (animating) {
 			consoleWrapper.log(`current animation frame: ${current.animationFrame}`)
-		} else if (iterating) {
+		}
+		else if (iterating) {
 			consoleWrapper.log(`current iteration frame: ${current.iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')
@@ -65,7 +67,8 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 	if (iterating) {
 		executeIteration({ performanceLogging, iterating, iterationFunctions })
-	} else {
+	}
+	else {
 		gridAndMaybeLogging({ performanceLogging, iterating })
 	}
 }
@@ -91,7 +94,8 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 				const preIterationSettings = deepClone(settings.initial)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
 				resetObject({ objectToReset: settings.initial, objectToResetTo: preIterationSettings })
-			} else {
+			}
+			else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
 			}
 

@@ -13,7 +13,8 @@ export default () => {
 				tile({ address: [ x - gridSize, y - gridSize ] })
 			})
 		})
-	} else {
+	}
+	else {
 		iterator(gridSize).forEach(x => {
 			iterator(gridSize).forEach(y => {
 				tile({ address: [ x, y ] })

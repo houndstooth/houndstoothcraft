@@ -28,7 +28,7 @@ describe('rotation utilities', () => {
 					const expectedCoordinates = [
 						[ 5, 0 ],
 						[ 5, 5 ],
-						[ 0, 0 ]
+						[ 0, 0 ],
 					]
 					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
 						expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
@@ -44,7 +44,7 @@ describe('rotation utilities', () => {
 					const expectedCoordinates = [
 						[ 10, 0 ],
 						[ 10, 5 ],
-						[ 5, 0 ]
+						[ 5, 0 ],
 					]
 					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
 						expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
@@ -60,7 +60,7 @@ describe('rotation utilities', () => {
 					const expectedCoordinates = [
 						[ 15, 0 ],
 						[ 15, 5 ],
-						[ 10, 0 ]
+						[ 10, 0 ],
 					]
 					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
 						expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
@@ -97,7 +97,7 @@ describe('rotation utilities', () => {
 				const expectedCoordinates = [
 					[ 100, 0 ],
 					[ 100, 5 ],
-					[ 95, 0 ]
+					[ 95, 0 ],
 				]
 				result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
 					expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
@@ -110,7 +110,7 @@ describe('rotation utilities', () => {
 				const expectedCoordinates = [
 					[ CANVAS_SIZE, 0 ],
 					[ CANVAS_SIZE, 5 ],
-					[ CANVAS_SIZE - 5, 0 ]
+					[ CANVAS_SIZE - 5, 0 ],
 				]
 				result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
 					expect(dimension).toBeCloseTo(expectedCoordinates[x][y])

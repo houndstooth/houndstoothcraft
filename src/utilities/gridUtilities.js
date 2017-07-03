@@ -25,7 +25,8 @@ const getSetForTile = ({ address, config }) => {
 			wrappedIndex({ array: setForGrid, index: rowsIndex + setForGridIndexOffset }),
 			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset }),
 		]
-	} else if (mode === 'SUPERTILE') {
+	}
+	else if (mode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: address[ 0 ] + addressOffset[ 0 ] })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: address[ 1 ] + addressOffset[ 1 ] })
 		setForTile = supertileEntry.map(index => wrappedIndex({

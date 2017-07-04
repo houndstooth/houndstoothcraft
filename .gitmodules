@@ -1,24 +1,24 @@
 [submodule "cmyktooth"]
-	path = src/effects/cmyktooth
+	path = effects/cmyktooth
 	url = git@github.com:houndstooth/cmyktooth.git
 [submodule "houndsmorphosis"]
-	path = src/effects/houndsmorphosis
+	path = effects/houndsmorphosis
 	url = git@github.com:houndstooth/houndsmorphosis.git
 [submodule "ginghoundstootham"]
-	path = src/effects/ginghoundstootham
+	path = effects/ginghoundstootham
 	url = git@github.com:houndstooth/ginghoundstootham.git
 [submodule "gingham-chevron-continuum"]
-	path = src/effects/gingham-chevron-continuum
+	path = effects/gingham-chevron-continuum
 	url = git@github.com:houndstooth/gingham-chevron-continuum.git
 [submodule "gongram"]
-	path = src/effects/gongram
+	path = effects/gongram
 	url = git@github.com:houndstooth/gongram.git
 [submodule "houndazzle"]
-	path = src/effects/houndazzle
+	path = effects/houndazzle
 	url = git@github.com:houndstooth/houndazzle.git
 [submodule "derasterized"]
-	path = src/effects/derasterized
+	path = effects/derasterized
 	url = git@github.com:houndstooth/derasterized.git
 [submodule "harmonitooth"]
-	path = src/effects/harmonitooth
+	path = effects/harmonitooth
 	url = git@github.com:houndstooth/harmonitooth.git

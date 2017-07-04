@@ -1,7 +1,7 @@
-import './settings/settings'
-import './settings/current'
-import setup from './application/setup'
-import execute from './application/execute'
+import './src/settings/settings'
+import './src/settings/current'
+import setup from './src/application/setup'
+import execute from './src/application/execute'
 
 // import cmyktoothEffect from './effects/cmyktooth/cmyktoothEffect'
 // import ginghamChevronContinuumEffect from './effects/gingham-chevron-continuum/ginghamChevronContinuumEffect'

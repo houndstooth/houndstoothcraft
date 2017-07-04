@@ -1,6 +1,6 @@
-import settingsUtilities from '../../src/utilities/settingsUtilities'
-import consoleWrapper from '../../src/application/consoleWrapper'
-import codeUtilities from '../../src/utilities/codeUtilities'
+import settingsUtilities from '../../../src/utilities/settingsUtilities'
+import consoleWrapper from '../../../src/application/consoleWrapper'
+import codeUtilities from '../../../src/utilities/codeUtilities'
 
 describe('settings utilities', () => {
 	describe('#prepareFunctionsPerSettingsProperty', () => {

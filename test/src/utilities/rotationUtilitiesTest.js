@@ -1,6 +1,6 @@
-import rotationUtilities from '../../src/utilities/rotationUtilities'
-import { QUARTER_OF_CIRCLE_ROTATION } from '../../src/constants'
-import { CANVAS_SIZE } from '../../src/defaults'
+import rotationUtilities from '../../../src/utilities/rotationUtilities'
+import { QUARTER_OF_CIRCLE_ROTATION } from '../../../src/constants'
+import { CANVAS_SIZE } from '../../../src/defaults'
 
 describe('rotation utilities', () => {
 	describe('#applyRotationToShape', () => {

@@ -1,6 +1,6 @@
-import execute from '../../src/application/execute'
-import consoleWrapper from '../../src/application/consoleWrapper'
-import { FRAME_RATE } from '../../src/defaults'
+import execute from '../../../src/application/execute'
+import consoleWrapper from '../../../src/application/consoleWrapper'
+import { FRAME_RATE } from '../../../src/defaults'
 
 describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging

@@ -1,4 +1,4 @@
-import squareCoordinates from '../../src/shapes/squareCoordinates'
+import squareCoordinates from '../../../src/shapes/squareCoordinates'
 
 describe('square coordinates', () => {
 	const tileOrigin = [ 2, 3 ]

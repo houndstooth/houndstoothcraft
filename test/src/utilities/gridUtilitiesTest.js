@@ -1,7 +1,7 @@
-import gridUtilities from '../../src/utilities/gridUtilities'
-import { COLOR_SET } from '../../src/defaults'
-import codeUtilities from '../../src/utilities/codeUtilities'
-import { BLACK, TRANSPARENT } from '../../src/constants'
+import gridUtilities from '../../../src/utilities/gridUtilities'
+import { COLOR_SET } from '../../../src/defaults'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import { BLACK, TRANSPARENT } from '../../../src/constants'
 
 describe('grid utilities', () => {
 	let getSetForTile

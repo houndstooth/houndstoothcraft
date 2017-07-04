@@ -1,4 +1,4 @@
-import stripeCoordinates from '../../src/shapes/stripeCoordinates'
+import stripeCoordinates from '../../../src/shapes/stripeCoordinates'
 
 describe('stripe coordinates', () => {
 	const tileOrigin = [ 0, 0 ]

@@ -1,5 +1,5 @@
-import colorUtilities from '../../src/utilities/colorUtilities'
-import gridUtilities from '../../src/utilities/gridUtilities'
+import colorUtilities from '../../../src/utilities/colorUtilities'
+import gridUtilities from '../../../src/utilities/gridUtilities'
 
 describe('color utilities', () => {
 	describe('#getColorsForTile', () => {

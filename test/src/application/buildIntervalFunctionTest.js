@@ -1,4 +1,4 @@
-import buildIntervalFunction from '../../src/application/buildIntervalFunction'
+import buildIntervalFunction from '../../../src/application/buildIntervalFunction'
 
 describe('build animation function', () => {
 	let intervalFunction

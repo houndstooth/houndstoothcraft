@@ -1,4 +1,3 @@
-import setupCanvas from '../render/setupCanvas'
 import overrides from '../settings/overrides'
 import settingsUtilities from '../utilities/settingsUtilities'
 import consoleWrapper from './consoleWrapper'
@@ -21,8 +20,6 @@ export default ({ effects = [], configurationLogging } = {}) => {
 		effects: combinedEffects.animations,
 		overrides: overrides.animations,
 	})
-
-	setupCanvas()
 
 	if (configurationLogging) consoleWrapper.log(settings)
 }

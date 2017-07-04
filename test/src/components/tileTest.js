@@ -1,8 +1,8 @@
-import tile from '../../src/components/tile'
-import transpositionUtilities from '../../src/utilities/transpositionUtilities'
-import colorUtilities from '../../src/utilities/colorUtilities'
-import stripeUtilities from '../../src/utilities/stripeUtilities'
-import { PERIMETER_SCALAR } from '../../src/constants'
+import tile from '../../../src/components/tile'
+import transpositionUtilities from '../../../src/utilities/transpositionUtilities'
+import colorUtilities from '../../../src/utilities/colorUtilities'
+import stripeUtilities from '../../../src/utilities/stripeUtilities'
+import { PERIMETER_SCALAR } from '../../../src/constants'
 
 describe('tile', () => {
 	const address = [ 3, 5 ]

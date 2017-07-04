@@ -1,5 +1,5 @@
-import transpositionUtilities from '../../src/utilities/transpositionUtilities'
-import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../../src/defaults'
+import transpositionUtilities from '../../../src/utilities/transpositionUtilities'
+import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../../../src/defaults'
 
 describe('transposition utilities', () => {
 	const zoom = 10

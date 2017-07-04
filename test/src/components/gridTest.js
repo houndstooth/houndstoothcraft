@@ -1,5 +1,5 @@
-import grid from '../../src/components/grid'
-import { GRID_SIZE } from '../../src/defaults'
+import grid from '../../../src/components/grid'
+import { GRID_SIZE } from '../../../src/defaults'
 
 describe('grid', () => {
 	let tileSpy

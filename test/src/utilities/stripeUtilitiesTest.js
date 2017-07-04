@@ -1,5 +1,5 @@
-import stripeUtilities from '../../src/utilities/stripeUtilities'
-import { STRIPE_COUNT } from '../../src/defaults'
+import stripeUtilities from '../../../src/utilities/stripeUtilities'
+import { STRIPE_COUNT } from '../../../src/defaults'
 
 describe('stripe utilities', () => {
 	describe('#getStripePositionsForTile', () => {

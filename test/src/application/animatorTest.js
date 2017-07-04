@@ -1,4 +1,4 @@
-import animator from '../../src/application/animator'
+import animator from '../../../src/application/animator'
 
 describe('animator', () => {
 	let buildIntervalFunctionSpy

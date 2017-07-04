@@ -1,4 +1,4 @@
-import gatherOptions from '../../src/application/gatherOptions'
+import gatherOptions from '../../../src/application/gatherOptions'
 
 describe('gather options', () => {
 	let address

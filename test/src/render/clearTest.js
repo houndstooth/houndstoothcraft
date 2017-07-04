@@ -1,6 +1,6 @@
-import clear from '../../src/render/clear'
-import ctx from '../../src/render/ctx'
-import { CANVAS_SIZE } from '../../src/defaults'
+import clear from '../../../src/render/clear'
+import ctx from '../../../src/render/ctx'
+import { CANVAS_SIZE } from '../../../src/defaults'
 
 describe('clear', () => {
 	beforeEach(() => spyOn(ctx, 'clearRect'))

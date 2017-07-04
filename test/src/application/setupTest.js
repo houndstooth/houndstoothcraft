@@ -1,5 +1,5 @@
-import setup from '../../src/application/setup'
-import consoleWrapper from '../../src/application/consoleWrapper'
+import setup from '../../../src/application/setup'
+import consoleWrapper from '../../../src/application/consoleWrapper'
 
 describe('setup', () => {
 	it('logs the settings when logging mode is on', () => {
@@ -16,17 +16,6 @@ describe('setup', () => {
 		setup()
 
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
-	})
-
-	it('sets up the canvas', () => {
-		const setupCanvasSpy = jasmine.createSpy()
-		setup.__Rewire__('setupCanvas', setupCanvasSpy)
-
-		setup()
-
-		expect(setupCanvasSpy).toHaveBeenCalled()
-
-		setup.__ResetDependency__('setupCanvas')
 	})
 
 	it('sets up settings', () => {

@@ -1,6 +1,6 @@
-import shape from '../../src/components/shape'
-import codeUtilities from '../../src/utilities/codeUtilities'
-import rotationUtilities from '../../src/utilities/rotationUtilities'
+import shape from '../../../src/components/shape'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import rotationUtilities from '../../../src/utilities/rotationUtilities'
 
 describe('shape', () => {
 	let renderSpy

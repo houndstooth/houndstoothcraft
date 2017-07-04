@@ -3,13 +3,13 @@ import './src/settings/current'
 import setup from './src/application/setup'
 import execute from './src/application/execute'
 
-// import cmyktoothEffect from './effects/cmyktooth/cmyktoothEffect'
-// import ginghamChevronContinuumEffect from './effects/gingham-chevron-continuum/ginghamChevronContinuumEffect'
-// import harmonitoothEffect from './effects/harmonitooth/harmonitoothEffect'
-// import houndazzleEffect from './effects/houndazzle/houndazzleEffect'
-// import houndazzleContinuumEffect from './effects/houndazzle/houndazzleContinuumEffect'
-// import gongramEffect from './effects/gongram/gongramEffect'
-// import houndsmorphosisEffect from './effects/houndsmorphosis/houndsmorphosisEffect'
+// import cmyktoothEffect from './effects/cmyktooth/effects/cmyktoothEffect'
+// import ginghamChevronContinuumEffect from './effects/gingham-chevron-continuum/effects/ginghamChevronContinuumEffect'
+// import harmonitoothEffect from './effects/harmonitooth/effects/harmonitoothEffect'
+// import houndazzleEffect from './effects/houndazzle/effects/houndazzleEffect'
+// import houndazzleContinuumEffect from './effects/houndazzle/effects/houndazzleContinuumEffect'
+// import gongramEffect from './effects/gongram/effects/gongramEffect'
+// import houndsmorphosisEffect from './effects/houndsmorphosis/effects/houndsmorphosisEffect'
 
 setup({
 	effects: [],

@@ -19,21 +19,21 @@ describe('transposition utilities', () => {
 		})
 
 		it('adjusts the origin per the zoom level', () => {
-			settings.initial.viewConfig = { zoom }
+			settings.initial.viewSettings = { zoom }
 
 			expect(adjustOrigin({ tileOrigin })).toEqual([ 3 * zoom, 5 * zoom ])
 		})
 
 		describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 			beforeEach(() => {
-				settings.initial.viewConfig = {
+				settings.initial.viewSettings = {
 					zoomOnCanvasCenter: true,
 					zoom,
 				}
 			})
 
 			it('works', () => {
-				settings.initial.viewConfig.canvasSize = canvasSize
+				settings.initial.viewSettings.canvasSize = canvasSize
 
 				expect(adjustOrigin({ tileOrigin })).toEqual([ -870, -850 ])
 			})
@@ -48,7 +48,7 @@ describe('transposition utilities', () => {
 
 		describe('centering view on the center of the tile at address [ 0, 0]', () => {
 			beforeEach(() => {
-				settings.initial.viewConfig = { centerViewOnCenterOfTileAtZeroZeroAddress: true }
+				settings.initial.viewSettings = { centerViewOnCenterOfTileAtZeroZeroAddress: true }
 			})
 
 			it('defaults to assuming this is based on the defaults', () => {
@@ -59,7 +59,7 @@ describe('transposition utilities', () => {
 			})
 
 			it('adjusts per the zoom level', () => {
-				settings.initial.viewConfig.zoom = zoom
+				settings.initial.viewSettings.zoom = zoom
 
 				expect(adjustOrigin({ tileOrigin })).toEqual([
 					3 * zoom + CANVAS_SIZE / 2 - TILE_SIZE / 2,
@@ -68,7 +68,7 @@ describe('transposition utilities', () => {
 			})
 
 			it('adjusts per the tile size', () => {
-				settings.initial.tileConfig = { tileSize }
+				settings.initial.tileSettings = { tileSize }
 
 				expect(adjustOrigin({ tileOrigin })).toEqual([
 					3 * ZOOM + CANVAS_SIZE / 2 - tileSize / 2,
@@ -77,7 +77,7 @@ describe('transposition utilities', () => {
 			})
 
 			it('adjusts per the canvas size', () => {
-				settings.initial.viewConfig.canvasSize = canvasSize
+				settings.initial.viewSettings.canvasSize = canvasSize
 
 				expect(adjustOrigin({ tileOrigin })).toEqual([
 					3 * ZOOM + canvasSize / 2 - TILE_SIZE / 2,
@@ -96,20 +96,20 @@ describe('transposition utilities', () => {
 		})
 
 		it('adjusts per the zoom level', () => {
-			settings.initial.viewConfig = { zoom }
+			settings.initial.viewSettings = { zoom }
 
 			expect(getSizedUnit()).toEqual(TILE_SIZE * zoom)
 		})
 
 		it('adjusts per the tile size', () => {
-			settings.initial.tileConfig = { tileSize }
+			settings.initial.tileSettings = { tileSize }
 
 			expect(getSizedUnit()).toEqual(tileSize * ZOOM)
 		})
 
 		it('adjusts per both the zoom and tile size', () => {
-			settings.initial.viewConfig = { zoom }
-			settings.initial.tileConfig = { tileSize }
+			settings.initial.viewSettings = { zoom }
+			settings.initial.tileSettings = { tileSize }
 
 			expect(getSizedUnit()).toEqual(tileSize * zoom)
 		})
@@ -128,7 +128,7 @@ describe('transposition utilities', () => {
 		})
 
 		it('adjusts per the zoom level', () => {
-			settings.initial.viewConfig = { zoom }
+			settings.initial.viewSettings = { zoom }
 
 			expect(getTileOriginAndSizedUnit({ address })).toEqual({
 				sizedUnit: TILE_SIZE * zoom,
@@ -137,7 +137,7 @@ describe('transposition utilities', () => {
 		})
 
 		it('adjusts per the tile size', () => {
-			settings.initial.tileConfig = { tileSize }
+			settings.initial.tileSettings = { tileSize }
 
 			expect(getTileOriginAndSizedUnit({ address })).toEqual({
 				sizedUnit: tileSize * ZOOM,
@@ -146,8 +146,8 @@ describe('transposition utilities', () => {
 		})
 
 		it('adjusts per both the zoom and tile size', () => {
-			settings.initial.viewConfig = { zoom }
-			settings.initial.tileConfig = { tileSize }
+			settings.initial.viewSettings = { zoom }
+			settings.initial.tileSettings = { tileSize }
 
 			expect(getTileOriginAndSizedUnit({ address })).toEqual({
 				sizedUnit: tileSize * zoom,

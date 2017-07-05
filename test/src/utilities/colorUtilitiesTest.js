@@ -3,16 +3,16 @@ import gridUtilities from '../../../src/utilities/gridUtilities'
 
 describe('color utilities', () => {
 	describe('#getColorsForTile', () => {
-		it('defaults to the initial color config on the settings', () => {
+		it('defaults to the initial color settings on the settings', () => {
 			const address = []
 			spyOn(gridUtilities, 'getSetForTile')
-			const defaultConfig = { importantThing: 'boingo' }
-			settings.initial.colorConfig = defaultConfig
+			const defaultSettings = { importantThing: 'boingo' }
+			settings.initial.colorSettings = defaultSettings
 
 			colorUtilities.getColorsForTile({ address })
 
 			expect(gridUtilities.getSetForTile.calls.all()[0].args[0]).toEqual(
-				{ address, config: defaultConfig }
+				{ address, settings: defaultSettings }
 			)
 		})
 
@@ -31,7 +31,7 @@ describe('color utilities', () => {
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
 			spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
-			settings.initial.stripeCountConfig = { mode: 'GINGHAM' }
+			settings.initial.stripeCountSettings = { mode: 'GINGHAM' }
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
 
@@ -41,14 +41,14 @@ describe('color utilities', () => {
 
 		describe('fading colors', () => {
 			it('fades colors using opacity', () => {
-				const colorConfig = { opacity: 0.5 }
+				const colorSettings = { opacity: 0.5 }
 				const tileColors = [
 					{ r: 1, g: 2, b: 3, a: 1 },
 					{ r: 3, g: 2, b: 1, a: 0.5 },
 				]
 				spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
 
-				const result = colorUtilities.getColorsForTile({ address: [], colorConfig })
+				const result = colorUtilities.getColorsForTile({ address: [], colorSettings })
 
 				const fadedTileColors = [
 					{ r: 1, g: 2, b: 3, a: 0.5 },
@@ -58,14 +58,14 @@ describe('color utilities', () => {
 			})
 
 			it('defaults opacity to not opaque', () => {
-				const colorConfig = { stuffBesidesOpacity: 'mcmyeah' }
+				const colorSettings = { stuffBesidesOpacity: 'mcmyeah' }
 				const tileColors = [
 					{ r: 1, g: 2, b: 3, a: 1 },
 					{ r: 3, g: 2, b: 1, a: 0.5 },
 				]
 				spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
 
-				const result = colorUtilities.getColorsForTile({ address: [], colorConfig })
+				const result = colorUtilities.getColorsForTile({ address: [], colorSettings })
 
 				expect(result).toEqual(tileColors)
 			})

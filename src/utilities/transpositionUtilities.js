@@ -1,7 +1,7 @@
 import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../defaults'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	let { zoom, canvasSize, zoomOnCanvasCenter } = settings.initial.viewConfig || {}
+	let { zoom, canvasSize, zoomOnCanvasCenter } = settings.initial.viewSettings || {}
 	zoom = zoom || ZOOM
 	canvasSize = canvasSize || CANVAS_SIZE
 	const canvasCenter = canvasSize / 2
@@ -23,9 +23,9 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasSize = settings.initial.viewConfig && settings.initial.viewConfig.canvasSize || CANVAS_SIZE
+	const canvasSize = settings.initial.viewSettings && settings.initial.viewSettings.canvasSize || CANVAS_SIZE
 	const canvasCenter = canvasSize / 2
-	const tileSize = settings.initial.tileConfig && settings.initial.tileConfig.tileSize || TILE_SIZE
+	const tileSize = settings.initial.tileSettings && settings.initial.tileSettings.tileSize || TILE_SIZE
 	const halfTileSize = tileSize / 2
 	return [
 		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
@@ -35,17 +35,17 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 
 const adjustOrigin = ({ tileOrigin }) => {
 	tileOrigin = adjustTileOriginForZoom({ tileOrigin })
-	if (settings.initial.viewConfig && settings.initial.viewConfig.centerViewOnCenterOfTileAtZeroZeroAddress) {
+	if (settings.initial.viewSettings && settings.initial.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
 		tileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin })
 	}
 	return tileOrigin
 }
 
-const getTileSize = () => settings.initial.tileConfig && settings.initial.tileConfig.tileSize || TILE_SIZE
+const getTileSize = () => settings.initial.tileSettings && settings.initial.tileSettings.tileSize || TILE_SIZE
 
 const getSizedUnit = () => {
 	const tileSize = getTileSize()
-	const zoom = settings.initial.viewConfig && settings.initial.viewConfig.zoom || ZOOM
+	const zoom = settings.initial.viewSettings && settings.initial.viewSettings.zoom || ZOOM
 	return tileSize * zoom
 }
 

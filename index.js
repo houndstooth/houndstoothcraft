@@ -13,7 +13,7 @@ import execute from './src/application/execute'
 
 setup({
 	effects: [],
-	configurationLogging: false,
+	settingsLogging: false,
 })
 
 execute({

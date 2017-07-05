@@ -1,10 +1,10 @@
 import codeUtilities from './codeUtilities'
 import { COLOR_ASSIGNMENT, COLOR_SET } from '../defaults'
 
-const getSetForTile = ({ address, config }) => {
+const getSetForTile = ({ address, settings }) => {
 	const { wrappedIndex } = codeUtilities
 
-	let { set: setForGrid, assignment } = config || settings.initial.colorConfig || {}
+	let { set: setForGrid, assignment } = settings || {}
 
 	setForGrid = setForGrid || COLOR_SET
 	assignment = assignment || COLOR_ASSIGNMENT

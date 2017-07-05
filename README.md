@@ -1,16 +1,16 @@
 {
-    viewConfig: {
+    viewSettings: {
         canvasSize: number,
         zoom: number,
         zoomOnCanvasCenter: boolean,
         centerViewOnCenterOfTileAtZeroZeroAddress: boolean
     },
-    gridConfig: {
+    gridSettings: {
         gridSize: number,
         gridRotationAboutGridCenter: number,
         includeNegativeQuadrants: boolean
     },
-    tileConfig: {
+    tileSettings: {
         tileSize: number,
         collapseSameColoredShapesWithinTile: boolean,
         isTileUniform: function (returns boolean),
@@ -20,13 +20,13 @@
             whenTileIsMultiform: function (returns ?)
         }
     },
-    colorConfig: (this is itself a config) {
+    colorSettings: (this is itself a settings) {
         set: array of colors (use ts),
         mode: string (use ts to limit),
         houndazzle: {
             substripeCount: number,
             dazzleContinuum: boolean,
-            orientationConfig: config (use ts)
+            orientationSettings: settings (use ts)
         },
         assignment: {
             switcheroo: boolean,
@@ -38,7 +38,7 @@
         },
         opacity: scalar (number 0 to 1)
     },
-    stripeCountConfig: {
+    stripeCountSettings: {
         mode: string (use ts to limit),
         stripeCount: number,
         ginghamChevronContinuum: gcc (use ts)

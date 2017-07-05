@@ -34,7 +34,7 @@ describe('stripe utilities', () => {
 		})
 
 		it('uses a stripe count if provided', () => {
-			settings.initial.stripeCountConfig = { stripeCount: 3 }
+			settings.initial.stripeCountSettings = { stripeCount: 3 }
 			const stripePositions = perStripe({ getStripePosition: () => {} })
 
 			expect(stripePositions.length).toBe(3)

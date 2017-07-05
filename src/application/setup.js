@@ -2,7 +2,7 @@ import overrides from '../settings/overrides'
 import settingsUtilities from '../utilities/settingsUtilities'
 import consoleWrapper from './consoleWrapper'
 
-export default ({ effects = [], configurationLogging } = {}) => {
+export default ({ effects = [], settingsLogging } = {}) => {
 	const combinedEffects = combineEffects({ effects })
 
 	setupObject({
@@ -21,7 +21,7 @@ export default ({ effects = [], configurationLogging } = {}) => {
 		overrides: overrides.animations,
 	})
 
-	if (configurationLogging) consoleWrapper.log(settings)
+	if (settingsLogging) consoleWrapper.log(settings)
 }
 
 const setupObject = ({ objectToSetup, effects, overrides }) => {

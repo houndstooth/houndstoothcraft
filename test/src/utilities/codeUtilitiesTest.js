@@ -71,20 +71,20 @@ describe('code utilities', () => {
 
 	describe('#deeperPath', () => {
 		it('does not mutate the passed property path', () => {
-			const nestedPropertyPath = [ 'colorConfig', 'assignment' ]
+			const nestedPropertyPath = [ 'colorSettings', 'assignment' ]
 			const propertyName = 'set'
 
 			const deeperPath = codeUtilities.deeperPath({ nestedPropertyPath, propertyName })
 
-			expect(deeperPath).toEqual([ 'colorConfig', 'assignment', 'set' ])
-			expect(nestedPropertyPath).toEqual([ 'colorConfig', 'assignment' ])
+			expect(deeperPath).toEqual([ 'colorSettings', 'assignment', 'set' ])
+			expect(nestedPropertyPath).toEqual([ 'colorSettings', 'assignment' ])
 		})
 	})
 
 	describe('#resetObject', () => {
 		it('reassigns each of the immediate keys', () => {
 			const objectToReset = {
-				colorConfig: {
+				colorSettings: {
 					set: [ 0, 1 ],
 				},
 				mode: 'COOLNESS',
@@ -97,7 +97,7 @@ describe('code utilities', () => {
 			codeUtilities.resetObject({ objectToReset, objectToResetTo })
 
 			const expectedObject = {
-				colorConfig: {
+				colorSettings: {
 					set: [ 0, 1 ],
 				},
 				mode: 'OG_NESS',

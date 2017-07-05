@@ -5,7 +5,7 @@ describe('setup', () => {
 	it('logs the settings when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		setup({ configurationLogging: true })
+		setup({ settingsLogging: true })
 
 		expect(consoleWrapper.log).toHaveBeenCalledWith(settings)
 	})

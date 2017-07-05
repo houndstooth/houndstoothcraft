@@ -4,15 +4,15 @@ import { OPACITY } from '../defaults'
 
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
-const getColorsForTile = ({ address, colorConfig }) => {
-	colorConfig = colorConfig || settings.initial.colorConfig
+const getColorsForTile = ({ address, colorSettings }) => {
+	colorSettings = colorSettings || settings.initial.colorSettings
 
-	let tileColors = gridUtilities.getSetForTile({ address, config: colorConfig })
+	let tileColors = gridUtilities.getSetForTile({ address, settings: colorSettings })
 
-	const { mode } = settings.initial.stripeCountConfig || {}
+	const { mode } = settings.initial.stripeCountSettings || {}
 	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
-	const opacity = colorConfig && colorConfig.opacity || OPACITY
+	const opacity = colorSettings && colorSettings.opacity || OPACITY
 	if (opacity < 1) tileColors = fadeColors({ colors: tileColors, opacity })
 
 	return tileColors

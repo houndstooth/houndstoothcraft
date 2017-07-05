@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/houndstooth/web-render.svg?branch=master)](https://travis-ci.org/houndstooth/web-render)
+
 ```
 {
     viewSettings: {

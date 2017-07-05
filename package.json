@@ -9,7 +9,8 @@
     "push-all": "git push && git submodule foreach git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "ci": "karma start --single-run --browsers PhantomJS"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

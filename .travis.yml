@@ -4,6 +4,7 @@ node_js:
 git:
     submodules: false
 before_install:
+    - export CHROME_BIN=chromium-browser
     - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
     - git submodule update --init --recursive
 before_script:

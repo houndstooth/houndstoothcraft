@@ -10,7 +10,7 @@
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "ci": "karma start --single-run --browsers ChromeNoSandboxHeadless"
+    "ci": "karma start --single-run --browsers ChromeHeadless"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

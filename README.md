@@ -1,3 +1,4 @@
+```
 {
     viewSettings: {
         canvasSize: number,
@@ -56,3 +57,4 @@
         endIteration: number
     }
 }
+```

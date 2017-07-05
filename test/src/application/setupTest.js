@@ -7,7 +7,7 @@ describe('setup', () => {
 
 		setup({ settingsLogging: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(settings)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(current.settings)
 	})
 
 	it('does not log the settings when logging mode is not on', () => {
@@ -61,17 +61,17 @@ describe('setup', () => {
 
 		setup({ effects })
 
-		expect(settings.initial).toEqual(jasmine.objectContaining({
+		expect(current.settings.initial).toEqual(jasmine.objectContaining({
 			propertyA: 'a',
 			propertyB: 'B',
 			propertyC: 'c',
 		}))
-		expect(settings.animations).toEqual(jasmine.objectContaining({
+		expect(current.settings.animations).toEqual(jasmine.objectContaining({
 			propertyD: propertyFunctionTwoD,
 			propertyE: propertyFunctionOneE,
 			propertyF: propertyFunctionTwoF,
 		}))
-		expect(settings.iterations).toEqual(jasmine.objectContaining({
+		expect(current.settings.iterations).toEqual(jasmine.objectContaining({
 			propertyG: propertyFunctionTwoG,
 			propertyH: propertyFunctionOneH,
 			propertyI: propertyFunctionTwoI,

@@ -5,11 +5,11 @@ import { OPACITY } from '../defaults'
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorSettings }) => {
-	colorSettings = colorSettings || settings.initial.colorSettings
+	colorSettings = colorSettings || current.settings.initial.colorSettings
 
 	let tileColors = gridUtilities.getSetForTile({ address, settings: colorSettings })
 
-	const { mode } = settings.initial.stripeCountSettings || {}
+	const { mode } = current.settings.initial.stripeCountSettings || {}
 	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = colorSettings && colorSettings.opacity || OPACITY

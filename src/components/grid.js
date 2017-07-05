@@ -3,7 +3,7 @@ import tile from './tile'
 import { GRID_SIZE } from '../defaults'
 
 export default () => {
-	let { gridSize, includeNegativeQuadrants } = settings.initial.gridSettings || {}
+	let { gridSize, includeNegativeQuadrants } = current.settings.initial.gridSettings || {}
 	gridSize = gridSize || GRID_SIZE
 	const { iterator } = codeUtilities
 

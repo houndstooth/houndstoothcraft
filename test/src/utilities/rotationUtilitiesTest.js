@@ -16,7 +16,7 @@ describe('rotation utilities', () => {
 		describe('base stripe diagonal', () => {
 			describe('when principal', () => {
 				beforeEach(() => {
-					settings.initial.baseStripeDiagonal = 'PRINCIPAL'
+					current.settings.initial.baseStripeDiagonal = 'PRINCIPAL'
 				})
 
 				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
@@ -86,11 +86,11 @@ describe('rotation utilities', () => {
 			beforeEach(() => {
 				tileOrigin = [ 0, 0 ]
 				sizedUnit = 5
-				settings.initial.gridSettings = { gridRotationAboutGridCenter: QUARTER_OF_CIRCLE_ROTATION }
+				current.settings.initial.gridSettings = { gridRotationAboutGridCenter: QUARTER_OF_CIRCLE_ROTATION }
 			})
 
 			it('can rotate coordinates about the grid center', () => {
-				settings.initial.viewSettings = { canvasSize: 100 }
+				current.settings.initial.viewSettings = { canvasSize: 100 }
 
 				const result = applyRotationToShape({ coordinates, tileOrigin, sizedUnit })
 

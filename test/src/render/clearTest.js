@@ -7,7 +7,7 @@ describe('clear', () => {
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
-			settings.initial.viewSettings = { canvasSize: 500 }
+			current.settings.initial.viewSettings = { canvasSize: 500 }
 
 			clear()
 

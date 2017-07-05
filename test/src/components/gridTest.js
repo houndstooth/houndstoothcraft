@@ -12,7 +12,7 @@ describe('grid', () => {
 
 	describe('when grid size is specified', () => {
 		beforeEach(() => {
-			settings.initial.gridSettings = { gridSize }
+			current.settings.initial.gridSettings = { gridSize }
 		})
 
 		it('uses it', () => {
@@ -32,8 +32,8 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			settings.initial.gridSettings = { gridSize }
-			settings.initial.gridSettings.includeNegativeQuadrants = false
+			current.settings.initial.gridSettings = { gridSize }
+			current.settings.initial.gridSettings.includeNegativeQuadrants = false
 		})
 
 		it('only makes tiles with positive addresses', () => {
@@ -49,8 +49,8 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			settings.initial.gridSettings = { gridSize }
-			settings.initial.gridSettings.includeNegativeQuadrants = true
+			current.settings.initial.gridSettings = { gridSize }
+			current.settings.initial.gridSettings.includeNegativeQuadrants = true
 		})
 
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {

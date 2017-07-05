@@ -26,7 +26,7 @@ const getShapeCenter = ({ tileOrigin, sizedUnit }) => [ tileOrigin[ 0 ] + sizedU
 const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 	const center = getShapeCenter({ tileOrigin, sizedUnit })
 
-	let { baseStripeDiagonal, viewSettings, gridSettings } = settings.initial
+	let { baseStripeDiagonal, viewSettings, gridSettings } = current.settings.initial
 	baseStripeDiagonal = baseStripeDiagonal || BASE_STRIPE_DIAGONAL
 	const canvasSize = viewSettings && viewSettings.canvasSize || CANVAS_SIZE
 	const gridRotationAboutGridCenter = gridSettings && gridSettings.gridRotationAboutGridCenter

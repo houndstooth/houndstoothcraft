@@ -9,7 +9,7 @@ import exportFrame from './exportFrame'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	const execute = animating ? executeAnimation : executeGrid
-	const iterationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({ objectWithFunctions: settings.iterations })
+	const iterationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({ objectWithFunctions: current.settings.iterations })
 	execute({
 		iterating,
 		exportFrames,
@@ -42,7 +42,7 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
 		const { nestedPropertyPath, propertyName, fn } = functionObject
 		let settingsObjectToCallFunctionOn = codeUtilities.accessChildObjectOrCreatePath({
-			parentObject: settings.initial,
+			parentObject: current.settings.initial,
 			nestedPropertyPath,
 		})
 		settingsObjectToCallFunctionOn[ propertyName ] = fn(settingsObjectToCallFunctionOn[ propertyName ])
@@ -50,7 +50,7 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIteration, endIteration } = settings.initial.iteration || {}
+	let { startIteration, endIteration } = current.settings.initial.iteration || {}
 	startIteration = startIteration || 0
 	endIteration = endIteration || END_ITERATION
 
@@ -76,7 +76,7 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
 	const { deepClone, resetObject, defaultToTrue } = codeUtilities
 
-	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = settings.initial.animation || {}
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = current.settings.initial.animation || {}
 	startAnimationFrame = startAnimationFrame || 0
 	frameRate = frameRate || FRAME_RATE
 	refreshCanvas = defaultToTrue(refreshCanvas)
@@ -91,9 +91,9 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 			if (refreshCanvas) clear()
 
 			if (iterating) {
-				const preIterationSettings = deepClone(settings.initial)
+				const preIterationSettings = deepClone(current.settings.initial)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				resetObject({ objectToReset: settings.initial, objectToResetTo: preIterationSettings })
+				resetObject({ objectToReset: current.settings.initial, objectToResetTo: preIterationSettings })
 			}
 			else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
@@ -104,7 +104,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 
 		callFunctionsPerSettingsProperty({
 			functionObjects: settingsUtilities.prepareFunctionsPerSettingsProperty({
-				objectWithFunctions: settings.animations,
+				objectWithFunctions: current.settings.animations,
 			}),
 		})
 		current.animationFrame++

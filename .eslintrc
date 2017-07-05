@@ -21,7 +21,6 @@
         "brace-style": [ "error", "stroustrup" ]
     },
     "globals": {
-        "settings": false,
         "current": false,
         "global": false
     }

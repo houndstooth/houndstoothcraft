@@ -1,7 +1,7 @@
 import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../defaults'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	let { zoom, canvasSize, zoomOnCanvasCenter } = settings.initial.viewSettings || {}
+	let { zoom, canvasSize, zoomOnCanvasCenter } = current.settings.initial.viewSettings || {}
 	zoom = zoom || ZOOM
 	canvasSize = canvasSize || CANVAS_SIZE
 	const canvasCenter = canvasSize / 2
@@ -23,9 +23,9 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasSize = settings.initial.viewSettings && settings.initial.viewSettings.canvasSize || CANVAS_SIZE
+	const canvasSize = current.settings.initial.viewSettings && current.settings.initial.viewSettings.canvasSize || CANVAS_SIZE
 	const canvasCenter = canvasSize / 2
-	const tileSize = settings.initial.tileSettings && settings.initial.tileSettings.tileSize || TILE_SIZE
+	const tileSize = current.settings.initial.tileSettings && current.settings.initial.tileSettings.tileSize || TILE_SIZE
 	const halfTileSize = tileSize / 2
 	return [
 		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
@@ -35,17 +35,17 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 
 const adjustOrigin = ({ tileOrigin }) => {
 	tileOrigin = adjustTileOriginForZoom({ tileOrigin })
-	if (settings.initial.viewSettings && settings.initial.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
+	if (current.settings.initial.viewSettings && current.settings.initial.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
 		tileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin })
 	}
 	return tileOrigin
 }
 
-const getTileSize = () => settings.initial.tileSettings && settings.initial.tileSettings.tileSize || TILE_SIZE
+const getTileSize = () => current.settings.initial.tileSettings && current.settings.initial.tileSettings.tileSize || TILE_SIZE
 
 const getSizedUnit = () => {
 	const tileSize = getTileSize()
-	const zoom = settings.initial.viewSettings && settings.initial.viewSettings.zoom || ZOOM
+	const zoom = current.settings.initial.viewSettings && current.settings.initial.viewSettings.zoom || ZOOM
 	return tileSize * zoom
 }
 
@@ -60,7 +60,7 @@ const getStandardTileOriginAndSizedUnit = ({ address }) => {
 }
 
 const getTileOriginAndSizedUnit = ({ address }) => {
-	const getTileOriginAndSizedUnit = settings.initial.getTileOriginAndSizedUnit || getStandardTileOriginAndSizedUnit
+	const getTileOriginAndSizedUnit = current.settings.initial.getTileOriginAndSizedUnit || getStandardTileOriginAndSizedUnit
 	return getTileOriginAndSizedUnit({ address })
 }
 

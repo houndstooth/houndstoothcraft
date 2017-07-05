@@ -1,5 +1,4 @@
-import './src/settings/settings'
-import './src/settings/current'
+import './globalCurrent'
 import setup from './src/application/setup'
 import execute from './src/application/execute'
 
@@ -14,6 +13,7 @@ import execute from './src/application/execute'
 setup({
 	effects: [],
 	settingsLogging: false,
+	overrides: {}
 })
 
 execute({

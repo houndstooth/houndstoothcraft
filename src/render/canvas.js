@@ -7,7 +7,7 @@ if (!canvas) {
 	document.body.appendChild(canvas)
 }
 
-const canvasSize = settings.initial.viewSettings && settings.initial.viewSettings.canvasSize || CANVAS_SIZE
+const canvasSize = current.settings.initial.viewSettings && current.settings.initial.viewSettings.canvasSize || CANVAS_SIZE
 canvas.width = canvasSize
 canvas.height = canvasSize
 

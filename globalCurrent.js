@@ -3,4 +3,9 @@ global.current = {
 	animationFrame: 0,
 	lastSavedAnimationFrame: 0,
 	interval: null,
+	settings: {
+		initial: {},
+		animations: {},
+		iterations: {},
+	}
 }

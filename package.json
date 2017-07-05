@@ -10,7 +10,7 @@
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "ci": "karma start --single-run --browsers PhantomJS"
+    "ci": "karma start --single-run --browsers Chromium"
   },
   "dependencies": {
     "file-saver": "^1.3.3"
@@ -23,6 +23,7 @@
     "eslint": "^4.1.1",
     "jasmine": "^2.6.0",
     "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-webpack": "^2.0.3",

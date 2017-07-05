@@ -7,5 +7,5 @@ global.current = {
 		initial: {},
 		animations: {},
 		iterations: {},
-	}
+	},
 }

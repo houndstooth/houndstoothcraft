@@ -8,11 +8,24 @@ import animator from './animator'
 import exportFrame from './exportFrame'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
-	const execute = animating ? executeAnimation : executeGrid
-	const iterationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({ objectWithFunctions: current.settings.iterations })
+	let animationFunctions, iterationFunctions
+	let execute = executeGrid
+	if (animating) {
+		execute = executeAnimation
+		animationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({
+			objectWithFunctions: current.settings.animations,
+		})
+	}
+	if (iterating) {
+		iterationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({
+			objectWithFunctions: current.settings.iterations,
+		})
+	}
+
 	execute({
 		iterating,
 		exportFrames,
+		animationFunctions,
 		iterationFunctions,
 		performanceLogging,
 		animating,
@@ -73,7 +86,7 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 	}
 }
 
-const executeAnimation = ({ iterating, exportFrames, iterationFunctions, performanceLogging, animating }) => {
+const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
 	const { deepClone, resetObject, defaultToTrue } = codeUtilities
 
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = current.settings.initial.animation || {}
@@ -82,7 +95,6 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 	refreshCanvas = defaultToTrue(refreshCanvas)
 
 	current.lastSavedAnimationFrame = startAnimationFrame
-
 
 	const animationFunction = () => {
 		if (exportFrames && current.animationFrame > current.lastSavedAnimationFrame) return
@@ -102,11 +114,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, perform
 			if (exportFrames) exportFrame()
 		}
 
-		callFunctionsPerSettingsProperty({
-			functionObjects: settingsUtilities.prepareFunctionsPerSettingsProperty({
-				objectWithFunctions: current.settings.animations,
-			}),
-		})
+		callFunctionsPerSettingsProperty({ functionObjects: animationFunctions })
 		current.animationFrame++
 	}
 

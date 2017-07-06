@@ -1,5 +1,6 @@
 import 'jasmine'
 import '../globalCurrent'
+import clear from '../src/render/clear'
 
 beforeEach(() => {
 	Object.keys(current.settings.initial).forEach(key => delete current.settings.initial[key])
@@ -7,4 +8,5 @@ beforeEach(() => {
 	Object.keys(current.settings.animations).forEach(key => delete current.settings.animations[key])
 	current.iterationFrame = 0
 	current.animationFrame = 0
+	clear()
 })

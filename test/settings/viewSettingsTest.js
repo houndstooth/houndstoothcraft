@@ -1,5 +1,17 @@
-describe('placeholder', () => {
-	it('is one', () => {
-		expect(true).toBe(true)
+describe('view settings', () => {
+	describe('canvasSize', () => {
+
+	})
+
+	describe('zoom', () => {
+
+	})
+
+	describe('zoomOnCanvasCenter', () => {
+
+	})
+
+	describe('centerViewOnCenterOfTileAtZeroZeroAddress', () => {
+
 	})
 })

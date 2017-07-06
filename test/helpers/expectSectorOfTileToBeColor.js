@@ -1,5 +1,4 @@
 import ctx from '../../src/render/ctx'
-import { TILE_SIZE } from '../../src/defaults'
 
 const pixel = ([ x, y ]) => {
 	const pixelData = ctx.getImageData(x, y, 1, 1).data
@@ -11,11 +10,11 @@ const pixel = ([ x, y ]) => {
 	}
 }
 
-const sectorCenter = ({ address, x, y, n }) => {
-	const sectorSize = TILE_SIZE / n
+const sectorCenter = ({ address, x, y, n, tileSize }) => {
+	const sectorSize = tileSize / n
 	return [
-		address[ 0 ] * TILE_SIZE + (x + 0.5) * sectorSize,
-		address[ 1 ] * TILE_SIZE + (y + 0.5) * sectorSize,
+		address[ 0 ] * tileSize + (x + 0.5) * sectorSize,
+		address[ 1 ] * tileSize + (y + 0.5) * sectorSize,
 	]
 }
 
@@ -26,10 +25,10 @@ const expectToBeColor = (colorOne, colorTwo) => {
 	})
 }
 
-export default ({ address, x, y, n, color }) => {
+export default ({ address, tileSize, x, y, n, color }) => {
 	expectToBeColor(
 		pixel(
-			sectorCenter({ address, x, y, n })
+			sectorCenter({ address, tileSize, x, y, n })
 		),
 		color
 	)

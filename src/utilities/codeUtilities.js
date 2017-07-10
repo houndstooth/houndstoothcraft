@@ -56,7 +56,9 @@ const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => 
 	return childObject
 }
 
-const defaultToTrue = property => typeof property === 'undefined' ? true : property
+const defaultToTrue = property => isDefined(property) ? property : true
+
+const isDefined = property => typeof property !== 'undefined'
 
 export default {
 	iterator,
@@ -67,4 +69,5 @@ export default {
 	deeperPath,
 	accessChildObjectOrCreatePath,
 	defaultToTrue,
+	isDefined,
 }

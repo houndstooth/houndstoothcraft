@@ -1,4 +1,5 @@
 import execute from '../../src/application/execute'
+import setup from '../../src/application/setup'
 import expectSectorOfTileToBeColor from '../helpers/expectSectorOfTileToBeColor'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
@@ -7,6 +8,8 @@ describe('standard houndstooth pattern', () => {
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
 		let address
 		const tileSize = TILE_SIZE
+
+		setup({ effects: [] })
 
 		execute()
 

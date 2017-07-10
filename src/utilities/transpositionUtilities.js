@@ -1,12 +1,13 @@
 import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../defaults'
+import codeUtilities from './codeUtilities'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	let { zoom, canvasSize, zoomOnCanvasCenter } = current.settings.initial.viewSettings || {}
+	let { zoom, canvasSize, zoomOnCanvasCenter, centerViewOnCenterOfTileAtZeroZeroAddress } = current.settings.initial.viewSettings || {}
 	zoom = zoom || ZOOM
 	canvasSize = canvasSize || CANVAS_SIZE
 	const canvasCenter = canvasSize / 2
 
-	if (zoomOnCanvasCenter) {
+	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
 		tileOrigin[ 0 ] -= canvasCenter
 		tileOrigin[ 1 ] -= canvasCenter
 	}
@@ -14,7 +15,7 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 	tileOrigin[ 0 ] *= zoom
 	tileOrigin[ 1 ] *= zoom
 
-	if (zoomOnCanvasCenter) {
+	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
 		tileOrigin[ 0 ] += canvasCenter
 		tileOrigin[ 1 ] += canvasCenter
 	}
@@ -23,10 +24,18 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasSize = current.settings.initial.viewSettings && current.settings.initial.viewSettings.canvasSize || CANVAS_SIZE
+	let canvasSize
+	if (current.settings.initial.viewSettings && codeUtilities.isDefined(current.settings.initial.viewSettings.canvasSize)) {
+		canvasSize = current.settings.initial.viewSettings.canvasSize
+	}
+	else {
+		canvasSize = CANVAS_SIZE
+	}
 	const canvasCenter = canvasSize / 2
-	const tileSize = current.settings.initial.tileSettings && current.settings.initial.tileSettings.tileSize || TILE_SIZE
+
+	const tileSize = getTileSize()
 	const halfTileSize = tileSize / 2
+
 	return [
 		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
 		tileOrigin[ 1 ] + canvasCenter - halfTileSize,
@@ -41,7 +50,16 @@ const adjustOrigin = ({ tileOrigin }) => {
 	return tileOrigin
 }
 
-const getTileSize = () => current.settings.initial.tileSettings && current.settings.initial.tileSettings.tileSize || TILE_SIZE
+const getTileSize = () => {
+	let tileSize
+	if (current.settings.initial.tileSettings && codeUtilities.isDefined(current.settings.initial.tileSettings.tileSize)) {
+		tileSize = current.settings.initial.tileSettings.tileSize
+	}
+	else {
+		tileSize = TILE_SIZE
+	}
+	return tileSize
+}
 
 const getSizedUnit = () => {
 	const tileSize = getTileSize()

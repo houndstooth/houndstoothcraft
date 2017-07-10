@@ -1,5 +1,8 @@
 import settingsUtilities from '../utilities/settingsUtilities'
 import consoleWrapper from './consoleWrapper'
+import canvas from '../render/canvas'
+import codeUtilities from '../utilities/codeUtilities'
+import { CANVAS_SIZE } from '../defaults'
 
 export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 	const combinedEffects = combineEffects({ effects })
@@ -19,6 +22,16 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 		effects: combinedEffects.animations,
 		overrides: overrides.animations,
 	})
+
+	let canvasSize
+	if (current.settings.initial.viewSettings && codeUtilities.isDefined(current.settings.initial.viewSettings.canvasSize)) {
+		canvasSize = current.settings.initial.viewSettings.canvasSize
+	}
+	else {
+		canvasSize = CANVAS_SIZE
+	}
+	canvas.width = canvasSize
+	canvas.height = canvasSize
 
 	if (settingsLogging) consoleWrapper.log(current.settings)
 }

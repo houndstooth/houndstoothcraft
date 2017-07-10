@@ -44,6 +44,12 @@ describe('transposition utilities', () => {
 					(5 - CANVAS_SIZE / 2) * zoom + CANVAS_SIZE / 2,
 				])
 			})
+
+			it('does not readjust for zooming on the center if it already is centered', () => {
+				current.settings.initial.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
+
+				expect(adjustOrigin({ tileOrigin })).toEqual([ 405, 425 ])
+			})
 		})
 
 		describe('centering view on the center of the tile at address [ 0, 0]', () => {

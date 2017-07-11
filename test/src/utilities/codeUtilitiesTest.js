@@ -138,33 +138,54 @@ describe('code utilities', () => {
 	})
 
 	describe('#deepClone', () => {
-		it('deep clones an object, including functions', () => {
+		let actualObject, originalObject
+		beforeEach(() => {
 			const anImmutableString = 'a string'
 			const anImmutableNumber = 9
 			const anImmutableFunction = p => p * 3
+			const aNull = null
 			const originalArray = [ 'a', 2, { what: 'ever' } ]
 			const originalDeepNestedObject = { deepNestedProperty: 'cool beans' }
 			const originalImmediateNestedObject = { deepNestedObject: originalDeepNestedObject }
-			const originalObject = {
+			originalObject = {
 				anImmutableString,
 				anImmutableNumber,
 				anImmutableFunction,
+				aNull,
 				anArray: originalArray,
 				immediateNestedObject: originalImmediateNestedObject,
 			}
 
-			const actualObject = codeUtilities.deepClone(originalObject)
+			actualObject = codeUtilities.deepClone(originalObject)
+		})
 
+		it('deep clones an object, including strings', () => {
 			expect(actualObject.anImmutableString).toBe(originalObject.anImmutableString)
-			expect(actualObject.anImmutableNumber).toBe(originalObject.anImmutableNumber)
-			expect(actualObject.anImmutableFunction).toBe(originalObject.anImmutableFunction)
+		})
 
+		it('deep clones an object, including numbers', () => {
+			expect(actualObject.anImmutableNumber).toBe(originalObject.anImmutableNumber)
+		})
+
+		it('deep clones an object, including functions', () => {
+			expect(actualObject.anImmutableFunction).toBe(originalObject.anImmutableFunction)
+		})
+
+		it('deep clones an object, including nulls', () => {
+			expect(actualObject.aNull).toBeNull()
+		})
+
+		it('deep clones an object, including arrays', () => {
 			expect(actualObject.anArray).not.toBe(originalObject.anArray)
 			expect(actualObject.anArray).toEqual(originalObject.anArray)
+		})
 
+		it('deep clones an object, including immediate objects', () => {
 			expect(actualObject.immediateNestedObject).not.toBe(originalObject.immediateNestedObject)
 			expect(actualObject.immediateNestedObject).toEqual(originalObject.immediateNestedObject)
+		})
 
+		it('deep clones an object, including deeply nested objects', () => {
 			expect(actualObject.immediateNestedObject.deepNestedObject).not.toBe(
 				originalObject.immediateNestedObject.deepNestedObject
 			)

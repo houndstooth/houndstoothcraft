@@ -1,5 +1,5 @@
 import execute from '../../src/application/execute'
-import expectSectorOfTileToBeColor from '../helpers/expectSectorOfTileToBeColor'
+import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
@@ -7,39 +7,38 @@ describe('baseStripeDiagonal', () => {
 	it('can be set to principal, to change the orientation of the stripes', () => {
 		current.settings.initial.baseStripeDiagonal = 'PRINCIPAL'
 
-		let address
-		const tileSize = TILE_SIZE
+		let originInPixels
+		const tileSizeInPixels = TILE_SIZE
 
 		execute()
 
+		originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 
-		address = [ 0, 0 ]
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 3, n: 4, color: BLACK })).toBe(true)
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 0, y: 3, n: 4, color: BLACK })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 0, y: 1, n: 4, color: TRANSPARENT })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 1, y: 2, n: 4, color: TRANSPARENT })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 2, y: 3, n: 4, color: TRANSPARENT })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 0, n: 4, color: BLACK })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 1, n: 4, color: BLACK })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 2, n: 4, color: BLACK })).toBe(true)
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 1, y: 0, n: 4, color: BLACK })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 2, y: 1, n: 4, color: BLACK })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 3, y: 2, n: 4, color: BLACK })
-
-		expectSectorOfTileToBeColor({ address, tileSize, x: 3, y: 0, n: 4, color: TRANSPARENT })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
 
 
-		address = [ 1, 1 ]
+		originInPixels = [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ]
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 0, y: 3, n: 4, color: TRANSPARENT })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 0, y: 1, n: 4, color: BLACK })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 1, y: 2, n: 4, color: BLACK })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 2, y: 3, n: 4, color: BLACK })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 1, n: 4, color: BLACK })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 2, n: 4, color: BLACK })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 3, n: 4, color: BLACK })).toBe(true)
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 1, y: 0, n: 4, color: TRANSPARENT })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 2, y: 1, n: 4, color: TRANSPARENT })
-		expectSectorOfTileToBeColor({ address, tileSize, x: 3, y: 2, n: 4, color: TRANSPARENT })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
 
-		expectSectorOfTileToBeColor({ address, tileSize, x: 3, y: 0, n: 4, color: BLACK })
+		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 0, n: 4, color: BLACK })).toBe(true)
 	})
 })

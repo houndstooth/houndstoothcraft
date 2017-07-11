@@ -27,7 +27,7 @@ const deepClone = objectToClone => {
 		if (value instanceof Array) {
 			clonedObject[key] = value.slice()
 		}
-		else if (typeof value === 'object') {
+		else if (value && typeof value === 'object') {
 			clonedObject[key] = deepClone(value)
 		}
 		else {

@@ -11,11 +11,11 @@ describe('render', () => {
 		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 
 		ctxCallsOrder.length = 0
-		ctx.beginPath = () => ctxCallsOrder.push({ method: 'beginPath' })
-		ctx.moveTo = (x, y) => ctxCallsOrder.push({ method: 'moveTo', x, y })
-		ctx.lineTo = (x, y) => ctxCallsOrder.push({ method: 'lineTo', x, y })
-		ctx.closePath = () => ctxCallsOrder.push({ method: 'closePath' })
-		ctx.fill = () => ctxCallsOrder.push({ method: 'fill' })
+		spyOn(ctx, 'beginPath').and.callThrough().and.callFake(() => ctxCallsOrder.push({ method: 'beginPath' }))
+		spyOn(ctx, 'moveTo').and.callThrough().and.callFake((x, y) => ctxCallsOrder.push({ method: 'moveTo', x, y }))
+		spyOn(ctx, 'lineTo').and.callThrough().and.callFake((x, y) => ctxCallsOrder.push({ method: 'lineTo', x, y }))
+		spyOn(ctx, 'closePath').and.callThrough().and.callFake(() => ctxCallsOrder.push({ method: 'closePath' }))
+		spyOn(ctx, 'fill').and.callThrough().and.callFake(() => ctxCallsOrder.push({ method: 'fill' }))
 	})
 
 	it('returns early if there are no coordinates', () => {

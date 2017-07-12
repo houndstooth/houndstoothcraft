@@ -424,7 +424,7 @@ describe('execute', () => {
 				expect(exportFrameSpy.calls.all().length).toBe(
 					current.lastSavedAnimationFrame - startAnimationFrame
 				)
-			}, 100)
+			}, 200)
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 		})

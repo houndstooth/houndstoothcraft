@@ -1,8 +1,8 @@
-import ctx from '../../src/render/ctx'
-import testCtx from './testCtx'
+import context from '../../src/render/context'
+import drawPassMarker from './drawPassMarker'
 
 const pixel = ([ x, y ]) => {
-	const pixelData = ctx.getImageData(x, y, 1, 1).data
+	const pixelData = context.getImageData(x, y, 1, 1).data
 	return {
 		r: pixelData[ 0 ],
 		g: pixelData[ 1 ],
@@ -41,22 +41,6 @@ const pixelIsColor = (colorOne, colorTwo) => {
 	}
 
 	return true
-}
-
-const drawPassMarker = (passed, coordinate, id) => {
-	testCtx.strokeStyle = passed ? 'green' : 'red'
-	testCtx.beginPath()
-
-	testCtx.arc(coordinate[0], coordinate[1], 2, 0, 2 * Math.PI)
-
-	testCtx.closePath()
-	testCtx.stroke()
-
-	if (!passed) {
-		ctx.font = "8px Arial"
-		ctx.fillStyle = 'red'
-		ctx.fillText(id, coordinate[0] + 3, coordinate[1] + 3)
-	}
 }
 
 export default ({ originInPixels, tileSizeInPixels, x, y, n, color, id }) => {

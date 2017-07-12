@@ -1,21 +1,21 @@
 import render from '../../../src/render/render'
-import ctx from '../../../src/render/ctx'
+import context from '../../../src/render/context'
 import colorUtilities from '../../../src/utilities/colorUtilities'
 
 describe('render', () => {
 	const shapeColor = {}
 	const parsedColor = '#012345'
-	const ctxCallsOrder = []
+	const contextCallsOrder = []
 
 	beforeEach(() => {
 		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 
-		ctxCallsOrder.length = 0
-		spyOn(ctx, 'beginPath').and.callThrough().and.callFake(() => ctxCallsOrder.push({ method: 'beginPath' }))
-		spyOn(ctx, 'moveTo').and.callThrough().and.callFake((x, y) => ctxCallsOrder.push({ method: 'moveTo', x, y }))
-		spyOn(ctx, 'lineTo').and.callThrough().and.callFake((x, y) => ctxCallsOrder.push({ method: 'lineTo', x, y }))
-		spyOn(ctx, 'closePath').and.callThrough().and.callFake(() => ctxCallsOrder.push({ method: 'closePath' }))
-		spyOn(ctx, 'fill').and.callThrough().and.callFake(() => ctxCallsOrder.push({ method: 'fill' }))
+		contextCallsOrder.length = 0
+		spyOn(context, 'beginPath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'beginPath' }))
+		spyOn(context, 'moveTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }))
+		spyOn(context, 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }))
+		spyOn(context, 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
+		spyOn(context, 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
 	})
 
 	it('returns early if there are no coordinates', () => {
@@ -24,7 +24,7 @@ describe('render', () => {
 		render({ shapeColor, coordinates })
 
 		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(ctxCallsOrder).toEqual([])
+		expect(contextCallsOrder).toEqual([])
 	})
 
 	it('returns early if there is only one coordinate, because a point has no area', () => {
@@ -33,7 +33,7 @@ describe('render', () => {
 		render({ shapeColor, coordinates })
 
 		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(ctxCallsOrder).toEqual([])
+		expect(contextCallsOrder).toEqual([])
 	})
 
 	it('returns early if there are only two coordinates, because a line has no area', () => {
@@ -42,7 +42,7 @@ describe('render', () => {
 		render({ shapeColor, coordinates })
 
 		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(ctxCallsOrder).toEqual([])
+		expect(contextCallsOrder).toEqual([])
 	})
 
 	describe('when there are at least three coordinates', () => {
@@ -57,11 +57,11 @@ describe('render', () => {
 		})
 
 		it('assigns the parsed color to the context\'s fill style', () => {
-			expect(ctx.fillStyle).toEqual(parsedColor)
+			expect(context.fillStyle).toEqual(parsedColor)
 		})
 
 		it('draws the path with the correct coordinates and fills it', () => {
-			expect(ctxCallsOrder).toEqual([
+			expect(contextCallsOrder).toEqual([
 				{ method: 'beginPath' },
 				{ method: 'moveTo', x: 0, y: 1 },
 				{ method: 'lineTo', x: 1, y: 1 },

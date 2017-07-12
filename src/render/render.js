@@ -1,15 +1,15 @@
-import ctx from './ctx'
+import context from './context'
 import colorUtilities from '../utilities/colorUtilities'
 
 export default ({ shapeColor, coordinates }) => {
 	if (coordinates.length < 3) return
 
-	ctx.fillStyle = colorUtilities.parseColor(shapeColor)
-	ctx.beginPath()
+	context.fillStyle = colorUtilities.parseColor(shapeColor)
+	context.beginPath()
 
-	ctx.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])
-	coordinates.slice(1).forEach(coordinate => ctx.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
+	context.moveTo(coordinates[ 0 ][ 0 ], coordinates[ 0 ][ 1 ])
+	coordinates.slice(1).forEach(coordinate => context.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
 
-	ctx.closePath()
-	ctx.fill()
+	context.closePath()
+	context.fill()
 }

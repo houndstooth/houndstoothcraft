@@ -1,9 +1,9 @@
 import clear from '../../../src/render/clear'
-import ctx from '../../../src/render/ctx'
+import context from '../../../src/render/context'
 import { CANVAS_SIZE } from '../../../src/defaults'
 
 describe('clear', () => {
-	beforeEach(() => spyOn(ctx, 'clearRect'))
+	beforeEach(() => spyOn(context, 'clearRect'))
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
@@ -11,7 +11,7 @@ describe('clear', () => {
 
 			clear()
 
-			expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, 500, 500)
+			expect(context.clearRect).toHaveBeenCalledWith(0, 0, 500, 500)
 		})
 	})
 
@@ -19,7 +19,7 @@ describe('clear', () => {
 		it('wipes the default amount of canvas', () => {
 			clear()
 
-			expect(ctx.clearRect).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+			expect(context.clearRect).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 		})
 	})
 })

@@ -5,6 +5,7 @@ let testMarkerCanvas = document.querySelector('.testMarkerCanvas')
 
 if (!testMarkerCanvas) {
 	const place = document.createElement('div')
+	place.classList.add('place')
 	place.style.height = '800px'
 	document.body.insertBefore( place, document.body.firstChild );
 

@@ -14,3 +14,15 @@ beforeEach(() => {
 	clear()
 	testClear()
 })
+
+describe('clean up (the 2000 may need to be updated as test suite grows)', () => {
+	it('removes canvases when you run the entire test suite', () => {
+		setTimeout(() => {
+			console.log("DIE CANVAS")
+			const place = document.querySelector('.place')
+			if (place) place.parentElement.removeChild(place)
+			const realCanvas = document.querySelector('.realCanvas')
+			if (realCanvas) realCanvas.parentElement.removeChild(realCanvas)
+		}, 2000)
+	})
+})

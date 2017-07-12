@@ -44,13 +44,13 @@ const pixelIsColor = (colorOne, colorTwo) => {
 }
 
 const drawPassMarker = (passed, coordinate) => {
-	testCtx.fillStyle = passed ? 'green' : 'red'
+	testCtx.strokeStyle = passed ? 'green' : 'red'
 	testCtx.beginPath()
 
 	testCtx.arc(coordinate[0], coordinate[1], 2, 0, 2 * Math.PI)
 
 	testCtx.closePath()
-	testCtx.fill()
+	testCtx.stroke()
 }
 
 export default ({ originInPixels, tileSizeInPixels, x, y, n, color }) => {

@@ -1,6 +1,6 @@
 import execute from '../../src/application/execute'
 import setup from '../../src/application/setup'
-import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
+import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
@@ -13,220 +13,31 @@ describe('standard houndstooth pattern', () => {
 
 		execute()
 
-		// first supertile
-
-		originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		originInPixels = [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		// second supertile
-
-		originInPixels = [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		originInPixels = [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		// third supertile
-
-		originInPixels = [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		originInPixels = [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		// fourth supertile
-
-		originInPixels = [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		originInPixels = [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
-
-		originInPixels = [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ]
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: TRANSPARENT })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: TRANSPARENT })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: BLACK })).toBe(true)
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: BLACK })).toBe(true)
-
-		expect(tileSectorCenterIsColor({ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: TRANSPARENT })).toBe(true)
+		const firstSupertile = [
+			{ baseId: 0, originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] },
+			{ baseId: 8, originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
+			{ baseId: 16, originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
+			{ baseId: 24, originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] },
+		]
+		const secondSupertile = [
+			{ baseId: 32, originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] },
+			{ baseId: 40, originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
+			{ baseId: 48, originInPixels: [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
+			{ baseId: 56, originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] },
+		]
+		const thirdSupertile = [
+			{ baseId: 64, originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] },
+			{ baseId: 72, originInPixels: [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
+			{ baseId: 80, originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
+			{ baseId: 88, originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] },
+		]
+		const fourthSupertile = [
+			{ baseId: 96, originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] },
+			{ baseId: 104, originInPixels: [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
+			{ baseId: 112, originInPixels: [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
+			{ baseId: 120, originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] },
+		]
+		const tiles = firstSupertile.concat(secondSupertile).concat(thirdSupertile).concat(fourthSupertile)
+		tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 	})
 })

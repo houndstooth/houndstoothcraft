@@ -43,7 +43,7 @@ const pixelIsColor = (colorOne, colorTwo) => {
 	return true
 }
 
-const drawPassMarker = (passed, coordinate) => {
+const drawPassMarker = (passed, coordinate, id) => {
 	testCtx.strokeStyle = passed ? 'green' : 'red'
 	testCtx.beginPath()
 
@@ -51,12 +51,18 @@ const drawPassMarker = (passed, coordinate) => {
 
 	testCtx.closePath()
 	testCtx.stroke()
+
+	if (!passed) {
+		ctx.font = "8px Arial"
+		ctx.fillStyle = 'red'
+		ctx.fillText(id, coordinate[0] + 3, coordinate[1] + 3)
+	}
 }
 
-export default ({ originInPixels, tileSizeInPixels, x, y, n, color }) => {
+export default ({ originInPixels, tileSizeInPixels, x, y, n, color, id }) => {
 	const coordinateUnderTest = sectorCenter({ originInPixels, tileSizeInPixels, x, y, n })
 	const actualColor = pixel(coordinateUnderTest)
 	const passed = pixelIsColor(actualColor, color)
-	drawPassMarker(passed, coordinateUnderTest)
+	drawPassMarker(passed, coordinateUnderTest, id)
 	return passed
 }

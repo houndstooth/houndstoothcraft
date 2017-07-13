@@ -5,7 +5,7 @@ import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
-describe('baseStripeDiagonal', () => {
+describe('.baseStripeDiagonal', () => {
 	it('can be set to principal, to change the orientation of the stripes', () => {
 		setup({
 			effects: [ ],

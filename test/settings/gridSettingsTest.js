@@ -5,13 +5,16 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, WHITE, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
-describe('grid settings', () => {
-	describe('gridSize', () => {
+describe('.gridSettings', () => {
+	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {
 			setup({
 				effects: [ ],
 				overrides: {
 					initial: {
+						viewSettings: {
+							canvasSize: 200,
+						},
 						colorSettings: {
 							set: [ BLACK, WHITE ],
 						},
@@ -47,6 +50,40 @@ describe('grid settings', () => {
 				{ baseId: 120, originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
 			]
 
+			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+		})
+	})
+
+	describe('.includeNegativeQuadrants', () => {
+		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
+			const tileSizeInPixels = 50
+			setup({
+				effects: [ ],
+				overrides: {
+					initial: {
+						viewSettings: {
+							canvasSize: 300,
+							centerViewOnCenterOfTileAtZeroZeroAddress: true,
+						},
+						tileSettings: {
+							tileSize: tileSizeInPixels,
+						},
+						gridSettings: {
+							gridSize: 1,
+							includeNegativeQuadrants: true,
+						},
+					},
+				},
+			})
+			activateTestMarkerCanvas()
+			execute()
+
+			const tiles = [
+				{ baseId: 0, originInPixels: [ 125, 125 ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] },
+				{ baseId: 8, originInPixels: [ 75, 125 ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
+				{ baseId: 24, originInPixels: [ 75, 75 ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] },
+				{ baseId: 16, originInPixels: [ 125, 75 ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
+			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 		})
 	})

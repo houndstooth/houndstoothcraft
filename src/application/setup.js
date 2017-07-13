@@ -1,7 +1,6 @@
 import settingsUtilities from '../utilities/settingsUtilities'
 import consoleWrapper from './consoleWrapper'
 import canvas from '../render/canvas'
-import codeUtilities from '../utilities/codeUtilities'
 import { CANVAS_SIZE } from '../defaults'
 
 export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
@@ -23,13 +22,10 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 		overrides: overrides.animations,
 	})
 
-	let canvasSize
-	if (current.settings.initial.viewSettings && codeUtilities.isDefined(current.settings.initial.viewSettings.canvasSize)) {
-		canvasSize = current.settings.initial.viewSettings.canvasSize
-	}
-	else {
-		canvasSize = CANVAS_SIZE
-	}
+	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
+		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
+		defaultForProperty: CANVAS_SIZE,
+	})
 	canvas.width = canvasSize
 	canvas.height = canvasSize
 

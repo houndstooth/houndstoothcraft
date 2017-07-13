@@ -3,7 +3,7 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 describe('code utilities', () => {
 	describe('#iterator', () => {
 		let iterator
-		beforeEach(() => iterator = codeUtilities.iterator )
+		beforeEach(() => iterator = codeUtilities.iterator)
 
 		it('returns an array of integers counting up', () => {
 			expect(iterator(5)).toEqual([ 0, 1, 2, 3, 4 ])
@@ -18,7 +18,7 @@ describe('code utilities', () => {
 	describe('#wrappedIndex', () => {
 		let wrappedIndex, index
 		const array = [ 'a', 'b', 'c' ]
-		beforeEach(() => wrappedIndex = codeUtilities.wrappedIndex )
+		beforeEach(() => wrappedIndex = codeUtilities.wrappedIndex)
 
 		it('returns the element of the array at the given index', () => {
 			index = 1
@@ -48,7 +48,7 @@ describe('code utilities', () => {
 
 	describe('#shallowEqual', () => {
 		let shallowEqual
-		beforeEach(() => shallowEqual = codeUtilities.shallowEqual )
+		beforeEach(() => shallowEqual = codeUtilities.shallowEqual)
 
 		it('returns true if two objects have identical key value pairs', () => {
 			const a = { r: 5, a: 0 }
@@ -132,6 +132,24 @@ describe('code utilities', () => {
 			expect(parentObject).toEqual({
 				childPathFirstStep: {
 					childPathSecondStep: {},
+				},
+			})
+		})
+
+		it('does not override zeroes', () => {
+			const parentObject = {
+				childPathFirstStep: {
+					childPathSecondStep: 0,
+				},
+			}
+			const nestedPropertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+
+			const childObject = codeUtilities.accessChildObjectOrCreatePath({ parentObject, nestedPropertyPath })
+
+			expect(childObject).toBe(0)
+			expect(parentObject).toEqual({
+				childPathFirstStep: {
+					childPathSecondStep: 0,
 				},
 			})
 		})
@@ -223,6 +241,10 @@ describe('code utilities', () => {
 
 		it('even returns true if it is defined as false; that is the whole point of this thing', () => {
 			expect(isDefined(false)).toBe(true)
+		})
+
+		it('even returns true if it is defined as 0; that is the whole point of this thing', () => {
+			expect(isDefined(0)).toBe(true)
 		})
 
 		it('returns false if it is not defined', () => {

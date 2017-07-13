@@ -50,7 +50,7 @@ const deeperPath = ({ nestedPropertyPath, propertyName }) => {
 const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => {
 	let childObject = parentObject
 	nestedPropertyPath.forEach(pathStep => {
-		if (!childObject[ pathStep ]) childObject[ pathStep ] = {}
+		if (!isDefined(childObject[ pathStep ])) childObject[ pathStep ] = {}
 		childObject = childObject[ pathStep ]
 	})
 	return childObject

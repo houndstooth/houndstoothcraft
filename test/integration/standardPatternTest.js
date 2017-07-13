@@ -1,16 +1,16 @@
 import execute from '../../src/application/execute'
 import setup from '../../src/application/setup'
 import standardTileIsColors from '../helpers/standardTileIsColors'
+import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
 describe('standard houndstooth pattern', () => {
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
-		let originInPixels
 		const tileSizeInPixels = TILE_SIZE
 
 		setup({ effects: [] })
-
+		activateTestMarkerCanvas()
 		execute()
 
 		const firstSupertile = [

@@ -1,5 +1,6 @@
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
 import { BASE_STRIPE_DIAGONAL, CANVAS_SIZE } from '../defaults'
+import settingsUtilities from '../../src/utilities/settingsUtilities'
 
 const ROTATION_OFFSET_FOR_MINOR_DIAGONAL_STRIPES = 0
 const ROTATION_OFFSET_FOR_PRINCIPAL_DIAGONAL_STRIPES = QUARTER_OF_CIRCLE_ROTATION
@@ -26,9 +27,12 @@ const getShapeCenter = ({ tileOrigin, sizedUnit }) => [ tileOrigin[ 0 ] + sizedU
 const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 	const center = getShapeCenter({ tileOrigin, sizedUnit })
 
-	let { baseStripeDiagonal, viewSettings, gridSettings } = current.settings.initial
+	let { baseStripeDiagonal, gridSettings } = current.settings.initial
 	baseStripeDiagonal = baseStripeDiagonal || BASE_STRIPE_DIAGONAL
-	const canvasSize = viewSettings && viewSettings.canvasSize || CANVAS_SIZE
+	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
+		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
+		defaultForProperty: CANVAS_SIZE,
+	})
 	const gridRotationAboutGridCenter = gridSettings && gridSettings.gridRotationAboutGridCenter
 
 	let stripeDiagonalRotationOffset

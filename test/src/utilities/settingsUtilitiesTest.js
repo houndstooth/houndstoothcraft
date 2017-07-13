@@ -102,4 +102,50 @@ describe('settings utilities', () => {
 			expect(expectedObjectWithPropertiesOverriden).toEqual(objectWithPropertiesToBeOverridden)
 		})
 	})
+
+	describe('#getFromSettingsOrDefault', () => {
+		let getFromSettingsOrDefault
+		beforeEach(() => getFromSettingsOrDefault = settingsUtilities.getFromSettingsOrDefault)
+
+		it('gets the property from settings if it is defined', () => {
+			current.settings.animations = { specialMoves: { youKnowIt: 'awesome' } }
+
+			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
+			const defaultForProperty = 'will not matter'
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty })).toBe('awesome')
+		})
+
+		it('gets the property from settings even if it is zero; that is the whole point of this thing', () => {
+			current.settings.animations = { specialMoves: { youKnowIt: 0 } }
+
+			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
+			const defaultForProperty = 'will not matter'
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty })).toBe(0)
+		})
+
+		it('defaults the property if it is not defined', () => {
+			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
+			const defaultForProperty = 'defawesome'
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty })).toBe('defawesome')
+		})
+
+		it('works on an arbitrary custom object if provided', () => {
+			let customObject, nestedPropertyPath, defaultForProperty
+
+			customObject = { specialMoves: { youKnowIt: 'awesome' } }
+			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
+			defaultForProperty = 'will not matter'
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject })).toBe('awesome')
+
+			customObject = { specialMoves: { youKnowIt: 0 } }
+			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
+			defaultForProperty = 'will not matter'
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject })).toBe(0)
+
+			customObject = { antiSpecialMoves: { youKnowIt: 0 } }
+			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
+			defaultForProperty = 'defawesome'
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject, })).toBe('defawesome')
+		})
+	})
 })

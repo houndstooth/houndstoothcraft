@@ -1,10 +1,13 @@
 import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../defaults'
-import codeUtilities from './codeUtilities'
+import settingsUtilities from './settingsUtilities'
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	let { zoom, canvasSize, zoomOnCanvasCenter, centerViewOnCenterOfTileAtZeroZeroAddress } = current.settings.initial.viewSettings || {}
+	let { zoom, zoomOnCanvasCenter, centerViewOnCenterOfTileAtZeroZeroAddress } = current.settings.initial.viewSettings || {}
 	zoom = zoom || ZOOM
-	canvasSize = canvasSize || CANVAS_SIZE
+	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
+		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
+		defaultForProperty: CANVAS_SIZE,
+	})
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
@@ -24,13 +27,10 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	let canvasSize
-	if (current.settings.initial.viewSettings && codeUtilities.isDefined(current.settings.initial.viewSettings.canvasSize)) {
-		canvasSize = current.settings.initial.viewSettings.canvasSize
-	}
-	else {
-		canvasSize = CANVAS_SIZE
-	}
+	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
+		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
+		defaultForProperty: CANVAS_SIZE,
+	})
 	const canvasCenter = canvasSize / 2
 
 	const tileSize = getTileSize()
@@ -51,14 +51,10 @@ const adjustOrigin = ({ tileOrigin }) => {
 }
 
 const getTileSize = () => {
-	let tileSize
-	if (current.settings.initial.tileSettings && codeUtilities.isDefined(current.settings.initial.tileSettings.tileSize)) {
-		tileSize = current.settings.initial.tileSettings.tileSize
-	}
-	else {
-		tileSize = TILE_SIZE
-	}
-	return tileSize
+	return settingsUtilities.getFromSettingsOrDefault({
+		nestedPropertyPath: [ 'initial', 'tileSettings', 'tileSize' ],
+		defaultForProperty: TILE_SIZE,
+	})
 }
 
 const getSizedUnit = () => {

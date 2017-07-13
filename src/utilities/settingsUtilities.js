@@ -40,7 +40,32 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 	})
 }
 
+const getFromSettingsOrDefault = ({ nestedPropertyPath, defaultForProperty, customObject }) => {
+	let property
+	const parentObject = customObject || current.settings
+	let childObject = parentObject
+	let notThere
+	nestedPropertyPath.forEach(pathStep => {
+		if (notThere) return
+		if (!codeUtilities.isDefined(childObject[ pathStep ])) {
+			childObject = undefined
+			notThere = true
+			return
+		}
+		childObject = childObject[ pathStep ]
+	})
+
+	if (codeUtilities.isDefined(childObject)) {
+		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject, nestedPropertyPath })
+	}
+	else {
+		property = defaultForProperty
+	}
+	return property
+}
+
 export default {
 	prepareFunctionsPerSettingsProperty,
 	applyOverrides,
+	getFromSettingsOrDefault,
 }

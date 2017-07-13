@@ -1,16 +1,25 @@
+import setup from '../../src/application/setup'
 import execute from '../../src/application/execute'
+import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
 describe('baseStripeDiagonal', () => {
 	it('can be set to principal, to change the orientation of the stripes', () => {
-		current.settings.initial.baseStripeDiagonal = 'PRINCIPAL'
+		setup({
+			effects: [ ],
+			overrides: {
+				initial: {
+					baseStripeDiagonal: 'PRINCIPAL',
+				},
+			},
+		})
+		activateTestMarkerCanvas()
+		execute()
 
 		let originInPixels
 		const tileSizeInPixels = TILE_SIZE
-
-		execute()
 
 		originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

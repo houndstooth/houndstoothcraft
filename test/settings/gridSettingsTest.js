@@ -13,7 +13,7 @@ describe('grid settings', () => {
 				overrides: {
 					initial: {
 						colorSettings: {
-	        				set: [ BLACK, WHITE ],
+							set: [ BLACK, WHITE ],
 						},
 						gridSettings: {
 							gridSize: 3,
@@ -30,17 +30,17 @@ describe('grid settings', () => {
 				{ baseId: 8, originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
 				{ baseId: 16, originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ WHITE, BLACK ] },
 				{ baseId: 24, originInPixels: [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
-				
+
 				{ baseId: 32, originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ WHITE, WHITE ] },
 				{ baseId: 40, originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, WHITE ] },
 				{ baseId: 48, originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ WHITE, WHITE ] },
 				{ baseId: 56, originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
-				
+
 				{ baseId: 64, originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ WHITE, BLACK ] },
 				{ baseId: 72, originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
 				{ baseId: 80, originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ WHITE, BLACK ] },
 				{ baseId: 88, originInPixels: [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
-				
+
 				{ baseId: 96, originInPixels: [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
 				{ baseId: 104, originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
 				{ baseId: 112, originInPixels: [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },

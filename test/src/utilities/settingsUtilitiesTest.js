@@ -145,7 +145,7 @@ describe('settings utilities', () => {
 			customObject = { antiSpecialMoves: { youKnowIt: 0 } }
 			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
 			defaultForProperty = 'defawesome'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject, })).toBe('defawesome')
+			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject })).toBe('defawesome')
 		})
 	})
 })

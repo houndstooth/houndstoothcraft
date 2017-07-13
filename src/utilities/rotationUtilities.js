@@ -33,7 +33,7 @@ const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
 		defaultForProperty: CANVAS_SIZE,
 	})
-	const gridRotationAboutGridCenter = gridSettings && gridSettings.gridRotationAboutGridCenter
+	const gridRotationAboutCanvasCenter = gridSettings && gridSettings.gridRotationAboutCanvasCenter
 
 	let stripeDiagonalRotationOffset
 	if (baseStripeDiagonal === 'MINOR') {
@@ -50,11 +50,11 @@ const applyRotationToShape = ({ coordinates, tileOrigin, sizedUnit }) => {
 		})
 	}
 
-	if (gridRotationAboutGridCenter) {
+	if (gridRotationAboutCanvasCenter) {
 		coordinates = rotateCoordinatesAboutPoint({
 			point: [ canvasSize / 2, canvasSize / 2 ],
 			coordinates: coordinates,
-			rotation: gridRotationAboutGridCenter,
+			rotation: gridRotationAboutCanvasCenter,
 		})
 	}
 

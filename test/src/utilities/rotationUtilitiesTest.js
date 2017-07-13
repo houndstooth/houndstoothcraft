@@ -86,10 +86,10 @@ describe('rotation utilities', () => {
 			beforeEach(() => {
 				tileOrigin = [ 0, 0 ]
 				sizedUnit = 5
-				current.settings.initial.gridSettings = { gridRotationAboutGridCenter: QUARTER_OF_CIRCLE_ROTATION }
+				current.settings.initial.gridSettings = { gridRotationAboutCanvasCenter: QUARTER_OF_CIRCLE_ROTATION }
 			})
 
-			it('can rotate coordinates about the grid center', () => {
+			it('can rotate coordinates about the canvas center', () => {
 				current.settings.initial.viewSettings = { canvasSize: 100 }
 
 				const result = applyRotationToShape({ coordinates, tileOrigin, sizedUnit })

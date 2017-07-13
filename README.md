@@ -10,7 +10,7 @@
     },
     gridSettings: {
         gridSize: number,
-        gridRotationAboutGridCenter: number,
+        gridRotationAboutCanvasCenter: number,
         includeNegativeQuadrants: boolean
     },
     tileSettings: {

@@ -1,7 +1,7 @@
 import 'jasmine'
 import '../globalCurrent'
 import clear from '../src/render/clear'
-import testClear from './helpers/testClear'
+import testMarkersClear from './helpers/testMarkersClear'
 
 beforeEach(() => {
 	Object.keys(current.settings.initial).forEach(key => delete current.settings.initial[ key ])
@@ -12,13 +12,13 @@ beforeEach(() => {
 	current.lastSavedAnimationFrame = 0
 	current.interval = null
 	clear()
-	testClear()
+	testMarkersClear()
 })
 
 describe('when you run the entire test suite', () => {
 	it('hides canvases', () => {
-		const place = document.querySelector('.place')
-		if (place) place.style.display = 'none'
+		const testCanvasDisplayArea = document.querySelector('.testCanvasDisplayArea')
+		if (testCanvasDisplayArea) testCanvasDisplayArea.style.display = 'none'
 		const realCanvas = document.querySelector('.realCanvas')
 		if (realCanvas) realCanvas.style.display = 'none'
 	})

@@ -1,17 +1,17 @@
-import testContext from './testContext'
+import testMarkersContext from './testMarkersContext'
 
 export default (passed, coordinate, id) => {
-	testContext.strokeStyle = passed ? 'green' : 'red'
-	testContext.beginPath()
+	testMarkersContext.strokeStyle = passed ? 'green' : 'red'
+	testMarkersContext.beginPath()
 
-	testContext.arc(coordinate[0], coordinate[1], 2, 0, 2 * Math.PI)
+	testMarkersContext.arc(coordinate[0], coordinate[1], 2, 0, 2 * Math.PI)
 
-	testContext.closePath()
-	testContext.stroke()
+	testMarkersContext.closePath()
+	testMarkersContext.stroke()
 
 	if (!passed) {
-		testContext.font = "8px Arial"
-		testContext.fillStyle = 'red'
-		testContext.fillText(id, coordinate[0] + 3, coordinate[1] + 3)
+		testMarkersContext.font = '8px Arial'
+		testMarkersContext.fillStyle = 'red'
+		testMarkersContext.fillText(id, coordinate[0] + 3, coordinate[1] + 3)
 	}
 }

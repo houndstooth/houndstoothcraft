@@ -1,4 +1,4 @@
-import testContext from './testContext'
+import testContext from './testMarkersContext'
 import { CANVAS_SIZE } from '../../src/defaults'
 import settingsUtilities from '../../src/utilities/settingsUtilities'
 

@@ -140,7 +140,7 @@ describe('.gridSettings', () => {
 			expect(tileSectorCenterIsColor({ id: 15, originInPixels, tileSizeInPixels, x: 3, y: 2, n: 4, color: BLACK })).toBe(true)
 
 			expect(tileSectorCenterIsColor({ id: 16, originInPixels, tileSizeInPixels, x: 3, y: 0, n: 4, color: TRANSPARENT })).toBe(true)
-		
+
 			originInPixels = [ 200, 50 ]
 
 			expect(tileSectorCenterIsColor({ id: 17, originInPixels, tileSizeInPixels, x: 0, y: 3, n: 4, color: TRANSPARENT })).toBe(true)

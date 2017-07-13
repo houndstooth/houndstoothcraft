@@ -20,7 +20,7 @@ const sectorCenter = ({ originInPixels, x, y, n, tileSizeInPixels }) => {
 }
 
 const isCloseTo = (numberOne, numberTwo) => {
-	const precision = 5
+	const precision = 2
 
 	let pow = Math.pow(10, precision + 1)
 	let delta = Math.abs(numberOne - numberTwo)

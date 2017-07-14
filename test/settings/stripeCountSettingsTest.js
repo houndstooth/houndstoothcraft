@@ -45,14 +45,8 @@ describe('.stripeCountSettings', () => {
 			const tile = { baseId: 0, originInPixels: [ 0 , 0 ], tileSizeInPixels: TILE_SIZE, colors: [ HALF_TRANSPARENT_BLACK, HALF_TRANSPARENT_BLACK ] }
 			expect(standardTileIsColors(tile)).toBe(true)
 		})
-
-		xit('works in gingham chevron continuum mode', () => {
-		})
 	})
 
 	xdescribe('.stripeCount', () => {
-	})
-
-	xdescribe('.ginghamChevronContinuum', () => {
 	})
 })

@@ -87,10 +87,10 @@ describe('code utilities', () => {
 				colorSettings: {
 					set: [ 0, 1 ],
 				},
-				mode: 'COOLNESS',
+				someMode: 'COOLNESS',
 			}
 			const objectToResetTo = {
-				mode: 'OG_NESS',
+				someMode: 'OG_NESS',
 				foo: 'bar',
 			}
 
@@ -100,7 +100,7 @@ describe('code utilities', () => {
 				colorSettings: {
 					set: [ 0, 1 ],
 				},
-				mode: 'OG_NESS',
+				someMode: 'OG_NESS',
 				foo: 'bar',
 			}
 			expect(objectToReset).toEqual(expectedObject)

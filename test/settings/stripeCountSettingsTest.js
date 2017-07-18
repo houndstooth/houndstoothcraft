@@ -7,14 +7,14 @@ import { BLACK, TRANSPARENT } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 
 describe('.stripeCountSettings', () => {
-	describe('.mode', () => {
+	describe('.stripeCountMode', () => {
 		let overrides
 		beforeEach(() => {
 			overrides = {
 				initial: {
 					viewSettings: { canvasSize: TILE_SIZE },
 					gridSettings: { gridSize: 1 },
-					stripeCountSettings: { mode: undefined },
+					stripeCountSettings: { stripeCountMode: undefined },
 				},
 			}
 		})
@@ -35,7 +35,7 @@ describe('.stripeCountSettings', () => {
 		})
 
 		it('works in gingham mode', () => {
-			overrides.initial.stripeCountSettings.mode = 'GINGHAM'
+			overrides.initial.stripeCountSettings.stripeCountMode = 'GINGHAM'
 			setup({ effects: [], overrides })
 			activateTestMarkerCanvas()
 

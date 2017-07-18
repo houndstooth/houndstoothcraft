@@ -16,7 +16,7 @@ describe('grid utilities', () => {
 			settings = {
 				set: setForGrid,
 				assignment: {
-					mode: 'WEAVE',
+					assignmentMode: 'WEAVE',
 					weave: {
 						columns: [ undefined, 1 ],
 						rows: [ undefined, undefined, 3 ],
@@ -39,7 +39,7 @@ describe('grid utilities', () => {
 			settings = {
 				set: setForGrid,
 				assignment: {
-					mode: 'SUPERTILE',
+					assignmentMode: 'SUPERTILE',
 					supertile: [
 						[ [], expectedSupertileEntry ],
 						[ [], [] ],
@@ -57,7 +57,7 @@ describe('grid utilities', () => {
 			const expectedSetForTile = [ COLOR_SET[ 1 ], COLOR_SET[ 0 ] ]
 			settings = {
 				assignment: {
-					mode: 'WEAVE',
+					assignmentMode: 'WEAVE',
 					weave: {
 						columns: [ undefined, 0 ],
 						rows: [ undefined, 1 ],
@@ -101,7 +101,7 @@ describe('grid utilities', () => {
 					const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 					settings = {
 						set: setForGrid,
-						assignment: { mode: 'WEAVE'	},
+						assignment: { assignmentMode: 'WEAVE'	},
 					}
 
 					expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
@@ -115,7 +115,7 @@ describe('grid utilities', () => {
 
 					settings = {
 						set: setForGrid,
-						assignment: { mode: 'SUPERTILE' },
+						assignment: { assignmentMode: 'SUPERTILE' },
 					}
 
 					expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
@@ -132,7 +132,7 @@ describe('grid utilities', () => {
 			settings = {
 				set: setForGrid,
 				assignment: {
-					mode: 'WEAVE',
+					assignmentMode: 'WEAVE',
 					offsetAddress,
 					weave: {
 						columns: [ 1, undefined ],
@@ -152,7 +152,7 @@ describe('grid utilities', () => {
 			settings = {
 				set: setForGrid,
 				assignment: {
-					mode: 'SUPERTILE',
+					assignmentMode: 'SUPERTILE',
 					offsetAddress,
 					supertile: [
 						[ [], [] ],
@@ -174,7 +174,7 @@ describe('grid utilities', () => {
 			settings = {
 				set: setForGrid,
 				assignment: {
-					mode: 'WEAVE',
+					assignmentMode: 'WEAVE',
 					offsetSetForGridIndex,
 					weave: {
 						columns: [ undefined, 1 ],
@@ -194,7 +194,7 @@ describe('grid utilities', () => {
 			settings = {
 				set: setForGrid,
 				assignment: {
-					mode: 'SUPERTILE',
+					assignmentMode: 'SUPERTILE',
 					offsetSetForGridIndex,
 					supertile: [
 						[ [], expectedSupertileEntry ],
@@ -222,7 +222,7 @@ describe('grid utilities', () => {
 				set: setForGrid,
 				assignment: {
 					switcheroo: true,
-					mode: 'SUPERTILE',
+					assignmentMode: 'SUPERTILE',
 					supertile: [
 						[ [ 0, 1 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
 						[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 7, 8 ] ],

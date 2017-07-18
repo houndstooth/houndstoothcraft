@@ -31,7 +31,7 @@ describe('color utilities', () => {
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
 			spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
-			current.settings.initial.stripeCountSettings = { mode: 'GINGHAM' }
+			current.settings.initial.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
 

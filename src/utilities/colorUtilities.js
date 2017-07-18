@@ -10,8 +10,8 @@ const getColorsForTile = ({ address, colorSettings }) => {
 
 	let tileColors = gridUtilities.getSetForTile({ address, settings: colorSettings })
 
-	const { mode } = current.settings.initial.stripeCountSettings || {}
-	if (mode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
+	const { stripeCountMode } = current.settings.initial.stripeCountSettings || {}
+	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = settingsUtilities.getFromSettingsOrDefault({
 		nestedPropertyPath: [ 'opacity' ],

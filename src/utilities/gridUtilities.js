@@ -9,15 +9,15 @@ const getSetForTile = ({ address, settings }) => {
 	setForGrid = setForGrid || COLOR_SET
 	assignment = assignment || COLOR_ASSIGNMENT
 
-	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, mode, supertile, weave, flipGrain, switcheroo } = assignment
+	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, assignmentMode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
 	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
-	mode = mode || COLOR_ASSIGNMENT.mode
+	assignmentMode = assignmentMode || COLOR_ASSIGNMENT.assignmentMode
 	supertile = supertile || COLOR_ASSIGNMENT.supertile
 	weave = weave || COLOR_ASSIGNMENT.weave
 	let setForTile
-	if (mode === 'WEAVE') {
+	if (assignmentMode === 'WEAVE') {
 		const { rows, columns } = weave
 		const columnsIndex = wrappedIndex({ array: columns, index: address[ 0 ] + addressOffset[ 0 ] })
 		const rowsIndex = wrappedIndex({ array: rows, index: address[ 1 ] + addressOffset[ 1 ] })
@@ -26,7 +26,7 @@ const getSetForTile = ({ address, settings }) => {
 			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset }),
 		]
 	}
-	else if (mode === 'SUPERTILE') {
+	else if (assignmentMode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: address[ 0 ] + addressOffset[ 0 ] })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: address[ 1 ] + addressOffset[ 1 ] })
 		setForTile = supertileEntry.map(index => wrappedIndex({

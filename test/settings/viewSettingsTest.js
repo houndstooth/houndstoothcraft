@@ -48,18 +48,120 @@ describe('.viewSettings', () => {
 
 			execute()
 
-			expect(standardTileIsColors({ baseId: 0, originInPixels: [ 0 * zoom * TILE_SIZE, 0 * zoom * TILE_SIZE ], tileSizeInPixels: zoom * TILE_SIZE, colors: [ TRANSPARENT, BLACK ] })).toBe(true)
-			expect(standardTileIsColors({ baseId: 8, originInPixels: [ 1 * zoom * TILE_SIZE, 0 * zoom * TILE_SIZE ], tileSizeInPixels: zoom * TILE_SIZE, colors: [ TRANSPARENT, TRANSPARENT ] })).toBe(true)
-			expect(standardTileIsColors({ baseId: 16, originInPixels: [ 0 * zoom * TILE_SIZE, 1 * zoom * TILE_SIZE ], tileSizeInPixels: zoom * TILE_SIZE, colors: [ BLACK, BLACK ] })).toBe(true)
-			expect(standardTileIsColors({ baseId: 24, originInPixels: [ 1 * zoom * TILE_SIZE, 1 * zoom * TILE_SIZE ], tileSizeInPixels: zoom * TILE_SIZE, colors: [ BLACK, TRANSPARENT ] })).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 0,
+				originInPixels: [ 0 * zoom * TILE_SIZE, 0 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ TRANSPARENT, BLACK ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 8,
+				originInPixels: [ 1 * zoom * TILE_SIZE, 0 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ TRANSPARENT, TRANSPARENT ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 16,
+				originInPixels: [ 0 * zoom * TILE_SIZE, 1 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ BLACK, BLACK ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 24,
+				originInPixels: [ 1 * zoom * TILE_SIZE, 1 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ BLACK, TRANSPARENT ],
+			})).toBe(true)
 		})
 	})
 
-	xdescribe('zoomOnCanvasCenter', () => {
+	describe('.zoomOnCanvasCenter', () => {
+		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
+			const zoom = 2
+			setup({
+				effects: [],
+				overrides: {
+					initial: {
+						viewSettings: {
+							zoomOnCanvasCenter: true,
+							zoom: 2,
+						},
+						gridSettings: { gridSize: 8 },
+					},
+				},
+			})
+			activateTestMarkerCanvas()
 
+			execute()
+
+			expect(standardTileIsColors({
+				baseId: 0,
+				originInPixels: [ 3 * zoom * TILE_SIZE, 3 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ BLACK, TRANSPARENT ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 8,
+				originInPixels: [ 3 * zoom * TILE_SIZE, 4 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ TRANSPARENT, TRANSPARENT ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 16,
+				originInPixels: [ 4 * zoom * TILE_SIZE, 3 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ TRANSPARENT, TRANSPARENT ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 24,
+				originInPixels: [ 4 * zoom * TILE_SIZE, 4 * zoom * TILE_SIZE ],
+				tileSizeInPixels: zoom * TILE_SIZE,
+				colors: [ TRANSPARENT, TRANSPARENT ],
+			})).toBe(true)
+		})
 	})
 
-	xdescribe('centerViewOnCenterOfTileAtZeroZeroAddress', () => {
+	describe('.centerViewOnCenterOfTileAtZeroZeroAddress', () => {
+		it('is self-explanatory', () => {
+			const tileSize = 100
+			setup({
+				effects: [],
+				overrides: {
+					initial: {
+						tileSettings: { tileSize },
+						viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
+						gridSettings: { gridSize: 2 },
+					},
+				},
+			})
+			activateTestMarkerCanvas()
 
+			execute()
+
+			expect(standardTileIsColors({
+				baseId: 0,
+				originInPixels: [ 350, 350 ],
+				tileSizeInPixels: 100,
+				colors: [ TRANSPARENT, BLACK ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 8,
+				originInPixels: [ 450, 350 ],
+				tileSizeInPixels: 100,
+				colors: [ TRANSPARENT, TRANSPARENT ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 16,
+				originInPixels: [ 350, 450 ],
+				tileSizeInPixels: 100,
+				colors: [ BLACK, BLACK ],
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: 24,
+				originInPixels: [ 450, 450 ],
+				tileSizeInPixels: 100,
+				colors: [ BLACK, TRANSPARENT ],
+			})).toBe(true)
+		})
 	})
 })

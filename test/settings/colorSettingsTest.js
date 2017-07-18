@@ -2,7 +2,7 @@ import setup from '../../src/application/setup'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
-import { BLACK, YELLOW, BLUE, CYAN } from '../../src/constants'
+import { BLACK, TRANSPARENT, YELLOW, BLUE, CYAN } from '../../src/constants'
 import { TILE_SIZE } from '../../src/defaults'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import codeUtilities from '../../src/utilities/codeUtilities'
@@ -96,14 +96,77 @@ describe('.colorSettings', () => {
 		})
 
 		describe('.switcheroo', () => {
-			xit('causes the pattern to turn into strung along teeth flipping directions', () => {
+			it('causes the two striped tiles to alternate by diagonal rather than rows/columns', () => {
+				const tileSizeInPixels = TILE_SIZE
+				const sufficientTileCountToDemonstrateSetting = 4
+				setup({
+					effects: [ ],
+					overrides: {
+						initial: {
+							colorSettings: {
+								assignment: {
+									switcheroo: true,
+								},
+							},
+							gridSettings: {
+								gridSize: sufficientTileCountToDemonstrateSetting,
+							},
+							viewSettings: {
+								canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+							},
+						},
+					},
+				})
+				activateTestMarkerCanvas()
 
+				execute()
+
+				expect(standardTileIsColors({ baseId: 0, originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] })).toBe(true)
+				expect(standardTileIsColors({ baseId: 8, originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] })).toBe(true)
+				expect(standardTileIsColors({ baseId: 16, originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] })).toBe(true)
+				expect(standardTileIsColors({ baseId: 24, originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] })).toBe(true)
+
+				expect(standardTileIsColors({ baseId: 32, originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] })).toBe(true)
+				expect(standardTileIsColors({ baseId: 40, originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] })).toBe(true)
+				expect(standardTileIsColors({ baseId: 48, originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] })).toBe(true)
+				expect(standardTileIsColors({ baseId: 56, originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] })).toBe(true)
 			})
 		})
 
 		describe('.flipGrain', () => {
-			xit('rotates the stripes by 180 degrees, in effect reversing the grain of the pattern', () => {
+			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
+				const tileSizeInPixels = TILE_SIZE
+				const sufficientTileCountToDemonstrateSetting = 2
+				setup({
+					effects: [ ],
+					overrides: {
+						initial: {
+							colorSettings: {
+								assignment: {
+									flipGrain: true,
+								},
+							},
+							gridSettings: {
+								gridSize: sufficientTileCountToDemonstrateSetting,
+							},
+							viewSettings: {
+								canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+							},
+						},
+					},
+				})
+				activateTestMarkerCanvas()
 
+				execute()
+
+				const tiles = [
+					{ baseId: 0, originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, TRANSPARENT ] },
+					{ baseId: 8, originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ BLACK, BLACK ] },
+					{ baseId: 16, originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, TRANSPARENT ] },
+					{ baseId: 24, originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ], tileSizeInPixels, colors: [ TRANSPARENT, BLACK ] },
+				]
+
+				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 			})
 		})
 	})

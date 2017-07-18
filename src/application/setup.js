@@ -6,6 +6,13 @@ import { CANVAS_SIZE } from '../defaults'
 export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 	const combinedEffects = combineEffects({ effects })
 
+	if (
+		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(current.settings) ||
+		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(overrides)
+	) {
+		return
+	}
+
 	setupObject({
 		objectToSetup: current.settings.initial,
 		effects: combinedEffects.initial,
@@ -49,9 +56,10 @@ const combineEffects = ({ effects }) => {
 	const iterations = {}
 	const animations = {}
 
-	const { applyOverrides } = settingsUtilities
+	const { applyOverrides, confirmSettingsObjectsParentIncludesOnlySettingsObjects } = settingsUtilities
 
 	effects.forEach(effect => {
+		if (!confirmSettingsObjectsParentIncludesOnlySettingsObjects(effect)) return
 		applyOverrides({
 			objectWithPropertiesToBeOverridden: initial,
 			objectWithPropertyOverrides: effect.initial,

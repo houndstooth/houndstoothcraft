@@ -251,4 +251,27 @@ describe('code utilities', () => {
 			expect(isDefined(undefined)).toBe(false)
 		})
 	})
+
+	describe('#propertyIsDefinedOnObject', () => {
+		let propertyIsDefinedOnObject
+		beforeEach(() => propertyIsDefinedOnObject = codeUtilities.propertyIsDefinedOnObject)
+
+		it('returns true if the property of the object is defined', () => {
+			const propertyName = 'pants'
+			const objectMaybeWithProperty = { pants: 'yup' }
+			expect(propertyIsDefinedOnObject({ propertyName, objectMaybeWithProperty })).toBe(true)
+		})
+
+		it('even returns true if the property of the object is defined as false', () => {
+			const propertyName = 'pants'
+			const objectMaybeWithProperty = { pants: false }
+			expect(propertyIsDefinedOnObject({ propertyName, objectMaybeWithProperty })).toBe(true)
+		})
+
+		it('returns false if the property is not defined on the object', () => {
+			const propertyName = 'pants'
+			const objectMaybeWithProperty = { plants: 'nope' }
+			expect(propertyIsDefinedOnObject({ propertyName, objectMaybeWithProperty })).toBe(false)
+		})
+	})
 })

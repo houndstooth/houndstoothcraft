@@ -1,3 +1,4 @@
+import codeUtilities from '../../../src/utilities/codeUtilities'
 import setup from '../../../src/application/setup'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 
@@ -19,6 +20,8 @@ describe('setup', () => {
 	})
 
 	it('sets up settings', () => {
+		spyOn(codeUtilities, 'propertyIsDefinedOnObject').and.returnValue(true)
+
 		let propertyFunctionOneD = () => 'D'
 		let propertyFunctionOneE = () => 'E'
 		let propertyFunctionOneG = () => 'G'
@@ -76,5 +79,33 @@ describe('setup', () => {
 			propertyH: propertyFunctionOneH,
 			propertyI: propertyFunctionTwoI,
 		}))
+	})
+
+	describe('when there are non-settings objects', () => {
+		beforeEach(() => {
+			spyOn(consoleWrapper, 'error')
+		})
+
+		describe('on an effect', () => {
+			it('does not proceed to merge any settings onto the global spot', () => {
+				setup({ effects: [ { yikes: {} } ] })
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+			})
+		})
+
+		describe('on the overrides', () => {
+			it('does not proceed to merge any settings onto the global spot', () => {
+				setup({ overrides: { yikes: {} } })
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+			})
+		})
+
+		describe('on the global current (somehow)', () => {
+			it('does not proceed to merge any settings onto the global spot', () => {
+				current.settings.yikes = {}
+				setup({ initial: {} })
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+			})
+		})
 	})
 })

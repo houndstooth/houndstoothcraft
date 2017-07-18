@@ -60,6 +60,10 @@ const defaultToTrue = property => isDefined(property) ? property : true
 
 const isDefined = property => typeof property !== 'undefined'
 
+const propertyIsDefinedOnObject = ({ propertyName, objectMaybeWithProperty }) => {
+	return isDefined(objectMaybeWithProperty[propertyName])
+}
+
 export default {
 	iterator,
 	wrappedIndex,
@@ -70,4 +74,5 @@ export default {
 	accessChildObjectOrCreatePath,
 	defaultToTrue,
 	isDefined,
+	propertyIsDefinedOnObject,
 }

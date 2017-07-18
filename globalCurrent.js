@@ -1,11 +1,4 @@
-global.current = {
-	iterationFrame: 0,
-	animationFrame: 0,
-	lastSavedAnimationFrame: 0,
-	interval: null,
-	settings: {
-		initial: {},
-		animations: {},
-		iterations: {},
-	},
-}
+import initialState from './src/initialState'
+import codeUtilities from './src/utilities/codeUtilities'
+
+global.current = codeUtilities.deepClone(initialState)

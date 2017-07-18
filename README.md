@@ -6,12 +6,12 @@
         canvasSize: number,
         zoom: number,
         zoomOnCanvasCenter: boolean,
-        centerViewOnCenterOfTileAtZeroZeroAddress: boolean
+        centerViewOnCenterOfTileAtZeroZeroAddress: boolean,
     },
     gridSettings: {
         gridSize: number,
         gridRotationAboutCanvasCenter: number,
-        includeNegativeQuadrants: boolean
+        includeNegativeQuadrants: boolean,
     },
     tileSettings: {
         tileSize: number,
@@ -20,15 +20,15 @@
         tileToShapes: function (returns ?),
         getCoordinates: {
             whenTileIsUniform: function (returns ?),
-            whenTileIsMultiform: function (returns ?)
-        }
+            whenTileIsMultiform: function (returns ?),
+        },
     },
     colorSettings: (this is itself a settings) {
         set: array of colors (use ts),
         houndazzle: {
             substripeCount: number,
             dazzleContinuum: boolean,
-            orientationSettings: settings (use ts)
+            orientationSettings: settings (use ts),
         },
         assignment: {
             switcheroo: boolean,
@@ -36,26 +36,27 @@
             assignmentMode: string (use ts to limit),
             offsetAddress: coordinate (use ts),
             supertile: array of array of coordinate,
-            weave: weave (use ts)
+            weave: weave (use ts),
+            transformAssignedSet: function (returns ?),
         },
-        opacity: scalar (number 0 to 1)
+        opacity: scalar (number 0 to 1),
     },
     stripeCountSettings: {
         stripeCountMode: string (use ts to limit),
         stripeCount: number,
-        ginghamChevronContinuum: gcc (use ts)
+        ginghamChevronContinuum: gcc (use ts),
     },
     gatherOptions: function (returns ?),
-    baseStripeDiagonal: string (use ts to limit)
+    baseStripeDiagonal: string (use ts to limit),
     getTileOriginAndSizedUnit: function (returns ?),
     getStripePositions: function (returns array of numbers),
     animation: {
         frameRate: number,
-        refreshCanvas: boolean
+        refreshCanvas: boolean,
     },
     iteration: {
         startIteration: number,
-        endIteration: number
-    }
+        endIteration: number,
+    },
 }
 ```

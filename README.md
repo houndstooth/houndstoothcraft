@@ -7,10 +7,10 @@
         zoom: number,
         zoomOnCanvasCenter: boolean,
         centerViewOnCenterOfTileAtZeroZeroAddress: boolean,
+        rotateViewAboutCanvasCenter: number,
     },
     gridSettings: {
         gridSize: number,
-        gridRotationAboutCanvasCenter: number,
         includeNegativeQuadrants: boolean,
     },
     tileSettings: {
@@ -48,7 +48,7 @@
     },
     gatherOptions: function (returns ?),
     baseStripeDiagonal: string (use ts to limit),
-    getTileOriginAndSizedUnit: function (returns ?),
+    getTileOriginAndSize: function (returns ?),
     getStripePositions: function (returns array of numbers),
     animation: {
         frameRate: number,

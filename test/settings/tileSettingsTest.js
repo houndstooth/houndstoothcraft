@@ -20,6 +20,7 @@ describe('.tileSettings', () => {
 				},
 			})
 			activateTestMarkerCanvas()
+
 			execute()
 
 			const tiles = [
@@ -47,6 +48,7 @@ describe('.tileSettings', () => {
 					},
 				})
 				activateTestMarkerCanvas()
+
 				execute()
 
 				const tiles = [

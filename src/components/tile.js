@@ -1,7 +1,7 @@
 import colorUtilities from '../utilities/colorUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import shape from './shape'
-import transpositionUtilities from '../utilities/transpositionUtilities'
+import componentUtilities from '../utilities/componentUtilities'
 import gatherOptions from '../application/gatherOptions'
 import stripeUtilities from '../utilities/stripeUtilities'
 import squareCoordinates from '../shapes/squareCoordinates'
@@ -9,7 +9,7 @@ import stripeCoordinates from '../shapes/stripeCoordinates'
 import { PERIMETER_SCALAR } from '../constants'
 
 export default ({ address }) => {
-	const { tileOrigin, sizedUnit } = transpositionUtilities.getTileOriginAndSizedUnit({ address })
+	const { tileOrigin, tileSize } = componentUtilities.getTileOriginAndSize({ address })
 	if (!tileOrigin) return
 
 	const tileColors = colorUtilities.getColorsForTile({ address })
@@ -32,7 +32,7 @@ export default ({ address }) => {
 				address,
 				tileColors,
 				tileOrigin,
-				sizedUnit,
+				tileSize,
 				options,
 			})
 			return
@@ -46,7 +46,7 @@ export default ({ address }) => {
 			address,
 			tileColors,
 			tileOrigin,
-			sizedUnit,
+			tileSize,
 			options,
 			colorsIndex: stripeIndex,
 			stripeIndex,

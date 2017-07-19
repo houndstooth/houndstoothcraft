@@ -4,10 +4,10 @@ export default {
 		zoom: true,
 		zoomOnCanvasCenter: true,
 		centerViewOnCenterOfTileAtZeroZeroAddress: true,
+		rotateViewAboutCanvasCenter: true,
 	},
 	gridSettings: {
 		gridSize: true,
-		gridRotationAboutCanvasCenter: true,
 		includeNegativeQuadrants: true,
 	},
 	tileSettings: {
@@ -60,7 +60,7 @@ export default {
 		getDazzle: true,
 	},
 	baseStripeDiagonal: true,
-	getTileOriginAndSizedUnit: true,
+	getTileOriginAndSize: true,
 	getStripePositions: true,
 	animation: {
 		frameRate: true,

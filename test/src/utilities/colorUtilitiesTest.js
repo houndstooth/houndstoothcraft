@@ -1,5 +1,5 @@
 import colorUtilities from '../../../src/utilities/colorUtilities'
-import gridUtilities from '../../../src/utilities/gridUtilities'
+import componentUtilities from '../../../src/utilities/componentUtilities'
 import setup from '../../../src/settings/setup'
 
 describe('color utilities', () => {
@@ -8,20 +8,20 @@ describe('color utilities', () => {
 	describe('#getColorsForTile', () => {
 		it('defaults to the initial color settings on the settings', () => {
 			const address = []
-			spyOn(gridUtilities, 'getSetForTile')
+			spyOn(componentUtilities, 'getSetForTile')
 			const defaultSettings = { importantThing: 'boingo' }
 			current.settings.initial.colorSettings = defaultSettings
 
 			colorUtilities.getColorsForTile({ address })
 
-			expect(gridUtilities.getSetForTile.calls.all()[ 0 ].args[ 0 ]).toEqual(
+			expect(componentUtilities.getSetForTile.calls.all()[ 0 ].args[ 0 ]).toEqual(
 				{ address, settings: defaultSettings }
 			)
 		})
 
 		it('returns the tile colors gotten from the grid utilities', () => {
 			const tileColors = []
-			spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
+			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
 
@@ -33,7 +33,7 @@ describe('color utilities', () => {
 				{ r: 1, g: 2, b: 50, a: 1 },
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
-			spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
+			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 			current.settings.initial.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
@@ -49,7 +49,7 @@ describe('color utilities', () => {
 					{ r: 1, g: 2, b: 3, a: 1 },
 					{ r: 3, g: 2, b: 1, a: 0.5 },
 				]
-				spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
+				spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 
 				const result = colorUtilities.getColorsForTile({ address: [], colorSettings })
 
@@ -66,7 +66,7 @@ describe('color utilities', () => {
 					{ r: 1, g: 2, b: 3, a: 1 },
 					{ r: 3, g: 2, b: 1, a: 0.5 },
 				]
-				spyOn(gridUtilities, 'getSetForTile').and.returnValue(tileColors)
+				spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 
 				const result = colorUtilities.getColorsForTile({ address: [], colorSettings })
 

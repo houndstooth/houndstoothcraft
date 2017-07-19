@@ -1,4 +1,6 @@
+import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
 import codeUtilities from './codeUtilities'
+import rotationUtilities from './rotationUtilities'
 
 const getSetForTile = ({ address, settings }) => {
 	const { wrappedIndex } = codeUtilities
@@ -57,6 +59,36 @@ const switcherooSet = ({ setForTile, address }) => {
 	return setForTile
 }
 
+const rotateShapeAboutShapeCenter = ({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize }) => {
+	if (current.settings.initial.baseStripeDiagonal === 'PRINCIPAL') {
+		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
+			point: [
+				zoomedAndScrolledTileOrigin[ 0 ] + zoomedTileSize / 2,
+				zoomedAndScrolledTileOrigin[ 1 ] + zoomedTileSize / 2,
+			],
+			coordinates: coordinates,
+			rotation: QUARTER_OF_CIRCLE_ROTATION,
+		})
+	}
+
+	return coordinates
+}
+
+const getStandardTileOriginAndSize = ({ address }) => {
+	const tileSize = current.settings.initial.tileSettings.tileSize
+	return {
+		tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ],
+		tileSize,
+	}
+}
+
+const getTileOriginAndSize = ({ address }) => {
+	const getTileOriginAndSize = current.settings.initial.getTileOriginAndSize || getStandardTileOriginAndSize
+	return getTileOriginAndSize({ address })
+}
+
 export default {
 	getSetForTile,
+	rotateShapeAboutShapeCenter,
+	getTileOriginAndSize,
 }

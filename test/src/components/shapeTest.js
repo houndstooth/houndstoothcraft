@@ -1,19 +1,22 @@
 import shape from '../../../src/components/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import rotationUtilities from '../../../src/utilities/rotationUtilities'
+import componentUtilities from '../../../src/utilities/componentUtilities'
+import viewUtilities from '../../../src/utilities/viewUtilities'
+import setup from '../../../src/settings/setup'
 
 describe('shape', () => {
 	let renderSpy
-	let tileOrigin
-	let sizedUnit
-	let tileColors
-	let colorsIndex
+	const tileOrigin = [ 11, 13 ]
+	const tileSize = 45
+	const tileColors = []
+	const colorsIndex = 7
 	let getCoordinates
-	let coordinatesOptions
-	let rotatedCoordinates
+	const coordinatesOptions = {}
+	const coordinatesRotatedAboutShapeCenter = []
 
 	beforeEach(() => {
-		spyOn(rotationUtilities, 'applyRotationToShape').and.returnValue(rotatedCoordinates)
+		setup()
+		spyOn(componentUtilities, 'rotateShapeAboutShapeCenter').and.returnValue(coordinatesRotatedAboutShapeCenter)
 		renderSpy = jasmine.createSpy()
 		getCoordinates = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
@@ -23,7 +26,7 @@ describe('shape', () => {
 		it('looks for the color in the tile colors using the colors index', () => {
 			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 0 })
 
-			shape({ tileOrigin, sizedUnit, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
 
 			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({ array: tileColors, index: colorsIndex })
 		})
@@ -35,10 +38,10 @@ describe('shape', () => {
 		})
 
 		it('returns early, not bothering to get the coordinates, rotate them, or render', () => {
-			shape({ tileOrigin, sizedUnit, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
 
 			expect(getCoordinates).not.toHaveBeenCalled()
-			expect(rotationUtilities.applyRotationToShape).not.toHaveBeenCalled()
+			expect(componentUtilities.rotateShapeAboutShapeCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
@@ -50,10 +53,10 @@ describe('shape', () => {
 		})
 
 		it('returns early, not trying to rotate nothing or render', () => {
-			shape({ tileOrigin, sizedUnit, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
 
-			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, sizedUnit, coordinatesOptions })
-			expect(rotationUtilities.applyRotationToShape).not.toHaveBeenCalled()
+			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, zoomedTileSize: tileSize, coordinatesOptions })
+			expect(componentUtilities.rotateShapeAboutShapeCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
@@ -61,18 +64,21 @@ describe('shape', () => {
 	describe('when the color is not transparent and coordinates received', () => {
 		const coordinates = []
 		const shapeColor = { a: 1 }
+		const coordinatesRotatedAboutCanvasCenter = []
 
 		beforeEach(() => {
 			spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColor)
+			spyOn(viewUtilities, 'rotateShapeAboutCanvasCenter').and.returnValue(coordinatesRotatedAboutCanvasCenter)
 			getCoordinates.and.returnValue(coordinates)
 		})
 
 		it('rotates the coordinates and renders them', () => {
-			shape({ tileOrigin, sizedUnit, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
 
-			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, sizedUnit, coordinatesOptions })
-			expect(rotationUtilities.applyRotationToShape).toHaveBeenCalledWith({ coordinates, tileOrigin, sizedUnit })
-			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, coordinates: rotatedCoordinates })
+			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, zoomedTileSize: tileSize, coordinatesOptions })
+			expect(componentUtilities.rotateShapeAboutShapeCenter).toHaveBeenCalledWith({ coordinates, zoomedAndScrolledTileOrigin: tileOrigin, zoomedTileSize: tileSize })
+			expect(viewUtilities.rotateShapeAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: coordinatesRotatedAboutShapeCenter })
+			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, coordinates: coordinatesRotatedAboutCanvasCenter })
 		})
 	})
 

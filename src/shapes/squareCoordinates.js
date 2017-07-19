@@ -1,4 +1,4 @@
-export default ({ tileOrigin, sizedUnit }) => {
+export default ({ tileOrigin, zoomedTileSize }) => {
 	const x = tileOrigin[ 0 ]
 	const y = tileOrigin[ 1 ]
 
@@ -8,16 +8,16 @@ export default ({ tileOrigin, sizedUnit }) => {
 			y,
 		],
 		[
-			x + sizedUnit,
+			x + zoomedTileSize,
 			y,
 		],
 		[
-			x + sizedUnit,
-			y + sizedUnit,
+			x + zoomedTileSize,
+			y + zoomedTileSize,
 		],
 		[
 			x,
-			y + sizedUnit,
+			y + zoomedTileSize,
 		],
 	]
 }

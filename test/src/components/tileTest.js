@@ -1,5 +1,5 @@
 import tile from '../../../src/components/tile'
-import transpositionUtilities from '../../../src/utilities/transpositionUtilities'
+import componentUtilities from '../../../src/utilities/componentUtilities'
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
 import { PERIMETER_SCALAR } from '../../../src/constants'
@@ -38,8 +38,8 @@ describe('tile', () => {
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
-			spyOn(transpositionUtilities, 'getTileOriginAndSizedUnit').and.returnValue(
-				{ tileOrigin: null, sizedUnit: 10 }
+			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue(
+				{ tileOrigin: null, tileSize: 10 }
 			)
 		})
 
@@ -55,12 +55,12 @@ describe('tile', () => {
 		let tileColors
 		let options
 		let tileOrigin
-		let sizedUnit
+		let tileSize
 		beforeEach(() => {
 			tileOrigin = [ 7, 11 ]
-			sizedUnit = 13
-			spyOn(transpositionUtilities, 'getTileOriginAndSizedUnit').and.returnValue(
-				{ tileOrigin, sizedUnit }
+			tileSize = 13
+			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue(
+				{ tileOrigin, tileSize }
 			)
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
@@ -180,7 +180,7 @@ describe('tile', () => {
 						address,
 						tileColors,
 						tileOrigin,
-						sizedUnit,
+						tileSize,
 						options,
 					}))
 				})
@@ -234,7 +234,7 @@ describe('tile', () => {
 						address,
 						tileColors,
 						tileOrigin,
-						sizedUnit,
+						tileSize,
 						options,
 					}))
 				})

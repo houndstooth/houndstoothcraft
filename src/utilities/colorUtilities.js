@@ -1,11 +1,11 @@
-import gridUtilities from './gridUtilities'
+import componentUtilities from './componentUtilities'
 import codeUtilities from './codeUtilities'
 
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorSettings }) => {
 	colorSettings = colorSettings || current.settings.initial.colorSettings
-	let tileColors = gridUtilities.getSetForTile({ address, settings: colorSettings })
+	let tileColors = componentUtilities.getSetForTile({ address, settings: colorSettings })
 
 	const { stripeCountMode } = current.settings.initial.stripeCountSettings || {}
 	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })

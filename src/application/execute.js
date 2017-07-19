@@ -62,11 +62,11 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIteration, endIteration } = current.settings.initial.iteration || {}
-	startIteration = startIteration || 0
+	let { startIterationFrame, endIterationFrame } = current.settings.initial.iteration || {}
+	startIterationFrame = startIterationFrame || 0
 
-	for (let n = 0; n <= endIteration; n++) {
-		if (n >= startIteration) {
+	for (let n = 0; n <= endIterationFrame; n++) {
+		if (n >= startIterationFrame) {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
 		callFunctionsPerSettingsProperty({ functionObjects: iterationFunctions })

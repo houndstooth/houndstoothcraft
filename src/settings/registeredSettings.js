@@ -69,7 +69,7 @@ export default {
 		refreshCanvas: true,
 	},
 	iteration: {
-		startIteration: true,
-		endIteration: true,
+		startIterationFrame: true,
+		endIterationFrame: true,
 	},
 }

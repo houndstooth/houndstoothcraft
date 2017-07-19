@@ -57,8 +57,8 @@
         refreshCanvas: boolean,
     },
     iteration: {
-        startIteration: number,
-        endIteration: number,
+        startIterationFrame: number,
+        endIterationFrame: number,
     },
 }
 ```

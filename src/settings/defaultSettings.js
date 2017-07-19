@@ -29,7 +29,7 @@ export default {
 			frameRate: 1.005,
 		},
 		iteration: {
-			endIteration: 100,
+			endIterationFrame: 100,
 		},
 	},
 	animations: {},

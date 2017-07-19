@@ -56,7 +56,7 @@ describe('execute', () => {
 			describe('when iterating (but not animating)', () => {
 				beforeEach(() => {
 					iterating = true
-					current.settings.initial.iteration = { endIteration: 10 }
+					current.settings.initial.iteration = { endIterationFrame: 10 }
 				})
 
 				it('logs the current iteration frame along with the performance measurement', () => {
@@ -115,7 +115,7 @@ describe('execute', () => {
 				beforeEach(() => {
 					iterating = true
 					animating = true
-					current.settings.initial.iteration = { endIteration: 10 }
+					current.settings.initial.iteration = { endIterationFrame: 10 }
 					current.settings.initial.animation = { endAnimationFrame: 10 }
 				})
 
@@ -189,8 +189,8 @@ describe('execute', () => {
 			iterating = true
 			animating = false
 			current.settings.initial.iteration = {
-				startIteration: 5,
-				endIteration: 8,
+				startIterationFrame: 5,
+				endIterationFrame: 8,
 			}
 		})
 
@@ -314,8 +314,8 @@ describe('execute', () => {
 			animating = true
 			iterating = true
 			current.settings.initial.iteration = {
-				startIteration: 5,
-				endIteration: 8,
+				startIterationFrame: 5,
+				endIterationFrame: 8,
 			}
 			current.settings.initial.animation = {
 				startAnimationFrame: 2,

@@ -13,11 +13,11 @@ const termialRoot = ({ initial, delta, n }) => {
 				2 * initial - delta,
 				2
 			)
-			+
-			8 * delta * n
+				+
+				8 * delta * n
 		)
-		-
-		2 * initial + delta
+			-
+			2 * initial + delta
 	) / (
 		2 * delta
 	)

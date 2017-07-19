@@ -1,5 +1,4 @@
 import grid from '../../../src/components/grid'
-import { GRID_SIZE } from '../../../src/defaults'
 
 describe('grid', () => {
 	let tileSpy
@@ -19,14 +18,6 @@ describe('grid', () => {
 			grid()
 
 			expect(tileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
-		})
-	})
-
-	describe('when grid size is not specified', () => {
-		it('defaults grid size', () => {
-			grid()
-
-			expect(tileSpy.calls.all().length).toBe(Math.pow(GRID_SIZE, 2))
 		})
 	})
 

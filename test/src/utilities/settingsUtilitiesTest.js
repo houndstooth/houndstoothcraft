@@ -1,6 +1,7 @@
 import settingsUtilities from '../../../src/utilities/settingsUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
+import defaultSettings from '../../../src/settings/defaultSettings'
 
 describe('settings utilities', () => {
 	describe('#prepareFunctionsPerSettingsProperty', () => {
@@ -88,7 +89,7 @@ describe('settings utilities', () => {
 				objectWithPropertyOverrides,
 			})
 
-			const expectedObjectWithPropertiesOverriden =  {
+			const expectedObjectWithPropertiesOverriden = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'luke',
@@ -121,7 +122,7 @@ describe('settings utilities', () => {
 				objectWithPropertyOverrides,
 			})
 
-			const expectedObjectWithPropertiesOverriden =  {}
+			const expectedObjectWithPropertiesOverriden = {}
 			expect(expectedObjectWithPropertiesOverriden).toEqual(objectWithPropertiesToBeOverridden)
 			expect(consoleWrapper.error).toHaveBeenCalledWith(
 				'Attempt to apply unknown settings: colorSettings.assignment.probablyAnAccident'
@@ -135,43 +136,25 @@ describe('settings utilities', () => {
 
 		it('gets the property from settings if it is defined', () => {
 			current.settings.animations = { specialMoves: { youKnowIt: 'awesome' } }
+			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			const defaultForProperty = 'will not matter'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty })).toBe('awesome')
+			expect(getFromSettingsOrDefault(nestedPropertyPath)).toBe('awesome')
 		})
 
 		it('gets the property from settings even if it is zero; that is the whole point of this thing', () => {
 			current.settings.animations = { specialMoves: { youKnowIt: 0 } }
+			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			const defaultForProperty = 'will not matter'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty })).toBe(0)
+			expect(getFromSettingsOrDefault(nestedPropertyPath)).toBe(0)
 		})
 
 		it('defaults the property if it is not defined', () => {
+			defaultSettings.animations = { specialMoves: { youKnowIt: 'defawesome' } }
+
 			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			const defaultForProperty = 'defawesome'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty })).toBe('defawesome')
-		})
-
-		it('works on an arbitrary custom object if provided', () => {
-			let customObject, nestedPropertyPath, defaultForProperty
-
-			customObject = { specialMoves: { youKnowIt: 'awesome' } }
-			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
-			defaultForProperty = 'will not matter'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject })).toBe('awesome')
-
-			customObject = { specialMoves: { youKnowIt: 0 } }
-			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
-			defaultForProperty = 'will not matter'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject })).toBe(0)
-
-			customObject = { antiSpecialMoves: { youKnowIt: 0 } }
-			nestedPropertyPath = [ 'specialMoves', 'youKnowIt' ]
-			defaultForProperty = 'defawesome'
-			expect(getFromSettingsOrDefault({ nestedPropertyPath, defaultForProperty, customObject })).toBe('defawesome')
+			expect(getFromSettingsOrDefault(nestedPropertyPath)).toBe('defawesome')
 		})
 	})
 
@@ -193,7 +176,11 @@ describe('settings utilities', () => {
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ initial, animations })).toBe(true)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ initial, iterations })).toBe(true)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ animations, iterations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ initial, animations, iterations })).toBe(true)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				initial,
+				animations,
+				iterations,
+			})).toBe(true)
 		})
 
 		it('logs an error if the object contains anything other than one of these three settings objects', () => {
@@ -208,13 +195,39 @@ describe('settings utilities', () => {
 			spyOn(consoleWrapper, 'error')
 
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, initial })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, animations })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, iterations })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, initial, animations })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, initial, iterations })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, animations, iterations })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject, initial, animations, iterations })).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				initial,
+			})).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				animations,
+			})).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				iterations,
+			})).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				initial,
+				animations,
+			})).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				initial,
+				iterations,
+			})).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				animations,
+				iterations,
+			})).toBe(false)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+				anInvalidSettingsObject,
+				initial,
+				animations,
+				iterations,
+			})).toBe(false)
 		})
 	})
 })

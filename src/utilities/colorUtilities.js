@@ -1,23 +1,16 @@
 import gridUtilities from './gridUtilities'
 import codeUtilities from './codeUtilities'
-import settingsUtilities from './settingsUtilities'
-import { OPACITY } from '../defaults'
 
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorSettings }) => {
 	colorSettings = colorSettings || current.settings.initial.colorSettings
-
 	let tileColors = gridUtilities.getSetForTile({ address, settings: colorSettings })
 
 	const { stripeCountMode } = current.settings.initial.stripeCountSettings || {}
 	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
-	const opacity = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'opacity' ],
-		defaultForProperty: OPACITY,
-		customObject: colorSettings,
-	})
+	const opacity = colorSettings.opacity
 	if (opacity < 1) tileColors = fadeColors({ colors: tileColors, opacity })
 
 	return tileColors

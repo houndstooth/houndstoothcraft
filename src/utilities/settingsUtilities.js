@@ -1,6 +1,7 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
-import registeredSettings from '../registeredSettings'
+import registeredSettings from '../settings/registeredSettings'
+import defaultSettings from '../settings/defaultSettings'
 
 const SETTINGS_OBJECT_NAMES = [ 'initial', 'animations', 'iterations' ]
 
@@ -27,8 +28,11 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 	if (!objectWithPropertyOverrides) return
 	Object.entries(objectWithPropertyOverrides).forEach(([ propertyName, overridingProperty ]) => {
 		let deeperSettingsRegisteredCheck
-		if (codeUtilities.propertyIsDefinedOnObject({ propertyName, objectMaybeWithProperty: settingsRegisteredCheck })) {
-			deeperSettingsRegisteredCheck = settingsRegisteredCheck[propertyName]
+		if (codeUtilities.propertyIsDefinedOnObject({
+			propertyName,
+			objectMaybeWithProperty: settingsRegisteredCheck,
+		})) {
+			deeperSettingsRegisteredCheck = settingsRegisteredCheck[ propertyName ]
 		}
 		else {
 			consoleWrapper.error(`Attempt to apply unknown settings: ${nestedPropertyPath.join('.')}.${propertyName}`)
@@ -53,10 +57,8 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 	})
 }
 
-const getFromSettingsOrDefault = ({ nestedPropertyPath, defaultForProperty, customObject }) => {
-	let property
-	const parentObject = customObject || current.settings
-	let childObject = parentObject
+const getFromSettingsOrDefault = nestedPropertyPath => {
+	let childObject = current.settings
 	let notThere
 	nestedPropertyPath.forEach(pathStep => {
 		if (notThere) return
@@ -68,11 +70,12 @@ const getFromSettingsOrDefault = ({ nestedPropertyPath, defaultForProperty, cust
 		childObject = childObject[ pathStep ]
 	})
 
+	let property
 	if (codeUtilities.isDefined(childObject)) {
-		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject, nestedPropertyPath })
+		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: current.settings, nestedPropertyPath })
 	}
 	else {
-		property = defaultForProperty
+		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: defaultSettings, nestedPropertyPath })
 	}
 	return property
 }

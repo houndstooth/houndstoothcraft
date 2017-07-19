@@ -1,14 +1,8 @@
-import settingsUtilities from '../utilities/settingsUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import tile from './tile'
-import { GRID_SIZE } from '../defaults'
 
 export default () => {
-	let { includeNegativeQuadrants } = current.settings.initial.gridSettings || {}
-	const gridSize = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'gridSettings', 'gridSize' ],
-		defaultForProperty: GRID_SIZE,
-	})
+	let { includeNegativeQuadrants, gridSize } = current.settings.initial.gridSettings || {}
 	const { iterator } = codeUtilities
 
 	if (includeNegativeQuadrants) {

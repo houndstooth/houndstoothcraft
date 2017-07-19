@@ -3,7 +3,6 @@ import settingsUtilities from '../utilities/settingsUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
-import { FRAME_RATE, END_ITERATION } from '../defaults'
 import animator from './animator'
 import exportFrame from './exportFrame'
 
@@ -63,12 +62,8 @@ const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIteration } = current.settings.initial.iteration || {}
+	let { startIteration, endIteration } = current.settings.initial.iteration || {}
 	startIteration = startIteration || 0
-	const endIteration = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'iteration', 'endIteration' ],
-		defaultForProperty: END_ITERATION,
-	})
 
 	for (let n = 0; n <= endIteration; n++) {
 		if (n >= startIteration) {
@@ -94,7 +89,6 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = current.settings.initial.animation || {}
 	startAnimationFrame = startAnimationFrame || 0
-	frameRate = frameRate || FRAME_RATE
 	refreshCanvas = defaultToTrue(refreshCanvas)
 
 	current.lastSavedAnimationFrame = startAnimationFrame

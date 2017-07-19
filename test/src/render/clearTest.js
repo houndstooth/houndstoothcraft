@@ -1,6 +1,6 @@
 import clear from '../../../src/render/clear'
 import context from '../../../src/render/context'
-import { CANVAS_SIZE } from '../../../src/defaults'
+import defaultSettings from '../../../src/settings/defaultSettings'
 
 describe('clear', () => {
 	beforeEach(() => spyOn(context, 'clearRect'))
@@ -19,7 +19,8 @@ describe('clear', () => {
 		it('wipes the default amount of canvas', () => {
 			clear()
 
-			expect(context.clearRect).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+			const defaultCanvasSize = defaultSettings.initial.viewSettings.canvasSize
+			expect(context.clearRect).toHaveBeenCalledWith(0, 0, defaultCanvasSize, defaultCanvasSize)
 		})
 	})
 })

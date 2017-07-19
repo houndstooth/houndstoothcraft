@@ -161,7 +161,8 @@ describe('tile', () => {
 
 				describe('if a function for getting uniform coordinates is specified', () => {
 					it('converts the tile into shapes using it', () => {
-						const whenTileIsUniform = () => {}
+						const whenTileIsUniform = () => {
+						}
 						current.settings.initial.tileSettings.getCoordinates = { whenTileIsUniform }
 
 						tile({ address })
@@ -214,7 +215,8 @@ describe('tile', () => {
 
 				describe('if a function for getting multiform coordinates is specified', () => {
 					it('converts the tile into shapes using it', () => {
-						const whenTileIsMultiform = () => {}
+						const whenTileIsMultiform = () => {
+						}
 						current.settings.initial.tileSettings.getCoordinates = { whenTileIsMultiform }
 
 						tile({ address })
@@ -242,10 +244,10 @@ describe('tile', () => {
 
 					const shapes = shapeSpy.calls.all()
 
-					expect(shapes[0].args[0]).toEqual(jasmine.objectContaining({ stripeIndex: 0 }))
-					expect(shapes[1].args[0]).toEqual(jasmine.objectContaining({ stripeIndex: 1 }))
-					expect(shapes[2].args[0]).toEqual(jasmine.objectContaining({ stripeIndex: 2 }))
-					expect(shapes[3].args[0]).toEqual(jasmine.objectContaining({ stripeIndex: 3 }))
+					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 0 }))
+					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 1 }))
+					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 2 }))
+					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 3 }))
 				})
 
 				it('converts the tile into shapes, each one a stripe, each one to choose which of its colors based on its index within the tile\'s stripes', () => {
@@ -253,10 +255,10 @@ describe('tile', () => {
 
 					const shapes = shapeSpy.calls.all()
 
-					expect(shapes[0].args[0]).toEqual(jasmine.objectContaining({ colorsIndex: 0 }))
-					expect(shapes[1].args[0]).toEqual(jasmine.objectContaining({ colorsIndex: 1 }))
-					expect(shapes[2].args[0]).toEqual(jasmine.objectContaining({ colorsIndex: 2 }))
-					expect(shapes[3].args[0]).toEqual(jasmine.objectContaining({ colorsIndex: 3 }))
+					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 0 }))
+					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 1 }))
+					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 2 }))
+					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 3 }))
 				})
 
 				it('tells each stripe the tile converts into how many stripes total it is converting into', () => {
@@ -272,27 +274,27 @@ describe('tile', () => {
 
 					const shapes = shapeSpy.calls.all()
 
-					expect(shapes[0].args[0]).toEqual(jasmine.objectContaining({
+					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
-							stripeStart: stripePositionsForTile[0],
-							stripeEnd: stripePositionsForTile[1],
+							stripeStart: stripePositionsForTile[ 0 ],
+							stripeEnd: stripePositionsForTile[ 1 ],
 						},
 					}))
-					expect(shapes[1].args[0]).toEqual(jasmine.objectContaining({
+					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
-							stripeStart: stripePositionsForTile[1],
-							stripeEnd: stripePositionsForTile[2],
+							stripeStart: stripePositionsForTile[ 1 ],
+							stripeEnd: stripePositionsForTile[ 2 ],
 						},
 					}))
-					expect(shapes[2].args[0]).toEqual(jasmine.objectContaining({
+					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
-							stripeStart: stripePositionsForTile[2],
-							stripeEnd: stripePositionsForTile[3],
+							stripeStart: stripePositionsForTile[ 2 ],
+							stripeEnd: stripePositionsForTile[ 3 ],
 						},
 					}))
-					expect(shapes[3].args[0]).toEqual(jasmine.objectContaining({
+					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						coordinatesOptions: {
-							stripeStart: stripePositionsForTile[3],
+							stripeStart: stripePositionsForTile[ 3 ],
 							stripeEnd: PERIMETER_SCALAR,
 						},
 					}))

@@ -1,13 +1,5 @@
-import { CANVAS_SIZE, TILE_SIZE, ZOOM } from '../defaults'
-import settingsUtilities from './settingsUtilities'
-
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	let { zoom, zoomOnCanvasCenter, centerViewOnCenterOfTileAtZeroZeroAddress } = current.settings.initial.viewSettings || {}
-	zoom = zoom || ZOOM
-	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
-		defaultForProperty: CANVAS_SIZE,
-	})
+	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = current.settings.initial.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
@@ -27,13 +19,10 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
-		defaultForProperty: CANVAS_SIZE,
-	})
+	const canvasSize = current.settings.initial.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
-	const tileSize = getTileSize()
+	const tileSize = current.settings.initial.tileSettings.tileSize
 	const halfTileSize = tileSize / 2
 
 	return [
@@ -50,21 +39,14 @@ const adjustOrigin = ({ tileOrigin }) => {
 	return tileOrigin
 }
 
-const getTileSize = () => {
-	return settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'tileSettings', 'tileSize' ],
-		defaultForProperty: TILE_SIZE,
-	})
-}
-
 const getSizedUnit = () => {
-	const tileSize = getTileSize()
-	const zoom = current.settings.initial.viewSettings && current.settings.initial.viewSettings.zoom || ZOOM
+	const tileSize = current.settings.initial.tileSettings.tileSize
+	const zoom = current.settings.initial.viewSettings.zoom
 	return tileSize * zoom
 }
 
 const getStandardTileOriginAndSizedUnit = ({ address }) => {
-	const tileSize = getTileSize()
+	const tileSize = current.settings.initial.tileSettings.tileSize
 	return {
 		sizedUnit: getSizedUnit(),
 		tileOrigin: adjustOrigin({

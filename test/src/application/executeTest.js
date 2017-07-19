@@ -1,11 +1,13 @@
+import setup from '../../../src/settings/setup'
 import execute from '../../../src/application/execute'
 import consoleWrapper from '../../../src/application/consoleWrapper'
-import { FRAME_RATE } from '../../../src/defaults'
 
 describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging
 	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy
 	beforeEach(() => {
+		setup()
+
 		iterating = undefined
 		animating = undefined
 		exportFrames = undefined
@@ -237,16 +239,6 @@ describe('execute', () => {
 			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(993)
 			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(992)
 		})
-
-		it('defaults the start iteration frame to 0 and the end to its default', () => {
-			current.settings.initial.iteration = {}
-			const iterationFunction = jasmine.createSpy()
-			current.settings.iterations.exampleSettings = { exampleProperty: iterationFunction }
-
-			execute({ iterating, animating, exportFrames, performanceLogging })
-
-			expect(iterationFunction.calls.all().length).toBe(101)
-		})
 	})
 
 	describe('animating (but not iterating)', () => {
@@ -254,6 +246,7 @@ describe('execute', () => {
 			animating = true
 			iterating = false
 			current.settings.initial.animation = {
+				frameRate: 1.120,
 				startAnimationFrame: 2,
 				endAnimationFrame: 5,
 			}
@@ -268,7 +261,7 @@ describe('execute', () => {
 		it('calls the animator with the frame rate, which is defaulted', () => {
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
-			expect(animatorSpy).toHaveBeenCalledWith(jasmine.objectContaining({ frameRate: FRAME_RATE }))
+			expect(animatorSpy).toHaveBeenCalledWith(jasmine.objectContaining({ frameRate: 1.120 }))
 		})
 
 		it('calls animation functions once for each animation, including before rendering starts', () => {

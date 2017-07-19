@@ -52,6 +52,8 @@
     getStripePositions: function (returns array of numbers),
     animation: {
         frameRate: number,
+        startAnimationFrame: number,
+        endAnimationFrame: number,
         refreshCanvas: boolean,
     },
     iteration: {

@@ -1,7 +1,9 @@
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
-import { STRIPE_COUNT } from '../../../src/defaults'
+import setup from '../../../src/settings/setup'
 
 describe('stripe utilities', () => {
+	beforeEach(() => setup())
+
 	describe('#getStripePositionsForTile', () => {
 		let getStripePositionsForTile
 		beforeEach(() => getStripePositionsForTile = stripeUtilities.getStripePositionsForTile)
@@ -27,15 +29,12 @@ describe('stripe utilities', () => {
 		let perStripe
 		beforeEach(() => perStripe = stripeUtilities.perStripe)
 
-		it('defaults the stripe count', () => {
-			const stripePositions = perStripe({ getStripePosition: () => {} })
-
-			expect(stripePositions.length).toBe(STRIPE_COUNT)
-		})
-
 		it('uses a stripe count if provided', () => {
 			current.settings.initial.stripeCountSettings = { stripeCount: 3 }
-			const stripePositions = perStripe({ getStripePosition: () => {} })
+			const stripePositions = perStripe({
+				getStripePosition: () => {
+				},
+			})
 
 			expect(stripePositions.length).toBe(3)
 		})

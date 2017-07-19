@@ -18,20 +18,20 @@ const wrappedIndex = ({ array, index = 0 }) => {
 
 const shallowEqual = (a, b) => {
 	const sameKeyCount = Object.keys(a).length === Object.keys(b).length
-	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[key])
+	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
 const deepClone = objectToClone => {
 	let clonedObject = {}
 	Object.entries(objectToClone).forEach(([ key, value ]) => {
 		if (value instanceof Array) {
-			clonedObject[key] = value.slice()
+			clonedObject[ key ] = value.slice()
 		}
 		else if (value && typeof value === 'object') {
-			clonedObject[key] = deepClone(value)
+			clonedObject[ key ] = deepClone(value)
 		}
 		else {
-			clonedObject[key] = value
+			clonedObject[ key ] = value
 		}
 	})
 	return clonedObject
@@ -61,7 +61,7 @@ const defaultToTrue = property => isDefined(property) ? property : true
 const isDefined = property => typeof property !== 'undefined'
 
 const propertyIsDefinedOnObject = ({ propertyName, objectMaybeWithProperty }) => {
-	return isDefined(objectMaybeWithProperty[propertyName])
+	return isDefined(objectMaybeWithProperty[ propertyName ])
 }
 
 export default {

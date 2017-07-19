@@ -1,13 +1,16 @@
 import gridUtilities from '../../../src/utilities/gridUtilities'
-import { COLOR_SET } from '../../../src/defaults'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
+import setup from '../../../src/settings/setup'
 
 describe('grid utilities', () => {
 	let getSetForTile
 	let settings
 	const address = [ 3, 5 ]
-	beforeEach(() => getSetForTile = gridUtilities.getSetForTile)
+	beforeEach(() => {
+		setup()
+		getSetForTile = gridUtilities.getSetForTile
+	})
 
 	describe('assignment', () => {
 		it('can use a weave-based assignment scheme and a tile\'s address to choose the tile\'s set from the overall grid set', () => {
@@ -54,7 +57,7 @@ describe('grid utilities', () => {
 
 	describe('defaults', () => {
 		it('defaults the set to a basic color set', () => {
-			const expectedSetForTile = [ COLOR_SET[ 1 ], COLOR_SET[ 0 ] ]
+			const expectedSetForTile = [ TRANSPARENT, BLACK ]
 			settings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
@@ -76,7 +79,7 @@ describe('grid utilities', () => {
 			expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
 		})
 
-		describe('when the assigment settings object is present', () => {
+		describe('when the assignment settings object is present', () => {
 			describe('but the mode is missing from it', () => {
 				it('defaults the mode property individually to the default color settings assignment mode', () => {
 					const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
@@ -101,7 +104,7 @@ describe('grid utilities', () => {
 					const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 					settings = {
 						set: setForGrid,
-						assignment: { assignmentMode: 'WEAVE'	},
+						assignment: { assignmentMode: 'WEAVE' },
 					}
 
 					expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
@@ -128,7 +131,7 @@ describe('grid utilities', () => {
 		it('when in weave mode, it allows offsetting of the address', () => {
 			const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 			const expectedSetForTile = [ 'FIRST', 'SECOND' ]
-			const offsetAddress = ({ address }) => [ address[0] / 3, address[1] * 2 / 5 ]
+			const offsetAddress = ({ address }) => [ address[ 0 ] / 3, address[ 1 ] * 2 / 5 ]
 			settings = {
 				set: setForGrid,
 				assignment: {
@@ -148,7 +151,7 @@ describe('grid utilities', () => {
 			const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 			const expectedSetForTile = [ 'THIRD', 'FIRST', 'FIRST', 'SECOND' ]
-			const offsetAddress = ({ address }) => [ address[0] / 3, address[1] * 3 / 5 ]
+			const offsetAddress = ({ address }) => [ address[ 0 ] / 3, address[ 1 ] * 3 / 5 ]
 			settings = {
 				set: setForGrid,
 				assignment: {
@@ -170,7 +173,7 @@ describe('grid utilities', () => {
 		it('when in weave mode, it allows offsetting of the choice within the set for the whole grid', () => {
 			const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 			const expectedSetForTile = [ 'THIRD', 'FIRST' ]
-			const offsetSetForGridIndex = ({ address }) => address[0] + address[1]
+			const offsetSetForGridIndex = ({ address }) => address[ 0 ] + address[ 1 ]
 			settings = {
 				set: setForGrid,
 				assignment: {
@@ -190,7 +193,7 @@ describe('grid utilities', () => {
 			const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 			const expectedSetForTile = [ 'SECOND', 'THIRD', 'THIRD', 'FIRST' ]
-			const offsetSetForGridIndex = ({ address }) => address[0] + address[1]
+			const offsetSetForGridIndex = ({ address }) => address[ 0 ] + address[ 1 ]
 			settings = {
 				set: setForGrid,
 				assignment: {
@@ -217,7 +220,7 @@ describe('grid utilities', () => {
 		})
 
 		it('can turn the grain of the pattern into switcheroo', () => {
-			const setForGrid =[ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q' ]
+			const setForGrid = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q' ]
 			settings = {
 				set: setForGrid,
 				assignment: {
@@ -242,13 +245,13 @@ describe('grid utilities', () => {
 				[ [ 'm', 'n' ], [ 'n', 'o' ], [ 'o', 'p' ], [ 'q', 'p' ] ],
 			]
 			expectedSetsForTiles.forEach((col, x) => col.forEach((expectedSetForTile, y) => {
-				expect(expectedSetForTile).toEqual(setsForTiles[x][y])
+				expect(expectedSetForTile).toEqual(setsForTiles[ x ][ y ])
 			}))
 		})
 
 		it('calls an arbitrary set transformation function if provided', () => {
 			const transformAssignedSet = ({ setForTile, address }) => {
-				return address[0] === 1 ? setForTile.concat(setForTile) : setForTile
+				return address[ 0 ] === 1 ? setForTile.concat(setForTile) : setForTile
 			}
 			settings = { assignment: { transformAssignedSet } }
 			const iterator = codeUtilities.iterator
@@ -266,7 +269,7 @@ describe('grid utilities', () => {
 				],
 			]
 			expectedSetsForTiles.forEach((col, x) => col.forEach((expectedSetForTile, y) => {
-				expect(expectedSetForTile).toEqual(setsForTiles[x][y])
+				expect(expectedSetForTile).toEqual(setsForTiles[ x ][ y ])
 			}))
 		})
 	})

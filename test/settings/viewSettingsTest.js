@@ -1,12 +1,15 @@
-import setup from '../../src/application/setup'
+import setup from '../../src/settings/setup'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
 import { BLACK, TRANSPARENT } from '../../src/constants'
-import { TILE_SIZE } from '../../src/defaults'
 import standardTileIsColors from '../helpers/standardTileIsColors'
+import settingsUtilities from '../../src/utilities/settingsUtilities'
+import settingsPaths from '../../src/settings/settingsPaths'
 
 describe('.viewSettings', () => {
+	const tileSize = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)
+
 	describe('.canvasSize', () => {
 		it('works', () => {
 			setup({
@@ -50,26 +53,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				originInPixels: [ 0 * zoom * TILE_SIZE, 0 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 0 * zoom * tileSize, 0 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ TRANSPARENT, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				originInPixels: [ 1 * zoom * TILE_SIZE, 0 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 1 * zoom * tileSize, 0 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				originInPixels: [ 0 * zoom * TILE_SIZE, 1 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 0 * zoom * tileSize, 1 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ BLACK, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				originInPixels: [ 1 * zoom * TILE_SIZE, 1 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 1 * zoom * tileSize, 1 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 		})
@@ -96,26 +99,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				originInPixels: [ 3 * zoom * TILE_SIZE, 3 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 3 * zoom * tileSize, 3 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				originInPixels: [ 3 * zoom * TILE_SIZE, 4 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 3 * zoom * tileSize, 4 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				originInPixels: [ 4 * zoom * TILE_SIZE, 3 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 4 * zoom * tileSize, 3 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				originInPixels: [ 4 * zoom * TILE_SIZE, 4 * zoom * TILE_SIZE ],
-				tileSizeInPixels: zoom * TILE_SIZE,
+				originInPixels: [ 4 * zoom * tileSize, 4 * zoom * tileSize ],
+				tileSizeInPixels: zoom * tileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 		})

@@ -25,7 +25,14 @@ export default {
 		houndazzle: {
 			substripeCount: true,
 			dazzleContinuum: true,
-			orientationSettings: true,
+			orientationSettings: {
+				set: true,
+			},
+			colorSettings: {
+				assignment: {
+					offsetSetForGridIndex: true,
+				},
+			},
 		},
 		assignment: {
 			switcheroo: true,
@@ -49,12 +56,16 @@ export default {
 			delta: true,
 		},
 	},
-	gatherOptions: true,
+	gatherOptions: {
+		getDazzle: true,
+	},
 	baseStripeDiagonal: true,
 	getTileOriginAndSizedUnit: true,
 	getStripePositions: true,
 	animation: {
 		frameRate: true,
+		startAnimationFrame: true,
+		endAnimationFrame: true,
 		refreshCanvas: true,
 	},
 	iteration: {

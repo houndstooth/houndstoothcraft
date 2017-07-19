@@ -1,6 +1,3 @@
-import { CANVAS_SIZE } from '../../src/defaults'
-import settingsUtilities from '../../src/utilities/settingsUtilities'
-
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.position = 'absolute'
 	canvas.style.top = 0
@@ -13,10 +10,7 @@ export default () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
 
-	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
-		defaultForProperty: CANVAS_SIZE,
-	})
+	const canvasSize = current.settings.initial.viewSettings.canvasSize
 	testMarkersCanvas.width = canvasSize
 	testMarkersCanvas.height = canvasSize
 

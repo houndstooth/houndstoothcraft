@@ -1,8 +1,10 @@
 import rotationUtilities from '../../../src/utilities/rotationUtilities'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../../../src/constants'
-import { CANVAS_SIZE } from '../../../src/defaults'
+import setup from '../../../src/settings/setup'
 
 describe('rotation utilities', () => {
+	beforeEach(() => setup())
+
 	describe('#applyRotationToShape', () => {
 		const coordinates = [
 			[ 0, 0 ],
@@ -31,7 +33,7 @@ describe('rotation utilities', () => {
 						[ 0, 0 ],
 					]
 					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-						expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
+						expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
 					}))
 				})
 
@@ -47,7 +49,7 @@ describe('rotation utilities', () => {
 						[ 5, 0 ],
 					]
 					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-						expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
+						expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
 					}))
 				})
 
@@ -63,7 +65,7 @@ describe('rotation utilities', () => {
 						[ 10, 0 ],
 					]
 					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-						expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
+						expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
 					}))
 				})
 			})
@@ -100,20 +102,7 @@ describe('rotation utilities', () => {
 					[ 95, 0 ],
 				]
 				result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-					expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
-				}))
-			})
-
-			it('defaults canvas size', () => {
-				const result = applyRotationToShape({ coordinates, tileOrigin, sizedUnit })
-
-				const expectedCoordinates = [
-					[ CANVAS_SIZE, 0 ],
-					[ CANVAS_SIZE, 5 ],
-					[ CANVAS_SIZE - 5, 0 ],
-				]
-				result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-					expect(dimension).toBeCloseTo(expectedCoordinates[x][y])
+					expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
 				}))
 			})
 		})

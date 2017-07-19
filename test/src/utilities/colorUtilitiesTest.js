@@ -1,7 +1,10 @@
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import gridUtilities from '../../../src/utilities/gridUtilities'
+import setup from '../../../src/settings/setup'
 
 describe('color utilities', () => {
+	beforeEach(() => setup())
+
 	describe('#getColorsForTile', () => {
 		it('defaults to the initial color settings on the settings', () => {
 			const address = []
@@ -11,7 +14,7 @@ describe('color utilities', () => {
 
 			colorUtilities.getColorsForTile({ address })
 
-			expect(gridUtilities.getSetForTile.calls.all()[0].args[0]).toEqual(
+			expect(gridUtilities.getSetForTile.calls.all()[ 0 ].args[ 0 ]).toEqual(
 				{ address, settings: defaultSettings }
 			)
 		})

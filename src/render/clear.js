@@ -1,11 +1,8 @@
 import context from './context'
-import { CANVAS_SIZE } from '../defaults'
-import settingsUtilities from '../../src/utilities/settingsUtilities'
+import settingsUtilities from '../utilities/settingsUtilities'
+import settingsPaths from '../settings/settingsPaths'
 
 export default () => {
-	const canvasSize = settingsUtilities.getFromSettingsOrDefault({
-		nestedPropertyPath: [ 'initial', 'viewSettings', 'canvasSize' ],
-		defaultForProperty: CANVAS_SIZE,
-	})
+	const canvasSize = settingsUtilities.getFromSettingsOrDefault(settingsPaths.CANVAS_SIZE)
 	context.clearRect(0, 0, canvasSize, canvasSize)
 }

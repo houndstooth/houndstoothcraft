@@ -6,15 +6,18 @@ describe('animator', () => {
 	let animationFunction, frameRate, stopCondition
 	let interval
 	beforeEach(() => {
-		interval = () => {}
+		interval = () => {
+		}
 		spyOn(window, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
 		buildIntervalFunctionSpy = jasmine.createSpy().and.returnValue(intervalFunction)
 		animator.__Rewire__('buildIntervalFunction', buildIntervalFunctionSpy)
 
-		animationFunction = () => {}
+		animationFunction = () => {
+		}
 		frameRate = 3
-		stopCondition = () => {}
+		stopCondition = () => {
+		}
 
 		animator({ animationFunction, frameRate, stopCondition })
 	})

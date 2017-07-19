@@ -16,7 +16,7 @@ describe('export frame', () => {
 	})
 
 	it('saves the frame as a png with the frame number as file name', () => {
-		expect(fileSaver.saveAs.calls.all()[0].args[1]).toBe('666.png')
+		expect(fileSaver.saveAs.calls.all()[ 0 ].args[ 1 ]).toBe('666.png')
 	})
 
 	it('increments the last saved frame', () => {

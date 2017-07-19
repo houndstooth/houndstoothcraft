@@ -1,21 +1,21 @@
 import codeUtilities from './codeUtilities'
-import { COLOR_ASSIGNMENT, COLOR_SET } from '../defaults'
 
 const getSetForTile = ({ address, settings }) => {
 	const { wrappedIndex } = codeUtilities
 
 	let { set: setForGrid, assignment } = settings || {}
 
-	setForGrid = setForGrid || COLOR_SET
-	assignment = assignment || COLOR_ASSIGNMENT
+	setForGrid = setForGrid || current.settings.initial.colorSettings.set
+	const currentAssignment = current.settings.initial.colorSettings.assignment
+	assignment = assignment || currentAssignment
 
 	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, assignmentMode, supertile, weave, flipGrain, switcheroo } = assignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
 	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
-	assignmentMode = assignmentMode || COLOR_ASSIGNMENT.assignmentMode
-	supertile = supertile || COLOR_ASSIGNMENT.supertile
-	weave = weave || COLOR_ASSIGNMENT.weave
+	assignmentMode = assignmentMode || currentAssignment.assignmentMode
+	supertile = supertile || currentAssignment.supertile
+	weave = weave || currentAssignment.weave
 	let setForTile
 	if (assignmentMode === 'WEAVE') {
 		const { rows, columns } = weave

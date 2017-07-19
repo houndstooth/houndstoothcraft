@@ -12,8 +12,16 @@ describe('render', () => {
 
 		contextCallsOrder.length = 0
 		spyOn(context, 'beginPath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'beginPath' }))
-		spyOn(context, 'moveTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }))
-		spyOn(context, 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }))
+		spyOn(context, 'moveTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
+			method: 'moveTo',
+			x,
+			y,
+		}))
+		spyOn(context, 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
+			method: 'lineTo',
+			x,
+			y,
+		}))
 		spyOn(context, 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
 		spyOn(context, 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
 	})

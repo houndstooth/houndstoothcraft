@@ -6,9 +6,9 @@ module.exports = config => {
 		frameworks: [ 'jasmine' ],
 		files: [ 'test/**/*.js', 'effects/**/test/**/*.js' ],
 		webpack: webpackConfig,
-		preprocessors: { 
-			'test/**/*.js': ['webpack'],
-			'effects/**/test/**/*.js': ['webpack']
+		preprocessors: {
+			'test/**/*.js': [ 'webpack' ],
+			'effects/**/test/**/*.js': [ 'webpack' ]
 		},
 		reporters: [ 'kjhtml' ]
 	})

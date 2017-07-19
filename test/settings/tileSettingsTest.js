@@ -1,6 +1,6 @@
 import '../../node_modules/canteen/build/canteen.min'
 import execute from '../../src/application/execute'
-import setup from '../../src/application/setup'
+import setup from '../../src/settings/setup'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
@@ -52,7 +52,12 @@ describe('.tileSettings', () => {
 				const tiles = [
 					{ baseId: 0, originInPixels: [ 0, 0 ], tileSizeInPixels: 90, colors: [ TRANSPARENT, BLACK ] },
 					{ baseId: 8, originInPixels: [ 0, 90 ], tileSizeInPixels: 90, colors: [ BLACK, BLACK ] },
-					{ baseId: 16, originInPixels: [ 90, 0 ], tileSizeInPixels: 90, colors: [ TRANSPARENT, TRANSPARENT ] },
+					{
+						baseId: 16,
+						originInPixels: [ 90, 0 ],
+						tileSizeInPixels: 90,
+						colors: [ TRANSPARENT, TRANSPARENT ],
+					},
 					{ baseId: 24, originInPixels: [ 90, 90 ], tileSizeInPixels: 90, colors: [ BLACK, TRANSPARENT ] },
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))

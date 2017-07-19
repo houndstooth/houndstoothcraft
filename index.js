@@ -1,5 +1,5 @@
 import './globalCurrent'
-import setup from './src/application/setup'
+import setup from './src/settings/setup'
 import execute from './src/application/execute'
 
 // import cmyktoothEffect from './effects/cmyktooth/effects/cmyktoothEffect'

@@ -25,6 +25,15 @@ describe('view utilities', () => {
 			})
 		})
 
+		it('does not mutate the tileOrigin', () => {
+			current.settings.initial.viewSettings.zoom = zoom
+			const originalTileOrigin = tileOrigin.slice()
+
+			applyZoomAndScroll({ tileOrigin, tileSize })
+
+			expect(tileOrigin).toEqual(originalTileOrigin)
+		})
+
 		describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 			beforeEach(() => {
 				current.settings.initial.viewSettings.zoomOnCanvasCenter = true

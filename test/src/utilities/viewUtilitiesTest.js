@@ -1,5 +1,6 @@
 import viewUtilities from '../../../src/utilities/viewUtilities'
 import setup from '../../../src/settings/setup'
+import coordinatesMatch from '../../helpers/coordinatesMatch'
 
 describe('view utilities', () => {
 	const zoom = 10
@@ -84,6 +85,36 @@ describe('view utilities', () => {
 	})
 
 	describe('#rotateShapeAboutCanvasCenter', () => {
-		xit('this needs a test now', () => {})
+		it('works', () => {
+			current.settings.initial.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
+			current.settings.initial.viewSettings.canvasSize = canvasSize
+			const coordinates = [
+				[ 0, 0 ],
+				[ 40, 0 ],
+				[ 0, 40 ],
+			]
+
+			const actualCoordinates = viewUtilities.rotateShapeAboutCanvasCenter({ coordinates })
+
+			const expectedCoordinates = [
+				[ 200, 0 ],
+				[ 200, 40 ],
+				[ 160, 0 ],
+			]
+			expect(coordinatesMatch(expectedCoordinates, actualCoordinates)).toBe(true)
+		})
+
+		it('does nothing if rotateViewAboutCanvasCenter is undefined or 0', () => {
+			const coordinates = [
+				[ 0, 0 ],
+				[ 0, 40 ],
+				[ 40, 40 ],
+			]
+
+			const actualCoordinates = viewUtilities.rotateShapeAboutCanvasCenter({ coordinates })
+
+			expect(actualCoordinates).toEqual(coordinates)
+			expect(actualCoordinates).toBe(coordinates)
+		})
 	})
 })

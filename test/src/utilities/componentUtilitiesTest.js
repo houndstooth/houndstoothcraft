@@ -2,6 +2,7 @@ import componentUtilities from '../../../src/utilities/componentUtilities'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import setup from '../../../src/settings/setup'
+import coordinatesMatch from '../../helpers/coordinatesMatch'
 
 describe('component utilities', () => {
 	let getSetForTile
@@ -328,16 +329,16 @@ describe('component utilities', () => {
 					const zoomedAndScrolledTileOrigin = [ 5, 5 ]
 					const zoomedTileSize = 5
 
-					const result = rotateShapeAboutShapeCenter({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize })
+					const actualCoordinates = rotateShapeAboutShapeCenter(
+						{ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize }
+					)
 
 					const expectedCoordinates = [
 						[ 15, 0 ],
 						[ 15, 5 ],
 						[ 10, 0 ],
 					]
-					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-						expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
-					}))
+					expect(coordinatesMatch(expectedCoordinates, actualCoordinates)).toBe(true)
 				})
 			})
 

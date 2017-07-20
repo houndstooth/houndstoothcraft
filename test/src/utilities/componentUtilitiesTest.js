@@ -290,7 +290,7 @@ describe('component utilities', () => {
 		describe('base stripe diagonal', () => {
 			describe('when principal', () => {
 				beforeEach(() => {
-					current.settings.initial.baseStripeDiagonal = 'PRINCIPAL'
+					currentState.settings.base.baseStripeDiagonal = 'PRINCIPAL'
 				})
 
 				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
@@ -363,7 +363,7 @@ describe('component utilities', () => {
 		beforeEach(() => getTileOriginAndSize = componentUtilities.getTileOriginAndSize)
 
 		it('returns the tile size, and scales the address by it to get the origin', () => {
-			current.settings.initial.tileSettings = { tileSize }
+			currentState.settings.base.tileSettings = { tileSize }
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize,
@@ -376,7 +376,7 @@ describe('component utilities', () => {
 				tileSize: tileSize * tileSize,
 				tileOrigin: [ address[ 1 ] * tileSize, address[ 0 ] * tileSize ],
 			})
-			current.settings.initial.getTileOriginAndSize = custom
+			currentState.settings.base.getTileOriginAndSize = custom
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize: tileSize * tileSize,

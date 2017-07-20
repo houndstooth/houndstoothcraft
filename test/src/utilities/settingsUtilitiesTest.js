@@ -135,7 +135,7 @@ describe('settings utilities', () => {
 		beforeEach(() => getFromSettingsOrDefault = settingsUtilities.getFromSettingsOrDefault)
 
 		it('gets the property from settings if it is defined', () => {
-			current.settings.animations = { specialMoves: { youKnowIt: 'awesome' } }
+			currentState.settings.animations = { specialMoves: { youKnowIt: 'awesome' } }
 			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
@@ -143,7 +143,7 @@ describe('settings utilities', () => {
 		})
 
 		it('gets the property from settings even if it is zero; that is the whole point of this thing', () => {
-			current.settings.animations = { specialMoves: { youKnowIt: 0 } }
+			currentState.settings.animations = { specialMoves: { youKnowIt: 0 } }
 			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
@@ -160,7 +160,7 @@ describe('settings utilities', () => {
 
 	describe('#confirmSettingsObjectsParentIncludesOnlySettingsObjects', () => {
 		let confirmSettingsObjectsParentIncludesOnlySettingsObjects
-		const initial = {}
+		const base = {}
 		const animations = {}
 		const iterations = {}
 		const anInvalidSettingsObject = {}
@@ -168,16 +168,16 @@ describe('settings utilities', () => {
 			confirmSettingsObjectsParentIncludesOnlySettingsObjects = settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects
 		})
 
-		it('returns true if the object contains only some subset of iterations, animations, and initial settings objects', () => {
+		it('returns true if the object contains only some subset of iterations, animations, and base settings objects', () => {
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({})).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ initial })).toBe(true)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ base })).toBe(true)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ animations })).toBe(true)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ iterations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ initial, animations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ initial, iterations })).toBe(true)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ base, animations })).toBe(true)
+			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ base, iterations })).toBe(true)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ animations, iterations })).toBe(true)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				initial,
+				base,
 				animations,
 				iterations,
 			})).toBe(true)
@@ -197,7 +197,7 @@ describe('settings utilities', () => {
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject })).toBe(false)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
 				anInvalidSettingsObject,
-				initial,
+				base,
 			})).toBe(false)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
 				anInvalidSettingsObject,
@@ -209,12 +209,12 @@ describe('settings utilities', () => {
 			})).toBe(false)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
 				anInvalidSettingsObject,
-				initial,
+				base,
 				animations,
 			})).toBe(false)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
 				anInvalidSettingsObject,
-				initial,
+				base,
 				iterations,
 			})).toBe(false)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
@@ -224,7 +224,7 @@ describe('settings utilities', () => {
 			})).toBe(false)
 			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
 				anInvalidSettingsObject,
-				initial,
+				base,
 				animations,
 				iterations,
 			})).toBe(false)

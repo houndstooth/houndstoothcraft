@@ -113,41 +113,41 @@ describe('math utilities', () => {
 	})
 
 	describe('#termialRoot', () => {
-		it('given an initial stripe count per tile, the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes through, including the fractional part within that tile', () => {
+		it('for a concrete example of what you can use this method for: given an starting stripe count per tile, the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes through, including the fractional part within that tile', () => {
 			const termialRoot = mathUtilities.termialRoot
-			let initial, delta
+			let rangeStart, rangeDelta
 
-			initial = 1
-			delta = 1
-			expect(termialRoot({ initial, delta, n: 0 })).toBe(0)
-			expect(termialRoot({ initial, delta, n: 1 })).toBe(1)
-			expect(termialRoot({ initial, delta, n: 3 })).toBe(2)
-			expect(termialRoot({ initial, delta, n: 6 })).toBe(3)
-			expect(termialRoot({ initial, delta, n: 10 })).toBe(4)
+			rangeStart = 1
+			rangeDelta = 1
+			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 1 })).toBe(1)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 3 })).toBe(2)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(3)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 10 })).toBe(4)
 
-			initial = 2
-			delta = 1
-			expect(termialRoot({ initial, delta, n: 0 })).toBe(0)
-			expect(termialRoot({ initial, delta, n: 2 })).toBe(1)
-			expect(termialRoot({ initial, delta, n: 5 })).toBe(2)
-			expect(termialRoot({ initial, delta, n: 9 })).toBe(3)
-			expect(termialRoot({ initial, delta, n: 14 })).toBe(4)
+			rangeStart = 2
+			rangeDelta = 1
+			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 2 })).toBe(1)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 5 })).toBe(2)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 9 })).toBe(3)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 14 })).toBe(4)
 
-			initial = 1
-			delta = 2
-			expect(termialRoot({ initial, delta, n: 0 })).toBe(0)
-			expect(termialRoot({ initial, delta, n: 1 })).toBe(1)
-			expect(termialRoot({ initial, delta, n: 4 })).toBe(2)
-			expect(termialRoot({ initial, delta, n: 9 })).toBe(3)
-			expect(termialRoot({ initial, delta, n: 16 })).toBe(4)
+			rangeStart = 1
+			rangeDelta = 2
+			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 1 })).toBe(1)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 4 })).toBe(2)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 9 })).toBe(3)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 16 })).toBe(4)
 
-			initial = 2
-			delta = 2
-			expect(termialRoot({ initial, delta, n: 0 })).toBe(0)
-			expect(termialRoot({ initial, delta, n: 2 })).toBe(1)
-			expect(termialRoot({ initial, delta, n: 6 })).toBe(2)
-			expect(termialRoot({ initial, delta, n: 12 })).toBe(3)
-			expect(termialRoot({ initial, delta, n: 20 })).toBe(4)
+			rangeStart = 2
+			rangeDelta = 2
+			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 2 })).toBe(1)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(2)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 12 })).toBe(3)
+			expect(termialRoot({ rangeStart, rangeDelta, n: 20 })).toBe(4)
 		})
 	})
 })

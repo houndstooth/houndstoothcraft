@@ -2,7 +2,7 @@ import codeUtilities from './codeUtilities'
 import { PERIMETER_SCALAR } from '../constants'
 
 const getStripePositionsForTile = ({ address } = {}) => {
-	const getStripePositionsForTile = current.settings.initial.getStripePositions || standardStripePositions
+	const getStripePositionsForTile = currentState.settings.base.getStripePositions || standardStripePositions
 	return getStripePositionsForTile({ address })
 }
 
@@ -11,7 +11,7 @@ const standardStripePositions = () => perStripe({ getStripePosition: standardStr
 const standardStripePosition = ({ stripeIndex, stripeCount }) => stripeIndex / stripeCount
 
 const perStripe = ({ getStripePosition }) => {
-	const stripeCount = current.settings.initial.stripeCountSettings.stripeCount
+	const stripeCount = currentState.settings.base.stripeCountSettings.stripeCount
 	return codeUtilities.iterator(stripeCount).map(stripeIndex => {
 		return getStripePosition({ stripeIndex, stripeCount }) * PERIMETER_SCALAR
 	})

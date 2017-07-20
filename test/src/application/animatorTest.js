@@ -34,6 +34,6 @@ describe('animator', () => {
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {
-		expect(current.interval).toBe(interval)
+		expect(currentState.interval).toBe(interval)
 	})
 })

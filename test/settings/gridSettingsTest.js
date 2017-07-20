@@ -14,7 +14,7 @@ describe('.gridSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						viewSettings: {
 							canvasSize: 200,
 						},
@@ -143,7 +143,7 @@ describe('.gridSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						viewSettings: {
 							canvasSize: 300,
 							centerViewOnCenterOfTileAtZeroZeroAddress: true,

@@ -7,7 +7,7 @@ import { BLACK, TRANSPARENT } from '../../src/constants'
 describe('standard houndstooth pattern', () => {
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
 		setup({ effects: [] })
-		const tileSizeInPixels = current.settings.initial.tileSettings.tileSize
+		const tileSizeInPixels = currentState.settings.base.tileSettings.tileSize
 		activateTestMarkerCanvas()
 
 		execute()

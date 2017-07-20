@@ -49,7 +49,7 @@
     ]
   },
   "globals": {
-    "current": false,
+    "currentState": false,
     "global": false
   }
 }

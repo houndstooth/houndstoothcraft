@@ -12,7 +12,7 @@ describe('.tileSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						tileSettings: {
 							tileSize: 30,
 						},
@@ -37,7 +37,7 @@ describe('.tileSettings', () => {
 				setup({
 					effects: [],
 					overrides: {
-						initial: {
+						base: {
 							viewSettings: {
 								zoom: 3,
 							},
@@ -72,7 +72,7 @@ describe('.tileSettings', () => {
 		beforeEach(() => {
 			context.clear()
 			overrides = {
-				initial: {
+				base: {
 					gridSettings: { gridSize: 1 },
 					colorSettings: { set: [ BLACK, BLACK ] },
 				},
@@ -98,7 +98,7 @@ describe('.tileSettings', () => {
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
-			overrides.initial.tileSettings = { collapseSameColoredShapesWithinTile: false }
+			overrides.base.tileSettings = { collapseSameColoredShapesWithinTile: false }
 			setup({ effects: [], overrides })
 			activateTestMarkerCanvas()
 

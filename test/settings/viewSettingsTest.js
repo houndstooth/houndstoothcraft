@@ -16,7 +16,7 @@ describe('.viewSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						colorSettings: { set: [ BLACK ] },
 						viewSettings: { canvasSize: 125 },
 					},
@@ -42,7 +42,7 @@ describe('.viewSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						viewSettings: { zoom },
 						gridSettings: { gridSize: 2 },
 					},
@@ -85,7 +85,7 @@ describe('.viewSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						viewSettings: {
 							zoomOnCanvasCenter: true,
 							zoom: 2,
@@ -131,7 +131,7 @@ describe('.viewSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						tileSettings: { tileSize },
 						viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
 						gridSettings: { gridSize: 2 },
@@ -174,7 +174,7 @@ describe('.viewSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						viewSettings: {
 							canvasSize: 300,
 							rotateViewAboutCanvasCenter: Math.PI / 2,

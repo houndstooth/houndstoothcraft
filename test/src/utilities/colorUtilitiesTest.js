@@ -6,11 +6,11 @@ describe('color utilities', () => {
 	beforeEach(() => setup())
 
 	describe('#getColorsForTile', () => {
-		it('defaults to the initial color settings on the settings', () => {
+		it('defaults to the base color settings on the settings', () => {
 			const address = []
 			spyOn(componentUtilities, 'getSetForTile')
 			const defaultSettings = { importantThing: 'boingo' }
-			current.settings.initial.colorSettings = defaultSettings
+			currentState.settings.base.colorSettings = defaultSettings
 
 			colorUtilities.getColorsForTile({ address })
 
@@ -34,7 +34,7 @@ describe('color utilities', () => {
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
 			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
-			current.settings.initial.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
+			currentState.settings.base.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
 

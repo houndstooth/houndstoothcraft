@@ -66,7 +66,7 @@ describe('tile', () => {
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
 
-			current.settings.initial.tileSettings = {}
+			currentState.settings.base.tileSettings = {}
 
 			tileColors = {}
 			getColorsForTileSpy.and.returnValue(tileColors)
@@ -92,7 +92,7 @@ describe('tile', () => {
 		describe('if a function for converting a tile into shapes is specified', () => {
 			it('uses it', () => {
 				const tileToShapesSpy = jasmine.createSpy()
-				current.settings.initial.tileSettings.tileToShapes = tileToShapesSpy
+				currentState.settings.base.tileSettings.tileToShapes = tileToShapesSpy
 
 				tile({ address })
 
@@ -115,13 +115,13 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				current.settings.initial.tileSettings.collapseSameColoredShapesWithinTile = true
+				currentState.settings.base.tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
 			describe('when a function for checking the uniformity of the tile is specified', () => {
 				it('uses it to see if the tile is uniform', () => {
 					const isTileUniformSpy = jasmine.createSpy()
-					current.settings.initial.tileSettings.isTileUniform = isTileUniformSpy
+					currentState.settings.base.tileSettings.isTileUniform = isTileUniformSpy
 
 					tile({ address })
 
@@ -163,7 +163,7 @@ describe('tile', () => {
 					it('converts the tile into shapes using it', () => {
 						const whenTileIsUniform = () => {
 						}
-						current.settings.initial.tileSettings.getCoordinates = { whenTileIsUniform }
+						currentState.settings.base.tileSettings.getCoordinates = { whenTileIsUniform }
 
 						tile({ address })
 
@@ -217,7 +217,7 @@ describe('tile', () => {
 					it('converts the tile into shapes using it', () => {
 						const whenTileIsMultiform = () => {
 						}
-						current.settings.initial.tileSettings.getCoordinates = { whenTileIsMultiform }
+						currentState.settings.base.tileSettings.getCoordinates = { whenTileIsMultiform }
 
 						tile({ address })
 
@@ -304,7 +304,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				current.settings.initial.tileSettings.collapseSameColoredShapesWithinTile = false
+				currentState.settings.base.tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

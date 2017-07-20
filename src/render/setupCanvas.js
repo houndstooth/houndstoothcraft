@@ -1,7 +1,7 @@
 import canvas from './canvas'
 
 export default () => {
-	const canvasSize = current.settings.initial.viewSettings.canvasSize
+	const canvasSize = currentState.settings.base.viewSettings.canvasSize
 	canvas.width = canvasSize
 	canvas.height = canvasSize
 }

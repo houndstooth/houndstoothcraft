@@ -3,7 +3,7 @@ import codeUtilities from './codeUtilities'
 import registeredSettings from '../settings/registeredSettings'
 import defaultSettings from '../settings/defaultSettings'
 
-const SETTINGS_OBJECT_NAMES = [ 'initial', 'animations', 'iterations' ]
+const SETTINGS_OBJECT_NAMES = [ 'base', 'animations', 'iterations' ]
 
 const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
@@ -18,7 +18,7 @@ const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedProper
 			})
 		}
 		else {
-			consoleWrapper.error(`This object is supposed to be an object whose structure matches that of the initial settings, and whose leaf values are functions to be applied to those settings on each animation / iteration frame. However, you have provided a non-function ${value} at path ${nestedPropertyPath} ${key}`)
+			consoleWrapper.error(`This object is supposed to be an object whose structure matches that of the base settings, and whose leaf values are functions to be applied to those settings on each animation / iteration frame. However, you have provided a non-function ${value} at path ${nestedPropertyPath} ${key}`)
 		}
 	})
 	return functionsArray
@@ -58,7 +58,7 @@ const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithProperty
 }
 
 const getFromSettingsOrDefault = nestedPropertyPath => {
-	let childObject = current.settings
+	let childObject = currentState.settings
 	let notThere
 	nestedPropertyPath.forEach(pathStep => {
 		if (notThere) return
@@ -72,7 +72,7 @@ const getFromSettingsOrDefault = nestedPropertyPath => {
 
 	let property
 	if (codeUtilities.isDefined(childObject)) {
-		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: current.settings, nestedPropertyPath })
+		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: currentState.settings, nestedPropertyPath })
 	}
 	else {
 		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: defaultSettings, nestedPropertyPath })

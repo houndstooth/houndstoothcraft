@@ -4,7 +4,7 @@ export default {
 	lastSavedAnimationFrame: 0,
 	interval: null,
 	settings: {
-		initial: {},
+		base: {},
 		animations: {},
 		iterations: {},
 	},

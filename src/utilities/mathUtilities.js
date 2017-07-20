@@ -6,20 +6,20 @@ const quarterSquareNumber = n => Math.floor(Math.pow(n, 2) / 4)
 
 const trapezoidalNumber = ({ start, height }) => triangularNumber(start + height) - triangularNumber(start)
 
-const termialRoot = ({ initial, delta, n }) => {
+const termialRoot = ({ rangeStart, rangeDelta, n }) => {
 	return (
 		Math.sqrt(
 			Math.pow(
-				2 * initial - delta,
+				2 * rangeStart - rangeDelta,
 				2
 			)
 				+
-				8 * delta * n
+				8 * rangeDelta * n
 		)
 			-
-			2 * initial + delta
+			2 * rangeStart + rangeDelta
 	) / (
-		2 * delta
+		2 * rangeDelta
 	)
 }
 

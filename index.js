@@ -1,4 +1,4 @@
-import './globalCurrent'
+import './globalCurrentState'
 import setup from './src/settings/setup'
 import execute from './src/application/execute'
 

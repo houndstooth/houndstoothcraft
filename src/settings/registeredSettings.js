@@ -52,8 +52,8 @@ export default {
 		stripeCountMode: true,
 		stripeCount: true,
 		ginghamChevronContinuum: {
-			initial: true,
-			delta: true,
+			initialStripeCount: true,
+			deltaStripeCount: true,
 		},
 	},
 	gatherOptions: {

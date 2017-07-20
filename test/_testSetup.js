@@ -1,14 +1,14 @@
 /* eslint-disable no-global-assign */
 
 import 'jasmine'
-import '../globalCurrent'
+import '../globalCurrentState'
 import clear from '../src/render/clear'
 import testMarkersClear from './helpers/testMarkersClear'
 import codeUtilities from '../src/utilities/codeUtilities'
-import initialState from '../src/settings/initialSettings'
+import initialState from '../src/settings/initialState'
 
 beforeEach(() => {
-	current = codeUtilities.deepClone(initialState)
+	currentState = codeUtilities.deepClone(initialState)
 	clear()
 	testMarkersClear()
 })

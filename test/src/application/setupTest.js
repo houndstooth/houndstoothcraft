@@ -10,7 +10,7 @@ describe('setup', () => {
 
 		setup({ settingsLogging: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(current.settings)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(currentState.settings)
 	})
 
 	it('does not log the settings when logging mode is not on', () => {
@@ -33,7 +33,7 @@ describe('setup', () => {
 		const propertyFunctionOneG = () => 'G'
 		const propertyFunctionOneH = () => 'H'
 		const effectOne = {
-			initial: {
+			base: {
 				propertyA: 'A',
 				propertyB: 'B',
 			},
@@ -52,7 +52,7 @@ describe('setup', () => {
 		const propertyFunctionTwoG = () => 'g'
 		const propertyFunctionTwoI = () => 'i'
 		const effectTwo = {
-			initial: {
+			base: {
 				propertyA: 'a',
 				propertyC: 'c',
 			},
@@ -70,7 +70,7 @@ describe('setup', () => {
 
 		// defaults
 
-		defaultSettings.initial = {
+		defaultSettings.base = {
 			propertyA: 'pre-a',
 			propertyJ: 'pre-j',
 		}
@@ -94,7 +94,7 @@ describe('setup', () => {
 		const propertyFunctionOverridesI = () => 'iI'
 		const propertyFunctionOverridesP = () => 'pP'
 		const overrides = {
-			initial: {
+			base: {
 				propertyC: 'cC',
 				propertyM: 'mM',
 			},
@@ -110,21 +110,21 @@ describe('setup', () => {
 
 		setup({ effects, overrides })
 
-		expect(current.settings.initial).toEqual(jasmine.objectContaining({
+		expect(currentState.settings.base).toEqual(jasmine.objectContaining({
 			propertyA: 'a',
 			propertyB: 'B',
 			propertyC: 'cC',
 			propertyJ: 'pre-j',
 			propertyM: 'mM',
 		}))
-		expect(current.settings.animations).toEqual(jasmine.objectContaining({
+		expect(currentState.settings.animations).toEqual(jasmine.objectContaining({
 			propertyD: propertyFunctionTwoD,
 			propertyE: propertyFunctionOneE,
 			propertyF: propertyFunctionOverridesF,
 			propertyK: propertyFunctionDefaultK,
 			propertyN: propertyFunctionOverridesN,
 		}))
-		expect(current.settings.iterations).toEqual(jasmine.objectContaining({
+		expect(currentState.settings.iterations).toEqual(jasmine.objectContaining({
 			propertyG: propertyFunctionTwoG,
 			propertyH: propertyFunctionOneH,
 			propertyI: propertyFunctionOverridesI,
@@ -160,7 +160,7 @@ describe('setup', () => {
 		describe('on the defaults', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				defaultSettings.yikes = {}
-				setup({ initial: {} })
+				setup({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
@@ -168,8 +168,8 @@ describe('setup', () => {
 
 		describe('on the global current (somehow)', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
-				current.settings.yikes = {}
-				setup({ initial: {} })
+				currentState.settings.yikes = {}
+				setup({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})

@@ -30,6 +30,6 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionSpy).toHaveBeenCalled()
-		expect(window.clearInterval).toHaveBeenCalledWith(current.interval)
+		expect(window.clearInterval).toHaveBeenCalledWith(currentState.interval)
 	})
 })

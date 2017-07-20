@@ -17,7 +17,7 @@ describe('.colorSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						colorSettings: {
 							set: [ YELLOW, BLUE ],
 						},
@@ -44,7 +44,7 @@ describe('.colorSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						colorSettings: {
 							set: [ YELLOW, BLUE, CYAN ],
 							assignment: {
@@ -134,7 +134,7 @@ describe('.colorSettings', () => {
 					setup({
 						effects: [],
 						overrides: {
-							initial: {
+							base: {
 								colorSettings: {
 									assignment: {
 										weave: {
@@ -463,7 +463,7 @@ describe('.colorSettings', () => {
 					setup({
 						effects: [],
 						overrides: {
-							initial: {
+							base: {
 								colorSettings: {
 									set: [ YELLOW, BLUE, CYAN, MAGENTA ],
 									assignment: {
@@ -609,7 +609,7 @@ describe('.colorSettings', () => {
 				setup({
 					effects: [],
 					overrides: {
-						initial: {
+						base: {
 							colorSettings: {
 								assignment: {
 									switcheroo: true,
@@ -686,7 +686,7 @@ describe('.colorSettings', () => {
 				setup({
 					effects: [],
 					overrides: {
-						initial: {
+						base: {
 							colorSettings: {
 								assignment: {
 									flipGrain: true,
@@ -744,7 +744,7 @@ describe('.colorSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						colorSettings: {
 							set: [ BLACK, BLUE ],
 							opacity,

@@ -14,7 +14,7 @@ describe('.stripeCountSettings', () => {
 		let overrides
 		beforeEach(() => {
 			overrides = {
-				initial: {
+				base: {
 					viewSettings: { canvasSize: tileSizeInPixels },
 					gridSettings: { gridSize: 1 },
 					stripeCountSettings: { stripeCountMode: undefined },
@@ -38,7 +38,7 @@ describe('.stripeCountSettings', () => {
 		})
 
 		it('works in gingham mode', () => {
-			overrides.initial.stripeCountSettings.stripeCountMode = 'GINGHAM'
+			overrides.base.stripeCountSettings.stripeCountMode = 'GINGHAM'
 			setup({ effects: [], overrides })
 			activateTestMarkerCanvas()
 
@@ -60,7 +60,7 @@ describe('.stripeCountSettings', () => {
 			setup({
 				effects: [],
 				overrides: {
-					initial: {
+					base: {
 						gridSettings: { gridSize: 2 },
 						stripeCountSettings: { stripeCount: 5 },
 					},

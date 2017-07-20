@@ -9,7 +9,7 @@ describe('.baseStripeDiagonal', () => {
 		setup({
 			effects: [],
 			overrides: {
-				initial: {
+				base: {
 					baseStripeDiagonal: 'PRINCIPAL',
 				},
 			},
@@ -18,7 +18,7 @@ describe('.baseStripeDiagonal', () => {
 		execute()
 
 		let originInPixels
-		const tileSizeInPixels = current.settings.initial.tileSettings.tileSize
+		const tileSizeInPixels = currentState.settings.base.tileSettings.tileSize
 
 		originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

@@ -8,7 +8,7 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 
 	if (
 		!combinedEffects ||
-		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(current.settings) ||
+		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(currentState.settings) ||
 		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(overrides) ||
 		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(defaultSettings)
 	) {
@@ -16,19 +16,19 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 	}
 
 	setupObject({
-		defaults: defaultSettings.initial,
-		objectToSetup: current.settings.initial,
-		effects: combinedEffects.initial,
-		overrides: overrides.initial,
+		defaults: defaultSettings.base,
+		objectToSetup: currentState.settings.base,
+		effects: combinedEffects.base,
+		overrides: overrides.base,
 	})
 	setupObject({
-		objectToSetup: current.settings.iterations,
+		objectToSetup: currentState.settings.iterations,
 		defaults: defaultSettings.iterations,
 		effects: combinedEffects.iterations,
 		overrides: overrides.iterations,
 	})
 	setupObject({
-		objectToSetup: current.settings.animations,
+		objectToSetup: currentState.settings.animations,
 		defaults: defaultSettings.animations,
 		effects: combinedEffects.animations,
 		overrides: overrides.animations,
@@ -36,7 +36,7 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 
 	setupCanvas()
 
-	if (settingsLogging) consoleWrapper.log(current.settings)
+	if (settingsLogging) consoleWrapper.log(currentState.settings)
 }
 
 const setupObject = ({ objectToSetup, defaults, effects, overrides }) => {
@@ -56,7 +56,7 @@ const setupObject = ({ objectToSetup, defaults, effects, overrides }) => {
 }
 
 const combineEffects = ({ effects }) => {
-	const initial = {}
+	const base = {}
 	const iterations = {}
 	const animations = {}
 
@@ -69,8 +69,8 @@ const combineEffects = ({ effects }) => {
 			return
 		}
 		applyOverrides({
-			objectWithPropertiesToBeOverridden: initial,
-			objectWithPropertyOverrides: effect.initial,
+			objectWithPropertiesToBeOverridden: base,
+			objectWithPropertyOverrides: effect.base,
 		})
 		applyOverrides({
 			objectWithPropertiesToBeOverridden: iterations,
@@ -85,5 +85,5 @@ const combineEffects = ({ effects }) => {
 	if (anyIssues) {
 		return null
 	}
-	return { initial, iterations, animations }
+	return { base, iterations, animations }
 }

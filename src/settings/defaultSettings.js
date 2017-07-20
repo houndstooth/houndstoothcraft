@@ -1,7 +1,7 @@
 import { BLACK, TRANSPARENT } from '../constants'
 
 export default {
-	initial: {
+	base: {
 		viewSettings: {
 			canvasSize: 800,
 			zoom: 1,

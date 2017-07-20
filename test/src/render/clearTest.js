@@ -7,7 +7,7 @@ describe('clear', () => {
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
-			current.settings.initial.viewSettings = { canvasSize: 500 }
+			currentState.settings.base.viewSettings = { canvasSize: 500 }
 
 			clear()
 
@@ -19,7 +19,7 @@ describe('clear', () => {
 		it('wipes the default amount of canvas', () => {
 			clear()
 
-			const defaultCanvasSize = defaultSettings.initial.viewSettings.canvasSize
+			const defaultCanvasSize = defaultSettings.base.viewSettings.canvasSize
 			expect(context.clearRect).toHaveBeenCalledWith(0, 0, defaultCanvasSize, defaultCanvasSize)
 		})
 	})

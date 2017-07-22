@@ -9,7 +9,7 @@ import initialState from '../../../src/state/initialState'
 
 describe('.baseStripeDiagonal', () => {
 	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState))
-	
+
 	it('can be set to principal, to change the orientation of the stripes', () => {
 		buildPattern({
 			patternEffects: [],

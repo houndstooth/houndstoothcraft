@@ -10,7 +10,7 @@ describe('animator', () => {
 	let interval
 	beforeEach(() => {
 		store.currentState = codeUtilities.deepClone(initialState)
-		
+
 		interval = () => {}
 		spyOn(window, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20

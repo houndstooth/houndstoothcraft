@@ -7,6 +7,7 @@ import stripeUtilities from '../utilities/stripeUtilities'
 import squareCoordinates from '../shapes/squareCoordinates'
 import stripeCoordinates from '../shapes/stripeCoordinates'
 import { PERIMETER_SCALAR } from '../constants'
+import store from '../../store'
 
 export default ({ address }) => {
 	const { tileOrigin, tileSize } = componentUtilities.getTileOriginAndSize({ address })
@@ -14,7 +15,7 @@ export default ({ address }) => {
 
 	const tileColors = colorUtilities.getColorsForTile({ address })
 
-	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = currentState.builtPattern.base.tileSettings || {}
+	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = store.currentState.builtPattern.base.tileSettings || {}
 	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	tileToShapes = tileToShapes || shape

@@ -1,13 +1,19 @@
 import clear from '../../../src/render/clear'
 import context from '../../../src/render/context'
 import patternDefaults from '../../../src/state/patternDefaults'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('clear', () => {
-	beforeEach(() => spyOn(context, 'clearRect'))
+	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
+		spyOn(context, 'clearRect')
+	})
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
-			currentState.builtPattern.base.viewSettings = { canvasSize: 500 }
+			store.currentState.builtPattern.base.viewSettings = { canvasSize: 500 }
 
 			clear()
 

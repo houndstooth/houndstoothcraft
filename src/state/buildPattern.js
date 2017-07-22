@@ -1,13 +1,14 @@
 import stateUtilities from '../utilities/stateUtilities'
 import consoleWrapper from '../application/consoleWrapper'
 import patternDefaults from './patternDefaults'
+import store from '../../store'
 
 export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {}) => {
 	const combinedPatternEffects = combinePatternEffects({ patternEffects })
 
 	if (
 		!combinedPatternEffects ||
-		!stateUtilities.confirmPatternHasNoNonSettings(currentState.builtPattern) ||
+		!stateUtilities.confirmPatternHasNoNonSettings(store.currentState.builtPattern) ||
 		!stateUtilities.confirmPatternHasNoNonSettings(patternOverrides) ||
 		!stateUtilities.confirmPatternHasNoNonSettings(patternDefaults)
 	) {
@@ -15,25 +16,25 @@ export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {})
 	}
 
 	buildSettings({
-		settingsToSetup: currentState.builtPattern.base,
+		settingsToSetup: store.currentState.builtPattern.base,
 		patternDefaults: patternDefaults.base,
 		patternEffects: combinedPatternEffects.base,
 		patternOverrides: patternOverrides.base,
 	})
 	buildSettings({
-		settingsToSetup: currentState.builtPattern.iterations,
+		settingsToSetup: store.currentState.builtPattern.iterations,
 		patternDefaults: patternDefaults.iterations,
 		patternEffects: combinedPatternEffects.iterations,
 		patternOverrides: patternOverrides.iterations,
 	})
 	buildSettings({
-		settingsToSetup: currentState.builtPattern.animations,
+		settingsToSetup: store.currentState.builtPattern.animations,
 		patternDefaults: patternDefaults.animations,
 		patternEffects: combinedPatternEffects.animations,
 		patternOverrides: patternOverrides.animations,
 	})
 
-	if (logPattern) consoleWrapper.log(currentState.builtPattern)
+	if (logPattern) consoleWrapper.log(store.currentState.builtPattern)
 }
 
 const buildSettings = ({ settingsToSetup, patternDefaults, patternEffects, patternOverrides }) => {

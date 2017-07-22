@@ -1,3 +1,5 @@
+import store from '../../../store'
+
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.position = 'absolute'
 	canvas.style.top = 0
@@ -10,7 +12,7 @@ export default () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
 
-	const canvasSize = currentState.builtPattern.base.viewSettings.canvasSize
+	const canvasSize = store.currentState.builtPattern.base.viewSettings.canvasSize
 	testMarkersCanvas.width = canvasSize
 	testMarkersCanvas.height = canvasSize
 

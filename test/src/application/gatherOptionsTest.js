@@ -1,11 +1,17 @@
 import gatherOptions from '../../../src/application/gatherOptions'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('gather options', () => {
 	let address
-	beforeEach(() => address = [ 3, 5 ])
+	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
+		address = [ 3, 5 ]
+	})
 
 	it('calls every options gathering function with the address, saving each result onto an object it returns', () => {
-		currentState.builtPattern.base.gatherOptions = {
+		store.currentState.builtPattern.base.gatherOptions = {
 			optionOne: ({ address }) => ({ resultOne: [ address[ 0 ] + 1, address[ 1 ] + 1 ] }),
 			optionTwo: ({ address }) => ({ resultTwo: [ address[ 0 ] - 1, address[ 1 ] - 1 ] }),
 		}

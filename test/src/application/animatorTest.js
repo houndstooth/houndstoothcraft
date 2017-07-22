@@ -1,4 +1,7 @@
 import animator from '../../../src/application/animator'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('animator', () => {
 	let buildIntervalFunctionSpy
@@ -6,18 +9,17 @@ describe('animator', () => {
 	let animationFunction, frameRate, stopCondition
 	let interval
 	beforeEach(() => {
-		interval = () => {
-		}
+		store.currentState = codeUtilities.deepClone(initialState)
+		
+		interval = () => {}
 		spyOn(window, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
 		buildIntervalFunctionSpy = jasmine.createSpy().and.returnValue(intervalFunction)
 		animator.__Rewire__('buildIntervalFunction', buildIntervalFunctionSpy)
 
-		animationFunction = () => {
-		}
+		animationFunction = () => {}
 		frameRate = 3
-		stopCondition = () => {
-		}
+		stopCondition = () => {}
 
 		animator({ animationFunction, frameRate, stopCondition })
 	})
@@ -34,6 +36,6 @@ describe('animator', () => {
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {
-		expect(currentState.interval).toBe(interval)
+		expect(store.currentState.interval).toBe(interval)
 	})
 })

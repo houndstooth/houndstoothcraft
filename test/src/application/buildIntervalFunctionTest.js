@@ -1,9 +1,13 @@
 import buildIntervalFunction from '../../../src/application/buildIntervalFunction'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('build animation function', () => {
 	let intervalFunction
 	let animationFunctionSpy, stopConditionSpy
 	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
 		spyOn(window, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy()
 		stopConditionSpy = jasmine.createSpy()
@@ -30,6 +34,6 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionSpy).toHaveBeenCalled()
-		expect(window.clearInterval).toHaveBeenCalledWith(currentState.interval)
+		expect(window.clearInterval).toHaveBeenCalledWith(store.currentState.interval)
 	})
 })

@@ -1,4 +1,3 @@
-import './globalCurrentState'
 import buildPattern from './src/state/buildPattern'
 import setupCanvas from './src/render/setupCanvas'
 import execute from './src/application/execute'

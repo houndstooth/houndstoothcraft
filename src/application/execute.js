@@ -5,6 +5,7 @@ import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
 import animator from './animator'
 import exportFrame from './exportFrame'
+import store from '../../store'
 
 export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
 	let animationFunctions, iterationFunctions
@@ -12,12 +13,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	if (animating) {
 		execute = executeAnimation
 		animationFunctions = stateUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: currentState.builtPattern.animations,
+			settingsFunctions: store.currentState.builtPattern.animations,
 		})
 	}
 	if (iterating) {
 		iterationFunctions = stateUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: currentState.builtPattern.iterations,
+			settingsFunctions: store.currentState.builtPattern.iterations,
 		})
 	}
 
@@ -37,14 +38,14 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	if (performanceLogging) {
 		if (animating && iterating) {
 			consoleWrapper.log(
-				`current animation/iteration frame: ${currentState.animationFrame}/${currentState.iterationFrame}`
+				`current animation/iteration frame: ${store.currentState.animationFrame}/${store.currentState.iterationFrame}`
 			)
 		}
 		else if (animating) {
-			consoleWrapper.log(`current animation frame: ${currentState.animationFrame}`)
+			consoleWrapper.log(`current animation frame: ${store.currentState.animationFrame}`)
 		}
 		else if (iterating) {
-			consoleWrapper.log(`current iteration frame: ${currentState.iterationFrame}`)
+			consoleWrapper.log(`current iteration frame: ${store.currentState.iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')
 	}
@@ -54,7 +55,7 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {
 		const { settingsPath, settingName, settingFunctionItself } = settingsFunction
 		let settingsWithSettingToCallFunctionOn = codeUtilities.accessChildSettingOrCreatePath({
-			settingsRoot: currentState.builtPattern.base,
+			settingsRoot: store.currentState.builtPattern.base,
 			settingsPath,
 		})
 		settingsWithSettingToCallFunctionOn[ settingName ] = settingFunctionItself(settingsWithSettingToCallFunctionOn[ settingName ])
@@ -62,7 +63,7 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIterationFrame, endIterationFrame } = currentState.builtPattern.base.iteration || {}
+	let { startIterationFrame, endIterationFrame } = store.currentState.builtPattern.base.iteration || {}
 	startIterationFrame = startIterationFrame || 0
 
 	for (let n = 0; n <= endIterationFrame; n++) {
@@ -70,9 +71,9 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
 		callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
-		currentState.iterationFrame++
+		store.currentState.iterationFrame++
 	}
-	currentState.iterationFrame = 0
+	store.currentState.iterationFrame = 0
 }
 
 const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
@@ -87,22 +88,22 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
 	const { deepClone, resetSettings, defaultToTrue } = codeUtilities
 
-	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = currentState.builtPattern.base.animation || {}
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.currentState.builtPattern.base.animation || {}
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = defaultToTrue(refreshCanvas)
 
-	currentState.lastSavedAnimationFrame = startAnimationFrame
+	store.currentState.lastSavedAnimationFrame = startAnimationFrame
 
 	const animationFunction = () => {
-		if (exportFrames && currentState.animationFrame > currentState.lastSavedAnimationFrame) return
+		if (exportFrames && store.currentState.animationFrame > store.currentState.lastSavedAnimationFrame) return
 
-		if (currentState.animationFrame >= startAnimationFrame) {
+		if (store.currentState.animationFrame >= startAnimationFrame) {
 			if (refreshCanvas) clear()
 
 			if (iterating) {
-				const preIterationSettings = deepClone(currentState.builtPattern.base)
+				const preIterationSettings = deepClone(store.currentState.builtPattern.base)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				resetSettings({ settingsToReset: currentState.builtPattern.base, settingsToResetTo: preIterationSettings })
+				resetSettings({ settingsToReset: store.currentState.builtPattern.base, settingsToResetTo: preIterationSettings })
 			}
 			else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
@@ -112,10 +113,10 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 		}
 
 		callFunctionsPerSetting({ settingsFunctions: animationFunctions })
-		currentState.animationFrame++
+		store.currentState.animationFrame++
 	}
 
-	const stopCondition = () => currentState.animationFrame > endAnimationFrame
+	const stopCondition = () => store.currentState.animationFrame > endAnimationFrame
 
 	animator({ animationFunction, frameRate, stopCondition })
 }

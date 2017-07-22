@@ -3,8 +3,13 @@ import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('.baseStripeDiagonal', () => {
+	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState))
+	
 	it('can be set to principal, to change the orientation of the stripes', () => {
 		buildPattern({
 			patternEffects: [],
@@ -18,7 +23,7 @@ describe('.baseStripeDiagonal', () => {
 		execute()
 
 		let originInPixels
-		const tileSizeInPixels = currentState.builtPattern.base.tileSettings.tileSize
+		const tileSizeInPixels = store.currentState.builtPattern.base.tileSettings.tileSize
 
 		originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

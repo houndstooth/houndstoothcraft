@@ -47,9 +47,5 @@
       "error",
       "stroustrup"
     ]
-  },
-  "globals": {
-    "currentState": false,
-    "global": false
   }
 }

@@ -3,12 +3,15 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import buildPattern from '../../../src/state/buildPattern'
 import coordinatesMatch from '../helpers/coordinatesMatch'
+import store from '../../../store'
+import initialState from '../../../src/state/initialState'
 
 describe('component utilities', () => {
 	let getSetForTile
 	let settings
 	const address = [ 3, 5 ]
 	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
 		buildPattern()
 		getSetForTile = componentUtilities.getSetForTile
 	})
@@ -290,7 +293,7 @@ describe('component utilities', () => {
 		describe('base stripe diagonal', () => {
 			describe('when principal', () => {
 				beforeEach(() => {
-					currentState.builtPattern.base.baseStripeDiagonal = 'PRINCIPAL'
+					store.currentState.builtPattern.base.baseStripeDiagonal = 'PRINCIPAL'
 				})
 
 				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
@@ -363,7 +366,7 @@ describe('component utilities', () => {
 		beforeEach(() => getTileOriginAndSize = componentUtilities.getTileOriginAndSize)
 
 		it('returns the tile size, and scales the address by it to get the origin', () => {
-			currentState.builtPattern.base.tileSettings = { tileSize }
+			store.currentState.builtPattern.base.tileSettings = { tileSize }
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize,
@@ -376,7 +379,7 @@ describe('component utilities', () => {
 				tileSize: tileSize * tileSize,
 				tileOrigin: [ address[ 1 ] * tileSize, address[ 0 ] * tileSize ],
 			})
-			currentState.builtPattern.base.getTileOriginAndSize = custom
+			store.currentState.builtPattern.base.getTileOriginAndSize = custom
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize: tileSize * tileSize,

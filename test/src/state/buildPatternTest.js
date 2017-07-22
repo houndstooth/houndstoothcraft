@@ -3,17 +3,23 @@ import buildPattern from '../../../src/state/buildPattern'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import patternDefaults from '../../../src/state/patternDefaults'
 import stateUtilities from '../../../src/utilities/stateUtilities'
+import store from '../../../store'
+import initialState from '../../../src/state/initialState'
 
 describe('buildPattern', () => {
-	it('logs the settings when logging mode is on', () => {
+	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
+	})
+
+	it('logs the pattern when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
 		buildPattern({ logPattern: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(currentState.builtPattern)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(store.currentState.builtPattern)
 	})
 
-	it('does not log the settings when logging mode is not on', () => {
+	it('does not log the pattern when logging mode is not on', () => {
 		spyOn(consoleWrapper, 'log')
 
 		buildPattern()
@@ -21,7 +27,7 @@ describe('buildPattern', () => {
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
 	})
 
-	it('sets up settings', () => {
+	it('builds the pattern with settings out of pattern defaults, pattern effects, and pattern overrides', () => {
 		spyOn(codeUtilities, 'settingIsDefinedOnSettings').and.returnValue(true)
 		buildPattern.__Rewire__('setupCanvas', () => {
 		})
@@ -110,21 +116,21 @@ describe('buildPattern', () => {
 
 		buildPattern({ patternEffects, patternOverrides })
 
-		expect(currentState.builtPattern.base).toEqual(jasmine.objectContaining({
+		expect(store.currentState.builtPattern.base).toEqual(jasmine.objectContaining({
 			settingA: 'a',
 			settingB: 'B',
 			settingC: 'cC',
 			settingJ: 'pre-j',
 			settingM: 'mM',
 		}))
-		expect(currentState.builtPattern.animations).toEqual(jasmine.objectContaining({
+		expect(store.currentState.builtPattern.animations).toEqual(jasmine.objectContaining({
 			settingD: settingFunctionTwoD,
 			settingE: settingFunctionOneE,
 			settingF: settingFunctionOverridesF,
 			settingK: settingFunctionDefaultK,
 			settingN: settingFunctionOverridesN,
 		}))
-		expect(currentState.builtPattern.iterations).toEqual(jasmine.objectContaining({
+		expect(store.currentState.builtPattern.iterations).toEqual(jasmine.objectContaining({
 			settingG: settingFunctionTwoG,
 			settingH: settingFunctionOneH,
 			settingI: settingFunctionOverridesI,
@@ -142,7 +148,7 @@ describe('buildPattern', () => {
 		})
 
 		describe('on an effect', () => {
-			it('does not proceed to merge any settings onto the global spot', () => {
+			it('does not proceed to merge any settings', () => {
 				buildPattern({ patternEffects: [ { yikes: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()
@@ -150,7 +156,7 @@ describe('buildPattern', () => {
 		})
 
 		describe('on the overrides', () => {
-			it('does not proceed to merge any settings onto the global spot', () => {
+			it('does not proceed to merge any settings', () => {
 				buildPattern({ patternOverrides: { yikes: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()
@@ -158,7 +164,7 @@ describe('buildPattern', () => {
 		})
 
 		describe('on the pattern defaults', () => {
-			it('does not proceed to merge any settings onto the global spot', () => {
+			it('does not proceed to merge any settings', () => {
 				patternDefaults.yikes = {}
 				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
@@ -166,9 +172,9 @@ describe('buildPattern', () => {
 			})
 		})
 
-		describe('on the global current (somehow)', () => {
-			it('does not proceed to merge any settings onto the global spot', () => {
-				currentState.builtPattern.yikes = {}
+		describe('already on the built pattern (somehow)', () => {
+			it('does not proceed to merge any settings', () => {
+				store.currentState.builtPattern.yikes = {}
 				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()

@@ -2,8 +2,14 @@ import stateUtilities from '../../../src/utilities/stateUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import patternDefaults from '../../../src/state/patternDefaults'
+import store from '../../../store'
+import initialState from '../../../src/state/initialState'
 
 describe('state utilities', () => {
+	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
+	})
+
 	describe('#prepareFunctionsPerSetting', () => {
 		let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
 		let settingFunction, secondSettingFunction
@@ -135,7 +141,7 @@ describe('state utilities', () => {
 		beforeEach(() => getFromBuiltPatternOrDefault = stateUtilities.getFromBuiltPatternOrDefault)
 
 		it('gets the setting from settings if it is defined', () => {
-			currentState.builtPattern.animations = { specialMoves: { youKnowIt: 'awesome' } }
+			store.currentState.builtPattern.animations = { specialMoves: { youKnowIt: 'awesome' } }
 			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
@@ -143,7 +149,7 @@ describe('state utilities', () => {
 		})
 
 		it('gets the setting from settings even if it is zero; that is the whole point of this thing', () => {
-			currentState.builtPattern.animations = { specialMoves: { youKnowIt: 0 } }
+			store.currentState.builtPattern.animations = { specialMoves: { youKnowIt: 0 } }
 			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]

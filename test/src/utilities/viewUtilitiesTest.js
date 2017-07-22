@@ -1,13 +1,19 @@
 import viewUtilities from '../../../src/utilities/viewUtilities'
 import buildPattern from '../../../src/state/buildPattern'
 import coordinatesMatch from '../helpers/coordinatesMatch'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('view utilities', () => {
 	const zoom = 10
 	const tileSize = 40
 	const canvasSize = 200
 
-	beforeEach(() => buildPattern())
+	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
+		buildPattern()
+	})
 
 	describe('#applyZoomAndScroll', () => {
 		let tileOrigin
@@ -18,7 +24,7 @@ describe('view utilities', () => {
 		})
 
 		it('adjusts the origin per the zoom level', () => {
-			currentState.builtPattern.base.viewSettings.zoom = zoom
+			store.currentState.builtPattern.base.viewSettings.zoom = zoom
 
 			expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
 				zoomedAndScrolledTileOrigin: [ 30, 50 ],
@@ -27,7 +33,7 @@ describe('view utilities', () => {
 		})
 
 		it('does not mutate the tileOrigin', () => {
-			currentState.builtPattern.base.viewSettings.zoom = zoom
+			store.currentState.builtPattern.base.viewSettings.zoom = zoom
 			const originalTileOrigin = tileOrigin.slice()
 
 			applyZoomAndScroll({ tileOrigin, tileSize })
@@ -37,12 +43,12 @@ describe('view utilities', () => {
 
 		describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 			beforeEach(() => {
-				currentState.builtPattern.base.viewSettings.zoomOnCanvasCenter = true
-				currentState.builtPattern.base.viewSettings.zoom = zoom
+				store.currentState.builtPattern.base.viewSettings.zoomOnCanvasCenter = true
+				store.currentState.builtPattern.base.viewSettings.zoom = zoom
 			})
 
 			it('works', () => {
-				currentState.builtPattern.base.viewSettings.canvasSize = canvasSize
+				store.currentState.builtPattern.base.viewSettings.canvasSize = canvasSize
 
 				expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
 					zoomedAndScrolledTileOrigin: [ -870, -850 ],
@@ -51,7 +57,7 @@ describe('view utilities', () => {
 			})
 
 			it('does not readjust for zooming on the center if it already is centered', () => {
-				currentState.builtPattern.base.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
+				store.currentState.builtPattern.base.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
 
 				expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
 					zoomedAndScrolledTileOrigin: [ 405, 425 ],
@@ -62,16 +68,16 @@ describe('view utilities', () => {
 
 		describe('centering view on the center of the tile at address [ 0, 0 ]', () => {
 			beforeEach(() => {
-				currentState.builtPattern.base.viewSettings = {
+				store.currentState.builtPattern.base.viewSettings = {
 					centerViewOnCenterOfTileAtZeroZeroAddress: true,
 					zoom,
 					canvasSize,
 				}
-				currentState.builtPattern.base.tileSettings = { tileSize }
+				store.currentState.builtPattern.base.tileSettings = { tileSize }
 			})
 
 			it('adjusts per the zoom, tile, and canvas size', () => {
-				currentState.builtPattern.base.viewSettings.zoom = zoom
+				store.currentState.builtPattern.base.viewSettings.zoom = zoom
 
 				expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
 					zoomedAndScrolledTileOrigin: [
@@ -86,8 +92,8 @@ describe('view utilities', () => {
 
 	describe('#rotateShapeAboutCanvasCenter', () => {
 		it('works', () => {
-			currentState.builtPattern.base.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
-			currentState.builtPattern.base.viewSettings.canvasSize = canvasSize
+			store.currentState.builtPattern.base.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
+			store.currentState.builtPattern.base.viewSettings.canvasSize = canvasSize
 			const coordinates = [
 				[ 0, 0 ],
 				[ 40, 0 ],

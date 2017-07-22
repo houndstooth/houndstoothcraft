@@ -1,8 +1,14 @@
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
 import buildPattern from '../../../src/state/buildPattern'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('stripe utilities', () => {
-	beforeEach(() => buildPattern())
+	beforeEach(() => {
+		store.currentState = codeUtilities.deepClone(initialState)
+		buildPattern()
+	})
 
 	describe('#getStripePositionsForTile', () => {
 		let getStripePositionsForTile
@@ -16,7 +22,7 @@ describe('stripe utilities', () => {
 			const expectedStripePositions = []
 			const address = [ 3, 5 ]
 			let getStripePositionsSpy = jasmine.createSpy().and.returnValue(expectedStripePositions)
-			currentState.builtPattern.base.getStripePositions = getStripePositionsSpy
+			store.currentState.builtPattern.base.getStripePositions = getStripePositionsSpy
 
 			const actualStripePositions = getStripePositionsForTile({ address })
 
@@ -30,7 +36,7 @@ describe('stripe utilities', () => {
 		beforeEach(() => perStripe = stripeUtilities.perStripe)
 
 		it('uses a stripe count if provided', () => {
-			currentState.builtPattern.base.stripeCountSettings = { stripeCount: 3 }
+			store.currentState.builtPattern.base.stripeCountSettings = { stripeCount: 3 }
 			const stripePositions = perStripe({
 				getStripePosition: () => {
 				},

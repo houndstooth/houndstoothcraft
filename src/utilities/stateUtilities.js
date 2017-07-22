@@ -2,6 +2,7 @@ import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
 import recognizedSettings from '../state/recognizedSettings'
 import patternDefaults from '../state/patternDefaults'
+import store from '../../store'
 
 const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
 
@@ -59,7 +60,7 @@ const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath =
 }
 
 const getFromBuiltPatternOrDefault = settingsPath => {
-	let childSetting = currentState.builtPattern
+	let childSetting = store.currentState.builtPattern
 	let notThere
 	settingsPath.forEach(pathStep => {
 		if (notThere) return
@@ -73,7 +74,7 @@ const getFromBuiltPatternOrDefault = settingsPath => {
 
 	let setting
 	if (codeUtilities.isDefined(childSetting)) {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: currentState.builtPattern, settingsPath })
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: store.currentState.builtPattern, settingsPath })
 	}
 	else {
 		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: patternDefaults, settingsPath })

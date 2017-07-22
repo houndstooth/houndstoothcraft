@@ -1,13 +1,13 @@
 import clear from '../../../src/render/clear'
 import context from '../../../src/render/context'
-import defaultSettings from '../../../src/settings/defaultSettings'
+import patternDefaults from '../../../src/settings/patternDefaults'
 
 describe('clear', () => {
 	beforeEach(() => spyOn(context, 'clearRect'))
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
-			currentState.settings.base.viewSettings = { canvasSize: 500 }
+			currentState.builtPattern.base.viewSettings = { canvasSize: 500 }
 
 			clear()
 
@@ -19,7 +19,7 @@ describe('clear', () => {
 		it('wipes the default amount of canvas', () => {
 			clear()
 
-			const defaultCanvasSize = defaultSettings.base.viewSettings.canvasSize
+			const defaultCanvasSize = patternDefaults.base.viewSettings.canvasSize
 			expect(context.clearRect).toHaveBeenCalledWith(0, 0, defaultCanvasSize, defaultCanvasSize)
 		})
 	})

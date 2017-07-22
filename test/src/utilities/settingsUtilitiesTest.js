@@ -1,7 +1,7 @@
 import settingsUtilities from '../../../src/utilities/settingsUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import defaultSettings from '../../../src/settings/defaultSettings'
+import patternDefaults from '../../../src/settings/patternDefaults'
 
 describe('settings utilities', () => {
 	describe('#prepareFunctionsPerSetting', () => {
@@ -135,23 +135,23 @@ describe('settings utilities', () => {
 		beforeEach(() => getFromSettingsOrDefault = settingsUtilities.getFromSettingsOrDefault)
 
 		it('gets the setting from settings if it is defined', () => {
-			currentState.settings.animations = { specialMoves: { youKnowIt: 'awesome' } }
-			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
+			currentState.builtPattern.animations = { specialMoves: { youKnowIt: 'awesome' } }
+			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
 			expect(getFromSettingsOrDefault(settingsPath)).toBe('awesome')
 		})
 
 		it('gets the setting from settings even if it is zero; that is the whole point of this thing', () => {
-			currentState.settings.animations = { specialMoves: { youKnowIt: 0 } }
-			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
+			currentState.builtPattern.animations = { specialMoves: { youKnowIt: 0 } }
+			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
 			expect(getFromSettingsOrDefault(settingsPath)).toBe(0)
 		})
 
 		it('defaults the setting if it is not defined', () => {
-			defaultSettings.animations = { specialMoves: { youKnowIt: 'defawesome' } }
+			patternDefaults.animations = { specialMoves: { youKnowIt: 'defawesome' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
 			expect(getFromSettingsOrDefault(settingsPath)).toBe('defawesome')

@@ -5,7 +5,7 @@ describe('gather options', () => {
 	beforeEach(() => address = [ 3, 5 ])
 
 	it('calls every options gathering function with the address, saving each result onto an object it returns', () => {
-		currentState.settings.base.gatherOptions = {
+		currentState.builtPattern.base.gatherOptions = {
 			optionOne: ({ address }) => ({ resultOne: [ address[ 0 ] + 1, address[ 1 ] + 1 ] }),
 			optionTwo: ({ address }) => ({ resultTwo: [ address[ 0 ] - 1, address[ 1 ] - 1 ] }),
 		}

@@ -2,7 +2,7 @@ import codeUtilities from '../utilities/codeUtilities'
 import tile from './tile'
 
 export default () => {
-	let { includeNegativeQuadrants, gridSize } = currentState.settings.base.gridSettings || {}
+	let { includeNegativeQuadrants, gridSize } = currentState.builtPattern.base.gridSettings || {}
 	const { iterator } = codeUtilities
 
 	if (includeNegativeQuadrants) {

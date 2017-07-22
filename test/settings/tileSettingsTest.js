@@ -1,6 +1,6 @@
 import '../../node_modules/canteen/build/canteen.min'
 import execute from '../../src/application/execute'
-import setup from '../../src/settings/setup'
+import buildPattern from '../../src/settings/buildPattern'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
@@ -9,9 +9,9 @@ import context from '../../src/render/context'
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
 		it('adjusts the size in pixels of each tile', () => {
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						tileSettings: {
 							tileSize: 30,
@@ -34,9 +34,9 @@ describe('.tileSettings', () => {
 
 		describe('when also zooming', () => {
 			it('multiplies the effect of taking up more pixels', () => {
-				setup({
-					effects: [],
-					overrides: {
+				buildPattern({
+					patternEffects: [],
+					patternOverrides: {
 						base: {
 							viewSettings: {
 								zoom: 3,
@@ -68,10 +68,10 @@ describe('.tileSettings', () => {
 	})
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
-		let overrides
+		let patternOverrides
 		beforeEach(() => {
 			context.clear()
-			overrides = {
+			patternOverrides = {
 				base: {
 					gridSettings: { gridSize: 1 },
 					colorSettings: { set: [ BLACK, BLACK ] },
@@ -80,7 +80,7 @@ describe('.tileSettings', () => {
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {
-			setup({ effects: [], overrides })
+			buildPattern({ patternEffects: [], patternOverrides })
 			activateTestMarkerCanvas()
 
 			execute()
@@ -98,8 +98,8 @@ describe('.tileSettings', () => {
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
-			overrides.base.tileSettings = { collapseSameColoredShapesWithinTile: false }
-			setup({ effects: [], overrides })
+			patternOverrides.base.tileSettings = { collapseSameColoredShapesWithinTile: false }
+			buildPattern({ patternEffects: [], patternOverrides })
 			activateTestMarkerCanvas()
 
 			execute()

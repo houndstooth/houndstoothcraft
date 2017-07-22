@@ -1,29 +1,29 @@
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import setup from '../../../src/settings/setup'
+import buildPattern from '../../../src/settings/buildPattern'
 import consoleWrapper from '../../../src/application/consoleWrapper'
-import defaultSettings from '../../../src/settings/defaultSettings'
+import patternDefaults from '../../../src/settings/patternDefaults'
 import settingsUtilities from '../../../src/utilities/settingsUtilities'
 
-describe('setup', () => {
+describe('buildPattern', () => {
 	it('logs the settings when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		setup({ settingsLogging: true })
+		buildPattern({ settingsLogging: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(currentState.settings)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(currentState.builtPattern)
 	})
 
 	it('does not log the settings when logging mode is not on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		setup()
+		buildPattern()
 
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
 	})
 
 	it('sets up settings', () => {
 		spyOn(codeUtilities, 'settingIsDefinedOnSettings').and.returnValue(true)
-		setup.__Rewire__('setupCanvas', () => {
+		buildPattern.__Rewire__('setupCanvas', () => {
 		})
 
 		// effects
@@ -32,7 +32,7 @@ describe('setup', () => {
 		const settingFunctionOneE = () => 'E'
 		const settingFunctionOneG = () => 'G'
 		const settingFunctionOneH = () => 'H'
-		const effectOne = {
+		const patternEffectOne = {
 			base: {
 				settingA: 'A',
 				settingB: 'B',
@@ -51,7 +51,7 @@ describe('setup', () => {
 		const settingFunctionTwoF = () => 'f'
 		const settingFunctionTwoG = () => 'g'
 		const settingFunctionTwoI = () => 'i'
-		const effectTwo = {
+		const patternEffectTwo = {
 			base: {
 				settingA: 'a',
 				settingC: 'c',
@@ -66,23 +66,23 @@ describe('setup', () => {
 			},
 		}
 
-		const effects = [ effectOne, effectTwo ]
+		const patternEffects = [ patternEffectOne, patternEffectTwo ]
 
 		// defaults
 
-		defaultSettings.base = {
+		patternDefaults.base = {
 			settingA: 'pre-a',
 			settingJ: 'pre-j',
 		}
 		const settingFunctionDefaultD = () => 'pre-d'
 		const settingFunctionDefaultK = () => 'pre-k'
-		defaultSettings.animations = {
+		patternDefaults.animations = {
 			settingD: settingFunctionDefaultD,
 			settingK: settingFunctionDefaultK,
 		}
 		const settingFunctionDefaultG = () => 'pre-g'
 		const settingFunctionDefaultL = () => 'pre-l'
-		defaultSettings.iterations = {
+		patternDefaults.iterations = {
 			settingG: settingFunctionDefaultG,
 			settingL: settingFunctionDefaultL,
 		}
@@ -93,7 +93,7 @@ describe('setup', () => {
 		const settingFunctionOverridesN = () => 'nN'
 		const settingFunctionOverridesI = () => 'iI'
 		const settingFunctionOverridesP = () => 'pP'
-		const overrides = {
+		const patternOverrides = {
 			base: {
 				settingC: 'cC',
 				settingM: 'mM',
@@ -108,23 +108,23 @@ describe('setup', () => {
 			},
 		}
 
-		setup({ effects, overrides })
+		buildPattern({ patternEffects, patternOverrides })
 
-		expect(currentState.settings.base).toEqual(jasmine.objectContaining({
+		expect(currentState.builtPattern.base).toEqual(jasmine.objectContaining({
 			settingA: 'a',
 			settingB: 'B',
 			settingC: 'cC',
 			settingJ: 'pre-j',
 			settingM: 'mM',
 		}))
-		expect(currentState.settings.animations).toEqual(jasmine.objectContaining({
+		expect(currentState.builtPattern.animations).toEqual(jasmine.objectContaining({
 			settingD: settingFunctionTwoD,
 			settingE: settingFunctionOneE,
 			settingF: settingFunctionOverridesF,
 			settingK: settingFunctionDefaultK,
 			settingN: settingFunctionOverridesN,
 		}))
-		expect(currentState.settings.iterations).toEqual(jasmine.objectContaining({
+		expect(currentState.builtPattern.iterations).toEqual(jasmine.objectContaining({
 			settingG: settingFunctionTwoG,
 			settingH: settingFunctionOneH,
 			settingI: settingFunctionOverridesI,
@@ -132,7 +132,7 @@ describe('setup', () => {
 			settingP: settingFunctionOverridesP,
 		}))
 
-		setup.__ResetDependency__('setupCanvas')
+		buildPattern.__ResetDependency__('setupCanvas')
 	})
 
 	describe('when there are non-settings', () => {
@@ -143,7 +143,7 @@ describe('setup', () => {
 
 		describe('on an effect', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
-				setup({ effects: [ { yikes: {} } ] })
+				buildPattern({ patternEffects: [ { yikes: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
@@ -151,16 +151,16 @@ describe('setup', () => {
 
 		describe('on the overrides', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
-				setup({ overrides: { yikes: {} } })
+				buildPattern({ patternOverrides: { yikes: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
 		})
 
-		describe('on the defaults', () => {
+		describe('on the pattern defaults', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
-				defaultSettings.yikes = {}
-				setup({ base: {} })
+				patternDefaults.yikes = {}
+				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
@@ -168,8 +168,8 @@ describe('setup', () => {
 
 		describe('on the global current (somehow)', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
-				currentState.settings.yikes = {}
-				setup({ base: {} })
+				currentState.builtPattern.yikes = {}
+				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})

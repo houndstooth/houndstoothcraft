@@ -1,4 +1,4 @@
-import setup from '../../src/settings/setup'
+import buildPattern from '../../src/settings/buildPattern'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
@@ -14,9 +14,9 @@ describe('.colorSettings', () => {
 	describe('.set', () => {
 		it('lets you change the colors of the pattern', () => {
 			const sufficientTileCountToDemonstrateSetting = 2
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						colorSettings: {
 							set: [ YELLOW, BLUE ],
@@ -41,9 +41,9 @@ describe('.colorSettings', () => {
 		it('works for more than two colors', () => {
 			const sufficientTileCountToDemonstrateSetting = 3
 			const simplestWeaveToDemonstrateSetting = [ 0, 1, 2 ]
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						colorSettings: {
 							set: [ YELLOW, BLUE, CYAN ],
@@ -131,9 +131,9 @@ describe('.colorSettings', () => {
 			describe('weave', () => {
 				it('is the simplest way to describe a pattern whose colors do not vary within its rows and columns', () => {
 					const sufficientTileCountToDemonstrateSetting = 8
-					setup({
-						effects: [],
-						overrides: {
+					buildPattern({
+						patternEffects: [],
+						patternOverrides: {
 							base: {
 								colorSettings: {
 									assignment: {
@@ -460,9 +460,9 @@ describe('.colorSettings', () => {
 			describe('supertile', () => {
 				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', () => {
 					const sufficientTileCountToDemonstrateSetting = 4
-					setup({
-						effects: [],
-						overrides: {
+					buildPattern({
+						patternEffects: [],
+						patternOverrides: {
 							base: {
 								colorSettings: {
 									set: [ YELLOW, BLUE, CYAN, MAGENTA ],
@@ -606,9 +606,9 @@ describe('.colorSettings', () => {
 		describe('.switcheroo', () => {
 			it('causes the two striped tiles to alternate by diagonal rather than rows/columns', () => {
 				const sufficientTileCountToDemonstrateSetting = 4
-				setup({
-					effects: [],
-					overrides: {
+				buildPattern({
+					patternEffects: [],
+					patternOverrides: {
 						base: {
 							colorSettings: {
 								assignment: {
@@ -683,9 +683,9 @@ describe('.colorSettings', () => {
 		describe('.flipGrain', () => {
 			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
 				const sufficientTileCountToDemonstrateSetting = 2
-				setup({
-					effects: [],
-					overrides: {
+				buildPattern({
+					patternEffects: [],
+					patternOverrides: {
 						base: {
 							colorSettings: {
 								assignment: {
@@ -741,9 +741,9 @@ describe('.colorSettings', () => {
 		it('affects the alpha of the pixels rendered', () => {
 			const sufficientTileCountToDemonstrateSetting = 2
 			const opacity = 0.5
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						colorSettings: {
 							set: [ BLACK, BLUE ],

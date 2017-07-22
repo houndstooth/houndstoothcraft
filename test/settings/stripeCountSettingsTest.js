@@ -1,5 +1,5 @@
 import execute from '../../src/application/execute'
-import setup from '../../src/settings/setup'
+import buildPattern from '../../src/settings/buildPattern'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
@@ -11,9 +11,9 @@ describe('.stripeCountSettings', () => {
 	const tileSizeInPixels = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.stripeCountMode', () => {
-		let overrides
+		let patternOverrides
 		beforeEach(() => {
-			overrides = {
+			patternOverrides = {
 				base: {
 					viewSettings: { canvasSize: tileSizeInPixels },
 					gridSettings: { gridSize: 1 },
@@ -23,7 +23,7 @@ describe('.stripeCountSettings', () => {
 		})
 
 		it('works in standard mode', () => {
-			setup({ effects: [], overrides })
+			buildPattern({ patternEffects: [], patternOverrides })
 			activateTestMarkerCanvas()
 
 			execute()
@@ -38,8 +38,8 @@ describe('.stripeCountSettings', () => {
 		})
 
 		it('works in gingham mode', () => {
-			overrides.base.stripeCountSettings.stripeCountMode = 'GINGHAM'
-			setup({ effects: [], overrides })
+			patternOverrides.base.stripeCountSettings.stripeCountMode = 'GINGHAM'
+			buildPattern({ patternEffects: [], patternOverrides })
 			activateTestMarkerCanvas()
 
 			execute()
@@ -57,9 +57,9 @@ describe('.stripeCountSettings', () => {
 
 	describe('.stripeCount', () => {
 		it('changes the number of stripes in striped tiles', () => {
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						gridSettings: { gridSize: 2 },
 						stripeCountSettings: { stripeCount: 5 },

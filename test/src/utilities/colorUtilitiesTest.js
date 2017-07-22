@@ -1,21 +1,21 @@
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
-import setup from '../../../src/settings/setup'
+import buildPattern from '../../../src/settings/buildPattern'
 
 describe('color utilities', () => {
-	beforeEach(() => setup())
+	beforeEach(() => buildPattern())
 
 	describe('#getColorsForTile', () => {
 		it('defaults to the base color settings on the settings', () => {
 			const address = []
 			spyOn(componentUtilities, 'getSetForTile')
-			const defaultSettings = { importantThing: 'boingo' }
-			currentState.settings.base.colorSettings = defaultSettings
+			const defaultColorSettings = { importantThing: 'boingo' }
+			currentState.builtPattern.base.colorSettings = defaultColorSettings
 
 			colorUtilities.getColorsForTile({ address })
 
 			expect(componentUtilities.getSetForTile.calls.all()[ 0 ].args[ 0 ]).toEqual(
-				{ address, settings: defaultSettings }
+				{ address, settings: defaultColorSettings }
 			)
 		})
 
@@ -34,7 +34,7 @@ describe('color utilities', () => {
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
 			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
-			currentState.settings.base.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
+			currentState.builtPattern.base.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
 

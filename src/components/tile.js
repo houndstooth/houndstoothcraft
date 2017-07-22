@@ -14,7 +14,7 @@ export default ({ address }) => {
 
 	const tileColors = colorUtilities.getColorsForTile({ address })
 
-	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = currentState.settings.base.tileSettings || {}
+	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = currentState.builtPattern.base.tileSettings || {}
 	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	tileToShapes = tileToShapes || shape

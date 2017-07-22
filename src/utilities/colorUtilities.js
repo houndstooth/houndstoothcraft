@@ -4,10 +4,10 @@ import codeUtilities from './codeUtilities'
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorSettings }) => {
-	colorSettings = colorSettings || currentState.settings.base.colorSettings
+	colorSettings = colorSettings || currentState.builtPattern.base.colorSettings
 	let tileColors = componentUtilities.getSetForTile({ address, settings: colorSettings })
 
-	const { stripeCountMode } = currentState.settings.base.stripeCountSettings || {}
+	const { stripeCountMode } = currentState.builtPattern.base.stripeCountSettings || {}
 	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = colorSettings.opacity

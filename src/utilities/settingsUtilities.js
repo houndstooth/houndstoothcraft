@@ -1,7 +1,7 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
 import recognizedSettings from '../settings/recognizedSettings'
-import defaultSettings from '../settings/defaultSettings'
+import patternDefaults from '../settings/patternDefaults'
 
 const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
 
@@ -59,7 +59,7 @@ const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettin
 }
 
 const getFromSettingsOrDefault = settingsPath => {
-	let childSetting = currentState.settings
+	let childSetting = currentState.builtPattern
 	let notThere
 	settingsPath.forEach(pathStep => {
 		if (notThere) return
@@ -73,10 +73,10 @@ const getFromSettingsOrDefault = settingsPath => {
 
 	let setting
 	if (codeUtilities.isDefined(childSetting)) {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: currentState.settings, settingsPath })
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: currentState.builtPattern, settingsPath })
 	}
 	else {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: defaultSettings, settingsPath })
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: patternDefaults, settingsPath })
 	}
 	return setting
 }

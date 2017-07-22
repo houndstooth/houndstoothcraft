@@ -1,4 +1,4 @@
-import setup from '../../src/settings/setup'
+import buildPattern from '../../src/settings/buildPattern'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
@@ -11,9 +11,9 @@ describe('.gridSettings', () => {
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						viewSettings: {
 							canvasSize: 200,
@@ -140,9 +140,9 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
 			const tileSize = 50
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						viewSettings: {
 							canvasSize: 300,

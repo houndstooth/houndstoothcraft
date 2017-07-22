@@ -1,7 +1,7 @@
 import rotationUtilities from './rotationUtilities'
 
 const rotateShapeAboutCanvasCenter = ({ coordinates }) => {
-	const { canvasSize, rotateViewAboutCanvasCenter } = currentState.settings.base.viewSettings || {}
+	const { canvasSize, rotateViewAboutCanvasCenter } = currentState.builtPattern.base.viewSettings || {}
 
 	if (rotateViewAboutCanvasCenter) {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
@@ -16,7 +16,7 @@ const rotateShapeAboutCanvasCenter = ({ coordinates }) => {
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
 	let zoomedAndScrolledTileOrigin = tileOrigin.slice()
-	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = currentState.settings.base.viewSettings || {}
+	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = currentState.builtPattern.base.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
@@ -36,10 +36,10 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ zoomedAndScrolledTileOrigin }) => {
-	const canvasSize = currentState.settings.base.viewSettings.canvasSize
+	const canvasSize = currentState.builtPattern.base.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
-	const tileSize = currentState.settings.base.tileSettings.tileSize
+	const tileSize = currentState.builtPattern.base.tileSettings.tileSize
 	const halfTileSize = tileSize / 2
 
 	return [
@@ -50,10 +50,10 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ zoomedAndScrolledTileOrigin
 
 const applyZoomAndScroll = ({ tileOrigin, tileSize }) => {
 	let zoomedAndScrolledTileOrigin = adjustTileOriginForZoom({ tileOrigin })
-	if (currentState.settings.base.viewSettings && currentState.settings.base.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
+	if (currentState.builtPattern.base.viewSettings && currentState.builtPattern.base.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
 		zoomedAndScrolledTileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ zoomedAndScrolledTileOrigin })
 	}
-	const zoomedTileSize = tileSize * currentState.settings.base.viewSettings.zoom
+	const zoomedTileSize = tileSize * currentState.builtPattern.base.viewSettings.zoom
 
 	return { zoomedAndScrolledTileOrigin, zoomedTileSize }
 }

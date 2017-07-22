@@ -1,5 +1,5 @@
 import './globalCurrentState'
-import setup from './src/settings/setup'
+import buildPattern from './src/settings/buildPattern'
 import execute from './src/application/execute'
 
 // import cmyktoothEffect from './effects/cmyktooth/effects/cmyktoothEffect'
@@ -10,10 +10,10 @@ import execute from './src/application/execute'
 // import gongramEffect from './effects/gongram/effects/gongramEffect'
 // import houndsmorphosisEffect from './effects/houndsmorphosis/effects/houndsmorphosisEffect'
 
-setup({
-	effects: [],
+buildPattern({
+	patternEffects: [],
 	settingsLogging: false,
-	overrides: {},
+	patternOverrides: {},
 })
 
 execute({

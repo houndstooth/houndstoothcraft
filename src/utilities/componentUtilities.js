@@ -7,8 +7,8 @@ const getSetForTile = ({ address, settings }) => {
 
 	let { set: setForGrid, assignment } = settings || {}
 
-	setForGrid = setForGrid || currentState.settings.base.colorSettings.set
-	const currentAssignment = currentState.settings.base.colorSettings.assignment
+	setForGrid = setForGrid || currentState.builtPattern.base.colorSettings.set
+	const currentAssignment = currentState.builtPattern.base.colorSettings.assignment
 	assignment = assignment || currentAssignment
 
 	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, assignmentMode, supertile, weave, flipGrain, switcheroo } = assignment
@@ -60,7 +60,7 @@ const switcherooSet = ({ setForTile, address }) => {
 }
 
 const rotateShapeAboutShapeCenter = ({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize }) => {
-	if (currentState.settings.base.baseStripeDiagonal === 'PRINCIPAL') {
+	if (currentState.builtPattern.base.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: [
 				zoomedAndScrolledTileOrigin[ 0 ] + zoomedTileSize / 2,
@@ -75,7 +75,7 @@ const rotateShapeAboutShapeCenter = ({ coordinates, zoomedAndScrolledTileOrigin,
 }
 
 const getStandardTileOriginAndSize = ({ address }) => {
-	const tileSize = currentState.settings.base.tileSettings.tileSize
+	const tileSize = currentState.builtPattern.base.tileSettings.tileSize
 	return {
 		tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ],
 		tileSize,
@@ -83,7 +83,7 @@ const getStandardTileOriginAndSize = ({ address }) => {
 }
 
 const getTileOriginAndSize = ({ address }) => {
-	const getTileOriginAndSize = currentState.settings.base.getTileOriginAndSize || getStandardTileOriginAndSize
+	const getTileOriginAndSize = currentState.builtPattern.base.getTileOriginAndSize || getStandardTileOriginAndSize
 	return getTileOriginAndSize({ address })
 }
 

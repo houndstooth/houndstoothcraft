@@ -1,4 +1,4 @@
-import setup from '../../src/settings/setup'
+import buildPattern from '../../src/settings/buildPattern'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
@@ -13,9 +13,9 @@ describe('.viewSettings', () => {
 
 	describe('.canvasSize', () => {
 		it('works', () => {
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						colorSettings: { set: [ BLACK ] },
 						viewSettings: { canvasSize: 125 },
@@ -39,9 +39,9 @@ describe('.viewSettings', () => {
 	describe('.zoom', () => {
 		it('works', () => {
 			const zoom = 2
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						viewSettings: { zoom },
 						gridSettings: { gridSize: 2 },
@@ -82,9 +82,9 @@ describe('.viewSettings', () => {
 	describe('.zoomOnCanvasCenter', () => {
 		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
 			const zoom = 2
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						viewSettings: {
 							zoomOnCanvasCenter: true,
@@ -128,9 +128,9 @@ describe('.viewSettings', () => {
 	describe('.centerViewOnCenterOfTileAtZeroZeroAddress', () => {
 		it('is self-explanatory', () => {
 			const tileSize = 100
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						tileSettings: { tileSize },
 						viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
@@ -171,9 +171,9 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
-			setup({
-				effects: [],
-				overrides: {
+			buildPattern({
+				patternEffects: [],
+				patternOverrides: {
 					base: {
 						viewSettings: {
 							canvasSize: 300,

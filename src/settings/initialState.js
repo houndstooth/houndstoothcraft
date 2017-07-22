@@ -3,7 +3,7 @@ export default {
 	animationFrame: 0,
 	lastSavedAnimationFrame: 0,
 	interval: null,
-	settings: {
+	builtPattern: {
 		base: {},
 		animations: {},
 		iterations: {},

@@ -1,7 +1,7 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
-import recognizedSettings from '../settings/recognizedSettings'
-import patternDefaults from '../settings/patternDefaults'
+import recognizedSettings from '../state/recognizedSettings'
+import patternDefaults from '../state/patternDefaults'
 
 const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
 

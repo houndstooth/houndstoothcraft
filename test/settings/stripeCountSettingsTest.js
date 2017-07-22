@@ -1,11 +1,11 @@
 import execute from '../../src/application/execute'
-import buildPattern from '../../src/settings/buildPattern'
+import buildPattern from '../../src/state/buildPattern'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import settingsUtilities from '../../src/utilities/settingsUtilities'
-import settingsPaths from '../../src/settings/settingsPaths'
+import settingsPaths from '../../src/state/settingsPaths'
 
 describe('.stripeCountSettings', () => {
 	const tileSizeInPixels = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)

@@ -1,6 +1,6 @@
 import clear from '../../../src/render/clear'
 import context from '../../../src/render/context'
-import patternDefaults from '../../../src/settings/patternDefaults'
+import patternDefaults from '../../../src/state/patternDefaults'
 
 describe('clear', () => {
 	beforeEach(() => spyOn(context, 'clearRect'))

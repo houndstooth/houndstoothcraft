@@ -2,7 +2,7 @@ import shape from '../../../src/components/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import viewUtilities from '../../../src/utilities/viewUtilities'
-import buildPattern from '../../../src/settings/buildPattern'
+import buildPattern from '../../../src/state/buildPattern'
 
 describe('shape', () => {
 	let renderSpy

@@ -1,10 +1,10 @@
-import buildPattern from '../../src/settings/buildPattern'
+import buildPattern from '../../src/state/buildPattern'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../src/constants'
 import settingsUtilities from '../../src/utilities/settingsUtilities'
-import settingsPaths from '../../src/settings/settingsPaths'
+import settingsPaths from '../../src/state/settingsPaths'
 
 describe('.gridSettings', () => {
 	const tileSizeInPixels = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)

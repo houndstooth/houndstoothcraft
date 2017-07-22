@@ -1,4 +1,4 @@
-import buildPattern from '../../../src/settings/buildPattern'
+import buildPattern from '../../../src/state/buildPattern'
 import execute from '../../../src/application/execute'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 

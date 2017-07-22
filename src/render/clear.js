@@ -1,6 +1,6 @@
 import context from './context'
 import settingsUtilities from '../utilities/settingsUtilities'
-import settingsPaths from '../settings/settingsPaths'
+import settingsPaths from '../state/settingsPaths'
 
 export default () => {
 	const canvasSize = settingsUtilities.getFromSettingsOrDefault(settingsPaths.CANVAS_SIZE)

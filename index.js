@@ -1,5 +1,5 @@
 import './globalCurrentState'
-import buildPattern from './src/settings/buildPattern'
+import buildPattern from './src/state/buildPattern'
 import execute from './src/application/execute'
 
 // import cmyktoothEffect from './effects/cmyktooth/effects/cmyktoothEffect'

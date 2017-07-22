@@ -1,7 +1,7 @@
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import buildPattern from '../../../src/settings/buildPattern'
+import buildPattern from '../../../src/state/buildPattern'
 import coordinatesMatch from '../../helpers/coordinatesMatch'
 
 describe('component utilities', () => {

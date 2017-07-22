@@ -1,7 +1,7 @@
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import buildPattern from '../../../src/settings/buildPattern'
+import buildPattern from '../../../src/state/buildPattern'
 import consoleWrapper from '../../../src/application/consoleWrapper'
-import patternDefaults from '../../../src/settings/patternDefaults'
+import patternDefaults from '../../../src/state/patternDefaults'
 import settingsUtilities from '../../../src/utilities/settingsUtilities'
 
 describe('buildPattern', () => {

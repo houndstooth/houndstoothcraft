@@ -1,6 +1,6 @@
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
-import buildPattern from '../../../src/settings/buildPattern'
+import buildPattern from '../../../src/state/buildPattern'
 
 describe('color utilities', () => {
 	beforeEach(() => buildPattern())

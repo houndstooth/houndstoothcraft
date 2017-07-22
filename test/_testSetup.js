@@ -5,7 +5,7 @@ import '../globalCurrentState'
 import clear from '../src/render/clear'
 import testMarkersClear from './helpers/testMarkersClear'
 import codeUtilities from '../src/utilities/codeUtilities'
-import initialState from '../src/settings/initialState'
+import initialState from '../src/state/initialState'
 
 beforeEach(() => {
 	currentState = codeUtilities.deepClone(initialState)

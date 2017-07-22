@@ -1,11 +1,11 @@
-import buildPattern from '../../src/settings/buildPattern'
+import buildPattern from '../../src/state/buildPattern'
 import execute from '../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import settingsUtilities from '../../src/utilities/settingsUtilities'
-import settingsPaths from '../../src/settings/settingsPaths'
+import settingsPaths from '../../src/state/settingsPaths'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 
 describe('.viewSettings', () => {

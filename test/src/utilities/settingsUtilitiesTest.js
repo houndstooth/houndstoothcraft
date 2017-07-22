@@ -1,7 +1,7 @@
 import settingsUtilities from '../../../src/utilities/settingsUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import patternDefaults from '../../../src/settings/patternDefaults'
+import patternDefaults from '../../../src/state/patternDefaults'
 
 describe('settings utilities', () => {
 	describe('#prepareFunctionsPerSetting', () => {

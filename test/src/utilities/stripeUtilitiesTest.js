@@ -1,5 +1,5 @@
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
-import buildPattern from '../../../src/settings/buildPattern'
+import buildPattern from '../../../src/state/buildPattern'
 
 describe('stripe utilities', () => {
 	beforeEach(() => buildPattern())

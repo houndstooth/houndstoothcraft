@@ -36,12 +36,12 @@ describe('settings utilities', () => {
 		it('gathers the functions to be applied', () => {
 			const expectedFunctionsArray = [
 				{
-					fn: settingFunction,
+					settingFunctionItself: settingFunction,
 					settingsPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
 					settingName: 'childPathFinalStep',
 				},
 				{
-					fn: secondSettingFunction,
+					settingFunctionItself: secondSettingFunction,
 					settingsPath: [ 'secondChildPathFirstStep' ],
 					settingName: 'secondChildPathFinalStep',
 				},

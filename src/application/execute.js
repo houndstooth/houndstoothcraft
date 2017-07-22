@@ -52,12 +52,12 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 
 const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {
-		const { settingsPath, settingName, fn } = settingsFunction
+		const { settingsPath, settingName, settingFunctionItself } = settingsFunction
 		let settingsWithSettingToCallFunctionOn = codeUtilities.accessChildSettingOrCreatePath({
 			settingsRoot: currentState.settings.base,
 			settingsPath,
 		})
-		settingsWithSettingToCallFunctionOn[ settingName ] = fn(settingsWithSettingToCallFunctionOn[ settingName ])
+		settingsWithSettingToCallFunctionOn[ settingName ] = settingFunctionItself(settingsWithSettingToCallFunctionOn[ settingName ])
 	})
 }
 

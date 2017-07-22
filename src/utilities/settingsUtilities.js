@@ -6,19 +6,20 @@ import defaultSettings from '../settings/defaultSettings'
 const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
-	Object.entries(settingsFunctions).forEach(([ key, value ]) => {
-		if (typeof value === 'function') {
-			functionsArray.push({ fn: value, settingsPath, settingName: key })
+	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {
+		if (typeof maybeSettingFunction === 'function') {
+			const settingFunctionItself = maybeSettingFunction
+			functionsArray.push({ settingFunctionItself, settingsPath, settingName })
 		}
-		else if (typeof value === 'object' && !(value instanceof Array)) {
+		else if (typeof maybeSettingFunction === 'object' && !(maybeSettingFunction instanceof Array)) {
 			prepareFunctionsPerSetting({
-				settingsFunctions: value,
-				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName: key }),
+				settingsFunctions: maybeSettingFunction,
+				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
 				functionsArray,
 			})
 		}
 		else {
-			consoleWrapper.error(`These settings should map onto base settings, and be functions to call for them each animation / iteration frame. However, you have provided a non-function ${value} at path ${settingsPath} ${key}`)
+			consoleWrapper.error(`These settings should map onto base settings, and be functions to call for them each animation / iteration frame. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
 		}
 	})
 	return functionsArray

@@ -5,7 +5,9 @@ import canvas from '../../../src/render/canvas'
 describe('export frame', () => {
 	beforeEach(() => {
 		currentState.lastSavedAnimationFrame = 666
-		spyOn(canvas, 'toBlob').and.callFake(fn => fn())
+		spyOn(canvas, 'toBlob').and.callFake(
+			callTheFunctionThrough => callTheFunctionThrough()
+		)
 		spyOn(fileSaver, 'saveAs')
 
 		exportFrame()

@@ -5,11 +5,11 @@ import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import settingsUtilities from '../../../src/utilities/settingsUtilities'
+import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
 
 describe('.colorSettings', () => {
-	const tileSizeInPixels = settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.set', () => {
 		it('lets you change the colors of the pattern', () => {

@@ -1,5 +1,5 @@
 import clear from '../render/clear'
-import settingsUtilities from '../utilities/settingsUtilities'
+import stateUtilities from '../utilities/stateUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
@@ -11,12 +11,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	let execute = executeGrid
 	if (animating) {
 		execute = executeAnimation
-		animationFunctions = settingsUtilities.prepareFunctionsPerSetting({
+		animationFunctions = stateUtilities.prepareFunctionsPerSetting({
 			settingsFunctions: currentState.builtPattern.animations,
 		})
 	}
 	if (iterating) {
-		iterationFunctions = settingsUtilities.prepareFunctionsPerSetting({
+		iterationFunctions = stateUtilities.prepareFunctionsPerSetting({
 			settingsFunctions: currentState.builtPattern.iterations,
 		})
 	}

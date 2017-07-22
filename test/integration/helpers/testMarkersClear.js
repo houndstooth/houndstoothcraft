@@ -1,8 +1,8 @@
 import testContext from './testMarkersContext'
-import settingsUtilities from '../../../src/utilities/settingsUtilities'
+import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
 
 export default () => {
-	const canvasSize = settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.CANVAS_SIZE)
+	const canvasSize = stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.CANVAS_SIZE)
 	testContext.clearRect(0, 0, canvasSize, canvasSize)
 }

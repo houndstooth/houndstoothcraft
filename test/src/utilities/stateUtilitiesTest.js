@@ -1,9 +1,9 @@
-import settingsUtilities from '../../../src/utilities/settingsUtilities'
+import stateUtilities from '../../../src/utilities/stateUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import patternDefaults from '../../../src/state/patternDefaults'
 
-describe('settings utilities', () => {
+describe('state utilities', () => {
 	describe('#prepareFunctionsPerSetting', () => {
 		let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
 		let settingFunction, secondSettingFunction
@@ -26,7 +26,7 @@ describe('settings utilities', () => {
 			const functionsArray = undefined
 
 			expectedsettingsFunctions = codeUtilities.deepClone(settingsFunctions)
-			actualFunctionsArray = settingsUtilities.prepareFunctionsPerSetting({
+			actualFunctionsArray = stateUtilities.prepareFunctionsPerSetting({
 				settingsFunctions,
 				settingsPath,
 				functionsArray,
@@ -84,7 +84,7 @@ describe('settings utilities', () => {
 				},
 			}
 
-			settingsUtilities.mergeSettings({
+			stateUtilities.mergeSettings({
 				settingsToBeMergedOnto,
 				settingsToMerge,
 			})
@@ -117,7 +117,7 @@ describe('settings utilities', () => {
 				},
 			}
 
-			settingsUtilities.mergeSettings({
+			stateUtilities.mergeSettings({
 				settingsToBeMergedOnto,
 				settingsToMerge,
 			})
@@ -132,7 +132,7 @@ describe('settings utilities', () => {
 
 	describe('#getFromBuiltPatternOrDefault', () => {
 		let getFromBuiltPatternOrDefault
-		beforeEach(() => getFromBuiltPatternOrDefault = settingsUtilities.getFromBuiltPatternOrDefault)
+		beforeEach(() => getFromBuiltPatternOrDefault = stateUtilities.getFromBuiltPatternOrDefault)
 
 		it('gets the setting from settings if it is defined', () => {
 			currentState.builtPattern.animations = { specialMoves: { youKnowIt: 'awesome' } }
@@ -165,7 +165,7 @@ describe('settings utilities', () => {
 		const iterations = {}
 		const invalidSettings = {}
 		beforeEach(() => {
-			confirmPatternHasNoNonSettings = settingsUtilities.confirmPatternHasNoNonSettings
+			confirmPatternHasNoNonSettings = stateUtilities.confirmPatternHasNoNonSettings
 		})
 
 		it('returns true if the pattern contains only some subset of the recognized settings', () => {

@@ -2,7 +2,7 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import buildPattern from '../../../src/state/buildPattern'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import patternDefaults from '../../../src/state/patternDefaults'
-import settingsUtilities from '../../../src/utilities/settingsUtilities'
+import stateUtilities from '../../../src/utilities/stateUtilities'
 
 describe('buildPattern', () => {
 	it('logs the settings when logging mode is on', () => {
@@ -138,14 +138,14 @@ describe('buildPattern', () => {
 	describe('when there are non-settings', () => {
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
-			spyOn(settingsUtilities, 'mergeSettings')
+			spyOn(stateUtilities, 'mergeSettings')
 		})
 
 		describe('on an effect', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				buildPattern({ patternEffects: [ { yikes: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
+				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 
@@ -153,7 +153,7 @@ describe('buildPattern', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				buildPattern({ patternOverrides: { yikes: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
+				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 
@@ -162,7 +162,7 @@ describe('buildPattern', () => {
 				patternDefaults.yikes = {}
 				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
+				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 
@@ -171,7 +171,7 @@ describe('buildPattern', () => {
 				currentState.builtPattern.yikes = {}
 				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
+				expect(stateUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 	})

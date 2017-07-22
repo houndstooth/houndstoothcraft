@@ -1,4 +1,4 @@
-import settingsUtilities from '../utilities/settingsUtilities'
+import stateUtilities from '../utilities/stateUtilities'
 import consoleWrapper from '../application/consoleWrapper'
 import setupCanvas from '../render/setupCanvas'
 import patternDefaults from './patternDefaults'
@@ -8,9 +8,9 @@ export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {})
 
 	if (
 		!combinedPatternEffects ||
-		!settingsUtilities.confirmPatternHasNoNonSettings(currentState.builtPattern) ||
-		!settingsUtilities.confirmPatternHasNoNonSettings(patternOverrides) ||
-		!settingsUtilities.confirmPatternHasNoNonSettings(patternDefaults)
+		!stateUtilities.confirmPatternHasNoNonSettings(currentState.builtPattern) ||
+		!stateUtilities.confirmPatternHasNoNonSettings(patternOverrides) ||
+		!stateUtilities.confirmPatternHasNoNonSettings(patternDefaults)
 	) {
 		return
 	}
@@ -41,15 +41,15 @@ export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {})
 
 const buildSettings = ({ settingsToSetup, patternDefaults, patternEffects, patternOverrides }) => {
 	Object.keys(settingsToSetup).forEach(key => delete settingsToSetup[ key ])
-	settingsUtilities.mergeSettings({
+	stateUtilities.mergeSettings({
 		settingsToBeMergedOnto: settingsToSetup,
 		settingsToMerge: patternDefaults,
 	})
-	settingsUtilities.mergeSettings({
+	stateUtilities.mergeSettings({
 		settingsToBeMergedOnto: settingsToSetup,
 		settingsToMerge: patternEffects,
 	})
-	settingsUtilities.mergeSettings({
+	stateUtilities.mergeSettings({
 		settingsToBeMergedOnto: settingsToSetup,
 		settingsToMerge: patternOverrides,
 	})
@@ -60,7 +60,7 @@ const combinePatternEffects = ({ patternEffects }) => {
 	const iterations = {}
 	const animations = {}
 
-	const { mergeSettings, confirmPatternHasNoNonSettings } = settingsUtilities
+	const { mergeSettings, confirmPatternHasNoNonSettings } = stateUtilities
 
 	let anyIssues = false
 	patternEffects.forEach(patternEffect => {

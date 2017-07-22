@@ -7,6 +7,7 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
+import setupCanvas from '../../../src/render/setupCanvas'
 
 describe('.viewSettings', () => {
 	const tileSize = stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
@@ -23,6 +24,7 @@ describe('.viewSettings', () => {
 				},
 			})
 			activateTestMarkerCanvas()
+			setupCanvas()
 
 			execute()
 

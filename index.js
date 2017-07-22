@@ -1,5 +1,6 @@
 import './globalCurrentState'
 import buildPattern from './src/state/buildPattern'
+import setupCanvas from './src/render/setupCanvas'
 import execute from './src/application/execute'
 
 // import cmyktoothEffect from './effects/cmyktooth/effects/cmyktoothEffect'
@@ -15,6 +16,8 @@ buildPattern({
 	patternOverrides: {},
 	logPattern: false,
 })
+
+setupCanvas()
 
 execute({
 	iterating: false,

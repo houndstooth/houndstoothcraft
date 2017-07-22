@@ -1,6 +1,5 @@
 import stateUtilities from '../utilities/stateUtilities'
 import consoleWrapper from '../application/consoleWrapper'
-import setupCanvas from '../render/setupCanvas'
 import patternDefaults from './patternDefaults'
 
 export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {}) => {
@@ -33,8 +32,6 @@ export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {})
 		patternEffects: combinedPatternEffects.animations,
 		patternOverrides: patternOverrides.animations,
 	})
-
-	setupCanvas()
 
 	if (logPattern) consoleWrapper.log(currentState.builtPattern)
 }

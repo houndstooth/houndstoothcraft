@@ -42,16 +42,16 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 const setupObject = ({ objectToSetup, defaults, effects, overrides }) => {
 	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
 	settingsUtilities.applyOverrides({
-		objectWithPropertiesToBeOverridden: objectToSetup,
-		objectWithPropertyOverrides: defaults,
+		settingsWithSettingsToBeOverridden: objectToSetup,
+		settingsWithSettingsOverrides: defaults,
 	})
 	settingsUtilities.applyOverrides({
-		objectWithPropertiesToBeOverridden: objectToSetup,
-		objectWithPropertyOverrides: effects,
+		settingsWithSettingsToBeOverridden: objectToSetup,
+		settingsWithSettingsOverrides: effects,
 	})
 	settingsUtilities.applyOverrides({
-		objectWithPropertiesToBeOverridden: objectToSetup,
-		objectWithPropertyOverrides: overrides,
+		settingsWithSettingsToBeOverridden: objectToSetup,
+		settingsWithSettingsOverrides: overrides,
 	})
 }
 
@@ -69,16 +69,16 @@ const combineEffects = ({ effects }) => {
 			return
 		}
 		applyOverrides({
-			objectWithPropertiesToBeOverridden: base,
-			objectWithPropertyOverrides: effect.base,
+			settingsWithSettingsToBeOverridden: base,
+			settingsWithSettingsOverrides: effect.base,
 		})
 		applyOverrides({
-			objectWithPropertiesToBeOverridden: iterations,
-			objectWithPropertyOverrides: effect.iterations,
+			settingsWithSettingsToBeOverridden: iterations,
+			settingsWithSettingsOverrides: effect.iterations,
 		})
 		applyOverrides({
-			objectWithPropertiesToBeOverridden: animations,
-			objectWithPropertyOverrides: effect.animations,
+			settingsWithSettingsToBeOverridden: animations,
+			settingsWithSettingsOverrides: effect.animations,
 		})
 	})
 

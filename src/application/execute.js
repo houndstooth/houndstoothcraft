@@ -11,12 +11,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	let execute = executeGrid
 	if (animating) {
 		execute = executeAnimation
-		animationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({
+		animationFunctions = settingsUtilities.prepareFunctionsPerSetting({
 			objectWithFunctions: currentState.settings.animations,
 		})
 	}
 	if (iterating) {
-		iterationFunctions = settingsUtilities.prepareFunctionsPerSettingsProperty({
+		iterationFunctions = settingsUtilities.prepareFunctionsPerSetting({
 			objectWithFunctions: currentState.settings.iterations,
 		})
 	}
@@ -50,14 +50,14 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	}
 }
 
-const callFunctionsPerSettingsProperty = ({ functionObjects }) => {
+const callFunctionsPerSetting = ({ functionObjects }) => {
 	functionObjects.forEach(functionObject => {
-		const { nestedPropertyPath, propertyName, fn } = functionObject
+		const { settingsPath, settingName, fn } = functionObject
 		let settingsObjectToCallFunctionOn = codeUtilities.accessChildObjectOrCreatePath({
 			parentObject: currentState.settings.base,
-			nestedPropertyPath,
+			settingsPath,
 		})
-		settingsObjectToCallFunctionOn[ propertyName ] = fn(settingsObjectToCallFunctionOn[ propertyName ])
+		settingsObjectToCallFunctionOn[ settingName ] = fn(settingsObjectToCallFunctionOn[ settingName ])
 	})
 }
 
@@ -69,7 +69,7 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 		if (n >= startIterationFrame) {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
-		callFunctionsPerSettingsProperty({ functionObjects: iterationFunctions })
+		callFunctionsPerSetting({ functionObjects: iterationFunctions })
 		currentState.iterationFrame++
 	}
 	currentState.iterationFrame = 0
@@ -111,7 +111,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 			if (exportFrames) exportFrame()
 		}
 
-		callFunctionsPerSettingsProperty({ functionObjects: animationFunctions })
+		callFunctionsPerSetting({ functionObjects: animationFunctions })
 		currentState.animationFrame++
 	}
 

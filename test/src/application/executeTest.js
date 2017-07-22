@@ -176,7 +176,7 @@ describe('execute', () => {
 
 		it('does not call iteration functions', () => {
 			const iterationFunction = jasmine.createSpy()
-			currentState.settings.iterations.exampleProperty = iterationFunction
+			currentState.settings.iterations.exampleSetting = iterationFunction
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
@@ -202,8 +202,8 @@ describe('execute', () => {
 
 		it('calls iteration functions once for each iteration, including before rendering starts', () => {
 			const iterationFunction = jasmine.createSpy().and.callFake(p => p * 2)
-			currentState.settings.base.exampleSettings = { exampleProperty: 1 }
-			currentState.settings.iterations.exampleSettings = { exampleProperty: iterationFunction }
+			currentState.settings.base.exampleSettings = { exampleSetting: 1 }
+			currentState.settings.iterations.exampleSettings = { exampleSetting: iterationFunction }
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
@@ -222,8 +222,8 @@ describe('execute', () => {
 
 		it('handles iteration functions of the iteration frame', () => {
 			const iterationFunction = jasmine.createSpy().and.callFake(() => 1000 - (currentState.iterationFrame + 1))
-			currentState.settings.base.exampleSettings = { exampleProperty: 1000 }
-			currentState.settings.iterations.exampleSettings = { exampleProperty: iterationFunction }
+			currentState.settings.base.exampleSettings = { exampleSetting: 1000 }
+			currentState.settings.iterations.exampleSettings = { exampleSetting: iterationFunction }
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
@@ -266,8 +266,8 @@ describe('execute', () => {
 
 		it('calls animation functions once for each animation, including before rendering starts', () => {
 			const animationFunction = jasmine.createSpy().and.callFake(p => p * 2)
-			currentState.settings.base.exampleSettings = { exampleProperty: 1 }
-			currentState.settings.animations.exampleSettings = { exampleProperty: animationFunction }
+			currentState.settings.base.exampleSettings = { exampleSetting: 1 }
+			currentState.settings.animations.exampleSettings = { exampleSetting: animationFunction }
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
@@ -283,8 +283,8 @@ describe('execute', () => {
 
 		it('handles animation functions of the current animation frame', () => {
 			const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (currentState.animationFrame + 1))
-			currentState.settings.base.exampleSettings = { exampleProperty: 1000 }
-			currentState.settings.animations.exampleSettings = { exampleProperty: animationFunction }
+			currentState.settings.base.exampleSettings = { exampleSetting: 1000 }
+			currentState.settings.animations.exampleSettings = { exampleSetting: animationFunction }
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 
@@ -330,13 +330,13 @@ describe('execute', () => {
 		})
 
 		it('calls iteration functions once for each iteration, each animation frame, starting the iteration over each animation frame', () => {
-			currentState.settings.base.exampleSettings = { exampleProperty: 0 }
+			currentState.settings.base.exampleSettings = { exampleSetting: 0 }
 
 			const animationFunction = jasmine.createSpy().and.callFake(p => p + 100)
-			currentState.settings.animations.exampleSettings = { exampleProperty: animationFunction }
+			currentState.settings.animations.exampleSettings = { exampleSetting: animationFunction }
 
 			const iterationFunction = jasmine.createSpy().and.callFake(p => p + (currentState.iterationFrame + 1))
-			currentState.settings.iterations.exampleSettings = { exampleProperty: iterationFunction }
+			currentState.settings.iterations.exampleSettings = { exampleSetting: iterationFunction }
 
 			execute({ iterating, animating, exportFrames, performanceLogging })
 

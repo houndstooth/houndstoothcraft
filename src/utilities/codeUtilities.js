@@ -41,27 +41,27 @@ const resetObject = ({ objectToReset, objectToResetTo }) => {
 	Object.keys(objectToResetTo).forEach(key => objectToReset[ key ] = objectToResetTo[ key ])
 }
 
-const deeperPath = ({ nestedPropertyPath, propertyName }) => {
-	const deeperPath = nestedPropertyPath.slice()
-	deeperPath.push(propertyName)
+const deeperPath = ({ settingsPath, settingName }) => {
+	const deeperPath = settingsPath.slice()
+	deeperPath.push(settingName)
 	return deeperPath
 }
 
-const accessChildObjectOrCreatePath = ({ parentObject, nestedPropertyPath }) => {
+const accessChildObjectOrCreatePath = ({ parentObject, settingsPath }) => {
 	let childObject = parentObject
-	nestedPropertyPath.forEach(pathStep => {
+	settingsPath.forEach(pathStep => {
 		if (!isDefined(childObject[ pathStep ])) childObject[ pathStep ] = {}
 		childObject = childObject[ pathStep ]
 	})
 	return childObject
 }
 
-const defaultToTrue = property => isDefined(property) ? property : true
+const defaultToTrue = setting => isDefined(setting) ? setting : true
 
-const isDefined = property => typeof property !== 'undefined'
+const isDefined = setting => typeof setting !== 'undefined'
 
-const propertyIsDefinedOnObject = ({ propertyName, objectMaybeWithProperty }) => {
-	return isDefined(objectMaybeWithProperty[ propertyName ])
+const settingIsDefinedOnSettings = ({ settingName, settingsMaybeWithSetting }) => {
+	return isDefined(settingsMaybeWithSetting[ settingName ])
 }
 
 export default {
@@ -74,5 +74,5 @@ export default {
 	accessChildObjectOrCreatePath,
 	defaultToTrue,
 	isDefined,
-	propertyIsDefinedOnObject,
+	settingIsDefinedOnSettings,
 }

@@ -22,47 +22,47 @@ describe('setup', () => {
 	})
 
 	it('sets up settings', () => {
-		spyOn(codeUtilities, 'propertyIsDefinedOnObject').and.returnValue(true)
+		spyOn(codeUtilities, 'settingIsDefinedOnSettings').and.returnValue(true)
 		setup.__Rewire__('setupCanvas', () => {
 		})
 
 		// effects
 
-		const propertyFunctionOneD = () => 'D'
-		const propertyFunctionOneE = () => 'E'
-		const propertyFunctionOneG = () => 'G'
-		const propertyFunctionOneH = () => 'H'
+		const settingFunctionOneD = () => 'D'
+		const settingFunctionOneE = () => 'E'
+		const settingFunctionOneG = () => 'G'
+		const settingFunctionOneH = () => 'H'
 		const effectOne = {
 			base: {
-				propertyA: 'A',
-				propertyB: 'B',
+				settingA: 'A',
+				settingB: 'B',
 			},
 			animations: {
-				propertyD: propertyFunctionOneD,
-				propertyE: propertyFunctionOneE,
+				settingD: settingFunctionOneD,
+				settingE: settingFunctionOneE,
 			},
 			iterations: {
-				propertyG: propertyFunctionOneG,
-				propertyH: propertyFunctionOneH,
+				settingG: settingFunctionOneG,
+				settingH: settingFunctionOneH,
 			},
 		}
 
-		const propertyFunctionTwoD = () => 'd'
-		const propertyFunctionTwoF = () => 'f'
-		const propertyFunctionTwoG = () => 'g'
-		const propertyFunctionTwoI = () => 'i'
+		const settingFunctionTwoD = () => 'd'
+		const settingFunctionTwoF = () => 'f'
+		const settingFunctionTwoG = () => 'g'
+		const settingFunctionTwoI = () => 'i'
 		const effectTwo = {
 			base: {
-				propertyA: 'a',
-				propertyC: 'c',
+				settingA: 'a',
+				settingC: 'c',
 			},
 			animations: {
-				propertyD: propertyFunctionTwoD,
-				propertyF: propertyFunctionTwoF,
+				settingD: settingFunctionTwoD,
+				settingF: settingFunctionTwoF,
 			},
 			iterations: {
-				propertyG: propertyFunctionTwoG,
-				propertyI: propertyFunctionTwoI,
+				settingG: settingFunctionTwoG,
+				settingI: settingFunctionTwoI,
 			},
 		}
 
@@ -71,65 +71,65 @@ describe('setup', () => {
 		// defaults
 
 		defaultSettings.base = {
-			propertyA: 'pre-a',
-			propertyJ: 'pre-j',
+			settingA: 'pre-a',
+			settingJ: 'pre-j',
 		}
-		const propertyFunctionDefaultD = () => 'pre-d'
-		const propertyFunctionDefaultK = () => 'pre-k'
+		const settingFunctionDefaultD = () => 'pre-d'
+		const settingFunctionDefaultK = () => 'pre-k'
 		defaultSettings.animations = {
-			propertyD: propertyFunctionDefaultD,
-			propertyK: propertyFunctionDefaultK,
+			settingD: settingFunctionDefaultD,
+			settingK: settingFunctionDefaultK,
 		}
-		const propertyFunctionDefaultG = () => 'pre-g'
-		const propertyFunctionDefaultL = () => 'pre-l'
+		const settingFunctionDefaultG = () => 'pre-g'
+		const settingFunctionDefaultL = () => 'pre-l'
 		defaultSettings.iterations = {
-			propertyG: propertyFunctionDefaultG,
-			propertyL: propertyFunctionDefaultL,
+			settingG: settingFunctionDefaultG,
+			settingL: settingFunctionDefaultL,
 		}
 
 		// overrides
 
-		const propertyFunctionOverridesF = () => 'fF'
-		const propertyFunctionOverridesN = () => 'nN'
-		const propertyFunctionOverridesI = () => 'iI'
-		const propertyFunctionOverridesP = () => 'pP'
+		const settingFunctionOverridesF = () => 'fF'
+		const settingFunctionOverridesN = () => 'nN'
+		const settingFunctionOverridesI = () => 'iI'
+		const settingFunctionOverridesP = () => 'pP'
 		const overrides = {
 			base: {
-				propertyC: 'cC',
-				propertyM: 'mM',
+				settingC: 'cC',
+				settingM: 'mM',
 			},
 			animations: {
-				propertyF: propertyFunctionOverridesF,
-				propertyN: propertyFunctionOverridesN,
+				settingF: settingFunctionOverridesF,
+				settingN: settingFunctionOverridesN,
 			},
 			iterations: {
-				propertyI: propertyFunctionOverridesI,
-				propertyP: propertyFunctionOverridesP,
+				settingI: settingFunctionOverridesI,
+				settingP: settingFunctionOverridesP,
 			},
 		}
 
 		setup({ effects, overrides })
 
 		expect(currentState.settings.base).toEqual(jasmine.objectContaining({
-			propertyA: 'a',
-			propertyB: 'B',
-			propertyC: 'cC',
-			propertyJ: 'pre-j',
-			propertyM: 'mM',
+			settingA: 'a',
+			settingB: 'B',
+			settingC: 'cC',
+			settingJ: 'pre-j',
+			settingM: 'mM',
 		}))
 		expect(currentState.settings.animations).toEqual(jasmine.objectContaining({
-			propertyD: propertyFunctionTwoD,
-			propertyE: propertyFunctionOneE,
-			propertyF: propertyFunctionOverridesF,
-			propertyK: propertyFunctionDefaultK,
-			propertyN: propertyFunctionOverridesN,
+			settingD: settingFunctionTwoD,
+			settingE: settingFunctionOneE,
+			settingF: settingFunctionOverridesF,
+			settingK: settingFunctionDefaultK,
+			settingN: settingFunctionOverridesN,
 		}))
 		expect(currentState.settings.iterations).toEqual(jasmine.objectContaining({
-			propertyG: propertyFunctionTwoG,
-			propertyH: propertyFunctionOneH,
-			propertyI: propertyFunctionOverridesI,
-			propertyL: propertyFunctionDefaultL,
-			propertyP: propertyFunctionOverridesP,
+			settingG: settingFunctionTwoG,
+			settingH: settingFunctionOneH,
+			settingI: settingFunctionOverridesI,
+			settingL: settingFunctionDefaultL,
+			settingP: settingFunctionOverridesP,
 		}))
 
 		setup.__ResetDependency__('setupCanvas')

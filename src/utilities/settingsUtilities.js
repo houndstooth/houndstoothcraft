@@ -5,62 +5,62 @@ import defaultSettings from '../settings/defaultSettings'
 
 const SETTINGS_OBJECT_NAMES = [ 'base', 'animations', 'iterations' ]
 
-const prepareFunctionsPerSettingsProperty = ({ objectWithFunctions, nestedPropertyPath = [], functionsArray = [] }) => {
+const prepareFunctionsPerSetting = ({ objectWithFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
 		if (typeof value === 'function') {
-			functionsArray.push({ fn: value, nestedPropertyPath, propertyName: key })
+			functionsArray.push({ fn: value, settingsPath, settingName: key })
 		}
 		else if (typeof value === 'object' && !(value instanceof Array)) {
-			prepareFunctionsPerSettingsProperty({
+			prepareFunctionsPerSetting({
 				objectWithFunctions: value,
-				nestedPropertyPath: codeUtilities.deeperPath({ nestedPropertyPath, propertyName: key }),
+				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName: key }),
 				functionsArray,
 			})
 		}
 		else {
-			consoleWrapper.error(`This object is supposed to be an object whose structure matches that of the base settings, and whose leaf values are functions to be applied to those settings on each animation / iteration frame. However, you have provided a non-function ${value} at path ${nestedPropertyPath} ${key}`)
+			consoleWrapper.error(`This object is supposed to be an object whose structure matches that of the base settings, and whose leaf values are functions to be applied to those settings on each animation / iteration frame. However, you have provided a non-function ${value} at path ${settingsPath} ${key}`)
 		}
 	})
 	return functionsArray
 }
 
-const applyOverrides = ({ objectWithPropertiesToBeOverridden, objectWithPropertyOverrides, nestedPropertyPath = [], settingsRegisteredCheck = registeredSettings }) => {
-	if (!objectWithPropertyOverrides) return
-	Object.entries(objectWithPropertyOverrides).forEach(([ propertyName, overridingProperty ]) => {
+const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettingsOverrides, settingsPath = [], settingsRegisteredCheck = registeredSettings }) => {
+	if (!settingsWithSettingsOverrides) return
+	Object.entries(settingsWithSettingsOverrides).forEach(([ settingName, overridingSetting ]) => {
 		let deeperSettingsRegisteredCheck
-		if (codeUtilities.propertyIsDefinedOnObject({
-			propertyName,
-			objectMaybeWithProperty: settingsRegisteredCheck,
+		if (codeUtilities.settingIsDefinedOnSettings({
+			settingName,
+			settingsMaybeWithSetting: settingsRegisteredCheck,
 		})) {
-			deeperSettingsRegisteredCheck = settingsRegisteredCheck[ propertyName ]
+			deeperSettingsRegisteredCheck = settingsRegisteredCheck[ settingName ]
 		}
 		else {
-			consoleWrapper.error(`Attempt to apply unknown settings: ${nestedPropertyPath.join('.')}.${propertyName}`)
+			consoleWrapper.error(`Attempt to apply unknown settings: ${settingsPath.join('.')}.${settingName}`)
 			return
 		}
 
-		if (overridingProperty && typeof overridingProperty === 'object' && !overridingProperty.length) {
+		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length) {
 			applyOverrides({
-				objectWithPropertiesToBeOverridden,
-				objectWithPropertyOverrides: overridingProperty,
-				nestedPropertyPath: codeUtilities.deeperPath({ nestedPropertyPath, propertyName }),
+				settingsWithSettingsToBeOverridden,
+				settingsWithSettingsOverrides: overridingSetting,
+				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
 				settingsRegisteredCheck: deeperSettingsRegisteredCheck,
 			})
 		}
 		else {
-			let objectWithPropertyToBeOverridden = codeUtilities.accessChildObjectOrCreatePath({
-				parentObject: objectWithPropertiesToBeOverridden,
-				nestedPropertyPath,
+			let settingsWithSettingToBeOverridden = codeUtilities.accessChildObjectOrCreatePath({
+				parentObject: settingsWithSettingsToBeOverridden,
+				settingsPath,
 			})
-			objectWithPropertyToBeOverridden[ propertyName ] = overridingProperty
+			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
 		}
 	})
 }
 
-const getFromSettingsOrDefault = nestedPropertyPath => {
+const getFromSettingsOrDefault = settingsPath => {
 	let childObject = currentState.settings
 	let notThere
-	nestedPropertyPath.forEach(pathStep => {
+	settingsPath.forEach(pathStep => {
 		if (notThere) return
 		if (!codeUtilities.isDefined(childObject[ pathStep ])) {
 			childObject = undefined
@@ -70,14 +70,14 @@ const getFromSettingsOrDefault = nestedPropertyPath => {
 		childObject = childObject[ pathStep ]
 	})
 
-	let property
+	let setting
 	if (codeUtilities.isDefined(childObject)) {
-		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: currentState.settings, nestedPropertyPath })
+		setting = codeUtilities.accessChildObjectOrCreatePath({ parentObject: currentState.settings, settingsPath })
 	}
 	else {
-		property = codeUtilities.accessChildObjectOrCreatePath({ parentObject: defaultSettings, nestedPropertyPath })
+		setting = codeUtilities.accessChildObjectOrCreatePath({ parentObject: defaultSettings, settingsPath })
 	}
-	return property
+	return setting
 }
 
 const confirmSettingsObjectsParentIncludesOnlySettingsObjects = (settingsObjectParent) => {
@@ -91,7 +91,7 @@ const confirmSettingsObjectsParentIncludesOnlySettingsObjects = (settingsObjectP
 }
 
 export default {
-	prepareFunctionsPerSettingsProperty,
+	prepareFunctionsPerSetting,
 	applyOverrides,
 	getFromSettingsOrDefault,
 	confirmSettingsObjectsParentIncludesOnlySettingsObjects,

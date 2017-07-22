@@ -4,31 +4,31 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import defaultSettings from '../../../src/settings/defaultSettings'
 
 describe('settings utilities', () => {
-	describe('#prepareFunctionsPerSettingsProperty', () => {
+	describe('#prepareFunctionsPerSetting', () => {
 		let actualFunctionsArray, expectedObjectWithFunctions, objectWithFunctions
-		let propertyFunction, secondPropertyFunction
+		let settingFunction, secondSettingFunction
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
-			propertyFunction = p => p * 2
-			secondPropertyFunction = p => p - 1
+			settingFunction = p => p * 2
+			secondSettingFunction = p => p - 1
 			objectWithFunctions = {
 				childPathFirstStep: {
 					childPathSecondStep: {
-						childPathFinalStep: propertyFunction,
+						childPathFinalStep: settingFunction,
 					},
 				},
 				secondChildPathFirstStep: {
-					secondChildPathFinalStep: secondPropertyFunction,
+					secondChildPathFinalStep: secondSettingFunction,
 					thingThatShouldNotBe: 'Great Old One',
 				},
 			}
-			const nestedPropertyPath = undefined
+			const settingsPath = undefined
 			const functionsArray = undefined
 
 			expectedObjectWithFunctions = codeUtilities.deepClone(objectWithFunctions)
-			actualFunctionsArray = settingsUtilities.prepareFunctionsPerSettingsProperty({
+			actualFunctionsArray = settingsUtilities.prepareFunctionsPerSetting({
 				objectWithFunctions,
-				nestedPropertyPath,
+				settingsPath,
 				functionsArray,
 			})
 		})
@@ -36,14 +36,14 @@ describe('settings utilities', () => {
 		it('gathers the functions to be applied', () => {
 			const expectedFunctionsArray = [
 				{
-					fn: propertyFunction,
-					nestedPropertyPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
-					propertyName: 'childPathFinalStep',
+					fn: settingFunction,
+					settingsPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
+					settingName: 'childPathFinalStep',
 				},
 				{
-					fn: secondPropertyFunction,
-					nestedPropertyPath: [ 'secondChildPathFirstStep' ],
-					propertyName: 'secondChildPathFinalStep',
+					fn: secondSettingFunction,
+					settingsPath: [ 'secondChildPathFirstStep' ],
+					settingName: 'secondChildPathFinalStep',
 				},
 			]
 			expect(actualFunctionsArray).toEqual(expectedFunctionsArray)
@@ -61,8 +61,8 @@ describe('settings utilities', () => {
 	})
 
 	describe('#applyOverrides', () => {
-		it('changes and adds properties to the object with properties to be overridden, from the object with property overrides which as matching structure', () => {
-			const objectWithPropertiesToBeOverridden = {
+		it('changes and adds settings to the settings with settings to be overridden, from the settings with setting overrides which has a matching structure', () => {
+			const settingsWithSettingsToBeOverridden = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'yoda',
@@ -73,7 +73,7 @@ describe('settings utilities', () => {
 					gridSize: 'jedi',
 				},
 			}
-			const objectWithPropertyOverrides = {
+			const settingsWithSettingsOverrides = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'luke',
@@ -85,11 +85,11 @@ describe('settings utilities', () => {
 			}
 
 			settingsUtilities.applyOverrides({
-				objectWithPropertiesToBeOverridden,
-				objectWithPropertyOverrides,
+				settingsWithSettingsToBeOverridden,
+				settingsWithSettingsOverrides,
 			})
 
-			const expectedObjectWithPropertiesOverriden = {
+			const expectedSettingsWithSettingsOverridden = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'luke',
@@ -100,13 +100,13 @@ describe('settings utilities', () => {
 					gridSize: 'sith',
 				},
 			}
-			expect(expectedObjectWithPropertiesOverriden).toEqual(objectWithPropertiesToBeOverridden)
+			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsWithSettingsToBeOverridden)
 		})
 
-		it('errors when attempting to add a property that is not registered in the settings shape, and does not add it', () => {
+		it('errors when attempting to add a setting that is not registered as a houndstooth setting, and does not add it', () => {
 			spyOn(consoleWrapper, 'error')
-			const objectWithPropertiesToBeOverridden = {}
-			const objectWithPropertyOverrides = {
+			const settingsWithSettingsToBeOverridden = {}
+			const settingsWithSettingsOverrides = {
 				colorSettings: {
 					assignment: {
 						probablyAnAccident: {
@@ -118,12 +118,12 @@ describe('settings utilities', () => {
 			}
 
 			settingsUtilities.applyOverrides({
-				objectWithPropertiesToBeOverridden,
-				objectWithPropertyOverrides,
+				settingsWithSettingsToBeOverridden,
+				settingsWithSettingsOverrides,
 			})
 
-			const expectedObjectWithPropertiesOverriden = {}
-			expect(expectedObjectWithPropertiesOverriden).toEqual(objectWithPropertiesToBeOverridden)
+			const expectedSettingsWithSettingsOverridden = {}
+			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsWithSettingsToBeOverridden)
 			expect(consoleWrapper.error).toHaveBeenCalledWith(
 				'Attempt to apply unknown settings: colorSettings.assignment.probablyAnAccident'
 			)
@@ -134,27 +134,27 @@ describe('settings utilities', () => {
 		let getFromSettingsOrDefault
 		beforeEach(() => getFromSettingsOrDefault = settingsUtilities.getFromSettingsOrDefault)
 
-		it('gets the property from settings if it is defined', () => {
+		it('gets the setting from settings if it is defined', () => {
 			currentState.settings.animations = { specialMoves: { youKnowIt: 'awesome' } }
 			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
-			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromSettingsOrDefault(nestedPropertyPath)).toBe('awesome')
+			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
+			expect(getFromSettingsOrDefault(settingsPath)).toBe('awesome')
 		})
 
-		it('gets the property from settings even if it is zero; that is the whole point of this thing', () => {
+		it('gets the setting from settings even if it is zero; that is the whole point of this thing', () => {
 			currentState.settings.animations = { specialMoves: { youKnowIt: 0 } }
 			defaultSettings.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
-			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromSettingsOrDefault(nestedPropertyPath)).toBe(0)
+			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
+			expect(getFromSettingsOrDefault(settingsPath)).toBe(0)
 		})
 
-		it('defaults the property if it is not defined', () => {
+		it('defaults the setting if it is not defined', () => {
 			defaultSettings.animations = { specialMoves: { youKnowIt: 'defawesome' } }
 
-			const nestedPropertyPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromSettingsOrDefault(nestedPropertyPath)).toBe('defawesome')
+			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
+			expect(getFromSettingsOrDefault(settingsPath)).toBe('defawesome')
 		})
 	})
 

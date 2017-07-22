@@ -83,7 +83,7 @@ describe('component utilities', () => {
 
 			describe('when the assignment settings object is present', () => {
 				describe('but the mode is missing from it', () => {
-					it('defaults the mode property individually to the default color settings assignment mode', () => {
+					it('defaults the mode setting individually to the default color settings assignment mode', () => {
 						const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 						const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 						settings = {
@@ -101,7 +101,7 @@ describe('component utilities', () => {
 				})
 
 				describe('but weave is missing from it', () => {
-					it('defaults the weave property individually to the default color settings assignment weave', () => {
+					it('defaults the weave setting individually to the default color settings assignment weave', () => {
 						const setForGrid = [ 'FIRST', 'SECOND' ]
 						const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 						settings = {
@@ -114,7 +114,7 @@ describe('component utilities', () => {
 				})
 
 				describe('but supertile is missing from it', () => {
-					it('defaults the supertile property individually to the default color settings assignment supertile', () => {
+					it('defaults the supertile setting individually to the default color settings assignment supertile', () => {
 						const setForGrid = [ 'FIRST', 'SECOND' ]
 						const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 

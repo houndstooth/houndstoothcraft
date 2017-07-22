@@ -3,7 +3,7 @@ import consoleWrapper from '../application/consoleWrapper'
 import setupCanvas from '../render/setupCanvas'
 import patternDefaults from './patternDefaults'
 
-export default ({ patternEffects = [], settingsLogging, patternOverrides = {} } = {}) => {
+export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {}) => {
 	const combinedPatternEffects = combinePatternEffects({ patternEffects })
 
 	if (
@@ -36,7 +36,7 @@ export default ({ patternEffects = [], settingsLogging, patternOverrides = {} } 
 
 	setupCanvas()
 
-	if (settingsLogging) consoleWrapper.log(currentState.builtPattern)
+	if (logPattern) consoleWrapper.log(currentState.builtPattern)
 }
 
 const buildSettings = ({ settingsToSetup, patternDefaults, patternEffects, patternOverrides }) => {

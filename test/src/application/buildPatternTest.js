@@ -8,7 +8,7 @@ describe('buildPattern', () => {
 	it('logs the settings when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		buildPattern({ settingsLogging: true })
+		buildPattern({ logPattern: true })
 
 		expect(consoleWrapper.log).toHaveBeenCalledWith(currentState.builtPattern)
 	})

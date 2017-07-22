@@ -12,8 +12,8 @@ import execute from './src/application/execute'
 
 buildPattern({
 	patternEffects: [],
-	settingsLogging: false,
 	patternOverrides: {},
+	logPattern: false,
 })
 
 execute({

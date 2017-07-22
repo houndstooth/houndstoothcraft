@@ -7,7 +7,7 @@ import settingsUtilities from '../../src/utilities/settingsUtilities'
 import settingsPaths from '../../src/state/settingsPaths'
 
 describe('.gridSettings', () => {
-	const tileSizeInPixels = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

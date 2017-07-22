@@ -130,16 +130,16 @@ describe('settings utilities', () => {
 		})
 	})
 
-	describe('#getFromSettingsOrDefault', () => {
-		let getFromSettingsOrDefault
-		beforeEach(() => getFromSettingsOrDefault = settingsUtilities.getFromSettingsOrDefault)
+	describe('#getFromBuiltPatternOrDefault', () => {
+		let getFromBuiltPatternOrDefault
+		beforeEach(() => getFromBuiltPatternOrDefault = settingsUtilities.getFromBuiltPatternOrDefault)
 
 		it('gets the setting from settings if it is defined', () => {
 			currentState.builtPattern.animations = { specialMoves: { youKnowIt: 'awesome' } }
 			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromSettingsOrDefault(settingsPath)).toBe('awesome')
+			expect(getFromBuiltPatternOrDefault(settingsPath)).toBe('awesome')
 		})
 
 		it('gets the setting from settings even if it is zero; that is the whole point of this thing', () => {
@@ -147,14 +147,14 @@ describe('settings utilities', () => {
 			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromSettingsOrDefault(settingsPath)).toBe(0)
+			expect(getFromBuiltPatternOrDefault(settingsPath)).toBe(0)
 		})
 
 		it('defaults the setting if it is not defined', () => {
 			patternDefaults.animations = { specialMoves: { youKnowIt: 'defawesome' } }
 
 			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromSettingsOrDefault(settingsPath)).toBe('defawesome')
+			expect(getFromBuiltPatternOrDefault(settingsPath)).toBe('defawesome')
 		})
 	})
 

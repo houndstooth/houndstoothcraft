@@ -9,7 +9,7 @@ import settingsUtilities from '../../src/utilities/settingsUtilities'
 import settingsPaths from '../../src/state/settingsPaths'
 
 describe('.colorSettings', () => {
-	const tileSizeInPixels = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.set', () => {
 		it('lets you change the colors of the pattern', () => {

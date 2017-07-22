@@ -58,7 +58,7 @@ const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath =
 	})
 }
 
-const getFromSettingsOrDefault = settingsPath => {
+const getFromBuiltPatternOrDefault = settingsPath => {
 	let childSetting = currentState.builtPattern
 	let notThere
 	settingsPath.forEach(pathStep => {
@@ -94,6 +94,6 @@ const confirmPatternHasNoNonSettings = pattern => {
 export default {
 	prepareFunctionsPerSetting,
 	mergeSettings,
-	getFromSettingsOrDefault,
+	getFromBuiltPatternOrDefault,
 	confirmPatternHasNoNonSettings,
 }

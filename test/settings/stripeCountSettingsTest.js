@@ -8,7 +8,7 @@ import settingsUtilities from '../../src/utilities/settingsUtilities'
 import settingsPaths from '../../src/state/settingsPaths'
 
 describe('.stripeCountSettings', () => {
-	const tileSizeInPixels = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.stripeCountMode', () => {
 		let patternOverrides

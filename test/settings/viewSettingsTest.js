@@ -9,7 +9,7 @@ import settingsPaths from '../../src/state/settingsPaths'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 
 describe('.viewSettings', () => {
-	const tileSize = settingsUtilities.getFromSettingsOrDefault(settingsPaths.TILE_SIZE)
+	const tileSize = settingsUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.canvasSize', () => {
 		it('works', () => {

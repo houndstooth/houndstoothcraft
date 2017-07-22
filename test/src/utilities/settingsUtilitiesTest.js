@@ -103,7 +103,7 @@ describe('settings utilities', () => {
 			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsWithSettingsToBeOverridden)
 		})
 
-		it('errors when attempting to add a setting that is not registered as a houndstooth setting, and does not add it', () => {
+		it('errors when attempting to add a setting that is not recognized as a houndstooth setting, and does not add it', () => {
 			spyOn(consoleWrapper, 'error')
 			const settingsWithSettingsToBeOverridden = {}
 			const settingsWithSettingsOverrides = {

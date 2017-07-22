@@ -1,6 +1,6 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
-import registeredSettings from '../settings/registeredSettings'
+import recognizedSettings from '../settings/recognizedSettings'
 import defaultSettings from '../settings/defaultSettings'
 
 const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
@@ -24,15 +24,15 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 	return functionsArray
 }
 
-const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettingsOverrides, settingsPath = [], settingsRegisteredCheck = registeredSettings }) => {
+const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettingsOverrides, settingsPath = [], settingsRecognizedCheck = recognizedSettings }) => {
 	if (!settingsWithSettingsOverrides) return
 	Object.entries(settingsWithSettingsOverrides).forEach(([ settingName, overridingSetting ]) => {
-		let deeperSettingsRegisteredCheck
+		let deeperSettingsRecognizedCheck
 		if (codeUtilities.settingIsDefinedOnSettings({
 			settingName,
-			settingsMaybeWithSetting: settingsRegisteredCheck,
+			settingsMaybeWithSetting: settingsRecognizedCheck,
 		})) {
-			deeperSettingsRegisteredCheck = settingsRegisteredCheck[ settingName ]
+			deeperSettingsRecognizedCheck = settingsRecognizedCheck[ settingName ]
 		}
 		else {
 			consoleWrapper.error(`Attempt to apply unknown settings: ${settingsPath.join('.')}.${settingName}`)
@@ -44,7 +44,7 @@ const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettin
 				settingsWithSettingsToBeOverridden,
 				settingsWithSettingsOverrides: overridingSetting,
 				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
-				settingsRegisteredCheck: deeperSettingsRegisteredCheck,
+				settingsRecognizedCheck: deeperSettingsRecognizedCheck,
 			})
 		}
 		else {

@@ -1,5 +1,5 @@
 import rotationUtilities from '../../../src/utilities/rotationUtilities'
-import coordinatesMatch from '../../helpers/coordinatesMatch'
+import coordinatesMatch from '../helpers/coordinatesMatch'
 
 describe('rotation utilities', () => {
 	describe('#rotateCoordinatesAboutPoint', () => {

@@ -1,7 +1,7 @@
 import execute from '../../src/application/execute'
 import buildPattern from '../../src/state/buildPattern'
-import standardTileIsColors from '../helpers/standardTileIsColors'
-import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
+import standardTileIsColors from './helpers/standardTileIsColors'
+import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 
 describe('standard houndstooth pattern', () => {

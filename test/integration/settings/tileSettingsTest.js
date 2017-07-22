@@ -1,10 +1,10 @@
-import '../../node_modules/canteen/build/canteen.min'
-import execute from '../../src/application/execute'
-import buildPattern from '../../src/state/buildPattern'
+import '../../../node_modules/canteen/build/canteen.min'
+import execute from '../../../src/application/execute'
+import buildPattern from '../../../src/state/buildPattern'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
-import { BLACK, TRANSPARENT } from '../../src/constants'
-import context from '../../src/render/context'
+import { BLACK, TRANSPARENT } from '../../../src/constants'
+import context from '../../../src/render/context'
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {

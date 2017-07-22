@@ -1,8 +1,8 @@
-import buildPattern from '../../src/state/buildPattern'
-import execute from '../../src/application/execute'
+import buildPattern from '../../../src/state/buildPattern'
+import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import { BLACK, TRANSPARENT } from '../../src/constants'
+import { BLACK, TRANSPARENT } from '../../../src/constants'
 
 describe('.baseStripeDiagonal', () => {
 	it('can be set to principal, to change the orientation of the stripes', () => {

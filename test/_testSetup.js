@@ -3,7 +3,7 @@
 import 'jasmine'
 import '../globalCurrentState'
 import clear from '../src/render/clear'
-import testMarkersClear from './helpers/testMarkersClear'
+import testMarkersClear from './integration/helpers/testMarkersClear'
 import codeUtilities from '../src/utilities/codeUtilities'
 import initialState from '../src/state/initialState'
 

@@ -1,6 +1,6 @@
 import viewUtilities from '../../../src/utilities/viewUtilities'
 import buildPattern from '../../../src/state/buildPattern'
-import coordinatesMatch from '../../helpers/coordinatesMatch'
+import coordinatesMatch from '../helpers/coordinatesMatch'
 
 describe('view utilities', () => {
 	const zoom = 10

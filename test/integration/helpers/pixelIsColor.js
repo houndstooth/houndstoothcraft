@@ -1,5 +1,5 @@
-import context from '../../src/render/context'
-import isCloseTo from './isCloseTo'
+import context from '../../../src/render/context'
+import isCloseTo from '../../helpers/isCloseTo'
 
 export default (coordinateUnderTest, expectedColor) => {
 	const actualColor = pixel(coordinateUnderTest)

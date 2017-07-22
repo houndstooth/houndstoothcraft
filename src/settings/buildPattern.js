@@ -41,17 +41,17 @@ export default ({ patternEffects = [], patternOverrides = {}, logPattern } = {})
 
 const buildSettings = ({ settingsToSetup, patternDefaults, patternEffects, patternOverrides }) => {
 	Object.keys(settingsToSetup).forEach(key => delete settingsToSetup[ key ])
-	settingsUtilities.applyOverrides({
-		settingsWithSettingsToBeOverridden: settingsToSetup,
-		settingsWithSettingsOverrides: patternDefaults,
+	settingsUtilities.mergeSettings({
+		settingsToBeMergedOnto: settingsToSetup,
+		settingsToMerge: patternDefaults,
 	})
-	settingsUtilities.applyOverrides({
-		settingsWithSettingsToBeOverridden: settingsToSetup,
-		settingsWithSettingsOverrides: patternEffects,
+	settingsUtilities.mergeSettings({
+		settingsToBeMergedOnto: settingsToSetup,
+		settingsToMerge: patternEffects,
 	})
-	settingsUtilities.applyOverrides({
-		settingsWithSettingsToBeOverridden: settingsToSetup,
-		settingsWithSettingsOverrides: patternOverrides,
+	settingsUtilities.mergeSettings({
+		settingsToBeMergedOnto: settingsToSetup,
+		settingsToMerge: patternOverrides,
 	})
 }
 
@@ -60,7 +60,7 @@ const combinePatternEffects = ({ patternEffects }) => {
 	const iterations = {}
 	const animations = {}
 
-	const { applyOverrides, confirmPatternHasNoNonSettings } = settingsUtilities
+	const { mergeSettings, confirmPatternHasNoNonSettings } = settingsUtilities
 
 	let anyIssues = false
 	patternEffects.forEach(patternEffect => {
@@ -68,17 +68,17 @@ const combinePatternEffects = ({ patternEffects }) => {
 			anyIssues = true
 			return
 		}
-		applyOverrides({
-			settingsWithSettingsToBeOverridden: base,
-			settingsWithSettingsOverrides: patternEffect.base,
+		mergeSettings({
+			settingsToBeMergedOnto: base,
+			settingsToMerge: patternEffect.base,
 		})
-		applyOverrides({
-			settingsWithSettingsToBeOverridden: iterations,
-			settingsWithSettingsOverrides: patternEffect.iterations,
+		mergeSettings({
+			settingsToBeMergedOnto: iterations,
+			settingsToMerge: patternEffect.iterations,
 		})
-		applyOverrides({
-			settingsWithSettingsToBeOverridden: animations,
-			settingsWithSettingsOverrides: patternEffect.animations,
+		mergeSettings({
+			settingsToBeMergedOnto: animations,
+			settingsToMerge: patternEffect.animations,
 		})
 	})
 

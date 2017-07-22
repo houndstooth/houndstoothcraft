@@ -60,9 +60,9 @@ describe('settings utilities', () => {
 		})
 	})
 
-	describe('#applyOverrides', () => {
+	describe('#mergeSettings', () => {
 		it('changes and adds settings to the settings with settings to be overridden, from the settings with setting overrides which has a matching structure', () => {
-			const settingsWithSettingsToBeOverridden = {
+			const settingsToBeMergedOnto = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'yoda',
@@ -73,7 +73,7 @@ describe('settings utilities', () => {
 					gridSize: 'jedi',
 				},
 			}
-			const settingsWithSettingsOverrides = {
+			const settingsToMerge = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'luke',
@@ -84,9 +84,9 @@ describe('settings utilities', () => {
 				},
 			}
 
-			settingsUtilities.applyOverrides({
-				settingsWithSettingsToBeOverridden,
-				settingsWithSettingsOverrides,
+			settingsUtilities.mergeSettings({
+				settingsToBeMergedOnto,
+				settingsToMerge,
 			})
 
 			const expectedSettingsWithSettingsOverridden = {
@@ -100,13 +100,13 @@ describe('settings utilities', () => {
 					gridSize: 'sith',
 				},
 			}
-			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsWithSettingsToBeOverridden)
+			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsToBeMergedOnto)
 		})
 
 		it('errors when attempting to add a setting that is not recognized as a houndstooth setting, and does not add it', () => {
 			spyOn(consoleWrapper, 'error')
-			const settingsWithSettingsToBeOverridden = {}
-			const settingsWithSettingsOverrides = {
+			const settingsToBeMergedOnto = {}
+			const settingsToMerge = {
 				colorSettings: {
 					assignment: {
 						probablyAnAccident: {
@@ -117,13 +117,13 @@ describe('settings utilities', () => {
 				},
 			}
 
-			settingsUtilities.applyOverrides({
-				settingsWithSettingsToBeOverridden,
-				settingsWithSettingsOverrides,
+			settingsUtilities.mergeSettings({
+				settingsToBeMergedOnto,
+				settingsToMerge,
 			})
 
 			const expectedSettingsWithSettingsOverridden = {}
-			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsWithSettingsToBeOverridden)
+			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsToBeMergedOnto)
 			expect(consoleWrapper.error).toHaveBeenCalledWith(
 				'Attempt to apply unknown settings: colorSettings.assignment.probablyAnAccident'
 			)

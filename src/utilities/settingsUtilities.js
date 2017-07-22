@@ -25,9 +25,9 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 	return functionsArray
 }
 
-const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettingsOverrides, settingsPath = [], settingsRecognizedCheck = recognizedSettings }) => {
-	if (!settingsWithSettingsOverrides) return
-	Object.entries(settingsWithSettingsOverrides).forEach(([ settingName, overridingSetting ]) => {
+const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath = [], settingsRecognizedCheck = recognizedSettings }) => {
+	if (!settingsToMerge) return
+	Object.entries(settingsToMerge).forEach(([ settingName, overridingSetting ]) => {
 		let deeperSettingsRecognizedCheck
 		if (codeUtilities.settingIsDefinedOnSettings({
 			settingName,
@@ -41,16 +41,16 @@ const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettin
 		}
 
 		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length) {
-			applyOverrides({
-				settingsWithSettingsToBeOverridden,
-				settingsWithSettingsOverrides: overridingSetting,
+			mergeSettings({
+				settingsToBeMergedOnto,
+				settingsToMerge: overridingSetting,
 				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
 				settingsRecognizedCheck: deeperSettingsRecognizedCheck,
 			})
 		}
 		else {
 			let settingsWithSettingToBeOverridden = codeUtilities.accessChildSettingOrCreatePath({
-				settingsRoot: settingsWithSettingsToBeOverridden,
+				settingsRoot: settingsToBeMergedOnto,
 				settingsPath,
 			})
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
@@ -93,7 +93,7 @@ const confirmPatternHasNoNonSettings = pattern => {
 
 export default {
 	prepareFunctionsPerSetting,
-	applyOverrides,
+	mergeSettings,
 	getFromSettingsOrDefault,
 	confirmPatternHasNoNonSettings,
 }

@@ -138,14 +138,14 @@ describe('buildPattern', () => {
 	describe('when there are non-settings', () => {
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
-			spyOn(settingsUtilities, 'applyOverrides')
+			spyOn(settingsUtilities, 'mergeSettings')
 		})
 
 		describe('on an effect', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				buildPattern({ patternEffects: [ { yikes: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
+				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 
@@ -153,7 +153,7 @@ describe('buildPattern', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				buildPattern({ patternOverrides: { yikes: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
+				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 
@@ -162,7 +162,7 @@ describe('buildPattern', () => {
 				patternDefaults.yikes = {}
 				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
+				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 
@@ -171,7 +171,7 @@ describe('buildPattern', () => {
 				currentState.builtPattern.yikes = {}
 				buildPattern({ base: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
-				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
+				expect(settingsUtilities.mergeSettings).not.toHaveBeenCalled()
 			})
 		})
 	})

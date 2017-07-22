@@ -81,7 +81,7 @@ describe('component utilities', () => {
 				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
 			})
 
-			describe('when the assignment settings object is present', () => {
+			describe('when the assignment settings are present', () => {
 				describe('but the mode is missing from it', () => {
 					it('defaults the mode setting individually to the default color settings assignment mode', () => {
 						const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]

@@ -21,24 +21,24 @@ const shallowEqual = (a, b) => {
 	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
-const deepClone = objectToClone => {
-	let clonedObject = {}
-	Object.entries(objectToClone).forEach(([ key, value ]) => {
-		if (value instanceof Array) {
-			clonedObject[ key ] = value.slice()
+const deepClone = settingsToClone => {
+	let clonedSettings = {}
+	Object.entries(settingsToClone).forEach(([ settingName, setting ]) => {
+		if (setting instanceof Array) {
+			clonedSettings[ settingName ] = setting.slice()
 		}
-		else if (value && typeof value === 'object') {
-			clonedObject[ key ] = deepClone(value)
+		else if (setting && typeof setting === 'object') {
+			clonedSettings[ settingName ] = deepClone(setting)
 		}
 		else {
-			clonedObject[ key ] = value
+			clonedSettings[ settingName ] = setting
 		}
 	})
-	return clonedObject
+	return clonedSettings
 }
 
-const resetObject = ({ objectToReset, objectToResetTo }) => {
-	Object.keys(objectToResetTo).forEach(key => objectToReset[ key ] = objectToResetTo[ key ])
+const resetSettings = ({ settingsToReset, settingsToResetTo }) => {
+	Object.keys(settingsToResetTo).forEach(key => settingsToReset[ key ] = settingsToResetTo[ key ])
 }
 
 const deeperPath = ({ settingsPath, settingName }) => {
@@ -47,13 +47,13 @@ const deeperPath = ({ settingsPath, settingName }) => {
 	return deeperPath
 }
 
-const accessChildObjectOrCreatePath = ({ parentObject, settingsPath }) => {
-	let childObject = parentObject
+const accessChildSettingOrCreatePath = ({ settingsRoot, settingsPath }) => {
+	let childSetting = settingsRoot
 	settingsPath.forEach(pathStep => {
-		if (!isDefined(childObject[ pathStep ])) childObject[ pathStep ] = {}
-		childObject = childObject[ pathStep ]
+		if (!isDefined(childSetting[ pathStep ])) childSetting[ pathStep ] = {}
+		childSetting = childSetting[ pathStep ]
 	})
-	return childObject
+	return childSetting
 }
 
 const defaultToTrue = setting => isDefined(setting) ? setting : true
@@ -69,9 +69,9 @@ export default {
 	wrappedIndex,
 	shallowEqual,
 	deepClone,
-	resetObject,
+	resetSettings,
 	deeperPath,
-	accessChildObjectOrCreatePath,
+	accessChildSettingOrCreatePath,
 	defaultToTrue,
 	isDefined,
 	settingIsDefinedOnSettings,

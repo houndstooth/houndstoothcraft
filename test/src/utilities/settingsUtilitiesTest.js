@@ -5,13 +5,13 @@ import defaultSettings from '../../../src/settings/defaultSettings'
 
 describe('settings utilities', () => {
 	describe('#prepareFunctionsPerSetting', () => {
-		let actualFunctionsArray, expectedObjectWithFunctions, objectWithFunctions
+		let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
 		let settingFunction, secondSettingFunction
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
 			settingFunction = p => p * 2
 			secondSettingFunction = p => p - 1
-			objectWithFunctions = {
+			settingsFunctions = {
 				childPathFirstStep: {
 					childPathSecondStep: {
 						childPathFinalStep: settingFunction,
@@ -25,9 +25,9 @@ describe('settings utilities', () => {
 			const settingsPath = undefined
 			const functionsArray = undefined
 
-			expectedObjectWithFunctions = codeUtilities.deepClone(objectWithFunctions)
+			expectedsettingsFunctions = codeUtilities.deepClone(settingsFunctions)
 			actualFunctionsArray = settingsUtilities.prepareFunctionsPerSetting({
-				objectWithFunctions,
+				settingsFunctions,
 				settingsPath,
 				functionsArray,
 			})
@@ -49,8 +49,8 @@ describe('settings utilities', () => {
 			expect(actualFunctionsArray).toEqual(expectedFunctionsArray)
 		})
 
-		it('does not modify the object it gets the functions from', () => {
-			expect(objectWithFunctions).toEqual(expectedObjectWithFunctions)
+		it('does not modify the settings functions', () => {
+			expect(settingsFunctions).toEqual(expectedsettingsFunctions)
 		})
 
 		it('errors if you have included anything that is not a function', () => {
@@ -158,72 +158,72 @@ describe('settings utilities', () => {
 		})
 	})
 
-	describe('#confirmSettingsObjectsParentIncludesOnlySettingsObjects', () => {
-		let confirmSettingsObjectsParentIncludesOnlySettingsObjects
+	describe('#confirmPatternHasNoNonSettings', () => {
+		let confirmPatternHasNoNonSettings
 		const base = {}
 		const animations = {}
 		const iterations = {}
-		const anInvalidSettingsObject = {}
+		const invalidSettings = {}
 		beforeEach(() => {
-			confirmSettingsObjectsParentIncludesOnlySettingsObjects = settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects
+			confirmPatternHasNoNonSettings = settingsUtilities.confirmPatternHasNoNonSettings
 		})
 
-		it('returns true if the object contains only some subset of iterations, animations, and base settings objects', () => {
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({})).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ base })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ animations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ iterations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ base, animations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ base, iterations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ animations, iterations })).toBe(true)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
+		it('returns true if the pattern contains only some subset of the recognized settings', () => {
+			expect(confirmPatternHasNoNonSettings({})).toBe(true)
+			expect(confirmPatternHasNoNonSettings({ base })).toBe(true)
+			expect(confirmPatternHasNoNonSettings({ animations })).toBe(true)
+			expect(confirmPatternHasNoNonSettings({ iterations })).toBe(true)
+			expect(confirmPatternHasNoNonSettings({ base, animations })).toBe(true)
+			expect(confirmPatternHasNoNonSettings({ base, iterations })).toBe(true)
+			expect(confirmPatternHasNoNonSettings({ animations, iterations })).toBe(true)
+			expect(confirmPatternHasNoNonSettings({
 				base,
 				animations,
 				iterations,
 			})).toBe(true)
 		})
 
-		it('logs an error if the object contains anything other than one of these three settings objects', () => {
+		it('logs an error if the pattern contains anything other than one of these three recognized settings', () => {
 			spyOn(consoleWrapper, 'error')
 
-			confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject: {} })
+			confirmPatternHasNoNonSettings({ invalidSettings: {} })
 
-			expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: anInvalidSettingsObject')
+			expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: invalidSettings')
 		})
 
-		it('returns false, even if the object contains some or all of the three settings objects in addition to an invalid one', () => {
+		it('returns false, even if the pattern contains some or all of the three recognized settings in addition to an invalid one', () => {
 			spyOn(consoleWrapper, 'error')
 
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({ anInvalidSettingsObject })).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({ invalidSettings })).toBe(false)
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				base,
 			})).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				animations,
 			})).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				iterations,
 			})).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				base,
 				animations,
 			})).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				base,
 				iterations,
 			})).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				animations,
 				iterations,
 			})).toBe(false)
-			expect(confirmSettingsObjectsParentIncludesOnlySettingsObjects({
-				anInvalidSettingsObject,
+			expect(confirmPatternHasNoNonSettings({
+				invalidSettings,
 				base,
 				animations,
 				iterations,

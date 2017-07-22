@@ -135,7 +135,7 @@ describe('setup', () => {
 		setup.__ResetDependency__('setupCanvas')
 	})
 
-	describe('when there are non-settings objects', () => {
+	describe('when there are non-settings', () => {
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
 			spyOn(settingsUtilities, 'applyOverrides')
@@ -144,7 +144,7 @@ describe('setup', () => {
 		describe('on an effect', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				setup({ effects: [ { yikes: {} } ] })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
 		})
@@ -152,7 +152,7 @@ describe('setup', () => {
 		describe('on the overrides', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				setup({ overrides: { yikes: {} } })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
 		})
@@ -161,7 +161,7 @@ describe('setup', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				defaultSettings.yikes = {}
 				setup({ base: {} })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
 		})
@@ -170,7 +170,7 @@ describe('setup', () => {
 			it('does not proceed to merge any settings onto the global spot', () => {
 				currentState.settings.yikes = {}
 				setup({ base: {} })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('Unknown settings object: yikes')
+				expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: yikes')
 				expect(settingsUtilities.applyOverrides).not.toHaveBeenCalled()
 			})
 		})

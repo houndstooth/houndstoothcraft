@@ -8,27 +8,27 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 
 	if (
 		!combinedEffects ||
-		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(currentState.settings) ||
-		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(overrides) ||
-		!settingsUtilities.confirmSettingsObjectsParentIncludesOnlySettingsObjects(defaultSettings)
+		!settingsUtilities.confirmPatternHasNoNonSettings(currentState.settings) ||
+		!settingsUtilities.confirmPatternHasNoNonSettings(overrides) ||
+		!settingsUtilities.confirmPatternHasNoNonSettings(defaultSettings)
 	) {
 		return
 	}
 
-	setupObject({
+	setupSettings({
 		defaults: defaultSettings.base,
-		objectToSetup: currentState.settings.base,
+		settingsToSetup: currentState.settings.base,
 		effects: combinedEffects.base,
 		overrides: overrides.base,
 	})
-	setupObject({
-		objectToSetup: currentState.settings.iterations,
+	setupSettings({
+		settingsToSetup: currentState.settings.iterations,
 		defaults: defaultSettings.iterations,
 		effects: combinedEffects.iterations,
 		overrides: overrides.iterations,
 	})
-	setupObject({
-		objectToSetup: currentState.settings.animations,
+	setupSettings({
+		settingsToSetup: currentState.settings.animations,
 		defaults: defaultSettings.animations,
 		effects: combinedEffects.animations,
 		overrides: overrides.animations,
@@ -39,18 +39,18 @@ export default ({ effects = [], settingsLogging, overrides = {} } = {}) => {
 	if (settingsLogging) consoleWrapper.log(currentState.settings)
 }
 
-const setupObject = ({ objectToSetup, defaults, effects, overrides }) => {
-	Object.keys(objectToSetup).forEach(key => delete objectToSetup[ key ])
+const setupSettings = ({ settingsToSetup, defaults, effects, overrides }) => {
+	Object.keys(settingsToSetup).forEach(key => delete settingsToSetup[ key ])
 	settingsUtilities.applyOverrides({
-		settingsWithSettingsToBeOverridden: objectToSetup,
+		settingsWithSettingsToBeOverridden: settingsToSetup,
 		settingsWithSettingsOverrides: defaults,
 	})
 	settingsUtilities.applyOverrides({
-		settingsWithSettingsToBeOverridden: objectToSetup,
+		settingsWithSettingsToBeOverridden: settingsToSetup,
 		settingsWithSettingsOverrides: effects,
 	})
 	settingsUtilities.applyOverrides({
-		settingsWithSettingsToBeOverridden: objectToSetup,
+		settingsWithSettingsToBeOverridden: settingsToSetup,
 		settingsWithSettingsOverrides: overrides,
 	})
 }
@@ -60,11 +60,11 @@ const combineEffects = ({ effects }) => {
 	const iterations = {}
 	const animations = {}
 
-	const { applyOverrides, confirmSettingsObjectsParentIncludesOnlySettingsObjects } = settingsUtilities
+	const { applyOverrides, confirmPatternHasNoNonSettings } = settingsUtilities
 
 	let anyIssues = false
 	effects.forEach(effect => {
-		if (!confirmSettingsObjectsParentIncludesOnlySettingsObjects(effect)) {
+		if (!confirmPatternHasNoNonSettings(effect)) {
 			anyIssues = true
 			return
 		}

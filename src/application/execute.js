@@ -12,12 +12,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	if (animating) {
 		execute = executeAnimation
 		animationFunctions = settingsUtilities.prepareFunctionsPerSetting({
-			objectWithFunctions: currentState.settings.animations,
+			settingsFunctions: currentState.settings.animations,
 		})
 	}
 	if (iterating) {
 		iterationFunctions = settingsUtilities.prepareFunctionsPerSetting({
-			objectWithFunctions: currentState.settings.iterations,
+			settingsFunctions: currentState.settings.iterations,
 		})
 	}
 
@@ -50,14 +50,14 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	}
 }
 
-const callFunctionsPerSetting = ({ functionObjects }) => {
-	functionObjects.forEach(functionObject => {
-		const { settingsPath, settingName, fn } = functionObject
-		let settingsObjectToCallFunctionOn = codeUtilities.accessChildObjectOrCreatePath({
-			parentObject: currentState.settings.base,
+const callFunctionsPerSetting = ({ settingsFunctions }) => {
+	settingsFunctions.forEach(settingsFunction => {
+		const { settingsPath, settingName, fn } = settingsFunction
+		let settingsWithSettingToCallFunctionOn = codeUtilities.accessChildSettingOrCreatePath({
+			settingsRoot: currentState.settings.base,
 			settingsPath,
 		})
-		settingsObjectToCallFunctionOn[ settingName ] = fn(settingsObjectToCallFunctionOn[ settingName ])
+		settingsWithSettingToCallFunctionOn[ settingName ] = fn(settingsWithSettingToCallFunctionOn[ settingName ])
 	})
 }
 
@@ -69,7 +69,7 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 		if (n >= startIterationFrame) {
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
-		callFunctionsPerSetting({ functionObjects: iterationFunctions })
+		callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
 		currentState.iterationFrame++
 	}
 	currentState.iterationFrame = 0
@@ -85,7 +85,7 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 }
 
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
-	const { deepClone, resetObject, defaultToTrue } = codeUtilities
+	const { deepClone, resetSettings, defaultToTrue } = codeUtilities
 
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = currentState.settings.base.animation || {}
 	startAnimationFrame = startAnimationFrame || 0
@@ -102,7 +102,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 			if (iterating) {
 				const preIterationSettings = deepClone(currentState.settings.base)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				resetObject({ objectToReset: currentState.settings.base, objectToResetTo: preIterationSettings })
+				resetSettings({ settingsToReset: currentState.settings.base, settingsToResetTo: preIterationSettings })
 			}
 			else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
@@ -111,7 +111,7 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 			if (exportFrames) exportFrame()
 		}
 
-		callFunctionsPerSetting({ functionObjects: animationFunctions })
+		callFunctionsPerSetting({ settingsFunctions: animationFunctions })
 		currentState.animationFrame++
 	}
 

@@ -3,22 +3,22 @@ import codeUtilities from './codeUtilities'
 import registeredSettings from '../settings/registeredSettings'
 import defaultSettings from '../settings/defaultSettings'
 
-const SETTINGS_OBJECT_NAMES = [ 'base', 'animations', 'iterations' ]
+const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
 
-const prepareFunctionsPerSetting = ({ objectWithFunctions, settingsPath = [], functionsArray = [] }) => {
-	Object.entries(objectWithFunctions).forEach(([ key, value ]) => {
+const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
+	Object.entries(settingsFunctions).forEach(([ key, value ]) => {
 		if (typeof value === 'function') {
 			functionsArray.push({ fn: value, settingsPath, settingName: key })
 		}
 		else if (typeof value === 'object' && !(value instanceof Array)) {
 			prepareFunctionsPerSetting({
-				objectWithFunctions: value,
+				settingsFunctions: value,
 				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName: key }),
 				functionsArray,
 			})
 		}
 		else {
-			consoleWrapper.error(`This object is supposed to be an object whose structure matches that of the base settings, and whose leaf values are functions to be applied to those settings on each animation / iteration frame. However, you have provided a non-function ${value} at path ${settingsPath} ${key}`)
+			consoleWrapper.error(`These settings should map onto base settings, and be functions to call for them each animation / iteration frame. However, you have provided a non-function ${value} at path ${settingsPath} ${key}`)
 		}
 	})
 	return functionsArray
@@ -48,8 +48,8 @@ const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettin
 			})
 		}
 		else {
-			let settingsWithSettingToBeOverridden = codeUtilities.accessChildObjectOrCreatePath({
-				parentObject: settingsWithSettingsToBeOverridden,
+			let settingsWithSettingToBeOverridden = codeUtilities.accessChildSettingOrCreatePath({
+				settingsRoot: settingsWithSettingsToBeOverridden,
 				settingsPath,
 			})
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
@@ -58,32 +58,32 @@ const applyOverrides = ({ settingsWithSettingsToBeOverridden, settingsWithSettin
 }
 
 const getFromSettingsOrDefault = settingsPath => {
-	let childObject = currentState.settings
+	let childSetting = currentState.settings
 	let notThere
 	settingsPath.forEach(pathStep => {
 		if (notThere) return
-		if (!codeUtilities.isDefined(childObject[ pathStep ])) {
-			childObject = undefined
+		if (!codeUtilities.isDefined(childSetting[ pathStep ])) {
+			childSetting = undefined
 			notThere = true
 			return
 		}
-		childObject = childObject[ pathStep ]
+		childSetting = childSetting[ pathStep ]
 	})
 
 	let setting
-	if (codeUtilities.isDefined(childObject)) {
-		setting = codeUtilities.accessChildObjectOrCreatePath({ parentObject: currentState.settings, settingsPath })
+	if (codeUtilities.isDefined(childSetting)) {
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: currentState.settings, settingsPath })
 	}
 	else {
-		setting = codeUtilities.accessChildObjectOrCreatePath({ parentObject: defaultSettings, settingsPath })
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: defaultSettings, settingsPath })
 	}
 	return setting
 }
 
-const confirmSettingsObjectsParentIncludesOnlySettingsObjects = (settingsObjectParent) => {
-	return Object.keys(settingsObjectParent).every(key => {
-		if (!SETTINGS_OBJECT_NAMES.includes(key)) {
-			consoleWrapper.error(`Unknown settings object: ${key}`)
+const confirmPatternHasNoNonSettings = pattern => {
+	return Object.keys(pattern).every(key => {
+		if (!RECOGNIZED_PATTERN_SETTINGS.includes(key)) {
+			consoleWrapper.error(`Attempted to add unrecognized settings to pattern: ${key}`)
 			return false
 		}
 		return true
@@ -94,5 +94,5 @@ export default {
 	prepareFunctionsPerSetting,
 	applyOverrides,
 	getFromSettingsOrDefault,
-	confirmSettingsObjectsParentIncludesOnlySettingsObjects,
+	confirmPatternHasNoNonSettings,
 }

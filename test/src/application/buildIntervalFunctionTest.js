@@ -7,7 +7,7 @@ describe('build animation function', () => {
 	let intervalFunction
 	let animationFunctionSpy, stopConditionSpy
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		spyOn(window, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy()
 		stopConditionSpy = jasmine.createSpy()

@@ -8,7 +8,7 @@ describe('grid', () => {
 	const gridSize = 2
 
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		tileSpy = jasmine.createSpy()
 		grid.__Rewire__('tile', tileSpy)
 	})

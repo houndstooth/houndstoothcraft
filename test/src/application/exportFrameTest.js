@@ -7,7 +7,7 @@ import initialState from '../../../src/state/initialState'
 
 describe('export frame', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		store.currentState.lastSavedAnimationFrame = 666
 		spyOn(canvas, 'toBlob').and.callFake(
 			callTheFunctionThrough => callTheFunctionThrough()

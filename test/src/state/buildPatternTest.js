@@ -8,7 +8,7 @@ import initialState from '../../../src/state/initialState'
 
 describe('buildPattern', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 	})
 
 	it('logs the pattern when logging mode is on', () => {

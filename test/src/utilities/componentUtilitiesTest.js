@@ -11,7 +11,7 @@ describe('component utilities', () => {
 	let settings
 	const address = [ 3, 5 ]
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		buildPattern()
 		getSetForTile = componentUtilities.getSetForTile
 	})

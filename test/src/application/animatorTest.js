@@ -9,7 +9,7 @@ describe('animator', () => {
 	let animationFunction, frameRate, stopCondition
 	let interval
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 
 		interval = () => {}
 		spyOn(window, 'setInterval').and.returnValue(interval)

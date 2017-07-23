@@ -6,7 +6,7 @@ import initialState from '../../../src/state/initialState'
 describe('gather options', () => {
 	let address
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		address = [ 3, 5 ]
 	})
 

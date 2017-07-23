@@ -7,7 +7,7 @@ import initialState from '../../../src/state/initialState'
 
 describe('color utilities', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		buildPattern()
 	})
 

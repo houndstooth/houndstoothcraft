@@ -9,7 +9,7 @@ describe('execute', () => {
 	let iterating, animating, exportFrames, performanceLogging
 	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState)
+		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		buildPattern()
 
 		iterating = undefined

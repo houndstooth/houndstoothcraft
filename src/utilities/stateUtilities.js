@@ -3,8 +3,7 @@ import codeUtilities from './codeUtilities'
 import patternStructure from '../state/patternStructure'
 import houndstoothDefaults from '../state/houndstoothDefaults'
 import store from '../../store'
-
-const RECOGNIZED_HOUNDSTOOTH_PATTERNS = [ 'basePattern', 'animationsPattern', 'iterationsPattern' ]
+import houndstoothStructure from '../state/houndstoothStructure'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {
@@ -83,9 +82,9 @@ const getFromMainHoundstoothOrDefault = settingsPath => {
 }
 
 const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
-	return Object.keys(houndstooth).every(pattern => {
-		if (!RECOGNIZED_HOUNDSTOOTH_PATTERNS.includes(pattern)) {
-			consoleWrapper.error(`attempted to compose a houndstooth with an unrecognized pattern: ${pattern}`)
+	return Object.keys(houndstooth).every(patternName => {
+		if (!Object.keys(houndstoothStructure.HOUNDSTOOTH_STRUCTURE).includes(patternName)) {
+			consoleWrapper.error(`attempted to compose a houndstooth with an unrecognized pattern: ${patternName}`)
 			return false
 		}
 		return true

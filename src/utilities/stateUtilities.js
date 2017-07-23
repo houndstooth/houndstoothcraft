@@ -1,6 +1,6 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
-import recognizedSettings from '../state/recognizedSettings'
+import patternStructure from '../state/patternStructure'
 import patternDefaults from '../state/patternDefaults'
 import store from '../../store'
 
@@ -26,18 +26,18 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 	return functionsArray
 }
 
-const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath = [], settingsRecognizedCheck = recognizedSettings }) => {
+const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE }) => {
 	if (!settingsToMerge) return
 	Object.entries(settingsToMerge).forEach(([ settingName, overridingSetting ]) => {
-		let deeperSettingsRecognizedCheck
+		let deeperPatternStructureChecker
 		if (codeUtilities.settingIsDefinedOnSettings({
 			settingName,
-			settingsMaybeWithSetting: settingsRecognizedCheck,
+			settingsMaybeWithSetting: patternStructureChecker,
 		})) {
-			deeperSettingsRecognizedCheck = settingsRecognizedCheck[ settingName ]
+			deeperPatternStructureChecker = patternStructureChecker[ settingName ]
 		}
 		else {
-			consoleWrapper.error(`Attempt to apply unknown settings: ${settingsPath.join('.')}.${settingName}`)
+			consoleWrapper.error(`Attempted to add a setting to the pattern which is unrecognized in the pattern structure: ${settingsPath.join('.')}.${settingName}`)
 			return
 		}
 
@@ -46,7 +46,7 @@ const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath =
 				settingsToBeMergedOnto,
 				settingsToMerge: overridingSetting,
 				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
-				settingsRecognizedCheck: deeperSettingsRecognizedCheck,
+				patternStructureChecker: deeperPatternStructureChecker,
 			})
 		}
 		else {

@@ -1,4 +1,4 @@
-export default {
+const PATTERN_STRUCTURE = {
 	viewSettings: {
 		canvasSize: true,
 		zoom: true,
@@ -73,3 +73,5 @@ export default {
 		endIterationFrame: true,
 	},
 }
+
+export default { PATTERN_STRUCTURE }

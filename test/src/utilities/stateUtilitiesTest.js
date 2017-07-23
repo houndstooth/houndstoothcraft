@@ -109,7 +109,7 @@ describe('state utilities', () => {
 			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsToBeMergedOnto)
 		})
 
-		it('errors when attempting to add a setting that is not recognized as a houndstooth setting, and does not add it', () => {
+		it('errors when attempting to add a setting that is not recognized in the pattern structure, and does not add it', () => {
 			spyOn(consoleWrapper, 'error')
 			const settingsToBeMergedOnto = {}
 			const settingsToMerge = {
@@ -131,7 +131,7 @@ describe('state utilities', () => {
 			const expectedSettingsWithSettingsOverridden = {}
 			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsToBeMergedOnto)
 			expect(consoleWrapper.error).toHaveBeenCalledWith(
-				'Attempt to apply unknown settings: colorSettings.assignment.probablyAnAccident'
+				'Attempted to add a setting to the pattern which is unrecognized in the pattern structure: colorSettings.assignment.probablyAnAccident'
 			)
 		})
 	})

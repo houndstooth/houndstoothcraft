@@ -38,7 +38,7 @@ describe('stripe utilities', () => {
 		it('uses a stripe count if provided', () => {
 			store.currentState.mainHoundstooth.basePattern.stripeSettings = {
 				stripePositionSettings: {
-					stripeCount: 3,
+					stripeCountSetting: 3,
 				},
 			}
 			const stripePositions = perStripe({

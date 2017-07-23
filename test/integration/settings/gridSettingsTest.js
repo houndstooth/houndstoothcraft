@@ -139,7 +139,7 @@ describe('.gridSettings', () => {
 
 	describe('.includeNegativeQuadrants', () => {
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
-			const tileSize = 50
+			const tileSizeSetting = 50
 			composeMainHoundstooth({
 				houndstoothEffects: [],
 				houndstoothOverrides: {
@@ -149,7 +149,7 @@ describe('.gridSettings', () => {
 							centerViewOnCenterOfTileAtZeroZeroAddress: true,
 						},
 						tileSettings: {
-							tileSize,
+							tileSizeSetting,
 						},
 						gridSettings: {
 							gridSize: 1,
@@ -162,15 +162,15 @@ describe('.gridSettings', () => {
 			execute()
 
 			const tiles = [
-				{ baseId: 0, originInPixels: [ 125, 125 ], tileSizeInPixels: tileSize, colors: [ TRANSPARENT, BLACK ] },
+				{ baseId: 0, originInPixels: [ 125, 125 ], tileSizeInPixels: tileSizeSetting, colors: [ TRANSPARENT, BLACK ] },
 				{
 					baseId: 8,
 					originInPixels: [ 75, 125 ],
-					tileSizeInPixels: tileSize,
+					tileSizeInPixels: tileSizeSetting,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
-				{ baseId: 24, originInPixels: [ 75, 75 ], tileSizeInPixels: tileSize, colors: [ BLACK, TRANSPARENT ] },
-				{ baseId: 16, originInPixels: [ 125, 75 ], tileSizeInPixels: tileSize, colors: [ BLACK, BLACK ] },
+				{ baseId: 24, originInPixels: [ 75, 75 ], tileSizeInPixels: tileSizeSetting, colors: [ BLACK, TRANSPARENT ] },
+				{ baseId: 16, originInPixels: [ 125, 75 ], tileSizeInPixels: tileSizeSetting, colors: [ BLACK, BLACK ] },
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 		})

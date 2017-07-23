@@ -26,7 +26,7 @@ const HOUNDSTOOTH_DEFAULTS = {
 			gridSize: GRID_SIZE,
 		},
 		tileSettings: {
-			tileSize: TILE_SIZE,
+			tileSizeSetting: TILE_SIZE,
 		},
 		colorSettings: {
 			set: COLOR_SET,
@@ -35,7 +35,7 @@ const HOUNDSTOOTH_DEFAULTS = {
 		},
 		stripeSettings: {
 			stripePositionSettings: {
-				stripeCount: STRIPE_COUNT,
+				stripeCountSetting: STRIPE_COUNT,
 			},
 			baseStripeDiagonal: BASE_STRIPE_DIAGONAL,
 		},

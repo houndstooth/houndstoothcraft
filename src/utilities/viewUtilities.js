@@ -40,8 +40,8 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ zoomedAndScrolledTileOrigin
 	const canvasSize = store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
-	const tileSize = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSize
-	const halfTileSize = tileSize / 2
+	const tileSizeSetting = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+	const halfTileSize = tileSizeSetting / 2
 
 	return [
 		zoomedAndScrolledTileOrigin[ 0 ] + canvasCenter - halfTileSize,

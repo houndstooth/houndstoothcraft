@@ -7,14 +7,14 @@ import { BLACK, TRANSPARENT } from '../../../src/constants'
 import context from '../../../src/render/context'
 
 describe('.tileSettings', () => {
-	describe('.tileSize', () => {
+	describe('.tileSizeSetting', () => {
 		it('adjusts the size in pixels of each tile', () => {
 			composeMainHoundstooth({
 				houndstoothEffects: [],
 				houndstoothOverrides: {
 					basePattern: {
 						tileSettings: {
-							tileSize: 30,
+							tileSizeSetting: 30,
 						},
 					},
 				},
@@ -42,7 +42,7 @@ describe('.tileSettings', () => {
 								zoom: 3,
 							},
 							tileSettings: {
-								tileSize: 30,
+								tileSizeSetting: 30,
 							},
 						},
 					},

@@ -73,7 +73,7 @@ describe('view utilities', () => {
 					zoom,
 					canvasSize,
 				}
-				store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSize }
+				store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
 			})
 
 			it('adjusts per the zoom, tile, and canvas size', () => {

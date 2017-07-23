@@ -12,7 +12,7 @@ describe('standard houndstooth pattern', () => {
 
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
 		composeMainHoundstooth({ houndstoothEffects: [] })
-		const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSize
+		const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 		activateTestMarkerCanvas()
 
 		execute()

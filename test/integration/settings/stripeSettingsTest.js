@@ -64,7 +64,7 @@ describe('.stripeSettings', () => {
 			})
 		})
 
-		describe('.stripeCount', () => {
+		describe('.stripeCountSetting', () => {
 			it('changes the number of stripes in striped tiles', () => {
 				composeMainHoundstooth({
 					houndstoothEffects: [],
@@ -73,7 +73,7 @@ describe('.stripeSettings', () => {
 							gridSettings: { gridSize: 2 },
 							stripeSettings: {
 								stripePositionSettings: {
-									stripeCount: 5,
+									stripeCountSetting: 5,
 								},
 							},
 						},
@@ -195,7 +195,7 @@ describe('.stripeSettings', () => {
 			execute()
 
 			let originInPixels
-			const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSize
+			const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 
 			originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

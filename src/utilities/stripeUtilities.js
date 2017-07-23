@@ -13,7 +13,7 @@ const standardStripePositions = () => perStripe({ getStripePosition: standardStr
 const standardStripePosition = ({ stripeIndex, stripeCount }) => stripeIndex / stripeCount
 
 const perStripe = ({ getStripePosition }) => {
-	const stripeCount = store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCount
+	const stripeCount = store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCountSetting
 	return codeUtilities.iterator(stripeCount).map(stripeIndex => {
 		return getStripePosition({ stripeIndex, stripeCount }) * PERIMETER_SCALAR
 	})

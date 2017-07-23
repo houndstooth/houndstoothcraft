@@ -82,7 +82,7 @@ attempted to compose a pattern with an unrecognized setting
 	- `animationSettings`
 	- `iterationSettings`
 - contents — all [settings](#setting)
-	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSize` or `stripeCount`.
+	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSizeSetting` or `zoomOnCanvasCenter`.
 
 The key difference between a [pattern](#pattern) and a setting:
 

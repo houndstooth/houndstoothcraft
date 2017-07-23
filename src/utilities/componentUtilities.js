@@ -76,7 +76,7 @@ const rotateShapeAboutShapeCenter = ({ coordinates, zoomedAndScrolledTileOrigin,
 }
 
 const getStandardTileOriginAndSize = ({ address }) => {
-	const tileSize = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSize
+	const tileSize = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	return {
 		tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ],
 		tileSize,

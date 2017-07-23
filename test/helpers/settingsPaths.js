@@ -1,7 +1,7 @@
-const STRIPE_COUNT = [ 'stripeSettings', 'stripePositionSettings', 'stripeCount' ]
+const STRIPE_COUNT = [ 'stripeSettings', 'stripePositionSettings', 'stripeCountSetting' ]
 const ZOOM = [ 'viewSettings', 'zoom' ]
 const CANVAS_SIZE = [ 'viewSettings', 'canvasSize' ]
-const TILE_SIZE = [ 'tileSettings', 'tileSize' ]
+const TILE_SIZE = [ 'tileSettings', 'tileSizeSetting' ]
 const GRID_SIZE = [ 'gridSettings', 'gridSize' ]
 const OPACITY = [ 'colorSettings', 'opacity' ]
 

@@ -363,29 +363,29 @@ describe('component utilities', () => {
 
 	describe('#getTileOriginAndSize', () => {
 		const address = [ 7, 11 ]
-		const tileSize = 40
+		const tileSizeSetting = 40
 		let getTileOriginAndSize
 		beforeEach(() => getTileOriginAndSize = componentUtilities.getTileOriginAndSize)
 
 		it('returns the tile size, and scales the address by it to get the origin', () => {
-			store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSize }
+			store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting }
 
 			expect(getTileOriginAndSize({ address })).toEqual({
-				tileSize,
-				tileOrigin: [ 7 * tileSize, 11 * tileSize ],
+				tileSize: tileSizeSetting,
+				tileOrigin: [ 7 * tileSizeSetting, 11 * tileSizeSetting ],
 			})
 		})
 
 		it('uses a custom get tile origin and sized unit function if provided', () => {
 			const custom = ({ address }) => ({
-				tileSize: tileSize * tileSize,
-				tileOrigin: [ address[ 1 ] * tileSize, address[ 0 ] * tileSize ],
+				tileSize: tileSizeSetting * tileSizeSetting,
+				tileOrigin: [ address[ 1 ] * tileSizeSetting, address[ 0 ] * tileSizeSetting ],
 			})
 			store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize = custom
 
 			expect(getTileOriginAndSize({ address })).toEqual({
-				tileSize: tileSize * tileSize,
-				tileOrigin: [ 11 * tileSize, 7 * tileSize ],
+				tileSize: tileSizeSetting * tileSizeSetting,
+				tileOrigin: [ 11 * tileSizeSetting, 7 * tileSizeSetting ],
 			})
 		})
 	})

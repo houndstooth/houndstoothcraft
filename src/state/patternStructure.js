@@ -11,7 +11,7 @@ const PATTERN_STRUCTURE = {
 		includeNegativeQuadrants: true,
 	},
 	tileSettings: {
-		tileSize: true,
+		tileSizeSetting: true,
 		getTileOriginAndSize: true,
 		collapseSameColoredShapesWithinTile: true,
 		isTileUniform: true,
@@ -52,7 +52,7 @@ const PATTERN_STRUCTURE = {
 	stripeSettings: {
 		stripePositionSettings: {
 			stripeCountMode: true,
-			stripeCount: true,
+			stripeCountSetting: true,
 			ginghamChevronContinuumSettings: {
 				initialStripeCount: true,
 				deltaStripeCount: true,

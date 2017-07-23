@@ -13,7 +13,7 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import initialState from '../../../src/state/initialState'
 
 describe('.viewSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeSetting = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
 	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
 
 	describe('.canvasSize', () => {
@@ -60,26 +60,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				originInPixels: [ 0 * zoom * tileSize, 0 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 0 * zoom * tileSizeSetting, 0 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ TRANSPARENT, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				originInPixels: [ 1 * zoom * tileSize, 0 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 1 * zoom * tileSizeSetting, 0 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				originInPixels: [ 0 * zoom * tileSize, 1 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 0 * zoom * tileSizeSetting, 1 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ BLACK, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				originInPixels: [ 1 * zoom * tileSize, 1 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 1 * zoom * tileSizeSetting, 1 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 		})
@@ -106,26 +106,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				originInPixels: [ 3 * zoom * tileSize, 3 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 3 * zoom * tileSizeSetting, 3 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				originInPixels: [ 3 * zoom * tileSize, 4 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 3 * zoom * tileSizeSetting, 4 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				originInPixels: [ 4 * zoom * tileSize, 3 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 4 * zoom * tileSizeSetting, 3 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				originInPixels: [ 4 * zoom * tileSize, 4 * zoom * tileSize ],
-				tileSizeInPixels: zoom * tileSize,
+				originInPixels: [ 4 * zoom * tileSizeSetting, 4 * zoom * tileSizeSetting ],
+				tileSizeInPixels: zoom * tileSizeSetting,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 		})
@@ -133,12 +133,12 @@ describe('.viewSettings', () => {
 
 	describe('.centerViewOnCenterOfTileAtZeroZeroAddress', () => {
 		it('is self-explanatory', () => {
-			const tileSize = 100
+			const tileSizeSetting = 100
 			composeMainHoundstooth({
 				houndstoothEffects: [],
 				houndstoothOverrides: {
 					basePattern: {
-						tileSettings: { tileSize },
+						tileSettings: { tileSizeSetting },
 						viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
 						gridSettings: { gridSize: 2 },
 					},
@@ -186,7 +186,7 @@ describe('.viewSettings', () => {
 							rotateViewAboutCanvasCenter: Math.PI / 2,
 						},
 						tileSettings: {
-							tileSize,
+							tileSizeSetting,
 						},
 						gridSettings: {
 							gridSize: 2,
@@ -202,7 +202,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 1,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 3,
 				n: 4,
@@ -212,7 +212,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 2,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 1,
 				n: 4,
@@ -221,7 +221,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 3,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 2,
 				n: 4,
@@ -230,7 +230,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 4,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 3,
 				n: 4,
@@ -240,7 +240,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 5,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 0,
 				n: 4,
@@ -249,7 +249,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 6,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 1,
 				n: 4,
@@ -258,7 +258,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 7,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 2,
 				n: 4,
@@ -268,7 +268,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 8,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 0,
 				n: 4,
@@ -281,7 +281,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 9,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 3,
 				n: 4,
@@ -291,7 +291,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 10,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 1,
 				n: 4,
@@ -300,7 +300,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 11,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 2,
 				n: 4,
@@ -309,7 +309,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 12,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 3,
 				n: 4,
@@ -319,7 +319,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 13,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 0,
 				n: 4,
@@ -328,7 +328,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 14,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 1,
 				n: 4,
@@ -337,7 +337,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 15,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 2,
 				n: 4,
@@ -347,7 +347,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 16,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 0,
 				n: 4,
@@ -359,7 +359,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 17,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 3,
 				n: 4,
@@ -369,7 +369,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 18,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 1,
 				n: 4,
@@ -378,7 +378,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 19,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 2,
 				n: 4,
@@ -387,7 +387,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 20,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 3,
 				n: 4,
@@ -397,7 +397,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 21,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 0,
 				n: 4,
@@ -406,7 +406,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 22,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 1,
 				n: 4,
@@ -415,7 +415,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 23,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 2,
 				n: 4,
@@ -425,7 +425,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 24,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 0,
 				n: 4,
@@ -438,7 +438,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 25,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 3,
 				n: 4,
@@ -448,7 +448,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 26,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 0,
 				y: 1,
 				n: 4,
@@ -457,7 +457,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 27,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 2,
 				n: 4,
@@ -466,7 +466,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 28,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 3,
 				n: 4,
@@ -476,7 +476,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 29,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 1,
 				y: 0,
 				n: 4,
@@ -485,7 +485,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 30,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 2,
 				y: 1,
 				n: 4,
@@ -494,7 +494,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 31,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 2,
 				n: 4,
@@ -504,7 +504,7 @@ describe('.viewSettings', () => {
 			expect(tileSectorCenterIsColor({
 				id: 32,
 				originInPixels,
-				tileSizeInPixels: tileSize,
+				tileSizeInPixels: tileSizeSetting,
 				x: 3,
 				y: 0,
 				n: 4,

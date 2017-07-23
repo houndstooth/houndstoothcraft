@@ -293,7 +293,9 @@ describe('component utilities', () => {
 		describe('basePattern stripe diagonal', () => {
 			describe('when principal', () => {
 				beforeEach(() => {
-					store.currentState.mainHoundstooth.basePattern.baseStripeDiagonal = 'PRINCIPAL'
+					store.currentState.mainHoundstooth.basePattern.stripeSettings = {
+						baseStripeDiagonal: 'PRINCIPAL',
+					}
 				})
 
 				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
@@ -379,7 +381,7 @@ describe('component utilities', () => {
 				tileSize: tileSize * tileSize,
 				tileOrigin: [ address[ 1 ] * tileSize, address[ 0 ] * tileSize ],
 			})
-			store.currentState.mainHoundstooth.basePattern.getTileOriginAndSize = custom
+			store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize = custom
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize: tileSize * tileSize,

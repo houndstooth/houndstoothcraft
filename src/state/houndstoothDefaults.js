@@ -33,10 +33,12 @@ const HOUNDSTOOTH_DEFAULTS = {
 			assignment: COLOR_ASSIGNMENT,
 			opacity: OPACITY,
 		},
-		stripeCountSettings: {
-			stripeCount: STRIPE_COUNT,
+		stripeSettings: {
+			stripePositionSettings: {
+				stripeCount: STRIPE_COUNT,
+			},
+			baseStripeDiagonal: BASE_STRIPE_DIAGONAL,
 		},
-		baseStripeDiagonal: BASE_STRIPE_DIAGONAL,
 		animationSettings: {
 			frameRate: FRAME_RATE,
 		},

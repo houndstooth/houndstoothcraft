@@ -78,12 +78,11 @@ attempted to compose a pattern with an unrecognized setting
 	- `gridSettings`
 	- `viewSettings`
 	- `tileSettings`
-	- `stripeCountSettings`
+	- `stripeSettings`
 	- `animationSettings`
 	- `iterationSettings`
-	- `baseStripeDiagonal`
 - contents — all [settings](#setting)
-	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSize` or `stripeCount`. One can see that there are even leaves at the root, such as `baseStripeDiagonal`.
+	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSize` or `stripeCount`.
 
 The key difference between a [pattern](#pattern) and a setting:
 

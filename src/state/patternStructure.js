@@ -12,6 +12,7 @@ const PATTERN_STRUCTURE = {
 	},
 	tileSettings: {
 		tileSize: true,
+		getTileOriginAndSize: true,
 		collapseSameColoredShapesWithinTile: true,
 		isTileUniform: true,
 		tileToShapes: true,
@@ -48,20 +49,21 @@ const PATTERN_STRUCTURE = {
 		},
 		opacity: true,
 	},
-	stripeCountSettings: {
-		stripeCountMode: true,
-		stripeCount: true,
-		ginghamChevronContinuum: {
-			initialStripeCount: true,
-			deltaStripeCount: true,
+	stripeSettings: {
+		stripePositionSettings: {
+			stripeCountMode: true,
+			stripeCount: true,
+			ginghamChevronContinuumSettings: {
+				initialStripeCount: true,
+				deltaStripeCount: true,
+			},
+			getStripePositions: true,
 		},
+		baseStripeDiagonal: true,
 	},
 	gatherOptions: {
 		getDazzle: true,
 	},
-	baseStripeDiagonal: true,
-	getTileOriginAndSize: true,
-	getStripePositions: true,
 	animationSettings: {
 		frameRate: true,
 		startAnimationFrame: true,

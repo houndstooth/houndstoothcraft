@@ -61,7 +61,7 @@ const switcherooSet = ({ setForTile, address }) => {
 }
 
 const rotateShapeAboutShapeCenter = ({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize }) => {
-	if (store.currentState.mainHoundstooth.basePattern.baseStripeDiagonal === 'PRINCIPAL') {
+	if (store.currentState.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: [
 				zoomedAndScrolledTileOrigin[ 0 ] + zoomedTileSize / 2,
@@ -84,7 +84,7 @@ const getStandardTileOriginAndSize = ({ address }) => {
 }
 
 const getTileOriginAndSize = ({ address }) => {
-	const getTileOriginAndSize = store.currentState.mainHoundstooth.basePattern.getTileOriginAndSize || getStandardTileOriginAndSize
+	const getTileOriginAndSize = store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize || getStandardTileOriginAndSize
 	return getTileOriginAndSize({ address })
 }
 

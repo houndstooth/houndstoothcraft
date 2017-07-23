@@ -22,7 +22,7 @@ describe('stripe utilities', () => {
 			const expectedStripePositions = []
 			const address = [ 3, 5 ]
 			let getStripePositionsSpy = jasmine.createSpy().and.returnValue(expectedStripePositions)
-			store.currentState.mainHoundstooth.basePattern.getStripePositions = getStripePositionsSpy
+			store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions = getStripePositionsSpy
 
 			const actualStripePositions = getStripePositionsForTile({ address })
 
@@ -36,10 +36,13 @@ describe('stripe utilities', () => {
 		beforeEach(() => perStripe = stripeUtilities.perStripe)
 
 		it('uses a stripe count if provided', () => {
-			store.currentState.mainHoundstooth.basePattern.stripeCountSettings = { stripeCount: 3 }
-			const stripePositions = perStripe({
-				getStripePosition: () => {
+			store.currentState.mainHoundstooth.basePattern.stripeSettings = {
+				stripePositionSettings: {
+					stripeCount: 3,
 				},
+			}
+			const stripePositions = perStripe({
+				getStripePosition: () => {},
 			})
 
 			expect(stripePositions.length).toBe(3)

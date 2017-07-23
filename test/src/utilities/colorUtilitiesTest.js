@@ -40,7 +40,11 @@ describe('color utilities', () => {
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
 			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
-			store.currentState.mainHoundstooth.basePattern.stripeCountSettings = { stripeCountMode: 'GINGHAM' }
+			store.currentState.mainHoundstooth.basePattern.stripeSettings = {
+				stripePositionSettings: {
+					stripeCountMode: 'GINGHAM',
+				},
+			}
 
 			const result = colorUtilities.getColorsForTile({ address: [] })
 

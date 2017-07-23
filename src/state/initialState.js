@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 		basePattern: {},
 		animationsPattern: {},
 		iterationsPattern: {},
-	}
+	},
 }
 
 export default { INITIAL_STATE }

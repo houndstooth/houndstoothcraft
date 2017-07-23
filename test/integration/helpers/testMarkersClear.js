@@ -1,5 +1,4 @@
 import testContext from './testMarkersContext'
-import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 

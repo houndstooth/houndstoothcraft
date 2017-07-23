@@ -1,4 +1,3 @@
-import store from '../../../store'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 

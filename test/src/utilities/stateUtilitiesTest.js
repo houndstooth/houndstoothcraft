@@ -1,7 +1,6 @@
 import stateUtilities from '../../../src/utilities/stateUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import houndstoothDefaults from '../../../src/state/houndstoothDefaults'
 import store from '../../../store'
 import initialState from '../../../src/state/initialState'
 

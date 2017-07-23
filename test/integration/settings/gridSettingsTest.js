@@ -3,7 +3,6 @@ import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../../src/constants'
-import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 

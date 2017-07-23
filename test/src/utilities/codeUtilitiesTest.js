@@ -50,19 +50,19 @@ describe('code utilities', () => {
 		let shallowEqual
 		beforeEach(() => shallowEqual = codeUtilities.shallowEqual)
 
-		it('returns true if two settings have identical key value pairs', () => {
+		it('returns true if two objects have identical key value pairs', () => {
 			const a = { r: 5, a: 0 }
 			const b = { r: 5, a: 0 }
 			expect(shallowEqual(a, b)).toBe(true)
 		})
 
-		it('returns false if two settings have different key counts', () => {
+		it('returns false if two objects have different key counts', () => {
 			const a = { r: 5, a: 0 }
 			const b = { r: 5, a: 0, yo: 'foo' }
 			expect(shallowEqual(a, b)).toBe(false)
 		})
 
-		it('returns false if two settings have different values for a key', () => {
+		it('returns false if two objects have different values for a key', () => {
 			const a = { r: 5, a: 0 }
 			const b = { r: 5, a: 1 }
 			expect(shallowEqual(a, b)).toBe(false)
@@ -70,66 +70,40 @@ describe('code utilities', () => {
 	})
 
 	describe('#deeperPath', () => {
-		it('does not mutate the passed settings path', () => {
-			const settingsPath = [ 'colorSettings', 'assignment' ]
-			const settingName = 'set'
+		it('does not mutate the passed objects path', () => {
+			const propertyPath = [ 'colorSettings', 'assignment' ]
+			const propertyName = 'set'
 
-			const deeperPath = codeUtilities.deeperPath({ settingsPath, settingName })
+			const deeperPath = codeUtilities.deeperPath({ propertyPath, propertyName })
 
 			expect(deeperPath).toEqual([ 'colorSettings', 'assignment', 'set' ])
-			expect(settingsPath).toEqual([ 'colorSettings', 'assignment' ])
+			expect(propertyPath).toEqual([ 'colorSettings', 'assignment' ])
 		})
 	})
 
-	describe('#resetSettings', () => {
-		it('reassigns each of the shallow keys', () => {
-			const settingsToReset = {
-				colorSettings: {
-					set: [ 0, 1 ],
-				},
-				someMode: 'COOLNESS',
-			}
-			const settingsToResetTo = {
-				someMode: 'OG_NESS',
-				foo: 'bar',
-			}
-
-			codeUtilities.resetSettings({ settingsToReset, settingsToResetTo })
-
-			const expectedSettings = {
-				colorSettings: {
-					set: [ 0, 1 ],
-				},
-				someMode: 'OG_NESS',
-				foo: 'bar',
-			}
-			expect(settingsToReset).toEqual(expectedSettings)
-		})
-	})
-
-	describe('#accessChildSettingOrCreatePath', () => {
-		it('accesses child setting if it exists', () => {
-			const expectedSettings = {}
-			const settingsRoot = {
+	describe('#accessChildPropertyOrCreatePath', () => {
+		it('accesses child property if it exists', () => {
+			const expectedProperty = {}
+			const objectWithProperties = {
 				childPathFirstStep: {
-					childPathSecondStep: expectedSettings,
+					childPathSecondStep: expectedProperty,
 				},
 			}
-			const settingsPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
 
-			const childSetting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot, settingsPath })
+			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
-			expect(childSetting).toBe(expectedSettings)
+			expect(childProperty).toBe(expectedProperty)
 		})
 
 		it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
-			const settingsRoot = {}
-			const settingsPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+			const objectWithProperties = {}
+			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
 
-			const childSetting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot, settingsPath })
+			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
-			expect(childSetting).toEqual({})
-			expect(settingsRoot).toEqual({
+			expect(childProperty).toEqual({})
+			expect(objectWithProperties).toEqual({
 				childPathFirstStep: {
 					childPathSecondStep: {},
 				},
@@ -137,17 +111,17 @@ describe('code utilities', () => {
 		})
 
 		it('does not override zeroes', () => {
-			const settingsRoot = {
+			const objectWithProperties = {
 				childPathFirstStep: {
 					childPathSecondStep: 0,
 				},
 			}
-			const settingsPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
 
-			const childSetting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot, settingsPath })
+			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
-			expect(childSetting).toBe(0)
-			expect(settingsRoot).toEqual({
+			expect(childProperty).toBe(0)
+			expect(objectWithProperties).toEqual({
 				childPathFirstStep: {
 					childPathSecondStep: 0,
 				},
@@ -156,59 +130,59 @@ describe('code utilities', () => {
 	})
 
 	describe('#deepClone', () => {
-		let actualSettings, originalSettings
+		let actualObject, originalObject
 		beforeEach(() => {
 			const anImmutableString = 'a string'
 			const anImmutableNumber = 9
 			const anImmutableFunction = p => p * 3
 			const aNull = null
 			const originalArray = [ 'a', 2, { what: 'ever' } ]
-			const originalDeepSetting = { deeperSetting: 'cool beans' }
-			const originalShallowSetting = { deepSetting: originalDeepSetting }
-			originalSettings = {
+			const originalDeepObject = { deeperObject: 'cool beans' }
+			const originalShallowObject = { deepObject: originalDeepObject }
+			originalObject = {
 				anImmutableString,
 				anImmutableNumber,
 				anImmutableFunction,
 				aNull,
 				anArray: originalArray,
-				shallowSetting: originalShallowSetting,
+				shallowObject: originalShallowObject,
 			}
 
-			actualSettings = codeUtilities.deepClone(originalSettings)
+			actualObject = codeUtilities.deepClone(originalObject)
 		})
 
 		it('deep clones settings, including strings', () => {
-			expect(actualSettings.anImmutableString).toBe(originalSettings.anImmutableString)
+			expect(actualObject.anImmutableString).toBe(originalObject.anImmutableString)
 		})
 
 		it('deep clones settings, including numbers', () => {
-			expect(actualSettings.anImmutableNumber).toBe(originalSettings.anImmutableNumber)
+			expect(actualObject.anImmutableNumber).toBe(originalObject.anImmutableNumber)
 		})
 
 		it('deep clones settings, including functions', () => {
-			expect(actualSettings.anImmutableFunction).toBe(originalSettings.anImmutableFunction)
+			expect(actualObject.anImmutableFunction).toBe(originalObject.anImmutableFunction)
 		})
 
 		it('deep clones settings, including nulls', () => {
-			expect(actualSettings.aNull).toBeNull()
+			expect(actualObject.aNull).toBeNull()
 		})
 
 		it('deep clones settings, including arrays', () => {
-			expect(actualSettings.anArray).not.toBe(originalSettings.anArray)
-			expect(actualSettings.anArray).toEqual(originalSettings.anArray)
+			expect(actualObject.anArray).not.toBe(originalObject.anArray)
+			expect(actualObject.anArray).toEqual(originalObject.anArray)
 		})
 
 		it('deep clones settings, including shallow settings', () => {
-			expect(actualSettings.shallowSetting).not.toBe(originalSettings.shallowSetting)
-			expect(actualSettings.shallowSetting).toEqual(originalSettings.shallowSetting)
+			expect(actualObject.shallowObject).not.toBe(originalObject.shallowObject)
+			expect(actualObject.shallowObject).toEqual(originalObject.shallowObject)
 		})
 
 		it('deep clones settings, including deeply nested settings', () => {
-			expect(actualSettings.shallowSetting.deepSetting).not.toBe(
-				originalSettings.shallowSetting.deepSetting
+			expect(actualObject.shallowObject.deepObject).not.toBe(
+				originalObject.shallowObject.deepObject
 			)
-			expect(actualSettings.shallowSetting.deepSetting).toEqual(
-				originalSettings.shallowSetting.deepSetting
+			expect(actualObject.shallowObject.deepObject).toEqual(
+				originalObject.shallowObject.deepObject
 			)
 		})
 	})
@@ -252,26 +226,26 @@ describe('code utilities', () => {
 		})
 	})
 
-	describe('#settingIsDefinedOnSettings', () => {
-		let settingIsDefinedOnSettings
-		beforeEach(() => settingIsDefinedOnSettings = codeUtilities.settingIsDefinedOnSettings)
+	describe('#propertyIsDefinedOnObject', () => {
+		let propertyIsDefinedOnObject
+		beforeEach(() => propertyIsDefinedOnObject = codeUtilities.propertyIsDefinedOnObject)
 
 		it('returns true if the setting is defined on the settings', () => {
-			const settingName = 'pants'
-			const settingsMaybeWithSetting = { pants: 'yup' }
-			expect(settingIsDefinedOnSettings({ settingName, settingsMaybeWithSetting })).toBe(true)
+			const propertyName = 'pants'
+			const objectWithProperties = { pants: 'yup' }
+			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(true)
 		})
 
 		it('returns true if the setting is defined on the settings, even if it is defined as false', () => {
-			const settingName = 'pants'
-			const settingsMaybeWithSetting = { pants: false }
-			expect(settingIsDefinedOnSettings({ settingName, settingsMaybeWithSetting })).toBe(true)
+			const propertyName = 'pants'
+			const objectWithProperties = { pants: false }
+			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(true)
 		})
 
 		it('returns false if the setting is not defined on the settings', () => {
-			const settingName = 'pants'
-			const settingsMaybeWithSetting = { plants: 'nope' }
-			expect(settingIsDefinedOnSettings({ settingName, settingsMaybeWithSetting })).toBe(false)
+			const propertyName = 'pants'
+			const objectWithProperties = { plants: 'nope' }
+			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(false)
 		})
 	})
 })

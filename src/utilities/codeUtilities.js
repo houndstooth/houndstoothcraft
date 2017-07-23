@@ -21,47 +21,43 @@ const shallowEqual = (a, b) => {
 	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
-const deepClone = settingsToClone => {
-	let clonedSettings = {}
-	Object.entries(settingsToClone).forEach(([ settingName, setting ]) => {
-		if (setting instanceof Array) {
-			clonedSettings[ settingName ] = setting.slice()
+const deepClone = objectToDeepClone => {
+	let clonedObject = {}
+	Object.entries(objectToDeepClone).forEach(([ propertyName, propertyValue ]) => {
+		if (propertyValue instanceof Array) {
+			clonedObject[ propertyName ] = propertyValue.slice()
 		}
-		else if (setting && typeof setting === 'object') {
-			clonedSettings[ settingName ] = deepClone(setting)
+		else if (propertyValue && typeof propertyValue === 'object') {
+			clonedObject[ propertyName ] = deepClone(propertyValue)
 		}
 		else {
-			clonedSettings[ settingName ] = setting
+			clonedObject[ propertyName ] = propertyValue
 		}
 	})
-	return clonedSettings
+	return clonedObject
 }
 
-const resetSettings = ({ settingsToReset, settingsToResetTo }) => {
-	Object.keys(settingsToResetTo).forEach(key => settingsToReset[ key ] = settingsToResetTo[ key ])
-}
-
-const deeperPath = ({ settingsPath, settingName }) => {
-	const deeperPath = settingsPath.slice()
-	deeperPath.push(settingName)
+const deeperPath = ({ propertyPath, propertyName }) => {
+	const deeperPath = propertyPath.slice()
+	deeperPath.push(propertyName)
 	return deeperPath
 }
 
-const accessChildSettingOrCreatePath = ({ settingsRoot, settingsPath }) => {
-	let childSetting = settingsRoot
-	settingsPath.forEach(pathStep => {
-		if (!isDefined(childSetting[ pathStep ])) childSetting[ pathStep ] = {}
-		childSetting = childSetting[ pathStep ]
+const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
+	let childProperty = objectWithProperties
+	propertyPath.forEach(pathStep => {
+		if (!isDefined(childProperty[ pathStep ])) childProperty[ pathStep ] = {}
+		childProperty = childProperty[ pathStep ]
 	})
-	return childSetting
+	return childProperty
 }
 
-const defaultToTrue = setting => isDefined(setting) ? setting : true
+const defaultToTrue = property => isDefined(property) ? property : true
 
-const isDefined = setting => typeof setting !== 'undefined'
+const isDefined = property => typeof property !== 'undefined'
 
-const settingIsDefinedOnSettings = ({ settingName, settingsMaybeWithSetting }) => {
-	return isDefined(settingsMaybeWithSetting[ settingName ])
+const propertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
+	return isDefined(objectWithProperties[ propertyName ])
 }
 
 export default {
@@ -69,10 +65,9 @@ export default {
 	wrappedIndex,
 	shallowEqual,
 	deepClone,
-	resetSettings,
 	deeperPath,
-	accessChildSettingOrCreatePath,
+	accessChildPropertyOrCreatePath,
 	defaultToTrue,
 	isDefined,
-	settingIsDefinedOnSettings,
+	propertyIsDefinedOnObject,
 }

@@ -12,7 +12,7 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 		else if (typeof maybeSettingFunction === 'object' && !(maybeSettingFunction instanceof Array)) {
 			prepareFunctionsPerSetting({
 				settingsFunctions: maybeSettingFunction,
-				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
+				settingsPath: codeUtilities.deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
 				functionsArray,
 			})
 		}
@@ -27,10 +27,11 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 	if (!patternToMerge) return
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
 		let deeperPatternStructureChecker
-		if (codeUtilities.settingIsDefinedOnSettings({
-			settingName,
-			settingsMaybeWithSetting: patternStructureChecker,
-		})) {
+		const settingIsDefinedOnPatternStructure = codeUtilities.propertyIsDefinedOnObject({
+			propertyName: settingName,
+			objectWithProperties: patternStructureChecker,
+		})
+		if (settingIsDefinedOnPatternStructure) {
 			deeperPatternStructureChecker = patternStructureChecker[ settingName ]
 		}
 		else {
@@ -42,14 +43,14 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
-				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
+				settingsPath: codeUtilities.deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
 				patternStructureChecker: deeperPatternStructureChecker,
 			})
 		}
 		else {
-			let settingsWithSettingToBeOverridden = codeUtilities.accessChildSettingOrCreatePath({
-				settingsRoot: patternToBeMergedOnto,
-				settingsPath,
+			let settingsWithSettingToBeOverridden = codeUtilities.accessChildPropertyOrCreatePath({
+				objectWithProperties: patternToBeMergedOnto,
+				propertyPath: settingsPath,
 			})
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
 		}

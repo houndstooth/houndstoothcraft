@@ -17,10 +17,16 @@ export default settingsPath => {
 
 	let setting
 	if (codeUtilities.isDefined(childSetting)) {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: store.currentState.mainHoundstooth.basePattern, settingsPath })
+		setting = codeUtilities.accessChildPropertyOrCreatePath({
+			objectWithProperties: store.currentState.mainHoundstooth.basePattern,
+			propertyPath: settingsPath,
+		})
 	}
 	else {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern, settingsPath })
+		setting = codeUtilities.accessChildPropertyOrCreatePath({
+			objectWithProperties: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern,
+			propertyPath: settingsPath,
+		})
 	}
 	return setting
 }

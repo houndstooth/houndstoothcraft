@@ -1,9 +1,9 @@
-export default ({ tileOrigin, zoomedTileSize, coordinatesOptions }) => {
+export default ({ tileOrigin, tileSize, coordinatesOptions }) => {
 	const { stripeStart, stripeEnd } = coordinatesOptions
 	let coordinates = []
 	const x = tileOrigin[ 0 ]
 	const y = tileOrigin[ 1 ]
-	const tileArgs = { x, y, zoomedTileSize }
+	const tileArgs = { x, y, tileSize }
 
 	const stripeStartsInTopLeftCorner = stripeStart === 0
 	const stripeStartsInTopLeftHalf = stripeStart < 1
@@ -55,37 +55,37 @@ export default ({ tileOrigin, zoomedTileSize, coordinatesOptions }) => {
 	return coordinates
 }
 
-const pointAlongTopEdge = ({ x, y, zoomedTileSize }, { stripePosition }) => ([
-	x + stripePosition * zoomedTileSize,
+const pointAlongTopEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+	x + stripePosition * tileSize,
 	y,
 ])
 
-const pointAlongLeftEdge = ({ x, y, zoomedTileSize }, { stripePosition }) => ([
+const pointAlongLeftEdge = ({ x, y, tileSize }, { stripePosition }) => ([
 	x,
-	y + stripePosition * zoomedTileSize,
+	y + stripePosition * tileSize,
 ])
 
-const pointAlongRightEdge = ({ x, y, zoomedTileSize }, { stripePosition }) => ([
-	x + zoomedTileSize,
-	y + (stripePosition - 1) * zoomedTileSize,
+const pointAlongRightEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+	x + tileSize,
+	y + (stripePosition - 1) * tileSize,
 ])
 
-const pointAlongBottomEdge = ({ x, y, zoomedTileSize }, { stripePosition }) => ([
-	x + (stripePosition - 1) * zoomedTileSize,
-	y + zoomedTileSize,
+const pointAlongBottomEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+	x + (stripePosition - 1) * tileSize,
+	y + tileSize,
 ])
 
-const pointInTopRightCorner = ({ x, y, zoomedTileSize }) => ([
-	x + zoomedTileSize,
+const pointInTopRightCorner = ({ x, y, tileSize }) => ([
+	x + tileSize,
 	y,
 ])
 
-const pointInBottomRightCorner = ({ x, y, zoomedTileSize }) => ([
-	x + zoomedTileSize,
-	y + zoomedTileSize,
+const pointInBottomRightCorner = ({ x, y, tileSize }) => ([
+	x + tileSize,
+	y + tileSize,
 ])
 
-const pointInBottomLeftCorner = ({ x, y, zoomedTileSize }) => ([
+const pointInBottomLeftCorner = ({ x, y, tileSize }) => ([
 	x,
-	y + zoomedTileSize,
+	y + tileSize,
 ])

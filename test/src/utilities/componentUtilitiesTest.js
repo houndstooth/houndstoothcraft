@@ -299,10 +299,10 @@ describe('component utilities', () => {
 				})
 
 				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
-					const zoomedAndScrolledTileOrigin = [ 0, 0 ]
-					const zoomedTileSize = 5
+					const tileOrigin = [ 0, 0 ]
+					const tileSize = 5
 
-					const result = rotateShapeAboutShapeCenter({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize })
+					const result = rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })
 
 					const expectedCoordinates = [
 						[ 5, 0 ],
@@ -315,10 +315,10 @@ describe('component utilities', () => {
 				})
 
 				it('handles the situation where the center of the shape is outside its coordinates', () => {
-					const zoomedAndScrolledTileOrigin = [ 0, 0 ]
-					const zoomedTileSize = 10
+					const tileOrigin = [ 0, 0 ]
+					const tileSize = 10
 
-					const result = rotateShapeAboutShapeCenter({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize })
+					const result = rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })
 
 					const expectedCoordinates = [
 						[ 10, 0 ],
@@ -331,11 +331,11 @@ describe('component utilities', () => {
 				})
 
 				it('handles the situation where the origin of the shape is outside its coordinates', () => {
-					const zoomedAndScrolledTileOrigin = [ 5, 5 ]
-					const zoomedTileSize = 5
+					const tileOrigin = [ 5, 5 ]
+					const tileSize = 5
 
 					const actualCoordinates = rotateShapeAboutShapeCenter(
-						{ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize }
+						{ coordinates, tileOrigin, tileSize }
 					)
 
 					const expectedCoordinates = [
@@ -353,10 +353,10 @@ describe('component utilities', () => {
 					[ 5, 0 ],
 					[ 0, 5 ],
 				]
-				const zoomedAndScrolledTileOrigin = [ 0, 0 ]
-				const zoomedTileSize = 5
+				const tileOrigin = [ 0, 0 ]
+				const tileSize = 5
 
-				expect(rotateShapeAboutShapeCenter({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize })).toEqual(coordinates)
+				expect(rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })).toEqual(coordinates)
 			})
 		})
 	})

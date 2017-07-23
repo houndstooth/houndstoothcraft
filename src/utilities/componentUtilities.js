@@ -60,12 +60,12 @@ const switcherooSet = ({ setForTile, address }) => {
 	return setForTile
 }
 
-const rotateShapeAboutShapeCenter = ({ coordinates, zoomedAndScrolledTileOrigin, zoomedTileSize }) => {
+const rotateShapeAboutShapeCenter = ({ coordinates, tileOrigin, tileSize }) => {
 	if (store.currentState.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: [
-				zoomedAndScrolledTileOrigin[ 0 ] + zoomedTileSize / 2,
-				zoomedAndScrolledTileOrigin[ 1 ] + zoomedTileSize / 2,
+				tileOrigin[ 0 ] + tileSize / 2,
+				tileOrigin[ 1 ] + tileSize / 2,
 			],
 			coordinates: coordinates,
 			rotation: QUARTER_OF_CIRCLE_ROTATION,

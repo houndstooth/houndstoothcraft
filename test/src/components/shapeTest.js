@@ -55,7 +55,7 @@ describe('shape', () => {
 		it('returns early, not trying to rotate nothing or render', () => {
 			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
 
-			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, zoomedTileSize: tileSize, coordinatesOptions })
+			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, tileSize, coordinatesOptions })
 			expect(componentUtilities.rotateShapeAboutShapeCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
@@ -75,8 +75,8 @@ describe('shape', () => {
 		it('rotates the coordinates and renders them', () => {
 			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
 
-			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, zoomedTileSize: tileSize, coordinatesOptions })
-			expect(componentUtilities.rotateShapeAboutShapeCenter).toHaveBeenCalledWith({ coordinates, zoomedAndScrolledTileOrigin: tileOrigin, zoomedTileSize: tileSize })
+			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, tileSize, coordinatesOptions })
+			expect(componentUtilities.rotateShapeAboutShapeCenter).toHaveBeenCalledWith({ coordinates, tileOrigin, tileSize })
 			expect(viewUtilities.rotateShapeAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: coordinatesRotatedAboutShapeCenter })
 			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, coordinates: coordinatesRotatedAboutCanvasCenter })
 		})

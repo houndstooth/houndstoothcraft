@@ -16,29 +16,25 @@ describe('view utilities', () => {
 	})
 
 	describe('#applyZoomAndScroll', () => {
-		let tileOrigin
+		let coordinates
 		let applyZoomAndScroll
 		beforeEach(() => {
-			tileOrigin = [ 3, 5 ]
+			coordinates = [
+				[ 3, 5 ],
+				[ 4, 5 ],
+				[ 3, 4 ],
+			]
 			applyZoomAndScroll = viewUtilities.applyZoomAndScroll
 		})
 
-		it('adjusts the origin per the zoom level', () => {
+		it('adjusts the coordinates per the zoom level', () => {
 			store.currentState.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
-			expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
-				zoomedAndScrolledTileOrigin: [ 30, 50 ],
-				zoomedTileSize: 400,
-			})
-		})
-
-		it('does not mutate the tileOrigin', () => {
-			store.currentState.mainHoundstooth.basePattern.viewSettings.zoom = zoom
-			const originalTileOrigin = tileOrigin.slice()
-
-			applyZoomAndScroll({ tileOrigin, tileSize })
-
-			expect(tileOrigin).toEqual(originalTileOrigin)
+			expect(applyZoomAndScroll({ coordinates })).toEqual([
+				[ 30, 50 ],
+				[ 40, 50 ],
+				[ 30, 40 ],
+			])
 		})
 
 		describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
@@ -50,19 +46,21 @@ describe('view utilities', () => {
 			it('works', () => {
 				store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
 
-				expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
-					zoomedAndScrolledTileOrigin: [ -870, -850 ],
-					zoomedTileSize: 400,
-				})
+				expect(applyZoomAndScroll({ coordinates })).toEqual([
+					[ -870, -850 ],
+					[ -860, -850 ],
+					[ -870, -860 ],
+				])
 			})
 
 			it('does not readjust for zooming on the center if it already is centered', () => {
 				store.currentState.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
 
-				expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
-					zoomedAndScrolledTileOrigin: [ 405, 425 ],
-					zoomedTileSize: 400,
-				})
+				expect(applyZoomAndScroll({ coordinates })).toEqual([
+					[ 405, 425 ],
+					[ 415, 425 ],
+					[ 405, 415 ],
+				])
 			})
 		})
 
@@ -79,13 +77,20 @@ describe('view utilities', () => {
 			it('adjusts per the zoom, tile, and canvas size', () => {
 				store.currentState.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
-				expect(applyZoomAndScroll({ tileOrigin, tileSize })).toEqual({
-					zoomedAndScrolledTileOrigin: [
+				expect(applyZoomAndScroll({ coordinates })).toEqual([
+					[
 						3 * zoom + canvasSize / 2 - tileSize / 2,
 						5 * zoom + canvasSize / 2 - tileSize / 2,
 					],
-					zoomedTileSize: zoom * tileSize,
-				})
+					[
+						4 * zoom + canvasSize / 2 - tileSize / 2,
+						5 * zoom + canvasSize / 2 - tileSize / 2,
+					],
+					[
+						3 * zoom + canvasSize / 2 - tileSize / 2,
+						4 * zoom + canvasSize / 2 - tileSize / 2,
+					],
+				])
 			})
 		})
 	})

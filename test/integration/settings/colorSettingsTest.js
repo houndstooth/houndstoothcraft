@@ -6,12 +6,13 @@ import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../src/co
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import stateUtilities from '../../../src/utilities/stateUtilities'
-import settingsPaths from '../../../src/state/settingsPaths'
+import settingsPaths from '../../helpers/settingsPaths'
 import store from '../../../store'
 import initialState from '../../../src/state/initialState'
+import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 
 describe('.colorSettings', () => {
-	const tileSizeInPixels = stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
 	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
 
 	describe('.set', () => {

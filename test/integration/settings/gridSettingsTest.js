@@ -4,10 +4,11 @@ import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../../src/constants'
 import stateUtilities from '../../../src/utilities/stateUtilities'
-import settingsPaths from '../../../src/state/settingsPaths'
+import settingsPaths from '../../helpers/settingsPaths'
+import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 
 describe('.gridSettings', () => {
-	const tileSizeInPixels = stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

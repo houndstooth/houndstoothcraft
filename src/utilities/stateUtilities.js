@@ -1,8 +1,6 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
 import patternStructure from '../state/patternStructure'
-import houndstoothDefaults from '../state/houndstoothDefaults'
-import store from '../../store'
 import houndstoothStructure from '../state/houndstoothStructure'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
@@ -58,29 +56,6 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 	})
 }
 
-const getFromMainHoundstoothOrDefault = settingsPath => {
-	let childSetting = store.currentState.mainHoundstooth
-	let notThere
-	settingsPath.forEach(pathStep => {
-		if (notThere) return
-		if (!codeUtilities.isDefined(childSetting[ pathStep ])) {
-			childSetting = undefined
-			notThere = true
-			return
-		}
-		childSetting = childSetting[ pathStep ]
-	})
-
-	let setting
-	if (codeUtilities.isDefined(childSetting)) {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: store.currentState.mainHoundstooth, settingsPath })
-	}
-	else {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS, settingsPath })
-	}
-	return setting
-}
-
 const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
 	return Object.keys(houndstooth).every(patternName => {
 		if (!Object.keys(houndstoothStructure.HOUNDSTOOTH_STRUCTURE).includes(patternName)) {
@@ -94,6 +69,5 @@ const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
 export default {
 	prepareFunctionsPerSetting,
 	composePatterns,
-	getFromMainHoundstoothOrDefault,
 	confirmHoundstoothHasNoUnrecognizedPatterns,
 }

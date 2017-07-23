@@ -130,34 +130,6 @@ describe('state utilities', () => {
 		})
 	})
 
-	describe('#getFromMainHoundstoothOrDefault', () => {
-		let getFromMainHoundstoothOrDefault
-		beforeEach(() => getFromMainHoundstoothOrDefault = stateUtilities.getFromMainHoundstoothOrDefault)
-
-		it('gets the setting from settings if it is defined', () => {
-			store.currentState.mainHoundstooth.animationsPattern = { specialMoves: { youKnowIt: 'awesome' } }
-			houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern = { specialMoves: { youKnowIt: 'will not matter' } }
-
-			const settingsPath = [ 'animationsPattern', 'specialMoves', 'youKnowIt' ]
-			expect(getFromMainHoundstoothOrDefault(settingsPath)).toBe('awesome')
-		})
-
-		it('gets the setting from settings even if it is zero; that is the whole point of this thing', () => {
-			store.currentState.mainHoundstooth.animationsPattern = { specialMoves: { youKnowIt: 0 } }
-			houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern = { specialMoves: { youKnowIt: 'will not matter' } }
-
-			const settingsPath = [ 'animationsPattern', 'specialMoves', 'youKnowIt' ]
-			expect(getFromMainHoundstoothOrDefault(settingsPath)).toBe(0)
-		})
-
-		it('defaults the setting if it is not defined', () => {
-			houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern = { specialMoves: { youKnowIt: 'defawesome' } }
-
-			const settingsPath = [ 'animationsPattern', 'specialMoves', 'youKnowIt' ]
-			expect(getFromMainHoundstoothOrDefault(settingsPath)).toBe('defawesome')
-		})
-	})
-
 	describe('#confirmHoundstoothHasNoUnrecognizedPatterns', () => {
 		let confirmHoundstoothHasNoUnrecognizedPatterns
 		const basePattern = {}

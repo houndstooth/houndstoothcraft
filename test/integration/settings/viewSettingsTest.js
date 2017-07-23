@@ -5,7 +5,8 @@ import pixelIsColor from '../helpers/pixelIsColor'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import stateUtilities from '../../../src/utilities/stateUtilities'
-import settingsPaths from '../../../src/state/settingsPaths'
+import settingsPaths from '../../helpers/settingsPaths'
+import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import setupCanvas from '../../../src/render/setupCanvas'
 import store from '../../../store'
@@ -13,7 +14,7 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import initialState from '../../../src/state/initialState'
 
 describe('.viewSettings', () => {
-	const tileSize = stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.TILE_SIZE)
+	const tileSize = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
 	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
 
 	describe('.canvasSize', () => {

@@ -1,4 +1,6 @@
 import store from '../../../store'
+import settingsPaths from '../../helpers/settingsPaths'
+import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.position = 'absolute'
@@ -12,7 +14,7 @@ export default () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
 
-	const canvasSize = store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize
+	const canvasSize = getFromBasePatternOrDefault(settingsPaths.CANVAS_SIZE)
 	testMarkersCanvas.width = canvasSize
 	testMarkersCanvas.height = canvasSize
 

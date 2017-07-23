@@ -1,39 +1,64 @@
 import { BLACK, TRANSPARENT } from '../constants'
 
+const CANVAS_SIZE = 800
+const ZOOM = 1
+const GRID_SIZE = 16
+const TILE_SIZE = 50
+const COLOR_SET = [ BLACK, TRANSPARENT ]
+const COLOR_ASSIGNMENT = {
+	assignmentMode: 'WEAVE',
+	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
+	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
+}
+const OPACITY = 1
+const STRIPE_COUNT = 4
+const BASE_STRIPE_DIAGONAL = 'MINOR'
+const FRAME_RATE = 1.005
+const END_ITERATION_FRAME = 100
+
 const HOUNDSTOOTH_DEFAULTS = {
 	basePattern: {
 		viewSettings: {
-			canvasSize: 800,
-			zoom: 1,
+			canvasSize: CANVAS_SIZE,
+			zoom: ZOOM,
 		},
 		gridSettings: {
-			gridSize: 16,
+			gridSize: GRID_SIZE,
 		},
 		tileSettings: {
-			tileSize: 50,
+			tileSize: TILE_SIZE,
 		},
 		colorSettings: {
-			set: [ BLACK, TRANSPARENT ],
-			assignment: {
-				assignmentMode: 'WEAVE',
-				weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
-				supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
-			},
-			opacity: 1,
+			set: COLOR_SET,
+			assignment: COLOR_ASSIGNMENT,
+			opacity: OPACITY,
 		},
 		stripeCountSettings: {
-			stripeCount: 4,
+			stripeCount: STRIPE_COUNT,
 		},
-		baseStripeDiagonal: 'MINOR',
+		baseStripeDiagonal: BASE_STRIPE_DIAGONAL,
 		animationSettings: {
-			frameRate: 1.005,
+			frameRate: FRAME_RATE,
 		},
 		iterationSettings: {
-			endIterationFrame: 100,
+			endIterationFrame: END_ITERATION_FRAME,
 		},
 	},
 	animationsPattern: {},
 	iterationsPattern: {},
 }
 
-export default { HOUNDSTOOTH_DEFAULTS }
+export default {
+	HOUNDSTOOTH_DEFAULTS,
+	CANVAS_SIZE,
+	ZOOM,
+	GRID_SIZE,
+	TILE_SIZE,
+	COLOR_SET,
+	COLOR_ASSIGNMENT,
+	OPACITY,
+	STRIPE_COUNT,
+	BASE_STRIPE_DIAGONAL,
+	FRAME_RATE,
+	END_ITERATION_FRAME,
+}

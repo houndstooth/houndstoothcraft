@@ -1,7 +1,7 @@
 import stateUtilities from '../../../src/utilities/stateUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import patternDefaults from '../../../src/state/patternDefaults'
+import houndstoothDefaults from '../../../src/state/houndstoothDefaults'
 import store from '../../../store'
 import initialState from '../../../src/state/initialState'
 
@@ -66,9 +66,9 @@ describe('state utilities', () => {
 		})
 	})
 
-	describe('#mergeSettings', () => {
-		it('changes and adds settings to the settings with settings to be overridden, from the settings with setting overrides which has a matching structure', () => {
-			const settingsToBeMergedOnto = {
+	describe('#mergePatterns', () => {
+		it('merges one pattern onto the other', () => {
+			const patternToBeMergedOnto = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'yoda',
@@ -79,7 +79,7 @@ describe('state utilities', () => {
 					gridSize: 'jedi',
 				},
 			}
-			const settingsToMerge = {
+			const patternToMerge = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'luke',
@@ -90,12 +90,9 @@ describe('state utilities', () => {
 				},
 			}
 
-			stateUtilities.mergeSettings({
-				settingsToBeMergedOnto,
-				settingsToMerge,
-			})
+			stateUtilities.mergePatterns({ patternToBeMergedOnto, patternToMerge })
 
-			const expectedSettingsWithSettingsOverridden = {
+			const expectedPattern = {
 				colorSettings: {
 					assignment: {
 						assignmentMode: 'luke',
@@ -106,13 +103,13 @@ describe('state utilities', () => {
 					gridSize: 'sith',
 				},
 			}
-			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsToBeMergedOnto)
+			expect(expectedPattern).toEqual(patternToBeMergedOnto)
 		})
 
-		it('errors when attempting to add a setting that is not recognized in the pattern structure, and does not add it', () => {
+		it('errors when it notices that a setting being merged onto the pattern does not fit into the pattern structure, and then does not merge it', () => {
 			spyOn(consoleWrapper, 'error')
-			const settingsToBeMergedOnto = {}
-			const settingsToMerge = {
+			const patternToBeMergedOnto = {}
+			const patternToMerge = {
 				colorSettings: {
 					assignment: {
 						probablyAnAccident: {
@@ -123,116 +120,113 @@ describe('state utilities', () => {
 				},
 			}
 
-			stateUtilities.mergeSettings({
-				settingsToBeMergedOnto,
-				settingsToMerge,
-			})
+			stateUtilities.mergePatterns({ patternToBeMergedOnto, patternToMerge })
 
-			const expectedSettingsWithSettingsOverridden = {}
-			expect(expectedSettingsWithSettingsOverridden).toEqual(settingsToBeMergedOnto)
+			const expectedPattern = {}
+			expect(expectedPattern).toEqual(patternToBeMergedOnto)
 			expect(consoleWrapper.error).toHaveBeenCalledWith(
-				'Attempted to add a setting to the pattern which is unrecognized in the pattern structure: colorSettings.assignment.probablyAnAccident'
+				'attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident'
 			)
 		})
 	})
 
-	describe('#getFromBuiltPatternOrDefault', () => {
-		let getFromBuiltPatternOrDefault
-		beforeEach(() => getFromBuiltPatternOrDefault = stateUtilities.getFromBuiltPatternOrDefault)
+	describe('#getFromMainHoundstoothOrDefault', () => {
+		let getFromMainHoundstoothOrDefault
+		beforeEach(() => getFromMainHoundstoothOrDefault = stateUtilities.getFromMainHoundstoothOrDefault)
 
 		it('gets the setting from settings if it is defined', () => {
-			store.currentState.builtPattern.animations = { specialMoves: { youKnowIt: 'awesome' } }
-			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
+			store.currentState.mainHoundstooth.animationsPattern = { specialMoves: { youKnowIt: 'awesome' } }
+			houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern = { specialMoves: { youKnowIt: 'will not matter' } }
 
-			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromBuiltPatternOrDefault(settingsPath)).toBe('awesome')
+			const settingsPath = [ 'animationsPattern', 'specialMoves', 'youKnowIt' ]
+			expect(getFromMainHoundstoothOrDefault(settingsPath)).toBe('awesome')
 		})
 
 		it('gets the setting from settings even if it is zero; that is the whole point of this thing', () => {
-			store.currentState.builtPattern.animations = { specialMoves: { youKnowIt: 0 } }
-			patternDefaults.animations = { specialMoves: { youKnowIt: 'will not matter' } }
+			store.currentState.mainHoundstooth.animationsPattern = { specialMoves: { youKnowIt: 0 } }
+			houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern = { specialMoves: { youKnowIt: 'will not matter' } }
 
-			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromBuiltPatternOrDefault(settingsPath)).toBe(0)
+			const settingsPath = [ 'animationsPattern', 'specialMoves', 'youKnowIt' ]
+			expect(getFromMainHoundstoothOrDefault(settingsPath)).toBe(0)
 		})
 
 		it('defaults the setting if it is not defined', () => {
-			patternDefaults.animations = { specialMoves: { youKnowIt: 'defawesome' } }
+			houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern = { specialMoves: { youKnowIt: 'defawesome' } }
 
-			const settingsPath = [ 'animations', 'specialMoves', 'youKnowIt' ]
-			expect(getFromBuiltPatternOrDefault(settingsPath)).toBe('defawesome')
+			const settingsPath = [ 'animationsPattern', 'specialMoves', 'youKnowIt' ]
+			expect(getFromMainHoundstoothOrDefault(settingsPath)).toBe('defawesome')
 		})
 	})
 
-	describe('#confirmPatternHasNoNonSettings', () => {
-		let confirmPatternHasNoNonSettings
-		const base = {}
-		const animations = {}
-		const iterations = {}
+	describe('#confirmHoundstoothHasNoUnrecognizedPatterns', () => {
+		let confirmHoundstoothHasNoUnrecognizedPatterns
+		const basePattern = {}
+		const animationsPattern = {}
+		const iterationsPattern = {}
 		const invalidSettings = {}
 		beforeEach(() => {
-			confirmPatternHasNoNonSettings = stateUtilities.confirmPatternHasNoNonSettings
+			confirmHoundstoothHasNoUnrecognizedPatterns = stateUtilities.confirmHoundstoothHasNoUnrecognizedPatterns
 		})
 
 		it('returns true if the pattern contains only some subset of the recognized settings', () => {
-			expect(confirmPatternHasNoNonSettings({})).toBe(true)
-			expect(confirmPatternHasNoNonSettings({ base })).toBe(true)
-			expect(confirmPatternHasNoNonSettings({ animations })).toBe(true)
-			expect(confirmPatternHasNoNonSettings({ iterations })).toBe(true)
-			expect(confirmPatternHasNoNonSettings({ base, animations })).toBe(true)
-			expect(confirmPatternHasNoNonSettings({ base, iterations })).toBe(true)
-			expect(confirmPatternHasNoNonSettings({ animations, iterations })).toBe(true)
-			expect(confirmPatternHasNoNonSettings({
-				base,
-				animations,
-				iterations,
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({})).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern })).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ animationsPattern })).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ iterationsPattern })).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern, animationsPattern })).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern, iterationsPattern })).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ animationsPattern, iterationsPattern })).toBe(true)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+				basePattern,
+				animationsPattern,
+				iterationsPattern,
 			})).toBe(true)
 		})
 
 		it('logs an error if the pattern contains anything other than one of these three recognized settings', () => {
 			spyOn(consoleWrapper, 'error')
 
-			confirmPatternHasNoNonSettings({ invalidSettings: {} })
+			confirmHoundstoothHasNoUnrecognizedPatterns({ invalidSettings: {} })
 
-			expect(consoleWrapper.error).toHaveBeenCalledWith('Attempted to add unrecognized settings to pattern: invalidSettings')
+			expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: invalidSettings')
 		})
 
 		it('returns false, even if the pattern contains some or all of the three recognized settings in addition to an invalid one', () => {
 			spyOn(consoleWrapper, 'error')
 
-			expect(confirmPatternHasNoNonSettings({ invalidSettings })).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ invalidSettings })).toBe(false)
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				base,
+				basePattern,
 			})).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				animations,
+				animationsPattern,
 			})).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				iterations,
+				iterationsPattern,
 			})).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				base,
-				animations,
+				basePattern,
+				animationsPattern,
 			})).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				base,
-				iterations,
+				basePattern,
+				iterationsPattern,
 			})).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				animations,
-				iterations,
+				animationsPattern,
+				iterationsPattern,
 			})).toBe(false)
-			expect(confirmPatternHasNoNonSettings({
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
 				invalidSettings,
-				base,
-				animations,
-				iterations,
+				basePattern,
+				animationsPattern,
+				iterationsPattern,
 			})).toBe(false)
 		})
 	})

@@ -62,13 +62,13 @@ const PATTERN_STRUCTURE = {
 	baseStripeDiagonal: true,
 	getTileOriginAndSize: true,
 	getStripePositions: true,
-	animation: {
+	animationSettings: {
 		frameRate: true,
 		startAnimationFrame: true,
 		endAnimationFrame: true,
 		refreshCanvas: true,
 	},
-	iteration: {
+	iterationSettings: {
 		startIterationFrame: true,
 		endIterationFrame: true,
 	},

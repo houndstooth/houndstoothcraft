@@ -5,10 +5,10 @@ import store from '../../store'
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
 const getColorsForTile = ({ address, colorSettings }) => {
-	colorSettings = colorSettings || store.currentState.builtPattern.base.colorSettings
+	colorSettings = colorSettings || store.currentState.mainHoundstooth.basePattern.colorSettings
 	let tileColors = componentUtilities.getSetForTile({ address, settings: colorSettings })
 
-	const { stripeCountMode } = store.currentState.builtPattern.base.stripeCountSettings || {}
+	const { stripeCountMode } = store.currentState.mainHoundstooth.basePattern.stripeCountSettings || {}
 	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	const opacity = colorSettings.opacity

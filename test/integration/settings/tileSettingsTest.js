@@ -1,6 +1,6 @@
 import '../../../node_modules/canteen/build/canteen.min'
 import execute from '../../../src/application/execute'
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
@@ -9,10 +9,10 @@ import context from '../../../src/render/context'
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
 		it('adjusts the size in pixels of each tile', () => {
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						tileSettings: {
 							tileSize: 30,
 						},
@@ -34,10 +34,10 @@ describe('.tileSettings', () => {
 
 		describe('when also zooming', () => {
 			it('multiplies the effect of taking up more pixels', () => {
-				buildPattern({
-					patternEffects: [],
-					patternOverrides: {
-						base: {
+				composeMainHoundstooth({
+					houndstoothEffects: [],
+					houndstoothOverrides: {
+						basePattern: {
 							viewSettings: {
 								zoom: 3,
 							},
@@ -68,11 +68,11 @@ describe('.tileSettings', () => {
 	})
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
-		let patternOverrides
+		let houndstoothOverrides
 		beforeEach(() => {
 			context.clear()
-			patternOverrides = {
-				base: {
+			houndstoothOverrides = {
+				basePattern: {
 					gridSettings: { gridSize: 1 },
 					colorSettings: { set: [ BLACK, BLACK ] },
 				},
@@ -80,7 +80,7 @@ describe('.tileSettings', () => {
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {
-			buildPattern({ patternEffects: [], patternOverrides })
+			composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 			activateTestMarkerCanvas()
 
 			execute()
@@ -98,8 +98,8 @@ describe('.tileSettings', () => {
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
-			patternOverrides.base.tileSettings = { collapseSameColoredShapesWithinTile: false }
-			buildPattern({ patternEffects: [], patternOverrides })
+			houndstoothOverrides.basePattern.tileSettings = { collapseSameColoredShapesWithinTile: false }
+			composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 			activateTestMarkerCanvas()
 
 			execute()

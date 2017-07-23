@@ -1,4 +1,4 @@
-import buildPattern from './src/state/buildPattern'
+import composeMainHoundstooth from './src/state/composeMainHoundstooth'
 import setupCanvas from './src/render/setupCanvas'
 import execute from './src/application/execute'
 
@@ -10,10 +10,10 @@ import execute from './src/application/execute'
 // import gongramEffect from './effects/gongram/effects/gongramEffect'
 // import houndsmorphosisEffect from './effects/houndsmorphosis/effects/houndsmorphosisEffect'
 
-buildPattern({
-	patternEffects: [],
-	patternOverrides: {},
-	logPattern: false,
+composeMainHoundstooth({
+	houndstoothEffects: [],
+	houndstoothOverrides: {},
+	logComposedMainHoundstooth: false,
 })
 
 setupCanvas()

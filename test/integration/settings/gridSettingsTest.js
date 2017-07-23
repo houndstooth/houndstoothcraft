@@ -1,4 +1,4 @@
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
@@ -7,14 +7,14 @@ import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
 
 describe('.gridSettings', () => {
-	const tileSizeInPixels = stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						viewSettings: {
 							canvasSize: 200,
 						},
@@ -140,10 +140,10 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
 			const tileSize = 50
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						viewSettings: {
 							canvasSize: 300,
 							centerViewOnCenterOfTileAtZeroZeroAddress: true,

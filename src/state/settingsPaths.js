@@ -1,13 +1,13 @@
-const STRIPE_COUNT = [ 'base', 'stripeCountSettings', 'stripeCount' ]
+const STRIPE_COUNT = [ 'basePattern', 'stripeCountSettings', 'stripeCount' ]
 
-const ZOOM = [ 'base', 'viewSettings', 'zoom' ]
-const CANVAS_SIZE = [ 'base', 'viewSettings', 'canvasSize' ]
+const ZOOM = [ 'basePattern', 'viewSettings', 'zoom' ]
+const CANVAS_SIZE = [ 'basePattern', 'viewSettings', 'canvasSize' ]
 
-const TILE_SIZE = [ 'base', 'tileSettings', 'tileSize' ]
+const TILE_SIZE = [ 'basePattern', 'tileSettings', 'tileSize' ]
 
-const GRID_SIZE = [ 'base', 'gridSettings', 'gridSize' ]
+const GRID_SIZE = [ 'basePattern', 'gridSettings', 'gridSize' ]
 
-const OPACITY = [ 'base', 'colorSettings', 'opacity' ]
+const OPACITY = [ 'basePattern', 'colorSettings', 'opacity' ]
 
 export default {
 	STRIPE_COUNT,

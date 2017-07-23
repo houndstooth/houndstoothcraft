@@ -1,10 +1,10 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
 import patternStructure from '../state/patternStructure'
-import patternDefaults from '../state/patternDefaults'
+import houndstoothDefaults from '../state/houndstoothDefaults'
 import store from '../../store'
 
-const RECOGNIZED_PATTERN_SETTINGS = [ 'base', 'animations', 'iterations' ]
+const RECOGNIZED_HOUNDSTOOTH_PATTERNS = [ 'basePattern', 'animationsPattern', 'iterationsPattern' ]
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {
@@ -20,15 +20,15 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 			})
 		}
 		else {
-			consoleWrapper.error(`These settings should map onto base settings, and be functions to call for them each animation / iteration frame. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
+			consoleWrapper.error(`These settings should map onto basePattern settings, and be functions to call for them each animation / iteration frame. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
 		}
 	})
 	return functionsArray
 }
 
-const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE }) => {
-	if (!settingsToMerge) return
-	Object.entries(settingsToMerge).forEach(([ settingName, overridingSetting ]) => {
+const mergePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE }) => {
+	if (!patternToMerge) return
+	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
 		let deeperPatternStructureChecker
 		if (codeUtilities.settingIsDefinedOnSettings({
 			settingName,
@@ -37,21 +37,21 @@ const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath =
 			deeperPatternStructureChecker = patternStructureChecker[ settingName ]
 		}
 		else {
-			consoleWrapper.error(`Attempted to add a setting to the pattern which is unrecognized in the pattern structure: ${settingsPath.join('.')}.${settingName}`)
+			consoleWrapper.error(`attempted to compose a pattern with an unrecognized setting: ${settingsPath.join('.')}.${settingName}`)
 			return
 		}
 
 		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length) {
-			mergeSettings({
-				settingsToBeMergedOnto,
-				settingsToMerge: overridingSetting,
+			mergePatterns({
+				patternToBeMergedOnto,
+				patternToMerge: overridingSetting,
 				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
 				patternStructureChecker: deeperPatternStructureChecker,
 			})
 		}
 		else {
 			let settingsWithSettingToBeOverridden = codeUtilities.accessChildSettingOrCreatePath({
-				settingsRoot: settingsToBeMergedOnto,
+				settingsRoot: patternToBeMergedOnto,
 				settingsPath,
 			})
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
@@ -59,8 +59,8 @@ const mergeSettings = ({ settingsToBeMergedOnto, settingsToMerge, settingsPath =
 	})
 }
 
-const getFromBuiltPatternOrDefault = settingsPath => {
-	let childSetting = store.currentState.builtPattern
+const getFromMainHoundstoothOrDefault = settingsPath => {
+	let childSetting = store.currentState.mainHoundstooth
 	let notThere
 	settingsPath.forEach(pathStep => {
 		if (notThere) return
@@ -74,18 +74,18 @@ const getFromBuiltPatternOrDefault = settingsPath => {
 
 	let setting
 	if (codeUtilities.isDefined(childSetting)) {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: store.currentState.builtPattern, settingsPath })
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: store.currentState.mainHoundstooth, settingsPath })
 	}
 	else {
-		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: patternDefaults, settingsPath })
+		setting = codeUtilities.accessChildSettingOrCreatePath({ settingsRoot: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS, settingsPath })
 	}
 	return setting
 }
 
-const confirmPatternHasNoNonSettings = pattern => {
-	return Object.keys(pattern).every(key => {
-		if (!RECOGNIZED_PATTERN_SETTINGS.includes(key)) {
-			consoleWrapper.error(`Attempted to add unrecognized settings to pattern: ${key}`)
+const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
+	return Object.keys(houndstooth).every(pattern => {
+		if (!RECOGNIZED_HOUNDSTOOTH_PATTERNS.includes(pattern)) {
+			consoleWrapper.error(`attempted to compose a houndstooth with an unrecognized pattern: ${pattern}`)
 			return false
 		}
 		return true
@@ -94,7 +94,7 @@ const confirmPatternHasNoNonSettings = pattern => {
 
 export default {
 	prepareFunctionsPerSetting,
-	mergeSettings,
-	getFromBuiltPatternOrDefault,
-	confirmPatternHasNoNonSettings,
+	mergePatterns,
+	getFromMainHoundstoothOrDefault,
+	confirmHoundstoothHasNoUnrecognizedPatterns,
 }

@@ -11,7 +11,7 @@ describe('gather options', () => {
 	})
 
 	it('calls every options gathering function with the address, saving each result onto an object it returns', () => {
-		store.currentState.builtPattern.base.gatherOptions = {
+		store.currentState.mainHoundstooth.basePattern.gatherOptions = {
 			optionOne: ({ address }) => ({ resultOne: [ address[ 0 ] + 1, address[ 1 ] + 1 ] }),
 			optionTwo: ({ address }) => ({ resultTwo: [ address[ 0 ] - 1, address[ 1 ] - 1 ] }),
 		}

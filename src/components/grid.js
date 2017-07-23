@@ -3,7 +3,7 @@ import tile from './tile'
 import store from '../../store'
 
 export default () => {
-	let { includeNegativeQuadrants, gridSize } = store.currentState.builtPattern.base.gridSettings || {}
+	let { includeNegativeQuadrants, gridSize } = store.currentState.mainHoundstooth.basePattern.gridSettings || {}
 	const { iterator } = codeUtilities
 
 	if (includeNegativeQuadrants) {

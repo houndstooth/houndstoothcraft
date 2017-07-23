@@ -1,7 +1,7 @@
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 import coordinatesMatch from '../helpers/coordinatesMatch'
 import store from '../../../store'
 import initialState from '../../../src/state/initialState'
@@ -12,7 +12,7 @@ describe('component utilities', () => {
 	const address = [ 3, 5 ]
 	beforeEach(() => {
 		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
-		buildPattern()
+		composeMainHoundstooth()
 		getSetForTile = componentUtilities.getSetForTile
 	})
 
@@ -290,10 +290,10 @@ describe('component utilities', () => {
 		let rotateShapeAboutShapeCenter
 		beforeEach(() => rotateShapeAboutShapeCenter = componentUtilities.rotateShapeAboutShapeCenter)
 
-		describe('base stripe diagonal', () => {
+		describe('basePattern stripe diagonal', () => {
 			describe('when principal', () => {
 				beforeEach(() => {
-					store.currentState.builtPattern.base.baseStripeDiagonal = 'PRINCIPAL'
+					store.currentState.mainHoundstooth.basePattern.baseStripeDiagonal = 'PRINCIPAL'
 				})
 
 				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
@@ -345,7 +345,7 @@ describe('component utilities', () => {
 				})
 			})
 
-			it('defaults base stripe diagonal to minor, i.e. no rotation', () => {
+			it('defaults basePattern stripe diagonal to minor, i.e. no rotation', () => {
 				const coordinates = [
 					[ 0, 0 ],
 					[ 5, 0 ],
@@ -366,7 +366,7 @@ describe('component utilities', () => {
 		beforeEach(() => getTileOriginAndSize = componentUtilities.getTileOriginAndSize)
 
 		it('returns the tile size, and scales the address by it to get the origin', () => {
-			store.currentState.builtPattern.base.tileSettings = { tileSize }
+			store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSize }
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize,
@@ -379,7 +379,7 @@ describe('component utilities', () => {
 				tileSize: tileSize * tileSize,
 				tileOrigin: [ address[ 1 ] * tileSize, address[ 0 ] * tileSize ],
 			})
-			store.currentState.builtPattern.base.getTileOriginAndSize = custom
+			store.currentState.mainHoundstooth.basePattern.getTileOriginAndSize = custom
 
 			expect(getTileOriginAndSize({ address })).toEqual({
 				tileSize: tileSize * tileSize,

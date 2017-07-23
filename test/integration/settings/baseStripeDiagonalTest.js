@@ -1,4 +1,4 @@
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
@@ -11,10 +11,10 @@ describe('.baseStripeDiagonal', () => {
 	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
 
 	it('can be set to principal, to change the orientation of the stripes', () => {
-		buildPattern({
-			patternEffects: [],
-			patternOverrides: {
-				base: {
+		composeMainHoundstooth({
+			houndstoothEffects: [],
+			houndstoothOverrides: {
+				basePattern: {
 					baseStripeDiagonal: 'PRINCIPAL',
 				},
 			},
@@ -23,7 +23,7 @@ describe('.baseStripeDiagonal', () => {
 		execute()
 
 		let originInPixels
-		const tileSizeInPixels = store.currentState.builtPattern.base.tileSettings.tileSize
+		const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSize
 
 		originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

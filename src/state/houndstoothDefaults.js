@@ -1,7 +1,7 @@
 import { BLACK, TRANSPARENT } from '../constants'
 
-export default {
-	base: {
+const HOUNDSTOOTH_DEFAULTS = {
+	basePattern: {
 		viewSettings: {
 			canvasSize: 800,
 			zoom: 1,
@@ -25,13 +25,15 @@ export default {
 			stripeCount: 4,
 		},
 		baseStripeDiagonal: 'MINOR',
-		animation: {
+		animationSettings: {
 			frameRate: 1.005,
 		},
-		iteration: {
+		iterationSettings: {
 			endIterationFrame: 100,
 		},
 	},
-	animations: {},
-	iterations: {},
+	animationsPattern: {},
+	iterationsPattern: {},
 }
+
+export default { HOUNDSTOOTH_DEFAULTS }

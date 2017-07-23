@@ -13,12 +13,12 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	if (animating) {
 		execute = executeAnimation
 		animationFunctions = stateUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: store.currentState.builtPattern.animations,
+			settingsFunctions: store.currentState.mainHoundstooth.animationsPattern,
 		})
 	}
 	if (iterating) {
 		iterationFunctions = stateUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: store.currentState.builtPattern.iterations,
+			settingsFunctions: store.currentState.mainHoundstooth.iterationsPattern,
 		})
 	}
 
@@ -55,7 +55,7 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {
 		const { settingsPath, settingName, settingFunctionItself } = settingsFunction
 		let settingsWithSettingToCallFunctionOn = codeUtilities.accessChildSettingOrCreatePath({
-			settingsRoot: store.currentState.builtPattern.base,
+			settingsRoot: store.currentState.mainHoundstooth.basePattern,
 			settingsPath,
 		})
 		settingsWithSettingToCallFunctionOn[ settingName ] = settingFunctionItself(settingsWithSettingToCallFunctionOn[ settingName ])
@@ -63,7 +63,7 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIterationFrame, endIterationFrame } = store.currentState.builtPattern.base.iteration || {}
+	let { startIterationFrame, endIterationFrame } = store.currentState.mainHoundstooth.basePattern.iterationSettings || {}
 	startIterationFrame = startIterationFrame || 0
 
 	for (let n = 0; n <= endIterationFrame; n++) {
@@ -88,7 +88,7 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
 	const { deepClone, resetSettings, defaultToTrue } = codeUtilities
 
-	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.currentState.builtPattern.base.animation || {}
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.currentState.mainHoundstooth.basePattern.animationSettings || {}
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = defaultToTrue(refreshCanvas)
 
@@ -101,9 +101,9 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 			if (refreshCanvas) clear()
 
 			if (iterating) {
-				const preIterationSettings = deepClone(store.currentState.builtPattern.base)
+				const preIterationSettings = deepClone(store.currentState.mainHoundstooth.basePattern)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				resetSettings({ settingsToReset: store.currentState.builtPattern.base, settingsToResetTo: preIterationSettings })
+				resetSettings({ settingsToReset: store.currentState.mainHoundstooth.basePattern, settingsToResetTo: preIterationSettings })
 			}
 			else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })

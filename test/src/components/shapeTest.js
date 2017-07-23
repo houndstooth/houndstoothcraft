@@ -2,7 +2,7 @@ import shape from '../../../src/components/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import viewUtilities from '../../../src/utilities/viewUtilities'
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 
 describe('shape', () => {
 	let renderSpy
@@ -15,7 +15,7 @@ describe('shape', () => {
 	const coordinatesRotatedAboutShapeCenter = []
 
 	beforeEach(() => {
-		buildPattern()
+		composeMainHoundstooth()
 		spyOn(componentUtilities, 'rotateShapeAboutShapeCenter').and.returnValue(coordinatesRotatedAboutShapeCenter)
 		renderSpy = jasmine.createSpy()
 		getCoordinates = jasmine.createSpy()

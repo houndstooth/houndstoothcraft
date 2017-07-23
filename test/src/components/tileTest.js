@@ -67,7 +67,7 @@ describe('tile', () => {
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
 
-			store.currentState.builtPattern.base.tileSettings = {}
+			store.currentState.mainHoundstooth.basePattern.tileSettings = {}
 
 			tileColors = {}
 			getColorsForTileSpy.and.returnValue(tileColors)
@@ -93,7 +93,7 @@ describe('tile', () => {
 		describe('if a function for converting a tile into shapes is specified', () => {
 			it('uses it', () => {
 				const tileToShapesSpy = jasmine.createSpy()
-				store.currentState.builtPattern.base.tileSettings.tileToShapes = tileToShapesSpy
+				store.currentState.mainHoundstooth.basePattern.tileSettings.tileToShapes = tileToShapesSpy
 
 				tile({ address })
 
@@ -116,13 +116,13 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				store.currentState.builtPattern.base.tileSettings.collapseSameColoredShapesWithinTile = true
+				store.currentState.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
 			describe('when a function for checking the uniformity of the tile is specified', () => {
 				it('uses it to see if the tile is uniform', () => {
 					const isTileUniformSpy = jasmine.createSpy()
-					store.currentState.builtPattern.base.tileSettings.isTileUniform = isTileUniformSpy
+					store.currentState.mainHoundstooth.basePattern.tileSettings.isTileUniform = isTileUniformSpy
 
 					tile({ address })
 
@@ -164,7 +164,7 @@ describe('tile', () => {
 					it('converts the tile into shapes using it', () => {
 						const whenTileIsUniform = () => {
 						}
-						store.currentState.builtPattern.base.tileSettings.getCoordinates = { whenTileIsUniform }
+						store.currentState.mainHoundstooth.basePattern.tileSettings.getCoordinates = { whenTileIsUniform }
 
 						tile({ address })
 
@@ -218,7 +218,7 @@ describe('tile', () => {
 					it('converts the tile into shapes using it', () => {
 						const whenTileIsMultiform = () => {
 						}
-						store.currentState.builtPattern.base.tileSettings.getCoordinates = { whenTileIsMultiform }
+						store.currentState.mainHoundstooth.basePattern.tileSettings.getCoordinates = { whenTileIsMultiform }
 
 						tile({ address })
 
@@ -305,7 +305,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				store.currentState.builtPattern.base.tileSettings.collapseSameColoredShapesWithinTile = false
+				store.currentState.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

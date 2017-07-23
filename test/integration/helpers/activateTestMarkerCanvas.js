@@ -12,7 +12,7 @@ export default () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
 
-	const canvasSize = store.currentState.builtPattern.base.viewSettings.canvasSize
+	const canvasSize = store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize
 	testMarkersCanvas.width = canvasSize
 	testMarkersCanvas.height = canvasSize
 

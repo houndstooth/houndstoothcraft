@@ -1,20 +1,24 @@
 import execute from '../../../src/application/execute'
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('.stripeCountSettings', () => {
-	const tileSizeInPixels = stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.TILE_SIZE)
+	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
 
 	describe('.stripeCountMode', () => {
-		let patternOverrides
+		let houndstoothOverrides
 		beforeEach(() => {
-			patternOverrides = {
-				base: {
+			houndstoothOverrides = {
+				basePattern: {
 					viewSettings: { canvasSize: tileSizeInPixels },
 					gridSettings: { gridSize: 1 },
 					stripeCountSettings: { stripeCountMode: undefined },
@@ -23,7 +27,7 @@ describe('.stripeCountSettings', () => {
 		})
 
 		it('works in standard mode', () => {
-			buildPattern({ patternEffects: [], patternOverrides })
+			composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 			activateTestMarkerCanvas()
 
 			execute()
@@ -38,8 +42,8 @@ describe('.stripeCountSettings', () => {
 		})
 
 		it('works in gingham mode', () => {
-			patternOverrides.base.stripeCountSettings.stripeCountMode = 'GINGHAM'
-			buildPattern({ patternEffects: [], patternOverrides })
+			houndstoothOverrides.basePattern.stripeCountSettings.stripeCountMode = 'GINGHAM'
+			composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 			activateTestMarkerCanvas()
 
 			execute()
@@ -57,10 +61,10 @@ describe('.stripeCountSettings', () => {
 
 	describe('.stripeCount', () => {
 		it('changes the number of stripes in striped tiles', () => {
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						gridSettings: { gridSize: 2 },
 						stripeCountSettings: { stripeCount: 5 },
 					},

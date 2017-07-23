@@ -1,6 +1,6 @@
 import clear from '../../../src/render/clear'
 import context from '../../../src/render/context'
-import patternDefaults from '../../../src/state/patternDefaults'
+import houndstoothDefaults from '../../../src/state/houndstoothDefaults'
 import store from '../../../store'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import initialState from '../../../src/state/initialState'
@@ -13,7 +13,7 @@ describe('clear', () => {
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
-			store.currentState.builtPattern.base.viewSettings = { canvasSize: 500 }
+			store.currentState.mainHoundstooth.basePattern.viewSettings = { canvasSize: 500 }
 
 			clear()
 
@@ -25,7 +25,7 @@ describe('clear', () => {
 		it('wipes the default amount of canvas', () => {
 			clear()
 
-			const defaultCanvasSize = patternDefaults.base.viewSettings.canvasSize
+			const defaultCanvasSize = houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern.viewSettings.canvasSize
 			expect(context.clearRect).toHaveBeenCalledWith(0, 0, defaultCanvasSize, defaultCanvasSize)
 		})
 	})

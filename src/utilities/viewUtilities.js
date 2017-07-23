@@ -2,7 +2,7 @@ import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
 const rotateShapeAboutCanvasCenter = ({ coordinates }) => {
-	const { canvasSize, rotateViewAboutCanvasCenter } = store.currentState.builtPattern.base.viewSettings || {}
+	const { canvasSize, rotateViewAboutCanvasCenter } = store.currentState.mainHoundstooth.basePattern.viewSettings || {}
 
 	if (rotateViewAboutCanvasCenter) {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
@@ -17,7 +17,7 @@ const rotateShapeAboutCanvasCenter = ({ coordinates }) => {
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
 	let zoomedAndScrolledTileOrigin = tileOrigin.slice()
-	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = store.currentState.builtPattern.base.viewSettings || {}
+	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = store.currentState.mainHoundstooth.basePattern.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
@@ -37,10 +37,10 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ zoomedAndScrolledTileOrigin }) => {
-	const canvasSize = store.currentState.builtPattern.base.viewSettings.canvasSize
+	const canvasSize = store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
-	const tileSize = store.currentState.builtPattern.base.tileSettings.tileSize
+	const tileSize = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSize
 	const halfTileSize = tileSize / 2
 
 	return [
@@ -51,10 +51,10 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ zoomedAndScrolledTileOrigin
 
 const applyZoomAndScroll = ({ tileOrigin, tileSize }) => {
 	let zoomedAndScrolledTileOrigin = adjustTileOriginForZoom({ tileOrigin })
-	if (store.currentState.builtPattern.base.viewSettings && store.currentState.builtPattern.base.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
+	if (store.currentState.mainHoundstooth.basePattern.viewSettings && store.currentState.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
 		zoomedAndScrolledTileOrigin = centerViewOnCenterOfTileAtZeroZeroAddress({ zoomedAndScrolledTileOrigin })
 	}
-	const zoomedTileSize = tileSize * store.currentState.builtPattern.base.viewSettings.zoom
+	const zoomedTileSize = tileSize * store.currentState.mainHoundstooth.basePattern.viewSettings.zoom
 
 	return { zoomedAndScrolledTileOrigin, zoomedTileSize }
 }

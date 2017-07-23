@@ -1,4 +1,4 @@
-import buildPattern from '../../../src/state/buildPattern'
+import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
 import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
@@ -8,16 +8,20 @@ import stateUtilities from '../../../src/utilities/stateUtilities'
 import settingsPaths from '../../../src/state/settingsPaths'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import setupCanvas from '../../../src/render/setupCanvas'
+import store from '../../../store'
+import codeUtilities from '../../../src/utilities/codeUtilities'
+import initialState from '../../../src/state/initialState'
 
 describe('.viewSettings', () => {
-	const tileSize = stateUtilities.getFromBuiltPatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSize = stateUtilities.getFromMainHoundstoothOrDefault(settingsPaths.TILE_SIZE)
+	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
 
 	describe('.canvasSize', () => {
 		it('works', () => {
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						colorSettings: { set: [ BLACK ] },
 						viewSettings: { canvasSize: 125 },
 					},
@@ -41,10 +45,10 @@ describe('.viewSettings', () => {
 	describe('.zoom', () => {
 		it('works', () => {
 			const zoom = 2
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						viewSettings: { zoom },
 						gridSettings: { gridSize: 2 },
 					},
@@ -84,10 +88,10 @@ describe('.viewSettings', () => {
 	describe('.zoomOnCanvasCenter', () => {
 		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
 			const zoom = 2
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						viewSettings: {
 							zoomOnCanvasCenter: true,
 							zoom: 2,
@@ -130,10 +134,10 @@ describe('.viewSettings', () => {
 	describe('.centerViewOnCenterOfTileAtZeroZeroAddress', () => {
 		it('is self-explanatory', () => {
 			const tileSize = 100
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						tileSettings: { tileSize },
 						viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
 						gridSettings: { gridSize: 2 },
@@ -173,10 +177,10 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
-			buildPattern({
-				patternEffects: [],
-				patternOverrides: {
-					base: {
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
 						viewSettings: {
 							canvasSize: 300,
 							rotateViewAboutCanvasCenter: Math.PI / 2,

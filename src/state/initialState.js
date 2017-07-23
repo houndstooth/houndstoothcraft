@@ -3,11 +3,11 @@ const INITIAL_STATE = {
 	animationFrame: 0,
 	lastSavedAnimationFrame: 0,
 	interval: null,
-	builtPattern: {
-		base: {},
-		animations: {},
-		iterations: {},
-	},
+	mainHoundstooth: {
+		basePattern: {},
+		animationsPattern: {},
+		iterationsPattern: {},
+	}
 }
 
 export default { INITIAL_STATE }

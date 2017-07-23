@@ -25,7 +25,7 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 	return functionsArray
 }
 
-const mergePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE }) => {
+const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE }) => {
 	if (!patternToMerge) return
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
 		let deeperPatternStructureChecker
@@ -41,7 +41,7 @@ const mergePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [
 		}
 
 		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length) {
-			mergePatterns({
+			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
 				settingsPath: codeUtilities.deeperPath({ settingsPath, settingName }),
@@ -93,7 +93,7 @@ const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
 
 export default {
 	prepareFunctionsPerSetting,
-	mergePatterns,
+	composePatterns,
 	getFromMainHoundstoothOrDefault,
 	confirmHoundstoothHasNoUnrecognizedPatterns,
 }

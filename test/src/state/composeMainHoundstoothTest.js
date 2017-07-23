@@ -143,14 +143,14 @@ describe('composeMainHoundstooth', () => {
 	describe('when there are things which are not recognized patterns', () => {
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
-			spyOn(stateUtilities, 'mergePatterns')
+			spyOn(stateUtilities, 'composePatterns')
 		})
 
 		describe('on one of the houndstooth effects', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothEffects: [ { yikesPattern: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.mergePatterns).not.toHaveBeenCalled()
+				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 
@@ -158,7 +158,7 @@ describe('composeMainHoundstooth', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothOverrides: { yikesPattern: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.mergePatterns).not.toHaveBeenCalled()
+				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 
@@ -167,7 +167,7 @@ describe('composeMainHoundstooth', () => {
 				houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.mergePatterns).not.toHaveBeenCalled()
+				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 
@@ -176,7 +176,7 @@ describe('composeMainHoundstooth', () => {
 				store.currentState.mainHoundstooth.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.mergePatterns).not.toHaveBeenCalled()
+				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 	})

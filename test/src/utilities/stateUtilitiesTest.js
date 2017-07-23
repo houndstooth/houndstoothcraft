@@ -66,7 +66,7 @@ describe('state utilities', () => {
 		})
 	})
 
-	describe('#mergePatterns', () => {
+	describe('#composePatterns', () => {
 		it('merges one pattern onto the other', () => {
 			const patternToBeMergedOnto = {
 				colorSettings: {
@@ -90,7 +90,7 @@ describe('state utilities', () => {
 				},
 			}
 
-			stateUtilities.mergePatterns({ patternToBeMergedOnto, patternToMerge })
+			stateUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
 
 			const expectedPattern = {
 				colorSettings: {
@@ -120,7 +120,7 @@ describe('state utilities', () => {
 				},
 			}
 
-			stateUtilities.mergePatterns({ patternToBeMergedOnto, patternToMerge })
+			stateUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
 
 			const expectedPattern = {}
 			expect(expectedPattern).toEqual(patternToBeMergedOnto)

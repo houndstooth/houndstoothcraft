@@ -38,15 +38,15 @@ export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logCompose
 }
 
 const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffects, houndstoothOverrides }) => {
-	stateUtilities.mergePatterns({
+	stateUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothDefaults,
 	})
-	stateUtilities.mergePatterns({
+	stateUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothEffects,
 	})
-	stateUtilities.mergePatterns({
+	stateUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothOverrides,
 	})
@@ -57,7 +57,7 @@ const combineHoundstoothEffects = ({ houndstoothEffects }) => {
 	const iterationsPattern = {}
 	const animationsPattern = {}
 
-	const { mergePatterns, confirmHoundstoothHasNoUnrecognizedPatterns } = stateUtilities
+	const { composePatterns, confirmHoundstoothHasNoUnrecognizedPatterns } = stateUtilities
 
 	let anyIssues = false
 	houndstoothEffects.forEach(houndstoothEffect => {
@@ -65,15 +65,15 @@ const combineHoundstoothEffects = ({ houndstoothEffects }) => {
 			anyIssues = true
 			return
 		}
-		mergePatterns({
+		composePatterns({
 			patternToBeMergedOnto: basePattern,
 			patternToMerge: houndstoothEffect.basePattern,
 		})
-		mergePatterns({
+		composePatterns({
 			patternToBeMergedOnto: iterationsPattern,
 			patternToMerge: houndstoothEffect.iterationsPattern,
 		})
-		mergePatterns({
+		composePatterns({
 			patternToBeMergedOnto: animationsPattern,
 			patternToMerge: houndstoothEffect.animationsPattern,
 		})

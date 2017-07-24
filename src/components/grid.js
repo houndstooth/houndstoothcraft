@@ -9,14 +9,14 @@ export default () => {
 	if (includeNegativeQuadrants) {
 		iterator(gridSize * 2).forEach(x => {
 			iterator(gridSize * 2).forEach(y => {
-				tile({ address: [ x - gridSize, y - gridSize ] })
+				tile({ gridAddress: [ x - gridSize, y - gridSize ] })
 			})
 		})
 	}
 	else {
 		iterator(gridSize).forEach(x => {
 			iterator(gridSize).forEach(y => {
-				tile({ address: [ x, y ] })
+				tile({ gridAddress: [ x, y ] })
 			})
 		})
 	}

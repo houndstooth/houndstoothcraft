@@ -9,11 +9,11 @@ import stripeCoordinates from '../shapes/stripeCoordinates'
 import { PERIMETER_SCALAR } from '../constants'
 import store from '../../store'
 
-export default ({ address }) => {
-	const { tileOrigin, tileSize } = componentUtilities.getTileOriginAndSize({ address })
+export default ({ gridAddress }) => {
+	const { tileOrigin, tileSize } = componentUtilities.getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) return
 
-	const tileColors = colorUtilities.getColorsForTile({ address })
+	const tileColors = colorUtilities.getColorsForTile({ gridAddress })
 
 	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = store.currentState.mainHoundstooth.basePattern.tileSettings || {}
 	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
@@ -23,14 +23,14 @@ export default ({ address }) => {
 	getCoordinatesHere.whenTileIsUniform = getCoordinates && getCoordinates.whenTileIsUniform || squareCoordinates
 	getCoordinatesHere.whenTileIsMultiform = getCoordinates && getCoordinates.whenTileIsMultiform || stripeCoordinates
 
-	const options = gatherOptions({ address })
+	const options = gatherOptions({ gridAddress })
 
 	if (collapseSameColoredShapesWithinTile) {
 		isTileUniform = isTileUniform || colorUtilities.isTileUniform
 		if (isTileUniform({ tileColors, options })) {
 			tileToShapes({
 				getCoordinates: getCoordinatesHere.whenTileIsUniform,
-				address,
+				gridAddress,
 				tileColors,
 				tileOrigin,
 				tileSize,
@@ -40,11 +40,11 @@ export default ({ address }) => {
 		}
 	}
 
-	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ address })
+	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ gridAddress })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
 		tileToShapes({
 			getCoordinates: getCoordinatesHere.whenTileIsMultiform,
-			address,
+			gridAddress,
 			tileColors,
 			tileOrigin,
 			tileSize,

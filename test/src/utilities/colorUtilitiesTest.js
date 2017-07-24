@@ -13,15 +13,15 @@ describe('color utilities', () => {
 
 	describe('#getColorsForTile', () => {
 		it('defaults to the basePattern color settings on the settings', () => {
-			const address = []
+			const gridAddress = []
 			spyOn(componentUtilities, 'getSetForTile')
 			const defaultColorSettings = { importantThing: 'boingo' }
 			store.currentState.mainHoundstooth.basePattern.colorSettings = defaultColorSettings
 
-			colorUtilities.getColorsForTile({ address })
+			colorUtilities.getColorsForTile({ gridAddress })
 
 			expect(componentUtilities.getSetForTile.calls.all()[ 0 ].args[ 0 ]).toEqual(
-				{ address, settings: defaultColorSettings }
+				{ gridAddress, settings: defaultColorSettings }
 			)
 		})
 
@@ -29,7 +29,7 @@ describe('color utilities', () => {
 			const tileColors = []
 			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 
-			const result = colorUtilities.getColorsForTile({ address: [] })
+			const result = colorUtilities.getColorsForTile({ gridAddress: [] })
 
 			expect(result).toEqual(tileColors)
 		})
@@ -46,7 +46,7 @@ describe('color utilities', () => {
 				},
 			}
 
-			const result = colorUtilities.getColorsForTile({ address: [] })
+			const result = colorUtilities.getColorsForTile({ gridAddress: [] })
 
 			const mixedColor = [ { r: 2, g: 2, b: 25, a: 0.75 } ]
 			expect(result).toEqual(mixedColor)
@@ -61,7 +61,7 @@ describe('color utilities', () => {
 				]
 				spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 
-				const result = colorUtilities.getColorsForTile({ address: [], colorSettings })
+				const result = colorUtilities.getColorsForTile({ gridAddress: [], colorSettings })
 
 				const fadedTileColors = [
 					{ r: 1, g: 2, b: 3, a: 0.5 },
@@ -78,7 +78,7 @@ describe('color utilities', () => {
 				]
 				spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
 
-				const result = colorUtilities.getColorsForTile({ address: [], colorSettings })
+				const result = colorUtilities.getColorsForTile({ gridAddress: [], colorSettings })
 
 				expect(result).toEqual(tileColors)
 			})

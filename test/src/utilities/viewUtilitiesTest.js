@@ -64,7 +64,7 @@ describe('view utilities', () => {
 			})
 		})
 
-		describe('centering view on the center of the tile at address [ 0, 0 ]', () => {
+		describe('centering view on the center of the tile at grid address [ 0, 0 ]', () => {
 			beforeEach(() => {
 				store.currentState.mainHoundstooth.basePattern.viewSettings = {
 					centerViewOnCenterOfTileAtZeroZeroAddress: true,

@@ -4,19 +4,19 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import initialState from '../../../src/state/initialState'
 
 describe('gather options', () => {
-	let address
+	let gridAddress
 	beforeEach(() => {
 		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
-		address = [ 3, 5 ]
+		gridAddress = [ 3, 5 ]
 	})
 
-	it('calls every options gathering function with the address, saving each result onto an object it returns', () => {
+	it('calls every options gathering function with the grid address, saving each result onto an object it returns', () => {
 		store.currentState.mainHoundstooth.basePattern.gatherOptions = {
-			optionOne: ({ address }) => ({ resultOne: [ address[ 0 ] + 1, address[ 1 ] + 1 ] }),
-			optionTwo: ({ address }) => ({ resultTwo: [ address[ 0 ] - 1, address[ 1 ] - 1 ] }),
+			optionOne: ({ gridAddress }) => ({ resultOne: [ gridAddress[ 0 ] + 1, gridAddress[ 1 ] + 1 ] }),
+			optionTwo: ({ gridAddress }) => ({ resultTwo: [ gridAddress[ 0 ] - 1, gridAddress[ 1 ] - 1 ] }),
 		}
 
-		const options = gatherOptions({ address })
+		const options = gatherOptions({ gridAddress })
 
 		const expectedOptions = {
 			resultOne: [ 4, 6 ],
@@ -26,7 +26,7 @@ describe('gather options', () => {
 	})
 
 	it('if there are no options gathering functions, options should be empty', () => {
-		const options = gatherOptions({ address })
+		const options = gatherOptions({ gridAddress })
 
 		expect(options).toEqual({})
 	})

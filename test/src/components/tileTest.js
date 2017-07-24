@@ -6,7 +6,7 @@ import { PERIMETER_SCALAR } from '../../../src/constants'
 import store from '../../../store'
 
 describe('tile', () => {
-	const address = [ 3, 5 ]
+	const gridAddress = [ 3, 5 ]
 
 	let shapeSpy
 	let squareCoordinatesSpy
@@ -45,7 +45,7 @@ describe('tile', () => {
 		})
 
 		it('returns early, not getting colors', () => {
-			tile({ address })
+			tile({ gridAddress })
 
 			expect(getColorsForTileSpy).not.toHaveBeenCalled()
 		})
@@ -77,14 +77,14 @@ describe('tile', () => {
 		})
 
 		it('gathers options', () => {
-			tile({ address })
+			tile({ gridAddress })
 
 			expect(gatherOptionsSpy).toHaveBeenCalled()
 		})
 
 		describe('if a function for converting a tile into shapes is not specified', () => {
 			it('defaults to using the shape method directly', () => {
-				tile({ address })
+				tile({ gridAddress })
 
 				expect(shapeSpy).toHaveBeenCalled()
 			})
@@ -95,7 +95,7 @@ describe('tile', () => {
 				const tileToShapesSpy = jasmine.createSpy()
 				store.currentState.mainHoundstooth.basePattern.tileSettings.tileToShapes = tileToShapesSpy
 
-				tile({ address })
+				tile({ gridAddress })
 
 				expect(tileToShapesSpy).toHaveBeenCalled()
 				expect(shapeSpy).not.toHaveBeenCalled()
@@ -103,15 +103,15 @@ describe('tile', () => {
 		})
 
 		it('gets colors', () => {
-			tile({ address })
+			tile({ gridAddress })
 
-			expect(getColorsForTileSpy).toHaveBeenCalledWith({ address })
+			expect(getColorsForTileSpy).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		it('gets options', () => {
-			tile({ address })
+			tile({ gridAddress })
 
-			expect(gatherOptionsSpy).toHaveBeenCalledWith({ address })
+			expect(gatherOptionsSpy).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
@@ -124,7 +124,7 @@ describe('tile', () => {
 					const isTileUniformSpy = jasmine.createSpy()
 					store.currentState.mainHoundstooth.basePattern.tileSettings.isTileUniform = isTileUniformSpy
 
-					tile({ address })
+					tile({ gridAddress })
 
 					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColors, options })
 					expect(colorUtilitiesIsTileUniformSpy).not.toHaveBeenCalled()
@@ -133,7 +133,7 @@ describe('tile', () => {
 
 			describe('when a function for checking the uniformity of the tile is not specified', () => {
 				it('uses the default tile uniformity check', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColors, options })
 				})
@@ -145,14 +145,14 @@ describe('tile', () => {
 				})
 
 				it('does not look for stripe positions', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					expect(stripeUtilities.getStripePositionsForTile).not.toHaveBeenCalled()
 				})
 
 				describe('if a function for getting uniform coordinates is not specified', () => {
 					it('converts the tile into shapes using square coordinates', () => {
-						tile({ address })
+						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
 							jasmine.objectContaining({ getCoordinates: squareCoordinatesSpy })
@@ -166,7 +166,7 @@ describe('tile', () => {
 						}
 						store.currentState.mainHoundstooth.basePattern.tileSettings.getCoordinates = { whenTileIsUniform }
 
-						tile({ address })
+						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
 							jasmine.objectContaining({ getCoordinates: whenTileIsUniform })
@@ -174,11 +174,11 @@ describe('tile', () => {
 					})
 				})
 
-				it('converts the tile into shapes with the address, colors, origin, size, and options for the tile', () => {
-					tile({ address })
+				it('converts the tile into shapes with the grid address, colors, origin, size, and options for the tile', () => {
+					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-						address,
+						gridAddress,
 						tileColors,
 						tileOrigin,
 						tileSize,
@@ -193,20 +193,20 @@ describe('tile', () => {
 				})
 
 				it('looks for stripe positions', () => {
-					tile({ address })
+					tile({ gridAddress })
 
-					expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ address })
+					expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				})
 
 				it('converts the tile into a number of shapes equal to the number of stripes', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
 				describe('if a function for getting multiform coordinates is not specified', () => {
 					it('converts the tile into shapes using stripe coordinates', () => {
-						tile({ address })
+						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
 							jasmine.objectContaining({ getCoordinates: stripeCoordinatesSpy })
@@ -220,7 +220,7 @@ describe('tile', () => {
 						}
 						store.currentState.mainHoundstooth.basePattern.tileSettings.getCoordinates = { whenTileIsMultiform }
 
-						tile({ address })
+						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
 							jasmine.objectContaining({ getCoordinates: whenTileIsMultiform })
@@ -228,11 +228,11 @@ describe('tile', () => {
 					})
 				})
 
-				it('converts the tile into shapes with the address, colors, origin, size, and options for the tile', () => {
-					tile({ address })
+				it('converts the tile into shapes with the grid address, colors, origin, size, and options for the tile', () => {
+					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-						address,
+						gridAddress,
 						tileColors,
 						tileOrigin,
 						tileSize,
@@ -241,7 +241,7 @@ describe('tile', () => {
 				})
 
 				it('converts the tile into shapes, each one a stripe, each one knowing the index within the tile\'s stripes', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					const shapes = shapeSpy.calls.all()
 
@@ -252,7 +252,7 @@ describe('tile', () => {
 				})
 
 				it('converts the tile into shapes, each one a stripe, each one to choose which of its colors based on its index within the tile\'s stripes', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					const shapes = shapeSpy.calls.all()
 
@@ -263,7 +263,7 @@ describe('tile', () => {
 				})
 
 				it('tells each stripe the tile converts into how many stripes total it is converting into', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						stripeCount: stripePositionsForTile.length,
@@ -271,7 +271,7 @@ describe('tile', () => {
 				})
 
 				it('passes along data that the coordinates getting function will need', () => {
-					tile({ address })
+					tile({ gridAddress })
 
 					const shapes = shapeSpy.calls.all()
 
@@ -311,9 +311,9 @@ describe('tile', () => {
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {
 				colorUtilitiesIsTileUniformSpy.and.returnValue(true)
 
-				tile({ address })
+				tile({ gridAddress })
 
-				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ address })
+				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				expect(shapeSpy).toHaveBeenCalledWith(
 					jasmine.objectContaining({ getCoordinates: stripeCoordinatesSpy })

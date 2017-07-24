@@ -2,10 +2,10 @@ import codeUtilities from './codeUtilities'
 import { PERIMETER_SCALAR } from '../constants'
 import store from '../../store'
 
-const getStripePositionsForTile = ({ address } = {}) => {
+const getStripePositionsForTile = ({ gridAddress } = {}) => {
 	const getStripePositions = store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions
 	const getStripePositionsForTile = getStripePositions || standardStripePositions
-	return getStripePositionsForTile({ address })
+	return getStripePositionsForTile({ gridAddress })
 }
 
 const standardStripePositions = () => perStripe({ getStripePosition: standardStripePosition })

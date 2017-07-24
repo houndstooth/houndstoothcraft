@@ -20,13 +20,13 @@ describe('stripe utilities', () => {
 
 		it('uses a stripe position function if provided', () => {
 			const expectedStripePositions = []
-			const address = [ 3, 5 ]
+			const gridAddress = [ 3, 5 ]
 			let getStripePositionsSpy = jasmine.createSpy().and.returnValue(expectedStripePositions)
 			store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions = getStripePositionsSpy
 
-			const actualStripePositions = getStripePositionsForTile({ address })
+			const actualStripePositions = getStripePositionsForTile({ gridAddress })
 
-			expect(getStripePositionsSpy).toHaveBeenCalledWith({ address })
+			expect(getStripePositionsSpy).toHaveBeenCalledWith({ gridAddress })
 			expect(actualStripePositions).toBe(expectedStripePositions)
 		})
 	})

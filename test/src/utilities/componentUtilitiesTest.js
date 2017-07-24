@@ -9,7 +9,7 @@ import initialState from '../../../src/state/initialState'
 describe('component utilities', () => {
 	let getSetForTile
 	let settings
-	const address = [ 3, 5 ]
+	const gridAddress = [ 3, 5 ]
 	beforeEach(() => {
 		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		composeMainHoundstooth()
@@ -18,7 +18,7 @@ describe('component utilities', () => {
 
 	describe('#getSetForTile', () => {
 		describe('assignment', () => {
-			it('can use a weave-based assignment scheme and a tile\'s address to choose the tile\'s set from the overall grid set', () => {
+			it('can use a weave-based assignment scheme and a grid address to choose the tile\'s set from the overall grid set', () => {
 				const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 				const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 				settings = {
@@ -32,17 +32,17 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 
-			it('can use a supertile-based assignment scheme and a tile\'s address to choose the tile\'s set from the overall grid set', () => {
+			it('can use a supertile-based assignment scheme and a grid address to choose the tile\'s set from the overall grid set', () => {
 				// expected set for the tile takes the indicies of the supertile entry
 				// and maps them to entries in the set for grid
 				const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 				const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 				const expectedSetForTile = [ 'THIRD', 'FIRST', 'FIRST', 'SECOND' ]
 
-				// expected enty is in the 3rd column, 5th row, per the address, 
+				// expected enty is in the 3rd column, 5th row, per the grid address,
 				// modulus the rank of this supertile
 				settings = {
 					set: setForGrid,
@@ -56,7 +56,7 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 		})
 
@@ -73,7 +73,7 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 
 			it('defaults assignment to a basic weave, binary alternating and offset', () => {
@@ -81,7 +81,7 @@ describe('component utilities', () => {
 				const expectedSetForTile = [ 'FIRST', 'SECOND' ]
 				settings = { set: setForGrid }
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 
 			describe('when the assignment settings are present', () => {
@@ -99,7 +99,7 @@ describe('component utilities', () => {
 							},
 						}
 
-						expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+						expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 					})
 				})
 
@@ -112,7 +112,7 @@ describe('component utilities', () => {
 							assignment: { assignmentMode: 'WEAVE' },
 						}
 
-						expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+						expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 					})
 				})
 
@@ -126,17 +126,17 @@ describe('component utilities', () => {
 							assignment: { assignmentMode: 'SUPERTILE' },
 						}
 
-						expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+						expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 					})
 				})
 			})
 		})
 
 		describe('address offset', () => {
-			it('when in weave mode, it allows offsetting of the address', () => {
+			it('when in weave mode, it allows offsetting of the grid address', () => {
 				const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 				const expectedSetForTile = [ 'FIRST', 'SECOND' ]
-				const offsetAddress = ({ address }) => [ address[ 0 ] / 3, address[ 1 ] * 2 / 5 ]
+				const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ]
 				settings = {
 					set: setForGrid,
 					assignment: {
@@ -149,14 +149,14 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 
-			it('when in supertile mode, it allows offsetting of the address', () => {
+			it('when in supertile mode, it allows offsetting of the grid address', () => {
 				const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 				const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 				const expectedSetForTile = [ 'THIRD', 'FIRST', 'FIRST', 'SECOND' ]
-				const offsetAddress = ({ address }) => [ address[ 0 ] / 3, address[ 1 ] * 3 / 5 ]
+				const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ]
 				settings = {
 					set: setForGrid,
 					assignment: {
@@ -170,7 +170,7 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 		})
 
@@ -178,7 +178,7 @@ describe('component utilities', () => {
 			it('when in weave mode, it allows offsetting of the choice within the set for the whole grid', () => {
 				const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 				const expectedSetForTile = [ 'THIRD', 'FIRST' ]
-				const offsetSetForGridIndex = ({ address }) => address[ 0 ] + address[ 1 ]
+				const offsetSetForGridIndex = ({ gridAddress }) => gridAddress[ 0 ] + gridAddress[ 1 ]
 				settings = {
 					set: setForGrid,
 					assignment: {
@@ -191,14 +191,14 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 
 			it('when in supertile mode, it allows offsetting of the choice within the set for the whole grid', () => {
 				const setForGrid = [ 'FIRST', 'SECOND', 'THIRD' ]
 				const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 				const expectedSetForTile = [ 'SECOND', 'THIRD', 'THIRD', 'FIRST' ]
-				const offsetSetForGridIndex = ({ address }) => address[ 0 ] + address[ 1 ]
+				const offsetSetForGridIndex = ({ gridAddress }) => gridAddress[ 0 ] + gridAddress[ 1 ]
 				settings = {
 					set: setForGrid,
 					assignment: {
@@ -212,16 +212,16 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetForTile({ address, settings })).toEqual(expectedSetForTile)
+				expect(getSetForTile({ gridAddress, settings })).toEqual(expectedSetForTile)
 			})
 		})
 
 		describe('re-ordering of chosen set', () => {
 			it('can flip the grain of the houndstooth (by reversing the set)', () => {
-				const notFlippedResult = getSetForTile({ address })
+				const notFlippedResult = getSetForTile({ gridAddress })
 				settings = { assignment: { flipGrain: true } }
 
-				expect(notFlippedResult.reverse()).toEqual(getSetForTile({ address, settings }))
+				expect(notFlippedResult.reverse()).toEqual(getSetForTile({ gridAddress, settings }))
 			})
 
 			it('can turn the grain of the pattern into switcheroo', () => {
@@ -241,7 +241,7 @@ describe('component utilities', () => {
 				}
 				const iterator = codeUtilities.iterator
 				const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ]))
-				const setsForTiles = addresses.map(col => col.map(address => getSetForTile({ address, settings })))
+				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetForTile({ gridAddress, settings })))
 
 				const expectedSetsForTiles = [
 					[ [ 'a', 'b' ], [ 'b', 'c' ], [ 'd', 'c' ], [ 'd', 'e' ] ],
@@ -255,13 +255,13 @@ describe('component utilities', () => {
 			})
 
 			it('calls an arbitrary set transformation function if provided', () => {
-				const transformAssignedSet = ({ setForTile, address }) => {
-					return address[ 0 ] === 1 ? setForTile.concat(setForTile) : setForTile
+				const transformAssignedSet = ({ setForTile, gridAddress }) => {
+					return gridAddress[ 0 ] === 1 ? setForTile.concat(setForTile) : setForTile
 				}
 				settings = { assignment: { transformAssignedSet } }
 				const iterator = codeUtilities.iterator
 				const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ]))
-				const setsForTiles = addresses.map(col => col.map(address => getSetForTile({ address, settings })))
+				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetForTile({ gridAddress, settings })))
 
 				const expectedSetsForTiles = [
 					[
@@ -362,28 +362,28 @@ describe('component utilities', () => {
 	})
 
 	describe('#getTileOriginAndSize', () => {
-		const address = [ 7, 11 ]
+		const gridAddress = [ 7, 11 ]
 		const tileSizeSetting = 40
 		let getTileOriginAndSize
 		beforeEach(() => getTileOriginAndSize = componentUtilities.getTileOriginAndSize)
 
-		it('returns the tile size, and scales the address by it to get the origin', () => {
+		it('returns the tile size, and scales the grid address by it to get the origin', () => {
 			store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting }
 
-			expect(getTileOriginAndSize({ address })).toEqual({
+			expect(getTileOriginAndSize({ gridAddress })).toEqual({
 				tileSize: tileSizeSetting,
 				tileOrigin: [ 7 * tileSizeSetting, 11 * tileSizeSetting ],
 			})
 		})
 
 		it('uses a custom get tile origin and sized unit function if provided', () => {
-			const custom = ({ address }) => ({
+			const custom = ({ gridAddress }) => ({
 				tileSize: tileSizeSetting * tileSizeSetting,
-				tileOrigin: [ address[ 1 ] * tileSizeSetting, address[ 0 ] * tileSizeSetting ],
+				tileOrigin: [ gridAddress[ 1 ] * tileSizeSetting, gridAddress[ 0 ] * tileSizeSetting ],
 			})
 			store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize = custom
 
-			expect(getTileOriginAndSize({ address })).toEqual({
+			expect(getTileOriginAndSize({ gridAddress })).toEqual({
 				tileSize: tileSizeSetting * tileSizeSetting,
 				tileOrigin: [ 11 * tileSizeSetting, 7 * tileSizeSetting ],
 			})

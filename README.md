@@ -95,7 +95,7 @@ Note that both an `animationsPattern` pattern and an `animationSettings` setting
 
 Both `iterationsPattern` and `iterationSettings` exist as well, for the same reason.
 
-## component hierarchy
+## execution & component hierarchy
 
 In short:
 - [animation](#animation)
@@ -108,34 +108,56 @@ In short:
 
 When `animating` is false, essentially only a single animation frame is drawn.
 
-Typically the canvas is cleared in between each animation frame, but this can be disabled to make some weird effects.
+Typically:
+- the canvas is cleared in-between each animation frame
 
-When exporting frames is on, the next animation frame will not be rendered until the current one has finished saving.
+Potentially:
+- clearing can be disabled to make some weird effects
+
+When `exportFrames` is set to `true`, the next animation frame will not be rendered until the current one has finished saving. This may negatively impact the in-browser experience, but it is a solution if your houndstooth is too computationally expensive to watch at the desired frame rate; simply export the frames and assemble them into a video using a tool such as ImageJ.
 
 ### iteration
 
-Each animation frame may require many semi-transparent layers to be rendered. Iterations are renders with adjustments just like animations, with key differences being:
-- iterations happen instantaneously (at least they are supposed to!)
-- neighboring iterations may look completely different from one another, while animation frame neighbors are often very similar
+Whether [animating](#animation) or not, you may find that your houndstooth is best described not as a single [grid](#grid) of [tiles](#tile), but as many layers of such grids. 
+
+Of course, when iterating, your grids should each have at least some (semi-)transparent areas in order to allow lower layers to show through.
 
 When `iterating` is false, essentially only a single iteration frame is drawn.
 
+When both animating and iterating, the described set of iterations are drawn once for each animation frame. Of course, if your pattern is complex and your frame rate is fast, you may experience lag if you call for many iterations.
+
+Differences between iterations and animations:
+- Animation frames typically occur in very quick succession (maximal frame rate for maximal persistence of vision effect). Iterations, however, are considered to occur instantaneously/simultaneously. They are non-temporal; just a breaking down of a single image in a single moment in time into multiple layers.
+- Animation frame neighbors are often very similar looking. If they weren't, the animation wouldn't be smooth, or wouldn't be considered to be animation at all.  Neighboring iteration frames, however, may look completely different from one another, or may look quite similar. It all depends on the intended effect.
+
 ### grid
 
-A grid is given some dimensions and proceeds to generate a bunch of abstract addresses. An address has no units. A typical grid would receive the dimension 2 and size 16, meaning it will generate 16x16 addresses with x, y.
+A `grid` represents a tiling of the plane. It creates many `gridAddress`es and calls the [tile](#tile) function on each one.
 
-Each address will make a tile.
+Typically:
+- a grid would receive something like "two-dimensional, sixteen by sixteen tiles", meaning it would generate 256 (16^2) addresses: \[ \[ 0, 0 \], \[ 0, 1 \] ... \[ 15, 15 \] \]
+
+`gridAddress` has no units. It does not necessarily have a direct correlation with pixels on the canvas. It is abstract. It is a coordinate system for identifying tiles relative to each other, which of course can be (and is typically) used to position them next to each other on the canvas, but can be purposed otherwise. 
 
 ### tile
 
-A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `tileColors`
-- `tileOrigin` defaults to mapping the `gridAddress` to have each dimension multiplied by the `tileSizeSetting`
-- `tileSize` also (naturally) defaults to the `tileSizeSetting`
-- potentially (e.g. in the "houndsmorphosis" effect) this step gets complicated
-- these are in "units"; units will be the same as pixels unless you have added any zoom
-- tile can be pretty complex, but it understood to be the topmost repeating element
-- a tile can break down into multiple shapes, yes, but all of these shapes should have the same origin and size, so that they fit together into a tile; otherwise, why are you grouping them into something you consider a tile?
-- tile also gathers an `coordinatesFunction` (or many of them) which it will pass on
+A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `tileColors`.
+
+Typically: 
+- `tileOrigin` defaults to multiplying each dimension of the `gridAddress` by the `tileSizeSetting`.
+- `tileSize` also (naturally) defaults to the `tileSizeSetting`.
+- A tile 
+
+Potentially:
+- (e.g. in the "houndsmorphosis" effect) each tile has its own size, and its origin is a complex function of address, some of which even result in no tile.
+- A tile can receive a custom shapes function
+
+Both `tileOrigin` and `tileSize` are expressed in units called "units". Units will be the same as pixels unless one changes the zoom from the default of 1 in the `viewSettings`.
+
+A tile 
+- can be pretty complex, but it understood to be the topmost repeating element
+- can break down into multiple shapes, yes, but all of these shapes should have the same origin and size, so that they fit together into a tile; otherwise, why are you grouping them into something you consider a tile?
+- also gathers an `coordinatesFunction` (or many of them) which it will pass on
 
 ### shape
 

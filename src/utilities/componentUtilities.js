@@ -3,7 +3,7 @@ import codeUtilities from './codeUtilities'
 import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
-const getSetForTile = ({ address, settings }) => {
+const getSetForTile = ({ gridAddress, settings }) => {
 	const { wrappedIndex } = codeUtilities
 
 	let { set: setForGrid, assignment } = settings || {}
@@ -14,24 +14,24 @@ const getSetForTile = ({ address, settings }) => {
 
 	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, assignmentMode, supertile, weave, flipGrain, switcheroo } = assignment
 
-	const addressOffset = offsetAddress ? offsetAddress({ address }) : [ 0, 0 ]
-	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ address }) : 0
+	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
+	const setForGridIndexOffset = offsetSetForGridIndex ? offsetSetForGridIndex({ gridAddress }) : 0
 	assignmentMode = assignmentMode || currentAssignment.assignmentMode
 	supertile = supertile || currentAssignment.supertile
 	weave = weave || currentAssignment.weave
 	let setForTile
 	if (assignmentMode === 'WEAVE') {
 		const { rows, columns } = weave
-		const columnsIndex = wrappedIndex({ array: columns, index: address[ 0 ] + addressOffset[ 0 ] })
-		const rowsIndex = wrappedIndex({ array: rows, index: address[ 1 ] + addressOffset[ 1 ] })
+		const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
+		const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 		setForTile = [
 			wrappedIndex({ array: setForGrid, index: rowsIndex + setForGridIndexOffset }),
 			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset }),
 		]
 	}
 	else if (assignmentMode === 'SUPERTILE') {
-		const supertileColumn = wrappedIndex({ array: supertile, index: address[ 0 ] + addressOffset[ 0 ] })
-		const supertileEntry = wrappedIndex({ array: supertileColumn, index: address[ 1 ] + addressOffset[ 1 ] })
+		const supertileColumn = wrappedIndex({ array: supertile, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
+		const supertileEntry = wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 		setForTile = supertileEntry.map(index => wrappedIndex({
 			array: setForGrid,
 			index: index + setForGridIndexOffset,
@@ -39,15 +39,15 @@ const getSetForTile = ({ address, settings }) => {
 	}
 
 	if (flipGrain) setForTile = setForTile.reverse()
-	if (switcheroo) setForTile = switcherooSet({ setForTile, address })
-	if (transformAssignedSet) setForTile = transformAssignedSet({ setForTile, address })
+	if (switcheroo) setForTile = switcherooSet({ setForTile, gridAddress })
+	if (transformAssignedSet) setForTile = transformAssignedSet({ setForTile, gridAddress })
 
 	return setForTile
 }
 
-const switcherooSet = ({ setForTile, address }) => {
-	const xMod = address[ 0 ] % 4
-	const yMod = address[ 1 ] % 4
+const switcherooSet = ({ setForTile, gridAddress }) => {
+	const xMod = gridAddress[ 0 ] % 4
+	const yMod = gridAddress[ 1 ] % 4
 	if (
 		(xMod === 1 && yMod === 1) ||
 		(xMod === 3 && yMod === 3) ||
@@ -75,17 +75,17 @@ const rotateShapeAboutShapeCenter = ({ coordinates, tileOrigin, tileSize }) => {
 	return coordinates
 }
 
-const getStandardTileOriginAndSize = ({ address }) => {
+const getStandardTileOriginAndSize = ({ gridAddress }) => {
 	const tileSize = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	return {
-		tileOrigin: [ address[ 0 ] * tileSize, address[ 1 ] * tileSize ],
+		tileOrigin: [ gridAddress[ 0 ] * tileSize, gridAddress[ 1 ] * tileSize ],
 		tileSize,
 	}
 }
 
-const getTileOriginAndSize = ({ address }) => {
+const getTileOriginAndSize = ({ gridAddress }) => {
 	const getTileOriginAndSize = store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize || getStandardTileOriginAndSize
-	return getTileOriginAndSize({ address })
+	return getTileOriginAndSize({ gridAddress })
 }
 
 export default {

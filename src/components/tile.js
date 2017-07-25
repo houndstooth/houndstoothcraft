@@ -4,8 +4,8 @@ import shape from './shape'
 import componentUtilities from '../utilities/componentUtilities'
 import gatherOptions from '../application/gatherOptions'
 import stripeUtilities from '../utilities/stripeUtilities'
-import squareCoordinates from '../shapes/squareCoordinates'
-import stripeCoordinates from '../shapes/stripeCoordinates'
+import squareOutline from '../outlines/squareOutline'
+import stripeOutline from '../outlines/stripeOutline'
 import { PERIMETER_SCALAR } from '../constants'
 import store from '../../store'
 
@@ -15,13 +15,13 @@ export default ({ gridAddress }) => {
 
 	const tileColors = colorUtilities.getColorsForTile({ gridAddress })
 
-	let { tileToShapes, getCoordinates, isTileUniform, collapseSameColoredShapesWithinTile } = store.currentState.mainHoundstooth.basePattern.tileSettings || {}
+	let { tileToShapes, getOutline, isTileUniform, collapseSameColoredShapesWithinTile } = store.currentState.mainHoundstooth.basePattern.tileSettings || {}
 	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	tileToShapes = tileToShapes || shape
-	const getCoordinatesHere = {}
-	getCoordinatesHere.whenTileIsUniform = getCoordinates && getCoordinates.whenTileIsUniform || squareCoordinates
-	getCoordinatesHere.whenTileIsMultiform = getCoordinates && getCoordinates.whenTileIsMultiform || stripeCoordinates
+	const getOutlineHere = {}
+	getOutlineHere.whenTileIsUniform = getOutline && getOutline.whenTileIsUniform || squareOutline
+	getOutlineHere.whenTileIsMultiform = getOutline && getOutline.whenTileIsMultiform || stripeOutline
 
 	const options = gatherOptions({ gridAddress })
 
@@ -29,7 +29,7 @@ export default ({ gridAddress }) => {
 		isTileUniform = isTileUniform || colorUtilities.isTileUniform
 		if (isTileUniform({ tileColors, options })) {
 			tileToShapes({
-				getCoordinates: getCoordinatesHere.whenTileIsUniform,
+				getOutline: getOutlineHere.whenTileIsUniform,
 				gridAddress,
 				tileColors,
 				tileOrigin,
@@ -43,7 +43,7 @@ export default ({ gridAddress }) => {
 	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ gridAddress })
 	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
 		tileToShapes({
-			getCoordinates: getCoordinatesHere.whenTileIsMultiform,
+			getOutline: getOutlineHere.whenTileIsMultiform,
 			gridAddress,
 			tileColors,
 			tileOrigin,
@@ -52,7 +52,7 @@ export default ({ gridAddress }) => {
 			colorsIndex: stripeIndex,
 			stripeIndex,
 			stripeCount: stripePositionsForTile.length,
-			coordinatesOptions: {
+			outlineOptions: {
 				stripeStart,
 				stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || PERIMETER_SCALAR,
 			},

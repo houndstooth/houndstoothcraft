@@ -95,7 +95,7 @@ describe('view utilities', () => {
 		})
 	})
 
-	describe('#rotateShapeAboutCanvasCenter', () => {
+	describe('#rotateCoordinatesAboutCanvasCenter', () => {
 		it('works', () => {
 			store.currentState.mainHoundstooth.basePattern.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
 			store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
@@ -105,7 +105,7 @@ describe('view utilities', () => {
 				[ 0, 40 ],
 			]
 
-			const actualCoordinates = viewUtilities.rotateShapeAboutCanvasCenter({ coordinates })
+			const actualCoordinates = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates })
 
 			const expectedCoordinates = [
 				[ 200, 0 ],
@@ -122,7 +122,7 @@ describe('view utilities', () => {
 				[ 40, 40 ],
 			]
 
-			const actualCoordinates = viewUtilities.rotateShapeAboutCanvasCenter({ coordinates })
+			const actualCoordinates = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates })
 
 			expect(actualCoordinates).toEqual(coordinates)
 			expect(actualCoordinates).toBe(coordinates)

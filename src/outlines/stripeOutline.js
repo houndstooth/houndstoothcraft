@@ -1,6 +1,6 @@
-export default ({ tileOrigin, tileSize, coordinatesOptions }) => {
-	const { stripeStart, stripeEnd } = coordinatesOptions
-	let coordinates = []
+export default ({ tileOrigin, tileSize, outlineOptions }) => {
+	const { stripeStart, stripeEnd } = outlineOptions
+	let outline = []
 	const x = tileOrigin[ 0 ]
 	const y = tileOrigin[ 1 ]
 	const tileArgs = { x, y, tileSize }
@@ -11,48 +11,48 @@ export default ({ tileOrigin, tileSize, coordinatesOptions }) => {
 	const stripeEndsInBottomRightCorner = stripeEnd === 2
 
 	if (stripeStartsInTopLeftHalf) {
-		coordinates.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeStart }))
+		outline.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeStart }))
 	}
 	else {
-		coordinates.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeStart }))
+		outline.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeStart }))
 	}
 
 	if (!stripeEndsInBottomRightHalf) {
-		coordinates.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeEnd }))
-		coordinates.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeEnd }))
+		outline.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeEnd }))
+		outline.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeEnd }))
 	}
 	else {
 		if (stripeStartsInTopLeftHalf) {
-			coordinates.push(pointInTopRightCorner(tileArgs))
+			outline.push(pointInTopRightCorner(tileArgs))
 		}
 
 		if (stripeEndsInBottomRightCorner) {
-			coordinates.push(pointInBottomRightCorner(tileArgs))
+			outline.push(pointInBottomRightCorner(tileArgs))
 		}
 		else {
-			coordinates.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeEnd }))
-			coordinates.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeEnd }))
+			outline.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeEnd }))
+			outline.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeEnd }))
 		}
 	}
 
 	if (!stripeStartsInTopLeftCorner) {
 		if (stripeStartsInTopLeftHalf) {
 			if (stripeEndsInBottomRightHalf) {
-				coordinates.push(pointInBottomLeftCorner(tileArgs))
+				outline.push(pointInBottomLeftCorner(tileArgs))
 			}
-			coordinates.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeStart }))
+			outline.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeStart }))
 		}
 		else {
-			coordinates.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeStart }))
+			outline.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeStart }))
 		}
 	}
 	else {
 		if (stripeEndsInBottomRightHalf) {
-			coordinates.push(pointInBottomLeftCorner(tileArgs))
+			outline.push(pointInBottomLeftCorner(tileArgs))
 		}
 	}
 
-	return coordinates
+	return outline
 }
 
 const pointAlongTopEdge = ({ x, y, tileSize }, { stripePosition }) => ([

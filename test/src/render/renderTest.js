@@ -26,38 +26,38 @@ describe('render', () => {
 		spyOn(context, 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
 	})
 
-	it('returns early if there are no coordinates', () => {
-		const coordinates = []
+	it('returns early if there are no coordinates in the outline', () => {
+		const outline = []
 
-		render({ shapeColor, coordinates })
-
-		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(contextCallsOrder).toEqual([])
-	})
-
-	it('returns early if there is only one coordinate, because a point has no area', () => {
-		const coordinates = [ [ 0, 1 ] ]
-
-		render({ shapeColor, coordinates })
+		render({ shapeColor, outline })
 
 		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
 		expect(contextCallsOrder).toEqual([])
 	})
 
-	it('returns early if there are only two coordinates, because a line has no area', () => {
-		const coordinates = [ [ 0, 1 ], [ 1, 1 ] ]
+	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
+		const outline = [ [ 0, 1 ] ]
 
-		render({ shapeColor, coordinates })
+		render({ shapeColor, outline })
 
 		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
 		expect(contextCallsOrder).toEqual([])
 	})
 
-	describe('when there are at least three coordinates', () => {
+	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
+		const outline = [ [ 0, 1 ], [ 1, 1 ] ]
+
+		render({ shapeColor, outline })
+
+		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
+		expect(contextCallsOrder).toEqual([])
+	})
+
+	describe('when there are at least three coordinates in the outline', () => {
 		beforeEach(() => {
-			const coordinates = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+			const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
-			render({ shapeColor, coordinates })
+			render({ shapeColor, outline })
 		})
 
 		it('parses the shape\'s color', () => {
@@ -68,7 +68,7 @@ describe('render', () => {
 			expect(context.fillStyle).toEqual(parsedColor)
 		})
 
-		it('draws the path with the correct coordinates and fills it', () => {
+		it('draws the path with the correct outline and fills it', () => {
 			expect(contextCallsOrder).toEqual([
 				{ method: 'beginPath' },
 				{ method: 'moveTo', x: 0, y: 1 },

@@ -1,7 +1,7 @@
 import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
-const rotateShapeAboutCanvasCenter = ({ coordinates }) => {
+const rotateCoordinatesAboutCanvasCenter = ({ coordinates }) => {
 	const { canvasSize, rotateViewAboutCanvasCenter } = store.currentState.mainHoundstooth.basePattern.viewSettings || {}
 
 	if (rotateViewAboutCanvasCenter) {
@@ -63,6 +63,6 @@ const applyZoomAndScroll = ({ coordinates }) => {
 }
 
 export default {
-	rotateShapeAboutCanvasCenter,
+	rotateCoordinatesAboutCanvasCenter,
 	applyZoomAndScroll,
 }

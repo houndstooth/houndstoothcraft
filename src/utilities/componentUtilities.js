@@ -60,14 +60,14 @@ const switcherooSet = ({ setForTile, gridAddress }) => {
 	return setForTile
 }
 
-const rotateShapeAboutShapeCenter = ({ coordinates, tileOrigin, tileSize }) => {
+const rotateCoordinatesAboutCanvasCenter = ({ coordinates, tileOrigin, tileSize }) => {
 	if (store.currentState.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: [
 				tileOrigin[ 0 ] + tileSize / 2,
 				tileOrigin[ 1 ] + tileSize / 2,
 			],
-			coordinates: coordinates,
+			coordinates,
 			rotation: QUARTER_OF_CIRCLE_ROTATION,
 		})
 	}
@@ -90,6 +90,6 @@ const getTileOriginAndSize = ({ gridAddress }) => {
 
 export default {
 	getSetForTile,
-	rotateShapeAboutShapeCenter,
+	rotateCoordinatesAboutCanvasCenter,
 	getTileOriginAndSize,
 }

@@ -280,15 +280,15 @@ describe('component utilities', () => {
 		})
 	})
 
-	describe('#rotateShapeAboutShapeCenter', () => {
+	describe('#rotateCoordinatesAboutCanvasCenter', () => {
 		const coordinates = [
 			[ 0, 0 ],
 			[ 5, 0 ],
 			[ 0, 5 ],
 		]
 
-		let rotateShapeAboutShapeCenter
-		beforeEach(() => rotateShapeAboutShapeCenter = componentUtilities.rotateShapeAboutShapeCenter)
+		let rotateCoordinatesAboutCanvasCenter
+		beforeEach(() => rotateCoordinatesAboutCanvasCenter = componentUtilities.rotateCoordinatesAboutCanvasCenter)
 
 		describe('basePattern stripe diagonal', () => {
 			describe('when principal', () => {
@@ -298,11 +298,11 @@ describe('component utilities', () => {
 					}
 				})
 
-				it('rotates the coordinates a quarter of the way around, about the shape\'s center', () => {
+				it('rotates the outline a quarter of the way around, about the shape\'s center', () => {
 					const tileOrigin = [ 0, 0 ]
 					const tileSize = 5
 
-					const result = rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })
+					const result = rotateCoordinatesAboutCanvasCenter({ coordinates, tileOrigin, tileSize })
 
 					const expectedCoordinates = [
 						[ 5, 0 ],
@@ -314,11 +314,11 @@ describe('component utilities', () => {
 					}))
 				})
 
-				it('handles the situation where the center of the shape is outside its coordinates', () => {
+				it('handles the situation where the center of the shape is outside its outline', () => {
 					const tileOrigin = [ 0, 0 ]
 					const tileSize = 10
 
-					const result = rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })
+					const result = rotateCoordinatesAboutCanvasCenter({ coordinates, tileOrigin, tileSize })
 
 					const expectedCoordinates = [
 						[ 10, 0 ],
@@ -330,11 +330,11 @@ describe('component utilities', () => {
 					}))
 				})
 
-				it('handles the situation where the origin of the shape is outside its coordinates', () => {
+				it('handles the situation where the origin of the shape is outside its outline', () => {
 					const tileOrigin = [ 5, 5 ]
 					const tileSize = 5
 
-					const actualCoordinates = rotateShapeAboutShapeCenter(
+					const actualCoordinates = rotateCoordinatesAboutCanvasCenter(
 						{ coordinates, tileOrigin, tileSize }
 					)
 
@@ -356,7 +356,7 @@ describe('component utilities', () => {
 				const tileOrigin = [ 0, 0 ]
 				const tileSize = 5
 
-				expect(rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })).toEqual(coordinates)
+				expect(rotateCoordinatesAboutCanvasCenter({ coordinates, tileOrigin, tileSize })).toEqual(coordinates)
 			})
 		})
 	})

@@ -3,17 +3,17 @@ import componentUtilities from '../utilities/componentUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import viewUtilities from '../utilities/viewUtilities'
 
-export default ({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions }) => {
+export default ({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions }) => {
 	const shapeColor = codeUtilities.wrappedIndex({ array: tileColors, index: colorsIndex })
 	if (shapeColor.a === 0) return
 
-	let coordinates = getCoordinates({ tileOrigin, tileSize, coordinatesOptions })
-	if (!coordinates) return
+	let outline = getOutline({ tileOrigin, tileSize, outlineOptions })
+	if (!outline) return
 
-	coordinates = componentUtilities.rotateShapeAboutShapeCenter({ coordinates, tileOrigin, tileSize })
+	outline = componentUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates: outline, tileOrigin, tileSize })
 
-	coordinates = viewUtilities.applyZoomAndScroll({ coordinates })
-	coordinates = viewUtilities.rotateShapeAboutCanvasCenter({ coordinates })
+	outline = viewUtilities.applyZoomAndScroll({ coordinates: outline })
+	outline = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates: outline })
 
-	render({ shapeColor, coordinates })
+	render({ shapeColor, outline })
 }

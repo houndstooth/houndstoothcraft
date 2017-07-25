@@ -9,8 +9,8 @@ describe('tile', () => {
 	const gridAddress = [ 3, 5 ]
 
 	let shapeSpy
-	let squareCoordinatesSpy
-	let stripeCoordinatesSpy
+	let squareOutlineSpy
+	let stripeOutlineSpy
 	let gatherOptionsSpy
 
 	let getColorsForTileSpy
@@ -19,10 +19,10 @@ describe('tile', () => {
 	beforeEach(() => {
 		shapeSpy = jasmine.createSpy()
 		tile.__Rewire__('shape', shapeSpy)
-		squareCoordinatesSpy = jasmine.createSpy()
-		tile.__Rewire__('squareCoordinates', squareCoordinatesSpy)
-		stripeCoordinatesSpy = jasmine.createSpy()
-		tile.__Rewire__('stripeCoordinates', stripeCoordinatesSpy)
+		squareOutlineSpy = jasmine.createSpy()
+		tile.__Rewire__('squareOutline', squareOutlineSpy)
+		stripeOutlineSpy = jasmine.createSpy()
+		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
 		gatherOptionsSpy = jasmine.createSpy()
 		tile.__Rewire__('gatherOptions', gatherOptionsSpy)
 
@@ -32,8 +32,8 @@ describe('tile', () => {
 
 	afterEach(() => {
 		tile.__ResetDependency__('shape')
-		tile.__ResetDependency__('squareCoordinates')
-		tile.__ResetDependency__('stripeCoordinates')
+		tile.__ResetDependency__('squareOutline')
+		tile.__ResetDependency__('stripeOutline')
 		tile.__ResetDependency__('gatherOptions')
 	})
 
@@ -150,26 +150,26 @@ describe('tile', () => {
 					expect(stripeUtilities.getStripePositionsForTile).not.toHaveBeenCalled()
 				})
 
-				describe('if a function for getting uniform coordinates is not specified', () => {
-					it('converts the tile into shapes using square coordinates', () => {
+				describe('if a function for getting the outline of the shape when the tile is uniform is not specified', () => {
+					it('converts the tile into a shape with the outline of a square', () => {
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getCoordinates: squareCoordinatesSpy })
+							jasmine.objectContaining({ getOutline: squareOutlineSpy })
 						)
 					})
 				})
 
-				describe('if a function for getting uniform coordinates is specified', () => {
-					it('converts the tile into shapes using it', () => {
+				describe('if a function for getting the outline of the shape when the tile is uniform is specified', () => {
+					it('converts the tile into a shape with the outline gotten from using it', () => {
 						const whenTileIsUniform = () => {
 						}
-						store.currentState.mainHoundstooth.basePattern.tileSettings.getCoordinates = { whenTileIsUniform }
+						store.currentState.mainHoundstooth.basePattern.tileSettings.getOutline = { whenTileIsUniform }
 
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getCoordinates: whenTileIsUniform })
+							jasmine.objectContaining({ getOutline: whenTileIsUniform })
 						)
 					})
 				})
@@ -204,26 +204,26 @@ describe('tile', () => {
 					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
-				describe('if a function for getting multiform coordinates is not specified', () => {
-					it('converts the tile into shapes using stripe coordinates', () => {
+				describe('if a function for getting the outline of the shape when the tile is multiform is not specified', () => {
+					it('converts the tile into shapes with the outlines of stripes', () => {
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getCoordinates: stripeCoordinatesSpy })
+							jasmine.objectContaining({ getOutline: stripeOutlineSpy })
 						)
 					})
 				})
 
-				describe('if a function for getting multiform coordinates is specified', () => {
-					it('converts the tile into shapes using it', () => {
+				describe('if a function for getting the outline of the shape when the tile is multiform is specified', () => {
+					it('converts the tile into shapes with the outline gotten from using it', () => {
 						const whenTileIsMultiform = () => {
 						}
-						store.currentState.mainHoundstooth.basePattern.tileSettings.getCoordinates = { whenTileIsMultiform }
+						store.currentState.mainHoundstooth.basePattern.tileSettings.getOutline = { whenTileIsMultiform }
 
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getCoordinates: whenTileIsMultiform })
+							jasmine.objectContaining({ getOutline: whenTileIsMultiform })
 						)
 					})
 				})
@@ -270,31 +270,31 @@ describe('tile', () => {
 					}))
 				})
 
-				it('passes along data that the coordinates getting function will need', () => {
+				it('passes along options that the outline getting function will need', () => {
 					tile({ gridAddress })
 
 					const shapes = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({
-						coordinatesOptions: {
+						outlineOptions: {
 							stripeStart: stripePositionsForTile[ 0 ],
 							stripeEnd: stripePositionsForTile[ 1 ],
 						},
 					}))
 					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({
-						coordinatesOptions: {
+						outlineOptions: {
 							stripeStart: stripePositionsForTile[ 1 ],
 							stripeEnd: stripePositionsForTile[ 2 ],
 						},
 					}))
 					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({
-						coordinatesOptions: {
+						outlineOptions: {
 							stripeStart: stripePositionsForTile[ 2 ],
 							stripeEnd: stripePositionsForTile[ 3 ],
 						},
 					}))
 					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({
-						coordinatesOptions: {
+						outlineOptions: {
 							stripeStart: stripePositionsForTile[ 3 ],
 							stripeEnd: PERIMETER_SCALAR,
 						},
@@ -316,7 +316,7 @@ describe('tile', () => {
 				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				expect(shapeSpy).toHaveBeenCalledWith(
-					jasmine.objectContaining({ getCoordinates: stripeCoordinatesSpy })
+					jasmine.objectContaining({ getOutline: stripeOutlineSpy })
 				)
 			})
 		})

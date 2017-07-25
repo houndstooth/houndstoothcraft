@@ -10,15 +10,15 @@ describe('shape', () => {
 	const tileSize = 45
 	const tileColors = []
 	const colorsIndex = 7
-	let getCoordinates
-	const coordinatesOptions = {}
-	const coordinatesRotatedAboutShapeCenter = []
+	let getOutline
+	const outlineOptions = {}
+	const outlineRotatedAboutShapeCenter = []
 
 	beforeEach(() => {
 		composeMainHoundstooth()
-		spyOn(componentUtilities, 'rotateShapeAboutShapeCenter').and.returnValue(coordinatesRotatedAboutShapeCenter)
+		spyOn(componentUtilities, 'rotateCoordinatesAboutCanvasCenter').and.returnValue(outlineRotatedAboutShapeCenter)
 		renderSpy = jasmine.createSpy()
-		getCoordinates = jasmine.createSpy()
+		getOutline = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
 	})
 
@@ -26,7 +26,7 @@ describe('shape', () => {
 		it('looks for the color in the tile colors using the colors index', () => {
 			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 0 })
 
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
 			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({ array: tileColors, index: colorsIndex })
 		})
@@ -37,48 +37,48 @@ describe('shape', () => {
 			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 0 })
 		})
 
-		it('returns early, not bothering to get the coordinates, rotate them, or render', () => {
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+		it('returns early, not bothering to get the outline, rotate it, or render', () => {
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
-			expect(getCoordinates).not.toHaveBeenCalled()
-			expect(componentUtilities.rotateShapeAboutShapeCenter).not.toHaveBeenCalled()
+			expect(getOutline).not.toHaveBeenCalled()
+			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
 
-	describe('when no coordinates are returned from the get coordinates function', () => {
+	describe('when no outline is returned from the get outline function', () => {
 		beforeEach(() => {
 			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 1 })
-			getCoordinates.and.returnValue(null)
+			getOutline.and.returnValue(null)
 		})
 
 		it('returns early, not trying to rotate nothing or render', () => {
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
-			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, tileSize, coordinatesOptions })
-			expect(componentUtilities.rotateShapeAboutShapeCenter).not.toHaveBeenCalled()
+			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
+			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
 
-	describe('when the color is not transparent and coordinates received', () => {
-		const coordinates = []
+	describe('when the color is not transparent and an outline is received', () => {
+		const outline = []
 		const shapeColor = { a: 1 }
-		const coordinatesRotatedAboutCanvasCenter = []
+		const outlineRotatedAboutCanvasCenter = []
 
 		beforeEach(() => {
 			spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColor)
-			spyOn(viewUtilities, 'rotateShapeAboutCanvasCenter').and.returnValue(coordinatesRotatedAboutCanvasCenter)
-			getCoordinates.and.returnValue(coordinates)
+			spyOn(viewUtilities, 'rotateCoordinatesAboutCanvasCenter').and.returnValue(outlineRotatedAboutCanvasCenter)
+			getOutline.and.returnValue(outline)
 		})
 
-		it('rotates the coordinates and renders them', () => {
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getCoordinates, coordinatesOptions })
+		it('rotates the outline and renders them', () => {
+			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
-			expect(getCoordinates).toHaveBeenCalledWith({ tileOrigin, tileSize, coordinatesOptions })
-			expect(componentUtilities.rotateShapeAboutShapeCenter).toHaveBeenCalledWith({ coordinates, tileOrigin, tileSize })
-			expect(viewUtilities.rotateShapeAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: coordinatesRotatedAboutShapeCenter })
-			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, coordinates: coordinatesRotatedAboutCanvasCenter })
+			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
+			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: outline, tileOrigin, tileSize })
+			expect(viewUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: outlineRotatedAboutShapeCenter })
+			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, outline: outlineRotatedAboutCanvasCenter })
 		})
 	})
 

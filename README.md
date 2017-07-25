@@ -157,11 +157,11 @@ Both `tileOrigin` and `tileSize` are expressed in units called "units". Units wi
 A tile 
 - can be pretty complex, but it understood to be the topmost repeating element
 - can break down into multiple shapes, yes, but all of these shapes should have the same origin and size, so that they fit together into a tile; otherwise, why are you grouping them into something you consider a tile?
-- also gathers an `coordinatesFunction` (or many of them) which it will pass on
+- also gathers an `outlineFunction` (or many of them) which it will pass on
 
 ### shape
 
-A shape converts a `tileOrigin`, `tileSize`, and `coordinatesFunction` into an `outline`. 
+A shape converts a `tileOrigin`, `tileSize`, and `outlineFunction` into an `outline`, and converts `tileColors` into a `color`.
 A shape has only a single color and outline.
 
 This outline then gets rotated, scrolled, and sized per any view settings until it represents what we're actually going to see on the screen. 

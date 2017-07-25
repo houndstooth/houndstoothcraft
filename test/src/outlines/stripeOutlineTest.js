@@ -1,6 +1,6 @@
-import stripeCoordinates from '../../../src/shapes/stripeCoordinates'
+import stripeOutline from '../../../src/outlines/stripeOutline'
 
-describe('stripe coordinates', () => {
+describe('stripe outline', () => {
 	const tileOrigin = [ 0, 0 ]
 	const tileSize = 1
 	let stripeStart, stripeEnd
@@ -12,8 +12,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 0.5)
 
 			it('makes a triangle within the top left half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0, 0 ],
 					[ 0.5, 0 ],
@@ -26,8 +26,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 1)
 
 			it('makes a triangle out of the entire top left half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0, 0 ],
 					[ 1, 0 ],
@@ -40,8 +40,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 1.5)
 
 			it('makes a square with a triangle subtracted from the bottom right half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0, 0 ],
 					[ 1, 0 ],
@@ -60,8 +60,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 0.75)
 
 			it('makes a trapezoid within the top left half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0.5, 0 ],
 					[ 0.75, 0 ],
@@ -75,8 +75,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 1)
 
 			it('makes a trapezoid within the top left half, on the edge with the bottom right half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0.5, 0 ],
 					[ 1, 0 ],
@@ -90,8 +90,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 1.5)
 
 			it('makes a hexagon with vertices in the bottom left and the top right corners, plus one on each of the square\'s edges', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0.5, 0 ],
 					[ 1, 0 ],
@@ -107,8 +107,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 2)
 
 			it('makes a pentagon straddling with vertices at the bottom right, bottom left, and top right corners, as well as one on each of the left and top edges', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 0.5, 0 ],
 					[ 1, 0 ],
@@ -127,8 +127,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 1.5)
 
 			it('makes a trapezoid within the bottom right half, at the edge of the top left half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 1, 0 ],
 					[ 1, 0.5 ],
@@ -142,8 +142,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 2)
 
 			it('makes a triangle out of the entire bottom right half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 1, 0 ],
 					[ 1, 1 ],
@@ -160,8 +160,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 1.75)
 
 			it('makes a trapezoid within the bottom right half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 1, 0.5 ],
 					[ 1, 0.75 ],
@@ -175,8 +175,8 @@ describe('stripe coordinates', () => {
 			beforeEach(() => stripeEnd = 2)
 
 			it('makes a triangle within the bottom right half', () => {
-				const coordinatesOptions = { stripeStart, stripeEnd }
-				const result = stripeCoordinates({ tileOrigin, tileSize, coordinatesOptions })
+				const outlineOptions = { stripeStart, stripeEnd }
+				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
 					[ 1, 0.5 ],
 					[ 1, 1 ],

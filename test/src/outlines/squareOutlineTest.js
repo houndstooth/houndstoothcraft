@@ -1,11 +1,11 @@
-import squareCoordinates from '../../../src/shapes/squareCoordinates'
+import squareOutline from '../../../src/outlines/squareOutline'
 
-describe('square coordinates', () => {
+describe('square outline', () => {
 	const tileOrigin = [ 2, 3 ]
 	const tileSize = 5
 
 	it('makes a square in the correct place of the correct size', () => {
-		expect(squareCoordinates({ tileOrigin, tileSize })).toEqual([
+		expect(squareOutline({ tileOrigin, tileSize })).toEqual([
 			[ 2, 3 ],
 			[ 7, 3 ],
 			[ 7, 8 ],

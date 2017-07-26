@@ -132,7 +132,7 @@ describe('execute', () => {
 						const animationFrame = Math.floor(index / 11)
 						const iterationFrame = index % 11
 						expect(call.args[ 0 ]).toEqual(
-							`current animation/iteration frame: ${animationFrame}/${iterationFrame}`
+							`current animation/iteration frame: ${animationFrame}/${iterationFrame}`,
 						)
 					})
 
@@ -419,7 +419,7 @@ describe('execute', () => {
 					done()
 				}
 				expect(exportFrameSpy.calls.all().length).toBe(
-					store.currentState.lastSavedAnimationFrame - startAnimationFrame
+					store.currentState.lastSavedAnimationFrame - startAnimationFrame,
 				)
 			}, 200)
 

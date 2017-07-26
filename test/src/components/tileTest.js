@@ -40,7 +40,7 @@ describe('tile', () => {
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
 			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue(
-				{ tileOrigin: null, tileSize: 10 }
+				{ tileOrigin: null, tileSize: 10 },
 			)
 		})
 
@@ -61,7 +61,7 @@ describe('tile', () => {
 			tileOrigin = [ 7, 11 ]
 			tileSize = 13
 			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue(
-				{ tileOrigin, tileSize }
+				{ tileOrigin, tileSize },
 			)
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
@@ -155,7 +155,7 @@ describe('tile', () => {
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: squareOutlineSpy })
+							jasmine.objectContaining({ getOutline: squareOutlineSpy }),
 						)
 					})
 				})
@@ -169,7 +169,7 @@ describe('tile', () => {
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: whenTileIsUniform })
+							jasmine.objectContaining({ getOutline: whenTileIsUniform }),
 						)
 					})
 				})
@@ -209,7 +209,7 @@ describe('tile', () => {
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: stripeOutlineSpy })
+							jasmine.objectContaining({ getOutline: stripeOutlineSpy }),
 						)
 					})
 				})
@@ -223,7 +223,7 @@ describe('tile', () => {
 						tile({ gridAddress })
 
 						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: whenTileIsMultiform })
+							jasmine.objectContaining({ getOutline: whenTileIsMultiform }),
 						)
 					})
 				})
@@ -316,7 +316,7 @@ describe('tile', () => {
 				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				expect(shapeSpy).toHaveBeenCalledWith(
-					jasmine.objectContaining({ getOutline: stripeOutlineSpy })
+					jasmine.objectContaining({ getOutline: stripeOutlineSpy }),
 				)
 			})
 		})

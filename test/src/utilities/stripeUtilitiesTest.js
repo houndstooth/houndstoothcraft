@@ -42,7 +42,8 @@ describe('stripe utilities', () => {
 				},
 			}
 			const stripePositions = perStripe({
-				getStripePosition: () => {},
+				getStripePosition: () => {
+				},
 			})
 
 			expect(stripePositions.length).toBe(3)

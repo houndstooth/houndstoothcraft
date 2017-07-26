@@ -76,7 +76,11 @@ describe('shape', () => {
 			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
 			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: outline, tileOrigin, tileSize })
+			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({
+				coordinates: outline,
+				tileOrigin,
+				tileSize,
+			})
 			expect(viewUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: outlineRotatedAboutShapeCenter })
 			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, outline: outlineRotatedAboutCanvasCenter })
 		})

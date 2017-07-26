@@ -241,7 +241,10 @@ describe('component utilities', () => {
 				}
 				const iterator = codeUtilities.iterator
 				const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ]))
-				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetForTile({ gridAddress, settings })))
+				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetForTile({
+					gridAddress,
+					settings,
+				})))
 
 				const expectedSetsForTiles = [
 					[ [ 'a', 'b' ], [ 'b', 'c' ], [ 'd', 'c' ], [ 'd', 'e' ] ],
@@ -261,7 +264,10 @@ describe('component utilities', () => {
 				settings = { assignment: { transformAssignedSet } }
 				const iterator = codeUtilities.iterator
 				const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ]))
-				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetForTile({ gridAddress, settings })))
+				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetForTile({
+					gridAddress,
+					settings,
+				})))
 
 				const expectedSetsForTiles = [
 					[
@@ -335,7 +341,7 @@ describe('component utilities', () => {
 					const tileSize = 5
 
 					const actualCoordinates = rotateCoordinatesAboutCanvasCenter(
-						{ coordinates, tileOrigin, tileSize }
+						{ coordinates, tileOrigin, tileSize },
 					)
 
 					const expectedCoordinates = [

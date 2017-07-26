@@ -21,7 +21,7 @@ describe('color utilities', () => {
 			colorUtilities.getColorsForTile({ gridAddress })
 
 			expect(componentUtilities.getSetForTile.calls.all()[ 0 ].args[ 0 ]).toEqual(
-				{ gridAddress, settings: defaultColorSettings }
+				{ gridAddress, settings: defaultColorSettings },
 			)
 		})
 

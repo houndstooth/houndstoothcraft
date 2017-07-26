@@ -10,7 +10,7 @@ describe('export frame', () => {
 		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
 		store.currentState.lastSavedAnimationFrame = 666
 		spyOn(canvas, 'toBlob').and.callFake(
-			callTheFunctionThrough => callTheFunctionThrough()
+			callTheFunctionThrough => callTheFunctionThrough(),
 		)
 		spyOn(fileSaver, 'saveAs')
 

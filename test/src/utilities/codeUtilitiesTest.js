@@ -179,10 +179,10 @@ describe('code utilities', () => {
 
 		it('deep clones settings, including deeply nested settings', () => {
 			expect(actualObject.shallowObject.deepObject).not.toBe(
-				originalObject.shallowObject.deepObject
+				originalObject.shallowObject.deepObject,
 			)
 			expect(actualObject.shallowObject.deepObject).toEqual(
-				originalObject.shallowObject.deepObject
+				originalObject.shallowObject.deepObject,
 			)
 		})
 	})

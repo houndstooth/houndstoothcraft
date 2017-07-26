@@ -8,8 +8,8 @@ module.exports = config => {
 		webpack: webpackConfig,
 		preprocessors: {
 			'test/**/*.js': [ 'webpack' ],
-			'effects/**/test/**/*.js': [ 'webpack' ]
+			'effects/**/test/**/*.js': [ 'webpack' ],
 		},
-		reporters: [ 'kjhtml' ]
+		reporters: [ 'kjhtml' ],
 	})
 }

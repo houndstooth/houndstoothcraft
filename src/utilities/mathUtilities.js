@@ -8,19 +8,19 @@ const trapezoidalNumber = ({ start, height }) => triangularNumber(start + height
 
 const termialRoot = ({ rangeStart, rangeDelta, n }) => {
 	return (
-		Math.sqrt(
-			Math.pow(
-				2 * rangeStart - rangeDelta,
-				2
-			)
+			Math.sqrt(
+				Math.pow(
+					2 * rangeStart - rangeDelta,
+					2,
+				)
 				+
-				8 * rangeDelta * n
-		)
+				8 * rangeDelta * n,
+			)
 			-
 			2 * rangeStart + rangeDelta
-	) / (
-		2 * rangeDelta
-	)
+		) / (
+			2 * rangeDelta
+		)
 }
 
 export default {

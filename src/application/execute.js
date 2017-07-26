@@ -38,7 +38,7 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	if (performanceLogging) {
 		if (animating && iterating) {
 			consoleWrapper.log(
-				`current animation/iteration frame: ${store.currentState.animationFrame}/${store.currentState.iterationFrame}`
+				`current animation/iteration frame: ${store.currentState.animationFrame}/${store.currentState.iterationFrame}`,
 			)
 		}
 		else if (animating) {

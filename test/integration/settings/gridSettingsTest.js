@@ -162,15 +162,30 @@ describe('.gridSettings', () => {
 			execute()
 
 			const tiles = [
-				{ baseId: 0, originInPixels: [ 125, 125 ], tileSizeInPixels: tileSizeSetting, colors: [ TRANSPARENT, BLACK ] },
+				{
+					baseId: 0,
+					originInPixels: [ 125, 125 ],
+					tileSizeInPixels: tileSizeSetting,
+					colors: [ TRANSPARENT, BLACK ],
+				},
 				{
 					baseId: 8,
 					originInPixels: [ 75, 125 ],
 					tileSizeInPixels: tileSizeSetting,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
-				{ baseId: 24, originInPixels: [ 75, 75 ], tileSizeInPixels: tileSizeSetting, colors: [ BLACK, TRANSPARENT ] },
-				{ baseId: 16, originInPixels: [ 125, 75 ], tileSizeInPixels: tileSizeSetting, colors: [ BLACK, BLACK ] },
+				{
+					baseId: 24,
+					originInPixels: [ 75, 75 ],
+					tileSizeInPixels: tileSizeSetting,
+					colors: [ BLACK, TRANSPARENT ],
+				},
+				{
+					baseId: 16,
+					originInPixels: [ 125, 75 ],
+					tileSizeInPixels: tileSizeSetting,
+					colors: [ BLACK, BLACK ],
+				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 		})

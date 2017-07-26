@@ -29,7 +29,8 @@ describe('composeMainHoundstooth', () => {
 
 	it('composes the main houndstooth with patterns from the houndstooth defaults, houndstooth effects, and houndstooth overrides', () => {
 		spyOn(codeUtilities, 'propertyIsDefinedOnObject').and.returnValue(true)
-		composeMainHoundstooth.__Rewire__('setupCanvas', () => {})
+		composeMainHoundstooth.__Rewire__('setupCanvas', () => {
+		})
 
 		// effects
 

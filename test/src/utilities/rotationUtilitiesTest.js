@@ -14,7 +14,7 @@ describe('rotation utilities', () => {
 			const rotation = Math.PI / 2
 
 			const actualCoordinates = rotateCoordinatesAboutPoint(
-				{ coordinates, point, rotation }
+				{ coordinates, point, rotation },
 			)
 
 			const expectedCoordinates = [

@@ -124,7 +124,7 @@ describe('state utilities', () => {
 			const expectedPattern = {}
 			expect(expectedPattern).toEqual(patternToBeMergedOnto)
 			expect(consoleWrapper.error).toHaveBeenCalledWith(
-				'attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident'
+				'attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident',
 			)
 		})
 	})

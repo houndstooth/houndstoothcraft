@@ -1,12 +1,11 @@
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('stripe utilities', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 		composeMainHoundstooth()
 	})
 
@@ -22,7 +21,7 @@ describe('stripe utilities', () => {
 			const expectedStripePositions = []
 			const gridAddress = [ 3, 5 ]
 			let getStripePositionsSpy = jasmine.createSpy().and.returnValue(expectedStripePositions)
-			store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions = getStripePositionsSpy
+			store.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions = getStripePositionsSpy
 
 			const actualStripePositions = getStripePositionsForTile({ gridAddress })
 
@@ -36,7 +35,7 @@ describe('stripe utilities', () => {
 		beforeEach(() => perStripe = stripeUtilities.perStripe)
 
 		it('uses a stripe count if provided', () => {
-			store.currentState.mainHoundstooth.basePattern.stripeSettings = {
+			store.mainHoundstooth.basePattern.stripeSettings = {
 				stripePositionSettings: {
 					stripeCountSetting: 3,
 				},

@@ -1,7 +1,6 @@
-import initialState from './src/state/initialState'
+import initialStore from './src/store/initialStore'
 import codeUtilities from './src/utilities/codeUtilities'
 
-const currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
-const store = { currentState }
+const store = codeUtilities.deepClone(initialStore.INITIAL_STORE)
 
 export default store

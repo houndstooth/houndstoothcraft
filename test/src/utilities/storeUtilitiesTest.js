@@ -1,13 +1,11 @@
-import stateUtilities from '../../../src/utilities/stateUtilities'
+import storeUtilities from '../../../src/utilities/storeUtilities'
 import consoleWrapper from '../../../src/application/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import store from '../../../store'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
-describe('state utilities', () => {
-	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
-	})
+describe('store utilities', () => {
+	beforeEach(() => resetStore(store))
 
 	describe('#prepareFunctionsPerSetting', () => {
 		let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
@@ -31,7 +29,7 @@ describe('state utilities', () => {
 			const functionsArray = undefined
 
 			expectedsettingsFunctions = codeUtilities.deepClone(settingsFunctions)
-			actualFunctionsArray = stateUtilities.prepareFunctionsPerSetting({
+			actualFunctionsArray = storeUtilities.prepareFunctionsPerSetting({
 				settingsFunctions,
 				settingsPath,
 				functionsArray,
@@ -89,7 +87,7 @@ describe('state utilities', () => {
 				},
 			}
 
-			stateUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
+			storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
 
 			const expectedPattern = {
 				colorSettings: {
@@ -119,7 +117,7 @@ describe('state utilities', () => {
 				},
 			}
 
-			stateUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
+			storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
 
 			const expectedPattern = {}
 			expect(expectedPattern).toEqual(patternToBeMergedOnto)
@@ -136,7 +134,7 @@ describe('state utilities', () => {
 		const iterationsPattern = {}
 		const invalidSettings = {}
 		beforeEach(() => {
-			confirmHoundstoothHasNoUnrecognizedPatterns = stateUtilities.confirmHoundstoothHasNoUnrecognizedPatterns
+			confirmHoundstoothHasNoUnrecognizedPatterns = storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns
 		})
 
 		it('returns true if the pattern contains only some subset of the recognized settings', () => {

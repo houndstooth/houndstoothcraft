@@ -1,18 +1,17 @@
 import execute from '../../src/application/execute'
-import composeMainHoundstooth from '../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../src/store/composeMainHoundstooth'
 import standardTileIsColors from './helpers/standardTileIsColors'
 import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import store from '../../store'
-import codeUtilities from '../../src/utilities/codeUtilities'
-import initialState from '../../src/state/initialState'
+import resetStore from '../helpers/resetStore'
 
 describe('standard houndstooth pattern', () => {
-	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
+	beforeEach(() => resetStore(store))
 
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
 		composeMainHoundstooth({ houndstoothEffects: [] })
-		const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+		const tileSizeInPixels = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 		activateTestMarkerCanvas()
 
 		execute()

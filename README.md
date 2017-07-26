@@ -8,23 +8,14 @@ Check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
 
 In short:
 - [store](#store)
-	- [state](#state)
-		- [houndstooth](#houndstooth)
-			- [pattern](#pattern)
-				- [setting](#setting)  
+    - [houndstooth](#houndstooth)
+        - [pattern](#pattern)
+            - [setting](#setting)  
 
 ### store
 - example instances
 	- `store`
-- contents — all [states](#state)
-	- `currentState`
-
-This object exists for no particular reason other than that one needs a wrapper such as this on which to store your variables when avoiding placing them on the global namespace and using ES6 modules.
-
-### state
-- example instances
-	- `currentState`
-	- `INITIAL_STATE`
+	- `INITIAL_STORE`
 - contents
 	- `mainHoundstooth` — a [houndstooth](#houndstooth)
 	- other stuff such as `lastSavedAnimationFrame`

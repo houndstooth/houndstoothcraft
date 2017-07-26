@@ -1,7 +1,6 @@
 import animator from '../../../src/application/animator'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('animator', () => {
 	let buildIntervalFunctionSpy
@@ -9,7 +8,7 @@ describe('animator', () => {
 	let animationFunction, frameRate, stopCondition
 	let interval
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 
 		interval = () => {
 		}
@@ -39,6 +38,6 @@ describe('animator', () => {
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {
-		expect(store.currentState.interval).toBe(interval)
+		expect(store.interval).toBe(interval)
 	})
 })

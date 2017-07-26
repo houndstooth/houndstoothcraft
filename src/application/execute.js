@@ -1,5 +1,5 @@
 import clear from '../render/clear'
-import stateUtilities from '../utilities/stateUtilities'
+import storeUtilities from '../utilities/storeUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
@@ -12,13 +12,13 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	let execute = executeGrid
 	if (animating) {
 		execute = executeAnimation
-		animationFunctions = stateUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: store.currentState.mainHoundstooth.animationsPattern,
+		animationFunctions = storeUtilities.prepareFunctionsPerSetting({
+			settingsFunctions: store.mainHoundstooth.animationsPattern,
 		})
 	}
 	if (iterating) {
-		iterationFunctions = stateUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: store.currentState.mainHoundstooth.iterationsPattern,
+		iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
+			settingsFunctions: store.mainHoundstooth.iterationsPattern,
 		})
 	}
 
@@ -38,14 +38,14 @@ const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
 	if (performanceLogging) {
 		if (animating && iterating) {
 			consoleWrapper.log(
-				`current animation/iteration frame: ${store.currentState.animationFrame}/${store.currentState.iterationFrame}`,
+				`current animation/iteration frame: ${store.animationFrame}/${store.iterationFrame}`,
 			)
 		}
 		else if (animating) {
-			consoleWrapper.log(`current animation frame: ${store.currentState.animationFrame}`)
+			consoleWrapper.log(`current animation frame: ${store.animationFrame}`)
 		}
 		else if (iterating) {
-			consoleWrapper.log(`current iteration frame: ${store.currentState.iterationFrame}`)
+			consoleWrapper.log(`current iteration frame: ${store.iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')
 	}
@@ -55,7 +55,7 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {
 		const { settingsPath, settingName, settingFunctionItself } = settingsFunction
 		let settingsWithSettingToCallFunctionOn = codeUtilities.accessChildPropertyOrCreatePath({
-			objectWithProperties: store.currentState.mainHoundstooth.basePattern,
+			objectWithProperties: store.mainHoundstooth.basePattern,
 			propertyPath: settingsPath,
 		})
 		settingsWithSettingToCallFunctionOn[ settingName ] = settingFunctionItself(settingsWithSettingToCallFunctionOn[ settingName ])
@@ -63,7 +63,7 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 }
 
 const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
-	let { startIterationFrame, endIterationFrame } = store.currentState.mainHoundstooth.basePattern.iterationSettings || {}
+	let { startIterationFrame, endIterationFrame } = store.mainHoundstooth.basePattern.iterationSettings || {}
 	startIterationFrame = startIterationFrame || 0
 
 	for (let n = 0; n <= endIterationFrame; n++) {
@@ -71,9 +71,9 @@ const executeIteration = ({ iterationFunctions, performanceLogging, iterating, a
 			gridAndMaybeLogging({ performanceLogging, iterating, animating })
 		}
 		callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
-		store.currentState.iterationFrame++
+		store.iterationFrame++
 	}
-	store.currentState.iterationFrame = 0
+	store.iterationFrame = 0
 }
 
 const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
@@ -88,22 +88,22 @@ const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
 const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
 	const { deepClone, defaultToTrue } = codeUtilities
 
-	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.currentState.mainHoundstooth.basePattern.animationSettings || {}
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.mainHoundstooth.basePattern.animationSettings || {}
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = defaultToTrue(refreshCanvas)
 
-	store.currentState.lastSavedAnimationFrame = startAnimationFrame
+	store.lastSavedAnimationFrame = startAnimationFrame
 
 	const animationFunction = () => {
-		if (exportFrames && store.currentState.animationFrame > store.currentState.lastSavedAnimationFrame) return
+		if (exportFrames && store.animationFrame > store.lastSavedAnimationFrame) return
 
-		if (store.currentState.animationFrame >= startAnimationFrame) {
+		if (store.animationFrame >= startAnimationFrame) {
 			if (refreshCanvas) clear()
 
 			if (iterating) {
-				const preIterationSettings = deepClone(store.currentState.mainHoundstooth.basePattern)
+				const preIterationSettings = deepClone(store.mainHoundstooth.basePattern)
 				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				Object.assign(store.currentState.mainHoundstooth.basePattern, preIterationSettings)
+				Object.assign(store.mainHoundstooth.basePattern, preIterationSettings)
 			}
 			else {
 				gridAndMaybeLogging({ performanceLogging, iterating, animating })
@@ -113,10 +113,10 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 		}
 
 		callFunctionsPerSetting({ settingsFunctions: animationFunctions })
-		store.currentState.animationFrame++
+		store.animationFrame++
 	}
 
-	const stopCondition = () => store.currentState.animationFrame > endAnimationFrame
+	const stopCondition = () => store.animationFrame > endAnimationFrame
 
 	animator({ animationFunction, frameRate, stopCondition })
 }

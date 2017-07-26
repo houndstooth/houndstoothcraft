@@ -8,8 +8,8 @@ const getSetForTile = ({ gridAddress, settings }) => {
 
 	let { set: setForGrid, assignment } = settings || {}
 
-	setForGrid = setForGrid || store.currentState.mainHoundstooth.basePattern.colorSettings.set
-	const currentAssignment = store.currentState.mainHoundstooth.basePattern.colorSettings.assignment
+	setForGrid = setForGrid || store.mainHoundstooth.basePattern.colorSettings.set
+	const currentAssignment = store.mainHoundstooth.basePattern.colorSettings.assignment
 	assignment = assignment || currentAssignment
 
 	let { offsetAddress, offsetSetForGridIndex, transformAssignedSet, assignmentMode, supertile, weave, flipGrain, switcheroo } = assignment
@@ -61,7 +61,7 @@ const switcherooSet = ({ setForTile, gridAddress }) => {
 }
 
 const rotateCoordinatesAboutCanvasCenter = ({ coordinates, tileOrigin, tileSize }) => {
-	if (store.currentState.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
+	if (store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: [
 				tileOrigin[ 0 ] + tileSize / 2,
@@ -76,7 +76,7 @@ const rotateCoordinatesAboutCanvasCenter = ({ coordinates, tileOrigin, tileSize 
 }
 
 const getStandardTileOriginAndSize = ({ gridAddress }) => {
-	const tileSize = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+	const tileSize = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	return {
 		tileOrigin: [ gridAddress[ 0 ] * tileSize, gridAddress[ 1 ] * tileSize ],
 		tileSize,
@@ -84,7 +84,7 @@ const getStandardTileOriginAndSize = ({ gridAddress }) => {
 }
 
 const getTileOriginAndSize = ({ gridAddress }) => {
-	const getTileOriginAndSize = store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize || getStandardTileOriginAndSize
+	const getTileOriginAndSize = store.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize || getStandardTileOriginAndSize
 	return getTileOriginAndSize({ gridAddress })
 }
 

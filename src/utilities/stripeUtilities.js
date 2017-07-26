@@ -3,7 +3,7 @@ import { PERIMETER_SCALAR } from '../constants'
 import store from '../../store'
 
 const getStripePositionsForTile = ({ gridAddress } = {}) => {
-	const getStripePositions = store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions
+	const getStripePositions = store.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions
 	const getStripePositionsForTile = getStripePositions || standardStripePositions
 	return getStripePositionsForTile({ gridAddress })
 }
@@ -13,7 +13,7 @@ const standardStripePositions = () => perStripe({ getStripePosition: standardStr
 const standardStripePosition = ({ stripeIndex, stripeCount }) => stripeIndex / stripeCount
 
 const perStripe = ({ getStripePosition }) => {
-	const stripeCount = store.currentState.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCountSetting
+	const stripeCount = store.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCountSetting
 	return codeUtilities.iterator(stripeCount).map(stripeIndex => {
 		return getStripePosition({ stripeIndex, stripeCount }) * PERIMETER_SCALAR
 	})

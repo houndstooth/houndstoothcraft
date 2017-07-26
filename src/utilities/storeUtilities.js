@@ -1,13 +1,12 @@
 import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
-import patternStructure from '../state/patternStructure'
-import houndstoothStructure from '../state/houndstoothStructure'
+import patternStructure from '../store/patternStructure'
+import houndstoothStructure from '../store/houndstoothStructure'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {
 		if (typeof maybeSettingFunction === 'function') {
-			const settingFunctionItself = maybeSettingFunction
-			functionsArray.push({ settingFunctionItself, settingsPath, settingName })
+			functionsArray.push({ settingFunctionItself: maybeSettingFunction, settingsPath, settingName })
 		}
 		else if (typeof maybeSettingFunction === 'object' && !(maybeSettingFunction instanceof Array)) {
 			prepareFunctionsPerSetting({

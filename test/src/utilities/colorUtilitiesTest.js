@@ -1,13 +1,12 @@
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('color utilities', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 		composeMainHoundstooth()
 	})
 
@@ -16,7 +15,7 @@ describe('color utilities', () => {
 			const gridAddress = []
 			spyOn(componentUtilities, 'getSetForTile')
 			const defaultColorSettings = { importantThing: 'boingo' }
-			store.currentState.mainHoundstooth.basePattern.colorSettings = defaultColorSettings
+			store.mainHoundstooth.basePattern.colorSettings = defaultColorSettings
 
 			colorUtilities.getColorsForTile({ gridAddress })
 
@@ -40,7 +39,7 @@ describe('color utilities', () => {
 				{ r: 3, g: 2, b: 0, a: 0.5 },
 			]
 			spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
-			store.currentState.mainHoundstooth.basePattern.stripeSettings = {
+			store.mainHoundstooth.basePattern.stripeSettings = {
 				stripePositionSettings: {
 					stripeCountMode: 'GINGHAM',
 				},

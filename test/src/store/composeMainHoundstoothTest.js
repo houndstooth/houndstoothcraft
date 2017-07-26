@@ -1,14 +1,14 @@
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import consoleWrapper from '../../../src/application/consoleWrapper'
-import houndstoothDefaults from '../../../src/state/houndstoothDefaults'
-import stateUtilities from '../../../src/utilities/stateUtilities'
+import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
+import storeUtilities from '../../../src/utilities/storeUtilities'
 import store from '../../../store'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('composeMainHoundstooth', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 	})
 
 	it('logs the houndstooth when logging mode is on', () => {
@@ -16,7 +16,7 @@ describe('composeMainHoundstooth', () => {
 
 		composeMainHoundstooth({ logComposedMainHoundstooth: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(store.currentState.mainHoundstooth)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(store.mainHoundstooth)
 	})
 
 	it('does not log the houndstooth when logging mode is not on', () => {
@@ -116,21 +116,21 @@ describe('composeMainHoundstooth', () => {
 
 		composeMainHoundstooth({ houndstoothEffects, houndstoothOverrides })
 
-		expect(store.currentState.mainHoundstooth.basePattern).toEqual(jasmine.objectContaining({
+		expect(store.mainHoundstooth.basePattern).toEqual(jasmine.objectContaining({
 			settingA: 'a',
 			settingB: 'B',
 			settingC: 'cC',
 			settingJ: 'pre-j',
 			settingM: 'mM',
 		}))
-		expect(store.currentState.mainHoundstooth.animationsPattern).toEqual(jasmine.objectContaining({
+		expect(store.mainHoundstooth.animationsPattern).toEqual(jasmine.objectContaining({
 			settingD: settingFunctionTwoD,
 			settingE: settingFunctionOneE,
 			settingF: settingFunctionOverridesF,
 			settingK: settingFunctionDefaultK,
 			settingN: settingFunctionOverridesN,
 		}))
-		expect(store.currentState.mainHoundstooth.iterationsPattern).toEqual(jasmine.objectContaining({
+		expect(store.mainHoundstooth.iterationsPattern).toEqual(jasmine.objectContaining({
 			settingG: settingFunctionTwoG,
 			settingH: settingFunctionOneH,
 			settingI: settingFunctionOverridesI,
@@ -144,14 +144,14 @@ describe('composeMainHoundstooth', () => {
 	describe('when there are things which are not recognized patterns', () => {
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
-			spyOn(stateUtilities, 'composePatterns')
+			spyOn(storeUtilities, 'composePatterns')
 		})
 
 		describe('on one of the houndstooth effects', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothEffects: [ { yikesPattern: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
+				expect(storeUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 
@@ -159,7 +159,7 @@ describe('composeMainHoundstooth', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothOverrides: { yikesPattern: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
+				expect(storeUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 
@@ -168,16 +168,16 @@ describe('composeMainHoundstooth', () => {
 				houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
+				expect(storeUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 
 		describe('already on the main houndstooth (somehow)', () => {
 			it('does not proceed to merge in these patterns', () => {
-				store.currentState.mainHoundstooth.yikesPattern = {}
+				store.mainHoundstooth.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(stateUtilities.composePatterns).not.toHaveBeenCalled()
+				expect(storeUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
 	})

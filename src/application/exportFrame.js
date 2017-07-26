@@ -3,6 +3,6 @@ import fileSaver from 'file-saver'
 import store from '../../store'
 
 export default () => canvas.toBlob(blob => {
-	fileSaver.saveAs(blob, `${store.currentState.lastSavedAnimationFrame}.png`)
-	store.currentState.lastSavedAnimationFrame++
+	fileSaver.saveAs(blob, `${store.lastSavedAnimationFrame}.png`)
+	store.lastSavedAnimationFrame++
 })

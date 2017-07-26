@@ -1,6 +1,6 @@
 import '../../../node_modules/canteen/build/canteen.min'
 import execute from '../../../src/application/execute'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'

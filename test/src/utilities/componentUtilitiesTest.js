@@ -1,17 +1,17 @@
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import coordinatesMatch from '../helpers/coordinatesMatch'
 import store from '../../../store'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('component utilities', () => {
 	let getSetForTile
 	let settings
 	const gridAddress = [ 3, 5 ]
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 		composeMainHoundstooth()
 		getSetForTile = componentUtilities.getSetForTile
 	})
@@ -299,7 +299,7 @@ describe('component utilities', () => {
 		describe('basePattern stripe diagonal', () => {
 			describe('when principal', () => {
 				beforeEach(() => {
-					store.currentState.mainHoundstooth.basePattern.stripeSettings = {
+					store.mainHoundstooth.basePattern.stripeSettings = {
 						baseStripeDiagonal: 'PRINCIPAL',
 					}
 				})
@@ -374,7 +374,7 @@ describe('component utilities', () => {
 		beforeEach(() => getTileOriginAndSize = componentUtilities.getTileOriginAndSize)
 
 		it('returns the tile size, and scales the grid address by it to get the origin', () => {
-			store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting }
+			store.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting }
 
 			expect(getTileOriginAndSize({ gridAddress })).toEqual({
 				tileSize: tileSizeSetting,
@@ -387,7 +387,7 @@ describe('component utilities', () => {
 				tileSize: tileSizeSetting * tileSizeSetting,
 				tileOrigin: [ gridAddress[ 1 ] * tileSizeSetting, gridAddress[ 0 ] * tileSizeSetting ],
 			})
-			store.currentState.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize = custom
+			store.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize = custom
 
 			expect(getTileOriginAndSize({ gridAddress })).toEqual({
 				tileSize: tileSizeSetting * tileSizeSetting,

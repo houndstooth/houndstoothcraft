@@ -1,19 +1,19 @@
 import clear from '../../../src/render/clear'
 import context from '../../../src/render/context'
-import houndstoothDefaults from '../../../src/state/houndstoothDefaults'
+import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
-describe('clear', () => {
+describe('clearrrr', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
+		console.log('in clear test, right after reset store', store)
 		spyOn(context, 'clearRect')
 	})
 
 	describe('when the canvas size is specified', () => {
 		it('wipes that amount of canvas', () => {
-			store.currentState.mainHoundstooth.basePattern.viewSettings = { canvasSize: 500 }
+			store.mainHoundstooth.basePattern.viewSettings = { canvasSize: 500 }
 
 			clear()
 

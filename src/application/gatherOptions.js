@@ -2,8 +2,8 @@ import store from '../../store'
 
 export default ({ gridAddress }) => {
 	let options = {}
-	store.currentState.mainHoundstooth.basePattern.gatherOptions && Object.keys(store.currentState.mainHoundstooth.basePattern.gatherOptions).forEach(key => {
-		options = Object.assign({}, options, store.currentState.mainHoundstooth.basePattern.gatherOptions[ key ]({ gridAddress }))
+	store.mainHoundstooth.basePattern.gatherOptions && Object.keys(store.mainHoundstooth.basePattern.gatherOptions).forEach(key => {
+		options = Object.assign({}, options, store.mainHoundstooth.basePattern.gatherOptions[ key ]({ gridAddress }))
 	})
 	return options
 }

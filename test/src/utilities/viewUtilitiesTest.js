@@ -1,9 +1,8 @@
 import viewUtilities from '../../../src/utilities/viewUtilities'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import coordinatesMatch from '../helpers/coordinatesMatch'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('view utilities', () => {
 	const zoom = 10
@@ -11,7 +10,7 @@ describe('view utilities', () => {
 	const canvasSize = 200
 
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 		composeMainHoundstooth()
 	})
 
@@ -28,7 +27,7 @@ describe('view utilities', () => {
 		})
 
 		it('adjusts the coordinates per the zoom level', () => {
-			store.currentState.mainHoundstooth.basePattern.viewSettings.zoom = zoom
+			store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
 			expect(applyZoomAndScroll({ coordinates })).toEqual([
 				[ 30, 50 ],
@@ -39,12 +38,12 @@ describe('view utilities', () => {
 
 		describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 			beforeEach(() => {
-				store.currentState.mainHoundstooth.basePattern.viewSettings.zoomOnCanvasCenter = true
-				store.currentState.mainHoundstooth.basePattern.viewSettings.zoom = zoom
+				store.mainHoundstooth.basePattern.viewSettings.zoomOnCanvasCenter = true
+				store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 			})
 
 			it('works', () => {
-				store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
+				store.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
 
 				expect(applyZoomAndScroll({ coordinates })).toEqual([
 					[ -870, -850 ],
@@ -54,7 +53,7 @@ describe('view utilities', () => {
 			})
 
 			it('does not readjust for zooming on the center if it already is centered', () => {
-				store.currentState.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
+				store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
 
 				expect(applyZoomAndScroll({ coordinates })).toEqual([
 					[ 405, 425 ],
@@ -66,16 +65,16 @@ describe('view utilities', () => {
 
 		describe('centering view on the center of the tile at grid address [ 0, 0 ]', () => {
 			beforeEach(() => {
-				store.currentState.mainHoundstooth.basePattern.viewSettings = {
+				store.mainHoundstooth.basePattern.viewSettings = {
 					centerViewOnCenterOfTileAtZeroZeroAddress: true,
 					zoom,
 					canvasSize,
 				}
-				store.currentState.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
+				store.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
 			})
 
 			it('adjusts per the zoom, tile, and canvas size', () => {
-				store.currentState.mainHoundstooth.basePattern.viewSettings.zoom = zoom
+				store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
 				expect(applyZoomAndScroll({ coordinates })).toEqual([
 					[
@@ -97,8 +96,8 @@ describe('view utilities', () => {
 
 	describe('#rotateCoordinatesAboutCanvasCenter', () => {
 		it('works', () => {
-			store.currentState.mainHoundstooth.basePattern.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
-			store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
+			store.mainHoundstooth.basePattern.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
+			store.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
 			const coordinates = [
 				[ 0, 0 ],
 				[ 40, 0 ],

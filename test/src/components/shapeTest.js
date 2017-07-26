@@ -2,7 +2,7 @@ import shape from '../../../src/components/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import viewUtilities from '../../../src/utilities/viewUtilities'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 
 describe('shape', () => {
 	let renderSpy

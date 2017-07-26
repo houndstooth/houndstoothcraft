@@ -2,13 +2,12 @@ import exportFrame from '../../../src/application/exportFrame'
 import fileSaver from 'file-saver'
 import canvas from '../../../src/render/canvas'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('export frame', () => {
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
-		store.currentState.lastSavedAnimationFrame = 666
+		resetStore(store)
+		store.lastSavedAnimationFrame = 666
 		spyOn(canvas, 'toBlob').and.callFake(
 			callTheFunctionThrough => callTheFunctionThrough(),
 		)
@@ -26,6 +25,6 @@ describe('export frame', () => {
 	})
 
 	it('increments the last saved frame', () => {
-		expect(store.currentState.lastSavedAnimationFrame).toBe(667)
+		expect(store.lastSavedAnimationFrame).toBe(667)
 	})
 })

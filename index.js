@@ -1,4 +1,4 @@
-import composeMainHoundstooth from './src/state/composeMainHoundstooth'
+import composeMainHoundstooth from './src/store/composeMainHoundstooth'
 import setupCanvas from './src/render/setupCanvas'
 import execute from './src/application/execute'
 

@@ -1,17 +1,16 @@
 import gatherOptions from '../../../src/application/gatherOptions'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('gather options', () => {
 	let gridAddress
 	beforeEach(() => {
-		store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE)
+		resetStore(store)
 		gridAddress = [ 3, 5 ]
 	})
 
 	it('calls every options gathering function with the grid address, saving each result onto an object it returns', () => {
-		store.currentState.mainHoundstooth.basePattern.gatherOptions = {
+		store.mainHoundstooth.basePattern.gatherOptions = {
 			optionOne: ({ gridAddress }) => ({ resultOne: [ gridAddress[ 0 ] + 1, gridAddress[ 1 ] + 1 ] }),
 			optionTwo: ({ gridAddress }) => ({ resultTwo: [ gridAddress[ 0 ] - 1, gridAddress[ 1 ] - 1 ] }),
 		}

@@ -15,7 +15,7 @@ export default ({ gridAddress }) => {
 
 	const tileColors = colorUtilities.getColorsForTile({ gridAddress })
 
-	let { tileToShapes, getOutline, isTileUniform, collapseSameColoredShapesWithinTile } = store.currentState.mainHoundstooth.basePattern.tileSettings || {}
+	let { tileToShapes, getOutline, isTileUniform, collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
 	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	tileToShapes = tileToShapes || shape

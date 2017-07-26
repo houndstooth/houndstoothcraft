@@ -1,4 +1,4 @@
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import execute from '../../../src/application/execute'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
@@ -9,12 +9,11 @@ import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefau
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import setupCanvas from '../../../src/render/setupCanvas'
 import store from '../../../store'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('.viewSettings', () => {
 	const tileSizeSetting = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
-	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
+	beforeEach(() => resetStore(store))
 
 	describe('.canvasSize', () => {
 		it('works', () => {

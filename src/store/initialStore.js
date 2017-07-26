@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const INITIAL_STORE = {
 	iterationFrame: 0,
 	animationFrame: 0,
 	lastSavedAnimationFrame: 0,
@@ -10,4 +10,4 @@ const INITIAL_STATE = {
 	},
 }
 
-export default { INITIAL_STATE }
+export default { INITIAL_STORE }

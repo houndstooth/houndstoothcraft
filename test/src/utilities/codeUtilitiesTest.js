@@ -129,6 +129,20 @@ describe('code utilities', () => {
 		})
 	})
 
+	describe('#deepCloneMaybeObject', () => {
+		it('deep clones objects', () => {
+			expect(codeUtilities.deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })).toEqual({ a: { b: { c: 'cba' } } })
+		})
+
+		it('deep clones arrays', () => {
+			expect(codeUtilities.deepCloneMaybeNotObject(['a', 'b', 'c'])).toEqual(['a', 'b', 'c'])
+		})
+
+		it('deep clones immutable objects', () => {
+			expect(codeUtilities.deepCloneMaybeNotObject('abcba')).toBe('abcba')
+		})
+	})
+
 	describe('#deepClone', () => {
 		let actualObject, originalObject
 		beforeEach(() => {
@@ -184,6 +198,14 @@ describe('code utilities', () => {
 			expect(actualObject.shallowObject.deepObject).toEqual(
 				originalObject.shallowObject.deepObject,
 			)
+		})
+
+		it('does not modify the cloned object', () => {
+			expect(actualObject).toEqual(originalObject)
+		})
+
+		it('does not point to the cloned object', () => {
+			expect(actualObject).not.toBe(originalObject)
 		})
 	})
 

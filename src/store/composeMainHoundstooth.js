@@ -1,4 +1,4 @@
-import stateUtilities from '../utilities/stateUtilities'
+import storeUtilities from '../utilities/storeUtilities'
 import consoleWrapper from '../application/consoleWrapper'
 import houndstoothDefaults from './houndstoothDefaults'
 import store from '../../store'
@@ -8,45 +8,45 @@ export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logCompose
 
 	if (
 		!combinedHoundstoothEffects ||
-		!stateUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(store.currentState.mainHoundstooth) ||
-		!stateUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothOverrides) ||
-		!stateUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)
+		!storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(store.mainHoundstooth) ||
+		!storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothOverrides) ||
+		!storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)
 	) {
 		return
 	}
 
 	composePattern({
-		patternToCompose: store.currentState.mainHoundstooth.basePattern,
+		patternToCompose: store.mainHoundstooth.basePattern,
 		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern,
 		houndstoothEffects: combinedHoundstoothEffects.basePattern,
 		houndstoothOverrides: houndstoothOverrides.basePattern,
 	})
 	composePattern({
-		patternToCompose: store.currentState.mainHoundstooth.iterationsPattern,
+		patternToCompose: store.mainHoundstooth.iterationsPattern,
 		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.iterationsPattern,
 		houndstoothEffects: combinedHoundstoothEffects.iterationsPattern,
 		houndstoothOverrides: houndstoothOverrides.iterationsPattern,
 	})
 	composePattern({
-		patternToCompose: store.currentState.mainHoundstooth.animationsPattern,
+		patternToCompose: store.mainHoundstooth.animationsPattern,
 		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern,
 		houndstoothEffects: combinedHoundstoothEffects.animationsPattern,
 		houndstoothOverrides: houndstoothOverrides.animationsPattern,
 	})
 
-	if (logComposedMainHoundstooth) consoleWrapper.log(store.currentState.mainHoundstooth)
+	if (logComposedMainHoundstooth) consoleWrapper.log(store.mainHoundstooth)
 }
 
 const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffects, houndstoothOverrides }) => {
-	stateUtilities.composePatterns({
+	storeUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothDefaults,
 	})
-	stateUtilities.composePatterns({
+	storeUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothEffects,
 	})
-	stateUtilities.composePatterns({
+	storeUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothOverrides,
 	})
@@ -57,7 +57,7 @@ const combineHoundstoothEffects = ({ houndstoothEffects }) => {
 	const iterationsPattern = {}
 	const animationsPattern = {}
 
-	const { composePatterns, confirmHoundstoothHasNoUnrecognizedPatterns } = stateUtilities
+	const { composePatterns, confirmHoundstoothHasNoUnrecognizedPatterns } = storeUtilities
 
 	let anyIssues = false
 	houndstoothEffects.forEach(houndstoothEffect => {

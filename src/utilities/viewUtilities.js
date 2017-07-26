@@ -2,7 +2,7 @@ import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
 const rotateCoordinatesAboutCanvasCenter = ({ coordinates }) => {
-	const { canvasSize, rotateViewAboutCanvasCenter } = store.currentState.mainHoundstooth.basePattern.viewSettings || {}
+	const { canvasSize, rotateViewAboutCanvasCenter } = store.mainHoundstooth.basePattern.viewSettings || {}
 
 	if (rotateViewAboutCanvasCenter) {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
@@ -16,7 +16,7 @@ const rotateCoordinatesAboutCanvasCenter = ({ coordinates }) => {
 }
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = store.currentState.mainHoundstooth.basePattern.viewSettings || {}
+	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = store.mainHoundstooth.basePattern.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
@@ -36,10 +36,10 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasSize = store.currentState.mainHoundstooth.basePattern.viewSettings.canvasSize
+	const canvasSize = store.mainHoundstooth.basePattern.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
-	const tileSizeSetting = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+	const tileSizeSetting = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	const halfTileSize = tileSizeSetting / 2
 
 	return [
@@ -53,7 +53,7 @@ const applyZoomAndScroll = ({ coordinates }) => {
 
 	coordinates.forEach(coordinate => {
 		let newCoordinate = adjustTileOriginForZoom({ tileOrigin: coordinate })
-		if (store.currentState.mainHoundstooth.basePattern.viewSettings && store.currentState.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
+		if (store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
 			newCoordinate = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin: newCoordinate })
 		}
 		newCoordinates.push(newCoordinate)

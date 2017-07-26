@@ -24,17 +24,23 @@ const shallowEqual = (a, b) => {
 const deepClone = objectToDeepClone => {
 	let clonedObject = {}
 	Object.entries(objectToDeepClone).forEach(([ propertyName, propertyValue ]) => {
-		if (propertyValue instanceof Array) {
-			clonedObject[ propertyName ] = propertyValue.slice()
-		}
-		else if (propertyValue && typeof propertyValue === 'object') {
-			clonedObject[ propertyName ] = deepClone(propertyValue)
-		}
-		else {
-			clonedObject[ propertyName ] = propertyValue
-		}
+		clonedObject[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
 	})
 	return clonedObject
+}
+
+const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
+	let clonedMaybeObject
+	if (maybeObjectToDeepClone instanceof Array) {
+		clonedMaybeObject = maybeObjectToDeepClone.slice()
+	}
+	else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
+		clonedMaybeObject = deepClone(maybeObjectToDeepClone)
+	}
+	else {
+		clonedMaybeObject = maybeObjectToDeepClone
+	}
+	return clonedMaybeObject
 }
 
 const deeperPath = ({ propertyPath, propertyName }) => {
@@ -65,6 +71,7 @@ export default {
 	wrappedIndex,
 	shallowEqual,
 	deepClone,
+	deepCloneMaybeNotObject,
 	deeperPath,
 	accessChildPropertyOrCreatePath,
 	defaultToTrue,

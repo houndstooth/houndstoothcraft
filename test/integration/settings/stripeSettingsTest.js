@@ -1,5 +1,5 @@
 import execute from '../../../src/application/execute'
-import composeMainHoundstooth from '../../../src/state/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
@@ -7,12 +7,11 @@ import { BLACK, TRANSPARENT } from '../../../src/constants'
 import settingsPaths from '../../helpers/settingsPaths'
 import store from '../../../store'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
-import codeUtilities from '../../../src/utilities/codeUtilities'
-import initialState from '../../../src/state/initialState'
+import resetStore from '../../helpers/resetStore'
 
 describe('.stripeSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
-	beforeEach(() => store.currentState = codeUtilities.deepClone(initialState.INITIAL_STATE))
+	beforeEach(() => resetStore(store))
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
@@ -195,7 +194,7 @@ describe('.stripeSettings', () => {
 			execute()
 
 			let originInPixels
-			const tileSizeInPixels = store.currentState.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+			const tileSizeInPixels = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 
 			originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

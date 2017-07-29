@@ -28,10 +28,34 @@ const PATTERN_STRUCTURE = {
 			dazzleContinuum: true,
 			orientationSettings: {
 				set: true,
+				assignment: {
+					switcheroo: true,
+					flipGrain: true,
+					transformAssignedSet: true,
+					assignmentMode: true,
+					offsetSetForGridIndex: true,
+					offsetAddress: true,
+					supertile: true,
+					weave: {
+						rows: true,
+						columns: true,
+					},
+				},
 			},
 			colorSettings: {
+				set: true,
 				assignment: {
+					switcheroo: true,
+					flipGrain: true,
+					transformAssignedSet: true,
+					assignmentMode: true,
 					offsetSetForGridIndex: true,
+					offsetAddress: true,
+					supertile: true,
+					weave: {
+						rows: true,
+						columns: true,
+					},
 				},
 			},
 		},
@@ -40,6 +64,7 @@ const PATTERN_STRUCTURE = {
 			flipGrain: true,
 			transformAssignedSet: true,
 			assignmentMode: true,
+			offsetSetForGridIndex: true,
 			offsetAddress: true,
 			supertile: true,
 			weave: {

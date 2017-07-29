@@ -7,7 +7,6 @@ import resetStore from '../../helpers/resetStore'
 describe('clearrrr', () => {
 	beforeEach(() => {
 		resetStore(store)
-		console.log('in clear test, right after reset store', store)
 		spyOn(context, 'clearRect')
 	})
 

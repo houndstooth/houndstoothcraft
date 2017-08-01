@@ -130,9 +130,7 @@ describe('execute', () => {
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
 						const animationFrame = Math.floor(index / 11)
 						const iterationFrame = index % 11
-						expect(call.args[ 0 ]).toEqual(
-							`current animation/iteration frame: ${animationFrame}/${iterationFrame}`,
-						)
+						expect(call.args[ 0 ]).toEqual(`current animation/iteration frame: ${animationFrame}/${iterationFrame}`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -417,9 +415,7 @@ describe('execute', () => {
 					clearInterval(interval)
 					done()
 				}
-				expect(exportFrameSpy.calls.all().length).toBe(
-					store.lastSavedAnimationFrame - startAnimationFrame,
-				)
+				expect(exportFrameSpy.calls.all().length).toBe(store.lastSavedAnimationFrame - startAnimationFrame)
 			}, 200)
 
 			execute({ iterating, animating, exportFrames, performanceLogging })

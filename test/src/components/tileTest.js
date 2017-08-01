@@ -39,9 +39,7 @@ describe('tile', () => {
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
-			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue(
-				{ tileOrigin: null, tileSize: 10 },
-			)
+			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue({ tileOrigin: null, tileSize: 10 })
 		})
 
 		it('returns early, not getting colors', () => {
@@ -60,9 +58,7 @@ describe('tile', () => {
 		beforeEach(() => {
 			tileOrigin = [ 7, 11 ]
 			tileSize = 13
-			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue(
-				{ tileOrigin, tileSize },
-			)
+			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
@@ -154,9 +150,7 @@ describe('tile', () => {
 					it('converts the tile into a shape with the outline of a square', () => {
 						tile({ gridAddress })
 
-						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: squareOutlineSpy }),
-						)
+						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: squareOutlineSpy }))
 					})
 				})
 
@@ -168,9 +162,7 @@ describe('tile', () => {
 
 						tile({ gridAddress })
 
-						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: whenTileIsUniform }),
-						)
+						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: whenTileIsUniform }))
 					})
 				})
 
@@ -208,9 +200,7 @@ describe('tile', () => {
 					it('converts the tile into shapes with the outlines of stripes', () => {
 						tile({ gridAddress })
 
-						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: stripeOutlineSpy }),
-						)
+						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: stripeOutlineSpy }))
 					})
 				})
 
@@ -222,9 +212,7 @@ describe('tile', () => {
 
 						tile({ gridAddress })
 
-						expect(shapeSpy).toHaveBeenCalledWith(
-							jasmine.objectContaining({ getOutline: whenTileIsMultiform }),
-						)
+						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: whenTileIsMultiform }))
 					})
 				})
 
@@ -315,9 +303,7 @@ describe('tile', () => {
 
 				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
-				expect(shapeSpy).toHaveBeenCalledWith(
-					jasmine.objectContaining({ getOutline: stripeOutlineSpy }),
-				)
+				expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: stripeOutlineSpy }))
 			})
 		})
 	})

@@ -135,7 +135,7 @@ describe('code utilities', () => {
 		})
 
 		it('deep clones arrays', () => {
-			expect(codeUtilities.deepCloneMaybeNotObject(['a', 'b', 'c'])).toEqual(['a', 'b', 'c'])
+			expect(codeUtilities.deepCloneMaybeNotObject([ 'a', 'b', 'c' ])).toEqual([ 'a', 'b', 'c' ])
 		})
 
 		it('deep clones immutable objects', () => {
@@ -192,12 +192,8 @@ describe('code utilities', () => {
 		})
 
 		it('deep clones settings, including deeply nested settings', () => {
-			expect(actualObject.shallowObject.deepObject).not.toBe(
-				originalObject.shallowObject.deepObject,
-			)
-			expect(actualObject.shallowObject.deepObject).toEqual(
-				originalObject.shallowObject.deepObject,
-			)
+			expect(actualObject.shallowObject.deepObject).not.toBe(originalObject.shallowObject.deepObject)
+			expect(actualObject.shallowObject.deepObject).toEqual(originalObject.shallowObject.deepObject)
 		})
 
 		it('does not modify the cloned object', () => {

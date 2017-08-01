@@ -8,9 +8,7 @@ describe('export frame', () => {
 	beforeEach(() => {
 		resetStore(store)
 		store.lastSavedAnimationFrame = 666
-		spyOn(canvas, 'toBlob').and.callFake(
-			callTheFunctionThrough => callTheFunctionThrough(),
-		)
+		spyOn(canvas, 'toBlob').and.callFake(callTheFunctionThrough => callTheFunctionThrough())
 		spyOn(fileSaver, 'saveAs')
 
 		exportFrame()

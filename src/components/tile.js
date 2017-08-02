@@ -2,7 +2,6 @@ import colorUtilities from '../utilities/colorUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import shape from './shape'
 import componentUtilities from '../utilities/componentUtilities'
-import gatherOptions from '../application/gatherOptions'
 import stripeUtilities from '../utilities/stripeUtilities'
 import squareOutline from '../outlines/squareOutline'
 import stripeOutline from '../outlines/stripeOutline'
@@ -14,48 +13,53 @@ export default ({ gridAddress }) => {
 	if (!tileOrigin) return
 
 	const tileColors = colorUtilities.getColorsForTile({ gridAddress })
+	const options = componentUtilities.gatherOptions({ gridAddress })
 
-	let { tileToShapes, getOutline, isTileUniform, collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
-	collapseSameColoredShapesWithinTile = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
-
-	tileToShapes = tileToShapes || shape
-	const getOutlineHere = {}
-	getOutlineHere.whenTileIsUniform = getOutline && getOutline.whenTileIsUniform || squareOutline
-	getOutlineHere.whenTileIsMultiform = getOutline && getOutline.whenTileIsMultiform || stripeOutline
-
-	const options = gatherOptions({ gridAddress })
-
-	if (collapseSameColoredShapesWithinTile) {
-		isTileUniform = isTileUniform || colorUtilities.isTileUniform
-		if (isTileUniform({ tileColors, options })) {
-			tileToShapes({
-				getOutline: getOutlineHere.whenTileIsUniform,
-				gridAddress,
-				tileColors,
-				tileOrigin,
-				tileSize,
-				options,
-			})
-			return
-		}
-	}
-
-	const stripePositionsForTile = stripeUtilities.getStripePositionsForTile({ gridAddress })
-	stripePositionsForTile.forEach((stripeStart, stripeIndex) => {
-		tileToShapes({
-			getOutline: getOutlineHere.whenTileIsMultiform,
-			gridAddress,
-			tileColors,
-			tileOrigin,
-			tileSize,
-			options,
-			colorsIndex: stripeIndex,
-			stripeIndex,
-			stripeCount: stripePositionsForTile.length,
-			outlineOptions: {
-				stripeStart,
-				stripeEnd: stripePositionsForTile[ stripeIndex + 1 ] || PERIMETER_SCALAR,
-			},
-		})
+	const args = { gridAddress, tileOrigin, tileSize, tileColors, options }
+	convertTileToShapes({
+		tileToShapesArgs: Object.assign({ args }, getTileToShapesArgs(store.mainHoundstooth.basePattern.tileSettings)),
+		shouldUseUniform: shouldUseUniform({ tileColors, options }),
 	})
+}
+
+const getTileToShapesArgs = ({ tileToShapes, getOutline } = {}) => ({
+	tileToShapes: tileToShapes || shape,
+	whenTileIsUniform: getOutline && getOutline.whenTileIsUniform || squareOutline,
+	whenTileIsMultiform: getOutline && getOutline.whenTileIsMultiform || stripeOutline,
+})
+
+const shouldUseUniform = uniformArgs => {
+	const { isTileUniform, collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
+	const tileIsUniform = isTileUniform ? isTileUniform(uniformArgs) : colorUtilities.isTileUniform(uniformArgs)
+	return codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile) && tileIsUniform
+}
+
+const convertTileToShapes = ({ tileToShapesArgs, shouldUseUniform }) => {
+	shouldUseUniform ? uniformTileToShapes(tileToShapesArgs) : multiformTileToShapes(tileToShapesArgs)
+}
+
+const uniformTileToShapes = ({ args, tileToShapes, whenTileIsUniform }) => {
+	args.getOutline = whenTileIsUniform
+	tileToShapes(args)
+}
+
+const multiformTileToShapes = ({ args, tileToShapes, whenTileIsMultiform }) => {
+	const stripePositions = stripeUtilities.getStripePositionsForTile({ gridAddress: args.gridAddress })
+	stripePositions.forEach((stripeStart, stripeIndex) => {
+		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions, whenTileIsMultiform })
+		tileToShapes(stripeArgs)
+	})
+}
+
+const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions, whenTileIsMultiform }) => {
+	const stripeArgs = codeUtilities.deepClone(args)
+
+	stripeArgs.getOutline = whenTileIsMultiform
+	stripeArgs.colorsIndex = stripeIndex
+	stripeArgs.stripeIndex = stripeIndex
+	stripeArgs.stripeCount = stripePositions.length
+	const stripeEnd = stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR
+	stripeArgs.outlineOptions = { stripeStart, stripeEnd }
+
+	return stripeArgs
 }

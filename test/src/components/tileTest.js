@@ -11,7 +11,6 @@ describe('tile', () => {
 	let shapeSpy
 	let squareOutlineSpy
 	let stripeOutlineSpy
-	let gatherOptionsSpy
 
 	let getColorsForTileSpy
 	let colorUtilitiesIsTileUniformSpy
@@ -23,8 +22,6 @@ describe('tile', () => {
 		tile.__Rewire__('squareOutline', squareOutlineSpy)
 		stripeOutlineSpy = jasmine.createSpy()
 		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
-		gatherOptionsSpy = jasmine.createSpy()
-		tile.__Rewire__('gatherOptions', gatherOptionsSpy)
 
 		getColorsForTileSpy = spyOn(colorUtilities, 'getColorsForTile')
 		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
@@ -34,7 +31,6 @@ describe('tile', () => {
 		tile.__ResetDependency__('shape')
 		tile.__ResetDependency__('squareOutline')
 		tile.__ResetDependency__('stripeOutline')
-		tile.__ResetDependency__('gatherOptions')
 	})
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
@@ -69,13 +65,13 @@ describe('tile', () => {
 			getColorsForTileSpy.and.returnValue(tileColors)
 
 			options = {}
-			gatherOptionsSpy.and.returnValue(options)
+			spyOn(componentUtilities, 'gatherOptions').and.returnValue(options)
 		})
 
 		it('gathers options', () => {
 			tile({ gridAddress })
 
-			expect(gatherOptionsSpy).toHaveBeenCalled()
+			expect(componentUtilities.gatherOptions).toHaveBeenCalled()
 		})
 
 		describe('if a function for converting a tile into shapes is not specified', () => {
@@ -107,7 +103,7 @@ describe('tile', () => {
 		it('gets options', () => {
 			tile({ gridAddress })
 
-			expect(gatherOptionsSpy).toHaveBeenCalledWith({ gridAddress })
+			expect(componentUtilities.gatherOptions).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {

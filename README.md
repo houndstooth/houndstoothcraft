@@ -4,6 +4,19 @@
 
 Check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
 
+## development
+
+```
+git clone https://github.com/houndstooth/web-render.git
+cd web-render
+npm run setup
+npm test & npm start
+```
+
+This will set up your environment and give you a dev web-render on localhost:8080 and Karma on :9876.
+
+Each effect gets its own submodule and its own tests within that repo, which the parent repo Karma discovers.
+
 ## state hierarchy
 
 In short:

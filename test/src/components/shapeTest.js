@@ -16,7 +16,7 @@ describe('shape', () => {
 
 	beforeEach(() => {
 		composeMainHoundstooth()
-		spyOn(componentUtilities, 'rotateCoordinatesAboutCanvasCenter').and.returnValue(outlineRotatedAboutShapeCenter)
+		spyOn(componentUtilities, 'rotateCoordinatesAboutTileCenter').and.returnValue(outlineRotatedAboutShapeCenter)
 		renderSpy = jasmine.createSpy()
 		getOutline = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
@@ -41,7 +41,7 @@ describe('shape', () => {
 			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
 			expect(getOutline).not.toHaveBeenCalled()
-			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).not.toHaveBeenCalled()
+			expect(componentUtilities.rotateCoordinatesAboutTileCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
@@ -56,7 +56,7 @@ describe('shape', () => {
 			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
 			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).not.toHaveBeenCalled()
+			expect(componentUtilities.rotateCoordinatesAboutTileCenter).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
@@ -76,7 +76,7 @@ describe('shape', () => {
 			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
 
 			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(componentUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({
+			expect(componentUtilities.rotateCoordinatesAboutTileCenter).toHaveBeenCalledWith({
 				coordinates: outline,
 				tileOrigin,
 				tileSize,

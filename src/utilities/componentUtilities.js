@@ -60,7 +60,7 @@ const switcherooSet = ({ setForTile, gridAddress }) => {
 	return setForTile
 }
 
-const rotateCoordinatesAboutCanvasCenter = ({ coordinates, tileOrigin, tileSize }) => {
+const rotateCoordinatesAboutTileCenter = ({ coordinates, tileOrigin, tileSize }) => {
 	if (store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: [
@@ -102,7 +102,7 @@ const gatherOptions = ({ gridAddress }) => {
 
 export default {
 	getSetForTile,
-	rotateCoordinatesAboutCanvasCenter,
+	rotateCoordinatesAboutTileCenter,
 	getTileOriginAndSize,
 	distanceFromZeroZeroAddress,
 	gatherOptions,

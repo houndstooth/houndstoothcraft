@@ -10,7 +10,7 @@ export default ({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, out
 	let outline = getOutline({ tileOrigin, tileSize, outlineOptions })
 	if (!outline) return
 
-	outline = componentUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates: outline, tileOrigin, tileSize })
+	outline = componentUtilities.rotateCoordinatesAboutTileCenter({ coordinates: outline, tileOrigin, tileSize })
 
 	outline = viewUtilities.applyZoomAndScroll({ coordinates: outline })
 	outline = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates: outline })

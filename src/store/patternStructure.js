@@ -37,9 +37,9 @@ const PATTERN_STRUCTURE = {
 	},
 	colorSettings: {
 		set: true,
-		houndazzle: {
+		substripeTextureSettings: {
 			substripeCount: true,
-			dazzleContinuum: true,
+			substripeCountContinuumMode: true,
 			orientationSettings: {
 				set: true,
 				assignment,
@@ -65,7 +65,7 @@ const PATTERN_STRUCTURE = {
 		baseStripeDiagonal: true,
 	},
 	gatherOptions: {
-		getDazzle: true,
+		getSubstripeTexture: true,
 	},
 	animationSettings: {
 		frameRate: true,

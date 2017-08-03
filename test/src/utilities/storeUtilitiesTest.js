@@ -135,6 +135,10 @@ describe('store utilities', () => {
 			confirmHoundstoothHasNoUnrecognizedPatterns = storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns
 		})
 
+		it('returns true if the pattern contains the name field', () => {
+			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ name: 'some name' })).toBe(true)
+		})
+
 		it('returns true if the pattern contains only some subset of the recognized settings', () => {
 			expect(confirmHoundstoothHasNoUnrecognizedPatterns({})).toBe(true)
 			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern })).toBe(true)
@@ -150,7 +154,7 @@ describe('store utilities', () => {
 			})).toBe(true)
 		})
 
-		it('logs an error if the pattern contains anything other than one of these three recognized settings', () => {
+		it('logs an error if the pattern contains anything other than one of these three recognized patterns, or name', () => {
 			spyOn(consoleWrapper, 'error')
 
 			confirmHoundstoothHasNoUnrecognizedPatterns({ invalidSettings: {} })

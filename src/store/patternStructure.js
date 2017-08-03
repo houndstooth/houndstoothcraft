@@ -51,6 +51,7 @@ const PATTERN_STRUCTURE = {
 		},
 		assignment,
 		opacity: true,
+		backgroundColor: true,
 	},
 	stripeSettings: {
 		stripePositionSettings: {

@@ -9,6 +9,7 @@ import settingsPaths from '../../helpers/settingsPaths'
 import store from '../../../store'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetStore from '../../helpers/resetStore'
+import setupCanvas from '../../../src/render/setupCanvas'
 
 describe('.colorSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
@@ -772,6 +773,35 @@ describe('.colorSettings', () => {
 
 			expect(pixelIsColorWithMarker([ 25, 75 ], partiallySeeThroughBlack, 1)).toBe(true)
 			expect(pixelIsColorWithMarker([ 75, 25 ], partiallySeeThroughBlue, 2)).toBe(true)
+		})
+	})
+
+	describe('.backgroundColor', () => {
+		it('paints it yellow', () => {
+			const sufficientTileCountToDemonstrateSetting = 2
+			composeMainHoundstooth({
+				houndstoothEffects: [],
+				houndstoothOverrides: {
+					basePattern: {
+						colorSettings: {
+							set: [ BLACK, TRANSPARENT ],
+							backgroundColor: [ YELLOW ],
+						},
+						gridSettings: {
+							gridSize: sufficientTileCountToDemonstrateSetting,
+						},
+						viewSettings: {
+							canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+						},
+					},
+				},
+			})
+			activateTestMarkerCanvas()
+			setupCanvas()
+
+			execute()
+
+			expect(pixelIsColorWithMarker([ 75, 25 ], YELLOW, 2)).toBe(true)
 		})
 	})
 })

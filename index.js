@@ -19,7 +19,6 @@ composeMainHoundstooth({
 setupCanvas()
 
 execute({
-	iterating: false,
 	animating: false,
 	exportFrames: false,
 	performanceLogging: false,

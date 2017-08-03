@@ -7,7 +7,7 @@ import animator from './animator'
 import exportFrame from './exportFrame'
 import store from '../../store'
 
-export default ({ iterating, animating, exportFrames, performanceLogging } = {}) => {
+export default ({ animating, exportFrames, performanceLogging } = {}) => {
 	let animationFunctions, iterationFunctions
 	let execute = executeGrid
 	if (animating) {
@@ -16,14 +16,11 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 			settingsFunctions: store.mainHoundstooth.animationsPattern,
 		})
 	}
-	if (iterating) {
-		iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: store.mainHoundstooth.iterationsPattern,
-		})
-	}
+	iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
+		settingsFunctions: store.mainHoundstooth.iterationsPattern,
+	})
 
 	execute({
-		iterating,
 		exportFrames,
 		animationFunctions,
 		iterationFunctions,
@@ -32,17 +29,15 @@ export default ({ iterating, animating, exportFrames, performanceLogging } = {})
 	})
 }
 
-const gridAndMaybeLogging = ({ performanceLogging, iterating, animating }) => {
+const gridAndMaybeLogging = ({ performanceLogging, animating }) => {
 	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
 	if (performanceLogging) {
-		if (animating && iterating) {
+		if (animating) {
 			consoleWrapper.log(`current animation/iteration frame: ${store.animationFrame}/${store.iterationFrame}`)
 		}
-		else if (animating) {
-			consoleWrapper.log(`current animation frame: ${store.animationFrame}`)
-		}
-		else if (iterating) {
+		else
+		{
 			consoleWrapper.log(`current iteration frame: ${store.iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')
@@ -60,30 +55,23 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	})
 }
 
-const executeIteration = ({ iterationFunctions, performanceLogging, iterating, animating }) => {
+const executeGrid = ({ iterationFunctions, performanceLogging, animating }) => {
 	let { startIterationFrame, endIterationFrame } = store.mainHoundstooth.basePattern.iterationSettings || {}
 	startIterationFrame = startIterationFrame || 0
 
 	for (let n = 0; n <= endIterationFrame; n++) {
 		if (n >= startIterationFrame) {
-			gridAndMaybeLogging({ performanceLogging, iterating, animating })
+			gridAndMaybeLogging({ performanceLogging, animating })
 		}
-		callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
+		if (n < endIterationFrame) {
+			callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
+		}
 		store.iterationFrame++
 	}
 	store.iterationFrame = 0
 }
 
-const executeGrid = ({ performanceLogging, iterating, iterationFunctions }) => {
-	if (iterating) {
-		executeIteration({ performanceLogging, iterating, iterationFunctions })
-	}
-	else {
-		gridAndMaybeLogging({ performanceLogging, iterating })
-	}
-}
-
-const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
+const executeAnimation = ({ exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
 	const { deepClone, defaultToTrue } = codeUtilities
 
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.mainHoundstooth.basePattern.animationSettings || {}
@@ -98,14 +86,9 @@ const executeAnimation = ({ iterating, exportFrames, iterationFunctions, animati
 		if (store.animationFrame >= startAnimationFrame) {
 			if (refreshCanvas) clear()
 
-			if (iterating) {
-				const preIterationSettings = deepClone(store.mainHoundstooth.basePattern)
-				executeIteration({ iterationFunctions, performanceLogging, iterating, animating })
-				Object.assign(store.mainHoundstooth.basePattern, preIterationSettings)
-			}
-			else {
-				gridAndMaybeLogging({ performanceLogging, iterating, animating })
-			}
+			const preIterationSettings = deepClone(store.mainHoundstooth.basePattern)
+			executeGrid({ iterationFunctions, performanceLogging, animating })
+			Object.assign(store.mainHoundstooth.basePattern, preIterationSettings)
 
 			if (exportFrames) exportFrame()
 		}

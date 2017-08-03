@@ -126,7 +126,7 @@ Whether [animating](#animation) or not, you may find that your houndstooth is be
 
 Of course, when iterating, your grids should each have at least some (semi-)transparent areas in order to allow lower layers to show through.
 
-When `iterating` is false, essentially only a single iteration frame is drawn.
+One is always technically iterating, even if one is essentially only drawing a single iteration frame.
 
 When both animating and iterating, the described set of iterations are drawn once for each animation frame. Of course, if your pattern is complex and your frame rate is fast, you may experience lag if you call for many iterations.
 

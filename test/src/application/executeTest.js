@@ -5,13 +5,12 @@ import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
 
 describe('execute', () => {
-	let iterating, animating, exportFrames, performanceLogging
+	let animating, exportFrames, performanceLogging
 	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy
 	beforeEach(() => {
 		resetStore(store)
 		composeMainHoundstooth()
 
-		iterating = undefined
 		animating = undefined
 		exportFrames = undefined
 		performanceLogging = undefined
@@ -47,7 +46,7 @@ describe('execute', () => {
 
 			describe('when not iterating nor animating', () => {
 				it('logs only the performance of the grid', () => {
-					execute({ iterating, animating, exportFrames, performanceLogging })
+					execute({ animating, exportFrames, performanceLogging })
 
 					expect(consoleWrapper.time.calls.all().length).toBe(1)
 					expect(consoleWrapper.timeEnd.calls.all().length).toBe(1)
@@ -58,12 +57,11 @@ describe('execute', () => {
 
 			describe('when iterating (but not animating)', () => {
 				beforeEach(() => {
-					iterating = true
 					store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 10 }
 				})
 
 				it('logs the current iteration frame along with the performance measurement', () => {
-					execute({ iterating, animating, exportFrames, performanceLogging })
+					execute({ animating, exportFrames, performanceLogging })
 
 					const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
@@ -92,12 +90,12 @@ describe('execute', () => {
 				})
 
 				it('logs the current animation frame along with the performance measurement', () => {
-					execute({ iterating, animating, exportFrames, performanceLogging })
+					execute({ animating, exportFrames, performanceLogging })
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
-						expect(call.args[ 0 ]).toEqual(`current animation frame: ${  index}`)
+						expect(call.args[ 0 ]).toEqual(`current animation/iteration frame: ${index}/0`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -116,14 +114,13 @@ describe('execute', () => {
 
 			describe('when animating and iterating', () => {
 				beforeEach(() => {
-					iterating = true
 					animating = true
 					store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 10 }
 					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
 				})
 
 				it('logs the animation frames, iteration frames, and grid performance', () => {
-					execute({ iterating, animating, exportFrames, performanceLogging })
+					execute({ animating, exportFrames, performanceLogging })
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(121)
@@ -154,7 +151,7 @@ describe('execute', () => {
 			})
 
 			it('does not track performance or log it', () => {
-				execute({ iterating, animating, exportFrames, performanceLogging })
+				execute({ animating, exportFrames, performanceLogging })
 
 				expect(consoleWrapper.log).not.toHaveBeenCalled()
 				expect(consoleWrapper.time).not.toHaveBeenCalled()
@@ -165,12 +162,11 @@ describe('execute', () => {
 
 	describe('neither iterating nor animating', () => {
 		beforeEach(() => {
-			iterating = false
 			animating = false
 		})
 
 		it('calls grid only once', () => {
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(gridSpy.calls.count()).toBe(1)
 		})
@@ -179,7 +175,7 @@ describe('execute', () => {
 			const iterationFunction = jasmine.createSpy()
 			store.mainHoundstooth.iterationsPattern.exampleSetting = iterationFunction
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(iterationFunction).not.toHaveBeenCalled()
 		})
@@ -187,7 +183,6 @@ describe('execute', () => {
 
 	describe('iterating (but not animating)', () => {
 		beforeEach(() => {
-			iterating = true
 			animating = false
 			store.mainHoundstooth.basePattern.iterationSettings = {
 				startIterationFrame: 5,
@@ -196,7 +191,7 @@ describe('execute', () => {
 		})
 
 		it('calls grid once for each iteration between start and end, inclusive', () => {
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(gridSpy.calls.count()).toBe(4)
 		})
@@ -206,10 +201,10 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
 			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			const iterationFunctionCalls = iterationFunction.calls.all()
-			expect(iterationFunctionCalls.length).toBe(9)
+			expect(iterationFunctionCalls.length).toBe(8)
 			expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(1)
 			expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(2)
 			expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(4)
@@ -218,7 +213,6 @@ describe('execute', () => {
 			expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(32)
 			expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(64)
 			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(128)
-			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(256)
 		})
 
 		it('handles iteration functions of the iteration frame', () => {
@@ -226,10 +220,10 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
 			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			const iterationFunctionCalls = iterationFunction.calls.all()
-			expect(iterationFunctionCalls.length).toBe(9)
+			expect(iterationFunctionCalls.length).toBe(8)
 			expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(1000)
 			expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(999)
 			expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(998)
@@ -238,14 +232,12 @@ describe('execute', () => {
 			expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(995)
 			expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(994)
 			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(993)
-			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(992)
 		})
 	})
 
 	describe('animating (but not iterating)', () => {
 		beforeEach(() => {
 			animating = true
-			iterating = false
 			store.mainHoundstooth.basePattern.animationSettings = {
 				frameRate: 1.120,
 				startAnimationFrame: 2,
@@ -254,13 +246,13 @@ describe('execute', () => {
 		})
 
 		it('calls grid once for each animation between start and end, inclusive', () => {
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
 		it('calls the animator with the frame rate, which is defaulted', () => {
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(animatorSpy).toHaveBeenCalledWith(jasmine.objectContaining({ frameRate: 1.120 }))
 		})
@@ -270,7 +262,7 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
 			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -287,7 +279,7 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
 			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -303,7 +295,7 @@ describe('execute', () => {
 			const clearSpy = jasmine.createSpy()
 			execute.__Rewire__('clear', clearSpy)
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(clearSpy.calls.all().length).toBe(4)
 			execute.__ResetDependency__('clear')
@@ -313,7 +305,6 @@ describe('execute', () => {
 	describe('iterating and animating', () => {
 		beforeEach(() => {
 			animating = true
-			iterating = true
 			store.mainHoundstooth.basePattern.iterationSettings = {
 				startIterationFrame: 5,
 				endIterationFrame: 8,
@@ -325,7 +316,7 @@ describe('execute', () => {
 		})
 
 		it('calls grid once for each iteration within each animation, both inclusively', () => {
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			expect(gridSpy.calls.count()).toBe(16)
 		})
@@ -339,7 +330,7 @@ describe('execute', () => {
 			const iterationFunction = jasmine.createSpy().and.callFake(p => p + (store.iterationFrame + 1))
 			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -351,7 +342,7 @@ describe('execute', () => {
 			expect(animationFunctionCalls[ 5 ].args[ 0 ]).toBe(500)
 
 			const iterationFunctionCalls = iterationFunction.calls.all()
-			expect(iterationFunctionCalls.length).toBe(36)
+			expect(iterationFunctionCalls.length).toBe(32)
 			expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(200)
 			expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(201)
 			expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(203)
@@ -360,37 +351,33 @@ describe('execute', () => {
 			expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(215)
 			expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(221)
 			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(228)
-			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(236)
 
-			expect(iterationFunctionCalls[ 9 ].args[ 0 ]).toBe(300)
-			expect(iterationFunctionCalls[ 10 ].args[ 0 ]).toBe(301)
-			expect(iterationFunctionCalls[ 11 ].args[ 0 ]).toBe(303)
-			expect(iterationFunctionCalls[ 12 ].args[ 0 ]).toBe(306)
-			expect(iterationFunctionCalls[ 13 ].args[ 0 ]).toBe(310)
-			expect(iterationFunctionCalls[ 14 ].args[ 0 ]).toBe(315)
-			expect(iterationFunctionCalls[ 15 ].args[ 0 ]).toBe(321)
-			expect(iterationFunctionCalls[ 16 ].args[ 0 ]).toBe(328)
-			expect(iterationFunctionCalls[ 17 ].args[ 0 ]).toBe(336)
+			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(300)
+			expect(iterationFunctionCalls[ 9 ].args[ 0 ]).toBe(301)
+			expect(iterationFunctionCalls[ 10 ].args[ 0 ]).toBe(303)
+			expect(iterationFunctionCalls[ 11 ].args[ 0 ]).toBe(306)
+			expect(iterationFunctionCalls[ 12 ].args[ 0 ]).toBe(310)
+			expect(iterationFunctionCalls[ 13 ].args[ 0 ]).toBe(315)
+			expect(iterationFunctionCalls[ 14 ].args[ 0 ]).toBe(321)
+			expect(iterationFunctionCalls[ 15 ].args[ 0 ]).toBe(328)
 
-			expect(iterationFunctionCalls[ 18 ].args[ 0 ]).toBe(400)
-			expect(iterationFunctionCalls[ 19 ].args[ 0 ]).toBe(401)
-			expect(iterationFunctionCalls[ 20 ].args[ 0 ]).toBe(403)
-			expect(iterationFunctionCalls[ 21 ].args[ 0 ]).toBe(406)
-			expect(iterationFunctionCalls[ 22 ].args[ 0 ]).toBe(410)
-			expect(iterationFunctionCalls[ 23 ].args[ 0 ]).toBe(415)
-			expect(iterationFunctionCalls[ 24 ].args[ 0 ]).toBe(421)
-			expect(iterationFunctionCalls[ 25 ].args[ 0 ]).toBe(428)
-			expect(iterationFunctionCalls[ 26 ].args[ 0 ]).toBe(436)
+			expect(iterationFunctionCalls[ 16 ].args[ 0 ]).toBe(400)
+			expect(iterationFunctionCalls[ 17 ].args[ 0 ]).toBe(401)
+			expect(iterationFunctionCalls[ 18 ].args[ 0 ]).toBe(403)
+			expect(iterationFunctionCalls[ 19 ].args[ 0 ]).toBe(406)
+			expect(iterationFunctionCalls[ 20 ].args[ 0 ]).toBe(410)
+			expect(iterationFunctionCalls[ 21 ].args[ 0 ]).toBe(415)
+			expect(iterationFunctionCalls[ 22 ].args[ 0 ]).toBe(421)
+			expect(iterationFunctionCalls[ 23 ].args[ 0 ]).toBe(428)
 
-			expect(iterationFunctionCalls[ 27 ].args[ 0 ]).toBe(500)
-			expect(iterationFunctionCalls[ 28 ].args[ 0 ]).toBe(501)
-			expect(iterationFunctionCalls[ 29 ].args[ 0 ]).toBe(503)
-			expect(iterationFunctionCalls[ 30 ].args[ 0 ]).toBe(506)
-			expect(iterationFunctionCalls[ 31 ].args[ 0 ]).toBe(510)
-			expect(iterationFunctionCalls[ 32 ].args[ 0 ]).toBe(515)
-			expect(iterationFunctionCalls[ 33 ].args[ 0 ]).toBe(521)
-			expect(iterationFunctionCalls[ 34 ].args[ 0 ]).toBe(528)
-			expect(iterationFunctionCalls[ 35 ].args[ 0 ]).toBe(536)
+			expect(iterationFunctionCalls[ 24 ].args[ 0 ]).toBe(500)
+			expect(iterationFunctionCalls[ 25 ].args[ 0 ]).toBe(501)
+			expect(iterationFunctionCalls[ 26 ].args[ 0 ]).toBe(503)
+			expect(iterationFunctionCalls[ 27 ].args[ 0 ]).toBe(506)
+			expect(iterationFunctionCalls[ 28 ].args[ 0 ]).toBe(510)
+			expect(iterationFunctionCalls[ 29 ].args[ 0 ]).toBe(515)
+			expect(iterationFunctionCalls[ 30 ].args[ 0 ]).toBe(521)
+			expect(iterationFunctionCalls[ 31 ].args[ 0 ]).toBe(528)
 		})
 	})
 
@@ -418,7 +405,7 @@ describe('execute', () => {
 				expect(exportFrameSpy.calls.all().length).toBe(store.lastSavedAnimationFrame - startAnimationFrame)
 			}, 200)
 
-			execute({ iterating, animating, exportFrames, performanceLogging })
+			execute({ animating, exportFrames, performanceLogging })
 		})
 	})
 })

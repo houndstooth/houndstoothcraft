@@ -14,7 +14,8 @@ const OPACITY = 1
 const STRIPE_COUNT = 4
 const BASE_STRIPE_DIAGONAL = 'MINOR'
 const FRAME_RATE = 1.005
-const END_ITERATION_FRAME = 100
+const START_ITERATION_FRAME = 0
+const END_ITERATION_FRAME = 0
 
 const HOUNDSTOOTH_DEFAULTS = {
 	basePattern: {
@@ -43,6 +44,7 @@ const HOUNDSTOOTH_DEFAULTS = {
 			frameRate: FRAME_RATE,
 		},
 		iterationSettings: {
+			startIterationFrame: START_ITERATION_FRAME,
 			endIterationFrame: END_ITERATION_FRAME,
 		},
 	},
@@ -62,5 +64,6 @@ export default {
 	STRIPE_COUNT,
 	BASE_STRIPE_DIAGONAL,
 	FRAME_RATE,
+	START_ITERATION_FRAME,
 	END_ITERATION_FRAME,
 }

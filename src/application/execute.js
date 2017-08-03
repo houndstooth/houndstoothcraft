@@ -7,38 +7,33 @@ import animator from './animator'
 import exportFrame from './exportFrame'
 import store from '../../store'
 
-export default ({ animating, exportFrames, performanceLogging } = {}) => {
-	let animationFunctions, iterationFunctions
-	let execute = executeGrid
-	if (animating) {
-		execute = executeAnimation
-		animationFunctions = storeUtilities.prepareFunctionsPerSetting({
-			settingsFunctions: store.mainHoundstooth.animationsPattern,
-		})
-	}
-	iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
+export default () => {
+	const iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
 		settingsFunctions: store.mainHoundstooth.iterationsPattern,
 	})
 
-	execute({
-		exportFrames,
-		animationFunctions,
-		iterationFunctions,
-		performanceLogging,
-		animating,
-	})
+	if (store.animating) {
+		const animationFunctions = storeUtilities.prepareFunctionsPerSetting({
+			settingsFunctions: store.mainHoundstooth.animationsPattern,
+		})
+		executeAnimation({ animationFunctions, iterationFunctions })
+	}
+	else {
+		executeGrid({ iterationFunctions })
+	}
 }
 
-const gridAndMaybeLogging = ({ performanceLogging, animating }) => {
+const gridAndMaybeLogging = () => {
+	const { performanceLogging, animating, animationFrame, iterationFrame } = store
 	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
 	if (performanceLogging) {
 		if (animating) {
-			consoleWrapper.log(`current animation/iteration frame: ${store.animationFrame}/${store.iterationFrame}`)
+			consoleWrapper.log(`current animation/iteration frame: ${animationFrame}/${iterationFrame}`)
 		}
 		else
 		{
-			consoleWrapper.log(`current iteration frame: ${store.iterationFrame}`)
+			consoleWrapper.log(`current iteration frame: ${iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')
 	}
@@ -55,13 +50,13 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	})
 }
 
-const executeGrid = ({ iterationFunctions, performanceLogging, animating }) => {
+const executeGrid = ({ iterationFunctions }) => {
 	let { startIterationFrame, endIterationFrame } = store.mainHoundstooth.basePattern.iterationSettings || {}
 	startIterationFrame = startIterationFrame || 0
 
 	for (let n = 0; n <= endIterationFrame; n++) {
 		if (n >= startIterationFrame) {
-			gridAndMaybeLogging({ performanceLogging, animating })
+			gridAndMaybeLogging()
 		}
 		if (n < endIterationFrame) {
 			callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
@@ -71,7 +66,7 @@ const executeGrid = ({ iterationFunctions, performanceLogging, animating }) => {
 	store.iterationFrame = 0
 }
 
-const executeAnimation = ({ exportFrames, iterationFunctions, animationFunctions, performanceLogging, animating }) => {
+const executeAnimation = ({ iterationFunctions, animationFunctions }) => {
 	const { deepClone, defaultToTrue } = codeUtilities
 
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.mainHoundstooth.basePattern.animationSettings || {}
@@ -81,16 +76,16 @@ const executeAnimation = ({ exportFrames, iterationFunctions, animationFunctions
 	store.lastSavedAnimationFrame = startAnimationFrame
 
 	const animationFunction = () => {
-		if (exportFrames && store.animationFrame > store.lastSavedAnimationFrame) return
+		if (store.exportFrames && store.animationFrame > store.lastSavedAnimationFrame) return
 
 		if (store.animationFrame >= startAnimationFrame) {
 			if (refreshCanvas) clear()
 
 			const preIterationSettings = deepClone(store.mainHoundstooth.basePattern)
-			executeGrid({ iterationFunctions, performanceLogging, animating })
+			executeGrid({ iterationFunctions })
 			Object.assign(store.mainHoundstooth.basePattern, preIterationSettings)
 
-			if (exportFrames) exportFrame()
+			if (store.exportFrames) exportFrame()
 		}
 
 		callFunctionsPerSetting({ settingsFunctions: animationFunctions })

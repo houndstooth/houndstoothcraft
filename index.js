@@ -18,8 +18,4 @@ composeMainHoundstooth({
 
 setupCanvas()
 
-execute({
-	animating: false,
-	exportFrames: false,
-	performanceLogging: false,
-})
+execute()

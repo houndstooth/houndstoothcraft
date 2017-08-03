@@ -5,15 +5,10 @@ import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
 
 describe('execute', () => {
-	let animating, exportFrames, performanceLogging
 	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy
 	beforeEach(() => {
 		resetStore(store)
 		composeMainHoundstooth()
-
-		animating = undefined
-		exportFrames = undefined
-		performanceLogging = undefined
 
 		consoleWrapperLogSpy = spyOn(consoleWrapper, 'log')
 		spyOn(consoleWrapper, 'time')
@@ -41,12 +36,12 @@ describe('execute', () => {
 	describe('performance logging', () => {
 		describe('when performance logging', () => {
 			beforeEach(() => {
-				performanceLogging = true
+				store.performanceLogging = true
 			})
 
 			describe('when not iterating nor animating', () => {
 				it('logs only the performance of the grid', () => {
-					execute({ animating, exportFrames, performanceLogging })
+					execute()
 
 					expect(consoleWrapper.time.calls.all().length).toBe(1)
 					expect(consoleWrapper.timeEnd.calls.all().length).toBe(1)
@@ -61,7 +56,7 @@ describe('execute', () => {
 				})
 
 				it('logs the current iteration frame along with the performance measurement', () => {
-					execute({ animating, exportFrames, performanceLogging })
+					execute()
 
 					const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
@@ -85,12 +80,12 @@ describe('execute', () => {
 
 			describe('when animating (but not iterating)', () => {
 				beforeEach(() => {
-					animating = true
+					store.animating = true
 					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
 				})
 
 				it('logs the current animation frame along with the performance measurement', () => {
-					execute({ animating, exportFrames, performanceLogging })
+					execute()
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
@@ -114,13 +109,13 @@ describe('execute', () => {
 
 			describe('when animating and iterating', () => {
 				beforeEach(() => {
-					animating = true
+					store.animating = true
 					store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 10 }
 					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
 				})
 
 				it('logs the animation frames, iteration frames, and grid performance', () => {
-					execute({ animating, exportFrames, performanceLogging })
+					execute()
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(121)
@@ -147,11 +142,11 @@ describe('execute', () => {
 
 		describe('when not performance logging', () => {
 			beforeEach(() => {
-				performanceLogging = false
+				store.performanceLogging = false
 			})
 
 			it('does not track performance or log it', () => {
-				execute({ animating, exportFrames, performanceLogging })
+				execute()
 
 				expect(consoleWrapper.log).not.toHaveBeenCalled()
 				expect(consoleWrapper.time).not.toHaveBeenCalled()
@@ -162,11 +157,11 @@ describe('execute', () => {
 
 	describe('neither iterating nor animating', () => {
 		beforeEach(() => {
-			animating = false
+			store.animating = false
 		})
 
 		it('calls grid only once', () => {
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(gridSpy.calls.count()).toBe(1)
 		})
@@ -175,7 +170,7 @@ describe('execute', () => {
 			const iterationFunction = jasmine.createSpy()
 			store.mainHoundstooth.iterationsPattern.exampleSetting = iterationFunction
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(iterationFunction).not.toHaveBeenCalled()
 		})
@@ -183,7 +178,7 @@ describe('execute', () => {
 
 	describe('iterating (but not animating)', () => {
 		beforeEach(() => {
-			animating = false
+			store.animating = false
 			store.mainHoundstooth.basePattern.iterationSettings = {
 				startIterationFrame: 5,
 				endIterationFrame: 8,
@@ -191,7 +186,7 @@ describe('execute', () => {
 		})
 
 		it('calls grid once for each iteration between start and end, inclusive', () => {
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(gridSpy.calls.count()).toBe(4)
 		})
@@ -201,7 +196,7 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
 			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			const iterationFunctionCalls = iterationFunction.calls.all()
 			expect(iterationFunctionCalls.length).toBe(8)
@@ -220,7 +215,7 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
 			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			const iterationFunctionCalls = iterationFunction.calls.all()
 			expect(iterationFunctionCalls.length).toBe(8)
@@ -237,7 +232,7 @@ describe('execute', () => {
 
 	describe('animating (but not iterating)', () => {
 		beforeEach(() => {
-			animating = true
+			store.animating = true
 			store.mainHoundstooth.basePattern.animationSettings = {
 				frameRate: 1.120,
 				startAnimationFrame: 2,
@@ -246,13 +241,13 @@ describe('execute', () => {
 		})
 
 		it('calls grid once for each animation between start and end, inclusive', () => {
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
 		it('calls the animator with the frame rate, which is defaulted', () => {
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(animatorSpy).toHaveBeenCalledWith(jasmine.objectContaining({ frameRate: 1.120 }))
 		})
@@ -262,7 +257,7 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
 			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -279,7 +274,7 @@ describe('execute', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
 			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -295,7 +290,7 @@ describe('execute', () => {
 			const clearSpy = jasmine.createSpy()
 			execute.__Rewire__('clear', clearSpy)
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(clearSpy.calls.all().length).toBe(4)
 			execute.__ResetDependency__('clear')
@@ -304,7 +299,7 @@ describe('execute', () => {
 
 	describe('iterating and animating', () => {
 		beforeEach(() => {
-			animating = true
+			store.animating = true
 			store.mainHoundstooth.basePattern.iterationSettings = {
 				startIterationFrame: 5,
 				endIterationFrame: 8,
@@ -316,7 +311,7 @@ describe('execute', () => {
 		})
 
 		it('calls grid once for each iteration within each animation, both inclusively', () => {
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			expect(gridSpy.calls.count()).toBe(16)
 		})
@@ -330,7 +325,7 @@ describe('execute', () => {
 			const iterationFunction = jasmine.createSpy().and.callFake(p => p + (store.iterationFrame + 1))
 			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -385,8 +380,8 @@ describe('execute', () => {
 		const startAnimationFrame = 2
 		const endAnimationFrame = 5
 		beforeEach(() => {
-			animating = true
-			exportFrames = true
+			store.animating = true
+			store.exportFrames = true
 			store.mainHoundstooth.basePattern.animationSettings = {
 				startAnimationFrame,
 				endAnimationFrame,
@@ -405,7 +400,7 @@ describe('execute', () => {
 				expect(exportFrameSpy.calls.all().length).toBe(store.lastSavedAnimationFrame - startAnimationFrame)
 			}, 200)
 
-			execute({ animating, exportFrames, performanceLogging })
+			execute()
 		})
 	})
 })

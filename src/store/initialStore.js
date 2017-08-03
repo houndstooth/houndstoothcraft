@@ -3,6 +3,9 @@ const INITIAL_STORE = {
 	animationFrame: 0,
 	lastSavedAnimationFrame: 0,
 	interval: null,
+	animating: false,
+	exportFrames: false,
+	performanceLogging: false,
 	mainHoundstooth: {
 		basePattern: {},
 		animationsPattern: {},

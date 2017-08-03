@@ -56,7 +56,7 @@ const PATTERN_STRUCTURE = {
 		stripePositionSettings: {
 			stripeCountMode: true,
 			stripeCountSetting: true,
-			ginghamChevronContinuumSettings: {
+			stripeCountContinuumSettings: {
 				initialStripeCount: true,
 				deltaStripeCount: true,
 			},

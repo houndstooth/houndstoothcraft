@@ -2,18 +2,12 @@ import storeUtilities from '../utilities/storeUtilities'
 import consoleWrapper from '../application/consoleWrapper'
 import houndstoothDefaults from './houndstoothDefaults'
 import store from '../../store'
+import combineHoundstoothEffects from './combineHoundstoothEffects'
 
 export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
-	if (
-		!combinedHoundstoothEffects ||
-		!storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(store.mainHoundstooth) ||
-		!storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothOverrides) ||
-		!storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)
-	) {
-		return
-	}
+	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) return
 
 	composePattern({
 		patternToCompose: store.mainHoundstooth.basePattern,
@@ -37,6 +31,14 @@ export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logCompose
 	if (logComposedMainHoundstooth) consoleWrapper.log(store.mainHoundstooth)
 }
 
+const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {
+	if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(store.mainHoundstooth)) return true
+	if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)) return true
+	if (!combinedHoundstoothEffects) return true
+	if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) return true
+	return false
+}
+
 const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffects, houndstoothOverrides }) => {
 	storeUtilities.composePatterns({
 		patternToBeMergedOnto: patternToCompose,
@@ -50,37 +52,4 @@ const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffe
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothOverrides,
 	})
-}
-
-const combineHoundstoothEffects = ({ houndstoothEffects }) => {
-	const basePattern = {}
-	const iterationsPattern = {}
-	const animationsPattern = {}
-
-	const { composePatterns, confirmHoundstoothHasNoUnrecognizedPatterns } = storeUtilities
-
-	let anyIssues = false
-	houndstoothEffects.forEach(houndstoothEffect => {
-		if (!confirmHoundstoothHasNoUnrecognizedPatterns(houndstoothEffect)) {
-			anyIssues = true
-			return
-		}
-		composePatterns({
-			patternToBeMergedOnto: basePattern,
-			patternToMerge: houndstoothEffect.basePattern,
-		})
-		composePatterns({
-			patternToBeMergedOnto: iterationsPattern,
-			patternToMerge: houndstoothEffect.iterationsPattern,
-		})
-		composePatterns({
-			patternToBeMergedOnto: animationsPattern,
-			patternToMerge: houndstoothEffect.animationsPattern,
-		})
-	})
-
-	if (anyIssues) {
-		return null
-	}
-	return { basePattern, iterationsPattern, animationsPattern }
 }

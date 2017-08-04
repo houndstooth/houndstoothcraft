@@ -123,31 +123,106 @@ describe('store utilities', () => {
 			expect(expectedPattern).toEqual(patternToBeMergedOnto)
 			expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident')
 		})
+
+		describe('warning about conflicts', () => {
+			beforeEach(() => spyOn(consoleWrapper, 'warn'))
+
+			it('warns when requested and there are conflicts', () => {
+				const patternToBeMergedOnto = {
+					colorSettings: {
+						assignment: {
+							assignmentMode: 'yoda',
+							switcheroo: 'death star',
+						},
+					},
+					gridSettings: {
+						gridSize: 'jedi',
+					},
+				}
+				const patternToMerge = {
+					colorSettings: {
+						assignment: {
+							assignmentMode: 'luke',
+						},
+					},
+					gridSettings: {
+						gridSize: 'sith',
+					},
+				}
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				const expectedWarningOne = 'some effects have conflicts on setting: colorSettings.assignment.assignmentMode'
+				const expectedWarningTwo = 'some effects have conflicts on setting: gridSettings.gridSize'
+				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningOne)
+				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningTwo)
+			})
+
+			it('does not warn when not requested', () => {
+				const patternToBeMergedOnto = { gridSettings: { gridSize: 'jedi' } }
+				const patternToMerge = { gridSettings: { gridSize: 'sith' } }
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
+
+				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+			})
+
+			it('does not warn when there are no conflicts', () => {
+				const patternToBeMergedOnto = {
+					colorSettings: {
+						assignment: {
+							assignmentMode: 'yoda',
+							switcheroo: 'death star',
+						},
+					},
+				}
+				const patternToMerge = {
+					colorSettings: {
+						assignment: {
+							flipGrain: 'luke',
+						},
+					},
+				}
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+			})
+
+			it('does not warn when the settings conflict but are the same', () => {
+				const patternToBeMergedOnto = { gridSettings: { gridSize: 'sith' } }
+				const patternToMerge = { gridSettings: { gridSize: 'sith' } }
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+			})
+		})
 	})
 
-	describe('#confirmHoundstoothHasNoUnrecognizedPatterns', () => {
-		let confirmHoundstoothHasNoUnrecognizedPatterns
+	describe('#houndstoothHasOnlyRecognizedPatterns', () => {
+		let houndstoothHasOnlyRecognizedPatterns
 		const basePattern = {}
 		const animationsPattern = {}
 		const iterationsPattern = {}
 		const invalidSettings = {}
 		beforeEach(() => {
-			confirmHoundstoothHasNoUnrecognizedPatterns = storeUtilities.confirmHoundstoothHasNoUnrecognizedPatterns
+			houndstoothHasOnlyRecognizedPatterns = storeUtilities.houndstoothHasOnlyRecognizedPatterns
 		})
 
-		it('returns true if the pattern contains the name field', () => {
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ name: 'some name' })).toBe(true)
+		it('returns true even if the pattern contains the name field; that one is okay', () => {
+			expect(houndstoothHasOnlyRecognizedPatterns({ name: 'some name' })).toBe(true)
 		})
 
-		it('returns true if the pattern contains only some subset of the recognized settings', () => {
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({})).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern })).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ animationsPattern })).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ iterationsPattern })).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern, animationsPattern })).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ basePattern, iterationsPattern })).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ animationsPattern, iterationsPattern })).toBe(true)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+		it('returns true even if the pattern contains only some subset of the recognized settings', () => {
+			expect(houndstoothHasOnlyRecognizedPatterns({})).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ animationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ iterationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern, animationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern, iterationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ animationsPattern, iterationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				basePattern,
 				animationsPattern,
 				iterationsPattern,
@@ -157,7 +232,7 @@ describe('store utilities', () => {
 		it('logs an error if the pattern contains anything other than one of these three recognized patterns, or name', () => {
 			spyOn(consoleWrapper, 'error')
 
-			confirmHoundstoothHasNoUnrecognizedPatterns({ invalidSettings: {} })
+			houndstoothHasOnlyRecognizedPatterns({ invalidSettings: {} })
 
 			expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: invalidSettings')
 		})
@@ -165,35 +240,35 @@ describe('store utilities', () => {
 		it('returns false, even if the pattern contains some or all of the three recognized settings in addition to an invalid one', () => {
 			spyOn(consoleWrapper, 'error')
 
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({ invalidSettings })).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({ invalidSettings })).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				basePattern,
 			})).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				animationsPattern,
 			})).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				iterationsPattern,
 			})).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				basePattern,
 				animationsPattern,
 			})).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				basePattern,
 				iterationsPattern,
 			})).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				animationsPattern,
 				iterationsPattern,
 			})).toBe(false)
-			expect(confirmHoundstoothHasNoUnrecognizedPatterns({
+			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				basePattern,
 				animationsPattern,

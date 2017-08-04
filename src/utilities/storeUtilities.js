@@ -22,21 +22,11 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 	return functionsArray
 }
 
-const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE }) => {
+const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE, warnAboutConflicts }) => {
 	if (!patternToMerge) return
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
-		let deeperPatternStructureChecker
-		const settingIsDefinedOnPatternStructure = codeUtilities.propertyIsDefinedOnObject({
-			propertyName: settingName,
-			objectWithProperties: patternStructureChecker,
-		})
-		if (settingIsDefinedOnPatternStructure) {
-			deeperPatternStructureChecker = patternStructureChecker[ settingName ]
-		}
-		else {
-			consoleWrapper.error(`attempted to compose a pattern with an unrecognized setting: ${settingsPath.join('.')}.${settingName}`)
-			return
-		}
+		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) return
+		const deeperPatternStructureChecker = patternStructureChecker[ settingName ]
 
 		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length) {
 			composePatterns({
@@ -44,6 +34,7 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 				patternToMerge: overridingSetting,
 				settingsPath: codeUtilities.deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
 				patternStructureChecker: deeperPatternStructureChecker,
+				warnAboutConflicts,
 			})
 		}
 		else {
@@ -51,12 +42,29 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 				objectWithProperties: patternToBeMergedOnto,
 				propertyPath: settingsPath,
 			})
+
+			const existingSetting = settingsWithSettingToBeOverridden[ settingName ]
+			if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
+				consoleWrapper.warn(`some effects have conflicts on setting: ${settingPath(settingsPath, settingName)}`)
+			}
+
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
 		}
 	})
 }
 
-const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
+const settingPath = (settingsPath, settingName) => `${settingsPath.join('.')}.${settingName}`
+
+const shouldWarnAboutConflicts = ({ warnAboutConflicts, existingSetting, overridingSetting }) => {
+	return warnAboutConflicts && codeUtilities.isDefined(existingSetting) && existingSetting !== overridingSetting
+}
+
+const settingIsDefinedOnPatternStructure = ({ settingsPath, settingName, patternStructureChecker: objectWithProperties }) => {
+	if (codeUtilities.propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) return true
+	consoleWrapper.error(`attempted to compose a pattern with an unrecognized setting: ${settingPath(settingsPath, settingName)}`)
+}
+
+const houndstoothHasOnlyRecognizedPatterns = houndstooth => {
 	return Object.keys(houndstooth).every(patternName => {
 		if (!Object.keys(houndstoothStructure.HOUNDSTOOTH_STRUCTURE).includes(patternName)) {
 			consoleWrapper.error(`attempted to compose a houndstooth with an unrecognized pattern: ${patternName}`)
@@ -69,5 +77,5 @@ const confirmHoundstoothHasNoUnrecognizedPatterns = houndstooth => {
 export default {
 	prepareFunctionsPerSetting,
 	composePatterns,
-	confirmHoundstoothHasNoUnrecognizedPatterns,
+	houndstoothHasOnlyRecognizedPatterns,
 }

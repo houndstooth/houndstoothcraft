@@ -5,6 +5,7 @@ import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import storeUtilities from '../../../src/utilities/storeUtilities'
 import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
+import combineHoundstoothEffects from '../../../src/store/combineHoundstoothEffects'
 
 describe('composeMainHoundstooth', () => {
 	beforeEach(() => {
@@ -165,10 +166,12 @@ describe('composeMainHoundstooth', () => {
 
 		describe('on the houndstooth defaults', () => {
 			it('does not proceed to merge in these patterns', () => {
+				const originalHoundstoothDefaultsToRestoreTo = codeUtilities.deepClone(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)
 				houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(storeUtilities.composePatterns).not.toHaveBeenCalled()
+				houndstoothDefaults.HOUNDSTOOTH_DEFAULTS = originalHoundstoothDefaultsToRestoreTo
 			})
 		})
 
@@ -180,5 +183,45 @@ describe('composeMainHoundstooth', () => {
 				expect(storeUtilities.composePatterns).not.toHaveBeenCalled()
 			})
 		})
+	})
+
+	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
+		spyOn(storeUtilities, 'composePatterns')
+
+		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, iterationsPattern: {} }
+		composeMainHoundstooth.__Rewire__('combineHoundstoothEffects', () => combinedHoundstoothEffects)
+
+		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, iterationsPattern: {} }
+
+
+		composeMainHoundstooth({ houndstoothOverrides })
+
+
+		const composePatternsCalls = storeUtilities.composePatterns.calls.all()
+
+		expect(composePatternsCalls.length).toBe(9)
+
+		expect(composePatternsCalls[ 0 ].args[ 0 ].patternToMerge).toBe(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern)
+		expect(composePatternsCalls[ 0 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.basePattern)
+		expect(composePatternsCalls[ 1 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+		expect(composePatternsCalls[ 2 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.basePattern)
+		expect(composePatternsCalls[ 2 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+
+		expect(composePatternsCalls[ 3 ].args[ 0 ].patternToMerge).toBe(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.iterationsPattern)
+		expect(composePatternsCalls[ 3 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.iterationsPattern)
+		expect(composePatternsCalls[ 4 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.iterationsPattern)
+		expect(composePatternsCalls[ 5 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+
+		expect(composePatternsCalls[ 6 ].args[ 0 ].patternToMerge).toBe(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern)
+		expect(composePatternsCalls[ 6 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+		expect(composePatternsCalls[ 7 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.animationsPattern)
+		expect(composePatternsCalls[ 7 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+		expect(composePatternsCalls[ 8 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.animationsPattern)
+		expect(composePatternsCalls[ 8 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
+
+		composeMainHoundstooth.__ResetDependency__('combineHoundstoothEffects')
 	})
 })

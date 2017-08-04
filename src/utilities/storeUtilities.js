@@ -46,7 +46,7 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 
 			const existingSetting = settingsWithSettingToBeOverridden[ settingName ]
 			if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
-				const warningMessage = `some effects have conflicts on setting: ${settingPath(settingsPath, settingName)}`
+				const warningMessage = `some effects have conflicts on setting: ${settingPath(settingsPath, settingName)}. ${existingSetting} was overridden by ${overridingSetting}`
 				consoleWrapper.warn(warningMessage)
 				warn(warningMessage)
 			}

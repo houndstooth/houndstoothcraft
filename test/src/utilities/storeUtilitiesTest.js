@@ -157,8 +157,8 @@ describe('store utilities', () => {
 
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
 
-				const expectedWarningOne = 'some effects have conflicts on setting: colorSettings.assignment.assignmentMode'
-				const expectedWarningTwo = 'some effects have conflicts on setting: gridSettings.gridSize'
+				const expectedWarningOne = 'some effects have conflicts on setting: colorSettings.assignment.assignmentMode. yoda was overridden by luke'
+				const expectedWarningTwo = 'some effects have conflicts on setting: gridSettings.gridSize. jedi was overridden by sith'
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningOne)
 				expect(warnSpy).toHaveBeenCalledWith(expectedWarningOne)
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningTwo)

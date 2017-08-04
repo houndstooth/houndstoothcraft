@@ -125,7 +125,12 @@ describe('store utilities', () => {
 		})
 
 		describe('warning about conflicts', () => {
-			beforeEach(() => spyOn(consoleWrapper, 'warn'))
+			let warnSpy
+			beforeEach(() => {
+				spyOn(consoleWrapper, 'warn')
+				warnSpy = jasmine.createSpy()
+				storeUtilities.__Rewire__('warn', warnSpy)
+			})
 
 			it('warns when requested and there are conflicts', () => {
 				const patternToBeMergedOnto = {
@@ -155,7 +160,9 @@ describe('store utilities', () => {
 				const expectedWarningOne = 'some effects have conflicts on setting: colorSettings.assignment.assignmentMode'
 				const expectedWarningTwo = 'some effects have conflicts on setting: gridSettings.gridSize'
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningOne)
+				expect(warnSpy).toHaveBeenCalledWith(expectedWarningOne)
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningTwo)
+				expect(warnSpy).toHaveBeenCalledWith(expectedWarningTwo)
 			})
 
 			it('does not warn when not requested', () => {
@@ -165,6 +172,7 @@ describe('store utilities', () => {
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
 
 				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+				expect(warnSpy).not.toHaveBeenCalled()
 			})
 
 			it('does not warn when there are no conflicts', () => {
@@ -187,6 +195,7 @@ describe('store utilities', () => {
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
 
 				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+				expect(warnSpy).not.toHaveBeenCalled()
 			})
 
 			it('does not warn when the settings conflict but are the same', () => {
@@ -196,6 +205,7 @@ describe('store utilities', () => {
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
 
 				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+				expect(warnSpy).not.toHaveBeenCalled()
 			})
 		})
 	})

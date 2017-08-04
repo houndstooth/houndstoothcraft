@@ -11,6 +11,7 @@ import houndazzleContinuumEffect from '../../effects/houndazzle/effects/houndazz
 import gongramEffect from '../../effects/gongram/effects/gongramEffect'
 import houndsmorphosisEffect from '../../effects/houndsmorphosis/effects/houndsmorphosisEffect'
 import codeUtilities from '../utilities/codeUtilities'
+import warnings from '../application/setupWarnings'
 
 const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
 
@@ -18,9 +19,14 @@ const removeEffect = houndstoothEffect => {
 	store.selectedHoundstoothEffects = store.selectedHoundstoothEffects.filter(sHE => sHE.name !== houndstoothEffect.name)
 }
 
-const buildClickHandler = (checkbox, houndstoothEffect) => () => {
+const resetEverything = () => {
+	warnings.innerHTML = ''
 	store.mainHoundstooth = codeUtilities.deepClone(initialStore.INITIAL_MAIN_HOUNDSTOOTH)
 	clear()
+}
+
+const buildClickHandler = (checkbox, houndstoothEffect) => () => {
+	resetEverything()
 
 	checkbox.checked ? addEffect(houndstoothEffect) : removeEffect(houndstoothEffect)
 	composeMainHoundstooth({ houndstoothEffects: store.selectedHoundstoothEffects })

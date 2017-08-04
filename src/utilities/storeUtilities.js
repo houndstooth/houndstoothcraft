@@ -2,6 +2,7 @@ import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
 import patternStructure from '../store/patternStructure'
 import houndstoothStructure from '../store/houndstoothStructure'
+import warn from '../application/warn'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {
@@ -45,7 +46,9 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 
 			const existingSetting = settingsWithSettingToBeOverridden[ settingName ]
 			if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
-				consoleWrapper.warn(`some effects have conflicts on setting: ${settingPath(settingsPath, settingName)}`)
+				const warningMessage = `some effects have conflicts on setting: ${settingPath(settingsPath, settingName)}`
+				consoleWrapper.warn(warningMessage)
+				warn(warningMessage)
 			}
 
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting

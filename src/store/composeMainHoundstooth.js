@@ -1,5 +1,5 @@
 import storeUtilities from '../utilities/storeUtilities'
-import consoleWrapper from '../application/consoleWrapper'
+import consoleWrapper from '../utilities/consoleWrapper'
 import houndstoothDefaults from './houndstoothDefaults'
 import store from '../../store'
 import combineHoundstoothEffects from './combineHoundstoothEffects'

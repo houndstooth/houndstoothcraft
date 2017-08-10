@@ -1,7 +1,7 @@
 import 'jasmine'
 import clear from '../src/render/clear'
 import testMarkersClear from './integration/helpers/testMarkersClear'
-import setupCanvas from '../src/interface/setupCanvas'
+import setupCanvas from '../src/application/setupCanvas'
 
 beforeEach(() => {
 	setupCanvas()

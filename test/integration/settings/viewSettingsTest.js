@@ -7,7 +7,7 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import setupCanvas from '../../../src/interface/setupCanvas'
+import setupCanvas from '../../../src/application/setupCanvas'
 import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
 

@@ -1,4 +1,5 @@
-import execute from '../application/execute'
+import controls from '../interface/controls'
+import execute from './execute'
 import clear from '../render/clear'
 import composeMainHoundstooth from '../store/composeMainHoundstooth'
 import store from '../../store'
@@ -11,7 +12,7 @@ import houndazzleContinuumEffect from '../../effects/houndazzle/effects/houndazz
 import gongramEffect from '../../effects/gongram/effects/gongramEffect'
 import houndsmorphosisEffect from '../../effects/houndsmorphosis/effects/houndsmorphosisEffect'
 import codeUtilities from '../utilities/codeUtilities'
-import warnings from './setupWarnings'
+import warnings from '../interface/warnings'
 
 const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
 
@@ -50,12 +51,7 @@ const addHoundstoothEffectToggleToControls = houndstoothEffect => {
 	controls.appendChild(checkboxContainer)
 }
 
-let controls = document.querySelector('.controls')
-
-if (!controls) {
-	controls = document.createElement('div')
-	controls.classList.add('controls')
-
+export default () => {
 	const houndstoothEffects = [
 		cmyktoothEffect,
 		ginghamChevronContinuumEffect,
@@ -67,8 +63,4 @@ if (!controls) {
 	]
 
 	houndstoothEffects.forEach(addHoundstoothEffectToggleToControls)
-
-	document.body.appendChild(controls)
 }
-
-export default () => controls

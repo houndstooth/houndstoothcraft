@@ -1,10 +1,12 @@
-import '../../../src/interface/setupControls'
+import setupControls from '../../../src/application/setupControls'
 import store from '../../../store'
 import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 
-describe('controls', () => {
-	it('toggles settings from the effect', () => {
-		composeMainHoundstooth()
+describe('setup controls', () => {
+	beforeEach(composeMainHoundstooth)
+
+	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
+		setupControls()
 
 		expect(store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(50)
 		document.querySelector('input.houndsmorphosis').click()

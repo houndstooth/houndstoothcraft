@@ -1,6 +1,6 @@
 import exportFrame from '../../../src/animation/exportFrame'
 import fileSaver from 'file-saver'
-import canvas from '../../../src/render/canvas'
+import canvas from '../../../src/interface/canvas'
 import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
 

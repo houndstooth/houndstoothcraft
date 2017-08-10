@@ -1,4 +1,4 @@
-import consoleWrapper from '../application/consoleWrapper'
+import consoleWrapper from './consoleWrapper'
 import codeUtilities from './codeUtilities'
 import patternStructure from '../store/patternStructure'
 import houndstoothStructure from '../store/houndstoothStructure'

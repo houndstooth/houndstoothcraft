@@ -1,4 +1,4 @@
-import canvas from '../render/canvas'
+import canvas from '../interface/canvas'
 import fileSaver from 'file-saver'
 import store from '../../store'
 

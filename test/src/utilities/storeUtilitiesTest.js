@@ -1,5 +1,5 @@
 import storeUtilities from '../../../src/utilities/storeUtilities'
-import consoleWrapper from '../../../src/application/consoleWrapper'
+import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import store from '../../../store'
 import resetStore from '../../helpers/resetStore'

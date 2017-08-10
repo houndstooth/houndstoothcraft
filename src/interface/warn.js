@@ -1,4 +1,4 @@
-import warnings from './setupWarnings'
+import warnings from './warnings'
 
 export default warningMessage => {
 	const warning = document.createElement('div')

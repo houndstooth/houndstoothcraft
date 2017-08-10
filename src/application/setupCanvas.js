@@ -1,4 +1,4 @@
-import canvas from '../render/canvas'
+import canvas from '../interface/canvas'
 import store from '../../store'
 import houndstoothDefaults from '../store/houndstoothDefaults'
 import colorUtilities from '../utilities/colorUtilities'

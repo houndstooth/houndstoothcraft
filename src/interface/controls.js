@@ -1,9 +1,12 @@
+import canvas from './canvas'
+import insertElementRightAfter from './insertElementRightAfter'
+
 let controls = document.querySelector('.controls')
 
 if (!controls) {
 	controls = document.createElement('div')
 	controls.classList.add('controls')
-	document.body.appendChild(controls)
+	insertElementRightAfter(controls, canvas)
 }
 
 export default controls

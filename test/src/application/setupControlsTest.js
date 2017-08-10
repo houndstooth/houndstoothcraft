@@ -1,4 +1,4 @@
-import '../../../src/application/setupControls'
+import '../../../src/interface/setupControls'
 import store from '../../../store'
 import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 

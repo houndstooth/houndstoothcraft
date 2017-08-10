@@ -9,7 +9,7 @@ import settingsPaths from '../../helpers/settingsPaths'
 import store from '../../../store'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetStore from '../../helpers/resetStore'
-import setupCanvas from '../../../src/render/setupCanvas'
+import setupCanvas from '../../../src/interface/setupCanvas'
 
 describe('.colorSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)

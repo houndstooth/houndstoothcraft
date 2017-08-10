@@ -1,8 +1,8 @@
-import execute from './execute'
+import execute from '../application/execute'
 import clear from '../render/clear'
 import composeMainHoundstooth from '../store/composeMainHoundstooth'
 import store from '../../store'
-import initialStore from '../../src/store/initialStore'
+import initialStore from '../store/initialStore'
 import cmyktoothEffect from '../../effects/cmyktooth/effects/cmyktoothEffect'
 import ginghamChevronContinuumEffect from '../../effects/gingham-chevron-continuum/effects/ginghamChevronContinuumEffect'
 import harmonitoothEffect from '../../effects/harmonitooth/effects/harmonitoothEffect'
@@ -11,7 +11,7 @@ import houndazzleContinuumEffect from '../../effects/houndazzle/effects/houndazz
 import gongramEffect from '../../effects/gongram/effects/gongramEffect'
 import houndsmorphosisEffect from '../../effects/houndsmorphosis/effects/houndsmorphosisEffect'
 import codeUtilities from '../utilities/codeUtilities'
-import warnings from '../application/setupWarnings'
+import warnings from './setupWarnings'
 
 const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
 

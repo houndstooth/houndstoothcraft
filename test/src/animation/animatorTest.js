@@ -1,4 +1,4 @@
-import animator from '../../../src/application/animator'
+import animator from '../../../src/animation/animator'
 import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
 

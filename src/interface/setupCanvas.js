@@ -1,8 +1,8 @@
-import canvas from './canvas'
+import canvas from '../render/canvas'
 import store from '../../store'
 import houndstoothDefaults from '../store/houndstoothDefaults'
 import colorUtilities from '../utilities/colorUtilities'
-import context from './context'
+import context from '../render/context'
 
 export default () => {
 	const canvasSize = store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE

@@ -3,8 +3,8 @@ import storeUtilities from '../utilities/storeUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
 import consoleWrapper from './consoleWrapper'
-import animator from './animator'
-import exportFrame from './exportFrame'
+import animator from '../animation/animator'
+import exportFrame from '../animation/exportFrame'
 import store from '../../store'
 
 export default () => {

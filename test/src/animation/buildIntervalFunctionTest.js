@@ -1,4 +1,4 @@
-import buildIntervalFunction from '../../../src/application/buildIntervalFunction'
+import buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
 import store from '../../../store'
 import resetStore from '../../helpers/resetStore'
 

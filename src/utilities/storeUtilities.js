@@ -2,7 +2,7 @@ import consoleWrapper from '../application/consoleWrapper'
 import codeUtilities from './codeUtilities'
 import patternStructure from '../store/patternStructure'
 import houndstoothStructure from '../store/houndstoothStructure'
-import warn from '../application/warn'
+import warn from '../interface/warn'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {

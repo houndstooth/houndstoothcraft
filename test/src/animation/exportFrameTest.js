@@ -1,4 +1,4 @@
-import exportFrame from '../../../src/application/exportFrame'
+import exportFrame from '../../../src/animation/exportFrame'
 import fileSaver from 'file-saver'
 import canvas from '../../../src/render/canvas'
 import store from '../../../store'

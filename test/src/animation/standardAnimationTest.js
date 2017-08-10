@@ -1,4 +1,4 @@
-import standardAnimation from '../../../src/application/standardAnimation'
+import standardAnimation from '../../../src/animation/standardAnimation'
 import store from '../../../store'
 
 describe('standard animation', () => {

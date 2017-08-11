@@ -157,8 +157,8 @@ describe('store utilities', () => {
 
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
 
-				const expectedWarningOne = 'some effects have conflicts on setting: colorSettings.assignment.assignmentMode. yoda was overridden by luke'
-				const expectedWarningTwo = 'some effects have conflicts on setting: gridSettings.gridSize. jedi was overridden by sith'
+				const expectedWarningOne = 'some effects have conflicts on setting `colorSettings.assignment.assignmentMode`: `yoda` was overridden by `luke`'
+				const expectedWarningTwo = 'some effects have conflicts on setting `gridSettings.gridSize`: `jedi` was overridden by `sith`'
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningOne)
 				expect(warnSpy).toHaveBeenCalledWith(expectedWarningOne)
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarningTwo)
@@ -206,6 +206,48 @@ describe('store utilities', () => {
 
 				expect(consoleWrapper.warn).not.toHaveBeenCalled()
 				expect(warnSpy).not.toHaveBeenCalled()
+			})
+
+			it('does not warn when the functions are equal', () => {
+				const patternToBeMergedOnto = { tileSettings: { getTileOriginAndSize: a => a + 1 } }
+				const patternToMerge = { tileSettings: { getTileOriginAndSize: a => a + 1 } }
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+				expect(warnSpy).not.toHaveBeenCalled()
+			})
+
+			it('does warn when the functions are not equal', () => {
+				const patternToBeMergedOnto = { tileSettings: { getTileOriginAndSize: a => a + 1 } }
+				const patternToMerge = { tileSettings: { getTileOriginAndSize: b => b + 1 } }
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function getTileOriginAndSize(a) {return a + 1;}` was overridden by `function getTileOriginAndSize(b) {return b + 1;}`'
+				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+				expect(warnSpy).toHaveBeenCalledWith(expectedWarning)
+			})
+
+			it('does not warn when arrays are equal', () => {
+				const patternToBeMergedOnto = { colorSettings: { backgroundColor: [ 'a', 'b' ] } }
+				const patternToMerge = { colorSettings: { backgroundColor: [ 'a', 'b' ] } }
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				expect(consoleWrapper.warn).not.toHaveBeenCalled()
+				expect(warnSpy).not.toHaveBeenCalled()
+			})
+
+			it('does warn when arrays are not equal', () => {
+				const patternToBeMergedOnto = { colorSettings: { backgroundColor: [ 'a', 'b' ] } }
+				const patternToMerge = { colorSettings: { backgroundColor: [ 'b', 'a' ] } }
+
+				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
+
+				const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `[ a, b ]` was overridden by `[ b, a ]`'
+				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+				expect(warnSpy).toHaveBeenCalledWith(expectedWarning)
 			})
 		})
 	})

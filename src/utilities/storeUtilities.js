@@ -46,9 +46,9 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 
 			const existingSetting = settingsWithSettingToBeOverridden[ settingName ]
 			if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
-				const warningMessage = `some effects have conflicts on setting: ${settingPath(settingsPath, settingName)}. ${existingSetting} was overridden by ${overridingSetting}`
-				consoleWrapper.warn(warningMessage)
-				warn(warningMessage)
+				const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
+				consoleWrapper.warn(warning)
+				warn(warning)
 			}
 
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting
@@ -58,8 +58,45 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 
 const settingPath = (settingsPath, settingName) => `${settingsPath.join('.')}.${settingName}`
 
+const settingsAreEqual = (a, b) => {
+	if (typeof a === 'function') {
+		if (typeof b === 'function') {
+			return a.toString() === b.toString()
+		}
+		else {
+			return false
+		}
+	}
+	else if (a instanceof Array) {
+		if (b instanceof Array) {
+			return a.every((aEntry, index) => aEntry === b[ index ])
+		}
+		else {
+			return false
+		}
+	}
+	return a === b
+}
+
+const buildWarningMessage = ({ settingsPath, settingName, existingSetting, overridingSetting }) => {
+	const formattedExistingSetting = formatSettingForWarning(existingSetting)
+	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
+	const fullSettingPath = settingPath(settingsPath, settingName)
+	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
+}
+
+const formatSettingForWarning = setting => {
+	if (typeof setting === 'function') {
+		return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
+	}
+	else if (setting instanceof Array) {
+		return `[ ${setting.join(', ')} ]`
+	}
+	return setting
+}
+
 const shouldWarnAboutConflicts = ({ warnAboutConflicts, existingSetting, overridingSetting }) => {
-	return warnAboutConflicts && codeUtilities.isDefined(existingSetting) && existingSetting !== overridingSetting
+	return warnAboutConflicts && codeUtilities.isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 }
 
 const settingIsDefinedOnPatternStructure = ({ settingsPath, settingName, patternStructureChecker: objectWithProperties }) => {

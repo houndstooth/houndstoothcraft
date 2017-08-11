@@ -1,12 +1,12 @@
 import canvas from './canvas'
-import insertElementRightAfter from './insertElementRightAfter'
+import interfaceUtilities from '../utilities/interfaceUtilities'
 
 let controls = document.querySelector('.controls')
 
 if (!controls) {
 	controls = document.createElement('div')
 	controls.classList.add('controls')
-	insertElementRightAfter(controls, canvas)
+	interfaceUtilities.insertElementRightAfter(controls, canvas)
 }
 
 export default controls

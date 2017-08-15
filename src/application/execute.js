@@ -6,11 +6,19 @@ import consoleWrapper from '../utilities/consoleWrapper'
 import animator from '../animation/animator'
 import exportFrame from '../animation/exportFrame'
 import store from '../../store'
+import setupCanvases from './setupCanvases'
+import setupContexts from './setupContexts'
+import setupMixedDownCanvas from '../render/setupMixedDownCanvas'
+import mixDownCanvases from '../render/mixDownCanvases'
 
 export default () => {
 	const iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
 		settingsFunctions: store.mainHoundstooth.iterationsPattern,
 	})
+
+	setupCanvases()
+	setupMixedDownCanvas()
+	setupContexts()
 
 	if (store.animating) {
 		const animationFunctions = storeUtilities.prepareFunctionsPerSetting({
@@ -63,6 +71,9 @@ const executeGrid = ({ iterationFunctions }) => {
 		}
 		store.iterationFrame++
 	}
+
+	mixDownCanvases()
+
 	store.iterationFrame = 0
 }
 

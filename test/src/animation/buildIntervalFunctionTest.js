@@ -1,6 +1,6 @@
 import buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('build animation function', () => {
 	let intervalFunction

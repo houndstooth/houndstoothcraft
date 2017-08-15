@@ -1,5 +1,5 @@
-import context from '../../../src/render/context'
 import isCloseTo from '../../helpers/isCloseTo'
+import store from '../../../store'
 
 export default (coordinateUnderTest, expectedColor) => {
 	const actualColor = pixel(coordinateUnderTest)
@@ -18,7 +18,7 @@ export default (coordinateUnderTest, expectedColor) => {
 }
 
 const pixel = ([ x, y ]) => {
-	const pixelData = context.getImageData(x, y, 1, 1).data
+	const pixelData = store.mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
 	return {
 		r: pixelData[ 0 ],
 		g: pixelData[ 1 ],

@@ -2,7 +2,7 @@ import storeUtilities from '../../../src/utilities/storeUtilities'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('store utilities', () => {
 	beforeEach(() => resetStore(store))

@@ -1,5 +1,5 @@
-import initialStore from '../../src/store/initialStore'
-import codeUtilities from '../../src/utilities/codeUtilities'
+import initialStore from './initialStore'
+import codeUtilities from '../utilities/codeUtilities'
 
 export default store => {
 	Object.entries(initialStore.INITIAL_STORE).forEach(([ key, value ]) => {

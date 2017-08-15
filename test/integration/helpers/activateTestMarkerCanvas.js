@@ -1,5 +1,6 @@
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
+import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.position = 'absolute'
@@ -21,5 +22,8 @@ export default () => {
 	testCanvasDisplayArea.style.width = `${canvasSize}px`
 	testCanvasDisplayArea.style.height = `${canvasSize}px`
 
-	prepareCanvasForDisplayInTest(document.querySelector('.realCanvas'))
+	interfaceUtilities.iterationFrameIterator().forEach(iterationFrame => {
+		let canvas = document.querySelector(`.realCanvas-${iterationFrame}`)
+		prepareCanvasForDisplayInTest(canvas)
+	})
 }

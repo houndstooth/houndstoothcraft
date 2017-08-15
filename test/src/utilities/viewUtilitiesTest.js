@@ -2,7 +2,7 @@ import viewUtilities from '../../../src/utilities/viewUtilities'
 import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import coordinatesMatch from '../helpers/coordinatesMatch'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('view utilities', () => {
 	const zoom = 10

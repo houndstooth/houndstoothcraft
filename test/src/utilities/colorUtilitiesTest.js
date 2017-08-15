@@ -2,7 +2,7 @@ import colorUtilities from '../../../src/utilities/colorUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('color utilities', () => {
 	beforeEach(() => {

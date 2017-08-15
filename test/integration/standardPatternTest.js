@@ -4,7 +4,7 @@ import standardTileIsColors from './helpers/standardTileIsColors'
 import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../src/constants'
 import store from '../../store'
-import resetStore from '../helpers/resetStore'
+import resetStore from '../../src/store/resetStore'
 
 describe('standard houndstooth pattern', () => {
 	beforeEach(() => resetStore(store))

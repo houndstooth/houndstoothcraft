@@ -1,7 +1,7 @@
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
 import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('stripe utilities', () => {
 	beforeEach(() => {

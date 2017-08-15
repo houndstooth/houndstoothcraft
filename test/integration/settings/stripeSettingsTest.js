@@ -7,7 +7,7 @@ import { BLACK, TRANSPARENT } from '../../../src/constants'
 import settingsPaths from '../../helpers/settingsPaths'
 import store from '../../../store'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('.stripeSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)

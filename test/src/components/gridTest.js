@@ -1,6 +1,6 @@
 import grid from '../../../src/components/grid'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('grid', () => {
 	let tileSpy

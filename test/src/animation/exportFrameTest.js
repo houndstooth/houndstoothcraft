@@ -1,21 +1,27 @@
 import exportFrame from '../../../src/animation/exportFrame'
 import fileSaver from 'file-saver'
-import canvas from '../../../src/interface/canvas'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
+import setupCanvases from '../../../src/application/setupCanvases'
+import setupContexts from '../../../src/application/setupContexts'
+import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
 describe('export frame', () => {
 	beforeEach(() => {
 		resetStore(store)
+		setupCanvases()
+		setupMixedDownCanvas()
+		setupContexts()
+
 		store.lastSavedAnimationFrame = 666
-		spyOn(canvas, 'toBlob').and.callFake(callTheFunctionThrough => callTheFunctionThrough())
+		spyOn(store.mixedDownCanvas, 'toBlob').and.callFake(callTheFunctionThrough => callTheFunctionThrough())
 		spyOn(fileSaver, 'saveAs')
 
 		exportFrame()
 	})
 
-	it('calls toBlob on the canvas', () => {
-		expect(canvas.toBlob).toHaveBeenCalled()
+	it('calls toBlob on the mixed down canvas', () => {
+		expect(store.mixedDownCanvas.toBlob).toHaveBeenCalled()
 	})
 
 	it('saves the frame as a png with the frame number as file name', () => {

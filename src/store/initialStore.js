@@ -7,6 +7,9 @@ const INITIAL_MAIN_HOUNDSTOOTH = {
 const INITIAL_STORE = {
 	iterationFrame: 0,
 	animationFrame: 0,
+	contexts: [],
+	canvases: [],
+	mixedDownCanvas: null,
 	lastSavedAnimationFrame: 0,
 	interval: null,
 	animating: false,

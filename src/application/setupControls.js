@@ -3,7 +3,6 @@ import execute from './execute'
 import clear from '../render/clear'
 import composeMainHoundstooth from '../store/composeMainHoundstooth'
 import store from '../../store'
-import initialStore from '../store/initialStore'
 import cmyktoothEffect from '../../effects/cmyktooth/effects/cmyktoothEffect'
 import ginghamChevronContinuumEffect from '../../effects/gingham-chevron-continuum/effects/ginghamChevronContinuumEffect'
 import harmonitoothEffect from '../../effects/harmonitooth/effects/harmonitoothEffect'
@@ -11,8 +10,8 @@ import houndazzleEffect from '../../effects/houndazzle/effects/houndazzleEffect'
 import houndazzleContinuumEffect from '../../effects/houndazzle/effects/houndazzleContinuumEffect'
 import gongramEffect from '../../effects/gongram/effects/gongramEffect'
 import houndsmorphosisEffect from '../../effects/houndsmorphosis/effects/houndsmorphosisEffect'
-import codeUtilities from '../utilities/codeUtilities'
 import warnings from '../interface/warnings'
+import resetStore from '../store/resetStore'
 
 const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
 
@@ -22,8 +21,9 @@ const removeEffect = houndstoothEffect => {
 
 const resetEverything = () => {
 	warnings.innerHTML = ''
-	store.mainHoundstooth = codeUtilities.deepClone(initialStore.INITIAL_MAIN_HOUNDSTOOTH)
 	clear()
+	clearInterval(store.interval)
+	resetStore(store)
 }
 
 const buildClickHandler = (checkbox, houndstoothEffect) => () => {

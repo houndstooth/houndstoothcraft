@@ -4,7 +4,8 @@ import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import context from '../../../src/render/context'
+import clear from '../../../src/render/clear'
+import store from '../../../store'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
@@ -70,7 +71,7 @@ describe('.tileSettings', () => {
 	describe('.collapseSameColoredShapesWithinTile', () => {
 		let houndstoothOverrides
 		beforeEach(() => {
-			context.clear()
+			clear()
 			houndstoothOverrides = {
 				basePattern: {
 					gridSettings: { gridSize: 1 },
@@ -85,7 +86,7 @@ describe('.tileSettings', () => {
 
 			execute()
 
-			let contextCallStack = context.stack()
+			let contextCallStack = store.contexts[0].stack()
 			expect(contextCallStack.length).toBe(8)
 			expect(contextCallStack[ 0 ].attr).toBe('fillStyle')
 			expect(contextCallStack[ 1 ].method).toBe('beginPath')
@@ -104,7 +105,7 @@ describe('.tileSettings', () => {
 
 			execute()
 
-			let contextCallStack = context.stack()
+			let contextCallStack = store.contexts[0].stack()
 			expect(contextCallStack.length).toBe(30)
 
 			expect(contextCallStack[ 0 ].attr).toBe('fillStyle')

@@ -1,6 +1,10 @@
 import render from '../../../src/render/render'
-import context from '../../../src/render/context'
 import colorUtilities from '../../../src/utilities/colorUtilities'
+import store from '../../../store'
+import resetStore from '../../../src/store/resetStore'
+import setupContexts from '../../../src/application/setupContexts'
+import setupCanvases from '../../../src/application/setupCanvases'
+import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
 describe('render', () => {
 	const shapeColor = {}
@@ -8,22 +12,27 @@ describe('render', () => {
 	const contextCallsOrder = []
 
 	beforeEach(() => {
+		resetStore(store)
+		setupCanvases()
+		setupMixedDownCanvas()
+		setupContexts()
+
 		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 
 		contextCallsOrder.length = 0
-		spyOn(context, 'beginPath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'beginPath' }))
-		spyOn(context, 'moveTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
+		spyOn(store.contexts[0], 'beginPath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'beginPath' }))
+		spyOn(store.contexts[0], 'moveTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
 			method: 'moveTo',
 			x,
 			y,
 		}))
-		spyOn(context, 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
+		spyOn(store.contexts[0], 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
 			method: 'lineTo',
 			x,
 			y,
 		}))
-		spyOn(context, 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
-		spyOn(context, 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
+		spyOn(store.contexts[0], 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
+		spyOn(store.contexts[0], 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
@@ -65,7 +74,7 @@ describe('render', () => {
 		})
 
 		it('assigns the parsed color to the context\'s fill style', () => {
-			expect(context.fillStyle).toEqual(parsedColor)
+			expect(store.contexts[0].fillStyle).toEqual(parsedColor)
 		})
 
 		it('draws the path with the correct outline and fills it', () => {

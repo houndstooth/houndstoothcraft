@@ -1,12 +1,12 @@
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
-let canvas
+let canvasContainer
 
 describe('controls', () => {
 	beforeEach(() => {
 		delete require.cache[ require.resolve('../../../src/interface/warnings') ]
 		delete require.cache[ require.resolve('../../../src/interface/controls') ]
-		delete require.cache[ require.resolve('../../../src/interface/canvas') ]
-		canvas = require('../../../src/interface/canvas').default
+		delete require.cache[ require.resolve('../../../src/interface/canvasContainer') ]
+		canvasContainer = require('../../../src/interface/canvasContainer').default
 
 		const preexistingControls = document.querySelector('.controls')
 		if (preexistingControls) preexistingControls.parentNode.removeChild(preexistingControls)
@@ -46,7 +46,7 @@ describe('controls', () => {
 		})
 
 		it('inserts the controls after the canvas', () => {
-			expect(interfaceUtilities.insertElementRightAfter).toHaveBeenCalledWith(returnedControls, canvas)
+			expect(interfaceUtilities.insertElementRightAfter).toHaveBeenCalledWith(returnedControls, canvasContainer)
 		})
 	})
 })

@@ -4,7 +4,7 @@ import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import storeUtilities from '../../../src/utilities/storeUtilities'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 import combineHoundstoothEffects from '../../../src/store/combineHoundstoothEffects'
 
 describe('composeMainHoundstooth', () => {

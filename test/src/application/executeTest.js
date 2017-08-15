@@ -2,7 +2,7 @@ import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
 import execute from '../../../src/application/execute'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('execute', () => {
 	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy

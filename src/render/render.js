@@ -1,8 +1,10 @@
-import context from './context'
 import colorUtilities from '../utilities/colorUtilities'
+import store from '../../store'
 
 export default ({ shapeColor, outline }) => {
 	if (outline.length < 3) return
+
+	const context = store.contexts[store.iterationFrame]
 
 	context.fillStyle = colorUtilities.parseColor(shapeColor)
 	context.beginPath()

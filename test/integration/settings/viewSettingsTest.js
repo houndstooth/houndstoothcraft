@@ -7,9 +7,9 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import setupCanvas from '../../../src/application/setupCanvas'
+import setupCanvases from '../../../src/application/setupCanvases'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('.viewSettings', () => {
 	const tileSizeSetting = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
@@ -27,7 +27,7 @@ describe('.viewSettings', () => {
 				},
 			})
 			activateTestMarkerCanvas()
-			setupCanvas()
+			setupCanvases()
 
 			execute()
 

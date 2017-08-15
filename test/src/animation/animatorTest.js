@@ -1,6 +1,6 @@
 import animator from '../../../src/animation/animator'
 import store from '../../../store'
-import resetStore from '../../helpers/resetStore'
+import resetStore from '../../../src/store/resetStore'
 
 describe('animator', () => {
 	let buildIntervalFunctionSpy

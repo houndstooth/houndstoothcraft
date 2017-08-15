@@ -12,6 +12,7 @@ export default () => {
 		const canvasSize = store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
 		mixedDownCanvas.width = canvasSize
 		mixedDownCanvas.height = canvasSize
+		mixedDownCanvas.style.display = 'none'
 	}
 
 	store.mixedDownCanvas = mixedDownCanvas

@@ -1,5 +1,5 @@
-import setupCanvases from '../../../src/application/setupCanvases'
-import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
+// import setupCanvases from '../../../src/application/setupCanvases'
+// import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 

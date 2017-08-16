@@ -5,7 +5,6 @@ import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import storeUtilities from '../../../src/utilities/storeUtilities'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
-import combineHoundstoothEffects from '../../../src/store/combineHoundstoothEffects'
 
 describe('composeMainHoundstooth', () => {
 	beforeEach(() => {

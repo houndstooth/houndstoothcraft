@@ -17,7 +17,7 @@ afterEach(() => {
 	const canvasContainer = document.querySelector('.canvas-container')
 	if (canvasContainer) canvasContainer.style.display = 'none'
 
-	document.body.scrollTop = document.documentElement.scrollTop = 0;
+	document.body.scrollTop = document.documentElement.scrollTop = 0
 })
 
 describe('when you run the entire test suite', () => {

@@ -22,7 +22,7 @@ describe('background color', () => {
 	})
 
 	it('fills the background color when set', () => {
-		store.mainHoundstooth.basePattern = { colorSettings: { backgroundColor: [{ r: 1, g: 1, b: 1, a: 1 }] } }
+		store.mainHoundstooth.basePattern = { colorSettings: { backgroundColor: [ { r: 1, g: 1, b: 1, a: 1 } ] } }
 		setupContexts()
 
 		expect(mockContext.fillStyle).toBe('rgba(1,1,1,1)')

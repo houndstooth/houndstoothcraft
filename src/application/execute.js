@@ -39,8 +39,7 @@ const gridAndMaybeLogging = () => {
 		if (animating) {
 			consoleWrapper.log(`current animation/iteration frame: ${animationFrame}/${iterationFrame}`)
 		}
-		else
-		{
+		else {
 			consoleWrapper.log(`current iteration frame: ${iterationFrame}`)
 		}
 		consoleWrapper.timeEnd('grid')

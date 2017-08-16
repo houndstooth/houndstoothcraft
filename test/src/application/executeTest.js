@@ -5,7 +5,7 @@ import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 
 describe('execute', () => {
-	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy
+	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy, mixDownCanvasesSpy
 	beforeEach(() => {
 		resetStore(store)
 		composeMainHoundstooth()
@@ -26,11 +26,35 @@ describe('execute', () => {
 		execute.__Rewire__('exportFrame', exportFrameSpy)
 
 		store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 100 }
+
+		mixDownCanvasesSpy = jasmine.createSpy()
+		execute.__Rewire__('mixDownCanvases', mixDownCanvasesSpy)
 	})
 
 	afterEach(() => {
 		execute.__ResetDependency__('grid')
 		execute.__ResetDependency__('animator')
+
+		execute.__ResetDependency__('mixDownCanvases')
+	})
+
+	it('sets up for rendering', () => {
+		const setupCanvasesSpy = jasmine.createSpy()
+		execute.__Rewire__('setupCanvases', setupCanvasesSpy)
+		const setupContextsSpy = jasmine.createSpy()
+		execute.__Rewire__('setupContexts', setupContextsSpy)
+		const setupMixedDownCanvasSpy = jasmine.createSpy()
+		execute.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
+
+		execute()
+
+		expect(setupCanvasesSpy).toHaveBeenCalled()
+		expect(setupContextsSpy).toHaveBeenCalled()
+		expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+
+		execute.__ResetDependency__('setupCanvases')
+		execute.__ResetDependency__('setupContexts')
+		execute.__ResetDependency__('setupMixedDownCanvas')
 	})
 
 	describe('performance logging', () => {
@@ -166,6 +190,12 @@ describe('execute', () => {
 			expect(gridSpy.calls.count()).toBe(1)
 		})
 
+		it('mixes down canvases, also once', () => {
+			execute()
+
+			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+		})
+
 		it('does not call iteration functions', () => {
 			const iterationFunction = jasmine.createSpy()
 			store.mainHoundstooth.iterationsPattern.exampleSetting = iterationFunction
@@ -189,6 +219,12 @@ describe('execute', () => {
 			execute()
 
 			expect(gridSpy.calls.count()).toBe(4)
+		})
+
+		it('mixes down canvases, just once', () => {
+			execute()
+
+			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
 		})
 
 		it('calls iteration functions once for each iteration, including before rendering starts', () => {
@@ -244,6 +280,12 @@ describe('execute', () => {
 			execute()
 
 			expect(gridSpy.calls.count()).toBe(4)
+		})
+
+		it('mixes down canvases once for each animation between start and end, inclusive', () => {
+			execute()
+
+			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
 		})
 
 		it('calls the animator with the frame rate, which is defaulted', () => {
@@ -314,6 +356,12 @@ describe('execute', () => {
 			execute()
 
 			expect(gridSpy.calls.count()).toBe(16)
+		})
+
+		it('mixes down canvases once for each animation between start and end, inclusive', () => {
+			execute()
+
+			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
 		})
 
 		it('calls iteration functions once for each iteration, each animation frame, starting the iteration over each animation frame', () => {

@@ -12,7 +12,7 @@ export default () => {
 	canvasContainer.style.height = canvasSize
 
 	interfaceUtilities.iterationFrameIterator().forEach(canvasIndex => {
-		const canvasClass = `realCanvas-${canvasIndex}`
+		const canvasClass = `real-canvas-${canvasIndex}`
 		let canvas = document.querySelector(`.${canvasClass}`)
 
 		if (!canvas) {

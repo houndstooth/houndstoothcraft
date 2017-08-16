@@ -22,7 +22,7 @@ afterEach(() => {
 
 describe('when you run the entire test suite', () => {
 	it('hides canvases', () => {
-		const testCanvasDisplayArea = document.querySelector('.testCanvasDisplayArea')
+		const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 		if (testCanvasDisplayArea) testCanvasDisplayArea.style.display = 'none'
 
 		const mixedDownCanvas = document.querySelector('.mixed-down-canvas')

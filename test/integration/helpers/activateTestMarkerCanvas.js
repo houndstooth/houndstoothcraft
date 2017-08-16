@@ -9,7 +9,7 @@ const prepareCanvasForDisplayInTest = canvas => {
 }
 
 export default () => {
-	let testMarkersCanvas = document.querySelector('.testMarkersCanvas')
+	let testMarkersCanvas = document.querySelector('.test-markers-canvas')
 
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
@@ -18,7 +18,7 @@ export default () => {
 	testMarkersCanvas.width = canvasSize
 	testMarkersCanvas.height = canvasSize
 
-	const testCanvasDisplayArea = document.querySelector('.testCanvasDisplayArea')
+	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 	testCanvasDisplayArea.style.display = 'block'
 	testCanvasDisplayArea.style.width = `${canvasSize}px`
 	testCanvasDisplayArea.style.height = `${canvasSize}px`

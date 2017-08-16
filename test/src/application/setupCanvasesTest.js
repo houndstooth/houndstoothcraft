@@ -35,7 +35,7 @@ describe('setup canvases', () => {
 // 	beforeEach(() => {
 // 		delete require.cache[ require.resolve('../../../src/interface/canvas') ]
 //
-// 		const preexistingCanvas = document.querySelector('.realCanvas')
+// 		const preexistingCanvas = document.querySelector('.real-canvas')
 // 		if (preexistingCanvas) preexistingCanvas.parentNode.removeChild(preexistingCanvas)
 // 	})
 //
@@ -43,7 +43,7 @@ describe('setup canvases', () => {
 // 		let realCanvas
 // 		beforeEach(() => {
 // 			realCanvas = document.createElement('canvas')
-// 			realCanvas.classList.add('realCanvas')
+// 			realCanvas.classList.add('real-canvas')
 // 			document.body.appendChild(realCanvas)
 // 		})
 //
@@ -59,13 +59,13 @@ describe('setup canvases', () => {
 // 		beforeEach(() => returnedCanvas = require('../../../src/interface/canvases').default)
 //
 // 		it('returns the newly created canvas', () => {
-// 			const realCanvas = document.querySelector('.realCanvas')
+// 			const realCanvas = document.querySelector('.real-canvas')
 // 			expect(returnedCanvas.isSameNode(realCanvas)).toBe(true)
 // 		})
 //
 // 		it('creates the canvas and adds it to the document', () => {
 // 			const expectedCanvas = document.createElement('canvas')
-// 			expectedCanvas.classList.add('realCanvas')
+// 			expectedCanvas.classList.add('real-canvas')
 // 			expect(returnedCanvas.isEqualNode(expectedCanvas)).toBe(true)
 // 		})
 // 	})

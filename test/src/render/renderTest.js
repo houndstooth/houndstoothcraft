@@ -26,13 +26,13 @@ describe('render', () => {
 			x,
 			y,
 		}))
-		spyOn(store.contexts[0], 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
+		spyOn(store.contexts[ 0 ], 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
 			method: 'lineTo',
 			x,
 			y,
 		}))
-		spyOn(store.contexts[0], 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
-		spyOn(store.contexts[0], 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
+		spyOn(store.contexts[ 0 ], 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
+		spyOn(store.contexts[ 0 ], 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
@@ -74,11 +74,50 @@ describe('render', () => {
 		})
 
 		it('assigns the parsed color to the context\'s fill style', () => {
-			expect(store.contexts[0].fillStyle).toEqual(parsedColor)
+			expect(store.contexts[ 0 ].fillStyle).toEqual(parsedColor)
 		})
 
 		it('draws the path with the correct outline and fills it', () => {
 			expect(contextCallsOrder).toEqual([
+				{ method: 'beginPath' },
+				{ method: 'moveTo', x: 0, y: 1 },
+				{ method: 'lineTo', x: 1, y: 1 },
+				{ method: 'lineTo', x: 1, y: 0 },
+				{ method: 'closePath' },
+				{ method: 'fill' },
+			])
+		})
+	})
+
+	describe('when iterating', () => {
+		it('renders to the context of the current iteration frame', () => {
+			const frame = 5
+			store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: frame }
+			store.iterationFrame = frame
+			setupCanvases()
+			setupMixedDownCanvas()
+			setupContexts()
+
+			const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+
+			const laterFrameContextCallsOrder = []
+			spyOn(store.contexts[ frame ], 'beginPath').and.callThrough().and.callFake(() => laterFrameContextCallsOrder.push({ method: 'beginPath' }))
+			spyOn(store.contexts[ frame ], 'moveTo').and.callThrough().and.callFake((x, y) => laterFrameContextCallsOrder.push({
+				method: 'moveTo',
+				x,
+				y,
+			}))
+			spyOn(store.contexts[ frame ], 'lineTo').and.callThrough().and.callFake((x, y) => laterFrameContextCallsOrder.push({
+				method: 'lineTo',
+				x,
+				y,
+			}))
+			spyOn(store.contexts[ frame ], 'closePath').and.callThrough().and.callFake(() => laterFrameContextCallsOrder.push({ method: 'closePath' }))
+			spyOn(store.contexts[ frame ], 'fill').and.callThrough().and.callFake(() => laterFrameContextCallsOrder.push({ method: 'fill' }))
+
+			render({ shapeColor, outline })
+
+			expect(laterFrameContextCallsOrder).toEqual([
 				{ method: 'beginPath' },
 				{ method: 'moveTo', x: 0, y: 1 },
 				{ method: 'lineTo', x: 1, y: 1 },

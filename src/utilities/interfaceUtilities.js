@@ -13,7 +13,13 @@ const iterationFrameIterator = () => {
 	return codeUtilities.iterator(frameCount)
 }
 
+const deleteElementIfExists = selector => {
+	const element = document.querySelector(selector)
+	element && element.parentNode.removeChild(element)
+}
+
 export default {
 	insertElementRightAfter,
 	iterationFrameIterator,
+	deleteElementIfExists,
 }

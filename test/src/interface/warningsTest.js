@@ -7,8 +7,7 @@ describe('warnings', () => {
 		delete require.cache[ require.resolve('../../../src/interface/controls') ]
 		controls = require('../../../src/interface/controls').default
 
-		const preexistingWarnings = document.querySelector('.warnings')
-		if (preexistingWarnings) preexistingWarnings.parentNode.removeChild(preexistingWarnings)
+		interfaceUtilities.deleteElementIfExists('.warnings')
 	})
 
 	describe('when the warnings already exist on the document', () => {

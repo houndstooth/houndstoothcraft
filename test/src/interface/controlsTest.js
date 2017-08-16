@@ -8,8 +8,7 @@ describe('controls', () => {
 		delete require.cache[ require.resolve('../../../src/interface/canvasContainer') ]
 		canvasContainer = require('../../../src/interface/canvasContainer').default
 
-		const preexistingControls = document.querySelector('.controls')
-		if (preexistingControls) preexistingControls.parentNode.removeChild(preexistingControls)
+		interfaceUtilities.deleteElementIfExists('.controls')
 	})
 
 	describe('when the controls already exist on the document', () => {

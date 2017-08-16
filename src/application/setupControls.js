@@ -16,14 +16,18 @@ import resetStore from '../store/resetStore'
 const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
 
 const removeEffect = houndstoothEffect => {
-	store.selectedHoundstoothEffects = store.selectedHoundstoothEffects.filter(sHE => sHE.name !== houndstoothEffect.name)
+	store.selectedHoundstoothEffects = store.selectedHoundstoothEffects.filter(selectedHoundstoothEffect => {
+		return selectedHoundstoothEffect.name !== houndstoothEffect.name
+	})
 }
 
 const resetEverything = () => {
 	warnings.innerHTML = ''
 	clear()
 	clearInterval(store.interval)
+	const existingEffects = store.selectedHoundstoothEffects.slice()
 	resetStore(store)
+	store.selectedHoundstoothEffects = existingEffects
 }
 
 const buildClickHandler = (checkbox, houndstoothEffect) => () => {

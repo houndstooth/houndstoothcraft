@@ -5,7 +5,7 @@ import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 
 let mixedDownCanvas
 
-fdescribe('setup mixed down canvas', () => {
+describe('setup mixed down canvas', () => {
     beforeEach(() => interfaceUtilities.deleteElementIfExists('.mixed-down-canvas'))
 
     describe('when the mixed down canvas is already on the document', () => {

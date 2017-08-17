@@ -1,4 +1,5 @@
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
+import store from '../../../store'
 
 describe('#insertElementRightAfter', () => {
 	it('inserts an element right after another one', () => {
@@ -58,5 +59,15 @@ describe('#deleteElementIfExists', () => {
 
 			interfaceUtilities.deleteElementIfExists('.element')
 		})
+	})
+})
+
+fdescribe('#iterationFrameIterator', () => {
+	it('returns an array of numbers of each iteration frame', () => {
+		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
+
+		const iterator = interfaceUtilities.iterationFrameIterator()
+
+		expect(iterator).toEqual([0,1,2,3,4,5])
 	})
 })

@@ -62,7 +62,7 @@ describe('#deleteElementIfExists', () => {
 	})
 })
 
-fdescribe('#iterationFrameIterator', () => {
+describe('#iterationFrameIterator', () => {
 	it('returns an array of numbers of each iteration frame', () => {
 		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
 

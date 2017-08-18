@@ -8,23 +8,21 @@ export default () => {
 	canvasContainer.innerHTML = ''
 
 	const canvasSize = store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
-	canvasContainer.style.width = canvasSize
-	canvasContainer.style.height = canvasSize
+	const canvasSizePx = `${canvasSize}px`
+	canvasContainer.style.width = canvasSizePx
+	canvasContainer.style.height = canvasSizePx
 
 	interfaceUtilities.iterationFrameIterator().forEach(canvasIndex => {
 		const canvasClass = `real-canvas-${canvasIndex}`
-		let canvas = document.querySelector(`.${canvasClass}`)
 
-		if (!canvas) {
-			canvas = document.createElement('canvas')
-			canvas.classList.add(canvasClass)
-			canvas.style.position = 'absolute'
-			canvasContainer.appendChild(canvas)
-
-			store.canvases.push(canvas)
-		}
-
+		const canvas = document.createElement('canvas')
+		canvas.classList.add(canvasClass)
+		canvas.style.position = 'absolute'
 		canvas.width = canvasSize
 		canvas.height = canvasSize
+
+		canvasContainer.appendChild(canvas)
+
+		store.canvases.push(canvas)
 	})
 }

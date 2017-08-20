@@ -124,6 +124,28 @@ describe('store utilities', () => {
 			expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident')
 		})
 
+		it('recognizes color objects', () => {
+			const patternToBeMergedOnto = {
+				colorSettings: {
+					backgroundColor: { r: 100, g: 200, b: 0, a: 1 },
+				},
+			}
+			const patternToMerge = {
+				colorSettings: {
+					backgroundColor: { r: 3, g: 3, b: 3, a: 1 },
+				},
+			}
+
+			storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge })
+
+			const expectedPattern = {
+				colorSettings: {
+					backgroundColor: { r: 3, g: 3, b: 3, a: 1 },
+				},
+			}
+			expect(expectedPattern).toEqual(patternToBeMergedOnto)
+		})
+
 		describe('warning about conflicts', () => {
 			let warnSpy
 			beforeEach(() => {
@@ -230,8 +252,8 @@ describe('store utilities', () => {
 			})
 
 			it('does not warn when arrays are equal', () => {
-				const patternToBeMergedOnto = { colorSettings: { backgroundColor: [ 'a', 'b' ] } }
-				const patternToMerge = { colorSettings: { backgroundColor: [ 'a', 'b' ] } }
+				const patternToBeMergedOnto = { colorSettings: { set: [ 'a', 'b' ] } }
+				const patternToMerge = { colorSettings: { set: [ 'a', 'b' ] } }
 
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
 
@@ -240,12 +262,12 @@ describe('store utilities', () => {
 			})
 
 			it('does warn when arrays are not equal', () => {
-				const patternToBeMergedOnto = { colorSettings: { backgroundColor: [ 'a', 'b' ] } }
-				const patternToMerge = { colorSettings: { backgroundColor: [ 'b', 'a' ] } }
+				const patternToBeMergedOnto = { colorSettings: { set: [ 'a', 'b' ] } }
+				const patternToMerge = { colorSettings: { set: [ 'b', 'a' ] } }
 
 				storeUtilities.composePatterns({ patternToBeMergedOnto, patternToMerge, warnAboutConflicts: true })
 
-				const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `[ a, b ]` was overridden by `[ b, a ]`'
+				const expectedWarning = 'some effects have conflicts on setting `colorSettings.set`: `[ a, b ]` was overridden by `[ b, a ]`'
 				expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 				expect(warnSpy).toHaveBeenCalledWith(expectedWarning)
 			})

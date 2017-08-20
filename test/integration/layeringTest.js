@@ -13,12 +13,12 @@ describe('layering', () => {
 			basePattern: {
 				viewSettings: {	canvasSize: 100 },
 				gridSettings: {	gridSize: 2	},
-				colorSettings: { backgroundColor: [ YELLOW ] },
+				colorSettings: { backgroundColor: YELLOW },
 				layerSettings: { endLayer: 1 },
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: () => [ CYAN ],
+					backgroundColor: () => CYAN,
 					opacity: () => 0.25,
 				},
 			},

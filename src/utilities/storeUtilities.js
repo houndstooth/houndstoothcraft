@@ -29,7 +29,7 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) return
 		const deeperPatternStructureChecker = patternStructureChecker[ settingName ]
 
-		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length) {
+		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length && settingIsNotColor(overridingSetting)) {
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
@@ -55,6 +55,8 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 		}
 	})
 }
+
+const settingIsNotColor = setting => !setting.r
 
 const settingPath = (settingsPath, settingName) => `${settingsPath.join('.')}.${settingName}`
 

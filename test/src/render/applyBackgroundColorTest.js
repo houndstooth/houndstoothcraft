@@ -14,7 +14,7 @@ describe('apply background color', () => {
 	})
 
 	it('fills the entire canvas with the color', () => {
-		store.mainHoundstooth.basePattern.colorSettings = { backgroundColor: [ CYAN ] }
+		store.mainHoundstooth.basePattern.colorSettings = { backgroundColor: CYAN }
 
 		applyBackgroundColor()
 

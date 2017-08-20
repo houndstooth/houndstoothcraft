@@ -11,6 +11,6 @@ export default () => {
 	const canvasSize = getCanvasSize()
 
 	const context = getCurrentContext()
-	context.fillStyle = colorUtilities.parseColor(backgroundColor[ 0 ])
+	context.fillStyle = colorUtilities.parseColor(backgroundColor)
 	context.fillRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }

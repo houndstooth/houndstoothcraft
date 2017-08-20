@@ -763,7 +763,7 @@ describe('.colorSettings', () => {
 				basePattern: {
 					colorSettings: {
 						set: [ BLACK, TRANSPARENT ],
-						backgroundColor: [ YELLOW ],
+						backgroundColor: YELLOW,
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,

@@ -1,6 +1,5 @@
-import settingsPaths from '../../helpers/settingsPaths'
-import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
+import getCanvasSize from '../../../src/render/getCanvasSize'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'
@@ -15,9 +14,9 @@ export default () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
 
-	const canvasSize = getFromBasePatternOrDefault(settingsPaths.CANVAS_SIZE)
-	testMarkersCanvas.width = canvasSize
-	testMarkersCanvas.height = canvasSize
+	const canvasSize = getCanvasSize()
+	testMarkersCanvas.width = canvasSize[ 0 ]
+	testMarkersCanvas.height = canvasSize[ 1 ]
 
 	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 	testCanvasDisplayArea.style.display = 'block'

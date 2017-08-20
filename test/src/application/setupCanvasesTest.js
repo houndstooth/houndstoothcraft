@@ -1,5 +1,4 @@
 import setupCanvases from '../../../src/application/setupCanvases'
-import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 import '../../../src/interface/canvasContainer'
@@ -9,40 +8,22 @@ import canvasContainer from '../../../src/interface/canvasContainer'
 describe('setup canvases', () => {
 	beforeEach(() => resetStore(store))
 
-	describe('canvas container', () => {
-		it('sets its width and height (as style, in px)', () => {
-			setupCanvases()
+	it('sets the canvas container width and height (as style, in px)', () => {
+		setupCanvases.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
-			expect(canvasContainer.style.height).toBe(`${houndstoothDefaults.CANVAS_SIZE}px`)
-			expect(canvasContainer.style.width).toBe(`${houndstoothDefaults.CANVAS_SIZE}px`)
-		})
+		setupCanvases()
 
-		it('can use a custom canvas size', () => {
-			store.mainHoundstooth.basePattern = { viewSettings: { canvasSize: 450 } }
-
-			setupCanvases()
-
-			expect(canvasContainer.style.height).toBe('450px')
-			expect(canvasContainer.style.width).toBe('450px')
-		})
+		expect(canvasContainer.style.width).toBe('400px')
+		expect(canvasContainer.style.height).toBe('500px')
 	})
 
-	describe('canvases', () => {
-		it('sets their width and height', () => {
-			setupCanvases()
+	it('sets canvases width and height', () => {
+		setupCanvases.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
-			expect(store.canvases[ 0 ].height).toBe(houndstoothDefaults.CANVAS_SIZE)
-			expect(store.canvases[ 0 ].width).toBe(houndstoothDefaults.CANVAS_SIZE)
-		})
+		setupCanvases()
 
-		it('can use a custom canvas size', () => {
-			store.mainHoundstooth.basePattern = { viewSettings: { canvasSize: 450 } }
-
-			setupCanvases()
-
-			expect(store.canvases[ 0 ].width).toBe(450)
-			expect(store.canvases[ 0 ].width).toBe(450)
-		})
+		expect(store.canvases[ 0 ].width).toBe(400)
+		expect(store.canvases[ 0 ].height).toBe(500)
 	})
 
 	describe('when none of the canvases exist on the page already', () => {

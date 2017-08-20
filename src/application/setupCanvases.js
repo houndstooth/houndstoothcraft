@@ -1,14 +1,13 @@
 import store from '../../store'
-import houndstoothDefaults from '../store/houndstoothDefaults'
 import canvasContainer from '../interface/canvasContainer'
 import interfaceUtilities from '../utilities/interfaceUtilities'
+import getCanvasSize from '../render/getCanvasSize'
 
 export default () => {
 	store.canvases = []
 	canvasContainer.innerHTML = ''
 
-	const viewSettings = store.mainHoundstooth.basePattern.viewSettings
-	const canvasSize = viewSettings && viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
+	const canvasSize = getCanvasSize()
 	interfaceUtilities.setElementDimensions(canvasContainer, canvasSize)
 
 	interfaceUtilities.iterationFrameIterator().forEach(canvasIndex => {
@@ -17,8 +16,8 @@ export default () => {
 		const canvas = document.createElement('canvas')
 		canvas.classList.add(canvasClass)
 		canvas.style.position = 'absolute'
-		canvas.width = canvasSize
-		canvas.height = canvasSize
+		canvas.width = canvasSize[ 0 ]
+		canvas.height = canvasSize[ 1 ]
 
 		canvasContainer.appendChild(canvas)
 

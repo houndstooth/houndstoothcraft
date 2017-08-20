@@ -1,17 +1,16 @@
 import colorUtilities from '../utilities/colorUtilities'
 import store from '../../store'
-import houndstoothDefaults from '../store/houndstoothDefaults'
 import getCurrentContext from './getCurrentContext'
+import getCanvasSize from './getCanvasSize'
 
 export default () => {
 	const colorSettings = store.mainHoundstooth.basePattern.colorSettings
 	const backgroundColor = colorSettings && colorSettings.backgroundColor
 	if (!backgroundColor) return
 
-	const viewSettings = store.mainHoundstooth.basePattern.viewSettings
-	const canvasSize = viewSettings && viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
+	const canvasSize = getCanvasSize()
 
 	const context = getCurrentContext()
 	context.fillStyle = colorUtilities.parseColor(backgroundColor[ 0 ])
-	context.fillRect(0, 0, canvasSize, canvasSize)
+	context.fillRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }

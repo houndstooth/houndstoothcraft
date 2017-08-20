@@ -12,6 +12,7 @@ describe('apply background color', () => {
 		setupCanvases()
 		setupContexts()
 		spyOn(store.contexts[0], 'fillRect')
+		applyBackgroundColor.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 	})
 
 	it('fills the entire canvas with the color', () => {
@@ -20,7 +21,7 @@ describe('apply background color', () => {
 		applyBackgroundColor()
 
 		expect(store.contexts[0].fillStyle).toBe('#00ffff')
-		expect(store.contexts[0].fillRect).toHaveBeenCalledWith(0, 0, 800, 800)
+		expect(store.contexts[0].fillRect).toHaveBeenCalledWith(0, 0, 400, 500)
 	})
 
 	it('returns early when no background color is set', () => {

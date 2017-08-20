@@ -1,9 +1,14 @@
 import store from '../../store'
-import houndstoothDefaults from '../store/houndstoothDefaults'
+import getCanvasSize from './getCanvasSize'
 
 export default () => {
-	const viewSettings = store.mainHoundstooth.basePattern.viewSettings
-	const canvasSize = viewSettings && viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
-	store.contexts.forEach(context => context.clearRect(0, 0, canvasSize, canvasSize))
-	store.mixedDownCanvas && store.mixedDownCanvas.getContext('2d').clearRect(0, 0, canvasSize, canvasSize)
+	const canvasSize = getCanvasSize()
+	store.contexts.forEach(context => clearContext({ context, canvasSize }))
+
+	const mixedDownContext = store.mixedDownCanvas && store.mixedDownCanvas.getContext('2d')
+	mixedDownContext && clearContext({ context: mixedDownContext, canvasSize })
+}
+
+const clearContext = ({ context, canvasSize }) => {
+	context.clearRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }

@@ -81,13 +81,4 @@ describe('#setElementDimensions', () => {
 		expect(element.style.width).toBe('400px')
 		expect(element.style.height).toBe('500px')
 	})
-
-	it('sets width and height to the same when only one number is provided', () => {
-		const element = document.createElement('div')
-
-		interfaceUtilities.setElementDimensions(element, 450)
-
-		expect(element.style.width).toBe('450px')
-		expect(element.style.height).toBe('450px')
-	})
 })

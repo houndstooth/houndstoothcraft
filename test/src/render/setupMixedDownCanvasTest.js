@@ -1,7 +1,6 @@
 import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 import store from '../../../store'
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
-import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 
 let mixedDownCanvas
 
@@ -31,6 +30,8 @@ describe('setup mixed down canvas', () => {
 
 	describe('when the mixed down canvas is not already on the document', () => {
 		beforeEach(() => {
+			setupMixedDownCanvas.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+
 			setupMixedDownCanvas()
 			mixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
@@ -46,29 +47,10 @@ describe('setup mixed down canvas', () => {
 		it('does not display this canvas', () => {
 			expect(mixedDownCanvas.style.display).toBe('none')
 		})
-	})
 
-	describe('canvas size', () => {
-		describe('when canvas size is not specified', () => {
-			it('sets the width and height of the canvas to the default', () => {
-				setupMixedDownCanvas()
-				mixedDownCanvas = document.querySelector('.mixed-down-canvas')
-
-				expect(mixedDownCanvas.height).toBe(houndstoothDefaults.CANVAS_SIZE)
-				expect(mixedDownCanvas.width).toBe(houndstoothDefaults.CANVAS_SIZE)
-			})
-		})
-
-		describe('when the canvas size is specified', () => {
-			it('uses custom canvas size', () => {
-				store.mainHoundstooth.basePattern = { viewSettings: { canvasSize: 450 } }
-
-				setupMixedDownCanvas()
-				mixedDownCanvas = document.querySelector('.mixed-down-canvas')
-
-				expect(mixedDownCanvas.height).toBe(450)
-				expect(mixedDownCanvas.width).toBe(450)
-			})
+		it('sets the canvas size', () => {
+			expect(mixedDownCanvas.width).toBe(400)
+			expect(mixedDownCanvas.height).toBe(500)
 		})
 	})
 })

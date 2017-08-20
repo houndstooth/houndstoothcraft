@@ -1,6 +1,6 @@
 import store from '../../store'
-import houndstoothDefaults from '../store/houndstoothDefaults'
 import interfaceUtilities from '../utilities/interfaceUtilities'
+import getCanvasSize from './getCanvasSize'
 
 export default () => {
 	interfaceUtilities.deleteElementIfExists('.mixed-down-canvas')
@@ -9,9 +9,10 @@ export default () => {
 	mixedDownCanvas.classList.add('mixed-down-canvas')
 	document.body.appendChild(mixedDownCanvas)
 
-	const canvasSize = store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
-	mixedDownCanvas.width = canvasSize
-	mixedDownCanvas.height = canvasSize
+	const canvasSize = getCanvasSize()
+	mixedDownCanvas.width = canvasSize[ 0 ]
+	mixedDownCanvas.height = canvasSize[ 1 ]
+
 	mixedDownCanvas.style.display = 'none'
 
 	store.mixedDownCanvas = mixedDownCanvas

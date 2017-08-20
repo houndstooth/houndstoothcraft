@@ -19,11 +19,8 @@ const deleteElementIfExists = selector => {
 }
 
 const setElementDimensions = (element, dimensions) => {
-	const oblong = dimensions instanceof Array
-	const width = oblong ? dimensions[0] : dimensions
-	const height = oblong ? dimensions[1] : dimensions
-	element.style.width = inPx(width)
-	element.style.height = inPx(height)
+	element.style.width = inPx(dimensions[ 0 ])
+	element.style.height = inPx(dimensions[ 1 ])
 }
 
 const inPx = number => `${number}px`

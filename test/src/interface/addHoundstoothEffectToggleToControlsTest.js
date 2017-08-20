@@ -3,7 +3,7 @@ import controls from '../../../src/interface/controls'
 
 describe('add houndstooth effect toggle to controls', () => {
 	it('adds a labelled checkbox to the controls for the effect', () => {
-		expect(controls.innerHTML).toBe('')
+		controls.innerHTML = ''
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 
 		addHoundstoothEffectToggleToControls(mockHoundstoothEffect)

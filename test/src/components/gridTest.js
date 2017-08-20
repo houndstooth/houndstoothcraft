@@ -10,23 +10,18 @@ describe('grid', () => {
 		resetStore(store)
 		tileSpy = jasmine.createSpy()
 		grid.__Rewire__('tile', tileSpy)
+
+		store.mainHoundstooth.basePattern.gridSettings = { gridSize }
 	})
 
-	describe('when grid size is specified', () => {
-		beforeEach(() => {
-			store.mainHoundstooth.basePattern.gridSettings = { gridSize }
-		})
+	it('uses the given grid size', () => {
+		grid()
 
-		it('uses it', () => {
-			grid()
-
-			expect(tileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
-		})
+		expect(tileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
 	})
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.gridSettings = { gridSize }
 			store.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = false
 		})
 
@@ -43,7 +38,6 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.gridSettings = { gridSize }
 			store.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
 		})
 
@@ -72,7 +66,23 @@ describe('grid', () => {
 		})
 	})
 
-	afterEach(() => {
-		grid.__ResetDependency__('tile')
+	it('applies background color', () => {
+		const applyBackgroundColorSpy = jasmine.createSpy()
+		grid.__Rewire__('applyBackgroundColor', applyBackgroundColorSpy)
+
+		grid()
+
+		expect(applyBackgroundColorSpy).toHaveBeenCalled()
 	})
+
+	it('applies opacity', () => {
+		const applyOpacitySpy = jasmine.createSpy()
+		grid.__Rewire__('applyOpacity', applyOpacitySpy)
+
+		grid()
+
+		expect(applyOpacitySpy).toHaveBeenCalled()
+	})
+
+	afterEach(() => grid.__ResetDependency__('tile'))
 })

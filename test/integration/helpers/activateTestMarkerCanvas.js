@@ -26,4 +26,7 @@ export default () => {
 
 	let canvas = document.querySelector('.mixed-down-canvas')
 	prepareCanvasForDisplayInTest(canvas)
+
+	let canvasContainer = document.querySelector('.canvas-container')
+	prepareCanvasForDisplayInTest(canvasContainer)
 }

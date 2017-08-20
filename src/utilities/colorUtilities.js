@@ -11,9 +11,6 @@ const getColorsForTile = ({ gridAddress, colorSettings }) => {
 	const { stripeCountMode } = store.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings || {}
 	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
-	const opacity = colorSettings.opacity
-	if (opacity < 1) tileColors = fadeColors({ colors: tileColors, opacity })
-
 	return tileColors
 }
 
@@ -34,10 +31,6 @@ const mixColors = ({ colors }) => {
 		a: totalColor.a / colorsCount,
 	} ]
 }
-
-const fadeColors = ({ colors, opacity }) => colors.map(color => {
-	return Object.assign({}, color, { a: color.a * opacity })
-})
 
 const allColorsAreTheSame = (colors) => {
 	for (let i = 0; i < colors.length - 1; i++) {

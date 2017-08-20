@@ -7,7 +7,8 @@ export default () => {
 	store.canvases = []
 	canvasContainer.innerHTML = ''
 
-	const canvasSize = store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
+	const viewSettings = store.mainHoundstooth.basePattern.viewSettings
+	const canvasSize = viewSettings && viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
 	interfaceUtilities.setElementDimensions(canvasContainer, canvasSize)
 
 	interfaceUtilities.iterationFrameIterator().forEach(canvasIndex => {

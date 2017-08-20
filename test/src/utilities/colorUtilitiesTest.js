@@ -51,38 +51,6 @@ describe('color utilities', () => {
 			const mixedColor = [ { r: 2, g: 2, b: 25, a: 0.75 } ]
 			expect(result).toEqual(mixedColor)
 		})
-
-		describe('fading colors', () => {
-			it('fades colors using opacity', () => {
-				const colorSettings = { opacity: 0.5 }
-				const tileColors = [
-					{ r: 1, g: 2, b: 3, a: 1 },
-					{ r: 3, g: 2, b: 1, a: 0.5 },
-				]
-				spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
-
-				const result = colorUtilities.getColorsForTile({ gridAddress: [], colorSettings })
-
-				const fadedTileColors = [
-					{ r: 1, g: 2, b: 3, a: 0.5 },
-					{ r: 3, g: 2, b: 1, a: 0.25 },
-				]
-				expect(result).toEqual(fadedTileColors)
-			})
-
-			it('defaults opacity to not opaque', () => {
-				const colorSettings = { stuffBesidesOpacity: 'mcmyeah' }
-				const tileColors = [
-					{ r: 1, g: 2, b: 3, a: 1 },
-					{ r: 3, g: 2, b: 1, a: 0.5 },
-				]
-				spyOn(componentUtilities, 'getSetForTile').and.returnValue(tileColors)
-
-				const result = colorUtilities.getColorsForTile({ gridAddress: [], colorSettings })
-
-				expect(result).toEqual(tileColors)
-			})
-		})
 	})
 
 	describe('#parseColor', () => {

@@ -13,19 +13,15 @@ beforeEach(() => {
 	testMarkersClear()
 })
 
-afterEach(() => {
-	const canvasContainer = document.querySelector('.canvas-container')
-	if (canvasContainer) canvasContainer.style.display = 'none'
-
-	document.body.scrollTop = document.documentElement.scrollTop = 0
-})
-
 describe('when you run the entire test suite', () => {
-	it('hides canvases', () => {
+	it('hides all the canvases', () => {
 		const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 		if (testCanvasDisplayArea) testCanvasDisplayArea.style.display = 'none'
 
 		const mixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		if (mixedDownCanvas) mixedDownCanvas.style.display = 'none'
+
+		const canvasContainer = document.querySelector('.canvas-container')
+		if (canvasContainer) canvasContainer.style.display = 'none'
 	})
 })

@@ -1,7 +1,7 @@
 import buildClickHandler from '../../../src/interface/buildClickHandler'
 import store from '../../../store'
 
-fdescribe('build click handler', () => {
+describe('build click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
 		const resetInterfaceSpy = jasmine.createSpy()
 		buildClickHandler.__Rewire__('resetInterface', resetInterfaceSpy)

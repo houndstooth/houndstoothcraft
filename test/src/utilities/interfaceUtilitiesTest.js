@@ -68,7 +68,7 @@ describe('#iterationFrameIterator', () => {
 
 		const iterator = interfaceUtilities.iterationFrameIterator()
 
-		expect(iterator).toEqual([0,1,2,3,4,5])
+		expect(iterator).toEqual([ 0,1,2,3,4,5 ])
 	})
 })
 

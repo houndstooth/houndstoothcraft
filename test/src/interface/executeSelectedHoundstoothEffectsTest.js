@@ -4,7 +4,7 @@ import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 
 describe('execute selected houndstooth effects', () => {
-	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy, mixDownCanvasesSpy
+	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy, mixDownContextsSpy
 	beforeEach(() => {
 		resetStore(store)
 
@@ -25,15 +25,15 @@ describe('execute selected houndstooth effects', () => {
 
 		store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 100 }
 
-		mixDownCanvasesSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('mixDownCanvases', mixDownCanvasesSpy)
+		mixDownContextsSpy = jasmine.createSpy()
+		executeSelectedHoundstoothEffects.__Rewire__('mixDownContexts', mixDownContextsSpy)
 	})
 
 	afterEach(() => {
 		executeSelectedHoundstoothEffects.__ResetDependency__('grid')
 		executeSelectedHoundstoothEffects.__ResetDependency__('animator')
 
-		executeSelectedHoundstoothEffects.__ResetDependency__('mixDownCanvases')
+		executeSelectedHoundstoothEffects.__ResetDependency__('mixDownContexts')
 	})
 
 	it('composes the houndstooth', () => {
@@ -52,14 +52,12 @@ describe('execute selected houndstooth effects', () => {
 	})
 
 	describe('setting up for rendering', () => {
-		let setupCanvasesSpy, setupContextsSpy, setupMixedDownCanvasSpy
+		let setupContextsSpy, setupMixedDownContextSpy
 		beforeEach(() => {
-			setupCanvasesSpy = jasmine.createSpy()
-			executeSelectedHoundstoothEffects.__Rewire__('setupCanvases', setupCanvasesSpy)
 			setupContextsSpy = jasmine.createSpy()
 			executeSelectedHoundstoothEffects.__Rewire__('setupContexts', setupContextsSpy)
-			setupMixedDownCanvasSpy = jasmine.createSpy()
-			executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
+			setupMixedDownContextSpy = jasmine.createSpy()
+			executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownContext', setupMixedDownContextSpy)
 		})
 
 		it('includes the mixed down canvas when both mixing down and exporting', () => {
@@ -68,9 +66,8 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(setupCanvasesSpy).toHaveBeenCalled()
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			expect(setupMixedDownContextSpy).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
@@ -78,9 +75,8 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(setupCanvasesSpy).toHaveBeenCalled()
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			expect(setupMixedDownContextSpy).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
@@ -88,23 +84,20 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(setupCanvasesSpy).toHaveBeenCalled()
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			expect(setupMixedDownContextSpy).toHaveBeenCalled()
 		})
 
 		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
 			executeSelectedHoundstoothEffects()
 
-			expect(setupCanvasesSpy).toHaveBeenCalled()
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).not.toHaveBeenCalled()
+			expect(setupMixedDownContextSpy).not.toHaveBeenCalled()
 		})
 
 		afterEach(() => {
-			executeSelectedHoundstoothEffects.__ResetDependency__('setupCanvases')
 			executeSelectedHoundstoothEffects.__ResetDependency__('setupContexts')
-			executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownCanvas')
+			executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownContext')
 		})
 	})
 
@@ -261,13 +254,13 @@ describe('execute selected houndstooth effects', () => {
 
 				executeSelectedHoundstoothEffects()
 
-				expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+				expect(mixDownContextsSpy.calls.count()).toBe(1)
 			})
 
 			it('does not mix down canvases if not mixing down', () => {
 				executeSelectedHoundstoothEffects()
 
-				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+				expect(mixDownContextsSpy).not.toHaveBeenCalled()
 			})
 		})
 
@@ -307,13 +300,13 @@ describe('execute selected houndstooth effects', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+				expect(mixDownContextsSpy.calls.count()).toBe(1)
 			})
 
 			it('does not mix down canvases if not mixing down', () => {
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+				expect(mixDownContextsSpy).not.toHaveBeenCalled()
 			})
 		})
 
@@ -390,13 +383,13 @@ describe('execute selected houndstooth effects', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				expect(mixDownCanvasesSpy.calls.count()).toBe(4)
+				expect(mixDownContextsSpy.calls.count()).toBe(4)
 			})
 
 			it('does not mix down canvases if not mixing down', () => {
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+				expect(mixDownContextsSpy).not.toHaveBeenCalled()
 			})
 		})
 
@@ -489,13 +482,13 @@ describe('execute selected houndstooth effects', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				expect(mixDownCanvasesSpy.calls.count()).toBe(4)
+				expect(mixDownContextsSpy.calls.count()).toBe(4)
 			})
 
 			it('does not mix down canvases if not mixing down', () => {
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+				expect(mixDownContextsSpy).not.toHaveBeenCalled()
 			})
 		})
 

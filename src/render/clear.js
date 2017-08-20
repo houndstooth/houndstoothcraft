@@ -5,7 +5,7 @@ export default () => {
 	const canvasSize = getCanvasSize()
 	store.contexts.forEach(context => clearContext({ context, canvasSize }))
 
-	const mixedDownContext = store.mixedDownCanvas && store.mixedDownCanvas.getContext('2d')
+	const mixedDownContext = store.mixedDownContext
 	mixedDownContext && clearContext({ context: mixedDownContext, canvasSize })
 }
 

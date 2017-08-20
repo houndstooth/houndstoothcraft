@@ -15,5 +15,5 @@ export default () => {
 
 	mixedDownCanvas.style.display = 'none'
 
-	store.mixedDownCanvas = mixedDownCanvas
+	store.mixedDownContext = mixedDownCanvas.getContext('2d')
 }

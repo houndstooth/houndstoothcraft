@@ -1,10 +1,10 @@
-import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
+import setupMixedDownContext from '../../../src/render/setupMixedDownContext'
 import store from '../../../store'
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 
 let mixedDownCanvas
 
-describe('setup mixed down canvas', () => {
+describe('setup mixed down context', () => {
 	beforeEach(() => interfaceUtilities.deleteElementIfExists('.mixed-down-canvas'))
 
 	describe('when the mixed down canvas is already on the document', () => {
@@ -14,7 +14,7 @@ describe('setup mixed down canvas', () => {
 			mixedDownCanvas.classList.add('mixed-down-canvas')
 			document.body.appendChild(mixedDownCanvas)
 
-			setupMixedDownCanvas()
+			setupMixedDownContext()
 
 			newMixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
@@ -24,15 +24,15 @@ describe('setup mixed down canvas', () => {
 		})
 
 		it('points the mixed down canvas node of the store at it', () => {
-			expect(store.mixedDownCanvas).toBe(newMixedDownCanvas)
+			expect(store.mixedDownContext).toBe(newMixedDownCanvas.getContext('2d'))
 		})
 	})
 
 	describe('when the mixed down canvas is not already on the document', () => {
 		beforeEach(() => {
-			setupMixedDownCanvas.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+			setupMixedDownContext.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
-			setupMixedDownCanvas()
+			setupMixedDownContext()
 			mixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
 
@@ -41,7 +41,7 @@ describe('setup mixed down canvas', () => {
 		})
 
 		it('puts this canvas on the store', () => {
-			expect(store.mixedDownCanvas).toBe(mixedDownCanvas)
+			expect(store.mixedDownContext).toBe(mixedDownCanvas.getContext('2d'))
 		})
 
 		it('does not display this canvas', () => {

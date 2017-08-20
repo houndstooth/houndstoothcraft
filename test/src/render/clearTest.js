@@ -7,10 +7,7 @@ describe('clear', () => {
 		clear.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
 		mixedDownClearRectSpy = jasmine.createSpy()
-		const mockMixedDownContext = { clearRect: mixedDownClearRectSpy }
-		store.mixedDownCanvas = {
-			getContext: context => context === '2d' ? mockMixedDownContext : null,
-		}
+		store.mixedDownContext = { clearRect: mixedDownClearRectSpy }
 	})
 
 	describe('when there is a single context', () => {

@@ -6,10 +6,9 @@ import consoleWrapper from '../utilities/consoleWrapper'
 import animator from '../animation/animator'
 import exportFrame from '../animation/exportFrame'
 import store from '../../store'
-import setupCanvases from '../render/setupCanvases'
 import setupContexts from '../render/setupContexts'
-import setupMixedDownCanvas from '../render/setupMixedDownCanvas'
-import mixDownCanvases from '../render/mixDownCanvases'
+import setupMixedDownContext from '../render/setupMixedDownContext'
+import mixDownContexts from '../render/mixDownContexts'
 import composeMainHoundstooth from '../store/composeMainHoundstooth'
 
 export default ({ houndstoothOverrides = {} } = {}) => {
@@ -19,11 +18,10 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 		settingsFunctions: store.mainHoundstooth.layersPattern,
 	})
 
-	setupCanvases()
 	setupContexts()
 
 	if (store.exportFrames) store.mixingDown = true
-	if (store.mixingDown) setupMixedDownCanvas()
+	if (store.mixingDown) setupMixedDownContext()
 
 	if (store.animating) {
 		const animationFunctions = storeUtilities.prepareFunctionsPerSetting({
@@ -76,7 +74,7 @@ const executeGrid = ({ layerFunctions }) => {
 		store.currentLayer++
 	}
 
-	if (store.mixingDown) mixDownCanvases()
+	if (store.mixingDown) mixDownContexts()
 
 	store.currentLayer = 0
 }

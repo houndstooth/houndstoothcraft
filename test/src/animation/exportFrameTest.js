@@ -9,7 +9,7 @@ describe('export frame', () => {
 
 		toBlobSpy = jasmine.createSpy()
 		toBlobSpy.and.callFake(callTheFunctionThrough => callTheFunctionThrough())
-		store.mixedDownCanvas = { toBlob: toBlobSpy }
+		store.mixedDownContext = { context: { canvas: { toBlob: toBlobSpy } } }
 
 		spyOn(fileSaver, 'saveAs')
 
@@ -17,7 +17,7 @@ describe('export frame', () => {
 	})
 
 	it('calls toBlob on the mixed down canvas', () => {
-		expect(store.mixedDownCanvas.toBlob).toHaveBeenCalled()
+		expect(toBlobSpy).toHaveBeenCalled()
 	})
 
 	it('saves the frame as a png with the frame number as file name', () => {

@@ -1,6 +1,10 @@
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 import getCanvasSize from '../../../src/render/getCanvasSize'
 import setupCanvasContainer from '../../../src/render/setupCanvasContainer'
+import testMarkersClear from './testMarkersClear'
+import setupTestMarkersCanvas from './setupTestMarkersCanvas'
+import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
+import store from '../../../store'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'
@@ -10,7 +14,9 @@ const prepareCanvasForDisplayInTest = canvas => {
 }
 
 export default () => {
-	let testMarkersCanvas = document.querySelector('.test-markers-canvas')
+	testMarkersClear()
+
+	let testMarkersCanvas = document.querySelector('.test-markers-canvas') || setupTestMarkersCanvas()
 
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
@@ -26,4 +32,7 @@ export default () => {
 
 	let canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
 	prepareCanvasForDisplayInTest(canvasContainer)
+
+	setupMixedDownCanvas()
+	store.mixingDown = true
 }

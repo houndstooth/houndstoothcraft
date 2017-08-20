@@ -14,6 +14,7 @@ const INITIAL_STORE = {
 	interval: null,
 	animating: false,
 	exportFrames: false,
+	mixingDown: false,
 	performanceLogging: false,
 	selectedHoundstoothEffects: [],
 	mainHoundstooth: INITIAL_MAIN_HOUNDSTOOTH,

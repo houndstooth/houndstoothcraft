@@ -20,8 +20,10 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 	})
 
 	setupCanvases()
-	setupMixedDownCanvas()
 	setupContexts()
+
+	if (store.exportFrames) store.mixingDown = true
+	if (store.mixingDown) setupMixedDownCanvas()
 
 	if (store.animating) {
 		const animationFunctions = storeUtilities.prepareFunctionsPerSetting({
@@ -74,7 +76,7 @@ const executeGrid = ({ layerFunctions }) => {
 		store.currentLayer++
 	}
 
-	mixDownCanvases()
+	if (store.mixingDown) mixDownCanvases()
 
 	store.currentLayer = 0
 }

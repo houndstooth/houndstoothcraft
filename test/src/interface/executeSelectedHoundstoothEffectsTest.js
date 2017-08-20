@@ -51,23 +51,61 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.__ResetDependency__('composeMainHoundstooth')
 	})
 
-	it('sets up for rendering', () => {
-		const setupCanvasesSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('setupCanvases', setupCanvasesSpy)
-		const setupContextsSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('setupContexts', setupContextsSpy)
-		const setupMixedDownCanvasSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
+	describe('setting up for rendering', () => {
+		let setupCanvasesSpy, setupContextsSpy, setupMixedDownCanvasSpy
+		beforeEach(() => {
+			setupCanvasesSpy = jasmine.createSpy()
+			executeSelectedHoundstoothEffects.__Rewire__('setupCanvases', setupCanvasesSpy)
+			setupContextsSpy = jasmine.createSpy()
+			executeSelectedHoundstoothEffects.__Rewire__('setupContexts', setupContextsSpy)
+			setupMixedDownCanvasSpy = jasmine.createSpy()
+			executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
+		})
 
-		executeSelectedHoundstoothEffects()
+		it('includes the mixed down canvas when both mixing down and exporting', () => {
+			store.mixingDown = true
+			store.exportFrames = true
 
-		expect(setupCanvasesSpy).toHaveBeenCalled()
-		expect(setupContextsSpy).toHaveBeenCalled()
-		expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			executeSelectedHoundstoothEffects()
 
-		executeSelectedHoundstoothEffects.__ResetDependency__('setupCanvases')
-		executeSelectedHoundstoothEffects.__ResetDependency__('setupContexts')
-		executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownCanvas')
+			expect(setupCanvasesSpy).toHaveBeenCalled()
+			expect(setupContextsSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+		})
+
+		it('includes the mixed down canvas when only mixing down', () => {
+			store.mixingDown = true
+
+			executeSelectedHoundstoothEffects()
+
+			expect(setupCanvasesSpy).toHaveBeenCalled()
+			expect(setupContextsSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+		})
+
+		it('includes the mixed down canvas when only exporting frames', () => {
+			store.exportFrames = true
+
+			executeSelectedHoundstoothEffects()
+
+			expect(setupCanvasesSpy).toHaveBeenCalled()
+			expect(setupContextsSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+		})
+
+		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
+			executeSelectedHoundstoothEffects()
+
+			expect(setupCanvasesSpy).toHaveBeenCalled()
+			expect(setupContextsSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).not.toHaveBeenCalled()
+		})
+
+		afterEach(() => {
+			executeSelectedHoundstoothEffects.__ResetDependency__('setupCanvases')
+			executeSelectedHoundstoothEffects.__ResetDependency__('setupContexts')
+			executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownCanvas')
+		})
 	})
 
 	describe('performance logging', () => {
@@ -217,10 +255,20 @@ describe('execute selected houndstooth effects', () => {
 			expect(gridSpy.calls.count()).toBe(1)
 		})
 
-		it('mixes down canvases, also once', () => {
-			executeSelectedHoundstoothEffects()
+		describe('mixing down canvases', () => {
+			it('mixes down canvases, also once, if mixing down', () => {
+				store.mixingDown = true
 
-			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+				executeSelectedHoundstoothEffects()
+
+				expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+			})
+
+			it('does not mix down canvases if not mixing down', () => {
+				executeSelectedHoundstoothEffects()
+
+				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+			})
 		})
 
 		it('does not call layer functions', () => {
@@ -253,10 +301,20 @@ describe('execute selected houndstooth effects', () => {
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
-		it('mixes down canvases, just once', () => {
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		describe('mixing down canvases', () => {
+			it('mixes down canvases, just once, if mixing down', () => {
+				store.mixingDown = true
 
-			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				expect(mixDownCanvasesSpy.calls.count()).toBe(1)
+			})
+
+			it('does not mix down canvases if not mixing down', () => {
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+			})
 		})
 
 		it('calls layer functions once for each layer, including before rendering starts', () => {
@@ -326,10 +384,20 @@ describe('execute selected houndstooth effects', () => {
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
-		it('mixes down canvases once for each animation between start and end, inclusive', () => {
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		describe('mixing down canvases', () => {
+			it('mixes down canvases once for each animation between start and end, inclusive, if mixing down', () => {
+				store.mixingDown = true
 
-			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				expect(mixDownCanvasesSpy.calls.count()).toBe(4)
+			})
+
+			it('does not mix down canvases if not mixing down', () => {
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+			})
 		})
 
 		it('calls the animator with the frame rate, which is defaulted', () => {
@@ -415,10 +483,20 @@ describe('execute selected houndstooth effects', () => {
 			expect(gridSpy.calls.count()).toBe(16)
 		})
 
-		it('mixes down canvases once for each animation between start and end, inclusive', () => {
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		describe('mixing down canvases', () => {
+			it('mixes down canvases once for each animation between start and end, inclusive, if mixing down', () => {
+				store.mixingDown = true
 
-			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				expect(mixDownCanvasesSpy.calls.count()).toBe(4)
+			})
+
+			it('does not mix down canvases if not mixing down', () => {
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				expect(mixDownCanvasesSpy).not.toHaveBeenCalled()
+			})
 		})
 
 		it('calls layer functions once for each layer, each animation frame, starting the layer over each animation frame', () => {

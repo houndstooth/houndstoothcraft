@@ -10,7 +10,7 @@ export default () => {
 	const canvasSize = getCanvasSize()
 	interfaceUtilities.setElementDimensions(canvasContainer, canvasSize)
 
-	interfaceUtilities.iterationFrameIterator().forEach(canvasIndex => {
+	interfaceUtilities.layerIterator().forEach(canvasIndex => {
 		const canvasClass = `real-canvas-${canvasIndex}`
 
 		const canvas = document.createElement('canvas')

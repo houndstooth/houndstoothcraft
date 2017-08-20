@@ -3,12 +3,12 @@ const thisAnimationFrameOnly = frame => ({
 	endAnimationFrame: frame,
 })
 
-const thisIterationFrameOnly = frame => ({
-	startIterationFrame: frame,
-	endIterationFrame: frame,
+const thisLayerOnly = frame => ({
+	startLayer: frame,
+	endLayer: frame,
 })
 
 export default {
 	thisAnimationFrameOnly,
-	thisIterationFrameOnly,
+	thisLayerOnly,
 }

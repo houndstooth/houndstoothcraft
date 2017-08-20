@@ -47,7 +47,7 @@ describe('composeMainHoundstooth', () => {
 				settingD: settingFunctionOneD,
 				settingE: settingFunctionOneE,
 			},
-			iterationsPattern: {
+			layersPattern: {
 				settingG: settingFunctionOneG,
 				settingH: settingFunctionOneH,
 			},
@@ -66,7 +66,7 @@ describe('composeMainHoundstooth', () => {
 				settingD: settingFunctionTwoD,
 				settingF: settingFunctionTwoF,
 			},
-			iterationsPattern: {
+			layersPattern: {
 				settingG: settingFunctionTwoG,
 				settingI: settingFunctionTwoI,
 			},
@@ -88,7 +88,7 @@ describe('composeMainHoundstooth', () => {
 		}
 		const settingFunctionDefaultG = () => 'pre-g'
 		const settingFunctionDefaultL = () => 'pre-l'
-		houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.iterationsPattern = {
+		houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.layersPattern = {
 			settingG: settingFunctionDefaultG,
 			settingL: settingFunctionDefaultL,
 		}
@@ -108,7 +108,7 @@ describe('composeMainHoundstooth', () => {
 				settingF: settingFunctionOverridesF,
 				settingN: settingFunctionOverridesN,
 			},
-			iterationsPattern: {
+			layersPattern: {
 				settingI: settingFunctionOverridesI,
 				settingP: settingFunctionOverridesP,
 			},
@@ -130,7 +130,7 @@ describe('composeMainHoundstooth', () => {
 			settingK: settingFunctionDefaultK,
 			settingN: settingFunctionOverridesN,
 		}))
-		expect(store.mainHoundstooth.iterationsPattern).toEqual(jasmine.objectContaining({
+		expect(store.mainHoundstooth.layersPattern).toEqual(jasmine.objectContaining({
 			settingG: settingFunctionTwoG,
 			settingH: settingFunctionOneH,
 			settingI: settingFunctionOverridesI,
@@ -187,10 +187,10 @@ describe('composeMainHoundstooth', () => {
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
 		spyOn(storeUtilities, 'composePatterns')
 
-		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, iterationsPattern: {} }
+		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		composeMainHoundstooth.__Rewire__('combineHoundstoothEffects', () => combinedHoundstoothEffects)
 
-		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, iterationsPattern: {} }
+		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 
 
 		composeMainHoundstooth({ houndstoothOverrides })
@@ -207,11 +207,11 @@ describe('composeMainHoundstooth', () => {
 		expect(composePatternsCalls[ 2 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.basePattern)
 		expect(composePatternsCalls[ 2 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 
-		expect(composePatternsCalls[ 3 ].args[ 0 ].patternToMerge).toBe(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.iterationsPattern)
+		expect(composePatternsCalls[ 3 ].args[ 0 ].patternToMerge).toBe(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.layersPattern)
 		expect(composePatternsCalls[ 3 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.iterationsPattern)
+		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.layersPattern)
 		expect(composePatternsCalls[ 4 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.iterationsPattern)
+		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.layersPattern)
 		expect(composePatternsCalls[ 5 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 
 		expect(composePatternsCalls[ 6 ].args[ 0 ].patternToMerge).toBe(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern)

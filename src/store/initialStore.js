@@ -1,12 +1,12 @@
 const INITIAL_MAIN_HOUNDSTOOTH = {
 	basePattern: {},
 	animationsPattern: {},
-	iterationsPattern: {},
+	layersPattern: {},
 }
 
 const INITIAL_STORE = {
-	iterationFrame: 0,
-	animationFrame: 0,
+	currentLayer: 0,
+	currentAnimationFrame: 0,
 	contexts: [],
 	canvases: [],
 	mixedDownCanvas: null,

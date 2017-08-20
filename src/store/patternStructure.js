@@ -74,9 +74,9 @@ const PATTERN_STRUCTURE = {
 		endAnimationFrame: true,
 		refreshCanvas: true,
 	},
-	iterationSettings: {
-		startIterationFrame: true,
-		endIterationFrame: true,
+	layerSettings: {
+		startLayer: true,
+		endLayer: true,
 	},
 }
 

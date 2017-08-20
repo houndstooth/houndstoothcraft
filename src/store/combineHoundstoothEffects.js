@@ -2,7 +2,7 @@ import storeUtilities from '../utilities/storeUtilities'
 
 export default ({ houndstoothEffects }) => {
 	const basePattern = {}
-	const iterationsPattern = {}
+	const layersPattern = {}
 	const animationsPattern = {}
 
 	const { composePatterns, houndstoothHasOnlyRecognizedPatterns } = storeUtilities
@@ -19,8 +19,8 @@ export default ({ houndstoothEffects }) => {
 			warnAboutConflicts: true,
 		})
 		composePatterns({
-			patternToBeMergedOnto: iterationsPattern,
-			patternToMerge: houndstoothEffect.iterationsPattern,
+			patternToBeMergedOnto: layersPattern,
+			patternToMerge: houndstoothEffect.layersPattern,
 			warnAboutConflicts: true,
 		})
 		composePatterns({
@@ -33,5 +33,5 @@ export default ({ houndstoothEffects }) => {
 	if (anyIssues) {
 		return null
 	}
-	return { basePattern, iterationsPattern, animationsPattern }
+	return { basePattern, layersPattern, animationsPattern }
 }

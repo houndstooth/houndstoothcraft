@@ -28,7 +28,7 @@ describe('setup canvases', () => {
 
 	describe('when none of the canvases exist on the page already', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
+			store.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 
 			interfaceUtilities.deleteElementIfExists('.real-canvas-0')
 			interfaceUtilities.deleteElementIfExists('.real-canvas-1')
@@ -74,13 +74,13 @@ describe('setup canvases', () => {
 	})
 
 	it('can reduce the count of canvases on the page and in the store', () => {
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
+		store.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 		setupCanvases()
 
 		expect(document.querySelector('.real-canvas-5')).toBeTruthy()
 		expect(store.canvases.length).toBe(6)
 
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 3 }
+		store.mainHoundstooth.basePattern.layerSettings = { endLayer: 3 }
 		setupCanvases()
 
 		expect(document.querySelector('.real-canvas-5')).not.toBeTruthy()

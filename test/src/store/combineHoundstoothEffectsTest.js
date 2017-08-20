@@ -5,8 +5,8 @@ describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
 		spyOn(storeUtilities, 'composePatterns')
 
-		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, iterationsPattern: {} }
-		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, iterationsPattern: {} }
+		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffects = [ houndstoothEffectOne, houndstoothEffectTwo ]
 
 
@@ -19,14 +19,14 @@ describe('combine houndstooth effects', () => {
 
 		expect(composePatternsCalls[ 0 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectOne.basePattern)
 		expect(composePatternsCalls[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectOne.iterationsPattern)
+		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectOne.layersPattern)
 		expect(composePatternsCalls[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 		expect(composePatternsCalls[ 2 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectOne.animationsPattern)
 		expect(composePatternsCalls[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 
 		expect(composePatternsCalls[ 3 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectTwo.basePattern)
 		expect(composePatternsCalls[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectTwo.iterationsPattern)
+		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectTwo.layersPattern)
 		expect(composePatternsCalls[ 4 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectTwo.animationsPattern)
 		expect(composePatternsCalls[ 5 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))

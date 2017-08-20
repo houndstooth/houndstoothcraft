@@ -9,7 +9,7 @@ describe('setup contexts', () => {
 			{ getContext: context => context === '2d' ? 'c' : '' },
 			{ getContext: context => context === '2d' ? 'c' : '' },
 			{ getContext: context => context === '2d' ? 'c' : '' },
-			{ getContext: context => context === '2d' ? 'c' : '' }
+			{ getContext: context => context === '2d' ? 'c' : '' },
 		]
 	})
 

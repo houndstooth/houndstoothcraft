@@ -17,7 +17,7 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 			})
 		}
 		else {
-			consoleWrapper.error(`These settings should map onto basePattern settings, and be functions to call for them each animation / iteration frame. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
+			consoleWrapper.error(`These settings should map onto basePattern settings, and be functions to call for them each animation frame / layer. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
 		}
 	})
 	return functionsArray

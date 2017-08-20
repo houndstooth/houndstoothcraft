@@ -63,7 +63,7 @@ describe('execute', () => {
 				store.performanceLogging = true
 			})
 
-			describe('when not iterating nor animating', () => {
+			describe('when not layering nor animating', () => {
 				it('logs only the performance of the grid', () => {
 					execute()
 
@@ -74,18 +74,18 @@ describe('execute', () => {
 				})
 			})
 
-			describe('when iterating (but not animating)', () => {
+			describe('when layering (but not animating)', () => {
 				beforeEach(() => {
-					store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 10 }
+					store.mainHoundstooth.basePattern.layerSettings = { endLayer: 10 }
 				})
 
-				it('logs the current iteration frame along with the performance measurement', () => {
+				it('logs the current frame along with the performance measurement', () => {
 					execute()
 
 					const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
-						expect(call.args[ 0 ]).toBe(`current iteration frame: ${  index}`)
+						expect(call.args[ 0 ]).toBe(`current layer: ${  index}`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -102,7 +102,7 @@ describe('execute', () => {
 				})
 			})
 
-			describe('when animating (but not iterating)', () => {
+			describe('when animating (but not layering)', () => {
 				beforeEach(() => {
 					store.animating = true
 					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
@@ -114,7 +114,7 @@ describe('execute', () => {
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
-						expect(call.args[ 0 ]).toEqual(`current animation/iteration frame: ${index}/0`)
+						expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${index}/0`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -131,22 +131,22 @@ describe('execute', () => {
 				})
 			})
 
-			describe('when animating and iterating', () => {
+			describe('when animating and layering', () => {
 				beforeEach(() => {
 					store.animating = true
-					store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 10 }
+					store.mainHoundstooth.basePattern.layerSettings = { endLayer: 10 }
 					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
 				})
 
-				it('logs the animation frames, iteration frames, and grid performance', () => {
+				it('logs the animation frames, current layer, and grid performance', () => {
 					execute()
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(121)
 					consoleWrapperLogSpyCalls.forEach((call, index) => {
-						const animationFrame = Math.floor(index / 11)
-						const iterationFrame = index % 11
-						expect(call.args[ 0 ]).toEqual(`current animation/iteration frame: ${animationFrame}/${iterationFrame}`)
+						const currentAnimationFrame = Math.floor(index / 11)
+						const currentLayer = index % 11
+						expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)
 					})
 
 					const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
@@ -179,7 +179,7 @@ describe('execute', () => {
 		})
 	})
 
-	describe('neither iterating nor animating', () => {
+	describe('neither layering nor animating', () => {
 		beforeEach(() => {
 			store.animating = false
 		})
@@ -196,26 +196,26 @@ describe('execute', () => {
 			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
 		})
 
-		it('does not call iteration functions', () => {
-			const iterationFunction = jasmine.createSpy()
-			store.mainHoundstooth.iterationsPattern.exampleSetting = iterationFunction
+		it('does not call layer functions', () => {
+			const layerFunction = jasmine.createSpy()
+			store.mainHoundstooth.layersPattern.exampleSetting = layerFunction
 
 			execute()
 
-			expect(iterationFunction).not.toHaveBeenCalled()
+			expect(layerFunction).not.toHaveBeenCalled()
 		})
 	})
 
-	describe('iterating (but not animating)', () => {
+	describe('layering (but not animating)', () => {
 		beforeEach(() => {
 			store.animating = false
-			store.mainHoundstooth.basePattern.iterationSettings = {
-				startIterationFrame: 5,
-				endIterationFrame: 8,
+			store.mainHoundstooth.basePattern.layerSettings = {
+				startLayer: 5,
+				endLayer: 8,
 			}
 		})
 
-		it('calls grid once for each iteration between start and end, inclusive', () => {
+		it('calls grid once for each layer between start and end, inclusive', () => {
 			execute()
 
 			expect(gridSpy.calls.count()).toBe(4)
@@ -227,46 +227,46 @@ describe('execute', () => {
 			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
 		})
 
-		it('calls iteration functions once for each iteration, including before rendering starts', () => {
-			const iterationFunction = jasmine.createSpy().and.callFake(p => p * 2)
+		it('calls layer functions once for each layer, including before rendering starts', () => {
+			const layerFunction = jasmine.createSpy().and.callFake(p => p * 2)
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
-			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
+			store.mainHoundstooth.layersPattern.exampleSettings = { exampleSetting: layerFunction }
 
 			execute()
 
-			const iterationFunctionCalls = iterationFunction.calls.all()
-			expect(iterationFunctionCalls.length).toBe(8)
-			expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(1)
-			expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(2)
-			expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(4)
-			expect(iterationFunctionCalls[ 3 ].args[ 0 ]).toBe(8)
-			expect(iterationFunctionCalls[ 4 ].args[ 0 ]).toBe(16)
-			expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(32)
-			expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(64)
-			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(128)
+			const layerFunctionCalls = layerFunction.calls.all()
+			expect(layerFunctionCalls.length).toBe(8)
+			expect(layerFunctionCalls[ 0 ].args[ 0 ]).toBe(1)
+			expect(layerFunctionCalls[ 1 ].args[ 0 ]).toBe(2)
+			expect(layerFunctionCalls[ 2 ].args[ 0 ]).toBe(4)
+			expect(layerFunctionCalls[ 3 ].args[ 0 ]).toBe(8)
+			expect(layerFunctionCalls[ 4 ].args[ 0 ]).toBe(16)
+			expect(layerFunctionCalls[ 5 ].args[ 0 ]).toBe(32)
+			expect(layerFunctionCalls[ 6 ].args[ 0 ]).toBe(64)
+			expect(layerFunctionCalls[ 7 ].args[ 0 ]).toBe(128)
 		})
 
-		it('handles iteration functions of the iteration frame', () => {
-			const iterationFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.iterationFrame + 1))
+		it('handles layer functions of the current layer', () => {
+			const layerFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.currentLayer + 1))
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
-			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
+			store.mainHoundstooth.layersPattern.exampleSettings = { exampleSetting: layerFunction }
 
 			execute()
 
-			const iterationFunctionCalls = iterationFunction.calls.all()
-			expect(iterationFunctionCalls.length).toBe(8)
-			expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(1000)
-			expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(999)
-			expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(998)
-			expect(iterationFunctionCalls[ 3 ].args[ 0 ]).toBe(997)
-			expect(iterationFunctionCalls[ 4 ].args[ 0 ]).toBe(996)
-			expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(995)
-			expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(994)
-			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(993)
+			const layerFunctionCalls = layerFunction.calls.all()
+			expect(layerFunctionCalls.length).toBe(8)
+			expect(layerFunctionCalls[ 0 ].args[ 0 ]).toBe(1000)
+			expect(layerFunctionCalls[ 1 ].args[ 0 ]).toBe(999)
+			expect(layerFunctionCalls[ 2 ].args[ 0 ]).toBe(998)
+			expect(layerFunctionCalls[ 3 ].args[ 0 ]).toBe(997)
+			expect(layerFunctionCalls[ 4 ].args[ 0 ]).toBe(996)
+			expect(layerFunctionCalls[ 5 ].args[ 0 ]).toBe(995)
+			expect(layerFunctionCalls[ 6 ].args[ 0 ]).toBe(994)
+			expect(layerFunctionCalls[ 7 ].args[ 0 ]).toBe(993)
 		})
 	})
 
-	describe('animating (but not iterating)', () => {
+	describe('animating (but not layering)', () => {
 		beforeEach(() => {
 			store.animating = true
 			store.mainHoundstooth.basePattern.animationSettings = {
@@ -312,7 +312,7 @@ describe('execute', () => {
 		})
 
 		it('handles animation functions of the current animation frame', () => {
-			const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.animationFrame + 1))
+			const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.currentAnimationFrame + 1))
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
 			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
 
@@ -339,12 +339,12 @@ describe('execute', () => {
 		})
 	})
 
-	describe('iterating and animating', () => {
+	describe('layering and animating', () => {
 		beforeEach(() => {
 			store.animating = true
-			store.mainHoundstooth.basePattern.iterationSettings = {
-				startIterationFrame: 5,
-				endIterationFrame: 8,
+			store.mainHoundstooth.basePattern.layerSettings = {
+				startLayer: 5,
+				endLayer: 8,
 			}
 			store.mainHoundstooth.basePattern.animationSettings = {
 				startAnimationFrame: 2,
@@ -352,7 +352,7 @@ describe('execute', () => {
 			}
 		})
 
-		it('calls grid once for each iteration within each animation, both inclusively', () => {
+		it('calls grid once for each layer within each animation, both inclusively', () => {
 			execute()
 
 			expect(gridSpy.calls.count()).toBe(16)
@@ -364,14 +364,14 @@ describe('execute', () => {
 			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
 		})
 
-		it('calls iteration functions once for each iteration, each animation frame, starting the iteration over each animation frame', () => {
+		it('calls layer functions once for each layer, each animation frame, starting the layer over each animation frame', () => {
 			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 0 }
 
 			const animationFunction = jasmine.createSpy().and.callFake(p => p + 100)
 			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
 
-			const iterationFunction = jasmine.createSpy().and.callFake(p => p + (store.iterationFrame + 1))
-			store.mainHoundstooth.iterationsPattern.exampleSettings = { exampleSetting: iterationFunction }
+			const layerFunction = jasmine.createSpy().and.callFake(p => p + (store.currentLayer + 1))
+			store.mainHoundstooth.layersPattern.exampleSettings = { exampleSetting: layerFunction }
 
 			execute()
 
@@ -384,43 +384,43 @@ describe('execute', () => {
 			expect(animationFunctionCalls[ 4 ].args[ 0 ]).toBe(400)
 			expect(animationFunctionCalls[ 5 ].args[ 0 ]).toBe(500)
 
-			const iterationFunctionCalls = iterationFunction.calls.all()
-			expect(iterationFunctionCalls.length).toBe(32)
-			expect(iterationFunctionCalls[ 0 ].args[ 0 ]).toBe(200)
-			expect(iterationFunctionCalls[ 1 ].args[ 0 ]).toBe(201)
-			expect(iterationFunctionCalls[ 2 ].args[ 0 ]).toBe(203)
-			expect(iterationFunctionCalls[ 3 ].args[ 0 ]).toBe(206)
-			expect(iterationFunctionCalls[ 4 ].args[ 0 ]).toBe(210)
-			expect(iterationFunctionCalls[ 5 ].args[ 0 ]).toBe(215)
-			expect(iterationFunctionCalls[ 6 ].args[ 0 ]).toBe(221)
-			expect(iterationFunctionCalls[ 7 ].args[ 0 ]).toBe(228)
+			const layerFunctionCalls = layerFunction.calls.all()
+			expect(layerFunctionCalls.length).toBe(32)
+			expect(layerFunctionCalls[ 0 ].args[ 0 ]).toBe(200)
+			expect(layerFunctionCalls[ 1 ].args[ 0 ]).toBe(201)
+			expect(layerFunctionCalls[ 2 ].args[ 0 ]).toBe(203)
+			expect(layerFunctionCalls[ 3 ].args[ 0 ]).toBe(206)
+			expect(layerFunctionCalls[ 4 ].args[ 0 ]).toBe(210)
+			expect(layerFunctionCalls[ 5 ].args[ 0 ]).toBe(215)
+			expect(layerFunctionCalls[ 6 ].args[ 0 ]).toBe(221)
+			expect(layerFunctionCalls[ 7 ].args[ 0 ]).toBe(228)
 
-			expect(iterationFunctionCalls[ 8 ].args[ 0 ]).toBe(300)
-			expect(iterationFunctionCalls[ 9 ].args[ 0 ]).toBe(301)
-			expect(iterationFunctionCalls[ 10 ].args[ 0 ]).toBe(303)
-			expect(iterationFunctionCalls[ 11 ].args[ 0 ]).toBe(306)
-			expect(iterationFunctionCalls[ 12 ].args[ 0 ]).toBe(310)
-			expect(iterationFunctionCalls[ 13 ].args[ 0 ]).toBe(315)
-			expect(iterationFunctionCalls[ 14 ].args[ 0 ]).toBe(321)
-			expect(iterationFunctionCalls[ 15 ].args[ 0 ]).toBe(328)
+			expect(layerFunctionCalls[ 8 ].args[ 0 ]).toBe(300)
+			expect(layerFunctionCalls[ 9 ].args[ 0 ]).toBe(301)
+			expect(layerFunctionCalls[ 10 ].args[ 0 ]).toBe(303)
+			expect(layerFunctionCalls[ 11 ].args[ 0 ]).toBe(306)
+			expect(layerFunctionCalls[ 12 ].args[ 0 ]).toBe(310)
+			expect(layerFunctionCalls[ 13 ].args[ 0 ]).toBe(315)
+			expect(layerFunctionCalls[ 14 ].args[ 0 ]).toBe(321)
+			expect(layerFunctionCalls[ 15 ].args[ 0 ]).toBe(328)
 
-			expect(iterationFunctionCalls[ 16 ].args[ 0 ]).toBe(400)
-			expect(iterationFunctionCalls[ 17 ].args[ 0 ]).toBe(401)
-			expect(iterationFunctionCalls[ 18 ].args[ 0 ]).toBe(403)
-			expect(iterationFunctionCalls[ 19 ].args[ 0 ]).toBe(406)
-			expect(iterationFunctionCalls[ 20 ].args[ 0 ]).toBe(410)
-			expect(iterationFunctionCalls[ 21 ].args[ 0 ]).toBe(415)
-			expect(iterationFunctionCalls[ 22 ].args[ 0 ]).toBe(421)
-			expect(iterationFunctionCalls[ 23 ].args[ 0 ]).toBe(428)
+			expect(layerFunctionCalls[ 16 ].args[ 0 ]).toBe(400)
+			expect(layerFunctionCalls[ 17 ].args[ 0 ]).toBe(401)
+			expect(layerFunctionCalls[ 18 ].args[ 0 ]).toBe(403)
+			expect(layerFunctionCalls[ 19 ].args[ 0 ]).toBe(406)
+			expect(layerFunctionCalls[ 20 ].args[ 0 ]).toBe(410)
+			expect(layerFunctionCalls[ 21 ].args[ 0 ]).toBe(415)
+			expect(layerFunctionCalls[ 22 ].args[ 0 ]).toBe(421)
+			expect(layerFunctionCalls[ 23 ].args[ 0 ]).toBe(428)
 
-			expect(iterationFunctionCalls[ 24 ].args[ 0 ]).toBe(500)
-			expect(iterationFunctionCalls[ 25 ].args[ 0 ]).toBe(501)
-			expect(iterationFunctionCalls[ 26 ].args[ 0 ]).toBe(503)
-			expect(iterationFunctionCalls[ 27 ].args[ 0 ]).toBe(506)
-			expect(iterationFunctionCalls[ 28 ].args[ 0 ]).toBe(510)
-			expect(iterationFunctionCalls[ 29 ].args[ 0 ]).toBe(515)
-			expect(iterationFunctionCalls[ 30 ].args[ 0 ]).toBe(521)
-			expect(iterationFunctionCalls[ 31 ].args[ 0 ]).toBe(528)
+			expect(layerFunctionCalls[ 24 ].args[ 0 ]).toBe(500)
+			expect(layerFunctionCalls[ 25 ].args[ 0 ]).toBe(501)
+			expect(layerFunctionCalls[ 26 ].args[ 0 ]).toBe(503)
+			expect(layerFunctionCalls[ 27 ].args[ 0 ]).toBe(506)
+			expect(layerFunctionCalls[ 28 ].args[ 0 ]).toBe(510)
+			expect(layerFunctionCalls[ 29 ].args[ 0 ]).toBe(515)
+			expect(layerFunctionCalls[ 30 ].args[ 0 ]).toBe(521)
+			expect(layerFunctionCalls[ 31 ].args[ 0 ]).toBe(528)
 		})
 	})
 

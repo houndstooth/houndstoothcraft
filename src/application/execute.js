@@ -12,8 +12,8 @@ import setupMixedDownCanvas from '../render/setupMixedDownCanvas'
 import mixDownCanvases from '../render/mixDownCanvases'
 
 export default () => {
-	const iterationFunctions = storeUtilities.prepareFunctionsPerSetting({
-		settingsFunctions: store.mainHoundstooth.iterationsPattern,
+	const layerFunctions = storeUtilities.prepareFunctionsPerSetting({
+		settingsFunctions: store.mainHoundstooth.layersPattern,
 	})
 
 	setupCanvases()
@@ -24,23 +24,23 @@ export default () => {
 		const animationFunctions = storeUtilities.prepareFunctionsPerSetting({
 			settingsFunctions: store.mainHoundstooth.animationsPattern,
 		})
-		executeAnimation({ animationFunctions, iterationFunctions })
+		executeAnimation({ animationFunctions, layerFunctions })
 	}
 	else {
-		executeGrid({ iterationFunctions })
+		executeGrid({ layerFunctions })
 	}
 }
 
 const gridAndMaybeLogging = () => {
-	const { performanceLogging, animating, animationFrame, iterationFrame } = store
+	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = store
 	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
 	if (performanceLogging) {
 		if (animating) {
-			consoleWrapper.log(`current animation/iteration frame: ${animationFrame}/${iterationFrame}`)
+			consoleWrapper.log(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)
 		}
 		else {
-			consoleWrapper.log(`current iteration frame: ${iterationFrame}`)
+			consoleWrapper.log(`current layer: ${currentLayer}`)
 		}
 		consoleWrapper.timeEnd('grid')
 	}
@@ -57,26 +57,26 @@ const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	})
 }
 
-const executeGrid = ({ iterationFunctions }) => {
-	let { startIterationFrame, endIterationFrame } = store.mainHoundstooth.basePattern.iterationSettings || {}
-	startIterationFrame = startIterationFrame || 0
+const executeGrid = ({ layerFunctions }) => {
+	let { startLayer, endLayer } = store.mainHoundstooth.basePattern.layerSettings || {}
+	startLayer = startLayer || 0
 
-	for (let n = 0; n <= endIterationFrame; n++) {
-		if (n >= startIterationFrame) {
+	for (let n = 0; n <= endLayer; n++) {
+		if (n >= startLayer) {
 			gridAndMaybeLogging()
 		}
-		if (n < endIterationFrame) {
-			callFunctionsPerSetting({ settingsFunctions: iterationFunctions })
+		if (n < endLayer) {
+			callFunctionsPerSetting({ settingsFunctions: layerFunctions })
 		}
-		store.iterationFrame++
+		store.currentLayer++
 	}
 
 	mixDownCanvases()
 
-	store.iterationFrame = 0
+	store.currentLayer = 0
 }
 
-const executeAnimation = ({ iterationFunctions, animationFunctions }) => {
+const executeAnimation = ({ layerFunctions, animationFunctions }) => {
 	const { deepClone, defaultToTrue } = codeUtilities
 
 	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.mainHoundstooth.basePattern.animationSettings || {}
@@ -86,23 +86,23 @@ const executeAnimation = ({ iterationFunctions, animationFunctions }) => {
 	store.lastSavedAnimationFrame = startAnimationFrame
 
 	const animationFunction = () => {
-		if (store.exportFrames && store.animationFrame > store.lastSavedAnimationFrame) return
+		if (store.exportFrames && store.currentAnimationFrame > store.lastSavedAnimationFrame) return
 
-		if (store.animationFrame >= startAnimationFrame) {
+		if (store.currentAnimationFrame >= startAnimationFrame) {
 			if (refreshCanvas) clear()
 
-			const preIterationSettings = deepClone(store.mainHoundstooth.basePattern)
-			executeGrid({ iterationFunctions })
-			Object.assign(store.mainHoundstooth.basePattern, preIterationSettings)
+			const preLayerSettings = deepClone(store.mainHoundstooth.basePattern)
+			executeGrid({ layerFunctions })
+			Object.assign(store.mainHoundstooth.basePattern, preLayerSettings)
 
 			if (store.exportFrames) exportFrame()
 		}
 
 		callFunctionsPerSetting({ settingsFunctions: animationFunctions })
-		store.animationFrame++
+		store.currentAnimationFrame++
 	}
 
-	const stopCondition = () => store.animationFrame > endAnimationFrame
+	const stopCondition = () => store.currentAnimationFrame > endAnimationFrame
 
 	animator({ animationFunction, frameRate, stopCondition })
 }

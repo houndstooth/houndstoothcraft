@@ -1,5 +1,5 @@
-const iterator = (iterations, options = { oneIndexed: false }) => {
-	let iterator = [ ...Array(Math.ceil(iterations)).keys() ]
+const iterator = (layers, options = { oneIndexed: false }) => {
+	let iterator = [ ...Array(Math.ceil(layers)).keys() ]
 	if (options.oneIndexed) iterator = iterator.map(k => k + 1)
 	return iterator
 }

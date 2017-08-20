@@ -5,12 +5,12 @@ const insertElementRightAfter = (element, elementRightAfterWhichToInsert) => {
 	elementRightAfterWhichToInsert.parentNode.insertBefore(element, elementRightAfterWhichToInsert.nextSibling)
 }
 
-const iterationFrameIterator = () => {
-	const iterationSettings = store.mainHoundstooth.basePattern.iterationSettings
-	const endIterationFrame = iterationSettings && iterationSettings.endIterationFrame || 0
-	const frameCount = endIterationFrame + 1
+const layerIterator = () => {
+	const layerSettings = store.mainHoundstooth.basePattern.layerSettings
+	const endLayer = layerSettings && layerSettings.endLayer || 0
+	const layerCount = endLayer + 1
 
-	return codeUtilities.iterator(frameCount)
+	return codeUtilities.iterator(layerCount)
 }
 
 const deleteElementIfExists = selector => {
@@ -27,7 +27,7 @@ const inPx = number => `${number}px`
 
 export default {
 	insertElementRightAfter,
-	iterationFrameIterator,
+	layerIterator,
 	deleteElementIfExists,
 	setElementDimensions,
 }

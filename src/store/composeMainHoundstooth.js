@@ -16,10 +16,10 @@ export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logCompose
 		houndstoothOverrides: houndstoothOverrides.basePattern,
 	})
 	composePattern({
-		patternToCompose: store.mainHoundstooth.iterationsPattern,
-		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.iterationsPattern,
-		houndstoothEffects: combinedHoundstoothEffects.iterationsPattern,
-		houndstoothOverrides: houndstoothOverrides.iterationsPattern,
+		patternToCompose: store.mainHoundstooth.layersPattern,
+		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.layersPattern,
+		houndstoothEffects: combinedHoundstoothEffects.layersPattern,
+		houndstoothOverrides: houndstoothOverrides.layersPattern,
 	})
 	composePattern({
 		patternToCompose: store.mainHoundstooth.animationsPattern,

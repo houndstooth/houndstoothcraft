@@ -15,7 +15,7 @@ describe('render', () => {
 				lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),
 				closePath: () => contextCallsOrder.push({ method: 'closePath' }),
 				fill: () => contextCallsOrder.push({ method: 'fill' }),
-			}
+			},
 		]
 
 		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
@@ -77,11 +77,11 @@ describe('render', () => {
 		})
 	})
 
-	describe('when iterating', () => {
-		it('renders to the context of the current iteration frame', () => {
-			const frame = 5
-			store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: frame }
-			store.iterationFrame = frame
+	describe('when layering', () => {
+		it('renders to the context of the current layer', () => {
+			const layer = 5
+			store.mainHoundstooth.basePattern.layerSettings = { endLayer: layer }
+			store.currentLayer = layer
 
 			const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
@@ -95,7 +95,7 @@ describe('render', () => {
 					lineTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'lineTo',	x, y }),
 					closePath: () => laterFrameContextCallsOrder.push({ method: 'closePath' }),
 					fill: () => laterFrameContextCallsOrder.push({ method: 'fill' }),
-				}
+				},
 			]
 
 

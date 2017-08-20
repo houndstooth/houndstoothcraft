@@ -62,11 +62,11 @@ describe('#deleteElementIfExists', () => {
 	})
 })
 
-describe('#iterationFrameIterator', () => {
-	it('returns an array of numbers of each iteration frame', () => {
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
+describe('#layerIterator', () => {
+	it('returns an array of numbers of each layer', () => {
+		store.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 
-		const iterator = interfaceUtilities.iterationFrameIterator()
+		const iterator = interfaceUtilities.layerIterator()
 
 		expect(iterator).toEqual([ 0,1,2,3,4,5 ])
 	})

@@ -43,13 +43,13 @@ In short:
 - contents — all [patterns](#pattern)
 	- `basePattern`
 	- `animationsPattern`
-	- `iterationsPattern`
+	- `layersPattern`
 
 A houndstooth consists of a small set of [patterns](#pattern) which, by virtue of being required to conform to the same structure, are able to interact by mapping onto each other.
 
 The houndsteeth whose names begin with the word "houndstooth" are understood to be not ready-to-go, but rather layers to be composed into a desired finished houndstooth. Such finished houndsteeth are named to instead end with the word "houndstooth". Think of it this way: the former are *for/of houndstooth*, the latter *are houndstooth*, but both types conform to the same houndstooth structure.
 
-That houndstooth structure, by the way, is captured in the constant `HOUNDSTOOTH_STRUCTURE`, and at this time looks like this: only base, animations, and iterations patterns. If you try to add any other sort, you should see the error message: 
+That houndstooth structure, by the way, is captured in the constant `HOUNDSTOOTH_STRUCTURE`, and at this time looks like this: only base, animations, and layers patterns. If you try to add any other sort, you should see the error message: 
 
 ```
 attempted to compose a houndstooth with an unrecognized pattern
@@ -57,13 +57,13 @@ attempted to compose a houndstooth with an unrecognized pattern
 
 An "effect", such as the cmyktooth effect, is just a type of houndstooth intended to be composed, along with defaults and overrides, into a main houndstooth.
 
-When you compose a houndstooth, you do so by composing each houndstooth layer's animations patterns into a finished animations pattern, each houndstooth layer's iterations patterns into a finished animations pattern, and each houndstooth layer's base patterns into a finished base pattern.
+When you compose a houndstooth, you do so by composing each houndstooth effect's animations patterns into a finished animations pattern, each houndstooth effect's layers patterns into a finished layers pattern, and each houndstooth effect's base patterns into a finished base pattern.
 
 ### pattern
 - example instances
 	- `basePattern`
 	- `animationsPattern`
-	- `iterationsPattern` 
+	- `layersPattern` 
 	- `PATTERN_STRUCTURE`
 - contents — all [settings](#setting) 
 	- `colorSettings`
@@ -84,7 +84,7 @@ attempted to compose a pattern with an unrecognized setting
 	- `tileSettings`
 	- `stripeSettings`
 	- `animationSettings`
-	- `iterationSettings`
+	- `layerSettings`
 - contents — all [settings](#setting)
 	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSizeSetting` or `zoomOnCanvasCenter`.
 
@@ -97,13 +97,13 @@ For clarity and brevity, avoid referring to instances of patterns and settings b
 
 Note that both an `animationsPattern` pattern and an `animationSettings` setting exist. This is not a mistake. The animations pattern consists of functions that map onto a base pattern, following the `PATTERN_STRUCTURE`, to cause their shared parent [houndstooth](#houndstooth) to animate. The animations settings configure that animation with settings including the frame rate. Conceivably, an animations pattern could even animate the animation settings, to e.g. cause the frame rate to slow over time. 
 
-Both `iterationsPattern` and `iterationSettings` exist as well, for the same reason.
+Both `layersPattern` and `layerSettings` exist as well, for the same reason.
 
 ## execution & component hierarchy
 
 In short:
 - [animation](#animation)
-	- [iteration](#iteration)
+	- [layer](#layer)
 		- [grid](#grid)
 			- [tile](#tile)
 				- [shape](#shape)
@@ -120,19 +120,19 @@ Potentially:
 
 When `exportFrames` is set to `true`, the next animation frame will not be rendered until the current one has finished saving. This may negatively impact the in-browser experience, but it is a solution if your houndstooth is too computationally expensive to watch at the desired frame rate; simply export the frames and assemble them into a video using a tool such as ImageJ.
 
-### iteration
+### layer
 
 Whether [animating](#animation) or not, you may find that your houndstooth is best described not as a single [grid](#grid) of [tiles](#tile), but as many layers of such grids. 
 
-Of course, when iterating, your grids should each have at least some (semi-)transparent areas in order to allow lower layers to show through.
+Of course, when layering, your grids should each have at least some (semi-)transparent areas in order to allow lower layers to show through.
 
-One is always technically iterating, even if one is essentially only drawing a single iteration frame.
+One is always technically layering, even if one is essentially only drawing a single layer.
 
-When both animating and iterating, the described set of iterations are drawn once for each animation frame. Of course, if your pattern is complex and your frame rate is fast, you may experience lag if you call for many iterations.
+When both animating and layering, the described set of layers are drawn once for each animation frame. Of course, if your pattern is complex and your frame rate is fast, you may experience lag if you call for many layers.
 
-Differences between iterations and animations:
-- Animation frames typically occur in very quick succession (maximal frame rate for maximal persistence of vision effect). Iterations, however, are considered to occur instantaneously/simultaneously. They are non-temporal; just a breaking down of a single image in a single moment in time into multiple layers.
-- Animation frame neighbors are often very similar looking. If they weren't, the animation wouldn't be smooth, or wouldn't be considered to be animation at all.  Neighboring iteration frames, however, may look completely different from one another, or may look quite similar. It all depends on the intended effect.
+Differences between layers and animations:
+- Animation frames typically occur in very quick succession (maximal frame rate for maximal persistence of vision effect). Layers, however, are considered to occur instantaneously/simultaneously. They are non-temporal; just a breaking down of a single image in a single moment in time into multiple layers.
+- Animation frame neighbors are often very similar looking. If they weren't, the animation wouldn't be smooth, or wouldn't be considered to be animation at all.  Neighboring layers, however, may look completely different from one another, or may look quite similar. It all depends on the intended effect.
 
 ### grid
 

@@ -256,7 +256,7 @@ describe('store utilities', () => {
 		let houndstoothHasOnlyRecognizedPatterns
 		const basePattern = {}
 		const animationsPattern = {}
-		const iterationsPattern = {}
+		const layersPattern = {}
 		const invalidSettings = {}
 		beforeEach(() => {
 			houndstoothHasOnlyRecognizedPatterns = storeUtilities.houndstoothHasOnlyRecognizedPatterns
@@ -270,14 +270,14 @@ describe('store utilities', () => {
 			expect(houndstoothHasOnlyRecognizedPatterns({})).toBe(true)
 			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern })).toBe(true)
 			expect(houndstoothHasOnlyRecognizedPatterns({ animationsPattern })).toBe(true)
-			expect(houndstoothHasOnlyRecognizedPatterns({ iterationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ layersPattern })).toBe(true)
 			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern, animationsPattern })).toBe(true)
-			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern, iterationsPattern })).toBe(true)
-			expect(houndstoothHasOnlyRecognizedPatterns({ animationsPattern, iterationsPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ basePattern, layersPattern })).toBe(true)
+			expect(houndstoothHasOnlyRecognizedPatterns({ animationsPattern, layersPattern })).toBe(true)
 			expect(houndstoothHasOnlyRecognizedPatterns({
 				basePattern,
 				animationsPattern,
-				iterationsPattern,
+				layersPattern,
 			})).toBe(true)
 		})
 
@@ -303,7 +303,7 @@ describe('store utilities', () => {
 			})).toBe(false)
 			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
-				iterationsPattern,
+				layersPattern,
 			})).toBe(false)
 			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
@@ -313,18 +313,18 @@ describe('store utilities', () => {
 			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				basePattern,
-				iterationsPattern,
+				layersPattern,
 			})).toBe(false)
 			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				animationsPattern,
-				iterationsPattern,
+				layersPattern,
 			})).toBe(false)
 			expect(houndstoothHasOnlyRecognizedPatterns({
 				invalidSettings,
 				basePattern,
 				animationsPattern,
-				iterationsPattern,
+				layersPattern,
 			})).toBe(false)
 		})
 	})

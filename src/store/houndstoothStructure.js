@@ -1,7 +1,7 @@
 const HOUNDSTOOTH_STRUCTURE = {
 	basePattern: true,
 	animationsPattern: true,
-	iterationsPattern: true,
+	layersPattern: true,
 	name: true,
 }
 

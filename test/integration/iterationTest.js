@@ -9,15 +9,15 @@ import resetStore from '../../src/store/resetStore'
 describe('layering', () => {
 	beforeEach(() => resetStore(store))
 
-	it('iterations layer canvases on top of each other', () => {
+	it('layers layer canvases on top of each other', () => {
 		const layeringDemonstration = {
 			basePattern: {
 				viewSettings: {	canvasSize: 100 },
 				gridSettings: {	gridSize: 2	},
 				colorSettings: { backgroundColor: [ YELLOW ] },
-				iterationSettings: { endIterationFrame: 1 },
+				layerSettings: { endLayer: 1 },
 			},
-			iterationsPattern: {
+			layersPattern: {
 				colorSettings: {
 					backgroundColor: () => [ CYAN ],
 					opacity: () => 0.25,

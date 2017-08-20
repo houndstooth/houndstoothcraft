@@ -36,12 +36,12 @@ describe('clear', () => {
 			const clearRectSpy1 = jasmine.createSpy()
 			const clearRectSpy2 = jasmine.createSpy()
 			const clearRectSpy3 = jasmine.createSpy()
-			store.contexts = [ 
+			store.contexts = [
 				{ clearRect: clearRectSpy1 },
 				{ clearRect: clearRectSpy2 },
 				{ clearRect: clearRectSpy3 },
 			]
-			
+
 			clear()
 
 			expect(clearRectSpy1).toHaveBeenCalledWith(0, 0, 400, 500)

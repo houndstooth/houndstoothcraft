@@ -1,5 +1,4 @@
-import execute from '../../src/application/execute'
-import composeMainHoundstooth from '../../src/store/composeMainHoundstooth'
+import executeSelectedHoundstoothEffects from '../../src/interface/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN } from '../../src/constants'
 import pixelIsColorWithMarker from './helpers/pixelIsColorWithMarker'
@@ -10,7 +9,7 @@ describe('layering', () => {
 	beforeEach(() => resetStore(store))
 
 	it('blends colors from semi-translucent layers', () => {
-		const layeringDemonstration = {
+		const houndstoothOverrides = {
 			basePattern: {
 				viewSettings: {	canvasSize: 100 },
 				gridSettings: {	gridSize: 2	},
@@ -24,11 +23,9 @@ describe('layering', () => {
 				},
 			},
 		}
-		composeMainHoundstooth({ houndstoothEffects: [ layeringDemonstration ] })
-
 		activateTestMarkerCanvas()
 
-		execute()
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const BLENDED_COLOR = { r: 192, g: 255, b: 63, a: 1 }
 		const pixelInCellThatDemonstratesBlending = [ 75, 25 ]

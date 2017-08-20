@@ -1,4 +1,4 @@
-import setupCanvases from '../../../src/application/setupCanvases'
+import setupCanvases from '../../../src/render/setupCanvases'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'

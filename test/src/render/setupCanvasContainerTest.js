@@ -1,4 +1,4 @@
-import setupCanvasContainer from '../../../src/application/setupCanvasContainer'
+import setupCanvasContainer from '../../../src/render/setupCanvasContainer'
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 
 describe('setup canvas container', () => {

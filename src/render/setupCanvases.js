@@ -1,5 +1,5 @@
 import store from '../../store'
-import setupCanvasContainer from '../application/setupCanvasContainer'
+import setupCanvasContainer from '../render/setupCanvasContainer'
 import interfaceUtilities from '../utilities/interfaceUtilities'
 import getCanvasSize from '../render/getCanvasSize'
 

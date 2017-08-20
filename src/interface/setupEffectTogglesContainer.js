@@ -1,5 +1,5 @@
 import interfaceUtilities from '../utilities/interfaceUtilities'
-import setupCanvasContainer from '../application/setupCanvasContainer'
+import setupCanvasContainer from '../render/setupCanvasContainer'
 
 export default () => {
 	const effectTogglesContainer = document.createElement('div')

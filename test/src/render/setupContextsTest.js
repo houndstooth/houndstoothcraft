@@ -1,5 +1,5 @@
 import store from '../../../store'
-import setupContexts from '../../../src/application/setupContexts'
+import setupContexts from '../../../src/render/setupContexts'
 
 describe('setup contexts', () => {
 	beforeEach(() => {

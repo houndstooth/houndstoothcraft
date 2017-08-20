@@ -1,5 +1,4 @@
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
-import execute from '../../../src/application/execute'
+import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../src/constants'
@@ -17,25 +16,22 @@ describe('.colorSettings', () => {
 	describe('.set', () => {
 		it('lets you change the colors of the pattern', () => {
 			const sufficientTileCountToDemonstrateSetting = 2
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						colorSettings: {
-							set: [ YELLOW, BLUE ],
-						},
-						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
-						},
-						viewSettings: {
-							canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					colorSettings: {
+						set: [ YELLOW, BLUE ],
+					},
+					gridSettings: {
+						gridSize: sufficientTileCountToDemonstrateSetting,
+					},
+					viewSettings: {
+						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(pixelIsColorWithMarker([ 25, 75 ], YELLOW, 1)).toBe(true)
 			expect(pixelIsColorWithMarker([ 75, 25 ], BLUE, 2)).toBe(true)
@@ -44,31 +40,28 @@ describe('.colorSettings', () => {
 		it('works for more than two colors', () => {
 			const sufficientTileCountToDemonstrateSetting = 3
 			const simplestWeaveToDemonstrateSetting = [ 0, 1, 2 ]
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						colorSettings: {
-							set: [ YELLOW, BLUE, CYAN ],
-							assignment: {
-								weave: {
-									rows: simplestWeaveToDemonstrateSetting,
-									columns: simplestWeaveToDemonstrateSetting,
-								},
+			const houndstoothOverrides = {
+				basePattern: {
+					colorSettings: {
+						set: [ YELLOW, BLUE, CYAN ],
+						assignment: {
+							weave: {
+								rows: simplestWeaveToDemonstrateSetting,
+								columns: simplestWeaveToDemonstrateSetting,
 							},
 						},
-						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
-						},
-						viewSettings: {
-							canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
-						},
+					},
+					gridSettings: {
+						gridSize: sufficientTileCountToDemonstrateSetting,
+					},
+					viewSettings: {
+						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(standardTileIsColors({
 				baseId: 0,
@@ -134,30 +127,28 @@ describe('.colorSettings', () => {
 			describe('weave', () => {
 				it('is the simplest way to describe a pattern whose colors do not vary within its rows and columns', () => {
 					const sufficientTileCountToDemonstrateSetting = 8
-					composeMainHoundstooth({
-						houndstoothEffects: [],
-						houndstoothOverrides: {
-							basePattern: {
-								colorSettings: {
-									assignment: {
-										weave: {
-											rows: [ 0, 1, 1, 0 ],
-											columns: [ 1, 0, 1 ],
-										},
+					const houndstoothOverrides = {
+						basePattern: {
+							colorSettings: {
+								assignment: {
+									weave: {
+										rows: [ 0, 1, 1, 0 ],
+										columns: [ 1, 0, 1 ],
 									},
 								},
-								gridSettings: {
-									gridSize: sufficientTileCountToDemonstrateSetting,
-								},
-								viewSettings: {
-									canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
-								},
+							},
+							gridSettings: {
+								gridSize: sufficientTileCountToDemonstrateSetting,
+							},
+							viewSettings: {
+								canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
 							},
 						},
-					})
+					}
+
 					activateTestMarkerCanvas()
 
-					execute()
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 					const firstSuperweave = [
 						{
@@ -463,38 +454,36 @@ describe('.colorSettings', () => {
 			describe('supertile', () => {
 				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', () => {
 					const sufficientTileCountToDemonstrateSetting = 4
-					composeMainHoundstooth({
-						houndstoothEffects: [],
-						houndstoothOverrides: {
-							basePattern: {
-								colorSettings: {
-									set: [ YELLOW, BLUE, CYAN, MAGENTA ],
-									assignment: {
-										assignmentMode: 'SUPERTILE',
-										supertile: [
-											[
-												[ 2, 0 ],
-												[ 0, 1 ],
-											],
-											[
-												[ 1, 2 ],
-												[ 3, 3 ],
-											],
+					const houndstoothOverrides = {
+						basePattern: {
+							colorSettings: {
+								set: [ YELLOW, BLUE, CYAN, MAGENTA ],
+								assignment: {
+									assignmentMode: 'SUPERTILE',
+									supertile: [
+										[
+											[ 2, 0 ],
+											[ 0, 1 ],
 										],
-									},
-								},
-								gridSettings: {
-									gridSize: sufficientTileCountToDemonstrateSetting,
-								},
-								viewSettings: {
-									canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+										[
+											[ 1, 2 ],
+											[ 3, 3 ],
+										],
+									],
 								},
 							},
+							gridSettings: {
+								gridSize: sufficientTileCountToDemonstrateSetting,
+							},
+							viewSettings: {
+								canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+							},
 						},
-					})
+					}
+
 					activateTestMarkerCanvas()
 
-					execute()
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 					const firstSupertile = [
 						{
@@ -609,27 +598,25 @@ describe('.colorSettings', () => {
 		describe('.switcheroo', () => {
 			it('causes the two striped tiles to alternate by diagonal rather than rows/columns', () => {
 				const sufficientTileCountToDemonstrateSetting = 4
-				composeMainHoundstooth({
-					houndstoothEffects: [],
-					houndstoothOverrides: {
-						basePattern: {
-							colorSettings: {
-								assignment: {
-									switcheroo: true,
-								},
-							},
-							gridSettings: {
-								gridSize: sufficientTileCountToDemonstrateSetting,
-							},
-							viewSettings: {
-								canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+				const houndstoothOverrides = {
+					basePattern: {
+						colorSettings: {
+							assignment: {
+								switcheroo: true,
 							},
 						},
+						gridSettings: {
+							gridSize: sufficientTileCountToDemonstrateSetting,
+						},
+						viewSettings: {
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+						},
 					},
-				})
+				}
+
 				activateTestMarkerCanvas()
 
-				execute()
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				expect(standardTileIsColors({
 					baseId: 0,
@@ -686,27 +673,24 @@ describe('.colorSettings', () => {
 		describe('.flipGrain', () => {
 			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
 				const sufficientTileCountToDemonstrateSetting = 2
-				composeMainHoundstooth({
-					houndstoothEffects: [],
-					houndstoothOverrides: {
-						basePattern: {
-							colorSettings: {
-								assignment: {
-									flipGrain: true,
-								},
-							},
-							gridSettings: {
-								gridSize: sufficientTileCountToDemonstrateSetting,
-							},
-							viewSettings: {
-								canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+				const houndstoothOverrides = {
+					basePattern: {
+						colorSettings: {
+							assignment: {
+								flipGrain: true,
 							},
 						},
+						gridSettings: {
+							gridSize: sufficientTileCountToDemonstrateSetting,
+						},
+						viewSettings: {
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+						},
 					},
-				})
+				}
 				activateTestMarkerCanvas()
 
-				execute()
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const tiles = [
 					{
@@ -744,26 +728,23 @@ describe('.colorSettings', () => {
 		it('affects the alpha of the pixels rendered', () => {
 			const sufficientTileCountToDemonstrateSetting = 2
 			const opacity = 0.5
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						colorSettings: {
-							set: [ BLACK, BLUE ],
-							opacity,
-						},
-						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
-						},
-						viewSettings: {
-							canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					colorSettings: {
+						set: [ BLACK, BLUE ],
+						opacity,
+					},
+					gridSettings: {
+						gridSize: sufficientTileCountToDemonstrateSetting,
+					},
+					viewSettings: {
+						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const partiallySeeThroughBlack = codeUtilities.deepClone(BLACK)
 			partiallySeeThroughBlack.a *= opacity
@@ -778,26 +759,23 @@ describe('.colorSettings', () => {
 	describe('.backgroundColor', () => {
 		it('paints it yellow', () => {
 			const sufficientTileCountToDemonstrateSetting = 2
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						colorSettings: {
-							set: [ BLACK, TRANSPARENT ],
-							backgroundColor: [ YELLOW ],
-						},
-						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
-						},
-						viewSettings: {
-							canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					colorSettings: {
+						set: [ BLACK, TRANSPARENT ],
+						backgroundColor: [ YELLOW ],
+					},
+					gridSettings: {
+						gridSize: sufficientTileCountToDemonstrateSetting,
+					},
+					viewSettings: {
+						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(pixelIsColorWithMarker([ 75, 25 ], YELLOW, 2)).toBe(true)
 		})

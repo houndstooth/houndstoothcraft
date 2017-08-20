@@ -1,5 +1,4 @@
-import execute from '../../../src/application/execute'
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
+import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
@@ -31,10 +30,9 @@ describe('.stripeSettings', () => {
 			})
 
 			it('works in standard mode', () => {
-				composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 				activateTestMarkerCanvas()
 
-				execute()
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const tile = {
 					baseId: 0,
@@ -47,10 +45,9 @@ describe('.stripeSettings', () => {
 
 			it('works in gingham mode', () => {
 				houndstoothOverrides.basePattern.stripeSettings.stripePositionSettings.stripeCountMode = 'GINGHAM'
-				composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 				activateTestMarkerCanvas()
 
-				execute()
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const HALF_TRANSPARENT_BLACK = { r: 0, g: 0, b: 0, a: 0.5 }
 				const tile = {
@@ -65,21 +62,18 @@ describe('.stripeSettings', () => {
 
 		describe('.stripeCountSetting', () => {
 			it('changes the number of stripes in striped tiles', () => {
-				composeMainHoundstooth({
-					houndstoothEffects: [],
-					houndstoothOverrides: {
-						basePattern: {
-							gridSettings: { gridSize: 2 },
-							stripeSettings: {
-								stripePositionSettings: {
-									stripeCountSetting: 5,
-								},
+				const houndstoothOverrides = {
+					basePattern: {
+						gridSettings: { gridSize: 2 },
+						stripeSettings: {
+							stripePositionSettings: {
+								stripeCountSetting: 5,
 							},
 						},
 					},
-				})
+				}
 				activateTestMarkerCanvas()
-				execute()
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				let originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 				expect(tileSectorCenterIsColor({
@@ -180,18 +174,15 @@ describe('.stripeSettings', () => {
 
 	describe('.baseStripeDiagonal', () => {
 		it('can be set to principal, to change the orientation of the stripes', () => {
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						stripeSettings: {
-							baseStripeDiagonal: 'PRINCIPAL',
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					stripeSettings: {
+						baseStripeDiagonal: 'PRINCIPAL',
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let originInPixels
 			const tileSizeInPixels = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting

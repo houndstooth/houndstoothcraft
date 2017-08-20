@@ -1,60 +1,73 @@
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
-import execute from '../../../src/application/execute'
+import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 
-describe('execute', () => {
+describe('execute selected houndstooth effects', () => {
 	let consoleWrapperLogSpy, gridSpy, animatorSpy, exportFrameSpy, mixDownCanvasesSpy
 	beforeEach(() => {
 		resetStore(store)
-		composeMainHoundstooth()
 
 		consoleWrapperLogSpy = spyOn(consoleWrapper, 'log')
 		spyOn(consoleWrapper, 'time')
 		spyOn(consoleWrapper, 'timeEnd')
 
 		gridSpy = jasmine.createSpy()
-		execute.__Rewire__('grid', gridSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('grid', gridSpy)
 
 		animatorSpy = jasmine.createSpy().and.callFake(({ animationFunction, stopCondition }) => {
 			while (!stopCondition()) animationFunction()
 		})
-		execute.__Rewire__('animator', animatorSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('animator', animatorSpy)
 
 		exportFrameSpy = jasmine.createSpy()
-		execute.__Rewire__('exportFrame', exportFrameSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('exportFrame', exportFrameSpy)
 
 		store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 100 }
 
 		mixDownCanvasesSpy = jasmine.createSpy()
-		execute.__Rewire__('mixDownCanvases', mixDownCanvasesSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('mixDownCanvases', mixDownCanvasesSpy)
 	})
 
 	afterEach(() => {
-		execute.__ResetDependency__('grid')
-		execute.__ResetDependency__('animator')
+		executeSelectedHoundstoothEffects.__ResetDependency__('grid')
+		executeSelectedHoundstoothEffects.__ResetDependency__('animator')
 
-		execute.__ResetDependency__('mixDownCanvases')
+		executeSelectedHoundstoothEffects.__ResetDependency__('mixDownCanvases')
+	})
+
+	it('composes the houndstooth', () => {
+		const composeMainHoundstoothSpy = jasmine.createSpy()
+		executeSelectedHoundstoothEffects.__Rewire__('composeMainHoundstooth', composeMainHoundstoothSpy)
+
+		const houndstoothOverrides = {}
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+		expect(composeMainHoundstoothSpy.calls.all()[0].args[0]).toEqual({
+			houndstoothEffects: store.selectedHoundstoothEffects,
+			houndstoothOverrides,
+		})
+
+		executeSelectedHoundstoothEffects.__ResetDependency__('composeMainHoundstooth')
 	})
 
 	it('sets up for rendering', () => {
 		const setupCanvasesSpy = jasmine.createSpy()
-		execute.__Rewire__('setupCanvases', setupCanvasesSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('setupCanvases', setupCanvasesSpy)
 		const setupContextsSpy = jasmine.createSpy()
-		execute.__Rewire__('setupContexts', setupContextsSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('setupContexts', setupContextsSpy)
 		const setupMixedDownCanvasSpy = jasmine.createSpy()
-		execute.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
+		executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
 
-		execute()
+		executeSelectedHoundstoothEffects()
 
 		expect(setupCanvasesSpy).toHaveBeenCalled()
 		expect(setupContextsSpy).toHaveBeenCalled()
 		expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
 
-		execute.__ResetDependency__('setupCanvases')
-		execute.__ResetDependency__('setupContexts')
-		execute.__ResetDependency__('setupMixedDownCanvas')
+		executeSelectedHoundstoothEffects.__ResetDependency__('setupCanvases')
+		executeSelectedHoundstoothEffects.__ResetDependency__('setupContexts')
+		executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownCanvas')
 	})
 
 	describe('performance logging', () => {
@@ -65,7 +78,7 @@ describe('execute', () => {
 
 			describe('when not layering nor animating', () => {
 				it('logs only the performance of the grid', () => {
-					execute()
+					executeSelectedHoundstoothEffects()
 
 					expect(consoleWrapper.time.calls.all().length).toBe(1)
 					expect(consoleWrapper.timeEnd.calls.all().length).toBe(1)
@@ -75,12 +88,15 @@ describe('execute', () => {
 			})
 
 			describe('when layering (but not animating)', () => {
-				beforeEach(() => {
-					store.mainHoundstooth.basePattern.layerSettings = { endLayer: 10 }
-				})
-
 				it('logs the current frame along with the performance measurement', () => {
-					execute()
+					const houndstoothOverrides = {
+						basePattern: {
+							layerSettings: {
+								endLayer: 10,
+							},
+						},
+					}
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 					const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
@@ -105,11 +121,18 @@ describe('execute', () => {
 			describe('when animating (but not layering)', () => {
 				beforeEach(() => {
 					store.animating = true
-					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
 				})
 
 				it('logs the current animation frame along with the performance measurement', () => {
-					execute()
+					const houndstoothOverrides = {
+						basePattern: {
+							animationSettings: {
+								endAnimationFrame: 10,
+							},
+						},
+					}
+
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(11)
@@ -134,12 +157,16 @@ describe('execute', () => {
 			describe('when animating and layering', () => {
 				beforeEach(() => {
 					store.animating = true
-					store.mainHoundstooth.basePattern.layerSettings = { endLayer: 10 }
-					store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 10 }
 				})
 
 				it('logs the animation frames, current layer, and grid performance', () => {
-					execute()
+					const houndstoothOverrides = {
+						basePattern: {
+							layerSettings: { endLayer: 10 },
+							animationSettings: { endAnimationFrame: 10 },
+						},
+					}
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 					const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
 					expect(consoleWrapperLogSpyCalls.length).toBe(121)
@@ -170,7 +197,7 @@ describe('execute', () => {
 			})
 
 			it('does not track performance or log it', () => {
-				execute()
+				executeSelectedHoundstoothEffects()
 
 				expect(consoleWrapper.log).not.toHaveBeenCalled()
 				expect(consoleWrapper.time).not.toHaveBeenCalled()
@@ -185,54 +212,63 @@ describe('execute', () => {
 		})
 
 		it('calls grid only once', () => {
-			execute()
+			executeSelectedHoundstoothEffects()
 
 			expect(gridSpy.calls.count()).toBe(1)
 		})
 
 		it('mixes down canvases, also once', () => {
-			execute()
+			executeSelectedHoundstoothEffects()
 
 			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
 		})
 
 		it('does not call layer functions', () => {
 			const layerFunction = jasmine.createSpy()
-			store.mainHoundstooth.layersPattern.exampleSetting = layerFunction
+			store.mainHoundstooth.layersPattern.tileSettings = { tileSizeSetting: layerFunction }
 
-			execute()
+			executeSelectedHoundstoothEffects()
 
 			expect(layerFunction).not.toHaveBeenCalled()
 		})
 	})
 
 	describe('layering (but not animating)', () => {
+		let houndstoothOverrides
 		beforeEach(() => {
 			store.animating = false
-			store.mainHoundstooth.basePattern.layerSettings = {
-				startLayer: 5,
-				endLayer: 8,
+			houndstoothOverrides = {
+				basePattern: {
+					layerSettings: {
+						startLayer: 5,
+						endLayer: 8,
+					},
+				},
 			}
 		})
 
 		it('calls grid once for each layer between start and end, inclusive', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
 		it('mixes down canvases, just once', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(mixDownCanvasesSpy.calls.count()).toBe(1)
 		})
 
 		it('calls layer functions once for each layer, including before rendering starts', () => {
 			const layerFunction = jasmine.createSpy().and.callFake(p => p * 2)
-			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
-			store.mainHoundstooth.layersPattern.exampleSettings = { exampleSetting: layerFunction }
+			houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 1 }
+			houndstoothOverrides.layersPattern = {
+				tileSettings: {
+					tileSizeSetting: layerFunction,
+				},
+			}
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const layerFunctionCalls = layerFunction.calls.all()
 			expect(layerFunctionCalls.length).toBe(8)
@@ -248,10 +284,13 @@ describe('execute', () => {
 
 		it('handles layer functions of the current layer', () => {
 			const layerFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.currentLayer + 1))
-			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
-			store.mainHoundstooth.layersPattern.exampleSettings = { exampleSetting: layerFunction }
-
-			execute()
+			houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 1000 }
+			houndstoothOverrides.layersPattern = {
+				tileSettings: {
+					tileSizeSetting: layerFunction,
+				},
+			}
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const layerFunctionCalls = layerFunction.calls.all()
 			expect(layerFunctionCalls.length).toBe(8)
@@ -267,39 +306,48 @@ describe('execute', () => {
 	})
 
 	describe('animating (but not layering)', () => {
+		let houndstoothOverrides
 		beforeEach(() => {
 			store.animating = true
-			store.mainHoundstooth.basePattern.animationSettings = {
-				frameRate: 1.120,
-				startAnimationFrame: 2,
-				endAnimationFrame: 5,
+			houndstoothOverrides = {
+				basePattern: {
+					animationSettings: {
+						frameRate: 1.120,
+						startAnimationFrame: 2,
+						endAnimationFrame: 5,
+					},
+				},
 			}
 		})
 
 		it('calls grid once for each animation between start and end, inclusive', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(gridSpy.calls.count()).toBe(4)
 		})
 
 		it('mixes down canvases once for each animation between start and end, inclusive', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
 		})
 
 		it('calls the animator with the frame rate, which is defaulted', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(animatorSpy).toHaveBeenCalledWith(jasmine.objectContaining({ frameRate: 1.120 }))
 		})
 
 		it('calls animation functions once for each animation, including before rendering starts', () => {
 			const animationFunction = jasmine.createSpy().and.callFake(p => p * 2)
-			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1 }
-			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
+			houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 1 }
+			houndstoothOverrides.animationsPattern = {
+				tileSettings: {
+					tileSizeSetting: animationFunction,
+				},
+			}
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -313,10 +361,14 @@ describe('execute', () => {
 
 		it('handles animation functions of the current animation frame', () => {
 			const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.currentAnimationFrame + 1))
-			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 1000 }
-			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
+			houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 1000 }
+			houndstoothOverrides.animationsPattern = {
+				tileSettings: {
+					tileSizeSetting: animationFunction,
+				},
+			}
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -330,50 +382,63 @@ describe('execute', () => {
 
 		it('defaults refreshing the canvas to true, and calls clear once for every rendered frame', () => {
 			const clearSpy = jasmine.createSpy()
-			execute.__Rewire__('clear', clearSpy)
+			executeSelectedHoundstoothEffects.__Rewire__('clear', clearSpy)
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(clearSpy.calls.all().length).toBe(4)
-			execute.__ResetDependency__('clear')
+			executeSelectedHoundstoothEffects.__ResetDependency__('clear')
 		})
 	})
 
 	describe('layering and animating', () => {
+		let houndstoothOverrides
 		beforeEach(() => {
 			store.animating = true
-			store.mainHoundstooth.basePattern.layerSettings = {
-				startLayer: 5,
-				endLayer: 8,
-			}
-			store.mainHoundstooth.basePattern.animationSettings = {
-				startAnimationFrame: 2,
-				endAnimationFrame: 5,
+			houndstoothOverrides = {
+				basePattern: {
+					layerSettings: {
+						startLayer: 5,
+						endLayer: 8,
+					},
+					animationSettings: {
+						startAnimationFrame: 2,
+						endAnimationFrame: 5,
+					},
+				},
 			}
 		})
 
 		it('calls grid once for each layer within each animation, both inclusively', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(gridSpy.calls.count()).toBe(16)
 		})
 
 		it('mixes down canvases once for each animation between start and end, inclusive', () => {
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(mixDownCanvasesSpy.calls.count()).toBe(4)
 		})
 
 		it('calls layer functions once for each layer, each animation frame, starting the layer over each animation frame', () => {
-			store.mainHoundstooth.basePattern.exampleSettings = { exampleSetting: 0 }
+			houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 0 }
 
 			const animationFunction = jasmine.createSpy().and.callFake(p => p + 100)
-			store.mainHoundstooth.animationsPattern.exampleSettings = { exampleSetting: animationFunction }
+			houndstoothOverrides.animationsPattern = {
+				tileSettings: {
+					tileSizeSetting: animationFunction,
+				},
+			}
 
 			const layerFunction = jasmine.createSpy().and.callFake(p => p + (store.currentLayer + 1))
-			store.mainHoundstooth.layersPattern.exampleSettings = { exampleSetting: layerFunction }
+			houndstoothOverrides.layersPattern = {
+				tileSettings: {
+					tileSizeSetting: layerFunction,
+				},
+			}
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const animationFunctionCalls = animationFunction.calls.all()
 			expect(animationFunctionCalls.length).toBe(6)
@@ -427,17 +492,22 @@ describe('execute', () => {
 	describe('exporting frames (and of course animating)', () => {
 		const startAnimationFrame = 2
 		const endAnimationFrame = 5
+		let houndstoothOverrides
 		beforeEach(() => {
 			store.animating = true
 			store.exportFrames = true
-			store.mainHoundstooth.basePattern.animationSettings = {
-				startAnimationFrame,
-				endAnimationFrame,
+			houndstoothOverrides = {
+				basePattern: {
+					animationSettings: {
+						startAnimationFrame,
+						endAnimationFrame,
+					},
+				},
 			}
 		})
 
 		it('saves the canvas for each animation frame', done => {
-			execute.__ResetDependency__('animator')
+			executeSelectedHoundstoothEffects.__ResetDependency__('animator')
 
 			const interval = setInterval(() => {
 				store.lastSavedAnimationFrame++
@@ -448,7 +518,7 @@ describe('execute', () => {
 				expect(exportFrameSpy.calls.all().length).toBe(store.lastSavedAnimationFrame - startAnimationFrame)
 			}, 200)
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 		})
 	})
 })

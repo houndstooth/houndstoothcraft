@@ -6,12 +6,15 @@ import consoleWrapper from '../utilities/consoleWrapper'
 import animator from '../animation/animator'
 import exportFrame from '../animation/exportFrame'
 import store from '../../store'
-import setupCanvases from './setupCanvases'
-import setupContexts from './setupContexts'
+import setupCanvases from '../render/setupCanvases'
+import setupContexts from '../render/setupContexts'
 import setupMixedDownCanvas from '../render/setupMixedDownCanvas'
 import mixDownCanvases from '../render/mixDownCanvases'
+import composeMainHoundstooth from '../store/composeMainHoundstooth'
 
-export default () => {
+export default ({ houndstoothOverrides = {} } = {}) => {
+	composeMainHoundstooth({ houndstoothEffects: store.selectedHoundstoothEffects, houndstoothOverrides })
+
 	const layerFunctions = storeUtilities.prepareFunctionsPerSetting({
 		settingsFunctions: store.mainHoundstooth.layersPattern,
 	})

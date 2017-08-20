@@ -1,6 +1,6 @@
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 import getCanvasSize from '../../../src/render/getCanvasSize'
-import setupCanvasContainer from '../../../src/application/setupCanvasContainer'
+import setupCanvasContainer from '../../../src/render/setupCanvasContainer'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'

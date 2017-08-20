@@ -1,7 +1,5 @@
-import composeMainHoundstooth from './src/store/composeMainHoundstooth'
-import setupEffectToggles from './src/application/setupEffectToggles'
-import execute from './src/application/execute'
+import initializeInterface from './src/interface/initializeInterface'
+import executeSelectedHoundstoothEffects from './src/interface/executeSelectedHoundstoothEffects'
 
-composeMainHoundstooth()
-setupEffectToggles()
-execute()
+initializeInterface()
+executeSelectedHoundstoothEffects()

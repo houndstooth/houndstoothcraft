@@ -8,7 +8,8 @@ const getColorsForTile = ({ gridAddress, colorSettings }) => {
 	colorSettings = colorSettings || store.mainHoundstooth.basePattern.colorSettings
 	let tileColors = componentUtilities.getSetForTile({ gridAddress, settings: colorSettings })
 
-	const { stripeCountMode } = store.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings || {}
+	const stripeSettings = store.mainHoundstooth.basePattern.stripeSettings
+	const { stripeCountMode } = stripeSettings && stripeSettings.stripePositionSettings || {}
 	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
 
 	return tileColors

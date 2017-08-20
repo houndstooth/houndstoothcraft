@@ -1,8 +1,9 @@
 import addEffectToggle from '../../../src/interface/addEffectToggle'
+import setupEffectTogglesContainer from '../../../src/interface/setupEffectTogglesContainer'
 
 describe('add effect toggle', () => {
 	it('adds a labelled checkbox for the effect to the toggles container', () => {
-		const effectTogglesContainer = document.querySelector('.effect-toggles-container')
+		const effectTogglesContainer = document.querySelector('.effect-toggles-container') || setupEffectTogglesContainer()
 		effectTogglesContainer.innerHTML = ''
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 

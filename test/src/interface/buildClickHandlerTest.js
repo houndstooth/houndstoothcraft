@@ -5,10 +5,8 @@ describe('build click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
 		const resetInterfaceSpy = jasmine.createSpy()
 		buildClickHandler.__Rewire__('resetInterface', resetInterfaceSpy)
-		const composeMainHoundstoothSpy = jasmine.createSpy()
-		buildClickHandler.__Rewire__('composeMainHoundstooth', composeMainHoundstoothSpy)
-		const executeSpy = jasmine.createSpy()
-		buildClickHandler.__Rewire__('execute', executeSpy)
+		const executeSelectedHoundstoothEffectsSpy = jasmine.createSpy()
+		buildClickHandler.__Rewire__('executeSelectedHoundstoothEffects', executeSelectedHoundstoothEffectsSpy)
 
 		const checkbox = document.createElement('input')
 		checkbox.setAttribute('type', 'checkbox')
@@ -18,25 +16,20 @@ describe('build click handler', () => {
 		const clickHandler = buildClickHandler(checkbox, mockHoundstoothEffect)
 
 		expect(resetInterfaceSpy).not.toHaveBeenCalled()
-		expect(composeMainHoundstoothSpy).not.toHaveBeenCalled()
-		expect(executeSpy).not.toHaveBeenCalled()
+		expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 
 		const preExistingHoundstoothEffect = { name: 'preexisting tooth' }
 		store.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
 
 		simulateClick(checkbox, clickHandler)
 
+		expect(store.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, mockHoundstoothEffect ])
+
 		expect(resetInterfaceSpy).toHaveBeenCalled()
-		expect(composeMainHoundstoothSpy).toHaveBeenCalledWith(
-			jasmine.objectContaining({
-				houndstoothEffects: [ preExistingHoundstoothEffect, mockHoundstoothEffect ],
-			})
-		)
-		expect(executeSpy).toHaveBeenCalled()
+		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 
 		resetInterfaceSpy.calls.reset()
-		composeMainHoundstoothSpy.calls.reset()
-		executeSpy.calls.reset()
+		executeSelectedHoundstoothEffectsSpy.calls.reset()
 
 		// to confirm that it preserves the order otherwise when removing an effect
 		const otherHoundstoothEffect = { name: 'other tooth' }
@@ -45,12 +38,8 @@ describe('build click handler', () => {
 		simulateClick(checkbox, clickHandler)
 
 		expect(resetInterfaceSpy).toHaveBeenCalled()
-		expect(composeMainHoundstoothSpy).toHaveBeenCalledWith(
-			jasmine.objectContaining({
-				houndstoothEffects: [ preExistingHoundstoothEffect, otherHoundstoothEffect ],
-			})
-		)
-		expect(executeSpy).toHaveBeenCalled()
+		expect(store.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, otherHoundstoothEffect ])
+		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
 })
 

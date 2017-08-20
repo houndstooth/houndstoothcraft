@@ -1,6 +1,5 @@
 import '../../../node_modules/canteen/build/canteen.min'
-import execute from '../../../src/application/execute'
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
+import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
@@ -10,19 +9,16 @@ import store from '../../../store'
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
 		it('adjusts the size in pixels of each tile', () => {
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						tileSettings: {
-							tileSizeSetting: 30,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					tileSettings: {
+						tileSizeSetting: 30,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles = [
 				{ baseId: 0, originInPixels: [ 0, 0 ], tileSizeInPixels: 30, colors: [ TRANSPARENT, BLACK ] },
@@ -35,22 +31,19 @@ describe('.tileSettings', () => {
 
 		describe('when also zooming', () => {
 			it('multiplies the effect of taking up more pixels', () => {
-				composeMainHoundstooth({
-					houndstoothEffects: [],
-					houndstoothOverrides: {
-						basePattern: {
-							viewSettings: {
-								zoom: 3,
-							},
-							tileSettings: {
-								tileSizeSetting: 30,
-							},
+				const houndstoothOverrides = {
+					basePattern: {
+						viewSettings: {
+							zoom: 3,
+						},
+						tileSettings: {
+							tileSizeSetting: 30,
 						},
 					},
-				})
+				}
 				activateTestMarkerCanvas()
 
-				execute()
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const tiles = [
 					{ baseId: 0, originInPixels: [ 0, 0 ], tileSizeInPixels: 90, colors: [ TRANSPARENT, BLACK ] },
@@ -81,10 +74,9 @@ describe('.tileSettings', () => {
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {
-			composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let contextCallStack = store.contexts[0].stack()
 			expect(contextCallStack.length).toBe(8)
@@ -100,10 +92,9 @@ describe('.tileSettings', () => {
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
 			houndstoothOverrides.basePattern.tileSettings = { collapseSameColoredShapesWithinTile: false }
-			composeMainHoundstooth({ houndstoothEffects: [], houndstoothOverrides })
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let contextCallStack = store.contexts[0].stack()
 			expect(contextCallStack.length).toBe(30)

@@ -1,5 +1,4 @@
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
-import execute from '../../../src/application/execute'
+import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
@@ -16,18 +15,15 @@ describe('.viewSettings', () => {
 
 	describe('.canvasSize', () => {
 		it('works', () => {
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						colorSettings: { set: [ BLACK ] },
-						viewSettings: { canvasSize: 125 },
-					},
+			const houndstoothOverrides ={
+				basePattern: {
+					colorSettings: { set: [ BLACK ] },
+					viewSettings: { canvasSize: 125 },
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(pixelIsColor([ 0, 0 ], BLACK)).toBe(true)
 			expect(pixelIsColor([ 124, 0 ], BLACK)).toBe(true)
@@ -42,18 +38,15 @@ describe('.viewSettings', () => {
 	describe('.zoom', () => {
 		it('works', () => {
 			const zoom = 2
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						viewSettings: { zoom },
-						gridSettings: { gridSize: 2 },
-					},
+			const houndstoothOverrides = {
+				basePattern: {
+					viewSettings: { zoom },
+					gridSettings: { gridSize: 2 },
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(standardTileIsColors({
 				baseId: 0,
@@ -85,21 +78,18 @@ describe('.viewSettings', () => {
 	describe('.zoomOnCanvasCenter', () => {
 		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
 			const zoom = 2
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						viewSettings: {
-							zoomOnCanvasCenter: true,
-							zoom: 2,
-						},
-						gridSettings: { gridSize: 8 },
+			const houndstoothOverrides = {
+				basePattern: {
+					viewSettings: {
+						zoomOnCanvasCenter: true,
+						zoom: 2,
 					},
+					gridSettings: { gridSize: 8 },
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(standardTileIsColors({
 				baseId: 0,
@@ -131,19 +121,16 @@ describe('.viewSettings', () => {
 	describe('.centerViewOnCenterOfTileAtZeroZeroAddress', () => {
 		it('is self-explanatory', () => {
 			const tileSizeSetting = 100
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						tileSettings: { tileSizeSetting },
-						viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
-						gridSettings: { gridSize: 2 },
-					},
+			const houndstoothOverrides = {
+				basePattern: {
+					tileSettings: { tileSizeSetting },
+					viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
+					gridSettings: { gridSize: 2 },
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(standardTileIsColors({
 				baseId: 0,
@@ -174,25 +161,23 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						viewSettings: {
-							canvasSize: 300,
-							rotateViewAboutCanvasCenter: Math.PI / 2,
-						},
-						tileSettings: {
-							tileSizeSetting,
-						},
-						gridSettings: {
-							gridSize: 2,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					viewSettings: {
+						canvasSize: 300,
+						rotateViewAboutCanvasCenter: Math.PI / 2,
+					},
+					tileSettings: {
+						tileSizeSetting,
+					},
+					gridSettings: {
+						gridSize: 2,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
-			execute()
+
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let originInPixels = [ 200, 0 ]
 

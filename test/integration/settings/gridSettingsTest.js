@@ -1,5 +1,4 @@
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
-import execute from '../../../src/application/execute'
+import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../../src/constants'
@@ -11,25 +10,22 @@ describe('.gridSettings', () => {
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						viewSettings: {
-							canvasSize: 200,
-						},
-						colorSettings: {
-							set: [ BLACK, WHITE ],
-						},
-						gridSettings: {
-							gridSize: 3,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					viewSettings: {
+						canvasSize: 200,
+					},
+					colorSettings: {
+						set: [ BLACK, WHITE ],
+					},
+					gridSettings: {
+						gridSize: 3,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
 
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles = [
 				{
@@ -140,26 +136,23 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
 			const tileSizeSetting = 50
-			composeMainHoundstooth({
-				houndstoothEffects: [],
-				houndstoothOverrides: {
-					basePattern: {
-						viewSettings: {
-							canvasSize: 300,
-							centerViewOnCenterOfTileAtZeroZeroAddress: true,
-						},
-						tileSettings: {
-							tileSizeSetting,
-						},
-						gridSettings: {
-							gridSize: 1,
-							includeNegativeQuadrants: true,
-						},
+			const houndstoothOverrides = {
+				basePattern: {
+					viewSettings: {
+						canvasSize: 300,
+						centerViewOnCenterOfTileAtZeroZeroAddress: true,
+					},
+					tileSettings: {
+						tileSizeSetting,
+					},
+					gridSettings: {
+						gridSize: 1,
+						includeNegativeQuadrants: true,
 					},
 				},
-			})
+			}
 			activateTestMarkerCanvas()
-			execute()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles = [
 				{

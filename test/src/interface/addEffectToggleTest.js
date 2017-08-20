@@ -1,14 +1,14 @@
-import addHoundstoothEffectToggleToControls from '../../../src/interface/addHoundstoothEffectToggleToControls'
-import controls from '../../../src/interface/controls'
+import addEffectToggle from '../../../src/interface/addEffectToggle'
 
-describe('add houndstooth effect toggle to controls', () => {
-	it('adds a labelled checkbox to the controls for the effect', () => {
-		controls.innerHTML = ''
+describe('add effect toggle', () => {
+	it('adds a labelled checkbox for the effect to the toggles container', () => {
+		const effectTogglesContainer = document.querySelector('.effect-toggles-container')
+		effectTogglesContainer.innerHTML = ''
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 
-		addHoundstoothEffectToggleToControls(mockHoundstoothEffect)
+		addEffectToggle(mockHoundstoothEffect)
 
-		expect(controls.innerHTML).toBe(
+		expect(effectTogglesContainer.innerHTML).toBe(
 			'<label style="cursor: pointer; display: block;">' +
 				'<input type="checkbox" class="mock-tooth" style="cursor: pointer;">' +
 				'mock tooth' +
@@ -17,9 +17,9 @@ describe('add houndstooth effect toggle to controls', () => {
 
 		const nextHoundstoothEffect = { name: 'next tooth' }
 
-		addHoundstoothEffectToggleToControls(nextHoundstoothEffect)
+		addEffectToggle(nextHoundstoothEffect)
 
-		expect(controls.innerHTML).toBe(
+		expect(effectTogglesContainer.innerHTML).toBe(
 			'<label style="cursor: pointer; display: block;">' +
 				'<input type="checkbox" class="mock-tooth" style="cursor: pointer;">' +
 				'mock tooth' +

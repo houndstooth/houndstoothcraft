@@ -9,7 +9,7 @@ import resetStore from '../../src/store/resetStore'
 describe('layering', () => {
 	beforeEach(() => resetStore(store))
 
-	it('layers layer canvases on top of each other', () => {
+	it('blends colors from semi-translucent layers', () => {
 		const layeringDemonstration = {
 			basePattern: {
 				viewSettings: {	canvasSize: 100 },

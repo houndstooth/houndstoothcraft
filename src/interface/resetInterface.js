@@ -1,10 +1,12 @@
 import clear from '../render/clear'
 import store from '../../store'
-import warnings from '../interface/warnings'
 import resetStore from '../store/resetStore'
+import setupWarnings from './setupWarnings'
 
 export default () => {
+	const warnings = document.querySelector('.warnings') || setupWarnings()
 	warnings.innerHTML = ''
+
 	clear()
 	clearInterval(store.interval)
 

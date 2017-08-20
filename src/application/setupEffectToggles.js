@@ -1,4 +1,4 @@
-import addHoundstoothEffectToggleToControls from '../interface/addHoundstoothEffectToggleToControls'
+import addEffectToggle from '../interface/addEffectToggle'
 import cmyktoothEffect from '../../effects/cmyktooth/effects/cmyktoothEffect'
 import ginghamChevronContinuumEffect from '../../effects/gingham-chevron-continuum/effects/ginghamChevronContinuumEffect'
 import harmonitoothEffect from '../../effects/harmonitooth/effects/harmonitoothEffect'
@@ -18,5 +18,5 @@ export default () => {
 		houndsmorphosisEffect,
 	]
 
-	houndstoothEffects.forEach(addHoundstoothEffectToggleToControls)
+	houndstoothEffects.forEach(addEffectToggle)
 }

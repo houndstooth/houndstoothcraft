@@ -1,9 +1,7 @@
 import setupCanvases from '../../../src/application/setupCanvases'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
-import '../../../src/interface/canvasContainer'
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
-import canvasContainer from '../../../src/interface/canvasContainer'
 
 describe('setup canvases', () => {
 	beforeEach(() => resetStore(store))
@@ -13,6 +11,7 @@ describe('setup canvases', () => {
 
 		setupCanvases()
 
+		const canvasContainer = document.querySelector('.canvas-container')
 		expect(canvasContainer.style.width).toBe('400px')
 		expect(canvasContainer.style.height).toBe('500px')
 	})

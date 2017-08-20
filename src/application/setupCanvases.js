@@ -1,10 +1,12 @@
 import store from '../../store'
-import canvasContainer from '../interface/canvasContainer'
+import setupCanvasContainer from '../application/setupCanvasContainer'
 import interfaceUtilities from '../utilities/interfaceUtilities'
 import getCanvasSize from '../render/getCanvasSize'
 
 export default () => {
 	store.canvases = []
+
+	const canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
 	canvasContainer.innerHTML = ''
 
 	const canvasSize = getCanvasSize()

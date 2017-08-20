@@ -1,11 +1,11 @@
 import resetInterface from '../../../src/interface/resetInterface'
 import warn from '../../../src/interface/warn'
-import warnings from '../../../src/interface/warnings'
 import store from '../../../store'
 import initialStore from '../../../src/store/initialStore'
 
 describe('reset interface', () => {
 	it('clears warnings', () => {
+		const warnings = document.querySelector('.warnings')
 		warn('oh no')
 		expect(warnings.innerHTML).toBe('<div>oh no</div>')
 

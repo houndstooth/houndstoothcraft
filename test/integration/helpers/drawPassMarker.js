@@ -1,6 +1,9 @@
-import testMarkersContext from './testMarkersContext'
+import setupTestMarkersCanvas from './setupTestMarkersCanvas'
 
 export default (passed, coordinate, id) => {
+	const testMarkersCanvas = document.querySelector('.test-markers-canvas') || setupTestMarkersCanvas()
+	const testMarkersContext = testMarkersCanvas.getContext('2d')
+
 	testMarkersContext.strokeStyle = passed ? 'green' : 'red'
 	testMarkersContext.beginPath()
 

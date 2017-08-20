@@ -1,5 +1,6 @@
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
+import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'
@@ -20,8 +21,8 @@ export default () => {
 
 	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 	testCanvasDisplayArea.style.display = 'block'
-	testCanvasDisplayArea.style.width = `${canvasSize}px`
-	testCanvasDisplayArea.style.height = `${canvasSize}px`
+
+	interfaceUtilities.setElementDimensions(testCanvasDisplayArea, canvasSize)
 
 	let canvas = document.querySelector('.mixed-down-canvas')
 	prepareCanvasForDisplayInTest(canvas)

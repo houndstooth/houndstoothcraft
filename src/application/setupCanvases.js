@@ -8,9 +8,7 @@ export default () => {
 	canvasContainer.innerHTML = ''
 
 	const canvasSize = store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
-	const canvasSizePx = `${canvasSize}px`
-	canvasContainer.style.width = canvasSizePx
-	canvasContainer.style.height = canvasSizePx
+	interfaceUtilities.setElementDimensions(canvasContainer, canvasSize)
 
 	interfaceUtilities.iterationFrameIterator().forEach(canvasIndex => {
 		const canvasClass = `real-canvas-${canvasIndex}`

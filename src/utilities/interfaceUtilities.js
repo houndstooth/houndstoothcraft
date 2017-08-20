@@ -18,8 +18,19 @@ const deleteElementIfExists = selector => {
 	element && element.parentNode.removeChild(element)
 }
 
+const setElementDimensions = (element, dimensions) => {
+	const oblong = dimensions instanceof Array
+	const width = oblong ? dimensions[0] : dimensions
+	const height = oblong ? dimensions[1] : dimensions
+	element.style.width = inPx(width)
+	element.style.height = inPx(height)
+}
+
+const inPx = number => `${number}px`
+
 export default {
 	insertElementRightAfter,
 	iterationFrameIterator,
 	deleteElementIfExists,
+	setElementDimensions,
 }

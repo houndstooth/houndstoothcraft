@@ -1,12 +1,9 @@
 import applyOpacity from '../../../src/render/applyOpacity'
 import store from '../../../store'
-import setupCanvases from '../../../src/application/setupCanvases'
-import setupContexts from '../../../src/application/setupContexts'
 
 describe('apply opacity', () => {
 	beforeEach(() => {
-		setupCanvases()
-		setupContexts()
+		store.contexts = [ { globalAlpha: 1 } ]
 	})
 
 	it('has no effect if no opacity level is specified', () => {

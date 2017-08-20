@@ -1,60 +1,53 @@
 import clear from '../../../src/render/clear'
 import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
-import setupContexts from '../../../src/application/setupContexts'
-import setupCanvases from '../../../src/application/setupCanvases'
-import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
 describe('clear', () => {
+	let mixedDownClearRectSpy
+	beforeEach(() => {
+		clear.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
-	beforeEach(() => clear.__Rewire__('getCanvasSize', () => [ 400, 500 ]))
+		mixedDownClearRectSpy = jasmine.createSpy()
+		const mockMixedDownContext = { clearRect: mixedDownClearRectSpy }
+		store.mixedDownCanvas = {
+			getContext: context => context === '2d' ? mockMixedDownContext : null,
+		}
+	})
 
 	describe('when there is a single context', () => {
+		let clearRectSpy
 		beforeEach(() => {
-			resetStore(store)
-			setupCanvases()
-			setupMixedDownCanvas()
-			setupContexts()
-
-			spyOn(store.contexts[0], 'clearRect')
-			spyOn(store.mixedDownCanvas.getContext('2d'), 'clearRect')
+			clearRectSpy = jasmine.createSpy()
+			store.contexts = [ { clearRect: clearRectSpy } ]
 
 			clear()
 		})
 
-
 		it('wipes the default amount of canvas', () => {
-			expect(store.contexts[0].clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(clearRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
 		})
 
 		it('also wipes the mixed down canvas', () => {
-			expect(store.mixedDownCanvas.getContext('2d').clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(mixedDownClearRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
 		})
 	})
 
 	describe('when there are multiple contexts', () => {
-		beforeEach(() => {
-			resetStore(store)
-			store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 3 }
-			setupCanvases()
-			setupMixedDownCanvas()
-			setupContexts()
-
-			spyOn(store.contexts[0], 'clearRect')
-			spyOn(store.contexts[1], 'clearRect')
-			spyOn(store.contexts[2], 'clearRect')
-			spyOn(store.contexts[3], 'clearRect')
-			spyOn(store.mixedDownCanvas.getContext('2d'), 'clearRect')
-		})
-
 		it('wipes every canvas', () => {
+			const clearRectSpy1 = jasmine.createSpy()
+			const clearRectSpy2 = jasmine.createSpy()
+			const clearRectSpy3 = jasmine.createSpy()
+			store.contexts = [ 
+				{ clearRect: clearRectSpy1 },
+				{ clearRect: clearRectSpy2 },
+				{ clearRect: clearRectSpy3 },
+			]
+			
 			clear()
 
-			expect(store.contexts[0].clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(store.contexts[1].clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(store.contexts[2].clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(store.contexts[3].clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(store.mixedDownCanvas.getContext('2d').clearRect).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(clearRectSpy1).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(clearRectSpy2).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(clearRectSpy3).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(mixedDownClearRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
 		})
 	})
 })

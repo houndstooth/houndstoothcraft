@@ -1,30 +1,36 @@
 import store from '../../../store'
-import setupCanvases from '../../../src/application/setupCanvases'
 import setupContexts from '../../../src/application/setupContexts'
 
-describe('background color', () => {
+describe('setup contexts', () => {
+	beforeEach(() => {
+		store.canvases = [
+			{ getContext: context => context === '2d' ? 'c' : '' },
+			{ getContext: context => context === '2d' ? 'c' : '' },
+			{ getContext: context => context === '2d' ? 'c' : '' },
+			{ getContext: context => context === '2d' ? 'c' : '' },
+			{ getContext: context => context === '2d' ? 'c' : '' },
+			{ getContext: context => context === '2d' ? 'c' : '' }
+		]
+	})
+
 	it('adds a context to the store for each canvas', () => {
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
-		setupCanvases()
-		expect(store.canvases.length).toBe(6)
-		expect(store.contexts.length).toBe(0)
+		expect(store.contexts).toEqual([])
 
 		setupContexts()
 
-		expect(store.contexts.length).toBe(6)
+		expect(store.contexts).toEqual([ 'c', 'c', 'c', 'c', 'c', 'c' ])
 	})
 
 	it('can reduce the count of contexts in the store', () => {
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
-		setupCanvases()
+		setupContexts()
+		expect(store.contexts).toEqual([ 'c', 'c', 'c', 'c', 'c', 'c' ])
+
+		store.canvases = [
+			{ getContext: context => context === '2d' ? 'c' : '' },
+			{ getContext: context => context === '2d' ? 'c' : '' },
+		]
 		setupContexts()
 
-		expect(store.contexts.length).toBe(6)
-
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 3 }
-		setupCanvases()
-		setupContexts()
-
-		expect(store.contexts.length).toBe(4)
+		expect(store.contexts).toEqual([ 'c', 'c' ])
 	})
 })

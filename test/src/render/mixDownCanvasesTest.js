@@ -1,5 +1,4 @@
 import mixDownCanvases from '../../../src/render/mixDownCanvases'
-import setupCanvases from '../../../src/application/setupCanvases'
 import store from '../../../store'
 
 describe('mix down canvases', () => {
@@ -10,8 +9,7 @@ describe('mix down canvases', () => {
 			getContext: context => context === '2d' ? mockContext : null,
 		}
 
-		store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: 5 }
-		setupCanvases()
+		store.canvases = [ 1, 2, 3, 4, 5, 6 ]
 
 		mixDownCanvases()
 

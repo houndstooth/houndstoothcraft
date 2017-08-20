@@ -7,7 +7,6 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import setupCanvases from '../../../src/application/setupCanvases'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 
@@ -27,7 +26,6 @@ describe('.viewSettings', () => {
 				},
 			})
 			activateTestMarkerCanvas()
-			setupCanvases()
 
 			execute()
 

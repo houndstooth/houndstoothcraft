@@ -1,10 +1,6 @@
 import render from '../../../src/render/render'
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
-import setupContexts from '../../../src/application/setupContexts'
-import setupCanvases from '../../../src/application/setupCanvases'
-import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
 describe('render', () => {
 	const shapeColor = {}
@@ -12,27 +8,19 @@ describe('render', () => {
 	const contextCallsOrder = []
 
 	beforeEach(() => {
-		resetStore(store)
-		setupCanvases()
-		setupMixedDownCanvas()
-		setupContexts()
+		store.contexts = [
+			{
+				beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),
+				moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
+				lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),
+				closePath: () => contextCallsOrder.push({ method: 'closePath' }),
+				fill: () => contextCallsOrder.push({ method: 'fill' }),
+			}
+		]
 
 		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
 
 		contextCallsOrder.length = 0
-		spyOn(store.contexts[0], 'beginPath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'beginPath' }))
-		spyOn(store.contexts[0], 'moveTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
-			method: 'moveTo',
-			x,
-			y,
-		}))
-		spyOn(store.contexts[ 0 ], 'lineTo').and.callThrough().and.callFake((x, y) => contextCallsOrder.push({
-			method: 'lineTo',
-			x,
-			y,
-		}))
-		spyOn(store.contexts[ 0 ], 'closePath').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'closePath' }))
-		spyOn(store.contexts[ 0 ], 'fill').and.callThrough().and.callFake(() => contextCallsOrder.push({ method: 'fill' }))
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
@@ -94,28 +82,25 @@ describe('render', () => {
 			const frame = 5
 			store.mainHoundstooth.basePattern.iterationSettings = { endIterationFrame: frame }
 			store.iterationFrame = frame
-			setupCanvases()
-			setupMixedDownCanvas()
-			setupContexts()
 
 			const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
 			const laterFrameContextCallsOrder = []
-			spyOn(store.contexts[ frame ], 'beginPath').and.callThrough().and.callFake(() => laterFrameContextCallsOrder.push({ method: 'beginPath' }))
-			spyOn(store.contexts[ frame ], 'moveTo').and.callThrough().and.callFake((x, y) => laterFrameContextCallsOrder.push({
-				method: 'moveTo',
-				x,
-				y,
-			}))
-			spyOn(store.contexts[ frame ], 'lineTo').and.callThrough().and.callFake((x, y) => laterFrameContextCallsOrder.push({
-				method: 'lineTo',
-				x,
-				y,
-			}))
-			spyOn(store.contexts[ frame ], 'closePath').and.callThrough().and.callFake(() => laterFrameContextCallsOrder.push({ method: 'closePath' }))
-			spyOn(store.contexts[ frame ], 'fill').and.callThrough().and.callFake(() => laterFrameContextCallsOrder.push({ method: 'fill' }))
+
+			store.contexts = [
+				{},	{},	{},	{},	{},
+				{
+					beginPath: () => laterFrameContextCallsOrder.push({ method: 'beginPath' }),
+					moveTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'moveTo',	x, y }),
+					lineTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'lineTo',	x, y }),
+					closePath: () => laterFrameContextCallsOrder.push({ method: 'closePath' }),
+					fill: () => laterFrameContextCallsOrder.push({ method: 'fill' }),
+				}
+			]
+
 
 			render({ shapeColor, outline })
+
 
 			expect(laterFrameContextCallsOrder).toEqual([
 				{ method: 'beginPath' },

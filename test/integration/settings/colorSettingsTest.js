@@ -9,9 +9,6 @@ import settingsPaths from '../../helpers/settingsPaths'
 import store from '../../../store'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetStore from '../../../src/store/resetStore'
-import setupCanvases from '../../../src/application/setupCanvases'
-import setupContexts from '../../../src/application/setupContexts'
-import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
 describe('.colorSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
@@ -799,9 +796,6 @@ describe('.colorSettings', () => {
 				},
 			})
 			activateTestMarkerCanvas()
-			setupCanvases()
-			setupMixedDownCanvas()
-			setupContexts()
 
 			execute()
 

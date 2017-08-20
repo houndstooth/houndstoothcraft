@@ -1,20 +1,16 @@
 import exportFrame from '../../../src/animation/exportFrame'
 import fileSaver from 'file-saver'
 import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
-import setupCanvases from '../../../src/application/setupCanvases'
-import setupContexts from '../../../src/application/setupContexts'
-import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
 describe('export frame', () => {
+	let toBlobSpy
 	beforeEach(() => {
-		resetStore(store)
-		setupCanvases()
-		setupMixedDownCanvas()
-		setupContexts()
-
 		store.lastSavedAnimationFrame = 666
-		spyOn(store.mixedDownCanvas, 'toBlob').and.callFake(callTheFunctionThrough => callTheFunctionThrough())
+
+		toBlobSpy = jasmine.createSpy()
+		toBlobSpy.and.callFake(callTheFunctionThrough => callTheFunctionThrough())
+		store.mixedDownCanvas = { toBlob: toBlobSpy }
+
 		spyOn(fileSaver, 'saveAs')
 
 		exportFrame()

@@ -2,16 +2,14 @@ import applyBackgroundColor from '../../../src/render/applyBackgroundColor'
 import { CYAN } from '../../../src/constants'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
-import setupCanvases from '../../../src/application/setupCanvases'
-import setupContexts from '../../../src/application/setupContexts'
 
 describe('apply background color', () => {
 	const defaultFillStyle = '#000000'
+	let fillRectSpy
 	beforeEach(() => {
 		resetStore(store)
-		setupCanvases()
-		setupContexts()
-		spyOn(store.contexts[0], 'fillRect')
+		fillRectSpy = jasmine.createSpy()
+		store.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
 		applyBackgroundColor.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 	})
 
@@ -20,14 +18,14 @@ describe('apply background color', () => {
 
 		applyBackgroundColor()
 
-		expect(store.contexts[0].fillStyle).toBe('#00ffff')
-		expect(store.contexts[0].fillRect).toHaveBeenCalledWith(0, 0, 400, 500)
+		expect(store.contexts[0].fillStyle).toBe('rgba(0,255,255,1)')
+		expect(fillRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
 	})
 
 	it('returns early when no background color is set', () => {
 		applyBackgroundColor()
 
 		expect(store.contexts[0].fillStyle).toBe(defaultFillStyle)
-		expect(store.contexts[0].fillRect).not.toHaveBeenCalled()
+		expect(fillRectSpy).not.toHaveBeenCalled()
 	})
 })

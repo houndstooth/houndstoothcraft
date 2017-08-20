@@ -38,9 +38,11 @@ describe('controls', () => {
 			expect(returnedControls.isSameNode(realControls)).toBe(true)
 		})
 
-		it('creates the controls and adds them to the document', () => {
+		it('creates the controls and adds them to the document, with padding', () => {
 			const expectedControls = document.createElement('div')
 			expectedControls.classList.add('controls')
+			expectedControls.style.padding = '20px'
+
 			expect(returnedControls.isEqualNode(expectedControls)).toBe(true)
 		})
 

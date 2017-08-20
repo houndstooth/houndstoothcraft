@@ -2,17 +2,19 @@ import buildClickHandler from './buildClickHandler'
 import controls from './controls'
 
 export default houndstoothEffect => {
+	const label = document.createElement('label')
+	label.style.cursor = 'pointer'
+	label.style.display = 'block'
+
 	const checkbox = document.createElement('input')
 	checkbox.setAttribute('type', 'checkbox')
 	checkbox.classList.add(houndstoothEffect.name.replace(/ /g, '-'))
 	checkbox.onclick = buildClickHandler(checkbox, houndstoothEffect)
+	checkbox.style.cursor = 'pointer'
+	label.appendChild(checkbox)
 
-	const span = document.createElement('span')
-	span.innerHTML = houndstoothEffect.name
+	const name = document.createTextNode(houndstoothEffect.name)
+	label.appendChild(name)
 
-	const checkboxContainer = document.createElement('div')
-	checkboxContainer.appendChild(checkbox)
-	checkboxContainer.appendChild(span)
-
-	controls.appendChild(checkboxContainer)
+	controls.appendChild(label)
 }

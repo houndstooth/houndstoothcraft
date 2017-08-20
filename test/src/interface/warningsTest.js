@@ -37,9 +37,11 @@ describe('warnings', () => {
 			expect(returnedWarnings.isSameNode(realWarnings)).toBe(true)
 		})
 
-		it('creates the warnings and adds them to the document', () => {
+		it('creates the warnings and adds them to the document, with padding', () => {
 			const expectedWarnings = document.createElement('div')
 			expectedWarnings.classList.add('warnings')
+			expectedWarnings.style.padding = '20px'
+
 			expect(returnedWarnings.isEqualNode(expectedWarnings)).toBe(true)
 		})
 

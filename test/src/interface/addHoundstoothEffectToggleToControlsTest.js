@@ -9,7 +9,10 @@ describe('add houndstooth effect toggle to controls', () => {
 		addHoundstoothEffectToggleToControls(mockHoundstoothEffect)
 
 		expect(controls.innerHTML).toBe(
-			'<div><input type="checkbox" class="mock-tooth"><span>mock tooth</span></div>'
+			'<label style="cursor: pointer; display: block;">' +
+				'<input type="checkbox" class="mock-tooth" style="cursor: pointer;">' +
+				'mock tooth' +
+			'</label>'
 		)
 
 		const nextHoundstoothEffect = { name: 'next tooth' }
@@ -17,7 +20,14 @@ describe('add houndstooth effect toggle to controls', () => {
 		addHoundstoothEffectToggleToControls(nextHoundstoothEffect)
 
 		expect(controls.innerHTML).toBe(
-			'<div><input type="checkbox" class="mock-tooth"><span>mock tooth</span></div><div><input type="checkbox" class="next-tooth"><span>next tooth</span></div>'
+			'<label style="cursor: pointer; display: block;">' +
+				'<input type="checkbox" class="mock-tooth" style="cursor: pointer;">' +
+				'mock tooth' +
+			'</label>' +
+			'<label style="cursor: pointer; display: block;">' +
+				'<input type="checkbox" class="next-tooth" style="cursor: pointer;">' +
+				'next tooth' +
+			'</label>'
 		)
 	})
 })

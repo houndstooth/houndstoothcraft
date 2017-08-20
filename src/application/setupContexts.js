@@ -1,14 +1,14 @@
 import store from '../../store'
 import colorUtilities from '../utilities/colorUtilities'
-import interfaceUtilities from '../utilities/interfaceUtilities'
 
 export default () => {
 	store.contexts = []
 
-	const backgroundColor = store.mainHoundstooth.basePattern.colorSettings && store.mainHoundstooth.basePattern.colorSettings.backgroundColor
+	const colorSettings = store.mainHoundstooth.basePattern.colorSettings
+	const backgroundColor = colorSettings && colorSettings.backgroundColor
 
-	interfaceUtilities.iterationFrameIterator().forEach(contextIndex => {
-		const context = store.canvases[contextIndex].getContext('2d')
+	store.canvases.forEach(canvas => {
+		const context = canvas.getContext('2d')
 		store.contexts.push(context)
 
 		if (backgroundColor) {

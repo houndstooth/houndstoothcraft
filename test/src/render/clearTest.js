@@ -6,7 +6,7 @@ import setupContexts from '../../../src/application/setupContexts'
 import setupCanvases from '../../../src/application/setupCanvases'
 import setupMixedDownCanvas from '../../../src/render/setupMixedDownCanvas'
 
-fdescribe('clear', () => {
+describe('clear', () => {
 	const defaultCanvasSize = houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern.viewSettings.canvasSize
 
 	describe('when there is a single context', () => {

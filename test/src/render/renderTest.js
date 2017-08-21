@@ -1,6 +1,8 @@
 import render from '../../../src/render/render'
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import store from '../../../store'
+import resetStore from '../../../src/store/resetStore'
+import { ERASE } from '../../../src/constants'
 
 describe('render', () => {
 	const shapeColor = {}
@@ -88,11 +90,11 @@ describe('render', () => {
 			const laterFrameContextCallsOrder = []
 
 			store.contexts = [
-				{},	{},	{},	{},	{},
+				{}, {}, {}, {}, {},
 				{
 					beginPath: () => laterFrameContextCallsOrder.push({ method: 'beginPath' }),
-					moveTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'moveTo',	x, y }),
-					lineTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'lineTo',	x, y }),
+					moveTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'moveTo', x, y }),
+					lineTo: (x, y) => laterFrameContextCallsOrder.push({ method: 'lineTo', x, y }),
 					closePath: () => laterFrameContextCallsOrder.push({ method: 'closePath' }),
 					fill: () => laterFrameContextCallsOrder.push({ method: 'fill' }),
 				},
@@ -110,6 +112,38 @@ describe('render', () => {
 				{ method: 'closePath' },
 				{ method: 'fill' },
 			])
+		})
+	})
+
+	describe('erasing', () => {
+		const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+		beforeEach(() => {
+			resetStore(store)
+			store.contexts = [
+				{
+					beginPath: () => {},
+					moveTo: () => {},
+					lineTo: () => {},
+					closePath: () => {},
+					fill: () => {},
+				},
+			]
+		})
+
+		describe('when not erasing', () => {
+			it('sets the operation to source-over', () => {
+				render({ shapeColor, outline })
+
+				expect(store.contexts[ 0 ].globalCompositeOperation).toEqual('source-over')
+			})
+		})
+
+		describe('when erasing', () => {
+			it('sets the operation to destination-out', () => {
+				render({ shapeColor: ERASE, outline })
+
+				expect(store.contexts[ 0 ].globalCompositeOperation).toEqual('destination-out')
+			})
 		})
 	})
 })

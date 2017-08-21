@@ -6,6 +6,8 @@ export default ({ shapeColor, outline }) => {
 
 	const context = getCurrentContext()
 
+	context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
+
 	context.fillStyle = colorUtilities.parseColor(shapeColor)
 	context.beginPath()
 

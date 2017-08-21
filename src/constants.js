@@ -6,7 +6,9 @@ const BLUE = { r: 0, g: 0, b: 255, a: 1 }
 const CYAN = { r: 0, g: 255, b: 255, a: 1 }
 const MAGENTA = { r: 255, g: 0, b: 255, a: 1 }
 const YELLOW = { r: 255, g: 255, b: 0, a: 1 }
+
 const TRANSPARENT = { a: 0 }
+const ERASE = { a: -1 }
 
 const EIGHTH_OF_CIRCLE_ROTATION = Math.PI / 4
 const QUARTER_OF_CIRCLE_ROTATION = Math.PI / 2
@@ -27,6 +29,7 @@ export {
 	MAGENTA,
 	YELLOW,
 	TRANSPARENT,
+	ERASE,
 	EIGHTH_OF_CIRCLE_ROTATION,
 	QUARTER_OF_CIRCLE_ROTATION,
 }

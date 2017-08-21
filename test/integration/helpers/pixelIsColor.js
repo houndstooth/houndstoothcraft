@@ -1,4 +1,5 @@
 import isCloseTo from '../../helpers/isCloseTo'
+import consoleWrapper from '../../../src/utilities/consoleWrapper'
 
 export default (coordinateUnderTest, expectedColor) => {
 	const actualColor = pixel(coordinateUnderTest)
@@ -10,7 +11,10 @@ export default (coordinateUnderTest, expectedColor) => {
 		const firstColorPropertyValue = firstColorProperty[ 1 ]
 		const firstColorPropertyKey = firstColorProperty[ 0 ]
 		const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
-		if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) return false
+		if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
+			consoleWrapper.error('actual color', actualColor, 'expected color', expectedColor)
+			return false
+		}
 	}
 
 	return true

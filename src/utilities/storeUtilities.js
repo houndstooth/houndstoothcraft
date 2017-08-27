@@ -56,7 +56,11 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 	})
 }
 
-const settingIsNotColor = setting => !setting.r
+const settingIsNotColor = setting => {
+	const defined = codeUtilities.isDefined
+	const { r, g, b, a } = setting
+	return !(defined(r) || defined(g) || defined(b) || defined(a))
+}
 
 const settingPath = (settingsPath, settingName) => `${settingsPath.join('.')}.${settingName}`
 

@@ -5,82 +5,189 @@ import viewUtilities from '../../../src/utilities/viewUtilities'
 
 describe('shape', () => {
 	let renderSpy
+	let wrappedIndexSpy
+	let rotateCoordinatesAboutTileCenterSpy
+	let applyZoomAndScrollSpy
+	let rotateCoordinatesAboutCanvasCenterSpy
+
 	const tileOrigin = [ 11, 13 ]
 	const tileSize = 45
 	const tileColors = []
 	const colorsIndex = 7
 	let getOutline
 	const outlineOptions = {}
-	const outlineRotatedAboutShapeCenter = []
+	let renderTexture
+
+	const transparentColor = { a: 0 }
+	const nonTransparentColor = { a: 1 }
 
 	beforeEach(() => {
-		spyOn(componentUtilities, 'rotateCoordinatesAboutTileCenter').and.returnValue(outlineRotatedAboutShapeCenter)
 		renderSpy = jasmine.createSpy()
-		getOutline = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
-	})
-
-	describe('color', () => {
-		it('looks for the color in the tile colors using the colors index', () => {
-			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 0 })
-
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
-
-			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({ array: tileColors, index: colorsIndex })
-		})
-	})
-
-	describe('when the color turns out to be completely transparent', () => {
-		beforeEach(() => {
-			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 0 })
-		})
-
-		it('returns early, not bothering to get the outline, rotate it, or render', () => {
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
-
-			expect(getOutline).not.toHaveBeenCalled()
-			expect(componentUtilities.rotateCoordinatesAboutTileCenter).not.toHaveBeenCalled()
-			expect(renderSpy).not.toHaveBeenCalled()
-		})
+		wrappedIndexSpy = spyOn(codeUtilities, 'wrappedIndex')
+		rotateCoordinatesAboutTileCenterSpy = spyOn(componentUtilities, 'rotateCoordinatesAboutTileCenter')
+		applyZoomAndScrollSpy = spyOn(viewUtilities, 'applyZoomAndScroll')
+		rotateCoordinatesAboutCanvasCenterSpy = spyOn(viewUtilities, 'rotateCoordinatesAboutCanvasCenter')
+		
+		getOutline = jasmine.createSpy()
+		renderTexture = null
 	})
 
 	describe('when no outline is returned from the get outline function', () => {
 		beforeEach(() => {
-			spyOn(codeUtilities, 'wrappedIndex').and.returnValue({ a: 1 })
 			getOutline.and.returnValue(null)
 		})
 
 		it('returns early, not trying to rotate nothing or render', () => {
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
+			shape({ 
+				tileOrigin, 
+				tileSize, 
+				tileColors, 
+				colorsIndex,
+				 getOutline, 
+				 outlineOptions,
+				  renderTexture 
+			})
+
 
 			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(componentUtilities.rotateCoordinatesAboutTileCenter).not.toHaveBeenCalled()
+
+			expect(rotateCoordinatesAboutTileCenterSpy).not.toHaveBeenCalled()
+			expect(applyZoomAndScrollSpy).not.toHaveBeenCalled()
+			expect(rotateCoordinatesAboutCanvasCenterSpy).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
 
-	describe('when the color is not transparent and an outline is received', () => {
-		const outline = []
-		const shapeColor = { a: 1 }
-		const outlineRotatedAboutCanvasCenter = []
+	describe('when an outline is received', () => {
+		const shapeColor = nonTransparentColor
+
+		const originalOutline = []
+		const stepOneOutlineRotatedAboutTileCenter = []
+		const stepTwoOutlineZoomedAndScrolled = []
+		const stepThreeOutlineRotatedAboutCanvasCenter = []
 
 		beforeEach(() => {
-			spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColor)
-			spyOn(viewUtilities, 'rotateCoordinatesAboutCanvasCenter').and.returnValue(outlineRotatedAboutCanvasCenter)
-			getOutline.and.returnValue(outline)
+			rotateCoordinatesAboutTileCenterSpy.and.returnValue(stepOneOutlineRotatedAboutTileCenter)
+			applyZoomAndScrollSpy.and.returnValue(stepTwoOutlineZoomedAndScrolled)
+			rotateCoordinatesAboutCanvasCenterSpy.and.returnValue(stepThreeOutlineRotatedAboutCanvasCenter)
+
+			wrappedIndexSpy.and.returnValue(shapeColor)
+			getOutline.and.returnValue(originalOutline)
 		})
 
-		it('rotates the outline and renders them', () => {
-			shape({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions })
+		it('rotates the outline', () => {
+			shape({ 
+				tileOrigin, 
+				tileSize, 
+				tileColors,
+				colorsIndex,
+				getOutline, 
+				outlineOptions,
+				renderTexture 
+			})
 
-			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(componentUtilities.rotateCoordinatesAboutTileCenter).toHaveBeenCalledWith({
-				coordinates: outline,
+			expect(getOutline).toHaveBeenCalledWith({ 
+				tileOrigin,
+				tileSize, 
+				outlineOptions 
+			})
+			expect(rotateCoordinatesAboutTileCenterSpy).toHaveBeenCalledWith({
+				coordinates: originalOutline,
 				tileOrigin,
 				tileSize,
 			})
-			expect(viewUtilities.rotateCoordinatesAboutCanvasCenter).toHaveBeenCalledWith({ coordinates: outlineRotatedAboutShapeCenter })
-			expect(renderSpy).toHaveBeenCalledWith({ shapeColor, outline: outlineRotatedAboutCanvasCenter })
+			expect(applyZoomAndScrollSpy).toHaveBeenCalledWith({
+				coordinates: stepOneOutlineRotatedAboutTileCenter
+			})
+			expect(rotateCoordinatesAboutCanvasCenterSpy).toHaveBeenCalledWith({ 
+				coordinates: stepTwoOutlineZoomedAndScrolled,
+			})
+		})
+
+		describe('when a renderTexture method is supplied', () => {
+			beforeEach(() => renderTexture = () => {})
+
+			it('passes it to the texture component to be rendered', () => {
+				const textureSpy = jasmine.createSpy()
+				shape.__Rewire__('texture', textureSpy)
+
+				shape({ 
+					tileOrigin, 
+					tileSize, 
+					tileColors, 
+					colorsIndex, 
+					getOutline,
+					outlineOptions, 
+					renderTexture 
+				})
+
+				expect(textureSpy).toHaveBeenCalledWith({ 
+					outline: stepThreeOutlineRotatedAboutCanvasCenter, 
+					tileColors,
+					tileOrigin,
+					tileSize,
+					colorsIndex,
+					renderTexture,
+				})
+				
+				shape.__ResetDependency__('texture')
+			})
+		})
+
+		describe('when a renderTexture method is not supplied', () => {
+			it('assumes the shape is a solid color, and looks for the color in the tile colors using the colors index', () => {
+				shape({ 
+					tileOrigin, 
+					tileSize, 
+					tileColors,
+					colorsIndex, 
+					getOutline,
+					outlineOptions, 
+					renderTexture,
+				})
+
+				expect(wrappedIndexSpy).toHaveBeenCalledWith({ array: tileColors, index: colorsIndex })
+			})
+
+			describe('when the color is not completely transparent', () => {
+				it('renders', () => {
+					shape({ 
+						tileOrigin, 
+						tileSize, 
+						tileColors, 
+						colorsIndex, 
+						getOutline, 
+						outlineOptions, 
+						renderTexture,
+					})
+
+					expect(renderSpy).toHaveBeenCalledWith({ 
+						shapeColor, 
+						outline: stepThreeOutlineRotatedAboutCanvasCenter 
+					})
+				})
+			})
+
+			describe('when the color turns out to be completely transparent', () => {
+				beforeEach(() => {
+					wrappedIndexSpy.and.returnValue(transparentColor)
+				})
+
+				it('does not render', () => {
+					shape({
+						tileOrigin, 
+						tileSize, 
+						tileColors,
+						colorsIndex, 
+					 	getOutline, 
+						outlineOptions, 
+						renderTexture,
+					})
+
+					expect(renderSpy).not.toHaveBeenCalled()
+				})
+			})
 		})
 	})
 

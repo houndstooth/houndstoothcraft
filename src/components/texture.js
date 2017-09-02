@@ -1,8 +1,9 @@
-export default ({ tileColors, tileOrigin, tileSize, colorsIndex, outline, renderTexture }) => {
-	setClip({ outline })
-    renderTexture()
-    resetClip()
-}
+import renderUtilities from '../utilities/renderUtilities'
 
-const setClip = () => {}
-const resetClip = () => {}
+export default ({ context, tileColors, tileOrigin, tileSize, colorsIndex, outline, renderTexture }) => {
+	const { buildPath, clipPath, resetClip } = renderUtilities
+	buildPath({ context, outline })
+	clipPath({ context })
+	renderTexture({ tileColors, tileOrigin, tileSize, colorsIndex })
+	resetClip({ context })
+}

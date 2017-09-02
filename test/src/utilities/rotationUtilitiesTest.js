@@ -3,7 +3,7 @@ import coordinatesMatch from '../helpers/coordinatesMatch'
 
 describe('rotation utilities', () => {
 	describe('#rotateCoordinatesAboutPoint', () => {
-		it('now this needs a test', () => {
+		it('rotates coordinates about a point', () => {
 			const rotateCoordinatesAboutPoint = rotationUtilities.rotateCoordinatesAboutPoint
 			const coordinates = [
 				[ 0, 0 ],

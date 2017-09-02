@@ -1,19 +1,14 @@
 import colorUtilities from '../utilities/colorUtilities'
-import getCurrentContext from './getCurrentContext'
+import renderUtilities from '../utilities/renderUtilities'
 
-export default ({ shapeColor, outline }) => {
+export default ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) return
-
-	const context = getCurrentContext()
 
 	context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
 
 	context.fillStyle = colorUtilities.parseColor(shapeColor)
-	context.beginPath()
 
-	context.moveTo(outline[ 0 ][ 0 ], outline[ 0 ][ 1 ])
-	outline.slice(1).forEach(coordinate => context.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
+	renderUtilities.buildPath({ context, outline })
 
-	context.closePath()
-	context.fill()
+	renderUtilities.fillPath({ context })
 }

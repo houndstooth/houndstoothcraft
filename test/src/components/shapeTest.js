@@ -2,6 +2,8 @@ import shape from '../../../src/components/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import viewUtilities from '../../../src/utilities/viewUtilities'
+import renderUtilities from '../../../src/utilities/renderUtilities'
+import store from '../../../store'
 
 describe('shape', () => {
 	let renderSpy
@@ -21,6 +23,8 @@ describe('shape', () => {
 	const transparentColor = { a: 0 }
 	const nonTransparentColor = { a: 1 }
 
+	const context = {}
+
 	beforeEach(() => {
 		renderSpy = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
@@ -31,6 +35,8 @@ describe('shape', () => {
 
 		getOutline = jasmine.createSpy()
 		renderTexture = null
+
+		spyOn(renderUtilities, 'getCurrentContext').and.returnValue(context)
 	})
 
 	describe('when no outline is returned from the get outline function', () => {
@@ -38,7 +44,7 @@ describe('shape', () => {
 			getOutline.and.returnValue(null)
 		})
 
-		it('returns early, not trying to rotate nothing or render', () => {
+		it('returns early, not trying to rotate anything, nor render', () => {
 			shape({
 				tileOrigin,
 				tileSize,
@@ -105,9 +111,34 @@ describe('shape', () => {
 			})
 		})
 
-		describe('when a renderTexture method is supplied', () => {
-			beforeEach(() => renderTexture = () => {
+		describe('when layering', () => {
+			it('calls render with the current context', () => {
+				const layer = 5
+				const expectedContext = {}
+				store.mainHoundstooth.basePattern.layerSettings = { endLayer: layer }
+				store.currentLayer = layer
+				store.contexts = [ {}, {}, {}, {}, {}, expectedContext ]
+			
+				shape({
+					tileOrigin,
+					tileSize,
+					tileColors,
+					colorsIndex,
+					getOutline,
+					outlineOptions,
+					renderTexture,
+				})
+
+				expect(renderSpy).toHaveBeenCalledWith({
+					context: expectedContext,
+					shapeColor,
+					outline: stepThreeOutlineRotatedAboutCanvasCenter,
+				})
 			})
+		})
+
+		describe('when a renderTexture method is supplied', () => {
+			beforeEach(() => renderTexture = () => {})
 
 			it('passes it to the texture component to be rendered', () => {
 				const textureSpy = jasmine.createSpy()
@@ -124,6 +155,7 @@ describe('shape', () => {
 				})
 
 				expect(textureSpy).toHaveBeenCalledWith({
+					context,
 					outline: stepThreeOutlineRotatedAboutCanvasCenter,
 					tileColors,
 					tileOrigin,
@@ -164,6 +196,7 @@ describe('shape', () => {
 					})
 
 					expect(renderSpy).toHaveBeenCalledWith({
+						context,
 						shapeColor,
 						outline: stepThreeOutlineRotatedAboutCanvasCenter,
 					})

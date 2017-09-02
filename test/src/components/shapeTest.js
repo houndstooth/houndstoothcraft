@@ -118,7 +118,7 @@ describe('shape', () => {
 				store.mainHoundstooth.basePattern.layerSettings = { endLayer: layer }
 				store.currentLayer = layer
 				store.contexts = [ {}, {}, {}, {}, {}, expectedContext ]
-			
+
 				shape({
 					tileOrigin,
 					tileSize,

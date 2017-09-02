@@ -7,7 +7,7 @@ const resetClip = ({ context }) => {
 		[ 0, 0 ],
 		[ context.width, 0 ],
 		[ context.width, context.height ],
-		[ 0, context.height ]
+		[ 0, context.height ],
 	]
 	buildPath({ context, outline: entireCanvas })
 	clipPath({ context })

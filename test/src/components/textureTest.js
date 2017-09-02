@@ -19,10 +19,10 @@ describe('texture', () => {
 		texture({ context, tileColors, tileOrigin, tileSize, colorsIndex, outline, renderTexture })
 
 		expect(calls).toEqual([
-			{ call: 'buildPath', args: { context, outline }},
-			{ call: 'clipPath', args: { context }},
-			{ call: 'renderTexture', args: { tileColors, tileOrigin, tileSize, colorsIndex }},
-			{ call: 'resetClip', args: { context }},
+			{ call: 'buildPath', args: { context, outline } },
+			{ call: 'clipPath', args: { context } },
+			{ call: 'renderTexture', args: { tileColors, tileOrigin, tileSize, colorsIndex } },
+			{ call: 'resetClip', args: { context } },
 		])
 	})
 })

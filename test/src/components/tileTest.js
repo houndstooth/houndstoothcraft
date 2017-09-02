@@ -48,7 +48,6 @@ describe('tile', () => {
 	describe('when the tile is assigned an origin on the canvas', () => {
 		let stripePositionsForTile
 		let tileColors
-		let options
 		let tileOrigin
 		let tileSize
 		beforeEach(() => {
@@ -63,15 +62,6 @@ describe('tile', () => {
 
 			tileColors = {}
 			getColorsForTileSpy.and.returnValue(tileColors)
-
-			options = {}
-			spyOn(componentUtilities, 'gatherOptions').and.returnValue(options)
-		})
-
-		it('gathers options', () => {
-			tile({ gridAddress })
-
-			expect(componentUtilities.gatherOptions).toHaveBeenCalled()
 		})
 
 		describe('if a function for converting a tile into shapes is not specified', () => {
@@ -100,12 +90,6 @@ describe('tile', () => {
 			expect(getColorsForTileSpy).toHaveBeenCalledWith({ gridAddress })
 		})
 
-		it('gets options', () => {
-			tile({ gridAddress })
-
-			expect(componentUtilities.gatherOptions).toHaveBeenCalledWith({ gridAddress })
-		})
-
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
 				store.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
@@ -118,7 +102,7 @@ describe('tile', () => {
 
 					tile({ gridAddress })
 
-					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColors, options })
+					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColors })
 					expect(colorUtilitiesIsTileUniformSpy).not.toHaveBeenCalled()
 				})
 			})
@@ -127,7 +111,7 @@ describe('tile', () => {
 				it('uses the default tile uniformity check', () => {
 					tile({ gridAddress })
 
-					expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColors, options })
+					expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColors })
 				})
 			})
 
@@ -162,7 +146,7 @@ describe('tile', () => {
 					})
 				})
 
-				it('converts the tile into shapes with the grid address, colors, origin, size, and options for the tile', () => {
+				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -170,7 +154,6 @@ describe('tile', () => {
 						tileColors,
 						tileOrigin,
 						tileSize,
-						options,
 					}))
 				})
 			})
@@ -212,7 +195,7 @@ describe('tile', () => {
 					})
 				})
 
-				it('converts the tile into shapes with the grid address, colors, origin, size, and options for the tile', () => {
+				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -220,7 +203,6 @@ describe('tile', () => {
 						tileColors,
 						tileOrigin,
 						tileSize,
-						options,
 					}))
 				})
 

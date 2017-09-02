@@ -13,12 +13,11 @@ export default ({ gridAddress }) => {
 	if (!tileOrigin) return
 
 	const tileColors = colorUtilities.getColorsForTile({ gridAddress })
-	const options = componentUtilities.gatherOptions({ gridAddress })
 
-	const args = { gridAddress, tileOrigin, tileSize, tileColors, options }
+	const args = { gridAddress, tileOrigin, tileSize, tileColors }
 	convertTileToShapes({
 		tileToShapesArgs: Object.assign({ args }, getTileToShapesArgs(store.mainHoundstooth.basePattern.tileSettings)),
-		shouldUseUniform: shouldUseUniform({ tileColors, options }),
+		shouldUseUniform: shouldUseUniform({ tileColors }),
 	})
 }
 

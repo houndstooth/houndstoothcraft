@@ -1,17 +1,3 @@
-const assignment = {
-	switcheroo: true,
-	flipGrain: true,
-	transformAssignedSet: true,
-	assignmentMode: true,
-	offsetSetForGridIndex: true,
-	offsetAddress: true,
-	supertile: true,
-	weave: {
-		rows: true,
-		columns: true,
-	},
-}
-
 const PATTERN_STRUCTURE = {
 	viewSettings: {
 		canvasSize: true,
@@ -37,19 +23,19 @@ const PATTERN_STRUCTURE = {
 	},
 	colorSettings: {
 		set: true,
-		substripeTextureSettings: {
-			substripeCount: true,
-			substripeCountContinuumMode: true,
-			orientationSettings: {
-				set: true,
-				assignment,
-			},
-			colorSettings: {
-				set: true,
-				assignment,
+		assignment: {
+			switcheroo: true,
+			flipGrain: true,
+			transformAssignedSet: true,
+			assignmentMode: true,
+			offsetSetForGridIndex: true,
+			offsetAddress: true,
+			supertile: true,
+			weave: {
+				rows: true,
+				columns: true,
 			},
 		},
-		assignment,
 		opacity: true,
 		backgroundColor: true,
 	},
@@ -65,8 +51,8 @@ const PATTERN_STRUCTURE = {
 		},
 		baseStripeDiagonal: true,
 	},
-	gatherOptions: {
-		getSubstripeTexture: true,
+	textureSettings: {
+		renderTexture: true,
 	},
 	animationSettings: {
 		frameRate: true,

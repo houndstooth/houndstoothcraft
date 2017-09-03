@@ -39,7 +39,7 @@ describe('color utilities', () => {
 	describe('#getColor', () => {
 		it('gets the color object from the store, using the passed index', () => {
 			const expectedColor = {}
-			store.mainHoundstooth.basePattern.colorSettings = { set: [ {}, expectedColor, {} ]}
+			store.mainHoundstooth.basePattern.colorSettings = { set: [ {}, expectedColor, {} ] }
 
 			expect(colorUtilities.getColor({ index: 7 })).toBe(expectedColor)
 		})

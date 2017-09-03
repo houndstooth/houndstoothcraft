@@ -64,26 +64,6 @@ describe('tile', () => {
 			getSetIndicesForTileSpy.and.returnValue(tileColorIndices)
 		})
 
-		describe('if a function for converting a tile into shapes is not specified', () => {
-			it('defaults to using the shape method directly', () => {
-				tile({ gridAddress })
-
-				expect(shapeSpy).toHaveBeenCalled()
-			})
-		})
-
-		describe('if a function for converting a tile into shapes is specified', () => {
-			it('uses it', () => {
-				const tileToShapesSpy = jasmine.createSpy()
-				store.mainHoundstooth.basePattern.tileSettings.tileToShapes = tileToShapesSpy
-
-				tile({ gridAddress })
-
-				expect(tileToShapesSpy).toHaveBeenCalled()
-				expect(shapeSpy).not.toHaveBeenCalled()
-			})
-		})
-
 		it('gets colors', () => {
 			tile({ gridAddress })
 

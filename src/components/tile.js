@@ -21,8 +21,7 @@ export default ({ gridAddress }) => {
 	})
 }
 
-const getTileToShapesArgs = ({ tileToShapes, getOutline } = {}) => ({
-	tileToShapes: tileToShapes || shape,
+const getTileToShapesArgs = ({ getOutline } = {}) => ({
 	whenTileIsUniform: getOutline && getOutline.whenTileIsUniform || squareOutline,
 	whenTileIsMultiform: getOutline && getOutline.whenTileIsMultiform || stripeOutline,
 })
@@ -37,16 +36,16 @@ const convertTileToShapes = ({ tileToShapesArgs, shouldUseUniform }) => {
 	shouldUseUniform ? uniformTileToShapes(tileToShapesArgs) : multiformTileToShapes(tileToShapesArgs)
 }
 
-const uniformTileToShapes = ({ args, tileToShapes, whenTileIsUniform }) => {
+const uniformTileToShapes = ({ args, whenTileIsUniform }) => {
 	args.getOutline = whenTileIsUniform
-	tileToShapes(args)
+	shape(args)
 }
 
-const multiformTileToShapes = ({ args, tileToShapes, whenTileIsMultiform }) => {
+const multiformTileToShapes = ({ args, whenTileIsMultiform }) => {
 	const stripePositions = stripeUtilities.getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
 		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions, whenTileIsMultiform })
-		tileToShapes(stripeArgs)
+		shape(stripeArgs)
 	})
 }
 

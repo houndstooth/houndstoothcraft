@@ -75,24 +75,10 @@ describe('tile', () => {
 				store.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
-			describe('when a function for checking the uniformity of the tile is specified', () => {
-				it('uses it to see if the tile is uniform', () => {
-					const isTileUniformSpy = jasmine.createSpy()
-					store.mainHoundstooth.basePattern.tileSettings.isTileUniform = isTileUniformSpy
+			it('checks if the tile is uniform', () => {
+				tile({ gridAddress })
 
-					tile({ gridAddress })
-
-					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
-					expect(colorUtilitiesIsTileUniformSpy).not.toHaveBeenCalled()
-				})
-			})
-
-			describe('when a function for checking the uniformity of the tile is not specified', () => {
-				it('uses the default tile uniformity check', () => {
-					tile({ gridAddress })
-
-					expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
-				})
+				expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
 			})
 
 			describe('when the tile is uniform', () => {

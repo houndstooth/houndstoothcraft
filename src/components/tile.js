@@ -26,10 +26,11 @@ const getTileToShapesArgs = ({ getOutline } = {}) => ({
 	whenTileIsMultiform: getOutline && getOutline.whenTileIsMultiform || stripeOutline,
 })
 
-const shouldUseUniform = uniformArgs => {
-	const { isTileUniform, collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
-	const tileIsUniform = isTileUniform ? isTileUniform(uniformArgs) : colorUtilities.isTileUniform(uniformArgs)
-	return codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile) && tileIsUniform
+const shouldUseUniform = ({ tileColorIndices }) => {
+	const { collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
+	const tileIsUniform = colorUtilities.isTileUniform({ tileColorIndices })
+	const shouldCollapseSameColoredShapes = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
+	return shouldCollapseSameColoredShapes && tileIsUniform
 }
 
 const convertTileToShapes = ({ tileToShapesArgs, shouldUseUniform }) => {

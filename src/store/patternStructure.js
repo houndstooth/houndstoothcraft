@@ -14,7 +14,6 @@ const PATTERN_STRUCTURE = {
 		tileSizeSetting: true,
 		getTileOriginAndSize: true,
 		collapseSameColoredShapesWithinTile: true,
-		isTileUniform: true,
 		getOutline: {
 			whenTileIsUniform: true,
 			whenTileIsMultiform: true,

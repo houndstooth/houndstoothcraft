@@ -12,7 +12,7 @@ export default (coordinateUnderTest, expectedColor) => {
 		const firstColorPropertyKey = firstColorProperty[ 0 ]
 		const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
 		if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
-			consoleWrapper.error('actual color', actualColor, 'expected color', expectedColor)
+			consoleWrapper.error(`actual color: ${actualColor} / expected color ${expectedColor}`)
 			return false
 		}
 	}

@@ -4,10 +4,29 @@ import mockContext from '../helpers/mockContext'
 
 describe('render utilities', () => {
 	describe('#clipPath', () => {
-		it('clips the context (with the current path)', () => {
-			const context = { clip: jasmine.createSpy() }
+		it('saves the context so that the clip can be restored later, then clips the context (with the current path)', () => {
+			const contextCallsOrder = []
+			const context = mockContext(contextCallsOrder)
+
 			renderUtilities.clipPath({ context })
-			expect(context.clip).toHaveBeenCalled()
+
+			expect(contextCallsOrder).toEqual([
+				{ method: 'save' },
+				{ method: 'clip' },
+			])
+		})
+	})
+
+	describe('#resetClip', () => {
+		it('restores the context (with the saved state)', () => {
+			const contextCallsOrder = []
+			const context = mockContext(contextCallsOrder)
+
+			renderUtilities.resetClip({ context })
+
+			expect(contextCallsOrder).toEqual([
+				{ method: 'restore' },
+			])
 		})
 	})
 

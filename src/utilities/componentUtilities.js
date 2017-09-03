@@ -3,12 +3,10 @@ import codeUtilities from './codeUtilities'
 import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
-const getSetForTile = ({ gridAddress, settings }) => {
+const getSetIndicesForTile = ({ gridAddress, settings }) => {
 	const { wrappedIndex } = codeUtilities
 
-	let { set: setForGrid, assignment } = settings || {}
-
-	setForGrid = setForGrid || store.mainHoundstooth.basePattern.colorSettings.set
+	let { assignment } = settings || {}
 	const currentAssignment = store.mainHoundstooth.basePattern.colorSettings.assignment
 	assignment = assignment || currentAssignment
 
@@ -19,30 +17,27 @@ const getSetForTile = ({ gridAddress, settings }) => {
 	assignmentMode = assignmentMode || currentAssignment.assignmentMode
 	supertile = supertile || currentAssignment.supertile
 	weave = weave || currentAssignment.weave
-	let setForTile
+	let setIndicesForTile
 	if (assignmentMode === 'WEAVE') {
 		const { rows, columns } = weave
 		const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
 		const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
-		setForTile = [
-			wrappedIndex({ array: setForGrid, index: rowsIndex + setForGridIndexOffset }),
-			wrappedIndex({ array: setForGrid, index: columnsIndex + setForGridIndexOffset }),
+		setIndicesForTile = [
+			rowsIndex + setForGridIndexOffset,
+			columnsIndex + setForGridIndexOffset,
 		]
 	}
 	else if (assignmentMode === 'SUPERTILE') {
 		const supertileColumn = wrappedIndex({ array: supertile, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
 		const supertileEntry = wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
-		setForTile = supertileEntry.map(index => wrappedIndex({
-			array: setForGrid,
-			index: index + setForGridIndexOffset,
-		}))
+		setIndicesForTile = supertileEntry.map(index => index + setForGridIndexOffset)
 	}
 
-	if (flipGrain) setForTile = setForTile.reverse()
-	if (switcheroo) setForTile = switcherooSet({ setForTile, gridAddress })
-	if (transformAssignedSet) setForTile = transformAssignedSet({ setForTile, gridAddress })
+	if (flipGrain) setIndicesForTile = setIndicesForTile.reverse()
+	if (switcheroo) setIndicesForTile = switcherooSet({ setForTile: setIndicesForTile, gridAddress })
+	if (transformAssignedSet) setIndicesForTile = transformAssignedSet({ setForTile: setIndicesForTile, gridAddress })
 
-	return setForTile
+	return setIndicesForTile
 }
 
 const switcherooSet = ({ setForTile, gridAddress }) => {
@@ -60,13 +55,15 @@ const switcherooSet = ({ setForTile, gridAddress }) => {
 	return setForTile
 }
 
+const tileCenter = ({ tileOrigin, tileSize }) => ([
+	tileOrigin[ 0 ] + tileSize / 2,
+	tileOrigin[ 1 ] + tileSize / 2,
+])
+
 const rotateCoordinatesAboutTileCenter = ({ coordinates, tileOrigin, tileSize }) => {
 	if (store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
-			point: [
-				tileOrigin[ 0 ] + tileSize / 2,
-				tileOrigin[ 1 ] + tileSize / 2,
-			],
+			point: tileCenter({ tileOrigin, tileSize }),
 			coordinates,
 			rotation: QUARTER_OF_CIRCLE_ROTATION,
 		})
@@ -93,8 +90,9 @@ const distanceFromZeroZeroAddress = ({ gridAddress }) => {
 }
 
 export default {
-	getSetForTile,
+	getSetIndicesForTile,
 	rotateCoordinatesAboutTileCenter,
 	getTileOriginAndSize,
 	distanceFromZeroZeroAddress,
+	tileCenter,
 }

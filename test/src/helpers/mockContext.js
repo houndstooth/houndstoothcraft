@@ -5,4 +5,6 @@ export default contextCallsOrder => ({
 	closePath: () => contextCallsOrder.push({ method: 'closePath' }),
 	fill: () => contextCallsOrder.push({ method: 'fill' }),
 	clip: () => contextCallsOrder.push({ method: 'clip' }),
+	save: () => contextCallsOrder.push({ method: 'save' }),
+	restore: () => contextCallsOrder.push({ method: 'restore' }),
 })

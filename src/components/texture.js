@@ -1,9 +1,11 @@
 import renderUtilities from '../utilities/renderUtilities'
 
-export default ({ context, tileColors, tileOrigin, tileSize, colorsIndex, outline, renderTexture }) => {
+export default textureArgs => {
 	const { buildPath, clipPath, resetClip } = renderUtilities
+	const { context, outline, renderTexture } = textureArgs
+
 	buildPath({ context, outline })
 	clipPath({ context })
-	renderTexture({ tileColors, tileOrigin, tileSize, colorsIndex })
+	renderTexture(textureArgs)
 	resetClip({ context })
 }

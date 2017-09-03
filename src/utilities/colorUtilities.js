@@ -1,50 +1,24 @@
-import componentUtilities from './componentUtilities'
 import codeUtilities from './codeUtilities'
 import store from '../../store'
 
 const parseColor = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 
-const getColorsForTile = ({ gridAddress, colorSettings }) => {
-	colorSettings = colorSettings || store.mainHoundstooth.basePattern.colorSettings
-	let tileColors = componentUtilities.getSetForTile({ gridAddress, settings: colorSettings })
-
-	const stripeSettings = store.mainHoundstooth.basePattern.stripeSettings
-	const { stripeCountMode } = stripeSettings && stripeSettings.stripePositionSettings || {}
-	if (stripeCountMode === 'GINGHAM') tileColors = mixColors({ colors: tileColors })
-
-	return tileColors
-}
-
-const mixColors = ({ colors }) => {
-	const totalColor = { r: 0, g: 0, b: 0, a: 0 }
-	colors.forEach(color => {
-		totalColor.r += color.r || 0
-		totalColor.g += color.g || 0
-		totalColor.b += color.b || 0
-		totalColor.a += color.a
-	})
-
-	const colorsCount = colors.length
-	return [ {
-		r: Math.floor(totalColor.r / colorsCount),
-		g: Math.floor(totalColor.g / colorsCount),
-		b: Math.floor(totalColor.b / colorsCount),
-		a: totalColor.a / colorsCount,
-	} ]
-}
-
-const allColorsAreTheSame = (colors) => {
-	for (let i = 0; i < colors.length - 1; i++) {
-		if (!codeUtilities.shallowEqual(colors[ i ], colors[ i + 1 ])) return false
+const isTileUniform = ({ tileColorIndices }) => {
+	for (let i = 0; i < tileColorIndices.length - 1; i++) {
+		const colorOne = getColor({ index: tileColorIndices[ i ] })
+		const colorTwo = getColor({ index: tileColorIndices[ i + 1 ] })
+		if (!codeUtilities.shallowEqual(colorOne, colorTwo)) return false
 	}
 	return true
 }
 
-const isTileUniform = ({ tileColors }) => allColorsAreTheSame(tileColors)
+const getColor = ({ index }) => {
+	const array = store.mainHoundstooth.basePattern.colorSettings.set
+	return codeUtilities.wrappedIndex({ array, index })
+}
 
 export default {
-	getColorsForTile,
 	isTileUniform,
-	allColorsAreTheSame,
 	parseColor,
+	getColor,
 }

@@ -4,8 +4,10 @@ import codeUtilities from '../utilities/codeUtilities'
 import viewUtilities from '../utilities/viewUtilities'
 import texture from './texture'
 import renderUtilities from '../utilities/renderUtilities'
+import colorUtilities from '../utilities/colorUtilities'
+import store from '../../store'
 
-export default ({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, outlineOptions, renderTexture }) => {
+export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
 	let outline = getOutline({ tileOrigin, tileSize, outlineOptions })
 	if (!outline) return
 
@@ -15,12 +17,15 @@ export default ({ tileOrigin, tileSize, tileColors, colorsIndex, getOutline, out
 	outline = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates: outline })
 
 	const context = renderUtilities.getCurrentContext()
+	const shapeColorIndex = codeUtilities.wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
+	const textureSettings = store.mainHoundstooth.basePattern.textureSettings
+	const renderTexture = textureSettings && textureSettings.renderTexture
 	if (renderTexture) {
-		texture({ context, outline, tileColors, tileOrigin, tileSize, colorsIndex, renderTexture })
+		texture({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })
 	}
 	else {
-		const shapeColor = codeUtilities.wrappedIndex({ array: tileColors, index: colorsIndex })
+		const shapeColor = colorUtilities.getColor({ index: shapeColorIndex })
 		if (shapeColor.a === 0) return
 
 		render({ context, shapeColor, outline })

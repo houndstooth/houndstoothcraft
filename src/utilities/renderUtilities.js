@@ -1,17 +1,11 @@
 import store from '../../store'
 
-const clipPath = ({ context }) => context.clip()
-
-const resetClip = ({ context }) => {
-	const entireCanvas = [
-		[ 0, 0 ],
-		[ context.width, 0 ],
-		[ context.width, context.height ],
-		[ 0, context.height ],
-	]
-	buildPath({ context, outline: entireCanvas })
-	clipPath({ context })
+const clipPath = ({ context }) => {
+	context.save()
+	context.clip()
 }
+
+const resetClip = ({ context }) => context.restore()
 
 const buildPath = ({ context, outline }) => {
 	context.beginPath()
@@ -24,7 +18,7 @@ const fillPath = ({ context }) => {
 	context.fill()
 }
 
-const getCurrentContext = () => store.contexts[store.currentLayer]
+const getCurrentContext = () => store.contexts[ store.currentLayer ]
 
 export default {
 	clipPath,

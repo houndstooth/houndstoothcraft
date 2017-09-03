@@ -12,12 +12,12 @@ export default ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = componentUtilities.getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) return
 
-	const tileColors = colorUtilities.getColorsForTile({ gridAddress })
+	const tileColorIndices = componentUtilities.getSetIndicesForTile({ gridAddress })
 
-	const args = { gridAddress, tileOrigin, tileSize, tileColors }
+	const args = { gridAddress, tileOrigin, tileSize, tileColorIndices }
 	convertTileToShapes({
 		tileToShapesArgs: Object.assign({ args }, getTileToShapesArgs(store.mainHoundstooth.basePattern.tileSettings)),
-		shouldUseUniform: shouldUseUniform({ tileColors }),
+		shouldUseUniform: shouldUseUniform({ tileColorIndices }),
 	})
 }
 
@@ -54,9 +54,7 @@ const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions, whenTi
 	const stripeArgs = codeUtilities.deepClone(args)
 
 	stripeArgs.getOutline = whenTileIsMultiform
-	stripeArgs.colorsIndex = stripeIndex
 	stripeArgs.stripeIndex = stripeIndex
-	stripeArgs.stripeCount = stripePositions.length
 	const stripeEnd = stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR
 	stripeArgs.outlineOptions = { stripeStart, stripeEnd }
 

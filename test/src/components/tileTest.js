@@ -12,7 +12,7 @@ describe('tile', () => {
 	let squareOutlineSpy
 	let stripeOutlineSpy
 
-	let getColorsForTileSpy
+	let getSetIndicesForTileSpy
 	let colorUtilitiesIsTileUniformSpy
 
 	beforeEach(() => {
@@ -23,7 +23,7 @@ describe('tile', () => {
 		stripeOutlineSpy = jasmine.createSpy()
 		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
 
-		getColorsForTileSpy = spyOn(colorUtilities, 'getColorsForTile')
+		getSetIndicesForTileSpy = spyOn(componentUtilities, 'getSetIndicesForTile')
 		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
 	})
 
@@ -41,13 +41,13 @@ describe('tile', () => {
 		it('returns early, not getting colors', () => {
 			tile({ gridAddress })
 
-			expect(getColorsForTileSpy).not.toHaveBeenCalled()
+			expect(getSetIndicesForTileSpy).not.toHaveBeenCalled()
 		})
 	})
 
 	describe('when the tile is assigned an origin on the canvas', () => {
 		let stripePositionsForTile
-		let tileColors
+		let tileColorIndices
 		let tileOrigin
 		let tileSize
 		beforeEach(() => {
@@ -60,8 +60,8 @@ describe('tile', () => {
 
 			store.mainHoundstooth.basePattern.tileSettings = {}
 
-			tileColors = {}
-			getColorsForTileSpy.and.returnValue(tileColors)
+			tileColorIndices = []
+			getSetIndicesForTileSpy.and.returnValue(tileColorIndices)
 		})
 
 		describe('if a function for converting a tile into shapes is not specified', () => {
@@ -87,7 +87,7 @@ describe('tile', () => {
 		it('gets colors', () => {
 			tile({ gridAddress })
 
-			expect(getColorsForTileSpy).toHaveBeenCalledWith({ gridAddress })
+			expect(getSetIndicesForTileSpy).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
@@ -102,7 +102,7 @@ describe('tile', () => {
 
 					tile({ gridAddress })
 
-					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColors })
+					expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
 					expect(colorUtilitiesIsTileUniformSpy).not.toHaveBeenCalled()
 				})
 			})
@@ -111,7 +111,7 @@ describe('tile', () => {
 				it('uses the default tile uniformity check', () => {
 					tile({ gridAddress })
 
-					expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColors })
+					expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
 				})
 			})
 
@@ -151,7 +151,7 @@ describe('tile', () => {
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						gridAddress,
-						tileColors,
+						tileColorIndices,
 						tileOrigin,
 						tileSize,
 					}))
@@ -200,13 +200,13 @@ describe('tile', () => {
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						gridAddress,
-						tileColors,
+						tileColorIndices,
 						tileOrigin,
 						tileSize,
 					}))
 				})
 
-				it('converts the tile into shapes, each one a stripe, each one knowing the index within the tile\'s stripes', () => {
+				it('converts the tile into shapes, each one a stripe, each one knowing its stripe index', () => {
 					tile({ gridAddress })
 
 					const shapes = shapeSpy.calls.all()
@@ -215,25 +215,6 @@ describe('tile', () => {
 					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 1 }))
 					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 2 }))
 					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 3 }))
-				})
-
-				it('converts the tile into shapes, each one a stripe, each one to choose which of its colors based on its index within the tile\'s stripes', () => {
-					tile({ gridAddress })
-
-					const shapes = shapeSpy.calls.all()
-
-					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 0 }))
-					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 1 }))
-					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 2 }))
-					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ colorsIndex: 3 }))
-				})
-
-				it('tells each stripe the tile converts into how many stripes total it is converting into', () => {
-					tile({ gridAddress })
-
-					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-						stripeCount: stripePositionsForTile.length,
-					}))
 				})
 
 				it('passes along options that the outline getting function will need', () => {

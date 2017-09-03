@@ -42,22 +42,6 @@ describe('.stripeSettings', () => {
 				}
 				expect(standardTileIsColors(tile)).toBe(true)
 			})
-
-			it('works in gingham mode', () => {
-				houndstoothOverrides.basePattern.stripeSettings.stripePositionSettings.stripeCountMode = 'GINGHAM'
-				activateTestMarkerCanvas()
-
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
-
-				const HALF_TRANSPARENT_BLACK = { r: 0, g: 0, b: 0, a: 0.5 }
-				const tile = {
-					baseId: 0,
-					originInPixels: [ 0, 0 ],
-					tileSizeInPixels,
-					colors: [ HALF_TRANSPARENT_BLACK, HALF_TRANSPARENT_BLACK ],
-				}
-				expect(standardTileIsColors(tile)).toBe(true)
-			})
 		})
 
 		describe('.stripeCountSetting', () => {

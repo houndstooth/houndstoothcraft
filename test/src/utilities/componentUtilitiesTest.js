@@ -126,47 +126,6 @@ describe('component utilities', () => {
 			})
 		})
 
-		describe('set for grid offset', () => {
-			it('when in weave mode, it allows offsetting of the choice within the set for the whole grid', () => {
-				const offsetSetForGridIndex = ({ gridAddress }) => gridAddress[ 0 ] + gridAddress[ 1 ]
-				settings = {
-					assignment: {
-						assignmentMode: 'WEAVE',
-						offsetSetForGridIndex,
-						weave: {
-							columns: [ undefined, 1 ],
-							rows: [ undefined, undefined, 3 ],
-						},
-					},
-				}
-
-				expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([ 3 + 3 + 5, 1 + 3 + 5 ])
-			})
-
-			it('when in supertile mode, it allows offsetting of the choice within the set for the whole grid', () => {
-				const expectedSupertileEntry = [ 2, 3, 0, 1 ]
-				const offsetSetForGridIndex = ({ gridAddress }) => gridAddress[ 0 ] + gridAddress[ 1 ]
-				settings = {
-					assignment: {
-						assignmentMode: 'SUPERTILE',
-						offsetSetForGridIndex,
-						supertile: [
-							[ [], expectedSupertileEntry ],
-							[ [], [] ],
-							[ [], [] ],
-						],
-					},
-				}
-
-				expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([
-					2 + 3 + 5,
-					3 + 3 + 5,
-					0 + 3 + 5,
-					1 + 3 + 5,
-				])
-			})
-		})
-
 		describe('re-ordering of chosen set', () => {
 			it('can flip the grain of the houndstooth (by reversing the set)', () => {
 				const notFlippedResult = getSetIndicesForTile({ gridAddress })

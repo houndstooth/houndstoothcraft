@@ -26,7 +26,6 @@ const PATTERN_STRUCTURE = {
 			flipGrain: true,
 			transformAssignedSet: true,
 			assignmentMode: true,
-			offsetSetForGridIndex: true,
 			offsetAddress: true,
 			supertile: true,
 			weave: {

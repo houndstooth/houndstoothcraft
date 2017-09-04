@@ -4,35 +4,64 @@ import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
 const getSetIndicesForTile = ({ gridAddress, settings }) => {
-	const { wrappedIndex } = codeUtilities
-
 	let { assignment } = settings || {}
 	const currentAssignment = store.mainHoundstooth.basePattern.colorSettings.assignment
 	assignment = assignment || currentAssignment
+	let { offsetAddress, assignmentMode, supertile, weave } = assignment
 
-	let { offsetAddress, transformAssignedSet, assignmentMode, supertile, weave, flipGrain, switcheroo } = assignment
+	let setIndicesForTile = getSetIndices({
+		gridAddress,
+		currentAssignment,
+		assignment,
+		assignmentMode,
+		offsetAddress,
+		supertile,
+		weave,
+	})
 
-	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
-	assignmentMode = assignmentMode || currentAssignment.assignmentMode
-	supertile = supertile || currentAssignment.supertile
-	weave = weave || currentAssignment.weave
-	let setIndicesForTile
-	if (assignmentMode === 'WEAVE') {
-		const { rows, columns } = weave
-		const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
-		const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
-		setIndicesForTile = [ rowsIndex, columnsIndex ]
-	}
-	else if (assignmentMode === 'SUPERTILE') {
-		const supertileColumn = wrappedIndex({ array: supertile, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
-		setIndicesForTile = wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
-	}
+	return maybeAdjustSetIndices({ assignment, gridAddress, setIndicesForTile })
+}
+
+const maybeAdjustSetIndices = ({ assignment, gridAddress, setIndicesForTile }) => {
+	let { transformAssignedSet, flipGrain, switcheroo } = assignment
 
 	if (flipGrain) setIndicesForTile = setIndicesForTile.reverse()
 	if (switcheroo) setIndicesForTile = switcherooSet({ setForTile: setIndicesForTile, gridAddress })
 	if (transformAssignedSet) setIndicesForTile = transformAssignedSet({ setForTile: setIndicesForTile, gridAddress })
 
 	return setIndicesForTile
+}
+
+const getSetIndices = ({ gridAddress, currentAssignment, assignmentMode, offsetAddress, supertile, weave }) => {
+	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
+	assignmentMode = assignmentMode || currentAssignment.assignmentMode
+
+	let setIndicesForTile
+	if (assignmentMode === 'WEAVE') {
+		weave = weave || currentAssignment.weave
+		setIndicesForTile = getByWeave({ gridAddress, addressOffset, weave })
+	}
+	else if (assignmentMode === 'SUPERTILE') {
+		supertile = supertile || currentAssignment.supertile
+		setIndicesForTile = getBySupertile({ gridAddress, addressOffset, supertile })
+	}
+
+	return setIndicesForTile
+}
+
+const getByWeave = ({ gridAddress, addressOffset, weave }) => {
+	const { rows, columns } = weave
+	const columnsIndex = codeUtilities.wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
+	const rowsIndex = codeUtilities.wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
+	return [ rowsIndex, columnsIndex ]
+}
+
+const getBySupertile = ({ gridAddress, addressOffset, supertile }) => {
+	const supertileColumn = codeUtilities.wrappedIndex({
+		array: supertile,
+		index: gridAddress[ 0 ] + addressOffset[ 0 ],
+	})
+	return codeUtilities.wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 }
 
 const switcherooSet = ({ setForTile, gridAddress }) => {

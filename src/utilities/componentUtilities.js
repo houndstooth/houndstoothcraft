@@ -84,7 +84,7 @@ const tileCenter = ({ tileOrigin, tileSize }) => ([
 	tileOrigin[ 1 ] + tileSize / 2,
 ])
 
-const rotateCoordinatesAboutTileCenter = ({ coordinates, tileOrigin, tileSize }) => {
+const adjustForBaseStripeDiagonal = ({ coordinates, tileOrigin, tileSize }) => {
 	if (store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
 			point: tileCenter({ tileOrigin, tileSize }),
@@ -115,7 +115,7 @@ const distanceFromZeroZeroAddress = ({ gridAddress }) => {
 
 export default {
 	getSetIndicesForTile,
-	rotateCoordinatesAboutTileCenter,
+	adjustForBaseStripeDiagonal,
 	getTileOriginAndSize,
 	distanceFromZeroZeroAddress,
 	tileCenter,

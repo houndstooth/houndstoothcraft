@@ -1,7 +1,5 @@
 import shape from '../../../src/components/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import componentUtilities from '../../../src/utilities/componentUtilities'
-import viewUtilities from '../../../src/utilities/viewUtilities'
 import renderUtilities from '../../../src/utilities/renderUtilities'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
@@ -9,14 +7,12 @@ import resetStore from '../../../src/store/resetStore'
 describe('shape', () => {
 	let renderSpy
 	let wrappedIndexSpy
-	let rotateCoordinatesAboutTileCenterSpy
-	let applyZoomAndScrollSpy
-	let rotateCoordinatesAboutCanvasCenterSpy
 
 	const tileOrigin = [ 11, 13 ]
 	const tileSize = 45
 	const tileColorIndices = []
 	const stripeIndex = 7
+	const shapeColorIndex = 45
 	let getOutline
 	const outlineOptions = {}
 
@@ -26,10 +22,7 @@ describe('shape', () => {
 		resetStore(store)
 		renderSpy = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
-		wrappedIndexSpy = spyOn(codeUtilities, 'wrappedIndex')
-		rotateCoordinatesAboutTileCenterSpy = spyOn(componentUtilities, 'rotateCoordinatesAboutTileCenter')
-		applyZoomAndScrollSpy = spyOn(viewUtilities, 'applyZoomAndScroll')
-		rotateCoordinatesAboutCanvasCenterSpy = spyOn(viewUtilities, 'rotateCoordinatesAboutCanvasCenter')
+		wrappedIndexSpy = spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
 
 		getOutline = jasmine.createSpy()
 
@@ -41,7 +34,7 @@ describe('shape', () => {
 			getOutline.and.returnValue(null)
 		})
 
-		it('returns early, not trying to rotate anything, nor render', () => {
+		it('returns early, not rendering', () => {
 			shape({
 				tileOrigin,
 				tileSize,
@@ -54,30 +47,17 @@ describe('shape', () => {
 
 			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
 
-			expect(rotateCoordinatesAboutTileCenterSpy).not.toHaveBeenCalled()
-			expect(applyZoomAndScrollSpy).not.toHaveBeenCalled()
-			expect(rotateCoordinatesAboutCanvasCenterSpy).not.toHaveBeenCalled()
 			expect(renderSpy).not.toHaveBeenCalled()
 		})
 	})
 
 	describe('when an outline is received', () => {
-		const shapeColorIndex = 45
-
-		const originalOutline = []
-		const stepOneOutlineRotatedAboutTileCenter = []
-		const stepTwoOutlineZoomedAndScrolled = []
-		const stepThreeOutlineRotatedAboutCanvasCenter = []
+		const outline = []
 
 		let solidSpy
 
 		beforeEach(() => {
-			rotateCoordinatesAboutTileCenterSpy.and.returnValue(stepOneOutlineRotatedAboutTileCenter)
-			applyZoomAndScrollSpy.and.returnValue(stepTwoOutlineZoomedAndScrolled)
-			rotateCoordinatesAboutCanvasCenterSpy.and.returnValue(stepThreeOutlineRotatedAboutCanvasCenter)
-
-			wrappedIndexSpy.and.returnValue(shapeColorIndex)
-			getOutline.and.returnValue(originalOutline)
+			getOutline.and.returnValue(outline)
 
 			solidSpy = jasmine.createSpy()
 			shape.__Rewire__('solid', solidSpy)
@@ -97,17 +77,6 @@ describe('shape', () => {
 				tileOrigin,
 				tileSize,
 				outlineOptions,
-			})
-			expect(rotateCoordinatesAboutTileCenterSpy).toHaveBeenCalledWith({
-				coordinates: originalOutline,
-				tileOrigin,
-				tileSize,
-			})
-			expect(applyZoomAndScrollSpy).toHaveBeenCalledWith({
-				coordinates: stepOneOutlineRotatedAboutTileCenter,
-			})
-			expect(rotateCoordinatesAboutCanvasCenterSpy).toHaveBeenCalledWith({
-				coordinates: stepTwoOutlineZoomedAndScrolled,
 			})
 		})
 
@@ -161,7 +130,7 @@ describe('shape', () => {
 
 				expect(textureSpy).toHaveBeenCalledWith({
 					context,
-					outline: stepThreeOutlineRotatedAboutCanvasCenter,
+					outline,
 					tileColorIndices,
 					tileOrigin,
 					tileSize,
@@ -184,11 +153,15 @@ describe('shape', () => {
 					outlineOptions,
 				})
 
-				expect(solidSpy).toHaveBeenCalledWith({
-					context,
-					shapeColorIndex,
-					outline: stepThreeOutlineRotatedAboutCanvasCenter,
-				})
+				expect(solidSpy).toHaveBeenCalledWith(
+					jasmine.objectContaining({
+						context,
+						shapeColorIndex,
+						outline,
+						tileSize,
+						tileOrigin,
+					})
+				)
 
 				shape.__ResetDependency__('texture')
 			})

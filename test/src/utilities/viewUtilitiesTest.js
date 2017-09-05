@@ -15,10 +15,10 @@ describe('view utilities', () => {
 	})
 
 	describe('#applyZoomAndScroll', () => {
-		let coordinates
+		let outline
 		let applyZoomAndScroll
 		beforeEach(() => {
-			coordinates = [
+			outline = [
 				[ 3, 5 ],
 				[ 4, 5 ],
 				[ 3, 4 ],
@@ -26,10 +26,10 @@ describe('view utilities', () => {
 			applyZoomAndScroll = viewUtilities.applyZoomAndScroll
 		})
 
-		it('adjusts the coordinates per the zoom level', () => {
+		it('adjusts the outline per the zoom level', () => {
 			store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
-			expect(applyZoomAndScroll({ coordinates })).toEqual([
+			expect(applyZoomAndScroll(outline)).toEqual([
 				[ 30, 50 ],
 				[ 40, 50 ],
 				[ 30, 40 ],
@@ -45,7 +45,7 @@ describe('view utilities', () => {
 			it('works', () => {
 				store.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
 
-				expect(applyZoomAndScroll({ coordinates })).toEqual([
+				expect(applyZoomAndScroll(outline)).toEqual([
 					[ -870, -850 ],
 					[ -860, -850 ],
 					[ -870, -860 ],
@@ -55,7 +55,7 @@ describe('view utilities', () => {
 			it('does not readjust for zooming on the center if it already is centered', () => {
 				store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
 
-				expect(applyZoomAndScroll({ coordinates })).toEqual([
+				expect(applyZoomAndScroll(outline)).toEqual([
 					[ 405, 425 ],
 					[ 415, 425 ],
 					[ 405, 415 ],
@@ -76,7 +76,7 @@ describe('view utilities', () => {
 			it('adjusts per the zoom, tile, and canvas size', () => {
 				store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
-				expect(applyZoomAndScroll({ coordinates })).toEqual([
+				expect(applyZoomAndScroll(outline)).toEqual([
 					[
 						3 * zoom + canvasSize / 2 - tileSize / 2,
 						5 * zoom + canvasSize / 2 - tileSize / 2,
@@ -94,37 +94,37 @@ describe('view utilities', () => {
 		})
 	})
 
-	describe('#rotateCoordinatesAboutCanvasCenter', () => {
+	describe('#rotateOutlineAboutCanvasCenter', () => {
 		it('works', () => {
 			store.mainHoundstooth.basePattern.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
 			store.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
-			const coordinates = [
+			const outline = [
 				[ 0, 0 ],
 				[ 40, 0 ],
 				[ 0, 40 ],
 			]
 
-			const actualCoordinates = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates })
+			const actualOutline = viewUtilities.rotateOutlineAboutCanvasCenter(outline)
 
-			const expectedCoordinates = [
+			const expectedOutline = [
 				[ 200, 0 ],
 				[ 200, 40 ],
 				[ 160, 0 ],
 			]
-			expect(coordinatesMatch(expectedCoordinates, actualCoordinates)).toBe(true)
+			expect(coordinatesMatch(expectedOutline, actualOutline)).toBe(true)
 		})
 
 		it('does nothing if rotateViewAboutCanvasCenter is undefined or 0', () => {
-			const coordinates = [
+			const outline = [
 				[ 0, 0 ],
 				[ 0, 40 ],
 				[ 40, 40 ],
 			]
 
-			const actualCoordinates = viewUtilities.rotateCoordinatesAboutCanvasCenter({ coordinates })
+			const actualOutline = viewUtilities.rotateOutlineAboutCanvasCenter(outline)
 
-			expect(actualCoordinates).toEqual(coordinates)
-			expect(actualCoordinates).toBe(coordinates)
+			expect(actualOutline).toEqual(outline)
+			expect(actualOutline).toBe(outline)
 		})
 	})
 })

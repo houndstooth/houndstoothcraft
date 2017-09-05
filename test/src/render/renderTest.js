@@ -1,82 +1,59 @@
 import render from '../../../src/render/render'
-import colorUtilities from '../../../src/utilities/colorUtilities'
-import { ERASE } from '../../../src/constants'
-import renderUtilities from '../../../src/utilities/renderUtilities'
 
 describe('render', () => {
+	const tileOrigin = []
+	const tileSize = 54
 	const shapeColor = {}
-	const parsedColor = '#012345'
 	const context = {}
 
+	let adjustOutlineForViewAndComponentEffectsSpy
+	const adjustedOutline = []
 	beforeEach(() => {
-		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
-		spyOn(renderUtilities, 'buildPath')
-		spyOn(renderUtilities, 'fillPath')
+		adjustOutlineForViewAndComponentEffectsSpy = jasmine.createSpy().and.returnValue(adjustedOutline)
+		render.__Rewire__('adjustOutlineForViewAndComponentEffects', adjustOutlineForViewAndComponentEffectsSpy)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
 		const outline = []
 
-		render({ context, shapeColor, outline })
+		render({ context, shapeColor, outline, tileOrigin, tileSize })
 
-		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(renderUtilities.buildPath).not.toHaveBeenCalled()
-		expect(renderUtilities.fillPath).not.toHaveBeenCalled()
+		expect(adjustOutlineForViewAndComponentEffectsSpy).not.toHaveBeenCalled()
 	})
 
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
 		const outline = [ [ 0, 1 ] ]
 
-		render({ context, shapeColor, outline })
+		render({ context, shapeColor, outline, tileOrigin, tileSize })
 
-		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(renderUtilities.buildPath).not.toHaveBeenCalled()
-		expect(renderUtilities.fillPath).not.toHaveBeenCalled()
+		expect(adjustOutlineForViewAndComponentEffectsSpy).not.toHaveBeenCalled()
 	})
 
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
 		const outline = [ [ 0, 1 ], [ 1, 1 ] ]
 
-		render({ context, shapeColor, outline })
+		render({ context, shapeColor, outline, tileOrigin, tileSize })
 
-		expect(colorUtilities.parseColor).not.toHaveBeenCalled()
-		expect(renderUtilities.buildPath).not.toHaveBeenCalled()
-		expect(renderUtilities.fillPath).not.toHaveBeenCalled()
+		expect(adjustOutlineForViewAndComponentEffectsSpy).not.toHaveBeenCalled()
 	})
 
 	describe('when there are at least three coordinates in the outline', () => {
+		let fillSpy
 		let outline
 		beforeEach(() => {
+			fillSpy = jasmine.createSpy()
+			render.__Rewire__('fill', fillSpy)
 			outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
-			render({ context, shapeColor, outline })
+
+			render({ context, shapeColor, outline, tileOrigin, tileSize })
 		})
 
-		it('parses the shape color and sets the fill style to it', () => {
-			expect(colorUtilities.parseColor).toHaveBeenCalledWith(shapeColor)
+		it('adjusts for the view settings', () => {
+			expect(adjustOutlineForViewAndComponentEffectsSpy).toHaveBeenCalledWith(outline, { tileOrigin, tileSize })
 		})
 
-		it('sets the fill style to the parsed color', () => {
-			expect(context.fillStyle).toBe(parsedColor)
-		})
-
-		it('builds a path from it ', () => {
-			expect(renderUtilities.buildPath).toHaveBeenCalledWith({ context, outline })
-		})
-
-		it('fills this path', () => {
-			expect(renderUtilities.fillPath).toHaveBeenCalledWith({ context })
-		})
-
-		it('defaults the global composite operation to source-over', () => {
-			expect(context.globalCompositeOperation).toEqual('source-over')
-		})
-
-		describe('when erasing', () => {
-			it('sets the operation to destination-out', () => {
-				render({ context, shapeColor: ERASE, outline })
-
-				expect(context.globalCompositeOperation).toEqual('destination-out')
-			})
+		it('fills the adjusted outline', () => {
+			expect(fillSpy).toHaveBeenCalledWith({ context, shapeColor, outline: adjustedOutline })
 		})
 	})
 })

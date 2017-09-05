@@ -194,82 +194,80 @@ describe('component utilities', () => {
 		})
 	})
 
-	describe('#rotateCoordinatesAboutTileCenter', () => {
+	describe('#adjustForBaseStripeDiagonal', () => {
 		const coordinates = [
 			[ 0, 0 ],
 			[ 5, 0 ],
 			[ 0, 5 ],
 		]
 
-		let rotateCoordinatesAboutTileCenter
-		beforeEach(() => rotateCoordinatesAboutTileCenter = componentUtilities.rotateCoordinatesAboutTileCenter)
+		let adjustForBaseStripeDiagonal
+		beforeEach(() => adjustForBaseStripeDiagonal = componentUtilities.adjustForBaseStripeDiagonal)
 
-		describe('basePattern stripe diagonal', () => {
-			describe('when principal', () => {
-				beforeEach(() => {
-					store.mainHoundstooth.basePattern.stripeSettings = {
-						baseStripeDiagonal: 'PRINCIPAL',
-					}
-				})
-
-				it('rotates the outline a quarter of the way around, about the tile\'s center', () => {
-					const tileOrigin = [ 0, 0 ]
-					const tileSize = 5
-
-					const result = rotateCoordinatesAboutTileCenter({ coordinates, tileOrigin, tileSize })
-
-					const expectedCoordinates = [
-						[ 5, 0 ],
-						[ 5, 5 ],
-						[ 0, 0 ],
-					]
-					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-						expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
-					}))
-				})
-
-				it('handles the situation where the center of the shape is outside its outline', () => {
-					const tileOrigin = [ 0, 0 ]
-					const tileSize = 10
-
-					const result = rotateCoordinatesAboutTileCenter({ coordinates, tileOrigin, tileSize })
-
-					const expectedCoordinates = [
-						[ 10, 0 ],
-						[ 10, 5 ],
-						[ 5, 0 ],
-					]
-					result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
-						expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
-					}))
-				})
-
-				it('handles the situation where the origin of the shape is outside its outline', () => {
-					const tileOrigin = [ 5, 5 ]
-					const tileSize = 5
-
-					const actualCoordinates = rotateCoordinatesAboutTileCenter({ coordinates, tileOrigin, tileSize })
-
-					const expectedCoordinates = [
-						[ 15, 0 ],
-						[ 15, 5 ],
-						[ 10, 0 ],
-					]
-					expect(coordinatesMatch(expectedCoordinates, actualCoordinates)).toBe(true)
-				})
+		describe('when principal', () => {
+			beforeEach(() => {
+				store.mainHoundstooth.basePattern.stripeSettings = {
+					baseStripeDiagonal: 'PRINCIPAL',
+				}
 			})
 
-			it('defaults basePattern stripe diagonal to minor, i.e. no rotation', () => {
-				const coordinates = [
-					[ 0, 0 ],
-					[ 5, 0 ],
-					[ 0, 5 ],
-				]
+			it('rotates the outline a quarter of the way around, about the tile\'s center', () => {
 				const tileOrigin = [ 0, 0 ]
 				const tileSize = 5
 
-				expect(rotateCoordinatesAboutTileCenter({ coordinates, tileOrigin, tileSize })).toEqual(coordinates)
+				const result = adjustForBaseStripeDiagonal({ coordinates, tileOrigin, tileSize })
+
+				const expectedCoordinates = [
+					[ 5, 0 ],
+					[ 5, 5 ],
+					[ 0, 0 ],
+				]
+				result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
+					expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
+				}))
 			})
+
+			it('handles the situation where the center of the shape is outside its outline', () => {
+				const tileOrigin = [ 0, 0 ]
+				const tileSize = 10
+
+				const result = adjustForBaseStripeDiagonal({ coordinates, tileOrigin, tileSize })
+
+				const expectedCoordinates = [
+					[ 10, 0 ],
+					[ 10, 5 ],
+					[ 5, 0 ],
+				]
+				result.forEach((coordinate, x) => coordinate.forEach((dimension, y) => {
+					expect(dimension).toBeCloseTo(expectedCoordinates[ x ][ y ])
+				}))
+			})
+
+			it('handles the situation where the origin of the shape is outside its outline', () => {
+				const tileOrigin = [ 5, 5 ]
+				const tileSize = 5
+
+				const actualCoordinates = adjustForBaseStripeDiagonal({ coordinates, tileOrigin, tileSize })
+
+				const expectedCoordinates = [
+					[ 15, 0 ],
+					[ 15, 5 ],
+					[ 10, 0 ],
+				]
+				expect(coordinatesMatch(expectedCoordinates, actualCoordinates)).toBe(true)
+			})
+		})
+
+		it('defaults basePattern stripe diagonal to minor, i.e. no rotation', () => {
+			const coordinates = [
+				[ 0, 0 ],
+				[ 5, 0 ],
+				[ 0, 5 ],
+			]
+			const tileOrigin = [ 0, 0 ]
+			const tileSize = 5
+
+			expect(adjustForBaseStripeDiagonal({ coordinates, tileOrigin, tileSize })).toEqual(coordinates)
 		})
 	})
 

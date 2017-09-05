@@ -1,11 +1,10 @@
-import render from '../render/render'
 import componentUtilities from '../utilities/componentUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import viewUtilities from '../utilities/viewUtilities'
 import texture from './texture'
 import renderUtilities from '../utilities/renderUtilities'
-import colorUtilities from '../utilities/colorUtilities'
 import store from '../../store'
+import solid from './solid'
 
 export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
 	let outline = getOutline({ tileOrigin, tileSize, outlineOptions })
@@ -21,13 +20,11 @@ export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutlin
 
 	const textureSettings = store.mainHoundstooth.basePattern.textureSettings
 	const renderTexture = textureSettings && textureSettings.renderTexture
+
 	if (renderTexture) {
 		texture({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })
 	}
 	else {
-		const shapeColor = colorUtilities.getColor({ index: shapeColorIndex })
-		if (shapeColor.a === 0) return
-
-		render({ context, shapeColor, outline })
+		solid({ context, outline, shapeColorIndex })
 	}
 }

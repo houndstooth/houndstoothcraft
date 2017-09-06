@@ -278,27 +278,6 @@ describe('component utilities', () => {
 		})
 	})
 
-	describe('#distanceFromZeroZeroAddress', () => {
-		let distanceFromZeroZeroAddress
-		beforeEach(() => distanceFromZeroZeroAddress = componentUtilities.distanceFromZeroZeroAddress)
-
-		it('gives the distance, in address positions, from grid address 0, 0', () => {
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ 0, 0 ] })).toBe(0)
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ 3, 0 ] })).toBe(3)
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ 0, 5 ] })).toBe(5)
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ 2, 7 ] })).toBe(9)
-		})
-
-		it('works for addresses of more than 2 dimensions', () => {
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ 1, 2, 3 ] })).toBe(6)
-		})
-
-		it('gives absolute distance, so it works for addresses with negative values', () => {
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ -3, -2 ] })).toBe(5)
-			expect(distanceFromZeroZeroAddress({ gridAddress: [ -3, 2 ] })).toBe(5)
-		})
-	})
-
 	describe('#tileCenter', () => {
 		let tileCenter
 		beforeEach(() => tileCenter = componentUtilities.tileCenter)

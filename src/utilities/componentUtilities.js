@@ -3,21 +3,10 @@ import codeUtilities from './codeUtilities'
 import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
-const getSetIndicesForTile = ({ gridAddress, settings }) => {
-	let { assignment } = settings || {}
-	const currentAssignment = store.mainHoundstooth.basePattern.colorSettings.assignment
-	assignment = assignment || currentAssignment
-	let { offsetAddress, assignmentMode, supertile, weave } = assignment
+const getSetIndicesForTile = ({ gridAddress }) => {
+	const assignment = store.mainHoundstooth.basePattern.colorSettings.assignment
 
-	let setIndicesForTile = getSetIndices({
-		gridAddress,
-		currentAssignment,
-		assignment,
-		assignmentMode,
-		offsetAddress,
-		supertile,
-		weave,
-	})
+	let setIndicesForTile = getSetIndices({	gridAddress, assignment })
 
 	return maybeAdjustSetIndices({ assignment, gridAddress, setIndicesForTile })
 }
@@ -32,21 +21,19 @@ const maybeAdjustSetIndices = ({ assignment, gridAddress, setIndicesForTile }) =
 	return setIndicesForTile
 }
 
-const getSetIndices = ({ gridAddress, currentAssignment, assignmentMode, offsetAddress, supertile, weave }) => {
-	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
-	assignmentMode = assignmentMode || currentAssignment.assignmentMode
+const getSetIndices = ({ gridAddress, assignment }) => {
+	const { offsetAddress, assignmentMode, weave, supertile } = assignment
 
-	let setIndicesForTile
+	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
+
+	let getter
 	if (assignmentMode === 'WEAVE') {
-		weave = weave || currentAssignment.weave
-		setIndicesForTile = getByWeave({ gridAddress, addressOffset, weave })
+		getter = getByWeave
 	}
 	else if (assignmentMode === 'SUPERTILE') {
-		supertile = supertile || currentAssignment.supertile
-		setIndicesForTile = getBySupertile({ gridAddress, addressOffset, supertile })
+		getter = getBySupertile
 	}
-
-	return setIndicesForTile
+	return getter({ gridAddress, addressOffset, weave, supertile })
 }
 
 const getByWeave = ({ gridAddress, addressOffset, weave }) => {

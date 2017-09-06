@@ -13,14 +13,13 @@ describe('component utilities', () => {
 
 	describe('#getSetIndicesForTile', () => {
 		let getSetIndicesForTile
-		let settings
 		const gridAddress = [ 3, 5 ]
 
 		beforeEach(() => getSetIndicesForTile = componentUtilities.getSetIndicesForTile)
 
 		describe('assignment', () => {
 			it('can use a weave-based assignment scheme and a grid address to choose the indices of the tile\'s set to later get stuff from', () => {
-				settings = {
+				store.mainHoundstooth.basePattern.colorSettings = {
 					assignment: {
 						assignmentMode: 'WEAVE',
 						weave: {
@@ -30,13 +29,13 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([ 3, 1 ])
+				expect(getSetIndicesForTile({ gridAddress })).toEqual([ 3, 1 ])
 			})
 
 			it('can use a supertile-based assignment scheme and a grid address to choose the tile\'s set from the overall grid set', () => {
 				const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 
-				settings = {
+				store.mainHoundstooth.basePattern.colorSettings = {
 					assignment: {
 						assignmentMode: 'SUPERTILE',
 						supertile: [
@@ -47,53 +46,14 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetIndicesForTile({ gridAddress, settings })).toEqual(expectedSupertileEntry)
-			})
-		})
-
-		describe('defaults', () => {
-			it('defaults the set to a basic color set', () => {
-				expect(getSetIndicesForTile({ gridAddress })).toEqual([ 0, 1 ])
-			})
-
-			describe('when the assignment settings are present', () => {
-				describe('but the mode is missing from it', () => {
-					it('defaults the mode setting individually to the default color settings assignment mode', () => {
-						settings = {
-							assignment: {
-								weave: {
-									columns: [ undefined, 1 ],
-									rows: [ undefined, undefined, 3 ],
-								},
-							},
-						}
-
-						expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([ 3, 1 ])
-					})
-				})
-
-				describe('but weave is missing from it', () => {
-					it('defaults the weave setting individually to the default color settings assignment weave', () => {
-						settings = { assignment: { assignmentMode: 'WEAVE' } }
-
-						expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([ 0, 1 ])
-					})
-				})
-
-				describe('but supertile is missing from it', () => {
-					it('defaults the supertile setting individually to the default color settings assignment supertile', () => {
-						settings = { assignment: { assignmentMode: 'SUPERTILE' } }
-
-						expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([ 0, 1 ])
-					})
-				})
+				expect(getSetIndicesForTile({ gridAddress })).toEqual(expectedSupertileEntry)
 			})
 		})
 
 		describe('address offset', () => {
 			it('when in weave mode, it allows offsetting of the grid address', () => {
 				const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ]
-				settings = {
+				store.mainHoundstooth.basePattern.colorSettings = {
 					assignment: {
 						assignmentMode: 'WEAVE',
 						offsetAddress,
@@ -104,13 +64,13 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetIndicesForTile({ gridAddress, settings })).toEqual([ 3, 1 ])
+				expect(getSetIndicesForTile({ gridAddress })).toEqual([ 3, 1 ])
 			})
 
 			it('when in supertile mode, it allows offsetting of the grid address', () => {
 				const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 				const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ]
-				settings = {
+				store.mainHoundstooth.basePattern.colorSettings = {
 					assignment: {
 						assignmentMode: 'SUPERTILE',
 						offsetAddress,
@@ -122,20 +82,31 @@ describe('component utilities', () => {
 					},
 				}
 
-				expect(getSetIndicesForTile({ gridAddress, settings })).toEqual(expectedSupertileEntry)
+				expect(getSetIndicesForTile({ gridAddress })).toEqual(expectedSupertileEntry)
 			})
 		})
 
 		describe('re-ordering of chosen set', () => {
 			it('can flip the grain of the houndstooth (by reversing the set)', () => {
 				const notFlippedResult = getSetIndicesForTile({ gridAddress })
-				settings = { assignment: { flipGrain: true } }
 
-				expect(notFlippedResult.reverse()).toEqual(getSetIndicesForTile({ gridAddress, settings }))
+				store.mainHoundstooth.basePattern.colorSettings = {
+					assignment: {
+						flipGrain: true,
+						assignmentMode: 'WEAVE',
+						weave: {
+							columns: [ 0, 1 ],
+							rows: [ 1, 0 ],
+						},
+					},
+				}
+				const flippedResult = getSetIndicesForTile({ gridAddress })
+
+				expect(notFlippedResult.reverse()).toEqual(flippedResult)
 			})
 
 			it('can turn the grain of the pattern into switcheroo', () => {
-				settings = {
+				store.mainHoundstooth.basePattern.colorSettings = {
 					assignment: {
 						switcheroo: true,
 						assignmentMode: 'SUPERTILE',
@@ -151,7 +122,6 @@ describe('component utilities', () => {
 				const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ]))
 				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetIndicesForTile({
 					gridAddress,
-					settings,
 				})))
 
 				const expectedSetsForTiles = [
@@ -169,12 +139,20 @@ describe('component utilities', () => {
 				const transformAssignedSet = ({ setForTile, gridAddress }) => {
 					return gridAddress[ 0 ] === 1 ? setForTile.concat(setForTile) : setForTile
 				}
-				settings = { assignment: { transformAssignedSet } }
+				store.mainHoundstooth.basePattern.colorSettings = {
+					assignment: {
+						transformAssignedSet,
+						assignmentMode: 'WEAVE',
+						weave: {
+							columns: [ 0, 1 ],
+							rows: [ 1, 0 ],
+						},
+					},
+				}
 				const iterator = codeUtilities.iterator
 				const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ]))
 				const setsForTiles = addresses.map(col => col.map(gridAddress => getSetIndicesForTile({
 					gridAddress,
-					settings,
 				})))
 
 				const expectedSetsForTiles = [

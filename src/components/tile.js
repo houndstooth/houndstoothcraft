@@ -13,47 +13,34 @@ export default ({ gridAddress }) => {
 	if (!tileOrigin) return
 
 	const tileColorIndices = componentUtilities.getSetIndicesForTile({ gridAddress })
-
 	const args = { gridAddress, tileOrigin, tileSize, tileColorIndices }
-	convertTileToShapes({
-		tileToShapesArgs: Object.assign({ args }, getTileToShapesArgs(store.mainHoundstooth.basePattern.tileSettings)),
-		shouldUseUniform: shouldUseUniform({ tileColorIndices }),
-	})
+	shouldUseSquare({ tileColorIndices }) ? squareTile(args) : stripedTile(args)
 }
 
-const getTileToShapesArgs = ({ getOutline } = {}) => ({
-	whenTileIsUniform: getOutline && getOutline.whenTileIsUniform || squareOutline,
-	whenTileIsMultiform: getOutline && getOutline.whenTileIsMultiform || stripeOutline,
-})
-
-const shouldUseUniform = ({ tileColorIndices }) => {
+const shouldUseSquare = ({ tileColorIndices }) => {
 	const { collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
-	const tileIsUniform = colorUtilities.isTileUniform({ tileColorIndices })
+	const tileCanBeCollapsed = colorUtilities.isTileUniform({ tileColorIndices })
 	const shouldCollapseSameColoredShapes = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
-	return shouldCollapseSameColoredShapes && tileIsUniform
+	return shouldCollapseSameColoredShapes && tileCanBeCollapsed
 }
 
-const convertTileToShapes = ({ tileToShapesArgs, shouldUseUniform }) => {
-	shouldUseUniform ? uniformTileToShapes(tileToShapesArgs) : multiformTileToShapes(tileToShapesArgs)
-}
-
-const uniformTileToShapes = ({ args, whenTileIsUniform }) => {
-	args.getOutline = whenTileIsUniform
+const squareTile = args => {
+	args.getOutline = squareOutline
 	shape(args)
 }
 
-const multiformTileToShapes = ({ args, whenTileIsMultiform }) => {
+const stripedTile = args => {
 	const stripePositions = stripeUtilities.getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
-		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions, whenTileIsMultiform })
+		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
 		shape(stripeArgs)
 	})
 }
 
-const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions, whenTileIsMultiform }) => {
+const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
 	const stripeArgs = codeUtilities.deepClone(args)
 
-	stripeArgs.getOutline = whenTileIsMultiform
+	stripeArgs.getOutline = stripeOutline
 	stripeArgs.stripeIndex = stripeIndex
 	const stripeEnd = stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR
 	stripeArgs.outlineOptions = { stripeStart, stripeEnd }

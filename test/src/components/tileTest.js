@@ -92,27 +92,7 @@ describe('tile', () => {
 					expect(stripeUtilities.getStripePositionsForTile).not.toHaveBeenCalled()
 				})
 
-				describe('if a function for getting the outline of the shape when the tile is uniform is not specified', () => {
-					it('converts the tile into a shape with the outline of a square', () => {
-						tile({ gridAddress })
-
-						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: squareOutlineSpy }))
-					})
-				})
-
-				describe('if a function for getting the outline of the shape when the tile is uniform is specified', () => {
-					it('converts the tile into a shape with the outline gotten from using it', () => {
-						const whenTileIsUniform = () => {
-						}
-						store.mainHoundstooth.basePattern.tileSettings.getOutline = { whenTileIsUniform }
-
-						tile({ gridAddress })
-
-						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: whenTileIsUniform }))
-					})
-				})
-
-				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile', () => {
+				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses square outline', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -120,6 +100,7 @@ describe('tile', () => {
 						tileColorIndices,
 						tileOrigin,
 						tileSize,
+						getOutline: squareOutlineSpy,
 					}))
 				})
 			})
@@ -141,27 +122,8 @@ describe('tile', () => {
 					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
-				describe('if a function for getting the outline of the shape when the tile is multiform is not specified', () => {
-					it('converts the tile into shapes with the outlines of stripes', () => {
-						tile({ gridAddress })
 
-						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: stripeOutlineSpy }))
-					})
-				})
-
-				describe('if a function for getting the outline of the shape when the tile is multiform is specified', () => {
-					it('converts the tile into shapes with the outline gotten from using it', () => {
-						const whenTileIsMultiform = () => {
-						}
-						store.mainHoundstooth.basePattern.tileSettings.getOutline = { whenTileIsMultiform }
-
-						tile({ gridAddress })
-
-						expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: whenTileIsMultiform }))
-					})
-				})
-
-				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile', () => {
+				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses the shape outline', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -169,6 +131,7 @@ describe('tile', () => {
 						tileColorIndices,
 						tileOrigin,
 						tileSize,
+						getOutline: stripeOutlineSpy,
 					}))
 				})
 

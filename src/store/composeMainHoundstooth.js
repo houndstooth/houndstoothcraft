@@ -1,4 +1,4 @@
-import storeUtilities from '../utilities/storeUtilities'
+import houndstoothHasOnlyRecognizedPatterns from '../store/houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 import consoleWrapper from '../utilities/consoleWrapper'
 import houndstoothDefaults from './houndstoothDefaults'
@@ -33,10 +33,10 @@ export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logCompose
 }
 
 const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {
-	if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(store.mainHoundstooth)) return true
-	if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(store.mainHoundstooth)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)) return true
 	if (!combinedHoundstoothEffects) return true
-	if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) return true
 	return false
 }
 

@@ -1,4 +1,4 @@
-import storeUtilities from '../utilities/storeUtilities'
+import houndstoothHasOnlyRecognizedPatterns from '../store/houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 
 export default ({ houndstoothEffects }) => {
@@ -8,7 +8,7 @@ export default ({ houndstoothEffects }) => {
 
 	let anyIssues = false
 	houndstoothEffects.forEach(houndstoothEffect => {
-		if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(houndstoothEffect)) {
+		if (!houndstoothHasOnlyRecognizedPatterns(houndstoothEffect)) {
 			anyIssues = true
 			return
 		}

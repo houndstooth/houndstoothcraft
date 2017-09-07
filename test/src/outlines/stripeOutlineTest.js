@@ -1,4 +1,6 @@
 import stripeOutline from '../../../src/outlines/stripeOutline'
+import store from '../../../store'
+import rotationUtilities from '../../../src/utilities/rotationUtilities'
 
 describe('stripe outline', () => {
 	const tileOrigin = [ 0, 0 ]
@@ -183,6 +185,23 @@ describe('stripe outline', () => {
 					[ 0.5, 1 ],
 				])
 			})
+		})
+	})
+
+	describe('when the base stripe diagonal is principal', () => {
+		beforeEach(() => {
+			store.mainHoundstooth.basePattern.stripeSettings = { baseStripeDiagonal: 'PRINCIPAL' }
+		})
+
+		it('rotates the stripe a quarter of the way around', () => {
+			const rotatedOutline = []
+			spyOn(rotationUtilities, 'rotateCoordinatesAboutPoint').and.returnValue(rotatedOutline)
+			const outlineOptions = { stripeStart, stripeEnd }
+
+			const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
+
+			expect(rotationUtilities.rotateCoordinatesAboutPoint).toHaveBeenCalled()
+			expect(result).toBe(rotatedOutline)
 		})
 	})
 })

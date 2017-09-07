@@ -8,8 +8,6 @@ describe('solid', () => {
 	const shapeColorIndex = 8
 	const shapeColor = { a: 1 }
 	const transparentColor = { a: 0 }
-	const tileOrigin = []
-	const tileSize = 5
 	const context = {}
 	const outline = []
 
@@ -20,16 +18,16 @@ describe('solid', () => {
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {
-		solid({ context, outline, shapeColorIndex, tileOrigin, tileSize })
+		solid({ context, outline, shapeColorIndex })
 
 		expect(getColorSpy).toHaveBeenCalledWith({ index: shapeColorIndex })
 	})
 
 	describe('when the color is not completely transparent', () => {
 		it('renders', () => {
-			solid({ context, outline, shapeColorIndex, tileOrigin, tileSize })
+			solid({ context, outline, shapeColorIndex })
 
-			expect(renderSpy).toHaveBeenCalledWith({ context, shapeColor, outline, tileOrigin, tileSize })
+			expect(renderSpy).toHaveBeenCalledWith({ context, shapeColor, outline })
 		})
 	})
 
@@ -37,7 +35,7 @@ describe('solid', () => {
 		it('does not render', () => {
 			getColorSpy.and.returnValue(transparentColor)
 
-			solid({ context, outline, shapeColorIndex, tileOrigin, tileSize })
+			solid({ context, outline, shapeColorIndex })
 
 			expect(renderSpy).not.toHaveBeenCalled()
 		})

@@ -1,9 +1,9 @@
-import adjustOutlineForViewAndComponentEffects from '../render/adjustOutlineForViewAndComponentEffects'
+import applyView from '../render/applyView'
 import fill from '../render/fill'
 
-export default ({ context, shapeColor, outline, tileOrigin, tileSize }) => {
+export default ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) return
-	outline = adjustOutlineForViewAndComponentEffects(outline, { tileOrigin, tileSize })
+	outline = applyView(outline)
 
 	fill({ context, shapeColor, outline })
 }

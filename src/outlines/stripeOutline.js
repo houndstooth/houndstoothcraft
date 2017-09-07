@@ -1,3 +1,8 @@
+import componentUtilities from '../utilities/componentUtilities'
+import rotationUtilities from '../utilities/rotationUtilities'
+import store from '../../store'
+import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
+
 export default ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
 	let outline = []
@@ -50,6 +55,14 @@ export default ({ tileOrigin, tileSize, outlineOptions }) => {
 		if (stripeEndsInBottomRightHalf) {
 			outline.push(pointInBottomLeftCorner(tileArgs))
 		}
+	}
+
+	if (store.mainHoundstooth.basePattern.stripeSettings && store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
+		outline = rotationUtilities.rotateCoordinatesAboutPoint({
+			point: componentUtilities.tileCenter({ tileOrigin, tileSize }),
+			coordinates: outline,
+			rotation: QUARTER_OF_CIRCLE_ROTATION,
+		})
 	}
 
 	return outline

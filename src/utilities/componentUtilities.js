@@ -1,6 +1,4 @@
-import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
 import codeUtilities from './codeUtilities'
-import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
 const getSetIndicesForTile = ({ gridAddress }) => {
@@ -71,18 +69,6 @@ const tileCenter = ({ tileOrigin, tileSize }) => ([
 	tileOrigin[ 1 ] + tileSize / 2,
 ])
 
-const adjustForBaseStripeDiagonal = ({ coordinates, tileOrigin, tileSize }) => {
-	if (store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
-		coordinates = rotationUtilities.rotateCoordinatesAboutPoint({
-			point: tileCenter({ tileOrigin, tileSize }),
-			coordinates,
-			rotation: QUARTER_OF_CIRCLE_ROTATION,
-		})
-	}
-
-	return coordinates
-}
-
 const getStandardTileOriginAndSize = ({ gridAddress }) => {
 	const tileSize = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	return {
@@ -98,7 +84,6 @@ const getTileOriginAndSize = ({ gridAddress }) => {
 
 export default {
 	getSetIndicesForTile,
-	adjustForBaseStripeDiagonal,
 	getTileOriginAndSize,
 	tileCenter,
 }

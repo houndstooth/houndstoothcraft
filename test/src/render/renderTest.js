@@ -1,40 +1,38 @@
 import render from '../../../src/render/render'
 
 describe('render', () => {
-	const tileOrigin = []
-	const tileSize = 54
 	const shapeColor = {}
 	const context = {}
 
-	let adjustOutlineForViewAndComponentEffectsSpy
+	let applyViewSpy
 	const adjustedOutline = []
 	beforeEach(() => {
-		adjustOutlineForViewAndComponentEffectsSpy = jasmine.createSpy().and.returnValue(adjustedOutline)
-		render.__Rewire__('adjustOutlineForViewAndComponentEffects', adjustOutlineForViewAndComponentEffectsSpy)
+		applyViewSpy = jasmine.createSpy().and.returnValue(adjustedOutline)
+		render.__Rewire__('applyView', applyViewSpy)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
 		const outline = []
 
-		render({ context, shapeColor, outline, tileOrigin, tileSize })
+		render({ context, shapeColor, outline })
 
-		expect(adjustOutlineForViewAndComponentEffectsSpy).not.toHaveBeenCalled()
+		expect(applyViewSpy).not.toHaveBeenCalled()
 	})
 
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
 		const outline = [ [ 0, 1 ] ]
 
-		render({ context, shapeColor, outline, tileOrigin, tileSize })
+		render({ context, shapeColor, outline })
 
-		expect(adjustOutlineForViewAndComponentEffectsSpy).not.toHaveBeenCalled()
+		expect(applyViewSpy).not.toHaveBeenCalled()
 	})
 
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
 		const outline = [ [ 0, 1 ], [ 1, 1 ] ]
 
-		render({ context, shapeColor, outline, tileOrigin, tileSize })
+		render({ context, shapeColor, outline })
 
-		expect(adjustOutlineForViewAndComponentEffectsSpy).not.toHaveBeenCalled()
+		expect(applyViewSpy).not.toHaveBeenCalled()
 	})
 
 	describe('when there are at least three coordinates in the outline', () => {
@@ -45,11 +43,11 @@ describe('render', () => {
 			render.__Rewire__('fill', fillSpy)
 			outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
-			render({ context, shapeColor, outline, tileOrigin, tileSize })
+			render({ context, shapeColor, outline })
 		})
 
 		it('adjusts for the view settings', () => {
-			expect(adjustOutlineForViewAndComponentEffectsSpy).toHaveBeenCalledWith(outline, { tileOrigin, tileSize })
+			expect(applyViewSpy).toHaveBeenCalledWith(outline)
 		})
 
 		it('fills the adjusted outline', () => {

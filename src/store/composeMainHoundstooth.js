@@ -1,4 +1,5 @@
 import storeUtilities from '../utilities/storeUtilities'
+import composePatterns from './composePatterns'
 import consoleWrapper from '../utilities/consoleWrapper'
 import houndstoothDefaults from './houndstoothDefaults'
 import store from '../../store'
@@ -40,15 +41,15 @@ const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOver
 }
 
 const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffects, houndstoothOverrides }) => {
-	storeUtilities.composePatterns({
+	composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothDefaults,
 	})
-	storeUtilities.composePatterns({
+	composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothEffects,
 	})
-	storeUtilities.composePatterns({
+	composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: houndstoothOverrides,
 	})

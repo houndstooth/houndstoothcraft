@@ -1,15 +1,14 @@
 import storeUtilities from '../utilities/storeUtilities'
+import composePatterns from './composePatterns'
 
 export default ({ houndstoothEffects }) => {
 	const basePattern = {}
 	const layersPattern = {}
 	const animationsPattern = {}
 
-	const { composePatterns, houndstoothHasOnlyRecognizedPatterns } = storeUtilities
-
 	let anyIssues = false
 	houndstoothEffects.forEach(houndstoothEffect => {
-		if (!houndstoothHasOnlyRecognizedPatterns(houndstoothEffect)) {
+		if (!storeUtilities.houndstoothHasOnlyRecognizedPatterns(houndstoothEffect)) {
 			anyIssues = true
 			return
 		}

@@ -1,9 +1,9 @@
 import combineHoundstoothEffects from '../../../src/store/combineHoundstoothEffects'
-import storeUtilities from '../../../src/utilities/storeUtilities'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
-		spyOn(storeUtilities, 'composePatterns')
+		const composePatternsSpy = jasmine.createSpy()
+		combineHoundstoothEffects.__Rewire__('composePatterns', composePatternsSpy)
 
 		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
@@ -13,7 +13,7 @@ describe('combine houndstooth effects', () => {
 		combineHoundstoothEffects({ houndstoothEffects })
 
 
-		const composePatternsCalls = storeUtilities.composePatterns.calls.all()
+		const composePatternsCalls = composePatternsSpy.calls.all()
 
 		expect(composePatternsCalls.length).toBe(6)
 

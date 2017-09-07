@@ -1,5 +1,5 @@
 import clear from '../render/clear'
-import storeUtilities from '../utilities/storeUtilities'
+import prepareFunctionsPerSetting from '../store/prepareFunctionsPerSetting'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
 import consoleWrapper from '../utilities/consoleWrapper'
@@ -14,7 +14,7 @@ import composeMainHoundstooth from '../store/composeMainHoundstooth'
 export default ({ houndstoothOverrides = {} } = {}) => {
 	composeMainHoundstooth({ houndstoothEffects: store.selectedHoundstoothEffects, houndstoothOverrides })
 
-	const layerFunctions = storeUtilities.prepareFunctionsPerSetting({
+	const layerFunctions = prepareFunctionsPerSetting({
 		settingsFunctions: store.mainHoundstooth.layersPattern,
 	})
 
@@ -24,7 +24,7 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 	if (store.mixingDown) setupMixedDownContext()
 
 	if (store.animating) {
-		const animationFunctions = storeUtilities.prepareFunctionsPerSetting({
+		const animationFunctions = prepareFunctionsPerSetting({
 			settingsFunctions: store.mainHoundstooth.animationsPattern,
 		})
 		executeAnimation({ animationFunctions, layerFunctions })

@@ -1,8 +1,8 @@
 import theInterface from './interface'
 
-const { initializeInterface, executeSelectedHoundstoothEffects } = theInterface
+const { executeSelectedHoundstoothEffects, initializeInterface } = theInterface
 
 export default {
-	initializeInterface,
 	executeSelectedHoundstoothEffects,
+	initializeInterface,
 }

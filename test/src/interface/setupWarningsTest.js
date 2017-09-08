@@ -1,13 +1,15 @@
 import deleteElementIfExists from '../../../src/interface/deleteElementIfExists'
 import setupWarnings from '../../../src/interface/setupWarnings'
-import theInterface from '../../../src/interface'
+import insertElementRightAfter from '../../../src/interface/insertElementRightAfter'
 
 describe('setup warnings', () => {
 	let returnedWarnings
+	let insertElementRightAfterSpy
 	beforeEach(() => {
 		deleteElementIfExists('.warnings')
 
-		spyOn(theInterface, 'insertElementRightAfter').and.callThrough()
+		insertElementRightAfterSpy = jasmine.createSpy().and.callFake(insertElementRightAfter)
+		setupWarnings.__Rewire__('insertElementRightAfter', insertElementRightAfterSpy)
 
 		returnedWarnings = setupWarnings()
 	})
@@ -27,6 +29,6 @@ describe('setup warnings', () => {
 
 	it('inserts the warnings after the effect toggles container', () => {
 		const effectTogglesContainer = document.querySelector('.effect-toggles-container')
-		expect(theInterface.insertElementRightAfter).toHaveBeenCalledWith(returnedWarnings, effectTogglesContainer)
+		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedWarnings, effectTogglesContainer)
 	})
 })

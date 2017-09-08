@@ -1,11 +1,11 @@
 import setupMixedDownContext from '../../../src/render/setupMixedDownContext'
 import store from '../../../store'
-import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
+import deleteElementIfExists from '../../../src/interface/deleteElementIfExists'
 
 let mixedDownCanvas
 
 describe('setup mixed down context', () => {
-	beforeEach(() => interfaceUtilities.deleteElementIfExists('.mixed-down-canvas'))
+	beforeEach(() => deleteElementIfExists('.mixed-down-canvas'))
 
 	describe('when the mixed down canvas is already on the document', () => {
 		let newMixedDownCanvas

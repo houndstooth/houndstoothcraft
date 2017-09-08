@@ -1,11 +1,11 @@
-import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
+import deleteElementIfExists from '../../../src/interface/deleteElementIfExists'
 import setupWarnings from '../../../src/interface/setupWarnings'
 import theInterface from '../../../src/interface'
 
 describe('setup warnings', () => {
 	let returnedWarnings
 	beforeEach(() => {
-		interfaceUtilities.deleteElementIfExists('.warnings')
+		deleteElementIfExists('.warnings')
 
 		spyOn(theInterface, 'insertElementRightAfter').and.callThrough()
 

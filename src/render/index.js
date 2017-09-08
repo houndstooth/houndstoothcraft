@@ -6,6 +6,7 @@ import render from './render'
 import setupCanvasContainer from './setupCanvasContainer'
 import setupContexts from './setupContexts'
 import setupMixedDownContext from './setupMixedDownContext'
+import setElementDimensions from './setElementDimensions'
 
 export default {
 	applyBackgroundColor,
@@ -16,4 +17,5 @@ export default {
 	setupCanvasContainer,
 	setupContexts,
 	setupMixedDownContext,
+	setElementDimensions,
 }

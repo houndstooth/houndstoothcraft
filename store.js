@@ -1,3 +1,5 @@
+/* eslint-disable import/no-internal-modules */
+
 import initialStore from './src/store/initialStore'
 import codeUtilities from './src/utilities/codeUtilities'
 

@@ -1,10 +1,10 @@
 import store from '../../store'
-import renderUtilities from '../utilities/renderUtilities'
+import getCurrentContext from '../render/getCurrentContext'
 
 export default () => {
 	const colorSettings = store.mainHoundstooth.basePattern.colorSettings
 	if (!(colorSettings && colorSettings.opacity) || colorSettings.opacity === 1) return
 
-	const context = renderUtilities.getCurrentContext()
+	const context = getCurrentContext()
 	context.globalAlpha = colorSettings.opacity
 }

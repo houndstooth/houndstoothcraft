@@ -1,6 +1,6 @@
 import colorUtilities from '../utilities/colorUtilities'
 import store from '../../store'
-import renderUtilities from '../utilities/renderUtilities'
+import getCurrentContext from '../render/getCurrentContext'
 import getCanvasSize from './getCanvasSize'
 
 export default () => {
@@ -10,7 +10,7 @@ export default () => {
 
 	const canvasSize = getCanvasSize()
 
-	const context = renderUtilities.getCurrentContext()
+	const context = getCurrentContext()
 	context.fillStyle = colorUtilities.parseColor(backgroundColor)
 	context.fillRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }

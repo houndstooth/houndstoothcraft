@@ -1,7 +1,8 @@
-import renderUtilities from '../utilities/renderUtilities'
+import buildPath from './buildPath'
+import clipPath from './clipPath'
+import resetClip from './resetClip'
 
 export default textureArgs => {
-	const { buildPath, clipPath, resetClip } = renderUtilities
 	const { context, outline, renderTexture } = textureArgs
 
 	buildPath({ context, outline })

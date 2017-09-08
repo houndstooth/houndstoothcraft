@@ -1,6 +1,5 @@
 import shape from '../../../src/render/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import renderUtilities from '../../../src/utilities/renderUtilities'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 
@@ -18,6 +17,8 @@ describe('shape', () => {
 
 	const context = {}
 
+	let getCurrentContextSpy
+
 	beforeEach(() => {
 		resetStore(store)
 		renderSpy = jasmine.createSpy()
@@ -26,7 +27,8 @@ describe('shape', () => {
 
 		getOutline = jasmine.createSpy()
 
-		spyOn(renderUtilities, 'getCurrentContext').and.returnValue(context)
+		getCurrentContextSpy = jasmine.createSpy().and.returnValue(context)
+		shape.__Rewire__('getCurrentContext', getCurrentContextSpy)
 	})
 
 	describe('when no outline is returned from the get outline function', () => {
@@ -90,7 +92,7 @@ describe('shape', () => {
 				outlineOptions,
 			})
 
-			expect(renderUtilities.getCurrentContext).toHaveBeenCalled()
+			expect(getCurrentContextSpy).toHaveBeenCalled()
 		})
 
 		it('gets the index of the color in the central set, from the array of such indicies for the tile, using the stripe index', () => {

@@ -35,7 +35,8 @@ describe('tile', () => {
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
-			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue({ tileOrigin: null, tileSize: 10 })
+			const getTileOriginAndSizeSpy = jasmine.createSpy().and.returnValue({ tileOrigin: null, tileSize: 10 })
+			tile.__Rewire__('getTileOriginAndSize', getTileOriginAndSizeSpy)
 		})
 
 		it('returns early, not getting colors', () => {
@@ -53,7 +54,8 @@ describe('tile', () => {
 		beforeEach(() => {
 			tileOrigin = [ 7, 11 ]
 			tileSize = 13
-			spyOn(componentUtilities, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
+			const getTileOriginAndSizeSpy = jasmine.createSpy().and.returnValue({ tileOrigin, tileSize })
+			tile.__Rewire__('getTileOriginAndSize', getTileOriginAndSizeSpy)
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)

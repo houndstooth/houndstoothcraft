@@ -2,6 +2,7 @@ import colorUtilities from '../utilities/colorUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import shape from './shape'
 import componentUtilities from '../utilities/componentUtilities'
+import getTileOriginAndSize from '../components/getTileOriginAndSize'
 import stripeUtilities from '../utilities/stripeUtilities'
 import squareOutline from '../outlines/squareOutline'
 import stripeOutline from '../outlines/stripeOutline'
@@ -9,7 +10,7 @@ import { PERIMETER_SCALAR } from '../constants'
 import store from '../../store'
 
 export default ({ gridAddress }) => {
-	const { tileOrigin, tileSize } = componentUtilities.getTileOriginAndSize({ gridAddress })
+	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) return
 
 	const tileColorIndices = componentUtilities.getSetIndicesForTile({ gridAddress })

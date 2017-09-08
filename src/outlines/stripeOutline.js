@@ -1,4 +1,4 @@
-import componentUtilities from '../utilities/componentUtilities'
+import tileCenter from '../components/tileCenter'
 import rotationUtilities from '../utilities/rotationUtilities'
 import store from '../../store'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
@@ -59,7 +59,7 @@ export default ({ tileOrigin, tileSize, outlineOptions }) => {
 
 	if (store.mainHoundstooth.basePattern.stripeSettings && store.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		outline = rotationUtilities.rotateCoordinatesAboutPoint({
-			point: componentUtilities.tileCenter({ tileOrigin, tileSize }),
+			point: tileCenter({ tileOrigin, tileSize }),
 			coordinates: outline,
 			rotation: QUARTER_OF_CIRCLE_ROTATION,
 		})

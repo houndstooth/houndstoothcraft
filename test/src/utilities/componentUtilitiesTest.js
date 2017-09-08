@@ -199,15 +199,4 @@ describe('component utilities', () => {
 			})
 		})
 	})
-
-	describe('#tileCenter', () => {
-		let tileCenter
-		beforeEach(() => tileCenter = componentUtilities.tileCenter)
-
-		it('finds the center of the tile', () => {
-			const tileOrigin = [ 12, 14 ]
-			const tileSize = 3
-			expect(tileCenter({ tileOrigin, tileSize })).toEqual([ 13.5, 15.5 ])
-		})
-	})
 })

@@ -64,11 +64,6 @@ const switcherooSet = ({ setForTile, gridAddress }) => {
 	return setForTile
 }
 
-const tileCenter = ({ tileOrigin, tileSize }) => ([
-	tileOrigin[ 0 ] + tileSize / 2,
-	tileOrigin[ 1 ] + tileSize / 2,
-])
-
 const getStandardTileOriginAndSize = ({ gridAddress }) => {
 	const tileSize = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	return {
@@ -85,5 +80,4 @@ const getTileOriginAndSize = ({ gridAddress }) => {
 export default {
 	getSetIndicesForTile,
 	getTileOriginAndSize,
-	tileCenter,
 }

@@ -1,7 +1,6 @@
 import componentUtilities from '../../../src/utilities/componentUtilities'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
-import coordinatesMatch from '../helpers/coordinatesMatch'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 

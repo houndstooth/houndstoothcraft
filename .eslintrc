@@ -11,6 +11,9 @@
   "globals": {
     "require": false
   },
+  "plugins": [
+    "import",
+  ],
   "rules": {
     "indent": [
       "error",
@@ -49,6 +52,9 @@
     "brace-style": [
       "error",
       "stroustrup"
+    ],
+    "import/no-internal-modules": [
+      "error"
     ]
   }
 }

@@ -1,6 +1,7 @@
 import grid from '../../../src/components/grid'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
+import render from '../../../src/render'
 
 describe('grid', () => {
 	let tileSpy
@@ -67,21 +68,19 @@ describe('grid', () => {
 	})
 
 	it('applies background color', () => {
-		const applyBackgroundColorSpy = jasmine.createSpy()
-		grid.__Rewire__('applyBackgroundColor', applyBackgroundColorSpy)
+		spyOn(render, 'applyBackgroundColor')
 
 		grid()
 
-		expect(applyBackgroundColorSpy).toHaveBeenCalled()
+		expect(render.applyBackgroundColor).toHaveBeenCalled()
 	})
 
 	it('applies opacity', () => {
-		const applyOpacitySpy = jasmine.createSpy()
-		grid.__Rewire__('applyOpacity', applyOpacitySpy)
+		spyOn(render, 'applyOpacity')
 
 		grid()
 
-		expect(applyOpacitySpy).toHaveBeenCalled()
+		expect(render.applyOpacity).toHaveBeenCalled()
 	})
 
 	afterEach(() => grid.__ResetDependency__('tile'))

@@ -1,5 +1,4 @@
-import initializeInterface from './src/interface/initializeInterface'
-import executeSelectedHoundstoothEffects from './src/interface/executeSelectedHoundstoothEffects'
+import src from './src'
 
-initializeInterface()
-executeSelectedHoundstoothEffects()
+src.initializeInterface()
+src.executeSelectedHoundstoothEffects()

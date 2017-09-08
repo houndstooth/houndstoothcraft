@@ -1,10 +1,10 @@
 import setupEffectTogglesContainer from '../../../src/interface/setupEffectTogglesContainer'
-import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
+import theInterface from '../../../src/interface'
 
 describe('setup effect toggles container', () => {
 	let returnedEffectTogglesContainer
 	beforeEach(() => {
-		spyOn(interfaceUtilities, 'insertElementRightAfter').and.callThrough()
+		spyOn(theInterface, 'insertElementRightAfter').and.callThrough()
 		returnedEffectTogglesContainer = setupEffectTogglesContainer()
 	})
 
@@ -23,6 +23,6 @@ describe('setup effect toggles container', () => {
 
 	it('inserts the effect toggles container after the canvas', () => {
 		const canvasContainer = document.querySelector('.canvas-container')
-		expect(interfaceUtilities.insertElementRightAfter).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
+		expect(theInterface.insertElementRightAfter).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
 	})
 })

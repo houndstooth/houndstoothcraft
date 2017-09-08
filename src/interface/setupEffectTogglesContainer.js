@@ -1,4 +1,4 @@
-import interfaceUtilities from '../utilities/interfaceUtilities'
+import theInterface from '../interface'
 import setupCanvasContainer from '../render/setupCanvasContainer'
 
 export default () => {
@@ -7,7 +7,7 @@ export default () => {
 	effectTogglesContainer.style.padding = '20px'
 
 	const canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
-	interfaceUtilities.insertElementRightAfter(effectTogglesContainer, canvasContainer)
+	theInterface.insertElementRightAfter(effectTogglesContainer, canvasContainer)
 
 	return effectTogglesContainer
 }

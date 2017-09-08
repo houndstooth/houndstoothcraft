@@ -1,10 +1,6 @@
 import store from '../../store'
 import codeUtilities from './codeUtilities'
 
-const insertElementRightAfter = (element, elementRightAfterWhichToInsert) => {
-	elementRightAfterWhichToInsert.parentNode.insertBefore(element, elementRightAfterWhichToInsert.nextSibling)
-}
-
 const layerIterator = () => {
 	const layerSettings = store.mainHoundstooth.basePattern.layerSettings
 	const endLayer = layerSettings && layerSettings.endLayer || 0
@@ -26,7 +22,6 @@ const setElementDimensions = (element, dimensions) => {
 const inPx = number => `${number}px`
 
 export default {
-	insertElementRightAfter,
 	layerIterator,
 	deleteElementIfExists,
 	setElementDimensions,

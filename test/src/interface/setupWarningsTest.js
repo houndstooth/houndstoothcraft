@@ -1,12 +1,13 @@
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
 import setupWarnings from '../../../src/interface/setupWarnings'
+import theInterface from '../../../src/interface'
 
 describe('setup warnings', () => {
 	let returnedWarnings
 	beforeEach(() => {
 		interfaceUtilities.deleteElementIfExists('.warnings')
 
-		spyOn(interfaceUtilities, 'insertElementRightAfter').and.callThrough()
+		spyOn(theInterface, 'insertElementRightAfter').and.callThrough()
 
 		returnedWarnings = setupWarnings()
 	})
@@ -26,6 +27,6 @@ describe('setup warnings', () => {
 
 	it('inserts the warnings after the effect toggles container', () => {
 		const effectTogglesContainer = document.querySelector('.effect-toggles-container')
-		expect(interfaceUtilities.insertElementRightAfter).toHaveBeenCalledWith(returnedWarnings, effectTogglesContainer)
+		expect(theInterface.insertElementRightAfter).toHaveBeenCalledWith(returnedWarnings, effectTogglesContainer)
 	})
 })

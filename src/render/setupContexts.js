@@ -2,6 +2,7 @@ import store from '../../store'
 import getCanvasSize from './getCanvasSize'
 import interfaceUtilities from '../utilities/interfaceUtilities'
 import setupCanvasContainer from './setupCanvasContainer'
+import layerIterator from './layerIterator'
 
 export default () => {
 	const canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
@@ -10,7 +11,7 @@ export default () => {
 	const canvasSize = getCanvasSize()
 	interfaceUtilities.setElementDimensions(canvasContainer, canvasSize)
 
-	store.contexts = interfaceUtilities.layerIterator().map(() => {
+	store.contexts = layerIterator().map(() => {
 		const canvas = document.createElement('canvas')
 		canvas.style.position = 'absolute'
 		canvas.width = canvasSize[ 0 ]

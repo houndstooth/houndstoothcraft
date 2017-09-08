@@ -1,5 +1,4 @@
 import interfaceUtilities from '../../../src/utilities/interfaceUtilities'
-import store from '../../../store'
 
 describe('#deleteElementIfExists', () => {
 	describe('when element exists', () => {
@@ -40,16 +39,6 @@ describe('#deleteElementIfExists', () => {
 
 			interfaceUtilities.deleteElementIfExists('.element')
 		})
-	})
-})
-
-describe('#layerIterator', () => {
-	it('returns an array of numbers of each layer', () => {
-		store.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
-
-		const iterator = interfaceUtilities.layerIterator()
-
-		expect(iterator).toEqual([ 0,1,2,3,4,5 ])
 	})
 })
 

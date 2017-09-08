@@ -1,7 +1,7 @@
 import colorUtilities from '../utilities/colorUtilities'
 import codeUtilities from '../utilities/codeUtilities'
 import shape from './shape'
-import componentUtilities from '../utilities/componentUtilities'
+import getSetIndicesForTile from '../components/getSetIndicesForTile'
 import getTileOriginAndSize from '../components/getTileOriginAndSize'
 import stripeUtilities from '../utilities/stripeUtilities'
 import squareOutline from '../outlines/squareOutline'
@@ -13,7 +13,7 @@ export default ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) return
 
-	const tileColorIndices = componentUtilities.getSetIndicesForTile({ gridAddress })
+	const tileColorIndices = getSetIndicesForTile({ gridAddress })
 	const args = { gridAddress, tileOrigin, tileSize, tileColorIndices }
 	shouldUseSquare({ tileColorIndices }) ? squareTile(args) : stripedTile(args)
 }

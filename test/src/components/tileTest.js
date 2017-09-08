@@ -1,5 +1,4 @@
 import tile from '../../../src/components/tile'
-import componentUtilities from '../../../src/utilities/componentUtilities'
 import colorUtilities from '../../../src/utilities/colorUtilities'
 import stripeUtilities from '../../../src/utilities/stripeUtilities'
 import { PERIMETER_SCALAR } from '../../../src/constants'
@@ -22,8 +21,9 @@ describe('tile', () => {
 		tile.__Rewire__('squareOutline', squareOutlineSpy)
 		stripeOutlineSpy = jasmine.createSpy()
 		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
+		getSetIndicesForTileSpy = jasmine.createSpy()
+		tile.__Rewire__('getSetIndicesForTile', getSetIndicesForTileSpy)
 
-		getSetIndicesForTileSpy = spyOn(componentUtilities, 'getSetIndicesForTile')
 		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
 	})
 

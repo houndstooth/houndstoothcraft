@@ -1,4 +1,4 @@
-import solid from '../../../src/components/solid'
+import solid from '../../../src/render/solid'
 import colorUtilities from '../../../src/utilities/colorUtilities'
 
 describe('solid', () => {

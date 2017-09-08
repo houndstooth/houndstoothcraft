@@ -1,6 +1,6 @@
 import colorUtilities from '../utilities/colorUtilities'
 import codeUtilities from '../utilities/codeUtilities'
-import shape from './shape'
+import shape from '../render/shape'
 import getSetIndicesForTile from '../components/getSetIndicesForTile'
 import getTileOriginAndSize from '../components/getTileOriginAndSize'
 import stripeUtilities from '../utilities/stripeUtilities'

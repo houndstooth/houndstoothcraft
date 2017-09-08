@@ -7,6 +7,8 @@ import setupCanvasContainer from './setupCanvasContainer'
 import setupContexts from './setupContexts'
 import setupMixedDownContext from './setupMixedDownContext'
 import setElementDimensions from './setElementDimensions'
+import shape from './shape'
+import solid from './solid'
 
 export default {
 	applyBackgroundColor,
@@ -18,4 +20,6 @@ export default {
 	setupContexts,
 	setupMixedDownContext,
 	setElementDimensions,
+	shape,
+	solid,
 }

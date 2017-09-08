@@ -1,4 +1,4 @@
-import texture from '../../../src/components/texture'
+import texture from '../../../src/render/texture'
 import renderUtilities from '../../../src/utilities/renderUtilities'
 
 describe('texture', () => {

@@ -1,4 +1,4 @@
-import render from '../render/render'
+import render from './render'
 import colorUtilities from '../utilities/colorUtilities'
 
 export default ({ context, outline, shapeColorIndex }) => {

@@ -1,4 +1,4 @@
-import shape from '../../../src/components/shape'
+import shape from '../../../src/render/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import renderUtilities from '../../../src/utilities/renderUtilities'
 import store from '../../../store'

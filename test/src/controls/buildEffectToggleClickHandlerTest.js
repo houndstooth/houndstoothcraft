@@ -1,19 +1,19 @@
-import buildClickHandler from '../../../src/controls/buildClickHandler'
+import buildEffectToggleClickHandler from '../../../src/controls/buildEffectToggleClickHandler'
 import store from '../../../store'
 
-describe('build click handler', () => {
+describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
 		const resetInterfaceSpy = jasmine.createSpy()
-		buildClickHandler.__Rewire__('resetInterface', resetInterfaceSpy)
+		buildEffectToggleClickHandler.__Rewire__('resetInterface', resetInterfaceSpy)
 		const executeSelectedHoundstoothEffectsSpy = jasmine.createSpy()
-		buildClickHandler.__Rewire__('executeSelectedHoundstoothEffects', executeSelectedHoundstoothEffectsSpy)
+		buildEffectToggleClickHandler.__Rewire__('executeSelectedHoundstoothEffects', executeSelectedHoundstoothEffectsSpy)
 
 		const checkbox = document.createElement('input')
 		checkbox.setAttribute('type', 'checkbox')
 
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 
-		const clickHandler = buildClickHandler(checkbox, mockHoundstoothEffect)
+		const clickHandler = buildEffectToggleClickHandler(checkbox, mockHoundstoothEffect)
 
 		expect(resetInterfaceSpy).not.toHaveBeenCalled()
 		expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()

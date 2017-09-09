@@ -1,4 +1,4 @@
-import buildClickHandler from './buildClickHandler'
+import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 import setupEffectTogglesContainer from './setupEffectTogglesContainer'
 
 export default houndstoothEffect => {
@@ -9,7 +9,7 @@ export default houndstoothEffect => {
 	const checkbox = document.createElement('input')
 	checkbox.setAttribute('type', 'checkbox')
 	checkbox.classList.add(houndstoothEffect.name.replace(/ /g, '-'))
-	checkbox.onclick = buildClickHandler(checkbox, houndstoothEffect)
+	checkbox.onclick = buildEffectToggleClickHandler(checkbox, houndstoothEffect)
 	checkbox.style.cursor = 'pointer'
 	label.appendChild(checkbox)
 

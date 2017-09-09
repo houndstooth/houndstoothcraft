@@ -1,4 +1,4 @@
-import mixDownContexts from '../../../src/render/mixDownContexts'
+import mixDownContexts from '../../../src/display/mixDownContexts'
 import store from '../../../store'
 
 describe('mix down contexts', () => {

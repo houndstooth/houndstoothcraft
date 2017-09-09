@@ -1,4 +1,4 @@
-import deleteElementIfExists from '../../../src/interface/deleteElementIfExists'
+import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
 
 describe('delete element if exists', () => {
 	describe('when element exists', () => {

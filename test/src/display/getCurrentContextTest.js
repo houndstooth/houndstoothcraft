@@ -1,5 +1,5 @@
 import store from '../../../store'
-import getCurrentContext from '../../../src/render/getCurrentContext'
+import getCurrentContext from '../../../src/display/getCurrentContext'
 
 describe('get current context', () => {
 	it('gets the current context', () => {

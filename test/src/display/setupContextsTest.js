@@ -1,5 +1,5 @@
 import store from '../../../store'
-import setupContexts from '../../../src/render/setupContexts'
+import setupContexts from '../../../src/display/setupContexts'
 import resetStore from '../../../src/store/resetStore'
 
 describe('setup contexts', () => {

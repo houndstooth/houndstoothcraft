@@ -3,7 +3,7 @@ import executeSelectedHoundstoothEffects from '../../../src/interface/executeSel
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import clear from '../../../src/render/clear'
+import clear from '../../../src/display/clear'
 import store from '../../../store'
 
 describe('.tileSettings', () => {

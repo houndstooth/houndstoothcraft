@@ -2,6 +2,7 @@ import grid from '../../../src/components/grid'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 import render from '../../../src/render'
+import display from '../../../src/display'
 
 describe('grid', () => {
 	let tileSpy
@@ -68,11 +69,11 @@ describe('grid', () => {
 	})
 
 	it('applies background color', () => {
-		spyOn(render, 'applyBackgroundColor')
+		spyOn(display, 'applyBackgroundColor')
 
 		grid()
 
-		expect(render.applyBackgroundColor).toHaveBeenCalled()
+		expect(display.applyBackgroundColor).toHaveBeenCalled()
 	})
 
 	it('applies opacity', () => {

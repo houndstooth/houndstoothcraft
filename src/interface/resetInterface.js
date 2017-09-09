@@ -1,4 +1,4 @@
-import clear from '../render/clear'
+import clear from '../display/clear'
 import store from '../../store'
 import resetStore from '../store/resetStore'
 import setupWarnings from './setupWarnings'

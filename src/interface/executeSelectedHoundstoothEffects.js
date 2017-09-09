@@ -1,4 +1,4 @@
-import clear from '../render/clear'
+import clear from '../display/clear'
 import prepareFunctionsPerSetting from '../store/prepareFunctionsPerSetting'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
@@ -6,9 +6,9 @@ import consoleWrapper from '../utilities/consoleWrapper'
 import animator from '../animation/animator'
 import exportFrame from '../animation/exportFrame'
 import store from '../../store'
-import setupContexts from '../render/setupContexts'
-import setupMixedDownContext from '../render/setupMixedDownContext'
-import mixDownContexts from '../render/mixDownContexts'
+import setupContexts from '../display/setupContexts'
+import setupMixedDownCanvas from '../display/setupMixedDownCanvas'
+import mixDownContexts from '../display/mixDownContexts'
 import composeMainHoundstooth from '../store/composeMainHoundstooth'
 
 export default ({ houndstoothOverrides = {} } = {}) => {
@@ -21,7 +21,7 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 	setupContexts()
 
 	if (store.exportFrames) store.mixingDown = true
-	if (store.mixingDown) setupMixedDownContext()
+	if (store.mixingDown) setupMixedDownCanvas()
 
 	if (store.animating) {
 		const animationFunctions = prepareFunctionsPerSetting({

@@ -1,6 +1,7 @@
 import tile from './tile'
 import store from '../../store'
 import render from '../render'
+import display from '../display'
 import codeUtilities from '../utilities/codeUtilities'
 
 export default () => {
@@ -8,7 +9,7 @@ export default () => {
 	const { iterator } = codeUtilities
 
 	render.applyOpacity()
-	render.applyBackgroundColor()
+	display.applyBackgroundColor()
 
 	if (includeNegativeQuadrants) {
 		iterator(gridSize * 2).forEach(x => {

@@ -1,4 +1,4 @@
-import deleteElementIfExists from '../../../src/interface/deleteElementIfExists'
+import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
 import setupWarnings from '../../../src/interface/setupWarnings'
 import insertElementRightAfter from '../../../src/interface/insertElementRightAfter'
 

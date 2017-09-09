@@ -1,5 +1,5 @@
 import store from '../../../store'
-import layerIterator from '../../../src/render/layerIterator'
+import layerIterator from '../../../src/display/layerIterator'
 
 describe('layer iterator', () => {
 	it('returns an array of numbers of each layer', () => {

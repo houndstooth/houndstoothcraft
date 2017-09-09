@@ -1,5 +1,5 @@
 import store from '../../store'
-import deleteElementIfExists from '../interface/deleteElementIfExists'
+import deleteElementIfExists from './deleteElementIfExists'
 import getCanvasSize from './getCanvasSize'
 
 export default () => {

@@ -1,6 +1,6 @@
-import setupMixedDownContext from '../../../src/render/setupMixedDownContext'
+import setupMixedDownCanvas from '../../../src/display/setupMixedDownCanvas'
 import store from '../../../store'
-import deleteElementIfExists from '../../../src/interface/deleteElementIfExists'
+import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
 
 let mixedDownCanvas
 
@@ -14,7 +14,7 @@ describe('setup mixed down context', () => {
 			mixedDownCanvas.classList.add('mixed-down-canvas')
 			document.body.appendChild(mixedDownCanvas)
 
-			setupMixedDownContext()
+			setupMixedDownCanvas()
 
 			newMixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
@@ -30,9 +30,9 @@ describe('setup mixed down context', () => {
 
 	describe('when the mixed down canvas is not already on the document', () => {
 		beforeEach(() => {
-			setupMixedDownContext.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+			setupMixedDownCanvas.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
-			setupMixedDownContext()
+			setupMixedDownCanvas()
 			mixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
 

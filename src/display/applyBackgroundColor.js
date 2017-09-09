@@ -1,6 +1,6 @@
 import colorUtilities from '../utilities/colorUtilities'
 import store from '../../store'
-import getCurrentContext from '../render/getCurrentContext'
+import getCurrentContext from './getCurrentContext'
 import getCanvasSize from './getCanvasSize'
 
 export default () => {

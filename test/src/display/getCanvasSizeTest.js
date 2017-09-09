@@ -1,4 +1,4 @@
-import getCanvasSize from '../../../src/render/getCanvasSize'
+import getCanvasSize from '../../../src/display/getCanvasSize'
 import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import store from '../../../store'
 

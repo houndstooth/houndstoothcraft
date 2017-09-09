@@ -1,5 +1,5 @@
 import store from '../../store'
-import getCurrentContext from '../render/getCurrentContext'
+import getCurrentContext from '../display/getCurrentContext'
 
 export default () => {
 	const colorSettings = store.mainHoundstooth.basePattern.colorSettings

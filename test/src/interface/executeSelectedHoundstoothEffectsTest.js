@@ -52,12 +52,12 @@ describe('execute selected houndstooth effects', () => {
 	})
 
 	describe('setting up for rendering', () => {
-		let setupContextsSpy, setupMixedDownContextSpy
+		let setupContextsSpy, setupMixedDownCanvasSpy
 		beforeEach(() => {
 			setupContextsSpy = jasmine.createSpy()
 			executeSelectedHoundstoothEffects.__Rewire__('setupContexts', setupContextsSpy)
-			setupMixedDownContextSpy = jasmine.createSpy()
-			executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownContext', setupMixedDownContextSpy)
+			setupMixedDownCanvasSpy = jasmine.createSpy()
+			executeSelectedHoundstoothEffects.__Rewire__('setupMixedDownCanvas', setupMixedDownCanvasSpy)
 		})
 
 		it('includes the mixed down canvas when both mixing down and exporting', () => {
@@ -67,7 +67,7 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownContextSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
@@ -76,7 +76,7 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownContextSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
@@ -85,19 +85,19 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownContextSpy).toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
 		})
 
 		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownContextSpy).not.toHaveBeenCalled()
+			expect(setupMixedDownCanvasSpy).not.toHaveBeenCalled()
 		})
 
 		afterEach(() => {
 			executeSelectedHoundstoothEffects.__ResetDependency__('setupContexts')
-			executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownContext')
+			executeSelectedHoundstoothEffects.__ResetDependency__('setupMixedDownCanvas')
 		})
 	})
 

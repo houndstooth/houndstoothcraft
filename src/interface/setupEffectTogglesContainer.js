@@ -1,5 +1,5 @@
 import insertElementRightAfter from './insertElementRightAfter'
-import setupCanvasContainer from '../render/setupCanvasContainer'
+import setupCanvasContainer from '../display/setupCanvasContainer'
 
 export default () => {
 	const effectTogglesContainer = document.createElement('div')

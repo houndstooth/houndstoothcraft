@@ -1,6 +1,6 @@
 import codeUtilities from '../utilities/codeUtilities'
 import texture from './texture'
-import getCurrentContext from '../render/getCurrentContext'
+import getCurrentContext from '../display/getCurrentContext'
 import store from '../../store'
 import solid from './solid'
 

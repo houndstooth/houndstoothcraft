@@ -1,4 +1,4 @@
-import applyBackgroundColor from '../../../src/render/applyBackgroundColor'
+import applyBackgroundColor from '../../../src/display/applyBackgroundColor'
 import { CYAN } from '../../../src/constants'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'

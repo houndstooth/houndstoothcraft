@@ -1,4 +1,4 @@
-import initializeInterface from '../../../src/interface/initializeInterface'
+import initializeInterface from '../../../src/controls/initializeInterface'
 
 describe('initialize interface', () => {
 	it('sets up the effect toggles', () => {

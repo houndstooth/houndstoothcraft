@@ -1,7 +1,7 @@
 import consoleWrapper from '../utilities/consoleWrapper'
 import codeUtilities from '../utilities/codeUtilities'
 import patternStructure from '../store/patternStructure'
-import warn from '../interface/warn'
+import warn from '../controls/warn'
 
 const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE, warnAboutConflicts }) => {
 	if (!patternToMerge) return

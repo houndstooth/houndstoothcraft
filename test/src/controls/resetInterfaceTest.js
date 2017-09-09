@@ -1,8 +1,8 @@
-import resetInterface from '../../../src/interface/resetInterface'
-import warn from '../../../src/interface/warn'
+import resetInterface from '../../../src/controls/resetInterface'
+import warn from '../../../src/controls/warn'
 import store from '../../../store'
 import initialStore from '../../../src/store/initialStore'
-import setupWarnings from '../../../src/interface/setupWarnings'
+import setupWarnings from '../../../src/controls/setupWarnings'
 
 describe('reset interface', () => {
 	it('clears warnings', () => {

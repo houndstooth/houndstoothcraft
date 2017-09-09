@@ -1,4 +1,4 @@
-import setupEffectToggles from '../../../src/interface/setupEffectToggles'
+import setupEffectToggles from '../../../src/controls/setupEffectToggles'
 import store from '../../../store'
 
 describe('setup effect toggles', () => {

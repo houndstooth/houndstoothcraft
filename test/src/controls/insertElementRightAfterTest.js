@@ -1,4 +1,4 @@
-import insertElementRightAfter from '../../../src/interface/insertElementRightAfter'
+import insertElementRightAfter from '../../../src/controls/insertElementRightAfter'
 
 describe('insert element right after', () => {
 	it('inserts an element right after another one', () => {

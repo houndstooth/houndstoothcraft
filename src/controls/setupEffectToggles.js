@@ -1,4 +1,4 @@
-import addEffectToggle from '../interface/addEffectToggle'
+import addEffectToggle from '../controls/addEffectToggle'
 import cmyktoothEffect from '../../effects/cmyktooth/effects/cmyktoothEffect'
 import ginghamChevronContinuumEffect from '../../effects/gingham-chevron-continuum/effects/ginghamChevronContinuumEffect'
 import harmonitoothEffect from '../../effects/harmonitooth/effects/harmonitoothEffect'

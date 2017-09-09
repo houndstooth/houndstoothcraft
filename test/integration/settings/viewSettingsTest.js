@@ -1,4 +1,4 @@
-import executeSelectedHoundstoothEffects from '../../../src/interface/executeSelectedHoundstoothEffects'
+import executeSelectedHoundstoothEffects from '../../../src/controls/executeSelectedHoundstoothEffects'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
 import { BLACK, TRANSPARENT } from '../../../src/constants'

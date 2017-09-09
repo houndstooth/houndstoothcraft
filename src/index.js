@@ -1,6 +1,6 @@
-import theInterface from './interface'
+import controls from './controls'
 
-const { executeSelectedHoundstoothEffects, initializeInterface } = theInterface
+const { executeSelectedHoundstoothEffects, initializeInterface } = controls
 
 export default {
 	executeSelectedHoundstoothEffects,

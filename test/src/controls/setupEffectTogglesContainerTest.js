@@ -1,5 +1,5 @@
-import setupEffectTogglesContainer from '../../../src/interface/setupEffectTogglesContainer'
-import insertElementRightAfter from '../../../src/interface/insertElementRightAfter'
+import setupEffectTogglesContainer from '../../../src/controls/setupEffectTogglesContainer'
+import insertElementRightAfter from '../../../src/controls/insertElementRightAfter'
 
 describe('setup effect toggles container', () => {
 	let returnedEffectTogglesContainer

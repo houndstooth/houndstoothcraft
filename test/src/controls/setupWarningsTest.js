@@ -1,6 +1,6 @@
 import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
-import setupWarnings from '../../../src/interface/setupWarnings'
-import insertElementRightAfter from '../../../src/interface/insertElementRightAfter'
+import setupWarnings from '../../../src/controls/setupWarnings'
+import insertElementRightAfter from '../../../src/controls/insertElementRightAfter'
 
 describe('setup warnings', () => {
 	let returnedWarnings

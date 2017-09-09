@@ -1,4 +1,4 @@
-import buildClickHandler from '../../../src/interface/buildClickHandler'
+import buildClickHandler from '../../../src/controls/buildClickHandler'
 import store from '../../../store'
 
 describe('build click handler', () => {

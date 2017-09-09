@@ -1,4 +1,4 @@
-import warn from '../../../src/interface/warn'
+import warn from '../../../src/controls/warn'
 
 describe('warn', () => {
 	it('adds a warning div to the warnings div containing the warning message', () => {

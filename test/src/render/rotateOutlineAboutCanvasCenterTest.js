@@ -1,49 +1,43 @@
-// import viewUtilities from '../../../src/utilities/viewUtilities'
-// import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
-// import coordinatesMatch from '../helpers/coordinatesMatch'
-// import store from '../../../store'
-// import resetStore from '../../../src/store/resetStore'
+import coordinatesMatch from '../helpers/coordinatesMatch'
+import store from '../../../store'
+import resetStore from '../../../src/store/resetStore'
+import rotateOutlineAboutCanvasCenter from '../../../src/render/rotateOutlineAboutCanvasCenter'
 
-// describe('#rotateOutlineAboutCanvasCenter', () => {
-// 	const zoom = 10
-// 	const tileSize = 40
-// 	const canvasSize = 200
+describe('rotate outline about canvas center', () => {
+	const canvasSize = 200
+	beforeEach(() => resetStore(store))
 
-// 	beforeEach(() => {
-// 		resetStore(store)
-// 		composeMainHoundstooth()
-// 	})
+	it('works', () => {
+		store.mainHoundstooth.basePattern.viewSettings = {
+			rotateViewAboutCanvasCenter: Math.PI / 2,
+			canvasSize,
+		}
+		const outline = [
+			[ 0, 0 ],
+			[ 40, 0 ],
+			[ 0, 40 ],
+		]
 
-// 	it('works', () => {
-// 		store.mainHoundstooth.basePattern.viewSettings.rotateViewAboutCanvasCenter = Math.PI / 2
-// 		store.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
-// 		const outline = [
-// 			[ 0, 0 ],
-// 			[ 40, 0 ],
-// 			[ 0, 40 ],
-// 		]
+		const actualOutline = rotateOutlineAboutCanvasCenter(outline)
 
-// 		const actualOutline = viewUtilities.rotateOutlineAboutCanvasCenter(outline)
+		const expectedOutline = [
+			[ 200, 0 ],
+			[ 200, 40 ],
+			[ 160, 0 ],
+		]
+		expect(coordinatesMatch(expectedOutline, actualOutline)).toBe(true)
+	})
 
-// 		const expectedOutline = [
-// 			[ 200, 0 ],
-// 			[ 200, 40 ],
-// 			[ 160, 0 ],
-// 		]
-// 		expect(coordinatesMatch(expectedOutline, actualOutline)).toBe(true)
-// 	})
+	it('does nothing if rotateViewAboutCanvasCenter is undefined or 0', () => {
+		const outline = [
+			[ 0, 0 ],
+			[ 0, 40 ],
+			[ 40, 40 ],
+		]
 
-// 	it('does nothing if rotateViewAboutCanvasCenter is undefined or 0', () => {
-// 		const outline = [
-// 			[ 0, 0 ],
-// 			[ 0, 40 ],
-// 			[ 40, 40 ],
-// 		]
+		const actualOutline = rotateOutlineAboutCanvasCenter(outline)
 
-// 		const actualOutline = viewUtilities.rotateOutlineAboutCanvasCenter(outline)
-
-// 		expect(actualOutline).toEqual(outline)
-// 		expect(actualOutline).toBe(outline)
-// 	})
-// })
-// 
+		expect(actualOutline).toEqual(outline)
+		expect(actualOutline).toBe(outline)
+	})
+})

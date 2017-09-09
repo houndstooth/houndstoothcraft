@@ -1,9 +1,9 @@
-import render from './render'
+import draw from './draw'
 import colorUtilities from '../utilities/colorUtilities'
 
 export default ({ context, outline, shapeColorIndex }) => {
 	const shapeColor = colorUtilities.getColor({ index: shapeColorIndex })
 	if (shapeColor.a === 0) return
 
-	render({ context, shapeColor, outline })
+	draw({ context, shapeColor, outline })
 }

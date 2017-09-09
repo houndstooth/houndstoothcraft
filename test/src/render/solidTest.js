@@ -3,7 +3,7 @@ import colorUtilities from '../../../src/utilities/colorUtilities'
 
 describe('solid', () => {
 	let getColorSpy
-	let renderSpy
+	let drawSpy
 
 	const shapeColorIndex = 8
 	const shapeColor = { a: 1 }
@@ -12,8 +12,8 @@ describe('solid', () => {
 	const outline = []
 
 	beforeEach(() => {
-		renderSpy = jasmine.createSpy()
-		solid.__Rewire__('render', renderSpy)
+		drawSpy = jasmine.createSpy()
+		solid.__Rewire__('draw', drawSpy)
 		getColorSpy = spyOn(colorUtilities, 'getColor').and.returnValue(shapeColor)
 	})
 
@@ -27,7 +27,7 @@ describe('solid', () => {
 		it('renders', () => {
 			solid({ context, outline, shapeColorIndex })
 
-			expect(renderSpy).toHaveBeenCalledWith({ context, shapeColor, outline })
+			expect(drawSpy).toHaveBeenCalledWith({ context, shapeColor, outline })
 		})
 	})
 
@@ -37,7 +37,7 @@ describe('solid', () => {
 
 			solid({ context, outline, shapeColorIndex })
 
-			expect(renderSpy).not.toHaveBeenCalled()
+			expect(drawSpy).not.toHaveBeenCalled()
 		})
 	})
 })

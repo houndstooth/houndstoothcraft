@@ -1,5 +1,5 @@
-import applyView from '../render/applyView'
-import fill from '../render/fill'
+import applyView from './applyView'
+import fill from './fill'
 
 export default ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) return

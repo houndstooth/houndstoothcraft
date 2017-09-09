@@ -1,6 +1,6 @@
-import render from '../../../src/render/render'
+import draw from '../../../src/render/draw'
 
-describe('render', () => {
+describe('draw', () => {
 	const shapeColor = {}
 	const context = {}
 
@@ -8,13 +8,13 @@ describe('render', () => {
 	const adjustedOutline = []
 	beforeEach(() => {
 		applyViewSpy = jasmine.createSpy().and.returnValue(adjustedOutline)
-		render.__Rewire__('applyView', applyViewSpy)
+		draw.__Rewire__('applyView', applyViewSpy)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
 		const outline = []
 
-		render({ context, shapeColor, outline })
+		draw({ context, shapeColor, outline })
 
 		expect(applyViewSpy).not.toHaveBeenCalled()
 	})
@@ -22,7 +22,7 @@ describe('render', () => {
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
 		const outline = [ [ 0, 1 ] ]
 
-		render({ context, shapeColor, outline })
+		draw({ context, shapeColor, outline })
 
 		expect(applyViewSpy).not.toHaveBeenCalled()
 	})
@@ -30,7 +30,7 @@ describe('render', () => {
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
 		const outline = [ [ 0, 1 ], [ 1, 1 ] ]
 
-		render({ context, shapeColor, outline })
+		draw({ context, shapeColor, outline })
 
 		expect(applyViewSpy).not.toHaveBeenCalled()
 	})
@@ -40,10 +40,10 @@ describe('render', () => {
 		let outline
 		beforeEach(() => {
 			fillSpy = jasmine.createSpy()
-			render.__Rewire__('fill', fillSpy)
+			draw.__Rewire__('fill', fillSpy)
 			outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
-			render({ context, shapeColor, outline })
+			draw({ context, shapeColor, outline })
 		})
 
 		it('adjusts for the view settings', () => {

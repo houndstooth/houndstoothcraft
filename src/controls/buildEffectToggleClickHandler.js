@@ -1,11 +1,11 @@
-import store from '../../store'
+import state from '../../state'
 import resetInterface from './resetInterface'
 import execute from '../execute'
 
-const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
+const addEffect = houndstoothEffect => state.selectedHoundstoothEffects.push(houndstoothEffect)
 
 const removeEffect = houndstoothEffect => {
-	store.selectedHoundstoothEffects = store.selectedHoundstoothEffects.filter(selectedHoundstoothEffect => {
+	state.selectedHoundstoothEffects = state.selectedHoundstoothEffects.filter(selectedHoundstoothEffect => {
 		return selectedHoundstoothEffect.name !== houndstoothEffect.name
 	})
 }

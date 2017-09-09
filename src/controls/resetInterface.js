@@ -1,6 +1,6 @@
 import display from '../display'
-import store from '../../store'
-import storeStuff from '../store'
+import state from '../../state'
+import store from '../store'
 import setupWarnings from './setupWarnings'
 
 export default () => {
@@ -8,9 +8,9 @@ export default () => {
 	warnings.innerHTML = ''
 
 	display.clear()
-	clearInterval(store.interval)
+	clearInterval(state.interval)
 
-	const existingEffects = store.selectedHoundstoothEffects.slice()
-	storeStuff.resetStore(store)
-	store.selectedHoundstoothEffects = existingEffects
+	const existingEffects = state.selectedHoundstoothEffects.slice()
+	store.resetState(state)
+	state.selectedHoundstoothEffects = existingEffects
 }

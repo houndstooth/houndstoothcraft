@@ -1,8 +1,8 @@
-import store from '../../store'
+import state from '../../state'
 import perStripe from './perStripe'
 
 export default ({ gridAddress } = {}) => {
-	const getStripePositions = store.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions
+	const getStripePositions = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions
 	const getStripePositionsForTile = getStripePositions || standardStripePositions
 	return getStripePositionsForTile({ gridAddress })
 }

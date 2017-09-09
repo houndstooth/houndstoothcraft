@@ -1,6 +1,6 @@
 import tile from '../../../src/components/tile'
 import { PERIMETER_SCALAR } from '../../../src/constants'
-import store from '../../../store'
+import state from '../../../state'
 import render from '../../../src/render'
 import outlines from '../../../src/outlines'
 
@@ -54,7 +54,7 @@ describe('tile', () => {
 			getStripePositionsForTileSpy = jasmine.createSpy().and.returnValue(stripePositionsForTile)
 			tile.__Rewire__('getStripePositionsForTile', getStripePositionsForTileSpy)
 
-			store.mainHoundstooth.basePattern.tileSettings = {}
+			state.mainHoundstooth.basePattern.tileSettings = {}
 
 			tileColorIndices = []
 			getTileColorIndicesSpy.and.returnValue(tileColorIndices)
@@ -68,7 +68,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				store.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
+				state.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
 			it('checks if the tile is uniform', () => {
@@ -177,7 +177,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				store.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = false
+				state.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

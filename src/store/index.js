@@ -1,11 +1,11 @@
-import initialStore from './initialStore'
-import resetStore from './resetStore'
+import initialState from './initialState'
+import resetState from './resetState'
 import houndstoothDefaults from './houndstoothDefaults'
 import houndstoothStructure from './houndstoothStructure'
 
 export default {
 	houndstoothDefaults,
 	houndstoothStructure,
-	initialStore,
-	resetStore,
+	initialState,
+	resetState,
 }

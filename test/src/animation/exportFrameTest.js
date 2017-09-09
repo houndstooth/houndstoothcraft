@@ -1,15 +1,15 @@
 import exportFrame from '../../../src/animation/exportFrame'
 import fileSaver from 'file-saver'
-import store from '../../../store'
+import state from '../../../state'
 
 describe('export frame', () => {
 	let toBlobSpy
 	beforeEach(() => {
-		store.lastSavedAnimationFrame = 666
+		state.lastSavedAnimationFrame = 666
 
 		toBlobSpy = jasmine.createSpy()
 		toBlobSpy.and.callFake(callTheFunctionThrough => callTheFunctionThrough())
-		store.mixedDownContext = { context: { canvas: { toBlob: toBlobSpy } } }
+		state.mixedDownContext = { context: { canvas: { toBlob: toBlobSpy } } }
 
 		spyOn(fileSaver, 'saveAs')
 
@@ -25,6 +25,6 @@ describe('export frame', () => {
 	})
 
 	it('increments the last saved frame', () => {
-		expect(store.lastSavedAnimationFrame).toBe(667)
+		expect(state.lastSavedAnimationFrame).toBe(667)
 	})
 })

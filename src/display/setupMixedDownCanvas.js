@@ -1,4 +1,4 @@
-import store from '../../store'
+import state from '../../state'
 import deleteElementIfExists from './deleteElementIfExists'
 import getCanvasSize from './getCanvasSize'
 
@@ -15,5 +15,5 @@ export default () => {
 
 	mixedDownCanvas.style.display = 'none'
 
-	store.mixedDownContext = mixedDownCanvas.getContext('2d')
+	state.mixedDownContext = mixedDownCanvas.getContext('2d')
 }

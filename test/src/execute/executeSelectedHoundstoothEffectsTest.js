@@ -1,12 +1,12 @@
 import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 import display from '../../../src/display'
 
 describe('execute selected houndstooth effects', () => {
 	let executeGridSpy
 	beforeEach(() => {
-		resetStore(store)
+		resetState(state)
 
 		executeGridSpy = jasmine.createSpy()
 		executeSelectedHoundstoothEffects.__Rewire__('executeGrid', executeGridSpy)
@@ -20,7 +20,7 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		expect(composeMainHoundstoothSpy.calls.all()[0].args[0]).toEqual({
-			houndstoothEffects: store.selectedHoundstoothEffects,
+			houndstoothEffects: state.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
 
@@ -35,8 +35,8 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('includes the mixed down canvas when both mixing down and exporting', () => {
-			store.mixingDown = true
-			store.exportFrames = true
+			state.mixingDown = true
+			state.exportFrames = true
 
 			executeSelectedHoundstoothEffects()
 
@@ -45,7 +45,7 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
-			store.mixingDown = true
+			state.mixingDown = true
 
 			executeSelectedHoundstoothEffects()
 
@@ -54,7 +54,7 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
-			store.exportFrames = true
+			state.exportFrames = true
 
 			executeSelectedHoundstoothEffects()
 

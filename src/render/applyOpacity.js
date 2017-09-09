@@ -1,8 +1,8 @@
-import store from '../../store'
+import state from '../../state'
 import display from '../display'
 
 export default () => {
-	const colorSettings = store.mainHoundstooth.basePattern.colorSettings
+	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
 	if (!(colorSettings && colorSettings.opacity) || colorSettings.opacity === 1) return
 
 	const context = display.getCurrentContext()

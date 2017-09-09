@@ -1,16 +1,16 @@
 import perStripe from '../../../src/components/perStripe'
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('per stripe', () => {
 	beforeEach(() => {
-		resetStore(store)
+		resetState(state)
 		composeMainHoundstooth()
 	})
 
 	it('uses a stripe count if provided', () => {
-		store.mainHoundstooth.basePattern.stripeSettings = {
+		state.mainHoundstooth.basePattern.stripeSettings = {
 			stripePositionSettings: {
 				stripeCountSetting: 3,
 			},

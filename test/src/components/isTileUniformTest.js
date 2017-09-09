@@ -1,5 +1,5 @@
 import isTileUniform from '../../../src/components/isTileUniform'
-import store from '../../../store'
+import state from '../../../state'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {
@@ -10,7 +10,7 @@ describe('is tile uniform', () => {
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 5, g: 100, b: 50, a: 0.5 },
 		]
-		store.mainHoundstooth.basePattern.colorSettings = { set }
+		state.mainHoundstooth.basePattern.colorSettings = { set }
 	})
 
 	it('returns true if all of the tile color indices point to the same color', () => {

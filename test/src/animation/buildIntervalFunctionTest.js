@@ -1,12 +1,12 @@
 import buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('build animation function', () => {
 	let intervalFunction
 	let animationFunctionSpy, stopConditionSpy
 	beforeEach(() => {
-		resetStore(store)
+		resetState(state)
 		spyOn(window, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy()
 		stopConditionSpy = jasmine.createSpy()
@@ -33,6 +33,6 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionSpy).toHaveBeenCalled()
-		expect(window.clearInterval).toHaveBeenCalledWith(store.interval)
+		expect(window.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 })

@@ -1,3 +1,3 @@
-import store from '../../store'
+import state from '../../state'
 
-export default () => store.contexts[ store.currentLayer ]
+export default () => state.contexts[ state.currentLayer ]

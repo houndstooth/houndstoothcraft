@@ -6,12 +6,12 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('.viewSettings', () => {
 	const tileSizeSetting = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
-	beforeEach(() => resetStore(store))
+	beforeEach(() => resetState(state))
 
 	describe('.canvasSize', () => {
 		it('works', () => {

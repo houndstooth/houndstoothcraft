@@ -1,7 +1,7 @@
 import codeUtilities from '../utilities/codeUtilities'
 import texture from './texture'
 import display from '../display'
-import store from '../../store'
+import state from '../../state'
 import solid from './solid'
 
 export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
@@ -11,7 +11,7 @@ export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutlin
 	const context = display.getCurrentContext()
 	const shapeColorIndex = codeUtilities.wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
-	const textureSettings = store.mainHoundstooth.basePattern.textureSettings
+	const textureSettings = state.mainHoundstooth.basePattern.textureSettings
 	const renderTexture = textureSettings && textureSettings.renderTexture
 
 	const someArgs = { context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex }

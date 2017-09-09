@@ -1,5 +1,5 @@
 import buildEffectToggleClickHandler from '../../../src/controls/buildEffectToggleClickHandler'
-import store from '../../../store'
+import state from '../../../state'
 import execute from '../../../src/execute'
 
 describe('build effect toggle click handler', () => {
@@ -20,11 +20,11 @@ describe('build effect toggle click handler', () => {
 		expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 
 		const preExistingHoundstoothEffect = { name: 'preexisting tooth' }
-		store.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
+		state.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
 
 		simulateClick(checkbox, clickHandler)
 
-		expect(store.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, mockHoundstoothEffect ])
+		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, mockHoundstoothEffect ])
 
 		expect(resetInterfaceSpy).toHaveBeenCalled()
 		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
@@ -34,12 +34,12 @@ describe('build effect toggle click handler', () => {
 
 		// to confirm that it preserves the order otherwise when removing an effect
 		const otherHoundstoothEffect = { name: 'other tooth' }
-		store.selectedHoundstoothEffects.push(otherHoundstoothEffect)
+		state.selectedHoundstoothEffects.push(otherHoundstoothEffect)
 
 		simulateClick(checkbox, clickHandler)
 
 		expect(resetInterfaceSpy).toHaveBeenCalled()
-		expect(store.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, otherHoundstoothEffect ])
+		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, otherHoundstoothEffect ])
 		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
 })

@@ -1,11 +1,11 @@
 import tile from './tile'
-import store from '../../store'
+import state from '../../state'
 import render from '../render'
 import display from '../display'
 import codeUtilities from '../utilities/codeUtilities'
 
 export default () => {
-	let { includeNegativeQuadrants, gridSize } = store.mainHoundstooth.basePattern.gridSettings || {}
+	let { includeNegativeQuadrants, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
 	const { iterator } = codeUtilities
 
 	render.applyOpacity()

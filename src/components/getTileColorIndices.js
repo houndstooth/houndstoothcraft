@@ -1,8 +1,8 @@
 import codeUtilities from '../utilities/codeUtilities'
-import store from '../../store'
+import state from '../../state'
 
 export default ({ gridAddress }) => {
-	const assignment = store.mainHoundstooth.basePattern.colorSettings.assignment
+	const assignment = state.mainHoundstooth.basePattern.colorSettings.assignment
 
 	let tileColorIndices = getTileColorIndices({ gridAddress, assignment })
 

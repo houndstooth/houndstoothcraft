@@ -1,7 +1,7 @@
 import shape from '../../../src/render/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 import display from '../../../src/display'
 
 describe('shape', () => {
@@ -21,7 +21,7 @@ describe('shape', () => {
 	let getCurrentContextSpy
 
 	beforeEach(() => {
-		resetStore(store)
+		resetState(state)
 		renderSpy = jasmine.createSpy()
 		shape.__Rewire__('render', renderSpy)
 		wrappedIndexSpy = spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
@@ -114,7 +114,7 @@ describe('shape', () => {
 		describe('when a renderTexture method is supplied', () => {
 			const renderTexture = () => {}
 			beforeEach(() => {
-				store.mainHoundstooth.basePattern.textureSettings = { renderTexture }
+				state.mainHoundstooth.basePattern.textureSettings = { renderTexture }
 			})
 
 			it('passes it to the texture component to be rendered', () => {

@@ -1,14 +1,14 @@
 import coordinatesMatch from '../helpers/coordinatesMatch'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 import rotateOutlineAboutCanvasCenter from '../../../src/outlines/rotateOutlineAboutCanvasCenter'
 
 describe('rotate outline about canvas center', () => {
 	const canvasSize = 200
-	beforeEach(() => resetStore(store))
+	beforeEach(() => resetState(state))
 
 	it('works', () => {
-		store.mainHoundstooth.basePattern.viewSettings = {
+		state.mainHoundstooth.basePattern.viewSettings = {
 			rotateViewAboutCanvasCenter: Math.PI / 2,
 			canvasSize,
 		}

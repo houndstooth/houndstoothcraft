@@ -1,11 +1,11 @@
-import store from '../../store'
+import state from '../../state'
 import getCanvasSize from './getCanvasSize'
 
 export default () => {
 	const canvasSize = getCanvasSize()
-	store.contexts.forEach(context => clearContext({ context, canvasSize }))
+	state.contexts.forEach(context => clearContext({ context, canvasSize }))
 
-	const mixedDownContext = store.mixedDownContext
+	const mixedDownContext = state.mixedDownContext
 	mixedDownContext && clearContext({ context: mixedDownContext, canvasSize })
 }
 

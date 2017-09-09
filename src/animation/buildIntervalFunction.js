@@ -1,6 +1,6 @@
-import store from '../../store'
+import state from '../../state'
 
 export default ({ animationFunction, stopCondition }) => () => {
 	animationFunction()
-	if (stopCondition()) clearInterval(store.interval)
+	if (stopCondition()) clearInterval(state.interval)
 }

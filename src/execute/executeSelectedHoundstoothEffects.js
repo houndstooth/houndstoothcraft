@@ -2,25 +2,25 @@ import display from '../display'
 import prepareFunctionsPerSetting from './prepareFunctionsPerSetting'
 import codeUtilities from '../utilities/codeUtilities'
 import animation from '../animation'
-import store from '../../store'
+import state from '../../state'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import executeGrid from './executeGrid'
 
 export default ({ houndstoothOverrides = {} } = {}) => {
-	composeMainHoundstooth({ houndstoothEffects: store.selectedHoundstoothEffects, houndstoothOverrides })
+	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
 	const layerFunctions = prepareFunctionsPerSetting({
-		settingsFunctions: store.mainHoundstooth.layersPattern,
+		settingsFunctions: state.mainHoundstooth.layersPattern,
 	})
 
 	display.setupContexts()
 
-	if (store.exportFrames) store.mixingDown = true
-	if (store.mixingDown) display.setupMixedDownCanvas()
+	if (state.exportFrames) state.mixingDown = true
+	if (state.mixingDown) display.setupMixedDownCanvas()
 
-	if (store.animating) {
+	if (state.animating) {
 		const animationFunctions = prepareFunctionsPerSetting({
-			settingsFunctions: store.mainHoundstooth.animationsPattern,
+			settingsFunctions: state.mainHoundstooth.animationsPattern,
 		})
 		executeAnimation({ animationFunctions, layerFunctions })
 	}
@@ -30,15 +30,15 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 }
 
 const executeAnimation = ({ layerFunctions, animationFunctions }) => {
-	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = store.mainHoundstooth.basePattern.animationSettings || {}
+	let { frameRate, refreshCanvas, endAnimationFrame, startAnimationFrame } = state.mainHoundstooth.basePattern.animationSettings || {}
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = codeUtilities.defaultToTrue(refreshCanvas)
 
-	store.lastSavedAnimationFrame = startAnimationFrame
+	state.lastSavedAnimationFrame = startAnimationFrame
 
 	const animationFunction = animation.buildAnimationFunction({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas })
 
-	const stopCondition = () => store.currentAnimationFrame > endAnimationFrame
+	const stopCondition = () => state.currentAnimationFrame > endAnimationFrame
 
 	animation.animator({ animationFunction, frameRate, stopCondition })
 }

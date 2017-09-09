@@ -4,7 +4,7 @@ const INITIAL_MAIN_HOUNDSTOOTH = {
 	layersPattern: {},
 }
 
-const INITIAL_STORE = {
+const INITIAL_STATE = {
 	currentLayer: 0,
 	currentAnimationFrame: 0,
 	contexts: [],
@@ -19,4 +19,4 @@ const INITIAL_STORE = {
 	mainHoundstooth: INITIAL_MAIN_HOUNDSTOOTH,
 }
 
-export default { INITIAL_STORE, INITIAL_MAIN_HOUNDSTOOTH }
+export default { INITIAL_STATE, INITIAL_MAIN_HOUNDSTOOTH }

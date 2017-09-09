@@ -1,4 +1,4 @@
-import store from '../../store'
+import state from '../../state'
 import getCanvasSize from './getCanvasSize'
 import setElementDimensions from './setElementDimensions'
 import setupCanvasContainer from './setupCanvasContainer'
@@ -11,7 +11,7 @@ export default () => {
 	const canvasSize = getCanvasSize()
 	setElementDimensions(canvasContainer, canvasSize)
 
-	store.contexts = layerIterator().map(() => {
+	state.contexts = layerIterator().map(() => {
 		const canvas = document.createElement('canvas')
 		canvas.style.position = 'absolute'
 		canvas.width = canvasSize[ 0 ]

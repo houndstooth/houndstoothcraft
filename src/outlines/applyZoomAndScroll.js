@@ -1,11 +1,11 @@
-import store from '../../store'
+import state from '../../state'
 
 export default outline => {
 	const newOutline = []
 
 	outline.forEach(coordinate => {
 		let newCoordinate = adjustTileOriginForZoom({ tileOrigin: coordinate })
-		if (store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
+		if (state.mainHoundstooth.basePattern.viewSettings && state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
 			newCoordinate = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin: newCoordinate })
 		}
 		newOutline.push(newCoordinate)
@@ -15,7 +15,7 @@ export default outline => {
 }
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
-	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = store.mainHoundstooth.basePattern.viewSettings || {}
+	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = state.mainHoundstooth.basePattern.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
@@ -35,10 +35,10 @@ const adjustTileOriginForZoom = ({ tileOrigin }) => {
 }
 
 const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
-	const canvasSize = store.mainHoundstooth.basePattern.viewSettings.canvasSize
+	const canvasSize = state.mainHoundstooth.basePattern.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
-	const tileSizeSetting = store.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+	const tileSizeSetting = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	const halfTileSize = tileSizeSetting / 2
 
 	return [

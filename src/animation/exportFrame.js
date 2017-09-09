@@ -1,7 +1,7 @@
 import fileSaver from 'file-saver'
-import store from '../../store'
+import state from '../../state'
 
-export default () => store.mixedDownContext.context.canvas.toBlob(blob => {
-	fileSaver.saveAs(blob, `${store.lastSavedAnimationFrame}.png`)
-	store.lastSavedAnimationFrame++
+export default () => state.mixedDownContext.context.canvas.toBlob(blob => {
+	fileSaver.saveAs(blob, `${state.lastSavedAnimationFrame}.png`)
+	state.lastSavedAnimationFrame++
 })

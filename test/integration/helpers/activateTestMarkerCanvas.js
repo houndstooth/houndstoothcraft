@@ -4,7 +4,7 @@ import setupCanvasContainer from '../../../src/display/setupCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import setupTestMarkersCanvas from './setupTestMarkersCanvas'
 import setupMixedDownCanvas from '../../../src/display/setupMixedDownCanvas'
-import store from '../../../store'
+import state from '../../../state'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'
@@ -34,5 +34,5 @@ export default () => {
 	prepareCanvasForDisplayInTest(canvasContainer)
 
 	setupMixedDownCanvas()
-	store.mixingDown = true
+	state.mixingDown = true
 }

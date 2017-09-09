@@ -1,7 +1,7 @@
 import buildIntervalFunction from './buildIntervalFunction'
-import store from '../../store'
+import state from '../../state'
 
 export default ({ animationFunction, frameRate, stopCondition }) => {
 	const intervalFunction = buildIntervalFunction({ animationFunction, stopCondition })
-	store.interval = setInterval(intervalFunction, frameRate)
+	state.interval = setInterval(intervalFunction, frameRate)
 }

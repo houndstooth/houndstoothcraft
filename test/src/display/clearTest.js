@@ -1,5 +1,5 @@
 import clear from '../../../src/display/clear'
-import store from '../../../store'
+import state from '../../../state'
 
 describe('clear', () => {
 	let mixedDownClearRectSpy
@@ -7,14 +7,14 @@ describe('clear', () => {
 		clear.__Rewire__('getCanvasSize', () => [ 400, 500 ])
 
 		mixedDownClearRectSpy = jasmine.createSpy()
-		store.mixedDownContext = { clearRect: mixedDownClearRectSpy }
+		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }
 	})
 
 	describe('when there is a single context', () => {
 		let clearRectSpy
 		beforeEach(() => {
 			clearRectSpy = jasmine.createSpy()
-			store.contexts = [ { clearRect: clearRectSpy } ]
+			state.contexts = [ { clearRect: clearRectSpy } ]
 
 			clear()
 		})
@@ -33,7 +33,7 @@ describe('clear', () => {
 			const clearRectSpy1 = jasmine.createSpy()
 			const clearRectSpy2 = jasmine.createSpy()
 			const clearRectSpy3 = jasmine.createSpy()
-			store.contexts = [
+			state.contexts = [
 				{ clearRect: clearRectSpy1 },
 				{ clearRect: clearRectSpy2 },
 				{ clearRect: clearRectSpy3 },

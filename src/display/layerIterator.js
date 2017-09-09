@@ -1,8 +1,8 @@
-import store from '../../store'
+import state from '../../state'
 import codeUtilities from '../utilities/codeUtilities'
 
 export default () => {
-	const layerSettings = store.mainHoundstooth.basePattern.layerSettings
+	const layerSettings = state.mainHoundstooth.basePattern.layerSettings
 	const endLayer = layerSettings && layerSettings.endLayer || 0
 	const layerCount = endLayer + 1
 

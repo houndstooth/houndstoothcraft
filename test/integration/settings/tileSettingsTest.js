@@ -4,7 +4,7 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import clear from '../../../src/display/clear'
-import store from '../../../store'
+import state from '../../../state'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
@@ -78,7 +78,7 @@ describe('.tileSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let contextCallStack = store.contexts[0].stack()
+			let contextCallStack = state.contexts[0].stack()
 			expect(contextCallStack.length).toBe(9)
 			expect(contextCallStack[ 0 ].attr).toBe('globalCompositeOperation')
 			expect(contextCallStack[ 1 ].attr).toBe('fillStyle')
@@ -97,7 +97,7 @@ describe('.tileSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let contextCallStack = store.contexts[0].stack()
+			let contextCallStack = state.contexts[0].stack()
 			expect(contextCallStack.length).toBe(34)
 
 			expect(contextCallStack[ 0 ].attr).toBe('globalCompositeOperation')

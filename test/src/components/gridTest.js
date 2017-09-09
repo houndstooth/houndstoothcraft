@@ -1,6 +1,6 @@
 import grid from '../../../src/components/grid'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 import render from '../../../src/render'
 import display from '../../../src/display'
 
@@ -9,11 +9,11 @@ describe('grid', () => {
 	const gridSize = 2
 
 	beforeEach(() => {
-		resetStore(store)
+		resetState(state)
 		tileSpy = jasmine.createSpy()
 		grid.__Rewire__('tile', tileSpy)
 
-		store.mainHoundstooth.basePattern.gridSettings = { gridSize }
+		state.mainHoundstooth.basePattern.gridSettings = { gridSize }
 	})
 
 	it('uses the given grid size', () => {
@@ -24,7 +24,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = false
+			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = false
 		})
 
 		it('only makes tiles with positive addresses', () => {
@@ -40,7 +40,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
+			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
 		})
 
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {

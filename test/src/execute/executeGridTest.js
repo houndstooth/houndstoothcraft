@@ -1,12 +1,12 @@
 // spyOn(consoleWrapper, 'time')
 // spyOn(consoleWrapper, 'timeEnd')
 
-// store.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 100 }
+// state.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 100 }
 
 // describe('performance logging', () => {
 // 	describe('when performance logging', () => {
 // 		beforeEach(() => {
-// 			store.performanceLogging = true
+// 			state.performanceLogging = true
 // 		})
 
 // 		describe('when not layering nor animating', () => {
@@ -53,7 +53,7 @@
 
 // 		describe('when animating (but not layering)', () => {
 // 			beforeEach(() => {
-// 				store.animating = true
+// 				state.animating = true
 // 			})
 
 // 			it('logs the current animation frame along with the performance measurement', () => {
@@ -89,7 +89,7 @@
 
 // 		describe('when animating and layering', () => {
 // 			beforeEach(() => {
-// 				store.animating = true
+// 				state.animating = true
 // 			})
 
 // 			it('logs the animation frames, current layer, and grid performance', () => {
@@ -126,7 +126,7 @@
 
 // 	describe('when not performance logging', () => {
 // 		beforeEach(() => {
-// 			store.performanceLogging = false
+// 			state.performanceLogging = false
 // 		})
 
 // 		it('does not track performance or log it', () => {
@@ -141,7 +141,7 @@
 
 // describe('neither layering nor animating', () => {
 // 	beforeEach(() => {
-// 		store.animating = false
+// 		state.animating = false
 // 	})
 
 // 	it('executes grid only once', () => {
@@ -152,7 +152,7 @@
 
 // 	describe('mixing down canvases', () => {
 // 		fit('mixes down canvases, also once, if mixing down', () => {
-// 			store.mixingDown = true
+// 			state.mixingDown = true
 
 // 			executeSelectedHoundstoothEffects()
 
@@ -168,7 +168,7 @@
 
 // 	it('does not call layer functions', () => {
 // 		const layerFunction = jasmine.createSpy()
-// 		store.mainHoundstooth.layersPattern.tileSettings = { tileSizeSetting: layerFunction }
+// 		state.mainHoundstooth.layersPattern.tileSettings = { tileSizeSetting: layerFunction }
 
 // 		executeSelectedHoundstoothEffects()
 
@@ -179,7 +179,7 @@
 // describe('layering (but not animating)', () => {
 // 	let houndstoothOverrides
 // 	beforeEach(() => {
-// 		store.animating = false
+// 		state.animating = false
 // 		houndstoothOverrides = {
 // 			basePattern: {
 // 				layerSettings: {
@@ -198,7 +198,7 @@
 
 // 	describe('mixing down canvases', () => {
 // 		it('mixes down canvases, just once, if mixing down', () => {
-// 			store.mixingDown = true
+// 			state.mixingDown = true
 
 // 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
@@ -236,7 +236,7 @@
 // 	})
 
 // 	it('handles layer functions of the current layer', () => {
-// 		const layerFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.currentLayer + 1))
+// 		const layerFunction = jasmine.createSpy().and.callFake(() => 1000 - (state.currentLayer + 1))
 // 		houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 1000 }
 // 		houndstoothOverrides.layersPattern = {
 // 			tileSettings: {
@@ -261,7 +261,7 @@
 // describe('animating (but not layering)', () => {
 // 	let houndstoothOverrides
 // 	beforeEach(() => {
-// 		store.animating = true
+// 		state.animating = true
 // 		houndstoothOverrides = {
 // 			basePattern: {
 // 				animationSettings: {
@@ -281,7 +281,7 @@
 
 // 	describe('mixing down canvases', () => {
 // 		it('mixes down canvases once for each animation between start and end, inclusive, if mixing down', () => {
-// 			store.mixingDown = true
+// 			state.mixingDown = true
 
 // 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
@@ -323,7 +323,7 @@
 // 	})
 
 // 	it('handles animation functions of the current animation frame', () => {
-// 		const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (store.currentAnimationFrame + 1))
+// 		const animationFunction = jasmine.createSpy().and.callFake(() => 1000 - (state.currentAnimationFrame + 1))
 // 		houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 1000 }
 // 		houndstoothOverrides.animationsPattern = {
 // 			tileSettings: {
@@ -355,7 +355,7 @@
 // describe('layering and animating', () => {
 // 	let houndstoothOverrides
 // 	beforeEach(() => {
-// 		store.animating = true
+// 		state.animating = true
 // 		houndstoothOverrides = {
 // 			basePattern: {
 // 				layerSettings: {
@@ -378,7 +378,7 @@
 
 // 	describe('mixing down canvases', () => {
 // 		it('mixes down canvases once for each animation between start and end, inclusive, if mixing down', () => {
-// 			store.mixingDown = true
+// 			state.mixingDown = true
 
 // 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
@@ -402,7 +402,7 @@
 // 			},
 // 		}
 
-// 		const layerFunction = jasmine.createSpy().and.callFake(p => p + (store.currentLayer + 1))
+// 		const layerFunction = jasmine.createSpy().and.callFake(p => p + (state.currentLayer + 1))
 // 		houndstoothOverrides.layersPattern = {
 // 			tileSettings: {
 // 				tileSizeSetting: layerFunction,
@@ -465,8 +465,8 @@
 // 	const endAnimationFrame = 5
 // 	let houndstoothOverrides
 // 	beforeEach(() => {
-// 		store.animating = true
-// 		store.exportFrames = true
+// 		state.animating = true
+// 		state.exportFrames = true
 // 		houndstoothOverrides = {
 // 			basePattern: {
 // 				animationSettings: {
@@ -481,12 +481,12 @@
 // 		animatorSpy.and.callThrough()
 
 // 		const interval = setInterval(() => {
-// 			store.lastSavedAnimationFrame++
-// 			if (store.lastSavedAnimationFrame >= endAnimationFrame) {
+// 			state.lastSavedAnimationFrame++
+// 			if (state.lastSavedAnimationFrame >= endAnimationFrame) {
 // 				clearInterval(interval)
 // 				done()
 // 			}
-// 			expect(exportFrameSpy.calls.all().length).toBe(store.lastSavedAnimationFrame - startAnimationFrame)
+// 			expect(exportFrameSpy.calls.all().length).toBe(state.lastSavedAnimationFrame - startAnimationFrame)
 // 		}, 400)
 
 // 		executeSelectedHoundstoothEffects({ houndstoothOverrides })

@@ -1,12 +1,12 @@
 import mixDownContexts from '../../../src/display/mixDownContexts'
-import store from '../../../store'
+import state from '../../../state'
 
 describe('mix down contexts', () => {
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {
 		const drawImageSpy = jasmine.createSpy()
-		store.mixedDownContext = { drawImage: drawImageSpy }
+		state.mixedDownContext = { drawImage: drawImageSpy }
 
-		store.contexts = [
+		state.contexts = [
 			{ context: { canvas: 0 } },
 			{ context: { canvas: 1 } },
 			{ context: { canvas: 2 } },

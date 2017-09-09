@@ -2,11 +2,11 @@ import executeSelectedHoundstoothEffects from '../../src/execute/executeSelected
 import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN, TRANSPARENT, ERASE } from '../../src/constants'
 import standardTileIsColors from './helpers/standardTileIsColors'
-import store from '../../store'
-import resetStore from '../../src/store/resetStore'
+import state from '../../state'
+import resetState from '../../src/store/resetState'
 
 describe('erasing', () => {
-	beforeEach(() => resetStore(store))
+	beforeEach(() => resetState(state))
 
 	it('makes holes so material from lower layers shows through', () => {
 		const houndstoothOverrides = {

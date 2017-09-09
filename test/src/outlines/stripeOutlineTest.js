@@ -1,5 +1,5 @@
 import stripeOutline from '../../../src/outlines/stripeOutline'
-import store from '../../../store'
+import state from '../../../state'
 
 describe('stripe outline', () => {
 	const tileOrigin = [ 0, 0 ]
@@ -189,7 +189,7 @@ describe('stripe outline', () => {
 
 	describe('when the base stripe diagonal is principal', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.stripeSettings = { baseStripeDiagonal: 'PRINCIPAL' }
+			state.mainHoundstooth.basePattern.stripeSettings = { baseStripeDiagonal: 'PRINCIPAL' }
 		})
 
 		it('rotates the stripe a quarter of the way around', () => {

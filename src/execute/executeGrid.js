@@ -1,11 +1,11 @@
-import store from '../../store'
+import state from '../../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import components from '../components'
 import display from '../display'
 import consoleWrapper from '../utilities/consoleWrapper'
 
 export default ({ layerFunctions }) => {
-	let { startLayer, endLayer } = store.mainHoundstooth.basePattern.layerSettings || {}
+	let { startLayer, endLayer } = state.mainHoundstooth.basePattern.layerSettings || {}
 	startLayer = startLayer || 0
 
 	for (let n = 0; n <= endLayer; n++) {
@@ -15,16 +15,16 @@ export default ({ layerFunctions }) => {
 		if (n < endLayer) {
 			callFunctionsPerSetting({ settingsFunctions: layerFunctions })
 		}
-		store.currentLayer++
+		state.currentLayer++
 	}
 
-	if (store.mixingDown) display.mixDownContexts()
+	if (state.mixingDown) display.mixDownContexts()
 
-	store.currentLayer = 0
+	state.currentLayer = 0
 }
 
 const gridAndMaybeLogging = () => {
-	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = store
+	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
 	if (performanceLogging) consoleWrapper.time('grid')
 	components.grid()
 	if (performanceLogging) {

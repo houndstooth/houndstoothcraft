@@ -2,11 +2,11 @@ import executeSelectedHoundstoothEffects from '../../src/execute/executeSelected
 import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN } from '../../src/constants'
 import pixelIsColorWithMarker from './helpers/pixelIsColorWithMarker'
-import store from '../../store'
-import resetStore from '../../src/store/resetStore'
+import state from '../../state'
+import resetState from '../../src/store/resetState'
 
 describe('layering', () => {
-	beforeEach(() => resetStore(store))
+	beforeEach(() => resetState(state))
 
 	it('blends colors from semi-translucent layers', () => {
 		const houndstoothOverrides = {

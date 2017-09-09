@@ -1,5 +1,5 @@
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
-import store from '../../../store'
+import state from '../../../state'
 import applyZoomAndScroll from '../../../src/outlines/applyZoomAndScroll'
 
 describe('apply zoom and scroll', () => {
@@ -17,7 +17,7 @@ describe('apply zoom and scroll', () => {
 	})
 
 	it('adjusts the outline per the zoom level', () => {
-		store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
+		state.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
 		expect(applyZoomAndScroll(outline)).toEqual([
 			[ 30, 50 ],
@@ -28,12 +28,12 @@ describe('apply zoom and scroll', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.viewSettings.zoomOnCanvasCenter = true
-			store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
+			state.mainHoundstooth.basePattern.viewSettings.zoomOnCanvasCenter = true
+			state.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 		})
 
 		it('works', () => {
-			store.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
+			state.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
 
 			expect(applyZoomAndScroll(outline)).toEqual([
 				[ -870, -850 ],
@@ -43,7 +43,7 @@ describe('apply zoom and scroll', () => {
 		})
 
 		it('does not readjust for zooming on the center if it already is centered', () => {
-			store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
+			state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
 
 			expect(applyZoomAndScroll(outline)).toEqual([
 				[ 405, 425 ],
@@ -55,16 +55,16 @@ describe('apply zoom and scroll', () => {
 
 	describe('centering view on the center of the tile at grid address [ 0, 0 ]', () => {
 		beforeEach(() => {
-			store.mainHoundstooth.basePattern.viewSettings = {
+			state.mainHoundstooth.basePattern.viewSettings = {
 				centerViewOnCenterOfTileAtZeroZeroAddress: true,
 				zoom,
 				canvasSize,
 			}
-			store.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
+			state.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
 		})
 
 		it('adjusts per the zoom, tile, and canvas size', () => {
-			store.mainHoundstooth.basePattern.viewSettings.zoom = zoom
+			state.mainHoundstooth.basePattern.viewSettings.zoom = zoom
 
 			expect(applyZoomAndScroll(outline)).toEqual([
 				[

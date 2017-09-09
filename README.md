@@ -20,15 +20,15 @@ Each effect gets its own submodule and its own tests within that repo, which the
 ## state hierarchy
 
 In short:
-- [store](#store)
+- [state](#state)
     - [houndstooth](#houndstooth)
         - [pattern](#pattern)
             - [setting](#setting)  
 
-### store
+### state
 - example instances
-	- `store`
-	- `INITIAL_STORE`
+	- `state`
+	- `INITIAL_STATE`
 - contents
 	- `mainHoundstooth` — a [houndstooth](#houndstooth)
 	- other stuff such as `lastSavedAnimationFrame`

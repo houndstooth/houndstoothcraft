@@ -6,7 +6,7 @@ import getTileOriginAndSize from './getTileOriginAndSize'
 import getStripePositionsForTile from './getStripePositionsForTile'
 import outlines from '../outlines'
 import { PERIMETER_SCALAR } from '../constants'
-import store from '../../store'
+import state from '../../state'
 
 export default ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
@@ -18,7 +18,7 @@ export default ({ gridAddress }) => {
 }
 
 const shouldUseSquare = ({ tileColorIndices }) => {
-	const { collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
+	const { collapseSameColoredShapesWithinTile } = state.mainHoundstooth.basePattern.tileSettings || {}
 	const tileCanBeCollapsed = isTileUniform({ tileColorIndices })
 	const shouldCollapseSameColoredShapes = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 	return shouldCollapseSameColoredShapes && tileCanBeCollapsed

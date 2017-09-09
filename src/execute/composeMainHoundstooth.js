@@ -1,8 +1,8 @@
 import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 import consoleWrapper from '../utilities/consoleWrapper'
-import storeStuff from '../store'
-import store from '../../store'
+import store from '../store'
+import state from '../../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 
 export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } = {}) => {
@@ -11,30 +11,30 @@ export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logCompose
 	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) return
 
 	composePattern({
-		patternToCompose: store.mainHoundstooth.basePattern,
-		houndstoothDefaults: storeStuff.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern,
+		patternToCompose: state.mainHoundstooth.basePattern,
+		houndstoothDefaults: store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern,
 		houndstoothEffects: combinedHoundstoothEffects.basePattern,
 		houndstoothOverrides: houndstoothOverrides.basePattern,
 	})
 	composePattern({
-		patternToCompose: store.mainHoundstooth.layersPattern,
-		houndstoothDefaults: storeStuff.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.layersPattern,
+		patternToCompose: state.mainHoundstooth.layersPattern,
+		houndstoothDefaults: store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.layersPattern,
 		houndstoothEffects: combinedHoundstoothEffects.layersPattern,
 		houndstoothOverrides: houndstoothOverrides.layersPattern,
 	})
 	composePattern({
-		patternToCompose: store.mainHoundstooth.animationsPattern,
-		houndstoothDefaults: storeStuff.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern,
+		patternToCompose: state.mainHoundstooth.animationsPattern,
+		houndstoothDefaults: store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern,
 		houndstoothEffects: combinedHoundstoothEffects.animationsPattern,
 		houndstoothOverrides: houndstoothOverrides.animationsPattern,
 	})
 
-	if (logComposedMainHoundstooth) consoleWrapper.log(store.mainHoundstooth)
+	if (logComposedMainHoundstooth) consoleWrapper.log(state.mainHoundstooth)
 }
 
 const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {
-	if (!houndstoothHasOnlyRecognizedPatterns(store.mainHoundstooth)) return true
-	if (!houndstoothHasOnlyRecognizedPatterns(storeStuff.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(state.mainHoundstooth)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)) return true
 	if (!combinedHoundstoothEffects) return true
 	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) return true
 	return false

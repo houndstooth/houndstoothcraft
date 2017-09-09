@@ -1,5 +1,5 @@
 import setupMixedDownCanvas from '../../../src/display/setupMixedDownCanvas'
-import store from '../../../store'
+import state from '../../../state'
 import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
 
 let mixedDownCanvas
@@ -23,8 +23,8 @@ describe('setup mixed down context', () => {
 			expect(newMixedDownCanvas).not.toBe(mixedDownCanvas)
 		})
 
-		it('points the mixed down canvas node of the store at it', () => {
-			expect(store.mixedDownContext).toBe(newMixedDownCanvas.getContext('2d'))
+		it('points the mixed down canvas node of the state at it', () => {
+			expect(state.mixedDownContext).toBe(newMixedDownCanvas.getContext('2d'))
 		})
 	})
 
@@ -36,12 +36,12 @@ describe('setup mixed down context', () => {
 			mixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
 
-		it('creates a mixed down canvas and puts it on the document and the store', () => {
+		it('creates a mixed down canvas and puts it on the document and the state', () => {
 			expect(mixedDownCanvas).toBeTruthy()
 		})
 
-		it('puts this canvas on the store', () => {
-			expect(store.mixedDownContext).toBe(mixedDownCanvas.getContext('2d'))
+		it('puts this canvas on the state', () => {
+			expect(state.mixedDownContext).toBe(mixedDownCanvas.getContext('2d'))
 		})
 
 		it('does not display this canvas', () => {

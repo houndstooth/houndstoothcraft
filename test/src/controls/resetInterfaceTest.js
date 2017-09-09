@@ -1,7 +1,7 @@
 import resetInterface from '../../../src/controls/resetInterface'
 import warn from '../../../src/controls/warn'
-import store from '../../../store'
-import initialStore from '../../../src/store/initialStore'
+import state from '../../../state'
+import initialState from '../../../src/store/initialState'
 import setupWarnings from '../../../src/controls/setupWarnings'
 import display from '../../../src/display'
 
@@ -29,18 +29,18 @@ describe('reset interface', () => {
 
 		resetInterface()
 
-		expect(window.clearInterval).toHaveBeenCalledWith(store.interval)
+		expect(window.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 
-	it('resets the store, except for any selected effects', () => {
+	it('resets the state, except for any selected effects', () => {
 		const fakeHoundstoothEffect = {}
-		store.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
-		store.mainHoundstooth.basePattern.gridSettings = { gridSize: 42 }
+		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
+		state.mainHoundstooth.basePattern.gridSettings = { gridSize: 42 }
 
 		resetInterface()
 
-		const expectedStore = initialStore.INITIAL_STORE
+		const expectedStore = initialState.INITIAL_STATE
 		expectedStore.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
-		expect(store).toEqual(expectedStore)
+		expect(state).toEqual(expectedStore)
 	})
 })

@@ -1,10 +1,10 @@
 import render from '../render'
-import store from '../../store'
+import state from '../../state'
 import getCurrentContext from './getCurrentContext'
 import getCanvasSize from './getCanvasSize'
 
 export default () => {
-	const colorSettings = store.mainHoundstooth.basePattern.colorSettings
+	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
 	const backgroundColor = colorSettings && colorSettings.backgroundColor
 	if (!backgroundColor) return
 

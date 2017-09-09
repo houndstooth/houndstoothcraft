@@ -1,8 +1,8 @@
 import rotateOutlineAboutPoint from './rotateOutlineAboutPoint'
-import store from '../../store'
+import state from '../../state'
 
 export default outline => {
-	const { canvasSize, rotateViewAboutCanvasCenter } = store.mainHoundstooth.basePattern.viewSettings || {}
+	const { canvasSize, rotateViewAboutCanvasCenter } = state.mainHoundstooth.basePattern.viewSettings || {}
 
 	if (rotateViewAboutCanvasCenter) {
 		outline = rotateOutlineAboutPoint({

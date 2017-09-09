@@ -1,6 +1,6 @@
 import animator from '../../../src/animation/animator'
-import store from '../../../store'
-import resetStore from '../../../src/store/resetStore'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('animator', () => {
 	let buildIntervalFunctionSpy
@@ -8,7 +8,7 @@ describe('animator', () => {
 	let animationFunction, frameRate, stopCondition
 	let interval
 	beforeEach(() => {
-		resetStore(store)
+		resetState(state)
 
 		interval = () => {
 		}
@@ -38,6 +38,6 @@ describe('animator', () => {
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {
-		expect(store.interval).toBe(interval)
+		expect(state.interval).toBe(interval)
 	})
 })

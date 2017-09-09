@@ -1,18 +1,17 @@
-import rotationUtilities from './rotationUtilities'
 import store from '../../store'
 
-const rotateOutlineAboutCanvasCenter = outline => {
-	const { canvasSize, rotateViewAboutCanvasCenter } = store.mainHoundstooth.basePattern.viewSettings || {}
+export default outline => {
+	const newOutline = []
 
-	if (rotateViewAboutCanvasCenter) {
-		outline = rotationUtilities.rotateCoordinatesAboutPoint({
-			point: [ canvasSize / 2, canvasSize / 2 ],
-			coordinates: outline,
-			rotation: rotateViewAboutCanvasCenter,
-		})
-	}
+	outline.forEach(coordinate => {
+		let newCoordinate = adjustTileOriginForZoom({ tileOrigin: coordinate })
+		if (store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
+			newCoordinate = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin: newCoordinate })
+		}
+		newOutline.push(newCoordinate)
+	})
 
-	return outline
+	return newOutline
 }
 
 const adjustTileOriginForZoom = ({ tileOrigin }) => {
@@ -46,23 +45,4 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
 		tileOrigin[ 1 ] + canvasCenter - halfTileSize,
 	]
-}
-
-const applyZoomAndScroll = outline => {
-	const newOutline = []
-
-	outline.forEach(coordinate => {
-		let newCoordinate = adjustTileOriginForZoom({ tileOrigin: coordinate })
-		if (store.mainHoundstooth.basePattern.viewSettings && store.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
-			newCoordinate = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin: newCoordinate })
-		}
-		newOutline.push(newCoordinate)
-	})
-
-	return newOutline
-}
-
-export default {
-	rotateOutlineAboutCanvasCenter,
-	applyZoomAndScroll,
 }

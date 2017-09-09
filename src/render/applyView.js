@@ -1,6 +1,7 @@
-import viewUtilities from '../utilities/viewUtilities'
+import applyZoomAndScroll from './applyZoomAndScroll'
+import rotateOutlineAboutCanvasCenter from './rotateOutlineAboutCanvasCenter'
 
 export default outline => {
-	outline = viewUtilities.applyZoomAndScroll(outline)
-	return viewUtilities.rotateOutlineAboutCanvasCenter(outline)
+	outline = applyZoomAndScroll(outline)
+	return rotateOutlineAboutCanvasCenter(outline)
 }

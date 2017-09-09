@@ -1,4 +1,4 @@
-import colorUtilities from '../utilities/colorUtilities'
+import isTileUniform from './isTileUniform'
 import codeUtilities from '../utilities/codeUtilities'
 import shape from '../render/shape'
 import getTileColorIndices from '../components/getTileColorIndices'
@@ -20,7 +20,7 @@ export default ({ gridAddress }) => {
 
 const shouldUseSquare = ({ tileColorIndices }) => {
 	const { collapseSameColoredShapesWithinTile } = store.mainHoundstooth.basePattern.tileSettings || {}
-	const tileCanBeCollapsed = colorUtilities.isTileUniform({ tileColorIndices })
+	const tileCanBeCollapsed = isTileUniform({ tileColorIndices })
 	const shouldCollapseSameColoredShapes = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
 	return shouldCollapseSameColoredShapes && tileCanBeCollapsed
 }

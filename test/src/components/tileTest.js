@@ -1,5 +1,4 @@
 import tile from '../../../src/components/tile'
-import colorUtilities from '../../../src/utilities/colorUtilities'
 import { PERIMETER_SCALAR } from '../../../src/constants'
 import store from '../../../store'
 
@@ -11,7 +10,7 @@ describe('tile', () => {
 	let stripeOutlineSpy
 
 	let getTileColorIndicesSpy
-	let colorUtilitiesIsTileUniformSpy
+	let isTileUniformSpy
 
 	beforeEach(() => {
 		shapeSpy = jasmine.createSpy()
@@ -22,15 +21,15 @@ describe('tile', () => {
 		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
 		getTileColorIndicesSpy = jasmine.createSpy()
 		tile.__Rewire__('getTileColorIndices', getTileColorIndicesSpy)
-
-		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
+		isTileUniformSpy = jasmine.createSpy()
+		tile.__Rewire__('isTileUniform', isTileUniformSpy)
 	})
 
-	afterEach(() => {
-		tile.__ResetDependency__('shape')
-		tile.__ResetDependency__('squareOutline')
-		tile.__ResetDependency__('stripeOutline')
-	})
+	// afterEach(() => {
+	// 	tile.__ResetDependency__('shape')
+	// 	tile.__ResetDependency__('squareOutline')
+	// 	tile.__ResetDependency__('stripeOutline')
+	// })
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
@@ -81,12 +80,12 @@ describe('tile', () => {
 			it('checks if the tile is uniform', () => {
 				tile({ gridAddress })
 
-				expect(colorUtilitiesIsTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
+				expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
 			})
 
 			describe('when the tile is uniform', () => {
 				beforeEach(() => {
-					colorUtilitiesIsTileUniformSpy.and.returnValue(true)
+					isTileUniformSpy.and.returnValue(true)
 				})
 
 				it('does not look for stripe positions', () => {
@@ -110,7 +109,7 @@ describe('tile', () => {
 
 			describe('when the tile is not uniform', () => {
 				beforeEach(() => {
-					colorUtilitiesIsTileUniformSpy.and.returnValue(false)
+					isTileUniformSpy.and.returnValue(false)
 				})
 
 				it('looks for stripe positions', () => {
@@ -188,7 +187,7 @@ describe('tile', () => {
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {
-				colorUtilitiesIsTileUniformSpy.and.returnValue(true)
+				isTileUniformSpy.and.returnValue(true)
 
 				tile({ gridAddress })
 

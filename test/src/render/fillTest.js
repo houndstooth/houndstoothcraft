@@ -1,5 +1,4 @@
 import fill from '../../../src/render/fill'
-import colorUtilities from '../../../src/utilities/colorUtilities'
 import { ERASE } from '../../../src/constants'
 
 describe('fill', () => {
@@ -7,10 +6,14 @@ describe('fill', () => {
 	const parsedColor = '#012345'
 	const context = {}
 	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+
+	let parseColorSpy
 	let buildPathSpy
 	let fillPathSpy
+
 	beforeEach(() => {
-		spyOn(colorUtilities, 'parseColor').and.returnValue(parsedColor)
+		parseColorSpy = jasmine.createSpy().and.returnValue(parsedColor)
+		fill.__Rewire__('parseColor', parseColorSpy)
 		buildPathSpy = jasmine.createSpy()
 		fill.__Rewire__('buildPath', buildPathSpy)
 		fillPathSpy = jasmine.createSpy()
@@ -20,7 +23,7 @@ describe('fill', () => {
 	})
 
 	it('parses the shape color and sets the fill style to it', () => {
-		expect(colorUtilities.parseColor).toHaveBeenCalledWith(shapeColor)
+		expect(parseColorSpy).toHaveBeenCalledWith(shapeColor)
 	})
 
 	it('sets the fill style to the parsed color', () => {

@@ -1,5 +1,4 @@
 import solid from '../../../src/render/solid'
-import colorUtilities from '../../../src/utilities/colorUtilities'
 
 describe('solid', () => {
 	let getColorSpy
@@ -14,7 +13,8 @@ describe('solid', () => {
 	beforeEach(() => {
 		drawSpy = jasmine.createSpy()
 		solid.__Rewire__('draw', drawSpy)
-		getColorSpy = spyOn(colorUtilities, 'getColor').and.returnValue(shapeColor)
+		getColorSpy = jasmine.createSpy().and.returnValue(shapeColor)
+		solid.__Rewire__('getColor', getColorSpy)
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {

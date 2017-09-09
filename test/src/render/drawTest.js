@@ -1,4 +1,5 @@
 import draw from '../../../src/render/draw'
+import outlines from '../../../src/outlines'
 
 describe('draw', () => {
 	const shapeColor = {}
@@ -7,8 +8,7 @@ describe('draw', () => {
 	let applyViewSpy
 	const adjustedOutline = []
 	beforeEach(() => {
-		applyViewSpy = jasmine.createSpy().and.returnValue(adjustedOutline)
-		draw.__Rewire__('applyView', applyViewSpy)
+		applyViewSpy = spyOn(outlines, 'applyView').and.returnValue(adjustedOutline)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {

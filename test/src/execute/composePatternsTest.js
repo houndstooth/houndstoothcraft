@@ -1,5 +1,6 @@
 import composePatterns from '../../../src/execute/composePatterns'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import controls from '../../../src/controls'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
@@ -88,8 +89,7 @@ describe('compose patterns', () => {
 		let warnSpy
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'warn')
-			warnSpy = jasmine.createSpy()
-			composePatterns.__Rewire__('warn', warnSpy)
+			warnSpy = spyOn(controls, 'warn')
 		})
 
 		it('warns when requested and there are conflicts', () => {

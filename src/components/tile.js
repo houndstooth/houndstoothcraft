@@ -1,11 +1,10 @@
 import isTileUniform from './isTileUniform'
 import codeUtilities from '../utilities/codeUtilities'
-import shape from '../render/shape'
-import getTileColorIndices from '../components/getTileColorIndices'
-import getTileOriginAndSize from '../components/getTileOriginAndSize'
+import render from '../render'
+import getTileColorIndices from './getTileColorIndices'
+import getTileOriginAndSize from './getTileOriginAndSize'
 import getStripePositionsForTile from './getStripePositionsForTile'
-import squareOutline from '../outlines/squareOutline'
-import stripeOutline from '../outlines/stripeOutline'
+import outlines from '../outlines'
 import { PERIMETER_SCALAR } from '../constants'
 import store from '../../store'
 
@@ -26,22 +25,22 @@ const shouldUseSquare = ({ tileColorIndices }) => {
 }
 
 const squareTile = args => {
-	args.getOutline = squareOutline
-	shape(args)
+	args.getOutline = outlines.squareOutline
+	render.shape(args)
 }
 
 const stripedTile = args => {
 	const stripePositions = getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
 		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
-		shape(stripeArgs)
+		render.shape(stripeArgs)
 	})
 }
 
 const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
 	const stripeArgs = codeUtilities.deepClone(args)
 
-	stripeArgs.getOutline = stripeOutline
+	stripeArgs.getOutline = outlines.stripeOutline
 	stripeArgs.stripeIndex = stripeIndex
 	const stripeEnd = stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR
 	stripeArgs.outlineOptions = { stripeStart, stripeEnd }

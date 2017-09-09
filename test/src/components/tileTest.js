@@ -1,6 +1,8 @@
 import tile from '../../../src/components/tile'
 import { PERIMETER_SCALAR } from '../../../src/constants'
 import store from '../../../store'
+import render from '../../../src/render'
+import outlines from '../../../src/outlines'
 
 describe('tile', () => {
 	const gridAddress = [ 3, 5 ]
@@ -13,23 +15,15 @@ describe('tile', () => {
 	let isTileUniformSpy
 
 	beforeEach(() => {
-		shapeSpy = jasmine.createSpy()
-		tile.__Rewire__('shape', shapeSpy)
-		squareOutlineSpy = jasmine.createSpy()
-		tile.__Rewire__('squareOutline', squareOutlineSpy)
-		stripeOutlineSpy = jasmine.createSpy()
-		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
+		shapeSpy = spyOn(render, 'shape')
+		squareOutlineSpy = spyOn(outlines, 'squareOutline')
+		stripeOutlineSpy = spyOn(outlines, 'stripeOutline')
+
 		getTileColorIndicesSpy = jasmine.createSpy()
 		tile.__Rewire__('getTileColorIndices', getTileColorIndicesSpy)
 		isTileUniformSpy = jasmine.createSpy()
 		tile.__Rewire__('isTileUniform', isTileUniformSpy)
 	})
-
-	// afterEach(() => {
-	// 	tile.__ResetDependency__('shape')
-	// 	tile.__ResetDependency__('squareOutline')
-	// 	tile.__ResetDependency__('stripeOutline')
-	// })
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {

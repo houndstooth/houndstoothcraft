@@ -1,10 +1,13 @@
 import controls from './controls'
 import execute from './execute'
+import storeStuff from './store'
 
-const { initializeInterface } = controls
+const { setupEffectToggles } = controls
 const { executeSelectedHoundstoothEffects } = execute
+const { initialStore } = storeStuff
 
 export default {
 	executeSelectedHoundstoothEffects,
-	initializeInterface,
+	setupEffectToggles,
+	initialStore,
 }

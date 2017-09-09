@@ -3,6 +3,7 @@ import warn from '../../../src/controls/warn'
 import store from '../../../store'
 import initialStore from '../../../src/store/initialStore'
 import setupWarnings from '../../../src/controls/setupWarnings'
+import display from '../../../src/display'
 
 describe('reset interface', () => {
 	it('clears warnings', () => {
@@ -16,8 +17,7 @@ describe('reset interface', () => {
 	})
 
 	it('clears canvas', () => {
-		const clearSpy = jasmine.createSpy()
-		resetInterface.__Rewire__('clear', clearSpy)
+		const clearSpy = spyOn(display, 'clear')
 
 		resetInterface()
 

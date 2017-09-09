@@ -1,7 +1,7 @@
-import initializeInterface from './initializeInterface'
+import setupEffectToggles from './setupEffectToggles'
 import warn from './warn'
 
 export default {
-	initializeInterface,
+	setupEffectToggles,
 	warn,
 }

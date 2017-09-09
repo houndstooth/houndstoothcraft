@@ -1,7 +1,10 @@
 import consoleWrapper from '../utilities/consoleWrapper'
 import codeUtilities from '../utilities/codeUtilities'
+import controls from '../controls'
+
+/* eslint-disable import/no-internal-modules */
 import patternStructure from '../store/patternStructure'
-import warn from '../controls/warn'
+/* eslint-enable import/no-internal-modules */
 
 const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure.PATTERN_STRUCTURE, warnAboutConflicts }) => {
 	if (!patternToMerge) return
@@ -28,7 +31,7 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 			if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
 				const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
 				consoleWrapper.warn(warning)
-				warn(warning)
+				controls.warn(warning)
 			}
 
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting

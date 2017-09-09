@@ -1,12 +1,13 @@
 import buildEffectToggleClickHandler from '../../../src/controls/buildEffectToggleClickHandler'
 import store from '../../../store'
+import execute from '../../../src/execute'
 
 describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
 		const resetInterfaceSpy = jasmine.createSpy()
 		buildEffectToggleClickHandler.__Rewire__('resetInterface', resetInterfaceSpy)
-		const executeSelectedHoundstoothEffectsSpy = jasmine.createSpy()
-		buildEffectToggleClickHandler.__Rewire__('executeSelectedHoundstoothEffects', executeSelectedHoundstoothEffectsSpy)
+
+		const executeSelectedHoundstoothEffectsSpy = spyOn(execute, 'executeSelectedHoundstoothEffects')
 
 		const checkbox = document.createElement('input')
 		checkbox.setAttribute('type', 'checkbox')

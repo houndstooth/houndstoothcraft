@@ -2,6 +2,7 @@ import shape from '../../../src/render/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
+import display from '../../../src/display'
 
 describe('shape', () => {
 	let renderSpy
@@ -27,8 +28,7 @@ describe('shape', () => {
 
 		getOutline = jasmine.createSpy()
 
-		getCurrentContextSpy = jasmine.createSpy().and.returnValue(context)
-		shape.__Rewire__('getCurrentContext', getCurrentContextSpy)
+		getCurrentContextSpy = spyOn(display, 'getCurrentContext').and.returnValue(context)
 	})
 
 	describe('when no outline is returned from the get outline function', () => {

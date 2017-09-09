@@ -1,4 +1,5 @@
 import src from './src'
+import effects from './effects'
 
-src.initializeInterface()
+src.setupEffectToggles(Object.values(effects))
 src.executeSelectedHoundstoothEffects()

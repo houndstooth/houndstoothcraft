@@ -1,4 +1,4 @@
-import parseColor from '../render/parseColor'
+import render from '../render'
 import store from '../../store'
 import getCurrentContext from './getCurrentContext'
 import getCanvasSize from './getCanvasSize'
@@ -11,6 +11,6 @@ export default () => {
 	const canvasSize = getCanvasSize()
 
 	const context = getCurrentContext()
-	context.fillStyle = parseColor(backgroundColor)
+	context.fillStyle = render.parseColor(backgroundColor)
 	context.fillRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }

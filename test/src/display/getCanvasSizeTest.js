@@ -1,5 +1,5 @@
 import getCanvasSize from '../../../src/display/getCanvasSize'
-import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
+import storeStuff from '../../../src/store'
 import store from '../../../store'
 
 describe('get canvas size', () => {
@@ -7,8 +7,8 @@ describe('get canvas size', () => {
 		it('sets the width and height of the canvas to the default', () => {
 			const canvasSize = getCanvasSize()
 
-			expect(canvasSize[ 0 ]).toBe(houndstoothDefaults.CANVAS_SIZE)
-			expect(canvasSize[ 1 ]).toBe(houndstoothDefaults.CANVAS_SIZE)
+			expect(canvasSize[ 0 ]).toBe(storeStuff.houndstoothDefaults.CANVAS_SIZE)
+			expect(canvasSize[ 1 ]).toBe(storeStuff.houndstoothDefaults.CANVAS_SIZE)
 		})
 	})
 

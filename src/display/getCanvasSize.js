@@ -1,9 +1,9 @@
 import store from '../../store'
-import houndstoothDefaults from '../store/houndstoothDefaults'
+import storeStuff from '../store'
 
 export default () => {
 	const viewSettings = store.mainHoundstooth.basePattern.viewSettings
-	const canvasSize = viewSettings && viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
+	const canvasSize = viewSettings && viewSettings.canvasSize || storeStuff.houndstoothDefaults.CANVAS_SIZE
 
 	const oblong = canvasSize instanceof Array
 	const width = oblong ? canvasSize[0] : canvasSize

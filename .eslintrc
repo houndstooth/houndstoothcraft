@@ -53,8 +53,11 @@
       "error",
       "stroustrup"
     ],
-    "import/no-internal-modules": [
-      "error"
+    "import/no-internal-modules": [ 
+      "error", 
+      {
+        "allow": [ "**/src/utilities/*" ]
+      } 
     ]
   }
 }

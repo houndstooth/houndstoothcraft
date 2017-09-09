@@ -20,7 +20,7 @@ const PATTERN_STRUCTURE = {
 		assignment: {
 			switcheroo: true,
 			flipGrain: true,
-			transformAssignedSet: true,
+			transformTileColorIndices: true,
 			assignmentMode: true,
 			offsetAddress: true,
 			supertile: true,

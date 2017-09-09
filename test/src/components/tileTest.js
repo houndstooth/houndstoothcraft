@@ -11,7 +11,7 @@ describe('tile', () => {
 	let squareOutlineSpy
 	let stripeOutlineSpy
 
-	let getSetIndicesForTileSpy
+	let getTileColorIndicesSpy
 	let colorUtilitiesIsTileUniformSpy
 
 	beforeEach(() => {
@@ -21,8 +21,8 @@ describe('tile', () => {
 		tile.__Rewire__('squareOutline', squareOutlineSpy)
 		stripeOutlineSpy = jasmine.createSpy()
 		tile.__Rewire__('stripeOutline', stripeOutlineSpy)
-		getSetIndicesForTileSpy = jasmine.createSpy()
-		tile.__Rewire__('getSetIndicesForTile', getSetIndicesForTileSpy)
+		getTileColorIndicesSpy = jasmine.createSpy()
+		tile.__Rewire__('getTileColorIndices', getTileColorIndicesSpy)
 
 		colorUtilitiesIsTileUniformSpy = spyOn(colorUtilities, 'isTileUniform')
 	})
@@ -42,7 +42,7 @@ describe('tile', () => {
 		it('returns early, not getting colors', () => {
 			tile({ gridAddress })
 
-			expect(getSetIndicesForTileSpy).not.toHaveBeenCalled()
+			expect(getTileColorIndicesSpy).not.toHaveBeenCalled()
 		})
 	})
 
@@ -63,13 +63,13 @@ describe('tile', () => {
 			store.mainHoundstooth.basePattern.tileSettings = {}
 
 			tileColorIndices = []
-			getSetIndicesForTileSpy.and.returnValue(tileColorIndices)
+			getTileColorIndicesSpy.and.returnValue(tileColorIndices)
 		})
 
 		it('gets colors', () => {
 			tile({ gridAddress })
 
-			expect(getSetIndicesForTileSpy).toHaveBeenCalledWith({ gridAddress })
+			expect(getTileColorIndicesSpy).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {

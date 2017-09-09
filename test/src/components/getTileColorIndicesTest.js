@@ -1,15 +1,15 @@
-import getSetIndicesForTile from '../../../src/components/getSetIndicesForTile'
+import getTileColorIndices from '../../../src/components/getTileColorIndices'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'
 
-describe('get set indices for tile', () => {
+describe('get tile color indices', () => {
 	beforeEach(() => resetStore(store))
 
 	const gridAddress = [ 3, 5 ]
 
-	describe('assignment', () => {
-		it('can use a weave-based assignment scheme and a grid address to choose the indices of the tile\'s set to later get stuff from', () => {
+	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
+		it('can use a weave-based assignment scheme', () => {
 			store.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
@@ -20,10 +20,10 @@ describe('get set indices for tile', () => {
 				},
 			}
 
-			expect(getSetIndicesForTile({ gridAddress })).toEqual([ 3, 1 ])
+			expect(getTileColorIndices({ gridAddress })).toEqual([ 3, 1 ])
 		})
 
-		it('can use a supertile-based assignment scheme and a grid address to choose the tile\'s set from the overall grid set', () => {
+		it('can use a supertile-based assignment scheme', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 
 			store.mainHoundstooth.basePattern.colorSettings = {
@@ -37,12 +37,12 @@ describe('get set indices for tile', () => {
 				},
 			}
 
-			expect(getSetIndicesForTile({ gridAddress })).toEqual(expectedSupertileEntry)
+			expect(getTileColorIndices({ gridAddress })).toEqual(expectedSupertileEntry)
 		})
 	})
 
-	describe('address offset', () => {
-		it('when in weave mode, it allows offsetting of the grid address', () => {
+	describe('allowing offsetting of the grid address', () => {
+		it('works when in weave mode', () => {
 			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ]
 			store.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
@@ -55,10 +55,10 @@ describe('get set indices for tile', () => {
 				},
 			}
 
-			expect(getSetIndicesForTile({ gridAddress })).toEqual([ 3, 1 ])
+			expect(getTileColorIndices({ gridAddress })).toEqual([ 3, 1 ])
 		})
 
-		it('when in supertile mode, it allows offsetting of the grid address', () => {
+		it('works when in supertile mode', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ]
 			store.mainHoundstooth.basePattern.colorSettings = {
@@ -73,12 +73,12 @@ describe('get set indices for tile', () => {
 				},
 			}
 
-			expect(getSetIndicesForTile({ gridAddress })).toEqual(expectedSupertileEntry)
+			expect(getTileColorIndices({ gridAddress })).toEqual(expectedSupertileEntry)
 		})
 	})
 
-	describe('re-ordering of chosen set', () => {
-		it('can flip the grain of the houndstooth (by reversing the set)', () => {
+	describe('re-ordering of chosen color indices', () => {
+		it('can flip the grain of the houndstooth (by reversing order)', () => {
 			store.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
@@ -88,10 +88,10 @@ describe('get set indices for tile', () => {
 					},
 				},
 			}
-			const notFlippedResult = getSetIndicesForTile({ gridAddress })
+			const notFlippedResult = getTileColorIndices({ gridAddress })
 
 			store.mainHoundstooth.basePattern.colorSettings.assignment.flipGrain = true
-			const flippedResult = getSetIndicesForTile({ gridAddress })
+			const flippedResult = getTileColorIndices({ gridAddress })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})
@@ -111,28 +111,28 @@ describe('get set indices for tile', () => {
 			}
 			const iterator = codeUtilities.iterator
 			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ]))
-			const setsForTiles = addresses.map(col => col.map(gridAddress => getSetIndicesForTile({
+			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))
 
-			const expectedSetsForTiles = [
+			const expectedSetOfTileColorIndices = [
 				[ [ 0, 1 ], [ 1, 2 ], [ 3, 2 ], [ 3, 4 ] ],
 				[ [ 4, 5 ], [ 6, 5 ], [ 6, 7 ], [ 7, 8 ] ],
 				[ [ 9, 8 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
 				[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 16, 15 ] ],
 			]
-			expectedSetsForTiles.forEach((col, x) => col.forEach((expectedSetForTile, y) => {
-				expect(expectedSetForTile).toEqual(setsForTiles[ x ][ y ])
+			expectedSetOfTileColorIndices.forEach((col, x) => col.forEach((expectedTileColorIndices, y) => {
+				expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
 			}))
 		})
 
-		it('calls an arbitrary set transformation function if provided', () => {
-			const transformAssignedSet = ({ setForTile, gridAddress }) => {
-				return gridAddress[ 0 ] === 1 ? setForTile.concat(setForTile) : setForTile
+		it('calls an arbitrary transformation, if provided', () => {
+			const transformTileColorIndices = ({ tileColorIndices, gridAddress }) => {
+				return gridAddress[ 0 ] === 1 ? tileColorIndices.concat(tileColorIndices) : tileColorIndices
 			}
 			store.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
-					transformAssignedSet,
+					transformTileColorIndices,
 					assignmentMode: 'WEAVE',
 					weave: {
 						columns: [ 0, 1 ],
@@ -142,11 +142,11 @@ describe('get set indices for tile', () => {
 			}
 			const iterator = codeUtilities.iterator
 			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ]))
-			const setsForTiles = addresses.map(col => col.map(gridAddress => getSetIndicesForTile({
+			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))
 
-			const expectedSetsForTiles = [
+			const expectedSetOfTileColorIndices = [
 				[
 					[ 1, 0 ],
 					[ 0, 0 ],
@@ -156,8 +156,8 @@ describe('get set indices for tile', () => {
 					[ 0, 1, 0, 1 ],
 				],
 			]
-			expectedSetsForTiles.forEach((col, x) => col.forEach((expectedSetForTile, y) => {
-				expect(expectedSetForTile).toEqual(setsForTiles[ x ][ y ])
+			expectedSetOfTileColorIndices.forEach((col, x) => col.forEach((expectedTileColorIndices, y) => {
+				expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
 			}))
 		})
 	})

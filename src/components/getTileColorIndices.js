@@ -4,22 +4,22 @@ import store from '../../store'
 export default ({ gridAddress }) => {
 	const assignment = store.mainHoundstooth.basePattern.colorSettings.assignment
 
-	let setIndicesForTile = getSetIndices({	gridAddress, assignment })
+	let tileColorIndices = getTileColorIndices({ gridAddress, assignment })
 
-	return maybeAdjustSetIndices({ assignment, gridAddress, setIndicesForTile })
+	return maybeAdjustTileColorIndices({ assignment, gridAddress, tileColorIndices })
 }
 
-const maybeAdjustSetIndices = ({ assignment, gridAddress, setIndicesForTile }) => {
-	let { transformAssignedSet, flipGrain, switcheroo } = assignment
+const maybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {
+	let { transformTileColorIndices, flipGrain, switcheroo } = assignment
 
-	if (flipGrain) setIndicesForTile = setIndicesForTile.reverse()
-	if (switcheroo) setIndicesForTile = switcherooSet({ setForTile: setIndicesForTile, gridAddress })
-	if (transformAssignedSet) setIndicesForTile = transformAssignedSet({ setForTile: setIndicesForTile, gridAddress })
+	if (flipGrain) tileColorIndices = tileColorIndices.reverse()
+	if (switcheroo) tileColorIndices = applySwitcheroo({ tileColorIndices, gridAddress })
+	if (transformTileColorIndices) tileColorIndices = transformTileColorIndices({ tileColorIndices, gridAddress })
 
-	return setIndicesForTile
+	return tileColorIndices
 }
 
-const getSetIndices = ({ gridAddress, assignment }) => {
+const getTileColorIndices = ({ gridAddress, assignment }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = assignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
@@ -49,7 +49,7 @@ const getBySupertile = ({ gridAddress, addressOffset, supertile }) => {
 	return codeUtilities.wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 }
 
-const switcherooSet = ({ setForTile, gridAddress }) => {
+const applySwitcheroo = ({ tileColorIndices, gridAddress }) => {
 	const xMod = gridAddress[ 0 ] % 4
 	const yMod = gridAddress[ 1 ] % 4
 	if (
@@ -58,8 +58,8 @@ const switcherooSet = ({ setForTile, gridAddress }) => {
 		(xMod === 2 && yMod === 0) ||
 		(xMod === 0 && yMod === 2)
 	) {
-		return setForTile.reverse()
+		return tileColorIndices.reverse()
 	}
 
-	return setForTile
+	return tileColorIndices
 }

@@ -1,6 +1,5 @@
 import tile from '../../../src/components/tile'
 import colorUtilities from '../../../src/utilities/colorUtilities'
-import stripeUtilities from '../../../src/utilities/stripeUtilities'
 import { PERIMETER_SCALAR } from '../../../src/constants'
 import store from '../../../store'
 
@@ -51,6 +50,7 @@ describe('tile', () => {
 		let tileColorIndices
 		let tileOrigin
 		let tileSize
+		let getStripePositionsForTileSpy
 		beforeEach(() => {
 			tileOrigin = [ 7, 11 ]
 			tileSize = 13
@@ -58,7 +58,8 @@ describe('tile', () => {
 			tile.__Rewire__('getTileOriginAndSize', getTileOriginAndSizeSpy)
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
-			spyOn(stripeUtilities, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
+			getStripePositionsForTileSpy = jasmine.createSpy().and.returnValue(stripePositionsForTile)
+			tile.__Rewire__('getStripePositionsForTile', getStripePositionsForTileSpy)
 
 			store.mainHoundstooth.basePattern.tileSettings = {}
 
@@ -91,7 +92,7 @@ describe('tile', () => {
 				it('does not look for stripe positions', () => {
 					tile({ gridAddress })
 
-					expect(stripeUtilities.getStripePositionsForTile).not.toHaveBeenCalled()
+					expect(getStripePositionsForTileSpy).not.toHaveBeenCalled()
 				})
 
 				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses square outline', () => {
@@ -115,7 +116,7 @@ describe('tile', () => {
 				it('looks for stripe positions', () => {
 					tile({ gridAddress })
 
-					expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
+					expect(getStripePositionsForTileSpy).toHaveBeenCalledWith({ gridAddress })
 				})
 
 				it('converts the tile into a number of shapes equal to the number of stripes', () => {
@@ -191,7 +192,7 @@ describe('tile', () => {
 
 				tile({ gridAddress })
 
-				expect(stripeUtilities.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
+				expect(getStripePositionsForTileSpy).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: stripeOutlineSpy }))
 			})

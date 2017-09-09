@@ -3,7 +3,7 @@ import codeUtilities from '../utilities/codeUtilities'
 import shape from '../render/shape'
 import getTileColorIndices from '../components/getTileColorIndices'
 import getTileOriginAndSize from '../components/getTileOriginAndSize'
-import stripeUtilities from '../utilities/stripeUtilities'
+import getStripePositionsForTile from './getStripePositionsForTile'
 import squareOutline from '../outlines/squareOutline'
 import stripeOutline from '../outlines/stripeOutline'
 import { PERIMETER_SCALAR } from '../constants'
@@ -31,7 +31,7 @@ const squareTile = args => {
 }
 
 const stripedTile = args => {
-	const stripePositions = stripeUtilities.getStripePositionsForTile({ gridAddress: args.gridAddress })
+	const stripePositions = getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
 		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
 		shape(stripeArgs)

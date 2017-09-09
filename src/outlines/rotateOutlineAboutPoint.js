@@ -11,10 +11,6 @@ const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 	]
 }
 
-const rotateCoordinatesAboutPoint = ({ coordinates, point, rotation }) => {
-	return coordinates.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
-}
-
-export default {
-	rotateCoordinatesAboutPoint,
+export default ({ outline, point, rotation }) => {
+	return outline.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
 }

@@ -1,6 +1,5 @@
 import stripeOutline from '../../../src/outlines/stripeOutline'
 import store from '../../../store'
-import rotationUtilities from '../../../src/utilities/rotationUtilities'
 
 describe('stripe outline', () => {
 	const tileOrigin = [ 0, 0 ]
@@ -195,12 +194,13 @@ describe('stripe outline', () => {
 
 		it('rotates the stripe a quarter of the way around', () => {
 			const rotatedOutline = []
-			spyOn(rotationUtilities, 'rotateCoordinatesAboutPoint').and.returnValue(rotatedOutline)
+			const rotateOutlineAboutPointSpy = jasmine.createSpy().and.returnValue(rotatedOutline)
+			stripeOutline.__Rewire__('rotateOutlineAboutPoint', rotateOutlineAboutPointSpy)
 			const outlineOptions = { stripeStart, stripeEnd }
 
 			const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 
-			expect(rotationUtilities.rotateCoordinatesAboutPoint).toHaveBeenCalled()
+			expect(rotateOutlineAboutPointSpy).toHaveBeenCalled()
 			expect(result).toBe(rotatedOutline)
 		})
 	})

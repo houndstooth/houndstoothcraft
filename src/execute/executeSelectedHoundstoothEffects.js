@@ -1,5 +1,5 @@
 import clear from '../display/clear'
-import prepareFunctionsPerSetting from '../store/prepareFunctionsPerSetting'
+import prepareFunctionsPerSetting from './prepareFunctionsPerSetting'
 import codeUtilities from '../utilities/codeUtilities'
 import grid from '../components/grid'
 import consoleWrapper from '../utilities/consoleWrapper'
@@ -9,7 +9,7 @@ import store from '../../store'
 import setupContexts from '../display/setupContexts'
 import setupMixedDownCanvas from '../display/setupMixedDownCanvas'
 import mixDownContexts from '../display/mixDownContexts'
-import composeMainHoundstooth from '../store/composeMainHoundstooth'
+import composeMainHoundstooth from './composeMainHoundstooth'
 
 export default ({ houndstoothOverrides = {} } = {}) => {
 	composeMainHoundstooth({ houndstoothEffects: store.selectedHoundstoothEffects, houndstoothOverrides })

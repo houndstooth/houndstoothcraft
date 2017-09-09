@@ -1,6 +1,6 @@
 import store from '../../store'
 import resetInterface from './resetInterface'
-import executeSelectedHoundstoothEffects from '../controls/executeSelectedHoundstoothEffects'
+import executeSelectedHoundstoothEffects from '../execute/executeSelectedHoundstoothEffects'
 
 const addEffect = houndstoothEffect => store.selectedHoundstoothEffects.push(houndstoothEffect)
 

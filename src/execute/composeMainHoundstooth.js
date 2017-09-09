@@ -1,7 +1,7 @@
-import houndstoothHasOnlyRecognizedPatterns from '../store/houndstoothHasOnlyRecognizedPatterns'
+import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 import consoleWrapper from '../utilities/consoleWrapper'
-import houndstoothDefaults from './houndstoothDefaults'
+import houndstoothDefaults from '../store/houndstoothDefaults'
 import store from '../../store'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 

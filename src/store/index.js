@@ -1,13 +1,9 @@
-import composeMainHoundstooth from './composeMainHoundstooth'
-import houndstoothDefaults from './houndstoothDefaults'
 import initialStore from './initialStore'
-import prepareFunctionsPerSetting from './prepareFunctionsPerSetting'
 import resetStore from './resetStore'
+import houndstoothDefaults from './houndstoothDefaults'
 
 export default {
-	composeMainHoundstooth,
 	houndstoothDefaults,
 	initialStore,
-	prepareFunctionsPerSetting,
 	resetStore,
 }

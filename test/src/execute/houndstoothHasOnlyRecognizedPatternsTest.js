@@ -1,4 +1,4 @@
-import houndstoothHasOnlyRecognizedPatterns from '../../../src/store/houndstoothHasOnlyRecognizedPatterns'
+import houndstoothHasOnlyRecognizedPatterns from '../../../src/execute/houndstoothHasOnlyRecognizedPatterns'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 
 describe('houndstooth has only recognized patterns', () => {

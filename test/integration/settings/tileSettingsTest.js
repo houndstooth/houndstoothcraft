@@ -1,5 +1,5 @@
 import '../../../node_modules/canteen/build/canteen.min'
-import executeSelectedHoundstoothEffects from '../../../src/controls/executeSelectedHoundstoothEffects'
+import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'

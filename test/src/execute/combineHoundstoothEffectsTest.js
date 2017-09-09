@@ -1,4 +1,4 @@
-import combineHoundstoothEffects from '../../../src/store/combineHoundstoothEffects'
+import combineHoundstoothEffects from '../../../src/execute/combineHoundstoothEffects'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {

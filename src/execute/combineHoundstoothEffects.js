@@ -1,4 +1,4 @@
-import houndstoothHasOnlyRecognizedPatterns from '../store/houndstoothHasOnlyRecognizedPatterns'
+import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 
 export default ({ houndstoothEffects }) => {

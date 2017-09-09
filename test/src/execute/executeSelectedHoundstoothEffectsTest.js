@@ -1,4 +1,4 @@
-import executeSelectedHoundstoothEffects from '../../../src/controls/executeSelectedHoundstoothEffects'
+import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import store from '../../../store'
 import resetStore from '../../../src/store/resetStore'

@@ -1,4 +1,4 @@
-import prepareFunctionsPerSetting from '../../../src/store/prepareFunctionsPerSetting'
+import prepareFunctionsPerSetting from '../../../src/execute/prepareFunctionsPerSetting'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 

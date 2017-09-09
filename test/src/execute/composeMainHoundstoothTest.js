@@ -1,5 +1,5 @@
 import codeUtilities from '../../../src/utilities/codeUtilities'
-import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
+import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import houndstoothDefaults from '../../../src/store/houndstoothDefaults'
 import store from '../../../store'

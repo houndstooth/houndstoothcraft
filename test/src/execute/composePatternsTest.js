@@ -1,4 +1,4 @@
-import composePatterns from '../../../src/store/composePatterns'
+import composePatterns from '../../../src/execute/composePatterns'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 
 describe('compose patterns', () => {

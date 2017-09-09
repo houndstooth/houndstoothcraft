@@ -1,5 +1,5 @@
 // import viewUtilities from '../../../src/utilities/viewUtilities'
-// import composeMainHoundstooth from '../../../src/store/composeMainHoundstooth'
+// import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
 // import coordinatesMatch from '../helpers/coordinatesMatch'
 // import store from '../../../store'
 // import resetStore from '../../../src/store/resetStore'

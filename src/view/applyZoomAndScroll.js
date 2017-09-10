@@ -4,9 +4,9 @@ export default outline => {
 	const newOutline = []
 
 	outline.forEach(coordinate => {
-		let newCoordinate = adjustTileOriginForZoom({ tileOrigin: coordinate })
+		let newCoordinate = adjustCoordinateForZoom({ coordinate })
 		if (state.mainHoundstooth.basePattern.viewSettings && state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress) {
-			newCoordinate = centerViewOnCenterOfTileAtZeroZeroAddress({ tileOrigin: newCoordinate })
+			newCoordinate = centerViewOnCenterOfTileAtZeroZeroAddress({ coordinate: newCoordinate })
 		}
 		newOutline.push(newCoordinate)
 	})
@@ -14,27 +14,27 @@ export default outline => {
 	return newOutline
 }
 
-const adjustTileOriginForZoom = ({ tileOrigin }) => {
+const adjustCoordinateForZoom = ({ coordinate }) => {
 	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtZeroZeroAddress } = state.mainHoundstooth.basePattern.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
-		tileOrigin[ 0 ] -= canvasCenter
-		tileOrigin[ 1 ] -= canvasCenter
+		coordinate[ 0 ] -= canvasCenter
+		coordinate[ 1 ] -= canvasCenter
 	}
 
-	tileOrigin[ 0 ] *= zoom
-	tileOrigin[ 1 ] *= zoom
+	coordinate[ 0 ] *= zoom
+	coordinate[ 1 ] *= zoom
 
 	if (zoomOnCanvasCenter && !centerViewOnCenterOfTileAtZeroZeroAddress) {
-		tileOrigin[ 0 ] += canvasCenter
-		tileOrigin[ 1 ] += canvasCenter
+		coordinate[ 0 ] += canvasCenter
+		coordinate[ 1 ] += canvasCenter
 	}
 
-	return tileOrigin
+	return coordinate
 }
 
-const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
+const centerViewOnCenterOfTileAtZeroZeroAddress = ({ coordinate }) => {
 	const canvasSize = state.mainHoundstooth.basePattern.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 
@@ -42,7 +42,7 @@ const centerViewOnCenterOfTileAtZeroZeroAddress = ({ tileOrigin }) => {
 	const halfTileSize = tileSizeSetting / 2
 
 	return [
-		tileOrigin[ 0 ] + canvasCenter - halfTileSize,
-		tileOrigin[ 1 ] + canvasCenter - halfTileSize,
+		coordinate[ 0 ] + canvasCenter - halfTileSize,
+		coordinate[ 1 ] + canvasCenter - halfTileSize,
 	]
 }

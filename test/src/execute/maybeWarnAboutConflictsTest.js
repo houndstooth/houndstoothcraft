@@ -110,7 +110,21 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		const expectedWarning = 'some effects have conflicts on setting `colorSettings.set`: `[ a, b ]` was overridden by `[ b, a ]`'
+		const expectedWarning = 'some effects have conflicts on setting `colorSettings.set`: `["a","b"]` was overridden by `["b","a"]`'
+		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
+	})
+
+	it('shows the contents of objects (such as colors) (as opposed to [object Object])', () => {
+		warnAboutConflicts = true
+		settingsPath = [ 'colorSettings' ]
+		settingName = 'backgroundColor'
+		existingSetting = { r: 0, g: 5, b: 10, a: 1 }
+		overridingSetting = { a: 0 }
+
+		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+
+		const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
 	})

@@ -46,8 +46,8 @@ const formatSettingForWarning = setting => {
 	if (typeof setting === 'function') {
 		return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
 	}
-	else if (setting instanceof Array) {
-		return `[ ${setting.join(', ')} ]`
+	else if (typeof setting === 'string') {
+		return setting
 	}
-	return setting
+	return JSON.stringify(setting)
 }

@@ -1,8 +1,7 @@
 import grid from '../../../src/components/grid'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import render from '../../../src/render'
-import display from '../../../src/display'
+import view from '../../../src/view'
 
 describe('grid', () => {
 	let tileSpy
@@ -69,19 +68,19 @@ describe('grid', () => {
 	})
 
 	it('applies background color', () => {
-		spyOn(display, 'applyBackgroundColor')
+		spyOn(view, 'applyBackgroundColor')
 
 		grid()
 
-		expect(display.applyBackgroundColor).toHaveBeenCalled()
+		expect(view.applyBackgroundColor).toHaveBeenCalled()
 	})
 
 	it('applies opacity', () => {
-		spyOn(render, 'applyOpacity')
+		spyOn(view, 'applyOpacity')
 
 		grid()
 
-		expect(render.applyOpacity).toHaveBeenCalled()
+		expect(view.applyOpacity).toHaveBeenCalled()
 	})
 
 	afterEach(() => grid.__ResetDependency__('tile'))

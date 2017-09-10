@@ -1,15 +1,14 @@
 import tile from './tile'
 import state from '../../state'
-import render from '../render'
-import display from '../display'
+import view from '../view'
 import codeUtilities from '../utilities/codeUtilities'
 
 export default () => {
 	let { includeNegativeQuadrants, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
 	const { iterator } = codeUtilities
 
-	render.applyOpacity()
-	display.applyBackgroundColor()
+	view.applyOpacity()
+	view.applyBackgroundColor()
 
 	if (includeNegativeQuadrants) {
 		iterator(gridSize * 2).forEach(x => {

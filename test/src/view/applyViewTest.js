@@ -1,4 +1,4 @@
-import applyView from '../../../src/outlines/applyView'
+import applyView from '../../../src/view/applyView'
 
 describe('adjusts outline for view', () => {
 	it('applies any relevant zoom, scroll, and rotation', () => {

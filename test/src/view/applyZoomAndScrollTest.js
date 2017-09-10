@@ -1,6 +1,6 @@
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
 import state from '../../../state'
-import applyZoomAndScroll from '../../../src/outlines/applyZoomAndScroll'
+import applyZoomAndScroll from '../../../src/view/applyZoomAndScroll'
 
 describe('apply zoom and scroll', () => {
 	const zoom = 10

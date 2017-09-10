@@ -1,7 +1,7 @@
 import coordinatesMatch from '../helpers/coordinatesMatch'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import rotateOutlineAboutCanvasCenter from '../../../src/outlines/rotateOutlineAboutCanvasCenter'
+import rotateOutlineAboutCanvasCenter from '../../../src/view/rotateOutlineAboutCanvasCenter'
 
 describe('rotate outline about canvas center', () => {
 	const canvasSize = 200

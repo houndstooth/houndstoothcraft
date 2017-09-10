@@ -1,4 +1,4 @@
-import applyOpacity from '../../../src/render/applyOpacity'
+import applyOpacity from '../../../src/view/applyOpacity'
 import state from '../../../state'
 
 describe('apply opacity', () => {

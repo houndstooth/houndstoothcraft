@@ -1,4 +1,4 @@
-import setElementDimensions from '../../../src/canvas/setElementDimensions'
+import documentUtilities from '../../../src/utilities/documentUtilities'
 import getCanvasSize from '../../../src/canvas/getCanvasSize'
 import setupCanvasContainer from '../../../src/canvas/setupCanvasContainer'
 import testMarkersClear from './testMarkersClear'
@@ -28,7 +28,7 @@ export default () => {
 	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 	testCanvasDisplayArea.style.display = 'block'
 
-	setElementDimensions(testCanvasDisplayArea, canvasSize)
+	documentUtilities.setElementDimensions(testCanvasDisplayArea, canvasSize)
 
 	let canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
 	prepareCanvasForDisplayInTest(canvasContainer)

@@ -1,4 +1,4 @@
-import insertElementRightAfter from './insertElementRightAfter'
+import documentUtilities from '../utilities/documentUtilities'
 import setupEffectTogglesContainer from './setupEffectTogglesContainer'
 
 export default () => {
@@ -7,7 +7,7 @@ export default () => {
 	warnings.style.padding = '20px'
 
 	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || setupEffectTogglesContainer()
-	insertElementRightAfter(warnings, effectTogglesContainer)
+	documentUtilities.insertElementRightAfter(warnings, effectTogglesContainer)
 
 	return warnings
 }

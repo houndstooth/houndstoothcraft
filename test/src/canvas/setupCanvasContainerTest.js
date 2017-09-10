@@ -1,9 +1,9 @@
 import setupCanvasContainer from '../../../src/canvas/setupCanvasContainer'
-import deleteElementIfExists from '../../../src/canvas/deleteElementIfExists'
+import documentUtilities from '../../../src/utilities/documentUtilities'
 
 describe('setup canvas container', () => {
 	it('returns the canvas container it just put on the page', () => {
-		deleteElementIfExists('.canvas-container')
+		documentUtilities.deleteElementIfExists('.canvas-container')
 
 		const returnedCanvasContainer = setupCanvasContainer()
 

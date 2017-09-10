@@ -1,6 +1,6 @@
 import state from '../../state'
 import getCanvasSize from './getCanvasSize'
-import setElementDimensions from './setElementDimensions'
+import documentUtilities from '../utilities/documentUtilities'
 import setupCanvasContainer from './setupCanvasContainer'
 import layerIterator from './layerIterator'
 
@@ -9,7 +9,7 @@ export default () => {
 	canvasContainer.innerHTML = ''
 
 	const canvasSize = getCanvasSize()
-	setElementDimensions(canvasContainer, canvasSize)
+	documentUtilities.setElementDimensions(canvasContainer, canvasSize)
 
 	state.contexts = layerIterator().map(() => {
 		const canvas = document.createElement('canvas')

@@ -1,12 +1,10 @@
+import documentUtilities from '../../../src/utilities/documentUtilities'
 import setupEffectTogglesContainer from '../../../src/controls/setupEffectTogglesContainer'
-import insertElementRightAfter from '../../../src/controls/insertElementRightAfter'
 
 describe('setup effect toggles container', () => {
 	let returnedEffectTogglesContainer
-	let insertElementRightAfterSpy
 	beforeEach(() => {
-		insertElementRightAfterSpy = jasmine.createSpy().and.callFake(insertElementRightAfter)
-		setupEffectTogglesContainer.__Rewire__('insertElementRightAfter', insertElementRightAfterSpy)
+		spyOn(documentUtilities, 'insertElementRightAfter').and.callThrough()
 		returnedEffectTogglesContainer = setupEffectTogglesContainer()
 	})
 
@@ -25,6 +23,6 @@ describe('setup effect toggles container', () => {
 
 	it('inserts the effect toggles container after the canvas', () => {
 		const canvasContainer = document.querySelector('.canvas-container')
-		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
+		expect(documentUtilities.insertElementRightAfter).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
 	})
 })

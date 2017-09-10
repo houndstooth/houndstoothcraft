@@ -1,11 +1,11 @@
 import setupMixedDownCanvas from '../../../src/canvas/setupMixedDownCanvas'
 import state from '../../../state'
-import deleteElementIfExists from '../../../src/canvas/deleteElementIfExists'
+import documentUtilities from '../../../src/utilities/documentUtilities'
 
 let mixedDownCanvas
 
 describe('setup mixed down context', () => {
-	beforeEach(() => deleteElementIfExists('.mixed-down-canvas'))
+	beforeEach(() => documentUtilities.deleteElementIfExists('.mixed-down-canvas'))
 
 	describe('when the mixed down canvas is already on the document', () => {
 		let newMixedDownCanvas

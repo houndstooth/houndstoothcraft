@@ -1,9 +1,9 @@
 import state from '../../state'
-import deleteElementIfExists from './deleteElementIfExists'
+import documentUtilities from '../utilities/documentUtilities'
 import getCanvasSize from './getCanvasSize'
 
 export default () => {
-	deleteElementIfExists('.mixed-down-canvas')
+	documentUtilities.deleteElementIfExists('.mixed-down-canvas')
 
 	const mixedDownCanvas = document.createElement('canvas')
 	mixedDownCanvas.classList.add('mixed-down-canvas')

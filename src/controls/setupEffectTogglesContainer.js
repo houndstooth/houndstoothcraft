@@ -1,4 +1,4 @@
-import insertElementRightAfter from './insertElementRightAfter'
+import documentUtilities from '../utilities/documentUtilities'
 import canvas from '../canvas'
 
 export default () => {
@@ -7,7 +7,7 @@ export default () => {
 	effectTogglesContainer.style.padding = '20px'
 
 	const canvasContainer = document.querySelector('.canvas-container') || canvas.setupCanvasContainer()
-	insertElementRightAfter(effectTogglesContainer, canvasContainer)
+	documentUtilities.insertElementRightAfter(effectTogglesContainer, canvasContainer)
 
 	return effectTogglesContainer
 }

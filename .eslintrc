@@ -56,8 +56,21 @@
     "import/no-internal-modules": [ 
       "error", 
       {
-        "allow": [ "**/src/utilities/*" ]
+        "allow": [ 
+          "**/src/utilities/*", 
+          "**/src/constants.js" 
+        ]
       } 
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [ 
+        "**/test/**/*" 
+      ],
+      "rules": {
+        "import/no-internal-modules": "off"
+      }
+    }
+  ]
 }

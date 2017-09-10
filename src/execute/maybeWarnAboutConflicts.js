@@ -1,13 +1,13 @@
 import codeUtilities from '../utilities/codeUtilities'
 import settingPath from './settingPath'
 import consoleWrapper from '../utilities/consoleWrapper'
-import controls from '../controls'
+import ui from '../ui'
 
 export default ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
 		const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
 		consoleWrapper.warn(warning)
-		controls.warn(warning)
+		ui.warn(warning)
 	}
 }
 

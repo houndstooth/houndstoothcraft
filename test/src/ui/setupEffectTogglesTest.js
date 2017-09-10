@@ -1,4 +1,4 @@
-import setupEffectToggles from '../../../src/controls/setupEffectToggles'
+import setupEffectToggles from '../../../src/ui/setupEffectToggles'
 import state from '../../../state'
 import effects from '../../../effects'
 

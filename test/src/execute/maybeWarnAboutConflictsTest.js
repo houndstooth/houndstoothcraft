@@ -1,12 +1,12 @@
 import maybeWarnAboutConflicts from '../../../src/execute/maybeWarnAboutConflicts'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
-import controls from '../../../src/controls'
+import ui from '../../../src/ui'
 
 describe('warning about conflicts', () => {
 	let warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting
 	beforeEach(() => {
 		spyOn(consoleWrapper, 'warn')
-		spyOn(controls, 'warn')
+		spyOn(ui, 'warn')
 	})
 
 	it('warns when requested and there are conflicts', () => {
@@ -20,7 +20,7 @@ describe('warning about conflicts', () => {
 
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.assignment.assignmentMode`: `yoda` was overridden by `luke`'
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('does not warn when not requested', () => {
@@ -33,7 +33,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(controls.warn).not.toHaveBeenCalled()
+		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
 	it('does not warn when settings are identical', () => {
@@ -46,7 +46,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(controls.warn).not.toHaveBeenCalled()
+		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
 	it('does not warn when the settings are equivalent functions', () => {
@@ -65,7 +65,7 @@ describe('warning about conflicts', () => {
 
 
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(controls.warn).not.toHaveBeenCalled()
+		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
 	it('does warn when the settings are functions that are not equivalent (by stringified comparison)', () => {
@@ -85,7 +85,7 @@ describe('warning about conflicts', () => {
 
 		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function getTileOriginAndSize(a) {return a + 1;}` was overridden by `function getTileOriginAndSize(b) {return b + 1;}`'
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('does not warn when the settings are equivalent arrays', () => {
@@ -98,7 +98,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(controls.warn).not.toHaveBeenCalled()
+		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
 	it('does warn when the settings are arrays that are not equivalent', () => {
@@ -112,7 +112,7 @@ describe('warning about conflicts', () => {
 
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('shows the contents of objects (such as colors) (as opposed to [object Object])', () => {
@@ -126,6 +126,6 @@ describe('warning about conflicts', () => {
 
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 })

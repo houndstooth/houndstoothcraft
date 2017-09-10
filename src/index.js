@@ -1,6 +1,6 @@
 import animation from './animation'
 import components from './components'
-import controls from './controls'
+import ui from './ui'
 import execute from './execute'
 import space from './space'
 import render from './render'
@@ -8,7 +8,7 @@ import store from './store'
 
 const { standardAnimation } = animation
 const { perStripe, tileCenter } = components
-const { setupEffectToggles } = controls
+const { setupEffectToggles } = ui
 const { executeSelectedHoundstoothEffects } = execute
 const { rotateOutlineAboutPoint } = space
 const { solid } = render

@@ -1,4 +1,4 @@
-import buildEffectToggleClickHandler from '../../../src/controls/buildEffectToggleClickHandler'
+import buildEffectToggleClickHandler from '../../../src/ui/buildEffectToggleClickHandler'
 import state from '../../../state'
 import execute from '../../../src/execute'
 

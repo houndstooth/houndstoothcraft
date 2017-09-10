@@ -1,18 +1,17 @@
-import resetInterface from '../../../src/controls/resetInterface'
-import warn from '../../../src/controls/warn'
+import resetInterface from '../../../src/ui/resetInterface'
+import warn from '../../../src/ui/warn'
 import state from '../../../state'
 import initialState from '../../../src/store/initialState'
-import setupWarnings from '../../../src/controls/setupWarnings'
+import setupWarnings from '../../../src/ui/setupWarnings'
 import canvas from '../../../src/canvas'
 
 describe('reset interface', () => {
 	it('clears warnings', () => {
-		const warnings = document.querySelector('.warnings') || setupWarnings()
+		resetInterface()
+		const warnings = document.querySelector('.warnings')
 		warn('oh no')
 		expect(warnings.innerHTML).toBe('<div>oh no</div>')
-
 		resetInterface()
-
 		expect(warnings.innerHTML).toBe('')
 	})
 

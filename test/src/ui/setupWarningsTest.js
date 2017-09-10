@@ -1,5 +1,5 @@
 import documentUtilities from '../../../src/utilities/documentUtilities'
-import setupWarnings from '../../../src/controls/setupWarnings'
+import setupWarnings from '../../../src/ui/setupWarnings'
 
 describe('setup warnings', () => {
 	let returnedWarnings

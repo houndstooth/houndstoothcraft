@@ -1,5 +1,5 @@
 import documentUtilities from '../../../src/utilities/documentUtilities'
-import setupEffectTogglesContainer from '../../../src/controls/setupEffectTogglesContainer'
+import setupEffectTogglesContainer from '../../../src/ui/setupEffectTogglesContainer'
 
 describe('setup effect toggles container', () => {
 	let returnedEffectTogglesContainer

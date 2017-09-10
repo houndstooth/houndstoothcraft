@@ -1,6 +1,6 @@
-import setupMixedDownCanvas from '../../../src/display/setupMixedDownCanvas'
+import setupMixedDownCanvas from '../../../src/canvas/setupMixedDownCanvas'
 import state from '../../../state'
-import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
+import deleteElementIfExists from '../../../src/canvas/deleteElementIfExists'
 
 let mixedDownCanvas
 
@@ -44,8 +44,8 @@ describe('setup mixed down context', () => {
 			expect(state.mixedDownContext).toBe(mixedDownCanvas.getContext('2d'))
 		})
 
-		it('does not display this canvas', () => {
-			expect(mixedDownCanvas.style.display).toBe('none')
+		it('does not canvas this canvas', () => {
+			expect(mixedDownCanvas.style.canvas).toBe('none')
 		})
 
 		it('sets the canvas size', () => {

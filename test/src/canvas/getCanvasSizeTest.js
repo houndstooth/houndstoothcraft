@@ -1,4 +1,4 @@
-import getCanvasSize from '../../../src/display/getCanvasSize'
+import getCanvasSize from '../../../src/canvas/getCanvasSize'
 import store from '../../../src/store'
 import state from '../../../state'
 

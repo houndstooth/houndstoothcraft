@@ -1,10 +1,10 @@
 import state from '../../state'
-import display from '../display'
+import canvas from '../canvas'
 
 export default () => {
 	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
 	if (!(colorSettings && colorSettings.opacity) || colorSettings.opacity === 1) return
 
-	const context = display.getCurrentContext()
+	const context = canvas.getCurrentContext()
 	context.globalAlpha = colorSettings.opacity
 }

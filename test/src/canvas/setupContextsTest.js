@@ -1,5 +1,5 @@
 import state from '../../../state'
-import setupContexts from '../../../src/display/setupContexts'
+import setupContexts from '../../../src/canvas/setupContexts'
 import resetState from '../../../src/store/resetState'
 
 describe('setup contexts', () => {

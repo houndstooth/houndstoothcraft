@@ -1,4 +1,4 @@
-import clear from '../../../src/display/clear'
+import clear from '../../../src/canvas/clear'
 import state from '../../../state'
 
 describe('clear', () => {

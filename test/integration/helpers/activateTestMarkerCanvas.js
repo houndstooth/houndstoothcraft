@@ -1,9 +1,9 @@
-import setElementDimensions from '../../../src/display/setElementDimensions'
-import getCanvasSize from '../../../src/display/getCanvasSize'
-import setupCanvasContainer from '../../../src/display/setupCanvasContainer'
+import setElementDimensions from '../../../src/canvas/setElementDimensions'
+import getCanvasSize from '../../../src/canvas/getCanvasSize'
+import setupCanvasContainer from '../../../src/canvas/setupCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import setupTestMarkersCanvas from './setupTestMarkersCanvas'
-import setupMixedDownCanvas from '../../../src/display/setupMixedDownCanvas'
+import setupMixedDownCanvas from '../../../src/canvas/setupMixedDownCanvas'
 import state from '../../../state'
 
 const prepareCanvasForDisplayInTest = canvas => {

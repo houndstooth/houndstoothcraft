@@ -1,5 +1,5 @@
 import state from '../../../state'
-import layerIterator from '../../../src/display/layerIterator'
+import layerIterator from '../../../src/canvas/layerIterator'
 
 describe('layer iterator', () => {
 	it('returns an array of numbers of each layer', () => {

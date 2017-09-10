@@ -2,7 +2,7 @@ import shape from '../../../src/render/shape'
 import codeUtilities from '../../../src/utilities/codeUtilities'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import display from '../../../src/display'
+import canvas from '../../../src/canvas'
 
 describe('shape', () => {
 	let renderSpy
@@ -28,7 +28,7 @@ describe('shape', () => {
 
 		getOutline = jasmine.createSpy()
 
-		getCurrentContextSpy = spyOn(display, 'getCurrentContext').and.returnValue(context)
+		getCurrentContextSpy = spyOn(canvas, 'getCurrentContext').and.returnValue(context)
 	})
 
 	describe('when no outline is returned from the get outline function', () => {

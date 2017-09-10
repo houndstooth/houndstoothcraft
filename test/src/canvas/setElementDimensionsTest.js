@@ -1,4 +1,4 @@
-import setElementDimensions from '../../../src/display/setElementDimensions'
+import setElementDimensions from '../../../src/canvas/setElementDimensions'
 
 describe('set element dimensions', () => {
 	it('sets the css styles width and height of the element, in pixels', () => {

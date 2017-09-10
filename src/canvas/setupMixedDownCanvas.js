@@ -13,7 +13,7 @@ export default () => {
 	mixedDownCanvas.width = canvasSize[ 0 ]
 	mixedDownCanvas.height = canvasSize[ 1 ]
 
-	mixedDownCanvas.style.display = 'none'
+	mixedDownCanvas.style.canvas = 'none'
 
 	state.mixedDownContext = mixedDownCanvas.getContext('2d')
 }

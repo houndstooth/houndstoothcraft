@@ -1,4 +1,4 @@
-import mixDownContexts from '../../../src/display/mixDownContexts'
+import mixDownContexts from '../../../src/canvas/mixDownContexts'
 import state from '../../../state'
 
 describe('mix down contexts', () => {

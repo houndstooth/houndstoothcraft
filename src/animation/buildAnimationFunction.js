@@ -1,6 +1,6 @@
 import state from '../../state'
 import execute from '../execute'
-import display from '../display'
+import canvas from '../canvas'
 import exportFrame from './exportFrame'
 import codeUtilities from '../utilities/codeUtilities'
 
@@ -8,7 +8,7 @@ export default ({ startAnimationFrame, animationFunctions, layerFunctions, refre
 	if (state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame) return
 
 	if (state.currentAnimationFrame >= startAnimationFrame) {
-		if (refreshCanvas) display.clear()
+		if (refreshCanvas) canvas.clear()
 
 		const preLayerSettings = codeUtilities.deepClone(state.mainHoundstooth.basePattern)
 		execute.executeGrid({ layerFunctions })

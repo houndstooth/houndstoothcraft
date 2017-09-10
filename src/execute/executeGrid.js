@@ -1,7 +1,7 @@
 import state from '../../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import components from '../components'
-import display from '../display'
+import canvas from '../canvas'
 import consoleWrapper from '../utilities/consoleWrapper'
 
 export default ({ layerFunctions }) => {
@@ -18,7 +18,7 @@ export default ({ layerFunctions }) => {
 		state.currentLayer++
 	}
 
-	if (state.mixingDown) display.mixDownContexts()
+	if (state.mixingDown) canvas.mixDownContexts()
 
 	state.currentLayer = 0
 }

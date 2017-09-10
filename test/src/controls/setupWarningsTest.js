@@ -1,4 +1,4 @@
-import deleteElementIfExists from '../../../src/display/deleteElementIfExists'
+import deleteElementIfExists from '../../../src/canvas/deleteElementIfExists'
 import setupWarnings from '../../../src/controls/setupWarnings'
 import insertElementRightAfter from '../../../src/controls/insertElementRightAfter'
 

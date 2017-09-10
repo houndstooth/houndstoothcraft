@@ -344,7 +344,7 @@
 // 	})
 
 // 	it('defaults refreshing the canvas to true, and calls clear once for every rendered frame', () => {
-// 		const clearSpy = spyOn(display, 'clear')
+// 		const clearSpy = spyOn(canvas, 'clear')
 
 // 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 

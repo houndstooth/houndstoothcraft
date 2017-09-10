@@ -3,7 +3,7 @@ import warn from '../../../src/controls/warn'
 import state from '../../../state'
 import initialState from '../../../src/store/initialState'
 import setupWarnings from '../../../src/controls/setupWarnings'
-import display from '../../../src/display'
+import canvas from '../../../src/canvas'
 
 describe('reset interface', () => {
 	it('clears warnings', () => {
@@ -17,7 +17,7 @@ describe('reset interface', () => {
 	})
 
 	it('clears canvas', () => {
-		const clearSpy = spyOn(display, 'clear')
+		const clearSpy = spyOn(canvas, 'clear')
 
 		resetInterface()
 

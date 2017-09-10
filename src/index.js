@@ -12,12 +12,11 @@ const { setupEffectToggles } = controls
 const { executeSelectedHoundstoothEffects } = execute
 const { rotateOutlineAboutPoint } = outlines
 const { solid } = render
-const { initialState, houndstoothDefaults } = store
+const { houndstoothDefaults } = store
 
 export default {
 	executeSelectedHoundstoothEffects,
 	houndstoothDefaults,
-	initialState,
 	perStripe,
 	rotateOutlineAboutPoint,
 	setupEffectToggles,

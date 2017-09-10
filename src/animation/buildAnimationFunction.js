@@ -1,7 +1,7 @@
 import state from '../../state'
 import execute from '../execute'
 import display from '../display'
-import animation from '../animation'
+import exportFrame from './exportFrame'
 import codeUtilities from '../utilities/codeUtilities'
 
 export default ({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas }) => () => {
@@ -14,7 +14,7 @@ export default ({ startAnimationFrame, animationFunctions, layerFunctions, refre
 		execute.executeGrid({ layerFunctions })
 		Object.assign(state.mainHoundstooth.basePattern, preLayerSettings)
 
-		if (state.exportFrames) animation.exportFrame()
+		if (state.exportFrames) exportFrame()
 	}
 
 	execute.callFunctionsPerSetting({ settingsFunctions: animationFunctions })

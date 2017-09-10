@@ -193,15 +193,15 @@ describe('stripe outline', () => {
 		})
 
 		it('rotates the stripe a quarter of the way around', () => {
-			const rotatedOutline = []
-			const rotateOutlineAboutPointSpy = jasmine.createSpy().and.returnValue(rotatedOutline)
-			stripeOutline.__Rewire__('rotateOutlineAboutPoint', rotateOutlineAboutPointSpy)
+			const rotatedCoordinate = [ 0, 0 ]
+			const rotateCoordinateAboutPointSpy = jasmine.createSpy().and.returnValue(rotatedCoordinate)
+			stripeOutline.__Rewire__('rotateCoordinateAboutPoint', rotateCoordinateAboutPointSpy)
 			const outlineOptions = { stripeStart, stripeEnd }
 
 			const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 
-			expect(rotateOutlineAboutPointSpy).toHaveBeenCalled()
-			expect(result).toBe(rotatedOutline)
+			expect(rotateCoordinateAboutPointSpy).toHaveBeenCalled()
+			expect(result[ 0 ]).toBe(rotatedCoordinate)
 		})
 	})
 })

@@ -1,4 +1,4 @@
-const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
+export default ({ coordinate, point, rotation }) => {
 	const sin = Math.sin(rotation)
 	const cos = Math.cos(rotation)
 
@@ -9,8 +9,4 @@ const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 		point[ 0 ] + relativeX * cos - relativeY * sin,
 		point[ 1 ] + relativeX * sin + relativeY * cos,
 	]
-}
-
-export default ({ outline, point, rotation }) => {
-	return outline.map(coordinate => rotateCoordinateAboutPoint({ coordinate, point, rotation }))
 }

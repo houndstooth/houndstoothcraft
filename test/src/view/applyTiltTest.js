@@ -1,13 +1,13 @@
 import coordinatesMatch from '../helpers/coordinatesMatch'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import rotateOutlineAboutCanvasCenter from '../../../src/view/rotateOutlineAboutCanvasCenter'
+import applyTilt from '../../../src/view/applyTilt'
 
-describe('rotate outline about canvas center', () => {
+describe('apply tilt', () => {
 	const canvasSize = 200
 	beforeEach(() => resetState(state))
 
-	it('works', () => {
+	it('rotates the outline about the canvas center', () => {
 		state.mainHoundstooth.basePattern.viewSettings = {
 			rotateViewAboutCanvasCenter: Math.PI / 2,
 			canvasSize,
@@ -18,7 +18,7 @@ describe('rotate outline about canvas center', () => {
 			[ 0, 40 ],
 		]
 
-		const actualOutline = rotateOutlineAboutCanvasCenter(outline)
+		const actualOutline = applyTilt(outline)
 
 		const expectedOutline = [
 			[ 200, 0 ],
@@ -35,7 +35,7 @@ describe('rotate outline about canvas center', () => {
 			[ 40, 40 ],
 		]
 
-		const actualOutline = rotateOutlineAboutCanvasCenter(outline)
+		const actualOutline = applyTilt(outline)
 
 		expect(actualOutline).toEqual(outline)
 		expect(actualOutline).toBe(outline)

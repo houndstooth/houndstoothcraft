@@ -1,9 +1,9 @@
 import squareOutline from './squareOutline'
 import stripeOutline from './stripeOutline'
-import rotateOutlineAboutPoint from './rotateOutlineAboutPoint'
+import rotateCoordinateAboutPoint from './rotateCoordinateAboutPoint'
 
 export default {
-	rotateOutlineAboutPoint,
+	rotateCoordinateAboutPoint,
 	squareOutline,
 	stripeOutline,
 }

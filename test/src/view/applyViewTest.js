@@ -1,23 +1,24 @@
 import applyView from '../../../src/view/applyView'
 
 describe('adjusts outline for view', () => {
-	it('applies any relevant zoom, scroll, and rotation', () => {
-		const tileOrigin = []
-		const tileSize = 45
-
+	it('applies any relevant zoom, scroll, and tilt', () => {
 		const outline = []
+		const zoomedOutline = []
 		const zoomedAndScrolledOutline = []
-		const rotatedOutline = []
+		const zoomedAndScrolledAndTiltedOutline = []
 
-		const applyZoomAndScrollSpy = jasmine.createSpy().and.returnValue(zoomedAndScrolledOutline)
-		applyView.__Rewire__('applyZoomAndScroll', applyZoomAndScrollSpy)
-		const rotateOutlineAboutCanvasCenterSpy = jasmine.createSpy().and.returnValue(rotatedOutline)
-		applyView.__Rewire__('rotateOutlineAboutCanvasCenter', rotateOutlineAboutCanvasCenterSpy)
+		const applyZoomSpy = jasmine.createSpy().and.returnValue(zoomedOutline)
+		applyView.__Rewire__('applyZoom', applyZoomSpy)
+		const applyScrollSpy = jasmine.createSpy().and.returnValue(zoomedAndScrolledOutline)
+		applyView.__Rewire__('applyScroll', applyScrollSpy)
+		const applyTiltSpy = jasmine.createSpy().and.returnValue(zoomedAndScrolledAndTiltedOutline)
+		applyView.__Rewire__('applyTilt', applyTiltSpy)
 
-		const actualOutline = applyView(outline, { tileOrigin, tileSize })
+		const actualOutline = applyView(outline, { tileOrigin: [], tileSize: 3 })
 
-		expect(applyZoomAndScrollSpy).toHaveBeenCalledWith(outline)
-		expect(rotateOutlineAboutCanvasCenterSpy).toHaveBeenCalledWith(zoomedAndScrolledOutline)
-		expect(actualOutline).toBe(rotatedOutline)
+		expect(applyZoomSpy).toHaveBeenCalledWith(outline)
+		expect(applyScrollSpy).toHaveBeenCalledWith(zoomedOutline)
+		expect(applyTiltSpy).toHaveBeenCalledWith(zoomedAndScrolledOutline)
+		expect(actualOutline).toBe(zoomedAndScrolledAndTiltedOutline)
 	})
 })

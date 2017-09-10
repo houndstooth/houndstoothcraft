@@ -10,7 +10,7 @@ const { standardAnimation } = animation
 const { perStripe, tileCenter } = components
 const { setupEffectToggles } = ui
 const { executeSelectedHoundstoothEffects } = execute
-const { rotateOutlineAboutPoint } = space
+const { rotateCoordinateAboutPoint } = space
 const { solid } = render
 const { houndstoothDefaults } = store
 
@@ -18,7 +18,7 @@ export default {
 	executeSelectedHoundstoothEffects,
 	houndstoothDefaults,
 	perStripe,
-	rotateOutlineAboutPoint,
+	rotateCoordinateAboutPoint,
 	setupEffectToggles,
 	solid,
 	standardAnimation,

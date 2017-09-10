@@ -2,7 +2,6 @@ import resetInterface from '../../../src/ui/resetInterface'
 import warn from '../../../src/ui/warn'
 import state from '../../../state'
 import initialState from '../../../src/store/initialState'
-import setupWarnings from '../../../src/ui/setupWarnings'
 import canvas from '../../../src/canvas'
 
 describe('reset interface', () => {

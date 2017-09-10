@@ -1,4 +1,4 @@
-import stripeOutline from '../../../src/outlines/stripeOutline'
+import stripeOutline from '../../../src/space/stripeOutline'
 import state from '../../../state'
 
 describe('stripe outline', () => {

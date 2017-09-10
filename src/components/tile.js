@@ -4,7 +4,7 @@ import render from '../render'
 import getTileColorIndices from './getTileColorIndices'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import getStripePositionsForTile from './getStripePositionsForTile'
-import outlines from '../outlines'
+import space from '../space'
 import { PERIMETER_SCALAR } from '../constants'
 import state from '../../state'
 
@@ -24,7 +24,7 @@ const shouldUseSquare = ({ tileColorIndices }) => {
 }
 
 const squareTile = args => {
-	args.getOutline = outlines.squareOutline
+	args.getOutline = space.squareOutline
 	render.shape(args)
 }
 
@@ -39,7 +39,7 @@ const stripedTile = args => {
 const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
 	const stripeArgs = codeUtilities.deepClone(args)
 
-	stripeArgs.getOutline = outlines.stripeOutline
+	stripeArgs.getOutline = space.stripeOutline
 	stripeArgs.stripeIndex = stripeIndex
 	const stripeEnd = stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR
 	stripeArgs.outlineOptions = { stripeStart, stripeEnd }

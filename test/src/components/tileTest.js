@@ -2,7 +2,7 @@ import tile from '../../../src/components/tile'
 import { PERIMETER_SCALAR } from '../../../src/constants'
 import state from '../../../state'
 import render from '../../../src/render'
-import outlines from '../../../src/outlines'
+import space from '../../../src/space'
 
 describe('tile', () => {
 	const gridAddress = [ 3, 5 ]
@@ -16,8 +16,8 @@ describe('tile', () => {
 
 	beforeEach(() => {
 		shapeSpy = spyOn(render, 'shape')
-		squareOutlineSpy = spyOn(outlines, 'squareOutline')
-		stripeOutlineSpy = spyOn(outlines, 'stripeOutline')
+		squareOutlineSpy = spyOn(space, 'squareOutline')
+		stripeOutlineSpy = spyOn(space, 'stripeOutline')
 
 		getTileColorIndicesSpy = jasmine.createSpy()
 		tile.__Rewire__('getTileColorIndices', getTileColorIndicesSpy)

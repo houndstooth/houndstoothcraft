@@ -1,4 +1,4 @@
-import squareOutline from '../../../src/outlines/squareOutline'
+import squareOutline from '../../../src/space/squareOutline'
 
 describe('square outline', () => {
 	const tileOrigin = [ 2, 3 ]

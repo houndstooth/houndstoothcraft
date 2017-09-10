@@ -1,4 +1,4 @@
-import rotateOutlineAboutPoint from '../../../src/outlines/rotateOutlineAboutPoint'
+import rotateOutlineAboutPoint from '../../../src/space/rotateOutlineAboutPoint'
 import coordinatesMatch from '../helpers/coordinatesMatch'
 
 describe('rotate outline about point', () => {

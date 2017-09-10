@@ -30,7 +30,7 @@ const HOUNDSTOOTH_DEFAULTS = {
 			tileSizeSetting: TILE_SIZE,
 		},
 		colorSettings: {
-			set: COLOR_SET,
+			colorSet: COLOR_SET,
 			assignment: COLOR_ASSIGNMENT,
 			opacity: OPACITY,
 		},

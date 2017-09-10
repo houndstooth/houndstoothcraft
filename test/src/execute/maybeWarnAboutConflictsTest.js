@@ -91,7 +91,7 @@ describe('warning about conflicts', () => {
 	it('does not warn when the settings are equivalent arrays', () => {
 		warnAboutConflicts = true
 		settingsPath = [ 'colorSettings' ]
-		settingName = 'set'
+		settingName = 'colorSet'
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = [ 'a', 'b' ]
 
@@ -104,13 +104,13 @@ describe('warning about conflicts', () => {
 	it('does warn when the settings are arrays that are not equivalent', () => {
 		warnAboutConflicts = true
 		settingsPath = [ 'colorSettings' ]
-		settingName = 'set'
+		settingName = 'colorSet'
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = [ 'b', 'a' ]
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		const expectedWarning = 'some effects have conflicts on setting `colorSettings.set`: `["a","b"]` was overridden by `["b","a"]`'
+		const expectedWarning = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(controls.warn).toHaveBeenCalledWith(expectedWarning)
 	})

@@ -19,7 +19,7 @@ describe('erasing', () => {
 			layersPattern: {
 				gridSettings:  { gridSize: () => 2 },
 				colorSettings: {
-					set: () => [ TRANSPARENT, ERASE ],
+					colorSet: () => [ TRANSPARENT, ERASE ],
 					backgroundColor: () => CYAN,
 				},
 			},

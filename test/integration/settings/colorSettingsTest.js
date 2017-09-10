@@ -13,13 +13,13 @@ describe('.colorSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
 	beforeEach(() => resetState(state))
 
-	describe('.set', () => {
+	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {
 			const sufficientTileCountToDemonstrateSetting = 2
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						set: [ YELLOW, BLUE ],
+						colorSet: [ YELLOW, BLUE ],
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,
@@ -43,7 +43,7 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						set: [ YELLOW, BLUE, CYAN ],
+						colorSet: [ YELLOW, BLUE, CYAN ],
 						assignment: {
 							weave: {
 								rows: simplestWeaveToDemonstrateSetting,
@@ -457,7 +457,7 @@ describe('.colorSettings', () => {
 					const houndstoothOverrides = {
 						basePattern: {
 							colorSettings: {
-								set: [ YELLOW, BLUE, CYAN, MAGENTA ],
+								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
 								assignment: {
 									assignmentMode: 'SUPERTILE',
 									supertile: [
@@ -731,7 +731,7 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						set: [ BLACK, BLUE ],
+						colorSet: [ BLACK, BLUE ],
 						opacity,
 					},
 					gridSettings: {
@@ -762,7 +762,7 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						set: [ BLACK, TRANSPARENT ],
+						colorSet: [ BLACK, TRANSPARENT ],
 						backgroundColor: YELLOW,
 					},
 					gridSettings: {

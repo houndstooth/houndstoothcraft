@@ -16,7 +16,7 @@ const PATTERN_STRUCTURE = {
 		collapseSameColoredShapesWithinTile: true,
 	},
 	colorSettings: {
-		set: true,
+		colorSet: true,
 		assignment: {
 			switcheroo: true,
 			flipGrain: true,

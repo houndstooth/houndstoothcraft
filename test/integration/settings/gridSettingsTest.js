@@ -16,7 +16,7 @@ describe('.gridSettings', () => {
 						canvasSize: 200,
 					},
 					colorSettings: {
-						set: [ BLACK, WHITE ],
+						colorSet: [ BLACK, WHITE ],
 					},
 					gridSettings: {
 						gridSize: 3,

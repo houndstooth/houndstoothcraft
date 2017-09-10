@@ -95,7 +95,7 @@ describe('shape', () => {
 			expect(getCurrentContextSpy).toHaveBeenCalled()
 		})
 
-		it('gets the index of the color in the central set, from the array of such indicies for the tile, using the stripe index', () => {
+		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
 			shape({
 				tileOrigin,
 				tileSize,

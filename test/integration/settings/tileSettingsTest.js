@@ -68,7 +68,7 @@ describe('.tileSettings', () => {
 			houndstoothOverrides = {
 				basePattern: {
 					gridSettings: { gridSize: 1 },
-					colorSettings: { set: [ BLACK, BLACK ] },
+					colorSettings: { colorSet: [ BLACK, BLACK ] },
 				},
 			}
 		})

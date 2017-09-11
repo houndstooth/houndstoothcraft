@@ -5,7 +5,7 @@ import resetState from '../../../src/store/resetState'
 describe('animator', () => {
 	let buildIntervalFunctionSpy
 	let intervalFunction
-	let animationFunction, frameRate, stopCondition
+	let animationFunction, frameRate, stopConditionFunction
 	let interval
 	beforeEach(() => {
 		resetState(state)
@@ -20,16 +20,16 @@ describe('animator', () => {
 		animationFunction = () => {
 		}
 		frameRate = 3
-		stopCondition = () => {
+		stopConditionFunction = () => {
 		}
 
-		animator({ animationFunction, frameRate, stopCondition })
+		animator({ animationFunction, frameRate, stopConditionFunction })
 	})
 
 	it('augments the function to be scheduled with a stop condition so it can cancel itself', () => {
 		expect(buildIntervalFunctionSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
-			stopCondition,
+			stopConditionFunction,
 		}))
 	})
 

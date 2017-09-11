@@ -4,12 +4,20 @@ import resetState from '../../../src/store/resetState'
 import canvas from '../../../src/canvas'
 
 describe('execute selected houndstooth effects', () => {
-	let executeGridSpy
+	let executeGridSpy, executeAnimationSpy, prepareFunctionsPerSettingSpy
+	const layerFunctions = { layer: 'layer' }
+	const animationFunctions = { animation: 'animation' }
 	beforeEach(() => {
 		resetState(state)
 
 		executeGridSpy = jasmine.createSpy()
 		executeSelectedHoundstoothEffects.__Rewire__('executeGrid', executeGridSpy)
+
+		executeAnimationSpy = jasmine.createSpy()
+		executeSelectedHoundstoothEffects.__Rewire__('executeAnimation', executeAnimationSpy)
+
+		prepareFunctionsPerSettingSpy = jasmine.createSpy().and.returnValues(layerFunctions, animationFunctions)
+		executeSelectedHoundstoothEffects.__Rewire__('prepareFunctionsPerSetting', prepareFunctionsPerSettingSpy)
 	})
 
 	it('composes the houndstooth', () => {
@@ -19,12 +27,18 @@ describe('execute selected houndstooth effects', () => {
 		const houndstoothOverrides = {}
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		expect(composeMainHoundstoothSpy.calls.all()[0].args[0]).toEqual({
+		expect(composeMainHoundstoothSpy).toHaveBeenCalledWith({
 			houndstoothEffects: state.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
+	})
 
-		executeSelectedHoundstoothEffects.__ResetDependency__('composeMainHoundstooth')
+	it('prepares layer functions', () => {
+		executeSelectedHoundstoothEffects()
+
+		expect(prepareFunctionsPerSettingSpy).toHaveBeenCalledWith({
+			settingsFunctions: state.mainHoundstooth.layersPattern,
+		})
 	})
 
 	describe('setting up for rendering', () => {
@@ -70,7 +84,48 @@ describe('execute selected houndstooth effects', () => {
 		})
 	})
 
-	// if not animating, simple
+	describe('when animating', () => {
+		beforeEach(() => {
+			state.animating = true
+			executeSelectedHoundstoothEffects()
+		})
 
-	// if animating, maybe complex, maybe break out executeAnimation to either execute or animate
+		it('prepares animation functions', () => {
+			expect(prepareFunctionsPerSettingSpy).toHaveBeenCalledWith({
+				settingsFunctions: state.mainHoundstooth.animationsPattern,
+			})
+		})
+
+		it('executes an animation', () => {
+			expect(executeAnimationSpy).toHaveBeenCalledWith({
+				animationFunctions,
+				layerFunctions,
+			})
+		})
+
+		it('does not execute a single grid', () => {
+			expect(executeGridSpy).not.toHaveBeenCalled()
+		})
+	})
+
+	describe('when not animating', () => {
+		beforeEach(() => {
+			state.animating = false
+			executeSelectedHoundstoothEffects()
+		})
+
+		it('does not prepare animation functions', () => {
+			expect(prepareFunctionsPerSettingSpy.calls.all().length).toBe(1)
+		})
+
+		it('executes a single grid', () => {
+			expect(executeGridSpy).toHaveBeenCalledWith({
+				layerFunctions,
+			})
+		})
+
+		it('does not execute an animation', () => {
+			expect(executeAnimationSpy).not.toHaveBeenCalled()
+		})
+	})
 })

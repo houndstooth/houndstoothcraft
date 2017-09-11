@@ -1,6 +1,6 @@
 import state from '../../state'
 
-export default ({ animationFunction, stopCondition }) => () => {
+export default ({ animationFunction, stopConditionFunction }) => () => {
 	animationFunction()
-	if (stopCondition()) clearInterval(state.interval)
+	if (stopConditionFunction()) clearInterval(state.interval)
 }

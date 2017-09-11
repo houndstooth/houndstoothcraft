@@ -4,35 +4,35 @@ import resetState from '../../../src/store/resetState'
 
 describe('build animation function', () => {
 	let intervalFunction
-	let animationFunctionSpy, stopConditionSpy
+	let animationFunctionSpy, stopConditionFunctionSpy
 	beforeEach(() => {
 		resetState(state)
 		spyOn(window, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy()
-		stopConditionSpy = jasmine.createSpy()
+		stopConditionFunctionSpy = jasmine.createSpy()
 		intervalFunction = buildIntervalFunction({
 			animationFunction: animationFunctionSpy,
-			stopCondition: stopConditionSpy,
+			stopConditionFunction: stopConditionFunctionSpy,
 		})
 	})
 
 	it('returns a function which calls the animation function it was built from', () => {
-		stopConditionSpy.and.returnValue(false)
+		stopConditionFunctionSpy.and.returnValue(false)
 
 		intervalFunction()
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
-		expect(stopConditionSpy).toHaveBeenCalled()
+		expect(stopConditionFunctionSpy).toHaveBeenCalled()
 		expect(window.clearInterval).not.toHaveBeenCalled()
 	})
 
 	it('returns a function which calls clear interval on the current interval if the stop condition is met', () => {
-		stopConditionSpy.and.returnValue(true)
+		stopConditionFunctionSpy.and.returnValue(true)
 
 		intervalFunction()
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
-		expect(stopConditionSpy).toHaveBeenCalled()
+		expect(stopConditionFunctionSpy).toHaveBeenCalled()
 		expect(window.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 })

@@ -1,144 +1,3 @@
-// spyOn(consoleWrapper, 'time')
-// spyOn(consoleWrapper, 'timeEnd')
-
-// state.mainHoundstooth.basePattern.animationSettings = { endAnimationFrame: 100 }
-
-// describe('performance logging', () => {
-// 	describe('when performance logging', () => {
-// 		beforeEach(() => {
-// 			state.performanceLogging = true
-// 		})
-
-// 		describe('when not layering nor animating', () => {
-// 			it('logs only the performance of the grid', () => {
-// 				executeSelectedHoundstoothEffects()
-
-// 				expect(consoleWrapper.time.calls.all().length).toBe(1)
-// 				expect(consoleWrapper.timeEnd.calls.all().length).toBe(1)
-// 				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
-// 				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
-// 			})
-// 		})
-
-// 		describe('when layering (but not animating)', () => {
-// 			it('logs the current frame along with the performance measurement', () => {
-// 				const houndstoothOverrides = {
-// 					basePattern: {
-// 						layerSettings: {
-// 							endLayer: 10,
-// 						},
-// 					},
-// 				}
-// 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
-
-// 				const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
-// 				expect(consoleWrapperLogSpyCalls.length).toBe(11)
-// 				consoleWrapperLogSpyCalls.forEach((call, index) => {
-// 					expect(call.args[ 0 ]).toBe(`current layer: ${  index}`)
-// 				})
-
-// 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
-// 				expect(consoleWrapperTimeCalls.length).toBe(11)
-// 				consoleWrapperTimeCalls.forEach(call => {
-// 					expect(call.args[ 0 ]).toBe('grid')
-// 				})
-
-// 				const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
-// 				expect(consoleWrapperTimeEndCalls.length).toBe(11)
-// 				consoleWrapperTimeEndCalls.forEach(call => {
-// 					expect(call.args[ 0 ]).toBe('grid')
-// 				})
-// 			})
-// 		})
-
-// 		describe('when animating (but not layering)', () => {
-// 			beforeEach(() => {
-// 				state.animating = true
-// 			})
-
-// 			it('logs the current animation frame along with the performance measurement', () => {
-// 				const houndstoothOverrides = {
-// 					basePattern: {
-// 						animationSettings: {
-// 							endAnimationFrame: 10,
-// 						},
-// 					},
-// 				}
-
-// 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
-
-// 				const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
-// 				expect(consoleWrapperLogSpyCalls.length).toBe(11)
-// 				consoleWrapperLogSpyCalls.forEach((call, index) => {
-// 					expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${index}/0`)
-// 				})
-
-// 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
-// 				expect(consoleWrapperTimeCalls.length).toBe(11)
-// 				consoleWrapperTimeCalls.forEach(call => {
-// 					expect(call.args[ 0 ]).toBe('grid')
-// 				})
-
-// 				const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
-// 				expect(consoleWrapperTimeEndCalls.length).toBe(11)
-// 				consoleWrapperTimeEndCalls.forEach(call => {
-// 					expect(call.args[ 0 ]).toBe('grid')
-// 				})
-// 			})
-// 		})
-
-// 		describe('when animating and layering', () => {
-// 			beforeEach(() => {
-// 				state.animating = true
-// 			})
-
-// 			it('logs the animation frames, current layer, and grid performance', () => {
-// 				const houndstoothOverrides = {
-// 					basePattern: {
-// 						layerSettings: { endLayer: 10 },
-// 						animationSettings: { endAnimationFrame: 10 },
-// 					},
-// 				}
-// 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
-
-// 				const consoleWrapperLogSpyCalls = consoleWrapperLogSpy.calls.all()
-// 				expect(consoleWrapperLogSpyCalls.length).toBe(121)
-// 				consoleWrapperLogSpyCalls.forEach((call, index) => {
-// 					const currentAnimationFrame = Math.floor(index / 11)
-// 					const currentLayer = index % 11
-// 					expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)
-// 				})
-
-// 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
-// 				expect(consoleWrapperTimeCalls.length).toBe(121)
-// 				consoleWrapperTimeCalls.forEach(call => {
-// 					expect(call.args[ 0 ]).toBe('grid')
-// 				})
-
-// 				const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
-// 				expect(consoleWrapperTimeEndCalls.length).toBe(121)
-// 				consoleWrapperTimeEndCalls.forEach(call => {
-// 					expect(call.args[ 0 ]).toBe('grid')
-// 				})
-// 			})
-// 		})
-// 	})
-
-// 	describe('when not performance logging', () => {
-// 		beforeEach(() => {
-// 			state.performanceLogging = false
-// 		})
-
-// 		it('does not track performance or log it', () => {
-// 			executeSelectedHoundstoothEffects()
-
-// 			expect(consoleWrapper.log).not.toHaveBeenCalled()
-// 			expect(consoleWrapper.time).not.toHaveBeenCalled()
-// 			expect(consoleWrapper.timeEnd).not.toHaveBeenCalled()
-// 		})
-// 	})
-// })
-
 // describe('neither layering nor animating', () => {
 // 	beforeEach(() => {
 // 		state.animating = false
@@ -492,3 +351,82 @@
 // 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 // 	})
 // })
+
+
+// describe('when layering (but not animating)', () => {
+// 			it('logs the current frame along with the performance measurement', () => {
+// 				gridAndMaybeLogging()
+
+// 				const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
+// 				expect(consoleWrapperLogSpyCalls.length).toBe(11)
+// 				consoleWrapperLogSpyCalls.forEach((call, index) => {
+// 					expect(call.args[ 0 ]).toBe(`current layer: ${  index}`)
+// 				})
+
+// 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
+// 				expect(consoleWrapperTimeCalls.length).toBe(11)
+// 				consoleWrapperTimeCalls.forEach(call => {
+// 					expect(call.args[ 0 ]).toBe('grid')
+// 				})
+
+// 				const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
+// 				expect(consoleWrapperTimeEndCalls.length).toBe(11)
+// 				consoleWrapperTimeEndCalls.forEach(call => {
+// 					expect(call.args[ 0 ]).toBe('grid')
+// 				})
+// 			})
+// 		})
+
+// 		describe('when animating (but not layering)', () => {
+// 			beforeEach(() => state.animating = true)
+
+// 			it('logs the current animation frame along with the performance measurement', () => {
+// 				gridAndMaybeLogging()
+
+// 				const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
+// 				expect(consoleWrapperLogSpyCalls.length).toBe(11)
+// 				consoleWrapperLogSpyCalls.forEach((call, index) => {
+// 					expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${index}/0`)
+// 				})
+
+// 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
+// 				expect(consoleWrapperTimeCalls.length).toBe(11)
+// 				consoleWrapperTimeCalls.forEach(call => {
+// 					expect(call.args[ 0 ]).toBe('grid')
+// 				})
+
+// 				const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
+// 				expect(consoleWrapperTimeEndCalls.length).toBe(11)
+// 				consoleWrapperTimeEndCalls.forEach(call => {
+// 					expect(call.args[ 0 ]).toBe('grid')
+// 				})
+// 			})
+// 		})
+
+// 		describe('when animating and layering', () => {
+// 			beforeEach(() => state.animating = true)
+
+// 			it('logs the animation frames, current layer, and grid performance', () => {
+// 				gridAndMaybeLogging()
+
+// 				const consoleWrapperLogSpyCalls = consoleWrapper.log.calls.all()
+// 				expect(consoleWrapperLogSpyCalls.length).toBe(121)
+// 				consoleWrapperLogSpyCalls.forEach((call, index) => {
+// 					const currentAnimationFrame = Math.floor(index / 11)
+// 					const currentLayer = index % 11
+// 					expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)
+// 				})
+
+// 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()
+// 				expect(consoleWrapperTimeCalls.length).toBe(121)
+// 				consoleWrapperTimeCalls.forEach(call => {
+// 					expect(call.args[ 0 ]).toBe('grid')
+// 				})
+
+// 				const consoleWrapperTimeEndCalls = consoleWrapper.timeEnd.calls.all()
+// 				expect(consoleWrapperTimeEndCalls.length).toBe(121)
+// 				consoleWrapperTimeEndCalls.forEach(call => {
+// 					expect(call.args[ 0 ]).toBe('grid')
+// 				})
+// 			})
+// 		})

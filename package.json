@@ -5,7 +5,7 @@
     "start": "webpack-dev-server --hot --inline --content-base dist",
     "deploy": "if [ -z ${PWS_ORG+x} ]; then echo \"please set PWS_ORG, PWS_SPACE, PWS_USERNAME, and PWS_PASSWORD\"; else cf login -a api.run.pivotal.io -o ${PWS_ORG} -s ${PWS_SPACE} -u ${PWS_USERNAME} -p ${PWS_PASSWORD}; fi && webpack -p && cf push houndstooth -b https://github.com/cloudfoundry/staticfile-buildpack.git -m 64m",
     "integration-test-server": "karma start",
-    "setup": "npm i -g webpack && npm i && git config user.name \"Douglas Blumeyer\" && git config user.email douglas.blumeyer@gmail.com && git submodule update --init --recursive && git submodule foreach git checkout master && git submodule foreach git config user.name \"Douglas Blumeyer\" && git submodule foreach git config user.email douglas.blumeyer@gmail.com",
+    "setup": "npm i && git config user.name \"Douglas Blumeyer\" && git config user.email douglas.blumeyer@gmail.com && git submodule update --init --recursive && git submodule foreach git checkout master && git submodule foreach git config user.name \"Douglas Blumeyer\" && git submodule foreach git config user.email douglas.blumeyer@gmail.com",
     "push-all": "git submodule foreach git push && git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",

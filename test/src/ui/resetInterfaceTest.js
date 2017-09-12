@@ -1,10 +1,13 @@
 import resetInterface from '../../../src/ui/resetInterface'
 import warn from '../../../src/ui/warn'
 import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 import initialState from '../../../src/store/initialState'
 import canvas from '../../../src/canvas'
 
 describe('reset interface', () => {
+	beforeEach(() => resetState(state))
+
 	it('clears warnings', () => {
 		resetInterface()
 		const warnings = document.querySelector('.warnings')

@@ -2,5 +2,5 @@ import state from '../../state'
 
 export default ({ animationFunction, stopConditionFunction }) => () => {
 	animationFunction()
-	if (stopConditionFunction()) clearInterval(state.interval)
+	if (stopConditionFunction()) window.clearInterval(state.interval)
 }

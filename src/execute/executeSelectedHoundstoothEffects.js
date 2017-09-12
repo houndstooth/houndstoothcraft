@@ -1,4 +1,4 @@
-import canvas from '../canvas'
+import page from '../page'
 import prepareFunctionsPerSetting from './prepareFunctionsPerSetting'
 import state from '../../state'
 import composeMainHoundstooth from './composeMainHoundstooth'
@@ -12,9 +12,9 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 		settingsFunctions: state.mainHoundstooth.layersPattern,
 	})
 
-	canvas.setupContexts()
+	page.setupContexts()
 	if (state.exportFrames) state.mixingDown = true
-	if (state.mixingDown) canvas.setupMixedDownCanvas()
+	if (state.mixingDown) page.setupMixedDownCanvas()
 
 	if (state.animating) {
 		const animationFunctions = prepareFunctionsPerSetting({

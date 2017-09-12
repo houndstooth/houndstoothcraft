@@ -1,5 +1,5 @@
 import addEffectToggle from '../../../src/ui/addEffectToggle'
-import setupEffectTogglesContainer from '../../../src/ui/setupEffectTogglesContainer'
+import setupEffectTogglesContainer from '../../../src/page/setupEffectTogglesContainer'
 
 describe('add effect toggle', () => {
 	it('adds a labelled checkbox for the effect to the toggles container', () => {

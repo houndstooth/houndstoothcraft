@@ -1,7 +1,7 @@
 import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import canvas from '../../../src/canvas'
+import page from '../../../src/page'
 
 describe('execute selected houndstooth effects', () => {
 	let executeGridSpy, executeAnimationSpy, prepareFunctionsPerSettingSpy
@@ -44,8 +44,8 @@ describe('execute selected houndstooth effects', () => {
 	describe('setting up for rendering', () => {
 		let setupContextsSpy, setupMixedDownCanvasSpy
 		beforeEach(() => {
-			setupMixedDownCanvasSpy = spyOn(canvas, 'setupMixedDownCanvas')
-			setupContextsSpy = spyOn(canvas, 'setupContexts')
+			setupMixedDownCanvasSpy = spyOn(page, 'setupMixedDownCanvas')
+			setupContextsSpy = spyOn(page, 'setupContexts')
 		})
 
 		it('includes the mixed down canvas when both mixing down and exporting', () => {

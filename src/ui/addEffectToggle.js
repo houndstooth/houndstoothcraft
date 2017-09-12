@@ -1,5 +1,5 @@
 import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
-import setupEffectTogglesContainer from './setupEffectTogglesContainer'
+import page from '../page'
 
 export default houndstoothEffect => {
 	const label = document.createElement('label')
@@ -16,6 +16,6 @@ export default houndstoothEffect => {
 	const name = document.createTextNode(houndstoothEffect.name)
 	label.appendChild(name)
 
-	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || setupEffectTogglesContainer()
+	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || page.setupEffectTogglesContainer()
 	effectTogglesContainer.appendChild(label)
 }

@@ -1,12 +1,13 @@
 import state from '../../../state'
-import setupContexts from '../../../src/canvas/setupContexts'
+import setupContexts from '../../../src/page/setupContexts'
 import resetState from '../../../src/store/resetState'
+import canvas from '../../../src/canvas'
 
 describe('setup contexts', () => {
 	beforeEach(() => resetState(state))
 
 	it('sets the canvas container width and height (as style, in px)', () => {
-		setupContexts.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
 
 		setupContexts()
 
@@ -16,7 +17,7 @@ describe('setup contexts', () => {
 	})
 
 	it('sets canvases width and height', () => {
-		setupContexts.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
 
 		setupContexts()
 

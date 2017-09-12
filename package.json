@@ -4,18 +4,21 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base dist",
     "deploy": "if [ -z ${PWS_ORG+x} ]; then echo \"please set PWS_ORG, PWS_SPACE, PWS_USERNAME, and PWS_PASSWORD\"; else cf login -a api.run.pivotal.io -o ${PWS_ORG} -s ${PWS_SPACE} -u ${PWS_USERNAME} -p ${PWS_PASSWORD}; fi && webpack -p && cf push houndstooth -b https://github.com/cloudfoundry/staticfile-buildpack.git -m 64m",
-    "test": "karma start",
+    "integration-test-server": "karma start",
     "setup": "npm i -g webpack && npm i && git config user.name \"Douglas Blumeyer\" && git config user.email douglas.blumeyer@gmail.com && git submodule update --init --recursive && git submodule foreach git checkout master && git submodule foreach git config user.name \"Douglas Blumeyer\" && git submodule foreach git config user.email douglas.blumeyer@gmail.com",
     "push-all": "git submodule foreach git push && git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "ci": "karma start --single-run --browsers ChromeHeadless"
+    "unit": "babel-node unit.js",
+    "test": "npm run unit && npm run integration",
+    "integration": "karma start --single-run --browsers ChromeHeadless"
   },
   "dependencies": {
     "file-saver": "^1.3.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-rewire": "^1.1.0",
@@ -25,6 +28,8 @@
     "eslint-plugin-import": "^2.7.0",
     "jasmine": "^2.8.0",
     "jasmine-core": "^2.8.0",
+    "jsdom": "^11.2.0",
+    "jsdom-global": "^3.0.2",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",

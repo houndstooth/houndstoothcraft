@@ -26,10 +26,8 @@ describe('composeMainHoundstooth', () => {
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
 	})
 
-	it('composes the main houndstooth with patterns from the houndstooth defaults, houndstooth effects, and houndstooth overrides', () => {
+	xit('composes the main houndstooth with patterns from the houndstooth defaults, houndstooth effects, and houndstooth overrides', () => {
 		spyOn(codeUtilities, 'propertyIsDefinedOnObject').and.returnValue(true)
-		composeMainHoundstooth.__Rewire__('setupCanvas', () => {
-		})
 
 		// effects
 
@@ -136,8 +134,6 @@ describe('composeMainHoundstooth', () => {
 			settingL: settingFunctionDefaultL,
 			settingP: settingFunctionOverridesP,
 		}))
-
-		composeMainHoundstooth.__ResetDependency__('setupCanvas')
 	})
 
 	describe('when there are things which are not recognized patterns', () => {

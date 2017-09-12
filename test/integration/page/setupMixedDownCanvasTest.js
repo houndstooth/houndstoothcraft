@@ -1,11 +1,12 @@
-import setupMixedDownCanvas from '../../../src/canvas/setupMixedDownCanvas'
+import setupMixedDownCanvas from '../../../src/page/setupMixedDownCanvas'
 import state from '../../../state'
-import documentUtilities from '../../../src/utilities/documentUtilities'
+import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
+import canvas from '../../../src/canvas'
 
 let mixedDownCanvas
 
-describe('setup mixed down context', () => {
-	beforeEach(() => documentUtilities.deleteElementIfExists('.mixed-down-canvas'))
+describe('setup mixed down canvas', () => {
+	beforeEach(() => deleteElementIfExists('.mixed-down-canvas'))
 
 	describe('when the mixed down canvas is already on the document', () => {
 		let newMixedDownCanvas
@@ -30,7 +31,7 @@ describe('setup mixed down context', () => {
 
 	describe('when the mixed down canvas is not already on the document', () => {
 		beforeEach(() => {
-			setupMixedDownCanvas.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+			spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
 
 			setupMixedDownCanvas()
 			mixedDownCanvas = document.querySelector('.mixed-down-canvas')

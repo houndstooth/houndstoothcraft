@@ -4,11 +4,14 @@ webpackConfig.entry = undefined
 module.exports = config => {
 	config.set({
 		frameworks: [ 'jasmine' ],
-		files: [ 'test/**/*.js', 'effects/**/test/**/*.js' ],
+		files: [
+			'test/integration/**/*.js',
+			'**/test/effects/**/*.js'
+		],
 		webpack: webpackConfig,
 		preprocessors: {
-			'test/**/*.js': [ 'webpack' ],
-			'effects/**/test/**/*.js': [ 'webpack' ],
+			'test/integration/**/*.js': [ 'webpack' ],
+			'**/test/effects/**/*.js': [ 'webpack' ],
 		},
 		reporters: [ 'kjhtml' ],
 	})

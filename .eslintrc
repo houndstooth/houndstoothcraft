@@ -53,20 +53,21 @@
       "error",
       "stroustrup"
     ],
-    "import/no-internal-modules": [ 
-      "error", 
+    "import/no-internal-modules": [
+      "error",
       {
-        "allow": [ 
-          "**/src/utilities/*", 
-          "**/src/constants.js" 
+        "allow": [
+          "**/src/utilities/*",
+          "**/src/constants.js",
+          "**/test/**/*"
         ]
-      } 
+      }
     ]
   },
   "overrides": [
     {
-      "files": [ 
-        "**/test/**/*" 
+      "files": [
+        "**/test/**/*"
       ],
       "rules": {
         "import/no-internal-modules": "off"

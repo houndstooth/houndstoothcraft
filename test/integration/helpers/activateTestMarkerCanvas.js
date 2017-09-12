@@ -1,9 +1,9 @@
-import documentUtilities from '../../../src/utilities/documentUtilities'
+import setElementDimensions from '../../../src/page/setElementDimensions'
 import getCanvasSize from '../../../src/canvas/getCanvasSize'
-import setupCanvasContainer from '../../../src/canvas/setupCanvasContainer'
+import setupCanvasContainer from '../../../src/page/setupCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import setupTestMarkersCanvas from './setupTestMarkersCanvas'
-import setupMixedDownCanvas from '../../../src/canvas/setupMixedDownCanvas'
+import setupMixedDownCanvas from '../../../src/page/setupMixedDownCanvas'
 import state from '../../../state'
 
 const prepareCanvasForDisplayInTest = canvas => {
@@ -28,7 +28,7 @@ export default () => {
 	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
 	testCanvasDisplayArea.style.display = 'block'
 
-	documentUtilities.setElementDimensions(testCanvasDisplayArea, canvasSize)
+	setElementDimensions(testCanvasDisplayArea, canvasSize)
 
 	let canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
 	prepareCanvasForDisplayInTest(canvasContainer)

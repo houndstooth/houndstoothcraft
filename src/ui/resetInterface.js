@@ -1,14 +1,14 @@
 import canvas from '../canvas'
 import state from '../../state'
 import store from '../store'
-import setupWarnings from './setupWarnings'
+import page from '../page'
 
 export default () => {
-	const warnings = document.querySelector('.warnings') || setupWarnings()
+	const warnings = document.querySelector('.warnings') || page.setupWarnings()
 	warnings.innerHTML = ''
 
 	canvas.clear()
-	clearInterval(state.interval)
+	window.clearInterval(state.interval)
 
 	const existingEffects = state.selectedHoundstoothEffects.slice()
 	store.resetState(state)

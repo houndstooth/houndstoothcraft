@@ -14,5 +14,6 @@ module.exports = config => {
 			'**/test/effects/**/*.js': [ 'webpack' ],
 		},
 		reporters: [ 'kjhtml' ],
+        browserNoActivityTimeout: 100000,
 	})
 }

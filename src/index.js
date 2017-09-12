@@ -8,7 +8,7 @@ import store from './store'
 
 const { standardAnimation } = animation
 const { perStripe, tileCenter } = components
-const { setupEffectToggles } = ui
+const { addEffectToggles } = ui
 const { executeSelectedHoundstoothEffects } = execute
 const { rotateCoordinateAboutPoint } = space
 const { solid } = render
@@ -19,7 +19,7 @@ export default {
 	houndstoothDefaults,
 	perStripe,
 	rotateCoordinateAboutPoint,
-	setupEffectToggles,
+	addEffectToggles,
 	solid,
 	standardAnimation,
 	tileCenter,

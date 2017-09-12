@@ -1,7 +1,7 @@
-import setupEffectToggles from './setupEffectToggles'
+import addEffectToggles from './addEffectToggles'
 import warn from './warn'
 
 export default {
-	setupEffectToggles,
+	addEffectToggles,
 	warn,
 }

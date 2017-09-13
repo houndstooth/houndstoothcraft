@@ -74,6 +74,7 @@ describe('composeMainHoundstooth', () => {
 
 		// defaults
 
+		const originalHoundstoothDefaultsToRestoreTo = codeUtilities.deepClone(store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)
 		store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern = {
 			settingA: 'pre-a',
 			settingJ: 'pre-j',
@@ -135,6 +136,8 @@ describe('composeMainHoundstooth', () => {
 			settingL: settingFunctionDefaultL,
 			settingP: settingFunctionOverridesP,
 		}))
+
+		store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS = originalHoundstoothDefaultsToRestoreTo
 	})
 
 	describe('when there are things which are not recognized patterns', () => {

@@ -1,4 +1,4 @@
-import insertElementRightAfter from '../../../src/page/insertElementRightAfter'
+import * as insertElementRightAfter from '../../../src/page/insertElementRightAfter'
 import setupEffectTogglesContainer from '../../../src/page/setupEffectTogglesContainer'
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 
@@ -7,8 +7,8 @@ describe('setup effect toggles container', () => {
 	let insertElementRightAfterSpy
 	beforeEach(() => {
 		deleteElementIfExists('.effect-toggles-container')
-		insertElementRightAfterSpy = jasmine.createSpy().and.callFake(insertElementRightAfter)
-		setupEffectTogglesContainer.__Rewire__('insertElementRightAfter', insertElementRightAfterSpy)
+
+		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default').and.callThrough()
 
 		returnedEffectTogglesContainer = setupEffectTogglesContainer()
 	})

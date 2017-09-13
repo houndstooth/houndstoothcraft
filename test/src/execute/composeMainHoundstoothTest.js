@@ -4,11 +4,11 @@ import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import store from '../../../src/store'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
+import * as combineHoundstoothEffects from '../../../src/execute/combineHoundstoothEffects'
+import * as composePatterns from '../../../src/execute/composePatterns'
 
 describe('composeMainHoundstooth', () => {
-	beforeEach(() => {
-		resetState(state)
-	})
+	beforeEach(() => resetState(state))
 
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
@@ -141,19 +141,16 @@ describe('composeMainHoundstooth', () => {
 	})
 
 	describe('when there are things which are not recognized patterns', () => {
-		let composePatternsSpy
 		beforeEach(() => {
 			spyOn(consoleWrapper, 'error')
-
-			composePatternsSpy = jasmine.createSpy()
-			composeMainHoundstooth.__Rewire__('composePatterns', composePatternsSpy)
+			spyOn(composePatterns, 'default')
 		})
 
 		describe('on one of the houndstooth effects', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothEffects: [ { yikesPattern: {} } ] })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(composePatternsSpy).not.toHaveBeenCalled()
+				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
 		})
 
@@ -161,7 +158,7 @@ describe('composeMainHoundstooth', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothOverrides: { yikesPattern: {} } })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(composePatternsSpy).not.toHaveBeenCalled()
+				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
 		})
 
@@ -171,7 +168,7 @@ describe('composeMainHoundstooth', () => {
 				store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(composePatternsSpy).not.toHaveBeenCalled()
+				expect(composePatterns.default).not.toHaveBeenCalled()
 				store.houndstoothDefaults.HOUNDSTOOTH_DEFAULTS = originalHoundstoothDefaultsToRestoreTo
 			})
 		})
@@ -181,29 +178,23 @@ describe('composeMainHoundstooth', () => {
 				state.mainHoundstooth.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
 				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
-				expect(composePatternsSpy).not.toHaveBeenCalled()
+				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
-		})
-
-		afterEach(() => {
-			composeMainHoundstooth.__ResetDependency__('composePatterns', composePatternsSpy)
 		})
 	})
 
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
-		const composePatternsSpy = jasmine.createSpy()
-		composeMainHoundstooth.__Rewire__('composePatterns', composePatternsSpy)
+		spyOn(composePatterns, 'default')
 
 		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		composeMainHoundstooth.__Rewire__('combineHoundstoothEffects', () => combinedHoundstoothEffects)
+		spyOn(combineHoundstoothEffects, 'default').and.returnValue(combinedHoundstoothEffects)
+
 
 		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-
-
 		composeMainHoundstooth({ houndstoothOverrides })
 
 
-		const composePatternsCalls = composePatternsSpy.calls.all()
+		const composePatternsCalls = composePatterns.default.calls.all()
 
 		expect(composePatternsCalls.length).toBe(9)
 
@@ -227,8 +218,5 @@ describe('composeMainHoundstooth', () => {
 		expect(composePatternsCalls[ 7 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 		expect(composePatternsCalls[ 8 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.animationsPattern)
 		expect(composePatternsCalls[ 8 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-
-		composeMainHoundstooth.__ResetDependency__('combineHoundstoothEffects')
-		composeMainHoundstooth.__ResetDependency__('composePatterns')
 	})
 })

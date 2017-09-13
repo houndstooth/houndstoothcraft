@@ -1,33 +1,29 @@
 import animator from '../../../src/animation/animator'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
+import * as buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
 
 describe('animator', () => {
-	let buildIntervalFunctionSpy
 	let intervalFunction
 	let animationFunction, frameRate, stopConditionFunction
 	let interval
 	beforeEach(() => {
 		resetState(state)
 
-		interval = () => {
-		}
+		interval = () => null
 		spyOn(window, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
-		buildIntervalFunctionSpy = jasmine.createSpy().and.returnValue(intervalFunction)
-		animator.__Rewire__('buildIntervalFunction', buildIntervalFunctionSpy)
+		spyOn(buildIntervalFunction, 'default').and.returnValue(intervalFunction)
 
-		animationFunction = () => {
-		}
+		animationFunction = () => null
 		frameRate = 3
-		stopConditionFunction = () => {
-		}
+		stopConditionFunction = () => null
 
 		animator({ animationFunction, frameRate, stopConditionFunction })
 	})
 
 	it('augments the function to be scheduled with a stop condition so it can cancel itself', () => {
-		expect(buildIntervalFunctionSpy).toHaveBeenCalledWith(jasmine.objectContaining({
+		expect(buildIntervalFunction.default).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
 			stopConditionFunction,
 		}))

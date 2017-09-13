@@ -1,12 +1,15 @@
 import texture from '../../../src/render/texture'
+import * as buildPath from '../../../src/render/buildPath'
+import * as clipPath from '../../../src/render/clipPath'
+import * as resetClip from '../../../src/render/resetClip'
 
 describe('texture', () => {
 	it('builds a path from the outline, clips the context on it, renders the texture, then resets the clip', () => {
 		const calls = []
 
-		texture.__Rewire__('buildPath', args => calls.push({ call: 'buildPath', args }))
-		texture.__Rewire__('clipPath', args => calls.push({ call: 'clipPath', args }))
-		texture.__Rewire__('resetClip', args => calls.push({ call: 'resetClip', args }))
+		spyOn(buildPath, 'default').and.callFake(args => calls.push({ call: 'buildPath', args }))
+		spyOn(clipPath, 'default').and.callFake(args => calls.push({ call: 'clipPath', args }))
+		spyOn(resetClip, 'default').and.callFake(args => calls.push({ call: 'resetClip', args }))
 
 		const context = {}
 		const tileColorIndices = []

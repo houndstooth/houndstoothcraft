@@ -1,10 +1,11 @@
 import clear from '../../../src/canvas/clear'
 import state from '../../../state'
+import * as getCanvasSize from '../../../src/canvas/getCanvasSize'
 
 describe('clear', () => {
 	let mixedDownClearRectSpy
 	beforeEach(() => {
-		clear.__Rewire__('getCanvasSize', () => [ 400, 500 ])
+		spyOn(getCanvasSize, 'default').and.returnValue([ 400, 500 ])
 
 		mixedDownClearRectSpy = jasmine.createSpy()
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }

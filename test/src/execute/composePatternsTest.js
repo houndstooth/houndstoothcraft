@@ -1,5 +1,6 @@
 import composePatterns from '../../../src/execute/composePatterns'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import * as maybeWarnAboutConflicts from '../../../src/execute/maybeWarnAboutConflicts'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
@@ -85,8 +86,7 @@ describe('compose patterns', () => {
 	})
 
 	it('maybe warns about conflicts', () => {
-		const maybeWarnAboutConflictsSpy = jasmine.createSpy()
-		composePatterns.__Rewire__('maybeWarnAboutConflicts', maybeWarnAboutConflictsSpy)
+		spyOn(maybeWarnAboutConflicts, 'default')
 
 		const patternToBeMergedOnto = {
 			colorSettings: {
@@ -101,6 +101,6 @@ describe('compose patterns', () => {
 
 		composePatterns({ patternToBeMergedOnto, patternToMerge })
 
-		expect(maybeWarnAboutConflictsSpy).toHaveBeenCalled()
+		expect(maybeWarnAboutConflicts.default).toHaveBeenCalled()
 	})
 })

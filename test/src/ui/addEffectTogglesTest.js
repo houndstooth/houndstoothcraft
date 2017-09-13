@@ -1,9 +1,9 @@
 import addEffectToggles from '../../../src/ui/addEffectToggles'
+import * as addEffectToggle from '../../../src/ui/addEffectToggle'
 
 describe('add effect toggles', () => {
 	it('adds an effect toggle for each effect', () => {
-		const addEffectToggleSpy = jasmine.createSpy()
-		addEffectToggles.__Rewire__('addEffectToggle', addEffectToggleSpy)
+		const addEffectToggleSpy = spyOn(addEffectToggle, 'default')
 
 		addEffectToggles([ 'effectOne', 'effectTwo' ])
 

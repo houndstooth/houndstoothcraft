@@ -1,9 +1,9 @@
 import combineHoundstoothEffects from '../../../src/execute/combineHoundstoothEffects'
+import * as composePatterns from '../../../src/execute/composePatterns'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
-		const composePatternsSpy = jasmine.createSpy()
-		combineHoundstoothEffects.__Rewire__('composePatterns', composePatternsSpy)
+		spyOn(composePatterns, 'default')
 
 		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
@@ -13,7 +13,7 @@ describe('combine houndstooth effects', () => {
 		combineHoundstoothEffects({ houndstoothEffects })
 
 
-		const composePatternsCalls = composePatternsSpy.calls.all()
+		const composePatternsCalls = composePatterns.default.calls.all()
 
 		expect(composePatternsCalls.length).toBe(6)
 
@@ -30,7 +30,5 @@ describe('combine houndstooth effects', () => {
 		expect(composePatternsCalls[ 4 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectTwo.animationsPattern)
 		expect(composePatternsCalls[ 5 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-
-		combineHoundstoothEffects.__ResetDependency__('composePatterns')
 	})
 })

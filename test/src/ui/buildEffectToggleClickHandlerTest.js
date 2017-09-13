@@ -1,11 +1,11 @@
 import buildEffectToggleClickHandler from '../../../src/ui/buildEffectToggleClickHandler'
 import state from '../../../state'
 import execute from '../../../src/execute'
+import * as resetInterface from '../../../src/ui/resetInterface'
 
 describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
-		const resetInterfaceSpy = jasmine.createSpy()
-		buildEffectToggleClickHandler.__Rewire__('resetInterface', resetInterfaceSpy)
+		const resetInterfaceSpy = spyOn(resetInterface, 'default')
 
 		const executeSelectedHoundstoothEffectsSpy = spyOn(execute, 'executeSelectedHoundstoothEffects')
 

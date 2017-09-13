@@ -1,9 +1,8 @@
 import solid from '../../../src/render/solid'
+import * as draw from '../../../src/render/draw'
+import * as getColor from '../../../src/render/getColor'
 
 describe('solid', () => {
-	let getColorSpy
-	let drawSpy
-
 	const shapeColorIndex = 8
 	const shapeColor = { a: 1 }
 	const transparentColor = { a: 0 }
@@ -11,33 +10,31 @@ describe('solid', () => {
 	const outline = []
 
 	beforeEach(() => {
-		drawSpy = jasmine.createSpy()
-		solid.__Rewire__('draw', drawSpy)
-		getColorSpy = jasmine.createSpy().and.returnValue(shapeColor)
-		solid.__Rewire__('getColor', getColorSpy)
+		spyOn(draw, 'default')
+		spyOn(getColor, 'default').and.returnValue(shapeColor)
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {
 		solid({ context, outline, shapeColorIndex })
 
-		expect(getColorSpy).toHaveBeenCalledWith({ index: shapeColorIndex })
+		expect(getColor.default).toHaveBeenCalledWith({ index: shapeColorIndex })
 	})
 
 	describe('when the color is not completely transparent', () => {
 		it('renders', () => {
 			solid({ context, outline, shapeColorIndex })
 
-			expect(drawSpy).toHaveBeenCalledWith({ context, shapeColor, outline })
+			expect(draw.default).toHaveBeenCalledWith({ context, shapeColor, outline })
 		})
 	})
 
 	describe('when the color turns out to be completely transparent', () => {
 		it('does not render', () => {
-			getColorSpy.and.returnValue(transparentColor)
+			getColor.default.and.returnValue(transparentColor)
 
 			solid({ context, outline, shapeColorIndex })
 
-			expect(drawSpy).not.toHaveBeenCalled()
+			expect(draw.default).not.toHaveBeenCalled()
 		})
 	})
 })

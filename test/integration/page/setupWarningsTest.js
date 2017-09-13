@@ -1,6 +1,6 @@
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 import setupWarnings from '../../../src/page/setupWarnings'
-import insertElementRightAfter from '../../../src/page/insertElementRightAfter'
+import * as insertElementRightAfter from '../../../src/page/insertElementRightAfter'
 
 describe('setup warnings', () => {
 	let returnedWarnings
@@ -8,8 +8,7 @@ describe('setup warnings', () => {
 	beforeEach(() => {
 		deleteElementIfExists('.warnings')
 
-		insertElementRightAfterSpy = jasmine.createSpy().and.callFake(insertElementRightAfter)
-		setupWarnings.__Rewire__('insertElementRightAfter', insertElementRightAfterSpy)
+		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default').and.callThrough()
 
 		returnedWarnings = setupWarnings()
 	})

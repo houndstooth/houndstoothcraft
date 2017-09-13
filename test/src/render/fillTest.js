@@ -1,5 +1,8 @@
 import fill from '../../../src/render/fill'
 import { ERASE } from '../../../src/constants'
+import * as parseColor from '../../../src/render/parseColor'
+import * as buildPath from '../../../src/render/buildPath'
+import * as fillPath from '../../../src/render/fillPath'
 
 describe('fill', () => {
 	const shapeColor = {}
@@ -7,23 +10,16 @@ describe('fill', () => {
 	const context = {}
 	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
-	let parseColorSpy
-	let buildPathSpy
-	let fillPathSpy
-
 	beforeEach(() => {
-		parseColorSpy = jasmine.createSpy().and.returnValue(parsedColor)
-		fill.__Rewire__('parseColor', parseColorSpy)
-		buildPathSpy = jasmine.createSpy()
-		fill.__Rewire__('buildPath', buildPathSpy)
-		fillPathSpy = jasmine.createSpy()
-		fill.__Rewire__('fillPath', fillPathSpy)
+		spyOn(parseColor, 'default').and.returnValue(parsedColor)
+		spyOn(buildPath, 'default')
+		spyOn(fillPath, 'default')
 
 		fill({ context, shapeColor, outline })
 	})
 
 	it('parses the shape color and sets the fill style to it', () => {
-		expect(parseColorSpy).toHaveBeenCalledWith(shapeColor)
+		expect(parseColor.default).toHaveBeenCalledWith(shapeColor)
 	})
 
 	it('sets the fill style to the parsed color', () => {
@@ -31,11 +27,11 @@ describe('fill', () => {
 	})
 
 	it('builds a path from it ', () => {
-		expect(buildPathSpy).toHaveBeenCalledWith({ context, outline })
+		expect(buildPath.default).toHaveBeenCalledWith({ context, outline })
 	})
 
 	it('fills this path', () => {
-		expect(fillPathSpy).toHaveBeenCalledWith({ context })
+		expect(fillPath.default).toHaveBeenCalledWith({ context })
 	})
 
 	it('defaults the global composite operation to source-over', () => {

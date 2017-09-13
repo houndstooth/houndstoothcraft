@@ -2,32 +2,29 @@ import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelec
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
 import page from '../../../src/page'
+import * as executeGrid from '../../../src/execute/executeGrid'
+import * as executeAnimation from '../../../src/execute/executeAnimation'
+import * as prepareFunctionsPerSetting from '../../../src/execute/prepareFunctionsPerSetting'
+import * as composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
 
 describe('execute selected houndstooth effects', () => {
-	let executeGridSpy, executeAnimationSpy, prepareFunctionsPerSettingSpy
 	const layerFunctions = { layer: 'layer' }
 	const animationFunctions = { animation: 'animation' }
 	beforeEach(() => {
 		resetState(state)
 
-		executeGridSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('executeGrid', executeGridSpy)
-
-		executeAnimationSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('executeAnimation', executeAnimationSpy)
-
-		prepareFunctionsPerSettingSpy = jasmine.createSpy().and.returnValues(layerFunctions, animationFunctions)
-		executeSelectedHoundstoothEffects.__Rewire__('prepareFunctionsPerSetting', prepareFunctionsPerSettingSpy)
+		spyOn(executeGrid, 'default')
+		spyOn(executeAnimation, 'default')
+		spyOn(prepareFunctionsPerSetting, 'default').and.returnValues(layerFunctions, animationFunctions)
 	})
 
 	it('composes the houndstooth', () => {
-		const composeMainHoundstoothSpy = jasmine.createSpy()
-		executeSelectedHoundstoothEffects.__Rewire__('composeMainHoundstooth', composeMainHoundstoothSpy)
+		spyOn(composeMainHoundstooth, 'default')
 
 		const houndstoothOverrides = {}
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		expect(composeMainHoundstoothSpy).toHaveBeenCalledWith({
+		expect(composeMainHoundstooth.default).toHaveBeenCalledWith({
 			houndstoothEffects: state.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
@@ -36,16 +33,15 @@ describe('execute selected houndstooth effects', () => {
 	it('prepares layer functions', () => {
 		executeSelectedHoundstoothEffects()
 
-		expect(prepareFunctionsPerSettingSpy).toHaveBeenCalledWith({
+		expect(prepareFunctionsPerSetting.default).toHaveBeenCalledWith({
 			settingsFunctions: state.mainHoundstooth.layersPattern,
 		})
 	})
 
 	describe('setting up for rendering', () => {
-		let setupContextsSpy, setupMixedDownCanvasSpy
 		beforeEach(() => {
-			setupMixedDownCanvasSpy = spyOn(page, 'setupMixedDownCanvas')
-			setupContextsSpy = spyOn(page, 'setupContexts')
+			spyOn(page, 'setupMixedDownCanvas')
+			spyOn(page, 'setupContexts')
 		})
 
 		it('includes the mixed down canvas when both mixing down and exporting', () => {
@@ -54,8 +50,8 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			expect(page.setupContexts).toHaveBeenCalled()
+			expect(page.setupMixedDownCanvas).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
@@ -63,8 +59,8 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			expect(page.setupContexts).toHaveBeenCalled()
+			expect(page.setupMixedDownCanvas).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
@@ -72,15 +68,15 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).toHaveBeenCalled()
+			expect(page.setupContexts).toHaveBeenCalled()
+			expect(page.setupMixedDownCanvas).toHaveBeenCalled()
 		})
 
 		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
 			executeSelectedHoundstoothEffects()
 
-			expect(setupContextsSpy).toHaveBeenCalled()
-			expect(setupMixedDownCanvasSpy).not.toHaveBeenCalled()
+			expect(page.setupContexts).toHaveBeenCalled()
+			expect(page.setupMixedDownCanvas).not.toHaveBeenCalled()
 		})
 	})
 
@@ -91,20 +87,20 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('prepares animation functions', () => {
-			expect(prepareFunctionsPerSettingSpy).toHaveBeenCalledWith({
+			expect(prepareFunctionsPerSetting.default).toHaveBeenCalledWith({
 				settingsFunctions: state.mainHoundstooth.animationsPattern,
 			})
 		})
 
 		it('executes an animation', () => {
-			expect(executeAnimationSpy).toHaveBeenCalledWith({
+			expect(executeAnimation.default).toHaveBeenCalledWith({
 				animationFunctions,
 				layerFunctions,
 			})
 		})
 
 		it('does not execute a single grid', () => {
-			expect(executeGridSpy).not.toHaveBeenCalled()
+			expect(executeGrid.default).not.toHaveBeenCalled()
 		})
 	})
 
@@ -115,17 +111,17 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('does not prepare animation functions', () => {
-			expect(prepareFunctionsPerSettingSpy.calls.all().length).toBe(1)
+			expect(prepareFunctionsPerSetting.default.calls.all().length).toBe(1)
 		})
 
 		it('executes a single grid', () => {
-			expect(executeGridSpy).toHaveBeenCalledWith({
+			expect(executeGrid.default).toHaveBeenCalledWith({
 				layerFunctions,
 			})
 		})
 
 		it('does not execute an animation', () => {
-			expect(executeAnimationSpy).not.toHaveBeenCalled()
+			expect(executeAnimation.default).not.toHaveBeenCalled()
 		})
 	})
 })

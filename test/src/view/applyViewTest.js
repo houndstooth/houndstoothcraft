@@ -1,4 +1,7 @@
 import applyView from '../../../src/view/applyView'
+import * as applyZoom from '../../../src/view/applyZoom'
+import * as applyScroll from '../../../src/view/applyScroll'
+import * as applyTilt from '../../../src/view/applyTilt'
 
 describe('adjusts outline for view', () => {
 	it('applies any relevant zoom, scroll, and tilt', () => {
@@ -7,18 +10,15 @@ describe('adjusts outline for view', () => {
 		const zoomedAndScrolledOutline = []
 		const zoomedAndScrolledAndTiltedOutline = []
 
-		const applyZoomSpy = jasmine.createSpy().and.returnValue(zoomedOutline)
-		applyView.__Rewire__('applyZoom', applyZoomSpy)
-		const applyScrollSpy = jasmine.createSpy().and.returnValue(zoomedAndScrolledOutline)
-		applyView.__Rewire__('applyScroll', applyScrollSpy)
-		const applyTiltSpy = jasmine.createSpy().and.returnValue(zoomedAndScrolledAndTiltedOutline)
-		applyView.__Rewire__('applyTilt', applyTiltSpy)
+		spyOn(applyZoom, 'default').and.returnValue(zoomedOutline)
+		spyOn(applyScroll, 'default').and.returnValue(zoomedAndScrolledOutline)
+		spyOn(applyTilt, 'default').and.returnValue(zoomedAndScrolledAndTiltedOutline)
 
 		const actualOutline = applyView(outline, { tileOrigin: [], tileSize: 3 })
 
-		expect(applyZoomSpy).toHaveBeenCalledWith(outline)
-		expect(applyScrollSpy).toHaveBeenCalledWith(zoomedOutline)
-		expect(applyTiltSpy).toHaveBeenCalledWith(zoomedAndScrolledOutline)
+		expect(applyZoom.default).toHaveBeenCalledWith(outline)
+		expect(applyScroll.default).toHaveBeenCalledWith(zoomedOutline)
+		expect(applyTilt.default).toHaveBeenCalledWith(zoomedAndScrolledOutline)
 		expect(actualOutline).toBe(zoomedAndScrolledAndTiltedOutline)
 	})
 })

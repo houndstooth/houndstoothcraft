@@ -3,38 +3,34 @@ import codeUtilities from '../../../src/utilities/codeUtilities'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
 import canvas from '../../../src/canvas'
+import * as texture from '../../../src/render/texture'
+import * as solid from '../../../src/render/solid'
 
 describe('shape', () => {
-	let renderSpy
-	let wrappedIndexSpy
-
 	const tileOrigin = [ 11, 13 ]
 	const tileSize = 45
 	const tileColorIndices = []
 	const stripeIndex = 7
 	const shapeColorIndex = 45
-	let getOutline
 	const outlineOptions = {}
 
 	const context = {}
 
-	let getCurrentContextSpy
+	let getOutlineSpy
 
 	beforeEach(() => {
 		resetState(state)
-		renderSpy = jasmine.createSpy()
-		shape.__Rewire__('render', renderSpy)
-		wrappedIndexSpy = spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
 
-		getOutline = jasmine.createSpy()
+		getOutlineSpy = jasmine.createSpy()
 
-		getCurrentContextSpy = spyOn(canvas, 'getCurrentContext').and.returnValue(context)
+		spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
+		spyOn(texture, 'default')
+		spyOn(solid, 'default')
+		spyOn(canvas, 'getCurrentContext').and.returnValue(context)
 	})
 
 	describe('when no outline is returned from the get outline function', () => {
-		beforeEach(() => {
-			getOutline.and.returnValue(null)
-		})
+		beforeEach(() => getOutlineSpy.and.returnValue(null))
 
 		it('returns early, not rendering', () => {
 			shape({
@@ -42,28 +38,19 @@ describe('shape', () => {
 				tileSize,
 				tileColorIndices,
 				stripeIndex,
-				getOutline,
+				getOutline: getOutlineSpy,
 				outlineOptions,
 			})
 
-
-			expect(getOutline).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-
-			expect(renderSpy).not.toHaveBeenCalled()
+			expect(getOutlineSpy).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
+			expect(texture.default).not.toHaveBeenCalled()
+			expect(solid.default).not.toHaveBeenCalled()
 		})
 	})
 
 	describe('when an outline is received', () => {
 		const outline = []
-
-		let solidSpy
-
-		beforeEach(() => {
-			getOutline.and.returnValue(outline)
-
-			solidSpy = jasmine.createSpy()
-			shape.__Rewire__('solid', solidSpy)
-		})
+		beforeEach(() => getOutlineSpy.and.returnValue(outline))
 
 		it('rotates the outline', () => {
 			shape({
@@ -71,11 +58,11 @@ describe('shape', () => {
 				tileSize,
 				tileColorIndices,
 				stripeIndex,
-				getOutline,
+				getOutline: getOutlineSpy,
 				outlineOptions,
 			})
 
-			expect(getOutline).toHaveBeenCalledWith({
+			expect(getOutlineSpy).toHaveBeenCalledWith({
 				tileOrigin,
 				tileSize,
 				outlineOptions,
@@ -88,11 +75,11 @@ describe('shape', () => {
 				tileSize,
 				tileColorIndices,
 				stripeIndex,
-				getOutline,
+				getOutline: getOutlineSpy,
 				outlineOptions,
 			})
 
-			expect(getCurrentContextSpy).toHaveBeenCalled()
+			expect(canvas.getCurrentContext).toHaveBeenCalled()
 		})
 
 		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
@@ -101,11 +88,11 @@ describe('shape', () => {
 				tileSize,
 				tileColorIndices,
 				stripeIndex,
-				getOutline,
+				getOutline: getOutlineSpy,
 				outlineOptions,
 			})
 
-			expect(wrappedIndexSpy).toHaveBeenCalledWith({
+			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({
 				array: tileColorIndices,
 				index: stripeIndex,
 			})
@@ -118,19 +105,16 @@ describe('shape', () => {
 			})
 
 			it('passes it to the texture component to be rendered', () => {
-				const textureSpy = jasmine.createSpy()
-				shape.__Rewire__('texture', textureSpy)
-
 				shape({
 					tileOrigin,
 					tileSize,
 					tileColorIndices,
 					stripeIndex,
-					getOutline,
+					getOutline: getOutlineSpy,
 					outlineOptions,
 				})
 
-				expect(textureSpy).toHaveBeenCalledWith({
+				expect(texture.default).toHaveBeenCalledWith({
 					context,
 					outline,
 					tileColorIndices,
@@ -139,8 +123,6 @@ describe('shape', () => {
 					renderTexture,
 					shapeColorIndex,
 				})
-
-				shape.__ResetDependency__('texture')
 			})
 		})
 
@@ -151,11 +133,11 @@ describe('shape', () => {
 					tileSize,
 					tileColorIndices,
 					stripeIndex,
-					getOutline,
+					getOutline: getOutlineSpy,
 					outlineOptions,
 				})
 
-				expect(solidSpy).toHaveBeenCalledWith(
+				expect(solid.default).toHaveBeenCalledWith(
 					jasmine.objectContaining({
 						context,
 						shapeColorIndex,
@@ -164,13 +146,7 @@ describe('shape', () => {
 						tileOrigin,
 					})
 				)
-
-				shape.__ResetDependency__('texture')
 			})
 		})
-	})
-
-	afterEach(() => {
-		shape.__ResetDependency__('render')
 	})
 })

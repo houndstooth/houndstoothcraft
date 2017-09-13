@@ -4,11 +4,10 @@ import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 
 describe('setup effect toggles container', () => {
 	let returnedEffectTogglesContainer
-	let insertElementRightAfterSpy
 	beforeEach(() => {
 		deleteElementIfExists('.effect-toggles-container')
 
-		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default').and.callThrough()
+		spyOn(insertElementRightAfter, 'default').and.callThrough()
 
 		returnedEffectTogglesContainer = setupEffectTogglesContainer()
 	})
@@ -28,6 +27,6 @@ describe('setup effect toggles container', () => {
 
 	it('inserts the effect toggles container after the canvas', () => {
 		const canvasContainer = document.querySelector('.canvas-container')
-		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
+		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
 	})
 })

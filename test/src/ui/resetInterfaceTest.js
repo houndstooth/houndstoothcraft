@@ -18,11 +18,11 @@ describe('reset interface', () => {
 	})
 
 	it('clears canvas', () => {
-		const clearSpy = spyOn(canvas, 'clear')
+		spyOn(canvas, 'clear')
 
 		resetInterface()
 
-		expect(clearSpy).toHaveBeenCalled()
+		expect(canvas.clear).toHaveBeenCalled()
 	})
 
 	it('clears any active animation', () => {

@@ -4,11 +4,10 @@ import * as insertElementRightAfter from '../../../src/page/insertElementRightAf
 
 describe('setup warnings', () => {
 	let returnedWarnings
-	let insertElementRightAfterSpy
 	beforeEach(() => {
 		deleteElementIfExists('.warnings')
 
-		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default').and.callThrough()
+		spyOn(insertElementRightAfter, 'default').and.callThrough()
 
 		returnedWarnings = setupWarnings()
 	})
@@ -28,6 +27,6 @@ describe('setup warnings', () => {
 
 	it('inserts the warnings after the effect toggles container', () => {
 		const effectTogglesContainer = document.querySelector('.effect-toggles-container')
-		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedWarnings, effectTogglesContainer)
+		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedWarnings, effectTogglesContainer)
 	})
 })

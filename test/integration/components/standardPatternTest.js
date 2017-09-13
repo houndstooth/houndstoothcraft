@@ -1,9 +1,9 @@
-import executeSelectedHoundstoothEffects from '../../src/execute/executeSelectedHoundstoothEffects'
-import standardTileIsColors from './helpers/standardTileIsColors'
-import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
-import { BLACK, TRANSPARENT } from '../../src/constants'
-import state from '../../state'
-import resetState from '../../src/store/resetState'
+import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
+import standardTileIsColors from '../helpers/standardTileIsColors'
+import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
+import { BLACK, TRANSPARENT } from '../../../src/constants'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('standard houndstooth pattern', () => {
 	beforeEach(() => resetState(state))

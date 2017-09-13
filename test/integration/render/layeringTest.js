@@ -1,9 +1,9 @@
-import executeSelectedHoundstoothEffects from '../../src/execute/executeSelectedHoundstoothEffects'
-import activateTestMarkerCanvas from './helpers/activateTestMarkerCanvas'
-import { YELLOW, CYAN } from '../../src/constants'
-import pixelIsColorWithMarker from './helpers/pixelIsColorWithMarker'
-import state from '../../state'
-import resetState from '../../src/store/resetState'
+import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
+import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
+import { YELLOW, CYAN } from '../../../src/constants'
+import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('layering', () => {
 	beforeEach(() => resetState(state))

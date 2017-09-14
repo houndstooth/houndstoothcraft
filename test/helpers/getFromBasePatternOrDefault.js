@@ -1,6 +1,6 @@
 import codeUtilities from '../../src/utilities/codeUtilities'
 import state from '../../state'
-import houndstoothDefaults from '../../src/store/houndstoothDefaults'
+import { HOUNDSTOOTH_DEFAULTS } from '../../src/store/houndstoothDefaults'
 
 export default settingsPath => {
 	let childSetting = state.mainHoundstooth.basePattern
@@ -24,7 +24,7 @@ export default settingsPath => {
 	}
 	else {
 		setting = codeUtilities.accessChildPropertyOrCreatePath({
-			objectWithProperties: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern,
+			objectWithProperties: HOUNDSTOOTH_DEFAULTS.basePattern,
 			propertyPath: settingsPath,
 		})
 	}

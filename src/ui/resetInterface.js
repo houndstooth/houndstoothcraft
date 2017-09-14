@@ -1,6 +1,6 @@
 import canvas from '../canvas'
 import state from '../../state'
-import store from '../store'
+import { resetState } from '../store'
 import page from '../page'
 
 export default () => {
@@ -11,6 +11,6 @@ export default () => {
 	window.clearInterval(state.interval)
 
 	const existingEffects = state.selectedHoundstoothEffects.slice()
-	store.resetState(state)
+	resetState(state)
 	state.selectedHoundstoothEffects = existingEffects
 }

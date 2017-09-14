@@ -4,7 +4,7 @@ import ui from './ui'
 import execute from './execute'
 import space from './space'
 import render from './render'
-import store from './store'
+import * as store from './store'
 
 const { standardAnimation } = animation
 const { perStripe, tileCenter } = components

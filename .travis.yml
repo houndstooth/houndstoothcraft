@@ -10,7 +10,7 @@ before_install:
 before_script:
     - npm install
 script:
-    - npm ci
+    - npm run ci
 dist: trusty
 addons:
   chrome: stable

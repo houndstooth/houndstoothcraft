@@ -30,7 +30,7 @@ export default () => {
 
 	setElementDimensions(testCanvasDisplayArea, canvasSize)
 
-	let canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
+	let canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer({ canvasSize })
 	prepareCanvasForDisplayInTest(canvasContainer)
 
 	setupMixedDownCanvas()

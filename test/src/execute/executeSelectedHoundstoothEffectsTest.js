@@ -13,6 +13,8 @@ describe('execute selected houndstooth effects', () => {
 	beforeEach(() => {
 		resetState(state)
 
+		spyOn(page, 'setupMixedDownCanvas')
+		spyOn(page, 'setupContexts')
 		spyOn(executeGrid, 'default')
 		spyOn(executeAnimation, 'default')
 		spyOn(prepareFunctionsPerSetting, 'default').and.returnValues(layerFunctions, animationFunctions)
@@ -39,11 +41,6 @@ describe('execute selected houndstooth effects', () => {
 	})
 
 	describe('setting up for rendering', () => {
-		beforeEach(() => {
-			spyOn(page, 'setupMixedDownCanvas')
-			spyOn(page, 'setupContexts')
-		})
-
 		it('includes the mixed down canvas when both mixing down and exporting', () => {
 			state.mixingDown = true
 			state.exportFrames = true

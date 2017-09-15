@@ -10,11 +10,11 @@ describe('reset interface', () => {
 
 	it('clears warnings', () => {
 		resetInterface()
-		const warnings = document.querySelector('.warnings')
+		const warningsContainer = document.querySelector('.warnings-container')
 		warn('oh no')
-		expect(warnings.innerHTML).toBe('<div>oh no</div>')
+		expect(warningsContainer.innerHTML).toBe('<div>oh no</div>')
 		resetInterface()
-		expect(warnings.innerHTML).toBe('')
+		expect(warningsContainer.innerHTML).toBe('')
 	})
 
 	it('clears canvas', () => {

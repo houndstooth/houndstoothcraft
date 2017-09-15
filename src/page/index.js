@@ -1,11 +1,11 @@
-import setupContexts from './setupContexts'
-import setupEffectTogglesContainer from './setupEffectTogglesContainer'
-import setupMixedDownCanvas from './setupMixedDownCanvas'
-import setupWarnings from './setupWarnings'
+import createContexts from './createContexts'
+import createEffectTogglesContainer from './createEffectTogglesContainer'
+import createMixedDownCanvas from './createMixedDownCanvas'
+import createWarningsContainer from './createWarningsContainer'
 
 export default {
-	setupContexts,
-	setupEffectTogglesContainer,
-	setupMixedDownCanvas,
-	setupWarnings,
+	createContexts,
+	createEffectTogglesContainer,
+	createMixedDownCanvas,
+	createWarningsContainer,
 }

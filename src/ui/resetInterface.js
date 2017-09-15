@@ -4,7 +4,7 @@ import { resetState } from '../store'
 import page from '../page'
 
 export default () => {
-	const warnings = document.querySelector('.warnings') || page.setupWarnings()
+	const warnings = document.querySelector('.warnings-container') || page.createWarningsContainer()
 	warnings.innerHTML = ''
 
 	canvas.clear()

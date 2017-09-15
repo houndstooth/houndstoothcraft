@@ -16,6 +16,6 @@ export default houndstoothEffect => {
 	const name = document.createTextNode(houndstoothEffect.name)
 	label.appendChild(name)
 
-	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || page.setupEffectTogglesContainer()
+	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || page.createEffectTogglesContainer()
 	effectTogglesContainer.appendChild(label)
 }

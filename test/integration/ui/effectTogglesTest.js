@@ -2,7 +2,7 @@ import addEffectToggles from '../../../src/ui/addEffectToggles'
 import state from '../../../state'
 import effects from '../../../effects'
 
-describe('setup effect toggles', () => {
+describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		addEffectToggles(Object.values(effects))
 		state.mainHoundstooth.basePattern = {

@@ -1,9 +1,9 @@
-import setupMixedDownCanvas from '../../../src/page/setupMixedDownCanvas'
+import createMixedDownCanvas from '../../../src/page/createMixedDownCanvas'
 import state from '../../../state'
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 import canvas from '../../../src/canvas/index'
 
-describe('setup mixed down canvas', () => {
+describe('creates mixed down canvas', () => {
 	beforeEach(() => deleteElementIfExists('.mixed-down-canvas'))
 
 	describe('when the mixed down canvas is already on the document', () => {
@@ -18,7 +18,7 @@ describe('setup mixed down canvas', () => {
 			newMixedDownCanvas.getContext = contextType => contextType === '2d' ? newMixedDownContext : NaN
 			spyOn(document, 'createElement').and.returnValue(newMixedDownCanvas)
 
-			setupMixedDownCanvas()
+			createMixedDownCanvas()
 
 			foundMixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
@@ -43,7 +43,7 @@ describe('setup mixed down canvas', () => {
 			mixedDownCanvas.getContext = contextType => contextType === '2d' ? mixedDownContext : NaN
 			spyOn(document, 'createElement').and.returnValue(mixedDownCanvas)
 
-			setupMixedDownCanvas()
+			createMixedDownCanvas()
 			foundMixedDownCanvas = document.querySelector('.mixed-down-canvas')
 		})
 

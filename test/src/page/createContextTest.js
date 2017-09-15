@@ -1,6 +1,6 @@
-import setupContext from '../../../src/page/setupContext'
+import createContext from '../../../src/page/createContext'
 
-describe('setup context', () => {
+describe('create context', () => {
 	let canvasContainer, returnedContext, canvasContext
 	beforeEach(() => {
 		const mockCanvas = document.createElement('canvas')
@@ -10,7 +10,7 @@ describe('setup context', () => {
 		mockCanvas.getContext = contextType => contextType === '2d' ? canvasContext : null
 		spyOn(document, 'createElement').and.returnValue(mockCanvas)
 
-		returnedContext = setupContext({ canvasContainer, canvasSize: [ 350, 600 ] })
+		returnedContext = createContext({ canvasContainer, canvasSize: [ 350, 600 ] })
 	})
 
 	it('sets canvas position to absolute', () => {

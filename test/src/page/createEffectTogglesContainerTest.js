@@ -1,15 +1,15 @@
 import * as insertElementRightAfter from '../../../src/page/insertElementRightAfter'
-import setupEffectTogglesContainer from '../../../src/page/setupEffectTogglesContainer'
+import createEffectTogglesContainer from '../../../src/page/createEffectTogglesContainer'
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 
-describe('setup effect toggles container', () => {
+describe('create effect toggles container', () => {
 	let returnedEffectTogglesContainer
 	beforeEach(() => {
 		deleteElementIfExists('.effect-toggles-container')
 
 		spyOn(insertElementRightAfter, 'default').and.callThrough()
 
-		returnedEffectTogglesContainer = setupEffectTogglesContainer()
+		returnedEffectTogglesContainer = createEffectTogglesContainer()
 	})
 
 	it('returns the newly created effect toggles container', () => {

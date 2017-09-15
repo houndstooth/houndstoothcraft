@@ -13,8 +13,8 @@ describe('execute selected houndstooth effects', () => {
 	beforeEach(() => {
 		resetState(state)
 
-		spyOn(page, 'setupMixedDownCanvas')
-		spyOn(page, 'setupContexts')
+		spyOn(page, 'createMixedDownCanvas')
+		spyOn(page, 'createContexts')
 		spyOn(executeGrid, 'default')
 		spyOn(executeAnimation, 'default')
 		spyOn(prepareFunctionsPerSetting, 'default').and.returnValues(layerFunctions, animationFunctions)
@@ -47,8 +47,8 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(page.setupContexts).toHaveBeenCalled()
-			expect(page.setupMixedDownCanvas).toHaveBeenCalled()
+			expect(page.createContexts).toHaveBeenCalled()
+			expect(page.createMixedDownCanvas).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
@@ -56,8 +56,8 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(page.setupContexts).toHaveBeenCalled()
-			expect(page.setupMixedDownCanvas).toHaveBeenCalled()
+			expect(page.createContexts).toHaveBeenCalled()
+			expect(page.createMixedDownCanvas).toHaveBeenCalled()
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
@@ -65,15 +65,15 @@ describe('execute selected houndstooth effects', () => {
 
 			executeSelectedHoundstoothEffects()
 
-			expect(page.setupContexts).toHaveBeenCalled()
-			expect(page.setupMixedDownCanvas).toHaveBeenCalled()
+			expect(page.createContexts).toHaveBeenCalled()
+			expect(page.createMixedDownCanvas).toHaveBeenCalled()
 		})
 
 		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
 			executeSelectedHoundstoothEffects()
 
-			expect(page.setupContexts).toHaveBeenCalled()
-			expect(page.setupMixedDownCanvas).not.toHaveBeenCalled()
+			expect(page.createContexts).toHaveBeenCalled()
+			expect(page.createMixedDownCanvas).not.toHaveBeenCalled()
 		})
 	})
 

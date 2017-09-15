@@ -12,9 +12,9 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 		settingsFunctions: state.mainHoundstooth.layersPattern,
 	})
 
-	page.setupContexts()
+	page.createContexts()
 	if (state.exportFrames) state.mixingDown = true
-	if (state.mixingDown) page.setupMixedDownCanvas()
+	if (state.mixingDown) page.createMixedDownCanvas()
 
 	if (state.animating) {
 		const animationFunctions = prepareFunctionsPerSetting({

@@ -1,20 +1,20 @@
 import state from '../../../state'
-import setupContexts from '../../../src/page/setupContexts'
-import * as setupContext from '../../../src/page/setupContext'
-import setupCanvasContainer from '../../../src/page/setupCanvasContainer'
+import createContexts from '../../../src/page/createContexts'
+import * as createContext from '../../../src/page/createContext'
+import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import resetState from '../../../src/store/resetState'
 
-describe('setup contexts', () => {
+describe('create contexts', () => {
 	beforeEach(() => {
 		resetState(state)
-		spyOn(setupContext, 'default')
+		spyOn(createContext, 'default')
 	})
 
 	it('clears the canvas container contents', () => {
-		const canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer()
+		const canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer()
 		canvasContainer.innerHTML = 'some old canvases'
 
-		setupContexts()
+		createContexts()
 
 		expect(canvasContainer.innerHTML).toBe('')
 	})
@@ -23,24 +23,24 @@ describe('setup contexts', () => {
 		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 		expect(state.contexts.length).toBe(0)
 
-		setupContexts()
+		createContexts()
 
 		expect(state.contexts.length).toBe(6)
 	})
 
 	it('can reduce the count of contexts in the state, and canvases on the page', () => {
 		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
-		setupContexts()
+		createContexts()
 
-		expect(setupContext.default.calls.count()).toBe(6)
+		expect(createContext.default.calls.count()).toBe(6)
 		expect(state.contexts.length).toBe(6)
 
 		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 3 }
-		setupContext.default.calls.reset()
+		createContext.default.calls.reset()
 
-		setupContexts()
+		createContexts()
 
-		expect(setupContext.default.calls.count()).toBe(4)
+		expect(createContext.default.calls.count()).toBe(4)
 		expect(state.contexts.length).toBe(4)
 	})
 })

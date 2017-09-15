@@ -1,9 +1,9 @@
 import setElementDimensions from '../../../src/page/setElementDimensions'
 import getCanvasSize from '../../../src/canvas/getCanvasSize'
-import setupCanvasContainer from '../../../src/page/setupCanvasContainer'
+import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import setupTestMarkersCanvas from './setupTestMarkersCanvas'
-import setupMixedDownCanvas from '../../../src/page/setupMixedDownCanvas'
+import createMixedDownCanvas from '../../../src/page/createMixedDownCanvas'
 import state from '../../../state'
 
 const prepareCanvasForDisplayInTest = canvas => {
@@ -30,9 +30,9 @@ export default () => {
 
 	setElementDimensions(testCanvasDisplayArea, canvasSize)
 
-	let canvasContainer = document.querySelector('.canvas-container') || setupCanvasContainer({ canvasSize })
+	let canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer({ canvasSize })
 	prepareCanvasForDisplayInTest(canvasContainer)
 
-	setupMixedDownCanvas()
+	createMixedDownCanvas()
 	state.mixingDown = true
 }

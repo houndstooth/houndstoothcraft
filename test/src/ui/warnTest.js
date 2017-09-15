@@ -5,7 +5,7 @@ describe('warn', () => {
 		warn('watch out!')
 		warn('my man!')
 
-		const warnings = document.querySelector('.warnings')
+		const warnings = document.querySelector('.warnings-container')
 		expect(warnings.innerHTML).toEqual('<div>watch out!</div><div>my man!</div>')
 	})
 })

@@ -40,7 +40,7 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
+				state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 			})
 		})
 

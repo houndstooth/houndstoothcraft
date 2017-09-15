@@ -140,7 +140,7 @@ describe('.gridSettings', () => {
 				basePattern: {
 					viewSettings: {
 						canvasSize: 300,
-						centerViewOnCenterOfTileAtZeroZeroAddress: true,
+						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
 					tileSettings: {
 						tileSizeSetting,

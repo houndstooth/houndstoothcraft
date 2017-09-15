@@ -3,7 +3,7 @@ const PATTERN_STRUCTURE = {
 		canvasSize: true,
 		zoom: true,
 		zoomOnCanvasCenter: true,
-		centerViewOnCenterOfTileAtZeroZeroAddress: true,
+		centerViewOnCenterOfTileAtHomeAddress: true,
 		rotateViewAboutCanvasCenter: true,
 	},
 	gridSettings: {

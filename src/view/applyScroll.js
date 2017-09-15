@@ -2,14 +2,14 @@ import state from '../../state'
 
 export default outline => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
-	const centerViewOnCenterOfTileAtZeroZeroAddress = viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress
+	const centerViewOnCenterOfTileAtHomeAddress = viewSettings.centerViewOnCenterOfTileAtHomeAddress
 
-	if (!centerViewOnCenterOfTileAtZeroZeroAddress) return outline
+	if (!centerViewOnCenterOfTileAtHomeAddress) return outline
 
-	return outline.map(applyCenterViewOnCenterOfTileAtZeroZeroAddress)
+	return outline.map(applyCenterViewOnCenterOfTileAtHomeAddress)
 }
 
-const applyCenterViewOnCenterOfTileAtZeroZeroAddress = coordinate => {
+const applyCenterViewOnCenterOfTileAtHomeAddress = coordinate => {
 	const canvasSize = state.mainHoundstooth.basePattern.viewSettings.canvasSize
 	const canvasCenter = canvasSize / 2
 

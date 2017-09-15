@@ -118,13 +118,13 @@ describe('.viewSettings', () => {
 		})
 	})
 
-	describe('.centerViewOnCenterOfTileAtZeroZeroAddress', () => {
+	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
 		it('is self-explanatory', () => {
 			const tileSizeSetting = 100
 			const houndstoothOverrides = {
 				basePattern: {
 					tileSettings: { tileSizeSetting },
-					viewSettings: { centerViewOnCenterOfTileAtZeroZeroAddress: true },
+					viewSettings: { centerViewOnCenterOfTileAtHomeAddress: true },
 					gridSettings: { gridSize: 2 },
 				},
 			}

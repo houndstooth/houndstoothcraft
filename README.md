@@ -143,6 +143,8 @@ Typically:
 
 `gridAddress` has no units. It does not necessarily have a direct correlation with pixels on the canvas. It is abstract. It is a coordinate system for identifying tiles relative to each other, which of course can be (and is typically) used to position them next to each other on the canvas, but can be purposed otherwise. 
 
+An address coordinate [0, 0] is referred to as the "home address" while a pixel coordinate [0, 0] is referred to as the "origin". 
+
 ### tile
 
 A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `tileColors`.

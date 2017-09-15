@@ -16,7 +16,7 @@ describe('apply scroll', () => {
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = true
+		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 
 		expect(applyScroll(outline)).toEqual([
 			[
@@ -35,7 +35,7 @@ describe('apply scroll', () => {
 	})
 
 	it('returns the outline unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtZeroZeroAddress = false
+		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
 
 		expect(applyScroll(outline)).toEqual(outline)
 	})

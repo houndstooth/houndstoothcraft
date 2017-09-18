@@ -1,9 +1,9 @@
-import view from '../view'
+import { applyView } from '../view'
 import fill from './fill'
 
 export default ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) return
-	outline = view.applyView(outline)
+	outline = applyView(outline)
 
 	fill({ context, shapeColor, outline })
 }

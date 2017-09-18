@@ -1,5 +1,5 @@
 import draw from '../../../src/render/draw'
-import view from '../../../src/view'
+import * as view from '../../../src/view'
 import * as fill from '../../../src/render/fill'
 
 describe('draw', () => {

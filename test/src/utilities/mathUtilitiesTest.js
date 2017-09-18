@@ -1,4 +1,4 @@
-import mathUtilities from '../../../src/utilities/mathUtilities'
+import * as mathUtilities from '../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {
 	describe('#triangularNumber', () => {

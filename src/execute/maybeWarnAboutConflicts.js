@@ -1,4 +1,4 @@
-import codeUtilities from '../utilities/codeUtilities'
+import { isDefined } from '../utilities/codeUtilities'
 import settingPath from './settingPath'
 import consoleWrapper from '../utilities/consoleWrapper'
 import ui from '../ui'
@@ -12,7 +12,7 @@ export default ({ warnAboutConflicts, settingsPath, settingName, existingSetting
 }
 
 const shouldWarnAboutConflicts = ({ warnAboutConflicts, existingSetting, overridingSetting }) => {
-	return warnAboutConflicts && codeUtilities.isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
+	return warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 }
 
 const settingsAreEqual = (a, b) => {

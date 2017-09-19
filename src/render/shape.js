@@ -1,4 +1,4 @@
-import codeUtilities from '../utilities/codeUtilities'
+import { wrappedIndex } from '../utilities/codeUtilities'
 import texture from './texture'
 import canvas from '../canvas'
 import state from '../../state'
@@ -9,7 +9,7 @@ export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutlin
 	if (!outline) return
 
 	const context = canvas.getCurrentContext()
-	const shapeColorIndex = codeUtilities.wrappedIndex({ array: tileColorIndices, index: stripeIndex })
+	const shapeColorIndex = wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
 	const textureSettings = state.mainHoundstooth.basePattern.textureSettings
 	const renderTexture = textureSettings && textureSettings.renderTexture

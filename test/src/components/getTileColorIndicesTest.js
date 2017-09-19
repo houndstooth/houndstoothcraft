@@ -1,5 +1,5 @@
 import getTileColorIndices from '../../../src/components/getTileColorIndices'
-import codeUtilities from '../../../src/utilities/codeUtilities'
+import { iterator } from '../../../src/utilities/codeUtilities'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
 
@@ -109,7 +109,6 @@ describe('get tile color indices', () => {
 					],
 				},
 			}
-			const iterator = codeUtilities.iterator
 			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ]))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
@@ -140,7 +139,6 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const iterator = codeUtilities.iterator
 			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ]))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,

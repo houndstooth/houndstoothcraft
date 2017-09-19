@@ -3,7 +3,7 @@ import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
-import codeUtilities from '../../../src/utilities/codeUtilities'
+import { deepClone } from '../../../src/utilities/codeUtilities'
 import settingsPaths from '../../helpers/settingsPaths'
 import state from '../../../state'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
@@ -746,9 +746,9 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			const partiallySeeThroughBlack = codeUtilities.deepClone(BLACK)
+			const partiallySeeThroughBlack = deepClone(BLACK)
 			partiallySeeThroughBlack.a *= opacity
-			const partiallySeeThroughBlue = codeUtilities.deepClone(BLUE)
+			const partiallySeeThroughBlue = deepClone(BLUE)
 			partiallySeeThroughBlue.a *= opacity
 
 			expect(pixelIsColorWithMarker([ 25, 75 ], partiallySeeThroughBlack, 1)).toBe(true)

@@ -1,4 +1,4 @@
-import codeUtilities from '../utilities/codeUtilities'
+import { wrappedIndex } from '../utilities/codeUtilities'
 import state from '../../state'
 
 export default ({ gridAddress }) => {
@@ -36,17 +36,17 @@ const getTileColorIndices = ({ gridAddress, assignment }) => {
 
 const getByWeave = ({ gridAddress, addressOffset, weave }) => {
 	const { rows, columns } = weave
-	const columnsIndex = codeUtilities.wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
-	const rowsIndex = codeUtilities.wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
+	const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
+	const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 	return [ rowsIndex, columnsIndex ]
 }
 
 const getBySupertile = ({ gridAddress, addressOffset, supertile }) => {
-	const supertileColumn = codeUtilities.wrappedIndex({
+	const supertileColumn = wrappedIndex({
 		array: supertile,
 		index: gridAddress[ 0 ] + addressOffset[ 0 ],
 	})
-	return codeUtilities.wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
+	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 }
 
 const applySwitcheroo = ({ tileColorIndices, gridAddress }) => {

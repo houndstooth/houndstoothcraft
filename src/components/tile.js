@@ -1,5 +1,5 @@
 import isTileUniform from './isTileUniform'
-import codeUtilities from '../utilities/codeUtilities'
+import { defaultToTrue, deepClone } from '../utilities/codeUtilities'
 import render from '../render'
 import getTileColorIndices from './getTileColorIndices'
 import getTileOriginAndSize from './getTileOriginAndSize'
@@ -19,7 +19,7 @@ export default ({ gridAddress }) => {
 
 const shouldUseSquare = ({ tileColorIndices }) => {
 	const { collapseSameColoredShapesWithinTile } = state.mainHoundstooth.basePattern.tileSettings || {}
-	const shouldCollapseSameColoredShapes = codeUtilities.defaultToTrue(collapseSameColoredShapesWithinTile)
+	const shouldCollapseSameColoredShapes = defaultToTrue(collapseSameColoredShapesWithinTile)
 	return shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
 }
 
@@ -37,7 +37,7 @@ const stripedTile = args => {
 }
 
 const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
-	const stripeArgs = codeUtilities.deepClone(args)
+	const stripeArgs = deepClone(args)
 
 	stripeArgs.getOutline = space.stripeOutline
 	stripeArgs.stripeIndex = stripeIndex

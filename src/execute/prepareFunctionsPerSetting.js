@@ -1,5 +1,5 @@
 import consoleWrapper from '../utilities/consoleWrapper'
-import codeUtilities from '../utilities/codeUtilities'
+import { deeperPath } from '../utilities/codeUtilities'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
 	Object.entries(settingsFunctions).forEach(([ settingName, maybeSettingFunction ]) => {
@@ -9,7 +9,7 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 		else if (typeof maybeSettingFunction === 'object' && !(maybeSettingFunction instanceof Array)) {
 			prepareFunctionsPerSetting({
 				settingsFunctions: maybeSettingFunction,
-				settingsPath: codeUtilities.deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
+				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
 				functionsArray,
 			})
 		}

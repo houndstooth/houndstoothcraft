@@ -1,6 +1,6 @@
 import prepareFunctionsPerSetting from '../../../src/execute/prepareFunctionsPerSetting'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
-import codeUtilities from '../../../src/utilities/codeUtilities'
+import { deepClone } from '../../../src/utilities/codeUtilities'
 
 describe('#prepareFunctionsPerSetting', () => {
 	let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
@@ -23,7 +23,7 @@ describe('#prepareFunctionsPerSetting', () => {
 		const settingsPath = undefined
 		const functionsArray = undefined
 
-		expectedsettingsFunctions = codeUtilities.deepClone(settingsFunctions)
+		expectedsettingsFunctions = deepClone(settingsFunctions)
 		actualFunctionsArray = prepareFunctionsPerSetting({
 			settingsFunctions,
 			settingsPath,

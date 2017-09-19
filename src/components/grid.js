@@ -1,11 +1,10 @@
 import tile from './tile'
 import state from '../../state'
 import { applyBackgroundColor, applyOpacity } from '../view'
-import codeUtilities from '../utilities/codeUtilities'
+import { iterator } from '../utilities/codeUtilities'
 
 export default () => {
 	let { includeNegativeQuadrants, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
-	const { iterator } = codeUtilities
 
 	applyOpacity()
 	applyBackgroundColor()

@@ -1,4 +1,4 @@
-import codeUtilities from '../../../src/utilities/codeUtilities'
+import * as codeUtilities from '../../../src/utilities/codeUtilities'
 
 describe('code utilities', () => {
 	describe('#iterator', () => {

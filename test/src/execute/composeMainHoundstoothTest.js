@@ -1,4 +1,4 @@
-import codeUtilities from '../../../src/utilities/codeUtilities'
+import * as codeUtilities from '../../../src/utilities/codeUtilities'
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import { HOUNDSTOOTH_DEFAULTS } from '../../../src/store/houndstoothDefaults'

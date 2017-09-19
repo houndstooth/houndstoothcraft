@@ -1,5 +1,5 @@
 import consoleWrapper from '../utilities/consoleWrapper'
-import codeUtilities from '../utilities/codeUtilities'
+import { accessChildPropertyOrCreatePath, deeperPath, isDefined, propertyIsDefinedOnObject } from '../utilities/codeUtilities'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 import settingPath from './settingPath'
 import { patternStructure } from '../store'
@@ -14,13 +14,13 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
-				settingsPath: codeUtilities.deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
+				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
 				patternStructureChecker: deeperPatternStructureChecker,
 				warnAboutConflicts,
 			})
 		}
 		else {
-			let settingsWithSettingToBeOverridden = codeUtilities.accessChildPropertyOrCreatePath({
+			let settingsWithSettingToBeOverridden = accessChildPropertyOrCreatePath({
 				objectWithProperties: patternToBeMergedOnto,
 				propertyPath: settingsPath,
 			})
@@ -35,12 +35,12 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 }
 
 const settingIsDefinedOnPatternStructure = ({ settingsPath, settingName, patternStructureChecker: objectWithProperties }) => {
-	if (codeUtilities.propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) return true
+	if (propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) return true
 	consoleWrapper.error(`attempted to compose a pattern with an unrecognized setting: ${settingPath(settingsPath, settingName)}`)
 }
 
 const settingIsNotColor = setting => {
-	const defined = codeUtilities.isDefined
+	const defined = isDefined
 	const { r, g, b, a } = setting
 	return !(defined(r) || defined(g) || defined(b) || defined(a))
 }

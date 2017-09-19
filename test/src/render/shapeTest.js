@@ -1,5 +1,5 @@
 import shape from '../../../src/render/shape'
-import codeUtilities from '../../../src/utilities/codeUtilities'
+import * as codeUtilities from '../../../src/utilities/codeUtilities'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
 import canvas from '../../../src/canvas'

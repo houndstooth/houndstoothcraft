@@ -1,11 +1,11 @@
 import state from '../../state'
-import codeUtilities from '../utilities/codeUtilities'
+import { defaultToTrue } from '../utilities/codeUtilities'
 import animation from '../animation'
 
 export default ({ layerFunctions, animationFunctions }) => {
 	let { frameRate, refreshCanvas, startAnimationFrame, endAnimationFrame } = state.mainHoundstooth.basePattern.animationSettings || {}
 	startAnimationFrame = startAnimationFrame || 0
-	refreshCanvas = codeUtilities.defaultToTrue(refreshCanvas)
+	refreshCanvas = defaultToTrue(refreshCanvas)
 
 	state.lastSavedAnimationFrame = startAnimationFrame
 

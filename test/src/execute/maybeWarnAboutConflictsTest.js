@@ -1,6 +1,6 @@
 import maybeWarnAboutConflicts from '../../../src/execute/maybeWarnAboutConflicts'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
-import ui from '../../../src/ui'
+import * as ui from '../../../src/ui'
 
 describe('warning about conflicts', () => {
 	let warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting

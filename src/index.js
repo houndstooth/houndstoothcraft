@@ -1,25 +1,25 @@
 import animation from './animation'
 import components from './components'
-import ui from './ui'
 import execute from './execute'
-import space from './space'
 import render from './render'
+import space from './space'
 import * as store from './store'
+import * as ui from './ui'
 
 const { standardAnimation } = animation
 const { perStripe, tileCenter } = components
-const { addEffectToggles } = ui
 const { executeSelectedHoundstoothEffects } = execute
-const { rotateCoordinateAboutPoint } = space
 const { solid } = render
+const { rotateCoordinateAboutPoint } = space
 const { houndstoothDefaults } = store
+const { addEffectToggles } = ui
 
 export default {
+	addEffectToggles,
 	executeSelectedHoundstoothEffects,
 	houndstoothDefaults,
 	perStripe,
 	rotateCoordinateAboutPoint,
-	addEffectToggles,
 	solid,
 	standardAnimation,
 	tileCenter,

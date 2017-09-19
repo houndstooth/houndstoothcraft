@@ -4,7 +4,7 @@ const INITIAL_MAIN_HOUNDSTOOTH = {
 	layersPattern: {},
 }
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
 	currentLayer: 0,
 	currentAnimationFrame: 0,
 	contexts: [],
@@ -18,5 +18,3 @@ const INITIAL_STATE = {
 	selectedHoundstoothEffects: [],
 	mainHoundstooth: INITIAL_MAIN_HOUNDSTOOTH,
 }
-
-export default { INITIAL_STATE, INITIAL_MAIN_HOUNDSTOOTH }

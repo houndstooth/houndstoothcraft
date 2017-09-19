@@ -1,8 +1,8 @@
 /* eslint-disable import/no-internal-modules */
 
-import initialState from './src/store/initialState'
+import { INITIAL_STATE } from './src/store/initialState'
 import { deepClone } from './src/utilities/codeUtilities'
 
-const state = deepClone(initialState.INITIAL_STATE)
+const state = deepClone(INITIAL_STATE)
 
 export default state

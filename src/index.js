@@ -1,18 +1,16 @@
-import { standardAnimation } from './animation'
-import { perStripe, tileCenter } from './components'
-import { executeSelectedHoundstoothEffects } from './execute'
-import { solid } from './render'
-import { rotateCoordinateAboutPoint } from './space'
-import { houndstoothDefaults } from './store'
-import { addEffectToggles }  from './ui'
+import { standardAnimation as _standardAnimation } from './animation'
+import { perStripe as _perStripe, tileCenter as _tileCenter } from './components'
+import { executeSelectedHoundstoothEffects as _executeSelectedHoundstoothEffects } from './execute'
+import { solid as _solid } from './render'
+import { rotateCoordinateAboutPoint as _rotateCoordinateAboutPoint } from './space'
+import { houndstoothDefaults as _houndstoothDefaults } from './store'
+import { addEffectToggles as _addEffectToggles }  from './ui'
 
-export default {
-	addEffectToggles,
-	executeSelectedHoundstoothEffects,
-	houndstoothDefaults,
-	perStripe,
-	rotateCoordinateAboutPoint,
-	solid,
-	standardAnimation,
-	tileCenter,
-}
+export const addEffectToggles = _addEffectToggles
+export const executeSelectedHoundstoothEffects = _executeSelectedHoundstoothEffects
+export const houndstoothDefaults = _houndstoothDefaults
+export const perStripe = _perStripe
+export const rotateCoordinateAboutPoint = _rotateCoordinateAboutPoint
+export const solid = _solid
+export const standardAnimation = _standardAnimation
+export const tileCenter = _tileCenter

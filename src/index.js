@@ -1,6 +1,6 @@
 import animation from './animation'
 import components from './components'
-import execute from './execute'
+import * as execute from './execute'
 import * as render from './render'
 import * as space from './space'
 import * as store from './store'

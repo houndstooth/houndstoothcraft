@@ -1,6 +1,6 @@
 import state from '../../state'
 import resetInterface from './resetInterface'
-import execute from '../execute'
+import { executeSelectedHoundstoothEffects } from '../execute'
 
 const addEffect = houndstoothEffect => state.selectedHoundstoothEffects.push(houndstoothEffect)
 
@@ -15,5 +15,5 @@ export default (checkbox, houndstoothEffect) => () => {
 
 	checkbox.checked ? addEffect(houndstoothEffect) : removeEffect(houndstoothEffect)
 
-	execute.executeSelectedHoundstoothEffects()
+	executeSelectedHoundstoothEffects()
 }

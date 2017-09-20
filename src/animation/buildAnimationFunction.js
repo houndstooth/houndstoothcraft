@@ -1,5 +1,5 @@
 import state from '../../state'
-import execute from '../execute'
+import { callFunctionsPerSetting, executeGrid } from '../execute'
 import canvas from '../canvas'
 import exportFrame from './exportFrame'
 import { deepClone } from '../utilities/codeUtilities'
@@ -11,12 +11,12 @@ export default ({ startAnimationFrame, animationFunctions, layerFunctions, refre
 		if (refreshCanvas) canvas.clear()
 
 		const preLayerSettings = deepClone(state.mainHoundstooth.basePattern)
-		execute.executeGrid({ layerFunctions })
+		executeGrid({ layerFunctions })
 		Object.assign(state.mainHoundstooth.basePattern, preLayerSettings)
 
 		if (state.exportFrames) exportFrame()
 	}
 
-	execute.callFunctionsPerSetting({ settingsFunctions: animationFunctions })
+	callFunctionsPerSetting({ settingsFunctions: animationFunctions })
 	state.currentAnimationFrame++
 }

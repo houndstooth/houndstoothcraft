@@ -1,9 +1,9 @@
 import createMixedDownCanvas from '../../../src/page/createMixedDownCanvas'
 import state from '../../../state'
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
-import canvas from '../../../src/canvas/index'
+import * as canvas from '../../../src/canvas/index'
 
-describe('creates mixed down canvas', () => {
+describe('create mixed down canvas', () => {
 	beforeEach(() => deleteElementIfExists('.mixed-down-canvas'))
 
 	describe('when the mixed down canvas is already on the document', () => {

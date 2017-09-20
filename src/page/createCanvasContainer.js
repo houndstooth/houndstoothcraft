@@ -1,8 +1,8 @@
 import setElementDimensions from './setElementDimensions'
-import canvas from '../canvas'
+import { getCanvasSize } from '../canvas'
 
 export default ({ canvasSize } = {}) => {
-	if (!canvasSize) canvasSize = canvas.getCanvasSize()
+	if (!canvasSize) canvasSize = getCanvasSize()
 
 	const canvasContainer = document.createElement('div')
 	canvasContainer.classList.add('canvas-container')

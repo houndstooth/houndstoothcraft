@@ -1,6 +1,6 @@
 import state from '../../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
-import canvas from '../canvas'
+import { mixDownContexts } from '../canvas'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 
 export default ({ layerFunctions }) => {
@@ -17,7 +17,7 @@ export default ({ layerFunctions }) => {
 		state.currentLayer++
 	}
 
-	if (state.mixingDown) canvas.mixDownContexts()
+	if (state.mixingDown) mixDownContexts()
 
 	state.currentLayer = 0
 }

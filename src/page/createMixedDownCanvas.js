@@ -1,6 +1,6 @@
 import state from '../../state'
 import deleteElementIfExists from './deleteElementIfExists'
-import canvas from '../canvas'
+import { getCanvasSize } from '../canvas'
 
 export default () => {
 	deleteElementIfExists('.mixed-down-canvas')
@@ -9,7 +9,7 @@ export default () => {
 	mixedDownCanvas.classList.add('mixed-down-canvas')
 	document.body.appendChild(mixedDownCanvas)
 
-	const canvasSize = canvas.getCanvasSize()
+	const canvasSize = getCanvasSize()
 	mixedDownCanvas.width = canvasSize[ 0 ]
 	mixedDownCanvas.height = canvasSize[ 1 ]
 

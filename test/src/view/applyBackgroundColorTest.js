@@ -2,7 +2,7 @@ import applyBackgroundColor from '../../../src/view/applyBackgroundColor'
 import { CYAN } from '../../../src/constants'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import canvas from '../../../src/canvas'
+import * as canvas from '../../../src/canvas'
 
 describe('apply background color', () => {
 	const defaultFillStyle = '#000000'

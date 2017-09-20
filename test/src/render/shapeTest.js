@@ -2,7 +2,7 @@ import shape from '../../../src/render/shape'
 import * as codeUtilities from '../../../src/utilities/codeUtilities'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import canvas from '../../../src/canvas'
+import * as canvas from '../../../src/canvas'
 import * as texture from '../../../src/render/texture'
 import * as solid from '../../../src/render/solid'
 

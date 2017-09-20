@@ -3,7 +3,7 @@ import warn from '../../../src/ui/warn'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
 import { INITIAL_STATE } from '../../../src/store/initialState'
-import canvas from '../../../src/canvas'
+import * as canvas from '../../../src/canvas'
 
 describe('reset interface', () => {
 	beforeEach(() => resetState(state))

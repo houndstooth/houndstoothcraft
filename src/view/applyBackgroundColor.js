@@ -1,15 +1,15 @@
 import { parseColor } from '../render'
 import state from '../../state'
-import canvas from '../canvas'
+import { getCanvasSize, getCurrentContext } from '../canvas'
 
 export default () => {
 	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
 	const backgroundColor = colorSettings && colorSettings.backgroundColor
 	if (!backgroundColor) return
 
-	const canvasSize = canvas.getCanvasSize()
+	const canvasSize = getCanvasSize()
 
-	const context = canvas.getCurrentContext()
+	const context = getCurrentContext()
 	context.fillStyle = parseColor(backgroundColor)
 	context.fillRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }

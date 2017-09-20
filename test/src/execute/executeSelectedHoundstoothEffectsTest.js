@@ -1,7 +1,7 @@
 import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import page from '../../../src/page'
+import * as page from '../../../src/page'
 import * as executeGrid from '../../../src/execute/executeGrid'
 import * as executeAnimation from '../../../src/execute/executeAnimation'
 import * as prepareFunctionsPerSetting from '../../../src/execute/prepareFunctionsPerSetting'

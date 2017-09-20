@@ -1,10 +1,10 @@
 import canvas from '../canvas'
 import state from '../../state'
 import { resetState } from '../store'
-import page from '../page'
+import { createWarningsContainer } from '../page'
 
 export default () => {
-	const warnings = document.querySelector('.warnings-container') || page.createWarningsContainer()
+	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()
 	warnings.innerHTML = ''
 
 	canvas.clear()

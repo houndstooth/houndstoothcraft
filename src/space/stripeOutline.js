@@ -1,4 +1,4 @@
-import components from '../components'
+import { tileCenter } from '../components'
 import rotateCoordinateAboutPoint from './rotateCoordinateAboutPoint'
 import state from '../../state'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
@@ -59,7 +59,7 @@ export default ({ tileOrigin, tileSize, outlineOptions }) => {
 
 	if (state.mainHoundstooth.basePattern.stripeSettings && state.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
 		outline = outline.map(coordinate => rotateCoordinateAboutPoint({
-			point: components.tileCenter({ tileOrigin, tileSize }),
+			point: tileCenter({ tileOrigin, tileSize }),
 			coordinate,
 			rotation: QUARTER_OF_CIRCLE_ROTATION,
 		}))

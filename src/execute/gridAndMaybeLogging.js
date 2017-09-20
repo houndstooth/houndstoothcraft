@@ -1,11 +1,11 @@
 import state from '../../state'
 import consoleWrapper from '../utilities/consoleWrapper'
-import components from '../components'
+import { grid } from '../components'
 
 export default () => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
 	if (performanceLogging) consoleWrapper.time('grid')
-	components.grid()
+	grid()
 	if (performanceLogging) {
 		if (animating) {
 			consoleWrapper.log(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)

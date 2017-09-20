@@ -1,5 +1,5 @@
 import animation from './animation'
-import components from './components'
+import * as components from './components'
 import * as execute from './execute'
 import * as render from './render'
 import * as space from './space'

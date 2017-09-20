@@ -1,6 +1,6 @@
 import state from '../../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
-import animation from '../animation'
+import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 
 export default ({ layerFunctions, animationFunctions }) => {
 	let { frameRate, refreshCanvas, startAnimationFrame, endAnimationFrame } = state.mainHoundstooth.basePattern.animationSettings || {}
@@ -9,8 +9,8 @@ export default ({ layerFunctions, animationFunctions }) => {
 
 	state.lastSavedAnimationFrame = startAnimationFrame
 
-	const animationFunction = animation.buildAnimationFunction({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas })
-	const stopConditionFunction = animation.buildStopConditionFunction({ endAnimationFrame })
+	const animationFunction = buildAnimationFunction({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas })
+	const stopConditionFunction = buildStopConditionFunction({ endAnimationFrame })
 
-	animation.animator({  animationFunction, frameRate, stopConditionFunction })
+	animator({  animationFunction, frameRate, stopConditionFunction })
 }

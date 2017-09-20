@@ -1,11 +1,9 @@
-import animator from './animator'
-import buildAnimationFunction from './buildAnimationFunction'
-import buildStopConditionFunction from './buildStopConditionFunction'
-import standardAnimation from './standardAnimation'
+import _animator from './animator'
+import _buildAnimationFunction from './buildAnimationFunction'
+import _buildStopConditionFunction from './buildStopConditionFunction'
+import _standardAnimation from './standardAnimation'
 
-export default {
-	animator,
-	buildAnimationFunction,
-	buildStopConditionFunction,
-	standardAnimation,
-}
+export const animator = _animator
+export const buildAnimationFunction = _buildAnimationFunction
+export const buildStopConditionFunction = _buildStopConditionFunction
+export const standardAnimation = _standardAnimation

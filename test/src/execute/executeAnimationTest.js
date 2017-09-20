@@ -1,5 +1,5 @@
 import executeAnimation from '../../../src/execute/executeAnimation'
-import animation from '../../../src/animation'
+import * as animation from '../../../src/animation'
 import resetState from '../../../src/store/resetState'
 import state from '../../../state'
 

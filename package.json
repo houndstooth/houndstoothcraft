@@ -14,7 +14,8 @@
     "test": "npm run coverage && npm run integration",
     "integration": "karma start --single-run --browsers ChromeHeadless --reportSlowerThan 1000",
     "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover unit.js",
-    "ci": "npm run unit && npm run integration"
+    "ci": "npm run unit && npm run integration",
+    "open-coverage": "start file:///C:/Users/Douglas%20Blumeyer/workspace/web-render/coverage/lcov-report/index.html"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

@@ -12,7 +12,7 @@
     "lint-fix": "eslint . --fix",
     "unit": "babel-node unit.js",
     "test": "npm run coverage && npm run integration",
-    "integration": "karma start --single-run --browsers ChromeHeadless",
+    "integration": "karma start --single-run --browsers ChromeHeadless --reporters longest",
     "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover unit.js",
     "ci": "npm run unit && npm run integration"
   },

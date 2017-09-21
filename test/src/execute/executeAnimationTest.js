@@ -2,6 +2,7 @@ import executeAnimation from '../../../src/execute/executeAnimation'
 import * as animation from '../../../src/animation'
 import resetState from '../../../src/store/resetState'
 import state from '../../../state'
+import noop from '../helpers/noop'
 
 describe('execute animation', () => {
 	let stopConditionFunction
@@ -18,8 +19,8 @@ describe('execute animation', () => {
 	beforeEach(() => {
 		resetState(state)
 
-		stopConditionFunction = () => {}
-		animationFunction = () => {}
+		stopConditionFunction = noop
+		animationFunction = noop
 
 		spyOn(animation, 'animator')
 		spyOn(animation, 'buildStopConditionFunction').and.returnValue(stopConditionFunction)

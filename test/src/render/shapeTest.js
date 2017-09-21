@@ -5,6 +5,7 @@ import resetState from '../../../src/store/resetState'
 import * as canvas from '../../../src/canvas'
 import * as texture from '../../../src/render/texture'
 import * as solid from '../../../src/render/solid'
+import noop from '../helpers/noop'
 
 describe('shape', () => {
 	const tileOrigin = [ 11, 13 ]
@@ -99,7 +100,7 @@ describe('shape', () => {
 		})
 
 		describe('when a renderTexture method is supplied', () => {
-			const renderTexture = () => {}
+			const renderTexture = noop
 			beforeEach(() => {
 				state.mainHoundstooth.basePattern.textureSettings = { renderTexture }
 			})

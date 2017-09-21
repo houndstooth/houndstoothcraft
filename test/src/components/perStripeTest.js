@@ -2,6 +2,7 @@ import perStripe from '../../../src/components/perStripe'
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
+import noop from '../helpers/noop'
 
 describe('per stripe', () => {
 	beforeEach(() => {
@@ -16,8 +17,7 @@ describe('per stripe', () => {
 			},
 		}
 		const stripePositions = perStripe({
-			getStripePosition: () => {
-			},
+			getStripePosition: noop,
 		})
 
 		expect(stripePositions.length).toBe(3)

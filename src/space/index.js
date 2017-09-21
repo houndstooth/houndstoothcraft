@@ -1,7 +1,9 @@
-import _squareOutline from './squareOutline'
-import _stripeOutline from './stripeOutline'
-import _rotateCoordinateAboutPoint from './rotateCoordinateAboutPoint'
+import rotateCoordinateAboutPoint from './rotateCoordinateAboutPoint'
+import squareOutline from './squareOutline'
+import stripeOutline from './stripeOutline'
 
-export const squareOutline = _squareOutline
-export const stripeOutline = _stripeOutline
-export const rotateCoordinateAboutPoint = _rotateCoordinateAboutPoint
+export {
+	rotateCoordinateAboutPoint,
+	squareOutline,
+	stripeOutline,
+}

@@ -1,5 +1,7 @@
-import _addEffectToggles from './addEffectToggles'
-import _warn from './warn'
+import addEffectToggles from './addEffectToggles'
+import warn from './warn'
 
-export const addEffectToggles = _addEffectToggles
-export const warn = _warn
+export {
+	addEffectToggles,
+	warn,
+}

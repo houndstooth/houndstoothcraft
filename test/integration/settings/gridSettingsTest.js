@@ -4,8 +4,12 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../../src/constants'
 import settingsPaths from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
+import state from '../../../state'
+import resetState from '../../../src/store/resetState'
 
 describe('.gridSettings', () => {
+	beforeEach(() => resetState(state))
+
 	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
 
 	describe('.gridSize', () => {

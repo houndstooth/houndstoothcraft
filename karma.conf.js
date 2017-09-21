@@ -5,13 +5,11 @@ module.exports = config => {
 	config.set({
 		frameworks: [ 'jasmine' ],
 		files: [
-			'test/integration/**/*.js',
-			'**/test/effects/**/*.js'
+			'test/integration/karmaTestIndex.js',
 		],
 		webpack: webpackConfig,
 		preprocessors: {
-			'test/integration/**/*.js': [ 'webpack' ],
-			'**/test/effects/**/*.js': [ 'webpack' ],
+			'test/integration/karmaTestIndex.js': [ 'webpack' ],
 		},
 		reporters: [ 'kjhtml' ],
         browserNoActivityTimeout: 100000,

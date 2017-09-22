@@ -8,7 +8,7 @@ import { squareOutline, stripeOutline } from '../space'
 import { PERIMETER_SCALAR } from '../constants'
 import state from '../../state'
 
-export default ({ gridAddress }) => {
+const tile = ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) return
 
@@ -46,3 +46,5 @@ const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
 
 	return stripeArgs
 }
+
+export default tile

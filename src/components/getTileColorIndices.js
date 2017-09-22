@@ -1,10 +1,10 @@
 import { wrappedIndex } from '../utilities/codeUtilities'
 import state from '../../state'
 
-export default ({ gridAddress }) => {
+const getTileColorIndices = ({ gridAddress }) => {
 	const assignment = state.mainHoundstooth.basePattern.colorSettings.assignment
 
-	let tileColorIndices = getTileColorIndices({ gridAddress, assignment })
+	let tileColorIndices = getIndices({ gridAddress, assignment })
 
 	return maybeAdjustTileColorIndices({ assignment, gridAddress, tileColorIndices })
 }
@@ -19,7 +19,7 @@ const maybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices
 	return tileColorIndices
 }
 
-const getTileColorIndices = ({ gridAddress, assignment }) => {
+const getIndices = ({ gridAddress, assignment }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = assignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
@@ -63,3 +63,5 @@ const applySwitcheroo = ({ tileColorIndices, gridAddress }) => {
 
 	return tileColorIndices
 }
+
+export default getTileColorIndices

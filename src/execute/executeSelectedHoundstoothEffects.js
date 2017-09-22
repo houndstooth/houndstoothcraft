@@ -5,7 +5,7 @@ import composeMainHoundstooth from './composeMainHoundstooth'
 import executeGrid from './executeGrid'
 import executeAnimation from './executeAnimation'
 
-export default ({ houndstoothOverrides = {} } = {}) => {
+const executeSelectedHoundstoothEffects = ({ houndstoothOverrides = {} } = {}) => {
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
 	const layerFunctions = prepareFunctionsPerSetting({
@@ -26,3 +26,5 @@ export default ({ houndstoothOverrides = {} } = {}) => {
 		executeGrid({ layerFunctions })
 	}
 }
+
+export default executeSelectedHoundstoothEffects

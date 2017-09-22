@@ -1,4 +1,4 @@
-export default ({ coordinate, point, rotation }) => {
+const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 	const sin = Math.sin(rotation)
 	const cos = Math.cos(rotation)
 
@@ -10,3 +10,5 @@ export default ({ coordinate, point, rotation }) => {
 		point[ 1 ] + relativeX * sin + relativeY * cos,
 	]
 }
+
+export default rotateCoordinateAboutPoint

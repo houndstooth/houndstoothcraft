@@ -1,7 +1,7 @@
 import state from '../../state'
 import { houndstoothDefaults } from '../store'
 
-export default () => {
+const getCanvasSize = () => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
 	const canvasSize = viewSettings && viewSettings.canvasSize || houndstoothDefaults.CANVAS_SIZE
 
@@ -11,3 +11,5 @@ export default () => {
 
 	return [ width, height ]
 }
+
+export default getCanvasSize

@@ -1,1 +1,3 @@
-export default ({ context }) => context.restore()
+const resetClip = ({ context }) => context.restore()
+
+export default resetClip

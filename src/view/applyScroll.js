@@ -1,6 +1,6 @@
 import state from '../../state'
 
-export default outline => {
+const applyScroll = outline => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
 	const centerViewOnCenterOfTileAtHomeAddress = viewSettings.centerViewOnCenterOfTileAtHomeAddress
 
@@ -21,3 +21,5 @@ const applyCenterViewOnCenterOfTileAtHomeAddress = coordinate => {
 		coordinate[ 1 ] + canvasCenter - halfTileSize,
 	]
 }
+
+export default applyScroll

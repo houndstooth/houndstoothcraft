@@ -1,4 +1,4 @@
-export default ({ tileOrigin, tileSize }) => {
+const squareOutline = ({ tileOrigin, tileSize }) => {
 	const x = tileOrigin[ 0 ]
 	const y = tileOrigin[ 1 ]
 
@@ -21,3 +21,5 @@ export default ({ tileOrigin, tileSize }) => {
 		],
 	]
 }
+
+export default squareOutline

@@ -2,6 +2,14 @@ import state from '../../state'
 import resetInterface from './resetInterface'
 import { executeSelectedHoundstoothEffects } from '../execute'
 
+const buildEffectToggleClickHandler = (checkbox, houndstoothEffect) => () => {
+	resetInterface()
+
+	checkbox.checked ? addEffect(houndstoothEffect) : removeEffect(houndstoothEffect)
+
+	executeSelectedHoundstoothEffects()
+}
+
 const addEffect = houndstoothEffect => state.selectedHoundstoothEffects.push(houndstoothEffect)
 
 const removeEffect = houndstoothEffect => {
@@ -10,10 +18,4 @@ const removeEffect = houndstoothEffect => {
 	})
 }
 
-export default (checkbox, houndstoothEffect) => () => {
-	resetInterface()
-
-	checkbox.checked ? addEffect(houndstoothEffect) : removeEffect(houndstoothEffect)
-
-	executeSelectedHoundstoothEffects()
-}
+export default buildEffectToggleClickHandler

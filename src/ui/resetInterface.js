@@ -3,7 +3,7 @@ import state from '../../state'
 import { resetState } from '../store'
 import { createWarningsContainer } from '../page'
 
-export default () => {
+const resetInterface = () => {
 	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()
 	warnings.innerHTML = ''
 
@@ -14,3 +14,5 @@ export default () => {
 	resetState(state)
 	state.selectedHoundstoothEffects = existingEffects
 }
+
+export default resetInterface

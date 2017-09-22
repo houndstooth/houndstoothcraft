@@ -1,7 +1,7 @@
 import setElementDimensions from './setElementDimensions'
 import { getCanvasSize } from '../canvas'
 
-export default ({ canvasSize } = {}) => {
+const createCanvasContainer = ({ canvasSize } = {}) => {
 	if (!canvasSize) canvasSize = getCanvasSize()
 
 	const canvasContainer = document.createElement('div')
@@ -13,3 +13,5 @@ export default ({ canvasSize } = {}) => {
 
 	return canvasContainer
 }
+
+export default createCanvasContainer

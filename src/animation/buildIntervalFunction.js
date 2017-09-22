@@ -1,6 +1,8 @@
 import state from '../../state'
 
-export default ({ animationFunction, stopConditionFunction }) => () => {
+const buildIntervalFunction = ({ animationFunction, stopConditionFunction }) => () => {
 	animationFunction()
 	if (stopConditionFunction()) window.clearInterval(state.interval)
 }
+
+export default buildIntervalFunction

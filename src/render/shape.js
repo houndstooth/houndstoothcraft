@@ -4,7 +4,7 @@ import { getCurrentContext } from '../canvas'
 import state from '../../state'
 import solid from './solid'
 
-export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
+const shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
 	let outline = getOutline({ tileOrigin, tileSize, outlineOptions })
 	if (!outline) return
 
@@ -17,3 +17,5 @@ export default ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutlin
 	const someArgs = { context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex }
 	renderTexture ? texture(someArgs) : solid(someArgs)
 }
+
+export default shape

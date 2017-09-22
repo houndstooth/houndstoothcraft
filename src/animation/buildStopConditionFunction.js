@@ -1,3 +1,5 @@
 import state from '../../state'
 
-export default ({ endAnimationFrame }) => () => state.currentAnimationFrame > endAnimationFrame
+const buildStopConditionFunction = ({ endAnimationFrame }) => () => state.currentAnimationFrame > endAnimationFrame
+
+export default buildStopConditionFunction

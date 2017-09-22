@@ -3,7 +3,7 @@ import state from '../../state'
 import { applyBackgroundColor, applyOpacity } from '../view'
 import { iterator } from '../utilities/codeUtilities'
 
-export default () => {
+const grid = () => {
 	let { includeNegativeQuadrants, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
 
 	applyOpacity()
@@ -24,3 +24,5 @@ export default () => {
 		})
 	}
 }
+
+export default grid

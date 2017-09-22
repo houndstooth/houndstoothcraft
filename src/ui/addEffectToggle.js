@@ -1,7 +1,7 @@
 import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 import { createEffectTogglesContainer } from '../page'
 
-export default houndstoothEffect => {
+const addEffectToggle = houndstoothEffect => {
 	const label = document.createElement('label')
 	label.style.cursor = 'pointer'
 	label.style.display = 'block'
@@ -19,3 +19,5 @@ export default houndstoothEffect => {
 	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || createEffectTogglesContainer()
 	effectTogglesContainer.appendChild(label)
 }
+
+export default addEffectToggle

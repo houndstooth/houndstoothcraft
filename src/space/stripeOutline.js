@@ -3,7 +3,7 @@ import rotateCoordinateAboutPoint from './rotateCoordinateAboutPoint'
 import state from '../../state'
 import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
 
-export default ({ tileOrigin, tileSize, outlineOptions }) => {
+const stripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
 	let outline = []
 	const x = tileOrigin[ 0 ]
@@ -102,3 +102,5 @@ const pointInBottomLeftCorner = ({ x, y, tileSize }) => ([
 	x,
 	y + tileSize,
 ])
+
+export default stripeOutline

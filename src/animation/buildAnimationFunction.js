@@ -4,7 +4,7 @@ import { clear } from '../canvas'
 import exportFrame from './exportFrame'
 import { deepClone } from '../utilities/codeUtilities'
 
-export default ({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas }) => () => {
+const buildAnimationFunction = ({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas }) => () => {
 	if (state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame) return
 
 	if (state.currentAnimationFrame >= startAnimationFrame) {
@@ -20,3 +20,5 @@ export default ({ startAnimationFrame, animationFunctions, layerFunctions, refre
 	callFunctionsPerSetting({ settingsFunctions: animationFunctions })
 	state.currentAnimationFrame++
 }
+
+export default buildAnimationFunction

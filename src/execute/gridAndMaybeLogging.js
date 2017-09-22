@@ -2,7 +2,7 @@ import state from '../../state'
 import consoleWrapper from '../utilities/consoleWrapper'
 import { grid } from '../components'
 
-export default () => {
+const gridAndMaybeLogging = () => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
 	if (performanceLogging) consoleWrapper.time('grid')
 	grid()
@@ -16,3 +16,5 @@ export default () => {
 		consoleWrapper.timeEnd('grid')
 	}
 }
+
+export default gridAndMaybeLogging

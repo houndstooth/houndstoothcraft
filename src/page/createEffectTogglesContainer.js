@@ -1,7 +1,7 @@
 import insertElementRightAfter from './insertElementRightAfter'
 import createCanvasContainer from './createCanvasContainer'
 
-export default () => {
+const createEffectTogglesContainer = () => {
 	const effectTogglesContainer = document.createElement('div')
 	effectTogglesContainer.classList.add('effect-toggles-container')
 	effectTogglesContainer.style.padding = '20px'
@@ -11,3 +11,5 @@ export default () => {
 
 	return effectTogglesContainer
 }
+
+export default createEffectTogglesContainer

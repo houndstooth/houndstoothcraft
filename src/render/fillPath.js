@@ -1,4 +1,6 @@
-export default ({ context }) => {
+const fillPath = ({ context }) => {
 	context.closePath()
 	context.fill()
 }
+
+export default fillPath

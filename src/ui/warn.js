@@ -1,6 +1,6 @@
 import { createWarningsContainer } from '../page'
 
-export default warningMessage => {
+const warn = warningMessage => {
 	const warning = document.createElement('div')
 	warning.innerHTML = warningMessage
 
@@ -8,3 +8,5 @@ export default warningMessage => {
 
 	warnings.appendChild(warning)
 }
+
+export default warn

@@ -1,6 +1,6 @@
 import state from '../../state'
 
-export default outline => outline.map(adjustCoordinateForZoom)
+const applyZoom = outline => outline.map(adjustCoordinateForZoom)
 
 const adjustCoordinateForZoom = coordinate => {
 	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtHomeAddress } = state.mainHoundstooth.basePattern.viewSettings || {}
@@ -21,3 +21,5 @@ const adjustCoordinateForZoom = coordinate => {
 
 	return coordinate
 }
+
+export default applyZoom

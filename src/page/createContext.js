@@ -1,4 +1,4 @@
-export default ({ canvasContainer, canvasSize }) => {
+const createContext = ({ canvasContainer, canvasSize }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
 	canvas.width = canvasSize[ 0 ]
@@ -8,3 +8,5 @@ export default ({ canvasContainer, canvasSize }) => {
 
 	return canvas.getContext('2d')
 }
+
+export default createContext

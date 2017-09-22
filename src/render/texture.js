@@ -2,7 +2,7 @@ import buildPath from './buildPath'
 import clipPath from './clipPath'
 import resetClip from './resetClip'
 
-export default textureArgs => {
+const texture = textureArgs => {
 	const { context, outline, renderTexture } = textureArgs
 
 	buildPath({ context, outline })
@@ -10,3 +10,5 @@ export default textureArgs => {
 	renderTexture(textureArgs)
 	resetClip({ context })
 }
+
+export default texture

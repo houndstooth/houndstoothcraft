@@ -1,10 +1,10 @@
-export const iterator = (layers, options = { oneIndexed: false }) => {
+const iterator = (layers, options = { oneIndexed: false }) => {
 	let iterator = [ ...Array(Math.ceil(layers)).keys() ]
 	if (options.oneIndexed) iterator = iterator.map(k => k + 1)
 	return iterator
 }
 
-export const wrappedIndex = ({ array, index = 0 }) => {
+const wrappedIndex = ({ array, index = 0 }) => {
 	let i
 	if (index < 0) {
 		i = array.length - (Math.abs(index) % array.length)
@@ -16,12 +16,12 @@ export const wrappedIndex = ({ array, index = 0 }) => {
 	return array[ i ]
 }
 
-export const shallowEqual = (a, b) => {
+const shallowEqual = (a, b) => {
 	const sameKeyCount = Object.keys(a).length === Object.keys(b).length
 	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
-export const deepClone = objectToDeepClone => {
+const deepClone = objectToDeepClone => {
 	let clonedObject = {}
 	Object.entries(objectToDeepClone).forEach(([ propertyName, propertyValue ]) => {
 		clonedObject[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
@@ -29,7 +29,7 @@ export const deepClone = objectToDeepClone => {
 	return clonedObject
 }
 
-export const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
+const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
 	let clonedMaybeObject
 	if (maybeObjectToDeepClone instanceof Array) {
 		clonedMaybeObject = maybeObjectToDeepClone.slice()
@@ -43,13 +43,13 @@ export const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
 	return clonedMaybeObject
 }
 
-export const deeperPath = ({ propertyPath, propertyName }) => {
+const deeperPath = ({ propertyPath, propertyName }) => {
 	const deeperPath = propertyPath.slice()
 	deeperPath.push(propertyName)
 	return deeperPath
 }
 
-export const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
+const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
 	let childProperty = objectWithProperties
 	propertyPath.forEach(pathStep => {
 		if (!isDefined(childProperty[ pathStep ])) childProperty[ pathStep ] = {}
@@ -58,10 +58,23 @@ export const accessChildPropertyOrCreatePath = ({ objectWithProperties, property
 	return childProperty
 }
 
-export const defaultToTrue = property => isDefined(property) ? property : true
+const defaultToTrue = property => isDefined(property) ? property : true
 
-export const isDefined = property => typeof property !== 'undefined'
+const isDefined = property => typeof property !== 'undefined'
 
-export const propertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
+const propertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
 	return isDefined(objectWithProperties[ propertyName ])
+}
+
+export {
+	iterator,
+	wrappedIndex,
+	shallowEqual,
+	deepClone,
+	deepCloneMaybeNotObject,
+	deeperPath,
+	accessChildPropertyOrCreatePath,
+	defaultToTrue,
+	isDefined,
+	propertyIsDefinedOnObject,
 }

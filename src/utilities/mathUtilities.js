@@ -1,15 +1,23 @@
-export const triangularNumber = n => n * (n + 1) / 2
+const triangularNumber = n => n * (n + 1) / 2
 
-export const triangularRoot = n => 0.5 * Math.sqrt(8 * n + 1) - 0.5
+const triangularRoot = n => 0.5 * Math.sqrt(8 * n + 1) - 0.5
 
-export const quarterSquareNumber = n => Math.floor(Math.pow(n, 2) / 4)
+const quarterSquareNumber = n => Math.floor(Math.pow(n, 2) / 4)
 
-export const trapezoidalNumber = ({ start, height }) => triangularNumber(start + height) - triangularNumber(start)
+const trapezoidalNumber = ({ start, height }) => triangularNumber(start + height) - triangularNumber(start)
 
-export const termialRoot = ({ rangeStart, rangeDelta, n }) => {
+const termialRoot = ({ rangeStart, rangeDelta, n }) => {
 	let c = 2 * rangeStart
 	let a = Math.pow(c - rangeDelta, 2)
 	let b = 8 * rangeDelta * n
 	let d = 2 * rangeDelta
 	return ( Math.sqrt(a + b) - c + rangeDelta ) / d
+}
+
+export {
+	trapezoidalNumber,
+	triangularNumber,
+	triangularRoot,
+	quarterSquareNumber,
+	termialRoot,
 }

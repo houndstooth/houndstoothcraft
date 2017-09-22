@@ -1,7 +1,7 @@
 import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
 import state from '../../state'
 
-export default ({ settingsFunctions }) => {
+const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {
 		const { settingsPath, settingName, settingFunctionItself } = settingsFunction
 		let settingsWithSettingToCallFunctionOn = accessChildPropertyOrCreatePath({
@@ -11,3 +11,5 @@ export default ({ settingsFunctions }) => {
 		settingsWithSettingToCallFunctionOn[ settingName ] = settingFunctionItself(settingsWithSettingToCallFunctionOn[ settingName ])
 	})
 }
+
+export default callFunctionsPerSetting

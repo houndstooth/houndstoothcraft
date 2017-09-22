@@ -2,7 +2,7 @@ import state from '../../state'
 import deleteElementIfExists from './deleteElementIfExists'
 import { getCanvasSize } from '../canvas'
 
-export default () => {
+const createMixedDownCanvas = () => {
 	deleteElementIfExists('.mixed-down-canvas')
 
 	const mixedDownCanvas = document.createElement('canvas')
@@ -17,3 +17,5 @@ export default () => {
 
 	state.mixedDownContext = mixedDownCanvas.getContext('2d')
 }
+
+export default createMixedDownCanvas

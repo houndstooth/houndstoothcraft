@@ -2,7 +2,7 @@ import state from '../../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 
-export default ({ layerFunctions, animationFunctions }) => {
+const executeAnimation = ({ layerFunctions, animationFunctions }) => {
 	let { frameRate, refreshCanvas, startAnimationFrame, endAnimationFrame } = state.mainHoundstooth.basePattern.animationSettings || {}
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = defaultToTrue(refreshCanvas)
@@ -14,3 +14,5 @@ export default ({ layerFunctions, animationFunctions }) => {
 
 	animator({  animationFunction, frameRate, stopConditionFunction })
 }
+
+export default executeAnimation

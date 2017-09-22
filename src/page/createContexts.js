@@ -3,7 +3,7 @@ import createCanvasContainer from './createCanvasContainer'
 import { getCanvasSize, layerIterator } from '../canvas'
 import createContext from './createContext'
 
-export default () => {
+const createContexts = () => {
 	const canvasSize = getCanvasSize()
 
 	const canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer({ canvasSize })
@@ -11,3 +11,5 @@ export default () => {
 
 	state.contexts = layerIterator().map(() => createContext({ canvasContainer, canvasSize }))
 }
+
+export default createContexts

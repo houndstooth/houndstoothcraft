@@ -5,7 +5,7 @@ import { houndstoothDefaults } from '../store'
 import state from '../../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 
-export default ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } = {}) => {
+const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) return
@@ -54,3 +54,5 @@ const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffe
 		patternToMerge: houndstoothOverrides,
 	})
 }
+
+export default composeMainHoundstooth

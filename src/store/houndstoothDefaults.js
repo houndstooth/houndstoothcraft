@@ -1,23 +1,23 @@
 import { BLACK, TRANSPARENT } from '../constants'
 
-export const CANVAS_SIZE = 800
-export const ZOOM = 1
-export const GRID_SIZE = 16
-export const TILE_SIZE = 50
-export const COLOR_SET = [ BLACK, TRANSPARENT ]
-export const COLOR_ASSIGNMENT = {
+const CANVAS_SIZE = 800
+const ZOOM = 1
+const GRID_SIZE = 16
+const TILE_SIZE = 50
+const COLOR_SET = [ BLACK, TRANSPARENT ]
+const COLOR_ASSIGNMENT = {
 	assignmentMode: 'WEAVE',
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
 	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 }
-export const OPACITY = 1
-export const STRIPE_COUNT = 4
-export const BASE_STRIPE_DIAGONAL = 'MINOR'
-export const FRAME_RATE = 1.005
-export const START_LAYER = 0
-export const END_LAYER = 0
+const OPACITY = 1
+const STRIPE_COUNT = 4
+const BASE_STRIPE_DIAGONAL = 'MINOR'
+const FRAME_RATE = 1.005
+const START_LAYER = 0
+const END_LAYER = 0
 
-export const HOUNDSTOOTH_DEFAULTS = {
+const HOUNDSTOOTH_DEFAULTS = {
 	basePattern: {
 		viewSettings: {
 			canvasSize: CANVAS_SIZE,
@@ -50,4 +50,20 @@ export const HOUNDSTOOTH_DEFAULTS = {
 	},
 	animationsPattern: {},
 	layersPattern: {},
+}
+
+export {
+	CANVAS_SIZE,
+	ZOOM,
+	GRID_SIZE,
+	TILE_SIZE,
+	COLOR_ASSIGNMENT,
+	COLOR_SET,
+	OPACITY,
+	START_LAYER,
+	END_LAYER,
+	FRAME_RATE,
+	BASE_STRIPE_DIAGONAL,
+	STRIPE_COUNT,
+	HOUNDSTOOTH_DEFAULTS,
 }

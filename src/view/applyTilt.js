@@ -1,7 +1,7 @@
 import { rotateCoordinateAboutPoint } from '../space'
 import state from '../../state'
 
-export default outline => {
+const applyTilt = outline => {
 	const { canvasSize, rotateViewAboutCanvasCenter } = state.mainHoundstooth.basePattern.viewSettings || {}
 
 	if (!rotateViewAboutCanvasCenter) return outline
@@ -13,3 +13,5 @@ export default outline => {
 		rotation: rotateViewAboutCanvasCenter,
 	}))
 }
+
+export default applyTilt

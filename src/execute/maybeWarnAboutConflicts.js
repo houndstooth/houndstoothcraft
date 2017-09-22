@@ -3,7 +3,7 @@ import settingPath from './settingPath'
 import consoleWrapper from '../utilities/consoleWrapper'
 import { warn } from '../ui'
 
-export default ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
+const maybeWarnAboutConflicts = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
 		const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
 		consoleWrapper.warn(warning)
@@ -51,3 +51,5 @@ const formatSettingForWarning = setting => {
 	}
 	return JSON.stringify(setting)
 }
+
+export default maybeWarnAboutConflicts

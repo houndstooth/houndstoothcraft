@@ -1,7 +1,7 @@
 import state from '../../state'
 import getCanvasSize from './getCanvasSize'
 
-export default () => {
+const clear = () => {
 	const canvasSize = getCanvasSize()
 	state.contexts.forEach(context => clearContext({ context, canvasSize }))
 
@@ -12,3 +12,5 @@ export default () => {
 const clearContext = ({ context, canvasSize }) => {
 	context.clearRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
 }
+
+export default clear

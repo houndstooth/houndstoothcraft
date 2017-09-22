@@ -1,7 +1,7 @@
 import insertElementRightAfter from './insertElementRightAfter'
 import createEffectTogglesContainer from './createEffectTogglesContainer'
 
-export default () => {
+const createWarningsContainer = () => {
 	const warnings = document.createElement('div')
 	warnings.classList.add('warnings-container')
 	warnings.style.padding = '20px'
@@ -11,3 +11,5 @@ export default () => {
 
 	return warnings
 }
+
+export default createWarningsContainer

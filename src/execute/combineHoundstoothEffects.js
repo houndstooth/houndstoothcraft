@@ -1,7 +1,7 @@
 import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 
-export default ({ houndstoothEffects }) => {
+const combineHoundstoothEffects = ({ houndstoothEffects }) => {
 	const basePattern = {}
 	const layersPattern = {}
 	const animationsPattern = {}
@@ -34,3 +34,5 @@ export default ({ houndstoothEffects }) => {
 	}
 	return { basePattern, layersPattern, animationsPattern }
 }
+
+export default combineHoundstoothEffects

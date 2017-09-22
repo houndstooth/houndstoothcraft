@@ -2,7 +2,7 @@ import parseColor from './parseColor'
 import buildPath from './buildPath'
 import fillPath from './fillPath'
 
-export default ({ context, shapeColor, outline }) => {
+const fill = ({ context, shapeColor, outline }) => {
 	context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
 
 	context.fillStyle = parseColor(shapeColor)
@@ -11,3 +11,5 @@ export default ({ context, shapeColor, outline }) => {
 
 	fillPath({ context })
 }
+
+export default fill

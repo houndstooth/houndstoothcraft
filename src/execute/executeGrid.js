@@ -3,7 +3,7 @@ import callFunctionsPerSetting from './callFunctionsPerSetting'
 import { mixDownContexts } from '../canvas'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 
-export default ({ layerFunctions }) => {
+const executeGrid = ({ layerFunctions }) => {
 	let { startLayer, endLayer } = state.mainHoundstooth.basePattern.layerSettings || {}
 	startLayer = startLayer || 0
 
@@ -21,3 +21,5 @@ export default ({ layerFunctions }) => {
 
 	state.currentLayer = 0
 }
+
+export default executeGrid

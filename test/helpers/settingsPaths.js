@@ -5,7 +5,7 @@ const TILE_SIZE = [ 'tileSettings', 'tileSizeSetting' ]
 const GRID_SIZE = [ 'gridSettings', 'gridSize' ]
 const OPACITY = [ 'colorSettings', 'opacity' ]
 
-export default {
+export {
 	STRIPE_COUNT,
 	ZOOM,
 	CANVAS_SIZE,

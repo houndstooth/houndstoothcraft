@@ -5,4 +5,4 @@ const HOUNDSTOOTH_STRUCTURE = {
 	name: true,
 }
 
-export default { HOUNDSTOOTH_STRUCTURE }
+export default HOUNDSTOOTH_STRUCTURE

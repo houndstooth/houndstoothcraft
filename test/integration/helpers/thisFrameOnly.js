@@ -8,7 +8,7 @@ const thisLayerOnly = frame => ({
 	endLayer: frame,
 })
 
-export default {
+export {
 	thisAnimationFrameOnly,
 	thisLayerOnly,
 }

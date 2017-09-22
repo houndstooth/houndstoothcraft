@@ -4,13 +4,13 @@ import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { deepClone } from '../../../src/utilities/codeUtilities'
-import settingsPaths from '../../helpers/settingsPaths'
+import { TILE_SIZE } from '../../helpers/settingsPaths'
 import state from '../../../state'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetState from '../../../src/store/resetState'
 
 describe('.colorSettings', () => {
-	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
 	beforeEach(() => resetState(state))
 
 	describe('.colorSet', () => {

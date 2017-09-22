@@ -1,22 +1,13 @@
-import cmyktooth from './cmyktooth'
-// import derasterized from './derasterized'
-import ginghamChevronContinuum from './gingham-chevron-continuum'
-// import ginghoundstootham from './ginghoundstootham'
-import gongram from './gongram'
-import harmonitooth from './harmonitooth'
-import houndazzle from './houndazzle'
-import houndsmorphosis from './houndsmorphosis'
+import { cmyktoothEffect } from './cmyktooth'
+// import { derasterizedEffect } from './derasterized'
+import { ginghamChevronContinuumEffect } from './gingham-chevron-continuum'
+// import { ginghoundstoothamEffect } from './ginghoundstootham'
+import { gongramEffect } from './gongram'
+import { harmonitoothEffect } from './harmonitooth'
+import { houndazzleEffect } from './houndazzle'
+import { houndsmorphosisEffect } from './houndsmorphosis'
 
-const { cmyktoothEffect } = cmyktooth
-// const { derasterizedEffect } = derasterized
-const { ginghamChevronContinuumEffect } = ginghamChevronContinuum
-// const { ginghoundstoothamEffect } = ginghoundstootham
-const { gongramEffect } = gongram
-const { harmonitoothEffect } = harmonitooth
-const { houndazzleEffect } = houndazzle
-const { houndsmorphosisEffect } = houndsmorphosis
-
-export default {
+export {
 	cmyktoothEffect,
 	// derasterizedEffect,
 	ginghamChevronContinuumEffect,

@@ -59,4 +59,4 @@ const PATTERN_STRUCTURE = {
 	},
 }
 
-export default { PATTERN_STRUCTURE }
+export default PATTERN_STRUCTURE

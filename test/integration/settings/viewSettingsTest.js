@@ -3,14 +3,14 @@ import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../helpers/pixelIsColor'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
-import settingsPaths from '../../helpers/settingsPaths'
+import { TILE_SIZE } from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
 
 describe('.viewSettings', () => {
-	const tileSizeSetting = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
 	beforeEach(() => resetState(state))
 
 	describe('.canvasSize', () => {

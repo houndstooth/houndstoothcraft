@@ -3,13 +3,13 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import settingsPaths from '../../helpers/settingsPaths'
+import { TILE_SIZE } from '../../helpers/settingsPaths'
 import state from '../../../state'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetState from '../../../src/store/resetState'
 
 describe('.stripeSettings', () => {
-	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
 	beforeEach(() => resetState(state))
 
 	describe('.stripePositionSettings', () => {

@@ -2,7 +2,7 @@ import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelec
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../../src/constants'
-import settingsPaths from '../../helpers/settingsPaths'
+import { TILE_SIZE } from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
@@ -10,7 +10,7 @@ import resetState from '../../../src/store/resetState'
 describe('.gridSettings', () => {
 	beforeEach(() => resetState(state))
 
-	const tileSizeInPixels = getFromBasePatternOrDefault(settingsPaths.TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

@@ -156,7 +156,7 @@ describe('.stripeSettings', () => {
 		})
 	})
 
-	describe('.baseStripeDiagonal', () => {
+	xdescribe('.baseStripeDiagonal', () => {
 		it('can be set to principal, to change the orientation of the stripes', () => {
 			const houndstoothOverrides = {
 				basePattern: {

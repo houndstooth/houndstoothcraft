@@ -1,7 +1,7 @@
 import { wrappedIndex } from '../utilities/codeUtilities'
 import texture from './texture'
 import { getCurrentContext } from '../canvas'
-import state from '../../state'
+import state from '../state'
 import solid from './solid'
 
 const shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {

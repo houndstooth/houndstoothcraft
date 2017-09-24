@@ -1,6 +1,6 @@
 import tile from '../../../src/components/tile'
 import { PERIMETER_SCALAR } from '../../../src/constants'
-import state from '../../../state'
+import state from '../../../src/state'
 import * as render from '../../../src/render'
 import * as space from '../../../src/space'
 import * as getTileOriginAndSize from '../../../src/components/getTileOriginAndSize'

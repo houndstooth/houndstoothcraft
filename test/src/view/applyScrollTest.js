@@ -1,4 +1,4 @@
-import state from '../../../state'
+import state from '../../../src/state'
 import applyScroll from '../../../src/view/applyScroll'
 
 describe('apply scroll', () => {

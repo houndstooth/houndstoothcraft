@@ -1,5 +1,5 @@
 import standardAnimation from '../../../src/animation/standardAnimation'
-import state from '../../../state'
+import state from '../../../src/state'
 
 describe('standard animation', () => {
 	it('multiplies the property by the standard animation rate each frame', () => {

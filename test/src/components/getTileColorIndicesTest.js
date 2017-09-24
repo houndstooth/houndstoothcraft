@@ -1,6 +1,6 @@
 import getTileColorIndices from '../../../src/components/getTileColorIndices'
 import { iterator } from '../../../src/utilities/codeUtilities'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 
 describe('get tile color indices', () => {

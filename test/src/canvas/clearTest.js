@@ -1,5 +1,5 @@
 import clear from '../../../src/canvas/clear'
-import state from '../../../state'
+import state from '../../../src/state'
 import * as getCanvasSize from '../../../src/canvas/getCanvasSize'
 
 describe('clear', () => {

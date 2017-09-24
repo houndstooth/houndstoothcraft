@@ -1,4 +1,4 @@
-import state from '../../../state'
+import state from '../../../src/state'
 import layerIterator from '../../../src/canvas/layerIterator'
 
 describe('layer iterator', () => {

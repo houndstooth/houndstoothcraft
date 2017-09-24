@@ -1,5 +1,5 @@
 import buildEffectToggleClickHandler from '../../../src/ui/buildEffectToggleClickHandler'
-import state from '../../../state'
+import state from '../../../src/state'
 import * as execute from '../../../src/execute'
 import * as resetInterface from '../../../src/ui/resetInterface'
 

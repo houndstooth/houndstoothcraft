@@ -1,5 +1,5 @@
 import { accessChildPropertyOrCreatePath, isDefined } from '../../src/utilities/codeUtilities'
-import state from '../../state'
+import state from '../../src/state'
 import { DEFAULT_PATTERN } from '../../src/store/defaults'
 
 export default settingsPath => {

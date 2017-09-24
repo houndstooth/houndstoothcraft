@@ -2,7 +2,7 @@ import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognized
 import composePatterns from './composePatterns'
 import consoleWrapper from '../utilities/consoleWrapper'
 import { defaults } from '../store'
-import state from '../../state'
+import state from '../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 
 const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } = {}) => {

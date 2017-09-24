@@ -1,4 +1,4 @@
-import state from '../../../state'
+import state from '../../../src/state'
 import createContexts from '../../../src/page/createContexts'
 import * as createContext from '../../../src/page/createContext'
 import createCanvasContainer from '../../../src/page/createCanvasContainer'

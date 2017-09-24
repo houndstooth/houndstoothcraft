@@ -1,5 +1,5 @@
 import { clear } from '../canvas'
-import state from '../../state'
+import state from '../state'
 import { resetState } from '../store'
 import { createWarningsContainer } from '../page'
 

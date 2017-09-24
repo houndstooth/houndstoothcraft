@@ -1,5 +1,5 @@
 import getTileOriginAndSize from '../../../src/components/getTileOriginAndSize'
-import state from '../../../state'
+import state from '../../../src/state'
 
 describe('get tile origin and size', () => {
 	const gridAddress = [ 7, 11 ]

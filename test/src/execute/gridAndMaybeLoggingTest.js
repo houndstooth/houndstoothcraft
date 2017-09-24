@@ -1,5 +1,5 @@
 import gridAndMaybeLogging from '../../../src/execute/gridAndMaybeLogging'
-import state from '../../../state'
+import state from '../../../src/state'
 import * as components from '../../../src/components'
 import consoleWrapper from '../../../src/utilities/consoleWrapper'
 import resetState from '../../../src/store/resetState'

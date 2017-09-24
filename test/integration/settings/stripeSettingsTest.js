@@ -4,7 +4,7 @@ import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
 import { TILE_SIZE } from '../../helpers/settingsPaths'
-import state from '../../../state'
+import state from '../../../src/state'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetState from '../../../src/store/resetState'
 

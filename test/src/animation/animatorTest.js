@@ -1,5 +1,5 @@
 import animator from '../../../src/animation/animator'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import * as buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
 

@@ -1,5 +1,5 @@
 import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
-import state from '../../state'
+import state from '../state'
 
 const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {

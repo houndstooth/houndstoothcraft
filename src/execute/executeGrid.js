@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import { mixDownContexts } from '../canvas'
 import gridAndMaybeLogging from './gridAndMaybeLogging'

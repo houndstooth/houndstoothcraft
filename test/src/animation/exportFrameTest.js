@@ -1,6 +1,6 @@
 import exportFrame from '../../../src/animation/exportFrame'
 import fileSaver from 'file-saver'
-import state from '../../../state'
+import state from '../../../src/state'
 
 describe('export frame', () => {
 	let toBlobSpy

@@ -1,5 +1,5 @@
 import { wrappedIndex } from '../utilities/codeUtilities'
-import state from '../../state'
+import state from '../state'
 
 const getTileColorIndices = ({ gridAddress }) => {
 	const assignment = state.mainHoundstooth.basePattern.colorSettings.assignment

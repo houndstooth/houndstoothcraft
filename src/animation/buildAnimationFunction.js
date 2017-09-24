@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 import { callFunctionsPerSetting, executeGrid } from '../execute'
 import { clear } from '../canvas'
 import exportFrame from './exportFrame'

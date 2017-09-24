@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 
 const applyZoom = outline => outline.map(adjustCoordinateForZoom)
 

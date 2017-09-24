@@ -2,7 +2,7 @@ import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelec
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN, TRANSPARENT, ERASE } from '../../../src/constants'
 import standardTileIsColors from '../helpers/standardTileIsColors'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 
 describe('erasing', () => {

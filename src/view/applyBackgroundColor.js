@@ -1,5 +1,5 @@
 import { parseColor } from '../render'
-import state from '../../state'
+import state from '../state'
 import { getCanvasSize, getCurrentContext } from '../canvas'
 
 const applyBackgroundColor = () => {

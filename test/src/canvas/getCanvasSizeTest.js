@@ -1,6 +1,6 @@
 import getCanvasSize from '../../../src/canvas/getCanvasSize'
 import { DEFAULT_CANVAS_SIZE } from '../../../src/store/defaults'
-import state from '../../../state'
+import state from '../../../src/state'
 
 describe('get canvas size', () => {
 	describe('when canvas size is not specified', () => {

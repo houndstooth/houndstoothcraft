@@ -2,7 +2,7 @@ import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelec
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../src/constants'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 
 describe('standard houndstooth pattern', () => {

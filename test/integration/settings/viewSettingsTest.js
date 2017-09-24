@@ -6,7 +6,7 @@ import standardTileIsColors from '../helpers/standardTileIsColors'
 import { TILE_SIZE } from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 
 describe('.viewSettings', () => {

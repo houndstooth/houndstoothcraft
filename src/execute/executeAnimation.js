@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 

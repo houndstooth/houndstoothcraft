@@ -6,7 +6,7 @@ import getTileOriginAndSize from './getTileOriginAndSize'
 import getStripePositionsForTile from './getStripePositionsForTile'
 import { squareOutline, stripeOutline } from '../space'
 import { PERIMETER_SCALAR } from '../constants'
-import state from '../../state'
+import state from '../state'
 
 const tile = ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })

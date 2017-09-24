@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 import createCanvasContainer from './createCanvasContainer'
 import { getCanvasSize, layerIterator } from '../canvas'
 import createContext from './createContext'

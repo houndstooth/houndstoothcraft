@@ -1,6 +1,6 @@
 import { createContexts, createMixedDownCanvas } from '../page'
 import prepareFunctionsPerSetting from './prepareFunctionsPerSetting'
-import state from '../../state'
+import state from '../state'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import executeGrid from './executeGrid'
 import executeAnimation from './executeAnimation'

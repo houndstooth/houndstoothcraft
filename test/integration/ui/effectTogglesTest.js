@@ -1,5 +1,5 @@
 import addEffectToggles from '../../../src/ui/addEffectToggles'
-import state from '../../../state'
+import state from '../../../src/state'
 import effects from '../../../effects'
 import resetState from '../../../src/store/resetState'
 

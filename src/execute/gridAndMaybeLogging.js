@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 import consoleWrapper from '../utilities/consoleWrapper'
 import { grid } from '../components'
 

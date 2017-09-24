@@ -1,5 +1,5 @@
 import coordinatesMatch from '../helpers/coordinatesMatch'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import applyTilt from '../../../src/view/applyTilt'
 

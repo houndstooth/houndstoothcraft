@@ -69,7 +69,6 @@
       {
         "allow": [
           "**/src/utilities/*",
-          "**/src/constants.js",
           "**/test/**/*"
         ]
       }

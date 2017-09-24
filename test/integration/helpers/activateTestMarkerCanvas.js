@@ -4,7 +4,7 @@ import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import setupTestMarkersCanvas from './setupTestMarkersCanvas'
 import createMixedDownCanvas from '../../../src/page/createMixedDownCanvas'
-import state from '../../../state'
+import state from '../../../src/state'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'

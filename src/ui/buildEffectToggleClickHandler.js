@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 import resetInterface from './resetInterface'
 import { executeSelectedHoundstoothEffects } from '../execute'
 

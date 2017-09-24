@@ -1,5 +1,5 @@
 import applyOpacity from '../../../src/view/applyOpacity'
-import state from '../../../state'
+import state from '../../../src/state'
 
 describe('apply opacity', () => {
 	beforeEach(() => {

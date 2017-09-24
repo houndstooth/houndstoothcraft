@@ -1,5 +1,5 @@
 import createMixedDownCanvas from '../../../src/page/createMixedDownCanvas'
-import state from '../../../state'
+import state from '../../../src/state'
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 import * as canvas from '../../../src/canvas/index'
 

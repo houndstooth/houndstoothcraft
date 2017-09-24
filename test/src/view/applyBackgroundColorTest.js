@@ -1,6 +1,6 @@
 import applyBackgroundColor from '../../../src/view/applyBackgroundColor'
 import { CYAN } from '../../../src/constants'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import * as canvas from '../../../src/canvas'
 

@@ -5,7 +5,7 @@ import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../src/co
 import standardTileIsColors from '../helpers/standardTileIsColors'
 import { deepClone } from '../../../src/utilities/codeUtilities'
 import { TILE_SIZE } from '../../helpers/settingsPaths'
-import state from '../../../state'
+import state from '../../../src/state'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import resetState from '../../../src/store/resetState'
 

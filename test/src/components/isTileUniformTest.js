@@ -1,5 +1,5 @@
 import isTileUniform from '../../../src/components/isTileUniform'
-import state from '../../../state'
+import state from '../../../src/state'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {

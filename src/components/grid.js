@@ -1,5 +1,5 @@
 import tile from './tile'
-import state from '../../state'
+import state from '../state'
 import { applyBackgroundColor, applyOpacity } from '../view'
 import { iterator } from '../utilities/codeUtilities'
 

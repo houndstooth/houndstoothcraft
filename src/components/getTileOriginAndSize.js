@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 
 const getTileOriginAndSize = ({ gridAddress }) => {
 	const getTileOriginAndSize = state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize || getStandardTileOriginAndSize

@@ -5,6 +5,8 @@ import { solid } from './render'
 import { rotateCoordinateAboutPoint } from './space'
 import { defaults } from './store'
 import { addEffectToggles } from './ui'
+import state from './state'
+import * as constants from './constants'
 
 export {
 	standardAnimation,
@@ -15,4 +17,6 @@ export {
 	rotateCoordinateAboutPoint,
 	defaults,
 	addEffectToggles,
+	state,
+	constants,
 }

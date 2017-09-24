@@ -1,4 +1,4 @@
-import state from '../../state'
+import state from '../state'
 
 const applyScroll = outline => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings

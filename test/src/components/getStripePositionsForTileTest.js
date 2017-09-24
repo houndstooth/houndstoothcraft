@@ -1,6 +1,6 @@
 import getStripePositionsForTile from '../../../src/components/getStripePositionsForTile'
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 
 describe('get stripe positions for tile', () => {

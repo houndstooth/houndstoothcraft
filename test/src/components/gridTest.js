@@ -1,5 +1,5 @@
 import grid from '../../../src/components/grid'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import * as view from '../../../src/view'
 import * as tile from '../../../src/components/tile'

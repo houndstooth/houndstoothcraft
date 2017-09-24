@@ -1,4 +1,4 @@
-import state from '../../../state'
+import state from '../../../src/state'
 import applyZoom from '../../../src/view/applyZoom'
 
 describe('apply zoom', () => {

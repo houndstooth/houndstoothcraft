@@ -2,7 +2,7 @@ import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelec
 import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN } from '../../../src/constants'
 import pixelIsColorWithMarker from '../helpers/pixelIsColorWithMarker'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 
 describe('layering', () => {

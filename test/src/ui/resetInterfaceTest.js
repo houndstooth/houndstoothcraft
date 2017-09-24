@@ -1,6 +1,6 @@
 import resetInterface from '../../../src/ui/resetInterface'
 import warn from '../../../src/ui/warn'
-import state from '../../../state'
+import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import { DEFAULT_STATE } from '../../../src/store/defaults'
 import * as canvas from '../../../src/canvas'

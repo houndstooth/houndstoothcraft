@@ -1,5 +1,5 @@
 import buildIntervalFunction from './buildIntervalFunction'
-import state from '../../state'
+import state from '../state'
 
 const animator = ({ animationFunction, frameRate, stopConditionFunction }) => {
 	const intervalFunction = buildIntervalFunction({ animationFunction, stopConditionFunction })

@@ -1,5 +1,5 @@
-var testsContext = require.context('.', true, /Test.js$/)
+const testsContext = require.context('.', true, /Test.js$/)
 testsContext.keys().forEach(testsContext)
 
-var effectTestsContext = require.context('../../effects', true, /effects\/.*Test.js$/)
+const effectTestsContext = require.context('../../effects', true, /effects\/.*Test.js$/)
 effectTestsContext.keys().forEach(effectTestsContext)

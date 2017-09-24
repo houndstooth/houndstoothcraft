@@ -10,10 +10,10 @@
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "unit": "babel-node unit.js",
+    "unit": "babel-node ./test/src/unit.js",
     "test": "npm run coverage && npm run integration",
     "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
-    "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover unit.js",
+    "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./teest/src/unit.js",
     "ci": "npm run unit && npm run integration",
     "open-coverage": "start file:///C:/Users/Douglas%20Blumeyer/workspace/web-render/coverage/lcov-report/index.html"
   },

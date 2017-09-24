@@ -1,6 +1,6 @@
 import { accessChildPropertyOrCreatePath, isDefined } from '../../src/utilities/codeUtilities'
 import state from '../../state'
-import { HOUNDSTOOTH_DEFAULTS } from '../../src/store/houndstoothDefaults'
+import { DEFAULT_PATTERN } from '../../src/store/defaults'
 
 export default settingsPath => {
 	let childSetting = state.mainHoundstooth.basePattern
@@ -24,7 +24,7 @@ export default settingsPath => {
 	}
 	else {
 		setting = accessChildPropertyOrCreatePath({
-			objectWithProperties: HOUNDSTOOTH_DEFAULTS.basePattern,
+			objectWithProperties: DEFAULT_PATTERN,
 			propertyPath: settingsPath,
 		})
 	}

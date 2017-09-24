@@ -2,7 +2,7 @@ import resetInterface from '../../../src/ui/resetInterface'
 import warn from '../../../src/ui/warn'
 import state from '../../../state'
 import resetState from '../../../src/store/resetState'
-import { INITIAL_STATE } from '../../../src/store/initialState'
+import { DEFAULT_STATE } from '../../../src/store/defaults'
 import * as canvas from '../../../src/canvas'
 
 describe('reset interface', () => {
@@ -40,7 +40,7 @@ describe('reset interface', () => {
 
 		resetInterface()
 
-		const expectedStore = INITIAL_STATE
+		const expectedStore = DEFAULT_STATE
 		expectedStore.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 		expect(state).toEqual(expectedStore)
 	})

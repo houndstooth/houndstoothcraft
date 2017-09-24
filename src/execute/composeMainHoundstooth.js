@@ -1,7 +1,7 @@
 import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 import consoleWrapper from '../utilities/consoleWrapper'
-import { houndstoothDefaults } from '../store'
+import { defaults } from '../store'
 import state from '../../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 
@@ -12,19 +12,19 @@ const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides 
 
 	composePattern({
 		patternToCompose: state.mainHoundstooth.basePattern,
-		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.basePattern,
+		houndstoothDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern,
 		houndstoothEffects: combinedHoundstoothEffects.basePattern,
 		houndstoothOverrides: houndstoothOverrides.basePattern,
 	})
 	composePattern({
 		patternToCompose: state.mainHoundstooth.layersPattern,
-		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.layersPattern,
+		houndstoothDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern,
 		houndstoothEffects: combinedHoundstoothEffects.layersPattern,
 		houndstoothOverrides: houndstoothOverrides.layersPattern,
 	})
 	composePattern({
 		patternToCompose: state.mainHoundstooth.animationsPattern,
-		houndstoothDefaults: houndstoothDefaults.HOUNDSTOOTH_DEFAULTS.animationsPattern,
+		houndstoothDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern,
 		houndstoothEffects: combinedHoundstoothEffects.animationsPattern,
 		houndstoothOverrides: houndstoothOverrides.animationsPattern,
 	})
@@ -34,7 +34,7 @@ const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides 
 
 const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {
 	if (!houndstoothHasOnlyRecognizedPatterns(state.mainHoundstooth)) return true
-	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothDefaults.HOUNDSTOOTH_DEFAULTS)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(defaults.DEFAULT_HOUNDSTOOTH)) return true
 	if (!combinedHoundstoothEffects) return true
 	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) return true
 	return false

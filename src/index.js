@@ -3,7 +3,7 @@ import { perStripe, tileCenter } from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
 import { rotateCoordinateAboutPoint } from './space'
-import { houndstoothDefaults } from './store'
+import { defaults } from './store'
 import { addEffectToggles } from './ui'
 
 export {
@@ -13,6 +13,6 @@ export {
 	executeSelectedHoundstoothEffects,
 	solid,
 	rotateCoordinateAboutPoint,
-	houndstoothDefaults,
+	defaults,
 	addEffectToggles,
 }

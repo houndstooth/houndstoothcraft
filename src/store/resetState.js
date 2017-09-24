@@ -1,10 +1,10 @@
-import { INITIAL_STATE } from './initialState'
+import { DEFAULT_STATE } from './defaults'
 import { changeObjectIntoCopy } from '../utilities/codeUtilities'
 
 const resetState = state => {
-    changeObjectIntoCopy({ 
-        objectToChange: state, 
-        objectWithProperties: INITIAL_STATE 
+    changeObjectIntoCopy({
+        objectToChange: state,
+        objectWithProperties: DEFAULT_STATE
     })
 }
 

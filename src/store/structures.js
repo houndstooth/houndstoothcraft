@@ -1,10 +1,3 @@
-const HOUNDSTOOTH_STRUCTURE = {
-	basePattern: true,
-	animationsPattern: true,
-	layersPattern: true,
-	name: true,
-}
-
 const PATTERN_STRUCTURE = {
 	viewSettings: {
 		canvasSize: true,
@@ -64,6 +57,28 @@ const PATTERN_STRUCTURE = {
 		startLayer: true,
 		endLayer: true,
 	},
+}
+
+const HOUNDSTOOTH_STRUCTURE = {
+	basePattern: true,
+	animationsPattern: true,
+	layersPattern: true,
+	name: true,
+}
+
+const STATE_STRUCTURE = {
+	currentLayer: true,
+	currentAnimationFrame: true,
+	contexts: true,
+	mixedDownContext: true,
+	lastSavedAnimationFrame: true,
+	interval: true,
+	animating: true,
+	exportFrames: true,
+	mixingDown: true,
+	performanceLogging: true,
+	selectedHoundstoothEffects: true,
+	mainHoundstooth: true,
 }
 
 export {

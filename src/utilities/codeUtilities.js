@@ -23,9 +23,9 @@ const shallowEqual = (a, b) => {
 
 const deepClone = objectToDeepClone => {
 	let clonedObject = {}
-	setAllPropertiesOfObjectOnAnother({ 
+	setAllPropertiesOfObjectOnAnother({
 		objectWithProperties: objectToDeepClone,
-		objectToChange: clonedObject
+		objectToChange: clonedObject,
 	})
 	return clonedObject
 }

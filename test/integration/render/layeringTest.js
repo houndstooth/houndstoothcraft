@@ -29,6 +29,11 @@ describe('layering', () => {
 
 		const BLENDED_COLOR = { r: 192, g: 255, b: 63, a: 1 }
 		const pixelInCellThatDemonstratesBlending = [ 75, 25 ]
-		expect(pixelIsColorWithMarker(pixelInCellThatDemonstratesBlending, BLENDED_COLOR, 1)).toBe(true)
+		const passed = pixelIsColorWithMarker({
+			coordinateUnderTest: pixelInCellThatDemonstratesBlending,
+			expectedColor: BLENDED_COLOR,
+			id: 1,
+		})
+		expect(passed).toBe(true)
 	})
 })

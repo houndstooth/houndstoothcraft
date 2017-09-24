@@ -276,7 +276,7 @@ describe('code utilities', () => {
 			const objectWithProperties = { }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
-			
+
 			expect(objectToChange.mary).toBe(undefined)
 			expect(objectToChange.billy).toBe(undefined)
 		})
@@ -286,7 +286,7 @@ describe('code utilities', () => {
 			const objectWithProperties = { mary: 'had a little lamb' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
-			
+
 			expect(objectToChange.mary).toBe('had a little lamb')
 			expect(objectToChange.billy).toBe(undefined)
 		})
@@ -296,7 +296,7 @@ describe('code utilities', () => {
 			const objectWithProperties = { billy: 'bob' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
-			
+
 			expect(objectToChange.billy).toBe('bob')
 		})
 	})

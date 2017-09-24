@@ -12,6 +12,6 @@ const sectorCenter = ({ originInPixels, x, y, n, tileSizeInPixels }) => {
 export default ({ originInPixels, tileSizeInPixels, x, y, n, color, id }) => {
 	const coordinateUnderTest = sectorCenter({ originInPixels, tileSizeInPixels, x, y, n })
 	const passed = pixelIsColor(coordinateUnderTest, color)
-	drawPassMarker(passed, coordinateUnderTest, id)
+	drawPassMarker({ passed, coordinateUnderTest, id })
 	return passed
 }

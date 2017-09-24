@@ -58,11 +58,11 @@
     ],
     "max-params": [
       "error",
-      2,
+      2
     ],
     "max-depth": [
       "error",
-      2,
+      2
     ],
     "import/no-internal-modules": [
       "error",
@@ -81,8 +81,7 @@
       ],
       "rules": {
         "import/no-internal-modules": "off",
-        "max-statements": "off",
-        "max-params": "off",
+        "max-statements": "off"
       }
     }
   ]

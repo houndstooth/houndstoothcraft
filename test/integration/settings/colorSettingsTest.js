@@ -33,8 +33,8 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			expect(pixelIsColorWithMarker([ 25, 75 ], YELLOW, 1)).toBe(true)
-			expect(pixelIsColorWithMarker([ 75, 25 ], BLUE, 2)).toBe(true)
+			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 25, 75 ], expectedColor: YELLOW, id: 1 })).toBe(true)
+			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 75, 25 ], expectedColor: BLUE, id: 2 })).toBe(true)
 		})
 
 		it('works for more than two colors', () => {
@@ -751,8 +751,8 @@ describe('.colorSettings', () => {
 			const partiallySeeThroughBlue = deepClone(BLUE)
 			partiallySeeThroughBlue.a *= opacity
 
-			expect(pixelIsColorWithMarker([ 25, 75 ], partiallySeeThroughBlack, 1)).toBe(true)
-			expect(pixelIsColorWithMarker([ 75, 25 ], partiallySeeThroughBlue, 2)).toBe(true)
+			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 25, 75 ], expectedColor: partiallySeeThroughBlack, id: 1 })).toBe(true)
+			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 75, 25 ], expectedColor: partiallySeeThroughBlue, id: 2 })).toBe(true)
 		})
 	})
 
@@ -777,7 +777,7 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			expect(pixelIsColorWithMarker([ 75, 25 ], YELLOW, 2)).toBe(true)
+			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 75, 25 ], expectedColor: YELLOW, id: 2 })).toBe(true)
 		})
 	})
 })

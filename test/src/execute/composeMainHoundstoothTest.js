@@ -139,7 +139,7 @@ describe('composeMainHoundstooth', () => {
 
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: DEFAULT_HOUNDSTOOTH,
-			objectWithProperties: originalHoundstoothDefaultsToRestoreTo
+			objectWithProperties: originalHoundstoothDefaultsToRestoreTo,
 		})
 	})
 
@@ -175,7 +175,7 @@ describe('composeMainHoundstooth', () => {
 
 				codeUtilities.changeObjectIntoCopy({
 					objectToChange: DEFAULT_HOUNDSTOOTH,
-					objectWithProperties: originalHoundstoothDefaultsToRestoreTo
+					objectWithProperties: originalHoundstoothDefaultsToRestoreTo,
 				})
 			})
 		})

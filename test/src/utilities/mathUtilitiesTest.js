@@ -20,6 +20,10 @@ describe('math utilities', () => {
 			expect(triangularNumber(1.5)).toBe((Math.pow(4, 2) - 1) / 8)
 			expect(triangularNumber(2.5)).toBe((Math.pow(6, 2) - 1) / 8)
 		})
+
+		it('is the inverse of triangular root', () => {
+			expect(triangularNumber(mathUtilities.triangularRoot(5))).toBe(5)
+		})
 	})
 
 	describe('#triangularRoot', () => {
@@ -40,6 +44,10 @@ describe('math utilities', () => {
 			expect(triangularRoot(0.5)).toBe(0.6180339887498949)
 			expect(triangularRoot(2)).toBe(1.5615528128088303)
 			expect(triangularRoot(4.5)).toBe(2.5413812651491097)
+		})
+
+		it('is the inverse of triangular number', () => {
+			expect(triangularRoot(mathUtilities.triangularNumber(5))).toBe(5)
 		})
 	})
 

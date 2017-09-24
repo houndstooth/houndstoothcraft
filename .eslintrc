@@ -53,6 +53,9 @@
       "error",
       "stroustrup"
     ],
+    "max-statements": [
+      "error",
+    ],
     "import/no-internal-modules": [
       "error",
       {
@@ -70,7 +73,8 @@
         "**/test/**/*"
       ],
       "rules": {
-        "import/no-internal-modules": "off"
+        "import/no-internal-modules": "off",
+        "max-statements": "off",
       }
     }
   ]

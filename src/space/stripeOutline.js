@@ -1,27 +1,27 @@
-import { tileCenter } from '../components'
-import rotateCoordinateAboutPoint from './rotateCoordinateAboutPoint'
-import state from '../../state'
-import { QUARTER_OF_CIRCLE_ROTATION } from '../constants'
-
 const stripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
-	let outline = []
-	const x = tileOrigin[ 0 ]
-	const y = tileOrigin[ 1 ]
-	const tileArgs = { x, y, tileSize }
+	const tileArgs = { x: tileOrigin[ 0 ], y: tileOrigin[ 1 ], tileSize }
 
-	const stripeStartsInTopLeftCorner = stripeStart === 0
 	const stripeStartsInTopLeftHalf = stripeStart < 1
 	const stripeEndsInBottomRightHalf = stripeEnd > 1
-	const stripeEndsInBottomRightCorner = stripeEnd === 2
 
+	let outline = []
+	firstPoint({ outline, stripeStartsInTopLeftHalf, tileArgs, stripeStart })
+	middlePoints({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeEnd })
+	lastPoints({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeStart })
+	return outline
+}
+
+const firstPoint = ({ outline, stripeStartsInTopLeftHalf, tileArgs, stripeStart }) => {
 	if (stripeStartsInTopLeftHalf) {
 		outline.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeStart }))
 	}
 	else {
 		outline.push(pointAlongRightEdge(tileArgs, { stripePosition: stripeStart }))
 	}
+}
 
+const middlePoints = ({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeEnd }) => {
 	if (!stripeEndsInBottomRightHalf) {
 		outline.push(pointAlongTopEdge(tileArgs, { stripePosition: stripeEnd }))
 		outline.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeEnd }))
@@ -31,6 +31,7 @@ const stripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 			outline.push(pointInTopRightCorner(tileArgs))
 		}
 
+		const stripeEndsInBottomRightCorner = stripeEnd === 2
 		if (stripeEndsInBottomRightCorner) {
 			outline.push(pointInBottomRightCorner(tileArgs))
 		}
@@ -39,7 +40,10 @@ const stripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 			outline.push(pointAlongBottomEdge(tileArgs, { stripePosition: stripeEnd }))
 		}
 	}
+}
 
+const lastPoints = ({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeStart }) => {
+	const stripeStartsInTopLeftCorner = stripeStart === 0
 	if (!stripeStartsInTopLeftCorner) {
 		if (stripeStartsInTopLeftHalf) {
 			if (stripeEndsInBottomRightHalf) {
@@ -56,16 +60,6 @@ const stripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 			outline.push(pointInBottomLeftCorner(tileArgs))
 		}
 	}
-
-	if (state.mainHoundstooth.basePattern.stripeSettings && state.mainHoundstooth.basePattern.stripeSettings.baseStripeDiagonal === 'PRINCIPAL') {
-		outline = outline.map(coordinate => rotateCoordinateAboutPoint({
-			point: tileCenter({ tileOrigin, tileSize }),
-			coordinate,
-			rotation: QUARTER_OF_CIRCLE_ROTATION,
-		}))
-	}
-
-	return outline
 }
 
 const pointAlongTopEdge = ({ x, y, tileSize }, { stripePosition }) => ([

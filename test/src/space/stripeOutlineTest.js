@@ -1,6 +1,4 @@
 import stripeOutline from '../../../src/space/stripeOutline'
-import state from '../../../state'
-import * as rotateCoordinateAboutPoint from '../../../src/space/rotateCoordinateAboutPoint'
 
 describe('stripe outline', () => {
 	const tileOrigin = [ 0, 0 ]
@@ -185,24 +183,6 @@ describe('stripe outline', () => {
 					[ 0.5, 1 ],
 				])
 			})
-		})
-	})
-
-	describe('when the base stripe diagonal is principal', () => {
-		beforeEach(() => {
-			state.mainHoundstooth.basePattern.stripeSettings = { baseStripeDiagonal: 'PRINCIPAL' }
-		})
-
-		it('rotates the stripe a quarter of the way around', () => {
-			const rotatedCoordinate = [ 0, 0 ]
-			spyOn(rotateCoordinateAboutPoint, 'default').and.returnValue(rotatedCoordinate)
-
-			const outlineOptions = { stripeStart, stripeEnd }
-
-			const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-
-			expect(rotateCoordinateAboutPoint.default).toHaveBeenCalled()
-			expect(result[ 0 ]).toBe(rotatedCoordinate)
 		})
 	})
 })

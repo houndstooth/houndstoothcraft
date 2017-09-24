@@ -1,3 +1,10 @@
+const HOUNDSTOOTH_STRUCTURE = {
+	basePattern: true,
+	animationsPattern: true,
+	layersPattern: true,
+	name: true,
+}
+
 const PATTERN_STRUCTURE = {
 	viewSettings: {
 		canvasSize: true,
@@ -59,4 +66,7 @@ const PATTERN_STRUCTURE = {
 	},
 }
 
-export default PATTERN_STRUCTURE
+export {
+	PATTERN_STRUCTURE,
+	HOUNDSTOOTH_STRUCTURE,
+}

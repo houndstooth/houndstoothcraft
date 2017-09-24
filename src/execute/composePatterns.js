@@ -2,9 +2,9 @@ import consoleWrapper from '../utilities/consoleWrapper'
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined, propertyIsDefinedOnObject } from '../utilities/codeUtilities'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 import settingPath from './settingPath'
-import { patternStructure } from '../store'
+import { PATTERN_STRUCTURE } from '../store'
 
-const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = patternStructure, warnAboutConflicts }) => {
+const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = PATTERN_STRUCTURE, warnAboutConflicts }) => {
 	if (!patternToMerge) return
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
 		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) return

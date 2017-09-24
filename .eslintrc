@@ -55,6 +55,7 @@
     ],
     "max-statements": [
       "error",
+      10
     ],
     "max-params": [
       "error",

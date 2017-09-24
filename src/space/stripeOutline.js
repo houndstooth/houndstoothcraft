@@ -46,9 +46,7 @@ const lastPoints = ({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRigh
 	const stripeStartsInTopLeftCorner = stripeStart === 0
 	if (!stripeStartsInTopLeftCorner) {
 		if (stripeStartsInTopLeftHalf) {
-			if (stripeEndsInBottomRightHalf) {
-				outline.push(pointInBottomLeftCorner(tileArgs))
-			}
+			stripeEndsInBottomRightHalf && outline.push(pointInBottomLeftCorner(tileArgs))
 			outline.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeStart }))
 		}
 		else {

@@ -13,7 +13,7 @@
     "unit": "babel-node ./test/src/unit.js",
     "test": "npm run coverage && npm run integration",
     "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
-    "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./teest/src/unit.js",
+    "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/src/unit.js",
     "ci": "npm run unit && npm run integration",
     "open-coverage": "start file:///C:/Users/Douglas%20Blumeyer/workspace/web-render/coverage/lcov-report/index.html"
   },
@@ -38,7 +38,6 @@
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-webpack": "^2.0.4",
-    "path": "^0.12.7",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
   }

@@ -1,32 +1,37 @@
 import * as insertElementRightAfter from '../../../src/page/insertElementRightAfter'
 import createEffectTogglesContainer from '../../../src/page/createEffectTogglesContainer'
-import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
+import * as window from '../../../src/utilities/windowWrapper'
+import buildMockElement from '../helpers/buildMockElement'
 
 describe('create effect toggles container', () => {
-	let returnedEffectTogglesContainer
+	let returnedEffectTogglesContainer, mockEffectTogglesContainer, mockCanvasContainer
+	const mockEffectTogglesContainerClassList = []
 	beforeEach(() => {
-		deleteElementIfExists('.effect-toggles-container')
+		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList})
+		spyOn(window.document, 'createElement').and.returnValue(mockEffectTogglesContainer)
 
-		spyOn(insertElementRightAfter, 'default').and.callThrough()
+		mockCanvasContainer = buildMockElement()
+		spyOn(window.document, 'querySelector').and.returnValue(mockCanvasContainer)
+
+		spyOn(insertElementRightAfter, 'default')
 
 		returnedEffectTogglesContainer = createEffectTogglesContainer()
 	})
 
 	it('returns the newly created effect toggles container', () => {
-		const realEffectTogglesContainer = document.querySelector('.effect-toggles-container')
-		expect(returnedEffectTogglesContainer).toBe(realEffectTogglesContainer)
+		expect(returnedEffectTogglesContainer).toBe(mockEffectTogglesContainer)
 	})
 
-	it('creates the effect toggles container and adds them to the document, with padding', () => {
-		const expectedEffectTogglesContainer = document.createElement('div')
-		expectedEffectTogglesContainer.classList.add('effect-toggles-container')
-		expectedEffectTogglesContainer.style.padding = '20px'
+	it('assigns a class to the effect toggles container', () => {
+		const classAddedToEffectTogglesContainer = mockEffectTogglesContainerClassList[0]
+		expect(classAddedToEffectTogglesContainer).toBe('effect-toggles-container')
+	})
 
-		expect(returnedEffectTogglesContainer).toEqual(expectedEffectTogglesContainer)
+	it('adds padding to the effect toggles container', () => {
+		expect(returnedEffectTogglesContainer.style.padding).toBe('20px')
 	})
 
 	it('inserts the effect toggles container after the canvas', () => {
-		const canvasContainer = document.querySelector('.canvas-container')
-		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
+		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedEffectTogglesContainer, mockCanvasContainer)
 	})
 })

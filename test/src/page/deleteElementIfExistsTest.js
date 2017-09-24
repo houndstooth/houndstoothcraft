@@ -1,43 +1,28 @@
 import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
+import * as window from '../../../src/utilities/windowWrapper'
+import buildMockElement from '../helpers/buildMockElement'
 
 describe('delete element if exists', () => {
 	describe('when element exists', () => {
-		describe('when element is a direct child of the document body', () => {
-			it('deletes it', () => {
-				const element = document.createElement('div')
-				element.classList.add('element')
-				document.body.appendChild(element)
+		it('deletes it', () => {
+			const parentNodeRemoveChildSpy = jasmine.createSpy()
+			const element = buildMockElement({ parentNodeRemoveChildSpy })
+			spyOn(window.document, 'querySelector').and.returnValue(element)
 
-				expect(document.querySelector('.element')).toBeTruthy()
+			deleteElementIfExists('.element')
 
-				deleteElementIfExists('.element')
-
-				expect(document.querySelector('.element')).not.toBeTruthy()
-			})
-		})
-
-		describe('when the element is a child of another element', () => {
-			it('deletes it', () => {
-				const element = document.createElement('div')
-				element.classList.add('element')
-				const parentElement = document.createElement('div')
-				parentElement.appendChild(element)
-				document.body.appendChild(parentElement)
-
-				expect(document.querySelector('.element')).toBeTruthy()
-
-				deleteElementIfExists('.element')
-
-				expect(document.querySelector('.element')).not.toBeTruthy()
-			})
+			expect(window.document.querySelector).toHaveBeenCalledWith('.element')
+			expect(parentNodeRemoveChildSpy).toHaveBeenCalledWith(element)
 		})
 	})
 
 	describe('when element does not exist', () => {
 		it('does not fail', () => {
-			expect(document.querySelector('.element')).not.toBeTruthy()
+			spyOn(window.document, 'querySelector').and.returnValue(undefined)
 
 			deleteElementIfExists('.element')
+
+			expect(window.document.querySelector).toHaveBeenCalledWith('.element')
 		})
 	})
 })

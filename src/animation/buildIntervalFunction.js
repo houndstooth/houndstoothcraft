@@ -1,4 +1,5 @@
 import state from '../state'
+import window from '../utilities/windowWrapper'
 
 const buildIntervalFunction = ({ animationFunction, stopConditionFunction }) => () => {
 	animationFunction()

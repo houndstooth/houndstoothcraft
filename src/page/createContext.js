@@ -1,3 +1,5 @@
+import { document } from '../utilities/windowWrapper'
+
 const createContext = ({ canvasContainer, canvasSize }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'

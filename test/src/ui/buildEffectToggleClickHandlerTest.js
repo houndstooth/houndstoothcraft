@@ -9,8 +9,7 @@ describe('build effect toggle click handler', () => {
 
 		spyOn(execute, 'executeSelectedHoundstoothEffects')
 
-		const checkbox = document.createElement('input')
-		checkbox.setAttribute('type', 'checkbox')
+		const checkbox = {}
 
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 

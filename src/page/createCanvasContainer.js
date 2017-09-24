@@ -1,5 +1,6 @@
 import setElementDimensions from './setElementDimensions'
 import { getCanvasSize } from '../canvas'
+import { document } from '../utilities/windowWrapper'
 
 const createCanvasContainer = ({ canvasSize } = {}) => {
 	if (!canvasSize) canvasSize = getCanvasSize()

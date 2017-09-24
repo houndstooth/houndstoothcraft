@@ -1,6 +1,7 @@
 import buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
 import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
+import window from '../../../src/utilities/windowWrapper'
 
 describe('build animation function', () => {
 	let intervalFunction

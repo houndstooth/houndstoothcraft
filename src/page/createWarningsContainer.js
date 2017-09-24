@@ -1,15 +1,16 @@
 import insertElementRightAfter from './insertElementRightAfter'
 import createEffectTogglesContainer from './createEffectTogglesContainer'
+import { document } from '../utilities/windowWrapper'
 
 const createWarningsContainer = () => {
-	const warnings = document.createElement('div')
-	warnings.classList.add('warnings-container')
-	warnings.style.padding = '20px'
+	const warningsContainer = document.createElement('div')
+	warningsContainer.classList.add('warnings-container')
+	warningsContainer.style.padding = '20px'
 
 	const effectTogglesContainer = document.querySelector('.effect-toggles-container') || createEffectTogglesContainer()
-	insertElementRightAfter(warnings, effectTogglesContainer)
+	insertElementRightAfter(warningsContainer, effectTogglesContainer)
 
-	return warnings
+	return warningsContainer
 }
 
 export default createWarningsContainer

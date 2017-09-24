@@ -1,4 +1,4 @@
-import consoleWrapper from '../utilities/consoleWrapper'
+import { console } from '../utilities/windowWrapper'
 import { deeperPath } from '../utilities/codeUtilities'
 
 const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], functionsArray = [] }) => {
@@ -14,7 +14,7 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 			})
 		}
 		else {
-			consoleWrapper.error(`These settings should map onto basePattern settings, and be functions to call for them each animation frame / layer. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
+			console.error(`These settings should map onto basePattern settings, and be functions to call for them each animation frame / layer. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
 		}
 	})
 	return functionsArray

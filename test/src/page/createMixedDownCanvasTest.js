@@ -1,67 +1,51 @@
 import createMixedDownCanvas from '../../../src/page/createMixedDownCanvas'
 import state from '../../../src/state'
-import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 import * as canvas from '../../../src/canvas/index'
+import buildMockCanvas from '../helpers/buildMockCanvas'
+import buildMockElement from '../helpers/buildMockElement'
+import * as deleteElementIfExists from '../../../src/page/deleteElementIfExists'
+import * as window from '../../../src/utilities/windowWrapper'
 
 describe('create mixed down canvas', () => {
-	beforeEach(() => deleteElementIfExists('.mixed-down-canvas'))
+	let mixedDownCanvas
+	const mixedDownContext = {}
+	const mockBodyChildren = []
+	const mixedDownCanvasClassList = []
+	beforeAll(() => {
+		spyOn(deleteElementIfExists, 'default')
 
-	describe('when the mixed down canvas is already on the document', () => {
-		let mixedDownCanvas, newMixedDownCanvas, newMixedDownContext, foundMixedDownCanvas
-		beforeEach(() => {
-			mixedDownCanvas = document.createElement('canvas')
-			mixedDownCanvas.classList.add('mixed-down-canvas')
-			document.body.appendChild(mixedDownCanvas)
+		window.document.body = buildMockElement({ mockChildren: mockBodyChildren })
 
-			newMixedDownContext = {}
-			newMixedDownCanvas = document.createElement('canvas')
-			newMixedDownCanvas.getContext = contextType => contextType === '2d' ? newMixedDownContext : NaN
-			spyOn(document, 'createElement').and.returnValue(newMixedDownCanvas)
+		mixedDownCanvas = buildMockCanvas({ mockContext: mixedDownContext, mockClassList: mixedDownCanvasClassList })
+		spyOn(window.document, 'createElement').and.returnValue(mixedDownCanvas)
 
-			createMixedDownCanvas()
+		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
 
-			foundMixedDownCanvas = document.querySelector('.mixed-down-canvas')
-		})
-
-		it('deletes the existing mixed down canvas', () => {
-			expect(foundMixedDownCanvas).not.toBe(mixedDownCanvas)
-			expect(foundMixedDownCanvas).toBe(newMixedDownCanvas)
-		})
-
-		it('points the mixed down canvas node of the state at it', () => {
-			expect(state.mixedDownContext).toBe(newMixedDownContext)
-		})
+		createMixedDownCanvas()
 	})
 
-	describe('when the mixed down canvas is not already on the document', () => {
-		let mixedDownCanvas, mixedDownContext, foundMixedDownCanvas
-		beforeEach(() => {
-			spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
+	it('deletes the existing mixed down canvas, if present', () => {
+		expect(deleteElementIfExists.default).toHaveBeenCalledWith('.mixed-down-canvas')
+	})
 
-			mixedDownContext = {}
-			mixedDownCanvas = document.createElement('canvas')
-			mixedDownCanvas.getContext = contextType => contextType === '2d' ? mixedDownContext : NaN
-			spyOn(document, 'createElement').and.returnValue(mixedDownCanvas)
+	it('puts the new mixed down canvas on the document body', () => {
+		expect(mockBodyChildren[0]).toBe(mixedDownCanvas)
+	})
 
-			createMixedDownCanvas()
-			foundMixedDownCanvas = document.querySelector('.mixed-down-canvas')
-		})
+	it('adds a class name to the mixed down canvas', () => {
+		expect(mixedDownCanvasClassList[0]).toBe('mixed-down-canvas')
+	})
 
-		it('creates a mixed down canvas and puts it on the document and the state', () => {
-			expect(foundMixedDownCanvas).toBeTruthy()
-		})
+	it('points the mixed down context node of the state at the new mixed down canvas\'s context', () => {
+		expect(state.mixedDownContext).toBe(mixedDownContext)
+	})
 
-		it('puts this canvas on the state', () => {
-			expect(state.mixedDownContext).toBe(mixedDownContext)
-		})
+	it('does not display the mixed down canvas', () => {
+		expect(mixedDownCanvas.style.display).toBe('none')
+	})
 
-		it('does not display this canvas', () => {
-			expect(mixedDownCanvas.style.display).toBe('none')
-		})
-
-		it('sets the canvas size', () => {
-			expect(mixedDownCanvas.width).toBe(400)
-			expect(mixedDownCanvas.height).toBe(500)
-		})
+	it('sets the size of the mixed down canvas', () => {
+		expect(mixedDownCanvas.width).toBe(400)
+		expect(mixedDownCanvas.height).toBe(500)
 	})
 })

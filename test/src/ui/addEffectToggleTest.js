@@ -1,34 +1,26 @@
 import addEffectToggle from '../../../src/ui/addEffectToggle'
-import createEffectTogglesContainer from '../../../src/page/createEffectTogglesContainer'
+import buildMockElement from '../helpers/buildMockElement'
+import * as window from '../../../src/utilities/windowWrapper'
+import * as createLabel from '../../../src/ui/createLabel'
 
 describe('add effect toggle', () => {
-	it('adds a labelled checkbox for the effect to the toggles container', () => {
-		const effectTogglesContainer = document.querySelector('.effect-toggles-container') || createEffectTogglesContainer()
-		effectTogglesContainer.innerHTML = ''
-		const mockHoundstoothEffect = { name: 'mock tooth' }
+	const mockLabel = {}
+	const mockHoundstoothEffect = { name: 'mock tooth' }
+	const mockEffectTogglesContainerChildren = []
+
+	beforeAll(() => {
+		const effectTogglesContainer = buildMockElement({ mockChildren: mockEffectTogglesContainerChildren })
+		spyOn(window.document, 'querySelector').and.returnValue(effectTogglesContainer)
+		spyOn(createLabel, 'default').and.returnValue(mockLabel)
 
 		addEffectToggle(mockHoundstoothEffect)
+	})
 
-		expect(effectTogglesContainer.innerHTML).toBe(
-			'<label style="cursor: pointer; display: block;">' +
-				'<input type="checkbox" class="mock-tooth" style="cursor: pointer;">' +
-				'mock tooth' +
-			'</label>'
-		)
+	it('adds a labelled checkbox for the effect to the toggles container', () => {
+		expect(mockEffectTogglesContainerChildren[0]).toBe(mockLabel)
+	})
 
-		const nextHoundstoothEffect = { name: 'next tooth' }
-
-		addEffectToggle(nextHoundstoothEffect)
-
-		expect(effectTogglesContainer.innerHTML).toBe(
-			'<label style="cursor: pointer; display: block;">' +
-				'<input type="checkbox" class="mock-tooth" style="cursor: pointer;">' +
-				'mock tooth' +
-			'</label>' +
-			'<label style="cursor: pointer; display: block;">' +
-				'<input type="checkbox" class="next-tooth" style="cursor: pointer;">' +
-				'next tooth' +
-			'</label>'
-		)
+	it('creates the label with the houndstooth effect', () => {
+		expect(createLabel.default).toHaveBeenCalledWith(mockHoundstoothEffect)
 	})
 })

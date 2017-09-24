@@ -1,5 +1,5 @@
 import composePatterns from '../../../src/execute/composePatterns'
-import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import { console } from '../../../src/utilities/windowWrapper'
 import * as maybeWarnAboutConflicts from '../../../src/execute/maybeWarnAboutConflicts'
 
 describe('compose patterns', () => {
@@ -43,7 +43,7 @@ describe('compose patterns', () => {
 	})
 
 	it('errors when it notices that a setting being merged onto the pattern does not fit into the pattern structure, and then does not merge it', () => {
-		spyOn(consoleWrapper, 'error')
+		spyOn(console, 'error')
 		const patternToBeMergedOnto = {}
 		const patternToMerge = {
 			colorSettings: {
@@ -60,7 +60,7 @@ describe('compose patterns', () => {
 
 		const expectedPattern = {}
 		expect(expectedPattern).toEqual(patternToBeMergedOnto)
-		expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident')
+		expect(console.error).toHaveBeenCalledWith('attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident')
 	})
 
 	it('recognizes color objects', () => {

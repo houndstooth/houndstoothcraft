@@ -1,7 +1,7 @@
 import gridAndMaybeLogging from '../../../src/execute/gridAndMaybeLogging'
 import state from '../../../src/state'
 import * as components from '../../../src/components'
-import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import { console } from '../../../src/utilities/windowWrapper'
 import resetState from '../../../src/store/resetState'
 
 describe('grid and maybe logging', () => {
@@ -11,9 +11,9 @@ describe('grid and maybe logging', () => {
 		state.currentLayer = 54
 
 		spyOn(components, 'grid')
-		spyOn(consoleWrapper, 'time')
-		spyOn(consoleWrapper, 'timeEnd')
-		spyOn(consoleWrapper, 'log')
+		spyOn(console, 'time')
+		spyOn(console, 'timeEnd')
+		spyOn(console, 'log')
 	})
 
 	it('calls grid', () => {
@@ -29,9 +29,9 @@ describe('grid and maybe logging', () => {
 			it('logs only the performance of the grid', () => {
 				gridAndMaybeLogging()
 
-				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.log).toHaveBeenCalledWith('current layer: 54')
+				expect(console.time).toHaveBeenCalledWith('grid')
+				expect(console.timeEnd).toHaveBeenCalledWith('grid')
+				expect(console.log).toHaveBeenCalledWith('current layer: 54')
 			})
 		})
 
@@ -41,9 +41,9 @@ describe('grid and maybe logging', () => {
 			it('logs the current animation frame along with the performance measurement', () => {
 				gridAndMaybeLogging()
 
-				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.log).toHaveBeenCalledWith('current animation frame / layer: 96/54')
+				expect(console.time).toHaveBeenCalledWith('grid')
+				expect(console.timeEnd).toHaveBeenCalledWith('grid')
+				expect(console.log).toHaveBeenCalledWith('current animation frame / layer: 96/54')
 			})
 		})
 	})
@@ -54,9 +54,9 @@ describe('grid and maybe logging', () => {
 		it('does not track performance or log it', () => {
 			gridAndMaybeLogging()
 
-			expect(consoleWrapper.time).not.toHaveBeenCalled()
-			expect(consoleWrapper.timeEnd).not.toHaveBeenCalled()
-			expect(consoleWrapper.log).not.toHaveBeenCalled()
+			expect(console.time).not.toHaveBeenCalled()
+			expect(console.timeEnd).not.toHaveBeenCalled()
+			expect(console.log).not.toHaveBeenCalled()
 		})
 	})
 })

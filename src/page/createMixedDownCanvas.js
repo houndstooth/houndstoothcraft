@@ -1,6 +1,7 @@
 import state from '../state'
 import deleteElementIfExists from './deleteElementIfExists'
 import { getCanvasSize } from '../canvas'
+import { document } from '../utilities/windowWrapper'
 
 const createMixedDownCanvas = () => {
 	deleteElementIfExists('.mixed-down-canvas')

@@ -1,11 +1,11 @@
 import maybeWarnAboutConflicts from '../../../src/execute/maybeWarnAboutConflicts'
-import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import { console } from '../../../src/utilities/windowWrapper'
 import * as ui from '../../../src/ui'
 
 describe('warning about conflicts', () => {
 	let warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting
 	beforeEach(() => {
-		spyOn(consoleWrapper, 'warn')
+		spyOn(console, 'warn')
 		spyOn(ui, 'warn')
 	})
 
@@ -19,7 +19,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.assignment.assignmentMode`: `yoda` was overridden by `luke`'
-		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
@@ -32,7 +32,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		expect(consoleWrapper.warn).not.toHaveBeenCalled()
+		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
@@ -45,7 +45,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		expect(consoleWrapper.warn).not.toHaveBeenCalled()
+		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
@@ -64,7 +64,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 
-		expect(consoleWrapper.warn).not.toHaveBeenCalled()
+		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
@@ -84,7 +84,7 @@ describe('warning about conflicts', () => {
 
 
 		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function getTileOriginAndSize(a) {return a + 1;}` was overridden by `function getTileOriginAndSize(b) {return b + 1;}`'
-		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
@@ -97,7 +97,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		expect(consoleWrapper.warn).not.toHaveBeenCalled()
+		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
@@ -111,7 +111,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
-		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
@@ -125,7 +125,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
-		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 })

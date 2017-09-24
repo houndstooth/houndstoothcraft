@@ -1,28 +1,34 @@
 import createContext from '../../../src/page/createContext'
+import * as window from '../../../src/utilities/windowWrapper'
+import buildMockCanvas from '../helpers/buildMockCanvas'
 
 describe('create context', () => {
-	let canvasContainer, returnedContext, canvasContext
+	let returnedContext, appendedCanvas
+	const mockContext = {}
 	beforeEach(() => {
-		const mockCanvas = document.createElement('canvas')
-		canvasContainer = document.createElement('div')
+		const canvas = buildMockCanvas({ mockContext })
+		spyOn(window.document, 'createElement').and.returnValue(canvas)
 
-		canvasContext = {}
-		mockCanvas.getContext = contextType => contextType === '2d' ? canvasContext : null
-		spyOn(document, 'createElement').and.returnValue(mockCanvas)
+		const mockCanvases = []
+		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas)}
+
 
 		returnedContext = createContext({ canvasContainer, canvasSize: [ 350, 600 ] })
+
+
+		appendedCanvas = mockCanvases[0]
 	})
 
-	it('sets canvas position to absolute', () => {
-		expect(canvasContainer.firstChild.style.position).toBe('absolute')
+	it('returns the 2d context of the new canvas', () => {
+		expect(returnedContext).toBe(mockContext)
 	})
 
-	it('sets canvas width and height', () => {
-		expect(canvasContainer.firstChild.width).toBe(350)
-		expect(canvasContainer.firstChild.height).toBe(600)
+	it('sets this context\'s canvas\'s position to absolute', () => {
+		expect(appendedCanvas.style.position).toBe('absolute')
 	})
 
-	it('returns the 2d context of the canvas', () => {
-		expect(returnedContext).toBe(canvasContext)
+	it('sets this context\'s canvas\'s width and height', () => {
+		expect(appendedCanvas.width).toBe(350)
+		expect(appendedCanvas.height).toBe(600)
 	})
 })

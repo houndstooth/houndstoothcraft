@@ -1,19 +1,22 @@
 import state from '../../../src/state'
 import createContexts from '../../../src/page/createContexts'
 import * as createContext from '../../../src/page/createContext'
-import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import resetState from '../../../src/store/resetState'
+import * as window from '../../../src/utilities/windowWrapper'
+import buildMockElement from '../helpers/buildMockElement'
 
 describe('create contexts', () => {
+	let canvasContainer
 	beforeEach(() => {
 		resetState(state)
 		spyOn(createContext, 'default')
+
+		canvasContainer = buildMockElement()
+		canvasContainer.innerHTML = 'some old canvases'
+		spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
 	})
 
 	it('clears the canvas container contents', () => {
-		const canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer()
-		canvasContainer.innerHTML = 'some old canvases'
-
 		createContexts()
 
 		expect(canvasContainer.innerHTML).toBe('')

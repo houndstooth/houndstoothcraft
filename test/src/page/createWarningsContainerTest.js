@@ -1,32 +1,37 @@
-import deleteElementIfExists from '../../../src/page/deleteElementIfExists'
 import createWarningsContainer from '../../../src/page/createWarningsContainer'
 import * as insertElementRightAfter from '../../../src/page/insertElementRightAfter'
+import * as window from '../../../src/utilities/windowWrapper'
+import buildMockElement from '../helpers/buildMockElement'
 
 describe('create warnings container', () => {
-	let returnedWarningsContainer
-	beforeEach(() => {
-		deleteElementIfExists('.warnings-container')
+	let returnedWarningsContainer, mockEffectTogglesContainer, mockWarningsContainer
+	const mockWarningsContainerClassList = []
+	beforeAll(() => {
+		mockWarningsContainer = buildMockElement({ mockClassList: mockWarningsContainerClassList })
+		spyOn(window.document, 'createElement').and.returnValue(mockWarningsContainer)
 
-		spyOn(insertElementRightAfter, 'default').and.callThrough()
+		mockEffectTogglesContainer = buildMockElement()
+		spyOn(window.document, 'querySelector').and.returnValue(mockEffectTogglesContainer)
+
+		spyOn(insertElementRightAfter, 'default')
 
 		returnedWarningsContainer = createWarningsContainer()
 	})
 
 	it('returns the newly created warnings container', () => {
-		const realWarningsContainer = document.querySelector('.warnings-container')
-		expect(returnedWarningsContainer).toBe(realWarningsContainer)
+		expect(returnedWarningsContainer).toBe(mockWarningsContainer)
 	})
 
-	it('creates the warnings container and adds it to the document, with padding', () => {
-		const expectedWarningsContainer = document.createElement('div')
-		expectedWarningsContainer.classList.add('warnings-container')
-		expectedWarningsContainer.style.padding = '20px'
+	it('creates the warnings container with padding', () => {
+		expect(returnedWarningsContainer.style.padding).toBe('20px')
+	})
 
-		expect(returnedWarningsContainer).toEqual(expectedWarningsContainer)
+	it('assigns a class to the warnings container', () => {
+		const classAddedToWarningsContainer = mockWarningsContainerClassList[0]
+		expect(classAddedToWarningsContainer).toBe('warnings-container')
 	})
 
 	it('inserts the warnings container after the effect toggles container', () => {
-		const effectTogglesContainer = document.querySelector('.effect-toggles-container')
-		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedWarningsContainer, effectTogglesContainer)
+		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedWarningsContainer, mockEffectTogglesContainer)
 	})
 })

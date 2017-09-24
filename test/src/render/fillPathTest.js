@@ -1,10 +1,10 @@
-import mockContext from '../helpers/mockContext'
+import buildMockContext from '../helpers/buildMockContext'
 import fillPath from '../../../src/render/fillPath'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const contextCallsOrder = []
-		const context = mockContext(contextCallsOrder)
+		const context = buildMockContext({ contextCallsOrder })
 
 		fillPath({ context })
 

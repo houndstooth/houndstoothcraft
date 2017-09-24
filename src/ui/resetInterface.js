@@ -2,6 +2,7 @@ import { clear } from '../canvas'
 import state from '../state'
 import { resetState } from '../store'
 import { createWarningsContainer } from '../page'
+import { window, document } from '../utilities/windowWrapper'
 
 const resetInterface = () => {
 	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()

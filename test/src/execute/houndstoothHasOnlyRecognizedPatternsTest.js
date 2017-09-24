@@ -1,5 +1,5 @@
 import houndstoothHasOnlyRecognizedPatterns from '../../../src/execute/houndstoothHasOnlyRecognizedPatterns'
-import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import { console } from '../../../src/utilities/windowWrapper'
 
 describe('houndstooth has only recognized patterns', () => {
 	const basePattern = {}
@@ -27,15 +27,15 @@ describe('houndstooth has only recognized patterns', () => {
 	})
 
 	it('logs an error if the pattern contains anything other than one of these three recognized patterns, or name', () => {
-		spyOn(consoleWrapper, 'error')
+		spyOn(console, 'error')
 
 		houndstoothHasOnlyRecognizedPatterns({ invalidSettings: {} })
 
-		expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: invalidSettings')
+		expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: invalidSettings')
 	})
 
 	it('returns false, even if the pattern contains some or all of the three recognized settings in addition to an invalid one', () => {
-		spyOn(consoleWrapper, 'error')
+		spyOn(console, 'error')
 
 		expect(houndstoothHasOnlyRecognizedPatterns({ invalidSettings })).toBe(false)
 		expect(houndstoothHasOnlyRecognizedPatterns({

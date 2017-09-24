@@ -1,4 +1,4 @@
-import consoleWrapper from '../utilities/consoleWrapper'
+import { console } from '../utilities/windowWrapper'
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined, propertyIsDefinedOnObject } from '../utilities/codeUtilities'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 import settingPath from './settingPath'
@@ -36,7 +36,7 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 
 const settingIsDefinedOnPatternStructure = ({ settingsPath, settingName, patternStructureChecker: objectWithProperties }) => {
 	if (propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) return true
-	consoleWrapper.error(`attempted to compose a pattern with an unrecognized setting: ${settingPath(settingsPath, settingName)}`)
+	console.error(`attempted to compose a pattern with an unrecognized setting: ${settingPath(settingsPath, settingName)}`)
 }
 
 const settingIsNotColor = setting => {

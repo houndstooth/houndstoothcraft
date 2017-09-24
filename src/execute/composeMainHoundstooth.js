@@ -1,6 +1,6 @@
 import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
-import consoleWrapper from '../utilities/consoleWrapper'
+import { console } from '../utilities/windowWrapper'
 import { defaults } from '../store'
 import state from '../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
@@ -29,7 +29,7 @@ const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides 
 		houndstoothOverrides: houndstoothOverrides.animationsPattern,
 	})
 
-	if (logComposedMainHoundstooth) consoleWrapper.log(state.mainHoundstooth)
+	if (logComposedMainHoundstooth) console.log(state.mainHoundstooth)
 }
 
 const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {

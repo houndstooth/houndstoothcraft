@@ -1,1 +1,3 @@
-export default () => null
+const noop = () => null
+
+export default noop

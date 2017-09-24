@@ -1,34 +1,36 @@
 import * as codeUtilities from '../../../src/utilities/codeUtilities'
 import composeMainHoundstooth from '../../../src/execute/composeMainHoundstooth'
-import consoleWrapper from '../../../src/utilities/consoleWrapper'
+import { console } from '../../../src/utilities/windowWrapper'
 import { DEFAULT_HOUNDSTOOTH } from '../../../src/store/defaults'
 import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import * as combineHoundstoothEffects from '../../../src/execute/combineHoundstoothEffects'
 import * as composePatterns from '../../../src/execute/composePatterns'
+import * as maybeWarnAboutConflicts from '../../../src/execute/maybeWarnAboutConflicts'
 
 describe('composeMainHoundstooth', () => {
 	beforeEach(() => resetState(state))
 
 	it('logs the houndstooth when logging mode is on', () => {
-		spyOn(consoleWrapper, 'log')
+		spyOn(console, 'log')
 
 		composeMainHoundstooth({ logComposedMainHoundstooth: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(state.mainHoundstooth)
+		expect(console.log).toHaveBeenCalledWith(state.mainHoundstooth)
 	})
 
 	it('does not log the houndstooth when logging mode is not on', () => {
-		spyOn(consoleWrapper, 'log')
+		spyOn(console, 'log')
 
 		composeMainHoundstooth()
 
-		expect(consoleWrapper.log).not.toHaveBeenCalled()
+		expect(console.log).not.toHaveBeenCalled()
 	})
 
 	it('composes the main houndstooth with patterns from the houndstooth defaults, houndstooth effects, and houndstooth overrides', () => {
 		spyOn(codeUtilities, 'propertyIsDefinedOnObject').and.returnValue(true)
-		spyOn(consoleWrapper, 'warn')
+		spyOn(console, 'warn')
+		spyOn(maybeWarnAboutConflicts, 'default')
 
 		// effects
 
@@ -145,14 +147,14 @@ describe('composeMainHoundstooth', () => {
 
 	describe('when there are things which are not recognized patterns', () => {
 		beforeEach(() => {
-			spyOn(consoleWrapper, 'error')
+			spyOn(console, 'error')
 			spyOn(composePatterns, 'default')
 		})
 
 		describe('on one of the houndstooth effects', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothEffects: [ { yikesPattern: {} } ] })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
+				expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
 		})
@@ -160,7 +162,7 @@ describe('composeMainHoundstooth', () => {
 		describe('on the houndstooth overrides', () => {
 			it('does not proceed to merge in these patterns', () => {
 				composeMainHoundstooth({ houndstoothOverrides: { yikesPattern: {} } })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
+				expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
 		})
@@ -170,7 +172,7 @@ describe('composeMainHoundstooth', () => {
 				const originalHoundstoothDefaultsToRestoreTo = codeUtilities.deepClone(DEFAULT_HOUNDSTOOTH)
 				DEFAULT_HOUNDSTOOTH.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
+				expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(composePatterns.default).not.toHaveBeenCalled()
 
 				codeUtilities.changeObjectIntoCopy({
@@ -184,7 +186,7 @@ describe('composeMainHoundstooth', () => {
 			it('does not proceed to merge in these patterns', () => {
 				state.mainHoundstooth.yikesPattern = {}
 				composeMainHoundstooth({ basePattern: {} })
-				expect(consoleWrapper.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
+				expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
 		})

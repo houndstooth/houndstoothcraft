@@ -1,12 +1,12 @@
 import { isDefined } from '../utilities/codeUtilities'
 import settingPath from './settingPath'
-import consoleWrapper from '../utilities/consoleWrapper'
+import { console } from '../utilities/windowWrapper'
 import { warn } from '../ui'
 
 const maybeWarnAboutConflicts = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
 		const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
-		consoleWrapper.warn(warning)
+		console.warn(warning)
 		warn(warning)
 	}
 }

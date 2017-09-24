@@ -2,6 +2,8 @@ import animator from '../../../src/animation/animator'
 import state from '../../../src/state'
 import resetState from '../../../src/store/resetState'
 import * as buildIntervalFunction from '../../../src/animation/buildIntervalFunction'
+import window from '../../../src/utilities/windowWrapper'
+import noop from '../helpers/noop'
 
 describe('animator', () => {
 	let intervalFunction
@@ -10,14 +12,14 @@ describe('animator', () => {
 	beforeEach(() => {
 		resetState(state)
 
-		interval = () => null
+		interval = noop
 		spyOn(window, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
 		spyOn(buildIntervalFunction, 'default').and.returnValue(intervalFunction)
 
-		animationFunction = () => null
+		animationFunction = noop
 		frameRate = 3
-		stopConditionFunction = () => null
+		stopConditionFunction = noop
 
 		animator({ animationFunction, frameRate, stopConditionFunction })
 	})

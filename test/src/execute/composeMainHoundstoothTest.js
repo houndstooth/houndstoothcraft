@@ -137,9 +137,9 @@ describe('composeMainHoundstooth', () => {
 			settingP: settingFunctionOverridesP,
 		}))
 
-		Object.keys(HOUNDSTOOTH_DEFAULTS).forEach(key => delete HOUNDSTOOTH_DEFAULTS[key])
-		Object.entries(originalHoundstoothDefaultsToRestoreTo).forEach(([ key, value ]) => {
-			HOUNDSTOOTH_DEFAULTS[key] = codeUtilities.deepCloneMaybeNotObject(value)
+		codeUtilities.changeObjectIntoCopy({ 
+			objectToChange: HOUNDSTOOTH_DEFAULTS, 
+			objectWithProperties: originalHoundstoothDefaultsToRestoreTo 
 		})
 	})
 

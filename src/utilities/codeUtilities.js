@@ -23,10 +23,17 @@ const shallowEqual = (a, b) => {
 
 const deepClone = objectToDeepClone => {
 	let clonedObject = {}
-	Object.entries(objectToDeepClone).forEach(([ propertyName, propertyValue ]) => {
-		clonedObject[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
+	setAllPropertiesOfObjectOnAnother({ 
+		objectWithProperties: objectToDeepClone,
+		objectToChange: clonedObject
 	})
 	return clonedObject
+}
+
+const setAllPropertiesOfObjectOnAnother = ({ objectWithProperties, objectToChange }) => {
+	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {
+		objectToChange[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
+	})
 }
 
 const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
@@ -66,6 +73,11 @@ const propertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
 	return isDefined(objectWithProperties[ propertyName ])
 }
 
+const changeObjectIntoCopy = ({ objectToChange, objectWithProperties }) => {
+	Object.keys(objectToChange).forEach(key => delete objectToChange[key])
+	setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
+}
+
 export {
 	iterator,
 	wrappedIndex,
@@ -77,4 +89,5 @@ export {
 	defaultToTrue,
 	isDefined,
 	propertyIsDefinedOnObject,
+	changeObjectIntoCopy,
 }

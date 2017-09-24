@@ -1,10 +1,11 @@
 import { INITIAL_STATE } from './initialState'
-import { deepCloneMaybeNotObject } from '../utilities/codeUtilities'
+import { changeObjectIntoCopy } from '../utilities/codeUtilities'
 
 const resetState = state => {
-	Object.entries(INITIAL_STATE).forEach(([ key, value ]) => {
-		state[key] = deepCloneMaybeNotObject(value)
-	})
+    changeObjectIntoCopy({ 
+        objectToChange: state, 
+        objectWithProperties: INITIAL_STATE 
+    })
 }
 
 export default resetState

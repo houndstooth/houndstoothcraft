@@ -266,4 +266,38 @@ describe('code utilities', () => {
 			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(false)
 		})
 	})
+
+	describe('#changeObjectIntoCopy', () => {
+		let changeObjectIntoCopy
+		beforeEach(() => changeObjectIntoCopy = codeUtilities.changeObjectIntoCopy)
+
+		it('removes all the keys of the object that are not on the one being copied', () => {
+			const objectToChange = { mary: 'jane', billy: 'bob' }
+			const objectWithProperties = { }
+
+			changeObjectIntoCopy({ objectToChange, objectWithProperties })
+			
+			expect(objectToChange.mary).toBe(undefined)
+			expect(objectToChange.billy).toBe(undefined)
+		})
+
+		it('replaces keys of the object with ones from the one being copied', () => {
+			const objectToChange = { mary: 'jane' }
+			const objectWithProperties = { mary: 'had a little lamb' }
+
+			changeObjectIntoCopy({ objectToChange, objectWithProperties })
+			
+			expect(objectToChange.mary).toBe('had a little lamb')
+			expect(objectToChange.billy).toBe(undefined)
+		})
+
+		it('adds new keys from the one being copied', () => {
+			const objectToChange = { }
+			const objectWithProperties = { billy: 'bob' }
+
+			changeObjectIntoCopy({ objectToChange, objectWithProperties })
+			
+			expect(objectToChange.billy).toBe('bob')
+		})
+	})
 })

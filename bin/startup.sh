@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEV_SERVER_PORT=8080
-KARMA_SERVER_PORT=8080
+KARMA_SERVER_PORT=9876
 
 lsof -i:$DEV_SERVER_PORT > /dev/null 2>&1
 if [[ $? -ne 0 ]] ; then

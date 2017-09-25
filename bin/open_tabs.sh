@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DEV_SERVER_PORT=$1
 KARMA_SERVER_PORT=$2
 

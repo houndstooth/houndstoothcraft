@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ $OSTYPE == darwin* ]] ; then
+    brew tap cloudfoundry/tap
+    brew install cf-cli
+else
+    printf "Cloud Foundry CLI not automatically installed. Don't forget to manually install before attempting to deploy.\n\n"
+fi
+
 npm i
 
 git config user.name \"Douglas Blumeyer\"

@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base dist",
-    "deploy": "./bin/deploy.sh",
+    "deploy": "sh ./bin/deploy.sh",
     "integration-test-server": "karma start ./test/integration/karma-server.conf.js",
-    "setup": "./bin/setup.sh",
+    "setup": "sh ./bin/setup.sh",
     "push-all": "git submodule foreach git push && git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
@@ -17,7 +17,7 @@
     "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
     "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/src/unit.js",
     "ci": "npm run unit && npm run integration",
-    "startup": "./bin/startup.sh",
+    "startup": "sh ./bin/startup.sh",
     "shutdown": "lsof -ti:8080 | xargs kill && lsof -ti:9876 | xargs kill"
   },
   "dependencies": {

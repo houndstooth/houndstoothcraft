@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base dist",
-    "deploy": "if [ -z ${PWS_ORG+x} ]; then echo \"please set PWS_ORG, PWS_SPACE, PWS_USERNAME, and PWS_PASSWORD\"; else cf login -a api.run.pivotal.io -o ${PWS_ORG} -s ${PWS_SPACE} -u ${PWS_USERNAME} -p ${PWS_PASSWORD}; fi && webpack -p && cf push houndstooth -b https://github.com/cloudfoundry/staticfile-buildpack.git -m 64m",
+    "deploy": "./bin/deploy.sh",
     "integration-test-server": "karma start ./test/integration/karma-server.conf.js",
-    "setup": "npm i && git config user.name \"Douglas Blumeyer\" && git config user.email douglas.blumeyer@gmail.com && git submodule update --init --recursive && git submodule foreach git checkout master && git submodule foreach git config user.name \"Douglas Blumeyer\" && git submodule foreach git config user.email douglas.blumeyer@gmail.com",
+    "setup": "./bin/setup.sh",
     "push-all": "git submodule foreach git push && git push",
     "pull-all": "git pull -r && git submodule foreach git pull -r",
     "lint": "eslint .",
@@ -15,8 +15,7 @@
     "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
     "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/src/unit.js",
     "ci": "npm run unit && npm run integration",
-    "open-coverage": "start file:///C:/Users/Douglas%20Blumeyer/workspace/web-render/coverage/lcov-report/index.html",
-    "startup": "npm run integration-test-server > /dev/null 2>&1 & npm start > /dev/null 2>&1 & open https://app.asana.com/0/358570257763740/314008242914015 & open http://localhost:8080 & open http://localhost:9876/debug.html & open ~/workspace/web-render/coverage/lcov-report/index.html",
+    "startup": "./bin/startup.sh",
     "shutdown": "lsof -ti:8080 | xargs kill && lsof -ti:9876 | xargs kill"
   },
   "dependencies": {

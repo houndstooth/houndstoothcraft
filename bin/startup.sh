@@ -1,5 +1,7 @@
 #!/bin/bash
 
+webstorm .
+
 DEV_SERVER_PORT=8080
 KARMA_SERVER_PORT=9876
 

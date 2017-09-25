@@ -1,6 +1,8 @@
 {
   "name": "web-render",
   "version": "1.0.0",
+  "repository": "https://github.com/houndstooth/web-render",
+  "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base dist",
     "deploy": "./bin/deploy.sh",

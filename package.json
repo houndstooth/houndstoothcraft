@@ -18,7 +18,7 @@
     "coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/src/unit.js",
     "ci": "npm run unit && npm run integration",
     "startup": "sh ./bin/startup.sh",
-    "shutdown": "lsof -ti:8080 | xargs kill && lsof -ti:9876 | xargs kill"
+    "shutdown": "sh ./bin/shutdown.sh"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

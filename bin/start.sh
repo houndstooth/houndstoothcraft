@@ -14,7 +14,23 @@ netstat -an | grep $DEV_SERVER_PORT | grep LISTEN > /dev/null 2>&1
 if [[ $? -ne 0 ]] ; then
     npm start > /dev/null 2>&1 &
 
-    sh ./bin/open_tabs.sh $DEV_SERVER_PORT $KARMA_SERVER_PORT
+    declare -a arr=(
+        https://app.asana.com/0/358570257763740/314008242914015
+        http://localhost:$DEV_SERVER_PORT
+        http://localhost:$KARMA_SERVER_PORT/debug.html
+        ~/workspace/web-render/test/unit/coverage/lcov-report/index.html
+    )
+
+    if [[ $OSTYPE == darwin* ]] ; then
+        for i in "${arr[@]}" ; do
+           open "$i"
+        done
+    else
+        for i in "${arr[@]}" ; do
+           start chrome "$i"
+        done
+    fi
+
     printf "IDE, servers, and browser tabs up.\n\n"
 else
     printf "I think everything has already been started up.\n\n"

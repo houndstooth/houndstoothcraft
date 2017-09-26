@@ -2,11 +2,15 @@
 
 set -ex
 
-if [[ $OSTYPE == darwin* ]] ; then
-    brew tap cloudfoundry/tap
-    brew install cf-cli
+if hash cf 2>/dev/null; then
+    printf "Cloud Foundry CLI found.\n\n"
 else
-    printf "Cloud Foundry CLI not automatically installed. Don't forget to manually install before attempting to deploy.\n\n"
+    if [[ $OSTYPE == darwin* ]] ; then
+        brew tap cloudfoundry/tap
+        brew install cf-cli
+    else
+        printf "Cloud Foundry CLI not automatically installed. Don't forget to manually install before attempting to deploy.\n\n"
+    fi
 fi
 
 npm i
@@ -20,6 +24,6 @@ git submodule foreach git config user.name \"Douglas Blumeyer\"
 git submodule foreach git config user.email douglas.blumeyer@gmail.com
 
 npm run cover
-npm run startup
+sh ./bin/start.sh
 
 printf "Welcome to your fresh workstation, Douglas. Enjoy developing some more houndstooth.\n\n"

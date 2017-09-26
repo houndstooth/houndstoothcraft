@@ -5,23 +5,12 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base dist",
-    "deploy": "sh ./bin/deploy.sh",
-    "integration-test-server": "karma start ./test/integration/karma-server.conf.js",
-    "setup": "sh ./bin/setup.sh",
-    "push-all": "git submodule foreach git push && git push",
-    "pull-all": "git pull -r && git submodule foreach git pull -r",
-    "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "unit": "babel-node ./test/unit/unit.js",
-    "test": "npm run cover && npm run integration",
-    "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
-    "catch-slow": "sh ./bin/catch_slow_tests.sh",
     "cover": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/unit/unit.js --config ./test/unit/.istanbul.yml",
     "check-coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js check-coverage ./test/unit/coverage/coverage.json --config ./test/unit/.istanbul.yml",
-    "ci": "npm run unit && npm run integration",
-    "startup": "sh ./bin/startup.sh",
-    "shutdown": "sh ./bin/shutdown.sh",
-    "ship": "sh ./bin/ship.sh"
+    "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
+    "integration-test-server": "karma start ./test/integration/karma-server.conf.js"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

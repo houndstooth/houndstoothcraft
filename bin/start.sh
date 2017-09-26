@@ -15,7 +15,7 @@ if [[ $? -ne 0 ]] ; then
     npm start > /dev/null 2>&1 &
 
     declare -a arr=(
-        https://app.asana.com/0/358570257763740/314008242914015
+        https://app.asana.com/0/358570257763740/list
         http://localhost:$DEV_SERVER_PORT
         http://localhost:$KARMA_SERVER_PORT/debug.html
         ~/workspace/web-render/test/unit/coverage/lcov-report/index.html

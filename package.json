@@ -10,7 +10,8 @@
     "cover": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/unit/unit.js --config ./test/unit/.istanbul.yml",
     "check-coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js check-coverage ./test/unit/coverage/coverage.json --config ./test/unit/.istanbul.yml",
     "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
-    "integration-test-server": "karma start ./test/integration/karma-server.conf.js"
+    "integration-test-server": "karma start ./test/integration/karma-server.conf.js",
+    "build": "webpack -p"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

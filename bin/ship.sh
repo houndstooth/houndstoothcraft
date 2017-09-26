@@ -11,8 +11,7 @@ git submodule foreach git pull -r
 npm run cover
 npm run check-coverage
 
-OUTPUT=$(npm run integration)
-if echo "$OUTPUT" | grep -q 'SLOW' ; then
+if npm run integration | grep -q 'SLOW' ; then
    printf "Slow tests detected.\n\n"
    exit 1
 fi
@@ -27,5 +26,5 @@ else
     cf login -a api.run.pivotal.io -o "$PWS_ORG" -s "$PWS_SPACE" -u "$PWS_USERNAME" -p "$PWS_PASSWORD"
 fi
 
-webpack -p
+npm run build
 cf push

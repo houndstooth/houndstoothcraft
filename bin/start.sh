@@ -7,7 +7,7 @@ KARMA_SERVER_PORT=9876
 
 netstat -an | grep $KARMA_SERVER_PORT | grep LISTEN > /dev/null 2>&1
 if [[ $? -ne 0 ]] ; then
-    npm run integration-test-server > /dev/null 2>&1 &
+    npm run test-server > /dev/null 2>&1 &
 fi
 
 netstat -an | grep $DEV_SERVER_PORT | grep LISTEN > /dev/null 2>&1

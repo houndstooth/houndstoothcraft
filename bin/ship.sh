@@ -11,7 +11,7 @@ git submodule foreach git pull -r
 npm run cover
 npm run check-coverage
 
-if npm run integration | grep -q 'SLOW' ; then
+if npm run integration | tee /dev/tty | grep -q 'SLOW' ; then
    printf "Slow tests detected.\n\n"
    exit 1
 fi

@@ -15,6 +15,7 @@
     "unit": "babel-node ./test/unit/unit.js",
     "test": "npm run cover && npm run integration",
     "integration": "karma start ./test/integration/karma-single-headless-cli-ci-report-slow.conf.js",
+    "catch-slow": "sh ./bin/catch_slow_tests.sh",
     "cover": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/unit/unit.js --config ./test/unit/.istanbul.yml",
     "check-coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js check-coverage ./test/unit/coverage/coverage.json --config ./test/unit/.istanbul.yml",
     "ci": "npm run unit && npm run integration",

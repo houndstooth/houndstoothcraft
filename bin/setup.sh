@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 if [[ $OSTYPE == darwin* ]] ; then
     brew tap cloudfoundry/tap
     brew install cf-cli

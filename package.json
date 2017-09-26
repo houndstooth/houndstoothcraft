@@ -7,11 +7,11 @@
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --content-base dist",
     "lint-fix": "eslint . --fix",
-    "unit": "babel-node ./test/unit/unit.js",
-    "cover": "babel-node ./node_modules/babel-istanbul/lib/cli.js cover ./test/unit/unit.js --config ./test/unit/.istanbul.yml",
-    "check-coverage": "babel-node ./node_modules/babel-istanbul/lib/cli.js check-coverage ./test/unit/coverage/coverage.json --config ./test/unit/.istanbul.yml",
-    "integration": "karma start ./test/integration/karmaRun.conf.js",
-    "test-server": "karma start ./test/integration/karmaServer.conf.js"
+    "unit": "babel-node test/unit/index.js",
+    "cover": "babel-node node_modules/babel-istanbul/lib/cli.js cover test/unit/index.js --config test/unit/.istanbul.yml",
+    "check-coverage": "babel-node node_modules/babel-istanbul/lib/cli.js check-coverage test/unit/coverage/coverage.json --config test/unit/.istanbul.yml",
+    "integration": "karma start test/integration/karma.run.js",
+    "test-server": "karma start test/integration/karma.server.js"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

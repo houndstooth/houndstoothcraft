@@ -1,6 +1,6 @@
 export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRemoveChildSpy, parentNodeInsertBeforeSpy } = {}) => ({
 	classList: {
-		add: className => mockClassList.push(className)
+		add: className => mockClassList.push(className),
 	},
 	appendChild: child => mockChildren.push(child),
 	innerHTML: '',
@@ -9,5 +9,5 @@ export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRe
 	parentNode: {
 		insertBefore: parentNodeInsertBeforeSpy,
 		removeChild: parentNodeRemoveChildSpy,
-	}
+	},
 })

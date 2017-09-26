@@ -9,7 +9,8 @@
     "sourceType": "module"
   },
   "globals": {
-    "require": false
+    "require": false,
+    "global": false,
   },
   "plugins": [
     "import",

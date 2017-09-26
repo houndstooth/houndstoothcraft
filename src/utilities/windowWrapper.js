@@ -4,7 +4,7 @@ const mockDocument = {
 	querySelector: () => null,
 	body: {
 		appendChild: () => null,
-	}
+	},
 }
 
 const mockWindow = {

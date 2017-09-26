@@ -7,7 +7,7 @@ describe('create effect toggles container', () => {
 	let returnedEffectTogglesContainer, mockEffectTogglesContainer, mockCanvasContainer
 	const mockEffectTogglesContainerClassList = []
 	beforeEach(() => {
-		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList})
+		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mockEffectTogglesContainer)
 
 		mockCanvasContainer = buildMockElement()

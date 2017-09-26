@@ -10,7 +10,7 @@ describe('create context', () => {
 		spyOn(window.document, 'createElement').and.returnValue(canvas)
 
 		const mockCanvases = []
-		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas)}
+		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas) }
 
 
 		returnedContext = createContext({ canvasContainer, canvasSize: [ 350, 600 ] })

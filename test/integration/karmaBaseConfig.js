@@ -1,4 +1,4 @@
-const webpackConfig = require('../../webpack.config')
+const webpackConfig = require('../../webpack.common')
 webpackConfig.entry = undefined
 
 module.exports = ({

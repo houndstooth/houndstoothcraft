@@ -7,7 +7,7 @@ declare -a arr=(
     https://app.asana.com/0/358570257763740/314008242914015
     http://localhost:$DEV_SERVER_PORT
     http://localhost:$KARMA_SERVER_PORT/debug.html
-    ~/workspace/web-render/coverage/lcov-report/index.html
+    ~/workspace/web-render/test/unit/coverage/lcov-report/index.html
 )
 
 if [[ $OSTYPE == darwin* ]] ; then

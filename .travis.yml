@@ -13,4 +13,4 @@ script:
     - npm run ci
 dist: trusty
 addons:
-  chrome: stable
+    chrome: stable

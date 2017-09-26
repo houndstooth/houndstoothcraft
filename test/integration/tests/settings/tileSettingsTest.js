@@ -1,10 +1,10 @@
-import '../../../node_modules/canteen/build/canteen.min'
-import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
-import standardTileIsColors from '../helpers/standardTileIsColors'
-import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
-import { BLACK, TRANSPARENT } from '../../../src/constants'
-import clear from '../../../src/canvas/clear'
-import state from '../../../src/state'
+import '../../../../node_modules/canteen/build/canteen.min'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
+import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
+import { BLACK, TRANSPARENT } from '../../../../src/constants'
+import clear from '../../../../src/canvas/clear'
+import state from '../../../../src/state'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {

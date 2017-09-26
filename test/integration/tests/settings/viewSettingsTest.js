@@ -1,13 +1,13 @@
-import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
-import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
-import pixelIsColor from '../helpers/pixelIsColor'
-import { BLACK, TRANSPARENT } from '../../../src/constants'
-import standardTileIsColors from '../helpers/standardTileIsColors'
-import { TILE_SIZE } from '../../helpers/settingsPaths'
-import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
-import tileSectorCenterIsColor from '../helpers/tileSectorCenterIsColor'
-import state from '../../../src/state'
-import resetState from '../../../src/store/resetState'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
+import pixelIsColor from '../../helpers/pixelIsColor'
+import { BLACK, TRANSPARENT } from '../../../../src/constants'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
+import { TILE_SIZE } from '../../../helpers/settingsPaths'
+import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import tileSectorCenterIsColor from '../../helpers/tileSectorCenterIsColor'
+import state from '../../../../src/state'
+import resetState from '../../../../src/store/resetState'
 
 describe('.viewSettings', () => {
 	const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)

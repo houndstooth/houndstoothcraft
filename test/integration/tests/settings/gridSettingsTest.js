@@ -1,11 +1,11 @@
-import executeSelectedHoundstoothEffects from '../../../src/execute/executeSelectedHoundstoothEffects'
-import activateTestMarkerCanvas from '../helpers/activateTestMarkerCanvas'
-import standardTileIsColors from '../helpers/standardTileIsColors'
-import { BLACK, TRANSPARENT, WHITE } from '../../../src/constants'
-import { TILE_SIZE } from '../../helpers/settingsPaths'
-import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
-import state from '../../../src/state'
-import resetState from '../../../src/store/resetState'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
+import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
+import { TILE_SIZE } from '../../../helpers/settingsPaths'
+import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import state from '../../../../src/state'
+import resetState from '../../../../src/store/resetState'
 
 describe('.gridSettings', () => {
 	beforeEach(() => resetState(state))

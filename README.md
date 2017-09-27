@@ -27,7 +27,7 @@ When you're done developing, just run `make stop` to shut everything down.
 
 ### effect submodules
 
-Each houndstooth effect users can play with in the application lives in its own Git repository, which is submoduled to this parent repository. 
+Each houndstooth effect users can play with in the application lives in its own Git repository, which is submoduled to this parent repository. The effect submodules are not standalone; they rely on the shared code here to function. The separation is intended primarily for their commit histories.
 
 Each of these repos exports at least one effect object, a type of [houndstooth](#houndstooth) object, which is registered in the `effects` index to be discovered by the main source code of the application.
 

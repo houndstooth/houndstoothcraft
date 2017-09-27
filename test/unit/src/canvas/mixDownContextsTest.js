@@ -7,12 +7,12 @@ describe('mix down contexts', () => {
 		state.mixedDownContext = { drawImage: drawImageSpy }
 
 		state.contexts = [
-			{ context: { canvas: 0 } },
-			{ context: { canvas: 1 } },
-			{ context: { canvas: 2 } },
-			{ context: { canvas: 3 } },
-			{ context: { canvas: 4 } },
-			{ context: { canvas: 5 } },
+			{ canvas: 0 },
+			{ canvas: 1 },
+			{ canvas: 2 },
+			{ canvas: 3 },
+			{ canvas: 4 },
+			{ canvas: 5 },
 		]
 
 		mixDownContexts()

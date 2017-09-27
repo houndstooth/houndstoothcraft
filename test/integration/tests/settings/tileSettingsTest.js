@@ -1,10 +1,11 @@
-import '../../../../node_modules/canteen/build/canteen.min'
 import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import standardTileIsColors from '../../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import clear from '../../../../src/canvas/clear'
-import state from '../../../../src/state'
+import buildMockContext from '../../../unit/helpers/buildMockContext'
+import * as createContext from '../../../../src/page/createContext'
+import * as page from '../../../../src/page'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
@@ -63,7 +64,10 @@ describe('.tileSettings', () => {
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
 		let houndstoothOverrides
+		let mockContext
+		let contextCallsOrder
 		beforeEach(() => {
+			contextCallsOrder = []
 			clear()
 			houndstoothOverrides = {
 				basePattern: {
@@ -71,6 +75,9 @@ describe('.tileSettings', () => {
 					colorSettings: { colorSet: [ BLACK, BLACK ] },
 				},
 			}
+			mockContext = buildMockContext({ contextCallsOrder })
+			spyOn(createContext, 'default').and.returnValue(mockContext)
+			spyOn(page, 'createMixedDownCanvas').and.returnValue(buildMockContext())
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {
@@ -78,17 +85,14 @@ describe('.tileSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let contextCallStack = state.contexts[0].stack()
-			expect(contextCallStack.length).toBe(9)
-			expect(contextCallStack[ 0 ].attr).toBe('globalCompositeOperation')
-			expect(contextCallStack[ 1 ].attr).toBe('fillStyle')
-			expect(contextCallStack[ 2 ].method).toBe('beginPath')
-			expect(contextCallStack[ 3 ].method).toBe('moveTo')
-			expect(contextCallStack[ 4 ].method).toBe('lineTo')
-			expect(contextCallStack[ 5 ].method).toBe('lineTo')
-			expect(contextCallStack[ 6 ].method).toBe('lineTo')
-			expect(contextCallStack[ 7 ].method).toBe('closePath')
-			expect(contextCallStack[ 8 ].method).toBe('fill')
+			expect(contextCallsOrder.length).toBe(7)
+			expect(contextCallsOrder[ 0 ].method).toBe('beginPath')
+			expect(contextCallsOrder[ 1 ].method).toBe('moveTo')
+			expect(contextCallsOrder[ 2 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 3 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 4 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 5 ].method).toBe('closePath')
+			expect(contextCallsOrder[ 6 ].method).toBe('fill')
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
@@ -97,46 +101,37 @@ describe('.tileSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let contextCallStack = state.contexts[0].stack()
-			expect(contextCallStack.length).toBe(34)
+			expect(contextCallsOrder.length).toBe(26)
 
-			expect(contextCallStack[ 0 ].attr).toBe('globalCompositeOperation')
-			expect(contextCallStack[ 1 ].attr).toBe('fillStyle')
-			expect(contextCallStack[ 2 ].method).toBe('beginPath')
-			expect(contextCallStack[ 3 ].method).toBe('moveTo')
-			expect(contextCallStack[ 4 ].method).toBe('lineTo')
-			expect(contextCallStack[ 5 ].method).toBe('lineTo')
-			expect(contextCallStack[ 6 ].method).toBe('closePath')
-			expect(contextCallStack[ 7 ].method).toBe('fill')
+			expect(contextCallsOrder[ 0 ].method).toBe('beginPath')
+			expect(contextCallsOrder[ 1 ].method).toBe('moveTo')
+			expect(contextCallsOrder[ 2 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 3 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 4 ].method).toBe('closePath')
+			expect(contextCallsOrder[ 5 ].method).toBe('fill')
 
-			expect(contextCallStack[ 8 ].attr).toBe('globalCompositeOperation')
-			expect(contextCallStack[ 9 ].attr).toBe('fillStyle')
-			expect(contextCallStack[ 10 ].method).toBe('beginPath')
-			expect(contextCallStack[ 11 ].method).toBe('moveTo')
-			expect(contextCallStack[ 12 ].method).toBe('lineTo')
-			expect(contextCallStack[ 13 ].method).toBe('lineTo')
-			expect(contextCallStack[ 14 ].method).toBe('lineTo')
-			expect(contextCallStack[ 15 ].method).toBe('closePath')
-			expect(contextCallStack[ 16 ].method).toBe('fill')
+			expect(contextCallsOrder[ 6 ].method).toBe('beginPath')
+			expect(contextCallsOrder[ 7 ].method).toBe('moveTo')
+			expect(contextCallsOrder[ 8 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 9 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 10 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 11 ].method).toBe('closePath')
+			expect(contextCallsOrder[ 12 ].method).toBe('fill')
 
-			expect(contextCallStack[ 17 ].attr).toBe('globalCompositeOperation')
-			expect(contextCallStack[ 18 ].attr).toBe('fillStyle')
-			expect(contextCallStack[ 19 ].method).toBe('beginPath')
-			expect(contextCallStack[ 20 ].method).toBe('moveTo')
-			expect(contextCallStack[ 21 ].method).toBe('lineTo')
-			expect(contextCallStack[ 22 ].method).toBe('lineTo')
-			expect(contextCallStack[ 23 ].method).toBe('lineTo')
-			expect(contextCallStack[ 24 ].method).toBe('closePath')
-			expect(contextCallStack[ 25 ].method).toBe('fill')
+			expect(contextCallsOrder[ 13 ].method).toBe('beginPath')
+			expect(contextCallsOrder[ 14 ].method).toBe('moveTo')
+			expect(contextCallsOrder[ 15 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 16 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 17 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 18 ].method).toBe('closePath')
+			expect(contextCallsOrder[ 19 ].method).toBe('fill')
 
-			expect(contextCallStack[ 26 ].attr).toBe('globalCompositeOperation')
-			expect(contextCallStack[ 27 ].attr).toBe('fillStyle')
-			expect(contextCallStack[ 28 ].method).toBe('beginPath')
-			expect(contextCallStack[ 29 ].method).toBe('moveTo')
-			expect(contextCallStack[ 30 ].method).toBe('lineTo')
-			expect(contextCallStack[ 31 ].method).toBe('lineTo')
-			expect(contextCallStack[ 32 ].method).toBe('closePath')
-			expect(contextCallStack[ 33 ].method).toBe('fill')
+			expect(contextCallsOrder[ 20 ].method).toBe('beginPath')
+			expect(contextCallsOrder[ 21 ].method).toBe('moveTo')
+			expect(contextCallsOrder[ 22 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 23 ].method).toBe('lineTo')
+			expect(contextCallsOrder[ 24 ].method).toBe('closePath')
+			expect(contextCallsOrder[ 25 ].method).toBe('fill')
 		})
 	})
 })

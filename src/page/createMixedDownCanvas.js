@@ -1,4 +1,3 @@
-import state from '../state'
 import deleteElementIfExists from './deleteElementIfExists'
 import { getCanvasSize } from '../canvas'
 import { document } from '../utilities/windowWrapper'
@@ -16,7 +15,7 @@ const createMixedDownCanvas = () => {
 
 	mixedDownCanvas.style.display = 'none'
 
-	state.mixedDownContext = mixedDownCanvas.getContext('2d')
+	return mixedDownCanvas.getContext('2d')
 }
 
 export default createMixedDownCanvas

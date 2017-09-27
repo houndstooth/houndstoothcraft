@@ -1,3 +1,5 @@
+import noop from './noop'
+
 export default ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),
 	moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
@@ -8,5 +10,6 @@ export default ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	save: () => contextCallsOrder.push({ method: 'save' }),
 	restore: () => contextCallsOrder.push({ method: 'restore' }),
 	clearRect: () => contextCallsOrder.push({ method: 'clearRect' }),
-	context: { canvas: { toBlob: toBlobSpy } },
+	canvas: { toBlob: toBlobSpy },
+	drawImage: noop,
 })

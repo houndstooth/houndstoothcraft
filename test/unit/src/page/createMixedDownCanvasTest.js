@@ -1,5 +1,4 @@
 import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
-import state from '../../../../src/state'
 import * as canvas from '../../../../src/canvas/index'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
 import buildMockElement from '../../helpers/buildMockElement'
@@ -11,6 +10,7 @@ describe('create mixed down canvas', () => {
 	const mixedDownContext = {}
 	const mockBodyChildren = []
 	const mixedDownCanvasClassList = []
+	let returnedMixedDownContext
 	beforeAll(() => {
 		spyOn(deleteElementIfExists, 'default')
 
@@ -21,7 +21,7 @@ describe('create mixed down canvas', () => {
 
 		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
 
-		createMixedDownCanvas()
+		returnedMixedDownContext = createMixedDownCanvas()
 	})
 
 	it('deletes the existing mixed down canvas, if present', () => {
@@ -36,8 +36,8 @@ describe('create mixed down canvas', () => {
 		expect(mixedDownCanvasClassList[0]).toBe('mixed-down-canvas')
 	})
 
-	it('points the mixed down context node of the state at the new mixed down canvas\'s context', () => {
-		expect(state.mixedDownContext).toBe(mixedDownContext)
+	it('returns the mixed down canvas\'s context', () => {
+		expect(returnedMixedDownContext).toBe(mixedDownContext)
 	})
 
 	it('does not display the mixed down canvas', () => {

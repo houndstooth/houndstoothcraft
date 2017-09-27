@@ -10,10 +10,11 @@ import * as composeMainHoundstooth from '../../../../src/execute/composeMainHoun
 describe('execute selected houndstooth effects', () => {
 	const layerFunctions = { layer: 'layer' }
 	const animationFunctions = { animation: 'animation' }
+	const mixedDownCanvas = {}
 	beforeEach(() => {
 		resetState(state)
 
-		spyOn(page, 'createMixedDownCanvas')
+		spyOn(page, 'createMixedDownCanvas').and.returnValue(mixedDownCanvas)
 		spyOn(page, 'createContexts')
 		spyOn(executeGrid, 'default')
 		spyOn(executeAnimation, 'default')
@@ -49,6 +50,7 @@ describe('execute selected houndstooth effects', () => {
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownCanvas).toHaveBeenCalled()
+			expect(state.mixedDownContext).toBe(mixedDownCanvas)
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
@@ -58,6 +60,7 @@ describe('execute selected houndstooth effects', () => {
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownCanvas).toHaveBeenCalled()
+			expect(state.mixedDownContext).toBe(mixedDownCanvas)
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
@@ -67,6 +70,7 @@ describe('execute selected houndstooth effects', () => {
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownCanvas).toHaveBeenCalled()
+			expect(state.mixedDownContext).toBe(mixedDownCanvas)
 		})
 
 		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
@@ -74,6 +78,7 @@ describe('execute selected houndstooth effects', () => {
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownCanvas).not.toHaveBeenCalled()
+			expect(state.mixedDownContext).toBe(null)
 		})
 	})
 

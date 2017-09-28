@@ -1,11 +1,9 @@
 import addEffectToggles from '../../../../src/ui/addEffectToggles'
 import state from '../../../../src/state'
 import effects from '../../../../effects/index'
-import resetState from '../../../../src/store/resetState'
 
 xdescribe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
-		resetState(state)
 		addEffectToggles(Object.values(effects))
 		state.mainHoundstooth.basePattern = {
 			tileSettings: {

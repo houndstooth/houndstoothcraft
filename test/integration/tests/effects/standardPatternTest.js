@@ -3,11 +3,8 @@ import standardTileIsColors from '../../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 
 describe('standard houndstooth pattern', () => {
-	beforeEach(() => resetState(state))
-
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
 		activateTestMarkerCanvas()
 

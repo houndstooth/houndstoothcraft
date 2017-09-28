@@ -3,12 +3,8 @@ import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSe
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN, TRANSPARENT, ERASE } from '../../../../src/constants'
 import standardTileIsColors from '../../helpers/standardTileIsColors'
-import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 
 describe('.layerSettings', () => {
-	beforeEach(() => resetState(state))
-
 	it('blends colors from semi-translucent layers', () => {
 		const houndstoothOverrides = {
 			basePattern: {

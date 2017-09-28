@@ -5,13 +5,10 @@ import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src
 import standardTileIsColors from '../../helpers/standardTileIsColors'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
-import state from '../../../../src/state'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
-import resetState from '../../../../src/store/resetState'
 
 describe('.colorSettings', () => {
 	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
-	beforeEach(() => resetState(state))
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {

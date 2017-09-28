@@ -50,6 +50,8 @@ This code base includes two test suites:
     
 Both use Jasmine as the testing framework along with its mocking and assertion libraries. Both suites are transpiled to ES5 using the same Babel configuration as the implementation code.
 
+All tests, whether unit or integration, begin with a `beforeEach` which calls `resetState` on the central `state`, giving it a fresh copy from the defaults in `src/store/defaults`.
+
 ### cross platform
 
 This project has been developed on both Mac OS and Window workstations, and all development tools have been put together with supporting this in mind.

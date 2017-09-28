@@ -1,6 +1,5 @@
 import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 import * as page from '../../../../src/page'
 import * as executeGrid from '../../../../src/execute/executeGrid'
 import * as executeAnimation from '../../../../src/execute/executeAnimation'
@@ -12,8 +11,6 @@ describe('execute selected houndstooth effects', () => {
 	const animationFunctions = { animation: 'animation' }
 	const mixedDownCanvas = {}
 	beforeEach(() => {
-		resetState(state)
-
 		spyOn(page, 'createMixedDownCanvas').and.returnValue(mixedDownCanvas)
 		spyOn(page, 'createContexts')
 		spyOn(executeGrid, 'default')

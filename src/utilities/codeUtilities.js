@@ -78,6 +78,8 @@ const changeObjectIntoCopy = ({ objectToChange, objectWithProperties }) => {
 	setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
 }
 
+const reversed = array => array.slice().reverse()
+
 export {
 	iterator,
 	wrappedIndex,
@@ -90,4 +92,5 @@ export {
 	isDefined,
 	propertyIsDefinedOnObject,
 	changeObjectIntoCopy,
+	reversed,
 }

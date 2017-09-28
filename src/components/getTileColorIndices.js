@@ -1,4 +1,4 @@
-import { wrappedIndex } from '../utilities/codeUtilities'
+import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import state from '../state'
 
 const getTileColorIndices = ({ gridAddress }) => {
@@ -12,7 +12,7 @@ const getTileColorIndices = ({ gridAddress }) => {
 const maybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {
 	let { transformTileColorIndices, flipGrain, switcheroo } = assignment
 
-	if (flipGrain) tileColorIndices = tileColorIndices.reverse()
+	if (flipGrain) tileColorIndices = reversed(tileColorIndices)
 	if (switcheroo) tileColorIndices = applySwitcheroo({ tileColorIndices, gridAddress })
 	if (transformTileColorIndices) tileColorIndices = transformTileColorIndices({ tileColorIndices, gridAddress })
 
@@ -58,7 +58,7 @@ const applySwitcheroo = ({ tileColorIndices, gridAddress }) => {
 		(xMod === 2 && yMod === 0) ||
 		(xMod === 0 && yMod === 2)
 	) {
-		return tileColorIndices.reverse()
+		return reversed(tileColorIndices)
 	}
 
 	return tileColorIndices

@@ -6,9 +6,11 @@ import buildMockElement from '../../helpers/buildMockElement'
 describe('create canvas container', () => {
 	const mockCanvasContainerClassList = []
 	const canvasSize = [ 400, 500 ]
-	const mockBodyChildren = []
+	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {
+		mockBodyChildren = []
+
 		spyOn(setElementDimensions, 'default')
 
 		window.document.body = buildMockElement({ mockChildren: mockBodyChildren })

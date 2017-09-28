@@ -19,7 +19,7 @@ describe('get tile origin and size', () => {
 			tileSize: tileSizeSetting * tileSizeSetting,
 			tileOrigin: [ gridAddress[ 1 ] * tileSizeSetting, gridAddress[ 0 ] * tileSizeSetting ],
 		})
-		state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize = custom
+		state.mainHoundstooth.basePattern.tileSettings = { getTileOriginAndSize: custom }
 
 		expect(getTileOriginAndSize({ gridAddress })).toEqual({
 			tileSize: tileSizeSetting * tileSizeSetting,

@@ -1,6 +1,5 @@
 import resetInterface from '../../../../src/ui/resetInterface'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import * as canvas from '../../../../src/canvas'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -10,7 +9,6 @@ describe('reset interface', () => {
 	beforeEach(() => {
 		spyOn(window.document, 'querySelector').and.returnValue(warningsContainer)
 		spyOn(window.window, 'clearInterval')
-		resetState(state)
 	})
 
 	it('clears warnings', () => {

@@ -4,7 +4,7 @@ import state from '../../../../src/state'
 
 describe('save frame', () => {
 	const mockBlob = {}
-	beforeAll(() => {
+	beforeEach(() => {
 		state.lastSavedAnimationFrame = 666
 		fileSaver.saveAs = jasmine.createSpy()
 

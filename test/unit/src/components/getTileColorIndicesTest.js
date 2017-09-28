@@ -1,11 +1,8 @@
 import getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 
 describe('get tile color indices', () => {
-	beforeEach(() => resetState(state))
-
 	const gridAddress = [ 3, 5 ]
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {

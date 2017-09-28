@@ -1,14 +1,12 @@
 import applyBackgroundColor from '../../../../src/view/applyBackgroundColor'
 import { CYAN } from '../../../../src/constants'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 import * as canvas from '../../../../src/canvas'
 
 describe('apply background color', () => {
 	const defaultFillStyle = '#000000'
 	let fillRectSpy
 	beforeEach(() => {
-		resetState(state)
 		fillRectSpy = jasmine.createSpy()
 		state.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
 		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])

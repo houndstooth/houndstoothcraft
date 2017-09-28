@@ -2,11 +2,9 @@ import gridAndMaybeLogging from '../../../../src/execute/gridAndMaybeLogging'
 import state from '../../../../src/state'
 import * as components from '../../../../src/components'
 import { console } from '../../../../src/utilities/windowWrapper'
-import resetState from '../../../../src/store/resetState'
 
 describe('grid and maybe logging', () => {
 	beforeEach(() => {
-		resetState(state)
 		state.currentAnimationFrame = 96
 		state.currentLayer = 54
 

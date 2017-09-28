@@ -1,14 +1,12 @@
 import state from '../../../../src/state'
 import createContexts from '../../../../src/page/createContexts'
 import * as createContext from '../../../../src/page/createContext'
-import resetState from '../../../../src/store/resetState'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create contexts', () => {
 	let canvasContainer
 	beforeEach(() => {
-		resetState(state)
 		spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement()

@@ -1,6 +1,5 @@
 import executeAnimation from '../../../../src/execute/executeAnimation'
 import * as animation from '../../../../src/animation'
-import resetState from '../../../../src/store/resetState'
 import state from '../../../../src/state'
 import noop from '../../../helpers/noop'
 
@@ -17,8 +16,6 @@ describe('execute animation', () => {
 	let endAnimationFrame
 
 	beforeEach(() => {
-		resetState(state)
-
 		stopConditionFunction = noop
 		animationFunction = noop
 

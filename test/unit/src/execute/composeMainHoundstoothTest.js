@@ -3,14 +3,11 @@ import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstoo
 import { console } from '../../../../src/utilities/windowWrapper'
 import { DEFAULT_HOUNDSTOOTH } from '../../../../src/store/defaults'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 import * as combineHoundstoothEffects from '../../../../src/execute/combineHoundstoothEffects'
 import * as composePatterns from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
 
 describe('composeMainHoundstooth', () => {
-	beforeEach(() => resetState(state))
-
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(console, 'log')
 

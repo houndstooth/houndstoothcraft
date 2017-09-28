@@ -273,7 +273,7 @@ describe('code utilities', () => {
 
 		it('removes all the keys of the object that are not on the one being copied', () => {
 			const objectToChange = { mary: 'jane', billy: 'bob' }
-			const objectWithProperties = { }
+			const objectWithProperties = {}
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
 
@@ -292,12 +292,33 @@ describe('code utilities', () => {
 		})
 
 		it('adds new keys from the one being copied', () => {
-			const objectToChange = { }
+			const objectToChange = {}
 			const objectWithProperties = { billy: 'bob' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
 
 			expect(objectToChange.billy).toBe('bob')
+		})
+	})
+
+	describe('#reversed', () => {
+		let reversed
+		beforeEach(() => reversed = codeUtilities.reversed)
+
+		it('returns a reversed version of the passed array', () => {
+			const array = [ 1, 2, 3 ]
+
+			const reversedArray = reversed(array)
+
+			expect(reversedArray).toEqual([ 3, 2, 1 ])
+		})
+
+		it('does not mutate the passed array', () => {
+			const array = [ 1, 2, 3 ]
+
+			reversed(array)
+
+			expect(array).toEqual([ 1, 2, 3 ])
 		})
 	})
 })

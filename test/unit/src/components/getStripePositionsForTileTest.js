@@ -1,13 +1,9 @@
 import getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import state from '../../../../src/state'
-import resetState from '../../../../src/store/resetState'
 
 describe('get stripe positions for tile', () => {
-	beforeEach(() => {
-		resetState(state)
-		composeMainHoundstooth()
-	})
+	beforeEach(() => composeMainHoundstooth())
 
 	it('defaults to standard stripes', () => {
 		expect(getStripePositionsForTile()).toEqual([ 0, 0.5, 1, 1.5 ])

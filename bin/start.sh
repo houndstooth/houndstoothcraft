@@ -1,5 +1,7 @@
 #!/bin/bash
 
+open -na Google\ Chrome
+
 webstorm .
 
 DEV_SERVER_PORT=8080
@@ -19,6 +21,7 @@ if [[ $? -ne 0 ]] ; then
         http://localhost:$DEV_SERVER_PORT
         http://localhost:$KARMA_SERVER_PORT/debug.html
         ~/workspace/web-render/test/unit/coverage/lcov-report/index.html
+        https://houndstooth.cfapps.io
     )
 
     if [[ $OSTYPE == darwin* ]] ; then
@@ -35,3 +38,5 @@ if [[ $? -ne 0 ]] ; then
 else
     printf "I think everything has already been started up.\n\n"
 fi
+
+open -a iTerm

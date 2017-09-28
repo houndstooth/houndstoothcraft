@@ -3,7 +3,7 @@ import state from '../../../../src/state'
 import resetState from '../../../../src/store/resetState'
 import * as buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
 import window from '../../../../src/utilities/windowWrapper'
-import noop from '../../helpers/noop'
+import noop from '../../../helpers/noop'
 
 describe('animator', () => {
 	let intervalFunction

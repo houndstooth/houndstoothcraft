@@ -1,4 +1,4 @@
-import buildMockContext from '../../helpers/buildMockContext'
+import buildMockContext from '../../../helpers/buildMockContext'
 import clipPath from '../../../../src/render/clipPath'
 
 describe('clip path', () => {

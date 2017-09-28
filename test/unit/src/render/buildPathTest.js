@@ -1,4 +1,4 @@
-import buildMockContext from '../../helpers/buildMockContext'
+import buildMockContext from '../../../helpers/buildMockContext'
 import buildPath from '../../../../src/render/buildPath'
 
 describe('build path', () => {

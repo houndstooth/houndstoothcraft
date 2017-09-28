@@ -2,7 +2,7 @@ import createCheckbox from '../../../../src/ui/createCheckbox'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 import * as buildEffectToggleClickHandler from '../../../../src/ui/buildEffectToggleClickHandler'
-import noop from '../../helpers/noop'
+import noop from '../../../helpers/noop'
 
 describe('create checkbox', () => {
 	let returnedCheckbox, mockCheckbox

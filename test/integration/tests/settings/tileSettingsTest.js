@@ -3,7 +3,7 @@ import standardTileIsColors from '../../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import clear from '../../../../src/canvas/clear'
-import buildMockContext from '../../../unit/helpers/buildMockContext'
+import buildMockContext from '../../../helpers/buildMockContext'
 import * as createContext from '../../../../src/page/createContext'
 import * as page from '../../../../src/page'
 

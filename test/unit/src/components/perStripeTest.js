@@ -2,7 +2,7 @@ import perStripe from '../../../../src/components/perStripe'
 import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import state from '../../../../src/state'
 import resetState from '../../../../src/store/resetState'
-import noop from '../../helpers/noop'
+import noop from '../../../helpers/noop'
 
 describe('per stripe', () => {
 	beforeEach(() => {

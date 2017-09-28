@@ -1,4 +1,4 @@
-import buildMockContext from '../../helpers/buildMockContext'
+import buildMockContext from '../../../helpers/buildMockContext'
 import resetClip from '../../../../src/render/resetClip'
 
 describe('reset clip', () => {

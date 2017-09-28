@@ -18,6 +18,7 @@ if [[ $? -ne 0 ]] ; then
 
     declare -a arr=(
         https://app.asana.com/0/358570257763740/list
+        https://github.com/houndstooth/web-render
         http://localhost:$DEV_SERVER_PORT
         http://localhost:$KARMA_SERVER_PORT/debug.html
         ~/workspace/web-render/test/unit/coverage/lcov-report/index.html

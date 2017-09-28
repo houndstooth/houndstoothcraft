@@ -4,7 +4,7 @@ start:
 	sh ./bin/start.sh
 
 setup:
-	sh ./bin/setup.sh
+	sh ./bin/setup.sh && exec bash --login
 
 ship:
 	sh ./bin/ship.sh

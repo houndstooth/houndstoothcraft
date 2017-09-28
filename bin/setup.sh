@@ -23,7 +23,10 @@ git submodule foreach git checkout master
 git submodule foreach git config user.name \"Douglas Blumeyer\"
 git submodule foreach git config user.email douglas.blumeyer@gmail.com
 
+echo "export JASMINE_CONFIG_PATH=./test/unit/jasmine.json" > ~/.bash_profile
+source ~/.bash_profile
 npm run cover
+
 sh ./bin/start.sh
 
 printf "Welcome to your fresh workstation, Douglas. Enjoy developing some more houndstooth.\n\n"

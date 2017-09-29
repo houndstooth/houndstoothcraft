@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [[ $OSTYPE == darwin* ]] ; then
-    open -na Google\ Chrome
-else
-    start chrome
-fi
-
 if hash webstorm 2>/dev/null; then
     webstorm .
 else
@@ -22,6 +16,13 @@ fi
 
 netstat -an | grep $DEV_SERVER_PORT | grep LISTEN > /dev/null 2>&1
 if [[ $? -ne 0 ]] ; then
+    if [[ $OSTYPE == darwin* ]] ; then
+        open -na Google\ Chrome
+    else
+        start chrome
+    fi
+    sleep 1
+
     npm start > /dev/null 2>&1 &
 
     declare -a arr=(

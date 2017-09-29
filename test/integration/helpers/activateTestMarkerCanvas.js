@@ -12,7 +12,7 @@ const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.left = 0
 }
 
-export default () => {
+const activateTestMarkersCanvas = () => {
 	testMarkersClear()
 
 	let testMarkersCanvas = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
@@ -34,3 +34,5 @@ export default () => {
 
 	state.mixingDown = true
 }
+
+export default activateTestMarkersCanvas

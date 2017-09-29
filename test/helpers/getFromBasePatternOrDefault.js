@@ -2,7 +2,7 @@ import { accessChildPropertyOrCreatePath, isDefined } from '../../src/utilities/
 import state from '../../src/state'
 import { DEFAULT_PATTERN } from '../../src/store/defaults'
 
-export default settingsPath => {
+const getFromBasePatternOrDefault = settingsPath => {
 	let childSetting = state.mainHoundstooth.basePattern
 	let notThere
 	settingsPath.forEach(pathStep => {
@@ -30,3 +30,5 @@ export default settingsPath => {
 	}
 	return setting
 }
+
+export default getFromBasePatternOrDefault

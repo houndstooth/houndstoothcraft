@@ -1,6 +1,6 @@
 import noop from './noop'
 
-export default ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
+const buildMockContext = ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),
 	moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
 	lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),
@@ -13,3 +13,5 @@ export default ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	canvas: { toBlob: toBlobSpy },
 	drawImage: noop,
 })
+
+export default buildMockContext

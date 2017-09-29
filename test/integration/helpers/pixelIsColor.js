@@ -1,7 +1,7 @@
 import isCloseTo from '../../helpers/isCloseTo'
 import { console } from '../../../src/utilities/windowWrapper'
 
-export default (coordinateUnderTest, expectedColor) => {
+const pixelIsColor = (coordinateUnderTest, expectedColor) => {
 	const actualColor = pixel(coordinateUnderTest)
 
 	if (actualColor.a === 0 && actualColor.a === expectedColor.a) return true
@@ -30,3 +30,5 @@ const pixel = ([ x, y ]) => {
 		a: pixelData[ 3 ] / 255,
 	}
 }
+
+export default pixelIsColor

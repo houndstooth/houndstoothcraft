@@ -1,4 +1,4 @@
-export default (numberOne, numberTwo) => {
+const isCloseTo = (numberOne, numberTwo) => {
 	const precision = 2
 
 	let pow = Math.pow(10, precision + 1)
@@ -7,3 +7,5 @@ export default (numberOne, numberTwo) => {
 
 	return Math.round(delta * pow) / pow <= maxDelta
 }
+
+export default isCloseTo

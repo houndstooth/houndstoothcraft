@@ -2,7 +2,7 @@ import { CANVAS_SIZE } from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
-export default () => {
+const testMarkersClear = () => {
 	const testMarkersCanvas = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
 	const testMarkersContext = testMarkersCanvas.getContext('2d')
 
@@ -10,3 +10,5 @@ export default () => {
 
 	testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)
 }
+
+export default testMarkersClear

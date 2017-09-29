@@ -1,4 +1,4 @@
-export default () => {
+const createTestMarkersCanvas = () => {
 	const testCanvasDisplayArea = document.createElement('div')
 	testCanvasDisplayArea.classList.add('test-canvas-display-area')
 
@@ -10,3 +10,5 @@ export default () => {
 
 	return testMarkersCanvas
 }
+
+export default createTestMarkersCanvas

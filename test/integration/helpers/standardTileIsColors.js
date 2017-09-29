@@ -1,6 +1,6 @@
 import tileSectorCenterIsColor from './tileSectorCenterIsColor'
 
-export default ({ originInPixels, tileSizeInPixels, colors, baseId }) => {
+const standardTileIsColors = ({ originInPixels, tileSizeInPixels, colors, baseId }) => {
 	const expectations = [
 		{ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: colors[ 0 ], id: baseId + 0 },
 
@@ -17,3 +17,5 @@ export default ({ originInPixels, tileSizeInPixels, colors, baseId }) => {
 
 	return expectations.every(tileSectorCenterIsColor)
 }
+
+export default standardTileIsColors

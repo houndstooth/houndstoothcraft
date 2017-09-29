@@ -54,7 +54,7 @@ All tests, whether unit or integration, begin with a `beforeEach` which calls `r
 
 ### cross platform
 
-This project has been developed on both Mac OS and Window workstations, and all development tools have been put together with supporting this in mind.
+This project has been developed on both Mac OS and Windows workstations, and all development tools have been put together with supporting this in mind. On Windows, Git BASH is used to emulate a *NIX environment.
 
 ## the code itself
 

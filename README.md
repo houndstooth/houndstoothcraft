@@ -25,6 +25,8 @@ Your code must also use the most up-to-date versions of all dependencies, be fre
 
 When you're done developing, just run `make stop` to shut everything down.
 
+On Windows, without `make`, e.g. instead of `make setup`, use `./bin/setup.sh`.
+
 ### effect submodules
 
 Each houndstooth effect users can play with in the application lives in its own Git repository, which is submoduled to this parent repository. The effect submodules are not standalone; they rely on the shared code here to function. The separation is intended primarily for their commit histories.

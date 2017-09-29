@@ -11,6 +11,11 @@ else
     else
         printf "Cloud Foundry CLI not automatically installed. Don't forget to manually install before attempting to deploy.\n\n"
     fi
+
+    curl -L $(curl -s https://api.github.com/repos/contraband/autopilot/releases/latest | grep browser_download_url | grep darwin | cut -d '"' -f 4) --output autopilot-darwin
+    chmod +x autopilot-darwin
+    cf install-plugin autopilot-darwin -y
+    rm autopilot-darwin
 fi
 
 npm i

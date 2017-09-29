@@ -27,4 +27,4 @@ else
 fi
 
 npm run build
-cf push
+cf zero-downtime-push

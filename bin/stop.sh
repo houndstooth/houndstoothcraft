@@ -9,13 +9,13 @@ if [[ $OSTYPE == darwin* ]] ; then
 else
     netstat -an | grep $KARMA_SERVER_PORT | grep LISTEN > /dev/null 2>&1
     if [[ $? -ne 1 ]] ; then
-        PID_TO_KILL=$(netstat -aon | grep LISTEN | awk '/$KARMA_SERVER_PORT/ {print $5}')
+        PID_TO_KILL=$(netstat -aon | grep $KARMA_SERVER_PORT | grep LISTEN | awk '{print $5}')
         taskkill //pid $PID_TO_KILL //f
     fi
 
     netstat -an | grep $DEV_SERVER_PORT | grep LISTEN > /dev/null 2>&1
     if [[ $? -ne 1 ]] ; then
-        PID_TO_KILL=$(netstat -aon | grep LISTEN | awk '/$DEV_SERVER_PORT/ {print $5}')
+        PID_TO_KILL=$(netstat -aon | grep $DEV_SERVER_PORT | grep LISTEN | awk '{print $5}')
         taskkill //pid $PID_TO_KILL //f
     fi
 fi

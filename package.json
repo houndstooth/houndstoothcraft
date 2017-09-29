@@ -7,8 +7,8 @@
     "build": "webpack --config build/webpack.prod.js",
     "start": "webpack-dev-server --config build/webpack.dev.js --content-base dist",
     "lint-fix": "eslint . --fix",
-    "unit": "babel-node ./node_modules/.bin/jasmine",
-    "cover": "babel-node node_modules/babel-istanbul/lib/cli.js cover ./node_modules/.bin/jasmine --config test/unit/.istanbul.yml",
+    "unit": "babel-node node_modules/jasmine/bin/jasmine.js",
+    "cover": "babel-node node_modules/babel-istanbul/lib/cli.js cover node_modules/jasmine/bin/jasmine.js --config test/unit/.istanbul.yml",
     "check-coverage": "babel-node node_modules/babel-istanbul/lib/cli.js check-coverage test/unit/coverage/coverage.json --config test/unit/.istanbul.yml",
     "integration": "karma start test/integration/karma.run.js",
     "test-server": "karma start test/integration/karma.server.js"

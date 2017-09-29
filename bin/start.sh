@@ -1,8 +1,16 @@
 #!/bin/bash
 
-open -na Google\ Chrome
+if [[ $OSTYPE == darwin* ]] ; then
+    open -na Google\ Chrome
+else
+    start chrome
+fi
 
-webstorm .
+if hash webstorm 2>/dev/null; then
+    webstorm .
+else
+    start "" /c/Program\ Files\ \(x86\)/Sublime\ Text\ 3/subl.exe
+fi
 
 DEV_SERVER_PORT=8080
 KARMA_SERVER_PORT=9876
@@ -40,4 +48,6 @@ else
     printf "I think everything has already been started up.\n\n"
 fi
 
-open -a iTerm
+if [[ $OSTYPE == darwin* ]] ; then
+    open -a iTerm
+fi

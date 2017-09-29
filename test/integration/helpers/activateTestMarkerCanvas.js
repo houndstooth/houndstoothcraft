@@ -2,7 +2,7 @@ import setElementDimensions from '../../../src/page/setElementDimensions'
 import getCanvasSize from '../../../src/canvas/getCanvasSize'
 import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
-import setupTestMarkersCanvas from './setupTestMarkersCanvas'
+import createTestMarkersCanvas from './createTestMarkersCanvas'
 import state from '../../../src/state'
 
 const prepareCanvasForDisplayInTest = canvas => {
@@ -15,7 +15,7 @@ const prepareCanvasForDisplayInTest = canvas => {
 export default () => {
 	testMarkersClear()
 
-	let testMarkersCanvas = document.querySelector('.test-markers-canvas') || setupTestMarkersCanvas()
+	let testMarkersCanvas = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
 
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001

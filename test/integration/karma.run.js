@@ -6,8 +6,5 @@ module.exports = config => {
 		reportSlowerThan: 5000,
 		browsers: [ 'ChromeHeadless' ],
 		singleRun: true,
-		files: [ 'index.js' ],
-		preprocessors: { 'index.js': [ 'webpack' ] },
-		webpack: require('../../build/webpack.test'),
 	}))
 }

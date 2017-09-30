@@ -4,3 +4,4 @@ node_modules/
 dist/bundle.js*
 .DS_store
 test/unit/coverage/
+test/unit/slowness-report.txt

@@ -10,7 +10,7 @@ http.createServer((req, res) => {
 			'Connection': 'keep-alive',
 		})
 
-		fs.watchFile('dist/bundle.js', { interval: 1000 }, () => {
+		fs.watchFile('dist/bundle.js', { interval: 100 }, () => {
 			res.write('data: reload\n\n')
 		})
 	}

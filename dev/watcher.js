@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs')
-const { exec } = require('child_process')
+// const { exec } = require('child_process')
 
 http.createServer((req, res) => {
 	if (req.url === '/codeUpdates') {
@@ -13,7 +13,7 @@ http.createServer((req, res) => {
 
 		fs.watchFile('dist/bundle.js', () => {
 			res.write('data: reload\n\n')
-			exec('./bin/ship/fail_if_slow_tests.sh')
+			// exec('./bin/ship/fail_if_slow_tests.sh')
 		})
 	}
 }).listen(6789)

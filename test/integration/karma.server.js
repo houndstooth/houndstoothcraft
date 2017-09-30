@@ -1,7 +1,7 @@
-const karmaBaseConfig = require('./karma.common')
+const karmaCommonConfig = require('./karma.common')
 
 module.exports = config => {
-	config.set(Object.assign(karmaBaseConfig, {
+	config.set(Object.assign(karmaCommonConfig, {
 		reporters: [ 'kjhtml' ],
 		autoWatch: true,
 		files: [ 'dist/bundle.js' ],

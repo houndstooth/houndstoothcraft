@@ -5,7 +5,7 @@
 ```
 git clone https://github.com/houndstooth/web-render.git
 cd web-render
-make setup
+npm run setup
 ```
 
 And check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
@@ -14,18 +14,16 @@ And check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.i
 
 ### commands
 
-The `make setup` command takes care of all the initial set up of your development environment, finishing off by calling `make start` for you.
+The `npm run setup` command takes care of all the initial set up of your development environment, finishing off by calling `npm start` for you.
  
-The `make start` command serves a development version of the application on port 8080, as well as an integration test runner listening on port 9876. It opens tabs for these in a new Google Chrome window, along with tabs for the coverage report, the task management software used for the project, the Github repository, and finally the production app. Finally, `make start` opens the repository in Webstorm. 
+The `npm start` command serves a development version of the application on port 8080, as well as an integration test runner listening on port 9876. It opens tabs for these in a new Google Chrome window, along with tabs for the coverage report, the task management software used for the project, the Github repository, and finally the production app. Finally, `npm start` opens the repository in Webstorm. 
 
-During development, run unit tests regularly with `make test`.
+During development, run unit tests regularly with `npm test`.
 
-When you have made some commits, run `make ship` to share your work. This command will push your code changes to Github and the updated application to Pivotal Web Services. Your deployment will be rejected if your code has not been rebased against the latest changes.
+When you have made some commits, run `npm run ship` to share your work. This command will push your code changes to Github and the updated application to Pivotal Web Services. Your deployment will be rejected if your code has not been rebased against the latest changes.
 Your code must also use the most up-to-date versions of all dependencies, be free of linting errors, pass test coverage thresholds, and of course pass all tests.
 
-When you're done developing, just run `make stop` to shut everything down.
-
-On Windows, without `make`, e.g. instead of `make setup`, use `./bin/setup.sh`.
+When you're done developing, just run `npm stop` to shut everything down.
 
 ### effect submodules
 

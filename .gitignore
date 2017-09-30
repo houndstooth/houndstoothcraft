@@ -1,7 +1,8 @@
 .idea/
 npm-debug*
 node_modules/
-dist/bundle.js*
+dist/bundle.js
+test/integration/dist/bundle.js
 .DS_store
 test/unit/coverage/
 test/unit/slowness-report.txt

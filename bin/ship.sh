@@ -3,14 +3,13 @@
 set -e
 
 npm update
-npm run lint-fix
+./node_modules/.bin/eslint . --fix
 
 git pull -r
 git submodule foreach git pull -r
 
-npm run cover
-npm run check-coverage
-
+sh ./bin/ship/cover.sh
+sh ./bin/ship/check_coverage.sh
 sh ./bin/ship/fail_if_slow_tests.sh
 
 git submodule foreach git push

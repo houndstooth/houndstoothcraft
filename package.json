@@ -4,14 +4,11 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config build/webpack.prod.js",
-    "start": "webpack --config build/webpack.dev.js & node dev/server.js &",
-    "lint-fix": "eslint . --fix",
-    "unit": "babel-node node_modules/jasmine/bin/jasmine.js",
-    "cover": "babel-node node_modules/babel-istanbul/lib/cli.js cover node_modules/jasmine/bin/jasmine.js --config test/unit/.istanbul.yml",
-    "check-coverage": "babel-node node_modules/babel-istanbul/lib/cli.js check-coverage test/unit/coverage/coverage.json --config test/unit/.istanbul.yml",
-    "integration": "karma start test/integration/karma.run.js",
-    "test-server": "webpack --config build/webpack.test.js & karma start test/integration/karma.server.js"
+    "setup": "sh ./bin/setup.sh",
+    "start": "sh ./bin/start.sh",
+    "ship": "sh ./bin/ship.sh",
+    "stop": "sh ./bin/stop.sh",
+    "test": "sh ./bin/test/sh"
   },
   "dependencies": {
     "file-saver": "^1.3.3"

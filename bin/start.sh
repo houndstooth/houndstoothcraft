@@ -14,7 +14,8 @@ sh ./bin/start/test_server.sh $KARMA_SERVER_PORT
 
 netstat -an | grep $DEV_SERVER_PORT | grep LISTEN > /dev/null 2>&1
 if [[ $? -ne 0 ]] ; then
-    npm start > /dev/null 2>&1 &
+    ./node_modules/.bin/webpack --config build/webpack.dev.js > /dev/null 2>&1 &
+    node dev/server.js & > /dev/null 2>&1 &
 
     sh ./bin/start/open_tabs.sh $DEV_SERVER_PORT $KARMA_SERVER_PORT
 

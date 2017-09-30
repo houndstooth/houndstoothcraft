@@ -11,7 +11,7 @@ http.createServer((req, res) => {
 			'Connection': 'keep-alive',
 		})
 
-		fs.watchFile('dist/bundle.js', () => {
+		fs.watchFile('dist/bundle.js', { interval: 1000 }, () => {
 			res.write('data: reload\n\n')
 			// exec('./bin/ship/fail_if_slow_tests.sh')
 		})

@@ -8,9 +8,9 @@ npm update
 git pull -r
 git submodule foreach git pull -r
 
-sh ./bin/ship/cover.sh
+sh ./bin/ship/unit_tests_and_cover.sh
 sh ./bin/ship/check_coverage.sh
-sh ./bin/ship/fail_if_slow_tests.sh
+sh ./bin/ship/integration_tests_and_fail_if_slow.sh
 
 git submodule foreach git push
 git push

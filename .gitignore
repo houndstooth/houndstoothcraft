@@ -5,4 +5,4 @@ dist/bundle.js
 test/integration/dist/bundle.js
 .DS_store
 test/unit/coverage/
-test/unit/slowness-report.txt
+test/integration/slowness-report.txt

@@ -2,7 +2,6 @@
 
 WATCHER_PORT=$1
 
-netstat -an | grep $WATCHER_PORT | grep LISTEN > /dev/null 2>&1
-if [[ $? -ne 0 ]] ; then
-    node dev/watcher.js > /dev/null 2>&1 &
-fi
+CMD="node dev/watcher.js > /dev/null 2>&1 &"
+
+sh ./bin/start/start_process_if_not_running.sh "$CMD" $WATCHER_PORT

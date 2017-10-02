@@ -3,7 +3,6 @@
 declare -a arr=(
     $DEV_SERVER_PORT
     $KARMA_SERVER_PORT
-    $WATCHER_PORT
     $KARMA_WATCHER_PORT
 )
 

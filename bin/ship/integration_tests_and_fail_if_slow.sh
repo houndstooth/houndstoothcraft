@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sh ./bin/test/integration.sh | tee /dev/tty > test/integration/slowness-report.txt
 
 if cat test/integration/slowness-report.txt | grep -q 'SLOW' ; then

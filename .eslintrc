@@ -12,6 +12,7 @@
     "require": false,
     "global": false,
     "process": false,
+    "module": false,
   },
   "plugins": [
     "import",

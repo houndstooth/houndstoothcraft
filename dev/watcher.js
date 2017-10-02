@@ -1,5 +1,6 @@
 const http = require('http')
 const fs = require('fs')
+const process = require('process')
 
 http.createServer((req, res) => {
 	if (req.url === '/codeUpdates') {
@@ -14,4 +15,4 @@ http.createServer((req, res) => {
 			res.write('data: reload\n\n')
 		})
 	}
-}).listen(6789)
+}).listen(process.env.WATCHER_PORT)

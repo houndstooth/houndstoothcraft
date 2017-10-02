@@ -16,7 +16,7 @@ And check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.i
 
 The `npm run setup` command takes care of all the initial set up of your development environment, finishing off by calling `npm start` for you.
  
-The `npm start` command serves a development version of the application on port 8080, as well as an integration test runner listening on port 9876. It opens tabs for these in a new Google Chrome window, along with tabs for the coverage report, the task management software used for the project, the Github repository, and finally the production app. Finally, `npm start` opens the repository in Webstorm. 
+The `npm start` command serves a development version of the application, as well as an integration test runner. It opens tabs for these in a new Google Chrome window, along with tabs for the coverage report, the task management software used for the project, the Github repository, and finally the production app. Finally, `npm start` opens the repository in Webstorm.
 
 During development, run unit tests regularly with `npm test`.
 

@@ -4,7 +4,7 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
-    "setup": "sh ./bin/setup.sh",
+    "setup": "sh ./bin/setup.sh && exec bash --login",
     "start": "sh ./bin/start.sh",
     "ship": "sh ./bin/ship.sh",
     "stop": "sh ./bin/stop.sh",
@@ -27,7 +27,7 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "uglify-js": "^3.1.2",
+    "uglify-js": "^3.1.3",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"

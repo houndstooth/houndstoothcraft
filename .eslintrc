@@ -11,6 +11,7 @@
   "globals": {
     "require": false,
     "global": false,
+    "process": false,
   },
   "plugins": [
     "import",

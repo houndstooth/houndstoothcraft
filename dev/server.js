@@ -1,5 +1,6 @@
 const http = require('http')
 const fs = require('fs')
+const process = require('process')
 
 http.createServer((req, res) => {
 	let filename = 'dist/'
@@ -9,4 +10,4 @@ http.createServer((req, res) => {
 		res.write(file, 'binary')
 		res.end()
 	})
-}).listen(8080)
+}).listen(process.env.DEV_SERVER_PORT)

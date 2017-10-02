@@ -1,1 +1,1 @@
-new EventSource('http://localhost:6789/codeUpdates').addEventListener('message', () => window.location.reload())
+new EventSource(`http://localhost:${process.env.WATCHER_PORT}/codeUpdates`).addEventListener('message', () => window.location.reload())

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-DEV_SERVER_PORT=$1
-KARMA_SERVER_PORT=$2
-
 if [[ $OSTYPE == darwin* ]] ; then
     open -na Google\ Chrome
 else
@@ -20,11 +17,11 @@ declare -a arr=(
 )
 
 if [[ $OSTYPE == darwin* ]] ; then
-    for i in "${arr[@]}" ; do
-       open "$i"
+    for i in ${arr[@]} ; do
+       open $i
     done
 else
-    for i in "${arr[@]}" ; do
-       start chrome "$i"
+    for i in ${arr[@]} ; do
+       start chrome $i
     done
 fi

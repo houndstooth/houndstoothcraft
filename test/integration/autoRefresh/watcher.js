@@ -14,4 +14,4 @@ http.createServer((req, res) => {
 			res.write('data: reload\n\n')
 		})
 	}
-}).listen(1234)
+}).listen(process.env.KARMA_WATCHER_PORT)

@@ -10,4 +10,4 @@ else
 fi
 
 ./node_modules/.bin/webpack --config build/webpack.prod.js
-cf zero-downtime-push
+cf zero-downtime-push houndstooth -f manifest.yml

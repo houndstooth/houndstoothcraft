@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -e
+#!/usr/bin/env sh
 
 CMD="$1"
 PORT=$2

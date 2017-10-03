@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ $OSTYPE == darwin* ]] ; then
     if hash brew 2>/dev/null; then
         printf "Homebrew found.\n"

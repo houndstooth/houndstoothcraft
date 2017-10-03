@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ $OSTYPE == darwin* ]] ; then
     open -na Google\ Chrome
 else

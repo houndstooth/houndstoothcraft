@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if hash webstorm 2>/dev/null; then
     webstorm .
 else

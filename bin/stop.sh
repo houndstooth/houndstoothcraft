@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 declare -a arr=(
     $DEV_SERVER_PORT
     $KARMA_SERVER_PORT

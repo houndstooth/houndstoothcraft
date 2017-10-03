@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sh ./bin/start/karma_watcher.sh
 sh ./bin/start/test_server.sh
 

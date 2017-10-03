@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 git config user.name \"Douglas Blumeyer\"
 git config user.email douglas.blumeyer@gmail.com
 

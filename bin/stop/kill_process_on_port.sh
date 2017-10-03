@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 PORT=$1
 
 if [[ $OSTYPE == darwin* ]] ; then

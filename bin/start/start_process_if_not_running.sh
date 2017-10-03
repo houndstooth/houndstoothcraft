@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 CMD="$1"
 PORT=$2
 

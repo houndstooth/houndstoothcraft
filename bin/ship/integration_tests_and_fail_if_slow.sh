@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -o pipefail
 
 sh ./bin/test/integration.sh | tee /dev/tty > test/integration/slowness-report.txt
 

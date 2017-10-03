@@ -10,6 +10,10 @@ const mockDocument = {
 const mockWindow = {
 	clearInterval: () => null,
 	setInterval: () => null,
+	URL: {
+		createObjectURL: () => null,
+		revokeObjectURL: () => null,
+	},
 }
 
 const _console = console

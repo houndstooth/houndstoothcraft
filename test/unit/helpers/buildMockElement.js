@@ -1,4 +1,4 @@
-export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRemoveChildSpy, parentNodeInsertBeforeSpy } = {}) => ({
+export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRemoveChildSpy, parentNodeInsertBeforeSpy, clickSpy } = {}) => ({
 	classList: {
 		add: className => mockClassList.push(className),
 	},
@@ -10,4 +10,5 @@ export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRe
 		insertBefore: parentNodeInsertBeforeSpy,
 		removeChild: parentNodeRemoveChildSpy,
 	},
+	click: clickSpy,
 })

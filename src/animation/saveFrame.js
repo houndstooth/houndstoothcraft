@@ -1,8 +1,8 @@
-import fileSaver from 'file-saver'
 import state from '../state'
+import saveBlob from './saveBlob'
 
 const saveFrame = blob => {
-	fileSaver.saveAs(blob, `${state.lastSavedAnimationFrame}.png`)
+	saveBlob(blob, `${state.lastSavedAnimationFrame}.png`)
 	state.lastSavedAnimationFrame++
 }
 

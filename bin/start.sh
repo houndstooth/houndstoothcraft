@@ -2,6 +2,7 @@
 
 set -e
 
+sh ./bin/start/watch_unit_tests_and_coverage.sh
 sh ./bin/start/karma_watcher.sh
 sh ./bin/start/test_server.sh
 

@@ -12,8 +12,6 @@ npm i
 
 sh ./bin/setup/git.sh
 
-sh ./bin/ship/unit_tests_and_cover.sh
-
 sh ./bin/start.sh
 
 printf "Welcome to your fresh workstation. Enjoy developing some more houndstooth.\n\n"

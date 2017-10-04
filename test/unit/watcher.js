@@ -13,7 +13,7 @@ const srcWatcher = fs.watch('src', { recursive: true }, () => runTests('src'))
 const runTests = dir => {
 	if (!fsTimeout) {
 		console.log(`change in ${dir} detected`)
-		spawn('./bin/test/unit.sh', { stdio: 'inherit' })
+		spawn('./bin/ship/unit_tests_and_cover.sh', { stdio: 'inherit' })
 		fsTimeout = setTimeout(() => fsTimeout = false, 500)
 	}
 }

@@ -9,3 +9,4 @@ git submodule update --init --recursive
 git submodule foreach git checkout master
 git submodule foreach git config user.name \"Douglas Blumeyer\"
 git submodule foreach git config user.email douglas.blumeyer@gmail.com
+git submodule foreach git pull -r

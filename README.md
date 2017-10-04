@@ -2,65 +2,9 @@
 
 # Houndstooth web-render
 
-```
-git clone https://github.com/houndstooth/web-render.git
-cd web-render
-npm run setup
-```
+Check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
 
-And check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
-
-## development
-
-### commands
-
-The `npm run setup` command takes care of all the initial set up of your development environment, finishing off by calling `npm start` for you.
- 
-The `npm start` command serves a development version of the application, as well as an integration test runner. It opens tabs for these in a new Google Chrome window, along with tabs for the coverage report, the task management software used for the project, the Github repository, and finally the production app. Finally, `npm start` opens the repository in Webstorm.
-
-During development, run unit tests regularly with `npm test`.
-
-When you have made some commits, run `npm run ship` to share your work. This command will push your code changes to Github and the updated application to Pivotal Web Services. Your deployment will be rejected if your code has not been rebased against the latest changes.
-Your code must also use the most up-to-date versions of all dependencies, be free of linting errors, pass test coverage thresholds, and of course pass all tests.
-
-`npm run setup` will pull the latest code from each submodule. If you are picking up on a workstation which has been setup recently but does not have the latest code, `npm run pull` is your command. It pulls the parent and all submodules, with rebase in both cases (this project practices single-branch development).
-
-When you're done developing, just run `npm stop` to shut everything down.
-
-### effect submodules
-
-Each houndstooth effect users can play with in the application lives in its own Git repository, which is submoduled to this parent repository. The effect submodules are not standalone; they rely on the shared code here to function. The separation is intended primarily for their commit histories.
-
-Each of these repos exports at least one effect object, a type of [houndstooth](#houndstooth) object, which is registered in the `effects` index to be discovered by the main source code of the application.
-
-Each repo must also follow a particular directory structure in order for its unit and integration tests to be discovered by the central testing tools.
-
-### testing
-
-This code base includes two test suites:
-
-- unit suite
-    - runs in <5 seconds
-    - runs in the terminal with the help of `babel-node` and the Jasmine CLI test runner.
-    - mocks the DOM as needed without any dependencies
-    
-- integration suite
-    - runs in <5 seconds
-    - uses Karma as the test runner
-    - consists of tests of the final renderings, inspecting individual pixels
-    - the debug mode HTML page features an attractive reporter, as well as visualizations of the houndsteeth under test
-    
-Both use Jasmine as the testing framework along with its mocking and assertion libraries. Both suites are transpiled to ES5 using the same Babel configuration as the implementation code.
-
-All tests, whether unit or integration, begin with a `beforeEach` which calls `resetState` on the central `state`, giving it a fresh copy from the defaults in `src/store/defaults`.
-
-### cross platform
-
-This project has been developed on both Mac OS and Windows workstations, and all development tools have been put together with supporting this in mind. On Windows, Git BASH is used to emulate a *NIX environment.
-
-## the code itself
-
-### state hierarchy
+## state hierarchy
 
 In short:
 - [state](#state)
@@ -68,7 +12,7 @@ In short:
         - [pattern](#pattern)
             - [setting](#setting)  
 
-#### state
+### state
 
 - example instances
 	- `state`
@@ -77,7 +21,7 @@ In short:
 	- `mainHoundstooth` — a [houndstooth](#houndstooth)
 	- other stuff such as `lastSavedAnimationFrame`
 
-#### houndstooth
+### houndstooth
 
 - example instances
 	- `HOUNDSTOOTH_DEFAULTS`
@@ -104,7 +48,7 @@ An "effect", such as the cmyktooth effect, is just a type of houndstooth intende
 
 When you compose a houndstooth, you do so by composing each houndstooth effect's animations patterns into a finished animations pattern, each houndstooth effect's layers patterns into a finished layers pattern, and each houndstooth effect's base patterns into a finished base pattern.
 
-#### pattern
+### pattern
 
 - example instances
 	- `basePattern`
@@ -122,7 +66,7 @@ A pattern conforms to the `PATTERN_STRUCTURE`, a defined model of all the possib
 attempted to compose a pattern with an unrecognized setting
 ```
 
-#### setting
+### setting
 
 - example instances
 	- `colorSettings`
@@ -146,7 +90,7 @@ Note that both an `animationsPattern` pattern and an `animationSettings` setting
 
 Both `layersPattern` and `layerSettings` exist as well, for the same reason.
 
-### execution & component hierarchy
+## execution & component hierarchy
 
 In short:
 - [animation](#animation)
@@ -155,7 +99,7 @@ In short:
 			- [tile](#tile)
 				- [shape](#shape)
 
-#### animation
+### animation
 
 When `animating` is false, essentially only a single animation frame is drawn.
 
@@ -167,7 +111,7 @@ Potentially:
 
 When `exportFrames` is set to `true`, the next animation frame will not be rendered until the current one has finished saving. This may negatively impact the in-browser experience, but it is a solution if your houndstooth is too computationally expensive to watch at the desired frame rate; simply export the frames and assemble them into a video using a tool such as ImageJ.
 
-#### layer
+### layer
 
 Whether [animating](#animation) or not, you may find that your houndstooth is best described not as a single [grid](#grid) of [tiles](#tile), but as many layers of such grids. 
 
@@ -181,7 +125,7 @@ Differences between layers and animations:
 - Animation frames typically occur in very quick succession (maximal frame rate for maximal persistence of vision effect). Layers, however, are considered to occur instantaneously/simultaneously. They are non-temporal; just a breaking down of a single image in a single moment in time into multiple layers.
 - Animation frame neighbors are often very similar looking. If they weren't, the animation wouldn't be smooth, or wouldn't be considered to be animation at all.  Neighboring layers, however, may look completely different from one another, or may look quite similar. It all depends on the intended effect.
 
-#### grid
+### grid
 
 A `grid` represents a tiling of the plane. It creates many `gridAddress`es and calls the [tile](#tile) function on each one.
 
@@ -192,7 +136,7 @@ Typically:
 
 An address coordinate [0, 0] is referred to as the "home address" while a pixel coordinate [0, 0] is referred to as the "origin". 
 
-#### tile
+### tile
 
 A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `tileColors`.
 
@@ -212,7 +156,7 @@ A tile:
 - can break down into multiple shapes, yes, but all of these shapes should have the same origin and size, so that they fit together into a tile; otherwise, why are you grouping them into something you consider a tile?
 - also gathers an `outlineFunction` (or many of them) which it will pass on
 
-#### shape
+### shape
 
 A shape converts a `tileOrigin`, `tileSize`, and `outlineFunction` into an `outline`, and converts `tileColors` into a `color`.
 A shape has only a single color and outline.

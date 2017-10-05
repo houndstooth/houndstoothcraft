@@ -50,40 +50,28 @@ describe('warning about conflicts', () => {
 	})
 
 	it('does not warn when the settings are equivalent functions', () => {
-		// necessary for function names to be the same
-		const patternOne = { getTileOriginAndSize: a => a + 1 }
-		const patternTwo = { getTileOriginAndSize: a => a + 1 }
-
 		warnAboutConflicts = true
 		settingsPath = [ 'tileSettings' ]
 		settingName = 'getTileOriginAndSize'
-		existingSetting = patternOne.getTileOriginAndSize
-		overridingSetting = patternTwo.getTileOriginAndSize
-
+		existingSetting = a => a + 1
+		overridingSetting = a => a + 1
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
-
 
 		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
 
 	it('does warn when the settings are functions that are not equivalent (by stringified comparison)', () => {
-		// necessary for function names to be the same
-		const patternOne = { getTileOriginAndSize: a => a + 1 }
-		const patternTwo = { getTileOriginAndSize: b => b + 1 }
-
 		warnAboutConflicts = true
 		settingsPath = [ 'tileSettings' ]
 		settingName = 'getTileOriginAndSize'
-		existingSetting = patternOne.getTileOriginAndSize
-		overridingSetting = patternTwo.getTileOriginAndSize
-
+		existingSetting = a => a + 1
+		overridingSetting = b => b + 1
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-
-		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function getTileOriginAndSize(a) {return a + 1;}` was overridden by `function getTileOriginAndSize(b) {return b + 1;}`'
+		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a + 1; }` was overridden by `function (b) { return b + 1; }`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})

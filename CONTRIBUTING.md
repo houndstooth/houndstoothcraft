@@ -35,7 +35,7 @@ This code base includes two test suites:
 
 - unit suite
     - runs in <5 seconds
-    - runs in the terminal with the help of `babel-node` and the Jasmine CLI test runner.
+    - runs in the terminal with the help of `ts-node` and the Jasmine CLI test runner.
     - mocks the DOM as needed without any dependencies
     
 - integration suite
@@ -44,7 +44,7 @@ This code base includes two test suites:
     - consists of tests of the final renderings, inspecting individual pixels
     - the debug mode HTML page features an attractive reporter, as well as visualizations of the houndsteeth under test
     
-Both use Jasmine as the testing framework along with its mocking and assertion libraries. Both suites are transpiled to ES5 using the same Babel configuration as the implementation code.
+Both use Jasmine as the testing framework along with its mocking and assertion libraries. Both suites are transpiled to ES5 using the same Typescript configuration as the implementation code.
 
 All tests, whether unit or integration, begin with a `beforeEach` which calls `resetState` on the central `state`, giving it a fresh copy from the defaults in `src/store/defaults`.
 

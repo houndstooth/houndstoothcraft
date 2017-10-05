@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "allowJs": true,
+    "lib": ["ES2017"],
+    "sourceMap": true
+  }
+}

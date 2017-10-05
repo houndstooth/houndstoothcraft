@@ -5,7 +5,7 @@ import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import clear from '../../../../src/canvas/clear'
 import buildMockContext from '../../../helpers/buildMockContext'
 import * as createContext from '../../../../src/page/createContext'
-import * as page from '../../../../src/page'
+import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
@@ -77,7 +77,7 @@ describe('.tileSettings', () => {
 			}
 			mockContext = buildMockContext({ contextCallsOrder })
 			spyOn(createContext, 'default').and.returnValue(mockContext)
-			spyOn(page, 'createMixedDownCanvas').and.returnValue(buildMockContext())
+			spyOn(createMixedDownCanvas, 'default').and.returnValue(buildMockContext())
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {

@@ -1,6 +1,6 @@
 import addEffectToggles from '../../../../src/ui/addEffectToggles'
 import state from '../../../../src/state'
-import effects from '../../../../effects/index'
+import * as effects from '../../../../effects/index'
 
 xdescribe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {

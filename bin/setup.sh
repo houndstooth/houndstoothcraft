@@ -3,8 +3,8 @@
 set -e
 
 sed -i -e "/web-render/d" ~/.bash_profile
-echo "source ~/workspace/web-render/.env" >> ~/.bash_profile
-source ~/.bash_profile
+echo ". ~/workspace/web-render/.env" >> ~/.bash_profile
+. ~/.bash_profile
 
 sh ./bin/setup/install.sh
 

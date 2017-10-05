@@ -2,6 +2,7 @@
 
 set -e
 
+npm i -g npm
 npm update
 ./node_modules/.bin/eslint . --fix
 

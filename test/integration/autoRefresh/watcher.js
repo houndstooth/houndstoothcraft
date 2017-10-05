@@ -1,5 +1,6 @@
 const http = require('http')
 const fs = require('fs')
+const process = require('process')
 
 http.createServer((req, res) => {
 	if (req.url === '/codeUpdates') {
@@ -15,3 +16,5 @@ http.createServer((req, res) => {
 		})
 	}
 }).listen(process.env.KARMA_WATCHER_PORT)
+
+process.on('SIGINT', () => fs.unwatchFile('test/integration/dist/bundle.js'))

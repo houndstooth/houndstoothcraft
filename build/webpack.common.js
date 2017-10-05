@@ -2,11 +2,14 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.[jt]s$/,
+				test: /\.ts$/,
 				loader: 'awesome-typescript-loader',
 				exclude: /node_modules/,
 			},
 		],
+	},
+	resolve: {
+		extensions: [ ".ts", ".js" ]
 	},
 	node: { fs: 'empty' },
 }

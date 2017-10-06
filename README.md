@@ -168,3 +168,7 @@ This outline then gets rotated, scrolled, and sized per any view settings until 
 Then shape chooses a color out of the set of colors given it from the tile using the colorIndex (typically it just cycles through, but more complex orderings are possible).
 
 The final step of shape is to pass on the outline and color to the `solid` render method.
+
+# Contributing
+
+See [CONTRIBUTING.md](https://github.com/houndstooth/web-render/blob/master/CONTRIBUTING.md).

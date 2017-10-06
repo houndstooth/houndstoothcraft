@@ -48,6 +48,8 @@ Both use Jasmine as the testing framework along with its mocking and assertion l
 
 All tests, whether unit or integration, begin with a `beforeEach` which calls `resetState` on the central `state`, giving it a fresh copy from the defaults in `src/store/defaults`.
 
+Run the unit tests in your IDE at `bin/test/unit.sh`. Integration tests are watched in one of your automatically opened browser tabs.
+
 ## cross platform
 
 This project has been developed on both Mac OS and Windows workstations, and all development tools have been put together with supporting this in mind. On Windows, Git BASH is used to emulate a *NIX environment.

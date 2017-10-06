@@ -1,4 +1,4 @@
-export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRemoveChildSpy, parentNodeInsertBeforeSpy, clickSpy } = {}) => ({
+const buildMockElement : any = ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRemoveChildSpy, parentNodeInsertBeforeSpy, clickSpy } : { mockClassList?, mockChildren?, mockAttributeObject?, parentNodeRemoveChildSpy?, parentNodeInsertBeforeSpy?, clickSpy? } = {}) => ({
 	classList: {
 		add: className => mockClassList.push(className),
 	},
@@ -12,3 +12,5 @@ export default ({ mockClassList, mockChildren, mockAttributeObject, parentNodeRe
 	},
 	click: clickSpy,
 })
+
+export default buildMockElement

@@ -13,6 +13,7 @@
     "push": "sh ./bin/push.sh"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.6.0",
     "awesome-typescript-loader": "^3.2.3",
     "eslint": "^4.8.0",
     "eslint-plugin-import": "^2.7.0",

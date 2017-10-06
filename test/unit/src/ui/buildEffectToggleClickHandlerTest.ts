@@ -5,9 +5,9 @@ import * as resetInterface from '../../../../src/ui/resetInterface'
 
 describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
-		spyOn(resetInterface, 'default')
+		const resetInterfaceSpy = spyOn(resetInterface, 'default')
 
-		spyOn(execute, 'executeSelectedHoundstoothEffects')
+		const executeSelectedHoundstoothEffectsSpy = spyOn(execute, 'executeSelectedHoundstoothEffects')
 
 		const checkbox = {}
 
@@ -15,8 +15,8 @@ describe('build effect toggle click handler', () => {
 
 		const clickHandler = buildEffectToggleClickHandler(checkbox, mockHoundstoothEffect)
 
-		expect(resetInterface.default).not.toHaveBeenCalled()
-		expect(execute.executeSelectedHoundstoothEffects).not.toHaveBeenCalled()
+		expect(resetInterfaceSpy).not.toHaveBeenCalled()
+		expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 
 		const preExistingHoundstoothEffect = { name: 'preexisting tooth' }
 		state.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
@@ -25,11 +25,11 @@ describe('build effect toggle click handler', () => {
 
 		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, mockHoundstoothEffect ])
 
-		expect(resetInterface.default).toHaveBeenCalled()
-		expect(execute.executeSelectedHoundstoothEffects).toHaveBeenCalled()
+		expect(resetInterfaceSpy).toHaveBeenCalled()
+		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 
-		resetInterface.default.calls.reset()
-		execute.executeSelectedHoundstoothEffects.calls.reset()
+		resetInterfaceSpy.calls.reset()
+		executeSelectedHoundstoothEffectsSpy.calls.reset()
 
 		// to confirm that it preserves the order otherwise when removing an effect
 		const otherHoundstoothEffect = { name: 'other tooth' }
@@ -37,9 +37,9 @@ describe('build effect toggle click handler', () => {
 
 		simulateClick(checkbox, clickHandler)
 
-		expect(resetInterface.default).toHaveBeenCalled()
+		expect(resetInterfaceSpy).toHaveBeenCalled()
 		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, otherHoundstoothEffect ])
-		expect(execute.executeSelectedHoundstoothEffects).toHaveBeenCalled()
+		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
 })
 

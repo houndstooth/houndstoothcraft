@@ -3,7 +3,7 @@ import state from '../../../../src/state'
 
 describe('mix down contexts', () => {
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {
-		const drawImageSpy = jasmine.createSpy()
+		const drawImageSpy = jasmine.createSpy('drawImage')
 		state.mixedDownContext = { drawImage: drawImageSpy }
 
 		state.contexts = [

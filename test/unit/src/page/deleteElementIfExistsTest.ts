@@ -5,7 +5,7 @@ import buildMockElement from '../../helpers/buildMockElement'
 describe('delete element if exists', () => {
 	describe('when element exists', () => {
 		it('deletes it', () => {
-			const parentNodeRemoveChildSpy = jasmine.createSpy()
+			const parentNodeRemoveChildSpy = jasmine.createSpy('parentNodeRemoveChild')
 			const element = buildMockElement({ parentNodeRemoveChildSpy })
 			spyOn(window.document, 'querySelector').and.returnValue(element)
 

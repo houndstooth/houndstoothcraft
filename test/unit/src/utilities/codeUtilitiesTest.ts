@@ -272,7 +272,7 @@ describe('code utilities', () => {
 		beforeEach(() => changeObjectIntoCopy = codeUtilities.changeObjectIntoCopy)
 
 		it('removes all the keys of the object that are not on the one being copied', () => {
-			const objectToChange = { mary: 'jane', billy: 'bob' }
+			const objectToChange : any = { mary: 'jane', billy: 'bob' }
 			const objectWithProperties = {}
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -282,7 +282,7 @@ describe('code utilities', () => {
 		})
 
 		it('replaces keys of the object with ones from the one being copied', () => {
-			const objectToChange = { mary: 'jane' }
+			const objectToChange : any = { mary: 'jane' }
 			const objectWithProperties = { mary: 'had a little lamb' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -292,7 +292,7 @@ describe('code utilities', () => {
 		})
 
 		it('adds new keys from the one being copied', () => {
-			const objectToChange = {}
+			const objectToChange : any = {}
 			const objectWithProperties = { billy: 'bob' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })

@@ -7,7 +7,7 @@ import noop from '../../../helpers/noop'
 describe('create checkbox', () => {
 	let returnedCheckbox, mockCheckbox
 	const mockClassList = []
-	const mockAttributeObject = {}
+	const mockAttributeObject = { type: '' }
 	const mockClickHandler = noop
 	const mockHoundstoothEffect = { name: 'mock tooth' }
 	beforeAll(() => {

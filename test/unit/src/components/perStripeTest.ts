@@ -20,7 +20,7 @@ describe('per stripe', () => {
 	})
 
 	it('calls the stripe position function once for each stripe', () => {
-		const getStripePositionSpy = jasmine.createSpy()
+		const getStripePositionSpy = jasmine.createSpy('getStripePosition')
 
 		perStripe({ getStripePosition: getStripePositionSpy })
 

@@ -3,11 +3,12 @@ import { ERASE } from '../../../../src/constants'
 import * as parseColor from '../../../../src/render/parseColor'
 import * as buildPath from '../../../../src/render/buildPath'
 import * as fillPath from '../../../../src/render/fillPath'
+import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('fill', () => {
 	const shapeColor = {}
 	const parsedColor = '#012345'
-	const context = {}
+	const context = buildMockContext()
 	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
 	beforeEach(() => {

@@ -19,7 +19,7 @@ describe('shape', () => {
 	let getOutlineSpy
 
 	beforeEach(() => {
-		getOutlineSpy = jasmine.createSpy()
+		getOutlineSpy = jasmine.createSpy('getOutlineSpy')
 
 		spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
 		spyOn(texture, 'default')

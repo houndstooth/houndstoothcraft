@@ -10,12 +10,13 @@ describe('execute selected houndstooth effects', () => {
 	const layerFunctions = { layer: 'layer' }
 	const animationFunctions = { animation: 'animation' }
 	const mixedDownCanvas = {}
+	let prepareFunctionsPerSettingSpy
 	beforeEach(() => {
 		spyOn(page, 'createMixedDownCanvas').and.returnValue(mixedDownCanvas)
 		spyOn(page, 'createContexts')
 		spyOn(executeGrid, 'default')
 		spyOn(executeAnimation, 'default')
-		spyOn(prepareFunctionsPerSetting, 'default').and.returnValues(layerFunctions, animationFunctions)
+		prepareFunctionsPerSettingSpy = spyOn(prepareFunctionsPerSetting, 'default').and.returnValues(layerFunctions, animationFunctions)
 	})
 
 	it('composes the houndstooth', () => {
@@ -33,7 +34,7 @@ describe('execute selected houndstooth effects', () => {
 	it('prepares layer functions', () => {
 		executeSelectedHoundstoothEffects()
 
-		expect(prepareFunctionsPerSetting.default).toHaveBeenCalledWith({
+		expect(prepareFunctionsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctions: state.mainHoundstooth.layersPattern,
 		})
 	})
@@ -86,7 +87,7 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('prepares animation functions', () => {
-			expect(prepareFunctionsPerSetting.default).toHaveBeenCalledWith({
+			expect(prepareFunctionsPerSettingSpy).toHaveBeenCalledWith({
 				settingsFunctions: state.mainHoundstooth.animationsPattern,
 			})
 		})
@@ -110,7 +111,7 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('does not prepare animation functions', () => {
-			expect(prepareFunctionsPerSetting.default.calls.all().length).toBe(1)
+			expect(prepareFunctionsPerSettingSpy.calls.all().length).toBe(1)
 		})
 
 		it('executes a single grid', () => {

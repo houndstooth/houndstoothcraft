@@ -7,14 +7,14 @@ describe('clear', () => {
 	beforeEach(() => {
 		spyOn(getCanvasSize, 'default').and.returnValue([ 400, 500 ])
 
-		mixedDownClearRectSpy = jasmine.createSpy()
+		mixedDownClearRectSpy = jasmine.createSpy('mixedDownClearRect')
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }
 	})
 
 	describe('when there is a single context', () => {
 		let clearRectSpy
 		beforeEach(() => {
-			clearRectSpy = jasmine.createSpy()
+			clearRectSpy = jasmine.createSpy('clearRect')
 			state.contexts = [ { clearRect: clearRectSpy } ]
 
 			clear()
@@ -31,9 +31,9 @@ describe('clear', () => {
 
 	describe('when there are multiple contexts', () => {
 		it('wipes every canvas', () => {
-			const clearRectSpy1 = jasmine.createSpy()
-			const clearRectSpy2 = jasmine.createSpy()
-			const clearRectSpy3 = jasmine.createSpy()
+			const clearRectSpy1 = jasmine.createSpy('clearRect1')
+			const clearRectSpy2 = jasmine.createSpy('clearRect2')
+			const clearRectSpy3 = jasmine.createSpy('clearRect3')
 			state.contexts = [
 				{ clearRect: clearRectSpy1 },
 				{ clearRect: clearRectSpy2 },

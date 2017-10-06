@@ -3,7 +3,7 @@ import * as composePatterns from '../../../../src/execute/composePatterns'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
-		spyOn(composePatterns, 'default')
+		const composePatternsSpy = spyOn(composePatterns, 'default')
 
 		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
@@ -13,7 +13,7 @@ describe('combine houndstooth effects', () => {
 		combineHoundstoothEffects({ houndstoothEffects })
 
 
-		const composePatternsCalls = composePatterns.default.calls.all()
+		const composePatternsCalls = composePatternsSpy.calls.all()
 
 		expect(composePatternsCalls.length).toBe(6)
 

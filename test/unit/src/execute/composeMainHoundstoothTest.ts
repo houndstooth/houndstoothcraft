@@ -168,7 +168,7 @@ describe('composeMainHoundstooth', () => {
 			it('does not proceed to merge in these patterns', () => {
 				const originalHoundstoothDefaultsToRestoreTo = codeUtilities.deepClone(DEFAULT_HOUNDSTOOTH)
 				DEFAULT_HOUNDSTOOTH.yikesPattern = {}
-				composeMainHoundstooth({ basePattern: {} })
+				composeMainHoundstooth()
 				expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(composePatterns.default).not.toHaveBeenCalled()
 
@@ -182,7 +182,7 @@ describe('composeMainHoundstooth', () => {
 		describe('already on the main houndstooth (somehow)', () => {
 			it('does not proceed to merge in these patterns', () => {
 				state.mainHoundstooth.yikesPattern = {}
-				composeMainHoundstooth({ basePattern: {} })
+				composeMainHoundstooth()
 				expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: yikesPattern')
 				expect(composePatterns.default).not.toHaveBeenCalled()
 			})
@@ -190,7 +190,7 @@ describe('composeMainHoundstooth', () => {
 	})
 
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
-		spyOn(composePatterns, 'default')
+		const composePatternsSpy = spyOn(composePatterns, 'default')
 
 		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		spyOn(combineHoundstoothEffects, 'default').and.returnValue(combinedHoundstoothEffects)
@@ -200,7 +200,7 @@ describe('composeMainHoundstooth', () => {
 		composeMainHoundstooth({ houndstoothOverrides })
 
 
-		const composePatternsCalls = composePatterns.default.calls.all()
+		const composePatternsCalls = composePatternsSpy.calls.all()
 
 		expect(composePatternsCalls.length).toBe(9)
 

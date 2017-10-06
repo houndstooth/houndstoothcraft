@@ -14,7 +14,7 @@ describe('adjusts outline for view', () => {
 		spyOn(applyScroll, 'default').and.returnValue(zoomedAndScrolledOutline)
 		spyOn(applyTilt, 'default').and.returnValue(zoomedAndScrolledAndTiltedOutline)
 
-		const actualOutline = applyView(outline, { tileOrigin: [], tileSize: 3 })
+		const actualOutline = applyView(outline)
 
 		expect(applyZoom.default).toHaveBeenCalledWith(outline)
 		expect(applyScroll.default).toHaveBeenCalledWith(zoomedOutline)

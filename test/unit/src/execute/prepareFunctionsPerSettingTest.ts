@@ -5,8 +5,9 @@ import { deepClone } from '../../../../src/utilities/codeUtilities'
 describe('#prepareFunctionsPerSetting', () => {
 	let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
 	let settingFunction, secondSettingFunction
+	let errorSpy
 	beforeEach(() => {
-		spyOn(console, 'error')
+		errorSpy = spyOn(console, 'error')
 		settingFunction = p => p * 2
 		secondSettingFunction = p => p - 1
 		settingsFunctions = {
@@ -52,8 +53,8 @@ describe('#prepareFunctionsPerSetting', () => {
 	})
 
 	it('errors if you have included anything that is not a function', () => {
-		expect(console.error.calls.all()[ 0 ].args[ 0 ]).toContain('secondChildPathFirstStep')
-		expect(console.error.calls.all()[ 0 ].args[ 0 ]).toContain('thingThatShouldNotBe')
-		expect(console.error.calls.all()[ 0 ].args[ 0 ]).toContain('Great Old One')
+		expect(errorSpy.calls.all()[ 0 ].args[ 0 ]).toContain('secondChildPathFirstStep')
+		expect(errorSpy.calls.all()[ 0 ].args[ 0 ]).toContain('thingThatShouldNotBe')
+		expect(errorSpy.calls.all()[ 0 ].args[ 0 ]).toContain('Great Old One')
 	})
 })

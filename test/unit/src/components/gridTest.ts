@@ -5,16 +5,16 @@ import * as tile from '../../../../src/components/tile'
 
 describe('grid', () => {
 	const gridSize = 2
-
+	let tileSpy
 	beforeEach(() => {
-		spyOn(tile, 'default')
+		tileSpy = spyOn(tile, 'default')
 		state.mainHoundstooth.basePattern.gridSettings = { gridSize }
 	})
 
 	it('uses the given grid size', () => {
 		grid()
 
-		expect(tile.default.calls.all().length).toBe(Math.pow(gridSize, 2))
+		expect(tileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
 	})
 
 	describe('when negative quadrants are excluded', () => {
@@ -25,11 +25,11 @@ describe('grid', () => {
 		it('only makes tiles with positive addresses', () => {
 			grid()
 
-			expect(tile.default.calls.count()).toEqual(Math.pow(gridSize, 2))
-			expect(tile.default.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
-			expect(tile.default.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
-			expect(tile.default.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
-			expect(tile.default.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
+			expect(tileSpy.calls.count()).toEqual(Math.pow(gridSize, 2))
+			expect(tileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
+			expect(tileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
+			expect(tileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
+			expect(tileSpy.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
 		})
 	})
 
@@ -43,23 +43,23 @@ describe('grid', () => {
 
 			grid()
 
-			expect(tile.default.calls.count()).toEqual(Math.pow(gridSize, 2) * quadrantCount)
-			expect(tile.default.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ -2, -2 ] } ])
-			expect(tile.default.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ -2, -1 ] } ])
-			expect(tile.default.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ -2, 0 ] } ])
-			expect(tile.default.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ -2, 1 ] } ])
-			expect(tile.default.calls.all()[ 4 ].args).toEqual([ { gridAddress: [ -1, -2 ] } ])
-			expect(tile.default.calls.all()[ 5 ].args).toEqual([ { gridAddress: [ -1, -1 ] } ])
-			expect(tile.default.calls.all()[ 6 ].args).toEqual([ { gridAddress: [ -1, 0 ] } ])
-			expect(tile.default.calls.all()[ 7 ].args).toEqual([ { gridAddress: [ -1, 1 ] } ])
-			expect(tile.default.calls.all()[ 8 ].args).toEqual([ { gridAddress: [ 0, -2 ] } ])
-			expect(tile.default.calls.all()[ 9 ].args).toEqual([ { gridAddress: [ 0, -1 ] } ])
-			expect(tile.default.calls.all()[ 10 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
-			expect(tile.default.calls.all()[ 11 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
-			expect(tile.default.calls.all()[ 12 ].args).toEqual([ { gridAddress: [ 1, -2 ] } ])
-			expect(tile.default.calls.all()[ 13 ].args).toEqual([ { gridAddress: [ 1, -1 ] } ])
-			expect(tile.default.calls.all()[ 14 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
-			expect(tile.default.calls.all()[ 15 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
+			expect(tileSpy.calls.count()).toEqual(Math.pow(gridSize, 2) * quadrantCount)
+			expect(tileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ -2, -2 ] } ])
+			expect(tileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ -2, -1 ] } ])
+			expect(tileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ -2, 0 ] } ])
+			expect(tileSpy.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ -2, 1 ] } ])
+			expect(tileSpy.calls.all()[ 4 ].args).toEqual([ { gridAddress: [ -1, -2 ] } ])
+			expect(tileSpy.calls.all()[ 5 ].args).toEqual([ { gridAddress: [ -1, -1 ] } ])
+			expect(tileSpy.calls.all()[ 6 ].args).toEqual([ { gridAddress: [ -1, 0 ] } ])
+			expect(tileSpy.calls.all()[ 7 ].args).toEqual([ { gridAddress: [ -1, 1 ] } ])
+			expect(tileSpy.calls.all()[ 8 ].args).toEqual([ { gridAddress: [ 0, -2 ] } ])
+			expect(tileSpy.calls.all()[ 9 ].args).toEqual([ { gridAddress: [ 0, -1 ] } ])
+			expect(tileSpy.calls.all()[ 10 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
+			expect(tileSpy.calls.all()[ 11 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
+			expect(tileSpy.calls.all()[ 12 ].args).toEqual([ { gridAddress: [ 1, -2 ] } ])
+			expect(tileSpy.calls.all()[ 13 ].args).toEqual([ { gridAddress: [ 1, -1 ] } ])
+			expect(tileSpy.calls.all()[ 14 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
+			expect(tileSpy.calls.all()[ 15 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
 		})
 	})
 

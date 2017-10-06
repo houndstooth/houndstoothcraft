@@ -10,13 +10,13 @@ import * as isTileUniform from '../../../../src/components/isTileUniform'
 
 describe('tile', () => {
 	const gridAddress = [ 3, 5 ]
-
+	let shapeSpy, getTileColorIndicesSpy, isTileUniformSpy
 	beforeEach(() => {
-		spyOn(render, 'shape')
+		shapeSpy = spyOn(render, 'shape')
 		spyOn(space, 'squareOutline')
 		spyOn(space, 'stripeOutline')
-		spyOn(getTileColorIndices, 'default')
-		spyOn(isTileUniform, 'default')
+		getTileColorIndicesSpy = spyOn(getTileColorIndices, 'default')
+		isTileUniformSpy = spyOn(isTileUniform, 'default')
 	})
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
@@ -47,7 +47,7 @@ describe('tile', () => {
 			state.mainHoundstooth.basePattern.tileSettings = {}
 
 			tileColorIndices = []
-			getTileColorIndices.default.and.returnValue(tileColorIndices)
+			getTileColorIndicesSpy.and.returnValue(tileColorIndices)
 		})
 
 		it('gets colors', () => {
@@ -64,12 +64,12 @@ describe('tile', () => {
 			it('checks if the tile is uniform', () => {
 				tile({ gridAddress })
 
-				expect(isTileUniform.default).toHaveBeenCalledWith({ tileColorIndices })
+				expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
 			})
 
 			describe('when the tile is uniform', () => {
 				beforeEach(() => {
-					isTileUniform.default.and.returnValue(true)
+					isTileUniformSpy.and.returnValue(true)
 				})
 
 				it('does not look for stripe positions', () => {
@@ -81,7 +81,7 @@ describe('tile', () => {
 				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses square outline', () => {
 					tile({ gridAddress })
 
-					expect(render.shape).toHaveBeenCalledWith(jasmine.objectContaining({
+					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						gridAddress,
 						tileColorIndices,
 						tileOrigin,
@@ -93,7 +93,7 @@ describe('tile', () => {
 
 			describe('when the tile is not uniform', () => {
 				beforeEach(() => {
-					isTileUniform.default.and.returnValue(false)
+					isTileUniformSpy.and.returnValue(false)
 				})
 
 				it('looks for stripe positions', () => {
@@ -105,14 +105,14 @@ describe('tile', () => {
 				it('converts the tile into a number of shapes equal to the number of stripes', () => {
 					tile({ gridAddress })
 
-					expect(render.shape.calls.all().length).toEqual(stripePositionsForTile.length)
+					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
 
 				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses the shape outline', () => {
 					tile({ gridAddress })
 
-					expect(render.shape).toHaveBeenCalledWith(jasmine.objectContaining({
+					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						gridAddress,
 						tileColorIndices,
 						tileOrigin,
@@ -124,7 +124,7 @@ describe('tile', () => {
 				it('converts the tile into shapes, each one a stripe, each one knowing its stripe index', () => {
 					tile({ gridAddress })
 
-					const shapes = render.shape.calls.all()
+					const shapes = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 0 }))
 					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 1 }))
@@ -135,7 +135,7 @@ describe('tile', () => {
 				it('passes along options that the outline getting function will need', () => {
 					tile({ gridAddress })
 
-					const shapes = render.shape.calls.all()
+					const shapes = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						outlineOptions: {
@@ -171,13 +171,13 @@ describe('tile', () => {
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {
-				isTileUniform.default.and.returnValue(true)
+				isTileUniformSpy.and.returnValue(true)
 
 				tile({ gridAddress })
 
 				expect(getStripePositionsForTile.default).toHaveBeenCalledWith({ gridAddress })
-				expect(render.shape.calls.all().length).toEqual(stripePositionsForTile.length)
-				expect(render.shape).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: space.stripeOutline }))
+				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
+				expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: space.stripeOutline }))
 			})
 		})
 	})

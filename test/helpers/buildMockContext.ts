@@ -1,6 +1,6 @@
 import noop from './noop'
 
-const buildMockContext = ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
+const buildMockContext = ({ contextCallsOrder = [], toBlobSpy } : { contextCallsOrder?, toBlobSpy? } = {}) => ({
 	beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),
 	moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
 	lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),
@@ -12,6 +12,8 @@ const buildMockContext = ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	clearRect: () => contextCallsOrder.push({ method: 'clearRect' }),
 	canvas: { toBlob: toBlobSpy },
 	drawImage: noop,
+	globalCompositeOperation: '',
+	fillStyle: '',
 })
 
 export default buildMockContext

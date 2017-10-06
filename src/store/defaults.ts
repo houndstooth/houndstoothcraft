@@ -48,7 +48,7 @@ const DEFAULT_PATTERN = {
 	},
 }
 
-const DEFAULT_HOUNDSTOOTH = {
+const DEFAULT_HOUNDSTOOTH : any = {
 	basePattern: DEFAULT_PATTERN,
 	animationsPattern: {},
 	layersPattern: {},

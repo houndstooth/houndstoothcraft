@@ -6,8 +6,9 @@ import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create contexts', () => {
 	let canvasContainer
+	let createContextSpy
 	beforeEach(() => {
-		spyOn(createContext, 'default')
+		createContextSpy = spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement()
 		canvasContainer.innerHTML = 'some old canvases'
@@ -33,15 +34,15 @@ describe('create contexts', () => {
 		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 		createContexts()
 
-		expect(createContext.default.calls.count()).toBe(6)
+		expect(createContextSpy.calls.count()).toBe(6)
 		expect(state.contexts.length).toBe(6)
 
 		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 3 }
-		createContext.default.calls.reset()
+		createContextSpy.calls.reset()
 
 		createContexts()
 
-		expect(createContext.default.calls.count()).toBe(4)
+		expect(createContextSpy.calls.count()).toBe(4)
 		expect(state.contexts.length).toBe(4)
 	})
 })

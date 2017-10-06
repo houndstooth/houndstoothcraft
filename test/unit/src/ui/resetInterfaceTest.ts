@@ -3,9 +3,10 @@ import state from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import * as canvas from '../../../../src/canvas'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
+import buildMockElement from '../../helpers/buildMockElement'
 
 describe('reset interface', () => {
-	const warningsContainer = {}
+	const warningsContainer = buildMockElement()
 	beforeEach(() => {
 		spyOn(windowWrapper.document, 'querySelector').and.returnValue(warningsContainer)
 		spyOn(windowWrapper.window, 'clearInterval')

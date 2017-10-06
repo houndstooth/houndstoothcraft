@@ -1,7 +1,7 @@
-const iterator = (layers, options = { oneIndexed: false }) => {
+const iterator = (i, options = { oneIndexed: false }) => {
 	let iterator = []
-	for (let i = 0; i < Math.ceil(layers); i++) {
-		iterator.push(i)
+	for (let j = 0; j < Math.ceil(i); j++) {
+		iterator.push(j)
 	}
 	if (options.oneIndexed) iterator = iterator.map(k => k + 1)
 	return iterator

@@ -13,4 +13,6 @@ sh ./bin/ship/integration_tests_and_fail_if_slow.sh
 
 sh ./bin/push.sh
 
+sh ./bin/ship/build.sh
+
 sh ./bin/ship/deploy.sh

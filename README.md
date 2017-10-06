@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/houndstooth/web-render.svg?branch=master)](https://travis-ci.org/houndstooth/web-render)
+[![devDependency Status](https://david-dm.org/houndstooth/web-render/dev-status.svg)](https://david-dm.org/houndstooth/web-render?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/houndstooth/web-render/badge.svg?branch=master)](https://coveralls.io/github/houndstooth/web-render?branch=master)
 
 # Houndstooth web-render
 

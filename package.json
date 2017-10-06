@@ -11,11 +11,13 @@
     "test": "sh ./bin/test.sh",
     "pull": "sh ./bin/pull.sh",
     "push": "sh ./bin/push.sh",
-    "restart": "sh ./bin/restart.sh"
+    "restart": "sh ./bin/restart.sh",
+    "ci": "sh ./bin/ci.sh"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",
     "awesome-typescript-loader": "^3.2.3",
+    "codecov": "^2.3.0",
     "eslint": "^4.8.0",
     "eslint-plugin-import": "^2.7.0",
     "jasmine": "^2.8.0",

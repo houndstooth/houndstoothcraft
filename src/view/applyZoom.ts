@@ -7,9 +7,9 @@ const adjustCoordinateForZoom = coordinate => {
 	const canvasCenter = canvasSize / 2
 	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
-	if (shouldAdjustForCentering) coordinate = coordinate.map(c => c -= canvasCenter)
-	coordinate = coordinate.map(c => c *= zoom)
-	if (shouldAdjustForCentering) coordinate = coordinate.map(c => c += canvasCenter)
+	if (shouldAdjustForCentering) coordinate = coordinate.map(c => c - canvasCenter)
+	coordinate = coordinate.map(c => c * zoom)
+	if (shouldAdjustForCentering) coordinate = coordinate.map(c => c + canvasCenter)
 
 	return coordinate
 }

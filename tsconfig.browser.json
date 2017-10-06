@@ -1,11 +1,19 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
     "allowJs": true,
     "lib": [ "es2017", "dom" ],
     "sourceMap": true,
     "types": [ "jasmine" ]
-  }
+  },
+  "include": [
+    "src/**/*",
+    "effects/**/*"
+  ],
+  "exclude": [
+    "test",
+    "effects/*/test/**/*"
+  ]
 }

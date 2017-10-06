@@ -1,0 +1,12 @@
+{
+    "check-coverage": true,
+    "statements": 80,
+    "lines": 80,
+    "branches": 80,
+    "functions": 80,
+    "report-dir": "./test/unit/coverage",
+    "require": "ts-node/register",
+    "reporter": "lcov",
+    "extension": ".ts",
+    "temp-directory": "./test/unit/coverage/.nyc_output"
+}

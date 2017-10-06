@@ -6,7 +6,7 @@
     "functions": 80,
     "report-dir": "./test/unit/coverage",
     "require": "ts-node/register",
-    "reporter": [ "lcov", "text" ],
+    "reporter": [ "lcov", "text", "json" ],
     "extension": ".ts",
     "temp-directory": "./test/unit/coverage/.nyc_output"
 }

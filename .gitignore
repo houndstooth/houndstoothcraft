@@ -4,5 +4,6 @@ node_modules/
 dist/bundle.js
 test/integration/dist/bundle.js
 .DS_store
-test/unit/coverage/
+test/unit/coverage/*
+!test/unit/coverage/coverage-final.json
 test/integration/slowness-report.txt

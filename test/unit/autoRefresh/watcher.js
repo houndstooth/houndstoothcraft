@@ -13,7 +13,7 @@ const runTests = (res, dir) => {
 	if (!fsTimeout) {
 		console.log(`Change in ${dir} detected.`)
 		fsTimeout = setTimeout(() => fsTimeout = false, 500)
-		spawnSync('./bin/ship/unit_tests_and_cover.sh', { stdio: 'inherit' })
+		spawnSync('./bin/test/unit_tests_and_cover.sh', { stdio: 'inherit' })
 		res.write('data: reload\n\n')
 	}
 }

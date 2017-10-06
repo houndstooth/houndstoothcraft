@@ -4,7 +4,7 @@ import { applyBackgroundColor, applyOpacity } from '../view'
 import { iterator } from '../utilities/codeUtilities'
 
 const grid = () => {
-	let { includeNegativeQuadrants, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
+	let { includeNegativeQuadrants, gridSize } : { includeNegativeQuadrants?, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
 
 	applyOpacity()
 	applyBackgroundColor()

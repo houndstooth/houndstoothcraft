@@ -1,4 +1,6 @@
-const mockDocument = {
+declare const global: any
+
+const mockDocument: { createElement: Function, createTextNode: Function, querySelector: Function, body: { appendChild: Function } } = {
 	createElement: () => null,
 	createTextNode: () => null,
 	querySelector: () => null,
@@ -7,7 +9,7 @@ const mockDocument = {
 	},
 }
 
-const mockWindow = {
+const mockWindow: { clearInterval: Function, setInterval: Function, URL: { createObjectURL: Function, revokeObjectURL: Function } } = {
 	clearInterval: () => null,
 	setInterval: () => null,
 	URL: {

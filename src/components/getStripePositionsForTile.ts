@@ -1,7 +1,7 @@
 import state from '../state'
 import perStripe from './perStripe'
 
-const getStripePositionsForTile = ({ gridAddress } = {}) => {
+const getStripePositionsForTile = ({ gridAddress } : { gridAddress? } = {}) => {
 	const getStripePositions = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions
 	const getStripePositionsForTile = getStripePositions || standardStripePositions
 	return getStripePositionsForTile({ gridAddress })

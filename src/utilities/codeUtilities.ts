@@ -24,7 +24,7 @@ const shallowEqual = (a, b) => {
 	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
-const deepClone = objectToDeepClone => {
+const deepClone: any = objectToDeepClone => {
 	let clonedObject = {}
 	setAllPropertiesOfObjectOnAnother({
 		objectWithProperties: objectToDeepClone,

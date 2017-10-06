@@ -18,7 +18,7 @@ const tile = ({ gridAddress }) => {
 }
 
 const shouldUseSquare = ({ tileColorIndices }) => {
-	const { collapseSameColoredShapesWithinTile } = state.mainHoundstooth.basePattern.tileSettings || {}
+	const { collapseSameColoredShapesWithinTile } : { collapseSameColoredShapesWithinTile? } = state.mainHoundstooth.basePattern.tileSettings || {}
 	const shouldCollapseSameColoredShapes = defaultToTrue(collapseSameColoredShapesWithinTile)
 	return shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
 }
@@ -31,13 +31,13 @@ const squareTile = args => {
 const stripedTile = args => {
 	const stripePositions = getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
-		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
+		const stripeArgs: any = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
 		shape(stripeArgs)
 	})
 }
 
 const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
-	const stripeArgs = deepClone(args)
+	const stripeArgs: any = deepClone(args)
 
 	stripeArgs.getOutline = stripeOutline
 	stripeArgs.stripeIndex = stripeIndex

@@ -4,7 +4,7 @@ import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 import settingPath from './settingPath'
 import { PATTERN_STRUCTURE } from '../store'
 
-const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = PATTERN_STRUCTURE, warnAboutConflicts }) => {
+const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = PATTERN_STRUCTURE, warnAboutConflicts } : { patternToBeMergedOnto, patternToMerge, settingsPath?, patternStructureChecker?, warnAboutConflicts? }) => {
 	if (!patternToMerge) return
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
 		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) return

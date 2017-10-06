@@ -4,7 +4,7 @@ import { mixDownContexts } from '../canvas'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 
 const executeGrid = ({ layerFunctions }) => {
-	let { startLayer, endLayer } = state.mainHoundstooth.basePattern.layerSettings || {}
+	let { startLayer, endLayer } : { startLayer?, endLayer } = state.mainHoundstooth.basePattern.layerSettings || {}
 	startLayer = startLayer || 0
 
 	for (let n = 0; n <= endLayer; n++) {

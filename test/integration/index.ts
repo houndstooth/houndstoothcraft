@@ -1,3 +1,5 @@
+declare const require: any
+
 const testsContext = require.context('./tests', true)
 testsContext.keys().forEach(testsContext)
 

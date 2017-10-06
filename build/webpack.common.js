@@ -5,7 +5,7 @@ module.exports = {
 				test: /\.ts$/,
 				loader: 'awesome-typescript-loader',
 				query: {
-					configFileName: './tsconfig.browser.json',
+					configFileName: './build/tsconfig.browser.json',
 				},
 			},
 		],

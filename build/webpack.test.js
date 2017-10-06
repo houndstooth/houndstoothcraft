@@ -7,7 +7,7 @@ module.exports = Object.assign({}, webpackCommonConfig, {
 				test: /\.ts$/,
 				loader: 'awesome-typescript-loader',
 				query: {
-					configFileName: './tsconfig.test.json',
+					configFileName: './build/tsconfig.test.json',
 				},
 			},
 		],

@@ -4,7 +4,7 @@ set -e
 
 npm i -g npm
 npm update
-eslint . --fix
+eslint '**/*.ts' --fix
 
 sh ./bin/pull.sh
 

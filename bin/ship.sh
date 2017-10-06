@@ -9,6 +9,8 @@ eslint '**/*.ts' --fix
 sh ./bin/pull.sh
 
 sh ./bin/test/unit_tests_and_cover.sh
+git add test/unit/coverage/coverage-final.json
+git commit --amend --no-edit
 sh ./bin/test/integration_tests_and_fail_if_slow.sh
 
 sh ./bin/push.sh

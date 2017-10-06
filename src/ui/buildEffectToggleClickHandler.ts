@@ -1,6 +1,6 @@
 import state from '../state'
-import resetInterface from './resetInterface'
 import { executeSelectedHoundstoothEffects } from '../execute'
+import resetInterface from './resetInterface'
 
 const buildEffectToggleClickHandler = (checkbox, houndstoothEffect) => () => {
 	resetInterface()

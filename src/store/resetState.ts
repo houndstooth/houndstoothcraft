@@ -1,5 +1,5 @@
-import { DEFAULT_STATE } from './defaults'
 import { changeObjectIntoCopy } from '../utilities/codeUtilities'
+import { DEFAULT_STATE } from './defaults'
 
 const resetState = state => {
 	changeObjectIntoCopy({

@@ -1,8 +1,8 @@
 import state from '../state'
 import { callFunctionsPerSetting, executeGrid } from '../execute'
 import { clear } from '../canvas'
-import exportFrame from './exportFrame'
 import { deepClone } from '../utilities/codeUtilities'
+import exportFrame from './exportFrame'
 
 const buildAnimationFunction = ({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas }) => () => {
 	if (state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame) return

@@ -1,5 +1,5 @@
-import createCheckbox from './createCheckbox'
 import { document } from '../utilities/windowWrapper'
+import createCheckbox from './createCheckbox'
 
 const createLabel = houndstoothEffect => {
 	const label = document.createElement('label')

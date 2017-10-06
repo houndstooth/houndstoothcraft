@@ -1,9 +1,9 @@
+import state from '../../../src/state'
 import setElementDimensions from '../../../src/page/setElementDimensions'
 import getCanvasSize from '../../../src/canvas/getCanvasSize'
 import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
-import state from '../../../src/state'
 
 const prepareCanvasForDisplayInTest = canvas => {
 	canvas.style.display = 'block'

@@ -1,6 +1,6 @@
-import insertElementRightAfter from './insertElementRightAfter'
-import createCanvasContainer from './createCanvasContainer'
 import { document } from '../utilities/windowWrapper'
+import createCanvasContainer from './createCanvasContainer'
+import insertElementRightAfter from './insertElementRightAfter'
 
 const createEffectTogglesContainer = () => {
 	const effectTogglesContainer = document.createElement('div')

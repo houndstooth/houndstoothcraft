@@ -1,9 +1,9 @@
-import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
-import composePatterns from './composePatterns'
 import { console } from '../utilities/windowWrapper'
 import { defaults } from '../store'
 import state from '../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
+import composePatterns from './composePatterns'
+import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 
 const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } : { houndstoothEffects?, houndstoothOverrides?, logComposedMainHoundstooth? } = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })

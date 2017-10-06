@@ -1,8 +1,8 @@
 import state from '../state'
-import createCanvasContainer from './createCanvasContainer'
 import { getCanvasSize, layerIterator } from '../canvas'
-import createContext from './createContext'
 import { document } from '../utilities/windowWrapper'
+import createCanvasContainer from './createCanvasContainer'
+import createContext from './createContext'
 
 const createContexts = () => {
 	const canvasSize = getCanvasSize()

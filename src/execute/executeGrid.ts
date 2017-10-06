@@ -1,6 +1,6 @@
 import state from '../state'
-import callFunctionsPerSetting from './callFunctionsPerSetting'
 import { mixDownContexts } from '../canvas'
+import callFunctionsPerSetting from './callFunctionsPerSetting'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 
 const executeGrid = ({ layerFunctions }) => {

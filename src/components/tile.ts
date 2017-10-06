@@ -1,12 +1,12 @@
-import isTileUniform from './isTileUniform'
 import { defaultToTrue, deepClone } from '../utilities/codeUtilities'
 import { shape } from '../render'
-import getTileColorIndices from './getTileColorIndices'
-import getTileOriginAndSize from './getTileOriginAndSize'
-import getStripePositionsForTile from './getStripePositionsForTile'
 import { squareOutline, stripeOutline } from '../space'
 import { PERIMETER_SCALAR } from '../constants'
 import state from '../state'
+import getStripePositionsForTile from './getStripePositionsForTile'
+import getTileColorIndices from './getTileColorIndices'
+import getTileOriginAndSize from './getTileOriginAndSize'
+import isTileUniform from './isTileUniform'
 
 const tile = ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })

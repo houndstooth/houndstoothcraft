@@ -1,7 +1,7 @@
 import { isDefined } from '../utilities/codeUtilities'
-import settingPath from './settingPath'
 import { console } from '../utilities/windowWrapper'
 import { warn } from '../ui'
+import settingPath from './settingPath'
 
 const maybeWarnAboutConflicts = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {

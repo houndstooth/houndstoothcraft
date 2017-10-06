@@ -1,5 +1,5 @@
-import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 import { document } from '../utilities/windowWrapper'
+import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 
 const createCheckbox = houndstoothEffect => {
 	const checkbox = document.createElement('input')

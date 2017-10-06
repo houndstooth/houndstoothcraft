@@ -1,8 +1,8 @@
 import { console } from '../utilities/windowWrapper'
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined, propertyIsDefinedOnObject } from '../utilities/codeUtilities'
+import { PATTERN_STRUCTURE } from '../store'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 import settingPath from './settingPath'
-import { PATTERN_STRUCTURE } from '../store'
 
 const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = PATTERN_STRUCTURE, warnAboutConflicts } : { patternToBeMergedOnto, patternToMerge, settingsPath?, patternStructureChecker?, warnAboutConflicts? }) => {
 	if (!patternToMerge) return

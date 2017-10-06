@@ -1,6 +1,6 @@
-import insertElementRightAfter from './insertElementRightAfter'
-import createEffectTogglesContainer from './createEffectTogglesContainer'
 import { document } from '../utilities/windowWrapper'
+import createEffectTogglesContainer from './createEffectTogglesContainer'
+import insertElementRightAfter from './insertElementRightAfter'
 
 const createWarningsContainer = () => {
 	const warningsContainer = document.createElement('div')

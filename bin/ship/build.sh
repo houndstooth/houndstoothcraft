@@ -2,4 +2,4 @@
 
 set -e
 
-./node_modules/.bin/webpack --config build/webpack.prod.js
+webpack --config build/webpack.prod.js

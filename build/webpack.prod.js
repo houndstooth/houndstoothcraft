@@ -1,8 +1,8 @@
+const webpack = require('webpack')
 const webpackCommonConfig = require('./webpack.common')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = Object.assign({}, webpackCommonConfig, {
 	entry: './index.ts',
-	plugins: [ new UglifyJSPlugin() ],
+	plugins: [ new webpack.optimize.UglifyJsPlugin() ],
 	output: { path: __dirname + '/../dist', filename: 'bundle.js' },
 })

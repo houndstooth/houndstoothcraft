@@ -3,4 +3,4 @@
 set -e
 
 sh ./bin/test.sh
-codecov
+codecov -f test/unit/coverage/*.json

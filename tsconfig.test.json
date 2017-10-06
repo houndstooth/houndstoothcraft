@@ -7,13 +7,5 @@
     "lib": [ "es2017", "dom" ],
     "sourceMap": true,
     "types": [ "jasmine" ]
-  },
-  "include": [
-    "src/**/*",
-    "effects/**/*"
-  ],
-  "exclude": [
-    "test",
-    "effects/*/test/**/*"
-  ]
+  }
 }

@@ -15,7 +15,7 @@ const prepareCanvasForDisplayInTest = canvas => {
 const activateTestMarkersCanvas = () => {
 	testMarkersClear()
 
-	let testMarkersCanvas = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
+	let testMarkersCanvas : any = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
 
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
@@ -24,7 +24,7 @@ const activateTestMarkersCanvas = () => {
 	testMarkersCanvas.width = canvasSize[ 0 ]
 	testMarkersCanvas.height = canvasSize[ 1 ]
 
-	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area')
+	const testCanvasDisplayArea: any = document.querySelector('.test-canvas-display-area')
 	testCanvasDisplayArea.style.display = 'block'
 
 	setElementDimensions(testCanvasDisplayArea, canvasSize)

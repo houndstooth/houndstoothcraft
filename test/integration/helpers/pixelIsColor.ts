@@ -21,7 +21,7 @@ const pixelIsColor = (coordinateUnderTest, expectedColor) => {
 }
 
 const pixel = ([ x, y ]) => {
-	const mixedDownCanvas = document.querySelector('.mixed-down-canvas')
+	const mixedDownCanvas: any = document.querySelector('.mixed-down-canvas')
 	const pixelData = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
 	return {
 		r: pixelData[ 0 ],

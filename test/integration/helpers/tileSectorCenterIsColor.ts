@@ -1,7 +1,7 @@
 import drawPassMarker from './drawPassMarker'
 import pixelIsColor from './pixelIsColor'
 
-const tileSectorIsColor = ({ originInPixels, tileSizeInPixels, x, y, n, color, id }) => {
+const tileSectorIsColor = ({ originInPixels, tileSizeInPixels, x, y, n, color, id } : { originInPixels, tileSizeInPixels, x, y, n, color, id? }) => {
 	const coordinateUnderTest = sectorCenter({ originInPixels, tileSizeInPixels, x, y, n })
 	const passed = pixelIsColor(coordinateUnderTest, color)
 	drawPassMarker({ passed, coordinateUnderTest, id })

@@ -3,7 +3,7 @@ import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefau
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
 const testMarkersClear = () => {
-	const testMarkersCanvas = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
+	const testMarkersCanvas: any = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
 	const testMarkersContext = testMarkersCanvas.getContext('2d')
 
 	const canvasSize = getFromBasePatternOrDefault(CANVAS_SIZE)

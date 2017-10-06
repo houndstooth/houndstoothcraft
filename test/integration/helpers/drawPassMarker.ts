@@ -1,7 +1,7 @@
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
 const drawPassMarker = ({ passed, coordinateUnderTest, id }) => {
-	const testMarkersCanvas = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
+	const testMarkersCanvas: any = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
 	const testMarkersContext = testMarkersCanvas.getContext('2d')
 
 	testMarkersContext.strokeStyle = passed ? 'green' : 'red'

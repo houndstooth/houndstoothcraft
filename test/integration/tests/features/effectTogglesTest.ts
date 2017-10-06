@@ -10,9 +10,10 @@ xdescribe('effect toggles', () => {
 				tileSizeSetting: 50,
 			},
 		}
-		document.querySelector('input.houndsmorphosis').click()
+		let effectToggle: HTMLElement = document.querySelector('input.houndsmorphosis') as HTMLElement
+		effectToggle.click()
 		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(0)
-		document.querySelector('input.houndsmorphosis').click()
+		effectToggle.click()
 		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(50)
 	})
 })

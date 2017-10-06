@@ -10,7 +10,8 @@
     "stop": "sh ./bin/stop.sh",
     "test": "sh ./bin/test.sh",
     "pull": "sh ./bin/pull.sh",
-    "push": "sh ./bin/push.sh"
+    "push": "sh ./bin/push.sh",
+    "restart": "sh ./bin/restart.sh"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",

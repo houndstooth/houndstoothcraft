@@ -5,7 +5,15 @@ import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
 import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 
-const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } : { houndstoothEffects?, houndstoothOverrides?, logComposedMainHoundstooth? } = {}) => {
+const composeMainHoundstooth = ({
+	houndstoothEffects = [],
+	houndstoothOverrides = {},
+	logComposedMainHoundstooth,
+} : {
+	houndstoothEffects?,
+	houndstoothOverrides?,
+	logComposedMainHoundstooth?
+	} = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) {

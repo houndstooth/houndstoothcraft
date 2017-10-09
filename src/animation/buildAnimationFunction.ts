@@ -17,9 +17,13 @@ const buildAnimationFunction = ({ startAnimationFrame, animationFunctions, layer
 	state.currentAnimationFrame++
 }
 
-const exportingFramesStillNeedsToCatchUp = () => state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
+const exportingFramesStillNeedsToCatchUp = () => {
+	return state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
+}
 
-const beginningOfAnimationThatShouldBeSeenHasBeenReached = (startAnimationFrame) => state.currentAnimationFrame >= startAnimationFrame
+const beginningOfAnimationThatShouldBeSeenHasBeenReached = startAnimationFrame => {
+	return state.currentAnimationFrame >= startAnimationFrame
+}
 
 const animate = ({ layerFunctions, refreshCanvas }) => {
 	if (refreshCanvas) {

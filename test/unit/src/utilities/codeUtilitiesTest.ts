@@ -132,15 +132,21 @@ describe('code utilities', () => {
 
 	describe('#deepCloneMaybeObject', () => {
 		it('deep clones objects', () => {
-			expect(codeUtilities.deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })).toEqual({ a: { b: { c: 'cba' } } })
+			const actualClone = codeUtilities.deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })
+			const expectedClone = { a: { b: { c: 'cba' } } }
+			expect(actualClone).toEqual(expectedClone)
 		})
 
 		it('deep clones arrays', () => {
-			expect(codeUtilities.deepCloneMaybeNotObject([ 'a', 'b', 'c' ])).toEqual([ 'a', 'b', 'c' ])
+			const actualClone = codeUtilities.deepCloneMaybeNotObject([ 'a', 'b', 'c' ])
+			const expectedClone = [ 'a', 'b', 'c' ]
+			expect(actualClone).toEqual(expectedClone)
 		})
 
 		it('deep clones immutable objects', () => {
-			expect(codeUtilities.deepCloneMaybeNotObject('abcba')).toBe('abcba')
+			const actualClone = codeUtilities.deepCloneMaybeNotObject('abcba')
+			const expectedClone = 'abcba'
+			expect(actualClone).toBe(expectedClone)
 		})
 	})
 
@@ -274,7 +280,7 @@ describe('code utilities', () => {
 		beforeEach(() => changeObjectIntoCopy = codeUtilities.changeObjectIntoCopy)
 
 		it('removes all the keys of the object that are not on the one being copied', () => {
-			const objectToChange : any = { mary: 'jane', billy: 'bob' }
+			const objectToChange: any = { mary: 'jane', billy: 'bob' }
 			const objectWithProperties = {}
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -284,7 +290,7 @@ describe('code utilities', () => {
 		})
 
 		it('replaces keys of the object with ones from the one being copied', () => {
-			const objectToChange : any = { mary: 'jane' }
+			const objectToChange: any = { mary: 'jane' }
 			const objectWithProperties = { mary: 'had a little lamb' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -294,7 +300,7 @@ describe('code utilities', () => {
 		})
 
 		it('adds new keys from the one being copied', () => {
-			const objectToChange : any = {}
+			const objectToChange: any = {}
 			const objectWithProperties = { billy: 'bob' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })

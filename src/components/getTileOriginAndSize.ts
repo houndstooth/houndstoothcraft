@@ -1,7 +1,8 @@
 import state from '../state'
 
 const getTileOriginAndSize = ({ gridAddress }) => {
-	const tileOriginAndSize = state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize || getStandardTileOriginAndSize
+	const getTileOriginAndSizeFromState = state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize
+	const tileOriginAndSize = getTileOriginAndSizeFromState || getStandardTileOriginAndSize
 	return tileOriginAndSize({ gridAddress })
 }
 

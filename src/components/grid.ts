@@ -4,7 +4,13 @@ import { iterator } from '../utilities/codeUtilities'
 import tile from './tile'
 
 const grid = () => {
-	const { includeNegativeQuadrants, gridSize } : { includeNegativeQuadrants?, gridSize } = state.mainHoundstooth.basePattern.gridSettings || {}
+	const {
+		includeNegativeQuadrants,
+		gridSize,
+	} : {
+		includeNegativeQuadrants?,
+		gridSize
+		} = state.mainHoundstooth.basePattern.gridSettings || {}
 
 	applyOpacity()
 	applyBackgroundColor()

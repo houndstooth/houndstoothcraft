@@ -7,6 +7,7 @@ describe('create warnings container', () => {
 	let returnedWarningsContainer
 	let mockEffectTogglesContainer
 	let mockWarningsContainer
+	let insertElementRightAfterSpy
 	const mockWarningsContainerClassList = []
 	beforeAll(() => {
 		mockWarningsContainer = buildMockElement({ mockClassList: mockWarningsContainerClassList })
@@ -15,7 +16,7 @@ describe('create warnings container', () => {
 		mockEffectTogglesContainer = buildMockElement()
 		spyOn(window.document, 'querySelector').and.returnValue(mockEffectTogglesContainer)
 
-		spyOn(insertElementRightAfter, 'default')
+		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default')
 
 		returnedWarningsContainer = createWarningsContainer()
 	})
@@ -34,6 +35,6 @@ describe('create warnings container', () => {
 	})
 
 	it('inserts the warnings container after the effect toggles container', () => {
-		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedWarningsContainer, mockEffectTogglesContainer)
+		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedWarningsContainer, mockEffectTogglesContainer)
 	})
 })

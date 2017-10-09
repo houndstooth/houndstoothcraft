@@ -10,7 +10,7 @@ import tileSectorCenterIsColor from '../../helpers/tileSectorCenterIsColor'
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
 		it('works', () => {
-			const houndstoothOverrides ={
+			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: [ BLACK ] },
 					viewSettings: { canvasSize: 125 },
@@ -73,48 +73,49 @@ describe('.viewSettings', () => {
 	})
 
 	describe('.zoomOnCanvasCenter', () => {
-		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
-			const zoom = 2
-			const houndstoothOverrides = {
-				basePattern: {
-					viewSettings: {
-						zoomOnCanvasCenter: true,
-						zoom: 2,
+		it(`leaves the right and bottom quadrants empty if the grid would take up only the top left before 
+			zooming, because instead of growing from the origin in the top left it grows away from the center`, () => {
+				const zoom = 2
+				const houndstoothOverrides = {
+					basePattern: {
+						viewSettings: {
+							zoomOnCanvasCenter: true,
+							zoom: 2,
+						},
+						gridSettings: { gridSize: 8 },
 					},
-					gridSettings: { gridSize: 8 },
-				},
-			}
-			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
+				}
+				const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
 
-			activateTestMarkerCanvas()
+				activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			expect(standardTileIsColors({
-				baseId: 0,
-				originInPixels: [ 3 * zoom * tileSizeSetting, 3 * zoom * tileSizeSetting ],
-				tileSizeInPixels: zoom * tileSizeSetting,
-				colors: [ BLACK, TRANSPARENT ],
-			})).toBe(true)
-			expect(standardTileIsColors({
-				baseId: 8,
-				originInPixels: [ 3 * zoom * tileSizeSetting, 4 * zoom * tileSizeSetting ],
-				tileSizeInPixels: zoom * tileSizeSetting,
-				colors: [ TRANSPARENT, TRANSPARENT ],
-			})).toBe(true)
-			expect(standardTileIsColors({
-				baseId: 16,
-				originInPixels: [ 4 * zoom * tileSizeSetting, 3 * zoom * tileSizeSetting ],
-				tileSizeInPixels: zoom * tileSizeSetting,
-				colors: [ TRANSPARENT, TRANSPARENT ],
-			})).toBe(true)
-			expect(standardTileIsColors({
-				baseId: 24,
-				originInPixels: [ 4 * zoom * tileSizeSetting, 4 * zoom * tileSizeSetting ],
-				tileSizeInPixels: zoom * tileSizeSetting,
-				colors: [ TRANSPARENT, TRANSPARENT ],
-			})).toBe(true)
-		})
+				expect(standardTileIsColors({
+					baseId: 0,
+					originInPixels: [ 3 * zoom * tileSizeSetting, 3 * zoom * tileSizeSetting ],
+					tileSizeInPixels: zoom * tileSizeSetting,
+					colors: [ BLACK, TRANSPARENT ],
+				})).toBe(true)
+				expect(standardTileIsColors({
+					baseId: 8,
+					originInPixels: [ 3 * zoom * tileSizeSetting, 4 * zoom * tileSizeSetting ],
+					tileSizeInPixels: zoom * tileSizeSetting,
+					colors: [ TRANSPARENT, TRANSPARENT ],
+				})).toBe(true)
+				expect(standardTileIsColors({
+					baseId: 16,
+					originInPixels: [ 4 * zoom * tileSizeSetting, 3 * zoom * tileSizeSetting ],
+					tileSizeInPixels: zoom * tileSizeSetting,
+					colors: [ TRANSPARENT, TRANSPARENT ],
+				})).toBe(true)
+				expect(standardTileIsColors({
+					baseId: 24,
+					originInPixels: [ 4 * zoom * tileSizeSetting, 4 * zoom * tileSizeSetting ],
+					tileSizeInPixels: zoom * tileSizeSetting,
+					colors: [ TRANSPARENT, TRANSPARENT ],
+				})).toBe(true)
+			})
 	})
 
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {

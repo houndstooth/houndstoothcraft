@@ -122,7 +122,7 @@ describe('.colorSettings', () => {
 	describe('.assignment', () => {
 		describe('.assignmentMode', () => {
 			describe('weave', () => {
-				it('is the simplest way to describe a pattern whose colors do not vary within its rows and columns', () => {
+				it('is the simplest way to describe a pattern w/ colors not varied w/in its rows and columns', () => {
 					const sufficientTileCountToDemonstrateSetting = 8
 					const houndstoothOverrides = {
 						basePattern: {
@@ -443,152 +443,159 @@ describe('.colorSettings', () => {
 							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
-					const tiles = firstSuperweave.concat(secondSuperweave).concat(thirdSuperweave).concat(fourthSuperweave)
+					const tiles = firstSuperweave
+						.concat(secondSuperweave)
+						.concat(thirdSuperweave)
+						.concat(fourthSuperweave)
 					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 				})
 			})
 
 			describe('supertile', () => {
-				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', () => {
-					const sufficientTileCountToDemonstrateSetting = 4
-					const houndstoothOverrides = {
-						basePattern: {
-							colorSettings: {
-								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
-								assignment: {
-									assignmentMode: 'SUPERTILE',
-									supertile: [
-										[
-											[ 2, 0 ],
-											[ 0, 1 ],
+				it(`assigns colors to tiles of patterns in any arbitrary way, 
+					repeating in a supertile of n by n tiles`, () => {
+						const sufficientTileCountToDemonstrateSetting = 4
+						const houndstoothOverrides = {
+							basePattern: {
+								colorSettings: {
+									colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
+									assignment: {
+										assignmentMode: 'SUPERTILE',
+										supertile: [
+											[
+												[ 2, 0 ],
+												[ 0, 1 ],
+											],
+											[
+												[ 1, 2 ],
+												[ 3, 3 ],
+											],
 										],
-										[
-											[ 1, 2 ],
-											[ 3, 3 ],
-										],
-									],
+									},
+								},
+								gridSettings: {
+									gridSize: sufficientTileCountToDemonstrateSetting,
+								},
+								viewSettings: {
+									canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
 								},
 							},
-							gridSettings: {
-								gridSize: sufficientTileCountToDemonstrateSetting,
+						}
+
+						activateTestMarkerCanvas()
+
+						executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+						const firstSupertile = [
+							{
+								baseId: 0,
+								originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ CYAN, YELLOW ],
 							},
-							viewSettings: {
-								canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+							{
+								baseId: 8,
+								originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ YELLOW, BLUE ],
 							},
-						},
-					}
-
-					activateTestMarkerCanvas()
-
-					executeSelectedHoundstoothEffects({ houndstoothOverrides })
-
-					const firstSupertile = [
-						{
-							baseId: 0,
-							originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ CYAN, YELLOW ],
-						},
-						{
-							baseId: 8,
-							originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ YELLOW, BLUE ],
-						},
-						{
-							baseId: 16,
-							originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ BLUE, CYAN ],
-						},
-						{
-							baseId: 24,
-							originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ MAGENTA, MAGENTA ],
-						},
-					]
-					const secondSupertile = [
-						{
-							baseId: 32,
-							originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ CYAN, YELLOW ],
-						},
-						{
-							baseId: 40,
-							originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ YELLOW, BLUE ],
-						},
-						{
-							baseId: 48,
-							originInPixels: [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ BLUE, CYAN ],
-						},
-						{
-							baseId: 56,
-							originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ MAGENTA, MAGENTA ],
-						},
-					]
-					const thirdSupertile = [
-						{
-							baseId: 64,
-							originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ CYAN, YELLOW ],
-						},
-						{
-							baseId: 72,
-							originInPixels: [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ YELLOW, BLUE ],
-						},
-						{
-							baseId: 80,
-							originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ BLUE, CYAN ],
-						},
-						{
-							baseId: 88,
-							originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ MAGENTA, MAGENTA ],
-						},
-					]
-					const fourthSupertile = [
-						{
-							baseId: 96,
-							originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ CYAN, YELLOW ],
-						},
-						{
-							baseId: 104,
-							originInPixels: [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ YELLOW, BLUE ],
-						},
-						{
-							baseId: 112,
-							originInPixels: [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ BLUE, CYAN ],
-						},
-						{
-							baseId: 120,
-							originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
-							colors: [ MAGENTA, MAGENTA ],
-						},
-					]
-					const tiles = firstSupertile.concat(secondSupertile).concat(thirdSupertile).concat(fourthSupertile)
-					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
-				})
+							{
+								baseId: 16,
+								originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ BLUE, CYAN ],
+							},
+							{
+								baseId: 24,
+								originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ MAGENTA, MAGENTA ],
+							},
+						]
+						const secondSupertile = [
+							{
+								baseId: 32,
+								originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ CYAN, YELLOW ],
+							},
+							{
+								baseId: 40,
+								originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ YELLOW, BLUE ],
+							},
+							{
+								baseId: 48,
+								originInPixels: [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ BLUE, CYAN ],
+							},
+							{
+								baseId: 56,
+								originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ MAGENTA, MAGENTA ],
+							},
+						]
+						const thirdSupertile = [
+							{
+								baseId: 64,
+								originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ CYAN, YELLOW ],
+							},
+							{
+								baseId: 72,
+								originInPixels: [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ YELLOW, BLUE ],
+							},
+							{
+								baseId: 80,
+								originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ BLUE, CYAN ],
+							},
+							{
+								baseId: 88,
+								originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ MAGENTA, MAGENTA ],
+							},
+						]
+						const fourthSupertile = [
+							{
+								baseId: 96,
+								originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ CYAN, YELLOW ],
+							},
+							{
+								baseId: 104,
+								originInPixels: [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ YELLOW, BLUE ],
+							},
+							{
+								baseId: 112,
+								originInPixels: [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ BLUE, CYAN ],
+							},
+							{
+								baseId: 120,
+								originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ],
+								tileSizeInPixels,
+								colors: [ MAGENTA, MAGENTA ],
+							},
+						]
+						const tiles = firstSupertile
+							.concat(secondSupertile)
+							.concat(thirdSupertile)
+							.concat(fourthSupertile)
+						tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+					})
 			})
 		})
 
@@ -668,56 +675,57 @@ describe('.colorSettings', () => {
 		})
 
 		describe('.flipGrain', () => {
-			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
-				const sufficientTileCountToDemonstrateSetting = 2
-				const houndstoothOverrides = {
-					basePattern: {
-						colorSettings: {
-							assignment: {
-								flipGrain: true,
+			it(`rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) 
+				reversing the grain of the pattern`, () => {
+					const sufficientTileCountToDemonstrateSetting = 2
+					const houndstoothOverrides = {
+						basePattern: {
+							colorSettings: {
+								assignment: {
+									flipGrain: true,
+								},
+							},
+							gridSettings: {
+								gridSize: sufficientTileCountToDemonstrateSetting,
+							},
+							viewSettings: {
+								canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
 							},
 						},
-						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
+					}
+					activateTestMarkerCanvas()
+
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+					const tiles = [
+						{
+							baseId: 0,
+							originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
+							tileSizeInPixels,
+							colors: [ BLACK, TRANSPARENT ],
 						},
-						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+						{
+							baseId: 8,
+							originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
+							tileSizeInPixels,
+							colors: [ BLACK, BLACK ],
 						},
-					},
-				}
-				activateTestMarkerCanvas()
+						{
+							baseId: 16,
+							originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
+							tileSizeInPixels,
+							colors: [ TRANSPARENT, TRANSPARENT ],
+						},
+						{
+							baseId: 24,
+							originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
+							tileSizeInPixels,
+							colors: [ TRANSPARENT, BLACK ],
+						},
+					]
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
-
-				const tiles = [
-					{
-						baseId: 0,
-						originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-						tileSizeInPixels,
-						colors: [ BLACK, TRANSPARENT ],
-					},
-					{
-						baseId: 8,
-						originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
-						tileSizeInPixels,
-						colors: [ BLACK, BLACK ],
-					},
-					{
-						baseId: 16,
-						originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
-						tileSizeInPixels,
-						colors: [ TRANSPARENT, TRANSPARENT ],
-					},
-					{
-						baseId: 24,
-						originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-						tileSizeInPixels,
-						colors: [ TRANSPARENT, BLACK ],
-					},
-				]
-
-				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
-			})
+					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+				})
 		})
 	})
 
@@ -748,8 +756,10 @@ describe('.colorSettings', () => {
 			const partiallySeeThroughBlue = deepClone(BLUE)
 			partiallySeeThroughBlue.a *= opacity
 
-			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 25, 75 ], expectedColor: partiallySeeThroughBlack, id: 1 })).toBe(true)
-			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 75, 25 ], expectedColor: partiallySeeThroughBlue, id: 2 })).toBe(true)
+			const semiBlackPixel = { coordinateUnderTest: [ 25, 75 ], expectedColor: partiallySeeThroughBlack, id: 1 }
+			expect(pixelIsColorWithMarker(semiBlackPixel)).toBe(true)
+			const semiBluePixel = { coordinateUnderTest: [ 75, 25 ], expectedColor: partiallySeeThroughBlue, id: 2 }
+			expect(pixelIsColorWithMarker(semiBluePixel)).toBe(true)
 		})
 	})
 
@@ -774,7 +784,8 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			expect(pixelIsColorWithMarker({ coordinateUnderTest: [ 75, 25 ], expectedColor: YELLOW, id: 2 })).toBe(true)
+			const yellowPixel = { coordinateUnderTest: [ 75, 25 ], expectedColor: YELLOW, id: 2 }
+			expect(pixelIsColorWithMarker(yellowPixel)).toBe(true)
 		})
 	})
 })

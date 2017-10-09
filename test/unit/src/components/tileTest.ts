@@ -80,7 +80,7 @@ describe('tile', () => {
 					expect(getStripePositionsForTile.default).not.toHaveBeenCalled()
 				})
 
-				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses square outline', () => {
+				it('converts the tile into shapes with the correct arguments, and uses square outline', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -111,7 +111,7 @@ describe('tile', () => {
 				})
 
 
-				it('converts the tile into shapes with the grid address, colors, origin, and size for the tile, and uses the shape outline', () => {
+				it('converts the tile into shapes with the correct arguments, and uses the shape outline', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({

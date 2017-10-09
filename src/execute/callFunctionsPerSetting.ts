@@ -4,11 +4,11 @@ import state from '../state'
 const callFunctionsPerSetting = ({ settingsFunctions }) => {
 	settingsFunctions.forEach(settingsFunction => {
 		const { settingsPath, settingName, settingFunctionItself } = settingsFunction
-		const settingsWithSettingToCallFunctionOn = accessChildPropertyOrCreatePath({
+		const settings = accessChildPropertyOrCreatePath({
 			objectWithProperties: state.mainHoundstooth.basePattern,
 			propertyPath: settingsPath,
 		})
-		settingsWithSettingToCallFunctionOn[ settingName ] = settingFunctionItself(settingsWithSettingToCallFunctionOn[ settingName ])
+		settings[ settingName ] = settingFunctionItself(settings[ settingName ])
 	})
 }
 

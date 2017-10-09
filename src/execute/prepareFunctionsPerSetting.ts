@@ -14,6 +14,7 @@ const prepareFunctionsPerSetting = ({ settingsFunctions, settingsPath = [], func
 			})
 		}
 		else {
+			// eslint-disable-next-line max-len
 			console.error(`These settings should map onto basePattern settings, and be functions to call for them each animation frame / layer. However, you have provided a non-function ${maybeSettingFunction} at path ${settingsPath} ${settingName}`)
 		}
 	})

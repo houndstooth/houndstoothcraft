@@ -26,50 +26,53 @@ describe('houndstooth has only recognized patterns', () => {
 		})).toBe(true)
 	})
 
-	it('logs an error if the pattern contains anything other than one of these three recognized patterns, or name', () => {
-		spyOn(console, 'error')
+	it(`logs an error if the pattern contains anything other than 
+		one of these three recognized patterns, or name`, () => {
+			spyOn(console, 'error')
 
-		houndstoothHasOnlyRecognizedPatterns({ invalidSettings: {} })
+			houndstoothHasOnlyRecognizedPatterns({ invalidSettings: {} })
 
-		expect(console.error).toHaveBeenCalledWith('attempted to compose a houndstooth with an unrecognized pattern: invalidSettings')
-	})
+			const expectedError = 'attempted to compose a houndstooth with an unrecognized pattern: invalidSettings'
+			expect(console.error).toHaveBeenCalledWith(expectedError)
+		})
 
-	it('returns false, even if the pattern contains some or all of the three recognized settings in addition to an invalid one', () => {
-		spyOn(console, 'error')
+	it(`returns false, even if the pattern contains some or all 
+		of the three recognized settings in addition to an invalid one`, () => {
+			spyOn(console, 'error')
 
-		expect(houndstoothHasOnlyRecognizedPatterns({ invalidSettings })).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			basePattern,
-		})).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			animationsPattern,
-		})).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			layersPattern,
-		})).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			basePattern,
-			animationsPattern,
-		})).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			basePattern,
-			layersPattern,
-		})).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			animationsPattern,
-			layersPattern,
-		})).toBe(false)
-		expect(houndstoothHasOnlyRecognizedPatterns({
-			invalidSettings,
-			basePattern,
-			animationsPattern,
-			layersPattern,
-		})).toBe(false)
-	})
+			expect(houndstoothHasOnlyRecognizedPatterns({ invalidSettings })).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				basePattern,
+			})).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				animationsPattern,
+			})).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				layersPattern,
+			})).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				basePattern,
+				animationsPattern,
+			})).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				basePattern,
+				layersPattern,
+			})).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				animationsPattern,
+				layersPattern,
+			})).toBe(false)
+			expect(houndstoothHasOnlyRecognizedPatterns({
+				invalidSettings,
+				basePattern,
+				animationsPattern,
+				layersPattern,
+			})).toBe(false)
+		})
 })

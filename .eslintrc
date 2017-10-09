@@ -70,6 +70,10 @@
     "curly": [
       "error"
     ],
+    "max-len": [
+      "error",
+      120
+    ],
     "max-statements": [
       "error",
       10

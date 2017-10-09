@@ -3,7 +3,13 @@ import { console } from '../utilities/windowWrapper'
 import { warn } from '../ui'
 import settingPath from './settingPath'
 
-const maybeWarnAboutConflicts = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
+const maybeWarnAboutConflicts = ({
+	warnAboutConflicts,
+	settingsPath,
+	settingName,
+	existingSetting,
+	overridingSetting,
+}) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
 		const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
 		console.warn(warning)
@@ -39,6 +45,7 @@ const buildWarningMessage = ({ settingsPath, settingName, existingSetting, overr
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
 	const fullSettingPath = settingPath(settingsPath, settingName)
+	// eslint-disable-next-line max-len
 	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
 }
 

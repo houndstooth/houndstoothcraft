@@ -7,6 +7,7 @@ describe('create effect toggles container', () => {
 	let returnedEffectTogglesContainer
 	let mockEffectTogglesContainer
 	let mockCanvasContainer
+	let insertElementRightAfterSpy
 	const mockEffectTogglesContainerClassList = []
 	beforeEach(() => {
 		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList })
@@ -15,7 +16,7 @@ describe('create effect toggles container', () => {
 		mockCanvasContainer = buildMockElement()
 		spyOn(window.document, 'querySelector').and.returnValue(mockCanvasContainer)
 
-		spyOn(insertElementRightAfter, 'default')
+		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default')
 
 		returnedEffectTogglesContainer = createEffectTogglesContainer()
 	})
@@ -34,6 +35,6 @@ describe('create effect toggles container', () => {
 	})
 
 	it('inserts the effect toggles container after the canvas', () => {
-		expect(insertElementRightAfter.default).toHaveBeenCalledWith(returnedEffectTogglesContainer, mockCanvasContainer)
+		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedEffectTogglesContainer, mockCanvasContainer)
 	})
 })

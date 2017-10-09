@@ -16,7 +16,8 @@ describe('execute selected houndstooth effects', () => {
 		spyOn(page, 'createContexts')
 		spyOn(executeGrid, 'default')
 		spyOn(executeAnimation, 'default')
-		prepareFunctionsPerSettingSpy = spyOn(prepareFunctionsPerSetting, 'default').and.returnValues(layerFunctions, animationFunctions)
+		prepareFunctionsPerSettingSpy = spyOn(prepareFunctionsPerSetting, 'default')
+		prepareFunctionsPerSettingSpy.and.returnValues(layerFunctions, animationFunctions)
 	})
 
 	it('composes the houndstooth', () => {

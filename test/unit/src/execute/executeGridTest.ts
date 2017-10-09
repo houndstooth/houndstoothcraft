@@ -251,7 +251,8 @@
 // 		})
 // 	})
 
-// 	it('calls layer functions once for each layer, each animation frame, starting the layer over each animation frame', () => {
+// 	it('calls layer functions once for each layer, each animation frame,
+// starting the layer over each animation frame', () => {
 // 		houndstoothOverrides.basePattern.tileSettings = { tileSizeSetting: 0 }
 
 // 		const animationFunction = jasmine.createSpy().and.callFake(p => p + 100)
@@ -414,7 +415,9 @@
 // 				consoleWrapperLogSpyCalls.forEach((call, index) => {
 // 					const currentAnimationFrame = Math.floor(index / 11)
 // 					const currentLayer = index % 11
-// 					expect(call.args[ 0 ]).toEqual(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)
+// 					expect(call.args[ 0 ]).toEqual(
+// `current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`
+// )
 // 				})
 
 // 				const consoleWrapperTimeCalls = consoleWrapper.time.calls.all()

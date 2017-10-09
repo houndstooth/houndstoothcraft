@@ -42,26 +42,30 @@ describe('compose patterns', () => {
 		expect(expectedPattern).toEqual(patternToBeMergedOnto)
 	})
 
-	it('errors when it notices that a setting being merged onto the pattern does not fit into the pattern structure, and then does not merge it', () => {
-		spyOn(console, 'error')
-		const patternToBeMergedOnto = {}
-		const patternToMerge = {
-			colorSettings: {
-				assignment: {
-					probablyAnAccident: {
-						assignmentMode: 'yoda',
-						switcheroo: 'death star',
+	it(`errors when it notices that a setting being merged onto the pattern 
+		does not fit into the pattern structure, and then does not merge it`, () => {
+			spyOn(console, 'error')
+			const patternToBeMergedOnto = {}
+			const patternToMerge = {
+				colorSettings: {
+					assignment: {
+						probablyAnAccident: {
+							assignmentMode: 'yoda',
+							switcheroo: 'death star',
+						},
 					},
 				},
-			},
-		}
+			}
 
-		composePatterns({ patternToBeMergedOnto, patternToMerge })
+			composePatterns({ patternToBeMergedOnto, patternToMerge })
 
-		const expectedPattern = {}
-		expect(expectedPattern).toEqual(patternToBeMergedOnto)
-		expect(console.error).toHaveBeenCalledWith('attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident')
-	})
+			const expectedPattern = {}
+			expect(expectedPattern).toEqual(patternToBeMergedOnto)
+
+			// eslint-disable-next-line max-len
+			const expectedError = 'attempted to compose a pattern with an unrecognized setting: colorSettings.assignment.probablyAnAccident'
+			expect(console.error).toHaveBeenCalledWith(expectedError)
+		})
 
 	it('recognizes color objects', () => {
 		const patternToBeMergedOnto = {

@@ -4,7 +4,6 @@ import tileSectorCenterIsColor from '../../helpers/tileSectorCenterIsColor'
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
-import state from '../../../../src/state'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 
 describe('.stripeSettings', () => {
@@ -166,7 +165,6 @@ describe('.stripeSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let originInPixels
-			const tileSizeInPixels = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 
 			originInPixels = [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ]
 

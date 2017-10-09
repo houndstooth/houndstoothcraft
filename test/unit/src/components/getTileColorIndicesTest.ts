@@ -3,7 +3,7 @@ import { iterator } from '../../../../src/utilities/codeUtilities'
 import state from '../../../../src/state'
 
 describe('get tile color indices', () => {
-	const gridAddress = [ 3, 5 ]
+	const gridAddressForSubject = [ 3, 5 ]
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('can use a weave-based assignment scheme', () => {
@@ -17,7 +17,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress })).toEqual([ 3, 1 ])
+			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual([ 3, 1 ])
 		})
 
 		it('can use a supertile-based assignment scheme', () => {
@@ -34,7 +34,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress })).toEqual(expectedSupertileEntry)
+			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual(expectedSupertileEntry)
 		})
 	})
 
@@ -52,7 +52,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress })).toEqual([ 3, 1 ])
+			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual([ 3, 1 ])
 		})
 
 		it('works when in supertile mode', () => {
@@ -70,7 +70,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress })).toEqual(expectedSupertileEntry)
+			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual(expectedSupertileEntry)
 		})
 	})
 
@@ -85,10 +85,10 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const notFlippedResult = getTileColorIndices({ gridAddress })
+			const notFlippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
 			state.mainHoundstooth.basePattern.colorSettings.assignment.flipGrain = true
-			const flippedResult = getTileColorIndices({ gridAddress })
+			const flippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})

@@ -8,7 +8,6 @@ import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDe
 import tileSectorCenterIsColor from '../../helpers/tileSectorCenterIsColor'
 
 describe('.viewSettings', () => {
-	const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
 	describe('.canvasSize', () => {
 		it('works', () => {
 			const houndstoothOverrides ={
@@ -40,6 +39,8 @@ describe('.viewSettings', () => {
 					gridSettings: { gridSize: 2 },
 				},
 			}
+			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
+
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
@@ -83,6 +84,8 @@ describe('.viewSettings', () => {
 					gridSettings: { gridSize: 8 },
 				},
 			}
+			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
+
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
@@ -157,6 +160,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
+			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
 			const houndstoothOverrides = {
 				basePattern: {
 					viewSettings: {
@@ -171,6 +175,7 @@ describe('.viewSettings', () => {
 					},
 				},
 			}
+
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })

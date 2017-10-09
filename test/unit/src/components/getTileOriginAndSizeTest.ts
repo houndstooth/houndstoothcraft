@@ -2,13 +2,13 @@ import getTileOriginAndSize from '../../../../src/components/getTileOriginAndSiz
 import state from '../../../../src/state'
 
 describe('get tile origin and size', () => {
-	const gridAddress = [ 7, 11 ]
+	const gridAddressForSubject = [ 7, 11 ]
 	const tileSizeSetting = 40
 
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
 		state.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting }
 
-		expect(getTileOriginAndSize({ gridAddress })).toEqual({
+		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
 			tileSize: tileSizeSetting,
 			tileOrigin: [ 7 * tileSizeSetting, 11 * tileSizeSetting ],
 		})
@@ -21,7 +21,7 @@ describe('get tile origin and size', () => {
 		})
 		state.mainHoundstooth.basePattern.tileSettings = { getTileOriginAndSize: custom }
 
-		expect(getTileOriginAndSize({ gridAddress })).toEqual({
+		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
 			tileSize: tileSizeSetting * tileSizeSetting,
 			tileOrigin: [ 11 * tileSizeSetting, 7 * tileSizeSetting ],
 		})

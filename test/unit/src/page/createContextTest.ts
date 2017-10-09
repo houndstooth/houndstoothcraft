@@ -7,8 +7,8 @@ describe('create context', () => {
 	let appendedCanvas
 	const mockContext = {}
 	beforeEach(() => {
-		const canvas = buildMockCanvas({ mockContext })
-		spyOn(window.document, 'createElement').and.returnValue(canvas)
+		const mockCanvas = buildMockCanvas({ mockContext })
+		spyOn(window.document, 'createElement').and.returnValue(mockCanvas)
 
 		const mockCanvases = []
 		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas) }

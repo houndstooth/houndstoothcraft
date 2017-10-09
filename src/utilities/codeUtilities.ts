@@ -1,10 +1,10 @@
 const iterator = (i, options = { oneIndexed: false }) => {
-	let iterator = []
+	let iter = []
 	for (let j = 0; j < Math.ceil(i); j++) {
-		iterator.push(j)
+		iter.push(j)
 	}
-	if (options.oneIndexed) iterator = iterator.map(k => k + 1)
-	return iterator
+	if (options.oneIndexed) iter = iter.map(k => k + 1)
+	return iter
 }
 
 const wrappedIndex = ({ array, index = 0 }) => {
@@ -54,9 +54,9 @@ const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
 }
 
 const deeperPath = ({ propertyPath, propertyName }) => {
-	const deeperPath = propertyPath.slice()
-	deeperPath.push(propertyName)
-	return deeperPath
+	const path = propertyPath.slice()
+	path.push(propertyName)
+	return path
 }
 
 const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {

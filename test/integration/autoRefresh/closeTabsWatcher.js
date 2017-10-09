@@ -3,7 +3,7 @@ const fs = require('fs')
 const process = require('process')
 
 http.createServer((req, res) => {
-	if (req.url === '/codeUpdates') {
+	if (req.url === '/tabs') {
 		res.writeHead(200, {
 			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'text/event-stream',
@@ -11,10 +11,10 @@ http.createServer((req, res) => {
 			'Connection': 'keep-alive',
 		})
 
-		fs.watchFile('test/integration/dist/bundle.js', { interval: 100 }, () => {
-			res.write('data: reload\n\n')
+		fs.watchFile('test/integration/dist/close', { interval: 100 }, () => {
+			res.write('event: close\ndata: x\n\n')
 		})
 	}
-}).listen(process.env.KARMA_WATCHER_PORT)
+}).listen(process.env.CLOSE_TABS_WATCHER_PORT)
 
-process.on('SIGINT', () => fs.unwatchFile('test/integration/dist/bundle.js'))
+process.on('SIGINT', () => fs.unwatchFile('test/integration/dist/close'))

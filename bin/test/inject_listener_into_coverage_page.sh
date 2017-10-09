@@ -7,7 +7,7 @@ set -e
 touch listener.txt
 > listener.txt
 printf "<script>new EventSource('http:\/\/localhost:" >> listener.txt
-printf $ISTANBUL_WATCHER_PORT >> listener.txt
+printf $COVERAGE_CODE_UPDATES_WATCHER_PORT >> listener.txt
 printf "\/codeUpdates').addEventListener('message', () => window.location.reload())<\/script><\/body>" >> listener.txt
 LISTENER=$(cat listener.txt)
 

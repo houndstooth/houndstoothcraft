@@ -3,7 +3,9 @@ import { document } from '../utilities/windowWrapper'
 import setElementDimensions from './setElementDimensions'
 
 const createCanvasContainer = ({ canvasSize } : { canvasSize? } = {}) => {
-	if (!canvasSize) canvasSize = getCanvasSize()
+	if (!canvasSize) {
+		canvasSize = getCanvasSize()
+	}
 
 	const canvasContainer = document.createElement('div')
 	canvasContainer.classList.add('canvas-container')

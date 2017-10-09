@@ -4,7 +4,9 @@ import state from '../state'
 const applyTilt = outline => {
 	const { canvasSize, rotateViewAboutCanvasCenter } : { canvasSize, rotateViewAboutCanvasCenter } = state.mainHoundstooth.basePattern.viewSettings || {}
 
-	if (!rotateViewAboutCanvasCenter) return outline
+	if (!rotateViewAboutCanvasCenter) {
+		return outline
+	}
 
 	const point = [ canvasSize / 2, canvasSize / 2 ]
 	return outline.map(coordinate => rotateCoordinateAboutPoint({

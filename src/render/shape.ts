@@ -6,7 +6,9 @@ import texture from './texture'
 
 const shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
 	const outline = getOutline({ tileOrigin, tileSize, outlineOptions })
-	if (!outline) return
+	if (!outline) {
+		return
+	}
 
 	const context = getCurrentContext()
 	const shapeColorIndex = wrappedIndex({ array: tileColorIndices, index: stripeIndex })

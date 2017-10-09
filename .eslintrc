@@ -67,6 +67,9 @@
     "prefer-const": [
       "error"
     ],
+    "curly": [
+      "error"
+    ],
     "max-statements": [
       "error",
       10

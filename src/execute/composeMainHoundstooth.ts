@@ -8,7 +8,9 @@ import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognized
 const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth } : { houndstoothEffects?, houndstoothOverrides?, logComposedMainHoundstooth? } = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
-	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) return
+	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) {
+		return
+	}
 
 	composePattern({
 		patternToCompose: state.mainHoundstooth.basePattern,
@@ -29,14 +31,24 @@ const composeMainHoundstooth = ({ houndstoothEffects = [], houndstoothOverrides 
 		houndstoothOverrides: houndstoothOverrides.animationsPattern,
 	})
 
-	if (logComposedMainHoundstooth) console.log(state.mainHoundstooth)
+	if (logComposedMainHoundstooth) {
+		console.log(state.mainHoundstooth)
+	}
 }
 
 const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {
-	if (!houndstoothHasOnlyRecognizedPatterns(state.mainHoundstooth)) return true
-	if (!houndstoothHasOnlyRecognizedPatterns(defaults.DEFAULT_HOUNDSTOOTH)) return true
-	if (!combinedHoundstoothEffects) return true
-	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) return true
+	if (!houndstoothHasOnlyRecognizedPatterns(state.mainHoundstooth)) {
+		return true
+	}
+	if (!houndstoothHasOnlyRecognizedPatterns(defaults.DEFAULT_HOUNDSTOOTH)) {
+		return true
+	}
+	if (!combinedHoundstoothEffects) {
+		return true
+	}
+	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) {
+		return true
+	}
 	return false
 }
 

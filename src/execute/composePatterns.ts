@@ -5,9 +5,13 @@ import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 import settingPath from './settingPath'
 
 const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [], patternStructureChecker = PATTERN_STRUCTURE, warnAboutConflicts } : { patternToBeMergedOnto, patternToMerge, settingsPath?, patternStructureChecker?, warnAboutConflicts? }) => {
-	if (!patternToMerge) return
+	if (!patternToMerge) {
+		return
+	}
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
-		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) return
+		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) {
+			return
+		}
 		const deeperPatternStructureChecker = patternStructureChecker[ settingName ]
 
 		if (overridingSetting && typeof overridingSetting === 'object' && !overridingSetting.length && settingIsNotColor(overridingSetting)) {
@@ -35,7 +39,9 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 }
 
 const settingIsDefinedOnPatternStructure = ({ settingsPath, settingName, patternStructureChecker: objectWithProperties }) => {
-	if (propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) return true
+	if (propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) {
+		return true
+	}
 	console.error(`attempted to compose a pattern with an unrecognized setting: ${settingPath(settingsPath, settingName)}`)
 }
 

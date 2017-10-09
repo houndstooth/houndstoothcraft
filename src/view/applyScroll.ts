@@ -4,7 +4,9 @@ const applyScroll = outline => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
 	const centerViewOnCenterOfTileAtHomeAddress = viewSettings.centerViewOnCenterOfTileAtHomeAddress
 
-	if (!centerViewOnCenterOfTileAtHomeAddress) return outline
+	if (!centerViewOnCenterOfTileAtHomeAddress) {
+		return outline
+	}
 
 	return outline.map(applyCenterViewOnCenterOfTileAtHomeAddress)
 }

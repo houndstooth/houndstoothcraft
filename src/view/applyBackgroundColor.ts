@@ -5,7 +5,9 @@ import { getCanvasSize, getCurrentContext } from '../canvas'
 const applyBackgroundColor = () => {
 	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
 	const backgroundColor = colorSettings && colorSettings.backgroundColor
-	if (!backgroundColor) return
+	if (!backgroundColor) {
+		return
+	}
 
 	const canvasSize = getCanvasSize()
 

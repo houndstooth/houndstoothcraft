@@ -12,9 +12,15 @@ const getTileColorIndices = ({ gridAddress }) => {
 const maybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {
 	const { transformTileColorIndices, flipGrain, switcheroo } = assignment
 
-	if (flipGrain) tileColorIndices = reversed(tileColorIndices)
-	if (switcheroo) tileColorIndices = applySwitcheroo({ tileColorIndices, gridAddress })
-	if (transformTileColorIndices) tileColorIndices = transformTileColorIndices({ tileColorIndices, gridAddress })
+	if (flipGrain) {
+		tileColorIndices = reversed(tileColorIndices)
+	}
+	if (switcheroo) {
+		tileColorIndices = applySwitcheroo({ tileColorIndices, gridAddress })
+	}
+	if (transformTileColorIndices) {
+		tileColorIndices = transformTileColorIndices({ tileColorIndices, gridAddress })
+	}
 
 	return tileColorIndices
 }

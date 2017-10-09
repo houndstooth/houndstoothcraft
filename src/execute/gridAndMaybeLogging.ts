@@ -4,7 +4,9 @@ import { grid } from '../components'
 
 const gridAndMaybeLogging = () => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
-	if (performanceLogging) console.time('grid')
+	if (performanceLogging) {
+		console.time('grid')
+	}
 	grid()
 	if (performanceLogging) {
 		if (animating) {

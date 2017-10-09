@@ -16,7 +16,9 @@ const executeGrid = ({ layerFunctions }) => {
 		state.currentLayer++
 	}
 
-	if (state.mixingDown) mixDownContexts()
+	if (state.mixingDown) {
+		mixDownContexts()
+	}
 
 	state.currentLayer = 0
 }

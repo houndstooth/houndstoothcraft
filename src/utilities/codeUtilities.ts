@@ -3,7 +3,9 @@ const iterator = (i, options = { oneIndexed: false }) => {
 	for (let j = 0; j < Math.ceil(i); j++) {
 		iter.push(j)
 	}
-	if (options.oneIndexed) iter = iter.map(k => k + 1)
+	if (options.oneIndexed) {
+		iter = iter.map(k => k + 1)
+	}
 	return iter
 }
 
@@ -11,7 +13,9 @@ const wrappedIndex = ({ array, index = 0 }) => {
 	let i
 	if (index < 0) {
 		i = array.length - (Math.abs(index) % array.length)
-		if (i === array.length) i = 0
+		if (i === array.length) {
+			i = 0
+		}
 	}
 	else {
 		i = index % array.length
@@ -62,7 +66,9 @@ const deeperPath = ({ propertyPath, propertyName }) => {
 const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
 	let childProperty = objectWithProperties
 	propertyPath.forEach(pathStep => {
-		if (!isDefined(childProperty[ pathStep ])) childProperty[ pathStep ] = {}
+		if (!isDefined(childProperty[ pathStep ])) {
+			childProperty[ pathStep ] = {}
+		}
 		childProperty = childProperty[ pathStep ]
 	})
 	return childProperty

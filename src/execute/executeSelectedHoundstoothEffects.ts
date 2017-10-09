@@ -12,10 +12,22 @@ const executeSelectedHoundstoothEffects = ({ houndstoothOverrides = {} } = {}) =
 		settingsFunctions: state.mainHoundstooth.layersPattern,
 	})
 
-	createContexts()
-	if (state.exportFrames) state.mixingDown = true
-	if (state.mixingDown) state.mixedDownContext = createMixedDownCanvas()
+	prepareCanvas()
 
+	execute(layerFunctions)
+}
+
+const prepareCanvas = () => {
+	createContexts()
+	if (state.exportFrames) {
+		state.mixingDown = true
+	}
+	if (state.mixingDown) {
+		state.mixedDownContext = createMixedDownCanvas()
+	}
+}
+
+const execute = layerFunctions => {
 	if (state.animating) {
 		const animationFunctions = prepareFunctionsPerSetting({
 			settingsFunctions: state.mainHoundstooth.animationsPattern,

@@ -10,7 +10,9 @@ import isTileUniform from './isTileUniform'
 
 const tile = ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
-	if (!tileOrigin) return
+	if (!tileOrigin) {
+		return
+	}
 
 	const tileColorIndices = getTileColorIndices({ gridAddress })
 	const args = { gridAddress, tileOrigin, tileSize, tileColorIndices }

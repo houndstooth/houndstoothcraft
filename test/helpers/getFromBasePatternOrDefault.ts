@@ -6,7 +6,9 @@ const getFromBasePatternOrDefault = settingsPath => {
 	let childSetting = state.mainHoundstooth.basePattern
 	let notThere
 	settingsPath.forEach(pathStep => {
-		if (notThere) return
+		if (notThere) {
+			return
+		}
 		if (!isDefined(childSetting[ pathStep ])) {
 			childSetting = undefined
 			notThere = true

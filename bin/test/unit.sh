@@ -2,4 +2,4 @@
 
 set -e
 
-ts-node node_modules/jasmine/bin/jasmine.js
+node_modules/.bin/ts-node node_modules/jasmine/bin/jasmine.js

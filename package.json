@@ -4,15 +4,15 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
-    "setup": "sh ./bin/setup.sh && exec bash --login",
-    "start": "sh ./bin/start.sh",
-    "ship": "sh ./bin/ship.sh",
-    "stop": "sh ./bin/stop.sh",
-    "test": "sh ./bin/test.sh",
-    "pull": "sh ./bin/pull.sh",
-    "push": "sh ./bin/push.sh",
-    "restart": "sh ./bin/restart.sh",
-    "ci": "sh ./bin/ci.sh"
+    "setup": ". ./.env && sh ./bin/setup.sh",
+    "start": ". ./.env && sh ./bin/start.sh",
+    "ship": ". ./.env && sh ./bin/ship.sh",
+    "stop": ". ./.env && sh ./bin/stop.sh",
+    "test": ". ./.env && sh ./bin/test.sh",
+    "pull": ". ./.env && sh ./bin/pull.sh",
+    "push": ". ./.env && sh ./bin/push.sh",
+    "restart": ". ./.env && sh ./bin/restart.sh",
+    "ci": ". ./.env && sh ./bin/ci.sh"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",

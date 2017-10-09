@@ -4,10 +4,6 @@ set -e
 
 npm i -g npm
 
-sed -i -e "/web-render/d" ~/.bash_profile
-echo ". ~/workspace/web-render/.env" >> ~/.bash_profile
-. ~/.bash_profile
-
 sh ./bin/setup/install.sh
 
 npm i

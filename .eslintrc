@@ -73,6 +73,10 @@
     "no-extra-parens": [
       "error"
     ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
     "max-len": [
       "error",
       120

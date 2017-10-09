@@ -5,7 +5,7 @@ const stripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const stripeStartsInTopLeftHalf = stripeStart < 1
 	const stripeEndsInBottomRightHalf = stripeEnd > 1
 
-	let outline = []
+	const outline = []
 	firstPoint({ outline, stripeStartsInTopLeftHalf, tileArgs, stripeStart })
 	middlePoints({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeEnd })
 	lastPoints({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeStart })

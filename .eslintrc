@@ -64,6 +64,9 @@
     "no-shadow": [
       "error"
     ],
+    "prefer-const": [
+      "error"
+    ],
     "max-statements": [
       "error",
       10

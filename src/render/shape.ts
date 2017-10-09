@@ -5,7 +5,7 @@ import solid from './solid'
 import texture from './texture'
 
 const shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
-	let outline = getOutline({ tileOrigin, tileSize, outlineOptions })
+	const outline = getOutline({ tileOrigin, tileSize, outlineOptions })
 	if (!outline) return
 
 	const context = getCurrentContext()

@@ -4,7 +4,7 @@ import state from '../../../../src/state'
 describe('standard animation', () => {
 	it('multiplies the property by the standard animation rate each frame', () => {
 		state.currentAnimationFrame = 0
-		let propertyAtCurrentFrame = 4
+		const propertyAtCurrentFrame = 4
 		expect(standardAnimation(propertyAtCurrentFrame)).toBe(propertyAtCurrentFrame)
 
 		state.currentAnimationFrame++

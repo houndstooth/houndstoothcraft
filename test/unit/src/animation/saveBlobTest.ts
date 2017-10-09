@@ -7,7 +7,7 @@ describe('save blob', () => {
 		spyOn(windowWrapper.window.URL, 'createObjectURL').and.returnValue('the url')
 
 		const clickSpy = jasmine.createSpy('click')
-		let mockLink = buildMockElement({ clickSpy })
+		const mockLink = buildMockElement({ clickSpy })
 		spyOn(windowWrapper.document, 'createElement').and.returnValue(mockLink)
 
 		const appendChildSpy = spyOn(windowWrapper.document.body, 'appendChild')

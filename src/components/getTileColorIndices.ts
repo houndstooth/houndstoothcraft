@@ -4,13 +4,13 @@ import state from '../state'
 const getTileColorIndices = ({ gridAddress }) => {
 	const assignment = state.mainHoundstooth.basePattern.colorSettings.assignment
 
-	let tileColorIndices = getIndices({ gridAddress, assignment })
+	const tileColorIndices = getIndices({ gridAddress, assignment })
 
 	return maybeAdjustTileColorIndices({ assignment, gridAddress, tileColorIndices })
 }
 
 const maybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {
-	let { transformTileColorIndices, flipGrain, switcheroo } = assignment
+	const { transformTileColorIndices, flipGrain, switcheroo } = assignment
 
 	if (flipGrain) tileColorIndices = reversed(tileColorIndices)
 	if (switcheroo) tileColorIndices = applySwitcheroo({ tileColorIndices, gridAddress })

@@ -15,7 +15,7 @@ const prepareCanvasForDisplayInTest = canvas => {
 const activateTestMarkersCanvas = () => {
 	testMarkersClear()
 
-	let testMarkersCanvas : any = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
+	const testMarkersCanvas : any = document.querySelector('.test-markers-canvas') || createTestMarkersCanvas()
 
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = 9001
@@ -29,7 +29,7 @@ const activateTestMarkersCanvas = () => {
 
 	setElementDimensions(testCanvasDisplayArea, canvasSize)
 
-	let canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer({ canvasSize })
+	const canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer({ canvasSize })
 	prepareCanvasForDisplayInTest(canvasContainer)
 
 	state.mixingDown = true

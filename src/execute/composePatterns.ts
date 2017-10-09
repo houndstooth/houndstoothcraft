@@ -20,7 +20,7 @@ const composePatterns = ({ patternToBeMergedOnto, patternToMerge, settingsPath =
 			})
 		}
 		else {
-			let settingsWithSettingToBeOverridden = accessChildPropertyOrCreatePath({
+			const settingsWithSettingToBeOverridden = accessChildPropertyOrCreatePath({
 				objectWithProperties: patternToBeMergedOnto,
 				propertyPath: settingsPath,
 			})

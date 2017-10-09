@@ -70,6 +70,9 @@
     "curly": [
       "error"
     ],
+    "no-extra-parens": [
+      "error"
+    ],
     "max-len": [
       "error",
       120

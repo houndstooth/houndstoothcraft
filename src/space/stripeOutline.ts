@@ -60,39 +60,39 @@ const lastPoints = ({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRigh
 	}
 }
 
-const pointAlongTopEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+const pointAlongTopEdge = ({ x, y, tileSize }, { stripePosition }) => [
 	x + stripePosition * tileSize,
 	y,
-])
+]
 
-const pointAlongLeftEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+const pointAlongLeftEdge = ({ x, y, tileSize }, { stripePosition }) => [
 	x,
 	y + stripePosition * tileSize,
-])
+]
 
-const pointAlongRightEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+const pointAlongRightEdge = ({ x, y, tileSize }, { stripePosition }) => [
 	x + tileSize,
 	y + (stripePosition - 1) * tileSize,
-])
+]
 
-const pointAlongBottomEdge = ({ x, y, tileSize }, { stripePosition }) => ([
+const pointAlongBottomEdge = ({ x, y, tileSize }, { stripePosition }) => [
 	x + (stripePosition - 1) * tileSize,
 	y + tileSize,
-])
+]
 
-const pointInTopRightCorner = ({ x, y, tileSize }) => ([
+const pointInTopRightCorner = ({ x, y, tileSize }) => [
 	x + tileSize,
 	y,
-])
+]
 
-const pointInBottomRightCorner = ({ x, y, tileSize }) => ([
+const pointInBottomRightCorner = ({ x, y, tileSize }) => [
 	x + tileSize,
 	y + tileSize,
-])
+]
 
-const pointInBottomLeftCorner = ({ x, y, tileSize }) => ([
+const pointInBottomLeftCorner = ({ x, y, tileSize }) => [
 	x,
 	y + tileSize,
-])
+]
 
 export default stripeOutline

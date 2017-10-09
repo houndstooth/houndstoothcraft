@@ -12,7 +12,7 @@ const iterator = (i, options = { oneIndexed: false }) => {
 const wrappedIndex = ({ array, index = 0 }) => {
 	let i
 	if (index < 0) {
-		i = array.length - (Math.abs(index) % array.length)
+		i = array.length - Math.abs(index) % array.length
 		if (i === array.length) {
 			i = 0
 		}

@@ -1,5 +1,7 @@
 # development
 
+Please begin by installing node.
+
 ```
 git clone https://github.com/houndstooth/web-render.git
 cd web-render

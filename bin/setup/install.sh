@@ -9,12 +9,6 @@ if [[ $OSTYPE == darwin* ]] ; then
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
-    if hash node 2>/dev/null; then
-        printf "Node found.\n"
-    else
-        brew install node
-    fi
-
     if hash webstorm 2>/dev/null; then
         printf "Webstorm found.\n"
     else
@@ -45,7 +39,6 @@ if [[ $OSTYPE == darwin* ]] ; then
         brew cask install google-chrome
     fi
 else
-    if hash node 2>/dev/null; then printf "Missing Node.\n"; fi
     if [[ -e /c/Program\ Files\ \(x86\)/Sublime\ Text\ 3/subl.exe ]] ; then printf "Missing Sublime.\n"; fi
     if hash cf 2>/dev/null; then printf "Missing Cloud Foundry CLI and Autopilot plugin.\n"; fi
     if [[ -e /c/Program\ Files/Git/git-bash.exe ]] ; then printf "Missing Git BASH.\n"; fi

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/cmyktooth" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/derasterized" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/gingham-chevron-continuum" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/ginghoundstootham" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/gongram" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/harmonitooth" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/houndazzle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/houndsmorphosis" vcs="Git" />
+  </component>
+</project>

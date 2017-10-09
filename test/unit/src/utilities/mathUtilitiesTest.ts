@@ -123,7 +123,8 @@ describe('math utilities', () => {
 	describe('#termialRoot', () => {
 		it('for a concrete example of what you can use this method for: given an starting stripe count per tile, the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes through, including the fractional part within that tile', () => {
 			const termialRoot = mathUtilities.termialRoot
-			let rangeStart, rangeDelta
+			let rangeStart
+			let rangeDelta
 
 			rangeStart = 1
 			rangeDelta = 1

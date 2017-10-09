@@ -4,7 +4,9 @@ import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create effect toggles container', () => {
-	let returnedEffectTogglesContainer, mockEffectTogglesContainer, mockCanvasContainer
+	let returnedEffectTogglesContainer
+	let mockEffectTogglesContainer
+	let mockCanvasContainer
 	const mockEffectTogglesContainerClassList = []
 	beforeEach(() => {
 		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList })

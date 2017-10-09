@@ -5,7 +5,8 @@ import * as buildEffectToggleClickHandler from '../../../../src/ui/buildEffectTo
 import noop from '../../../helpers/noop'
 
 describe('create checkbox', () => {
-	let returnedCheckbox, mockCheckbox
+	let returnedCheckbox
+	let mockCheckbox
 	const mockClassList = []
 	const mockAttributeObject = { type: '' }
 	const mockClickHandler = noop

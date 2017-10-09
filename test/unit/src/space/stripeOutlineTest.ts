@@ -3,7 +3,8 @@ import stripeOutline from '../../../../src/space/stripeOutline'
 describe('stripe outline', () => {
 	const tileOrigin = [ 0, 0 ]
 	const tileSize = 1
-	let stripeStart, stripeEnd
+	let stripeStart
+	let stripeEnd
 
 	describe('a stripe that starts at the top left corner', () => {
 		beforeEach(() => stripeStart = 0)

@@ -3,7 +3,8 @@ import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
 
 describe('create context', () => {
-	let returnedContext, appendedCanvas
+	let returnedContext
+	let appendedCanvas
 	const mockContext = {}
 	beforeEach(() => {
 		const canvas = buildMockCanvas({ mockContext })

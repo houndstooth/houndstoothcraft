@@ -4,7 +4,8 @@ import window from '../../../../src/utilities/windowWrapper'
 
 describe('build animation function', () => {
 	let intervalFunction
-	let animationFunctionSpy, stopConditionFunctionSpy
+	let animationFunctionSpy
+	let stopConditionFunctionSpy
 	beforeEach(() => {
 		spyOn(window, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')

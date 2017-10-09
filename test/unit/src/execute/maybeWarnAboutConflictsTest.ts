@@ -3,7 +3,11 @@ import { console } from '../../../../src/utilities/windowWrapper'
 import * as ui from '../../../../src/ui'
 
 describe('warning about conflicts', () => {
-	let warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting
+	let warnAboutConflicts
+	let settingsPath
+	let settingName
+	let existingSetting
+	let overridingSetting
 	beforeEach(() => {
 		spyOn(console, 'warn')
 		spyOn(ui, 'warn')

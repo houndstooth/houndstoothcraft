@@ -16,7 +16,8 @@ describe('code utilities', () => {
 	})
 
 	describe('#wrappedIndex', () => {
-		let wrappedIndex, index
+		let wrappedIndex
+		let index
 		const array = [ 'a', 'b', 'c' ]
 		beforeEach(() => wrappedIndex = codeUtilities.wrappedIndex)
 
@@ -144,7 +145,8 @@ describe('code utilities', () => {
 	})
 
 	describe('#deepClone', () => {
-		let actualObject, originalObject
+		let actualObject
+		let originalObject
 		beforeEach(() => {
 			const anImmutableString = 'a string'
 			const anImmutableNumber = 9

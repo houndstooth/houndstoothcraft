@@ -10,7 +10,9 @@ import * as isTileUniform from '../../../../src/components/isTileUniform'
 
 describe('tile', () => {
 	const gridAddress = [ 3, 5 ]
-	let shapeSpy, getTileColorIndicesSpy, isTileUniformSpy
+	let shapeSpy
+	let getTileColorIndicesSpy
+	let isTileUniformSpy
 	beforeEach(() => {
 		shapeSpy = spyOn(render, 'shape')
 		spyOn(space, 'squareOutline')

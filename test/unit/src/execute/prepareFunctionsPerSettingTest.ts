@@ -3,8 +3,11 @@ import { console } from '../../../../src/utilities/windowWrapper'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 
 describe('#prepareFunctionsPerSetting', () => {
-	let actualFunctionsArray, expectedsettingsFunctions, settingsFunctions
-	let settingFunction, secondSettingFunction
+	let actualFunctionsArray
+	let expectedsettingsFunctions
+	let settingsFunctions
+	let settingFunction
+	let secondSettingFunction
 	let errorSpy
 	beforeEach(() => {
 		errorSpy = spyOn(console, 'error')

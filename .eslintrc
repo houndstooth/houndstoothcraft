@@ -57,6 +57,10 @@
       "error",
       "stroustrup"
     ],
+    "one-var": [
+      "error",
+      "never"
+    ],
     "max-statements": [
       "error",
       10

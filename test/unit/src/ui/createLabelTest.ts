@@ -4,7 +4,8 @@ import buildMockElement from '../../helpers/buildMockElement'
 import * as createCheckbox from '../../../../src/ui/createCheckbox'
 
 describe('create label', () => {
-	let returnedLabel, mockLabel
+	let returnedLabel
+	let mockLabel
 	const mockChildren = []
 	const mockCheckbox = {}
 	const mockName = {}

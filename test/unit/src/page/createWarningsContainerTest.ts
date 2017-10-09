@@ -4,7 +4,9 @@ import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create warnings container', () => {
-	let returnedWarningsContainer, mockEffectTogglesContainer, mockWarningsContainer
+	let returnedWarningsContainer
+	let mockEffectTogglesContainer
+	let mockWarningsContainer
 	const mockWarningsContainerClassList = []
 	beforeAll(() => {
 		mockWarningsContainer = buildMockElement({ mockClassList: mockWarningsContainerClassList })

@@ -6,7 +6,9 @@ import noop from '../../../helpers/noop'
 
 describe('animator', () => {
 	let intervalFunction
-	let animationFunction, frameRate, stopConditionFunction
+	let animationFunction
+	let frameRate
+	let stopConditionFunction
 	let interval
 	beforeEach(() => {
 		interval = noop

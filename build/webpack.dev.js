@@ -9,5 +9,6 @@ module.exports = Object.assign({}, webpackCommonConfig, {
 		contentBase: "dist",
 		hot: true,
 		inline: true,
+		port: process.env.DEV_SERVER_PORT,
 	}
 })

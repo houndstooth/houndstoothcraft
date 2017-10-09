@@ -1,10 +1,10 @@
 declare const global: any
 
 const mockDocument: {
-	createElement: () => any,
-	createTextNode: () => any,
-	querySelector: () => any,
-	body: { appendChild: () => any }
+	createElement: Function,
+	createTextNode: Function,
+	querySelector: Function,
+	body: { appendChild: Function }
 	} = {
 		createElement: () => null,
 		createTextNode: () => null,
@@ -15,9 +15,9 @@ const mockDocument: {
 	}
 
 const mockWindow: {
-	clearInterval: () => any,
-	setInterval: () => any,
-	URL: { createObjectURL: () => any, revokeObjectURL: () => any }
+	clearInterval: Function,
+	setInterval: Function,
+	URL: { createObjectURL: Function, revokeObjectURL: Function }
 	} = {
 		clearInterval: () => null,
 		setInterval: () => null,

@@ -16,8 +16,8 @@ const shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline
 	const textureSettings = state.mainHoundstooth.basePattern.textureSettings
 	const renderTexture = textureSettings && textureSettings.renderTexture
 
-	const someArgs = { context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex }
-	renderTexture ? texture(someArgs) : solid(someArgs)
+	const renderFunction = renderTexture ? texture : solid
+	renderFunction({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })
 }
 
 export default shape

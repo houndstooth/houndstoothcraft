@@ -45,8 +45,12 @@ const middlePoints = ({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRi
 const lastPoints = ({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, tileArgs, stripeStart }) => {
 	const stripeStartsInTopLeftCorner = stripeStart === 0
 	if (!stripeStartsInTopLeftCorner) {
+		if (stripeStartsInTopLeftHalf && stripeEndsInBottomRightHalf) {
+			outline.push(pointInBottomLeftCorner(tileArgs))
+		}
+
 		if (stripeStartsInTopLeftHalf) {
-			stripeEndsInBottomRightHalf && outline.push(pointInBottomLeftCorner(tileArgs))
+
 			outline.push(pointAlongLeftEdge(tileArgs, { stripePosition: stripeStart }))
 		}
 		else {

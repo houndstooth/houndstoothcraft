@@ -15,8 +15,8 @@ const tile = ({ gridAddress }) => {
 	}
 
 	const tileColorIndices = getTileColorIndices({ gridAddress })
-	const args = { gridAddress, tileOrigin, tileSize, tileColorIndices }
-	shouldUseSquare({ tileColorIndices }) ? squareTile(args) : stripedTile(args)
+	const tileFunction = shouldUseSquare({ tileColorIndices }) ? squareTile : stripedTile
+	tileFunction({ gridAddress, tileOrigin, tileSize, tileColorIndices })
 }
 
 const shouldUseSquare = ({ tileColorIndices }) => {

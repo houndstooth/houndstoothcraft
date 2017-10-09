@@ -13,7 +13,7 @@
     "require": false,
     "global": false,
     "process": false,
-    "module": false,
+    "module": false
   },
   "plugins": [
     "import"
@@ -76,6 +76,9 @@
     "arrow-parens": [
       "error",
       "as-needed"
+    ],
+    "no-unused-expressions": [
+      "error"
     ],
     "max-len": [
       "error",

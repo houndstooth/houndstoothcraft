@@ -5,7 +5,8 @@ import resetInterface from './resetInterface'
 const buildEffectToggleClickHandler = (checkbox, houndstoothEffect) => () => {
 	resetInterface()
 
-	checkbox.checked ? addEffect(houndstoothEffect) : removeEffect(houndstoothEffect)
+	const effectFunction = checkbox.checked ? addEffect : removeEffect
+	effectFunction(houndstoothEffect)
 
 	executeSelectedHoundstoothEffects()
 }

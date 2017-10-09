@@ -6,7 +6,9 @@ const clear = () => {
 	state.contexts.forEach(context => clearContext({ context, canvasSize }))
 
 	const mixedDownContext = state.mixedDownContext
-	mixedDownContext && clearContext({ context: mixedDownContext, canvasSize })
+	if (mixedDownContext) {
+		clearContext({ context: mixedDownContext, canvasSize })
+	}
 }
 
 const clearContext = ({ context, canvasSize }) => {

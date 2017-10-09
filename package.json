@@ -4,14 +4,14 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
-    "setup": ". ./.env && sh ./bin/setup.sh",
-    "start": ". ./.env && sh ./bin/start.sh",
-    "ship": ". ./.env && sh ./bin/ship.sh",
-    "stop": ". ./.env && sh ./bin/stop.sh",
-    "test": ". ./.env && sh ./bin/test.sh",
-    "pull": ". ./.env && sh ./bin/pull.sh",
-    "push": ". ./.env && sh ./bin/push.sh",
-    "restart": ". ./.env && sh ./bin/restart.sh",
+    "setup": ". ./.env && sh ./bin/setup.sh || true",
+    "start": ". ./.env && sh ./bin/start.sh || true",
+    "ship": ". ./.env && sh ./bin/ship.sh || true",
+    "stop": ". ./.env && sh ./bin/stop.sh || true",
+    "test": ". ./.env && sh ./bin/test.sh || true",
+    "pull": ". ./.env && sh ./bin/pull.sh || true",
+    "push": ". ./.env && sh ./bin/push.sh || true",
+    "restart": ". ./.env && sh ./bin/restart.sh || true",
     "ci": ". ./.env && sh ./bin/ci.sh"
   },
   "devDependencies": {

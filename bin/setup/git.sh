@@ -2,13 +2,13 @@
 
 git config --get user.name
 if [[ $? -ne 0 ]] ; then
-    printf "Please set your global git user name and retry.\n\n"
+    printf "${Red}Please set your global git user name and retry.\n\n${NC}"
     exit 1
 fi
 
 git config --get user.email
 if [[ $? -ne 0 ]] ; then
-    printf "Please set your global git user email and retry.\n\n"
+    printf "${Red}Please set your global git user email and retry.\n\n${NC}"
     exit 1
 fi
 

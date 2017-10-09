@@ -4,19 +4,19 @@ set -e
 
 if [[ $OSTYPE == darwin* ]] ; then
     if hash brew 2>/dev/null; then
-        printf "Homebrew found.\n"
+        printf "${Blue}Homebrew found.\n${NC}"
     else
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
     if hash webstorm 2>/dev/null; then
-        printf "Webstorm found.\n"
+        printf "${Blue}Webstorm found.\n${NC}"
     else
         brew cask install webstorm
     fi
 
     if hash cf 2>/dev/null; then
-        printf "Cloud Foundry CLI found.\n"
+        printf "${Blue}Cloud Foundry CLI found.\n${NC}"
     else
         brew tap cloudfoundry/tap
         brew install cf-cli
@@ -28,13 +28,13 @@ if [[ $OSTYPE == darwin* ]] ; then
     fi
 
     if [[ -e /Applications/iTerm.app/ ]] ; then
-        printf "iTerm2 found.\n"
+        printf "${Blue}iTerm2 found.\n${NC}"
     else
         brew cask install iterm2
     fi
 
     if [[ -e /Applications/Google\ Chrome.app/ ]] ; then
-        printf "Google Chrome found.\n"
+        printf "${Blue}Google Chrome found.\n${NC}"
     else
         brew cask install google-chrome
     fi

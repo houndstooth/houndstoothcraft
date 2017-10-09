@@ -7,7 +7,7 @@ NAME="$3"
 netstat -an | grep $PORT | grep -m1 LISTEN > /dev/null 2>&1
 if [[ $? -ne 0 ]] ; then
     $(eval "$CMD")
-    printf "$NAME started on port $PORT.\n\n"
+    printf "${Green}$NAME${NC} started on port ${Purple}$PORT${NC}.\n\n"
 else
-    printf "$NAME already running on port $PORT.\n\n"
+    printf "${Yellow}$NAME already running on port $PORT.${NC}\n\n"
 fi

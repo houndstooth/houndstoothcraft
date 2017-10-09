@@ -12,4 +12,4 @@ sh ./bin/start/ide.sh
 
 sh ./bin/start/refocus_terminal.sh
 
-printf "IDE, servers, and browser tabs up.\n\n"
+printf "${Green}IDE, servers, and browser tabs up.\n\n${NC}"

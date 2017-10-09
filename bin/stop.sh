@@ -15,4 +15,4 @@ done
 
 pkill -f "webpack.test.server.js" || true
 
-printf "Servers down.\n\n"
+printf "${Purple}Servers down.\n\n${NC}"

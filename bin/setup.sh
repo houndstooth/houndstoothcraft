@@ -12,4 +12,4 @@ sh ./bin/setup/git.sh
 
 sh ./bin/start.sh
 
-printf "Welcome to your fresh workstation. Enjoy developing some more houndstooth.\n\n"
+printf "${Green}Welcome to your fresh workstation. Enjoy developing some more houndstooth.\n\n${NC}"

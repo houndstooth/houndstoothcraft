@@ -1,6 +1,6 @@
 import state from '../state'
 import { ANIMATION_RATE } from '../constants'
 
-const standardAnimation = (p: number): number => p * Math.pow(ANIMATION_RATE, state.currentAnimationFrame)
+const standardAnimation: { (p: number): number } = p => p * Math.pow(ANIMATION_RATE, state.currentAnimationFrame)
 
 export default standardAnimation

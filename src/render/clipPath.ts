@@ -1,4 +1,4 @@
-const clipPath = ({ context }) => {
+const clipPath: { ({}: { context: any }): void } = ({ context }) => {
 	context.save()
 	context.clip()
 }

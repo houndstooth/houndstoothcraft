@@ -19,7 +19,7 @@ const buildAnimationFunction: BuildAnimationFunction = buildAnimationFunctionPar
 			return
 		}
 
-		if (beginningOfAnimationThatShouldBeSeenHasBeenReached(startAnimationFrame)) {
+		if (shouldBeginShowingAnimation(startAnimationFrame)) {
 			animate({ layerFunctions, refreshCanvas })
 		}
 
@@ -28,11 +28,11 @@ const buildAnimationFunction: BuildAnimationFunction = buildAnimationFunctionPar
 	}
 }
 
-const exportingFramesStillNeedsToCatchUp = (): boolean => {
+const exportingFramesStillNeedsToCatchUp: { (): boolean } = () => {
 	return state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
 }
 
-const beginningOfAnimationThatShouldBeSeenHasBeenReached = (startAnimationFrame: number): boolean => {
+const shouldBeginShowingAnimation: { (startAnimationFrame: number): boolean } = startAnimationFrame => {
 	return state.currentAnimationFrame >= startAnimationFrame
 }
 

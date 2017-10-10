@@ -3,8 +3,10 @@ import { getCurrentContext } from '../canvas'
 import state from '../state'
 import solid from './solid'
 import texture from './texture'
+import ShapeArgs from './ShapeArgs'
 
-const shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
+type Shape = { ({}: ShapeArgs): void }
+const shape: Shape = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
 	const outline = getOutline({ tileOrigin, tileSize, outlineOptions })
 	if (!outline) {
 		return

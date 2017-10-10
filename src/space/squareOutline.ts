@@ -1,4 +1,6 @@
-const squareOutline = ({ tileOrigin, tileSize }) => {
+import Outline from './Outline'
+
+const squareOutline: Outline = ({ tileOrigin, tileSize }) => {
 	const x = tileOrigin[ 0 ]
 	const y = tileOrigin[ 1 ]
 

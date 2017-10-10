@@ -1,4 +1,5 @@
-const rotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
+type RotateCoordinateAboutPoint = { ({}: { coordinate: number[], point: number[], rotation: number }): number[] }
+const rotateCoordinateAboutPoint: RotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
 	const sin = Math.sin(rotation)
 	const cos = Math.cos(rotation)
 

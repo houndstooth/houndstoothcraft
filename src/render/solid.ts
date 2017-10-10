@@ -1,7 +1,8 @@
 import draw from './draw'
 import getColor from './getColor'
+import RenderFunction from './RenderFunction'
 
-const solid = ({ context, outline, shapeColorIndex }) => {
+const solid: RenderFunction = ({ context, outline, shapeColorIndex }) => {
 	const shapeColor = getColor({ index: shapeColorIndex })
 	if (shapeColor.a === 0) {
 		return

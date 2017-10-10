@@ -1,7 +1,9 @@
 import { applyView } from '../view'
 import fill from './fill'
+import Color from './Color'
 
-const draw = ({ context, shapeColor, outline }) => {
+type Draw = { ({}: { context: any, shapeColor: Color, outline: number[][] }): void }
+const draw: Draw = ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) {
 		return
 	}

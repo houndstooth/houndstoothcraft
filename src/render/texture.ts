@@ -1,8 +1,9 @@
 import buildPath from './buildPath'
 import clipPath from './clipPath'
 import resetClip from './resetClip'
+import RenderFunction from './RenderFunction'
 
-const texture = textureArgs => {
+const texture: RenderFunction = textureArgs => {
 	const { context, outline, renderTexture } = textureArgs
 
 	buildPath({ context, outline })

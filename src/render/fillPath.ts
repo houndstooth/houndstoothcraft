@@ -1,4 +1,4 @@
-const fillPath = ({ context }) => {
+const fillPath: { ({}: { context: any }): void } = ({ context }) => {
 	context.closePath()
 	context.fill()
 }

@@ -1,5 +1,5 @@
 import { defaultToTrue, deepClone } from '../utilities/codeUtilities'
-import { shape } from '../render'
+import { shape, ShapeArgs } from '../render'
 import { squareOutline, stripeOutline } from '../space'
 import { PERIMETER_SCALAR } from '../constants'
 import state from '../state'
@@ -7,8 +7,9 @@ import getStripePositionsForTile from './getStripePositionsForTile'
 import getTileColorIndices from './getTileColorIndices'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import isTileUniform from './isTileUniform'
+import TileArgs from './TileArgs'
 
-const tile = ({ gridAddress }) => {
+const tile: { ({}: { gridAddress: number[] }): void } = ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) {
 		return
@@ -19,7 +20,7 @@ const tile = ({ gridAddress }) => {
 	tileFunction({ gridAddress, tileOrigin, tileSize, tileColorIndices })
 }
 
-const shouldUseSquare = ({ tileColorIndices }) => {
+const shouldUseSquare: { ({}: { tileColorIndices: number[] }): boolean } = ({ tileColorIndices }) => {
 	const {
 		collapseSameColoredShapesWithinTile,
 	}: {
@@ -29,21 +30,35 @@ const shouldUseSquare = ({ tileColorIndices }) => {
 	return shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
 }
 
-const squareTile = args => {
-	args.getOutline = squareOutline
-	shape(args)
+const squareTile: Tile = args => {
+	const squareArgs = getSquareArgs({ args })
+	shape(squareArgs)
 }
 
-const stripedTile = args => {
+const stripedTile: Tile = args => {
 	const stripePositions = getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
-		const stripeArgs: any = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
+		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
 		shape(stripeArgs)
 	})
 }
 
-const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
-	const stripeArgs: any = deepClone(args)
+type GetSquareArgs = {
+	({}: { args: TileArgs }): ShapeArgs,
+}
+const getSquareArgs: GetSquareArgs = ({ args }) => {
+	const squareArgs = deepClone(args)
+
+	squareArgs.getOutline = squareOutline
+
+	return squareArgs
+}
+
+type GetStripeArgs = {
+	({}: { args: TileArgs, stripeStart: number, stripeIndex: number, stripePositions: number[] }): ShapeArgs,
+}
+const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
+	const stripeArgs = deepClone(args)
 
 	stripeArgs.getOutline = stripeOutline
 	stripeArgs.stripeIndex = stripeIndex
@@ -51,6 +66,10 @@ const getStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
 	stripeArgs.outlineOptions = { stripeStart, stripeEnd }
 
 	return stripeArgs
+}
+
+type Tile = {
+	({}: TileArgs): void,
 }
 
 export default tile

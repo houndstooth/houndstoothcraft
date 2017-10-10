@@ -1,5 +1,5 @@
 import state from '../state'
 
-const getCurrentContext = () => state.contexts[ state.currentLayer ]
+const getCurrentContext = (): any => state.contexts[ state.currentLayer ]
 
 export default getCurrentContext

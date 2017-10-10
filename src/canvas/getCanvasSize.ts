@@ -1,7 +1,7 @@
 import state from '../state'
 import { defaults } from '../store'
 
-const getCanvasSize = () => {
+const getCanvasSize = (): number[] => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
 	const canvasSize = viewSettings && viewSettings.canvasSize || defaults.DEFAULT_CANVAS_SIZE
 

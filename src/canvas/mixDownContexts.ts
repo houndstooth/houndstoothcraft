@@ -1,6 +1,6 @@
 import state from '../state'
 
-const mixDownContexts = () => state.contexts.forEach(context => {
+const mixDownContexts = (): void => state.contexts.forEach(context => {
 	state.mixedDownContext.drawImage(context.canvas, 0, 0)
 })
 

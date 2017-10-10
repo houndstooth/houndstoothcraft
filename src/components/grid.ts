@@ -7,9 +7,9 @@ const grid = () => {
 	const {
 		includeNegativeQuadrants,
 		gridSize,
-	} : {
+	}: {
 		includeNegativeQuadrants?,
-		gridSize
+		gridSize,
 		} = state.mainHoundstooth.basePattern.gridSettings || {}
 
 	applyOpacity()

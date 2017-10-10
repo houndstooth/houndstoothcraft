@@ -16,7 +16,7 @@ const tileSectorIsColor = ({
 	y,
 	n,
 	color,
-	id?
+	id?,
 	}) => {
 	const coordinateUnderTest = sectorCenter({ originInPixels, tileSizeInPixels, x, y, n })
 	const passed = pixelIsColor(coordinateUnderTest, color)

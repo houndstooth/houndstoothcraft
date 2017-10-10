@@ -13,9 +13,7 @@ describe('create context', () => {
 		const mockCanvases = []
 		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas) }
 
-
 		returnedContext = createContext({ canvasContainer, canvasSize: [ 350, 600 ] })
-
 
 		appendedCanvas = mockCanvases[0]
 	})

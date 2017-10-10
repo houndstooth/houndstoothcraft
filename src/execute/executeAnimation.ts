@@ -6,16 +6,16 @@ const executeAnimation = ({ layerFunctions, animationFunctions }) => {
 	const {
 		frameRate,
 		endAnimationFrame,
-	} : {
+	}: {
 		frameRate,
-		endAnimationFrame
+		endAnimationFrame,
 		} = state.mainHoundstooth.basePattern.animationSettings || {}
 	let {
 		startAnimationFrame,
 		refreshCanvas,
-	} : {
+	}: {
 		refreshCanvas?,
-		startAnimationFrame?
+		startAnimationFrame?,
 		} = state.mainHoundstooth.basePattern.animationSettings || {}
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = defaultToTrue(refreshCanvas)

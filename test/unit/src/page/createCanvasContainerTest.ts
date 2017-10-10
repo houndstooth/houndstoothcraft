@@ -1,6 +1,6 @@
 import createCanvasContainer from '../../../../src/page/createCanvasContainer'
 import * as window from '../../../../src/utilities/windowWrapper'
-import * as setElementDimensions from '../../../../src/page/setElementDimensions'
+import * as setElementDimensions from '../../../../src/page/scaleElement'
 import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {
@@ -22,16 +22,19 @@ describe('create canvas container', () => {
 	})
 
 	it('returns the canvas container it just put on the page', () => {
-		const canvasContainerAppendedToDocumentBody = mockBodyChildren[0]
+		const canvasContainerAppendedToDocumentBody = mockBodyChildren[ 0 ]
 		expect(returnedCanvasContainer).toBe(canvasContainerAppendedToDocumentBody)
 	})
 
 	it('assigns a class to the canvas', () => {
-		const classAddedToCanvasContainer = mockCanvasContainerClassList[0]
+		const classAddedToCanvasContainer = mockCanvasContainerClassList[ 0 ]
 		expect(classAddedToCanvasContainer).toBe('canvas-container')
 	})
 
 	it('sets the canvas container width and height (as style, in px)', () => {
-		expect(setElementDimensions.default).toHaveBeenCalledWith(returnedCanvasContainer, canvasSize)
+		expect(setElementDimensions.default).toHaveBeenCalledWith({
+			element: returnedCanvasContainer,
+			dimensions: canvasSize,
+		})
 	})
 })

@@ -42,7 +42,7 @@ describe('compose patterns', () => {
 		expect(expectedPattern).toEqual(patternToBeMergedOnto)
 	})
 
-	it(`errors when it notices that a setting being merged onto the pattern 
+	it(`errors when it notices that a setting being merged onto the pattern
 		does not fit into the pattern structure, and then does not merge it`, () => {
 			spyOn(console, 'error')
 			const patternToBeMergedOnto = {}

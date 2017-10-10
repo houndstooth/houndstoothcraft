@@ -2,7 +2,7 @@ import buildStopConditionFunction from '../../../../src/animation/buildStopCondi
 import state from '../../../../src/state'
 
 describe('build stop condition function', () => {
-	it(`returns a function that evaluates to true once the current animation frame on the state 
+	it(`returns a function that evaluates to true once the current animation frame on the state
 		is greater than the requested end animation frame`, () => {
 			const stopConditionFunction = buildStopConditionFunction({ endAnimationFrame: 3 })
 

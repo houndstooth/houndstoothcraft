@@ -9,10 +9,10 @@ const composeMainHoundstooth = ({
 	houndstoothEffects = [],
 	houndstoothOverrides = {},
 	logComposedMainHoundstooth,
-} : {
+}: {
 	houndstoothEffects?,
 	houndstoothOverrides?,
-	logComposedMainHoundstooth?
+	logComposedMainHoundstooth?,
 	} = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 

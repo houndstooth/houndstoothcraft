@@ -20,7 +20,7 @@ const composePatterns = ({
 	patternToMerge,
 	settingsPath?,
 	patternStructureChecker?,
-	warnAboutConflicts?
+	warnAboutConflicts?,
 	}) => {
 	if (!patternToMerge) {
 		return

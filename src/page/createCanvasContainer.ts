@@ -1,8 +1,8 @@
 import { getCanvasSize } from '../canvas'
 import { document } from '../utilities/windowWrapper'
-import setElementDimensions from './setElementDimensions'
+import scaleElement from './scaleElement'
 
-const createCanvasContainer = ({ canvasSize } : { canvasSize? } = {}) => {
+const createCanvasContainer = ({ canvasSize }: { canvasSize? } = {}) => {
 	if (!canvasSize) {
 		canvasSize = getCanvasSize()
 	}
@@ -10,7 +10,7 @@ const createCanvasContainer = ({ canvasSize } : { canvasSize? } = {}) => {
 	const canvasContainer = document.createElement('div')
 	canvasContainer.classList.add('canvas-container')
 
-	setElementDimensions(canvasContainer, canvasSize)
+	scaleElement({ element: canvasContainer, dimensions: canvasSize })
 
 	document.body.appendChild(canvasContainer)
 

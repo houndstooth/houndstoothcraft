@@ -9,9 +9,7 @@ describe('combine houndstooth effects', () => {
 		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffects = [ houndstoothEffectOne, houndstoothEffectTwo ]
 
-
 		combineHoundstoothEffects({ houndstoothEffects })
-
 
 		const composePatternsCalls = composePatternsSpy.calls.all()
 

@@ -80,7 +80,7 @@ describe('shape', () => {
 			expect(canvas.getCurrentContext).toHaveBeenCalled()
 		})
 
-		it(`gets the index of the color in the central colorSet, 
+		it(`gets the index of the color in the central colorSet,
 		from the array of such indicies for the tile, using the stripe index`, () => {
 				shape({
 					tileOrigin,

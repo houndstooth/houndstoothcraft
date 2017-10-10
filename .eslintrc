@@ -107,6 +107,12 @@
     ],
     "import/order": [
       "error"
+    ],
+    "no-undef": [
+      "off"
+    ],
+    "no-unused-vars": [
+      "off"
     ]
   },
   "overrides": [

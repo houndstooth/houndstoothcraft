@@ -134,7 +134,7 @@ describe('.gridSettings', () => {
 	})
 
 	describe('.includeNegativeQuadrants', () => {
-		it(`quadruples the number of tiles, adding them not only in the positive x positive y quadrant, 
+		it(`quadruples the number of tiles, adding them not only in the positive x positive y quadrant,
 			but negative x positive y, positive x negative y, and negative x negative y`, () => {
 				const tileSizeSetting = 50
 				const houndstoothOverrides = {

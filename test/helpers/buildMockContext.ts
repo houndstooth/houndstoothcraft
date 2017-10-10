@@ -1,6 +1,6 @@
 import noop from './noop'
 
-const buildMockContext = ({ contextCallsOrder = [], toBlobSpy } : { contextCallsOrder?, toBlobSpy? } = {}) => ({
+const buildMockContext = ({ contextCallsOrder = [], toBlobSpy }: { contextCallsOrder?, toBlobSpy? } = {}) => ({
 	beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),
 	moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
 	lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),

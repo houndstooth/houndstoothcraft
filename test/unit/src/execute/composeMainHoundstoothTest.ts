@@ -24,7 +24,7 @@ describe('composeMainHoundstooth', () => {
 		expect(console.log).not.toHaveBeenCalled()
 	})
 
-	it(`composes the main houndstooth with patterns from the houndstooth defaults, 
+	it(`composes the main houndstooth with patterns from the houndstooth defaults,
 	houndstooth effects, and houndstooth overrides`, () => {
 			spyOn(codeUtilities, 'propertyIsDefinedOnObject').and.returnValue(true)
 			spyOn(console, 'warn')
@@ -201,10 +201,8 @@ describe('composeMainHoundstooth', () => {
 		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		spyOn(combineHoundstoothEffects, 'default').and.returnValue(combinedHoundstoothEffects)
 
-
 		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		composeMainHoundstooth({ houndstoothOverrides })
-
 
 		const composePatternsCalls = composePatternsSpy.calls.all()
 

@@ -353,7 +353,6 @@
 // 	})
 // })
 
-
 // describe('when layering (but not animating)', () => {
 // 			it('logs the current frame along with the performance measurement', () => {
 // 				gridAndMaybeLogging()

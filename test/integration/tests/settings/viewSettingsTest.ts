@@ -73,7 +73,7 @@ describe('.viewSettings', () => {
 	})
 
 	describe('.zoomOnCanvasCenter', () => {
-		it(`leaves the right and bottom quadrants empty if the grid would take up only the top left before 
+		it(`leaves the right and bottom quadrants empty if the grid would take up only the top left before
 			zooming, because instead of growing from the origin in the top left it grows away from the center`, () => {
 				const zoom = 2
 				const houndstoothOverrides = {
@@ -259,7 +259,6 @@ describe('.viewSettings', () => {
 				color: BLACK,
 			})).toBe(true)
 
-
 			originInPixels = [ 250, 0 ]
 
 			expect(tileSectorCenterIsColor({
@@ -415,7 +414,6 @@ describe('.viewSettings', () => {
 				n: 4,
 				color: BLACK,
 			})).toBe(true)
-
 
 			originInPixels = [ 250, 50 ]
 

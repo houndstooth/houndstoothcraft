@@ -4,7 +4,7 @@ const mockDocument: {
 	createElement: Function,
 	createTextNode: Function,
 	querySelector: Function,
-	body: { appendChild: Function }
+	body: { appendChild: Function },
 	} = {
 		createElement: () => null,
 		createTextNode: () => null,
@@ -17,7 +17,7 @@ const mockDocument: {
 const mockWindow: {
 	clearInterval: Function,
 	setInterval: Function,
-	URL: { createObjectURL: Function, revokeObjectURL: Function }
+	URL: { createObjectURL: Function, revokeObjectURL: Function },
 	} = {
 		clearInterval: () => null,
 		setInterval: () => null,
@@ -27,16 +27,16 @@ const mockWindow: {
 		},
 	}
 
-const _console = console
+const consoleDummy = console
 
-const _document = global.window ? document : mockDocument
+const documentDummy = global.window ? document : mockDocument
 
-const _window = global.window ? window : mockWindow
+const windowDummy = global.window ? window : mockWindow
 
 export {
-	_console as console,
-	_document as document,
-	_window as window,
+	consoleDummy as console,
+	documentDummy as document,
+	windowDummy as window,
 }
 
-export default _window
+export default windowDummy

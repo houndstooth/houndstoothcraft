@@ -110,7 +110,6 @@ describe('tile', () => {
 					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
-
 				it('converts the tile into shapes with the correct arguments, and uses the shape outline', () => {
 					tile({ gridAddress })
 

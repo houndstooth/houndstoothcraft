@@ -34,7 +34,7 @@ describe('apply scroll', () => {
 		])
 	})
 
-	it(`returns the outline unchanged if not centering the view 
+	it(`returns the outline unchanged if not centering the view
 	on the center of the tile at grid address [ 0, 0 ]`, () => {
 			state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
 

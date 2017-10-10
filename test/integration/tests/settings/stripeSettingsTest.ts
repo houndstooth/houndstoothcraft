@@ -244,7 +244,6 @@ describe('.stripeSettings', () => {
 				color: TRANSPARENT,
 			})).toBe(true)
 
-
 			originInPixels = [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ]
 
 			expect(tileSectorCenterIsColor({

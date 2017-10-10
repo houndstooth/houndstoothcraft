@@ -8,11 +8,11 @@ const adjustCoordinateForZoom = coordinate => {
 		zoomOnCanvasCenter,
 		canvasSize,
 		centerViewOnCenterOfTileAtHomeAddress,
-	} : {
+	}: {
 		zoom,
 		zoomOnCanvasCenter,
 		canvasSize,
-		centerViewOnCenterOfTileAtHomeAddress?
+		centerViewOnCenterOfTileAtHomeAddress?,
 		} = state.mainHoundstooth.basePattern.viewSettings || {}
 	const canvasCenter = canvasSize / 2
 	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress

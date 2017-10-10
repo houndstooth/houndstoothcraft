@@ -52,7 +52,7 @@ describe('math utilities', () => {
 	})
 
 	describe('#quarterSquareNumber', () => {
-		it(`gives the nth entry in the sequence of numbers where you add 1 
+		it(`gives the nth entry in the sequence of numbers where you add 1
 		to the amount you increase by each step every other step`, () => {
 				const quarterSquareNumber = mathUtilities.quarterSquareNumber
 				let delta = 0
@@ -122,8 +122,8 @@ describe('math utilities', () => {
 	})
 
 	describe('#termialRoot', () => {
-		it(`for a concrete example of what you can use this method for: given an starting stripe count per tile, 
-		the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes 
+		it(`for a concrete example of what you can use this method for: given an starting stripe count per tile,
+		the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes
 		through, including the fractional part within that tile`, () => {
 				const termialRoot = mathUtilities.termialRoot
 				let rangeStart

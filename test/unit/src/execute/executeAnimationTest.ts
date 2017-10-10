@@ -71,7 +71,7 @@ describe('execute animation', () => {
 				startAnimationFrame,
 				animationFunctions,
 				layerFunctions,
-			})
+			}),
 		)
 	})
 
@@ -83,7 +83,7 @@ describe('execute animation', () => {
 		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
 			jasmine.objectContaining({
 				refreshCanvas: true,
-			})
+			}),
 		)
 	})
 
@@ -95,7 +95,7 @@ describe('execute animation', () => {
 		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
 			jasmine.objectContaining({
 				startAnimationFrame: 0,
-			})
+			}),
 		)
 	})
 })

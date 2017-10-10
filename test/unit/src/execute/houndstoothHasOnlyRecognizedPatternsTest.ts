@@ -26,7 +26,7 @@ describe('houndstooth has only recognized patterns', () => {
 		})).toBe(true)
 	})
 
-	it(`logs an error if the pattern contains anything other than 
+	it(`logs an error if the pattern contains anything other than
 		one of these three recognized patterns, or name`, () => {
 			spyOn(console, 'error')
 
@@ -36,7 +36,7 @@ describe('houndstooth has only recognized patterns', () => {
 			expect(console.error).toHaveBeenCalledWith(expectedError)
 		})
 
-	it(`returns false, even if the pattern contains some or all 
+	it(`returns false, even if the pattern contains some or all
 		of the three recognized settings in addition to an invalid one`, () => {
 			spyOn(console, 'error')
 

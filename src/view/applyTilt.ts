@@ -5,9 +5,9 @@ const applyTilt = outline => {
 	const {
 		canvasSize,
 		rotateViewAboutCanvasCenter,
-	} : {
+	}: {
 		canvasSize,
-		rotateViewAboutCanvasCenter
+		rotateViewAboutCanvasCenter,
 		} = state.mainHoundstooth.basePattern.viewSettings || {}
 
 	if (!rotateViewAboutCanvasCenter) {

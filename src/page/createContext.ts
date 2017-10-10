@@ -1,6 +1,6 @@
 import { document } from '../utilities/windowWrapper'
 
-const createContext = ({ canvasContainer, canvasSize } : { canvasContainer: any, canvasSize: number[] }) => {
+const createContext = ({ canvasContainer, canvasSize }: { canvasContainer: any, canvasSize: number[] }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
 	canvas.width = canvasSize[ 0 ]

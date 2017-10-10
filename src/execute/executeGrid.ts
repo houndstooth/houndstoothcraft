@@ -4,7 +4,7 @@ import callFunctionsPerSetting from './callFunctionsPerSetting'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 
 const executeGrid = ({ layerFunctions }) => {
-	const { startLayer, endLayer } : { startLayer?, endLayer } = state.mainHoundstooth.basePattern.layerSettings || {}
+	const { startLayer, endLayer }: { startLayer?, endLayer } = state.mainHoundstooth.basePattern.layerSettings || {}
 
 	for (let n = 0; n <= endLayer; n++) {
 		if (n >= startLayer || 0) {

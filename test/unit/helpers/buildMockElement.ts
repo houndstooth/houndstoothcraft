@@ -11,7 +11,7 @@ const buildMockElement: any = ({
 	mockAttributeObject?,
 	parentNodeRemoveChildSpy?,
 	parentNodeInsertBeforeSpy?,
-	clickSpy?
+	clickSpy?,
 	} = {}) => ({
 	classList: {
 		add: className => mockClassList.push(className),

@@ -1,0 +1,15 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "semicolon": false,
+    "quotemark": [ "single" ],
+    "indent": [ "tabs" ],
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "arrow-parens": false,
+    "max-line-length": [false],
+    "one-line": false,
+    "no-console": false,
+    "ban-types": false
+  }
+}

@@ -38,7 +38,7 @@ describe('grid', () => {
 			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
 		})
 
-		it(`makes tiles with positive and negative addresses, 
+		it(`makes tiles with positive and negative addresses,
 			the negative ones starting at -1 (whereas the positive ones start at 0)`, () => {
 				const quadrantCount = 4
 

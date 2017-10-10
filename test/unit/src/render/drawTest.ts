@@ -3,7 +3,7 @@ import * as view from '../../../../src/view'
 import * as fill from '../../../../src/render/fill'
 
 describe('draw', () => {
-	const shapeColor = {}
+	const shapeColor = { a: 1 }
 	const context = {}
 
 	const adjustedOutline = []

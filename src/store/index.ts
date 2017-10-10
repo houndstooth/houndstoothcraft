@@ -1,10 +1,11 @@
 import * as defaults from './defaults'
-import { HOUNDSTOOTH_STRUCTURE, PATTERN_STRUCTURE } from './structures'
 import resetState from './resetState'
+import { DEFAULT_HOUNDSTOOTH } from './defaults'
+import Pattern from './Pattern'
 
 export {
 	defaults,
-	HOUNDSTOOTH_STRUCTURE,
-	PATTERN_STRUCTURE,
+	DEFAULT_HOUNDSTOOTH,
+	Pattern,
 	resetState,
 }

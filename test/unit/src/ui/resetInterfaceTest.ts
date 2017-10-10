@@ -33,7 +33,12 @@ describe('reset interface', () => {
 	})
 
 	it('resets the state, except for any selected effects', () => {
-		const fakeHoundstoothEffect = {}
+		const fakeHoundstoothEffect = {
+			basePattern: {},
+			animationsPattern: {},
+			layersPattern: {},
+			name: '',
+		}
 		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 		state.mainHoundstooth.basePattern.gridSettings = { gridSize: 42 }
 

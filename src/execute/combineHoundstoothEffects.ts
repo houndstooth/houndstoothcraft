@@ -1,4 +1,3 @@
-import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 import composePatterns from './composePatterns'
 
 const combineHoundstoothEffects = ({ houndstoothEffects }) => {
@@ -6,12 +5,7 @@ const combineHoundstoothEffects = ({ houndstoothEffects }) => {
 	const layersPattern = {}
 	const animationsPattern = {}
 
-	let anyIssues = false
 	houndstoothEffects.forEach(houndstoothEffect => {
-		if (!houndstoothHasOnlyRecognizedPatterns(houndstoothEffect)) {
-			anyIssues = true
-			return
-		}
 		composePatterns({
 			patternToBeMergedOnto: basePattern,
 			patternToMerge: houndstoothEffect.basePattern,
@@ -29,9 +23,6 @@ const combineHoundstoothEffects = ({ houndstoothEffects }) => {
 		})
 	})
 
-	if (anyIssues) {
-		return null
-	}
 	return { basePattern, layersPattern, animationsPattern }
 }
 

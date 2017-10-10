@@ -1,42 +1,26 @@
-import { console } from '../utilities/windowWrapper'
-import {
-	accessChildPropertyOrCreatePath,
-	deeperPath,
-	isDefined,
-	propertyIsDefinedOnObject,
-} from '../utilities/codeUtilities'
-import { PATTERN_STRUCTURE } from '../store'
+import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
+import { Pattern } from '../store'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
-import settingPath from './settingPath'
 
-const composePatterns = ({
-	patternToBeMergedOnto,
-	patternToMerge,
-	settingsPath = [],
-	patternStructureChecker = PATTERN_STRUCTURE,
-	warnAboutConflicts,
-}: {
-	patternToBeMergedOnto,
-	patternToMerge,
-	settingsPath?,
-	patternStructureChecker?,
-	warnAboutConflicts?,
-	}) => {
+type ComposePatterns = {
+	({}: {
+		patternToBeMergedOnto: Pattern,
+		patternToMerge: any,
+		settingsPath?: string[],
+		warnAboutConflicts?: boolean,
+	}): void,
+}
+const composePatterns: ComposePatterns = composePatternsArgs => {
+	const { patternToBeMergedOnto, patternToMerge, settingsPath = [], warnAboutConflicts } = composePatternsArgs
 	if (!patternToMerge) {
 		return
 	}
 	Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]) => {
-		if (!settingIsDefinedOnPatternStructure({ settingName, settingsPath, patternStructureChecker })) {
-			return
-		}
-		const deeperPatternStructureChecker = patternStructureChecker[ settingName ]
-
-		if (shouldRecurse(overridingSetting)) {
+		if (shouldRecurse({ overridingSetting })) {
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
 				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
-				patternStructureChecker: deeperPatternStructureChecker,
 				warnAboutConflicts,
 			})
 		}
@@ -61,26 +45,15 @@ const composePatterns = ({
 	})
 }
 
-const shouldRecurse = overridingSetting => {
+const shouldRecurse: { ({}: { overridingSetting: any }): boolean } = ({ overridingSetting }) => {
 	return settingIsNonArrayObject(overridingSetting) && settingIsNotColor(overridingSetting)
 }
 
-const settingIsNonArrayObject = setting => setting && typeof setting === 'object' && !setting.length
-
-const settingIsDefinedOnPatternStructure = ({
-	settingsPath,
-	settingName,
-	patternStructureChecker: objectWithProperties,
-}) => {
-	if (propertyIsDefinedOnObject({ propertyName: settingName, objectWithProperties })) {
-		return true
-	}
-
-	// eslint-disable-next-line max-len
-	console.error(`attempted to compose a pattern with an unrecognized setting: ${settingPath(settingsPath, settingName)}`)
+const settingIsNonArrayObject: { (setting: any): boolean } = setting => {
+	return setting && typeof setting === 'object' && !setting.length
 }
 
-const settingIsNotColor = setting => {
+const settingIsNotColor: { (setting: any): boolean } = setting => {
 	const defined = isDefined
 	const { r, g, b, a } = setting
 	return !(defined(r) || defined(g) || defined(b) || defined(a))

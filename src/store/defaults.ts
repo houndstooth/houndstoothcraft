@@ -1,23 +1,28 @@
 import { BLACK, TRANSPARENT } from '../constants'
+import { Color } from '../render'
+import Pattern from './Pattern'
+import Houndstooth from './Houndstooth'
+import Assignment from './Assignment'
+import State from './State'
 
-const DEFAULT_CANVAS_SIZE = 800
-const DEFAULT_ZOOM = 1
-const DEFAULT_GRID_SIZE = 16
-const DEFAULT_TILE_SIZE = 50
-const DEFAULT_COLOR_SET = [ BLACK, TRANSPARENT ]
-const DEFAULT_COLOR_ASSIGNMENT = {
+const DEFAULT_CANVAS_SIZE: number = 800
+const DEFAULT_ZOOM: number = 1
+const DEFAULT_GRID_SIZE: number = 16
+const DEFAULT_TILE_SIZE: number = 50
+const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
+const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
 	assignmentMode: 'WEAVE',
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
 	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
 }
-const DEFAULT_OPACITY = 1
-const DEFAULT_STRIPE_COUNT = 4
-const DEFAULT_BASE_STRIPE_DIAGONAL = 'MINOR'
-const DEFAULT_FRAME_RATE = 1.005
-const DEFAULT_START_LAYER = 0
-const DEFAULT_END_LAYER = 0
+const DEFAULT_OPACITY: number = 1
+const DEFAULT_STRIPE_COUNT: number = 4
+const DEFAULT_BASE_STRIPE_DIAGONAL: string = 'MINOR'
+const DEFAULT_FRAME_RATE: number = 1.005
+const DEFAULT_START_LAYER: number = 0
+const DEFAULT_END_LAYER: number = 0
 
-const DEFAULT_PATTERN = {
+const DEFAULT_PATTERN: Pattern = {
 	viewSettings: {
 		canvasSize: DEFAULT_CANVAS_SIZE,
 		zoom: DEFAULT_ZOOM,
@@ -48,14 +53,14 @@ const DEFAULT_PATTERN = {
 	},
 }
 
-const DEFAULT_HOUNDSTOOTH: any = {
+const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 	basePattern: DEFAULT_PATTERN,
 	animationsPattern: {},
 	layersPattern: {},
 	name: 'standard',
 }
 
-const DEFAULT_STATE = {
+const DEFAULT_STATE: State = {
 	currentLayer: 0,
 	currentAnimationFrame: 0,
 	contexts: [],

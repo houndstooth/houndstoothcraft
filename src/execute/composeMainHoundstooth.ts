@@ -3,7 +3,6 @@ import { defaults } from '../store'
 import state from '../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
-import houndstoothHasOnlyRecognizedPatterns from './houndstoothHasOnlyRecognizedPatterns'
 
 const composeMainHoundstooth = ({
 	houndstoothEffects = [],
@@ -15,10 +14,6 @@ const composeMainHoundstooth = ({
 	logComposedMainHoundstooth?,
 	} = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
-
-	if (unrecognizedPatternsFound({ combinedHoundstoothEffects, houndstoothOverrides })) {
-		return
-	}
 
 	composePattern({
 		patternToCompose: state.mainHoundstooth.basePattern,
@@ -42,22 +37,6 @@ const composeMainHoundstooth = ({
 	if (logComposedMainHoundstooth) {
 		console.log(state.mainHoundstooth)
 	}
-}
-
-const unrecognizedPatternsFound = ({ combinedHoundstoothEffects, houndstoothOverrides }) => {
-	if (!houndstoothHasOnlyRecognizedPatterns(state.mainHoundstooth)) {
-		return true
-	}
-	if (!houndstoothHasOnlyRecognizedPatterns(defaults.DEFAULT_HOUNDSTOOTH)) {
-		return true
-	}
-	if (!combinedHoundstoothEffects) {
-		return true
-	}
-	if (!houndstoothHasOnlyRecognizedPatterns(houndstoothOverrides)) {
-		return true
-	}
-	return false
 }
 
 const composePattern = ({ patternToCompose, houndstoothDefaults, houndstoothEffects, houndstoothOverrides }) => {

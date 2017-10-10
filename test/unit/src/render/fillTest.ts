@@ -6,7 +6,7 @@ import * as fillPath from '../../../../src/render/fillPath'
 import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('fill', () => {
-	const shapeColor = {}
+	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
 	const context = buildMockContext()
 	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]

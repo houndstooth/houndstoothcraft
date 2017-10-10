@@ -4,28 +4,42 @@ import { clear } from '../canvas'
 import { deepClone } from '../utilities/codeUtilities'
 import exportFrame from './exportFrame'
 
-const buildAnimationFunction = ({ startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas }) => () => {
-	if (exportingFramesStillNeedsToCatchUp()) {
-		return
-	}
+type BuildAnimationFunction = {
+	({}: {
+		startAnimationFrame: number,
+		animationFunctions: Array<() => void>,
+		layerFunctions: Array<() => void>,
+		refreshCanvas: boolean,
+	}): () => void,
+}
+const buildAnimationFunction: BuildAnimationFunction = buildAnimationFunctionParams => {
+	const { startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas } = buildAnimationFunctionParams
+	return () => {
+		if (exportingFramesStillNeedsToCatchUp()) {
+			return
+		}
 
-	if (beginningOfAnimationThatShouldBeSeenHasBeenReached(startAnimationFrame)) {
-		animate({ layerFunctions, refreshCanvas })
-	}
+		if (beginningOfAnimationThatShouldBeSeenHasBeenReached(startAnimationFrame)) {
+			animate({ layerFunctions, refreshCanvas })
+		}
 
-	callFunctionsPerSetting({ settingsFunctions: animationFunctions })
-	state.currentAnimationFrame++
+		callFunctionsPerSetting({ settingsFunctions: animationFunctions })
+		state.currentAnimationFrame++
+	}
 }
 
-const exportingFramesStillNeedsToCatchUp = () => {
+const exportingFramesStillNeedsToCatchUp = (): boolean => {
 	return state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
 }
 
-const beginningOfAnimationThatShouldBeSeenHasBeenReached = startAnimationFrame => {
+const beginningOfAnimationThatShouldBeSeenHasBeenReached = (startAnimationFrame: number): boolean => {
 	return state.currentAnimationFrame >= startAnimationFrame
 }
 
-const animate = ({ layerFunctions, refreshCanvas }) => {
+type Animate = {
+	({ layerFunctions, refreshCanvas }: { layerFunctions: Array<() => void>, refreshCanvas: boolean }): void,
+}
+const animate: Animate = ({ layerFunctions, refreshCanvas }) => {
 	if (refreshCanvas) {
 		clear()
 	}

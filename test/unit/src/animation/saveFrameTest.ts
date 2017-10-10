@@ -8,11 +8,11 @@ describe('save frame', () => {
 		state.lastSavedAnimationFrame = 666
 		spyOn(saveBlob, 'default')
 
-		saveFrame(mockBlob)
+		saveFrame({ blob: mockBlob })
 	})
 
 	it('saves the frame as a png with the frame number as file name', () => {
-		expect(saveBlob.default).toHaveBeenCalledWith(mockBlob, '666.png')
+		expect(saveBlob.default).toHaveBeenCalledWith({ blob: mockBlob, name: '666.png' })
 	})
 
 	it('increments the last saved frame', () => {

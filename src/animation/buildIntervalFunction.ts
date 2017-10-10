@@ -1,7 +1,10 @@
 import state from '../state'
 import window from '../utilities/windowWrapper'
 
-const buildIntervalFunction = ({ animationFunction, stopConditionFunction }) => () => {
+type BuildIntervalFunction = {
+	({}: { animationFunction: () => void, stopConditionFunction: () => boolean }): () => void,
+}
+const buildIntervalFunction: BuildIntervalFunction = ({ animationFunction, stopConditionFunction }) => () => {
 	animationFunction()
 	if (stopConditionFunction()) {
 		window.clearInterval(state.interval)

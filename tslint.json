@@ -2,14 +2,25 @@
   "extends": "tslint:recommended",
   "rules": {
     "semicolon": false,
-    "quotemark": [ "single" ],
-    "indent": [ "tabs" ],
+    "quotemark": [
+      "single"
+    ],
+    "indent": [
+      "tabs"
+    ],
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "arrow-parens": false,
-    "max-line-length": [false],
+    "max-line-length": [
+      false
+    ],
     "one-line": false,
     "no-console": false,
-    "ban-types": false
+    "ban-types": false,
+    "interface-name": [
+      "never-prefix"
+    ],
+    "callable-types": false,
+    "interface-over-type-literal": false
   }
 }

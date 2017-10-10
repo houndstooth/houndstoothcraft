@@ -16,7 +16,7 @@ describe('save blob', () => {
 
 		const blob = {}
 		const name = 'whatever.png'
-		saveBlob(blob, name)
+		saveBlob({ blob, name })
 
 		expect(windowWrapper.window.URL.createObjectURL).toHaveBeenCalledWith(blob)
 		expect(appendChildSpy).toHaveBeenCalledWith(mockLink)

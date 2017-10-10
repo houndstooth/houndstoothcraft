@@ -2,7 +2,14 @@ import state from '../state'
 import window from '../utilities/windowWrapper'
 import buildIntervalFunction from './buildIntervalFunction'
 
-const animator = ({ animationFunction, frameRate, stopConditionFunction }) => {
+type Animator = {
+	({}: {
+		animationFunction: () => void,
+		stopConditionFunction: () => boolean,
+		frameRate: number,
+	}): void,
+}
+const animator: Animator = ({ animationFunction, frameRate, stopConditionFunction }) => {
 	const intervalFunction = buildIntervalFunction({ animationFunction, stopConditionFunction })
 	state.interval = window.setInterval(intervalFunction, frameRate)
 }

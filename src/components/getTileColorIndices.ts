@@ -1,7 +1,8 @@
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import state from '../state'
+import { Address, TileColorIndices, Assignment, Supertile, Weave } from './types'
 
-const getTileColorIndices: { ({}: { gridAddress: number[] }): number[] } = ({ gridAddress }) => {
+const getTileColorIndices: { ({}: { gridAddress: Address }): TileColorIndices } = ({ gridAddress }) => {
 	const assignment = state.mainHoundstooth.basePattern.colorSettings.assignment
 
 	const tileColorIndices = getIndices({ gridAddress, assignment })
@@ -10,8 +11,9 @@ const getTileColorIndices: { ({}: { gridAddress: number[] }): number[] } = ({ gr
 }
 
 type MaybeAdjustTileColorIndices = {
-	({}: { assignment: any, gridAddress: number[], tileColorIndices: number[] }): number[],
+	({}: { assignment: any, gridAddress: Address, tileColorIndices: TileColorIndices }): TileColorIndices,
 }
+
 const maybeAdjustTileColorIndices: MaybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {
 	const { transformTileColorIndices, flipGrain, switcheroo } = assignment
 
@@ -28,7 +30,9 @@ const maybeAdjustTileColorIndices: MaybeAdjustTileColorIndices = ({ assignment, 
 	return tileColorIndices
 }
 
-const getIndices: { ({}: { gridAddress: number[], assignment: any }): number[] } = ({ gridAddress, assignment }) => {
+type GetIndices = { ({}: { gridAddress: Address, assignment: Assignment }): TileColorIndices }
+
+const getIndices: GetIndices = ({ gridAddress, assignment }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = assignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
@@ -43,7 +47,8 @@ const getIndices: { ({}: { gridAddress: number[], assignment: any }): number[] }
 	return getter({ gridAddress, addressOffset, weave, supertile })
 }
 
-type GetByWeave = { ({}: { gridAddress: number[], addressOffset: number, weave: any }): number[] }
+type GetByWeave = { ({}: { gridAddress: Address, addressOffset: Address, weave: Weave }): TileColorIndices }
+
 const getByWeave: GetByWeave = ({ gridAddress, addressOffset, weave }) => {
 	const { rows, columns } = weave
 	const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
@@ -51,7 +56,8 @@ const getByWeave: GetByWeave = ({ gridAddress, addressOffset, weave }) => {
 	return [ rowsIndex, columnsIndex ]
 }
 
-type GetBySupertile = { ({}: { gridAddress: number[], addressOffset: number, supertile: any }): number[] }
+type GetBySupertile = { ({}: { gridAddress: Address, addressOffset: Address, supertile: Supertile }): TileColorIndices }
+
 const getBySupertile: GetBySupertile = ({ gridAddress, addressOffset, supertile }) => {
 	const supertileColumn = wrappedIndex({
 		array: supertile,
@@ -60,7 +66,8 @@ const getBySupertile: GetBySupertile = ({ gridAddress, addressOffset, supertile 
 	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 }
 
-type ApplySwitcheroo = {({}: { tileColorIndices: number[], gridAddress: number[] }): number[] }
+type ApplySwitcheroo = {({}: { tileColorIndices: TileColorIndices, gridAddress: Address }): TileColorIndices }
+
 const applySwitcheroo: ApplySwitcheroo = ({ tileColorIndices, gridAddress }) => {
 	const xMod = gridAddress[ 0 ] % 4
 	const yMod = gridAddress[ 1 ] % 4

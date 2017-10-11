@@ -1,13 +1,15 @@
 import clear from './clear'
-import getCanvasSize from './getCanvasSize'
+import getCanvasDimensions from './getCanvasDimensions'
 import getCurrentContext from './getCurrentContext'
 import layerIterator from './layerIterator'
 import mixDownContexts from './mixDownContexts'
+import { CanvasSize } from './types'
 
 export {
 	clear,
-	getCanvasSize,
+	getCanvasDimensions,
 	getCurrentContext,
 	layerIterator,
 	mixDownContexts,
+	CanvasSize,
 }

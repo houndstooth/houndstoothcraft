@@ -1,18 +1,21 @@
 import state from '../state'
-import getCanvasSize from './getCanvasSize'
+import { Dimensions } from '../page'
+import getCanvasDimensions from './getCanvasDimensions'
 
 const clear: { (): void } = () => {
-	const canvasSize = getCanvasSize()
-	state.contexts.forEach(context => clearContext({ context, canvasSize }))
+	const canvasDimensions = getCanvasDimensions()
+	state.contexts.forEach(context => clearContext({ context, canvasDimensions }))
 
 	const mixedDownContext = state.mixedDownContext
 	if (mixedDownContext) {
-		clearContext({ context: mixedDownContext, canvasSize })
+		clearContext({ context: mixedDownContext, canvasDimensions })
 	}
 }
 
-const clearContext: { ({}: { context: any, canvasSize: number[] }): void } = ({ context, canvasSize }) => {
-	context.clearRect(0, 0, canvasSize[ 0 ], canvasSize[ 1 ])
+type ClearContext = { ({}: { context: any, canvasDimensions: Dimensions }): void }
+
+const clearContext: ClearContext = ({ context, canvasDimensions }) => {
+	context.clearRect(0, 0, canvasDimensions[ 0 ], canvasDimensions[ 1 ])
 }
 
 export default clear

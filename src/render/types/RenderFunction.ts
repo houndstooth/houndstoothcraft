@@ -1,11 +1,13 @@
+import { Outline, Coordinate } from '../../space'
+
 type RenderFunction = {
 	({}: {
 		context: any,
-		outline: number[][],
+		outline: Outline,
 		renderTexture?: { ({}: {}): void },
 		shapeColorIndex?: number,
 		tileColorIndices?: number[]
-		tileOrigin?: number[],
+		tileOrigin?: Coordinate,
 		tileSize?: number,
 	}): void,
 }

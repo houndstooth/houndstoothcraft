@@ -1,6 +1,6 @@
-import Outline from './Outline'
+import { GetOutline } from './types'
 
-const squareOutline: Outline = ({ tileOrigin, tileSize }) => {
+const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 	const x = tileOrigin[ 0 ]
 	const y = tileOrigin[ 1 ]
 

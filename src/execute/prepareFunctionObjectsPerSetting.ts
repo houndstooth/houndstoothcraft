@@ -1,11 +1,11 @@
 import { deeperPath } from '../utilities/codeUtilities'
 import { Pattern } from '../store'
-import SettingsFunctionObject from './SettingsFunctionObject'
+import { SettingsFunctionObject, SettingsPath } from './types'
 
 type PrepareFunctionObjectsPerSetting = {
 	({}: {
 		settingsFunctionsSourcePattern: Pattern | Function,
-		settingsPath?: string[],
+		settingsPath?: SettingsPath,
 		settingsFunctionObjects?: SettingsFunctionObject[],
 	}): SettingsFunctionObject[],
 }

@@ -1,11 +1,15 @@
 import { console } from '../utilities/windowWrapper'
-import { Houndstooth, Pattern, defaults } from '../store'
+import { Pattern, defaults, Houndstooth } from '../store'
 import state from '../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
 
 type ComposeMainHoundstooth = {
-	({}?: { houndstoothEffects?, houndstoothOverrides?, logComposedMainHoundstooth? }): void,
+	({}?: {
+		houndstoothEffects?: Houndstooth[],
+		houndstoothOverrides?: Houndstooth,
+		logComposedMainHoundstooth?: boolean,
+	}): void,
 }
 const composeMainHoundstooth: ComposeMainHoundstooth = params => {
 	const {

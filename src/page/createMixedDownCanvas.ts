@@ -1,4 +1,4 @@
-import { getCanvasSize } from '../canvas'
+import { getCanvasDimensions } from '../canvas'
 import { document } from '../utilities/windowWrapper'
 import deleteElementIfExists from './deleteElementIfExists'
 
@@ -9,9 +9,9 @@ const createMixedDownCanvas = () => {
 	mixedDownCanvas.classList.add('mixed-down-canvas')
 	document.body.appendChild(mixedDownCanvas)
 
-	const canvasSize = getCanvasSize()
-	mixedDownCanvas.width = canvasSize[ 0 ]
-	mixedDownCanvas.height = canvasSize[ 1 ]
+	const canvasDimensions = getCanvasDimensions()
+	mixedDownCanvas.width = canvasDimensions[ 0 ]
+	mixedDownCanvas.height = canvasDimensions[ 1 ]
 
 	mixedDownCanvas.style.display = 'none'
 

@@ -1,7 +1,7 @@
 import state from '../state'
 import { defaults } from '../store'
 
-const getCanvasSize: { (): number[] } = () => {
+const getCanvasDimensions: { (): number[] } = () => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
 	const canvasSize = viewSettings && viewSettings.canvasSize || defaults.DEFAULT_CANVAS_SIZE
 
@@ -12,4 +12,4 @@ const getCanvasSize: { (): number[] } = () => {
 	return [ width, height ]
 }
 
-export default getCanvasSize
+export default getCanvasDimensions

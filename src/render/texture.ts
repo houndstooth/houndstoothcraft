@@ -1,7 +1,7 @@
 import buildPath from './buildPath'
 import clipPath from './clipPath'
 import resetClip from './resetClip'
-import RenderFunction from './RenderFunction'
+import { RenderFunction } from './types'
 
 const texture: RenderFunction = textureArgs => {
 	const { context, outline, renderTexture } = textureArgs

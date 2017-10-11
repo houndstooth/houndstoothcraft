@@ -5,7 +5,7 @@ import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {
 	const mockCanvasContainerClassList = []
-	const canvasSize = [ 400, 500 ]
+	const canvasDimensions = [ 400, 500 ]
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {
@@ -18,7 +18,7 @@ describe('create canvas container', () => {
 		const canvasContainer = buildMockElement({ mockClassList: mockCanvasContainerClassList })
 		spyOn(window.document, 'createElement').and.callFake(() => canvasContainer)
 
-		returnedCanvasContainer = createCanvasContainer({ canvasSize })
+		returnedCanvasContainer = createCanvasContainer({ canvasDimensions })
 	})
 
 	it('returns the canvas container it just put on the page', () => {
@@ -34,7 +34,7 @@ describe('create canvas container', () => {
 	it('sets the canvas container width and height (as style, in px)', () => {
 		expect(setElementDimensions.default).toHaveBeenCalledWith({
 			element: returnedCanvasContainer,
-			dimensions: canvasSize,
+			dimensions: canvasDimensions,
 		})
 	})
 })

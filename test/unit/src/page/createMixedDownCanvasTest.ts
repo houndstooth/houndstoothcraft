@@ -19,7 +19,7 @@ describe('create mixed down canvas', () => {
 		mixedDownCanvas = buildMockCanvas({ mockContext: mixedDownContext, mockClassList: mixedDownCanvasClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mixedDownCanvas)
 
-		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
+		spyOn(canvas, 'getCanvasDimensions').and.returnValue([ 400, 500 ])
 
 		returnedMixedDownContext = createMixedDownCanvas()
 	})

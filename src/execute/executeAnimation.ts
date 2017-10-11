@@ -1,7 +1,7 @@
 import state from '../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
-import SettingsFunctionObject from './SettingsFunctionObject'
+import { SettingsFunctionObject } from './types'
 
 type ExecuteAnimation = {
 	({}: { layerFunctionObjects: SettingsFunctionObject[], animationFunctionObjects: SettingsFunctionObject[] }): void,

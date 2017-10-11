@@ -1,10 +1,12 @@
 import { document } from '../utilities/windowWrapper'
+import { Dimensions } from './types'
 
-const createContext = ({ canvasContainer, canvasSize }: { canvasContainer: any, canvasSize: number[] }) => {
+type CreateContext = { ({}: { canvasContainer: any, canvasDimensions: Dimensions }): HTMLCanvasElement }
+const createContext: CreateContext = ({ canvasContainer, canvasDimensions }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
-	canvas.width = canvasSize[ 0 ]
-	canvas.height = canvasSize[ 1 ]
+	canvas.width = canvasDimensions[ 0 ]
+	canvas.height = canvasDimensions[ 1 ]
 
 	canvasContainer.appendChild(canvas)
 

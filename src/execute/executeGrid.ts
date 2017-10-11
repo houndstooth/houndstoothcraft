@@ -2,7 +2,7 @@ import state from '../state'
 import { mixDownContexts } from '../canvas'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
-import SettingsFunctionObject from './SettingsFunctionObject'
+import { SettingsFunctionObject } from './types'
 
 type ExecuteGrid = { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void }
 const executeGrid: ExecuteGrid = ({ layerFunctionObjects }) => {

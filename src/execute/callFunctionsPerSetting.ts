@@ -1,6 +1,6 @@
 import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
 import state from '../state'
-import SettingsFunctionObject from './SettingsFunctionObject'
+import { SettingsFunctionObject } from './types'
 
 type CallFunctionsPerSetting = { ({}: { settingsFunctionObjects: SettingsFunctionObject[] }): void }
 const callFunctionsPerSetting: CallFunctionsPerSetting = ({ settingsFunctionObjects }) => {

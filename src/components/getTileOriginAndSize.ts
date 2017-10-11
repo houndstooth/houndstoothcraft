@@ -1,6 +1,7 @@
 import state from '../state'
+import { Address, TileOriginAndSize } from './types'
 
-type GetTileOriginAndSize = { ({}: { gridAddress: number[] }): TileOriginAndSize }
+type GetTileOriginAndSize = { ({}: { gridAddress: Address }): TileOriginAndSize }
 const getTileOriginAndSize: GetTileOriginAndSize = ({ gridAddress }) => {
 	const getTileOriginAndSizeFromState = state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize
 	const tileOriginAndSize = getTileOriginAndSizeFromState || getStandardTileOriginAndSize
@@ -14,7 +15,5 @@ const getStandardTileOriginAndSize: GetTileOriginAndSize = ({ gridAddress }) => 
 		tileSize,
 	}
 }
-
-type TileOriginAndSize = { tileOrigin: number[], tileSize: number }
 
 export default getTileOriginAndSize

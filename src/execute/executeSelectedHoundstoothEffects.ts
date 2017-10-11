@@ -1,12 +1,14 @@
 import { createContexts, createMixedDownCanvas } from '../page'
 import state from '../state'
+import { Houndstooth } from '../store'
 import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import executeGrid from './executeGrid'
 import executeAnimation from './executeAnimation'
-import SettingsFunctionObject from './SettingsFunctionObject'
+import { SettingsFunctionObject } from './types'
 
-type ExecuteSelectedHoundstoothEffects = { ({}?: { houndstoothOverrides? }): void }
+type ExecuteSelectedHoundstoothEffects = { ({}?: { houndstoothOverrides?: Houndstooth }): void }
+
 const executeSelectedHoundstoothEffects: ExecuteSelectedHoundstoothEffects = ({ houndstoothOverrides } = {}) => {
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 

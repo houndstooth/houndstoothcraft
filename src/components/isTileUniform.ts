@@ -1,7 +1,8 @@
 import { getColor } from '../render'
 import { shallowEqual } from '../utilities/codeUtilities'
+import { TileColorIndices } from './types'
 
-const isTileUniform: { ({}: { tileColorIndices: number[] }): boolean } = ({ tileColorIndices }) => {
+const isTileUniform: { ({}: { tileColorIndices: TileColorIndices }): boolean } = ({ tileColorIndices }) => {
 	for (let i = 0; i < tileColorIndices.length - 1; i++) {
 		const colorOne = getColor({ index: tileColorIndices[ i ] })
 		const colorTwo = getColor({ index: tileColorIndices[ i + 1 ] })

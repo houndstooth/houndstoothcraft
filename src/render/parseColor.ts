@@ -1,4 +1,4 @@
-import Color from './Color'
+import { Color } from './types'
 
 const parseColor: { ({}: Color): string } = ({ r, g, b, a }) => `rgba(${  [ r, g, b, a ].join(',')  })`
 

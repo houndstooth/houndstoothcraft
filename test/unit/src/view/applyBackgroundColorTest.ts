@@ -9,7 +9,7 @@ describe('apply background color', () => {
 	beforeEach(() => {
 		fillRectSpy = jasmine.createSpy('fillRect')
 		state.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
-		spyOn(canvas, 'getCanvasSize').and.returnValue([ 400, 500 ])
+		spyOn(canvas, 'getCanvasDimensions').and.returnValue([ 400, 500 ])
 	})
 
 	it('fills the entire canvas with the color', () => {

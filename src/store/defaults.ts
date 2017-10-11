@@ -1,9 +1,7 @@
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
-import Pattern from './Pattern'
-import Houndstooth from './Houndstooth'
-import Assignment from './Assignment'
-import State from './State'
+import { Assignment } from '../components'
+import { Pattern, Houndstooth, State } from './types'
 
 const DEFAULT_CANVAS_SIZE: number = 800
 const DEFAULT_ZOOM: number = 1

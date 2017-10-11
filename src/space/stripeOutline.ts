@@ -1,6 +1,6 @@
-import Outline from './Outline'
+import { GetOutline } from './types'
 
-const stripeOutline: Outline = ({ tileOrigin, tileSize, outlineOptions }) => {
+const stripeOutline: GetOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
 	const originAndSize = { x: tileOrigin[ 0 ], y: tileOrigin[ 1 ], size: tileSize }
 

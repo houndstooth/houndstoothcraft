@@ -19,7 +19,6 @@
     "awesome-typescript-loader": "^3.2.3",
     "codecov": "^2.3.0",
     "eslint": "^4.8.0",
-    "eslint-plugin-import": "^2.7.0",
     "jasmine": "^2.8.0",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",

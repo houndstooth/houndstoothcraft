@@ -15,9 +15,6 @@
     "process": false,
     "module": false
   },
-  "plugins": [
-    "import"
-  ],
   "rules": {
     "indent": [
       "error",
@@ -96,18 +93,6 @@
       "error",
       2
     ],
-    "import/no-internal-modules": [
-      "error",
-      {
-        "allow": [
-          "**/src/utilities/*",
-          "**/test/**/*"
-        ]
-      }
-    ],
-    "import/order": [
-      "error"
-    ],
     "no-undef": [
       "off"
     ],
@@ -124,7 +109,6 @@
         "**/test/**/*"
       ],
       "rules": {
-        "import/no-internal-modules": "off",
         "max-statements": "off"
       }
     }

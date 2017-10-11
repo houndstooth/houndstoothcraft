@@ -23,53 +23,73 @@ const firstPoint: Points = ({ outline, stripeStartsInTopLeftHalf, originAndSize,
 	}
 }
 
-const middlePoints: Points = ({
-	outline,
-	stripeStartsInTopLeftHalf,
-	stripeEndsInBottomRightHalf,
-	originAndSize,
-	stripeEnd,
-}) => {
+const middlePoints: Points = params => {
+	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeEnd } = params
 	if (!stripeEndsInBottomRightHalf) {
-		outline.push(pointAlongTopEdge({ originAndSize, stripePosition: stripeEnd }))
-		outline.push(pointAlongLeftEdge({ originAndSize, stripePosition: stripeEnd }))
+		middlePointsWhenStripeEndsInBottomRightHalf({ outline, originAndSize, stripeEnd })
 	}
 	else {
-		if (stripeStartsInTopLeftHalf) {
-			outline.push(pointInTopRightCorner({ originAndSize }))
-		}
-
-		const stripeEndsInBottomRightCorner = stripeEnd === 2
-		if (stripeEndsInBottomRightCorner) {
-			outline.push(pointInBottomRightCorner({ originAndSize }))
-		}
-		else {
-			outline.push(pointAlongRightEdge({ originAndSize, stripePosition: stripeEnd }))
-			outline.push(pointAlongBottomEdge({ originAndSize, stripePosition: stripeEnd }))
-		}
+		middlePointsWhenStripeDoesNotEndInBottomRightHalf({
+			stripeStartsInTopLeftHalf,
+			outline,
+			originAndSize,
+			stripeEnd,
+		})
 	}
 }
 
-const lastPoints: Points = lastArgs => {
-	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeStart } = lastArgs
+const lastPoints: Points = params => {
+	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeStart } = params
 	const stripeStartsInTopLeftCorner = stripeStart === 0
 	if (!stripeStartsInTopLeftCorner) {
-		if (stripeStartsInTopLeftHalf && stripeEndsInBottomRightHalf) {
-			outline.push(pointInBottomLeftCorner({ originAndSize }))
-		}
+		lastPointsWhenStripeDoesNotStartInTopLeftCorner({
+			stripeStartsInTopLeftHalf,
+			stripeEndsInBottomRightHalf,
+			outline,
+			originAndSize,
+			stripeStart,
+		})
+	}
+	else if (stripeEndsInBottomRightHalf) {
+		outline.push(pointInBottomLeftCorner({ originAndSize }))
+	}
+}
 
-		if (stripeStartsInTopLeftHalf) {
+const middlePointsWhenStripeEndsInBottomRightHalf: Points = ({ outline, originAndSize, stripeEnd }) => {
+	outline.push(pointAlongTopEdge({ originAndSize, stripePosition: stripeEnd }))
+	outline.push(pointAlongLeftEdge({ originAndSize, stripePosition: stripeEnd }))
+}
 
-			outline.push(pointAlongLeftEdge({ originAndSize, stripePosition: stripeStart }))
-		}
-		else {
-			outline.push(pointAlongBottomEdge({ originAndSize, stripePosition: stripeStart }))
-		}
+const middlePointsWhenStripeDoesNotEndInBottomRightHalf: Points = params => {
+	const { stripeStartsInTopLeftHalf, outline, originAndSize, stripeEnd } = params
+
+	if (stripeStartsInTopLeftHalf) {
+		outline.push(pointInTopRightCorner({ originAndSize }))
+	}
+
+	const stripeEndsInBottomRightCorner = stripeEnd === 2
+	if (stripeEndsInBottomRightCorner) {
+		outline.push(pointInBottomRightCorner({ originAndSize }))
 	}
 	else {
-		if (stripeEndsInBottomRightHalf) {
-			outline.push(pointInBottomLeftCorner({ originAndSize }))
-		}
+		outline.push(pointAlongRightEdge({ originAndSize, stripePosition: stripeEnd }))
+		outline.push(pointAlongBottomEdge({ originAndSize, stripePosition: stripeEnd }))
+	}
+}
+
+const lastPointsWhenStripeDoesNotStartInTopLeftCorner: Points = params => {
+	const { stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, outline, originAndSize, stripeStart } = params
+
+	if (stripeStartsInTopLeftHalf && stripeEndsInBottomRightHalf) {
+		outline.push(pointInBottomLeftCorner({ originAndSize }))
+	}
+
+	if (stripeStartsInTopLeftHalf) {
+
+		outline.push(pointAlongLeftEdge({ originAndSize, stripePosition: stripeStart }))
+	}
+	else {
+		outline.push(pointAlongBottomEdge({ originAndSize, stripePosition: stripeStart }))
 	}
 }
 
@@ -113,9 +133,9 @@ type OriginAndSize = { x: number, y: number, size: number }
 type Points = {
 	({}: {
 		outline: number[][],
-		stripeStartsInTopLeftHalf: boolean,
-		stripeEndsInBottomRightHalf?: boolean,
 		originAndSize: OriginAndSize,
+		stripeStartsInTopLeftHalf?: boolean,
+		stripeEndsInBottomRightHalf?: boolean,
 		stripeStart?: number
 		stripeEnd?: number,
 	}): void,

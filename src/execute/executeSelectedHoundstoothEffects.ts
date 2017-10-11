@@ -1,23 +1,25 @@
 import { createContexts, createMixedDownCanvas } from '../page'
 import state from '../state'
-import prepareFunctionsPerSetting from './prepareFunctionsPerSetting'
+import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import executeGrid from './executeGrid'
 import executeAnimation from './executeAnimation'
+import SettingsFunctionObject from './SettingsFunctionObject'
 
-const executeSelectedHoundstoothEffects = ({ houndstoothOverrides = {} } = {}) => {
+type ExecuteSelectedHoundstoothEffects = { ({}?: { houndstoothOverrides? }): void }
+const executeSelectedHoundstoothEffects: ExecuteSelectedHoundstoothEffects = ({ houndstoothOverrides } = {}) => {
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
-	const layerFunctions = prepareFunctionsPerSetting({
-		settingsFunctions: state.mainHoundstooth.layersPattern,
+	const layerFunctionObjects = prepareFunctionObjectsPerSetting({
+		settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
 	})
 
 	prepareCanvas()
 
-	execute(layerFunctions)
+	execute({ layerFunctionObjects })
 }
 
-const prepareCanvas = () => {
+const prepareCanvas: { (): void } = () => {
 	createContexts()
 	if (state.exportFrames) {
 		state.mixingDown = true
@@ -27,15 +29,15 @@ const prepareCanvas = () => {
 	}
 }
 
-const execute = layerFunctions => {
+const execute: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void } = ({ layerFunctionObjects }) => {
 	if (state.animating) {
-		const animationFunctions = prepareFunctionsPerSetting({
-			settingsFunctions: state.mainHoundstooth.animationsPattern,
+		const animationFunctionObjects = prepareFunctionObjectsPerSetting({
+			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
 		})
-		executeAnimation({ animationFunctions, layerFunctions })
+		executeAnimation({ animationFunctionObjects, layerFunctionObjects })
 	}
 	else {
-		executeGrid({ layerFunctions })
+		executeGrid({ layerFunctionObjects })
 	}
 }
 

@@ -1,22 +1,15 @@
 import state from '../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
+import SettingsFunctionObject from './SettingsFunctionObject'
 
-const executeAnimation = ({ layerFunctions, animationFunctions }) => {
-	const {
-		frameRate,
-		endAnimationFrame,
-	}: {
-		frameRate,
-		endAnimationFrame,
-		} = state.mainHoundstooth.basePattern.animationSettings || {}
-	let {
-		startAnimationFrame,
-		refreshCanvas,
-	}: {
-		refreshCanvas?,
-		startAnimationFrame?,
-		} = state.mainHoundstooth.basePattern.animationSettings || {}
+type ExecuteAnimation = {
+	({}: { layerFunctionObjects: SettingsFunctionObject[], animationFunctionObjects: SettingsFunctionObject[] }): void,
+}
+const executeAnimation: ExecuteAnimation = ({ layerFunctionObjects, animationFunctionObjects }) => {
+	const animationSettings = state.mainHoundstooth.basePattern.animationSettings || {}
+	const { frameRate, endAnimationFrame } = animationSettings
+	let { startAnimationFrame, refreshCanvas } = animationSettings
 	startAnimationFrame = startAnimationFrame || 0
 	refreshCanvas = defaultToTrue(refreshCanvas)
 
@@ -24,8 +17,8 @@ const executeAnimation = ({ layerFunctions, animationFunctions }) => {
 
 	const animationFunction = buildAnimationFunction({
 		startAnimationFrame,
-		animationFunctions,
-		layerFunctions,
+		animationFunctionObjects,
+		layerFunctionObjects,
 		refreshCanvas,
 	})
 	const stopConditionFunction = buildStopConditionFunction({ endAnimationFrame })

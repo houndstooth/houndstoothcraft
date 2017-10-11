@@ -2,7 +2,7 @@ import state from '../state'
 import { console } from '../utilities/windowWrapper'
 import { grid } from '../components'
 
-const gridAndMaybeLogging = () => {
+const gridAndMaybeLogging: { (): void } = () => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
 	if (performanceLogging) {
 		console.time('grid')

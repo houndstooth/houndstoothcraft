@@ -1,6 +1,8 @@
+import { Houndstooth } from '../store'
 import composePatterns from './composePatterns'
 
-const combineHoundstoothEffects = ({ houndstoothEffects }) => {
+type CombineHoundstoothEffects = { ({}: { houndstoothEffects: Houndstooth[] }): Houndstooth }
+const combineHoundstoothEffects: CombineHoundstoothEffects = ({ houndstoothEffects }) => {
 	const basePattern = {}
 	const layersPattern = {}
 	const animationsPattern = {}

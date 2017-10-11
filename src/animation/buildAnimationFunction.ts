@@ -2,28 +2,29 @@ import state from '../state'
 import { callFunctionsPerSetting, executeGrid } from '../execute'
 import { clear } from '../canvas'
 import { deepClone } from '../utilities/codeUtilities'
+import { SettingsFunctionObject } from '../execute'
 import exportFrame from './exportFrame'
 
 type BuildAnimationFunction = {
 	({}: {
 		startAnimationFrame: number,
-		animationFunctions: Array<() => void>,
-		layerFunctions: Array<() => void>,
+		animationFunctionObjects: SettingsFunctionObject[],
+		layerFunctionObjects: SettingsFunctionObject[],
 		refreshCanvas: boolean,
 	}): () => void,
 }
-const buildAnimationFunction: BuildAnimationFunction = buildAnimationFunctionParams => {
-	const { startAnimationFrame, animationFunctions, layerFunctions, refreshCanvas } = buildAnimationFunctionParams
+const buildAnimationFunction: BuildAnimationFunction = params => {
+	const { startAnimationFrame, animationFunctionObjects, layerFunctionObjects, refreshCanvas } = params
 	return () => {
 		if (exportingFramesStillNeedsToCatchUp()) {
 			return
 		}
 
 		if (shouldBeginShowingAnimation(startAnimationFrame)) {
-			animate({ layerFunctions, refreshCanvas })
+			animate({ layerFunctionObjects, refreshCanvas })
 		}
 
-		callFunctionsPerSetting({ settingsFunctions: animationFunctions })
+		callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
 		state.currentAnimationFrame++
 	}
 }
@@ -36,16 +37,14 @@ const shouldBeginShowingAnimation: { (startAnimationFrame: number): boolean } = 
 	return state.currentAnimationFrame >= startAnimationFrame
 }
 
-type Animate = {
-	({ layerFunctions, refreshCanvas }: { layerFunctions: Array<() => void>, refreshCanvas: boolean }): void,
-}
-const animate: Animate = ({ layerFunctions, refreshCanvas }) => {
+type Animate = { ({}: { layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean }): void }
+const animate: Animate = ({ layerFunctionObjects, refreshCanvas }) => {
 	if (refreshCanvas) {
 		clear()
 	}
 
 	const preLayerSettings = deepClone(state.mainHoundstooth.basePattern)
-	executeGrid({ layerFunctions })
+	executeGrid({ layerFunctionObjects })
 	Object.assign(state.mainHoundstooth.basePattern, preLayerSettings)
 
 	if (state.exportFrames) {

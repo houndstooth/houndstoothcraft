@@ -10,8 +10,8 @@ type ComposePatterns = {
 		warnAboutConflicts?: boolean,
 	}): void,
 }
-const composePatterns: ComposePatterns = composePatternsArgs => {
-	const { patternToBeMergedOnto, patternToMerge, settingsPath = [], warnAboutConflicts } = composePatternsArgs
+const composePatterns: ComposePatterns = params => {
+	const { patternToBeMergedOnto, patternToMerge, settingsPath = [], warnAboutConflicts } = params
 	if (!patternToMerge) {
 		return
 	}

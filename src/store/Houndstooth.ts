@@ -4,7 +4,7 @@ type Houndstooth = {
 	basePattern: Pattern,
 	animationsPattern: Pattern,
 	layersPattern: Pattern,
-	name: string,
+	name?: string,
 }
 
 export default Houndstooth

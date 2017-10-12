@@ -2,7 +2,7 @@ import { parseColor } from '../render'
 import state from '../state'
 import { getCanvasDimensions, getCurrentContext } from '../canvas'
 
-const applyBackgroundColor = () => {
+const applyBackgroundColor: { (): void } = () => {
 	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
 	const backgroundColor = colorSettings && colorSettings.backgroundColor
 	if (!backgroundColor) {

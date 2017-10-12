@@ -1,11 +1,11 @@
 import { window, document } from '../utilities/windowWrapper'
 
-const saveBlob: { ({}: { blob: any, name: string }): void } = ({ blob, name }) => {
+const saveBlob: { ({}: { blob: Blob, name: string }): void } = ({ blob, name }) => {
 	const url = window.URL.createObjectURL(blob)
 
 	const a = document.createElement('a')
 	document.body.appendChild(a)
-	a.style = 'display: none'
+	a.style = { display: 'none' }
 	a.href = url
 	a.download = name
 

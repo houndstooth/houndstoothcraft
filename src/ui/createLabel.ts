@@ -2,7 +2,7 @@ import { document } from '../utilities/windowWrapper'
 import { Houndstooth } from '../store'
 import createCheckbox from './createCheckbox'
 
-const createLabel: { ({}: { houndstoothEffect: Houndstooth }): any } = ({ houndstoothEffect }) => {
+const createLabel: { ({}: { houndstoothEffect: Houndstooth }): HTMLLabelElement } = ({ houndstoothEffect }) => {
 	const label = document.createElement('label')
 
 	label.style.cursor = 'pointer'

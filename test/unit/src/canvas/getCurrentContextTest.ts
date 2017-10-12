@@ -3,7 +3,7 @@ import getCurrentContext from '../../../../src/canvas/getCurrentContext'
 
 describe('get current context', () => {
 	it('gets the current context', () => {
-		const expectedContext = {}
+		const expectedContext = {} as CanvasRenderingContext2D
 		state.contexts = [ {}, {}, {}, expectedContext, {}, {} ]
 		state.currentLayer = 3
 

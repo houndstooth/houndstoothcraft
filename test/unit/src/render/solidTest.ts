@@ -6,7 +6,7 @@ describe('solid', () => {
 	const shapeColorIndex = 8
 	const shapeColor = { a: 1 }
 	const transparentColor = { a: 0 }
-	const context = {}
+	const context = {} as CanvasRenderingContext2D
 	const outline = []
 	let getColorSpy
 	beforeEach(() => {

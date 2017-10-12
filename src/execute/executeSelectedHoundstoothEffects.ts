@@ -6,6 +6,7 @@ import composeMainHoundstooth from './composeMainHoundstooth'
 import executeGrid from './executeGrid'
 import executeAnimation from './executeAnimation'
 import { SettingsFunctionObject } from './types'
+import { NullarySideEffector } from '../utilities/types'
 
 type ExecuteSelectedHoundstoothEffects = { ({}?: { houndstoothOverrides?: Houndstooth }): void }
 
@@ -21,7 +22,7 @@ const executeSelectedHoundstoothEffects: ExecuteSelectedHoundstoothEffects = ({ 
 	execute({ layerFunctionObjects })
 }
 
-const prepareCanvas: { (): void } = () => {
+const prepareCanvas: NullarySideEffector = () => {
 	createContexts()
 	if (state.exportFrames) {
 		state.mixingDown = true

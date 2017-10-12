@@ -1,8 +1,9 @@
 import state from '../state'
 import { console } from '../utilities/windowWrapper'
 import { grid } from '../components'
+import { NullarySideEffector } from '../utilities/types'
 
-const gridAndMaybeLogging: { (): void } = () => {
+const gridAndMaybeLogging: NullarySideEffector = () => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
 	if (performanceLogging) {
 		console.time('grid')

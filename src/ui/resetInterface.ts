@@ -3,8 +3,9 @@ import state from '../state'
 import { resetState } from '../store'
 import { createWarningsContainer } from '../page'
 import { window, document } from '../utilities/windowWrapper'
+import { NullarySideEffector } from '../utilities/types'
 
-const resetInterface: { (): void } = () => {
+const resetInterface: NullarySideEffector = () => {
 	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()
 	warnings.innerHTML = ''
 

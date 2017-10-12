@@ -5,7 +5,7 @@ describe('build path', () => {
 	it('draws the path with the correct outline and fills it', () => {
 		const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 		const contextCallsOrder = []
-		const context = buildMockContext({ contextCallsOrder })
+		const context = buildMockContext({ contextCallsOrder }) as CanvasRenderingContext2D
 
 		buildPath({ context, outline })
 

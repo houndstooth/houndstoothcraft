@@ -1,7 +1,7 @@
 import grid from './grid'
 import perStripe from './perStripe'
 import tileCenter from './tileCenter'
-import { Address, TileColorIndices, Assignment } from './types'
+import { Address, TileColorIndices, Assignment, Supertile, Weave } from './types'
 
 export {
 	grid,
@@ -10,4 +10,6 @@ export {
 	Address,
 	TileColorIndices,
 	Assignment,
+	Supertile,
+	Weave,
 }

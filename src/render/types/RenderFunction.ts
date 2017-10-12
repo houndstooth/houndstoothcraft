@@ -1,12 +1,24 @@
 import { Outline, Coordinate } from '../../space'
+import { TileColorIndices } from '../../components'
+
+type RenderTexture = {
+	({}: {
+		context: CanvasRenderingContext2D,
+		outline: Outline,
+		shapeColorIndex?: number
+		tileColorIndices?: TileColorIndices,
+		tileOrigin?: Coordinate,
+		tileSize?: number,
+	}): void,
+}
 
 type RenderFunction = {
 	({}: {
-		context: any,
+		context: CanvasRenderingContext2D,
 		outline: Outline,
-		renderTexture?: { ({}: {}): void },
+		renderTexture?: RenderTexture,
 		shapeColorIndex?: number,
-		tileColorIndices?: number[]
+		tileColorIndices?: TileColorIndices
 		tileOrigin?: Coordinate,
 		tileSize?: number,
 	}): void,

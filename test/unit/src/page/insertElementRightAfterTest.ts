@@ -4,7 +4,7 @@ import buildMockElement from '../../helpers/buildMockElement'
 describe('insert element right after', () => {
 	it('inserts an element right after another one', () => {
 		const parentNodeInsertBeforeSpy = jasmine.createSpy('parentNodeInsertBefore')
-		const nextSibling = {}
+		const nextSibling = {} as Element
 		const elementRightAfterWhichToInsert = buildMockElement({ parentNodeInsertBeforeSpy })
 		elementRightAfterWhichToInsert.nextSibling = nextSibling
 		const element = {}

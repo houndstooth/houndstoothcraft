@@ -1,31 +1,35 @@
 declare const global: any
 
-const mockDocument: {
+type Document = {
 	createElement: Function,
 	createTextNode: Function,
 	querySelector: Function,
 	body: { appendChild: Function },
-	} = {
-		createElement: () => null,
-		createTextNode: () => null,
-		querySelector: () => null,
-		body: {
-			appendChild: () => null,
-		},
-	}
+}
 
-const mockWindow: {
+const mockDocument: Document = {
+	createElement: () => null,
+	createTextNode: () => null,
+	querySelector: () => null,
+	body: {
+		appendChild: () => null,
+	},
+}
+
+type Window = {
 	clearInterval: Function,
 	setInterval: Function,
 	URL: { createObjectURL: Function, revokeObjectURL: Function },
-	} = {
-		clearInterval: () => null,
-		setInterval: () => null,
-		URL: {
-			createObjectURL: () => null,
-			revokeObjectURL: () => null,
-		},
-	}
+}
+
+const mockWindow: Window = {
+	clearInterval: () => null,
+	setInterval: () => null,
+	URL: {
+		createObjectURL: () => null,
+		revokeObjectURL: () => null,
+	},
+}
 
 const consoleDummy = console
 

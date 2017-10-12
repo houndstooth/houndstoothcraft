@@ -1,12 +1,13 @@
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
-import { Pattern } from '../store'
+import { Pattern, Setting } from '../store'
 import { PropertyPath } from '../utilities/types'
+import { Color } from '../render'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 
 type ComposePatterns = {
 	({}: {
 		patternToBeMergedOnto: Pattern,
-		patternToMerge: any,
+		patternToMerge: Pattern,
 		settingsPath?: PropertyPath,
 		warnAboutConflicts?: boolean,
 	}): void,
@@ -20,7 +21,7 @@ const composePatterns: ComposePatterns = params => {
 		if (shouldRecurse({ overridingSetting })) {
 			composePatterns({
 				patternToBeMergedOnto,
-				patternToMerge: overridingSetting,
+				patternToMerge: overridingSetting as Pattern,
 				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
 				warnAboutConflicts,
 			})
@@ -46,17 +47,25 @@ const composePatterns: ComposePatterns = params => {
 	})
 }
 
-const shouldRecurse: { ({}: { overridingSetting: any }): boolean } = ({ overridingSetting }) => {
+const shouldRecurse: { ({}: { overridingSetting: Setting }): boolean } = ({ overridingSetting }) => {
 	return settingIsNonArrayObject(overridingSetting) && settingIsNotColor(overridingSetting)
 }
 
-const settingIsNonArrayObject: { (setting: any): boolean } = setting => {
-	return setting && typeof setting === 'object' && !setting.length
+const settingIsNonArrayObject: { (setting: Setting): boolean } = setting => {
+	if (!setting) {
+		return false
+	}
+	if (typeof setting !== 'object') {
+		return false
+	}
+	const maybeSettingArray = setting as Setting[]
+	return !maybeSettingArray.length
 }
 
-const settingIsNotColor: { (setting: any): boolean } = setting => {
+const settingIsNotColor: { (setting: Setting): boolean } = setting => {
 	const defined = isDefined
-	const { r, g, b, a } = setting
+	const maybeSettingColor = setting as Color
+	const { r, g, b, a } = maybeSettingColor
 	return !(defined(r) || defined(g) || defined(b) || defined(a))
 }
 

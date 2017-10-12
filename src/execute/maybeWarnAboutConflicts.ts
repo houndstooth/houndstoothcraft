@@ -2,6 +2,7 @@ import { isDefined } from '../utilities/codeUtilities'
 import { console } from '../utilities/windowWrapper'
 import { warn } from '../ui'
 import { PropertyPath } from '../utilities/types'
+import { Setting } from '../store'
 import settingPath from './settingPath'
 
 type MaybeWarnAboutConflicts = {
@@ -9,8 +10,8 @@ type MaybeWarnAboutConflicts = {
 		warnAboutConflicts: boolean,
 		settingsPath: PropertyPath,
 		settingName: string,
-		existingSetting: any,
-		overridingSetting: any,
+		existingSetting: Setting,
+		overridingSetting: Setting,
 	}): void,
 }
 const maybeWarnAboutConflicts: MaybeWarnAboutConflicts = params => {
@@ -28,7 +29,7 @@ const shouldWarnAboutConflicts: ShouldWarnAboutConflicts = params => {
 	return warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 }
 
-const settingsAreEqual: { (a: any, b: any): boolean } = (a, b) => {
+const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
 	if (typeof a === 'function') {
 		if (typeof b === 'function') {
 			return a.toString() === b.toString()
@@ -49,7 +50,12 @@ const settingsAreEqual: { (a: any, b: any): boolean } = (a, b) => {
 }
 
 type BuildWarningMessage = {
-	({}: { settingsPath: PropertyPath, settingName: string, existingSetting: any, overridingSetting: any }): string,
+	({}: {
+		settingsPath: PropertyPath,
+		settingName: string,
+		existingSetting: Setting,
+		overridingSetting: Setting,
+	}): string,
 }
 const buildWarningMessage: BuildWarningMessage = params => {
 	const { settingsPath, settingName, existingSetting, overridingSetting } = params
@@ -60,7 +66,7 @@ const buildWarningMessage: BuildWarningMessage = params => {
 	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
 }
 
-const formatSettingForWarning: { (setting: any): string } = setting => {
+const formatSettingForWarning: { (setting: Setting): string } = setting => {
 	if (typeof setting === 'function') {
 		return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
 	}

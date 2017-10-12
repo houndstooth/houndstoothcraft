@@ -1,4 +1,4 @@
-const fillPath: { ({}: { context: any }): void } = ({ context }) => {
+const fillPath: { ({}: { context: CanvasRenderingContext2D }): void } = ({ context }) => {
 	context.closePath()
 	context.fill()
 }

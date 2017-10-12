@@ -3,8 +3,8 @@ import Houndstooth from './Houndstooth'
 type State = {
 	currentLayer: number,
 	currentAnimationFrame: number,
-	contexts: any[],
-	mixedDownContext: any,
+	contexts: CanvasRenderingContext2D[],
+	mixedDownContext: CanvasRenderingContext2D,
 	lastSavedAnimationFrame: number,
 	interval: () => void,
 	animating: boolean,

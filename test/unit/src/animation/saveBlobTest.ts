@@ -14,13 +14,13 @@ describe('save blob', () => {
 
 		spyOn(windowWrapper.window.URL, 'revokeObjectURL')
 
-		const blob = {}
+		const blob = {} as Blob
 		const name = 'whatever.png'
 		saveBlob({ blob, name })
 
 		expect(windowWrapper.window.URL.createObjectURL).toHaveBeenCalledWith(blob)
 		expect(appendChildSpy).toHaveBeenCalledWith(mockLink)
-		expect(mockLink.style).toBe('display: none')
+		expect(mockLink.style).toEqual({ display: 'none' })
 		expect(mockLink.href).toBe('the url')
 		expect(mockLink.download).toBe('whatever.png')
 		expect(clickSpy).toHaveBeenCalled()

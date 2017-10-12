@@ -11,7 +11,7 @@ const getTileColorIndices: { ({}: { gridAddress: Address }): TileColorIndices } 
 }
 
 type MaybeAdjustTileColorIndices = {
-	({}: { assignment: any, gridAddress: Address, tileColorIndices: TileColorIndices }): TileColorIndices,
+	({}: { assignment: Assignment, gridAddress: Address, tileColorIndices: TileColorIndices }): TileColorIndices,
 }
 
 const maybeAdjustTileColorIndices: MaybeAdjustTileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {

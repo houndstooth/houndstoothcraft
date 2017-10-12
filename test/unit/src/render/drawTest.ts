@@ -4,7 +4,7 @@ import * as fill from '../../../../src/render/fill'
 
 describe('draw', () => {
 	const shapeColor = { a: 1 }
-	const context = {}
+	const context = {} as CanvasRenderingContext2D
 
 	const adjustedOutline = []
 	beforeEach(() => {

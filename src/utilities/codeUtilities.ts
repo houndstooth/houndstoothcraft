@@ -84,7 +84,7 @@ const accessChildPropertyOrCreatePath: AccessChildPropertyOrCreatePath = ({ obje
 
 const defaultToTrue: { <T>(property: T): T | boolean } = property => isDefined(property) ? property : true
 
-const isDefined: { (property: any): boolean } = property => typeof property !== 'undefined'
+const isDefined: { <T>(property: T): boolean } = property => typeof property !== 'undefined'
 
 type PropertyIsDefinedOnObject = { ({}: { objectWithProperties: object, propertyName: string }): boolean }
 

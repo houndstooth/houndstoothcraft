@@ -2,8 +2,9 @@ import state from '../state'
 import { applyBackgroundColor, applyOpacity } from '../view'
 import { iterator } from '../utilities/codeUtilities'
 import tile from './tile'
+import { NullarySideEffector } from '../utilities/types'
 
-const grid: { (): void } = () => {
+const grid: NullarySideEffector = () => {
 	const gridSettings = state.mainHoundstooth.basePattern.gridSettings || {}
 	const { includeNegativeQuadrants, gridSize } = gridSettings
 

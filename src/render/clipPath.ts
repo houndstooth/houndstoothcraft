@@ -1,4 +1,4 @@
-const clipPath: { ({}: { context: any }): void } = ({ context }) => {
+const clipPath: { ({}: { context: CanvasRenderingContext2D }): void } = ({ context }) => {
 	context.save()
 	context.clip()
 }

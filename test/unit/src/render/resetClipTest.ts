@@ -4,7 +4,7 @@ import resetClip from '../../../../src/render/resetClip'
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {
 		const contextCallsOrder = []
-		const context = buildMockContext({ contextCallsOrder })
+		const context = buildMockContext({ contextCallsOrder }) as CanvasRenderingContext2D
 
 		resetClip({ context })
 

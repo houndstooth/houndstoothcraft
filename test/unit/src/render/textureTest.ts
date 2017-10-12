@@ -11,7 +11,7 @@ describe('texture', () => {
 		spyOn(clipPath, 'default').and.callFake(args => calls.push({ call: 'clipPath', args }))
 		spyOn(resetClip, 'default').and.callFake(args => calls.push({ call: 'resetClip', args }))
 
-		const context = {}
+		const context = {} as CanvasRenderingContext2D
 		const tileColorIndices = []
 		const tileOrigin = []
 		const tileSize = 11

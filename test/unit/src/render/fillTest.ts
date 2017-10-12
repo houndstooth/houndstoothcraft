@@ -8,7 +8,7 @@ import buildMockContext from '../../../helpers/buildMockContext'
 describe('fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
-	const context = buildMockContext()
+	const context = buildMockContext() as CanvasRenderingContext2D
 	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
 	beforeEach(() => {

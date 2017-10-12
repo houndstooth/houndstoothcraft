@@ -4,7 +4,7 @@ import { resetState } from '../store'
 import { createWarningsContainer } from '../page'
 import { window, document } from '../utilities/windowWrapper'
 
-const resetInterface = () => {
+const resetInterface: { (): void } = () => {
 	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()
 	warnings.innerHTML = ''
 

@@ -1,12 +1,13 @@
 import { document } from '../utilities/windowWrapper'
+import { Houndstooth } from '../store'
 import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 
-const createCheckbox = houndstoothEffect => {
+const createCheckbox: { ({}: { houndstoothEffect: Houndstooth }): any } = ({ houndstoothEffect }) => {
 	const checkbox = document.createElement('input')
 
 	checkbox.setAttribute('type', 'checkbox')
 	checkbox.classList.add(houndstoothEffect.name.replace(/ /g, '-'))
-	checkbox.onclick = buildEffectToggleClickHandler(checkbox, houndstoothEffect)
+	checkbox.onclick = buildEffectToggleClickHandler({ checkbox, houndstoothEffect })
 	checkbox.style.cursor = 'pointer'
 
 	return checkbox

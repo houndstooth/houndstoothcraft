@@ -17,7 +17,7 @@ describe('create checkbox', () => {
 
 		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(mockClickHandler)
 
-		returnedCheckbox = createCheckbox(mockHoundstoothEffect)
+		returnedCheckbox = createCheckbox({ houndstoothEffect: mockHoundstoothEffect })
 	})
 
 	it('returns the created label', () => {
@@ -29,11 +29,14 @@ describe('create checkbox', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(buildEffectToggleClickHandler.default).toHaveBeenCalledWith(mockCheckbox, mockHoundstoothEffect)
+		expect(buildEffectToggleClickHandler.default).toHaveBeenCalledWith({
+			checkbox: mockCheckbox,
+			houndstoothEffect: mockHoundstoothEffect,
+		})
 	})
 
 	it('gives the checkbox a class which is the kebab-cased version of the houndstooth effect\'s name', () => {
-		expect(mockClassList[0]).toBe('mock-tooth')
+		expect(mockClassList[ 0 ]).toBe('mock-tooth')
 	})
 
 	it('assigns a click handler to the checkbox', () => {

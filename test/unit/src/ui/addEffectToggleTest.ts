@@ -17,10 +17,10 @@ describe('add effect toggle', () => {
 	})
 
 	it('adds a labelled checkbox for the effect to the toggles container', () => {
-		expect(mockEffectTogglesContainerChildren[0]).toBe(mockLabel)
+		expect(mockEffectTogglesContainerChildren[ 0 ]).toBe(mockLabel)
 	})
 
 	it('creates the label with the houndstooth effect', () => {
-		expect(createLabel.default).toHaveBeenCalledWith(mockHoundstoothEffect)
+		expect(createLabel.default).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
 	})
 })

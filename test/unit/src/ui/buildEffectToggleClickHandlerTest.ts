@@ -13,7 +13,7 @@ describe('build effect toggle click handler', () => {
 
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 
-		const clickHandler = buildEffectToggleClickHandler(checkbox, mockHoundstoothEffect)
+		const clickHandler = buildEffectToggleClickHandler({ checkbox, houndstoothEffect: mockHoundstoothEffect })
 
 		expect(resetInterfaceSpy).not.toHaveBeenCalled()
 		expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()

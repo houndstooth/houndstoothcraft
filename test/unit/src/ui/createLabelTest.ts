@@ -18,7 +18,7 @@ describe('create label', () => {
 
 		spyOn(createCheckbox, 'default').and.returnValue(mockCheckbox)
 
-		returnedLabel = createLabel(mockHoundstoothEffect)
+		returnedLabel = createLabel({ houndstoothEffect: mockHoundstoothEffect })
 	})
 
 	it('returns the created label', () => {
@@ -34,15 +34,15 @@ describe('create label', () => {
 	})
 
 	it('adds one checkbox to the label', () => {
-		expect(mockChildren[0]).toBe(mockCheckbox)
+		expect(mockChildren[ 0 ]).toBe(mockCheckbox)
 	})
 
 	it('adds one name to the label, after the checkbox', () => {
-		expect(mockChildren[1]).toBe(mockName)
+		expect(mockChildren[ 1 ]).toBe(mockName)
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.default).toHaveBeenCalledWith(mockHoundstoothEffect)
+		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {

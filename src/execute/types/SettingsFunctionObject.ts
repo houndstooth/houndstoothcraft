@@ -1,5 +1,5 @@
-import SettingsPath from './SettingsPath'
+import { PropertyPath } from '../../utilities/types'
 
-type SettingsFunctionObject = { settingsPath: SettingsPath, settingName: string, settingsFunction: Function }
+type SettingsFunctionObject = { settingsPath: PropertyPath, settingName: string, settingsFunction: Function }
 
 export default SettingsFunctionObject

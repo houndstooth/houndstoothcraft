@@ -4,7 +4,7 @@ import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
 import { rotateCoordinateAboutPoint } from './space'
 import { defaults } from './store'
-import { addEffectToggles } from './ui'
+import { maybeAddEffectToggles } from './ui'
 import state from './state'
 import * as constants from './constants'
 
@@ -16,7 +16,7 @@ export {
 	solid,
 	rotateCoordinateAboutPoint,
 	defaults,
-	addEffectToggles,
+	maybeAddEffectToggles,
 	state,
 	constants,
 }

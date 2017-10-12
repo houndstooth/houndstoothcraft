@@ -1,7 +1,7 @@
-import addEffectToggles from './addEffectToggles'
+import maybeAddEffectToggles from './maybeAddEffectToggles'
 import warn from './warn'
 
 export {
-	addEffectToggles,
+	maybeAddEffectToggles,
 	warn,
 }

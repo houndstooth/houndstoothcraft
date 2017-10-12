@@ -1,13 +1,13 @@
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
 import { Pattern } from '../store'
+import { PropertyPath } from '../utilities/types'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
-import { SettingsPath } from './types'
 
 type ComposePatterns = {
 	({}: {
 		patternToBeMergedOnto: Pattern,
 		patternToMerge: any,
-		settingsPath?: SettingsPath,
+		settingsPath?: PropertyPath,
 		warnAboutConflicts?: boolean,
 	}): void,
 }

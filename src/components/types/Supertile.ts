@@ -1,3 +1,3 @@
-type Supertile = number[] | number[][] | number[][][]
+type Supertile = number[][][]
 
 export default Supertile

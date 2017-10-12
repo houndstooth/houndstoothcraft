@@ -1,4 +1,6 @@
-const iterator = (i, options = { oneIndexed: false }) => {
+import { PropertyPath } from './types'
+
+const iterator: { (i: number, options?: { oneIndexed: boolean }): number[] } = (i, options = { oneIndexed: false }) => {
 	let iter = []
 	for (let j = 0; j < Math.ceil(i); j++) {
 		iter.push(j)
@@ -9,7 +11,7 @@ const iterator = (i, options = { oneIndexed: false }) => {
 	return iter
 }
 
-const wrappedIndex = ({ array, index = 0 }) => {
+const wrappedIndex: { <T>({}: { array: T[], index?: number }): T } = ({ array, index = 0 }) => {
 	let i
 	if (index < 0) {
 		i = array.length - Math.abs(index) % array.length
@@ -23,12 +25,12 @@ const wrappedIndex = ({ array, index = 0 }) => {
 	return array[ i ]
 }
 
-const shallowEqual = (a, b) => {
+const shallowEqual: { <T>(a: T, b: T): boolean } = (a, b) => {
 	const sameKeyCount = Object.keys(a).length === Object.keys(b).length
 	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
-const deepClone: any = objectToDeepClone => {
+const deepClone: { (objectToDeepClone: any): any } = objectToDeepClone => {
 	const clonedObject = {}
 	setAllPropertiesOfObjectOnAnother({
 		objectWithProperties: objectToDeepClone,
@@ -37,13 +39,15 @@ const deepClone: any = objectToDeepClone => {
 	return clonedObject
 }
 
-const setAllPropertiesOfObjectOnAnother = ({ objectWithProperties, objectToChange }) => {
+type SetAllPropertiesOfObjectOnAnother = { ({}: { objectWithProperties: Object, objectToChange: Object }): void }
+const setAllPropertiesOfObjectOnAnother: SetAllPropertiesOfObjectOnAnother = params => {
+	const { objectWithProperties, objectToChange } = params
 	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {
 		objectToChange[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
 	})
 }
 
-const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
+const deepCloneMaybeNotObject: { <T>(maybeObjectToDeepClone: T): T } = maybeObjectToDeepClone => {
 	let clonedMaybeObject
 	if (maybeObjectToDeepClone instanceof Array) {
 		clonedMaybeObject = maybeObjectToDeepClone.slice()
@@ -57,13 +61,17 @@ const deepCloneMaybeNotObject = maybeObjectToDeepClone => {
 	return clonedMaybeObject
 }
 
-const deeperPath = ({ propertyPath, propertyName }) => {
+type DeeperPath = { ({}: { propertyPath: PropertyPath, propertyName: string }): PropertyPath }
+
+const deeperPath: DeeperPath = ({ propertyPath, propertyName }) => {
 	const path = propertyPath.slice()
 	path.push(propertyName)
 	return path
 }
 
-const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
+type AccessChildPropertyOrCreatePath = { ({}: { objectWithProperties: object, propertyPath: PropertyPath }): any }
+
+const accessChildPropertyOrCreatePath: AccessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
 	let childProperty = objectWithProperties
 	propertyPath.forEach(pathStep => {
 		if (!isDefined(childProperty[ pathStep ])) {
@@ -74,20 +82,23 @@ const accessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath })
 	return childProperty
 }
 
-const defaultToTrue = property => isDefined(property) ? property : true
+const defaultToTrue: { <T>(property: T): T | boolean } = property => isDefined(property) ? property : true
 
-const isDefined = property => typeof property !== 'undefined'
+const isDefined: { (property: any): boolean } = property => typeof property !== 'undefined'
 
-const propertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
+type PropertyIsDefinedOnObject = { ({}: { objectWithProperties: object, propertyName: string }): boolean }
+
+const propertyIsDefinedOnObject: PropertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
 	return isDefined(objectWithProperties[ propertyName ])
 }
 
-const changeObjectIntoCopy = ({ objectToChange, objectWithProperties }) => {
-	Object.keys(objectToChange).forEach(key => delete objectToChange[key])
+type ChangeObjectIntoCopy = { ({}: { objectToChange: object, objectWithProperties: object }): void }
+const changeObjectIntoCopy: ChangeObjectIntoCopy = ({ objectToChange, objectWithProperties }) => {
+	Object.keys(objectToChange).forEach(key => delete objectToChange[ key ])
 	setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
 }
 
-const reversed = array => array.slice().reverse()
+const reversed: { <T>(array: T[]): T[] } = array => array.slice().reverse()
 
 export {
 	iterator,

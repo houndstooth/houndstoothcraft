@@ -1,13 +1,13 @@
 import { isDefined } from '../utilities/codeUtilities'
 import { console } from '../utilities/windowWrapper'
 import { warn } from '../ui'
-import { SettingsPath } from './types'
+import { PropertyPath } from '../utilities/types'
 import settingPath from './settingPath'
 
 type MaybeWarnAboutConflicts = {
 	({}: {
 		warnAboutConflicts: boolean,
-		settingsPath: SettingsPath,
+		settingsPath: PropertyPath,
 		settingName: string,
 		existingSetting: any,
 		overridingSetting: any,
@@ -49,7 +49,7 @@ const settingsAreEqual: { (a: any, b: any): boolean } = (a, b) => {
 }
 
 type BuildWarningMessage = {
-	({}: { settingsPath: SettingsPath, settingName: string, existingSetting: any, overridingSetting: any }): string,
+	({}: { settingsPath: PropertyPath, settingName: string, existingSetting: any, overridingSetting: any }): string,
 }
 const buildWarningMessage: BuildWarningMessage = params => {
 	const { settingsPath, settingName, existingSetting, overridingSetting } = params

@@ -6,7 +6,7 @@ import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 
 describe('.gridSettings', () => {
-	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE) as number
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

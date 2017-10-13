@@ -1,7 +1,11 @@
 import isCloseTo from '../../helpers/isCloseTo'
 import { console } from '../../../src/utilities/windowWrapper'
+import { Coordinate } from '../../../src/space'
+import { Color } from '../../../src/render'
 
-const pixelIsColor = (coordinateUnderTest, expectedColor) => {
+type PixelIsColor = { (coordinateUnderTest: Coordinate, expectedColor: Color): boolean }
+
+const pixelIsColor: PixelIsColor = (coordinateUnderTest, expectedColor) => {
 	const actualColor = pixel(coordinateUnderTest)
 
 	if (actualColor.a === 0 && actualColor.a === expectedColor.a) {
@@ -22,7 +26,7 @@ const pixelIsColor = (coordinateUnderTest, expectedColor) => {
 	return true
 }
 
-const pixel = ([ x, y ]) => {
+const pixel: { (coordinate: Coordinate): Color } = ([ x, y ]) => {
 	const mixedDownCanvas = document.querySelector('.mixed-down-canvas') as HTMLCanvasElement
 	const pixelData = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
 	return {

@@ -1,11 +1,12 @@
 import createContext from '../../../../src/page/createContext'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
+import { MockContext } from '../../../helpers/types'
 
 describe('create context', () => {
 	let returnedContext
 	let appendedCanvas
-	const mockContext = {}
+	const mockContext = {} as MockContext
 	beforeEach(() => {
 		const mockCanvas = buildMockCanvas({ mockContext })
 		spyOn(window.document, 'createElement').and.returnValue(mockCanvas)

@@ -4,15 +4,16 @@ import getCanvasDimensions from '../../../src/canvas/getCanvasDimensions'
 import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
+import { NullarySideEffector } from '../../../src/utilities/types'
 
-const prepareCanvasForDisplayInTest = canvas => {
+const prepareCanvasForDisplayInTest: { (canvas: HTMLCanvasElement): void } = canvas => {
 	canvas.style.display = 'block'
 	canvas.style.position = 'absolute'
-	canvas.style.top = 0
-	canvas.style.left = 0
+	canvas.style.top = '0'
+	canvas.style.left = '0'
 }
 
-const activateTestMarkersCanvas = () => {
+const activateTestMarkersCanvas: NullarySideEffector = () => {
 	testMarkersClear()
 
 	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement

@@ -8,7 +8,7 @@ import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 
 describe('.colorSettings', () => {
-	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE) as number
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {

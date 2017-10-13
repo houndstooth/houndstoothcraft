@@ -1,2 +1,7 @@
-export type PropertyPath = string[]
-export type NullarySideEffector = { (): void }
+type PropertyPath = string[]
+type NullarySideEffector = { (): void }
+
+export {
+	PropertyPath,
+	NullarySideEffector
+}

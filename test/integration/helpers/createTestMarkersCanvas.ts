@@ -1,4 +1,4 @@
-const createTestMarkersCanvas = () => {
+const createTestMarkersCanvas: { (): HTMLCanvasElement } = () => {
 	const testCanvasDisplayArea = document.createElement('div')
 	testCanvasDisplayArea.classList.add('test-canvas-display-area')
 

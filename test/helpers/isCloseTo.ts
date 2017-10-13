@@ -1,4 +1,4 @@
-const isCloseTo = (numberOne, numberTwo) => {
+const isCloseTo: { (numberOne: number, numberTwo: number): boolean } = (numberOne, numberTwo) => {
 	const precision = 2
 
 	const pow = Math.pow(10, precision + 1)

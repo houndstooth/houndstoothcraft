@@ -1,6 +1,12 @@
 import tileSectorCenterIsColor from './tileSectorCenterIsColor'
+import { Color } from '../../../src/render'
+import { Coordinate } from '../../../src/space'
 
-const standardTileIsColors = ({ originInPixels, tileSizeInPixels, colors, baseId }) => {
+type StandardTileIsColors = {
+	({}: { originInPixels: Coordinate, tileSizeInPixels: number, colors: Color[], baseId: number }): boolean
+}
+
+const standardTileIsColors: StandardTileIsColors = ({ originInPixels, tileSizeInPixels, colors, baseId }) => {
 	const expectations = [
 		{ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: colors[ 0 ], id: baseId + 0 },
 

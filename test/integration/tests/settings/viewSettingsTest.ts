@@ -39,7 +39,7 @@ describe('.viewSettings', () => {
 					gridSettings: { gridSize: 2 },
 				},
 			}
-			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
+			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE) as number
 
 			activateTestMarkerCanvas()
 
@@ -85,7 +85,7 @@ describe('.viewSettings', () => {
 						gridSettings: { gridSize: 8 },
 					},
 				}
-				const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
+				const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE) as number
 
 				activateTestMarkerCanvas()
 
@@ -161,7 +161,8 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
-			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE)
+			const tileSizeSetting = getFromBasePatternOrDefault(TILE_SIZE) as number
+
 			const houndstoothOverrides = {
 				basePattern: {
 					viewSettings: {

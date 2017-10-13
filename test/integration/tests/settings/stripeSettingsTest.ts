@@ -7,7 +7,8 @@ import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 
 describe('.stripeSettings', () => {
-	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE)
+	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE) as number
+
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
 			let houndstoothOverrides

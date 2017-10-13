@@ -3,5 +3,5 @@ type NullarySideEffector = { (): void }
 
 export {
 	PropertyPath,
-	NullarySideEffector
+	NullarySideEffector,
 }

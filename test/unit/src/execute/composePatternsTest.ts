@@ -1,5 +1,4 @@
 import composePatterns from '../../../../src/execute/composePatterns'
-import { console } from '../../../../src/utilities/windowWrapper'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
 
 describe('compose patterns', () => {

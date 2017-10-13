@@ -3,7 +3,7 @@ import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 
 type StandardTileIsColors = {
-	({}: { originInPixels: Coordinate, tileSizeInPixels: number, colors: Color[], baseId: number }): boolean
+	({}: { originInPixels: Coordinate, tileSizeInPixels: number, colors: Color[], baseId: number }): boolean,
 }
 
 const standardTileIsColors: StandardTileIsColors = ({ originInPixels, tileSizeInPixels, colors, baseId }) => {

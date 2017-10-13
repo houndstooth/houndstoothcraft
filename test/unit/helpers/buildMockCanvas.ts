@@ -3,7 +3,7 @@ import { MockContext } from '../../helpers/types'
 import { MockElement } from './types'
 
 interface MockCanvas extends MockElement {
-
+	getContext: { (contextType: string): MockContext }
 }
 
 type BuildMockCanvas = { ({}: { mockContext?: MockContext, mockClassList?: string[] }): MockCanvas }

@@ -12,7 +12,7 @@ type TileSectorCenterIsColor = {
 		n: number,
 		color: Color,
 		id?: number,
-	}): boolean
+	}): boolean,
 }
 
 const tileSectorIsColor: TileSectorCenterIsColor = params => {
@@ -29,8 +29,8 @@ type SectorCenter = {
 		x: number,
 		y: number,
 		n: number,
-		tileSizeInPixels: number
-	}): Coordinate
+		tileSizeInPixels: number,
+	}): Coordinate,
 }
 
 const sectorCenter: SectorCenter = ({ originInPixels, x, y, n, tileSizeInPixels }) => {

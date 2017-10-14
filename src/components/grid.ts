@@ -3,6 +3,7 @@ import { applyBackgroundColor, applyOpacity } from '../view'
 import { iterator } from '../utilities/codeUtilities'
 import tile from './tile'
 import { NullarySideEffector } from '../utilities/types'
+import { Address } from './types'
 
 const grid: NullarySideEffector = () => {
 	const gridSettings = state.mainHoundstooth.basePattern.gridSettings || {}
@@ -14,14 +15,14 @@ const grid: NullarySideEffector = () => {
 	if (includeNegativeQuadrants) {
 		iterator(gridSize * 2).forEach(x => {
 			iterator(gridSize * 2).forEach(y => {
-				tile({ gridAddress: [ x - gridSize, y - gridSize ] })
+				tile({ gridAddress: [ x - gridSize, y - gridSize ] as Address })
 			})
 		})
 	}
 	else {
 		iterator(gridSize).forEach(x => {
 			iterator(gridSize).forEach(y => {
-				tile({ gridAddress: [ x, y ] })
+				tile({ gridAddress: [ x, y ] as Address })
 			})
 		})
 	}

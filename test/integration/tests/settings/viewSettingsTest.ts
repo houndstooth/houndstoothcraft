@@ -6,6 +6,7 @@ import standardTileIsColors from '../../helpers/standardTileIsColors'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
+import Address from '../../../../src/components/types/Address'
 
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
@@ -188,7 +189,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 3 ],
+				sectionAddress: [ 0, 3 ] as Address,
 				color: BLACK,
 				id: 1,
 			})).toBe(true)
@@ -197,7 +198,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 1 ],
+				sectionAddress: [ 0, 1 ] as Address,
 				color: BLACK,
 				id: 2,
 			})).toBe(true)
@@ -205,7 +206,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 2 ],
+				sectionAddress: [ 1, 2 ] as Address,
 				color: BLACK,
 				id: 3,
 			})).toBe(true)
@@ -213,7 +214,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 3 ],
+				sectionAddress: [ 2, 3 ] as Address,
 				color: BLACK,
 				id: 4,
 			})).toBe(true)
@@ -222,7 +223,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 0 ],
+				sectionAddress: [ 1, 0 ] as Address,
 				color: BLACK,
 				id: 5,
 			})).toBe(true)
@@ -230,7 +231,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 1 ],
+				sectionAddress: [ 2, 1 ] as Address,
 				color: BLACK,
 				id: 6,
 			})).toBe(true)
@@ -238,7 +239,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 2 ],
+				sectionAddress: [ 3, 2 ] as Address,
 				color: BLACK,
 				id: 7,
 			})).toBe(true)
@@ -246,7 +247,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 0 ],
+				sectionAddress: [ 3, 0 ] as Address,
 				color: BLACK,
 				id: 8,
 			})).toBe(true)
@@ -257,7 +258,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 3 ],
+				sectionAddress: [ 0, 3 ] as Address,
 				color: BLACK,
 				id: 9,
 			})).toBe(true)
@@ -266,7 +267,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 1 ],
+				sectionAddress: [ 0, 1 ] as Address,
 				color: TRANSPARENT,
 				id: 10,
 			})).toBe(true)
@@ -274,7 +275,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 2 ],
+				sectionAddress: [ 1, 2 ] as Address,
 				color: TRANSPARENT,
 				id: 11,
 			})).toBe(true)
@@ -282,7 +283,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 3 ],
+				sectionAddress: [ 2, 3 ] as Address,
 				color: TRANSPARENT,
 				id: 12,
 			})).toBe(true)
@@ -291,7 +292,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 0 ],
+				sectionAddress: [ 1, 0 ] as Address,
 				color: BLACK,
 				id: 13,
 			})).toBe(true)
@@ -299,7 +300,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 1 ],
+				sectionAddress: [ 2, 1 ] as Address,
 				color: BLACK,
 				id: 14,
 			})).toBe(true)
@@ -307,7 +308,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 2 ],
+				sectionAddress: [ 3, 2 ] as Address,
 				color: BLACK,
 				id: 15,
 			})).toBe(true)
@@ -316,7 +317,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 0 ],
+				sectionAddress: [ 3, 0 ] as Address,
 				color: TRANSPARENT,
 				id: 16,
 			})).toBe(true)
@@ -327,7 +328,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 3 ],
+				sectionAddress: [ 0, 3 ] as Address,
 				color: TRANSPARENT,
 				id: 17,
 			})).toBe(true)
@@ -336,7 +337,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 1 ],
+				sectionAddress: [ 0, 1 ] as Address,
 				color: BLACK,
 				id: 18,
 			})).toBe(true)
@@ -344,7 +345,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 2 ],
+				sectionAddress: [ 1, 2 ] as Address,
 				color: BLACK,
 				id: 19,
 			})).toBe(true)
@@ -352,7 +353,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 3 ],
+				sectionAddress: [ 2, 3 ] as Address,
 				color: BLACK,
 				id: 20,
 			})).toBe(true)
@@ -361,7 +362,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 0 ],
+				sectionAddress: [ 1, 0 ] as Address,
 				color: TRANSPARENT,
 				id: 21,
 			})).toBe(true)
@@ -369,7 +370,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 1 ],
+				sectionAddress: [ 2, 1 ] as Address,
 				color: TRANSPARENT,
 				id: 22,
 			})).toBe(true)
@@ -377,7 +378,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 2 ],
+				sectionAddress: [ 3, 2 ] as Address,
 				color: TRANSPARENT,
 				id: 23,
 			})).toBe(true)
@@ -386,7 +387,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 0 ],
+				sectionAddress: [ 3, 0 ] as Address,
 				color: BLACK,
 				id: 24,
 			})).toBe(true)
@@ -397,7 +398,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 3 ],
+				sectionAddress: [ 0, 3 ] as Address,
 				color: TRANSPARENT,
 				id: 25,
 			})).toBe(true)
@@ -406,7 +407,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 0, 1 ],
+				sectionAddress: [ 0, 1 ] as Address,
 				color: TRANSPARENT,
 				id: 26,
 			})).toBe(true)
@@ -414,7 +415,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 2 ],
+				sectionAddress: [ 1, 2 ] as Address,
 				color: TRANSPARENT,
 				id: 27,
 			})).toBe(true)
@@ -422,7 +423,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 3 ],
+				sectionAddress: [ 2, 3 ] as Address,
 				color: TRANSPARENT,
 				id: 28,
 			})).toBe(true)
@@ -431,7 +432,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 1, 0 ],
+				sectionAddress: [ 1, 0 ] as Address,
 				color: TRANSPARENT,
 				id: 29,
 			})).toBe(true)
@@ -439,7 +440,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 2, 1 ],
+				sectionAddress: [ 2, 1 ] as Address,
 				color: TRANSPARENT,
 				id: 30,
 			})).toBe(true)
@@ -447,7 +448,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 2 ],
+				sectionAddress: [ 3, 2 ] as Address,
 				color: TRANSPARENT,
 				id: 31,
 			})).toBe(true)
@@ -456,7 +457,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				sectionResolution: 4,
-				sectionAddress: [ 3, 0 ],
+				sectionAddress: [ 3, 0 ] as Address,
 				color: TRANSPARENT,
 				id: 32,
 			})).toBe(true)

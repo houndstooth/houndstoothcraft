@@ -38,9 +38,10 @@ const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
 			return false
 		}
 	}
-	else if (a instanceof Array) {
-		if (b instanceof Array) {
-			return a.every((aEntry, index) => aEntry === b[ index ])
+	else if (a as any instanceof Array) {
+		if (b as any instanceof Array) {
+			const aAny = a as any
+			return aAny.every((aEntry, index) => aEntry === b[ index ])
 		}
 		else {
 			return false

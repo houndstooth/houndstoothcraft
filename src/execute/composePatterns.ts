@@ -58,8 +58,7 @@ const settingIsNonArrayObject: { (setting: Setting): boolean } = setting => {
 	if (typeof setting !== 'object') {
 		return false
 	}
-	const maybeSettingArray = setting as Setting[]
-	return !maybeSettingArray.length
+	return !(setting as any instanceof Array)
 }
 
 const settingIsNotColor: { (setting: Setting): boolean } = setting => {

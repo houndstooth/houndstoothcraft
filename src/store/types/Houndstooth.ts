@@ -1,9 +1,10 @@
-import Pattern from './Pattern'
+import BasePattern from './BasePattern'
+import PatternFunctions from './PatternFunctions'
 
 type Houndstooth = {
-	basePattern?: Pattern,
-	animationsPattern?: Pattern,
-	layersPattern?: Pattern,
+	basePattern?: BasePattern,
+	animationsPattern?: PatternFunctions,
+	layersPattern?: PatternFunctions,
 	name?: string,
 }
 

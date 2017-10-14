@@ -1,11 +1,13 @@
 import Houndstooth from './Houndstooth'
-import Pattern from './Pattern'
 import State from './State'
 import Setting from './Setting'
+import Pattern from './Pattern'
+import BasePattern from './BasePattern'
 
 export {
 	Houndstooth,
-	Pattern,
 	State,
 	Setting,
+	Pattern,
+	BasePattern,
 }

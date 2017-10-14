@@ -1,7 +1,7 @@
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
 import { Assignment } from '../components'
-import { Pattern, Houndstooth, State } from './types'
+import { BasePattern, Houndstooth, State } from './types'
 
 const DEFAULT_CANVAS_SIZE: number = 800
 const DEFAULT_ZOOM: number = 1
@@ -20,7 +20,7 @@ const DEFAULT_FRAME_RATE: number = 1.005
 const DEFAULT_START_LAYER: number = 0
 const DEFAULT_END_LAYER: number = 0
 
-const DEFAULT_PATTERN: Pattern = {
+const DEFAULT_PATTERN: BasePattern = {
 	viewSettings: {
 		canvasSize: DEFAULT_CANVAS_SIZE,
 		zoom: DEFAULT_ZOOM,

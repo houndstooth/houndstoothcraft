@@ -10,11 +10,11 @@ const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordi
 	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 	if (shouldAdjustForCentering) {
-		coordinate = coordinate.map(c => c - canvasCenter)
+		coordinate = coordinate.map(c => c - canvasCenter) as Coordinate
 	}
-	coordinate = coordinate.map(c => c * zoom)
+	coordinate = coordinate.map(c => c * zoom) as Coordinate
 	if (shouldAdjustForCentering) {
-		coordinate = coordinate.map(c => c + canvasCenter)
+		coordinate = coordinate.map(c => c + canvasCenter) as Coordinate
 	}
 
 	return coordinate

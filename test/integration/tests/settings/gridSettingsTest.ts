@@ -5,6 +5,7 @@ import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
+import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('.gridSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
@@ -31,100 +32,100 @@ describe('.gridSettings', () => {
 			const tiles = [
 				{
 					baseId: 0,
-					tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 8,
-					tileOrigin: [ 0 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 16,
-					tileOrigin: [ 0 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 24,
-					tileOrigin: [ 0 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 
 				{
 					baseId: 32,
-					tileOrigin: [ 1 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ WHITE, WHITE ],
 				},
 				{
 					baseId: 40,
-					tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, WHITE ],
 				},
 				{
 					baseId: 48,
-					tileOrigin: [ 1 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ WHITE, WHITE ],
 				},
 				{
 					baseId: 56,
-					tileOrigin: [ 1 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 
 				{
 					baseId: 64,
-					tileOrigin: [ 2 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 72,
-					tileOrigin: [ 2 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 80,
-					tileOrigin: [ 2 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 88,
-					tileOrigin: [ 2 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 
 				{
 					baseId: 96,
-					tileOrigin: [ 3 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 104,
-					tileOrigin: [ 3 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 112,
-					tileOrigin: [ 3 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 120,
-					tileOrigin: [ 3 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
@@ -159,25 +160,25 @@ describe('.gridSettings', () => {
 				const tiles = [
 					{
 						baseId: 0,
-						tileOrigin: [ 125, 125 ],
+						tileOrigin: [ 125, 125 ] as Coordinate,
 						tileSize: tileSizeSetting,
 						colors: [ TRANSPARENT, BLACK ],
 					},
 					{
 						baseId: 8,
-						tileOrigin: [ 75, 125 ],
+						tileOrigin: [ 75, 125 ] as Coordinate,
 						tileSize: tileSizeSetting,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 					},
 					{
 						baseId: 24,
-						tileOrigin: [ 75, 75 ],
+						tileOrigin: [ 75, 75 ] as Coordinate,
 						tileSize: tileSizeSetting,
 						colors: [ BLACK, TRANSPARENT ],
 					},
 					{
 						baseId: 16,
-						tileOrigin: [ 125, 75 ],
+						tileOrigin: [ 125, 75 ] as Coordinate,
 						tileSize: tileSizeSetting,
 						colors: [ BLACK, BLACK ],
 					},

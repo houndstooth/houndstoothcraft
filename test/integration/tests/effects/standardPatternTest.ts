@@ -3,6 +3,7 @@ import standardTileIsColors from '../../helpers/standardTileIsColors'
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import state from '../../../../src/state'
+import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('standard houndstooth pattern', () => {
 	it(`repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles,
@@ -21,25 +22,25 @@ describe('standard houndstooth pattern', () => {
 			const firstSupertile = [
 				{
 					baseId: 0,
-					tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				},
 				{
 					baseId: 8,
-					tileOrigin: [ 0 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 16,
-					tileOrigin: [ 1 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 24,
-					tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				},
@@ -47,25 +48,25 @@ describe('standard houndstooth pattern', () => {
 			const secondSupertile = [
 				{
 					baseId: 32,
-					tileOrigin: [ 2 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				},
 				{
 					baseId: 40,
-					tileOrigin: [ 2 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 48,
-					tileOrigin: [ 3 * tileSize, 0 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 0 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 56,
-					tileOrigin: [ 3 * tileSize, 1 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 1 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				},
@@ -73,25 +74,25 @@ describe('standard houndstooth pattern', () => {
 			const thirdSupertile = [
 				{
 					baseId: 64,
-					tileOrigin: [ 0 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				},
 				{
 					baseId: 72,
-					tileOrigin: [ 0 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 0 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 80,
-					tileOrigin: [ 1 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 88,
-					tileOrigin: [ 1 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 1 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				},
@@ -99,25 +100,25 @@ describe('standard houndstooth pattern', () => {
 			const fourthSupertile = [
 				{
 					baseId: 96,
-					tileOrigin: [ 2 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				},
 				{
 					baseId: 104,
-					tileOrigin: [ 2 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 2 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 112,
-					tileOrigin: [ 3 * tileSize, 2 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 2 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 120,
-					tileOrigin: [ 3 * tileSize, 3 * tileSize ],
+					tileOrigin: [ 3 * tileSize, 3 * tileSize ] as Coordinate,
 					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				},

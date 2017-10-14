@@ -1,4 +1,4 @@
-import { rotateCoordinateAboutPoint, Outline } from '../space'
+import { rotateCoordinateAboutPoint, Outline, Coordinate } from '../space'
 import state from '../state'
 
 const applyTilt: {(outline: Outline): Outline } = outline => {
@@ -14,7 +14,7 @@ const applyTilt: {(outline: Outline): Outline } = outline => {
 		return outline
 	}
 
-	const point = [ canvasSize / 2, canvasSize / 2 ]
+	const point = [ canvasSize / 2, canvasSize / 2 ] as Coordinate
 	return outline.map(coordinate => rotateCoordinateAboutPoint({
 		point,
 		coordinate,

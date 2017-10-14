@@ -22,7 +22,7 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: { (coordinate: Coordinate): Co
 	return [
 		coordinate[ 0 ] + canvasCenter - halfTileSize,
 		coordinate[ 1 ] + canvasCenter - halfTileSize,
-	]
+	] as Coordinate
 }
 
 export default applyScroll

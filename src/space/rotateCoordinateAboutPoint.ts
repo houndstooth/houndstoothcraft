@@ -11,7 +11,7 @@ const rotateCoordinateAboutPoint: RotateCoordinateAboutPoint = ({ coordinate, po
 	return [
 		point[ 0 ] + relativeX * cos - relativeY * sin,
 		point[ 1 ] + relativeX * sin + relativeY * cos,
-	]
+	] as Coordinate
 }
 
 export default rotateCoordinateAboutPoint

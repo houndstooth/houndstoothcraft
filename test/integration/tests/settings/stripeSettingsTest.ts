@@ -6,6 +6,7 @@ import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import Address from '../../../../src/components/types/Address'
+import { Coordinate } from '../../../../src/index'
 
 describe('.stripeSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
@@ -34,7 +35,7 @@ describe('.stripeSettings', () => {
 
 				const tile = {
 					baseId: 0,
-					tileOrigin: [ 0, 0 ],
+					tileOrigin: [ 0, 0 ] as Coordinate,
 					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				}
@@ -57,7 +58,7 @@ describe('.stripeSettings', () => {
 				activateTestMarkerCanvas()
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let areaOrigin = [ 0 * tileSize, 0 * tileSize ]
+				let areaOrigin = [ 0 * tileSize, 0 * tileSize ] as Coordinate
 				const areaSize = tileSize
 				expect(sectionCenterIsColor({
 					areaOrigin,
@@ -100,7 +101,7 @@ describe('.stripeSettings', () => {
 					id: 5,
 				})).toBe(true)
 
-				areaOrigin = [ 1 * areaSize, 1 * areaSize ]
+				areaOrigin = [ 1 * areaSize, 1 * areaSize ] as Coordinate
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,

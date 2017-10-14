@@ -6,6 +6,7 @@ import clear from '../../../../src/canvas/clear'
 import buildMockContext from '../../../helpers/buildMockContext'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
+import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
@@ -22,10 +23,10 @@ describe('.tileSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles = [
-				{ baseId: 0, tileOrigin: [ 0, 0 ], tileSize: 30, colors: [ TRANSPARENT, BLACK ] },
-				{ baseId: 8, tileOrigin: [ 0, 30 ], tileSize: 30, colors: [ BLACK, BLACK ] },
-				{ baseId: 16, tileOrigin: [ 30, 0 ], tileSize: 30, colors: [ TRANSPARENT, TRANSPARENT ] },
-				{ baseId: 24, tileOrigin: [ 30, 30 ], tileSize: 30, colors: [ BLACK, TRANSPARENT ] },
+				{ baseId: 0, tileOrigin: [ 0, 0 ] as Coordinate, tileSize: 30, colors: [ TRANSPARENT, BLACK ] },
+				{ baseId: 8, tileOrigin: [ 0, 30 ] as Coordinate, tileSize: 30, colors: [ BLACK, BLACK ] },
+				{ baseId: 16, tileOrigin: [ 30, 0 ] as Coordinate, tileSize: 30, colors: [ TRANSPARENT, TRANSPARENT ] },
+				{ baseId: 24, tileOrigin: [ 30, 30 ] as Coordinate, tileSize: 30, colors: [ BLACK, TRANSPARENT ] },
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 		})
@@ -47,15 +48,30 @@ describe('.tileSettings', () => {
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const tiles = [
-					{ baseId: 0, tileOrigin: [ 0, 0 ], tileSize: 90, colors: [ TRANSPARENT, BLACK ] },
-					{ baseId: 8, tileOrigin: [ 0, 90 ], tileSize: 90, colors: [ BLACK, BLACK ] },
+					{
+						baseId: 0,
+						tileOrigin: [ 0, 0 ] as Coordinate,
+						tileSize: 90,
+						colors: [ TRANSPARENT, BLACK ]
+					},
+					{
+						baseId: 8,
+						tileOrigin: [ 0, 90 ] as Coordinate,
+						tileSize: 90,
+						colors: [ BLACK, BLACK ]
+					},
 					{
 						baseId: 16,
-						tileOrigin: [ 90, 0 ],
+						tileOrigin: [ 90, 0 ] as Coordinate,
 						tileSize: 90,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 					},
-					{ baseId: 24, tileOrigin: [ 90, 90 ], tileSize: 90, colors: [ BLACK, TRANSPARENT ] },
+					{
+						baseId: 24,
+						tileOrigin: [ 90, 90 ] as Coordinate,
+						tileSize: 90,
+						colors: [ BLACK, TRANSPARENT ]
+					},
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 			})

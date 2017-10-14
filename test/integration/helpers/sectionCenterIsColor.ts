@@ -37,7 +37,7 @@ const sectionCenter: SectionCenter = ({ areaOrigin, areaSize, sectionResolution,
 	return [
 		areaOrigin[ 0 ] + (sectionAddress[ 0 ] + 0.5) * sectionSize,
 		areaOrigin[ 1 ] + (sectionAddress[ 1 ] + 0.5) * sectionSize,
-	]
+	] as Coordinate
 }
 
 export default sectionCenterIsColor

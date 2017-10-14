@@ -1,4 +1,4 @@
-import { GetOutline } from './types'
+import { GetOutline, Coordinate } from './types'
 
 const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 	const x = tileOrigin[ 0 ]
@@ -8,19 +8,19 @@ const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 		[
 			x,
 			y,
-		],
+		] as Coordinate,
 		[
 			x + tileSize,
 			y,
-		],
+		] as Coordinate,
 		[
 			x + tileSize,
 			y + tileSize,
-		],
+		] as Coordinate,
 		[
 			x,
 			y + tileSize,
-		],
+		] as Coordinate,
 	]
 }
 

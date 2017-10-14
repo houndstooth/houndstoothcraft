@@ -18,7 +18,7 @@ const maybeAdjustTileColorIndices: MaybeAdjustTileColorIndices = ({ assignment, 
 	const { transformTileColorIndices, flipGrain, switcheroo } = assignment
 
 	if (flipGrain) {
-		tileColorIndices = reversed(tileColorIndices)
+		tileColorIndices = reversed(tileColorIndices) as TileColorIndices
 	}
 	if (switcheroo) {
 		tileColorIndices = applySwitcheroo({ tileColorIndices, gridAddress })
@@ -53,7 +53,7 @@ const getByWeave: GetByWeave = ({ gridAddress, addressOffset, weave }) => {
 	const { rows, columns } = weave
 	const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
 	const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
-	return [ rowsIndex, columnsIndex ]
+	return [ rowsIndex, columnsIndex ] as TileColorIndices
 }
 
 type GetBySupertile = { ({}: { gridAddress: Address, addressOffset: Address, supertile: Supertile }): TileColorIndices }
@@ -63,7 +63,7 @@ const getBySupertile: GetBySupertile = ({ gridAddress, addressOffset, supertile 
 		array: supertile,
 		index: gridAddress[ 0 ] + addressOffset[ 0 ],
 	})
-	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
+	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] }) as TileColorIndices
 }
 
 type ApplySwitcheroo = {({}: { tileColorIndices: TileColorIndices, gridAddress: Address }): TileColorIndices }
@@ -77,10 +77,10 @@ const applySwitcheroo: ApplySwitcheroo = ({ tileColorIndices, gridAddress }) => 
 		xMod === 2 && yMod === 0 ||
 		xMod === 0 && yMod === 2
 	) {
-		return reversed(tileColorIndices)
+		return reversed(tileColorIndices) as TileColorIndices
 	}
 
-	return tileColorIndices
+	return tileColorIndices as TileColorIndices
 }
 
 export default getTileColorIndices

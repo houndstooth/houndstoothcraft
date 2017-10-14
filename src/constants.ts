@@ -15,9 +15,9 @@ const ERASE: Color = { a: -1 }
 const EIGHTH_OF_CIRCLE_ROTATION: number = Math.PI / 4
 const QUARTER_OF_CIRCLE_ROTATION: number = Math.PI / 2
 
-const PERIMETER_SCALAR: number = 2
+const PERIMETER_SCALAR = 2
 
-const ANIMATION_RATE: number = 1.000005
+const ANIMATION_RATE = 1.000005
 
 export {
 	BLACK,

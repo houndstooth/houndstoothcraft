@@ -21,6 +21,7 @@
       "never-prefix"
     ],
     "callable-types": false,
-    "interface-over-type-literal": false
+    "interface-over-type-literal": false,
+    "no-inferrable-types": true
   }
 }

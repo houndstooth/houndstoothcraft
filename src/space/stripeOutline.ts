@@ -5,8 +5,8 @@ const stripeOutline: GetOutline = ({ tileOrigin, tileSize, outlineOptions }) => 
 	const { stripeStart, stripeEnd } = outlineOptions
 	const originAndSize = { x: tileOrigin[ 0 ], y: tileOrigin[ 1 ], size: tileSize }
 
-	const stripeStartsInTopLeftHalf = stripeStart < 1
-	const stripeEndsInBottomRightHalf = stripeEnd > 1
+	const stripeStartsInTopLeftHalf = stripeStart as any < 1
+	const stripeEndsInBottomRightHalf = stripeEnd as any > 1
 
 	const outline = []
 	firstPoint({ outline, stripeStartsInTopLeftHalf, originAndSize, stripeStart })
@@ -41,7 +41,7 @@ const middlePoints: Points = params => {
 
 const lastPoints: Points = params => {
 	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeStart } = params
-	const stripeStartsInTopLeftCorner = stripeStart === 0
+	const stripeStartsInTopLeftCorner = stripeStart as any === 0
 	if (!stripeStartsInTopLeftCorner) {
 		lastPointsWhenStripeDoesNotStartInTopLeftCorner({
 			stripeStartsInTopLeftHalf,
@@ -68,7 +68,7 @@ const middlePointsWhenStripeDoesNotEndInBottomRightHalf: Points = params => {
 		outline.push(pointInTopRightCorner({ originAndSize }))
 	}
 
-	const stripeEndsInBottomRightCorner = stripeEnd === 2
+	const stripeEndsInBottomRightCorner = stripeEnd as any === 2
 	if (stripeEndsInBottomRightCorner) {
 		outline.push(pointInBottomRightCorner({ originAndSize }))
 	}
@@ -95,22 +95,22 @@ const lastPointsWhenStripeDoesNotStartInTopLeftCorner: Points = params => {
 }
 
 const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	x + stripePosition * size,
+	x + (stripePosition as any) * size,
 	y,
 ]
 
 const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
 	x,
-	y + stripePosition * size,
+	y + (stripePosition as any) * size,
 ]
 
 const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
 	x + size,
-	y + (stripePosition - 1) * size,
+	y + (stripePosition as any - 1) * size,
 ]
 
 const pointAlongBottomEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	x + (stripePosition - 1) * size,
+	x + (stripePosition as any - 1) * size,
 	y + size,
 ]
 

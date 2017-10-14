@@ -1,5 +1,5 @@
 import { Outline, Coordinate } from '../../space'
-import { TileColorIndices } from '../../components'
+import { TileColorIndices, Units } from '../../components'
 
 type RenderTexture = {
 	({}: {
@@ -8,7 +8,7 @@ type RenderTexture = {
 		shapeColorIndex?: number
 		tileColorIndices?: TileColorIndices,
 		tileOrigin?: Coordinate,
-		tileSize?: number,
+		tileSize?: Units,
 	}): void,
 }
 
@@ -20,7 +20,7 @@ type RenderFunction = {
 		shapeColorIndex?: number,
 		tileColorIndices?: TileColorIndices
 		tileOrigin?: Coordinate,
-		tileSize?: number,
+		tileSize?: Units,
 	}): void,
 }
 

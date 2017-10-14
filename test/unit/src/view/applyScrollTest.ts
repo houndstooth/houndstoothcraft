@@ -1,5 +1,6 @@
 import state from '../../../../src/state'
 import applyScroll from '../../../../src/view/applyScroll'
+import Outline from '../../../../src/space/types/Outline'
 
 describe('apply scroll', () => {
 	const zoom = 10
@@ -9,7 +10,7 @@ describe('apply scroll', () => {
 		[ 3, 5 ],
 		[ 4, 5 ],
 		[ 3, 4 ],
-	]
+	] as Outline
 	beforeEach(() => {
 		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
 		state.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
@@ -31,7 +32,7 @@ describe('apply scroll', () => {
 				3 + canvasSize / 2 - tileSize / 2,
 				4 + canvasSize / 2 - tileSize / 2,
 			],
-		])
+		] as Outline)
 	})
 
 	it(`returns the outline unchanged if not centering the view

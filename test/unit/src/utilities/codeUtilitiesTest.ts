@@ -1,4 +1,5 @@
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
+import { PropertyPath } from '../../../../src/utilities/types'
 
 describe('code utilities', () => {
 	describe('#iterator', () => {
@@ -72,7 +73,7 @@ describe('code utilities', () => {
 
 	describe('#deeperPath', () => {
 		it('does not mutate the passed objects path', () => {
-			const propertyPath = [ 'colorSettings', 'assignment' ]
+			const propertyPath = [ 'colorSettings', 'assignment' ] as PropertyPath
 			const propertyName = 'colorSet'
 
 			const deeperPath = codeUtilities.deeperPath({ propertyPath, propertyName })
@@ -90,7 +91,7 @@ describe('code utilities', () => {
 					childPathSecondStep: expectedProperty,
 				},
 			}
-			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ] as PropertyPath
 
 			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
@@ -99,7 +100,7 @@ describe('code utilities', () => {
 
 		it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
 			const objectWithProperties = {}
-			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ] as PropertyPath
 
 			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
@@ -117,7 +118,7 @@ describe('code utilities', () => {
 					childPathSecondStep: 0,
 				},
 			}
-			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ]
+			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ] as PropertyPath
 
 			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 

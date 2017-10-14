@@ -7,9 +7,9 @@ import getStripePositionsForTile from './getStripePositionsForTile'
 import getTileColorIndices from './getTileColorIndices'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import isTileUniform from './isTileUniform'
-import { Address, StripePosition, TileColorIndices } from './types'
+import { Address, StripePosition, TileColorIndices, Units } from './types'
 
-type TileParams = { gridAddress: Address, tileOrigin: Coordinate, tileSize: number, tileColorIndices: TileColorIndices }
+type TileParams = { gridAddress: Address, tileOrigin: Coordinate, tileSize: Units, tileColorIndices: TileColorIndices }
 
 type Tile = { ({}: TileParams): void }
 

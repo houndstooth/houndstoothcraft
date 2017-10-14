@@ -7,9 +7,10 @@ import * as getTileOriginAndSize from '../../../../src/components/getTileOriginA
 import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import * as getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
+import Address from '../../../../src/components/types/Address'
 
 describe('tile', () => {
-	const gridAddress = [ 3, 5 ]
+	const gridAddress = [ 3, 5 ] as Address
 	let shapeSpy
 	let getTileColorIndicesSpy
 	let isTileUniformSpy

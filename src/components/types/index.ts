@@ -5,6 +5,7 @@ import TileOriginAndSize from './TileOriginAndSize'
 import Assignment from './Assignment'
 import Supertile from './Supertile'
 import Weave from './Weave'
+import Units from './Units'
 
 export {
 	Address,
@@ -14,4 +15,5 @@ export {
 	Assignment,
 	Supertile,
 	Weave,
+	Units,
 }

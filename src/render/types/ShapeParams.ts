@@ -1,9 +1,9 @@
 import { GetOutline, OutlineOptions, Coordinate } from '../../space'
-import { TileColorIndices } from '../../components'
+import { TileColorIndices, Units } from '../../components'
 
 type ShapeParams = {
 	tileOrigin: Coordinate,
-	tileSize: number,
+	tileSize: Units,
 	tileColorIndices: TileColorIndices,
 	getOutline: GetOutline,
 	stripeIndex?: number,

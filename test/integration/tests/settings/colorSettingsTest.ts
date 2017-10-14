@@ -9,9 +9,10 @@ import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDe
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 import Supertile from '../../../../src/components/types/Supertile'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import Units from '../../../../src/components/types/Units'
 
 describe('.colorSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
+	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {

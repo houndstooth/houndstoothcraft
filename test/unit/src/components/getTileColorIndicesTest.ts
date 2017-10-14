@@ -1,9 +1,10 @@
 import getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 import state from '../../../../src/state'
+import Address from '../../../../src/components/types/Address'
 
 describe('get tile color indices', () => {
-	const gridAddressForSubject = [ 3, 5 ]
+	const gridAddressForSubject = [ 3, 5 ] as Address
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('can use a weave-based assignment scheme', () => {
@@ -106,7 +107,7 @@ describe('get tile color indices', () => {
 					],
 				},
 			}
-			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ]))
+			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ] as Address ))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))
@@ -136,7 +137,7 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ]))
+			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ] as Address ))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))

@@ -8,6 +8,7 @@ import {
 	TileColorIndices,
 	TileOriginAndSize,
 	StripePosition,
+	Units,
 } from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
@@ -41,4 +42,5 @@ export {
 	TileOriginAndSize,
 	StripePosition,
 	CanvasSize,
+	Units,
 }

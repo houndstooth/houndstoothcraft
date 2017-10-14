@@ -2,6 +2,7 @@ import createContext from '../../../../src/page/createContext'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
 import { MockContext } from '../../../helpers/types'
+import Dimensions from '../../../../src/page/types/Dimensions'
 
 describe('create context', () => {
 	let returnedContext
@@ -14,7 +15,7 @@ describe('create context', () => {
 		const mockCanvases = []
 		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas) } as HTMLElement
 
-		returnedContext = createContext({ canvasContainer, canvasDimensions: [ 350, 600 ] })
+		returnedContext = createContext({ canvasContainer, canvasDimensions: [ 350, 600 ] as Dimensions })
 
 		appendedCanvas = mockCanvases[0]
 	})

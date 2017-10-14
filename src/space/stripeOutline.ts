@@ -1,5 +1,5 @@
 import { GetOutline, Coordinate, Outline } from './types'
-import { StripePosition } from '../components'
+import { StripePosition, Units } from '../components'
 
 const stripeOutline: GetOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
@@ -129,7 +129,7 @@ const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) => [
 	y + size,
 ] as Coordinate
 
-type OriginAndSize = { x: number, y: number, size: number }
+type OriginAndSize = { x: number, y: number, size: Units }
 
 type Points = {
 	({}: {

@@ -9,6 +9,7 @@ import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
 import Address from '../../../../src/components/types/Address'
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import Units from '../../../../src/components/types/Units'
 
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
@@ -42,7 +43,7 @@ describe('.viewSettings', () => {
 					gridSettings: { gridSize: 2 },
 				},
 			}
-			const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
+			const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
 
 			activateTestMarkerCanvas()
 
@@ -88,7 +89,7 @@ describe('.viewSettings', () => {
 						gridSettings: { gridSize: 8 },
 					},
 				}
-				const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
+				const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
 
 				activateTestMarkerCanvas()
 
@@ -164,7 +165,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
-			const areaSize = getFromBasePatternOrDefault(TILE_SIZE) as number
+			const areaSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
 
 			const houndstoothOverrides = {
 				basePattern: {

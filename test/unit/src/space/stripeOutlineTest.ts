@@ -1,7 +1,9 @@
 import stripeOutline from '../../../../src/space/stripeOutline'
+import Outline from '../../../../src/space/types/Outline'
+import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('stripe outline', () => {
-	const tileOrigin = [ 0, 0 ]
+	const tileOrigin = [ 0, 0 ] as Coordinate
 	const tileSize = 1
 	let stripeStart
 	let stripeEnd
@@ -19,7 +21,7 @@ describe('stripe outline', () => {
 					[ 0, 0 ],
 					[ 0.5, 0 ],
 					[ 0, 0.5 ],
-				])
+				] as Outline)
 			})
 		})
 
@@ -33,7 +35,7 @@ describe('stripe outline', () => {
 					[ 0, 0 ],
 					[ 1, 0 ],
 					[ 0, 1 ],
-				])
+				] as Outline)
 			})
 		})
 
@@ -49,7 +51,7 @@ describe('stripe outline', () => {
 					[ 1, 0.5 ],
 					[ 0.5, 1 ],
 					[ 0, 1 ],
-				])
+				] as Outline)
 			})
 		})
 	})
@@ -68,7 +70,7 @@ describe('stripe outline', () => {
 					[ 0.75, 0 ],
 					[ 0, 0.75 ],
 					[ 0, 0.5 ],
-				])
+				] as Outline)
 			})
 		})
 
@@ -83,7 +85,7 @@ describe('stripe outline', () => {
 					[ 1, 0 ],
 					[ 0, 1 ],
 					[ 0, 0.5 ],
-				])
+				] as Outline)
 			})
 		})
 
@@ -101,7 +103,7 @@ describe('stripe outline', () => {
 						[ 0.5, 1 ],
 						[ 0, 1 ],
 						[ 0, 0.5 ],
-					])
+					] as Outline)
 				})
 		})
 
@@ -118,7 +120,7 @@ describe('stripe outline', () => {
 						[ 1, 1 ],
 						[ 0, 1 ],
 						[ 0, 0.5 ],
-					])
+					] as Outline)
 				})
 		})
 	})
@@ -137,7 +139,7 @@ describe('stripe outline', () => {
 					[ 1, 0.5 ],
 					[ 0.5, 1 ],
 					[ 0, 1 ],
-				])
+				] as Outline)
 			})
 		})
 
@@ -151,7 +153,7 @@ describe('stripe outline', () => {
 					[ 1, 0 ],
 					[ 1, 1 ],
 					[ 0, 1 ],
-				])
+				] as Outline)
 			})
 		})
 	})
@@ -170,7 +172,7 @@ describe('stripe outline', () => {
 					[ 1, 0.75 ],
 					[ 0.75, 1 ],
 					[ 0.5, 1 ],
-				])
+				] as Outline)
 			})
 		})
 
@@ -184,7 +186,7 @@ describe('stripe outline', () => {
 					[ 1, 0.5 ],
 					[ 1, 1 ],
 					[ 0.5, 1 ],
-				])
+				] as Outline)
 			})
 		})
 	})

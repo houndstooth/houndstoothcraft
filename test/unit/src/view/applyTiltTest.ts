@@ -1,6 +1,7 @@
 import coordinatesMatch from '../../helpers/coordinatesMatch'
 import state from '../../../../src/state'
 import applyTilt from '../../../../src/view/applyTilt'
+import Outline from '../../../../src/space/types/Outline'
 
 describe('apply tilt', () => {
 	const canvasSize = 200
@@ -14,7 +15,7 @@ describe('apply tilt', () => {
 			[ 0, 0 ],
 			[ 40, 0 ],
 			[ 0, 40 ],
-		]
+		] as Outline
 
 		const actualOutline = applyTilt(outline)
 
@@ -22,7 +23,7 @@ describe('apply tilt', () => {
 			[ 200, 0 ],
 			[ 200, 40 ],
 			[ 160, 0 ],
-		]
+		] as Outline
 		expect(coordinatesMatch(expectedOutline, actualOutline)).toBe(true)
 	})
 
@@ -31,7 +32,7 @@ describe('apply tilt', () => {
 			[ 0, 0 ],
 			[ 0, 40 ],
 			[ 40, 40 ],
-		]
+		] as Outline
 
 		const actualOutline = applyTilt(outline)
 

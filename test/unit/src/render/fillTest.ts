@@ -4,12 +4,13 @@ import * as parseColor from '../../../../src/render/parseColor'
 import * as buildPath from '../../../../src/render/buildPath'
 import * as fillPath from '../../../../src/render/fillPath'
 import buildMockContext from '../../../helpers/buildMockContext'
+import Outline from '../../../../src/space/types/Outline'
 
 describe('fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
 	const context = buildMockContext() as CanvasRenderingContext2D
-	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ] as Outline
 
 	beforeEach(() => {
 		spyOn(parseColor, 'default').and.returnValue(parsedColor)

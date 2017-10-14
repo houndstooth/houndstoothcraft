@@ -1,10 +1,8 @@
 import sectionCenterIsColor from './sectionCenterIsColor'
-import { Color } from '../../../src/render'
-import { Coordinate } from '../../../src/space'
-import Address from '../../../src/components/types/Address'
+import { Color, Coordinate, Address, Units } from '../../../src'
 
 type StandardTileIsColors = {
-	({}: { tileOrigin: Coordinate, tileSize: number, colors: Color[], baseId: number }): boolean,
+	({}: { tileOrigin: Coordinate, tileSize: Units, colors: Color[], baseId: number }): boolean,
 }
 
 const standardTileIsColors: StandardTileIsColors = ({ tileOrigin: areaOrigin, tileSize: areaSize, colors, baseId }) => {

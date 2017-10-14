@@ -6,9 +6,10 @@ import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import Units from '../../../../src/components/types/Units'
 
 describe('.gridSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
+	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

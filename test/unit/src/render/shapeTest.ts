@@ -5,11 +5,13 @@ import * as canvas from '../../../../src/canvas'
 import * as texture from '../../../../src/render/texture'
 import * as solid from '../../../../src/render/solid'
 import noop from '../../../helpers/noop'
+import Coordinate from '../../../../src/space/types/Coordinate'
+import TileColorIndices from '../../../../src/components/types/TileColorIndices'
 
 describe('shape', () => {
-	const tileOrigin = [ 11, 13 ]
+	const tileOrigin = [ 11, 13 ] as Coordinate
 	const tileSize = 45
-	const tileColorIndices = []
+	const tileColorIndices = [] as TileColorIndices
 	const stripeIndex = 7
 	const shapeColorIndex = 45
 	const outlineOptions = {}

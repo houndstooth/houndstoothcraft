@@ -5,11 +5,10 @@ import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
-import Address from '../../../../src/components/types/Address'
-import { Coordinate } from '../../../../src/index'
+import { Coordinate, Address, Units } from '../../../../src'
 
 describe('.stripeSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
+	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {

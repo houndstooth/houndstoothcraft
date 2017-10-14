@@ -1,5 +1,6 @@
 import state from '../../../../src/state'
 import applyZoom from '../../../../src/view/applyZoom'
+import Outline from '../../../../src/space/types/Outline'
 
 describe('apply zoom', () => {
 	const zoom = 2
@@ -21,7 +22,7 @@ describe('apply zoom', () => {
 			[ 200, 100 ],
 			[ 200, 200 ],
 			[ 100, 200 ],
-		])
+		] as Outline)
 	})
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
@@ -35,7 +36,7 @@ describe('apply zoom', () => {
 				[ 100, 0 ],
 				[ 100, 100 ],
 				[ 0, 100 ],
-			])
+			] as Outline)
 		})
 
 		describe('when the view is already centered', () => {
@@ -50,7 +51,7 @@ describe('apply zoom', () => {
 				[ 100, 0 ],
 				[ 100, 100 ],
 				[ 0, 100 ],
-			])
+			] as Outline)
 		})
 	})
 })

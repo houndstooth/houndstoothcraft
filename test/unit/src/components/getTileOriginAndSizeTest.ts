@@ -1,8 +1,10 @@
 import getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import state from '../../../../src/state'
+import Address from '../../../../src/components/types/Address'
+import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('get tile origin and size', () => {
-	const gridAddressForSubject = [ 7, 11 ]
+	const gridAddressForSubject = [ 7, 11 ] as Address
 	const tileSizeSetting = 40
 
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
@@ -10,7 +12,7 @@ describe('get tile origin and size', () => {
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
 			tileSize: tileSizeSetting,
-			tileOrigin: [ 7 * tileSizeSetting, 11 * tileSizeSetting ],
+			tileOrigin: [ 7 * tileSizeSetting, 11 * tileSizeSetting ] as Coordinate,
 		})
 	})
 
@@ -23,7 +25,7 @@ describe('get tile origin and size', () => {
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
 			tileSize: tileSizeSetting * tileSizeSetting,
-			tileOrigin: [ 11 * tileSizeSetting, 7 * tileSizeSetting ],
+			tileOrigin: [ 11 * tileSizeSetting, 7 * tileSizeSetting ] as Coordinate,
 		})
 	})
 })

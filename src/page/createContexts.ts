@@ -3,9 +3,10 @@ import { getCanvasDimensions, layerIterator } from '../canvas'
 import { document } from '../utilities/windowWrapper'
 import createCanvasContainer from './createCanvasContainer'
 import createContext from './createContext'
+import { Dimensions } from './types'
 
 const createContexts = () => {
-	const canvasDimensions = getCanvasDimensions()
+	const canvasDimensions = getCanvasDimensions() as Dimensions
 
 	const canvasContainer = document.querySelector('.canvas-container') || createCanvasContainer({ canvasDimensions })
 	canvasContainer.innerHTML = ''

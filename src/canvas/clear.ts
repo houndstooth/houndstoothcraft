@@ -4,7 +4,7 @@ import getCanvasDimensions from './getCanvasDimensions'
 import { NullarySideEffector } from '../utilities/types'
 
 const clear: NullarySideEffector = () => {
-	const canvasDimensions = getCanvasDimensions()
+	const canvasDimensions = getCanvasDimensions() as Dimensions
 	state.contexts.forEach(context => clearContext({ context, canvasDimensions }))
 
 	const mixedDownContext = state.mixedDownContext

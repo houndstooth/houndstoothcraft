@@ -5,6 +5,7 @@ import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { NullarySideEffector } from '../../../src/utilities/types'
+import Dimensions from '../../../src/page/types/Dimensions'
 
 const prepareCanvasForDisplayInTest: { (canvas: HTMLCanvasElement): void } = canvas => {
 	canvas.style.display = 'block'
@@ -24,7 +25,7 @@ const activateTestMarkersCanvas: NullarySideEffector = () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = '9001'
 
-	const canvasDimensions = getCanvasDimensions()
+	const canvasDimensions = getCanvasDimensions() as Dimensions
 	testMarkersCanvas.width = canvasDimensions[ 0 ]
 	testMarkersCanvas.height = canvasDimensions[ 1 ]
 

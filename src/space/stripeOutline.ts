@@ -95,13 +95,13 @@ const lastPointsWhenStripeDoesNotStartInTopLeftCorner: Points = params => {
 }
 
 const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	x + (stripePosition as any) * size,
+	stripePosition as any * size + x,
 	y,
 ] as Coordinate
 
 const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
 	x,
-	y + (stripePosition as any) * size,
+	stripePosition as any * size + y,
 ] as Coordinate
 
 const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [

@@ -52,13 +52,13 @@ describe('.tileSettings', () => {
 						baseId: 0,
 						tileOrigin: [ 0, 0 ] as Coordinate,
 						tileSize: 90,
-						colors: [ TRANSPARENT, BLACK ]
+						colors: [ TRANSPARENT, BLACK ],
 					},
 					{
 						baseId: 8,
 						tileOrigin: [ 0, 90 ] as Coordinate,
 						tileSize: 90,
-						colors: [ BLACK, BLACK ]
+						colors: [ BLACK, BLACK ],
 					},
 					{
 						baseId: 16,
@@ -70,7 +70,7 @@ describe('.tileSettings', () => {
 						baseId: 24,
 						tileOrigin: [ 90, 90 ] as Coordinate,
 						tileSize: 90,
-						colors: [ BLACK, TRANSPARENT ]
+						colors: [ BLACK, TRANSPARENT ],
 					},
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))

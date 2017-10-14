@@ -3,7 +3,7 @@ interface SquareCanvasSize extends Number {
 }
 
 enum _OblongCanvasSizeBrand {}
-type OblongCanvasSize = _OblongCanvasSizeBrand & number[];
+type OblongCanvasSize = _OblongCanvasSizeBrand & number[]
 
 type CanvasSize = SquareCanvasSize | OblongCanvasSize
 

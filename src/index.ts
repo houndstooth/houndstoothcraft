@@ -1,8 +1,8 @@
 import { standardAnimation } from './animation'
-import { perStripe, tileCenter, Address } from './components'
+import { perStripe, tileCenter, Address, Supertile, Weave, TileColorIndices, TileOriginAndSize } from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
-import { rotateCoordinateAboutPoint } from './space'
+import { rotateCoordinateAboutPoint, Coordinate, Outline } from './space'
 import { defaults, Houndstooth } from './store'
 import { maybeAddEffectToggles } from './ui'
 import { Color } from './render'
@@ -23,4 +23,10 @@ export {
 	Houndstooth,
 	Color,
 	Address,
+	Weave,
+	Supertile,
+	Coordinate,
+	Outline,
+	TileColorIndices,
+	TileOriginAndSize,
 }

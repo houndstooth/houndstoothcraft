@@ -1,4 +1,4 @@
-import Dimensions from './types/Dimensions'
+import { Dimensions } from './types'
 
 type ScaleElement = { ({}: { element: HTMLElement, dimensions: Dimensions }): void }
 

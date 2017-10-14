@@ -7,6 +7,7 @@ import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
+import Supertile from '../../../../src/components/types/Supertile'
 
 describe('.colorSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
@@ -471,7 +472,7 @@ describe('.colorSettings', () => {
 												[ 1, 2 ],
 												[ 3, 3 ],
 											],
-										],
+										] as Supertile,
 									},
 								},
 								gridSettings: {

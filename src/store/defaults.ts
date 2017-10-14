@@ -2,6 +2,7 @@ import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
 import { Assignment } from '../components'
 import { BasePattern, Houndstooth, State } from './types'
+import Supertile from '../components/types/Supertile'
 
 const DEFAULT_CANVAS_SIZE: number = 800
 const DEFAULT_ZOOM: number = 1
@@ -11,7 +12,7 @@ const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
 const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
 	assignmentMode: 'WEAVE',
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
-	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ],
+	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ] as Supertile,
 }
 const DEFAULT_OPACITY: number = 1
 const DEFAULT_STRIPE_COUNT: number = 4

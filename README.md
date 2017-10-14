@@ -145,7 +145,6 @@ A tile represents a repeating portion of a pattern. A tile converts a `gridAddre
 Typically: 
 - `tileOrigin` defaults to multiplying each dimension of the `gridAddress` by the `tileSizeSetting`.
 - `tileSize` also (naturally) defaults to the `tileSizeSetting`.
-- A tile 
 
 Potentially:
 - (e.g. in the "houndsmorphosis" effect) each tile has its own size, and its origin is a complex function of address, some of which even result in no tile.

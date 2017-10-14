@@ -8,7 +8,7 @@ import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 
 describe('.colorSettings', () => {
-	const tileSizeInPixels = getFromBasePatternOrDefault(TILE_SIZE) as number
+	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {
@@ -22,7 +22,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
 					},
 				},
 			}
@@ -52,7 +52,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
 					},
 				},
 			}
@@ -62,58 +62,58 @@ describe('.colorSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+				tileSize,
 				colors: [ YELLOW, YELLOW ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 1 * tileSize, 0 * tileSize ],
+				tileSize,
 				colors: [ YELLOW, BLUE ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 2 * tileSize, 0 * tileSize ],
+				tileSize,
 				colors: [ YELLOW, CYAN ],
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: 24,
-				originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 0 * tileSize, 1 * tileSize ],
+				tileSize,
 				colors: [ BLUE, YELLOW ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 32,
-				originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+				tileSize,
 				colors: [ BLUE, BLUE ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 40,
-				originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 2 * tileSize, 1 * tileSize ],
+				tileSize,
 				colors: [ BLUE, CYAN ],
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: 48,
-				originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 0 * tileSize, 2 * tileSize ],
+				tileSize,
 				colors: [ CYAN, YELLOW ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 56,
-				originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 1 * tileSize, 2 * tileSize ],
+				tileSize,
 				colors: [ CYAN, BLUE ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 64,
-				originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ],
-				tileSizeInPixels,
+				tileOrigin: [ 2 * tileSize, 2 * tileSize ],
+				tileSize,
 				colors: [ CYAN, CYAN ],
 			})).toBe(true)
 		})
@@ -138,7 +138,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
 							},
 						},
 					}
@@ -150,296 +150,296 @@ describe('.colorSettings', () => {
 					const firstSuperweave = [
 						{
 							baseId: 0,
-							originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 8,
-							originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 16,
-							originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 24,
-							originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 32,
-							originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 40,
-							originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 48,
-							originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 2 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 56,
-							originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 2 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 64,
-							originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 2 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 72,
-							originInPixels: [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 3 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 80,
-							originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 3 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 88,
-							originInPixels: [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 3 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const secondSuperweave = [
 						{
 							baseId: 96,
-							originInPixels: [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 104,
-							originInPixels: [ 4 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 112,
-							originInPixels: [ 5 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 120,
-							originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 128,
-							originInPixels: [ 4 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 136,
-							originInPixels: [ 5 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 144,
-							originInPixels: [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 2 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 152,
-							originInPixels: [ 4 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 2 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 160,
-							originInPixels: [ 5 * tileSizeInPixels, 2 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 2 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 168,
-							originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 3 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 176,
-							originInPixels: [ 4 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 3 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 184,
-							originInPixels: [ 5 * tileSizeInPixels, 3 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 3 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const thirdSuperweave = [
 						{
 							baseId: 192,
-							originInPixels: [ 0 * tileSizeInPixels, 4 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 4 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 200,
-							originInPixels: [ 1 * tileSizeInPixels, 4 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 4 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 208,
-							originInPixels: [ 2 * tileSizeInPixels, 4 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 4 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 216,
-							originInPixels: [ 0 * tileSizeInPixels, 5 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 5 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 224,
-							originInPixels: [ 1 * tileSizeInPixels, 5 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 5 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 232,
-							originInPixels: [ 2 * tileSizeInPixels, 5 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 5 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 240,
-							originInPixels: [ 0 * tileSizeInPixels, 6 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 6 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 248,
-							originInPixels: [ 1 * tileSizeInPixels, 6 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 6 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 256,
-							originInPixels: [ 2 * tileSizeInPixels, 6 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 6 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 264,
-							originInPixels: [ 0 * tileSizeInPixels, 7 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 7 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 272,
-							originInPixels: [ 1 * tileSizeInPixels, 7 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 7 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 280,
-							originInPixels: [ 2 * tileSizeInPixels, 7 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 2 * tileSize, 7 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const fourthSuperweave = [
 						{
 							baseId: 288,
-							originInPixels: [ 3 * tileSizeInPixels, 4 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 4 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 296,
-							originInPixels: [ 4 * tileSizeInPixels, 4 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 4 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 304,
-							originInPixels: [ 5 * tileSizeInPixels, 4 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 4 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 312,
-							originInPixels: [ 3 * tileSizeInPixels, 5 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 5 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 320,
-							originInPixels: [ 4 * tileSizeInPixels, 5 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 5 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 328,
-							originInPixels: [ 5 * tileSizeInPixels, 5 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 5 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 336,
-							originInPixels: [ 3 * tileSizeInPixels, 6 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 6 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 344,
-							originInPixels: [ 4 * tileSizeInPixels, 6 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 6 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 352,
-							originInPixels: [ 5 * tileSizeInPixels, 6 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 6 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 360,
-							originInPixels: [ 3 * tileSizeInPixels, 7 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 3 * tileSize, 7 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 368,
-							originInPixels: [ 4 * tileSizeInPixels, 7 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 4 * tileSize, 7 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 376,
-							originInPixels: [ 5 * tileSizeInPixels, 7 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 5 * tileSize, 7 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
@@ -477,7 +477,7 @@ describe('.colorSettings', () => {
 									gridSize: sufficientTileCountToDemonstrateSetting,
 								},
 								viewSettings: {
-									canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+									canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
 								},
 							},
 						}
@@ -489,104 +489,104 @@ describe('.colorSettings', () => {
 						const firstSupertile = [
 							{
 								baseId: 0,
-								originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+								tileSize,
 								colors: [ CYAN, YELLOW ],
 							},
 							{
 								baseId: 8,
-								originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 0 * tileSize, 1 * tileSize ],
+								tileSize,
 								colors: [ YELLOW, BLUE ],
 							},
 							{
 								baseId: 16,
-								originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 1 * tileSize, 0 * tileSize ],
+								tileSize,
 								colors: [ BLUE, CYAN ],
 							},
 							{
 								baseId: 24,
-								originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+								tileSize,
 								colors: [ MAGENTA, MAGENTA ],
 							},
 						]
 						const secondSupertile = [
 							{
 								baseId: 32,
-								originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 2 * tileSize, 0 * tileSize ],
+								tileSize,
 								colors: [ CYAN, YELLOW ],
 							},
 							{
 								baseId: 40,
-								originInPixels: [ 2 * tileSizeInPixels, 1 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 2 * tileSize, 1 * tileSize ],
+								tileSize,
 								colors: [ YELLOW, BLUE ],
 							},
 							{
 								baseId: 48,
-								originInPixels: [ 3 * tileSizeInPixels, 0 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 3 * tileSize, 0 * tileSize ],
+								tileSize,
 								colors: [ BLUE, CYAN ],
 							},
 							{
 								baseId: 56,
-								originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 3 * tileSize, 1 * tileSize ],
+								tileSize,
 								colors: [ MAGENTA, MAGENTA ],
 							},
 						]
 						const thirdSupertile = [
 							{
 								baseId: 64,
-								originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 0 * tileSize, 2 * tileSize ],
+								tileSize,
 								colors: [ CYAN, YELLOW ],
 							},
 							{
 								baseId: 72,
-								originInPixels: [ 0 * tileSizeInPixels, 3 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 0 * tileSize, 3 * tileSize ],
+								tileSize,
 								colors: [ YELLOW, BLUE ],
 							},
 							{
 								baseId: 80,
-								originInPixels: [ 1 * tileSizeInPixels, 2 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 1 * tileSize, 2 * tileSize ],
+								tileSize,
 								colors: [ BLUE, CYAN ],
 							},
 							{
 								baseId: 88,
-								originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 1 * tileSize, 3 * tileSize ],
+								tileSize,
 								colors: [ MAGENTA, MAGENTA ],
 							},
 						]
 						const fourthSupertile = [
 							{
 								baseId: 96,
-								originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 2 * tileSize, 2 * tileSize ],
+								tileSize,
 								colors: [ CYAN, YELLOW ],
 							},
 							{
 								baseId: 104,
-								originInPixels: [ 2 * tileSizeInPixels, 3 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 2 * tileSize, 3 * tileSize ],
+								tileSize,
 								colors: [ YELLOW, BLUE ],
 							},
 							{
 								baseId: 112,
-								originInPixels: [ 3 * tileSizeInPixels, 2 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 3 * tileSize, 2 * tileSize ],
+								tileSize,
 								colors: [ BLUE, CYAN ],
 							},
 							{
 								baseId: 120,
-								originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ],
-								tileSizeInPixels,
+								tileOrigin: [ 3 * tileSize, 3 * tileSize ],
+								tileSize,
 								colors: [ MAGENTA, MAGENTA ],
 							},
 						]
@@ -613,7 +613,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize,
 						},
 					},
 				}
@@ -624,51 +624,51 @@ describe('.colorSettings', () => {
 
 				expect(standardTileIsColors({
 					baseId: 0,
-					originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 8,
-					originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 16,
-					originInPixels: [ 2 * tileSizeInPixels, 2 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 2 * tileSize, 2 * tileSize ],
+					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 24,
-					originInPixels: [ 3 * tileSizeInPixels, 3 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 3 * tileSize, 3 * tileSize ],
+					tileSize,
 					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 
 				expect(standardTileIsColors({
 					baseId: 32,
-					originInPixels: [ 2 * tileSizeInPixels, 0 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 2 * tileSize, 0 * tileSize ],
+					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 40,
-					originInPixels: [ 3 * tileSizeInPixels, 1 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 3 * tileSize, 1 * tileSize ],
+					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 48,
-					originInPixels: [ 0 * tileSizeInPixels, 2 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 0 * tileSize, 2 * tileSize ],
+					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 56,
-					originInPixels: [ 1 * tileSizeInPixels, 3 * tileSizeInPixels ],
-					tileSizeInPixels,
+					tileOrigin: [ 1 * tileSize, 3 * tileSize ],
+					tileSize,
 					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 			})
@@ -689,7 +689,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: sufficientTileCountToDemonstrateSetting * tileSizeInPixels,
+								canvasSize: sufficientTileCountToDemonstrateSetting * tileSize,
 							},
 						},
 					}
@@ -700,26 +700,26 @@ describe('.colorSettings', () => {
 					const tiles = [
 						{
 							baseId: 0,
-							originInPixels: [ 0 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 8,
-							originInPixels: [ 0 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 0 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 16,
-							originInPixels: [ 1 * tileSizeInPixels, 0 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 0 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 24,
-							originInPixels: [ 1 * tileSizeInPixels, 1 * tileSizeInPixels ],
-							tileSizeInPixels,
+							tileOrigin: [ 1 * tileSize, 1 * tileSize ],
+							tileSize,
 							colors: [ TRANSPARENT, BLACK ],
 						},
 					]
@@ -743,7 +743,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
 					},
 				},
 			}
@@ -776,7 +776,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSizeInPixels * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
 					},
 				},
 			}

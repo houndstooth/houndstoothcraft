@@ -12,6 +12,7 @@ type Pattern = {
 	},
 	gridSettings?: {
 		gridSize?: number | { (p: number): number },
+		includeNegativeQuadrants?: boolean| { (p: boolean): boolean },
 	},
 	tileSettings?: {
 		tileSizeSetting?: number | { (p: number): number },

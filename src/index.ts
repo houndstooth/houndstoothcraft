@@ -1,10 +1,11 @@
 import { standardAnimation } from './animation'
-import { perStripe, tileCenter } from './components'
+import { perStripe, tileCenter, Address } from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
 import { rotateCoordinateAboutPoint } from './space'
-import { defaults } from './store'
+import { defaults, Houndstooth } from './store'
 import { maybeAddEffectToggles } from './ui'
+import { Color } from './render'
 import state from './state'
 import * as constants from './constants'
 
@@ -19,4 +20,7 @@ export {
 	maybeAddEffectToggles,
 	state,
 	constants,
+	Houndstooth,
+	Color,
+	Address,
 }

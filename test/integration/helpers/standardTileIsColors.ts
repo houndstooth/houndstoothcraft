@@ -1,27 +1,27 @@
-import tileSectorCenterIsColor from './tileSectorCenterIsColor'
+import sectionCenterIsColor from './sectionCenterIsColor'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 
 type StandardTileIsColors = {
-	({}: { originInPixels: Coordinate, tileSizeInPixels: number, colors: Color[], baseId: number }): boolean,
+	({}: { tileOrigin: Coordinate, tileSize: number, colors: Color[], baseId: number }): boolean,
 }
 
-const standardTileIsColors: StandardTileIsColors = ({ originInPixels, tileSizeInPixels, colors, baseId }) => {
+const standardTileIsColors: StandardTileIsColors = ({ tileOrigin: areaOrigin, tileSize: areaSize, colors, baseId }) => {
 	const expectations = [
-		{ originInPixels, tileSizeInPixels, x: 0, y: 0, n: 4, color: colors[ 0 ], id: baseId + 0 },
+		{ areaOrigin, areaSize, sectionAddress: [ 0, 0 ], sectionResolution: 4, color: colors[ 0 ], id: baseId + 0 },
 
-		{ originInPixels, tileSizeInPixels, x: 2, y: 0, n: 4, color: colors[ 1 ], id: baseId + 1 },
-		{ originInPixels, tileSizeInPixels, x: 1, y: 1, n: 4, color: colors[ 1 ], id: baseId + 2 },
-		{ originInPixels, tileSizeInPixels, x: 0, y: 2, n: 4, color: colors[ 1 ], id: baseId + 3 },
+		{ areaOrigin, areaSize, sectionAddress: [ 2, 0 ], sectionResolution: 4, color: colors[ 1 ], id: baseId + 1 },
+		{ areaOrigin, areaSize, sectionAddress: [ 1, 1 ], sectionResolution: 4, color: colors[ 1 ], id: baseId + 2 },
+		{ areaOrigin, areaSize, sectionAddress: [ 0, 2 ], sectionResolution: 4, color: colors[ 1 ], id: baseId + 3 },
 
-		{ originInPixels, tileSizeInPixels, x: 3, y: 1, n: 4, color: colors[ 0 ], id: baseId + 4 },
-		{ originInPixels, tileSizeInPixels, x: 2, y: 2, n: 4, color: colors[ 0 ], id: baseId + 5 },
-		{ originInPixels, tileSizeInPixels, x: 1, y: 3, n: 4, color: colors[ 0 ], id: baseId + 6 },
+		{ areaOrigin, areaSize, sectionAddress: [ 3, 1 ], sectionResolution: 4, color: colors[ 0 ], id: baseId + 4 },
+		{ areaOrigin, areaSize, sectionAddress: [ 2, 2 ], sectionResolution: 4, color: colors[ 0 ], id: baseId + 5 },
+		{ areaOrigin, areaSize, sectionAddress: [ 1, 3 ], sectionResolution: 4, color: colors[ 0 ], id: baseId + 6 },
 
-		{ originInPixels, tileSizeInPixels, x: 3, y: 3, n: 4, color: colors[ 1 ], id: baseId + 7 },
+		{ areaOrigin, areaSize, sectionAddress: [ 3, 3 ], sectionResolution: 4, color: colors[ 1 ], id: baseId + 7 },
 	]
 
-	return expectations.every(tileSectorCenterIsColor)
+	return expectations.every(sectionCenterIsColor)
 }
 
 export default standardTileIsColors

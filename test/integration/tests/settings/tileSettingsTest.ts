@@ -22,10 +22,10 @@ describe('.tileSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles = [
-				{ baseId: 0, originInPixels: [ 0, 0 ], tileSizeInPixels: 30, colors: [ TRANSPARENT, BLACK ] },
-				{ baseId: 8, originInPixels: [ 0, 30 ], tileSizeInPixels: 30, colors: [ BLACK, BLACK ] },
-				{ baseId: 16, originInPixels: [ 30, 0 ], tileSizeInPixels: 30, colors: [ TRANSPARENT, TRANSPARENT ] },
-				{ baseId: 24, originInPixels: [ 30, 30 ], tileSizeInPixels: 30, colors: [ BLACK, TRANSPARENT ] },
+				{ baseId: 0, tileOrigin: [ 0, 0 ], tileSize: 30, colors: [ TRANSPARENT, BLACK ] },
+				{ baseId: 8, tileOrigin: [ 0, 30 ], tileSize: 30, colors: [ BLACK, BLACK ] },
+				{ baseId: 16, tileOrigin: [ 30, 0 ], tileSize: 30, colors: [ TRANSPARENT, TRANSPARENT ] },
+				{ baseId: 24, tileOrigin: [ 30, 30 ], tileSize: 30, colors: [ BLACK, TRANSPARENT ] },
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 		})
@@ -47,15 +47,15 @@ describe('.tileSettings', () => {
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const tiles = [
-					{ baseId: 0, originInPixels: [ 0, 0 ], tileSizeInPixels: 90, colors: [ TRANSPARENT, BLACK ] },
-					{ baseId: 8, originInPixels: [ 0, 90 ], tileSizeInPixels: 90, colors: [ BLACK, BLACK ] },
+					{ baseId: 0, tileOrigin: [ 0, 0 ], tileSize: 90, colors: [ TRANSPARENT, BLACK ] },
+					{ baseId: 8, tileOrigin: [ 0, 90 ], tileSize: 90, colors: [ BLACK, BLACK ] },
 					{
 						baseId: 16,
-						originInPixels: [ 90, 0 ],
-						tileSizeInPixels: 90,
+						tileOrigin: [ 90, 0 ],
+						tileSize: 90,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 					},
-					{ baseId: 24, originInPixels: [ 90, 90 ], tileSizeInPixels: 90, colors: [ BLACK, TRANSPARENT ] },
+					{ baseId: 24, tileOrigin: [ 90, 90 ], tileSize: 90, colors: [ BLACK, TRANSPARENT ] },
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 			})

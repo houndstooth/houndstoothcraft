@@ -56,26 +56,26 @@ describe('.layerSettings', () => {
 
 		expect(standardTileIsColors({
 			baseId: 0,
-			originInPixels: [ 0, 0 ],
-			tileSizeInPixels: 50,
+			tileOrigin: [ 0, 0 ],
+			tileSize: 50,
 			colors: [ YELLOW, CYAN ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 8,
-			originInPixels: [ 50, 0 ],
-			tileSizeInPixels: 50,
+			tileOrigin: [ 50, 0 ],
+			tileSize: 50,
 			colors: [ YELLOW, YELLOW ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 16,
-			originInPixels: [ 0, 50 ],
-			tileSizeInPixels: 50,
+			tileOrigin: [ 0, 50 ],
+			tileSize: 50,
 			colors: [ CYAN, CYAN ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 24,
-			originInPixels: [ 50, 50 ],
-			tileSizeInPixels: 50,
+			tileOrigin: [ 50, 50 ],
+			tileSize: 50,
 			colors: [ CYAN, YELLOW ],
 		})).toBe(true)
 	})

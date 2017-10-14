@@ -66,7 +66,7 @@ type DeeperPath = { ({}: { propertyPath: PropertyPath, propertyName: string }): 
 const deeperPath: DeeperPath = ({ propertyPath, propertyName }) => {
 	const path = propertyPath.slice()
 	path.push(propertyName)
-	return path
+	return path as PropertyPath
 }
 
 type AccessChildPropertyOrCreatePath = { ({}: { objectWithProperties: object, propertyPath: PropertyPath }): any }

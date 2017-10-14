@@ -13,7 +13,7 @@ type PrepareFunctionObjectsPerSetting = {
 const prepareFunctionObjectsPerSetting: PrepareFunctionObjectsPerSetting = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionsSourcePattern,
-		settingsPath = [],
+		settingsPath = [] as PropertyPath,
 		settingsFunctionObjects = [],
 	} = prepareFunctionObjectsPerSettingArgs
 

@@ -13,7 +13,7 @@ type ComposePatterns = {
 	}): void,
 }
 const composePatterns: ComposePatterns = params => {
-	const { patternToBeMergedOnto, patternToMerge, settingsPath = [], warnAboutConflicts } = params
+	const { patternToBeMergedOnto, patternToMerge, settingsPath = [] as PropertyPath, warnAboutConflicts } = params
 	if (!patternToMerge) {
 		return
 	}

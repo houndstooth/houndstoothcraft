@@ -7,7 +7,7 @@ import getStripePositionsForTile from './getStripePositionsForTile'
 import getTileColorIndices from './getTileColorIndices'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import isTileUniform from './isTileUniform'
-import { Address, StripePositions, TileColorIndices } from './types'
+import { Address, StripePosition, TileColorIndices } from './types'
 
 type TileParams = { gridAddress: Address, tileOrigin: Coordinate, tileSize: number, tileColorIndices: TileColorIndices }
 
@@ -56,7 +56,12 @@ const getSquareArgs: GetSquareArgs = ({ args }) => {
 }
 
 type GetStripeArgs = {
-	({}: { args: TileParams, stripeStart: number, stripeIndex: number, stripePositions: StripePositions }): ShapeParams,
+	({}: {
+		args: TileParams,
+		stripeStart: StripePosition,
+		stripeIndex: number,
+		stripePositions: StripePosition[],
+	}): ShapeParams,
 }
 const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
 	const stripeArgs = deepClone(args)

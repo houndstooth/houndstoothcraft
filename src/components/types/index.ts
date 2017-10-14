@@ -1,5 +1,5 @@
 import Address from './Address'
-import StripePositions from './StripePositions'
+import StripePosition from './StripePosition'
 import TileColorIndices from './TileColorIndices'
 import TileOriginAndSize from './TileOriginAndSize'
 import Assignment from './Assignment'
@@ -8,7 +8,7 @@ import Weave from './Weave'
 
 export {
 	Address,
-	StripePositions,
+	StripePosition,
 	TileColorIndices,
 	TileOriginAndSize,
 	Assignment,

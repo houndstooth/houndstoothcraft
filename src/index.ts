@@ -1,5 +1,14 @@
 import { standardAnimation } from './animation'
-import { perStripe, tileCenter, Address, Supertile, Weave, TileColorIndices, TileOriginAndSize } from './components'
+import {
+	perStripe,
+	tileCenter,
+	Address,
+	Supertile,
+	Weave,
+	TileColorIndices,
+	TileOriginAndSize,
+	StripePosition,
+} from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
 import { rotateCoordinateAboutPoint, Coordinate, Outline } from './space'
@@ -29,4 +38,5 @@ export {
 	Outline,
 	TileColorIndices,
 	TileOriginAndSize,
+	StripePosition,
 }

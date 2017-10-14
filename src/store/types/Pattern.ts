@@ -1,6 +1,7 @@
 import { Color } from '../../render'
 import { CanvasSize } from '../../canvas'
 import { Assignment, TileOriginAndSize } from '../../components'
+import StripePosition from '../../components/types/StripePosition'
 
 type Pattern = {
 	viewSettings?: {
@@ -33,7 +34,8 @@ type Pattern = {
 				initialStripeCount?: number | { (p: number): number },
 				deltaStripeCount?: number | { (p: number): number },
 			},
-			getStripePositions?: (p: any) => number[] | { (p: (p: any) => number[]): (p: any) => number[] },
+			// eslint-disable-next-line max-len
+			getStripePositions?: (p: any) => StripePosition[] | { (p: (p: any) => StripePosition[]): (p: any) => StripePosition[] },
 		},
 		baseStripeDiagonal?: string | { (p: string): string },
 	},

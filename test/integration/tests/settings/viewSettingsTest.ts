@@ -7,6 +7,7 @@ import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
 import Address from '../../../../src/components/types/Address'
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
@@ -14,7 +15,7 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: [ BLACK ] },
-					viewSettings: { canvasSize: 125 },
+					viewSettings: { canvasSize: 125 as CanvasSize },
 				},
 			}
 			activateTestMarkerCanvas()
@@ -167,7 +168,7 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					viewSettings: {
-						canvasSize: 300,
+						canvasSize: 300 as CanvasSize,
 						rotateViewAboutCanvasCenter: Math.PI / 2,
 					},
 					tileSettings: {

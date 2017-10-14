@@ -6,6 +6,7 @@ import standardTileIsColors from '../../helpers/standardTileIsColors'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('.colorSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
@@ -22,7 +23,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
 					},
 				},
 			}
@@ -52,7 +53,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
 					},
 				},
 			}
@@ -138,7 +139,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
+								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
 							},
 						},
 					}
@@ -477,7 +478,7 @@ describe('.colorSettings', () => {
 									gridSize: sufficientTileCountToDemonstrateSetting,
 								},
 								viewSettings: {
-									canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
+									canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
 								},
 							},
 						}
@@ -613,7 +614,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize,
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as CanvasSize,
 						},
 					},
 				}
@@ -689,7 +690,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: sufficientTileCountToDemonstrateSetting * tileSize,
+								canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as CanvasSize,
 							},
 						},
 					}
@@ -743,7 +744,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
 					},
 				},
 			}
@@ -776,7 +777,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
 					},
 				},
 			}

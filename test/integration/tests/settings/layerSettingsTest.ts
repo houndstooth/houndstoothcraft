@@ -3,12 +3,13 @@ import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSe
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { YELLOW, CYAN, TRANSPARENT, ERASE } from '../../../../src/constants'
 import standardTileIsColors from '../../helpers/standardTileIsColors'
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', () => {
 		const houndstoothOverrides = {
 			basePattern: {
-				viewSettings: { canvasSize: 100 },
+				viewSettings: { canvasSize: 100 as CanvasSize },
 				gridSettings: { gridSize: 2 },
 				colorSettings: { backgroundColor: YELLOW },
 				layerSettings: { endLayer: 1 },
@@ -37,7 +38,7 @@ describe('.layerSettings', () => {
 	it('erasing makes holes so material from lower layers shows through', () => {
 		const houndstoothOverrides = {
 			basePattern: {
-				viewSettings: { canvasSize: 100 },
+				viewSettings: { canvasSize: 100 as CanvasSize },
 				gridSettings: { gridSize: 0 },
 				colorSettings: { backgroundColor: YELLOW },
 				layerSettings: { endLayer: 1 },

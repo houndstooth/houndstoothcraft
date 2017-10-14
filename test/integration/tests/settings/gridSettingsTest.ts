@@ -4,6 +4,7 @@ import standardTileIsColors from '../../helpers/standardTileIsColors'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('.gridSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as number
@@ -13,7 +14,7 @@ describe('.gridSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					viewSettings: {
-						canvasSize: 200,
+						canvasSize: 200 as CanvasSize,
 					},
 					colorSettings: {
 						colorSet: [ BLACK, WHITE ],
@@ -140,7 +141,7 @@ describe('.gridSettings', () => {
 				const houndstoothOverrides = {
 					basePattern: {
 						viewSettings: {
-							canvasSize: 300,
+							canvasSize: 300 as CanvasSize,
 							centerViewOnCenterOfTileAtHomeAddress: true,
 						},
 						tileSettings: {

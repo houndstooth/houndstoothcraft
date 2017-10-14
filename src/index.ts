@@ -11,6 +11,7 @@ import {
 } from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid } from './render'
+import { CanvasSize } from './canvas'
 import { rotateCoordinateAboutPoint, Coordinate, Outline } from './space'
 import { defaults, Houndstooth } from './store'
 import { maybeAddEffectToggles } from './ui'
@@ -39,4 +40,5 @@ export {
 	TileColorIndices,
 	TileOriginAndSize,
 	StripePosition,
+	CanvasSize,
 }

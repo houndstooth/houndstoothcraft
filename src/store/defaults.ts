@@ -22,7 +22,7 @@ const DEFAULT_END_LAYER: number = 0
 
 const DEFAULT_PATTERN: BasePattern = {
 	viewSettings: {
-		canvasSize: DEFAULT_CANVAS_SIZE,
+		canvasSize: DEFAULT_CANVAS_SIZE as any,
 		zoom: DEFAULT_ZOOM,
 	},
 	gridSettings: {

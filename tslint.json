@@ -1,5 +1,5 @@
 {
-  "extends": "tslint:recommended",
+  "extends": "tslint:all",
   "rules": {
     "semicolon": false,
     "quotemark": [

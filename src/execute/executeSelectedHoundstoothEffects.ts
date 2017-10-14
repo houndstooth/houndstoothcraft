@@ -22,7 +22,7 @@ const executeSelectedHoundstoothEffects: ExecuteSelectedHoundstoothEffects = ({ 
 	execute({ layerFunctionObjects })
 }
 
-const prepareCanvas: NullarySideEffector = () => {
+const prepareCanvas: NullarySideEffector = (() => {
 	createContexts()
 	if (state.exportFrames) {
 		state.mixingDown = true
@@ -30,7 +30,7 @@ const prepareCanvas: NullarySideEffector = () => {
 	if (state.mixingDown) {
 		state.mixedDownContext = createMixedDownCanvas()
 	}
-}
+}) as NullarySideEffector
 
 const execute: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void } = ({ layerFunctionObjects }) => {
 	if (state.animating) {

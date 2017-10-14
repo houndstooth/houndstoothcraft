@@ -14,7 +14,7 @@ const prepareCanvasForDisplayInTest: { (canvas: HTMLCanvasElement): void } = can
 	canvas.style.left = '0'
 }
 
-const activateTestMarkersCanvas: NullarySideEffector = () => {
+const activateTestMarkersCanvas: NullarySideEffector = (() => {
 	testMarkersClear()
 
 	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement
@@ -39,6 +39,6 @@ const activateTestMarkersCanvas: NullarySideEffector = () => {
 	prepareCanvasForDisplayInTest(canvasContainer)
 
 	state.mixingDown = true
-}
+}) as NullarySideEffector
 
 export default activateTestMarkersCanvas

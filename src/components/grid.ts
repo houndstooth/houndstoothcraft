@@ -5,7 +5,7 @@ import tile from './tile'
 import { NullarySideEffector } from '../utilities/types'
 import { Address } from './types'
 
-const grid: NullarySideEffector = () => {
+const grid: NullarySideEffector = (() => {
 	const gridSettings = state.mainHoundstooth.basePattern.gridSettings || {}
 	const { includeNegativeQuadrants, gridSize } = gridSettings
 
@@ -26,6 +26,6 @@ const grid: NullarySideEffector = () => {
 			})
 		})
 	}
-}
+}) as NullarySideEffector
 
 export default grid

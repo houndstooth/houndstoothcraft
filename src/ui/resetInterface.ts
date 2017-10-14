@@ -5,7 +5,7 @@ import { createWarningsContainer } from '../page'
 import { window, document } from '../utilities/windowWrapper'
 import { NullarySideEffector } from '../utilities/types'
 
-const resetInterface: NullarySideEffector = () => {
+const resetInterface: NullarySideEffector = (() => {
 	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()
 	warnings.innerHTML = ''
 
@@ -15,6 +15,6 @@ const resetInterface: NullarySideEffector = () => {
 	const existingEffects = state.selectedHoundstoothEffects.slice()
 	resetState(state)
 	state.selectedHoundstoothEffects = existingEffects
-}
+}) as NullarySideEffector
 
 export default resetInterface

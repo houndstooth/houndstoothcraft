@@ -3,7 +3,7 @@ import { console } from '../utilities/windowWrapper'
 import { grid } from '../components'
 import { NullarySideEffector } from '../utilities/types'
 
-const gridAndMaybeLogging: NullarySideEffector = () => {
+const gridAndMaybeLogging: NullarySideEffector = (() => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
 	if (performanceLogging) {
 		console.time('grid')
@@ -18,6 +18,6 @@ const gridAndMaybeLogging: NullarySideEffector = () => {
 		}
 		console.timeEnd('grid')
 	}
-}
+}) as NullarySideEffector
 
 export default gridAndMaybeLogging

@@ -1,5 +1,7 @@
 type PropertyPath = string[]
-type NullarySideEffector = { (): void }
+
+enum _NullarySideEffectorBrand {}
+type NullarySideEffector = _NullarySideEffectorBrand & { (): void }
 
 export {
 	PropertyPath,

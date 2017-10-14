@@ -3,7 +3,7 @@ import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefau
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { NullarySideEffector } from '../../../src/utilities/types'
 
-const testMarkersClear: NullarySideEffector = () => {
+const testMarkersClear: NullarySideEffector = (() => {
 	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement
 	if (!testMarkersCanvas) {
 		testMarkersCanvas = createTestMarkersCanvas()
@@ -13,6 +13,6 @@ const testMarkersClear: NullarySideEffector = () => {
 	const canvasSize = getFromBasePatternOrDefault(CANVAS_SIZE) as number
 
 	testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)
-}
+}) as NullarySideEffector
 
 export default testMarkersClear

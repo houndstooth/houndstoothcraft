@@ -1,10 +1,10 @@
 declare const global: any
 
 type Document = {
-	createElement: Function,
-	createTextNode: Function,
-	querySelector: Function,
-	body: { appendChild: Function },
+	createElement: { (p?: any, q?: any): any },
+	createTextNode: { (p?: any, q?: any): any },
+	querySelector: { (p?: any, q?: any): any },
+	body: { appendChild: { (p?: any, q?: any): any } },
 }
 
 const mockDocument: Document = {
@@ -17,9 +17,9 @@ const mockDocument: Document = {
 }
 
 type Window = {
-	clearInterval: Function,
-	setInterval: Function,
-	URL: { createObjectURL: Function, revokeObjectURL: Function },
+	clearInterval: { (p?: any, q?: any): any },
+	setInterval: { (p?: any, q?: any): any },
+	URL: { createObjectURL: { (p?: any, q?: any): any }, revokeObjectURL: { (p?: any, q?: any): any } },
 }
 
 const mockWindow: Window = {

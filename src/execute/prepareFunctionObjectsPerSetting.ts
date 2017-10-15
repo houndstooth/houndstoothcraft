@@ -5,7 +5,7 @@ import { SettingsFunctionObject } from './types'
 
 type PrepareFunctionObjectsPerSetting = {
 	({}: {
-		settingsFunctionsSourcePattern: Pattern | Function,
+		settingsFunctionsSourcePattern: Pattern,
 		settingsPath?: PropertyPath,
 		settingsFunctionObjects?: SettingsFunctionObject[],
 	}): SettingsFunctionObject[],

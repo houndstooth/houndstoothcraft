@@ -92,7 +92,7 @@ describe('stripe outline', () => {
 		describe('and ends within the bottom right half', () => {
 			beforeEach(() => stripeEnd = 1.5)
 
-			// eslint-disable-next-line max-len
+			// tslint:disable-next-line:max-line-length
 			it('makes a hexagon with vertices in the bottom left and the top right corners, plus one on each of the square\'s edges', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
@@ -110,7 +110,7 @@ describe('stripe outline', () => {
 		describe('and ends at the bottom right corner', () => {
 			beforeEach(() => stripeEnd = 2)
 
-			// eslint-disable-next-line max-len
+			// tslint:disable-next-line:max-line-length
 			it('makes a pentagon straddling with vertices at the bottom right, bottom left, and top right corners, as well as one on each of the left and top edges', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })

@@ -22,7 +22,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.assignment.assignmentMode`: `yoda` was overridden by `luke`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
@@ -76,7 +76,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a + 1; }` was overridden by `function (b) { return b + 1; }`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
@@ -104,7 +104,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
@@ -119,7 +119,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)

@@ -43,7 +43,7 @@ const deepClone: { (objectToDeepClone: any): any } = objectToDeepClone => {
 	return clonedObject
 }
 
-type SetAllPropertiesOfObjectOnAnother = { ({}: { objectWithProperties: Object, objectToChange: Object }): void }
+type SetAllPropertiesOfObjectOnAnother = { ({}: { objectWithProperties: {}, objectToChange: {} }): void }
 const setAllPropertiesOfObjectOnAnother: SetAllPropertiesOfObjectOnAnother = params => {
 	const { objectWithProperties, objectToChange } = params
 	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {

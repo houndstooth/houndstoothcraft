@@ -61,7 +61,7 @@ const buildWarningMessage: BuildWarningMessage = params => {
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
 	const fullSettingPath = settingPath({ settingsPath, settingName })
 
-	// eslint-disable-next-line max-len
+	// tslint:disable-next-line:max-line-length
 	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
 }
 

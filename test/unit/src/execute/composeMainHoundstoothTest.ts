@@ -141,7 +141,7 @@ describe('composeMainHoundstooth', () => {
 	// 		})
 	// 	})
 
-	// eslint-disable-next-line max-len
+	// tslint:disable-next-line:max-line-length
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
 		const composePatternsSpy = spyOn(composePatterns, 'default')
 

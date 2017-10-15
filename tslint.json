@@ -8,21 +8,21 @@
     "indent": [
       "tabs"
     ],
-    "ordered-imports": false,
-    "object-literal-sort-keys": false,
-    "arrow-parens": false,
-    "max-line-length": [
-      false
+    "arrow-parens": [
+      true,
+      "ban-single-arg-parens"
     ],
-    "one-line": false,
+    "one-line": [
+      true,
+      "check-catch",
+      "check-finally",
+      "check-open-brace",
+      "check-whitespace"
+    ],
     "no-console": false,
-    "ban-types": false,
     "interface-name": [
       "never-prefix"
     ],
-    "callable-types": false,
-    "interface-over-type-literal": false,
-    "no-inferrable-types": true,
     "no-any": false,
     "no-magic-numbers": false,
     "typedef": false,
@@ -31,6 +31,10 @@
     "no-default-export": false,
     "comment-format": false,
     "member-ordering": false,
-    "no-object-literal-type-assertion": false
+    "no-object-literal-type-assertion": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "callable-types": false,
+    "interface-over-type-literal": false
   }
 }

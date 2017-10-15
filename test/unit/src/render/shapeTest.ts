@@ -82,7 +82,7 @@ describe('shape', () => {
 			expect(canvas.getCurrentContext).toHaveBeenCalled()
 		})
 
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
 			shape({
 				tileOrigin,

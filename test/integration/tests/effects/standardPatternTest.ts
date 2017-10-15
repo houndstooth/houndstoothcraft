@@ -6,7 +6,7 @@ import state from '../../../../src/state'
 import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('standard houndstooth pattern', () => {
-	// eslint-disable-next-line max-len
+	// tslint:disable-next-line:max-line-length
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
 		activateTestMarkerCanvas()
 

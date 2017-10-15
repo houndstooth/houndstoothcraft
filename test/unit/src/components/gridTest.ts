@@ -38,7 +38,7 @@ describe('grid', () => {
 			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
 		})
 
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {
 			const quadrantCount = 4
 

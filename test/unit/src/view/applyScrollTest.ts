@@ -35,7 +35,7 @@ describe('apply scroll', () => {
 		] as Outline)
 	})
 
-	// eslint-disable-next-line max-len
+	// tslint:disable-next-line:max-line-length
 	it('returns the outline unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
 

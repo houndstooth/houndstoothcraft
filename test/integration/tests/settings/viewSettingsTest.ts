@@ -77,7 +77,7 @@ describe('.viewSettings', () => {
 	})
 
 	describe('.zoomOnCanvasCenter', () => {
-		// eslint-disable-next-line max-len
+		// tslint:disable-next-line:max-line-length
 		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
 			const zoom = 2
 			const houndstoothOverrides = {

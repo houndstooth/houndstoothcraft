@@ -464,7 +464,7 @@ describe('.colorSettings', () => {
 			})
 
 			describe('supertile', () => {
-				// eslint-disable-next-line max-len
+				// tslint:disable-next-line:max-line-length
 				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', () => {
 					const sufficientTileCountToDemonstrateSetting = 4
 					const houndstoothOverrides = {
@@ -687,7 +687,7 @@ describe('.colorSettings', () => {
 		})
 
 		describe('.flipGrain', () => {
-			// eslint-disable-next-line max-len
+			// tslint:disable-next-line:max-line-length
 			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
 				const sufficientTileCountToDemonstrateSetting = 2
 				const houndstoothOverrides = {

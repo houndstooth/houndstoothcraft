@@ -1,13 +1,13 @@
 import buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
 import state from '../../../../src/state'
-import window from '../../../../src/utilities/windowWrapper'
+import windowWrapper from '../../../../src/utilities/windowWrapper'
 
 describe('build animation function', () => {
 	let intervalFunction
 	let animationFunctionSpy
 	let stopConditionFunctionSpy
 	beforeEach(() => {
-		spyOn(window, 'clearInterval')
+		spyOn(windowWrapper, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		stopConditionFunctionSpy = jasmine.createSpy('stopConditionFunction')
 		intervalFunction = buildIntervalFunction({
@@ -23,7 +23,7 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionFunctionSpy).toHaveBeenCalled()
-		expect(window.clearInterval).not.toHaveBeenCalled()
+		expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
 	})
 
 	it('returns a function which calls clear interval on the current interval if the stop condition is met', () => {
@@ -33,6 +33,6 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionFunctionSpy).toHaveBeenCalled()
-		expect(window.clearInterval).toHaveBeenCalledWith(state.interval)
+		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 })

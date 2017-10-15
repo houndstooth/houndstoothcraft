@@ -15,7 +15,7 @@ const buildMockContext: BuildMockContext = ({ contextCallsOrder = [], toBlobSpy 
 	restore: (() => contextCallsOrder.push({ method: 'restore' })) as NullarySideEffector,
 	clearRect: (() => contextCallsOrder.push({ method: 'clearRect' })) as NullarySideEffector,
 	canvas: { toBlob: toBlobSpy },
-	drawImage: noop as NullarySideEffector,
+	drawImage: noop,
 	globalCompositeOperation: '',
 	fillStyle: '',
 })

@@ -58,8 +58,8 @@ describe('warning about conflicts', () => {
 		warnAboutConflicts = true
 		settingsPath = [ 'tileSettings' ]
 		settingName = 'getTileOriginAndSize'
-		existingSetting = a => a + 1
-		overridingSetting = a => a + 1
+		existingSetting = a => a
+		overridingSetting = a => a
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
@@ -71,13 +71,13 @@ describe('warning about conflicts', () => {
 		warnAboutConflicts = true
 		settingsPath = [ 'tileSettings' ]
 		settingName = 'getTileOriginAndSize'
-		existingSetting = a => a + 1
-		overridingSetting = b => b + 1
+		existingSetting = a => a
+		overridingSetting = b => b
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a + 1; }` was overridden by `function (b) { return b + 1; }`'
+		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` was overridden by `function (b) { return b; }`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})

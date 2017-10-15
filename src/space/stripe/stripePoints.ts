@@ -1,39 +1,71 @@
 import { Point, Coordinate } from '../types'
 
-const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	stripePosition as any * size + x,
-	y,
-] as Coordinate
+const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
+	const sizeAsNumber = size as number
+	const stripePositionAsAny = stripePosition as any
 
-const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	x,
-	stripePosition as any * size + y,
-] as Coordinate
+	return [
+		stripePositionAsAny * sizeAsNumber + x,
+		y,
+	] as Coordinate
+}
 
-const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	x + size,
-	y + (stripePosition as any - 1) * size,
-] as Coordinate
+const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
+	const sizeAsNumber = size as number
+	const stripePositionAsAny = stripePosition as any
 
-const pointAlongBottomEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => [
-	x + (stripePosition as any - 1) * size,
-	y + size,
-] as Coordinate
+	return [
+		x,
+		stripePositionAsAny * sizeAsNumber + y,
+	] as Coordinate
+}
 
-const pointInTopRightCorner: Point = ({ originAndSize: { x, y, size } }) => [
-	x + size,
-	y,
-] as Coordinate
+const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
+	const sizeAsNumber = size as number
+	const stripePositionAsAny = stripePosition as any
 
-const pointInBottomRightCorner: Point = ({ originAndSize: { x, y, size } }) => [
-	x + size,
-	y + size,
-] as Coordinate
+	return [
+		x + sizeAsNumber,
+		y + (stripePositionAsAny - 1) * sizeAsNumber,
+	] as Coordinate
+}
 
-const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) => [
-	x,
-	y + size,
-] as Coordinate
+const pointAlongBottomEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
+	const sizeAsNumber = size as number
+	const stripePositionAsAny = stripePosition as any
+
+	return [
+		x + (stripePositionAsAny - 1) * sizeAsNumber,
+		y + sizeAsNumber,
+	] as Coordinate
+}
+
+const pointInTopRightCorner: Point = ({ originAndSize: { x, y, size } }) => {
+	const sizeAsNumber = size as number
+
+	return [
+		x + sizeAsNumber,
+		y,
+	] as Coordinate
+}
+
+const pointInBottomRightCorner: Point = ({ originAndSize: { x, y, size } }) => {
+	const sizeAsNumber = size as number
+
+	return [
+		x + sizeAsNumber,
+		y + sizeAsNumber,
+	] as Coordinate
+}
+
+const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) => {
+	const sizeAsNumber = size as number
+
+	return [
+		x,
+		y + sizeAsNumber,
+	] as Coordinate
+}
 
 export {
 	pointAlongTopEdge,

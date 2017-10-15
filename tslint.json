@@ -23,6 +23,9 @@
     "interface-name": [
       "never-prefix"
     ],
+    "no-unbound-method": false,
+    "no-use-before-declare": false,
+    "strict-boolean-expressions": false,
     "no-any": false,
     "no-magic-numbers": false,
     "typedef": false,
@@ -35,6 +38,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "callable-types": false,
-    "interface-over-type-literal": false
+    "interface-over-type-literal": false,
+    "no-unsafe-any": false
   }
 }

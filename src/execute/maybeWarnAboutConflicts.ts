@@ -4,7 +4,6 @@ import { warn } from '../ui'
 import { PropertyPath } from '../utilities/types'
 import { Setting } from '../store'
 import settingPath from './settingPath'
-import set = Reflect.set
 
 type MaybeWarnAboutConflicts = {
 	({}: {

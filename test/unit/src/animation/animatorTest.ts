@@ -1,7 +1,7 @@
 import animator from '../../../../src/animation/animator'
 import state from '../../../../src/state'
 import * as buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
-import window from '../../../../src/utilities/windowWrapper'
+import windowWrapper from '../../../../src/utilities/windowWrapper'
 import noop from '../../../helpers/noop'
 
 describe('animator', () => {
@@ -12,7 +12,7 @@ describe('animator', () => {
 	let interval
 	beforeEach(() => {
 		interval = noop
-		spyOn(window, 'setInterval').and.returnValue(interval)
+		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
 		spyOn(buildIntervalFunction, 'default').and.returnValue(intervalFunction)
 
@@ -31,7 +31,7 @@ describe('animator', () => {
 	})
 
 	it('schedules this augmented function to be run at the frame rate', () => {
-		expect(window.setInterval).toHaveBeenCalledWith(intervalFunction, frameRate)
+		expect(windowWrapper.setInterval).toHaveBeenCalledWith(intervalFunction, frameRate)
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {

@@ -8,6 +8,7 @@ const createCheckbox: { ({}: { houndstoothEffect: Houndstooth }): InputElement }
 
 	checkbox.setAttribute('type', 'checkbox')
 	checkbox.classList.add(houndstoothEffect.name.replace(/ /g, '-'))
+	// tslint:disable-next-line:no-void-expression
 	checkbox.onclick = buildEffectToggleClickHandler({ checkbox, houndstoothEffect })
 	checkbox.style.cursor = 'pointer'
 

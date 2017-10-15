@@ -1,5 +1,5 @@
 import state from '../state'
-import window from '../utilities/windowWrapper'
+import windowWrapper from '../utilities/windowWrapper'
 import buildIntervalFunction from './buildIntervalFunction'
 
 type Animator = {
@@ -11,7 +11,7 @@ type Animator = {
 }
 const animator: Animator = ({ animationFunction, frameRate, stopConditionFunction }) => {
 	const intervalFunction = buildIntervalFunction({ animationFunction, stopConditionFunction })
-	state.interval = window.setInterval(intervalFunction, frameRate)
+	state.interval = windowWrapper.setInterval(intervalFunction, frameRate)
 }
 
 export default animator

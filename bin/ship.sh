@@ -6,7 +6,7 @@ npm i -g npm
 npm update
 
 eslint '**/*.ts' --fix
-tslint '**/*.ts' -e **/node_modules/** --fix
+tslint '**/*.ts' -e **/node_modules/** --fix --type-check --project tsconfig.json
 
 sh ./bin/pull.sh
 

@@ -31,16 +31,16 @@ const mockWindow: Window = {
 	},
 }
 
-const consoleDummy = console
+const consoleWrapper = console
 
-const documentDummy = global.window ? document : mockDocument
+const documentWrapper = global.window ? document : mockDocument
 
-const windowDummy = global.window ? window : mockWindow
+const windowWrapper = global.window ? window : mockWindow
 
 export {
-	consoleDummy as console,
-	documentDummy as document,
-	windowDummy as window,
+	consoleWrapper as console,
+	documentWrapper as document,
+	windowWrapper as window,
 }
 
-export default windowDummy
+export default windowWrapper

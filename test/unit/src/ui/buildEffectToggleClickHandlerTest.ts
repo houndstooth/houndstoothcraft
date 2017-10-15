@@ -13,6 +13,7 @@ describe('build effect toggle click handler', () => {
 
 		const mockHoundstoothEffect = { name: 'mock tooth' }
 
+		// tslint:disable-next-line:no-void-expression
 		const clickHandler = buildEffectToggleClickHandler({ checkbox, houndstoothEffect: mockHoundstoothEffect })
 
 		expect(resetInterfaceSpy).not.toHaveBeenCalled()

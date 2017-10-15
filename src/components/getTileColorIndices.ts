@@ -90,7 +90,7 @@ const applySwitcheroo: ApplySwitcheroo = ({ tileColorIndices, gridAddress }) => 
 		return reversed(tileColorIndices) as TileColorIndices
 	}
 
-	return tileColorIndices as TileColorIndices
+	return tileColorIndices
 }
 
 export default getTileColorIndices

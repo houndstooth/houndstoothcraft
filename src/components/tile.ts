@@ -1,4 +1,4 @@
-import { defaultToTrue, deepClone } from '../utilities/codeUtilities'
+import { defaultToTrue } from '../utilities/codeUtilities'
 import { shape, ShapeParams } from '../render'
 import { squareOutline, stripeOutline, Coordinate } from '../space'
 import { PERIMETER_SCALAR } from '../constants'
@@ -66,7 +66,7 @@ const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePo
 		getOutline: stripeOutline,
 		stripeIndex,
 		outlineOptions: {
-			stripeStart: stripeStart as StripePosition,
+			stripeStart,
 			stripeEnd: (stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR) as StripePosition,
 		},
 	})

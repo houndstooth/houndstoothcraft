@@ -2,7 +2,7 @@
 import { PropertyPath } from './types'
 
 const iterator: { (i: number, options?: { oneIndexed: boolean }): number[] } = (i, options = { oneIndexed: false }) => {
-	let iter = []
+	let iter: number[] = []
 	for (let j = 0; j < Math.ceil(i); j++) {
 		iter.push(j)
 	}
@@ -44,7 +44,7 @@ const deepClone: { <T>(objectToDeepClone: T): T } = objectToDeepClone => {
 	return clonedObject
 }
 
-type SetAllPropertiesOfObjectOnAnother = { ({}: { objectWithProperties: {}, objectToChange: {} }): void }
+type SetAllPropertiesOfObjectOnAnother = { ({}: { objectWithProperties, objectToChange }): void }
 const setAllPropertiesOfObjectOnAnother: SetAllPropertiesOfObjectOnAnother = params => {
 	const { objectWithProperties, objectToChange } = params
 	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {

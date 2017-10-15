@@ -117,9 +117,11 @@ describe('get tile color indices', () => {
 				[ [ 9, 8 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
 				[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 16, 15 ] ],
 			]
-			expectedSetOfTileColorIndices.forEach((col, x) => col.forEach((expectedTileColorIndices, y) => {
-				expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
-			}))
+			expectedSetOfTileColorIndices.forEach((col, x) => {
+				col.forEach((expectedTileColorIndices, y) => {
+					expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
+				})
+			})
 		})
 
 		it('calls an arbitrary transformation, if provided', () => {
@@ -150,9 +152,11 @@ describe('get tile color indices', () => {
 					[ 0, 1, 0, 1 ],
 				],
 			]
-			expectedSetOfTileColorIndices.forEach((col, x) => col.forEach((expectedTileColorIndices, y) => {
-				expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
-			}))
+			expectedSetOfTileColorIndices.forEach((col, x) => {
+				col.forEach((expectedTileColorIndices, y) => {
+					expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
+				})
+			})
 		})
 	})
 })

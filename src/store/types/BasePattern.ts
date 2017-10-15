@@ -17,6 +17,7 @@ type BasePattern = {
 	},
 	tileSettings?: {
 		tileSizeSetting?: number,
+		collapseSameColoredShapesWithinTile?: boolean,
 		getTileOriginAndSize?(p?: any): TileOriginAndSize,
 	},
 	colorSettings?: {
@@ -42,6 +43,9 @@ type BasePattern = {
 	},
 	animationSettings?: {
 		frameRate?: number,
+		startAnimationFrame?: number,
+		endAnimationFrame?: number,
+		refreshCanvas?: boolean,
 	},
 	layerSettings?: {
 		startLayer?: number,

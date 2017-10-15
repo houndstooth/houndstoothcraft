@@ -6,7 +6,7 @@ const applyZoom: { (outline: Outline): Outline } = outline => outline.map(adjust
 const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordinate => {
 	const viewSettings = state.mainHoundstooth.basePattern.viewSettings || {}
 	const { zoom, zoomOnCanvasCenter, canvasSize, centerViewOnCenterOfTileAtHomeAddress } = viewSettings
-	const halfCanvasSize = canvasSize / 2
+	const halfCanvasSize = canvasSize as number / 2
 	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })

@@ -48,13 +48,8 @@ const stripedTile: Tile = args => {
 type GetSquareArgs = {
 	({}: { args: TileParams }): ShapeParams,
 }
-const getSquareArgs: GetSquareArgs = ({ args }) => {
-	const squareArgs = deepClone(args)
 
-	squareArgs.getOutline = squareOutline
-
-	return squareArgs
-}
+const getSquareArgs: GetSquareArgs = ({ args }) => ({ ...args, getOutline: squareOutline })
 
 type GetStripeArgs = {
 	({}: {
@@ -64,15 +59,17 @@ type GetStripeArgs = {
 		stripePositions: StripePosition[],
 	}): ShapeParams,
 }
+
 const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
-	const stripeArgs = deepClone(args)
-
-	stripeArgs.getOutline = stripeOutline
-	stripeArgs.stripeIndex = stripeIndex
-	const stripeEnd = stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR
-	stripeArgs.outlineOptions = { stripeStart, stripeEnd }
-
-	return stripeArgs
+	return {
+		...args,
+		getOutline: stripeOutline,
+		stripeIndex: stripeIndex,
+		outlineOptions: {
+			stripeStart: stripeStart as StripePosition,
+			stripeEnd: (stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR) as StripePosition
+		},
+	}
 }
 
 export default tile

@@ -14,7 +14,7 @@ const applyScroll: { (outline: Outline): Outline } = outline => {
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: { (coordinate: Coordinate): Coordinate } = coordinate => {
 	const canvasSize = state.mainHoundstooth.basePattern.viewSettings.canvasSize
-	const canvasCenter = canvasSize / 2
+	const canvasCenter = canvasSize as number / 2
 
 	const tileSizeSetting = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 	const halfTileSize = tileSizeSetting / 2

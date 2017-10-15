@@ -1,7 +1,7 @@
 import { document } from '../utilities/windowWrapper'
 import { Dimensions } from './types'
 
-type CreateContext = { ({}: { canvasContainer: HTMLElement, canvasDimensions: Dimensions }): HTMLCanvasElement }
+type CreateContext = { ({}: { canvasContainer: HTMLElement, canvasDimensions: Dimensions }): CanvasRenderingContext2D }
 const createContext: CreateContext = ({ canvasContainer, canvasDimensions }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'

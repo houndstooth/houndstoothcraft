@@ -2,15 +2,18 @@ import state from '../state'
 import { Address, TileOriginAndSize } from './types'
 import { Coordinate } from '../space'
 
-type GetTileOriginAndSize = { ({}: { gridAddress: Address }): TileOriginAndSize }
-const getTileOriginAndSize: GetTileOriginAndSize = ({ gridAddress }) => {
+const getTileOriginAndSize: {
+	({}: { gridAddress: Address }): TileOriginAndSize,
+} = ({ gridAddress }) => {
 	const getTileOriginAndSizeFromState = state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize
 	const tileOriginAndSize = getTileOriginAndSizeFromState || getStandardTileOriginAndSize
 
 	return tileOriginAndSize({ gridAddress })
 }
 
-const getStandardTileOriginAndSize: GetTileOriginAndSize = ({ gridAddress }) => {
+const getStandardTileOriginAndSize: {
+	({}: { gridAddress: Address }): TileOriginAndSize,
+} = ({ gridAddress }) => {
 	const tileSize: any = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 
 	return {

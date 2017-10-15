@@ -4,29 +4,24 @@ import { clear } from '../canvas'
 import { deepClone } from '../utilities/codeUtilities'
 import exportFrame from './exportFrame'
 
-type BuildAnimationFunction = {
+const buildAnimationFunction: {
 	({}: {
 		startAnimationFrame: number,
 		animationFunctionObjects: SettingsFunctionObject[],
 		layerFunctionObjects: SettingsFunctionObject[],
 		refreshCanvas: boolean,
 	}): () => void,
-}
-const buildAnimationFunction: BuildAnimationFunction = params => {
-	const { startAnimationFrame, animationFunctionObjects, layerFunctionObjects, refreshCanvas } = params
-
-	return () => {
-		if (exportingFramesStillNeedsToCatchUp()) {
-			return
-		}
-
-		if (shouldBeginShowingAnimation(startAnimationFrame)) {
-			animate({ layerFunctionObjects, refreshCanvas })
-		}
-
-		callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
-		state.currentAnimationFrame++
+} = ({ startAnimationFrame, animationFunctionObjects, layerFunctionObjects, refreshCanvas }) => () => {
+	if (exportingFramesStillNeedsToCatchUp()) {
+		return
 	}
+
+	if (shouldBeginShowingAnimation(startAnimationFrame)) {
+		animate({ layerFunctionObjects, refreshCanvas })
+	}
+
+	callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
+	state.currentAnimationFrame++
 }
 
 const exportingFramesStillNeedsToCatchUp: { (): boolean } = () =>
@@ -35,8 +30,9 @@ const exportingFramesStillNeedsToCatchUp: { (): boolean } = () =>
 const shouldBeginShowingAnimation: { (startAnimationFrame: number): boolean } = startAnimationFrame =>
 	state.currentAnimationFrame >= startAnimationFrame
 
-type Animate = { ({}: { layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean }): void }
-const animate: Animate = ({ layerFunctionObjects, refreshCanvas }) => {
+const animate: {
+	({}: { layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean }): void,
+} = ({ layerFunctionObjects, refreshCanvas }) => {
 	if (refreshCanvas) {
 		clear()
 	}

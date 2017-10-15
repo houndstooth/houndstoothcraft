@@ -12,16 +12,14 @@ const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordi
 	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })
 }
 
-type DoAdjustment = {
+const doAdjustment: {
 	({}: {
 		coordinate: Coordinate,
 		shouldAdjustForCentering: boolean,
 		halfCanvasSize: number,
 		zoom: number,
 	}): Coordinate,
-}
-
-const doAdjustment: DoAdjustment = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
+} = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
 	let coordinateAdjustedForZoom = coordinate
 
 	if (shouldAdjustForCentering) {

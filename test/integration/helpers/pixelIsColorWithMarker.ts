@@ -3,9 +3,9 @@ import pixelIsColor from './pixelIsColor'
 import { Coordinate } from '../../../src/space'
 import { Color } from '../../../src/render'
 
-type PixelIsColorWithMarker = { ({}: { coordinateUnderTest: Coordinate, expectedColor: Color, id: number }): boolean }
-
-const pixelIsColorWithMarker: PixelIsColorWithMarker = ({ coordinateUnderTest, expectedColor, id }) => {
+const pixelIsColorWithMarker: {
+	({}: { coordinateUnderTest: Coordinate, expectedColor: Color, id: number }): boolean,
+} = ({ coordinateUnderTest, expectedColor, id }) => {
 	const passed = pixelIsColor(coordinateUnderTest, expectedColor)
 	drawPassMarker({ passed, coordinateUnderTest, id })
 

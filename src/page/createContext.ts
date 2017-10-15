@@ -1,8 +1,9 @@
 import { document } from '../utilities/windowWrapper'
-import { Dimensions, PageElement } from './types'
+import { Dimensions, PageElement, Context } from './types'
 
-type CreateContext = { ({}: { canvasContainer: PageElement, canvasDimensions: Dimensions }): CanvasRenderingContext2D }
-const createContext: CreateContext = ({ canvasContainer, canvasDimensions }) => {
+const createContext: {
+	({}: { canvasContainer: PageElement, canvasDimensions: Dimensions }): Context,
+} = ({ canvasContainer, canvasDimensions }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
 	canvas.width = canvasDimensions[ 0 ]

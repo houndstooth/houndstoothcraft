@@ -8,9 +8,9 @@ import executeAnimation from './executeAnimation'
 import { SettingsFunctionObject } from './types'
 import { NullarySideEffector } from '../utilities/types'
 
-type ExecuteSelectedHoundstoothEffects = { ({}?: { houndstoothOverrides?: Houndstooth }): void }
-
-const executeSelectedHoundstoothEffects: ExecuteSelectedHoundstoothEffects = ({ houndstoothOverrides } = {}) => {
+const executeSelectedHoundstoothEffects: {
+	({}?: { houndstoothOverrides?: Houndstooth }): void,
+} = ({ houndstoothOverrides } = {}) => {
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
 	const layerFunctionObjects = prepareFunctionObjectsPerSetting({

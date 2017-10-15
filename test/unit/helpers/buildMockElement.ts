@@ -1,6 +1,6 @@
 import MockElement from '../../types/MockElement'
 
-type BuildMockElement = {
+const buildMockElement: {
 	({}?: {
 		mockClassList?,
 		mockChildren?,
@@ -9,10 +9,7 @@ type BuildMockElement = {
 		parentNodeInsertBeforeSpy?,
 		clickSpy?,
 	}): MockElement,
-}
-
-const buildMockElement: BuildMockElement = params => {
-	const paramsWithFallback = params || {}
+} = (params = {}) => {
 	const {
 		mockClassList = [],
 		mockChildren = [],
@@ -20,7 +17,7 @@ const buildMockElement: BuildMockElement = params => {
 		parentNodeRemoveChildSpy,
 		parentNodeInsertBeforeSpy,
 		clickSpy,
-	} = paramsWithFallback
+	} = params
 
 	return {
 		classList: {

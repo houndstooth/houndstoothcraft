@@ -10,6 +10,7 @@ import {
 	TileOriginAndSize,
 	StripePosition,
 	Units,
+	GetStripePosition,
 } from './types'
 
 export {
@@ -24,4 +25,5 @@ export {
 	TileOriginAndSize,
 	StripePosition,
 	Units,
+	GetStripePosition,
 }

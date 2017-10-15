@@ -4,20 +4,13 @@ import state from '../state'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
 
-type ComposeMainHoundstooth = {
+const composeMainHoundstooth: {
 	({}?: {
 		houndstoothEffects?: Houndstooth[],
 		houndstoothOverrides?: Houndstooth,
 		logComposedMainHoundstooth?: boolean,
 	}): void,
-}
-const composeMainHoundstooth: ComposeMainHoundstooth = params => {
-	const {
-		houndstoothEffects = [],
-		houndstoothOverrides = {},
-		logComposedMainHoundstooth = false,
-	} = params || {}
-
+} = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth = false } = {}) => {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	composePattern({
@@ -44,15 +37,14 @@ const composeMainHoundstooth: ComposeMainHoundstooth = params => {
 	}
 }
 
-type ComposePattern = {
+const composePattern: {
 	({}: {
 		patternToCompose: Pattern,
 		patternDefaults: Pattern,
 		patternEffects: Pattern,
 		patternOverrides: Pattern,
 	}): void,
-}
-const composePattern: ComposePattern = ({ patternToCompose, patternDefaults, patternEffects, patternOverrides }) => {
+} = ({ patternToCompose, patternDefaults, patternEffects, patternOverrides }) => {
 	composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: patternDefaults,

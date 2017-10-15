@@ -4,9 +4,9 @@ import { Context } from '../page'
 import fill from './fill'
 import { Color } from './types'
 
-type Draw = { ({}: { context: Context, shapeColor: Color, outline: Outline }): void }
-
-const draw: Draw = ({ context, shapeColor, outline }) => {
+const draw: {
+	({}: { context: Context, shapeColor: Color, outline: Outline }): void,
+} = ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) {
 		return
 	}

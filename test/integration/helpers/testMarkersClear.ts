@@ -2,9 +2,10 @@ import { CANVAS_SIZE } from '../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../helpers/getFromBasePatternOrDefault'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { NullarySideEffector } from '../../../src/utilities/types'
+import Canvas from '../../../src/page/types/Canvas'
 
 const testMarkersClear: NullarySideEffector = (() => {
-	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement
+	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as Canvas
 	if (!testMarkersCanvas) {
 		testMarkersCanvas = createTestMarkersCanvas()
 	}

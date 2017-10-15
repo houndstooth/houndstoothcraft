@@ -12,9 +12,7 @@ const getStripePositionsForTile: { ({}?: { gridAddress? }): StripePosition[] } =
 
 const standardStripePositions: { (): StripePosition[] } = () => perStripe({ getStripePosition: standardStripePosition })
 
-type StandardStripePosition = { ({}: { stripeIndex, stripeCount }): StripePosition }
-
-const standardStripePosition: StandardStripePosition = ({ stripeIndex, stripeCount }) =>
+const standardStripePosition: { ({}: { stripeIndex, stripeCount }): StripePosition } = ({ stripeIndex, stripeCount }) =>
 	stripeIndex / stripeCount as any
 
 export default getStripePositionsForTile

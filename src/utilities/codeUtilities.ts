@@ -44,9 +44,9 @@ const deepClone: { <T>(objectToDeepClone: T): T } = objectToDeepClone => {
 	return clonedObject
 }
 
-type SetAllPropertiesOfObjectOnAnother = { ({}: { objectWithProperties, objectToChange }): void }
-const setAllPropertiesOfObjectOnAnother: SetAllPropertiesOfObjectOnAnother = params => {
-	const { objectWithProperties, objectToChange } = params
+const setAllPropertiesOfObjectOnAnother: {
+	({}: { objectWithProperties, objectToChange }): void,
+} = ({ objectWithProperties, objectToChange }) => {
 	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {
 		objectToChange[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
 	})
@@ -67,18 +67,18 @@ const deepCloneMaybeNotObject: { <T>(maybeObjectToDeepClone: T): T } = maybeObje
 	return clonedMaybeObject
 }
 
-type DeeperPath = { ({}: { propertyPath: PropertyPath, propertyName: string }): PropertyPath }
-
-const deeperPath: DeeperPath = ({ propertyPath, propertyName }) => {
+const deeperPath: {
+	({}: { propertyPath: PropertyPath, propertyName: string }): PropertyPath,
+} = ({ propertyPath, propertyName }) => {
 	const path = propertyPath.slice()
 	path.push(propertyName)
 
 	return path as PropertyPath
 }
 
-type AccessChildPropertyOrCreatePath = { ({}: { objectWithProperties: object, propertyPath: PropertyPath }): any }
-
-const accessChildPropertyOrCreatePath: AccessChildPropertyOrCreatePath = ({ objectWithProperties, propertyPath }) => {
+const accessChildPropertyOrCreatePath: {
+	({}: { objectWithProperties: object, propertyPath: PropertyPath }): any,
+} = ({ objectWithProperties, propertyPath }) => {
 	let childProperty = objectWithProperties
 	propertyPath.forEach(pathStep => {
 		if (!isDefined(childProperty[ pathStep ])) {
@@ -94,13 +94,14 @@ const defaultToTrue: { <T>(property: T): T | boolean } = property => isDefined(p
 
 const isDefined: { <T>(property: T): boolean } = property => typeof property !== 'undefined'
 
-type PropertyIsDefinedOnObject = { ({}: { objectWithProperties: object, propertyName: string }): boolean }
-
-const propertyIsDefinedOnObject: PropertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) =>
+const propertyIsDefinedOnObject: {
+	({}: { objectWithProperties: object, propertyName: string }): boolean,
+} = ({ propertyName, objectWithProperties }) =>
 	isDefined(objectWithProperties[ propertyName ])
 
-type ChangeObjectIntoCopy = { ({}: { objectToChange: object, objectWithProperties: object }): void }
-const changeObjectIntoCopy: ChangeObjectIntoCopy = ({ objectToChange, objectWithProperties }) => {
+const changeObjectIntoCopy: {
+	({}: { objectToChange: object, objectWithProperties: object }): void,
+} = ({ objectToChange, objectWithProperties }) => {
 	Object.keys(objectToChange).forEach(key => delete objectToChange[ key ])
 	setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
 }

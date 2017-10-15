@@ -3,10 +3,9 @@ import { defaultToTrue } from '../utilities/codeUtilities'
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 import { SettingsFunctionObject } from './types'
 
-type ExecuteAnimation = {
+const executeAnimation: {
 	({}: { layerFunctionObjects: SettingsFunctionObject[], animationFunctionObjects: SettingsFunctionObject[] }): void,
-}
-const executeAnimation: ExecuteAnimation = ({ layerFunctionObjects, animationFunctionObjects }) => {
+} = ({ layerFunctionObjects, animationFunctionObjects }) => {
 	const animationSettings = state.mainHoundstooth.basePattern.animationSettings || {}
 	const { frameRate, endAnimationFrame } = animationSettings
 	let { startAnimationFrame, refreshCanvas } = animationSettings

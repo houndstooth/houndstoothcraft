@@ -1,6 +1,6 @@
-type ThisAnimationFrameOnly = { (frame: number): { startAnimationFrame: number, endAnimationFrame: number } }
-
-const thisAnimationFrameOnly: ThisAnimationFrameOnly = frame => ({
+const thisAnimationFrameOnly: {
+	(frame: number): { startAnimationFrame: number, endAnimationFrame: number },
+} = frame => ({
 	startAnimationFrame: frame,
 	endAnimationFrame: frame,
 })

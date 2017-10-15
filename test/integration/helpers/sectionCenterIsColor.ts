@@ -5,7 +5,7 @@ import { Color } from '../../../src/render'
 import { Address } from '../../../src/components'
 import Units from '../../../src/components/types/Units'
 
-type SectionCenterIsColor = {
+const sectionCenterIsColor: {
 	({}: {
 		areaOrigin: Coordinate,
 		areaSize: Units,
@@ -14,10 +14,7 @@ type SectionCenterIsColor = {
 		color: Color,
 		id?: number,
 	}): boolean,
-}
-
-const sectionCenterIsColor: SectionCenterIsColor = params => {
-	const { areaOrigin, areaSize, sectionResolution, sectionAddress, color, id } = params
+} = ({ areaOrigin, areaSize, sectionResolution, sectionAddress, color, id }) => {
 	const coordinateUnderTest = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
 	const passed = pixelIsColor(coordinateUnderTest, color)
 	drawPassMarker({ passed, coordinateUnderTest, id })
@@ -25,16 +22,14 @@ const sectionCenterIsColor: SectionCenterIsColor = params => {
 	return passed
 }
 
-type SectionCenter = {
+const sectionCenter: {
 	({}: {
 		areaOrigin: Coordinate,
 		areaSize: Units,
 		sectionResolution: number,
 		sectionAddress: Address,
 	}): Coordinate,
-}
-
-const sectionCenter: SectionCenter = ({ areaOrigin, areaSize, sectionResolution, sectionAddress }) => {
+} = ({ areaOrigin, areaSize, sectionResolution, sectionAddress }) => {
 	const sectionSize = areaSize as any / sectionResolution
 	const areaX = areaOrigin[0] as any
 	const areaY = areaOrigin[1] as any

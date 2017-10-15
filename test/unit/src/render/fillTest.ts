@@ -9,7 +9,7 @@ import Outline from '../../../../src/space/types/Outline'
 describe('fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
-	const context = buildMockContext() as CanvasRenderingContext2D
+	const context = buildMockContext()
 	const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
 
 	beforeEach(() => {

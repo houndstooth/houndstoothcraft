@@ -4,17 +4,14 @@ import { PropertyPath } from '../utilities/types'
 import { Color } from '../render'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 
-type ComposePatterns = {
+const composePatterns: {
 	({}: {
 		patternToBeMergedOnto: Pattern,
 		patternToMerge: Pattern,
 		settingsPath?: PropertyPath,
 		warnAboutConflicts?: boolean,
 	}): void,
-}
-
-const composePatterns: ComposePatterns = params => {
-	const { patternToBeMergedOnto, patternToMerge, settingsPath = [] as PropertyPath, warnAboutConflicts } = params
+} = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [] as PropertyPath, warnAboutConflicts }) => {
 	if (!patternToMerge) {
 		return
 	}

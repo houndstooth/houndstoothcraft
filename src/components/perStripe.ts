@@ -1,13 +1,9 @@
 import state from '../state'
 import { PERIMETER_SCALAR } from '../constants'
 import { iterator } from '../utilities/codeUtilities'
-import { StripePosition } from './types'
+import { StripePosition, GetStripePosition } from './types'
 
-type GetStripePosition = { ({}: { stripeIndex: number, stripeCount: number }): StripePosition }
-
-type PerStripe = { ({}: { getStripePosition: GetStripePosition }): StripePosition[] }
-
-const perStripe: PerStripe = ({ getStripePosition }) => {
+const perStripe: { ({}: { getStripePosition: GetStripePosition }): StripePosition[] } = ({ getStripePosition }) => {
 	const stripeCount = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCountSetting
 
 	return iterator(stripeCount).map(stripeIndex =>

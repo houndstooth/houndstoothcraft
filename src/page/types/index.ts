@@ -1,5 +1,6 @@
 import Dimensions from './Dimensions'
 import Context from './Context'
+import Canvas from './Canvas'
 import PageElement from './PageElement'
 import InputElement from './InputElement'
 import LabelElement from './LabelElement'
@@ -10,4 +11,5 @@ export {
 	PageElement,
 	InputElement,
 	LabelElement,
+	Canvas,
 }

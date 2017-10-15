@@ -7,9 +7,9 @@ const quarterSquareNumber: { (n: number): number } = n => Math.floor(Math.pow(n,
 const trapezoidalNumber: { ({}: { start: number, height: number }): number } = ({ start, height }) =>
 	triangularNumber(start + height) - triangularNumber(start)
 
-type TermialRoot = { ({}: { rangeStart: number, rangeDelta: number, n: number }): number }
-
-const termialRoot: TermialRoot = ({ rangeStart, rangeDelta, n }) => {
+const termialRoot: {
+	({}: { rangeStart: number, rangeDelta: number, n: number }): number,
+} = ({ rangeStart, rangeDelta, n }) => {
 	const c = 2 * rangeStart
 	const a = Math.pow(c - rangeDelta, 2)
 	const b = 8 * rangeDelta * n

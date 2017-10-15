@@ -6,6 +6,7 @@ import Assignment from './Assignment'
 import Supertile from './Supertile'
 import Weave from './Weave'
 import Units from './Units'
+import GetStripePosition from './GetStripePosition'
 
 export {
 	Address,
@@ -16,4 +17,5 @@ export {
 	Supertile,
 	Weave,
 	Units,
+	GetStripePosition,
 }

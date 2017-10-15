@@ -2,9 +2,9 @@ import noop from './noop'
 import { NullarySideEffector } from '../../src/utilities/types'
 import MockContext from '../types/MockContext'
 
-type BuildMockContext = { ({}?: { contextCallsOrder?, toBlobSpy? }): MockContext }
-
-const buildMockContext: BuildMockContext = ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
+const buildMockContext: {
+	({}?: { contextCallsOrder?, toBlobSpy? }): MockContext,
+} = ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	beginPath: (() => contextCallsOrder.push({ method: 'beginPath' })) as NullarySideEffector,
 	moveTo: ((x, y) => contextCallsOrder.push({ method: 'moveTo', x, y })) as NullarySideEffector,
 	lineTo: ((x, y) => contextCallsOrder.push({ method: 'lineTo', x, y })) as NullarySideEffector,

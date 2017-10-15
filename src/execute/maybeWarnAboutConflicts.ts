@@ -5,7 +5,7 @@ import { PropertyPath } from '../utilities/types'
 import { Setting } from '../store'
 import settingPath from './settingPath'
 
-type MaybeWarnAboutConflicts = {
+const maybeWarnAboutConflicts: {
 	({}: {
 		warnAboutConflicts: boolean,
 		settingsPath: PropertyPath,
@@ -13,9 +13,7 @@ type MaybeWarnAboutConflicts = {
 		existingSetting: Setting,
 		overridingSetting: Setting,
 	}): void,
-}
-const maybeWarnAboutConflicts: MaybeWarnAboutConflicts = params => {
-	const { warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting } = params
+} = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
 		const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
 		console.warn(warning)
@@ -23,12 +21,10 @@ const maybeWarnAboutConflicts: MaybeWarnAboutConflicts = params => {
 	}
 }
 
-type ShouldWarnAboutConflicts = { ({}: { warnAboutConflicts, existingSetting, overridingSetting }): boolean }
-const shouldWarnAboutConflicts: ShouldWarnAboutConflicts = params => {
-	const { warnAboutConflicts, existingSetting, overridingSetting } = params
-
-	return warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
-}
+const shouldWarnAboutConflicts: {
+	({}: { warnAboutConflicts, existingSetting, overridingSetting }): boolean,
+} = ({ warnAboutConflicts, existingSetting, overridingSetting }) =>
+	warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 
 const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
 	let settingsEqual
@@ -46,16 +42,14 @@ const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
 	return settingsEqual
 }
 
-type BuildWarningMessage = {
+const buildWarningMessage: {
 	({}: {
 		settingsPath: PropertyPath,
 		settingName: string,
 		existingSetting: Setting,
 		overridingSetting: Setting,
 	}): string,
-}
-const buildWarningMessage: BuildWarningMessage = params => {
-	const { settingsPath, settingName, existingSetting, overridingSetting } = params
+} = ({ settingsPath, settingName, existingSetting, overridingSetting }) => {
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
 	const fullSettingPath = settingPath({ settingsPath, settingName })

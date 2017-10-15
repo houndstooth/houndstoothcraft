@@ -1,7 +1,8 @@
 import { Coordinate } from './types'
 
-type RotateCoordinateAboutPoint = { ({}: { coordinate: Coordinate, point: Coordinate, rotation: number }): Coordinate }
-const rotateCoordinateAboutPoint: RotateCoordinateAboutPoint = ({ coordinate, point, rotation }) => {
+const rotateCoordinateAboutPoint: {
+	({}: { coordinate: Coordinate, point: Coordinate, rotation: number }): Coordinate,
+} = ({ coordinate, point, rotation }) => {
 	const sin = Math.sin(rotation)
 	const cos = Math.cos(rotation)
 

@@ -11,8 +11,6 @@ import { Address, StripePosition, TileColorIndices, Units } from './types'
 
 type TileParams = { gridAddress: Address, tileOrigin: Coordinate, tileSize: Units, tileColorIndices: TileColorIndices }
 
-type Tile = { ({}: TileParams): void }
-
 const tile: { ({}: { gridAddress: Address }): void } = ({ gridAddress }) => {
 	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
 	if (!tileOrigin) {
@@ -32,12 +30,12 @@ const shouldUseSquare: { ({}: { tileColorIndices: TileColorIndices }): boolean }
 	return shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
 }
 
-const squareTile: Tile = args => {
+const squareTile: { ({}: TileParams): void } = args => {
 	const squareArgs = getSquareArgs({ args })
 	shape(squareArgs)
 }
 
-const stripedTile: Tile = args => {
+const stripedTile: { ({}: TileParams): void } = args => {
 	const stripePositions = getStripePositionsForTile({ gridAddress: args.gridAddress })
 	stripePositions.forEach((stripeStart, stripeIndex) => {
 		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
@@ -45,22 +43,19 @@ const stripedTile: Tile = args => {
 	})
 }
 
-type GetSquareArgs = {
-	({}: { args: TileParams }): ShapeParams,
-}
+const getSquareArgs: { ({}: { args: TileParams }): ShapeParams } = ({ args }) => ({
+	...args,
+	getOutline: squareOutline,
+})
 
-const getSquareArgs: GetSquareArgs = ({ args }) => ({ ...args, getOutline: squareOutline })
-
-type GetStripeArgs = {
+const getStripeArgs: {
 	({}: {
 		args: TileParams,
 		stripeStart: StripePosition,
 		stripeIndex: number,
 		stripePositions: StripePosition[],
 	}): ShapeParams,
-}
-
-const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) =>
+} = ({ args, stripeStart, stripeIndex, stripePositions }) =>
 	({
 		...args,
 		getOutline: stripeOutline,

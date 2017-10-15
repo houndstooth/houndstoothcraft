@@ -4,8 +4,9 @@ import { Houndstooth } from '../store'
 import { InputElement } from '../page'
 import resetInterface from './resetInterface'
 
-type BuildEffectToggleClickHandler = { ({}: { checkbox: InputElement, houndstoothEffect: Houndstooth }): void }
-const buildEffectToggleClickHandler: BuildEffectToggleClickHandler = ({ checkbox, houndstoothEffect }) => () => {
+const buildEffectToggleClickHandler: {
+	({}: { checkbox: InputElement, houndstoothEffect: Houndstooth }): void,
+} = ({ checkbox, houndstoothEffect }) => () => {
 	resetInterface()
 
 	const effectFunction = checkbox.checked ? addEffect : removeEffect

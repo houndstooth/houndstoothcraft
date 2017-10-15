@@ -1,11 +1,9 @@
 import sectionCenterIsColor from './sectionCenterIsColor'
 import { Color, Coordinate, Address, Units } from '../../../src'
 
-type StandardTileIsColors = {
+const standardTileIsColors: {
 	({}: { tileOrigin: Coordinate, tileSize: Units, colors: Color[], baseId: number }): boolean,
-}
-
-const standardTileIsColors: StandardTileIsColors = ({ tileOrigin: areaOrigin, tileSize: areaSize, colors, baseId }) => {
+} = ({ tileOrigin: areaOrigin, tileSize: areaSize, colors, baseId }) => {
 	const expectations = [
 		{
 			areaOrigin,

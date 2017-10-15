@@ -1,7 +1,8 @@
 import state from '../state'
 
-type BuildStopConditionFunction = { ({}: { endAnimationFrame: number }): () => boolean }
-const buildStopConditionFunction: BuildStopConditionFunction = ({ endAnimationFrame }) => () =>
+const buildStopConditionFunction: {
+	({}: { endAnimationFrame: number }): () => boolean,
+} = ({ endAnimationFrame }) => () =>
 	state.currentAnimationFrame > endAnimationFrame
 
 export default buildStopConditionFunction

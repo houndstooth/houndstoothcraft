@@ -5,7 +5,7 @@ import Outline from '../../../../src/space/types/Outline'
 
 describe('draw', () => {
 	const shapeColor = { a: 1 }
-	const context = {} as CanvasRenderingContext2D
+	const context = {}
 
 	const adjustedOutline = []
 	beforeEach(() => {

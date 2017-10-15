@@ -16,10 +16,6 @@
     "module": false
   },
   "rules": {
-    "indent": [
-      "error",
-      "tab"
-    ],
     "quotes": [
       "error",
       "single"

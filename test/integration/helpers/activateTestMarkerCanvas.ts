@@ -5,9 +5,10 @@ import createCanvasContainer from '../../../src/page/createCanvasContainer'
 import testMarkersClear from './testMarkersClear'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { NullarySideEffector } from '../../../src/utilities/types'
-import Dimensions from '../../../src/page/types/Dimensions'
+import PageElement from '../../../src/page/types/PageElement'
+import Canvas from '../../../src/page/types/Canvas'
 
-const prepareCanvasForDisplayInTest: { (canvas: HTMLCanvasElement): void } = canvas => {
+const prepareCanvasForDisplayInTest: { (canvas: Canvas): void } = canvas => {
 	canvas.style.display = 'block'
 	canvas.style.position = 'absolute'
 	canvas.style.top = '0'
@@ -17,7 +18,7 @@ const prepareCanvasForDisplayInTest: { (canvas: HTMLCanvasElement): void } = can
 const activateTestMarkerCanvas: NullarySideEffector = (() => {
 	testMarkersClear()
 
-	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement
+	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as Canvas
 	if (!testMarkersCanvas) {
 		testMarkersCanvas = createTestMarkersCanvas()
 	}
@@ -25,11 +26,11 @@ const activateTestMarkerCanvas: NullarySideEffector = (() => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = '9001'
 
-	const canvasDimensions = getCanvasDimensions() as Dimensions
+	const canvasDimensions = getCanvasDimensions()
 	testMarkersCanvas.width = canvasDimensions[ 0 ]
 	testMarkersCanvas.height = canvasDimensions[ 1 ]
 
-	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area') as HTMLElement
+	const testCanvasDisplayArea = document.querySelector('.test-canvas-display-area') as PageElement
 	testCanvasDisplayArea.style.display = 'block'
 
 	scaleElement({ element: testCanvasDisplayArea, dimensions: canvasDimensions })

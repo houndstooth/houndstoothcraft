@@ -3,14 +3,13 @@ import { Pattern } from '../store'
 import { PropertyPath } from '../utilities/types'
 import { SettingsFunctionObject } from './types'
 
-type PrepareFunctionObjectsPerSetting = {
+const prepareFunctionObjectsPerSetting: {
 	({}: {
 		settingsFunctionsSourcePattern: Pattern,
 		settingsPath?: PropertyPath,
 		settingsFunctionObjects?: SettingsFunctionObject[],
 	}): SettingsFunctionObject[],
-}
-const prepareFunctionObjectsPerSetting: PrepareFunctionObjectsPerSetting = prepareFunctionObjectsPerSettingArgs => {
+} = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionsSourcePattern,
 		settingsPath = [] as PropertyPath,
@@ -37,8 +36,9 @@ const prepareFunctionObjectsPerSetting: PrepareFunctionObjectsPerSetting = prepa
 	return settingsFunctionObjects
 }
 
-type ShouldRecurse = { ({}: { maybeSettingsFunctionsSourcePattern: Pattern }): boolean }
-const shouldRecurse: ShouldRecurse = ({ maybeSettingsFunctionsSourcePattern }) => {
+const shouldRecurse: {
+	({}: { maybeSettingsFunctionsSourcePattern: Pattern }): boolean,
+} = ({ maybeSettingsFunctionsSourcePattern }) => {
 	if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
 		return false
 	}

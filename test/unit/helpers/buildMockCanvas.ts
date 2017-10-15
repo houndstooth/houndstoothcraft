@@ -1,10 +1,6 @@
 import buildMockElement from './buildMockElement'
-import { MockContext } from '../../helpers/types'
-import { MockElement } from './types'
-
-interface MockCanvas extends MockElement {
-	getContext: { (contextType: string): MockContext }
-}
+import MockCanvas from '../../types/MockCanvas'
+import MockContext from '../../types/MockContext'
 
 type BuildMockCanvas = { ({}: { mockContext?: MockContext, mockClassList?: string[] }): MockCanvas }
 

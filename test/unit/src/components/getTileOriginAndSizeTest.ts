@@ -19,7 +19,7 @@ describe('get tile origin and size', () => {
 	it('uses a custom get tile origin and sized unit function if provided', () => {
 		const custom = ({ gridAddress }) => ({
 			tileSize: tileSizeSetting * tileSizeSetting,
-			tileOrigin: [ gridAddress[ 1 ] * tileSizeSetting, gridAddress[ 0 ] * tileSizeSetting ],
+			tileOrigin: [ gridAddress[ 1 ] * tileSizeSetting, gridAddress[ 0 ] * tileSizeSetting ] as Coordinate,
 		})
 		state.mainHoundstooth.basePattern.tileSettings = { getTileOriginAndSize: custom }
 

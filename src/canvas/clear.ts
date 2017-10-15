@@ -1,5 +1,5 @@
 import state from '../state'
-import { Dimensions } from '../page'
+import { Dimensions, Context } from '../page'
 import getCanvasDimensions from './getCanvasDimensions'
 import { NullarySideEffector } from '../utilities/types'
 
@@ -13,7 +13,7 @@ const clear: NullarySideEffector = (() => {
 	}
 }) as NullarySideEffector
 
-type ClearContext = { ({}: { context: CanvasRenderingContext2D, canvasDimensions: Dimensions }): void }
+type ClearContext = { ({}: { context: Context, canvasDimensions: Dimensions }): void }
 
 const clearContext: ClearContext = ({ context, canvasDimensions }) => {
 	context.clearRect(0, 0, canvasDimensions[ 0 ], canvasDimensions[ 1 ])

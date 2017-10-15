@@ -1,10 +1,11 @@
+import { Context } from '../../page'
 import Houndstooth from './Houndstooth'
 
 type State = {
 	currentLayer: number,
 	currentAnimationFrame: number,
-	contexts: CanvasRenderingContext2D[],
-	mixedDownContext: CanvasRenderingContext2D,
+	contexts: Context[],
+	mixedDownContext: Context,
 	lastSavedAnimationFrame: number,
 	interval(): void,
 	animating: boolean,

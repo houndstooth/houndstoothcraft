@@ -1,5 +1,6 @@
 import state from '../state'
+import { Context } from '../page'
 
-const getCurrentContext: { (): CanvasRenderingContext2D } = () => state.contexts[ state.currentLayer ]
+const getCurrentContext: { (): Context } = () => state.contexts[ state.currentLayer ]
 
 export default getCurrentContext

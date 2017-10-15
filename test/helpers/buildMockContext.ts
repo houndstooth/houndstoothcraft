@@ -1,6 +1,6 @@
 import noop from './noop'
-import { MockContext } from './types'
 import { NullarySideEffector } from '../../src/utilities/types'
+import MockContext from '../types/MockContext'
 
 type BuildMockContext = { ({}?: { contextCallsOrder?, toBlobSpy? }): MockContext }
 

@@ -1,13 +1,13 @@
 import createContext from '../../../../src/page/createContext'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
-import { MockContext } from '../../../helpers/types'
 import Dimensions from '../../../../src/page/types/Dimensions'
+import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('create context', () => {
 	let returnedContext
 	let appendedCanvas
-	const mockContext = {} as MockContext
+	const mockContext = buildMockContext()
 	beforeEach(() => {
 		const mockCanvas = buildMockCanvas({ mockContext })
 		spyOn(window.document, 'createElement').and.returnValue(mockCanvas)

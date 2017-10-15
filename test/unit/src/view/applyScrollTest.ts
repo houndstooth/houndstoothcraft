@@ -1,11 +1,12 @@
 import state from '../../../../src/state'
 import applyScroll from '../../../../src/view/applyScroll'
 import Outline from '../../../../src/space/types/Outline'
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('apply scroll', () => {
 	const zoom = 10
 	const tileSize = 40
-	const canvasSize = 200
+	const canvasSize = 200 as CanvasSize
 	const outline = [
 		[ 3, 5 ],
 		[ 4, 5 ],
@@ -18,19 +19,20 @@ describe('apply scroll', () => {
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
-
+		const halfCanvasSize = canvasSize as number / 2
+		const halfTileSize = tileSize / 2
 		expect(applyScroll(outline)).toEqual([
 			[
-				3 + canvasSize / 2 - tileSize / 2,
-				5 + canvasSize / 2 - tileSize / 2,
+				3 + halfCanvasSize - halfTileSize,
+				5 + halfCanvasSize - halfTileSize,
 			],
 			[
-				4 + canvasSize / 2 - tileSize / 2,
-				5 + canvasSize / 2 - tileSize / 2,
+				4 + halfCanvasSize - halfTileSize,
+				5 + halfCanvasSize - halfTileSize,
 			],
 			[
-				3 + canvasSize / 2 - tileSize / 2,
-				4 + canvasSize / 2 - tileSize / 2,
+				3 + halfCanvasSize - halfTileSize,
+				4 + halfCanvasSize - halfTileSize,
 			],
 		] as Outline)
 	})

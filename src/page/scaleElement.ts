@@ -1,6 +1,6 @@
-import { Dimensions } from './types'
+import { Dimensions, PageElement } from './types'
 
-type ScaleElement = { ({}: { element: HTMLElement, dimensions: Dimensions }): void }
+type ScaleElement = { ({}: { element: PageElement, dimensions: Dimensions }): void }
 
 const scaleElement: ScaleElement = ({ element, dimensions }) => {
 	element.style.width = inPx(dimensions[ 0 ])

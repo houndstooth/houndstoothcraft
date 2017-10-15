@@ -1,6 +1,7 @@
 import getCanvasDimensions from '../../../../src/canvas/getCanvasDimensions'
 import { DEFAULT_CANVAS_SIZE } from '../../../../src/store/defaults'
 import state from '../../../../src/state'
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('get canvas dimensions', () => {
 	describe('when canvas size is not specified', () => {
@@ -14,7 +15,7 @@ describe('get canvas dimensions', () => {
 
 	describe('when the canvas size is specified', () => {
 		it('uses this custom canvas size', () => {
-			state.mainHoundstooth.basePattern = { viewSettings: { canvasSize: [ 350, 450 ] } }
+			state.mainHoundstooth.basePattern = { viewSettings: { canvasSize: [ 350, 450 ] as CanvasSize } }
 
 			const canvasDimensions = getCanvasDimensions()
 
@@ -23,7 +24,7 @@ describe('get canvas dimensions', () => {
 		})
 
 		it('sets width and height to the same when only one number is provided', () => {
-			state.mainHoundstooth.basePattern = { viewSettings: { canvasSize: 350 } }
+			state.mainHoundstooth.basePattern = { viewSettings: { canvasSize: 350 as CanvasSize } }
 
 			const canvasDimensions = getCanvasDimensions()
 

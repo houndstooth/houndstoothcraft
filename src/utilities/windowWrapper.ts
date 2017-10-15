@@ -4,7 +4,7 @@ type Document = {
 	createElement: { (p?: any, q?: any): any },
 	createTextNode: { (p?: any, q?: any): any },
 	querySelector: { (p?: any, q?: any): any },
-	body: { appendChild: { (p?: any, q?: any): any } },
+	body: { appendChild?: { (p?: any, q?: any): any } },
 }
 
 const mockDocument: Document = {

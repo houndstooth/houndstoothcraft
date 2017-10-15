@@ -1,3 +1,5 @@
-const resetClip: { ({}: { context: CanvasRenderingContext2D }): void } = ({ context }) => context.restore()
+import { Context } from '../page'
+
+const resetClip: { ({}: { context: Context }): void } = ({ context }) => context.restore()
 
 export default resetClip

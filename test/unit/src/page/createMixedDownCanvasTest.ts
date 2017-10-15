@@ -4,11 +4,11 @@ import buildMockCanvas from '../../helpers/buildMockCanvas'
 import buildMockElement from '../../helpers/buildMockElement'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
 import * as window from '../../../../src/utilities/windowWrapper'
-import { MockContext } from '../../../helpers/types'
+import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('create mixed down canvas', () => {
 	let mixedDownCanvas
-	const mixedDownContext = {} as MockContext
+	const mixedDownContext = buildMockContext()
 	const mockBodyChildren = []
 	const mixedDownCanvasClassList = []
 	let returnedMixedDownContext

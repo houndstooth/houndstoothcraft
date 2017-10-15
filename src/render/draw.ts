@@ -1,9 +1,10 @@
 import { Outline } from '../space'
 import { applyView } from '../view'
+import { Context } from '../page'
 import fill from './fill'
 import { Color } from './types'
 
-type Draw = { ({}: { context: CanvasRenderingContext2D, shapeColor: Color, outline: Outline }): void }
+type Draw = { ({}: { context: Context, shapeColor: Color, outline: Outline }): void }
 
 const draw: Draw = ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) {

@@ -60,16 +60,15 @@ type GetStripeArgs = {
 	}): ShapeParams,
 }
 
-const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) => {
-	return {
+const getStripeArgs: GetStripeArgs = ({ args, stripeStart, stripeIndex, stripePositions }) =>
+	({
 		...args,
 		getOutline: stripeOutline,
-		stripeIndex: stripeIndex,
+		stripeIndex,
 		outlineOptions: {
 			stripeStart: stripeStart as StripePosition,
-			stripeEnd: (stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR) as StripePosition
+			stripeEnd: (stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR) as StripePosition,
 		},
-	}
-}
+	})
 
 export default tile

@@ -1,7 +1,6 @@
 import getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import { iterator } from '../../../../src/utilities/codeUtilities'
-import state from '../../../../src/state'
-import Address from '../../../../src/components/types/Address'
+import { state, Address, Supertile, Weave } from '../../../../src'
 
 describe('get tile color indices', () => {
 	const gridAddressForSubject = [ 3, 5 ] as Address
@@ -31,7 +30,7 @@ describe('get tile color indices', () => {
 						[ [], expectedSupertileEntry ],
 						[ [], [] ],
 						[ [], [] ],
-					],
+					] as Supertile,
 				},
 			}
 
@@ -41,7 +40,7 @@ describe('get tile color indices', () => {
 
 	describe('allowing offsetting of the grid address', () => {
 		it('works when in weave mode', () => {
-			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ]
+			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ] as Address
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
@@ -49,7 +48,7 @@ describe('get tile color indices', () => {
 					weave: {
 						columns: [ 1, undefined ],
 						rows: [ undefined, 3, undefined ],
-					},
+					} as Weave,
 				},
 			}
 
@@ -58,7 +57,7 @@ describe('get tile color indices', () => {
 
 		it('works when in supertile mode', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
-			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ]
+			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ] as Address
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'SUPERTILE',
@@ -67,7 +66,7 @@ describe('get tile color indices', () => {
 						[ [], [] ],
 						[ expectedSupertileEntry, [] ],
 						[ [], [] ],
-					],
+					] as Supertile,
 				},
 			}
 
@@ -104,7 +103,7 @@ describe('get tile color indices', () => {
 						[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 7, 8 ] ],
 						[ [ 8, 9 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
 						[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 15, 16 ] ],
-					],
+					] as Supertile,
 				},
 			}
 			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ] as Address))

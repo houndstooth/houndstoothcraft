@@ -2,7 +2,7 @@ import createContexts from './createContexts'
 import createEffectTogglesContainer from './createEffectTogglesContainer'
 import createMixedDownCanvas from './createMixedDownCanvas'
 import createWarningsContainer from './createWarningsContainer'
-import { Dimensions } from './types'
+import { Dimensions, Context, InputElement, LabelElement } from './types'
 
 export {
 	createContexts,
@@ -10,4 +10,7 @@ export {
 	createMixedDownCanvas,
 	createWarningsContainer,
 	Dimensions,
+	Context,
+	InputElement,
+	LabelElement,
 }

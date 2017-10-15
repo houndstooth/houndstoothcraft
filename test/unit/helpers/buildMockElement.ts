@@ -1,4 +1,4 @@
-import { MockElement } from './types'
+import MockElement from '../../types/MockElement'
 
 type BuildMockElement = {
 	({}?: {

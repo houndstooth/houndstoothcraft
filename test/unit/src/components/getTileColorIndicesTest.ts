@@ -7,12 +7,13 @@ describe('get tile color indices', () => {
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('can use a weave-based assignment scheme', () => {
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
 					weave: {
-						columns: [ undefined, 1 ],
-						rows: [ undefined, undefined, 3 ],
+						columns: [ 0, 1 ],
+						rows: [ 0, 0, 3 ],
 					},
 				},
 			}
@@ -23,7 +24,8 @@ describe('get tile color indices', () => {
 		it('can use a supertile-based assignment scheme', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'SUPERTILE',
 					supertile: [
@@ -41,7 +43,8 @@ describe('get tile color indices', () => {
 	describe('allowing offsetting of the grid address', () => {
 		it('works when in weave mode', () => {
 			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ] as Address
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
 					offsetAddress,
@@ -58,7 +61,8 @@ describe('get tile color indices', () => {
 		it('works when in supertile mode', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
 			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ] as Address
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'SUPERTILE',
 					offsetAddress,
@@ -76,7 +80,8 @@ describe('get tile color indices', () => {
 
 	describe('re-ordering of chosen color indices', () => {
 		it('can flip the grain of the houndstooth (by reversing order)', () => {
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: 'WEAVE',
 					weave: {
@@ -87,14 +92,17 @@ describe('get tile color indices', () => {
 			}
 			const notFlippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
-			state.mainHoundstooth.basePattern.colorSettings.assignment.flipGrain = true
+			const colorSettings = basePattern.colorSettings || {}
+			const assignment = colorSettings.assignment || {}
+			assignment.flipGrain = true
 			const flippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})
 
 		it('can turn the grain of the pattern into switcheroo', () => {
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					switcheroo: true,
 					assignmentMode: 'SUPERTILE',
@@ -127,7 +135,8 @@ describe('get tile color indices', () => {
 		it('calls an arbitrary transformation, if provided', () => {
 			const transformTileColorIndices = ({ tileColorIndices, gridAddress }) =>
 				gridAddress[ 0 ] === 1 ? tileColorIndices.concat(tileColorIndices) : tileColorIndices
-			state.mainHoundstooth.basePattern.colorSettings = {
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.colorSettings = {
 				assignment: {
 					transformTileColorIndices,
 					assignmentMode: 'WEAVE',

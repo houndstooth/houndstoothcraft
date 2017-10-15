@@ -3,7 +3,9 @@ import { NullarySideEffector } from '../utilities/types'
 
 const mixDownContexts: NullarySideEffector = (() => {
 	state.contexts.forEach(context => {
-		state.mixedDownContext.drawImage(context.canvas, 0, 0)
+		if (state.mixedDownContext) {
+			state.mixedDownContext.drawImage(context.canvas, 0, 0)
+		}
 	})
 }) as NullarySideEffector
 

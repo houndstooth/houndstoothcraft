@@ -1,12 +1,13 @@
 import warn from '../../../../src/ui/warn'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
+import PageElement from '../../../../src/page/types/PageElement'
 
 describe('warn', () => {
 	it('adds warnings to the warnings container', () => {
 		spyOn(window.document, 'createElement').and.callFake(() => ({}))
 
-		const mockChildren = []
+		const mockChildren = [] as PageElement[]
 		const mockWarningsContainer = buildMockElement({ mockChildren })
 		spyOn(window.document, 'querySelector').and.returnValue(mockWarningsContainer)
 

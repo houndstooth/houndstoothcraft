@@ -1,5 +1,5 @@
 import { NullarySideEffector } from '../../src/utilities/types'
 
-const noop: NullarySideEffector = (() => undefined) as NullarySideEffector
+const noop: NullarySideEffector = (() => undefined) as any
 
 export default noop

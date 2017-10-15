@@ -1,6 +1,7 @@
 import getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import state from '../../../../src/state'
+import Address from '../../../../src/components/types/Address'
 
 describe('get stripe positions for tile', () => {
 	beforeEach(() => composeMainHoundstooth)
@@ -11,10 +12,12 @@ describe('get stripe positions for tile', () => {
 
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions = []
-		const gridAddress = [ 3, 5 ]
+		const gridAddress = [ 3, 5 ] as Address
 		const getStripePositionsSpy = jasmine.createSpy('getStripePositions')
 		getStripePositionsSpy.and.returnValue(expectedStripePositions)
-		const stripePositionSettings = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings
+		const basePattern = state.mainHoundstooth.basePattern || {}
+		const stripeSettings = basePattern.stripeSettings || {}
+		const stripePositionSettings = stripeSettings.stripePositionSettings || {}
 		stripePositionSettings.getStripePositions = getStripePositionsSpy
 
 		const actualStripePositions = getStripePositionsForTile({ gridAddress })

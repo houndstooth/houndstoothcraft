@@ -16,13 +16,13 @@
       true,
       "check-catch",
       "check-finally",
-      "check-open-brace",
       "check-whitespace"
     ],
     "no-console": false,
     "interface-name": [
       "never-prefix"
     ],
+    "no-unnecessary-initializer": false,
     "restrict-plus-operands": false,
     "no-unbound-method": false,
     "no-use-before-declare": false,

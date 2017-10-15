@@ -35,7 +35,7 @@ const activateTestMarkerCanvas: NullarySideEffector = (() => {
 
 	scaleElement({ element: testCanvasDisplayArea, dimensions: canvasDimensions })
 
-	const existingCanvasContainer = document.querySelector('.canvas-container')
+	const existingCanvasContainer = document.querySelector('.canvas-container') as PageElement
 	const canvasContainer = existingCanvasContainer || createCanvasContainer({ canvasDimensions })
 	prepareCanvasForDisplayInTest(canvasContainer)
 

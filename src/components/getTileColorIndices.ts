@@ -3,7 +3,9 @@ import state from '../state'
 import { Address, TileColorIndices, Assignment, Supertile, Weave } from './types'
 
 const getTileColorIndices: { ({}: { gridAddress: Address }): TileColorIndices } = ({ gridAddress }) => {
-	const assignment = state.mainHoundstooth.basePattern.colorSettings.assignment
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const colorSettings = basePattern.colorSettings || {}
+	const assignment = colorSettings.assignment || {}
 
 	const tileColorIndices = getIndices({ gridAddress, assignment })
 

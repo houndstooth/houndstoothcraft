@@ -14,7 +14,7 @@ const sectionCenterIsColor: {
 		color: Color,
 		id?: number,
 	}): boolean,
-} = ({ areaOrigin, areaSize, sectionResolution, sectionAddress, color, id }) => {
+} = ({ areaOrigin, areaSize, sectionResolution, sectionAddress, color, id = 0 }) => {
 	const coordinateUnderTest = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
 	const passed = pixelIsColor(coordinateUnderTest, color)
 	drawPassMarker({ passed, coordinateUnderTest, id })

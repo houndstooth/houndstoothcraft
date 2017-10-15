@@ -6,12 +6,13 @@ describe('per stripe', () => {
 	beforeEach(() => composeMainHoundstooth)
 
 	it('uses a stripe count if provided', () => {
-		state.mainHoundstooth.basePattern.stripeSettings = {
+		const basePattern = state.mainHoundstooth.basePattern || {}
+		basePattern.stripeSettings = {
 			stripePositionSettings: {
 				stripeCountSetting: 3,
 			},
 		}
-		const stripePositions = perStripe({ getStripePosition: () => undefined })
+		const stripePositions = perStripe({ getStripePosition: () => 5 as any })
 
 		expect(stripePositions.length).toBe(3)
 	})

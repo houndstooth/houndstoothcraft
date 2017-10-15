@@ -3,7 +3,8 @@ import { getCurrentContext } from '../canvas'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyOpacity: NullarySideEffector = (() => {
-	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const colorSettings = basePattern.colorSettings
 	if (!(colorSettings && colorSettings.opacity) || colorSettings.opacity === 1) {
 		return
 	}

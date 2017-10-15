@@ -10,11 +10,12 @@ import { NullarySideEffector } from '../utilities/types'
 
 const executeSelectedHoundstoothEffects: {
 	({}?: { houndstoothOverrides?: Houndstooth }): void,
-} = ({ houndstoothOverrides } = {}) => {
+} = params => {
+	const { houndstoothOverrides = {} } = params || {}
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
 	const layerFunctionObjects = prepareFunctionObjectsPerSetting({
-		settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
+		settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern || {},
 	})
 
 	prepareCanvas()
@@ -35,7 +36,7 @@ const prepareCanvas: NullarySideEffector = (() => {
 const execute: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void } = ({ layerFunctionObjects }) => {
 	if (state.animating) {
 		const animationFunctionObjects = prepareFunctionObjectsPerSetting({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
+			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern || {},
 		})
 		executeAnimation({ animationFunctionObjects, layerFunctionObjects })
 	}

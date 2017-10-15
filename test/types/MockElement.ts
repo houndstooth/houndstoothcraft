@@ -1,7 +1,7 @@
 type MockElement = {
-	appendChild?,
+	appendChild,
 	innerHTML?,
-	style?: {
+	style: {
 		width?,
 		height?,
 		display?,

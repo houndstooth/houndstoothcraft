@@ -6,12 +6,11 @@ import * as texture from '../../../../src/render/texture'
 import * as solid from '../../../../src/render/solid'
 import noop from '../../../helpers/noop'
 import Coordinate from '../../../../src/space/types/Coordinate'
-import TileColorIndices from '../../../../src/components/types/TileColorIndices'
 
 describe('shape', () => {
 	const tileOrigin = [ 11 as any, 13 as any ] as Coordinate
 	const tileSize = 45 as any
-	const tileColorIndices = [] as TileColorIndices
+	const tileColorIndices = [] as any
 	const stripeIndex = 7
 	const shapeColorIndex = 45
 	const outlineOptions = {}
@@ -102,7 +101,8 @@ describe('shape', () => {
 		describe('when a renderTexture method is supplied', () => {
 			const renderTexture = noop
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.textureSettings = { renderTexture }
+				const basePattern = state.mainHoundstooth.basePattern || {}
+				basePattern.textureSettings = { renderTexture }
 			})
 
 			it('passes it to the texture component to be rendered', () => {

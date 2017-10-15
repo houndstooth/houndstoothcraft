@@ -1,9 +1,8 @@
-import OutlineOptions from './OutlineOptions'
 import Coordinate from './Coordinate'
-import { Units } from '../../components'
+import GetOutlineParams from './GetOutlineParams'
 
-type GetOutline = {
-	({}: { tileOrigin: Coordinate, tileSize: Units, outlineOptions?: OutlineOptions }): Coordinate[],
+interface GetOutline {
+	({}: GetOutlineParams): Coordinate[],
 }
 
 export default GetOutline

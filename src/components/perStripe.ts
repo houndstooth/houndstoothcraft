@@ -4,7 +4,10 @@ import { iterator } from '../utilities/codeUtilities'
 import { StripePosition, GetStripePosition } from './types'
 
 const perStripe: { ({}: { getStripePosition: GetStripePosition }): StripePosition[] } = ({ getStripePosition }) => {
-	const stripeCount = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCountSetting
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const stripeSettings = basePattern.stripeSettings || {}
+	const stripePositionSettings = stripeSettings.stripePositionSettings || {}
+	const stripeCount = stripePositionSettings.stripeCountSetting || 0
 
 	return iterator(stripeCount).map(stripeIndex =>
 		getStripePosition({ stripeIndex, stripeCount }) as any * PERIMETER_SCALAR) as any

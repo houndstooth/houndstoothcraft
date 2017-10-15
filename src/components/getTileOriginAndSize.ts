@@ -3,9 +3,11 @@ import { Address, TileOriginAndSize } from './types'
 import { Coordinate } from '../space'
 
 const getTileOriginAndSize: {
-	({}: { gridAddress: Address }): TileOriginAndSize,
+	({}: { gridAddress: Address }): TileOriginAndSize | undefined,
 } = ({ gridAddress }) => {
-	const getTileOriginAndSizeFromState = state.mainHoundstooth.basePattern.tileSettings.getTileOriginAndSize
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const tileSettings = basePattern.tileSettings || {}
+	const getTileOriginAndSizeFromState = tileSettings.getTileOriginAndSize
 	const tileOriginAndSize = getTileOriginAndSizeFromState || getStandardTileOriginAndSize
 
 	return tileOriginAndSize({ gridAddress })
@@ -14,7 +16,9 @@ const getTileOriginAndSize: {
 const getStandardTileOriginAndSize: {
 	({}: { gridAddress: Address }): TileOriginAndSize,
 } = ({ gridAddress }) => {
-	const tileSize: any = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const tileSettings = basePattern.tileSettings || {}
+	const tileSize: any = tileSettings.tileSizeSetting
 
 	return {
 		tileOrigin: [ gridAddress[ 0 ] * tileSize as any, gridAddress[ 1 ] * tileSize as any ] as Coordinate,

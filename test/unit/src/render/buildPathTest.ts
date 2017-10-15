@@ -5,7 +5,7 @@ import Outline from '../../../../src/space/types/Outline'
 describe('build path', () => {
 	it('draws the path with the correct outline and fills it', () => {
 		const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
-		const contextCallsOrder = []
+		const contextCallsOrder = [] as any
 		const context = buildMockContext({ contextCallsOrder })
 
 		buildPath({ context, outline })

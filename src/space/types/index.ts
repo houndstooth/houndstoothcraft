@@ -3,7 +3,7 @@ import OutlineOptions from './OutlineOptions'
 import Coordinate from './Coordinate'
 import Outline from './Outline'
 import Points from './Points'
-import OriginAndSize from './OriginAndSize'
+import GetStripeOutline from './GetStripeOutline'
 import Point from './Point'
 
 export {
@@ -12,6 +12,6 @@ export {
 	Coordinate,
 	Outline,
 	Points,
-	OriginAndSize,
+	GetStripeOutline,
 	Point,
 }

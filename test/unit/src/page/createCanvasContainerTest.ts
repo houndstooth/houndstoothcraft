@@ -2,10 +2,11 @@ import createCanvasContainer from '../../../../src/page/createCanvasContainer'
 import * as window from '../../../../src/utilities/windowWrapper'
 import * as setElementDimensions from '../../../../src/page/scaleElement'
 import buildMockElement from '../../helpers/buildMockElement'
+import Dimensions from '../../../../src/page/types/Dimensions'
 
 describe('create canvas container', () => {
 	const mockCanvasContainerClassList = []
-	const canvasDimensions = [ 400, 500 ]
+	const canvasDimensions = [ 400, 500 ] as Dimensions
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {

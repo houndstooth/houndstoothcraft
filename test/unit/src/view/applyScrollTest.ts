@@ -13,12 +13,15 @@ describe('apply scroll', () => {
 		[ 3 as any, 4 as any ],
 	] as Outline
 	beforeEach(() => {
-		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
-		state.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting: tileSize }
+		const basePattern = state.mainHoundstooth.basePattern || {}
+		basePattern.viewSettings = { zoom, canvasSize }
+		basePattern.tileSettings = { tileSizeSetting: tileSize }
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
+		const basePattern = state.mainHoundstooth.basePattern || {}
+		const viewSettings = basePattern.viewSettings || {}
+		viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 		const halfCanvasSize = canvasSize as number / 2
 		const halfTileSize = tileSize / 2
 		expect(applyScroll(outline)).toEqual([
@@ -39,7 +42,9 @@ describe('apply scroll', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('returns the outline unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
+		const basePattern = state.mainHoundstooth.basePattern || {}
+		const viewSettings = basePattern.viewSettings || {}
+		viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
 
 		expect(applyScroll(outline)).toEqual(outline)
 	})

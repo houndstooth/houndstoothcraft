@@ -10,18 +10,18 @@ const combineHoundstoothEffects: {
 
 	houndstoothEffects.forEach(houndstoothEffect => {
 		composePatterns({
-			patternToBeMergedOnto: basePattern,
-			patternToMerge: houndstoothEffect.basePattern,
+			patternToBeMergedOnto: basePattern || {},
+			patternToMerge: houndstoothEffect.basePattern || {},
 			warnAboutConflicts: true,
 		})
 		composePatterns({
-			patternToBeMergedOnto: layersPattern,
-			patternToMerge: houndstoothEffect.layersPattern,
+			patternToBeMergedOnto: layersPattern || {},
+			patternToMerge: houndstoothEffect.layersPattern || {},
 			warnAboutConflicts: true,
 		})
 		composePatterns({
-			patternToBeMergedOnto: animationsPattern,
-			patternToMerge: houndstoothEffect.animationsPattern,
+			patternToBeMergedOnto: animationsPattern || {},
+			patternToMerge: houndstoothEffect.animationsPattern || {},
 			warnAboutConflicts: true,
 		})
 	})

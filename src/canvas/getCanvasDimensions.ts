@@ -3,7 +3,8 @@ import { defaults } from '../store'
 import { Dimensions } from '../page'
 
 const getCanvasDimensions: { (): Dimensions } = () => {
-	const viewSettings = state.mainHoundstooth.basePattern.viewSettings
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const viewSettings = basePattern.viewSettings || {}
 	const canvasSize = viewSettings && viewSettings.canvasSize || defaults.DEFAULT_CANVAS_SIZE
 
 	const oblong = canvasSize instanceof Array

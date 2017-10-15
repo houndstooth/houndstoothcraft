@@ -11,7 +11,7 @@ const composePatterns: {
 		settingsPath?: PropertyPath,
 		warnAboutConflicts?: boolean,
 	}): void,
-} = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [] as PropertyPath, warnAboutConflicts }) => {
+} = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [] as any, warnAboutConflicts = false }) => {
 	if (!patternToMerge) {
 		return
 	}

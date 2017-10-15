@@ -11,19 +11,19 @@ const getFromBasePatternOrDefault: { (settingsPath: PropertyPath): Setting } = s
 		if (notThere) {
 			return
 		}
-		if (!isDefined(childSetting[ pathStep ])) {
+		if (!isDefined(childSetting && childSetting[ pathStep ])) {
 			childSetting = undefined
 			notThere = true
 
 			return
 		}
-		childSetting = childSetting[ pathStep ]
+		childSetting = childSetting && childSetting[ pathStep ]
 	})
 
 	let setting
 	if (isDefined(childSetting)) {
 		setting = accessChildPropertyOrCreatePath({
-			objectWithProperties: state.mainHoundstooth.basePattern,
+			objectWithProperties: state.mainHoundstooth.basePattern || {},
 			propertyPath: settingsPath,
 		})
 	}

@@ -47,7 +47,8 @@ describe('tile', () => {
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
 			spyOn(getStripePositionsForTile, 'default').and.returnValue(stripePositionsForTile)
 
-			state.mainHoundstooth.basePattern.tileSettings = {}
+			const basePattern = state.mainHoundstooth.basePattern || {}
+			basePattern.tileSettings = {}
 
 			tileColorIndices = []
 			getTileColorIndicesSpy.and.returnValue(tileColorIndices)
@@ -61,7 +62,9 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
+				const basePattern = state.mainHoundstooth.basePattern || {}
+				const tileSettings = basePattern.tileSettings || {}
+				tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
 			it('checks if the tile is uniform', () => {
@@ -169,7 +172,9 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = false
+				const basePattern = state.mainHoundstooth.basePattern || {}
+				const tileSettings = basePattern.tileSettings || {}
+				tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

@@ -14,14 +14,7 @@ const pixelIsColor: {
 	}
 
 	for (let i = 0; i < Object.keys(actualColor).length; i++) {
-		const firstColorProperty = Object.entries(actualColor)[ i ]
-		const firstColorPropertyValue = firstColorProperty[ 1 ]
-		const firstColorPropertyKey = firstColorProperty[ 0 ]
-		const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
-
-		if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
-			console.error(`actual color: ${actualColor} / expected color ${expectedColor}`)
-
+		if (!checkColorProperties({ i, actualColor, expectedColor })) {
 			return false
 		}
 	}
@@ -39,6 +32,45 @@ const pixel: { (coordinate: Coordinate): Color } = ([ x, y ]) => {
 		b: pixelData[ 2 ],
 		a: pixelData[ 3 ] / 255,
 	}
+}
+
+const checkColorProperties: {
+	({}: { i: number, actualColor: Color, expectedColor: Color }): boolean,
+} = ({ i, actualColor, expectedColor }) => {
+	const firstColorProperty = Object.entries(actualColor)[ i ]
+
+	let definedFirstColorProperty: [ string, number | undefined ]
+	if (!firstColorProperty) {
+		return false
+	}
+	else {
+		definedFirstColorProperty = firstColorProperty
+	}
+
+	let firstColorPropertyValue: number
+	const definedFirstColorPropertyValue = definedFirstColorProperty[ 1 ]
+	if (!definedFirstColorPropertyValue) {
+		if (definedFirstColorPropertyValue === 0) {
+			firstColorPropertyValue = definedFirstColorPropertyValue
+		}
+		else {
+			return false
+		}
+	}
+	else {
+		firstColorPropertyValue = definedFirstColorPropertyValue
+	}
+
+	const firstColorPropertyKey = firstColorProperty[ 0 ]
+	const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
+
+	if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
+		console.error(`actual color: ${actualColor} / expected color ${expectedColor}`)
+
+		return false
+	}
+
+	return true
 }
 
 export default pixelIsColor

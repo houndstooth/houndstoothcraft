@@ -3,7 +3,7 @@ import getColor from './getColor'
 import { RenderFunction } from './types'
 
 const solid: RenderFunction = ({ context, outline, shapeColorIndex }) => {
-	const shapeColor = getColor({ index: shapeColorIndex })
+	const shapeColor = getColor({ index: shapeColorIndex || 0 })
 	if (shapeColor.a === 0) {
 		return
 	}

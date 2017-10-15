@@ -62,6 +62,7 @@ const formatSettingForWarning: { (setting: Setting): string } = setting => {
 	if (typeof setting === 'function') {
 		return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
 	}
+	// tslint:disable-next-line:strict-type-predicates
 	else if (typeof setting === 'string') {
 		return setting
 	}

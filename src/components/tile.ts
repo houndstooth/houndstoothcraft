@@ -12,22 +12,42 @@ import { Address, StripePosition, TileColorIndices, Units } from './types'
 type TileParams = { gridAddress: Address, tileOrigin: Coordinate, tileSize: Units, tileColorIndices: TileColorIndices }
 
 const tile: { ({}: { gridAddress: Address }): void } = ({ gridAddress }) => {
-	const { tileOrigin, tileSize } = getTileOriginAndSize({ gridAddress })
+	const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
+
+	let definedTileOrigin: Coordinate
 	if (!tileOrigin) {
 		return
 	}
+	else {
+		definedTileOrigin = tileOrigin
+	}
 
+	let definedTileSize: Units
+	if (!tileSize) {
+		return
+	}
+	else {
+		definedTileSize = tileSize
+	}
+
+	definedTile({ gridAddress, definedTileSize, definedTileOrigin })
+}
+
+const definedTile: {
+	({}: { gridAddress: Address, definedTileOrigin: Coordinate, definedTileSize: Units }): void,
+} = ({ gridAddress, definedTileOrigin: tileOrigin, definedTileSize: tileSize }) => {
 	const tileColorIndices = getTileColorIndices({ gridAddress })
 	const tileFunction = shouldUseSquare({ tileColorIndices }) ? squareTile : stripedTile
 	tileFunction({ gridAddress, tileOrigin, tileSize, tileColorIndices })
 }
 
 const shouldUseSquare: { ({}: { tileColorIndices: TileColorIndices }): boolean } = ({ tileColorIndices }) => {
-	const tileSettings = state.mainHoundstooth.basePattern.tileSettings || {}
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const tileSettings = basePattern.tileSettings || {}
 	const { collapseSameColoredShapesWithinTile } = tileSettings
 	const shouldCollapseSameColoredShapes = defaultToTrue(collapseSameColoredShapesWithinTile)
 
-	return shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
+	return !!shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
 }
 
 const squareTile: { ({}: TileParams): void } = args => {
@@ -62,7 +82,7 @@ const getStripeArgs: {
 		stripeIndex,
 		outlineOptions: {
 			stripeStart,
-			stripeEnd: (stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR) as StripePosition,
+			stripeEnd: stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR,
 		},
 	})
 

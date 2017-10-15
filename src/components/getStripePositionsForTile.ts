@@ -1,9 +1,12 @@
 import state from '../state'
 import perStripe from './perStripe'
-import { StripePosition } from './types'
+import { StripePosition, Address } from './types'
 
-const getStripePositionsForTile: { ({}?: { gridAddress? }): StripePosition[] } = ({ gridAddress } = {}) => {
-	const stripePositionSettings = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings
+const getStripePositionsForTile: { ({}?: { gridAddress: Address }): StripePosition[] } = params => {
+	const { gridAddress = undefined } = params || {}
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const stripeSettings = basePattern.stripeSettings || {}
+	const stripePositionSettings = stripeSettings.stripePositionSettings || {}
 	const getStripePositions = stripePositionSettings.getStripePositions
 	const stripePositionsForTile = getStripePositions || standardStripePositions
 

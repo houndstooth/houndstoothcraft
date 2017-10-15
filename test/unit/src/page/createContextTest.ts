@@ -3,6 +3,8 @@ import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
 import Dimensions from '../../../../src/page/types/Dimensions'
 import buildMockContext from '../../../helpers/buildMockContext'
+import Canvas from '../../../../src/page/types/Canvas'
+import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create context', () => {
 	let returnedContext
@@ -12,12 +14,12 @@ describe('create context', () => {
 		const mockCanvas = buildMockCanvas({ mockContext })
 		spyOn(window.document, 'createElement').and.returnValue(mockCanvas)
 
-		const mockCanvases = []
-		const canvasContainer = { appendChild: canvas => mockCanvases.push(canvas) }
+		const mockChildren = [] as Canvas[]
+		const canvasContainer = buildMockElement({ mockChildren })
 
 		returnedContext = createContext({ canvasContainer, canvasDimensions: [ 350, 600 ] as Dimensions })
 
-		appendedCanvas = mockCanvases[0]
+		appendedCanvas = mockChildren[0]
 	})
 
 	it('returns the 2d context of the new canvas', () => {

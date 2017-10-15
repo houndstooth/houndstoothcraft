@@ -70,9 +70,6 @@
       "error",
       "as-needed"
     ],
-    "no-unused-expressions": [
-      "error"
-    ],
     "max-statements": [
       "error",
       10
@@ -90,6 +87,9 @@
       100
     ],
     "no-undef": [
+      "off"
+    ],
+    "no-undefined": [
       "off"
     ],
     "no-unused-vars": [

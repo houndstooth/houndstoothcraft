@@ -8,7 +8,9 @@ const texture: RenderFunction = textureArgs => {
 
 	buildPath({ context, outline })
 	clipPath({ context })
-	renderTexture(textureArgs)
+	if (renderTexture) {
+		renderTexture(textureArgs)
+	}
 	resetClip({ context })
 }
 

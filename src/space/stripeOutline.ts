@@ -1,9 +1,9 @@
-import { GetOutline } from './types'
+import { GetStripeOutline } from './types'
 import firstPoint from './stripe/firstPoint'
 import middlePoints from './stripe/middlePoints'
 import lastPoints from './stripe/lastPoints'
 
-const stripeOutline: GetOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
+const stripeOutline: GetStripeOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
 	const originAndSize = { x: tileOrigin[ 0 ] as any, y: tileOrigin[ 1 ] as any, size: tileSize }
 

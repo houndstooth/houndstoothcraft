@@ -10,26 +10,27 @@ const composeMainHoundstooth: {
 		houndstoothOverrides?: Houndstooth,
 		logComposedMainHoundstooth?: boolean,
 	}): void,
-} = ({ houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth = false } = {}) => {
+} = params => {
+	const { houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth = false } = params || {}
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	composePattern({
-		patternToCompose: state.mainHoundstooth.basePattern,
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern,
-		patternEffects: combinedHoundstoothEffects.basePattern,
-		patternOverrides: houndstoothOverrides.basePattern,
+		patternToCompose: state.mainHoundstooth.basePattern || {},
+		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern || {},
+		patternEffects: combinedHoundstoothEffects.basePattern || {},
+		patternOverrides: houndstoothOverrides.basePattern || {},
 	})
 	composePattern({
-		patternToCompose: state.mainHoundstooth.layersPattern,
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern,
-		patternEffects: combinedHoundstoothEffects.layersPattern,
-		patternOverrides: houndstoothOverrides.layersPattern,
+		patternToCompose: state.mainHoundstooth.layersPattern || {},
+		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern || {},
+		patternEffects: combinedHoundstoothEffects.layersPattern || {},
+		patternOverrides: houndstoothOverrides.layersPattern || {},
 	})
 	composePattern({
-		patternToCompose: state.mainHoundstooth.animationsPattern,
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern,
-		patternEffects: combinedHoundstoothEffects.animationsPattern,
-		patternOverrides: houndstoothOverrides.animationsPattern,
+		patternToCompose: state.mainHoundstooth.animationsPattern || {},
+		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern || {},
+		patternEffects: combinedHoundstoothEffects.animationsPattern || {},
+		patternOverrides: houndstoothOverrides.animationsPattern || {},
 	})
 
 	if (logComposedMainHoundstooth) {

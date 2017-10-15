@@ -13,8 +13,10 @@ xdescribe('effect toggles', () => {
 		}
 		const effectToggle = document.querySelector('input.houndsmorphosis') as PageElement
 		effectToggle.click()
-		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(0 as any)
+		const basePattern = state.mainHoundstooth.basePattern || {}
+		const tileSettings = basePattern.tileSettings || {}
+		expect(tileSettings.tileSizeSetting).toBe(0 as any)
 		effectToggle.click()
-		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(50 as any)
+		expect(tileSettings.tileSizeSetting).toBe(50 as any)
 	})
 })

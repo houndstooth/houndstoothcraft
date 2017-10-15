@@ -12,7 +12,7 @@ const prepareFunctionObjectsPerSetting: {
 } = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionsSourcePattern,
-		settingsPath = [] as PropertyPath,
+		settingsPath = [] as any,
 		settingsFunctionObjects = [],
 	} = prepareFunctionObjectsPerSettingArgs
 
@@ -39,6 +39,7 @@ const prepareFunctionObjectsPerSetting: {
 const shouldRecurse: {
 	({}: { maybeSettingsFunctionsSourcePattern: Pattern }): boolean,
 } = ({ maybeSettingsFunctionsSourcePattern }) => {
+	// tslint:disable-next-line:strict-type-predicates
 	if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
 		return false
 	}

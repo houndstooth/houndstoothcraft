@@ -4,7 +4,8 @@ import { getCanvasDimensions, getCurrentContext } from '../canvas'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyBackgroundColor: NullarySideEffector = (() => {
-	const colorSettings = state.mainHoundstooth.basePattern.colorSettings
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const colorSettings = basePattern.colorSettings
 	const backgroundColor = colorSettings && colorSettings.backgroundColor
 	if (!backgroundColor) {
 		return

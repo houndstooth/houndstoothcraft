@@ -4,6 +4,10 @@
     "module": "commonjs",
     "target": "es5",
     "lib": [ "es2017", "dom" ],
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "pretty": true,
+    "strictNullChecks": true,
     "sourceMap": true,
     "types": [ "jasmine" ]
   }

@@ -2,7 +2,8 @@ import { rotateCoordinateAboutPoint, Outline, Coordinate } from '../space'
 import state from '../state'
 
 const applyTilt: {(outline: Outline): Outline } = outline => {
-	const viewSettings = state.mainHoundstooth.basePattern.viewSettings || {}
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const viewSettings = basePattern.viewSettings || {}
 	const { canvasSize, rotateViewAboutCanvasCenter } = viewSettings
 
 	if (!rotateViewAboutCanvasCenter) {

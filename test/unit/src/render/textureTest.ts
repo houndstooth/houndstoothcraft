@@ -2,20 +2,18 @@ import texture from '../../../../src/render/texture'
 import * as buildPath from '../../../../src/render/buildPath'
 import * as clipPath from '../../../../src/render/clipPath'
 import * as resetClip from '../../../../src/render/resetClip'
-import TileColorIndices from '../../../../src/components/types/TileColorIndices'
-import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('texture', () => {
 	it('builds a path from the outline, clips the context on it, renders the texture, then resets the clip', () => {
-		const calls = []
+		const calls = [] as any
 
 		spyOn(buildPath, 'default').and.callFake(args => calls.push({ call: 'buildPath', args }))
 		spyOn(clipPath, 'default').and.callFake(args => calls.push({ call: 'clipPath', args }))
 		spyOn(resetClip, 'default').and.callFake(args => calls.push({ call: 'resetClip', args }))
 
 		const context = {}
-		const tileColorIndices = [] as TileColorIndices
-		const tileOrigin = [] as Coordinate
+		const tileColorIndices = [] as any
+		const tileOrigin = [] as any
 		const tileSize = 11 as any
 		const shapeColorIndex = 3
 		const outline = []

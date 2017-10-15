@@ -5,8 +5,9 @@ import gridAndMaybeLogging from './gridAndMaybeLogging'
 import { SettingsFunctionObject } from './types'
 
 const executeGrid: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void } = ({ layerFunctionObjects }) => {
-	const layerSettings = state.mainHoundstooth.basePattern.layerSettings || {}
-	const { startLayer, endLayer } = layerSettings
+	const basePattern = state.mainHoundstooth.basePattern || {}
+	const layerSettings = basePattern.layerSettings || {}
+	const { startLayer = 0, endLayer = 0 } = layerSettings
 
 	for (let n = 0; n <= endLayer; n++) {
 		executeLayer({ n, startLayer, endLayer, layerFunctionObjects })

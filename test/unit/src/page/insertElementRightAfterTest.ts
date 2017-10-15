@@ -7,7 +7,7 @@ describe('insert element right after', () => {
 		const nextSibling = {} as Element
 		const elementRightAfterWhichToInsert = buildMockElement({ parentNodeInsertBeforeSpy })
 		elementRightAfterWhichToInsert.nextSibling = nextSibling
-		const element = {}
+		const element = buildMockElement()
 
 		insertElementRightAfter(element, elementRightAfterWhichToInsert)
 

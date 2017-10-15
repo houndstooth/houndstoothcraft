@@ -89,6 +89,10 @@
       "error",
       2
     ],
+    "max-lines": [
+      "error",
+      100
+    ],
     "no-undef": [
       "off"
     ],
@@ -105,7 +109,8 @@
         "**/test/**/*"
       ],
       "rules": {
-        "max-statements": "off"
+        "max-statements": "off",
+        "max-lines": "off"
       }
     }
   ]

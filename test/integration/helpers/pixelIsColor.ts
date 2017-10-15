@@ -17,8 +17,10 @@ const pixelIsColor: PixelIsColor = (coordinateUnderTest, expectedColor) => {
 		const firstColorPropertyValue = firstColorProperty[ 1 ]
 		const firstColorPropertyKey = firstColorProperty[ 0 ]
 		const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
+
 		if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
 			console.error(`actual color: ${actualColor} / expected color ${expectedColor}`)
+
 			return false
 		}
 	}
@@ -29,6 +31,7 @@ const pixelIsColor: PixelIsColor = (coordinateUnderTest, expectedColor) => {
 const pixel: { (coordinate: Coordinate): Color } = ([ x, y ]) => {
 	const mixedDownCanvas = document.querySelector('.mixed-down-canvas') as HTMLCanvasElement
 	const pixelData = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
+
 	return {
 		r: pixelData[ 0 ],
 		g: pixelData[ 1 ],

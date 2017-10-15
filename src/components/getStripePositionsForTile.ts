@@ -6,6 +6,7 @@ const getStripePositionsForTile: { ({}?: { gridAddress? }): StripePosition[] } =
 	const stripePositionSettings = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings
 	const getStripePositions = stripePositionSettings.getStripePositions
 	const stripePositionsForTile = getStripePositions || standardStripePositions
+
 	return stripePositionsForTile({ gridAddress })
 }
 
@@ -13,8 +14,7 @@ const standardStripePositions: { (): StripePosition[] } = () => perStripe({ getS
 
 type StandardStripePosition = { ({}: { stripeIndex, stripeCount }): StripePosition }
 
-const standardStripePosition: StandardStripePosition = ({ stripeIndex, stripeCount }) => {
-	return stripeIndex / stripeCount as any
-}
+const standardStripePosition: StandardStripePosition = ({ stripeIndex, stripeCount }) =>
+	stripeIndex / stripeCount as any
 
 export default getStripePositionsForTile

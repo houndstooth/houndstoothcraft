@@ -4,7 +4,7 @@ import { NullarySideEffector } from '../../src/utilities/types'
 
 type BuildMockContext = { ({}?: { contextCallsOrder?, toBlobSpy? }): MockContext }
 
-const buildMockContext: BuildMockContext = ({ contextCallsOrder = [], toBlobSpy = null } = {}) => ({
+const buildMockContext: BuildMockContext = ({ contextCallsOrder = [], toBlobSpy } = {}) => ({
 	beginPath: (() => contextCallsOrder.push({ method: 'beginPath' })) as NullarySideEffector,
 	moveTo: ((x, y) => contextCallsOrder.push({ method: 'moveTo', x, y })) as NullarySideEffector,
 	lineTo: ((x, y) => contextCallsOrder.push({ method: 'lineTo', x, y })) as NullarySideEffector,

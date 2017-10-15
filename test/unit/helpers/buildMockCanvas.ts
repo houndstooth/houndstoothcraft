@@ -8,10 +8,9 @@ interface MockCanvas extends MockElement {
 
 type BuildMockCanvas = { ({}: { mockContext?: MockContext, mockClassList?: string[] }): MockCanvas }
 
-const buildMockCanvas: BuildMockCanvas = ({ mockClassList, mockContext }) => {
-	return Object.assign(buildMockElement({ mockClassList }), {
-		getContext: contextType => contextType === '2d' ? mockContext : null,
+const buildMockCanvas: BuildMockCanvas = ({ mockClassList, mockContext }) =>
+	Object.assign(buildMockElement({ mockClassList }), {
+		getContext: contextType => contextType === '2d' ? mockContext : undefined,
 	})
-}
 
 export default buildMockCanvas

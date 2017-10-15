@@ -4,8 +4,8 @@ import buildIntervalFunction from './buildIntervalFunction'
 
 type Animator = {
 	({}: {
-		animationFunction: () => void,
-		stopConditionFunction: () => boolean,
+		animationFunction(): void,
+		stopConditionFunction(): boolean,
 		frameRate: number,
 	}): void,
 }

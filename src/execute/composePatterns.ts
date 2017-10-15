@@ -12,6 +12,7 @@ type ComposePatterns = {
 		warnAboutConflicts?: boolean,
 	}): void,
 }
+
 const composePatterns: ComposePatterns = params => {
 	const { patternToBeMergedOnto, patternToMerge, settingsPath = [] as PropertyPath, warnAboutConflicts } = params
 	if (!patternToMerge) {
@@ -47,9 +48,8 @@ const composePatterns: ComposePatterns = params => {
 	})
 }
 
-const shouldRecurse: { ({}: { overridingSetting: Setting }): boolean } = ({ overridingSetting }) => {
-	return settingIsNonArrayObject(overridingSetting) && settingIsNotColor(overridingSetting)
-}
+const shouldRecurse: { ({}: { overridingSetting: Setting }): boolean } = ({ overridingSetting }) =>
+	settingIsNonArrayObject(overridingSetting) && settingIsNotColor(overridingSetting)
 
 const settingIsNonArrayObject: { (setting: Setting): boolean } = setting => {
 	if (!setting) {
@@ -58,6 +58,7 @@ const settingIsNonArrayObject: { (setting: Setting): boolean } = setting => {
 	if (typeof setting !== 'object') {
 		return false
 	}
+
 	return !(setting as any instanceof Array)
 }
 
@@ -65,6 +66,7 @@ const settingIsNotColor: { (setting: Setting): boolean } = setting => {
 	const defined = isDefined
 	const maybeSettingColor = setting as Color
 	const { r, g, b, a } = maybeSettingColor
+
 	return !(defined(r) || defined(g) || defined(b) || defined(a))
 }
 

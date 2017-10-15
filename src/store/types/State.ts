@@ -6,7 +6,7 @@ type State = {
 	contexts: CanvasRenderingContext2D[],
 	mixedDownContext: CanvasRenderingContext2D,
 	lastSavedAnimationFrame: number,
-	interval: () => void,
+	interval(): void,
 	animating: boolean,
 	exportFrames: boolean,
 	mixingDown: boolean,

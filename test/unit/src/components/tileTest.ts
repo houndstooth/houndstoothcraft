@@ -24,7 +24,7 @@ describe('tile', () => {
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
-			spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin: null, tileSize: 10 })
+			spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin: undefined, tileSize: 10 })
 		})
 
 		it('returns early, not getting colors', () => {

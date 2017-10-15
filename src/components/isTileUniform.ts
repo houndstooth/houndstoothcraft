@@ -10,6 +10,7 @@ const isTileUniform: { ({}: { tileColorIndices: TileColorIndices }): boolean } =
 			return false
 		}
 	}
+
 	return true
 }
 

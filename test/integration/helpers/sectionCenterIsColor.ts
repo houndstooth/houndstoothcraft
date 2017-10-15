@@ -20,6 +20,7 @@ const sectionCenterIsColor: SectionCenterIsColor = params => {
 	const coordinateUnderTest = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
 	const passed = pixelIsColor(coordinateUnderTest, color)
 	drawPassMarker({ passed, coordinateUnderTest, id })
+
 	return passed
 }
 
@@ -34,6 +35,7 @@ type SectionCenter = {
 
 const sectionCenter: SectionCenter = ({ areaOrigin, areaSize, sectionResolution, sectionAddress }) => {
 	const sectionSize = areaSize / sectionResolution
+
 	return [
 		areaOrigin[ 0 ] + (sectionAddress[ 0 ] + 0.5) * sectionSize,
 		areaOrigin[ 1 ] + (sectionAddress[ 1 ] + 0.5) * sectionSize,

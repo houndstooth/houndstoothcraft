@@ -1,3 +1,4 @@
+// tslint:disable:no-import-side-effect
 import '../index'
 
 declare const module: any

@@ -30,7 +30,7 @@ describe('shape', () => {
 	})
 
 	describe('when no outline is returned from the get outline function', () => {
-		beforeEach(() => getOutlineSpy.and.returnValue(null))
+		beforeEach(() => getOutlineSpy.and.returnValue(undefined))
 
 		it('returns early, not rendering', () => {
 			shape({
@@ -82,22 +82,22 @@ describe('shape', () => {
 			expect(canvas.getCurrentContext).toHaveBeenCalled()
 		})
 
-		it(`gets the index of the color in the central colorSet,
-		from the array of such indicies for the tile, using the stripe index`, () => {
-				shape({
-					tileOrigin,
-					tileSize,
-					tileColorIndices,
-					stripeIndex,
-					getOutline: getOutlineSpy,
-					outlineOptions,
-				})
-
-				expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({
-					array: tileColorIndices,
-					index: stripeIndex,
-				})
+		// eslint-disable-next-line max-len
+		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
+			shape({
+				tileOrigin,
+				tileSize,
+				tileColorIndices,
+				stripeIndex,
+				getOutline: getOutlineSpy,
+				outlineOptions,
 			})
+
+			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({
+				array: tileColorIndices,
+				index: stripeIndex,
+			})
+		})
 
 		describe('when a renderTexture method is supplied', () => {
 			const renderTexture = noop

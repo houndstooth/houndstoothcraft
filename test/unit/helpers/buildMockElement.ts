@@ -12,14 +12,16 @@ type BuildMockElement = {
 }
 
 const buildMockElement: BuildMockElement = params => {
+	const paramsWithFallback = params || {}
 	const {
 		mockClassList = [],
 		mockChildren = [],
 		mockAttributeObject = {},
-		parentNodeRemoveChildSpy = null,
-		parentNodeInsertBeforeSpy = null,
-		clickSpy = null,
-	} = params || {}
+		parentNodeRemoveChildSpy,
+		parentNodeInsertBeforeSpy,
+		clickSpy,
+	} = paramsWithFallback
+
 	return {
 		classList: {
 			add: className => mockClassList.push(className),

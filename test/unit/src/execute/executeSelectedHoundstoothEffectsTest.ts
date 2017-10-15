@@ -77,7 +77,7 @@ describe('execute selected houndstooth effects', () => {
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownCanvas).not.toHaveBeenCalled()
-			expect(state.mixedDownContext).toBe(null)
+			expect(state.mixedDownContext).toBe(undefined)
 		})
 	})
 

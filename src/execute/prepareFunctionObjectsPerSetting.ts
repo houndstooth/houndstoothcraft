@@ -42,6 +42,7 @@ const shouldRecurse: ShouldRecurse = ({ maybeSettingsFunctionsSourcePattern }) =
 	if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
 		return false
 	}
+
 	return !(maybeSettingsFunctionsSourcePattern instanceof Array)
 }
 

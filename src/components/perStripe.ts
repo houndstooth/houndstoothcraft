@@ -9,9 +9,9 @@ type PerStripe = { ({}: { getStripePosition: GetStripePosition }): StripePositio
 
 const perStripe: PerStripe = ({ getStripePosition }) => {
 	const stripeCount = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.stripeCountSetting
-	return iterator(stripeCount).map(stripeIndex => {
-		return getStripePosition({ stripeIndex, stripeCount }) as any * PERIMETER_SCALAR
-	}) as any
+
+	return iterator(stripeCount).map(stripeIndex =>
+		getStripePosition({ stripeIndex, stripeCount }) as any * PERIMETER_SCALAR) as any
 }
 
 export default perStripe

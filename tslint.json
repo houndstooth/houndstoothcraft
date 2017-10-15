@@ -22,6 +22,15 @@
     ],
     "callable-types": false,
     "interface-over-type-literal": false,
-    "no-inferrable-types": true
+    "no-inferrable-types": true,
+    "no-any": false,
+    "no-magic-numbers": false,
+    "typedef": false,
+    "binary-expression-operand-order": false,
+    "type-literal-delimiter": false,
+    "no-default-export": false,
+    "comment-format": false,
+    "member-ordering": false,
+    "no-object-literal-type-assertion": false
   }
 }

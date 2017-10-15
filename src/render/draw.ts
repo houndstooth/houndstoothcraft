@@ -9,9 +9,9 @@ const draw: Draw = ({ context, shapeColor, outline }) => {
 	if (outline.length < 3) {
 		return
 	}
-	outline = applyView(outline)
+	const outlineAdjustedForView = applyView(outline)
 
-	fill({ context, shapeColor, outline })
+	fill({ context, shapeColor, outline: outlineAdjustedForView })
 }
 
 export default draw

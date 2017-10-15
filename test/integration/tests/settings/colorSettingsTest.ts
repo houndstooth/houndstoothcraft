@@ -464,150 +464,150 @@ describe('.colorSettings', () => {
 			})
 
 			describe('supertile', () => {
-				it(`assigns colors to tiles of patterns in any arbitrary way,
-					repeating in a supertile of n by n tiles`, () => {
-						const sufficientTileCountToDemonstrateSetting = 4
-						const houndstoothOverrides = {
-							basePattern: {
-								colorSettings: {
-									colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
-									assignment: {
-										assignmentMode: 'SUPERTILE',
-										supertile: [
-											[
-												[ 2, 0 ],
-												[ 0, 1 ],
-											],
-											[
-												[ 1, 2 ],
-												[ 3, 3 ],
-											],
-										] as Supertile,
-									},
-								},
-								gridSettings: {
-									gridSize: sufficientTileCountToDemonstrateSetting,
-								},
-								viewSettings: {
-									canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+				// eslint-disable-next-line max-len
+				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', () => {
+					const sufficientTileCountToDemonstrateSetting = 4
+					const houndstoothOverrides = {
+						basePattern: {
+							colorSettings: {
+								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
+								assignment: {
+									assignmentMode: 'SUPERTILE',
+									supertile: [
+										[
+											[ 2, 0 ],
+											[ 0, 1 ],
+										],
+										[
+											[ 1, 2 ],
+											[ 3, 3 ],
+										],
+									] as Supertile,
 								},
 							},
-						}
+							gridSettings: {
+								gridSize: sufficientTileCountToDemonstrateSetting,
+							},
+							viewSettings: {
+								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+							},
+						},
+					}
 
-						activateTestMarkerCanvas()
+					activateTestMarkerCanvas()
 
-						executeSelectedHoundstoothEffects({ houndstoothOverrides })
+					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-						const firstSupertile = [
-							{
-								baseId: 0,
-								tileOrigin: [ 0 * tileSize, 0 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ CYAN, YELLOW ],
-							},
-							{
-								baseId: 8,
-								tileOrigin: [ 0 * tileSize, 1 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ YELLOW, BLUE ],
-							},
-							{
-								baseId: 16,
-								tileOrigin: [ 1 * tileSize, 0 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ BLUE, CYAN ],
-							},
-							{
-								baseId: 24,
-								tileOrigin: [ 1 * tileSize, 1 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ MAGENTA, MAGENTA ],
-							},
-						]
-						const secondSupertile = [
-							{
-								baseId: 32,
-								tileOrigin: [ 2 * tileSize, 0 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ CYAN, YELLOW ],
-							},
-							{
-								baseId: 40,
-								tileOrigin: [ 2 * tileSize, 1 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ YELLOW, BLUE ],
-							},
-							{
-								baseId: 48,
-								tileOrigin: [ 3 * tileSize, 0 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ BLUE, CYAN ],
-							},
-							{
-								baseId: 56,
-								tileOrigin: [ 3 * tileSize, 1 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ MAGENTA, MAGENTA ],
-							},
-						]
-						const thirdSupertile = [
-							{
-								baseId: 64,
-								tileOrigin: [ 0 * tileSize, 2 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ CYAN, YELLOW ],
-							},
-							{
-								baseId: 72,
-								tileOrigin: [ 0 * tileSize, 3 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ YELLOW, BLUE ],
-							},
-							{
-								baseId: 80,
-								tileOrigin: [ 1 * tileSize, 2 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ BLUE, CYAN ],
-							},
-							{
-								baseId: 88,
-								tileOrigin: [ 1 * tileSize, 3 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ MAGENTA, MAGENTA ],
-							},
-						]
-						const fourthSupertile = [
-							{
-								baseId: 96,
-								tileOrigin: [ 2 * tileSize, 2 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ CYAN, YELLOW ],
-							},
-							{
-								baseId: 104,
-								tileOrigin: [ 2 * tileSize, 3 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ YELLOW, BLUE ],
-							},
-							{
-								baseId: 112,
-								tileOrigin: [ 3 * tileSize, 2 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ BLUE, CYAN ],
-							},
-							{
-								baseId: 120,
-								tileOrigin: [ 3 * tileSize, 3 * tileSize ] as Coordinate,
-								tileSize,
-								colors: [ MAGENTA, MAGENTA ],
-							},
-						]
-						const tiles = firstSupertile
-							.concat(secondSupertile)
-							.concat(thirdSupertile)
-							.concat(fourthSupertile)
-						tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
-					})
+					const firstSupertile = [
+						{
+							baseId: 0,
+							tileOrigin: [ 0 * tileSize, 0 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ CYAN, YELLOW ],
+						},
+						{
+							baseId: 8,
+							tileOrigin: [ 0 * tileSize, 1 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ YELLOW, BLUE ],
+						},
+						{
+							baseId: 16,
+							tileOrigin: [ 1 * tileSize, 0 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ BLUE, CYAN ],
+						},
+						{
+							baseId: 24,
+							tileOrigin: [ 1 * tileSize, 1 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ MAGENTA, MAGENTA ],
+						},
+					]
+					const secondSupertile = [
+						{
+							baseId: 32,
+							tileOrigin: [ 2 * tileSize, 0 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ CYAN, YELLOW ],
+						},
+						{
+							baseId: 40,
+							tileOrigin: [ 2 * tileSize, 1 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ YELLOW, BLUE ],
+						},
+						{
+							baseId: 48,
+							tileOrigin: [ 3 * tileSize, 0 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ BLUE, CYAN ],
+						},
+						{
+							baseId: 56,
+							tileOrigin: [ 3 * tileSize, 1 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ MAGENTA, MAGENTA ],
+						},
+					]
+					const thirdSupertile = [
+						{
+							baseId: 64,
+							tileOrigin: [ 0 * tileSize, 2 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ CYAN, YELLOW ],
+						},
+						{
+							baseId: 72,
+							tileOrigin: [ 0 * tileSize, 3 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ YELLOW, BLUE ],
+						},
+						{
+							baseId: 80,
+							tileOrigin: [ 1 * tileSize, 2 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ BLUE, CYAN ],
+						},
+						{
+							baseId: 88,
+							tileOrigin: [ 1 * tileSize, 3 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ MAGENTA, MAGENTA ],
+						},
+					]
+					const fourthSupertile = [
+						{
+							baseId: 96,
+							tileOrigin: [ 2 * tileSize, 2 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ CYAN, YELLOW ],
+						},
+						{
+							baseId: 104,
+							tileOrigin: [ 2 * tileSize, 3 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ YELLOW, BLUE ],
+						},
+						{
+							baseId: 112,
+							tileOrigin: [ 3 * tileSize, 2 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ BLUE, CYAN ],
+						},
+						{
+							baseId: 120,
+							tileOrigin: [ 3 * tileSize, 3 * tileSize ] as Coordinate,
+							tileSize,
+							colors: [ MAGENTA, MAGENTA ],
+						},
+					]
+					const tiles = firstSupertile
+						.concat(secondSupertile)
+						.concat(thirdSupertile)
+						.concat(fourthSupertile)
+					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+				})
 			})
 		})
 
@@ -687,57 +687,57 @@ describe('.colorSettings', () => {
 		})
 
 		describe('.flipGrain', () => {
-			it(`rotates the stripes by 180 degrees, in effect (switching the colors if there are only two)
-				reversing the grain of the pattern`, () => {
-					const sufficientTileCountToDemonstrateSetting = 2
-					const houndstoothOverrides = {
-						basePattern: {
-							colorSettings: {
-								assignment: {
-									flipGrain: true,
-								},
-							},
-							gridSettings: {
-								gridSize: sufficientTileCountToDemonstrateSetting,
-							},
-							viewSettings: {
-								canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as CanvasSize,
+			// eslint-disable-next-line max-len
+			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
+				const sufficientTileCountToDemonstrateSetting = 2
+				const houndstoothOverrides = {
+					basePattern: {
+						colorSettings: {
+							assignment: {
+								flipGrain: true,
 							},
 						},
-					}
-					activateTestMarkerCanvas()
+						gridSettings: {
+							gridSize: sufficientTileCountToDemonstrateSetting,
+						},
+						viewSettings: {
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as CanvasSize,
+						},
+					},
+				}
+				activateTestMarkerCanvas()
 
-					executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-					const tiles = [
-						{
-							baseId: 0,
-							tileOrigin: [ 0 * tileSize, 0 * tileSize ] as Coordinate,
-							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
-						},
-						{
-							baseId: 8,
-							tileOrigin: [ 0 * tileSize, 1 * tileSize ] as Coordinate,
-							tileSize,
-							colors: [ BLACK, BLACK ],
-						},
-						{
-							baseId: 16,
-							tileOrigin: [ 1 * tileSize, 0 * tileSize ] as Coordinate,
-							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
-						},
-						{
-							baseId: 24,
-							tileOrigin: [ 1 * tileSize, 1 * tileSize ] as Coordinate,
-							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
-						},
-					]
+				const tiles = [
+					{
+						baseId: 0,
+						tileOrigin: [ 0 * tileSize, 0 * tileSize ] as Coordinate,
+						tileSize,
+						colors: [ BLACK, TRANSPARENT ],
+					},
+					{
+						baseId: 8,
+						tileOrigin: [ 0 * tileSize, 1 * tileSize ] as Coordinate,
+						tileSize,
+						colors: [ BLACK, BLACK ],
+					},
+					{
+						baseId: 16,
+						tileOrigin: [ 1 * tileSize, 0 * tileSize ] as Coordinate,
+						tileSize,
+						colors: [ TRANSPARENT, TRANSPARENT ],
+					},
+					{
+						baseId: 24,
+						tileOrigin: [ 1 * tileSize, 1 * tileSize ] as Coordinate,
+						tileSize,
+						colors: [ TRANSPARENT, BLACK ],
+					},
+				]
 
-					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
-				})
+				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+			})
 		})
 	})
 

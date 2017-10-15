@@ -4,10 +4,13 @@ import applyTilt from './applyTilt'
 import { Outline } from '../space'
 
 const applyView: {(outline: Outline): Outline }  = outline => {
-	outline = applyZoom(outline)
-	outline = applyScroll(outline)
-	outline = applyTilt(outline)
-	return outline
+	let outlineWithViewApplied = outline
+
+	outlineWithViewApplied = applyZoom(outlineWithViewApplied)
+	outlineWithViewApplied = applyScroll(outlineWithViewApplied)
+	outlineWithViewApplied = applyTilt(outlineWithViewApplied)
+
+	return outlineWithViewApplied
 }
 
 export default applyView

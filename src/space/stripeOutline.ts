@@ -12,6 +12,7 @@ const stripeOutline: GetOutline = ({ tileOrigin, tileSize, outlineOptions }) => 
 	firstPoint({ outline, stripeStartsInTopLeftHalf, originAndSize, stripeStart })
 	middlePoints({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeEnd })
 	lastPoints({ outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeStart })
+
 	return outline
 }
 

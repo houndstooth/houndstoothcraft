@@ -137,54 +137,54 @@ describe('.gridSettings', () => {
 	})
 
 	describe('.includeNegativeQuadrants', () => {
-		it(`quadruples the number of tiles, adding them not only in the positive x positive y quadrant,
-			but negative x positive y, positive x negative y, and negative x negative y`, () => {
-				const tileSizeSetting = 50
-				const houndstoothOverrides = {
-					basePattern: {
-						viewSettings: {
-							canvasSize: 300 as CanvasSize,
-							centerViewOnCenterOfTileAtHomeAddress: true,
-						},
-						tileSettings: {
-							tileSizeSetting,
-						},
-						gridSettings: {
-							gridSize: 1,
-							includeNegativeQuadrants: true,
-						},
+		// eslint-disable-next-line max-len
+		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
+			const tileSizeSetting = 50
+			const houndstoothOverrides = {
+				basePattern: {
+					viewSettings: {
+						canvasSize: 300 as CanvasSize,
+						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
-				}
-				activateTestMarkerCanvas()
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+					tileSettings: {
+						tileSizeSetting,
+					},
+					gridSettings: {
+						gridSize: 1,
+						includeNegativeQuadrants: true,
+					},
+				},
+			}
+			activateTestMarkerCanvas()
+			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				const tiles = [
-					{
-						baseId: 0,
-						tileOrigin: [ 125, 125 ] as Coordinate,
-						tileSize: tileSizeSetting,
-						colors: [ TRANSPARENT, BLACK ],
-					},
-					{
-						baseId: 8,
-						tileOrigin: [ 75, 125 ] as Coordinate,
-						tileSize: tileSizeSetting,
-						colors: [ TRANSPARENT, TRANSPARENT ],
-					},
-					{
-						baseId: 24,
-						tileOrigin: [ 75, 75 ] as Coordinate,
-						tileSize: tileSizeSetting,
-						colors: [ BLACK, TRANSPARENT ],
-					},
-					{
-						baseId: 16,
-						tileOrigin: [ 125, 75 ] as Coordinate,
-						tileSize: tileSizeSetting,
-						colors: [ BLACK, BLACK ],
-					},
-				]
-				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
-			})
+			const tiles = [
+				{
+					baseId: 0,
+					tileOrigin: [ 125, 125 ] as Coordinate,
+					tileSize: tileSizeSetting,
+					colors: [ TRANSPARENT, BLACK ],
+				},
+				{
+					baseId: 8,
+					tileOrigin: [ 75, 125 ] as Coordinate,
+					tileSize: tileSizeSetting,
+					colors: [ TRANSPARENT, TRANSPARENT ],
+				},
+				{
+					baseId: 24,
+					tileOrigin: [ 75, 75 ] as Coordinate,
+					tileSize: tileSizeSetting,
+					colors: [ BLACK, TRANSPARENT ],
+				},
+				{
+					baseId: 16,
+					tileOrigin: [ 125, 75 ] as Coordinate,
+					tileSize: tileSizeSetting,
+					colors: [ BLACK, BLACK ],
+				},
+			]
+			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+		})
 	})
 })

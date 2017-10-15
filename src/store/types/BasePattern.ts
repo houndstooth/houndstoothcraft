@@ -17,7 +17,7 @@ type BasePattern = {
 	},
 	tileSettings?: {
 		tileSizeSetting?: number,
-		getTileOriginAndSize?: (p?: any) => TileOriginAndSize,
+		getTileOriginAndSize?(p?: any): TileOriginAndSize,
 	},
 	colorSettings?: {
 		colorSet?: Color[],
@@ -33,12 +33,12 @@ type BasePattern = {
 				initialStripeCount?: number,
 				deltaStripeCount?: number,
 			},
-			getStripePositions?: (p?: any) => StripePosition[],
+			getStripePositions?(p?: any): StripePosition[],
 		},
 		baseStripeDiagonal?: string,
 	},
 	textureSettings?: {
-		renderTexture?: (p?: any) => void,
+		renderTexture?(p?: any): void,
 	},
 	animationSettings?: {
 		frameRate?: number,

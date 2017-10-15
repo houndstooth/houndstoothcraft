@@ -18,9 +18,8 @@ const addEffect: { (houndstoothEffect: Houndstooth): void } = houndstoothEffect 
 }
 
 const removeEffect: { (houndstoothEffect: Houndstooth): void } = houndstoothEffect => {
-	state.selectedHoundstoothEffects = state.selectedHoundstoothEffects.filter(selectedHoundstoothEffect => {
-		return selectedHoundstoothEffect.name !== houndstoothEffect.name
-	})
+	state.selectedHoundstoothEffects = state.selectedHoundstoothEffects.filter(selectedHoundstoothEffect =>
+		selectedHoundstoothEffect.name !== houndstoothEffect.name)
 }
 
 export default buildEffectToggleClickHandler

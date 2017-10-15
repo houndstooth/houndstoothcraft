@@ -3,14 +3,12 @@ import { document } from '../utilities/windowWrapper'
 import scaleElement from './scaleElement'
 
 const createCanvasContainer = ({ canvasDimensions }: { canvasDimensions? } = {}) => {
-	if (!canvasDimensions) {
-		canvasDimensions = getCanvasDimensions()
-	}
+	const dimensions = canvasDimensions || getCanvasDimensions()
 
 	const canvasContainer = document.createElement('div')
 	canvasContainer.classList.add('canvas-container')
 
-	scaleElement({ element: canvasContainer, dimensions: canvasDimensions })
+	scaleElement({ element: canvasContainer, dimensions })
 
 	document.body.appendChild(canvasContainer)
 

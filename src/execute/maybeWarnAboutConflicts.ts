@@ -4,6 +4,7 @@ import { warn } from '../ui'
 import { PropertyPath } from '../utilities/types'
 import { Setting } from '../store'
 import settingPath from './settingPath'
+import set = Reflect.set
 
 type MaybeWarnAboutConflicts = {
 	({}: {
@@ -26,28 +27,24 @@ const maybeWarnAboutConflicts: MaybeWarnAboutConflicts = params => {
 type ShouldWarnAboutConflicts = { ({}: { warnAboutConflicts, existingSetting, overridingSetting }): boolean }
 const shouldWarnAboutConflicts: ShouldWarnAboutConflicts = params => {
 	const { warnAboutConflicts, existingSetting, overridingSetting } = params
+
 	return warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 }
 
 const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
+	let settingsEqual
+	const aAsAny = a as any
 	if (typeof a === 'function') {
-		if (typeof b === 'function') {
-			return a.toString() === b.toString()
-		}
-		else {
-			return false
-		}
+		settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
 	}
-	else if (a as any instanceof Array) {
-		if (b as any instanceof Array) {
-			const aAny = a as any
-			return aAny.every((aEntry, index) => aEntry === b[ index ])
-		}
-		else {
-			return false
-		}
+	else if (aAsAny instanceof Array) {
+		settingsEqual = b as any instanceof Array ? aAsAny.every((aEntry, index) => aEntry === b[ index ]) : false
 	}
-	return a === b
+	else {
+		settingsEqual = a === b
+	}
+
+	return settingsEqual
 }
 
 type BuildWarningMessage = {
@@ -63,6 +60,7 @@ const buildWarningMessage: BuildWarningMessage = params => {
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
 	const fullSettingPath = settingPath({ settingsPath, settingName })
+
 	// eslint-disable-next-line max-len
 	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
 }
@@ -74,6 +72,7 @@ const formatSettingForWarning: { (setting: Setting): string } = setting => {
 	else if (typeof setting === 'string') {
 		return setting
 	}
+
 	return JSON.stringify(setting)
 }
 

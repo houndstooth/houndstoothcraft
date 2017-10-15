@@ -1,8 +1,7 @@
 import state from '../state'
-import { callFunctionsPerSetting, executeGrid } from '../execute'
+import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
 import { clear } from '../canvas'
 import { deepClone } from '../utilities/codeUtilities'
-import { SettingsFunctionObject } from '../execute'
 import exportFrame from './exportFrame'
 
 type BuildAnimationFunction = {
@@ -15,6 +14,7 @@ type BuildAnimationFunction = {
 }
 const buildAnimationFunction: BuildAnimationFunction = params => {
 	const { startAnimationFrame, animationFunctionObjects, layerFunctionObjects, refreshCanvas } = params
+
 	return () => {
 		if (exportingFramesStillNeedsToCatchUp()) {
 			return
@@ -29,13 +29,11 @@ const buildAnimationFunction: BuildAnimationFunction = params => {
 	}
 }
 
-const exportingFramesStillNeedsToCatchUp: { (): boolean } = () => {
-	return state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
-}
+const exportingFramesStillNeedsToCatchUp: { (): boolean } = () =>
+	state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
 
-const shouldBeginShowingAnimation: { (startAnimationFrame: number): boolean } = startAnimationFrame => {
-	return state.currentAnimationFrame >= startAnimationFrame
-}
+const shouldBeginShowingAnimation: { (startAnimationFrame: number): boolean } = startAnimationFrame =>
+	state.currentAnimationFrame >= startAnimationFrame
 
 type Animate = { ({}: { layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean }): void }
 const animate: Animate = ({ layerFunctionObjects, refreshCanvas }) => {

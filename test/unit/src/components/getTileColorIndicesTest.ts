@@ -107,7 +107,7 @@ describe('get tile color indices', () => {
 					],
 				},
 			}
-			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ] as Address ))
+			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ] as Address))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))
@@ -124,9 +124,8 @@ describe('get tile color indices', () => {
 		})
 
 		it('calls an arbitrary transformation, if provided', () => {
-			const transformTileColorIndices = ({ tileColorIndices, gridAddress }) => {
-				return gridAddress[ 0 ] === 1 ? tileColorIndices.concat(tileColorIndices) : tileColorIndices
-			}
+			const transformTileColorIndices = ({ tileColorIndices, gridAddress }) =>
+				gridAddress[ 0 ] === 1 ? tileColorIndices.concat(tileColorIndices) : tileColorIndices
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					transformTileColorIndices,
@@ -137,7 +136,7 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ] as Address ))
+			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ] as Address))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))

@@ -1,10 +1,9 @@
 import perStripe from '../../../../src/components/perStripe'
 import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import state from '../../../../src/state'
-import StripePosition from '../../../../src/components/types/StripePosition'
 
 describe('per stripe', () => {
-	beforeEach(() => composeMainHoundstooth())
+	beforeEach(() => composeMainHoundstooth)
 
 	it('uses a stripe count if provided', () => {
 		state.mainHoundstooth.basePattern.stripeSettings = {
@@ -12,7 +11,7 @@ describe('per stripe', () => {
 				stripeCountSetting: 3,
 			},
 		}
-		const stripePositions = perStripe({ getStripePosition: () => null })
+		const stripePositions = perStripe({ getStripePosition: () => undefined })
 
 		expect(stripePositions.length).toBe(3)
 	})

@@ -8,11 +8,11 @@ type Document = {
 }
 
 const mockDocument: Document = {
-	createElement: () => null,
-	createTextNode: () => null,
-	querySelector: () => null,
+	createElement: () => undefined,
+	createTextNode: () => undefined,
+	querySelector: () => undefined,
 	body: {
-		appendChild: () => null,
+		appendChild: () => undefined,
 	},
 }
 
@@ -23,11 +23,11 @@ type Window = {
 }
 
 const mockWindow: Window = {
-	clearInterval: () => null,
-	setInterval: () => null,
+	clearInterval: () => undefined,
+	setInterval: () => undefined,
 	URL: {
-		createObjectURL: () => null,
-		revokeObjectURL: () => null,
+		createObjectURL: () => undefined,
+		revokeObjectURL: () => undefined,
 	},
 }
 

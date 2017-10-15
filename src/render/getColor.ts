@@ -4,6 +4,7 @@ import { Color } from './types'
 
 const getColor: { ({}: { index: number }): Color } = ({ index }) => {
 	const array = state.mainHoundstooth.basePattern.colorSettings.colorSet
+
 	return wrappedIndex({ array, index })
 }
 

@@ -2,7 +2,7 @@ import state from '../state'
 import window from '../utilities/windowWrapper'
 
 type BuildIntervalFunction = {
-	({}: { animationFunction: () => void, stopConditionFunction: () => boolean }): () => void,
+	({}: { animationFunction(): void, stopConditionFunction(): boolean }): () => void,
 }
 const buildIntervalFunction: BuildIntervalFunction = ({ animationFunction, stopConditionFunction }) => () => {
 	animationFunction()

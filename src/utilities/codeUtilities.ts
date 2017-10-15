@@ -8,6 +8,7 @@ const iterator: { (i: number, options?: { oneIndexed: boolean }): number[] } = (
 	if (options.oneIndexed) {
 		iter = iter.map(k => k + 1)
 	}
+
 	return iter
 }
 
@@ -22,11 +23,13 @@ const wrappedIndex: { <T>({}: { array: T[], index?: number }): T } = ({ array, i
 	else {
 		i = index % array.length
 	}
+
 	return array[ i ]
 }
 
 const shallowEqual: { <T>(a: T, b: T): boolean } = (a, b) => {
 	const sameKeyCount = Object.keys(a).length === Object.keys(b).length
+
 	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
 }
 
@@ -36,6 +39,7 @@ const deepClone: { (objectToDeepClone: any): any } = objectToDeepClone => {
 		objectWithProperties: objectToDeepClone,
 		objectToChange: clonedObject,
 	})
+
 	return clonedObject
 }
 
@@ -58,6 +62,7 @@ const deepCloneMaybeNotObject: { <T>(maybeObjectToDeepClone: T): T } = maybeObje
 	else {
 		clonedMaybeObject = maybeObjectToDeepClone
 	}
+
 	return clonedMaybeObject
 }
 
@@ -66,6 +71,7 @@ type DeeperPath = { ({}: { propertyPath: PropertyPath, propertyName: string }): 
 const deeperPath: DeeperPath = ({ propertyPath, propertyName }) => {
 	const path = propertyPath.slice()
 	path.push(propertyName)
+
 	return path as PropertyPath
 }
 
@@ -79,6 +85,7 @@ const accessChildPropertyOrCreatePath: AccessChildPropertyOrCreatePath = ({ obje
 		}
 		childProperty = childProperty[ pathStep ]
 	})
+
 	return childProperty
 }
 
@@ -88,9 +95,8 @@ const isDefined: { <T>(property: T): boolean } = property => typeof property !==
 
 type PropertyIsDefinedOnObject = { ({}: { objectWithProperties: object, propertyName: string }): boolean }
 
-const propertyIsDefinedOnObject: PropertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) => {
-	return isDefined(objectWithProperties[ propertyName ])
-}
+const propertyIsDefinedOnObject: PropertyIsDefinedOnObject = ({ propertyName, objectWithProperties }) =>
+	isDefined(objectWithProperties[ propertyName ])
 
 type ChangeObjectIntoCopy = { ({}: { objectToChange: object, objectWithProperties: object }): void }
 const changeObjectIntoCopy: ChangeObjectIntoCopy = ({ objectToChange, objectWithProperties }) => {

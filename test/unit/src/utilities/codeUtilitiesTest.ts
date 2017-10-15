@@ -158,7 +158,7 @@ describe('code utilities', () => {
 			const anImmutableString = 'a string'
 			const anImmutableNumber = 9
 			const anImmutableFunction = p => p * 3
-			const aNull = null
+			const anUndefinedValue = undefined
 			const originalArray = [ 'a', 2, { what: 'ever' } ]
 			const originalDeepObject = { deeperObject: 'cool beans' }
 			const originalShallowObject = { deepObject: originalDeepObject }
@@ -166,7 +166,7 @@ describe('code utilities', () => {
 				anImmutableString,
 				anImmutableNumber,
 				anImmutableFunction,
-				aNull,
+				anUndefinedValue,
 				anArray: originalArray,
 				shallowObject: originalShallowObject,
 			}
@@ -186,8 +186,8 @@ describe('code utilities', () => {
 			expect(actualObject.anImmutableFunction).toBe(originalObject.anImmutableFunction)
 		})
 
-		it('deep clones settings, including nulls', () => {
-			expect(actualObject.aNull).toBeNull()
+		it('deep clones settings, including undefined values', () => {
+			expect(actualObject.anUndefinedValue).toBeUndefined()
 		})
 
 		it('deep clones settings, including arrays', () => {

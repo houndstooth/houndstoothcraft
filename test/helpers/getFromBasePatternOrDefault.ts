@@ -14,6 +14,7 @@ const getFromBasePatternOrDefault: { (settingsPath: PropertyPath): Setting } = s
 		if (!isDefined(childSetting[ pathStep ])) {
 			childSetting = undefined
 			notThere = true
+
 			return
 		}
 		childSetting = childSetting[ pathStep ]
@@ -32,6 +33,7 @@ const getFromBasePatternOrDefault: { (settingsPath: PropertyPath): Setting } = s
 			propertyPath: settingsPath,
 		})
 	}
+
 	return setting
 }
 

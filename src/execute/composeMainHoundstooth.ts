@@ -15,7 +15,7 @@ const composeMainHoundstooth: ComposeMainHoundstooth = params => {
 	const {
 		houndstoothEffects = [],
 		houndstoothOverrides = {},
-		logComposedMainHoundstooth = null,
+		logComposedMainHoundstooth = false,
 	} = params || {}
 
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })

@@ -11,6 +11,7 @@ import {
 	StripePosition,
 	Units,
 	GetStripePosition,
+	AssignmentMode,
 } from './types'
 
 export {
@@ -26,4 +27,5 @@ export {
 	StripePosition,
 	Units,
 	GetStripePosition,
+	AssignmentMode,
 }

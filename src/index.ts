@@ -10,6 +10,7 @@ import {
 	StripePosition,
 	Units,
 	GetStripePosition,
+	AssignmentMode,
 } from './components'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid, Color } from './render'
@@ -46,4 +47,5 @@ export {
 	Units,
 	GetStripePosition,
 	Context,
+	AssignmentMode,
 }

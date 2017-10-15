@@ -2,9 +2,10 @@ import Supertile from './Supertile'
 import Weave from './Weave'
 import Address from './Address'
 import TileColorIndices from './TileColorIndices'
+import AssignmentMode from './AssignmentMode'
 
 type Assignment = {
-	assignmentMode?: string;
+	assignmentMode?: AssignmentMode;
 	weave?: Weave;
 	supertile?: Supertile;
 	switcheroo?: boolean;

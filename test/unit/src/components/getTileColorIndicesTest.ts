@@ -1,6 +1,7 @@
 import getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 import { state, Address, Supertile, Weave } from '../../../../src'
+import AssignmentMode from '../../../../src/components/types/AssignmentMode'
 
 describe('get tile color indices', () => {
 	const gridAddressForSubject = [ 3, 5 ] as Address
@@ -10,7 +11,7 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					assignmentMode: 'WEAVE',
+					assignmentMode: AssignmentMode.WEAVE,
 					weave: {
 						columns: [ 0, 1 ],
 						rows: [ 0, 0, 3 ],
@@ -27,7 +28,7 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					assignmentMode: 'SUPERTILE',
+					assignmentMode: AssignmentMode.SUPERTILE,
 					supertile: [
 						[ [], expectedSupertileEntry ],
 						[ [], [] ],
@@ -46,7 +47,7 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					assignmentMode: 'WEAVE',
+					assignmentMode: AssignmentMode.WEAVE,
 					offsetAddress,
 					weave: {
 						columns: [ 1, undefined ],
@@ -64,7 +65,7 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					assignmentMode: 'SUPERTILE',
+					assignmentMode: AssignmentMode.SUPERTILE,
 					offsetAddress,
 					supertile: [
 						[ [], [] ],
@@ -83,7 +84,7 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					assignmentMode: 'WEAVE',
+					assignmentMode: AssignmentMode.WEAVE,
 					weave: {
 						columns: [ 0, 1 ],
 						rows: [ 1, 0 ],
@@ -105,7 +106,7 @@ describe('get tile color indices', () => {
 			basePattern.colorSettings = {
 				assignment: {
 					switcheroo: true,
-					assignmentMode: 'SUPERTILE',
+					assignmentMode: AssignmentMode.SUPERTILE,
 					supertile: [
 						[ [ 0, 1 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
 						[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 7, 8 ] ],
@@ -139,7 +140,7 @@ describe('get tile color indices', () => {
 			basePattern.colorSettings = {
 				assignment: {
 					transformTileColorIndices,
-					assignmentMode: 'WEAVE',
+					assignmentMode: AssignmentMode.WEAVE,
 					weave: {
 						columns: [ 0, 1 ],
 						rows: [ 1, 0 ],

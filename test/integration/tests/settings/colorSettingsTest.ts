@@ -9,6 +9,7 @@ import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDe
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 import Supertile from '../../../../src/components/types/Supertile'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import { AssignmentMode } from '../../../../src/index'
 
 describe('.colorSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any
@@ -471,7 +472,7 @@ describe('.colorSettings', () => {
 							colorSettings: {
 								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
 								assignment: {
-									assignmentMode: 'SUPERTILE',
+									assignmentMode: AssignmentMode.SUPERTILE,
 									supertile: [
 										[
 											[ 2, 0 ],

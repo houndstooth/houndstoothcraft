@@ -1,12 +1,13 @@
 import composePatterns from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
+import AssignmentMode from '../../../../src/components/types/AssignmentMode'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
 		const patternToBeMergedOnto = {
 			colorSettings: {
 				assignment: {
-					assignmentMode: 'yoda',
+					assignmentMode: AssignmentMode.WEAVE,
 					switcheroo: true,
 				},
 			},
@@ -17,7 +18,7 @@ describe('compose patterns', () => {
 		const patternToMerge = {
 			colorSettings: {
 				assignment: {
-					assignmentMode: 'luke',
+					assignmentMode: AssignmentMode.SUPERTILE,
 				},
 			},
 			gridSettings: {
@@ -30,7 +31,7 @@ describe('compose patterns', () => {
 		const expectedPattern = {
 			colorSettings: {
 				assignment: {
-					assignmentMode: 'luke',
+					assignmentMode: AssignmentMode.SUPERTILE,
 					switcheroo: true,
 				},
 			},

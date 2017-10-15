@@ -7,13 +7,13 @@ xdescribe('effect toggles', () => {
 		maybeAddEffectToggles(Object.values(effects))
 		state.mainHoundstooth.basePattern = {
 			tileSettings: {
-				tileSizeSetting: 50,
+				tileSizeSetting: 50 as any,
 			},
 		}
 		const effectToggle: HTMLElement = document.querySelector('input.houndsmorphosis') as HTMLElement
 		effectToggle.click()
-		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(0)
+		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(0 as any)
 		effectToggle.click()
-		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(50)
+		expect(state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting).toBe(50 as any)
 	})
 })

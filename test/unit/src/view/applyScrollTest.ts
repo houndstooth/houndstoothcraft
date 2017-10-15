@@ -5,12 +5,12 @@ import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 
 describe('apply scroll', () => {
 	const zoom = 10
-	const tileSize = 40
+	const tileSize = 40 as any
 	const canvasSize = 200 as CanvasSize
 	const outline = [
-		[ 3, 5 ],
-		[ 4, 5 ],
-		[ 3, 4 ],
+		[ 3 as any, 5 as any ],
+		[ 4 as any, 5 as any ],
+		[ 3 as any, 4 as any ],
 	] as Outline
 	beforeEach(() => {
 		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
@@ -23,16 +23,16 @@ describe('apply scroll', () => {
 		const halfTileSize = tileSize / 2
 		expect(applyScroll(outline)).toEqual([
 			[
-				3 + halfCanvasSize - halfTileSize,
-				5 + halfCanvasSize - halfTileSize,
+				3 + halfCanvasSize - halfTileSize as any,
+				5 + halfCanvasSize - halfTileSize as any,
 			],
 			[
-				4 + halfCanvasSize - halfTileSize,
-				5 + halfCanvasSize - halfTileSize,
+				4 + halfCanvasSize - halfTileSize as any,
+				5 + halfCanvasSize - halfTileSize as any,
 			],
 			[
-				3 + halfCanvasSize - halfTileSize,
-				4 + halfCanvasSize - halfTileSize,
+				3 + halfCanvasSize - halfTileSize as any,
+				4 + halfCanvasSize - halfTileSize as any,
 			],
 		] as Outline)
 	})

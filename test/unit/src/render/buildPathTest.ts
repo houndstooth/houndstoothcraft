@@ -4,7 +4,7 @@ import Outline from '../../../../src/space/types/Outline'
 
 describe('build path', () => {
 	it('draws the path with the correct outline and fills it', () => {
-		const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ] as Outline
+		const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
 		const contextCallsOrder = []
 		const context = buildMockContext({ contextCallsOrder }) as CanvasRenderingContext2D
 

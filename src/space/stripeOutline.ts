@@ -5,7 +5,7 @@ import lastPoints from './stripe/lastPoints'
 
 const stripeOutline: GetOutline = ({ tileOrigin, tileSize, outlineOptions }) => {
 	const { stripeStart, stripeEnd } = outlineOptions
-	const originAndSize = { x: tileOrigin[ 0 ], y: tileOrigin[ 1 ], size: tileSize }
+	const originAndSize = { x: tileOrigin[ 0 ] as any, y: tileOrigin[ 1 ] as any, size: tileSize }
 
 	const stripeStartsInTopLeftHalf = stripeStart as any < 1
 	const stripeEndsInBottomRightHalf = stripeEnd as any > 1

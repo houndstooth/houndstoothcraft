@@ -9,7 +9,6 @@ import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
 import Address from '../../../../src/components/types/Address'
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
 import Coordinate from '../../../../src/space/types/Coordinate'
-import Units from '../../../../src/components/types/Units'
 
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
@@ -24,13 +23,13 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			expect(pixelIsColor([ 0, 0 ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 124, 0 ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 0, 124 ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 124, 124 ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 125, 0 ] as Coordinate, TRANSPARENT)).toBe(true)
-			expect(pixelIsColor([ 0, 125 ] as Coordinate, TRANSPARENT)).toBe(true)
-			expect(pixelIsColor([ 125, 125 ] as Coordinate, TRANSPARENT)).toBe(true)
+			expect(pixelIsColor([ 0 as any, 0 as any ] as Coordinate, BLACK)).toBe(true)
+			expect(pixelIsColor([ 124 as any, 0 as any ] as Coordinate, BLACK)).toBe(true)
+			expect(pixelIsColor([ 0 as any, 124 as any ] as Coordinate, BLACK)).toBe(true)
+			expect(pixelIsColor([ 124 as any, 124 as any ] as Coordinate, BLACK)).toBe(true)
+			expect(pixelIsColor([ 125 as any, 0 as any ] as Coordinate, TRANSPARENT)).toBe(true)
+			expect(pixelIsColor([ 0 as any, 125 as any ] as Coordinate, TRANSPARENT)).toBe(true)
+			expect(pixelIsColor([ 125 as any, 125 as any ] as Coordinate, TRANSPARENT)).toBe(true)
 		})
 	})
 
@@ -43,7 +42,8 @@ describe('.viewSettings', () => {
 					gridSettings: { gridSize: 2 },
 				},
 			}
-			const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
+			const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any
+			const zoomedTileSize = zoom * tileSize as any
 
 			activateTestMarkerCanvas()
 
@@ -51,26 +51,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				tileOrigin: [ 0 * zoom * tileSize, 0 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 0 * zoomedTileSize as any, 0 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ TRANSPARENT, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				tileOrigin: [ 1 * zoom * tileSize, 0 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 1 * zoomedTileSize as any, 0 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				tileOrigin: [ 0 * zoom * tileSize, 1 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 0 * zoomedTileSize as any, 1 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ BLACK, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				tileOrigin: [ 1 * zoom * tileSize, 1 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 1 * zoomedTileSize as any, 1 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 		})
@@ -89,7 +89,8 @@ describe('.viewSettings', () => {
 					gridSettings: { gridSize: 8 },
 				},
 			}
-			const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
+			const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any
+			const zoomedTileSize = zoom * tileSize as any
 
 			activateTestMarkerCanvas()
 
@@ -97,26 +98,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				tileOrigin: [ 3 * zoom * tileSize, 3 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 3 * zoomedTileSize as any, 3 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				tileOrigin: [ 3 * zoom * tileSize, 4 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 3 * zoomedTileSize as any, 4 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				tileOrigin: [ 4 * zoom * tileSize, 3 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 4 * zoomedTileSize as any, 3 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				tileOrigin: [ 4 * zoom * tileSize, 4 * zoom * tileSize ] as Coordinate,
-				tileSize: zoom * tileSize,
+				tileOrigin: [ 4 * zoomedTileSize as any, 4 * zoomedTileSize as any ] as Coordinate,
+				tileSize: zoomedTileSize,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 		})
@@ -124,7 +125,7 @@ describe('.viewSettings', () => {
 
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
 		it('is self-explanatory', () => {
-			const tileSize = 100
+			const tileSize = 100 as any
 			const houndstoothOverrides = {
 				basePattern: {
 					tileSettings: { tileSizeSetting: tileSize },
@@ -138,26 +139,26 @@ describe('.viewSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
-				tileOrigin: [ 350, 350 ] as Coordinate,
-				tileSize: 100,
+				tileOrigin: [ 350 as any, 350 as any ] as Coordinate,
+				tileSize: 100 as any,
 				colors: [ TRANSPARENT, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
-				tileOrigin: [ 450, 350 ] as Coordinate,
-				tileSize: 100,
+				tileOrigin: [ 450 as any, 350 as any ] as Coordinate,
+				tileSize: 100 as any,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
-				tileOrigin: [ 350, 450 ] as Coordinate,
-				tileSize: 100,
+				tileOrigin: [ 350 as any, 450 as any ] as Coordinate,
+				tileSize: 100 as any,
 				colors: [ BLACK, BLACK ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
-				tileOrigin: [ 450, 450 ] as Coordinate,
-				tileSize: 100,
+				tileOrigin: [ 450 as any, 450 as any ] as Coordinate,
+				tileSize: 100 as any,
 				colors: [ BLACK, TRANSPARENT ],
 			})).toBe(true)
 		})
@@ -165,7 +166,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', () => {
-			const areaSize = getFromBasePatternOrDefault(TILE_SIZE) as Units
+			const areaSize = getFromBasePatternOrDefault(TILE_SIZE) as any
 
 			const houndstoothOverrides = {
 				basePattern: {
@@ -186,7 +187,7 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let areaOrigin = [ 200, 0 ] as Coordinate
+			let areaOrigin = [ 200 as any, 0 as any ] as Coordinate
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
@@ -255,7 +256,7 @@ describe('.viewSettings', () => {
 				id: 8,
 			})).toBe(true)
 
-			areaOrigin = [ 250, 0 ] as Coordinate
+			areaOrigin = [ 250 as any, 0 as any ] as Coordinate
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
@@ -325,7 +326,7 @@ describe('.viewSettings', () => {
 				id: 16,
 			})).toBe(true)
 
-			areaOrigin = [ 200, 50 ] as Coordinate
+			areaOrigin = [ 200 as any, 50 as any ] as Coordinate
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
@@ -395,7 +396,7 @@ describe('.viewSettings', () => {
 				id: 24,
 			})).toBe(true)
 
-			areaOrigin = [ 250, 50 ] as Coordinate
+			areaOrigin = [ 250 as any, 50 as any ] as Coordinate
 
 			expect(sectionCenterIsColor({
 				areaOrigin,

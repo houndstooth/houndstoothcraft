@@ -7,7 +7,7 @@ import Supertile from '../components/types/Supertile'
 const DEFAULT_CANVAS_SIZE = 800
 const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
-const DEFAULT_TILE_SIZE = 50
+const DEFAULT_TILE_SIZE = 50 as any
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
 const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
 	assignmentMode: 'WEAVE',

@@ -1,69 +1,69 @@
 import { Point, Coordinate } from '../types'
 
 const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeAsNumber = size as number
-	const stripePositionAsAny = stripePosition as any
+	const sizeDowncast = size as any
+	const stripePositionDowncast = stripePosition as any
 
 	return [
-		stripePositionAsAny * sizeAsNumber + x,
-		y,
+		stripePositionDowncast * sizeDowncast + x as any,
+		y as any,
 	] as Coordinate
 }
 
 const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeAsNumber = size as number
-	const stripePositionAsAny = stripePosition as any
+	const sizeDowncast = size as any
+	const stripePositionDowncast = stripePosition as any
 
 	return [
-		x,
-		stripePositionAsAny * sizeAsNumber + y,
+		x as any,
+		stripePositionDowncast * sizeDowncast + y as any,
 	] as Coordinate
 }
 
 const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeAsNumber = size as number
-	const stripePositionAsAny = stripePosition as any
+	const sizeDowncast = size as any
+	const stripePositionDowncast = stripePosition as any
 
 	return [
-		x + sizeAsNumber,
-		y + (stripePositionAsAny - 1) * sizeAsNumber,
+		x as any + sizeDowncast,
+		y as any + (stripePositionDowncast - 1) * sizeDowncast,
 	] as Coordinate
 }
 
 const pointAlongBottomEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeAsNumber = size as number
-	const stripePositionAsAny = stripePosition as any
+	const sizeDowncast = size as any
+	const stripePositionDowncast = stripePosition as any
 
 	return [
-		x + (stripePositionAsAny - 1) * sizeAsNumber,
-		y + sizeAsNumber,
+		x as any + (stripePositionDowncast - 1) * sizeDowncast,
+		y as any + sizeDowncast,
 	] as Coordinate
 }
 
 const pointInTopRightCorner: Point = ({ originAndSize: { x, y, size } }) => {
-	const sizeAsNumber = size as number
+	const sizeDowncast = size as any
 
 	return [
-		x + sizeAsNumber,
-		y,
+		x as any + sizeDowncast,
+		y as any,
 	] as Coordinate
 }
 
 const pointInBottomRightCorner: Point = ({ originAndSize: { x, y, size } }) => {
-	const sizeAsNumber = size as number
+	const sizeDowncast = size as any
 
 	return [
-		x + sizeAsNumber,
-		y + sizeAsNumber,
+		x as any + sizeDowncast,
+		y as any + sizeDowncast,
 	] as Coordinate
 }
 
 const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) => {
-	const sizeAsNumber = size as number
+	const sizeDowncast = size as any
 
 	return [
-		x,
-		y + sizeAsNumber,
+		x as any,
+		y as any + sizeDowncast,
 	] as Coordinate
 }
 

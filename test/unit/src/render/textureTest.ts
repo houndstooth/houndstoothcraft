@@ -16,7 +16,7 @@ describe('texture', () => {
 		const context = {} as CanvasRenderingContext2D
 		const tileColorIndices = [] as TileColorIndices
 		const tileOrigin = [] as Coordinate
-		const tileSize = 11
+		const tileSize = 11 as any
 		const shapeColorIndex = 3
 		const outline = []
 		const renderTexture = args => calls.push({ call: 'renderTexture', args })

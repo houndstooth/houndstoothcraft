@@ -11,10 +11,10 @@ const getTileOriginAndSize: GetTileOriginAndSize = ({ gridAddress }) => {
 }
 
 const getStandardTileOriginAndSize: GetTileOriginAndSize = ({ gridAddress }) => {
-	const tileSize = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
+	const tileSize: any = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 
 	return {
-		tileOrigin: [ gridAddress[ 0 ] * tileSize, gridAddress[ 1 ] * tileSize ] as Coordinate,
+		tileOrigin: [ gridAddress[ 0 ] * tileSize as any, gridAddress[ 1 ] * tileSize as any ] as Coordinate,
 		tileSize,
 	}
 }

@@ -9,8 +9,8 @@ import Coordinate from '../../../../src/space/types/Coordinate'
 import TileColorIndices from '../../../../src/components/types/TileColorIndices'
 
 describe('shape', () => {
-	const tileOrigin = [ 11, 13 ] as Coordinate
-	const tileSize = 45
+	const tileOrigin = [ 11 as any, 13 as any ] as Coordinate
+	const tileSize = 45 as any
 	const tileColorIndices = [] as TileColorIndices
 	const stripeIndex = 7
 	const shapeColorIndex = 45

@@ -14,7 +14,7 @@ describe('.tileSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					tileSettings: {
-						tileSizeSetting: 30,
+						tileSizeSetting: 30 as any,
 					},
 				},
 			}
@@ -23,10 +23,30 @@ describe('.tileSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles = [
-				{ baseId: 0, tileOrigin: [ 0, 0 ] as Coordinate, tileSize: 30, colors: [ TRANSPARENT, BLACK ] },
-				{ baseId: 8, tileOrigin: [ 0, 30 ] as Coordinate, tileSize: 30, colors: [ BLACK, BLACK ] },
-				{ baseId: 16, tileOrigin: [ 30, 0 ] as Coordinate, tileSize: 30, colors: [ TRANSPARENT, TRANSPARENT ] },
-				{ baseId: 24, tileOrigin: [ 30, 30 ] as Coordinate, tileSize: 30, colors: [ BLACK, TRANSPARENT ] },
+				{
+					baseId: 0,
+					tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
+					tileSize: 30 as any,
+					colors: [ TRANSPARENT, BLACK ],
+				},
+				{
+					baseId: 8,
+					tileOrigin: [ 0 as any, 30 as any ] as Coordinate,
+					tileSize: 30 as any,
+					colors: [ BLACK, BLACK ],
+				},
+				{
+					baseId: 16,
+					tileOrigin: [ 30 as any, 0 as any ] as Coordinate,
+					tileSize: 30 as any,
+					colors: [ TRANSPARENT, TRANSPARENT ],
+				},
+				{
+					baseId: 24,
+					tileOrigin: [ 30 as any, 30 as any ] as Coordinate,
+					tileSize: 30 as any,
+					colors: [ BLACK, TRANSPARENT ],
+				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
 		})
@@ -39,7 +59,7 @@ describe('.tileSettings', () => {
 							zoom: 3,
 						},
 						tileSettings: {
-							tileSizeSetting: 30,
+							tileSizeSetting: 30 as any,
 						},
 					},
 				}
@@ -50,26 +70,26 @@ describe('.tileSettings', () => {
 				const tiles = [
 					{
 						baseId: 0,
-						tileOrigin: [ 0, 0 ] as Coordinate,
-						tileSize: 90,
+						tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
+						tileSize: 90 as any,
 						colors: [ TRANSPARENT, BLACK ],
 					},
 					{
 						baseId: 8,
-						tileOrigin: [ 0, 90 ] as Coordinate,
-						tileSize: 90,
+						tileOrigin: [ 0 as any, 90 as any ] as Coordinate,
+						tileSize: 90 as any,
 						colors: [ BLACK, BLACK ],
 					},
 					{
 						baseId: 16,
-						tileOrigin: [ 90, 0 ] as Coordinate,
-						tileSize: 90,
+						tileOrigin: [ 90 as any, 0 as any ] as Coordinate,
+						tileSize: 90 as any,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 					},
 					{
 						baseId: 24,
-						tileOrigin: [ 90, 90 ] as Coordinate,
-						tileSize: 90,
+						tileOrigin: [ 90 as any, 90 as any ] as Coordinate,
+						tileSize: 90 as any,
 						colors: [ BLACK, TRANSPARENT ],
 					},
 				]

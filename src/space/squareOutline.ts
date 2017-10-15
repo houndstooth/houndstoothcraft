@@ -1,9 +1,9 @@
 import { GetOutline, Coordinate } from './types'
 
 const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
-	const tileSizeNumber = tileSize as number
-	const x = tileOrigin[ 0 ]
-	const y = tileOrigin[ 1 ]
+	const tileSizeDowncast = tileSize as any
+	const x = tileOrigin[ 0 ] as any
+	const y = tileOrigin[ 1 ] as any
 
 	return [
 		[
@@ -11,16 +11,16 @@ const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 			y,
 		] as Coordinate,
 		[
-			x + tileSizeNumber,
+			x + tileSizeDowncast,
 			y,
 		] as Coordinate,
 		[
-			x + tileSizeNumber,
-			y + tileSizeNumber,
+			x + tileSizeDowncast,
+			y + tileSizeDowncast,
 		] as Coordinate,
 		[
 			x,
-			y + tileSizeNumber,
+			y + tileSizeDowncast,
 		] as Coordinate,
 	]
 }

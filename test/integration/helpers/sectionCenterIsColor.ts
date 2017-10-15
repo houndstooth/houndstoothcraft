@@ -3,11 +3,12 @@ import pixelIsColor from './pixelIsColor'
 import { Coordinate } from '../../../src/space'
 import { Color } from '../../../src/render'
 import { Address } from '../../../src/components'
+import Units from '../../../src/components/types/Units'
 
 type SectionCenterIsColor = {
 	({}: {
 		areaOrigin: Coordinate,
-		areaSize: number,
+		areaSize: Units,
 		sectionResolution: number,
 		sectionAddress: Address,
 		color: Color,
@@ -27,18 +28,20 @@ const sectionCenterIsColor: SectionCenterIsColor = params => {
 type SectionCenter = {
 	({}: {
 		areaOrigin: Coordinate,
-		areaSize: number,
+		areaSize: Units,
 		sectionResolution: number,
 		sectionAddress: Address,
 	}): Coordinate,
 }
 
 const sectionCenter: SectionCenter = ({ areaOrigin, areaSize, sectionResolution, sectionAddress }) => {
-	const sectionSize = areaSize / sectionResolution
+	const sectionSize = areaSize as any / sectionResolution
+	const areaX = areaOrigin[0] as any
+	const areaY = areaOrigin[1] as any
 
 	return [
-		areaOrigin[ 0 ] + (sectionAddress[ 0 ] + 0.5) * sectionSize,
-		areaOrigin[ 1 ] + (sectionAddress[ 1 ] + 0.5) * sectionSize,
+		areaX + (sectionAddress[ 0 ] + 0.5) * sectionSize,
+		areaY + (sectionAddress[ 1 ] + 0.5) * sectionSize,
 	] as Coordinate
 }
 

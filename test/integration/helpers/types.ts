@@ -1,8 +1,9 @@
 import { Coordinate } from '../../../src/space'
 import { Color } from '../../../src/render'
+import Units from '../../../src/components/types/Units'
 
 interface ExpectedSection {
-	areaSize: number,
+	areaSize: Units,
 	areaOrigin: Coordinate,
 	baseId?: number
 }

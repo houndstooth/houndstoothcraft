@@ -1,4 +1,5 @@
-enum _UnitsBrand {}
-type Units = _UnitsBrand & number
+interface Units extends Number {
+	_UnitsBrand
+}
 
 export default Units

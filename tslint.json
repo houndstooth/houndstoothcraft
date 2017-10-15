@@ -23,6 +23,7 @@
     "interface-name": [
       "never-prefix"
     ],
+    "restrict-plus-operands": false,
     "no-unbound-method": false,
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,

@@ -10,7 +10,7 @@ describe('fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
 	const context = buildMockContext() as CanvasRenderingContext2D
-	const outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ] as Outline
+	const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
 
 	beforeEach(() => {
 		spyOn(parseColor, 'default').and.returnValue(parsedColor)

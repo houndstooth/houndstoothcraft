@@ -25,11 +25,11 @@ const doAdjustment: DoAdjustment = ({ coordinate, shouldAdjustForCentering, half
 	let coordinateAdjustedForZoom = coordinate
 
 	if (shouldAdjustForCentering) {
-		coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c - halfCanvasSize) as Coordinate
+		coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c as any - halfCanvasSize as any) as Coordinate
 	}
-	coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c * zoom) as Coordinate
+	coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c as any * zoom as any) as Coordinate
 	if (shouldAdjustForCentering) {
-		coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c + halfCanvasSize) as Coordinate
+		coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c as any + halfCanvasSize) as Coordinate
 	}
 
 	return coordinateAdjustedForZoom

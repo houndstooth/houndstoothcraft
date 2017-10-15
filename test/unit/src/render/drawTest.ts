@@ -21,7 +21,7 @@ describe('draw', () => {
 	})
 
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
-		const outline = [ [ 0, 1 ] ] as Outline
+		const outline = [ [ 0 as any, 1 as any ] ] as Outline
 
 		draw({ context, shapeColor, outline })
 
@@ -29,7 +29,7 @@ describe('draw', () => {
 	})
 
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
-		const outline = [ [ 0, 1 ], [ 1, 1 ] ] as Outline
+		const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ] ] as Outline
 
 		draw({ context, shapeColor, outline })
 

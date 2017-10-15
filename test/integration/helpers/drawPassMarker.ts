@@ -12,7 +12,9 @@ const drawPassMarker: DrawPassMarker = ({ passed, coordinateUnderTest, id }) => 
 	testMarkersContext.strokeStyle = passed ? 'green' : 'red'
 	testMarkersContext.beginPath()
 
-	testMarkersContext.arc(coordinateUnderTest[ 0 ], coordinateUnderTest[ 1 ], 2, 0, 2 * Math.PI)
+	const x = coordinateUnderTest[0] as any
+	const y = coordinateUnderTest[1] as any
+	testMarkersContext.arc(x, y, 2, 0, 2 * Math.PI)
 
 	testMarkersContext.closePath()
 	testMarkersContext.stroke()
@@ -20,7 +22,7 @@ const drawPassMarker: DrawPassMarker = ({ passed, coordinateUnderTest, id }) => 
 	if (!passed) {
 		testMarkersContext.font = '8px Arial'
 		testMarkersContext.fillStyle = 'red'
-		testMarkersContext.fillText(id.toString(), coordinateUnderTest[ 0 ] + 3, coordinateUnderTest[ 1 ] + 3)
+		testMarkersContext.fillText(id.toString(), x + 3, y + 3)
 	}
 }
 

@@ -5,12 +5,15 @@ const rotateCoordinateAboutPoint: RotateCoordinateAboutPoint = ({ coordinate, po
 	const sin = Math.sin(rotation)
 	const cos = Math.cos(rotation)
 
-	const relativeX = coordinate[ 0 ] - point[ 0 ]
-	const relativeY = coordinate[ 1 ] - point[ 1 ]
+	const pointX = point[ 0 ] as any
+	const pointY = point[ 1 ] as any
+
+	const relativeX = coordinate[ 0 ] as any - pointX
+	const relativeY = coordinate[ 1 ] as any - pointY
 
 	return [
-		point[ 0 ] + relativeX * cos - relativeY * sin,
-		point[ 1 ] + relativeX * sin + relativeY * cos,
+		pointX + relativeX * cos - relativeY * sin,
+		pointY + relativeX * sin + relativeY * cos,
 	] as Coordinate
 }
 

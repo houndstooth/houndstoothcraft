@@ -1,4 +1,5 @@
 import { Color } from '../../render'
+import { Units } from '../../components'
 
 type PatternFunctions = {
 	viewSettings?: {
@@ -8,7 +9,7 @@ type PatternFunctions = {
 		gridSize?(): number,
 	},
 	tileSettings?: {
-		tileSizeSetting?(p: number): number,
+		tileSizeSetting?(p: Units): Units,
 	},
 	colorSettings?: {
 		colorSet?(): Color[],

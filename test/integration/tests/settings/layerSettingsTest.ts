@@ -27,7 +27,7 @@ describe('.layerSettings', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const BLENDED_COLOR = { r: 192, g: 255, b: 63, a: 1 }
-		const pixelInCellThatDemonstratesBlending = [ 75, 25 ] as Coordinate
+		const pixelInCellThatDemonstratesBlending = [ 75 as any, 25 as any ] as Coordinate
 		const passed = pixelIsColorWithMarker({
 			coordinateUnderTest: pixelInCellThatDemonstratesBlending,
 			expectedColor: BLENDED_COLOR,
@@ -58,26 +58,26 @@ describe('.layerSettings', () => {
 
 		expect(standardTileIsColors({
 			baseId: 0,
-			tileOrigin: [ 0, 0 ] as Coordinate,
-			tileSize: 50,
+			tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
+			tileSize: 50 as any,
 			colors: [ YELLOW, CYAN ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 8,
-			tileOrigin: [ 50, 0 ] as Coordinate,
-			tileSize: 50,
+			tileOrigin: [ 50 as any, 0 as any ] as Coordinate,
+			tileSize: 50 as any,
 			colors: [ YELLOW, YELLOW ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 16,
-			tileOrigin: [ 0, 50 ] as Coordinate,
-			tileSize: 50,
+			tileOrigin: [ 0 as any, 50 as any ] as Coordinate,
+			tileSize: 50 as any,
 			colors: [ CYAN, CYAN ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 24,
-			tileOrigin: [ 50, 50 ] as Coordinate,
-			tileSize: 50,
+			tileOrigin: [ 50 as any, 50 as any ] as Coordinate,
+			tileSize: 50 as any,
 			colors: [ CYAN, YELLOW ],
 		})).toBe(true)
 	})

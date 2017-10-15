@@ -32,12 +32,12 @@ const shouldWarnAboutConflicts: ShouldWarnAboutConflicts = params => {
 
 const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
 	let settingsEqual
-	const aAsAny = a as any
+	const aDowncast = a as any
 	if (typeof a === 'function') {
 		settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
 	}
-	else if (aAsAny instanceof Array) {
-		settingsEqual = b as any instanceof Array ? aAsAny.every((aEntry, index) => aEntry === b[ index ]) : false
+	else if (aDowncast instanceof Array) {
+		settingsEqual = b as any instanceof Array ? aDowncast.every((aEntry, index) => aEntry === b[ index ]) : false
 	}
 	else {
 		settingsEqual = a === b

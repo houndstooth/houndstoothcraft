@@ -19,10 +19,10 @@ describe('apply zoom', () => {
 
 	it('adjusts the outline per the zoom level', () => {
 		expect(applyZoom(outline)).toEqual([
-			[ 100, 100 ],
-			[ 200, 100 ],
-			[ 200, 200 ],
-			[ 100, 200 ],
+			[ 100 as any, 100 as any ],
+			[ 200 as any, 100 as any ],
+			[ 200 as any, 200 as any ],
+			[ 100 as any, 200 as any ],
 		] as Outline)
 	})
 
@@ -33,10 +33,10 @@ describe('apply zoom', () => {
 
 		it('works', () => {
 			expect(applyZoom(outline)).toEqual([
-				[ 0, 0 ],
-				[ 100, 0 ],
-				[ 100, 100 ],
-				[ 0, 100 ],
+				[ 0 as any, 0 as any ],
+				[ 100 as any, 0 as any ],
+				[ 100 as any, 100 as any ],
+				[ 0 as any, 100 as any ],
 			] as Outline)
 		})
 
@@ -48,10 +48,10 @@ describe('apply zoom', () => {
 
 		it('does not double-up on adjusting for centering the view', () => {
 			expect(applyZoom(outline)).toEqual([
-				[ 0, 0 ],
-				[ 100, 0 ],
-				[ 100, 100 ],
-				[ 0, 100 ],
+				[ 0 as any, 0 as any ],
+				[ 100 as any, 0 as any ],
+				[ 100 as any, 100 as any ],
+				[ 0 as any, 100 as any ],
 			] as Outline)
 		})
 	})

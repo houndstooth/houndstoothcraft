@@ -1,7 +1,6 @@
 import { Color } from '../../render'
 import { CanvasSize } from '../../canvas'
-import { Assignment, TileOriginAndSize } from '../../components'
-import StripePosition from '../../components/types/StripePosition'
+import { Assignment, TileOriginAndSize, StripePosition, Units } from '../../components'
 
 type BasePattern = {
 	viewSettings?: {
@@ -16,7 +15,7 @@ type BasePattern = {
 		includeNegativeQuadrants?: boolean,
 	},
 	tileSettings?: {
-		tileSizeSetting?: number,
+		tileSizeSetting?: Units,
 		collapseSameColoredShapesWithinTile?: boolean,
 		getTileOriginAndSize?(p?: any): TileOriginAndSize,
 	},

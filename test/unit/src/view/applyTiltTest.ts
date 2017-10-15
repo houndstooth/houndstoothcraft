@@ -13,26 +13,26 @@ describe('apply tilt', () => {
 			canvasSize,
 		}
 		const outline = [
-			[ 0, 0 ],
-			[ 40, 0 ],
-			[ 0, 40 ],
+			[ 0 as any, 0 as any ],
+			[ 40 as any, 0 as any ],
+			[ 0 as any, 40 as any ],
 		] as Outline
 
 		const actualOutline = applyTilt(outline)
 
 		const expectedOutline = [
-			[ 200, 0 ],
-			[ 200, 40 ],
-			[ 160, 0 ],
+			[ 200 as any, 0 as any ],
+			[ 200 as any, 40 as any ],
+			[ 160 as any, 0 as any ],
 		] as Outline
 		expect(coordinatesMatch(expectedOutline, actualOutline)).toBe(true)
 	})
 
 	it('does nothing if rotateViewAboutCanvasCenter is undefined or 0', () => {
 		const outline = [
-			[ 0, 0 ],
-			[ 0, 40 ],
-			[ 40, 40 ],
+			[ 0 as any, 0 as any ],
+			[ 0 as any, 40 as any ],
+			[ 40 as any, 40 as any ],
 		] as Outline
 
 		const actualOutline = applyTilt(outline)

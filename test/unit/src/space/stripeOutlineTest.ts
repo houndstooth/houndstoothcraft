@@ -3,8 +3,8 @@ import Outline from '../../../../src/space/types/Outline'
 import Coordinate from '../../../../src/space/types/Coordinate'
 
 describe('stripe outline', () => {
-	const tileOrigin = [ 0, 0 ] as Coordinate
-	const tileSize = 1
+	const tileOrigin = [ 0 as any, 0 as any ] as Coordinate
+	const tileSize = 1 as any
 	let stripeStart
 	let stripeEnd
 
@@ -18,9 +18,9 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0, 0 ],
-					[ 0.5, 0 ],
-					[ 0, 0.5 ],
+					[ 0 as any, 0 as any ],
+					[ 0.5 as any, 0 as any ],
+					[ 0 as any, 0.5 as any ],
 				] as Outline)
 			})
 		})
@@ -32,9 +32,9 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0, 0 ],
-					[ 1, 0 ],
-					[ 0, 1 ],
+					[ 0 as any, 0 as any ],
+					[ 1 as any, 0 as any ],
+					[ 0 as any, 1 as any ],
 				] as Outline)
 			})
 		})
@@ -46,11 +46,11 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0, 0 ],
-					[ 1, 0 ],
-					[ 1, 0.5 ],
-					[ 0.5, 1 ],
-					[ 0, 1 ],
+					[ 0 as any, 0 as any ],
+					[ 1 as any, 0 as any ],
+					[ 1 as any, 0.5 as any ],
+					[ 0.5 as any, 1 as any ],
+					[ 0 as any, 1 as any ],
 				] as Outline)
 			})
 		})
@@ -66,10 +66,10 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0.5, 0 ],
-					[ 0.75, 0 ],
-					[ 0, 0.75 ],
-					[ 0, 0.5 ],
+					[ 0.5 as any, 0 as any ],
+					[ 0.75 as any, 0 as any ],
+					[ 0 as any, 0.75 as any ],
+					[ 0 as any, 0.5 as any ],
 				] as Outline)
 			})
 		})
@@ -81,10 +81,10 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0.5, 0 ],
-					[ 1, 0 ],
-					[ 0, 1 ],
-					[ 0, 0.5 ],
+					[ 0.5 as any, 0 as any ],
+					[ 1 as any, 0 as any ],
+					[ 0 as any, 1 as any ],
+					[ 0 as any, 0.5 as any ],
 				] as Outline)
 			})
 		})
@@ -97,12 +97,12 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0.5, 0 ],
-					[ 1, 0 ],
-					[ 1, 0.5 ],
-					[ 0.5, 1 ],
-					[ 0, 1 ],
-					[ 0, 0.5 ],
+					[ 0.5 as any, 0 as any ],
+					[ 1 as any, 0 as any ],
+					[ 1 as any, 0.5 as any ],
+					[ 0.5 as any, 1 as any ],
+					[ 0 as any, 1 as any ],
+					[ 0 as any, 0.5 as any ],
 				] as Outline)
 			})
 		})
@@ -115,11 +115,11 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 0.5, 0 ],
-					[ 1, 0 ],
-					[ 1, 1 ],
-					[ 0, 1 ],
-					[ 0, 0.5 ],
+					[ 0.5 as any, 0 as any ],
+					[ 1 as any, 0 as any ],
+					[ 1 as any, 1 as any ],
+					[ 0 as any, 1 as any ],
+					[ 0 as any, 0.5 as any ],
 				] as Outline)
 			})
 		})
@@ -135,10 +135,10 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 1, 0 ],
-					[ 1, 0.5 ],
-					[ 0.5, 1 ],
-					[ 0, 1 ],
+					[ 1 as any, 0 as any ],
+					[ 1 as any, 0.5 as any ],
+					[ 0.5 as any, 1 as any ],
+					[ 0 as any, 1 as any ],
 				] as Outline)
 			})
 		})
@@ -150,9 +150,9 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 1, 0 ],
-					[ 1, 1 ],
-					[ 0, 1 ],
+					[ 1 as any, 0 as any ],
+					[ 1 as any, 1 as any ],
+					[ 0 as any, 1 as any ],
 				] as Outline)
 			})
 		})
@@ -168,10 +168,10 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 1, 0.5 ],
-					[ 1, 0.75 ],
-					[ 0.75, 1 ],
-					[ 0.5, 1 ],
+					[ 1 as any, 0.5 as any ],
+					[ 1 as any, 0.75 as any ],
+					[ 0.75 as any, 1 as any ],
+					[ 0.5 as any, 1 as any ],
 				] as Outline)
 			})
 		})
@@ -183,9 +183,9 @@ describe('stripe outline', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual([
-					[ 1, 0.5 ],
-					[ 1, 1 ],
-					[ 0.5, 1 ],
+					[ 1 as any, 0.5 as any ],
+					[ 1 as any, 1 as any ],
+					[ 0.5 as any, 1 as any ],
 				] as Outline)
 			})
 		})

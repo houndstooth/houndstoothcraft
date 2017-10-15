@@ -1,9 +1,13 @@
 import { Coordinate } from '../space'
 import { TileOriginAndSize } from './types'
 
-const tileCenter: { ({}: TileOriginAndSize): Coordinate } = ({ tileOrigin, tileSize }) => [
-	tileOrigin[ 0 ] + tileSize / 2,
-	tileOrigin[ 1 ] + tileSize / 2,
-] as Coordinate
+const tileCenter: { ({}: TileOriginAndSize): Coordinate } = ({ tileOrigin, tileSize }) => {
+	const halfTileSize = tileSize as any / 2 as any
+
+	return [
+		tileOrigin[ 0 ] as any + halfTileSize,
+		tileOrigin[ 1 ] as any + halfTileSize,
+	] as Coordinate
+}
 
 export default tileCenter

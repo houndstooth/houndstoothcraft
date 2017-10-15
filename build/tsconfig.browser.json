@@ -1,11 +1,7 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es5",
-    "lib": [ "es2017", "dom" ],
-    "sourceMap": true,
-    "types": [ "jasmine" ]
+    "module": "esnext"
   },
   "include": [
     "src/**/*",

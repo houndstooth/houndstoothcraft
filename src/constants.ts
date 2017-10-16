@@ -13,7 +13,6 @@ const TRANSPARENT: Color = { a: 0 }
 const ERASE: Color = { a: -1 }
 
 const EIGHTH_OF_CIRCLE_ROTATION: number = Math.PI / 4
-const QUARTER_OF_CIRCLE_ROTATION: number = Math.PI / 2
 
 const PERIMETER_SCALAR = 2
 
@@ -31,7 +30,6 @@ export {
 	TRANSPARENT,
 	ERASE,
 	EIGHTH_OF_CIRCLE_ROTATION,
-	QUARTER_OF_CIRCLE_ROTATION,
 	PERIMETER_SCALAR,
 	ANIMATION_RATE,
 }

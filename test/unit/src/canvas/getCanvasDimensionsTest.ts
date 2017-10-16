@@ -15,7 +15,7 @@ describe('get canvas dimensions', () => {
 
 	describe('when the canvas size is specified', () => {
 		it('uses this custom canvas size', () => {
-			state.mainHoundstooth.basePattern = { viewSettings: { canvasSize: [ 350, 450 ] as CanvasSize } }
+			state.mainHoundstooth.basePattern = { viewSettings: { canvasSize: [ 350, 450 ] as any } }
 
 			const canvasDimensions = getCanvasDimensions()
 

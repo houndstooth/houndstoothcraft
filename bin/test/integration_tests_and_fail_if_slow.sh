@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-./bin/test/integration.sh | tee /dev/tty > test/integration/slowness-report.txt
+./bin/test/integration.sh > test/integration/slowness-report.txt
 
 if cat test/integration/slowness-report.txt | grep -q 'SLOW' ; then
    printf "${Red}Slow tests detected. See test/integration/slowness-report.txt for details.\n${NC}"

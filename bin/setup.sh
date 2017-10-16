@@ -2,15 +2,13 @@
 
 set -e
 
-sed -i -e "/web-render/d" ~/.bash_profile
-echo 'export PATH=$PATH:~/workspace/web-render/node_modules/.bin' >> ~/.bash_profile
-source ~/.bash_profile
+./bin/shared/cmd_w_msgs.sh "sed -i -e \"/web-render/d\" ~/.bash_profile && echo 'export PATH=\$PATH:~/workspace/web-render/node_modules/.bin' >> ~/.bash_profile" "profiling binaries" "Something went wrong adding the node_modules binaries to your bash profile." "This project's node_modules binaries are now available on the path via your bash profile."
 
-npm i -g npm
+./bin/shared/cmd_w_msgs.sh "npm i -g npm" "upgrading npm" "npm upgrade failed." "npm at latest."
 
 ./bin/setup/install.sh
 
-npm i
+./bin/shared/cmd_w_msgs.sh "npm i" "updating dependencies" "npm update failed." "All dependencies at latest."
 
 ./bin/setup/git.sh
 

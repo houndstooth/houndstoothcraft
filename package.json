@@ -4,15 +4,15 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
-    "setup": "./bin/shared/cross_env_pre_source.sh './bin/setup.sh'",
-    "start": "./bin/shared/cross_env_pre_source.sh './bin/start.sh'",
-    "ship": "./bin/shared/cross_env_pre_source.sh './bin/ship.sh'",
-    "stop": "./bin/shared/cross_env_pre_source.sh './bin/stop.sh'",
-    "pull": "./bin/shared/cross_env_pre_source.sh './bin/pull.sh'",
-    "push": "./bin/shared/cross_env_pre_source.sh './bin/push.sh'",
-    "restart": "./bin/shared/cross_env_pre_source.sh './bin/restart.sh'",
-    "test": ". ./.env.bat && ./bin/test.sh",
-    "ci": ". ./.env.bat && ./bin/ci.sh"
+    "setup": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/setup.sh'",
+    "start": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/start.sh'",
+    "ship": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/ship.sh'",
+    "stop": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/stop.sh'",
+    "pull": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/pull.sh'",
+    "push": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/push.sh'",
+    "restart": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/restart.sh'",
+    "test": "sh ./bin/shared/cross_env_pre_source.sh './bin/test.sh'",
+    "ci": "sh ./bin/shared/cross_env_pre_source.sh './bin/ci.sh'"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",

@@ -12,6 +12,8 @@ import {
 	Units,
 	GetStripePosition,
 	AssignmentMode,
+	StripeCountMode,
+	BaseStripeDiagonal,
 } from './types'
 
 export {
@@ -28,4 +30,6 @@ export {
 	Units,
 	GetStripePosition,
 	AssignmentMode,
+	StripeCountMode,
+	BaseStripeDiagonal,
 }

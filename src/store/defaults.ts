@@ -1,6 +1,6 @@
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
-import { Assignment, Supertile, AssignmentMode } from '../components'
+import { Assignment, Supertile, AssignmentMode, BaseStripeDiagonal } from '../components'
 import { BasePattern, Houndstooth, State } from './types'
 
 const DEFAULT_CANVAS_SIZE = 800
@@ -15,7 +15,7 @@ const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
 }
 const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
-const DEFAULT_BASE_STRIPE_DIAGONAL = 'MINOR'
+const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.MINOR
 const DEFAULT_FRAME_RATE = 1.005
 const DEFAULT_START_LAYER = 0
 const DEFAULT_END_LAYER = 0

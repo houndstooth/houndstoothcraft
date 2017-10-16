@@ -6,6 +6,8 @@ import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import { Coordinate, Address } from '../../../../src'
+import StripeCountMode from '../../../../src/components/types/StripeCountMode'
+import BaseStripeDiagonal from '../../../../src/components/types/BaseStripeDiagonal'
 
 describe('.stripeSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any
@@ -20,7 +22,7 @@ describe('.stripeSettings', () => {
 						gridSettings: { gridSize: 1 },
 						stripeSettings: {
 							stripePositionSettings: {
-								stripeCountMode: undefined,
+								stripeCountMode: StripeCountMode.GINGHAM_CHEVRON_CONTINUUM,
 							},
 						},
 					},
@@ -150,7 +152,7 @@ describe('.stripeSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					stripeSettings: {
-						baseStripeDiagonal: 'PRINCIPAL',
+						baseStripeDiagonal: BaseStripeDiagonal.PRINCIPAL,
 					},
 				},
 			}

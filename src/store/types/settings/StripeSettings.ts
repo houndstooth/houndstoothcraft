@@ -1,8 +1,8 @@
-import { StripePosition } from '../../../components'
+import { StripePosition, StripeCountMode, BaseStripeDiagonal } from '../../../components'
 
 type StripeSettings = {
 	stripePositionSettings?: {
-		stripeCountMode?: string,
+		stripeCountMode?: StripeCountMode,
 		stripeCountSetting?: number,
 		stripeCountContinuumSettings?: {
 			initialStripeCount?: number,
@@ -10,7 +10,7 @@ type StripeSettings = {
 		},
 		getStripePositions?(p?: any): StripePosition[],
 	},
-	baseStripeDiagonal?: string,
+	baseStripeDiagonal?: BaseStripeDiagonal,
 }
 
 export default StripeSettings

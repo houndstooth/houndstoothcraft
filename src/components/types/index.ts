@@ -8,6 +8,8 @@ import Weave from './Weave'
 import Units from './Units'
 import GetStripePosition from './GetStripePosition'
 import AssignmentMode from './AssignmentMode'
+import StripeCountMode from './StripeCountMode'
+import BaseStripeDiagonal from './BaseStripeDiagonal'
 
 export {
 	Address,
@@ -20,4 +22,6 @@ export {
 	Units,
 	GetStripePosition,
 	AssignmentMode,
+	StripeCountMode,
+	BaseStripeDiagonal,
 }

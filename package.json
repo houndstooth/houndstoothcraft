@@ -4,15 +4,15 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
-    "setup": ". ./.env && ./bin/setup.sh",
-    "start": ". ./.env && ./bin/start.sh",
-    "ship": ". ./.env && ./bin/ship.sh",
-    "stop": ". ./.env && ./bin/stop.sh",
-    "test": ". ./.env && ./bin/test.sh",
-    "pull": ". ./.env && ./bin/pull.sh",
-    "push": ". ./.env && ./bin/push.sh",
-    "restart": ". ./.env && ./bin/restart.sh",
-    "ci": ". ./.env && ./bin/ci.sh"
+    "setup": "./bin/shared/cross_env_pre_source.sh './bin/setup.sh'",
+    "start": "./bin/shared/cross_env_pre_source.sh './bin/start.sh'",
+    "ship": "./bin/shared/cross_env_pre_source.sh './bin/ship.sh'",
+    "stop": "./bin/shared/cross_env_pre_source.sh './bin/stop.sh'",
+    "pull": "./bin/shared/cross_env_pre_source.sh './bin/pull.sh'",
+    "push": "./bin/shared/cross_env_pre_source.sh './bin/push.sh'",
+    "restart": "./bin/shared/cross_env_pre_source.sh './bin/restart.sh'",
+    "test": ". ./.env.bat && ./bin/test.sh",
+    "ci": ". ./.env.bat && ./bin/ci.sh"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",

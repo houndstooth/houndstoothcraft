@@ -8,8 +8,8 @@ describe('get canvas dimensions', () => {
 		it('sets each of the width and height of the canvas to the default canvas size', () => {
 			const canvasDimensions = getCanvasDimensions()
 
-			expect(canvasDimensions[ 0 ]).toBe(DEFAULT_CANVAS_SIZE)
-			expect(canvasDimensions[ 1 ]).toBe(DEFAULT_CANVAS_SIZE)
+			expect(canvasDimensions[ 0 ] as any).toBe(DEFAULT_CANVAS_SIZE)
+			expect(canvasDimensions[ 1 ] as any).toBe(DEFAULT_CANVAS_SIZE)
 		})
 	})
 
@@ -19,8 +19,8 @@ describe('get canvas dimensions', () => {
 
 			const canvasDimensions = getCanvasDimensions()
 
-			expect(canvasDimensions[ 0 ]).toBe(350)
-			expect(canvasDimensions[ 1 ]).toBe(450)
+			expect(canvasDimensions[ 0 ] as any).toBe(350)
+			expect(canvasDimensions[ 1 ] as any).toBe(450)
 		})
 
 		it('sets width and height to the same when only one number is provided', () => {
@@ -28,8 +28,8 @@ describe('get canvas dimensions', () => {
 
 			const canvasDimensions = getCanvasDimensions()
 
-			expect(canvasDimensions[ 0 ]).toBe(350)
-			expect(canvasDimensions[ 1 ]).toBe(350)
+			expect(canvasDimensions[ 0 ] as any).toBe(350)
+			expect(canvasDimensions[ 1 ] as any).toBe(350)
 		})
 	})
 })

@@ -1,15 +1,13 @@
-import Dimensions from './Dimensions'
+import Dimension from './Dimension'
 import Context from './Context'
-import Canvas from './Canvas'
 import PageElement from './PageElement'
 import InputElement from './InputElement'
 import LabelElement from './LabelElement'
 
 export {
-	Dimensions,
+	Dimension,
 	Context,
 	PageElement,
 	InputElement,
 	LabelElement,
-	Canvas,
 }

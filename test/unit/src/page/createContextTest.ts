@@ -1,7 +1,6 @@
 import createContext from '../../../../src/page/createContext'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockCanvas from '../../helpers/buildMockCanvas'
-import Dimensions from '../../../../src/page/types/Dimensions'
 import buildMockContext from '../../../helpers/buildMockContext'
 import Canvas from '../../../../src/page/types/Canvas'
 import buildMockElement from '../../helpers/buildMockElement'
@@ -17,7 +16,7 @@ describe('create context', () => {
 		const mockChildren = [] as Canvas[]
 		const canvasContainer = buildMockElement({ mockChildren })
 
-		returnedContext = createContext({ canvasContainer, canvasDimensions: [ 350, 600 ] as Dimensions })
+		returnedContext = createContext({ canvasContainer, canvasDimensions: [ 350, 600 ] as any })
 
 		appendedCanvas = mockChildren[0]
 	})

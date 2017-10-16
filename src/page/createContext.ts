@@ -1,8 +1,8 @@
 import { document } from '../utilities/windowWrapper'
-import { Dimensions, PageElement, Context } from './types'
+import { Dimension, PageElement, Context } from './types'
 
 const createContext: {
-	({}: { canvasContainer: PageElement, canvasDimensions: Dimensions }): Context,
+	({}: { canvasContainer: PageElement, canvasDimensions: Dimension[] }): Context,
 } = ({ canvasContainer, canvasDimensions }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'

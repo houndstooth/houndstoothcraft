@@ -2,5 +2,5 @@
 
 set -e
 
-./bin/test/run_command_with_custom_failure_message.sh "./bin/test/unit.sh" "Unit tests failed!"
-./bin/test/run_command_with_custom_failure_message.sh "./bin/test/integration.sh" "Integration tests failed!"
+./bin/shared/cmd_w_msgs.sh "./bin/test/unit.sh" "running unit tests" "Unit tests failed!" "Unit tests passed."
+./bin/shared/cmd_w_msgs.sh "./bin/test/integration.sh" "running integration tests" "Integration tests failed!" "Integration tests passed."

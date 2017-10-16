@@ -18,4 +18,4 @@ set -e
 
 ./bin/start/refocus_terminal.sh
 
-printf "${Green}IDE, servers, and browser tabs up.\n\n${NC}"
+printf "${Green}IDE, servers, and browser tabs up.${NC}\n"

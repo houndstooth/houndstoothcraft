@@ -2,6 +2,7 @@
 
 set -e
 
+# this is to trigger the file watcher
 cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 > ./test/integration/dist/close
 
 declare -a arr=(
@@ -19,4 +20,4 @@ done
 
 pkill -f "webpack.test.server.js" || true
 
-printf "${Purple}Servers down and tabs closed.\n\n${NC}"
+printf "${Purple}Servers down and tabs closed.${NC}\n"

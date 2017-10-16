@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+/* tslint:disable:max-file-line-count */
 import { PropertyPath } from './types'
 
 const iterator: { (i: number, options?: { oneIndexed: boolean }): number[] } = (i, options = { oneIndexed: false }) => {

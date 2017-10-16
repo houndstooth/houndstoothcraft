@@ -1,5 +1,0 @@
-webpack.*.js
-karma*
-jasmine*
-dist/
-test/unit/coverage/

@@ -2,5 +2,5 @@
 
 set -e
 
-sh ./bin/stop.sh
-sh ./bin/start.sh
+./bin/stop.sh
+./bin/start.sh

@@ -14,7 +14,7 @@ declare -a arr=(
 )
 
 for i in ${arr[@]} ; do
-    sh ./bin/stop/kill_process_on_port.sh $i
+    ./bin/stop/kill_process_on_port.sh $i
 done
 
 pkill -f "webpack.test.server.js" || true

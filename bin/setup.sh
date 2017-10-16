@@ -8,12 +8,12 @@ source ~/.bash_profile
 
 npm i -g npm
 
-sh ./bin/setup/install.sh
+./bin/setup/install.sh
 
 npm i
 
-sh ./bin/setup/git.sh
+./bin/setup/git.sh
 
-sh ./bin/start.sh
+./bin/start.sh
 
 printf "${Green}Welcome to your fresh workstation. Enjoy developing some more houndstooth.\n\n${NC}"

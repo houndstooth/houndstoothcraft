@@ -1,15 +1,13 @@
 import MockElement from '../../types/MockElement'
 
-const buildMockElement: {
-	({}?: {
+const buildMockElement: ({}?: {
 		clickSpy?,
 		mockAttributeObject?,
 		mockChildren?,
 		mockClassList?,
 		parentNodeInsertBeforeSpy?,
 		parentNodeRemoveChildSpy?,
-	}): MockElement,
-} = (params = {}) => {
+	}) => MockElement = (params = {}) => {
 	const {
 		clickSpy,
 		mockAttributeObject = {},

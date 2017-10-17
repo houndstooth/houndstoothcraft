@@ -2,7 +2,7 @@ import { Dimension } from '../page'
 import state from '../state'
 import { defaults } from '../store'
 
-const getCanvasDimensions: { (): Dimension[] } = () => {
+const getCanvasDimensions: () => Dimension[] = () => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const viewSettings = basePattern.viewSettings || {}
 	const canvasSize = viewSettings && viewSettings.canvasSize || defaults.DEFAULT_CANVAS_SIZE

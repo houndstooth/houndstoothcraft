@@ -5,7 +5,7 @@ import { Coordinate } from '../../../src/space'
 interface ExpectedSection {
 	areaOrigin: Coordinate,
 	areaSize: Units,
-	baseId?: number
+	baseId?: number,
 }
 
 interface ExpectedDividedSection extends ExpectedSection {
@@ -16,9 +16,9 @@ interface ExpectedSolidSection extends ExpectedSection {
 	color: Color,
 }
 
-interface ExpectDiagonalDividedSection { ({}: ExpectedDividedSection): void }
+type ExpectDiagonalDividedSection = (_: ExpectedDividedSection) => void
 
-interface ExpectSolidSection { ({}: ExpectedSolidSection): void }
+type ExpectSolidSection = (_: ExpectedSolidSection) => void
 
 enum Diagonal {
 	Solid = 'solid',

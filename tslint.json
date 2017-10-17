@@ -9,6 +9,7 @@
     "type-literal-delimiter": false,
     "no-unsafe-any": false,
     "typedef": false,
+    "prefer-method-signature": false,
     "quotemark": [
       "single"
     ],
@@ -52,7 +53,6 @@
     "no-any": false,
     "no-magic-numbers": false,
     "no-default-export": false,
-    "no-object-literal-type-assertion": false,
-    "callable-types": false
+    "no-object-literal-type-assertion": false
   }
 }

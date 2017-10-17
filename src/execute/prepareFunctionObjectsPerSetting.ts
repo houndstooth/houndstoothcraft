@@ -3,13 +3,11 @@ import { deeperPath } from '../utilities/codeUtilities'
 import { PropertyPath } from '../utilities/types'
 import { SettingsFunctionObject } from './types'
 
-const prepareFunctionObjectsPerSetting: {
-	({}: {
-		settingsFunctionObjects?: SettingsFunctionObject[],
-		settingsFunctionsSourcePattern: Pattern,
-		settingsPath?: PropertyPath,
-	}): SettingsFunctionObject[],
-} = prepareFunctionObjectsPerSettingArgs => {
+const prepareFunctionObjectsPerSetting: (_: {
+	settingsFunctionObjects?: SettingsFunctionObject[],
+	settingsFunctionsSourcePattern: Pattern,
+	settingsPath?: PropertyPath,
+}) => SettingsFunctionObject[] = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionObjects = [],
 		settingsFunctionsSourcePattern,
@@ -36,9 +34,9 @@ const prepareFunctionObjectsPerSetting: {
 	return settingsFunctionObjects
 }
 
-const shouldRecurse: {
-	({}: { maybeSettingsFunctionsSourcePattern: Pattern }): boolean,
-} = ({ maybeSettingsFunctionsSourcePattern }) => {
+const shouldRecurse: (_: {
+	maybeSettingsFunctionsSourcePattern: Pattern,
+}) => boolean = ({ maybeSettingsFunctionsSourcePattern }) => {
 	// tslint:disable-next-line:strict-type-predicates
 	if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
 		return false

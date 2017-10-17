@@ -5,9 +5,9 @@ import fillPath from './fillPath'
 import parseColor from './parseColor'
 import { Color } from './types'
 
-const fill: {
-	({}: { context: Context, outline: Outline, shapeColor: Color}): void,
-} = ({ context, outline, shapeColor }) => {
+const fill: (_: {
+	context: Context, outline: Outline, shapeColor: Color,
+}) => void = ({ context, outline, shapeColor }) => {
 	context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
 
 	context.fillStyle = parseColor(shapeColor)

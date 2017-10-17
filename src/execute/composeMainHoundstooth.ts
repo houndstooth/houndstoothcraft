@@ -4,13 +4,11 @@ import { console } from '../utilities/windowWrapper'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
 
-const composeMainHoundstooth: {
-	({}?: {
+const composeMainHoundstooth: ({}?: {
 		houndstoothEffects?: Houndstooth[],
 		houndstoothOverrides?: Houndstooth,
 		logComposedMainHoundstooth?: boolean,
-	}): void,
-} = params => {
+	}) => void = params => {
 	const { houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth = false } = params || {}
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
@@ -38,14 +36,12 @@ const composeMainHoundstooth: {
 	}
 }
 
-const composePattern: {
-	({}: {
+const composePattern: (_: {
 		patternDefaults: Pattern,
 		patternEffects: Pattern,
 		patternOverrides: Pattern,
 		patternToCompose: Pattern,
-	}): void,
-} = ({ patternDefaults, patternEffects, patternOverrides, patternToCompose }) => {
+	}) => void = ({ patternDefaults, patternEffects, patternOverrides, patternToCompose }) => {
 	composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: patternDefaults,

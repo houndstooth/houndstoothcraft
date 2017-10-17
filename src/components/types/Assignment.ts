@@ -5,15 +5,13 @@ import TileColorIndices from './TileColorIndices'
 import Weave from './Weave'
 
 interface Assignment {
-	assignmentMode?: AssignmentMode;
-	flipGrain?: boolean;
-	offsetAddress?: { ({}: { gridAddress: Address }): Address };
-	supertile?: Supertile;
-	switcheroo?: boolean;
-	transformTileColorIndices?: {
-		({}: {  gridAddress: Address, tileColorIndices: TileColorIndices }): TileColorIndices;
-	};
-	weave?: Weave;
+	assignmentMode?: AssignmentMode,
+	flipGrain?: boolean,
+	offsetAddress?: (_: { gridAddress: Address }) => Address,
+	supertile?: Supertile,
+	switcheroo?: boolean,
+	transformTileColorIndices?: (_: {  gridAddress: Address, tileColorIndices: TileColorIndices }) => TileColorIndices,
+	weave?: Weave,
 }
 
 export default Assignment

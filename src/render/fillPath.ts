@@ -1,6 +1,6 @@
 import { Context } from '../page'
 
-const fillPath: { ({}: { context: Context }): void } = ({ context }) => {
+const fillPath: (_: { context: Context }) => void = ({ context }) => {
 	context.closePath()
 	context.fill()
 }

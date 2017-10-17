@@ -1,7 +1,7 @@
 import { Coordinate, Outline } from '../space'
 import state from '../state'
 
-const applyScroll: { (outline: Outline): Outline } = outline => {
+const applyScroll: (outline: Outline) => Outline = outline => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const viewSettings = basePattern.viewSettings || {}
 	const centerViewOnCenterOfTileAtHomeAddress = viewSettings.centerViewOnCenterOfTileAtHomeAddress
@@ -13,7 +13,7 @@ const applyScroll: { (outline: Outline): Outline } = outline => {
 	return outline.map(applyCenterViewOnCenterOfTileAtHomeAddress)
 }
 
-const applyCenterViewOnCenterOfTileAtHomeAddress: { (coordinate: Coordinate): Coordinate } = coordinate => {
+const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Coordinate = coordinate => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const viewSettings = basePattern.viewSettings || {}
 	const canvasSize = viewSettings.canvasSize

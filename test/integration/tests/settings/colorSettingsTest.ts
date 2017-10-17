@@ -12,7 +12,7 @@ import pixelIsColorWithMarker from '../../helpers/pixelIsColorWithMarker'
 import standardTileIsColors from '../../helpers/standardTileIsColors'
 
 describe('.colorSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any
+	const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {

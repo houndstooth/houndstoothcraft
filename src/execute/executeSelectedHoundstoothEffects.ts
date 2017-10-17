@@ -8,9 +8,7 @@ import executeGrid from './executeGrid'
 import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
 
-const executeSelectedHoundstoothEffects: {
-	({}?: { houndstoothOverrides?: Houndstooth }): void,
-} = params => {
+const executeSelectedHoundstoothEffects: ({}?: { houndstoothOverrides?: Houndstooth }) => void = params => {
 	const { houndstoothOverrides = {} } = params || {}
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
@@ -33,7 +31,7 @@ const prepareCanvas: NullarySideEffector = (() => {
 	}
 }) as NullarySideEffector
 
-const execute: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void } = ({ layerFunctionObjects }) => {
+const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
 	if (state.animating) {
 		const animationFunctionObjects = prepareFunctionObjectsPerSetting({
 			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern || {},

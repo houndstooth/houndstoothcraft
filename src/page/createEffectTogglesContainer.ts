@@ -3,7 +3,7 @@ import createCanvasContainer from './createCanvasContainer'
 import insertElementRightAfter from './insertElementRightAfter'
 import { PageElement } from './types'
 
-const createEffectTogglesContainer: { (): PageElement } = () => {
+const createEffectTogglesContainer: () => PageElement = () => {
 	const effectTogglesContainer = document.createElement('div')
 	effectTogglesContainer.classList.add('effect-toggles-container')
 	effectTogglesContainer.style.padding = '20px'

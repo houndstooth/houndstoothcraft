@@ -4,7 +4,7 @@ import callFunctionsPerSetting from './callFunctionsPerSetting'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 import { SettingsFunctionObject } from './types'
 
-const executeGrid: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): void } = ({ layerFunctionObjects }) => {
+const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const layerSettings = basePattern.layerSettings || {}
 	const { startLayer = 0, endLayer = 0 } = layerSettings
@@ -20,9 +20,9 @@ const executeGrid: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): v
 	state.currentLayer = 0
 }
 
-const executeLayer: {
-	({}: { endLayer: number, layerFunctionObjects: SettingsFunctionObject[], n: number, startLayer: number }): void,
-} = ({ endLayer, layerFunctionObjects, n, startLayer }) => {
+const executeLayer: (_: {
+	endLayer: number, layerFunctionObjects: SettingsFunctionObject[], n: number, startLayer: number,
+}) => void = ({ endLayer, layerFunctionObjects, n, startLayer }) => {
 	if (n >= startLayer || 0) {
 		gridAndMaybeLogging()
 	}

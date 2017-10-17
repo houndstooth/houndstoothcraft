@@ -1,8 +1,6 @@
 import Coordinate from './Coordinate'
 import GetOutlineParams from './GetOutlineParams'
 
-interface GetOutline {
-	({}: GetOutlineParams): Coordinate[],
-}
+type GetOutline = (_: GetOutlineParams) => Coordinate[]
 
 export default GetOutline

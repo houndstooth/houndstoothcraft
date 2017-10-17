@@ -8,7 +8,7 @@ import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import standardTileIsColors from '../../helpers/standardTileIsColors'
 
 describe('.gridSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any
+	const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

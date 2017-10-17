@@ -8,7 +8,7 @@ import { NullarySideEffector } from '../../../src/utilities/types'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import testMarkersClear from './testMarkersClear'
 
-const prepareCanvasForDisplayInTest: { (canvas: Canvas): void } = canvas => {
+const prepareCanvasForDisplayInTest: (canvas: Canvas) => void = canvas => {
 	canvas.style.display = 'block'
 	canvas.style.position = 'absolute'
 	canvas.style.top = '0'

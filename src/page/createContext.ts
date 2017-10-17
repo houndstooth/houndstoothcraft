@@ -1,9 +1,9 @@
 import { document } from '../utilities/windowWrapper'
 import { Context, Dimension, PageElement } from './types'
 
-const createContext: {
-	({}: { canvasContainer: PageElement, canvasDimensions: Dimension[] }): Context,
-} = ({ canvasContainer, canvasDimensions }) => {
+const createContext: (_: {
+	canvasContainer: PageElement, canvasDimensions: Dimension[],
+}) => Context = ({ canvasContainer, canvasDimensions }) => {
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
 	canvas.width = canvasDimensions[ 0 ]

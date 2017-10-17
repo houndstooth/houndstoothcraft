@@ -2,9 +2,9 @@ import { Coordinate, Outline } from '../space'
 import state from '../state'
 import { defaults } from '../store'
 
-const applyZoom: { (outline: Outline): Outline } = outline => outline.map(adjustCoordinateForZoom)
+const applyZoom: (outline: Outline) => Outline = outline => outline.map(adjustCoordinateForZoom)
 
-const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordinate => {
+const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordinate => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const viewSettings = basePattern.viewSettings || {}
 	const {
@@ -19,14 +19,12 @@ const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordi
 	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })
 }
 
-const doAdjustment: {
-	({}: {
+const doAdjustment: (_: {
 		coordinate: Coordinate,
 		halfCanvasSize: number,
 		shouldAdjustForCentering: boolean,
 		zoom: number,
-	}): Coordinate,
-} = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
+	}) => Coordinate = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
 	let coordinateAdjustedForZoom = coordinate
 
 	if (shouldAdjustForCentering) {

@@ -1,6 +1,6 @@
 import Canvas from '../../../src/page/types/Canvas'
 
-const createTestMarkersCanvas: { (): Canvas } = () => {
+const createTestMarkersCanvas: () => Canvas = () => {
 	const testCanvasDisplayArea = document.createElement('div')
 	testCanvasDisplayArea.classList.add('test-canvas-display-area')
 

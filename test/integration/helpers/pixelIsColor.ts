@@ -4,9 +4,8 @@ import { Coordinate } from '../../../src/space'
 import { console } from '../../../src/utilities/windowWrapper'
 import isCloseTo from '../../helpers/isCloseTo'
 
-const pixelIsColor: {
-	(coordinateUnderTest: Coordinate, expectedColor: Color): boolean,
-} = (coordinateUnderTest, expectedColor) => {
+// tslint:disable-next-line:max-line-length
+const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean = (coordinateUnderTest, expectedColor) => {
 	const actualColor = pixel(coordinateUnderTest)
 
 	if (actualColor.a === 0 && actualColor.a === expectedColor.a) {
@@ -22,16 +21,16 @@ const pixelIsColor: {
 	return true
 }
 
-const pixel: { (coordinate: Coordinate): Color } = ([ x, y ]) => {
+const pixel: (coordinate: Coordinate) => Color = ([ x, y ]) => {
 	const mixedDownCanvas = document.querySelector('.mixed-down-canvas') as Canvas
 	const pixelData = mixedDownCanvas.getContext('2d').getImageData(x as any, y as any, 1, 1).data
 
 	return { r: pixelData[ 0 ], g: pixelData[ 1 ], b: pixelData[ 2 ], a: pixelData[ 3 ] / 255 }
 }
 
-const checkColorProperties: {
-	({}: { actualColor: Color, expectedColor: Color, i: number }): boolean,
-} = ({ actualColor, expectedColor, i }) => {
+const checkColorProperties: (_: {
+	actualColor: Color, expectedColor: Color, i: number,
+}) => boolean = ({ actualColor, expectedColor, i }) => {
 	const firstColorProperty = Object.entries(actualColor)[ i ]
 
 	let definedFirstColorProperty: [ string, number | undefined ]

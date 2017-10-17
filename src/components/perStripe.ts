@@ -3,7 +3,7 @@ import state from '../state'
 import { iterator } from '../utilities/codeUtilities'
 import { GetStripePosition, StripePosition } from './types'
 
-const perStripe: { ({}: { getStripePosition: GetStripePosition }): StripePosition[] } = ({ getStripePosition }) => {
+const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition[] = ({ getStripePosition }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const stripeSettings = basePattern.stripeSettings || {}
 	const stripePositionSettings = stripeSettings.stripePositionSettings || {}

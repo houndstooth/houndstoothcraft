@@ -7,7 +7,7 @@ interface State {
 	currentAnimationFrame: number,
 	currentLayer: number,
 	exportFrames: boolean,
-	interval: { (): void } | undefined,
+	interval: (() => void) | undefined,
 	lastSavedAnimationFrame: number,
 	mainHoundstooth: Houndstooth,
 	mixedDownContext: Context | undefined,

@@ -4,14 +4,12 @@ import state from '../state'
 import { deepClone } from '../utilities/codeUtilities'
 import exportFrame from './exportFrame'
 
-const buildAnimationFunction: {
-	({}: {
-		animationFunctionObjects: SettingsFunctionObject[],
-		layerFunctionObjects: SettingsFunctionObject[],
-		refreshCanvas: boolean,
-		startAnimationFrame: number,
-	}): () => void,
-} = ({ animationFunctionObjects, layerFunctionObjects, refreshCanvas, startAnimationFrame }) => () => {
+const buildAnimationFunction: (_: {
+	animationFunctionObjects: SettingsFunctionObject[],
+	layerFunctionObjects: SettingsFunctionObject[],
+	refreshCanvas: boolean,
+	startAnimationFrame: number,
+}) => () => void = ({ animationFunctionObjects, layerFunctionObjects, refreshCanvas, startAnimationFrame }) => () => {
 	if (exportingFramesStillNeedsToCatchUp()) {
 		return
 	}
@@ -24,15 +22,15 @@ const buildAnimationFunction: {
 	state.currentAnimationFrame++
 }
 
-const exportingFramesStillNeedsToCatchUp: { (): boolean } = () =>
+const exportingFramesStillNeedsToCatchUp: () => boolean = () =>
 	state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
 
-const shouldBeginShowingAnimation: { (startAnimationFrame: number): boolean } = startAnimationFrame =>
+const shouldBeginShowingAnimation: (startAnimationFrame: number) => boolean = startAnimationFrame =>
 	state.currentAnimationFrame >= startAnimationFrame
 
-const animate: {
-	({}: { layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean }): void,
-} = ({ layerFunctionObjects, refreshCanvas }) => {
+const animate: (_: {
+	layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean,
+}) => void = ({ layerFunctionObjects, refreshCanvas }) => {
 	if (refreshCanvas) {
 		clear()
 	}

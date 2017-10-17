@@ -5,9 +5,8 @@ import solid from './solid'
 import texture from './texture'
 import { ShapeParams } from './types'
 
-const shape: {
-	({}: ShapeParams): void,
-} = ({ tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions }) => {
+const shape: (_: ShapeParams) => void = params => {
+	const { tileOrigin, tileSize, tileColorIndices, stripeIndex, getOutline, outlineOptions } = params
 	const outline = getOutline({ tileOrigin, tileSize, outlineOptions })
 	if (!outline) {
 		return

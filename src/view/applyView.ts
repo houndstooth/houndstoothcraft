@@ -3,7 +3,7 @@ import applyScroll from './applyScroll'
 import applyTilt from './applyTilt'
 import applyZoom from './applyZoom'
 
-const applyView: {(outline: Outline): Outline }  = outline => {
+const applyView: (outline: Outline) => Outline  = outline => {
 	let outlineWithViewApplied = outline
 
 	outlineWithViewApplied = applyZoom(outlineWithViewApplied)

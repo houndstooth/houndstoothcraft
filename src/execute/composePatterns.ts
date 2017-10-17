@@ -4,14 +4,12 @@ import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utili
 import { PropertyPath } from '../utilities/types'
 import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
 
-const composePatterns: {
-	({}: {
-		patternToBeMergedOnto: Pattern,
-		patternToMerge: Pattern,
-		settingsPath?: PropertyPath,
-		warnAboutConflicts?: boolean,
-	}): void,
-} = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [] as any, warnAboutConflicts = false }) => {
+const composePatterns: (_: {
+	patternToBeMergedOnto: Pattern,
+	patternToMerge: Pattern,
+	settingsPath?: PropertyPath,
+	warnAboutConflicts?: boolean,
+}) => void = ({ patternToBeMergedOnto, patternToMerge, settingsPath = [] as any, warnAboutConflicts = false }) => {
 	if (!patternToMerge) {
 		return
 	}
@@ -45,10 +43,10 @@ const composePatterns: {
 	})
 }
 
-const shouldRecurse: { ({}: { overridingSetting: Setting }): boolean } = ({ overridingSetting }) =>
+const shouldRecurse: (_: { overridingSetting: Setting }) => boolean = ({ overridingSetting }) =>
 	settingIsNonArrayObject(overridingSetting) && settingIsNotColor(overridingSetting)
 
-const settingIsNonArrayObject: { (setting: Setting): boolean } = setting => {
+const settingIsNonArrayObject: (setting: Setting) => boolean = setting => {
 	if (!setting) {
 		return false
 	}
@@ -56,10 +54,10 @@ const settingIsNonArrayObject: { (setting: Setting): boolean } = setting => {
 		return false
 	}
 
-	return !(setting as any instanceof Array)
+	return !(setting instanceof Array)
 }
 
-const settingIsNotColor: { (setting: Setting): boolean } = setting => {
+const settingIsNotColor: (setting: Setting) => boolean = setting => {
 	const defined = isDefined
 	const maybeSettingColor = setting as Color
 	const { r, g, b, a } = maybeSettingColor

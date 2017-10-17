@@ -2,9 +2,9 @@ import Canvas from '../../../src/page/types/Canvas'
 import { Coordinate } from '../../../src/space'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
-const drawPassMarker: {
-	({}: { coordinateUnderTest: Coordinate, id: number, passed: boolean }): void,
-} = ({ coordinateUnderTest, id, passed }) => {
+const drawPassMarker: (_: {
+	coordinateUnderTest: Coordinate, id: number, passed: boolean,
+}) => void = ({ coordinateUnderTest, id, passed }) => {
 	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as Canvas
 	if (!testMarkersCanvas) {
 		testMarkersCanvas = createTestMarkersCanvas()

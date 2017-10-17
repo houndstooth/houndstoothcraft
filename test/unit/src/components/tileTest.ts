@@ -88,11 +88,11 @@ describe('tile', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
+						getOutline: space.squareOutline,
 						gridAddress,
 						tileColorIndices,
 						tileOrigin,
 						tileSize,
-						getOutline: space.squareOutline,
 					}))
 				})
 			})
@@ -118,11 +118,11 @@ describe('tile', () => {
 					tile({ gridAddress })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
+						getOutline: space.stripeOutline,
 						gridAddress,
 						tileColorIndices,
 						tileOrigin,
 						tileSize,
-						getOutline: space.stripeOutline,
 					}))
 				})
 
@@ -144,26 +144,26 @@ describe('tile', () => {
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						outlineOptions: {
-							stripeStart: stripePositionsForTile[ 0 ],
 							stripeEnd: stripePositionsForTile[ 1 ],
+							stripeStart: stripePositionsForTile[ 0 ],
 						},
 					}))
 					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						outlineOptions: {
-							stripeStart: stripePositionsForTile[ 1 ],
 							stripeEnd: stripePositionsForTile[ 2 ],
+							stripeStart: stripePositionsForTile[ 1 ],
 						},
 					}))
 					expect(shapes[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						outlineOptions: {
-							stripeStart: stripePositionsForTile[ 2 ],
 							stripeEnd: stripePositionsForTile[ 3 ],
+							stripeStart: stripePositionsForTile[ 2 ],
 						},
 					}))
 					expect(shapes[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						outlineOptions: {
-							stripeStart: stripePositionsForTile[ 3 ],
 							stripeEnd: PERIMETER_SCALAR,
+							stripeStart: stripePositionsForTile[ 3 ],
 						},
 					}))
 				})

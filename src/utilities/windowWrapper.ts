@@ -23,12 +23,12 @@ type Window = {
 }
 
 const mockWindow: Window = {
-	clearInterval: () => undefined,
-	setInterval: () => undefined,
 	URL: {
 		createObjectURL: () => undefined,
 		revokeObjectURL: () => undefined,
 	},
+	clearInterval: () => undefined,
+	setInterval: () => undefined,
 }
 
 const consoleWrapper = console

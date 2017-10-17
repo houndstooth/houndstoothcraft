@@ -33,11 +33,11 @@ const composePatterns: {
 			const existingSetting = settingsWithSettingToBeOverridden[ settingName ]
 
 			maybeWarnAboutConflicts({
-				warnAboutConflicts,
-				settingsPath,
-				settingName,
 				existingSetting,
 				overridingSetting,
+				settingName,
+				settingsPath,
+				warnAboutConflicts,
 			})
 
 			settingsWithSettingToBeOverridden[ settingName ] = overridingSetting

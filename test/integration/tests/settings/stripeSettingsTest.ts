@@ -18,13 +18,13 @@ describe('.stripeSettings', () => {
 			beforeEach(() => {
 				houndstoothOverrides = {
 					basePattern: {
-						viewSettings: { canvasSize: tileSize },
 						gridSettings: { gridSize: 1 },
 						stripeSettings: {
 							stripePositionSettings: {
 								stripeCountMode: StripeCountMode.GINGHAM_CHEVRON_CONTINUUM,
 							},
 						},
+						viewSettings: { canvasSize: tileSize },
 					},
 				}
 			})
@@ -36,9 +36,9 @@ describe('.stripeSettings', () => {
 
 				const tile = {
 					baseId: 0,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, BLACK ],
 				}
 				expect(standardTileIsColors(tile)).toBe(true)
 			})
@@ -64,84 +64,84 @@ describe('.stripeSettings', () => {
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 0, 0 ] as Address,
 					color: TRANSPARENT,
 					id: 1,
+					sectionAddress: [ 0, 0 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 1, 1 ] as Address,
 					color: BLACK,
 					id: 2,
+					sectionAddress: [ 1, 1 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 2, 2 ] as Address,
 					color: TRANSPARENT,
 					id: 3,
+					sectionAddress: [ 2, 2 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 3, 3 ] as Address,
 					color: BLACK,
 					id: 4,
+					sectionAddress: [ 3, 3 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 4, 4 ] as Address,
 					color: TRANSPARENT,
 					id: 5,
+					sectionAddress: [ 4, 4 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 
 				areaOrigin = [ 1 * areaSize as any, 1 * areaSize as any ] as Coordinate
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 0, 0 ] as Address,
 					color: BLACK,
 					id: 6,
+					sectionAddress: [ 0, 0 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 1, 1 ] as Address,
 					color: TRANSPARENT,
 					id: 7,
+					sectionAddress: [ 1, 1 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 2, 2 ] as Address,
 					color: BLACK,
 					id: 8,
+					sectionAddress: [ 2, 2 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 3, 3 ] as Address,
 					color: TRANSPARENT,
 					id: 9,
+					sectionAddress: [ 3, 3 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
-					sectionResolution: 5,
-					sectionAddress: [ 4, 4 ] as Address,
 					color: BLACK,
 					id: 10,
+					sectionAddress: [ 4, 4 ] as Address,
+					sectionResolution: 5,
 				})).toBe(true)
 			})
 		})
@@ -166,69 +166,69 @@ describe('.stripeSettings', () => {
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 0, 3 ] as Address,
 				color: BLACK,
 				id: 1,
+				sectionAddress: [ 0, 3 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 0, 1 ] as Address,
 				color: TRANSPARENT,
 				id: 2,
+				sectionAddress: [ 0, 1 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 1, 2 ] as Address,
 				color: TRANSPARENT,
 				id: 3,
+				sectionAddress: [ 1, 2 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 2, 3 ] as Address,
 				color: TRANSPARENT,
 				id: 4,
+				sectionAddress: [ 2, 3 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 1, 0 ] as Address,
 				color: BLACK,
 				id: 5,
+				sectionAddress: [ 1, 0 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 2, 1 ] as Address,
 				color: BLACK,
 				id: 6,
+				sectionAddress: [ 2, 1 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 3, 2 ] as Address,
 				color: BLACK,
 				id: 7,
+				sectionAddress: [ 3, 2 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 3, 0 ] as Address,
 				color: TRANSPARENT,
 				id: 8,
+				sectionAddress: [ 3, 0 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			areaOrigin = [ 1 * areaSize, 1 * areaSize ]
@@ -236,69 +236,69 @@ describe('.stripeSettings', () => {
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 0, 3 ] as Address,
 				color: TRANSPARENT,
 				id: 9,
+				sectionAddress: [ 0, 3 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 0, 1 ] as Address,
 				color: BLACK,
 				id: 10,
+				sectionAddress: [ 0, 1 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 1, 2 ] as Address,
 				color: BLACK,
 				id: 11,
+				sectionAddress: [ 1, 2 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 2, 3 ] as Address,
 				color: BLACK,
 				id: 12,
+				sectionAddress: [ 2, 3 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 1, 0 ] as Address,
 				color: TRANSPARENT,
 				id: 13,
+				sectionAddress: [ 1, 0 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 2, 1 ] as Address,
 				color: TRANSPARENT,
 				id: 14,
+				sectionAddress: [ 2, 1 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 3, 2 ] as Address,
 				color: TRANSPARENT,
 				id: 15,
+				sectionAddress: [ 3, 2 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				sectionResolution: 4,
-				sectionAddress: [ 3, 0 ] as Address,
 				color: BLACK,
 				id: 16,
+				sectionAddress: [ 3, 0 ] as Address,
+				sectionResolution: 4,
 			})).toBe(true)
 		})
 	})

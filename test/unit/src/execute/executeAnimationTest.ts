@@ -33,10 +33,10 @@ describe('execute animation', () => {
 
 		const basePattern = state.mainHoundstooth.basePattern || {}
 		basePattern.animationSettings = {
+			endAnimationFrame,
 			frameRate,
 			refreshCanvas,
 			startAnimationFrame,
-			endAnimationFrame,
 		}
 	})
 
@@ -69,9 +69,9 @@ describe('execute animation', () => {
 
 		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
 			jasmine.objectContaining({
-				startAnimationFrame,
 				animationFunctionObjects,
 				layerFunctionObjects,
+				startAnimationFrame,
 			}),
 		)
 	})

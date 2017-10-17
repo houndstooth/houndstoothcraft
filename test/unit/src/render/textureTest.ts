@@ -23,10 +23,10 @@ describe('texture', () => {
 
 		const expectedRenderTextureArgs = jasmine.objectContaining({
 			context,
+			shapeColorIndex,
 			tileColorIndices,
 			tileOrigin,
 			tileSize,
-			shapeColorIndex,
 		})
 		expect(calls).toEqual([
 			{ call: 'buildPath', args: { context, outline } },

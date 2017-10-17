@@ -52,13 +52,13 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						colorSet: [ YELLOW, BLUE, CYAN ],
 						assignment: {
 							weave: {
-								rows: simplestWeaveToDemonstrateSetting,
 								columns: simplestWeaveToDemonstrateSetting,
+								rows: simplestWeaveToDemonstrateSetting,
 							},
 						},
+						colorSet: [ YELLOW, BLUE, CYAN ],
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,
@@ -74,59 +74,59 @@ describe('.colorSettings', () => {
 
 			expect(standardTileIsColors({
 				baseId: 0,
+				colors: [ YELLOW, YELLOW ],
 				tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ YELLOW, YELLOW ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
+				colors: [ YELLOW, BLUE ],
 				tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ YELLOW, BLUE ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
+				colors: [ YELLOW, CYAN ],
 				tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ YELLOW, CYAN ],
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: 24,
+				colors: [ BLUE, YELLOW ],
 				tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLUE, YELLOW ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 32,
+				colors: [ BLUE, BLUE ],
 				tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLUE, BLUE ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 40,
+				colors: [ BLUE, CYAN ],
 				tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLUE, CYAN ],
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: 48,
+				colors: [ CYAN, YELLOW ],
 				tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ CYAN, YELLOW ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 56,
+				colors: [ CYAN, BLUE ],
 				tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ CYAN, BLUE ],
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 64,
+				colors: [ CYAN, CYAN ],
 				tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ CYAN, CYAN ],
 			})).toBe(true)
 		})
 	})
@@ -141,8 +141,8 @@ describe('.colorSettings', () => {
 							colorSettings: {
 								assignment: {
 									weave: {
-										rows: [ 0, 1, 1, 0 ],
 										columns: [ 1, 0, 1 ],
+										rows: [ 0, 1, 1, 0 ],
 									},
 								},
 							},
@@ -162,297 +162,297 @@ describe('.colorSettings', () => {
 					const firstSuperweave = [
 						{
 							baseId: 0,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 8,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 16,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 24,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 32,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 40,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 48,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 56,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 64,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 72,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 80,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 88,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const secondSuperweave = [
 						{
 							baseId: 96,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 104,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 112,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 120,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 128,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 136,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 144,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 152,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 160,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 168,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 176,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 184,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const thirdSuperweave = [
 						{
 							baseId: 192,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 4 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 200,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 4 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 208,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 4 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 216,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 5 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 224,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 5 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 232,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 5 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 240,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 6 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 248,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 6 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 256,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 6 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 264,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 0 * tileSize as any, 7 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 272,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 1 * tileSize as any, 7 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 280,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 2 * tileSize as any, 7 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const fourthSuperweave = [
 						{
 							baseId: 288,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 4 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 296,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 4 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 304,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 4 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 312,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 5 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 320,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 5 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 328,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 5 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 336,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 6 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 344,
+							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 6 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, BLACK ],
 						},
 						{
 							baseId: 352,
+							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 6 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ TRANSPARENT, TRANSPARENT ],
 						},
 						{
 							baseId: 360,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 3 * tileSize as any, 7 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 						{
 							baseId: 368,
+							colors: [ BLACK, BLACK ],
 							tileOrigin: [ 4 * tileSize as any, 7 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, BLACK ],
 						},
 						{
 							baseId: 376,
+							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ 5 * tileSize as any, 7 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLACK, TRANSPARENT ],
 						},
 					]
 					const tiles = firstSuperweave
@@ -470,7 +470,6 @@ describe('.colorSettings', () => {
 					const houndstoothOverrides = {
 						basePattern: {
 							colorSettings: {
-								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
 								assignment: {
 									assignmentMode: AssignmentMode.SUPERTILE,
 									supertile: [
@@ -484,6 +483,7 @@ describe('.colorSettings', () => {
 										],
 									] as Supertile,
 								},
+								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
 							},
 							gridSettings: {
 								gridSize: sufficientTileCountToDemonstrateSetting,
@@ -501,105 +501,105 @@ describe('.colorSettings', () => {
 					const firstSupertile = [
 						{
 							baseId: 0,
+							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ CYAN, YELLOW ],
 						},
 						{
 							baseId: 8,
+							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ YELLOW, BLUE ],
 						},
 						{
 							baseId: 16,
+							colors: [ BLUE, CYAN ],
 							tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLUE, CYAN ],
 						},
 						{
 							baseId: 24,
+							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ MAGENTA, MAGENTA ],
 						},
 					]
 					const secondSupertile = [
 						{
 							baseId: 32,
+							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ CYAN, YELLOW ],
 						},
 						{
 							baseId: 40,
+							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ YELLOW, BLUE ],
 						},
 						{
 							baseId: 48,
+							colors: [ BLUE, CYAN ],
 							tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLUE, CYAN ],
 						},
 						{
 							baseId: 56,
+							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ MAGENTA, MAGENTA ],
 						},
 					]
 					const thirdSupertile = [
 						{
 							baseId: 64,
+							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ CYAN, YELLOW ],
 						},
 						{
 							baseId: 72,
+							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ YELLOW, BLUE ],
 						},
 						{
 							baseId: 80,
+							colors: [ BLUE, CYAN ],
 							tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLUE, CYAN ],
 						},
 						{
 							baseId: 88,
+							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ MAGENTA, MAGENTA ],
 						},
 					]
 					const fourthSupertile = [
 						{
 							baseId: 96,
+							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ CYAN, YELLOW ],
 						},
 						{
 							baseId: 104,
+							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ YELLOW, BLUE ],
 						},
 						{
 							baseId: 112,
+							colors: [ BLUE, CYAN ],
 							tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ BLUE, CYAN ],
 						},
 						{
 							baseId: 120,
+							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 							tileSize,
-							colors: [ MAGENTA, MAGENTA ],
 						},
 					]
 					const tiles = firstSupertile
@@ -636,52 +636,52 @@ describe('.colorSettings', () => {
 
 				expect(standardTileIsColors({
 					baseId: 0,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 8,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 16,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 24,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, BLACK ],
 				})).toBe(true)
 
 				expect(standardTileIsColors({
 					baseId: 32,
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 40,
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 48,
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 56,
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, TRANSPARENT ],
 				})).toBe(true)
 			})
 		})
@@ -712,27 +712,27 @@ describe('.colorSettings', () => {
 				const tiles = [
 					{
 						baseId: 0,
+						colors: [ BLACK, TRANSPARENT ],
 						tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 						tileSize,
-						colors: [ BLACK, TRANSPARENT ],
 					},
 					{
 						baseId: 8,
+						colors: [ BLACK, BLACK ],
 						tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 						tileSize,
-						colors: [ BLACK, BLACK ],
 					},
 					{
 						baseId: 16,
+						colors: [ TRANSPARENT, TRANSPARENT ],
 						tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 						tileSize,
-						colors: [ TRANSPARENT, TRANSPARENT ],
 					},
 					{
 						baseId: 24,
+						colors: [ TRANSPARENT, BLACK ],
 						tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 						tileSize,
-						colors: [ TRANSPARENT, BLACK ],
 					},
 				]
 
@@ -789,8 +789,8 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						colorSet: [ BLACK, TRANSPARENT ],
 						backgroundColor: YELLOW,
+						colorSet: [ BLACK, TRANSPARENT ],
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,

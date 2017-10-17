@@ -32,14 +32,14 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 	it('gathers the functions to be applied', () => {
 		const expectedFunctionObjects = [
 			{
+				settingName: 'childPathFinalStep',
 				settingsFunction,
 				settingsPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
-				settingName: 'childPathFinalStep',
 			},
 			{
+				settingName: 'secondChildPathFinalStep',
 				settingsFunction: secondSettingsFunction,
 				settingsPath: [ 'secondChildPathFirstStep' ],
-				settingName: 'secondChildPathFinalStep',
 			},
 		]
 		expect(actualFunctionObjects).toEqual(expectedFunctionObjects)

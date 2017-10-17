@@ -19,16 +19,16 @@ const prepareFunctionObjectsPerSetting: {
 	Object.entries(settingsFunctionsSourcePattern).forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]) => {
 		if (typeof maybeSettingsFunctionsSourcePattern === 'function') {
 			settingsFunctionObjects.push({
+				settingName,
 				settingsFunction: maybeSettingsFunctionsSourcePattern,
 				settingsPath,
-				settingName,
 			})
 		}
 		else if (shouldRecurse({ maybeSettingsFunctionsSourcePattern })) {
 			prepareFunctionObjectsPerSetting({
+				settingsFunctionObjects,
 				settingsFunctionsSourcePattern: maybeSettingsFunctionsSourcePattern,
 				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
-				settingsFunctionObjects,
 			})
 		}
 	})

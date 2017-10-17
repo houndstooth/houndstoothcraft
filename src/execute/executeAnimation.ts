@@ -16,10 +16,10 @@ const executeAnimation: {
 	state.lastSavedAnimationFrame = startAnimationFrame
 
 	const animationFunction = buildAnimationFunction({
-		startAnimationFrame,
 		animationFunctionObjects,
 		layerFunctionObjects,
 		refreshCanvas,
+		startAnimationFrame,
 	})
 	const stopConditionFunction = buildStopConditionFunction({ endAnimationFrame })
 

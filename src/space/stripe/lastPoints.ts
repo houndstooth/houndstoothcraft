@@ -6,11 +6,11 @@ const lastPoints: Points = params => {
 	const stripeStartsInTopLeftCorner = stripeStart as any === 0
 	if (!stripeStartsInTopLeftCorner) {
 		lastPointsWhenStripeDoesNotStartInTopLeftCorner({
-			stripeStartsInTopLeftHalf,
-			stripeEndsInBottomRightHalf,
-			outline,
 			originAndSize,
+			outline,
+			stripeEndsInBottomRightHalf,
 			stripeStart,
+			stripeStartsInTopLeftHalf,
 		})
 	}
 	else if (stripeEndsInBottomRightHalf) {

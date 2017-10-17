@@ -14,14 +14,14 @@ describe('.gridSettings', () => {
 		it('changes how many tiles there are', () => {
 			const houndstoothOverrides = {
 				basePattern: {
-					viewSettings: {
-						canvasSize: 200 as CanvasSize,
-					},
 					colorSettings: {
 						colorSet: [ BLACK, WHITE ],
 					},
 					gridSettings: {
 						gridSize: 3,
+					},
+					viewSettings: {
+						canvasSize: 200 as CanvasSize,
 					},
 				},
 			}
@@ -32,102 +32,102 @@ describe('.gridSettings', () => {
 			const tiles = [
 				{
 					baseId: 0,
+					colors: [ WHITE, BLACK ],
 					tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 8,
+					colors: [ BLACK, BLACK ],
 					tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 16,
+					colors: [ WHITE, BLACK ],
 					tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 24,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 
 				{
 					baseId: 32,
+					colors: [ WHITE, WHITE ],
 					tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ WHITE, WHITE ],
 				},
 				{
 					baseId: 40,
+					colors: [ BLACK, WHITE ],
 					tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, WHITE ],
 				},
 				{
 					baseId: 48,
+					colors: [ WHITE, WHITE ],
 					tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ WHITE, WHITE ],
 				},
 				{
 					baseId: 56,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 
 				{
 					baseId: 64,
+					colors: [ WHITE, BLACK ],
 					tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 72,
+					colors: [ BLACK, BLACK ],
 					tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 80,
+					colors: [ WHITE, BLACK ],
 					tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ WHITE, BLACK ],
 				},
 				{
 					baseId: 88,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 
 				{
 					baseId: 96,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 104,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 112,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 120,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 					tileSize,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 			]
 
@@ -141,16 +141,16 @@ describe('.gridSettings', () => {
 			const tileSizeSetting = 50 as any
 			const houndstoothOverrides = {
 				basePattern: {
-					viewSettings: {
-						canvasSize: 300 as CanvasSize,
-						centerViewOnCenterOfTileAtHomeAddress: true,
+					gridSettings: {
+						gridSize: 1,
+						includeNegativeQuadrants: true,
 					},
 					tileSettings: {
 						tileSizeSetting,
 					},
-					gridSettings: {
-						gridSize: 1,
-						includeNegativeQuadrants: true,
+					viewSettings: {
+						canvasSize: 300 as CanvasSize,
+						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
 				},
 			}
@@ -160,27 +160,27 @@ describe('.gridSettings', () => {
 			const tiles = [
 				{
 					baseId: 0,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 125 as any, 125 as any ] as Coordinate,
 					tileSize: tileSizeSetting,
-					colors: [ TRANSPARENT, BLACK ],
 				},
 				{
 					baseId: 8,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 75 as any, 125 as any ] as Coordinate,
 					tileSize: tileSizeSetting,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 24,
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 75 as any, 75 as any ] as Coordinate,
 					tileSize: tileSizeSetting,
-					colors: [ BLACK, TRANSPARENT ],
 				},
 				{
 					baseId: 16,
+					colors: [ BLACK, BLACK ],
 					tileOrigin: [ 125 as any, 75 as any ] as Coordinate,
 					tileSize: tileSizeSetting,
-					colors: [ BLACK, BLACK ],
 				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))

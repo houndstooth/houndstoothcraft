@@ -10,10 +10,10 @@ describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', () => {
 		const houndstoothOverrides = {
 			basePattern: {
-				viewSettings: { canvasSize: 100 as CanvasSize },
-				gridSettings: { gridSize: 2 },
 				colorSettings: { backgroundColor: YELLOW },
+				gridSettings: { gridSize: 2 },
 				layerSettings: { endLayer: 1 },
+				viewSettings: { canvasSize: 100 as CanvasSize },
 			},
 			layersPattern: {
 				colorSettings: {
@@ -39,17 +39,17 @@ describe('.layerSettings', () => {
 	it('erasing makes holes so material from lower layers shows through', () => {
 		const houndstoothOverrides = {
 			basePattern: {
-				viewSettings: { canvasSize: 100 as CanvasSize },
-				gridSettings: { gridSize: 0 },
 				colorSettings: { backgroundColor: YELLOW },
+				gridSettings: { gridSize: 0 },
 				layerSettings: { endLayer: 1 },
+				viewSettings: { canvasSize: 100 as CanvasSize },
 			},
 			layersPattern: {
-				gridSettings: { gridSize: () => 2 },
 				colorSettings: {
-					colorSet: () => [ TRANSPARENT, ERASE ],
 					backgroundColor: () => CYAN,
+					colorSet: () => [ TRANSPARENT, ERASE ],
 				},
+				gridSettings: { gridSize: () => 2 },
 			},
 		}
 		activateTestMarkerCanvas()
@@ -58,27 +58,27 @@ describe('.layerSettings', () => {
 
 		expect(standardTileIsColors({
 			baseId: 0,
+			colors: [ YELLOW, CYAN ],
 			tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 			tileSize: 50 as any,
-			colors: [ YELLOW, CYAN ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 8,
+			colors: [ YELLOW, YELLOW ],
 			tileOrigin: [ 50 as any, 0 as any ] as Coordinate,
 			tileSize: 50 as any,
-			colors: [ YELLOW, YELLOW ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 16,
+			colors: [ CYAN, CYAN ],
 			tileOrigin: [ 0 as any, 50 as any ] as Coordinate,
 			tileSize: 50 as any,
-			colors: [ CYAN, CYAN ],
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: 24,
+			colors: [ CYAN, YELLOW ],
 			tileOrigin: [ 50 as any, 50 as any ] as Coordinate,
 			tileSize: 50 as any,
-			colors: [ CYAN, YELLOW ],
 		})).toBe(true)
 	})
 })

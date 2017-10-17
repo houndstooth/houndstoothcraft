@@ -33,12 +33,12 @@ describe('shape', () => {
 
 		it('returns early, not rendering', () => {
 			shape({
-				tileOrigin,
-				tileSize,
-				tileColorIndices,
-				stripeIndex,
 				getOutline: getOutlineSpy,
 				outlineOptions,
+				stripeIndex,
+				tileColorIndices,
+				tileOrigin,
+				tileSize,
 			})
 
 			expect(getOutlineSpy).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
@@ -53,29 +53,29 @@ describe('shape', () => {
 
 		it('gets the outline', () => {
 			shape({
-				tileOrigin,
-				tileSize,
-				tileColorIndices,
-				stripeIndex,
 				getOutline: getOutlineSpy,
 				outlineOptions,
+				stripeIndex,
+				tileColorIndices,
+				tileOrigin,
+				tileSize,
 			})
 
 			expect(getOutlineSpy).toHaveBeenCalledWith({
+				outlineOptions,
 				tileOrigin,
 				tileSize,
-				outlineOptions,
 			})
 		})
 
 		it('gets the current context', () => {
 			shape({
-				tileOrigin,
-				tileSize,
-				tileColorIndices,
-				stripeIndex,
 				getOutline: getOutlineSpy,
 				outlineOptions,
+				stripeIndex,
+				tileColorIndices,
+				tileOrigin,
+				tileSize,
 			})
 
 			expect(canvas.getCurrentContext).toHaveBeenCalled()
@@ -84,12 +84,12 @@ describe('shape', () => {
 		// tslint:disable-next-line:max-line-length
 		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
 			shape({
-				tileOrigin,
-				tileSize,
-				tileColorIndices,
-				stripeIndex,
 				getOutline: getOutlineSpy,
 				outlineOptions,
+				stripeIndex,
+				tileColorIndices,
+				tileOrigin,
+				tileSize,
 			})
 
 			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({
@@ -107,22 +107,22 @@ describe('shape', () => {
 
 			it('passes it to the texture component to be rendered', () => {
 				shape({
-					tileOrigin,
-					tileSize,
-					tileColorIndices,
-					stripeIndex,
 					getOutline: getOutlineSpy,
 					outlineOptions,
+					stripeIndex,
+					tileColorIndices,
+					tileOrigin,
+					tileSize,
 				})
 
 				expect(texture.default).toHaveBeenCalledWith({
 					context,
 					outline,
+					renderTexture,
+					shapeColorIndex,
 					tileColorIndices,
 					tileOrigin,
 					tileSize,
-					renderTexture,
-					shapeColorIndex,
 				})
 			})
 		})
@@ -130,21 +130,21 @@ describe('shape', () => {
 		describe('when a renderTexture method is not supplied', () => {
 			it('passes it to the solid component to be rendered', () => {
 				shape({
-					tileOrigin,
-					tileSize,
-					tileColorIndices,
-					stripeIndex,
 					getOutline: getOutlineSpy,
 					outlineOptions,
+					stripeIndex,
+					tileColorIndices,
+					tileOrigin,
+					tileSize,
 				})
 
 				expect(solid.default).toHaveBeenCalledWith(
 					jasmine.objectContaining({
 						context,
-						shapeColorIndex,
 						outline,
-						tileSize,
+						shapeColorIndex,
 						tileOrigin,
+						tileSize,
 					}),
 				)
 			})

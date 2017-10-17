@@ -33,8 +33,8 @@ describe('create canvas container', () => {
 
 	it('sets the canvas container width and height (as style, in px)', () => {
 		expect(setElementDimensions.default).toHaveBeenCalledWith({
-			element: returnedCanvasContainer,
 			dimensions: canvasDimensions,
+			element: returnedCanvasContainer,
 		})
 	})
 })

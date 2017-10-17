@@ -105,7 +105,6 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					switcheroo: true,
 					assignmentMode: AssignmentMode.SUPERTILE,
 					supertile: [
 						[ [ 0, 1 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
@@ -113,6 +112,7 @@ describe('get tile color indices', () => {
 						[ [ 8, 9 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
 						[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 15, 16 ] ],
 					] as Supertile,
+					switcheroo: true,
 				},
 			}
 			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ] as Address))
@@ -139,8 +139,8 @@ describe('get tile color indices', () => {
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.colorSettings = {
 				assignment: {
-					transformTileColorIndices,
 					assignmentMode: AssignmentMode.WEAVE,
+					transformTileColorIndices,
 					weave: {
 						columns: [ 0, 1 ],
 						rows: [ 1, 0 ],

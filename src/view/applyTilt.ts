@@ -13,8 +13,8 @@ const applyTilt: {(outline: Outline): Outline } = outline => {
 	const point = [ canvasSize as number / 2 as any, canvasSize as number / 2 as any ] as Coordinate
 
 	return outline.map(coordinate => rotateCoordinateAboutPoint({
-		point,
 		coordinate,
+		point,
 		rotation: rotateViewAboutCanvasCenter as any,
 	}))
 }

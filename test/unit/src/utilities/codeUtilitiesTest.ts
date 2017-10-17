@@ -163,11 +163,11 @@ describe('code utilities', () => {
 			const originalDeepObject = { deeperObject: 'cool beans' }
 			const originalShallowObject = { deepObject: originalDeepObject }
 			originalObject = {
-				anImmutableString,
-				anImmutableNumber,
-				anImmutableFunction,
-				anUndefinedValue,
 				anArray: originalArray,
+				anImmutableFunction,
+				anImmutableNumber,
+				anImmutableString,
+				anUndefinedValue,
 				shallowObject: originalShallowObject,
 			}
 

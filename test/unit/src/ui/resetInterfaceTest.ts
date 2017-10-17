@@ -34,8 +34,8 @@ describe('reset interface', () => {
 
 	it('resets the state, except for any selected effects', () => {
 		const fakeHoundstoothEffect = {
-			basePattern: {},
 			animationsPattern: {},
+			basePattern: {},
 			layersPattern: {},
 			name: '',
 		}

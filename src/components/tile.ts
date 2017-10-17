@@ -79,11 +79,11 @@ const getStripeArgs: {
 	({
 		...args,
 		getOutline: stripeOutline,
-		stripeIndex,
 		outlineOptions: {
 			stripeEnd: stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR,
 			stripeStart,
 		},
+		stripeIndex,
 	})
 
 export default tile

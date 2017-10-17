@@ -23,14 +23,14 @@ const maybeAdjustTileColorIndices: {
 	}
 	if (switcheroo) {
 		maybeAdjustedTileColorIndices = applySwitcheroo({
-			tileColorIndices: maybeAdjustedTileColorIndices,
 			gridAddress,
+			tileColorIndices: maybeAdjustedTileColorIndices,
 		})
 	}
 	if (transformTileColorIndices) {
 		maybeAdjustedTileColorIndices = transformTileColorIndices({
-			tileColorIndices: maybeAdjustedTileColorIndices,
 			gridAddress,
+			tileColorIndices: maybeAdjustedTileColorIndices,
 		})
 	}
 

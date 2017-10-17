@@ -24,105 +24,105 @@ describe('standard houndstooth pattern', () => {
 		const firstSupertile = [
 			{
 				baseId: 0,
+				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, BLACK ],
 			},
 			{
 				baseId: 8,
+				colors: [ BLACK, BLACK ],
 				tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, BLACK ],
 			},
 			{
 				baseId: 16,
+				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, TRANSPARENT ],
 			},
 			{
 				baseId: 24,
+				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, TRANSPARENT ],
 			},
 		]
 		const secondSupertile = [
 			{
 				baseId: 32,
+				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, BLACK ],
 			},
 			{
 				baseId: 40,
+				colors: [ BLACK, BLACK ],
 				tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, BLACK ],
 			},
 			{
 				baseId: 48,
+				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, TRANSPARENT ],
 			},
 			{
 				baseId: 56,
+				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, TRANSPARENT ],
 			},
 		]
 		const thirdSupertile = [
 			{
 				baseId: 64,
+				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, BLACK ],
 			},
 			{
 				baseId: 72,
+				colors: [ BLACK, BLACK ],
 				tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, BLACK ],
 			},
 			{
 				baseId: 80,
+				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, TRANSPARENT ],
 			},
 			{
 				baseId: 88,
+				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, TRANSPARENT ],
 			},
 		]
 		const fourthSupertile = [
 			{
 				baseId: 96,
+				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, BLACK ],
 			},
 			{
 				baseId: 104,
+				colors: [ BLACK, BLACK ],
 				tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, BLACK ],
 			},
 			{
 				baseId: 112,
+				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ TRANSPARENT, TRANSPARENT ],
 			},
 			{
 				baseId: 120,
+				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
 				tileSize,
-				colors: [ BLACK, TRANSPARENT ],
 			},
 		]
 		const tiles = firstSupertile.concat(secondSupertile).concat(thirdSupertile).concat(fourthSupertile)

@@ -10,8 +10,8 @@ describe('apply tilt', () => {
 	it('rotates the outline about the canvas center', () => {
 		const basePattern = state.mainHoundstooth.basePattern || {}
 		basePattern.viewSettings = {
-			rotateViewAboutCanvasCenter: Math.PI / 2 as any,
 			canvasSize,
+			rotateViewAboutCanvasCenter: Math.PI / 2 as any,
 		}
 		const outline = [
 			[ 0 as any, 0 as any ],

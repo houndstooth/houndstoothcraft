@@ -15,22 +15,22 @@ const composeMainHoundstooth: {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	composePattern({
-		patternToCompose: state.mainHoundstooth.basePattern || {},
 		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern || {},
 		patternEffects: combinedHoundstoothEffects.basePattern || {},
 		patternOverrides: houndstoothOverrides.basePattern || {},
+		patternToCompose: state.mainHoundstooth.basePattern || {},
 	})
 	composePattern({
-		patternToCompose: state.mainHoundstooth.layersPattern || {},
 		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern || {},
 		patternEffects: combinedHoundstoothEffects.layersPattern || {},
 		patternOverrides: houndstoothOverrides.layersPattern || {},
+		patternToCompose: state.mainHoundstooth.layersPattern || {},
 	})
 	composePattern({
-		patternToCompose: state.mainHoundstooth.animationsPattern || {},
 		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern || {},
 		patternEffects: combinedHoundstoothEffects.animationsPattern || {},
 		patternOverrides: houndstoothOverrides.animationsPattern || {},
+		patternToCompose: state.mainHoundstooth.animationsPattern || {},
 	})
 
 	if (logComposedMainHoundstooth) {

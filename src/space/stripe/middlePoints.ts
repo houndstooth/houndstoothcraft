@@ -8,10 +8,10 @@ const middlePoints: Points = params => {
 	}
 	else {
 		middlePointsWhenStripeDoesNotEndInBottomRightHalf({
-			stripeStartsInTopLeftHalf,
-			outline,
 			originAndSize,
+			outline,
 			stripeEnd,
+			stripeStartsInTopLeftHalf,
 		})
 	}
 }

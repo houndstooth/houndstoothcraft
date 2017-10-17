@@ -25,27 +25,27 @@ describe('.tileSettings', () => {
 			const tiles = [
 				{
 					baseId: 0,
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 					tileSize: 30 as any,
-					colors: [ TRANSPARENT, BLACK ],
 				},
 				{
 					baseId: 8,
+					colors: [ BLACK, BLACK ],
 					tileOrigin: [ 0 as any, 30 as any ] as Coordinate,
 					tileSize: 30 as any,
-					colors: [ BLACK, BLACK ],
 				},
 				{
 					baseId: 16,
+					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 30 as any, 0 as any ] as Coordinate,
 					tileSize: 30 as any,
-					colors: [ TRANSPARENT, TRANSPARENT ],
 				},
 				{
 					baseId: 24,
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 30 as any, 30 as any ] as Coordinate,
 					tileSize: 30 as any,
-					colors: [ BLACK, TRANSPARENT ],
 				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
@@ -55,11 +55,11 @@ describe('.tileSettings', () => {
 			it('multiplies the effect of taking up more pixels', () => {
 				const houndstoothOverrides = {
 					basePattern: {
-						viewSettings: {
-							zoom: 3,
-						},
 						tileSettings: {
 							tileSizeSetting: 30 as any,
+						},
+						viewSettings: {
+							zoom: 3,
 						},
 					},
 				}
@@ -70,27 +70,27 @@ describe('.tileSettings', () => {
 				const tiles = [
 					{
 						baseId: 0,
+						colors: [ TRANSPARENT, BLACK ],
 						tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 						tileSize: 90 as any,
-						colors: [ TRANSPARENT, BLACK ],
 					},
 					{
 						baseId: 8,
+						colors: [ BLACK, BLACK ],
 						tileOrigin: [ 0 as any, 90 as any ] as Coordinate,
 						tileSize: 90 as any,
-						colors: [ BLACK, BLACK ],
 					},
 					{
 						baseId: 16,
+						colors: [ TRANSPARENT, TRANSPARENT ],
 						tileOrigin: [ 90 as any, 0 as any ] as Coordinate,
 						tileSize: 90 as any,
-						colors: [ TRANSPARENT, TRANSPARENT ],
 					},
 					{
 						baseId: 24,
+						colors: [ BLACK, TRANSPARENT ],
 						tileOrigin: [ 90 as any, 90 as any ] as Coordinate,
 						tileSize: 90 as any,
-						colors: [ BLACK, TRANSPARENT ],
 					},
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
@@ -107,8 +107,8 @@ describe('.tileSettings', () => {
 			clear()
 			houndstoothOverrides = {
 				basePattern: {
-					gridSettings: { gridSize: 1 },
 					colorSettings: { colorSet: [ BLACK, BLACK ] },
+					gridSettings: { gridSize: 1 },
 				},
 			}
 			mockContext = buildMockContext({ contextCallsOrder })

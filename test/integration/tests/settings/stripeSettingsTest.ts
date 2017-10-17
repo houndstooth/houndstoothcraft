@@ -59,7 +59,7 @@ describe('.stripeSettings', () => {
 				activateTestMarkerCanvas()
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let areaOrigin = [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate
+				let areaOrigin = [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate
 				const areaSize = tileSize
 				expect(sectionCenterIsColor({
 					areaOrigin,
@@ -102,7 +102,7 @@ describe('.stripeSettings', () => {
 					sectionResolution: 5,
 				})).toBe(true)
 
-				areaOrigin = [ 1 * areaSize as any, 1 * areaSize as any ] as Coordinate
+				areaOrigin = [ areaSize * 1 as any, areaSize * 1 as any ] as Coordinate
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
@@ -162,7 +162,7 @@ describe('.stripeSettings', () => {
 			let areaOrigin
 
 			const areaSize = tileSize
-			areaOrigin = [ 0 * areaSize, 0 * areaSize ]
+			areaOrigin = [ areaSize * 0, areaSize * 0 ]
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
@@ -231,7 +231,7 @@ describe('.stripeSettings', () => {
 				sectionResolution: 4,
 			})).toBe(true)
 
-			areaOrigin = [ 1 * areaSize, 1 * areaSize ]
+			areaOrigin = [ areaSize * 1, areaSize * 1 ]
 
 			expect(sectionCenterIsColor({
 				areaOrigin,

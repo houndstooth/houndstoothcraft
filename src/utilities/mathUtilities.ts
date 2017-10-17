@@ -1,6 +1,6 @@
 const triangularNumber: { (n: number): number } = n => n * (n + 1) / 2
 
-const triangularRoot: { (n: number): number } = n => 0.5 * Math.sqrt(8 * n + 1) - 0.5
+const triangularRoot: { (n: number): number } = n => Math.sqrt(n * 8 + 1) * 0.5 - 0.5
 
 const quarterSquareNumber: { (n: number): number } = n => Math.floor(Math.pow(n, 2) / 4)
 
@@ -10,10 +10,10 @@ const trapezoidalNumber: { ({}: { height: number, start: number}): number } = ({
 const termialRoot: {
 	({}: { n: number, rangeDelta: number, rangeStart: number }): number,
 } = ({ n, rangeDelta, rangeStart }) => {
-	const c = 2 * rangeStart
+	const c = rangeStart * 2
 	const a = Math.pow(c - rangeDelta, 2)
-	const b = 8 * rangeDelta * n
-	const d = 2 * rangeDelta
+	const b = rangeDelta * n * 8
+	const d = rangeDelta * 2
 
 	return (Math.sqrt(a + b) - c + rangeDelta) / d
 }

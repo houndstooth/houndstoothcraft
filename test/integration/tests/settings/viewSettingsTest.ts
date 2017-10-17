@@ -52,25 +52,25 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: 0,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ 0 * zoomedTileSize as any, 0 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 0 as any, zoomedTileSize * 0 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 1 * zoomedTileSize as any, 0 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 1 as any, zoomedTileSize * 0 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ 0 * zoomedTileSize as any, 1 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 0 as any, zoomedTileSize * 1 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 1 * zoomedTileSize as any, 1 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 1 as any, zoomedTileSize * 1 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 		})
@@ -99,25 +99,25 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: 0,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 3 * zoomedTileSize as any, 3 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 3 as any, zoomedTileSize * 3 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 3 * zoomedTileSize as any, 4 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 3 as any, zoomedTileSize * 4 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 4 * zoomedTileSize as any, 3 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 4 as any, zoomedTileSize * 3 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 24,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 4 * zoomedTileSize as any, 4 * zoomedTileSize as any ] as Coordinate,
+				tileOrigin: [ zoomedTileSize * 4 as any, zoomedTileSize * 4 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 		})

@@ -6,6 +6,9 @@
   "rules": {
     "no-constant-condition": true,
     "semicolon": false,
+    "type-literal-delimiter": false,
+    "no-unsafe-any": false,
+    "typedef": false,
     "quotemark": [
       "single"
     ],
@@ -48,12 +51,8 @@
     "strict-boolean-expressions": false,
     "no-any": false,
     "no-magic-numbers": false,
-    "typedef": false,
-    "binary-expression-operand-order": false,
-    "type-literal-delimiter": false,
     "no-default-export": false,
     "no-object-literal-type-assertion": false,
-    "callable-types": false,
-    "no-unsafe-any": false
+    "callable-types": false
   }
 }

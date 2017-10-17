@@ -16,7 +16,7 @@ const drawPassMarker: {
 
 	const x = coordinateUnderTest[0] as any
 	const y = coordinateUnderTest[1] as any
-	testMarkersContext.arc(x, y, 2, 0, 2 * Math.PI)
+	testMarkersContext.arc(x, y, 2, 0, Math.PI * 2)
 
 	testMarkersContext.closePath()
 	testMarkersContext.stroke()

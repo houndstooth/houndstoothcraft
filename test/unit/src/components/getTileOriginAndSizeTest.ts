@@ -12,7 +12,7 @@ describe('get tile origin and size', () => {
 		basePattern.tileSettings = { tileSizeSetting }
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
-			tileOrigin: [ 7 * tileSizeSetting as any, 11 * tileSizeSetting as any ] as Coordinate,
+			tileOrigin: [ tileSizeSetting * 7 as any, tileSizeSetting * 11 as any ] as Coordinate,
 			tileSize: tileSizeSetting,
 		})
 	})
@@ -26,7 +26,7 @@ describe('get tile origin and size', () => {
 		basePattern.tileSettings = { getTileOriginAndSize: custom }
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
-			tileOrigin: [ 11 * tileSizeSetting as any, 7 * tileSizeSetting as any ] as Coordinate,
+			tileOrigin: [ tileSizeSetting * 11 as any, tileSizeSetting * 7 as any ] as Coordinate,
 			tileSize: tileSizeSetting * tileSizeSetting as any,
 		})
 	})

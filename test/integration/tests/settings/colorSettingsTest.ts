@@ -75,57 +75,57 @@ describe('.colorSettings', () => {
 			expect(standardTileIsColors({
 				baseId: 0,
 				colors: [ YELLOW, YELLOW ],
-				tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 8,
 				colors: [ YELLOW, BLUE ],
-				tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 16,
 				colors: [ YELLOW, CYAN ],
-				tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: 24,
 				colors: [ BLUE, YELLOW ],
-				tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 32,
 				colors: [ BLUE, BLUE ],
-				tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 40,
 				colors: [ BLUE, CYAN ],
-				tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: 48,
 				colors: [ CYAN, YELLOW ],
-				tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 56,
 				colors: [ CYAN, BLUE ],
-				tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: 64,
 				colors: [ CYAN, CYAN ],
-				tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 		})
@@ -163,73 +163,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 0,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 8,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 16,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 24,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 32,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 40,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 48,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 56,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 64,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 72,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 80,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 88,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -237,73 +237,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 96,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 104,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 112,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 120,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 128,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 136,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 144,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 152,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 160,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 168,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 176,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 184,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -311,73 +311,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 192,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 4 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 4 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 200,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 4 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 4 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 208,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 4 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 4 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 216,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 5 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 5 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 224,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 5 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 5 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 232,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 5 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 5 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 240,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 6 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 6 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 248,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 6 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 6 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 256,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 6 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 6 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 264,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 0 * tileSize as any, 7 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 7 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 272,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 1 * tileSize as any, 7 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 7 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 280,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 2 * tileSize as any, 7 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 7 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -385,73 +385,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 288,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 4 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 4 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 296,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 4 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 4 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 304,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 4 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 4 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 312,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 5 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 5 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 320,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 5 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 5 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 328,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 5 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 5 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 336,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 6 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 6 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 344,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 6 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 6 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 352,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 6 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 6 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 360,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 3 * tileSize as any, 7 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 7 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 368,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ 4 * tileSize as any, 7 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 4 as any, tileSize * 7 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 376,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ 5 * tileSize as any, 7 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 5 as any, tileSize * 7 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -502,25 +502,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: 0,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 8,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 16,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 24,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -528,25 +528,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: 32,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 40,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 48,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 56,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -554,25 +554,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: 64,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 72,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 80,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 88,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -580,25 +580,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: 96,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 104,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 112,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
 							baseId: 120,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+							tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 					]
@@ -637,50 +637,50 @@ describe('.colorSettings', () => {
 				expect(standardTileIsColors({
 					baseId: 0,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 16,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 24,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 
 				expect(standardTileIsColors({
 					baseId: 32,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 40,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 48,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 56,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+					tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 			})
@@ -713,25 +713,25 @@ describe('.colorSettings', () => {
 					{
 						baseId: 0,
 						colors: [ BLACK, TRANSPARENT ],
-						tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+						tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 						tileSize,
 					},
 					{
 						baseId: 8,
 						colors: [ BLACK, BLACK ],
-						tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+						tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 						tileSize,
 					},
 					{
 						baseId: 16,
 						colors: [ TRANSPARENT, TRANSPARENT ],
-						tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+						tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 						tileSize,
 					},
 					{
 						baseId: 24,
 						colors: [ TRANSPARENT, BLACK ],
-						tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+						tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 						tileSize,
 					},
 				]

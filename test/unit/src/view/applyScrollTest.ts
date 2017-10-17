@@ -26,16 +26,16 @@ describe('apply scroll', () => {
 		const halfTileSize = tileSize / 2
 		expect(applyScroll(outline)).toEqual([
 			[
-				3 + halfCanvasSize - halfTileSize as any,
-				5 + halfCanvasSize - halfTileSize as any,
+				halfCanvasSize - halfTileSize + 3 as any,
+				halfCanvasSize - halfTileSize + 5 as any,
 			],
 			[
-				4 + halfCanvasSize - halfTileSize as any,
-				5 + halfCanvasSize - halfTileSize as any,
+				halfCanvasSize - halfTileSize + 4 as any,
+				halfCanvasSize - halfTileSize + 5 as any,
 			],
 			[
-				3 + halfCanvasSize - halfTileSize as any,
-				4 + halfCanvasSize - halfTileSize as any,
+				halfCanvasSize - halfTileSize + 3 as any,
+				halfCanvasSize - halfTileSize + 4 as any,
 			],
 		] as Outline)
 	})

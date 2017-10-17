@@ -25,25 +25,25 @@ describe('standard houndstooth pattern', () => {
 			{
 				baseId: 0,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ 0 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 8,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ 0 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 16,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 1 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 24,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 1 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			},
 		]
@@ -51,25 +51,25 @@ describe('standard houndstooth pattern', () => {
 			{
 				baseId: 32,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ 2 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 40,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ 2 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 48,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 3 * tileSize as any, 0 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 56,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 3 * tileSize as any, 1 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			},
 		]
@@ -77,25 +77,25 @@ describe('standard houndstooth pattern', () => {
 			{
 				baseId: 64,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ 0 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 72,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ 0 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 80,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 1 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 88,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 1 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
 			},
 		]
@@ -103,25 +103,25 @@ describe('standard houndstooth pattern', () => {
 			{
 				baseId: 96,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ 2 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 104,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ 2 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 112,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 3 * tileSize as any, 2 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
 				baseId: 120,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 3 * tileSize as any, 3 * tileSize as any ] as Coordinate,
+				tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
 			},
 		]

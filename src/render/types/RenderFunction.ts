@@ -2,7 +2,7 @@ import { TileColorIndices, Units } from '../../components'
 import { Context } from '../../page'
 import { Coordinate, Outline } from '../../space'
 
-type RenderTexture = {
+interface RenderTexture {
 	({}: {
 		context: Context,
 		outline: Outline,
@@ -13,7 +13,7 @@ type RenderTexture = {
 	}): void,
 }
 
-type RenderFunction = {
+interface RenderFunction {
 	({}: {
 		context: Context,
 		outline: Outline,

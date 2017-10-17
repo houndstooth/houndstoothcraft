@@ -4,7 +4,7 @@ import Supertile from './Supertile'
 import TileColorIndices from './TileColorIndices'
 import Weave from './Weave'
 
-type Assignment = {
+interface Assignment {
 	assignmentMode?: AssignmentMode;
 	flipGrain?: boolean;
 	offsetAddress?: { ({}: { gridAddress: Address }): Address };

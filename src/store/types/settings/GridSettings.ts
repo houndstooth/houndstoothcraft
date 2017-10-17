@@ -1,4 +1,4 @@
-type GridSettings = {
+interface GridSettings {
 	gridSize?: number,
 	includeNegativeQuadrants?: boolean,
 }

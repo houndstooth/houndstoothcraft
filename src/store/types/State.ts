@@ -1,7 +1,7 @@
 import { Context } from '../../page'
 import Houndstooth from './Houndstooth'
 
-type State = {
+interface State {
 	animating: boolean,
 	contexts: Context[],
 	currentAnimationFrame: number,

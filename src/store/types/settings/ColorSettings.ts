@@ -1,7 +1,7 @@
 import { Assignment } from '../../../components'
 import { Color } from '../../../render'
 
-type ColorSettings = {
+interface ColorSettings {
 	assignment?: Assignment,
 	backgroundColor?: Color,
 	colorSet?: Color[],

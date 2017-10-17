@@ -1,6 +1,6 @@
 declare const global: any
 
-type Document = {
+interface Document {
 	body: { appendChild: { (p?: any, q?: any): any } },
 	createElement: { (p?: any, q?: any): any },
 	createTextNode: { (p?: any, q?: any): any },
@@ -16,7 +16,7 @@ const mockDocument: Document = {
 	querySelector: () => undefined,
 }
 
-type Window = {
+interface Window {
 	clearInterval: { (p?: any, q?: any): any },
 	setInterval: { (p?: any, q?: any): any },
 	URL: { createObjectURL: { (p?: any, q?: any): any }, revokeObjectURL: { (p?: any, q?: any): any } },

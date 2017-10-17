@@ -1,4 +1,4 @@
-type MockContext = {
+interface MockContext {
 	beginPath?,
 	canvas?,
 	clearRect?,

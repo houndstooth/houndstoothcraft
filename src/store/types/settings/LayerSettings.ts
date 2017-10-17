@@ -1,4 +1,4 @@
-type LayerSettings = {
+interface LayerSettings {
 	endLayer?: number,
 	startLayer?: number,
 }

@@ -1,4 +1,4 @@
-type AnimationSettings = {
+interface AnimationSettings {
 	endAnimationFrame?: number,
 	frameRate?: number,
 	refreshCanvas?: boolean,

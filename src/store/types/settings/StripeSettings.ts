@@ -1,6 +1,6 @@
 import { BaseStripeDiagonal, StripeCountMode, StripePosition } from '../../../components'
 
-type StripeSettings = {
+interface StripeSettings {
 	baseStripeDiagonal?: BaseStripeDiagonal,
 	stripePositionSettings?: {
 		stripeCountContinuumSettings?: {

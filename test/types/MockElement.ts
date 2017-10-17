@@ -1,4 +1,4 @@
-type MockElement = {
+interface MockElement {
 	appendChild,
 	click?,
 	download?,

@@ -16,9 +16,9 @@ interface ExpectedSolidSection extends ExpectedSection {
 	color: Color,
 }
 
-type ExpectDiagonalDividedSection = { ({}: ExpectedDividedSection): void }
+interface ExpectDiagonalDividedSection { ({}: ExpectedDividedSection): void }
 
-type ExpectSolidSection = { ({}: ExpectedSolidSection): void }
+interface ExpectSolidSection { ({}: ExpectedSolidSection): void }
 
 enum Diagonal {
 	Solid = 'solid',

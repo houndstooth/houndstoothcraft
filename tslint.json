@@ -54,7 +54,6 @@
     "no-default-export": false,
     "no-object-literal-type-assertion": false,
     "callable-types": false,
-    "interface-over-type-literal": false,
     "no-unsafe-any": false
   }
 }

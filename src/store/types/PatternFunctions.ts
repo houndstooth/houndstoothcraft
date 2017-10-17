@@ -2,7 +2,7 @@ import { Units } from '../../components'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 
-type PatternFunctions = {
+interface PatternFunctions {
 	colorSettings?: {
 		backgroundColor?(): Color,
 		colorSet?(): Color[],

@@ -1,7 +1,7 @@
 import { CanvasSize } from '../../../canvas'
 import { Radian } from '../../../space'
 
-type ViewSettings = {
+interface ViewSettings {
 	canvasSize?: CanvasSize,
 	centerViewOnCenterOfTileAtHomeAddress?: boolean,
 	rotateViewAboutCanvasCenter?: Radian,

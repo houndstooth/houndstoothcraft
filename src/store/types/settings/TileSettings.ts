@@ -1,6 +1,6 @@
 import { TileOriginAndSize, Units } from '../../../components'
 
-type TileSettings = {
+interface TileSettings {
 	collapseSameColoredShapesWithinTile?: boolean,
 	tileSizeSetting?: Units,
 	getTileOriginAndSize?(p?: any): TileOriginAndSize | undefined,

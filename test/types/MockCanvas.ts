@@ -1,4 +1,4 @@
-type MockCanvas = {
+interface MockCanvas {
 	getContext?,
 	height?,
 	style?,

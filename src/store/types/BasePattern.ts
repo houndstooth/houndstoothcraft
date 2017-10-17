@@ -1,6 +1,6 @@
 import * as settings from './settings'
 
-type BasePattern = {
+interface BasePattern {
 	animationSettings?: settings.AnimationSettings,
 	colorSettings?: settings.ColorSettings,
 	gridSettings?: settings.GridSettings,

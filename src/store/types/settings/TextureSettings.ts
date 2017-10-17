@@ -1,4 +1,4 @@
-type TextureSettings = {
+interface TextureSettings {
 	renderTexture?(p?: any): void,
 }
 

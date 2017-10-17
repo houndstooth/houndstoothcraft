@@ -9,7 +9,7 @@ import getTileOriginAndSize from './getTileOriginAndSize'
 import isTileUniform from './isTileUniform'
 import { Address, StripePosition, TileColorIndices, Units } from './types'
 
-type TileParams = { gridAddress: Address, tileColorIndices: TileColorIndices, tileOrigin: Coordinate, tileSize: Units }
+interface TileParams { gridAddress: Address, tileColorIndices: TileColorIndices, tileOrigin: Coordinate, tileSize: Units }
 
 const tile: { ({}: { gridAddress: Address }): void } = ({ gridAddress }) => {
 	const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}

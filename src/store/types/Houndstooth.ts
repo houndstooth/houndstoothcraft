@@ -1,7 +1,7 @@
 import BasePattern from './BasePattern'
 import PatternFunctions from './PatternFunctions'
 
-type Houndstooth = {
+interface Houndstooth {
 	animationsPattern?: PatternFunctions,
 	basePattern?: BasePattern,
 	layersPattern?: PatternFunctions,

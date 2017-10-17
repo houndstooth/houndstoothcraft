@@ -2,7 +2,7 @@ import { StripePosition } from '../../components'
 import Coordinate from './Coordinate'
 import OriginAndSize from './OriginAndSize'
 
-type Point = {
+interface Point {
 	({}: {
 		originAndSize: OriginAndSize,
 		stripePosition?: StripePosition,

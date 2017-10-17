@@ -16,8 +16,8 @@ const clear: NullarySideEffector = (() => {
 }) as NullarySideEffector
 
 const clearContext: {
-	({}: { context: Context, canvasDimensions: Dimension[] }): void,
-} = ({ context, canvasDimensions }) => {
+	({}: { canvasDimensions: Dimension[], context: Context }): void,
+} = ({ canvasDimensions, context }) => {
 	context.clearRect(0, 0, canvasDimensions[ 0 ], canvasDimensions[ 1 ])
 }
 

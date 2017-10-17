@@ -37,16 +37,16 @@ const shallowEqual: { <T>(a: T, b: T): boolean } = (a, b) => {
 const deepClone: { <T>(objectToDeepClone: T): T } = objectToDeepClone => {
 	const clonedObject = {} as typeof objectToDeepClone
 	setAllPropertiesOfObjectOnAnother({
-		objectWithProperties: objectToDeepClone,
 		objectToChange: clonedObject,
+		objectWithProperties: objectToDeepClone,
 	})
 
 	return clonedObject
 }
 
 const setAllPropertiesOfObjectOnAnother: {
-	({}: { objectWithProperties, objectToChange }): void,
-} = ({ objectWithProperties, objectToChange }) => {
+	({}: { objectToChange, objectWithProperties }): void,
+} = ({ objectToChange, objectWithProperties }) => {
 	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {
 		objectToChange[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
 	})
@@ -68,8 +68,8 @@ const deepCloneMaybeNotObject: { <T>(maybeObjectToDeepClone: T): T } = maybeObje
 }
 
 const deeperPath: {
-	({}: { propertyPath: PropertyPath, propertyName: string }): PropertyPath,
-} = ({ propertyPath, propertyName }) => {
+	({}: { propertyName: string, propertyPath: PropertyPath }): PropertyPath,
+} = ({ propertyName, propertyPath }) => {
 	const path = propertyPath.slice()
 	path.push(propertyName)
 

@@ -40,12 +40,12 @@ const composeMainHoundstooth: {
 
 const composePattern: {
 	({}: {
-		patternToCompose: Pattern,
 		patternDefaults: Pattern,
 		patternEffects: Pattern,
 		patternOverrides: Pattern,
+		patternToCompose: Pattern,
 	}): void,
-} = ({ patternToCompose, patternDefaults, patternEffects, patternOverrides }) => {
+} = ({ patternDefaults, patternEffects, patternOverrides, patternToCompose }) => {
 	composePatterns({
 		patternToBeMergedOnto: patternToCompose,
 		patternToMerge: patternDefaults,

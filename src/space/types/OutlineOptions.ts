@@ -1,5 +1,5 @@
 import { StripePosition } from '../../components'
 
-type OutlineOptions = { stripeStart?: StripePosition, stripeEnd?: StripePosition }
+type OutlineOptions = { stripeEnd?: StripePosition, stripeStart?: StripePosition }
 
 export default OutlineOptions

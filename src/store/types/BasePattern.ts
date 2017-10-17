@@ -1,14 +1,14 @@
 import * as settings from './settings'
 
 type BasePattern = {
-	viewSettings?: settings.ViewSettings,
-	gridSettings?: settings.GridSettings,
-	tileSettings?: settings.TileSettings,
+	animationSettings?: settings.AnimationSettings,
 	colorSettings?: settings.ColorSettings,
+	gridSettings?: settings.GridSettings,
+	layerSettings?: settings.LayerSettings,
 	stripeSettings?: settings.StripeSettings,
 	textureSettings?: settings.TextureSettings,
-	animationSettings?: settings.AnimationSettings,
-	layerSettings?: settings.LayerSettings,
+	tileSettings?: settings.TileSettings,
+	viewSettings?: settings.ViewSettings,
 }
 
 export default BasePattern

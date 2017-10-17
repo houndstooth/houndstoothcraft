@@ -1,5 +1,5 @@
 import StripePosition from './StripePosition'
 
-type GetStripePosition = { ({}: { stripeIndex: number, stripeCount: number }): StripePosition }
+type GetStripePosition = { ({}: { stripeCount: number, stripeIndex: number }): StripePosition }
 
 export default GetStripePosition

@@ -38,8 +38,8 @@ const maybeAdjustTileColorIndices: {
 }
 
 const getIndices: {
-	({}: { gridAddress: Address, assignment: Assignment }): TileColorIndices,
-} = ({ gridAddress, assignment }) => {
+	({}: { assignment: Assignment, gridAddress: Address }): TileColorIndices,
+} = ({ assignment, gridAddress }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = assignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
@@ -56,8 +56,8 @@ const getIndices: {
 }
 
 const getByWeave: {
-	({}: { gridAddress: Address, addressOffset: Address, weave: Weave }): TileColorIndices,
-} = ({ gridAddress, addressOffset, weave }) => {
+	({}: { addressOffset: Address, gridAddress: Address, weave: Weave }): TileColorIndices,
+} = ({ addressOffset, gridAddress, weave }) => {
 	const { rows, columns } = weave
 	const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
 	const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
@@ -66,8 +66,8 @@ const getByWeave: {
 }
 
 const getBySupertile: {
-	({}: { gridAddress: Address, addressOffset: Address, supertile: Supertile }): TileColorIndices,
-} = ({ gridAddress, addressOffset, supertile }) => {
+	({}: { addressOffset: Address, gridAddress: Address, supertile: Supertile }): TileColorIndices,
+} = ({ addressOffset, gridAddress, supertile }) => {
 	const supertileColumn = wrappedIndex({
 		array: supertile,
 		index: gridAddress[ 0 ] + addressOffset[ 0 ],
@@ -77,8 +77,8 @@ const getBySupertile: {
 }
 
 const applySwitcheroo: {
-	({}: { tileColorIndices: TileColorIndices, gridAddress: Address }): TileColorIndices,
-} = ({ tileColorIndices, gridAddress }) => {
+	({}: { gridAddress: Address, tileColorIndices: TileColorIndices }): TileColorIndices,
+} = ({ gridAddress, tileColorIndices }) => {
 	const xMod = gridAddress[ 0 ] % 4
 	const yMod = gridAddress[ 1 ] % 4
 	if (

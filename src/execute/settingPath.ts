@@ -1,7 +1,7 @@
 import { PropertyPath } from '../utilities/types'
 
 const settingPath: {
-	({}: { settingsPath: PropertyPath, settingName: string }): string,
-} = ({ settingsPath, settingName }) => `${settingsPath.join('.')}.${settingName}`
+	({}: { settingName: string, settingsPath: PropertyPath }): string,
+} = ({ settingName, settingsPath }) => `${settingsPath.join('.')}.${settingName}`
 
 export default settingPath

@@ -1,8 +1,8 @@
 type AnimationSettings = {
-	frameRate?: number,
-	startAnimationFrame?: number,
 	endAnimationFrame?: number,
+	frameRate?: number,
 	refreshCanvas?: boolean,
+	startAnimationFrame?: number,
 }
 
 export default AnimationSettings

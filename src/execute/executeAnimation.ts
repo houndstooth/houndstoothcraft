@@ -5,8 +5,8 @@ import { SettingsFunctionObject } from './types'
 import { defaults } from '../index'
 
 const executeAnimation: {
-	({}: { layerFunctionObjects: SettingsFunctionObject[], animationFunctionObjects: SettingsFunctionObject[] }): void,
-} = ({ layerFunctionObjects, animationFunctionObjects }) => {
+	({}: { animationFunctionObjects: SettingsFunctionObject[], layerFunctionObjects: SettingsFunctionObject[] }): void,
+} = ({ animationFunctionObjects, layerFunctionObjects }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const animationSettings = basePattern.animationSettings || {}
 	const { frameRate = defaults.DEFAULT_FRAME_RATE, endAnimationFrame = 0, startAnimationFrame = 0 } = animationSettings

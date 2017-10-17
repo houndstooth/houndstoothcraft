@@ -1,3 +1,3 @@
-type Weave = { rows: number[], columns: number[] }
+type Weave = { columns: number[], rows: number[] }
 
 export default Weave

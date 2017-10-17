@@ -6,12 +6,12 @@ import exportFrame from './exportFrame'
 
 const buildAnimationFunction: {
 	({}: {
-		startAnimationFrame: number,
 		animationFunctionObjects: SettingsFunctionObject[],
 		layerFunctionObjects: SettingsFunctionObject[],
 		refreshCanvas: boolean,
+		startAnimationFrame: number,
 	}): () => void,
-} = ({ startAnimationFrame, animationFunctionObjects, layerFunctionObjects, refreshCanvas }) => () => {
+} = ({ animationFunctionObjects, layerFunctionObjects, refreshCanvas, startAnimationFrame }) => () => {
 	if (exportingFramesStillNeedsToCatchUp()) {
 		return
 	}

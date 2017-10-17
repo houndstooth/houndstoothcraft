@@ -5,8 +5,8 @@ import fill from './fill'
 import { Color } from './types'
 
 const draw: {
-	({}: { context: Context, shapeColor: Color, outline: Outline }): void,
-} = ({ context, shapeColor, outline }) => {
+	({}: { context: Context, outline: Outline, shapeColor: Color }): void,
+} = ({ context, outline, shapeColor }) => {
 	if (outline.length < 3) {
 		return
 	}

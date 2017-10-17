@@ -4,11 +4,11 @@ import buildIntervalFunction from './buildIntervalFunction'
 
 const animator: {
 	({}: {
+		frameRate: number,
 		animationFunction(): void,
 		stopConditionFunction(): boolean,
-		frameRate: number,
 	}): void,
-} = ({ animationFunction, frameRate, stopConditionFunction }) => {
+} = ({ frameRate, animationFunction, stopConditionFunction }) => {
 	const intervalFunction = buildIntervalFunction({ animationFunction, stopConditionFunction })
 	state.interval = windowWrapper.setInterval(intervalFunction, frameRate)
 }

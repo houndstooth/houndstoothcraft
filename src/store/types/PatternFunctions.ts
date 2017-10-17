@@ -2,28 +2,28 @@ import { Color } from '../../render'
 import { Units } from '../../components'
 
 type PatternFunctions = {
-	viewSettings?: {
-		rotateViewAboutCanvasCenter?(p: number): number,
+	colorSettings?: {
+		backgroundColor?(): Color,
+		colorSet?(): Color[],
+		opacity?(): number,
 	},
 	gridSettings?: {
 		gridSize?(): number,
 	},
+	stripeSettings?: {
+		stripePositionSettings?: {
+			stripeCountContinuumSettings?: {
+				deltaStripeCount?(p: number): number,
+				initialStripeCount?(p: number): number,
+			},
+			stripeCountSetting?(p: number): number,
+		},
+	},
 	tileSettings?: {
 		tileSizeSetting?(p: Units): Units,
 	},
-	colorSettings?: {
-		colorSet?(): Color[],
-		opacity?(): number,
-		backgroundColor?(): Color,
-	},
-	stripeSettings?: {
-		stripePositionSettings?: {
-			stripeCountSetting?(p: number): number,
-			stripeCountContinuumSettings?: {
-				initialStripeCount?(p: number): number,
-				deltaStripeCount?(p: number): number,
-			},
-		},
+	viewSettings?: {
+		rotateViewAboutCanvasCenter?(p: number): number,
 	},
 }
 

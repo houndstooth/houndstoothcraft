@@ -7,11 +7,11 @@ import settingPath from './settingPath'
 
 const maybeWarnAboutConflicts: {
 	({}: {
-		warnAboutConflicts: boolean,
-		settingsPath: PropertyPath,
-		settingName: string,
 		existingSetting: Setting,
 		overridingSetting: Setting,
+		settingName: string,
+		settingsPath: PropertyPath,
+		warnAboutConflicts: boolean,
 	}): void,
 } = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
@@ -22,8 +22,8 @@ const maybeWarnAboutConflicts: {
 }
 
 const shouldWarnAboutConflicts: {
-	({}: { warnAboutConflicts, existingSetting, overridingSetting }): boolean,
-} = ({ warnAboutConflicts, existingSetting, overridingSetting }) =>
+	({}: { existingSetting, overridingSetting, warnAboutConflicts }): boolean,
+} = ({ existingSetting, overridingSetting, warnAboutConflicts }) =>
 	warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 
 const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
@@ -44,12 +44,12 @@ const settingsAreEqual: { (a: Setting, b: Setting): boolean } = (a, b) => {
 
 const buildWarningMessage: {
 	({}: {
-		settingsPath: PropertyPath,
-		settingName: string,
 		existingSetting: Setting,
 		overridingSetting: Setting,
+		settingName: string,
+		settingsPath: PropertyPath,
 	}): string,
-} = ({ settingsPath, settingName, existingSetting, overridingSetting }) => {
+} = ({ existingSetting, overridingSetting, settingName, settingsPath }) => {
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
 	const fullSettingPath = settingPath({ settingsPath, settingName })

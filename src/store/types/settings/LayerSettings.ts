@@ -1,6 +1,6 @@
 type LayerSettings = {
-	startLayer?: number,
 	endLayer?: number,
+	startLayer?: number,
 }
 
 export default LayerSettings

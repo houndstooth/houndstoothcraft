@@ -21,8 +21,8 @@ const executeGrid: { ({}: { layerFunctionObjects: SettingsFunctionObject[] }): v
 }
 
 const executeLayer: {
-	({}: { n: number, startLayer: number, endLayer: number, layerFunctionObjects: SettingsFunctionObject[] }): void,
-} = ({ n, startLayer, endLayer, layerFunctionObjects }) => {
+	({}: { endLayer: number, layerFunctionObjects: SettingsFunctionObject[], n: number, startLayer: number }): void,
+} = ({ endLayer, layerFunctionObjects, n, startLayer }) => {
 	if (n >= startLayer || 0) {
 		gridAndMaybeLogging()
 	}

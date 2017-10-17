@@ -1,5 +1,5 @@
 import { Units } from '../../components'
 
-type OriginAndSize = { x: number, y: number, size: Units }
+type OriginAndSize = { size: Units, x: number, y: number }
 
 export default OriginAndSize

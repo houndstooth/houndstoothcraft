@@ -7,7 +7,7 @@ set -e
 
 ./bin/shared/cmd_w_msgs.sh "tslint '**/*.ts' -e **/node_modules/** --fix --type-check --project tsconfig.json" "linting" "Linting errors detected." "Lint-free."
 
-./bin/shared/cmd_w_msgs.sh "./bin/pull.sh" "pulling" "Your working tree is unclean." "Latest code pulled."
+./bin/shared/cmd_w_msgs.sh "./bin/pull.sh" "pulling" "Your working tree is unclean, or you haven't loaded your SSH key." "Latest code pulled."
 
 ./bin/shared/cmd_w_msgs.sh "./bin/test/unit_tests_and_cover.sh" "running unit tests and covering" "Unit tests failed!" "Unit tests passed and coverage report updated."
 ./bin/shared/cmd_w_msgs.sh "git add test/unit/coverage/coverage-final.json && git commit --amend --no-edit" "amending commit with updated coverage report" "Something went wrong adding the coverage report changes to the commit." "Coverage report changes added to commit."

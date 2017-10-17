@@ -5,15 +5,15 @@ import { SettingsFunctionObject } from './types'
 
 const prepareFunctionObjectsPerSetting: {
 	({}: {
+		settingsFunctionObjects?: SettingsFunctionObject[],
 		settingsFunctionsSourcePattern: Pattern,
 		settingsPath?: PropertyPath,
-		settingsFunctionObjects?: SettingsFunctionObject[],
 	}): SettingsFunctionObject[],
 } = prepareFunctionObjectsPerSettingArgs => {
 	const {
+		settingsFunctionObjects = [],
 		settingsFunctionsSourcePattern,
 		settingsPath = [] as any,
-		settingsFunctionObjects = [],
 	} = prepareFunctionObjectsPerSettingArgs
 
 	Object.entries(settingsFunctionsSourcePattern).forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]) => {

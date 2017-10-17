@@ -9,7 +9,7 @@ import getTileOriginAndSize from './getTileOriginAndSize'
 import isTileUniform from './isTileUniform'
 import { Address, StripePosition, TileColorIndices, Units } from './types'
 
-type TileParams = { gridAddress: Address, tileOrigin: Coordinate, tileSize: Units, tileColorIndices: TileColorIndices }
+type TileParams = { gridAddress: Address, tileColorIndices: TileColorIndices, tileOrigin: Coordinate, tileSize: Units }
 
 const tile: { ({}: { gridAddress: Address }): void } = ({ gridAddress }) => {
 	const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
@@ -34,7 +34,7 @@ const tile: { ({}: { gridAddress: Address }): void } = ({ gridAddress }) => {
 }
 
 const definedTile: {
-	({}: { gridAddress: Address, definedTileOrigin: Coordinate, definedTileSize: Units }): void,
+	({}: { definedTileOrigin: Coordinate, definedTileSize: Units, gridAddress: Address }): void,
 } = ({ gridAddress, definedTileOrigin: tileOrigin, definedTileSize: tileSize }) => {
 	const tileColorIndices = getTileColorIndices({ gridAddress })
 	const tileFunction = shouldUseSquare({ tileColorIndices }) ? squareTile : stripedTile
@@ -71,18 +71,18 @@ const getSquareArgs: { ({}: { args: TileParams }): ShapeParams } = ({ args }) =>
 const getStripeArgs: {
 	({}: {
 		args: TileParams,
-		stripeStart: StripePosition,
 		stripeIndex: number,
 		stripePositions: StripePosition[],
+		stripeStart: StripePosition,
 	}): ShapeParams,
-} = ({ args, stripeStart, stripeIndex, stripePositions }) =>
+} = ({ args, stripeIndex, stripePositions, stripeStart }) =>
 	({
 		...args,
 		getOutline: stripeOutline,
 		stripeIndex,
 		outlineOptions: {
-			stripeStart,
 			stripeEnd: stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR,
+			stripeStart,
 		},
 	})
 

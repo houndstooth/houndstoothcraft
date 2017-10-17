@@ -4,12 +4,12 @@ import OriginAndSize from './OriginAndSize'
 
 type Points = {
 	({}: {
-		outline: Outline,
 		originAndSize: OriginAndSize,
-		stripeStartsInTopLeftHalf?: boolean,
+		outline: Outline,
+		stripeEnd?: StripePosition,
 		stripeEndsInBottomRightHalf?: boolean,
 		stripeStart?: StripePosition
-		stripeEnd?: StripePosition,
+		stripeStartsInTopLeftHalf?: boolean,
 	}): void,
 }
 

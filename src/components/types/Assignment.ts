@@ -6,14 +6,14 @@ import AssignmentMode from './AssignmentMode'
 
 type Assignment = {
 	assignmentMode?: AssignmentMode;
-	weave?: Weave;
-	supertile?: Supertile;
-	switcheroo?: boolean;
 	flipGrain?: boolean;
 	offsetAddress?: { ({}: { gridAddress: Address }): Address };
+	supertile?: Supertile;
+	switcheroo?: boolean;
 	transformTileColorIndices?: {
-		({}: { tileColorIndices: TileColorIndices, gridAddress: Address }): TileColorIndices;
+		({}: {  gridAddress: Address, tileColorIndices: TileColorIndices }): TileColorIndices;
 	};
+	weave?: Weave;
 }
 
 export default Assignment

@@ -1,19 +1,19 @@
 declare const global: any
 
 type Document = {
+	body: { appendChild: { (p?: any, q?: any): any } },
 	createElement: { (p?: any, q?: any): any },
 	createTextNode: { (p?: any, q?: any): any },
 	querySelector: { (p?: any, q?: any): any },
-	body: { appendChild: { (p?: any, q?: any): any } },
 }
 
 const mockDocument: Document = {
-	createElement: () => undefined,
-	createTextNode: () => undefined,
-	querySelector: () => undefined,
 	body: {
 		appendChild: () => undefined,
 	},
+	createElement: () => undefined,
+	createTextNode: () => undefined,
+	querySelector: () => undefined,
 }
 
 type Window = {

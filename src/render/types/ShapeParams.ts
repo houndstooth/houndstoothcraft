@@ -2,12 +2,12 @@ import { GetOutline, OutlineOptions, Coordinate } from '../../space'
 import { TileColorIndices, Units } from '../../components'
 
 type ShapeParams = {
+	getOutline: GetOutline,
+	outlineOptions?: OutlineOptions,
+	stripeIndex?: number,
+	tileColorIndices: TileColorIndices,
 	tileOrigin: Coordinate,
 	tileSize: Units,
-	tileColorIndices: TileColorIndices,
-	getOutline: GetOutline,
-	stripeIndex?: number,
-	outlineOptions?: OutlineOptions,
 }
 
 export default ShapeParams

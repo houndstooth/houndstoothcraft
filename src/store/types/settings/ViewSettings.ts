@@ -2,10 +2,10 @@ import { CanvasSize } from '../../../canvas'
 
 type ViewSettings = {
 	canvasSize?: CanvasSize,
-	zoomOnCanvasCenter?: boolean,
 	centerViewOnCenterOfTileAtHomeAddress?: boolean,
-	zoom?: number,
 	rotateViewAboutCanvasCenter?: number,
+	zoom?: number,
+	zoomOnCanvasCenter?: boolean,
 }
 
 export default ViewSettings

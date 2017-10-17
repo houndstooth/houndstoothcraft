@@ -8,10 +8,10 @@ const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordi
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const viewSettings = basePattern.viewSettings || {}
 	const {
-		zoom = defaults.DEFAULT_ZOOM,
-		zoomOnCanvasCenter,
 		canvasSize,
 		centerViewOnCenterOfTileAtHomeAddress,
+		zoom = defaults.DEFAULT_ZOOM,
+		zoomOnCanvasCenter,
 	} = viewSettings
 	const halfCanvasSize = canvasSize as number / 2
 	const shouldAdjustForCentering = !!zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
@@ -22,8 +22,8 @@ const adjustCoordinateForZoom: { (coordinate: Coordinate): Coordinate } = coordi
 const doAdjustment: {
 	({}: {
 		coordinate: Coordinate,
-		shouldAdjustForCentering: boolean,
 		halfCanvasSize: number,
+		shouldAdjustForCentering: boolean,
 		zoom: number,
 	}): Coordinate,
 } = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {

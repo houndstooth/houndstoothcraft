@@ -1,8 +1,8 @@
 import { TileOriginAndSize, Units } from '../../../components'
 
 type TileSettings = {
-	tileSizeSetting?: Units,
 	collapseSameColoredShapesWithinTile?: boolean,
+	tileSizeSetting?: Units,
 	getTileOriginAndSize?(p?: any): TileOriginAndSize | undefined,
 }
 

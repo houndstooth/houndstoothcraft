@@ -1,5 +1,5 @@
 import { PropertyPath } from '../../utilities/types'
 
-type SettingsFunctionObject = { settingsPath: PropertyPath, settingName: string, settingsFunction: {<T>(p: T): T} }
+type SettingsFunctionObject = { settingName: string, settingsFunction: {<T>(p: T): T}, settingsPath: PropertyPath }
 
 export default SettingsFunctionObject

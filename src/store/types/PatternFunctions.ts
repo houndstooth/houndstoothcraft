@@ -1,5 +1,6 @@
 import { Color } from '../../render'
 import { Units } from '../../components'
+import { Radian } from '../../space'
 
 type PatternFunctions = {
 	colorSettings?: {
@@ -23,7 +24,7 @@ type PatternFunctions = {
 		tileSizeSetting?(p: Units): Units,
 	},
 	viewSettings?: {
-		rotateViewAboutCanvasCenter?(p: number): number,
+		rotateViewAboutCanvasCenter?(p: Radian): Radian,
 	},
 }
 

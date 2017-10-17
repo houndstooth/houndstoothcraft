@@ -5,6 +5,7 @@ import Outline from './Outline'
 import Points from './Points'
 import GetStripeOutline from './GetStripeOutline'
 import Point from './Point'
+import Radian from './Radian'
 
 export {
 	GetOutline,
@@ -14,4 +15,5 @@ export {
 	Points,
 	GetStripeOutline,
 	Point,
+	Radian,
 }

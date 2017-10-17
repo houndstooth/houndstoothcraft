@@ -51,7 +51,7 @@ describe('shape', () => {
 		const outline = []
 		beforeEach(() => getOutlineSpy.and.returnValue(outline))
 
-		it('rotates the outline', () => {
+		it('gets the outline', () => {
 			shape({
 				tileOrigin,
 				tileSize,

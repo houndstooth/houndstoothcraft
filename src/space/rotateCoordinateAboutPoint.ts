@@ -1,10 +1,10 @@
-import { Coordinate } from './types'
+import { Coordinate, Radian } from './types'
 
 const rotateCoordinateAboutPoint: {
-	({}: { coordinate: Coordinate, point: Coordinate, rotation: number }): Coordinate,
+	({}: { coordinate: Coordinate, point: Coordinate, rotation: Radian }): Coordinate,
 } = ({ coordinate, point, rotation }) => {
-	const sin = Math.sin(rotation)
-	const cos = Math.cos(rotation)
+	const sin = Math.sin(rotation as any)
+	const cos = Math.cos(rotation as any)
 
 	const pointX = point[ 0 ] as any
 	const pointY = point[ 1 ] as any

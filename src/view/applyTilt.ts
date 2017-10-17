@@ -15,7 +15,7 @@ const applyTilt: {(outline: Outline): Outline } = outline => {
 	return outline.map(coordinate => rotateCoordinateAboutPoint({
 		point,
 		coordinate,
-		rotation: rotateViewAboutCanvasCenter,
+		rotation: rotateViewAboutCanvasCenter as any,
 	}))
 }
 

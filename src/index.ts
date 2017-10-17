@@ -16,7 +16,7 @@ import {
 import { executeSelectedHoundstoothEffects } from './execute'
 import { solid, Color } from './render'
 import { CanvasSize } from './canvas'
-import { rotateCoordinateAboutPoint, Coordinate, Outline } from './space'
+import { rotateCoordinateAboutPoint, Coordinate, Outline, Radian } from './space'
 import { defaults, Houndstooth } from './store'
 import { Context } from './page'
 import { maybeAddEffectToggles } from './ui'
@@ -50,4 +50,5 @@ export {
 	Context,
 	AssignmentMode,
 	StripeCountMode,
+	Radian,
 }

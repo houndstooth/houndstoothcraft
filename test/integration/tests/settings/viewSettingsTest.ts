@@ -172,7 +172,7 @@ describe('.viewSettings', () => {
 				basePattern: {
 					viewSettings: {
 						canvasSize: 300 as CanvasSize,
-						rotateViewAboutCanvasCenter: Math.PI / 2,
+						rotateViewAboutCanvasCenter: Math.PI / 2 as any,
 					},
 					tileSettings: {
 						tileSizeSetting: areaSize,

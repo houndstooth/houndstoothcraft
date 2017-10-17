@@ -1,9 +1,10 @@
 import { CanvasSize } from '../../../canvas'
+import { Radian } from '../../../space'
 
 type ViewSettings = {
 	canvasSize?: CanvasSize,
 	centerViewOnCenterOfTileAtHomeAddress?: boolean,
-	rotateViewAboutCanvasCenter?: number,
+	rotateViewAboutCanvasCenter?: Radian,
 	zoom?: number,
 	zoomOnCanvasCenter?: boolean,
 }

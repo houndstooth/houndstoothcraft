@@ -2,36 +2,36 @@ import MockElement from '../../types/MockElement'
 
 const buildMockElement: {
 	({}?: {
-		mockClassList?,
-		mockChildren?,
-		mockAttributeObject?,
-		parentNodeRemoveChildSpy?,
-		parentNodeInsertBeforeSpy?,
 		clickSpy?,
+		mockAttributeObject?,
+		mockChildren?,
+		mockClassList?,
+		parentNodeInsertBeforeSpy?,
+		parentNodeRemoveChildSpy?,
 	}): MockElement,
 } = (params = {}) => {
 	const {
-		mockClassList = [],
-		mockChildren = [],
-		mockAttributeObject = {},
-		parentNodeRemoveChildSpy,
-		parentNodeInsertBeforeSpy,
 		clickSpy,
+		mockAttributeObject = {},
+		mockChildren = [],
+		mockClassList = [],
+		parentNodeInsertBeforeSpy,
+		parentNodeRemoveChildSpy,
 	} = params
 
 	return {
+		appendChild: child => mockChildren.push(child),
 		classList: {
 			add: className => mockClassList.push(className),
 		},
-		appendChild: child => mockChildren.push(child),
+		click: clickSpy,
 		innerHTML: '',
-		style: {},
-		setAttribute: (attribute, value) => mockAttributeObject[ attribute ] = value,
 		parentNode: {
 			insertBefore: parentNodeInsertBeforeSpy,
 			removeChild: parentNodeRemoveChildSpy,
 		},
-		click: clickSpy,
+		setAttribute: (attribute, value) => mockAttributeObject[ attribute ] = value,
+		style: {},
 	}
 }
 

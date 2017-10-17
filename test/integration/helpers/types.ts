@@ -3,8 +3,8 @@ import { Color } from '../../../src/render'
 import Units from '../../../src/components/types/Units'
 
 interface ExpectedSection {
-	areaSize: Units,
 	areaOrigin: Coordinate,
+	areaSize: Units,
 	baseId?: number
 }
 

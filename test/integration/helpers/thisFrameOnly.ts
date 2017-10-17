@@ -1,13 +1,13 @@
 const thisAnimationFrameOnly: {
-	(frame: number): { startAnimationFrame: number, endAnimationFrame: number },
+	(frame: number): { endAnimationFrame: number, startAnimationFrame: number },
 } = frame => ({
-	startAnimationFrame: frame,
 	endAnimationFrame: frame,
+	startAnimationFrame: frame,
 })
 
-const thisLayerOnly: { (frame: number): { startLayer: number, endLayer: number } } = frame => ({
-	startLayer: frame,
+const thisLayerOnly: { (frame: number): { endLayer: number, startLayer: number } } = frame => ({
 	endLayer: frame,
+	startLayer: frame,
 })
 
 export {

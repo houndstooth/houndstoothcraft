@@ -35,8 +35,8 @@ const pixel: { (coordinate: Coordinate): Color } = ([ x, y ]) => {
 }
 
 const checkColorProperties: {
-	({}: { i: number, actualColor: Color, expectedColor: Color }): boolean,
-} = ({ i, actualColor, expectedColor }) => {
+	({}: { actualColor: Color, expectedColor: Color, i: number }): boolean,
+} = ({ actualColor, expectedColor, i }) => {
 	const firstColorProperty = Object.entries(actualColor)[ i ]
 
 	let definedFirstColorProperty: [ string, number | undefined ]

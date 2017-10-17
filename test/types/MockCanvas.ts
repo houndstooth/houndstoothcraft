@@ -1,8 +1,8 @@
 type MockCanvas = {
 	getContext?,
+	height?,
 	style?,
 	width?,
-	height?,
 }
 
 export default MockCanvas

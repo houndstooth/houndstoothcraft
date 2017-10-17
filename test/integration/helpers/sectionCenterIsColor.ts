@@ -9,12 +9,12 @@ const sectionCenterIsColor: {
 	({}: {
 		areaOrigin: Coordinate,
 		areaSize: Units,
-		sectionResolution: number,
-		sectionAddress: Address,
 		color: Color,
 		id?: number,
+		sectionAddress: Address,
+		sectionResolution: number,
 	}): boolean,
-} = ({ areaOrigin, areaSize, sectionResolution, sectionAddress, color, id = 0 }) => {
+} = ({ areaOrigin, areaSize, color, id = 0, sectionAddress, sectionResolution }) => {
 	const coordinateUnderTest = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
 	const passed = pixelIsColor(coordinateUnderTest, color)
 	drawPassMarker({ passed, coordinateUnderTest, id })
@@ -26,13 +26,13 @@ const sectionCenter: {
 	({}: {
 		areaOrigin: Coordinate,
 		areaSize: Units,
-		sectionResolution: number,
 		sectionAddress: Address,
+		sectionResolution: number,
 	}): Coordinate,
-} = ({ areaOrigin, areaSize, sectionResolution, sectionAddress }) => {
+} = ({ areaOrigin, areaSize, sectionAddress, sectionResolution }) => {
 	const sectionSize = areaSize as any / sectionResolution
-	const areaX = areaOrigin[0] as any
-	const areaY = areaOrigin[1] as any
+	const areaX = areaOrigin[ 0 ] as any
+	const areaY = areaOrigin[ 1 ] as any
 
 	return [
 		areaX + (sectionAddress[ 0 ] + 0.5) * sectionSize,

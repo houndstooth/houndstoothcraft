@@ -1,16 +1,16 @@
 type MockElement = {
 	appendChild,
-	innerHTML?,
-	style: {
-		width?,
-		height?,
-		display?,
-	},
-	href?,
+	click?,
 	download?,
+	href?,
+	innerHTML?,
 	nextSibling?,
 	parentNode?,
-	click?,
+	style: {
+		display?,
+		height?,
+		width?,
+	},
 }
 
 export default MockElement

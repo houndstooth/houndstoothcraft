@@ -1,7 +1,7 @@
-import resetInterface from '../../../../src/ui/resetInterface'
+import * as canvas from '../../../../src/canvas'
 import state from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
-import * as canvas from '../../../../src/canvas'
+import resetInterface from '../../../../src/ui/resetInterface'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 

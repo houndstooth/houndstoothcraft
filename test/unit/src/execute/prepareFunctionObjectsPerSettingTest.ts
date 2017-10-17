@@ -1,6 +1,6 @@
 import prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
-import { console } from '../../../../src/utilities/windowWrapper'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
+import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('#prepareFunctionObjectsPerSetting', () => {
 	let actualFunctionObjects

@@ -1,6 +1,6 @@
 import { StripePosition } from '../../components'
-import OriginAndSize from './OriginAndSize'
 import Coordinate from './Coordinate'
+import OriginAndSize from './OriginAndSize'
 
 type Point = {
 	({}: {

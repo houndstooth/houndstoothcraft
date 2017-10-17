@@ -1,4 +1,4 @@
-import { GetOutline, Coordinate } from './types'
+import { Coordinate, GetOutline } from './types'
 
 const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 	const tileSizeDowncast = tileSize as any

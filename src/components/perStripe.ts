@@ -1,7 +1,7 @@
-import state from '../state'
 import { PERIMETER_SCALAR } from '../constants'
+import state from '../state'
 import { iterator } from '../utilities/codeUtilities'
-import { StripePosition, GetStripePosition } from './types'
+import { GetStripePosition, StripePosition } from './types'
 
 const perStripe: { ({}: { getStripePosition: GetStripePosition }): StripePosition[] } = ({ getStripePosition }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}

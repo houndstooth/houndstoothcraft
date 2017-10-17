@@ -1,10 +1,10 @@
-import fill from '../../../../src/render/fill'
 import { ERASE } from '../../../../src/constants'
-import * as parseColor from '../../../../src/render/parseColor'
 import * as buildPath from '../../../../src/render/buildPath'
+import fill from '../../../../src/render/fill'
 import * as fillPath from '../../../../src/render/fillPath'
-import buildMockContext from '../../../helpers/buildMockContext'
+import * as parseColor from '../../../../src/render/parseColor'
 import Outline from '../../../../src/space/types/Outline'
+import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('fill', () => {
 	const shapeColor = { a: 1 }

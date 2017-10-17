@@ -1,6 +1,6 @@
 import * as defaults from './defaults'
 import resetState from './resetState'
-import { Pattern, Houndstooth, Setting } from './types'
+import { Houndstooth, Pattern, Setting } from './types'
 
 export {
 	defaults,

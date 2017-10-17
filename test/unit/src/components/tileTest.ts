@@ -1,13 +1,13 @@
-import tile from '../../../../src/components/tile'
-import { PERIMETER_SCALAR } from '../../../../src/constants'
-import state from '../../../../src/state'
-import * as render from '../../../../src/render'
-import * as space from '../../../../src/space'
-import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import * as getTileColorIndices from '../../../../src/components/getTileColorIndices'
+import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
+import tile from '../../../../src/components/tile'
 import Address from '../../../../src/components/types/Address'
+import { PERIMETER_SCALAR } from '../../../../src/constants'
+import * as render from '../../../../src/render'
+import * as space from '../../../../src/space'
+import state from '../../../../src/state'
 
 describe('tile', () => {
 	const gridAddress = [ 3, 5 ] as Address

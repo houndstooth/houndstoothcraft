@@ -1,8 +1,8 @@
-import { isDefined } from '../utilities/codeUtilities'
-import { console } from '../utilities/windowWrapper'
-import { warn } from '../ui'
-import { PropertyPath } from '../utilities/types'
 import { Setting } from '../store'
+import { warn } from '../ui'
+import { isDefined } from '../utilities/codeUtilities'
+import { PropertyPath } from '../utilities/types'
+import { console } from '../utilities/windowWrapper'
 import settingPath from './settingPath'
 
 const maybeWarnAboutConflicts: {

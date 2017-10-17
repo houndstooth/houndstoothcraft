@@ -1,7 +1,7 @@
 import getCanvasDimensions from '../../../../src/canvas/getCanvasDimensions'
-import { DEFAULT_CANVAS_SIZE } from '../../../../src/store/defaults'
-import state from '../../../../src/state'
 import CanvasSize from '../../../../src/canvas/types/CanvasSize'
+import state from '../../../../src/state'
+import { DEFAULT_CANVAS_SIZE } from '../../../../src/store/defaults'
 
 describe('get canvas dimensions', () => {
 	describe('when canvas size is not specified', () => {

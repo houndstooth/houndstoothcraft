@@ -1,9 +1,9 @@
-import drawPassMarker from './drawPassMarker'
-import pixelIsColor from './pixelIsColor'
-import { Coordinate } from '../../../src/space'
-import { Color } from '../../../src/render'
 import { Address } from '../../../src/components'
 import Units from '../../../src/components/types/Units'
+import { Color } from '../../../src/render'
+import { Coordinate } from '../../../src/space'
+import drawPassMarker from './drawPassMarker'
+import pixelIsColor from './pixelIsColor'
 
 const sectionCenterIsColor: {
 	({}: {

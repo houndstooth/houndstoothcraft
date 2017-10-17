@@ -3,17 +3,17 @@ import perStripe from './perStripe'
 import tileCenter from './tileCenter'
 import {
 	Address,
-	TileColorIndices,
 	Assignment,
-	Supertile,
-	Weave,
-	TileOriginAndSize,
-	StripePosition,
-	Units,
-	GetStripePosition,
 	AssignmentMode,
-	StripeCountMode,
 	BaseStripeDiagonal,
+	GetStripePosition,
+	StripeCountMode,
+	StripePosition,
+	Supertile,
+	TileColorIndices,
+	TileOriginAndSize,
+	Units,
+	Weave,
 } from './types'
 
 export {

@@ -1,6 +1,6 @@
 import exportFrame from '../../../../src/animation/exportFrame'
-import state from '../../../../src/state'
 import * as saveFrame from '../../../../src/animation/saveFrame'
+import state from '../../../../src/state'
 import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('export frame', () => {

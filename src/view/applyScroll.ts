@@ -1,5 +1,5 @@
+import { Coordinate, Outline } from '../space'
 import state from '../state'
-import { Outline, Coordinate } from '../space'
 
 const applyScroll: { (outline: Outline): Outline } = outline => {
 	const basePattern = state.mainHoundstooth.basePattern || {}

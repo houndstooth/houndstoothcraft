@@ -1,6 +1,6 @@
 import clear from '../../../../src/canvas/clear'
-import state from '../../../../src/state'
 import * as getCanvasDimensions from '../../../../src/canvas/getCanvasDimensions'
+import state from '../../../../src/state'
 
 describe('clear', () => {
 	let mixedDownClearRectSpy

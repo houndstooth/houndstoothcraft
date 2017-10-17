@@ -1,8 +1,8 @@
 import createContext from '../../../../src/page/createContext'
-import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockCanvas from '../../helpers/buildMockCanvas'
-import buildMockContext from '../../../helpers/buildMockContext'
 import Canvas from '../../../../src/page/types/Canvas'
+import * as window from '../../../../src/utilities/windowWrapper'
+import buildMockContext from '../../../helpers/buildMockContext'
+import buildMockCanvas from '../../helpers/buildMockCanvas'
 import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create context', () => {

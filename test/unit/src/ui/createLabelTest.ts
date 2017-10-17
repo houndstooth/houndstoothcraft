@@ -1,7 +1,7 @@
+import * as createCheckbox from '../../../../src/ui/createCheckbox'
 import createLabel from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
-import * as createCheckbox from '../../../../src/ui/createCheckbox'
 
 describe('create label', () => {
 	let returnedLabel

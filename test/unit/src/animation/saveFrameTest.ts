@@ -1,5 +1,5 @@
-import saveFrame from '../../../../src/animation/saveFrame'
 import * as saveBlob from '../../../../src/animation/saveBlob'
+import saveFrame from '../../../../src/animation/saveFrame'
 import state from '../../../../src/state'
 
 describe('save frame', () => {

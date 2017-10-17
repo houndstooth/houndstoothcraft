@@ -1,7 +1,7 @@
 import draw from '../../../../src/render/draw'
-import * as view from '../../../../src/view'
 import * as fill from '../../../../src/render/fill'
 import Outline from '../../../../src/space/types/Outline'
+import * as view from '../../../../src/view'
 
 describe('draw', () => {
 	const shapeColor = { a: 1 }

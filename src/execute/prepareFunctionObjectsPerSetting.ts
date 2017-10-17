@@ -1,5 +1,5 @@
-import { deeperPath } from '../utilities/codeUtilities'
 import { Pattern } from '../store'
+import { deeperPath } from '../utilities/codeUtilities'
 import { PropertyPath } from '../utilities/types'
 import { SettingsFunctionObject } from './types'
 

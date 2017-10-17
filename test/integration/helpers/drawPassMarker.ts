@@ -1,6 +1,6 @@
-import createTestMarkersCanvas from './createTestMarkersCanvas'
-import { Coordinate } from '../../../src/space'
 import Canvas from '../../../src/page/types/Canvas'
+import { Coordinate } from '../../../src/space'
+import createTestMarkersCanvas from './createTestMarkersCanvas'
 
 const drawPassMarker: {
 	({}: { coordinateUnderTest: Coordinate, id: number, passed: boolean }): void,

@@ -1,5 +1,5 @@
-import state from '../state'
 import { getCurrentContext } from '../canvas'
+import state from '../state'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyOpacity: NullarySideEffector = (() => {

@@ -1,7 +1,7 @@
 import grid from '../../../../src/components/grid'
+import * as tile from '../../../../src/components/tile'
 import state from '../../../../src/state'
 import * as view from '../../../../src/view'
-import * as tile from '../../../../src/components/tile'
 
 describe('grid', () => {
 	const gridSize = 2

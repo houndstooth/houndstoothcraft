@@ -1,6 +1,6 @@
-import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import state from '../state'
-import { Address, TileColorIndices, Assignment, Supertile, Weave, AssignmentMode } from './types'
+import { reversed, wrappedIndex } from '../utilities/codeUtilities'
+import { Address, Assignment, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
 const getTileColorIndices: { ({}: { gridAddress: Address }): TileColorIndices } = ({ gridAddress }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}

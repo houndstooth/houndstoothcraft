@@ -1,9 +1,9 @@
 import { clear } from '../canvas'
+import { createWarningsContainer } from '../page'
 import state from '../state'
 import { resetState } from '../store'
-import { createWarningsContainer } from '../page'
-import { window, document } from '../utilities/windowWrapper'
 import { NullarySideEffector } from '../utilities/types'
+import { document, window } from '../utilities/windowWrapper'
 
 const resetInterface: NullarySideEffector = (() => {
 	const warnings = document.querySelector('.warnings-container') || createWarningsContainer()

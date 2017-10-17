@@ -1,6 +1,6 @@
 import state from '../state'
-import saveFrame from './saveFrame'
 import { NullarySideEffector } from '../utilities/types'
+import saveFrame from './saveFrame'
 
 const exportFrame: NullarySideEffector = (
 	() => state.mixedDownContext && state.mixedDownContext.canvas.toBlob(saveFrame)

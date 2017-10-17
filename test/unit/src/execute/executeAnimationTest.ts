@@ -1,5 +1,5 @@
-import executeAnimation from '../../../../src/execute/executeAnimation'
 import * as animation from '../../../../src/animation'
+import executeAnimation from '../../../../src/execute/executeAnimation'
 import state from '../../../../src/state'
 import noop from '../../../helpers/noop'
 

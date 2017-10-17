@@ -1,14 +1,14 @@
+import CanvasSize from '../../../../src/canvas/types/CanvasSize'
+import Address from '../../../../src/components/types/Address'
+import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import Coordinate from '../../../../src/space/types/Coordinate'
+import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import pixelIsColor from '../../helpers/pixelIsColor'
-import { BLACK, TRANSPARENT } from '../../../../src/constants'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
-import { TILE_SIZE } from '../../../helpers/settingsPaths'
-import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
 import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
-import Address from '../../../../src/components/types/Address'
-import CanvasSize from '../../../../src/canvas/types/CanvasSize'
-import Coordinate from '../../../../src/space/types/Coordinate'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
 
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {

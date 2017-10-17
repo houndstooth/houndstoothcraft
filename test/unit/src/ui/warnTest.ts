@@ -1,7 +1,7 @@
+import PageElement from '../../../../src/page/types/PageElement'
 import warn from '../../../../src/ui/warn'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
-import PageElement from '../../../../src/page/types/PageElement'
 
 describe('warn', () => {
 	it('adds warnings to the warnings container', () => {

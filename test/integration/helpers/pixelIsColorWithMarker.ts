@@ -1,7 +1,7 @@
+import { Color } from '../../../src/render'
+import { Coordinate } from '../../../src/space'
 import drawPassMarker from './drawPassMarker'
 import pixelIsColor from './pixelIsColor'
-import { Coordinate } from '../../../src/space'
-import { Color } from '../../../src/render'
 
 const pixelIsColorWithMarker: {
 	({}: { coordinateUnderTest: Coordinate, expectedColor: Color, id: number }): boolean,

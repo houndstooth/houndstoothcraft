@@ -1,5 +1,5 @@
-import { GetOutline, OutlineOptions, Coordinate } from '../../space'
 import { TileColorIndices, Units } from '../../components'
+import { Coordinate, GetOutline, OutlineOptions } from '../../space'
 
 type ShapeParams = {
 	getOutline: GetOutline,

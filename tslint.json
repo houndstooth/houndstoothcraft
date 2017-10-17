@@ -54,7 +54,6 @@
     "no-default-export": false,
     "comment-format": false,
     "no-object-literal-type-assertion": false,
-    "ordered-imports": false,
     "object-literal-sort-keys": false,
     "callable-types": false,
     "interface-over-type-literal": false,

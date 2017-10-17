@@ -1,5 +1,5 @@
-import state from '../state'
 import { Context } from '../page'
+import state from '../state'
 
 const getCurrentContext: { (): Context } = () => state.contexts[ state.currentLayer ]
 

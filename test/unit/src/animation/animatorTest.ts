@@ -1,6 +1,6 @@
 import animator from '../../../../src/animation/animator'
-import state from '../../../../src/state'
 import * as buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
+import state from '../../../../src/state'
 import windowWrapper from '../../../../src/utilities/windowWrapper'
 import noop from '../../../helpers/noop'
 

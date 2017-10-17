@@ -1,10 +1,10 @@
-import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import * as canvas from '../../../../src/canvas/index'
-import buildMockCanvas from '../../helpers/buildMockCanvas'
-import buildMockElement from '../../helpers/buildMockElement'
+import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockContext from '../../../helpers/buildMockContext'
+import buildMockCanvas from '../../helpers/buildMockCanvas'
+import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create mixed down canvas', () => {
 	let mixedDownCanvas

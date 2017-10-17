@@ -1,6 +1,6 @@
+import { Assignment, AssignmentMode, BaseStripeDiagonal, Supertile } from '../components'
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
-import { Assignment, Supertile, AssignmentMode, BaseStripeDiagonal } from '../components'
 import { BasePattern, Houndstooth, State } from './types'
 
 const DEFAULT_CANVAS_SIZE = 800

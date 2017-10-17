@@ -1,6 +1,6 @@
+import { Coordinate } from '../space'
 import state from '../state'
 import { Address, TileOriginAndSize } from './types'
-import { Coordinate } from '../space'
 
 const getTileOriginAndSize: {
 	({}: { gridAddress: Address }): TileOriginAndSize | undefined,

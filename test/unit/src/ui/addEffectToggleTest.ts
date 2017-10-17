@@ -1,7 +1,7 @@
 import addEffectToggle from '../../../../src/ui/addEffectToggle'
-import buildMockElement from '../../helpers/buildMockElement'
-import * as window from '../../../../src/utilities/windowWrapper'
 import * as createLabel from '../../../../src/ui/createLabel'
+import * as window from '../../../../src/utilities/windowWrapper'
+import buildMockElement from '../../helpers/buildMockElement'
 
 describe('add effect toggle', () => {
 	const mockLabel = {}

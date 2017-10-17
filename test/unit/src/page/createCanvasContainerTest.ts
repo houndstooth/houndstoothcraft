@@ -1,6 +1,6 @@
 import createCanvasContainer from '../../../../src/page/createCanvasContainer'
-import * as window from '../../../../src/utilities/windowWrapper'
 import * as setElementDimensions from '../../../../src/page/scaleElement'
+import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {

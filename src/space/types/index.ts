@@ -1,10 +1,10 @@
-import GetOutline from './GetOutline'
-import OutlineOptions from './OutlineOptions'
 import Coordinate from './Coordinate'
-import Outline from './Outline'
-import Points from './Points'
+import GetOutline from './GetOutline'
 import GetStripeOutline from './GetStripeOutline'
+import Outline from './Outline'
+import OutlineOptions from './OutlineOptions'
 import Point from './Point'
+import Points from './Points'
 import Radian from './Radian'
 
 export {

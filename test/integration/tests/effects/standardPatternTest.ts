@@ -1,9 +1,9 @@
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
-import state from '../../../../src/state'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import state from '../../../../src/state'
+import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
 
 describe('standard houndstooth pattern', () => {
 	// tslint:disable-next-line:max-line-length

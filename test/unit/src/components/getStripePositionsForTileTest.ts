@@ -1,7 +1,7 @@
 import getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
+import Address from '../../../../src/components/types/Address'
 import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import state from '../../../../src/state'
-import Address from '../../../../src/components/types/Address'
 
 describe('get stripe positions for tile', () => {
 	beforeEach(() => composeMainHoundstooth)

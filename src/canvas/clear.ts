@@ -1,7 +1,7 @@
+import { Context, Dimension } from '../page'
 import state from '../state'
-import { Dimension, Context } from '../page'
-import getCanvasDimensions from './getCanvasDimensions'
 import { NullarySideEffector } from '../utilities/types'
+import getCanvasDimensions from './getCanvasDimensions'
 
 const clear: NullarySideEffector = (() => {
 	const canvasDimensions = getCanvasDimensions()

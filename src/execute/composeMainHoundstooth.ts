@@ -1,6 +1,6 @@
-import { console } from '../utilities/windowWrapper'
-import { Pattern, defaults, Houndstooth } from '../store'
 import state from '../state'
+import { defaults, Houndstooth, Pattern } from '../store'
+import { console } from '../utilities/windowWrapper'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
 

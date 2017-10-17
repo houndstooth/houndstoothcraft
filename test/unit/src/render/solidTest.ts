@@ -1,6 +1,6 @@
-import solid from '../../../../src/render/solid'
 import * as draw from '../../../../src/render/draw'
 import * as getColor from '../../../../src/render/getColor'
+import solid from '../../../../src/render/solid'
 
 describe('solid', () => {
 	const shapeColorIndex = 8

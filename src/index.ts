@@ -1,27 +1,27 @@
 import { standardAnimation } from './animation'
+import { CanvasSize } from './canvas'
 import {
-	perStripe,
-	tileCenter,
 	Address,
+	AssignmentMode,
+	GetStripePosition,
+	perStripe,
+	StripeCountMode,
+	StripePosition,
 	Supertile,
-	Weave,
+	tileCenter,
 	TileColorIndices,
 	TileOriginAndSize,
-	StripePosition,
 	Units,
-	GetStripePosition,
-	AssignmentMode,
-	StripeCountMode,
+	Weave,
 } from './components'
-import { executeSelectedHoundstoothEffects } from './execute'
-import { solid, Color } from './render'
-import { CanvasSize } from './canvas'
-import { rotateCoordinateAboutPoint, Coordinate, Outline, Radian } from './space'
-import { defaults, Houndstooth } from './store'
-import { Context } from './page'
-import { maybeAddEffectToggles } from './ui'
-import state from './state'
 import * as constants from './constants'
+import { executeSelectedHoundstoothEffects } from './execute'
+import { Context } from './page'
+import { Color, solid } from './render'
+import { Coordinate, Outline, Radian, rotateCoordinateAboutPoint } from './space'
+import state from './state'
+import { defaults, Houndstooth } from './store'
+import { maybeAddEffectToggles } from './ui'
 
 export {
 	standardAnimation,

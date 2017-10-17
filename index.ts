@@ -1,5 +1,5 @@
-import { maybeAddEffectToggles, executeSelectedHoundstoothEffects } from './src'
 import * as effects from './effects'
+import { executeSelectedHoundstoothEffects, maybeAddEffectToggles } from './src'
 
 maybeAddEffectToggles(Object.values(effects))
 executeSelectedHoundstoothEffects()

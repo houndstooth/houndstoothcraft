@@ -1,5 +1,5 @@
+import { Assignment, Supertile, Units, Weave } from '../../components'
 import { Color } from '../../render'
-import { Supertile, Weave, Assignment, Units } from '../../components'
 
 enum _SettingBrand {}
 

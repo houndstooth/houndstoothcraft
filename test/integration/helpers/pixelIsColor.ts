@@ -1,8 +1,8 @@
-import isCloseTo from '../../helpers/isCloseTo'
-import { console } from '../../../src/utilities/windowWrapper'
-import { Coordinate } from '../../../src/space'
-import { Color } from '../../../src/render'
 import Canvas from '../../../src/page/types/Canvas'
+import { Color } from '../../../src/render'
+import { Coordinate } from '../../../src/space'
+import { console } from '../../../src/utilities/windowWrapper'
+import isCloseTo from '../../helpers/isCloseTo'
 
 const pixelIsColor: {
 	(coordinateUnderTest: Coordinate, expectedColor: Color): boolean,

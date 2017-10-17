@@ -1,5 +1,5 @@
-import state from '../state'
 import { mixDownContexts } from '../canvas'
+import state from '../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import gridAndMaybeLogging from './gridAndMaybeLogging'
 import { SettingsFunctionObject } from './types'

@@ -1,4 +1,4 @@
-import { rotateCoordinateAboutPoint, Outline, Coordinate } from '../space'
+import { Coordinate, Outline, rotateCoordinateAboutPoint } from '../space'
 import state from '../state'
 
 const applyTilt: {(outline: Outline): Outline } = outline => {

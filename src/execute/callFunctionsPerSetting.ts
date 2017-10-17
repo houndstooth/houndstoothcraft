@@ -1,5 +1,5 @@
-import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
 import state from '../state'
+import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
 import { SettingsFunctionObject } from './types'
 
 const callFunctionsPerSetting: {

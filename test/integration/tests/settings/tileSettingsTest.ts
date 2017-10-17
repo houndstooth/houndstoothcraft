@@ -1,12 +1,12 @@
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
-import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import clear from '../../../../src/canvas/clear'
-import buildMockContext from '../../../helpers/buildMockContext'
+import { BLACK, TRANSPARENT } from '../../../../src/constants'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import buildMockContext from '../../../helpers/buildMockContext'
+import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {

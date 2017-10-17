@@ -1,7 +1,7 @@
-import texture from '../../../../src/render/texture'
 import * as buildPath from '../../../../src/render/buildPath'
 import * as clipPath from '../../../../src/render/clipPath'
 import * as resetClip from '../../../../src/render/resetClip'
+import texture from '../../../../src/render/texture'
 
 describe('texture', () => {
 	it('builds a path from the outline, clips the context on it, renders the texture, then resets the clip', () => {

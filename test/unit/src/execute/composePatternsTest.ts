@@ -1,6 +1,6 @@
+import AssignmentMode from '../../../../src/components/types/AssignmentMode'
 import composePatterns from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
-import AssignmentMode from '../../../../src/components/types/AssignmentMode'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {

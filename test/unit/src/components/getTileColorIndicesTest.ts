@@ -1,7 +1,7 @@
+import { Address, state, Supertile, Weave } from '../../../../src'
 import getTileColorIndices from '../../../../src/components/getTileColorIndices'
-import { iterator } from '../../../../src/utilities/codeUtilities'
-import { state, Address, Supertile, Weave } from '../../../../src'
 import AssignmentMode from '../../../../src/components/types/AssignmentMode'
+import { iterator } from '../../../../src/utilities/codeUtilities'
 
 describe('get tile color indices', () => {
 	const gridAddressForSubject = [ 3, 5 ] as Address

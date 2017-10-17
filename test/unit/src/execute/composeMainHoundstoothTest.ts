@@ -1,9 +1,9 @@
-import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
-import { console } from '../../../../src/utilities/windowWrapper'
-import { DEFAULT_HOUNDSTOOTH } from '../../../../src/store/defaults'
-import state from '../../../../src/state'
 import * as combineHoundstoothEffects from '../../../../src/execute/combineHoundstoothEffects'
+import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import * as composePatterns from '../../../../src/execute/composePatterns'
+import state from '../../../../src/state'
+import { DEFAULT_HOUNDSTOOTH } from '../../../../src/store/defaults'
+import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('composeMainHoundstooth', () => {
 	it('logs the houndstooth when logging mode is on', () => {

@@ -1,15 +1,15 @@
 import Address from './Address'
+import Assignment from './Assignment'
+import AssignmentMode from './AssignmentMode'
+import BaseStripeDiagonal from './BaseStripeDiagonal'
+import GetStripePosition from './GetStripePosition'
+import StripeCountMode from './StripeCountMode'
 import StripePosition from './StripePosition'
+import Supertile from './Supertile'
 import TileColorIndices from './TileColorIndices'
 import TileOriginAndSize from './TileOriginAndSize'
-import Assignment from './Assignment'
-import Supertile from './Supertile'
-import Weave from './Weave'
 import Units from './Units'
-import GetStripePosition from './GetStripePosition'
-import AssignmentMode from './AssignmentMode'
-import StripeCountMode from './StripeCountMode'
-import BaseStripeDiagonal from './BaseStripeDiagonal'
+import Weave from './Weave'
 
 export {
 	Address,

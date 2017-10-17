@@ -1,6 +1,6 @@
+import { Context } from '../page'
 import { Outline } from '../space'
 import { applyView } from '../view'
-import { Context } from '../page'
 import fill from './fill'
 import { Color } from './types'
 

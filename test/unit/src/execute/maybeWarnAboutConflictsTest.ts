@@ -1,6 +1,6 @@
 import maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
-import { console } from '../../../../src/utilities/windowWrapper'
 import * as ui from '../../../../src/ui'
+import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('warning about conflicts', () => {
 	let warnAboutConflicts

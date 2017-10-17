@@ -1,11 +1,11 @@
-import shape from '../../../../src/render/shape'
-import * as codeUtilities from '../../../../src/utilities/codeUtilities'
-import state from '../../../../src/state'
 import * as canvas from '../../../../src/canvas'
-import * as texture from '../../../../src/render/texture'
+import shape from '../../../../src/render/shape'
 import * as solid from '../../../../src/render/solid'
-import noop from '../../../helpers/noop'
+import * as texture from '../../../../src/render/texture'
 import Coordinate from '../../../../src/space/types/Coordinate'
+import state from '../../../../src/state'
+import * as codeUtilities from '../../../../src/utilities/codeUtilities'
+import noop from '../../../helpers/noop'
 
 describe('shape', () => {
 	const tileOrigin = [ 11 as any, 13 as any ] as Coordinate

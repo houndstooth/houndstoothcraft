@@ -1,13 +1,13 @@
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
-import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
-import { BLACK, TRANSPARENT } from '../../../../src/constants'
-import { TILE_SIZE } from '../../../helpers/settingsPaths'
-import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
-import { Coordinate, Address } from '../../../../src'
-import StripeCountMode from '../../../../src/components/types/StripeCountMode'
+import { Address, Coordinate } from '../../../../src'
 import BaseStripeDiagonal from '../../../../src/components/types/BaseStripeDiagonal'
+import StripeCountMode from '../../../../src/components/types/StripeCountMode'
+import { BLACK, TRANSPARENT } from '../../../../src/constants'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import { TILE_SIZE } from '../../../helpers/settingsPaths'
+import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
+import sectionCenterIsColor from '../../helpers/sectionCenterIsColor'
+import standardTileIsColors from '../../helpers/standardTileIsColors'
 
 describe('.stripeSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE) as any

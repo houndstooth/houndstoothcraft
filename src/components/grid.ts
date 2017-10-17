@@ -1,8 +1,8 @@
 import state from '../state'
-import { applyBackgroundColor, applyOpacity } from '../view'
 import { iterator } from '../utilities/codeUtilities'
-import tile from './tile'
 import { NullarySideEffector } from '../utilities/types'
+import { applyBackgroundColor, applyOpacity } from '../view'
+import tile from './tile'
 import { Address } from './types'
 
 const grid: NullarySideEffector = (() => {

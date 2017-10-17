@@ -1,5 +1,5 @@
-import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
 import createEffectTogglesContainer from '../../../../src/page/createEffectTogglesContainer'
+import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 

@@ -1,7 +1,7 @@
-import buildEffectToggleClickHandler from '../.././../../src/ui/buildEffectToggleClickHandler'
-import state from '../../../../src/state'
 import * as execute from '../../../../src/execute'
+import state from '../../../../src/state'
 import * as resetInterface from '../../../../src/ui/resetInterface'
+import buildEffectToggleClickHandler from '../.././../../src/ui/buildEffectToggleClickHandler'
 
 describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {

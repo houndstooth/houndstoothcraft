@@ -1,6 +1,6 @@
+import { Dimension } from '../page'
 import state from '../state'
 import { defaults } from '../store'
-import { Dimension } from '../page'
 
 const getCanvasDimensions: { (): Dimension[] } = () => {
 	const basePattern = state.mainHoundstooth.basePattern || {}

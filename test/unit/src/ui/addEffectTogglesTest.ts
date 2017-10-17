@@ -1,5 +1,5 @@
-import maybeAddEffectToggles from '../../../../src/ui/maybeAddEffectToggles'
 import * as addEffectToggle from '../../../../src/ui/addEffectToggle'
+import maybeAddEffectToggles from '../../../../src/ui/maybeAddEffectToggles'
 import * as window from '../../../../src/utilities/windowWrapper'
 
 describe('add effect toggles', () => {

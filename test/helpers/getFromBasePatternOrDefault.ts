@@ -1,7 +1,7 @@
-import { accessChildPropertyOrCreatePath, isDefined } from '../../src/utilities/codeUtilities'
 import state from '../../src/state'
-import { DEFAULT_PATTERN } from '../../src/store/defaults'
 import { Setting } from '../../src/store'
+import { DEFAULT_PATTERN } from '../../src/store/defaults'
+import { accessChildPropertyOrCreatePath, isDefined } from '../../src/utilities/codeUtilities'
 import { PropertyPath } from '../../src/utilities/types'
 
 const getFromBasePatternOrDefault: { (settingsPath: PropertyPath): Setting } = settingsPath => {

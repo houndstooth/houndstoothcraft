@@ -1,5 +1,5 @@
-import { Color } from '../../../render'
 import { Assignment } from '../../../components'
+import { Color } from '../../../render'
 
 type ColorSettings = {
 	assignment?: Assignment,

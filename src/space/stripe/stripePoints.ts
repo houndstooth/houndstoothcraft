@@ -1,4 +1,4 @@
-import { Point, Coordinate } from '../types'
+import { Coordinate, Point } from '../types'
 
 const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
 	const sizeDowncast = size as any

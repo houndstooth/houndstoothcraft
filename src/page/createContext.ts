@@ -1,5 +1,5 @@
 import { document } from '../utilities/windowWrapper'
-import { Dimension, PageElement, Context } from './types'
+import { Context, Dimension, PageElement } from './types'
 
 const createContext: {
 	({}: { canvasContainer: PageElement, canvasDimensions: Dimension[] }): Context,

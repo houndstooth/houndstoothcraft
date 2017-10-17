@@ -1,6 +1,6 @@
 import { createEffectTogglesContainer } from '../page'
-import { document } from '../utilities/windowWrapper'
 import { Houndstooth } from '../store'
+import { document } from '../utilities/windowWrapper'
 import createLabel from './createLabel'
 
 const addEffectToggle: { (houndstoothEffect: Houndstooth): void } = houndstoothEffect => {

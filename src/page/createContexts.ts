@@ -1,9 +1,9 @@
-import state from '../state'
 import { getCanvasDimensions, layerIterator } from '../canvas'
+import state from '../state'
+import { NullarySideEffector } from '../utilities/types'
 import { document } from '../utilities/windowWrapper'
 import createCanvasContainer from './createCanvasContainer'
 import createContext from './createContext'
-import { NullarySideEffector } from '../utilities/types'
 
 const createContexts: NullarySideEffector = (() => {
 	const canvasDimensions = getCanvasDimensions()

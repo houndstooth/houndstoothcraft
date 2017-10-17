@@ -1,8 +1,8 @@
+import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
+import { defaults } from '../index'
 import state from '../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
-import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 import { SettingsFunctionObject } from './types'
-import { defaults } from '../index'
 
 const executeAnimation: {
 	({}: { animationFunctionObjects: SettingsFunctionObject[], layerFunctionObjects: SettingsFunctionObject[] }): void,

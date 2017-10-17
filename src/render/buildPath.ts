@@ -1,5 +1,5 @@
-import { Outline } from '../space'
 import { Context } from '../page'
+import { Outline } from '../space'
 
 const buildPath: { ({}: { context: Context, outline: Outline }): void } = ({ context, outline }) => {
 	context.beginPath()

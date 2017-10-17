@@ -1,5 +1,5 @@
-import { Color } from '../../render'
 import { Units } from '../../components'
+import { Color } from '../../render'
 import { Radian } from '../../space'
 
 type PatternFunctions = {

@@ -1,6 +1,6 @@
-import buildMockElement from './buildMockElement'
 import MockCanvas from '../../types/MockCanvas'
 import MockContext from '../../types/MockContext'
+import buildMockElement from './buildMockElement'
 
 const buildMockCanvas: {
 	({}: { mockClassList?: string[], mockContext?: MockContext }): MockCanvas,

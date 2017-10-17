@@ -1,4 +1,4 @@
-import { StripePosition, StripeCountMode, BaseStripeDiagonal } from '../../../components'
+import { BaseStripeDiagonal, StripeCountMode, StripePosition } from '../../../components'
 
 type StripeSettings = {
 	baseStripeDiagonal?: BaseStripeDiagonal,

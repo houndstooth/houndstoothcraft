@@ -1,7 +1,7 @@
-import applyView from '../../../../src/view/applyView'
-import * as applyZoom from '../../../../src/view/applyZoom'
 import * as applyScroll from '../../../../src/view/applyScroll'
 import * as applyTilt from '../../../../src/view/applyTilt'
+import applyView from '../../../../src/view/applyView'
+import * as applyZoom from '../../../../src/view/applyZoom'
 
 describe('adjusts outline for view', () => {
 	it('applies any relevant zoom, scroll, and tilt', () => {

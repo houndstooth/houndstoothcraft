@@ -1,4 +1,4 @@
-import { window, document } from '../utilities/windowWrapper'
+import { document, window } from '../utilities/windowWrapper'
 
 const saveBlob: { ({}: { blob: Blob, name: string }): void } = ({ blob, name }) => {
 	const url = window.URL.createObjectURL(blob)

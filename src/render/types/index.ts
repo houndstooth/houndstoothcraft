@@ -1,6 +1,6 @@
-import ShapeParams from './ShapeParams'
-import RenderFunction from './RenderFunction'
 import Color from './Color'
+import RenderFunction from './RenderFunction'
+import ShapeParams from './ShapeParams'
 
 export {
 	ShapeParams,

@@ -1,8 +1,8 @@
-import Supertile from './Supertile'
-import Weave from './Weave'
 import Address from './Address'
-import TileColorIndices from './TileColorIndices'
 import AssignmentMode from './AssignmentMode'
+import Supertile from './Supertile'
+import TileColorIndices from './TileColorIndices'
+import Weave from './Weave'
 
 type Assignment = {
 	assignmentMode?: AssignmentMode;

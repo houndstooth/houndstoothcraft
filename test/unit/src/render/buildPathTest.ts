@@ -1,6 +1,6 @@
-import buildMockContext from '../../../helpers/buildMockContext'
 import buildPath from '../../../../src/render/buildPath'
 import Outline from '../../../../src/space/types/Outline'
+import buildMockContext from '../../../helpers/buildMockContext'
 
 describe('build path', () => {
 	it('draws the path with the correct outline and fills it', () => {

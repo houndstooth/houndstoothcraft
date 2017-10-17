@@ -1,6 +1,6 @@
-import { wrappedIndex } from '../utilities/codeUtilities'
 import { getCurrentContext } from '../canvas'
 import state from '../state'
+import { wrappedIndex } from '../utilities/codeUtilities'
 import solid from './solid'
 import texture from './texture'
 import { ShapeParams } from './types'

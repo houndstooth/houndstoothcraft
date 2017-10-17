@@ -1,6 +1,6 @@
+import { getCanvasDimensions, getCurrentContext } from '../canvas'
 import { parseColor } from '../render'
 import state from '../state'
-import { getCanvasDimensions, getCurrentContext } from '../canvas'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyBackgroundColor: NullarySideEffector = (() => {

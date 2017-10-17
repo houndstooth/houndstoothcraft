@@ -1,6 +1,6 @@
 import state from '../state'
 import perStripe from './perStripe'
-import { StripePosition, Address } from './types'
+import { Address, StripePosition } from './types'
 
 const getStripePositionsForTile: { ({}?: { gridAddress: Address }): StripePosition[] } = params => {
 	const { gridAddress = undefined } = params || {}

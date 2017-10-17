@@ -1,6 +1,6 @@
-import state from '../state'
-import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
 import { clear } from '../canvas'
+import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
+import state from '../state'
 import { deepClone } from '../utilities/codeUtilities'
 import exportFrame from './exportFrame'
 

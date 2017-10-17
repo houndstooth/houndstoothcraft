@@ -1,10 +1,10 @@
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import state from '../../../../src/state'
-import * as page from '../../../../src/page'
-import * as executeGrid from '../../../../src/execute/executeGrid'
-import * as executeAnimation from '../../../../src/execute/executeAnimation'
-import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import * as composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
+import * as executeAnimation from '../../../../src/execute/executeAnimation'
+import * as executeGrid from '../../../../src/execute/executeGrid'
+import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
+import * as page from '../../../../src/page'
+import state from '../../../../src/state'
 
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects = { layer: 'layer' }

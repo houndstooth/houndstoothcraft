@@ -1,5 +1,5 @@
-import { wrappedIndex } from '../utilities/codeUtilities'
 import state from '../state'
+import { wrappedIndex } from '../utilities/codeUtilities'
 import { Color } from './types'
 
 const getColor: { ({}: { index: number }): Color } = ({ index }) => {

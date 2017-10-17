@@ -1,7 +1,7 @@
-import state from '../state'
 import { executeSelectedHoundstoothEffects } from '../execute'
-import { Houndstooth } from '../store'
 import { InputElement } from '../page'
+import state from '../state'
+import { Houndstooth } from '../store'
 import resetInterface from './resetInterface'
 
 const buildEffectToggleClickHandler: {

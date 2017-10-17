@@ -1,7 +1,7 @@
-import state from '../state'
-import { console } from '../utilities/windowWrapper'
 import { grid } from '../components'
+import state from '../state'
 import { NullarySideEffector } from '../utilities/types'
+import { console } from '../utilities/windowWrapper'
 
 const gridAndMaybeLogging: NullarySideEffector = (() => {
 	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state

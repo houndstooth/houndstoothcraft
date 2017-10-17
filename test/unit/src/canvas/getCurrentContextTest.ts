@@ -1,5 +1,5 @@
-import state from '../../../../src/state'
 import getCurrentContext from '../../../../src/canvas/getCurrentContext'
+import state from '../../../../src/state'
 
 describe('get current context', () => {
 	it('gets the current context', () => {

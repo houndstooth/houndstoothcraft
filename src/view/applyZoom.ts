@@ -1,5 +1,5 @@
+import { Coordinate, Outline } from '../space'
 import state from '../state'
-import { Outline, Coordinate } from '../space'
 import { defaults } from '../store'
 
 const applyZoom: { (outline: Outline): Outline } = outline => outline.map(adjustCoordinateForZoom)

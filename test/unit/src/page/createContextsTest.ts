@@ -1,6 +1,6 @@
-import state from '../../../../src/state'
-import createContexts from '../../../../src/page/createContexts'
 import * as createContext from '../../../../src/page/createContext'
+import createContexts from '../../../../src/page/createContexts'
+import state from '../../../../src/state'
 import * as window from '../../../../src/utilities/windowWrapper'
 import buildMockElement from '../../helpers/buildMockElement'
 

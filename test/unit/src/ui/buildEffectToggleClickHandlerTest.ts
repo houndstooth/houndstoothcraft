@@ -32,7 +32,7 @@ describe('build effect toggle click handler', () => {
 		resetInterfaceSpy.calls.reset()
 		executeSelectedHoundstoothEffectsSpy.calls.reset()
 
-		// to confirm that it preserves the order otherwise when removing an effect
+		// To confirm that it preserves the order otherwise when removing an effect:
 		const otherHoundstoothEffect = { name: 'other tooth' }
 		state.selectedHoundstoothEffects.push(otherHoundstoothEffect)
 

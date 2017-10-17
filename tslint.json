@@ -52,7 +52,6 @@
     "binary-expression-operand-order": false,
     "type-literal-delimiter": false,
     "no-default-export": false,
-    "comment-format": false,
     "no-object-literal-type-assertion": false,
     "callable-types": false,
     "interface-over-type-literal": false,

@@ -1,5 +1,5 @@
 import * as canvas from '../../../../src/canvas/index'
-import { createMixedDownCanvas } from '../../../../src/page/createMixedDownCanvas'
+import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockContext } from '../../../helpers/buildMockContext'

@@ -1,4 +1,4 @@
-import { createContext } from '../../../../src/page/createContext'
+import createContext from '../../../../src/page/createContext'
 import { Canvas } from '../../../../src/page/types/Canvas'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockContext } from '../../../helpers/buildMockContext'

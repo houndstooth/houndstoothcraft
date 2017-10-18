@@ -19,4 +19,4 @@ const createMixedDownCanvas: () => Context = () => {
 	return mixedDownCanvas.getContext('2d')
 }
 
-export { createMixedDownCanvas }
+export default createMixedDownCanvas

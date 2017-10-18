@@ -8,7 +8,7 @@ describe('create contexts', () => {
 	let canvasContainer
 	let createContextSpy
 	beforeEach(() => {
-		createContextSpy = spyOn(createContext, 'createContext')
+		createContextSpy = spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement()
 		canvasContainer.innerHTML = 'some old canvases'

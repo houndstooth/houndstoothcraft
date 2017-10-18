@@ -112,8 +112,8 @@ describe('.tileSettings', () => {
 				},
 			}
 			mockContext = buildMockContext({ contextCallsOrder })
-			spyOn(createContext, 'createContext').and.returnValue(mockContext)
-			spyOn(createMixedDownCanvas, 'createMixedDownCanvas').and.returnValue(buildMockContext())
+			spyOn(createContext, 'default').and.returnValue(mockContext)
+			spyOn(createMixedDownCanvas, 'default').and.returnValue(buildMockContext())
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {

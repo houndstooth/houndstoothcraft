@@ -14,4 +14,5 @@ const createContext: (_: {
 	return canvas.getContext('2d')
 }
 
-export { createContext }
+// tslint:disable-next-line:no-default-export
+export default createContext

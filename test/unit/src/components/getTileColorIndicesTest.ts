@@ -1,4 +1,4 @@
-import { Address, state, Supertile, Weave } from '../../../../src'
+import { Address, state, Supertile } from '../../../../src'
 import getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import AssignmentMode from '../../../../src/components/types/AssignmentMode'
 import { iterator } from '../../../../src/utilities/codeUtilities'
@@ -50,9 +50,9 @@ describe('get tile color indices', () => {
 					assignmentMode: AssignmentMode.WEAVE,
 					offsetAddress,
 					weave: {
-						columns: [ 1, undefined ],
-						rows: [ undefined, 3, undefined ],
-					} as Weave,
+						columns: [ 1, 0 ],
+						rows: [ 0, 3, 0 ],
+					},
 				},
 			}
 

@@ -3,7 +3,7 @@ import saveFrame from '../../../../src/animation/saveFrame'
 import state from '../../../../src/state'
 
 describe('save frame', () => {
-	const result = {} as Blob
+	const result = {}
 	beforeEach(() => {
 		state.lastSavedAnimationFrame = 666
 		spyOn(saveBlob, 'default')

@@ -14,7 +14,7 @@ describe('save blob', () => {
 
 		spyOn(windowWrapper.window.URL, 'revokeObjectURL')
 
-		const blob = {} as Blob
+		const blob = {}
 		const name = 'whatever.png'
 		saveBlob({ blob, name })
 

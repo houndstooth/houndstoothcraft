@@ -20,7 +20,7 @@ describe('standard houndstooth pattern', () => {
 
 		const basePattern = state.mainHoundstooth.basePattern || {}
 		const tileSettings = basePattern.tileSettings || {}
-		const tileSize = tileSettings.tileSizeSetting as any
+		const tileSize = tileSettings.tileSizeSetting
 		const firstSupertile = [
 			{
 				baseId: 0,

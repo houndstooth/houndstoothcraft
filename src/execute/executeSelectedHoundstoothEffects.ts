@@ -8,7 +8,7 @@ import executeGrid from './executeGrid'
 import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
 
-const executeSelectedHoundstoothEffects: ({}?: { houndstoothOverrides?: Houndstooth }) => void = params => {
+const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Houndstooth }) => void = params => {
 	const { houndstoothOverrides = {} } = params || {}
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 

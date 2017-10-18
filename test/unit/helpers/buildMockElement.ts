@@ -1,6 +1,6 @@
 import MockElement from '../../types/MockElement'
 
-const buildMockElement: ({}?: {
+const buildMockElement: (_?: {
 		clickSpy?,
 		mockAttributeObject?,
 		mockChildren?,

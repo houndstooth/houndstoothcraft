@@ -2,7 +2,7 @@ import state from '../state'
 import perStripe from './perStripe'
 import { Address, StripePosition } from './types'
 
-const getStripePositionsForTile: ({}?: { gridAddress: Address }) => StripePosition[] = params => {
+const getStripePositionsForTile: (_?: { gridAddress: Address }) => StripePosition[] = params => {
 	const { gridAddress = undefined } = params || {}
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const stripeSettings = basePattern.stripeSettings || {}

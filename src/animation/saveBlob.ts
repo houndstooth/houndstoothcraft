@@ -1,6 +1,7 @@
+import { DataBlob } from '../page'
 import { document, window } from '../utilities/windowWrapper'
 
-const saveBlob: (_: { blob: Blob, name: string }) => void = ({ blob, name }) => {
+const saveBlob: (_: { blob: DataBlob, name: string }) => void = ({ blob, name }) => {
 	const url = window.URL.createObjectURL(blob)
 
 	const a = document.createElement('a')

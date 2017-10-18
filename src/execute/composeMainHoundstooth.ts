@@ -4,7 +4,7 @@ import { console } from '../utilities/windowWrapper'
 import combineHoundstoothEffects from './combineHoundstoothEffects'
 import composePatterns from './composePatterns'
 
-const composeMainHoundstooth: ({}?: {
+const composeMainHoundstooth: (_?: {
 		houndstoothEffects?: Houndstooth[],
 		houndstoothOverrides?: Houndstooth,
 		logComposedMainHoundstooth?: boolean,

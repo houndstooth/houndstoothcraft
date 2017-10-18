@@ -22,7 +22,7 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Co
 
 	const tileSettings = basePattern.tileSettings || {}
 	const tileSizeSetting = tileSettings.tileSizeSetting
-	const halfTileSize = tileSizeSetting as any * HALF as any
+	const halfTileSize = tileSizeSetting * HALF as any
 
 	return [
 		coordinate[ 0 ] as any + canvasCenter - halfTileSize as any,

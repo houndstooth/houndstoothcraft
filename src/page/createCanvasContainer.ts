@@ -4,7 +4,7 @@ import scaleElement from './scaleElement'
 import { PageElement } from './types'
 import Dimension from './types/Dimension'
 
-const createCanvasContainer: ({}?: { canvasDimensions?: Dimension[] }) => PageElement = params => {
+const createCanvasContainer: (_?: { canvasDimensions?: Dimension[] }) => PageElement = params => {
 	const { canvasDimensions = undefined } = params || {}
 	const dimensions = canvasDimensions || getCanvasDimensions()
 

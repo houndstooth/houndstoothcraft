@@ -37,10 +37,6 @@
     "interface-name": [
       "never-prefix"
     ],
-    "ter-arrow-parens": [
-      true,
-      "as-needed"
-    ],
     "max-file-line-count": [
       true,
       100
@@ -51,7 +47,6 @@
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
     "no-any": false,
-    "no-default-export": false,
-    "no-object-literal-type-assertion": false
+    "no-default-export": false
   }
 }

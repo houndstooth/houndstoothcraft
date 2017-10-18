@@ -22,27 +22,28 @@ describe('.tileSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+			let baseId = -8
 			const tiles = [
 				{
-					baseId: 0,
+					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 					tileSize: 30 as any,
 				},
 				{
-					baseId: 8,
+					baseId: baseId += 8,
 					colors: [ BLACK, BLACK ],
 					tileOrigin: [ 0 as any, 30 as any ] as Coordinate,
 					tileSize: 30 as any,
 				},
 				{
-					baseId: 16,
+					baseId: baseId += 8,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: [ 30 as any, 0 as any ] as Coordinate,
 					tileSize: 30 as any,
 				},
 				{
-					baseId: 24,
+					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ 30 as any, 30 as any ] as Coordinate,
 					tileSize: 30 as any,
@@ -67,27 +68,28 @@ describe('.tileSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+				let baseId = -8
 				const tiles = [
 					{
-						baseId: 0,
+						baseId: baseId += 8,
 						colors: [ TRANSPARENT, BLACK ],
 						tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 						tileSize: 90 as any,
 					},
 					{
-						baseId: 8,
+						baseId: baseId += 8,
 						colors: [ BLACK, BLACK ],
 						tileOrigin: [ 0 as any, 90 as any ] as Coordinate,
 						tileSize: 90 as any,
 					},
 					{
-						baseId: 16,
+						baseId: baseId += 8,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 						tileOrigin: [ 90 as any, 0 as any ] as Coordinate,
 						tileSize: 90 as any,
 					},
 					{
-						baseId: 24,
+						baseId: baseId += 8,
 						colors: [ BLACK, TRANSPARENT ],
 						tileOrigin: [ 90 as any, 90 as any ] as Coordinate,
 						tileSize: 90 as any,

@@ -72,58 +72,59 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+			let baseId = -8
 			expect(standardTileIsColors({
-				baseId: 0,
+				baseId: baseId += 8,
 				colors: [ YELLOW, YELLOW ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 8,
+				baseId: baseId += 8,
 				colors: [ YELLOW, BLUE ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 16,
+				baseId: baseId += 8,
 				colors: [ YELLOW, CYAN ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 
 			expect(standardTileIsColors({
-				baseId: 24,
+				baseId: baseId += 8,
 				colors: [ BLUE, YELLOW ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 32,
+				baseId: baseId += 8,
 				colors: [ BLUE, BLUE ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 40,
+				baseId: baseId += 8,
 				colors: [ BLUE, CYAN ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 
 			expect(standardTileIsColors({
-				baseId: 48,
+				baseId: baseId += 8,
 				colors: [ CYAN, YELLOW ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 56,
+				baseId: baseId += 8,
 				colors: [ CYAN, BLUE ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 64,
+				baseId: baseId += 8,
 				colors: [ CYAN, CYAN ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
@@ -159,75 +160,76 @@ describe('.colorSettings', () => {
 
 					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+					let baseId = -8
 					const firstSuperweave = [
 						{
-							baseId: 0,
+							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 8,
+							baseId: baseId += 8,
 							colors: [ BLACK, BLACK ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 16,
+							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 24,
+							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 32,
+							baseId: baseId += 8,
 							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 40,
+							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 48,
+							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 56,
+							baseId: baseId += 8,
 							colors: [ TRANSPARENT, BLACK ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 64,
+							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 72,
+							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 80,
+							baseId: baseId += 8,
 							colors: [ BLACK, BLACK ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 88,
+							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
@@ -498,27 +500,28 @@ describe('.colorSettings', () => {
 
 					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+					let baseId = -8
 					const firstSupertile = [
 						{
-							baseId: 0,
+							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 8,
+							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 16,
+							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 24,
+							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
@@ -526,25 +529,25 @@ describe('.colorSettings', () => {
 					]
 					const secondSupertile = [
 						{
-							baseId: 32,
+							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 40,
+							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 48,
+							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
 							tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 56,
+							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 							tileSize,
@@ -552,25 +555,25 @@ describe('.colorSettings', () => {
 					]
 					const thirdSupertile = [
 						{
-							baseId: 64,
+							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 72,
+							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 80,
+							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 88,
+							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
@@ -578,25 +581,25 @@ describe('.colorSettings', () => {
 					]
 					const fourthSupertile = [
 						{
-							baseId: 96,
+							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 104,
+							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
 							tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 112,
+							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
 							tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
 							tileSize,
 						},
 						{
-							baseId: 120,
+							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
 							tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 							tileSize,
@@ -634,51 +637,52 @@ describe('.colorSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+				let baseId = -8
 				expect(standardTileIsColors({
-					baseId: 0,
+					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
-					baseId: 8,
+					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
-					baseId: 16,
+					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
-					baseId: 24,
+					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 
 				expect(standardTileIsColors({
-					baseId: 32,
+					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
-					baseId: 40,
+					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
-					baseId: 48,
+					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
-					baseId: 56,
+					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 					tileSize,
@@ -709,27 +713,28 @@ describe('.colorSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+				let baseId = -8
 				const tiles = [
 					{
-						baseId: 0,
+						baseId: baseId += 8,
 						colors: [ BLACK, TRANSPARENT ],
 						tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 						tileSize,
 					},
 					{
-						baseId: 8,
+						baseId: baseId += 8,
 						colors: [ BLACK, BLACK ],
 						tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 						tileSize,
 					},
 					{
-						baseId: 16,
+						baseId: baseId += 8,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 						tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 						tileSize,
 					},
 					{
-						baseId: 24,
+						baseId: baseId += 8,
 						colors: [ TRANSPARENT, BLACK ],
 						tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 						tileSize,
@@ -807,7 +812,7 @@ describe('.colorSettings', () => {
 			const yellowPixel = {
 				coordinateUnderTest: [ 75 as any, 25 as any ] as Coordinate,
 				expectedColor: YELLOW,
-				id: 2,
+				id: 1,
 			}
 			expect(pixelIsColorWithMarker(yellowPixel)).toBe(true)
 		})

@@ -18,30 +18,31 @@ describe('standard houndstooth pattern', () => {
 			},
 		})
 
+		let baseId = -8
 		const basePattern = state.mainHoundstooth.basePattern || {}
 		const tileSettings = basePattern.tileSettings || {}
 		const tileSize = tileSettings.tileSizeSetting
 		const firstSupertile = [
 			{
-				baseId: 0,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 8,
+				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 16,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 24,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
@@ -49,25 +50,25 @@ describe('standard houndstooth pattern', () => {
 		]
 		const secondSupertile = [
 			{
-				baseId: 32,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 40,
+				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 48,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 56,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 				tileSize,
@@ -75,25 +76,25 @@ describe('standard houndstooth pattern', () => {
 		]
 		const thirdSupertile = [
 			{
-				baseId: 64,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 72,
+				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 80,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 88,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
@@ -101,25 +102,25 @@ describe('standard houndstooth pattern', () => {
 		]
 		const fourthSupertile = [
 			{
-				baseId: 96,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 104,
+				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 112,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
 				tileSize,
 			},
 			{
-				baseId: 120,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 				tileSize,

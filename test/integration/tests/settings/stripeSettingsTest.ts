@@ -61,11 +61,12 @@ describe('.stripeSettings', () => {
 
 				let areaOrigin = [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate
 				const areaSize = tileSize
+				let id = -1
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
 					color: TRANSPARENT,
-					id: 1,
+					id: id++,
 					sectionAddress: [ 0, 0 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -73,7 +74,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: BLACK,
-					id: 2,
+					id: id++,
 					sectionAddress: [ 1, 1 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -81,7 +82,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: TRANSPARENT,
-					id: 3,
+					id: id++,
 					sectionAddress: [ 2, 2 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -89,7 +90,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: BLACK,
-					id: 4,
+					id: id++,
 					sectionAddress: [ 3, 3 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -97,7 +98,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: TRANSPARENT,
-					id: 5,
+					id: id++,
 					sectionAddress: [ 4, 4 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -107,7 +108,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: BLACK,
-					id: 6,
+					id: id++,
 					sectionAddress: [ 0, 0 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -115,7 +116,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: TRANSPARENT,
-					id: 7,
+					id: id++,
 					sectionAddress: [ 1, 1 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -123,7 +124,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: BLACK,
-					id: 8,
+					id: id++,
 					sectionAddress: [ 2, 2 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -131,7 +132,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: TRANSPARENT,
-					id: 9,
+					id: id++,
 					sectionAddress: [ 3, 3 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -139,7 +140,7 @@ describe('.stripeSettings', () => {
 					areaOrigin,
 					areaSize,
 					color: BLACK,
-					id: 10,
+					id: id++,
 					sectionAddress: [ 4, 4 ] as Address,
 					sectionResolution: 5,
 				})).toBe(true)
@@ -160,6 +161,7 @@ describe('.stripeSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let areaOrigin
+			let id = -1
 
 			const areaSize = tileSize
 			areaOrigin = [ areaSize * 0, areaSize * 0 ]
@@ -167,7 +169,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 1,
+				id: id++,
 				sectionAddress: [ 0, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -176,7 +178,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 2,
+				id: id++,
 				sectionAddress: [ 0, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -184,7 +186,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 3,
+				id: id++,
 				sectionAddress: [ 1, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -192,7 +194,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 4,
+				id: id++,
 				sectionAddress: [ 2, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -201,7 +203,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 5,
+				id: id++,
 				sectionAddress: [ 1, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -209,7 +211,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 6,
+				id: id++,
 				sectionAddress: [ 2, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -217,7 +219,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 7,
+				id: id++,
 				sectionAddress: [ 3, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -226,7 +228,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 8,
+				id: id++,
 				sectionAddress: [ 3, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -237,7 +239,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 9,
+				id: id++,
 				sectionAddress: [ 0, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -246,7 +248,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 10,
+				id: id++,
 				sectionAddress: [ 0, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -254,7 +256,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 11,
+				id: id++,
 				sectionAddress: [ 1, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -262,7 +264,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 12,
+				id: id++,
 				sectionAddress: [ 2, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -271,7 +273,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 13,
+				id: id++,
 				sectionAddress: [ 1, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -279,7 +281,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 14,
+				id: id++,
 				sectionAddress: [ 2, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -287,7 +289,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 15,
+				id: id++,
 				sectionAddress: [ 3, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -296,7 +298,7 @@ describe('.stripeSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 16,
+				id: id++,
 				sectionAddress: [ 3, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)

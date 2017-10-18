@@ -49,26 +49,27 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+			let baseId = -8
 			expect(standardTileIsColors({
-				baseId: 0,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ zoomedTileSize * 0 as any, zoomedTileSize * 0 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 8,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ zoomedTileSize * 1 as any, zoomedTileSize * 0 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 16,
+				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: [ zoomedTileSize * 0 as any, zoomedTileSize * 1 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 24,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ zoomedTileSize * 1 as any, zoomedTileSize * 1 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
@@ -96,26 +97,27 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+			let baseId = -8
 			expect(standardTileIsColors({
-				baseId: 0,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ zoomedTileSize * 3 as any, zoomedTileSize * 3 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 8,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ zoomedTileSize * 3 as any, zoomedTileSize * 4 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 16,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ zoomedTileSize * 4 as any, zoomedTileSize * 3 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 24,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ zoomedTileSize * 4 as any, zoomedTileSize * 4 as any ] as Coordinate,
 				tileSize: zoomedTileSize,
@@ -137,26 +139,27 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+			let baseId = -8
 			expect(standardTileIsColors({
-				baseId: 0,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: [ 350 as any, 350 as any ] as Coordinate,
 				tileSize: 100 as any,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 8,
+				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: [ 450 as any, 350 as any ] as Coordinate,
 				tileSize: 100 as any,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 16,
+				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: [ 350 as any, 450 as any ] as Coordinate,
 				tileSize: 100 as any,
 			})).toBe(true)
 			expect(standardTileIsColors({
-				baseId: 24,
+				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: [ 450 as any, 450 as any ] as Coordinate,
 				tileSize: 100 as any,
@@ -188,12 +191,13 @@ describe('.viewSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let areaOrigin = [ 200 as any, 0 as any ] as Coordinate
+			let id = -1
 
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 1,
+				id: id++,
 				sectionAddress: [ 0, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -202,7 +206,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 2,
+				id: id++,
 				sectionAddress: [ 0, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -210,7 +214,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 3,
+				id: id++,
 				sectionAddress: [ 1, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -218,7 +222,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 4,
+				id: id++,
 				sectionAddress: [ 2, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -227,7 +231,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 5,
+				id: id++,
 				sectionAddress: [ 1, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -235,7 +239,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 6,
+				id: id++,
 				sectionAddress: [ 2, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -243,7 +247,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 7,
+				id: id++,
 				sectionAddress: [ 3, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -251,7 +255,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 8,
+				id: id++,
 				sectionAddress: [ 3, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -262,7 +266,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 9,
+				id: id++,
 				sectionAddress: [ 0, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -271,7 +275,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 10,
+				id: id++,
 				sectionAddress: [ 0, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -279,7 +283,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 11,
+				id: id++,
 				sectionAddress: [ 1, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -287,7 +291,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 12,
+				id: id++,
 				sectionAddress: [ 2, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -296,7 +300,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 13,
+				id: id++,
 				sectionAddress: [ 1, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -304,7 +308,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 14,
+				id: id++,
 				sectionAddress: [ 2, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -312,7 +316,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 15,
+				id: id++,
 				sectionAddress: [ 3, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -321,7 +325,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 16,
+				id: id++,
 				sectionAddress: [ 3, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -332,7 +336,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 17,
+				id: id++,
 				sectionAddress: [ 0, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -341,7 +345,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 18,
+				id: id++,
 				sectionAddress: [ 0, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -349,7 +353,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 19,
+				id: id++,
 				sectionAddress: [ 1, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -357,7 +361,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 20,
+				id: id++,
 				sectionAddress: [ 2, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -366,7 +370,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 21,
+				id: id++,
 				sectionAddress: [ 1, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -374,7 +378,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 22,
+				id: id++,
 				sectionAddress: [ 2, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -382,7 +386,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 23,
+				id: id++,
 				sectionAddress: [ 3, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -391,7 +395,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: BLACK,
-				id: 24,
+				id: id++,
 				sectionAddress: [ 3, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -402,7 +406,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 25,
+				id: id++,
 				sectionAddress: [ 0, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -411,7 +415,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 26,
+				id: id++,
 				sectionAddress: [ 0, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -419,7 +423,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 27,
+				id: id++,
 				sectionAddress: [ 1, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -427,7 +431,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 28,
+				id: id++,
 				sectionAddress: [ 2, 3 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -436,7 +440,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 29,
+				id: id++,
 				sectionAddress: [ 1, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -444,7 +448,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 30,
+				id: id++,
 				sectionAddress: [ 2, 1 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -452,7 +456,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 31,
+				id: id++,
 				sectionAddress: [ 3, 2 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)
@@ -461,7 +465,7 @@ describe('.viewSettings', () => {
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
-				id: 32,
+				id: id++,
 				sectionAddress: [ 3, 0 ] as Address,
 				sectionResolution: 4,
 			})).toBe(true)

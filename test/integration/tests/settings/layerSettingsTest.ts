@@ -56,26 +56,27 @@ describe('.layerSettings', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+		let baseId = -8
 		expect(standardTileIsColors({
-			baseId: 0,
+			baseId: baseId += 8,
 			colors: [ YELLOW, CYAN ],
 			tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
 			tileSize: 50 as any,
 		})).toBe(true)
 		expect(standardTileIsColors({
-			baseId: 8,
+			baseId: baseId += 8,
 			colors: [ YELLOW, YELLOW ],
 			tileOrigin: [ 50 as any, 0 as any ] as Coordinate,
 			tileSize: 50 as any,
 		})).toBe(true)
 		expect(standardTileIsColors({
-			baseId: 16,
+			baseId: baseId += 8,
 			colors: [ CYAN, CYAN ],
 			tileOrigin: [ 0 as any, 50 as any ] as Coordinate,
 			tileSize: 50 as any,
 		})).toBe(true)
 		expect(standardTileIsColors({
-			baseId: 24,
+			baseId: baseId += 8,
 			colors: [ CYAN, YELLOW ],
 			tileOrigin: [ 50 as any, 50 as any ] as Coordinate,
 			tileSize: 50 as any,

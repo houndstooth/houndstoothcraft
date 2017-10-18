@@ -5,4 +5,4 @@ interface MockCanvas {
 	width?,
 }
 
-export default MockCanvas
+export { MockCanvas }

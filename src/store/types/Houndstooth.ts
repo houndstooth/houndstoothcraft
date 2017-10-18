@@ -1,5 +1,5 @@
-import BasePattern from './BasePattern'
-import PatternFunctions from './PatternFunctions'
+import { BasePattern } from './BasePattern'
+import { PatternFunctions } from './PatternFunctions'
 
 interface Houndstooth {
 	animationsPattern?: PatternFunctions,
@@ -8,4 +8,4 @@ interface Houndstooth {
 	name?: string,
 }
 
-export default Houndstooth
+export { Houndstooth }

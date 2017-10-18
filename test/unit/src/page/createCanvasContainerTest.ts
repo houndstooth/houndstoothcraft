@@ -1,7 +1,7 @@
-import createCanvasContainer from '../../../../src/page/createCanvasContainer'
-import * as setElementDimensions from '../../../../src/page/scaleElement'
+import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
+import * as scaleElement from '../../../../src/page/scaleElement'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {
 	const mockCanvasContainerClassList = []
@@ -11,7 +11,7 @@ describe('create canvas container', () => {
 	beforeEach(() => {
 		mockBodyChildren = []
 
-		spyOn(setElementDimensions, 'default')
+		spyOn(scaleElement, 'scaleElement')
 
 		window.document.body = buildMockElement({ mockChildren: mockBodyChildren })
 
@@ -32,7 +32,7 @@ describe('create canvas container', () => {
 	})
 
 	it('sets the canvas container width and height (as style, in px)', () => {
-		expect(setElementDimensions.default).toHaveBeenCalledWith({
+		expect(scaleElement.scaleElement).toHaveBeenCalledWith({
 			dimensions: canvasDimensions,
 			element: returnedCanvasContainer,
 		})

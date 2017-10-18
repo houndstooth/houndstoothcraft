@@ -2,4 +2,4 @@ type InputElement = HTMLInputElement | {
 	checked?,
 }
 
-export default InputElement
+export { InputElement }

@@ -1,6 +1,6 @@
-import Coordinate from './Coordinate'
-import GetStripeOutlineParams from './GetStripeOutlineParams'
+import { Coordinate } from './Coordinate'
+import { GetStripeOutlineParams } from './GetStripeOutlineParams'
 
 type GetStripeOutline = (_: GetStripeOutlineParams) => Coordinate[]
 
-export default GetStripeOutline
+export { GetStripeOutline }

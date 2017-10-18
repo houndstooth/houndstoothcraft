@@ -1,4 +1,4 @@
-import state from '../state'
+import { state } from '../state'
 import { iterator } from '../utilities/codeUtilities'
 
 const layerIterator: () => number[] = () => {
@@ -10,4 +10,4 @@ const layerIterator: () => number[] = () => {
 	return iterator(layerCount)
 }
 
-export default layerIterator
+export { layerIterator }

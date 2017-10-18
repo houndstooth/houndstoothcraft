@@ -1,6 +1,6 @@
 import * as applyScroll from '../../../../src/view/applyScroll'
 import * as applyTilt from '../../../../src/view/applyTilt'
-import applyView from '../../../../src/view/applyView'
+import { applyView } from '../../../../src/view/applyView'
 import * as applyZoom from '../../../../src/view/applyZoom'
 
 describe('adjusts outline for view', () => {
@@ -10,15 +10,15 @@ describe('adjusts outline for view', () => {
 		const zoomedAndScrolledOutline = []
 		const zoomedAndScrolledAndTiltedOutline = []
 
-		spyOn(applyZoom, 'default').and.returnValue(zoomedOutline)
-		spyOn(applyScroll, 'default').and.returnValue(zoomedAndScrolledOutline)
-		spyOn(applyTilt, 'default').and.returnValue(zoomedAndScrolledAndTiltedOutline)
+		spyOn(applyZoom, 'applyZoom').and.returnValue(zoomedOutline)
+		spyOn(applyScroll, 'applyScroll').and.returnValue(zoomedAndScrolledOutline)
+		spyOn(applyTilt, 'applyTilt').and.returnValue(zoomedAndScrolledAndTiltedOutline)
 
 		const actualOutline = applyView(outline)
 
-		expect(applyZoom.default).toHaveBeenCalledWith(outline)
-		expect(applyScroll.default).toHaveBeenCalledWith(zoomedOutline)
-		expect(applyTilt.default).toHaveBeenCalledWith(zoomedAndScrolledOutline)
+		expect(applyZoom.applyZoom).toHaveBeenCalledWith(outline)
+		expect(applyScroll.applyScroll).toHaveBeenCalledWith(zoomedOutline)
+		expect(applyTilt.applyTilt).toHaveBeenCalledWith(zoomedAndScrolledOutline)
 		expect(actualOutline).toBe(zoomedAndScrolledAndTiltedOutline)
 	})
 })

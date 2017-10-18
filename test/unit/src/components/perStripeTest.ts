@@ -1,6 +1,6 @@
-import perStripe from '../../../../src/components/perStripe'
-import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
-import state from '../../../../src/state'
+import { perStripe } from '../../../../src/components/perStripe'
+import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
+import { state } from '../../../../src/state'
 
 describe('per stripe', () => {
 	beforeEach(() => composeMainHoundstooth)

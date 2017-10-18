@@ -1,6 +1,6 @@
-import squareOutline from '../../../../src/space/squareOutline'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import Outline from '../../../../src/space/types/Outline'
+import { squareOutline } from '../../../../src/space/squareOutline'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Outline } from '../../../../src/space/types/Outline'
 
 describe('square outline', () => {
 	const tileOrigin = [ 2 as any, 3 as any ] as Coordinate

@@ -1,6 +1,6 @@
 import { clear } from '../canvas'
 import { createWarningsContainer } from '../page'
-import state from '../state'
+import { state } from '../state'
 import { resetState } from '../store'
 import { NullarySideEffector } from '../utilities/types'
 import { document, window } from '../utilities/windowWrapper'
@@ -17,4 +17,4 @@ const resetInterface: NullarySideEffector = (() => {
 	state.selectedHoundstoothEffects = existingEffects
 }) as NullarySideEffector
 
-export default resetInterface
+export { resetInterface }

@@ -1,6 +1,6 @@
-import BasePattern from './BasePattern'
-import PatternFunctions from './PatternFunctions'
+import { BasePattern } from './BasePattern'
+import { PatternFunctions } from './PatternFunctions'
 
 type Pattern = BasePattern | PatternFunctions
 
-export default Pattern
+export { Pattern }

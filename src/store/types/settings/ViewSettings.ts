@@ -9,4 +9,4 @@ interface ViewSettings {
 	zoomOnCanvasCenter?: boolean,
 }
 
-export default ViewSettings
+export { ViewSettings }

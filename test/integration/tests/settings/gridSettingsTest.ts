@@ -1,11 +1,11 @@
-import CanvasSize from '../../../../src/canvas/types/CanvasSize'
+import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
+import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
+import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.gridSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE)

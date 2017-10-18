@@ -3,4 +3,4 @@ enum StripeCountMode {
 	GINGHAM_CHEVRON_CONTINUUM = 'GINGHAM_CHEVRON_CONTINUUM',
 }
 
-export default StripeCountMode
+export { StripeCountMode }

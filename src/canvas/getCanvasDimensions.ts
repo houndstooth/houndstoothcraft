@@ -1,5 +1,5 @@
 import { Dimension } from '../page'
-import state from '../state'
+import { state } from '../state'
 import { defaults } from '../store'
 
 const getCanvasDimensions: () => Dimension[] = () => {
@@ -14,4 +14,4 @@ const getCanvasDimensions: () => Dimension[] = () => {
 	return [ width, height ] as Dimension[]
 }
 
-export default getCanvasDimensions
+export { getCanvasDimensions }

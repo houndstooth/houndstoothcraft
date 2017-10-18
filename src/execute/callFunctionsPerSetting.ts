@@ -1,4 +1,4 @@
-import state from '../state'
+import { state } from '../state'
 import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
 import { SettingsFunctionObject } from './types'
 
@@ -16,4 +16,4 @@ const callFunctionsPerSetting: (_: {
 	})
 }
 
-export default callFunctionsPerSetting
+export { callFunctionsPerSetting }

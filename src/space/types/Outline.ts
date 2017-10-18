@@ -1,5 +1,5 @@
-import Coordinate from './Coordinate'
+import { Coordinate } from './Coordinate'
 
 type Outline = Coordinate[]
 
-export default Outline
+export { Outline }

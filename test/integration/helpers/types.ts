@@ -1,4 +1,4 @@
-import Units from '../../../src/components/types/Units'
+import { Units } from '../../../src/components/types/Units'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 

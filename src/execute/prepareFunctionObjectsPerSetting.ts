@@ -45,4 +45,4 @@ const shouldRecurse: (_: {
 	return !(maybeSettingsFunctionsSourcePattern instanceof Array)
 }
 
-export default prepareFunctionObjectsPerSetting
+export { prepareFunctionObjectsPerSetting }

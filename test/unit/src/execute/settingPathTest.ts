@@ -1,4 +1,4 @@
-import settingPath from '../../../../src/execute/settingPath'
+import { settingPath } from '../../../../src/execute/settingPath'
 import { PropertyPath } from '../../../../src/utilities/types'
 
 describe('setting path', () => {

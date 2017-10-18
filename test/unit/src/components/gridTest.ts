@@ -1,13 +1,13 @@
-import grid from '../../../../src/components/grid'
+import { grid } from '../../../../src/components/grid'
 import * as tile from '../../../../src/components/tile'
-import state from '../../../../src/state'
+import { state } from '../../../../src/state'
 import * as view from '../../../../src/view'
 
 describe('grid', () => {
 	const gridSize = 2
 	let tileSpy
 	beforeEach(() => {
-		tileSpy = spyOn(tile, 'default')
+		tileSpy = spyOn(tile, 'tile')
 		const basePattern = state.mainHoundstooth.basePattern || {}
 		basePattern.gridSettings = { gridSize }
 	})

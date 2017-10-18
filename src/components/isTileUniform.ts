@@ -14,4 +14,4 @@ const isTileUniform: (_: { tileColorIndices: TileColorIndices }) => boolean = ({
 	return true
 }
 
-export default isTileUniform
+export { isTileUniform }

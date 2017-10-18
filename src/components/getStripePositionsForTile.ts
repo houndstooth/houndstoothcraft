@@ -1,5 +1,5 @@
-import state from '../state'
-import perStripe from './perStripe'
+import { state } from '../state'
+import { perStripe } from './perStripe'
 import { Address, StripePosition } from './types'
 
 const getStripePositionsForTile: (_?: { gridAddress: Address }) => StripePosition[] = params => {
@@ -18,4 +18,4 @@ const standardStripePositions: () => StripePosition[] = () => perStripe({ getStr
 const standardStripePosition: (_: { stripeCount, stripeIndex }) => StripePosition = ({ stripeCount, stripeIndex }) =>
 	stripeIndex / stripeCount as any
 
-export default getStripePositionsForTile
+export { getStripePositionsForTile }

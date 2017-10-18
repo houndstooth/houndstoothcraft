@@ -14,4 +14,4 @@ const createContext: (_: {
 	return canvas.getContext('2d')
 }
 
-export default createContext
+export { createContext }

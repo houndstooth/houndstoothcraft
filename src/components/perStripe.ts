@@ -1,5 +1,5 @@
 import { PERIMETER_SCALAR } from '../constants'
-import state from '../state'
+import { state } from '../state'
 import { iterator } from '../utilities/codeUtilities'
 import { GetStripePosition, StripePosition } from './types'
 
@@ -13,4 +13,4 @@ const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition
 		getStripePosition({ stripeIndex, stripeCount }) as any * PERIMETER_SCALAR) as any
 }
 
-export default perStripe
+export { perStripe }

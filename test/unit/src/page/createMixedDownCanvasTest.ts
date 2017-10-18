@@ -1,10 +1,10 @@
 import * as canvas from '../../../../src/canvas/index'
-import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
+import { createMixedDownCanvas } from '../../../../src/page/createMixedDownCanvas'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockContext from '../../../helpers/buildMockContext'
-import buildMockCanvas from '../../helpers/buildMockCanvas'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockContext } from '../../../helpers/buildMockContext'
+import { buildMockCanvas } from '../../helpers/buildMockCanvas'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create mixed down canvas', () => {
 	let mixedDownCanvas
@@ -13,7 +13,7 @@ describe('create mixed down canvas', () => {
 	const mixedDownCanvasClassList = []
 	let returnedMixedDownContext
 	beforeAll(() => {
-		spyOn(deleteElementIfExists, 'default')
+		spyOn(deleteElementIfExists, 'deleteElementIfExists')
 
 		window.document.body = buildMockElement({ mockChildren: mockBodyChildren })
 
@@ -26,7 +26,7 @@ describe('create mixed down canvas', () => {
 	})
 
 	it('deletes the existing mixed down canvas, if present', () => {
-		expect(deleteElementIfExists.default).toHaveBeenCalledWith('.mixed-down-canvas')
+		expect(deleteElementIfExists.deleteElementIfExists).toHaveBeenCalledWith('.mixed-down-canvas')
 	})
 
 	it('puts the new mixed down canvas on the document body', () => {

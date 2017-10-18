@@ -1,6 +1,6 @@
-import isTileUniform from '../../../../src/components/isTileUniform'
-import TileColorIndices from '../../../../src/components/types/TileColorIndices'
-import state from '../../../../src/state'
+import { isTileUniform } from '../../../../src/components/isTileUniform'
+import { TileColorIndices } from '../../../../src/components/types/TileColorIndices'
+import { state } from '../../../../src/state'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {

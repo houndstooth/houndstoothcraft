@@ -1,5 +1,5 @@
-import resetClip from '../../../../src/render/resetClip'
-import buildMockContext from '../../../helpers/buildMockContext'
+import { resetClip } from '../../../../src/render/resetClip'
+import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {

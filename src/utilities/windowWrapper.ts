@@ -43,4 +43,4 @@ export {
 	windowWrapper as window,
 }
 
-export default windowWrapper
+export { windowWrapper }

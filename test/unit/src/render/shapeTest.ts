@@ -1,11 +1,11 @@
 import * as canvas from '../../../../src/canvas'
-import shape from '../../../../src/render/shape'
+import { shape } from '../../../../src/render/shape'
 import * as solid from '../../../../src/render/solid'
 import * as texture from '../../../../src/render/texture'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import state from '../../../../src/state'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { state } from '../../../../src/state'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
-import noop from '../../../helpers/noop'
+import { noop } from '../../../helpers/noop'
 
 describe('shape', () => {
 	const tileOrigin = [ 11 as any, 13 as any ] as Coordinate
@@ -23,8 +23,8 @@ describe('shape', () => {
 		getOutlineSpy = jasmine.createSpy('getOutlineSpy')
 
 		spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
-		spyOn(texture, 'default')
-		spyOn(solid, 'default')
+		spyOn(texture, 'texture')
+		spyOn(solid, 'solid')
 		spyOn(canvas, 'getCurrentContext').and.returnValue(context)
 	})
 
@@ -42,8 +42,8 @@ describe('shape', () => {
 			})
 
 			expect(getOutlineSpy).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(texture.default).not.toHaveBeenCalled()
-			expect(solid.default).not.toHaveBeenCalled()
+			expect(texture.texture).not.toHaveBeenCalled()
+			expect(solid.solid).not.toHaveBeenCalled()
 		})
 	})
 
@@ -115,7 +115,7 @@ describe('shape', () => {
 					tileSize,
 				})
 
-				expect(texture.default).toHaveBeenCalledWith({
+				expect(texture.texture).toHaveBeenCalledWith({
 					context,
 					outline,
 					renderTexture,
@@ -138,7 +138,7 @@ describe('shape', () => {
 					tileSize,
 				})
 
-				expect(solid.default).toHaveBeenCalledWith(
+				expect(solid.solid).toHaveBeenCalledWith(
 					jasmine.objectContaining({
 						context,
 						outline,

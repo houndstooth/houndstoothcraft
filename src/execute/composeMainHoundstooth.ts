@@ -1,8 +1,8 @@
-import state from '../state'
+import { state } from '../state'
 import { defaults, Houndstooth, Pattern } from '../store'
 import { console } from '../utilities/windowWrapper'
-import combineHoundstoothEffects from './combineHoundstoothEffects'
-import composePatterns from './composePatterns'
+import { combineHoundstoothEffects } from './combineHoundstoothEffects'
+import { composePatterns } from './composePatterns'
 
 const composeMainHoundstooth: (_?: {
 		houndstoothEffects?: Houndstooth[],
@@ -56,4 +56,4 @@ const composePattern: (_: {
 	})
 }
 
-export default composeMainHoundstooth
+export { composeMainHoundstooth }

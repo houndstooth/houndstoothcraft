@@ -2,7 +2,7 @@ import { Color } from '../render'
 import { Pattern, Setting } from '../store'
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
 import { PropertyPath } from '../utilities/types'
-import maybeWarnAboutConflicts from './maybeWarnAboutConflicts'
+import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
 
 const composePatterns: (_: {
 	patternToBeMergedOnto: Pattern,
@@ -65,4 +65,4 @@ const settingIsNotColor: (setting: Setting) => boolean = setting => {
 	return !(defined(r) || defined(g) || defined(b) || defined(a))
 }
 
-export default composePatterns
+export { composePatterns }

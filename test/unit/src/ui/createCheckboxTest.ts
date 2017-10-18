@@ -1,8 +1,8 @@
 import * as buildEffectToggleClickHandler from '../../../../src/ui/buildEffectToggleClickHandler'
-import createCheckbox from '../../../../src/ui/createCheckbox'
+import { createCheckbox } from '../../../../src/ui/createCheckbox'
 import * as window from '../../../../src/utilities/windowWrapper'
-import noop from '../../../helpers/noop'
-import buildMockElement from '../../helpers/buildMockElement'
+import { noop } from '../../../helpers/noop'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create checkbox', () => {
 	let returnedCheckbox
@@ -15,7 +15,7 @@ describe('create checkbox', () => {
 		mockCheckbox = buildMockElement({ mockClassList, mockAttributeObject })
 		spyOn(window.document, 'createElement').and.returnValue(mockCheckbox)
 
-		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(mockClickHandler)
+		spyOn(buildEffectToggleClickHandler, 'buildEffectToggleClickHandler').and.returnValue(mockClickHandler)
 
 		returnedCheckbox = createCheckbox({ houndstoothEffect: mockHoundstoothEffect })
 	})
@@ -29,7 +29,7 @@ describe('create checkbox', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(buildEffectToggleClickHandler.default).toHaveBeenCalledWith({
+		expect(buildEffectToggleClickHandler.buildEffectToggleClickHandler).toHaveBeenCalledWith({
 			checkbox: mockCheckbox,
 			houndstoothEffect: mockHoundstoothEffect,
 		})

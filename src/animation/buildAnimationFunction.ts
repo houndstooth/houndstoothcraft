@@ -1,8 +1,8 @@
 import { clear } from '../canvas'
 import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
-import state from '../state'
+import { state } from '../state'
 import { deepClone } from '../utilities/codeUtilities'
-import exportFrame from './exportFrame'
+import { exportFrame } from './exportFrame'
 
 const buildAnimationFunction: (_: {
 	animationFunctionObjects: SettingsFunctionObject[],
@@ -44,4 +44,4 @@ const animate: (_: {
 	}
 }
 
-export default buildAnimationFunction
+export { buildAnimationFunction }

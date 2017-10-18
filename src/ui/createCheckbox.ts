@@ -1,7 +1,7 @@
 import { InputElement } from '../page'
 import { Houndstooth } from '../store'
 import { document } from '../utilities/windowWrapper'
-import buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
+import { buildEffectToggleClickHandler } from './buildEffectToggleClickHandler'
 
 const createCheckbox: (_: { houndstoothEffect: Houndstooth }) => InputElement = ({ houndstoothEffect }) => {
 	const checkbox = document.createElement('input')
@@ -15,4 +15,4 @@ const createCheckbox: (_: { houndstoothEffect: Houndstooth }) => InputElement = 
 	return checkbox
 }
 
-export default createCheckbox
+export { createCheckbox }

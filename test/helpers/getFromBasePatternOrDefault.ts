@@ -1,4 +1,4 @@
-import state from '../../src/state'
+import { state } from '../../src/state'
 import { Setting } from '../../src/store'
 import { DEFAULT_PATTERN } from '../../src/store/defaults'
 import { accessChildPropertyOrCreatePath, isDefined } from '../../src/utilities/codeUtilities'
@@ -23,4 +23,4 @@ const getFromBasePatternOrDefault: (settingsPath: PropertyPath) => Setting = set
 	})
 }
 
-export default getFromBasePatternOrDefault
+export { getFromBasePatternOrDefault }

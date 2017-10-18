@@ -1,7 +1,7 @@
 import { mixDownContexts } from '../canvas'
-import state from '../state'
-import callFunctionsPerSetting from './callFunctionsPerSetting'
-import gridAndMaybeLogging from './gridAndMaybeLogging'
+import { state } from '../state'
+import { callFunctionsPerSetting } from './callFunctionsPerSetting'
+import { gridAndMaybeLogging } from './gridAndMaybeLogging'
 import { SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
@@ -32,4 +32,4 @@ const executeLayer: (_: {
 	state.currentLayer++
 }
 
-export default executeGrid
+export { executeGrid }

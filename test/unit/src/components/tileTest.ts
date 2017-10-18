@@ -2,12 +2,12 @@ import * as getStripePositionsForTile from '../../../../src/components/getStripe
 import * as getTileColorIndices from '../../../../src/components/getTileColorIndices'
 import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
-import tile from '../../../../src/components/tile'
-import Address from '../../../../src/components/types/Address'
+import { tile } from '../../../../src/components/tile'
+import { Address } from '../../../../src/components/types/Address'
 import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as render from '../../../../src/render'
 import * as space from '../../../../src/space'
-import state from '../../../../src/state'
+import { state } from '../../../../src/state'
 
 describe('tile', () => {
 	const gridAddress = [ 3, 5 ] as Address
@@ -18,19 +18,19 @@ describe('tile', () => {
 		shapeSpy = spyOn(render, 'shape')
 		spyOn(space, 'squareOutline')
 		spyOn(space, 'stripeOutline')
-		getTileColorIndicesSpy = spyOn(getTileColorIndices, 'default')
-		isTileUniformSpy = spyOn(isTileUniform, 'default')
+		getTileColorIndicesSpy = spyOn(getTileColorIndices, 'getTileColorIndices')
+		isTileUniformSpy = spyOn(isTileUniform, 'isTileUniform')
 	})
 
 	describe('when the tile is not assigned an origin on the canvas', () => {
 		beforeEach(() => {
-			spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin: undefined, tileSize: 10 })
+			spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin: undefined, tileSize: 10 })
 		})
 
 		it('returns early, not getting colors', () => {
 			tile({ gridAddress })
 
-			expect(getTileColorIndices.default).not.toHaveBeenCalled()
+			expect(getTileColorIndices.getTileColorIndices).not.toHaveBeenCalled()
 		})
 	})
 
@@ -42,10 +42,10 @@ describe('tile', () => {
 		beforeEach(() => {
 			tileOrigin = [ 7, 11 ]
 			tileSize = 13
-			spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin, tileSize })
+			spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
 
 			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
-			spyOn(getStripePositionsForTile, 'default').and.returnValue(stripePositionsForTile)
+			spyOn(getStripePositionsForTile, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
 
 			const basePattern = state.mainHoundstooth.basePattern || {}
 			basePattern.tileSettings = {}
@@ -57,7 +57,7 @@ describe('tile', () => {
 		it('gets colors', () => {
 			tile({ gridAddress })
 
-			expect(getTileColorIndices.default).toHaveBeenCalledWith({ gridAddress })
+			expect(getTileColorIndices.getTileColorIndices).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
@@ -81,7 +81,7 @@ describe('tile', () => {
 				it('does not look for stripe positions', () => {
 					tile({ gridAddress })
 
-					expect(getStripePositionsForTile.default).not.toHaveBeenCalled()
+					expect(getStripePositionsForTile.getStripePositionsForTile).not.toHaveBeenCalled()
 				})
 
 				it('converts the tile into shapes with the correct arguments, and uses square outline', () => {
@@ -105,7 +105,7 @@ describe('tile', () => {
 				it('looks for stripe positions', () => {
 					tile({ gridAddress })
 
-					expect(getStripePositionsForTile.default).toHaveBeenCalledWith({ gridAddress })
+					expect(getStripePositionsForTile.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				})
 
 				it('converts the tile into a number of shapes equal to the number of stripes', () => {
@@ -182,7 +182,7 @@ describe('tile', () => {
 
 				tile({ gridAddress })
 
-				expect(getStripePositionsForTile.default).toHaveBeenCalledWith({ gridAddress })
+				expect(getStripePositionsForTile.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: space.stripeOutline }))
 			})

@@ -1,5 +1,5 @@
 import { getCurrentContext } from '../canvas'
-import state from '../state'
+import { state } from '../state'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyOpacity: NullarySideEffector = (() => {
@@ -13,4 +13,4 @@ const applyOpacity: NullarySideEffector = (() => {
 	context.globalAlpha = colorSettings.opacity
 }) as NullarySideEffector
 
-export default applyOpacity
+export { applyOpacity }

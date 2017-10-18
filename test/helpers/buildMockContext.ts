@@ -1,6 +1,6 @@
 import { NullarySideEffector } from '../../src/utilities/types'
-import MockContext from '../types/MockContext'
-import noop from './noop'
+import { MockContext } from '../types/MockContext'
+import { noop } from './noop'
 
 const buildMockContext: (_?: { contextCallsOrder?, toBlobSpy? }) => MockContext = params => {
 	const { contextCallsOrder = [], toBlobSpy = undefined } = params || {}
@@ -22,4 +22,4 @@ const buildMockContext: (_?: { contextCallsOrder?, toBlobSpy? }) => MockContext 
 	}
 }
 
-export default buildMockContext
+export { buildMockContext }

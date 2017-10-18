@@ -1,4 +1,4 @@
-import CanvasSize from './CanvasSize'
+import { CanvasSize } from './CanvasSize'
 
 export {
 	CanvasSize,

@@ -1,7 +1,7 @@
 import * as createCheckbox from '../../../../src/ui/createCheckbox'
-import createLabel from '../../../../src/ui/createLabel'
+import { createLabel } from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create label', () => {
 	let returnedLabel
@@ -16,7 +16,7 @@ describe('create label', () => {
 
 		spyOn(window.document, 'createTextNode').and.returnValue(mockName)
 
-		spyOn(createCheckbox, 'default').and.returnValue(mockCheckbox)
+		spyOn(createCheckbox, 'createCheckbox').and.returnValue(mockCheckbox)
 
 		returnedLabel = createLabel({ houndstoothEffect: mockHoundstoothEffect })
 	})
@@ -42,7 +42,7 @@ describe('create label', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
+		expect(createCheckbox.createCheckbox).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {

@@ -9,4 +9,4 @@ const resetState: (_: State) => void = state => {
 	})
 }
 
-export default resetState
+export { resetState }

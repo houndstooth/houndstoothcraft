@@ -1,5 +1,5 @@
 import { Address, Color, Coordinate, Units } from '../../../src'
-import sectionCenterIsColor from './sectionCenterIsColor'
+import { sectionCenterIsColor } from './sectionCenterIsColor'
 
 const standardTileIsColors: (_: { baseId: number, colors: Color[], tileOrigin: Coordinate, tileSize: Units }) =>
 	boolean = ({ baseId, colors, tileOrigin: areaOrigin, tileSize: areaSize }) => {
@@ -76,4 +76,4 @@ const standardTileIsColors: (_: { baseId: number, colors: Color[], tileOrigin: C
 	return expectations.every(sectionCenterIsColor)
 }
 
-export default standardTileIsColors
+export { standardTileIsColors }

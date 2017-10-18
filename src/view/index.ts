@@ -1,6 +1,6 @@
-import applyBackgroundColor from './applyBackgroundColor'
-import applyOpacity from './applyOpacity'
-import applyView from './applyView'
+import { applyBackgroundColor } from './applyBackgroundColor'
+import { applyOpacity } from './applyOpacity'
+import { applyView } from './applyView'
 
 export {
 	applyBackgroundColor,

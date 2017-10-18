@@ -9,4 +9,4 @@ type OblongCanvasSize = _OblongCanvasSizeBrand & Dimension[]
 
 type CanvasSize = SquareCanvasSize | OblongCanvasSize
 
-export default CanvasSize
+export { CanvasSize }

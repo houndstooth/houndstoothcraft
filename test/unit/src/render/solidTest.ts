@@ -1,6 +1,6 @@
 import * as draw from '../../../../src/render/draw'
 import * as getColor from '../../../../src/render/getColor'
-import solid from '../../../../src/render/solid'
+import { solid } from '../../../../src/render/solid'
 
 describe('solid', () => {
 	const shapeColorIndex = 8
@@ -10,21 +10,21 @@ describe('solid', () => {
 	const outline = []
 	let getColorSpy
 	beforeEach(() => {
-		spyOn(draw, 'default')
-		getColorSpy = spyOn(getColor, 'default').and.returnValue(shapeColor)
+		spyOn(draw, 'draw')
+		getColorSpy = spyOn(getColor, 'getColor').and.returnValue(shapeColor)
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {
 		solid({ context, outline, shapeColorIndex })
 
-		expect(getColor.default).toHaveBeenCalledWith({ index: shapeColorIndex })
+		expect(getColor.getColor).toHaveBeenCalledWith({ index: shapeColorIndex })
 	})
 
 	describe('when the color is not completely transparent', () => {
 		it('renders', () => {
 			solid({ context, outline, shapeColorIndex })
 
-			expect(draw.default).toHaveBeenCalledWith({ context, shapeColor, outline })
+			expect(draw.draw).toHaveBeenCalledWith({ context, shapeColor, outline })
 		})
 	})
 
@@ -34,7 +34,7 @@ describe('solid', () => {
 
 			solid({ context, outline, shapeColorIndex })
 
-			expect(draw.default).not.toHaveBeenCalled()
+			expect(draw.draw).not.toHaveBeenCalled()
 		})
 	})
 })

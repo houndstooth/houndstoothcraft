@@ -3,4 +3,4 @@ enum BaseStripeDiagonal {
 	PRINCIPAL = 'PRINCIPAL',
 }
 
-export default BaseStripeDiagonal
+export { BaseStripeDiagonal }

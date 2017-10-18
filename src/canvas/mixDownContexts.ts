@@ -1,4 +1,4 @@
-import state from '../state'
+import { state } from '../state'
 import { NullarySideEffector } from '../utilities/types'
 
 const mixDownContexts: NullarySideEffector = (() => {
@@ -9,4 +9,4 @@ const mixDownContexts: NullarySideEffector = (() => {
 	})
 }) as NullarySideEffector
 
-export default mixDownContexts
+export { mixDownContexts }

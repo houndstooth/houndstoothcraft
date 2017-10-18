@@ -1,7 +1,7 @@
 import { Outline } from '../space'
-import applyScroll from './applyScroll'
-import applyTilt from './applyTilt'
-import applyZoom from './applyZoom'
+import { applyScroll } from './applyScroll'
+import { applyTilt } from './applyTilt'
+import { applyZoom } from './applyZoom'
 
 const applyView: (outline: Outline) => Outline  = outline => {
 	let outlineWithViewApplied = outline
@@ -13,4 +13,4 @@ const applyView: (outline: Outline) => Outline  = outline => {
 	return outlineWithViewApplied
 }
 
-export default applyView
+export { applyView }

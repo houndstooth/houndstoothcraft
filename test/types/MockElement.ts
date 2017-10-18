@@ -13,4 +13,4 @@ interface MockElement {
 	},
 }
 
-export default MockElement
+export { MockElement }

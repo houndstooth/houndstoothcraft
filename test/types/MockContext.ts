@@ -16,4 +16,4 @@ interface MockContext {
 	save?,
 }
 
-export default MockContext
+export { MockContext }

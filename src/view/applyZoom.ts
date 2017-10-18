@@ -1,6 +1,6 @@
 import { HALF } from '../constants'
 import { Coordinate, Outline } from '../space'
-import state from '../state'
+import { state } from '../state'
 import { defaults } from '../store'
 
 const applyZoom: (outline: Outline) => Outline = outline => outline.map(adjustCoordinateForZoom)
@@ -39,4 +39,4 @@ const doAdjustment: (_: {
 	return coordinateAdjustedForZoom
 }
 
-export default applyZoom
+export { applyZoom }

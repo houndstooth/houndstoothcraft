@@ -1,10 +1,10 @@
 import { ERASE } from '../../../../src/constants'
 import * as buildPath from '../../../../src/render/buildPath'
-import fill from '../../../../src/render/fill'
+import { fill } from '../../../../src/render/fill'
 import * as fillPath from '../../../../src/render/fillPath'
 import * as parseColor from '../../../../src/render/parseColor'
-import Outline from '../../../../src/space/types/Outline'
-import buildMockContext from '../../../helpers/buildMockContext'
+import { Outline } from '../../../../src/space/types/Outline'
+import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('fill', () => {
 	const shapeColor = { a: 1 }
@@ -13,15 +13,15 @@ describe('fill', () => {
 	const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
 
 	beforeEach(() => {
-		spyOn(parseColor, 'default').and.returnValue(parsedColor)
-		spyOn(buildPath, 'default')
-		spyOn(fillPath, 'default')
+		spyOn(parseColor, 'parseColor').and.returnValue(parsedColor)
+		spyOn(buildPath, 'buildPath')
+		spyOn(fillPath, 'fillPath')
 
 		fill({ context, shapeColor, outline })
 	})
 
 	it('parses the shape color and sets the fill style to it', () => {
-		expect(parseColor.default).toHaveBeenCalledWith(shapeColor)
+		expect(parseColor.parseColor).toHaveBeenCalledWith(shapeColor)
 	})
 
 	it('sets the fill style to the parsed color', () => {
@@ -29,11 +29,11 @@ describe('fill', () => {
 	})
 
 	it('builds a path from it ', () => {
-		expect(buildPath.default).toHaveBeenCalledWith({ context, outline })
+		expect(buildPath.buildPath).toHaveBeenCalledWith({ context, outline })
 	})
 
 	it('fills this path', () => {
-		expect(fillPath.default).toHaveBeenCalledWith({ context })
+		expect(fillPath.fillPath).toHaveBeenCalledWith({ context })
 	})
 
 	it('defaults the global composite operation to source-over', () => {

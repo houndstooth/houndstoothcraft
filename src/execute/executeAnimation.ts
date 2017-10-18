@@ -1,6 +1,6 @@
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 import { defaults } from '../index'
-import state from '../state'
+import { state } from '../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { SettingsFunctionObject } from './types'
 
@@ -26,4 +26,4 @@ const executeAnimation: (_: {
 	animator({ animationFunction, frameRate, stopConditionFunction })
 }
 
-export default executeAnimation
+export { executeAnimation }

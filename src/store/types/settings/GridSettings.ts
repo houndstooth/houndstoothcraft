@@ -3,4 +3,4 @@ interface GridSettings {
 	includeNegativeQuadrants?: boolean,
 }
 
-export default GridSettings
+export { GridSettings }

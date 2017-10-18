@@ -1,9 +1,9 @@
-import combineHoundstoothEffects from '../../../../src/execute/combineHoundstoothEffects'
+import { combineHoundstoothEffects } from '../../../../src/execute/combineHoundstoothEffects'
 import * as composePatterns from '../../../../src/execute/composePatterns'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
-		const composePatternsSpy = spyOn(composePatterns, 'default')
+		const composePatternsSpy = spyOn(composePatterns, 'composePatterns')
 
 		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }

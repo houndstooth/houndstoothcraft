@@ -1,7 +1,7 @@
-import addEffectToggle from '../../../../src/ui/addEffectToggle'
+import { addEffectToggle } from '../../../../src/ui/addEffectToggle'
 import * as createLabel from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('add effect toggle', () => {
 	const mockLabel = {}
@@ -11,7 +11,7 @@ describe('add effect toggle', () => {
 	beforeAll(() => {
 		const effectTogglesContainer = buildMockElement({ mockChildren: mockEffectTogglesContainerChildren })
 		spyOn(window.document, 'querySelector').and.returnValue(effectTogglesContainer)
-		spyOn(createLabel, 'default').and.returnValue(mockLabel)
+		spyOn(createLabel, 'createLabel').and.returnValue(mockLabel)
 
 		addEffectToggle(mockHoundstoothEffect)
 	})
@@ -21,6 +21,6 @@ describe('add effect toggle', () => {
 	})
 
 	it('creates the label with the houndstooth effect', () => {
-		expect(createLabel.default).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
+		expect(createLabel.createLabel).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
 	})
 })

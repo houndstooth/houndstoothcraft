@@ -1,9 +1,9 @@
 import * as canvas from '../../../../src/canvas'
-import state from '../../../../src/state'
+import { state } from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
-import resetInterface from '../../../../src/ui/resetInterface'
+import { resetInterface } from '../../../../src/ui/resetInterface'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('reset interface', () => {
 	const warningsContainer = buildMockElement()

@@ -1,5 +1,5 @@
 import { Houndstooth } from '../store'
-import composePatterns from './composePatterns'
+import { composePatterns } from './composePatterns'
 
 const combineHoundstoothEffects: (_: {
 	houndstoothEffects: Houndstooth[],
@@ -29,4 +29,4 @@ const combineHoundstoothEffects: (_: {
 	return { basePattern, layersPattern, animationsPattern }
 }
 
-export default combineHoundstoothEffects
+export { combineHoundstoothEffects }

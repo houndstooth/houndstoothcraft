@@ -34,4 +34,4 @@ const lastPointsWhenStripeDoesNotStartInTopLeftCorner: Points = params => {
 	}
 }
 
-export default lastPoints
+export { lastPoints }

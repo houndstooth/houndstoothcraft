@@ -1,4 +1,4 @@
-import prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
+import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { console } from '../../../../src/utilities/windowWrapper'
 

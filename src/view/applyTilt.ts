@@ -1,6 +1,6 @@
 import { HALF } from '../constants'
 import { Coordinate, Outline, rotateCoordinateAboutPoint } from '../space'
-import state from '../state'
+import { state } from '../state'
 
 const applyTilt: (outline: Outline) => Outline = outline => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
@@ -20,4 +20,4 @@ const applyTilt: (outline: Outline) => Outline = outline => {
 	}))
 }
 
-export default applyTilt
+export { applyTilt }

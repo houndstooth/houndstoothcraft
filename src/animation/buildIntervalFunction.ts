@@ -1,5 +1,5 @@
-import state from '../state'
-import windowWrapper from '../utilities/windowWrapper'
+import { state } from '../state'
+import { windowWrapper } from '../utilities/windowWrapper'
 
 const buildIntervalFunction: (_: {
 	animationFunction(): void, stopConditionFunction(): boolean,
@@ -10,4 +10,4 @@ const buildIntervalFunction: (_: {
 	}
 }
 
-export default buildIntervalFunction
+export { buildIntervalFunction }

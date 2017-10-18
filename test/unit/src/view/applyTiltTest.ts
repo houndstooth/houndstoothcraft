@@ -1,8 +1,8 @@
-import CanvasSize from '../../../../src/canvas/types/CanvasSize'
-import Outline from '../../../../src/space/types/Outline'
-import state from '../../../../src/state'
-import applyTilt from '../../../../src/view/applyTilt'
-import coordinatesMatch from '../../helpers/coordinatesMatch'
+import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
+import { Outline } from '../../../../src/space/types/Outline'
+import { state } from '../../../../src/state'
+import { applyTilt } from '../../../../src/view/applyTilt'
+import { coordinatesMatch } from '../../helpers/coordinatesMatch'
 
 describe('apply tilt', () => {
 	const canvasSize = 200 as CanvasSize

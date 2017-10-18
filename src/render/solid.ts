@@ -1,5 +1,5 @@
-import draw from './draw'
-import getColor from './getColor'
+import { draw } from './draw'
+import { getColor } from './getColor'
 import { RenderFunction } from './types'
 
 const solid: RenderFunction = ({ context, outline, shapeColorIndex }) => {
@@ -11,4 +11,4 @@ const solid: RenderFunction = ({ context, outline, shapeColorIndex }) => {
 	draw({ context, shapeColor, outline })
 }
 
-export default solid
+export { solid }

@@ -1,10 +1,10 @@
-import CanvasSize from '../../../../src/canvas/types/CanvasSize'
+import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { CYAN, ERASE, TRANSPARENT, YELLOW } from '../../../../src/constants'
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
-import pixelIsColorWithMarker from '../../helpers/pixelIsColorWithMarker'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
+import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
+import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
+import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', () => {

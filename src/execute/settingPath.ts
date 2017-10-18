@@ -5,4 +5,4 @@ const settingPath: (_: {
 }) => string = ({ settingName, settingsPath }) =>
 	`${settingsPath.join('.')}.${settingName}`
 
-export default settingPath
+export { settingPath }

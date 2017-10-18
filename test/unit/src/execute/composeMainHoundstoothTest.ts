@@ -1,7 +1,7 @@
 import * as combineHoundstoothEffects from '../../../../src/execute/combineHoundstoothEffects'
-import composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
+import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
 import * as composePatterns from '../../../../src/execute/composePatterns'
-import state from '../../../../src/state'
+import { state } from '../../../../src/state'
 import { DEFAULT_HOUNDSTOOTH } from '../../../../src/store/defaults'
 import { console } from '../../../../src/utilities/windowWrapper'
 
@@ -24,10 +24,10 @@ describe('composeMainHoundstooth', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
-		const composePatternsSpy = spyOn(composePatterns, 'default')
+		const composePatternsSpy = spyOn(composePatterns, 'composePatterns')
 
 		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		spyOn(combineHoundstoothEffects, 'default').and.returnValue(combinedHoundstoothEffects)
+		spyOn(combineHoundstoothEffects, 'combineHoundstoothEffects').and.returnValue(combinedHoundstoothEffects)
 
 		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		composeMainHoundstooth({ houndstoothOverrides })

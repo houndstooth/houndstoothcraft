@@ -1,6 +1,6 @@
 import { StripePosition } from '../../components'
-import OriginAndSize from './OriginAndSize'
-import Outline from './Outline'
+import { OriginAndSize } from './OriginAndSize'
+import { Outline } from './Outline'
 
 type Points = (_: {
 	originAndSize: OriginAndSize,
@@ -11,4 +11,4 @@ type Points = (_: {
 	stripeStartsInTopLeftHalf?: boolean,
 }) => void
 
-export default Points
+export { Points }

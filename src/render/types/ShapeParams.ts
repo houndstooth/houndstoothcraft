@@ -10,4 +10,4 @@ interface ShapeParams {
 	tileSize: Units,
 }
 
-export default ShapeParams
+export { ShapeParams }

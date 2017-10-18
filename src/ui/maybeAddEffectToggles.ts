@@ -1,6 +1,6 @@
 import { Houndstooth } from '../store'
 import { document } from '../utilities/windowWrapper'
-import addEffectToggle from './addEffectToggle'
+import { addEffectToggle } from './addEffectToggle'
 
 const maybeAddEffectToggles: (effects: Houndstooth[]) => void = effects => {
 	if (!document.querySelector('.effect-toggles-container')) {
@@ -8,4 +8,4 @@ const maybeAddEffectToggles: (effects: Houndstooth[]) => void = effects => {
 	}
 }
 
-export default maybeAddEffectToggles
+export { maybeAddEffectToggles }

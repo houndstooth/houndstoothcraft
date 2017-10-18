@@ -1,6 +1,6 @@
-import draw from '../../../../src/render/draw'
+import { draw } from '../../../../src/render/draw'
 import * as fill from '../../../../src/render/fill'
-import Outline from '../../../../src/space/types/Outline'
+import { Outline } from '../../../../src/space/types/Outline'
 import * as view from '../../../../src/view'
 
 describe('draw', () => {
@@ -39,7 +39,7 @@ describe('draw', () => {
 	describe('when there are at least three coordinates in the outline', () => {
 		let outline
 		beforeEach(() => {
-			spyOn(fill, 'default')
+			spyOn(fill, 'fill')
 			outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
 			draw({ context, shapeColor, outline })
@@ -50,7 +50,7 @@ describe('draw', () => {
 		})
 
 		it('fills the adjusted outline', () => {
-			expect(fill.default).toHaveBeenCalledWith({ context, shapeColor, outline: adjustedOutline })
+			expect(fill.fill).toHaveBeenCalledWith({ context, shapeColor, outline: adjustedOutline })
 		})
 	})
 })

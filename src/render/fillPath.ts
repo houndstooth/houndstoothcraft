@@ -5,4 +5,4 @@ const fillPath: (_: { context: Context }) => void = ({ context }) => {
 	context.fill()
 }
 
-export default fillPath
+export { fillPath }

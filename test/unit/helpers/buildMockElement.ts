@@ -1,4 +1,4 @@
-import MockElement from '../../types/MockElement'
+import { MockElement } from '../../types/MockElement'
 
 const buildMockElement: (_?: {
 		clickSpy?,
@@ -33,4 +33,4 @@ const buildMockElement: (_?: {
 	}
 }
 
-export default buildMockElement
+export { buildMockElement }

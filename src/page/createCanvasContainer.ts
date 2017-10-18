@@ -1,8 +1,8 @@
 import { getCanvasDimensions } from '../canvas'
 import { document } from '../utilities/windowWrapper'
-import scaleElement from './scaleElement'
+import { scaleElement } from './scaleElement'
 import { PageElement } from './types'
-import Dimension from './types/Dimension'
+import { Dimension } from './types/Dimension'
 
 const createCanvasContainer: (_?: { canvasDimensions?: Dimension[] }) => PageElement = params => {
 	const { canvasDimensions = undefined } = params || {}
@@ -18,4 +18,4 @@ const createCanvasContainer: (_?: { canvasDimensions?: Dimension[] }) => PageEle
 	return canvasContainer
 }
 
-export default createCanvasContainer
+export { createCanvasContainer }

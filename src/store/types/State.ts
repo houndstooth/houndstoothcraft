@@ -1,5 +1,5 @@
 import { Context } from '../../page'
-import Houndstooth from './Houndstooth'
+import { Houndstooth } from './Houndstooth'
 
 interface State {
 	animating: boolean,
@@ -16,4 +16,4 @@ interface State {
 	selectedHoundstoothEffects: Houndstooth[],
 }
 
-export default State
+export { State }

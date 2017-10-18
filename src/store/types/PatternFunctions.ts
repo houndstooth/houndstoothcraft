@@ -28,4 +28,4 @@ interface PatternFunctions {
 	},
 }
 
-export default PatternFunctions
+export { PatternFunctions }

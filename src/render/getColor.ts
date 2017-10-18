@@ -1,4 +1,4 @@
-import state from '../state'
+import { state } from '../state'
 import { wrappedIndex } from '../utilities/codeUtilities'
 import { Color } from './types'
 
@@ -10,4 +10,4 @@ const getColor: (_: { index: number }) => Color = ({ index }) => {
 	return wrappedIndex({ array, index })
 }
 
-export default getColor
+export { getColor }

@@ -3,4 +3,4 @@ enum AssignmentMode {
 	WEAVE = 'WEAVE',
 }
 
-export default AssignmentMode
+export { AssignmentMode }

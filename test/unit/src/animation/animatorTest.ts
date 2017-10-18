@@ -1,8 +1,8 @@
 import animator from '../../../../src/animation/animator'
 import * as buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
-import state from '../../../../src/state'
-import windowWrapper from '../../../../src/utilities/windowWrapper'
-import noop from '../../../helpers/noop'
+import { state } from '../../../../src/state'
+import { windowWrapper } from '../../../../src/utilities/windowWrapper'
+import { noop } from '../../../helpers/noop'
 
 describe('animator', () => {
 	let intervalFunction
@@ -14,7 +14,7 @@ describe('animator', () => {
 		interval = noop
 		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
-		spyOn(buildIntervalFunction, 'default').and.returnValue(intervalFunction)
+		spyOn(buildIntervalFunction, 'buildIntervalFunction').and.returnValue(intervalFunction)
 
 		animationFunction = noop
 		frameRate = 3
@@ -24,7 +24,7 @@ describe('animator', () => {
 	})
 
 	it('augments the function to be scheduled with a stop condition so it can cancel itself', () => {
-		expect(buildIntervalFunction.default).toHaveBeenCalledWith(jasmine.objectContaining({
+		expect(buildIntervalFunction.buildIntervalFunction).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
 			stopConditionFunction,
 		}))

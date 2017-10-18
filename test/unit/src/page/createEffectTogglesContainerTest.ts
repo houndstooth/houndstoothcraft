@@ -1,7 +1,7 @@
-import createEffectTogglesContainer from '../../../../src/page/createEffectTogglesContainer'
+import { createEffectTogglesContainer } from '../../../../src/page/createEffectTogglesContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create effect toggles container', () => {
 	let returnedEffectTogglesContainer
@@ -16,7 +16,7 @@ describe('create effect toggles container', () => {
 		mockCanvasContainer = buildMockElement()
 		spyOn(window.document, 'querySelector').and.returnValue(mockCanvasContainer)
 
-		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default')
+		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'insertElementRightAfter')
 
 		returnedEffectTogglesContainer = createEffectTogglesContainer()
 	})

@@ -1,7 +1,7 @@
-import exportFrame from '../../../../src/animation/exportFrame'
+import { exportFrame } from '../../../../src/animation/exportFrame'
 import * as saveFrame from '../../../../src/animation/saveFrame'
-import state from '../../../../src/state'
-import buildMockContext from '../../../helpers/buildMockContext'
+import { state } from '../../../../src/state'
+import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('export frame', () => {
 	it('calls toBlob on the mixed down canvas', () => {
@@ -10,6 +10,6 @@ describe('export frame', () => {
 
 		exportFrame()
 
-		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame.default)
+		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame.saveFrame)
 	})
 })

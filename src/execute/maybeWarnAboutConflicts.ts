@@ -3,7 +3,7 @@ import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
 import { PropertyPath } from '../utilities/types'
 import { console } from '../utilities/windowWrapper'
-import settingPath from './settingPath'
+import { settingPath } from './settingPath'
 
 const maybeWarnAboutConflicts: (_: {
 	existingSetting: Setting,
@@ -66,4 +66,4 @@ const formatSettingForWarning: (setting: Setting) => string = setting => {
 	return JSON.stringify(setting)
 }
 
-export default maybeWarnAboutConflicts
+export { maybeWarnAboutConflicts }

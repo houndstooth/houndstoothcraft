@@ -1,4 +1,4 @@
-import Canvas from '../../../src/page/types/Canvas'
+import { Canvas } from '../../../src/page/types/Canvas'
 
 const createTestMarkersCanvas: () => Canvas = () => {
 	const testCanvasDisplayArea = document.createElement('div')
@@ -13,4 +13,4 @@ const createTestMarkersCanvas: () => Canvas = () => {
 	return testMarkersCanvas
 }
 
-export default createTestMarkersCanvas
+export { createTestMarkersCanvas }

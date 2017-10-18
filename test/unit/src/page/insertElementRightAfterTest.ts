@@ -1,5 +1,5 @@
-import insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
-import buildMockElement from '../../helpers/buildMockElement'
+import { insertElementRightAfter } from '../../../../src/page/insertElementRightAfter'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('insert element right after', () => {
 	it('inserts an element right after another one', () => {

@@ -1,6 +1,6 @@
-import saveBlob from '../../../../src/animation/saveBlob'
+import { saveBlob } from '../../../../src/animation/saveBlob'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('save blob', () => {
 	it('creates a download link and clicks it', () => {

@@ -1,14 +1,14 @@
 import * as createContext from '../../../../src/page/createContext'
-import createContexts from '../../../../src/page/createContexts'
-import state from '../../../../src/state'
+import { createContexts } from '../../../../src/page/createContexts'
+import { state } from '../../../../src/state'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create contexts', () => {
 	let canvasContainer
 	let createContextSpy
 	beforeEach(() => {
-		createContextSpy = spyOn(createContext, 'default')
+		createContextSpy = spyOn(createContext, 'createContext')
 
 		canvasContainer = buildMockElement()
 		canvasContainer.innerHTML = 'some old canvases'

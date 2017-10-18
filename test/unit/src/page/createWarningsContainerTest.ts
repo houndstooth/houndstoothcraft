@@ -1,7 +1,7 @@
-import createWarningsContainer from '../../../../src/page/createWarningsContainer'
+import { createWarningsContainer } from '../../../../src/page/createWarningsContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create warnings container', () => {
 	let returnedWarningsContainer
@@ -16,7 +16,7 @@ describe('create warnings container', () => {
 		mockEffectTogglesContainer = buildMockElement()
 		spyOn(window.document, 'querySelector').and.returnValue(mockEffectTogglesContainer)
 
-		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'default')
+		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'insertElementRightAfter')
 
 		returnedWarningsContainer = createWarningsContainer()
 	})

@@ -1,6 +1,6 @@
 import { HALF } from '../constants'
 import { Coordinate, Outline } from '../space'
-import state from '../state'
+import { state } from '../state'
 
 const applyScroll: (outline: Outline) => Outline = outline => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
@@ -30,4 +30,4 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Co
 	] as Coordinate
 }
 
-export default applyScroll
+export { applyScroll }

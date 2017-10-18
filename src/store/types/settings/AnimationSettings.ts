@@ -5,4 +5,4 @@ interface AnimationSettings {
 	startAnimationFrame?: number,
 }
 
-export default AnimationSettings
+export { AnimationSettings }

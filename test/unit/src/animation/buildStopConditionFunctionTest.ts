@@ -1,5 +1,5 @@
-import buildStopConditionFunction from '../../../../src/animation/buildStopConditionFunction'
-import state from '../../../../src/state'
+import { buildStopConditionFunction } from '../../../../src/animation/buildStopConditionFunction'
+import { state } from '../../../../src/state'
 
 describe('build stop condition function', () => {
 	// tslint:disable-next-line:max-line-length

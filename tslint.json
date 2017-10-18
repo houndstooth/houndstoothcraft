@@ -46,7 +46,6 @@
     "no-unbound-method": false,
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
-    "no-any": false,
-    "no-default-export": false
+    "no-any": false
   }
 }

@@ -1,5 +1,5 @@
 import { PERIMETER_SCALAR } from '../../constants'
-import Points from '../types/Points'
+import { Points } from '../types/Points'
 import * as stripePoints from './stripePoints'
 
 const middlePoints: Points = params => {
@@ -39,4 +39,4 @@ const middlePointsWhenStripeDoesNotEndInBottomRightHalf: Points = params => {
 	}
 }
 
-export default middlePoints
+export { middlePoints }

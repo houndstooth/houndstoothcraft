@@ -1,5 +1,5 @@
 import { grid } from '../components'
-import state from '../state'
+import { state } from '../state'
 import { NullarySideEffector } from '../utilities/types'
 import { console } from '../utilities/windowWrapper'
 
@@ -20,4 +20,4 @@ const gridAndMaybeLogging: NullarySideEffector = (() => {
 	}
 }) as NullarySideEffector
 
-export default gridAndMaybeLogging
+export { gridAndMaybeLogging }

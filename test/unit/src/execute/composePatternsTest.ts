@@ -1,5 +1,5 @@
-import AssignmentMode from '../../../../src/components/types/AssignmentMode'
-import composePatterns from '../../../../src/execute/composePatterns'
+import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
+import { composePatterns } from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
 
 describe('compose patterns', () => {
@@ -65,7 +65,7 @@ describe('compose patterns', () => {
 	})
 
 	it('maybe warns about conflicts', () => {
-		spyOn(maybeWarnAboutConflicts, 'default')
+		spyOn(maybeWarnAboutConflicts, 'maybeWarnAboutConflicts')
 
 		const patternToBeMergedOnto = {
 			colorSettings: {
@@ -80,6 +80,6 @@ describe('compose patterns', () => {
 
 		composePatterns({ patternToBeMergedOnto, patternToMerge })
 
-		expect(maybeWarnAboutConflicts.default).toHaveBeenCalled()
+		expect(maybeWarnAboutConflicts.maybeWarnAboutConflicts).toHaveBeenCalled()
 	})
 })

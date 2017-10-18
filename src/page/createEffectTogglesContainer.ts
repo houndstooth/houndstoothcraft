@@ -1,6 +1,6 @@
 import { document } from '../utilities/windowWrapper'
-import createCanvasContainer from './createCanvasContainer'
-import insertElementRightAfter from './insertElementRightAfter'
+import { createCanvasContainer } from './createCanvasContainer'
+import { insertElementRightAfter } from './insertElementRightAfter'
 import { PageElement } from './types'
 
 const createEffectTogglesContainer: () => PageElement = () => {
@@ -14,4 +14,4 @@ const createEffectTogglesContainer: () => PageElement = () => {
 	return effectTogglesContainer
 }
 
-export default createEffectTogglesContainer
+export { createEffectTogglesContainer }

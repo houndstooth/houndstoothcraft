@@ -1,6 +1,6 @@
 import { getCanvasDimensions, getCurrentContext } from '../canvas'
 import { parseColor } from '../render'
-import state from '../state'
+import { state } from '../state'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyBackgroundColor: NullarySideEffector = (() => {
@@ -18,4 +18,4 @@ const applyBackgroundColor: NullarySideEffector = (() => {
 	context.fillRect(0, 0, canvasDimensions[ 0 ], canvasDimensions[ 1 ])
 }) as NullarySideEffector
 
-export default applyBackgroundColor
+export { applyBackgroundColor }

@@ -1,4 +1,4 @@
-import Points from '../types/Points'
+import { Points } from '../types/Points'
 import { pointAlongRightEdge, pointAlongTopEdge } from './stripePoints'
 
 const firstPoint: Points = ({ outline, stripeStartsInTopLeftHalf, originAndSize, stripeStart }) => {
@@ -10,4 +10,4 @@ const firstPoint: Points = ({ outline, stripeStartsInTopLeftHalf, originAndSize,
 	}
 }
 
-export default firstPoint
+export { firstPoint }

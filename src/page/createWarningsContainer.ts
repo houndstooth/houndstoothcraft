@@ -1,6 +1,6 @@
 import { document } from '../utilities/windowWrapper'
-import createEffectTogglesContainer from './createEffectTogglesContainer'
-import insertElementRightAfter from './insertElementRightAfter'
+import { createEffectTogglesContainer } from './createEffectTogglesContainer'
+import { insertElementRightAfter } from './insertElementRightAfter'
 import { PageElement } from './types'
 
 const createWarningsContainer: () => PageElement = () => {
@@ -14,4 +14,4 @@ const createWarningsContainer: () => PageElement = () => {
 	return warningsContainer
 }
 
-export default createWarningsContainer
+export { createWarningsContainer }

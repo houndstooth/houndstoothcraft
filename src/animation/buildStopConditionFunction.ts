@@ -1,6 +1,6 @@
-import state from '../state'
+import { state } from '../state'
 
 const buildStopConditionFunction: (_: { endAnimationFrame: number }) => () => boolean = ({ endAnimationFrame }) => () =>
 	state.currentAnimationFrame > endAnimationFrame
 
-export default buildStopConditionFunction
+export { buildStopConditionFunction }

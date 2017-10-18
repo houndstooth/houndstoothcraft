@@ -1,6 +1,6 @@
 import { Address, state, Supertile } from '../../../../src'
-import getTileColorIndices from '../../../../src/components/getTileColorIndices'
-import AssignmentMode from '../../../../src/components/types/AssignmentMode'
+import { getTileColorIndices } from '../../../../src/components/getTileColorIndices'
+import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 
 describe('get tile color indices', () => {

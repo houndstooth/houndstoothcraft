@@ -1,8 +1,8 @@
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
-import state from '../state'
+import { state } from '../state'
 import { Houndstooth } from '../store'
-import resetInterface from './resetInterface'
+import { resetInterface } from './resetInterface'
 
 const buildEffectToggleClickHandler: (_: {
 	checkbox: InputElement, houndstoothEffect: Houndstooth,
@@ -24,4 +24,4 @@ const removeEffect: (houndstoothEffect: Houndstooth) => void = houndstoothEffect
 		selectedHoundstoothEffect.name !== houndstoothEffect.name)
 }
 
-export default buildEffectToggleClickHandler
+export { buildEffectToggleClickHandler }

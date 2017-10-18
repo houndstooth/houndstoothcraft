@@ -1,6 +1,6 @@
-import stripeOutline from '../../../../src/space/stripeOutline'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import Outline from '../../../../src/space/types/Outline'
+import { stripeOutline } from '../../../../src/space/stripeOutline'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Outline } from '../../../../src/space/types/Outline'
 
 describe('stripe outline', () => {
 	const tileOrigin = [ 0 as any, 0 as any ] as Coordinate

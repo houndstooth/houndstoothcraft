@@ -21,4 +21,4 @@ type RenderFunction = (_: {
 	tileSize?: Units,
 }) => void
 
-export default RenderFunction
+export { RenderFunction }

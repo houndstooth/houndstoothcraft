@@ -1,8 +1,8 @@
 import { getCurrentContext } from '../canvas'
-import state from '../state'
+import { state } from '../state'
 import { wrappedIndex } from '../utilities/codeUtilities'
-import solid from './solid'
-import texture from './texture'
+import { solid } from './solid'
+import { texture } from './texture'
 import { ShapeParams } from './types'
 
 const shape: (_: ShapeParams) => void = params => {
@@ -23,4 +23,4 @@ const shape: (_: ShapeParams) => void = params => {
 	renderFunction({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })
 }
 
-export default shape
+export { shape }

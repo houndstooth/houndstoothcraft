@@ -1,6 +1,6 @@
-import deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
+import { deleteElementIfExists } from '../../../../src/page/deleteElementIfExists'
 import * as window from '../../../../src/utilities/windowWrapper'
-import buildMockElement from '../../helpers/buildMockElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('delete element if exists', () => {
 	describe('when element exists', () => {

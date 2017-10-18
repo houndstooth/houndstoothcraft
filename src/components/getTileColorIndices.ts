@@ -1,5 +1,5 @@
 import { X_INDEX, Y_INDEX } from '../constants'
-import state from '../state'
+import { state } from '../state'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import { Address, Assignment, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
@@ -72,9 +72,9 @@ const getBySupertile: (_: {
 	const supertileColumn = wrappedIndex({
 		array: supertile,
 		index: gridAddress[ 0 ] + addressOffset[ 0 ],
-	})
+	}) as any
 
-	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] }) as TileColorIndices
+	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 }
 
 const SWITCHEROO_SIZE = 4
@@ -91,4 +91,4 @@ const applySwitcheroo: (_: {
 	return tileColorIndices
 }
 
-export default getTileColorIndices
+export { getTileColorIndices }

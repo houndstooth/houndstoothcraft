@@ -6,4 +6,4 @@ interface TileSettings {
 	getTileOriginAndSize?(p?: any): TileOriginAndSize | undefined,
 }
 
-export default TileSettings
+export { TileSettings }

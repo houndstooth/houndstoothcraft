@@ -1,12 +1,12 @@
 import { PERIMETER_SCALAR } from '../constants'
 import { shape, ShapeParams } from '../render'
 import { Coordinate, squareOutline, stripeOutline } from '../space'
-import state from '../state'
+import { state } from '../state'
 import { defaultToTrue } from '../utilities/codeUtilities'
-import getStripePositionsForTile from './getStripePositionsForTile'
-import getTileColorIndices from './getTileColorIndices'
-import getTileOriginAndSize from './getTileOriginAndSize'
-import isTileUniform from './isTileUniform'
+import { getStripePositionsForTile } from './getStripePositionsForTile'
+import { getTileColorIndices } from './getTileColorIndices'
+import { getTileOriginAndSize } from './getTileOriginAndSize'
+import { isTileUniform } from './isTileUniform'
 import { Address, StripePosition, TileColorIndices, Units } from './types'
 
 interface TileParams {
@@ -89,4 +89,4 @@ const getStripeArgs: (_: {
 		stripeIndex,
 	})
 
-export default tile
+export { tile }

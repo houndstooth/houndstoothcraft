@@ -1,8 +1,8 @@
-import Address from './Address'
-import AssignmentMode from './AssignmentMode'
-import Supertile from './Supertile'
-import TileColorIndices from './TileColorIndices'
-import Weave from './Weave'
+import { Address } from './Address'
+import { AssignmentMode } from './AssignmentMode'
+import { Supertile } from './Supertile'
+import { TileColorIndices } from './TileColorIndices'
+import { Weave } from './Weave'
 
 interface Assignment {
 	assignmentMode?: AssignmentMode,
@@ -14,4 +14,4 @@ interface Assignment {
 	weave?: Weave,
 }
 
-export default Assignment
+export { Assignment }

@@ -5,4 +5,4 @@ const clipPath: (_: { context: Context }) => void = ({ context }) => {
 	context.clip()
 }
 
-export default clipPath
+export { clipPath }

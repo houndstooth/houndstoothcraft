@@ -11,4 +11,4 @@ interface BasePattern {
 	viewSettings?: settings.ViewSettings,
 }
 
-export default BasePattern
+export { BasePattern }

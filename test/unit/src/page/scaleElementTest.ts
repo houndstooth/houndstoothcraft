@@ -1,5 +1,5 @@
-import scaleElement from '../../../../src/page/scaleElement'
-import buildMockElement from '../../helpers/buildMockElement'
+import { scaleElement } from '../../../../src/page/scaleElement'
+import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('set element dimensions', () => {
 	it('sets the css styles width and height of the element, in pixels', () => {

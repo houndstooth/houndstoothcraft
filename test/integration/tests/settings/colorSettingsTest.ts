@@ -1,15 +1,15 @@
-import CanvasSize from '../../../../src/canvas/types/CanvasSize'
-import Supertile from '../../../../src/components/types/Supertile'
+import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
+import { Supertile } from '../../../../src/components/types/Supertile'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { AssignmentMode } from '../../../../src/index'
-import Coordinate from '../../../../src/space/types/Coordinate'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
-import getFromBasePatternOrDefault from '../../../helpers/getFromBasePatternOrDefault'
+import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
-import pixelIsColorWithMarker from '../../helpers/pixelIsColorWithMarker'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
+import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
+import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
+import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.colorSettings', () => {
 	const tileSize = getFromBasePatternOrDefault(TILE_SIZE)

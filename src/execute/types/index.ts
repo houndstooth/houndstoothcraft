@@ -1,4 +1,4 @@
-import SettingsFunctionObject from './SettingsFunctionObject'
+import { SettingsFunctionObject } from './SettingsFunctionObject'
 
 export {
 	SettingsFunctionObject,

@@ -1,4 +1,4 @@
-import maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
+import { maybeWarnAboutConflicts } from '../../../../src/execute/maybeWarnAboutConflicts'
 import * as ui from '../../../../src/ui'
 import { console } from '../../../../src/utilities/windowWrapper'
 

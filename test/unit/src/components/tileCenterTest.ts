@@ -1,5 +1,5 @@
-import tileCenter from '../../../../src/components/tileCenter'
-import Coordinate from '../../../../src/space/types/Coordinate'
+import { tileCenter } from '../../../../src/components/tileCenter'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
 
 describe('tile center', () => {
 	it('finds the center of the tile', () => {

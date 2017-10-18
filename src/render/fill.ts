@@ -1,8 +1,8 @@
 import { Context } from '../page'
 import { Outline } from '../space'
-import buildPath from './buildPath'
-import fillPath from './fillPath'
-import parseColor from './parseColor'
+import { buildPath } from './buildPath'
+import { fillPath } from './fillPath'
+import { parseColor } from './parseColor'
 import { Color } from './types'
 
 const fill: (_: {
@@ -17,4 +17,4 @@ const fill: (_: {
 	fillPath({ context })
 }
 
-export default fill
+export { fill }

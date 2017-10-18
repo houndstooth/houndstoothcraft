@@ -1,5 +1,5 @@
-import mixDownContexts from '../../../../src/canvas/mixDownContexts'
-import state from '../../../../src/state'
+import { mixDownContexts } from '../../../../src/canvas/mixDownContexts'
+import { state } from '../../../../src/state'
 
 describe('mix down contexts', () => {
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {

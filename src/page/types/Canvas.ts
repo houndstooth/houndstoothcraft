@@ -1,5 +1,5 @@
-import MockCanvas from '../../../test/types/MockCanvas'
+import { MockCanvas } from '../../../test/types/MockCanvas'
 
 type Canvas = HTMLCanvasElement | MockCanvas
 
-export default Canvas
+export { Canvas }

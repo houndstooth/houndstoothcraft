@@ -1,8 +1,8 @@
-import state from '../state'
+import { state } from '../state'
 import { iterator } from '../utilities/codeUtilities'
 import { NullarySideEffector } from '../utilities/types'
 import { applyBackgroundColor, applyOpacity } from '../view'
-import tile from './tile'
+import { tile } from './tile'
 import { Address } from './types'
 
 const NEGATIVE_AND_POSITIVE = 2
@@ -31,4 +31,4 @@ const grid: NullarySideEffector = (() => {
 	}
 }) as NullarySideEffector
 
-export default grid
+export { grid }

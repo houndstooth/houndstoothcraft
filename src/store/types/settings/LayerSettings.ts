@@ -3,4 +3,4 @@ interface LayerSettings {
 	startLayer?: number,
 }
 
-export default LayerSettings
+export { LayerSettings }

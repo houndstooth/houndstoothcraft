@@ -1,5 +1,5 @@
-import maybeAddEffectToggles from './maybeAddEffectToggles'
-import warn from './warn'
+import { maybeAddEffectToggles } from './maybeAddEffectToggles'
+import { warn } from './warn'
 
 export {
 	maybeAddEffectToggles,

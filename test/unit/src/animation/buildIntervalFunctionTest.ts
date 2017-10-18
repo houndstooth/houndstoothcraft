@@ -1,6 +1,6 @@
-import buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
-import state from '../../../../src/state'
-import windowWrapper from '../../../../src/utilities/windowWrapper'
+import { buildIntervalFunction } from '../../../../src/animation/buildIntervalFunction'
+import { state } from '../../../../src/state'
+import { windowWrapper } from '../../../../src/utilities/windowWrapper'
 
 describe('build animation function', () => {
 	let intervalFunction

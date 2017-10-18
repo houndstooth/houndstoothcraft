@@ -1,7 +1,7 @@
-import getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
-import Address from '../../../../src/components/types/Address'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import state from '../../../../src/state'
+import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
+import { Address } from '../../../../src/components/types/Address'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { state } from '../../../../src/state'
 
 describe('get tile origin and size', () => {
 	const gridAddressForSubject = [ 7, 11 ] as Address

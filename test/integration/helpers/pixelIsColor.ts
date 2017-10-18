@@ -1,8 +1,8 @@
-import Canvas from '../../../src/page/types/Canvas'
+import { Canvas } from '../../../src/page/types/Canvas'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 import { console } from '../../../src/utilities/windowWrapper'
-import isCloseTo from '../../helpers/isCloseTo'
+import { isCloseTo } from '../../helpers/isCloseTo'
 
 // tslint:disable-next-line:max-line-length
 const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean = (coordinateUnderTest, expectedColor) => {
@@ -67,4 +67,4 @@ const checkColorProperties: (_: {
 	return true
 }
 
-export default pixelIsColor
+export { pixelIsColor }

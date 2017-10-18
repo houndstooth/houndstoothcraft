@@ -1,10 +1,10 @@
 import * as addEffectToggle from '../../../../src/ui/addEffectToggle'
-import maybeAddEffectToggles from '../../../../src/ui/maybeAddEffectToggles'
+import { maybeAddEffectToggles } from '../../../../src/ui/maybeAddEffectToggles'
 import * as window from '../../../../src/utilities/windowWrapper'
 
 describe('add effect toggles', () => {
 	let addEffectToggleSpy
-	beforeEach(() => addEffectToggleSpy = spyOn(addEffectToggle, 'default'))
+	beforeEach(() => addEffectToggleSpy = spyOn(addEffectToggle, 'addEffectToggle'))
 	it('adds an effect toggle for each effect', () => {
 		maybeAddEffectToggles([ { name: 'effectOne' }, { name: 'effectTwo' } ])
 

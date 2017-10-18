@@ -13,4 +13,4 @@ interface StripeSettings {
 	},
 }
 
-export default StripeSettings
+export { StripeSettings }

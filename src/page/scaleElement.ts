@@ -7,4 +7,4 @@ const scaleElement: (_: { dimensions: Dimension[], element: PageElement }) => vo
 
 const inPx = (pixelCount: Dimension): string => `${pixelCount}px`
 
-export default scaleElement
+export { scaleElement }

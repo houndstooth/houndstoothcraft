@@ -25,4 +25,4 @@ const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 	]
 }
 
-export default squareOutline
+export { squareOutline }

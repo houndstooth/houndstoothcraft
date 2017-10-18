@@ -10,4 +10,4 @@ const warn: (warningMessage: string) => void = warningMessage => {
 	warningsContainer.appendChild(warning)
 }
 
-export default warn
+export { warn }

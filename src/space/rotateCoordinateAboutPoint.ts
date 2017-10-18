@@ -18,4 +18,4 @@ const rotateCoordinateAboutPoint: (_: {
 	] as Coordinate
 }
 
-export default rotateCoordinateAboutPoint
+export { rotateCoordinateAboutPoint }

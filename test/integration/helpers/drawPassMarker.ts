@@ -1,6 +1,6 @@
-import Canvas from '../../../src/page/types/Canvas'
+import { Canvas } from '../../../src/page/types/Canvas'
 import { Coordinate } from '../../../src/space'
-import createTestMarkersCanvas from './createTestMarkersCanvas'
+import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
 const drawPassMarker: (_: {
 	coordinateUnderTest: Coordinate, id: number, passed: boolean,
@@ -28,4 +28,4 @@ const drawPassMarker: (_: {
 	}
 }
 
-export default drawPassMarker
+export { drawPassMarker }

@@ -7,4 +7,4 @@ const buildPath: (_: { context: Context, outline: Outline }) => void = ({ contex
 	outline.slice(1).forEach(coordinate => context.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
 }
 
-export default buildPath
+export { buildPath }

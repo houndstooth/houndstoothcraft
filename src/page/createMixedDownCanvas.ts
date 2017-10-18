@@ -1,6 +1,6 @@
 import { getCanvasDimensions } from '../canvas'
 import { document } from '../utilities/windowWrapper'
-import deleteElementIfExists from './deleteElementIfExists'
+import { deleteElementIfExists } from './deleteElementIfExists'
 import { Context } from './types'
 
 const createMixedDownCanvas: () => Context = () => {
@@ -19,4 +19,4 @@ const createMixedDownCanvas: () => Context = () => {
 	return mixedDownCanvas.getContext('2d')
 }
 
-export default createMixedDownCanvas
+export { createMixedDownCanvas }

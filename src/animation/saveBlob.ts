@@ -14,4 +14,4 @@ const saveBlob: (_: { blob: DataBlob, name: string }) => void = ({ blob, name })
 	window.URL.revokeObjectURL(url)
 }
 
-export default saveBlob
+export { saveBlob }

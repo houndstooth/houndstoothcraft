@@ -1,12 +1,12 @@
-import clear from '../../../../src/canvas/clear'
+import { clear } from '../../../../src/canvas/clear'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
-import executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
-import Coordinate from '../../../../src/space/types/Coordinate'
-import buildMockContext from '../../../helpers/buildMockContext'
-import activateTestMarkerCanvas from '../../helpers/activateTestMarkerCanvas'
-import standardTileIsColors from '../../helpers/standardTileIsColors'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { buildMockContext } from '../../../helpers/buildMockContext'
+import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
+import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.tileSettings', () => {
 	describe('.tileSizeSetting', () => {
@@ -112,8 +112,8 @@ describe('.tileSettings', () => {
 				},
 			}
 			mockContext = buildMockContext({ contextCallsOrder })
-			spyOn(createContext, 'default').and.returnValue(mockContext)
-			spyOn(createMixedDownCanvas, 'default').and.returnValue(buildMockContext())
+			spyOn(createContext, 'createContext').and.returnValue(mockContext)
+			spyOn(createMixedDownCanvas, 'createMixedDownCanvas').and.returnValue(buildMockContext())
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {

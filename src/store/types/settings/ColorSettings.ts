@@ -8,4 +8,4 @@ interface ColorSettings {
 	opacity?: number,
 }
 
-export default ColorSettings
+export { ColorSettings }

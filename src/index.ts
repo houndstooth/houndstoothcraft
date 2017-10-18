@@ -19,7 +19,7 @@ import { executeSelectedHoundstoothEffects } from './execute'
 import { Context } from './page'
 import { Color, solid } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinateAboutPoint } from './space'
-import state from './state'
+import { state } from './state'
 import { defaults, Houndstooth } from './store'
 import { maybeAddEffectToggles } from './ui'
 

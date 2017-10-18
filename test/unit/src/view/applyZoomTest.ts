@@ -1,7 +1,7 @@
-import CanvasSize from '../../../../src/canvas/types/CanvasSize'
-import Outline from '../../../../src/space/types/Outline'
-import state from '../../../../src/state'
-import applyZoom from '../../../../src/view/applyZoom'
+import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
+import { Outline } from '../../../../src/space/types/Outline'
+import { state } from '../../../../src/state'
+import { applyZoom } from '../../../../src/view/applyZoom'
 
 describe('apply zoom', () => {
 	const zoom = 2

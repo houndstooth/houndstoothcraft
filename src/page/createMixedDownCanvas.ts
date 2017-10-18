@@ -19,4 +19,5 @@ const createMixedDownCanvas: () => Context = () => {
 	return mixedDownCanvas.getContext('2d')
 }
 
+// tslint:disable-next-line:no-default-export
 export default createMixedDownCanvas

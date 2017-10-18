@@ -1,5 +1,6 @@
 import { Canvas } from '../../../src/page/types/Canvas'
 import { Color } from '../../../src/render'
+import { parseColor } from '../../../src/render/parseColor'
 import { Coordinate } from '../../../src/space'
 import { console } from '../../../src/utilities/windowWrapper'
 import { isCloseTo } from '../../helpers/isCloseTo'
@@ -59,7 +60,7 @@ const checkColorProperties: (_: {
 	const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
 
 	if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
-		console.error(`actual color: ${actualColor} / expected color ${expectedColor}`)
+		console.error(`actual color: ${parseColor(actualColor)} / expected color ${parseColor(expectedColor)}`)
 
 		return false
 	}

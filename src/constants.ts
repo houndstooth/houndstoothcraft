@@ -1,3 +1,5 @@
+// tslint:disable:no-magic-numbers
+
 import { Color } from './render'
 import { Radian } from './space'
 
@@ -15,7 +17,14 @@ const ERASE: Color = { a: -1 }
 
 const EIGHTH_OF_CIRCLE_ROTATION: Radian = Math.PI / 4 as any
 
+const HALF = 1 / 2
+
 const PERIMETER_SCALAR = 2
+
+const SQRT_2 = Math.sqrt(2)
+
+const X_INDEX = 0
+const Y_INDEX = 1
 
 const ANIMATION_RATE = 1.000005
 
@@ -33,4 +42,8 @@ export {
 	EIGHTH_OF_CIRCLE_ROTATION,
 	PERIMETER_SCALAR,
 	ANIMATION_RATE,
+	SQRT_2,
+	X_INDEX,
+	Y_INDEX,
+	HALF,
 }

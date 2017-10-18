@@ -1,3 +1,4 @@
+import { PERIMETER_SCALAR } from '../../constants'
 import Points from '../types/Points'
 import * as stripePoints from './stripePoints'
 
@@ -28,7 +29,7 @@ const middlePointsWhenStripeDoesNotEndInBottomRightHalf: Points = params => {
 		outline.push(stripePoints.pointInTopRightCorner({ originAndSize }))
 	}
 
-	const stripeEndsInBottomRightCorner = stripeEnd as any === 2
+	const stripeEndsInBottomRightCorner = stripeEnd as any === PERIMETER_SCALAR
 	if (stripeEndsInBottomRightCorner) {
 		outline.push(stripePoints.pointInBottomRightCorner({ originAndSize }))
 	}

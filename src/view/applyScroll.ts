@@ -1,3 +1,4 @@
+import { HALF } from '../constants'
 import { Coordinate, Outline } from '../space'
 import state from '../state'
 
@@ -17,11 +18,11 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Co
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const viewSettings = basePattern.viewSettings || {}
 	const canvasSize = viewSettings.canvasSize
-	const canvasCenter = canvasSize as number / 2 as any
+	const canvasCenter = canvasSize as number * HALF as any
 
 	const tileSettings = basePattern.tileSettings || {}
 	const tileSizeSetting = tileSettings.tileSizeSetting
-	const halfTileSize = tileSizeSetting as any / 2 as any
+	const halfTileSize = tileSizeSetting as any * HALF as any
 
 	return [
 		coordinate[ 0 ] as any + canvasCenter - halfTileSize as any,

@@ -1,3 +1,5 @@
+// tslint:disable:no-magic-numbers
+
 import { Assignment, AssignmentMode, BaseStripeDiagonal, Supertile } from '../components'
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'

@@ -51,7 +51,6 @@
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
     "no-any": false,
-    "no-magic-numbers": false,
     "no-default-export": false,
     "no-object-literal-type-assertion": false
   }

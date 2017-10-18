@@ -1,3 +1,4 @@
+import { HALF } from '../constants'
 import { Coordinate, Outline, rotateCoordinateAboutPoint } from '../space'
 import state from '../state'
 
@@ -10,11 +11,11 @@ const applyTilt: (outline: Outline) => Outline = outline => {
 		return outline
 	}
 
-	const point = [ canvasSize as number / 2 as any, canvasSize as number / 2 as any ] as Coordinate
+	const canvasCenter = [ canvasSize as number * HALF as any, canvasSize as number * HALF as any ] as Coordinate
 
 	return outline.map(coordinate => rotateCoordinateAboutPoint({
 		coordinate,
-		point,
+		point: canvasCenter,
 		rotation: rotateViewAboutCanvasCenter as any,
 	}))
 }

@@ -1,10 +1,14 @@
+// tslint:disable:no-magic-numbers
+
+const isOdd: (n) => boolean = n => n % 2 === 1
+
 const triangularNumber: (n: number) => number = n => n * (n + 1) / 2
 
 const triangularRoot: (n: number) => number = n => Math.sqrt(n * 8 + 1) * 0.5 - 0.5
 
 const quarterSquareNumber: (n: number) => number = n => Math.floor(Math.pow(n, 2) / 4)
 
-const trapezoidalNumber: (_: { height: number, start: number}) => number = ({ height, start }) =>
+const trapezoidalNumber: (_: { height: number, start: number }) => number = ({ height, start }) =>
 	triangularNumber(start + height) - triangularNumber(start)
 
 const termialRoot: (_: {
@@ -19,6 +23,7 @@ const termialRoot: (_: {
 }
 
 export {
+	isOdd,
 	trapezoidalNumber,
 	triangularNumber,
 	triangularRoot,

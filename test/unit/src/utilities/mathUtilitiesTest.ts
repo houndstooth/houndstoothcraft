@@ -1,6 +1,25 @@
 import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {
+	describe('#isOdd', () => {
+		let isOdd
+		beforeEach(() => isOdd = mathUtilities.isOdd)
+
+		it('is false when the number is divisible by 2 with a remainder of 0, -0, or -1', () => {
+			expect(isOdd(0)).toBe(false)
+			expect(isOdd(2)).toBe(false)
+			expect(isOdd(4)).toBe(false)
+			expect(isOdd(-2)).toBe(false)
+			expect(isOdd(-1)).toBe(false)
+		})
+
+		it('is true when dividing the number by 2 results in a remainder of 1', () => {
+			expect(isOdd(1)).toBe(true)
+			expect(isOdd(3)).toBe(true)
+			expect(isOdd(5)).toBe(true)
+		})
+	})
+
 	describe('#triangularNumber', () => {
 		let triangularNumber
 		beforeEach(() => triangularNumber = mathUtilities.triangularNumber)

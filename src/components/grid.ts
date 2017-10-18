@@ -5,6 +5,8 @@ import { applyBackgroundColor, applyOpacity } from '../view'
 import tile from './tile'
 import { Address } from './types'
 
+const NEGATIVE_AND_POSITIVE = 2
+
 const grid: NullarySideEffector = (() => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const gridSettings = basePattern.gridSettings || {}
@@ -14,8 +16,8 @@ const grid: NullarySideEffector = (() => {
 	applyBackgroundColor()
 
 	if (includeNegativeQuadrants) {
-		iterator(gridSize * 2).forEach(x => {
-			iterator(gridSize * 2).forEach(y => {
+		iterator(gridSize * NEGATIVE_AND_POSITIVE).forEach(x => {
+			iterator(gridSize * NEGATIVE_AND_POSITIVE).forEach(y => {
 				tile({ gridAddress: [ x - gridSize, y - gridSize ] as Address })
 			})
 		})

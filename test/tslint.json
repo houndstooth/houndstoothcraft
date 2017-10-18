@@ -6,6 +6,7 @@
     "max-file-line-count": [
       true,
       1000
-    ]
+    ],
+    "no-magic-numbers": false
   }
 }

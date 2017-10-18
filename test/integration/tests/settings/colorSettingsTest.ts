@@ -613,7 +613,7 @@ describe('.colorSettings', () => {
 
 		describe('.switcheroo', () => {
 			it('causes the two striped tiles to alternate by diagonal rather than rows/columns', () => {
-				const sufficientTileCountToDemonstrateSetting = 4
+				const sufficientTileCountToDemonstrateSetting = 8
 				const houndstoothOverrides = {
 					basePattern: {
 						colorSettings: {
@@ -636,50 +636,50 @@ describe('.colorSettings', () => {
 
 				expect(standardTileIsColors({
 					baseId: 0,
-					colors: [ TRANSPARENT, BLACK ],
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 8,
-					colors: [ TRANSPARENT, BLACK ],
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 16,
-					colors: [ TRANSPARENT, BLACK ],
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 24,
-					colors: [ TRANSPARENT, BLACK ],
+					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 
 				expect(standardTileIsColors({
 					baseId: 32,
-					colors: [ BLACK, TRANSPARENT ],
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 40,
-					colors: [ BLACK, TRANSPARENT ],
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 48,
-					colors: [ BLACK, TRANSPARENT ],
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: 56,
-					colors: [ BLACK, TRANSPARENT ],
+					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
 					tileSize,
 				})).toBe(true)

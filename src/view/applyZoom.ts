@@ -1,3 +1,4 @@
+import { HALF } from '../constants'
 import { Coordinate, Outline } from '../space'
 import state from '../state'
 import { defaults } from '../store'
@@ -13,7 +14,7 @@ const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordina
 		zoom = defaults.DEFAULT_ZOOM,
 		zoomOnCanvasCenter,
 	} = viewSettings
-	const halfCanvasSize = canvasSize as number / 2
+	const halfCanvasSize = canvasSize as number * HALF
 	const shouldAdjustForCentering = !!zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })

@@ -4,10 +4,12 @@ import { applyView } from '../view'
 import fill from './fill'
 import { Color } from './types'
 
+const MINIMUM_POLYGON_COORDINATE_COUNT = 3
+
 const draw: (_: {
 	context: Context, outline: Outline, shapeColor: Color,
 }) => void = ({ context, outline, shapeColor }) => {
-	if (outline.length < 3) {
+	if (outline.length < MINIMUM_POLYGON_COORDINATE_COUNT) {
 		return
 	}
 	const outlineAdjustedForView = applyView(outline)

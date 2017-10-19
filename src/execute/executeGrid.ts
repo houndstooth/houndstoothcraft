@@ -2,15 +2,15 @@ import { mixDownContexts } from '../canvas'
 import { state } from '../state'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
 import { gridAndMaybeLogging } from './gridAndMaybeLogging'
-import { SettingsFunctionObject } from './types'
+import { Layer, SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const layerSettings = basePattern.layerSettings || {}
-	const { startLayer = 0, endLayer = 0 } = layerSettings
+	const { startLayer = 0 as any, endLayer = 0 as any } = layerSettings
 
-	for (let n = 0; n <= endLayer; n++) {
-		executeLayer({ n, startLayer, endLayer, layerFunctionObjects })
+	for (let currentLayer = 0; currentLayer <= endLayer; currentLayer++) {
+		executeLayer({ currentLayer: currentLayer as any, startLayer, endLayer, layerFunctionObjects })
 	}
 
 	if (state.mixingDown) {
@@ -21,12 +21,12 @@ const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => vo
 }
 
 const executeLayer: (_: {
-	endLayer: number, layerFunctionObjects: SettingsFunctionObject[], n: number, startLayer: number,
-}) => void = ({ endLayer, layerFunctionObjects, n, startLayer }) => {
-	if (n >= startLayer || 0) {
+	currentLayer: Layer, endLayer: Layer, layerFunctionObjects: SettingsFunctionObject[], startLayer: Layer,
+}) => void = ({ currentLayer, endLayer, layerFunctionObjects, startLayer }) => {
+	if (currentLayer >= startLayer || 0) {
 		gridAndMaybeLogging()
 	}
-	if (n < endLayer) {
+	if (currentLayer < endLayer) {
 		callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
 	}
 	state.currentLayer++

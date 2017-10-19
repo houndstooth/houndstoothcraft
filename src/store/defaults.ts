@@ -19,8 +19,8 @@ const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.MINOR
 const DEFAULT_FRAME_RATE = 1.005
-const DEFAULT_START_LAYER = 0
-const DEFAULT_END_LAYER = 0
+const DEFAULT_START_LAYER = 0 as any
+const DEFAULT_END_LAYER = 0 as any
 
 const DEFAULT_PATTERN: BasePattern = {
 	animationSettings: {
@@ -63,11 +63,11 @@ const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 const DEFAULT_STATE: State = {
 	animating: false,
 	contexts: [],
-	currentAnimationFrame: 0,
-	currentLayer: 0,
+	currentAnimationFrame: 0 as any,
+	currentLayer: 0 as any,
 	exportFrames: false,
 	interval: undefined,
-	lastSavedAnimationFrame: 0,
+	lastSavedAnimationFrame: 0 as any,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	mixedDownContext: undefined,
 	mixingDown: false,

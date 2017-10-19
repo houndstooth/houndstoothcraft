@@ -9,7 +9,11 @@ const executeAnimation: (_: {
 }) => void = ({ animationFunctionObjects, layerFunctionObjects }) => {
 	const basePattern = state.mainHoundstooth.basePattern || {}
 	const animationSettings = basePattern.animationSettings || {}
-	const { frameRate = defaults.DEFAULT_FRAME_RATE, endAnimationFrame = 0, startAnimationFrame = 0 } = animationSettings
+	const {
+		frameRate = defaults.DEFAULT_FRAME_RATE,
+		endAnimationFrame = 0 as any,
+		startAnimationFrame = 0 as any,
+	} = animationSettings
 	let { refreshCanvas } = animationSettings
 	refreshCanvas = !!defaultToTrue(refreshCanvas)
 

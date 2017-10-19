@@ -1,5 +1,5 @@
 import { clear } from '../canvas'
-import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
+import { callFunctionsPerSetting, executeGrid, Frame, SettingsFunctionObject } from '../execute'
 import { state } from '../state'
 import { deepClone } from '../utilities/codeUtilities'
 import { exportFrame } from './exportFrame'
@@ -8,7 +8,7 @@ const buildAnimationFunction: (_: {
 	animationFunctionObjects: SettingsFunctionObject[],
 	layerFunctionObjects: SettingsFunctionObject[],
 	refreshCanvas: boolean,
-	startAnimationFrame: number,
+	startAnimationFrame: Frame,
 }) => () => void = ({ animationFunctionObjects, layerFunctionObjects, refreshCanvas, startAnimationFrame }) => () => {
 	if (exportingFramesStillNeedsToCatchUp()) {
 		return
@@ -25,7 +25,7 @@ const buildAnimationFunction: (_: {
 const exportingFramesStillNeedsToCatchUp: () => boolean = () =>
 	state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
 
-const shouldBeginShowingAnimation: (startAnimationFrame: number) => boolean = startAnimationFrame =>
+const shouldBeginShowingAnimation: (startAnimationFrame: Frame) => boolean = startAnimationFrame =>
 	state.currentAnimationFrame >= startAnimationFrame
 
 const animate: (_: {

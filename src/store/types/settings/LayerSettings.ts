@@ -1,6 +1,8 @@
+import { Layer } from '../../../execute'
+
 interface LayerSettings {
-	endLayer?: number,
-	startLayer?: number,
+	endLayer?: Layer,
+	startLayer?: Layer,
 }
 
 export { LayerSettings }

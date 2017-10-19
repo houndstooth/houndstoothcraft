@@ -1,13 +1,17 @@
-const thisAnimationFrameOnly: (frame: number) => { endAnimationFrame: number, startAnimationFrame: number } =
+import { Frame } from '../../../src/execute/types/Frame'
+import { Layer } from '../../../src/execute/types/Layer'
+
+const thisAnimationFrameOnly: (frame: Frame) => { endAnimationFrame: Frame, startAnimationFrame: Frame } =
 	frame => ({
 		endAnimationFrame: frame,
 		startAnimationFrame: frame,
-	})
+	}) as any
 
-const thisLayerOnly: (frame: number) => { endLayer: number, startLayer: number } = frame => ({
-	endLayer: frame,
-	startLayer: frame,
-})
+const thisLayerOnly: (layer: Layer) => { endLayer: Layer, startLayer: Layer } =
+	layer => ({
+		endLayer: layer,
+		startLayer: layer,
+	}) as any
 
 export {
 	thisAnimationFrameOnly,

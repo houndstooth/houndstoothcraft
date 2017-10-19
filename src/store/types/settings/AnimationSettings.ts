@@ -1,8 +1,10 @@
+import { Frame } from '../../../execute'
+
 interface AnimationSettings {
-	endAnimationFrame?: number,
+	endAnimationFrame?: Frame,
 	frameRate?: number,
 	refreshCanvas?: boolean,
-	startAnimationFrame?: number,
+	startAnimationFrame?: Frame,
 }
 
 export { AnimationSettings }

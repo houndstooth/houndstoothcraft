@@ -1,4 +1,3 @@
-import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { Address } from '../../../../src/components/types/Address'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
@@ -16,7 +15,7 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: [ BLACK ] },
-					viewSettings: { canvasSize: 125 as CanvasSize },
+					viewSettings: { canvasSize: 125 as any },
 				},
 			}
 			activateTestMarkerCanvas()
@@ -180,7 +179,7 @@ describe('.viewSettings', () => {
 						tileSizeSetting: areaSize,
 					},
 					viewSettings: {
-						canvasSize: 300 as CanvasSize,
+						canvasSize: 300 as any,
 						rotateViewAboutCanvasCenter: Math.PI / 2 as any,
 					},
 				},

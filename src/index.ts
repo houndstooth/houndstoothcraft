@@ -1,5 +1,4 @@
 import { standardAnimation } from './animation'
-import { CanvasSize } from './canvas'
 import {
 	Address,
 	AssignmentMode,
@@ -16,7 +15,7 @@ import {
 } from './components'
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
-import { Context } from './page'
+import { Context, Dimension } from './page'
 import { Color, solid } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinateAboutPoint } from './space'
 import { state } from './state'
@@ -44,7 +43,7 @@ export {
 	TileColorIndices,
 	TileOriginAndSize,
 	StripePosition,
-	CanvasSize,
+	Dimension,
 	Units,
 	GetStripePosition,
 	Context,

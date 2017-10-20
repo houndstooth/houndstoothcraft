@@ -1,4 +1,3 @@
-import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { Supertile } from '../../../../src/components/types/Supertile'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
@@ -26,7 +25,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
 					},
 				},
 			}
@@ -64,7 +63,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
 					},
 				},
 			}
@@ -151,7 +150,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
 							},
 						},
 					}
@@ -491,7 +490,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
 							},
 						},
 					}
@@ -628,7 +627,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as CanvasSize,
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as any,
 						},
 					},
 				}
@@ -705,7 +704,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as CanvasSize,
+							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as any,
 						},
 					},
 				}
@@ -760,7 +759,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
 					},
 				},
 			}
@@ -801,7 +800,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as CanvasSize,
+						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
 					},
 				},
 			}

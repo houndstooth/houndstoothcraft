@@ -1,8 +1,8 @@
-import { CanvasSize } from '../../../canvas'
 import { Radian } from '../../../space'
+import { Dimension } from '../../../page'
 
 interface ViewSettings {
-	canvasSize?: CanvasSize,
+	canvasSize?: Dimension,
 	centerViewOnCenterOfTileAtHomeAddress?: boolean,
 	rotateViewAboutCanvasCenter?: Radian,
 	zoom?: number,

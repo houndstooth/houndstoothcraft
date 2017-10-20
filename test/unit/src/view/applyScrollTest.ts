@@ -1,4 +1,3 @@
-import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { Outline } from '../../../../src/space/types/Outline'
 import { state } from '../../../../src/state'
 import { applyScroll } from '../../../../src/view/applyScroll'
@@ -6,7 +5,7 @@ import { applyScroll } from '../../../../src/view/applyScroll'
 describe('apply scroll', () => {
 	const zoom = 10
 	const tileSize = 40 as any
-	const canvasSize = 200 as CanvasSize
+	const canvasSize = 200 as any
 	const outline = [
 		[ 3 as any, 5 as any ],
 		[ 4 as any, 5 as any ],

@@ -1,4 +1,3 @@
-import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { CYAN, ERASE, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { Coordinate } from '../../../../src/space/types/Coordinate'
@@ -13,7 +12,7 @@ describe('.layerSettings', () => {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 2 },
 				layerSettings: { endLayer: 1 as any },
-				viewSettings: { canvasSize: 100 as CanvasSize },
+				viewSettings: { canvasSize: 100 as any },
 			},
 			layersPattern: {
 				colorSettings: {
@@ -42,7 +41,7 @@ describe('.layerSettings', () => {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 0 },
 				layerSettings: { endLayer: 1 as any },
-				viewSettings: { canvasSize: 100 as CanvasSize },
+				viewSettings: { canvasSize: 100 as any },
 			},
 			layersPattern: {
 				colorSettings: {

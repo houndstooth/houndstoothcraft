@@ -1,4 +1,3 @@
-import { CanvasSize } from '../../../../src/canvas/types/CanvasSize'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { Coordinate } from '../../../../src/space/types/Coordinate'
@@ -21,7 +20,7 @@ describe('.gridSettings', () => {
 						gridSize: 3,
 					},
 					viewSettings: {
-						canvasSize: 200 as CanvasSize,
+						canvasSize: 200 as any,
 					},
 				},
 			}
@@ -149,7 +148,7 @@ describe('.gridSettings', () => {
 						tileSizeSetting,
 					},
 					viewSettings: {
-						canvasSize: 300 as CanvasSize,
+						canvasSize: 300 as any,
 						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
 				},

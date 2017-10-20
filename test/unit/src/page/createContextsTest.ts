@@ -22,8 +22,7 @@ describe('create contexts', () => {
 	})
 
 	it('adds contexts to the state for each layer', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.layerSettings = { endLayer: 5 }
+		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 		expect(state.contexts.length).toBe(0)
 
 		createContexts()
@@ -32,14 +31,13 @@ describe('create contexts', () => {
 	})
 
 	it('can reduce the count of contexts in the state, and canvases on the page', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.layerSettings = { endLayer: 5 }
+		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 5 }
 		createContexts()
 
 		expect(createContextSpy.calls.count()).toBe(6)
 		expect(state.contexts.length).toBe(6)
 
-		basePattern.layerSettings = { endLayer: 3 }
+		state.mainHoundstooth.basePattern.layerSettings = { endLayer: 3 }
 		createContextSpy.calls.reset()
 
 		createContexts()

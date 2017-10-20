@@ -8,8 +8,7 @@ describe('grid', () => {
 	let tileSpy
 	beforeEach(() => {
 		tileSpy = spyOn(tile, 'tile')
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.gridSettings = { gridSize }
+		state.mainHoundstooth.basePattern.gridSettings = { gridSize }
 	})
 
 	it('uses the given grid size', () => {
@@ -20,9 +19,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			const basePattern = state.mainHoundstooth.basePattern || {}
-			const gridSettings = basePattern.gridSettings || {}
-			gridSettings.includeNegativeQuadrants = false
+			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = false
 		})
 
 		it('only makes tiles with positive addresses', () => {
@@ -38,9 +35,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			const basePattern = state.mainHoundstooth.basePattern || {}
-			const gridSettings = basePattern.gridSettings || {}
-			gridSettings.includeNegativeQuadrants = true
+			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
 		})
 
 		// tslint:disable-next-line:max-line-length

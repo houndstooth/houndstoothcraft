@@ -101,8 +101,7 @@ describe('shape', () => {
 		describe('when a renderTexture method is supplied', () => {
 			const renderTexture = noop
 			beforeEach(() => {
-				const basePattern = state.mainHoundstooth.basePattern || {}
-				basePattern.textureSettings = { renderTexture }
+				state.mainHoundstooth.basePattern.textureSettings = { renderTexture }
 			})
 
 			it('passes it to the texture component to be rendered', () => {

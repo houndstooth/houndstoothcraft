@@ -1,26 +1,26 @@
-import { Houndstooth } from '../store'
+import { Effect } from '../store'
 import { composePatterns } from './composePatterns'
 
 const combineHoundstoothEffects: (_: {
-	houndstoothEffects: Houndstooth[],
-}) => Houndstooth = ({ houndstoothEffects }) => {
+	houndstoothEffects: Effect[],
+}) => Effect = ({ houndstoothEffects }) => {
 	const basePattern = {}
 	const layersPattern = {}
 	const animationsPattern = {}
 
 	houndstoothEffects.forEach(houndstoothEffect => {
 		composePatterns({
-			patternToBeMergedOnto: basePattern || {},
+			patternToBeMergedOnto: basePattern,
 			patternToMerge: houndstoothEffect.basePattern || {},
 			warnAboutConflicts: true,
 		})
 		composePatterns({
-			patternToBeMergedOnto: layersPattern || {},
+			patternToBeMergedOnto: layersPattern,
 			patternToMerge: houndstoothEffect.layersPattern || {},
 			warnAboutConflicts: true,
 		})
 		composePatterns({
-			patternToBeMergedOnto: animationsPattern || {},
+			patternToBeMergedOnto: animationsPattern,
 			patternToMerge: houndstoothEffect.animationsPattern || {},
 			warnAboutConflicts: true,
 		})

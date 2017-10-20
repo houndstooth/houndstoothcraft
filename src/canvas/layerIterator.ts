@@ -1,11 +1,10 @@
 import { Layer } from '../execute'
 import { state } from '../state'
+import { defaults } from '../store'
 import { iterator } from '../utilities/codeUtilities'
 
 const layerIterator: () => Layer[] = () => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const layerSettings = basePattern.layerSettings
-	const endLayer = layerSettings && layerSettings.endLayer || 0
+	const endLayer = state.mainHoundstooth.basePattern.layerSettings.endLayer || defaults.DEFAULT_END_LAYER
 	const layerCount = endLayer + 1
 
 	return iterator(layerCount) as any

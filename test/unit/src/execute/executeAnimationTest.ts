@@ -31,8 +31,7 @@ describe('execute animation', () => {
 		endAnimationFrame = 7
 		refreshCanvas = false
 
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.animationSettings = {
+		state.mainHoundstooth.basePattern.animationSettings = {
 			endAnimationFrame,
 			frameRate,
 			refreshCanvas,
@@ -77,9 +76,7 @@ describe('execute animation', () => {
 	})
 
 	it('defaults refreshing the canvas to true', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		const animationSettings = basePattern.animationSettings || {}
-		animationSettings.refreshCanvas = undefined
+		state.mainHoundstooth.basePattern.animationSettings.refreshCanvas = undefined
 
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
@@ -91,9 +88,7 @@ describe('execute animation', () => {
 	})
 
 	it('defaults the start animation frame to zero', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		const animationSettings = basePattern.animationSettings || {}
-		animationSettings.startAnimationFrame = undefined
+		state.mainHoundstooth.basePattern.animationSettings.startAnimationFrame = undefined
 
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 

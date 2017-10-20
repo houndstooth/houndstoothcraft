@@ -18,7 +18,7 @@ const getFromBasePatternOrDefault: (settingsPath: PropertyPath) => Setting = set
 	}
 
 	return accessChildPropertyOrCreatePath({
-		objectWithProperties: state.mainHoundstooth.basePattern || {},
+		objectWithProperties: state.mainHoundstooth.basePattern,
 		propertyPath: settingsPath,
 	})
 }

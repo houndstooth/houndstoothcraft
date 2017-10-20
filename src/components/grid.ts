@@ -8,9 +8,7 @@ import { Address } from './types'
 const NEGATIVE_AND_POSITIVE = 2
 
 const grid: NullarySideEffector = (() => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const gridSettings = basePattern.gridSettings || {}
-	const { includeNegativeQuadrants, gridSize = 0 } = gridSettings
+	const { includeNegativeQuadrants, gridSize = 0 } = state.mainHoundstooth.basePattern.gridSettings
 
 	applyOpacity()
 	applyBackgroundColor()

@@ -13,16 +13,13 @@ describe('get stripe positions for tile', () => {
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions = []
 		const gridAddress = [ 3, 5 ] as Address
-		const getStripePositionsSpy = jasmine.createSpy('getStripePositions')
-		getStripePositionsSpy.and.returnValue(expectedStripePositions)
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		const stripeSettings = basePattern.stripeSettings || {}
-		const stripePositionSettings = stripeSettings.stripePositionSettings || {}
-		stripePositionSettings.getStripePositions = getStripePositionsSpy
+		const stripePositionsSpy = jasmine.createSpy('getStripePositions')
+		stripePositionsSpy.and.returnValue(expectedStripePositions)
+		state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings.getStripePositions = stripePositionsSpy
 
 		const actualStripePositions = getStripePositionsForTile({ gridAddress })
 
-		expect(getStripePositionsSpy).toHaveBeenCalledWith({ gridAddress })
+		expect(stripePositionsSpy).toHaveBeenCalledWith({ gridAddress })
 		expect(actualStripePositions).toBe(expectedStripePositions)
 	})
 })

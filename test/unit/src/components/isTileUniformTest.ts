@@ -11,8 +11,7 @@ describe('is tile uniform', () => {
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 5, g: 100, b: 50, a: 0.5 },
 		]
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.colorSettings = { colorSet }
+		state.mainHoundstooth.basePattern.colorSettings = { colorSet }
 	})
 
 	it('returns true if all of the tile color indices point to the same color', () => {

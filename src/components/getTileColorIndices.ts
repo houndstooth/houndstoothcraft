@@ -4,9 +4,7 @@ import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import { Address, Assignment, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
 const getTileColorIndices: (_: { gridAddress: Address }) => TileColorIndices = ({ gridAddress }) => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const colorSettings = basePattern.colorSettings || {}
-	const assignment = colorSettings.assignment || {}
+	const { assignment } = state.mainHoundstooth.basePattern.colorSettings
 
 	const tileColorIndices = getIndices({ gridAddress, assignment })
 

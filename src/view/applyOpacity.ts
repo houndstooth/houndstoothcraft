@@ -3,14 +3,13 @@ import { state } from '../state'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyOpacity: NullarySideEffector = (() => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const colorSettings = basePattern.colorSettings
-	if (!(colorSettings && colorSettings.opacity) || colorSettings.opacity === 1) {
+	const { opacity } = state.mainHoundstooth.basePattern.colorSettings
+	if (!opacity || opacity === 1) {
 		return
 	}
 
 	const context = getCurrentContext()
-	context.globalAlpha = colorSettings.opacity
+	context.globalAlpha = opacity
 }) as NullarySideEffector
 
 export { applyOpacity }

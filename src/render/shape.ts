@@ -15,9 +15,7 @@ const shape: (_: ShapeParams) => void = params => {
 	const context = getCurrentContext()
 	const shapeColorIndex = wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const textureSettings = basePattern.textureSettings
-	const renderTexture = textureSettings && textureSettings.renderTexture
+	const { renderTexture } = state.mainHoundstooth.basePattern.textureSettings
 
 	const renderFunction = renderTexture ? texture : solid
 	renderFunction({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })

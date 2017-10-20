@@ -1,11 +1,11 @@
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
 import { state } from '../state'
-import { Houndstooth } from '../store'
+import { Effect } from '../store'
 import { resetInterface } from './resetInterface'
 
 const buildEffectToggleClickHandler: (_: {
-	checkbox: InputElement, houndstoothEffect: Houndstooth,
+	checkbox: InputElement, houndstoothEffect: Effect,
 }) => void = ({ checkbox, houndstoothEffect }) => () => {
 	resetInterface()
 
@@ -15,11 +15,11 @@ const buildEffectToggleClickHandler: (_: {
 	executeSelectedHoundstoothEffects()
 }
 
-const addEffect: (houndstoothEffect: Houndstooth) => void = houndstoothEffect => {
+const addEffect: (houndstoothEffect: Effect) => void = houndstoothEffect => {
 	state.selectedHoundstoothEffects.push(houndstoothEffect)
 }
 
-const removeEffect: (houndstoothEffect: Houndstooth) => void = houndstoothEffect => {
+const removeEffect: (houndstoothEffect: Effect) => void = houndstoothEffect => {
 	state.selectedHoundstoothEffects = state.selectedHoundstoothEffects.filter(selectedHoundstoothEffect =>
 		selectedHoundstoothEffect.name !== houndstoothEffect.name)
 }

@@ -47,9 +47,7 @@ const definedTile: (_: {
 }
 
 const shouldUseSquare: (_: { tileColorIndices: TileColorIndices }) => boolean = ({ tileColorIndices }) => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const tileSettings = basePattern.tileSettings || {}
-	const { collapseSameColoredShapesWithinTile } = tileSettings
+	const { collapseSameColoredShapesWithinTile } = state.mainHoundstooth.basePattern.tileSettings
 	const shouldCollapseSameColoredShapes = defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	return !!shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })

@@ -6,8 +6,7 @@ describe('per stripe', () => {
 	beforeEach(() => composeMainHoundstooth)
 
 	it('uses a stripe count if provided', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.stripeSettings = {
+		state.mainHoundstooth.basePattern.stripeSettings = {
 			stripePositionSettings: {
 				stripeCountSetting: 3,
 			},

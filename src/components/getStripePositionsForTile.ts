@@ -4,10 +4,7 @@ import { Address, StripePosition } from './types'
 
 const getStripePositionsForTile: (_?: { gridAddress: Address }) => StripePosition[] = params => {
 	const { gridAddress = undefined } = params || {}
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const stripeSettings = basePattern.stripeSettings || {}
-	const stripePositionSettings = stripeSettings.stripePositionSettings || {}
-	const getStripePositions = stripePositionSettings.getStripePositions
+	const { getStripePositions } = state.mainHoundstooth.basePattern.stripeSettings.stripePositionSettings
 	const stripePositionsForTile = getStripePositions || standardStripePositions
 
 	return stripePositionsForTile({ gridAddress })

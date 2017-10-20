@@ -13,8 +13,7 @@ describe('apply background color', () => {
 	})
 
 	it('fills the entire canvas with the color', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.colorSettings = { backgroundColor: CYAN }
+		state.mainHoundstooth.basePattern.colorSettings = { backgroundColor: CYAN }
 
 		applyBackgroundColor()
 

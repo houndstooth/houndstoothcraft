@@ -14,8 +14,7 @@ describe('apply zoom', () => {
 			[ 100, 100 ],
 			[ 50, 100 ],
 		]
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.viewSettings = { zoom, canvasSize }
+		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
 	})
 
 	it('adjusts the outline per the zoom level', () => {
@@ -29,9 +28,7 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			const basePattern = state.mainHoundstooth.basePattern || {}
-			const viewSettings = basePattern.viewSettings || {}
-			viewSettings.zoomOnCanvasCenter = true
+			state.mainHoundstooth.basePattern.viewSettings.zoomOnCanvasCenter = true
 		})
 
 		it('works', () => {
@@ -45,9 +42,7 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				const basePattern = state.mainHoundstooth.basePattern || {}
-				const viewSettings = basePattern.viewSettings || {}
-				viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
+				state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 			})
 		})
 

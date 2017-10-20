@@ -40,8 +40,7 @@ describe('reset interface', () => {
 			name: '',
 		}
 		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.gridSettings = { gridSize: 42 }
+		state.mainHoundstooth.basePattern.gridSettings = { gridSize: 42 }
 
 		resetInterface()
 

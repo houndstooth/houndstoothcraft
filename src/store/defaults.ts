@@ -44,6 +44,7 @@ const DEFAULT_PATTERN: BasePattern = {
 			stripeCountSetting: DEFAULT_STRIPE_COUNT,
 		},
 	},
+	textureSettings: {},
 	tileSettings: {
 		tileSizeSetting: DEFAULT_TILE_SIZE,
 	},

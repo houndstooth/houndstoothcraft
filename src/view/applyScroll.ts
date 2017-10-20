@@ -3,9 +3,7 @@ import { Coordinate, Outline } from '../space'
 import { state } from '../state'
 
 const applyScroll: (outline: Outline) => Outline = outline => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const viewSettings = basePattern.viewSettings || {}
-	const centerViewOnCenterOfTileAtHomeAddress = viewSettings.centerViewOnCenterOfTileAtHomeAddress
+	const { centerViewOnCenterOfTileAtHomeAddress } = state.mainHoundstooth.basePattern.viewSettings
 
 	if (!centerViewOnCenterOfTileAtHomeAddress) {
 		return outline
@@ -15,13 +13,10 @@ const applyScroll: (outline: Outline) => Outline = outline => {
 }
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Coordinate = coordinate => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const viewSettings = basePattern.viewSettings || {}
-	const canvasSize = viewSettings.canvasSize
+	const { canvasSize } = state.mainHoundstooth.basePattern.viewSettings
 	const canvasCenter = canvasSize as number * HALF as any
 
-	const tileSettings = basePattern.tileSettings || {}
-	const tileSizeSetting = tileSettings.tileSizeSetting
+	const { tileSizeSetting } = state.mainHoundstooth.basePattern.tileSettings
 	const halfTileSize = tileSizeSetting * HALF as any
 
 	return [

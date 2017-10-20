@@ -4,9 +4,7 @@ import { state } from '../state'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyBackgroundColor: NullarySideEffector = (() => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const colorSettings = basePattern.colorSettings
-	const backgroundColor = colorSettings && colorSettings.backgroundColor
+	const { backgroundColor } = state.mainHoundstooth.basePattern.colorSettings
 	if (!backgroundColor) {
 		return
 	}

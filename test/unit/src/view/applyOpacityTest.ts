@@ -15,8 +15,7 @@ describe('apply opacity', () => {
 	})
 
 	it('has no effect if no opacity level is 1', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.colorSettings = { opacity: 1 }
+		state.mainHoundstooth.basePattern.colorSettings = { opacity: 1 }
 
 		applyOpacity()
 
@@ -24,8 +23,7 @@ describe('apply opacity', () => {
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
-		const basePattern = state.mainHoundstooth.basePattern || {}
-		basePattern.colorSettings = { opacity: 0.4 }
+		state.mainHoundstooth.basePattern.colorSettings = { opacity: 0.4 }
 		applyOpacity()
 
 		expect(state.contexts[0].globalAlpha).toBe(0.4)

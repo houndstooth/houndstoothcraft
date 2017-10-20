@@ -1,6 +1,6 @@
 import { createContexts, createMixedDownCanvas } from '../page'
 import { state } from '../state'
-import { Houndstooth } from '../store'
+import { Effect } from '../store'
 import { NullarySideEffector } from '../utilities/types'
 import { composeMainHoundstooth } from './composeMainHoundstooth'
 import { executeAnimation } from './executeAnimation'
@@ -8,7 +8,7 @@ import { executeGrid } from './executeGrid'
 import { prepareFunctionObjectsPerSetting } from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
 
-const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Houndstooth }) => void = params => {
+const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void = params => {
 	const { houndstoothOverrides = {} } = params || {}
 	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 

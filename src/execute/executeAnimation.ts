@@ -7,8 +7,7 @@ import { SettingsFunctionObject } from './types'
 const executeAnimation: (_: {
 	animationFunctionObjects: SettingsFunctionObject[], layerFunctionObjects: SettingsFunctionObject[],
 }) => void = ({ animationFunctionObjects, layerFunctionObjects }) => {
-	const basePattern = state.mainHoundstooth.basePattern || {}
-	const animationSettings = basePattern.animationSettings || {}
+	const { animationSettings } = state.mainHoundstooth.basePattern
 	const {
 		frameRate = defaults.DEFAULT_FRAME_RATE,
 		endAnimationFrame = 0 as any,

@@ -1,34 +1,34 @@
 import { state } from '../state'
-import { defaults, Houndstooth, Pattern } from '../store'
+import { defaults, Effect, Pattern } from '../store'
 import { console } from '../utilities/windowWrapper'
 import { combineHoundstoothEffects } from './combineHoundstoothEffects'
 import { composePatterns } from './composePatterns'
 
 const composeMainHoundstooth: (_?: {
-		houndstoothEffects?: Houndstooth[],
-		houndstoothOverrides?: Houndstooth,
+		houndstoothEffects?: Effect[],
+		houndstoothOverrides?: Effect,
 		logComposedMainHoundstooth?: boolean,
 	}) => void = params => {
 	const { houndstoothEffects = [], houndstoothOverrides = {}, logComposedMainHoundstooth = false } = params || {}
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	composePattern({
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern || {},
+		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern,
 		patternEffects: combinedHoundstoothEffects.basePattern || {},
 		patternOverrides: houndstoothOverrides.basePattern || {},
-		patternToCompose: state.mainHoundstooth.basePattern || {},
+		patternToCompose: state.mainHoundstooth.basePattern,
 	})
 	composePattern({
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern || {},
+		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern,
 		patternEffects: combinedHoundstoothEffects.layersPattern || {},
 		patternOverrides: houndstoothOverrides.layersPattern || {},
-		patternToCompose: state.mainHoundstooth.layersPattern || {},
+		patternToCompose: state.mainHoundstooth.layersPattern,
 	})
 	composePattern({
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern || {},
+		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern,
 		patternEffects: combinedHoundstoothEffects.animationsPattern || {},
 		patternOverrides: houndstoothOverrides.animationsPattern || {},
-		patternToCompose: state.mainHoundstooth.animationsPattern || {},
+		patternToCompose: state.mainHoundstooth.animationsPattern,
 	})
 
 	if (logComposedMainHoundstooth) {

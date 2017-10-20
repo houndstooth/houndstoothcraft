@@ -1,4 +1,4 @@
-import { Frame } from '../../../src/execute/types/Frame'
+import { Frame } from '../../../src/animation/types/Frame'
 import { Layer } from '../../../src/execute/types/Layer'
 
 const thisAnimationFrameOnly: (frame: Frame) => { endAnimationFrame: Frame, startAnimationFrame: Frame } =

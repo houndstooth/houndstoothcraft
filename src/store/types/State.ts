@@ -1,6 +1,7 @@
-import { Frame, Layer } from '../../execute'
+import { Layer } from '../../execute'
 import { Context } from '../../page'
 import { Houndstooth } from './Houndstooth'
+import { Frame } from '../../animation'
 
 interface State {
 	animating: boolean,

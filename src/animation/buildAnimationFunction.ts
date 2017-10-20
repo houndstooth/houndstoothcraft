@@ -1,8 +1,9 @@
 import { clear } from '../canvas'
-import { callFunctionsPerSetting, executeGrid, Frame, SettingsFunctionObject } from '../execute'
+import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
 import { state } from '../state'
 import { deepClone } from '../utilities/codeUtilities'
 import { exportFrame } from './exportFrame'
+import { Frame } from './types'
 
 const buildAnimationFunction: (_: {
 	animationFunctionObjects: SettingsFunctionObject[],

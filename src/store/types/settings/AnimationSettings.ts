@@ -1,4 +1,4 @@
-import { Frame } from '../../../execute'
+import { Frame } from '../../../animation'
 
 interface AnimationSettings {
 	endAnimationFrame?: Frame,

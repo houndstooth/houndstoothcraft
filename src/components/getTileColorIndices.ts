@@ -1,11 +1,11 @@
 import { X_INDEX, Y_INDEX } from '../constants'
-import { state } from '../state'
+import { Assignment, getSetting } from '../store'
 import * as to from '../to'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
-import { Address, Assignment, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
+import { Address, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
 const getTileColorIndices: (_: { gridAddress: Address }) => TileColorIndices = ({ gridAddress }) => {
-	const { assignment } = state.mainHoundstooth.basePattern.colorSettings
+	const assignment: Assignment = getSetting('assignment')
 
 	const tileColorIndices = getIndices({ gridAddress, assignment })
 

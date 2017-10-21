@@ -1,9 +1,10 @@
+import { getStandardTileOriginAndSize } from './getStandardTileOriginAndSize'
 import { grid } from './grid'
 import { perStripe } from './perStripe'
+import { standardStripePositions } from './standardStripePositions'
 import { tileCenter } from './tileCenter'
 import {
 	Address,
-	Assignment,
 	AssignmentMode,
 	BaseStripeDiagonal,
 	GetStripePosition,
@@ -22,7 +23,6 @@ export {
 	tileCenter,
 	Address,
 	TileColorIndices,
-	Assignment,
 	Supertile,
 	Weave,
 	TileOriginAndSize,
@@ -32,4 +32,6 @@ export {
 	AssignmentMode,
 	StripeCountMode,
 	BaseStripeDiagonal,
+	standardStripePositions,
+	getStandardTileOriginAndSize,
 }

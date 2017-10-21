@@ -3,7 +3,7 @@ import { PatternFunctions } from './PatternFunctions'
 
 interface Houndstooth {
 	animationsPattern: PatternFunctions,
-	basePattern: BasePattern,
+	basePattern: Partial<BasePattern>,
 	layersPattern: PatternFunctions,
 	name: string,
 }

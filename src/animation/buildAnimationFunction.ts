@@ -1,6 +1,8 @@
 import { clear } from '../canvas'
 import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
+import * as from from '../from'
 import { state } from '../state'
+import * as to from '../to'
 import { deepClone } from '../utilities/codeUtilities'
 import { exportFrame } from './exportFrame'
 import { Frame } from './types'
@@ -20,7 +22,7 @@ const buildAnimationFunction: (_: {
 	}
 
 	callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
-	state.currentAnimationFrame++
+	state.currentAnimationFrame = to.Frame(from.Frame(state.currentAnimationFrame) + 1)
 }
 
 const exportingFramesStillNeedsToCatchUp: () => boolean = () =>

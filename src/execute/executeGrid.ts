@@ -1,14 +1,14 @@
 import { mixDownContexts } from '../canvas'
 import * as from from '../from'
 import { state } from '../state'
+import { getSetting, LayerSettings } from '../store'
 import * as to from '../to'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
 import { gridAndMaybeLogging } from './gridAndMaybeLogging'
 import { Layer, SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
-	const { layerSettings } = state.mainHoundstooth.basePattern
-	const { startLayer = to.Layer(0), endLayer = to.Layer(0) } = layerSettings
+	const { startLayer, endLayer }: LayerSettings = getSetting('layer')
 
 	for (let currentLayerValue = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
 		executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })
@@ -18,7 +18,7 @@ const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => vo
 		mixDownContexts()
 	}
 
-	state.currentLayer = 0
+	state.currentLayer = to.Layer(0)
 }
 
 const executeLayer: (_: {
@@ -30,7 +30,7 @@ const executeLayer: (_: {
 	if (currentLayer < endLayer) {
 		callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
 	}
-	state.currentLayer++
+	state.currentLayer = to.Layer(from.Layer(state.currentLayer) + 1)
 }
 
 export { executeGrid }

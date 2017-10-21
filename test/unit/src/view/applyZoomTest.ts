@@ -1,10 +1,12 @@
 import { state } from '../../../../src/state'
+import { getSetting } from '../../../../src/store/getSetting'
+import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
 import * as to from '../../../../src/to'
 import { applyZoom } from '../../../../src/view/applyZoom'
 
 describe('apply zoom', () => {
 	const zoom = 2
-	const canvasSize = 200
+	const canvasSize = to.Dimension(200)
 	let outline
 	beforeEach(() => {
 		outline = [
@@ -27,7 +29,8 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			state.mainHoundstooth.basePattern.viewSettings.zoomOnCanvasCenter = true
+			const viewSettings: ViewSettings = getSetting('view')
+			viewSettings.zoomOnCanvasCenter = true
 		})
 
 		it('works', () => {
@@ -41,7 +44,8 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
+				const viewSettings: ViewSettings = getSetting('view')
+				viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 			})
 		})
 

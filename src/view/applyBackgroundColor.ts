@@ -1,16 +1,15 @@
 import { getCurrentContext } from '../canvas'
 import { parseColor } from '../render'
-import { state } from '../state'
-import { defaults } from '../store'
+import { ColorSettings, getSetting, ViewSettings } from '../store'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyBackgroundColor: NullarySideEffector = () => {
-	const { backgroundColor = defaults.DEFAULT_BACKGROUND_COLOR } = state.mainHoundstooth.basePattern.colorSettings || {}
+	const { backgroundColor }: ColorSettings = getSetting('color')
 	if (backgroundColor.a === 0) {
 		return
 	}
 
-	const { canvasSize = defaults.DEFAULT_CANVAS_SIZE } = state.mainHoundstooth.basePattern.viewSettings || {}
+	const { canvasSize }: ViewSettings = getSetting('view')
 
 	const context = getCurrentContext()
 	context.fillStyle = parseColor(backgroundColor)

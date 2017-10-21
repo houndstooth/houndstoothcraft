@@ -20,7 +20,7 @@ import { Context, Dimension } from './page'
 import { Color, solid } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinateAboutPoint } from './space'
 import { state } from './state'
-import { defaults, Effect } from './store'
+import { defaults, Effect, getSetting, paths, StripeCountContinuumSettings } from './store'
 import * as to from './to'
 import { maybeAddEffectToggles } from './ui'
 
@@ -54,4 +54,7 @@ export {
 	Radian,
 	to,
 	from,
+	paths,
+	getSetting,
+	StripeCountContinuumSettings,
 }

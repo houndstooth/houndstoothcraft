@@ -1,9 +1,9 @@
 import { getCurrentContext } from '../canvas'
-import { state } from '../state'
+import { ColorSettings, getSetting } from '../store'
 import { NullarySideEffector } from '../utilities/types'
 
 const applyOpacity: NullarySideEffector = () => {
-	const { opacity } = state.mainHoundstooth.basePattern.colorSettings
+	const { opacity }: ColorSettings = getSetting('color')
 	if (!opacity || opacity === 1) {
 		return
 	}

@@ -1,6 +1,7 @@
 import { Frame } from '../../animation'
 import { Layer } from '../../execute'
 import { Context } from '../../page'
+import { Effect } from './Effect'
 import { Houndstooth } from './Houndstooth'
 
 interface State {
@@ -15,7 +16,7 @@ interface State {
 	mixedDownContext: Context | undefined,
 	mixingDown: boolean,
 	performanceLogging: boolean,
-	selectedHoundstoothEffects: Houndstooth[],
+	selectedHoundstoothEffects: Effect[],
 }
 
 export { State }

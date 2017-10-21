@@ -1,7 +1,7 @@
 import { PERIMETER_SCALAR } from '../constants'
 import { shape, ShapeParams } from '../render'
 import { Coordinate, squareOutline, stripeOutline } from '../space'
-import { state } from '../state'
+import { getSetting, TileSettings } from '../store'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileColorIndices } from './getTileColorIndices'
@@ -47,7 +47,7 @@ const definedTile: (_: {
 }
 
 const shouldUseSquare: (_: { tileColorIndices: TileColorIndices }) => boolean = ({ tileColorIndices }) => {
-	const { collapseSameColoredShapesWithinTile } = state.mainHoundstooth.basePattern.tileSettings
+	const { collapseSameColoredShapesWithinTile }: TileSettings = getSetting('tile')
 	const shouldCollapseSameColoredShapes = defaultToTrue(collapseSameColoredShapesWithinTile)
 
 	return !!shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })

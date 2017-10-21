@@ -1,6 +1,6 @@
 import { getCurrentContext } from '../canvas'
-import { state } from '../state'
-import { wrappedIndex } from '../utilities/codeUtilities'
+import { getSetting, TextureSettings } from '../store'
+import { isDefined, wrappedIndex } from '../utilities/codeUtilities'
 import { solid } from './solid'
 import { texture } from './texture'
 import { ShapeParams } from './types'
@@ -15,9 +15,10 @@ const shape: (_: ShapeParams) => void = params => {
 	const context = getCurrentContext()
 	const shapeColorIndex = wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
-	const { renderTexture } = state.mainHoundstooth.basePattern.textureSettings
+	const textureSettings: Partial<TextureSettings> = getSetting('texture')
+	const renderTexture = textureSettings.renderTexture
 
-	const renderFunction = renderTexture ? texture : solid
+	const renderFunction = isDefined(renderTexture) ? texture : solid
 	renderFunction({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })
 }
 

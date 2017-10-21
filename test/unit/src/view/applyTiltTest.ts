@@ -4,12 +4,12 @@ import { applyTilt } from '../../../../src/view/applyTilt'
 import { coordinatesMatch } from '../../helpers/coordinatesMatch'
 
 describe('apply tilt', () => {
-	const canvasSize = 200
+	const canvasSize = to.Dimension(200)
 
 	it('rotates the outline about the canvas center', () => {
 		state.mainHoundstooth.basePattern.viewSettings = {
 			canvasSize,
-			rotateViewAboutCanvasCenter: Math.PI / 2,
+			rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2),
 		}
 		const outline = to.Outline([
 			[ 0, 0 ],

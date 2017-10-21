@@ -1,11 +1,11 @@
-import { Assignment } from '../../../components'
 import { Color } from '../../../render'
+import { Assignment } from './color'
 
 interface ColorSettings {
-	assignment?: Assignment,
-	backgroundColor?: Color,
-	colorSet?: Color[],
-	opacity?: number,
+	assignment: Partial<Assignment>,
+	backgroundColor: Color,
+	colorSet: Color[],
+	opacity: number,
 }
 
 export { ColorSettings }

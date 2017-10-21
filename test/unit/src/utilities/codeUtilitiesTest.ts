@@ -84,6 +84,9 @@ describe('code utilities', () => {
 	})
 
 	describe('#accessChildPropertyOrCreatePath', () => {
+		let accessChildPropertyOrCreatePath
+		beforeEach(() => accessChildPropertyOrCreatePath = codeUtilities.accessChildPropertyOrCreatePath)
+
 		it('accesses child property if it exists', () => {
 			const expectedProperty = {}
 			const objectWithProperties = {
@@ -93,7 +96,7 @@ describe('code utilities', () => {
 			}
 			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
+			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
 			expect(childProperty).toBe(expectedProperty)
 		})
@@ -102,7 +105,7 @@ describe('code utilities', () => {
 			const objectWithProperties = {}
 			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
+			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
 			expect(childProperty).toEqual({})
 			expect(objectWithProperties).toEqual({
@@ -120,7 +123,7 @@ describe('code utilities', () => {
 			}
 			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
+			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
 			expect(childProperty).toBe(0)
 			expect(objectWithProperties).toEqual({

@@ -1,6 +1,8 @@
 import { grid } from '../../../../src/components/grid'
 import * as tile from '../../../../src/components/tile'
 import { state } from '../../../../src/state'
+import { getSetting } from '../../../../src/store/getSetting'
+import { GridSettings } from '../../../../src/store/types/settings/GridSettings'
 import * as view from '../../../../src/view'
 
 describe('grid', () => {
@@ -19,7 +21,8 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = false
+			const gridSettings: GridSettings = getSetting('grid')
+			gridSettings.includeNegativeQuadrants = false
 		})
 
 		it('only makes tiles with positive addresses', () => {
@@ -35,7 +38,8 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			state.mainHoundstooth.basePattern.gridSettings.includeNegativeQuadrants = true
+			const gridSettings: GridSettings = getSetting('grid')
+			gridSettings.includeNegativeQuadrants = true
 		})
 
 		// tslint:disable-next-line:max-line-length

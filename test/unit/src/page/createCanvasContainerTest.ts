@@ -1,6 +1,7 @@
-import { state } from '../../../../src'
 import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
 import * as scaleElement from '../../../../src/page/scaleElement'
+import { getSetting } from '../../../../src/store/getSetting'
+import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
 import * as to from '../../../../src/to'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockBody } from '../../helpers/buildMockBody'
@@ -12,7 +13,8 @@ describe('create canvas container', () => {
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {
-		state.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
+		const viewSettings: ViewSettings = getSetting('view')
+		viewSettings.canvasSize = canvasSize
 		mockBodyChildren = []
 
 		spyOn(scaleElement, 'scaleElement')

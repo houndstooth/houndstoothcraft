@@ -1,21 +1,21 @@
+import { from, state, to } from '../../../../src'
 import { standardAnimation } from '../../../../src/animation/standardAnimation'
-import { state } from '../../../../src/state'
 
 describe('standard animation', () => {
 	it('multiplies the property by the standard animation rate each frame', () => {
-		state.currentAnimationFrame = 0
+		state.currentAnimationFrame = to.Frame(0)
 		const propertyAtCurrentFrame = 4
 		expect(standardAnimation(propertyAtCurrentFrame)).toBe(propertyAtCurrentFrame)
 
-		state.currentAnimationFrame++
+		state.currentAnimationFrame = to.Frame(from.Frame(state.currentAnimationFrame) + 1)
 		let propertyAtNextFrame = propertyAtCurrentFrame * 1.000005
 		expect(standardAnimation(propertyAtCurrentFrame)).toBe(propertyAtNextFrame)
 
-		state.currentAnimationFrame++
+		state.currentAnimationFrame = to.Frame(from.Frame(state.currentAnimationFrame) + 1)
 		propertyAtNextFrame = propertyAtCurrentFrame * 1.000005 * 1.000005
 		expect(standardAnimation(propertyAtCurrentFrame)).toBe(propertyAtNextFrame)
 
-		state.currentAnimationFrame++
+		state.currentAnimationFrame = to.Frame(from.Frame(state.currentAnimationFrame) + 1)
 		propertyAtNextFrame = propertyAtCurrentFrame * 1.000005 * 1.000005 * 1.000005
 		expect(standardAnimation(propertyAtCurrentFrame)).toBe(propertyAtNextFrame)
 	})

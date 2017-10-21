@@ -1,7 +1,9 @@
 import * as effects from '../../../../effects/index'
 import { to } from '../../../../src'
+import { Unit } from '../../../../src/components/types/Unit'
 import { PageElement } from '../../../../src/page/types/PageElement'
 import { state } from '../../../../src/state'
+import { getSetting } from '../../../../src/store/getSetting'
 import { maybeAddEffectToggles } from '../../../../src/ui/maybeAddEffectToggles'
 
 xdescribe('effect toggles', () => {
@@ -14,9 +16,11 @@ xdescribe('effect toggles', () => {
 		}
 		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') || {}
 		effectToggle.click()
-		const { tileSizeSetting } = state.mainHoundstooth.basePattern.tileSettings
-		expect(tileSizeSetting).toBe(0)
+
+		const tileSize: Unit = getSetting('tileSize')
+
+		expect(tileSize).toBe(to.Unit(0))
 		effectToggle.click()
-		expect(tileSizeSetting).toBe(50)
+		expect(tileSize).toBe(to.Unit(50))
 	})
 })

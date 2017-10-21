@@ -1,11 +1,13 @@
+import { Unit } from '../components'
 import { HALF } from '../constants'
 import * as from from '../from'
+import { Dimension } from '../page'
 import { Coordinate, Outline } from '../space'
-import { state } from '../state'
+import { getSetting, ViewSettings } from '../store'
 import * as to from '../to'
 
 const applyScroll: (outline: Outline) => Outline = outline => {
-	const { centerViewOnCenterOfTileAtHomeAddress } = state.mainHoundstooth.basePattern.viewSettings
+	const { centerViewOnCenterOfTileAtHomeAddress }: ViewSettings = getSetting('view')
 
 	if (!centerViewOnCenterOfTileAtHomeAddress) {
 		return outline
@@ -15,11 +17,11 @@ const applyScroll: (outline: Outline) => Outline = outline => {
 }
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Coordinate = coordinate => {
-	const { canvasSize } = state.mainHoundstooth.basePattern.viewSettings
-	const canvasCenter = canvasSize * HALF
+	const canvasSize: Dimension = getSetting('canvasSize')
+	const canvasCenter = from.Dimension(canvasSize) * HALF
 
-	const { tileSizeSetting } = state.mainHoundstooth.basePattern.tileSettings
-	const halfTileSize = tileSizeSetting * HALF
+	const tileSize: Unit = getSetting('tileSize')
+	const halfTileSize = from.Unit(tileSize) * HALF
 
 	return to.Coordinate([
 		from.Unit(coordinate[ 0 ]) + canvasCenter - halfTileSize,

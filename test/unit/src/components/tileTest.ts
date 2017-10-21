@@ -7,6 +7,8 @@ import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as render from '../../../../src/render'
 import * as space from '../../../../src/space'
 import { state } from '../../../../src/state'
+import { getSetting } from '../../../../src/store/getSetting'
+import { TileSettings } from '../../../../src/store/types/settings/TileSettings'
 import * as to from '../../../../src/to'
 
 describe('tile', () => {
@@ -61,7 +63,8 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = true
+				const tileSettings: TileSettings = getSetting('tile')
+				tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
 			it('checks if the tile is uniform', () => {
@@ -169,7 +172,8 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.tileSettings.collapseSameColoredShapesWithinTile = false
+				const tileSettings: TileSettings = getSetting('tile')
+				tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

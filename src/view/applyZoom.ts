@@ -1,8 +1,7 @@
 import { HALF } from '../constants'
 import * as from from '../from'
 import { Coordinate, Outline } from '../space'
-import { state } from '../state'
-import { defaults } from '../store'
+import { getSetting, ViewSettings } from '../store'
 import * as to from '../to'
 
 const applyZoom: (outline: Outline) => Outline = outline => outline.map(adjustCoordinateForZoom)
@@ -11,11 +10,11 @@ const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordina
 	const {
 		canvasSize,
 		centerViewOnCenterOfTileAtHomeAddress,
-		zoom = defaults.DEFAULT_ZOOM,
+		zoom,
 		zoomOnCanvasCenter,
-	} = state.mainHoundstooth.basePattern.viewSettings
-	const halfCanvasSize = canvasSize as number * HALF
-	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
+	}: ViewSettings = getSetting('view')
+	const halfCanvasSize = from.Dimension(canvasSize) * HALF
+	const shouldAdjustForCentering = !!zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })
 }

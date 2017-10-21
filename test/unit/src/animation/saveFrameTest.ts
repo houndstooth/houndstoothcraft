@@ -1,11 +1,12 @@
 import * as saveBlob from '../../../../src/animation/saveBlob'
 import { saveFrame } from '../../../../src/animation/saveFrame'
 import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 
 describe('save frame', () => {
 	const result = {}
 	beforeEach(() => {
-		state.lastSavedAnimationFrame = 666
+		state.lastSavedAnimationFrame = to.Frame(666)
 		spyOn(saveBlob, 'saveBlob')
 
 		saveFrame(result)
@@ -16,6 +17,6 @@ describe('save frame', () => {
 	})
 
 	it('increments the last saved frame', () => {
-		expect(state.lastSavedAnimationFrame).toBe(667)
+		expect(state.lastSavedAnimationFrame).toBe(to.Frame(667))
 	})
 })

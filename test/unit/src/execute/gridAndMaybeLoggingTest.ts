@@ -1,12 +1,13 @@
 import * as components from '../../../../src/components'
 import { gridAndMaybeLogging } from '../../../../src/execute/gridAndMaybeLogging'
 import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('grid and maybe logging', () => {
 	beforeEach(() => {
-		state.currentAnimationFrame = 96
-		state.currentLayer = 54
+		state.currentAnimationFrame = to.Frame(96)
+		state.currentLayer = to.Layer(54)
 
 		spyOn(components, 'grid')
 		spyOn(console, 'time')

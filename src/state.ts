@@ -1,6 +1,6 @@
-import { defaults } from './store'
+import { defaults, State } from './store'
 import { deepClone } from './utilities/codeUtilities'
 
-const state = deepClone(defaults.DEFAULT_STATE)
+const state: State = deepClone(defaults.DEFAULT_STATE)
 
 export { state }

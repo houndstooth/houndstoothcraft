@@ -1,6 +1,8 @@
 import { state, to } from '../../../../src'
 import { getTileColorIndices } from '../../../../src/components/getTileColorIndices'
 import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
+import { getSetting } from '../../../../src/store/getSetting'
+import { Assignment } from '../../../../src/store/types/settings/color/Assignment'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 
 describe('get tile color indices', () => {
@@ -88,7 +90,8 @@ describe('get tile color indices', () => {
 			}
 			const notFlippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
-			state.mainHoundstooth.basePattern.colorSettings.assignment.flipGrain = true
+			const assignment: Assignment = getSetting('assignment')
+			assignment.flipGrain = true
 			const flippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)

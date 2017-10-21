@@ -1,4 +1,4 @@
-import { state } from '../state'
+import { getSetting, GridSettings } from '../store'
 import * as to from '../to'
 import { iterator } from '../utilities/codeUtilities'
 import { NullarySideEffector } from '../utilities/types'
@@ -8,7 +8,7 @@ import { tile } from './tile'
 const NEGATIVE_AND_POSITIVE = 2
 
 const grid: NullarySideEffector = () => {
-	const { includeNegativeQuadrants, gridSize = 0 } = state.mainHoundstooth.basePattern.gridSettings
+	const { includeNegativeQuadrants, gridSize = 0 }: GridSettings = getSetting('grid')
 
 	applyOpacity()
 	applyBackgroundColor()

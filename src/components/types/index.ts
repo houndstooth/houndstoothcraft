@@ -1,5 +1,4 @@
 import { Address } from './Address'
-import { Assignment } from './Assignment'
 import { AssignmentMode } from './AssignmentMode'
 import { BaseStripeDiagonal } from './BaseStripeDiagonal'
 import { GetStripePosition } from './GetStripePosition'
@@ -16,7 +15,6 @@ export {
 	StripePosition,
 	TileColorIndices,
 	TileOriginAndSize,
-	Assignment,
 	Supertile,
 	Weave,
 	Unit,

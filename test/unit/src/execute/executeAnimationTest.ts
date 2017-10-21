@@ -1,6 +1,8 @@
 import * as animation from '../../../../src/animation'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { state } from '../../../../src/state'
+import { getSetting } from '../../../../src/store/getSetting'
+import { AnimationSettings } from '../../../../src/store/types/settings/AnimationSettings'
 import { noop } from '../../../helpers/noop'
 
 describe('execute animation', () => {
@@ -76,7 +78,8 @@ describe('execute animation', () => {
 	})
 
 	it('defaults refreshing the canvas to true', () => {
-		state.mainHoundstooth.basePattern.animationSettings.refreshCanvas = undefined
+		const animationSettings: Partial<AnimationSettings> = getSetting('animation')
+		animationSettings.refreshCanvas = undefined
 
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
@@ -88,7 +91,8 @@ describe('execute animation', () => {
 	})
 
 	it('defaults the start animation frame to zero', () => {
-		state.mainHoundstooth.basePattern.animationSettings.startAnimationFrame = undefined
+		const animationSettings: Partial<AnimationSettings> = getSetting('animation')
+		animationSettings.startAnimationFrame = undefined
 
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 

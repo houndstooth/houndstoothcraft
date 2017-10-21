@@ -1,16 +1,16 @@
-import { to } from '../../../../src'
+import { from, to } from '../../../../src'
 import { BaseStripeDiagonal } from '../../../../src/components/types/BaseStripeDiagonal'
 import { StripeCountMode } from '../../../../src/components/types/StripeCountMode'
+import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
-import { TILE_SIZE } from '../../../helpers/settingsPaths'
+import { getSetting } from '../../../../src/store/getSetting'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { sectionCenterIsColor } from '../../helpers/sectionCenterIsColor'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.stripeSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
+	const areaSize: Unit = getSetting('tileSize')
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
@@ -24,7 +24,7 @@ describe('.stripeSettings', () => {
 								stripeCountMode: StripeCountMode.GinghamChevronContinuum,
 							},
 						},
-						viewSettings: { canvasSize: tileSize },
+						viewSettings: { canvasSize: areaSize },
 					},
 				}
 			})
@@ -38,7 +38,7 @@ describe('.stripeSettings', () => {
 					baseId: 0,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: to.Coordinate([ 0, 0 ]),
-					tileSize,
+					tileSize: areaSize,
 				}
 				expect(standardTileIsColors(tile)).toBe(true)
 			})
@@ -59,8 +59,7 @@ describe('.stripeSettings', () => {
 				activateTestMarkerCanvas()
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let areaOrigin = to.Coordinate([ tileSize * 0, tileSize * 0 ])
-				const areaSize = tileSize
+				let areaOrigin = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])
 				let id = -1
 				expect(sectionCenterIsColor({
 					areaOrigin,
@@ -103,7 +102,7 @@ describe('.stripeSettings', () => {
 					sectionResolution: 5,
 				})).toBe(true)
 
-				areaOrigin = to.Coordinate([ areaSize * 1, areaSize * 1 ])
+				areaOrigin = to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 1 ])
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
@@ -163,8 +162,7 @@ describe('.stripeSettings', () => {
 			let areaOrigin
 			let id = -1
 
-			const areaSize = tileSize
-			areaOrigin = [ areaSize * 0, areaSize * 0 ]
+			areaOrigin = [ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ]
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
@@ -233,7 +231,7 @@ describe('.stripeSettings', () => {
 				sectionResolution: 4,
 			})).toBe(true)
 
-			areaOrigin = [ areaSize * 1, areaSize * 1 ]
+			areaOrigin = [ from.Unit(areaSize) * 1, from.Unit(areaSize) * 1 ]
 
 			expect(sectionCenterIsColor({
 				areaOrigin,

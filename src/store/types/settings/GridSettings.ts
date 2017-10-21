@@ -1,6 +1,6 @@
 interface GridSettings {
-	gridSize?: number,
-	includeNegativeQuadrants?: boolean,
+	gridSize: number,
+	includeNegativeQuadrants: boolean,
 }
 
 export { GridSettings }

@@ -1,13 +1,13 @@
-import { to } from '../../../../src'
+import { from, to } from '../../../../src'
+import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
-import { TILE_SIZE } from '../../../helpers/settingsPaths'
+import { getSetting } from '../../../../src/store/getSetting'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.gridSettings', () => {
-	const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
+	const tileSize: Unit = getSetting('tileSize')
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {
@@ -32,100 +32,100 @@ describe('.gridSettings', () => {
 				{
 					baseId: 0,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 8,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 1 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 16,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 2 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 24,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 3 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 3 ]),
 					tileSize,
 				},
 
 				{
 					baseId: 32,
 					colors: [ WHITE, WHITE ],
-					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 0 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 40,
 					colors: [ BLACK, WHITE ],
-					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 48,
 					colors: [ WHITE, WHITE ],
-					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 2 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 56,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 3 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 3 ]),
 					tileSize,
 				},
 
 				{
 					baseId: 64,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 0 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 72,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 1 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 80,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 2 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 88,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 3 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 3 ]),
 					tileSize,
 				},
 
 				{
 					baseId: 96,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 0 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 104,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 1 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 112,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 2 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 120,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 3 ]),
+					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 3 ]),
 					tileSize,
 				},
 			]

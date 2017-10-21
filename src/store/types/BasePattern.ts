@@ -1,14 +1,14 @@
 import * as settings from './settings'
 
 interface BasePattern {
-	animationSettings?: settings.AnimationSettings,
-	colorSettings?: settings.ColorSettings,
-	gridSettings?: settings.GridSettings,
-	layerSettings?: settings.LayerSettings,
-	stripeSettings?: settings.StripeSettings,
-	textureSettings?: settings.TextureSettings,
-	tileSettings?: settings.TileSettings,
-	viewSettings?: settings.ViewSettings,
+	animationSettings: Partial<settings.AnimationSettings>,
+	colorSettings: Partial<settings.ColorSettings>,
+	gridSettings: Partial<settings.GridSettings>,
+	layerSettings: Partial<settings.LayerSettings>,
+	stripeSettings: Partial<settings.StripeSettings>,
+	textureSettings: Partial<settings.TextureSettings>,
+	tileSettings: Partial<settings.TileSettings>,
+	viewSettings: Partial<settings.ViewSettings>,
 }
 
 export { BasePattern }

@@ -1,20 +1,15 @@
-import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
-import { defaults } from '../index'
+import { animator, buildAnimationFunction, buildStopConditionFunction, Frame } from '../animation'
 import { state } from '../state'
-import * as to from '../to'
+import { AnimationSettings, getSetting } from '../store'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { SettingsFunctionObject } from './types'
 
 const executeAnimation: (_: {
 	animationFunctionObjects: SettingsFunctionObject[], layerFunctionObjects: SettingsFunctionObject[],
 }) => void = ({ animationFunctionObjects, layerFunctionObjects }) => {
-	const { animationSettings } = state.mainHoundstooth.basePattern
-	const {
-		frameRate = defaults.DEFAULT_FRAME_RATE,
-		endAnimationFrame = to.Frame(0),
-		startAnimationFrame = to.Frame(0),
-	} = animationSettings
-	let { refreshCanvas } = animationSettings
+	const { frameRate, endAnimationFrame }: AnimationSettings = getSetting('animation')
+	const startAnimationFrame: Frame = getSetting('startAnimationFrame')
+	let refreshCanvas: boolean = getSetting('refreshCanvas')
 	refreshCanvas = !!defaultToTrue(refreshCanvas)
 
 	state.lastSavedAnimationFrame = startAnimationFrame

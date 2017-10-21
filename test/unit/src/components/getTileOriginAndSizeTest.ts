@@ -1,5 +1,7 @@
 import { from, state, to } from '../../../../src'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
+import { getSetting } from '../../../../src/store/getSetting'
+import { TileSettings } from '../../../../src/store/types/settings/TileSettings'
 
 describe('get tile origin and size', () => {
 	const gridAddressForSubject = to.Address([ 7, 11 ])
@@ -20,9 +22,10 @@ describe('get tile origin and size', () => {
 				gridAddress[ 1 ] * from.Unit(tileSizeSetting),
 				gridAddress[ 0 ] * from.Unit(tileSizeSetting),
 			]),
-			tileSize: from.Unit(tileSizeSetting) * from.Unit(tileSizeSetting),
+			tileSize: to.Unit(from.Unit(tileSizeSetting) * from.Unit(tileSizeSetting)),
 		})
-		state.mainHoundstooth.basePattern.tileSettings = { getTileOriginAndSize: custom }
+		const tileSettings: TileSettings = getSetting('tile')
+		tileSettings.getTileOriginAndSize = custom
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
 			tileOrigin: to.Coordinate([ from.Unit(tileSizeSetting) * 11, from.Unit(tileSizeSetting) * 7 ]),

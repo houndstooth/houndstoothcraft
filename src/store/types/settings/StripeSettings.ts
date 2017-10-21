@@ -1,16 +1,9 @@
-import { BaseStripeDiagonal, StripeCountMode, StripePosition } from '../../../components'
+import { BaseStripeDiagonal } from '../../../components'
+import { StripePositionSettings } from './stripe'
 
 interface StripeSettings {
-	baseStripeDiagonal?: BaseStripeDiagonal,
-	stripePositionSettings?: {
-		stripeCountContinuumSettings?: {
-			deltaStripeCount?: number,
-			initialStripeCount?: number,
-		},
-		stripeCountMode?: StripeCountMode,
-		stripeCountSetting?: number,
-		getStripePositions?(p?: any): StripePosition[],
-	},
+	baseStripeDiagonal: BaseStripeDiagonal,
+	stripePositionSettings: Partial<StripePositionSettings>,
 }
 
 export { StripeSettings }

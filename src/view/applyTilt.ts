@@ -1,16 +1,19 @@
 import { HALF } from '../constants'
-import { Outline, rotateCoordinateAboutPoint } from '../space'
-import { state } from '../state'
+import * as from from '../from'
+import { Dimension } from '../page'
+import { Outline, Radian, rotateCoordinateAboutPoint } from '../space'
+import { getSetting } from '../store'
 import * as to from '../to'
 
 const applyTilt: (outline: Outline) => Outline = outline => {
-	const { canvasSize, rotateViewAboutCanvasCenter } = state.mainHoundstooth.basePattern.viewSettings
+	const canvasSize: Dimension = getSetting('canvasSize')
+	const rotateViewAboutCanvasCenter: Radian = getSetting('rotateViewAboutCanvasCenter')
 
 	if (!rotateViewAboutCanvasCenter) {
 		return outline
 	}
 
-	const canvasCenter = to.Coordinate([ canvasSize * HALF, canvasSize * HALF ])
+	const canvasCenter = to.Coordinate([ from.Dimension(canvasSize) * HALF, from.Dimension(canvasSize) * HALF ])
 
 	return outline.map(coordinate => rotateCoordinateAboutPoint({
 		coordinate,

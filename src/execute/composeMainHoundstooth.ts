@@ -13,7 +13,7 @@ const composeMainHoundstooth: (_?: {
 	const combinedHoundstoothEffects = combineHoundstoothEffects({ houndstoothEffects })
 
 	composePattern({
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.basePattern,
+		patternDefaults: defaults.DEFAULT_BASE_PATTERN,
 		patternEffects: combinedHoundstoothEffects.basePattern || {},
 		patternOverrides: houndstoothOverrides.basePattern || {},
 		patternToCompose: state.mainHoundstooth.basePattern,

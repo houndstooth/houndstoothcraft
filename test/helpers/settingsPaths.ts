@@ -1,7 +1,7 @@
-import { PropertyPath } from '../../src/utilities/types'
+import * as to from '../../src/to'
 
-const CANVAS_SIZE = [ 'viewSettings', 'canvasSize' ] as PropertyPath
-const TILE_SIZE = [ 'tileSettings', 'tileSizeSetting' ] as PropertyPath
+const CANVAS_SIZE = to.PropertyPath([ 'viewSettings', 'canvasSize' ])
+const TILE_SIZE = to.PropertyPath([ 'tileSettings', 'tileSizeSetting' ])
 
 export {
 	CANVAS_SIZE,

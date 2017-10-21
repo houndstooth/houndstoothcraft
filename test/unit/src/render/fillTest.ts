@@ -1,16 +1,16 @@
+import { to } from '../../../../src'
 import { ERASE } from '../../../../src/constants'
 import * as buildPath from '../../../../src/render/buildPath'
 import { fill } from '../../../../src/render/fill'
 import * as fillPath from '../../../../src/render/fillPath'
 import * as parseColor from '../../../../src/render/parseColor'
-import { Outline } from '../../../../src/space/types/Outline'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
 	const context = buildMockContext()
-	const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
+	const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 
 	beforeEach(() => {
 		spyOn(parseColor, 'parseColor').and.returnValue(parsedColor)

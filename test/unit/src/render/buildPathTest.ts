@@ -1,20 +1,21 @@
+import { to } from '../../../../src'
 import { buildPath } from '../../../../src/render/buildPath'
-import { Outline } from '../../../../src/space/types/Outline'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('build path', () => {
 	it('draws the path with the correct outline and fills it', () => {
-		const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ], [ 1 as any, 0 as any ] ] as Outline
-		const contextCallsOrder = [] as any
+		const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
+		const contextCallsOrder = []
 		const context = buildMockContext({ contextCallsOrder })
 
 		buildPath({ context, outline })
 
-		expect(contextCallsOrder).toEqual([
+		const expectedContextCallsOrder = [
 			{ method: 'beginPath' },
 			{ method: 'moveTo', x: 0, y: 1 },
 			{ method: 'lineTo', x: 1, y: 1 },
 			{ method: 'lineTo', x: 1, y: 0 },
-		])
+		] as any
+		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

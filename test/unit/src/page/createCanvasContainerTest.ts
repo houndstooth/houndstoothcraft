@@ -1,24 +1,28 @@
+import { state } from '../../../../src'
 import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
 import * as scaleElement from '../../../../src/page/scaleElement'
+import * as to from '../../../../src/to'
 import * as window from '../../../../src/utilities/windowWrapper'
+import { buildMockBody } from '../../helpers/buildMockBody'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {
 	const mockCanvasContainerClassList = []
-	const canvasDimensions = [ 400, 500 ] as any
+	const canvasSize = to.Dimension(450)
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {
+		state.mainHoundstooth.basePattern.viewSettings.canvasSize = canvasSize
 		mockBodyChildren = []
 
 		spyOn(scaleElement, 'scaleElement')
 
-		window.document.body = buildMockElement({ mockChildren: mockBodyChildren })
+		window.document.body = buildMockBody({ mockChildren: mockBodyChildren })
 
 		const canvasContainer = buildMockElement({ mockClassList: mockCanvasContainerClassList })
 		spyOn(window.document, 'createElement').and.callFake(() => canvasContainer)
 
-		returnedCanvasContainer = createCanvasContainer({ canvasDimensions })
+		returnedCanvasContainer = createCanvasContainer()
 	})
 
 	it('returns the canvas container it just put on the page', () => {
@@ -33,7 +37,7 @@ describe('create canvas container', () => {
 
 	it('sets the canvas container width and height (as style, in px)', () => {
 		expect(scaleElement.scaleElement).toHaveBeenCalledWith({
-			dimensions: canvasDimensions,
+			dimensions: [ canvasSize, canvasSize ],
 			element: returnedCanvasContainer,
 		})
 	})

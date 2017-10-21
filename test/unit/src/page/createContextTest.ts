@@ -13,10 +13,10 @@ describe('create context', () => {
 		const mockCanvas = buildMockCanvas({ mockContext })
 		spyOn(window.document, 'createElement').and.returnValue(mockCanvas)
 
-		const mockChildren = [] as Canvas[]
+		const mockChildren: Canvas[] = []
 		const canvasContainer = buildMockElement({ mockChildren })
 
-		returnedContext = createContext({ canvasContainer, canvasDimensions: [ 350, 600 ] as any })
+		returnedContext = createContext({ canvasContainer })
 
 		appendedCanvas = mockChildren[0]
 	})
@@ -27,10 +27,5 @@ describe('create context', () => {
 
 	it('sets this context\'s canvas\'s position to absolute', () => {
 		expect(appendedCanvas.style.position).toBe('absolute')
-	})
-
-	it('sets this context\'s canvas\'s width and height', () => {
-		expect(appendedCanvas.width).toBe(350)
-		expect(appendedCanvas.height).toBe(600)
 	})
 })

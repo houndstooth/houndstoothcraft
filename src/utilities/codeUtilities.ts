@@ -1,4 +1,6 @@
-/* tslint:disable:max-file-line-count */
+// tslint:disable:max-file-line-count
+
+import * as to from '../to'
 import { PropertyPath } from './types'
 
 const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i, options = { oneIndexed: false }) => {
@@ -73,7 +75,7 @@ const deeperPath: (_: {
 	const path = propertyPath.slice()
 	path.push(propertyName)
 
-	return path as PropertyPath
+	return to.PropertyPath(path)
 }
 
 const accessChildPropertyOrCreatePath: (_: {
@@ -108,6 +110,8 @@ const changeObjectIntoCopy: (_: {
 
 const reversed: <T>(array: T[]) => T[] = array => array.slice().reverse()
 
+const isEmpty: (object: object) => boolean = object => Object.keys(object).length === 0 && object.constructor === Object
+
 export {
 	iterator,
 	wrappedIndex,
@@ -121,4 +125,5 @@ export {
 	propertyIsDefinedOnObject,
 	changeObjectIntoCopy,
 	reversed,
+	isEmpty,
 }

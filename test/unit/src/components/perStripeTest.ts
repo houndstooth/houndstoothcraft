@@ -1,6 +1,6 @@
+import { state, to } from '../../../../src'
 import { perStripe } from '../../../../src/components/perStripe'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
-import { state } from '../../../../src/state'
 
 describe('per stripe', () => {
 	beforeEach(() => composeMainHoundstooth)
@@ -11,7 +11,7 @@ describe('per stripe', () => {
 				stripeCountSetting: 3,
 			},
 		}
-		const stripePositions = perStripe({ getStripePosition: () => 5 as any })
+		const stripePositions = perStripe({ getStripePosition: () => to.StripePosition(5) })
 
 		expect(stripePositions.length).toBe(3)
 	})
@@ -30,10 +30,10 @@ describe('per stripe', () => {
 	})
 
 	it('multiplies the result of each stripe position by the perimeter scalar', () => {
-		const standardStripePosition = ({ stripeIndex, stripeCount }) => stripeIndex / stripeCount as any
+		const standardStripePosition = ({ stripeIndex, stripeCount }) => to.StripePosition(stripeIndex / stripeCount)
 		const stripePositions = perStripe({ getStripePosition: standardStripePosition })
 
-		const expectedStripePositions = [ 0, 0.5, 1, 1.5 ] as any
+		const expectedStripePositions = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 		expect(stripePositions).toEqual(expectedStripePositions)
 	})
 })

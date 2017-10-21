@@ -1,11 +1,10 @@
 import { clear } from '../../../../src/canvas/clear'
-import * as getCanvasDimensions from '../../../../src/canvas/getCanvasDimensions'
 import { state } from '../../../../src/state'
 
 describe('clear', () => {
 	let mixedDownClearRectSpy
 	beforeEach(() => {
-		spyOn(getCanvasDimensions, 'getCanvasDimensions').and.returnValue([ 400, 500 ])
+		state.mainHoundstooth.basePattern.viewSettings.canvasSize = 450
 
 		mixedDownClearRectSpy = jasmine.createSpy('mixedDownClearRect')
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }
@@ -21,11 +20,11 @@ describe('clear', () => {
 		})
 
 		it('wipes the default amount of canvas', () => {
-			expect(clearRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(clearRectSpy).toHaveBeenCalledWith(0, 0, 450, 450)
 		})
 
 		it('also wipes the mixed down canvas', () => {
-			expect(mixedDownClearRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(mixedDownClearRectSpy).toHaveBeenCalledWith(0, 0, 450, 450)
 		})
 	})
 
@@ -42,10 +41,10 @@ describe('clear', () => {
 
 			clear()
 
-			expect(clearRectSpy1).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(clearRectSpy2).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(clearRectSpy3).toHaveBeenCalledWith(0, 0, 400, 500)
-			expect(mixedDownClearRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
+			expect(clearRectSpy1).toHaveBeenCalledWith(0, 0, 450, 450)
+			expect(clearRectSpy2).toHaveBeenCalledWith(0, 0, 450, 450)
+			expect(clearRectSpy3).toHaveBeenCalledWith(0, 0, 450, 450)
+			expect(mixedDownClearRectSpy).toHaveBeenCalledWith(0, 0, 450, 450)
 		})
 	})
 })

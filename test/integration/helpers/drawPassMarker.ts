@@ -1,3 +1,4 @@
+import { from } from '../../../src'
 import { Canvas } from '../../../src/page/types/Canvas'
 import { Coordinate } from '../../../src/space'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
@@ -5,7 +6,7 @@ import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 const drawPassMarker: (_: {
 	coordinateUnderTest: Coordinate, id: number, passed: boolean,
 }) => void = ({ coordinateUnderTest, id, passed }) => {
-	let testMarkersCanvas = document.querySelector('.test-markers-canvas') as Canvas
+	let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') || {}
 	if (!testMarkersCanvas) {
 		testMarkersCanvas = createTestMarkersCanvas()
 	}
@@ -14,8 +15,8 @@ const drawPassMarker: (_: {
 	testMarkersContext.strokeStyle = passed ? 'green' : 'red'
 	testMarkersContext.beginPath()
 
-	const x = coordinateUnderTest[0] as any
-	const y = coordinateUnderTest[1] as any
+	const x = from.Units(coordinateUnderTest[0])
+	const y = from.Units(coordinateUnderTest[1])
 	testMarkersContext.arc(x, y, 2, 0, Math.PI * 2)
 
 	testMarkersContext.closePath()

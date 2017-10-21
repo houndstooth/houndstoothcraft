@@ -1,5 +1,5 @@
+import * as to from '../../../../src/to'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
-import { PropertyPath } from '../../../../src/utilities/types'
 
 describe('code utilities', () => {
 	describe('#iterator', () => {
@@ -73,7 +73,7 @@ describe('code utilities', () => {
 
 	describe('#deeperPath', () => {
 		it('does not mutate the passed objects path', () => {
-			const propertyPath = [ 'colorSettings', 'assignment' ] as PropertyPath
+			const propertyPath = to.PropertyPath([ 'colorSettings', 'assignment' ])
 			const propertyName = 'colorSet'
 
 			const deeperPath = codeUtilities.deeperPath({ propertyPath, propertyName })
@@ -91,7 +91,7 @@ describe('code utilities', () => {
 					childPathSecondStep: expectedProperty,
 				},
 			}
-			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ] as PropertyPath
+			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
@@ -100,7 +100,7 @@ describe('code utilities', () => {
 
 		it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
 			const objectWithProperties = {}
-			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ] as PropertyPath
+			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
@@ -118,7 +118,7 @@ describe('code utilities', () => {
 					childPathSecondStep: 0,
 				},
 			}
-			const propertyPath = [ 'childPathFirstStep', 'childPathSecondStep' ] as PropertyPath
+			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 			const childProperty = codeUtilities.accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
 
@@ -281,7 +281,7 @@ describe('code utilities', () => {
 		beforeEach(() => changeObjectIntoCopy = codeUtilities.changeObjectIntoCopy)
 
 		it('removes all the keys of the object that are not on the one being copied', () => {
-			const objectToChange = { billy: 'bob', mary: 'jane' } as any
+			const objectToChange: { billy?, mary? } = { billy: 'bob', mary: 'jane' }
 			const objectWithProperties = {}
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -291,7 +291,7 @@ describe('code utilities', () => {
 		})
 
 		it('replaces keys of the object with ones from the one being copied', () => {
-			const objectToChange: { billy?, mary } = { mary: 'jane' }
+			const objectToChange: { billy?, mary? } = { mary: 'jane' }
 			const objectWithProperties = { mary: 'had a little lamb' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -301,7 +301,7 @@ describe('code utilities', () => {
 		})
 
 		it('adds new keys from the one being copied', () => {
-			const objectToChange: { billy? } = {}
+			const objectToChange: { billy?, mary? } = {}
 			const objectWithProperties = { billy: 'bob' }
 
 			changeObjectIntoCopy({ objectToChange, objectWithProperties })
@@ -328,6 +328,19 @@ describe('code utilities', () => {
 			reversed(array)
 
 			expect(array).toEqual([ 1, 2, 3 ])
+		})
+	})
+
+	describe('#isEmpty', () => {
+		let isEmpty
+		beforeEach(() => isEmpty = codeUtilities.isEmpty)
+
+		it('returns true if the object has no keys', () => {
+			expect(isEmpty({ })).toBe(true)
+		})
+
+		it('returns false if the object has at least one key', () => {
+			expect(isEmpty({ imMrMeeseeks: 'look at me' })).toBe(false)
 		})
 	})
 })

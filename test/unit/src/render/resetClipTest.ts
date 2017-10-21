@@ -3,13 +3,15 @@ import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {
-		const contextCallsOrder = [] as any
+		const contextCallsOrder = []
 		const context = buildMockContext({ contextCallsOrder })
 
 		resetClip({ context })
 
-		expect(contextCallsOrder).toEqual([
+		const expectedContextCallsOrder = [
 			{ method: 'restore' },
-		])
+		] as any
+
+		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

@@ -1,15 +1,17 @@
 import { mixDownContexts } from '../canvas'
+import * as from from '../from'
 import { state } from '../state'
+import * as to from '../to'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
 import { gridAndMaybeLogging } from './gridAndMaybeLogging'
 import { Layer, SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
 	const { layerSettings } = state.mainHoundstooth.basePattern
-	const { startLayer = 0 as any, endLayer = 0 as any } = layerSettings
+	const { startLayer = to.Layer(0), endLayer = to.Layer(0) } = layerSettings
 
-	for (let currentLayer = 0; currentLayer <= endLayer; currentLayer++) {
-		executeLayer({ currentLayer: currentLayer as any, startLayer, endLayer, layerFunctionObjects })
+	for (let currentLayerValue = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
+		executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })
 	}
 
 	if (state.mixingDown) {

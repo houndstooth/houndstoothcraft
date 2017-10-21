@@ -1,14 +1,16 @@
 import { HALF, X_INDEX, Y_INDEX } from '../constants'
+import * as from from '../from'
 import { Coordinate } from '../space'
+import * as to from '../to'
 import { TileOriginAndSize } from './types'
 
 const tileCenter: (_: TileOriginAndSize) => Coordinate = ({ tileOrigin, tileSize }) => {
-	const halfTileSize = tileSize as any * HALF
+	const halfTileSize = from.Units(tileSize) * HALF
 
-	return [
-		tileOrigin[ X_INDEX ] as any + halfTileSize,
-		tileOrigin[ Y_INDEX ] as any + halfTileSize,
-	] as Coordinate
+	return to.Coordinate([
+		from.Units(tileOrigin[ X_INDEX ]) + halfTileSize,
+		from.Units(tileOrigin[ Y_INDEX ]) + halfTileSize,
+	])
 }
 
 export { tileCenter }

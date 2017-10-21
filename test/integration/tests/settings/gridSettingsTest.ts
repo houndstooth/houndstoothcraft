@@ -1,6 +1,6 @@
+import { to } from '../../../../src'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
@@ -20,7 +20,7 @@ describe('.gridSettings', () => {
 						gridSize: 3,
 					},
 					viewSettings: {
-						canvasSize: 200 as any,
+						canvasSize: to.Dimension(200),
 					},
 				},
 			}
@@ -32,100 +32,100 @@ describe('.gridSettings', () => {
 				{
 					baseId: 0,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 8,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 16,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 24,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 3 ]),
 					tileSize,
 				},
 
 				{
 					baseId: 32,
 					colors: [ WHITE, WHITE ],
-					tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 40,
 					colors: [ BLACK, WHITE ],
-					tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 48,
 					colors: [ WHITE, WHITE ],
-					tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 56,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 3 ]),
 					tileSize,
 				},
 
 				{
 					baseId: 64,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 72,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 80,
 					colors: [ WHITE, BLACK ],
-					tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 88,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 3 ]),
 					tileSize,
 				},
 
 				{
 					baseId: 96,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 0 ]),
 					tileSize,
 				},
 				{
 					baseId: 104,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 1 ]),
 					tileSize,
 				},
 				{
 					baseId: 112,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 2 ]),
 					tileSize,
 				},
 				{
 					baseId: 120,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 3 ]),
 					tileSize,
 				},
 			]
@@ -137,7 +137,7 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
-			const tileSizeSetting = 50 as any
+			const tileSizeSetting = to.Units(50)
 			const houndstoothOverrides = {
 				basePattern: {
 					gridSettings: {
@@ -148,7 +148,7 @@ describe('.gridSettings', () => {
 						tileSizeSetting,
 					},
 					viewSettings: {
-						canvasSize: 300 as any,
+						canvasSize: to.Dimension(300),
 						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
 				},
@@ -160,25 +160,25 @@ describe('.gridSettings', () => {
 				{
 					baseId: 0,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ 125 as any, 125 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ 125, 125 ]),
 					tileSize: tileSizeSetting,
 				},
 				{
 					baseId: 8,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ 75 as any, 125 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ 75, 125 ]),
 					tileSize: tileSizeSetting,
 				},
 				{
 					baseId: 24,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ 75 as any, 75 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ 75, 75 ]),
 					tileSize: tileSizeSetting,
 				},
 				{
 					baseId: 16,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: [ 125 as any, 75 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ 125, 75 ]),
 					tileSize: tileSizeSetting,
 				},
 			]

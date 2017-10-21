@@ -1,10 +1,9 @@
 import { stripeOutline } from '../../../../src/space/stripeOutline'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
-import { Outline } from '../../../../src/space/types/Outline'
+import * as to from '../../../../src/to'
 
 describe('stripe outline', () => {
-	const tileOrigin = [ 0 as any, 0 as any ] as Coordinate
-	const tileSize = 1 as any
+	const tileOrigin = to.Coordinate([ 0, 0 ])
+	const tileSize = to.Units(1)
 	let stripeStart
 	let stripeEnd
 
@@ -17,11 +16,11 @@ describe('stripe outline', () => {
 			it('makes a triangle within the top left half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0 as any, 0 as any ],
-					[ 0.5 as any, 0 as any ],
-					[ 0 as any, 0.5 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0, 0 ],
+					[ 0.5, 0 ],
+					[ 0, 0.5 ],
+				]))
 			})
 		})
 
@@ -31,11 +30,11 @@ describe('stripe outline', () => {
 			it('makes a triangle out of the entire top left half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0 as any, 0 as any ],
-					[ 1 as any, 0 as any ],
-					[ 0 as any, 1 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0, 0 ],
+					[ 1, 0 ],
+					[ 0, 1 ],
+				]))
 			})
 		})
 
@@ -45,13 +44,13 @@ describe('stripe outline', () => {
 			it('makes a square with a triangle subtracted from the bottom right half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0 as any, 0 as any ],
-					[ 1 as any, 0 as any ],
-					[ 1 as any, 0.5 as any ],
-					[ 0.5 as any, 1 as any ],
-					[ 0 as any, 1 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0, 0 ],
+					[ 1, 0 ],
+					[ 1, 0.5 ],
+					[ 0.5, 1 ],
+					[ 0, 1 ],
+				]))
 			})
 		})
 	})
@@ -65,12 +64,12 @@ describe('stripe outline', () => {
 			it('makes a trapezoid within the top left half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0.5 as any, 0 as any ],
-					[ 0.75 as any, 0 as any ],
-					[ 0 as any, 0.75 as any ],
-					[ 0 as any, 0.5 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0.5, 0 ],
+					[ 0.75, 0 ],
+					[ 0, 0.75 ],
+					[ 0, 0.5 ],
+				]))
 			})
 		})
 
@@ -80,12 +79,12 @@ describe('stripe outline', () => {
 			it('makes a trapezoid within the top left half, on the edge with the bottom right half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0.5 as any, 0 as any ],
-					[ 1 as any, 0 as any ],
-					[ 0 as any, 1 as any ],
-					[ 0 as any, 0.5 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0.5, 0 ],
+					[ 1, 0 ],
+					[ 0, 1 ],
+					[ 0, 0.5 ],
+				]))
 			})
 		})
 
@@ -96,14 +95,14 @@ describe('stripe outline', () => {
 			it('makes a hexagon with vertices in the bottom left and the top right corners, plus one on each of the square\'s edges', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0.5 as any, 0 as any ],
-					[ 1 as any, 0 as any ],
-					[ 1 as any, 0.5 as any ],
-					[ 0.5 as any, 1 as any ],
-					[ 0 as any, 1 as any ],
-					[ 0 as any, 0.5 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0.5, 0 ],
+					[ 1, 0 ],
+					[ 1, 0.5 ],
+					[ 0.5, 1 ],
+					[ 0, 1 ],
+					[ 0, 0.5 ],
+				]))
 			})
 		})
 
@@ -114,13 +113,13 @@ describe('stripe outline', () => {
 			it('makes a pentagon straddling with vertices at the bottom right, bottom left, and top right corners, as well as one on each of the left and top edges', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 0.5 as any, 0 as any ],
-					[ 1 as any, 0 as any ],
-					[ 1 as any, 1 as any ],
-					[ 0 as any, 1 as any ],
-					[ 0 as any, 0.5 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 0.5, 0 ],
+					[ 1, 0 ],
+					[ 1, 1 ],
+					[ 0, 1 ],
+					[ 0, 0.5 ],
+				]))
 			})
 		})
 	})
@@ -134,12 +133,12 @@ describe('stripe outline', () => {
 			it('makes a trapezoid within the bottom right half, at the edge of the top left half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 1 as any, 0 as any ],
-					[ 1 as any, 0.5 as any ],
-					[ 0.5 as any, 1 as any ],
-					[ 0 as any, 1 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 1, 0 ],
+					[ 1, 0.5 ],
+					[ 0.5, 1 ],
+					[ 0, 1 ],
+				]))
 			})
 		})
 
@@ -149,11 +148,11 @@ describe('stripe outline', () => {
 			it('makes a triangle out of the entire bottom right half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 1 as any, 0 as any ],
-					[ 1 as any, 1 as any ],
-					[ 0 as any, 1 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 1, 0 ],
+					[ 1, 1 ],
+					[ 0, 1 ],
+				]))
 			})
 		})
 	})
@@ -167,12 +166,12 @@ describe('stripe outline', () => {
 			it('makes a trapezoid within the bottom right half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 1 as any, 0.5 as any ],
-					[ 1 as any, 0.75 as any ],
-					[ 0.75 as any, 1 as any ],
-					[ 0.5 as any, 1 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 1, 0.5 ],
+					[ 1, 0.75 ],
+					[ 0.75, 1 ],
+					[ 0.5, 1 ],
+				]))
 			})
 		})
 
@@ -182,11 +181,11 @@ describe('stripe outline', () => {
 			it('makes a triangle within the bottom right half', () => {
 				const outlineOptions = { stripeStart, stripeEnd }
 				const result = stripeOutline({ tileOrigin, tileSize, outlineOptions })
-				expect(result).toEqual([
-					[ 1 as any, 0.5 as any ],
-					[ 1 as any, 1 as any ],
-					[ 0.5 as any, 1 as any ],
-				] as Outline)
+				expect(result).toEqual(to.Outline([
+					[ 1, 0.5 ],
+					[ 1, 1 ],
+					[ 0.5, 1 ],
+				]))
 			})
 		})
 	})

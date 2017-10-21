@@ -1,9 +1,9 @@
+import { to } from '../../../../src'
 import { clear } from '../../../../src/canvas/clear'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
@@ -14,7 +14,7 @@ describe('.tileSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					tileSettings: {
-						tileSizeSetting: 30 as any,
+						tileSizeSetting: to.Units(30),
 					},
 				},
 			}
@@ -27,26 +27,26 @@ describe('.tileSettings', () => {
 				{
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
-					tileSize: 30 as any,
+					tileOrigin: to.Coordinate([ 0 , 0 ]),
+					tileSize: to.Units(30),
 				},
 				{
 					baseId: baseId += 8,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: [ 0 as any, 30 as any ] as Coordinate,
-					tileSize: 30 as any,
+					tileOrigin: to.Coordinate([ 0 , 30 ]),
+					tileSize: to.Units(30),
 				},
 				{
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: [ 30 as any, 0 as any ] as Coordinate,
-					tileSize: 30 as any,
+					tileOrigin: to.Coordinate([ 30 , 0 ]),
+					tileSize: to.Units(30),
 				},
 				{
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ 30 as any, 30 as any ] as Coordinate,
-					tileSize: 30 as any,
+					tileOrigin: to.Coordinate([ 30 , 30 ]),
+					tileSize: to.Units(30),
 				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
@@ -57,7 +57,7 @@ describe('.tileSettings', () => {
 				const houndstoothOverrides = {
 					basePattern: {
 						tileSettings: {
-							tileSizeSetting: 30 as any,
+							tileSizeSetting: to.Units(30),
 						},
 						viewSettings: {
 							zoom: 3,
@@ -73,26 +73,26 @@ describe('.tileSettings', () => {
 					{
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, BLACK ],
-						tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
-						tileSize: 90 as any,
+						tileOrigin: to.Coordinate([ 0 , 0 ]),
+						tileSize: to.Units(90),
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, BLACK ],
-						tileOrigin: [ 0 as any, 90 as any ] as Coordinate,
-						tileSize: 90 as any,
+						tileOrigin: to.Coordinate([ 0 , 90 ]),
+						tileSize: to.Units(90),
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, TRANSPARENT ],
-						tileOrigin: [ 90 as any, 0 as any ] as Coordinate,
-						tileSize: 90 as any,
+						tileOrigin: to.Coordinate([ 90 , 0 ]),
+						tileSize: to.Units(90),
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, TRANSPARENT ],
-						tileOrigin: [ 90 as any, 90 as any ] as Coordinate,
-						tileSize: 90 as any,
+						tileOrigin: to.Coordinate([ 90 , 90 ]),
+						tileSize: to.Units(90),
 					},
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))

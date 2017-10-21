@@ -2,6 +2,7 @@
 
 import { Color } from './render'
 import { Radian } from './space'
+import * as to from './to'
 
 const BLACK: Color = { r: 0, g: 0, b: 0, a: 1 }
 const WHITE: Color = { r: 255, g: 255, b: 255, a: 1 }
@@ -15,7 +16,8 @@ const YELLOW: Color = { r: 255, g: 255, b: 0, a: 1 }
 const TRANSPARENT: Color = { a: 0 }
 const ERASE: Color = { a: -1 }
 
-const EIGHTH_OF_CIRCLE_ROTATION: Radian = Math.PI / 4 as any
+const EIGHTH_OF_CIRCLE_ROTATION: Radian = to.Radian(Math.PI / 4)
+const QUARTER_CIRCLE_ROTATION: Radian = to.Radian(Math.PI / 2)
 
 const HALF = 1 / 2
 
@@ -40,6 +42,7 @@ export {
 	TRANSPARENT,
 	ERASE,
 	EIGHTH_OF_CIRCLE_ROTATION,
+	QUARTER_CIRCLE_ROTATION,
 	PERIMETER_SCALAR,
 	ANIMATION_RATE,
 	SQRT_2,

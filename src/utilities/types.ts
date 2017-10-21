@@ -1,8 +1,7 @@
 enum _PropertyPathBrand {}
 type PropertyPath = _PropertyPathBrand & string[]
 
-enum _NullarySideEffectorBrand {}
-type NullarySideEffector = _NullarySideEffectorBrand & (() => void)
+type NullarySideEffector = () => void
 
 export {
 	PropertyPath,

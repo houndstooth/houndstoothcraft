@@ -15,11 +15,13 @@ import {
 } from './components'
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
+import * as from from './from'
 import { Context, Dimension } from './page'
 import { Color, solid } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinateAboutPoint } from './space'
 import { state } from './state'
 import { defaults, Effect } from './store'
+import * as to from './to'
 import { maybeAddEffectToggles } from './ui'
 
 export {
@@ -50,4 +52,6 @@ export {
 	AssignmentMode,
 	StripeCountMode,
 	Radian,
+	to,
+	from,
 }

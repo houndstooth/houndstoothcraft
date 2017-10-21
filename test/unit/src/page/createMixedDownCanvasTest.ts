@@ -1,10 +1,10 @@
-import * as canvas from '../../../../src/canvas/index'
 import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
+import { state } from '../../../../src/state'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockContext } from '../../../helpers/buildMockContext'
+import { buildMockBody } from '../../helpers/buildMockBody'
 import { buildMockCanvas } from '../../helpers/buildMockCanvas'
-import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create mixed down canvas', () => {
 	let mixedDownCanvas
@@ -15,12 +15,12 @@ describe('create mixed down canvas', () => {
 	beforeAll(() => {
 		spyOn(deleteElementIfExists, 'deleteElementIfExists')
 
-		window.document.body = buildMockElement({ mockChildren: mockBodyChildren })
+		window.document.body = buildMockBody({ mockChildren: mockBodyChildren })
 
 		mixedDownCanvas = buildMockCanvas({ mockContext: mixedDownContext, mockClassList: mixedDownCanvasClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mixedDownCanvas)
 
-		spyOn(canvas, 'getCanvasDimensions').and.returnValue([ 400, 500 ])
+		state.mainHoundstooth.basePattern.viewSettings.canvasSize = 450
 
 		returnedMixedDownContext = createMixedDownCanvas()
 	})
@@ -46,7 +46,7 @@ describe('create mixed down canvas', () => {
 	})
 
 	it('sets the size of the mixed down canvas', () => {
-		expect(mixedDownCanvas.width).toBe(400)
-		expect(mixedDownCanvas.height).toBe(500)
+		expect(mixedDownCanvas.width).toBe(450)
+		expect(mixedDownCanvas.height).toBe(450)
 	})
 })

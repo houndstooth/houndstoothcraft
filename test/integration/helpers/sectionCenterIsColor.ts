@@ -1,3 +1,4 @@
+import { from, to } from '../../../src'
 import { Address } from '../../../src/components'
 import { Units } from '../../../src/components/types/Units'
 import { Color } from '../../../src/render'
@@ -26,14 +27,15 @@ const sectionCenter: (_: {
 		sectionAddress: Address,
 		sectionResolution: number,
 	}) => Coordinate = ({ areaOrigin, areaSize, sectionAddress, sectionResolution }) => {
-	const sectionSize = areaSize as any / sectionResolution
-	const areaX = areaOrigin[ 0 ] as any
-	const areaY = areaOrigin[ 1 ] as any
+	const sectionSize = from.Units(areaSize) / sectionResolution
+	const areaX = from.Units(areaOrigin[ 0 ])
+	const areaY = from.Units(areaOrigin[ 1 ])
+	const sectionAddressValue = from.Address(sectionAddress)
 
-	return [
-		areaX + (sectionAddress[ 0 ] + 0.5) * sectionSize,
-		areaY + (sectionAddress[ 1 ] + 0.5) * sectionSize,
-	] as Coordinate
+	return to.Coordinate([
+		areaX + (sectionAddressValue[ 0 ] + 0.5) * sectionSize,
+		areaY + (sectionAddressValue[ 1 ] + 0.5) * sectionSize,
+	])
 }
 
 export { sectionCenterIsColor }

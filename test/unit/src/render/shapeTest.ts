@@ -2,15 +2,15 @@ import * as canvas from '../../../../src/canvas'
 import { shape } from '../../../../src/render/shape'
 import * as solid from '../../../../src/render/solid'
 import * as texture from '../../../../src/render/texture'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import { noop } from '../../../helpers/noop'
 
 describe('shape', () => {
-	const tileOrigin = [ 11 as any, 13 as any ] as Coordinate
-	const tileSize = 45 as any
-	const tileColorIndices = [] as any
+	const tileOrigin = to.Coordinate([ 11, 13 ])
+	const tileSize = to.Units(45)
+	const tileColorIndices = to.TileColorIndices([])
 	const stripeIndex = 7
 	const shapeColorIndex = 45
 	const outlineOptions = {}

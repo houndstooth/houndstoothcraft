@@ -1,71 +1,60 @@
-import { Coordinate, Point } from '../types'
+import * as from from '../../from'
+import * as to from '../../to'
+import { Point } from '../types'
 
 const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeDowncast = size as any
-	const stripePositionDowncast = stripePosition as any
+	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
-	return [
-		stripePositionDowncast * sizeDowncast + x as any,
-		y as any,
-	] as Coordinate
+	return to.Coordinate([
+		stripePositionValue * from.Units(size) + from.Units(x),
+		from.Units(y),
+	])
 }
 
 const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeDowncast = size as any
-	const stripePositionDowncast = stripePosition as any
+	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
-	return [
-		x as any,
-		stripePositionDowncast * sizeDowncast + y as any,
-	] as Coordinate
+	return to.Coordinate([
+		from.Units(x),
+		stripePositionValue * from.Units(size) + from.Units(y),
+	])
 }
 
 const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeDowncast = size as any
-	const stripePositionDowncast = stripePosition as any
+	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
-	return [
-		x as any + sizeDowncast,
-		y as any + (stripePositionDowncast - 1) * sizeDowncast,
-	] as Coordinate
+	return to.Coordinate([
+		from.Units(x) + from.Units(size),
+		from.Units(y) + (stripePositionValue - 1) * from.Units(size),
+	])
 }
 
 const pointAlongBottomEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {
-	const sizeDowncast = size as any
-	const stripePositionDowncast = stripePosition as any
+	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
-	return [
-		x as any + (stripePositionDowncast - 1) * sizeDowncast,
-		y as any + sizeDowncast,
-	] as Coordinate
+	return to.Coordinate([
+		from.Units(x) + (stripePositionValue - 1) * from.Units(size),
+		from.Units(y) + from.Units(size),
+	])
 }
 
-const pointInTopRightCorner: Point = ({ originAndSize: { x, y, size } }) => {
-	const sizeDowncast = size as any
+const pointInTopRightCorner: Point = ({ originAndSize: { x, y, size } }) =>
+	to.Coordinate([
+		from.Units(x) + from.Units(size),
+		from.Units(y),
+	])
 
-	return [
-		x as any + sizeDowncast,
-		y as any,
-	] as Coordinate
-}
+const pointInBottomRightCorner: Point = ({ originAndSize: { x, y, size } }) =>
+	to.Coordinate([
+		from.Units(x) + from.Units(size),
+		from.Units(y) + from.Units(size),
+	])
 
-const pointInBottomRightCorner: Point = ({ originAndSize: { x, y, size } }) => {
-	const sizeDowncast = size as any
-
-	return [
-		x as any + sizeDowncast,
-		y as any + sizeDowncast,
-	] as Coordinate
-}
-
-const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) => {
-	const sizeDowncast = size as any
-
-	return [
-		x as any,
-		y as any + sizeDowncast,
-	] as Coordinate
-}
+const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) =>
+	to.Coordinate([
+		from.Units(x),
+		from.Units(y) + from.Units(size),
+	])
 
 export {
 	pointAlongTopEdge,

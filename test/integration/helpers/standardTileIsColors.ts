@@ -1,4 +1,4 @@
-import { Address, Color, Coordinate, Units } from '../../../src'
+import { Color, Coordinate, to, Units } from '../../../src'
 import { sectionCenterIsColor } from './sectionCenterIsColor'
 
 const standardTileIsColors: (_: {
@@ -11,7 +11,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 0 ],
 			id: id += 1,
-			sectionAddress: [ 0, 0 ] as Address,
+			sectionAddress: to.Address([ 0, 0 ]),
 			sectionResolution: 4,
 		},
 
@@ -20,7 +20,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 1 ],
 			id: id += 1,
-			sectionAddress: [ 2, 0 ] as Address,
+			sectionAddress: to.Address([ 2, 0 ]),
 			sectionResolution: 4,
 		},
 		{
@@ -28,7 +28,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 1 ],
 			id: id += 1,
-			sectionAddress: [ 1, 1 ] as Address,
+			sectionAddress: to.Address([ 1, 1 ]),
 			sectionResolution: 4,
 		},
 		{
@@ -36,7 +36,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 1 ],
 			id: id += 1,
-			sectionAddress: [ 0, 2 ] as Address,
+			sectionAddress: to.Address([ 0, 2 ]),
 			sectionResolution: 4,
 		},
 
@@ -45,7 +45,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 0 ],
 			id: id += 1,
-			sectionAddress: [ 3, 1 ] as Address,
+			sectionAddress: to.Address([ 3, 1 ]),
 			sectionResolution: 4,
 		},
 		{
@@ -53,7 +53,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 0 ],
 			id: id += 1,
-			sectionAddress: [ 2, 2 ] as Address,
+			sectionAddress: to.Address([ 2, 2 ]),
 			sectionResolution: 4,
 		},
 		{
@@ -61,7 +61,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 0 ],
 			id: id += 1,
-			sectionAddress: [ 1, 3 ] as Address,
+			sectionAddress: to.Address([ 1, 3 ]),
 			sectionResolution: 4,
 		},
 
@@ -70,7 +70,7 @@ const standardTileIsColors: (_: {
 			areaSize,
 			color: colors[ 1 ],
 			id: id += 1,
-			sectionAddress: [ 3, 3 ] as Address,
+			sectionAddress: to.Address([ 3, 3 ]),
 			sectionResolution: 4,
 		},
 	]

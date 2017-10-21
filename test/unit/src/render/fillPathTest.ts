@@ -3,14 +3,15 @@ import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
-		const contextCallsOrder = [] as any
+		const contextCallsOrder = []
 		const context = buildMockContext({ contextCallsOrder })
 
 		fillPath({ context })
 
-		expect(contextCallsOrder).toEqual([
+		const expectedContextCallsOrder = [
 			{ method: 'closePath' },
 			{ method: 'fill' },
-		])
+		] as any
+		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

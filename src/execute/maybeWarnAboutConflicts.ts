@@ -26,12 +26,11 @@ const shouldWarnAboutConflicts: (_: {
 
 const settingsAreEqual: (a: Setting, b: Setting) => boolean = (a, b) => {
 	let settingsEqual
-	const aDowncast = a
 	if (typeof a === 'function') {
 		settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
 	}
-	else if (aDowncast instanceof Array) {
-		settingsEqual = b instanceof Array ? aDowncast.every((aEntry, index) => aEntry === b[ index ]) : false
+	else if (a instanceof Array) {
+		settingsEqual = b instanceof Array ? a.every((aEntry, index) => aEntry === b[ index ]) : false
 	}
 	else {
 		settingsEqual = a === b

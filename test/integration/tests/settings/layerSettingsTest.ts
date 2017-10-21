@@ -1,6 +1,6 @@
+import { to } from '../../../../src'
 import { CYAN, ERASE, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
@@ -11,8 +11,8 @@ describe('.layerSettings', () => {
 			basePattern: {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 2 },
-				layerSettings: { endLayer: 1 as any },
-				viewSettings: { canvasSize: 100 as any },
+				layerSettings: { endLayer: to.Layer(1) },
+				viewSettings: { canvasSize: to.Dimension(100) },
 			},
 			layersPattern: {
 				colorSettings: {
@@ -26,7 +26,7 @@ describe('.layerSettings', () => {
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		const BLENDED_COLOR = { r: 192, g: 255, b: 63, a: 1 }
-		const pixelInCellThatDemonstratesBlending = [ 75 as any, 25 as any ] as Coordinate
+		const pixelInCellThatDemonstratesBlending = to.Coordinate([ 75, 25 ])
 		const passed = pixelIsColorWithMarker({
 			coordinateUnderTest: pixelInCellThatDemonstratesBlending,
 			expectedColor: BLENDED_COLOR,
@@ -40,8 +40,8 @@ describe('.layerSettings', () => {
 			basePattern: {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 0 },
-				layerSettings: { endLayer: 1 as any },
-				viewSettings: { canvasSize: 100 as any },
+				layerSettings: { endLayer: to.Layer(1) },
+				viewSettings: { canvasSize: to.Dimension(100) },
 			},
 			layersPattern: {
 				colorSettings: {
@@ -59,26 +59,26 @@ describe('.layerSettings', () => {
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ YELLOW, CYAN ],
-			tileOrigin: [ 0 as any, 0 as any ] as Coordinate,
-			tileSize: 50 as any,
+			tileOrigin: to.Coordinate([ 0 , 0 ]),
+			tileSize: to.Units(50),
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ YELLOW, YELLOW ],
-			tileOrigin: [ 50 as any, 0 as any ] as Coordinate,
-			tileSize: 50 as any,
+			tileOrigin: to.Coordinate([ 50 , 0 ]),
+			tileSize: to.Units(50),
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ CYAN, CYAN ],
-			tileOrigin: [ 0 as any, 50 as any ] as Coordinate,
-			tileSize: 50 as any,
+			tileOrigin: to.Coordinate([ 0 , 50 ]),
+			tileSize: to.Units(50),
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ CYAN, YELLOW ],
-			tileOrigin: [ 50 as any, 50 as any ] as Coordinate,
-			tileSize: 50 as any,
+			tileOrigin: to.Coordinate([ 50 , 50 ]),
+			tileSize: to.Units(50),
 		})).toBe(true)
 	})
 })

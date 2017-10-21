@@ -1,12 +1,12 @@
 interface MockElement {
-	appendChild,
+	appendChild?,
 	click?,
 	download?,
 	href?,
 	innerHTML?,
 	nextSibling?,
 	parentNode?,
-	style: {
+	style?: {
 		display?,
 		height?,
 		width?,

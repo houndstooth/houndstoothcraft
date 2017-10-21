@@ -3,15 +3,15 @@ import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('clip path', () => {
 	it('saves the context to restore the clip later, then clips the context (w/ the current path)', () => {
-		const contextCallsOrder = [] as any
+		const contextCallsOrder = []
 		const context = buildMockContext({ contextCallsOrder })
 
 		clipPath({ context })
 
-		const expected = [
+		const expectedContextCallsOrder = [
 			{ method: 'save' },
 			{ method: 'clip' },
-		]
-		expect(contextCallsOrder).toEqual(expected)
+		] as any
+		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

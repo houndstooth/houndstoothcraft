@@ -1,10 +1,10 @@
-import { Address, state, Supertile } from '../../../../src'
+import { state, to } from '../../../../src'
 import { getTileColorIndices } from '../../../../src/components/getTileColorIndices'
 import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 
 describe('get tile color indices', () => {
-	const gridAddressForSubject = [ 3, 5 ] as Address
+	const gridAddressForSubject = to.Address([ 3, 5 ])
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('can use a weave-based assignment scheme', () => {
@@ -27,11 +27,11 @@ describe('get tile color indices', () => {
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: AssignmentMode.SUPERTILE,
-					supertile: [
+					supertile: to.Supertile([
 						[ [], expectedSupertileEntry ],
 						[ [], [] ],
 						[ [], [] ],
-					] as Supertile,
+					]),
 				},
 			}
 
@@ -41,7 +41,7 @@ describe('get tile color indices', () => {
 
 	describe('allowing offsetting of the grid address', () => {
 		it('works when in weave mode', () => {
-			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ] as Address
+			const offsetAddress = ({ gridAddress }) => to.Address([ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: AssignmentMode.WEAVE,
@@ -58,16 +58,16 @@ describe('get tile color indices', () => {
 
 		it('works when in supertile mode', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
-			const offsetAddress = ({ gridAddress }) => [ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ] as Address
+			const offsetAddress = ({ gridAddress }) => to.Address([ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: AssignmentMode.SUPERTILE,
 					offsetAddress,
-					supertile: [
+					supertile: to.Supertile([
 						[ [], [] ],
 						[ expectedSupertileEntry, [] ],
 						[ [], [] ],
-					] as Supertile,
+					]),
 				},
 			}
 
@@ -98,16 +98,16 @@ describe('get tile color indices', () => {
 			state.mainHoundstooth.basePattern.colorSettings = {
 				assignment: {
 					assignmentMode: AssignmentMode.SUPERTILE,
-					supertile: [
+					supertile: to.Supertile([
 						[ [ 0, 1 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
 						[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 7, 8 ] ],
 						[ [ 8, 9 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
 						[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 15, 16 ] ],
-					] as Supertile,
+					]),
 					switcheroo: true,
 				},
 			}
-			const addresses = iterator(4).map(x => iterator(4).map(y => [ x, y ] as Address))
+			const addresses = iterator(4).map(x => iterator(4).map(y => to.Address([ x, y ])))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))
@@ -138,7 +138,7 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const addresses = iterator(2).map(x => iterator(2).map(y => [ x, y ] as Address))
+			const addresses = iterator(2).map(x => iterator(2).map(y => to.Address([ x, y ])))
 			const setOfTileColorIndices = addresses.map(col => col.map(gridAddress => getTileColorIndices({
 				gridAddress,
 			})))

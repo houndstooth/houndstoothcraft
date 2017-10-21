@@ -1,4 +1,3 @@
-import * as canvas from '../../../../src/canvas'
 import { CYAN } from '../../../../src/constants'
 import { state } from '../../../../src/state'
 import { applyBackgroundColor } from '../../../../src/view/applyBackgroundColor'
@@ -9,7 +8,7 @@ describe('apply background color', () => {
 	beforeEach(() => {
 		fillRectSpy = jasmine.createSpy('fillRect')
 		state.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
-		spyOn(canvas, 'getCanvasDimensions').and.returnValue([ 400, 500 ])
+		state.mainHoundstooth.basePattern.viewSettings.canvasSize = 450
 	})
 
 	it('fills the entire canvas with the color', () => {
@@ -18,7 +17,7 @@ describe('apply background color', () => {
 		applyBackgroundColor()
 
 		expect(state.contexts[0].fillStyle).toBe('rgba(0,255,255,1)')
-		expect(fillRectSpy).toHaveBeenCalledWith(0, 0, 400, 500)
+		expect(fillRectSpy).toHaveBeenCalledWith(0, 0, 450, 450)
 	})
 
 	it('returns early when no background color is set', () => {

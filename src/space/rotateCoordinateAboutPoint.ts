@@ -1,21 +1,23 @@
+import * as from from '../from'
+import * as to from '../to'
 import { Coordinate, Radian } from './types'
 
 const rotateCoordinateAboutPoint: (_: {
 	coordinate: Coordinate, point: Coordinate, rotation: Radian,
 }) => Coordinate = ({ coordinate, point, rotation }) => {
-	const sin = Math.sin(rotation as any)
-	const cos = Math.cos(rotation as any)
+	const sin = Math.sin(from.Radian(rotation))
+	const cos = Math.cos(from.Radian(rotation))
 
-	const pointX = point[ 0 ] as any
-	const pointY = point[ 1 ] as any
+	const pointX = from.Units(point[ 0 ])
+	const pointY = from.Units(point[ 1 ])
 
-	const relativeX = coordinate[ 0 ] as any - pointX
-	const relativeY = coordinate[ 1 ] as any - pointY
+	const relativeX = from.Units(coordinate[ 0 ]) - pointX
+	const relativeY = from.Units(coordinate[ 1 ]) - pointY
 
-	return [
+	return to.Coordinate([
 		pointX + relativeX * cos - relativeY * sin,
 		pointY + relativeX * sin + relativeY * cos,
-	] as Coordinate
+	])
 }
 
 export { rotateCoordinateAboutPoint }

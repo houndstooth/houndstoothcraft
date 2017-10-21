@@ -1,7 +1,9 @@
 import { HALF } from '../constants'
+import * as from from '../from'
 import { Coordinate, Outline } from '../space'
 import { state } from '../state'
 import { defaults } from '../store'
+import * as to from '../to'
 
 const applyZoom: (outline: Outline) => Outline = outline => outline.map(adjustCoordinateForZoom)
 
@@ -19,19 +21,22 @@ const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordina
 }
 
 const doAdjustment: (_: {
-		coordinate: Coordinate,
-		halfCanvasSize: number,
-		shouldAdjustForCentering: boolean,
-		zoom: number,
-	}) => Coordinate = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
+	coordinate: Coordinate,
+	halfCanvasSize: number,
+	shouldAdjustForCentering: boolean,
+	zoom: number,
+}) => Coordinate = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
 	let coordinateAdjustedForZoom = coordinate
 
 	if (shouldAdjustForCentering) {
-		coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c as any - halfCanvasSize as any) as Coordinate
+		coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
+			from.Units(c) - halfCanvasSize))
 	}
-	coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c as any * zoom as any) as Coordinate
+	coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
+		from.Units(c) * zoom))
 	if (shouldAdjustForCentering) {
-		coordinateAdjustedForZoom = coordinateAdjustedForZoom.map(c => c as any + halfCanvasSize) as Coordinate
+		coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
+			from.Units(c) + halfCanvasSize))
 	}
 
 	return coordinateAdjustedForZoom

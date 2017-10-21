@@ -1,24 +1,28 @@
-import { NullarySideEffector } from '../../src/utilities/types'
 import { MockContext } from '../types/MockContext'
+import { MockContextCall } from '../types/MockContextCall'
+import { MockContextMethod } from '../types/MockContextMethod'
 import { noop } from './noop'
+import Spy = jasmine.Spy
 
-const buildMockContext: (_?: { contextCallsOrder?, toBlobSpy? }) => MockContext = params => {
+const buildMockContext: (_?: {
+	contextCallsOrder?: MockContextCall[], toBlobSpy?: Spy,
+}) => MockContext = params => {
 	const { contextCallsOrder = [], toBlobSpy = undefined } = params || {}
 
 	return {
-		beginPath: (() => contextCallsOrder.push({ method: 'beginPath' })) as NullarySideEffector,
+		beginPath: () => contextCallsOrder.push({ method: MockContextMethod.BEGIN_PATH }),
 		canvas: { toBlob: toBlobSpy },
-		clearRect: (() => contextCallsOrder.push({ method: 'clearRect' })) as NullarySideEffector,
-		clip: (() => contextCallsOrder.push({ method: 'clip' })) as NullarySideEffector,
-		closePath: (() => contextCallsOrder.push({ method: 'closePath' })) as NullarySideEffector,
+		clearRect: () => contextCallsOrder.push({ method: MockContextMethod.CLEAR_RECT }),
+		clip: () => contextCallsOrder.push({ method: MockContextMethod.CLIP }),
+		closePath: () => contextCallsOrder.push({ method: MockContextMethod.CLOSE_PATH }),
 		drawImage: noop,
-		fill: (() => contextCallsOrder.push({ method: 'fill' })) as NullarySideEffector,
+		fill: () => contextCallsOrder.push({ method: MockContextMethod.FILL }),
 		fillStyle: '',
 		globalCompositeOperation: '',
-		lineTo: ((x, y) => contextCallsOrder.push({ method: 'lineTo', x, y })) as NullarySideEffector,
-		moveTo: ((x, y) => contextCallsOrder.push({ method: 'moveTo', x, y })) as NullarySideEffector,
-		restore: (() => contextCallsOrder.push({ method: 'restore' })) as NullarySideEffector,
-		save: (() => contextCallsOrder.push({ method: 'save' })) as NullarySideEffector,
+		lineTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.LINE_TO, x, y }),
+		moveTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.MOVE_TO, x, y }),
+		restore: () => contextCallsOrder.push({ method: MockContextMethod.RESTORE }),
+		save: () => contextCallsOrder.push({ method: MockContextMethod.SAVE }),
 	}
 }
 

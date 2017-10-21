@@ -1,26 +1,28 @@
 // tslint:disable:no-magic-numbers
 
-import { Assignment, AssignmentMode, BaseStripeDiagonal, Supertile } from '../components'
+import { Assignment, AssignmentMode, BaseStripeDiagonal, Units } from '../components'
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
+import * as to from '../to'
 import { BasePattern, Houndstooth, State } from './types'
 
-const DEFAULT_CANVAS_SIZE = 800
+const DEFAULT_CANVAS_SIZE = to.Dimension(800)
 const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
-const DEFAULT_TILE_SIZE = 50 as any
+const DEFAULT_TILE_SIZE: Units = to.Units(50)
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
 const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
 	assignmentMode: AssignmentMode.WEAVE,
-	supertile: [ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ] as Supertile,
+	supertile: to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ]),
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
 }
 const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.MINOR
 const DEFAULT_FRAME_RATE = 1.005
-const DEFAULT_START_LAYER = 0 as any
-const DEFAULT_END_LAYER = 0 as any
+const DEFAULT_START_LAYER = to.Layer(0)
+const DEFAULT_END_LAYER = to.Layer(0)
+const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
 
 const DEFAULT_PATTERN: BasePattern = {
 	animationSettings: {
@@ -28,6 +30,7 @@ const DEFAULT_PATTERN: BasePattern = {
 	},
 	colorSettings: {
 		assignment: DEFAULT_COLOR_ASSIGNMENT,
+		backgroundColor: DEFAULT_BACKGROUND_COLOR,
 		colorSet: DEFAULT_COLOR_SET,
 		opacity: DEFAULT_OPACITY,
 	},
@@ -49,7 +52,7 @@ const DEFAULT_PATTERN: BasePattern = {
 		tileSizeSetting: DEFAULT_TILE_SIZE,
 	},
 	viewSettings: {
-		canvasSize: DEFAULT_CANVAS_SIZE as any,
+		canvasSize: DEFAULT_CANVAS_SIZE,
 		zoom: DEFAULT_ZOOM,
 	},
 }
@@ -64,11 +67,11 @@ const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 const DEFAULT_STATE: State = {
 	animating: false,
 	contexts: [],
-	currentAnimationFrame: 0 as any,
-	currentLayer: 0 as any,
+	currentAnimationFrame: to.Frame(0),
+	currentLayer: to.Layer(0),
 	exportFrames: false,
 	interval: undefined,
-	lastSavedAnimationFrame: 0 as any,
+	lastSavedAnimationFrame: to.Frame(0),
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	mixedDownContext: undefined,
 	mixingDown: false,
@@ -92,4 +95,5 @@ export {
 	DEFAULT_FRAME_RATE,
 	DEFAULT_BASE_STRIPE_DIAGONAL,
 	DEFAULT_STRIPE_COUNT,
+	DEFAULT_BACKGROUND_COLOR,
 }

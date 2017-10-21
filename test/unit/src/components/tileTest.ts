@@ -3,14 +3,14 @@ import * as getTileColorIndices from '../../../../src/components/getTileColorInd
 import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import { tile } from '../../../../src/components/tile'
-import { Address } from '../../../../src/components/types/Address'
 import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as render from '../../../../src/render'
 import * as space from '../../../../src/space'
 import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 
 describe('tile', () => {
-	const gridAddress = [ 3, 5 ] as Address
+	const gridAddress = to.Address([ 3, 5 ])
 	let shapeSpy
 	let getTileColorIndicesSpy
 	let isTileUniformSpy

@@ -1,5 +1,5 @@
-import { Coordinate } from '../space'
 import { state } from '../state'
+import * as to from '../to'
 import { Address, TileOriginAndSize } from './types'
 
 const getTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize | undefined = ({ gridAddress }) => {
@@ -13,7 +13,7 @@ const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginA
 	const tileSize = state.mainHoundstooth.basePattern.tileSettings.tileSizeSetting
 
 	return {
-		tileOrigin: [ gridAddress[ 0 ] * tileSize as any, gridAddress[ 1 ] * tileSize as any ] as Coordinate,
+		tileOrigin: to.Coordinate([ gridAddress[ 0 ] * tileSize, gridAddress[ 1 ] * tileSize ]),
 		tileSize,
 	}
 }

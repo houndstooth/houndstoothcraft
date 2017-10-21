@@ -1,7 +1,6 @@
-import { Address } from '../../../../src/components/types/Address'
+import { from, to } from '../../../../src'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
@@ -15,20 +14,20 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: [ BLACK ] },
-					viewSettings: { canvasSize: 125 as any },
+					viewSettings: { canvasSize: to.Dimension(125) },
 				},
 			}
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			expect(pixelIsColor([ 0 as any, 0 as any ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 124 as any, 0 as any ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 0 as any, 124 as any ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 124 as any, 124 as any ] as Coordinate, BLACK)).toBe(true)
-			expect(pixelIsColor([ 125 as any, 0 as any ] as Coordinate, TRANSPARENT)).toBe(true)
-			expect(pixelIsColor([ 0 as any, 125 as any ] as Coordinate, TRANSPARENT)).toBe(true)
-			expect(pixelIsColor([ 125 as any, 125 as any ] as Coordinate, TRANSPARENT)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 0, 0 ]), BLACK)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 124, 0 ]), BLACK)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 0, 124 ]), BLACK)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 124, 124 ]), BLACK)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 125, 0 ]), TRANSPARENT)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 0, 125 ]), TRANSPARENT)).toBe(true)
+			expect(pixelIsColor(to.Coordinate([ 125, 125 ]), TRANSPARENT)).toBe(true)
 		})
 	})
 
@@ -42,7 +41,7 @@ describe('.viewSettings', () => {
 				},
 			}
 			const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
-			const zoomedTileSize = zoom * tileSize as any
+			const zoomedTileSize = to.Units(zoom * tileSize)
 
 			activateTestMarkerCanvas()
 
@@ -52,25 +51,25 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ zoomedTileSize * 0 as any, zoomedTileSize * 0 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 0, from.Units(zoomedTileSize) * 0 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ zoomedTileSize * 1 as any, zoomedTileSize * 0 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 1, from.Units(zoomedTileSize) * 0 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ zoomedTileSize * 0 as any, zoomedTileSize * 1 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 0, from.Units(zoomedTileSize) * 1 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ zoomedTileSize * 1 as any, zoomedTileSize * 1 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 1, from.Units(zoomedTileSize) * 1 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 		})
@@ -90,7 +89,7 @@ describe('.viewSettings', () => {
 				},
 			}
 			const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
-			const zoomedTileSize = zoom * tileSize as any
+			const zoomedTileSize = to.Units(zoom * tileSize)
 
 			activateTestMarkerCanvas()
 
@@ -100,25 +99,25 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ zoomedTileSize * 3 as any, zoomedTileSize * 3 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 3, from.Units(zoomedTileSize) * 3 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ zoomedTileSize * 3 as any, zoomedTileSize * 4 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 3, from.Units(zoomedTileSize) * 4 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ zoomedTileSize * 4 as any, zoomedTileSize * 3 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 4, from.Units(zoomedTileSize) * 3 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ zoomedTileSize * 4 as any, zoomedTileSize * 4 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 4, from.Units(zoomedTileSize) * 4 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 		})
@@ -126,7 +125,7 @@ describe('.viewSettings', () => {
 
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
 		it('is self-explanatory', () => {
-			const tileSize = 100 as any
+			const tileSize = to.Units(100)
 			const houndstoothOverrides = {
 				basePattern: {
 					gridSettings: { gridSize: 2 },
@@ -142,26 +141,26 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: [ 350 as any, 350 as any ] as Coordinate,
-				tileSize: 100 as any,
+				tileOrigin: to.Coordinate([ 350, 350 ]),
+				tileSize: to.Units(100),
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: [ 450 as any, 350 as any ] as Coordinate,
-				tileSize: 100 as any,
+				tileOrigin: to.Coordinate([ 450, 350 ]),
+				tileSize: to.Units(100),
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: [ 350 as any, 450 as any ] as Coordinate,
-				tileSize: 100 as any,
+				tileOrigin: to.Coordinate([ 350, 450 ]),
+				tileSize: to.Units(100),
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: [ 450 as any, 450 as any ] as Coordinate,
-				tileSize: 100 as any,
+				tileOrigin: to.Coordinate([ 450, 450 ]),
+				tileSize: to.Units(100),
 			})).toBe(true)
 		})
 	})
@@ -179,8 +178,8 @@ describe('.viewSettings', () => {
 						tileSizeSetting: areaSize,
 					},
 					viewSettings: {
-						canvasSize: 300 as any,
-						rotateViewAboutCanvasCenter: Math.PI / 2 as any,
+						canvasSize: to.Dimension(300),
+						rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2),
 					},
 				},
 			}
@@ -189,7 +188,7 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let areaOrigin = [ 200 as any, 0 as any ] as Coordinate
+			let areaOrigin = to.Coordinate([ 200, 0 ])
 			let id = -1
 
 			expect(sectionCenterIsColor({
@@ -197,7 +196,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 0, 3 ] as Address,
+				sectionAddress: to.Address([ 0, 3 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 
@@ -206,7 +205,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 0, 1 ] as Address,
+				sectionAddress: to.Address([ 0, 1 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
@@ -214,7 +213,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 1, 2 ] as Address,
+				sectionAddress: to.Address([ 1, 2 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
@@ -222,76 +221,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 2, 3 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 1, 0 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 2, 1 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 3, 2 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 3, 0 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			areaOrigin = [ 250 as any, 0 as any ] as Coordinate
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 0, 3 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 0, 1 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 1, 2 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 2, 3 ] as Address,
+				sectionAddress: to.Address([ 2, 3 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 
@@ -300,7 +230,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 1, 0 ] as Address,
+				sectionAddress: to.Address([ 1, 0 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
@@ -308,7 +238,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 2, 1 ] as Address,
+				sectionAddress: to.Address([ 2, 1 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
@@ -316,7 +246,26 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 3, 2 ] as Address,
+				sectionAddress: to.Address([ 3, 2 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: BLACK,
+				id: id++,
+				sectionAddress: to.Address([ 3, 0 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			areaOrigin = to.Coordinate([ 250, 0 ])
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: BLACK,
+				id: id++,
+				sectionAddress: to.Address([ 0, 3 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 
@@ -325,52 +274,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: TRANSPARENT,
 				id: id++,
-				sectionAddress: [ 3, 0 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			areaOrigin = [ 200 as any, 50 as any ] as Coordinate
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 0, 3 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 0, 1 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 1, 2 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: BLACK,
-				id: id++,
-				sectionAddress: [ 2, 3 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 1, 0 ] as Address,
+				sectionAddress: to.Address([ 0, 1 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
@@ -378,7 +282,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: TRANSPARENT,
 				id: id++,
-				sectionAddress: [ 2, 1 ] as Address,
+				sectionAddress: to.Address([ 1, 2 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
@@ -386,7 +290,7 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: TRANSPARENT,
 				id: id++,
-				sectionAddress: [ 3, 2 ] as Address,
+				sectionAddress: to.Address([ 2, 3 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 
@@ -395,43 +299,23 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: BLACK,
 				id: id++,
-				sectionAddress: [ 3, 0 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			areaOrigin = [ 250 as any, 50 as any ] as Coordinate
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 0, 3 ] as Address,
-				sectionResolution: 4,
-			})).toBe(true)
-
-			expect(sectionCenterIsColor({
-				areaOrigin,
-				areaSize,
-				color: TRANSPARENT,
-				id: id++,
-				sectionAddress: [ 0, 1 ] as Address,
+				sectionAddress: to.Address([ 1, 0 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				color: TRANSPARENT,
+				color: BLACK,
 				id: id++,
-				sectionAddress: [ 1, 2 ] as Address,
+				sectionAddress: to.Address([ 2, 1 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				color: TRANSPARENT,
+				color: BLACK,
 				id: id++,
-				sectionAddress: [ 2, 3 ] as Address,
+				sectionAddress: to.Address([ 3, 2 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 
@@ -440,23 +324,43 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: TRANSPARENT,
 				id: id++,
-				sectionAddress: [ 1, 0 ] as Address,
+				sectionAddress: to.Address([ 3, 0 ]),
 				sectionResolution: 4,
 			})).toBe(true)
+
+			areaOrigin = to.Coordinate([ 200, 50 ])
+
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
 				color: TRANSPARENT,
 				id: id++,
-				sectionAddress: [ 2, 1 ] as Address,
+				sectionAddress: to.Address([ 0, 3 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: BLACK,
+				id: id++,
+				sectionAddress: to.Address([ 0, 1 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
-				color: TRANSPARENT,
+				color: BLACK,
 				id: id++,
-				sectionAddress: [ 3, 2 ] as Address,
+				sectionAddress: to.Address([ 1, 2 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: BLACK,
+				id: id++,
+				sectionAddress: to.Address([ 2, 3 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 
@@ -465,7 +369,102 @@ describe('.viewSettings', () => {
 				areaSize,
 				color: TRANSPARENT,
 				id: id++,
-				sectionAddress: [ 3, 0 ] as Address,
+				sectionAddress: to.Address([ 1, 0 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 2, 1 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 3, 2 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: BLACK,
+				id: id++,
+				sectionAddress: to.Address([ 3, 0 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			areaOrigin = to.Coordinate([ 250, 50 ])
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 0, 3 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 0, 1 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 1, 2 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 2, 3 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 1, 0 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 2, 1 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 3, 2 ]),
+				sectionResolution: 4,
+			})).toBe(true)
+
+			expect(sectionCenterIsColor({
+				areaOrigin,
+				areaSize,
+				color: TRANSPARENT,
+				id: id++,
+				sectionAddress: to.Address([ 3, 0 ]),
 				sectionResolution: 4,
 			})).toBe(true)
 		})

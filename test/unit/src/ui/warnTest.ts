@@ -7,7 +7,7 @@ describe('warn', () => {
 	it('adds warnings to the warnings container', () => {
 		spyOn(window.document, 'createElement').and.callFake(() => ({}))
 
-		const mockChildren = [] as PageElement[]
+		const mockChildren: PageElement[] = []
 		const mockWarningsContainer = buildMockElement({ mockChildren })
 		spyOn(window.document, 'querySelector').and.returnValue(mockWarningsContainer)
 

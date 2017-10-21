@@ -1,5 +1,5 @@
-import { Radian } from '../../../space'
 import { Dimension } from '../../../page'
+import { Radian } from '../../../space'
 
 interface ViewSettings {
 	canvasSize?: Dimension,

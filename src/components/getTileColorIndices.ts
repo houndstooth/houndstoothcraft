@@ -1,5 +1,6 @@
 import { X_INDEX, Y_INDEX } from '../constants'
 import { state } from '../state'
+import * as to from '../to'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import { Address, Assignment, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
@@ -18,7 +19,7 @@ const maybeAdjustTileColorIndices: (_: {
 
 	let maybeAdjustedTileColorIndices = tileColorIndices
 	if (flipGrain) {
-		maybeAdjustedTileColorIndices = reversed(tileColorIndices) as TileColorIndices
+		maybeAdjustedTileColorIndices = to.TileColorIndices(reversed(tileColorIndices))
 	}
 	if (switcheroo) {
 		maybeAdjustedTileColorIndices = applySwitcheroo({
@@ -61,7 +62,7 @@ const getByWeave: (_: {
 	const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
 	const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
 
-	return [ rowsIndex, columnsIndex ] as TileColorIndices
+	return to.TileColorIndices([ rowsIndex, columnsIndex ])
 }
 
 const getBySupertile: (_: {
@@ -70,9 +71,12 @@ const getBySupertile: (_: {
 	const supertileColumn = wrappedIndex({
 		array: supertile,
 		index: gridAddress[ 0 ] + addressOffset[ 0 ],
-	}) as any
+	})
 
-	return wrappedIndex({ array: supertileColumn, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
+	return to.TileColorIndices(wrappedIndex({
+		array: supertileColumn,
+		index: gridAddress[ 1 ] + addressOffset[ 1 ],
+	}))
 }
 
 const SWITCHEROO_SIZE = 4
@@ -80,10 +84,10 @@ const SWITCHEROO_SIZE = 4
 const applySwitcheroo: (_: {
 	gridAddress: Address, tileColorIndices: TileColorIndices,
 }) => TileColorIndices = ({ gridAddress, tileColorIndices }) => {
-	const xMod = gridAddress[ X_INDEX ] % SWITCHEROO_SIZE as any
-	const yMod = gridAddress[ Y_INDEX ] % SWITCHEROO_SIZE as any
+	const xMod = gridAddress[ X_INDEX ] % SWITCHEROO_SIZE
+	const yMod = gridAddress[ Y_INDEX ] % SWITCHEROO_SIZE
 	if (!((xMod + yMod) % SWITCHEROO_SIZE)) {
-		return reversed(tileColorIndices) as TileColorIndices
+		return to.TileColorIndices(reversed(tileColorIndices))
 	}
 
 	return tileColorIndices

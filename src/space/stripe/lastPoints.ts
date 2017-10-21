@@ -1,9 +1,11 @@
+import * as from from '../../from'
+import * as to from '../../to'
 import { Points } from '../types'
 import { pointAlongBottomEdge, pointAlongLeftEdge, pointInBottomLeftCorner } from './stripePoints'
 
 const lastPoints: Points = params => {
 	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeStart } = params
-	const stripeStartsInTopLeftCorner = stripeStart as any === 0
+	const stripeStartsInTopLeftCorner = from.StripePosition(stripeStart || to.StripePosition(0)) === 0
 	if (!stripeStartsInTopLeftCorner) {
 		lastPointsWhenStripeDoesNotStartInTopLeftCorner({
 			originAndSize,

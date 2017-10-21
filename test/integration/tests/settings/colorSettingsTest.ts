@@ -1,8 +1,7 @@
-import { Supertile } from '../../../../src/components/types/Supertile'
+import { to } from '../../../../src'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { AssignmentMode } from '../../../../src/index'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { getFromBasePatternOrDefault } from '../../../helpers/getFromBasePatternOrDefault'
 import { TILE_SIZE } from '../../../helpers/settingsPaths'
@@ -25,7 +24,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
+						canvasSize: to.Dimension(tileSize * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -34,12 +33,12 @@ describe('.colorSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(pixelIsColorWithMarker({
-				coordinateUnderTest: [ 25 as any, 75 as any ] as Coordinate,
+				coordinateUnderTest: to.Coordinate([ 25, 75 ]),
 				expectedColor: YELLOW,
 				id: 1,
 			})).toBe(true)
 			expect(pixelIsColorWithMarker({
-				coordinateUnderTest: [ 75 as any, 25 as any ] as Coordinate,
+				coordinateUnderTest: to.Coordinate([ 75, 25 ]),
 				expectedColor: BLUE,
 				id: 2,
 			})).toBe(true)
@@ -63,7 +62,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
+						canvasSize: to.Dimension(tileSize * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -75,57 +74,57 @@ describe('.colorSettings', () => {
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ YELLOW, YELLOW ],
-				tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ YELLOW, BLUE ],
-				tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 0 ]),
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ YELLOW, CYAN ],
-				tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 0 ]),
 				tileSize,
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLUE, YELLOW ],
-				tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 1 ]),
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLUE, BLUE ],
-				tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLUE, CYAN ],
-				tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 1 ]),
 				tileSize,
 			})).toBe(true)
 
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ CYAN, YELLOW ],
-				tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 2 ]),
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ CYAN, BLUE ],
-				tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 2 ]),
 				tileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ CYAN, CYAN ],
-				tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
+				tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 2 ]),
 				tileSize,
 			})).toBe(true)
 		})
@@ -150,7 +149,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
+								canvasSize: to.Dimension(tileSize * sufficientTileCountToDemonstrateSetting),
 							},
 						},
 					}
@@ -164,73 +163,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 3 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 3 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 3 ]),
 							tileSize,
 						},
 					]
@@ -238,73 +237,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 96,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: 104,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: 112,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: 120,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: 128,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: 136,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: 144,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: 152,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: 160,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: 168,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 3 ]),
 							tileSize,
 						},
 						{
 							baseId: 176,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 3 ]),
 							tileSize,
 						},
 						{
 							baseId: 184,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 3 ]),
 							tileSize,
 						},
 					]
@@ -312,73 +311,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 192,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 4 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 4 ]),
 							tileSize,
 						},
 						{
 							baseId: 200,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 4 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 4 ]),
 							tileSize,
 						},
 						{
 							baseId: 208,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 4 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 4 ]),
 							tileSize,
 						},
 						{
 							baseId: 216,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 5 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 5 ]),
 							tileSize,
 						},
 						{
 							baseId: 224,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 5 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 5 ]),
 							tileSize,
 						},
 						{
 							baseId: 232,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 5 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 5 ]),
 							tileSize,
 						},
 						{
 							baseId: 240,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 6 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 6 ]),
 							tileSize,
 						},
 						{
 							baseId: 248,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 6 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 6 ]),
 							tileSize,
 						},
 						{
 							baseId: 256,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 6 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 6 ]),
 							tileSize,
 						},
 						{
 							baseId: 264,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 7 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 7 ]),
 							tileSize,
 						},
 						{
 							baseId: 272,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 7 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 7 ]),
 							tileSize,
 						},
 						{
 							baseId: 280,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 7 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 7 ]),
 							tileSize,
 						},
 					]
@@ -386,73 +385,73 @@ describe('.colorSettings', () => {
 						{
 							baseId: 288,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 4 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 4 ]),
 							tileSize,
 						},
 						{
 							baseId: 296,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 4 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 4 ]),
 							tileSize,
 						},
 						{
 							baseId: 304,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 4 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 4 ]),
 							tileSize,
 						},
 						{
 							baseId: 312,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 5 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 5 ]),
 							tileSize,
 						},
 						{
 							baseId: 320,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 5 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 5 ]),
 							tileSize,
 						},
 						{
 							baseId: 328,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 5 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 5 ]),
 							tileSize,
 						},
 						{
 							baseId: 336,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 6 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 6 ]),
 							tileSize,
 						},
 						{
 							baseId: 344,
 							colors: [ TRANSPARENT, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 6 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 6 ]),
 							tileSize,
 						},
 						{
 							baseId: 352,
 							colors: [ TRANSPARENT, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 6 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 6 ]),
 							tileSize,
 						},
 						{
 							baseId: 360,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 7 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 7 ]),
 							tileSize,
 						},
 						{
 							baseId: 368,
 							colors: [ BLACK, BLACK ],
-							tileOrigin: [ tileSize * 4 as any, tileSize * 7 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 4, tileSize * 7 ]),
 							tileSize,
 						},
 						{
 							baseId: 376,
 							colors: [ BLACK, TRANSPARENT ],
-							tileOrigin: [ tileSize * 5 as any, tileSize * 7 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 5, tileSize * 7 ]),
 							tileSize,
 						},
 					]
@@ -473,7 +472,7 @@ describe('.colorSettings', () => {
 							colorSettings: {
 								assignment: {
 									assignmentMode: AssignmentMode.SUPERTILE,
-									supertile: [
+									supertile: to.Supertile([
 										[
 											[ 2, 0 ],
 											[ 0, 1 ],
@@ -482,7 +481,7 @@ describe('.colorSettings', () => {
 											[ 1, 2 ],
 											[ 3, 3 ],
 										],
-									] as Supertile,
+									]),
 								},
 								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
 							},
@@ -490,7 +489,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
+								canvasSize: to.Dimension(tileSize * sufficientTileCountToDemonstrateSetting),
 							},
 						},
 					}
@@ -504,25 +503,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
 							tileSize,
 						},
 					]
@@ -530,25 +529,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 1 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 0 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 0 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 1 ]),
 							tileSize,
 						},
 					]
@@ -556,25 +555,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ tileSize * 0 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 3 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 3 ]),
 							tileSize,
 						},
 					]
@@ -582,25 +581,25 @@ describe('.colorSettings', () => {
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ YELLOW, BLUE ],
-							tileOrigin: [ tileSize * 2 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 3 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ BLUE, CYAN ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 2 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 2 ]),
 							tileSize,
 						},
 						{
 							baseId: baseId += 8,
 							colors: [ MAGENTA, MAGENTA ],
-							tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
+							tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 3 ]),
 							tileSize,
 						},
 					]
@@ -627,7 +626,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as any,
+							canvasSize: to.Dimension(sufficientTileCountToDemonstrateSetting * tileSize),
 						},
 					},
 				}
@@ -640,50 +639,50 @@ describe('.colorSettings', () => {
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ tileSize * 2 as any, tileSize * 2 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 2 ]),
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: [ tileSize * 3 as any, tileSize * 3 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 3 ]),
 					tileSize,
 				})).toBe(true)
 
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ tileSize * 2 as any, tileSize * 0 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 2, tileSize * 0 ]),
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ tileSize * 3 as any, tileSize * 1 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 3, tileSize * 1 ]),
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ tileSize * 0 as any, tileSize * 2 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 2 ]),
 					tileSize,
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: [ tileSize * 1 as any, tileSize * 3 as any ] as Coordinate,
+					tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 3 ]),
 					tileSize,
 				})).toBe(true)
 			})
@@ -704,7 +703,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: sufficientTileCountToDemonstrateSetting * tileSize as any,
+							canvasSize: to.Dimension(sufficientTileCountToDemonstrateSetting * tileSize),
 						},
 					},
 				}
@@ -717,25 +716,25 @@ describe('.colorSettings', () => {
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, TRANSPARENT ],
-						tileOrigin: [ tileSize * 0 as any, tileSize * 0 as any ] as Coordinate,
+						tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 0 ]),
 						tileSize,
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, BLACK ],
-						tileOrigin: [ tileSize * 0 as any, tileSize * 1 as any ] as Coordinate,
+						tileOrigin: to.Coordinate([ tileSize * 0, tileSize * 1 ]),
 						tileSize,
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, TRANSPARENT ],
-						tileOrigin: [ tileSize * 1 as any, tileSize * 0 as any ] as Coordinate,
+						tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 0 ]),
 						tileSize,
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, BLACK ],
-						tileOrigin: [ tileSize * 1 as any, tileSize * 1 as any ] as Coordinate,
+						tileOrigin: to.Coordinate([ tileSize * 1, tileSize * 1 ]),
 						tileSize,
 					},
 				]
@@ -759,7 +758,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
+						canvasSize: to.Dimension(tileSize * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -773,13 +772,13 @@ describe('.colorSettings', () => {
 			partiallySeeThroughBlue.a *= opacity
 
 			const semiBlackPixel = {
-				coordinateUnderTest: [ 25 as any, 75 as any ] as Coordinate,
+				coordinateUnderTest: to.Coordinate([ 25, 75 ]),
 				expectedColor: partiallySeeThroughBlack,
 				id: 1,
 			}
 			expect(pixelIsColorWithMarker(semiBlackPixel)).toBe(true)
 			const semiBluePixel = {
-				coordinateUnderTest: [ 75 as any, 25 as any ] as Coordinate,
+				coordinateUnderTest: to.Coordinate([ 75, 25 ]),
 				expectedColor: partiallySeeThroughBlue,
 				id: 2,
 			}
@@ -800,7 +799,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: tileSize * sufficientTileCountToDemonstrateSetting as any,
+						canvasSize: to.Dimension(tileSize * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -809,7 +808,7 @@ describe('.colorSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const yellowPixel = {
-				coordinateUnderTest: [ 75 as any, 25 as any ] as Coordinate,
+				coordinateUnderTest: to.Coordinate([ 75, 25 ]),
 				expectedColor: YELLOW,
 				id: 1,
 			}

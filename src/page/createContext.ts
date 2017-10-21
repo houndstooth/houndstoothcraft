@@ -1,13 +1,14 @@
+import { state } from '../state'
+import { defaults } from '../store'
 import { document } from '../utilities/windowWrapper'
-import { Context, Dimension, PageElement } from './types'
+import { Context, PageElement } from './types'
 
-const createContext: (_: {
-	canvasContainer: PageElement, canvasDimensions: Dimension[],
-}) => Context = ({ canvasContainer, canvasDimensions }) => {
+const createContext: (_: { canvasContainer: PageElement }) => Context = ({ canvasContainer }) => {
+	const { canvasSize = defaults.DEFAULT_CANVAS_SIZE } = state.mainHoundstooth.basePattern.viewSettings || {}
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
-	canvas.width = canvasDimensions[ 0 ]
-	canvas.height = canvasDimensions[ 1 ]
+	canvas.width = canvasSize
+	canvas.height = canvasSize
 
 	canvasContainer.appendChild(canvas)
 

@@ -1,4 +1,5 @@
-import { getCanvasDimensions } from '../canvas'
+import { state } from '../state'
+import { defaults } from '../store'
 import { document } from '../utilities/windowWrapper'
 import { deleteElementIfExists } from './deleteElementIfExists'
 import { Context } from './types'
@@ -10,9 +11,9 @@ const createMixedDownCanvas: () => Context = () => {
 	mixedDownCanvas.classList.add('mixed-down-canvas')
 	document.body.appendChild(mixedDownCanvas)
 
-	const canvasDimensions = getCanvasDimensions()
-	mixedDownCanvas.width = canvasDimensions[ 0 ]
-	mixedDownCanvas.height = canvasDimensions[ 1 ]
+	const { canvasSize = defaults.DEFAULT_CANVAS_SIZE } = state.mainHoundstooth.basePattern.viewSettings || {}
+	mixedDownCanvas.width = canvasSize
+	mixedDownCanvas.height = canvasSize
 
 	mixedDownCanvas.style.display = 'none'
 

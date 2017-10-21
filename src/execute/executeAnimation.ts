@@ -1,6 +1,7 @@
 import { animator, buildAnimationFunction, buildStopConditionFunction } from '../animation'
 import { defaults } from '../index'
 import { state } from '../state'
+import * as to from '../to'
 import { defaultToTrue } from '../utilities/codeUtilities'
 import { SettingsFunctionObject } from './types'
 
@@ -10,8 +11,8 @@ const executeAnimation: (_: {
 	const { animationSettings } = state.mainHoundstooth.basePattern
 	const {
 		frameRate = defaults.DEFAULT_FRAME_RATE,
-		endAnimationFrame = 0 as any,
-		startAnimationFrame = 0 as any,
+		endAnimationFrame = to.Frame(0),
+		startAnimationFrame = to.Frame(0),
 	} = animationSettings
 	let { refreshCanvas } = animationSettings
 	refreshCanvas = !!defaultToTrue(refreshCanvas)

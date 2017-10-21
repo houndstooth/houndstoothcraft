@@ -1,6 +1,6 @@
 import { isTileUniform } from '../../../../src/components/isTileUniform'
-import { TileColorIndices } from '../../../../src/components/types/TileColorIndices'
 import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {
@@ -15,12 +15,12 @@ describe('is tile uniform', () => {
 	})
 
 	it('returns true if all of the tile color indices point to the same color', () => {
-		const tileColorIndices = [ 0, 0, 3, 0, 3 ] as TileColorIndices
+		const tileColorIndices = to.TileColorIndices([ 0, 0, 3, 0, 3 ])
 		expect(isTileUniform({ tileColorIndices })).toBe(true)
 	})
 
 	it('returns false if any of the tile color indices point to a color that is different', () => {
-		const tileColorIndices = [ 0, 0, 1, 0, 1 ] as TileColorIndices
+		const tileColorIndices = to.TileColorIndices([ 0, 0, 1, 0, 1 ])
 		expect(isTileUniform({ tileColorIndices })).toBe(false)
 	})
 })

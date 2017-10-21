@@ -1,6 +1,6 @@
 import { draw } from '../../../../src/render/draw'
 import * as fill from '../../../../src/render/fill'
-import { Outline } from '../../../../src/space/types/Outline'
+import * as to from '../../../../src/to'
 import * as view from '../../../../src/view'
 
 describe('draw', () => {
@@ -21,7 +21,7 @@ describe('draw', () => {
 	})
 
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
-		const outline = [ [ 0 as any, 1 as any ] ] as Outline
+		const outline = to.Outline([ [ 0, 1 ] ])
 
 		draw({ context, shapeColor, outline })
 
@@ -29,7 +29,7 @@ describe('draw', () => {
 	})
 
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
-		const outline = [ [ 0 as any, 1 as any ], [ 1 as any, 1 as any ] ] as Outline
+		const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ] ])
 
 		draw({ context, shapeColor, outline })
 

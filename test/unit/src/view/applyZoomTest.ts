@@ -1,10 +1,10 @@
-import { Outline } from '../../../../src/space/types/Outline'
 import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 import { applyZoom } from '../../../../src/view/applyZoom'
 
 describe('apply zoom', () => {
 	const zoom = 2
-	const canvasSize = 200 as any
+	const canvasSize = 200
 	let outline
 	beforeEach(() => {
 		outline = [
@@ -17,12 +17,12 @@ describe('apply zoom', () => {
 	})
 
 	it('adjusts the outline per the zoom level', () => {
-		expect(applyZoom(outline)).toEqual([
-			[ 100 as any, 100 as any ],
-			[ 200 as any, 100 as any ],
-			[ 200 as any, 200 as any ],
-			[ 100 as any, 200 as any ],
-		] as Outline)
+		expect(applyZoom(outline)).toEqual(to.Outline([
+			[ 100, 100 ],
+			[ 200, 100 ],
+			[ 200, 200 ],
+			[ 100, 200 ],
+		]))
 	})
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
@@ -31,12 +31,12 @@ describe('apply zoom', () => {
 		})
 
 		it('works', () => {
-			expect(applyZoom(outline)).toEqual([
-				[ 0 as any, 0 as any ],
-				[ 100 as any, 0 as any ],
-				[ 100 as any, 100 as any ],
-				[ 0 as any, 100 as any ],
-			] as Outline)
+			expect(applyZoom(outline)).toEqual(to.Outline([
+				[ 0, 0 ],
+				[ 100, 0 ],
+				[ 100, 100 ],
+				[ 0, 100 ],
+			]))
 		})
 
 		describe('when the view is already centered', () => {
@@ -46,12 +46,12 @@ describe('apply zoom', () => {
 		})
 
 		it('does not double-up on adjusting for centering the view', () => {
-			expect(applyZoom(outline)).toEqual([
-				[ 0 as any, 0 as any ],
-				[ 100 as any, 0 as any ],
-				[ 100 as any, 100 as any ],
-				[ 0 as any, 100 as any ],
-			] as Outline)
+			expect(applyZoom(outline)).toEqual(to.Outline([
+				[ 0, 0 ],
+				[ 100, 0 ],
+				[ 100, 100 ],
+				[ 0, 100 ],
+			]))
 		})
 	})
 })

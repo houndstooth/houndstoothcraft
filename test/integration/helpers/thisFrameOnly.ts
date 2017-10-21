@@ -5,13 +5,13 @@ const thisAnimationFrameOnly: (frame: Frame) => { endAnimationFrame: Frame, star
 	frame => ({
 		endAnimationFrame: frame,
 		startAnimationFrame: frame,
-	}) as any
+	})
 
 const thisLayerOnly: (layer: Layer) => { endLayer: Layer, startLayer: Layer } =
 	layer => ({
 		endLayer: layer,
 		startLayer: layer,
-	}) as any
+	})
 
 export {
 	thisAnimationFrameOnly,

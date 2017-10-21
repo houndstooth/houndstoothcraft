@@ -471,7 +471,7 @@ describe('.colorSettings', () => {
 						basePattern: {
 							colorSettings: {
 								assignment: {
-									assignmentMode: AssignmentMode.SUPERTILE,
+									assignmentMode: AssignmentMode.Supertile,
 									supertile: to.Supertile([
 										[
 											[ 2, 0 ],

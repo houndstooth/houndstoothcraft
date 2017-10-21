@@ -1,6 +1,6 @@
 enum AssignmentMode {
-	SUPERTILE = 'SUPERTILE',
-	WEAVE = 'WEAVE',
+	Supertile,
+	Weave,
 }
 
 export { AssignmentMode }

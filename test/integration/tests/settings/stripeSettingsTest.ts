@@ -21,7 +21,7 @@ describe('.stripeSettings', () => {
 						gridSettings: { gridSize: 1 },
 						stripeSettings: {
 							stripePositionSettings: {
-								stripeCountMode: StripeCountMode.GINGHAM_CHEVRON_CONTINUUM,
+								stripeCountMode: StripeCountMode.GinghamChevronContinuum,
 							},
 						},
 						viewSettings: { canvasSize: tileSize },
@@ -153,7 +153,7 @@ describe('.stripeSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					stripeSettings: {
-						baseStripeDiagonal: BaseStripeDiagonal.PRINCIPAL,
+						baseStripeDiagonal: BaseStripeDiagonal.Principal,
 					},
 				},
 			}

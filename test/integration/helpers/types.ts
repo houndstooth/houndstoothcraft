@@ -21,11 +21,11 @@ type ExpectDiagonalDividedSection = (_: ExpectedDividedSection) => void
 type ExpectSolidSection = (_: ExpectedSolidSection) => void
 
 enum Diagonal {
-	Solid = 'solid',
-	Minor = 'minor',
-	Principal = 'principal',
-	SolidButTestPrincipalToAvoidSeam = 'solid but test principal to avoid seam',
-	SolidButTestMinorToAvoidSeam = 'solid but test minor to avoid seam',
+	Solid,
+	Minor,
+	Principal,
+	SolidButTestPrincipalToAvoidSeam,
+	SolidButTestMinorToAvoidSeam,
 }
 
 export {

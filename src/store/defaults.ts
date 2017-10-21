@@ -12,13 +12,13 @@ const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Units = to.Units(50)
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
 const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
-	assignmentMode: AssignmentMode.WEAVE,
+	assignmentMode: AssignmentMode.Weave,
 	supertile: to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ]),
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
 }
 const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
-const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.MINOR
+const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.Minor
 const DEFAULT_FRAME_RATE = 1.005
 const DEFAULT_START_LAYER = to.Layer(0)
 const DEFAULT_END_LAYER = to.Layer(0)

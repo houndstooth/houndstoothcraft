@@ -10,19 +10,19 @@ const buildMockContext: (_?: {
 	const { contextCallsOrder = [], toBlobSpy = undefined } = params || {}
 
 	return {
-		beginPath: () => contextCallsOrder.push({ method: MockContextMethod.BEGIN_PATH }),
+		beginPath: () => contextCallsOrder.push({ method: MockContextMethod.BeginPath }),
 		canvas: { toBlob: toBlobSpy },
-		clearRect: () => contextCallsOrder.push({ method: MockContextMethod.CLEAR_RECT }),
-		clip: () => contextCallsOrder.push({ method: MockContextMethod.CLIP }),
-		closePath: () => contextCallsOrder.push({ method: MockContextMethod.CLOSE_PATH }),
+		clearRect: () => contextCallsOrder.push({ method: MockContextMethod.ClearRect }),
+		clip: () => contextCallsOrder.push({ method: MockContextMethod.Clip }),
+		closePath: () => contextCallsOrder.push({ method: MockContextMethod.ClosePath }),
 		drawImage: noop,
-		fill: () => contextCallsOrder.push({ method: MockContextMethod.FILL }),
+		fill: () => contextCallsOrder.push({ method: MockContextMethod.Fill }),
 		fillStyle: '',
 		globalCompositeOperation: '',
-		lineTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.LINE_TO, x, y }),
-		moveTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.MOVE_TO, x, y }),
-		restore: () => contextCallsOrder.push({ method: MockContextMethod.RESTORE }),
-		save: () => contextCallsOrder.push({ method: MockContextMethod.SAVE }),
+		lineTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.LineTo, x, y }),
+		moveTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.MoveTo, x, y }),
+		restore: () => contextCallsOrder.push({ method: MockContextMethod.Restore }),
+		save: () => contextCallsOrder.push({ method: MockContextMethod.Save }),
 	}
 }
 

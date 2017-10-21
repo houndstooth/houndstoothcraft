@@ -5,6 +5,7 @@ import { executeSelectedHoundstoothEffects } from '../../../../src/execute/execu
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import { buildMockContext } from '../../../helpers/buildMockContext'
+import { MockContextMethod } from '../../../types/MockContextMethod'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
@@ -124,13 +125,13 @@ describe('.tileSettings', () => {
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(contextCallsOrder.length).toBe(7)
-			expect(contextCallsOrder[ 0 ].method).toBe('beginPath')
-			expect(contextCallsOrder[ 1 ].method).toBe('moveTo')
-			expect(contextCallsOrder[ 2 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 3 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 4 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 5 ].method).toBe('closePath')
-			expect(contextCallsOrder[ 6 ].method).toBe('fill')
+			expect(contextCallsOrder[ 0 ].method).toBe(MockContextMethod.BeginPath)
+			expect(contextCallsOrder[ 1 ].method).toBe(MockContextMethod.MoveTo)
+			expect(contextCallsOrder[ 2 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 3 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 4 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 5 ].method).toBe(MockContextMethod.ClosePath)
+			expect(contextCallsOrder[ 6 ].method).toBe(MockContextMethod.Fill)
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
@@ -141,35 +142,35 @@ describe('.tileSettings', () => {
 
 			expect(contextCallsOrder.length).toBe(26)
 
-			expect(contextCallsOrder[ 0 ].method).toBe('beginPath')
-			expect(contextCallsOrder[ 1 ].method).toBe('moveTo')
-			expect(contextCallsOrder[ 2 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 3 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 4 ].method).toBe('closePath')
-			expect(contextCallsOrder[ 5 ].method).toBe('fill')
+			expect(contextCallsOrder[ 0 ].method).toBe(MockContextMethod.BeginPath)
+			expect(contextCallsOrder[ 1 ].method).toBe(MockContextMethod.MoveTo)
+			expect(contextCallsOrder[ 2 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 3 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 4 ].method).toBe(MockContextMethod.ClosePath)
+			expect(contextCallsOrder[ 5 ].method).toBe(MockContextMethod.Fill)
 
-			expect(contextCallsOrder[ 6 ].method).toBe('beginPath')
-			expect(contextCallsOrder[ 7 ].method).toBe('moveTo')
-			expect(contextCallsOrder[ 8 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 9 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 10 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 11 ].method).toBe('closePath')
-			expect(contextCallsOrder[ 12 ].method).toBe('fill')
+			expect(contextCallsOrder[ 6 ].method).toBe(MockContextMethod.BeginPath)
+			expect(contextCallsOrder[ 7 ].method).toBe(MockContextMethod.MoveTo)
+			expect(contextCallsOrder[ 8 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 9 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 10 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 11 ].method).toBe(MockContextMethod.ClosePath)
+			expect(contextCallsOrder[ 12 ].method).toBe(MockContextMethod.Fill)
 
-			expect(contextCallsOrder[ 13 ].method).toBe('beginPath')
-			expect(contextCallsOrder[ 14 ].method).toBe('moveTo')
-			expect(contextCallsOrder[ 15 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 16 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 17 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 18 ].method).toBe('closePath')
-			expect(contextCallsOrder[ 19 ].method).toBe('fill')
+			expect(contextCallsOrder[ 13 ].method).toBe(MockContextMethod.BeginPath)
+			expect(contextCallsOrder[ 14 ].method).toBe(MockContextMethod.MoveTo)
+			expect(contextCallsOrder[ 15 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 16 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 17 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 18 ].method).toBe(MockContextMethod.ClosePath)
+			expect(contextCallsOrder[ 19 ].method).toBe(MockContextMethod.Fill)
 
-			expect(contextCallsOrder[ 20 ].method).toBe('beginPath')
-			expect(contextCallsOrder[ 21 ].method).toBe('moveTo')
-			expect(contextCallsOrder[ 22 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 23 ].method).toBe('lineTo')
-			expect(contextCallsOrder[ 24 ].method).toBe('closePath')
-			expect(contextCallsOrder[ 25 ].method).toBe('fill')
+			expect(contextCallsOrder[ 20 ].method).toBe(MockContextMethod.BeginPath)
+			expect(contextCallsOrder[ 21 ].method).toBe(MockContextMethod.MoveTo)
+			expect(contextCallsOrder[ 22 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 23 ].method).toBe(MockContextMethod.LineTo)
+			expect(contextCallsOrder[ 24 ].method).toBe(MockContextMethod.ClosePath)
+			expect(contextCallsOrder[ 25 ].method).toBe(MockContextMethod.Fill)
 		})
 	})
 })

@@ -1,6 +1,6 @@
 enum BaseStripeDiagonal {
-	MINOR = 'MINOR',
-	PRINCIPAL = 'PRINCIPAL',
+	Minor,
+	Principal,
 }
 
 export { BaseStripeDiagonal }

@@ -45,10 +45,10 @@ const getIndices: (_: {
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
 
 	let getter
-	if (assignmentMode === AssignmentMode.WEAVE) {
+	if (assignmentMode === AssignmentMode.Weave) {
 		getter = getByWeave
 	}
-	else if (assignmentMode === AssignmentMode.SUPERTILE) {
+	else if (assignmentMode === AssignmentMode.Supertile) {
 		getter = getBySupertile
 	}
 

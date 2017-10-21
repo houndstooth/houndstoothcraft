@@ -1,6 +1,6 @@
 import { from, to } from '../../../src'
 import { Address } from '../../../src/components'
-import { Units } from '../../../src/components/types/Units'
+import { Unit } from '../../../src/components/types/Unit'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 import { drawPassMarker } from './drawPassMarker'
@@ -8,7 +8,7 @@ import { pixelIsColor } from './pixelIsColor'
 
 const sectionCenterIsColor: (_: {
 		areaOrigin: Coordinate,
-		areaSize: Units,
+		areaSize: Unit,
 		color: Color,
 		id?: number,
 		sectionAddress: Address,
@@ -23,13 +23,13 @@ const sectionCenterIsColor: (_: {
 
 const sectionCenter: (_: {
 		areaOrigin: Coordinate,
-		areaSize: Units,
+		areaSize: Unit,
 		sectionAddress: Address,
 		sectionResolution: number,
 	}) => Coordinate = ({ areaOrigin, areaSize, sectionAddress, sectionResolution }) => {
-	const sectionSize = from.Units(areaSize) / sectionResolution
-	const areaX = from.Units(areaOrigin[ 0 ])
-	const areaY = from.Units(areaOrigin[ 1 ])
+	const sectionSize = from.Unit(areaSize) / sectionResolution
+	const areaX = from.Unit(areaOrigin[ 0 ])
+	const areaY = from.Unit(areaOrigin[ 1 ])
 	const sectionAddressValue = from.Address(sectionAddress)
 
 	return to.Coordinate([

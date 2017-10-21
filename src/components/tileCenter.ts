@@ -5,11 +5,11 @@ import * as to from '../to'
 import { TileOriginAndSize } from './types'
 
 const tileCenter: (_: TileOriginAndSize) => Coordinate = ({ tileOrigin, tileSize }) => {
-	const halfTileSize = from.Units(tileSize) * HALF
+	const halfTileSize = from.Unit(tileSize) * HALF
 
 	return to.Coordinate([
-		from.Units(tileOrigin[ X_INDEX ]) + halfTileSize,
-		from.Units(tileOrigin[ Y_INDEX ]) + halfTileSize,
+		from.Unit(tileOrigin[ X_INDEX ]) + halfTileSize,
+		from.Unit(tileOrigin[ Y_INDEX ]) + halfTileSize,
 	])
 }
 

@@ -15,8 +15,8 @@ const drawPassMarker: (_: {
 	testMarkersContext.strokeStyle = passed ? 'green' : 'red'
 	testMarkersContext.beginPath()
 
-	const x = from.Units(coordinateUnderTest[0])
-	const y = from.Units(coordinateUnderTest[1])
+	const x = from.Unit(coordinateUnderTest[0])
+	const y = from.Unit(coordinateUnderTest[1])
 	testMarkersContext.arc(x, y, 2, 0, Math.PI * 2)
 
 	testMarkersContext.closePath()

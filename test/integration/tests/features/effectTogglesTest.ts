@@ -9,7 +9,7 @@ xdescribe('effect toggles', () => {
 		maybeAddEffectToggles(Object.values(effects))
 		state.mainHoundstooth.basePattern = {
 			tileSettings: {
-				tileSizeSetting: to.Units(50),
+				tileSizeSetting: to.Unit(50),
 			},
 		}
 		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') || {}

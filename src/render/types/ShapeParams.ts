@@ -1,4 +1,4 @@
-import { TileColorIndices, Units } from '../../components'
+import { TileColorIndices, Unit } from '../../components'
 import { Coordinate, GetOutline, OutlineOptions } from '../../space'
 
 interface ShapeParams {
@@ -7,7 +7,7 @@ interface ShapeParams {
 	stripeIndex?: number,
 	tileColorIndices: TileColorIndices,
 	tileOrigin: Coordinate,
-	tileSize: Units,
+	tileSize: Unit,
 }
 
 export { ShapeParams }

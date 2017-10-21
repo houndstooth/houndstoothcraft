@@ -5,7 +5,7 @@ import { applyScroll } from '../../../../src/view/applyScroll'
 
 describe('apply scroll', () => {
 	const zoom = 10
-	const tileSize = to.Units(40)
+	const tileSize = to.Unit(40)
 	const canvasSize = to.Dimension(200)
 	const outline = to.Outline([
 		[ 3, 5 ],
@@ -20,7 +20,7 @@ describe('apply scroll', () => {
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		state.mainHoundstooth.basePattern.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 		const halfCanvasSize = from.Dimension(canvasSize) / 2
-		const halfTileSize = from.Units(tileSize) / 2
+		const halfTileSize = from.Unit(tileSize) / 2
 		expect(applyScroll(outline)).toEqual(to.Outline([
 			[
 				halfCanvasSize - halfTileSize + 3,

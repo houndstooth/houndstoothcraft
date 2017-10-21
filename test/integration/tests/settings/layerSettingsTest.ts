@@ -60,25 +60,25 @@ describe('.layerSettings', () => {
 			baseId: baseId += 8,
 			colors: [ YELLOW, CYAN ],
 			tileOrigin: to.Coordinate([ 0 , 0 ]),
-			tileSize: to.Units(50),
+			tileSize: to.Unit(50),
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ YELLOW, YELLOW ],
 			tileOrigin: to.Coordinate([ 50 , 0 ]),
-			tileSize: to.Units(50),
+			tileSize: to.Unit(50),
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ CYAN, CYAN ],
 			tileOrigin: to.Coordinate([ 0 , 50 ]),
-			tileSize: to.Units(50),
+			tileSize: to.Unit(50),
 		})).toBe(true)
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ CYAN, YELLOW ],
 			tileOrigin: to.Coordinate([ 50 , 50 ]),
-			tileSize: to.Units(50),
+			tileSize: to.Unit(50),
 		})).toBe(true)
 	})
 })

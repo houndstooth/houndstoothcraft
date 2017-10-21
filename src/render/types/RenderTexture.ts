@@ -1,4 +1,4 @@
-import { TileColorIndices, Units } from '../../components'
+import { TileColorIndices, Unit } from '../../components'
 import { Context } from '../../page'
 import { Coordinate, Outline } from '../../space'
 
@@ -8,7 +8,7 @@ type RenderTexture = (_: {
 	shapeColorIndex?: number,
 	tileColorIndices?: TileColorIndices,
 	tileOrigin?: Coordinate,
-	tileSize?: Units,
+	tileSize?: Unit,
 }) => void
 
 export { RenderTexture }

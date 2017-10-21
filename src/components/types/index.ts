@@ -8,7 +8,7 @@ import { StripePosition } from './StripePosition'
 import { Supertile } from './Supertile'
 import { TileColorIndices } from './TileColorIndices'
 import { TileOriginAndSize } from './TileOriginAndSize'
-import { Units } from './Units'
+import { Unit } from './Unit'
 import { Weave } from './Weave'
 
 export {
@@ -19,7 +19,7 @@ export {
 	Assignment,
 	Supertile,
 	Weave,
-	Units,
+	Unit,
 	GetStripePosition,
 	AssignmentMode,
 	StripeCountMode,

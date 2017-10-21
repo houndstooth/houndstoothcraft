@@ -137,7 +137,7 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
-			const tileSizeSetting = to.Units(50)
+			const tileSizeSetting = to.Unit(50)
 			const houndstoothOverrides = {
 				basePattern: {
 					gridSettings: {

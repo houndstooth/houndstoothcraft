@@ -9,7 +9,7 @@ import { noop } from '../../../helpers/noop'
 
 describe('shape', () => {
 	const tileOrigin = to.Coordinate([ 11, 13 ])
-	const tileSize = to.Units(45)
+	const tileSize = to.Unit(45)
 	const tileColorIndices = to.TileColorIndices([])
 	const stripeIndex = 7
 	const shapeColorIndex = 45

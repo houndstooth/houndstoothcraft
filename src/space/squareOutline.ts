@@ -3,8 +3,8 @@ import * as to from '../to'
 import { GetOutline } from './types'
 
 const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
-	const x = from.Units(tileOrigin[ 0 ])
-	const y = from.Units(tileOrigin[ 1 ])
+	const x = from.Unit(tileOrigin[ 0 ])
+	const y = from.Unit(tileOrigin[ 1 ])
 
 	return to.Outline([
 		[
@@ -12,16 +12,16 @@ const squareOutline: GetOutline = ({ tileOrigin, tileSize }) => {
 			y,
 		],
 		[
-			x + from.Units(tileSize),
+			x + from.Unit(tileSize),
 			y,
 		],
 		[
-			x + from.Units(tileSize),
-			y + from.Units(tileSize),
+			x + from.Unit(tileSize),
+			y + from.Unit(tileSize),
 		],
 		[
 			x,
-			y + from.Units(tileSize),
+			y + from.Unit(tileSize),
 		],
 	])
 }

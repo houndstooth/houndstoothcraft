@@ -1,8 +1,8 @@
-import { Color, Coordinate, to, Units } from '../../../src'
+import { Color, Coordinate, to, Unit } from '../../../src'
 import { sectionCenterIsColor } from './sectionCenterIsColor'
 
 const standardTileIsColors: (_: {
-	baseId: number, colors: Color[], tileOrigin: Coordinate, tileSize: Units,
+	baseId: number, colors: Color[], tileOrigin: Coordinate, tileSize: Unit,
 }) => boolean = ({ baseId, colors, tileOrigin: areaOrigin, tileSize: areaSize }) => {
 	let id = baseId - 1
 	const expectations = [

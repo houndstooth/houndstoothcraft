@@ -22,8 +22,8 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Coordinate) => Co
 	const halfTileSize = tileSizeSetting * HALF
 
 	return to.Coordinate([
-		from.Units(coordinate[ 0 ]) + canvasCenter - halfTileSize,
-		from.Units(coordinate[ 1 ]) + canvasCenter - halfTileSize,
+		from.Unit(coordinate[ 0 ]) + canvasCenter - halfTileSize,
+		from.Unit(coordinate[ 1 ]) + canvasCenter - halfTileSize,
 	])
 }
 

@@ -1,8 +1,8 @@
-import { TileOriginAndSize, Units } from '../../../components'
+import { TileOriginAndSize, Unit } from '../../../components'
 
 interface TileSettings {
 	collapseSameColoredShapesWithinTile?: boolean,
-	tileSizeSetting?: Units,
+	tileSizeSetting?: Unit,
 	getTileOriginAndSize?(p?: any): TileOriginAndSize | undefined,
 }
 

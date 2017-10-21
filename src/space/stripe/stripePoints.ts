@@ -6,8 +6,8 @@ const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePositio
 	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
 	return to.Coordinate([
-		stripePositionValue * from.Units(size) + from.Units(x),
-		from.Units(y),
+		stripePositionValue * from.Unit(size) + from.Unit(x),
+		from.Unit(y),
 	])
 }
 
@@ -15,8 +15,8 @@ const pointAlongLeftEdge: Point = ({ originAndSize: { x, y, size }, stripePositi
 	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
 	return to.Coordinate([
-		from.Units(x),
-		stripePositionValue * from.Units(size) + from.Units(y),
+		from.Unit(x),
+		stripePositionValue * from.Unit(size) + from.Unit(y),
 	])
 }
 
@@ -24,8 +24,8 @@ const pointAlongRightEdge: Point = ({ originAndSize: { x, y, size }, stripePosit
 	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
 	return to.Coordinate([
-		from.Units(x) + from.Units(size),
-		from.Units(y) + (stripePositionValue - 1) * from.Units(size),
+		from.Unit(x) + from.Unit(size),
+		from.Unit(y) + (stripePositionValue - 1) * from.Unit(size),
 	])
 }
 
@@ -33,27 +33,27 @@ const pointAlongBottomEdge: Point = ({ originAndSize: { x, y, size }, stripePosi
 	const stripePositionValue = from.StripePosition(stripePosition || to.StripePosition(0))
 
 	return to.Coordinate([
-		from.Units(x) + (stripePositionValue - 1) * from.Units(size),
-		from.Units(y) + from.Units(size),
+		from.Unit(x) + (stripePositionValue - 1) * from.Unit(size),
+		from.Unit(y) + from.Unit(size),
 	])
 }
 
 const pointInTopRightCorner: Point = ({ originAndSize: { x, y, size } }) =>
 	to.Coordinate([
-		from.Units(x) + from.Units(size),
-		from.Units(y),
+		from.Unit(x) + from.Unit(size),
+		from.Unit(y),
 	])
 
 const pointInBottomRightCorner: Point = ({ originAndSize: { x, y, size } }) =>
 	to.Coordinate([
-		from.Units(x) + from.Units(size),
-		from.Units(y) + from.Units(size),
+		from.Unit(x) + from.Unit(size),
+		from.Unit(y) + from.Unit(size),
 	])
 
 const pointInBottomLeftCorner: Point = ({ originAndSize: { x, y, size } }) =>
 	to.Coordinate([
-		from.Units(x),
-		from.Units(y) + from.Units(size),
+		from.Unit(x),
+		from.Unit(y) + from.Unit(size),
 	])
 
 export {

@@ -10,7 +10,7 @@ import {
 	tileCenter,
 	TileColorIndices,
 	TileOriginAndSize,
-	Units,
+	Unit,
 	Weave,
 } from './components'
 import * as constants from './constants'
@@ -46,7 +46,7 @@ export {
 	TileOriginAndSize,
 	StripePosition,
 	Dimension,
-	Units,
+	Unit,
 	GetStripePosition,
 	Context,
 	AssignmentMode,

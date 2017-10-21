@@ -41,7 +41,7 @@ describe('.viewSettings', () => {
 				},
 			}
 			const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
-			const zoomedTileSize = to.Units(zoom * tileSize)
+			const zoomedTileSize = to.Unit(zoom * tileSize)
 
 			activateTestMarkerCanvas()
 
@@ -51,25 +51,25 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 0, from.Units(zoomedTileSize) * 0 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 0, from.Unit(zoomedTileSize) * 0 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 1, from.Units(zoomedTileSize) * 0 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 1, from.Unit(zoomedTileSize) * 0 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 0, from.Units(zoomedTileSize) * 1 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 0, from.Unit(zoomedTileSize) * 1 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 1, from.Units(zoomedTileSize) * 1 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 1, from.Unit(zoomedTileSize) * 1 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 		})
@@ -89,7 +89,7 @@ describe('.viewSettings', () => {
 				},
 			}
 			const tileSize = getFromBasePatternOrDefault(TILE_SIZE)
-			const zoomedTileSize = to.Units(zoom * tileSize)
+			const zoomedTileSize = to.Unit(zoom * tileSize)
 
 			activateTestMarkerCanvas()
 
@@ -99,25 +99,25 @@ describe('.viewSettings', () => {
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 3, from.Units(zoomedTileSize) * 3 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 3, from.Unit(zoomedTileSize) * 3 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 3, from.Units(zoomedTileSize) * 4 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 3, from.Unit(zoomedTileSize) * 4 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 4, from.Units(zoomedTileSize) * 3 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 4, from.Unit(zoomedTileSize) * 3 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
-				tileOrigin: to.Coordinate([ from.Units(zoomedTileSize) * 4, from.Units(zoomedTileSize) * 4 ]),
+				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 4, from.Unit(zoomedTileSize) * 4 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
 		})
@@ -125,7 +125,7 @@ describe('.viewSettings', () => {
 
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
 		it('is self-explanatory', () => {
-			const tileSize = to.Units(100)
+			const tileSize = to.Unit(100)
 			const houndstoothOverrides = {
 				basePattern: {
 					gridSettings: { gridSize: 2 },
@@ -142,25 +142,25 @@ describe('.viewSettings', () => {
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
 				tileOrigin: to.Coordinate([ 350, 350 ]),
-				tileSize: to.Units(100),
+				tileSize: to.Unit(100),
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, TRANSPARENT ],
 				tileOrigin: to.Coordinate([ 450, 350 ]),
-				tileSize: to.Units(100),
+				tileSize: to.Unit(100),
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, BLACK ],
 				tileOrigin: to.Coordinate([ 350, 450 ]),
-				tileSize: to.Units(100),
+				tileSize: to.Unit(100),
 			})).toBe(true)
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
 				tileOrigin: to.Coordinate([ 450, 450 ]),
-				tileSize: to.Units(100),
+				tileSize: to.Unit(100),
 			})).toBe(true)
 		})
 	})

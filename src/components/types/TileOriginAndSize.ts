@@ -1,6 +1,6 @@
 import { Coordinate } from '../../space'
-import { Units } from './Units'
+import { Unit } from './Unit'
 
-interface TileOriginAndSize { tileOrigin: Coordinate, tileSize: Units }
+interface TileOriginAndSize { tileOrigin: Coordinate, tileSize: Unit }
 
 export { TileOriginAndSize }

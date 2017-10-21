@@ -1,6 +1,6 @@
-import { Units } from '../../components/types/Units'
+import { Unit } from '../../components/types/Unit'
 
 enum _CoordinateBrand {}
-type Coordinate = _CoordinateBrand & Units[]
+type Coordinate = _CoordinateBrand & Unit[]
 
 export { Coordinate }

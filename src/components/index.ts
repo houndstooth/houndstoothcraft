@@ -12,7 +12,7 @@ import {
 	Supertile,
 	TileColorIndices,
 	TileOriginAndSize,
-	Units,
+	Unit,
 	Weave,
 } from './types'
 
@@ -27,7 +27,7 @@ export {
 	Weave,
 	TileOriginAndSize,
 	StripePosition,
-	Units,
+	Unit,
 	GetStripePosition,
 	AssignmentMode,
 	StripeCountMode,

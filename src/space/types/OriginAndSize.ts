@@ -1,5 +1,5 @@
-import { Units } from '../../components'
+import { Unit } from '../../components'
 
-interface OriginAndSize { size: Units, x: Units, y: Units }
+interface OriginAndSize { size: Unit, x: Unit, y: Unit }
 
 export { OriginAndSize }

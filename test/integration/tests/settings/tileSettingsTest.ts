@@ -15,7 +15,7 @@ describe('.tileSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					tileSettings: {
-						tileSizeSetting: to.Units(30),
+						tileSizeSetting: to.Unit(30),
 					},
 				},
 			}
@@ -29,25 +29,25 @@ describe('.tileSettings', () => {
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: to.Coordinate([ 0 , 0 ]),
-					tileSize: to.Units(30),
+					tileSize: to.Unit(30),
 				},
 				{
 					baseId: baseId += 8,
 					colors: [ BLACK, BLACK ],
 					tileOrigin: to.Coordinate([ 0 , 30 ]),
-					tileSize: to.Units(30),
+					tileSize: to.Unit(30),
 				},
 				{
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: to.Coordinate([ 30 , 0 ]),
-					tileSize: to.Units(30),
+					tileSize: to.Unit(30),
 				},
 				{
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: to.Coordinate([ 30 , 30 ]),
-					tileSize: to.Units(30),
+					tileSize: to.Unit(30),
 				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
@@ -58,7 +58,7 @@ describe('.tileSettings', () => {
 				const houndstoothOverrides = {
 					basePattern: {
 						tileSettings: {
-							tileSizeSetting: to.Units(30),
+							tileSizeSetting: to.Unit(30),
 						},
 						viewSettings: {
 							zoom: 3,
@@ -75,25 +75,25 @@ describe('.tileSettings', () => {
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, BLACK ],
 						tileOrigin: to.Coordinate([ 0 , 0 ]),
-						tileSize: to.Units(90),
+						tileSize: to.Unit(90),
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, BLACK ],
 						tileOrigin: to.Coordinate([ 0 , 90 ]),
-						tileSize: to.Units(90),
+						tileSize: to.Unit(90),
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, TRANSPARENT ],
 						tileOrigin: to.Coordinate([ 90 , 0 ]),
-						tileSize: to.Units(90),
+						tileSize: to.Unit(90),
 					},
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, TRANSPARENT ],
 						tileOrigin: to.Coordinate([ 90 , 90 ]),
-						tileSize: to.Units(90),
+						tileSize: to.Unit(90),
 					},
 				]
 				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))

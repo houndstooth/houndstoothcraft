@@ -7,13 +7,13 @@ import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileColorIndices } from './getTileColorIndices'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
-import { Address, StripePosition, TileColorIndices, Units } from './types'
+import { Address, StripePosition, TileColorIndices, Unit } from './types'
 
 interface TileParams {
 	gridAddress: Address,
 	tileColorIndices: TileColorIndices,
 	tileOrigin: Coordinate,
-	tileSize: Units
+	tileSize: Unit
 }
 
 const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
@@ -27,7 +27,7 @@ const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
 		definedTileOrigin = tileOrigin
 	}
 
-	let definedTileSize: Units
+	let definedTileSize: Unit
 	if (!tileSize) {
 		return
 	}
@@ -39,7 +39,7 @@ const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
 }
 
 const definedTile: (_: {
-	definedTileOrigin: Coordinate, definedTileSize: Units, gridAddress: Address,
+	definedTileOrigin: Coordinate, definedTileSize: Unit, gridAddress: Address,
 }) => void = ({ gridAddress, definedTileOrigin: tileOrigin, definedTileSize: tileSize }) => {
 	const tileColorIndices = getTileColorIndices({ gridAddress })
 	const tileFunction = shouldUseSquare({ tileColorIndices }) ? squareTile : stripedTile

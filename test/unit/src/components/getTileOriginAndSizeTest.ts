@@ -3,30 +3,30 @@ import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAn
 
 describe('get tile origin and size', () => {
 	const gridAddressForSubject = to.Address([ 7, 11 ])
-	const tileSizeSetting = to.Units(40)
+	const tileSizeSetting = to.Unit(40)
 
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
 		state.mainHoundstooth.basePattern.tileSettings = { tileSizeSetting }
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
-			tileOrigin: to.Coordinate([ from.Units(tileSizeSetting) * 7, from.Units(tileSizeSetting) * 11 ]),
-			tileSize: to.Units(from.Units(tileSizeSetting)),
+			tileOrigin: to.Coordinate([ from.Unit(tileSizeSetting) * 7, from.Unit(tileSizeSetting) * 11 ]),
+			tileSize: to.Unit(from.Unit(tileSizeSetting)),
 		})
 	})
 
 	it('uses a custom get tile origin and sized unit function if provided', () => {
 		const custom = ({ gridAddress }) => ({
 			tileOrigin: to.Coordinate([
-				gridAddress[ 1 ] * from.Units(tileSizeSetting),
-				gridAddress[ 0 ] * from.Units(tileSizeSetting),
+				gridAddress[ 1 ] * from.Unit(tileSizeSetting),
+				gridAddress[ 0 ] * from.Unit(tileSizeSetting),
 			]),
-			tileSize: from.Units(tileSizeSetting) * from.Units(tileSizeSetting),
+			tileSize: from.Unit(tileSizeSetting) * from.Unit(tileSizeSetting),
 		})
 		state.mainHoundstooth.basePattern.tileSettings = { getTileOriginAndSize: custom }
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
-			tileOrigin: to.Coordinate([ from.Units(tileSizeSetting) * 11, from.Units(tileSizeSetting) * 7 ]),
-			tileSize: to.Units(from.Units(tileSizeSetting) * from.Units(tileSizeSetting)),
+			tileOrigin: to.Coordinate([ from.Unit(tileSizeSetting) * 11, from.Unit(tileSizeSetting) * 7 ]),
+			tileSize: to.Unit(from.Unit(tileSizeSetting) * from.Unit(tileSizeSetting)),
 		})
 	})
 })

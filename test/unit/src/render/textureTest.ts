@@ -28,7 +28,7 @@ describe('texture', () => {
 		const context = {}
 		const tileColorIndices = to.TileColorIndices([])
 		const tileOrigin = to.Coordinate([])
-		const tileSize = to.Units(11)
+		const tileSize = to.Unit(11)
 		const shapeColorIndex = 3
 		const outline = to.Outline([])
 

@@ -30,13 +30,13 @@ const doAdjustment: (_: {
 
 	if (shouldAdjustForCentering) {
 		coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
-			from.Units(c) - halfCanvasSize))
+			from.Unit(c) - halfCanvasSize))
 	}
 	coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
-		from.Units(c) * zoom))
+		from.Unit(c) * zoom))
 	if (shouldAdjustForCentering) {
 		coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
-			from.Units(c) + halfCanvasSize))
+			from.Unit(c) + halfCanvasSize))
 	}
 
 	return coordinateAdjustedForZoom

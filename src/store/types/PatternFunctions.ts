@@ -1,4 +1,4 @@
-import { Units } from '../../components'
+import { Unit } from '../../components'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 
@@ -21,7 +21,7 @@ interface PatternFunctions {
 		},
 	},
 	tileSettings?: {
-		tileSizeSetting?(p: Units): Units,
+		tileSizeSetting?(p: Unit): Unit,
 	},
 	viewSettings?: {
 		rotateViewAboutCanvasCenter?(p: Radian): Radian,

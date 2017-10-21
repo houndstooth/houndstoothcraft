@@ -1,10 +1,10 @@
-import { Units } from '../../../src/components/types/Units'
+import { Unit } from '../../../src/components/types/Unit'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 
 interface ExpectedSection {
 	areaOrigin: Coordinate,
-	areaSize: Units,
+	areaSize: Unit,
 	baseId?: number,
 }
 

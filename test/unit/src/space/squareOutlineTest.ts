@@ -3,7 +3,7 @@ import * as to from '../../../../src/to'
 
 describe('square outline', () => {
 	const tileOrigin = to.Coordinate([ 2, 3 ])
-	const tileSize = to.Units(5)
+	const tileSize = to.Unit(5)
 
 	it('makes a square in the correct place of the correct size', () => {
 		expect(squareOutline({ tileOrigin, tileSize })).toEqual(to.Outline([

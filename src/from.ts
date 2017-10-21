@@ -1,7 +1,7 @@
 // tslint:disable:variable-name
 
 import { Frame } from './animation'
-import { Address, StripePosition, Units } from './components'
+import { Address, StripePosition, Unit } from './components'
 import { Layer } from './execute'
 import { Dimension } from './page'
 import { Coordinate, Radian } from './space'
@@ -9,7 +9,7 @@ import { Coordinate, Radian } from './space'
 const Frame: (frame: Frame) => number = frame => frame as any
 const Layer: (layer: Layer) => number = layer => layer as any
 const Radian: (radian: Radian) => number = radian => radian as any
-const Units: (units: Units) => number = units => units as any
+const Unit: (units: Unit) => number = units => units as any
 const Dimension: (dimension: Dimension) => number = dimension => dimension as any
 const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
 
@@ -24,5 +24,5 @@ export {
 	Layer,
 	Radian,
 	StripePosition,
-	Units,
+	Unit,
 }

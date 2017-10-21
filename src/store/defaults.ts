@@ -1,6 +1,6 @@
 // tslint:disable:no-magic-numbers
 
-import { Assignment, AssignmentMode, BaseStripeDiagonal, Units } from '../components'
+import { Assignment, AssignmentMode, BaseStripeDiagonal, Unit } from '../components'
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
 import * as to from '../to'
@@ -9,7 +9,7 @@ import { BasePattern, Houndstooth, State } from './types'
 const DEFAULT_CANVAS_SIZE = to.Dimension(800)
 const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
-const DEFAULT_TILE_SIZE: Units = to.Units(50)
+const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
 const DEFAULT_COLOR_ASSIGNMENT: Assignment = {
 	assignmentMode: AssignmentMode.Weave,

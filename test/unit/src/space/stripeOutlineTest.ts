@@ -3,7 +3,7 @@ import * as to from '../../../../src/to'
 
 describe('stripe outline', () => {
 	const tileOrigin = to.Coordinate([ 0, 0 ])
-	const tileSize = to.Units(1)
+	const tileSize = to.Unit(1)
 	let stripeStart
 	let stripeEnd
 

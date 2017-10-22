@@ -3,10 +3,11 @@ import { accessChildPropertyOrCreatePath, isDefined } from '../utilities/codeUti
 import { PropertyPath } from '../utilities/types'
 import { Setting } from './'
 import { DEFAULT_BASE_PATTERN } from './defaults'
-import * as paths from './paths'
+import * as settingsPaths from './settingsPaths'
+import { SettingsPathShortcut } from './SettingsPathShortcut'
 
-const getSetting: (settingsPathShortcut: string) => Setting = settingsPathShortcut => {
-	const settingsPath: PropertyPath = paths[settingsPathShortcut]
+const getSetting: (settingsPathShortcut: SettingsPathShortcut) => Setting = settingsPathShortcut => {
+	const settingsPath: PropertyPath = settingsPaths[settingsPathShortcut]
 
 	let childSetting = state.mainHoundstooth.basePattern
 

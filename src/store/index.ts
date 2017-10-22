@@ -1,6 +1,6 @@
 import * as defaults from './defaults'
 import { getSetting } from './getSetting'
-import * as paths from './paths'
+import * as paths from './settingsPaths'
 import { resetState } from './resetState'
 import {
 	AnimationSettings,

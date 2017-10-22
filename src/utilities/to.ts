@@ -15,12 +15,12 @@ const Dimension: (dimension: number) => Dimension = dimension => dimension as an
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
 
-const Layers: (layers: number[]) => Layer[] = layers => layers as any
-const Dimensions: (dimensions: number[]) => Dimension[] = dimensions => dimensions as any
+const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as any
+const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as any
 
-const Outline: (outline: number[][]) => Outline = outline => outline.map(Coordinate)
+const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
 
-const Coordinate: (coordinate: number[]) => Coordinate = coordinate =>
+const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
 	coordinate.map(dimension => dimension as any) as Coordinate
 
 const TileColorIndices: (tileColorIndices: number[]) => TileColorIndices = tileColorIndices =>
@@ -29,12 +29,12 @@ const TileColorIndices: (tileColorIndices: number[]) => TileColorIndices = tileC
 const Address: (address: number[]) => Address = address =>
 	address.map(index => index as any) as Address
 
-const StripePositions: (stripePositions: number[]) => StripePosition[] = stripePositions =>
+const StripePositions: (stripePositions: Array<StripePosition | number>) => StripePosition[] = stripePositions =>
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]
 
 const Supertile: (supertile: number[][][]) => Supertile = supertile => supertile as any
 
-const SettingsPath: (settingsPath: string[]) => SettingsPath = settingsPath => settingsPath as any
+const SettingsPath: (settingsPath: Array<string | SettingsStep>) => SettingsPath = settingsPath => settingsPath as any
 
 export {
 	Address,

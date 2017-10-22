@@ -5,7 +5,7 @@ import { SettingsFunctionObject } from './types'
 const prepareFunctionObjectsPerSetting: (_: {
 	settingsFunctionObjects?: SettingsFunctionObject[],
 	settingsFunctionsSourcePattern: Pattern,
-	settingsPath?: SettingsPath,
+	settingsPath?: SettingsPath[],
 }) => SettingsFunctionObject[] = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionObjects = [],
@@ -16,7 +16,7 @@ const prepareFunctionObjectsPerSetting: (_: {
 	Object.entries(settingsFunctionsSourcePattern).forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]) => {
 		if (typeof maybeSettingsFunctionsSourcePattern === 'function') {
 			settingsFunctionObjects.push({
-				settingName,
+				settingName: to.SettingsPath(settingName),
 				settingsFunction: maybeSettingsFunctionsSourcePattern,
 				settingsPath,
 			})
@@ -25,7 +25,7 @@ const prepareFunctionObjectsPerSetting: (_: {
 			prepareFunctionObjectsPerSetting({
 				settingsFunctionObjects,
 				settingsFunctionsSourcePattern: maybeSettingsFunctionsSourcePattern,
-				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
+				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsPath(settingName) }),
 			})
 		}
 	})

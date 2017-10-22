@@ -13,7 +13,6 @@ import {
 	LayerSettings,
 	Pattern,
 	SettingsPath,
-	SettingsStep,
 	State,
 	StripeCountContinuumSettings,
 	StripePositionSettings,
@@ -41,7 +40,6 @@ export {
 	AnimationSettings,
 	State,
 	SettingsPath,
-	SettingsStep,
 	deeperPath,
 	getSettingOrCreatePath,
 }

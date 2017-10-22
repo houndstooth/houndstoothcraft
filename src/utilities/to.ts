@@ -7,7 +7,7 @@ import { Dimension } from '../page'
 import { Color } from '../render'
 import { ColorRange } from '../render/types/ColorRange'
 import { Coordinate, Outline, Radian } from '../space'
-import { SettingsPath, SettingsStep } from '../store'
+import { SettingsPath } from '../store'
 
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any
@@ -16,7 +16,10 @@ const Unit: (unit: number) => Unit = unit => unit as any
 const Dimension: (dimension: number) => Dimension = dimension => dimension as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
-const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
+const SettingsPath: {
+	(settingsPath: string): SettingsPath
+	(settingsPath: Array<string | SettingsPath>): SettingsPath[]
+} = settingsPath => settingsPath as any
 
 const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as any
 const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as any
@@ -43,8 +46,6 @@ const StripePositions: (stripePositions: Array<StripePosition | number>) => Stri
 
 const Supertile: (supertile: number[][][]) => Supertile = supertile => supertile as any
 
-const SettingsPath: (settingsPath: Array<string | SettingsStep>) => SettingsPath = settingsPath => settingsPath as any
-
 export {
 	Address,
 	Color,
@@ -58,7 +59,6 @@ export {
 	Outline,
 	SettingsPath,
 	Radian,
-	SettingsStep,
 	StripePosition,
 	StripePositions,
 	Supertile,

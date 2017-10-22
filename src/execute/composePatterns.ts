@@ -7,7 +7,7 @@ import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
 const composePatterns: (_: {
 	patternToBeMergedOnto: Pattern,
 	patternToMerge: Pattern,
-	settingsPath?: SettingsPath,
+	settingsPath?: SettingsPath[],
 	warnAboutConflicts?: boolean,
 }) => void = params => {
 	const {
@@ -24,7 +24,7 @@ const composePatterns: (_: {
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
-				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
+				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsPath(settingName) }),
 				warnAboutConflicts,
 			})
 		}
@@ -39,7 +39,7 @@ const composePatterns: (_: {
 			maybeWarnAboutConflicts({
 				existingSetting,
 				overridingSetting,
-				settingName,
+				settingName: to.SettingsPath(settingName),
 				settingsPath,
 				warnAboutConflicts,
 			})

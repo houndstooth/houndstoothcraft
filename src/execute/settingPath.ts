@@ -1,7 +1,7 @@
 import { SettingsPath } from '../store'
 
 const settingPath: (_: {
-	settingName: string, settingsPath: SettingsPath,
+	settingName: SettingsPath, settingsPath: SettingsPath[],
 }) => string = ({ settingName, settingsPath }) =>
 	`${settingsPath.join('.')}.${settingName}`
 

@@ -18,7 +18,6 @@ import {
 	ViewSettings,
 } from './settings'
 import { SettingsPath } from './SettingsPath'
-import { SettingsStep } from './SettingsStep'
 import { State } from './State'
 
 export {
@@ -39,7 +38,6 @@ export {
 	LayerSettings,
 	StripeSettings,
 	SettingsPath,
-	SettingsStep,
 	GetFromBaseOrDefaultPattern,
 	SetSetting,
 }

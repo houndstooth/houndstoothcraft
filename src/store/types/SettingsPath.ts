@@ -1,5 +1,4 @@
-import { SettingsStep } from './SettingsStep'
-
-type SettingsPath = SettingsStep[]
+enum _SettingsPathBrand {}
+type SettingsPath = _SettingsPathBrand & string;
 
 export { SettingsPath }

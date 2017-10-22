@@ -7,8 +7,8 @@ import { settingPath } from './settingPath'
 const maybeWarnAboutConflicts: (_: {
 	existingSetting: any,
 	overridingSetting: any,
-	settingName: string,
-	settingsPath: SettingsPath,
+	settingName: SettingsPath,
+	settingsPath: SettingsPath[],
 	warnAboutConflicts: boolean,
 }) => void = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
@@ -41,8 +41,8 @@ const settingsAreEqual: (a: any, b: any) => boolean = (a, b) => {
 const buildWarningMessage: (_: {
 	existingSetting: any,
 	overridingSetting: any,
-	settingName: string,
-	settingsPath: SettingsPath,
+	settingName: SettingsPath,
+	settingsPath: SettingsPath[],
 }) => string = ({ existingSetting, overridingSetting, settingName, settingsPath }) => {
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)

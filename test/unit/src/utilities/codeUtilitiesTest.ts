@@ -73,13 +73,13 @@ describe('code utilities', () => {
 
 	describe('#deeperPath', () => {
 		it('does not mutate the passed objects path', () => {
-			const propertyPath = to.PropertyPath([ 'colorSettings', 'colorAssignment' ])
-			const propertyName = 'colorSet'
+			const settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+			const settingName = to.SettingsStep('colorSet')
 
-			const deeperPath = codeUtilities.deeperPath({ propertyPath, propertyName })
+			const deeperPath = codeUtilities.deeperPath({ settingsPath, settingName })
 
-			expect(deeperPath).toEqual([ 'colorSettings', 'colorAssignment', 'colorSet' ])
-			expect(propertyPath).toEqual([ 'colorSettings', 'colorAssignment' ])
+			expect(deeperPath).toEqual(to.SettingsPath([ 'colorSettings', 'colorAssignment', 'colorSet' ]))
+			expect(settingsPath).toEqual(to.SettingsPath([ 'colorSettings', 'colorAssignment' ]))
 		})
 	})
 
@@ -94,18 +94,18 @@ describe('code utilities', () => {
 					childPathSecondStep: expectedProperty,
 				},
 			}
-			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+			const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
+			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, settingsPath })
 
 			expect(childProperty).toBe(expectedProperty)
 		})
 
 		it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
 			const objectWithProperties = {}
-			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+			const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
+			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, settingsPath })
 
 			expect(childProperty).toEqual({})
 			expect(objectWithProperties).toEqual({
@@ -121,9 +121,9 @@ describe('code utilities', () => {
 					childPathSecondStep: 0,
 				},
 			}
-			const propertyPath = to.PropertyPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+			const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, propertyPath })
+			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, settingsPath })
 
 			expect(childProperty).toBe(0)
 			expect(objectWithProperties).toEqual({
@@ -253,29 +253,6 @@ describe('code utilities', () => {
 
 		it('returns false if it is not defined', () => {
 			expect(isDefined(undefined)).toBe(false)
-		})
-	})
-
-	describe('#propertyIsDefinedOnObject', () => {
-		let propertyIsDefinedOnObject
-		beforeEach(() => propertyIsDefinedOnObject = codeUtilities.propertyIsDefinedOnObject)
-
-		it('returns true if the setting is defined on the settings', () => {
-			const propertyName = 'pants'
-			const objectWithProperties = { pants: 'yup' }
-			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(true)
-		})
-
-		it('returns true if the setting is defined on the settings, even if it is defined as false', () => {
-			const propertyName = 'pants'
-			const objectWithProperties = { pants: false }
-			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(true)
-		})
-
-		it('returns false if the setting is not defined on the settings', () => {
-			const propertyName = 'pants'
-			const objectWithProperties = { plants: 'nope' }
-			expect(propertyIsDefinedOnObject({ propertyName, objectWithProperties })).toBe(false)
 		})
 	})
 

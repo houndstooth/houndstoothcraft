@@ -18,6 +18,8 @@ import {
 	TextureSettings,
 	TileSettings,
 	ViewSettings,
+	SettingsPath,
+	SettingsStep,
 } from './types'
 
 export {
@@ -40,4 +42,6 @@ export {
 	LayerSettings,
 	AnimationSettings,
 	State,
+	SettingsPath,
+	SettingsStep,
 }

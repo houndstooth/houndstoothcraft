@@ -5,7 +5,7 @@ import { Address, StripePosition, Supertile, TileColorIndices, Unit } from './co
 import { Layer } from './execute'
 import { Dimension } from './page'
 import { Coordinate, Outline, Radian } from './space'
-import { PropertyPath } from './utilities/types'
+import { SettingsPath, SettingsStep } from './store'
 
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any
@@ -13,6 +13,7 @@ const Radian: (radian: number) => Radian = radian => radian as any
 const Unit: (unit: number) => Unit = unit => unit as any
 const Dimension: (dimension: number) => Dimension = dimension => dimension as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
+const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
 
 const Layers: (layers: number[]) => Layer[] = layers => layers as any
 const Dimensions: (dimensions: number[]) => Dimension[] = dimensions => dimensions as any
@@ -33,7 +34,7 @@ const StripePositions: (stripePositions: number[]) => StripePosition[] = stripeP
 
 const Supertile: (supertile: number[][][]) => Supertile = supertile => supertile as any
 
-const PropertyPath: (propertyPath: string[]) => PropertyPath = propertyPath => propertyPath as any
+const SettingsPath: (settingsPath: string[]) => SettingsPath = settingsPath => settingsPath as any
 
 export {
 	Address,
@@ -44,8 +45,9 @@ export {
 	Layer,
 	Layers,
 	Outline,
-	PropertyPath,
+	SettingsPath,
 	Radian,
+	SettingsStep,
 	StripePosition,
 	StripePositions,
 	Supertile,

@@ -1,7 +1,7 @@
 import { Setting } from '../store'
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
-import { PropertyPath } from '../utilities/types'
+import { SettingsPath } from '../store'
 import { console } from '../utilities/windowWrapper'
 import { settingPath } from './settingPath'
 
@@ -9,7 +9,7 @@ const maybeWarnAboutConflicts: (_: {
 	existingSetting: Setting,
 	overridingSetting: Setting,
 	settingName: string,
-	settingsPath: PropertyPath,
+	settingsPath: SettingsPath,
 	warnAboutConflicts: boolean,
 }) => void = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
@@ -43,7 +43,7 @@ const buildWarningMessage: (_: {
 	existingSetting: Setting,
 	overridingSetting: Setting,
 	settingName: string,
-	settingsPath: PropertyPath,
+	settingsPath: SettingsPath,
 }) => string = ({ existingSetting, overridingSetting, settingName, settingsPath }) => {
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)

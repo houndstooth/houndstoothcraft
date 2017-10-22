@@ -1,7 +1,7 @@
-import { PropertyPath } from '../utilities/types'
+import { SettingsPath } from '../store'
 
 const settingPath: (_: {
-	settingName: string, settingsPath: PropertyPath,
+	settingName: string, settingsPath: SettingsPath,
 }) => string = ({ settingName, settingsPath }) =>
 	`${settingsPath.join('.')}.${settingName}`
 

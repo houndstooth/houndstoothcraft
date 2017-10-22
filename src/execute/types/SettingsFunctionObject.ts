@@ -1,5 +1,5 @@
-import { PropertyPath } from '../../utilities/types'
+import { SettingsPath } from '../../store'
 
-interface SettingsFunctionObject { settingName: string, settingsFunction: <T>(p: T) => T, settingsPath: PropertyPath }
+interface SettingsFunctionObject { settingName: string, settingsFunction: <T>(p: T) => T, settingsPath: SettingsPath }
 
 export { SettingsFunctionObject }

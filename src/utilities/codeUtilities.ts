@@ -1,7 +1,7 @@
 // tslint:disable:max-file-line-count
 
 import * as to from '../to'
-import { PropertyPath } from './types'
+import { SettingsPath, SettingsStep } from '../store'
 
 const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i, options = { oneIndexed: false }) => {
 	let iter: number[] = []
@@ -49,8 +49,8 @@ const deepClone: (objectToDeepClone: any) => any = objectToDeepClone => {
 const setAllPropertiesOfObjectOnAnother: (_: {
 	objectToChange, objectWithProperties,
 }) => void = ({ objectToChange, objectWithProperties }) => {
-	Object.entries(objectWithProperties).forEach(([ propertyName, propertyValue ]) => {
-		objectToChange[ propertyName ] = deepCloneMaybeNotObject(propertyValue)
+	Object.entries(objectWithProperties).forEach(([ key, value ]) => {
+		objectToChange[ key ] = deepCloneMaybeNotObject(value)
 	})
 }
 
@@ -69,37 +69,9 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T = maybeObject
 	return clonedMaybeObject
 }
 
-const deeperPath: (_: {
-	propertyName: string, propertyPath: PropertyPath,
-}) => PropertyPath = ({ propertyName, propertyPath }) => {
-	const path = propertyPath.slice()
-	path.push(propertyName)
-
-	return to.PropertyPath(path)
-}
-
-const accessChildPropertyOrCreatePath: (_: {
-	objectWithProperties: object, propertyPath: PropertyPath,
-}) => any = ({ objectWithProperties, propertyPath }) => {
-	let childProperty = objectWithProperties
-	propertyPath.forEach(pathStep => {
-		if (!isDefined(childProperty[ pathStep ])) {
-			childProperty[ pathStep ] = {}
-		}
-		childProperty = childProperty[ pathStep ]
-	})
-
-	return childProperty
-}
-
 const defaultToTrue: <T>(property: T) => T | boolean = property => isDefined(property) ? property : true
 
 const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'
-
-const propertyIsDefinedOnObject: (_: {
-	objectWithProperties: object, propertyName: string,
-}) => boolean = ({ propertyName, objectWithProperties }) =>
-	isDefined(objectWithProperties[ propertyName ])
 
 const changeObjectIntoCopy: (_: {
 	objectToChange: object, objectWithProperties: object,
@@ -112,6 +84,29 @@ const reversed: <T>(array: T[]) => T[] = array => array.slice().reverse()
 
 const isEmpty: (object: object) => boolean = object => Object.keys(object).length === 0 && object.constructor === Object
 
+const accessChildPropertyOrCreatePath: (_: {
+	objectWithProperties: object, settingsPath: SettingsPath,
+}) => any = ({ objectWithProperties, settingsPath }) => {
+	let childProperty = objectWithProperties
+	settingsPath.forEach(settingsStep => {
+		if (!isDefined(childProperty[ settingsStep ])) {
+			childProperty[ settingsStep ] = {}
+		}
+		childProperty = childProperty[ settingsStep ]
+	})
+
+	return childProperty
+}
+
+const deeperPath: (_: {
+	settingName: SettingsStep, settingsPath: SettingsPath,
+}) => SettingsPath = ({ settingName, settingsPath }) => {
+	const path = settingsPath.slice()
+	path.push(settingName)
+
+	return to.SettingsPath(path)
+}
+
 export {
 	iterator,
 	wrappedIndex,
@@ -122,7 +117,6 @@ export {
 	accessChildPropertyOrCreatePath,
 	defaultToTrue,
 	isDefined,
-	propertyIsDefinedOnObject,
 	changeObjectIntoCopy,
 	reversed,
 	isEmpty,

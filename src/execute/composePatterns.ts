@@ -2,19 +2,19 @@ import { Color } from '../render'
 import { Pattern, Setting } from '../store'
 import * as to from '../to'
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
-import { PropertyPath } from '../utilities/types'
+import { SettingsPath } from '../store'
 import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
 
 const composePatterns: (_: {
 	patternToBeMergedOnto: Pattern,
 	patternToMerge: Pattern,
-	settingsPath?: PropertyPath,
+	settingsPath?: SettingsPath,
 	warnAboutConflicts?: boolean,
 }) => void = params => {
 	const {
 		patternToBeMergedOnto,
 		patternToMerge,
-		settingsPath = to.PropertyPath([]),
+		settingsPath = to.SettingsPath([]),
 		warnAboutConflicts = false,
 	} = params
 	if (!patternToMerge) {
@@ -25,14 +25,14 @@ const composePatterns: (_: {
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
-				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
+				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 				warnAboutConflicts,
 			})
 		}
 		else {
 			const settingsWithSettingToBeOverridden = accessChildPropertyOrCreatePath({
 				objectWithProperties: patternToBeMergedOnto,
-				propertyPath: settingsPath,
+				settingsPath,
 			})
 
 			const existingSetting = settingsWithSettingToBeOverridden[ settingName ]

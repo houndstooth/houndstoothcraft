@@ -10,7 +10,7 @@ const callFunctionsPerSetting: (_: {
 		const settingsFunction: <T>(p: T) => T = settingsFunctionObject.settingsFunction
 		const settings = accessChildPropertyOrCreatePath({
 			objectWithProperties: state.mainHoundstooth.basePattern,
-			propertyPath: settingsPath,
+			settingsPath,
 		})
 		settings[ settingName ] = settingsFunction(settings[ settingName ])
 	})

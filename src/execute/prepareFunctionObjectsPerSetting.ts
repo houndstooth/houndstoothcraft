@@ -1,18 +1,18 @@
 import { Pattern } from '../store'
 import * as to from '../to'
 import { deeperPath } from '../utilities/codeUtilities'
-import { PropertyPath } from '../utilities/types'
+import { SettingsPath } from '../store'
 import { SettingsFunctionObject } from './types'
 
 const prepareFunctionObjectsPerSetting: (_: {
 	settingsFunctionObjects?: SettingsFunctionObject[],
 	settingsFunctionsSourcePattern: Pattern,
-	settingsPath?: PropertyPath,
+	settingsPath?: SettingsPath,
 }) => SettingsFunctionObject[] = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionObjects = [],
 		settingsFunctionsSourcePattern,
-		settingsPath = to.PropertyPath([]),
+		settingsPath = to.SettingsPath([]),
 	} = prepareFunctionObjectsPerSettingArgs
 
 	Object.entries(settingsFunctionsSourcePattern).forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]) => {
@@ -27,7 +27,7 @@ const prepareFunctionObjectsPerSetting: (_: {
 			prepareFunctionObjectsPerSetting({
 				settingsFunctionObjects,
 				settingsFunctionsSourcePattern: maybeSettingsFunctionsSourcePattern,
-				settingsPath: deeperPath({ propertyPath: settingsPath, propertyName: settingName }),
+				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 			})
 		}
 	})

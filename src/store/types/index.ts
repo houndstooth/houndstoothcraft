@@ -3,6 +3,8 @@ import { Effect } from './Effect'
 import { Houndstooth } from './Houndstooth'
 import { Pattern } from './Pattern'
 import { Setting } from './Setting'
+import { SettingsPath } from './SettingsPath'
+import { SettingsStep } from './SettingsStep'
 import {
 	AnimationSettings,
 	ColorAssignment,
@@ -36,4 +38,6 @@ export {
 	AnimationSettings,
 	LayerSettings,
 	StripeSettings,
+	SettingsPath,
+	SettingsStep,
 }

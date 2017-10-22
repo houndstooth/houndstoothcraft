@@ -1,33 +1,33 @@
 import * as to from '../to'
 
-const animation = to.PropertyPath([ 'animationSettings' ])
-const refreshCanvas = to.PropertyPath([ 'animationSettings', 'refreshCanvas' ])
-const startAnimationFrame = to.PropertyPath([ 'animationSettings', 'startAnimationFrame' ])
+const animation = to.SettingsPath([ 'animationSettings' ])
+const refreshCanvas = to.SettingsPath([ 'animationSettings', 'refreshCanvas' ])
+const startAnimationFrame = to.SettingsPath([ 'animationSettings', 'startAnimationFrame' ])
 
-const color = to.PropertyPath([ 'colorSettings' ])
-const colorSet = to.PropertyPath([ 'colorSettings', 'colorSet' ])
-const colorAssignment = to.PropertyPath([ 'colorSettings', 'colorAssignment' ])
+const color = to.SettingsPath([ 'colorSettings' ])
+const colorSet = to.SettingsPath([ 'colorSettings', 'colorSet' ])
+const colorAssignment = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
 
-const grid = to.PropertyPath([ 'gridSettings' ])
-const gridSize = to.PropertyPath([ 'gridSettings', 'gridSize' ])
+const grid = to.SettingsPath([ 'gridSettings' ])
+const gridSize = to.SettingsPath([ 'gridSettings', 'gridSize' ])
 
-const layer = to.PropertyPath([ 'layerSettings' ])
-const endLayer = to.PropertyPath([ 'layerSettings', 'endLayer' ])
+const layer = to.SettingsPath([ 'layerSettings' ])
+const endLayer = to.SettingsPath([ 'layerSettings', 'endLayer' ])
 
-const texture = to.PropertyPath([ 'textureSettings' ])
-const renderTexture = to.PropertyPath([ 'textureSettings', 'renderTexture' ])
+const texture = to.SettingsPath([ 'textureSettings' ])
+const renderTexture = to.SettingsPath([ 'textureSettings', 'renderTexture' ])
 
-const tile = to.PropertyPath([ 'tileSettings' ])
-const tileSize = to.PropertyPath([ 'tileSettings', 'tileSizeSetting' ])
-const getTileOriginAndSize = to.PropertyPath([ 'tileSettings', 'getTileOriginAndSize' ])
+const tile = to.SettingsPath([ 'tileSettings' ])
+const tileSize = to.SettingsPath([ 'tileSettings', 'tileSizeSetting' ])
+const getTileOriginAndSize = to.SettingsPath([ 'tileSettings', 'getTileOriginAndSize' ])
 
-const view = to.PropertyPath([ 'viewSettings' ])
-const canvasSize = to.PropertyPath([ 'viewSettings', 'canvasSize' ])
-const rotateViewAboutCanvasCenter = to.PropertyPath([ 'viewSettings', 'rotateViewAboutCanvasCenter' ])
+const view = to.SettingsPath([ 'viewSettings' ])
+const canvasSize = to.SettingsPath([ 'viewSettings', 'canvasSize' ])
+const rotateViewAboutCanvasCenter = to.SettingsPath([ 'viewSettings', 'rotateViewAboutCanvasCenter' ])
 
-const stripePosition = to.PropertyPath([ 'stripeSettings', 'stripePositionSettings' ])
-const stripeCount = to.PropertyPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCountSetting' ])
-const stripeCountContinuum = to.PropertyPath([
+const stripePosition = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
+const stripeCount = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCountSetting' ])
+const stripeCountContinuum = to.SettingsPath([
 	'stripeSettings', 'stripePositionSettings', 'stripeCountContinuumSettings',
 ])
 

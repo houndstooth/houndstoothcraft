@@ -5,7 +5,7 @@ import * as to from '../utilities/to'
 import { Address, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
 const getTileColorIndices: (_: { gridAddress: Address }) => TileColorIndices = ({ gridAddress }) => {
-	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignment')
+	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
 
 	const tileColorIndices = getIndices({ gridAddress, colorAssignment })
 

@@ -8,7 +8,7 @@ import { gridAndMaybeLogging } from './gridAndMaybeLogging'
 import { Layer, SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
-	const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layer')
+	const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layerSettings')
 
 	for (let currentLayerValue = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
 		executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })

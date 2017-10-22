@@ -9,7 +9,6 @@ type ColorPathShortcut = 'backgroundColor'
 type ColorsPathShortcut = 'colorSet'
 type DimensionPathShortcut = 'canvasSize'
 type FramePathShortcut = 'startAnimationFrame'
-type GetStripePositionsPathShortcut = 'getStripePositions'
 type GetTileOriginAndSizePathShortcut = 'getTileOriginAndSize'
 type LayerPathShortcut = 'endLayer'
 type NumberPathShortcut =
@@ -20,16 +19,16 @@ type RadianPathShortcut = 'rotateViewAboutCanvasCenter'
 type RenderTexturePathShortcut = 'renderTexture'
 type UnitPathShortcut = 'tileSize'
 
-type AnimationSettingsPathShortcut = 'animation'
-type ColorSettingsPathShortcut = 'color'
-type ColorAssignmentSettingsPathShortcut = 'colorAssignment'
-type GridSettingsPathShortcut = 'grid'
-type LayerSettingsPathShortcut = 'layer'
-type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuum'
-type StripePositionSettingsPathShortcut = 'stripePosition'
-type TextureSettingsPathShortcut = 'texture'
-type TileSettingsPathShortcut = 'tile'
-type ViewSettingsPathShortcut = 'view'
+type AnimationSettingsPathShortcut = 'animationSettings'
+type ColorSettingsPathShortcut = 'colorSettings'
+type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
+type GridSettingsPathShortcut = 'gridSettings'
+type LayerSettingsPathShortcut = 'layerSettings'
+type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuumSettings'
+type StripePositionSettingsPathShortcut = 'stripePositionSettings'
+type TextureSettingsPathShortcut = 'textureSettings'
+type TileSettingsPathShortcut = 'tileSettings'
+type ViewSettingsPathShortcut = 'viewSettings'
 
 export {
 	BooleanPathShortcut,
@@ -37,7 +36,6 @@ export {
 	ColorsPathShortcut,
 	DimensionPathShortcut,
 	FramePathShortcut,
-	GetStripePositionsPathShortcut,
 	GetTileOriginAndSizePathShortcut,
 	LayerPathShortcut,
 	NumberPathShortcut,

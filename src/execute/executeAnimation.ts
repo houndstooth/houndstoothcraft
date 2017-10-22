@@ -11,7 +11,7 @@ const executeAnimation: (_: {
 		endAnimationFrame,
 		startAnimationFrame,
 		refreshCanvas,
-	}: AnimationSettings = getFromBaseOrDefaultPattern('animation')
+	}: AnimationSettings = getFromBaseOrDefaultPattern('animationSettings')
 
 	state.lastSavedAnimationFrame = startAnimationFrame
 

@@ -46,7 +46,7 @@ const definedTile: (_: {
 }
 
 const shouldUseSquare: (_: { tileColorIndices: TileColorIndices }) => boolean = ({ tileColorIndices }) => {
-	const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tile')
+	const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tileSettings')
 
 	return collapseSameColoredShapesWithinTile && isTileUniform({ tileColorIndices })
 }

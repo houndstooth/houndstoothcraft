@@ -15,7 +15,7 @@ const shape: (_: ShapeParams) => void = params => {
 	const context = getCurrentContext()
 	const shapeColorIndex = wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
-	const { renderTexture }: TextureSettings = getFromBaseOrDefaultPattern('texture')
+	const { renderTexture }: TextureSettings = getFromBaseOrDefaultPattern('textureSettings')
 
 	if (renderTexture) {
 		texture({ context, outline, tileColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })

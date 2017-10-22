@@ -3,7 +3,6 @@ import * as defaults from './defaults'
 import { getFromBaseOrDefaultPattern } from './getFromBaseOrDefaultPattern'
 import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { resetState } from './resetState'
-import * as paths from './settingsPaths'
 import {
 	AnimationSettings,
 	ColorAssignmentSettings,
@@ -25,7 +24,6 @@ import {
 
 export {
 	defaults,
-	paths,
 	Effect,
 	Pattern,
 	Houndstooth,

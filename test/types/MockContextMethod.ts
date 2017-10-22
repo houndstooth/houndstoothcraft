@@ -1,13 +1,12 @@
-enum MockContextMethod {
-	BeginPath,
-	ClearRect,
-	Clip,
-	ClosePath,
-	Fill,
-	LineTo,
-	MoveTo,
-	Restore,
-	Save,
-}
+type MockContextMethod =
+	| 'beginPath'
+	| 'clearRect'
+	| 'clip'
+	| 'closePath'
+	| 'fill'
+	| 'lineTo'
+	| 'moveTo'
+	| 'restore'
+	| 'save'
 
 export { MockContextMethod }

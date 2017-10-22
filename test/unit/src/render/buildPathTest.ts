@@ -1,7 +1,6 @@
 import { to } from '../../../../src'
 import { buildPath } from '../../../../src/render/buildPath'
 import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextMethod } from '../../../types/MockContextMethod'
 
 describe('build path', () => {
 	it('draws the path with the correct outline and fills it', () => {
@@ -12,10 +11,10 @@ describe('build path', () => {
 		buildPath({ context, outline })
 
 		const expectedContextCallsOrder = [
-			{ method: MockContextMethod.BeginPath },
-			{ method: MockContextMethod.MoveTo, x: 0, y: 1 },
-			{ method: MockContextMethod.LineTo, x: 1, y: 1 },
-			{ method: MockContextMethod.LineTo, x: 1, y: 0 },
+			{ method: 'beginPath' },
+			{ method: 'moveTo', x: 0, y: 1 },
+			{ method: 'lineTo', x: 1, y: 1 },
+			{ method: 'lineTo', x: 1, y: 0 },
 		] as any
 		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})

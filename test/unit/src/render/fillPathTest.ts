@@ -1,6 +1,5 @@
 import { fillPath } from '../../../../src/render/fillPath'
 import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextMethod } from '../../../types/MockContextMethod'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
@@ -10,8 +9,8 @@ describe('fill path', () => {
 		fillPath({ context })
 
 		const expectedContextCallsOrder = [
-			{ method: MockContextMethod.ClosePath },
-			{ method: MockContextMethod.Fill },
+			{ method: 'closePath' },
+			{ method: 'fill' },
 		] as any
 		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})

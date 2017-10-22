@@ -1,6 +1,5 @@
 import { MockContext } from '../types/MockContext'
 import { MockContextCall } from '../types/MockContextCall'
-import { MockContextMethod } from '../types/MockContextMethod'
 import { noop } from './noop'
 import Spy = jasmine.Spy
 
@@ -10,19 +9,19 @@ const buildMockContext: (_?: {
 	const { contextCallsOrder = [], toBlobSpy = undefined } = params || {}
 
 	return {
-		beginPath: () => contextCallsOrder.push({ method: MockContextMethod.BeginPath }),
+		beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),
 		canvas: { toBlob: toBlobSpy },
-		clearRect: () => contextCallsOrder.push({ method: MockContextMethod.ClearRect }),
-		clip: () => contextCallsOrder.push({ method: MockContextMethod.Clip }),
-		closePath: () => contextCallsOrder.push({ method: MockContextMethod.ClosePath }),
+		clearRect: () => contextCallsOrder.push({ method: 'clearRect' }),
+		clip: () => contextCallsOrder.push({ method: 'clip' }),
+		closePath: () => contextCallsOrder.push({ method: 'closePath' }),
 		drawImage: noop,
-		fill: () => contextCallsOrder.push({ method: MockContextMethod.Fill }),
+		fill: () => contextCallsOrder.push({ method: 'fill' }),
 		fillStyle: '',
 		globalCompositeOperation: '',
-		lineTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.LineTo, x, y }),
-		moveTo: (x, y) => contextCallsOrder.push({ method: MockContextMethod.MoveTo, x, y }),
-		restore: () => contextCallsOrder.push({ method: MockContextMethod.Restore }),
-		save: () => contextCallsOrder.push({ method: MockContextMethod.Save }),
+		lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),
+		moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
+		restore: () => contextCallsOrder.push({ method: 'restore' }),
+		save: () => contextCallsOrder.push({ method: 'save' }),
 	}
 }
 

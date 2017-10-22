@@ -1,6 +1,6 @@
 import { Address } from './Address'
-import { TileColorIndices } from './TileColorIndices'
+import { TileColorIndex } from './TileColorIndex'
 
-type TransformTileColorIndices = (_: { gridAddress: Address, tileColorIndices: TileColorIndices }) => TileColorIndices
+type TransformTileColorIndices = (_: { gridAddress: Address, tileColorIndices: TileColorIndex[] }) => TileColorIndex[]
 
 export { TransformTileColorIndices }

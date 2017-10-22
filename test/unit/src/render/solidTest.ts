@@ -1,9 +1,10 @@
 import * as draw from '../../../../src/render/draw'
+import * as to from '../../../../src/utilities/to'
 import * as getColor from '../../../../src/render/getColor'
 import { solid } from '../../../../src/render/solid'
 
 describe('solid', () => {
-	const shapeColorIndex = 8
+	const shapeColorIndex = to.TileColorIndex(8)
 	const shapeColor = { a: 1 }
 	const transparentColor = { a: 0 }
 	const context = {}

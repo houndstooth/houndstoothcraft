@@ -1,10 +1,10 @@
-import { TileColorIndices, TileOriginAndSize } from '../../components'
+import { TileColorIndex, TileOriginAndSize } from '../../components'
 import { Context } from '../../page'
 
 interface RenderTextureParams extends TileOriginAndSize {
 	context: Context,
-	shapeColorIndex: number,
-	tileColorIndices: TileColorIndices,
+	shapeColorIndex: TileColorIndex,
+	tileColorIndices: TileColorIndex[],
 }
 
 export { RenderTextureParams }

@@ -19,7 +19,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual([ 3, 1 ])
+			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual(to.TileColorIndices([ 3, 1 ]))
 		})
 
 		it('can use a supertile-based assignment scheme', () => {
@@ -36,7 +36,8 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual(expectedSupertileEntry)
+			const actualSupertileEntry = getTileColorIndices({ gridAddress: gridAddressForSubject })
+			expect(actualSupertileEntry).toEqual(to.TileColorIndices(expectedSupertileEntry))
 		})
 	})
 
@@ -54,7 +55,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual([ 3, 1 ])
+			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual(to.TileColorIndices([ 3, 1 ]))
 		})
 
 		it('works when in supertile mode', () => {
@@ -72,7 +73,8 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			expect(getTileColorIndices({ gridAddress: gridAddressForSubject })).toEqual(expectedSupertileEntry)
+			let actualSupertileEntry = getTileColorIndices({ gridAddress: gridAddressForSubject })
+			expect(actualSupertileEntry).toEqual(to.TileColorIndices(expectedSupertileEntry))
 		})
 	})
 
@@ -121,7 +123,7 @@ describe('get tile color indices', () => {
 			]
 			expectedSetOfTileColorIndices.forEach((col, x) => {
 				col.forEach((expectedTileColorIndices, y) => {
-					expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
+					expect(setOfTileColorIndices[ x ][ y ]).toEqual(to.TileColorIndices(expectedTileColorIndices))
 				})
 			})
 		})
@@ -156,7 +158,7 @@ describe('get tile color indices', () => {
 			]
 			expectedSetOfTileColorIndices.forEach((col, x) => {
 				col.forEach((expectedTileColorIndices, y) => {
-					expect(expectedTileColorIndices).toEqual(setOfTileColorIndices[ x ][ y ])
+					expect(setOfTileColorIndices[ x ][ y ]).toEqual(to.TileColorIndices(expectedTileColorIndices))
 				})
 			})
 		})

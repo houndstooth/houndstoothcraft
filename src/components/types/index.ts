@@ -8,7 +8,7 @@ import { OffsetAddress } from './OffsetAddress'
 import { StripeCountMode } from './StripeCountMode'
 import { StripePosition } from './StripePosition'
 import { Supertile } from './Supertile'
-import { TileColorIndices } from './TileColorIndices'
+import { TileColorIndex } from './TileColorIndex'
 import { TileOriginAndSize } from './TileOriginAndSize'
 import { TransformTileColorIndices } from './TransformTileColorIndices'
 import { Unit } from './Unit'
@@ -18,7 +18,6 @@ export {
 	Address,
 	GetTileOriginAndSize,
 	StripePosition,
-	TileColorIndices,
 	TileOriginAndSize,
 	Supertile,
 	Weave,
@@ -30,4 +29,5 @@ export {
 	GetStripePositions,
 	TransformTileColorIndices,
 	OffsetAddress,
+	TileColorIndex,
 }

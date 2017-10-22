@@ -1,11 +1,11 @@
-import { TileColorIndices, TileOriginAndSize } from '../../components'
+import { TileColorIndex, TileOriginAndSize } from '../../components'
 import { GetOutline, OutlineOptions } from '../../space'
 
 interface ShapeParams extends TileOriginAndSize {
 	getOutline: GetOutline,
 	outlineOptions?: OutlineOptions,
 	stripeIndex?: number,
-	tileColorIndices: TileColorIndices,
+	tileColorIndices: TileColorIndex[],
 }
 
 export { ShapeParams }

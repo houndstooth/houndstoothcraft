@@ -6,11 +6,11 @@ import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileColorIndices } from './getTileColorIndices'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
-import { Address, StripePosition, TileColorIndices, Unit } from './types'
+import { Address, StripePosition, TileColorIndex, Unit } from './types'
 
 interface TileParams {
 	gridAddress: Address,
-	tileColorIndices: TileColorIndices,
+	tileColorIndices: TileColorIndex[],
 	tileOrigin: Coordinate,
 	tileSize: Unit
 }
@@ -45,7 +45,7 @@ const definedTile: (_: {
 	tileFunction({ gridAddress, tileOrigin, tileSize, tileColorIndices })
 }
 
-const shouldUseSquare: (_: { tileColorIndices: TileColorIndices }) => boolean = ({ tileColorIndices }) => {
+const shouldUseSquare: (_: { tileColorIndices: TileColorIndex[] }) => boolean = ({ tileColorIndices }) => {
 	const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tileSettings')
 
 	return collapseSameColoredShapesWithinTile && isTileUniform({ tileColorIndices })

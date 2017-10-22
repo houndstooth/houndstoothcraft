@@ -1,5 +1,5 @@
 import { Color } from '../render'
-import { deeperPath, getSettingOrCreatePath, Pattern, Setting, SettingsPath } from '../store'
+import { deeperPath, getSettingOrCreatePath, Pattern, SettingsPath } from '../store'
 import { isDefined } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
 import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
@@ -49,10 +49,10 @@ const composePatterns: (_: {
 	})
 }
 
-const shouldRecurse: (_: { overridingSetting: Setting }) => boolean = ({ overridingSetting }) =>
+const shouldRecurse: (_: { overridingSetting: any }) => boolean = ({ overridingSetting }) =>
 	settingIsNonArrayObject(overridingSetting) && settingIsNotColor(overridingSetting)
 
-const settingIsNonArrayObject: (setting: Setting) => boolean = setting => {
+const settingIsNonArrayObject: (setting: any) => boolean = setting => {
 	if (!setting) {
 		return false
 	}
@@ -63,7 +63,7 @@ const settingIsNonArrayObject: (setting: Setting) => boolean = setting => {
 	return !(setting instanceof Array)
 }
 
-const settingIsNotColor: (setting: Setting) => boolean = setting => {
+const settingIsNotColor: (setting: any) => boolean = setting => {
 	const defined = isDefined
 	const maybeSettingColor: Color = setting
 	const { r, g, b, a } = maybeSettingColor

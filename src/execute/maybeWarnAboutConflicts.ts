@@ -1,12 +1,12 @@
-import { Setting, SettingsPath } from '../store'
+import { SettingsPath } from '../store'
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
 import { console } from '../utilities/windowWrapper'
 import { settingPath } from './settingPath'
 
 const maybeWarnAboutConflicts: (_: {
-	existingSetting: Setting,
-	overridingSetting: Setting,
+	existingSetting: any,
+	overridingSetting: any,
 	settingName: string,
 	settingsPath: SettingsPath,
 	warnAboutConflicts: boolean,
@@ -23,7 +23,7 @@ const shouldWarnAboutConflicts: (_: {
 }) => boolean = ({ existingSetting, overridingSetting, warnAboutConflicts }) =>
 	warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 
-const settingsAreEqual: (a: Setting, b: Setting) => boolean = (a, b) => {
+const settingsAreEqual: (a: any, b: any) => boolean = (a, b) => {
 	let settingsEqual
 	if (typeof a === 'function') {
 		settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
@@ -39,8 +39,8 @@ const settingsAreEqual: (a: Setting, b: Setting) => boolean = (a, b) => {
 }
 
 const buildWarningMessage: (_: {
-	existingSetting: Setting,
-	overridingSetting: Setting,
+	existingSetting: any,
+	overridingSetting: any,
 	settingName: string,
 	settingsPath: SettingsPath,
 }) => string = ({ existingSetting, overridingSetting, settingName, settingsPath }) => {
@@ -52,7 +52,7 @@ const buildWarningMessage: (_: {
 	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
 }
 
-const formatSettingForWarning: (setting: Setting) => string = setting => {
+const formatSettingForWarning: (setting: any) => string = setting => {
 	if (typeof setting === 'function') {
 		return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
 	}

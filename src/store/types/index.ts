@@ -3,7 +3,6 @@ import { Effect } from './Effect'
 import { GetFromBaseOrDefaultPattern } from './GetFromBaseOrDefaultPattern'
 import { Houndstooth } from './Houndstooth'
 import { Pattern } from './Pattern'
-import { Setting } from './Setting'
 import {
 	AnimationSettings,
 	ColorAssignment,
@@ -25,7 +24,6 @@ export {
 	Effect,
 	Houndstooth,
 	State,
-	Setting,
 	Pattern,
 	BasePattern,
 	ColorAssignment,

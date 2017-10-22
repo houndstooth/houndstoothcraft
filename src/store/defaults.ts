@@ -33,15 +33,6 @@ const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
-const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
-	assignmentMode: AssignmentMode.Weave,
-	flipGrain: false,
-	offsetAddress: undefined,
-	supertile: to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ]),
-	switcheroo: false,
-	transformTileColorIndices: undefined,
-	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
-}
 const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.Minor
@@ -66,12 +57,40 @@ const DEFAULT_ZOOM_ON_CANVAS_CENTER = false
 const DEFAULT_NAME = 'standard'
 const DEFAULT_ANIMATIONS_PATTERN = {}
 const DEFAULT_LAYERS_PATTERN = {}
+const DEFAULT_ANIMATING = false
+const DEFAULT_CONTEXTS = []
+const DEFAULT_CURRENT_ANIMATION_FRAME = to.Frame(0)
+const DEFAULT_CURRENT_LAYER = to.Layer(0)
+const DEFAULT_EXPORT_FRAMES = false
+const DEFAULT_INTERVAL = undefined
+const DEFAULT_LAST_SAVED_ANIMATION_FRAME = to.Frame(0)
+const DEFAULT_MIXED_DOWN_CANVAS = undefined
+const DEFAULT_MIXING_DOWN = false
+const DEFAULT_PERFORMANCE_LOGGING = false
+const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS = []
+const DEFAULT_ASSIGNMENT_MODE = AssignmentMode.Weave
+const DEFAULT_FLIP_GRAIN = false
+const DEFAULT_OFFSET_ADDRESS = undefined
+const DEFAULT_SUPERTILE = to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ])
+const DEFAULT_SWITCHEROO = false
+const DEFAULT_TRANSFORM_TILE_COLOR_INDICES = undefined
+const DEFAULT_WEAVE = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 
 const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 	endAnimationFrame: DEFAULT_END_ANIMATION_FRAME,
 	frameRate: DEFAULT_FRAME_RATE,
 	refreshCanvas: DEFAULT_REFRESH_CANVAS,
 	startAnimationFrame: DEFAULT_START_ANIMATION_FRAME,
+}
+
+const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
+	assignmentMode: DEFAULT_ASSIGNMENT_MODE,
+	flipGrain: DEFAULT_FLIP_GRAIN,
+	offsetAddress: DEFAULT_OFFSET_ADDRESS,
+	supertile: DEFAULT_SUPERTILE,
+	switcheroo: DEFAULT_SWITCHEROO,
+	transformTileColorIndices: DEFAULT_TRANSFORM_TILE_COLOR_INDICES,
+	weave: DEFAULT_WEAVE,
 }
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
@@ -143,18 +162,18 @@ const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 }
 
 const DEFAULT_STATE: State = {
-	animating: false,
-	contexts: [],
-	currentAnimationFrame: to.Frame(0),
-	currentLayer: to.Layer(0),
-	exportFrames: false,
-	interval: undefined,
-	lastSavedAnimationFrame: to.Frame(0),
+	animating: DEFAULT_ANIMATING,
+	contexts: DEFAULT_CONTEXTS,
+	currentAnimationFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
+	currentLayer: DEFAULT_CURRENT_LAYER,
+	exportFrames: DEFAULT_EXPORT_FRAMES,
+	interval: DEFAULT_INTERVAL,
+	lastSavedAnimationFrame: DEFAULT_LAST_SAVED_ANIMATION_FRAME,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
-	mixedDownContext: undefined,
-	mixingDown: false,
-	performanceLogging: false,
-	selectedHoundstoothEffects: [],
+	mixedDownContext: DEFAULT_MIXED_DOWN_CANVAS,
+	mixingDown: DEFAULT_MIXING_DOWN,
+	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
+	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 }
 
 export {

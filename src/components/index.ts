@@ -17,6 +17,8 @@ import {
 	TileOriginAndSize,
 	Unit,
 	Weave,
+	TransformTileColorIndices,
+	OffsetAddress,
 } from './types'
 
 export {
@@ -38,4 +40,6 @@ export {
 	standardStripePositions,
 	getStandardTileOriginAndSize,
 	GetStripePositions,
+	TransformTileColorIndices,
+	OffsetAddress,
 }

@@ -36,10 +36,10 @@ const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
 const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	assignmentMode: AssignmentMode.Weave,
 	flipGrain: false,
-	offsetAddress: () => to.Address([ 0, 0 ]),
+	offsetAddress: undefined,
 	supertile: to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ]),
 	switcheroo: false,
-	transformTileColorIndices: ({ tileColorIndices }) => tileColorIndices,
+	transformTileColorIndices: undefined,
 	weave: { rows: [ 1, 0 ], columns: [ 0, 1 ] },
 }
 const DEFAULT_OPACITY = 1

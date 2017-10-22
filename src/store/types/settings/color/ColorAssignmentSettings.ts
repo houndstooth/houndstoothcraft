@@ -1,12 +1,12 @@
-import { Address, AssignmentMode, Supertile, TileColorIndices, Weave } from '../../../../components'
+import { OffsetAddress, AssignmentMode, Supertile, TransformTileColorIndices, Weave } from '../../../../components'
 
 interface ColorAssignmentSettings {
 	assignmentMode: AssignmentMode,
 	flipGrain: boolean,
-	offsetAddress: (_: { gridAddress: Address }) => Address,
+	offsetAddress?: OffsetAddress,
 	supertile: Supertile,
 	switcheroo: boolean,
-	transformTileColorIndices: (_: {  gridAddress: Address, tileColorIndices: TileColorIndices }) => TileColorIndices,
+	transformTileColorIndices?: TransformTileColorIndices,
 	weave: Weave,
 }
 

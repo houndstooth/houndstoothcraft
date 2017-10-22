@@ -5,10 +5,12 @@ import { GetStripePosition } from './GetStripePosition'
 import { GetStripePositions } from './GetStripePositions'
 import { GetTileOriginAndSize } from './GetTileOriginAndSize'
 import { StripeCountMode } from './StripeCountMode'
+import { OffsetAddress } from './OffsetAddress'
 import { StripePosition } from './StripePosition'
 import { Supertile } from './Supertile'
 import { TileColorIndices } from './TileColorIndices'
 import { TileOriginAndSize } from './TileOriginAndSize'
+import { TransformTileColorIndices } from './TransformTileColorIndices'
 import { Unit } from './Unit'
 import { Weave } from './Weave'
 
@@ -26,4 +28,6 @@ export {
 	StripeCountMode,
 	BaseStripeDiagonal,
 	GetStripePositions,
+	TransformTileColorIndices,
+	OffsetAddress,
 }

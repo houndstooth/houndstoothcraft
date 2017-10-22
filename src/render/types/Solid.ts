@@ -1,10 +1,5 @@
-import { Context } from '../../page'
-import { Outline } from '../../space'
+import { SolidParams } from './SolidParams'
 
-type Solid = (_: {
-	context: Context,
-	outline: Outline,
-	shapeColorIndex: number,
-}) => void
+type Solid = (_: SolidParams) => void
 
 export { Solid }

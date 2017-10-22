@@ -44,7 +44,7 @@ const Address: (address: Array<number | Address>) => Address[] = address =>
 const StripePositions: (stripePositions: Array<StripePosition | number>) => StripePosition[] = stripePositions =>
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]
 
-const Supertile: (supertile: number[][][]) => Supertile = supertile => supertile as any
+const Supertile: (supertile: (number | ShapeColorIndex)[][][]) => Supertile = supertile => supertile as any
 
 export {
 	Address,

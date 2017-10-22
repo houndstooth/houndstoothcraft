@@ -74,10 +74,10 @@ const getBySupertile: (_: {
 		index: gridAddress[ 0 ] + addressOffset[ 0 ],
 	})
 
-	return to.ShapeColorIndices(wrappedIndex({
+	return wrappedIndex({
 		array: supertileColumn,
 		index: gridAddress[ 1 ] + addressOffset[ 1 ],
-	}))
+	})
 }
 
 const SWITCHEROO_SIZE = 4

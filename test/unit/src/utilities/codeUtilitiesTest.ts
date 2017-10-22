@@ -71,69 +71,6 @@ describe('code utilities', () => {
 		})
 	})
 
-	describe('#deeperPath', () => {
-		it('does not mutate the passed objects path', () => {
-			const settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
-			const settingName = to.SettingsStep('colorSet')
-
-			const deeperPath = codeUtilities.deeperPath({ settingsPath, settingName })
-
-			expect(deeperPath).toEqual(to.SettingsPath([ 'colorSettings', 'colorAssignment', 'colorSet' ]))
-			expect(settingsPath).toEqual(to.SettingsPath([ 'colorSettings', 'colorAssignment' ]))
-		})
-	})
-
-	describe('#accessChildPropertyOrCreatePath', () => {
-		let accessChildPropertyOrCreatePath
-		beforeEach(() => accessChildPropertyOrCreatePath = codeUtilities.accessChildPropertyOrCreatePath)
-
-		it('accesses child property if it exists', () => {
-			const expectedProperty = {}
-			const objectWithProperties = {
-				childPathFirstStep: {
-					childPathSecondStep: expectedProperty,
-				},
-			}
-			const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
-
-			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, settingsPath })
-
-			expect(childProperty).toBe(expectedProperty)
-		})
-
-		it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
-			const objectWithProperties = {}
-			const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
-
-			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, settingsPath })
-
-			expect(childProperty).toEqual({})
-			expect(objectWithProperties).toEqual({
-				childPathFirstStep: {
-					childPathSecondStep: {},
-				},
-			})
-		})
-
-		it('does not override zeroes', () => {
-			const objectWithProperties = {
-				childPathFirstStep: {
-					childPathSecondStep: 0,
-				},
-			}
-			const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
-
-			const childProperty = accessChildPropertyOrCreatePath({ objectWithProperties, settingsPath })
-
-			expect(childProperty).toBe(0)
-			expect(objectWithProperties).toEqual({
-				childPathFirstStep: {
-					childPathSecondStep: 0,
-				},
-			})
-		})
-	})
-
 	describe('#deepCloneMaybeObject', () => {
 		it('deep clones objects', () => {
 			const actualClone = codeUtilities.deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })

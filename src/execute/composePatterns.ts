@@ -1,6 +1,6 @@
 import { Color } from '../render'
-import { Pattern, Setting, SettingsPath } from '../store'
-import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
+import { deeperPath, getSettingOrCreatePath, Pattern, Setting, SettingsPath } from '../store'
+import { isDefined } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
 import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
 
@@ -29,8 +29,8 @@ const composePatterns: (_: {
 			})
 		}
 		else {
-			const settingsWithSettingToBeOverridden = accessChildPropertyOrCreatePath({
-				objectWithProperties: patternToBeMergedOnto,
+			const settingsWithSettingToBeOverridden = getSettingOrCreatePath({
+				settings: patternToBeMergedOnto,
 				settingsPath,
 			})
 

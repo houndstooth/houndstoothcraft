@@ -1,5 +1,5 @@
 import { state } from '../state'
-import { accessChildPropertyOrCreatePath } from '../utilities/codeUtilities'
+import { getSettingOrCreatePath } from '../store'
 import { SettingsFunctionObject } from './types'
 
 const callFunctionsPerSetting: (_: {
@@ -8,8 +8,8 @@ const callFunctionsPerSetting: (_: {
 	settingsFunctionObjects.forEach(settingsFunctionObject => {
 		const { settingsPath, settingName } = settingsFunctionObject
 		const settingsFunction: <T>(p: T) => T = settingsFunctionObject.settingsFunction
-		const settings = accessChildPropertyOrCreatePath({
-			objectWithProperties: state.mainHoundstooth.basePattern,
+		const settings = getSettingOrCreatePath({
+			settings: state.mainHoundstooth.basePattern,
 			settingsPath,
 		})
 		settings[ settingName ] = settingsFunction(settings[ settingName ])

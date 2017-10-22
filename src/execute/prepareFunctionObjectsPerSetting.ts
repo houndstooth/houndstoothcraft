@@ -1,5 +1,4 @@
-import { Pattern, SettingsPath } from '../store'
-import { deeperPath } from '../utilities/codeUtilities'
+import { deeperPath, Pattern, SettingsPath } from '../store'
 import * as to from '../utilities/to'
 import { SettingsFunctionObject } from './types'
 

@@ -1,8 +1,3 @@
-// tslint:disable:max-file-line-count
-
-import { SettingsPath, SettingsStep } from '../store'
-import * as to from './to'
-
 const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i, options = { oneIndexed: false }) => {
 	let iter: number[] = []
 	for (let j = 0; j < Math.ceil(i); j++) {
@@ -84,37 +79,12 @@ const reversed: <T>(array: T[]) => T[] = array => array.slice().reverse()
 
 const isEmpty: (object: object) => boolean = object => Object.keys(object).length === 0 && object.constructor === Object
 
-const accessChildPropertyOrCreatePath: (_: {
-	objectWithProperties: object, settingsPath: SettingsPath,
-}) => any = ({ objectWithProperties, settingsPath }) => {
-	let childProperty = objectWithProperties
-	settingsPath.forEach(settingsStep => {
-		if (!isDefined(childProperty[ settingsStep ])) {
-			childProperty[ settingsStep ] = {}
-		}
-		childProperty = childProperty[ settingsStep ]
-	})
-
-	return childProperty
-}
-
-const deeperPath: (_: {
-	settingName: SettingsStep, settingsPath: SettingsPath,
-}) => SettingsPath = ({ settingName, settingsPath }) => {
-	const path = settingsPath.slice()
-	path.push(settingName)
-
-	return to.SettingsPath(path)
-}
-
 export {
 	iterator,
 	wrappedIndex,
 	shallowEqual,
 	deepClone,
 	deepCloneMaybeNotObject,
-	deeperPath,
-	accessChildPropertyOrCreatePath,
 	defaultToTrue,
 	isDefined,
 	changeObjectIntoCopy,

@@ -1,5 +1,6 @@
 import { state } from '../state'
-import { accessChildPropertyOrCreatePath, isDefined } from '../utilities/codeUtilities'
+import { getSettingOrCreatePath } from './getSettingOrCreatePath'
+import { isDefined } from '../utilities/codeUtilities'
 import { DEFAULT_BASE_PATTERN } from './defaults'
 import * as settingsPaths from './settingsPaths'
 import { Setting, SettingsPath, SettingsPathShortcut } from './types'
@@ -11,16 +12,16 @@ const getSetting: (settingsPathShortcut: SettingsPathShortcut) => Setting = sett
 
 	for (const settingsStep of settingsPath) {
 		if (!isDefined(childSetting && childSetting[ settingsStep ])) {
-			return accessChildPropertyOrCreatePath({
-				objectWithProperties: DEFAULT_BASE_PATTERN,
+			return getSettingOrCreatePath({
+				settings: DEFAULT_BASE_PATTERN,
 				settingsPath,
 			})
 		}
 		childSetting = childSetting && childSetting[ settingsStep ]
 	}
 
-	return accessChildPropertyOrCreatePath({
-		objectWithProperties: state.mainHoundstooth.basePattern,
+	return getSettingOrCreatePath({
+		settings: state.mainHoundstooth.basePattern,
 		settingsPath,
 	})
 }

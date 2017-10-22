@@ -1,6 +1,8 @@
 import * as defaults from './defaults'
 import { getSetting } from './getSetting'
 import { resetState } from './resetState'
+import { getSettingOrCreatePath } from './getSettingOrCreatePath'
+import { deeperPath } from './deeperPath'
 import * as paths from './settingsPaths'
 import {
 	AnimationSettings,
@@ -44,4 +46,6 @@ export {
 	State,
 	SettingsPath,
 	SettingsStep,
+	deeperPath,
+	getSettingOrCreatePath,
 }

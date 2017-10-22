@@ -10,15 +10,15 @@ import {
 	GetStripePosition,
 	GetStripePositions,
 	GetTileOriginAndSize,
+	OffsetAddress,
 	StripeCountMode,
 	StripePosition,
 	Supertile,
 	TileColorIndices,
 	TileOriginAndSize,
+	TransformTileColorIndices,
 	Unit,
 	Weave,
-	TransformTileColorIndices,
-	OffsetAddress,
 } from './types'
 
 export {

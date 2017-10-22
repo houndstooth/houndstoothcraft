@@ -1,7 +1,8 @@
-import { Unit } from '../../components'
-import { Coordinate } from './Coordinate'
+import { TileOriginAndSize } from '../../components'
 import { OutlineOptions } from './OutlineOptions'
 
-interface GetOutlineParams { outlineOptions?: OutlineOptions, tileOrigin: Coordinate, tileSize: Unit }
+interface GetOutlineParams extends TileOriginAndSize {
+	outlineOptions?: OutlineOptions
+}
 
 export { GetOutlineParams }

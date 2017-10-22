@@ -1,7 +1,7 @@
-import { GetOutlineParams } from './GetOutlineParams'
+import { TileOriginAndSize } from '../../components'
 import { OutlineOptions } from './OutlineOptions'
 
-interface GetStripeOutlineParams extends GetOutlineParams {
+interface GetStripeOutlineParams extends TileOriginAndSize {
 	outlineOptions: OutlineOptions
 }
 

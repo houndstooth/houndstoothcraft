@@ -1,8 +1,8 @@
-import * as defaults from './defaults'
-import { getSetting } from './getSetting'
-import { resetState } from './resetState'
-import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { deeperPath } from './deeperPath'
+import * as defaults from './defaults'
+import { getFromBaseOrDefaultPattern } from './getFromBaseOrDefaultPattern'
+import { getSettingOrCreatePath } from './getSettingOrCreatePath'
+import { resetState } from './resetState'
 import * as paths from './settingsPaths'
 import {
 	AnimationSettings,
@@ -33,7 +33,7 @@ export {
 	Setting,
 	resetState,
 	ColorAssignment,
-	getSetting,
+	getFromBaseOrDefaultPattern,
 	StripeCountContinuumSettings,
 	ColorSettings,
 	GridSettings,

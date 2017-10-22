@@ -1,6 +1,6 @@
 import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
 import * as scaleElement from '../../../../src/page/scaleElement'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -13,7 +13,7 @@ describe('create canvas container', () => {
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {
-		const viewSettings: ViewSettings = getSetting('view')
+		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
 		viewSettings.canvasSize = canvasSize
 		mockBodyChildren = []
 

@@ -1,6 +1,6 @@
 import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -22,7 +22,7 @@ describe('create mixed down canvas', () => {
 		mixedDownCanvas = buildMockCanvas({ mockContext: mixedDownContext, mockClassList: mixedDownCanvasClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mixedDownCanvas)
 
-		const viewSettings: ViewSettings = getSetting('view')
+		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
 		viewSettings.canvasSize = to.Dimension(450)
 
 		returnedMixedDownContext = createMixedDownCanvas()

@@ -1,4 +1,4 @@
-import { getSetting } from '../../../../src/index'
+import { getFromBaseOrDefaultPattern } from '../../../../src/index'
 import { state } from '../../../../src/state'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
 import * as from from '../../../../src/utilities/from'
@@ -20,7 +20,7 @@ describe('apply scroll', () => {
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		const viewSettings: ViewSettings = getSetting('view')
+		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
 		viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 		const halfCanvasSize = from.Dimension(canvasSize) / 2
 		const halfTileSize = from.Unit(tileSize) / 2
@@ -42,7 +42,7 @@ describe('apply scroll', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('returns the outline unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		const viewSettings: ViewSettings = getSetting('view')
+		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
 		viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
 
 		expect(applyScroll(outline)).toEqual(outline)

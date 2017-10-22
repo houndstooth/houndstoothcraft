@@ -1,9 +1,9 @@
-import { getSetting, StripePositionSettings } from '../store'
+import { getFromBaseOrDefaultPattern, StripePositionSettings } from '../store'
 import { Address, StripePosition } from './types'
 
 const getStripePositionsForTile: (_?: { gridAddress: Address }) => StripePosition[] = params => {
 	const { gridAddress = undefined } = params || {}
-	const { getStripePositions }: StripePositionSettings = getSetting('stripePosition')
+	const { getStripePositions }: StripePositionSettings = getFromBaseOrDefaultPattern('stripePosition')
 
 	return getStripePositions({ gridAddress })
 }

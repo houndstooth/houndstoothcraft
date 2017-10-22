@@ -1,7 +1,7 @@
 import { grid } from '../../../../src/components/grid'
 import * as tile from '../../../../src/components/tile'
 import { state } from '../../../../src/state'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { GridSettings } from '../../../../src/store/types/settings/GridSettings'
 import * as view from '../../../../src/view'
 
@@ -21,7 +21,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			const gridSettings: GridSettings = getSetting('grid')
+			const gridSettings: GridSettings = getFromBaseOrDefaultPattern('grid')
 			gridSettings.includeNegativeQuadrants = false
 		})
 
@@ -38,7 +38,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			const gridSettings: GridSettings = getSetting('grid')
+			const gridSettings: GridSettings = getFromBaseOrDefaultPattern('grid')
 			gridSettings.includeNegativeQuadrants = true
 		})
 

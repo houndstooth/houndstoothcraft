@@ -1,6 +1,6 @@
 import { HALF } from '../constants'
 import { Coordinate, Outline } from '../space'
-import { getSetting, ViewSettings } from '../store'
+import { getFromBaseOrDefaultPattern, ViewSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 
@@ -12,7 +12,7 @@ const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordina
 		centerViewOnCenterOfTileAtHomeAddress,
 		zoom,
 		zoomOnCanvasCenter,
-	}: ViewSettings = getSetting('view')
+	}: ViewSettings = getFromBaseOrDefaultPattern('view')
 	const halfCanvasSize = from.Dimension(canvasSize) * HALF
 	const shouldAdjustForCentering = !!zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 

@@ -2,7 +2,7 @@ import { from, to } from '../../../../src'
 import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
@@ -20,7 +20,7 @@ describe('standard houndstooth pattern', () => {
 		})
 
 		let baseId = -8
-		const tileSize: Unit = getSetting('tileSize')
+		const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 		const firstSupertile = [
 			{
 				baseId: baseId += 8,

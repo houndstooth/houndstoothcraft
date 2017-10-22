@@ -1,6 +1,6 @@
 import { CYAN } from '../../../../src/constants'
 import { state } from '../../../../src/state'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
 import * as to from '../../../../src/utilities/to'
 import { applyBackgroundColor } from '../../../../src/view/applyBackgroundColor'
@@ -11,7 +11,7 @@ describe('apply background color', () => {
 	beforeEach(() => {
 		fillRectSpy = jasmine.createSpy('fillRect')
 		state.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
-		const viewSettings: ViewSettings = getSetting('view')
+		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
 		viewSettings.canvasSize = to.Dimension(450)
 	})
 

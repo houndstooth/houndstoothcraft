@@ -1,28 +1,28 @@
-import * as to from '../../../../src/utilities/to'
 import { getSettingOrCreatePath } from '../../../../src/store/getSettingOrCreatePath'
+import * as to from '../../../../src/utilities/to'
 
 describe('get setting or create path', () => {
-	it('accesses child property if it exists', () => {
-		const expectedProperty = {}
+	it('accesses child setting if it exists', () => {
+		const expectedSetting = {}
 		const settings = {
 			childPathFirstStep: {
-				childPathSecondStep: expectedProperty,
+				childPathSecondStep: expectedSetting,
 			},
 		}
 		const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childProperty = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting = getSettingOrCreatePath({ settings, settingsPath })
 
-		expect(childProperty).toBe(expectedProperty)
+		expect(childSetting).toBe(expectedSetting)
 	})
 
 	it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
 		const settings = {}
 		const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childProperty = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting = getSettingOrCreatePath({ settings, settingsPath })
 
-		expect(childProperty).toEqual({})
+		expect(childSetting).toEqual({})
 		expect(settings).toEqual({
 			childPathFirstStep: {
 				childPathSecondStep: {},
@@ -38,9 +38,9 @@ describe('get setting or create path', () => {
 		}
 		const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childProperty = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting = getSettingOrCreatePath({ settings, settingsPath })
 
-		expect(childProperty).toBe(0)
+		expect(childSetting).toBe(0)
 		expect(settings).toEqual({
 			childPathFirstStep: {
 				childPathSecondStep: 0,

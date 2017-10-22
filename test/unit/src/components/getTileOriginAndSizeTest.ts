@@ -1,6 +1,6 @@
 import { from, state, to } from '../../../../src'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { TileSettings } from '../../../../src/store/types/settings/TileSettings'
 
 describe('get tile origin and size', () => {
@@ -24,7 +24,7 @@ describe('get tile origin and size', () => {
 			]),
 			tileSize: to.Unit(from.Unit(tileSizeSetting) * from.Unit(tileSizeSetting)),
 		})
-		const tileSettings: TileSettings = getSetting('tile')
+		const tileSettings: TileSettings = getFromBaseOrDefaultPattern('tile')
 		tileSettings.getTileOriginAndSize = custom
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({

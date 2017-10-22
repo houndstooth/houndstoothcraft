@@ -1,5 +1,5 @@
-import { SettingsPath } from './types'
 import { isDefined } from '../utilities/codeUtilities'
+import { SettingsPath } from './types'
 
 const getSettingOrCreatePath: (_: {
 	settings: object, settingsPath: SettingsPath,

@@ -3,14 +3,14 @@ import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { AssignmentMode } from '../../../../src/index'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.colorSettings', () => {
-	const tileSize: Unit = getSetting('tileSize')
+	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {

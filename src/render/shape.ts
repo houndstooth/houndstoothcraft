@@ -1,5 +1,5 @@
 import { getCurrentContext } from '../canvas'
-import { getSetting, TextureSettings } from '../store'
+import { getFromBaseOrDefaultPattern, TextureSettings } from '../store'
 import { isDefined, wrappedIndex } from '../utilities/codeUtilities'
 import { solid } from './solid'
 import { texture } from './texture'
@@ -15,7 +15,7 @@ const shape: (_: ShapeParams) => void = params => {
 	const context = getCurrentContext()
 	const shapeColorIndex = wrappedIndex({ array: tileColorIndices, index: stripeIndex })
 
-	const textureSettings: Partial<TextureSettings> = getSetting('texture')
+	const textureSettings: Partial<TextureSettings> = getFromBaseOrDefaultPattern('texture')
 	const renderTexture = textureSettings.renderTexture
 
 	const renderFunction = isDefined(renderTexture) ? texture : solid

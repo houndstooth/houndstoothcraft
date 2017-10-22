@@ -1,7 +1,7 @@
 import { state, to } from '../../../../src'
 import { getTileColorIndices } from '../../../../src/components/getTileColorIndices'
 import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { ColorAssignment } from '../../../../src/store/types/settings/color/ColorAssignment'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 
@@ -90,7 +90,7 @@ describe('get tile color indices', () => {
 			}
 			const notFlippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 
-			const colorAssignment: ColorAssignment = getSetting('colorAssignment')
+			const colorAssignment: ColorAssignment = getFromBaseOrDefaultPattern('colorAssignment')
 			colorAssignment.flipGrain = true
 			const flippedResult = getTileColorIndices({ gridAddress: gridAddressForSubject })
 

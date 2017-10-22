@@ -4,13 +4,13 @@ import { StripeCountMode } from '../../../../src/components/types/StripeCountMod
 import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { sectionCenterIsColor } from '../../helpers/sectionCenterIsColor'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.stripeSettings', () => {
-	const areaSize: Unit = getSetting('tileSize')
+	const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {

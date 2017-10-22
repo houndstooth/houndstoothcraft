@@ -3,7 +3,7 @@ import { to } from '../../../../src'
 import { Unit } from '../../../../src/components/types/Unit'
 import { PageElement } from '../../../../src/page/types/PageElement'
 import { state } from '../../../../src/state'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { maybeAddEffectToggles } from '../../../../src/ui/maybeAddEffectToggles'
 
 xdescribe('effect toggles', () => {
@@ -17,7 +17,7 @@ xdescribe('effect toggles', () => {
 		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') || {}
 		effectToggle.click()
 
-		const tileSize: Unit = getSetting('tileSize')
+		const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 		expect(tileSize).toBe(to.Unit(0))
 		effectToggle.click()

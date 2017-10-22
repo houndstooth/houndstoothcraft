@@ -1,15 +1,15 @@
 import { getCurrentContext } from '../canvas'
 import { parseColor } from '../render'
-import { ColorSettings, getSetting, ViewSettings } from '../store'
+import { ColorSettings, getFromBaseOrDefaultPattern, ViewSettings } from '../store'
 import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
 const applyBackgroundColor: NullarySideEffector = () => {
-	const { backgroundColor }: ColorSettings = getSetting('color')
+	const { backgroundColor }: ColorSettings = getFromBaseOrDefaultPattern('color')
 	if (backgroundColor.a === 0) {
 		return
 	}
 
-	const { canvasSize }: ViewSettings = getSetting('view')
+	const { canvasSize }: ViewSettings = getFromBaseOrDefaultPattern('view')
 
 	const context = getCurrentContext()
 	context.fillStyle = parseColor(backgroundColor)

@@ -7,7 +7,7 @@ import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as render from '../../../../src/render'
 import * as space from '../../../../src/space'
 import { state } from '../../../../src/state'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { TileSettings } from '../../../../src/store/types/settings/TileSettings'
 import * as to from '../../../../src/utilities/to'
 
@@ -63,7 +63,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				const tileSettings: TileSettings = getSetting('tile')
+				const tileSettings: TileSettings = getFromBaseOrDefaultPattern('tile')
 				tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
@@ -172,7 +172,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				const tileSettings: TileSettings = getSetting('tile')
+				const tileSettings: TileSettings = getFromBaseOrDefaultPattern('tile')
 				tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 

@@ -2,12 +2,12 @@ import { from, to } from '../../../../src'
 import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.gridSettings', () => {
-	const tileSize: Unit = getSetting('tileSize')
+	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {

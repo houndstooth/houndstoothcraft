@@ -1,6 +1,6 @@
 import { mixDownContexts } from '../canvas'
 import { state } from '../state'
-import { getSetting, LayerSettings } from '../store'
+import { getFromBaseOrDefaultPattern, LayerSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
@@ -8,7 +8,7 @@ import { gridAndMaybeLogging } from './gridAndMaybeLogging'
 import { Layer, SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
-	const { startLayer, endLayer }: LayerSettings = getSetting('layer')
+	const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layer')
 
 	for (let currentLayerValue = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
 		executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })

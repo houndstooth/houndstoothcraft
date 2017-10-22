@@ -1,13 +1,13 @@
 import { HALF } from '../constants'
 import { Dimension } from '../page'
 import { Outline, Radian, rotateCoordinateAboutPoint } from '../space'
-import { getSetting } from '../store'
+import { getFromBaseOrDefaultPattern } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 
 const applyTilt: (outline: Outline) => Outline = outline => {
-	const canvasSize: Dimension = getSetting('canvasSize')
-	const rotateViewAboutCanvasCenter: Radian = getSetting('rotateViewAboutCanvasCenter')
+	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
+	const rotateViewAboutCanvasCenter: Radian = getFromBaseOrDefaultPattern('rotateViewAboutCanvasCenter')
 
 	if (!rotateViewAboutCanvasCenter) {
 		return outline

@@ -1,9 +1,9 @@
 import { getCurrentContext } from '../canvas'
-import { ColorSettings, getSetting } from '../store'
+import { ColorSettings, getFromBaseOrDefaultPattern } from '../store'
 import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
 const applyOpacity: NullarySideEffector = () => {
-	const { opacity }: ColorSettings = getSetting('color')
+	const { opacity }: ColorSettings = getFromBaseOrDefaultPattern('color')
 	if (!opacity || opacity === 1) {
 		return
 	}

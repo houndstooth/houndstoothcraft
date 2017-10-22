@@ -1,7 +1,7 @@
 import * as createContext from '../../../../src/page/createContext'
 import { createContexts } from '../../../../src/page/createContexts'
 import { state } from '../../../../src/state'
-import { getSetting } from '../../../../src/store/getSetting'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { LayerSettings } from '../../../../src/store/types/settings/LayerSettings'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -25,7 +25,7 @@ describe('create contexts', () => {
 	})
 
 	it('adds contexts to the state for each layer', () => {
-		const layerSettings: LayerSettings = getSetting('layer')
+		const layerSettings: LayerSettings = getFromBaseOrDefaultPattern('layer')
 		layerSettings.endLayer = to.Layer(5)
 		expect(state.contexts.length).toBe(0)
 
@@ -35,7 +35,7 @@ describe('create contexts', () => {
 	})
 
 	it('can reduce the count of contexts in the state, and canvases on the page', () => {
-		const layerSettings: LayerSettings = getSetting('layer')
+		const layerSettings: LayerSettings = getFromBaseOrDefaultPattern('layer')
 		layerSettings.endLayer = to.Layer(5)
 		createContexts()
 

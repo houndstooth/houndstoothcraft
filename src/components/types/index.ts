@@ -13,6 +13,7 @@ import { TileOriginAndSize } from './TileOriginAndSize'
 import { TransformShapeColorIndices } from './TransformShapeColorIndices'
 import { Unit } from './Unit'
 import { Weave } from './Weave'
+import { ColorSet } from './ColorSet'
 
 export {
 	Address,
@@ -30,4 +31,5 @@ export {
 	TransformShapeColorIndices,
 	OffsetAddress,
 	ShapeColorIndex,
+	ColorSet,
 }

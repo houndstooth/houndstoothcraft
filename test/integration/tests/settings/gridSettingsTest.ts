@@ -14,7 +14,7 @@ describe('.gridSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						colorSet: [ BLACK, WHITE ],
+						colorSet: to.ColorSet([ BLACK, WHITE ]),
 					},
 					gridSettings: {
 						gridSize: 3,

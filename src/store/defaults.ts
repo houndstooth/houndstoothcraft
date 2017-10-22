@@ -3,6 +3,7 @@
 import {
 	AssignmentMode,
 	BaseStripeDiagonal,
+	ColorSet,
 	getStandardTileOriginAndSize,
 	standardStripePositions,
 	StripeCountMode,
@@ -32,7 +33,7 @@ const DEFAULT_CANVAS_SIZE = to.Dimension(800)
 const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
-const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
+const DEFAULT_COLOR_SET: ColorSet = to.ColorSet([ BLACK, TRANSPARENT ])
 const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL = BaseStripeDiagonal.Minor

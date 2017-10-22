@@ -13,7 +13,7 @@ describe('.viewSettings', () => {
 		it('works', () => {
 			const houndstoothOverrides = {
 				basePattern: {
-					colorSettings: { colorSet: [ BLACK ] },
+					colorSettings: { colorSet: to.ColorSet([ BLACK ]) },
 					viewSettings: { canvasSize: to.Dimension(125) },
 				},
 			}

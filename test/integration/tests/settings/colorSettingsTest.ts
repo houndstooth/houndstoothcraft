@@ -18,7 +18,7 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						colorSet: [ YELLOW, BLUE ],
+						colorSet: to.ColorSet([ YELLOW, BLUE ]),
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,
@@ -56,7 +56,7 @@ describe('.colorSettings', () => {
 								rows: simplestWeaveToDemonstrateSetting,
 							},
 						},
-						colorSet: [ YELLOW, BLUE, CYAN ],
+						colorSet: to.ColorSet([ YELLOW, BLUE, CYAN ]),
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,
@@ -483,7 +483,7 @@ describe('.colorSettings', () => {
 										],
 									]),
 								},
-								colorSet: [ YELLOW, BLUE, CYAN, MAGENTA ],
+								colorSet: to.ColorSet([ YELLOW, BLUE, CYAN, MAGENTA ]),
 							},
 							gridSettings: {
 								gridSize: sufficientTileCountToDemonstrateSetting,
@@ -751,7 +751,7 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: {
-						colorSet: [ BLACK, BLUE ],
+						colorSet: to.ColorSet([ BLACK, BLUE ]),
 						opacity,
 					},
 					gridSettings: {
@@ -793,7 +793,7 @@ describe('.colorSettings', () => {
 				basePattern: {
 					colorSettings: {
 						backgroundColor: YELLOW,
-						colorSet: [ BLACK, TRANSPARENT ],
+						colorSet: to.ColorSet([ BLACK, TRANSPARENT ]),
 					},
 					gridSettings: {
 						gridSize: sufficientTileCountToDemonstrateSetting,

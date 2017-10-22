@@ -2,6 +2,7 @@ import { standardAnimation } from './animation'
 import {
 	Address,
 	AssignmentMode,
+	ColorSet,
 	GetStripePosition,
 	GetStripePositions,
 	perStripe,
@@ -59,4 +60,5 @@ export {
 	StripeCountContinuumSettings,
 	RenderTexture,
 	GetStripePositions,
+	ColorSet,
 }

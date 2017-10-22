@@ -19,6 +19,7 @@ import {
 	TransformShapeColorIndices,
 	Unit,
 	Weave,
+	ColorSet,
 } from './types'
 
 export {
@@ -42,4 +43,5 @@ export {
 	TransformShapeColorIndices,
 	OffsetAddress,
 	ShapeColorIndex,
+	ColorSet,
 }

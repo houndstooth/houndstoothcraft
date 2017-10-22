@@ -1,11 +1,12 @@
 // tslint:disable:variable-name
 
 import { Frame } from '../animation'
-import { Address, StripePosition, Supertile, ShapeColorIndex, Unit } from '../components'
+import { Address, ColorSet, StripePosition, Supertile, ShapeColorIndex, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath, SettingsStep } from '../store'
+import { Color } from '../render'
 
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any
@@ -18,6 +19,8 @@ const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => set
 
 const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as any
 const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as any
+
+const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as any
 
 const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
 
@@ -39,6 +42,7 @@ const SettingsPath: (settingsPath: Array<string | SettingsStep>) => SettingsPath
 
 export {
 	Address,
+	ColorSet,
 	Coordinate,
 	Dimension,
 	Dimensions,

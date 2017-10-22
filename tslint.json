@@ -3,6 +3,7 @@
     "tslint:all",
     "tslint-eslint-rules"
   ],
+  "rulesDirectory": "./node_modules/tslint-defocus/dist",
   "rules": {
     "no-constant-condition": true,
     "semicolon": false,
@@ -46,6 +47,7 @@
     "no-unbound-method": false,
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
-    "no-any": false
+    "no-any": false,
+    "defocus": true
   }
 }

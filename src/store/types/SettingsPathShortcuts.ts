@@ -1,6 +1,3 @@
-type ColorsPathShortcut =
-	| 'colorSet'
-
 type BooleanPathShortcut =
 	| 'centerViewOnCenterOfTileAtHomeAddress'
 	| 'collapseSameColoredShapesWithinTile'
@@ -8,34 +5,20 @@ type BooleanPathShortcut =
 	| 'includeNegativeQuadrants'
 	| 'refreshCanvas'
 	| 'zoomOnCanvasCenter'
-
-type DimensionPathShortcut =
-	| 'canvasSize'
-
-type FramePathShortcut =
-	| 'startAnimationFrame'
-
-type GetStripePositionsPathShortcut =
-	| 'getStripePositions'
-
-type GetTileOriginAndSizePathShortcut =
-	| 'getTileOriginAndSize'
-
-type LayerPathShortcut =
-	| 'endLayer'
-
+type ColorPathShortcut = 'backgroundColor'
+type ColorsPathShortcut = 'colorSet'
+type DimensionPathShortcut = 'canvasSize'
+type FramePathShortcut = 'startAnimationFrame'
+type GetStripePositionsPathShortcut = 'getStripePositions'
+type GetTileOriginAndSizePathShortcut = 'getTileOriginAndSize'
+type LayerPathShortcut = 'endLayer'
 type NumberPathShortcut =
 	| 'gridSize'
 	| 'stripeCount'
-
-type RadianPathShortcut =
-	| 'rotateViewAboutCanvasCenter'
-
-type RenderTexturePathShortcut =
-	| 'renderTexture'
-
-type UnitPathShortcut =
-	| 'tileSize'
+	| 'opacity'
+type RadianPathShortcut = 'rotateViewAboutCanvasCenter'
+type RenderTexturePathShortcut = 'renderTexture'
+type UnitPathShortcut = 'tileSize'
 
 type AnimationSettingsPathShortcut = 'animation'
 type ColorSettingsPathShortcut = 'color'
@@ -48,37 +31,14 @@ type TextureSettingsPathShortcut = 'texture'
 type TileSettingsPathShortcut = 'tile'
 type ViewSettingsPathShortcut = 'view'
 
-type SettingsPathShortcuts =
-	| ColorsPathShortcut
-	| BooleanPathShortcut
-	| DimensionPathShortcut
-	| FramePathShortcut
-	| GetStripePositionsPathShortcut
-	| GetTileOriginAndSizePathShortcut
-	| LayerPathShortcut
-	| NumberPathShortcut
-	| RadianPathShortcut
-	| RenderTexturePathShortcut
-	| UnitPathShortcut
-	| AnimationSettingsPathShortcut
-	| ColorSettingsPathShortcut
-	| ColorAssignmentPathShortcut
-	| GridSettingsPathShortcut
-	| LayerSettingsPathShortcut
-	| StripeCountContinuumSettingsPathShortcut
-	| StripePositionSettingsPathShortcut
-	| TextureSettingsPathShortcut
-	| TileSettingsPathShortcut
-	| ViewSettingsPathShortcut
-
 export {
-	SettingsPathShortcuts,
-	GetTileOriginAndSizePathShortcut,
-	ColorsPathShortcut,
 	BooleanPathShortcut,
+	ColorPathShortcut,
+	ColorsPathShortcut,
 	DimensionPathShortcut,
 	FramePathShortcut,
 	GetStripePositionsPathShortcut,
+	GetTileOriginAndSizePathShortcut,
 	LayerPathShortcut,
 	NumberPathShortcut,
 	RadianPathShortcut,

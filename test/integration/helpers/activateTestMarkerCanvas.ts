@@ -3,7 +3,7 @@ import { scaleElement } from '../../../src/page/scaleElement'
 import { Canvas } from '../../../src/page/types/Canvas'
 import { PageElement } from '../../../src/page/types/PageElement'
 import { state } from '../../../src/state'
-import { defaults } from '../../../src/store'
+import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
 import { NullarySideEffector } from '../../../src/utilities/types/NullarySideEffector'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
@@ -27,7 +27,7 @@ const activateTestMarkerCanvas: NullarySideEffector = () => {
 	prepareCanvasForDisplayInTest(testMarkersCanvas)
 	testMarkersCanvas.style.zIndex = '9001'
 
-	const { canvasSize = defaults.DEFAULT_CANVAS_SIZE } = state.mainHoundstooth.basePattern.viewSettings || {}
+	const canvasSize = getFromBaseOrDefaultPattern('canvasSize')
 	testMarkersCanvas.width = canvasSize
 	testMarkersCanvas.height = canvasSize
 

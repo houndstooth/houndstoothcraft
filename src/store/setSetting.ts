@@ -2,11 +2,11 @@ import { state } from '../state'
 import * as from from '../utilities/from'
 import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import * as settingsPaths from './settingsPaths'
-import { SettingsPathShortcuts } from './types'
+import { AllSettingsPathShortcuts } from './types'
 import { SettingsPath } from './types/SettingsPath'
 
-const setSetting: (settingsPathShortcut: SettingsPathShortcuts, value: any) => void = (settingsPathShortcut, value) => {
-	const settingsPath: SettingsPath = settingsPaths[ settingsPathShortcut ]
+const setSetting: (shortcut: AllSettingsPathShortcuts, value: any) => void = (shortcut, value) => {
+	const settingsPath: SettingsPath = settingsPaths[ shortcut ]
 	const settingName = from.SettingsStep(settingsPath.slice(-1)[0])
 	const pathToParentSetting = settingsPath.slice(0, -1)
 

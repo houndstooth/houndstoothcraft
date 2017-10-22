@@ -64,8 +64,6 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T = maybeObject
 	return clonedMaybeObject
 }
 
-const defaultToTrue: <T>(property: T) => T | boolean = property => isDefined(property) ? property : true
-
 const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'
 
 const changeObjectIntoCopy: (_: {
@@ -85,7 +83,6 @@ export {
 	shallowEqual,
 	deepClone,
 	deepCloneMaybeNotObject,
-	defaultToTrue,
 	isDefined,
 	changeObjectIntoCopy,
 	reversed,

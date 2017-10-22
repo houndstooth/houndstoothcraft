@@ -2,7 +2,6 @@ import { PERIMETER_SCALAR } from '../constants'
 import { shape, ShapeParams } from '../render'
 import { Coordinate, squareOutline, stripeOutline } from '../space'
 import { getFromBaseOrDefaultPattern, TileSettings } from '../store'
-import { defaultToTrue } from '../utilities/codeUtilities'
 import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileColorIndices } from './getTileColorIndices'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
@@ -48,9 +47,8 @@ const definedTile: (_: {
 
 const shouldUseSquare: (_: { tileColorIndices: TileColorIndices }) => boolean = ({ tileColorIndices }) => {
 	const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tile')
-	const shouldCollapseSameColoredShapes = defaultToTrue(collapseSameColoredShapesWithinTile)
 
-	return !!shouldCollapseSameColoredShapes && isTileUniform({ tileColorIndices })
+	return collapseSameColoredShapesWithinTile && isTileUniform({ tileColorIndices })
 }
 
 const squareTile: (_: TileParams) => void = args => {

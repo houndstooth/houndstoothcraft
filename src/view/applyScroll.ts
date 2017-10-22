@@ -2,12 +2,13 @@ import { Unit } from '../components'
 import { HALF } from '../constants'
 import { Dimension } from '../page'
 import { Coordinate, Outline } from '../space'
-import { getFromBaseOrDefaultPattern, ViewSettings } from '../store'
+import { getFromBaseOrDefaultPattern } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 
 const applyScroll: (outline: Outline) => Outline = outline => {
-	const { centerViewOnCenterOfTileAtHomeAddress }: ViewSettings = getFromBaseOrDefaultPattern('view')
+	// tslint:disable-next-line:max-line-length
+	const centerViewOnCenterOfTileAtHomeAddress: boolean = getFromBaseOrDefaultPattern('centerViewOnCenterOfTileAtHomeAddress')
 
 	if (!centerViewOnCenterOfTileAtHomeAddress) {
 		return outline

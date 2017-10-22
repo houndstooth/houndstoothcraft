@@ -12,5 +12,4 @@ const createContexts: NullarySideEffector = () => {
 	state.contexts = layerIterator().map(() => createContext({ canvasContainer }))
 }
 
-// tslint:disable-next-line:no-default-export
 export { createContexts }

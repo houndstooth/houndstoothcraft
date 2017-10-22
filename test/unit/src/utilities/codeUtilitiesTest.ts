@@ -153,24 +153,6 @@ describe('code utilities', () => {
 		})
 	})
 
-	describe('#defaultToTrue', () => {
-		let defaultToTrue
-		beforeEach(() => defaultToTrue = codeUtilities.defaultToTrue)
-
-		it('returns the setting if it is already defined', () => {
-			const setting = { pants: 'pants' }
-			expect(defaultToTrue(setting)).toBe(setting)
-		})
-
-		it('even returns false if it is defined as false; that is the whole point of this thing', () => {
-			expect(defaultToTrue(false)).toBe(false)
-		})
-
-		it('returns true if it is not defined', () => {
-			expect(defaultToTrue(undefined)).toBe(true)
-		})
-	})
-
 	describe('#isDefined', () => {
 		let isDefined
 		beforeEach(() => isDefined = codeUtilities.isDefined)

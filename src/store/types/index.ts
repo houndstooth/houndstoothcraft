@@ -1,3 +1,4 @@
+import { AllSettingsPathShortcuts } from './AllSettingsPathShortcuts'
 import { BasePattern } from './BasePattern'
 import { Effect } from './Effect'
 import { GetFromBaseOrDefaultPattern } from './GetFromBaseOrDefaultPattern'
@@ -17,7 +18,6 @@ import {
 	ViewSettings,
 } from './settings'
 import { SettingsPath } from './SettingsPath'
-import { SettingsPathShortcuts } from './SettingsPathShortcuts'
 import { SettingsStep } from './SettingsStep'
 import { State } from './State'
 
@@ -41,5 +41,5 @@ export {
 	SettingsPath,
 	SettingsStep,
 	GetFromBaseOrDefaultPattern,
-	SettingsPathShortcuts,
+	AllSettingsPathShortcuts,
 }

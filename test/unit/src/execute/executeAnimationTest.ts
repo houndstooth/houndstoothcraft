@@ -1,7 +1,6 @@
 import * as animation from '../../../../src/animation'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { state } from '../../../../src/state'
-import { setSetting } from '../../../../src/store/setSetting'
 import { noop } from '../../../helpers/noop'
 
 describe('execute animation', () => {
@@ -23,62 +22,64 @@ describe('execute animation', () => {
 		spyOn(animation, 'animator')
 		spyOn(animation, 'buildStopConditionFunction').and.returnValue(stopConditionFunction)
 		spyOn(animation, 'buildAnimationFunction').and.returnValue(animationFunction)
-
-		layerFunctionObjects = []
-		animationFunctionObjects = []
-
-		frameRate = 5
-		startAnimationFrame = 3
-		endAnimationFrame = 7
-		refreshCanvas = false
-
-		state.mainHoundstooth.basePattern.animationSettings = {
-			endAnimationFrame,
-			frameRate,
-			refreshCanvas,
-			startAnimationFrame,
-		}
 	})
 
-	it('calls the animator', () => {
-		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+	describe('configured', () => {
+		beforeEach(() => {
+			layerFunctionObjects = []
+			animationFunctionObjects = []
 
-		expect(animation.animator).toHaveBeenCalledWith({
-			animationFunction,
-			frameRate,
-			stopConditionFunction,
-		})
-	})
+			frameRate = 5
+			startAnimationFrame = 3
+			endAnimationFrame = 7
+			refreshCanvas = false
 
-	it('initializes the last saved animation frame to the start animation frame', () => {
-		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
-
-		expect(state.lastSavedAnimationFrame).toBe(startAnimationFrame)
-	})
-
-	it('builds a stop condition function', () => {
-		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
-
-		expect(animation.buildStopConditionFunction).toHaveBeenCalledWith({
-			endAnimationFrame,
-		})
-	})
-
-	it('builds an animation function', () => {
-		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
-
-		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
-			jasmine.objectContaining({
-				animationFunctionObjects,
-				layerFunctionObjects,
+			state.mainHoundstooth.basePattern.animationSettings = {
+				endAnimationFrame,
+				frameRate,
+				refreshCanvas,
 				startAnimationFrame,
-			}),
-		)
+			}
+		})
+
+		it('calls the animator', () => {
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+
+			expect(animation.animator).toHaveBeenCalledWith({
+				animationFunction,
+				frameRate,
+				stopConditionFunction,
+			})
+		})
+
+		it('initializes the last saved animation frame to the start animation frame', () => {
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+
+			expect(state.lastSavedAnimationFrame).toBe(startAnimationFrame)
+		})
+
+		it('builds a stop condition function', () => {
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+
+			expect(animation.buildStopConditionFunction).toHaveBeenCalledWith({
+				endAnimationFrame,
+			})
+		})
+
+		it('builds an animation function', () => {
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+
+			expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
+				jasmine.objectContaining({
+					animationFunctionObjects,
+					layerFunctionObjects,
+					startAnimationFrame,
+				}),
+			)
+		})
 	})
 
 	it('defaults refreshing the canvas to true', () => {
-		setSetting('refreshCanvas', undefined)
-
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
 		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
@@ -89,8 +90,6 @@ describe('execute animation', () => {
 	})
 
 	it('defaults the start animation frame to zero', () => {
-		setSetting('startAnimationFrame', undefined)
-
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
 		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(

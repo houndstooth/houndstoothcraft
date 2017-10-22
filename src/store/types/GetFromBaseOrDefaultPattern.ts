@@ -20,6 +20,7 @@ import {
 	AnimationSettingsPathShortcut,
 	BooleanPathShortcut,
 	ColorAssignmentPathShortcut,
+	ColorPathShortcut,
 	ColorSettingsPathShortcut,
 	ColorsPathShortcut,
 	DimensionPathShortcut,
@@ -41,8 +42,9 @@ import {
 
 interface GetFromBaseOrDefaultPattern {
 	(settingsPathShortcut: GetTileOriginAndSizePathShortcut): GetTileOriginAndSize
-	(settingsPathShortcut: ColorsPathShortcut): Color[]
 	(settingsPathShortcut: BooleanPathShortcut): boolean
+	(settingsPathShortcut: ColorPathShortcut): Color
+	(settingsPathShortcut: ColorsPathShortcut): Color[]
 	(settingsPathShortcut: DimensionPathShortcut): Dimension
 	(settingsPathShortcut: FramePathShortcut): Frame
 	(settingsPathShortcut: LayerPathShortcut): Layer

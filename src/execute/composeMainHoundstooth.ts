@@ -19,13 +19,13 @@ const composeMainHoundstooth: (_?: {
 		patternToCompose: state.mainHoundstooth.basePattern,
 	})
 	composePattern({
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.layersPattern,
+		patternDefaults: defaults.DEFAULT_LAYERS_PATTERN,
 		patternEffects: combinedHoundstoothEffects.layersPattern || {},
 		patternOverrides: houndstoothOverrides.layersPattern || {},
 		patternToCompose: state.mainHoundstooth.layersPattern,
 	})
 	composePattern({
-		patternDefaults: defaults.DEFAULT_HOUNDSTOOTH.animationsPattern,
+		patternDefaults: defaults.DEFAULT_ANIMATIONS_PATTERN,
 		patternEffects: combinedHoundstoothEffects.animationsPattern || {},
 		patternOverrides: houndstoothOverrides.animationsPattern || {},
 		patternToCompose: state.mainHoundstooth.animationsPattern,

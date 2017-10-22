@@ -1,11 +1,10 @@
-import { state } from '../state'
-import { defaults } from '../store'
+import { getFromBaseOrDefaultPattern } from '../store'
 import { document } from '../utilities/windowWrapper'
 import { scaleElement } from './scaleElement'
-import { PageElement } from './types'
+import { Dimension, PageElement } from './types'
 
 const createCanvasContainer: () => PageElement = () => {
-	const { canvasSize = defaults.DEFAULT_CANVAS_SIZE } = state.mainHoundstooth.basePattern.viewSettings || {}
+	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
 
 	const canvasContainer = document.createElement('div')
 	canvasContainer.classList.add('canvas-container')

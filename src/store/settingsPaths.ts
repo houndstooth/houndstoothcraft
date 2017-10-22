@@ -6,6 +6,8 @@ const startAnimationFrame = to.SettingsPath([ 'animationSettings', 'startAnimati
 
 const color = to.SettingsPath([ 'colorSettings' ])
 const colorSet = to.SettingsPath([ 'colorSettings', 'colorSet' ])
+const opacity = to.SettingsPath([ 'colorSettings', 'opacity' ])
+const backgroundColor = to.SettingsPath([ 'colorSettings', 'backgroundColor' ])
 const colorAssignment = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
 const flipGrain = to.SettingsPath([ 'colorSettings', 'colorAssignment', 'flipGrain' ])
 
@@ -41,6 +43,7 @@ const stripeCountContinuum = to.SettingsPath([
 
 export {
 	animation,
+	backgroundColor,
 	centerViewOnCenterOfTileAtHomeAddress,
 	colorAssignment,
 	canvasSize,
@@ -55,6 +58,7 @@ export {
 	gridSize,
 	includeNegativeQuadrants,
 	layer,
+	opacity,
 	refreshCanvas,
 	renderTexture,
 	rotateViewAboutCanvasCenter,

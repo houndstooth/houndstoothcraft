@@ -1,10 +1,10 @@
 import { Context, Dimension } from '../page'
 import { state } from '../state'
-import { defaults } from '../store'
+import { getFromBaseOrDefaultPattern } from '../store'
 import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
 const clear: NullarySideEffector = () => {
-	const { canvasSize = defaults.DEFAULT_CANVAS_SIZE } = state.mainHoundstooth.basePattern.viewSettings || {}
+	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
 	state.contexts.forEach(context => {
 		clearContext({ context, canvasSize })
 	})

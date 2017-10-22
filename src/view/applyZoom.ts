@@ -14,7 +14,7 @@ const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordina
 		zoomOnCanvasCenter,
 	}: ViewSettings = getFromBaseOrDefaultPattern('view')
 	const halfCanvasSize = from.Dimension(canvasSize) * HALF
-	const shouldAdjustForCentering = !!zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
+	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })
 }

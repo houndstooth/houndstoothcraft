@@ -26,10 +26,10 @@ describe('texture', () => {
 		spyOn(resetClip, 'resetClip').and.callFake(fakeResetClip)
 
 		const context = {}
-		const tileColorIndices = to.TileColorIndices([])
+		const shapeColorIndices = to.ShapeColorIndices([])
 		const tileOrigin = to.Coordinate([])
 		const tileSize = to.Unit(11)
-		const shapeColorIndex = to.TileColorIndex(3)
+		const shapeColorIndex = to.ShapeColorIndex(3)
 		const outline = to.Outline([])
 
 		texture({
@@ -37,7 +37,7 @@ describe('texture', () => {
 			outline,
 			renderTexture: fakeRenderTexture,
 			shapeColorIndex,
-			tileColorIndices,
+			shapeColorIndices,
 			tileOrigin,
 			tileSize,
 		})
@@ -49,7 +49,7 @@ describe('texture', () => {
 				call: 'renderTexture',
 				context,
 				shapeColorIndex,
-				tileColorIndices,
+				shapeColorIndices,
 				tileOrigin,
 				tileSize,
 			}),

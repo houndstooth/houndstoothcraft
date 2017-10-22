@@ -4,7 +4,7 @@ import * as getColor from '../../../../src/render/getColor'
 import { solid } from '../../../../src/render/solid'
 
 describe('solid', () => {
-	const shapeColorIndex = to.TileColorIndex(8)
+	const shapeColorIndex = to.ShapeColorIndex(8)
 	const shapeColor = { a: 1 }
 	const transparentColor = { a: 0 }
 	const context = {}

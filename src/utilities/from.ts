@@ -1,7 +1,7 @@
 // tslint:disable:variable-name
 
 import { Frame } from '../animation'
-import { Address, StripePosition, TileColorIndex, Unit } from '../components'
+import { Address, StripePosition, ShapeColorIndex, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
 import { Coordinate, Radian } from '../space'
@@ -13,7 +13,7 @@ const Radian: (radian: Radian) => number = radian => radian as any
 const Unit: (units: Unit) => number = units => units as any
 const Dimension: (dimension: Dimension) => number = dimension => dimension as any
 const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
-const TileColorIndex: (tileColorIndex: TileColorIndex) => number = tileColorIndex => tileColorIndex as any
+const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number = shapeColorIndex => shapeColorIndex as any
 const SettingsStep: (settingStep: SettingsStep) => string = settingsStep => settingsStep as any
 
 const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
@@ -31,5 +31,5 @@ export {
 	Unit,
 	SettingsStep,
 	SettingsPath,
-	TileColorIndex,
+	ShapeColorIndex,
 }

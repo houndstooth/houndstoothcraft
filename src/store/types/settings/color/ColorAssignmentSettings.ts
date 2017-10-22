@@ -1,4 +1,4 @@
-import { AssignmentMode, OffsetAddress, Supertile, TransformTileColorIndices, Weave } from '../../../../components'
+import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../../components'
 
 interface ColorAssignmentSettings {
 	assignmentMode: AssignmentMode,
@@ -6,7 +6,7 @@ interface ColorAssignmentSettings {
 	offsetAddress?: OffsetAddress,
 	supertile: Supertile,
 	switcheroo: boolean,
-	transformTileColorIndices?: TransformTileColorIndices,
+	transformShapeColorIndices?: TransformShapeColorIndices,
 	weave: Weave,
 }
 

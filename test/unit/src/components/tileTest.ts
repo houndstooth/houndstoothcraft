@@ -1,5 +1,5 @@
 import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
-import * as getTileColorIndices from '../../../../src/components/getTileColorIndices'
+import * as getShapeColorIndices from '../../../../src/components/getShapeColorIndices'
 import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import { tile } from '../../../../src/components/tile'
@@ -13,13 +13,13 @@ import * as to from '../../../../src/utilities/to'
 describe('tile', () => {
 	const gridAddress = to.Address([ 3, 5 ])
 	let shapeSpy
-	let getTileColorIndicesSpy
+	let getShapeColorIndicesSpy
 	let isTileUniformSpy
 	beforeEach(() => {
 		shapeSpy = spyOn(render, 'shape')
 		spyOn(space, 'squareOutline')
 		spyOn(space, 'stripeOutline')
-		getTileColorIndicesSpy = spyOn(getTileColorIndices, 'getTileColorIndices')
+		getShapeColorIndicesSpy = spyOn(getShapeColorIndices, 'getShapeColorIndices')
 		isTileUniformSpy = spyOn(isTileUniform, 'isTileUniform')
 	})
 
@@ -31,13 +31,13 @@ describe('tile', () => {
 		it('returns early, not getting colors', () => {
 			tile({ gridAddress })
 
-			expect(getTileColorIndices.getTileColorIndices).not.toHaveBeenCalled()
+			expect(getShapeColorIndices.getShapeColorIndices).not.toHaveBeenCalled()
 		})
 	})
 
 	describe('when the tile is assigned an origin on the canvas', () => {
 		let stripePositionsForTile
-		let tileColorIndices
+		let shapeColorIndices
 		let tileOrigin
 		let tileSize
 		beforeEach(() => {
@@ -50,14 +50,14 @@ describe('tile', () => {
 
 			state.mainHoundstooth.basePattern.tileSettings = {}
 
-			tileColorIndices = []
-			getTileColorIndicesSpy.and.returnValue(tileColorIndices)
+			shapeColorIndices = []
+			getShapeColorIndicesSpy.and.returnValue(shapeColorIndices)
 		})
 
 		it('gets colors', () => {
 			tile({ gridAddress })
 
-			expect(getTileColorIndices.getTileColorIndices).toHaveBeenCalledWith({ gridAddress })
+			expect(getShapeColorIndices.getShapeColorIndices).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
@@ -68,7 +68,7 @@ describe('tile', () => {
 			it('checks if the tile is uniform', () => {
 				tile({ gridAddress })
 
-				expect(isTileUniformSpy).toHaveBeenCalledWith({ tileColorIndices })
+				expect(isTileUniformSpy).toHaveBeenCalledWith({ shapeColorIndices })
 			})
 
 			describe('when the tile is uniform', () => {
@@ -88,7 +88,7 @@ describe('tile', () => {
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						getOutline: space.squareOutline,
 						gridAddress,
-						tileColorIndices,
+						shapeColorIndices,
 						tileOrigin,
 						tileSize,
 					}))
@@ -118,7 +118,7 @@ describe('tile', () => {
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						getOutline: space.stripeOutline,
 						gridAddress,
-						tileColorIndices,
+						shapeColorIndices,
 						tileOrigin,
 						tileSize,
 					}))

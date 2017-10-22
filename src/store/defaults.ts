@@ -73,7 +73,7 @@ const DEFAULT_FLIP_GRAIN = false
 const DEFAULT_OFFSET_ADDRESS = undefined
 const DEFAULT_SUPERTILE = to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ])
 const DEFAULT_SWITCHEROO = false
-const DEFAULT_TRANSFORM_TILE_COLOR_INDICES = undefined
+const DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES = undefined
 const DEFAULT_WEAVE = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 
 const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
@@ -89,7 +89,7 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	offsetAddress: DEFAULT_OFFSET_ADDRESS,
 	supertile: DEFAULT_SUPERTILE,
 	switcheroo: DEFAULT_SWITCHEROO,
-	transformTileColorIndices: DEFAULT_TRANSFORM_TILE_COLOR_INDICES,
+	transformShapeColorIndices: DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES,
 	weave: DEFAULT_WEAVE,
 }
 

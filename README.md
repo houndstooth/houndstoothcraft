@@ -140,7 +140,7 @@ An address coordinate [0, 0] is referred to as the "home address" while a pixel 
 
 ### tile
 
-A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `tileColors`.
+A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `shapeColorIndices`.
 
 Typically: 
 - `tileOrigin` defaults to multiplying each dimension of the `gridAddress` by the `tileSize`.
@@ -159,7 +159,7 @@ A tile:
 
 ### shape
 
-A shape converts a `tileOrigin`, `tileSize`, and `outlineFunction` into an `outline`, and converts `tileColors` into a `color`.
+A shape converts a `tileOrigin`, `tileSize`, and `outlineFunction` into an `outline`, and converts `shapeColorIndices` into a `color`.
 A shape has only a single color and outline.
 
 This outline then gets rotated, scrolled, and sized per any view settings until it represents what we're actually going to see on the screen. 

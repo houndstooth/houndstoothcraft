@@ -14,9 +14,9 @@ import {
 	StripeCountMode,
 	StripePosition,
 	Supertile,
-	TileColorIndex,
+	ShapeColorIndex,
 	TileOriginAndSize,
-	TransformTileColorIndices,
+	TransformShapeColorIndices,
 	Unit,
 	Weave,
 } from './types'
@@ -39,7 +39,7 @@ export {
 	standardStripePositions,
 	getStandardTileOriginAndSize,
 	GetStripePositions,
-	TransformTileColorIndices,
+	TransformShapeColorIndices,
 	OffsetAddress,
-	TileColorIndex,
+	ShapeColorIndex,
 }

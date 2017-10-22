@@ -1,11 +1,11 @@
 import { getColor } from '../render'
 import { shallowEqual } from '../utilities/codeUtilities'
-import { TileColorIndex } from './types'
+import { ShapeColorIndex } from './types'
 
-const isTileUniform: (_: { tileColorIndices: TileColorIndex[] }) => boolean = ({ tileColorIndices }) => {
-	for (let i = 0; i < tileColorIndices.length - 1; i++) {
-		const colorOne = getColor({ index: tileColorIndices[ i ] })
-		const colorTwo = getColor({ index: tileColorIndices[ i + 1 ] })
+const isTileUniform: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean = ({ shapeColorIndices }) => {
+	for (let i = 0; i < shapeColorIndices.length - 1; i++) {
+		const colorOne = getColor({ index: shapeColorIndices[ i ] })
+		const colorTwo = getColor({ index: shapeColorIndices[ i + 1 ] })
 		if (!shallowEqual(colorOne, colorTwo)) {
 			return false
 		}

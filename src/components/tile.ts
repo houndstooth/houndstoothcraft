@@ -3,14 +3,14 @@ import { shape, ShapeParams } from '../render'
 import { Coordinate, squareOutline, stripeOutline } from '../space'
 import { getFromBaseOrDefaultPattern, TileSettings } from '../store'
 import { getStripePositionsForTile } from './getStripePositionsForTile'
-import { getTileColorIndices } from './getTileColorIndices'
+import { getShapeColorIndices } from './getShapeColorIndices'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
-import { Address, StripePosition, TileColorIndex, Unit } from './types'
+import { Address, StripePosition, ShapeColorIndex, Unit } from './types'
 
 interface TileParams {
 	gridAddress: Address,
-	tileColorIndices: TileColorIndex[],
+	shapeColorIndices: ShapeColorIndex[],
 	tileOrigin: Coordinate,
 	tileSize: Unit
 }
@@ -40,15 +40,15 @@ const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
 const definedTile: (_: {
 	definedTileOrigin: Coordinate, definedTileSize: Unit, gridAddress: Address,
 }) => void = ({ gridAddress, definedTileOrigin: tileOrigin, definedTileSize: tileSize }) => {
-	const tileColorIndices = getTileColorIndices({ gridAddress })
-	const tileFunction = shouldUseSquare({ tileColorIndices }) ? squareTile : stripedTile
-	tileFunction({ gridAddress, tileOrigin, tileSize, tileColorIndices })
+	const shapeColorIndices = getShapeColorIndices({ gridAddress })
+	const tileFunction = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile
+	tileFunction({ gridAddress, tileOrigin, tileSize, shapeColorIndices })
 }
 
-const shouldUseSquare: (_: { tileColorIndices: TileColorIndex[] }) => boolean = ({ tileColorIndices }) => {
+const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean = ({ shapeColorIndices }) => {
 	const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tileSettings')
 
-	return collapseSameColoredShapesWithinTile && isTileUniform({ tileColorIndices })
+	return collapseSameColoredShapesWithinTile && isTileUniform({ shapeColorIndices })
 }
 
 const squareTile: (_: TileParams) => void = args => {

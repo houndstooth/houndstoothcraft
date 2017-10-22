@@ -1,7 +1,7 @@
 // tslint:disable:variable-name
 
 import { Frame } from '../animation'
-import { Address, StripePosition, Supertile, TileColorIndex, Unit } from '../components'
+import { Address, StripePosition, Supertile, ShapeColorIndex, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
 import { Coordinate, Outline, Radian } from '../space'
@@ -13,7 +13,7 @@ const Radian: (radian: number) => Radian = radian => radian as any
 const Unit: (unit: number) => Unit = unit => unit as any
 const Dimension: (dimension: number) => Dimension = dimension => dimension as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
-const TileColorIndex: (tileColorIndex: number) => TileColorIndex = tileColorIndex => tileColorIndex as any
+const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
 const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
 
 const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as any
@@ -24,8 +24,8 @@ const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = 
 const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
 	coordinate.map(dimension => dimension as any) as Coordinate
 
-const TileColorIndices: (tileColorIndices: Array<number | TileColorIndex>) => TileColorIndex[] = tileColorIndices =>
-	tileColorIndices.map(tileColorIndex => tileColorIndex as any) as TileColorIndex[]
+const ShapeColorIndices: (shapeColorIndices: Array<number | ShapeColorIndex>) => ShapeColorIndex[] = shapeColorIndices =>
+	shapeColorIndices.map(shapeColorIndex => shapeColorIndex as any) as ShapeColorIndex[]
 
 const Address: (address: number[]) => Address = address =>
 	address.map(index => index as any) as Address
@@ -52,7 +52,7 @@ export {
 	StripePosition,
 	StripePositions,
 	Supertile,
-	TileColorIndex,
-	TileColorIndices,
+	ShapeColorIndex,
+	ShapeColorIndices,
 	Unit,
 }

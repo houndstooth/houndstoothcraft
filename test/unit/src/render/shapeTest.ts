@@ -10,7 +10,7 @@ import { noop } from '../../../helpers/noop'
 describe('shape', () => {
 	const tileOrigin = to.Coordinate([ 11, 13 ])
 	const tileSize = to.Unit(45)
-	const tileColorIndices = to.TileColorIndices([])
+	const shapeColorIndices = to.ShapeColorIndices([])
 	const stripeIndex = 7
 	const shapeColorIndex = 45
 	const outlineOptions = {}
@@ -36,7 +36,7 @@ describe('shape', () => {
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				stripeIndex,
-				tileColorIndices,
+				shapeColorIndices,
 				tileOrigin,
 				tileSize,
 			})
@@ -56,7 +56,7 @@ describe('shape', () => {
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				stripeIndex,
-				tileColorIndices,
+				shapeColorIndices,
 				tileOrigin,
 				tileSize,
 			})
@@ -73,7 +73,7 @@ describe('shape', () => {
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				stripeIndex,
-				tileColorIndices,
+				shapeColorIndices,
 				tileOrigin,
 				tileSize,
 			})
@@ -87,13 +87,13 @@ describe('shape', () => {
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				stripeIndex,
-				tileColorIndices,
+				shapeColorIndices,
 				tileOrigin,
 				tileSize,
 			})
 
 			expect(codeUtilities.wrappedIndex).toHaveBeenCalledWith({
-				array: tileColorIndices,
+				array: shapeColorIndices,
 				index: stripeIndex,
 			})
 		})
@@ -109,7 +109,7 @@ describe('shape', () => {
 					getOutline: getOutlineSpy,
 					outlineOptions,
 					stripeIndex,
-					tileColorIndices,
+					shapeColorIndices,
 					tileOrigin,
 					tileSize,
 				})
@@ -119,7 +119,7 @@ describe('shape', () => {
 					outline,
 					renderTexture,
 					shapeColorIndex,
-					tileColorIndices,
+					shapeColorIndices,
 					tileOrigin,
 					tileSize,
 				})
@@ -132,7 +132,7 @@ describe('shape', () => {
 					getOutline: getOutlineSpy,
 					outlineOptions,
 					stripeIndex,
-					tileColorIndices,
+					shapeColorIndices,
 					tileOrigin,
 					tileSize,
 				})

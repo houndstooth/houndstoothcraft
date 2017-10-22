@@ -7,6 +7,6 @@ describe('get Color', () => {
 		const expectedColor = { a: 1 }
 		state.mainHoundstooth.basePattern.colorSettings = { colorSet: [ { a: 0 }, expectedColor, { a: 0 } ] }
 
-		expect(getColor({ index: to.TileColorIndex(7) })).toBe(expectedColor)
+		expect(getColor({ index: to.ShapeColorIndex(7) })).toBe(expectedColor)
 	})
 })

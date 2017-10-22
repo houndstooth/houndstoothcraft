@@ -17,11 +17,11 @@ interface PatternFunctions {
 				deltaStripeCount?(p: number): number,
 				initialStripeCount?(p: number): number,
 			},
-			stripeCountSetting?(p: number): number,
+			stripeCount?(p: number): number,
 		},
 	},
 	tileSettings?: {
-		tileSizeSetting?(p: Unit): Unit,
+		tileSize?(p: Unit): Unit,
 	},
 	viewSettings?: {
 		rotateViewAboutCanvasCenter?(p: Radian): Radian,

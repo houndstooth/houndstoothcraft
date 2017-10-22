@@ -79,7 +79,7 @@ attempted to compose a pattern with an unrecognized setting
 	- `animationSettings`
 	- `layerSettings`
 - contents — all [settings](#setting)
-	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSizeSetting` or `zoomOnCanvasCenter`.
+	- Yes, it's settings all the way down from here. One does eventually arrive at leaves such as `tileSize` or `zoomOnCanvasCenter`.
 
 The key difference between a [pattern](#pattern) and a setting:
 
@@ -143,8 +143,8 @@ An address coordinate [0, 0] is referred to as the "home address" while a pixel 
 A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `tileColors`.
 
 Typically: 
-- `tileOrigin` defaults to multiplying each dimension of the `gridAddress` by the `tileSizeSetting`.
-- `tileSize` also (naturally) defaults to the `tileSizeSetting`.
+- `tileOrigin` defaults to multiplying each dimension of the `gridAddress` by the `tileSize`.
+- `tileSize` also (naturally) defaults to the `tileSize`.
 
 Potentially:
 - (e.g. in the "houndsmorphosis" effect) each tile has its own size, and its origin is a complex function of address, some of which even result in no tile.

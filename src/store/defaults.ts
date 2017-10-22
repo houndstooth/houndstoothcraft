@@ -97,9 +97,9 @@ const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
 }
 const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 	getStripePositions: DEFAULT_GET_STRIPE_POSITIONS,
+	stripeCount: DEFAULT_STRIPE_COUNT,
 	stripeCountContinuumSettings: DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
-	stripeCountSetting: DEFAULT_STRIPE_COUNT,
 }
 const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 	baseStripeDiagonal: DEFAULT_BASE_STRIPE_DIAGONAL,
@@ -113,7 +113,7 @@ const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
 const DEFAULT_TILE_SETTINGS: TileSettings = {
 	collapseSameColoredShapesWithinTile: DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE,
 	getTileOriginAndSize: DEFAULT_GET_TILE_ORIGIN_AND_SIZE,
-	tileSizeSetting: DEFAULT_TILE_SIZE,
+	tileSize: DEFAULT_TILE_SIZE,
 }
 
 const DEFAULT_VIEW_SETTINGS: ViewSettings = {

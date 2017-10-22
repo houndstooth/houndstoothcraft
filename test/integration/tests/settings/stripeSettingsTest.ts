@@ -44,14 +44,14 @@ describe('.stripeSettings', () => {
 			})
 		})
 
-		describe('.stripeCountSetting', () => {
+		describe('.stripeCount', () => {
 			it('changes the number of stripes in striped tiles', () => {
 				const houndstoothOverrides = {
 					basePattern: {
 						gridSettings: { gridSize: 2 },
 						stripeSettings: {
 							stripePositionSettings: {
-								stripeCountSetting: 5,
+								stripeCount: 5,
 							},
 						},
 					},

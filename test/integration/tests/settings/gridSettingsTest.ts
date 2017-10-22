@@ -137,7 +137,6 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
-			const tileSizeSetting = to.Unit(50)
 			const houndstoothOverrides = {
 				basePattern: {
 					gridSettings: {
@@ -145,7 +144,7 @@ describe('.gridSettings', () => {
 						includeNegativeQuadrants: true,
 					},
 					tileSettings: {
-						tileSizeSetting,
+						tileSize,
 					},
 					viewSettings: {
 						canvasSize: to.Dimension(300),
@@ -161,25 +160,25 @@ describe('.gridSettings', () => {
 					baseId: 0,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: to.Coordinate([ 125, 125 ]),
-					tileSize: tileSizeSetting,
+					tileSize,
 				},
 				{
 					baseId: 8,
 					colors: [ TRANSPARENT, TRANSPARENT ],
 					tileOrigin: to.Coordinate([ 75, 125 ]),
-					tileSize: tileSizeSetting,
+					tileSize,
 				},
 				{
 					baseId: 24,
 					colors: [ BLACK, TRANSPARENT ],
 					tileOrigin: to.Coordinate([ 75, 75 ]),
-					tileSize: tileSizeSetting,
+					tileSize,
 				},
 				{
 					baseId: 16,
 					colors: [ BLACK, BLACK ],
 					tileOrigin: to.Coordinate([ 125, 75 ]),
-					tileSize: tileSizeSetting,
+					tileSize,
 				},
 			]
 			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))

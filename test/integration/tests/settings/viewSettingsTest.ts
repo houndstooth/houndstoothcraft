@@ -129,7 +129,7 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					gridSettings: { gridSize: 2 },
-					tileSettings: { tileSizeSetting: tileSize },
+					tileSettings: { tileSize },
 					viewSettings: { centerViewOnCenterOfTileAtHomeAddress: true },
 				},
 			}
@@ -175,7 +175,7 @@ describe('.viewSettings', () => {
 						gridSize: 2,
 					},
 					tileSettings: {
-						tileSizeSetting: areaSize,
+						tileSize: areaSize,
 					},
 					viewSettings: {
 						canvasSize: to.Dimension(300),

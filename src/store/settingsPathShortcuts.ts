@@ -20,7 +20,7 @@ const endLayer = to.SettingsPath([ 'layerSettings', 'endLayer' ])
 
 const stripePositionSettings = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
 const getStripePositions = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'getStripePositions' ])
-const stripeCount = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCountSetting' ])
+const stripeCount = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCount' ])
 const stripeCountContinuumSettings = to.SettingsPath([
 	'stripeSettings', 'stripePositionSettings', 'stripeCountContinuumSettings',
 ])
@@ -29,7 +29,7 @@ const textureSettings = to.SettingsPath([ 'textureSettings' ])
 const renderTexture = to.SettingsPath([ 'textureSettings', 'renderTexture' ])
 
 const tileSettings = to.SettingsPath([ 'tileSettings' ])
-const tileSize = to.SettingsPath([ 'tileSettings', 'tileSizeSetting' ])
+const tileSize = to.SettingsPath([ 'tileSettings', 'tileSize' ])
 const getTileOriginAndSize = to.SettingsPath([ 'tileSettings', 'getTileOriginAndSize' ])
 const collapseSameColoredShapesWithinTile = to.SettingsPath([ 'tileSettings', 'collapseSameColoredShapesWithinTile' ])
 

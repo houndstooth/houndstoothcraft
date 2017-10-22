@@ -3,7 +3,7 @@ import { GetTileOriginAndSize, Unit } from '../../../components'
 interface TileSettings {
 	collapseSameColoredShapesWithinTile: boolean,
 	getTileOriginAndSize: GetTileOriginAndSize,
-	tileSizeSetting: Unit,
+	tileSize: Unit,
 }
 
 export { TileSettings }

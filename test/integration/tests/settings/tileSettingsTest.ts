@@ -9,12 +9,12 @@ import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.tileSettings', () => {
-	describe('.tileSizeSetting', () => {
+	describe('.tileSize', () => {
 		it('adjusts the size in pixels of each tile', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					tileSettings: {
-						tileSizeSetting: to.Unit(30),
+						tileSize: to.Unit(30),
 					},
 				},
 			}
@@ -57,7 +57,7 @@ describe('.tileSettings', () => {
 				const houndstoothOverrides = {
 					basePattern: {
 						tileSettings: {
-							tileSizeSetting: to.Unit(30),
+							tileSize: to.Unit(30),
 						},
 						viewSettings: {
 							zoom: 3,

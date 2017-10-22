@@ -8,7 +8,7 @@ describe('per stripe', () => {
 	it('uses a stripe count if provided', () => {
 		state.mainHoundstooth.basePattern.stripeSettings = {
 			stripePositionSettings: {
-				stripeCountSetting: 3,
+				stripeCount: 3,
 			},
 		}
 		const stripePositions = perStripe({ getStripePosition: () => to.StripePosition(5) })

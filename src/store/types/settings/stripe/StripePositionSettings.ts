@@ -3,9 +3,9 @@ import { StripeCountContinuumSettings } from './stripePosition'
 
 interface StripePositionSettings {
 	getStripePositions: GetStripePositions,
+	stripeCount: number,
 	stripeCountContinuumSettings: Partial<StripeCountContinuumSettings>,
 	stripeCountMode: StripeCountMode,
-	stripeCountSetting: number,
 }
 
 export { StripePositionSettings }

@@ -8,7 +8,7 @@ import { tile } from './tile'
 const NEGATIVE_AND_POSITIVE = 2
 
 const grid: NullarySideEffector = () => {
-	const { includeNegativeQuadrants, gridSize = 0 }: GridSettings = getFromBaseOrDefaultPattern('grid')
+	const { includeNegativeQuadrants, gridSize }: GridSettings = getFromBaseOrDefaultPattern('grid')
 
 	applyOpacity()
 	applyBackgroundColor()

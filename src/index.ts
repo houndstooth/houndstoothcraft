@@ -16,7 +16,7 @@ import {
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { Context, Dimension } from './page'
-import { Color, solid, RenderTexture } from './render'
+import { Color, RenderTexture, solid } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinateAboutPoint } from './space'
 import { state } from './state'
 import { defaults, Effect, getFromBaseOrDefaultPattern, paths, StripeCountContinuumSettings } from './store'

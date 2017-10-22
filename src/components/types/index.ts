@@ -2,6 +2,7 @@ import { Address } from './Address'
 import { AssignmentMode } from './AssignmentMode'
 import { BaseStripeDiagonal } from './BaseStripeDiagonal'
 import { GetStripePosition } from './GetStripePosition'
+import { GetTileOriginAndSize } from './GetTileOriginAndSize'
 import { StripeCountMode } from './StripeCountMode'
 import { StripePosition } from './StripePosition'
 import { Supertile } from './Supertile'
@@ -12,6 +13,7 @@ import { Weave } from './Weave'
 
 export {
 	Address,
+	GetTileOriginAndSize,
 	StripePosition,
 	TileColorIndices,
 	TileOriginAndSize,

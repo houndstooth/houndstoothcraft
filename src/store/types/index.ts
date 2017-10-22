@@ -1,5 +1,6 @@
 import { BasePattern } from './BasePattern'
 import { Effect } from './Effect'
+import { GetFromBaseOrDefaultPattern } from './GetFromBaseOrDefaultPattern'
 import { Houndstooth } from './Houndstooth'
 import { Pattern } from './Pattern'
 import { Setting } from './Setting'
@@ -17,7 +18,6 @@ import {
 	ViewSettings,
 } from './settings'
 import { SettingsPath } from './SettingsPath'
-import { SettingsPathShortcut } from './SettingsPathShortcut'
 import { SettingsStep } from './SettingsStep'
 import { State } from './State'
 
@@ -41,5 +41,5 @@ export {
 	StripeSettings,
 	SettingsPath,
 	SettingsStep,
-	SettingsPathShortcut,
+	GetFromBaseOrDefaultPattern,
 }

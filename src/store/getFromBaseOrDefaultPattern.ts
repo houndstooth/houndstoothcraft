@@ -3,10 +3,10 @@ import { isDefined } from '../utilities/codeUtilities'
 import { DEFAULT_BASE_PATTERN } from './defaults'
 import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import * as settingsPaths from './settingsPaths'
-import { Setting, SettingsPath, SettingsPathShortcut } from './types'
+import { GetFromBaseOrDefaultPattern, SettingsPath } from './types'
 
-const getFromBaseOrDefaultPattern: (settingsPathShortcut: SettingsPathShortcut) => Setting = settingsPathShortcut => {
-	const settingsPath: SettingsPath = settingsPaths[settingsPathShortcut]
+const getFromBaseOrDefaultPattern: GetFromBaseOrDefaultPattern = settingsPathShortcut => {
+	const settingsPath: SettingsPath = settingsPaths[ settingsPathShortcut ]
 
 	let childSetting = state.mainHoundstooth.basePattern
 

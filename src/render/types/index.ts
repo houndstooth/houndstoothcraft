@@ -1,8 +1,8 @@
 import { Color } from './Color'
-import { Solid } from './Solid'
-import { Texture } from './Texture'
 import { RenderTexture } from './RenderTexture'
 import { ShapeParams } from './ShapeParams'
+import { Solid } from './Solid'
+import { Texture } from './Texture'
 
 export {
 	ShapeParams,

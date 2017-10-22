@@ -2,7 +2,7 @@ import { getColor } from './getColor'
 import { parseColor } from './parseColor'
 import { shape } from './shape'
 import { solid } from './solid'
-import { Color, ShapeParams, RenderTexture } from './types'
+import { Color, RenderTexture, ShapeParams } from './types'
 
 export {
 	getColor,

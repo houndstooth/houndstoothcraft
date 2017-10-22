@@ -1,7 +1,7 @@
 import { Context } from '../../page'
 import { Outline } from '../../space'
 
-type SolidParams = {
+interface SolidParams {
 	context: Context,
 	outline: Outline,
 	shapeColorIndex: number,

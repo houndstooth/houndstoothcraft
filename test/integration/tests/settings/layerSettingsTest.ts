@@ -25,7 +25,7 @@ describe('.layerSettings', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const BLENDED_COLOR = { r: 192, g: 255, b: 63, a: 1 }
+		const BLENDED_COLOR = to.Color({ r: 192, g: 255, b: 63, a: 1 })
 		const pixelInCellThatDemonstratesBlending = to.Coordinate([ 75, 25 ])
 		const passed = pixelIsColorWithMarker({
 			coordinateUnderTest: pixelInCellThatDemonstratesBlending,

@@ -4,13 +4,13 @@ import * as to from '../../../../src/utilities/to'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {
-		const colorSet = [
+		const colorSet = to.ColorSet([
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 2, g: 100, b: 50, a: 0.5 },
 			{ r: 3, g: 100, b: 50, a: 0.5 },
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 5, g: 100, b: 50, a: 0.5 },
-		]
+		])
 		state.mainHoundstooth.basePattern.colorSettings = { colorSet }
 	})
 

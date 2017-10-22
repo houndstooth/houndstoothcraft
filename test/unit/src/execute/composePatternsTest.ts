@@ -1,6 +1,7 @@
 import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
 import { composePatterns } from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
+import * as to from '../../../../src/utilities/to'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
@@ -45,12 +46,12 @@ describe('compose patterns', () => {
 	it('recognizes color objects', () => {
 		const patternToBeMergedOnto = {
 			colorSettings: {
-				backgroundColor: { r: 100, g: 200, b: 0, a: 1 },
+				backgroundColor: to.Color({ r: 100, g: 200, b: 0, a: 1 }),
 			},
 		}
 		const patternToMerge = {
 			colorSettings: {
-				backgroundColor: { r: 3, g: 3, b: 3, a: 1 },
+				backgroundColor: to.Color({ r: 3, g: 3, b: 3, a: 1 }),
 			},
 		}
 
@@ -58,7 +59,7 @@ describe('compose patterns', () => {
 
 		const expectedPattern = {
 			colorSettings: {
-				backgroundColor: { r: 3, g: 3, b: 3, a: 1 },
+				backgroundColor: to.Color({ r: 3, g: 3, b: 3, a: 1 }),
 			},
 		}
 		expect(expectedPattern).toEqual(patternToBeMergedOnto)
@@ -69,12 +70,12 @@ describe('compose patterns', () => {
 
 		const patternToBeMergedOnto = {
 			colorSettings: {
-				backgroundColor: { r: 100, g: 200, b: 0, a: 1 },
+				backgroundColor: to.Color({ r: 100, g: 200, b: 0, a: 1 }),
 			},
 		}
 		const patternToMerge = {
 			colorSettings: {
-				backgroundColor: { r: 3, g: 3, b: 3, a: 1 },
+				backgroundColor: to.Color({ r: 3, g: 3, b: 3, a: 1 }),
 			},
 		}
 

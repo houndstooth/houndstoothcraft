@@ -7,6 +7,7 @@ import { Dimension } from '../page'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath, SettingsStep } from '../store'
 import { Color } from '../render'
+import { ColorRange } from '../render/types/ColorRange'
 
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any
@@ -19,6 +20,8 @@ const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => set
 
 const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as any
 const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as any
+
+const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a }) => Color = color => color as any
 
 const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as any
 
@@ -42,6 +45,7 @@ const SettingsPath: (settingsPath: Array<string | SettingsStep>) => SettingsPath
 
 export {
 	Address,
+	Color,
 	ColorSet,
 	Coordinate,
 	Dimension,

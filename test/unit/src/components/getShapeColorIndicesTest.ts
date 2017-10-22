@@ -73,7 +73,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			let actualSupertileEntry = getShapeColorIndices({ gridAddress: gridAddressForSubject })
+			const actualSupertileEntry = getShapeColorIndices({ gridAddress: gridAddressForSubject })
 			expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 		})
 	})

@@ -1,5 +1,5 @@
-import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import * as getShapeColorIndices from '../../../../src/components/getShapeColorIndices'
+import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import { tile } from '../../../../src/components/tile'

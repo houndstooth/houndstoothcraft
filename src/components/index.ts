@@ -7,19 +7,19 @@ import {
 	Address,
 	AssignmentMode,
 	BaseStripeDiagonal,
+	ColorSet,
 	GetStripePosition,
 	GetStripePositions,
 	GetTileOriginAndSize,
 	OffsetAddress,
+	ShapeColorIndex,
 	StripeCountMode,
 	StripePosition,
 	Supertile,
-	ShapeColorIndex,
 	TileOriginAndSize,
 	TransformShapeColorIndices,
 	Unit,
 	Weave,
-	ColorSet,
 } from './types'
 
 export {

@@ -1,3 +1,5 @@
+// tslint:disable no-magic-numbers max-file-line-count
+
 type ColorRange =
 	| 0
 	| 1

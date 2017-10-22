@@ -1,6 +1,6 @@
+import { ColorSet } from '../../../components'
 import { Color } from '../../../render'
 import { ColorAssignmentSettings } from './color'
-import { ColorSet } from '../../../components'
 
 interface ColorSettings {
 	backgroundColor: Color,

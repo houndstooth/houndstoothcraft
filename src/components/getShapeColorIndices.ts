@@ -1,9 +1,9 @@
 import { X_INDEX, Y_INDEX } from '../constants'
 import { ColorAssignmentSettings, getFromBaseOrDefaultPattern } from '../store'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
-import * as to from '../utilities/to'
 import * as from from '../utilities/from'
-import { Address, AssignmentMode, Supertile, ShapeColorIndex, Weave } from './types'
+import * as to from '../utilities/to'
+import { Address, AssignmentMode, ShapeColorIndex, Supertile, Weave } from './types'
 
 const getShapeColorIndices: (_: { gridAddress: Address[] }) => ShapeColorIndex[] = ({ gridAddress }) => {
 	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')

@@ -35,8 +35,8 @@ describe('shape', () => {
 			shape({
 				getOutline: getOutlineSpy,
 				outlineOptions,
-				stripeIndex,
 				shapeColorIndices,
+				stripeIndex,
 				tileOrigin,
 				tileSize,
 			})
@@ -55,8 +55,8 @@ describe('shape', () => {
 			shape({
 				getOutline: getOutlineSpy,
 				outlineOptions,
-				stripeIndex,
 				shapeColorIndices,
+				stripeIndex,
 				tileOrigin,
 				tileSize,
 			})
@@ -72,8 +72,8 @@ describe('shape', () => {
 			shape({
 				getOutline: getOutlineSpy,
 				outlineOptions,
-				stripeIndex,
 				shapeColorIndices,
+				stripeIndex,
 				tileOrigin,
 				tileSize,
 			})
@@ -86,8 +86,8 @@ describe('shape', () => {
 			shape({
 				getOutline: getOutlineSpy,
 				outlineOptions,
-				stripeIndex,
 				shapeColorIndices,
+				stripeIndex,
 				tileOrigin,
 				tileSize,
 			})
@@ -108,8 +108,8 @@ describe('shape', () => {
 				shape({
 					getOutline: getOutlineSpy,
 					outlineOptions,
-					stripeIndex,
 					shapeColorIndices,
+					stripeIndex,
 					tileOrigin,
 					tileSize,
 				})
@@ -118,8 +118,8 @@ describe('shape', () => {
 					context,
 					outline,
 					renderTexture,
-					shapeColorIndex,
 					shapeColorCount: 0,
+					shapeColorIndex,
 					tileOrigin,
 					tileSize,
 				})
@@ -131,8 +131,8 @@ describe('shape', () => {
 				shape({
 					getOutline: getOutlineSpy,
 					outlineOptions,
-					stripeIndex,
 					shapeColorIndices,
+					stripeIndex,
 					tileOrigin,
 					tileSize,
 				})

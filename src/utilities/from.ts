@@ -1,7 +1,7 @@
 // tslint:disable:variable-name
 
 import { Frame } from '../animation'
-import { Address, StripePosition, ShapeColorIndex, Unit } from '../components'
+import { Address, ShapeColorIndex, StripePosition, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
 import { Coordinate, Radian } from '../space'
@@ -19,8 +19,8 @@ const SettingsStep: (settingStep: SettingsStep) => string = settingsStep => sett
 const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
 const Address: {
 	(address: Address): number
-	(address: Address[]): number[]
-} = address => address as any
+	(address: Address[]): number[],
+} = address => address
 const SettingsPath: (settingPath: SettingsPath) => string[] = settingsPath => settingsPath as any
 
 export {

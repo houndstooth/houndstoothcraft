@@ -4,8 +4,8 @@ import { GetOutline, OutlineOptions } from '../../space'
 interface ShapeParams extends TileOriginAndSize {
 	getOutline: GetOutline,
 	outlineOptions?: OutlineOptions,
-	stripeIndex?: number,
 	shapeColorIndices: ShapeColorIndex[],
+	stripeIndex?: number,
 }
 
 export { ShapeParams }

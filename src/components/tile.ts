@@ -2,11 +2,11 @@ import { PERIMETER_SCALAR } from '../constants'
 import { shape, ShapeParams } from '../render'
 import { Coordinate, squareOutline, stripeOutline } from '../space'
 import { getFromBaseOrDefaultPattern, TileSettings } from '../store'
-import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getShapeColorIndices } from './getShapeColorIndices'
+import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
-import { Address, StripePosition, ShapeColorIndex, Unit } from './types'
+import { Address, ShapeColorIndex, StripePosition, Unit } from './types'
 
 interface TileParams {
 	gridAddress: Address[],

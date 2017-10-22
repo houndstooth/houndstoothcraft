@@ -1,7 +1,7 @@
 import * as draw from '../../../../src/render/draw'
-import * as to from '../../../../src/utilities/to'
 import * as getColor from '../../../../src/render/getColor'
 import { solid } from '../../../../src/render/solid'
+import * as to from '../../../../src/utilities/to'
 
 describe('solid', () => {
 	const shapeColorIndex = to.ShapeColorIndex(8)

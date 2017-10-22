@@ -1,14 +1,12 @@
 import { clear } from '../../../../src/canvas/clear'
 import { state } from '../../../../src/state'
-import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
+import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 
 describe('clear', () => {
 	let mixedDownClearRectSpy
 	beforeEach(() => {
-		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
-		viewSettings.canvasSize = to.Dimension(450)
+		setSetting('canvasSize', to.Dimension(450))
 
 		mixedDownClearRectSpy = jasmine.createSpy('mixedDownClearRect')
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }

@@ -7,9 +7,11 @@ const startAnimationFrame = to.SettingsPath([ 'animationSettings', 'startAnimati
 const color = to.SettingsPath([ 'colorSettings' ])
 const colorSet = to.SettingsPath([ 'colorSettings', 'colorSet' ])
 const colorAssignment = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+const flipGrain = to.SettingsPath([ 'colorSettings', 'colorAssignment', 'flipGrain' ])
 
 const grid = to.SettingsPath([ 'gridSettings' ])
 const gridSize = to.SettingsPath([ 'gridSettings', 'gridSize' ])
+const includeNegativeQuadrants = to.SettingsPath([ 'gridSettings', 'includeNegativeQuadrants' ])
 
 const layer = to.SettingsPath([ 'layerSettings' ])
 const endLayer = to.SettingsPath([ 'layerSettings', 'endLayer' ])
@@ -20,12 +22,18 @@ const renderTexture = to.SettingsPath([ 'textureSettings', 'renderTexture' ])
 const tile = to.SettingsPath([ 'tileSettings' ])
 const tileSize = to.SettingsPath([ 'tileSettings', 'tileSizeSetting' ])
 const getTileOriginAndSize = to.SettingsPath([ 'tileSettings', 'getTileOriginAndSize' ])
+const collapseSameColoredShapesWithinTile = to.SettingsPath([ 'tileSettings', 'collapseSameColoredShapesWithinTile' ])
 
 const view = to.SettingsPath([ 'viewSettings' ])
 const canvasSize = to.SettingsPath([ 'viewSettings', 'canvasSize' ])
 const rotateViewAboutCanvasCenter = to.SettingsPath([ 'viewSettings', 'rotateViewAboutCanvasCenter' ])
+const centerViewOnCenterOfTileAtHomeAddress = to.SettingsPath([
+	'viewSettings', 'centerViewOnCenterOfTileAtHomeAddress',
+])
+const zoomOnCanvasCenter = to.SettingsPath([ 'viewSettings', 'zoomOnCanvasCenter' ])
 
 const stripePosition = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
+const getStripePositions = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'getStripePositions' ])
 const stripeCount = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCountSetting' ])
 const stripeCountContinuum = to.SettingsPath([
 	'stripeSettings', 'stripePositionSettings', 'stripeCountContinuumSettings',
@@ -33,14 +41,19 @@ const stripeCountContinuum = to.SettingsPath([
 
 export {
 	animation,
+	centerViewOnCenterOfTileAtHomeAddress,
 	colorAssignment,
 	canvasSize,
+	collapseSameColoredShapesWithinTile,
 	color,
 	colorSet,
 	endLayer,
+	flipGrain,
+	getStripePositions,
 	getTileOriginAndSize,
 	grid,
 	gridSize,
+	includeNegativeQuadrants,
 	layer,
 	refreshCanvas,
 	renderTexture,
@@ -53,4 +66,5 @@ export {
 	tile,
 	tileSize,
 	view,
+	zoomOnCanvasCenter,
 }

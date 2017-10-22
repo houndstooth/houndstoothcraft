@@ -1,8 +1,7 @@
 import * as animation from '../../../../src/animation'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { state } from '../../../../src/state'
-import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { AnimationSettings } from '../../../../src/store/types/settings/AnimationSettings'
+import { setSetting } from '../../../../src/store/setSetting'
 import { noop } from '../../../helpers/noop'
 
 describe('execute animation', () => {
@@ -78,8 +77,7 @@ describe('execute animation', () => {
 	})
 
 	it('defaults refreshing the canvas to true', () => {
-		const animationSettings: Partial<AnimationSettings> = getFromBaseOrDefaultPattern('animation')
-		animationSettings.refreshCanvas = undefined
+		setSetting('refreshCanvas', undefined)
 
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
@@ -91,8 +89,7 @@ describe('execute animation', () => {
 	})
 
 	it('defaults the start animation frame to zero', () => {
-		const animationSettings: Partial<AnimationSettings> = getFromBaseOrDefaultPattern('animation')
-		animationSettings.startAnimationFrame = undefined
+		setSetting('startAnimationFrame', undefined)
 
 		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 

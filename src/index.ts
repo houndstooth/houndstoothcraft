@@ -3,6 +3,7 @@ import {
 	Address,
 	AssignmentMode,
 	GetStripePosition,
+	GetStripePositions,
 	perStripe,
 	StripeCountMode,
 	StripePosition,
@@ -58,4 +59,5 @@ export {
 	getFromBaseOrDefaultPattern,
 	StripeCountContinuumSettings,
 	RenderTexture,
+	GetStripePositions,
 }

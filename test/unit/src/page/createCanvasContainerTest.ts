@@ -1,7 +1,6 @@
 import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
 import * as scaleElement from '../../../../src/page/scaleElement'
-import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
+import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockBody } from '../../helpers/buildMockBody'
@@ -13,8 +12,7 @@ describe('create canvas container', () => {
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {
-		const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
-		viewSettings.canvasSize = canvasSize
+		setSetting('canvasSize', canvasSize)
 		mockBodyChildren = []
 
 		spyOn(scaleElement, 'scaleElement')

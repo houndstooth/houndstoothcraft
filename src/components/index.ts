@@ -8,6 +8,7 @@ import {
 	AssignmentMode,
 	BaseStripeDiagonal,
 	GetStripePosition,
+	GetStripePositions,
 	GetTileOriginAndSize,
 	StripeCountMode,
 	StripePosition,
@@ -36,4 +37,5 @@ export {
 	BaseStripeDiagonal,
 	standardStripePositions,
 	getStandardTileOriginAndSize,
+	GetStripePositions,
 }

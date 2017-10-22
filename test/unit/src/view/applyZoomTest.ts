@@ -1,6 +1,5 @@
 import { state } from '../../../../src/state'
-import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
+import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import { applyZoom } from '../../../../src/view/applyZoom'
 
@@ -29,8 +28,7 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
-			viewSettings.zoomOnCanvasCenter = true
+			setSetting('zoomOnCanvasCenter', true)
 		})
 
 		it('works', () => {
@@ -44,8 +42,7 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				const viewSettings: ViewSettings = getFromBaseOrDefaultPattern('view')
-				viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
+				setSetting('centerViewOnCenterOfTileAtHomeAddress', true)
 			})
 		})
 

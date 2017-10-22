@@ -2,13 +2,21 @@ type ColorsPathShortcut =
 	| 'colorSet'
 
 type BooleanPathShortcut =
+	| 'centerViewOnCenterOfTileAtHomeAddress'
+	| 'collapseSameColoredShapesWithinTile'
+	| 'flipGrain'
+	| 'includeNegativeQuadrants'
 	| 'refreshCanvas'
+	| 'zoomOnCanvasCenter'
 
 type DimensionPathShortcut =
 	| 'canvasSize'
 
 type FramePathShortcut =
 	| 'startAnimationFrame'
+
+type GetStripePositionsPathShortcut =
+	| 'getStripePositions'
 
 type GetTileOriginAndSizePathShortcut =
 	| 'getTileOriginAndSize'
@@ -40,12 +48,37 @@ type TextureSettingsPathShortcut = 'texture'
 type TileSettingsPathShortcut = 'tile'
 type ViewSettingsPathShortcut = 'view'
 
+type SettingsPathShortcuts =
+	| ColorsPathShortcut
+	| BooleanPathShortcut
+	| DimensionPathShortcut
+	| FramePathShortcut
+	| GetStripePositionsPathShortcut
+	| GetTileOriginAndSizePathShortcut
+	| LayerPathShortcut
+	| NumberPathShortcut
+	| RadianPathShortcut
+	| RenderTexturePathShortcut
+	| UnitPathShortcut
+	| AnimationSettingsPathShortcut
+	| ColorSettingsPathShortcut
+	| ColorAssignmentPathShortcut
+	| GridSettingsPathShortcut
+	| LayerSettingsPathShortcut
+	| StripeCountContinuumSettingsPathShortcut
+	| StripePositionSettingsPathShortcut
+	| TextureSettingsPathShortcut
+	| TileSettingsPathShortcut
+	| ViewSettingsPathShortcut
+
 export {
+	SettingsPathShortcuts,
 	GetTileOriginAndSizePathShortcut,
 	ColorsPathShortcut,
 	BooleanPathShortcut,
 	DimensionPathShortcut,
 	FramePathShortcut,
+	GetStripePositionsPathShortcut,
 	LayerPathShortcut,
 	NumberPathShortcut,
 	RadianPathShortcut,

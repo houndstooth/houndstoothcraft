@@ -2,6 +2,7 @@ import { Address } from './Address'
 import { AssignmentMode } from './AssignmentMode'
 import { BaseStripeDiagonal } from './BaseStripeDiagonal'
 import { GetStripePosition } from './GetStripePosition'
+import { GetStripePositions } from './GetStripePositions'
 import { GetTileOriginAndSize } from './GetTileOriginAndSize'
 import { StripeCountMode } from './StripeCountMode'
 import { StripePosition } from './StripePosition'
@@ -24,4 +25,5 @@ export {
 	AssignmentMode,
 	StripeCountMode,
 	BaseStripeDiagonal,
+	GetStripePositions,
 }

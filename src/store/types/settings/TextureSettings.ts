@@ -1,5 +1,7 @@
+import { RenderTexture } from '../../../render'
+
 interface TextureSettings {
-	renderTexture?(p?: any): void,
+	renderTexture?: RenderTexture,
 }
 
 export { TextureSettings }

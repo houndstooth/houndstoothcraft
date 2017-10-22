@@ -1,16 +1,14 @@
 import { buildPath } from './buildPath'
 import { clipPath } from './clipPath'
 import { resetClip } from './resetClip'
-import { RenderFunction } from './types'
+import { Texture } from './types'
 
-const texture: RenderFunction = textureArgs => {
+const texture: Texture = textureArgs => {
 	const { context, outline, renderTexture } = textureArgs
 
 	buildPath({ context, outline })
 	clipPath({ context })
-	if (renderTexture) {
-		renderTexture(textureArgs)
-	}
+	renderTexture(textureArgs)
 	resetClip({ context })
 }
 

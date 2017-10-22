@@ -142,8 +142,6 @@ describe('shape', () => {
 						context,
 						outline,
 						shapeColorIndex,
-						tileOrigin,
-						tileSize,
 					}),
 				)
 			})

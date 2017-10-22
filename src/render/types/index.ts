@@ -1,9 +1,13 @@
 import { Color } from './Color'
-import { RenderFunction } from './RenderFunction'
+import { Solid } from './Solid'
+import { Texture } from './Texture'
+import { RenderTexture } from './RenderTexture'
 import { ShapeParams } from './ShapeParams'
 
 export {
 	ShapeParams,
-	RenderFunction,
+	Solid,
+	Texture,
+	RenderTexture,
 	Color,
 }

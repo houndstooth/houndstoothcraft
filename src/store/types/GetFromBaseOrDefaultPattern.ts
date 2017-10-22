@@ -62,7 +62,6 @@ interface GetFromBaseOrDefaultPattern {
 	(settingsPathShortcut: TextureSettingsPathShortcut): TextureSettings
 	(settingsPathShortcut: TileSettingsPathShortcut): TileSettings
 	(settingsPathShortcut: ViewSettingsPathShortcut): ViewSettings
-	(settingsPathShortcut): any
 }
 
 export { GetFromBaseOrDefaultPattern }

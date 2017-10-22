@@ -1,9 +1,9 @@
-import { AllSettingsPathShortcuts } from './AllSettingsPathShortcuts'
 import { BasePattern } from './BasePattern'
 import { Effect } from './Effect'
 import { GetFromBaseOrDefaultPattern } from './GetFromBaseOrDefaultPattern'
 import { Houndstooth } from './Houndstooth'
 import { Pattern } from './Pattern'
+import { SetSetting } from './SetSetting'
 import {
 	AnimationSettings,
 	ColorAssignment,
@@ -41,5 +41,5 @@ export {
 	SettingsPath,
 	SettingsStep,
 	GetFromBaseOrDefaultPattern,
-	AllSettingsPathShortcuts,
+	SetSetting,
 }

@@ -1,7 +1,7 @@
 import { getCurrentContext } from '../canvas'
 import { parseColor } from '../render'
 import { ColorSettings, getSetting, ViewSettings } from '../store'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
 const applyBackgroundColor: NullarySideEffector = () => {
 	const { backgroundColor }: ColorSettings = getSetting('color')

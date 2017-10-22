@@ -1,6 +1,6 @@
 import { draw } from '../../../../src/render/draw'
 import * as fill from '../../../../src/render/fill'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import * as view from '../../../../src/view'
 
 describe('draw', () => {

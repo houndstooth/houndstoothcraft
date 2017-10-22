@@ -1,5 +1,5 @@
 import { squareOutline } from '../../../../src/space/squareOutline'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 
 describe('square outline', () => {
 	const tileOrigin = to.Coordinate([ 2, 3 ])

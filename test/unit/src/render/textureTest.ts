@@ -3,7 +3,7 @@ import * as clipPath from '../../../../src/render/clipPath'
 import * as resetClip from '../../../../src/render/resetClip'
 import { texture } from '../../../../src/render/texture'
 import { Outline } from '../../../../src/space/types/Outline'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import { MockContext } from '../../../types/MockContext'
 
 interface ContextOrRenderTextureCall {

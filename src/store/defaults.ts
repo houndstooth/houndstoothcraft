@@ -10,7 +10,7 @@ import {
 } from '../components'
 import { BLACK, TRANSPARENT } from '../constants'
 import { Color } from '../render'
-import * as to from '../to'
+import * as to from '../utilities/to'
 import {
 	AnimationSettings,
 	BasePattern,

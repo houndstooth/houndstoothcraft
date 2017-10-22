@@ -1,7 +1,7 @@
 import { createContexts, createMixedDownCanvas } from '../page'
 import { state } from '../state'
 import { Effect } from '../store'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { composeMainHoundstooth } from './composeMainHoundstooth'
 import { executeAnimation } from './executeAnimation'
 import { executeGrid } from './executeGrid'

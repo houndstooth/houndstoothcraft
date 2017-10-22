@@ -1,9 +1,9 @@
 import { clear } from '../canvas'
 import { callFunctionsPerSetting, executeGrid, SettingsFunctionObject } from '../execute'
-import * as from from '../from'
 import { state } from '../state'
-import * as to from '../to'
 import { deepClone } from '../utilities/codeUtilities'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 import { exportFrame } from './exportFrame'
 import { Frame } from './types'
 

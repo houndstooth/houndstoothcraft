@@ -1,7 +1,7 @@
 import { getSetting, GridSettings } from '../store'
-import * as to from '../to'
 import { iterator } from '../utilities/codeUtilities'
-import { NullarySideEffector } from '../utilities/types'
+import * as to from '../utilities/to'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { applyBackgroundColor, applyOpacity } from '../view'
 import { tile } from './tile'
 

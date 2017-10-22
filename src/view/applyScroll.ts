@@ -1,10 +1,10 @@
 import { Unit } from '../components'
 import { HALF } from '../constants'
-import * as from from '../from'
 import { Dimension } from '../page'
 import { Coordinate, Outline } from '../space'
 import { getSetting, ViewSettings } from '../store'
-import * as to from '../to'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 
 const applyScroll: (outline: Outline) => Outline = outline => {
 	const { centerViewOnCenterOfTileAtHomeAddress }: ViewSettings = getSetting('view')

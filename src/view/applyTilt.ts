@@ -1,9 +1,9 @@
 import { HALF } from '../constants'
-import * as from from '../from'
 import { Dimension } from '../page'
 import { Outline, Radian, rotateCoordinateAboutPoint } from '../space'
 import { getSetting } from '../store'
-import * as to from '../to'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 
 const applyTilt: (outline: Outline) => Outline = outline => {
 	const canvasSize: Dimension = getSetting('canvasSize')

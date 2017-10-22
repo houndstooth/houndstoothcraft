@@ -1,6 +1,6 @@
 import { grid } from '../components'
 import { state } from '../state'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { console } from '../utilities/windowWrapper'
 
 const gridAndMaybeLogging: NullarySideEffector = () => {

@@ -2,7 +2,7 @@ import { clear } from '../../../../src/canvas/clear'
 import { state } from '../../../../src/state'
 import { getSetting } from '../../../../src/store/getSetting'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 
 describe('clear', () => {
 	let mixedDownClearRectSpy

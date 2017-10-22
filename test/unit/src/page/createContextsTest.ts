@@ -3,7 +3,7 @@ import { createContexts } from '../../../../src/page/createContexts'
 import { state } from '../../../../src/state'
 import { getSetting } from '../../../../src/store/getSetting'
 import { LayerSettings } from '../../../../src/store/types/settings/LayerSettings'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 

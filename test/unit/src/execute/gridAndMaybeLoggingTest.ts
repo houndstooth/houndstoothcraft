@@ -1,7 +1,7 @@
 import * as components from '../../../../src/components'
 import { gridAndMaybeLogging } from '../../../../src/execute/gridAndMaybeLogging'
 import { state } from '../../../../src/state'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('grid and maybe logging', () => {

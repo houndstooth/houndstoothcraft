@@ -1,4 +1,4 @@
-import * as to from '../to'
+import * as to from '../utilities/to'
 
 const animation = to.SettingsPath([ 'animationSettings' ])
 const refreshCanvas = to.SettingsPath([ 'animationSettings', 'refreshCanvas' ])

@@ -1,6 +1,6 @@
-import * as from from '../from'
 import { getSetting } from '../store'
-import * as to from '../to'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 import { Address, TileOriginAndSize, Unit } from './types'
 
 const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize = ({ gridAddress }) => {

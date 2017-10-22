@@ -1,11 +1,11 @@
 // tslint:disable:variable-name
 
-import { Frame } from './animation'
-import { Address, StripePosition, Supertile, TileColorIndices, Unit } from './components'
-import { Layer } from './execute'
-import { Dimension } from './page'
-import { Coordinate, Outline, Radian } from './space'
-import { SettingsPath, SettingsStep } from './store'
+import { Frame } from '../animation'
+import { Address, StripePosition, Supertile, TileColorIndices, Unit } from '../components'
+import { Layer } from '../execute'
+import { Dimension } from '../page'
+import { Coordinate, Outline, Radian } from '../space'
+import { SettingsPath, SettingsStep } from '../store'
 
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any

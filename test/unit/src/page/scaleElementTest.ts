@@ -1,5 +1,5 @@
 import { scaleElement } from '../../../../src/page/scaleElement'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('set element dimensions', () => {

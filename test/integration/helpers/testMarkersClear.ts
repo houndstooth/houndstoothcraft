@@ -2,7 +2,7 @@ import { Canvas } from '../../../src/page/types/Canvas'
 import { Dimension } from '../../../src/page/types/Dimension'
 import { getSetting } from '../../../src/store/getSetting'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
-import { NullarySideEffector } from '../../../src/utilities/types'
+import { NullarySideEffector } from '../../../src/utilities/types/NullarySideEffector'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
 const testMarkersClear: NullarySideEffector = () => {

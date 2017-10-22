@@ -1,7 +1,7 @@
 import * as saveBlob from '../../../../src/animation/saveBlob'
 import { saveFrame } from '../../../../src/animation/saveFrame'
 import { state } from '../../../../src/state'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 
 describe('save frame', () => {
 	const result = {}

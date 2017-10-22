@@ -1,5 +1,5 @@
 import { state } from '../state'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { saveFrame } from './saveFrame'
 
 const exportFrame: NullarySideEffector =

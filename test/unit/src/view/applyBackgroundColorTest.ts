@@ -2,7 +2,7 @@ import { CYAN } from '../../../../src/constants'
 import { state } from '../../../../src/state'
 import { getSetting } from '../../../../src/store/getSetting'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import { applyBackgroundColor } from '../../../../src/view/applyBackgroundColor'
 
 describe('apply background color', () => {

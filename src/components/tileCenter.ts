@@ -1,7 +1,7 @@
 import { HALF, X_INDEX, Y_INDEX } from '../constants'
-import * as from from '../from'
 import { Coordinate } from '../space'
-import * as to from '../to'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 import { TileOriginAndSize } from './types'
 
 const tileCenter: (_: TileOriginAndSize) => Coordinate = ({ tileOrigin, tileSize }) => {

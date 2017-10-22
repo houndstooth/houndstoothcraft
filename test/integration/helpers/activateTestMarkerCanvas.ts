@@ -5,7 +5,7 @@ import { PageElement } from '../../../src/page/types/PageElement'
 import { state } from '../../../src/state'
 import { defaults } from '../../../src/store'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
-import { NullarySideEffector } from '../../../src/utilities/types'
+import { NullarySideEffector } from '../../../src/utilities/types/NullarySideEffector'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 import { testMarkersClear } from './testMarkersClear'
 

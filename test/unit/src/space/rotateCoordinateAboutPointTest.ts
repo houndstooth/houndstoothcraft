@@ -1,5 +1,5 @@
 import { rotateCoordinateAboutPoint } from '../../../../src/space/rotateCoordinateAboutPoint'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 
 describe('rotate coordinate about point', () => {
 	it('rotates a coordinate about a point', () => {

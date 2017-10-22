@@ -1,5 +1,5 @@
-import * as from from '../from'
-import * as to from '../to'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 import { Coordinate, Radian } from './types'
 
 const rotateCoordinateAboutPoint: (_: {

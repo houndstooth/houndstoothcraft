@@ -1,5 +1,5 @@
 import { stripeOutline } from '../../../../src/space/stripeOutline'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 
 describe('stripe outline', () => {
 	const tileOrigin = to.Coordinate([ 0, 0 ])

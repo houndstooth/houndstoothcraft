@@ -1,5 +1,5 @@
-import * as from from '../../from'
-import * as to from '../../to'
+import * as from from '../../utilities/from'
+import * as to from '../../utilities/to'
 import { Point } from '../types'
 
 const pointAlongTopEdge: Point = ({ originAndSize: { x, y, size }, stripePosition }) => {

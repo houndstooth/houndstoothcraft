@@ -2,7 +2,7 @@ import { clear } from '../canvas'
 import { createWarningsContainer } from '../page'
 import { state } from '../state'
 import { resetState } from '../store'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { document, window } from '../utilities/windowWrapper'
 
 const resetInterface: NullarySideEffector = () => {

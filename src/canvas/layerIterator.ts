@@ -1,8 +1,8 @@
 import { Layer } from '../execute'
-import * as from from '../from'
 import { getSetting } from '../store'
-import * as to from '../to'
 import { iterator } from '../utilities/codeUtilities'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 
 const layerIterator: () => Layer[] = () => {
 	const endLayer: Layer = getSetting('endLayer')

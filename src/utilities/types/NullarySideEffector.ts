@@ -1,5 +1,3 @@
 type NullarySideEffector = () => void
 
-export {
-	NullarySideEffector,
-}
+export { NullarySideEffector }

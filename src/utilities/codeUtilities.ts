@@ -1,7 +1,7 @@
 // tslint:disable:max-file-line-count
 
 import { SettingsPath, SettingsStep } from '../store'
-import * as to from '../to'
+import * as to from './to'
 
 const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i, options = { oneIndexed: false }) => {
 	let iter: number[] = []

@@ -3,8 +3,8 @@ import { shape } from '../../../../src/render/shape'
 import * as solid from '../../../../src/render/solid'
 import * as texture from '../../../../src/render/texture'
 import { state } from '../../../../src/state'
-import * as to from '../../../../src/to'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
+import * as to from '../../../../src/utilities/to'
 import { noop } from '../../../helpers/noop'
 
 describe('shape', () => {

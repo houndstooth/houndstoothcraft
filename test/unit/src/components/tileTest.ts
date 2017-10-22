@@ -9,7 +9,7 @@ import * as space from '../../../../src/space'
 import { state } from '../../../../src/state'
 import { getSetting } from '../../../../src/store/getSetting'
 import { TileSettings } from '../../../../src/store/types/settings/TileSettings'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 
 describe('tile', () => {
 	const gridAddress = to.Address([ 3, 5 ])

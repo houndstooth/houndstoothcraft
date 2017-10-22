@@ -1,8 +1,8 @@
 import { HALF } from '../constants'
-import * as from from '../from'
 import { Coordinate, Outline } from '../space'
 import { getSetting, ViewSettings } from '../store'
-import * as to from '../to'
+import * as from from '../utilities/from'
+import * as to from '../utilities/to'
 
 const applyZoom: (outline: Outline) => Outline = outline => outline.map(adjustCoordinateForZoom)
 

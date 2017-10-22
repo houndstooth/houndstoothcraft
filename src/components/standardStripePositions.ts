@@ -1,4 +1,4 @@
-import * as to from '../to'
+import * as to from '../utilities/to'
 import { perStripe } from './perStripe'
 import { StripePosition } from './types'
 

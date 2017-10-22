@@ -1,5 +1,5 @@
 import { state } from '../state'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
 const mixDownContexts: NullarySideEffector = () => {
 	state.contexts.forEach(context => {

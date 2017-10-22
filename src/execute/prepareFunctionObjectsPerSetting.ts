@@ -1,6 +1,6 @@
 import { Pattern, SettingsPath } from '../store'
-import * as to from '../to'
 import { deeperPath } from '../utilities/codeUtilities'
+import * as to from '../utilities/to'
 import { SettingsFunctionObject } from './types'
 
 const prepareFunctionObjectsPerSetting: (_: {

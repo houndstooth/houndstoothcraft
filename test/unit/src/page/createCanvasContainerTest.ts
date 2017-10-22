@@ -2,7 +2,7 @@ import { createCanvasContainer } from '../../../../src/page/createCanvasContaine
 import * as scaleElement from '../../../../src/page/scaleElement'
 import { getSetting } from '../../../../src/store/getSetting'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
-import * as to from '../../../../src/to'
+import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockBody } from '../../helpers/buildMockBody'
 import { buildMockElement } from '../../helpers/buildMockElement'

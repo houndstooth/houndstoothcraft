@@ -1,6 +1,6 @@
 import { getCurrentContext } from '../canvas'
 import { ColorSettings, getSetting } from '../store'
-import { NullarySideEffector } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
 const applyOpacity: NullarySideEffector = () => {
 	const { opacity }: ColorSettings = getSetting('color')

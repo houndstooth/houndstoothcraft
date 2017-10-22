@@ -1,10 +1,10 @@
 // tslint:disable:variable-name
 
-import { Frame } from './animation'
-import { Address, StripePosition, Unit } from './components'
-import { Layer } from './execute'
-import { Dimension } from './page'
-import { Coordinate, Radian } from './space'
+import { Frame } from '../animation'
+import { Address, StripePosition, Unit } from '../components'
+import { Layer } from '../execute'
+import { Dimension } from '../page'
+import { Coordinate, Radian } from '../space'
 
 const Frame: (frame: Frame) => number = frame => frame as any
 const Layer: (layer: Layer) => number = layer => layer as any

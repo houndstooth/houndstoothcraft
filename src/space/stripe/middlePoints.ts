@@ -1,6 +1,6 @@
 import { PERIMETER_SCALAR } from '../../constants'
-import * as from from '../../from'
-import * as to from '../../to'
+import * as from from '../../utilities/from'
+import * as to from '../../utilities/to'
 import { Points } from '../types/Points'
 import * as stripePoints from './stripePoints'
 

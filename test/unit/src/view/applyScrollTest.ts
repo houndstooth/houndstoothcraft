@@ -1,8 +1,8 @@
-import * as from from '../../../../src/from'
 import { getSetting } from '../../../../src/index'
 import { state } from '../../../../src/state'
 import { ViewSettings } from '../../../../src/store/types/settings/ViewSettings'
-import * as to from '../../../../src/to'
+import * as from from '../../../../src/utilities/from'
+import * as to from '../../../../src/utilities/to'
 import { applyScroll } from '../../../../src/view/applyScroll'
 
 describe('apply scroll', () => {

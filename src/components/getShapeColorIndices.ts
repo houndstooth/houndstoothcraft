@@ -2,9 +2,10 @@ import { X_INDEX, Y_INDEX } from '../constants'
 import { ColorAssignmentSettings, getFromBaseOrDefaultPattern } from '../store'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
+import * as from from '../utilities/from'
 import { Address, AssignmentMode, Supertile, ShapeColorIndex, Weave } from './types'
 
-const getShapeColorIndices: (_: { gridAddress: Address }) => ShapeColorIndex[] = ({ gridAddress }) => {
+const getShapeColorIndices: (_: { gridAddress: Address[] }) => ShapeColorIndex[] = ({ gridAddress }) => {
 	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
 
 	const shapeColorIndices = getIndices({ gridAddress, colorAssignment })
@@ -13,7 +14,7 @@ const getShapeColorIndices: (_: { gridAddress: Address }) => ShapeColorIndex[] =
 }
 
 const maybeAdjustShapeColorIndices: (_: {
-	colorAssignment: ColorAssignmentSettings, gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
+	colorAssignment: ColorAssignmentSettings, gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
 }) => ShapeColorIndex[] = ({ colorAssignment, gridAddress, shapeColorIndices }) => {
 	const { transformShapeColorIndices, flipGrain, switcheroo } = colorAssignment
 
@@ -38,7 +39,7 @@ const maybeAdjustShapeColorIndices: (_: {
 }
 
 const getIndices: (_: {
-	colorAssignment: ColorAssignmentSettings, gridAddress: Address,
+	colorAssignment: ColorAssignmentSettings, gridAddress: Address[],
 }) => ShapeColorIndex[] = ({ colorAssignment, gridAddress }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = colorAssignment
 
@@ -82,10 +83,10 @@ const getBySupertile: (_: {
 const SWITCHEROO_SIZE = 4
 
 const applySwitcheroo: (_: {
-	gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
+	gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
 }) => ShapeColorIndex[] = ({ gridAddress, shapeColorIndices }) => {
-	const xMod = gridAddress[ X_INDEX ] % SWITCHEROO_SIZE
-	const yMod = gridAddress[ Y_INDEX ] % SWITCHEROO_SIZE
+	const xMod = from.Address(gridAddress[ X_INDEX ]) % SWITCHEROO_SIZE
+	const yMod = from.Address(gridAddress[ Y_INDEX ]) % SWITCHEROO_SIZE
 	if (!((xMod + yMod) % SWITCHEROO_SIZE)) {
 		return to.ShapeColorIndices(reversed(shapeColorIndices))
 	}

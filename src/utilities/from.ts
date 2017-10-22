@@ -17,7 +17,10 @@ const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number = shapeColor
 const SettingsStep: (settingStep: SettingsStep) => string = settingsStep => settingsStep as any
 
 const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
-const Address: (address: Address) => number[] = address => address as any
+const Address: {
+	(address: Address): number
+	(address: Address[]): number[]
+} = address => address as any
 const SettingsPath: (settingPath: SettingsPath) => string[] = settingsPath => settingsPath as any
 
 export {

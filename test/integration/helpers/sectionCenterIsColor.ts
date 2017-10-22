@@ -11,7 +11,7 @@ const sectionCenterIsColor: (_: {
 		areaSize: Unit,
 		color: Color,
 		id?: number,
-		sectionAddress: Address,
+		sectionAddress: Address[],
 		sectionResolution: number,
 	}) => boolean = ({ areaOrigin, areaSize, color, id = 0, sectionAddress, sectionResolution }) => {
 	const coordinateUnderTest = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
@@ -24,7 +24,7 @@ const sectionCenterIsColor: (_: {
 const sectionCenter: (_: {
 		areaOrigin: Coordinate,
 		areaSize: Unit,
-		sectionAddress: Address,
+		sectionAddress: Address[],
 		sectionResolution: number,
 	}) => Coordinate = ({ areaOrigin, areaSize, sectionAddress, sectionResolution }) => {
 	const sectionSize = from.Unit(areaSize) / sectionResolution

@@ -9,13 +9,13 @@ import { isTileUniform } from './isTileUniform'
 import { Address, StripePosition, ShapeColorIndex, Unit } from './types'
 
 interface TileParams {
-	gridAddress: Address,
+	gridAddress: Address[],
 	shapeColorIndices: ShapeColorIndex[],
 	tileOrigin: Coordinate,
 	tileSize: Unit
 }
 
-const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
+const tile: (_: { gridAddress: Address[] }) => void = ({ gridAddress }) => {
 	const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
 
 	let definedTileOrigin: Coordinate
@@ -38,7 +38,7 @@ const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
 }
 
 const definedTile: (_: {
-	definedTileOrigin: Coordinate, definedTileSize: Unit, gridAddress: Address,
+	definedTileOrigin: Coordinate, definedTileSize: Unit, gridAddress: Address[],
 }) => void = ({ gridAddress, definedTileOrigin: tileOrigin, definedTileSize: tileSize }) => {
 	const shapeColorIndices = getShapeColorIndices({ gridAddress })
 	const tileFunction = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile

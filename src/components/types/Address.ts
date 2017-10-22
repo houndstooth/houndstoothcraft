@@ -1,4 +1,5 @@
-enum _AddressBrand {}
-type Address = _AddressBrand & number[]
+interface Address extends Number {
+	_AddressBrand
+}
 
 export { Address }

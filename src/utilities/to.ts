@@ -33,8 +33,8 @@ const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate 
 const ShapeColorIndices: (shapeColorIndices: Array<number | ShapeColorIndex>) => ShapeColorIndex[] = shapeColorIndices =>
 	shapeColorIndices.map(shapeColorIndex => shapeColorIndex as any) as ShapeColorIndex[]
 
-const Address: (address: number[]) => Address = address =>
-	address.map(index => index as any) as Address
+const Address: (address: Array<number | Address>) => Address[] = address =>
+	address.map(index => index as any) as Address[]
 
 const StripePositions: (stripePositions: Array<StripePosition | number>) => StripePosition[] = stripePositions =>
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]

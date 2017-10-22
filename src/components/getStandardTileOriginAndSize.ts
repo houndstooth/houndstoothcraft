@@ -3,11 +3,12 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { Address, TileOriginAndSize, Unit } from './types'
 
-const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize = ({ gridAddress }) => {
+const getStandardTileOriginAndSize: (_: { gridAddress: Address[] }) => TileOriginAndSize = ({ gridAddress }) => {
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+	const [ x, y ] = from.Address(gridAddress)
 
 	return {
-		tileOrigin: to.Coordinate([ gridAddress[ 0 ] * from.Unit(tileSize), gridAddress[ 1 ] * from.Unit(tileSize) ]),
+		tileOrigin: to.Coordinate([ x * from.Unit(tileSize), y * from.Unit(tileSize) ]),
 		tileSize,
 	}
 }

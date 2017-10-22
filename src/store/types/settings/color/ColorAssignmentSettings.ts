@@ -1,6 +1,6 @@
 import { Address, AssignmentMode, Supertile, TileColorIndices, Weave } from '../../../../components'
 
-interface ColorAssignment {
+interface ColorAssignmentSettings {
 	assignmentMode: AssignmentMode,
 	flipGrain: boolean,
 	offsetAddress: (_: { gridAddress: Address }) => Address,
@@ -10,4 +10,4 @@ interface ColorAssignment {
 	weave: Weave,
 }
 
-export { ColorAssignment }
+export { ColorAssignmentSettings }

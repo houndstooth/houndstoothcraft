@@ -22,7 +22,7 @@ type UnitPathShortcut = 'tileSize'
 
 type AnimationSettingsPathShortcut = 'animation'
 type ColorSettingsPathShortcut = 'color'
-type ColorAssignmentPathShortcut = 'colorAssignment'
+type ColorAssignmentSettingsPathShortcut = 'colorAssignment'
 type GridSettingsPathShortcut = 'grid'
 type LayerSettingsPathShortcut = 'layer'
 type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuum'
@@ -46,7 +46,7 @@ export {
 	UnitPathShortcut,
 	AnimationSettingsPathShortcut,
 	ColorSettingsPathShortcut,
-	ColorAssignmentPathShortcut,
+	ColorAssignmentSettingsPathShortcut,
 	GridSettingsPathShortcut,
 	LayerSettingsPathShortcut,
 	StripeCountContinuumSettingsPathShortcut,

@@ -6,7 +6,7 @@ import { Color, RenderTexture } from '../../render'
 import { Radian } from '../../space'
 import {
 	AnimationSettings,
-	ColorAssignment,
+	ColorAssignmentSettings,
 	ColorSettings,
 	GridSettings,
 	LayerSettings,
@@ -19,7 +19,7 @@ import {
 import {
 	AnimationSettingsPathShortcut,
 	BooleanPathShortcut,
-	ColorAssignmentPathShortcut,
+	ColorAssignmentSettingsPathShortcut,
 	ColorPathShortcut,
 	ColorSettingsPathShortcut,
 	ColorsPathShortcut,
@@ -54,7 +54,7 @@ interface GetFromBaseOrDefaultPattern {
 	(settingsPathShortcut: UnitPathShortcut): Unit
 	(settingsPathShortcut: AnimationSettingsPathShortcut): AnimationSettings
 	(settingsPathShortcut: ColorSettingsPathShortcut): ColorSettings
-	(settingsPathShortcut: ColorAssignmentPathShortcut): ColorAssignment
+	(settingsPathShortcut: ColorAssignmentSettingsPathShortcut): ColorAssignmentSettings
 	(settingsPathShortcut: GridSettingsPathShortcut): GridSettings
 	(settingsPathShortcut: LayerSettingsPathShortcut): LayerSettings
 	(settingsPathShortcut: StripeCountContinuumSettingsPathShortcut): StripeCountContinuumSettings

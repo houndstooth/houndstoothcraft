@@ -6,7 +6,7 @@ import { resetState } from './resetState'
 import * as paths from './settingsPaths'
 import {
 	AnimationSettings,
-	ColorAssignment,
+	ColorAssignmentSettings,
 	ColorSettings,
 	Effect,
 	GridSettings,
@@ -30,7 +30,7 @@ export {
 	Pattern,
 	Houndstooth,
 	resetState,
-	ColorAssignment,
+	ColorAssignmentSettings,
 	getFromBaseOrDefaultPattern,
 	StripeCountContinuumSettings,
 	ColorSettings,

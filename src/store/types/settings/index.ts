@@ -1,5 +1,5 @@
 import { AnimationSettings } from './AnimationSettings'
-import { ColorAssignment } from './color'
+import { ColorAssignmentSettings } from './color'
 import { ColorSettings } from './ColorSettings'
 import { GridSettings } from './GridSettings'
 import { LayerSettings } from './LayerSettings'
@@ -11,7 +11,7 @@ import { ViewSettings } from './ViewSettings'
 
 export {
 	AnimationSettings,
-	ColorAssignment,
+	ColorAssignmentSettings,
 	ColorSettings,
 	GridSettings,
 	LayerSettings,

@@ -14,7 +14,7 @@ import * as to from '../utilities/to'
 import {
 	AnimationSettings,
 	BasePattern,
-	ColorAssignment,
+	ColorAssignmentSettings,
 	ColorSettings,
 	GridSettings,
 	Houndstooth,
@@ -33,7 +33,7 @@ const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
-const DEFAULT_COLOR_ASSIGNMENT: ColorAssignment = {
+const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	assignmentMode: AssignmentMode.Weave,
 	flipGrain: false,
 	offsetAddress: () => to.Address([ 0, 0 ]),
@@ -76,7 +76,7 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,
-	colorAssignment: DEFAULT_COLOR_ASSIGNMENT,
+	colorAssignment: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 	colorSet: DEFAULT_COLOR_SET,
 	opacity: DEFAULT_OPACITY,
 }

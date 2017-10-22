@@ -73,13 +73,13 @@ describe('code utilities', () => {
 
 	describe('#deeperPath', () => {
 		it('does not mutate the passed objects path', () => {
-			const propertyPath = to.PropertyPath([ 'colorSettings', 'assignment' ])
+			const propertyPath = to.PropertyPath([ 'colorSettings', 'colorAssignment' ])
 			const propertyName = 'colorSet'
 
 			const deeperPath = codeUtilities.deeperPath({ propertyPath, propertyName })
 
-			expect(deeperPath).toEqual([ 'colorSettings', 'assignment', 'colorSet' ])
-			expect(propertyPath).toEqual([ 'colorSettings', 'assignment' ])
+			expect(deeperPath).toEqual([ 'colorSettings', 'colorAssignment', 'colorSet' ])
+			expect(propertyPath).toEqual([ 'colorSettings', 'colorAssignment' ])
 		})
 	})
 

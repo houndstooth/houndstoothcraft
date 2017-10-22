@@ -6,7 +6,7 @@ describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
 		const patternToBeMergedOnto = {
 			colorSettings: {
-				assignment: {
+				colorAssignment: {
 					assignmentMode: AssignmentMode.Weave,
 					switcheroo: true,
 				},
@@ -17,7 +17,7 @@ describe('compose patterns', () => {
 		}
 		const patternToMerge = {
 			colorSettings: {
-				assignment: {
+				colorAssignment: {
 					assignmentMode: AssignmentMode.Supertile,
 				},
 			},
@@ -30,7 +30,7 @@ describe('compose patterns', () => {
 
 		const expectedPattern = {
 			colorSettings: {
-				assignment: {
+				colorAssignment: {
 					assignmentMode: AssignmentMode.Supertile,
 					switcheroo: true,
 				},

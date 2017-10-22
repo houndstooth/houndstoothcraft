@@ -13,7 +13,7 @@ import { Color } from '../render'
 import * as to from '../to'
 import {
 	AnimationSettings,
-	Assignment,
+	ColorAssignment,
 	BasePattern,
 	ColorSettings,
 	GridSettings,
@@ -33,7 +33,7 @@ const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 const DEFAULT_COLOR_SET: Color[] = [ BLACK, TRANSPARENT ]
-const DEFAULT_ASSIGNMENT: Assignment = {
+const DEFAULT_COLOR_ASSIGNMENT: ColorAssignment = {
 	assignmentMode: AssignmentMode.Weave,
 	flipGrain: false,
 	offsetAddress: () => to.Address([ 0, 0 ]),
@@ -72,7 +72,7 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 }
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
-	assignment: DEFAULT_ASSIGNMENT,
+	colorAssignment: DEFAULT_COLOR_ASSIGNMENT,
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,
 	colorSet: DEFAULT_COLOR_SET,
 	opacity: DEFAULT_OPACITY,

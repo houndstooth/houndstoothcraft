@@ -6,7 +6,7 @@ const startAnimationFrame = to.PropertyPath([ 'animationSettings', 'startAnimati
 
 const color = to.PropertyPath([ 'colorSettings' ])
 const colorSet = to.PropertyPath([ 'colorSettings', 'colorSet' ])
-const assignment = to.PropertyPath([ 'colorSettings', 'assignment' ])
+const colorAssignment = to.PropertyPath([ 'colorSettings', 'colorAssignment' ])
 
 const grid = to.PropertyPath([ 'gridSettings' ])
 const gridSize = to.PropertyPath([ 'gridSettings', 'gridSize' ])
@@ -33,7 +33,7 @@ const stripeCountContinuum = to.PropertyPath([
 
 export {
 	animation,
-	assignment,
+	colorAssignment,
 	canvasSize,
 	color,
 	colorSet,

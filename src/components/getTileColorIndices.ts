@@ -1,21 +1,21 @@
 import { X_INDEX, Y_INDEX } from '../constants'
-import { Assignment, getSetting } from '../store'
+import { ColorAssignment, getSetting } from '../store'
 import * as to from '../to'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import { Address, AssignmentMode, Supertile, TileColorIndices, Weave } from './types'
 
 const getTileColorIndices: (_: { gridAddress: Address }) => TileColorIndices = ({ gridAddress }) => {
-	const assignment: Assignment = getSetting('assignment')
+	const colorAssignment: ColorAssignment = getSetting('colorAssignment')
 
-	const tileColorIndices = getIndices({ gridAddress, assignment })
+	const tileColorIndices = getIndices({ gridAddress, colorAssignment })
 
-	return maybeAdjustTileColorIndices({ assignment, gridAddress, tileColorIndices })
+	return maybeAdjustTileColorIndices({ colorAssignment, gridAddress, tileColorIndices })
 }
 
 const maybeAdjustTileColorIndices: (_: {
-	assignment: Assignment, gridAddress: Address, tileColorIndices: TileColorIndices,
-}) => TileColorIndices = ({ assignment, gridAddress, tileColorIndices }) => {
-	const { transformTileColorIndices, flipGrain, switcheroo } = assignment
+	colorAssignment: ColorAssignment, gridAddress: Address, tileColorIndices: TileColorIndices,
+}) => TileColorIndices = ({ colorAssignment, gridAddress, tileColorIndices }) => {
+	const { transformTileColorIndices, flipGrain, switcheroo } = colorAssignment
 
 	let maybeAdjustedTileColorIndices = tileColorIndices
 	if (flipGrain) {
@@ -38,9 +38,9 @@ const maybeAdjustTileColorIndices: (_: {
 }
 
 const getIndices: (_: {
-	assignment: Assignment, gridAddress: Address,
-}) => TileColorIndices = ({ assignment, gridAddress }) => {
-	const { offsetAddress, assignmentMode, weave, supertile } = assignment
+	colorAssignment: ColorAssignment, gridAddress: Address,
+}) => TileColorIndices = ({ colorAssignment, gridAddress }) => {
+	const { offsetAddress, assignmentMode, weave, supertile } = colorAssignment
 
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
 

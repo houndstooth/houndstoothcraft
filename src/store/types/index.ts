@@ -5,7 +5,7 @@ import { Pattern } from './Pattern'
 import { Setting } from './Setting'
 import {
 	AnimationSettings,
-	Assignment,
+	ColorAssignment,
 	ColorSettings,
 	GridSettings,
 	LayerSettings,
@@ -25,7 +25,7 @@ export {
 	Setting,
 	Pattern,
 	BasePattern,
-	Assignment,
+	ColorAssignment,
 	StripeCountContinuumSettings,
 	ColorSettings,
 	GridSettings,

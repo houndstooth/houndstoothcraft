@@ -1,5 +1,5 @@
-import { Assignment } from './Assignment'
+import { ColorAssignment } from './ColorAssignment'
 
 export {
-	Assignment,
+	ColorAssignment,
 }

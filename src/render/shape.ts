@@ -18,7 +18,8 @@ const shape: (_: ShapeParams) => void = params => {
 	const { renderTexture }: TextureSettings = getFromBaseOrDefaultPattern('textureSettings')
 
 	if (renderTexture) {
-		texture({ context, outline, shapeColorIndices, tileOrigin, tileSize, renderTexture, shapeColorIndex })
+		const shapeColorCount = shapeColorIndices.length
+		texture({ context, outline, tileOrigin, tileSize, renderTexture, shapeColorIndex, shapeColorCount })
 	}
 	else {
 		solid({ context, outline, shapeColorIndex })

@@ -119,7 +119,7 @@ describe('shape', () => {
 					outline,
 					renderTexture,
 					shapeColorIndex,
-					shapeColorIndices,
+					shapeColorCount: 0,
 					tileOrigin,
 					tileSize,
 				})

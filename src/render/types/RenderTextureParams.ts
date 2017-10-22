@@ -4,7 +4,7 @@ import { Context } from '../../page'
 interface RenderTextureParams extends TileOriginAndSize {
 	context: Context,
 	shapeColorIndex: ShapeColorIndex,
-	shapeColorIndices: ShapeColorIndex[],
+	shapeColorCount: number,
 }
 
 export { RenderTextureParams }

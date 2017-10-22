@@ -3,8 +3,6 @@ import { Effect } from './Effect'
 import { Houndstooth } from './Houndstooth'
 import { Pattern } from './Pattern'
 import { Setting } from './Setting'
-import { SettingsPath } from './SettingsPath'
-import { SettingsStep } from './SettingsStep'
 import {
 	AnimationSettings,
 	ColorAssignment,
@@ -18,6 +16,9 @@ import {
 	TileSettings,
 	ViewSettings,
 } from './settings'
+import { SettingsPath } from './SettingsPath'
+import { SettingsPathShortcut } from './SettingsPathShortcut'
+import { SettingsStep } from './SettingsStep'
 import { State } from './State'
 
 export {
@@ -40,4 +41,5 @@ export {
 	StripeSettings,
 	SettingsPath,
 	SettingsStep,
+	SettingsPathShortcut,
 }

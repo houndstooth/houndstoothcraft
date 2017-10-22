@@ -1,9 +1,8 @@
 import { state } from '../state'
 import { accessChildPropertyOrCreatePath, isDefined } from '../utilities/codeUtilities'
-import { Setting, SettingsPath } from './types'
 import { DEFAULT_BASE_PATTERN } from './defaults'
 import * as settingsPaths from './settingsPaths'
-import { SettingsPathShortcut } from './SettingsPathShortcut'
+import { Setting, SettingsPath, SettingsPathShortcut } from './types'
 
 const getSetting: (settingsPathShortcut: SettingsPathShortcut) => Setting = settingsPathShortcut => {
 	const settingsPath: SettingsPath = settingsPaths[settingsPathShortcut]

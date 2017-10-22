@@ -1,7 +1,7 @@
 import * as defaults from './defaults'
 import { getSetting } from './getSetting'
-import * as paths from './settingsPaths'
 import { resetState } from './resetState'
+import * as paths from './settingsPaths'
 import {
 	AnimationSettings,
 	ColorAssignment,
@@ -12,14 +12,14 @@ import {
 	LayerSettings,
 	Pattern,
 	Setting,
+	SettingsPath,
+	SettingsStep,
 	State,
 	StripeCountContinuumSettings,
 	StripePositionSettings,
 	TextureSettings,
 	TileSettings,
 	ViewSettings,
-	SettingsPath,
-	SettingsStep,
 } from './types'
 
 export {

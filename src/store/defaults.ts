@@ -13,8 +13,8 @@ import { Color } from '../render'
 import * as to from '../to'
 import {
 	AnimationSettings,
-	ColorAssignment,
 	BasePattern,
+	ColorAssignment,
 	ColorSettings,
 	GridSettings,
 	Houndstooth,
@@ -72,8 +72,8 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 }
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
-	colorAssignment: DEFAULT_COLOR_ASSIGNMENT,
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,
+	colorAssignment: DEFAULT_COLOR_ASSIGNMENT,
 	colorSet: DEFAULT_COLOR_SET,
 	opacity: DEFAULT_OPACITY,
 }

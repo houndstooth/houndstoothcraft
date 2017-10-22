@@ -2,8 +2,8 @@ import { Color } from '../../../render'
 import { ColorAssignment } from './color'
 
 interface ColorSettings {
-	colorAssignment: Partial<ColorAssignment>,
 	backgroundColor: Color,
+	colorAssignment: Partial<ColorAssignment>,
 	colorSet: Color[],
 	opacity: number,
 }

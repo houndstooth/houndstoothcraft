@@ -1,7 +1,6 @@
-import { Setting } from '../store'
+import { Setting, SettingsPath } from '../store'
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
-import { SettingsPath } from '../store'
 import { console } from '../utilities/windowWrapper'
 import { settingPath } from './settingPath'
 

@@ -1,8 +1,7 @@
 import { Color } from '../render'
-import { Pattern, Setting } from '../store'
+import { Pattern, Setting, SettingsPath } from '../store'
 import * as to from '../to'
 import { accessChildPropertyOrCreatePath, deeperPath, isDefined } from '../utilities/codeUtilities'
-import { SettingsPath } from '../store'
 import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
 
 const composePatterns: (_: {

@@ -5,39 +5,40 @@ import { Points } from '../types/Points'
 import * as stripePoints from './stripePoints'
 
 const middlePoints: Points = params => {
-	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeEnd } = params
+	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, stripeEnd, tileOrigin, tileSize } = params
 	if (!stripeEndsInBottomRightHalf) {
-		middlePointsWhenStripeEndsInBottomRightHalf({ outline, originAndSize, stripeEnd })
+		middlePointsWhenStripeEndsInBottomRightHalf({ outline, stripeEnd, tileOrigin, tileSize })
 	}
 	else {
 		middlePointsWhenStripeDoesNotEndInBottomRightHalf({
-			originAndSize,
 			outline,
 			stripeEnd,
 			stripeStartsInTopLeftHalf,
+			tileOrigin,
+			tileSize,
 		})
 	}
 }
 
-const middlePointsWhenStripeEndsInBottomRightHalf: Points = ({ outline, originAndSize, stripeEnd }) => {
-	outline.push(stripePoints.pointAlongTopEdge({ originAndSize, stripePosition: stripeEnd }))
-	outline.push(stripePoints.pointAlongLeftEdge({ originAndSize, stripePosition: stripeEnd }))
+const middlePointsWhenStripeEndsInBottomRightHalf: Points = ({ outline, stripeEnd, tileOrigin, tileSize }) => {
+	outline.push(stripePoints.pointAlongTopEdge({ stripePosition: stripeEnd, tileOrigin, tileSize }))
+	outline.push(stripePoints.pointAlongLeftEdge({ stripePosition: stripeEnd, tileOrigin, tileSize }))
 }
 
 const middlePointsWhenStripeDoesNotEndInBottomRightHalf: Points = params => {
-	const { stripeStartsInTopLeftHalf, outline, originAndSize, stripeEnd } = params
+	const { stripeStartsInTopLeftHalf, outline, stripeEnd, tileOrigin, tileSize } = params
 
 	if (stripeStartsInTopLeftHalf) {
-		outline.push(stripePoints.pointInTopRightCorner({ originAndSize }))
+		outline.push(stripePoints.pointInTopRightCorner({ tileOrigin, tileSize }))
 	}
 
 	const stripeEndsInBottomRightCorner = from.StripePosition(stripeEnd || to.StripePosition(0)) === PERIMETER_SCALAR
 	if (stripeEndsInBottomRightCorner) {
-		outline.push(stripePoints.pointInBottomRightCorner({ originAndSize }))
+		outline.push(stripePoints.pointInBottomRightCorner({ tileOrigin, tileSize }))
 	}
 	else {
-		outline.push(stripePoints.pointAlongRightEdge({ originAndSize, stripePosition: stripeEnd }))
-		outline.push(stripePoints.pointAlongBottomEdge({ originAndSize, stripePosition: stripeEnd }))
+		outline.push(stripePoints.pointAlongRightEdge({ stripePosition: stripeEnd, tileOrigin, tileSize }))
+		outline.push(stripePoints.pointAlongBottomEdge({ stripePosition: stripeEnd, tileOrigin, tileSize }))
 	}
 }
 

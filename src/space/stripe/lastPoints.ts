@@ -4,35 +4,36 @@ import { Points } from '../types'
 import { pointAlongBottomEdge, pointAlongLeftEdge, pointInBottomLeftCorner } from './stripePoints'
 
 const lastPoints: Points = params => {
-	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, originAndSize, stripeStart } = params
+	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, stripeStart, tileOrigin, tileSize } = params
 	const stripeStartsInTopLeftCorner = from.StripePosition(stripeStart || to.StripePosition(0)) === 0
 	if (!stripeStartsInTopLeftCorner) {
 		lastPointsWhenStripeDoesNotStartInTopLeftCorner({
-			originAndSize,
 			outline,
 			stripeEndsInBottomRightHalf,
 			stripeStart,
 			stripeStartsInTopLeftHalf,
+			tileOrigin,
+			tileSize,
 		})
 	}
 	else if (stripeEndsInBottomRightHalf) {
-		outline.push(pointInBottomLeftCorner({ originAndSize }))
+		outline.push(pointInBottomLeftCorner({ tileOrigin, tileSize }))
 	}
 }
 
 const lastPointsWhenStripeDoesNotStartInTopLeftCorner: Points = params => {
-	const { stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, outline, originAndSize, stripeStart } = params
+	const { stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, outline, stripeStart, tileOrigin, tileSize } = params
 
 	if (stripeStartsInTopLeftHalf && stripeEndsInBottomRightHalf) {
-		outline.push(pointInBottomLeftCorner({ originAndSize }))
+		outline.push(pointInBottomLeftCorner({ tileOrigin, tileSize }))
 	}
 
 	if (stripeStartsInTopLeftHalf) {
 
-		outline.push(pointAlongLeftEdge({ originAndSize, stripePosition: stripeStart }))
+		outline.push(pointAlongLeftEdge({ stripePosition: stripeStart, tileOrigin, tileSize }))
 	}
 	else {
-		outline.push(pointAlongBottomEdge({ originAndSize, stripePosition: stripeStart }))
+		outline.push(pointAlongBottomEdge({ stripePosition: stripeStart, tileOrigin, tileSize }))
 	}
 }
 

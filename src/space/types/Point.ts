@@ -1,10 +1,6 @@
-import { StripePosition } from '../../components'
+import { PointParams } from './PointParams'
 import { Coordinate } from './Coordinate'
-import { OriginAndSize } from './OriginAndSize'
 
-type Point = (_: {
-	originAndSize: OriginAndSize,
-	stripePosition?: StripePosition,
-}) => Coordinate
+type Point = (_: PointParams) => Coordinate
 
 export { Point }

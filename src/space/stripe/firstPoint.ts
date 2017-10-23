@@ -1,12 +1,12 @@
 import { Points } from '../types/Points'
 import { pointAlongRightEdge, pointAlongTopEdge } from './stripePoints'
 
-const firstPoint: Points = ({ outline, stripeStartsInTopLeftHalf, originAndSize, stripeStart }) => {
+const firstPoint: Points = ({ outline, stripeStartsInTopLeftHalf, stripeStart, tileOrigin, tileSize }) => {
 	if (stripeStartsInTopLeftHalf) {
-		outline.push(pointAlongTopEdge({ originAndSize, stripePosition: stripeStart }))
+		outline.push(pointAlongTopEdge({ stripePosition: stripeStart, tileOrigin, tileSize }))
 	}
 	else {
-		outline.push(pointAlongRightEdge({ originAndSize, stripePosition: stripeStart }))
+		outline.push(pointAlongRightEdge({ stripePosition: stripeStart, tileOrigin, tileSize }))
 	}
 }
 

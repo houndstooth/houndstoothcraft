@@ -1,14 +1,5 @@
-import { StripePosition } from '../../components'
-import { OriginAndSize } from './OriginAndSize'
-import { Outline } from './Outline'
+import { PointsParams } from './PointsParams'
 
-type Points = (_: {
-	originAndSize: OriginAndSize,
-	outline: Outline,
-	stripeEnd?: StripePosition,
-	stripeEndsInBottomRightHalf?: boolean,
-	stripeStart?: StripePosition,
-	stripeStartsInTopLeftHalf?: boolean,
-}) => void
+type Points = (_: PointsParams) => void
 
 export { Points }

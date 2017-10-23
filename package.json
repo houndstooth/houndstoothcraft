@@ -24,7 +24,7 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "nyc": "^11.2.1",
+    "nyc": "^11.3.0",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
     "tslint-defocus": "^2.0.3",

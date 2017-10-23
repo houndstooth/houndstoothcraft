@@ -7,9 +7,9 @@ describe('draw', () => {
 	const shapeColor = { a: 1 }
 	const context = {}
 
-	const adjustedOutline = []
+	const path = []
 	beforeEach(() => {
-		spyOn(view, 'applyView').and.returnValue(adjustedOutline)
+		spyOn(view, 'applyView').and.returnValue(path)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
@@ -50,7 +50,7 @@ describe('draw', () => {
 		})
 
 		it('fills the adjusted outline', () => {
-			expect(fill.fill).toHaveBeenCalledWith({ context, shapeColor, outline: adjustedOutline })
+			expect(fill.fill).toHaveBeenCalledWith({ context, shapeColor, path })
 		})
 	})
 })

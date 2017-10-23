@@ -1,12 +1,12 @@
 import { HALF } from '../constants'
-import { Coordinate, Outline } from '../space'
+import { Path, Pixel } from '../render'
 import { getFromBaseOrDefaultPattern, ViewSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 
-const applyZoom: (outline: Outline) => Outline = outline => outline.map(adjustCoordinateForZoom)
+const applyZoom: (path: Path) => Path = path => path.map(adjustPixelForZoom)
 
-const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordinate => {
+const adjustPixelForZoom: (pixel: Pixel) => Pixel = pixel => {
 	const {
 		canvasSize,
 		centerViewOnCenterOfTileAtHomeAddress,
@@ -16,29 +16,29 @@ const adjustCoordinateForZoom: (coordinate: Coordinate) => Coordinate = coordina
 	const halfCanvasSize = from.Dimension(canvasSize) * HALF
 	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
-	return doAdjustment({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom })
+	return doAdjustment({ pixel, shouldAdjustForCentering, halfCanvasSize, zoom })
 }
 
 const doAdjustment: (_: {
-	coordinate: Coordinate,
 	halfCanvasSize: number,
+	pixel: Pixel,
 	shouldAdjustForCentering: boolean,
 	zoom: number,
-}) => Coordinate = ({ coordinate, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
-	let coordinateAdjustedForZoom = coordinate
+}) => Pixel = ({ pixel, shouldAdjustForCentering, halfCanvasSize, zoom }) => {
+	let pixelAdjustedForZoom = pixel
 
 	if (shouldAdjustForCentering) {
-		coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
-			from.Unit(c) - halfCanvasSize))
+		pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(dimension =>
+			from.Dimension(dimension) - halfCanvasSize))
 	}
-	coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
-		from.Unit(c) * zoom))
+	pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(dimension =>
+		from.Dimension(dimension) * zoom))
 	if (shouldAdjustForCentering) {
-		coordinateAdjustedForZoom = to.Coordinate(coordinateAdjustedForZoom.map(c =>
-			from.Unit(c) + halfCanvasSize))
+		pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(dimension =>
+			from.Dimension(dimension) + halfCanvasSize))
 	}
 
-	return coordinateAdjustedForZoom
+	return pixelAdjustedForZoom
 }
 
 export { applyZoom }

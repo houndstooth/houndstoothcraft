@@ -6,9 +6,9 @@ import { applyZoom } from '../../../../src/view/applyZoom'
 describe('apply zoom', () => {
 	const zoom = 2
 	const canvasSize = to.Dimension(200)
-	let outline
+	let path
 	beforeEach(() => {
-		outline = [
+		path = [
 			[ 50, 50 ],
 			[ 100, 50 ],
 			[ 100, 100 ],
@@ -17,8 +17,8 @@ describe('apply zoom', () => {
 		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
 	})
 
-	it('adjusts the outline per the zoom level', () => {
-		expect(applyZoom(outline)).toEqual(to.Outline([
+	it('adjusts the path per the zoom level', () => {
+		expect(applyZoom(path)).toEqual(to.Path([
 			[ 100, 100 ],
 			[ 200, 100 ],
 			[ 200, 200 ],
@@ -32,7 +32,7 @@ describe('apply zoom', () => {
 		})
 
 		it('works', () => {
-			expect(applyZoom(outline)).toEqual(to.Outline([
+			expect(applyZoom(path)).toEqual(to.Path([
 				[ 0, 0 ],
 				[ 100, 0 ],
 				[ 100, 100 ],
@@ -47,7 +47,7 @@ describe('apply zoom', () => {
 		})
 
 		it('does not double-up on adjusting for centering the view', () => {
-			expect(applyZoom(outline)).toEqual(to.Outline([
+			expect(applyZoom(path)).toEqual(to.Path([
 				[ 0, 0 ],
 				[ 100, 0 ],
 				[ 100, 100 ],

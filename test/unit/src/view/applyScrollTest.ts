@@ -8,7 +8,7 @@ describe('apply scroll', () => {
 	const zoom = 10
 	const tileSize = to.Unit(40)
 	const canvasSize = to.Dimension(200)
-	const outline = to.Outline([
+	const path = to.Path([
 		[ 3, 5 ],
 		[ 4, 5 ],
 		[ 3, 4 ],
@@ -22,7 +22,7 @@ describe('apply scroll', () => {
 		setSetting('centerViewOnCenterOfTileAtHomeAddress', true)
 		const halfCanvasSize = from.Dimension(canvasSize) / 2
 		const halfTileSize = from.Unit(tileSize) / 2
-		expect(applyScroll(outline)).toEqual(to.Outline([
+		expect(applyScroll(path)).toEqual(to.Path([
 			[
 				halfCanvasSize - halfTileSize + 3,
 				halfCanvasSize - halfTileSize + 5,
@@ -39,9 +39,9 @@ describe('apply scroll', () => {
 	})
 
 	// tslint:disable-next-line:max-line-length
-	it('returns the outline unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
+	it('returns the path unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		setSetting('centerViewOnCenterOfTileAtHomeAddress', false)
 
-		expect(applyScroll(outline)).toEqual(outline)
+		expect(applyScroll(path)).toEqual(path)
 	})
 })

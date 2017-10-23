@@ -5,6 +5,7 @@ import { Address, ShapeColorIndex, StripePosition, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
 import { Coordinate, Radian } from '../space'
+import { Outline } from '../space/types/Outline'
 import { SettingsPath } from '../store'
 
 // First order, singular
@@ -32,12 +33,17 @@ const Address: {
 
 const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
 
+// Third order, singular
+
+const Outline: (outline: Outline) => number[][] = outline => outline as any
+
 export {
 	Address,
 	Coordinate,
 	Dimension,
 	Frame,
 	Layer,
+	Outline,
 	Radian,
 	SettingsPath,
 	ShapeColorIndex,

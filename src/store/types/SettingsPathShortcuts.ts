@@ -15,6 +15,7 @@ type NumberPathShortcut =
 	| 'gridSize'
 	| 'stripeCount'
 	| 'opacity'
+	| 'zoom'
 type RadianPathShortcut = 'rotateViewAboutCanvasCenter'
 type RenderTexturePathShortcut = 'renderTexture'
 type UnitPathShortcut = 'tileSize'

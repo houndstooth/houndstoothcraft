@@ -35,6 +35,7 @@ const collapseSameColoredShapesWithinTile = to.SettingsPath([ 'tileSettings', 'c
 
 const viewSettings = to.SettingsPath([ 'viewSettings' ])
 const canvasSize = to.SettingsPath([ 'viewSettings', 'canvasSize' ])
+const zoom = to.SettingsPath([ 'viewSettings', 'zoom' ])
 const rotateViewAboutCanvasCenter = to.SettingsPath([ 'viewSettings', 'rotateViewAboutCanvasCenter' ])
 const centerViewOnCenterOfTileAtHomeAddress = to.SettingsPath([
 	'viewSettings', 'centerViewOnCenterOfTileAtHomeAddress',
@@ -70,5 +71,6 @@ export {
 	tileSettings,
 	tileSize,
 	viewSettings,
+	zoom,
 	zoomOnCanvasCenter,
 }

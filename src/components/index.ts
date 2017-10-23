@@ -11,6 +11,7 @@ import {
 	GetStripePosition,
 	GetStripePositions,
 	GetTileOriginAndSize,
+	Grid,
 	OffsetAddress,
 	ShapeColorIndex,
 	StripeCountMode,
@@ -44,4 +45,5 @@ export {
 	OffsetAddress,
 	ShapeColorIndex,
 	ColorSet,
+	Grid,
 }

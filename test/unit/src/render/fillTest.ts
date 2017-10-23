@@ -10,14 +10,14 @@ describe('fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
 	const context = buildMockContext()
-	const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
+	const path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 
 	beforeEach(() => {
 		spyOn(parseColor, 'parseColor').and.returnValue(parsedColor)
 		spyOn(buildPath, 'buildPath')
 		spyOn(fillPath, 'fillPath')
 
-		fill({ context, shapeColor, outline })
+		fill({ context, shapeColor, path })
 	})
 
 	it('parses the shape color and sets the fill style to it', () => {
@@ -29,7 +29,7 @@ describe('fill', () => {
 	})
 
 	it('builds a path from it ', () => {
-		expect(buildPath.buildPath).toHaveBeenCalledWith({ context, outline })
+		expect(buildPath.buildPath).toHaveBeenCalledWith({ context, path })
 	})
 
 	it('fills this path', () => {
@@ -42,7 +42,7 @@ describe('fill', () => {
 
 	describe('when erasing', () => {
 		it('sets the operation to destination-out', () => {
-			fill({ context, shapeColor: ERASE, outline })
+			fill({ context, shapeColor: ERASE, path })
 
 			expect(context.globalCompositeOperation).toEqual('destination-out')
 		})

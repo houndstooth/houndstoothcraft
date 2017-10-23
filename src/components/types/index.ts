@@ -5,6 +5,7 @@ import { ColorSet } from './ColorSet'
 import { GetStripePosition } from './GetStripePosition'
 import { GetStripePositions } from './GetStripePositions'
 import { GetTileOriginAndSize } from './GetTileOriginAndSize'
+import { Grid } from './Grid'
 import { OffsetAddress } from './OffsetAddress'
 import { ShapeColorIndex } from './ShapeColorIndex'
 import { StripeCountMode } from './StripeCountMode'
@@ -32,4 +33,5 @@ export {
 	OffsetAddress,
 	ShapeColorIndex,
 	ColorSet,
+	Grid,
 }

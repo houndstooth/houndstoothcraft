@@ -154,7 +154,7 @@ Both `tileOrigin` and `tileSize` are expressed in units called "units". Units wi
 
 A tile:
 - can be pretty complex, but it understood to be the topmost repeating element
-- can break down into multiple shapes, yes, but all of these shapes should have the same origin and size, so that they fit together into a tile; otherwise, why are you grouping them into something you consider a tile?
+- can break down into multiple shapes, yes, but all of these shapes should have the same origin and size, so that they come together into a tile; otherwise, why are you grouping them into something you consider a tile?
 - also gathers an `outlineFunction` (or many of them) which it will pass on
 
 ### shape

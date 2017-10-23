@@ -1,10 +1,10 @@
-import { rotateCoordinateAboutPoint } from './rotateCoordinateAboutPoint'
+import { rotate } from './rotate'
 import { squareOutline } from './squareOutline'
 import { stripeOutline } from './stripeOutline'
 import { Coordinate, GetOutline, Outline, OutlineOptions, Radian } from './types'
 
 export {
-	rotateCoordinateAboutPoint,
+	rotate,
 	squareOutline,
 	stripeOutline,
 	GetOutline,

@@ -1,11 +1,12 @@
 // tslint:disable:variable-name member-ordering
 
 import { Frame } from '../animation'
-import { Address, ColorSet, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'
+import { Address, ColorSet, Grid, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
-import { Color } from '../render'
+import { Color, Pixel } from '../render'
 import { ColorRange } from '../render/types/ColorRange'
+import { Path } from '../render/types/Path'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath } from '../store'
 
@@ -46,16 +47,19 @@ const SettingsPath: {
 // Second order, singular
 
 // Dimension -> Pixel
-const Supertile: (supertile: Array<Array<Array<number | ShapeColorIndex>>>) => Supertile = supertile =>
+const Supertile: (supertile: Grid<Array<number | ShapeColorIndex>>) => Supertile = supertile =>
 	supertile as Supertile
 const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
-	coordinate.map(dimension => dimension as any) as Coordinate
+	coordinate.map(unit => unit as any) as Coordinate
 const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a }) => Color = color => color as Color
+const Pixel: (pixel: Array<number | Dimension>) => Pixel = pixel =>
+	pixel.map(dimension => dimension as any) as Pixel
 
 // Third order, singular
 
 const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
 const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as ColorSet
+const Path: (path: Array<Array<number | Dimension> | Pixel>) => Path = path => path.map(Pixel)
 
 export {
 	Address,
@@ -68,6 +72,8 @@ export {
 	Layer,
 	Layers,
 	Outline,
+	Path,
+	Pixel,
 	Radian,
 	SettingsPath,
 	ShapeColorIndex,

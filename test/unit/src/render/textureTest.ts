@@ -4,6 +4,7 @@ import * as resetClip from '../../../../src/render/resetClip'
 import { texture } from '../../../../src/render/texture'
 import { Outline } from '../../../../src/space/types/Outline'
 import * as to from '../../../../src/utilities/to'
+import * as applyView from '../../../../src/view/applyView'
 import { MockContext } from '../../../types/MockContext'
 
 interface ContextOrRenderTextureCall {
@@ -14,6 +15,9 @@ interface ContextOrRenderTextureCall {
 
 describe('texture', () => {
 	it('builds a path from the outline, clips the context on it, renders the texture, then resets the clip', () => {
+		const path = []
+		spyOn(applyView, 'applyView').and.returnValue(path)
+
 		const contextAndRenderTextureCallsOrder: ContextOrRenderTextureCall[] = []
 
 		const fakeBuildPath = args => contextAndRenderTextureCallsOrder.push({ call: 'buildPath', ...args })
@@ -43,7 +47,7 @@ describe('texture', () => {
 		})
 
 		const expectedContextAndRenderTextureCallsOrder = [
-			{ call: 'buildPath', context, outline },
+			{ call: 'buildPath', context, path },
 			{ call: 'clipPath', context },
 			jasmine.objectContaining({
 				call: 'renderTexture',

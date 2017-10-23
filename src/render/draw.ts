@@ -3,6 +3,7 @@ import { Outline } from '../space'
 import { applyView } from '../view'
 import { fill } from './fill'
 import { Color } from './types'
+import { Path } from './types/Path'
 
 const MINIMUM_POLYGON_COORDINATE_COUNT = 3
 
@@ -12,9 +13,9 @@ const draw: (_: {
 	if (outline.length < MINIMUM_POLYGON_COORDINATE_COUNT) {
 		return
 	}
-	const outlineAdjustedForView = applyView(outline)
+	const path: Path = applyView(outline)
 
-	fill({ context, shapeColor, outline: outlineAdjustedForView })
+	fill({ context, shapeColor, path })
 }
 
 export { draw }

@@ -1,10 +1,10 @@
 import { Context } from '../page'
-import { Outline } from '../space'
+import { Path } from './types'
 
-const buildPath: (_: { context: Context, outline: Outline }) => void = ({ context, outline }) => {
+const buildPath: (_: { context: Context, path: Path }) => void = ({ context, path }) => {
 	context.beginPath()
-	context.moveTo(outline[ 0 ][ 0 ], outline[ 0 ][ 1 ])
-	outline.slice(1).forEach(coordinate => context.lineTo(coordinate[ 0 ], coordinate[ 1 ]))
+	context.moveTo(path[ 0 ][ 0 ], path[ 0 ][ 1 ])
+	path.slice(1).forEach(pixel => context.lineTo(pixel[ 0 ], pixel[ 1 ]))
 }
 
 export { buildPath }

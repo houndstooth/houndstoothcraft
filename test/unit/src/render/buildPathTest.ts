@@ -3,12 +3,12 @@ import { buildPath } from '../../../../src/render/buildPath'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('build path', () => {
-	it('draws the path with the correct outline and fills it', () => {
-		const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
+	it('draws the correct path and fills it', () => {
+		const path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 		const contextCallsOrder = []
 		const context = buildMockContext({ contextCallsOrder })
 
-		buildPath({ context, outline })
+		buildPath({ context, path })
 
 		const expectedContextCallsOrder = [
 			{ method: 'beginPath' },

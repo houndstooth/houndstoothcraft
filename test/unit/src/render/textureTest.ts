@@ -36,8 +36,8 @@ describe('texture', () => {
 			context,
 			outline,
 			renderTexture: fakeRenderTexture,
-			shapeColorIndex,
 			shapeColorCount,
+			shapeColorIndex,
 			tileOrigin,
 			tileSize,
 		})
@@ -48,8 +48,8 @@ describe('texture', () => {
 			jasmine.objectContaining({
 				call: 'renderTexture',
 				context,
-				shapeColorIndex,
 				shapeColorCount,
+				shapeColorIndex,
 				tileOrigin,
 				tileSize,
 			}),

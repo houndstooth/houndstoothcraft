@@ -7,22 +7,30 @@ import { Dimension } from '../page'
 import { Coordinate, Radian } from '../space'
 import { SettingsPath } from '../store'
 
+// First order, singular
+
+const Dimension: (dimension: Dimension) => number = dimension => dimension as any
 const Frame: (frame: Frame) => number = frame => frame as any
 const Layer: (layer: Layer) => number = layer => layer as any
 const Radian: (radian: Radian) => number = radian => radian as any
-const Unit: (units: Unit) => number = units => units as any
-const Dimension: (dimension: Dimension) => number = dimension => dimension as any
-const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
 const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number = shapeColorIndex => shapeColorIndex as any
+const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
+const Unit: (units: Unit) => number = units => units as any
+
+// First order, hybrid singular and plural (only different than above because plural words make sense for them)
+
 const SettingsPath: {
 	(settingsPath: SettingsPath): string
-	(settingPath: SettingsPath): string[]
-} = settingsPath => settingsPath as any
-const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
+	(settingPath: SettingsPath): string[],
+} = settingsPath => settingsPath
 const Address: {
 	(address: Address): number
 	(address: Address[]): number[],
-} = address => address as any
+} = address => address
+
+// Second order, singular
+
+const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
 
 export {
 	Address,
@@ -31,8 +39,8 @@ export {
 	Frame,
 	Layer,
 	Radian,
-	StripePosition,
-	Unit,
 	SettingsPath,
 	ShapeColorIndex,
+	StripePosition,
+	Unit,
 }

@@ -1,4 +1,4 @@
-// tslint:disable:variable-name
+// tslint:disable:variable-name member-ordering
 
 import { Frame } from '../animation'
 import { Address, ColorSet, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'
@@ -9,42 +9,53 @@ import { ColorRange } from '../render/types/ColorRange'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath } from '../store'
 
+// First order, singular
+
+const Dimension: (dimension: number) => Dimension = dimension => dimension as any
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any
 const Radian: (radian: number) => Radian = radian => radian as any
-const Unit: (unit: number) => Unit = unit => unit as any
-const Dimension: (dimension: number) => Dimension = dimension => dimension as any
-const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
-const SettingsPath: {
-	(settingsPath: string): SettingsPath
-	(settingsPath: Array<string | SettingsPath>): SettingsPath[]
-} = settingsPath => settingsPath as any
+const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
+const Unit: (unit: number) => Unit = unit => unit as any
 
-const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as any
-const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as any
+// First order, plural aliases
 
-// tslint:disable-next-line:member-ordering
-const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a }) => Color = color => color as any
-
-const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as any
-
-const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
-
-const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
-	coordinate.map(dimension => dimension as any) as Coordinate
-
+const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as Dimension[]
+// Frames not yet needed
+const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as Layer[]
+// Radians might be confusing because it's also natural to say "in radians"; I would call an array of them a Rotation
 const ShapeColorIndices: (shapeColorIndices: Array<number | ShapeColorIndex>) => ShapeColorIndex[] =
 	shapeColorIndices =>
 		shapeColorIndices.map(shapeColorIndex => shapeColorIndex as any) as ShapeColorIndex[]
-
-const Address: (address: Array<number | Address>) => Address[] = address =>
-	address.map(index => index as any) as Address[]
-
 const StripePositions: (stripePositions: Array<StripePosition | number>) => StripePosition[] = stripePositions =>
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]
+// Units might be confusing because it's also natural to say "in units"; see Coordinate for a type that is Unit[]
 
-const Supertile: (supertile: (number | ShapeColorIndex)[][][]) => Supertile = supertile => supertile as any
+// First order, hybrid singular and plural (only different than above because plural words make sense for them)
+
+const Address: {
+	(address: number): Address
+	(address: Array<number | Address>): Address[],
+} = address => address
+const SettingsPath: {
+	(settingsPath: string): SettingsPath
+	(settingsPath: Array<string | SettingsPath>): SettingsPath[],
+} = settingsPath => settingsPath
+
+// Second order, singular
+
+// Dimension -> Pixel
+const Supertile: (supertile: Array<Array<Array<number | ShapeColorIndex>>>) => Supertile = supertile =>
+	supertile as Supertile
+const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
+	coordinate.map(dimension => dimension as any) as Coordinate
+const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a }) => Color = color => color as Color
+
+// Third order, singular
+
+const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
+const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as ColorSet
 
 export {
 	Address,
@@ -57,12 +68,12 @@ export {
 	Layer,
 	Layers,
 	Outline,
-	SettingsPath,
 	Radian,
+	SettingsPath,
+	ShapeColorIndex,
+	ShapeColorIndices,
 	StripePosition,
 	StripePositions,
 	Supertile,
-	ShapeColorIndex,
-	ShapeColorIndices,
 	Unit,
 }

@@ -57,27 +57,26 @@ const getIndices: (_: {
 }
 
 const getByWeave: (_: {
-	addressOffset: Address, gridAddress: Address, weave: Weave,
+	addressOffset: Address[], gridAddress: Address[], weave: Weave,
 }) => ShapeColorIndex[] = ({ addressOffset, gridAddress, weave }) => {
 	const { rows, columns } = weave
-	const columnsIndex = wrappedIndex({ array: columns, index: gridAddress[ 0 ] + addressOffset[ 0 ] })
-	const rowsIndex = wrappedIndex({ array: rows, index: gridAddress[ 1 ] + addressOffset[ 1 ] })
+	const [ x, y ] = from.Address(gridAddress)
+	const [ xOffset, yOffset ] = from.Address(addressOffset)
+
+	const columnsIndex = wrappedIndex({ array: columns, index: x + xOffset })
+	const rowsIndex = wrappedIndex({ array: rows, index: y + yOffset })
 
 	return to.ShapeColorIndices([ rowsIndex, columnsIndex ])
 }
 
 const getBySupertile: (_: {
-	addressOffset: Address, gridAddress: Address, supertile: Supertile,
+	addressOffset: Address[], gridAddress: Address[], supertile: Supertile,
 }) => ShapeColorIndex[] = ({ addressOffset, gridAddress, supertile }) => {
-	const supertileColumn = wrappedIndex({
-		array: supertile,
-		index: gridAddress[ 0 ] + addressOffset[ 0 ],
-	})
+	const [ x, y ] = from.Address(gridAddress)
+	const [ xOffset, yOffset ] = from.Address(addressOffset)
+	const supertileColumn = wrappedIndex({ array: supertile, index: x + xOffset })
 
-	return wrappedIndex({
-		array: supertileColumn,
-		index: gridAddress[ 1 ] + addressOffset[ 1 ],
-	})
+	return wrappedIndex({ array: supertileColumn, index: y + yOffset })
 }
 
 const SWITCHEROO_SIZE = 4

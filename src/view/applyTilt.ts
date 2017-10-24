@@ -4,8 +4,8 @@ import { Path, Pixel } from '../render'
 import { Radian } from '../space'
 import { getFromBaseOrDefaultPattern } from '../store'
 import * as from from '../utilities/from'
-import * as to from '../utilities/to'
 import { rotate } from '../utilities/mathUtilities'
+import * as to from '../utilities/to'
 
 const applyTilt: (path: Path) => Path = path => {
 	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')

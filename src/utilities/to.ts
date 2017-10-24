@@ -19,7 +19,7 @@ const Radian: (radian: number) => Radian = radian => radian as any
 const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const Unit: (unit: number) => Unit = unit => unit as any
-// singular Address not yet needed
+// Address (singular) not yet needed
 const SettingsStep: (settingsStep: string) => SettingsPath = settingsStep => settingsStep as any
 
 // First order, plurals

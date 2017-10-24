@@ -4,10 +4,10 @@ import { Frame } from '../animation'
 import { Address, ShapeColorIndex, StripePosition, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimension } from '../page'
+import { Pixel } from '../render'
 import { Coordinate, Radian } from '../space'
 import { Outline } from '../space/types/Outline'
 import { SettingsPath } from '../store'
-import { Pixel } from '../render'
 
 // First order, singular
 
@@ -18,7 +18,7 @@ const Radian: (radian: Radian) => number = radian => radian as any
 const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number = shapeColorIndex => shapeColorIndex as any
 const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
 const Unit: (units: Unit) => number = units => units as any
-// singular Address not yet needed
+// Address (singular) not yet needed
 const SettingsStep: (settingsStep: SettingsPath) => string = settingsStep => settingsStep as any
 
 // First order, plurals

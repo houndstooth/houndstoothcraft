@@ -1,5 +1,5 @@
-import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 import { to } from '../../../../src'
+import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {
 	describe('#isOdd', () => {

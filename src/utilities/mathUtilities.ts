@@ -26,7 +26,7 @@ const termialRoot: (_: {
 }
 
 const rotate: (_: {
-	fixedPoint: number[], point: number[], rotation: Radian
+	fixedPoint: number[], point: number[], rotation: Radian,
 }) => number[] = ({ fixedPoint, point, rotation }) => {
 	const sin = Math.sin(from.Radian(rotation))
 	const cos = Math.cos(from.Radian(rotation))

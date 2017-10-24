@@ -1,7 +1,9 @@
 import { Address } from './Address'
 import { AssignmentMode } from './AssignmentMode'
 import { BaseStripeDiagonal } from './BaseStripeDiagonal'
+import { ColorOptions } from './ColorOptions'
 import { ColorSet } from './ColorSet'
+import { ComponentParams } from './ComponentParams'
 import { ExecuteTexture } from './ExecuteTexture'
 import { GetStripePosition } from './GetStripePosition'
 import { GetStripePositions } from './GetStripePositions'
@@ -11,6 +13,7 @@ import { OffsetAddress } from './OffsetAddress'
 import { ShapeColorIndex } from './ShapeColorIndex'
 import { ShapeParams } from './ShapeParams'
 import { Solid } from './Solid'
+import { SolidParams } from './SolidParams'
 import { StripeCountMode } from './StripeCountMode'
 import { StripePosition } from './StripePosition'
 import { Supertile } from './Supertile'
@@ -36,10 +39,13 @@ export {
 	TransformShapeColorIndices,
 	OffsetAddress,
 	ShapeColorIndex,
+	ColorOptions,
 	ColorSet,
 	Grid,
 	ExecuteTexture,
 	ShapeParams,
+	ComponentParams,
 	Solid,
+	SolidParams,
 	Texture,
 }

@@ -1,10 +1,8 @@
+import { ComponentParams } from './ComponentParams'
 import { ExecuteTexture } from './ExecuteTexture'
-import { SolidParams } from './SolidParams'
-import { TileOriginAndSize } from './TileOriginAndSize'
 
-interface TextureParams extends SolidParams, TileOriginAndSize {
+interface TextureParams extends ComponentParams {
 	executeTexture: ExecuteTexture,
-	shapeColorCount: number,
 }
 
 export { TextureParams }

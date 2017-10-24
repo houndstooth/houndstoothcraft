@@ -1,9 +1,8 @@
-import { ShapeColorIndex, TileOriginAndSize } from '../'
-import { GetOutline, OutlineOptions } from '../../space'
+import { ShapeColorIndex } from '../'
+import { GetOutline, GetOutlineParams } from '../../space'
 
-interface ShapeParams extends TileOriginAndSize {
+interface ShapeParams extends GetOutlineParams {
 	getOutline: GetOutline,
-	outlineOptions?: OutlineOptions,
 	shapeColorIndices: ShapeColorIndex[],
 	stripeIndex?: number,
 }

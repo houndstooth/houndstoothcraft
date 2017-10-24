@@ -1,9 +1,9 @@
 import { HALF } from '../constants'
+import { Px } from '../page'
 import { Path, Pixel } from '../render'
 import { getFromBaseOrDefaultPattern, ViewSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
-import { Px } from '../page'
 
 const applyZoom: (path: Path) => Path = path => path.map(adjustPixelForZoom)
 

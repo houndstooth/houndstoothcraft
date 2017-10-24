@@ -2,7 +2,7 @@ import { ColorAssignmentSettings, getFromBaseOrDefaultPattern } from '../store'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
-import { Address, AssignmentMode, ShapeColorIndex, Supertile, Weave } from './types'
+import { Address, AssignmentMode, ShapeColorIndex, Supertile, TransformShapeColorIndices, Weave } from './types'
 
 const getShapeColorIndices: (_: { gridAddress: Address[] }) => ShapeColorIndex[] = ({ gridAddress }) => {
 	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
@@ -80,9 +80,7 @@ const getBySupertile: (_: {
 
 const SWITCHEROO_SIZE = 4
 
-const applySwitcheroo: (_: {
-	gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
-}) => ShapeColorIndex[] = ({ gridAddress, shapeColorIndices }) => {
+const applySwitcheroo: TransformShapeColorIndices = ({ gridAddress, shapeColorIndices }) => {
 	const [ x, y ] = from.Address(gridAddress)
 	const xMod = x % SWITCHEROO_SIZE
 	const yMod = y % SWITCHEROO_SIZE

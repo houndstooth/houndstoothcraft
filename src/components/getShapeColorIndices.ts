@@ -1,4 +1,3 @@
-import { X_INDEX, Y_INDEX } from '../constants'
 import { ColorAssignmentSettings, getFromBaseOrDefaultPattern } from '../store'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import * as from from '../utilities/from'
@@ -84,8 +83,9 @@ const SWITCHEROO_SIZE = 4
 const applySwitcheroo: (_: {
 	gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
 }) => ShapeColorIndex[] = ({ gridAddress, shapeColorIndices }) => {
-	const xMod = from.Address(gridAddress[ X_INDEX ]) % SWITCHEROO_SIZE
-	const yMod = from.Address(gridAddress[ Y_INDEX ]) % SWITCHEROO_SIZE
+	const [ x, y ] = from.Address(gridAddress)
+	const xMod = x % SWITCHEROO_SIZE
+	const yMod = y % SWITCHEROO_SIZE
 	if (!((xMod + yMod) % SWITCHEROO_SIZE)) {
 		return to.ShapeColorIndices(reversed(shapeColorIndices))
 	}

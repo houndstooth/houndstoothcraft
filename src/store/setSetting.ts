@@ -6,7 +6,7 @@ import { SetSetting, SettingsPath } from './types'
 
 const setSetting: SetSetting = (settingsPathShortcut, value) => {
 	const settingsPath: SettingsPath[] = settingsPathShortcuts[ settingsPathShortcut ]
-	const settingName = from.SettingsPath(settingsPath.slice(-1)[0])
+	const settingName = from.SettingsStep(settingsPath.slice(-1)[0])
 	const pathToParentSetting = settingsPath.slice(0, -1)
 
 	const parentSetting = getSettingOrCreatePath({

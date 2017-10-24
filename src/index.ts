@@ -19,7 +19,7 @@ import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { Context, Dimension } from './page'
 import { Color, RenderTexture, solid } from './render'
-import { Coordinate, Outline, Radian, rotate } from './space'
+import { Coordinate, rotateCoordinate, Outline, Radian } from './space'
 import { state } from './state'
 import { defaults, Effect, getFromBaseOrDefaultPattern, StripeCountContinuumSettings } from './store'
 import { maybeAddEffectToggles } from './ui'
@@ -32,7 +32,7 @@ export {
 	tileCenter,
 	executeSelectedHoundstoothEffects,
 	solid,
-	rotate,
+	rotateCoordinate,
 	defaults,
 	maybeAddEffectToggles,
 	state,

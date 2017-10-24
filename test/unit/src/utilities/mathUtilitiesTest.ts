@@ -1,4 +1,5 @@
 import * as mathUtilities from '../../../../src/utilities/mathUtilities'
+import { to } from '../../../../src'
 
 describe('math utilities', () => {
 	describe('#isOdd', () => {
@@ -178,6 +179,19 @@ describe('math utilities', () => {
 			expect(termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(2)
 			expect(termialRoot({ rangeStart, rangeDelta, n: 12 })).toBe(3)
 			expect(termialRoot({ rangeStart, rangeDelta, n: 20 })).toBe(4)
+		})
+	})
+
+	describe('#rotate', () => {
+		it('rotates a point about a fixed point', () => {
+			const point = [ 2, 0 ]
+			const fixedPoint = [ 1, 1 ]
+			const rotation = to.Radian(Math.PI / 2)
+
+			const rotatedPoint = mathUtilities.rotate({ point, fixedPoint, rotation })
+
+			const expectedPoint = [ 2, 2 ]
+			expect(rotatedPoint).toEqual(expectedPoint)
 		})
 	})
 })

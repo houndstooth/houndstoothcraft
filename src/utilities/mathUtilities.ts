@@ -1,6 +1,9 @@
 // tslint:disable:no-magic-numbers
 
-const isOdd: (n) => boolean = n => n % 2 === 1
+import { Radian } from '../space'
+import * as from from '../utilities/from'
+
+const isOdd: (n: number) => boolean = n => n % 2 === 1
 
 const triangularNumber: (n: number) => number = n => n * (n + 1) / 2
 
@@ -22,6 +25,24 @@ const termialRoot: (_: {
 	return (Math.sqrt(a + b) - c + rangeDelta) / d
 }
 
+const rotate: (_: {
+	fixedPoint: number[], point: number[], rotation: Radian
+}) => number[] = ({ fixedPoint, point, rotation }) => {
+	const sin = Math.sin(from.Radian(rotation))
+	const cos = Math.cos(from.Radian(rotation))
+
+	const pointX = fixedPoint[ 0 ]
+	const pointY = fixedPoint[ 1 ]
+
+	const relativeX = point[ 0 ] - pointX
+	const relativeY = point[ 1 ] - pointY
+
+	return [
+		pointX + relativeX * cos - relativeY * sin,
+		pointY + relativeX * sin + relativeY * cos,
+	]
+}
+
 export {
 	isOdd,
 	trapezoidalNumber,
@@ -29,4 +50,5 @@ export {
 	triangularRoot,
 	quarterSquareNumber,
 	termialRoot,
+	rotate,
 }

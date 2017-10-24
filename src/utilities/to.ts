@@ -19,8 +19,10 @@ const Radian: (radian: number) => Radian = radian => radian as any
 const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const Unit: (unit: number) => Unit = unit => unit as any
+// singular Address not yet needed
+const SettingsStep: (settingsStep: string) => SettingsPath = settingsStep => settingsStep as any
 
-// First order, plural aliases
+// First order, plurals
 
 const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as Dimension[]
 // Frames not yet needed
@@ -32,26 +34,16 @@ const ShapeColorIndices: (shapeColorIndices: Array<number | ShapeColorIndex>) =>
 const StripePositions: (stripePositions: Array<StripePosition | number>) => StripePosition[] = stripePositions =>
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]
 // Units might be confusing because it's also natural to say "in units"; see Coordinate for a type that is Unit[]
-
-// First order, hybrid singular and plural (only different than above because plural words make sense for them)
-
-const Address: {
-	(address: number): Address
-	(address: Array<number | Address>): Address[],
-} = address => address
-const SettingsPath: {
-	(settingsPath: string): SettingsPath
-	(settingsPath: Array<string | SettingsPath>): SettingsPath[],
-} = settingsPath => settingsPath
+const Address: (address: Array<number | Address>) => Address[] = address => address as any
+const SettingsPath: (settingsPath: Array<string | SettingsPath>) => SettingsPath[] = settingsPath => settingsPath as any
 
 // Second order, singular
 
-// Dimension -> Pixel
 const Supertile: (supertile: Grid<Array<number | ShapeColorIndex>>) => Supertile = supertile =>
 	supertile as Supertile
 const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
 	coordinate.map(unit => unit as any) as Coordinate
-const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a }) => Color = color => color as Color
+const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a: number }) => Color = color => color as Color
 const Pixel: (pixel: Array<number | Dimension>) => Pixel = pixel =>
 	pixel.map(dimension => dimension as any) as Pixel
 
@@ -76,6 +68,7 @@ export {
 	Pixel,
 	Radian,
 	SettingsPath,
+	SettingsStep,
 	ShapeColorIndex,
 	ShapeColorIndices,
 	StripePosition,

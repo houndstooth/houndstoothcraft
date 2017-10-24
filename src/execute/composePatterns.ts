@@ -24,7 +24,7 @@ const composePatterns: (_: {
 			composePatterns({
 				patternToBeMergedOnto,
 				patternToMerge: overridingSetting,
-				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsPath(settingName) }),
+				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 				warnAboutConflicts,
 			})
 		}
@@ -39,7 +39,7 @@ const composePatterns: (_: {
 			maybeWarnAboutConflicts({
 				existingSetting,
 				overridingSetting,
-				settingName: to.SettingsPath(settingName),
+				settingName: to.SettingsStep(settingName),
 				settingsPath,
 				warnAboutConflicts,
 			})

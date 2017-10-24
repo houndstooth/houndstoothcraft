@@ -26,7 +26,7 @@ const stripeCountContinuumSettings = to.SettingsPath([
 ])
 
 const textureSettings = to.SettingsPath([ 'textureSettings' ])
-const renderTexture = to.SettingsPath([ 'textureSettings', 'renderTexture' ])
+const executeTexture = to.SettingsPath([ 'textureSettings', 'executeTexture' ])
 
 const tileSettings = to.SettingsPath([ 'tileSettings' ])
 const tileSize = to.SettingsPath([ 'tileSettings', 'tileSize' ])
@@ -61,7 +61,7 @@ export {
 	layerSettings,
 	opacity,
 	refreshCanvas,
-	renderTexture,
+	executeTexture,
 	rotateViewAboutCanvasCenter,
 	startAnimationFrame,
 	stripeCount,

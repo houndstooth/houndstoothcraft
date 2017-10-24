@@ -1,5 +1,9 @@
-import { Context } from '../page'
+import { getCurrentContext } from '../canvas'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
-const resetClip: (_: { context: Context }) => void = ({ context }) => context.restore()
+const resetClip: NullarySideEffector = () => {
+	const context = getCurrentContext()
+	context.restore()
+}
 
 export { resetClip }

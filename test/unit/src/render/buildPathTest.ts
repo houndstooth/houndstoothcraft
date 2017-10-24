@@ -1,14 +1,15 @@
 import { to } from '../../../../src'
 import { buildPath } from '../../../../src/render/buildPath'
+import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('build path', () => {
 	it('draws the correct path and fills it', () => {
 		const path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 		const contextCallsOrder = []
-		const context = buildMockContext({ contextCallsOrder })
+		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		buildPath({ context, path })
+		buildPath({ path })
 
 		const expectedContextCallsOrder = [
 			{ method: 'beginPath' },

@@ -1,6 +1,8 @@
-import { Context } from '../page'
+import { getCurrentContext } from '../canvas'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
-const clipPath: (_: { context: Context }) => void = ({ context }) => {
+const clipPath: NullarySideEffector = () => {
+	const context = getCurrentContext()
 	context.save()
 	context.clip()
 }

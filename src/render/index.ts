@@ -1,17 +1,17 @@
+import { fill } from './fill'
 import { getColor } from './getColor'
 import { parseColor } from './parseColor'
-import { shape } from './shape'
-import { solid } from './solid'
-import { Color, Path, Pixel, RenderTexture, ShapeParams } from './types'
+import { resetClip } from './resetClip'
+import { setClip } from './setClip'
+import { Color, Path, Pixel } from './types'
 
 export {
 	getColor,
 	parseColor,
-	shape,
-	solid,
-	ShapeParams,
 	Color,
-	RenderTexture,
 	Path,
 	Pixel,
+	setClip,
+	resetClip,
+	fill,
 }

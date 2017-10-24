@@ -1,13 +1,17 @@
 import { getStandardTileOriginAndSize } from './getStandardTileOriginAndSize'
 import { grid } from './grid'
 import { perStripe } from './perStripe'
+import { shape } from './shape'
+import { solid } from './solid'
 import { standardStripePositions } from './standardStripePositions'
+import { texture } from './texture'
 import { tileCenter } from './tileCenter'
 import {
 	Address,
 	AssignmentMode,
 	BaseStripeDiagonal,
 	ColorSet,
+	ExecuteTexture,
 	GetStripePosition,
 	GetStripePositions,
 	GetTileOriginAndSize,
@@ -46,4 +50,8 @@ export {
 	ShapeColorIndex,
 	ColorSet,
 	Grid,
+	shape,
+	solid,
+	ExecuteTexture,
+	texture,
 }

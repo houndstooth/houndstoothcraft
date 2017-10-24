@@ -1,9 +1,9 @@
-import { TileOriginAndSize } from '../../components/types/TileOriginAndSize'
-import { RenderTexture } from './RenderTexture'
+import { ExecuteTexture } from './ExecuteTexture'
 import { SolidParams } from './SolidParams'
+import { TileOriginAndSize } from './TileOriginAndSize'
 
 interface TextureParams extends SolidParams, TileOriginAndSize {
-	renderTexture: RenderTexture,
+	executeTexture: ExecuteTexture,
 	shapeColorCount: number,
 }
 

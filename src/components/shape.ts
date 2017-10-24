@@ -1,4 +1,3 @@
-import { getCurrentContext } from '../canvas'
 import { getFromBaseOrDefaultPattern, TextureSettings } from '../store'
 import { wrappedIndex } from '../utilities/codeUtilities'
 import { solid } from './solid'
@@ -12,17 +11,16 @@ const shape: (_: ShapeParams) => void = params => {
 		return
 	}
 
-	const context = getCurrentContext()
 	const shapeColorIndex = wrappedIndex({ array: shapeColorIndices, index: stripeIndex })
 
-	const { renderTexture }: TextureSettings = getFromBaseOrDefaultPattern('textureSettings')
+	const { executeTexture }: TextureSettings = getFromBaseOrDefaultPattern('textureSettings')
 
-	if (renderTexture) {
+	if (executeTexture) {
 		const shapeColorCount = shapeColorIndices.length
-		texture({ context, outline, tileOrigin, tileSize, renderTexture, shapeColorIndex, shapeColorCount })
+		texture({ outline, tileOrigin, tileSize, executeTexture, shapeColorIndex, shapeColorCount })
 	}
 	else {
-		solid({ context, outline, shapeColorIndex })
+		solid({ outline, shapeColorIndex })
 	}
 }
 

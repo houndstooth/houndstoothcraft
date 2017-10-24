@@ -1,7 +1,7 @@
-import { RenderTexture } from '../../../render'
+import { ExecuteTexture } from '../../../components'
 
 interface TextureSettings {
-	renderTexture?: RenderTexture,
+	executeTexture?: ExecuteTexture,
 }
 
 export { TextureSettings }

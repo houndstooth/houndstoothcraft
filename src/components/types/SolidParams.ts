@@ -1,9 +1,7 @@
-import { ShapeColorIndex } from '../../components'
-import { Context } from '../../page'
 import { Outline } from '../../space'
+import { ShapeColorIndex } from './ShapeColorIndex'
 
 interface SolidParams {
-	context: Context,
 	outline: Outline,
 	shapeColorIndex: ShapeColorIndex,
 }

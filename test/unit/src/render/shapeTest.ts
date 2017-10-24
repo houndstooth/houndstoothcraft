@@ -1,7 +1,6 @@
-import * as canvas from '../../../../src/canvas'
-import { shape } from '../../../../src/render/shape'
-import * as solid from '../../../../src/render/solid'
-import * as texture from '../../../../src/render/texture'
+import { shape } from '../../../../src/components/shape'
+import * as solid from '../../../../src/components/solid'
+import * as texture from '../../../../src/components/texture'
 import { state } from '../../../../src/state'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
@@ -15,8 +14,6 @@ describe('shape', () => {
 	const shapeColorIndex = 45
 	const outlineOptions = {}
 
-	const context = {}
-
 	let getOutlineSpy
 
 	beforeEach(() => {
@@ -25,7 +22,6 @@ describe('shape', () => {
 		spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
 		spyOn(texture, 'texture')
 		spyOn(solid, 'solid')
-		spyOn(canvas, 'getCurrentContext').and.returnValue(context)
 	})
 
 	describe('when no outline is returned from the get outline function', () => {
@@ -68,19 +64,6 @@ describe('shape', () => {
 			})
 		})
 
-		it('gets the current context', () => {
-			shape({
-				getOutline: getOutlineSpy,
-				outlineOptions,
-				shapeColorIndices,
-				stripeIndex,
-				tileOrigin,
-				tileSize,
-			})
-
-			expect(canvas.getCurrentContext).toHaveBeenCalled()
-		})
-
 		// tslint:disable-next-line:max-line-length
 		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
 			shape({
@@ -98,10 +81,10 @@ describe('shape', () => {
 			})
 		})
 
-		describe('when a renderTexture method is supplied', () => {
-			const renderTexture = noop
+		describe('when an executeTexture method is supplied', () => {
+			const executeTexture = noop
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.textureSettings = { renderTexture }
+				state.mainHoundstooth.basePattern.textureSettings = { executeTexture }
 			})
 
 			it('passes it to the texture component to be rendered', () => {
@@ -115,9 +98,8 @@ describe('shape', () => {
 				})
 
 				expect(texture.texture).toHaveBeenCalledWith({
-					context,
+					executeTexture,
 					outline,
-					renderTexture,
 					shapeColorCount: 0,
 					shapeColorIndex,
 					tileOrigin,
@@ -126,7 +108,7 @@ describe('shape', () => {
 			})
 		})
 
-		describe('when a renderTexture method is not supplied', () => {
+		describe('when an executeTexture method is not supplied', () => {
 			it('passes it to the solid component to be rendered', () => {
 				shape({
 					getOutline: getOutlineSpy,
@@ -139,7 +121,6 @@ describe('shape', () => {
 
 				expect(solid.solid).toHaveBeenCalledWith(
 					jasmine.objectContaining({
-						context,
 						outline,
 						shapeColorIndex,
 					}),

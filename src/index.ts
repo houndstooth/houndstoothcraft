@@ -3,10 +3,12 @@ import {
 	Address,
 	AssignmentMode,
 	ColorSet,
+	ExecuteTexture,
 	GetStripePosition,
 	GetStripePositions,
 	perStripe,
 	ShapeColorIndex,
+	solid,
 	StripeCountMode,
 	StripePosition,
 	Supertile,
@@ -18,7 +20,7 @@ import {
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
 import { Context, Dimension } from './page'
-import { Color, RenderTexture, solid } from './render'
+import { Color } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinate } from './space'
 import { state } from './state'
 import { defaults, Effect, getFromBaseOrDefaultPattern, StripeCountContinuumSettings } from './store'
@@ -58,7 +60,7 @@ export {
 	from,
 	getFromBaseOrDefaultPattern,
 	StripeCountContinuumSettings,
-	RenderTexture,
+	ExecuteTexture,
 	GetStripePositions,
 	ColorSet,
 }

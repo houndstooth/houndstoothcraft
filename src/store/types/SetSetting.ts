@@ -1,8 +1,8 @@
 import { Frame } from '../../animation/types/Frame'
-import { GetTileOriginAndSize, Unit } from '../../components'
+import { ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
 import { Layer } from '../../execute'
 import { Dimension } from '../../page'
-import { Color, RenderTexture } from '../../render'
+import { Color } from '../../render'
 import { Radian } from '../../space'
 import {
 	AnimationSettings,
@@ -24,6 +24,7 @@ import {
 	ColorSettingsPathShortcut,
 	ColorsPathShortcut,
 	DimensionPathShortcut,
+	ExecuteTexturePathShortcut,
 	FramePathShortcut,
 	GetTileOriginAndSizePathShortcut,
 	GridSettingsPathShortcut,
@@ -31,7 +32,6 @@ import {
 	LayerSettingsPathShortcut,
 	NumberPathShortcut,
 	RadianPathShortcut,
-	RenderTexturePathShortcut,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsPathShortcut,
 	TextureSettingsPathShortcut,
@@ -50,7 +50,7 @@ interface SetSetting {
 	(settingsPathShortcut: LayerPathShortcut, value: Layer): void
 	(settingsPathShortcut: NumberPathShortcut, value: number): void
 	(settingsPathShortcut: RadianPathShortcut, value: Radian): void
-	(settingsPathShortcut: RenderTexturePathShortcut, value: RenderTexture): void
+	(settingsPathShortcut: ExecuteTexturePathShortcut, value: ExecuteTexture): void
 	(settingsPathShortcut: UnitPathShortcut, value: Unit): void
 	(settingsPathShortcut: AnimationSettingsPathShortcut, value: AnimationSettings): void
 	(settingsPathShortcut: ColorSettingsPathShortcut, value: ColorSettings): void

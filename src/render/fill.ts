@@ -1,19 +1,23 @@
-import { Context } from '../page'
+import { Outline } from '../space'
+import { applyView } from '../view'
+import { buildFill } from './buildFill'
 import { buildPath } from './buildPath'
 import { fillPath } from './fillPath'
-import { parseColor } from './parseColor'
-import { Color, Path } from './types'
+import { Color } from './types'
+import { Path } from './types/Path'
 
-const fill: (_: {
-	context: Context, path: Path, shapeColor: Color,
-}) => void = ({ context, path, shapeColor }) => {
-	context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
+const MINIMUM_POLYGON_COORDINATE_COUNT = 3
 
-	context.fillStyle = parseColor(shapeColor)
+const fill: (_: { outline: Outline, shapeColor: Color }) => void = ({ outline, shapeColor }) => {
+	if (outline.length < MINIMUM_POLYGON_COORDINATE_COUNT) {
+		return
+	}
 
-	buildPath({ context, path })
+	const path: Path = applyView(outline)
+	buildPath({ path })
 
-	fillPath({ context })
+	buildFill({ shapeColor })
+	fillPath()
 }
 
 export { fill }

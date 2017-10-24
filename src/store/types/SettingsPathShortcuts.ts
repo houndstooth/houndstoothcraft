@@ -17,7 +17,7 @@ type NumberPathShortcut =
 	| 'opacity'
 	| 'zoom'
 type RadianPathShortcut = 'rotateViewAboutCanvasCenter'
-type RenderTexturePathShortcut = 'renderTexture'
+type ExecuteTexturePathShortcut = 'executeTexture'
 type UnitPathShortcut = 'tileSize'
 
 type AnimationSettingsPathShortcut = 'animationSettings'
@@ -41,7 +41,7 @@ export {
 	LayerPathShortcut,
 	NumberPathShortcut,
 	RadianPathShortcut,
-	RenderTexturePathShortcut,
+	ExecuteTexturePathShortcut,
 	UnitPathShortcut,
 	AnimationSettingsPathShortcut,
 	ColorSettingsPathShortcut,

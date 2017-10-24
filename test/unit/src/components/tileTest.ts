@@ -2,9 +2,9 @@ import * as getShapeColorIndices from '../../../../src/components/getShapeColorI
 import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
+import * as shape from '../../../../src/components/shape'
 import { tile } from '../../../../src/components/tile'
 import { PERIMETER_SCALAR } from '../../../../src/constants'
-import * as render from '../../../../src/render'
 import * as space from '../../../../src/space'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
@@ -16,7 +16,7 @@ describe('tile', () => {
 	let getShapeColorIndicesSpy
 	let isTileUniformSpy
 	beforeEach(() => {
-		shapeSpy = spyOn(render, 'shape')
+		shapeSpy = spyOn(shape, 'shape')
 		spyOn(space, 'squareOutline')
 		spyOn(space, 'stripeOutline')
 		getShapeColorIndicesSpy = spyOn(getShapeColorIndices, 'getShapeColorIndices')

@@ -59,7 +59,7 @@ const DEFAULT_DELTA_STRIPE_COUNT = 1
 const DEFAULT_INITIAL_STRIPE_COUNT = 1
 const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
 const DEFAULT_GET_STRIPE_POSITIONS: GetStripePositions = standardStripePositions
-const DEFAULT_RENDER_TEXTURE: undefined = undefined
+const DEFAULT_EXECUTE_TEXTURE: undefined = undefined
 const DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE = true
 const DEFAULT_GET_TILE_ORIGIN_AND_SIZE: GetTileOriginAndSize = getStandardTileOriginAndSize
 const DEFAULT_CENTER_VIEW_ON_CENTER_OF_TILE_AT_HOME_ADDRESS = false
@@ -137,7 +137,7 @@ const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 }
 
 const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
-	renderTexture: DEFAULT_RENDER_TEXTURE,
+	executeTexture: DEFAULT_EXECUTE_TEXTURE,
 }
 
 const DEFAULT_TILE_SETTINGS: TileSettings = {

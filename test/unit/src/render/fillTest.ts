@@ -1,50 +1,67 @@
-import { to } from '../../../../src'
-import { ERASE } from '../../../../src/constants'
+import * as buildFill from '../../../../src/render/buildFill'
 import * as buildPath from '../../../../src/render/buildPath'
 import { fill } from '../../../../src/render/fill'
 import * as fillPath from '../../../../src/render/fillPath'
-import * as parseColor from '../../../../src/render/parseColor'
-import { buildMockContext } from '../../../helpers/buildMockContext'
+import * as to from '../../../../src/utilities/to'
+import * as view from '../../../../src/view'
 
 describe('fill', () => {
 	const shapeColor = { a: 1 }
-	const parsedColor = '#012345'
-	const context = buildMockContext()
-	const path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 
+	const path = []
 	beforeEach(() => {
-		spyOn(parseColor, 'parseColor').and.returnValue(parsedColor)
-		spyOn(buildPath, 'buildPath')
-		spyOn(fillPath, 'fillPath')
-
-		fill({ context, shapeColor, path })
+		spyOn(view, 'applyView').and.returnValue(path)
 	})
 
-	it('parses the shape color and sets the fill style to it', () => {
-		expect(parseColor.parseColor).toHaveBeenCalledWith(shapeColor)
+	it('returns early if there are no coordinates in the outline', () => {
+		const outline = []
+
+		fill({ shapeColor, outline })
+
+		expect(view.applyView).not.toHaveBeenCalled()
 	})
 
-	it('sets the fill style to the parsed color', () => {
-		expect(context.fillStyle).toBe(parsedColor)
+	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
+		const outline = to.Outline([ [ 0, 1 ] ])
+
+		fill({ shapeColor, outline })
+
+		expect(view.applyView).not.toHaveBeenCalled()
 	})
 
-	it('builds a path from it ', () => {
-		expect(buildPath.buildPath).toHaveBeenCalledWith({ context, path })
+	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
+		const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ] ])
+
+		fill({ shapeColor, outline })
+
+		expect(view.applyView).not.toHaveBeenCalled()
 	})
 
-	it('fills this path', () => {
-		expect(fillPath.fillPath).toHaveBeenCalledWith({ context })
-	})
+	describe('when there are at least three coordinates in the outline', () => {
+		let outline
+		beforeEach(() => {
+			spyOn(buildPath, 'buildPath')
+			spyOn(buildFill, 'buildFill')
+			spyOn(fillPath, 'fillPath')
+			outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
 
-	it('defaults the global composite operation to source-over', () => {
-		expect(context.globalCompositeOperation).toEqual('source-over')
-	})
+			fill({ shapeColor, outline })
+		})
 
-	describe('when erasing', () => {
-		it('sets the operation to destination-out', () => {
-			fill({ context, shapeColor: ERASE, path })
+		it('adjusts for the view settings', () => {
+			expect(view.applyView).toHaveBeenCalledWith(outline)
+		})
 
-			expect(context.globalCompositeOperation).toEqual('destination-out')
+		it('builds a path from it ', () => {
+			expect(buildPath.buildPath).toHaveBeenCalledWith({ path })
+		})
+
+		it('builds the fill ', () => {
+			expect(buildFill.buildFill).toHaveBeenCalledWith({ shapeColor })
+		})
+
+		it('fills this path', () => {
+			expect(fillPath.fillPath).toHaveBeenCalled()
 		})
 	})
 })

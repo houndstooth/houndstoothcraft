@@ -1,12 +1,13 @@
 import { fillPath } from '../../../../src/render/fillPath'
+import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const contextCallsOrder = []
-		const context = buildMockContext({ contextCallsOrder })
+		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		fillPath({ context })
+		fillPath()
 
 		const expectedContextCallsOrder = [
 			{ method: 'closePath' },

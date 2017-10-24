@@ -1,12 +1,13 @@
 import { clipPath } from '../../../../src/render/clipPath'
+import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('clip path', () => {
 	it('saves the context to restore the clip later, then clips the context (w/ the current path)', () => {
 		const contextCallsOrder = []
-		const context = buildMockContext({ contextCallsOrder })
+		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		clipPath({ context })
+		clipPath()
 
 		const expectedContextCallsOrder = [
 			{ method: 'save' },

@@ -1,4 +1,4 @@
-import { ShapeColorIndex, TileOriginAndSize } from '../../components'
+import { ShapeColorIndex, TileOriginAndSize } from '../'
 import { GetOutline, OutlineOptions } from '../../space'
 
 interface ShapeParams extends TileOriginAndSize {

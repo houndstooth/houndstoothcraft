@@ -1,6 +1,8 @@
-import { Context } from '../page'
+import { getCurrentContext } from '../canvas'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 
-const fillPath: (_: { context: Context }) => void = ({ context }) => {
+const fillPath: NullarySideEffector = () => {
+	const context = getCurrentContext()
 	context.closePath()
 	context.fill()
 }

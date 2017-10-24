@@ -4,7 +4,7 @@ import { applyTilt } from '../../../../src/view/applyTilt'
 import { pixelsAreClose } from '../../helpers/pixelsAreClose'
 
 describe('apply tilt', () => {
-	const canvasSize = to.Dimension(200)
+	const canvasSize = to.Px(200)
 
 	it('rotates the path about the canvas center', () => {
 		state.mainHoundstooth.basePattern.viewSettings = {

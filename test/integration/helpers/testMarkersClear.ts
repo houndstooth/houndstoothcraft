@@ -1,5 +1,5 @@
 import { Canvas } from '../../../src/page/types/Canvas'
-import { Dimension } from '../../../src/page/types/Dimension'
+import { Px } from '../../../src/page/types/Px'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
 import { NullarySideEffector } from '../../../src/utilities/types/NullarySideEffector'
@@ -12,7 +12,7 @@ const testMarkersClear: NullarySideEffector = () => {
 	}
 	const testMarkersContext = testMarkersCanvas.getContext('2d')
 
-	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
+	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 
 	testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)
 }

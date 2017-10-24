@@ -5,6 +5,7 @@ import { PageElement } from '../../../src/page/types/PageElement'
 import { state } from '../../../src/state'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
+import * as to from '../../../src/utilities/to'
 import { NullarySideEffector } from '../../../src/utilities/types/NullarySideEffector'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 import { testMarkersClear } from './testMarkersClear'
@@ -36,7 +37,7 @@ const activateTestMarkerCanvas: NullarySideEffector = () => {
 		testCanvasDisplayArea.style.display = 'block'
 	}
 
-	scaleElement({ element: testCanvasDisplayArea, dimensions: [ canvasSize, canvasSize ] })
+	scaleElement({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 
 	let canvasContainer: PageElement = document.querySelector('.canvas-container') || {}
 	if (isEmpty(canvasContainer)) {

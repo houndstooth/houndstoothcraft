@@ -19,7 +19,7 @@ import {
 } from './components'
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
-import { Context, Dimension } from './page'
+import { Context, Px } from './page'
 import { Color } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinate } from './space'
 import { state } from './state'
@@ -49,7 +49,7 @@ export {
 	ShapeColorIndex,
 	TileOriginAndSize,
 	StripePosition,
-	Dimension,
+	Px,
 	Unit,
 	GetStripePosition,
 	Context,

@@ -12,7 +12,7 @@ describe('.layerSettings', () => {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 2 },
 				layerSettings: { endLayer: to.Layer(1) },
-				viewSettings: { canvasSize: to.Dimension(100) },
+				viewSettings: { canvasSize: to.Px(100) },
 			},
 			layersPattern: {
 				colorSettings: {
@@ -41,7 +41,7 @@ describe('.layerSettings', () => {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 0 },
 				layerSettings: { endLayer: to.Layer(1) },
-				viewSettings: { canvasSize: to.Dimension(100) },
+				viewSettings: { canvasSize: to.Px(100) },
 			},
 			layersPattern: {
 				colorSettings: {

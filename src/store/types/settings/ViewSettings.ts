@@ -1,8 +1,8 @@
-import { Dimension } from '../../../page'
+import { Px } from '../../../page'
 import { Radian } from '../../../space'
 
 interface ViewSettings {
-	canvasSize: Dimension,
+	canvasSize: Px,
 	centerViewOnCenterOfTileAtHomeAddress: boolean,
 	rotateViewAboutCanvasCenter: Radian,
 	zoom: number,

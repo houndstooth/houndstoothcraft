@@ -16,7 +16,7 @@ import {
 } from '../components'
 import { BLACK, TRANSPARENT } from '../constants'
 import { Layer } from '../execute'
-import { Context, Dimension } from '../page'
+import { Context, Px } from '../page'
 import { Color } from '../render'
 import { Radian } from '../space'
 import * as to from '../utilities/to'
@@ -39,7 +39,7 @@ import {
 	ViewSettings,
 } from './types'
 
-const DEFAULT_CANVAS_SIZE: Dimension = to.Dimension(800)
+const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
 const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)

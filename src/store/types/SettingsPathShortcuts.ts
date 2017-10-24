@@ -7,7 +7,6 @@ type BooleanPathShortcut =
 	| 'zoomOnCanvasCenter'
 type ColorPathShortcut = 'backgroundColor'
 type ColorsPathShortcut = 'colorSet'
-type DimensionPathShortcut = 'canvasSize'
 type FramePathShortcut = 'startAnimationFrame'
 type GetTileOriginAndSizePathShortcut = 'getTileOriginAndSize'
 type LayerPathShortcut = 'endLayer'
@@ -16,6 +15,7 @@ type NumberPathShortcut =
 	| 'stripeCount'
 	| 'opacity'
 	| 'zoom'
+type PxPathShortcut = 'canvasSize'
 type RadianPathShortcut = 'rotateViewAboutCanvasCenter'
 type ExecuteTexturePathShortcut = 'executeTexture'
 type UnitPathShortcut = 'tileSize'
@@ -35,7 +35,6 @@ export {
 	BooleanPathShortcut,
 	ColorPathShortcut,
 	ColorsPathShortcut,
-	DimensionPathShortcut,
 	FramePathShortcut,
 	GetTileOriginAndSizePathShortcut,
 	LayerPathShortcut,
@@ -48,6 +47,7 @@ export {
 	ColorAssignmentSettingsPathShortcut,
 	GridSettingsPathShortcut,
 	LayerSettingsPathShortcut,
+	PxPathShortcut,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsPathShortcut,
 	TextureSettingsPathShortcut,

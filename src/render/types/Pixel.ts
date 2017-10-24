@@ -1,6 +1,6 @@
-import { Dimension } from '../../page'
+import { Px } from '../../page'
 
 enum _PixelBrand {}
-type Pixel = _PixelBrand & Dimension[]
+type Pixel = _PixelBrand & Px[]
 
 export { Pixel }

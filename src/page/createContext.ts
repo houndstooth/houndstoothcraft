@@ -1,9 +1,9 @@
 import { getFromBaseOrDefaultPattern } from '../store'
 import { document } from '../utilities/windowWrapper'
-import { Context, Dimension, PageElement } from './types'
+import { Context, PageElement, Px } from './types'
 
 const createContext: (_: { canvasContainer: PageElement }) => Context = ({ canvasContainer }) => {
-	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
+	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 	const canvas = document.createElement('canvas')
 	canvas.style.position = 'absolute'
 	canvas.width = canvasSize

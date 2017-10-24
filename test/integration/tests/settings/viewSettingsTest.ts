@@ -14,7 +14,7 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK ]) },
-					viewSettings: { canvasSize: to.Dimension(125) },
+					viewSettings: { canvasSize: to.Px(125) },
 				},
 			}
 			activateTestMarkerCanvas()
@@ -178,7 +178,7 @@ describe('.viewSettings', () => {
 						tileSize: areaSize,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(300),
+						canvasSize: to.Px(300),
 						rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2),
 					},
 				},

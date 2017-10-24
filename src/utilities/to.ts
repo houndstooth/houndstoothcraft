@@ -3,16 +3,14 @@
 import { Frame } from '../animation'
 import { Address, ColorSet, Grid, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'
 import { Layer } from '../execute'
-import { Dimension } from '../page'
-import { Color, Pixel } from '../render'
-import { ColorRange } from '../render/types/ColorRange'
-import { Path } from '../render/types/Path'
+import { Dimensions, Px } from '../page'
+import { Color, ColorRange, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath } from '../store'
 
 // First order, singular
 
-const Dimension: (dimension: number) => Dimension = dimension => dimension as any
+const Px: (px: number) => Px = px => px as any
 const Frame: (frame: number) => Frame = frame => frame as any
 const Layer: (layer: number) => Layer = layer => layer as any
 const Radian: (radian: number) => Radian = radian => radian as any
@@ -24,7 +22,6 @@ const SettingsStep: (settingsStep: string) => SettingsPath = settingsStep => set
 
 // First order, plurals
 
-const Dimensions: (dimensions: Array<number | Dimension>) => Dimension[] = dimensions => dimensions as Dimension[]
 // Frames not yet needed
 const Layers: (layers: Array<number | Layer>) => Layer[] = layers => layers as Layer[]
 // Radians might be confusing because it's also natural to say "in radians"; I would call an array of them a Rotation
@@ -44,21 +41,23 @@ const Supertile: (supertile: Grid<Array<number | ShapeColorIndex>>) => Supertile
 const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
 	coordinate.map(unit => unit as any) as Coordinate
 const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a: number }) => Color = color => color as Color
-const Pixel: (pixel: Array<number | Dimension>) => Pixel = pixel =>
-	pixel.map(dimension => dimension as any) as Pixel
+const Pixel: (pixel: Array<number | Px>) => Pixel = pixel =>
+	pixel.map(px => px as any) as Pixel
+const Dimensions: (dimensions: Array<number | Px>) => Dimensions = dimensions =>
+	dimensions.map(px => px as any) as Dimensions
 
 // Third order, singular
 
 const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
 const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as ColorSet
-const Path: (path: Array<Array<number | Dimension> | Pixel>) => Path = path => path.map(Pixel)
+const Path: (path: Array<Array<number | Px> | Pixel>) => Path = path => path.map(Pixel)
 
 export {
 	Address,
 	Color,
 	ColorSet,
 	Coordinate,
-	Dimension,
+	Px,
 	Dimensions,
 	Frame,
 	Layer,

@@ -1,5 +1,5 @@
 import { HALF } from '../constants'
-import { Dimension } from '../page'
+import { Px } from '../page'
 import { Path, Pixel } from '../render'
 import { Radian } from '../space'
 import { getFromBaseOrDefaultPattern } from '../store'
@@ -8,14 +8,14 @@ import { rotate } from '../utilities/mathUtilities'
 import * as to from '../utilities/to'
 
 const applyTilt: (path: Path) => Path = path => {
-	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
+	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 	const rotateViewAboutCanvasCenter: Radian = getFromBaseOrDefaultPattern('rotateViewAboutCanvasCenter')
 
 	if (!rotateViewAboutCanvasCenter) {
 		return path
 	}
 
-	const canvasCenter = to.Pixel([ from.Dimension(canvasSize) * HALF, from.Dimension(canvasSize) * HALF ])
+	const canvasCenter = to.Pixel([ from.Px(canvasSize) * HALF, from.Px(canvasSize) * HALF ])
 
 	return path.map(pixel => tilt({
 		fixedPoint: canvasCenter,

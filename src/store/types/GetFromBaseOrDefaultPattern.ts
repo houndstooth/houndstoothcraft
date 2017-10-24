@@ -1,7 +1,7 @@
 import { Frame } from '../../animation/types/Frame'
 import { ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
 import { Layer } from '../../execute'
-import { Dimension } from '../../page'
+import { Px } from '../../page'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 import {
@@ -23,7 +23,6 @@ import {
 	ColorPathShortcut,
 	ColorSettingsPathShortcut,
 	ColorsPathShortcut,
-	DimensionPathShortcut,
 	ExecuteTexturePathShortcut,
 	FramePathShortcut,
 	GetTileOriginAndSizePathShortcut,
@@ -31,6 +30,7 @@ import {
 	LayerPathShortcut,
 	LayerSettingsPathShortcut,
 	NumberPathShortcut,
+	PxPathShortcut,
 	RadianPathShortcut,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsPathShortcut,
@@ -45,7 +45,7 @@ interface GetFromBaseOrDefaultPattern {
 	(settingsPathShortcut: BooleanPathShortcut): boolean
 	(settingsPathShortcut: ColorPathShortcut): Color
 	(settingsPathShortcut: ColorsPathShortcut): Color[]
-	(settingsPathShortcut: DimensionPathShortcut): Dimension
+	(settingsPathShortcut: PxPathShortcut): Px
 	(settingsPathShortcut: FramePathShortcut): Frame
 	(settingsPathShortcut: LayerPathShortcut): Layer
 	(settingsPathShortcut: NumberPathShortcut): number

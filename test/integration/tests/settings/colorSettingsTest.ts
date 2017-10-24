@@ -24,7 +24,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
+						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -62,7 +62,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
+						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -149,7 +149,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: to.Dimension(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
+								canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 							},
 						},
 					}
@@ -489,7 +489,7 @@ describe('.colorSettings', () => {
 								gridSize: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
-								canvasSize: to.Dimension(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
+								canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 							},
 						},
 					}
@@ -626,7 +626,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: to.Dimension(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
+							canvasSize: to.Px(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
 						},
 					},
 				}
@@ -703,7 +703,7 @@ describe('.colorSettings', () => {
 							gridSize: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
-							canvasSize: to.Dimension(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
+							canvasSize: to.Px(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
 						},
 					},
 				}
@@ -758,7 +758,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
+						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -799,7 +799,7 @@ describe('.colorSettings', () => {
 						gridSize: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
+						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}

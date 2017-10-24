@@ -20,7 +20,7 @@ describe('.gridSettings', () => {
 						gridSize: 3,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(200),
+						canvasSize: to.Px(200),
 					},
 				},
 			}
@@ -147,7 +147,7 @@ describe('.gridSettings', () => {
 						tileSize,
 					},
 					viewSettings: {
-						canvasSize: to.Dimension(300),
+						canvasSize: to.Px(300),
 						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
 				},

@@ -5,7 +5,7 @@ import { applyZoom } from '../../../../src/view/applyZoom'
 
 describe('apply zoom', () => {
 	const zoom = 2
-	const canvasSize = to.Dimension(200)
+	const canvasSize = to.Px(200)
 	let path
 	beforeEach(() => {
 		path = [

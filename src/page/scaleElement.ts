@@ -1,12 +1,14 @@
-import { Dimension, PageElement } from './types'
+import * as from from '../utilities/from'
+import { Dimensions, PageElement } from './types'
 
-const scaleElement: (_: { dimensions: Dimension[], element: PageElement }) => void = ({ dimensions, element }) => {
+const scaleElement: (_: { dimensions: Dimensions, element: PageElement }) => void = ({ dimensions, element }) => {
 	if (element.style) {
-		element.style.width = inPx(dimensions[ 0 ])
-		element.style.height = inPx(dimensions[ 1 ])
+		const [ x, y ] = from.Dimensions(dimensions)
+		element.style.width = inPx(x)
+		element.style.height = inPx(y)
 	}
 }
 
-const inPx = (pixelCount: Dimension): string => `${pixelCount}px`
+const inPx = (px: number): string => `${px}px`
 
 export { scaleElement }

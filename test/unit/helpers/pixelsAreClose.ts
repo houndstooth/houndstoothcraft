@@ -4,7 +4,7 @@ import { isCloseTo } from '../../helpers/isCloseTo'
 
 const pixelsAreClose: (expected: Pixel[], actual: Pixel[]) => boolean = (expected, actual) =>
 	actual.every((pixel, x) =>
-		pixel.every((dimension, y) =>
-			isCloseTo(from.Dimension(dimension), from.Dimension(expected[ x ][ y ]))))
+		pixel.every((px, y) =>
+			isCloseTo(from.Px(px), from.Px(expected[ x ][ y ]))))
 
 export { pixelsAreClose }

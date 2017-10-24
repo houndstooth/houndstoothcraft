@@ -3,15 +3,14 @@
 import { Frame } from '../animation'
 import { Address, ShapeColorIndex, StripePosition, Unit } from '../components'
 import { Layer } from '../execute'
-import { Dimension } from '../page'
+import { Dimensions, Px } from '../page'
 import { Pixel } from '../render'
-import { Coordinate, Radian } from '../space'
-import { Outline } from '../space/types/Outline'
+import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath } from '../store'
 
 // First order, singular
 
-const Dimension: (dimension: Dimension) => number = dimension => dimension as any
+const Px: (px: Px) => number = px => px as any
 const Frame: (frame: Frame) => number = frame => frame as any
 const Layer: (layer: Layer) => number = layer => layer as any
 const Radian: (radian: Radian) => number = radian => radian as any
@@ -23,7 +22,6 @@ const SettingsStep: (settingsStep: SettingsPath) => string = settingsStep => set
 
 // First order, plurals
 
-// Dimensions not yet needed
 // Frames not yet needed
 // Layers not yet needed
 // Radians not yet needed
@@ -39,6 +37,7 @@ const SettingsPath: (settingPath: SettingsPath) => string[] = settingsPath => se
 const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
 // Color not yet needed
 const Pixel: (pixel: Pixel) => number[] = pixel => pixel as any
+const Dimensions: (dimensions: Dimensions) => number[] = dimensions => dimensions as any
 
 // Third order, singular
 
@@ -49,7 +48,8 @@ const Outline: (outline: Outline) => number[][] = outline => outline as any
 export {
 	Address,
 	Coordinate,
-	Dimension,
+	Dimensions,
+	Px,
 	Frame,
 	Layer,
 	Outline,

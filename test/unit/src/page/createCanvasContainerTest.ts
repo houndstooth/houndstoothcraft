@@ -8,7 +8,7 @@ import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {
 	const mockCanvasContainerClassList = []
-	const canvasSize = to.Dimension(450)
+	const canvasSize = to.Px(450)
 	let mockBodyChildren
 	let returnedCanvasContainer
 	beforeEach(() => {

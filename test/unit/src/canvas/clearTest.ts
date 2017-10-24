@@ -6,7 +6,7 @@ import * as to from '../../../../src/utilities/to'
 describe('clear', () => {
 	let mixedDownClearRectSpy
 	beforeEach(() => {
-		setSetting('canvasSize', to.Dimension(450))
+		setSetting('canvasSize', to.Px(450))
 
 		mixedDownClearRectSpy = jasmine.createSpy('mixedDownClearRect')
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }

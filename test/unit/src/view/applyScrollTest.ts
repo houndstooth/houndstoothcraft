@@ -7,7 +7,7 @@ import { applyScroll } from '../../../../src/view/applyScroll'
 describe('apply scroll', () => {
 	const zoom = 10
 	const tileSize = to.Unit(40)
-	const canvasSize = to.Dimension(200)
+	const canvasSize = to.Px(200)
 	const path = to.Path([
 		[ 3, 5 ],
 		[ 4, 5 ],
@@ -20,7 +20,7 @@ describe('apply scroll', () => {
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		setSetting('centerViewOnCenterOfTileAtHomeAddress', true)
-		const halfCanvasSize = from.Dimension(canvasSize) / 2
+		const halfCanvasSize = from.Px(canvasSize) / 2
 		const halfTileSize = from.Unit(tileSize) / 2
 		expect(applyScroll(path)).toEqual(to.Path([
 			[

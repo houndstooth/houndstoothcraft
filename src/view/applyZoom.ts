@@ -13,7 +13,7 @@ const adjustPixelForZoom: (pixel: Pixel) => Pixel = pixel => {
 		zoom,
 		zoomOnCanvasCenter,
 	}: ViewSettings = getFromBaseOrDefaultPattern('viewSettings')
-	const halfCanvasSize = from.Dimension(canvasSize) * HALF
+	const halfCanvasSize = from.Px(canvasSize) * HALF
 	const shouldAdjustForCentering = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 	return doAdjustment({ pixel, shouldAdjustForCentering, halfCanvasSize, zoom })
@@ -28,14 +28,14 @@ const doAdjustment: (_: {
 	let pixelAdjustedForZoom = pixel
 
 	if (shouldAdjustForCentering) {
-		pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(dimension =>
-			from.Dimension(dimension) - halfCanvasSize))
+		pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(px =>
+			from.Px(px) - halfCanvasSize))
 	}
-	pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(dimension =>
-		from.Dimension(dimension) * zoom))
+	pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(px =>
+		from.Px(px) * zoom))
 	if (shouldAdjustForCentering) {
-		pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(dimension =>
-			from.Dimension(dimension) + halfCanvasSize))
+		pixelAdjustedForZoom = to.Pixel(pixelAdjustedForZoom.map(px =>
+			from.Px(px) + halfCanvasSize))
 	}
 
 	return pixelAdjustedForZoom

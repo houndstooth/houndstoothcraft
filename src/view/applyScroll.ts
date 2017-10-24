@@ -1,6 +1,6 @@
 import { Unit } from '../components'
 import { HALF } from '../constants'
-import { Dimension } from '../page'
+import { Px } from '../page'
 import { Path, Pixel } from '../render'
 import { getFromBaseOrDefaultPattern } from '../store'
 import * as from from '../utilities/from'
@@ -17,16 +17,16 @@ const applyScroll: (path: Path) => Path = path => {
 	return path.map(applyCenterViewOnCenterOfTileAtHomeAddress)
 }
 
-const applyCenterViewOnCenterOfTileAtHomeAddress: (coordinate: Pixel) => Pixel = coordinate => {
-	const canvasSize: Dimension = getFromBaseOrDefaultPattern('canvasSize')
-	const canvasCenter = from.Dimension(canvasSize) * HALF
+const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel = pixel => {
+	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
+	const canvasCenter = from.Px(canvasSize) * HALF
 
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 	const halfTileSize = from.Unit(tileSize) * HALF
 
 	return to.Pixel([
-		from.Dimension(coordinate[ 0 ]) + canvasCenter - halfTileSize,
-		from.Dimension(coordinate[ 1 ]) + canvasCenter - halfTileSize,
+		from.Px(pixel[ 0 ]) + canvasCenter - halfTileSize,
+		from.Px(pixel[ 1 ]) + canvasCenter - halfTileSize,
 	])
 }
 

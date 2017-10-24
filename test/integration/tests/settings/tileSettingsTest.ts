@@ -3,7 +3,7 @@ import { clear } from '../../../../src/canvas/clear'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as createContext from '../../../../src/page/createContext'
-import * as createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
+import * as createMixedDownContext from '../../../../src/page/createMixedDownContext'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
@@ -115,7 +115,7 @@ describe('.tileSettings', () => {
 			}
 			mockContext = buildMockContext({ contextCallsOrder })
 			spyOn(createContext, 'default').and.returnValue(mockContext)
-			spyOn(createMixedDownCanvas, 'default').and.returnValue(buildMockContext())
+			spyOn(createMixedDownContext, 'default').and.returnValue(buildMockContext())
 		})
 
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {

@@ -12,7 +12,7 @@ describe('execute selected houndstooth effects', () => {
 	const mixedDownCanvas = {}
 	let prepareFunctionObjectsPerSettingSpy
 	beforeEach(() => {
-		spyOn(page, 'createMixedDownCanvas').and.returnValue(mixedDownCanvas)
+		spyOn(page, 'createMixedDownContext').and.returnValue(mixedDownCanvas)
 		spyOn(page, 'createContexts')
 		spyOn(executeGrid, 'executeGrid')
 		spyOn(executeAnimation, 'executeAnimation')
@@ -48,7 +48,7 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownCanvas).toHaveBeenCalled()
+			expect(page.createMixedDownContext).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownCanvas)
 		})
 
@@ -58,7 +58,7 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownCanvas).toHaveBeenCalled()
+			expect(page.createMixedDownContext).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownCanvas)
 		})
 
@@ -68,7 +68,7 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownCanvas).toHaveBeenCalled()
+			expect(page.createMixedDownContext).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownCanvas)
 		})
 
@@ -76,7 +76,7 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownCanvas).not.toHaveBeenCalled()
+			expect(page.createMixedDownContext).not.toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(undefined)
 		})
 	})

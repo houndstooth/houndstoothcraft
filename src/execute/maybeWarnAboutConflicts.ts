@@ -19,7 +19,7 @@ const maybeWarnAboutConflicts: (_: {
 }
 
 const shouldWarnAboutConflicts: (_: {
-	existingSetting, overridingSetting, warnAboutConflicts,
+	existingSetting: any, overridingSetting: any, warnAboutConflicts: boolean,
 }) => boolean = ({ existingSetting, overridingSetting, warnAboutConflicts }) =>
 	warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 

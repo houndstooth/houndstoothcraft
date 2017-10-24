@@ -1,4 +1,4 @@
-import { createContexts, createMixedDownCanvas } from '../page'
+import { createContexts, createMixedDownContext } from '../page'
 import { state } from '../state'
 import { Effect } from '../store'
 import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
@@ -27,7 +27,7 @@ const prepareCanvas: NullarySideEffector = () => {
 		state.mixingDown = true
 	}
 	if (state.mixingDown) {
-		state.mixedDownContext = createMixedDownCanvas()
+		state.mixedDownContext = createMixedDownContext()
 	}
 }
 

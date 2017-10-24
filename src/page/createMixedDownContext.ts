@@ -3,7 +3,7 @@ import { document } from '../utilities/windowWrapper'
 import { deleteElementIfExists } from './deleteElementIfExists'
 import { Context, Px } from './types'
 
-const createMixedDownCanvas: () => Context = () => {
+const createMixedDownContext: () => Context = () => {
 	deleteElementIfExists('.mixed-down-canvas')
 
 	const mixedDownCanvas = document.createElement('canvas')
@@ -20,4 +20,4 @@ const createMixedDownCanvas: () => Context = () => {
 }
 
 // tslint:disable-next-line:no-default-export
-export default createMixedDownCanvas
+export default createMixedDownContext

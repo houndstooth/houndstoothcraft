@@ -1,4 +1,4 @@
-import createMixedDownCanvas from '../../../../src/page/createMixedDownCanvas'
+import createMixedDownContext from '../../../../src/page/createMixedDownContext'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
@@ -23,7 +23,7 @@ describe('create mixed down canvas', () => {
 
 		setSetting('canvasSize', to.Px(450))
 
-		returnedMixedDownContext = createMixedDownCanvas()
+		returnedMixedDownContext = createMixedDownContext()
 	})
 
 	it('deletes the existing mixed down canvas, if present', () => {

@@ -3,6 +3,7 @@ import { Effect } from './Effect'
 import { GetFromBaseOrDefaultPattern } from './GetFromBaseOrDefaultPattern'
 import { Houndstooth } from './Houndstooth'
 import { Pattern } from './Pattern'
+import { PatternFunctions } from './PatternFunctions'
 import { SetSetting } from './SetSetting'
 import {
 	AnimationSettings,
@@ -40,4 +41,5 @@ export {
 	SettingsPath,
 	GetFromBaseOrDefaultPattern,
 	SetSetting,
+	PatternFunctions,
 }

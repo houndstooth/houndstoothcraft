@@ -25,10 +25,10 @@ const wrappedIndex: <T>(_: { array: T[], index?: number }) => T = ({ array, inde
 	return array[ i ]
 }
 
-const shallowEqual: <T>(a: T, b: T) => boolean = (a, b) => {
+const shallowEqual: (a: any, b: any) => boolean = (a, b) => {
 	const sameKeyCount = Object.keys(a).length === Object.keys(b).length
 
-	return sameKeyCount && Object.entries(a).every(([ key, value ]) => value === b[ key ])
+	return sameKeyCount && Object.entries(a).every(([ key, value ]: [ string, any ]): boolean => value === b[ key ])
 }
 
 const deepClone: (objectToDeepClone: any) => any = objectToDeepClone => {
@@ -42,7 +42,7 @@ const deepClone: (objectToDeepClone: any) => any = objectToDeepClone => {
 }
 
 const setAllPropertiesOfObjectOnAnother: (_: {
-	objectToChange, objectWithProperties,
+	objectToChange: any, objectWithProperties: any,
 }) => void = ({ objectToChange, objectWithProperties }) => {
 	Object.entries(objectWithProperties).forEach(([ key, value ]) => {
 		objectToChange[ key ] = deepCloneMaybeNotObject(value)
@@ -67,7 +67,7 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T = maybeObject
 const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'
 
 const changeObjectIntoCopy: (_: {
-	objectToChange: object, objectWithProperties: object,
+	objectToChange: any, objectWithProperties: any,
 }) => void = ({ objectToChange, objectWithProperties }) => {
 	Object.keys(objectToChange).forEach(key => delete objectToChange[ key ])
 	setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })

@@ -8,7 +8,6 @@
     "no-constant-condition": true,
     "semicolon": false,
     "type-literal-delimiter": false,
-    "no-unsafe-any": false,
     "typedef": false,
     "prefer-method-signature": false,
     "quotemark": [

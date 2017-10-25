@@ -45,7 +45,6 @@
     "no-unbound-method": false,
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
-    "no-any": false,
     "defocus": true
   }
 }

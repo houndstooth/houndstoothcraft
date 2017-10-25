@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 
 describe('code utilities', () => {

@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import { state } from '../state'
 import { isDefined } from '../utilities/codeUtilities'
 import { DEFAULT_BASE_PATTERN } from './defaults'

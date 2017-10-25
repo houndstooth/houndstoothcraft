@@ -10,6 +10,7 @@ describe('fill path', () => {
 
 		fillPath()
 
+		// tslint:disable:no-any
 		const expectedContextCallsOrder = [
 			{ method: 'closePath' },
 			{ method: 'fill' },

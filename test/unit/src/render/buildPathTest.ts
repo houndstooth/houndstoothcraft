@@ -12,6 +12,7 @@ describe('build path', () => {
 
 		buildPath({ path })
 
+		// tslint:disable:no-any
 		const expectedContextCallsOrder = [
 			{ method: 'beginPath' },
 			{ method: 'moveTo', x: 0, y: 1 },

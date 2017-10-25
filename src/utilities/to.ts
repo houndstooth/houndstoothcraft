@@ -1,4 +1,4 @@
-// tslint:disable:variable-name member-ordering
+// tslint:disable:variable-name member-ordering no-any
 
 import { Frame } from '../animation'
 import { Address, ColorSet, Grid, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'

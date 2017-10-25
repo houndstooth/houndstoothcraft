@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 interface MockElement {
 	appendChild?: any,
 	click?: any,

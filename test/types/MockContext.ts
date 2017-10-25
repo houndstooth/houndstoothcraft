@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 interface MockContext {
 	beginPath?: any,
 	canvas?: any,

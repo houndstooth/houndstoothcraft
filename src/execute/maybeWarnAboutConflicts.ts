@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import { SettingsPath } from '../store'
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'

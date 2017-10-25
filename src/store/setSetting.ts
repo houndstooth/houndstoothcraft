@@ -4,6 +4,7 @@ import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { settingsPathShortcuts } from './settingsPathShortcuts'
 import { SetSetting, SettingsPath } from './types'
 
+// tslint:disable-next-line:no-any
 const setSetting: SetSetting = (settingsPathShortcut: any, value: any) => {
 	const settingsPath: SettingsPath[] = settingsPathShortcuts[ settingsPathShortcut ]
 	const settingName = from.SettingsStep(settingsPath.slice(-1)[0])

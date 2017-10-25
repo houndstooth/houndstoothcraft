@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 type InputElement = HTMLInputElement | {
 	checked?: any,
 	onclick?: any,

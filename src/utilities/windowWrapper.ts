@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 declare const global: any
 
 interface Document {

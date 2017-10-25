@@ -1,4 +1,4 @@
-// tslint:disable:variable-name
+// tslint:disable:variable-name no-any
 
 import { Frame } from '../animation'
 import { Address, ShapeColorIndex, StripePosition, Unit } from '../components'

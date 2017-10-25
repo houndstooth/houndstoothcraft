@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import { Color } from '../render'
 import { deeperPath, getSettingOrCreatePath, Pattern, SettingsPath } from '../store'
 import { isDefined } from '../utilities/codeUtilities'

@@ -10,6 +10,7 @@ describe('clip path', () => {
 
 		clipPath()
 
+		// tslint:disable:no-any
 		const expectedContextCallsOrder = [
 			{ method: 'save' },
 			{ method: 'clip' },

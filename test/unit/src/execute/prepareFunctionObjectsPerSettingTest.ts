@@ -1,3 +1,5 @@
+// tslint:disable-next-line:no-any
+
 import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from '../../../../src/execute/types/SettingsFunctionObject'
 import { deepClone } from '../../../../src/utilities/codeUtilities'

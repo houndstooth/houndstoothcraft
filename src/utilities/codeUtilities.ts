@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i, options = { oneIndexed: false }) => {
 	let iter: number[] = []
 	for (let j = 0; j < Math.ceil(i); j++) {

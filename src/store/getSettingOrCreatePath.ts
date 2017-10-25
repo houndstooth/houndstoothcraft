@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import { isDefined } from '../utilities/codeUtilities'
 import { SettingsPath } from './types'
 

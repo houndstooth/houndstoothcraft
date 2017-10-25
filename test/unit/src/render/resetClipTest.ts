@@ -10,10 +10,10 @@ describe('reset clip', () => {
 
 		resetClip()
 
+		// tslint:disable:no-any
 		const expectedContextCallsOrder = [
 			{ method: 'restore' },
 		] as any
-
 		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

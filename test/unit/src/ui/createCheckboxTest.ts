@@ -1,3 +1,4 @@
+import { InputElement } from '../../../../src/page/types/InputElement'
 import * as buildEffectToggleClickHandler from '../../../../src/ui/buildEffectToggleClickHandler'
 import { createCheckbox } from '../../../../src/ui/createCheckbox'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -5,14 +6,14 @@ import { noop } from '../../../helpers/noop'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create checkbox', () => {
-	let returnedCheckbox
-	let mockCheckbox
-	const mockClassList = []
+	let returnedCheckbox: InputElement
+	let mockCheckbox: InputElement
+	const mockClassList: string[] = []
 	const mockAttributeObject = { type: '' }
 	const mockClickHandler = noop
 	const mockHoundstoothEffect = { name: 'mock tooth' }
 	beforeAll(() => {
-		mockCheckbox = buildMockElement({ mockClassList, mockAttributeObject })
+		mockCheckbox = buildMockElement({ mockClassList, mockAttributeObject }) as InputElement
 		spyOn(window.document, 'createElement').and.returnValue(mockCheckbox)
 
 		spyOn(buildEffectToggleClickHandler, 'buildEffectToggleClickHandler').and.returnValue(mockClickHandler)
@@ -25,7 +26,12 @@ describe('create checkbox', () => {
 	})
 
 	it('makes it so your cursor becomes a pointer when you hover over it', () => {
-		expect(returnedCheckbox.style.cursor).toBe('pointer')
+		if (!returnedCheckbox.style) {
+			fail()
+		}
+		else {
+			expect(returnedCheckbox.style.cursor).toBe('pointer')
+		}
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {

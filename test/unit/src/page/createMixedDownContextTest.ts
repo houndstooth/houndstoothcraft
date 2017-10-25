@@ -1,5 +1,8 @@
 import createMixedDownContext from '../../../../src/page/createMixedDownContext'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
+import { Canvas } from '../../../../src/page/types/Canvas'
+import { Context } from '../../../../src/page/types/Context'
+import { PageElement } from '../../../../src/page/types/PageElement'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -8,11 +11,11 @@ import { buildMockBody } from '../../helpers/buildMockBody'
 import { buildMockCanvas } from '../../helpers/buildMockCanvas'
 
 describe('create mixed down canvas', () => {
-	let mixedDownCanvas
+	let mixedDownCanvas: Canvas
 	const mixedDownContext = buildMockContext()
-	const mockBodyChildren = []
-	const mixedDownCanvasClassList = []
-	let returnedMixedDownContext
+	const mockBodyChildren: PageElement[] = []
+	const mixedDownCanvasClassList: string[] = []
+	let returnedMixedDownContext: Context
 	beforeAll(() => {
 		spyOn(deleteElementIfExists, 'deleteElementIfExists')
 

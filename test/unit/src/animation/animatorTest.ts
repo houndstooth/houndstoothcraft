@@ -1,24 +1,20 @@
 import animator from '../../../../src/animation/animator'
 import * as buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
 import { state } from '../../../../src/state'
+import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
 import { windowWrapper } from '../../../../src/utilities/windowWrapper'
 import { noop } from '../../../helpers/noop'
 
 describe('animator', () => {
-	let intervalFunction
-	let animationFunction
-	let frameRate
-	let stopConditionFunction
-	let interval
+	let intervalFunction: (p: number) => number
+	const animationFunction: NullarySideEffector = noop
+	const frameRate = 3
+	const stopConditionFunction: () => boolean = () => false
+	const interval: NullarySideEffector = noop
 	beforeEach(() => {
-		interval = noop
 		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)
 		intervalFunction = p => p * 20
 		spyOn(buildIntervalFunction, 'buildIntervalFunction').and.returnValue(intervalFunction)
-
-		animationFunction = noop
-		frameRate = 3
-		stopConditionFunction = noop
 
 		animator({ animationFunction, frameRate, stopConditionFunction })
 	})

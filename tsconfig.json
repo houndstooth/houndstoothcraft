@@ -6,6 +6,7 @@
     "lib": [ "es2017", "dom" ],
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "noImplicitAny": true,
     "pretty": true,
     "strictNullChecks": true,
     "sourceMap": true,

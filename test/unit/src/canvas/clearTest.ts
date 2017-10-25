@@ -2,9 +2,10 @@ import { clear } from '../../../../src/canvas/clear'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
+import Spy = jasmine.Spy
 
 describe('clear', () => {
-	let mixedDownClearRectSpy
+	let mixedDownClearRectSpy: Spy
 	beforeEach(() => {
 		setSetting('canvasSize', to.Px(450))
 
@@ -13,7 +14,7 @@ describe('clear', () => {
 	})
 
 	describe('when there is a single context', () => {
-		let clearRectSpy
+		let clearRectSpy: Spy
 		beforeEach(() => {
 			clearRectSpy = jasmine.createSpy('clearRect')
 			state.contexts = [ { clearRect: clearRectSpy } ]

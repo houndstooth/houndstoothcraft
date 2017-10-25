@@ -1,14 +1,16 @@
 import { createEffectTogglesContainer } from '../../../../src/page/createEffectTogglesContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
+import { PageElement } from '../../../../src/page/types/PageElement'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
+import Spy = jasmine.Spy
 
 describe('create effect toggles container', () => {
-	let returnedEffectTogglesContainer
-	let mockEffectTogglesContainer
-	let mockCanvasContainer
-	let insertElementRightAfterSpy
-	const mockEffectTogglesContainerClassList = []
+	let returnedEffectTogglesContainer: PageElement
+	let mockEffectTogglesContainer: PageElement
+	let mockCanvasContainer: PageElement
+	let insertElementRightAfterSpy: Spy
+	const mockEffectTogglesContainerClassList: string[] = []
 	beforeEach(() => {
 		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mockEffectTogglesContainer)
@@ -31,7 +33,12 @@ describe('create effect toggles container', () => {
 	})
 
 	it('adds padding to the effect toggles container', () => {
-		expect(returnedEffectTogglesContainer.style.padding).toBe('20px')
+		if (!returnedEffectTogglesContainer.style) {
+			fail()
+		}
+		else {
+			expect(returnedEffectTogglesContainer.style.padding).toBe('20px')
+		}
 	})
 
 	it('inserts the effect toggles container after the canvas', () => {

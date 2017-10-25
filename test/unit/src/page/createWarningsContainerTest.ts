@@ -1,14 +1,16 @@
 import { createWarningsContainer } from '../../../../src/page/createWarningsContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
+import { PageElement } from '../../../../src/page/types/PageElement'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
+import Spy = jasmine.Spy
 
 describe('create warnings container', () => {
-	let returnedWarningsContainer
-	let mockEffectTogglesContainer
-	let mockWarningsContainer
-	let insertElementRightAfterSpy
-	const mockWarningsContainerClassList = []
+	let returnedWarningsContainer: PageElement
+	let mockEffectTogglesContainer: PageElement
+	let mockWarningsContainer: PageElement
+	let insertElementRightAfterSpy: Spy
+	const mockWarningsContainerClassList: string[] = []
 	beforeAll(() => {
 		mockWarningsContainer = buildMockElement({ mockClassList: mockWarningsContainerClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mockWarningsContainer)
@@ -26,7 +28,12 @@ describe('create warnings container', () => {
 	})
 
 	it('creates the warnings container with padding', () => {
-		expect(returnedWarningsContainer.style.padding).toBe('20px')
+		if (!returnedWarningsContainer.style) {
+			fail()
+		}
+		else {
+			expect(returnedWarningsContainer.style.padding).toBe('20px')
+		}
 	})
 
 	it('assigns a class to the warnings container', () => {

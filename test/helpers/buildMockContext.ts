@@ -18,8 +18,8 @@ const buildMockContext: (_?: {
 		fill: () => contextCallsOrder.push({ method: 'fill' }),
 		fillStyle: '',
 		globalCompositeOperation: '',
-		lineTo: (x, y) => contextCallsOrder.push({ method: 'lineTo', x, y }),
-		moveTo: (x, y) => contextCallsOrder.push({ method: 'moveTo', x, y }),
+		lineTo: (x: number, y: number) => contextCallsOrder.push({ method: 'lineTo', x, y }),
+		moveTo: (x: number, y: number) => contextCallsOrder.push({ method: 'moveTo', x, y }),
 		restore: () => contextCallsOrder.push({ method: 'restore' }),
 		save: () => contextCallsOrder.push({ method: 'save' }),
 	}

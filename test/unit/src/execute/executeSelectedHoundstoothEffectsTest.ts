@@ -5,12 +5,13 @@ import { executeSelectedHoundstoothEffects } from '../../../../src/execute/execu
 import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import * as page from '../../../../src/page'
 import { state } from '../../../../src/state'
+import Spy = jasmine.Spy
 
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects = { layer: 'layer' }
 	const animationFunctionObjects = { animation: 'animation' }
 	const mixedDownCanvas = {}
-	let prepareFunctionObjectsPerSettingSpy
+	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
 		spyOn(page, 'createMixedDownContext').and.returnValue(mixedDownCanvas)
 		spyOn(page, 'createContexts')

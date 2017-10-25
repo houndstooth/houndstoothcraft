@@ -1,5 +1,6 @@
 import { maybeWarnAboutConflicts } from '../../../../src/execute/maybeWarnAboutConflicts'
 import * as ui from '../../../../src/ui'
+import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('warning about conflicts', () => {
@@ -15,8 +16,8 @@ describe('warning about conflicts', () => {
 
 	it('warns when requested and there are conflicts', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'colorSettings', 'colorAssignment' ]
-		settingName = 'assignmentMode'
+		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+		settingName = to.SettingsStep('assignmentMode')
 		existingSetting = 'yoda'
 		overridingSetting = 'luke'
 
@@ -30,8 +31,8 @@ describe('warning about conflicts', () => {
 
 	it('does not warn when not requested', () => {
 		warnAboutConflicts = false
-		settingsPath = [ 'colorSettings', 'colorAssignment' ]
-		settingName = 'assignmentMode'
+		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+		settingName = to.SettingsStep('assignmentMode')
 		existingSetting = 'yoda'
 		overridingSetting = 'luke'
 
@@ -43,8 +44,8 @@ describe('warning about conflicts', () => {
 
 	it('does not warn when settings are identical', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'colorSettings', 'colorAssignment' ]
-		settingName = 'assignmentMode'
+		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+		settingName = to.SettingsStep('assignmentMode')
 		existingSetting = 'luke'
 		overridingSetting = 'luke'
 
@@ -56,10 +57,10 @@ describe('warning about conflicts', () => {
 
 	it('does not warn when the settings are equivalent functions', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'tileSettings' ]
-		settingName = 'getTileOriginAndSize'
-		existingSetting = a => a
-		overridingSetting = a => a
+		settingsPath = to.SettingsPath([ 'tileSettings' ])
+		settingName = to.SettingsStep('getTileOriginAndSize')
+		existingSetting = (a: any) => a
+		overridingSetting = (a: any) => a
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
@@ -69,10 +70,10 @@ describe('warning about conflicts', () => {
 
 	it('does warn when the settings are functions that are not equivalent (by stringified comparison)', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'tileSettings' ]
-		settingName = 'getTileOriginAndSize'
-		existingSetting = a => a
-		overridingSetting = b => b
+		settingsPath = to.SettingsPath([ 'tileSettings' ])
+		settingName = to.SettingsStep('getTileOriginAndSize')
+		existingSetting = (a: any) => a
+		overridingSetting = (b: any) => b
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
@@ -84,8 +85,8 @@ describe('warning about conflicts', () => {
 
 	it('does not warn when the settings are equivalent arrays', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'colorSettings' ]
-		settingName = 'colorSet'
+		settingsPath = to.SettingsPath([ 'colorSettings' ])
+		settingName = to.SettingsStep('colorSet')
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = [ 'a', 'b' ]
 
@@ -97,8 +98,8 @@ describe('warning about conflicts', () => {
 
 	it('does warn when the settings are arrays that are not equivalent', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'colorSettings' ]
-		settingName = 'colorSet'
+		settingsPath = to.SettingsPath([ 'colorSettings' ])
+		settingName = to.SettingsStep('colorSet')
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = [ 'b', 'a' ]
 
@@ -112,8 +113,8 @@ describe('warning about conflicts', () => {
 
 	it('shows the contents of objects (such as colors) (as opposed to [object Object])', () => {
 		warnAboutConflicts = true
-		settingsPath = [ 'colorSettings' ]
-		settingName = 'backgroundColor'
+		settingsPath = to.SettingsPath([ 'colorSettings' ])
+		settingName = to.SettingsStep('backgroundColor')
 		existingSetting = { r: 0, g: 5, b: 10, a: 1 }
 		overridingSetting = { a: 0 }
 

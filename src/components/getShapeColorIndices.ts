@@ -42,23 +42,28 @@ const getIndices: (_: {
 }) => ShapeColorIndex[] = ({ colorAssignment, gridAddress }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = colorAssignment
 
-	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : [ 0, 0 ]
+	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : to.Address([ 0, 0 ])
 
-	let getter
+	let getter: GetShapeColorIndices
 	if (assignmentMode === AssignmentMode.Weave) {
 		getter = getByWeave
 	}
 	else if (assignmentMode === AssignmentMode.Supertile) {
 		getter = getBySupertile
 	}
+	else {
+		return []
+	}
 
 	return getter({ gridAddress, addressOffset, weave, supertile })
 }
 
-const getByWeave: (_: {
-	addressOffset: Address[], gridAddress: Address[], weave: Weave,
-}) => ShapeColorIndex[] = ({ addressOffset, gridAddress, weave }) => {
-	const { rows, columns } = weave
+type GetShapeColorIndices = (_: {
+	addressOffset: Address[], gridAddress: Address[], supertile?: Supertile, weave?: Weave,
+}) => ShapeColorIndex[]
+
+const getByWeave: GetShapeColorIndices = ({ addressOffset, gridAddress, weave }) => {
+	const { rows = [], columns = [] } = weave || {}
 	const [ x, y ] = from.Address(gridAddress)
 	const [ xOffset, yOffset ] = from.Address(addressOffset)
 
@@ -68,9 +73,7 @@ const getByWeave: (_: {
 	return to.ShapeColorIndices([ rowsIndex, columnsIndex ])
 }
 
-const getBySupertile: (_: {
-	addressOffset: Address[], gridAddress: Address[], supertile: Supertile,
-}) => ShapeColorIndex[] = ({ addressOffset, gridAddress, supertile }) => {
+const getBySupertile: GetShapeColorIndices = ({ addressOffset, gridAddress, supertile = [] }) => {
 	const [ x, y ] = from.Address(gridAddress)
 	const [ xOffset, yOffset ] = from.Address(addressOffset)
 	const supertileColumn = wrappedIndex({ array: supertile, index: x + xOffset })

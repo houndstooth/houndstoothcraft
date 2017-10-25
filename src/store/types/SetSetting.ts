@@ -62,6 +62,7 @@ interface SetSetting {
 	(settingsPathShortcut: TextureSettingsPathShortcut, value: TextureSettings): void
 	(settingsPathShortcut: TileSettingsPathShortcut, value: TileSettings): void
 	(settingsPathShortcut: ViewSettingsPathShortcut, value: ViewSettings): void
+	(settingsPathShortcut: ViewSettingsPathShortcut, value: ViewSettings): void
 }
 
 export { SetSetting }

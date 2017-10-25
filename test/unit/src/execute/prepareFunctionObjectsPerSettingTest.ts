@@ -1,18 +1,20 @@
 import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepareFunctionObjectsPerSetting'
+import { SettingsFunctionObject } from '../../../../src/execute/types/SettingsFunctionObject'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
+import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('#prepareFunctionObjectsPerSetting', () => {
-	let actualFunctionObjects
-	let expectedSettingsFunctionsSourcePattern
-	let settingsFunctionsSourcePattern
-	let settingsFunction
-	let secondSettingsFunction
+	let actualFunctionObjects: SettingsFunctionObject[]
+	let expectedSettingsFunctionsSourcePattern: any
+	let settingsFunctionsSourcePattern: any
+	let settingsFunction: any
+	let secondSettingsFunction: any
 	let errorSpy
 	beforeEach(() => {
 		errorSpy = spyOn(console, 'error')
-		settingsFunction = p => p * 2
-		secondSettingsFunction = p => p - 1
+		settingsFunction = (p: number) => p * 2
+		secondSettingsFunction = (p: number) => p - 1
 		settingsFunctionsSourcePattern = {
 			childPathFirstStep: {
 				childPathSecondStep: {
@@ -30,7 +32,7 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 	})
 
 	it('gathers the functions to be applied', () => {
-		const expectedFunctionObjects = [
+		const expectedFunctionObjects = to.SettingsFunctionObjects([
 			{
 				settingName: 'childPathFinalStep',
 				settingsFunction,
@@ -41,7 +43,7 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 				settingsFunction: secondSettingsFunction,
 				settingsPath: [ 'secondChildPathFirstStep' ],
 			},
-		]
+		]) as any
 		expect(actualFunctionObjects).toEqual(expectedFunctionObjects)
 	})
 

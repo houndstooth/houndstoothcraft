@@ -1,5 +1,7 @@
 type InputElement = HTMLInputElement | {
-	checked?,
+	checked?: any,
+	onclick?: any,
+	style?: any,
 }
 
 export { InputElement }

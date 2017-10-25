@@ -1,12 +1,14 @@
+import { PageElement } from '../../../src/page/types/PageElement'
 import { MockElement } from '../../types/MockElement'
+import Spy = jasmine.Spy
 
 const buildMockElement: (_?: {
-		clickSpy?,
-		mockAttributeObject?,
-		mockChildren?,
-		mockClassList?,
-		parentNodeInsertBeforeSpy?,
-		parentNodeRemoveChildSpy?,
+		clickSpy?: Spy,
+		mockAttributeObject?: { [ index: string ]: string },
+		mockChildren?: PageElement[],
+		mockClassList?: string[],
+		parentNodeInsertBeforeSpy?: Spy,
+		parentNodeRemoveChildSpy?: Spy,
 	}) => MockElement = (params = {}) => {
 	const {
 		clickSpy,
@@ -18,9 +20,9 @@ const buildMockElement: (_?: {
 	} = params
 
 	return {
-		appendChild: child => mockChildren.push(child),
+		appendChild: (child: PageElement) => mockChildren.push(child),
 		classList: {
-			add: className => mockClassList.push(className),
+			add: (className: string) => mockClassList.push(className),
 		},
 		click: clickSpy,
 		innerHTML: '',
@@ -28,7 +30,7 @@ const buildMockElement: (_?: {
 			insertBefore: parentNodeInsertBeforeSpy,
 			removeChild: parentNodeRemoveChildSpy,
 		},
-		setAttribute: (attribute, value) => mockAttributeObject[ attribute ] = value,
+		setAttribute: (attribute: string, value: string) => mockAttributeObject[ attribute ] = value,
 		style: {},
 	}
 }

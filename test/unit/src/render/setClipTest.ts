@@ -6,7 +6,7 @@ import * as view from '../../../../src/view'
 
 describe('set clip', () => {
 	it('builds a path from the outline and clips the context on it', () => {
-		const path = []
+		const path = to.Path([])
 		spyOn(view, 'applyView').and.returnValue(path)
 		spyOn(buildPath, 'buildPath')
 		spyOn(clipPath, 'clipPath')

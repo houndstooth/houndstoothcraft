@@ -2,11 +2,12 @@ import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
 import { state } from '../state'
 import { Effect } from '../store'
+import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { resetInterface } from './resetInterface'
 
 const buildEffectToggleClickHandler: (_: {
 	checkbox: InputElement, houndstoothEffect: Effect,
-}) => void = ({ checkbox, houndstoothEffect }) => () => {
+}) => NullarySideEffector = ({ checkbox, houndstoothEffect }) => () => {
 	resetInterface()
 
 	const effectFunction = checkbox.checked ? addEffect : removeEffect

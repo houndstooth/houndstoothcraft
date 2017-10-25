@@ -1,5 +1,7 @@
 import * as createContext from '../../../../src/page/createContext'
 import { createContexts } from '../../../../src/page/createContexts'
+import Spy = jasmine.Spy
+import { PageElement } from '../../../../src/page/types/PageElement'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
@@ -7,8 +9,8 @@ import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create contexts', () => {
-	let canvasContainer
-	let createContextSpy
+	let canvasContainer: PageElement
+	let createContextSpy: Spy
 	beforeEach(() => {
 		createContextSpy = spyOn(createContext, 'default')
 

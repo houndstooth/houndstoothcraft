@@ -1,5 +1,6 @@
 import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
 import * as scaleElement from '../../../../src/page/scaleElement'
+import { PageElement } from '../../../../src/page/types/PageElement'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -7,10 +8,10 @@ import { buildMockBody } from '../../helpers/buildMockBody'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create canvas container', () => {
-	const mockCanvasContainerClassList = []
+	const mockCanvasContainerClassList: string[] = []
 	const canvasSize = to.Px(450)
-	let mockBodyChildren
-	let returnedCanvasContainer
+	let mockBodyChildren: PageElement[]
+	let returnedCanvasContainer: PageElement
 	beforeEach(() => {
 		setSetting('canvasSize', canvasSize)
 		mockBodyChildren = []

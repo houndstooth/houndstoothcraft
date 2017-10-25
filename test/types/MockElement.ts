@@ -1,15 +1,17 @@
 interface MockElement {
-	appendChild?,
-	click?,
-	download?,
-	href?,
-	innerHTML?,
-	nextSibling?,
-	parentNode?,
+	appendChild?: any,
+	click?: any,
+	download?: any,
+	href?: any,
+	innerHTML?: any,
+	nextSibling?: any,
+	parentNode?: any,
 	style?: {
-		display?,
-		height?,
-		width?,
+		cursor?: any,
+		display?: any,
+		height?: any,
+		padding?: any,
+		width?: any,
 	},
 }
 

@@ -1,9 +1,10 @@
 import * as addEffectToggle from '../../../../src/ui/addEffectToggle'
 import { maybeAddEffectToggles } from '../../../../src/ui/maybeAddEffectToggles'
 import * as window from '../../../../src/utilities/windowWrapper'
+import Spy = jasmine.Spy
 
 describe('add effect toggles', () => {
-	let addEffectToggleSpy
+	let addEffectToggleSpy: Spy
 	beforeEach(() => addEffectToggleSpy = spyOn(addEffectToggle, 'addEffectToggle'))
 	it('adds an effect toggle for each effect', () => {
 		maybeAddEffectToggles([ { name: 'effectOne' }, { name: 'effectTwo' } ])

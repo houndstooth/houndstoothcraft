@@ -1,4 +1,5 @@
 import { ERASE } from '../../../../src/constants'
+import { Context } from '../../../../src/page/types/Context'
 import { buildFill } from '../../../../src/render/buildFill'
 import * as parseColor from '../../../../src/render/parseColor'
 import { state } from '../../../../src/state'
@@ -7,7 +8,7 @@ import { buildMockContext } from '../../../helpers/buildMockContext'
 describe('build fill', () => {
 	const shapeColor = { a: 1 }
 	const parsedColor = '#012345'
-	let context
+	let context: Context
 	beforeEach(() => {
 		context = buildMockContext()
 		state.contexts = [ context ]

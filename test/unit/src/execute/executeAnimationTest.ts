@@ -1,24 +1,23 @@
 import * as animation from '../../../../src/animation'
+import { Frame } from '../../../../src/animation/types/Frame'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
+import { SettingsFunctionObject } from '../../../../src/execute/types/SettingsFunctionObject'
 import { state } from '../../../../src/state'
-import { noop } from '../../../helpers/noop'
+import * as to from '../../../../src/utilities/to'
 
 describe('execute animation', () => {
-	let stopConditionFunction
-	let animationFunction
+	const stopConditionFunction: () => boolean = () => false
+	const animationFunction: (p: number) => number = p => p
 
-	let layerFunctionObjects
-	let animationFunctionObjects
+	let layerFunctionObjects: SettingsFunctionObject[]
+	let animationFunctionObjects: SettingsFunctionObject[]
 
-	let frameRate
+	let frameRate: number
 	let refreshCanvas
-	let startAnimationFrame
-	let endAnimationFrame
+	let startAnimationFrame: Frame
+	let endAnimationFrame: Frame
 
 	beforeEach(() => {
-		stopConditionFunction = noop
-		animationFunction = noop
-
 		spyOn(animation, 'animator')
 		spyOn(animation, 'buildStopConditionFunction').and.returnValue(stopConditionFunction)
 		spyOn(animation, 'buildAnimationFunction').and.returnValue(animationFunction)
@@ -30,8 +29,8 @@ describe('execute animation', () => {
 			animationFunctionObjects = []
 
 			frameRate = 5
-			startAnimationFrame = 3
-			endAnimationFrame = 7
+			startAnimationFrame = to.Frame(3)
+			endAnimationFrame = to.Frame(7)
 			refreshCanvas = false
 
 			state.mainHoundstooth.basePattern.animationSettings = {

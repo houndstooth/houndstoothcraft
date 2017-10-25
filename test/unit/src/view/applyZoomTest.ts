@@ -1,3 +1,4 @@
+import { Path } from '../../../../src/render/types/Path'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
@@ -6,14 +7,14 @@ import { applyZoom } from '../../../../src/view/applyZoom'
 describe('apply zoom', () => {
 	const zoom = 2
 	const canvasSize = to.Px(200)
-	let path
+	let path: Path
 	beforeEach(() => {
-		path = [
+		path = to.Path([
 			[ 50, 50 ],
 			[ 100, 50 ],
 			[ 100, 100 ],
 			[ 50, 100 ],
-		]
+		])
 		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
 	})
 

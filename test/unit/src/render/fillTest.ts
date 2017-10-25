@@ -2,19 +2,20 @@ import * as buildFill from '../../../../src/render/buildFill'
 import * as buildPath from '../../../../src/render/buildPath'
 import { fill } from '../../../../src/render/fill'
 import * as fillPath from '../../../../src/render/fillPath'
+import { Outline } from '../../../../src/space/types/Outline'
 import * as to from '../../../../src/utilities/to'
 import * as view from '../../../../src/view'
 
 describe('fill', () => {
 	const shapeColor = { a: 1 }
 
-	const path = []
+	const path = to.Path([])
 	beforeEach(() => {
 		spyOn(view, 'applyView').and.returnValue(path)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
-		const outline = []
+		const outline = to.Outline([])
 
 		fill({ shapeColor, outline })
 
@@ -38,12 +39,12 @@ describe('fill', () => {
 	})
 
 	describe('when there are at least three coordinates in the outline', () => {
-		let outline
+		let outline: Outline
 		beforeEach(() => {
 			spyOn(buildPath, 'buildPath')
 			spyOn(buildFill, 'buildFill')
 			spyOn(fillPath, 'fillPath')
-			outline = [ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ]
+			outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 
 			fill({ shapeColor, outline })
 		})

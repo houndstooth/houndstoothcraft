@@ -1,24 +1,27 @@
+import * as to from '../../../../src/utilities/to'
 import * as applyScroll from '../../../../src/view/applyScroll'
 import * as applyTilt from '../../../../src/view/applyTilt'
 import { applyView } from '../../../../src/view/applyView'
 import * as applyZoom from '../../../../src/view/applyZoom'
 
-describe('adjusts outline for view', () => {
+describe('adjusts path for view', () => {
 	it('applies any relevant zoom, scroll, and tilt', () => {
-		const outline = []
-		const zoomedOutline = []
-		const zoomedAndScrolledOutline = []
-		const zoomedAndScrolledAndTiltedOutline = []
+		const outline = to.Outline([ [ 3, 4 ], [ 5, 6 ] ])
+		const path = to.Path([ [ 3, 4 ], [ 5, 6 ] ])
 
-		spyOn(applyZoom, 'applyZoom').and.returnValue(zoomedOutline)
-		spyOn(applyScroll, 'applyScroll').and.returnValue(zoomedAndScrolledOutline)
-		spyOn(applyTilt, 'applyTilt').and.returnValue(zoomedAndScrolledAndTiltedOutline)
+		const zoomedPath = to.Path([])
+		const zoomedAndScrolledPath = to.Path([])
+		const zoomedAndScrolledAndTiltedPath = to.Path([])
 
-		const actualOutline = applyView(outline)
+		spyOn(applyZoom, 'applyZoom').and.returnValue(zoomedPath)
+		spyOn(applyScroll, 'applyScroll').and.returnValue(zoomedAndScrolledPath)
+		spyOn(applyTilt, 'applyTilt').and.returnValue(zoomedAndScrolledAndTiltedPath)
 
-		expect(applyZoom.applyZoom).toHaveBeenCalledWith(outline)
-		expect(applyScroll.applyScroll).toHaveBeenCalledWith(zoomedOutline)
-		expect(applyTilt.applyTilt).toHaveBeenCalledWith(zoomedAndScrolledOutline)
-		expect(actualOutline).toBe(zoomedAndScrolledAndTiltedOutline)
+		const actualPath = applyView(outline)
+
+		expect(applyZoom.applyZoom).toHaveBeenCalledWith(path)
+		expect(applyScroll.applyScroll).toHaveBeenCalledWith(zoomedPath)
+		expect(applyTilt.applyTilt).toHaveBeenCalledWith(zoomedAndScrolledPath)
+		expect(actualPath).toBe(zoomedAndScrolledAndTiltedPath)
 	})
 })

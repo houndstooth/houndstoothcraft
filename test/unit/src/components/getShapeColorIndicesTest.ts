@@ -1,6 +1,8 @@
-import { state, to } from '../../../../src'
+import { from, state, to } from '../../../../src'
 import { getShapeColorIndices } from '../../../../src/components/getShapeColorIndices'
 import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
+import { OffsetAddress } from '../../../../src/components/types/OffsetAddress'
+import { TransformShapeColorIndices } from '../../../../src/components/types/TransformShapeColorIndices'
 import { setSetting } from '../../../../src/store/setSetting'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 
@@ -43,7 +45,8 @@ describe('get tile color indices', () => {
 
 	describe('allowing offsetting of the grid address', () => {
 		it('works when in weave mode', () => {
-			const offsetAddress = ({ gridAddress }) => to.Address([ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 2 / 5 ])
+			const offsetAddress: OffsetAddress = ({ gridAddress }) =>
+				to.Address([ from.AddressElement(gridAddress[ 0 ]) / 3, from.AddressElement(gridAddress[ 1 ]) * 2 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
 					assignmentMode: AssignmentMode.Weave,
@@ -60,7 +63,8 @@ describe('get tile color indices', () => {
 
 		it('works when in supertile mode', () => {
 			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
-			const offsetAddress = ({ gridAddress }) => to.Address([ gridAddress[ 0 ] / 3, gridAddress[ 1 ] * 3 / 5 ])
+			const offsetAddress: OffsetAddress = ({ gridAddress }) =>
+				to.Address([ from.AddressElement(gridAddress[ 0 ]) / 3, from.AddressElement(gridAddress[ 1 ]) * 3 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
 					assignmentMode: AssignmentMode.Supertile,
@@ -129,8 +133,15 @@ describe('get tile color indices', () => {
 		})
 
 		it('calls an arbitrary transformation, if provided', () => {
-			const transformShapeColorIndices = ({ shapeColorIndices, gridAddress }) =>
-				gridAddress[ 0 ] === 1 ? shapeColorIndices.concat(shapeColorIndices) : shapeColorIndices
+			const transformShapeColorIndices: TransformShapeColorIndices = ({ shapeColorIndices, gridAddress }) => {
+				if (from.AddressElement(gridAddress[ 0 ]) === 1) {
+					return shapeColorIndices.concat(shapeColorIndices)
+				}
+				else {
+					return shapeColorIndices
+				}
+			}
+
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
 					assignmentMode: AssignmentMode.Weave,

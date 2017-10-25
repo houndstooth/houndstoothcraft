@@ -3,71 +3,62 @@ import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {
 	describe('#isOdd', () => {
-		let isOdd
-		beforeEach(() => isOdd = mathUtilities.isOdd)
-
 		it('is false when the number is divisible by 2 with a remainder of 0, -0, or -1', () => {
-			expect(isOdd(0)).toBe(false)
-			expect(isOdd(2)).toBe(false)
-			expect(isOdd(4)).toBe(false)
-			expect(isOdd(-2)).toBe(false)
-			expect(isOdd(-1)).toBe(false)
+			expect(mathUtilities.isOdd(0)).toBe(false)
+			expect(mathUtilities.isOdd(2)).toBe(false)
+			expect(mathUtilities.isOdd(4)).toBe(false)
+			expect(mathUtilities.isOdd(-2)).toBe(false)
+			expect(mathUtilities.isOdd(-1)).toBe(false)
 		})
 
 		it('is true when dividing the number by 2 results in a remainder of 1', () => {
-			expect(isOdd(1)).toBe(true)
-			expect(isOdd(3)).toBe(true)
-			expect(isOdd(5)).toBe(true)
+			expect(mathUtilities.isOdd(1)).toBe(true)
+			expect(mathUtilities.isOdd(3)).toBe(true)
+			expect(mathUtilities.isOdd(5)).toBe(true)
 		})
 	})
 
 	describe('#triangularNumber', () => {
-		let triangularNumber
-		beforeEach(() => triangularNumber = mathUtilities.triangularNumber)
-
 		it('returns the triangular number for n', () => {
-			expect(triangularNumber(0)).toBe(0)
-			expect(triangularNumber(1)).toBe(1)
-			expect(triangularNumber(2)).toBe(3)
-			expect(triangularNumber(3)).toBe(6)
-			expect(triangularNumber(4)).toBe(10)
-			expect(triangularNumber(5)).toBe(15)
-			expect(triangularNumber(6)).toBe(21)
+			expect(mathUtilities.triangularNumber(0)).toBe(0)
+			expect(mathUtilities.triangularNumber(1)).toBe(1)
+			expect(mathUtilities.triangularNumber(2)).toBe(3)
+			expect(mathUtilities.triangularNumber(3)).toBe(6)
+			expect(mathUtilities.triangularNumber(4)).toBe(10)
+			expect(mathUtilities.triangularNumber(5)).toBe(15)
+			expect(mathUtilities.triangularNumber(6)).toBe(21)
 		})
 
 		it('returns numbers in-between triangular numbers', () => {
-			expect(triangularNumber(0.5)).toBe((Math.pow(2, 2) - 1) / 8)
-			expect(triangularNumber(1.5)).toBe((Math.pow(4, 2) - 1) / 8)
-			expect(triangularNumber(2.5)).toBe((Math.pow(6, 2) - 1) / 8)
+			expect(mathUtilities.triangularNumber(0.5)).toBe((Math.pow(2, 2) - 1) / 8)
+			expect(mathUtilities.triangularNumber(1.5)).toBe((Math.pow(4, 2) - 1) / 8)
+			expect(mathUtilities.triangularNumber(2.5)).toBe((Math.pow(6, 2) - 1) / 8)
 		})
 
 		it('is the inverse of triangular root', () => {
-			expect(triangularNumber(mathUtilities.triangularRoot(5))).toBe(5)
+			expect(mathUtilities.triangularNumber(mathUtilities.triangularRoot(5))).toBe(5)
 		})
 	})
 
 	describe('#triangularRoot', () => {
-		let triangularRoot
-		beforeEach(() => triangularRoot = mathUtilities.triangularRoot)
-
 		it('given a triangular number, returns its n', () => {
-			expect(triangularRoot(0)).toBe(0)
-			expect(triangularRoot(1)).toBe(1)
-			expect(triangularRoot(3)).toBe(2)
-			expect(triangularRoot(6)).toBe(3)
-			expect(triangularRoot(10)).toBe(4)
-			expect(triangularRoot(15)).toBe(5)
-			expect(triangularRoot(21)).toBe(6)
+			expect(mathUtilities.triangularRoot(0)).toBe(0)
+			expect(mathUtilities.triangularRoot(1)).toBe(1)
+			expect(mathUtilities.triangularRoot(3)).toBe(2)
+			expect(mathUtilities.triangularRoot(6)).toBe(3)
+			expect(mathUtilities.triangularRoot(10)).toBe(4)
+			expect(mathUtilities.triangularRoot(15)).toBe(5)
+			expect(mathUtilities.triangularRoot(21)).toBe(6)
 		})
 
 		it('returns numbers in-between triangular roots', () => {
-			expect(triangularRoot(0.5)).toBe(0.6180339887498949)
-			expect(triangularRoot(2)).toBe(1.5615528128088303)
-			expect(triangularRoot(4.5)).toBe(2.5413812651491097)
+			expect(mathUtilities.triangularRoot(0.5)).toBe(0.6180339887498949)
+			expect(mathUtilities.triangularRoot(2)).toBe(1.5615528128088303)
+			expect(mathUtilities.triangularRoot(4.5)).toBe(2.5413812651491097)
 		})
 
 		it('is the inverse of triangular number', () => {
-			expect(triangularRoot(mathUtilities.triangularNumber(5))).toBe(5)
+			expect(mathUtilities.triangularRoot(mathUtilities.triangularNumber(5))).toBe(5)
 		})
 	})
 

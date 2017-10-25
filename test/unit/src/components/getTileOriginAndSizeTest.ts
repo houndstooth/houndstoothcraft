@@ -1,5 +1,6 @@
 import { from, state, to } from '../../../../src'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
+import { GetTileOriginAndSize } from '../../../../src/components/types/GetTileOriginAndSize'
 import { setSetting } from '../../../../src/store/setSetting'
 
 describe('get tile origin and size', () => {
@@ -16,7 +17,7 @@ describe('get tile origin and size', () => {
 	})
 
 	it('uses a custom get tile origin and sized unit function if provided', () => {
-		const custom = ({ gridAddress }) => ({
+		const custom: GetTileOriginAndSize = ({ gridAddress }) => ({
 			tileOrigin: to.Coordinate([
 				gridAddress[ 1 ] * from.Unit(tileSize),
 				gridAddress[ 0 ] * from.Unit(tileSize),

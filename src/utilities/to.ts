@@ -3,6 +3,7 @@
 import { Frame } from '../animation'
 import { Address, ColorSet, Grid, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'
 import { Layer } from '../execute'
+import { SettingsFunctionObject } from '../execute/types/SettingsFunctionObject'
 import { Dimensions, Px } from '../page'
 import { Color, ColorRange, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
@@ -46,6 +47,16 @@ const Pixel: (pixel: Array<number | Px>) => Pixel = pixel =>
 const Dimensions: (dimensions: Array<number | Px>) => Dimensions = dimensions =>
 	dimensions.map(px => px as any) as Dimensions
 
+// I don't even know
+const SettingsFunctionObjects: (settingsFunctionObjects: Array<{
+	settingName: string, settingsFunction: <T>(p: T) => T, settingsPath: string[],
+}>) => SettingsFunctionObject = settingsFunctionObjects =>
+	settingsFunctionObjects.map(({ settingName, settingsFunction, settingsPath }) => ({
+		settingName: SettingsStep(settingName),
+		settingsFunction,
+		settingsPath: SettingsPath(settingsPath),
+	})) as any
+
 // Third order, singular
 
 const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
@@ -67,6 +78,7 @@ export {
 	Pixel,
 	Radian,
 	SettingsPath,
+	SettingsFunctionObjects,
 	SettingsStep,
 	ShapeColorIndex,
 	ShapeColorIndices,

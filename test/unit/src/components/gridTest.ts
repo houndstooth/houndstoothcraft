@@ -3,10 +3,11 @@ import * as tile from '../../../../src/components/tile'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as view from '../../../../src/view'
+import Spy = jasmine.Spy
 
 describe('grid', () => {
 	const gridSize = 2
-	let tileSpy
+	let tileSpy: Spy
 	beforeEach(() => {
 		tileSpy = spyOn(tile, 'tile')
 		state.mainHoundstooth.basePattern.gridSettings = { gridSize }

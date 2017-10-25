@@ -1,7 +1,9 @@
 import * as execute from '../../../../src/execute'
+import { InputElement } from '../../../../src/page/types/InputElement'
 import { state } from '../../../../src/state'
+import { buildEffectToggleClickHandler } from '../../../../src/ui/buildEffectToggleClickHandler'
 import * as resetInterface from '../../../../src/ui/resetInterface'
-import { buildEffectToggleClickHandler } from '../.././../../src/ui/buildEffectToggleClickHandler'
+import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
 
 describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
@@ -44,7 +46,7 @@ describe('build effect toggle click handler', () => {
 	})
 })
 
-const simulateClick = (checkbox, clickHandler) => {
+const simulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector) => {
 	checkbox.checked = !checkbox.checked
 	clickHandler()
 }

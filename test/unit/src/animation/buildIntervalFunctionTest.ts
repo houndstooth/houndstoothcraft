@@ -1,11 +1,13 @@
 import { buildIntervalFunction } from '../../../../src/animation/buildIntervalFunction'
 import { state } from '../../../../src/state'
+import Spy = jasmine.Spy
+import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
 import { windowWrapper } from '../../../../src/utilities/windowWrapper'
 
 describe('build animation function', () => {
-	let intervalFunction
-	let animationFunctionSpy
-	let stopConditionFunctionSpy
+	let intervalFunction: NullarySideEffector
+	let animationFunctionSpy: Spy
+	let stopConditionFunctionSpy: Spy
 	beforeEach(() => {
 		spyOn(windowWrapper, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')

@@ -5,6 +5,7 @@ import { state } from '../../../../src/state'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
 import { noop } from '../../../helpers/noop'
+import Spy = jasmine.Spy
 
 describe('shape', () => {
 	const tileOrigin = to.Coordinate([ 11, 13 ])
@@ -14,7 +15,7 @@ describe('shape', () => {
 	const shapeColorIndex = 45
 	const outlineOptions = {}
 
-	let getOutlineSpy
+	let getOutlineSpy: Spy
 
 	beforeEach(() => {
 		getOutlineSpy = jasmine.createSpy('getOutlineSpy')
@@ -44,7 +45,7 @@ describe('shape', () => {
 	})
 
 	describe('when an outline is received', () => {
-		const outline = []
+		const outline = to.Outline([])
 		beforeEach(() => getOutlineSpy.and.returnValue(outline))
 
 		it('gets the outline', () => {

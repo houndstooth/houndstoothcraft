@@ -6,7 +6,7 @@ const buildMockCanvas: (_: {
 	mockClassList?: string[], mockContext?: MockContext,
 }) => MockCanvas = ({ mockContext, mockClassList }) =>
 	Object.assign(buildMockElement({ mockClassList }), {
-		getContext: contextType => contextType === '2d' ? mockContext : undefined,
+		getContext: (contextType: string) => contextType === '2d' ? mockContext : undefined,
 	})
 
 export { buildMockCanvas }

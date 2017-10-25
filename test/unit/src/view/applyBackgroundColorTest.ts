@@ -3,10 +3,11 @@ import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import { applyBackgroundColor } from '../../../../src/view/applyBackgroundColor'
+import Spy = jasmine.Spy
 
 describe('apply background color', () => {
 	const defaultFillStyle = '#000000'
-	let fillRectSpy
+	let fillRectSpy: Spy
 	beforeEach(() => {
 		fillRectSpy = jasmine.createSpy('fillRect')
 		state.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]

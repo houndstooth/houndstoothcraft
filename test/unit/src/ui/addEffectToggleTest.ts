@@ -1,3 +1,4 @@
+import { PageElement } from '../../../../src/page/types/PageElement'
 import { addEffectToggle } from '../../../../src/ui/addEffectToggle'
 import * as createLabel from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -6,7 +7,7 @@ import { buildMockElement } from '../../helpers/buildMockElement'
 describe('add effect toggle', () => {
 	const mockLabel = {}
 	const mockHoundstoothEffect = { name: 'mock tooth' }
-	const mockEffectTogglesContainerChildren = []
+	const mockEffectTogglesContainerChildren: PageElement[] = []
 
 	beforeAll(() => {
 		const effectTogglesContainer = buildMockElement({ mockChildren: mockEffectTogglesContainerChildren })

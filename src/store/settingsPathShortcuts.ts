@@ -1,57 +1,63 @@
 import * as to from '../utilities/to'
+import { SettingsPath } from './types/SettingsPath'
 
-const animationSettings = to.SettingsPath([ 'animationSettings' ])
-const refreshCanvas = to.SettingsPath([ 'animationSettings', 'refreshCanvas' ])
-const startAnimationFrame = to.SettingsPath([ 'animationSettings', 'startAnimationFrame' ])
+const animationSettings: SettingsPath[] = to.SettingsPath([ 'animationSettings' ])
+const refreshCanvas: SettingsPath[] = to.SettingsPath([ 'animationSettings', 'refreshCanvas' ])
+const startAnimationFrame: SettingsPath[] = to.SettingsPath([ 'animationSettings', 'startAnimationFrame' ])
 
-const colorSettings = to.SettingsPath([ 'colorSettings' ])
-const colorSet = to.SettingsPath([ 'colorSettings', 'colorSet' ])
-const opacity = to.SettingsPath([ 'colorSettings', 'opacity' ])
-const backgroundColor = to.SettingsPath([ 'colorSettings', 'backgroundColor' ])
-const colorAssignmentSettings = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
-const flipGrain = to.SettingsPath([ 'colorSettings', 'colorAssignment', 'flipGrain' ])
+const colorSettings: SettingsPath[] = to.SettingsPath([ 'colorSettings' ])
+const colorSet: SettingsPath[] = to.SettingsPath([ 'colorSettings', 'colorSet' ])
+const opacity: SettingsPath[] = to.SettingsPath([ 'colorSettings', 'opacity' ])
+const backgroundColor: SettingsPath[] = to.SettingsPath([ 'colorSettings', 'backgroundColor' ])
+const colorAssignmentSettings: SettingsPath[] = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+const flipGrain: SettingsPath[] = to.SettingsPath([ 'colorSettings', 'colorAssignment', 'flipGrain' ])
 
-const gridSettings = to.SettingsPath([ 'gridSettings' ])
-const gridSize = to.SettingsPath([ 'gridSettings', 'gridSize' ])
-const includeNegativeQuadrants = to.SettingsPath([ 'gridSettings', 'includeNegativeQuadrants' ])
+const gridSettings: SettingsPath[] = to.SettingsPath([ 'gridSettings' ])
+const gridSize: SettingsPath[] = to.SettingsPath([ 'gridSettings', 'gridSize' ])
+const includeNegativeQuadrants: SettingsPath[] = to.SettingsPath([ 'gridSettings', 'includeNegativeQuadrants' ])
 
-const layerSettings = to.SettingsPath([ 'layerSettings' ])
-const endLayer = to.SettingsPath([ 'layerSettings', 'endLayer' ])
+const layerSettings: SettingsPath[] = to.SettingsPath([ 'layerSettings' ])
+const endLayer: SettingsPath[] = to.SettingsPath([ 'layerSettings', 'endLayer' ])
 
-const stripePositionSettings = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
-const getStripePositions = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'getStripePositions' ])
-const stripeCount = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCount' ])
-const stripeCountContinuumSettings = to.SettingsPath([
+const stripePositionSettings: SettingsPath[] = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
+const getStripePositions: SettingsPath[] = to.SettingsPath([
+	'stripeSettings', 'stripePositionSettings', 'getStripePositions',
+])
+const stripeCount: SettingsPath[] = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCount' ])
+const stripeCountContinuumSettings: SettingsPath[] = to.SettingsPath([
 	'stripeSettings', 'stripePositionSettings', 'stripeCountContinuumSettings',
 ])
 
-const textureSettings = to.SettingsPath([ 'textureSettings' ])
-const executeTexture = to.SettingsPath([ 'textureSettings', 'executeTexture' ])
+const textureSettings: SettingsPath[] = to.SettingsPath([ 'textureSettings' ])
+const executeTexture: SettingsPath[] = to.SettingsPath([ 'textureSettings', 'executeTexture' ])
 
-const tileSettings = to.SettingsPath([ 'tileSettings' ])
-const tileSize = to.SettingsPath([ 'tileSettings', 'tileSize' ])
-const getTileOriginAndSize = to.SettingsPath([ 'tileSettings', 'getTileOriginAndSize' ])
-const collapseSameColoredShapesWithinTile = to.SettingsPath([ 'tileSettings', 'collapseSameColoredShapesWithinTile' ])
+const tileSettings: SettingsPath[] = to.SettingsPath([ 'tileSettings' ])
+const tileSize: SettingsPath[] = to.SettingsPath([ 'tileSettings', 'tileSize' ])
+const getTileOriginAndSize: SettingsPath[] = to.SettingsPath([ 'tileSettings', 'getTileOriginAndSize' ])
+const collapseSameColoredShapesWithinTile: SettingsPath[] = to.SettingsPath([
+	'tileSettings', 'collapseSameColoredShapesWithinTile',
+])
 
-const viewSettings = to.SettingsPath([ 'viewSettings' ])
-const canvasSize = to.SettingsPath([ 'viewSettings', 'canvasSize' ])
-const zoom = to.SettingsPath([ 'viewSettings', 'zoom' ])
-const rotateViewAboutCanvasCenter = to.SettingsPath([ 'viewSettings', 'rotateViewAboutCanvasCenter' ])
-const centerViewOnCenterOfTileAtHomeAddress = to.SettingsPath([
+const viewSettings: SettingsPath[] = to.SettingsPath([ 'viewSettings' ])
+const canvasSize: SettingsPath[] = to.SettingsPath([ 'viewSettings', 'canvasSize' ])
+const zoom: SettingsPath[] = to.SettingsPath([ 'viewSettings', 'zoom' ])
+const rotateViewAboutCanvasCenter: SettingsPath[] = to.SettingsPath([ 'viewSettings', 'rotateViewAboutCanvasCenter' ])
+const centerViewOnCenterOfTileAtHomeAddress: SettingsPath[] = to.SettingsPath([
 	'viewSettings', 'centerViewOnCenterOfTileAtHomeAddress',
 ])
-const zoomOnCanvasCenter = to.SettingsPath([ 'viewSettings', 'zoomOnCanvasCenter' ])
+const zoomOnCanvasCenter: SettingsPath[] = to.SettingsPath([ 'viewSettings', 'zoomOnCanvasCenter' ])
 
-export {
+const settingsPathShortcuts: { [ index: string ]: SettingsPath[] } = {
 	animationSettings,
 	backgroundColor,
-	centerViewOnCenterOfTileAtHomeAddress,
-	colorAssignmentSettings,
 	canvasSize,
+	centerViewOnCenterOfTileAtHomeAddress,
 	collapseSameColoredShapesWithinTile,
-	colorSettings,
+	colorAssignmentSettings,
 	colorSet,
+	colorSettings,
 	endLayer,
+	executeTexture,
 	flipGrain,
 	getStripePositions,
 	getTileOriginAndSize,
@@ -61,7 +67,6 @@ export {
 	layerSettings,
 	opacity,
 	refreshCanvas,
-	executeTexture,
 	rotateViewAboutCanvasCenter,
 	startAnimationFrame,
 	stripeCount,
@@ -74,3 +79,5 @@ export {
 	zoom,
 	zoomOnCanvasCenter,
 }
+
+export { settingsPathShortcuts }

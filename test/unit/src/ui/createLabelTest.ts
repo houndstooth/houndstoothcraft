@@ -1,12 +1,13 @@
+import { PageElement } from '../../../../src/page/types/PageElement'
 import * as createCheckbox from '../../../../src/ui/createCheckbox'
 import { createLabel } from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create label', () => {
-	let returnedLabel
-	let mockLabel
-	const mockChildren = []
+	let returnedLabel: PageElement
+	let mockLabel: PageElement
+	const mockChildren: PageElement[] = []
 	const mockCheckbox = {}
 	const mockName = {}
 	const mockHoundstoothEffect = { name: 'mock tooth' }
@@ -26,11 +27,21 @@ describe('create label', () => {
 	})
 
 	it('makes it so your cursor becomes a pointer when you hover over it', () => {
-		expect(returnedLabel.style.cursor).toBe('pointer')
+		if (!returnedLabel.style) {
+			fail()
+		}
+		else {
+			expect(returnedLabel.style.cursor).toBe('pointer')
+		}
 	})
 
 	it('makes it so the labels all appear on separate lines', () => {
-		expect(returnedLabel.style.display).toBe('block')
+		if (!returnedLabel.style) {
+			fail()
+		}
+		else {
+			expect(returnedLabel.style.display).toBe('block')
+		}
 	})
 
 	it('adds one checkbox to the label', () => {

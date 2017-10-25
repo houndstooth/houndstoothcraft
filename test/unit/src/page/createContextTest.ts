@@ -1,13 +1,14 @@
 import createContext from '../../../../src/page/createContext'
 import { Canvas } from '../../../../src/page/types/Canvas'
+import { Context } from '../../../../src/page/types/Context'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 import { buildMockCanvas } from '../../helpers/buildMockCanvas'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create context', () => {
-	let returnedContext
-	let appendedCanvas
+	let returnedContext: Context
+	let appendedCanvas: Canvas
 	const mockContext = buildMockContext()
 	beforeEach(() => {
 		const mockCanvas = buildMockCanvas({ mockContext })

@@ -4,17 +4,22 @@ import * as getTileOriginAndSize from '../../../../src/components/getTileOriginA
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import * as shape from '../../../../src/components/shape'
 import { tile } from '../../../../src/components/tile'
+import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
+import { StripePosition } from '../../../../src/components/types/StripePosition'
+import Spy = jasmine.Spy
+import { Unit } from '../../../../src/components/types/Unit'
 import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as space from '../../../../src/space'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 
 describe('tile', () => {
 	const gridAddress = to.Address([ 3, 5 ])
-	let shapeSpy
-	let getShapeColorIndicesSpy
-	let isTileUniformSpy
+	let shapeSpy: Spy
+	let getShapeColorIndicesSpy: Spy
+	let isTileUniformSpy: Spy
 	beforeEach(() => {
 		shapeSpy = spyOn(shape, 'shape')
 		spyOn(space, 'squareOutline')
@@ -36,16 +41,16 @@ describe('tile', () => {
 	})
 
 	describe('when the tile is assigned an origin on the canvas', () => {
-		let stripePositionsForTile
-		let shapeColorIndices
-		let tileOrigin
-		let tileSize
+		let stripePositionsForTile: StripePosition[]
+		let shapeColorIndices: ShapeColorIndex[]
+		let tileOrigin: Coordinate
+		let tileSize: Unit
 		beforeEach(() => {
-			tileOrigin = [ 7, 11 ]
-			tileSize = 13
+			tileOrigin = to.Coordinate([ 7, 11 ])
+			tileSize = to.Unit(13)
 			spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
 
-			stripePositionsForTile = [ 0, 0.5, 1, 1.5 ]
+			stripePositionsForTile = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 			spyOn(getStripePositionsForTile, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
 
 			state.mainHoundstooth.basePattern.tileSettings = {}

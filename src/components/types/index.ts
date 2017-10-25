@@ -12,12 +12,11 @@ import { Grid } from './Grid'
 import { OffsetAddress } from './OffsetAddress'
 import { ShapeColorIndex } from './ShapeColorIndex'
 import { ShapeParams } from './ShapeParams'
-import { Solid } from './Solid'
 import { SolidParams } from './SolidParams'
 import { StripeCountMode } from './StripeCountMode'
 import { StripePosition } from './StripePosition'
 import { Supertile } from './Supertile'
-import { Texture } from './Texture'
+import { TextureParams } from './TextureParams'
 import { TileOriginAndSize } from './TileOriginAndSize'
 import { TransformShapeColorIndices } from './TransformShapeColorIndices'
 import { Unit } from './Unit'
@@ -45,7 +44,6 @@ export {
 	ExecuteTexture,
 	ShapeParams,
 	ComponentParams,
-	Solid,
 	SolidParams,
-	Texture,
+	TextureParams,
 }

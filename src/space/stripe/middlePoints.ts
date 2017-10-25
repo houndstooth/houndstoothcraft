@@ -1,10 +1,10 @@
 import { PERIMETER_SCALAR } from '../../constants'
 import * as from from '../../utilities/from'
 import * as to from '../../utilities/to'
-import { Points } from '../types/Points'
+import { PointsParams } from '../types/PointsParams'
 import * as stripePoints from './stripePoints'
 
-const middlePoints: Points = params => {
+const middlePoints: (_: PointsParams) => void = params => {
 	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, stripeEnd, tileOrigin, tileSize } = params
 	if (!stripeEndsInBottomRightHalf) {
 		middlePointsWhenStripeEndsInBottomRightHalf({ outline, stripeEnd, tileOrigin, tileSize })
@@ -20,12 +20,13 @@ const middlePoints: Points = params => {
 	}
 }
 
-const middlePointsWhenStripeEndsInBottomRightHalf: Points = ({ outline, stripeEnd, tileOrigin, tileSize }) => {
+const middlePointsWhenStripeEndsInBottomRightHalf: (_: PointsParams) => void = params => {
+	const { outline, stripeEnd, tileOrigin, tileSize } = params
 	outline.push(stripePoints.pointAlongTopEdge({ stripePosition: stripeEnd, tileOrigin, tileSize }))
 	outline.push(stripePoints.pointAlongLeftEdge({ stripePosition: stripeEnd, tileOrigin, tileSize }))
 }
 
-const middlePointsWhenStripeDoesNotEndInBottomRightHalf: Points = params => {
+const middlePointsWhenStripeDoesNotEndInBottomRightHalf: (_: PointsParams) => void = params => {
 	const { stripeStartsInTopLeftHalf, outline, stripeEnd, tileOrigin, tileSize } = params
 
 	if (stripeStartsInTopLeftHalf) {

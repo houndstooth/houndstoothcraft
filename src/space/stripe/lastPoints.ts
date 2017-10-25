@@ -1,9 +1,9 @@
 import * as from from '../../utilities/from'
 import * as to from '../../utilities/to'
-import { Points } from '../types'
+import { PointsParams } from '../types'
 import { pointAlongBottomEdge, pointAlongLeftEdge, pointInBottomLeftCorner } from './stripePoints'
 
-const lastPoints: Points = params => {
+const lastPoints: (_: PointsParams) => void = params => {
 	const { outline, stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, stripeStart, tileOrigin, tileSize } = params
 	const stripeStartsInTopLeftCorner = from.StripePosition(stripeStart || to.StripePosition(0)) === 0
 	if (!stripeStartsInTopLeftCorner) {
@@ -21,7 +21,7 @@ const lastPoints: Points = params => {
 	}
 }
 
-const lastPointsWhenStripeDoesNotStartInTopLeftCorner: Points = params => {
+const lastPointsWhenStripeDoesNotStartInTopLeftCorner: (_: PointsParams) => void = params => {
 	const { stripeStartsInTopLeftHalf, stripeEndsInBottomRightHalf, outline, stripeStart, tileOrigin, tileSize } = params
 
 	if (stripeStartsInTopLeftHalf && stripeEndsInBottomRightHalf) {

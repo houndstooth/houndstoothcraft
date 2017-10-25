@@ -1,7 +1,7 @@
 import { fill, getColor } from '../render'
-import { Solid } from './types'
+import { SolidParams } from './types'
 
-const solid: Solid = ({ outline, shapeColorIndex }) => {
+const solid: (_: SolidParams) => void = ({ outline, shapeColorIndex }) => {
 	const shapeColor = getColor({ index: shapeColorIndex || 0 })
 	if (shapeColor.a === 0) {
 		return

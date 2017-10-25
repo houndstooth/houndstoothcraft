@@ -1,7 +1,7 @@
 import { resetClip, setClip } from '../render'
-import { Texture } from './types'
+import { TextureParams } from './types'
 
-const texture: Texture = params => {
+const texture: (_: TextureParams) => void = params => {
 	const { outline, tileOrigin, tileSize, executeTexture, shapeColorIndex, shapeColorCount } = params
 	setClip({ outline })
 

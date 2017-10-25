@@ -59,7 +59,7 @@ const checkColorProperties: (_: {
 	const firstColorPropertyKey = firstColorProperty[ 0 ]
 	const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
 
-	if (!isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
+	if (secondColorPropertyValue && !isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
 		console.error(`actual color: ${parseColor(actualColor)} / expected color ${parseColor(expectedColor)}`)
 
 		return false

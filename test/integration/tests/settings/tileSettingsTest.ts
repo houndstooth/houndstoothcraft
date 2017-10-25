@@ -4,7 +4,9 @@ import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownContext from '../../../../src/page/createMixedDownContext'
+import { Effect } from '../../../../src/store/types/Effect'
 import { buildMockContext } from '../../../helpers/buildMockContext'
+import { MockContextCall } from '../../../types/MockContextCall'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
@@ -101,15 +103,15 @@ describe('.tileSettings', () => {
 	})
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
-		let houndstoothOverrides
+		let houndstoothOverrides: Effect
 		let mockContext
-		let contextCallsOrder
+		let contextCallsOrder: MockContextCall[]
 		beforeEach(() => {
 			contextCallsOrder = []
 			clear()
 			houndstoothOverrides = {
 				basePattern: {
-					colorSettings: { colorSet: [ BLACK, BLACK ] },
+					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
 					gridSettings: { gridSize: 1 },
 				},
 			}
@@ -134,7 +136,9 @@ describe('.tileSettings', () => {
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
-			houndstoothOverrides.basePattern.tileSettings = { collapseSameColoredShapesWithinTile: false }
+			if (houndstoothOverrides.basePattern) {
+				houndstoothOverrides.basePattern.tileSettings = { collapseSameColoredShapesWithinTile: false }
+			}
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })

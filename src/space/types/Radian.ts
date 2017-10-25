@@ -1,5 +1,5 @@
 interface Radian extends Number {
-	_RadianBrand
+	_RadianBrand: any
 }
 
 export { Radian }

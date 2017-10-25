@@ -1,6 +1,11 @@
-import { ColorRange } from './ColorRange'
+// tslint:disable:member-ordering
+interface Color {
+	r?: number,
+	g?: number,
+	b?: number,
+	a: number,
 
-// tslint:disable-next-line:member-ordering
-interface Color { r?: ColorRange, g?: ColorRange, b?: ColorRange, a: number }
+	[index: string]: number | undefined,
+}
 
 export { Color }

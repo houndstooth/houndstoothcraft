@@ -5,6 +5,7 @@ import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
+import { Effect } from '../../../../src/store/types/Effect'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { sectionCenterIsColor } from '../../helpers/sectionCenterIsColor'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
@@ -14,7 +15,7 @@ describe('.stripeSettings', () => {
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
-			let houndstoothOverrides
+			let houndstoothOverrides: Effect
 			beforeEach(() => {
 				houndstoothOverrides = {
 					basePattern: {
@@ -24,7 +25,7 @@ describe('.stripeSettings', () => {
 								stripeCountMode: StripeCountMode.GinghamChevronContinuum,
 							},
 						},
-						viewSettings: { canvasSize: areaSize },
+						viewSettings: { canvasSize: to.Px(from.Unit(areaSize)) },
 					},
 				}
 			})
@@ -162,7 +163,7 @@ describe('.stripeSettings', () => {
 			let areaOrigin
 			let id = -1
 
-			areaOrigin = [ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ]
+			areaOrigin = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])
 			expect(sectionCenterIsColor({
 				areaOrigin,
 				areaSize,
@@ -231,7 +232,7 @@ describe('.stripeSettings', () => {
 				sectionResolution: 4,
 			})).toBe(true)
 
-			areaOrigin = [ from.Unit(areaSize) * 1, from.Unit(areaSize) * 1 ]
+			areaOrigin = to.Coordinate([ from.Unit(areaSize) * 1, from.Unit(areaSize) * 1 ])
 
 			expect(sectionCenterIsColor({
 				areaOrigin,

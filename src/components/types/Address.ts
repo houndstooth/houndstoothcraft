@@ -1,5 +1,5 @@
 interface Address extends Number {
-	_AddressBrand
+	_AddressBrand: any
 }
 
 export { Address }

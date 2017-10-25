@@ -5,7 +5,7 @@ import { Address, ColorSet, Grid, ShapeColorIndex, StripePosition, Supertile, Un
 import { Layer } from '../execute'
 import { SettingsFunctionObject } from '../execute/types/SettingsFunctionObject'
 import { Dimensions, Px } from '../page'
-import { Color, ColorRange, Path, Pixel } from '../render'
+import { Color, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsPath } from '../store'
 
@@ -41,13 +41,13 @@ const Supertile: (supertile: Grid<Array<number | ShapeColorIndex>>) => Supertile
 	supertile as Supertile
 const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
 	coordinate.map(unit => unit as any) as Coordinate
-const Color: (color: { r?: ColorRange, g?: ColorRange, b?: ColorRange, a: number }) => Color = color => color as Color
+const Color: (color: { r?: number, g?: number, b?: number, a: number }) => Color = color => color as Color
 const Pixel: (pixel: Array<number | Px>) => Pixel = pixel =>
 	pixel.map(px => px as any) as Pixel
 const Dimensions: (dimensions: Array<number | Px>) => Dimensions = dimensions =>
 	dimensions.map(px => px as any) as Dimensions
 
-// I don't even know
+// Second order, plural
 const SettingsFunctionObjects: (settingsFunctionObjects: Array<{
 	settingName: string, settingsFunction: <T>(p: T) => T, settingsPath: string[],
 }>) => SettingsFunctionObject = settingsFunctionObjects =>

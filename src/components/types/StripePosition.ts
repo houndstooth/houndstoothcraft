@@ -1,5 +1,5 @@
 interface StripePosition extends Number {
-	_StripePositionBrand
+	_StripePositionBrand: any
 }
 
 export { StripePosition }

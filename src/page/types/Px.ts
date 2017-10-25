@@ -1,5 +1,5 @@
 interface Px extends Number {
-	_PxBrand
+	_PxBrand: any
 }
 
 export { Px }

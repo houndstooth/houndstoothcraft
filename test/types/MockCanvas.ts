@@ -1,8 +1,8 @@
 interface MockCanvas {
-	getContext?,
-	height?,
-	style?,
-	width?,
+	getContext?: any,
+	height?: any,
+	style?: any,
+	width?: any,
 }
 
 export { MockCanvas }

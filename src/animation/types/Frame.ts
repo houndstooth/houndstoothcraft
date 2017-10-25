@@ -1,5 +1,5 @@
 interface Frame extends Number {
-	_FrameBrand
+	_FrameBrand: any
 }
 
 export { Frame }

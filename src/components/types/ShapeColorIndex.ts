@@ -1,5 +1,5 @@
 interface ShapeColorIndex extends Number {
-	_ShapeColorIndexBrand
+	_ShapeColorIndexBrand: any
 }
 
 export { ShapeColorIndex }

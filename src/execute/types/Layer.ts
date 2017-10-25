@@ -1,5 +1,5 @@
 interface Layer extends Number {
-	_LayerBrand
+	_LayerBrand: any
 }
 
 export { Layer }

@@ -1,5 +1,5 @@
 interface Unit extends Number {
-	_UnitsBrand
+	_UnitsBrand: any
 }
 
 export { Unit }

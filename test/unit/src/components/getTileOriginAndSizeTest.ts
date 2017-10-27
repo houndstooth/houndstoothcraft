@@ -1,10 +1,10 @@
 import { from, state, to } from '../../../../src'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
+import { Address } from '../../../../src/components/types/Address'
 import { GetTileOriginAndSize } from '../../../../src/components/types/GetTileOriginAndSize'
 import { TileOriginAndSize } from '../../../../src/components/types/TileOriginAndSize'
 import { Unit } from '../../../../src/components/types/Unit'
 import { setSetting } from '../../../../src/store/setSetting'
-import { Address } from '../../../../src/components/types/Address'
 
 describe('get tile origin and size', () => {
 	const gridAddressForSubject: Address = to.Address([ 7, 11 ])

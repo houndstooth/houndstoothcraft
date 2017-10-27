@@ -1,7 +1,7 @@
 // tslint:disable:variable-name no-any
 
 import { Frame } from '../animation'
-import { AddressElement, Address, ShapeColorIndex, StripePosition, Unit } from '../components'
+import { Address, AddressElement, ShapeColorIndex, StripePosition, Unit } from '../components'
 import { Layer } from '../execute'
 import { Dimensions, Px } from '../page'
 import { Pixel } from '../render'

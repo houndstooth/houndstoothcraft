@@ -4,6 +4,8 @@ import * as getTileOriginAndSize from '../../../../src/components/getTileOriginA
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import * as shape from '../../../../src/components/shape'
 import { tile } from '../../../../src/components/tile'
+import CallInfo = jasmine.CallInfo
+import { Address } from '../../../../src/components/types/Address'
 import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
 import { StripePosition } from '../../../../src/components/types/StripePosition'
 import Spy = jasmine.Spy
@@ -14,8 +16,6 @@ import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
-import CallInfo = jasmine.CallInfo
-import { Address } from '../../../../src/components/types/Address'
 
 describe('tile', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])

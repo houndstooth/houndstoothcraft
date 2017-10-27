@@ -1,13 +1,23 @@
 // tslint:disable:variable-name member-ordering no-any
 
 import { Frame } from '../animation'
-import { Address, ColorSet, Grid, ShapeColorIndex, StripePosition, Supertile, Unit } from '../components'
+import {
+	Address,
+	AddressElement,
+	ColorSet,
+	Grid,
+	ShapeColorIndex,
+	StripePosition,
+	Supertile,
+	Unit,
+} from '../components'
 import { Layer } from '../execute'
 import { SettingsFunctionObject } from '../execute/types/SettingsFunctionObject'
 import { Dimensions, Px } from '../page'
 import { Color, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
 import { SettingsStep } from '../store'
+import { SettingsPath } from '../store/types/SettingsPath'
 
 // First order, singular
 
@@ -18,7 +28,7 @@ const Radian: (radian: number) => Radian = radian => radian as any
 const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const Unit: (unit: number) => Unit = unit => unit as any
-// Address (singular) not yet needed
+// AddressElement (singular) not yet needed
 const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
 
 // First order, plurals
@@ -32,8 +42,9 @@ const ShapeColorIndices: (shapeColorIndices: Array<number | ShapeColorIndex>) =>
 const StripePositions: (stripePositions: Array<StripePosition | number>) => StripePosition[] = stripePositions =>
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]
 // Units might be confusing because it's also natural to say "in units"; see Coordinate for a type that is Unit[]
-const Address: (address: Array<number | Address>) => Address[] = address => address as any
-const SettingsPath: (settingsPath: Array<string | SettingsStep>) => SettingsStep[] = settingsPath => settingsPath as any
+const Address: (address: Array<number | AddressElement>) => Address = address => address as any
+const SettingsPath: (settingsPath: SettingsStep[] | Array<string | SettingsStep>) =>
+	SettingsPath = settingsPath => settingsPath as any
 
 // Second order, singular
 

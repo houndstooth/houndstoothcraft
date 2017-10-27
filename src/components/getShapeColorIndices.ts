@@ -4,7 +4,7 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { Address, AssignmentMode, ShapeColorIndex, Supertile, TransformShapeColorIndices, Weave } from './types'
 
-const getShapeColorIndices: (_: { gridAddress: Address[] }) => ShapeColorIndex[] = ({ gridAddress }) => {
+const getShapeColorIndices: (_: { gridAddress: Address }) => ShapeColorIndex[] = ({ gridAddress }) => {
 	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
 
 	const shapeColorIndices = getIndices({ gridAddress, colorAssignment })
@@ -13,7 +13,7 @@ const getShapeColorIndices: (_: { gridAddress: Address[] }) => ShapeColorIndex[]
 }
 
 const maybeAdjustShapeColorIndices: (_: {
-	colorAssignment: ColorAssignmentSettings, gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
+	colorAssignment: ColorAssignmentSettings, gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
 }) => ShapeColorIndex[] = ({ colorAssignment, gridAddress, shapeColorIndices }) => {
 	const { transformShapeColorIndices, flipGrain, switcheroo } = colorAssignment
 
@@ -38,7 +38,7 @@ const maybeAdjustShapeColorIndices: (_: {
 }
 
 const getIndices: (_: {
-	colorAssignment: ColorAssignmentSettings, gridAddress: Address[],
+	colorAssignment: ColorAssignmentSettings, gridAddress: Address,
 }) => ShapeColorIndex[] = ({ colorAssignment, gridAddress }) => {
 	const { offsetAddress, assignmentMode, weave, supertile } = colorAssignment
 
@@ -59,7 +59,7 @@ const getIndices: (_: {
 }
 
 type GetShapeColorIndices = (_: {
-	addressOffset: Address[], gridAddress: Address[], supertile?: Supertile, weave?: Weave,
+	addressOffset: Address, gridAddress: Address, supertile?: Supertile, weave?: Weave,
 }) => ShapeColorIndex[]
 
 const getByWeave: GetShapeColorIndices = ({ addressOffset, gridAddress, weave }) => {

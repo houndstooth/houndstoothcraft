@@ -35,7 +35,7 @@ interface SectionCenterExpectation {
 	areaSize: Unit,
 	color: Color,
 	id?: number,
-	sectionAddress: Address[],
+	sectionAddress: Address,
 	sectionResolution: number,
 }
 

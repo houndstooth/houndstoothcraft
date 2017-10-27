@@ -1,4 +1,5 @@
 import { Address } from './Address'
+import { AddressElement } from './AddressElement'
 import { AssignmentMode } from './AssignmentMode'
 import { BaseStripeDiagonal } from './BaseStripeDiagonal'
 import { ColorOptions } from './ColorOptions'
@@ -24,6 +25,7 @@ import { Weave } from './Weave'
 
 export {
 	Address,
+	AddressElement,
 	GetTileOriginAndSize,
 	StripePosition,
 	TileOriginAndSize,

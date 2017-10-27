@@ -8,6 +8,7 @@ import { texture } from './texture'
 import { tileCenter } from './tileCenter'
 import {
 	Address,
+	AddressElement,
 	AssignmentMode,
 	BaseStripeDiagonal,
 	ColorOptions,
@@ -35,6 +36,7 @@ export {
 	perStripe,
 	tileCenter,
 	Address,
+	AddressElement,
 	Supertile,
 	Weave,
 	TileOriginAndSize,

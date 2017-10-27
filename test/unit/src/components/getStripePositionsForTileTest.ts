@@ -16,7 +16,7 @@ describe('get stripe positions for tile', () => {
 
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions: StripePosition[] = []
-		const gridAddress: Address[] = to.Address([ 3, 5 ])
+		const gridAddress: Address = to.Address([ 3, 5 ])
 		const stripePositionSettings: StripePositionSettings = getFromBaseOrDefaultPattern('stripePositionSettings')
 		const stripePositionsSpy: Spy = spyOn(stripePositionSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)

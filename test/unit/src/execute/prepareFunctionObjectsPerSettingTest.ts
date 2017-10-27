@@ -16,8 +16,8 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 	let errorSpy: Spy
 	beforeEach(() => {
 		errorSpy = spyOn(console, 'error')
-		settingsFunction = (p: number) => p * 2
-		secondSettingsFunction = (p: number) => p - 1
+		settingsFunction = (p: number): number => p * 2
+		secondSettingsFunction = (p: number): number => p - 1
 		settingsFunctionsSourcePattern = {
 			childPathFirstStep: {
 				childPathSecondStep: {

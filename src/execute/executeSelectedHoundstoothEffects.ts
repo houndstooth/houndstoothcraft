@@ -8,39 +8,41 @@ import { executeGrid } from './executeGrid'
 import { prepareFunctionObjectsPerSetting } from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
 
-const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void = params => {
-	const { houndstoothOverrides = {} } = params || {}
-	composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
+const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
+	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
+		composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
-	const layerFunctionObjects = prepareFunctionObjectsPerSetting({
-		settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern || {},
-	})
-
-	prepareCanvas()
-
-	execute({ layerFunctionObjects })
-}
-
-const prepareCanvas: NullarySideEffector = () => {
-	createContexts()
-	if (state.exportFrames) {
-		state.mixingDown = true
-	}
-	if (state.mixingDown) {
-		state.mixedDownContext = createMixedDownContext()
-	}
-}
-
-const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
-	if (state.animating) {
-		const animationFunctionObjects = prepareFunctionObjectsPerSetting({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern || {},
+		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
+			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern || {},
 		})
-		executeAnimation({ animationFunctionObjects, layerFunctionObjects })
+
+		prepareCanvas()
+
+		execute({ layerFunctionObjects })
 	}
-	else {
-		executeGrid({ layerFunctionObjects })
+
+const prepareCanvas: NullarySideEffector =
+	(): void => {
+		createContexts()
+		if (state.exportFrames) {
+			state.mixingDown = true
+		}
+		if (state.mixingDown) {
+			state.mixedDownContext = createMixedDownContext()
+		}
 	}
-}
+
+const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
+	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {
+		if (state.animating) {
+			const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
+				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern || {},
+			})
+			executeAnimation({ animationFunctionObjects, layerFunctionObjects })
+		}
+		else {
+			executeGrid({ layerFunctionObjects })
+		}
+	}
 
 export { executeSelectedHoundstoothEffects }

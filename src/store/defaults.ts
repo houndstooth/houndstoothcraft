@@ -88,10 +88,10 @@ const DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES: undefined = undefined
 const DEFAULT_WEAVE: Weave = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 
 const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
-	endAnimationFrame: DEFAULT_END_ANIMATION_FRAME,
+	endFrame: DEFAULT_END_ANIMATION_FRAME,
 	frameRate: DEFAULT_FRAME_RATE,
 	refreshCanvas: DEFAULT_REFRESH_CANVAS,
-	startAnimationFrame: DEFAULT_START_ANIMATION_FRAME,
+	startFrame: DEFAULT_START_ANIMATION_FRAME,
 }
 
 const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
@@ -175,11 +175,11 @@ const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 const DEFAULT_STATE: State = {
 	animating: DEFAULT_ANIMATING,
 	contexts: DEFAULT_CONTEXTS,
-	currentAnimationFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
+	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	interval: DEFAULT_INTERVAL,
-	lastSavedAnimationFrame: DEFAULT_LAST_SAVED_ANIMATION_FRAME,
+	lastSavedFrame: DEFAULT_LAST_SAVED_ANIMATION_FRAME,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	mixedDownContext: DEFAULT_MIXED_DOWN_CANVAS,
 	mixingDown: DEFAULT_MIXING_DOWN,

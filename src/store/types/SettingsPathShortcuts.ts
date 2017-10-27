@@ -7,7 +7,7 @@ type BooleanPathShortcut =
 	| 'zoomOnCanvasCenter'
 type ColorPathShortcut = 'backgroundColor'
 type ColorsPathShortcut = 'colorSet'
-type FramePathShortcut = 'startAnimationFrame'
+type FramePathShortcut = 'startFrame'
 type GetTileOriginAndSizePathShortcut = 'getTileOriginAndSize'
 type LayerPathShortcut = 'endLayer'
 type NumberPathShortcut =

@@ -2,6 +2,7 @@ import { from, state, to } from '../../../../src'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
 import { Address } from '../../../../src/components/types/Address'
 import { GetTileOriginAndSize } from '../../../../src/components/types/GetTileOriginAndSize'
+import { TileOriginAndSize } from '../../../../src/components/types/TileOriginAndSize'
 import { Unit } from '../../../../src/components/types/Unit'
 import { setSetting } from '../../../../src/store/setSetting'
 
@@ -19,7 +20,7 @@ describe('get tile origin and size', () => {
 	})
 
 	it('uses a custom get tile origin and sized unit function if provided', () => {
-		const custom: GetTileOriginAndSize = ({ gridAddress }: { gridAddress: Address[] }) => {
+		const custom: GetTileOriginAndSize = ({ gridAddress }: { gridAddress: Address[] }): TileOriginAndSize => {
 			const [ x, y ]: number[] = from.Address(gridAddress)
 
 			return {

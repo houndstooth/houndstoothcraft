@@ -1,4 +1,5 @@
 import { to } from '../../../../src'
+import { ColorSet } from '../../../../src/components/types/ColorSet'
 import { CYAN, ERASE, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { Color } from '../../../../src/render/types/Color'
@@ -19,8 +20,8 @@ describe('.layerSettings', () => {
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: () => CYAN,
-					opacity: () => 0.25,
+					backgroundColor: (): Color => CYAN,
+					opacity: (): number => 0.25,
 				},
 			},
 		}
@@ -48,10 +49,10 @@ describe('.layerSettings', () => {
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: () => CYAN,
-					colorSet: () => [ TRANSPARENT, ERASE ],
+					backgroundColor: (): Color => CYAN,
+					colorSet: (): ColorSet => to.ColorSet([ TRANSPARENT, ERASE ]),
 				},
-				gridSettings: { gridSize: () => 2 },
+				gridSettings: { gridSize: (): number => 2 },
 			},
 		}
 		activateTestMarkerCanvas()

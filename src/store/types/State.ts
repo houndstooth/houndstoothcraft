@@ -7,11 +7,11 @@ import { Houndstooth } from './Houndstooth'
 interface State {
 	animating: boolean,
 	contexts: Context[],
-	currentAnimationFrame: Frame,
+	currentFrame: Frame,
 	currentLayer: Layer,
 	exportFrames: boolean,
 	interval: (() => void) | undefined,
-	lastSavedAnimationFrame: Frame,
+	lastSavedFrame: Frame,
 	mainHoundstooth: Houndstooth,
 	mixedDownContext: Context | undefined,
 	mixingDown: boolean,

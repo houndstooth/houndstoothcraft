@@ -3,7 +3,7 @@ import { SettingsStep } from './types/SettingsStep'
 
 const animationSettings: SettingsStep[] = to.SettingsPath([ 'animationSettings' ])
 const refreshCanvas: SettingsStep[] = to.SettingsPath([ 'animationSettings', 'refreshCanvas' ])
-const startAnimationFrame: SettingsStep[] = to.SettingsPath([ 'animationSettings', 'startAnimationFrame' ])
+const startFrame: SettingsStep[] = to.SettingsPath([ 'animationSettings', 'startFrame' ])
 
 const colorSettings: SettingsStep[] = to.SettingsPath([ 'colorSettings' ])
 const colorSet: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'colorSet' ])
@@ -68,7 +68,7 @@ const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	opacity,
 	refreshCanvas,
 	rotateViewAboutCanvasCenter,
-	startAnimationFrame,
+	startFrame,
 	stripeCount,
 	stripeCountContinuumSettings,
 	stripePositionSettings,

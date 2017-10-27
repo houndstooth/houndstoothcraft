@@ -4,14 +4,14 @@ import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
 import { console } from '../utilities/windowWrapper'
 
 const gridAndMaybeLogging: NullarySideEffector = () => {
-	const { performanceLogging, animating, currentAnimationFrame, currentLayer } = state
+	const { performanceLogging, animating, currentFrame, currentLayer } = state
 	if (performanceLogging) {
 		console.time('grid')
 	}
 	grid()
 	if (performanceLogging) {
 		if (animating) {
-			console.log(`current animation frame / layer: ${currentAnimationFrame}/${currentLayer}`)
+			console.log(`current animation frame / layer: ${currentFrame}/${currentLayer}`)
 		}
 		else {
 			console.log(`current layer: ${currentLayer}`)

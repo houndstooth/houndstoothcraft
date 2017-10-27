@@ -1,19 +1,23 @@
 import { Frame } from '../../../src/animation/types/Frame'
 import { Layer } from '../../../src/execute/types/Layer'
 
-const thisAnimationFrameOnly: (frame: Frame) => { endAnimationFrame: Frame, startAnimationFrame: Frame } =
-	(frame: Frame) => ({
-		endAnimationFrame: frame,
-		startAnimationFrame: frame,
+interface ThisFrameOnly { endFrame: Frame, startFrame: Frame }
+
+const thisFrameOnly: (frame: Frame) => ThisFrameOnly =
+	(frame: Frame): ThisFrameOnly => ({
+		endFrame: frame,
+		startFrame: frame,
 	})
 
-const thisLayerOnly: (layer: Layer) => { endLayer: Layer, startLayer: Layer } =
-	(layer: Layer) => ({
+interface ThisLayerOnly { endLayer: Layer, startLayer: Layer }
+
+const thisLayerOnly: (layer: Layer) => ThisLayerOnly =
+	(layer: Layer): ThisLayerOnly => ({
 		endLayer: layer,
 		startLayer: layer,
 	})
 
 export {
-	thisAnimationFrameOnly,
+	thisFrameOnly,
 	thisLayerOnly,
 }

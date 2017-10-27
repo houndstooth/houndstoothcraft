@@ -51,7 +51,7 @@ describe('build effect toggle click handler', () => {
 
 type SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector) => void
 
-const simulateClick: SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector) => {
+const simulateClick: SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector): void => {
 	checkbox.checked = !checkbox.checked
 	clickHandler()
 }

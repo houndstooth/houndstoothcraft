@@ -8,20 +8,20 @@ const executeAnimation: (_: {
 }) => void = ({ animationFunctionObjects, layerFunctionObjects }) => {
 	const {
 		frameRate,
-		endAnimationFrame,
-		startAnimationFrame,
+		endFrame,
+		startFrame,
 		refreshCanvas,
 	}: AnimationSettings = getFromBaseOrDefaultPattern('animationSettings')
 
-	state.lastSavedAnimationFrame = startAnimationFrame
+	state.lastSavedFrame = startFrame
 
 	const animationFunction = buildAnimationFunction({
 		animationFunctionObjects,
 		layerFunctionObjects,
 		refreshCanvas,
-		startAnimationFrame,
+		startFrame,
 	})
-	const stopConditionFunction = buildStopConditionFunction({ endAnimationFrame })
+	const stopConditionFunction = buildStopConditionFunction({ endFrame })
 
 	animator({ animationFunction, frameRate, stopConditionFunction })
 }

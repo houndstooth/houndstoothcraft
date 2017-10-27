@@ -1,3 +1,4 @@
-const buildMockBlob: () => {} = () => ({})
+const buildMockBlob: () => {} =
+	(): {} => ({})
 
 export { buildMockBlob }

@@ -15,7 +15,9 @@ describe('per stripe', () => {
 				stripeCount: 3,
 			},
 		}
-		const stripePositions: StripePosition[] = perStripe({ getStripePosition: () => to.StripePosition(5) })
+		const stripePositions: StripePosition[] = perStripe({
+			getStripePosition: (): StripePosition => to.StripePosition(5),
+		})
 
 		expect(stripePositions.length).toBe(3)
 	})
@@ -36,7 +38,7 @@ describe('per stripe', () => {
 	it('multiplies the result of each stripe position by the perimeter scalar', () => {
 		const standardStripePosition: GetStripePosition = ({ stripeIndex, stripeCount }: {
 			stripeCount: number, stripeIndex: number,
-		}) => to.StripePosition(stripeIndex / stripeCount)
+		}): StripePosition => to.StripePosition(stripeIndex / stripeCount)
 		const stripePositions: StripePosition[] = perStripe({ getStripePosition: standardStripePosition })
 
 		const expectedStripePositions: StripePosition[] = to.StripePositions([ 0, 0.5, 1, 1.5 ])

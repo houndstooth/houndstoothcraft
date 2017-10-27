@@ -5,8 +5,8 @@ import * as to from '../utilities/to'
 import { saveBlob } from './saveBlob'
 
 const saveFrame: (result: DataBlob) => void = result => {
-	saveBlob({ blob: result, name: `${state.lastSavedAnimationFrame}.png` })
-	state.lastSavedAnimationFrame = to.Frame(from.Frame(state.lastSavedAnimationFrame) + 1)
+	saveBlob({ blob: result, name: `${state.lastSavedFrame}.png` })
+	state.lastSavedFrame = to.Frame(from.Frame(state.lastSavedFrame) + 1)
 }
 
 export { saveFrame }

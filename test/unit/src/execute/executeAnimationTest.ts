@@ -1,4 +1,5 @@
 import * as animation from '../../../../src/animation'
+import { ConditionFunction } from '../../../../src/animation/types/ConditionFunction'
 import { Frame } from '../../../../src/animation/types/Frame'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { SettingsFunctionObject } from '../../../../src/execute/types/SettingsFunctionObject'
@@ -6,7 +7,7 @@ import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 
 describe('execute animation', () => {
-	const stopConditionFunction: () => boolean = () => false
+	const stopConditionFunction: ConditionFunction = (): boolean => false
 	const animationFunction: (p: number) => number = (p: number): number => p
 
 	let layerFunctionObjects: SettingsFunctionObject[]
@@ -14,8 +15,8 @@ describe('execute animation', () => {
 
 	let frameRate: number
 	let refreshCanvas: boolean
-	let startAnimationFrame: Frame
-	let endAnimationFrame: Frame
+	let startFrame: Frame
+	let endFrame: Frame
 
 	beforeEach(() => {
 		spyOn(animation, 'animator')
@@ -29,15 +30,15 @@ describe('execute animation', () => {
 			animationFunctionObjects = []
 
 			frameRate = 5
-			startAnimationFrame = to.Frame(3)
-			endAnimationFrame = to.Frame(7)
+			startFrame = to.Frame(3)
+			endFrame = to.Frame(7)
 			refreshCanvas = false
 
 			state.mainHoundstooth.basePattern.animationSettings = {
-				endAnimationFrame,
+				endFrame,
 				frameRate,
 				refreshCanvas,
-				startAnimationFrame,
+				startFrame,
 			}
 		})
 
@@ -54,14 +55,14 @@ describe('execute animation', () => {
 		it('initializes the last saved animation frame to the start animation frame', () => {
 			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
-			expect(state.lastSavedAnimationFrame).toBe(startAnimationFrame)
+			expect(state.lastSavedFrame).toBe(startFrame)
 		})
 
 		it('builds a stop condition function', () => {
 			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
 
 			expect(animation.buildStopConditionFunction).toHaveBeenCalledWith({
-				endAnimationFrame,
+				endFrame,
 			})
 		})
 
@@ -72,7 +73,7 @@ describe('execute animation', () => {
 				jasmine.objectContaining({
 					animationFunctionObjects,
 					layerFunctionObjects,
-					startAnimationFrame,
+					startFrame,
 				}),
 			)
 		})
@@ -93,7 +94,7 @@ describe('execute animation', () => {
 
 		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
 			jasmine.objectContaining({
-				startAnimationFrame: 0,
+				startFrame: 0,
 			}),
 		)
 	})

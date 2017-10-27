@@ -60,8 +60,8 @@ describe('warning about conflicts', () => {
 		warnAboutConflicts = true
 		settingsPath = to.SettingsPath([ 'tileSettings' ])
 		settingName = to.SettingsStep('getTileOriginAndSize')
-		existingSetting = (a: number) => a
-		overridingSetting = (a: number) => a
+		existingSetting = (a: number): number => a
+		overridingSetting = (a: number): number => a
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
@@ -73,8 +73,8 @@ describe('warning about conflicts', () => {
 		warnAboutConflicts = true
 		settingsPath = to.SettingsPath([ 'tileSettings' ])
 		settingName = to.SettingsStep('getTileOriginAndSize')
-		existingSetting = (a: number) => a
-		overridingSetting = (b: number) => b
+		existingSetting = (a: number): number => a
+		overridingSetting = (b: number): number => b
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 

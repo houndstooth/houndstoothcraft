@@ -6,7 +6,7 @@ import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('grid and maybe logging', () => {
 	beforeEach(() => {
-		state.currentAnimationFrame = to.Frame(96)
+		state.currentFrame = to.Frame(96)
 		state.currentLayer = to.Layer(54)
 
 		spyOn(components, 'grid')

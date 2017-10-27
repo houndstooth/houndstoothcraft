@@ -9,6 +9,7 @@ interface MockElement {
 	innerHTML?: any,
 	nextSibling?: any,
 	parentNode?: any,
+	setAttribute?: any,
 	style?: {
 		cursor?: any,
 		display?: any,

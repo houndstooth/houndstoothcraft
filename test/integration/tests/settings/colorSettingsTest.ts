@@ -769,8 +769,10 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
+			// tslint:disable-next-line:no-unsafe-any
 			const partiallySeeThroughBlack: Color = deepClone(BLACK)
 			partiallySeeThroughBlack.a *= opacity
+			// tslint:disable-next-line:no-unsafe-any
 			const partiallySeeThroughBlue: Color = deepClone(BLUE)
 			partiallySeeThroughBlue.a *= opacity
 

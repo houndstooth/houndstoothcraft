@@ -48,7 +48,7 @@ describe('get tile color indices', () => {
 
 	describe('allowing offsetting of the grid address', () => {
 		it('works when in weave mode', () => {
-			const offsetAddress: OffsetAddress = ({ gridAddress }: { gridAddress: Address[] }) =>
+			const offsetAddress: OffsetAddress = ({ gridAddress }: { gridAddress: Address[] }): Address[] =>
 				to.Address([ from.AddressElement(gridAddress[ 0 ]) / 3, from.AddressElement(gridAddress[ 1 ]) * 2 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
@@ -66,7 +66,7 @@ describe('get tile color indices', () => {
 
 		it('works when in supertile mode', () => {
 			const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
-			const offsetAddress: OffsetAddress = ({ gridAddress }: { gridAddress: Address[] }) =>
+			const offsetAddress: OffsetAddress = ({ gridAddress }: { gridAddress: Address[] }): Address[] =>
 				to.Address([ from.AddressElement(gridAddress[ 0 ]) / 3, from.AddressElement(gridAddress[ 1 ]) * 3 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
@@ -139,7 +139,7 @@ describe('get tile color indices', () => {
 		it('calls an arbitrary transformation, if provided', () => {
 			const transformShapeColorIndices: TransformShapeColorIndices = ({ gridAddress, shapeColorIndices }: {
 				gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
-			}) => {
+			}): ShapeColorIndex[] => {
 				if (from.AddressElement(gridAddress[ 0 ]) === 1) {
 					return shapeColorIndices.concat(shapeColorIndices)
 				}

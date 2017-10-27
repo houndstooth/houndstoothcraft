@@ -6,30 +6,31 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { exportFrame } from './exportFrame'
 import { Frame } from './types'
+import { ConditionFunction } from './types/ConditionFunction'
 
 const buildAnimationFunction: (_: {
 	animationFunctionObjects: SettingsFunctionObject[],
 	layerFunctionObjects: SettingsFunctionObject[],
 	refreshCanvas: boolean,
-	startAnimationFrame: Frame,
-}) => () => void = ({ animationFunctionObjects, layerFunctionObjects, refreshCanvas, startAnimationFrame }) => () => {
+	startFrame: Frame,
+}) => () => void = ({ animationFunctionObjects, layerFunctionObjects, refreshCanvas, startFrame }) => () => {
 	if (exportingFramesStillNeedsToCatchUp()) {
 		return
 	}
 
-	if (shouldBeginShowingAnimation(startAnimationFrame)) {
+	if (shouldBeginShowingAnimation(startFrame)) {
 		animate({ layerFunctionObjects, refreshCanvas })
 	}
 
 	callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
-	state.currentAnimationFrame = to.Frame(from.Frame(state.currentAnimationFrame) + 1)
+	state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
 }
 
-const exportingFramesStillNeedsToCatchUp: () => boolean = () =>
-	state.exportFrames && state.currentAnimationFrame > state.lastSavedAnimationFrame
+const exportingFramesStillNeedsToCatchUp: ConditionFunction = () =>
+	state.exportFrames && state.currentFrame > state.lastSavedFrame
 
-const shouldBeginShowingAnimation: (startAnimationFrame: Frame) => boolean = startAnimationFrame =>
-	state.currentAnimationFrame >= startAnimationFrame
+const shouldBeginShowingAnimation: (startFrame: Frame) => boolean = startFrame =>
+	state.currentFrame >= startFrame
 
 const animate: (_: {
 	layerFunctionObjects: SettingsFunctionObject[], refreshCanvas: boolean,

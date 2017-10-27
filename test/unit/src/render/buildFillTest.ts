@@ -2,12 +2,13 @@ import { ERASE } from '../../../../src/constants'
 import { Context } from '../../../../src/page/types/Context'
 import { buildFill } from '../../../../src/render/buildFill'
 import * as parseColor from '../../../../src/render/parseColor'
+import { Color } from '../../../../src/render/types/Color'
 import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 
 describe('build fill', () => {
-	const shapeColor = { a: 1 }
-	const parsedColor = '#012345'
+	const shapeColor: Color = { a: 1 }
+	const parsedColor: string = '#012345'
 	let context: Context
 	beforeEach(() => {
 		context = buildMockContext()

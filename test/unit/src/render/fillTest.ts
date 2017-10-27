@@ -2,20 +2,22 @@ import * as buildFill from '../../../../src/render/buildFill'
 import * as buildPath from '../../../../src/render/buildPath'
 import { fill } from '../../../../src/render/fill'
 import * as fillPath from '../../../../src/render/fillPath'
+import { Color } from '../../../../src/render/types/Color'
+import { Path } from '../../../../src/render/types/Path'
 import { Outline } from '../../../../src/space/types/Outline'
 import * as to from '../../../../src/utilities/to'
 import * as view from '../../../../src/view'
 
 describe('fill', () => {
-	const shapeColor = { a: 1 }
+	const shapeColor: Color = { a: 1 }
 
-	const path = to.Path([])
+	const path: Path = to.Path([])
 	beforeEach(() => {
 		spyOn(view, 'applyView').and.returnValue(path)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
-		const outline = to.Outline([])
+		const outline: Outline = to.Outline([])
 
 		fill({ shapeColor, outline })
 
@@ -23,7 +25,7 @@ describe('fill', () => {
 	})
 
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
-		const outline = to.Outline([ [ 0, 1 ] ])
+		const outline: Outline = to.Outline([ [ 0, 1 ] ])
 
 		fill({ shapeColor, outline })
 
@@ -31,7 +33,7 @@ describe('fill', () => {
 	})
 
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
-		const outline = to.Outline([ [ 0, 1 ], [ 1, 1 ] ])
+		const outline: Outline = to.Outline([ [ 0, 1 ], [ 1, 1 ] ])
 
 		fill({ shapeColor, outline })
 

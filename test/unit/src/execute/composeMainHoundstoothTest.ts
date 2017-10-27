@@ -7,7 +7,10 @@ import {
 	DEFAULT_BASE_PATTERN,
 	DEFAULT_LAYERS_PATTERN,
 } from '../../../../src/store/defaults'
+import Spy = jasmine.Spy
+import { Effect } from '../../../../src/store/types/Effect'
 import { console } from '../../../../src/utilities/windowWrapper'
+import CallInfo = jasmine.CallInfo
 
 describe('composeMainHoundstooth', () => {
 	it('logs the houndstooth when logging mode is on', () => {
@@ -28,18 +31,19 @@ describe('composeMainHoundstooth', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
-		const composePatternsSpy = spyOn(composePatterns, 'composePatterns')
+		const composePatternsSpy: Spy = spyOn(composePatterns, 'composePatterns')
 
-		const combinedHoundstoothEffects = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		const combinedHoundstoothEffects: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		spyOn(combineHoundstoothEffects, 'combineHoundstoothEffects').and.returnValue(combinedHoundstoothEffects)
 
-		const houndstoothOverrides = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		const houndstoothOverrides: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		composeMainHoundstooth({ houndstoothOverrides })
 
-		const composePatternsCalls = composePatternsSpy.calls.all()
+		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 
 		expect(composePatternsCalls.length).toBe(9)
 
+		// tslint:disable:no-unsafe-any
 		expect(composePatternsCalls[ 0 ].args[ 0 ].patternToMerge).toBe(DEFAULT_BASE_PATTERN)
 		expect(composePatternsCalls[ 0 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.basePattern)

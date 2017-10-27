@@ -1,9 +1,9 @@
-import { SettingsPath } from '../../store'
+import { SettingsStep } from '../../store'
 
 interface SettingsFunctionObject {
-	settingName: SettingsPath,
+	settingName: SettingsStep,
 	settingsFunction: <T>(p: T) => T,
-	settingsPath: SettingsPath[]
+	settingsPath: SettingsStep[]
 }
 
 export { SettingsFunctionObject }

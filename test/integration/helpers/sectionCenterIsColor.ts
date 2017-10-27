@@ -1,36 +1,34 @@
 import { from, to } from '../../../src'
 import { Address } from '../../../src/components'
 import { Unit } from '../../../src/components/types/Unit'
-import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 import { drawPassMarker } from './drawPassMarker'
 import { pixelIsColor } from './pixelIsColor'
+import { SectionCenterExpectation } from './types'
 
-const sectionCenterIsColor: (_: {
-		areaOrigin: Coordinate,
-		areaSize: Unit,
-		color: Color,
-		id?: number,
-		sectionAddress: Address[],
-		sectionResolution: number,
-	}) => boolean = ({ areaOrigin, areaSize, color, id = 0, sectionAddress, sectionResolution }) => {
-	const coordinateUnderTest = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
-	const passed = pixelIsColor(coordinateUnderTest, color)
+const sectionCenterIsColor: (_: SectionCenterExpectation) => boolean = (params: SectionCenterExpectation) => {
+	const { areaOrigin, areaSize, color, id = 0, sectionAddress, sectionResolution }: SectionCenterExpectation = params
+
+	const coordinateUnderTest: Coordinate = sectionCenter({ areaOrigin, areaSize, sectionResolution, sectionAddress })
+	const passed: boolean = pixelIsColor(coordinateUnderTest, color)
 	drawPassMarker({ passed, coordinateUnderTest, id })
 
 	return passed
 }
 
-const sectionCenter: (_: {
-		areaOrigin: Coordinate,
-		areaSize: Unit,
-		sectionAddress: Address[],
-		sectionResolution: number,
-	}) => Coordinate = ({ areaOrigin, areaSize, sectionAddress, sectionResolution }) => {
-	const sectionSize = from.Unit(areaSize) / sectionResolution
-	const areaX = from.Unit(areaOrigin[ 0 ])
-	const areaY = from.Unit(areaOrigin[ 1 ])
-	const sectionAddressValue = from.Address(sectionAddress)
+interface SectionCenter {
+	areaOrigin: Coordinate,
+	areaSize: Unit,
+	sectionAddress: Address[],
+	sectionResolution: number,
+}
+
+const sectionCenter: (_: SectionCenter) => Coordinate = (params: SectionCenter) => {
+	const { areaOrigin, areaSize, sectionAddress, sectionResolution }: SectionCenter = params
+	const sectionSize: number = from.Unit(areaSize) / sectionResolution
+	const areaX: number = from.Unit(areaOrigin[ 0 ])
+	const areaY: number = from.Unit(areaOrigin[ 1 ])
+	const sectionAddressValue: number[] = from.Address(sectionAddress)
 
 	return to.Coordinate([
 		areaX + (sectionAddressValue[ 0 ] + 0.5) * sectionSize,

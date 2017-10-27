@@ -1,4 +1,5 @@
 import { to } from '../../../../src'
+import { Radian } from '../../../../src/space/types/Radian'
 import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {
@@ -65,123 +66,119 @@ describe('math utilities', () => {
 	describe('#quarterSquareNumber', () => {
 		// tslint:disable-next-line:max-line-length
 		it('gives the nth entry in the sequence of numbers where you add 1 to the amount you increase by each step every other step', () => {
-			const quarterSquareNumber = mathUtilities.quarterSquareNumber
-			let delta = 0
-			let memo = 0
-			expect(quarterSquareNumber(0)).toBe(memo) // 0
+			let delta: number = 0
+			let memo: number = 0
+			expect(mathUtilities.quarterSquareNumber(0)).toBe(memo) // 0
 
 			memo += delta
-			expect(quarterSquareNumber(1)).toBe(memo) // 0
+			expect(mathUtilities.quarterSquareNumber(1)).toBe(memo) // 0
 			delta += 1
 			memo += delta
-			expect(quarterSquareNumber(2)).toBe(memo) // 1
+			expect(mathUtilities.quarterSquareNumber(2)).toBe(memo) // 1
 
 			memo += delta
-			expect(quarterSquareNumber(3)).toBe(memo) // 2
+			expect(mathUtilities.quarterSquareNumber(3)).toBe(memo) // 2
 			delta += 1
 			memo += delta
-			expect(quarterSquareNumber(4)).toBe(memo) // 4
+			expect(mathUtilities.quarterSquareNumber(4)).toBe(memo) // 4
 
 			memo += delta
-			expect(quarterSquareNumber(5)).toBe(memo) // 6
+			expect(mathUtilities.quarterSquareNumber(5)).toBe(memo) // 6
 			delta += 1
 			memo += delta
-			expect(quarterSquareNumber(6)).toBe(memo) // 9
+			expect(mathUtilities.quarterSquareNumber(6)).toBe(memo) // 9
 
 			memo += delta
-			expect(quarterSquareNumber(7)).toBe(memo) // 12
+			expect(mathUtilities.quarterSquareNumber(7)).toBe(memo) // 12
 			delta += 1
 			memo += delta
-			expect(quarterSquareNumber(8)).toBe(memo) // 16
+			expect(mathUtilities.quarterSquareNumber(8)).toBe(memo) // 16
 		})
 	})
 
 	describe('#trapezoidalNumber', () => {
 		it('gives the difference between two triangular numbers', () => {
-			const trapezoidalNumber = mathUtilities.trapezoidalNumber
+			expect(mathUtilities.trapezoidalNumber({ start: 0, height: 0 })).toBe(0)
+			expect(mathUtilities.trapezoidalNumber({ start: 0, height: 1 })).toBe(1)
+			expect(mathUtilities.trapezoidalNumber({ start: 0, height: 2 })).toBe(3)
+			expect(mathUtilities.trapezoidalNumber({ start: 0, height: 3 })).toBe(6)
+			expect(mathUtilities.trapezoidalNumber({ start: 0, height: 4 })).toBe(10)
 
-			expect(trapezoidalNumber({ start: 0, height: 0 })).toBe(0)
-			expect(trapezoidalNumber({ start: 0, height: 1 })).toBe(1)
-			expect(trapezoidalNumber({ start: 0, height: 2 })).toBe(3)
-			expect(trapezoidalNumber({ start: 0, height: 3 })).toBe(6)
-			expect(trapezoidalNumber({ start: 0, height: 4 })).toBe(10)
+			expect(mathUtilities.trapezoidalNumber({ start: 1, height: 0 })).toBe(0)
+			expect(mathUtilities.trapezoidalNumber({ start: 1, height: 1 })).toBe(2)
+			expect(mathUtilities.trapezoidalNumber({ start: 1, height: 2 })).toBe(5)
+			expect(mathUtilities.trapezoidalNumber({ start: 1, height: 3 })).toBe(9)
+			expect(mathUtilities.trapezoidalNumber({ start: 1, height: 4 })).toBe(14)
 
-			expect(trapezoidalNumber({ start: 1, height: 0 })).toBe(0)
-			expect(trapezoidalNumber({ start: 1, height: 1 })).toBe(2)
-			expect(trapezoidalNumber({ start: 1, height: 2 })).toBe(5)
-			expect(trapezoidalNumber({ start: 1, height: 3 })).toBe(9)
-			expect(trapezoidalNumber({ start: 1, height: 4 })).toBe(14)
+			expect(mathUtilities.trapezoidalNumber({ start: 2, height: 0 })).toBe(0)
+			expect(mathUtilities.trapezoidalNumber({ start: 2, height: 1 })).toBe(3)
+			expect(mathUtilities.trapezoidalNumber({ start: 2, height: 2 })).toBe(7)
+			expect(mathUtilities.trapezoidalNumber({ start: 2, height: 3 })).toBe(12)
+			expect(mathUtilities.trapezoidalNumber({ start: 2, height: 4 })).toBe(18)
 
-			expect(trapezoidalNumber({ start: 2, height: 0 })).toBe(0)
-			expect(trapezoidalNumber({ start: 2, height: 1 })).toBe(3)
-			expect(trapezoidalNumber({ start: 2, height: 2 })).toBe(7)
-			expect(trapezoidalNumber({ start: 2, height: 3 })).toBe(12)
-			expect(trapezoidalNumber({ start: 2, height: 4 })).toBe(18)
+			expect(mathUtilities.trapezoidalNumber({ start: 3, height: 0 })).toBe(0)
+			expect(mathUtilities.trapezoidalNumber({ start: 3, height: 1 })).toBe(4)
+			expect(mathUtilities.trapezoidalNumber({ start: 3, height: 2 })).toBe(9)
+			expect(mathUtilities.trapezoidalNumber({ start: 3, height: 3 })).toBe(15)
+			expect(mathUtilities.trapezoidalNumber({ start: 3, height: 4 })).toBe(22)
 
-			expect(trapezoidalNumber({ start: 3, height: 0 })).toBe(0)
-			expect(trapezoidalNumber({ start: 3, height: 1 })).toBe(4)
-			expect(trapezoidalNumber({ start: 3, height: 2 })).toBe(9)
-			expect(trapezoidalNumber({ start: 3, height: 3 })).toBe(15)
-			expect(trapezoidalNumber({ start: 3, height: 4 })).toBe(22)
-
-			expect(trapezoidalNumber({ start: 4, height: 0 })).toBe(0)
-			expect(trapezoidalNumber({ start: 4, height: 1 })).toBe(5)
-			expect(trapezoidalNumber({ start: 4, height: 2 })).toBe(11)
-			expect(trapezoidalNumber({ start: 4, height: 3 })).toBe(18)
-			expect(trapezoidalNumber({ start: 4, height: 4 })).toBe(26)
+			expect(mathUtilities.trapezoidalNumber({ start: 4, height: 0 })).toBe(0)
+			expect(mathUtilities.trapezoidalNumber({ start: 4, height: 1 })).toBe(5)
+			expect(mathUtilities.trapezoidalNumber({ start: 4, height: 2 })).toBe(11)
+			expect(mathUtilities.trapezoidalNumber({ start: 4, height: 3 })).toBe(18)
+			expect(mathUtilities.trapezoidalNumber({ start: 4, height: 4 })).toBe(26)
 		})
 	})
 
 	describe('#termialRoot', () => {
 		// tslint:disable-next-line:max-line-length
 		it('for a concrete example of what you can use this method for: given an starting stripe count per tile, the increase in stripe count per next tile, and a stripe number, it will return which tile that stripe passes through, including the fractional part within that tile', () => {
-			const termialRoot = mathUtilities.termialRoot
-			let rangeStart
-			let rangeDelta
+			let rangeStart: number
+			let rangeDelta: number
 
 			rangeStart = 1
 			rangeDelta = 1
-			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 1 })).toBe(1)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 3 })).toBe(2)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(3)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 10 })).toBe(4)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 1 })).toBe(1)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 3 })).toBe(2)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(3)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 10 })).toBe(4)
 
 			rangeStart = 2
 			rangeDelta = 1
-			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 2 })).toBe(1)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 5 })).toBe(2)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 9 })).toBe(3)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 14 })).toBe(4)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 2 })).toBe(1)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 5 })).toBe(2)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 9 })).toBe(3)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 14 })).toBe(4)
 
 			rangeStart = 1
 			rangeDelta = 2
-			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 1 })).toBe(1)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 4 })).toBe(2)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 9 })).toBe(3)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 16 })).toBe(4)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 1 })).toBe(1)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 4 })).toBe(2)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 9 })).toBe(3)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 16 })).toBe(4)
 
 			rangeStart = 2
 			rangeDelta = 2
-			expect(termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 2 })).toBe(1)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(2)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 12 })).toBe(3)
-			expect(termialRoot({ rangeStart, rangeDelta, n: 20 })).toBe(4)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 0 })).toBe(0)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 2 })).toBe(1)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 6 })).toBe(2)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 12 })).toBe(3)
+			expect(mathUtilities.termialRoot({ rangeStart, rangeDelta, n: 20 })).toBe(4)
 		})
 	})
 
 	describe('#rotate', () => {
 		it('rotates a point about a fixed point', () => {
-			const point = [ 2, 0 ]
-			const fixedPoint = [ 1, 1 ]
-			const rotation = to.Radian(Math.PI / 2)
+			const point: number[] = [ 2, 0 ]
+			const fixedPoint: number[] = [ 1, 1 ]
+			const rotation: Radian = to.Radian(Math.PI / 2)
 
-			const rotatedPoint = mathUtilities.rotate({ point, fixedPoint, rotation })
+			const rotatedPoint: number[] = mathUtilities.rotate({ point, fixedPoint, rotation })
 
-			const expectedPoint = [ 2, 2 ]
+			const expectedPoint: number[] = [ 2, 2 ]
 			expect(rotatedPoint).toEqual(expectedPoint)
 		})
 	})

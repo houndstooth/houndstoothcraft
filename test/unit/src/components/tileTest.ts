@@ -4,6 +4,7 @@ import * as getTileOriginAndSize from '../../../../src/components/getTileOriginA
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import * as shape from '../../../../src/components/shape'
 import { tile } from '../../../../src/components/tile'
+import { Address } from '../../../../src/components/types/Address'
 import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
 import { StripePosition } from '../../../../src/components/types/StripePosition'
 import Spy = jasmine.Spy
@@ -14,9 +15,10 @@ import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
+import CallInfo = jasmine.CallInfo
 
 describe('tile', () => {
-	const gridAddress = to.Address([ 3, 5 ])
+	const gridAddress: Address[] = to.Address([ 3, 5 ])
 	let shapeSpy: Spy
 	let getShapeColorIndicesSpy: Spy
 	let isTileUniformSpy: Spy
@@ -132,7 +134,7 @@ describe('tile', () => {
 				it('converts the tile into shapes, each one a stripe, each one knowing its stripe index', () => {
 					tile({ gridAddress })
 
-					const shapes = shapeSpy.calls.all()
+					const shapes: CallInfo[] = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 0 }))
 					expect(shapes[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 1 }))
@@ -143,7 +145,7 @@ describe('tile', () => {
 				it('passes along options that the outline getting function will need', () => {
 					tile({ gridAddress })
 
-					const shapes = shapeSpy.calls.all()
+					const shapes: CallInfo[] = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({
 						outlineOptions: {

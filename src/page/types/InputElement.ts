@@ -3,7 +3,9 @@
 type InputElement = HTMLInputElement | {
 	checked?: any,
 	onclick?: any,
-	style?: any,
+	style?: {
+		cursor?: any,
+	},
 }
 
 export { InputElement }

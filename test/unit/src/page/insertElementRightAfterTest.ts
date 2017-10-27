@@ -1,13 +1,15 @@
 import { insertElementRightAfter } from '../../../../src/page/insertElementRightAfter'
+import Spy = jasmine.Spy
+import { PageElement } from '../../../../src/page/types/PageElement'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('insert element right after', () => {
 	it('inserts an element right after another one', () => {
-		const parentNodeInsertBeforeSpy = jasmine.createSpy('parentNodeInsertBefore')
-		const nextSibling = buildMockElement()
-		const elementRightAfterWhichToInsert = buildMockElement({ parentNodeInsertBeforeSpy })
+		const parentNodeInsertBeforeSpy: Spy = jasmine.createSpy('parentNodeInsertBefore')
+		const nextSibling: PageElement = buildMockElement()
+		const elementRightAfterWhichToInsert: PageElement = buildMockElement({ parentNodeInsertBeforeSpy })
 		elementRightAfterWhichToInsert.nextSibling = nextSibling
-		const element = buildMockElement()
+		const element: PageElement = buildMockElement()
 
 		insertElementRightAfter(element, elementRightAfterWhichToInsert)
 

@@ -5,7 +5,7 @@ set -e
 ./bin/shared/cmd_w_msgs.sh "npm i -g npm" "upgrading npm" "npm upgrade failed." "npm at latest."
 ./bin/shared/cmd_w_msgs.sh "npm update" "updating dependencies" "npm update failed." "All dependencies at latest."
 
-./bin/shared/cmd_w_msgs.sh "tslint '**/*.ts' -e **/node_modules/** --fix --project tsconfig.json" "linting" "Linting errors detected." "Lint-free."
+./bin/shared/cmd_w_msgs.sh "./bin/ship/lint.sh" "linting" "Linting errors detected." "Lint-free."
 
 ./bin/shared/cmd_w_msgs.sh "./bin/pull.sh" "pulling" "Your working tree is unclean, or you haven't loaded your SSH key." "Latest code pulled."
 

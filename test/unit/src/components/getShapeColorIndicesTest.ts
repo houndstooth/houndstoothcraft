@@ -1,13 +1,16 @@
-import { from, state, to } from '../../../../src'
+import { Address, from, state, to } from '../../../../src'
 import { getShapeColorIndices } from '../../../../src/components/getShapeColorIndices'
 import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
+import { Grid } from '../../../../src/components/types/Grid'
 import { OffsetAddress } from '../../../../src/components/types/OffsetAddress'
+import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
+import { Supertile } from '../../../../src/components/types/Supertile'
 import { TransformShapeColorIndices } from '../../../../src/components/types/TransformShapeColorIndices'
 import { setSetting } from '../../../../src/store/setSetting'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 
 describe('get tile color indices', () => {
-	const gridAddressForSubject = to.Address([ 3, 5 ])
+	const gridAddressForSubject: Address[] = to.Address([ 3, 5 ])
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('can use a weave-based assignment scheme', () => {
@@ -25,7 +28,7 @@ describe('get tile color indices', () => {
 		})
 
 		it('can use a supertile-based assignment scheme', () => {
-			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
+			const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
 
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
@@ -38,14 +41,14 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			const actualSupertileEntry = getShapeColorIndices({ gridAddress: gridAddressForSubject })
+			const actualSupertileEntry: ShapeColorIndex[] = getShapeColorIndices({ gridAddress: gridAddressForSubject })
 			expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 		})
 	})
 
 	describe('allowing offsetting of the grid address', () => {
 		it('works when in weave mode', () => {
-			const offsetAddress: OffsetAddress = ({ gridAddress }) =>
+			const offsetAddress: OffsetAddress = ({ gridAddress }: { gridAddress: Address[] }) =>
 				to.Address([ from.AddressElement(gridAddress[ 0 ]) / 3, from.AddressElement(gridAddress[ 1 ]) * 2 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
@@ -62,8 +65,8 @@ describe('get tile color indices', () => {
 		})
 
 		it('works when in supertile mode', () => {
-			const expectedSupertileEntry = [ 2, 3, 0, 1 ]
-			const offsetAddress: OffsetAddress = ({ gridAddress }) =>
+			const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
+			const offsetAddress: OffsetAddress = ({ gridAddress }: { gridAddress: Address[] }) =>
 				to.Address([ from.AddressElement(gridAddress[ 0 ]) / 3, from.AddressElement(gridAddress[ 1 ]) * 3 / 5 ])
 			state.mainHoundstooth.basePattern.colorSettings = {
 				colorAssignment: {
@@ -77,7 +80,7 @@ describe('get tile color indices', () => {
 				},
 			}
 
-			const actualSupertileEntry = getShapeColorIndices({ gridAddress: gridAddressForSubject })
+			const actualSupertileEntry: ShapeColorIndex[] = getShapeColorIndices({ gridAddress: gridAddressForSubject })
 			expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 		})
 	})
@@ -93,10 +96,10 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const notFlippedResult = getShapeColorIndices({ gridAddress: gridAddressForSubject })
+			const notFlippedResult: ShapeColorIndex[] = getShapeColorIndices({ gridAddress: gridAddressForSubject })
 
 			setSetting('flipGrain', true)
-			const flippedResult = getShapeColorIndices({ gridAddress: gridAddressForSubject })
+			const flippedResult: ShapeColorIndex[] = getShapeColorIndices({ gridAddress: gridAddressForSubject })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})
@@ -114,26 +117,29 @@ describe('get tile color indices', () => {
 					switcheroo: true,
 				},
 			}
-			const addresses = iterator(4).map(x => iterator(4).map(y => to.Address([ x, y ])))
-			const setOfShapeColorIndices = addresses.map(col => col.map(gridAddress => getShapeColorIndices({
-				gridAddress,
-			})))
+			const addresses: Grid<Address[]> = iterator(4).map((x: number) =>
+				iterator(4).map((y: number) =>
+					to.Address([ x, y ])))
+			const setOfShapeColorIndices: Supertile = to.Supertile(addresses.map((col: Address[][]) =>
+				col.map((gridAddress: Address[]) => getShapeColorIndices({ gridAddress }))))
 
-			const expectedSetOfShapeColorIndices = [
+			const expectedSetOfShapeColorIndices: Supertile = to.Supertile([
 				[ [ 1, 0 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
 				[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 8, 7 ] ],
 				[ [ 8, 9 ], [ 9, 10 ], [ 11, 10 ], [ 11, 12 ] ],
 				[ [ 12, 13 ], [ 14, 13 ], [ 14, 15 ], [ 15, 16 ] ],
-			]
-			expectedSetOfShapeColorIndices.forEach((col, x) => {
-				col.forEach((expectedShapeColorIndices, y) => {
+			])
+			expectedSetOfShapeColorIndices.forEach((col: ShapeColorIndex[][], x: number) => {
+				col.forEach((expectedShapeColorIndices: ShapeColorIndex[], y: number) => {
 					expect(setOfShapeColorIndices[ x ][ y ]).toEqual(to.ShapeColorIndices(expectedShapeColorIndices))
 				})
 			})
 		})
 
 		it('calls an arbitrary transformation, if provided', () => {
-			const transformShapeColorIndices: TransformShapeColorIndices = ({ shapeColorIndices, gridAddress }) => {
+			const transformShapeColorIndices: TransformShapeColorIndices = ({ gridAddress, shapeColorIndices }: {
+				gridAddress: Address[], shapeColorIndices: ShapeColorIndex[],
+			}) => {
 				if (from.AddressElement(gridAddress[ 0 ]) === 1) {
 					return shapeColorIndices.concat(shapeColorIndices)
 				}
@@ -152,12 +158,13 @@ describe('get tile color indices', () => {
 					},
 				},
 			}
-			const addresses = iterator(2).map(x => iterator(2).map(y => to.Address([ x, y ])))
-			const setOfShapeColorIndices = addresses.map(col => col.map(gridAddress => getShapeColorIndices({
-				gridAddress,
-			})))
+			const addresses: Grid<Address[]> = iterator(2).map((x: number) =>
+				iterator(2).map((y: number) =>
+					to.Address([ x, y ])))
+			const setOfShapeColorIndices: Supertile = to.Supertile(addresses.map((col: Address[][]) =>
+				col.map((gridAddress: Address[]) => getShapeColorIndices({ gridAddress }))))
 
-			const expectedSetOfShapeColorIndices = [
+			const expectedSetOfShapeColorIndices: Supertile = to.Supertile([
 				[
 					[ 1, 0 ],
 					[ 0, 0 ],
@@ -166,9 +173,9 @@ describe('get tile color indices', () => {
 					[ 1, 1, 1, 1 ],
 					[ 0, 1, 0, 1 ],
 				],
-			]
-			expectedSetOfShapeColorIndices.forEach((col, x) => {
-				col.forEach((expectedShapeColorIndices, y) => {
+			])
+			expectedSetOfShapeColorIndices.forEach((col: Grid<ShapeColorIndex>, x: number) => {
+				col.forEach((expectedShapeColorIndices: ShapeColorIndex[], y: number) => {
 					expect(setOfShapeColorIndices[ x ][ y ]).toEqual(to.ShapeColorIndices(expectedShapeColorIndices))
 				})
 			})

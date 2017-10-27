@@ -2,6 +2,7 @@
 
 interface MockElement {
 	appendChild?: any,
+	classList?: any,
 	click?: any,
 	download?: any,
 	href?: any,

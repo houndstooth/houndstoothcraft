@@ -1,4 +1,4 @@
-// tslint:disable-next-line:no-any
+// tslint:disable:no-any no-unsafe-any typedef
 declare const require: any
 
 const testsContext = require.context('./tests', true)

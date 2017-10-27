@@ -6,7 +6,7 @@ import { Layer } from '../execute'
 import { Dimensions, Px } from '../page'
 import { Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
-import { SettingsPath } from '../store'
+import { SettingsStep } from '../store'
 
 // First order, singular
 
@@ -18,7 +18,7 @@ const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number = shapeColor
 const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
 const Unit: (units: Unit) => number = units => units as any
 const AddressElement: (addressElement: Address) => number = addressElement => addressElement as any
-const SettingsStep: (settingsStep: SettingsPath) => string = settingsStep => settingsStep as any
+const SettingsStep: (settingsStep: SettingsStep) => string = settingsStep => settingsStep as any
 
 // First order, plurals
 
@@ -29,7 +29,7 @@ const SettingsStep: (settingsStep: SettingsPath) => string = settingsStep => set
 // StripePositions not yet needed
 // Units not yet needed
 const Address: (address: Address[]) => number[] = address => address as any
-const SettingsPath: (settingPath: SettingsPath) => string[] = settingsPath => settingsPath as any
+const SettingsPath: (settingPath: SettingsStep) => string[] = settingsPath => settingsPath as any
 
 // Second order, singular
 

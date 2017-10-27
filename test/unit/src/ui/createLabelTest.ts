@@ -1,4 +1,6 @@
+import { InputElement } from '../../../../src/page/types/InputElement'
 import { PageElement } from '../../../../src/page/types/PageElement'
+import { Effect } from '../../../../src/store/types/Effect'
 import * as createCheckbox from '../../../../src/ui/createCheckbox'
 import { createLabel } from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -6,24 +8,24 @@ import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create label', () => {
 	let returnedLabel: PageElement
-	let mockLabel: PageElement
-	const mockChildren: PageElement[] = []
-	const mockCheckbox = {}
-	const mockName = {}
-	const mockHoundstoothEffect = { name: 'mock tooth' }
+	let label: PageElement
+	const children: PageElement[] = []
+	const checkbox: InputElement = {}
+	const name: PageElement = {}
+	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	beforeAll(() => {
-		mockLabel = buildMockElement({ mockChildren })
-		spyOn(window.document, 'createElement').and.returnValue(mockLabel)
+		label = buildMockElement({ children })
+		spyOn(window.document, 'createElement').and.returnValue(label)
 
-		spyOn(window.document, 'createTextNode').and.returnValue(mockName)
+		spyOn(window.document, 'createTextNode').and.returnValue(name)
 
-		spyOn(createCheckbox, 'createCheckbox').and.returnValue(mockCheckbox)
+		spyOn(createCheckbox, 'createCheckbox').and.returnValue(checkbox)
 
-		returnedLabel = createLabel({ houndstoothEffect: mockHoundstoothEffect })
+		returnedLabel = createLabel({ houndstoothEffect })
 	})
 
 	it('returns the created label', () => {
-		expect(returnedLabel).toBe(mockLabel)
+		expect(returnedLabel).toBe(label)
 	})
 
 	it('makes it so your cursor becomes a pointer when you hover over it', () => {
@@ -45,15 +47,15 @@ describe('create label', () => {
 	})
 
 	it('adds one checkbox to the label', () => {
-		expect(mockChildren[ 0 ]).toBe(mockCheckbox)
+		expect(children[ 0 ]).toBe(checkbox)
 	})
 
 	it('adds one name to the label, after the checkbox', () => {
-		expect(mockChildren[ 1 ]).toBe(mockName)
+		expect(children[ 1 ]).toBe(name)
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.createCheckbox).toHaveBeenCalledWith({ houndstoothEffect: mockHoundstoothEffect })
+		expect(createCheckbox.createCheckbox).toHaveBeenCalledWith({ houndstoothEffect })
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {

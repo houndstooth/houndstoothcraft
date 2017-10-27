@@ -18,7 +18,7 @@ import {
 	TileSettings,
 	ViewSettings,
 } from './settings'
-import { SettingsPath } from './SettingsPath'
+import { SettingsStep } from './SettingsStep'
 import { State } from './State'
 
 export {
@@ -38,7 +38,7 @@ export {
 	AnimationSettings,
 	LayerSettings,
 	StripeSettings,
-	SettingsPath,
+	SettingsStep,
 	GetFromBaseOrDefaultPattern,
 	SetSetting,
 	PatternFunctions,

@@ -7,16 +7,16 @@ import Spy = jasmine.Spy
 
 describe('create effect toggles container', () => {
 	let returnedEffectTogglesContainer: PageElement
-	let mockEffectTogglesContainer: PageElement
-	let mockCanvasContainer: PageElement
+	let effectTogglesContainer: PageElement
+	let canvasContainer: PageElement
 	let insertElementRightAfterSpy: Spy
-	const mockEffectTogglesContainerClassList: string[] = []
+	const effectTogglesContainerClassList: string[] = []
 	beforeEach(() => {
-		mockEffectTogglesContainer = buildMockElement({ mockClassList: mockEffectTogglesContainerClassList })
-		spyOn(window.document, 'createElement').and.returnValue(mockEffectTogglesContainer)
+		effectTogglesContainer = buildMockElement({ classList: effectTogglesContainerClassList })
+		spyOn(window.document, 'createElement').and.returnValue(effectTogglesContainer)
 
-		mockCanvasContainer = buildMockElement()
-		spyOn(window.document, 'querySelector').and.returnValue(mockCanvasContainer)
+		canvasContainer = buildMockElement()
+		spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
 
 		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'insertElementRightAfter')
 
@@ -24,11 +24,11 @@ describe('create effect toggles container', () => {
 	})
 
 	it('returns the newly created effect toggles container', () => {
-		expect(returnedEffectTogglesContainer).toBe(mockEffectTogglesContainer)
+		expect(returnedEffectTogglesContainer).toBe(effectTogglesContainer)
 	})
 
 	it('assigns a class to the effect toggles container', () => {
-		const classAddedToEffectTogglesContainer = mockEffectTogglesContainerClassList[0]
+		const classAddedToEffectTogglesContainer: string = effectTogglesContainerClassList[0]
 		expect(classAddedToEffectTogglesContainer).toBe('effect-toggles-container')
 	})
 
@@ -42,6 +42,6 @@ describe('create effect toggles container', () => {
 	})
 
 	it('inserts the effect toggles container after the canvas', () => {
-		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedEffectTogglesContainer, mockCanvasContainer)
+		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
 	})
 })

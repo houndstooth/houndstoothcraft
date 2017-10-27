@@ -9,6 +9,7 @@
     "semicolon": false,
     "type-literal-delimiter": false,
     "prefer-method-signature": false,
+    "no-inferrable-types": false,
     "quotemark": [
       "single"
     ],
@@ -45,6 +46,8 @@
     "no-unbound-method": false,
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
-    "defocus": true
+    "defocus": true,
+    "typedef": false,
+    "no-unsafe-any": false
   }
 }

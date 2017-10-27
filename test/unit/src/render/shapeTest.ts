@@ -1,19 +1,25 @@
 import { shape } from '../../../../src/components/shape'
 import * as solid from '../../../../src/components/solid'
 import * as texture from '../../../../src/components/texture'
+import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
+import { Unit } from '../../../../src/components/types/Unit'
+import Spy = jasmine.Spy
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Outline } from '../../../../src/space/types/Outline'
+import { OutlineOptions } from '../../../../src/space/types/OutlineOptions'
 import { state } from '../../../../src/state'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
+import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
 import { noop } from '../../../helpers/noop'
-import Spy = jasmine.Spy
 
 describe('shape', () => {
-	const tileOrigin = to.Coordinate([ 11, 13 ])
-	const tileSize = to.Unit(45)
-	const shapeColorIndices = to.ShapeColorIndices([])
-	const stripeIndex = 7
-	const shapeColorIndex = 45
-	const outlineOptions = {}
+	const tileOrigin: Coordinate = to.Coordinate([ 11, 13 ])
+	const tileSize: Unit = to.Unit(45)
+	const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([])
+	const stripeIndex: number = 7
+	const shapeColorIndex: number = 45
+	const outlineOptions: OutlineOptions = {}
 
 	let getOutlineSpy: Spy
 
@@ -45,7 +51,7 @@ describe('shape', () => {
 	})
 
 	describe('when an outline is received', () => {
-		const outline = to.Outline([])
+		const outline: Outline = to.Outline([])
 		beforeEach(() => getOutlineSpy.and.returnValue(outline))
 
 		it('gets the outline', () => {
@@ -83,7 +89,7 @@ describe('shape', () => {
 		})
 
 		describe('when an executeTexture method is supplied', () => {
-			const executeTexture = noop
+			const executeTexture: NullarySideEffector = noop
 			beforeEach(() => {
 				state.mainHoundstooth.basePattern.textureSettings = { executeTexture }
 			})

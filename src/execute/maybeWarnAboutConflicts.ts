@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { SettingsPath } from '../store'
+import { SettingsStep } from '../store'
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
 import { console } from '../utilities/windowWrapper'
@@ -9,8 +9,8 @@ import { settingPath } from './settingPath'
 const maybeWarnAboutConflicts: (_: {
 	existingSetting: any,
 	overridingSetting: any,
-	settingName: SettingsPath,
-	settingsPath: SettingsPath[],
+	settingName: SettingsStep,
+	settingsPath: SettingsStep[],
 	warnAboutConflicts: boolean,
 }) => void = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
 	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
@@ -43,8 +43,8 @@ const settingsAreEqual: (a: any, b: any) => boolean = (a, b) => {
 const buildWarningMessage: (_: {
 	existingSetting: any,
 	overridingSetting: any,
-	settingName: SettingsPath,
-	settingsPath: SettingsPath[],
+	settingName: SettingsStep,
+	settingsPath: SettingsStep[],
 }) => string = ({ existingSetting, overridingSetting, settingName, settingsPath }) => {
 	const formattedExistingSetting = formatSettingForWarning(existingSetting)
 	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)

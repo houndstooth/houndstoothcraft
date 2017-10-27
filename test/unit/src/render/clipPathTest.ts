@@ -10,11 +10,10 @@ describe('clip path', () => {
 
 		clipPath()
 
-		// tslint:disable:no-any
-		const expectedContextCallsOrder = [
+		const expectedContextCallsOrder: MockContextCall[] = [
 			{ method: 'save' },
 			{ method: 'clip' },
-		] as any
+		]
 		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

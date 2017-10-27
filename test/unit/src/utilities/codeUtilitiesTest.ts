@@ -1,5 +1,6 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
+import { Color } from '../../../../src/render/types/Color'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 
 describe('code utilities', () => {
@@ -9,14 +10,14 @@ describe('code utilities', () => {
 		})
 
 		it('can be one indexed', () => {
-			const result = codeUtilities.iterator(5, { oneIndexed: true })
+			const result: number[] = codeUtilities.iterator(5, { oneIndexed: true })
 			expect(result).toEqual([ 1, 2, 3, 4, 5 ])
 		})
 	})
 
 	describe('#wrappedIndex', () => {
-		let index
-		const array = [ 'a', 'b', 'c' ]
+		let index: number | undefined
+		const array: string[] = [ 'a', 'b', 'c' ]
 
 		it('returns the element of the array at the given index', () => {
 			index = 1
@@ -46,40 +47,40 @@ describe('code utilities', () => {
 
 	describe('#shallowEqual', () => {
 		it('returns true if two objects have identical key value pairs', () => {
-			const a = { r: 5, a: 0 }
-			const b = { r: 5, a: 0 }
+			const a: Color = { r: 5, a: 0 }
+			const b: Color = { r: 5, a: 0 }
 			expect(codeUtilities.shallowEqual(a, b)).toBe(true)
 		})
 
 		it('returns false if two objects have different key counts', () => {
-			const a = { r: 5, a: 0 }
-			const b = { r: 5, a: 0, yo: 'foo' }
+			const a: Color = { r: 5, a: 0 }
+			const b: Color = { r: 5, a: 0, g: 5 }
 			expect(codeUtilities.shallowEqual(a, b)).toBe(false)
 		})
 
 		it('returns false if two objects have different values for a key', () => {
-			const a = { r: 5, a: 0 }
-			const b = { r: 5, a: 1 }
+			const a: Color = { r: 5, a: 0 }
+			const b: Color = { r: 5, a: 1 }
 			expect(codeUtilities.shallowEqual(a, b)).toBe(false)
 		})
 	})
 
 	describe('#deepCloneMaybeObject', () => {
 		it('deep clones objects', () => {
-			const actualClone = codeUtilities.deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })
-			const expectedClone = { a: { b: { c: 'cba' } } }
+			const actualClone: any = codeUtilities.deepCloneMaybeNotObject({ a: { b: { c: 'cba' } } })
+			const expectedClone: any = { a: { b: { c: 'cba' } } }
 			expect(actualClone).toEqual(expectedClone)
 		})
 
 		it('deep clones arrays', () => {
-			const actualClone = codeUtilities.deepCloneMaybeNotObject([ 'a', 'b', 'c' ])
-			const expectedClone = [ 'a', 'b', 'c' ]
+			const actualClone: string[] = codeUtilities.deepCloneMaybeNotObject([ 'a', 'b', 'c' ])
+			const expectedClone: string[] = [ 'a', 'b', 'c' ]
 			expect(actualClone).toEqual(expectedClone)
 		})
 
 		it('deep clones immutable objects', () => {
-			const actualClone = codeUtilities.deepCloneMaybeNotObject('abcba')
-			const expectedClone = 'abcba'
+			const actualClone: string = codeUtilities.deepCloneMaybeNotObject('abcba')
+			const expectedClone: string = 'abcba'
 			expect(actualClone).toBe(expectedClone)
 		})
 	})
@@ -88,13 +89,13 @@ describe('code utilities', () => {
 		let actualObject: any
 		let originalObject: any
 		beforeEach(() => {
-			const anImmutableString = 'a string'
-			const anImmutableNumber = 9
-			const anImmutableFunction = (p: number) => p * 3
-			const anUndefinedValue = undefined
-			const originalArray = [ 'a', 2, { what: 'ever' } ]
-			const originalDeepObject = { deeperObject: 'cool beans' }
-			const originalShallowObject = { deepObject: originalDeepObject }
+			const anImmutableString: string = 'a string'
+			const anImmutableNumber: number = 9
+			const anImmutableFunction: (p: number) => number = (p: number): number => p * 3
+			const anUndefinedValue: void = undefined
+			const originalArray: any[] = [ 'a', 2, { what: 'ever' } ]
+			const originalDeepObject: { deeperObject: string } = { deeperObject: 'cool beans' }
+			const originalShallowObject: { deepObject: { deeperObject: string } } = { deepObject: originalDeepObject }
 			originalObject = {
 				anArray: originalArray,
 				anImmutableFunction,
@@ -166,47 +167,52 @@ describe('code utilities', () => {
 	})
 
 	describe('#changeObjectIntoCopy', () => {
+		interface TestObject {
+			aaa?: string,
+			bbb?: string
+		}
+
 		it('removes all the keys of the object that are not on the one being copied', () => {
-			const objectToChange: { billy?: string, mary?: string } = { billy: 'bob', mary: 'jane' }
-			const objectWithProperties = {}
+			const objectToChange: TestObject = { aaa: 'aaa', bbb: 'bbb' }
+			const objectWithProperties: TestObject = {}
 
 			codeUtilities.changeObjectIntoCopy({ objectToChange, objectWithProperties })
 
-			expect(objectToChange.mary).toBe(undefined)
-			expect(objectToChange.billy).toBe(undefined)
+			expect(objectToChange.bbb).toBe(undefined)
+			expect(objectToChange.aaa).toBe(undefined)
 		})
 
 		it('replaces keys of the object with ones from the one being copied', () => {
-			const objectToChange: { billy?: string, mary?: string } = { mary: 'jane' }
-			const objectWithProperties = { mary: 'had a little lamb' }
+			const objectToChange: TestObject = { bbb: 'bbb' }
+			const objectWithProperties: TestObject = { bbb: 'BBB' }
 
 			codeUtilities.changeObjectIntoCopy({ objectToChange, objectWithProperties })
 
-			expect(objectToChange.mary).toBe('had a little lamb')
-			expect(objectToChange.billy).toBe(undefined)
+			expect(objectToChange.bbb).toBe('BBB')
+			expect(objectToChange.aaa).toBe(undefined)
 		})
 
 		it('adds new keys from the one being copied', () => {
-			const objectToChange: { billy?: string, mary?: string } = {}
-			const objectWithProperties = { billy: 'bob' }
+			const objectToChange: TestObject = {}
+			const objectWithProperties: TestObject = { aaa: 'aaa' }
 
 			codeUtilities.changeObjectIntoCopy({ objectToChange, objectWithProperties })
 
-			expect(objectToChange.billy).toBe('bob')
+			expect(objectToChange.aaa).toBe('aaa')
 		})
 	})
 
 	describe('#reversed', () => {
 		it('returns a reversed version of the passed array', () => {
-			const array = [ 1, 2, 3 ]
+			const array: number[] = [ 1, 2, 3 ]
 
-			const reversedArray = codeUtilities.reversed(array)
+			const reversedArray: number[] = codeUtilities.reversed(array)
 
 			expect(reversedArray).toEqual([ 3, 2, 1 ])
 		})
 
 		it('does not mutate the passed array', () => {
-			const array = [ 1, 2, 3 ]
+			const array: number[] = [ 1, 2, 3 ]
 
 			codeUtilities.reversed(array)
 
@@ -216,7 +222,7 @@ describe('code utilities', () => {
 
 	describe('#isEmpty', () => {
 		it('returns true if the object has no keys', () => {
-			expect(codeUtilities.isEmpty({ })).toBe(true)
+			expect(codeUtilities.isEmpty({})).toBe(true)
 		})
 
 		it('returns false if the object has at least one key', () => {

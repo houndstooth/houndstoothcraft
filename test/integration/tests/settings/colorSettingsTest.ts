@@ -3,19 +3,22 @@ import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { AssignmentMode } from '../../../../src/index'
+import { Color } from '../../../../src/render/types/Color'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
+import { Effect } from '../../../../src/store/types/Effect'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
+import { PixelColorExpectation, StandardTileExpectation } from '../../helpers/types'
 
 describe('.colorSettings', () => {
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', () => {
-			const sufficientTileCountToDemonstrateSetting = 2
-			const houndstoothOverrides = {
+			const sufficientTileCountToDemonstrateSetting: number = 2
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ YELLOW, BLUE ]),
@@ -45,9 +48,9 @@ describe('.colorSettings', () => {
 		})
 
 		it('works for more than two colors', () => {
-			const sufficientTileCountToDemonstrateSetting = 3
-			const simplestWeaveToDemonstrateSetting = [ 0, 1, 2 ]
-			const houndstoothOverrides = {
+			const sufficientTileCountToDemonstrateSetting: number = 3
+			const simplestWeaveToDemonstrateSetting: number[] = [ 0, 1, 2 ]
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorAssignment: {
@@ -70,7 +73,7 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let baseId = -8
+			let baseId: number = -8
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ YELLOW, YELLOW ],
@@ -134,8 +137,8 @@ describe('.colorSettings', () => {
 		describe('.assignmentMode', () => {
 			describe('weave', () => {
 				it('is the simplest way to describe a pattern w/ colors not varied w/in its rows and columns', () => {
-					const sufficientTileCountToDemonstrateSetting = 8
-					const houndstoothOverrides = {
+					const sufficientTileCountToDemonstrateSetting: number = 8
+					const houndstoothOverrides: Effect = {
 						basePattern: {
 							colorSettings: {
 								colorAssignment: {
@@ -158,8 +161,8 @@ describe('.colorSettings', () => {
 
 					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-					let baseId = -8
-					const firstSuperweave = [
+					let baseId: number = -8
+					const firstSuperweave: StandardTileExpectation[] = [
 						{
 							baseId: baseId += 8,
 							colors: [ BLACK, TRANSPARENT ],
@@ -233,7 +236,7 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const secondSuperweave = [
+					const secondSuperweave: StandardTileExpectation[] = [
 						{
 							baseId: 96,
 							colors: [ BLACK, TRANSPARENT ],
@@ -307,7 +310,7 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const thirdSuperweave = [
+					const thirdSuperweave: StandardTileExpectation[] = [
 						{
 							baseId: 192,
 							colors: [ BLACK, TRANSPARENT ],
@@ -381,7 +384,7 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const fourthSuperweave = [
+					const fourthSuperweave: StandardTileExpectation[] = [
 						{
 							baseId: 288,
 							colors: [ BLACK, TRANSPARENT ],
@@ -455,19 +458,19 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const tiles = firstSuperweave
+					const tiles: StandardTileExpectation[] = firstSuperweave
 						.concat(secondSuperweave)
 						.concat(thirdSuperweave)
 						.concat(fourthSuperweave)
-					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+					tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 				})
 			})
 
 			describe('supertile', () => {
 				// tslint:disable-next-line:max-line-length
 				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', () => {
-					const sufficientTileCountToDemonstrateSetting = 4
-					const houndstoothOverrides = {
+					const sufficientTileCountToDemonstrateSetting: number = 4
+					const houndstoothOverrides: Effect = {
 						basePattern: {
 							colorSettings: {
 								colorAssignment: {
@@ -498,8 +501,8 @@ describe('.colorSettings', () => {
 
 					executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-					let baseId = -8
-					const firstSupertile = [
+					let baseId: number = -8
+					const firstSupertile: StandardTileExpectation[] = [
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
@@ -525,7 +528,7 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const secondSupertile = [
+					const secondSupertile: StandardTileExpectation[] = [
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
@@ -551,7 +554,7 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const thirdSupertile = [
+					const thirdSupertile: StandardTileExpectation[] = [
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
@@ -577,7 +580,7 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const fourthSupertile = [
+					const fourthSupertile: StandardTileExpectation[] = [
 						{
 							baseId: baseId += 8,
 							colors: [ CYAN, YELLOW ],
@@ -603,19 +606,19 @@ describe('.colorSettings', () => {
 							tileSize,
 						},
 					]
-					const tiles = firstSupertile
+					const tiles: StandardTileExpectation[] = firstSupertile
 						.concat(secondSupertile)
 						.concat(thirdSupertile)
 						.concat(fourthSupertile)
-					tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+					tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 				})
 			})
 		})
 
 		describe('.switcheroo', () => {
 			it('causes the two striped tiles to alternate by diagonal rather than rows/columns', () => {
-				const sufficientTileCountToDemonstrateSetting = 8
-				const houndstoothOverrides = {
+				const sufficientTileCountToDemonstrateSetting: number = 8
+				const houndstoothOverrides: Effect = {
 					basePattern: {
 						colorSettings: {
 							colorAssignment: {
@@ -635,7 +638,7 @@ describe('.colorSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let baseId = -8
+				let baseId: number = -8
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
@@ -691,8 +694,8 @@ describe('.colorSettings', () => {
 		describe('.flipGrain', () => {
 			// tslint:disable-next-line:max-line-length
 			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', () => {
-				const sufficientTileCountToDemonstrateSetting = 2
-				const houndstoothOverrides = {
+				const sufficientTileCountToDemonstrateSetting: number = 2
+				const houndstoothOverrides: Effect = {
 					basePattern: {
 						colorSettings: {
 							colorAssignment: {
@@ -711,8 +714,8 @@ describe('.colorSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let baseId = -8
-				const tiles = [
+				let baseId: number = -8
+				const tiles: StandardTileExpectation[] = [
 					{
 						baseId: baseId += 8,
 						colors: [ BLACK, TRANSPARENT ],
@@ -739,16 +742,16 @@ describe('.colorSettings', () => {
 					},
 				]
 
-				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+				tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 			})
 		})
 	})
 
 	describe('.opacity', () => {
 		it('affects the alpha of the pixels rendered', () => {
-			const sufficientTileCountToDemonstrateSetting = 2
-			const opacity = 0.5
-			const houndstoothOverrides = {
+			const sufficientTileCountToDemonstrateSetting: number = 2
+			const opacity: number = 0.5
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ BLACK, BLUE ]),
@@ -766,18 +769,18 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			const partiallySeeThroughBlack = deepClone(BLACK)
+			const partiallySeeThroughBlack: Color = deepClone(BLACK)
 			partiallySeeThroughBlack.a *= opacity
-			const partiallySeeThroughBlue = deepClone(BLUE)
+			const partiallySeeThroughBlue: Color = deepClone(BLUE)
 			partiallySeeThroughBlue.a *= opacity
 
-			const semiBlackPixel = {
+			const semiBlackPixel: PixelColorExpectation = {
 				coordinateUnderTest: to.Coordinate([ 25, 75 ]),
 				expectedColor: partiallySeeThroughBlack,
 				id: 1,
 			}
 			expect(pixelIsColorWithMarker(semiBlackPixel)).toBe(true)
-			const semiBluePixel = {
+			const semiBluePixel: PixelColorExpectation = {
 				coordinateUnderTest: to.Coordinate([ 75, 25 ]),
 				expectedColor: partiallySeeThroughBlue,
 				id: 2,
@@ -788,8 +791,8 @@ describe('.colorSettings', () => {
 
 	describe('.backgroundColor', () => {
 		it('paints it yellow', () => {
-			const sufficientTileCountToDemonstrateSetting = 2
-			const houndstoothOverrides = {
+			const sufficientTileCountToDemonstrateSetting: number = 2
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						backgroundColor: YELLOW,
@@ -807,7 +810,7 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			const yellowPixel = {
+			const yellowPixel: PixelColorExpectation = {
 				coordinateUnderTest: to.Coordinate([ 75, 25 ]),
 				expectedColor: YELLOW,
 				id: 1,

@@ -1,7 +1,10 @@
 import { state, to } from '../../../../src'
 import { perStripe } from '../../../../src/components/perStripe'
 import { GetStripePosition } from '../../../../src/components/types/GetStripePosition'
+import { StripePosition } from '../../../../src/components/types/StripePosition'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
+import Spy = jasmine.Spy
+import CallInfo = jasmine.CallInfo
 
 describe('per stripe', () => {
 	beforeEach(() => composeMainHoundstooth)
@@ -12,17 +15,17 @@ describe('per stripe', () => {
 				stripeCount: 3,
 			},
 		}
-		const stripePositions = perStripe({ getStripePosition: () => to.StripePosition(5) })
+		const stripePositions: StripePosition[] = perStripe({ getStripePosition: () => to.StripePosition(5) })
 
 		expect(stripePositions.length).toBe(3)
 	})
 
 	it('calls the stripe position function once for each stripe', () => {
-		const getStripePositionSpy = jasmine.createSpy('getStripePosition')
+		const getStripePositionSpy: Spy = jasmine.createSpy('getStripePosition')
 
 		perStripe({ getStripePosition: getStripePositionSpy })
 
-		const spyCalls = getStripePositionSpy.calls.all()
+		const spyCalls: CallInfo[] = getStripePositionSpy.calls.all()
 		expect(spyCalls.length).toBe(4)
 		expect(spyCalls[ 0 ].args[ 0 ]).toEqual({ stripeIndex: 0, stripeCount: 4 })
 		expect(spyCalls[ 1 ].args[ 0 ]).toEqual({ stripeIndex: 1, stripeCount: 4 })
@@ -31,11 +34,12 @@ describe('per stripe', () => {
 	})
 
 	it('multiplies the result of each stripe position by the perimeter scalar', () => {
-		const standardStripePosition: GetStripePosition = ({ stripeIndex, stripeCount }) =>
-			to.StripePosition(stripeIndex / stripeCount)
-		const stripePositions = perStripe({ getStripePosition: standardStripePosition })
+		const standardStripePosition: GetStripePosition = ({ stripeIndex, stripeCount }: {
+			stripeCount: number, stripeIndex: number,
+		}) => to.StripePosition(stripeIndex / stripeCount)
+		const stripePositions: StripePosition[] = perStripe({ getStripePosition: standardStripePosition })
 
-		const expectedStripePositions = to.StripePositions([ 0, 0.5, 1, 1.5 ])
+		const expectedStripePositions: StripePosition[] = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 		expect(stripePositions).toEqual(expectedStripePositions)
 	})
 })

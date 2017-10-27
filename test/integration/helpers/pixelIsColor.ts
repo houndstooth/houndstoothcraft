@@ -5,15 +5,15 @@ import { Coordinate } from '../../../src/space'
 import { console } from '../../../src/utilities/windowWrapper'
 import { isCloseTo } from '../../helpers/isCloseTo'
 
-// tslint:disable-next-line:max-line-length
-const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean = (coordinateUnderTest, expectedColor) => {
-	const actualColor = pixel(coordinateUnderTest)
+const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) =>
+	boolean = (coordinateUnderTest: Coordinate, expectedColor: Color) => {
+	const actualColor: Color = pixelColor(coordinateUnderTest)
 
 	if (actualColor.a === 0 && actualColor.a === expectedColor.a) {
 		return true
 	}
 
-	for (let i = 0; i < Object.keys(actualColor).length; i++) {
+	for (let i: number = 0; i < Object.keys(actualColor).length; i++) {
 		if (!checkColorProperties({ i, actualColor, expectedColor })) {
 			return false
 		}
@@ -22,19 +22,23 @@ const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => b
 	return true
 }
 
-const pixel: (coordinate: Coordinate) => Color = ([ x, y ]) => {
+const pixelColor: (coordinate: Coordinate) => Color = ([ x, y ]: Coordinate) => {
 	const mixedDownCanvas: Canvas = document.querySelector('.mixed-down-canvas') || {}
-	const pixelData = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
+	// tslint:disable-next-line:no-unsafe-any
+	const pixelData: Uint8ClampedArray = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
 
 	return { r: pixelData[ 0 ], g: pixelData[ 1 ], b: pixelData[ 2 ], a: pixelData[ 3 ] / 255 }
 }
 
-const checkColorProperties: (_: {
-	actualColor: Color, expectedColor: Color, i: number,
-}) => boolean = ({ actualColor, expectedColor, i }) => {
-	const firstColorProperty = Object.entries(actualColor)[ i ]
+type Key = [ string, number | undefined ]
 
-	let definedFirstColorProperty: [ string, number | undefined ]
+interface CheckColorProperties { actualColor: Color, expectedColor: Color, i: number }
+
+const checkColorProperties: (_: CheckColorProperties) => boolean = (params: CheckColorProperties) => {
+	const { actualColor, expectedColor, i }: CheckColorProperties = params
+	const firstColorProperty: Key = Object.entries(actualColor)[ i ]
+
+	let definedFirstColorProperty: Key
 	if (!firstColorProperty) {
 		return false
 	}
@@ -43,7 +47,7 @@ const checkColorProperties: (_: {
 	}
 
 	let firstColorPropertyValue: number
-	const definedFirstColorPropertyValue = definedFirstColorProperty[ 1 ]
+	const definedFirstColorPropertyValue: number | undefined = definedFirstColorProperty[ 1 ]
 	if (!definedFirstColorPropertyValue) {
 		if (definedFirstColorPropertyValue === 0) {
 			firstColorPropertyValue = definedFirstColorPropertyValue
@@ -56,8 +60,8 @@ const checkColorProperties: (_: {
 		firstColorPropertyValue = definedFirstColorPropertyValue
 	}
 
-	const firstColorPropertyKey = firstColorProperty[ 0 ]
-	const secondColorPropertyValue = expectedColor[ firstColorPropertyKey ]
+	const firstColorPropertyKey: string = firstColorProperty[ 0 ]
+	const secondColorPropertyValue: number | undefined = expectedColor[ firstColorPropertyKey ]
 
 	if (secondColorPropertyValue && !isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
 		console.error(`actual color: ${parseColor(actualColor)} / expected color ${parseColor(expectedColor)}`)

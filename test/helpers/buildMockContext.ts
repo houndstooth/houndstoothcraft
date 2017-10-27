@@ -3,10 +3,10 @@ import { MockContextCall } from '../types/MockContextCall'
 import { noop } from './noop'
 import Spy = jasmine.Spy
 
-const buildMockContext: (_?: {
-	contextCallsOrder?: MockContextCall[], toBlobSpy?: Spy,
-}) => MockContext = params => {
-	const { contextCallsOrder = [], toBlobSpy = undefined } = params || {}
+interface BuildMockContext { contextCallsOrder?: MockContextCall[], toBlobSpy?: Spy }
+
+const buildMockContext: (_?: BuildMockContext) => MockContext = (params: BuildMockContext) => {
+	const { contextCallsOrder = [], toBlobSpy = undefined }: BuildMockContext = params || {}
 
 	return {
 		beginPath: () => contextCallsOrder.push({ method: 'beginPath' }),

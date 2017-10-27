@@ -1,9 +1,11 @@
 import { mixDownContexts } from '../../../../src/canvas/mixDownContexts'
 import { state } from '../../../../src/state'
+import Spy = jasmine.Spy
+import CallInfo = jasmine.CallInfo
 
 describe('mix down contexts', () => {
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {
-		const drawImageSpy = jasmine.createSpy('drawImage')
+		const drawImageSpy: Spy = jasmine.createSpy('drawImage')
 		state.mixedDownContext = { drawImage: drawImageSpy }
 
 		state.contexts = [
@@ -17,7 +19,7 @@ describe('mix down contexts', () => {
 
 		mixDownContexts()
 
-		const drawImageSpyCalls = drawImageSpy.calls.all()
+		const drawImageSpyCalls: CallInfo[] = drawImageSpy.calls.all()
 		expect(drawImageSpyCalls[0].args[0]).toEqual(0)
 		expect(drawImageSpyCalls[1].args[0]).toEqual(1)
 		expect(drawImageSpyCalls[2].args[0]).toEqual(2)

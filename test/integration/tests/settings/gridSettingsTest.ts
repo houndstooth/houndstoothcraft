@@ -3,15 +3,17 @@ import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT, WHITE } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
+import { Effect } from '../../../../src/store/types/Effect'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
+import { StandardTileExpectation } from '../../helpers/types'
 
 describe('.gridSettings', () => {
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 	describe('.gridSize', () => {
 		it('changes how many tiles there are', () => {
-			const houndstoothOverrides = {
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ BLACK, WHITE ]),
@@ -28,7 +30,7 @@ describe('.gridSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			const tiles = [
+			const tiles: StandardTileExpectation[] = [
 				{
 					baseId: 0,
 					colors: [ WHITE, BLACK ],
@@ -130,14 +132,14 @@ describe('.gridSettings', () => {
 				},
 			]
 
-			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 		})
 	})
 
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
-			const houndstoothOverrides = {
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: {
 						gridSize: 1,
@@ -155,7 +157,7 @@ describe('.gridSettings', () => {
 			activateTestMarkerCanvas()
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			const tiles = [
+			const tiles: StandardTileExpectation[] = [
 				{
 					baseId: 0,
 					colors: [ TRANSPARENT, BLACK ],
@@ -181,7 +183,7 @@ describe('.gridSettings', () => {
 					tileSize,
 				},
 			]
-			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 		})
 	})
 })

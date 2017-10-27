@@ -12,7 +12,7 @@ import {
 	Houndstooth,
 	LayerSettings,
 	Pattern,
-	SettingsPath,
+	SettingsStep,
 	State,
 	StripeCountContinuumSettings,
 	StripePositionSettings,
@@ -39,7 +39,7 @@ export {
 	LayerSettings,
 	AnimationSettings,
 	State,
-	SettingsPath,
+	SettingsStep,
 	deeperPath,
 	getSettingOrCreatePath,
 }

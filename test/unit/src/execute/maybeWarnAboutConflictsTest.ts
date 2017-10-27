@@ -1,14 +1,15 @@
 import { maybeWarnAboutConflicts } from '../../../../src/execute/maybeWarnAboutConflicts'
+import { SettingsStep } from '../../../../src/store/types/SettingsStep'
 import * as ui from '../../../../src/ui'
 import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('warning about conflicts', () => {
-	let warnAboutConflicts
-	let settingsPath
-	let settingName
-	let existingSetting
-	let overridingSetting
+	let warnAboutConflicts: boolean
+	let settingsPath: SettingsStep[]
+	let settingName: SettingsStep
+	let existingSetting: {}
+	let overridingSetting: {}
 	beforeEach(() => {
 		spyOn(console, 'warn')
 		spyOn(ui, 'warn')
@@ -24,7 +25,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning = 'some effects have conflicts on setting `colorSettings.colorAssignment.assignmentMode`: `yoda` was overridden by `luke`'
+		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorAssignment.assignmentMode`: `yoda` was overridden by `luke`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
@@ -78,7 +79,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` was overridden by `function (b) { return b; }`'
+		const expectedWarning: string = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` was overridden by `function (b) { return b; }`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
@@ -106,7 +107,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
+		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
@@ -121,7 +122,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
+		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})

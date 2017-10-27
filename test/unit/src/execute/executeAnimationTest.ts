@@ -7,13 +7,13 @@ import * as to from '../../../../src/utilities/to'
 
 describe('execute animation', () => {
 	const stopConditionFunction: () => boolean = () => false
-	const animationFunction: (p: number) => number = p => p
+	const animationFunction: (p: number) => number = (p: number): number => p
 
 	let layerFunctionObjects: SettingsFunctionObject[]
 	let animationFunctionObjects: SettingsFunctionObject[]
 
 	let frameRate: number
-	let refreshCanvas
+	let refreshCanvas: boolean
 	let startAnimationFrame: Frame
 	let endAnimationFrame: Frame
 

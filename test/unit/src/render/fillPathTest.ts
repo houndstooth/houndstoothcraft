@@ -10,11 +10,10 @@ describe('fill path', () => {
 
 		fillPath()
 
-		// tslint:disable:no-any
-		const expectedContextCallsOrder = [
+		const expectedContextCallsOrder: MockContextCall[] = [
 			{ method: 'closePath' },
 			{ method: 'fill' },
-		] as any
+		]
 		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)
 	})
 })

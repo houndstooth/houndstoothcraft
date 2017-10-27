@@ -12,16 +12,16 @@ import { buildMockCanvas } from '../../helpers/buildMockCanvas'
 
 describe('create mixed down canvas', () => {
 	let mixedDownCanvas: Canvas
-	const mixedDownContext = buildMockContext()
-	const mockBodyChildren: PageElement[] = []
+	const mixedDownContext: Context = buildMockContext()
+	const bodyChildren: PageElement[] = []
 	const mixedDownCanvasClassList: string[] = []
 	let returnedMixedDownContext: Context
 	beforeAll(() => {
 		spyOn(deleteElementIfExists, 'deleteElementIfExists')
 
-		window.document.body = buildMockBody({ mockChildren: mockBodyChildren })
+		window.document.body = buildMockBody({ children: bodyChildren })
 
-		mixedDownCanvas = buildMockCanvas({ mockContext: mixedDownContext, mockClassList: mixedDownCanvasClassList })
+		mixedDownCanvas = buildMockCanvas({ context: mixedDownContext, classList: mixedDownCanvasClassList })
 		spyOn(window.document, 'createElement').and.returnValue(mixedDownCanvas)
 
 		setSetting('canvasSize', to.Px(450))
@@ -34,7 +34,7 @@ describe('create mixed down canvas', () => {
 	})
 
 	it('puts the new mixed down canvas on the document body', () => {
-		expect(mockBodyChildren[0]).toBe(mixedDownCanvas)
+		expect(bodyChildren[0]).toBe(mixedDownCanvas)
 	})
 
 	it('adds a class name to the mixed down canvas', () => {
@@ -46,7 +46,12 @@ describe('create mixed down canvas', () => {
 	})
 
 	it('does not display the mixed down canvas', () => {
-		expect(mixedDownCanvas.style.display).toBe('none')
+		if (mixedDownCanvas.style) {
+			expect(mixedDownCanvas.style.display).toBe('none')
+		}
+		else {
+			fail()
+		}
 	})
 
 	it('sets the size of the mixed down canvas', () => {

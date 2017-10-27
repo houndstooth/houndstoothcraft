@@ -1,10 +1,11 @@
-// tslint:disable-next-line:no-any
+// tslint:disable:no-any no-unsafe-any
 
 import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from '../../../../src/execute/types/SettingsFunctionObject'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
+import Spy = jasmine.Spy
 
 describe('#prepareFunctionObjectsPerSetting', () => {
 	let actualFunctionObjects: SettingsFunctionObject[]
@@ -12,7 +13,7 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 	let settingsFunctionsSourcePattern: any
 	let settingsFunction: any
 	let secondSettingsFunction: any
-	let errorSpy
+	let errorSpy: Spy
 	beforeEach(() => {
 		errorSpy = spyOn(console, 'error')
 		settingsFunction = (p: number) => p * 2
@@ -34,7 +35,7 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 	})
 
 	it('gathers the functions to be applied', () => {
-		const expectedFunctionObjects = to.SettingsFunctionObjects([
+		const expectedFunctionObjects: SettingsFunctionObject[] = to.SettingsFunctionObjects([
 			{
 				settingName: 'childPathFinalStep',
 				settingsFunction,

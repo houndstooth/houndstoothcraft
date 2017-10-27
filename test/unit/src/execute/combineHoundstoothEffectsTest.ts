@@ -1,20 +1,23 @@
 import { combineHoundstoothEffects } from '../../../../src/execute/combineHoundstoothEffects'
 import * as composePatterns from '../../../../src/execute/composePatterns'
+import CallInfo = jasmine.CallInfo
+import Spy = jasmine.Spy
+import { Effect } from '../../../../src/store/types/Effect'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
-		const composePatternsSpy = spyOn(composePatterns, 'composePatterns')
+		const composePatternsSpy: Spy = spyOn(composePatterns, 'composePatterns')
 
-		const houndstoothEffectOne = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		const houndstoothEffectTwo = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		const houndstoothEffects = [ houndstoothEffectOne, houndstoothEffectTwo ]
+		const houndstoothEffectOne: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		const houndstoothEffectTwo: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		const houndstoothEffects: Effect[] = [ houndstoothEffectOne, houndstoothEffectTwo ]
 
 		combineHoundstoothEffects({ houndstoothEffects })
 
-		const composePatternsCalls = composePatternsSpy.calls.all()
+		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 
 		expect(composePatternsCalls.length).toBe(6)
-
+		// tslint:disable:no-unsafe-any
 		expect(composePatternsCalls[ 0 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectOne.basePattern)
 		expect(composePatternsCalls[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(houndstoothEffectOne.layersPattern)

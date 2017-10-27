@@ -2,7 +2,9 @@ import { from, to } from '../../../../src'
 import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
+import { Effect } from '../../../../src/store/types/Effect'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { pixelIsColor } from '../../helpers/pixelIsColor'
 import { sectionCenterIsColor } from '../../helpers/sectionCenterIsColor'
@@ -11,7 +13,7 @@ import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
 		it('works', () => {
-			const houndstoothOverrides = {
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK ]) },
 					viewSettings: { canvasSize: to.Px(125) },
@@ -33,21 +35,21 @@ describe('.viewSettings', () => {
 
 	describe('.zoom', () => {
 		it('works', () => {
-			const zoom = 2
-			const houndstoothOverrides = {
+			const zoom: number = 2
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: { gridSize: 2 },
 					viewSettings: { zoom },
 				},
 			}
 			const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
-			const zoomedTileSize = to.Unit(zoom * from.Unit(tileSize))
+			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let baseId = -8
+			let baseId: number = -8
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
@@ -78,8 +80,8 @@ describe('.viewSettings', () => {
 	describe('.zoomOnCanvasCenter', () => {
 		// tslint:disable-next-line:max-line-length
 		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
-			const zoom = 2
-			const houndstoothOverrides = {
+			const zoom: number = 2
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: { gridSize: 8 },
 					viewSettings: {
@@ -89,13 +91,13 @@ describe('.viewSettings', () => {
 				},
 			}
 			const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
-			const zoomedTileSize = to.Unit(zoom * from.Unit(tileSize))
+			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let baseId = -8
+			let baseId: number = -8
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ BLACK, TRANSPARENT ],
@@ -125,8 +127,8 @@ describe('.viewSettings', () => {
 
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
 		it('is self-explanatory', () => {
-			const tileSize = to.Unit(100)
-			const houndstoothOverrides = {
+			const tileSize: Unit = to.Unit(100)
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: { gridSize: 2 },
 					tileSettings: { tileSize },
@@ -137,7 +139,7 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let baseId = -8
+			let baseId: number = -8
 			expect(standardTileIsColors({
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
@@ -169,7 +171,7 @@ describe('.viewSettings', () => {
 		it('rotates the entire grid about the canvas center', () => {
 			const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
-			const houndstoothOverrides = {
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: {
 						gridSize: 2,
@@ -188,8 +190,8 @@ describe('.viewSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let areaOrigin = to.Coordinate([ 200, 0 ])
-			let id = -1
+			let areaOrigin: Coordinate = to.Coordinate([ 200, 0 ])
+			let id: number = -1
 
 			expect(sectionCenterIsColor({
 				areaOrigin,

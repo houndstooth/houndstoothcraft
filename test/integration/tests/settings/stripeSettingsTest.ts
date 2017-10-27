@@ -4,11 +4,13 @@ import { StripeCountMode } from '../../../../src/components/types/StripeCountMod
 import { Unit } from '../../../../src/components/types/Unit'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { Effect } from '../../../../src/store/types/Effect'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { sectionCenterIsColor } from '../../helpers/sectionCenterIsColor'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
+import { StandardTileExpectation } from '../../helpers/types'
 
 describe('.stripeSettings', () => {
 	const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')
@@ -35,7 +37,7 @@ describe('.stripeSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				const tile = {
+				const tile: StandardTileExpectation = {
 					baseId: 0,
 					colors: [ TRANSPARENT, BLACK ],
 					tileOrigin: to.Coordinate([ 0, 0 ]),
@@ -47,7 +49,7 @@ describe('.stripeSettings', () => {
 
 		describe('.stripeCount', () => {
 			it('changes the number of stripes in striped tiles', () => {
-				const houndstoothOverrides = {
+				const houndstoothOverrides: Effect = {
 					basePattern: {
 						gridSettings: { gridSize: 2 },
 						stripeSettings: {
@@ -60,8 +62,8 @@ describe('.stripeSettings', () => {
 				activateTestMarkerCanvas()
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let areaOrigin = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])
-				let id = -1
+				let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])
+				let id: number = -1
 				expect(sectionCenterIsColor({
 					areaOrigin,
 					areaSize,
@@ -150,7 +152,7 @@ describe('.stripeSettings', () => {
 
 	xdescribe('.baseStripeDiagonal', () => {
 		it('can be set to principal, to change the orientation of the stripes', () => {
-			const houndstoothOverrides = {
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					stripeSettings: {
 						baseStripeDiagonal: BaseStripeDiagonal.Principal,
@@ -160,8 +162,8 @@ describe('.stripeSettings', () => {
 			activateTestMarkerCanvas()
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let areaOrigin
-			let id = -1
+			let areaOrigin: Coordinate
+			let id: number = -1
 
 			areaOrigin = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])
 			expect(sectionCenterIsColor({

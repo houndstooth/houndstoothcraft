@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
 import { Color } from '../render'
-import { deeperPath, getSettingOrCreatePath, Pattern, SettingsPath } from '../store'
+import { deeperPath, getSettingOrCreatePath, Pattern, SettingsStep } from '../store'
 import { isDefined } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
 import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
@@ -9,7 +9,7 @@ import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
 const composePatterns: (_: {
 	patternToBeMergedOnto: Pattern,
 	patternToMerge: Pattern,
-	settingsPath?: SettingsPath[],
+	settingsPath?: SettingsStep[],
 	warnAboutConflicts?: boolean,
 }) => void = params => {
 	const {

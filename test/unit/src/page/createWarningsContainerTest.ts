@@ -7,16 +7,16 @@ import Spy = jasmine.Spy
 
 describe('create warnings container', () => {
 	let returnedWarningsContainer: PageElement
-	let mockEffectTogglesContainer: PageElement
-	let mockWarningsContainer: PageElement
+	let effectTogglesContainer: PageElement
+	let warningsContainer: PageElement
 	let insertElementRightAfterSpy: Spy
-	const mockWarningsContainerClassList: string[] = []
+	const warningsContainerClassList: string[] = []
 	beforeAll(() => {
-		mockWarningsContainer = buildMockElement({ mockClassList: mockWarningsContainerClassList })
-		spyOn(window.document, 'createElement').and.returnValue(mockWarningsContainer)
+		warningsContainer = buildMockElement({ classList: warningsContainerClassList })
+		spyOn(window.document, 'createElement').and.returnValue(warningsContainer)
 
-		mockEffectTogglesContainer = buildMockElement()
-		spyOn(window.document, 'querySelector').and.returnValue(mockEffectTogglesContainer)
+		effectTogglesContainer = buildMockElement()
+		spyOn(window.document, 'querySelector').and.returnValue(effectTogglesContainer)
 
 		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'insertElementRightAfter')
 
@@ -24,7 +24,7 @@ describe('create warnings container', () => {
 	})
 
 	it('returns the newly created warnings container', () => {
-		expect(returnedWarningsContainer).toBe(mockWarningsContainer)
+		expect(returnedWarningsContainer).toBe(warningsContainer)
 	})
 
 	it('creates the warnings container with padding', () => {
@@ -37,11 +37,11 @@ describe('create warnings container', () => {
 	})
 
 	it('assigns a class to the warnings container', () => {
-		const classAddedToWarningsContainer = mockWarningsContainerClassList[0]
+		const classAddedToWarningsContainer: string = warningsContainerClassList[0]
 		expect(classAddedToWarningsContainer).toBe('warnings-container')
 	})
 
 	it('inserts the warnings container after the effect toggles container', () => {
-		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedWarningsContainer, mockEffectTogglesContainer)
+		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedWarningsContainer, effectTogglesContainer)
 	})
 })

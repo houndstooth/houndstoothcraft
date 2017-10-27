@@ -6,7 +6,7 @@ import * as view from '../../../../src/view'
 import Spy = jasmine.Spy
 
 describe('grid', () => {
-	const gridSize = 2
+	const gridSize: number = 2
 	let tileSpy: Spy
 	beforeEach(() => {
 		tileSpy = spyOn(tile, 'tile')
@@ -42,7 +42,7 @@ describe('grid', () => {
 
 		// tslint:disable-next-line:max-line-length
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {
-			const quadrantCount = 4
+			const quadrantCount: number = 4
 
 			grid()
 

@@ -1,13 +1,16 @@
 import { to } from '../../../../src'
 import { CYAN, ERASE, TRANSPARENT, YELLOW } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
+import { Color } from '../../../../src/render/types/Color'
+import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Effect } from '../../../../src/store/types/Effect'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', () => {
-		const houndstoothOverrides = {
+		const houndstoothOverrides: Effect = {
 			basePattern: {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 2 },
@@ -25,9 +28,9 @@ describe('.layerSettings', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const BLENDED_COLOR = to.Color({ r: 192, g: 255, b: 63, a: 1 })
-		const pixelInCellThatDemonstratesBlending = to.Coordinate([ 75, 25 ])
-		const passed = pixelIsColorWithMarker({
+		const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
+		const pixelInCellThatDemonstratesBlending: Coordinate = to.Coordinate([ 75, 25 ])
+		const passed: boolean = pixelIsColorWithMarker({
 			coordinateUnderTest: pixelInCellThatDemonstratesBlending,
 			expectedColor: BLENDED_COLOR,
 			id: 1,
@@ -36,7 +39,7 @@ describe('.layerSettings', () => {
 	})
 
 	it('erasing makes holes so material from lower layers shows through', () => {
-		const houndstoothOverrides = {
+		const houndstoothOverrides: Effect = {
 			basePattern: {
 				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { gridSize: 0 },
@@ -55,7 +58,7 @@ describe('.layerSettings', () => {
 
 		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		let baseId = -8
+		let baseId: number = -8
 		expect(standardTileIsColors({
 			baseId: baseId += 8,
 			colors: [ YELLOW, CYAN ],

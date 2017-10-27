@@ -33,9 +33,9 @@ describe('clear', () => {
 
 	describe('when there are multiple contexts', () => {
 		it('wipes every canvas', () => {
-			const clearRectSpy1 = jasmine.createSpy('clearRect1')
-			const clearRectSpy2 = jasmine.createSpy('clearRect2')
-			const clearRectSpy3 = jasmine.createSpy('clearRect3')
+			const clearRectSpy1: Spy = jasmine.createSpy('clearRect1')
+			const clearRectSpy2: Spy = jasmine.createSpy('clearRect2')
+			const clearRectSpy3: Spy = jasmine.createSpy('clearRect3')
 			state.contexts = [
 				{ clearRect: clearRectSpy1 },
 				{ clearRect: clearRectSpy2 },

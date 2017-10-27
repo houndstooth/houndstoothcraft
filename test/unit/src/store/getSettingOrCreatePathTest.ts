@@ -1,26 +1,29 @@
+// tslint:disable:no-any
+
 import { getSettingOrCreatePath } from '../../../../src/store/getSettingOrCreatePath'
+import { SettingsStep } from '../../../../src/store/types/SettingsStep'
 import * as to from '../../../../src/utilities/to'
 
 describe('get setting or create path', () => {
 	it('accesses child setting if it exists', () => {
-		const expectedSetting = {}
-		const settings = {
+		const expectedSetting: any = {}
+		const settings: any = {
 			childPathFirstStep: {
 				childPathSecondStep: expectedSetting,
 			},
 		}
-		const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingsPath: SettingsStep[] = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
 
 		expect(childSetting).toBe(expectedSetting)
 	})
 
 	it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
-		const settings = {}
-		const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settings: any = {}
+		const settingsPath: SettingsStep[] = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
 
 		expect(childSetting).toEqual({})
 		expect(settings).toEqual({
@@ -31,14 +34,14 @@ describe('get setting or create path', () => {
 	})
 
 	it('does not override zeroes', () => {
-		const settings = {
+		const settings: any = {
 			childPathFirstStep: {
 				childPathSecondStep: 0,
 			},
 		}
-		const settingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingsPath: SettingsStep[] = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
 
 		expect(childSetting).toBe(0)
 		expect(settings).toEqual({

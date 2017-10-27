@@ -1,9 +1,9 @@
 import * as to from '../utilities/to'
-import { SettingsPath } from './types'
+import { SettingsStep } from './types'
 
 const deeperPath: (_: {
-	settingName: SettingsPath, settingsPath: SettingsPath[],
-}) => SettingsPath[] = ({ settingName, settingsPath }) => {
+	settingName: SettingsStep, settingsPath: SettingsStep[],
+}) => SettingsStep[] = ({ settingName, settingsPath }) => {
 	const path = settingsPath.slice()
 	path.push(settingName)
 

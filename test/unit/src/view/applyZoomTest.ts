@@ -1,3 +1,4 @@
+import { Px } from '../../../../src/page/types/Px'
 import { Path } from '../../../../src/render/types/Path'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
@@ -5,8 +6,8 @@ import * as to from '../../../../src/utilities/to'
 import { applyZoom } from '../../../../src/view/applyZoom'
 
 describe('apply zoom', () => {
-	const zoom = 2
-	const canvasSize = to.Px(200)
+	const zoom: number = 2
+	const canvasSize: Px = to.Px(200)
 	let path: Path
 	beforeEach(() => {
 		path = to.Path([

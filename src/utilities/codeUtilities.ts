@@ -13,7 +13,7 @@ const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i,
 }
 
 const wrappedIndex: <T>(_: { array: T[], index?: number }) => T = ({ array, index = 0 }) => {
-	let i
+	let i: number
 	if (index < 0) {
 		i = array.length - Math.abs(index) % array.length
 		if (i === array.length) {
@@ -28,7 +28,7 @@ const wrappedIndex: <T>(_: { array: T[], index?: number }) => T = ({ array, inde
 }
 
 const shallowEqual: (a: any, b: any) => boolean = (a, b) => {
-	const sameKeyCount = Object.keys(a).length === Object.keys(b).length
+	const sameKeyCount: boolean = Object.keys(a).length === Object.keys(b).length
 
 	return sameKeyCount && Object.entries(a).every(([ key, value ]: [ string, any ]): boolean => value === b[ key ])
 }
@@ -52,7 +52,7 @@ const setAllPropertiesOfObjectOnAnother: (_: {
 }
 
 const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T = maybeObjectToDeepClone => {
-	let clonedMaybeObject
+	let clonedMaybeObject: any
 	if (maybeObjectToDeepClone instanceof Array) {
 		clonedMaybeObject = maybeObjectToDeepClone.slice()
 	}

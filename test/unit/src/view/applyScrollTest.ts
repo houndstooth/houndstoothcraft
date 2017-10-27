@@ -1,3 +1,6 @@
+import { Unit } from '../../../../src/components/types/Unit'
+import { Px } from '../../../../src/page/types/Px'
+import { Path } from '../../../../src/render/types/Path'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as from from '../../../../src/utilities/from'
@@ -5,10 +8,10 @@ import * as to from '../../../../src/utilities/to'
 import { applyScroll } from '../../../../src/view/applyScroll'
 
 describe('apply scroll', () => {
-	const zoom = 10
-	const tileSize = to.Unit(40)
-	const canvasSize = to.Px(200)
-	const path = to.Path([
+	const zoom: number = 10
+	const tileSize: Unit = to.Unit(40)
+	const canvasSize: Px = to.Px(200)
+	const path: Path = to.Path([
 		[ 3, 5 ],
 		[ 4, 5 ],
 		[ 3, 4 ],
@@ -20,8 +23,8 @@ describe('apply scroll', () => {
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		setSetting('centerViewOnCenterOfTileAtHomeAddress', true)
-		const halfCanvasSize = from.Px(canvasSize) / 2
-		const halfTileSize = from.Unit(tileSize) / 2
+		const halfCanvasSize: number = from.Px(canvasSize) / 2
+		const halfTileSize: number = from.Unit(tileSize) / 2
 		expect(applyScroll(path)).toEqual(to.Path([
 			[
 				halfCanvasSize - halfTileSize + 3,

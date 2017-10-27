@@ -6,7 +6,7 @@ import { applyBackgroundColor } from '../../../../src/view/applyBackgroundColor'
 import Spy = jasmine.Spy
 
 describe('apply background color', () => {
-	const defaultFillStyle = '#000000'
+	const defaultFillStyle: string = '#000000'
 	let fillRectSpy: Spy
 	beforeEach(() => {
 		fillRectSpy = jasmine.createSpy('fillRect')

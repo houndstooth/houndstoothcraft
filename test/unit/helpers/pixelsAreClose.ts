@@ -1,10 +1,11 @@
 import { from } from '../../../src'
+import { Px } from '../../../src/page/types/Px'
 import { Pixel } from '../../../src/render'
 import { isCloseTo } from '../../helpers/isCloseTo'
 
-const pixelsAreClose: (expected: Pixel[], actual: Pixel[]) => boolean = (expected, actual) =>
-	actual.every((pixel, x) =>
-		pixel.every((px, y) =>
-			isCloseTo(from.Px(px), from.Px(expected[ x ][ y ]))))
+const pixelsAreClose: (expected: Pixel[], actual: Pixel[]) => boolean = (expected: Pixel[], actual: Pixel[]) =>
+	actual.every((pixel: Pixel, expectedPixelAddressX: number) =>
+		pixel.every((px: Px, expectedPixelAddressY: number) =>
+			isCloseTo(from.Px(px), from.Px(expected[ expectedPixelAddressX ][ expectedPixelAddressY ]))))
 
 export { pixelsAreClose }

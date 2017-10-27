@@ -5,6 +5,7 @@ import { executeSelectedHoundstoothEffects } from '../../../../src/execute/execu
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
+import { StandardTileExpectation } from '../../helpers/types'
 
 describe('standard houndstooth pattern', () => {
 	// tslint:disable-next-line:max-line-length
@@ -19,9 +20,9 @@ describe('standard houndstooth pattern', () => {
 			},
 		})
 
-		let baseId = -8
+		let baseId: number = -8
 		const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
-		const firstSupertile = [
+		const firstSupertileExpectations: StandardTileExpectation[] = [
 			{
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
@@ -47,7 +48,7 @@ describe('standard houndstooth pattern', () => {
 				tileSize,
 			},
 		]
-		const secondSupertile = [
+		const secondSupertileExpectations: StandardTileExpectation[] = [
 			{
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
@@ -73,7 +74,7 @@ describe('standard houndstooth pattern', () => {
 				tileSize,
 			},
 		]
-		const thirdSupertile = [
+		const thirdSupertileExpectations: StandardTileExpectation[] = [
 			{
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
@@ -99,7 +100,7 @@ describe('standard houndstooth pattern', () => {
 				tileSize,
 			},
 		]
-		const fourthSupertile = [
+		const fourthSupertileExpectations: StandardTileExpectation[] = [
 			{
 				baseId: baseId += 8,
 				colors: [ TRANSPARENT, BLACK ],
@@ -125,7 +126,10 @@ describe('standard houndstooth pattern', () => {
 				tileSize,
 			},
 		]
-		const tiles = firstSupertile.concat(secondSupertile).concat(thirdSupertile).concat(fourthSupertile)
-		tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+		const tiles: StandardTileExpectation[] = firstSupertileExpectations
+			.concat(secondSupertileExpectations)
+			.concat(thirdSupertileExpectations)
+			.concat(fourthSupertileExpectations)
+		tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 	})
 })

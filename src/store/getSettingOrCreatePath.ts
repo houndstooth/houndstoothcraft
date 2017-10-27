@@ -1,10 +1,10 @@
 // tslint:disable:no-any
 
 import { isDefined } from '../utilities/codeUtilities'
-import { SettingsPath } from './types'
+import { SettingsStep } from './types'
 
 const getSettingOrCreatePath: (_: {
-	settings: any, settingsPath: SettingsPath[],
+	settings: any, settingsPath: SettingsStep[],
 }) => any = ({ settings, settingsPath }) => {
 	let childSettings = settings
 	settingsPath.forEach(settingsStep => {

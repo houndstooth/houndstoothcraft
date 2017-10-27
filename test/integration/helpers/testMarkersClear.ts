@@ -1,4 +1,5 @@
 import { Canvas } from '../../../src/page/types/Canvas'
+import { Context } from '../../../src/page/types/Context'
 import { Px } from '../../../src/page/types/Px'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
@@ -10,10 +11,12 @@ const testMarkersClear: NullarySideEffector = () => {
 	if (isEmpty(testMarkersCanvas)) {
 		testMarkersCanvas = createTestMarkersCanvas()
 	}
-	const testMarkersContext = testMarkersCanvas.getContext('2d')
+	// tslint:disable-next-line:no-unsafe-any
+	const testMarkersContext: Context = testMarkersCanvas.getContext('2d')
 
 	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 
+	// tslint:disable-next-line:no-unsafe-any
 	testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)
 }
 

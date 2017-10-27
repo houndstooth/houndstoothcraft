@@ -1,10 +1,12 @@
 import { isTileUniform } from '../../../../src/components/isTileUniform'
+import { ColorSet } from '../../../../src/components/types/ColorSet'
+import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {
-		const colorSet = to.ColorSet([
+		const colorSet: ColorSet = to.ColorSet([
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 2, g: 100, b: 50, a: 0.5 },
 			{ r: 3, g: 100, b: 50, a: 0.5 },
@@ -15,12 +17,12 @@ describe('is tile uniform', () => {
 	})
 
 	it('returns true if all of the tile color indices point to the same color', () => {
-		const shapeColorIndices = to.ShapeColorIndices([ 0, 0, 3, 0, 3 ])
+		const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([ 0, 0, 3, 0, 3 ])
 		expect(isTileUniform({ shapeColorIndices })).toBe(true)
 	})
 
 	it('returns false if any of the tile color indices point to a color that is different', () => {
-		const shapeColorIndices = to.ShapeColorIndices([ 0, 0, 1, 0, 1 ])
+		const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([ 0, 0, 1, 0, 1 ])
 		expect(isTileUniform({ shapeColorIndices })).toBe(false)
 	})
 })

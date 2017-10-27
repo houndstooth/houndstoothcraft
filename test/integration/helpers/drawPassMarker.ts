@@ -1,22 +1,24 @@
+// tslint:disable:no-unsafe-any
+
 import { from } from '../../../src'
 import { Canvas } from '../../../src/page/types/Canvas'
+import { Context } from '../../../src/page/types/Context'
 import { Coordinate } from '../../../src/space'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
-const drawPassMarker: (_: {
-	coordinateUnderTest: Coordinate, id: number, passed: boolean,
-}) => void = ({ coordinateUnderTest, id, passed }) => {
+interface DrawPassMarker { coordinateUnderTest: Coordinate, id: number, passed: boolean }
+
+const drawPassMarker: (_: DrawPassMarker) => void = ({ coordinateUnderTest, id, passed }: DrawPassMarker) => {
 	let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') || {}
 	if (!testMarkersCanvas) {
 		testMarkersCanvas = createTestMarkersCanvas()
 	}
-	const testMarkersContext = testMarkersCanvas.getContext('2d')
+	const testMarkersContext: Context = testMarkersCanvas.getContext('2d')
 
 	testMarkersContext.strokeStyle = passed ? 'green' : 'red'
 	testMarkersContext.beginPath()
 
-	const x = from.Unit(coordinateUnderTest[0])
-	const y = from.Unit(coordinateUnderTest[1])
+	const [ x, y ]: number[] = from.Coordinate(coordinateUnderTest)
 	testMarkersContext.arc(x, y, 2, 0, Math.PI * 2)
 
 	testMarkersContext.closePath()

@@ -7,7 +7,7 @@ import { SettingsFunctionObject } from '../execute/types/SettingsFunctionObject'
 import { Dimensions, Px } from '../page'
 import { Color, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
-import { SettingsPath } from '../store'
+import { SettingsStep } from '../store'
 
 // First order, singular
 
@@ -19,7 +19,7 @@ const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColor
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const Unit: (unit: number) => Unit = unit => unit as any
 // Address (singular) not yet needed
-const SettingsStep: (settingsStep: string) => SettingsPath = settingsStep => settingsStep as any
+const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
 
 // First order, plurals
 
@@ -33,7 +33,7 @@ const StripePositions: (stripePositions: Array<StripePosition | number>) => Stri
 	stripePositions.map(stripePosition => stripePosition as any) as StripePosition[]
 // Units might be confusing because it's also natural to say "in units"; see Coordinate for a type that is Unit[]
 const Address: (address: Array<number | Address>) => Address[] = address => address as any
-const SettingsPath: (settingsPath: Array<string | SettingsPath>) => SettingsPath[] = settingsPath => settingsPath as any
+const SettingsPath: (settingsPath: Array<string | SettingsStep>) => SettingsStep[] = settingsPath => settingsPath as any
 
 // Second order, singular
 
@@ -41,7 +41,6 @@ const Supertile: (supertile: Grid<Array<number | ShapeColorIndex>>) => Supertile
 	supertile as Supertile
 const Coordinate: (coordinate: Array<number | Unit>) => Coordinate = coordinate =>
 	coordinate.map(unit => unit as any) as Coordinate
-const Color: (color: { r?: number, g?: number, b?: number, a: number }) => Color = color => color as Color
 const Pixel: (pixel: Array<number | Px>) => Pixel = pixel =>
 	pixel.map(px => px as any) as Pixel
 const Dimensions: (dimensions: Array<number | Px>) => Dimensions = dimensions =>
@@ -65,7 +64,6 @@ const Path: (path: Array<Array<number | Px> | Pixel>) => Path = path => path.map
 
 export {
 	Address,
-	Color,
 	ColorSet,
 	Coordinate,
 	Px,
@@ -77,8 +75,8 @@ export {
 	Path,
 	Pixel,
 	Radian,
-	SettingsPath,
 	SettingsFunctionObjects,
+	SettingsPath,
 	SettingsStep,
 	ShapeColorIndex,
 	ShapeColorIndices,

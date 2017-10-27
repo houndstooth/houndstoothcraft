@@ -1,12 +1,15 @@
 import * as canvas from '../../../../src/canvas'
+import { PageElement } from '../../../../src/page/types/PageElement'
 import { state } from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
+import { Effect } from '../../../../src/store/types/Effect'
+import { State } from '../../../../src/store/types/State'
 import { resetInterface } from '../../../../src/ui/resetInterface'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('reset interface', () => {
-	const warningsContainer = buildMockElement()
+	const warningsContainer: PageElement = buildMockElement()
 	beforeEach(() => {
 		spyOn(windowWrapper.document, 'querySelector').and.returnValue(warningsContainer)
 		spyOn(windowWrapper.window, 'clearInterval')
@@ -33,7 +36,7 @@ describe('reset interface', () => {
 	})
 
 	it('resets the state, except for any selected effects', () => {
-		const fakeHoundstoothEffect = {
+		const fakeHoundstoothEffect: Effect = {
 			animationsPattern: {},
 			basePattern: {},
 			layersPattern: {},
@@ -44,7 +47,7 @@ describe('reset interface', () => {
 
 		resetInterface()
 
-		const expectedStore = DEFAULT_STATE
+		const expectedStore: State = DEFAULT_STATE
 		expectedStore.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 		expect(state).toEqual(expectedStore)
 	})

@@ -1,3 +1,4 @@
+import { Address } from '../../../src/components/types/Address'
 import { Unit } from '../../../src/components/types/Unit'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
@@ -27,6 +28,19 @@ type Diagonal =
 	| 'solidButTestPrincipalToAvoidSeam'
 	| 'solidButTestMinorToAvoidSeam'
 
+interface StandardTileExpectation { baseId: number, colors: Color[], tileOrigin: Coordinate, tileSize: Unit }
+
+interface SectionCenterExpectation {
+	areaOrigin: Coordinate,
+	areaSize: Unit,
+	color: Color,
+	id?: number,
+	sectionAddress: Address[],
+	sectionResolution: number,
+}
+
+interface PixelColorExpectation { coordinateUnderTest: Coordinate, expectedColor: Color, id: number }
+
 export {
 	ExpectedSection,
 	ExpectedDividedSection,
@@ -34,4 +48,7 @@ export {
 	ExpectDiagonalDividedSection,
 	ExpectSolidSection,
 	Diagonal,
+	StandardTileExpectation,
+	SectionCenterExpectation,
+	PixelColorExpectation,
 }

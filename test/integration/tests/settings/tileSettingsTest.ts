@@ -4,16 +4,18 @@ import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownContext from '../../../../src/page/createMixedDownContext'
+import { Context } from '../../../../src/page/types/Context'
 import { Effect } from '../../../../src/store/types/Effect'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 import { MockContextCall } from '../../../types/MockContextCall'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { standardTileIsColors } from '../../helpers/standardTileIsColors'
+import { StandardTileExpectation } from '../../helpers/types'
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
 		it('adjusts the size in pixels of each tile', () => {
-			const houndstoothOverrides = {
+			const houndstoothOverrides: Effect = {
 				basePattern: {
 					tileSettings: {
 						tileSize: to.Unit(30),
@@ -24,8 +26,8 @@ describe('.tileSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			let baseId = -8
-			const tiles = [
+			let baseId: number = -8
+			const tiles: StandardTileExpectation[] = [
 				{
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
@@ -51,12 +53,12 @@ describe('.tileSettings', () => {
 					tileSize: to.Unit(30),
 				},
 			]
-			tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 		})
 
 		describe('when also zooming', () => {
 			it('multiplies the effect of taking up more pixels', () => {
-				const houndstoothOverrides = {
+				const houndstoothOverrides: Effect = {
 					basePattern: {
 						tileSettings: {
 							tileSize: to.Unit(30),
@@ -70,8 +72,8 @@ describe('.tileSettings', () => {
 
 				executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-				let baseId = -8
-				const tiles = [
+				let baseId: number = -8
+				const tiles: StandardTileExpectation[] = [
 					{
 						baseId: baseId += 8,
 						colors: [ TRANSPARENT, BLACK ],
@@ -97,14 +99,14 @@ describe('.tileSettings', () => {
 						tileSize: to.Unit(90),
 					},
 				]
-				tiles.forEach(tile => expect(standardTileIsColors(tile)).toBe(true))
+				tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
 			})
 		})
 	})
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
 		let houndstoothOverrides: Effect
-		let mockContext
+		let context: Context
 		let contextCallsOrder: MockContextCall[]
 		beforeEach(() => {
 			contextCallsOrder = []
@@ -115,8 +117,8 @@ describe('.tileSettings', () => {
 					gridSettings: { gridSize: 1 },
 				},
 			}
-			mockContext = buildMockContext({ contextCallsOrder })
-			spyOn(createContext, 'default').and.returnValue(mockContext)
+			context = buildMockContext({ contextCallsOrder })
+			spyOn(createContext, 'default').and.returnValue(context)
 			spyOn(createMixedDownContext, 'default').and.returnValue(buildMockContext())
 		})
 

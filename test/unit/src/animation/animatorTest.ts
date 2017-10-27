@@ -8,12 +8,12 @@ import { noop } from '../../../helpers/noop'
 describe('animator', () => {
 	let intervalFunction: (p: number) => number
 	const animationFunction: NullarySideEffector = noop
-	const frameRate = 3
+	const frameRate: number = 3
 	const stopConditionFunction: () => boolean = () => false
 	const interval: NullarySideEffector = noop
 	beforeEach(() => {
 		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)
-		intervalFunction = p => p * 20
+		intervalFunction = (p: number) => p * 20
 		spyOn(buildIntervalFunction, 'buildIntervalFunction').and.returnValue(intervalFunction)
 
 		animator({ animationFunction, frameRate, stopConditionFunction })

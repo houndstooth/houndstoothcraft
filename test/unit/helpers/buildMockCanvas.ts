@@ -3,10 +3,10 @@ import { MockContext } from '../../types/MockContext'
 import { buildMockElement } from './buildMockElement'
 
 const buildMockCanvas: (_: {
-	mockClassList?: string[], mockContext?: MockContext,
-}) => MockCanvas = ({ mockContext, mockClassList }) =>
-	Object.assign(buildMockElement({ mockClassList }), {
-		getContext: (contextType: string) => contextType === '2d' ? mockContext : undefined,
+	classList?: string[], context?: MockContext,
+}) => MockCanvas = ({ context, classList }: {classList?: string[], context?: MockContext}) =>
+	Object.assign(buildMockElement({ classList }), {
+		getContext: (contextType: string) => contextType === '2d' ? context : undefined,
 	})
 
 export { buildMockCanvas }

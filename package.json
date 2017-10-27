@@ -15,7 +15,7 @@
     "ci": "sh ./bin/shared/cross_env_pre_source.sh './bin/ci.sh'"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.6.1",
+    "@types/jasmine": "^2.6.2",
     "awesome-typescript-loader": "^3.2.3",
     "codecov": "^2.3.1",
     "jasmine": "^2.8.0",

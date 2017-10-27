@@ -1,7 +1,7 @@
-import { SettingsPath } from '../store'
+import { SettingsStep } from '../store'
 
 const settingPath: (_: {
-	settingName: SettingsPath, settingsPath: SettingsPath[],
+	settingName: SettingsStep, settingsPath: SettingsStep[],
 }) => string = ({ settingName, settingsPath }) =>
 	`${settingsPath.join('.')}.${settingName}`
 

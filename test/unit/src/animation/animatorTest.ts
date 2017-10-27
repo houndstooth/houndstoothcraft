@@ -1,8 +1,8 @@
 import animator from '../../../../src/animation/animator'
 import * as buildIntervalFunction from '../../../../src/animation/buildIntervalFunction'
-import { ConditionFunction } from '../../../../src/animation/types/ConditionFunction'
+import { ConditionFunction } from '../../../../src/animation/types'
 import { state } from '../../../../src/state'
-import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../../../../src/utilities/types'
 import { windowWrapper } from '../../../../src/utilities/windowWrapper'
 import { noop } from '../../../helpers/noop'
 

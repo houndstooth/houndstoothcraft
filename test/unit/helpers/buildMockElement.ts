@@ -1,4 +1,4 @@
-import { PageElement } from '../../../src/page/types/PageElement'
+import { PageElement } from '../../../src/page'
 import { MockElement } from '../../types/MockElement'
 import Spy = jasmine.Spy
 

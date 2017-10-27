@@ -1,5 +1,5 @@
-import { Px } from '../../../../src/page/types/Px'
-import { Path } from '../../../../src/render/types/Path'
+import { Px } from '../../../../src/page'
+import { Path } from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'

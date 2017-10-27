@@ -1,10 +1,10 @@
 import * as execute from '../../../../src/execute'
-import { InputElement } from '../../../../src/page/types/InputElement'
+import { InputElement } from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { Effect } from '../../../../src/store/types/Effect'
 import { buildEffectToggleClickHandler } from '../../../../src/ui/buildEffectToggleClickHandler'
 import * as resetInterface from '../../../../src/ui/resetInterface'
-import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../../../../src/utilities/types'
 import Spy = jasmine.Spy
 
 describe('build effect toggle click handler', () => {

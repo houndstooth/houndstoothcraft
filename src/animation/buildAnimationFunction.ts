@@ -5,8 +5,7 @@ import { deepClone } from '../utilities/codeUtilities'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { exportFrame } from './exportFrame'
-import { Frame } from './types'
-import { ConditionFunction } from './types/ConditionFunction'
+import { ConditionFunction, Frame } from './types'
 
 const buildAnimationFunction: (_: {
 	animationFunctionObjects: SettingsFunctionObject[],

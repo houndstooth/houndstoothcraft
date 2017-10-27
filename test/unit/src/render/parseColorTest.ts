@@ -1,5 +1,5 @@
 import { parseColor } from '../../../../src/render/parseColor'
-import { Color } from '../../../../src/render/types/Color'
+import { Color } from '../../../../src/render'
 
 describe('parse color', () => {
 	it('converts a color object into a canvas-readable string', () => {

@@ -1,6 +1,6 @@
 import { layerIterator } from '../canvas'
 import { state } from '../state'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 import { document } from '../utilities/windowWrapper'
 import { createCanvasContainer } from './createCanvasContainer'
 import createContext from './createContext'

@@ -1,7 +1,7 @@
 import { Context, Px } from '../page'
 import { state } from '../state'
 import { getFromBaseOrDefaultPattern } from '../store'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 
 const clear: NullarySideEffector = () => {
 	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')

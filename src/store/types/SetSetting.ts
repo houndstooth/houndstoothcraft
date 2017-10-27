@@ -1,4 +1,4 @@
-import { Frame } from '../../animation/types/Frame'
+import { Frame } from '../../animation'
 import { ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
 import { Layer } from '../../execute'
 import { Px } from '../../page'

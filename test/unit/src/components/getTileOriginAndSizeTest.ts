@@ -1,9 +1,9 @@
 import { from, state, to } from '../../../../src'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
-import { Address } from '../../../../src/components/types/Address'
-import { GetTileOriginAndSize } from '../../../../src/components/types/GetTileOriginAndSize'
-import { TileOriginAndSize } from '../../../../src/components/types/TileOriginAndSize'
-import { Unit } from '../../../../src/components/types/Unit'
+import { Address } from '../../../../src/components'
+import { GetTileOriginAndSize } from '../../../../src/components'
+import { TileOriginAndSize } from '../../../../src/components'
+import { Unit } from '../../../../src/components'
 import { setSetting } from '../../../../src/store/setSetting'
 
 describe('get tile origin and size', () => {

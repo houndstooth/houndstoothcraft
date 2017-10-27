@@ -1,6 +1,6 @@
 import { rotateCoordinate } from '../../../../src/space/rotateCoordinate'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
-import { Radian } from '../../../../src/space/types/Radian'
+import { Coordinate } from '../../../../src/space'
+import { Radian } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 
 describe('rotate coordinate', () => {

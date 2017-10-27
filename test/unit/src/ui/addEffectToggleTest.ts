@@ -1,4 +1,4 @@
-import { PageElement } from '../../../../src/page/types/PageElement'
+import { PageElement } from '../../../../src/page'
 import { Effect } from '../../../../src/store/types/Effect'
 import { addEffectToggle } from '../../../../src/ui/addEffectToggle'
 import * as createLabel from '../../../../src/ui/createLabel'

@@ -1,8 +1,8 @@
 // tslint:disable:no-unsafe-any
 
 import { from } from '../../../src'
-import { Canvas } from '../../../src/page/types/Canvas'
-import { Context } from '../../../src/page/types/Context'
+import { Canvas } from '../../../src/page'
+import { Context } from '../../../src/page'
 import { Coordinate } from '../../../src/space'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 

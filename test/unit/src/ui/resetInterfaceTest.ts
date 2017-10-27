@@ -1,5 +1,5 @@
 import * as canvas from '../../../../src/canvas'
-import { PageElement } from '../../../../src/page/types/PageElement'
+import { PageElement } from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import { Effect } from '../../../../src/store/types/Effect'

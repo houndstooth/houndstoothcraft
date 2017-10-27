@@ -1,5 +1,5 @@
 import { to } from '../../../../src'
-import { Radian } from '../../../../src/space/types/Radian'
+import { Radian } from '../../../../src/space'
 import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {

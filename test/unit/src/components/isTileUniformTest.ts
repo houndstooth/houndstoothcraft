@@ -1,6 +1,6 @@
 import { isTileUniform } from '../../../../src/components/isTileUniform'
-import { ColorSet } from '../../../../src/components/types/ColorSet'
-import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
+import { ColorSet } from '../../../../src/components'
+import { ShapeColorIndex } from '../../../../src/components'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 

@@ -1,7 +1,7 @@
 import { state, to } from '../../../../src'
 import { perStripe } from '../../../../src/components/perStripe'
-import { GetStripePosition } from '../../../../src/components/types/GetStripePosition'
-import { StripePosition } from '../../../../src/components/types/StripePosition'
+import { GetStripePosition } from '../../../../src/components'
+import { StripePosition } from '../../../../src/components'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo

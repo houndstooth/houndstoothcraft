@@ -1,4 +1,4 @@
-import { PointsParams } from '../types/PointsParams'
+import { PointsParams } from '../types'
 import { pointAlongRightEdge, pointAlongTopEdge } from './stripePoints'
 
 const firstPoint: (_: PointsParams) => void = params => {

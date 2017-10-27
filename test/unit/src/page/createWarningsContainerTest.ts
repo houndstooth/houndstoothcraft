@@ -1,6 +1,6 @@
 import { createWarningsContainer } from '../../../../src/page/createWarningsContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
-import { PageElement } from '../../../../src/page/types/PageElement'
+import { PageElement } from '../../../../src/page'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 import Spy = jasmine.Spy

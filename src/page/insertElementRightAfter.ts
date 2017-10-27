@@ -1,7 +1,7 @@
-import { PageElement } from './types/PageElement'
+import { PageElement } from './types'
 
 const insertElementRightAfter: (element: PageElement, elementRightAfterWhichToInsert: PageElement) => void =
-	(element, elementRightAfterWhichToInsert) =>
+	(element: PageElement, elementRightAfterWhichToInsert: PageElement): void =>
 		elementRightAfterWhichToInsert.parentNode.insertBefore(element, elementRightAfterWhichToInsert.nextSibling)
 
 export { insertElementRightAfter }

@@ -1,5 +1,5 @@
 import { scaleElement } from '../../../../src/page/scaleElement'
-import { PageElement } from '../../../../src/page/types/PageElement'
+import { PageElement } from '../../../../src/page'
 import * as to from '../../../../src/utilities/to'
 import { buildMockElement } from '../../helpers/buildMockElement'
 

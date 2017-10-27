@@ -12,7 +12,7 @@ import {
 	Unit,
 } from '../components'
 import { Layer } from '../execute'
-import { SettingsFunctionObject } from '../execute/types/SettingsFunctionObject'
+import { SettingsFunctionObject } from '../execute'
 import { Dimensions, Px } from '../page'
 import { Color, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
@@ -71,7 +71,7 @@ const SettingsFunctionObjects: (settingsFunctionObjects: Array<{
 
 const Outline: (outline: Array<Array<number | Unit> | Coordinate>) => Outline = outline => outline.map(Coordinate)
 const ColorSet: (colorSet: Color[]) => ColorSet = colorSet => colorSet as ColorSet
-const Path: (path: Array<Array<number | Px> | Pixel>) => Path = path => path.map(Pixel)
+const Path: (path: Array<Array<number | Px> | Pixel>) => Path = path => path.map(Pixel) as Path
 
 export {
 	Address,

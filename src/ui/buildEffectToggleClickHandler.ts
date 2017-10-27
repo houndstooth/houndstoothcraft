@@ -2,7 +2,7 @@ import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
 import { state } from '../state'
 import { Effect } from '../store'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 import { resetInterface } from './resetInterface'
 
 const buildEffectToggleClickHandler: (_: {

@@ -1,7 +1,7 @@
 import { PERIMETER_SCALAR } from '../../constants'
 import * as from from '../../utilities/from'
 import * as to from '../../utilities/to'
-import { PointsParams } from '../types/PointsParams'
+import { PointsParams } from '../types'
 import * as stripePoints from './stripePoints'
 
 const middlePoints: (_: PointsParams) => void = params => {

@@ -1,5 +1,5 @@
 import { getCurrentContext } from '../canvas'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 
 const resetClip: NullarySideEffector = () => {
 	const context = getCurrentContext()

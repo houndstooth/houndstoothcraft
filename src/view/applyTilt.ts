@@ -17,11 +17,11 @@ const applyTilt: (path: Path) => Path = path => {
 
 	const canvasCenter = to.Pixel([ from.Px(canvasSize) * HALF, from.Px(canvasSize) * HALF ])
 
-	return path.map(pixel => tilt({
+	return to.Path(path.map(pixel => tilt({
 		fixedPoint: canvasCenter,
 		point: pixel,
 		rotation: rotateViewAboutCanvasCenter,
-	}))
+	})))
 }
 
 const tilt: (_: { fixedPoint: Pixel, point: Pixel, rotation: Radian }) => Pixel = ({ fixedPoint, point, rotation }) => {

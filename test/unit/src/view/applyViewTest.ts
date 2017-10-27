@@ -1,5 +1,5 @@
-import { Path } from '../../../../src/render/types/Path'
-import { Outline } from '../../../../src/space/types/Outline'
+import { Path } from '../../../../src/render'
+import { Outline } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 import * as applyScroll from '../../../../src/view/applyScroll'
 import * as applyTilt from '../../../../src/view/applyTilt'

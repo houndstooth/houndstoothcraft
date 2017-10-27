@@ -5,7 +5,7 @@ import { getFromBaseOrDefaultPattern, ViewSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 
-const applyZoom: (path: Path) => Path = path => path.map(adjustPixelForZoom)
+const applyZoom: (path: Path) => Path = path => to.Path(path.map(adjustPixelForZoom))
 
 const adjustPixelForZoom: (pixel: Pixel) => Pixel = pixel => {
 	const {

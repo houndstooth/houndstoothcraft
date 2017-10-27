@@ -3,8 +3,7 @@ import { applyView } from '../view'
 import { buildFill } from './buildFill'
 import { buildPath } from './buildPath'
 import { fillPath } from './fillPath'
-import { Color } from './types'
-import { Path } from './types/Path'
+import { Color, Path } from './types'
 
 const MINIMUM_POLYGON_COORDINATE_COUNT = 3
 

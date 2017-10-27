@@ -1,4 +1,4 @@
-import { AssignmentMode } from '../../../../src/components/types/AssignmentMode'
+import { AssignmentMode } from '../../../../src/components'
 import { composePatterns } from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
 import { Pattern } from '../../../../src/store/types/Pattern'

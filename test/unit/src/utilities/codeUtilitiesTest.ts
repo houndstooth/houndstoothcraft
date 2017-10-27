@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { Color } from '../../../../src/render/types/Color'
+import { Color } from '../../../../src/render'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 
 describe('code utilities', () => {

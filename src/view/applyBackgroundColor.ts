@@ -2,7 +2,7 @@ import { getCurrentContext } from '../canvas'
 import { Px } from '../page'
 import { Color, parseColor } from '../render'
 import { getFromBaseOrDefaultPattern } from '../store'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 
 const applyBackgroundColor: NullarySideEffector = () => {
 	const backgroundColor: Color = getFromBaseOrDefaultPattern('backgroundColor')

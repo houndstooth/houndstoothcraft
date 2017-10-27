@@ -1,5 +1,5 @@
-import { Frame } from '../../../src/animation/types/Frame'
-import { Layer } from '../../../src/execute/types/Layer'
+import { Frame } from '../../../src/animation'
+import { Layer } from '../../../src/execute'
 
 interface ThisFrameOnly { endFrame: Frame, startFrame: Frame }
 

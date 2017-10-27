@@ -1,4 +1,4 @@
-import { Canvas } from '../../../src/page/types/Canvas'
+import { Canvas } from '../../../src/page'
 import { Color } from '../../../src/render'
 import { parseColor } from '../../../src/render/parseColor'
 import { Coordinate } from '../../../src/space'

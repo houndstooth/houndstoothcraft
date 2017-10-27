@@ -2,17 +2,19 @@ import { createContexts } from './createContexts'
 import { createEffectTogglesContainer } from './createEffectTogglesContainer'
 import createMixedDownContext from './createMixedDownContext'
 import { createWarningsContainer } from './createWarningsContainer'
-import { Context, DataBlob, Dimensions, InputElement, LabelElement, Px } from './types'
+import { Canvas, Context, DataBlob, Dimensions, InputElement, LabelElement, PageElement, Px } from './types'
 
 export {
 	createContexts,
 	createEffectTogglesContainer,
 	createMixedDownContext,
 	createWarningsContainer,
-	Px,
+	Canvas,
 	Context,
-	InputElement,
-	LabelElement,
 	DataBlob,
 	Dimensions,
+	InputElement,
+	LabelElement,
+	PageElement,
+	Px,
 }

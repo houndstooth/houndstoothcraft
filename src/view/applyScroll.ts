@@ -14,7 +14,7 @@ const applyScroll: (path: Path) => Path = path => {
 		return path
 	}
 
-	return path.map(applyCenterViewOnCenterOfTileAtHomeAddress)
+	return to.Path(path.map(applyCenterViewOnCenterOfTileAtHomeAddress))
 }
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel = pixel => {

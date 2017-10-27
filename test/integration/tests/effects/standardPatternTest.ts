@@ -1,5 +1,5 @@
 import { from, to } from '../../../../src'
-import { Unit } from '../../../../src/components/types/Unit'
+import { Unit } from '../../../../src/components'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'

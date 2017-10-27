@@ -1,6 +1,5 @@
 import { state } from '../state'
-import { Frame } from './types'
-import { ConditionFunction } from './types/ConditionFunction'
+import { ConditionFunction, Frame } from './types'
 
 const buildStopConditionFunction: (_: {
 	endFrame: Frame,

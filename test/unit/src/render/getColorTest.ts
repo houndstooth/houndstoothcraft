@@ -1,5 +1,5 @@
 import { getColor } from '../../../../src/render/getColor'
-import { Color } from '../../../../src/render/types/Color'
+import { Color } from '../../../../src/render'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 

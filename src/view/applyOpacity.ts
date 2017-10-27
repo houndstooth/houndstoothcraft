@@ -1,6 +1,6 @@
 import { getCurrentContext } from '../canvas'
 import { getFromBaseOrDefaultPattern } from '../store'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 
 const applyOpacity: NullarySideEffector = () => {
 	const opacity: number = getFromBaseOrDefaultPattern('opacity')

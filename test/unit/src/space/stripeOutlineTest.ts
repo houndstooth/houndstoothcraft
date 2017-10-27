@@ -1,9 +1,9 @@
-import { StripePosition } from '../../../../src/components/types/StripePosition'
-import { Unit } from '../../../../src/components/types/Unit'
+import { StripePosition } from '../../../../src/components'
+import { Unit } from '../../../../src/components'
 import { stripeOutline } from '../../../../src/space/stripeOutline'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
-import { Outline } from '../../../../src/space/types/Outline'
-import { OutlineOptions } from '../../../../src/space/types/OutlineOptions'
+import { Coordinate } from '../../../../src/space'
+import { Outline } from '../../../../src/space'
+import { OutlineOptions } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 
 describe('stripe outline', () => {

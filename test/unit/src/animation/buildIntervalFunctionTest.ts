@@ -1,7 +1,7 @@
 import { buildIntervalFunction } from '../../../../src/animation/buildIntervalFunction'
 import { state } from '../../../../src/state'
 import Spy = jasmine.Spy
-import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../../../../src/utilities/types'
 import { windowWrapper } from '../../../../src/utilities/windowWrapper'
 
 describe('build animation function', () => {

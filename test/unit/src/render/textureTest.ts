@@ -1,10 +1,10 @@
 import { texture } from '../../../../src/components/texture'
-import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
-import { Unit } from '../../../../src/components/types/Unit'
+import { ShapeColorIndex } from '../../../../src/components'
+import { Unit } from '../../../../src/components'
 import * as render from '../../../../src/render'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Coordinate } from '../../../../src/space'
 import Spy = jasmine.Spy
-import { Outline } from '../../../../src/space/types/Outline'
+import { Outline } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 
 describe('texture', () => {

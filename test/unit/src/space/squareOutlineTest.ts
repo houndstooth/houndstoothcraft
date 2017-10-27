@@ -1,6 +1,6 @@
-import { Unit } from '../../../../src/components/types/Unit'
+import { Unit } from '../../../../src/components'
 import { squareOutline } from '../../../../src/space/squareOutline'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Coordinate } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 
 describe('square outline', () => {

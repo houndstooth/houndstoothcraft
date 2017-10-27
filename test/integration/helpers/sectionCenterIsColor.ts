@@ -1,6 +1,6 @@
 import { from, to } from '../../../src'
 import { Address } from '../../../src/components'
-import { Unit } from '../../../src/components/types/Unit'
+import { Unit } from '../../../src/components'
 import { Coordinate } from '../../../src/space'
 import { drawPassMarker } from './drawPassMarker'
 import { pixelIsColor } from './pixelIsColor'

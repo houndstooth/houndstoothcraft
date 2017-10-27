@@ -4,9 +4,9 @@ import * as executeGrid from '../../../../src/execute/executeGrid'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import Spy = jasmine.Spy
-import { SettingsFunctionObject } from '../../../../src/execute/types/SettingsFunctionObject'
+import { SettingsFunctionObject } from '../../../../src/execute'
 import * as page from '../../../../src/page'
-import { Context } from '../../../../src/page/types/Context'
+import { Context } from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { Effect } from '../../../../src/store/types/Effect'
 

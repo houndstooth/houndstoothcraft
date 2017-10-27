@@ -1,9 +1,9 @@
-import { Canvas } from '../../../src/page/types/Canvas'
-import { Context } from '../../../src/page/types/Context'
-import { Px } from '../../../src/page/types/Px'
+import { Canvas } from '../../../src/page'
+import { Context } from '../../../src/page'
+import { Px } from '../../../src/page'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
-import { NullarySideEffector } from '../../../src/utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../../../src/utilities/types'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
 const testMarkersClear: NullarySideEffector =

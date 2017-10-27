@@ -1,7 +1,7 @@
 import { to } from '../../../../src'
 import { tileCenter } from '../../../../src/components/tileCenter'
-import { Unit } from '../../../../src/components/types/Unit'
-import { Coordinate } from '../../../../src/space/types/Coordinate'
+import { Unit } from '../../../../src/components'
+import { Coordinate } from '../../../../src/space'
 
 describe('tile center', () => {
 	it('finds the center of the tile', () => {

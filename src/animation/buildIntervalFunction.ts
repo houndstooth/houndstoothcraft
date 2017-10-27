@@ -1,5 +1,5 @@
 import { state } from '../state'
-import { NullarySideEffector } from '../utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../utilities/types'
 import { windowWrapper } from '../utilities/windowWrapper'
 
 const buildIntervalFunction: (_: {

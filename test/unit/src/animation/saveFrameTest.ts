@@ -1,6 +1,6 @@
 import * as saveBlob from '../../../../src/animation/saveBlob'
 import { saveFrame } from '../../../../src/animation/saveFrame'
-import { DataBlob } from '../../../../src/page/types/DataBlob'
+import { DataBlob } from '../../../../src/page'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 

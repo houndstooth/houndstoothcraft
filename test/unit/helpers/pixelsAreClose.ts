@@ -1,5 +1,5 @@
 import { from } from '../../../src'
-import { Px } from '../../../src/page/types/Px'
+import { Px } from '../../../src/page'
 import { Pixel } from '../../../src/render'
 import { isCloseTo } from '../../helpers/isCloseTo'
 

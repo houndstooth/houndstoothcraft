@@ -1,16 +1,16 @@
 import { shape } from '../../../../src/components/shape'
 import * as solid from '../../../../src/components/solid'
 import * as texture from '../../../../src/components/texture'
-import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
-import { Unit } from '../../../../src/components/types/Unit'
+import { ShapeColorIndex } from '../../../../src/components'
+import { Unit } from '../../../../src/components'
 import Spy = jasmine.Spy
-import { Coordinate } from '../../../../src/space/types/Coordinate'
-import { Outline } from '../../../../src/space/types/Outline'
-import { OutlineOptions } from '../../../../src/space/types/OutlineOptions'
+import { Coordinate } from '../../../../src/space'
+import { Outline } from '../../../../src/space'
+import { OutlineOptions } from '../../../../src/space'
 import { state } from '../../../../src/state'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
-import { NullarySideEffector } from '../../../../src/utilities/types/NullarySideEffector'
+import { NullarySideEffector } from '../../../../src/utilities/types'
 import { noop } from '../../../helpers/noop'
 
 describe('shape', () => {

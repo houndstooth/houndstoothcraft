@@ -1,9 +1,9 @@
 import { solid } from '../../../../src/components/solid'
-import { ShapeColorIndex } from '../../../../src/components/types/ShapeColorIndex'
+import { ShapeColorIndex } from '../../../../src/components'
 import * as render from '../../../../src/render'
 import Spy = jasmine.Spy
-import { Color } from '../../../../src/render/types/Color'
-import { Outline } from '../../../../src/space/types/Outline'
+import { Color } from '../../../../src/render'
+import { Outline } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 
 describe('solid', () => {

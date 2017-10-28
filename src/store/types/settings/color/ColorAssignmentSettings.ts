@@ -3,6 +3,7 @@
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../../components'
 import { FunctionsOf } from '../../../../execute/types'
 import * as to from '../../../../utilities/to'
+import { buildSettingsPathShortcuts } from '../../../buildSettingsPathShortcuts'
 import { Overwrite } from '../../Overwrite'
 import { TypePathShortcuts } from '../../TypePathShortcuts'
 
@@ -20,7 +21,7 @@ interface ColorAssignmentSettingsStructure {
 
 // Type
 
-interface ColorAssignmentSettings {
+interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
 	assignmentMode: AssignmentMode,
 	flipGrain: boolean,
 	offsetAddress?: OffsetAddress,
@@ -57,25 +58,19 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 // Shortcuts
 
 const colorAssignmentSettings = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
-const settingsPathShortcuts: ColorAssignmentSettingsStructure = {
-	assignmentMode: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'assignmentMode' ]),
-	flipGrain: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'flipGrain' ]),
-	offsetAddress: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'offsetAddress' ]),
-	supertile: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'supertile' ]),
-	switcheroo: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'switcheroo' ]),
-	transformShapeColorIndices: to.SettingsPath([
-		'colorSettings', 'colorAssignmentSettings', 'transformShapeColorIndices',
-	]),
-	weave: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'weave' ]),
-}
+
+const settingsPathShortcuts: ColorAssignmentSettingsStructure = buildSettingsPathShortcuts({
+	basePath: colorAssignmentSettings,
+	settings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
+})
 
 // Shortcut types
 
 type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
 
 type ColorAssignmentSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
-	BooleanPathShortcuts: 'flipGrain' | 'switcheroo',
 	AssignmentModePathShortcuts: 'assignmentMode',
+	BooleanPathShortcuts: 'flipGrain' | 'switcheroo',
 	OffsetAddressPathShortcuts: 'offsetAddress',
 	SupertilePathShortcuts: 'supertile',
 	TransformShapeColorIndicesPathShortcuts: 'transformShapeColorIndices',
@@ -97,7 +92,6 @@ export {
 
 	// Shortcuts
 
-	colorAssignmentSettings,
 	settingsPathShortcuts,
 
 	// Shortcut types

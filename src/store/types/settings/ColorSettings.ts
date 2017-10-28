@@ -5,12 +5,12 @@ import { BLACK, TRANSPARENT } from '../../../constants'
 import { FunctionsOf } from '../../../execute'
 import { Color } from '../../../render'
 import * as to from '../../../utilities/to'
+import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
-import { SettingsStep } from '../SettingsStep'
+import { SettingsPath } from '../SettingsPath'
 import { TypePathShortcuts } from '../TypePathShortcuts'
 import { ColorAssignmentSettings } from './color'
 import {
-	colorAssignmentSettings,
 	ColorAssignmentSettingsFunctions,
 	ColorAssignmentSettingsPathShortcut,
 	ColorAssignmentSettingsTypePathShortcuts,
@@ -59,13 +59,13 @@ const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 
 // Shortcuts
 
-const colorSettings: SettingsStep[] = to.SettingsPath([ 'colorSettings' ])
+const colorSettings: SettingsPath = to.SettingsPath([ 'colorSettings' ])
 
 const settingsPathShortcuts: ColorSettingsStructure = {
-	backgroundColor: to.SettingsPath([ 'colorSettings', 'backgroundColor' ]),
-	colorAssignmentSettings,
-	colorSet: to.SettingsPath([ 'colorSettings', 'colorSet' ]),
-	opacity: to.SettingsPath([ 'colorSettings', 'opacity' ]),
+	...buildSettingsPathShortcuts({
+		basePath: colorSettings,
+		settings: DEFAULT_COLOR_SETTINGS,
+	}),
 	...colorAssignmentSettingsPathShortcuts,
 }
 

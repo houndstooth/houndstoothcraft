@@ -3,6 +3,7 @@
 import { Frame } from '../../../animation'
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
+import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
 import { TypePathShortcuts } from '../TypePathShortcuts'
@@ -49,12 +50,10 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 
 const animationSettings: SettingsPath = to.SettingsPath([ 'animationSettings' ])
 
-const settingsPathShortcuts: AnimationSettingsStructure = {
-	endFrame: to.SettingsPath([ 'animationSettings', 'endFrame' ]),
-	frameRate: to.SettingsPath([ 'animationSettings', 'frameRate' ]),
-	refreshCanvas: to.SettingsPath([ 'animationSettings', 'refreshCanvas' ]),
-	startFrame: to.SettingsPath([ 'animationSettings', 'startFrame' ]),
-}
+const settingsPathShortcuts: AnimationSettingsStructure = buildSettingsPathShortcuts({
+	basePath: animationSettings,
+	settings: DEFAULT_ANIMATION_SETTINGS,
+})
 
 // Shortcut types
 

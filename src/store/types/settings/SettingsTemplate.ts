@@ -2,7 +2,10 @@
 
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
+import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
+import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
+import { TypePathShortcuts } from '../TypePathShortcuts'
 
 // Structure
 
@@ -34,28 +37,34 @@ const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
 
 const templateSettings: SettingsPath = to.SettingsPath([ 'templateSettings' ])
 
-const settingsPathShortcuts: TemplateSettingsStructure = {
-	templateSetting: to.SettingsPath([ 'templateSettings', 'templateSetting' ]),
-}
+const settingsPathShortcuts: TemplateSettingsStructure = buildSettingsPathShortcuts({
+	basePath: templateSettings,
+	settings: DEFAULT_TEMPLATE_SETTINGS,
+})
 
 // Shortcut types
 
 type TemplateSettingsPathShortcut = 'templateSettings'
 
-namespace TypePathShortcuts {
-	export type BooleanPathShortcuts = '_'
-	export type ColorPathShortcuts = '_'
-	export type ColorsPathShortcuts = '_'
-	export type ColorSetPathShortcuts = '_'
-	export type ExecuteTexturePathShortcuts = '_'
-	export type FramePathShortcuts = '_'
-	export type GetTileOriginAndSizePathShortcuts = '_'
-	export type LayerPathShortcuts = '_'
-	export type NumberPathShortcuts = '_'
-	export type PxPathShortcuts = '_'
-	export type RadianPathShortcuts = '_'
-	export type UnitPathShortcuts = '_'
-}
+type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+	AssignmentModePathShortcuts: '_'
+	BooleanPathShortcuts: '_'
+	ColorPathShortcuts: '_'
+	ColorSetPathShortcuts: '_'
+	ColorsPathShortcuts: '_'
+	ExecuteTexturePathShortcuts: '_'
+	FramePathShortcuts: '_'
+	GetTileOriginAndSizePathShortcuts: '_'
+	LayerPathShortcuts: '_'
+	NumberPathShortcuts: '_'
+	OffsetAddressPathShortcuts: '_'
+	PxPathShortcuts: '_'
+	RadianPathShortcuts: '_'
+	SupertilePathShortcuts: '_'
+	TransformShapeColorIndicesPathShortcuts: '_'
+	UnitPathShortcuts: '_'
+	WeavePathShortcuts: '_',
+}>
 
 // Export
 
@@ -80,5 +89,5 @@ export {
 	// Shortcut types
 
 	TemplateSettingsPathShortcut,
-	TypePathShortcuts,
+	TemplateSettingsTypePathShortcuts,
 }

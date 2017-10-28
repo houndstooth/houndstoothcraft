@@ -1,3 +1,5 @@
+// tslint:disable:ordered-imports max-file-line-count
+
 // Settings type imports
 
 import {
@@ -32,7 +34,6 @@ import { Px } from '../../page'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 
-import { MissingSettingsPathShortcut } from './MissingSettingsPathShortcut'
 import {
 	// Settings type path shortcuts
 
@@ -128,10 +129,6 @@ interface SetSetting {
 	(settingsPathShortcut: UnitPathShortcuts, value: Unit): void
 
 	(settingsPathShortcut: WeavePathShortcuts, value: Weave): void
-
-	// Catch missing
-
-	(settingsPathShortcut: {}): MissingSettingsPathShortcut
 }
 
 export { SetSetting }

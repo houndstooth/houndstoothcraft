@@ -2,13 +2,12 @@ import { Unit } from '../../components'
 import { Radian } from '../../space'
 import { AnimationSettingsFunctions } from './settings/AnimationSettings'
 import { ColorSettingsFunctions } from './settings/ColorSettings'
+import { GridSettingsFunctions } from './settings/GridSettings'
 
 interface PatternFunctions {
 	animationSettings?: Partial<AnimationSettingsFunctions>,
 	colorSettings?: Partial<ColorSettingsFunctions>,
-	gridSettings?: {
-		gridSize?(): number,
-	},
+	gridSettings?: Partial<GridSettingsFunctions>,
 	stripeSettings?: {
 		stripePositionSettings?: {
 			stripeCountContinuumSettings?: {

@@ -1,17 +1,12 @@
 import * as to from '../utilities/to'
+import { SettingsStep } from './types/SettingsStep'
+
 import {
 	animationSettings,
 	settingsPathShortcuts as animationSettingsPathShortcuts,
 } from './types/settings/AnimationSettings'
-import {
-	colorSettings,
-	settingsPathShortcuts as colorSettingsPathShortcuts,
-} from './types/settings/ColorSettings'
-import { SettingsStep } from './types/SettingsStep'
-
-const gridSettings: SettingsStep[] = to.SettingsPath([ 'gridSettings' ])
-const gridSize: SettingsStep[] = to.SettingsPath([ 'gridSettings', 'gridSize' ])
-const includeNegativeQuadrants: SettingsStep[] = to.SettingsPath([ 'gridSettings', 'includeNegativeQuadrants' ])
+import { colorSettings, settingsPathShortcuts as colorSettingsPathShortcuts } from './types/settings/ColorSettings'
+import { gridSettings, settingsPathShortcuts as gridSettingsPathShortcuts } from './types/settings/GridSettings'
 
 const layerSettings: SettingsStep[] = to.SettingsPath([ 'layerSettings' ])
 const endLayer: SettingsStep[] = to.SettingsPath([ 'layerSettings', 'endLayer' ])
@@ -54,9 +49,7 @@ const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	executeTexture,
 	getStripePositions,
 	getTileOriginAndSize,
-	gridSettings,
-	gridSize,
-	includeNegativeQuadrants,
+	gridSettings, ...gridSettingsPathShortcuts,
 	layerSettings,
 	rotateViewAboutCanvasCenter,
 	stripeCount,

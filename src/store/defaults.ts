@@ -17,7 +17,6 @@ import * as to from '../utilities/to'
 import {
 	BasePattern,
 	Effect,
-	GridSettings,
 	Houndstooth,
 	LayerSettings,
 	PatternFunctions,
@@ -31,17 +30,16 @@ import {
 } from './types'
 import { DEFAULT_ANIMATION_SETTINGS } from './types/settings/AnimationSettings'
 import { DEFAULT_COLOR_SETTINGS } from './types/settings/ColorSettings'
+import { DEFAULT_GRID_SETTINGS } from './types/settings/GridSettings'
 
 const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
 const DEFAULT_ZOOM = 1
-const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Minor
 const DEFAULT_START_LAYER: Layer = to.Layer(0)
 const DEFAULT_END_LAYER: Layer = to.Layer(0)
-const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS = false
 const DEFAULT_DELTA_STRIPE_COUNT = 1
 const DEFAULT_INITIAL_STRIPE_COUNT = 1
 const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
@@ -66,11 +64,6 @@ const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
 const DEFAULT_MIXING_DOWN = false
 const DEFAULT_PERFORMANCE_LOGGING = false
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
-
-const DEFAULT_GRID_SETTINGS: GridSettings = {
-	gridSize: DEFAULT_GRID_SIZE,
-	includeNegativeQuadrants: DEFAULT_INCLUDE_NEGATIVE_QUADRANTS,
-}
 
 const DEFAULT_LAYER_SETTINGS: LayerSettings = {
 	endLayer: DEFAULT_END_LAYER,

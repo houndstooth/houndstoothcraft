@@ -1,3 +1,5 @@
+// tslint:disable:ordered-imports max-file-line-count
+
 // Settings type imports
 
 import {

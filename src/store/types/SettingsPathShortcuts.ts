@@ -9,54 +9,66 @@ import {
 	ColorSettingsPathShortcut,
 	ColorSettingsTypePathShortcuts as ColorSettings,
 } from './settings/ColorSettings'
+import {
+	GridSettingsPathShortcut,
+	GridSettingsTypePathShortcuts as GridSettings,
+} from './settings/GridSettings'
 
 type AssignmentModePathShortcuts =
 	| AnimationSettings['AssignmentModePathShortcuts']
 	| ColorSettings['AssignmentModePathShortcuts']
+	| GridSettings['AssignmentModePathShortcuts']
 
 type BooleanPathShortcuts =
 	| AnimationSettings['BooleanPathShortcuts']
 	| ColorSettings['BooleanPathShortcuts']
+	| GridSettings['BooleanPathShortcuts']
 	| 'centerViewOnCenterOfTileAtHomeAddress'
 	| 'collapseSameColoredShapesWithinTile'
-	| 'includeNegativeQuadrants'
 	| 'zoomOnCanvasCenter'
 
 type ColorPathShortcuts =
 	| AnimationSettings['ColorPathShortcuts']
 	| ColorSettings['ColorPathShortcuts']
+	| GridSettings['ColorPathShortcuts']
 
 type ColorsPathShortcuts =
 	| AnimationSettings['ColorsPathShortcuts']
 	| ColorSettings['ColorsPathShortcuts']
+	| GridSettings['ColorsPathShortcuts']
 
 type ColorSetPathShortcuts =
 	| AnimationSettings['ColorSetPathShortcuts']
 	| ColorSettings['ColorSetPathShortcuts']
+	| GridSettings['ColorSetPathShortcuts']
 
 type ExecuteTexturePathShortcuts =
 	| AnimationSettings['ExecuteTexturePathShortcuts']
 	| ColorSettings['ExecuteTexturePathShortcuts']
+	| GridSettings['ExecuteTexturePathShortcuts']
 	| 'executeTexture'
 
 type FramePathShortcuts =
 	| AnimationSettings['FramePathShortcuts']
 	| ColorSettings['FramePathShortcuts']
+	| GridSettings['FramePathShortcuts']
 
 type GetTileOriginAndSizePathShortcuts =
 	| AnimationSettings['GetTileOriginAndSizePathShortcuts']
 	| ColorSettings['GetTileOriginAndSizePathShortcuts']
+	| GridSettings['GetTileOriginAndSizePathShortcuts']
 	| 'getTileOriginAndSize'
 
 type LayerPathShortcuts =
 	| AnimationSettings['LayerPathShortcuts']
 	| ColorSettings['LayerPathShortcuts']
+	| GridSettings['LayerPathShortcuts']
 	| 'endLayer'
 
 type NumberPathShortcuts =
 	| AnimationSettings['NumberPathShortcuts']
 	| ColorSettings['NumberPathShortcuts']
-	| 'gridSize'
+	| GridSettings['NumberPathShortcuts']
 	| 'stripeCount'
 	| 'opacity'
 	| 'zoom'
@@ -64,35 +76,41 @@ type NumberPathShortcuts =
 type OffsetAddressPathShortcuts =
 	| AnimationSettings['OffsetAddressPathShortcuts']
 	| ColorSettings['OffsetAddressPathShortcuts']
+	| GridSettings['OffsetAddressPathShortcuts']
 
 type PxPathShortcuts =
 	| AnimationSettings['PxPathShortcuts']
 	| ColorSettings['PxPathShortcuts']
+	| GridSettings['PxPathShortcuts']
 	| 'canvasSize'
 
 type RadianPathShortcuts =
 	| AnimationSettings['RadianPathShortcuts']
 	| ColorSettings['RadianPathShortcuts']
+	| GridSettings['RadianPathShortcuts']
 	| 'rotateViewAboutCanvasCenter'
 
 type SupertilePathShortcuts =
 	| AnimationSettings['SupertilePathShortcuts']
 	| ColorSettings['SupertilePathShortcuts']
+	| GridSettings['SupertilePathShortcuts']
 
 type TransformShapeColorIndicesPathShortcuts =
 	| AnimationSettings['TransformShapeColorIndicesPathShortcuts']
 	| ColorSettings['TransformShapeColorIndicesPathShortcuts']
+	| GridSettings['TransformShapeColorIndicesPathShortcuts']
 
 type UnitPathShortcuts =
 	| AnimationSettings['UnitPathShortcuts']
 	| ColorSettings['UnitPathShortcuts']
+	| GridSettings['UnitPathShortcuts']
 	| 'tileSize'
 
 type WeavePathShortcuts =
 	| AnimationSettings['WeavePathShortcuts']
 	| ColorSettings['WeavePathShortcuts']
+	| GridSettings['WeavePathShortcuts']
 
-type GridSettingsPathShortcut = 'gridSettings'
 type LayerSettingsPathShortcut = 'layerSettings'
 type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuumSettings'
 type StripePositionSettingsPathShortcut = 'stripePositionSettings'

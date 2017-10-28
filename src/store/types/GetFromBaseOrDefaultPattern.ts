@@ -56,26 +56,7 @@ import {
 
 	// General type path shortcuts
 
-	AssignmentModePathShortcuts,
-	BaseStripeDiagonalPathShortcuts,
-	BooleanPathShortcuts,
-	ColorPathShortcuts,
-	ColorsPathShortcuts,
-	ColorSetPathShortcuts,
-	ExecuteTexturePathShortcuts,
-	FramePathShortcuts,
-	GetStripePositionsPathShortcuts,
-	GetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts,
-	NumberPathShortcuts,
-	OffsetAddressPathShortcuts,
-	PxPathShortcuts,
-	RadianPathShortcuts,
-	StripeCountModePathShortcuts,
-	SupertilePathShortcuts,
-	TransformShapeColorIndicesPathShortcuts,
-	UnitPathShortcuts,
-	WeavePathShortcuts,
+	TypePathShortcuts,
 } from './SettingsPathShortcuts'
 
 interface GetFromBaseOrDefaultPattern {
@@ -105,45 +86,45 @@ interface GetFromBaseOrDefaultPattern {
 
 	// General type path shortcuts
 
-	(settingsPathShortcut: AssignmentModePathShortcuts): AssignmentMode
+	(settingsPathShortcut: TypePathShortcuts['AssignmentModePathShortcuts']): AssignmentMode
 
-	(settingsPathShortcut: BaseStripeDiagonalPathShortcuts): BaseStripeDiagonal
+	(settingsPathShortcut: TypePathShortcuts['BaseStripeDiagonalPathShortcuts']): BaseStripeDiagonal
 
-	(settingsPathShortcut: BooleanPathShortcuts): boolean
+	(settingsPathShortcut: TypePathShortcuts['BooleanPathShortcuts']): boolean
 
-	(settingsPathShortcut: ColorPathShortcuts): Color
+	(settingsPathShortcut: TypePathShortcuts['ColorPathShortcuts']): Color
 
-	(settingsPathShortcut: ColorsPathShortcuts): Color[]
+	(settingsPathShortcut: TypePathShortcuts['ColorsPathShortcuts']): Color[]
 
-	(settingsPathShortcut: ColorSetPathShortcuts): ColorSet
+	(settingsPathShortcut: TypePathShortcuts['ColorSetPathShortcuts']): ColorSet
 
-	(settingsPathShortcut: ExecuteTexturePathShortcuts): ExecuteTexture
+	(settingsPathShortcut: TypePathShortcuts['ExecuteTexturePathShortcuts']): ExecuteTexture
 
-	(settingsPathShortcut: FramePathShortcuts): Frame
+	(settingsPathShortcut: TypePathShortcuts['FramePathShortcuts']): Frame
 
-	(settingsPathShortcut: GetStripePositionsPathShortcuts): GetStripePositions
+	(settingsPathShortcut: TypePathShortcuts['GetStripePositionsPathShortcuts']): GetStripePositions
 
-	(settingsPathShortcut: GetTileOriginAndSizePathShortcuts): GetTileOriginAndSize
+	(settingsPathShortcut: TypePathShortcuts['GetTileOriginAndSizePathShortcuts']): GetTileOriginAndSize
 
-	(settingsPathShortcut: LayerPathShortcuts): Layer
+	(settingsPathShortcut: TypePathShortcuts['LayerPathShortcuts']): Layer
 
-	(settingsPathShortcut: NumberPathShortcuts): number
+	(settingsPathShortcut: TypePathShortcuts['NumberPathShortcuts']): number
 
-	(settingsPathShortcut: OffsetAddressPathShortcuts): OffsetAddress
+	(settingsPathShortcut: TypePathShortcuts['OffsetAddressPathShortcuts']): OffsetAddress
 
-	(settingsPathShortcut: PxPathShortcuts): Px
+	(settingsPathShortcut: TypePathShortcuts['PxPathShortcuts']): Px
 
-	(settingsPathShortcut: RadianPathShortcuts): Radian
+	(settingsPathShortcut: TypePathShortcuts['RadianPathShortcuts']): Radian
 
-	(settingsPathShortcut: StripeCountModePathShortcuts): StripeCountMode
+	(settingsPathShortcut: TypePathShortcuts['StripeCountModePathShortcuts']): StripeCountMode
 
-	(settingsPathShortcut: SupertilePathShortcuts): Supertile
+	(settingsPathShortcut: TypePathShortcuts['SupertilePathShortcuts']): Supertile
 
-	(settingsPathShortcut: TransformShapeColorIndicesPathShortcuts): TransformShapeColorIndices
+	(settingsPathShortcut: TypePathShortcuts['TransformShapeColorIndicesPathShortcuts']): TransformShapeColorIndices
 
-	(settingsPathShortcut: UnitPathShortcuts): Unit
+	(settingsPathShortcut: TypePathShortcuts['UnitPathShortcuts']): Unit
 
-	(settingsPathShortcut: WeavePathShortcuts): Weave
+	(settingsPathShortcut: TypePathShortcuts['WeavePathShortcuts']): Weave
 
 	// Catch missing
 

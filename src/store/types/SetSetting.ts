@@ -55,26 +55,7 @@ import {
 
 	// General type path shortcuts
 
-	AssignmentModePathShortcuts,
-	BaseStripeDiagonalPathShortcuts,
-	BooleanPathShortcuts,
-	ColorPathShortcuts,
-	ColorsPathShortcuts,
-	ColorSetPathShortcuts,
-	ExecuteTexturePathShortcuts,
-	FramePathShortcuts,
-	GetStripePositionsPathShortcuts,
-	GetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts,
-	NumberPathShortcuts,
-	OffsetAddressPathShortcuts,
-	PxPathShortcuts,
-	RadianPathShortcuts,
-	StripeCountModePathShortcuts,
-	SupertilePathShortcuts,
-	TransformShapeColorIndicesPathShortcuts,
-	UnitPathShortcuts,
-	WeavePathShortcuts,
+	TypePathShortcuts,
 } from './SettingsPathShortcuts'
 
 interface SetSetting {
@@ -106,45 +87,45 @@ interface SetSetting {
 
 	// General type path shortcuts
 
-	(settingsPathShortcut: AssignmentModePathShortcuts, value: AssignmentMode): void
+	(settingsPathShortcut: TypePathShortcuts['AssignmentModePathShortcuts'], value: AssignmentMode): void
 
-	(settingsPathShortcut: BaseStripeDiagonalPathShortcuts, value: BaseStripeDiagonal): void
+	(settingsPathShortcut: TypePathShortcuts['BaseStripeDiagonalPathShortcuts'], value: BaseStripeDiagonal): void
 
-	(settingsPathShortcut: BooleanPathShortcuts, value: boolean): void
+	(settingsPathShortcut: TypePathShortcuts['BooleanPathShortcuts'], value: boolean): void
 
-	(settingsPathShortcut: ColorPathShortcuts, value: Color): void
+	(settingsPathShortcut: TypePathShortcuts['ColorPathShortcuts'], value: Color): void
 
-	(settingsPathShortcut: ColorSetPathShortcuts, value: ColorSet): void
+	(settingsPathShortcut: TypePathShortcuts['ColorSetPathShortcuts'], value: ColorSet): void
 
-	(settingsPathShortcut: ColorsPathShortcuts, value: Color[]): void
+	(settingsPathShortcut: TypePathShortcuts['ColorsPathShortcuts'], value: Color[]): void
 
-	(settingsPathShortcut: ExecuteTexturePathShortcuts, value: ExecuteTexture): void
+	(settingsPathShortcut: TypePathShortcuts['ExecuteTexturePathShortcuts'], value: ExecuteTexture): void
 
-	(settingsPathShortcut: FramePathShortcuts, value: Frame): void
+	(settingsPathShortcut: TypePathShortcuts['FramePathShortcuts'], value: Frame): void
 
-	(settingsPathShortcut: GetStripePositionsPathShortcuts, value: GetStripePositions): void
+	(settingsPathShortcut: TypePathShortcuts['GetStripePositionsPathShortcuts'], value: GetStripePositions): void
 
-	(settingsPathShortcut: GetTileOriginAndSizePathShortcuts, value: GetTileOriginAndSize): void
+	(settingsPathShortcut: TypePathShortcuts['GetTileOriginAndSizePathShortcuts'], value: GetTileOriginAndSize): void
 
-	(settingsPathShortcut: LayerPathShortcuts, value: Layer): void
+	(settingsPathShortcut: TypePathShortcuts['LayerPathShortcuts'], value: Layer): void
 
-	(settingsPathShortcut: NumberPathShortcuts, value: number): void
+	(settingsPathShortcut: TypePathShortcuts['NumberPathShortcuts'], value: number): void
 
-	(settingsPathShortcut: OffsetAddressPathShortcuts, value: OffsetAddress): void
+	(settingsPathShortcut: TypePathShortcuts['OffsetAddressPathShortcuts'], value: OffsetAddress): void
 
-	(settingsPathShortcut: PxPathShortcuts, value: Px): void
+	(settingsPathShortcut: TypePathShortcuts['PxPathShortcuts'], value: Px): void
 
-	(settingsPathShortcut: RadianPathShortcuts, value: Radian): void
+	(settingsPathShortcut: TypePathShortcuts['RadianPathShortcuts'], value: Radian): void
 
-	(settingsPathShortcut: StripeCountModePathShortcuts, value: StripeCountMode): void
+	(settingsPathShortcut: TypePathShortcuts['StripeCountModePathShortcuts'], value: StripeCountMode): void
 
-	(settingsPathShortcut: SupertilePathShortcuts, value: Supertile): void
+	(settingsPathShortcut: TypePathShortcuts['SupertilePathShortcuts'], value: Supertile): void
 
-	(settingsPathShortcut: TransformShapeColorIndicesPathShortcuts, value: TransformShapeColorIndices): void
+	(settingsPathShortcut: TypePathShortcuts['TransformShapeColorIndicesPathShortcuts'], value: TransformShapeColorIndices): void
 
-	(settingsPathShortcut: UnitPathShortcuts, value: Unit): void
+	(settingsPathShortcut: TypePathShortcuts['UnitPathShortcuts'], value: Unit): void
 
-	(settingsPathShortcut: WeavePathShortcuts, value: Weave): void
+	(settingsPathShortcut: TypePathShortcuts['WeavePathShortcuts'], value: Weave): void
 }
 
 export { SetSetting }

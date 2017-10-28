@@ -54,16 +54,18 @@ type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
 	ColorsPathShortcuts: '_'
 	ExecuteTexturePathShortcuts: '_'
 	FramePathShortcuts: '_'
+	GetStripePositionsPathShortcuts: '_'
 	GetTileOriginAndSizePathShortcuts: '_'
 	LayerPathShortcuts: '_'
 	NumberPathShortcuts: '_'
 	OffsetAddressPathShortcuts: '_'
 	PxPathShortcuts: '_'
 	RadianPathShortcuts: '_'
+	StripeCountModePathShortcuts: '_'
 	SupertilePathShortcuts: '_'
 	TransformShapeColorIndicesPathShortcuts: '_'
 	UnitPathShortcuts: '_'
-	WeavePathShortcuts: '_',
+	WeavePathShortcuts: '_'
 }>
 
 // Export

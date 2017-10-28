@@ -53,6 +53,11 @@ type FramePathShortcuts =
 	| ColorSettings['FramePathShortcuts']
 	| GridSettings['FramePathShortcuts']
 
+type GetStripePositionsPathShortcuts =
+	| AnimationSettings['GetStripePositionsPathShortcuts']
+	| ColorSettings['GetStripePositionsPathShortcuts']
+	| GridSettings['GetStripePositionsPathShortcuts']
+
 type GetTileOriginAndSizePathShortcuts =
 	| AnimationSettings['GetTileOriginAndSizePathShortcuts']
 	| ColorSettings['GetTileOriginAndSizePathShortcuts']
@@ -89,6 +94,11 @@ type RadianPathShortcuts =
 	| ColorSettings['RadianPathShortcuts']
 	| GridSettings['RadianPathShortcuts']
 	| 'rotateViewAboutCanvasCenter'
+
+type StripeCountModePathShortcuts =
+	| AnimationSettings['StripeCountModePathShortcuts']
+	| ColorSettings['StripeCountModePathShortcuts']
+	| GridSettings['StripeCountModePathShortcuts']
 
 type SupertilePathShortcuts =
 	| AnimationSettings['SupertilePathShortcuts']
@@ -141,12 +151,14 @@ export {
 	ColorSetPathShortcuts,
 	ExecuteTexturePathShortcuts,
 	FramePathShortcuts,
+	GetStripePositionsPathShortcuts,
 	GetTileOriginAndSizePathShortcuts,
 	LayerPathShortcuts,
 	NumberPathShortcuts,
 	OffsetAddressPathShortcuts,
 	PxPathShortcuts,
 	RadianPathShortcuts,
+	StripeCountModePathShortcuts,
 	SupertilePathShortcuts,
 	TransformShapeColorIndicesPathShortcuts,
 	UnitPathShortcuts,

@@ -22,8 +22,10 @@ import {
 	AssignmentMode,
 	ColorSet,
 	ExecuteTexture,
+	GetStripePositions,
 	GetTileOriginAndSize,
 	OffsetAddress,
+	StripeCountMode,
 	Supertile,
 	TransformShapeColorIndices,
 	Unit,
@@ -57,12 +59,14 @@ import {
 	ColorSetPathShortcuts,
 	ExecuteTexturePathShortcuts,
 	FramePathShortcuts,
+	GetStripePositionsPathShortcuts,
 	GetTileOriginAndSizePathShortcuts,
 	LayerPathShortcuts,
 	NumberPathShortcuts,
 	OffsetAddressPathShortcuts,
 	PxPathShortcuts,
 	RadianPathShortcuts,
+	StripeCountModePathShortcuts,
 	SupertilePathShortcuts,
 	TransformShapeColorIndicesPathShortcuts,
 	UnitPathShortcuts,
@@ -110,6 +114,8 @@ interface SetSetting {
 
 	(settingsPathShortcut: FramePathShortcuts, value: Frame): void
 
+	(settingsPathShortcut: GetStripePositionsPathShortcuts, value: GetStripePositions): void
+
 	(settingsPathShortcut: GetTileOriginAndSizePathShortcuts, value: GetTileOriginAndSize): void
 
 	(settingsPathShortcut: LayerPathShortcuts, value: Layer): void
@@ -121,6 +127,8 @@ interface SetSetting {
 	(settingsPathShortcut: PxPathShortcuts, value: Px): void
 
 	(settingsPathShortcut: RadianPathShortcuts, value: Radian): void
+
+	(settingsPathShortcut: StripeCountModePathShortcuts, value: StripeCountMode): void
 
 	(settingsPathShortcut: SupertilePathShortcuts, value: Supertile): void
 

@@ -16,6 +16,8 @@ interface ColorSettingsStructure {
 	colorAssignmentSettings: any,
 	colorSet: any,
 	opacity: any,
+
+	[_: string]: any
 }
 
 // Type
@@ -31,6 +33,7 @@ interface ColorSettings extends ColorSettingsStructure {
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
 	colorAssignmentSettings: colorAssignmentSettings.ColorAssignmentSettingsFunctions,
+	[_: string]: any,
 }>
 
 // Defaults

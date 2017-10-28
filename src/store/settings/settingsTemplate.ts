@@ -9,6 +9,8 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 
 interface TemplateSettingsStructure {
 	templateSetting: any,
+
+	[_: string]: any
 }
 
 // Type

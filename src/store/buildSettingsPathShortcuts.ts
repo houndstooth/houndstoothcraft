@@ -4,8 +4,8 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { SettingsPath } from './types'
 
-const buildSettingsPathShortcuts: (_: { basePath: SettingsPath, settings: any }) => any =
-	({ basePath, settings }: { basePath: SettingsPath, settings: any }): any =>
+const buildSettingsPathShortcuts: <T>(_: { basePath: SettingsPath, settings: T }) => T =
+	<T>({ basePath, settings }: { basePath: SettingsPath, settings: T }): T =>
 		Object.keys(settings).reduce(
 			(o: any, key: string): any => ({
 				...o,

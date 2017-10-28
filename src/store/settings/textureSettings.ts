@@ -10,6 +10,8 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 
 interface TextureSettingsStructure {
 	executeTexture?: any,
+
+	[_: string]: any
 }
 
 // Type

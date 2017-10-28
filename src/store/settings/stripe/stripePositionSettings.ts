@@ -14,6 +14,8 @@ interface StripePositionSettingsStructure {
 	stripeCount: any,
 	stripeCountContinuumSettings: any,
 	stripeCountMode: any,
+
+	[_: string]: any
 }
 
 // Type
@@ -29,6 +31,7 @@ interface StripePositionSettings extends StripePositionSettingsStructure {
 
 type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
 	stripeCountContinuumSettings: stripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
+	[_: string]: any,
 }>
 
 // Defaults

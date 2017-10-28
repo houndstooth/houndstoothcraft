@@ -192,6 +192,8 @@ enum _SettingsPathBrand {}
 
 type SettingsPath = _SettingsPathBrand & SettingsStep[]
 
+interface SettingsPathShortcuts { [_: string]: SettingsPath }
+
 enum _SettingsStepBrand {}
 
 type SettingsStep = _SettingsStepBrand & string;
@@ -249,6 +251,7 @@ export {
 	Houndstooth,
 	Pattern,
 	SettingsPath,
+	SettingsPathShortcuts,
 	SettingsStep,
 	State,
 	BasePattern,

@@ -12,6 +12,8 @@ interface TileSettingsStructure {
 	collapseSameColoredShapesWithinTile: any,
 	getTileOriginAndSize: any,
 	tileSize: any,
+
+	[_: string]: any
 }
 
 // Type

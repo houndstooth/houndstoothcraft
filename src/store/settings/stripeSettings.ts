@@ -12,6 +12,8 @@ import { stripePositionSettings } from './stripe'
 interface StripeSettingsStructure {
 	baseStripeDiagonal: any,
 	stripePositionSettings: any,
+
+	[_: string]: any
 }
 
 // Type
@@ -25,6 +27,7 @@ interface StripeSettings extends StripeSettingsStructure {
 
 type StripeSettingsFunctions = Overwrite<FunctionsOf<StripeSettings>, {
 	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettingsFunctions>,
+	[_: string]: any,
 }>
 
 // Defaults

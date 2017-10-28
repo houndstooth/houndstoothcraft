@@ -15,6 +15,8 @@ interface ViewSettingsStructure {
 	rotateViewAboutCanvasCenter: any,
 	zoom: any,
 	zoomOnCanvasCenter: any,
+
+	[_: string]: any
 }
 
 // Type

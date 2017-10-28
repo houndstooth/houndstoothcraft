@@ -1,9 +1,5 @@
-import { Frame } from '../../animation'
-import { ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
-import { Layer } from '../../execute'
-import { Px } from '../../page'
-import { Color } from '../../render'
-import { Radian } from '../../space'
+// Settings type imports
+
 import {
 	AnimationSettings,
 	ColorAssignmentSettings,
@@ -16,42 +12,48 @@ import {
 	TileSettings,
 	ViewSettings,
 } from './settings'
+
+// General type imports
+
+import { Frame } from '../../animation'
+import { ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
+import { Layer } from '../../execute'
+import { Px } from '../../page'
+import { Color } from '../../render'
+import { Radian } from '../../space'
+
 import {
+	// Settings type path shortcuts
+
 	AnimationSettingsPathShortcut,
-	BooleanPathShortcut,
+	BooleanPathShortcuts,
 	ColorAssignmentSettingsPathShortcut,
-	ColorPathShortcut,
+	ColorPathShortcuts,
 	ColorSettingsPathShortcut,
-	ColorsPathShortcut,
-	ExecuteTexturePathShortcut,
-	FramePathShortcut,
-	GetTileOriginAndSizePathShortcut,
+	ColorsPathShortcuts,
+	ExecuteTexturePathShortcuts,
+	FramePathShortcuts,
+	GetTileOriginAndSizePathShortcuts,
 	GridSettingsPathShortcut,
-	LayerPathShortcut,
+
+	// General type path shortcuts
+
+	LayerPathShortcuts,
 	LayerSettingsPathShortcut,
-	NumberPathShortcut,
-	PxPathShortcut,
-	RadianPathShortcut,
+	NumberPathShortcuts,
+	PxPathShortcuts,
+	RadianPathShortcuts,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsPathShortcut,
 	TextureSettingsPathShortcut,
 	TileSettingsPathShortcut,
-	UnitPathShortcut,
+	UnitPathShortcuts,
 	ViewSettingsPathShortcut,
 } from './SettingsPathShortcuts'
 
 interface SetSetting {
-	(settingsPathShortcut: GetTileOriginAndSizePathShortcut, value: GetTileOriginAndSize): void
-	(settingsPathShortcut: BooleanPathShortcut, value: boolean): void
-	(settingsPathShortcut: ColorPathShortcut, value: Color): void
-	(settingsPathShortcut: ColorsPathShortcut, value: Color[]): void
-	(settingsPathShortcut: PxPathShortcut, value: Px): void
-	(settingsPathShortcut: FramePathShortcut, value: Frame): void
-	(settingsPathShortcut: LayerPathShortcut, value: Layer): void
-	(settingsPathShortcut: NumberPathShortcut, value: number): void
-	(settingsPathShortcut: RadianPathShortcut, value: Radian): void
-	(settingsPathShortcut: ExecuteTexturePathShortcut, value: ExecuteTexture): void
-	(settingsPathShortcut: UnitPathShortcut, value: Unit): void
+	// Settings type path shortcuts
+
 	(settingsPathShortcut: AnimationSettingsPathShortcut, value: AnimationSettings): void
 	(settingsPathShortcut: ColorSettingsPathShortcut, value: ColorSettings): void
 	(settingsPathShortcut: ColorAssignmentSettingsPathShortcut, value: ColorAssignmentSettings): void
@@ -63,6 +65,20 @@ interface SetSetting {
 	(settingsPathShortcut: TileSettingsPathShortcut, value: TileSettings): void
 	(settingsPathShortcut: ViewSettingsPathShortcut, value: ViewSettings): void
 	(settingsPathShortcut: ViewSettingsPathShortcut, value: ViewSettings): void
+
+	// General type path shortcuts
+
+	(settingsPathShortcut: GetTileOriginAndSizePathShortcuts, value: GetTileOriginAndSize): void
+	(settingsPathShortcut: BooleanPathShortcuts, value: boolean): void
+	(settingsPathShortcut: ColorPathShortcuts, value: Color): void
+	(settingsPathShortcut: ColorsPathShortcuts, value: Color[]): void
+	(settingsPathShortcut: PxPathShortcuts, value: Px): void
+	(settingsPathShortcut: FramePathShortcuts, value: Frame): void
+	(settingsPathShortcut: LayerPathShortcuts, value: Layer): void
+	(settingsPathShortcut: NumberPathShortcuts, value: number): void
+	(settingsPathShortcut: RadianPathShortcuts, value: Radian): void
+	(settingsPathShortcut: ExecuteTexturePathShortcuts, value: ExecuteTexture): void
+	(settingsPathShortcut: UnitPathShortcuts, value: Unit): void
 }
 
 export { SetSetting }

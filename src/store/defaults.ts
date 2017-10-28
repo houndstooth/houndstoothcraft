@@ -21,7 +21,6 @@ import { Color } from '../render'
 import { Radian } from '../space'
 import * as to from '../utilities/to'
 import {
-	AnimationSettings,
 	BasePattern,
 	ColorAssignmentSettings,
 	ColorSettings,
@@ -38,6 +37,7 @@ import {
 	TileSettings,
 	ViewSettings,
 } from './types'
+import { DEFAULT_ANIMATION_SETTINGS } from './types/settings/AnimationSettings'
 
 const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
 const DEFAULT_ZOOM = 1
@@ -47,14 +47,10 @@ const DEFAULT_COLOR_SET: ColorSet = to.ColorSet([ BLACK, TRANSPARENT ])
 const DEFAULT_OPACITY = 1
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Minor
-const DEFAULT_FRAME_RATE = 1.005
 const DEFAULT_START_LAYER: Layer = to.Layer(0)
 const DEFAULT_END_LAYER: Layer = to.Layer(0)
 const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
-const DEFAULT_END_ANIMATION_FRAME: Frame = to.Frame(10000)
 const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS = false
-const DEFAULT_REFRESH_CANVAS = true
-const DEFAULT_START_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_DELTA_STRIPE_COUNT = 1
 const DEFAULT_INITIAL_STRIPE_COUNT = 1
 const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
@@ -86,13 +82,6 @@ const DEFAULT_SUPERTILE: Supertile = to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 
 const DEFAULT_SWITCHEROO = false
 const DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES: undefined = undefined
 const DEFAULT_WEAVE: Weave = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-
-const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
-	endFrame: DEFAULT_END_ANIMATION_FRAME,
-	frameRate: DEFAULT_FRAME_RATE,
-	refreshCanvas: DEFAULT_REFRESH_CANVAS,
-	startFrame: DEFAULT_START_ANIMATION_FRAME,
-}
 
 const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	assignmentMode: DEFAULT_ASSIGNMENT_MODE,

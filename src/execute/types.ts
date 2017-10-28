@@ -1,5 +1,7 @@
 import { SettingsStep } from '../store'
 
+type FunctionsOf<T> = { [P in keyof T]: () => T[P] }
+
 interface Layer extends Number {
 	// tslint:disable-next-line:no-any
 	_LayerBrand: any
@@ -12,6 +14,7 @@ interface SettingsFunctionObject {
 }
 
 export {
+	FunctionsOf,
 	Layer,
 	SettingsFunctionObject,
 }

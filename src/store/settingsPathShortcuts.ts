@@ -1,9 +1,9 @@
 import * as to from '../utilities/to'
+import {
+	animationSettings,
+	settingsPathShortcuts as animationSettingsPathShortcuts,
+} from './types/settings/AnimationSettings'
 import { SettingsStep } from './types/SettingsStep'
-
-const animationSettings: SettingsStep[] = to.SettingsPath([ 'animationSettings' ])
-const refreshCanvas: SettingsStep[] = to.SettingsPath([ 'animationSettings', 'refreshCanvas' ])
-const startFrame: SettingsStep[] = to.SettingsPath([ 'animationSettings', 'startFrame' ])
 
 const colorSettings: SettingsStep[] = to.SettingsPath([ 'colorSettings' ])
 const colorSet: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'colorSet' ])
@@ -48,7 +48,7 @@ const centerViewOnCenterOfTileAtHomeAddress: SettingsStep[] = to.SettingsPath([
 const zoomOnCanvasCenter: SettingsStep[] = to.SettingsPath([ 'viewSettings', 'zoomOnCanvasCenter' ])
 
 const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
-	animationSettings,
+	animationSettings, ...animationSettingsPathShortcuts,
 	backgroundColor,
 	canvasSize,
 	centerViewOnCenterOfTileAtHomeAddress,
@@ -66,9 +66,7 @@ const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	includeNegativeQuadrants,
 	layerSettings,
 	opacity,
-	refreshCanvas,
 	rotateViewAboutCanvasCenter,
-	startFrame,
 	stripeCount,
 	stripeCountContinuumSettings,
 	stripePositionSettings,

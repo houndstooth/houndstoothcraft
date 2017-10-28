@@ -1,8 +1,10 @@
 import { Unit } from '../../components'
 import { Color } from '../../render'
 import { Radian } from '../../space'
+import { AnimationSettingsFunctions } from './settings/AnimationSettings'
 
 interface PatternFunctions {
+	animationSettings?: AnimationSettingsFunctions,
 	colorSettings?: {
 		backgroundColor?(): Color,
 		colorSet?(): Color[],

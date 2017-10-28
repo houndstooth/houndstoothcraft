@@ -45,9 +45,9 @@ const deepClone: <T>(objectToDeepClone: T) => T =
 	}
 
 const setAllPropertiesOfObjectOnAnother: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
-	<T>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
+	<T extends { [_: string]: any }>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
 		Object.entries(objectWithProperties).forEach(([ key, value ]: [ string, any ]) => {
-			(objectToChange as any)[ key ] = deepCloneMaybeNotObject(value)
+			objectToChange[ key ] = deepCloneMaybeNotObject(value)
 		})
 	}
 
@@ -70,8 +70,8 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T =
 const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'
 
 const changeObjectIntoCopy: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
-	<T>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
-		Object.keys(objectToChange).forEach(key => delete (objectToChange as any)[ key ])
+	<T extends { [_: string]: any }>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
+		Object.keys(objectToChange).forEach(key => delete objectToChange[ key ])
 		setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
 	}
 

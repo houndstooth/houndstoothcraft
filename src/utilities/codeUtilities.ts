@@ -33,51 +33,53 @@ const shallowEqual: (a: any, b: any) => boolean = (a, b) => {
 	return sameKeyCount && Object.entries(a).every(([ key, value ]: [ string, any ]): boolean => value === b[ key ])
 }
 
-const deepClone: (objectToDeepClone: any) => any = objectToDeepClone => {
-	const clonedObject = {}
-	setAllPropertiesOfObjectOnAnother({
-		objectToChange: clonedObject,
-		objectWithProperties: objectToDeepClone,
-	})
+const deepClone: <T>(objectToDeepClone: T) => T =
+	<T>(objectToDeepClone: T): T => {
+		const clonedObject = <T>{}
+		setAllPropertiesOfObjectOnAnother({
+			objectToChange: clonedObject,
+			objectWithProperties: objectToDeepClone,
+		})
 
-	return clonedObject
-}
-
-const setAllPropertiesOfObjectOnAnother: (_: {
-	objectToChange: any, objectWithProperties: any,
-}) => void = ({ objectToChange, objectWithProperties }) => {
-	Object.entries(objectWithProperties).forEach(([ key, value ]) => {
-		objectToChange[ key ] = deepCloneMaybeNotObject(value)
-	})
-}
-
-const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T = maybeObjectToDeepClone => {
-	let clonedMaybeObject: any
-	if (maybeObjectToDeepClone instanceof Array) {
-		clonedMaybeObject = maybeObjectToDeepClone.slice()
-	}
-	else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
-		clonedMaybeObject = deepClone(maybeObjectToDeepClone)
-	}
-	else {
-		clonedMaybeObject = maybeObjectToDeepClone
+		return clonedObject
 	}
 
-	return clonedMaybeObject
-}
+const setAllPropertiesOfObjectOnAnother: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
+	<T>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
+		Object.entries(objectWithProperties).forEach(([ key, value ]: [ string, any ]) => {
+			(objectToChange as any)[ key ] = deepCloneMaybeNotObject(value)
+		})
+	}
+
+const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T =
+	<T>(maybeObjectToDeepClone: T): T => {
+		let clonedMaybeObject: T
+		if (maybeObjectToDeepClone instanceof Array) {
+			clonedMaybeObject = maybeObjectToDeepClone.slice() as any
+		}
+		else if (maybeObjectToDeepClone && typeof maybeObjectToDeepClone === 'object') {
+			clonedMaybeObject = deepClone(maybeObjectToDeepClone)
+		}
+		else {
+			clonedMaybeObject = maybeObjectToDeepClone
+		}
+
+		return clonedMaybeObject as T
+	}
 
 const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'
 
-const changeObjectIntoCopy: (_: {
-	objectToChange: any, objectWithProperties: any,
-}) => void = ({ objectToChange, objectWithProperties }) => {
-	Object.keys(objectToChange).forEach(key => delete objectToChange[ key ])
-	setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
-}
+const changeObjectIntoCopy: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
+	<T>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
+		Object.keys(objectToChange).forEach(key => delete (objectToChange as any)[ key ])
+		setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
+	}
 
-const reversed: <T>(array: T[]) => T[] = array => array.slice().reverse()
+const reversed: <T>(array: T[]) => T[] =
+	<T>(array: T[]): T[] => array.slice().reverse()
 
-const isEmpty: (object: object) => boolean = object => Object.keys(object).length === 0 && object.constructor === Object
+const isEmpty: (object: object) => boolean =
+	(object: object): boolean => Object.keys(object).length === 0 && object.constructor === Object
 
 export {
 	iterator,

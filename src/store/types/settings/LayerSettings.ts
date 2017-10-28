@@ -1,8 +1,82 @@
-import { Layer } from '../../../execute'
+// tslint:disable:no-magic-numbers max-file-line-count no-any
 
-interface LayerSettings {
+import { FunctionsOf } from '../../../execute'
+import * as to from '../../../utilities/to'
+import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
+import { Overwrite } from '../Overwrite'
+import { SettingsPath } from '../SettingsPath'
+import { TypePathShortcuts } from '../TypePathShortcuts'
+import { Layer } from '../../../execute/types'
+
+// Structure
+
+interface LayerSettingsStructure {
+	endLayer: any,
+	startLayer: any,
+
+	[_: string]: any
+}
+
+// Type
+
+interface LayerSettings extends LayerSettingsStructure {
 	endLayer: Layer,
 	startLayer: Layer,
 }
 
-export { LayerSettings }
+// Functions of
+
+type LayerSettingsFunctions = FunctionsOf<LayerSettings>
+
+// Defaults
+
+const DEFAULT_START_LAYER: Layer = to.Layer(0)
+const DEFAULT_END_LAYER: Layer = to.Layer(0)
+
+const DEFAULT_LAYER_SETTINGS: LayerSettings = {
+	endLayer: DEFAULT_END_LAYER,
+	startLayer: DEFAULT_START_LAYER,
+}
+
+// Shortcuts
+
+const layerSettings: SettingsPath = to.SettingsPath([ 'layerSettings' ])
+
+const settingsPathShortcuts: LayerSettingsStructure = buildSettingsPathShortcuts({
+	basePath: layerSettings,
+	settings: DEFAULT_LAYER_SETTINGS,
+})
+
+// Shortcut types
+
+type LayerSettingsPathShortcut = 'layerSettings'
+
+type LayerSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+	LayerPathShortcuts: 'startLayer' | 'endLayer'
+}>
+
+// Export
+
+export {
+	// Type
+
+	LayerSettings,
+
+	// Functions of
+
+	LayerSettingsFunctions,
+
+	// Defaults
+
+	DEFAULT_LAYER_SETTINGS,
+
+	// Shortcuts
+
+	layerSettings,
+	settingsPathShortcuts,
+
+	// Shortcut types
+
+	LayerSettingsPathShortcut,
+	LayerSettingsTypePathShortcuts,
+}

@@ -1,15 +1,12 @@
+// tslint:disable:max-line-length
+
 import * as to from '../utilities/to'
 import { SettingsStep } from './types/SettingsStep'
 
-import {
-	animationSettings,
-	settingsPathShortcuts as animationSettingsPathShortcuts,
-} from './types/settings/AnimationSettings'
+import { animationSettings, settingsPathShortcuts as animationSettingsPathShortcuts } from './types/settings/AnimationSettings'
 import { colorSettings, settingsPathShortcuts as colorSettingsPathShortcuts } from './types/settings/ColorSettings'
 import { gridSettings, settingsPathShortcuts as gridSettingsPathShortcuts } from './types/settings/GridSettings'
-
-const layerSettings: SettingsStep[] = to.SettingsPath([ 'layerSettings' ])
-const endLayer: SettingsStep[] = to.SettingsPath([ 'layerSettings', 'endLayer' ])
+import { layerSettings, settingsPathShortcuts as layerSettingsPathShortcuts } from './types/settings/LayerSettings'
 
 const stripePositionSettings: SettingsStep[] = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
 const getStripePositions: SettingsStep[] = to.SettingsPath([
@@ -45,12 +42,11 @@ const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	canvasSize,
 	centerViewOnCenterOfTileAtHomeAddress,
 	collapseSameColoredShapesWithinTile,
-	endLayer,
 	executeTexture,
 	getStripePositions,
 	getTileOriginAndSize,
 	gridSettings, ...gridSettingsPathShortcuts,
-	layerSettings,
+	layerSettings, ...layerSettingsPathShortcuts,
 	rotateViewAboutCanvasCenter,
 	stripeCount,
 	stripeCountContinuumSettings,

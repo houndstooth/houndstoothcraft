@@ -3,11 +3,13 @@ import { Radian } from '../../space'
 import { AnimationSettingsFunctions } from './settings/AnimationSettings'
 import { ColorSettingsFunctions } from './settings/ColorSettings'
 import { GridSettingsFunctions } from './settings/GridSettings'
+import { LayerSettingsFunctions } from './settings/LayerSettings'
 
 interface PatternFunctions {
 	animationSettings?: Partial<AnimationSettingsFunctions>,
 	colorSettings?: Partial<ColorSettingsFunctions>,
 	gridSettings?: Partial<GridSettingsFunctions>,
+	layerSettings?: Partial<LayerSettingsFunctions>,
 	stripeSettings?: {
 		stripePositionSettings?: {
 			stripeCountContinuumSettings?: {

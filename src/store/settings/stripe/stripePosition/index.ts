@@ -1,4 +1,4 @@
-import { StripeCountContinuumSettings } from './StripeCountContinuumSettings'
+import * as StripeCountContinuumSettings from './StripeCountContinuumSettings'
 
 export {
 	StripeCountContinuumSettings,

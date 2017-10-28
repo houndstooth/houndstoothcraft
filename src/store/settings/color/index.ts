@@ -1,4 +1,4 @@
-import { ColorAssignmentSettings } from './ColorAssignmentSettings'
+import * as ColorAssignmentSettings from './ColorAssignmentSettings'
 
 export {
 	ColorAssignmentSettings,

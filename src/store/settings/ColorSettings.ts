@@ -8,13 +8,6 @@ import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 import { ColorAssignmentSettings } from './color'
-import {
-	ColorAssignmentSettingsFunctions,
-	ColorAssignmentSettingsPathShortcut,
-	ColorAssignmentSettingsTypePathShortcuts,
-	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
-	colorAssignmentSettingsPathShortcuts,
-} from './color/ColorAssignmentSettings'
 
 // Structure
 
@@ -29,7 +22,7 @@ interface ColorSettingsStructure {
 
 interface ColorSettings extends ColorSettingsStructure {
 	backgroundColor: Color,
-	colorAssignmentSettings: Partial<ColorAssignmentSettings>,
+	colorAssignmentSettings: Partial<ColorAssignmentSettings.ColorAssignmentSettings>,
 	colorSet: ColorSet,
 	opacity: number,
 }
@@ -37,7 +30,7 @@ interface ColorSettings extends ColorSettingsStructure {
 // Functions of
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
-	colorAssignmentSettings: ColorAssignmentSettingsFunctions,
+	colorAssignmentSettings: ColorAssignmentSettings.ColorAssignmentSettingsFunctions,
 }>
 
 // Defaults
@@ -48,7 +41,7 @@ const DEFAULT_OPACITY = 1
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,
-	colorAssignmentSettings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
+	colorAssignmentSettings: ColorAssignmentSettings.DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 	colorSet: DEFAULT_COLOR_SET,
 	opacity: DEFAULT_OPACITY,
 }
@@ -62,7 +55,7 @@ const colorSettingsPathShortcuts: ColorSettingsStructure = {
 		basePath: colorSettings,
 		settings: DEFAULT_COLOR_SETTINGS,
 	}),
-	...colorAssignmentSettingsPathShortcuts,
+	...ColorAssignmentSettings.colorAssignmentSettingsPathShortcuts,
 }
 
 // Shortcut types
@@ -73,7 +66,7 @@ type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	ColorPathShortcuts: 'backgroundColor'
 	ColorSetPathShortcuts: 'colorSet'
 	NumberPathShortcuts: 'opacity',
-}> | ColorAssignmentSettingsTypePathShortcuts
+}> | ColorAssignmentSettings.ColorAssignmentSettingsTypePathShortcuts
 
 // Export
 
@@ -99,5 +92,4 @@ export {
 
 	ColorSettingsPathShortcut,
 	ColorSettingsTypePathShortcuts,
-	ColorAssignmentSettingsPathShortcut,
 }

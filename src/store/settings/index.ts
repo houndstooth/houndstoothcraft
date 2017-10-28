@@ -1,13 +1,13 @@
-import { AnimationSettings } from './AnimationSettings'
+import * as AnimationSettings from './AnimationSettings'
 import { ColorAssignmentSettings } from './color'
-import { ColorSettings } from './ColorSettings'
-import { GridSettings } from './GridSettings'
-import { LayerSettings } from './LayerSettings'
+import * as ColorSettings from './ColorSettings'
+import * as GridSettings from './GridSettings'
+import * as LayerSettings from './LayerSettings'
 import { StripeCountContinuumSettings, StripePositionSettings } from './stripe'
-import { StripeSettings } from './StripeSettings'
-import { TextureSettings } from './TextureSettings'
-import { TileSettings } from './TileSettings'
-import { ViewSettings } from './ViewSettings'
+import * as StripeSettings from './StripeSettings'
+import * as TextureSettings from './TextureSettings'
+import * as TileSettings from './TileSettings'
+import * as ViewSettings from './ViewSettings'
 
 export {
 	AnimationSettings,

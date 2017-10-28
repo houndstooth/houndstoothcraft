@@ -1,19 +1,12 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
 import { GetStripePositions, StripeCountMode } from '../../../components'
-import { standardStripePositions } from '../../../components/standardStripePositions'
+import { standardStripePositions } from '../../../components'
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../types'
 import { StripeCountContinuumSettings } from './stripePosition'
-import {
-	DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
-	stripeCountContinuumSettingsPathShortcuts,
-	StripeCountContinuumSettingsFunctions,
-	StripeCountContinuumSettingsPathShortcut,
-	StripeCountContinuumSettingsTypePathShortcuts,
-} from './stripePosition/StripeCountContinuumSettings'
 
 // Structure
 
@@ -29,14 +22,14 @@ interface StripePositionSettingsStructure {
 interface StripePositionSettings extends StripePositionSettingsStructure {
 	getStripePositions: GetStripePositions,
 	stripeCount: number,
-	stripeCountContinuumSettings: Partial<StripeCountContinuumSettings>,
+	stripeCountContinuumSettings: Partial<StripeCountContinuumSettings.StripeCountContinuumSettings>,
 	stripeCountMode: StripeCountMode,
 }
 
 // Functions of
 
 type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
-	stripeCountContinuumSettings: StripeCountContinuumSettingsFunctions,
+	stripeCountContinuumSettings: StripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
 }>
 
 // Defaults
@@ -48,7 +41,7 @@ const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
 const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 	getStripePositions: DEFAULT_GET_STRIPE_POSITIONS,
 	stripeCount: DEFAULT_STRIPE_COUNT,
-	stripeCountContinuumSettings: DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
+	stripeCountContinuumSettings: StripeCountContinuumSettings.DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
 }
 
@@ -61,7 +54,7 @@ const stripePositionSettingsPathShortcuts: StripePositionSettingsStructure = {
 		basePath: stripePositionSettings,
 		settings: DEFAULT_STRIPE_POSITION_SETTINGS,
 	}),
-	...stripeCountContinuumSettingsPathShortcuts,
+	...StripeCountContinuumSettings.stripeCountContinuumSettingsPathShortcuts,
 }
 
 // Shortcut types
@@ -72,7 +65,7 @@ type StripePositionSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, 
 	GetStripePositionsPathShortcuts: 'getStripePositions'
 	NumberPathShortcuts: 'stripeCount'
 	StripeCountModePathShortcuts: 'stripeCountMode',
-}> | StripeCountContinuumSettingsTypePathShortcuts
+}> | StripeCountContinuumSettings.StripeCountContinuumSettingsTypePathShortcuts
 
 // Export
 
@@ -98,5 +91,4 @@ export {
 
 	StripePositionSettingsPathShortcut,
 	StripePositionSettingsTypePathShortcuts,
-	StripeCountContinuumSettingsPathShortcut,
 }

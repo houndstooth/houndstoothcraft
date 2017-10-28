@@ -5,7 +5,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 
 // Structure
 
@@ -50,7 +50,7 @@ const settingsPathShortcuts: GridSettingsStructure = buildSettingsPathShortcuts(
 
 type GridSettingsPathShortcut = 'gridSettings'
 
-type GridSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type GridSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BooleanPathShortcuts: 'includeNegativeQuadrants'
 	NumberPathShortcuts: 'gridSize',
 }>

@@ -6,7 +6,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 
 // Structure
 
@@ -51,7 +51,7 @@ const settingsPathShortcuts: LayerSettingsStructure = buildSettingsPathShortcuts
 
 type LayerSettingsPathShortcut = 'layerSettings'
 
-type LayerSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type LayerSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	LayerPathShortcuts: 'startLayer' | 'endLayer',
 }>
 

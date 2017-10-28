@@ -6,7 +6,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 
 // Structure
 
@@ -59,7 +59,7 @@ const settingsPathShortcuts: AnimationSettingsStructure = buildSettingsPathShort
 
 type AnimationSettingsPathShortcut = 'animationSettings'
 
-type AnimationSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type AnimationSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BooleanPathShortcuts: 'refreshCanvas'
 	FramePathShortcuts: 'startFrame' | 'endFrame'
 	NumberPathShortcuts: 'frameRate',

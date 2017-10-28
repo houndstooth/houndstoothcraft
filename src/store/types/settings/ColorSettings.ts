@@ -8,7 +8,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 import { ColorAssignmentSettings } from './color'
 import {
 	ColorAssignmentSettingsFunctions,
@@ -71,7 +71,7 @@ const settingsPathShortcuts: ColorSettingsStructure = {
 
 type ColorSettingsPathShortcut = 'colorSettings'
 
-type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	ColorPathShortcuts: 'backgroundColor'
 	ColorSetPathShortcuts: 'colorSet'
 	NumberPathShortcuts: 'opacity',

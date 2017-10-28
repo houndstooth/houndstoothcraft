@@ -5,7 +5,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 import { Px } from '../../../page'
 import { Radian } from '../../../space'
 
@@ -62,7 +62,7 @@ const settingsPathShortcuts: ViewSettingsStructure = buildSettingsPathShortcuts(
 
 type ViewSettingsPathShortcut = 'viewSettings'
 
-type ViewSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type ViewSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BooleanPathShortcuts: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter'
 	NumberPathShortcuts: 'zoom'
 	PxPathShortcuts: 'canvasSize'

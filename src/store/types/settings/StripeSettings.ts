@@ -6,7 +6,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 import { StripePositionSettings } from './stripe'
 import {
 	DEFAULT_STRIPE_POSITION_SETTINGS,
@@ -62,7 +62,7 @@ const settingsPathShortcuts: StripeSettingsStructure = {
 
 type StripeSettingsPathShortcut = 'stripeSettings'
 
-type StripeSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type StripeSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BaseStripeDiagonalPathShortcuts: 'baseStripeDiagonal',
 }> | StripePositionSettingsTypePathShortcuts
 

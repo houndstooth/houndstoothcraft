@@ -1,24 +1,20 @@
-interface TypePathShortcuts {
-	AssignmentModePathShortcuts: '_'
-	BaseStripeDiagonalPathShortcuts: '_'
-	BooleanPathShortcuts: '_'
-	ColorPathShortcuts: '_'
-	ColorSetPathShortcuts: '_'
-	ColorsPathShortcuts: '_'
-	ExecuteTexturePathShortcuts: '_'
-	FramePathShortcuts: '_'
-	GetStripePositionsPathShortcuts: '_'
-	GetTileOriginAndSizePathShortcuts: '_'
-	LayerPathShortcuts: '_'
-	NumberPathShortcuts: '_'
-	OffsetAddressPathShortcuts: '_'
-	PxPathShortcuts: '_'
-	RadianPathShortcuts: '_'
-	StripeCountModePathShortcuts: '_'
-	SupertilePathShortcuts: '_'
-	TransformShapeColorIndicesPathShortcuts: '_'
-	UnitPathShortcuts: '_'
-	WeavePathShortcuts: '_'
-}
+import { AnimationSettingsTypePathShortcuts } from './settings/AnimationSettings'
+import { ColorSettingsTypePathShortcuts } from './settings/ColorSettings'
+import { GridSettingsTypePathShortcuts } from './settings/GridSettings'
+import { LayerSettingsTypePathShortcuts } from './settings/LayerSettings'
+import { StripeSettingsTypePathShortcuts } from './settings/StripeSettings'
+import { TextureSettingsTypePathShortcuts } from './settings/TextureSettings'
+import { TileSettingsTypePathShortcuts } from './settings/TileSettings'
+import { ViewSettingsTypePathShortcuts } from './settings/ViewSettings'
+
+type TypePathShortcuts =
+	| AnimationSettingsTypePathShortcuts
+	| ColorSettingsTypePathShortcuts
+	| GridSettingsTypePathShortcuts
+	| LayerSettingsTypePathShortcuts
+	| StripeSettingsTypePathShortcuts
+	| TextureSettingsTypePathShortcuts
+	| TileSettingsTypePathShortcuts
+	| ViewSettingsTypePathShortcuts
 
 export { TypePathShortcuts }

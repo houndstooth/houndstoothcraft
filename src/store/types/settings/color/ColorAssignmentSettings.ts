@@ -5,7 +5,7 @@ import { FunctionsOf } from '../../../../execute/types'
 import * as to from '../../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../../buildSettingsPathShortcuts'
 import { Overwrite } from '../../Overwrite'
-import { TypePathShortcuts } from '../../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../../TypePathShortcutsBase'
 
 // Structure
 
@@ -68,7 +68,7 @@ const settingsPathShortcuts: ColorAssignmentSettingsStructure = buildSettingsPat
 
 type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
 
-type ColorAssignmentSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type ColorAssignmentSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	AssignmentModePathShortcuts: 'assignmentMode',
 	BooleanPathShortcuts: 'flipGrain' | 'switcheroo',
 	OffsetAddressPathShortcuts: 'offsetAddress',

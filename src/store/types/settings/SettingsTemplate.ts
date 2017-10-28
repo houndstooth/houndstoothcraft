@@ -5,7 +5,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 
 // Structure
 
@@ -44,7 +44,7 @@ const settingsPathShortcuts: TemplateSettingsStructure = buildSettingsPathShortc
 
 type TemplateSettingsPathShortcut = 'templateSettings'
 
-type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	AssignmentModePathShortcuts: '_'
 	BaseStripeDiagonalPathShortcuts: '_'
 	BooleanPathShortcuts: '_'

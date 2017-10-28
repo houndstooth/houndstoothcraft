@@ -5,7 +5,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 import { ExecuteTexture } from '../../../components'
 
 // Structure
@@ -45,7 +45,7 @@ const settingsPathShortcuts: TextureSettingsStructure = buildSettingsPathShortcu
 
 type TextureSettingsPathShortcut = 'textureSettings'
 
-type TextureSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type TextureSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	ExecuteTexturePathShortcuts: 'executeTexture'
 }>
 

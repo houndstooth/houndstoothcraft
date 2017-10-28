@@ -5,7 +5,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcuts } from '../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../../components'
 
 // Structure
@@ -53,7 +53,7 @@ const settingsPathShortcuts: TileSettingsStructure = buildSettingsPathShortcuts(
 
 type TileSettingsPathShortcut = 'tileSettings'
 
-type TileSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type TileSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BooleanPathShortcuts: 'collapseSameColoredShapesWithinTile'
 	GetTileOriginAndSizePathShortcuts: 'getTileOriginAndSize'
 	UnitPathShortcuts: 'tileSize'

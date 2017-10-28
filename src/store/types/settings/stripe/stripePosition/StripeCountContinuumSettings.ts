@@ -5,7 +5,7 @@ import * as to from '../../../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../../../buildSettingsPathShortcuts'
 import { Overwrite } from '../../../Overwrite'
 import { SettingsPath } from '../../../SettingsPath'
-import { TypePathShortcuts } from '../../../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../../../TypePathShortcutsBase'
 
 // Structure
 
@@ -52,7 +52,7 @@ const settingsPathShortcuts: StripeCountContinuumSettingsStructure = buildSettin
 
 type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuumSettings'
 
-type StripeCountContinuumSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type StripeCountContinuumSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	NumberPathShortcuts: 'deltaStripeCount' | 'initialStripeCount',
 }>
 

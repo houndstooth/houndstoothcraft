@@ -7,7 +7,7 @@ import * as to from '../../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../../buildSettingsPathShortcuts'
 import { Overwrite } from '../../Overwrite'
 import { SettingsPath } from '../../SettingsPath'
-import { TypePathShortcuts } from '../../TypePathShortcuts'
+import { TypePathShortcutsBase } from '../../TypePathShortcutsBase'
 import { StripeCountContinuumSettings } from './stripePosition'
 import {
 	DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
@@ -70,7 +70,7 @@ const settingsPathShortcuts: StripePositionSettingsStructure = {
 
 type StripePositionSettingsPathShortcut = 'stripePositionSettings'
 
-type StripePositionSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+type StripePositionSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	GetStripePositionsPathShortcuts: 'getStripePositions'
 	NumberPathShortcuts: 'stripeCount'
 	StripeCountModePathShortcuts: 'stripeCountMode',

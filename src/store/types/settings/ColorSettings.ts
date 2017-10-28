@@ -41,7 +41,7 @@ interface ColorSettings {
 // Functions of
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
-	colorAssignmentSettings: Partial<ColorAssignmentSettingsFunctions>
+	colorAssignmentSettings: Partial<ColorAssignmentSettingsFunctions>,
 }>
 
 // Defaults
@@ -77,7 +77,7 @@ type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
 	ColorPathShortcuts: 'backgroundColor'
 	ColorSetPathShortcuts: 'colorSet'
 	NumberPathShortcuts: 'opacity',
-}>
+}> | ColorAssignmentSettingsTypePathShortcuts
 
 // Export
 
@@ -104,5 +104,4 @@ export {
 	ColorSettingsPathShortcut,
 	ColorSettingsTypePathShortcuts,
 	ColorAssignmentSettingsPathShortcut,
-	ColorAssignmentSettingsTypePathShortcuts,
 }

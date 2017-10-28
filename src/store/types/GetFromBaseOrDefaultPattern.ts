@@ -22,6 +22,7 @@ import { Px } from '../../page'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 
+import { MissingSettingsPathShortcut } from './MissingSettingsPathShortcut'
 import {
 	AnimationSettingsPathShortcut,
 	BooleanPathShortcuts,
@@ -75,6 +76,8 @@ interface GetFromBaseOrDefaultPattern {
 	(settingsPathShortcut: PxPathShortcuts): Px
 	(settingsPathShortcut: RadianPathShortcuts): Radian
 	(settingsPathShortcut: UnitPathShortcuts): Unit
+
+	(settingsPathShortcut: {}): MissingSettingsPathShortcut
 }
 
 export { GetFromBaseOrDefaultPattern }

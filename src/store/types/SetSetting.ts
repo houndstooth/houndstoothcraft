@@ -22,6 +22,7 @@ import { Px } from '../../page'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 
+import { MissingSettingsPathShortcut } from './MissingSettingsPathShortcut'
 import {
 	// Settings type path shortcuts
 
@@ -79,6 +80,8 @@ interface SetSetting {
 	(settingsPathShortcut: RadianPathShortcuts, value: Radian): void
 	(settingsPathShortcut: ExecuteTexturePathShortcuts, value: ExecuteTexture): void
 	(settingsPathShortcut: UnitPathShortcuts, value: Unit): void
+
+	(settingsPathShortcut: {}): MissingSettingsPathShortcut
 }
 
 export { SetSetting }

@@ -41,7 +41,7 @@ const DEFAULT_GRID_SETTINGS: GridSettings = {
 
 const gridSettings: SettingsPath = to.SettingsPath([ 'gridSettings' ])
 
-const settingsPathShortcuts: GridSettingsStructure = buildSettingsPathShortcuts({
+const gridSettingsPathShortcuts: GridSettingsStructure = buildSettingsPathShortcuts({
 	basePath: gridSettings,
 	settings: DEFAULT_GRID_SETTINGS,
 })
@@ -73,7 +73,7 @@ export {
 	// Shortcuts
 
 	gridSettings,
-	settingsPathShortcuts,
+	gridSettingsPathShortcuts,
 
 	// Shortcut types
 

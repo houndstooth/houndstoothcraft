@@ -59,7 +59,7 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 
 const colorAssignmentSettings = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 
-const settingsPathShortcuts: ColorAssignmentSettingsStructure = buildSettingsPathShortcuts({
+const colorAssignmentSettingsPathShortcuts: ColorAssignmentSettingsStructure = buildSettingsPathShortcuts({
 	basePath: colorAssignmentSettings,
 	settings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 })
@@ -92,7 +92,7 @@ export {
 
 	// Shortcuts
 
-	settingsPathShortcuts,
+	colorAssignmentSettingsPathShortcuts,
 
 	// Shortcut types
 

@@ -53,7 +53,7 @@ const DEFAULT_VIEW_SETTINGS: ViewSettings = {
 
 const viewSettings: SettingsPath = to.SettingsPath([ 'viewSettings' ])
 
-const settingsPathShortcuts: ViewSettingsStructure = buildSettingsPathShortcuts({
+const viewSettingsPathShortcuts: ViewSettingsStructure = buildSettingsPathShortcuts({
 	basePath: viewSettings,
 	settings: DEFAULT_VIEW_SETTINGS,
 })
@@ -88,7 +88,7 @@ export {
 	// Shortcuts
 
 	viewSettings,
-	settingsPathShortcuts,
+	viewSettingsPathShortcuts,
 
 	// Shortcut types
 

@@ -36,7 +36,7 @@ const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
 
 const textureSettings: SettingsPath = to.SettingsPath([ 'textureSettings' ])
 
-const settingsPathShortcuts: TextureSettingsStructure = buildSettingsPathShortcuts({
+const textureSettingsPathShortcuts: TextureSettingsStructure = buildSettingsPathShortcuts({
 	basePath: textureSettings,
 	settings: DEFAULT_TEXTURE_SETTINGS,
 })
@@ -67,7 +67,7 @@ export {
 	// Shortcuts
 
 	textureSettings,
-	settingsPathShortcuts,
+	textureSettingsPathShortcuts,
 
 	// Shortcut types
 

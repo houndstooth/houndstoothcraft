@@ -50,7 +50,7 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 
 const animationSettings: SettingsPath = to.SettingsPath([ 'animationSettings' ])
 
-const settingsPathShortcuts: AnimationSettingsStructure = buildSettingsPathShortcuts({
+const animationSettingsPathShortcuts: AnimationSettingsStructure = buildSettingsPathShortcuts({
 	basePath: animationSettings,
 	settings: DEFAULT_ANIMATION_SETTINGS,
 })
@@ -83,7 +83,7 @@ export {
 	// Shortcuts
 
 	animationSettings,
-	settingsPathShortcuts,
+	animationSettingsPathShortcuts,
 
 	// Shortcut types
 

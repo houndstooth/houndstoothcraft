@@ -44,7 +44,7 @@ const DEFAULT_TILE_SETTINGS: TileSettings = {
 
 const tileSettings: SettingsPath = to.SettingsPath([ 'tileSettings' ])
 
-const settingsPathShortcuts: TileSettingsStructure = buildSettingsPathShortcuts({
+const tileSettingsPathShortcuts: TileSettingsStructure = buildSettingsPathShortcuts({
 	basePath: tileSettings,
 	settings: DEFAULT_TILE_SETTINGS,
 })
@@ -77,7 +77,7 @@ export {
 	// Shortcuts
 
 	tileSettings,
-	settingsPathShortcuts,
+	tileSettingsPathShortcuts,
 
 	// Shortcut types
 

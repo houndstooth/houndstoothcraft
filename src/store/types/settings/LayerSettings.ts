@@ -42,7 +42,7 @@ const DEFAULT_LAYER_SETTINGS: LayerSettings = {
 
 const layerSettings: SettingsPath = to.SettingsPath([ 'layerSettings' ])
 
-const settingsPathShortcuts: LayerSettingsStructure = buildSettingsPathShortcuts({
+const layerSettingsPathShortcuts: LayerSettingsStructure = buildSettingsPathShortcuts({
 	basePath: layerSettings,
 	settings: DEFAULT_LAYER_SETTINGS,
 })
@@ -73,7 +73,7 @@ export {
 	// Shortcuts
 
 	layerSettings,
-	settingsPathShortcuts,
+	layerSettingsPathShortcuts,
 
 	// Shortcut types
 

@@ -15,7 +15,7 @@ import {
 	ColorAssignmentSettingsPathShortcut,
 	ColorAssignmentSettingsTypePathShortcuts,
 	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
-	settingsPathShortcuts as colorAssignmentSettingsPathShortcuts,
+	colorAssignmentSettingsPathShortcuts,
 } from './color/ColorAssignmentSettings'
 
 // Structure
@@ -59,7 +59,7 @@ const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 
 const colorSettings: SettingsPath = to.SettingsPath([ 'colorSettings' ])
 
-const settingsPathShortcuts: ColorSettingsStructure = {
+const colorSettingsPathShortcuts: ColorSettingsStructure = {
 	...buildSettingsPathShortcuts({
 		basePath: colorSettings,
 		settings: DEFAULT_COLOR_SETTINGS,
@@ -95,7 +95,7 @@ export {
 	// Shortcuts
 
 	colorSettings,
-	settingsPathShortcuts,
+	colorSettingsPathShortcuts,
 
 	// Shortcut types
 

@@ -43,7 +43,7 @@ const stripeCountContinuumSettings: SettingsPath = to.SettingsPath([
 	'stripeCountContinuumSettings',
 ])
 
-const settingsPathShortcuts: StripeCountContinuumSettingsStructure = buildSettingsPathShortcuts({
+const stripeCountContinuumSettingsPathShortcuts: StripeCountContinuumSettingsStructure = buildSettingsPathShortcuts({
 	basePath: stripeCountContinuumSettings,
 	settings: DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 })
@@ -74,7 +74,7 @@ export {
 	// Shortcuts
 
 	stripeCountContinuumSettings,
-	settingsPathShortcuts,
+	stripeCountContinuumSettingsPathShortcuts,
 
 	// Shortcut types
 

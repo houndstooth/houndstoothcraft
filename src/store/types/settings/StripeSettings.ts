@@ -10,7 +10,7 @@ import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
 import { StripePositionSettings } from './stripe'
 import {
 	DEFAULT_STRIPE_POSITION_SETTINGS,
-	settingsPathShortcuts as stripePositionSettingsPathShortcuts,
+	stripePositionSettingsPathShortcuts,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsFunctions,
 	StripePositionSettingsPathShortcut,
@@ -50,7 +50,7 @@ const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 
 const stripeSettings: SettingsPath = to.SettingsPath([ 'stripeSettings' ])
 
-const settingsPathShortcuts: StripeSettingsStructure = {
+const stripeSettingsPathShortcuts: StripeSettingsStructure = {
 	...buildSettingsPathShortcuts({
 		basePath: stripeSettings,
 		settings: DEFAULT_STRIPE_SETTINGS,
@@ -84,7 +84,7 @@ export {
 	// Shortcuts
 
 	stripeSettings,
-	settingsPathShortcuts,
+	stripeSettingsPathShortcuts,
 
 	// Shortcut types
 

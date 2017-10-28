@@ -35,7 +35,7 @@ const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
 
 const templateSettings: SettingsPath = to.SettingsPath([ 'templateSettings' ])
 
-const settingsPathShortcuts: TemplateSettingsStructure = buildSettingsPathShortcuts({
+const templateSettingsPathShortcuts: TemplateSettingsStructure = buildSettingsPathShortcuts({
 	basePath: templateSettings,
 	settings: DEFAULT_TEMPLATE_SETTINGS,
 })
@@ -85,7 +85,7 @@ export {
 	// Shortcuts
 
 	templateSettings,
-	settingsPathShortcuts,
+	templateSettingsPathShortcuts,
 
 	// Shortcut types
 

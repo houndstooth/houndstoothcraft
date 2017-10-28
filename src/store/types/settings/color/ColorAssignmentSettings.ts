@@ -21,7 +21,7 @@ interface ColorAssignmentSettingsStructure {
 
 // Type
 
-interface ColorAssignmentSettings {
+interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
 	assignmentMode: AssignmentMode,
 	flipGrain: boolean,
 	offsetAddress?: OffsetAddress,

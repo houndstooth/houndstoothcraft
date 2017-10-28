@@ -1,6 +1,6 @@
 import { SettingsStep } from '../store'
 
-type FunctionsOf<T> = { [P in keyof T]?: (previousLayerOrFrame?: number) => T[P] }
+type FunctionsOf<T> = { [P in keyof T]: (previousLayerOrFrame?: number) => T[P] }
 
 interface Layer extends Number {
 	// tslint:disable-next-line:no-any

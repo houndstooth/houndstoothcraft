@@ -12,13 +12,11 @@ import { TypePathShortcuts } from '../../../TypePathShortcuts'
 interface StripeCountContinuumSettingsStructure {
 	deltaStripeCount: any,
 	initialStripeCount: any,
-
-	[_: string]: any
 }
 
 // Type
 
-interface StripeCountContinuumSettings {
+interface StripeCountContinuumSettings extends StripeCountContinuumSettingsStructure {
 	deltaStripeCount: number,
 	initialStripeCount: number,
 }

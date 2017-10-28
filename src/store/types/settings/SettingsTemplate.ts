@@ -11,8 +11,6 @@ import { TypePathShortcuts } from '../TypePathShortcuts'
 
 interface TemplateSettingsStructure {
 	templateSetting: any,
-
-	[_: string]: any
 }
 
 // Type

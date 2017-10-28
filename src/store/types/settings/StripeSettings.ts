@@ -22,13 +22,11 @@ import {
 interface StripeSettingsStructure {
 	baseStripeDiagonal: any,
 	stripePositionSettings: any,
-
-	[_: string]: any
 }
 
 // Type
 
-interface StripeSettings {
+interface StripeSettings extends StripeSettingsStructure {
 	baseStripeDiagonal: BaseStripeDiagonal,
 	stripePositionSettings: Partial<StripePositionSettings>,
 }

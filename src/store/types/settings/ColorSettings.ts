@@ -25,13 +25,11 @@ interface ColorSettingsStructure {
 	colorAssignmentSettings: any,
 	colorSet: any,
 	opacity: any,
-
-	[_: string]: any
 }
 
 // Type
 
-interface ColorSettings {
+interface ColorSettings extends ColorSettingsStructure {
 	backgroundColor: Color,
 	colorAssignmentSettings: Partial<ColorAssignmentSettings>,
 	colorSet: ColorSet,

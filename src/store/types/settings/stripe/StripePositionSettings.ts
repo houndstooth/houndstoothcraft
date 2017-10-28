@@ -24,13 +24,11 @@ interface StripePositionSettingsStructure {
 	stripeCount: any,
 	stripeCountContinuumSettings: any,
 	stripeCountMode: any,
-
-	[_: string]: any
 }
 
 // Type
 
-interface StripePositionSettings {
+interface StripePositionSettings extends StripePositionSettingsStructure {
 	getStripePositions: GetStripePositions,
 	stripeCount: number,
 	stripeCountContinuumSettings: Partial<StripeCountContinuumSettings>,

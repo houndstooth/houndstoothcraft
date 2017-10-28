@@ -12,6 +12,8 @@ interface AnimationSettingsStructure {
 	frameRate: any,
 	refreshCanvas: any,
 	startFrame: any,
+
+	[_: string]: any
 }
 
 // Type
@@ -56,18 +58,20 @@ const settingsPathShortcuts: AnimationSettingsStructure = {
 
 type AnimationSettingsPathShortcut = 'animationSettings'
 
-type BooleanPathShortcuts = 'refreshCanvas'
-type ColorPathShortcuts = '_'
-type ColorsPathShortcuts = '_'
-type ColorSetPathShortcuts = '_'
-type ExecuteTexturePathShortcuts = '_'
-type FramePathShortcuts = 'startFrame' | 'endFrame'
-type GetTileOriginAndSizePathShortcuts = '_'
-type LayerPathShortcuts = '_'
-type NumberPathShortcuts = 'frameRate'
-type PxPathShortcuts = '_'
-type RadianPathShortcuts = '_'
-type UnitPathShortcuts = '_'
+namespace TypePathShortcuts {
+	export type BooleanPathShortcuts = 'refreshCanvas'
+	export type ColorPathShortcuts = '_'
+	export type ColorsPathShortcuts = '_'
+	export type ColorSetPathShortcuts = '_'
+	export type ExecuteTexturePathShortcuts = '_'
+	export type FramePathShortcuts = 'startFrame' | 'endFrame'
+	export type GetTileOriginAndSizePathShortcuts = '_'
+	export type LayerPathShortcuts = '_'
+	export type NumberPathShortcuts = 'frameRate'
+	export type PxPathShortcuts = '_'
+	export type RadianPathShortcuts = '_'
+	export type UnitPathShortcuts = '_'
+}
 
 // Export
 
@@ -92,16 +96,5 @@ export {
 	// Shortcut types
 
 	AnimationSettingsPathShortcut,
-	BooleanPathShortcuts,
-	ColorPathShortcuts,
-	ColorsPathShortcuts,
-	ColorSetPathShortcuts,
-	ExecuteTexturePathShortcuts,
-	FramePathShortcuts,
-	GetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts,
-	NumberPathShortcuts,
-	PxPathShortcuts,
-	RadianPathShortcuts,
-	UnitPathShortcuts,
+	TypePathShortcuts,
 }

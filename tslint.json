@@ -47,6 +47,7 @@
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
     "defocus": true,
+    "no-namespace": false,
     "typedef": false,
     "no-unsafe-any": false
   }

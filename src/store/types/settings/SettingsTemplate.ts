@@ -8,6 +8,8 @@ import { SettingsPath } from '../SettingsPath'
 
 interface TemplateSettingsStructure {
 	templateSetting: any,
+
+	[_: string]: any
 }
 
 // Type
@@ -40,18 +42,20 @@ const settingsPathShortcuts: TemplateSettingsStructure = {
 
 type TemplateSettingsPathShortcut = 'templateSettings'
 
-type BooleanPathShortcuts = '_'
-type ColorPathShortcuts = '_'
-type ColorsPathShortcuts = '_'
-type ColorSetPathShortcuts = '_'
-type ExecuteTexturePathShortcuts = '_'
-type FramePathShortcuts = '_'
-type GetTileOriginAndSizePathShortcuts = '_'
-type LayerPathShortcuts = '_'
-type NumberPathShortcuts = '_'
-type PxPathShortcuts = '_'
-type RadianPathShortcuts = '_'
-type UnitPathShortcuts = '_'
+namespace TypePathShortcuts {
+	export type BooleanPathShortcuts = '_'
+	export type ColorPathShortcuts = '_'
+	export type ColorsPathShortcuts = '_'
+	export type ColorSetPathShortcuts = '_'
+	export type ExecuteTexturePathShortcuts = '_'
+	export type FramePathShortcuts = '_'
+	export type GetTileOriginAndSizePathShortcuts = '_'
+	export type LayerPathShortcuts = '_'
+	export type NumberPathShortcuts = '_'
+	export type PxPathShortcuts = '_'
+	export type RadianPathShortcuts = '_'
+	export type UnitPathShortcuts = '_'
+}
 
 // Export
 
@@ -76,16 +80,5 @@ export {
 	// Shortcut types
 
 	TemplateSettingsPathShortcut,
-	BooleanPathShortcuts,
-	ColorPathShortcuts,
-	ColorsPathShortcuts,
-	ColorSetPathShortcuts,
-	ExecuteTexturePathShortcuts,
-	FramePathShortcuts,
-	GetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts,
-	NumberPathShortcuts,
-	PxPathShortcuts,
-	RadianPathShortcuts,
-	UnitPathShortcuts,
+	TypePathShortcuts,
 }

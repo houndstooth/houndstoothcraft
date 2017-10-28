@@ -1,13 +1,19 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
 import { ColorSet } from '../../../components'
-import { AssignmentMode, Supertile, Weave } from '../../../components/types'
 import { BLACK, TRANSPARENT } from '../../../constants'
 import { FunctionsOf } from '../../../execute'
 import { Color } from '../../../render'
 import * as to from '../../../utilities/to'
 import { SettingsStep } from '../SettingsStep'
 import { ColorAssignmentSettings } from './color'
+import {
+	colorAssignmentSettings,
+	ColorAssignmentSettingsPathShortcut,
+	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
+	settingsPathShortcuts as colorAssignmentSettingsPathShortcuts,
+	TypePathShortcuts as ColorAssignmentSettingsTypePathShortcuts,
+} from './color/ColorAssignmentSettings'
 
 // Structure
 
@@ -15,8 +21,9 @@ interface ColorSettingsStructure {
 	backgroundColor: any,
 	colorAssignmentSettings: any,
 	colorSet: any,
-	flipGrain: any,
 	opacity: any,
+
+	[_: string]: any
 }
 
 // Type
@@ -25,7 +32,6 @@ interface ColorSettings {
 	backgroundColor: Color,
 	colorAssignmentSettings: Partial<ColorAssignmentSettings>,
 	colorSet: ColorSet,
-	flipGrain: boolean,
 	opacity: number,
 }
 
@@ -35,32 +41,14 @@ type ColorSettingsFunctions = FunctionsOf<ColorSettings>
 
 // Defaults
 
-const DEFAULT_ASSIGNMENT_MODE: AssignmentMode = AssignmentMode.Weave
-const DEFAULT_FLIP_GRAIN = false
-const DEFAULT_OFFSET_ADDRESS: undefined = undefined
-const DEFAULT_SUPERTILE: Supertile = to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ])
-const DEFAULT_SWITCHEROO = false
-const DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES: undefined = undefined
-const DEFAULT_WEAVE: Weave = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-
+const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
 const DEFAULT_COLOR_SET: ColorSet = to.ColorSet([ BLACK, TRANSPARENT ])
 const DEFAULT_OPACITY = 1
-const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
-const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
-	assignmentMode: DEFAULT_ASSIGNMENT_MODE,
-	flipGrain: DEFAULT_FLIP_GRAIN,
-	offsetAddress: DEFAULT_OFFSET_ADDRESS,
-	supertile: DEFAULT_SUPERTILE,
-	switcheroo: DEFAULT_SWITCHEROO,
-	transformShapeColorIndices: DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES,
-	weave: DEFAULT_WEAVE,
-}
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,
 	colorAssignmentSettings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 	colorSet: DEFAULT_COLOR_SET,
-	flipGrain: DEFAULT_FLIP_GRAIN,
 	opacity: DEFAULT_OPACITY,
 }
 
@@ -70,28 +58,30 @@ const colorSettings: SettingsStep[] = to.SettingsPath([ 'colorSettings' ])
 
 const settingsPathShortcuts: ColorSettingsStructure = {
 	backgroundColor: to.SettingsPath([ 'colorSettings', 'backgroundColor' ]),
-	colorAssignmentSettings: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
+	colorAssignmentSettings,
 	colorSet: to.SettingsPath([ 'colorSettings', 'colorSet' ]),
-	flipGrain: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'flipGrain' ]),
 	opacity: to.SettingsPath([ 'colorSettings', 'opacity' ]),
+	...colorAssignmentSettingsPathShortcuts,
 }
 
 // Shortcut types
 
 type ColorSettingsPathShortcut = 'colorSettings'
 
-type BooleanPathShortcuts = '_'
-type ColorPathShortcuts = 'backgroundColor'
-type ColorSetPathShortcuts = 'colorSet'
-type ColorsPathShortcuts = '_'
-type ExecuteTexturePathShortcuts = '_'
-type FramePathShortcuts = '_'
-type GetTileOriginAndSizePathShortcuts = '_'
-type LayerPathShortcuts = '_'
-type NumberPathShortcuts = '_'
-type PxPathShortcuts = '_'
-type RadianPathShortcuts = '_'
-type UnitPathShortcuts = '_'
+namespace TypePathShortcuts {
+	export type BooleanPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type ColorPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | 'backgroundColor'
+	export type ColorSetPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | 'colorSet'
+	export type ColorsPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type ExecuteTexturePathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type FramePathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type GetTileOriginAndSizePathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type LayerPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type NumberPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | 'opacity'
+	export type PxPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type RadianPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+	export type UnitPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
+}
 
 // Export
 
@@ -116,16 +106,6 @@ export {
 	// Shortcut types
 
 	ColorSettingsPathShortcut,
-	BooleanPathShortcuts,
-	ColorPathShortcuts,
-	ColorSetPathShortcuts,
-	ColorsPathShortcuts,
-	ExecuteTexturePathShortcuts,
-	FramePathShortcuts,
-	GetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts,
-	NumberPathShortcuts,
-	PxPathShortcuts,
-	RadianPathShortcuts,
-	UnitPathShortcuts,
+	ColorAssignmentSettingsPathShortcut,
+	TypePathShortcuts,
 }

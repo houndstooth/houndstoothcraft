@@ -2,101 +2,76 @@
 
 import {
 	AnimationSettingsPathShortcut,
-	BooleanPathShortcuts as AnimationSettingsBooleanPathShortcuts,
-	ColorPathShortcuts as AnimationSettingsColorPathShortcuts,
-	ColorSetPathShortcuts as AnimationSettingsColorSetPathShortcuts,
-	ColorsPathShortcuts as AnimationSettingsColorsPathShortcuts,
-	ExecuteTexturePathShortcuts as AnimationSettingsExecuteTexturePathShortcuts,
-	FramePathShortcuts as AnimationSettingsFramePathShortcuts,
-	GetTileOriginAndSizePathShortcuts as AnimationSettingsGetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts as AnimationSettingsLayerPathShortcuts,
-	NumberPathShortcuts as AnimationSettingsNumberPathShortcuts,
-	PxPathShortcuts as AnimationSettingsPxPathShortcuts,
-	RadianPathShortcuts as AnimationSettingsRadianPathShortcuts,
-	UnitPathShortcuts as AnimationSettingsUnitPathShortcuts,
+	TypePathShortcuts as AnimationSettings,
 } from './settings/AnimationSettings'
 import {
-	BooleanPathShortcuts as ColorSettingsBooleanPathShortcuts,
-	ColorPathShortcuts as ColorSettingsColorPathShortcuts,
-	ColorSetPathShortcuts as ColorSettingsColorSetPathShortcuts,
+	ColorAssignmentSettingsPathShortcut,
 	ColorSettingsPathShortcut,
-	ColorsPathShortcuts as ColorSettingsColorsPathShortcuts,
-	ExecuteTexturePathShortcuts as ColorSettingsExecuteTexturePathShortcuts,
-	FramePathShortcuts as ColorSettingsFramePathShortcuts,
-	GetTileOriginAndSizePathShortcuts as ColorSettingsGetTileOriginAndSizePathShortcuts,
-	LayerPathShortcuts as ColorSettingsLayerPathShortcuts,
-	NumberPathShortcuts as ColorSettingsNumberPathShortcuts,
-	PxPathShortcuts as ColorSettingsPxPathShortcuts,
-	RadianPathShortcuts as ColorSettingsRadianPathShortcuts,
-	UnitPathShortcuts as ColorSettingsUnitPathShortcuts,
+	TypePathShortcuts as ColorSettings,
 } from './settings/ColorSettings'
 
 type BooleanPathShortcuts =
-	| AnimationSettingsBooleanPathShortcuts
-	| ColorSettingsBooleanPathShortcuts
+	| AnimationSettings.BooleanPathShortcuts
+	| ColorSettings.BooleanPathShortcuts
 	| 'centerViewOnCenterOfTileAtHomeAddress'
 	| 'collapseSameColoredShapesWithinTile'
-	| 'flipGrain'
 	| 'includeNegativeQuadrants'
 	| 'zoomOnCanvasCenter'
 
 type ColorPathShortcuts =
-	| AnimationSettingsColorPathShortcuts
-	| ColorSettingsColorPathShortcuts
-	| 'backgroundColor'
+	| AnimationSettings.ColorPathShortcuts
+	| ColorSettings.ColorPathShortcuts
 
 type ColorsPathShortcuts =
-	| AnimationSettingsColorsPathShortcuts
-	| ColorSettingsColorsPathShortcuts
-	| 'colorSet'
+	| AnimationSettings.ColorsPathShortcuts
+	| ColorSettings.ColorsPathShortcuts
 
 type ColorSetPathShortcuts =
-	| AnimationSettingsColorSetPathShortcuts
-	| ColorSettingsColorSetPathShortcuts
+	| AnimationSettings.ColorSetPathShortcuts
+	| ColorSettings.ColorSetPathShortcuts
 
 type ExecuteTexturePathShortcuts =
-	| AnimationSettingsExecuteTexturePathShortcuts
-	| ColorSettingsExecuteTexturePathShortcuts
+	| AnimationSettings.ExecuteTexturePathShortcuts
+	| ColorSettings.ExecuteTexturePathShortcuts
 	| 'executeTexture'
 
 type FramePathShortcuts =
-	| AnimationSettingsFramePathShortcuts
-	| ColorSettingsFramePathShortcuts
+	| AnimationSettings.FramePathShortcuts
+	| ColorSettings.FramePathShortcuts
 
 type GetTileOriginAndSizePathShortcuts =
-	| AnimationSettingsGetTileOriginAndSizePathShortcuts
-	| ColorSettingsGetTileOriginAndSizePathShortcuts
+	| AnimationSettings.GetTileOriginAndSizePathShortcuts
+	| ColorSettings.GetTileOriginAndSizePathShortcuts
 	| 'getTileOriginAndSize'
 
 type LayerPathShortcuts =
-	| AnimationSettingsLayerPathShortcuts
-	| ColorSettingsLayerPathShortcuts
+	| AnimationSettings.LayerPathShortcuts
+	| ColorSettings.LayerPathShortcuts
 	| 'endLayer'
 
 type NumberPathShortcuts =
-	| AnimationSettingsNumberPathShortcuts
-	| ColorSettingsNumberPathShortcuts
+	| AnimationSettings.NumberPathShortcuts
+	| ColorSettings.NumberPathShortcuts
 	| 'gridSize'
 	| 'stripeCount'
 	| 'opacity'
 	| 'zoom'
 
 type PxPathShortcuts =
-	| AnimationSettingsPxPathShortcuts
-	| ColorSettingsPxPathShortcuts
+	| AnimationSettings.PxPathShortcuts
+	| ColorSettings.PxPathShortcuts
 	| 'canvasSize'
 
 type RadianPathShortcuts =
-	| AnimationSettingsRadianPathShortcuts
-	| ColorSettingsRadianPathShortcuts
+	| AnimationSettings.RadianPathShortcuts
+	| ColorSettings.RadianPathShortcuts
 	| 'rotateViewAboutCanvasCenter'
 
 type UnitPathShortcuts =
-	| AnimationSettingsUnitPathShortcuts
-	| ColorSettingsUnitPathShortcuts
+	| AnimationSettings.UnitPathShortcuts
+	| ColorSettings.UnitPathShortcuts
 	| 'tileSize'
 
-type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
 type GridSettingsPathShortcut = 'gridSettings'
 type LayerSettingsPathShortcut = 'layerSettings'
 type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuumSettings'

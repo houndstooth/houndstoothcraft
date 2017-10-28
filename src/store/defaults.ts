@@ -1,15 +1,7 @@
 // tslint:disable:no-magic-numbers max-file-line-count
 
 import { Frame } from '../animation'
-import {
-	BaseStripeDiagonal,
-	getStandardTileOriginAndSize,
-	GetStripePositions,
-	GetTileOriginAndSize,
-	standardStripePositions,
-	StripeCountMode,
-	Unit,
-} from '../components'
+import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../components'
 import { Layer } from '../execute'
 import { Context, Px } from '../page'
 import { Radian } from '../space'
@@ -18,12 +10,8 @@ import {
 	BasePattern,
 	Effect,
 	Houndstooth,
-	LayerSettings,
 	PatternFunctions,
 	State,
-	StripeCountContinuumSettings,
-	StripePositionSettings,
-	StripeSettings,
 	TextureSettings,
 	TileSettings,
 	ViewSettings,
@@ -32,17 +20,12 @@ import { DEFAULT_ANIMATION_SETTINGS } from './types/settings/AnimationSettings'
 import { DEFAULT_COLOR_SETTINGS } from './types/settings/ColorSettings'
 import { DEFAULT_GRID_SETTINGS } from './types/settings/GridSettings'
 import { DEFAULT_LAYER_SETTINGS } from './types/settings/LayerSettings'
+import { DEFAULT_STRIPE_SETTINGS } from './types/settings/StripeSettings'
 
 const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
 const DEFAULT_ZOOM = 1
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 
-const DEFAULT_STRIPE_COUNT = 4
-const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Minor
-const DEFAULT_DELTA_STRIPE_COUNT = 1
-const DEFAULT_INITIAL_STRIPE_COUNT = 1
-const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
-const DEFAULT_GET_STRIPE_POSITIONS: GetStripePositions = standardStripePositions
 const DEFAULT_EXECUTE_TEXTURE: undefined = undefined
 const DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE = true
 const DEFAULT_GET_TILE_ORIGIN_AND_SIZE: GetTileOriginAndSize = getStandardTileOriginAndSize
@@ -63,21 +46,6 @@ const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
 const DEFAULT_MIXING_DOWN = false
 const DEFAULT_PERFORMANCE_LOGGING = false
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
-
-const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
-	deltaStripeCount: DEFAULT_DELTA_STRIPE_COUNT,
-	initialStripeCount: DEFAULT_INITIAL_STRIPE_COUNT,
-}
-const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
-	getStripePositions: DEFAULT_GET_STRIPE_POSITIONS,
-	stripeCount: DEFAULT_STRIPE_COUNT,
-	stripeCountContinuumSettings: DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
-	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
-}
-const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
-	baseStripeDiagonal: DEFAULT_BASE_STRIPE_DIAGONAL,
-	stripePositionSettings: DEFAULT_STRIPE_POSITION_SETTINGS,
-}
 
 const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
 	executeTexture: DEFAULT_EXECUTE_TEXTURE,

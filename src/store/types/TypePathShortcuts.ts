@@ -1,5 +1,6 @@
 interface TypePathShortcuts {
 	AssignmentModePathShortcuts: '_'
+	BaseStripeDiagonalPathShortcuts: '_'
 	BooleanPathShortcuts: '_'
 	ColorPathShortcuts: '_'
 	ColorSetPathShortcuts: '_'

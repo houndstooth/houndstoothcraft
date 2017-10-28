@@ -48,6 +48,7 @@ type TemplateSettingsPathShortcut = 'templateSettings'
 
 type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
 	AssignmentModePathShortcuts: '_'
+	BaseStripeDiagonalPathShortcuts: '_'
 	BooleanPathShortcuts: '_'
 	ColorPathShortcuts: '_'
 	ColorSetPathShortcuts: '_'
@@ -65,7 +66,7 @@ type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
 	SupertilePathShortcuts: '_'
 	TransformShapeColorIndicesPathShortcuts: '_'
 	UnitPathShortcuts: '_'
-	WeavePathShortcuts: '_'
+	WeavePathShortcuts: '_',
 }>
 
 // Export

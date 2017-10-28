@@ -7,15 +7,7 @@ import { animationSettings, settingsPathShortcuts as animationSettingsPathShortc
 import { colorSettings, settingsPathShortcuts as colorSettingsPathShortcuts } from './types/settings/ColorSettings'
 import { gridSettings, settingsPathShortcuts as gridSettingsPathShortcuts } from './types/settings/GridSettings'
 import { layerSettings, settingsPathShortcuts as layerSettingsPathShortcuts } from './types/settings/LayerSettings'
-
-const stripePositionSettings: SettingsStep[] = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
-const getStripePositions: SettingsStep[] = to.SettingsPath([
-	'stripeSettings', 'stripePositionSettings', 'getStripePositions',
-])
-const stripeCount: SettingsStep[] = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings', 'stripeCount' ])
-const stripeCountContinuumSettings: SettingsStep[] = to.SettingsPath([
-	'stripeSettings', 'stripePositionSettings', 'stripeCountContinuumSettings',
-])
+import { settingsPathShortcuts as stripeSettingsPathShortcuts, stripeSettings } from './types/settings/StripeSettings'
 
 const textureSettings: SettingsStep[] = to.SettingsPath([ 'textureSettings' ])
 const executeTexture: SettingsStep[] = to.SettingsPath([ 'textureSettings', 'executeTexture' ])
@@ -43,14 +35,11 @@ const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	centerViewOnCenterOfTileAtHomeAddress,
 	collapseSameColoredShapesWithinTile,
 	executeTexture,
-	getStripePositions,
 	getTileOriginAndSize,
 	gridSettings, ...gridSettingsPathShortcuts,
 	layerSettings, ...layerSettingsPathShortcuts,
 	rotateViewAboutCanvasCenter,
-	stripeCount,
-	stripeCountContinuumSettings,
-	stripePositionSettings,
+	stripeSettings, ...stripeSettingsPathShortcuts,
 	textureSettings,
 	tileSettings,
 	tileSize,

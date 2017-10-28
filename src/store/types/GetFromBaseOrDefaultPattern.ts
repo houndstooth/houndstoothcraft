@@ -8,6 +8,7 @@ import {
 	ColorSettings,
 	GridSettings,
 	LayerSettings,
+	StripeSettings,
 	StripeCountContinuumSettings,
 	StripePositionSettings,
 	TextureSettings,
@@ -20,6 +21,7 @@ import {
 import { Frame } from '../../animation'
 import {
 	AssignmentMode,
+	BaseStripeDiagonal,
 	ColorSet,
 	ExecuteTexture,
 	GetStripePositions,
@@ -45,6 +47,7 @@ import {
 	ColorAssignmentSettingsPathShortcut,
 	GridSettingsPathShortcut,
 	LayerSettingsPathShortcut,
+	StripeSettingsPathShortcut,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsPathShortcut,
 	TextureSettingsPathShortcut,
@@ -54,6 +57,7 @@ import {
 	// General type path shortcuts
 
 	AssignmentModePathShortcuts,
+	BaseStripeDiagonalPathShortcuts,
 	BooleanPathShortcuts,
 	ColorPathShortcuts,
 	ColorsPathShortcuts,
@@ -87,6 +91,8 @@ interface GetFromBaseOrDefaultPattern {
 
 	(settingsPathShortcut: LayerSettingsPathShortcut): LayerSettings
 
+	(settingsPathShortcut: StripeSettingsPathShortcut): StripeSettings
+
 	(settingsPathShortcut: StripeCountContinuumSettingsPathShortcut): StripeCountContinuumSettings
 
 	(settingsPathShortcut: StripePositionSettingsPathShortcut): StripePositionSettings
@@ -100,6 +106,8 @@ interface GetFromBaseOrDefaultPattern {
 	// General type path shortcuts
 
 	(settingsPathShortcut: AssignmentModePathShortcuts): AssignmentMode
+
+	(settingsPathShortcut: BaseStripeDiagonalPathShortcuts): BaseStripeDiagonal
 
 	(settingsPathShortcut: BooleanPathShortcuts): boolean
 

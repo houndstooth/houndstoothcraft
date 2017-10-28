@@ -4,21 +4,14 @@ import { AnimationSettingsFunctions } from './settings/AnimationSettings'
 import { ColorSettingsFunctions } from './settings/ColorSettings'
 import { GridSettingsFunctions } from './settings/GridSettings'
 import { LayerSettingsFunctions } from './settings/LayerSettings'
+import { StripeSettingsFunctions } from './settings/StripeSettings'
 
 interface PatternFunctions {
 	animationSettings?: Partial<AnimationSettingsFunctions>,
 	colorSettings?: Partial<ColorSettingsFunctions>,
 	gridSettings?: Partial<GridSettingsFunctions>,
 	layerSettings?: Partial<LayerSettingsFunctions>,
-	stripeSettings?: {
-		stripePositionSettings?: {
-			stripeCountContinuumSettings?: {
-				deltaStripeCount?(p: number): number,
-				initialStripeCount?(p: number): number,
-			},
-			stripeCount?(p: number): number,
-		},
-	},
+	stripeSettings?: Partial<StripeSettingsFunctions>,
 	tileSettings?: {
 		tileSize?(p: Unit): Unit,
 	},

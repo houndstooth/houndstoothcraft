@@ -1,12 +1,12 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
 import { FunctionsOf } from '../../../execute'
+import { Layer } from '../../../execute/types'
 import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
 import { TypePathShortcuts } from '../TypePathShortcuts'
-import { Layer } from '../../../execute/types'
 
 // Structure
 
@@ -52,7 +52,7 @@ const settingsPathShortcuts: LayerSettingsStructure = buildSettingsPathShortcuts
 type LayerSettingsPathShortcut = 'layerSettings'
 
 type LayerSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
-	LayerPathShortcuts: 'startLayer' | 'endLayer'
+	LayerPathShortcuts: 'startLayer' | 'endLayer',
 }>
 
 // Export

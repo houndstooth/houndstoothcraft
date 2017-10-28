@@ -41,7 +41,7 @@ interface ColorSettings {
 // Functions of
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
-	colorAssignmentSettings: Partial<ColorAssignmentSettingsFunctions>,
+	colorAssignmentSettings: ColorAssignmentSettingsFunctions,
 }>
 
 // Defaults

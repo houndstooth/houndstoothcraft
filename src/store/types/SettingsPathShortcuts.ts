@@ -4,18 +4,33 @@ import { AnimationSettingsPathShortcut, AnimationSettingsTypePathShortcuts as An
 import { ColorAssignmentSettingsPathShortcut, ColorSettingsPathShortcut, ColorSettingsTypePathShortcuts as ColorSettings } from './settings/ColorSettings'
 import { GridSettingsPathShortcut, GridSettingsTypePathShortcuts as GridSettings } from './settings/GridSettings'
 import { LayerSettingsPathShortcut, LayerSettingsTypePathShortcuts as LayerSettings } from './settings/LayerSettings'
+import {
+	StripeCountContinuumSettingsPathShortcut,
+	StripePositionSettingsPathShortcut,
+	StripeSettingsPathShortcut,
+	StripeSettingsTypePathShortcuts as StripeSettings,
+} from './settings/StripeSettings'
 
 type AssignmentModePathShortcuts =
 	| AnimationSettings['AssignmentModePathShortcuts']
 	| ColorSettings['AssignmentModePathShortcuts']
 	| GridSettings['AssignmentModePathShortcuts']
 	| LayerSettings['AssignmentModePathShortcuts']
+	| StripeSettings['AssignmentModePathShortcuts']
+
+type BaseStripeDiagonalPathShortcuts =
+	| AnimationSettings['BaseStripeDiagonalPathShortcuts']
+	| ColorSettings['BaseStripeDiagonalPathShortcuts']
+	| GridSettings['BaseStripeDiagonalPathShortcuts']
+	| LayerSettings['BaseStripeDiagonalPathShortcuts']
+	| StripeSettings['BaseStripeDiagonalPathShortcuts']
 
 type BooleanPathShortcuts =
 	| AnimationSettings['BooleanPathShortcuts']
 	| ColorSettings['BooleanPathShortcuts']
 	| GridSettings['BooleanPathShortcuts']
 	| LayerSettings['BooleanPathShortcuts']
+	| StripeSettings['BooleanPathShortcuts']
 	| 'centerViewOnCenterOfTileAtHomeAddress'
 	| 'collapseSameColoredShapesWithinTile'
 	| 'zoomOnCanvasCenter'
@@ -25,24 +40,28 @@ type ColorPathShortcuts =
 	| ColorSettings['ColorPathShortcuts']
 	| GridSettings['ColorPathShortcuts']
 	| LayerSettings['ColorPathShortcuts']
+	| StripeSettings['ColorPathShortcuts']
 
 type ColorsPathShortcuts =
 	| AnimationSettings['ColorsPathShortcuts']
 	| ColorSettings['ColorsPathShortcuts']
 	| GridSettings['ColorsPathShortcuts']
 	| LayerSettings['ColorsPathShortcuts']
+	| StripeSettings['ColorsPathShortcuts']
 
 type ColorSetPathShortcuts =
 	| AnimationSettings['ColorSetPathShortcuts']
 	| ColorSettings['ColorSetPathShortcuts']
 	| GridSettings['ColorSetPathShortcuts']
 	| LayerSettings['ColorSetPathShortcuts']
+	| StripeSettings['ColorSetPathShortcuts']
 
 type ExecuteTexturePathShortcuts =
 	| AnimationSettings['ExecuteTexturePathShortcuts']
 	| ColorSettings['ExecuteTexturePathShortcuts']
 	| GridSettings['ExecuteTexturePathShortcuts']
 	| LayerSettings['ExecuteTexturePathShortcuts']
+	| StripeSettings['ExecuteTexturePathShortcuts']
 	| 'executeTexture'
 
 type FramePathShortcuts =
@@ -50,18 +69,21 @@ type FramePathShortcuts =
 	| ColorSettings['FramePathShortcuts']
 	| GridSettings['FramePathShortcuts']
 	| LayerSettings['FramePathShortcuts']
+	| StripeSettings['FramePathShortcuts']
 
 type GetStripePositionsPathShortcuts =
 	| AnimationSettings['GetStripePositionsPathShortcuts']
 	| ColorSettings['GetStripePositionsPathShortcuts']
 	| GridSettings['GetStripePositionsPathShortcuts']
 	| LayerSettings['GetStripePositionsPathShortcuts']
+	| StripeSettings['GetStripePositionsPathShortcuts']
 
 type GetTileOriginAndSizePathShortcuts =
 	| AnimationSettings['GetTileOriginAndSizePathShortcuts']
 	| ColorSettings['GetTileOriginAndSizePathShortcuts']
 	| GridSettings['GetTileOriginAndSizePathShortcuts']
 	| LayerSettings['GetTileOriginAndSizePathShortcuts']
+	| StripeSettings['GetTileOriginAndSizePathShortcuts']
 	| 'getTileOriginAndSize'
 
 type LayerPathShortcuts =
@@ -69,15 +91,14 @@ type LayerPathShortcuts =
 	| ColorSettings['LayerPathShortcuts']
 	| GridSettings['LayerPathShortcuts']
 	| LayerSettings['LayerPathShortcuts']
-	| 'endLayer'
+	| StripeSettings['LayerPathShortcuts']
 
 type NumberPathShortcuts =
 	| AnimationSettings['NumberPathShortcuts']
 	| ColorSettings['NumberPathShortcuts']
 	| GridSettings['NumberPathShortcuts']
 	| LayerSettings['NumberPathShortcuts']
-	| 'stripeCount'
-	| 'opacity'
+	| StripeSettings['NumberPathShortcuts']
 	| 'zoom'
 
 type OffsetAddressPathShortcuts =
@@ -85,12 +106,14 @@ type OffsetAddressPathShortcuts =
 	| ColorSettings['OffsetAddressPathShortcuts']
 	| GridSettings['OffsetAddressPathShortcuts']
 	| LayerSettings['OffsetAddressPathShortcuts']
+	| StripeSettings['OffsetAddressPathShortcuts']
 
 type PxPathShortcuts =
 	| AnimationSettings['PxPathShortcuts']
 	| ColorSettings['PxPathShortcuts']
 	| GridSettings['PxPathShortcuts']
 	| LayerSettings['PxPathShortcuts']
+	| StripeSettings['PxPathShortcuts']
 	| 'canvasSize'
 
 type RadianPathShortcuts =
@@ -98,6 +121,7 @@ type RadianPathShortcuts =
 	| ColorSettings['RadianPathShortcuts']
 	| GridSettings['RadianPathShortcuts']
 	| LayerSettings['RadianPathShortcuts']
+	| StripeSettings['RadianPathShortcuts']
 	| 'rotateViewAboutCanvasCenter'
 
 type StripeCountModePathShortcuts =
@@ -105,24 +129,28 @@ type StripeCountModePathShortcuts =
 	| ColorSettings['StripeCountModePathShortcuts']
 	| GridSettings['StripeCountModePathShortcuts']
 	| LayerSettings['StripeCountModePathShortcuts']
+	| StripeSettings['StripeCountModePathShortcuts']
 
 type SupertilePathShortcuts =
 	| AnimationSettings['SupertilePathShortcuts']
 	| ColorSettings['SupertilePathShortcuts']
 	| GridSettings['SupertilePathShortcuts']
 	| LayerSettings['SupertilePathShortcuts']
+	| StripeSettings['SupertilePathShortcuts']
 
 type TransformShapeColorIndicesPathShortcuts =
 	| AnimationSettings['TransformShapeColorIndicesPathShortcuts']
 	| ColorSettings['TransformShapeColorIndicesPathShortcuts']
 	| GridSettings['TransformShapeColorIndicesPathShortcuts']
 	| LayerSettings['TransformShapeColorIndicesPathShortcuts']
+	| StripeSettings['TransformShapeColorIndicesPathShortcuts']
 
 type UnitPathShortcuts =
 	| AnimationSettings['UnitPathShortcuts']
 	| ColorSettings['UnitPathShortcuts']
 	| GridSettings['UnitPathShortcuts']
 	| LayerSettings['UnitPathShortcuts']
+	| StripeSettings['UnitPathShortcuts']
 	| 'tileSize'
 
 type WeavePathShortcuts =
@@ -130,9 +158,8 @@ type WeavePathShortcuts =
 	| ColorSettings['WeavePathShortcuts']
 	| GridSettings['WeavePathShortcuts']
 	| LayerSettings['WeavePathShortcuts']
+	| StripeSettings['WeavePathShortcuts']
 
-type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuumSettings'
-type StripePositionSettingsPathShortcut = 'stripePositionSettings'
 type TextureSettingsPathShortcut = 'textureSettings'
 type TileSettingsPathShortcut = 'tileSettings'
 type ViewSettingsPathShortcut = 'viewSettings'
@@ -145,6 +172,7 @@ export {
 	ColorAssignmentSettingsPathShortcut,
 	GridSettingsPathShortcut,
 	LayerSettingsPathShortcut,
+	StripeSettingsPathShortcut,
 	StripeCountContinuumSettingsPathShortcut,
 	StripePositionSettingsPathShortcut,
 	TextureSettingsPathShortcut,
@@ -154,6 +182,7 @@ export {
 	// General type path shortcuts
 
 	AssignmentModePathShortcuts,
+	BaseStripeDiagonalPathShortcuts,
 	BooleanPathShortcuts,
 	ColorPathShortcuts,
 	ColorsPathShortcuts,

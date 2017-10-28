@@ -11,6 +11,7 @@ import { TypePathShortcuts } from '../TypePathShortcuts'
 import { ColorAssignmentSettings } from './color'
 import {
 	colorAssignmentSettings,
+	ColorAssignmentSettingsFunctions,
 	ColorAssignmentSettingsPathShortcut,
 	ColorAssignmentSettingsTypePathShortcuts,
 	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
@@ -39,7 +40,9 @@ interface ColorSettings {
 
 // Functions of
 
-type ColorSettingsFunctions = FunctionsOf<ColorSettings>
+type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
+	colorAssignmentSettings: Partial<ColorAssignmentSettingsFunctions>
+}>
 
 // Defaults
 

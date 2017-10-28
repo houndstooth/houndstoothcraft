@@ -1,5 +1,7 @@
-import { Coordinate, GetOutline, GetOutlineParams, Outline } from '../space'
+// tslint:disable:max-file-line-count
+
 import { Color } from '../render'
+import { Coordinate, GetOutline, GetOutlineParams, Outline } from '../space'
 
 enum _AddressBrand {}
 

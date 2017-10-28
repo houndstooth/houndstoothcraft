@@ -1,7 +1,7 @@
-import * as createContext from '../../../../src/page/createContext'
-import { createContexts } from '../../../../src/page/createContexts'
 import Spy = jasmine.Spy
 import { PageElement } from '../../../../src/page'
+import * as createContext from '../../../../src/page/createContext'
+import { createContexts } from '../../../../src/page/createContexts'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'

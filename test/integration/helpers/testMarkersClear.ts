@@ -1,6 +1,4 @@
-import { Canvas } from '../../../src/page'
-import { Context } from '../../../src/page'
-import { Px } from '../../../src/page'
+import { Canvas, Context, Px } from '../../../src/page'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
 import { NullarySideEffector } from '../../../src/utilities/types'

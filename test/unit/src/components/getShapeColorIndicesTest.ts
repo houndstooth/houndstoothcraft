@@ -1,11 +1,13 @@
 import { Address, from, state, to } from '../../../../src'
+import {
+	AssignmentMode,
+	Grid,
+	OffsetAddress,
+	ShapeColorIndex,
+	Supertile,
+	TransformShapeColorIndices,
+} from '../../../../src/components'
 import { getShapeColorIndices } from '../../../../src/components/getShapeColorIndices'
-import { AssignmentMode } from '../../../../src/components'
-import { Grid } from '../../../../src/components'
-import { OffsetAddress } from '../../../../src/components'
-import { ShapeColorIndex } from '../../../../src/components'
-import { Supertile } from '../../../../src/components'
-import { TransformShapeColorIndices } from '../../../../src/components'
 import { setSetting } from '../../../../src/store/setSetting'
 import { iterator } from '../../../../src/utilities/codeUtilities'
 

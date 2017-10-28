@@ -11,13 +11,11 @@ import {
 	Supertile,
 	Unit,
 } from '../components'
-import { Layer } from '../execute'
-import { SettingsFunctionObject } from '../execute'
+import { Layer, SettingsFunctionObject } from '../execute'
 import { Dimensions, Px } from '../page'
 import { Color, Path, Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
-import { SettingsStep } from '../store'
-import { SettingsPath } from '../store/types/SettingsPath'
+import { SettingsPath, SettingsStep } from '../store'
 
 // First order, singular
 

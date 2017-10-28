@@ -1,8 +1,8 @@
 import { ERASE } from '../../../../src/constants'
 import { Context } from '../../../../src/page'
+import { Color } from '../../../../src/render'
 import { buildFill } from '../../../../src/render/buildFill'
 import * as parseColor from '../../../../src/render/parseColor'
-import { Color } from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 

@@ -1,5 +1,4 @@
-import { Address } from '../../../src/components'
-import { Unit } from '../../../src/components'
+import { Address, Unit } from '../../../src/components'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 

@@ -1,6 +1,6 @@
-import { insertElementRightAfter } from '../../../../src/page/insertElementRightAfter'
 import Spy = jasmine.Spy
 import { PageElement } from '../../../../src/page'
+import { insertElementRightAfter } from '../../../../src/page/insertElementRightAfter'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('insert element right after', () => {

@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from '../../../../src/execute'
+import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'

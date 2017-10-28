@@ -1,7 +1,5 @@
 import { from, to } from '../../../../src'
-import { BaseStripeDiagonal } from '../../../../src/components'
-import { StripeCountMode } from '../../../../src/components'
-import { Unit } from '../../../../src/components'
+import { BaseStripeDiagonal, StripeCountMode, Unit } from '../../../../src/components'
 import { BLACK, TRANSPARENT } from '../../../../src/constants'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import { Coordinate } from '../../../../src/space'

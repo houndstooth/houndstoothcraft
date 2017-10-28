@@ -1,7 +1,6 @@
 import { to } from '../../../../src'
+import { Address, StripePosition } from '../../../../src/components'
 import { getStripePositionsForTile } from '../../../../src/components/getStripePositionsForTile'
-import { Address } from '../../../../src/components'
-import { StripePosition } from '../../../../src/components'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { StripePositionSettings } from '../../../../src/store/types/settings/stripe/StripePositionSettings'

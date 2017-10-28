@@ -1,7 +1,6 @@
 import { saveBlob } from '../../../../src/animation/saveBlob'
-import { DataBlob } from '../../../../src/page'
+import { DataBlob, PageElement } from '../../../../src/page'
 import Spy = jasmine.Spy
-import { PageElement } from '../../../../src/page'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 

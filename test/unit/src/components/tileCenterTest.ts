@@ -1,6 +1,6 @@
 import { to } from '../../../../src'
-import { tileCenter } from '../../../../src/components/tileCenter'
 import { Unit } from '../../../../src/components'
+import { tileCenter } from '../../../../src/components/tileCenter'
 import { Coordinate } from '../../../../src/space'
 
 describe('tile center', () => {

@@ -1,18 +1,14 @@
+import Spy = jasmine.Spy
+import CallInfo = jasmine.CallInfo
+import { Address, ShapeColorIndex, StripePosition, Unit } from '../../../../src/components'
 import * as getShapeColorIndices from '../../../../src/components/getShapeColorIndices'
 import * as getStripePositionsForTile from '../../../../src/components/getStripePositionsForTile'
 import * as getTileOriginAndSize from '../../../../src/components/getTileOriginAndSize'
 import * as isTileUniform from '../../../../src/components/isTileUniform'
 import * as shape from '../../../../src/components/shape'
 import { tile } from '../../../../src/components/tile'
-import CallInfo = jasmine.CallInfo
-import { Address } from '../../../../src/components'
-import { ShapeColorIndex } from '../../../../src/components'
-import { StripePosition } from '../../../../src/components'
-import Spy = jasmine.Spy
-import { Unit } from '../../../../src/components'
 import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as space from '../../../../src/space'
-import { Coordinate } from '../../../../src/space'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
@@ -45,7 +41,7 @@ describe('tile', () => {
 	describe('when the tile is assigned an origin on the canvas', () => {
 		let stripePositionsForTile: StripePosition[]
 		let shapeColorIndices: ShapeColorIndex[]
-		let tileOrigin: Coordinate
+		let tileOrigin: space.Coordinate
 		let tileSize: Unit
 		beforeEach(() => {
 			tileOrigin = to.Coordinate([ 7, 11 ])

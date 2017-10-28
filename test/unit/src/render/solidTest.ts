@@ -1,8 +1,7 @@
-import { solid } from '../../../../src/components/solid'
 import { ShapeColorIndex } from '../../../../src/components'
+import { solid } from '../../../../src/components/solid'
 import * as render from '../../../../src/render'
 import Spy = jasmine.Spy
-import { Color } from '../../../../src/render'
 import { Outline } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 
@@ -10,8 +9,8 @@ describe('solid', () => {
 	const shapeColorIndex: ShapeColorIndex = to.ShapeColorIndex(8)
 	const outline: Outline = to.Outline([])
 
-	const shapeColor: Color = { a: 1 }
-	const transparentColor: Color = { a: 0 }
+	const shapeColor: render.Color = { a: 1 }
+	const transparentColor: render.Color = { a: 0 }
 
 	let getColorSpy: Spy
 	beforeEach(() => {

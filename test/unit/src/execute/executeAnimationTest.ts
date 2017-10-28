@@ -1,7 +1,7 @@
 import * as animation from '../../../../src/animation'
 import { ConditionFunction, Frame } from '../../../../src/animation/types'
-import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { SettingsFunctionObject } from '../../../../src/execute'
+import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 

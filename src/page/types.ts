@@ -1,6 +1,6 @@
-import { MockElement } from '../../test/types/MockElement'
-import { MockContext } from '../../test/types/MockContext'
 import { MockCanvas } from '../../test/types/MockCanvas'
+import { MockContext } from '../../test/types/MockContext'
+import { MockElement } from '../../test/types/MockElement'
 
 type Canvas = HTMLCanvasElement | MockCanvas
 
@@ -12,10 +12,10 @@ enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
 type InputElement = HTMLInputElement | {
-	checked?: any,
-	onclick?: any,
+	checked?: {},
+	onclick?: {},
 	style?: {
-		cursor?: any,
+		cursor?: {},
 	},
 }
 

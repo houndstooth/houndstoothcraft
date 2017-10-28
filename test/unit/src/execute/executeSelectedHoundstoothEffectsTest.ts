@@ -1,19 +1,18 @@
+import Spy = jasmine.Spy
+import { SettingsFunctionObject } from '../../../../src/execute'
 import * as composeMainHoundstooth from '../../../../src/execute/composeMainHoundstooth'
 import * as executeAnimation from '../../../../src/execute/executeAnimation'
 import * as executeGrid from '../../../../src/execute/executeGrid'
 import { executeSelectedHoundstoothEffects } from '../../../../src/execute/executeSelectedHoundstoothEffects'
 import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
-import Spy = jasmine.Spy
-import { SettingsFunctionObject } from '../../../../src/execute'
 import * as page from '../../../../src/page'
-import { Context } from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { Effect } from '../../../../src/store/types/Effect'
 
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
-	const mixedDownContext: Context = {}
+	const mixedDownContext: page.Context = {}
 	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
 		spyOn(page, 'createMixedDownContext').and.returnValue(mixedDownContext)

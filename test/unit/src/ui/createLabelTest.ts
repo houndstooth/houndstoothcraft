@@ -1,5 +1,4 @@
-import { InputElement } from '../../../../src/page'
-import { PageElement } from '../../../../src/page'
+import { InputElement, PageElement } from '../../../../src/page'
 import { Effect } from '../../../../src/store/types/Effect'
 import * as createCheckbox from '../../../../src/ui/createCheckbox'
 import { createLabel } from '../../../../src/ui/createLabel'

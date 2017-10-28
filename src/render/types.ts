@@ -1,6 +1,6 @@
-// tslint:disable-next-line:member-ordering
 import { Px } from '../page'
 
+// tslint:disable:member-ordering
 interface Color {
 	r?: number,
 	g?: number,

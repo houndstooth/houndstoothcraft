@@ -1,6 +1,6 @@
-import { deleteElementIfExists } from '../../../../src/page/deleteElementIfExists'
 import Spy = jasmine.Spy
 import { PageElement } from '../../../../src/page'
+import { deleteElementIfExists } from '../../../../src/page/deleteElementIfExists'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 

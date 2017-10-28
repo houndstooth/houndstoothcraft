@@ -1,7 +1,7 @@
+import { Path } from '../../../../src/render'
 import * as buildPath from '../../../../src/render/buildPath'
 import * as clipPath from '../../../../src/render/clipPath'
 import { setClip } from '../../../../src/render/setClip'
-import { Path } from '../../../../src/render'
 import { Outline } from '../../../../src/space'
 import * as to from '../../../../src/utilities/to'
 import * as view from '../../../../src/view'

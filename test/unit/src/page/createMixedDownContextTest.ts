@@ -1,8 +1,6 @@
+import { Canvas, Context, PageElement } from '../../../../src/page'
 import createMixedDownContext from '../../../../src/page/createMixedDownContext'
 import * as deleteElementIfExists from '../../../../src/page/deleteElementIfExists'
-import { Canvas } from '../../../../src/page'
-import { Context } from '../../../../src/page'
-import { PageElement } from '../../../../src/page'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'
@@ -34,11 +32,11 @@ describe('create mixed down canvas', () => {
 	})
 
 	it('puts the new mixed down canvas on the document body', () => {
-		expect(bodyChildren[0]).toBe(mixedDownCanvas)
+		expect(bodyChildren[ 0 ]).toBe(mixedDownCanvas)
 	})
 
 	it('adds a class name to the mixed down canvas', () => {
-		expect(mixedDownCanvasClassList[0]).toBe('mixed-down-canvas')
+		expect(mixedDownCanvasClassList[ 0 ]).toBe('mixed-down-canvas')
 	})
 
 	it('returns the mixed down canvas\'s context', () => {

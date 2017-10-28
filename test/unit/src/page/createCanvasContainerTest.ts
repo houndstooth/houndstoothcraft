@@ -1,7 +1,6 @@
+import { PageElement, Px } from '../../../../src/page'
 import { createCanvasContainer } from '../../../../src/page/createCanvasContainer'
 import * as scaleElement from '../../../../src/page/scaleElement'
-import { PageElement } from '../../../../src/page'
-import { Px } from '../../../../src/page'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import * as window from '../../../../src/utilities/windowWrapper'

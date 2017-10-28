@@ -4,36 +4,31 @@ import { getFromBaseOrDefaultPattern } from './getFromBaseOrDefaultPattern'
 import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { resetState } from './resetState'
 import {
-	AnimationSettings,
-	ColorAssignmentSettings,
-	ColorSettings,
-	GridSettings,
-	LayerSettings,
-	StripeCountContinuumSettings,
-	StripePositionSettings,
-	TextureSettings,
-	TileSettings,
-	ViewSettings,
+	animationSettings,
+	colorSettings,
+	colorAssignmentSettings,
+	gridSettings,
+	layerSettings,
+	stripeSettings,
+	stripeCountContinuumSettings,
+	stripePositionSettings,
+	textureSettings,
+	tileSettings,
+	viewSettings,
 } from './settings'
-import {
-	Effect,
-	Houndstooth,
-	Pattern,
-	SettingsPath,
-	SettingsStep,
-	State,
-} from './types'
+import { Effect, Houndstooth, Pattern, SettingsPath, SettingsStep, State } from './types'
 
-type _AnimationSettings = AnimationSettings.AnimationSettings
-type _ColorAssignmentSettings = ColorAssignmentSettings.ColorAssignmentSettings
-type _ColorSettings = ColorSettings.ColorSettings
-type _GridSettings = GridSettings.GridSettings
-type _LayerSettings = LayerSettings.LayerSettings
-type _StripeCountContinuumSettings = StripeCountContinuumSettings.StripeCountContinuumSettings
-type _StripePositionSettings = StripePositionSettings.StripePositionSettings
-type _TextureSettings = TextureSettings.TextureSettings
-type _TileSettings = TileSettings.TileSettings
-type _ViewSettings = ViewSettings.ViewSettings
+type AnimationSettings = animationSettings.AnimationSettings
+type ColorAssignmentSettings = colorAssignmentSettings.ColorAssignmentSettings
+type ColorSettings = colorSettings.ColorSettings
+type GridSettings = gridSettings.GridSettings
+type LayerSettings = layerSettings.LayerSettings
+type StripeSettings = stripeSettings.StripeSettings
+type StripeCountContinuumSettings = stripeCountContinuumSettings.StripeCountContinuumSettings
+type StripePositionSettings = stripePositionSettings.StripePositionSettings
+type TextureSettings = textureSettings.TextureSettings
+type TileSettings = tileSettings.TileSettings
+type ViewSettings = viewSettings.ViewSettings
 
 export {
 	defaults,
@@ -47,14 +42,14 @@ export {
 	SettingsStep,
 	deeperPath,
 	getSettingOrCreatePath,
-	_AnimationSettings as AnimationSettings,
-	_ColorAssignmentSettings as ColorAssignmentSettings,
-	_ColorSettings as ColorSettings,
-	_GridSettings as GridSettings,
-	_LayerSettings as LayerSettings,
-	_StripeCountContinuumSettings as StripeCountContinuumSettings,
-	_StripePositionSettings as StripePositionSettings,
-	_TextureSettings as TextureSettings,
-	_TileSettings as TileSettings,
-	_ViewSettings as ViewSettings,
+	AnimationSettings,
+	ColorAssignmentSettings,
+	ColorSettings,
+	GridSettings,
+	LayerSettings,
+	StripeCountContinuumSettings,
+	StripePositionSettings,
+	TextureSettings,
+	TileSettings,
+	ViewSettings,
 }

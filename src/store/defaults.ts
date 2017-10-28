@@ -3,24 +3,26 @@ import { Layer } from '../execute'
 import { Context } from '../page'
 import * as to from '../utilities/to'
 import { BasePattern, Effect, Houndstooth, PatternFunctions, State } from './types'
-import { DEFAULT_ANIMATION_SETTINGS } from './settings/AnimationSettings'
-import { DEFAULT_COLOR_SETTINGS } from './settings/ColorSettings'
-import { DEFAULT_GRID_SETTINGS } from './settings/GridSettings'
-import { DEFAULT_LAYER_SETTINGS } from './settings/LayerSettings'
-import { DEFAULT_STRIPE_SETTINGS } from './settings/StripeSettings'
-import { DEFAULT_TEXTURE_SETTINGS } from './settings/TextureSettings'
-import { DEFAULT_TILE_SETTINGS } from './settings/TileSettings'
-import { DEFAULT_CANVAS_SIZE, DEFAULT_VIEW_SETTINGS } from './settings/ViewSettings'
+import {
+	animationSettings,
+	colorSettings,
+	gridSettings,
+	layerSettings,
+	stripeSettings,
+	textureSettings,
+	tileSettings,
+	viewSettings,
+} from './settings'
 
 const DEFAULT_BASE_PATTERN: BasePattern = {
-	animationSettings: DEFAULT_ANIMATION_SETTINGS,
-	colorSettings: DEFAULT_COLOR_SETTINGS,
-	gridSettings: DEFAULT_GRID_SETTINGS,
-	layerSettings: DEFAULT_LAYER_SETTINGS,
-	stripeSettings: DEFAULT_STRIPE_SETTINGS,
-	textureSettings: DEFAULT_TEXTURE_SETTINGS,
-	tileSettings: DEFAULT_TILE_SETTINGS,
-	viewSettings: DEFAULT_VIEW_SETTINGS,
+	animationSettings: animationSettings.DEFAULT_ANIMATION_SETTINGS,
+	colorSettings: colorSettings.DEFAULT_COLOR_SETTINGS,
+	gridSettings: gridSettings.DEFAULT_GRID_SETTINGS,
+	layerSettings: layerSettings.DEFAULT_LAYER_SETTINGS,
+	stripeSettings: stripeSettings.DEFAULT_STRIPE_SETTINGS,
+	textureSettings: textureSettings.DEFAULT_TEXTURE_SETTINGS,
+	tileSettings: tileSettings.DEFAULT_TILE_SETTINGS,
+	viewSettings: viewSettings.DEFAULT_VIEW_SETTINGS,
 }
 
 const DEFAULT_ANIMATIONS_PATTERN: PatternFunctions = {}
@@ -60,6 +62,8 @@ const DEFAULT_STATE: State = {
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
 	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 }
+
+const DEFAULT_CANVAS_SIZE = viewSettings.DEFAULT_CANVAS_SIZE
 
 export {
 	DEFAULT_ANIMATIONS_PATTERN,

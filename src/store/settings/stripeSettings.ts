@@ -5,7 +5,7 @@ import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
-import { StripePositionSettings } from './stripe'
+import { stripePositionSettings } from './stripe'
 
 // Structure
 
@@ -18,13 +18,13 @@ interface StripeSettingsStructure {
 
 interface StripeSettings extends StripeSettingsStructure {
 	baseStripeDiagonal: BaseStripeDiagonal,
-	stripePositionSettings: Partial<StripePositionSettings.StripePositionSettings>,
+	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
 }
 
 // Functions of
 
 type StripeSettingsFunctions = Overwrite<FunctionsOf<StripeSettings>, {
-	stripePositionSettings: Partial<StripePositionSettings.StripePositionSettingsFunctions>,
+	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettingsFunctions>,
 }>
 
 // Defaults
@@ -33,7 +33,7 @@ const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Mino
 
 const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 	baseStripeDiagonal: DEFAULT_BASE_STRIPE_DIAGONAL,
-	stripePositionSettings: StripePositionSettings.DEFAULT_STRIPE_POSITION_SETTINGS,
+	stripePositionSettings: stripePositionSettings.DEFAULT_STRIPE_POSITION_SETTINGS,
 }
 
 // Shortcuts
@@ -45,7 +45,7 @@ const stripeSettingsPathShortcuts: StripeSettingsStructure = {
 		basePath: stripeSettings,
 		settings: DEFAULT_STRIPE_SETTINGS,
 	}),
-	...StripePositionSettings.stripePositionSettingsPathShortcuts,
+	...stripePositionSettings.stripePositionSettingsPathShortcuts,
 }
 
 // Shortcut types
@@ -54,7 +54,7 @@ type StripeSettingsPathShortcut = 'stripeSettings'
 
 type StripeSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BaseStripeDiagonalPathShortcuts: 'baseStripeDiagonal',
-}> | StripePositionSettings.StripePositionSettingsTypePathShortcuts
+}> | stripePositionSettings.StripePositionSettingsTypePathShortcuts
 
 // Export
 

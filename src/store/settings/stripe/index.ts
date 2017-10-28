@@ -1,7 +1,7 @@
-import { StripeCountContinuumSettings } from './stripePosition'
-import * as StripePositionSettings from './StripePositionSettings'
+import { stripeCountContinuumSettings } from './stripePosition'
+import * as stripePositionSettings from './stripePositionSettings'
 
 export {
-	StripePositionSettings,
-	StripeCountContinuumSettings,
+	stripePositionSettings,
+	stripeCountContinuumSettings,
 }

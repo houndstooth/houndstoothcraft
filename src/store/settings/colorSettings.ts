@@ -7,7 +7,7 @@ import { Color } from '../../render'
 import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
-import { ColorAssignmentSettings } from './color'
+import { colorAssignmentSettings } from './color'
 
 // Structure
 
@@ -22,7 +22,7 @@ interface ColorSettingsStructure {
 
 interface ColorSettings extends ColorSettingsStructure {
 	backgroundColor: Color,
-	colorAssignmentSettings: Partial<ColorAssignmentSettings.ColorAssignmentSettings>,
+	colorAssignmentSettings: Partial<colorAssignmentSettings.ColorAssignmentSettings>,
 	colorSet: ColorSet,
 	opacity: number,
 }
@@ -30,7 +30,7 @@ interface ColorSettings extends ColorSettingsStructure {
 // Functions of
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
-	colorAssignmentSettings: ColorAssignmentSettings.ColorAssignmentSettingsFunctions,
+	colorAssignmentSettings: colorAssignmentSettings.ColorAssignmentSettingsFunctions,
 }>
 
 // Defaults
@@ -41,7 +41,7 @@ const DEFAULT_OPACITY = 1
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,
-	colorAssignmentSettings: ColorAssignmentSettings.DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
+	colorAssignmentSettings: colorAssignmentSettings.DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 	colorSet: DEFAULT_COLOR_SET,
 	opacity: DEFAULT_OPACITY,
 }
@@ -55,7 +55,7 @@ const colorSettingsPathShortcuts: ColorSettingsStructure = {
 		basePath: colorSettings,
 		settings: DEFAULT_COLOR_SETTINGS,
 	}),
-	...ColorAssignmentSettings.colorAssignmentSettingsPathShortcuts,
+	...colorAssignmentSettings.colorAssignmentSettingsPathShortcuts,
 }
 
 // Shortcut types
@@ -66,7 +66,7 @@ type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	ColorPathShortcuts: 'backgroundColor'
 	ColorSetPathShortcuts: 'colorSet'
 	NumberPathShortcuts: 'opacity',
-}> | ColorAssignmentSettings.ColorAssignmentSettingsTypePathShortcuts
+}> | colorAssignmentSettings.ColorAssignmentSettingsTypePathShortcuts
 
 // Export
 

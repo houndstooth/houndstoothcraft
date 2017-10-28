@@ -6,7 +6,7 @@ import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../types'
-import { StripeCountContinuumSettings } from './stripePosition'
+import { stripeCountContinuumSettings } from './stripePosition'
 
 // Structure
 
@@ -22,14 +22,14 @@ interface StripePositionSettingsStructure {
 interface StripePositionSettings extends StripePositionSettingsStructure {
 	getStripePositions: GetStripePositions,
 	stripeCount: number,
-	stripeCountContinuumSettings: Partial<StripeCountContinuumSettings.StripeCountContinuumSettings>,
+	stripeCountContinuumSettings: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>,
 	stripeCountMode: StripeCountMode,
 }
 
 // Functions of
 
 type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
-	stripeCountContinuumSettings: StripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
+	stripeCountContinuumSettings: stripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
 }>
 
 // Defaults
@@ -41,7 +41,7 @@ const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
 const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 	getStripePositions: DEFAULT_GET_STRIPE_POSITIONS,
 	stripeCount: DEFAULT_STRIPE_COUNT,
-	stripeCountContinuumSettings: StripeCountContinuumSettings.DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
+	stripeCountContinuumSettings: stripeCountContinuumSettings.DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
 }
 
@@ -54,7 +54,7 @@ const stripePositionSettingsPathShortcuts: StripePositionSettingsStructure = {
 		basePath: stripePositionSettings,
 		settings: DEFAULT_STRIPE_POSITION_SETTINGS,
 	}),
-	...StripeCountContinuumSettings.stripeCountContinuumSettingsPathShortcuts,
+	...stripeCountContinuumSettings.stripeCountContinuumSettingsPathShortcuts,
 }
 
 // Shortcut types
@@ -65,7 +65,7 @@ type StripePositionSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, 
 	GetStripePositionsPathShortcuts: 'getStripePositions'
 	NumberPathShortcuts: 'stripeCount'
 	StripeCountModePathShortcuts: 'stripeCountMode',
-}> | StripeCountContinuumSettings.StripeCountContinuumSettingsTypePathShortcuts
+}> | stripeCountContinuumSettings.StripeCountContinuumSettingsTypePathShortcuts
 
 // Export
 

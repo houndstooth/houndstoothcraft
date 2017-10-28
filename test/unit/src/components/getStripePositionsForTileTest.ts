@@ -3,7 +3,7 @@ import { Address, StripePosition } from '../../../../src/components'
 import { getStripePositionsForTile } from '../../../../src/components/getStripePositionsForTile'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { StripePositionSettings } from '../../../../src/store/settings/stripe/StripePositionSettings'
+import { StripePositionSettings } from '../../../../src/store/settings/stripe/stripePositionSettings'
 import Spy = jasmine.Spy
 
 describe('get stripe positions for tile', () => {

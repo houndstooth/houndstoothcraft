@@ -1,5 +1,5 @@
-import * as ColorAssignmentSettings from './ColorAssignmentSettings'
+import * as colorAssignmentSettings from './colorAssignmentSettings'
 
 export {
-	ColorAssignmentSettings,
+	colorAssignmentSettings,
 }

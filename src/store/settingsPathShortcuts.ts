@@ -1,22 +1,24 @@
 import { SettingsStep } from './types'
-import { animationSettings, animationSettingsPathShortcuts } from './settings/AnimationSettings'
-import { colorSettings, colorSettingsPathShortcuts } from './settings/ColorSettings'
-import { gridSettings, gridSettingsPathShortcuts } from './settings/GridSettings'
-import { layerSettings, layerSettingsPathShortcuts } from './settings/LayerSettings'
-import { stripeSettingsPathShortcuts, stripeSettings } from './settings/StripeSettings'
-import { textureSettingsPathShortcuts, textureSettings, } from './settings/TextureSettings'
-import { tileSettingsPathShortcuts, tileSettings } from './settings/TileSettings'
-import { viewSettingsPathShortcuts, viewSettings } from './settings/ViewSettings'
+import {
+	animationSettings,
+	colorSettings,
+	gridSettings,
+	layerSettings,
+	stripeSettings,
+	textureSettings,
+	tileSettings,
+	viewSettings,
+} from './settings'
 
 const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
-	animationSettings, ...animationSettingsPathShortcuts,
-	colorSettings, ...colorSettingsPathShortcuts,
-	gridSettings, ...gridSettingsPathShortcuts,
-	layerSettings, ...layerSettingsPathShortcuts,
-	stripeSettings, ...stripeSettingsPathShortcuts,
-	textureSettings, ...textureSettingsPathShortcuts,
-	tileSettings, ...tileSettingsPathShortcuts,
-	viewSettings, ...viewSettingsPathShortcuts,
+	animationSettings: animationSettings.animationSettings, ...animationSettings.animationSettingsPathShortcuts,
+	colorSettings: colorSettings.colorSettings, ...colorSettings.colorSettingsPathShortcuts,
+	gridSettings: gridSettings.gridSettings, ...gridSettings.gridSettingsPathShortcuts,
+	layerSettings: layerSettings.layerSettings, ...layerSettings.layerSettingsPathShortcuts,
+	stripeSettings: stripeSettings.stripeSettings, ...stripeSettings.stripeSettingsPathShortcuts,
+	textureSettings: textureSettings.textureSettings, ...textureSettings.textureSettingsPathShortcuts,
+	tileSettings: tileSettings.tileSettings, ...tileSettings.tileSettingsPathShortcuts,
+	viewSettings: viewSettings.viewSettings, ...viewSettings.viewSettingsPathShortcuts,
 }
 
 export { settingsPathShortcuts }

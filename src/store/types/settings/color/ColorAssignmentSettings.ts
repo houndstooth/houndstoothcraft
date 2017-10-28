@@ -75,6 +75,11 @@ type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
 
 type ColorAssignmentSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
 	BooleanPathShortcuts: 'flipGrain' | 'switcheroo',
+	AssignmentModePathShortcuts: 'assignmentMode',
+	OffsetAddressPathShortcuts: 'offsetAddress',
+	SupertilePathShortcuts: 'supertile',
+	TransformShapeColorIndicesPathShortcuts: 'transformShapeColorIndices',
+	WeavePathShortcuts: 'weave',
 }>
 
 export {

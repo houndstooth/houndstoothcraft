@@ -10,6 +10,10 @@ import {
 	ColorSettingsTypePathShortcuts as ColorSettings,
 } from './settings/ColorSettings'
 
+type AssignmentModePathShortcuts =
+	| AnimationSettings['AssignmentModePathShortcuts']
+	| ColorSettings['AssignmentModePathShortcuts']
+
 type BooleanPathShortcuts =
 	| AnimationSettings['BooleanPathShortcuts']
 	| ColorSettings['BooleanPathShortcuts']
@@ -57,6 +61,10 @@ type NumberPathShortcuts =
 	| 'opacity'
 	| 'zoom'
 
+type OffsetAddressPathShortcuts =
+	| AnimationSettings['OffsetAddressPathShortcuts']
+	| ColorSettings['OffsetAddressPathShortcuts']
+
 type PxPathShortcuts =
 	| AnimationSettings['PxPathShortcuts']
 	| ColorSettings['PxPathShortcuts']
@@ -67,10 +75,22 @@ type RadianPathShortcuts =
 	| ColorSettings['RadianPathShortcuts']
 	| 'rotateViewAboutCanvasCenter'
 
+type SupertilePathShortcuts =
+	| AnimationSettings['SupertilePathShortcuts']
+	| ColorSettings['SupertilePathShortcuts']
+
+type TransformShapeColorIndicesPathShortcuts =
+	| AnimationSettings['TransformShapeColorIndicesPathShortcuts']
+	| ColorSettings['TransformShapeColorIndicesPathShortcuts']
+
 type UnitPathShortcuts =
 	| AnimationSettings['UnitPathShortcuts']
 	| ColorSettings['UnitPathShortcuts']
 	| 'tileSize'
+
+type WeavePathShortcuts =
+	| AnimationSettings['WeavePathShortcuts']
+	| ColorSettings['WeavePathShortcuts']
 
 type GridSettingsPathShortcut = 'gridSettings'
 type LayerSettingsPathShortcut = 'layerSettings'
@@ -96,6 +116,7 @@ export {
 
 	// General type path shortcuts
 
+	AssignmentModePathShortcuts,
 	BooleanPathShortcuts,
 	ColorPathShortcuts,
 	ColorsPathShortcuts,
@@ -105,7 +126,11 @@ export {
 	GetTileOriginAndSizePathShortcuts,
 	LayerPathShortcuts,
 	NumberPathShortcuts,
+	OffsetAddressPathShortcuts,
 	PxPathShortcuts,
 	RadianPathShortcuts,
+	SupertilePathShortcuts,
+	TransformShapeColorIndicesPathShortcuts,
 	UnitPathShortcuts,
+	WeavePathShortcuts,
 }

@@ -2,74 +2,87 @@
 
 import {
 	AnimationSettingsPathShortcut,
-	TypePathShortcuts as AnimationSettings,
+	AnimationSettingsTypePathShortcuts as AnimationSettings,
 } from './settings/AnimationSettings'
 import {
 	ColorAssignmentSettingsPathShortcut,
+	ColorAssignmentSettingsTypePathShortcuts as ColorAssignmentSettings,
 	ColorSettingsPathShortcut,
-	TypePathShortcuts as ColorSettings,
+	ColorSettingsTypePathShortcuts as ColorSettings,
 } from './settings/ColorSettings'
 
 type BooleanPathShortcuts =
-	| AnimationSettings.BooleanPathShortcuts
-	| ColorSettings.BooleanPathShortcuts
+	| AnimationSettings['BooleanPathShortcuts']
+	| ColorAssignmentSettings['BooleanPathShortcuts']
+	| ColorSettings['BooleanPathShortcuts']
 	| 'centerViewOnCenterOfTileAtHomeAddress'
 	| 'collapseSameColoredShapesWithinTile'
 	| 'includeNegativeQuadrants'
 	| 'zoomOnCanvasCenter'
 
 type ColorPathShortcuts =
-	| AnimationSettings.ColorPathShortcuts
-	| ColorSettings.ColorPathShortcuts
+	| AnimationSettings['ColorPathShortcuts']
+	| ColorAssignmentSettings['ColorPathShortcuts']
+	| ColorSettings['ColorPathShortcuts']
 
 type ColorsPathShortcuts =
-	| AnimationSettings.ColorsPathShortcuts
-	| ColorSettings.ColorsPathShortcuts
+	| AnimationSettings['ColorsPathShortcuts']
+	| ColorAssignmentSettings['ColorsPathShortcuts']
+	| ColorSettings['ColorsPathShortcuts']
 
 type ColorSetPathShortcuts =
-	| AnimationSettings.ColorSetPathShortcuts
-	| ColorSettings.ColorSetPathShortcuts
+	| AnimationSettings['ColorSetPathShortcuts']
+	| ColorAssignmentSettings['ColorSetPathShortcuts']
+	| ColorSettings['ColorSetPathShortcuts']
 
 type ExecuteTexturePathShortcuts =
-	| AnimationSettings.ExecuteTexturePathShortcuts
-	| ColorSettings.ExecuteTexturePathShortcuts
+	| AnimationSettings['ExecuteTexturePathShortcuts']
+	| ColorAssignmentSettings['ExecuteTexturePathShortcuts']
+	| ColorSettings['ExecuteTexturePathShortcuts']
 	| 'executeTexture'
 
 type FramePathShortcuts =
-	| AnimationSettings.FramePathShortcuts
-	| ColorSettings.FramePathShortcuts
+	| AnimationSettings['FramePathShortcuts']
+	| ColorAssignmentSettings['FramePathShortcuts']
+	| ColorSettings['FramePathShortcuts']
 
 type GetTileOriginAndSizePathShortcuts =
-	| AnimationSettings.GetTileOriginAndSizePathShortcuts
-	| ColorSettings.GetTileOriginAndSizePathShortcuts
+	| AnimationSettings['GetTileOriginAndSizePathShortcuts']
+	| ColorAssignmentSettings['GetTileOriginAndSizePathShortcuts']
+	| ColorSettings['GetTileOriginAndSizePathShortcuts']
 	| 'getTileOriginAndSize'
 
 type LayerPathShortcuts =
-	| AnimationSettings.LayerPathShortcuts
-	| ColorSettings.LayerPathShortcuts
+	| AnimationSettings['LayerPathShortcuts']
+	| ColorAssignmentSettings['LayerPathShortcuts']
+	| ColorSettings['LayerPathShortcuts']
 	| 'endLayer'
 
 type NumberPathShortcuts =
-	| AnimationSettings.NumberPathShortcuts
-	| ColorSettings.NumberPathShortcuts
+	| AnimationSettings['NumberPathShortcuts']
+	| ColorAssignmentSettings['NumberPathShortcuts']
+	| ColorSettings['NumberPathShortcuts']
 	| 'gridSize'
 	| 'stripeCount'
 	| 'opacity'
 	| 'zoom'
 
 type PxPathShortcuts =
-	| AnimationSettings.PxPathShortcuts
-	| ColorSettings.PxPathShortcuts
+	| AnimationSettings['PxPathShortcuts']
+	| ColorAssignmentSettings['PxPathShortcuts']
+	| ColorSettings['PxPathShortcuts']
 	| 'canvasSize'
 
 type RadianPathShortcuts =
-	| AnimationSettings.RadianPathShortcuts
-	| ColorSettings.RadianPathShortcuts
+	| AnimationSettings['RadianPathShortcuts']
+	| ColorAssignmentSettings['RadianPathShortcuts']
+	| ColorSettings['RadianPathShortcuts']
 	| 'rotateViewAboutCanvasCenter'
 
 type UnitPathShortcuts =
-	| AnimationSettings.UnitPathShortcuts
-	| ColorSettings.UnitPathShortcuts
+	| AnimationSettings['UnitPathShortcuts']
+	| ColorAssignmentSettings['UnitPathShortcuts']
+	| ColorSettings['UnitPathShortcuts']
 	| 'tileSize'
 
 type GridSettingsPathShortcut = 'gridSettings'

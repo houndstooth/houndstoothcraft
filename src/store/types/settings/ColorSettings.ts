@@ -5,14 +5,16 @@ import { BLACK, TRANSPARENT } from '../../../constants'
 import { FunctionsOf } from '../../../execute'
 import { Color } from '../../../render'
 import * as to from '../../../utilities/to'
+import { Overwrite } from '../Overwrite'
 import { SettingsStep } from '../SettingsStep'
+import { TypePathShortcuts } from '../TypePathShortcuts'
 import { ColorAssignmentSettings } from './color'
 import {
 	colorAssignmentSettings,
 	ColorAssignmentSettingsPathShortcut,
+	ColorAssignmentSettingsTypePathShortcuts,
 	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 	settingsPathShortcuts as colorAssignmentSettingsPathShortcuts,
-	TypePathShortcuts as ColorAssignmentSettingsTypePathShortcuts,
 } from './color/ColorAssignmentSettings'
 
 // Structure
@@ -68,20 +70,11 @@ const settingsPathShortcuts: ColorSettingsStructure = {
 
 type ColorSettingsPathShortcut = 'colorSettings'
 
-namespace TypePathShortcuts {
-	export type BooleanPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type ColorPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | 'backgroundColor'
-	export type ColorSetPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | 'colorSet'
-	export type ColorsPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type ExecuteTexturePathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type FramePathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type GetTileOriginAndSizePathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type LayerPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type NumberPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | 'opacity'
-	export type PxPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type RadianPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-	export type UnitPathShortcuts = ColorAssignmentSettingsTypePathShortcuts.BooleanPathShortcuts | '_'
-}
+type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+	ColorPathShortcuts: 'backgroundColor'
+	ColorSetPathShortcuts: 'colorSet'
+	NumberPathShortcuts: 'opacity',
+}>
 
 // Export
 
@@ -106,6 +99,7 @@ export {
 	// Shortcut types
 
 	ColorSettingsPathShortcut,
+	ColorSettingsTypePathShortcuts,
 	ColorAssignmentSettingsPathShortcut,
-	TypePathShortcuts,
+	ColorAssignmentSettingsTypePathShortcuts,
 }

@@ -3,6 +3,8 @@
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../../components'
 import { FunctionsOf } from '../../../../execute/types'
 import * as to from '../../../../utilities/to'
+import { Overwrite } from '../../Overwrite'
+import { TypePathShortcuts } from '../../TypePathShortcuts'
 
 // Structure
 
@@ -71,20 +73,9 @@ const settingsPathShortcuts: ColorAssignmentSettingsStructure = {
 
 type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
 
-namespace TypePathShortcuts {
-	export type BooleanPathShortcuts = 'flipGrain' | 'switcheroo'
-	export type ColorPathShortcuts = '_'
-	export type ColorSetPathShortcuts = '_'
-	export type ColorsPathShortcuts = '_'
-	export type ExecuteTexturePathShortcuts = '_'
-	export type FramePathShortcuts = '_'
-	export type GetTileOriginAndSizePathShortcuts = '_'
-	export type LayerPathShortcuts = '_'
-	export type NumberPathShortcuts = '_'
-	export type PxPathShortcuts = '_'
-	export type RadianPathShortcuts = '_'
-	export type UnitPathShortcuts = '_'
-}
+type ColorAssignmentSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+	BooleanPathShortcuts: 'flipGrain' | 'switcheroo',
+}>
 
 export {
 	// Type
@@ -107,5 +98,5 @@ export {
 	// Shortcut types
 
 	ColorAssignmentSettingsPathShortcut,
-	TypePathShortcuts,
+	ColorAssignmentSettingsTypePathShortcuts,
 }

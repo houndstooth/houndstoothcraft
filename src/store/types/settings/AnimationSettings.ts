@@ -3,15 +3,17 @@
 import { Frame } from '../../../animation'
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
+import { Overwrite } from '../Overwrite'
 import { SettingsPath } from '../SettingsPath'
+import { TypePathShortcuts } from '../TypePathShortcuts'
 
 // Structure
 
 interface AnimationSettingsStructure {
-	endFrame: any,
-	frameRate: any,
-	refreshCanvas: any,
-	startFrame: any,
+	endFrame: any
+	frameRate: any
+	refreshCanvas: any
+	startFrame: any
 
 	[_: string]: any
 }
@@ -19,10 +21,10 @@ interface AnimationSettingsStructure {
 // Type
 
 interface AnimationSettings extends AnimationSettingsStructure {
-	endFrame: Frame,
-	frameRate: number,
-	refreshCanvas: boolean,
-	startFrame: Frame,
+	endFrame: Frame
+	frameRate: number
+	refreshCanvas: boolean
+	startFrame: Frame
 }
 
 // Functions of
@@ -58,20 +60,11 @@ const settingsPathShortcuts: AnimationSettingsStructure = {
 
 type AnimationSettingsPathShortcut = 'animationSettings'
 
-namespace TypePathShortcuts {
-	export type BooleanPathShortcuts = 'refreshCanvas'
-	export type ColorPathShortcuts = '_'
-	export type ColorsPathShortcuts = '_'
-	export type ColorSetPathShortcuts = '_'
-	export type ExecuteTexturePathShortcuts = '_'
-	export type FramePathShortcuts = 'startFrame' | 'endFrame'
-	export type GetTileOriginAndSizePathShortcuts = '_'
-	export type LayerPathShortcuts = '_'
-	export type NumberPathShortcuts = 'frameRate'
-	export type PxPathShortcuts = '_'
-	export type RadianPathShortcuts = '_'
-	export type UnitPathShortcuts = '_'
-}
+type AnimationSettingsTypePathShortcuts = Overwrite<TypePathShortcuts, {
+	BooleanPathShortcuts: 'refreshCanvas'
+	FramePathShortcuts: 'startFrame' | 'endFrame'
+	NumberPathShortcuts: 'frameRate',
+}>
 
 // Export
 
@@ -96,5 +89,5 @@ export {
 	// Shortcut types
 
 	AnimationSettingsPathShortcut,
-	TypePathShortcuts,
+	AnimationSettingsTypePathShortcuts,
 }

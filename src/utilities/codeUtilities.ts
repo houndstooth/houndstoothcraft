@@ -35,7 +35,7 @@ const shallowEqual: (a: any, b: any) => boolean = (a, b) => {
 
 const deepClone: <T>(objectToDeepClone: T) => T =
 	<T>(objectToDeepClone: T): T => {
-		const clonedObject = <T>{}
+		const clonedObject = {} as any
 		setAllPropertiesOfObjectOnAnother({
 			objectToChange: clonedObject,
 			objectWithProperties: objectToDeepClone,
@@ -64,7 +64,7 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T =
 			clonedMaybeObject = maybeObjectToDeepClone
 		}
 
-		return clonedMaybeObject as T
+		return clonedMaybeObject
 	}
 
 const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'

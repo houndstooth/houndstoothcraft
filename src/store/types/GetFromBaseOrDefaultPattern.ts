@@ -1,3 +1,5 @@
+// tslint:disable:max-line-length
+
 import * as Settings from './settings'
 import { Frame } from '../../animation'
 import * as Components from '../../components'
@@ -5,32 +7,23 @@ import { Layer } from '../../execute'
 import { Px } from '../../page'
 import { Color } from '../../render'
 import { Radian } from '../../space'
-import { MissingSettingsPathShortcut } from './MissingSettingsPathShortcut'
+import * as SettingsPathShortcuts from './SettingsPathShortcuts';
 import { TypePathShortcuts } from './TypePathShortcuts'
-import { AnimationSettingsPathShortcut } from './settings/AnimationSettings'
-import { ColorSettingsPathShortcut } from './settings/ColorSettings'
-import { ColorAssignmentSettingsPathShortcut } from './settings/color/ColorAssignmentSettings'
-import { GridSettingsPathShortcut } from './settings/GridSettings'
-import { LayerSettingsPathShortcut } from './settings/LayerSettings'
-import { StripeSettingsPathShortcut } from './settings/StripeSettings'
-import { StripeCountContinuumSettingsPathShortcut } from './settings/stripe/stripePosition/StripeCountContinuumSettings'
-import { StripePositionSettingsPathShortcut } from './settings/stripe/StripePositionSettings'
-import { TextureSettingsPathShortcut } from './settings/TextureSettings'
-import { TileSettingsPathShortcut } from './settings/TileSettings'
-import { ViewSettingsPathShortcut } from './settings/ViewSettings'
+
+enum MissingSettingsPathShortcut {}
 
 interface GetFromBaseOrDefaultPattern {
-	(settingsPathShortcut: AnimationSettingsPathShortcut): Settings.AnimationSettings
-	(settingsPathShortcut: ColorSettingsPathShortcut): Settings.ColorSettings
-	(settingsPathShortcut: ColorAssignmentSettingsPathShortcut): Settings.ColorAssignmentSettings
-	(settingsPathShortcut: GridSettingsPathShortcut): Settings.GridSettings
-	(settingsPathShortcut: LayerSettingsPathShortcut): Settings.LayerSettings
-	(settingsPathShortcut: StripeSettingsPathShortcut): Settings.StripeSettings
-	(settingsPathShortcut: StripeCountContinuumSettingsPathShortcut): Settings.StripeCountContinuumSettings
-	(settingsPathShortcut: StripePositionSettingsPathShortcut): Settings.StripePositionSettings
-	(settingsPathShortcut: TextureSettingsPathShortcut): Settings.TextureSettings
-	(settingsPathShortcut: TileSettingsPathShortcut): Settings.TileSettings
-	(settingsPathShortcut: ViewSettingsPathShortcut): Settings.ViewSettings
+	(settingsPathShortcut: SettingsPathShortcuts.AnimationSettingsPathShortcut): Settings.AnimationSettings
+	(settingsPathShortcut: SettingsPathShortcuts.ColorSettingsPathShortcut): Settings.ColorSettings
+	(settingsPathShortcut: SettingsPathShortcuts.ColorAssignmentSettingsPathShortcut): Settings.ColorAssignmentSettings
+	(settingsPathShortcut: SettingsPathShortcuts.GridSettingsPathShortcut): Settings.GridSettings
+	(settingsPathShortcut: SettingsPathShortcuts.LayerSettingsPathShortcut): Settings.LayerSettings
+	(settingsPathShortcut: SettingsPathShortcuts.StripeSettingsPathShortcut): Settings.StripeSettings
+	(settingsPathShortcut: SettingsPathShortcuts.StripeCountContinuumSettingsPathShortcut): Settings.StripeCountContinuumSettings
+	(settingsPathShortcut: SettingsPathShortcuts.StripePositionSettingsPathShortcut): Settings.StripePositionSettings
+	(settingsPathShortcut: SettingsPathShortcuts.TextureSettingsPathShortcut): Settings.TextureSettings
+	(settingsPathShortcut: SettingsPathShortcuts.TileSettingsPathShortcut): Settings.TileSettings
+	(settingsPathShortcut: SettingsPathShortcuts.ViewSettingsPathShortcut): Settings.ViewSettings
 	(settingsPathShortcut: TypePathShortcuts['AssignmentModePathShortcuts']): Components.AssignmentMode
 	(settingsPathShortcut: TypePathShortcuts['BaseStripeDiagonalPathShortcuts']): Components.BaseStripeDiagonal
 	(settingsPathShortcut: TypePathShortcuts['BooleanPathShortcuts']): boolean

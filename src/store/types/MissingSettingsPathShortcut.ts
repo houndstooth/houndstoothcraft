@@ -1,3 +1,0 @@
-enum MissingSettingsPathShortcut {}
-
-export { MissingSettingsPathShortcut }

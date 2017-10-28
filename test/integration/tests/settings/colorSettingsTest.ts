@@ -53,7 +53,7 @@ describe('.colorSettings', () => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
-						colorAssignment: {
+						colorAssignmentSettings: {
 							weave: {
 								columns: simplestWeaveToDemonstrateSetting,
 								rows: simplestWeaveToDemonstrateSetting,
@@ -133,7 +133,7 @@ describe('.colorSettings', () => {
 		})
 	})
 
-	describe('.colorAssignment', () => {
+	describe('.colorAssignmentSettings', () => {
 		describe('.assignmentMode', () => {
 			describe('weave', () => {
 				it('is the simplest way to describe a pattern w/ colors not varied w/in its rows and columns', () => {
@@ -141,7 +141,7 @@ describe('.colorSettings', () => {
 					const houndstoothOverrides: Effect = {
 						basePattern: {
 							colorSettings: {
-								colorAssignment: {
+								colorAssignmentSettings: {
 									weave: {
 										columns: [ 1, 0, 1 ],
 										rows: [ 0, 1, 1, 0 ],
@@ -473,7 +473,7 @@ describe('.colorSettings', () => {
 					const houndstoothOverrides: Effect = {
 						basePattern: {
 							colorSettings: {
-								colorAssignment: {
+								colorAssignmentSettings: {
 									assignmentMode: AssignmentMode.Supertile,
 									supertile: to.Supertile([
 										[
@@ -621,7 +621,7 @@ describe('.colorSettings', () => {
 				const houndstoothOverrides: Effect = {
 					basePattern: {
 						colorSettings: {
-							colorAssignment: {
+							colorAssignmentSettings: {
 								switcheroo: true,
 							},
 						},
@@ -698,7 +698,7 @@ describe('.colorSettings', () => {
 				const houndstoothOverrides: Effect = {
 					basePattern: {
 						colorSettings: {
-							colorAssignment: {
+							colorAssignmentSettings: {
 								flipGrain: true,
 							},
 						},

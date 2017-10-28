@@ -2,28 +2,20 @@
 
 import { Frame } from '../animation'
 import {
-	AssignmentMode,
 	BaseStripeDiagonal,
-	ColorSet,
 	getStandardTileOriginAndSize,
 	GetStripePositions,
 	GetTileOriginAndSize,
 	standardStripePositions,
 	StripeCountMode,
-	Supertile,
 	Unit,
-	Weave,
 } from '../components'
-import { BLACK, TRANSPARENT } from '../constants'
 import { Layer } from '../execute'
 import { Context, Px } from '../page'
-import { Color } from '../render'
 import { Radian } from '../space'
 import * as to from '../utilities/to'
 import {
 	BasePattern,
-	ColorAssignmentSettings,
-	ColorSettings,
 	Effect,
 	GridSettings,
 	Houndstooth,
@@ -38,18 +30,17 @@ import {
 	ViewSettings,
 } from './types'
 import { DEFAULT_ANIMATION_SETTINGS } from './types/settings/AnimationSettings'
+import { DEFAULT_COLOR_SETTINGS } from './types/settings/ColorSettings'
 
 const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
 const DEFAULT_ZOOM = 1
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
-const DEFAULT_COLOR_SET: ColorSet = to.ColorSet([ BLACK, TRANSPARENT ])
-const DEFAULT_OPACITY = 1
+
 const DEFAULT_STRIPE_COUNT = 4
 const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Minor
 const DEFAULT_START_LAYER: Layer = to.Layer(0)
 const DEFAULT_END_LAYER: Layer = to.Layer(0)
-const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
 const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS = false
 const DEFAULT_DELTA_STRIPE_COUNT = 1
 const DEFAULT_INITIAL_STRIPE_COUNT = 1
@@ -75,30 +66,6 @@ const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
 const DEFAULT_MIXING_DOWN = false
 const DEFAULT_PERFORMANCE_LOGGING = false
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
-const DEFAULT_ASSIGNMENT_MODE: AssignmentMode = AssignmentMode.Weave
-const DEFAULT_FLIP_GRAIN = false
-const DEFAULT_OFFSET_ADDRESS: undefined = undefined
-const DEFAULT_SUPERTILE: Supertile = to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ])
-const DEFAULT_SWITCHEROO = false
-const DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES: undefined = undefined
-const DEFAULT_WEAVE: Weave = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
-
-const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
-	assignmentMode: DEFAULT_ASSIGNMENT_MODE,
-	flipGrain: DEFAULT_FLIP_GRAIN,
-	offsetAddress: DEFAULT_OFFSET_ADDRESS,
-	supertile: DEFAULT_SUPERTILE,
-	switcheroo: DEFAULT_SWITCHEROO,
-	transformShapeColorIndices: DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES,
-	weave: DEFAULT_WEAVE,
-}
-
-const DEFAULT_COLOR_SETTINGS: ColorSettings = {
-	backgroundColor: DEFAULT_BACKGROUND_COLOR,
-	colorAssignment: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
-	colorSet: DEFAULT_COLOR_SET,
-	opacity: DEFAULT_OPACITY,
-}
 
 const DEFAULT_GRID_SETTINGS: GridSettings = {
 	gridSize: DEFAULT_GRID_SIZE,

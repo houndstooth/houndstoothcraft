@@ -29,11 +29,16 @@ type AnimationSettingsFunctions = FunctionsOf<AnimationSettings>
 
 // Defaults
 
+const DEFAULT_END_FRAME = to.Frame(10000)
+const DEFAULT_FRAME_RATE = 1.005
+const DEFAULT_REFRESH_CANVAS = true
+const DEFAULT_START_FRAME = to.Frame(0)
+
 const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
-	endFrame: to.Frame(10000),
-	frameRate: 1.005,
-	refreshCanvas: true,
-	startFrame: to.Frame(0),
+	endFrame: DEFAULT_END_FRAME,
+	frameRate: DEFAULT_FRAME_RATE,
+	refreshCanvas: DEFAULT_REFRESH_CANVAS,
+	startFrame: DEFAULT_START_FRAME,
 }
 
 // Shortcuts
@@ -54,6 +59,7 @@ type AnimationSettingsPathShortcut = 'animationSettings'
 type BooleanPathShortcuts = 'refreshCanvas'
 type ColorPathShortcuts = '_'
 type ColorsPathShortcuts = '_'
+type ColorSetPathShortcuts = '_'
 type ExecuteTexturePathShortcuts = '_'
 type FramePathShortcuts = 'startFrame' | 'endFrame'
 type GetTileOriginAndSizePathShortcuts = '_'
@@ -89,6 +95,7 @@ export {
 	BooleanPathShortcuts,
 	ColorPathShortcuts,
 	ColorsPathShortcuts,
+	ColorSetPathShortcuts,
 	ExecuteTexturePathShortcuts,
 	FramePathShortcuts,
 	GetTileOriginAndSizePathShortcuts,

@@ -17,7 +17,7 @@ describe('warning about conflicts', () => {
 
 	it('warns when requested and there are conflicts', () => {
 		warnAboutConflicts = true
-		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 		settingName = to.SettingsStep('assignmentMode')
 		existingSetting = 'yoda'
 		overridingSetting = 'luke'
@@ -25,14 +25,14 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorAssignment.assignmentMode`: `yoda` was overridden by `luke`'
+		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` was overridden by `luke`'
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('does not warn when not requested', () => {
 		warnAboutConflicts = false
-		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 		settingName = to.SettingsStep('assignmentMode')
 		existingSetting = 'yoda'
 		overridingSetting = 'luke'
@@ -45,7 +45,7 @@ describe('warning about conflicts', () => {
 
 	it('does not warn when settings are identical', () => {
 		warnAboutConflicts = true
-		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
+		settingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 		settingName = to.SettingsStep('assignmentMode')
 		existingSetting = 'luke'
 		overridingSetting = 'luke'

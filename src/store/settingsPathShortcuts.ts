@@ -3,14 +3,11 @@ import {
 	animationSettings,
 	settingsPathShortcuts as animationSettingsPathShortcuts,
 } from './types/settings/AnimationSettings'
+import {
+	colorSettings,
+	settingsPathShortcuts as colorSettingsPathShortcuts,
+} from './types/settings/ColorSettings'
 import { SettingsStep } from './types/SettingsStep'
-
-const colorSettings: SettingsStep[] = to.SettingsPath([ 'colorSettings' ])
-const colorSet: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'colorSet' ])
-const opacity: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'opacity' ])
-const backgroundColor: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'backgroundColor' ])
-const colorAssignmentSettings: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'colorAssignment' ])
-const flipGrain: SettingsStep[] = to.SettingsPath([ 'colorSettings', 'colorAssignment', 'flipGrain' ])
 
 const gridSettings: SettingsStep[] = to.SettingsPath([ 'gridSettings' ])
 const gridSize: SettingsStep[] = to.SettingsPath([ 'gridSettings', 'gridSize' ])
@@ -49,23 +46,18 @@ const zoomOnCanvasCenter: SettingsStep[] = to.SettingsPath([ 'viewSettings', 'zo
 
 const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	animationSettings, ...animationSettingsPathShortcuts,
-	backgroundColor,
+	colorSettings, ...colorSettingsPathShortcuts,
 	canvasSize,
 	centerViewOnCenterOfTileAtHomeAddress,
 	collapseSameColoredShapesWithinTile,
-	colorAssignmentSettings,
-	colorSet,
-	colorSettings,
 	endLayer,
 	executeTexture,
-	flipGrain,
 	getStripePositions,
 	getTileOriginAndSize,
 	gridSettings,
 	gridSize,
 	includeNegativeQuadrants,
 	layerSettings,
-	opacity,
 	rotateViewAboutCanvasCenter,
 	stripeCount,
 	stripeCountContinuumSettings,

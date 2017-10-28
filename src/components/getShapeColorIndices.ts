@@ -5,17 +5,17 @@ import * as to from '../utilities/to'
 import { Address, AssignmentMode, ShapeColorIndex, Supertile, TransformShapeColorIndices, Weave } from './types'
 
 const getShapeColorIndices: (_: { gridAddress: Address }) => ShapeColorIndex[] = ({ gridAddress }) => {
-	const colorAssignment: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
+	const colorAssignmentSettings: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
 
-	const shapeColorIndices = getIndices({ gridAddress, colorAssignment })
+	const shapeColorIndices = getIndices({ gridAddress, colorAssignmentSettings })
 
-	return maybeAdjustShapeColorIndices({ colorAssignment, gridAddress, shapeColorIndices })
+	return maybeAdjustShapeColorIndices({ colorAssignmentSettings, gridAddress, shapeColorIndices })
 }
 
 const maybeAdjustShapeColorIndices: (_: {
-	colorAssignment: ColorAssignmentSettings, gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
-}) => ShapeColorIndex[] = ({ colorAssignment, gridAddress, shapeColorIndices }) => {
-	const { transformShapeColorIndices, flipGrain, switcheroo } = colorAssignment
+	colorAssignmentSettings: ColorAssignmentSettings, gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
+}) => ShapeColorIndex[] = ({ colorAssignmentSettings, gridAddress, shapeColorIndices }) => {
+	const { transformShapeColorIndices, flipGrain, switcheroo } = colorAssignmentSettings
 
 	let maybeAdjustedShapeColorIndices = shapeColorIndices
 	if (flipGrain) {
@@ -38,9 +38,9 @@ const maybeAdjustShapeColorIndices: (_: {
 }
 
 const getIndices: (_: {
-	colorAssignment: ColorAssignmentSettings, gridAddress: Address,
-}) => ShapeColorIndex[] = ({ colorAssignment, gridAddress }) => {
-	const { offsetAddress, assignmentMode, weave, supertile } = colorAssignment
+	colorAssignmentSettings: ColorAssignmentSettings, gridAddress: Address,
+}) => ShapeColorIndex[] = ({ colorAssignmentSettings, gridAddress }) => {
+	const { offsetAddress, assignmentMode, weave, supertile } = colorAssignmentSettings
 
 	const addressOffset = offsetAddress ? offsetAddress({ gridAddress }) : to.Address([ 0, 0 ])
 

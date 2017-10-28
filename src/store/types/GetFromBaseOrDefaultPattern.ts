@@ -16,28 +16,24 @@ import {
 // General type imports
 
 import { Frame } from '../../animation'
-import { ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
+import { ColorSet, ExecuteTexture, GetTileOriginAndSize, Unit } from '../../components'
 import { Layer } from '../../execute'
 import { Px } from '../../page'
 import { Color } from '../../render'
 import { Radian } from '../../space'
 
 import {
-	// Settings type path shortcuts
-
 	AnimationSettingsPathShortcut,
 	BooleanPathShortcuts,
 	ColorAssignmentSettingsPathShortcut,
 	ColorPathShortcuts,
+	ColorSetPathShortcuts,
 	ColorSettingsPathShortcut,
 	ColorsPathShortcuts,
 	ExecuteTexturePathShortcuts,
 	FramePathShortcuts,
 	GetTileOriginAndSizePathShortcuts,
 	GridSettingsPathShortcut,
-
-	// General type path shortcuts
-
 	LayerPathShortcuts,
 	LayerSettingsPathShortcut,
 	NumberPathShortcuts,
@@ -70,6 +66,7 @@ interface GetFromBaseOrDefaultPattern {
 	(settingsPathShortcut: BooleanPathShortcuts): boolean
 	(settingsPathShortcut: ColorPathShortcuts): Color
 	(settingsPathShortcut: ColorsPathShortcuts): Color[]
+	(settingsPathShortcut: ColorSetPathShortcuts): ColorSet
 	(settingsPathShortcut: ExecuteTexturePathShortcuts): ExecuteTexture
 	(settingsPathShortcut: FramePathShortcuts): Frame
 	(settingsPathShortcut: GetTileOriginAndSizePathShortcuts): GetTileOriginAndSize

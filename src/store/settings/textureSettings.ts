@@ -1,10 +1,10 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
+import { ExecuteTexture } from '../../components'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
-import { ExecuteTexture } from '../../components'
 
 // Structure
 
@@ -44,7 +44,7 @@ const textureSettingsPathShortcuts: TextureSettingsStructure = buildSettingsPath
 type TextureSettingsPathShortcut = 'textureSettings'
 
 type TextureSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	ExecuteTexturePathShortcuts: 'executeTexture'
+	ExecuteTexturePathShortcuts: 'executeTexture',
 }>
 
 // Export

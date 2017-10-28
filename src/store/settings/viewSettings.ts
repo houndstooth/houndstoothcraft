@@ -1,11 +1,11 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
 import { FunctionsOf } from '../../execute'
+import { Px } from '../../page'
+import { Radian } from '../../space'
 import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
-import { Px } from '../../page'
-import { Radian } from '../../space'
 
 // Structure
 
@@ -64,7 +64,7 @@ type ViewSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BooleanPathShortcuts: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter'
 	NumberPathShortcuts: 'zoom'
 	PxPathShortcuts: 'canvasSize'
-	RadianPathShortcuts: 'rotateViewAboutCanvasCenter'
+	RadianPathShortcuts: 'rotateViewAboutCanvasCenter',
 }>
 
 // Export

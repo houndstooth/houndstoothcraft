@@ -1,24 +1,24 @@
 // tslint:disable:max-file-line-count max-line-length
 
+import { Frame } from '../animation'
+import * as Components from '../components'
+import { Layer } from '../execute'
+import { Context, Px } from '../page'
+import { Color } from '../render'
+import { Radian } from '../space'
 import {
 	animationSettings,
 	colorAssignmentSettings,
 	colorSettings,
 	gridSettings,
 	layerSettings,
-	stripeSettings,
 	stripeCountContinuumSettings,
 	stripePositionSettings,
+	stripeSettings,
 	textureSettings,
 	tileSettings,
 	viewSettings,
 } from './settings'
-import { Context, Px } from '../page'
-import { Frame } from '../animation'
-import { Layer } from '../execute'
-import { Radian } from '../space'
-import { Color } from '../render'
-import * as Components from '../components'
 
 interface BasePattern {
 	animationSettings: Partial<animationSettings.AnimationSettings>,

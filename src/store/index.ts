@@ -5,11 +5,10 @@ import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { resetState } from './resetState'
 import {
 	animationSettings,
-	colorSettings,
 	colorAssignmentSettings,
+	colorSettings,
 	gridSettings,
 	layerSettings,
-	stripeSettings,
 	stripeCountContinuumSettings,
 	stripePositionSettings,
 	textureSettings,
@@ -23,7 +22,6 @@ type ColorAssignmentSettings = colorAssignmentSettings.ColorAssignmentSettings
 type ColorSettings = colorSettings.ColorSettings
 type GridSettings = gridSettings.GridSettings
 type LayerSettings = layerSettings.LayerSettings
-type StripeSettings = stripeSettings.StripeSettings
 type StripeCountContinuumSettings = stripeCountContinuumSettings.StripeCountContinuumSettings
 type StripePositionSettings = stripePositionSettings.StripePositionSettings
 type TextureSettings = textureSettings.TextureSettings

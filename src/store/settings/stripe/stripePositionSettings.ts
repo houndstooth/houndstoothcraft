@@ -1,7 +1,6 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
-import { GetStripePositions, StripeCountMode } from '../../../components'
-import { standardStripePositions } from '../../../components'
+import { GetStripePositions, standardStripePositions, StripeCountMode } from '../../../components'
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
 import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'

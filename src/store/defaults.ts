@@ -2,7 +2,6 @@ import { Frame } from '../animation'
 import { Layer } from '../execute'
 import { Context } from '../page'
 import * as to from '../utilities/to'
-import { BasePattern, Effect, Houndstooth, PatternFunctions, State } from './types'
 import {
 	animationSettings,
 	colorSettings,
@@ -13,6 +12,7 @@ import {
 	tileSettings,
 	viewSettings,
 } from './settings'
+import { BasePattern, Effect, Houndstooth, PatternFunctions, State } from './types'
 
 const DEFAULT_BASE_PATTERN: BasePattern = {
 	animationSettings: animationSettings.DEFAULT_ANIMATION_SETTINGS,

@@ -4,7 +4,6 @@ import { Frame } from '../../animation'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import {  } from '../types'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 
 // Structure

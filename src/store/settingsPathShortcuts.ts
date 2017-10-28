@@ -1,4 +1,3 @@
-import { SettingsStep } from './types'
 import {
 	animationSettings,
 	colorSettings,
@@ -9,6 +8,7 @@ import {
 	tileSettings,
 	viewSettings,
 } from './settings'
+import { SettingsStep } from './types'
 
 const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
 	animationSettings: animationSettings.animationSettings, ...animationSettings.animationSettingsPathShortcuts,

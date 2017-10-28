@@ -1,10 +1,10 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
+import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../components'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
 import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
-import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../components'
 
 // Structure
 
@@ -54,7 +54,7 @@ type TileSettingsPathShortcut = 'tileSettings'
 type TileSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
 	BooleanPathShortcuts: 'collapseSameColoredShapesWithinTile'
 	GetTileOriginAndSizePathShortcuts: 'getTileOriginAndSize'
-	UnitPathShortcuts: 'tileSize'
+	UnitPathShortcuts: 'tileSize',
 }>
 
 // Export

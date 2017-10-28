@@ -1,11 +1,10 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
-import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../../components'
-import { FunctionsOf } from '../../../../execute/types'
-import * as to from '../../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../../buildSettingsPathShortcuts'
-import { Overwrite } from '../../Overwrite'
-import { TypePathShortcutsBase } from '../../TypePathShortcutsBase'
+import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../components'
+import { FunctionsOf } from '../../../execute/types'
+import * as to from '../../../utilities/to'
+import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
+import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../types'
 
 // Structure
 
@@ -57,7 +56,7 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 
 // Shortcuts
 
-const colorAssignmentSettings = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
+const colorAssignmentSettings: SettingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 
 const colorAssignmentSettingsPathShortcuts: ColorAssignmentSettingsStructure = buildSettingsPathShortcuts({
 	basePath: colorAssignmentSettings,

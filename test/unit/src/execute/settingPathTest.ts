@@ -1,5 +1,5 @@
 import { settingPath } from '../../../../src/execute/settingPath'
-import { SettingsStep } from '../../../../src/store/types/SettingsStep'
+import { SettingsStep } from '../../../../src/store/types'
 import * as to from '../../../../src/utilities/to'
 
 describe('setting path', () => {

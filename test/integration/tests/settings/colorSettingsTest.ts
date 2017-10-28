@@ -5,7 +5,7 @@ import { executeSelectedHoundstoothEffects } from '../../../../src/execute/execu
 import { AssignmentMode } from '../../../../src/index'
 import { Color } from '../../../../src/render'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
 import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'

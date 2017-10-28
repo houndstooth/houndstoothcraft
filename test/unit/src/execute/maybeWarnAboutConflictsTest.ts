@@ -1,5 +1,5 @@
 import { maybeWarnAboutConflicts } from '../../../../src/execute/maybeWarnAboutConflicts'
-import { SettingsStep } from '../../../../src/store/types/SettingsStep'
+import { SettingsStep } from '../../../../src/store/types'
 import * as ui from '../../../../src/ui'
 import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'

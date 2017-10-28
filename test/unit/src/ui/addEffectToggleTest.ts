@@ -1,5 +1,5 @@
 import { PageElement } from '../../../../src/page'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import { addEffectToggle } from '../../../../src/ui/addEffectToggle'
 import * as createLabel from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'

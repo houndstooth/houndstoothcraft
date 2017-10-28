@@ -7,7 +7,7 @@ import { executeSelectedHoundstoothEffects } from '../../../../src/execute/execu
 import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepareFunctionObjectsPerSetting'
 import * as page from '../../../../src/page'
 import { state } from '../../../../src/state'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []

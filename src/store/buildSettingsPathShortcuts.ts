@@ -2,7 +2,7 @@
 
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
-import { SettingsPath } from './types/SettingsPath'
+import { SettingsPath } from './types'
 
 const buildSettingsPathShortcuts: (_: { basePath: SettingsPath, settings: any }) => any =
 	({ basePath, settings }: { basePath: SettingsPath, settings: any }): any =>

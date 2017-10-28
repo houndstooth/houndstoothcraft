@@ -1,12 +1,10 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
-import { BaseStripeDiagonal } from '../../../components'
-import { FunctionsOf } from '../../../execute'
-import * as to from '../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
-import { Overwrite } from '../Overwrite'
-import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
+import { BaseStripeDiagonal } from '../../components'
+import { FunctionsOf } from '../../execute'
+import * as to from '../../utilities/to'
+import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
+import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 import { StripePositionSettings } from './stripe'
 import {
 	DEFAULT_STRIPE_POSITION_SETTINGS,

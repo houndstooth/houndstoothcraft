@@ -1,14 +1,12 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
-import { ColorSet } from '../../../components'
-import { BLACK, TRANSPARENT } from '../../../constants'
-import { FunctionsOf } from '../../../execute'
-import { Color } from '../../../render'
-import * as to from '../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
-import { Overwrite } from '../Overwrite'
-import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
+import { ColorSet } from '../../components'
+import { BLACK, TRANSPARENT } from '../../constants'
+import { FunctionsOf } from '../../execute'
+import { Color } from '../../render'
+import * as to from '../../utilities/to'
+import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
+import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 import { ColorAssignmentSettings } from './color'
 import {
 	ColorAssignmentSettingsFunctions,

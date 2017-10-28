@@ -1,5 +1,5 @@
 import { deeperPath } from '../../../../src/store/deeperPath'
-import { SettingsStep } from '../../../../src/store/types/SettingsStep'
+import { SettingsStep } from '../../../../src/store/types'
 import * as to from '../../../../src/utilities/to'
 
 describe('deeper path', () => {

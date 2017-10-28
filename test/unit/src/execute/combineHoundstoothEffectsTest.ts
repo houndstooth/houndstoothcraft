@@ -2,7 +2,7 @@ import { combineHoundstoothEffects } from '../../../../src/execute/combineHounds
 import * as composePatterns from '../../../../src/execute/composePatterns'
 import CallInfo = jasmine.CallInfo
 import Spy = jasmine.Spy
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {

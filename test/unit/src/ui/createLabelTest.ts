@@ -1,5 +1,5 @@
 import { InputElement, PageElement } from '../../../../src/page'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import * as createCheckbox from '../../../../src/ui/createCheckbox'
 import { createLabel } from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'

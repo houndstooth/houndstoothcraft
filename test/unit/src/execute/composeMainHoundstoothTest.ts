@@ -8,7 +8,7 @@ import {
 	DEFAULT_LAYERS_PATTERN,
 } from '../../../../src/store/defaults'
 import Spy = jasmine.Spy
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import { console } from '../../../../src/utilities/windowWrapper'
 import CallInfo = jasmine.CallInfo
 

@@ -1,12 +1,10 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
-import { FunctionsOf } from '../../../execute'
-import * as to from '../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
-import { Overwrite } from '../Overwrite'
-import { SettingsPath } from '../SettingsPath'
-import { TypePathShortcutsBase } from '../TypePathShortcutsBase'
-import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../../components'
+import { FunctionsOf } from '../../execute'
+import * as to from '../../utilities/to'
+import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
+import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../components'
 
 // Structure
 

@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
 import { getSettingOrCreatePath } from '../../../../src/store/getSettingOrCreatePath'
-import { SettingsStep } from '../../../../src/store/types/SettingsStep'
+import { SettingsStep } from '../../../../src/store/types'
 import * as to from '../../../../src/utilities/to'
 
 describe('get setting or create path', () => {

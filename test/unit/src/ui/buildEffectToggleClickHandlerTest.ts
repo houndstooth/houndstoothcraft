@@ -1,7 +1,7 @@
 import * as execute from '../../../../src/execute'
 import { InputElement } from '../../../../src/page'
 import { state } from '../../../../src/state'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import { buildEffectToggleClickHandler } from '../../../../src/ui/buildEffectToggleClickHandler'
 import * as resetInterface from '../../../../src/ui/resetInterface'
 import { NullarySideEffector } from '../../../../src/utilities/types'

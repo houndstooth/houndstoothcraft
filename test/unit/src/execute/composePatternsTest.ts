@@ -1,7 +1,7 @@
 import { AssignmentMode } from '../../../../src/components'
 import { composePatterns } from '../../../../src/execute/composePatterns'
 import * as maybeWarnAboutConflicts from '../../../../src/execute/maybeWarnAboutConflicts'
-import { Pattern } from '../../../../src/store/types/Pattern'
+import { Pattern } from '../../../../src/store/types'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {

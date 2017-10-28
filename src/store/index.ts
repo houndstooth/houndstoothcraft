@@ -7,19 +7,21 @@ import {
 	AnimationSettings,
 	ColorAssignmentSettings,
 	ColorSettings,
-	Effect,
 	GridSettings,
-	Houndstooth,
 	LayerSettings,
-	Pattern,
-	SettingsPath,
-	SettingsStep,
-	State,
 	StripeCountContinuumSettings,
 	StripePositionSettings,
 	TextureSettings,
 	TileSettings,
 	ViewSettings,
+} from './settings'
+import {
+	Effect,
+	Houndstooth,
+	Pattern,
+	SettingsPath,
+	SettingsStep,
+	State,
 } from './types'
 
 export {

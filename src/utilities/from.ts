@@ -6,8 +6,7 @@ import { Layer } from '../execute'
 import { Dimensions, Px } from '../page'
 import { Pixel } from '../render'
 import { Coordinate, Outline, Radian } from '../space'
-import { SettingsStep } from '../store'
-import { SettingsPath } from '../store/types/SettingsPath'
+import { SettingsPath, SettingsStep } from '../store'
 
 // First order, singular
 

@@ -1,5 +1,5 @@
 import { InputElement } from '../../../../src/page'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import * as buildEffectToggleClickHandler from '../../../../src/ui/buildEffectToggleClickHandler'
 import { createCheckbox } from '../../../../src/ui/createCheckbox'
 import { NullarySideEffector } from '../../../../src/utilities/types'

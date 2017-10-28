@@ -5,7 +5,7 @@ import { executeSelectedHoundstoothEffects } from '../../../../src/execute/execu
 import { Context } from '../../../../src/page'
 import * as createContext from '../../../../src/page/createContext'
 import * as createMixedDownContext from '../../../../src/page/createMixedDownContext'
-import { Effect } from '../../../../src/store/types/Effect'
+import { Effect } from '../../../../src/store/types'
 import { buildMockContext } from '../../../helpers/buildMockContext'
 import { MockContextCall } from '../../../types/MockContextCall'
 import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'

@@ -7,7 +7,7 @@ import { SettingsPath } from './types'
 const buildSettingsPathShortcuts: <T>(_: { basePath: SettingsPath, settings: T }) => T =
 	<T>({ basePath, settings }: { basePath: SettingsPath, settings: T }): T =>
 		Object.keys(settings).reduce(
-			(o: any, key: string): any => ({
+			(o: object, key: string): any => ({
 				...o,
 				[key]: to.SettingsPath(from.SettingsPath(basePath).concat([ key ])),
 			}),

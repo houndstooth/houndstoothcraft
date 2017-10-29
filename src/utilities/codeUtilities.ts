@@ -27,11 +27,12 @@ const wrappedIndex: <T>(_: { array: T[], index?: number }) => T = ({ array, inde
 	return array[ i ]
 }
 
-const shallowEqual: (a: any, b: any) => boolean = (a, b) => {
-	const sameKeyCount: boolean = Object.keys(a).length === Object.keys(b).length
+const shallowEqual: <T extends { [_: string]: any }>(a: T, b: T) => boolean =
+	<T extends { [_: string]: any }>(a: T, b: T): boolean => {
+		const sameKeyCount: boolean = Object.keys(a).length === Object.keys(b).length
 
-	return sameKeyCount && Object.entries(a).every(([ key, value ]: [ string, any ]): boolean => value === b[ key ])
-}
+		return sameKeyCount && Object.entries(a).every(([ key, value ]: [ string, any ]): boolean => value === b[ key ])
+	}
 
 const deepClone: <T>(objectToDeepClone: T) => T =
 	<T>(objectToDeepClone: T): T => {

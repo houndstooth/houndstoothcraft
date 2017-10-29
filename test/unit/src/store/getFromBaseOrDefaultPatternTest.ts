@@ -1,8 +1,7 @@
-import { state } from '../../../../src/state'
 import { DEFAULT_CANVAS_SIZE } from '../../../../src/store/defaults'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import * as to from '../../../../src/utilities/to'
 import { setSetting } from '../../../../src/store/setSetting'
+import * as to from '../../../../src/utilities/to'
 
 describe('get from base or default pattern', () => {
 	it('accesses child setting if it exists on the base pattern', () => {

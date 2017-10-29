@@ -1,10 +1,9 @@
 import { Px } from '../../../../src/page'
 import { Path } from '../../../../src/render'
-import { state } from '../../../../src/state'
+import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import { applyTilt } from '../../../../src/view/applyTilt'
 import { pixelsAreClose } from '../../helpers/pixelsAreClose'
-import { setSetting } from '../../../../src/store/setSetting'
 
 describe('apply tilt', () => {
 	const canvasSize: Px = to.Px(200)

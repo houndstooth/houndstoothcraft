@@ -3,8 +3,8 @@
 import { FunctionsOf } from '../../execute'
 import { Layer } from '../../execute/types'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -35,21 +35,21 @@ const DEFAULT_LAYER_SETTINGS: LayerSettings = {
 	startLayer: DEFAULT_START_LAYER,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const layerSettings: SettingsPath = to.SettingsPath([ 'layerSettings' ])
 
-const layerSettingsPathShortcuts: LayerSettingsStructure = buildSettingsPathShortcuts({
+const layerSettingsNamesToPathsMap: LayerSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: layerSettings,
 	settings: DEFAULT_LAYER_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type LayerSettingsPathShortcut = 'layerSettings'
+type LayerSettingsName = 'layerSettings'
 
-type LayerSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	LayerPathShortcuts: 'startLayer' | 'endLayer',
+type LayerSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	LayerTypedSettingsNames: 'startLayer' | 'endLayer',
 }>
 
 // Export
@@ -67,13 +67,13 @@ export {
 
 	DEFAULT_LAYER_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	layerSettings,
-	layerSettingsPathShortcuts,
+	layerSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	LayerSettingsPathShortcut,
-	LayerSettingsTypePathShortcuts,
+	LayerSettingsName,
+	LayerSettingsNamesByType,
 }

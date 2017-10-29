@@ -1,9 +1,9 @@
-import { buildSettingsPathShortcuts } from '../../../../src/store/buildSettingsPathShortcuts'
+import { buildSettingsNamesToPathsMap } from '../../../../src/store/buildSettingsNamesToPathsMap'
 import { SettingsPath } from '../../../../src/store/types'
 import * as to from '../../../../src/utilities/to'
 
-describe('build settings path shortcuts', () => {
-	it('maps a setting\'s name as a shortcut to its full path in the settings tree, from the current base', () => {
+describe('build settings names to paths map', () => {
+	it('maps a setting\'s name to its full path in the settings tree, from the current base', () => {
 		interface ExampleSettingsStructure {
 			settingOne: {},
 			settingTwo: {},
@@ -21,15 +21,15 @@ describe('build settings path shortcuts', () => {
 		}
 		const basePath: SettingsPath = to.SettingsPath([ 'parentSettings', 'exampleSettings' ])
 
-		const actualSettingPathShortcuts: ExampleSettingsStructure = buildSettingsPathShortcuts({
+		const actualSettingTypedSettingsNames: ExampleSettingsStructure = buildSettingsNamesToPathsMap({
 			basePath,
 			settings: exampleSettings,
 		})
 
-		const expectedSettingsPathShortcuts: ExampleSettingsStructure = {
+		const expectedSettingsNamesToPathsMap: ExampleSettingsStructure = {
 			settingOne: to.SettingsPath([ 'parentSettings', 'exampleSettings', 'settingOne' ]),
 			settingTwo: to.SettingsPath([ 'parentSettings', 'exampleSettings', 'settingTwo' ]),
 		}
-		expect(actualSettingPathShortcuts).toEqual(expectedSettingsPathShortcuts)
+		expect(actualSettingTypedSettingsNames).toEqual(expectedSettingsNamesToPathsMap)
 	})
 })

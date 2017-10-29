@@ -1,4 +1,4 @@
-import { from, state, to } from '../../../../src'
+import { from, to } from '../../../../src'
 import { Address, GetTileOriginAndSize, TileOriginAndSize, Unit } from '../../../../src/components'
 import { getTileOriginAndSize } from '../../../../src/components/getTileOriginAndSize'
 import { setSetting } from '../../../../src/store/setSetting'

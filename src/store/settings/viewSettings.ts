@@ -4,8 +4,8 @@ import { FunctionsOf } from '../../execute'
 import { Px } from '../../page'
 import { Radian } from '../../space'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -48,24 +48,24 @@ const DEFAULT_VIEW_SETTINGS: ViewSettings = {
 	zoomOnCanvasCenter: DEFAULT_ZOOM_ON_CANVAS_CENTER,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const viewSettings: SettingsPath = to.SettingsPath([ 'viewSettings' ])
 
-const viewSettingsPathShortcuts: ViewSettingsStructure = buildSettingsPathShortcuts({
+const viewSettingsNamesToPathsMap: ViewSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: viewSettings,
 	settings: DEFAULT_VIEW_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type ViewSettingsPathShortcut = 'viewSettings'
+type ViewSettingsName = 'viewSettings'
 
-type ViewSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
-	NumberPathShortcuts: 'zoom',
-	PxPathShortcuts: 'canvasSize',
-	RadianPathShortcuts: 'rotateViewAboutCanvasCenter',
+type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	BooleanTypedSettingsNames: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
+	NumberTypedSettingsNames: 'zoom',
+	PxTypedSettingsNames: 'canvasSize',
+	RadianTypedSettingsNames: 'rotateViewAboutCanvasCenter',
 }>
 
 // Export
@@ -84,13 +84,13 @@ export {
 	DEFAULT_VIEW_SETTINGS,
 	DEFAULT_CANVAS_SIZE,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	viewSettings,
-	viewSettingsPathShortcuts,
+	viewSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	ViewSettingsPathShortcut,
-	ViewSettingsTypePathShortcuts,
+	ViewSettingsName,
+	ViewSettingsNamesByType,
 }

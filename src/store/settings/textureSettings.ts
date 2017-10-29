@@ -3,8 +3,8 @@
 import { ExecuteTexture } from '../../components'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -31,21 +31,21 @@ const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
 	executeTexture: DEFAULT_EXECUTE_TEXTURE,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const textureSettings: SettingsPath = to.SettingsPath([ 'textureSettings' ])
 
-const textureSettingsPathShortcuts: TextureSettingsStructure = buildSettingsPathShortcuts({
+const textureSettingsNamesToPathsMap: TextureSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: textureSettings,
 	settings: DEFAULT_TEXTURE_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type TextureSettingsPathShortcut = 'textureSettings'
+type TextureSettingsName = 'textureSettings'
 
-type TextureSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	ExecuteTexturePathShortcuts: 'executeTexture',
+type TextureSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	ExecuteTextureTypedSettingsNames: 'executeTexture',
 }>
 
 // Export
@@ -63,13 +63,13 @@ export {
 
 	DEFAULT_TEXTURE_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	textureSettings,
-	textureSettingsPathShortcuts,
+	textureSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	TextureSettingsPathShortcut,
-	TextureSettingsTypePathShortcuts,
+	TextureSettingsName,
+	TextureSettingsNamesByType,
 }

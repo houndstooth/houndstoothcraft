@@ -3,8 +3,8 @@
 import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../components'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -39,23 +39,23 @@ const DEFAULT_TILE_SETTINGS: TileSettings = {
 	tileSize: DEFAULT_TILE_SIZE,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const tileSettings: SettingsPath = to.SettingsPath([ 'tileSettings' ])
 
-const tileSettingsPathShortcuts: TileSettingsStructure = buildSettingsPathShortcuts({
+const tileSettingsNamesToPathsMap: TileSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: tileSettings,
 	settings: DEFAULT_TILE_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type TileSettingsPathShortcut = 'tileSettings'
+type TileSettingsName = 'tileSettings'
 
-type TileSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'collapseSameColoredShapesWithinTile',
-	GetTileOriginAndSizePathShortcuts: 'getTileOriginAndSize',
-	UnitPathShortcuts: 'tileSize',
+type TileSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	BooleanTypedSettingsNames: 'collapseSameColoredShapesWithinTile',
+	GetTileOriginAndSizeTypedSettingsNames: 'getTileOriginAndSize',
+	UnitTypedSettingsNames: 'tileSize',
 }>
 
 // Export
@@ -73,13 +73,13 @@ export {
 
 	DEFAULT_TILE_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	tileSettings,
-	tileSettingsPathShortcuts,
+	tileSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	TileSettingsPathShortcut,
-	TileSettingsTypePathShortcuts,
+	TileSettingsName,
+	TileSettingsNamesByType,
 }

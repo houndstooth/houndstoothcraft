@@ -2,8 +2,8 @@
 
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -30,40 +30,40 @@ const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
 	templateSetting: DEFAULT_TEMPLATE_SETTING,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const templateSettings: SettingsPath = to.SettingsPath([ 'templateSettings' ])
 
-const templateSettingsPathShortcuts: TemplateSettingsStructure = buildSettingsPathShortcuts({
+const templateSettingsNamesToPathsMap: TemplateSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: templateSettings,
 	settings: DEFAULT_TEMPLATE_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type TemplateSettingsPathShortcut = 'templateSettings'
+type TemplateSettingsName = 'templateSettings'
 
-type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	AssignmentModePathShortcuts: '_',
-	BaseStripeDiagonalPathShortcuts: '_',
-	BooleanPathShortcuts: '_',
-	ColorPathShortcuts: '_',
-	ColorSetPathShortcuts: '_',
-	ColorsPathShortcuts: '_',
-	ExecuteTexturePathShortcuts: '_',
-	FramePathShortcuts: '_',
-	GetStripePositionsPathShortcuts: '_',
-	GetTileOriginAndSizePathShortcuts: '_',
-	LayerPathShortcuts: '_',
-	NumberPathShortcuts: '_',
-	OffsetAddressPathShortcuts: '_',
-	PxPathShortcuts: '_',
-	RadianPathShortcuts: '_',
-	StripeCountModePathShortcuts: '_',
-	SupertilePathShortcuts: '_',
-	TransformShapeColorIndicesPathShortcuts: '_',
-	UnitPathShortcuts: '_',
-	WeavePathShortcuts: '_',
+type TemplateSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	AssignmentModeTypedSettingsNames: '_',
+	BaseStripeDiagonalTypedSettingsNames: '_',
+	BooleanTypedSettingsNames: '_',
+	ColorSetTypedSettingsNames: '_',
+	ColorsTypedSettingsNames: '_',
+	ColorTypedSettingsNames: '_',
+	ExecuteTextureTypedSettingsNames: '_',
+	FrameTypedSettingsNames: '_',
+	GetStripePositionsTypedSettingsNames: '_',
+	GetTileOriginAndSizeTypedSettingsNames: '_',
+	LayerTypedSettingsNames: '_',
+	NumberTypedSettingsNames: '_',
+	OffsetAddressTypedSettingsNames: '_',
+	PxTypedSettingsNames: '_',
+	RadianTypedSettingsNames: '_',
+	StripeCountModeTypedSettingsNames: '_',
+	SupertileTypedSettingsNames: '_',
+	TransformShapeColorIndicesTypedSettingsNames: '_',
+	UnitTypedSettingsNames: '_',
+	WeaveTypedSettingsNames: '_',
 }>
 
 // Export
@@ -81,13 +81,13 @@ export {
 
 	DEFAULT_TEMPLATE_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	templateSettings,
-	templateSettingsPathShortcuts,
+	templateSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	TemplateSettingsPathShortcut,
-	TemplateSettingsTypePathShortcuts,
+	TemplateSettingsName,
+	TemplateSettingsNamesByType,
 }

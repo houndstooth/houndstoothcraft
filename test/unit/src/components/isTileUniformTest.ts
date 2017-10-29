@@ -1,8 +1,7 @@
 import { ColorSet, ShapeColorIndex } from '../../../../src/components'
 import { isTileUniform } from '../../../../src/components/isTileUniform'
-import { state } from '../../../../src/state'
-import * as to from '../../../../src/utilities/to'
 import { setSetting } from '../../../../src/store/setSetting'
+import * as to from '../../../../src/utilities/to'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {

@@ -1,6 +1,5 @@
 import { Px } from '../../../../src/page'
 import { Path } from '../../../../src/render'
-import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 import { applyZoom } from '../../../../src/view/applyZoom'

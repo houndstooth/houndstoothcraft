@@ -9,7 +9,6 @@ import * as shape from '../../../../src/components/shape'
 import { tile } from '../../../../src/components/tile'
 import { PERIMETER_SCALAR } from '../../../../src/constants'
 import * as space from '../../../../src/space'
-import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
 

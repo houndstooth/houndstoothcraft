@@ -4,7 +4,7 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { SettingsPath } from './types'
 
-const buildSettingsPathShortcuts: <T>(_: { basePath: SettingsPath, settings: T }) => T =
+const buildSettingsNamesToPathsMap: <T>(_: { basePath: SettingsPath, settings: T }) => T =
 	<T>({ basePath, settings }: { basePath: SettingsPath, settings: T }): T =>
 		Object.keys(settings).reduce(
 			(o: object, key: string): any => ({
@@ -14,4 +14,4 @@ const buildSettingsPathShortcuts: <T>(_: { basePath: SettingsPath, settings: T }
 			{},
 		)
 
-export { buildSettingsPathShortcuts }
+export { buildSettingsNamesToPathsMap }

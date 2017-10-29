@@ -2,8 +2,8 @@
 
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -34,22 +34,22 @@ const DEFAULT_GRID_SETTINGS: GridSettings = {
 	includeNegativeQuadrants: DEFAULT_INCLUDE_NEGATIVE_QUADRANTS,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const gridSettings: SettingsPath = to.SettingsPath([ 'gridSettings' ])
 
-const gridSettingsPathShortcuts: GridSettingsStructure = buildSettingsPathShortcuts({
+const gridSettingsNamesToPathsMap: GridSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: gridSettings,
 	settings: DEFAULT_GRID_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type GridSettingsPathShortcut = 'gridSettings'
+type GridSettingsName = 'gridSettings'
 
-type GridSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'includeNegativeQuadrants',
-	NumberPathShortcuts: 'gridSize',
+type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	BooleanTypedSettingsNames: 'includeNegativeQuadrants',
+	NumberTypedSettingsNames: 'gridSize',
 }>
 
 // Export
@@ -67,13 +67,13 @@ export {
 
 	DEFAULT_GRID_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	gridSettings,
-	gridSettingsPathShortcuts,
+	gridSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	GridSettingsPathShortcut,
-	GridSettingsTypePathShortcuts,
+	GridSettingsName,
+	GridSettingsNamesByType,
 }

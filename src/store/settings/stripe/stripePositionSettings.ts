@@ -3,8 +3,8 @@
 import { GetStripePositions, standardStripePositions, StripeCountMode } from '../../../components'
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../types'
+import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../../types'
 import { stripeCountContinuumSettings } from './stripePosition'
 
 // Structure
@@ -46,27 +46,27 @@ const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const stripePositionSettings: SettingsPath = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
 
-const stripePositionSettingsPathShortcuts: StripePositionSettingsStructure = {
-	...buildSettingsPathShortcuts({
+const stripePositionSettingsNamesToPathsMap: StripePositionSettingsStructure = {
+	...buildSettingsNamesToPathsMap({
 		basePath: stripePositionSettings,
 		settings: DEFAULT_STRIPE_POSITION_SETTINGS,
 	}),
-	...stripeCountContinuumSettings.stripeCountContinuumSettingsPathShortcuts,
+	...stripeCountContinuumSettings.stripeCountContinuumSettingsNamesToPathsMap,
 }
 
-// Shortcut types
+// Settings names by type
 
-type StripePositionSettingsPathShortcut = 'stripePositionSettings'
+type StripePositionSettingsName = 'stripePositionSettings'
 
-type StripePositionSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	GetStripePositionsPathShortcuts: 'getStripePositions',
-	NumberPathShortcuts: 'stripeCount',
-	StripeCountModePathShortcuts: 'stripeCountMode',
-}> | stripeCountContinuumSettings.StripeCountContinuumSettingsTypePathShortcuts
+type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	GetStripePositionsTypedSettingsNames: 'getStripePositions',
+	NumberTypedSettingsNames: 'stripeCount',
+	StripeCountModeTypedSettingsNames: 'stripeCountMode',
+}> | stripeCountContinuumSettings.StripeCountContinuumSettingsNamesByType
 
 // Export
 
@@ -83,13 +83,13 @@ export {
 
 	DEFAULT_STRIPE_POSITION_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	stripePositionSettings,
-	stripePositionSettingsPathShortcuts,
+	stripePositionSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	StripePositionSettingsPathShortcut,
-	StripePositionSettingsTypePathShortcuts,
+	StripePositionSettingsName,
+	StripePositionSettingsNamesByType,
 }

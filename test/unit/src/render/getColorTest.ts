@@ -1,8 +1,7 @@
 import { Color } from '../../../../src/render'
 import { getColor } from '../../../../src/render/getColor'
-import { state } from '../../../../src/state'
-import * as to from '../../../../src/utilities/to'
 import { setSetting } from '../../../../src/store/setSetting'
+import * as to from '../../../../src/utilities/to'
 
 describe('get Color', () => {
 	it('gets the color object from the state, using the passed index', () => {

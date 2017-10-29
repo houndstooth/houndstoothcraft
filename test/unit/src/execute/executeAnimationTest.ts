@@ -3,8 +3,8 @@ import { ConditionFunction, Frame } from '../../../../src/animation/types'
 import { SettingsFunctionObject } from '../../../../src/execute'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { state } from '../../../../src/state'
-import * as to from '../../../../src/utilities/to'
 import { setSetting } from '../../../../src/store/setSetting'
+import * as to from '../../../../src/utilities/to'
 
 describe('execute animation', () => {
 	const stopConditionFunction: ConditionFunction = (): boolean => false

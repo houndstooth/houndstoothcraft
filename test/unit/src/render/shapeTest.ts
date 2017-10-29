@@ -4,12 +4,11 @@ import * as solid from '../../../../src/components/solid'
 import * as texture from '../../../../src/components/texture'
 import Spy = jasmine.Spy
 import { Coordinate, Outline, OutlineOptions } from '../../../../src/space'
-import { state } from '../../../../src/state'
+import { setSetting } from '../../../../src/store/setSetting'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import { noop } from '../../../helpers/noop'
-import { setSetting } from '../../../../src/store/setSetting'
 
 describe('shape', () => {
 	const tileOrigin: Coordinate = to.Coordinate([ 11, 13 ])

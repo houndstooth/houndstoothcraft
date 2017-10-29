@@ -1,6 +1,5 @@
 import { grid } from '../../../../src/components/grid'
 import * as tile from '../../../../src/components/tile'
-import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as view from '../../../../src/view'
 import Spy = jasmine.Spy

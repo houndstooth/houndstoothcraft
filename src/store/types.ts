@@ -33,41 +33,41 @@ interface BasePattern {
 
 type Effect = Partial<Houndstooth>
 
-enum MissingSettingsPathShortcut {}
+enum MissingSettingsName {}
 
-interface GetFromBaseOrDefaultPattern { // Should these settings ones also be Partial, like they are for SetSetting?
-	(settingsPathShortcut: animationSettings.AnimationSettingsPathShortcut): animationSettings.AnimationSettings,
-	(settingsPathShortcut: colorSettings.ColorSettingsPathShortcut): colorSettings.ColorSettings,
-	(settingsPathShortcut: colorAssignmentSettings.ColorAssignmentSettingsPathShortcut): colorAssignmentSettings.ColorAssignmentSettings,
-	(settingsPathShortcut: gridSettings.GridSettingsPathShortcut): gridSettings.GridSettings,
-	(settingsPathShortcut: layerSettings.LayerSettingsPathShortcut): layerSettings.LayerSettings,
-	(settingsPathShortcut: stripeSettings.StripeSettingsPathShortcut): stripeSettings.StripeSettings,
-	(settingsPathShortcut: stripeCountContinuumSettings.StripeCountContinuumSettingsPathShortcut): stripeCountContinuumSettings.StripeCountContinuumSettings,
-	(settingsPathShortcut: stripePositionSettings.StripePositionSettingsPathShortcut): stripePositionSettings.StripePositionSettings,
-	(settingsPathShortcut: textureSettings.TextureSettingsPathShortcut): textureSettings.TextureSettings,
-	(settingsPathShortcut: tileSettings.TileSettingsPathShortcut): tileSettings.TileSettings,
-	(settingsPathShortcut: viewSettings.ViewSettingsPathShortcut): viewSettings.ViewSettings,
-	(settingsPathShortcut: TypePathShortcuts['AssignmentModePathShortcuts']): Components.AssignmentMode,
-	(settingsPathShortcut: TypePathShortcuts['BaseStripeDiagonalPathShortcuts']): Components.BaseStripeDiagonal,
-	(settingsPathShortcut: TypePathShortcuts['BooleanPathShortcuts']): boolean,
-	(settingsPathShortcut: TypePathShortcuts['ColorPathShortcuts']): Color,
-	(settingsPathShortcut: TypePathShortcuts['ColorsPathShortcuts']): Color[],
-	(settingsPathShortcut: TypePathShortcuts['ColorSetPathShortcuts']): Components.ColorSet,
-	(settingsPathShortcut: TypePathShortcuts['ExecuteTexturePathShortcuts']): Components.ExecuteTexture,
-	(settingsPathShortcut: TypePathShortcuts['FramePathShortcuts']): Frame,
-	(settingsPathShortcut: TypePathShortcuts['GetStripePositionsPathShortcuts']): Components.GetStripePositions,
-	(settingsPathShortcut: TypePathShortcuts['GetTileOriginAndSizePathShortcuts']): Components.GetTileOriginAndSize,
-	(settingsPathShortcut: TypePathShortcuts['LayerPathShortcuts']): Layer,
-	(settingsPathShortcut: TypePathShortcuts['NumberPathShortcuts']): number,
-	(settingsPathShortcut: TypePathShortcuts['OffsetAddressPathShortcuts']): Components.OffsetAddress,
-	(settingsPathShortcut: TypePathShortcuts['PxPathShortcuts']): Px,
-	(settingsPathShortcut: TypePathShortcuts['RadianPathShortcuts']): Radian,
-	(settingsPathShortcut: TypePathShortcuts['StripeCountModePathShortcuts']): Components.StripeCountMode,
-	(settingsPathShortcut: TypePathShortcuts['SupertilePathShortcuts']): Components.Supertile,
-	(settingsPathShortcut: TypePathShortcuts['TransformShapeColorIndicesPathShortcuts']): Components.TransformShapeColorIndices,
-	(settingsPathShortcut: TypePathShortcuts['UnitPathShortcuts']): Components.Unit,
-	(settingsPathShortcut: TypePathShortcuts['WeavePathShortcuts']): Components.Weave,
-	(settingsPathShortcut: {}): MissingSettingsPathShortcut,
+interface SettingsNamesToTypesMap { // Should these settings ones also be Partial, like they are for SetSetting?
+	(settingName: animationSettings.AnimationSettingsName): animationSettings.AnimationSettings,
+	(settingName: colorSettings.ColorSettingsName): colorSettings.ColorSettings,
+	(settingName: colorAssignmentSettings.ColorAssignmentSettingsName): colorAssignmentSettings.ColorAssignmentSettings,
+	(settingName: gridSettings.GridSettingsName): gridSettings.GridSettings,
+	(settingName: layerSettings.LayerSettingsName): layerSettings.LayerSettings,
+	(settingName: stripeSettings.StripeSettingsName): stripeSettings.StripeSettings,
+	(settingName: stripeCountContinuumSettings.StripeCountContinuumSettingsName): stripeCountContinuumSettings.StripeCountContinuumSettings,
+	(settingName: stripePositionSettings.StripePositionSettingsName): stripePositionSettings.StripePositionSettings,
+	(settingName: textureSettings.TextureSettingsName): textureSettings.TextureSettings,
+	(settingName: tileSettings.TileSettingsName): tileSettings.TileSettings,
+	(settingName: viewSettings.ViewSettingsName): viewSettings.ViewSettings,
+	(settingName: SettingsNamesByType['AssignmentModeTypedSettingsNames']): Components.AssignmentMode,
+	(settingName: SettingsNamesByType['BaseStripeDiagonalTypedSettingsNames']): Components.BaseStripeDiagonal,
+	(settingName: SettingsNamesByType['BooleanTypedSettingsNames']): boolean,
+	(settingName: SettingsNamesByType['ColorTypedSettingsNames']): Color,
+	(settingName: SettingsNamesByType['ColorsTypedSettingsNames']): Color[],
+	(settingName: SettingsNamesByType['ColorSetTypedSettingsNames']): Components.ColorSet,
+	(settingName: SettingsNamesByType['ExecuteTextureTypedSettingsNames']): Components.ExecuteTexture,
+	(settingName: SettingsNamesByType['FrameTypedSettingsNames']): Frame,
+	(settingName: SettingsNamesByType['GetStripePositionsTypedSettingsNames']): Components.GetStripePositions,
+	(settingName: SettingsNamesByType['GetTileOriginAndSizeTypedSettingsNames']): Components.GetTileOriginAndSize,
+	(settingName: SettingsNamesByType['LayerTypedSettingsNames']): Layer,
+	(settingName: SettingsNamesByType['NumberTypedSettingsNames']): number,
+	(settingName: SettingsNamesByType['OffsetAddressTypedSettingsNames']): Components.OffsetAddress,
+	(settingName: SettingsNamesByType['PxTypedSettingsNames']): Px,
+	(settingName: SettingsNamesByType['RadianTypedSettingsNames']): Radian,
+	(settingName: SettingsNamesByType['StripeCountModeTypedSettingsNames']): Components.StripeCountMode,
+	(settingName: SettingsNamesByType['SupertileTypedSettingsNames']): Components.Supertile,
+	(settingName: SettingsNamesByType['TransformShapeColorIndicesTypedSettingsNames']): Components.TransformShapeColorIndices,
+	(settingName: SettingsNamesByType['UnitTypedSettingsNames']): Components.Unit,
+	(settingName: SettingsNamesByType['WeaveTypedSettingsNames']): Components.Weave,
+	(settingName: {}): MissingSettingsName,
 }
 
 interface Houndstooth {
@@ -94,37 +94,37 @@ interface PatternFunctions {
 }
 
 interface SetSetting {
-	(settingsPathShortcut: animationSettings.AnimationSettingsPathShortcut, value: Partial<animationSettings.AnimationSettings>): void,
-	(settingsPathShortcut: colorSettings.ColorSettingsPathShortcut, value: Partial<colorSettings.ColorSettings>): void,
-	(settingsPathShortcut: colorAssignmentSettings.ColorAssignmentSettingsPathShortcut, value: Partial<colorAssignmentSettings.ColorAssignmentSettings>): void,
-	(settingsPathShortcut: gridSettings.GridSettingsPathShortcut, value: Partial<gridSettings.GridSettings>): void,
-	(settingsPathShortcut: layerSettings.LayerSettingsPathShortcut, value: Partial<layerSettings.LayerSettings>): void,
-	(settingsPathShortcut: stripeSettings.StripeSettingsPathShortcut, value: Partial<stripeSettings.StripeSettings>): void,
-	(settingsPathShortcut: stripeCountContinuumSettings.StripeCountContinuumSettingsPathShortcut, value: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>): void,
-	(settingsPathShortcut: stripePositionSettings.StripePositionSettingsPathShortcut, value: Partial<stripePositionSettings.StripePositionSettings>): void,
-	(settingsPathShortcut: textureSettings.TextureSettingsPathShortcut, value: Partial<textureSettings.TextureSettings>): void,
-	(settingsPathShortcut: tileSettings.TileSettingsPathShortcut, value: Partial<tileSettings.TileSettings>): void,
-	(settingsPathShortcut: viewSettings.ViewSettingsPathShortcut, value: Partial<viewSettings.ViewSettings>): void,
-	(settingsPathShortcut: TypePathShortcuts['AssignmentModePathShortcuts'], value: Components.AssignmentMode): void,
-	(settingsPathShortcut: TypePathShortcuts['BaseStripeDiagonalPathShortcuts'], value: Components.BaseStripeDiagonal): void,
-	(settingsPathShortcut: TypePathShortcuts['BooleanPathShortcuts'], value: boolean): void,
-	(settingsPathShortcut: TypePathShortcuts['ColorPathShortcuts'], value: Color): void,
-	(settingsPathShortcut: TypePathShortcuts['ColorSetPathShortcuts'], value: Components.ColorSet): void,
-	(settingsPathShortcut: TypePathShortcuts['ColorsPathShortcuts'], value: Color[]): void,
-	(settingsPathShortcut: TypePathShortcuts['ExecuteTexturePathShortcuts'], value: Components.ExecuteTexture): void,
-	(settingsPathShortcut: TypePathShortcuts['FramePathShortcuts'], value: Frame): void,
-	(settingsPathShortcut: TypePathShortcuts['GetStripePositionsPathShortcuts'], value: Components.GetStripePositions): void,
-	(settingsPathShortcut: TypePathShortcuts['GetTileOriginAndSizePathShortcuts'], value: Components.GetTileOriginAndSize): void,
-	(settingsPathShortcut: TypePathShortcuts['LayerPathShortcuts'], value: Layer): void,
-	(settingsPathShortcut: TypePathShortcuts['NumberPathShortcuts'], value: number): void,
-	(settingsPathShortcut: TypePathShortcuts['OffsetAddressPathShortcuts'], value: Components.OffsetAddress): void,
-	(settingsPathShortcut: TypePathShortcuts['PxPathShortcuts'], value: Px): void,
-	(settingsPathShortcut: TypePathShortcuts['RadianPathShortcuts'], value: Radian): void,
-	(settingsPathShortcut: TypePathShortcuts['StripeCountModePathShortcuts'], value: Components.StripeCountMode): void,
-	(settingsPathShortcut: TypePathShortcuts['SupertilePathShortcuts'], value: Components.Supertile): void,
-	(settingsPathShortcut: TypePathShortcuts['TransformShapeColorIndicesPathShortcuts'], value: Components.TransformShapeColorIndices): void,
-	(settingsPathShortcut: TypePathShortcuts['UnitPathShortcuts'], value: Components.Unit): void,
-	(settingsPathShortcut: TypePathShortcuts['WeavePathShortcuts'], value: Components.Weave): void,
+	(settingName: animationSettings.AnimationSettingsName, value: Partial<animationSettings.AnimationSettings>): void,
+	(settingName: colorSettings.ColorSettingsName, value: Partial<colorSettings.ColorSettings>): void,
+	(settingName: colorAssignmentSettings.ColorAssignmentSettingsName, value: Partial<colorAssignmentSettings.ColorAssignmentSettings>): void,
+	(settingName: gridSettings.GridSettingsName, value: Partial<gridSettings.GridSettings>): void,
+	(settingName: layerSettings.LayerSettingsName, value: Partial<layerSettings.LayerSettings>): void,
+	(settingName: stripeSettings.StripeSettingsName, value: Partial<stripeSettings.StripeSettings>): void,
+	(settingName: stripeCountContinuumSettings.StripeCountContinuumSettingsName, value: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>): void,
+	(settingName: stripePositionSettings.StripePositionSettingsName, value: Partial<stripePositionSettings.StripePositionSettings>): void,
+	(settingName: textureSettings.TextureSettingsName, value: Partial<textureSettings.TextureSettings>): void,
+	(settingName: tileSettings.TileSettingsName, value: Partial<tileSettings.TileSettings>): void,
+	(settingName: viewSettings.ViewSettingsName, value: Partial<viewSettings.ViewSettings>): void,
+	(settingName: SettingsNamesByType['AssignmentModeTypedSettingsNames'], value: Components.AssignmentMode): void,
+	(settingName: SettingsNamesByType['BaseStripeDiagonalTypedSettingsNames'], value: Components.BaseStripeDiagonal): void,
+	(settingName: SettingsNamesByType['BooleanTypedSettingsNames'], value: boolean): void,
+	(settingName: SettingsNamesByType['ColorTypedSettingsNames'], value: Color): void,
+	(settingName: SettingsNamesByType['ColorSetTypedSettingsNames'], value: Components.ColorSet): void,
+	(settingName: SettingsNamesByType['ColorsTypedSettingsNames'], value: Color[]): void,
+	(settingName: SettingsNamesByType['ExecuteTextureTypedSettingsNames'], value: Components.ExecuteTexture): void,
+	(settingName: SettingsNamesByType['FrameTypedSettingsNames'], value: Frame): void,
+	(settingName: SettingsNamesByType['GetStripePositionsTypedSettingsNames'], value: Components.GetStripePositions): void,
+	(settingName: SettingsNamesByType['GetTileOriginAndSizeTypedSettingsNames'], value: Components.GetTileOriginAndSize): void,
+	(settingName: SettingsNamesByType['LayerTypedSettingsNames'], value: Layer): void,
+	(settingName: SettingsNamesByType['NumberTypedSettingsNames'], value: number): void,
+	(settingName: SettingsNamesByType['OffsetAddressTypedSettingsNames'], value: Components.OffsetAddress): void,
+	(settingName: SettingsNamesByType['PxTypedSettingsNames'], value: Px): void,
+	(settingName: SettingsNamesByType['RadianTypedSettingsNames'], value: Radian): void,
+	(settingName: SettingsNamesByType['StripeCountModeTypedSettingsNames'], value: Components.StripeCountMode): void,
+	(settingName: SettingsNamesByType['SupertileTypedSettingsNames'], value: Components.Supertile): void,
+	(settingName: SettingsNamesByType['TransformShapeColorIndicesTypedSettingsNames'], value: Components.TransformShapeColorIndices): void,
+	(settingName: SettingsNamesByType['UnitTypedSettingsNames'], value: Components.Unit): void,
+	(settingName: SettingsNamesByType['WeaveTypedSettingsNames'], value: Components.Weave): void,
 }
 
 enum _SettingsPathBrand {}
@@ -150,37 +150,37 @@ interface State {
 	selectedHoundstoothEffects: Effect[],
 }
 
-type TypePathShortcuts =
-	| animationSettings.AnimationSettingsTypePathShortcuts
-	| colorSettings.ColorSettingsTypePathShortcuts
-	| gridSettings.GridSettingsTypePathShortcuts
-	| layerSettings.LayerSettingsTypePathShortcuts
-	| stripeSettings.StripeSettingsTypePathShortcuts
-	| textureSettings.TextureSettingsTypePathShortcuts
-	| tileSettings.TileSettingsTypePathShortcuts
-	| viewSettings.ViewSettingsTypePathShortcuts
+type SettingsNamesByType =
+	| animationSettings.AnimationSettingsNamesByType
+	| colorSettings.ColorSettingsNamesByType
+	| gridSettings.GridSettingsNamesByType
+	| layerSettings.LayerSettingsNamesByType
+	| stripeSettings.StripeSettingsNamesByType
+	| textureSettings.TextureSettingsNamesByType
+	| tileSettings.TileSettingsNamesByType
+	| viewSettings.ViewSettingsNamesByType
 
-interface TypePathShortcutsBase {
-	readonly AssignmentModePathShortcuts: '_',
-	readonly BaseStripeDiagonalPathShortcuts: '_',
-	readonly BooleanPathShortcuts: '_',
-	readonly ColorPathShortcuts: '_',
-	readonly ColorSetPathShortcuts: '_',
-	readonly ColorsPathShortcuts: '_',
-	readonly ExecuteTexturePathShortcuts: '_',
-	readonly FramePathShortcuts: '_',
-	readonly GetStripePositionsPathShortcuts: '_',
-	readonly GetTileOriginAndSizePathShortcuts: '_',
-	readonly LayerPathShortcuts: '_',
-	readonly NumberPathShortcuts: '_',
-	readonly OffsetAddressPathShortcuts: '_',
-	readonly PxPathShortcuts: '_',
-	readonly RadianPathShortcuts: '_',
-	readonly StripeCountModePathShortcuts: '_',
-	readonly SupertilePathShortcuts: '_',
-	readonly TransformShapeColorIndicesPathShortcuts: '_',
-	readonly UnitPathShortcuts: '_',
-	readonly WeavePathShortcuts: '_',
+interface SettingsNamesByTypeBase {
+	readonly AssignmentModeTypedSettingsNames: '_',
+	readonly BaseStripeDiagonalTypedSettingsNames: '_',
+	readonly BooleanTypedSettingsNames: '_',
+	readonly ColorSetTypedSettingsNames: '_',
+	readonly ColorsTypedSettingsNames: '_',
+	readonly ColorTypedSettingsNames: '_',
+	readonly ExecuteTextureTypedSettingsNames: '_',
+	readonly FrameTypedSettingsNames: '_',
+	readonly GetStripePositionsTypedSettingsNames: '_',
+	readonly GetTileOriginAndSizeTypedSettingsNames: '_',
+	readonly LayerTypedSettingsNames: '_',
+	readonly NumberTypedSettingsNames: '_',
+	readonly OffsetAddressTypedSettingsNames: '_',
+	readonly PxTypedSettingsNames: '_',
+	readonly RadianTypedSettingsNames: '_',
+	readonly StripeCountModeTypedSettingsNames: '_',
+	readonly SupertileTypedSettingsNames: '_',
+	readonly TransformShapeColorIndicesTypedSettingsNames: '_',
+	readonly UnitTypedSettingsNames: '_',
+	readonly WeaveTypedSettingsNames: '_',
 }
 
 export {
@@ -193,7 +193,7 @@ export {
 	BasePattern,
 	PatternFunctions,
 	Overwrite,
-	TypePathShortcutsBase,
-	GetFromBaseOrDefaultPattern,
+	SettingsNamesByTypeBase,
+	SettingsNamesToTypesMap,
 	SetSetting,
 }

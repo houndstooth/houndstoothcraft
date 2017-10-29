@@ -2,8 +2,8 @@
 
 import { FunctionsOf } from '../../../../execute'
 import * as to from '../../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../../types'
+import { buildSettingsNamesToPathsMap } from '../../../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../../../types'
 
 // Structure
 
@@ -34,7 +34,7 @@ const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
 	initialStripeCount: DEFAULT_INITIAL_STRIPE_COUNT,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const stripeCountContinuumSettings: SettingsPath = to.SettingsPath([
 	'stripeSettings',
@@ -42,17 +42,18 @@ const stripeCountContinuumSettings: SettingsPath = to.SettingsPath([
 	'stripeCountContinuumSettings',
 ])
 
-const stripeCountContinuumSettingsPathShortcuts: StripeCountContinuumSettingsStructure = buildSettingsPathShortcuts({
+// tslint:disable-next-line:max-line-length
+const stripeCountContinuumSettingsNamesToPathsMap: StripeCountContinuumSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: stripeCountContinuumSettings,
 	settings: DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type StripeCountContinuumSettingsPathShortcut = 'stripeCountContinuumSettings'
+type StripeCountContinuumSettingsName = 'stripeCountContinuumSettings'
 
-type StripeCountContinuumSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	NumberPathShortcuts: 'deltaStripeCount' | 'initialStripeCount',
+type StripeCountContinuumSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	NumberTypedSettingsNames: 'deltaStripeCount' | 'initialStripeCount',
 }>
 
 // Export
@@ -70,13 +71,13 @@ export {
 
 	DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	stripeCountContinuumSettings,
-	stripeCountContinuumSettingsPathShortcuts,
+	stripeCountContinuumSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	StripeCountContinuumSettingsPathShortcut,
-	StripeCountContinuumSettingsTypePathShortcuts,
+	StripeCountContinuumSettingsName,
+	StripeCountContinuumSettingsNamesByType,
 }

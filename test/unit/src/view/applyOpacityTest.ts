@@ -1,6 +1,6 @@
 import { state } from '../../../../src/state'
-import { applyOpacity } from '../../../../src/view/applyOpacity'
 import { setSetting } from '../../../../src/store/setSetting'
+import { applyOpacity } from '../../../../src/view/applyOpacity'
 
 describe('apply opacity', () => {
 	beforeEach(() => {

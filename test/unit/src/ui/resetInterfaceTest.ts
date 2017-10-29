@@ -2,11 +2,11 @@ import * as canvas from '../../../../src/canvas'
 import { PageElement } from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
+import { setSetting } from '../../../../src/store/setSetting'
 import { Effect, State } from '../../../../src/store/types'
 import { resetInterface } from '../../../../src/ui/resetInterface'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
-import { setSetting } from '../../../../src/store/setSetting'
 
 describe('reset interface', () => {
 	const warningsContainer: PageElement = buildMockElement()

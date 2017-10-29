@@ -3,8 +3,8 @@
 import { BaseStripeDiagonal } from '../../components'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 import { stripePositionSettings } from './stripe'
 
 // Structure
@@ -38,25 +38,25 @@ const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 	stripePositionSettings: stripePositionSettings.DEFAULT_STRIPE_POSITION_SETTINGS,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const stripeSettings: SettingsPath = to.SettingsPath([ 'stripeSettings' ])
 
-const stripeSettingsPathShortcuts: StripeSettingsStructure = {
-	...buildSettingsPathShortcuts({
+const stripeSettingsNamesToPathsMap: StripeSettingsStructure = {
+	...buildSettingsNamesToPathsMap({
 		basePath: stripeSettings,
 		settings: DEFAULT_STRIPE_SETTINGS,
 	}),
-	...stripePositionSettings.stripePositionSettingsPathShortcuts,
+	...stripePositionSettings.stripePositionSettingsNamesToPathsMap,
 }
 
-// Shortcut types
+// Settings names by type
 
-type StripeSettingsPathShortcut = 'stripeSettings'
+type StripeSettingsName = 'stripeSettings'
 
-type StripeSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BaseStripeDiagonalPathShortcuts: 'baseStripeDiagonal',
-}> | stripePositionSettings.StripePositionSettingsTypePathShortcuts
+type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	BaseStripeDiagonalTypedSettingsNames: 'baseStripeDiagonal',
+}> | stripePositionSettings.StripePositionSettingsNamesByType
 
 // Export
 
@@ -73,13 +73,13 @@ export {
 
 	DEFAULT_STRIPE_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	stripeSettings,
-	stripeSettingsPathShortcuts,
+	stripeSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	StripeSettingsPathShortcut,
-	StripeSettingsTypePathShortcuts,
+	StripeSettingsName,
+	StripeSettingsNamesByType,
 }

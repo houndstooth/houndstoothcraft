@@ -3,8 +3,8 @@
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../components'
 import { FunctionsOf } from '../../../execute/types'
 import * as to from '../../../utilities/to'
-import { buildSettingsPathShortcuts } from '../../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../types'
+import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../../types'
 
 // Structure
 
@@ -55,26 +55,26 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	weave: DEFAULT_WEAVE,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const colorAssignmentSettings: SettingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 
-const colorAssignmentSettingsPathShortcuts: ColorAssignmentSettingsStructure = buildSettingsPathShortcuts({
+const colorAssignmentSettingsNamesToPathsMap: ColorAssignmentSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: colorAssignmentSettings,
 	settings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type ColorAssignmentSettingsPathShortcut = 'colorAssignmentSettings'
+type ColorAssignmentSettingsName = 'colorAssignmentSettings'
 
-type ColorAssignmentSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	AssignmentModePathShortcuts: 'assignmentMode',
-	BooleanPathShortcuts: 'flipGrain' | 'switcheroo',
-	OffsetAddressPathShortcuts: 'offsetAddress',
-	SupertilePathShortcuts: 'supertile',
-	TransformShapeColorIndicesPathShortcuts: 'transformShapeColorIndices',
-	WeavePathShortcuts: 'weave',
+type ColorAssignmentSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	AssignmentModeTypedSettingsNames: 'assignmentMode',
+	BooleanTypedSettingsNames: 'flipGrain' | 'switcheroo',
+	OffsetAddressTypedSettingsNames: 'offsetAddress',
+	SupertileTypedSettingsNames: 'supertile',
+	TransformShapeColorIndicesTypedSettingsNames: 'transformShapeColorIndices',
+	WeaveTypedSettingsNames: 'weave',
 }>
 
 export {
@@ -90,12 +90,12 @@ export {
 
 	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
-	colorAssignmentSettingsPathShortcuts,
+	colorAssignmentSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	ColorAssignmentSettingsPathShortcut,
-	ColorAssignmentSettingsTypePathShortcuts,
+	ColorAssignmentSettingsName,
+	ColorAssignmentSettingsNamesByType,
 }

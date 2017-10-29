@@ -1,4 +1,4 @@
-import { Address, from, state, to } from '../../../../src'
+import { Address, from, to } from '../../../../src'
 import {
 	AssignmentMode,
 	Grid,

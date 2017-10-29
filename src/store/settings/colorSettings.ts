@@ -5,8 +5,8 @@ import { BLACK, TRANSPARENT } from '../../constants'
 import { FunctionsOf } from '../../execute'
 import { Color } from '../../render'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 import { colorAssignmentSettings } from './color'
 
 // Structure
@@ -48,27 +48,27 @@ const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	opacity: DEFAULT_OPACITY,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const colorSettings: SettingsPath = to.SettingsPath([ 'colorSettings' ])
 
-const colorSettingsPathShortcuts: ColorSettingsStructure = {
-	...buildSettingsPathShortcuts({
+const colorSettingsNamesToPathsMap: ColorSettingsStructure = {
+	...buildSettingsNamesToPathsMap({
 		basePath: colorSettings,
 		settings: DEFAULT_COLOR_SETTINGS,
 	}),
-	...colorAssignmentSettings.colorAssignmentSettingsPathShortcuts,
+	...colorAssignmentSettings.colorAssignmentSettingsNamesToPathsMap,
 }
 
-// Shortcut types
+// Settings names by type
 
-type ColorSettingsPathShortcut = 'colorSettings'
+type ColorSettingsName = 'colorSettings'
 
-type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	ColorPathShortcuts: 'backgroundColor',
-	ColorSetPathShortcuts: 'colorSet',
-	NumberPathShortcuts: 'opacity',
-}> | colorAssignmentSettings.ColorAssignmentSettingsTypePathShortcuts
+type ColorSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	ColorSetTypedSettingsNames: 'colorSet',
+	ColorTypedSettingsNames: 'backgroundColor',
+	NumberTypedSettingsNames: 'opacity',
+}> | colorAssignmentSettings.ColorAssignmentSettingsNamesByType
 
 // Export
 
@@ -85,13 +85,13 @@ export {
 
 	DEFAULT_COLOR_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	colorSettings,
-	colorSettingsPathShortcuts,
+	colorSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	ColorSettingsPathShortcut,
-	ColorSettingsTypePathShortcuts,
+	ColorSettingsName,
+	ColorSettingsNamesByType,
 }

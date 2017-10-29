@@ -3,8 +3,8 @@
 import { Frame } from '../../animation'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
-import { buildSettingsPathShortcuts } from '../buildSettingsPathShortcuts'
-import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
+import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
+import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
 
 // Structure
 
@@ -43,23 +43,23 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 	startFrame: DEFAULT_START_FRAME,
 }
 
-// Shortcuts
+// Settings names to paths map
 
 const animationSettings: SettingsPath = to.SettingsPath([ 'animationSettings' ])
 
-const animationSettingsPathShortcuts: AnimationSettingsStructure = buildSettingsPathShortcuts({
+const animationSettingsNamesToPathsMap: AnimationSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: animationSettings,
 	settings: DEFAULT_ANIMATION_SETTINGS,
 })
 
-// Shortcut types
+// Settings names by type
 
-type AnimationSettingsPathShortcut = 'animationSettings'
+type AnimationSettingsName = 'animationSettings'
 
-type AnimationSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'refreshCanvas',
-	FramePathShortcuts: 'startFrame' | 'endFrame',
-	NumberPathShortcuts: 'frameRate',
+type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
+	BooleanTypedSettingsNames: 'refreshCanvas',
+	FrameTypedSettingsNames: 'startFrame' | 'endFrame',
+	NumberTypedSettingsNames: 'frameRate',
 }>
 
 // Export
@@ -77,13 +77,13 @@ export {
 
 	DEFAULT_ANIMATION_SETTINGS,
 
-	// Shortcuts
+	// Settings names to paths map
 
 	animationSettings,
-	animationSettingsPathShortcuts,
+	animationSettingsNamesToPathsMap,
 
-	// Shortcut types
+	// Settings names by type
 
-	AnimationSettingsPathShortcut,
-	AnimationSettingsTypePathShortcuts,
+	AnimationSettingsName,
+	AnimationSettingsNamesByType,
 }

@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
 import { getSettingOrCreatePath } from '../../../../src/store/getSettingOrCreatePath'
-import { SettingsStep } from '../../../../src/store/types'
+import { SettingsPath } from '../../../../src/store/types'
 import * as to from '../../../../src/utilities/to'
 
 describe('get setting or create path', () => {
@@ -12,7 +12,7 @@ describe('get setting or create path', () => {
 				childPathSecondStep: expectedSetting,
 			},
 		}
-		const settingsPath: SettingsStep[] = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
 
@@ -21,7 +21,7 @@ describe('get setting or create path', () => {
 
 	it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
 		const settings: any = {}
-		const settingsPath: SettingsStep[] = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
 
@@ -39,7 +39,7 @@ describe('get setting or create path', () => {
 				childPathSecondStep: 0,
 			},
 		}
-		const settingsPath: SettingsStep[] = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
 

@@ -1,4 +1,4 @@
-import { SettingsStep } from '../store'
+import { SettingsPath, SettingsStep } from '../store'
 
 type FunctionsOf<T> = { [P in keyof T]: (previous?: T[P]) => T[P] }
 
@@ -10,7 +10,7 @@ interface Layer extends Number {
 interface SettingsFunctionObject {
 	readonly settingName: SettingsStep,
 	readonly settingsFunction: <T>(p: T) => T,
-	readonly settingsPath: SettingsStep[],
+	readonly settingsPath: SettingsPath,
 }
 
 export {

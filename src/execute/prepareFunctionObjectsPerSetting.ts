@@ -1,11 +1,11 @@
-import { deeperPath, Pattern, SettingsStep } from '../store'
+import { deeperPath, Pattern, SettingsPath } from '../store'
 import * as to from '../utilities/to'
 import { SettingsFunctionObject } from './types'
 
 const prepareFunctionObjectsPerSetting: (_: {
 	settingsFunctionObjects?: SettingsFunctionObject[],
 	settingsFunctionsSourcePattern: Pattern,
-	settingsPath?: SettingsStep[],
+	settingsPath?: SettingsPath,
 }) => SettingsFunctionObject[] = prepareFunctionObjectsPerSettingArgs => {
 	const {
 		settingsFunctionObjects = [],

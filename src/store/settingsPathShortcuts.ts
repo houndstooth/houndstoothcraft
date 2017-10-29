@@ -8,9 +8,9 @@ import {
 	tileSettings,
 	viewSettings,
 } from './settings'
-import { SettingsStep } from './types'
+import { SettingsPath } from './types'
 
-const settingsPathShortcuts: { [ index: string ]: SettingsStep[] } = {
+const settingsPathShortcuts: { [ index: string ]: SettingsPath } = {
 	animationSettings: animationSettings.animationSettings, ...animationSettings.animationSettingsPathShortcuts,
 	colorSettings: colorSettings.colorSettings, ...colorSettings.colorSettingsPathShortcuts,
 	gridSettings: gridSettings.gridSettings, ...gridSettings.gridSettingsPathShortcuts,

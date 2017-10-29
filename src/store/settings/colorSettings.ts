@@ -6,7 +6,7 @@ import { FunctionsOf } from '../../execute'
 import { Color } from '../../render'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 import { colorAssignmentSettings } from './color'
 
 // Structure
@@ -48,21 +48,21 @@ const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	opacity: DEFAULT_OPACITY,
 }
 
-// Settings names to paths map
+// Settings name
 
-const colorSettings: SettingsPath = to.SettingsPath([ 'colorSettings' ])
+type ColorSettingsName = 'colorSettings'
+
+// Settings names to paths map
 
 const colorSettingsNamesToPathsMap: ColorSettingsStructure = {
 	...buildSettingsNamesToPathsMap({
-		basePath: colorSettings,
+		basePath: to.SettingsPath([ 'colorSettings' ]),
 		settings: DEFAULT_COLOR_SETTINGS,
 	}),
 	...colorAssignmentSettings.colorAssignmentSettingsNamesToPathsMap,
 }
 
 // Settings names by type
-
-type ColorSettingsName = 'colorSettings'
 
 type ColorSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	ColorSetTypedSettingsNames: 'colorSet',
@@ -73,25 +73,10 @@ type ColorSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	ColorSettings,
-
-	// Functions of
-
 	ColorSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_COLOR_SETTINGS,
-
-	// Settings names to paths map
-
-	colorSettings,
-	colorSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	ColorSettingsName,
+	colorSettingsNamesToPathsMap,
 	ColorSettingsNamesByType,
 }

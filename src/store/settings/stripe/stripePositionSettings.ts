@@ -4,7 +4,7 @@ import { GetStripePositions, standardStripePositions, StripeCountMode } from '..
 import { FunctionsOf } from '../../../execute'
 import * as to from '../../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../../types'
 import { stripeCountContinuumSettings } from './stripePosition'
 
 // Structure
@@ -46,21 +46,21 @@ const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
 }
 
-// Settings names to paths map
+// Settings name
 
-const stripePositionSettings: SettingsPath = to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ])
+type StripePositionSettingsName = 'stripePositionSettings'
+
+// Settings names to paths map
 
 const stripePositionSettingsNamesToPathsMap: StripePositionSettingsStructure = {
 	...buildSettingsNamesToPathsMap({
-		basePath: stripePositionSettings,
+		basePath: to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ]),
 		settings: DEFAULT_STRIPE_POSITION_SETTINGS,
 	}),
 	...stripeCountContinuumSettings.stripeCountContinuumSettingsNamesToPathsMap,
 }
 
 // Settings names by type
-
-type StripePositionSettingsName = 'stripePositionSettings'
 
 type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	GetStripePositionsTypedSettingsNames: 'getStripePositions',
@@ -71,25 +71,10 @@ type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	StripePositionSettings,
-
-	// Functions of
-
 	StripePositionSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_STRIPE_POSITION_SETTINGS,
-
-	// Settings names to paths map
-
-	stripePositionSettings,
-	stripePositionSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	StripePositionSettingsName,
+	stripePositionSettingsNamesToPathsMap,
 	StripePositionSettingsNamesByType,
 }

@@ -5,7 +5,7 @@ import { Px } from '../../page'
 import { Radian } from '../../space'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 // Structure
 
@@ -48,18 +48,18 @@ const DEFAULT_VIEW_SETTINGS: ViewSettings = {
 	zoomOnCanvasCenter: DEFAULT_ZOOM_ON_CANVAS_CENTER,
 }
 
+// Settings name
+
+type ViewSettingsName = 'viewSettings'
+
 // Settings names to paths map
 
-const viewSettings: SettingsPath = to.SettingsPath([ 'viewSettings' ])
-
 const viewSettingsNamesToPathsMap: ViewSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: viewSettings,
+	basePath: to.SettingsPath([ 'viewSettings' ]),
 	settings: DEFAULT_VIEW_SETTINGS,
 })
 
 // Settings names by type
-
-type ViewSettingsName = 'viewSettings'
 
 type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
@@ -71,26 +71,11 @@ type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	ViewSettings,
-
-	// Functions of
-
 	ViewSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_VIEW_SETTINGS,
 	DEFAULT_CANVAS_SIZE,
-
-	// Settings names to paths map
-
-	viewSettings,
-	viewSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	ViewSettingsName,
+	viewSettingsNamesToPathsMap,
 	ViewSettingsNamesByType,
 }

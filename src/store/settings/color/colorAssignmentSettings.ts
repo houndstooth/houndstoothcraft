@@ -4,7 +4,7 @@ import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, W
 import { FunctionsOf } from '../../../execute/types'
 import * as to from '../../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../../types'
 
 // Structure
 
@@ -55,18 +55,18 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	weave: DEFAULT_WEAVE,
 }
 
+// Settings name
+
+type ColorAssignmentSettingsName = 'colorAssignmentSettings'
+
 // Settings names to paths map
 
-const colorAssignmentSettings: SettingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
-
 const colorAssignmentSettingsNamesToPathsMap: ColorAssignmentSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: colorAssignmentSettings,
+	basePath: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 	settings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 })
 
 // Settings names by type
-
-type ColorAssignmentSettingsName = 'colorAssignmentSettings'
 
 type ColorAssignmentSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	AssignmentModeTypedSettingsNames: 'assignmentMode',
@@ -78,24 +78,10 @@ type ColorAssignmentSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 }>
 
 export {
-	// Type
-
 	ColorAssignmentSettings,
-
-	// Functions of
-
 	ColorAssignmentSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
-
-	// Settings names to paths map
-
-	colorAssignmentSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	ColorAssignmentSettingsName,
+	colorAssignmentSettingsNamesToPathsMap,
 	ColorAssignmentSettingsNamesByType,
 }

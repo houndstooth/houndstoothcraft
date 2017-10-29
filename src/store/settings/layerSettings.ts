@@ -4,7 +4,7 @@ import { FunctionsOf } from '../../execute'
 import { Layer } from '../../execute/types'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 // Structure
 
@@ -35,18 +35,18 @@ const DEFAULT_LAYER_SETTINGS: LayerSettings = {
 	startLayer: DEFAULT_START_LAYER,
 }
 
+// Settings name
+
+type LayerSettingsName = 'layerSettings'
+
 // Settings names to paths map
 
-const layerSettings: SettingsPath = to.SettingsPath([ 'layerSettings' ])
-
 const layerSettingsNamesToPathsMap: LayerSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: layerSettings,
+	basePath: to.SettingsPath([ 'layerSettings' ]),
 	settings: DEFAULT_LAYER_SETTINGS,
 })
 
 // Settings names by type
-
-type LayerSettingsName = 'layerSettings'
 
 type LayerSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	LayerTypedSettingsNames: 'startLayer' | 'endLayer',
@@ -55,25 +55,10 @@ type LayerSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	LayerSettings,
-
-	// Functions of
-
 	LayerSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_LAYER_SETTINGS,
-
-	// Settings names to paths map
-
-	layerSettings,
-	layerSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	LayerSettingsName,
+	layerSettingsNamesToPathsMap,
 	LayerSettingsNamesByType,
 }

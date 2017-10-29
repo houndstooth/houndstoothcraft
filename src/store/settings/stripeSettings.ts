@@ -4,7 +4,7 @@ import { BaseStripeDiagonal } from '../../components'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 import { stripePositionSettings } from './stripe'
 
 // Structure
@@ -38,21 +38,21 @@ const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 	stripePositionSettings: stripePositionSettings.DEFAULT_STRIPE_POSITION_SETTINGS,
 }
 
-// Settings names to paths map
+// Settings name
 
-const stripeSettings: SettingsPath = to.SettingsPath([ 'stripeSettings' ])
+type StripeSettingsName = 'stripeSettings'
+
+// Settings names to paths map
 
 const stripeSettingsNamesToPathsMap: StripeSettingsStructure = {
 	...buildSettingsNamesToPathsMap({
-		basePath: stripeSettings,
+		basePath: to.SettingsPath([ 'stripeSettings' ]),
 		settings: DEFAULT_STRIPE_SETTINGS,
 	}),
 	...stripePositionSettings.stripePositionSettingsNamesToPathsMap,
 }
 
 // Settings names by type
-
-type StripeSettingsName = 'stripeSettings'
 
 type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BaseStripeDiagonalTypedSettingsNames: 'baseStripeDiagonal',
@@ -61,25 +61,10 @@ type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	StripeSettings,
-
-	// Functions of
-
 	StripeSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_STRIPE_SETTINGS,
-
-	// Settings names to paths map
-
-	stripeSettings,
-	stripeSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	StripeSettingsName,
+	stripeSettingsNamesToPathsMap,
 	StripeSettingsNamesByType,
 }

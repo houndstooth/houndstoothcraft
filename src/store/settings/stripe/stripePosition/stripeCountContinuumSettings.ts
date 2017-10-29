@@ -3,7 +3,7 @@
 import { FunctionsOf } from '../../../../execute'
 import * as to from '../../../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../../../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../../../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../../../types'
 
 // Structure
 
@@ -34,23 +34,23 @@ const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
 	initialStripeCount: DEFAULT_INITIAL_STRIPE_COUNT,
 }
 
-// Settings names to paths map
+// Settings name
 
-const stripeCountContinuumSettings: SettingsPath = to.SettingsPath([
-	'stripeSettings',
-	'stripePositionSettings',
-	'stripeCountContinuumSettings',
-])
+type StripeCountContinuumSettingsName = 'stripeCountContinuumSettings'
+
+// Settings names to paths map
 
 // tslint:disable-next-line:max-line-length
 const stripeCountContinuumSettingsNamesToPathsMap: StripeCountContinuumSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: stripeCountContinuumSettings,
+	basePath: to.SettingsPath([
+		'stripeSettings',
+		'stripePositionSettings',
+		'stripeCountContinuumSettings',
+	]),
 	settings: DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 })
 
 // Settings names by type
-
-type StripeCountContinuumSettingsName = 'stripeCountContinuumSettings'
 
 type StripeCountContinuumSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	NumberTypedSettingsNames: 'deltaStripeCount' | 'initialStripeCount',
@@ -59,25 +59,10 @@ type StripeCountContinuumSettingsNamesByType = Overwrite<SettingsNamesByTypeBase
 // Export
 
 export {
-	// Type
-
 	StripeCountContinuumSettings,
-
-	// Functions of
-
 	StripeCountContinuumSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
-
-	// Settings names to paths map
-
-	stripeCountContinuumSettings,
-	stripeCountContinuumSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	StripeCountContinuumSettingsName,
+	stripeCountContinuumSettingsNamesToPathsMap,
 	StripeCountContinuumSettingsNamesByType,
 }

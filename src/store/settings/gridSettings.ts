@@ -3,7 +3,7 @@
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 // Structure
 
@@ -34,18 +34,18 @@ const DEFAULT_GRID_SETTINGS: GridSettings = {
 	includeNegativeQuadrants: DEFAULT_INCLUDE_NEGATIVE_QUADRANTS,
 }
 
+// Settings name
+
+type GridSettingsName = 'gridSettings'
+
 // Settings names to paths map
 
-const gridSettings: SettingsPath = to.SettingsPath([ 'gridSettings' ])
-
 const gridSettingsNamesToPathsMap: GridSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: gridSettings,
+	basePath: to.SettingsPath([ 'gridSettings' ]),
 	settings: DEFAULT_GRID_SETTINGS,
 })
 
 // Settings names by type
-
-type GridSettingsName = 'gridSettings'
 
 type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'includeNegativeQuadrants',
@@ -55,25 +55,10 @@ type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	GridSettings,
-
-	// Functions of
-
 	GridSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_GRID_SETTINGS,
-
-	// Settings names to paths map
-
-	gridSettings,
-	gridSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	GridSettingsName,
+	gridSettingsNamesToPathsMap,
 	GridSettingsNamesByType,
 }

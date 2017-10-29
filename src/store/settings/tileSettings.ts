@@ -4,7 +4,7 @@ import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 // Structure
 
@@ -39,18 +39,18 @@ const DEFAULT_TILE_SETTINGS: TileSettings = {
 	tileSize: DEFAULT_TILE_SIZE,
 }
 
+// Settings name
+
+type TileSettingsName = 'tileSettings'
+
 // Settings names to paths map
 
-const tileSettings: SettingsPath = to.SettingsPath([ 'tileSettings' ])
-
 const tileSettingsNamesToPathsMap: TileSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: tileSettings,
+	basePath: to.SettingsPath([ 'tileSettings' ]),
 	settings: DEFAULT_TILE_SETTINGS,
 })
 
 // Settings names by type
-
-type TileSettingsName = 'tileSettings'
 
 type TileSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'collapseSameColoredShapesWithinTile',
@@ -61,25 +61,10 @@ type TileSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	TileSettings,
-
-	// Functions of
-
 	TileSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_TILE_SETTINGS,
-
-	// Settings names to paths map
-
-	tileSettings,
-	tileSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	TileSettingsName,
+	tileSettingsNamesToPathsMap,
 	TileSettingsNamesByType,
 }

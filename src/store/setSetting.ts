@@ -7,12 +7,11 @@ import { settingNamesToPathsMap } from './settingNamesToPathsMap'
 import { SetSetting, SettingsPath } from './types'
 
 const setSetting: SetSetting = (settingName: any, value: any) => {
-	const settingsPath: SettingsPath = settingNamesToPathsMap[ settingName ]
-	const pathToParentSetting: SettingsPath = to.SettingsPath(settingsPath.slice(0, -1))
+	const baseSettingsPath: SettingsPath = settingNamesToPathsMap[ settingName ] || to.SettingsPath([])
 
 	const parentSetting: any = getSettingOrCreatePath({
 		settings: state.mainHoundstooth.basePattern,
-		settingsPath: pathToParentSetting,
+		settingsPath: baseSettingsPath,
 	})
 	parentSetting[settingName] = value
 }

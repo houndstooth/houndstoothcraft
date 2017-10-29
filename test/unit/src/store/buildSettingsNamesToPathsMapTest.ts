@@ -27,8 +27,8 @@ describe('build settings names to paths map', () => {
 		})
 
 		const expectedSettingsNamesToPathsMap: ExampleSettingsStructure = {
-			settingOne: to.SettingsPath([ 'parentSettings', 'exampleSettings', 'settingOne' ]),
-			settingTwo: to.SettingsPath([ 'parentSettings', 'exampleSettings', 'settingTwo' ]),
+			settingOne: to.SettingsPath([ 'parentSettings', 'exampleSettings' ]),
+			settingTwo: to.SettingsPath([ 'parentSettings', 'exampleSettings' ]),
 		}
 		expect(actualSettingTypedSettingsNames).toEqual(expectedSettingsNamesToPathsMap)
 	})

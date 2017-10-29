@@ -3,7 +3,7 @@
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 // Structure
 
@@ -30,18 +30,18 @@ const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
 	templateSetting: DEFAULT_TEMPLATE_SETTING,
 }
 
+// Settings name
+
+type TemplateSettingsName = 'templateSettings'
+
 // Settings names to paths map
 
-const templateSettings: SettingsPath = to.SettingsPath([ 'templateSettings' ])
-
 const templateSettingsNamesToPathsMap: TemplateSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: templateSettings,
+	basePath: to.SettingsPath([ 'templateSettings' ]),
 	settings: DEFAULT_TEMPLATE_SETTINGS,
 })
 
 // Settings names by type
-
-type TemplateSettingsName = 'templateSettings'
 
 type TemplateSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	AssignmentModeTypedSettingsNames: '_',
@@ -69,25 +69,10 @@ type TemplateSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	TemplateSettings,
-
-	// Functions of
-
 	TemplateSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_TEMPLATE_SETTINGS,
-
-	// Settings names to paths map
-
-	templateSettings,
-	templateSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	TemplateSettingsName,
+	templateSettingsNamesToPathsMap,
 	TemplateSettingsNamesByType,
 }

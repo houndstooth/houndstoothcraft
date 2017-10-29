@@ -4,7 +4,7 @@ import { Frame } from '../../animation'
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
-import { Overwrite, SettingsNamesByTypeBase, SettingsPath } from '../types'
+import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 // Structure
 
@@ -43,18 +43,18 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 	startFrame: DEFAULT_START_FRAME,
 }
 
+// Settings name
+
+type AnimationSettingsName = 'animationSettings'
+
 // Settings names to paths map
 
-const animationSettings: SettingsPath = to.SettingsPath([ 'animationSettings' ])
-
 const animationSettingsNamesToPathsMap: AnimationSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: animationSettings,
+	basePath: to.SettingsPath([ 'animationSettings' ]),
 	settings: DEFAULT_ANIMATION_SETTINGS,
 })
 
 // Settings names by type
-
-type AnimationSettingsName = 'animationSettings'
 
 type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'refreshCanvas',
@@ -65,25 +65,10 @@ type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 // Export
 
 export {
-	// Type
-
 	AnimationSettings,
-
-	// Functions of
-
 	AnimationSettingsFunctions,
-
-	// Defaults
-
 	DEFAULT_ANIMATION_SETTINGS,
-
-	// Settings names to paths map
-
-	animationSettings,
-	animationSettingsNamesToPathsMap,
-
-	// Settings names by type
-
 	AnimationSettingsName,
+	animationSettingsNamesToPathsMap,
 	AnimationSettingsNamesByType,
 }

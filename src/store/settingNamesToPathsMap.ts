@@ -11,14 +11,14 @@ import {
 import { SettingsPath } from './types'
 
 const settingNamesToPathsMap: { [ index: string ]: SettingsPath } = {
-	animationSettings: animationSettings.animationSettings, ...animationSettings.animationSettingsNamesToPathsMap,
-	colorSettings: colorSettings.colorSettings, ...colorSettings.colorSettingsNamesToPathsMap,
-	gridSettings: gridSettings.gridSettings, ...gridSettings.gridSettingsNamesToPathsMap,
-	layerSettings: layerSettings.layerSettings, ...layerSettings.layerSettingsNamesToPathsMap,
-	stripeSettings: stripeSettings.stripeSettings, ...stripeSettings.stripeSettingsNamesToPathsMap,
-	textureSettings: textureSettings.textureSettings, ...textureSettings.textureSettingsNamesToPathsMap,
-	tileSettings: tileSettings.tileSettings, ...tileSettings.tileSettingsNamesToPathsMap,
-	viewSettings: viewSettings.viewSettings, ...viewSettings.viewSettingsNamesToPathsMap,
+	...animationSettings.animationSettingsNamesToPathsMap,
+	...colorSettings.colorSettingsNamesToPathsMap,
+	...gridSettings.gridSettingsNamesToPathsMap,
+	...layerSettings.layerSettingsNamesToPathsMap,
+	...stripeSettings.stripeSettingsNamesToPathsMap,
+	...textureSettings.textureSettingsNamesToPathsMap,
+	...tileSettings.tileSettingsNamesToPathsMap,
+	...viewSettings.viewSettingsNamesToPathsMap,
 }
 
 export { settingNamesToPathsMap }

@@ -43,7 +43,7 @@ interface ExecuteTextureParams extends TileOriginAndSize {
 
 type GetStripePosition = (_: {
 	readonly stripeCount: number,
-	readonly stripeIndex: number
+	readonly stripeIndex: number,
 }) => StripePosition
 
 // tslint:disable-next-line:no-any

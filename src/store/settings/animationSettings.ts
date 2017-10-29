@@ -9,20 +9,20 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface AnimationSettingsStructure {
-	endFrame: any,
-	frameRate: any,
-	refreshCanvas: any,
-	startFrame: any,
-	[_: string]: any,
+	readonly endFrame: any,
+	readonly frameRate: any,
+	readonly refreshCanvas: any,
+	readonly startFrame: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface AnimationSettings extends AnimationSettingsStructure {
-	endFrame: Frame,
-	frameRate: number,
-	refreshCanvas: boolean,
-	startFrame: Frame,
+	readonly endFrame: Frame,
+	readonly frameRate: number,
+	readonly refreshCanvas: boolean,
+	readonly startFrame: Frame,
 }
 
 // Functions of

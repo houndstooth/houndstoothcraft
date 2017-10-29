@@ -8,14 +8,14 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface TemplateSettingsStructure {
-	templateSetting: any,
-	[_: string]: any,
+	readonly templateSetting: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface TemplateSettings extends TemplateSettingsStructure {
-	templateSetting: string,
+	readonly templateSetting: string,
 }
 
 // Functions of

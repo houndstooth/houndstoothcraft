@@ -9,14 +9,14 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface TextureSettingsStructure {
-	executeTexture?: any,
-	[_: string]: any,
+	readonly executeTexture?: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface TextureSettings extends TextureSettingsStructure {
-	executeTexture?: ExecuteTexture,
+	readonly executeTexture?: ExecuteTexture,
 }
 
 // Functions of

@@ -10,16 +10,16 @@ import { stripePositionSettings } from './stripe'
 // Structure
 
 interface StripeSettingsStructure {
-	baseStripeDiagonal: any,
-	stripePositionSettings: any,
-	[_: string]: any,
+	readonly baseStripeDiagonal: any,
+	readonly stripePositionSettings: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface StripeSettings extends StripeSettingsStructure {
-	baseStripeDiagonal: BaseStripeDiagonal,
-	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
+	readonly baseStripeDiagonal: BaseStripeDiagonal,
+	readonly stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
 }
 
 // Functions of

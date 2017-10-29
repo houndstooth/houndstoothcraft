@@ -9,18 +9,18 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface TileSettingsStructure {
-	collapseSameColoredShapesWithinTile: any,
-	getTileOriginAndSize: any,
-	tileSize: any,
-	[_: string]: any,
+	readonly collapseSameColoredShapesWithinTile: any,
+	readonly getTileOriginAndSize: any,
+	readonly tileSize: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface TileSettings extends TileSettingsStructure {
-	collapseSameColoredShapesWithinTile: boolean,
-	getTileOriginAndSize: GetTileOriginAndSize,
-	tileSize: Unit,
+	readonly collapseSameColoredShapesWithinTile: boolean,
+	readonly getTileOriginAndSize: GetTileOriginAndSize,
+	readonly tileSize: Unit,
 }
 
 // Functions of

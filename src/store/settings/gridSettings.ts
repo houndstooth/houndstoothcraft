@@ -8,16 +8,16 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface GridSettingsStructure {
-	gridSize: any,
-	includeNegativeQuadrants: any,
-	[_: string]: any,
+	readonly gridSize: any,
+	readonly includeNegativeQuadrants: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface GridSettings extends GridSettingsStructure {
-	gridSize: number,
-	includeNegativeQuadrants: boolean,
+	readonly gridSize: number,
+	readonly includeNegativeQuadrants: boolean,
 }
 
 // Functions of

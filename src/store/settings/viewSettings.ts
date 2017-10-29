@@ -10,22 +10,22 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface ViewSettingsStructure {
-	canvasSize: any,
-	centerViewOnCenterOfTileAtHomeAddress: any,
-	rotateViewAboutCanvasCenter: any,
-	zoom: any,
-	zoomOnCanvasCenter: any,
-	[_: string]: any
+	readonly canvasSize: any,
+	readonly centerViewOnCenterOfTileAtHomeAddress: any,
+	readonly rotateViewAboutCanvasCenter: any,
+	readonly zoom: any,
+	readonly zoomOnCanvasCenter: any,
+	readonly [_: string]: any
 }
 
 // Type
 
 interface ViewSettings extends ViewSettingsStructure {
-	canvasSize: Px,
-	centerViewOnCenterOfTileAtHomeAddress: boolean,
-	rotateViewAboutCanvasCenter: Radian,
-	zoom: number,
-	zoomOnCanvasCenter: boolean,
+	readonly canvasSize: Px,
+	readonly centerViewOnCenterOfTileAtHomeAddress: boolean,
+	readonly rotateViewAboutCanvasCenter: Radian,
+	readonly zoom: number,
+	readonly zoomOnCanvasCenter: boolean,
 }
 
 // Functions of

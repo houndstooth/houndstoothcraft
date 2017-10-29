@@ -21,14 +21,14 @@ import {
 } from './settings'
 
 interface BasePattern {
-	animationSettings: Partial<animationSettings.AnimationSettings>,
-	colorSettings: Partial<colorSettings.ColorSettings>,
-	gridSettings: Partial<gridSettings.GridSettings>,
-	layerSettings: Partial<layerSettings.LayerSettings>,
-	stripeSettings: Partial<stripeSettings.StripeSettings>,
-	textureSettings: Partial<textureSettings.TextureSettings>,
-	tileSettings: Partial<tileSettings.TileSettings>,
-	viewSettings: Partial<viewSettings.ViewSettings>,
+	readonly animationSettings: Partial<animationSettings.AnimationSettings>,
+	readonly colorSettings: Partial<colorSettings.ColorSettings>,
+	readonly gridSettings: Partial<gridSettings.GridSettings>,
+	readonly layerSettings: Partial<layerSettings.LayerSettings>,
+	readonly stripeSettings: Partial<stripeSettings.StripeSettings>,
+	readonly textureSettings: Partial<textureSettings.TextureSettings>,
+	readonly tileSettings: Partial<tileSettings.TileSettings>,
+	readonly viewSettings: Partial<viewSettings.ViewSettings>,
 }
 
 type Effect = Partial<Houndstooth>

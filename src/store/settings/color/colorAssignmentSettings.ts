@@ -9,26 +9,26 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../types'
 // Structure
 
 interface ColorAssignmentSettingsStructure {
-	assignmentMode: any,
-	flipGrain: any,
-	offsetAddress?: any,
-	supertile: any,
-	switcheroo: any,
-	transformShapeColorIndices?: any,
-	weave: any,
-	[_: string]: any,
+	readonly assignmentMode: any,
+	readonly flipGrain: any,
+	readonly offsetAddress?: any,
+	readonly supertile: any,
+	readonly switcheroo: any,
+	readonly transformShapeColorIndices?: any,
+	readonly weave: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
-	assignmentMode: AssignmentMode,
-	flipGrain: boolean,
-	offsetAddress?: OffsetAddress,
-	supertile: Supertile,
-	switcheroo: boolean,
-	transformShapeColorIndices?: TransformShapeColorIndices,
-	weave: Weave,
+	readonly assignmentMode: AssignmentMode,
+	readonly flipGrain: boolean,
+	readonly offsetAddress?: OffsetAddress,
+	readonly supertile: Supertile,
+	readonly switcheroo: boolean,
+	readonly transformShapeColorIndices?: TransformShapeColorIndices,
+	readonly weave: Weave,
 }
 
 // Functions of

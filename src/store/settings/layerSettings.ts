@@ -9,16 +9,16 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 // Structure
 
 interface LayerSettingsStructure {
-	endLayer: any,
-	startLayer: any,
-	[_: string]: any,
+	readonly endLayer: any,
+	readonly startLayer: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface LayerSettings extends LayerSettingsStructure {
-	endLayer: Layer,
-	startLayer: Layer,
+	readonly endLayer: Layer,
+	readonly startLayer: Layer,
 }
 
 // Functions of

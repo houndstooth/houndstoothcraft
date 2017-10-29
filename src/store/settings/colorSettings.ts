@@ -12,20 +12,20 @@ import { colorAssignmentSettings } from './color'
 // Structure
 
 interface ColorSettingsStructure {
-	backgroundColor: any,
-	colorAssignmentSettings: any,
-	colorSet: any,
-	opacity: any,
-	[_: string]: any,
+	readonly backgroundColor: any,
+	readonly colorAssignmentSettings: any,
+	readonly colorSet: any,
+	readonly opacity: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface ColorSettings extends ColorSettingsStructure {
-	backgroundColor: Color,
-	colorAssignmentSettings: Partial<colorAssignmentSettings.ColorAssignmentSettings>,
-	colorSet: ColorSet,
-	opacity: number,
+	readonly backgroundColor: Color,
+	readonly colorAssignmentSettings: Partial<colorAssignmentSettings.ColorAssignmentSettings>,
+	readonly colorSet: ColorSet,
+	readonly opacity: number,
 }
 
 // Functions of

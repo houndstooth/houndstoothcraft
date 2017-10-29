@@ -8,16 +8,16 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../../types'
 // Structure
 
 interface StripeCountContinuumSettingsStructure {
-	deltaStripeCount: any,
-	initialStripeCount: any,
-	[_: string]: any,
+	readonly deltaStripeCount: any,
+	readonly initialStripeCount: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface StripeCountContinuumSettings extends StripeCountContinuumSettingsStructure {
-	deltaStripeCount: number,
-	initialStripeCount: number,
+	readonly deltaStripeCount: number,
+	readonly initialStripeCount: number,
 }
 
 // Functions of

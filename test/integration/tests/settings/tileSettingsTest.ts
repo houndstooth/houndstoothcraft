@@ -138,9 +138,14 @@ describe('.tileSettings', () => {
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', () => {
-			if (houndstoothOverrides.basePattern) {
-				houndstoothOverrides.basePattern.tileSettings = { collapseSameColoredShapesWithinTile: false }
+			houndstoothOverrides = {
+				basePattern: {
+					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
+					gridSettings: { gridSize: 1 },
+					tileSettings: { collapseSameColoredShapesWithinTile: false },
+				},
 			}
+
 			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })

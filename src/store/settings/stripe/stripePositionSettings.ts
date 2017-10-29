@@ -10,20 +10,20 @@ import { stripeCountContinuumSettings } from './stripePosition'
 // Structure
 
 interface StripePositionSettingsStructure {
-	getStripePositions: any,
-	stripeCount: any,
-	stripeCountContinuumSettings: any,
-	stripeCountMode: any,
-	[_: string]: any,
+	readonly getStripePositions: any,
+	readonly stripeCount: any,
+	readonly stripeCountContinuumSettings: any,
+	readonly stripeCountMode: any,
+	readonly [_: string]: any,
 }
 
 // Type
 
 interface StripePositionSettings extends StripePositionSettingsStructure {
-	getStripePositions: GetStripePositions,
-	stripeCount: number,
-	stripeCountContinuumSettings: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>,
-	stripeCountMode: StripeCountMode,
+	readonly getStripePositions: GetStripePositions,
+	readonly stripeCount: number,
+	readonly stripeCountContinuumSettings: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>,
+	readonly stripeCountMode: StripeCountMode,
 }
 
 // Functions of

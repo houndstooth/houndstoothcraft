@@ -8,7 +8,7 @@ describe('get tile origin and size', () => {
 	const tileSize: Unit = to.Unit(40)
 
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
-		state.mainHoundstooth.basePattern.tileSettings = { tileSize }
+		setSetting('tileSettings', { tileSize })
 
 		expect(getTileOriginAndSize({ gridAddress: gridAddressForSubject })).toEqual({
 			tileOrigin: to.Coordinate([ from.Unit(tileSize) * 7, from.Unit(tileSize) * 11 ]),

@@ -4,6 +4,7 @@ import { SettingsFunctionObject } from '../../../../src/execute'
 import { executeAnimation } from '../../../../src/execute/executeAnimation'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
+import { setSetting } from '../../../../src/store/setSetting'
 
 describe('execute animation', () => {
 	const stopConditionFunction: ConditionFunction = (): boolean => false
@@ -33,12 +34,7 @@ describe('execute animation', () => {
 			endFrame = to.Frame(7)
 			refreshCanvas = false
 
-			state.mainHoundstooth.basePattern.animationSettings = {
-				endFrame,
-				frameRate,
-				refreshCanvas,
-				startFrame,
-			}
+			setSetting('animationSettings', { endFrame, frameRate, refreshCanvas, startFrame })
 		})
 
 		it('calls the animator', () => {

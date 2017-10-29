@@ -15,7 +15,7 @@ describe('apply background color', () => {
 	})
 
 	it('fills the entire canvas with the color', () => {
-		state.mainHoundstooth.basePattern.colorSettings = { backgroundColor: CYAN }
+		setSetting('colorSettings', { backgroundColor: CYAN })
 
 		applyBackgroundColor()
 

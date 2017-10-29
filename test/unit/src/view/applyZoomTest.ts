@@ -16,7 +16,7 @@ describe('apply zoom', () => {
 			[ 100, 100 ],
 			[ 50, 100 ],
 		])
-		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
+		setSetting('viewSettings', { zoom, canvasSize })
 	})
 
 	it('adjusts the path per the zoom level', () => {

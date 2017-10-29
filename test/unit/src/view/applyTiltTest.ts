@@ -4,15 +4,13 @@ import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 import { applyTilt } from '../../../../src/view/applyTilt'
 import { pixelsAreClose } from '../../helpers/pixelsAreClose'
+import { setSetting } from '../../../../src/store/setSetting'
 
 describe('apply tilt', () => {
 	const canvasSize: Px = to.Px(200)
 
 	it('rotates the path about the canvas center', () => {
-		state.mainHoundstooth.basePattern.viewSettings = {
-			canvasSize,
-			rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2),
-		}
+		setSetting('viewSettings', { canvasSize, rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2) })
 		const path: Path = to.Path([
 			[ 0, 0 ],
 			[ 40, 0 ],

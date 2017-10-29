@@ -1,5 +1,6 @@
 import { state } from '../../../../src/state'
 import { applyOpacity } from '../../../../src/view/applyOpacity'
+import { setSetting } from '../../../../src/store/setSetting'
 
 describe('apply opacity', () => {
 	beforeEach(() => {
@@ -7,25 +8,25 @@ describe('apply opacity', () => {
 	})
 
 	it('has no effect if no opacity level is specified', () => {
-		expect(state.contexts[0].globalAlpha).toBe(1)
+		expect(state.contexts[ 0 ].globalAlpha).toBe(1)
 
 		applyOpacity()
 
-		expect(state.contexts[0].globalAlpha).toBe(1)
+		expect(state.contexts[ 0 ].globalAlpha).toBe(1)
 	})
 
 	it('has no effect if no opacity level is 1', () => {
-		state.mainHoundstooth.basePattern.colorSettings = { opacity: 1 }
+		setSetting('colorSettings', { opacity: 1 })
 
 		applyOpacity()
 
-		expect(state.contexts[0].globalAlpha).toBe(1)
+		expect(state.contexts[ 0 ].globalAlpha).toBe(1)
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
-		state.mainHoundstooth.basePattern.colorSettings = { opacity: 0.4 }
+		setSetting('colorSettings', { opacity: 0.4 })
 		applyOpacity()
 
-		expect(state.contexts[0].globalAlpha).toBe(0.4)
+		expect(state.contexts[ 0 ].globalAlpha).toBe(0.4)
 	})
 })

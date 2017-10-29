@@ -2,6 +2,7 @@ import { ColorSet, ShapeColorIndex } from '../../../../src/components'
 import { isTileUniform } from '../../../../src/components/isTileUniform'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
+import { setSetting } from '../../../../src/store/setSetting'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {
@@ -12,7 +13,7 @@ describe('is tile uniform', () => {
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 5, g: 100, b: 50, a: 0.5 },
 		])
-		state.mainHoundstooth.basePattern.colorSettings = { colorSet }
+		setSetting('colorSettings', { colorSet })
 	})
 
 	it('returns true if all of the tile color indices point to the same color', () => {

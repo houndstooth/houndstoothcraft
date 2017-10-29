@@ -10,7 +10,7 @@ describe('grid', () => {
 	let tileSpy: Spy
 	beforeEach(() => {
 		tileSpy = spyOn(tile, 'tile')
-		state.mainHoundstooth.basePattern.gridSettings = { gridSize }
+		setSetting('gridSettings', { gridSize })
 	})
 
 	it('uses the given grid size', () => {

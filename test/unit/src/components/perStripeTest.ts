@@ -4,16 +4,17 @@ import { perStripe } from '../../../../src/components/perStripe'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
+import { setSetting } from '../../../../src/store/setSetting'
 
 describe('per stripe', () => {
 	beforeEach(() => composeMainHoundstooth)
 
 	it('uses a stripe count if provided', () => {
-		state.mainHoundstooth.basePattern.stripeSettings = {
+		setSetting('stripeSettings', {
 			stripePositionSettings: {
 				stripeCount: 3,
 			},
-		}
+		})
 		const stripePositions: StripePosition[] = perStripe({
 			getStripePosition: (): StripePosition => to.StripePosition(5),
 		})

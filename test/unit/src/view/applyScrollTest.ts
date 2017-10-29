@@ -17,8 +17,8 @@ describe('apply scroll', () => {
 		[ 3, 4 ],
 	])
 	beforeEach(() => {
-		state.mainHoundstooth.basePattern.viewSettings = { zoom, canvasSize }
-		state.mainHoundstooth.basePattern.tileSettings = { tileSize }
+		setSetting('viewSettings', { zoom, canvasSize })
+		setSetting('tileSettings', { tileSize })
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {

@@ -51,7 +51,7 @@ describe('tile', () => {
 			stripePositionsForTile = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 			spyOn(getStripePositionsForTile, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
 
-			state.mainHoundstooth.basePattern.tileSettings = {}
+			setSetting('tileSettings', {})
 
 			shapeColorIndices = []
 			getShapeColorIndicesSpy.and.returnValue(shapeColorIndices)

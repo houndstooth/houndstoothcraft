@@ -9,6 +9,7 @@ import * as codeUtilities from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import { noop } from '../../../helpers/noop'
+import { setSetting } from '../../../../src/store/setSetting'
 
 describe('shape', () => {
 	const tileOrigin: Coordinate = to.Coordinate([ 11, 13 ])
@@ -88,7 +89,7 @@ describe('shape', () => {
 		describe('when an executeTexture method is supplied', () => {
 			const executeTexture: NullarySideEffector = noop
 			beforeEach(() => {
-				state.mainHoundstooth.basePattern.textureSettings = { executeTexture }
+				setSetting('textureSettings', { executeTexture })
 			})
 
 			it('passes it to the texture component to be rendered', () => {

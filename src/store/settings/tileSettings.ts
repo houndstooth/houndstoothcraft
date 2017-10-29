@@ -12,8 +12,7 @@ interface TileSettingsStructure {
 	collapseSameColoredShapesWithinTile: any,
 	getTileOriginAndSize: any,
 	tileSize: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type
@@ -54,8 +53,8 @@ const tileSettingsPathShortcuts: TileSettingsStructure = buildSettingsPathShortc
 type TileSettingsPathShortcut = 'tileSettings'
 
 type TileSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'collapseSameColoredShapesWithinTile'
-	GetTileOriginAndSizePathShortcuts: 'getTileOriginAndSize'
+	BooleanPathShortcuts: 'collapseSameColoredShapesWithinTile',
+	GetTileOriginAndSizePathShortcuts: 'getTileOriginAndSize',
 	UnitPathShortcuts: 'tileSize',
 }>
 

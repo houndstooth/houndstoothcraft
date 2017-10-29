@@ -12,8 +12,7 @@ import { stripePositionSettings } from './stripe'
 interface StripeSettingsStructure {
 	baseStripeDiagonal: any,
 	stripePositionSettings: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type

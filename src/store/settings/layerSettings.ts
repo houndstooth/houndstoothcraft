@@ -11,8 +11,7 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 interface LayerSettingsStructure {
 	endLayer: any,
 	startLayer: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type

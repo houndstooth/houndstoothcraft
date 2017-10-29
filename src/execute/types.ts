@@ -4,13 +4,13 @@ type FunctionsOf<T> = { [P in keyof T]: (previous?: T[P]) => T[P] }
 
 interface Layer extends Number {
 	// tslint:disable-next-line:no-any
-	_LayerBrand: any
+	_LayerBrand: any,
 }
 
 interface SettingsFunctionObject {
 	settingName: SettingsStep,
 	settingsFunction: <T>(p: T) => T,
-	settingsPath: SettingsStep[]
+	settingsPath: SettingsStep[],
 }
 
 export {

@@ -15,7 +15,6 @@ interface ViewSettingsStructure {
 	rotateViewAboutCanvasCenter: any,
 	zoom: any,
 	zoomOnCanvasCenter: any,
-
 	[_: string]: any
 }
 
@@ -63,9 +62,9 @@ const viewSettingsPathShortcuts: ViewSettingsStructure = buildSettingsPathShortc
 type ViewSettingsPathShortcut = 'viewSettings'
 
 type ViewSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter'
-	NumberPathShortcuts: 'zoom'
-	PxPathShortcuts: 'canvasSize'
+	BooleanPathShortcuts: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
+	NumberPathShortcuts: 'zoom',
+	PxPathShortcuts: 'canvasSize',
 	RadianPathShortcuts: 'rotateViewAboutCanvasCenter',
 }>
 

@@ -8,7 +8,7 @@ import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 interface DrawPassMarker {
 	coordinateUnderTest: Coordinate,
 	id: number,
-	passed: boolean
+	passed: boolean,
 }
 
 const drawPassMarker: (_: DrawPassMarker) => void =

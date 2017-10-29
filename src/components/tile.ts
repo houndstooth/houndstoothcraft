@@ -12,7 +12,7 @@ interface TileParams {
 	gridAddress: Address,
 	shapeColorIndices: ShapeColorIndex[],
 	tileOrigin: Coordinate,
-	tileSize: Unit
+	tileSize: Unit,
 }
 
 const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {

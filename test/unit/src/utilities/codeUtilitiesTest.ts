@@ -169,7 +169,7 @@ describe('code utilities', () => {
 	describe('#changeObjectIntoCopy', () => {
 		interface TestObject {
 			aaa?: string,
-			bbb?: string
+			bbb?: string,
 		}
 
 		it('removes all the keys of the object that are not on the one being copied', () => {

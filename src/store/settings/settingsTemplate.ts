@@ -9,8 +9,7 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 
 interface TemplateSettingsStructure {
 	templateSetting: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type
@@ -45,25 +44,25 @@ const templateSettingsPathShortcuts: TemplateSettingsStructure = buildSettingsPa
 type TemplateSettingsPathShortcut = 'templateSettings'
 
 type TemplateSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	AssignmentModePathShortcuts: '_'
-	BaseStripeDiagonalPathShortcuts: '_'
-	BooleanPathShortcuts: '_'
-	ColorPathShortcuts: '_'
-	ColorSetPathShortcuts: '_'
-	ColorsPathShortcuts: '_'
-	ExecuteTexturePathShortcuts: '_'
-	FramePathShortcuts: '_'
-	GetStripePositionsPathShortcuts: '_'
-	GetTileOriginAndSizePathShortcuts: '_'
-	LayerPathShortcuts: '_'
-	NumberPathShortcuts: '_'
-	OffsetAddressPathShortcuts: '_'
-	PxPathShortcuts: '_'
-	RadianPathShortcuts: '_'
-	StripeCountModePathShortcuts: '_'
-	SupertilePathShortcuts: '_'
-	TransformShapeColorIndicesPathShortcuts: '_'
-	UnitPathShortcuts: '_'
+	AssignmentModePathShortcuts: '_',
+	BaseStripeDiagonalPathShortcuts: '_',
+	BooleanPathShortcuts: '_',
+	ColorPathShortcuts: '_',
+	ColorSetPathShortcuts: '_',
+	ColorsPathShortcuts: '_',
+	ExecuteTexturePathShortcuts: '_',
+	FramePathShortcuts: '_',
+	GetStripePositionsPathShortcuts: '_',
+	GetTileOriginAndSizePathShortcuts: '_',
+	LayerPathShortcuts: '_',
+	NumberPathShortcuts: '_',
+	OffsetAddressPathShortcuts: '_',
+	PxPathShortcuts: '_',
+	RadianPathShortcuts: '_',
+	StripeCountModePathShortcuts: '_',
+	SupertilePathShortcuts: '_',
+	TransformShapeColorIndicesPathShortcuts: '_',
+	UnitPathShortcuts: '_',
 	WeavePathShortcuts: '_',
 }>
 

@@ -25,7 +25,7 @@ type PageElement = HTMLElement | MockElement
 
 interface Px extends Number {
 	// tslint:disable-next-line:no-any
-	_PxBrand: any
+	_PxBrand: any,
 }
 
 export {

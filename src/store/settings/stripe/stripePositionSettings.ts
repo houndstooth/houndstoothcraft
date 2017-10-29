@@ -14,8 +14,7 @@ interface StripePositionSettingsStructure {
 	stripeCount: any,
 	stripeCountContinuumSettings: any,
 	stripeCountMode: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type
@@ -64,8 +63,8 @@ const stripePositionSettingsPathShortcuts: StripePositionSettingsStructure = {
 type StripePositionSettingsPathShortcut = 'stripePositionSettings'
 
 type StripePositionSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	GetStripePositionsPathShortcuts: 'getStripePositions'
-	NumberPathShortcuts: 'stripeCount'
+	GetStripePositionsPathShortcuts: 'getStripePositions',
+	NumberPathShortcuts: 'stripeCount',
 	StripeCountModePathShortcuts: 'stripeCountMode',
 }> | stripeCountContinuumSettings.StripeCountContinuumSettingsTypePathShortcuts
 

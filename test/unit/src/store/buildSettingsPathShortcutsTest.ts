@@ -6,14 +6,13 @@ describe('build settings path shortcuts', () => {
 	it('maps a setting\'s name as a shortcut to its full path in the settings tree, from the current base', () => {
 		interface ExampleSettingsStructure {
 			settingOne: {},
-			settingTwo: {}
+			settingTwo: {},
 		}
 
 		interface ExampleSettings extends ExampleSettingsStructure {
 			settingOne: number,
 			settingTwo: string,
-
-			[_: string]: number | string
+			[_: string]: number | string,
 		}
 
 		const exampleSettings: ExampleSettings = {

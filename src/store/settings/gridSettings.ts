@@ -10,8 +10,7 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../types'
 interface GridSettingsStructure {
 	gridSize: any,
 	includeNegativeQuadrants: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type
@@ -49,7 +48,7 @@ const gridSettingsPathShortcuts: GridSettingsStructure = buildSettingsPathShortc
 type GridSettingsPathShortcut = 'gridSettings'
 
 type GridSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	BooleanPathShortcuts: 'includeNegativeQuadrants'
+	BooleanPathShortcuts: 'includeNegativeQuadrants',
 	NumberPathShortcuts: 'gridSize',
 }>
 

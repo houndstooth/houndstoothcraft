@@ -35,7 +35,7 @@ type Key = [ string, number | undefined ]
 interface CheckColorProperties {
 	actualColor: Color,
 	expectedColor: Color,
-	i: number
+	i: number,
 }
 
 const checkColorProperties: (_: CheckColorProperties) => boolean =

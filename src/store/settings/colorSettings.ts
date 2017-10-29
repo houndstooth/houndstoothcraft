@@ -16,8 +16,7 @@ interface ColorSettingsStructure {
 	colorAssignmentSettings: any,
 	colorSet: any,
 	opacity: any,
-
-	[_: string]: any
+	[_: string]: any,
 }
 
 // Type
@@ -66,8 +65,8 @@ const colorSettingsPathShortcuts: ColorSettingsStructure = {
 type ColorSettingsPathShortcut = 'colorSettings'
 
 type ColorSettingsTypePathShortcuts = Overwrite<TypePathShortcutsBase, {
-	ColorPathShortcuts: 'backgroundColor'
-	ColorSetPathShortcuts: 'colorSet'
+	ColorPathShortcuts: 'backgroundColor',
+	ColorSetPathShortcuts: 'colorSet',
 	NumberPathShortcuts: 'opacity',
 }> | colorAssignmentSettings.ColorAssignmentSettingsTypePathShortcuts
 

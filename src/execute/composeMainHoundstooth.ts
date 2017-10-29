@@ -7,7 +7,7 @@ import { composePatterns } from './composePatterns'
 interface ComposeMainHoundstooth {
 	houndstoothEffects?: Effect[],
 	houndstoothOverrides?: Effect,
-	logComposedMainHoundstooth?: boolean
+	logComposedMainHoundstooth?: boolean,
 }
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =

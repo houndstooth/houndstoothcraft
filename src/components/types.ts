@@ -9,7 +9,7 @@ type Address = _AddressBrand & AddressElement[]
 
 interface AddressElement extends Number {
 	// tslint:disable-next-line:no-any
-	_AddressBrand: any
+	_AddressBrand: any,
 }
 
 enum AssignmentMode {
@@ -59,7 +59,7 @@ interface OutlineAsParam {
 
 interface ShapeColorIndex extends Number {
 	// tslint:disable-next-line:no-any
-	_ShapeColorIndexBrand: any
+	_ShapeColorIndexBrand: any,
 }
 
 interface ShapeParams extends GetOutlineParams {
@@ -80,7 +80,7 @@ enum StripeCountMode {
 
 interface StripePosition extends Number {
 	// tslint:disable-next-line:no-any
-	_StripePositionBrand: any
+	_StripePositionBrand: any,
 }
 
 enum _SupertileBrand {}
@@ -88,12 +88,12 @@ enum _SupertileBrand {}
 type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 
 interface TextureParams extends ComponentParams {
-	executeTexture: ExecuteTexture
+	executeTexture: ExecuteTexture,
 }
 
 interface TileOriginAndSize {
 	tileOrigin: Coordinate,
-	tileSize: Unit
+	tileSize: Unit,
 }
 
 type TransformShapeColorIndices = (_: {
@@ -102,12 +102,12 @@ type TransformShapeColorIndices = (_: {
 
 interface Unit extends Number {
 	// tslint:disable-next-line:no-any
-	_UnitsBrand: any
+	_UnitsBrand: any,
 }
 
 interface Weave {
 	columns: number[],
-	rows: number[]
+	rows: number[],
 }
 
 export {

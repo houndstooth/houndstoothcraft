@@ -7,13 +7,13 @@ type Coordinate = _CoordinateBrand & Unit[]
 type GetOutline = (_: GetOutlineParams) => Coordinate[]
 
 interface GetOutlineParams extends TileOriginAndSize {
-	outlineOptions?: OutlineOptions
+	outlineOptions?: OutlineOptions,
 }
 
 type GetStripeOutline = (_: GetStripeOutlineParams) => Coordinate[]
 
 interface GetStripeOutlineParams extends TileOriginAndSize {
-	outlineOptions: OutlineOptions
+	outlineOptions: OutlineOptions,
 }
 
 type Outline = Coordinate[]
@@ -34,7 +34,7 @@ interface PointsParams extends TileOriginAndSize, OutlineOptions {
 
 interface Radian extends Number {
 	// tslint:disable-next-line:no-any
-	_RadianBrand: any
+	_RadianBrand: any,
 }
 
 export {

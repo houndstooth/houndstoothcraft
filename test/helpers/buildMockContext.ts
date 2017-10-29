@@ -5,7 +5,7 @@ import Spy = jasmine.Spy
 
 interface BuildMockContext {
 	contextCallsOrder?: MockContextCall[],
-	toBlobSpy?: Spy
+	toBlobSpy?: Spy,
 }
 
 const buildMockContext: (_?: BuildMockContext) => MockContext =

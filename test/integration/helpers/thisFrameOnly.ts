@@ -1,7 +1,10 @@
 import { Frame } from '../../../src/animation'
 import { Layer } from '../../../src/execute'
 
-interface ThisFrameOnly { endFrame: Frame, startFrame: Frame }
+interface ThisFrameOnly {
+	readonly endFrame: Frame,
+	readonly startFrame: Frame
+}
 
 const thisFrameOnly: (frame: Frame) => ThisFrameOnly =
 	(frame: Frame): ThisFrameOnly => ({
@@ -9,7 +12,10 @@ const thisFrameOnly: (frame: Frame) => ThisFrameOnly =
 		startFrame: frame,
 	})
 
-interface ThisLayerOnly { endLayer: Layer, startLayer: Layer }
+interface ThisLayerOnly {
+	readonly endLayer: Layer,
+	readonly startLayer: Layer
+}
 
 const thisLayerOnly: (layer: Layer) => ThisLayerOnly =
 	(layer: Layer): ThisLayerOnly => ({

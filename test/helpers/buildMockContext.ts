@@ -4,8 +4,8 @@ import { noop } from './noop'
 import Spy = jasmine.Spy
 
 interface BuildMockContext {
-	contextCallsOrder?: MockContextCall[],
-	toBlobSpy?: Spy,
+	readonly contextCallsOrder?: MockContextCall[],
+	readonly toBlobSpy?: Spy,
 }
 
 const buildMockContext: (_?: BuildMockContext) => MockContext =

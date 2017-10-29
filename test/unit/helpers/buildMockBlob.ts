@@ -1,4 +1,0 @@
-const buildMockBlob: () => {} =
-	(): {} => ({})
-
-export { buildMockBlob }

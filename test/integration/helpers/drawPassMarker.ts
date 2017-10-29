@@ -6,9 +6,9 @@ import { Coordinate } from '../../../src/space'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
 interface DrawPassMarker {
-	coordinateUnderTest: Coordinate,
-	id: number,
-	passed: boolean,
+	readonly coordinateUnderTest: Coordinate,
+	readonly id: number,
+	readonly passed: boolean,
 }
 
 const drawPassMarker: (_: DrawPassMarker) => void =

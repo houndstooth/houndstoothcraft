@@ -2,12 +2,11 @@ import { Px } from '../page'
 
 // tslint:disable:member-ordering
 interface Color {
-	r?: number,
-	g?: number,
-	b?: number,
-	a: number,
-
-	[index: string]: number | undefined,
+	readonly r?: number,
+	readonly g?: number,
+	readonly b?: number,
+	readonly a: number,
+	readonly [index: string]: number | undefined,
 }
 
 enum _PathBrand {}

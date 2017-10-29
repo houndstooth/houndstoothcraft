@@ -16,6 +16,7 @@ interface ColorAssignmentSettingsStructure {
 	switcheroo: any,
 	transformShapeColorIndices?: any,
 	weave: any,
+	[_: string]: any,
 }
 
 // Type

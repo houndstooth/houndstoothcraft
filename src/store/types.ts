@@ -71,10 +71,10 @@ interface GetFromBaseOrDefaultPattern {
 }
 
 interface Houndstooth {
-	animationsPattern: PatternFunctions,
-	basePattern: Partial<BasePattern>,
-	layersPattern: PatternFunctions,
-	name: string,
+	readonly animationsPattern: PatternFunctions,
+	readonly basePattern: Partial<BasePattern>,
+	readonly layersPattern: PatternFunctions,
+	readonly name: string,
 }
 
 type Diff<T extends string, U extends string> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
@@ -83,14 +83,14 @@ type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U;
 type Pattern = Partial<BasePattern> | PatternFunctions
 
 interface PatternFunctions {
-	animationSettings?: Partial<animationSettings.AnimationSettingsFunctions>,
-	colorSettings?: Partial<colorSettings.ColorSettingsFunctions>,
-	gridSettings?: Partial<gridSettings.GridSettingsFunctions>,
-	layerSettings?: Partial<layerSettings.LayerSettingsFunctions>,
-	stripeSettings?: Partial<stripeSettings.StripeSettingsFunctions>,
-	textureSettings?: Partial<textureSettings.TextureSettingsFunctions>,
-	tileSettings?: Partial<tileSettings.TileSettingsFunctions>,
-	viewSettings?: Partial<viewSettings.ViewSettingsFunctions>,
+	readonly animationSettings?: Partial<animationSettings.AnimationSettingsFunctions>,
+	readonly colorSettings?: Partial<colorSettings.ColorSettingsFunctions>,
+	readonly gridSettings?: Partial<gridSettings.GridSettingsFunctions>,
+	readonly layerSettings?: Partial<layerSettings.LayerSettingsFunctions>,
+	readonly stripeSettings?: Partial<stripeSettings.StripeSettingsFunctions>,
+	readonly textureSettings?: Partial<textureSettings.TextureSettingsFunctions>,
+	readonly tileSettings?: Partial<tileSettings.TileSettingsFunctions>,
+	readonly viewSettings?: Partial<viewSettings.ViewSettingsFunctions>,
 }
 
 interface SetSetting {
@@ -143,7 +143,7 @@ interface State {
 	exportFrames: boolean,
 	interval: (() => void) | undefined,
 	lastSavedFrame: Frame,
-	mainHoundstooth: Houndstooth,
+	readonly mainHoundstooth: Houndstooth,
 	mixedDownContext: Context | undefined,
 	mixingDown: boolean,
 	performanceLogging: boolean,
@@ -161,26 +161,26 @@ type TypePathShortcuts =
 	| viewSettings.ViewSettingsTypePathShortcuts
 
 interface TypePathShortcutsBase {
-	AssignmentModePathShortcuts: '_',
-	BaseStripeDiagonalPathShortcuts: '_',
-	BooleanPathShortcuts: '_',
-	ColorPathShortcuts: '_',
-	ColorSetPathShortcuts: '_',
-	ColorsPathShortcuts: '_',
-	ExecuteTexturePathShortcuts: '_',
-	FramePathShortcuts: '_',
-	GetStripePositionsPathShortcuts: '_',
-	GetTileOriginAndSizePathShortcuts: '_',
-	LayerPathShortcuts: '_',
-	NumberPathShortcuts: '_',
-	OffsetAddressPathShortcuts: '_',
-	PxPathShortcuts: '_',
-	RadianPathShortcuts: '_',
-	StripeCountModePathShortcuts: '_',
-	SupertilePathShortcuts: '_',
-	TransformShapeColorIndicesPathShortcuts: '_',
-	UnitPathShortcuts: '_',
-	WeavePathShortcuts: '_',
+	readonly AssignmentModePathShortcuts: '_',
+	readonly BaseStripeDiagonalPathShortcuts: '_',
+	readonly BooleanPathShortcuts: '_',
+	readonly ColorPathShortcuts: '_',
+	readonly ColorSetPathShortcuts: '_',
+	readonly ColorsPathShortcuts: '_',
+	readonly ExecuteTexturePathShortcuts: '_',
+	readonly FramePathShortcuts: '_',
+	readonly GetStripePositionsPathShortcuts: '_',
+	readonly GetTileOriginAndSizePathShortcuts: '_',
+	readonly LayerPathShortcuts: '_',
+	readonly NumberPathShortcuts: '_',
+	readonly OffsetAddressPathShortcuts: '_',
+	readonly PxPathShortcuts: '_',
+	readonly RadianPathShortcuts: '_',
+	readonly StripeCountModePathShortcuts: '_',
+	readonly SupertilePathShortcuts: '_',
+	readonly TransformShapeColorIndicesPathShortcuts: '_',
+	readonly UnitPathShortcuts: '_',
+	readonly WeavePathShortcuts: '_',
 }
 
 export {

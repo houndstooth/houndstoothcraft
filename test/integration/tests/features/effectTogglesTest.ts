@@ -10,11 +10,7 @@ import { buildMockElement } from '../../../unit/helpers/buildMockElement'
 xdescribe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		maybeAddEffectToggles(Object.values(effects))
-		state.mainHoundstooth.basePattern = {
-			tileSettings: {
-				tileSize: to.Unit(50),
-			},
-		}
+		state.mainHoundstooth.basePattern.tileSettings = { tileSize: to.Unit(50) }
 		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') || buildMockElement()
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()

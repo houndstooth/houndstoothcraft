@@ -20,10 +20,10 @@ const sectionCenterIsColor: (_: SectionCenterExpectation) => boolean =
 	}
 
 interface SectionCenter {
-	areaOrigin: Coordinate,
-	areaSize: Unit,
-	sectionAddress: Address,
-	sectionResolution: number,
+	readonly areaOrigin: Coordinate,
+	readonly areaSize: Unit,
+	readonly sectionAddress: Address,
+	readonly sectionResolution: number,
 }
 
 const sectionCenter: (_: SectionCenter) => Coordinate =

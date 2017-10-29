@@ -10,6 +10,7 @@ import { Overwrite, SettingsPath, TypePathShortcutsBase } from '../../../types'
 interface StripeCountContinuumSettingsStructure {
 	deltaStripeCount: any,
 	initialStripeCount: any,
+	[_: string]: any,
 }
 
 // Type

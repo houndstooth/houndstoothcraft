@@ -33,9 +33,9 @@ const pixelColor: (coordinate: Coordinate) => Color = ([ x, y ]: Coordinate): Co
 type Key = [ string, number | undefined ]
 
 interface CheckColorProperties {
-	actualColor: Color,
-	expectedColor: Color,
-	i: number,
+	readonly actualColor: Color,
+	readonly expectedColor: Color,
+	readonly i: number,
 }
 
 const checkColorProperties: (_: CheckColorProperties) => boolean =

@@ -23,8 +23,8 @@ enum BaseStripeDiagonal {
 }
 
 interface ColorOptions {
-	shapeColorCount: number,
-	shapeColorIndex: ShapeColorIndex,
+	readonly shapeColorCount: number,
+	readonly shapeColorIndex: ShapeColorIndex,
 }
 
 enum _ColorSetBrand {}
@@ -37,11 +37,14 @@ interface ComponentParams extends TileOriginAndSize, ColorOptions, OutlineAsPara
 type ExecuteTexture = (_: ExecuteTextureParams) => void
 
 interface ExecuteTextureParams extends TileOriginAndSize {
-	shapeColorCount: number,
-	shapeColorIndex: ShapeColorIndex,
+	readonly shapeColorCount: number,
+	readonly shapeColorIndex: ShapeColorIndex,
 }
 
-type GetStripePosition = (_: { stripeCount: number, stripeIndex: number }) => StripePosition
+type GetStripePosition = (_: {
+	readonly stripeCount: number,
+	readonly stripeIndex: number
+}) => StripePosition
 
 // tslint:disable-next-line:no-any
 type GetStripePositions = (p?: any) => StripePosition[]
@@ -54,7 +57,7 @@ type Grid<T> = T[][]
 type OffsetAddress = (_: { gridAddress: Address }) => Address
 
 interface OutlineAsParam {
-	outline: Outline,
+	readonly outline: Outline,
 }
 
 interface ShapeColorIndex extends Number {
@@ -69,8 +72,8 @@ interface ShapeParams extends GetOutlineParams {
 }
 
 interface SolidParams {
-	outline: Outline,
-	shapeColorIndex: ShapeColorIndex,
+	readonly outline: Outline,
+	readonly shapeColorIndex: ShapeColorIndex,
 }
 
 enum StripeCountMode {
@@ -88,12 +91,12 @@ enum _SupertileBrand {}
 type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 
 interface TextureParams extends ComponentParams {
-	executeTexture: ExecuteTexture,
+	readonly executeTexture: ExecuteTexture,
 }
 
 interface TileOriginAndSize {
-	tileOrigin: Coordinate,
-	tileSize: Unit,
+	readonly tileOrigin: Coordinate,
+	readonly tileSize: Unit,
 }
 
 type TransformShapeColorIndices = (_: {
@@ -106,8 +109,8 @@ interface Unit extends Number {
 }
 
 interface Weave {
-	columns: number[],
-	rows: number[],
+	readonly columns: number[],
+	readonly rows: number[],
 }
 
 export {

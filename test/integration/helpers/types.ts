@@ -3,17 +3,17 @@ import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
 
 interface ExpectedSection {
-	areaOrigin: Coordinate,
-	areaSize: Unit,
-	baseId?: number,
+	readonly areaOrigin: Coordinate,
+	readonly areaSize: Unit,
+	readonly baseId?: number,
 }
 
 interface ExpectedDividedSection extends ExpectedSection {
-	colors: [ Color, Color ],
+	readonly colors: [ Color, Color ],
 }
 
 interface ExpectedSolidSection extends ExpectedSection {
-	color: Color,
+	readonly color: Color,
 }
 
 type ExpectDiagonalDividedSection = (_: ExpectedDividedSection) => void
@@ -30,12 +30,12 @@ type Diagonal =
 interface StandardTileExpectation { baseId: number, colors: Color[], tileOrigin: Coordinate, tileSize: Unit }
 
 interface SectionCenterExpectation {
-	areaOrigin: Coordinate,
-	areaSize: Unit,
-	color: Color,
-	id?: number,
-	sectionAddress: Address,
-	sectionResolution: number,
+	readonly areaOrigin: Coordinate,
+	readonly areaSize: Unit,
+	readonly color: Color,
+	readonly id?: number,
+	readonly sectionAddress: Address,
+	readonly sectionResolution: number,
 }
 
 interface PixelColorExpectation { coordinateUnderTest: Coordinate, expectedColor: Color, id: number }

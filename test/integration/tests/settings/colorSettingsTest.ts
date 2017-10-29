@@ -769,12 +769,8 @@ describe('.colorSettings', () => {
 
 			executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-			// tslint:disable-next-line:no-unsafe-any
-			const partiallySeeThroughBlack: Color = deepClone(BLACK)
-			partiallySeeThroughBlack.a *= opacity
-			// tslint:disable-next-line:no-unsafe-any
-			const partiallySeeThroughBlue: Color = deepClone(BLUE)
-			partiallySeeThroughBlue.a *= opacity
+			const partiallySeeThroughBlack: Color = { r: BLACK.r, g: BLACK.g, b: BLACK.b, a: BLACK.a * opacity }
+			const partiallySeeThroughBlue: Color = { r: BLUE.r, g: BLUE.g, b: BLUE.b, a: BLUE.a * opacity }
 
 			const semiBlackPixel: PixelColorExpectation = {
 				coordinateUnderTest: to.Coordinate([ 25, 75 ]),

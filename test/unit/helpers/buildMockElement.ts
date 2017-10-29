@@ -3,12 +3,12 @@ import { MockElement } from '../../types/MockElement'
 import Spy = jasmine.Spy
 
 interface BuildMockElementParams {
-	attributeObject?: { [ index: string ]: string },
-	children?: PageElement[],
-	classList?: string[],
-	clickSpy?: Spy,
-	parentNodeInsertBeforeSpy?: Spy,
-	parentNodeRemoveChildSpy?: Spy,
+	readonly attributeObject?: { [ index: string ]: string },
+	readonly children?: PageElement[],
+	readonly classList?: string[],
+	readonly clickSpy?: Spy,
+	readonly parentNodeInsertBeforeSpy?: Spy,
+	readonly parentNodeRemoveChildSpy?: Spy,
 }
 
 const buildMockElement: (_?: BuildMockElementParams) => MockElement =

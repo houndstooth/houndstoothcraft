@@ -7,29 +7,32 @@ type Coordinate = _CoordinateBrand & Unit[]
 type GetOutline = (_: GetOutlineParams) => Coordinate[]
 
 interface GetOutlineParams extends TileOriginAndSize {
-	outlineOptions?: OutlineOptions,
+	readonly outlineOptions?: OutlineOptions,
 }
 
 type GetStripeOutline = (_: GetStripeOutlineParams) => Coordinate[]
 
 interface GetStripeOutlineParams extends TileOriginAndSize {
-	outlineOptions: OutlineOptions,
+	readonly outlineOptions: OutlineOptions,
 }
 
 type Outline = Coordinate[]
 
-interface OutlineOptions { stripeEnd?: StripePosition, stripeStart?: StripePosition }
+interface OutlineOptions {
+	readonly stripeEnd?: StripePosition,
+	readonly stripeStart?: StripePosition
+}
 
 type Point = (_: PointParams) => Coordinate
 
 interface PointParams extends TileOriginAndSize {
-	stripePosition?: StripePosition,
+	readonly stripePosition?: StripePosition,
 }
 
 interface PointsParams extends TileOriginAndSize, OutlineOptions {
-	outline: Outline,
-	stripeEndsInBottomRightHalf?: boolean,
-	stripeStartsInTopLeftHalf?: boolean,
+	readonly outline: Outline,
+	readonly stripeEndsInBottomRightHalf?: boolean,
+	readonly stripeStartsInTopLeftHalf?: boolean,
 }
 
 interface Radian extends Number {

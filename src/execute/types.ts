@@ -8,9 +8,9 @@ interface Layer extends Number {
 }
 
 interface SettingsFunctionObject {
-	settingName: SettingsStep,
-	settingsFunction: <T>(p: T) => T,
-	settingsPath: SettingsStep[],
+	readonly settingName: SettingsStep,
+	readonly settingsFunction: <T>(p: T) => T,
+	readonly settingsPath: SettingsStep[],
 }
 
 export {

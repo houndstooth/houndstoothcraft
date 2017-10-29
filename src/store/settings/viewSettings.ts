@@ -7,8 +7,6 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-// Structure
-
 interface ViewSettingsStructure {
 	readonly canvasSize: any,
 	readonly centerViewOnCenterOfTileAtHomeAddress: any,
@@ -18,8 +16,6 @@ interface ViewSettingsStructure {
 	readonly [_: string]: any
 }
 
-// Type
-
 interface ViewSettings extends ViewSettingsStructure {
 	readonly canvasSize: Px,
 	readonly centerViewOnCenterOfTileAtHomeAddress: boolean,
@@ -28,11 +24,7 @@ interface ViewSettings extends ViewSettingsStructure {
 	readonly zoomOnCanvasCenter: boolean,
 }
 
-// Functions of
-
 type ViewSettingsFunctions = FunctionsOf<ViewSettings>
-
-// Defaults
 
 const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
 const DEFAULT_CENTER_VIEW_ON_CENTER_OF_TILE_AT_HOME_ADDRESS = false
@@ -48,18 +40,12 @@ const DEFAULT_VIEW_SETTINGS: ViewSettings = {
 	zoomOnCanvasCenter: DEFAULT_ZOOM_ON_CANVAS_CENTER,
 }
 
-// Settings name
-
 type ViewSettingsName = 'viewSettings'
-
-// Settings names to paths map
 
 const viewSettingsNamesToPathsMap: ViewSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: to.SettingsPath([ 'viewSettings' ]),
 	settings: DEFAULT_VIEW_SETTINGS,
 })
-
-// Settings names by type
 
 type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
@@ -67,8 +53,6 @@ type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	PxTypedSettingsNames: 'canvasSize',
 	RadianTypedSettingsNames: 'rotateViewAboutCanvasCenter',
 }>
-
-// Export
 
 export {
 	ViewSettings,

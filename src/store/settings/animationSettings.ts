@@ -6,8 +6,6 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-// Structure
-
 interface AnimationSettingsStructure {
 	readonly endFrame: any,
 	readonly frameRate: any,
@@ -16,8 +14,6 @@ interface AnimationSettingsStructure {
 	readonly [_: string]: any,
 }
 
-// Type
-
 interface AnimationSettings extends AnimationSettingsStructure {
 	readonly endFrame: Frame,
 	readonly frameRate: number,
@@ -25,11 +21,7 @@ interface AnimationSettings extends AnimationSettingsStructure {
 	readonly startFrame: Frame,
 }
 
-// Functions of
-
 type AnimationSettingsFunctions = FunctionsOf<AnimationSettings>
-
-// Defaults
 
 const DEFAULT_END_FRAME = to.Frame(10000)
 const DEFAULT_FRAME_RATE = 1.005
@@ -43,26 +35,18 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 	startFrame: DEFAULT_START_FRAME,
 }
 
-// Settings name
-
 type AnimationSettingsName = 'animationSettings'
-
-// Settings names to paths map
 
 const animationSettingsNamesToPathsMap: AnimationSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: to.SettingsPath([ 'animationSettings' ]),
 	settings: DEFAULT_ANIMATION_SETTINGS,
 })
 
-// Settings names by type
-
 type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'refreshCanvas',
 	FrameTypedSettingsNames: 'startFrame' | 'endFrame',
 	NumberTypedSettingsNames: 'frameRate',
 }>
-
-// Export
 
 export {
 	AnimationSettings,

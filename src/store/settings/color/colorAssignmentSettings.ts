@@ -6,8 +6,6 @@ import * as to from '../../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../../types'
 
-// Structure
-
 interface ColorAssignmentSettingsStructure {
 	readonly assignmentMode: any,
 	readonly flipGrain: any,
@@ -19,8 +17,6 @@ interface ColorAssignmentSettingsStructure {
 	readonly [_: string]: any,
 }
 
-// Type
-
 interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
 	readonly assignmentMode: AssignmentMode,
 	readonly flipGrain: boolean,
@@ -31,11 +27,7 @@ interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
 	readonly weave: Weave,
 }
 
-// Functions of
-
 type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettings>
-
-// Defaults
 
 const DEFAULT_ASSIGNMENT_MODE: AssignmentMode = AssignmentMode.Weave
 const DEFAULT_FLIP_GRAIN = false
@@ -55,18 +47,12 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 	weave: DEFAULT_WEAVE,
 }
 
-// Settings name
-
 type ColorAssignmentSettingsName = 'colorAssignmentSettings'
-
-// Settings names to paths map
 
 const colorAssignmentSettingsNamesToPathsMap: ColorAssignmentSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 	settings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 })
-
-// Settings names by type
 
 type ColorAssignmentSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	AssignmentModeTypedSettingsNames: 'assignmentMode',

@@ -9,8 +9,6 @@ import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 import { colorAssignmentSettings } from './color'
 
-// Structure
-
 interface ColorSettingsStructure {
 	readonly backgroundColor: any,
 	readonly colorAssignmentSettings: any,
@@ -19,8 +17,6 @@ interface ColorSettingsStructure {
 	readonly [_: string]: any,
 }
 
-// Type
-
 interface ColorSettings extends ColorSettingsStructure {
 	readonly backgroundColor: Color,
 	readonly colorAssignmentSettings: Partial<colorAssignmentSettings.ColorAssignmentSettings>,
@@ -28,14 +24,10 @@ interface ColorSettings extends ColorSettingsStructure {
 	readonly opacity: number,
 }
 
-// Functions of
-
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
 	colorAssignmentSettings: colorAssignmentSettings.ColorAssignmentSettingsFunctions,
 	[_: string]: any,
 }>
-
-// Defaults
 
 const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
 const DEFAULT_COLOR_SET: ColorSet = to.ColorSet([ BLACK, TRANSPARENT ])

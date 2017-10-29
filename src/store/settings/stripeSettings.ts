@@ -7,29 +7,21 @@ import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 import { stripePositionSettings } from './stripe'
 
-// Structure
-
 interface StripeSettingsStructure {
 	readonly baseStripeDiagonal: any,
 	readonly stripePositionSettings: any,
 	readonly [_: string]: any,
 }
 
-// Type
-
 interface StripeSettings extends StripeSettingsStructure {
 	readonly baseStripeDiagonal: BaseStripeDiagonal,
 	readonly stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
 }
 
-// Functions of
-
 type StripeSettingsFunctions = Overwrite<FunctionsOf<StripeSettings>, {
 	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettingsFunctions>,
 	[_: string]: any,
 }>
-
-// Defaults
 
 const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Minor
 
@@ -38,11 +30,7 @@ const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
 	stripePositionSettings: stripePositionSettings.DEFAULT_STRIPE_POSITION_SETTINGS,
 }
 
-// Settings name
-
 type StripeSettingsName = 'stripeSettings'
-
-// Settings names to paths map
 
 const stripeSettingsNamesToPathsMap: StripeSettingsStructure = {
 	...buildSettingsNamesToPathsMap({
@@ -52,13 +40,9 @@ const stripeSettingsNamesToPathsMap: StripeSettingsStructure = {
 	...stripePositionSettings.stripePositionSettingsNamesToPathsMap,
 }
 
-// Settings names by type
-
 type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BaseStripeDiagonalTypedSettingsNames: 'baseStripeDiagonal',
 }> | stripePositionSettings.StripePositionSettingsNamesByType
-
-// Export
 
 export {
 	StripeSettings,

@@ -7,8 +7,6 @@ import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap
 import { Overwrite, SettingsNamesByTypeBase } from '../../types'
 import { stripeCountContinuumSettings } from './stripePosition'
 
-// Structure
-
 interface StripePositionSettingsStructure {
 	readonly getStripePositions: any,
 	readonly stripeCount: any,
@@ -17,8 +15,6 @@ interface StripePositionSettingsStructure {
 	readonly [_: string]: any,
 }
 
-// Type
-
 interface StripePositionSettings extends StripePositionSettingsStructure {
 	readonly getStripePositions: GetStripePositions,
 	readonly stripeCount: number,
@@ -26,14 +22,10 @@ interface StripePositionSettings extends StripePositionSettingsStructure {
 	readonly stripeCountMode: StripeCountMode,
 }
 
-// Functions of
-
 type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
 	stripeCountContinuumSettings: stripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
 	[_: string]: any,
 }>
-
-// Defaults
 
 const DEFAULT_GET_STRIPE_POSITIONS: GetStripePositions = standardStripePositions
 const DEFAULT_STRIPE_COUNT = 4
@@ -46,11 +38,7 @@ const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
 }
 
-// Settings name
-
 type StripePositionSettingsName = 'stripePositionSettings'
-
-// Settings names to paths map
 
 const stripePositionSettingsNamesToPathsMap: StripePositionSettingsStructure = {
 	...buildSettingsNamesToPathsMap({
@@ -60,15 +48,11 @@ const stripePositionSettingsNamesToPathsMap: StripePositionSettingsStructure = {
 	...stripeCountContinuumSettings.stripeCountContinuumSettingsNamesToPathsMap,
 }
 
-// Settings names by type
-
 type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	GetStripePositionsTypedSettingsNames: 'getStripePositions',
 	NumberTypedSettingsNames: 'stripeCount',
 	StripeCountModeTypedSettingsNames: 'stripeCountMode',
 }> | stripeCountContinuumSettings.StripeCountContinuumSettingsNamesByType
-
-// Export
 
 export {
 	StripePositionSettings,

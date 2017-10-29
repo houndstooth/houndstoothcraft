@@ -5,26 +5,18 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-// Structure
-
 interface GridSettingsStructure {
 	readonly gridSize: any,
 	readonly includeNegativeQuadrants: any,
 	readonly [_: string]: any,
 }
 
-// Type
-
 interface GridSettings extends GridSettingsStructure {
 	readonly gridSize: number,
 	readonly includeNegativeQuadrants: boolean,
 }
 
-// Functions of
-
 type GridSettingsFunctions = FunctionsOf<GridSettings>
-
-// Defaults
 
 const DEFAULT_GRID_SIZE = 16
 const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS = false
@@ -34,25 +26,17 @@ const DEFAULT_GRID_SETTINGS: GridSettings = {
 	includeNegativeQuadrants: DEFAULT_INCLUDE_NEGATIVE_QUADRANTS,
 }
 
-// Settings name
-
 type GridSettingsName = 'gridSettings'
-
-// Settings names to paths map
 
 const gridSettingsNamesToPathsMap: GridSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: to.SettingsPath([ 'gridSettings' ]),
 	settings: DEFAULT_GRID_SETTINGS,
 })
 
-// Settings names by type
-
 type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'includeNegativeQuadrants',
 	NumberTypedSettingsNames: 'gridSize',
 }>
-
-// Export
 
 export {
 	GridSettings,

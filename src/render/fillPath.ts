@@ -1,10 +1,14 @@
+// tslint:disable:no-unsafe-any
+
 import { getCurrentContext } from '../canvas'
+import { Context } from '../page'
 import { NullarySideEffector } from '../utilities/types'
 
-const fillPath: NullarySideEffector = () => {
-	const context = getCurrentContext()
-	context.closePath()
-	context.fill()
-}
+const fillPath: NullarySideEffector =
+	(): void => {
+		const context: Context = getCurrentContext()
+		context.closePath()
+		context.fill()
+	}
 
 export { fillPath }

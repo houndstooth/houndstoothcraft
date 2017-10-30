@@ -10,7 +10,7 @@ describe('create label', () => {
 	let returnedLabel: LabelElement
 	let label: PageElement
 	const children: LabelElement[] = []
-	const checkbox: InputElement = {}
+	const checkbox: InputElement = buildMockElement()
 	const name: PageElement = buildMockElement()
 	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	beforeAll(() => {

@@ -6,14 +6,15 @@ import { applyScroll } from './applyScroll'
 import { applyTilt } from './applyTilt'
 import { applyZoom } from './applyZoom'
 
-const applyView: (outline: Outline) => Path = outline => {
-	let path: Path = to.Path(from.Outline(outline))
+const applyView: (outline: Outline) => Path =
+	(outline: Outline): Path => {
+		let path: Path = to.Path(from.Outline(outline))
 
-	path = applyZoom(path)
-	path = applyScroll(path)
-	path = applyTilt(path)
+		path = applyZoom(path)
+		path = applyScroll(path)
+		path = applyTilt(path)
 
-	return path
-}
+		return path
+	}
 
 export { applyView }

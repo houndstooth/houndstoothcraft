@@ -5,6 +5,7 @@ import { Effect } from '../../../../src/store/types'
 import { buildEffectToggleClickHandler } from '../../../../src/ui/buildEffectToggleClickHandler'
 import * as resetInterface from '../../../../src/ui/resetInterface'
 import { NullarySideEffector } from '../../../../src/utilities/types'
+import { buildMockElement } from '../../helpers/buildMockElement'
 import Spy = jasmine.Spy
 import { SimulateClick } from '../../helpers/types'
 
@@ -14,7 +15,7 @@ describe('build effect toggle click handler', () => {
 
 		const executeSelectedHoundstoothEffectsSpy: Spy = spyOn(execute, 'executeSelectedHoundstoothEffects')
 
-		const checkbox: InputElement = {}
+		const checkbox: InputElement = buildMockElement()
 
 		const houndstoothEffect: Effect = { name: 'mock tooth' }
 

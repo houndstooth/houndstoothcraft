@@ -5,16 +5,13 @@ import * as to from '../../../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../../../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../../../types'
 
-interface StripeCountContinuumSettingsStructure {
-	readonly deltaStripeCount: any,
-	readonly initialStripeCount: any,
+interface StripeCountContinuumSettings {
+	readonly deltaStripeCount: number,
+	readonly initialStripeCount: number,
 	readonly [_: string]: any,
 }
 
-interface StripeCountContinuumSettings extends StripeCountContinuumSettingsStructure {
-	readonly deltaStripeCount: number,
-	readonly initialStripeCount: number,
-}
+type StripeCountContinuumSettingsStructure = { readonly [P in keyof StripeCountContinuumSettings]: any }
 
 type StripeCountContinuumSettingsFunctions = FunctionsOf<StripeCountContinuumSettings>
 

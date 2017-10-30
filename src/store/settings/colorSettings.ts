@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { ColorSet } from '../../components'
 import { BLACK, TRANSPARENT } from '../../constants'
@@ -9,20 +9,15 @@ import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 import { colorAssignmentSettings } from './color'
 
-interface ColorSettingsStructure {
-	readonly backgroundColor: any,
-	readonly colorAssignmentSettings: any,
-	readonly colorSet: any,
-	readonly opacity: any,
-	readonly [_: string]: any,
-}
-
-interface ColorSettings extends ColorSettingsStructure {
+interface ColorSettings {
 	readonly backgroundColor: Color,
 	readonly colorAssignmentSettings: Partial<colorAssignmentSettings.ColorAssignmentSettings>,
 	readonly colorSet: ColorSet,
 	readonly opacity: number,
+	readonly [_: string]: any
 }
+
+type ColorSettingsStructure = { readonly [P in keyof ColorSettings]: any }
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
 	colorAssignmentSettings: colorAssignmentSettings.ColorAssignmentSettingsFunctions,

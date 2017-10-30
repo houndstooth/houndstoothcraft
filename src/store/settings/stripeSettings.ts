@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { BaseStripeDiagonal } from '../../components'
 import { FunctionsOf } from '../../execute'
@@ -7,16 +7,13 @@ import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 import { stripePositionSettings } from './stripe'
 
-interface StripeSettingsStructure {
-	readonly baseStripeDiagonal: any,
-	readonly stripePositionSettings: any,
+interface StripeSettings {
+	readonly baseStripeDiagonal: BaseStripeDiagonal,
+	readonly stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
 	readonly [_: string]: any,
 }
 
-interface StripeSettings extends StripeSettingsStructure {
-	readonly baseStripeDiagonal: BaseStripeDiagonal,
-	readonly stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
-}
+type StripeSettingsStructure = { readonly [P in keyof StripeSettings]: any }
 
 type StripeSettingsFunctions = Overwrite<FunctionsOf<StripeSettings>, {
 	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettingsFunctions>,

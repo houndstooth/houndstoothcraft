@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { ExecuteTexture } from '../../components'
 import { FunctionsOf } from '../../execute'
@@ -6,14 +6,12 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-interface TextureSettingsStructure {
-	readonly executeTexture?: any,
+interface TextureSettings {
+	readonly executeTexture?: ExecuteTexture,
 	readonly [_: string]: any,
 }
 
-interface TextureSettings extends TextureSettingsStructure {
-	readonly executeTexture?: ExecuteTexture,
-}
+type TextureSettingsStructure = { readonly [P in keyof TextureSettings]: any }
 
 type TextureSettingsFunctions = FunctionsOf<TextureSettings>
 

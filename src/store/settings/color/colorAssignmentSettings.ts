@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from '../../../components'
 import { FunctionsOf } from '../../../execute/types'
@@ -6,18 +6,7 @@ import * as to from '../../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../../types'
 
-interface ColorAssignmentSettingsStructure {
-	readonly assignmentMode: any,
-	readonly flipGrain: any,
-	readonly offsetAddress?: any,
-	readonly supertile: any,
-	readonly switcheroo: any,
-	readonly transformShapeColorIndices?: any,
-	readonly weave: any,
-	readonly [_: string]: any,
-}
-
-interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
+interface ColorAssignmentSettings {
 	readonly assignmentMode: AssignmentMode,
 	readonly flipGrain: boolean,
 	readonly offsetAddress?: OffsetAddress,
@@ -25,7 +14,10 @@ interface ColorAssignmentSettings extends ColorAssignmentSettingsStructure {
 	readonly switcheroo: boolean,
 	readonly transformShapeColorIndices?: TransformShapeColorIndices,
 	readonly weave: Weave,
+	readonly [_: string]: any,
 }
+
+type ColorAssignmentSettingsStructure = { readonly [P in keyof ColorAssignmentSettings]: any }
 
 type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettings>
 

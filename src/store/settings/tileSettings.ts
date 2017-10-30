@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { getStandardTileOriginAndSize, GetTileOriginAndSize, Unit } from '../../components'
 import { FunctionsOf } from '../../execute'
@@ -6,18 +6,14 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-interface TileSettingsStructure {
-	readonly collapseSameColoredShapesWithinTile: any,
-	readonly getTileOriginAndSize: any,
-	readonly tileSize: any,
-	readonly [_: string]: any,
-}
-
-interface TileSettings extends TileSettingsStructure {
+interface TileSettings {
 	readonly collapseSameColoredShapesWithinTile: boolean,
 	readonly getTileOriginAndSize: GetTileOriginAndSize,
 	readonly tileSize: Unit,
+	readonly [_: string]: any,
 }
+
+type TileSettingsStructure = { readonly [P in keyof TileSettings]: any }
 
 type TileSettingsFunctions = FunctionsOf<TileSettings>
 

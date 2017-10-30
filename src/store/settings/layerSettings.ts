@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf } from '../../execute'
 import { Layer } from '../../execute/types'
@@ -6,16 +6,13 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-interface LayerSettingsStructure {
-	readonly endLayer: any,
-	readonly startLayer: any,
+interface LayerSettings {
+	readonly endLayer: Layer,
+	readonly startLayer: Layer,
 	readonly [_: string]: any,
 }
 
-interface LayerSettings extends LayerSettingsStructure {
-	readonly endLayer: Layer,
-	readonly startLayer: Layer,
-}
+type LayerSettingsStructure = { readonly [P in keyof LayerSettings]: any }
 
 type LayerSettingsFunctions = FunctionsOf<LayerSettings>
 

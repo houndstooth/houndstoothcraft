@@ -1,20 +1,17 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-interface GridSettingsStructure {
-	readonly gridSize: any,
-	readonly includeNegativeQuadrants: any,
+interface GridSettings {
+	readonly gridSize: number,
+	readonly includeNegativeQuadrants: boolean,
 	readonly [_: string]: any,
 }
 
-interface GridSettings extends GridSettingsStructure {
-	readonly gridSize: number,
-	readonly includeNegativeQuadrants: boolean,
-}
+type GridSettingsStructure = { readonly [P in keyof GridSettings]: any }
 
 type GridSettingsFunctions = FunctionsOf<GridSettings>
 

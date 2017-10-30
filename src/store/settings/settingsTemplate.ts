@@ -1,25 +1,23 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf } from '../../execute'
 import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-interface TemplateSettingsStructure {
-	readonly templateSetting: any,
+interface TemplateSettings {
+	readonly exampleSetting: string,
 	readonly [_: string]: any,
 }
 
-interface TemplateSettings extends TemplateSettingsStructure {
-	readonly templateSetting: string,
-}
+type TemplateSettingsStructure = { readonly [P in keyof TemplateSettings]: any }
 
 type TemplateSettingsFunctions = FunctionsOf<TemplateSettings>
 
-const DEFAULT_TEMPLATE_SETTING = ''
+const DEFAULT_EXAMPLE_SETTING = ''
 
 const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
-	templateSetting: DEFAULT_TEMPLATE_SETTING,
+	exampleSetting: DEFAULT_EXAMPLE_SETTING,
 }
 
 type TemplateSettingsName = 'templateSettings'

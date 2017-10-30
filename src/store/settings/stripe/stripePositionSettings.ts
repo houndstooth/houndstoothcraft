@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { GetStripePositions, standardStripePositions, StripeCountMode } from '../../../components'
 import { FunctionsOf } from '../../../execute'
@@ -7,20 +7,15 @@ import { buildSettingsNamesToPathsMap } from '../../buildSettingsNamesToPathsMap
 import { Overwrite, SettingsNamesByTypeBase } from '../../types'
 import { stripeCountContinuumSettings } from './stripePosition'
 
-interface StripePositionSettingsStructure {
-	readonly getStripePositions: any,
-	readonly stripeCount: any,
-	readonly stripeCountContinuumSettings: any,
-	readonly stripeCountMode: any,
-	readonly [_: string]: any,
-}
-
-interface StripePositionSettings extends StripePositionSettingsStructure {
+interface StripePositionSettings {
 	readonly getStripePositions: GetStripePositions,
 	readonly stripeCount: number,
 	readonly stripeCountContinuumSettings: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>,
 	readonly stripeCountMode: StripeCountMode,
+	readonly [_: string]: any,
 }
+
+type StripePositionSettingsStructure = { readonly [P in keyof StripePositionSettings]: any }
 
 type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
 	stripeCountContinuumSettings: stripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,

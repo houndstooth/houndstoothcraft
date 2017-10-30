@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+// tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf } from '../../execute'
 import { Px } from '../../page'
@@ -7,22 +7,16 @@ import * as to from '../../utilities/to'
 import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
-interface ViewSettingsStructure {
-	readonly canvasSize: any,
-	readonly centerViewOnCenterOfTileAtHomeAddress: any,
-	readonly rotateViewAboutCanvasCenter: any,
-	readonly zoom: any,
-	readonly zoomOnCanvasCenter: any,
-	readonly [_: string]: any
-}
-
-interface ViewSettings extends ViewSettingsStructure {
+interface ViewSettings {
 	readonly canvasSize: Px,
 	readonly centerViewOnCenterOfTileAtHomeAddress: boolean,
 	readonly rotateViewAboutCanvasCenter: Radian,
 	readonly zoom: number,
 	readonly zoomOnCanvasCenter: boolean,
+	readonly [_: string]: any,
 }
+
+type ViewSettingsStructure = { readonly [P in keyof ViewSettings]: any }
 
 type ViewSettingsFunctions = FunctionsOf<ViewSettings>
 

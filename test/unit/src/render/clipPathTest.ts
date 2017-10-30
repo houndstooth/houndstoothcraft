@@ -1,7 +1,7 @@
 import { clipPath } from '../../../../src/render/clipPath'
 import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextCall } from '../../../types/MockContextCall'
+import { MockContextCall } from '../../../helpers/types'
 
 describe('clip path', () => {
 	it('saves the context to restore the clip later, then clips the context (w/ the current path)', () => {

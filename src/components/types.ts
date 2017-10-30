@@ -122,6 +122,7 @@ export {
 	ColorSet,
 	ComponentParams,
 	ExecuteTexture,
+	ExecuteTextureParams,
 	GetStripePosition,
 	GetStripePositions,
 	GetTileOriginAndSize,

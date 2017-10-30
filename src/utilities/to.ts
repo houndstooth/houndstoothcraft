@@ -26,7 +26,7 @@ const Radian: (radian: number) => Radian = radian => radian as any
 const ShapeColorIndex: (shapeColorIndex: number) => ShapeColorIndex = shapeColorIndex => shapeColorIndex as any
 const StripePosition: (stripePosition: number) => StripePosition = stripePosition => stripePosition as any
 const Unit: (unit: number) => Unit = unit => unit as any
-// AddressElement (singular) not yet needed
+const AddressElement: (addressElement: number) => AddressElement = addressElement => addressElement as any
 const SettingsStep: (settingsStep: string) => SettingsStep = settingsStep => settingsStep as any
 
 // First order, plurals
@@ -73,6 +73,7 @@ const Path: (path: Array<Array<number | Px> | Pixel>) => Path = path => path.map
 
 export {
 	Address,
+	AddressElement,
 	ColorSet,
 	Coordinate,
 	Px,

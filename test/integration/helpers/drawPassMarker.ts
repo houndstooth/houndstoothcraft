@@ -2,18 +2,13 @@
 
 import { from } from '../../../src'
 import { Canvas, Context } from '../../../src/page'
-import { Coordinate } from '../../../src/space'
 import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
-
-interface DrawPassMarker {
-	readonly coordinateUnderTest: Coordinate,
-	readonly id: number,
-	readonly passed: boolean,
-}
+import { DrawPassMarker } from './types'
 
 const drawPassMarker: (_: DrawPassMarker) => void =
 	({ coordinateUnderTest, id, passed }: DrawPassMarker): void => {
+		// tslint:disable-next-line:max-line-length
 		let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement || buildMockCanvas()
 		if (!testMarkersCanvas) {
 			testMarkersCanvas = createTestMarkersCanvas()

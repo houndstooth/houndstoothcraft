@@ -1,9 +1,8 @@
 import { from, to } from '../../../src'
-import { Address, Unit } from '../../../src/components'
 import { Coordinate } from '../../../src/space'
 import { drawPassMarker } from './drawPassMarker'
 import { pixelIsColor } from './pixelIsColor'
-import { SectionCenterExpectation } from './types'
+import { SectionCenterExpectation, SectionCenterParams } from './types'
 
 const sectionCenterIsColor: (_: SectionCenterExpectation) => boolean =
 	({ areaOrigin, areaSize, color, id = 0, sectionAddress, sectionResolution }: SectionCenterExpectation): boolean => {
@@ -19,15 +18,8 @@ const sectionCenterIsColor: (_: SectionCenterExpectation) => boolean =
 		return passed
 	}
 
-interface SectionCenter {
-	readonly areaOrigin: Coordinate,
-	readonly areaSize: Unit,
-	readonly sectionAddress: Address,
-	readonly sectionResolution: number,
-}
-
-const sectionCenter: (_: SectionCenter) => Coordinate =
-	({ areaOrigin, areaSize, sectionAddress, sectionResolution }: SectionCenter): Coordinate => {
+const sectionCenter: (_: SectionCenterParams) => Coordinate =
+	({ areaOrigin, areaSize, sectionAddress, sectionResolution }: SectionCenterParams): Coordinate => {
 		const sectionSize: number = from.Unit(areaSize) / sectionResolution
 		const areaX: number = from.Unit(areaOrigin[ 0 ])
 		const areaY: number = from.Unit(areaOrigin[ 1 ])

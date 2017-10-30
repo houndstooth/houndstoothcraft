@@ -5,6 +5,7 @@ import { Coordinate } from '../../../src/space'
 import { console } from '../../../src/utilities/windowWrapper'
 import { isCloseTo } from '../../helpers/isCloseTo'
 import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'
+import { CheckColorProperties, Key } from './types'
 
 const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean =
 	(coordinateUnderTest: Coordinate, expectedColor: Color): boolean => {
@@ -29,14 +30,6 @@ const pixelColor: (coordinate: Coordinate) => Color = ([ x, y ]: Coordinate): Co
 	const pixelData: Uint8ClampedArray = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
 
 	return { r: pixelData[ 0 ], g: pixelData[ 1 ], b: pixelData[ 2 ], a: pixelData[ 3 ] / 255 }
-}
-
-type Key = [ string, number | undefined ]
-
-interface CheckColorProperties {
-	readonly actualColor: Color,
-	readonly expectedColor: Color,
-	readonly i: number,
 }
 
 const checkColorProperties: (_: CheckColorProperties) => boolean =

@@ -1,6 +1,6 @@
-import { MockCanvas } from '../../test/types/MockCanvas'
-import { MockContext } from '../../test/types/MockContext'
-import { MockElement } from '../../test/types/MockElement'
+// tslint:disable:no-any
+
+import { MockCanvas, MockContext, MockElement } from '../../test/helpers/types'
 
 type Canvas = HTMLCanvasElement | MockCanvas
 
@@ -12,19 +12,20 @@ enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
 type InputElement = HTMLInputElement | {
-	checked?: {},
-	onclick?: {},
+	checked?: any,
+	onclick?: any,
 	style?: {
-		cursor?: {},
+		cursor?: any,
 	},
 }
 
-type LabelElement = HTMLLabelElement | {}
+type LabelElement = HTMLLabelElement | {
+	style: any
+} | MockElement
 
 type PageElement = HTMLElement | MockElement
 
 interface Px extends Number {
-	// tslint:disable-next-line:no-any
 	_PxBrand: any,
 }
 

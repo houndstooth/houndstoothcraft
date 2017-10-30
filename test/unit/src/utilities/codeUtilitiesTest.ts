@@ -2,6 +2,7 @@
 
 import { Color } from '../../../../src/render'
 import * as codeUtilities from '../../../../src/utilities/codeUtilities'
+import { TestObject } from '../../helpers/types'
 
 describe('code utilities', () => {
 	describe('#iterator', () => {
@@ -167,11 +168,6 @@ describe('code utilities', () => {
 	})
 
 	describe('#changeObjectIntoCopy', () => {
-		interface TestObject {
-			aaa?: string,
-			bbb?: string,
-		}
-
 		it('removes all the keys of the object that are not on the one being copied', () => {
 			const objectToChange: TestObject = { aaa: 'aaa', bbb: 'bbb' }
 			const objectWithProperties: TestObject = {}

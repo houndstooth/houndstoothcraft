@@ -1,7 +1,7 @@
 import { fillPath } from '../../../../src/render/fillPath'
 import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextCall } from '../../../types/MockContextCall'
+import { MockContextCall } from '../../../helpers/types'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {

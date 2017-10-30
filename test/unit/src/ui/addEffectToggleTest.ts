@@ -6,7 +6,7 @@ import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('add effect toggle', () => {
-	const label: PageElement = {}
+	const label: PageElement = buildMockElement()
 	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	const effectTogglesContainerChildren: PageElement[] = []
 

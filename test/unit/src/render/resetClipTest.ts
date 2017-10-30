@@ -1,7 +1,7 @@
 import { resetClip } from '../../../../src/render/resetClip'
 import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextCall } from '../../../types/MockContextCall'
+import { MockContextCall } from '../../../helpers/types'
 
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {

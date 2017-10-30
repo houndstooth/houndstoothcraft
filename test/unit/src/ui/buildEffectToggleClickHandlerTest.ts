@@ -6,6 +6,7 @@ import { buildEffectToggleClickHandler } from '../../../../src/ui/buildEffectTog
 import * as resetInterface from '../../../../src/ui/resetInterface'
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import Spy = jasmine.Spy
+import { SimulateClick } from '../../helpers/types'
 
 describe('build effect toggle click handler', () => {
 	it('returns a function which resets the interface, toggles selection of the effect it is for, and executes', () => {
@@ -48,8 +49,6 @@ describe('build effect toggle click handler', () => {
 		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
 })
-
-type SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector) => void
 
 const simulateClick: SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector): void => {
 	checkbox.checked = !checkbox.checked

@@ -1,12 +1,5 @@
-import { MockContext } from '../types/MockContext'
-import { MockContextCall } from '../types/MockContextCall'
+import { BuildMockContext, MockContext } from './types'
 import { noop } from './noop'
-import Spy = jasmine.Spy
-
-interface BuildMockContext {
-	readonly contextCallsOrder?: MockContextCall[],
-	readonly toBlobSpy?: Spy,
-}
 
 const buildMockContext: (_?: BuildMockContext) => MockContext =
 	({ contextCallsOrder = [], toBlobSpy = undefined }: BuildMockContext = {}): MockContext =>

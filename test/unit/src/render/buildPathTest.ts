@@ -3,7 +3,7 @@ import { Path } from '../../../../src/render'
 import { buildPath } from '../../../../src/render/buildPath'
 import { state } from '../../../../src/state'
 import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextCall } from '../../../types/MockContextCall'
+import { MockContextCall } from '../../../helpers/types'
 
 describe('build path', () => {
 	it('draws the correct path and fills it', () => {

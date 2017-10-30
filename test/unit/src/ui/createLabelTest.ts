@@ -4,13 +4,14 @@ import * as createCheckbox from '../../../../src/ui/createCheckbox'
 import { createLabel } from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
+import { LabelElement } from '../../../../src/page/types'
 
 describe('create label', () => {
-	let returnedLabel: PageElement
+	let returnedLabel: LabelElement
 	let label: PageElement
-	const children: PageElement[] = []
+	const children: LabelElement[] = []
 	const checkbox: InputElement = {}
-	const name: PageElement = {}
+	const name: PageElement = buildMockElement()
 	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	beforeAll(() => {
 		label = buildMockElement({ children })
@@ -46,7 +47,7 @@ describe('create label', () => {
 	})
 
 	it('adds one checkbox to the label', () => {
-		expect(children[ 0 ]).toBe(checkbox)
+		expect(children[ 0 ]).toBe(checkbox as PageElement)
 	})
 
 	it('adds one name to the label, after the checkbox', () => {

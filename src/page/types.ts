@@ -13,13 +13,16 @@ type Dimensions = _DimensionsBrand & Px[]
 
 type InputElement = HTMLInputElement | {
 	checked?: any,
+	classList?: any,
 	onclick?: any,
-	style?: {
+	setAttribute?: any,
+	style: {
 		cursor?: any,
 	},
 }
 
 type LabelElement = HTMLLabelElement | {
+	appendChild?: any,
 	style: {
 		cursor?: any,
 		display?: any,

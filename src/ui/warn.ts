@@ -1,13 +1,17 @@
+// tslint:disable:no-unsafe-any
+
 import { createWarningsContainer } from '../page'
+import { PageElement } from '../page/types'
 import { document } from '../utilities/windowWrapper'
 
-const warn: (warningMessage: string) => void = warningMessage => {
-	const warning = document.createElement('div')
-	warning.innerHTML = warningMessage
+const warn: (warningMessage: string) => void =
+	(warningMessage: string): void => {
+		const warning: PageElement = document.createElement('div')
+		warning.innerHTML = warningMessage
 
-	const warningsContainer = document.querySelector('.warnings-container') || createWarningsContainer()
+		const warningsContainer: PageElement = document.querySelector('.warnings-container') || createWarningsContainer()
 
-	warningsContainer.appendChild(warning)
-}
+		warningsContainer.appendChild(warning)
+	}
 
 export { warn }

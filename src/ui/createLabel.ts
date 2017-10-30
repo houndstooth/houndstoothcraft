@@ -1,21 +1,24 @@
-import { LabelElement } from '../page'
+// tslint:disable:no-unsafe-any
+
+import { InputElement, LabelElement } from '../page'
 import { Effect } from '../store'
 import { document } from '../utilities/windowWrapper'
 import { createCheckbox } from './createCheckbox'
 
-const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement = ({ houndstoothEffect }) => {
-	const label = document.createElement('label')
+const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
+	({ houndstoothEffect }: { houndstoothEffect: Effect }): LabelElement => {
+		const label: LabelElement = document.createElement('label')
 
-	label.style.cursor = 'pointer'
-	label.style.display = 'block'
+		label.style.cursor = 'pointer'
+		label.style.display = 'block'
 
-	const checkbox = createCheckbox({ houndstoothEffect })
-	label.appendChild(checkbox)
+		const checkbox: InputElement = createCheckbox({ houndstoothEffect })
+		label.appendChild(checkbox)
 
-	const name = document.createTextNode(houndstoothEffect.name)
-	label.appendChild(name)
+		const name: HTMLTextAreaElement = document.createTextNode(houndstoothEffect.name)
+		label.appendChild(name)
 
-	return label
-}
+		return label
+	}
 
 export { createLabel }

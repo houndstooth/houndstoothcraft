@@ -3,12 +3,7 @@ import { defaults, Effect, Pattern } from '../store'
 import { console } from '../utilities/windowWrapper'
 import { combineHoundstoothEffects } from './combineHoundstoothEffects'
 import { composePatterns } from './composePatterns'
-
-interface ComposeMainHoundstooth {
-	houndstoothEffects?: Effect[],
-	houndstoothOverrides?: Effect,
-	logComposedMainHoundstooth?: boolean,
-}
+import { ComposeMainHoundstooth } from './types'
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 	(params: ComposeMainHoundstooth): void => {

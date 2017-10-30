@@ -6,14 +6,7 @@ import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
 import { shape } from './shape'
-import { Address, ShapeColorIndex, ShapeParams, StripePosition, Unit } from './types'
-
-interface TileParams {
-	gridAddress: Address,
-	shapeColorIndices: ShapeColorIndex[],
-	tileOrigin: Coordinate,
-	tileSize: Unit,
-}
+import { Address, ShapeColorIndex, ShapeParams, StripePosition, TileParams, Unit } from './types'
 
 const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
 	const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}

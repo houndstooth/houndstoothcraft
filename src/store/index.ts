@@ -6,7 +6,6 @@ import { resetState } from './resetState'
 import {
 	animationSettings,
 	colorAssignmentSettings,
-	colorSettings,
 	gridSettings,
 	layerSettings,
 	stripeCountContinuumSettings,
@@ -19,7 +18,6 @@ import { Effect, Houndstooth, Pattern, SettingsPath, SettingsStep, State } from 
 
 type AnimationSettings = animationSettings.AnimationSettings
 type ColorAssignmentSettings = colorAssignmentSettings.ColorAssignmentSettings
-type ColorSettings = colorSettings.ColorSettings
 type GridSettings = gridSettings.GridSettings
 type LayerSettings = layerSettings.LayerSettings
 type StripeCountContinuumSettings = stripeCountContinuumSettings.StripeCountContinuumSettings
@@ -42,7 +40,6 @@ export {
 	getSettingOrCreatePath,
 	AnimationSettings,
 	ColorAssignmentSettings,
-	ColorSettings,
 	GridSettings,
 	LayerSettings,
 	StripeCountContinuumSettings,

@@ -41,6 +41,10 @@ interface ExecuteTextureParams extends TileOriginAndSize {
 	readonly shapeColorIndex: ShapeColorIndex,
 }
 
+type GetShapeColorIndices = (_: {
+	addressOffset: Address, gridAddress: Address, supertile?: Supertile, weave?: Weave,
+}) => ShapeColorIndex[]
+
 type GetStripePosition = (_: {
 	readonly stripeCount: number,
 	readonly stripeIndex: number,
@@ -99,6 +103,13 @@ interface TileOriginAndSize {
 	readonly tileSize: Unit,
 }
 
+interface TileParams {
+	gridAddress: Address,
+	shapeColorIndices: ShapeColorIndex[],
+	tileOrigin: Coordinate,
+	tileSize: Unit,
+}
+
 type TransformShapeColorIndices = (_: {
 	gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
 }) => ShapeColorIndex[]
@@ -123,6 +134,7 @@ export {
 	ComponentParams,
 	ExecuteTexture,
 	ExecuteTextureParams,
+	GetShapeColorIndices,
 	GetStripePosition,
 	GetStripePositions,
 	GetTileOriginAndSize,
@@ -136,6 +148,7 @@ export {
 	Supertile,
 	TextureParams,
 	TileOriginAndSize,
+	TileParams,
 	TransformShapeColorIndices,
 	Unit,
 	Weave,

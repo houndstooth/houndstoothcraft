@@ -1,4 +1,10 @@
-import { SettingsPath, SettingsStep } from '../store'
+import { Effect, SettingsPath, SettingsStep } from '../store'
+
+interface ComposeMainHoundstooth {
+	houndstoothEffects?: Effect[],
+	houndstoothOverrides?: Effect,
+	logComposedMainHoundstooth?: boolean,
+}
 
 type FunctionsOf<T> = { [P in keyof T]: (previous?: T[P]) => T[P] }
 
@@ -14,6 +20,7 @@ interface SettingsFunctionObject {
 }
 
 export {
+	ComposeMainHoundstooth,
 	FunctionsOf,
 	Layer,
 	SettingsFunctionObject,

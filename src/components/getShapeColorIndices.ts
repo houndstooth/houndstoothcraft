@@ -2,7 +2,9 @@ import { ColorAssignmentSettings, getFromBaseOrDefaultPattern } from '../store'
 import { reversed, wrappedIndex } from '../utilities/codeUtilities'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
-import { Address, AssignmentMode, ShapeColorIndex, Supertile, TransformShapeColorIndices, Weave } from './types'
+import {
+	Address, AssignmentMode, GetShapeColorIndices, ShapeColorIndex, TransformShapeColorIndices,
+} from './types'
 
 const getShapeColorIndices: (_: { gridAddress: Address }) => ShapeColorIndex[] = ({ gridAddress }) => {
 	const colorAssignmentSettings: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
@@ -57,10 +59,6 @@ const getIndices: (_: {
 
 	return getter({ gridAddress, addressOffset, weave, supertile })
 }
-
-type GetShapeColorIndices = (_: {
-	addressOffset: Address, gridAddress: Address, supertile?: Supertile, weave?: Weave,
-}) => ShapeColorIndex[]
 
 const getByWeave: GetShapeColorIndices = ({ addressOffset, gridAddress, weave }) => {
 	const { rows = [], columns = [] } = weave || {}

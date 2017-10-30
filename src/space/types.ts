@@ -40,6 +40,12 @@ interface Radian extends Number {
 	_RadianBrand: any,
 }
 
+interface RotateCoordinateParams {
+	readonly coordinate: Coordinate,
+	readonly fixedCoordinate: Coordinate,
+	readonly rotation: Radian
+}
+
 export {
 	GetOutline,
 	GetOutlineParams,
@@ -47,7 +53,10 @@ export {
 	Coordinate,
 	Outline,
 	GetStripeOutline,
+	GetStripeOutlineParams,
 	Point,
+	PointParams,
 	PointsParams,
 	Radian,
+	RotateCoordinateParams,
 }

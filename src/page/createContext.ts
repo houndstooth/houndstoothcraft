@@ -1,18 +1,21 @@
+// tslint:disable:no-unsafe-any
+
 import { getFromBaseOrDefaultPattern } from '../store'
 import { document } from '../utilities/windowWrapper'
-import { Context, PageElement, Px } from './types'
+import { Canvas, Context, PageElement, Px } from './types'
 
-const createContext: (_: { canvasContainer: PageElement }) => Context = ({ canvasContainer }) => {
-	const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
-	const canvas = document.createElement('canvas')
-	canvas.style.position = 'absolute'
-	canvas.width = canvasSize
-	canvas.height = canvasSize
+const createContext: (_: { canvasContainer: PageElement }) => Context =
+	({ canvasContainer }: { canvasContainer: PageElement }): Context => {
+		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
+		const canvas: Canvas = document.createElement('canvas')
+		canvas.style.position = 'absolute'
+		canvas.width = canvasSize
+		canvas.height = canvasSize
 
-	canvasContainer.appendChild(canvas)
+		canvasContainer.appendChild(canvas)
 
-	return canvas.getContext('2d')
-}
+		return canvas.getContext('2d')
+	}
 
 // tslint:disable-next-line:no-default-export
 export default createContext

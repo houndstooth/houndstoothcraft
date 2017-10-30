@@ -1,10 +1,14 @@
-import { document } from '../utilities/windowWrapper'
+// tslint:disable:no-unsafe-any
 
-const deleteElementIfExists: (selector: string) => void = selector => {
-	const element = document.querySelector(selector)
-	if (element) {
-		element.parentNode.removeChild(element)
+import { document } from '../utilities/windowWrapper'
+import { PageElement } from './types'
+
+const deleteElementIfExists: (selector: string) => void =
+	(selector: string): void => {
+		const element: PageElement = document.querySelector(selector)
+		if (element) {
+			element.parentNode.removeChild(element)
+		}
 	}
-}
 
 export { deleteElementIfExists }

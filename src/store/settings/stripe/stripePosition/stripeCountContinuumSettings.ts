@@ -25,6 +25,7 @@ const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
 
 type StripeCountContinuumSettingsName = 'stripeCountContinuumSettings'
 
+// tslint:disable-next-line:max-line-length
 const stripeCountContinuumSettingsNamesToPathsMap: StripeCountContinuumSettingsStructure = buildSettingsNamesToPathsMap({
 	basePath: to.SettingsPath([
 		'stripeSettings',

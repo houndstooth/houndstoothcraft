@@ -1,19 +1,44 @@
-import { deeperPath, Pattern, SettingsPath } from '../store'
+// tslint:disable:no-any no-unsafe-any
+
+import { deeperPath, Pattern } from '../store'
 import * as to from '../utilities/to'
-import { SettingsFunctionObject } from './types'
+import {
+	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
+	PrepareFunctionObjectsParams,
+	SettingsFunctionObject,
+} from './types'
 
-const prepareFunctionObjectsPerSetting: (_: {
-	settingsFunctionObjects?: SettingsFunctionObject[],
-	settingsFunctionsSourcePattern: Pattern,
-	settingsPath?: SettingsPath,
-}) => SettingsFunctionObject[] = prepareFunctionObjectsPerSettingArgs => {
-	const {
-		settingsFunctionObjects = [],
-		settingsFunctionsSourcePattern,
-		settingsPath = to.SettingsPath([]),
-	} = prepareFunctionObjectsPerSettingArgs
+const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[] =
+	(params: PrepareFunctionObjectsParams): SettingsFunctionObject[] => {
+		const {
+			settingsFunctionObjects = [],
+			settingsFunctionsSourcePattern,
+			settingsPath = to.SettingsPath([]),
+		}: PrepareFunctionObjectsParams = params
 
-	Object.entries(settingsFunctionsSourcePattern).forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]) => {
+		const settings: Array<[ string, any ]> = Object.entries(settingsFunctionsSourcePattern)
+
+		settings.forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]: [ string, any ]): void => {
+			prepareFunctionObjectForSettingOrMaybeRecurse({
+				maybeSettingsFunctionsSourcePattern,
+				settingName: to.SettingsStep(settingName),
+				settingsFunctionObjects,
+				settingsPath,
+			})
+		})
+
+		return settingsFunctionObjects
+	}
+
+const prepareFunctionObjectForSettingOrMaybeRecurse: (_: PrepareFunctionObjectForSettingOrMaybeRecurseParams) => void =
+	(params: PrepareFunctionObjectForSettingOrMaybeRecurseParams): void => {
+		const {
+			maybeSettingsFunctionsSourcePattern,
+			settingName,
+			settingsFunctionObjects,
+			settingsPath,
+		}: PrepareFunctionObjectForSettingOrMaybeRecurseParams = params
+
 		if (typeof maybeSettingsFunctionsSourcePattern === 'function') {
 			settingsFunctionObjects.push({
 				settingName: to.SettingsStep(settingName),
@@ -28,20 +53,16 @@ const prepareFunctionObjectsPerSetting: (_: {
 				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 			})
 		}
-	})
-
-	return settingsFunctionObjects
-}
-
-const shouldRecurse: (_: {
-	maybeSettingsFunctionsSourcePattern: Pattern,
-}) => boolean = ({ maybeSettingsFunctionsSourcePattern }) => {
-	// tslint:disable-next-line:strict-type-predicates
-	if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
-		return false
 	}
 
-	return !(maybeSettingsFunctionsSourcePattern instanceof Array)
-}
+const shouldRecurse: (_: { maybeSettingsFunctionsSourcePattern: Pattern }) => boolean =
+	({ maybeSettingsFunctionsSourcePattern }: { maybeSettingsFunctionsSourcePattern: Pattern }): boolean => {
+		// tslint:disable-next-line:strict-type-predicates
+		if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
+			return false
+		}
+
+		return !(maybeSettingsFunctionsSourcePattern instanceof Array)
+	}
 
 export { prepareFunctionObjectsPerSetting }

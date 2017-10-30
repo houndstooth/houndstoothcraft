@@ -14,7 +14,7 @@ import {
 	tileSettings,
 	viewSettings,
 } from './settings'
-import { Effect, Houndstooth, Pattern, SettingsPath, SettingsStep, State } from './types'
+import { BasePattern, Effect, Houndstooth, Pattern, PatternFunctions, SettingsPath, SettingsStep, State } from './types'
 
 type AnimationSettings = animationSettings.AnimationSettings
 type ColorAssignmentSettings = colorAssignmentSettings.ColorAssignmentSettings
@@ -30,6 +30,8 @@ export {
 	defaults,
 	Effect,
 	Pattern,
+	BasePattern,
+	PatternFunctions,
 	Houndstooth,
 	resetState,
 	getFromBaseOrDefaultPattern,

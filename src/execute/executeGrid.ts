@@ -5,32 +5,32 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
 import { gridAndMaybeLogging } from './gridAndMaybeLogging'
-import { Layer, SettingsFunctionObject } from './types'
+import { ExecuteLayerParams, SettingsFunctionObject } from './types'
 
-const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void = ({ layerFunctionObjects }) => {
-	const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layerSettings')
+const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
+	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {
+		const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layerSettings')
 
-	for (let currentLayerValue = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
-		executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })
+		for (let currentLayerValue: number = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
+			executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })
+		}
+
+		if (state.mixingDown) {
+			mixDownContexts()
+		}
+
+		state.currentLayer = to.Layer(0)
 	}
 
-	if (state.mixingDown) {
-		mixDownContexts()
+const executeLayer: (_: ExecuteLayerParams) => void =
+	({ currentLayer, endLayer, layerFunctionObjects, startLayer }: ExecuteLayerParams): void => {
+		if (currentLayer >= startLayer || 0) {
+			gridAndMaybeLogging()
+		}
+		if (currentLayer < endLayer) {
+			callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
+		}
+		state.currentLayer = to.Layer(from.Layer(state.currentLayer) + 1)
 	}
-
-	state.currentLayer = to.Layer(0)
-}
-
-const executeLayer: (_: {
-	currentLayer: Layer, endLayer: Layer, layerFunctionObjects: SettingsFunctionObject[], startLayer: Layer,
-}) => void = ({ currentLayer, endLayer, layerFunctionObjects, startLayer }) => {
-	if (currentLayer >= startLayer || 0) {
-		gridAndMaybeLogging()
-	}
-	if (currentLayer < endLayer) {
-		callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
-	}
-	state.currentLayer = to.Layer(from.Layer(state.currentLayer) + 1)
-}
 
 export { executeGrid }

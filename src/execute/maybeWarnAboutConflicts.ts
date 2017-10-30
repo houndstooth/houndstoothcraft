@@ -1,69 +1,82 @@
 // tslint:disable:no-any
 
-import { SettingsPath, SettingsStep } from '../store'
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
 import { console } from '../utilities/windowWrapper'
 import { settingPath } from './settingPath'
+import { BuildWarningMessageParams, MaybeWarnAboutConflictsParams, ShouldWarnAboutConflictsParams } from './types'
 
-const maybeWarnAboutConflicts: (_: {
-	existingSetting: any,
-	overridingSetting: any,
-	settingName: SettingsStep,
-	settingsPath: SettingsPath,
-	warnAboutConflicts: boolean,
-}) => void = ({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting }) => {
-	if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
-		const warning = buildWarningMessage({ settingsPath, settingName, existingSetting, overridingSetting })
-		console.warn(warning)
-		warn(warning)
-	}
-}
+const maybeWarnAboutConflicts: (_: MaybeWarnAboutConflictsParams) => void =
+	(params: MaybeWarnAboutConflictsParams): void => {
+		const {
+			existingSetting,
+			overridingSetting,
+			settingName,
+			settingsPath,
+			warnAboutConflicts,
+		}: MaybeWarnAboutConflictsParams = params
 
-const shouldWarnAboutConflicts: (_: {
-	existingSetting: any, overridingSetting: any, warnAboutConflicts: boolean,
-}) => boolean = ({ existingSetting, overridingSetting, warnAboutConflicts }) =>
-	warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
-
-const settingsAreEqual: (a: any, b: any) => boolean = (a, b) => {
-	let settingsEqual
-	if (typeof a === 'function') {
-		settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
-	}
-	else if (a instanceof Array) {
-		settingsEqual = b instanceof Array ? a.every((aEntry, index) => aEntry === b[ index ]) : false
-	}
-	else {
-		settingsEqual = a === b
+		if (shouldWarnAboutConflicts({ warnAboutConflicts, existingSetting, overridingSetting })) {
+			const warning: string = buildWarningMessage({
+				existingSetting,
+				overridingSetting,
+				settingName,
+				settingsPath,
+			})
+			console.warn(warning)
+			warn(warning)
+		}
 	}
 
-	return settingsEqual
-}
+const shouldWarnAboutConflicts: (_: ShouldWarnAboutConflictsParams) => boolean =
+	({ existingSetting, overridingSetting, warnAboutConflicts }: ShouldWarnAboutConflictsParams): boolean =>
+		warnAboutConflicts && isDefined(existingSetting) && !settingsAreEqual(existingSetting, overridingSetting)
 
-const buildWarningMessage: (_: {
-	existingSetting: any,
-	overridingSetting: any,
-	settingName: SettingsStep,
-	settingsPath: SettingsPath,
-}) => string = ({ existingSetting, overridingSetting, settingName, settingsPath }) => {
-	const formattedExistingSetting = formatSettingForWarning(existingSetting)
-	const formattedOverridingSetting = formatSettingForWarning(overridingSetting)
-	const fullSettingPath = settingPath({ settingsPath, settingName })
+const settingsAreEqual: (a: any, b: any) => boolean =
+	(a: any, b: any): boolean => {
+		let settingsEqual: boolean
+		if (typeof a === 'function') {
+			// tslint:disable-next-line:no-unsafe-any
+			settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
+		}
+		else if (a instanceof Array) {
+			// tslint:disable:prefer-conditional-expression
+			if (b instanceof Array) {
+				settingsEqual = a.every((aEntry: any, index: number): boolean => aEntry === b[ index ])
+			}
+			else {
+				settingsEqual = false
+			}
+		}
+		else {
+			settingsEqual = a === b
+		}
 
-	// tslint:disable-next-line:max-line-length
-	return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
-}
-
-const formatSettingForWarning: (setting: any) => string = setting => {
-	if (typeof setting === 'function') {
-		return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
+		return settingsEqual
 	}
-	// tslint:disable-next-line:strict-type-predicates
-	else if (typeof setting === 'string') {
-		return setting
+
+const buildWarningMessage: (_: BuildWarningMessageParams) => string =
+	({ existingSetting, overridingSetting, settingName, settingsPath }: BuildWarningMessageParams): string => {
+		const formattedExistingSetting: string = formatSettingForWarning(existingSetting)
+		const formattedOverridingSetting: string = formatSettingForWarning(overridingSetting)
+		const fullSettingPath: string = settingPath({ settingsPath, settingName })
+
+		// tslint:disable-next-line:max-line-length
+		return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
 	}
 
-	return JSON.stringify(setting)
-}
+const formatSettingForWarning: (setting: any) => string =
+	(setting: any): string => {
+		if (typeof setting === 'function') {
+			// tslint:disable-next-line:no-unsafe-any
+			return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
+		}
+		// tslint:disable-next-line:strict-type-predicates
+		else if (typeof setting === 'string') {
+			return setting
+		}
+
+		return JSON.stringify(setting)
+	}
 
 export { maybeWarnAboutConflicts }

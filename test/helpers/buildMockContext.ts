@@ -1,5 +1,5 @@
-import { BuildMockContext, MockContext } from './types'
 import { noop } from './noop'
+import { BuildMockContext, MockContext } from './types'
 
 const buildMockContext: (_?: BuildMockContext) => MockContext =
 	({ contextCallsOrder = [], toBlobSpy = undefined }: BuildMockContext = {}): MockContext =>

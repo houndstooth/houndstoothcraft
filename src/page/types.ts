@@ -20,7 +20,10 @@ type InputElement = HTMLInputElement | {
 }
 
 type LabelElement = HTMLLabelElement | {
-	style: any
+	style: {
+		cursor?: any,
+		display?: any,
+	},
 } | MockElement
 
 type PageElement = HTMLElement | MockElement

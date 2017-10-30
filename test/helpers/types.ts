@@ -42,11 +42,11 @@ interface MockContext {
 	globalCompositeOperation?: any,
 	lineTo?: any,
 	moveTo?: any,
-	toBlob?: any,
 	restore?: any,
 	save?: any,
 	stroke?: any,
 	strokeStyle?: any,
+	toBlob?: any,
 }
 
 interface MockContextCall {

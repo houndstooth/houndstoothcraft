@@ -35,11 +35,7 @@ const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	opacity: DEFAULT_OPACITY,
 }
 
-// Settings name
-
 type ColorSettingsName = 'colorSettings'
-
-// Settings names to paths map
 
 const colorSettingsNamesToPathsMap: ColorSettingsStructure = {
 	...buildSettingsNamesToPathsMap({
@@ -49,15 +45,11 @@ const colorSettingsNamesToPathsMap: ColorSettingsStructure = {
 	...colorAssignmentSettings.colorAssignmentSettingsNamesToPathsMap,
 }
 
-// Settings names by type
-
 type ColorSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	ColorSetTypedSettingsNames: 'colorSet',
 	ColorTypedSettingsNames: 'backgroundColor',
 	NumberTypedSettingsNames: 'opacity',
 }> | colorAssignmentSettings.ColorAssignmentSettingsNamesByType
-
-// Export
 
 export {
 	ColorSettings,

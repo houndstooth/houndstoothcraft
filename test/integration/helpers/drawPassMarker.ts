@@ -3,6 +3,7 @@
 import { from } from '../../../src'
 import { Canvas, Context } from '../../../src/page'
 import { Coordinate } from '../../../src/space'
+import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
 interface DrawPassMarker {
@@ -13,7 +14,7 @@ interface DrawPassMarker {
 
 const drawPassMarker: (_: DrawPassMarker) => void =
 	({ coordinateUnderTest, id, passed }: DrawPassMarker): void => {
-		let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') || {}
+		let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement || buildMockCanvas()
 		if (!testMarkersCanvas) {
 			testMarkersCanvas = createTestMarkersCanvas()
 		}

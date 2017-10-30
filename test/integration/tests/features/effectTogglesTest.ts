@@ -11,7 +11,7 @@ xdescribe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		maybeAddEffectToggles(Object.values(effects))
 		setSetting('tileSize', to.Unit(50))
-		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') || buildMockElement()
+		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') as HTMLElement || buildMockElement()
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
 

@@ -10,11 +10,14 @@ interface MockElement {
 	nextSibling?: any,
 	parentNode?: any,
 	setAttribute?: any,
-	style?: {
+	style: {
 		cursor?: any,
 		display?: any,
 		height?: any,
+		left?: any,
 		padding?: any,
+		position?: any,
+		top?: any,
 		width?: any,
 	},
 }

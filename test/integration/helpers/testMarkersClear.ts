@@ -2,11 +2,13 @@ import { Canvas, Context, Px } from '../../../src/page'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
 import { NullarySideEffector } from '../../../src/utilities/types'
+import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 
 const testMarkersClear: NullarySideEffector =
 	(): void => {
-		let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') || {}
+		// tslint:disable-next-line:max-line-length
+		let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement || buildMockCanvas()
 		if (isEmpty(testMarkersCanvas)) {
 			testMarkersCanvas = createTestMarkersCanvas()
 		}

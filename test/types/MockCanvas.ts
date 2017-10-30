@@ -4,7 +4,7 @@ interface MockCanvas {
 	classList?: any,
 	getContext?: any,
 	height?: any,
-	style?: {
+	style: {
 		display?: any,
 		left?: any,
 		position?: any,

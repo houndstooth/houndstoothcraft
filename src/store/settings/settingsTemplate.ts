@@ -14,7 +14,7 @@ type TemplateSettingsStructure = { readonly [P in keyof TemplateSettings]: any }
 
 type TemplateSettingsFunctions = FunctionsOf<TemplateSettings>
 
-const DEFAULT_EXAMPLE_SETTING = ''
+const DEFAULT_EXAMPLE_SETTING: string = ''
 
 const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
 	exampleSetting: DEFAULT_EXAMPLE_SETTING,

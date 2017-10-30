@@ -22,10 +22,10 @@ type ColorAssignmentSettingsStructure = { readonly [P in keyof ColorAssignmentSe
 type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettings>
 
 const DEFAULT_ASSIGNMENT_MODE: AssignmentMode = AssignmentMode.Weave
-const DEFAULT_FLIP_GRAIN = false
+const DEFAULT_FLIP_GRAIN: boolean = false
 const DEFAULT_OFFSET_ADDRESS: undefined = undefined
 const DEFAULT_SUPERTILE: Supertile = to.Supertile([ [ [ 1, 0 ], [ 0, 0 ] ], [ [ 1, 1 ], [ 0, 1 ] ] ])
-const DEFAULT_SWITCHEROO = false
+const DEFAULT_SWITCHEROO: boolean = false
 const DEFAULT_TRANSFORM_SHAPE_COLOR_INDICES: undefined = undefined
 const DEFAULT_WEAVE: Weave = { rows: [ 1, 0 ], columns: [ 0, 1 ] }
 

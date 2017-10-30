@@ -26,7 +26,7 @@ type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
 
 const DEFAULT_BACKGROUND_COLOR: Color = TRANSPARENT
 const DEFAULT_COLOR_SET: ColorSet = to.ColorSet([ BLACK, TRANSPARENT ])
-const DEFAULT_OPACITY = 1
+const DEFAULT_OPACITY: number = 1
 
 const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 	backgroundColor: DEFAULT_BACKGROUND_COLOR,

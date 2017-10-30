@@ -15,8 +15,8 @@ type GridSettingsStructure = { readonly [P in keyof GridSettings]: any }
 
 type GridSettingsFunctions = FunctionsOf<GridSettings>
 
-const DEFAULT_GRID_SIZE = 16
-const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS = false
+const DEFAULT_GRID_SIZE: number = 16
+const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS: boolean = false
 
 const DEFAULT_GRID_SETTINGS: GridSettings = {
 	gridSize: DEFAULT_GRID_SIZE,

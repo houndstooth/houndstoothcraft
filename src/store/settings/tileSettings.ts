@@ -17,7 +17,7 @@ type TileSettingsStructure = { readonly [P in keyof TileSettings]: any }
 
 type TileSettingsFunctions = FunctionsOf<TileSettings>
 
-const DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE = true
+const DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE: boolean = true
 const DEFAULT_GET_TILE_ORIGIN_AND_SIZE: GetTileOriginAndSize = getStandardTileOriginAndSize
 const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
 

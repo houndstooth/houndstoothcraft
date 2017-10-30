@@ -77,6 +77,7 @@ export {
 	ComposePatternsParams,
 	ExecuteAnimationParams,
 	ExecuteLayerParams,
+	FullSettingsPath,
 	FunctionsOf,
 	Layer,
 	MaybeWarnAboutConflictsParams,

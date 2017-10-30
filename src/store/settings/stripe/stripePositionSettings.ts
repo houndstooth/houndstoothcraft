@@ -23,7 +23,7 @@ type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSetti
 }>
 
 const DEFAULT_GET_STRIPE_POSITIONS: GetStripePositions = standardStripePositions
-const DEFAULT_STRIPE_COUNT = 4
+const DEFAULT_STRIPE_COUNT: number = 4
 const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
 
 const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {

@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
 import { state } from '../state'
 import { isDefined } from '../utilities/codeUtilities'
@@ -8,26 +8,27 @@ import { getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
 import { SettingsNamesToTypesMap, SettingsPath } from './types'
 
-const getFromBaseOrDefaultPattern: SettingsNamesToTypesMap = (settingName: any) => {
-	const baseSettingsPath: SettingsPath = settingsNamesToPathsMap[ settingName ] || to.SettingsPath([])
-	const settingsPath: SettingsPath = to.SettingsPath(baseSettingsPath.concat([ settingName ]))
+const getFromBaseOrDefaultPattern: SettingsNamesToTypesMap =
+	(settingName: any): any => {
+		const baseSettingsPath: SettingsPath = settingsNamesToPathsMap[ settingName ] || to.SettingsPath([])
+		const settingsPath: SettingsPath = to.SettingsPath(baseSettingsPath.concat([ settingName ]))
 
-	let childSetting: { [ index: string ]: any } = state.mainHoundstooth.basePattern
+		let childSetting: { [ index: string ]: any } = state.mainHoundstooth.basePattern
 
-	for (const settingsStep of settingsPath) {
-		if (!isDefined(childSetting[ settingsStep ])) {
-			return getSettingOrCreatePath({
-				settings: DEFAULT_BASE_PATTERN,
-				settingsPath,
-			})
+		for (const settingsStep of settingsPath) {
+			if (!isDefined(childSetting[ settingsStep ])) {
+				return getSettingOrCreatePath({
+					settings: DEFAULT_BASE_PATTERN,
+					settingsPath,
+				})
+			}
+			childSetting = childSetting[ settingsStep ]
 		}
-		childSetting = childSetting[ settingsStep ]
-	}
 
-	return getSettingOrCreatePath({
-		settings: state.mainHoundstooth.basePattern,
-		settingsPath,
-	})
-}
+		return getSettingOrCreatePath({
+			settings: state.mainHoundstooth.basePattern,
+			settingsPath,
+		})
+	}
 
 export { getFromBaseOrDefaultPattern }

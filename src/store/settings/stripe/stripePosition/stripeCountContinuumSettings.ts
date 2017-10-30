@@ -15,8 +15,8 @@ type StripeCountContinuumSettingsStructure = { readonly [P in keyof StripeCountC
 
 type StripeCountContinuumSettingsFunctions = FunctionsOf<StripeCountContinuumSettings>
 
-const DEFAULT_DELTA_STRIPE_COUNT = 1
-const DEFAULT_INITIAL_STRIPE_COUNT = 1
+const DEFAULT_DELTA_STRIPE_COUNT: number = 1
+const DEFAULT_INITIAL_STRIPE_COUNT: number = 1
 
 const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
 	deltaStripeCount: DEFAULT_DELTA_STRIPE_COUNT,

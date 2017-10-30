@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
 import { isDefined } from '../utilities/codeUtilities'
 import { SettingsPath, SettingsStep } from './types'

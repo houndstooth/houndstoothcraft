@@ -21,10 +21,10 @@ type ViewSettingsStructure = { readonly [P in keyof ViewSettings]: any }
 type ViewSettingsFunctions = FunctionsOf<ViewSettings>
 
 const DEFAULT_CANVAS_SIZE: Px = to.Px(800)
-const DEFAULT_CENTER_VIEW_ON_CENTER_OF_TILE_AT_HOME_ADDRESS = false
+const DEFAULT_CENTER_VIEW_ON_CENTER_OF_TILE_AT_HOME_ADDRESS: boolean = false
 const DEFAULT_ROTATE_VIEW_ABOUT_CANVAS_CENTER: Radian = to.Radian(0)
-const DEFAULT_ZOOM = 1
-const DEFAULT_ZOOM_ON_CANVAS_CENTER = false
+const DEFAULT_ZOOM: number = 1
+const DEFAULT_ZOOM_ON_CANVAS_CENTER: boolean = false
 
 const DEFAULT_VIEW_SETTINGS: ViewSettings = {
 	canvasSize: DEFAULT_CANVAS_SIZE,

@@ -1,6 +1,6 @@
 import { Frame } from '../animation'
 import { Layer } from '../execute'
-import { Context } from '../page'
+import { Context, Px } from '../page'
 import * as to from '../utilities/to'
 import {
 	animationSettings,
@@ -27,7 +27,7 @@ const DEFAULT_BASE_PATTERN: BasePattern = {
 
 const DEFAULT_ANIMATIONS_PATTERN: PatternFunctions = {}
 const DEFAULT_LAYERS_PATTERN: PatternFunctions = {}
-const DEFAULT_NAME = 'standard'
+const DEFAULT_NAME: string = 'standard'
 
 const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 	animationsPattern: DEFAULT_ANIMATIONS_PATTERN,
@@ -36,16 +36,16 @@ const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 	name: DEFAULT_NAME,
 }
 
-const DEFAULT_ANIMATING = false
+const DEFAULT_ANIMATING: boolean = false
 const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
-const DEFAULT_EXPORT_FRAMES = false
+const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_INTERVAL: undefined = undefined
 const DEFAULT_LAST_SAVED_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
-const DEFAULT_MIXING_DOWN = false
-const DEFAULT_PERFORMANCE_LOGGING = false
+const DEFAULT_MIXING_DOWN: boolean = false
+const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
 
 const DEFAULT_STATE: State = {
@@ -63,7 +63,7 @@ const DEFAULT_STATE: State = {
 	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 }
 
-const DEFAULT_CANVAS_SIZE = viewSettings.DEFAULT_CANVAS_SIZE
+const DEFAULT_CANVAS_SIZE: Px = viewSettings.DEFAULT_CANVAS_SIZE
 
 export {
 	DEFAULT_ANIMATIONS_PATTERN,

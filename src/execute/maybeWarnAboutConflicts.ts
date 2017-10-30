@@ -23,6 +23,7 @@ const maybeWarnAboutConflicts: (_: MaybeWarnAboutConflictsParams) => void =
 				settingName,
 				settingsPath,
 			})
+			// tslint:disable-next-line:no-unsafe-any
 			console.warn(warning)
 			warn(warning)
 		}

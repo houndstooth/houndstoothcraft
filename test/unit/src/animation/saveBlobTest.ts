@@ -1,3 +1,5 @@
+// tslint:disable:no-unsafe-any
+
 import { saveBlob } from '../../../../src/animation/saveBlob'
 import { DataBlob, PageElement } from '../../../../src/page'
 import Spy = jasmine.Spy

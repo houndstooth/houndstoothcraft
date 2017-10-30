@@ -10,15 +10,24 @@ import { SettingsPath, SettingsStep } from '../store'
 
 // First order, singular
 
-const Px: (px: Px) => number = px => px as any
-const Frame: (frame: Frame) => number = frame => frame as any
-const Layer: (layer: Layer) => number = layer => layer as any
-const Radian: (radian: Radian) => number = radian => radian as any
-const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number = shapeColorIndex => shapeColorIndex as any
-const StripePosition: (stripePosition: StripePosition) => number = stripePosition => stripePosition as any
-const Unit: (units: Unit) => number = units => units as any
-const AddressElement: (addressElement: AddressElement) => number = addressElement => addressElement as any
-const SettingsStep: (settingsStep: SettingsStep) => string = settingsStep => settingsStep as any
+const Px: (px: Px) => number =
+	(px: Px): number => px as any
+const Frame: (frame: Frame) => number =
+	(frame: Frame): number => frame as any
+const Layer: (layer: Layer) => number =
+	(layer: Layer): number => layer as any
+const Radian: (radian: Radian) => number =
+	(radian: Radian): number => radian as any
+const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number =
+	(shapeColorIndex: ShapeColorIndex): number => shapeColorIndex as any
+const StripePosition: (stripePosition: StripePosition) => number =
+	(stripePosition: StripePosition): number => stripePosition as any
+const Unit: (units: Unit) => number =
+	(units: Unit): number => units as any
+const AddressElement: (addressElement: AddressElement) => number =
+	(addressElement: AddressElement): number => addressElement as any
+const SettingsStep: (settingsStep: SettingsStep) => string =
+	(settingsStep: SettingsStep): string => settingsStep as any
 
 // First order, plurals
 
@@ -28,20 +37,26 @@ const SettingsStep: (settingsStep: SettingsStep) => string = settingsStep => set
 // ShapeColorIndices not yet needed
 // StripePositions not yet needed
 // Units not yet needed
-const Address: (address: Array<AddressElement | number> | Address) => number[] = address => address as any
-const SettingsPath: (settingPath: SettingsPath) => string[] = settingsPath => settingsPath as any
+const Address: (address: Array<AddressElement | number> | Address) => number[] =
+	(address: Array<AddressElement | number> | Address): number[] => address as any
+const SettingsPath: (settingPath: Array<SettingsStep | string> | SettingsPath) => string[] =
+	(settingsPath: Array<SettingsStep | string> | SettingsPath): string[] => settingsPath as any
 
 // Second order, singular
 
 // Supertile not yet needed
-const Coordinate: (coordinate: Coordinate) => number[] = coordinate => coordinate as any
+const Coordinate: (coordinate: Array<Unit | number> | Coordinate) => number[] =
+	(coordinate: Array<Unit | number> | Coordinate): number[] => coordinate as any
 // Color not yet needed
-const Pixel: (pixel: Pixel) => number[] = pixel => pixel as any
-const Dimensions: (dimensions: Dimensions) => number[] = dimensions => dimensions as any
+const Pixel: (pixel: Array<Px | number> | Pixel) => number[] =
+	(pixel: Array<Px | number> | Pixel): number[] => pixel as any
+const Dimensions: (dimensions: Array<Px | number> | Dimensions) => number[] =
+	(dimensions: Array<Px | number> | Dimensions): number[] => dimensions as any
 
 // Third order, singular
 
-const Outline: (outline: Outline) => number[][] = outline => outline as any
+const Outline: (outline: Array<Coordinate | Array<Unit | number>> | Outline) => number[][] =
+	(outline: Array<Coordinate | Array<Unit | number>> | Outline): number[][] => outline as any
 // ColorSet not yet needed
 // Path not yet needed
 

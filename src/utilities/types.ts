@@ -1,3 +1,14 @@
+import { SettingsFunction } from '../execute'
+
 type NullarySideEffector = () => void
 
-export { NullarySideEffector }
+type CouldBeSettingsFunctionObject = Array<{
+	settingName: string,
+	settingsFunction: SettingsFunction,
+	settingsPath: string[],
+}>
+
+export {
+	CouldBeSettingsFunctionObject,
+	NullarySideEffector,
+}

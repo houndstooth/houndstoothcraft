@@ -1,3 +1,5 @@
+// tslint:disable:no-unsafe-any
+
 import * as components from '../../../../src/components'
 import { gridAndMaybeLogging } from '../../../../src/execute/gridAndMaybeLogging'
 import { state } from '../../../../src/state'

@@ -1,3 +1,5 @@
+// tslint:disable:no-unsafe-any
+
 import { grid } from '../components'
 import { state } from '../state'
 import { State } from '../store'

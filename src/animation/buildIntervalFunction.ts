@@ -8,6 +8,7 @@ const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffe
 		(): void => {
 			animationFunction()
 			if (stopConditionFunction()) {
+				// tslint:disable-next-line:no-unsafe-any
 				windowWrapper.clearInterval(state.interval)
 			}
 		}

@@ -25,6 +25,7 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionFunctionSpy).toHaveBeenCalled()
+		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
 	})
 
@@ -35,6 +36,7 @@ describe('build animation function', () => {
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
 		expect(stopConditionFunctionSpy).toHaveBeenCalled()
+		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 })

@@ -26,6 +26,7 @@ describe('warning about conflicts', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` was overridden by `luke`'
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
@@ -39,6 +40,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
@@ -52,6 +54,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
@@ -65,6 +68,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
@@ -76,10 +80,12 @@ describe('warning about conflicts', () => {
 		existingSetting = (a: number): number => a
 		overridingSetting = (b: number): number => b
 
+		// tslint:disable-next-line:no-unsafe-any
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` was overridden by `function (b) { return b; }`'
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
@@ -93,6 +99,7 @@ describe('warning about conflicts', () => {
 
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).not.toHaveBeenCalled()
 		expect(ui.warn).not.toHaveBeenCalled()
 	})
@@ -108,6 +115,7 @@ describe('warning about conflicts', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
@@ -123,6 +131,7 @@ describe('warning about conflicts', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
+		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})

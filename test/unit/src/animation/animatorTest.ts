@@ -28,6 +28,7 @@ describe('animator', () => {
 	})
 
 	it('schedules this augmented function to be run at the frame rate', () => {
+		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.setInterval).toHaveBeenCalledWith(intervalFunction, frameRate)
 	})
 

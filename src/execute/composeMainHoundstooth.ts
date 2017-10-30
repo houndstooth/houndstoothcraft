@@ -35,6 +35,7 @@ const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 		})
 
 		if (logComposedMainHoundstooth) {
+			// tslint:disable-next-line:no-unsafe-any
 			console.log(state.mainHoundstooth)
 		}
 	}

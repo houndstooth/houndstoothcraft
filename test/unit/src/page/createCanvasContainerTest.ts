@@ -18,6 +18,7 @@ describe('create canvas container', () => {
 
 		spyOn(scaleElement, 'scaleElement')
 
+		// tslint:disable-next-line:no-unsafe-any
 		window.document.body = buildMockBody({ children: bodyChildren })
 
 		const canvasContainer: PageElement = buildMockElement({ classList: canvasContainerClassList })

@@ -1,31 +1,33 @@
 // tslint:disable:no-any
 
-const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] = (i, options = { oneIndexed: false }) => {
-	let iter: number[] = []
-	for (let j = 0; j < Math.ceil(i); j++) {
-		iter.push(j)
-	}
-	if (options.oneIndexed) {
-		iter = iter.map(k => k + 1)
-	}
-
-	return iter
-}
-
-const wrappedIndex: <T>(_: { array: T[], index?: number }) => T = ({ array, index = 0 }) => {
-	let i: number
-	if (index < 0) {
-		i = array.length - Math.abs(index) % array.length
-		if (i === array.length) {
-			i = 0
+const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] =
+	(i: number, options: { oneIndexed: boolean } = { oneIndexed: false }): number[] => {
+		let iter: number[] = []
+		for (let j: number = 0; j < Math.ceil(i); j++) {
+			iter.push(j)
 		}
-	}
-	else {
-		i = index % array.length
+		if (options.oneIndexed) {
+			iter = iter.map((k: number): number => k + 1)
+		}
+
+		return iter
 	}
 
-	return array[ i ]
-}
+const wrappedIndex: <T>(_: { array: T[], index?: number }) => T =
+	<T>({ array, index = 0 }: { array: T[], index?: number }): T => {
+		let i: number
+		if (index < 0) {
+			i = array.length - Math.abs(index) % array.length
+			if (i === array.length) {
+				i = 0
+			}
+		}
+		else {
+			i = index % array.length
+		}
+
+		return array[ i ]
+	}
 
 const shallowEqual: <T extends { [_: string]: any }>(a: T, b: T) => boolean =
 	<T extends { [_: string]: any }>(a: T, b: T): boolean => {
@@ -36,12 +38,13 @@ const shallowEqual: <T extends { [_: string]: any }>(a: T, b: T) => boolean =
 
 const deepClone: <T>(objectToDeepClone: T) => T =
 	<T>(objectToDeepClone: T): T => {
-		const clonedObject = {} as any
+		const clonedObject: any = {} as any
 		setAllPropertiesOfObjectOnAnother({
 			objectToChange: clonedObject,
 			objectWithProperties: objectToDeepClone,
 		})
 
+		// tslint:disable:no-unsafe-any
 		return clonedObject
 	}
 
@@ -69,17 +72,16 @@ const deepCloneMaybeNotObject: <T>(maybeObjectToDeepClone: T) => T =
 		return clonedMaybeObject
 	}
 
-const isDefined: <T>(property: T) => boolean = property => typeof property !== 'undefined'
+const isDefined: <T>(property: T) => boolean = <T>(property: T): boolean => typeof property !== 'undefined'
 
 const changeObjectIntoCopy: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
 	// tslint:disable-next-line:max-line-length
 	<T extends { [_: string]: any }>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
-		Object.keys(objectToChange).forEach(key => delete objectToChange[ key ])
+		Object.keys(objectToChange).forEach((key: string): boolean => delete objectToChange[ key ])
 		setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
 	}
 
-const reversed: <T>(array: T[]) => T[] =
-	<T>(array: T[]): T[] => array.slice().reverse()
+const reversed: <T>(array: T[]) => T[] = <T>(array: T[]): T[] => array.slice().reverse()
 
 const isEmpty: (object: object) => boolean =
 	(object: object): boolean => Object.keys(object).length === 0 && object.constructor === Object

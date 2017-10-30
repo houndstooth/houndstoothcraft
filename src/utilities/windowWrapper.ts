@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
 declare const global: any
 
@@ -13,11 +13,11 @@ interface Document {
 
 const mockDocument: Document = {
 	body: {
-		appendChild: () => undefined,
+		appendChild: (): void => undefined,
 	},
-	createElement: () => undefined,
-	createTextNode: () => undefined,
-	querySelector: () => undefined,
+	createElement: (): void => undefined,
+	createTextNode: (): void => undefined,
+	querySelector: (): void => undefined,
 }
 
 interface Window {
@@ -28,18 +28,18 @@ interface Window {
 
 const mockWindow: Window = {
 	URL: {
-		createObjectURL: () => undefined,
-		revokeObjectURL: () => undefined,
+		createObjectURL: (): void => undefined,
+		revokeObjectURL: (): void => undefined,
 	},
-	clearInterval: () => undefined,
-	setInterval: () => undefined,
+	clearInterval: (): void => undefined,
+	setInterval: (): void => undefined,
 }
 
-const consoleWrapper = console
+const consoleWrapper: any = console
 
-const documentWrapper = global.window ? document : mockDocument
+const documentWrapper: any = global.window ? document : mockDocument
 
-const windowWrapper = global.window ? window : mockWindow
+const windowWrapper: any = global.window ? window : mockWindow
 
 export {
 	consoleWrapper as console,

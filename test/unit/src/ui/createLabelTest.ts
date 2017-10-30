@@ -59,6 +59,7 @@ describe('create label', () => {
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {
+		// tslint:disable-next-line:no-unsafe-any
 		expect(window.document.createTextNode).toHaveBeenCalledWith('mock tooth')
 	})
 })

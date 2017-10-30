@@ -17,6 +17,7 @@ describe('create mixed down canvas', () => {
 	beforeAll(() => {
 		spyOn(deleteElementIfExists, 'deleteElementIfExists')
 
+		// tslint:disable-next-line:no-unsafe-any
 		window.document.body = buildMockBody({ children: bodyChildren })
 
 		mixedDownCanvas = buildMockCanvas({ context: mixedDownContext, classList: mixedDownCanvasClassList })

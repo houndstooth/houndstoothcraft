@@ -62,6 +62,7 @@ const checkColorProperties: (_: CheckColorProperties) => boolean =
 		const secondColorPropertyValue: number | undefined = expectedColor[ firstColorPropertyKey ]
 
 		if (secondColorPropertyValue && !isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
+			// tslint:disable-next-line:no-unsafe-any
 			console.error(`actual color: ${parseColor(actualColor)} / expected color ${parseColor(expectedColor)}`)
 
 			return false

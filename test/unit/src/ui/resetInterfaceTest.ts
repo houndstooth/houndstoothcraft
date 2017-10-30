@@ -32,6 +32,7 @@ describe('reset interface', () => {
 	it('clears any active animation', () => {
 		resetInterface()
 
+		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.window.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 

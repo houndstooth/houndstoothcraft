@@ -13,6 +13,7 @@ describe('delete element if exists', () => {
 
 			deleteElementIfExists('.element')
 
+			// tslint:disable-next-line:no-unsafe-any
 			expect(window.document.querySelector).toHaveBeenCalledWith('.element')
 			expect(parentNodeRemoveChildSpy).toHaveBeenCalledWith(element)
 		})
@@ -22,8 +23,10 @@ describe('delete element if exists', () => {
 		it('does not fail', () => {
 			spyOn(window.document, 'querySelector').and.returnValue(undefined)
 
+			// tslint:disable-next-line:no-unsafe-any
 			deleteElementIfExists('.element')
 
+			// tslint:disable-next-line:no-unsafe-any
 			expect(window.document.querySelector).toHaveBeenCalledWith('.element')
 		})
 	})

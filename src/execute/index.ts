@@ -1,7 +1,7 @@
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
 import { executeGrid } from './executeGrid'
 import { executeSelectedHoundstoothEffects } from './executeSelectedHoundstoothEffects'
-import { FullSettingsPath, FunctionsOf, Layer, SettingsFunctionObject } from './types'
+import { FullSettingsPath, FunctionsOf, Layer, SettingsFunction, SettingsFunctionObject } from './types'
 
 export {
 	callFunctionsPerSetting,
@@ -10,5 +10,6 @@ export {
 	FullSettingsPath,
 	FunctionsOf,
 	Layer,
+	SettingsFunction,
 	SettingsFunctionObject,
 }

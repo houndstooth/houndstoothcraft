@@ -34,21 +34,40 @@ type ColorSet = _ColorSetBrand & Color[]
 interface ComponentParams extends TileOriginAndSize, ColorOptions, OutlineAsParam {
 }
 
-type ExecuteTexture = (_: ExecuteTextureParams) => void
-
-interface ExecuteTextureParams extends TileOriginAndSize {
-	readonly shapeColorCount: number,
-	readonly shapeColorIndex: ShapeColorIndex,
+interface DefinedTileParams extends TileOriginAndSize {
+	gridAddress: Address,
 }
 
-type GetShapeColorIndices = (_: {
-	addressOffset: Address, gridAddress: Address, supertile?: Supertile, weave?: Weave,
-}) => ShapeColorIndex[]
+type ExecuteTexture = (_: ExecuteTextureParams) => void
 
-type GetStripePosition = (_: {
+interface ExecuteTextureParams extends TileOriginAndSize, ColorOptions {
+}
+
+interface GetShapeColorIndicesParams {
+	readonly gridAddress: Address,
+}
+
+interface GetShapeColorIndicesWithOffsetParams extends GetShapeColorIndicesParams {
+	readonly addressOffset: Address,
+}
+
+type GetShapeColorIndices = (_: GetShapeColorIndicesParams) => ShapeColorIndex[]
+
+type GetShapeColorIndicesWithOffset = (_: GetShapeColorIndicesWithOffsetParams) => ShapeColorIndex[]
+
+interface GetStripeArgsParams {
+	args: ShapeArgs,
+	stripeIndex: number,
+	stripePositions: StripePosition[],
+	stripeStart: StripePosition,
+}
+
+type GetStripePosition = (_: GetStripePositionParams) => StripePosition
+
+interface GetStripePositionParams {
 	readonly stripeCount: number,
 	readonly stripeIndex: number,
-}) => StripePosition
+}
 
 // tslint:disable-next-line:no-any
 type GetStripePositions = (p?: any) => StripePosition[]
@@ -70,9 +89,9 @@ interface ShapeColorIndex extends Number {
 }
 
 interface ShapeParams extends GetOutlineParams {
-	getOutline: GetOutline,
-	shapeColorIndices: ShapeColorIndex[],
-	stripeIndex?: number,
+	readonly getOutline: GetOutline,
+	readonly shapeColorIndices: ShapeColorIndex[],
+	readonly stripeIndex?: number,
 }
 
 interface SolidParams {
@@ -98,21 +117,26 @@ interface TextureParams extends ComponentParams {
 	readonly executeTexture: ExecuteTexture,
 }
 
+type Tile = (_: TileParams) => void
+
 interface TileOriginAndSize {
 	readonly tileOrigin: Coordinate,
 	readonly tileSize: Unit,
 }
 
-interface TileParams {
-	gridAddress: Address,
-	shapeColorIndices: ShapeColorIndex[],
-	tileOrigin: Coordinate,
-	tileSize: Unit,
+interface TileParams extends TransformShapeColorIndicesParams, TileOriginAndSize {
 }
 
-type TransformShapeColorIndices = (_: {
-	gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
-}) => ShapeColorIndex[]
+type TransformShapeColorIndices = (_: TransformShapeColorIndicesParams) => ShapeColorIndex[]
+
+interface TransformShapeColorIndicesParams {
+	readonly gridAddress: Address,
+	readonly shapeColorIndices: ShapeColorIndex[],
+}
+
+interface ShapeArgs extends TileOriginAndSize {
+	readonly shapeColorIndices: ShapeColorIndex[],
+}
 
 interface Unit extends Number {
 	// tslint:disable-next-line:no-any
@@ -132,13 +156,20 @@ export {
 	ColorOptions,
 	ColorSet,
 	ComponentParams,
+	DefinedTileParams,
 	ExecuteTexture,
 	ExecuteTextureParams,
 	GetShapeColorIndices,
+	GetShapeColorIndicesWithOffset,
+	GetShapeColorIndicesParams,
+	GetShapeColorIndicesWithOffsetParams,
+	GetStripeArgsParams,
 	GetStripePosition,
+	GetStripePositionParams,
 	GetStripePositions,
 	GetTileOriginAndSize,
 	Grid,
+	ShapeArgs,
 	OffsetAddress,
 	ShapeColorIndex,
 	ShapeParams,
@@ -147,9 +178,11 @@ export {
 	StripePosition,
 	Supertile,
 	TextureParams,
+	Tile,
 	TileOriginAndSize,
 	TileParams,
 	TransformShapeColorIndices,
+	TransformShapeColorIndicesParams,
 	Unit,
 	Weave,
 }

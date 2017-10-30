@@ -6,76 +6,87 @@ import { getStripePositionsForTile } from './getStripePositionsForTile'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
 import { shape } from './shape'
-import { Address, ShapeColorIndex, ShapeParams, StripePosition, TileParams, Unit } from './types'
+import {
+	Address,
+	DefinedTileParams,
+	GetStripeArgsParams,
+	ShapeArgs,
+	ShapeColorIndex,
+	ShapeParams,
+	StripePosition,
+	Tile,
+	TileParams,
+	Unit,
+} from './types'
 
-const tile: (_: { gridAddress: Address }) => void = ({ gridAddress }) => {
-	const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
+const tile: (_: { gridAddress: Address }) => void =
+	({ gridAddress }: { gridAddress: Address }): void => {
+		const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
 
-	let definedTileOrigin: Coordinate
-	if (!tileOrigin) {
-		return
+		let definedTileOrigin: Coordinate
+		if (!tileOrigin) {
+			return
+		}
+		else {
+			definedTileOrigin = tileOrigin
+		}
+
+		let definedTileSize: Unit
+		if (!tileSize) {
+			return
+		}
+		else {
+			definedTileSize = tileSize
+		}
+
+		definedTile({ gridAddress, tileSize: definedTileSize, tileOrigin: definedTileOrigin })
 	}
-	else {
-		definedTileOrigin = tileOrigin
+
+const definedTile: (_: DefinedTileParams) => void =
+	({ gridAddress, tileOrigin, tileSize }: DefinedTileParams): void => {
+		const shapeColorIndices: ShapeColorIndex[] = getShapeColorIndices({ gridAddress })
+		const tileFunction: Tile = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile
+		tileFunction({ gridAddress, tileOrigin, tileSize, shapeColorIndices })
 	}
 
-	let definedTileSize: Unit
-	if (!tileSize) {
-		return
+const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
+	({ shapeColorIndices }: { shapeColorIndices: ShapeColorIndex[] }): boolean => {
+		const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tileSettings')
+
+		return collapseSameColoredShapesWithinTile && isTileUniform({ shapeColorIndices })
 	}
-	else {
-		definedTileSize = tileSize
+
+const squareTile: Tile =
+	({ gridAddress, ...args }: TileParams): void => {
+		const squareArgs: ShapeParams = getSquareArgs({ args })
+		shape(squareArgs)
 	}
 
-	definedTile({ gridAddress, definedTileSize, definedTileOrigin })
-}
+const stripedTile: Tile =
+	({ gridAddress, ...args }: TileParams): void => {
+		const stripePositions: StripePosition[] = getStripePositionsForTile({ gridAddress })
+		stripePositions.forEach((stripeStart: StripePosition, stripeIndex: number): void => {
+			const stripeArgs: ShapeParams = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
+			shape(stripeArgs)
+		})
+	}
 
-const definedTile: (_: {
-	definedTileOrigin: Coordinate, definedTileSize: Unit, gridAddress: Address,
-}) => void = ({ gridAddress, definedTileOrigin: tileOrigin, definedTileSize: tileSize }) => {
-	const shapeColorIndices = getShapeColorIndices({ gridAddress })
-	const tileFunction = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile
-	tileFunction({ gridAddress, tileOrigin, tileSize, shapeColorIndices })
-}
-
-const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean = ({ shapeColorIndices }) => {
-	const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tileSettings')
-
-	return collapseSameColoredShapesWithinTile && isTileUniform({ shapeColorIndices })
-}
-
-const squareTile: (_: TileParams) => void = args => {
-	const squareArgs = getSquareArgs({ args })
-	shape(squareArgs)
-}
-
-const stripedTile: (_: TileParams) => void = args => {
-	const stripePositions = getStripePositionsForTile({ gridAddress: args.gridAddress })
-	stripePositions.forEach((stripeStart, stripeIndex) => {
-		const stripeArgs = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
-		shape(stripeArgs)
-	})
-}
-
-const getSquareArgs: (_: { args: TileParams }) => ShapeParams = ({ args }) => ({
-	...args,
-	getOutline: squareOutline,
-})
-
-const getStripeArgs: (_: {
-	args: TileParams,
-	stripeIndex: number,
-	stripePositions: StripePosition[],
-	stripeStart: StripePosition,
-}) => ShapeParams = ({ args, stripeIndex, stripePositions, stripeStart }) =>
-	({
+const getSquareArgs: (_: { args: ShapeArgs }) => ShapeParams =
+	({ args }: { args: ShapeArgs }): ShapeParams => ({
 		...args,
-		getOutline: stripeOutline,
-		outlineOptions: {
-			stripeEnd: stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR,
-			stripeStart,
-		},
-		stripeIndex,
+		getOutline: squareOutline,
 	})
+
+const getStripeArgs: (_: GetStripeArgsParams) => ShapeParams =
+	({ args, stripeIndex, stripePositions, stripeStart }: GetStripeArgsParams): ShapeParams =>
+		({
+			...args,
+			getOutline: stripeOutline,
+			outlineOptions: {
+				stripeEnd: stripePositions[ stripeIndex + 1 ] || PERIMETER_SCALAR,
+				stripeStart,
+			},
+			stripeIndex,
+		})
 
 export { tile }

@@ -89,7 +89,6 @@ describe('tile', () => {
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						getOutline: space.squareOutline,
-						gridAddress,
 						shapeColorIndices,
 						tileOrigin,
 						tileSize,
@@ -119,7 +118,6 @@ describe('tile', () => {
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						getOutline: space.stripeOutline,
-						gridAddress,
 						shapeColorIndices,
 						tileOrigin,
 						tileSize,

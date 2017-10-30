@@ -1,10 +1,12 @@
 import * as to from '../utilities/to'
 import { perStripe } from './perStripe'
-import { GetStripePosition, GetStripePositions } from './types'
+import { GetStripePosition, GetStripePositionParams, GetStripePositions, StripePosition } from './types'
 
-const standardStripePositions: GetStripePositions = () => perStripe({ getStripePosition: standardStripePosition })
+const standardStripePositions: GetStripePositions =
+	(): StripePosition[] => perStripe({ getStripePosition: standardStripePosition })
 
-const standardStripePosition: GetStripePosition = ({ stripeCount, stripeIndex }) =>
-	to.StripePosition(stripeIndex / stripeCount)
+const standardStripePosition: GetStripePosition =
+	({ stripeCount, stripeIndex }: GetStripePositionParams): StripePosition =>
+		to.StripePosition(stripeIndex / stripeCount)
 
 export { standardStripePositions }

@@ -33,7 +33,8 @@ const middlePointsWhenStripeDoesNotEndInBottomRightHalf: (_: PointsParams) => vo
 		outline.push(stripePoints.pointInTopRightCorner({ tileOrigin, tileSize }))
 	}
 
-	const stripeEndsInBottomRightCorner = from.StripePosition(stripeEnd || to.StripePosition(0)) === PERIMETER_SCALAR
+	// tslint:disable-next-line:max-line-length
+	const stripeEndsInBottomRightCorner = from.StripePosition(stripeEnd || to.StripePosition(0)) === from.StripePosition(PERIMETER_SCALAR)
 	if (stripeEndsInBottomRightCorner) {
 		outline.push(stripePoints.pointInBottomRightCorner({ tileOrigin, tileSize }))
 	}

@@ -1,5 +1,6 @@
 // tslint:disable:no-magic-numbers
 
+import { StripePosition } from './components/types'
 import { Color } from './render'
 import { Radian } from './space'
 import * as to from './utilities/to'
@@ -19,16 +20,16 @@ const ERASE: Color = { a: -1 }
 const EIGHTH_OF_CIRCLE_ROTATION: Radian = to.Radian(Math.PI / 4)
 const QUARTER_CIRCLE_ROTATION: Radian = to.Radian(Math.PI / 2)
 
-const HALF = 1 / 2
+const HALF: number = 1 / 2
 
-const PERIMETER_SCALAR = 2
+const PERIMETER_SCALAR: StripePosition = to.StripePosition(2)
 
-const SQRT_2 = Math.sqrt(2)
+const SQRT_2: number = Math.sqrt(2)
 
-const X_INDEX = 0
-const Y_INDEX = 1
+const X_INDEX: number = 0
+const Y_INDEX: number = 1
 
-const ANIMATION_RATE = 1.000005
+const ANIMATION_RATE: number = 1.000005
 
 export {
 	BLACK,

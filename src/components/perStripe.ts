@@ -5,11 +5,15 @@ import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { GetStripePosition, StripePosition } from './types'
 
-const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition[] = ({ getStripePosition }) => {
-	const stripeCount: number = getFromBaseOrDefaultPattern('stripeCount')
+const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition[] =
+	({ getStripePosition }: { getStripePosition: GetStripePosition }): StripePosition[] => {
+		const stripeCount: number = getFromBaseOrDefaultPattern('stripeCount')
 
-	return to.StripePositions(iterator(stripeCount).map(stripeIndex =>
-		from.StripePosition(getStripePosition({ stripeIndex, stripeCount })) * PERIMETER_SCALAR))
-}
+		return to.StripePositions(iterator(stripeCount).map((stripeIndex: number): StripePosition =>
+			to.StripePosition(from.StripePosition(getStripePosition({
+				stripeCount,
+				stripeIndex,
+			})) * from.StripePosition(PERIMETER_SCALAR))))
+	}
 
 export { perStripe }

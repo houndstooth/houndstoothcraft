@@ -5,11 +5,11 @@ import { isDefined } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
 import { DEFAULT_BASE_PATTERN } from './defaults'
 import { getSettingOrCreatePath } from './getSettingOrCreatePath'
-import { settingNamesToPathsMap } from './settingNamesToPathsMap'
+import { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
 import { SettingsNamesToTypesMap, SettingsPath } from './types'
 
 const getFromBaseOrDefaultPattern: SettingsNamesToTypesMap = (settingName: any) => {
-	const baseSettingsPath: SettingsPath = settingNamesToPathsMap[ settingName ] || to.SettingsPath([])
+	const baseSettingsPath: SettingsPath = settingsNamesToPathsMap[ settingName ] || to.SettingsPath([])
 	const settingsPath: SettingsPath = to.SettingsPath(baseSettingsPath.concat([ settingName ]))
 
 	let childSetting: { [ index: string ]: any } = state.mainHoundstooth.basePattern

@@ -10,7 +10,7 @@ import {
 } from './settings'
 import { SettingsPath } from './types'
 
-const settingNamesToPathsMap: { [ index: string ]: SettingsPath } = {
+const settingsNamesToPathsMap: { [ index: string ]: SettingsPath } = {
 	...animationSettings.animationSettingsNamesToPathsMap,
 	...colorSettings.colorSettingsNamesToPathsMap,
 	...gridSettings.gridSettingsNamesToPathsMap,
@@ -21,4 +21,4 @@ const settingNamesToPathsMap: { [ index: string ]: SettingsPath } = {
 	...viewSettings.viewSettingsNamesToPathsMap,
 }
 
-export { settingNamesToPathsMap }
+export { settingsNamesToPathsMap }

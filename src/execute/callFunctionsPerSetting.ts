@@ -6,7 +6,7 @@ const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionOb
 	({ settingsFunctionObjects }: { settingsFunctionObjects: SettingsFunctionObject[] }): void => {
 		settingsFunctionObjects.forEach((settingsFunctionObject: SettingsFunctionObject): void => {
 			const { settingsPath, settingName } = settingsFunctionObject
-			const settingsFunction: SettingsFunction = settingsFunctionObject.settingsFunction
+			const settingsFunction: SettingsFunction<any> = settingsFunctionObject.settingsFunction
 			// tslint:disable-next-line:no-unsafe-any no-any
 			const settings: { [_: string]: any } = getSettingOrCreatePath({
 				settings: state.mainHoundstooth.basePattern,

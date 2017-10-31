@@ -61,10 +61,10 @@ interface SettingOverride {
 	readonly overridingSetting: any,
 }
 
-type SettingsFunction = <T>(p: T) => T
+type SettingsFunction<T> = (p: T) => T
 
 interface SettingsFunctionObject extends FullSettingsPath {
-	readonly settingsFunction: <T>(p: T) => T,
+	readonly settingsFunction: SettingsFunction<any>,
 }
 
 interface ShouldWarnAboutConflictsParams extends SettingOverride {

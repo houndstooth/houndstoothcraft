@@ -68,29 +68,8 @@ describe('execute animation', () => {
 				jasmine.objectContaining({
 					animationFunctionObjects,
 					layerFunctionObjects,
-					startFrame,
 				}),
 			)
 		})
-	})
-
-	it('defaults refreshing the canvas to true', () => {
-		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
-
-		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
-			jasmine.objectContaining({
-				refreshCanvas: true,
-			}),
-		)
-	})
-
-	it('defaults the start animation frame to zero', () => {
-		executeAnimation({ layerFunctionObjects, animationFunctionObjects })
-
-		expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
-			jasmine.objectContaining({
-				startFrame: 0,
-			}),
-		)
 	})
 })

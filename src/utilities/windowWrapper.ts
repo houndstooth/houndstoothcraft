@@ -1,5 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
+import { noop } from '../../test/helpers/noop'
+
 declare const global: any
 
 interface Document {
@@ -13,11 +15,11 @@ interface Document {
 
 const mockDocument: Document = {
 	body: {
-		appendChild: (): void => undefined,
+		appendChild: noop,
 	},
-	createElement: (): void => undefined,
-	createTextNode: (): void => undefined,
-	querySelector: (): void => undefined,
+	createElement: noop,
+	createTextNode: noop,
+	querySelector: noop,
 }
 
 interface Window {
@@ -28,11 +30,11 @@ interface Window {
 
 const mockWindow: Window = {
 	URL: {
-		createObjectURL: (): void => undefined,
-		revokeObjectURL: (): void => undefined,
+		createObjectURL: noop,
+		revokeObjectURL: noop,
 	},
-	clearInterval: (): void => undefined,
-	setInterval: (): void => undefined,
+	clearInterval: noop,
+	setInterval: noop,
 }
 
 const consoleWrapper: any = console

@@ -1,13 +1,15 @@
 import { clear } from '../canvas'
 import { callFunctionsPerSetting, executeGrid } from '../execute'
 import { state } from '../state'
-import { BasePattern } from '../store/types'
-import { deepClone } from '../utilities/codeUtilities'
+import { AnimationSettings } from '../store'
+import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { NullarySideEffector } from '../utilities/types'
 import { exportFrame } from './exportFrame'
 import { AnimateParams, BuildAnimationFunctionParams, ConditionFunction, Frame } from './types'
+import { BasePattern } from '../store/types'
+import { deepClone } from '../utilities/codeUtilities'
 
 const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullarySideEffector =
 	(params: BuildAnimationFunctionParams): NullarySideEffector =>
@@ -15,9 +17,9 @@ const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullarySideEf
 			const {
 				animationFunctionObjects,
 				layerFunctionObjects,
-				refreshCanvas,
-				startFrame,
 			}: BuildAnimationFunctionParams = params
+
+			const { startFrame, refreshCanvas }: AnimationSettings = getFromBaseOrDefaultPattern('animationSettings')
 
 			if (exportingFramesStillNeedsToCatchUp()) {
 				return

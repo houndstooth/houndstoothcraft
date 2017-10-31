@@ -10,7 +10,6 @@ const executeAnimation: (_: ExecuteAnimationParams) => void =
 			frameRate,
 			endFrame,
 			startFrame,
-			refreshCanvas,
 		}: AnimationSettings = getFromBaseOrDefaultPattern('animationSettings')
 
 		state.lastSavedFrame = startFrame
@@ -18,8 +17,6 @@ const executeAnimation: (_: ExecuteAnimationParams) => void =
 		const animationFunction: NullarySideEffector = buildAnimationFunction({
 			animationFunctionObjects,
 			layerFunctionObjects,
-			refreshCanvas,
-			startFrame,
 		})
 		const stopConditionFunction: ConditionFunction = buildStopConditionFunction({ endFrame })
 

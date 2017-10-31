@@ -4,7 +4,7 @@ type NullarySideEffector = () => void
 
 type CouldBeSettingsFunctionObject = Array<{
 	settingName: string,
-	settingsFunction: SettingsFunction,
+	settingsFunction: SettingsFunction<any>,
 	settingsPath: string[],
 }>
 

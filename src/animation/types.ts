@@ -15,8 +15,6 @@ interface AnimatorParams extends BuildIntervalFunctionParams {
 interface BuildAnimationFunctionParams {
 	animationFunctionObjects: SettingsFunctionObject[],
 	layerFunctionObjects: SettingsFunctionObject[],
-	refreshCanvas: boolean,
-	startFrame: Frame,
 }
 
 interface BuildIntervalFunctionParams {

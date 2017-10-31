@@ -3,6 +3,8 @@
 set -e
 
 # this is to trigger the file watcher
+mkdir -p ./test/integration/dist
+touch ./test/integration/dist/close
 cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 > ./test/integration/dist/close
 
 declare -a arr=(

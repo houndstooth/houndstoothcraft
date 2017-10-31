@@ -1,7 +1,7 @@
 const fs = require('fs')
 const http = require('http')
 const process = require('process')
-const { spawnSync } = require('child_process')
+const { execSync } = require('child_process')
 
 let fsTimeout = false
 let testsWatcher
@@ -10,7 +10,7 @@ let srcWatcher
 const runTests = res => {
 	if (!fsTimeout) {
 		fsTimeout = setTimeout(() => fsTimeout = false, 500)
-		spawnSync('./bin/test/unit_tests_and_cover.sh', { stdio: 'inherit' })
+		execSync('sh ./bin/test/unit_tests_and_cover.sh', { stdio: 'inherit', shell: true })
 		res.write('data: reload\n\n')
 	}
 }

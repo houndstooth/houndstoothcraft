@@ -13,7 +13,7 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 		composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
 		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern || {},
+			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
 		})
 
 		prepareCanvas()
@@ -36,7 +36,7 @@ const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
 	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {
 		if (state.animating) {
 			const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
-				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern || {},
+				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
 			})
 			executeAnimation({ animationFunctionObjects, layerFunctionObjects })
 		}

@@ -43,15 +43,15 @@ type ExecuteTexture = (_: ExecuteTextureParams) => void
 interface ExecuteTextureParams extends TileOriginAndSize, ColorOptions {
 }
 
-interface GetShapeColorIndicesParams {
+interface GridAddressParam {
 	readonly gridAddress: Address,
 }
 
-interface GetShapeColorIndicesWithOffsetParams extends GetShapeColorIndicesParams {
+interface GetShapeColorIndicesWithOffsetParams extends GridAddressParam {
 	readonly addressOffset: Address,
 }
 
-type GetShapeColorIndices = (_: GetShapeColorIndicesParams) => ShapeColorIndex[]
+type GetShapeColorIndices = (_: GridAddressParam) => ShapeColorIndex[]
 
 type GetShapeColorIndicesWithOffset = (_: GetShapeColorIndicesWithOffsetParams) => ShapeColorIndex[]
 
@@ -161,7 +161,7 @@ export {
 	ExecuteTextureParams,
 	GetShapeColorIndices,
 	GetShapeColorIndicesWithOffset,
-	GetShapeColorIndicesParams,
+	GridAddressParam,
 	GetShapeColorIndicesWithOffsetParams,
 	GetStripeArgsParams,
 	GetStripePosition,

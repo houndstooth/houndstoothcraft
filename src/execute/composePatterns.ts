@@ -11,14 +11,11 @@ const composePatterns: (_: ComposePatternsParams) => void =
 	(params: ComposePatternsParams): void => {
 		const {
 			patternToBeMergedOnto,
-			patternToMerge,
+			patternToMerge = {},
 			settingsPath = to.SettingsPath([]),
 			warnAboutConflicts = false,
 		}: ComposePatternsParams = params
 
-		if (!patternToMerge) {
-			return
-		}
 		Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]: [ SettingsStep, any ]) => {
 			if (shouldRecurse({ overridingSetting })) {
 				composePatterns({

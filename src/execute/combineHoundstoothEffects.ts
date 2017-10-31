@@ -10,17 +10,17 @@ const combineHoundstoothEffects: (_: { houndstoothEffects: Effect[] }) => Effect
 		houndstoothEffects.forEach((houndstoothEffect: Effect): void => {
 			composePatterns({
 				patternToBeMergedOnto: basePattern,
-				patternToMerge: houndstoothEffect.basePattern || {},
+				patternToMerge: houndstoothEffect.basePattern,
 				warnAboutConflicts: true,
 			})
 			composePatterns({
 				patternToBeMergedOnto: layersPattern,
-				patternToMerge: houndstoothEffect.layersPattern || {},
+				patternToMerge: houndstoothEffect.layersPattern,
 				warnAboutConflicts: true,
 			})
 			composePatterns({
 				patternToBeMergedOnto: animationsPattern,
-				patternToMerge: houndstoothEffect.animationsPattern || {},
+				patternToMerge: houndstoothEffect.animationsPattern,
 				warnAboutConflicts: true,
 			})
 		})

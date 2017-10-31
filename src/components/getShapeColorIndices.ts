@@ -7,16 +7,18 @@ import {
 	Address,
 	AssignmentMode,
 	GetShapeColorIndices,
-	GetShapeColorIndicesParams,
 	GetShapeColorIndicesWithOffset,
 	GetShapeColorIndicesWithOffsetParams,
-	ShapeColorIndex, Supertile,
+	GridAddressParam,
+	ShapeColorIndex,
+	Supertile,
 	TransformShapeColorIndices,
-	TransformShapeColorIndicesParams, Weave,
+	TransformShapeColorIndicesParams,
+	Weave,
 } from './types'
 
 const getShapeColorIndices: GetShapeColorIndices =
-	({ gridAddress }: GetShapeColorIndicesParams): ShapeColorIndex[] => {
+	({ gridAddress }: GridAddressParam): ShapeColorIndex[] => {
 		const shapeColorIndices: ShapeColorIndex[] = getIndices({ gridAddress })
 
 		return maybeAdjustShapeColorIndices({ gridAddress, shapeColorIndices })
@@ -51,24 +53,16 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 	}
 
 const getIndices: GetShapeColorIndices =
-	({ gridAddress }: GetShapeColorIndicesParams): ShapeColorIndex[] => {
+	({ gridAddress }: GridAddressParam): ShapeColorIndex[] => {
 		const {
 			offsetAddress,
 			assignmentMode,
 		}: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
 
-		const addressOffset: Address = offsetAddress ? offsetAddress({ gridAddress }) : to.Address([ 0, 0 ])
+		// tslint:disable-next-line:max-line-length
+		const getter: GetShapeColorIndicesWithOffset = assignmentMode === AssignmentMode.Weave ? getByWeave : getBySupertile
 
-		let getter: GetShapeColorIndicesWithOffset
-		if (assignmentMode === AssignmentMode.Weave) {
-			getter = getByWeave
-		}
-		else if (assignmentMode === AssignmentMode.Supertile) {
-			getter = getBySupertile
-		}
-		else {
-			return []
-		}
+		const addressOffset: Address = offsetAddress ? offsetAddress({ gridAddress }) : to.Address([ 0, 0 ])
 
 		return getter({ gridAddress, addressOffset })
 	}

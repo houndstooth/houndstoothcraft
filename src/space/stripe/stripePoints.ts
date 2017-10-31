@@ -1,10 +1,10 @@
 import * as from from '../../utilities/from'
 import * as to from '../../utilities/to'
-import { Coordinate, Point, PointParams } from '../types'
+import { Coordinate, Point, PointParams, PointWithKnownPosition } from '../types'
 
 const pointAlongTopEdge: Point =
 	({ stripePosition, tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate => {
-		const stripePositionValue: number = from.StripePosition(stripePosition || to.StripePosition(0))
+		const stripePositionValue: number = from.StripePosition(stripePosition)
 
 		return to.Coordinate([
 			stripePositionValue * from.Unit(tileSize) + from.Unit(x),
@@ -14,7 +14,7 @@ const pointAlongTopEdge: Point =
 
 const pointAlongLeftEdge: Point =
 	({ stripePosition, tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate => {
-		const stripePositionValue: number = from.StripePosition(stripePosition || to.StripePosition(0))
+		const stripePositionValue: number = from.StripePosition(stripePosition)
 
 		return to.Coordinate([
 			from.Unit(x),
@@ -24,7 +24,7 @@ const pointAlongLeftEdge: Point =
 
 const pointAlongRightEdge: Point =
 	({ stripePosition, tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate => {
-		const stripePositionValue: number = from.StripePosition(stripePosition || to.StripePosition(0))
+		const stripePositionValue: number = from.StripePosition(stripePosition)
 
 		return to.Coordinate([
 			from.Unit(x) + from.Unit(tileSize),
@@ -34,7 +34,7 @@ const pointAlongRightEdge: Point =
 
 const pointAlongBottomEdge: Point =
 	({ stripePosition, tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate => {
-		const stripePositionValue: number = from.StripePosition(stripePosition || to.StripePosition(0))
+		const stripePositionValue: number = from.StripePosition(stripePosition)
 
 		return to.Coordinate([
 			from.Unit(x) + (stripePositionValue - 1) * from.Unit(tileSize),
@@ -42,21 +42,21 @@ const pointAlongBottomEdge: Point =
 		])
 	}
 
-const pointInTopRightCorner: Point =
+const pointInTopRightCorner: PointWithKnownPosition =
 	({ tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate =>
 		to.Coordinate([
 			from.Unit(x) + from.Unit(tileSize),
 			from.Unit(y),
 		])
 
-const pointInBottomRightCorner: Point =
+const pointInBottomRightCorner: PointWithKnownPosition =
 	({ tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate =>
 		to.Coordinate([
 			from.Unit(x) + from.Unit(tileSize),
 			from.Unit(y) + from.Unit(tileSize),
 		])
 
-const pointInBottomLeftCorner: Point =
+const pointInBottomLeftCorner: PointWithKnownPosition =
 	({ tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate =>
 		to.Coordinate([
 			from.Unit(x),

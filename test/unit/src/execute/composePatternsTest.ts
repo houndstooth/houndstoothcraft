@@ -83,4 +83,9 @@ describe('compose patterns', () => {
 
 		expect(maybeWarnAboutConflicts.maybeWarnAboutConflicts).toHaveBeenCalled()
 	})
+
+	it('defaults the pattern to merge to an empty object, so as to not fail', () => {
+		const patternToBeMergedOnto: Pattern = {}
+		composePatterns({ patternToBeMergedOnto })
+	})
 })

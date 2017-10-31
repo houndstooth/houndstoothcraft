@@ -3,8 +3,8 @@ import { state } from '../state'
 import { getFromBaseOrDefaultPattern, LayerSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
-import { SettingsFunctionObject } from './types'
 import { executeLayer } from './executeLayer'
+import { SettingsFunctionObject } from './types'
 
 const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
 	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {

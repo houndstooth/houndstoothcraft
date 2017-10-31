@@ -1,4 +1,5 @@
 import { Frame } from '../animation'
+import { ColorSet } from '../components/types'
 import { Layer } from '../execute'
 import { Context, Px } from '../page'
 import * as to from '../utilities/to'
@@ -64,11 +65,13 @@ const DEFAULT_STATE: State = {
 }
 
 const DEFAULT_CANVAS_SIZE: Px = viewSettings.DEFAULT_CANVAS_SIZE
+const DEFAULT_COLOR_SET: ColorSet = colorSettings.DEFAULT_COLOR_SETTINGS.colorSet
 
 export {
 	DEFAULT_ANIMATIONS_PATTERN,
 	DEFAULT_BASE_PATTERN,
 	DEFAULT_CANVAS_SIZE,
+	DEFAULT_COLOR_SET,
 	DEFAULT_LAYERS_PATTERN,
 	DEFAULT_HOUNDSTOOTH,
 	DEFAULT_STATE,

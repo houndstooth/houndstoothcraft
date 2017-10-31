@@ -1,9 +1,9 @@
 import { state } from '../state'
-import { defaults, Effect, Pattern } from '../store'
+import { defaults, Effect } from '../store'
 import { console } from '../utilities/windowWrapper'
 import { combineHoundstoothEffects } from './combineHoundstoothEffects'
 import { composePatterns } from './composePatterns'
-import { ComposeMainHoundstooth } from './types'
+import { ComposeMainHoundstooth, ComposePatternParams } from './types'
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 	(params: ComposeMainHoundstooth): void => {
@@ -17,20 +17,20 @@ const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 
 		composePattern({
 			patternDefaults: defaults.DEFAULT_BASE_PATTERN,
-			patternEffects: combinedHoundstoothEffects.basePattern || {},
-			patternOverrides: houndstoothOverrides.basePattern || {},
+			patternEffects: combinedHoundstoothEffects.basePattern,
+			patternOverrides: houndstoothOverrides.basePattern,
 			patternToCompose: state.mainHoundstooth.basePattern,
 		})
 		composePattern({
 			patternDefaults: defaults.DEFAULT_LAYERS_PATTERN,
-			patternEffects: combinedHoundstoothEffects.layersPattern || {},
-			patternOverrides: houndstoothOverrides.layersPattern || {},
+			patternEffects: combinedHoundstoothEffects.layersPattern,
+			patternOverrides: houndstoothOverrides.layersPattern,
 			patternToCompose: state.mainHoundstooth.layersPattern,
 		})
 		composePattern({
 			patternDefaults: defaults.DEFAULT_ANIMATIONS_PATTERN,
-			patternEffects: combinedHoundstoothEffects.animationsPattern || {},
-			patternOverrides: houndstoothOverrides.animationsPattern || {},
+			patternEffects: combinedHoundstoothEffects.animationsPattern,
+			patternOverrides: houndstoothOverrides.animationsPattern,
 			patternToCompose: state.mainHoundstooth.animationsPattern,
 		})
 
@@ -40,15 +40,8 @@ const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 		}
 	}
 
-interface ComposePattern {
-	patternDefaults: Pattern,
-	patternEffects: Pattern,
-	patternOverrides: Pattern,
-	patternToCompose: Pattern,
-}
-
-const composePattern: (_: ComposePattern) => void =
-	({ patternDefaults, patternEffects, patternOverrides, patternToCompose }: ComposePattern): void => {
+const composePattern: (_: ComposePatternParams) => void =
+	({ patternDefaults, patternEffects, patternOverrides = {}, patternToCompose }: ComposePatternParams): void => {
 		composePatterns({
 			patternToBeMergedOnto: patternToCompose,
 			patternToMerge: patternDefaults,

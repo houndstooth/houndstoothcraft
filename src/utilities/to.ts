@@ -37,7 +37,7 @@ const Unit: (unit: number) => Unit =
 const AddressElement: (addressElement: number) => AddressElement =
 	(addressElement: number): AddressElement => addressElement as any
 const SettingsStep: (settingsStep: string) => SettingsStep =
-	(settingsStep: string): SettingsStep => settingsStep as any
+	(settingsStep: string): SettingsStep => settingsStep as SettingsStep
 
 // First order, plurals
 
@@ -57,7 +57,7 @@ const StripePositions: (stripePositions: Array<StripePosition | number>) => Stri
 const Address: (address: Array<number | AddressElement>) => Address =
 	(address: Array<number | AddressElement>): Address => address as any
 const SettingsPath: (settingsPath: SettingsStep[] | Array<string | SettingsStep>) => SettingsPath =
-	(settingsPath: SettingsStep[] | Array<string | SettingsStep>): SettingsPath => settingsPath as any
+	(settingsPath: SettingsStep[] | Array<string | SettingsStep>): SettingsPath => settingsPath as SettingsPath
 
 // Second order, singular
 

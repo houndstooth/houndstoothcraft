@@ -12,9 +12,16 @@ interface ComposeMainHoundstooth {
 	readonly logComposedMainHoundstooth?: boolean,
 }
 
+interface ComposePatternParams {
+	patternDefaults: Pattern,
+	patternEffects?: Pattern,
+	patternOverrides?: Pattern,
+	patternToCompose: Pattern,
+}
+
 interface ComposePatternsParams {
 	readonly patternToBeMergedOnto: Pattern,
-	readonly patternToMerge: {},
+	readonly patternToMerge?: {},
 	readonly settingsPath?: SettingsPath,
 	readonly warnAboutConflicts?: boolean,
 }
@@ -74,6 +81,7 @@ interface ShouldWarnAboutConflictsParams extends SettingOverride {
 export {
 	BuildWarningMessageParams,
 	ComposeMainHoundstooth,
+	ComposePatternParams,
 	ComposePatternsParams,
 	ExecuteAnimationParams,
 	ExecuteLayerParams,

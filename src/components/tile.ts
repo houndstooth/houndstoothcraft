@@ -1,13 +1,11 @@
 import { PERIMETER_SCALAR } from '../constants'
-import { Coordinate, squareOutline, stripeOutline } from '../space'
+import { squareOutline, stripeOutline } from '../space'
 import { getFromBaseOrDefaultPattern, TileSettings } from '../store'
 import { getShapeColorIndices } from './getShapeColorIndices'
 import { getStripePositionsForTile } from './getStripePositionsForTile'
-import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { isTileUniform } from './isTileUniform'
 import { shape } from './shape'
 import {
-	Address,
 	DefinedTileParams,
 	GetStripeArgsParams,
 	ShapeArgs,
@@ -16,33 +14,9 @@ import {
 	StripePosition,
 	Tile,
 	TileParams,
-	Unit,
 } from './types'
 
-const tile: (_: { gridAddress: Address }) => void =
-	({ gridAddress }: { gridAddress: Address }): void => {
-		const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
-
-		let definedTileOrigin: Coordinate
-		if (!tileOrigin) {
-			return
-		}
-		else {
-			definedTileOrigin = tileOrigin
-		}
-
-		let definedTileSize: Unit
-		if (!tileSize) {
-			return
-		}
-		else {
-			definedTileSize = tileSize
-		}
-
-		definedTile({ gridAddress, tileSize: definedTileSize, tileOrigin: definedTileOrigin })
-	}
-
-const definedTile: (_: DefinedTileParams) => void =
+const tile: (_: DefinedTileParams) => void =
 	({ gridAddress, tileOrigin, tileSize }: DefinedTileParams): void => {
 		const shapeColorIndices: ShapeColorIndex[] = getShapeColorIndices({ gridAddress })
 		const tileFunction: Tile = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile

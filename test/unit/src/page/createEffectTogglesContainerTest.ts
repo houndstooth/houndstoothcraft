@@ -1,22 +1,24 @@
 import { PageElement } from '../../../../src/page'
+import Spy = jasmine.Spy
+import * as createCanvasContainer from '../../../../src/page/createCanvasContainer'
 import { createEffectTogglesContainer } from '../../../../src/page/createEffectTogglesContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
-import Spy = jasmine.Spy
 
 describe('create effect toggles container', () => {
 	let returnedEffectTogglesContainer: PageElement
 	let effectTogglesContainer: PageElement
 	let canvasContainer: PageElement
 	let insertElementRightAfterSpy: Spy
+	let querySelectorSpy: Spy
 	const effectTogglesContainerClassList: string[] = []
 	beforeEach(() => {
 		effectTogglesContainer = buildMockElement({ classList: effectTogglesContainerClassList })
 		spyOn(window.document, 'createElement').and.returnValue(effectTogglesContainer)
 
 		canvasContainer = buildMockElement()
-		spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
+		querySelectorSpy = spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
 
 		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'insertElementRightAfter')
 
@@ -43,5 +45,14 @@ describe('create effect toggles container', () => {
 
 	it('inserts the effect toggles container after the canvas', () => {
 		expect(insertElementRightAfterSpy).toHaveBeenCalledWith(returnedEffectTogglesContainer, canvasContainer)
+	})
+
+	it('creates the canvas container if it does not already exist', () => {
+		querySelectorSpy.and.returnValue(undefined)
+		spyOn(createCanvasContainer, 'createCanvasContainer').and.returnValue(canvasContainer)
+
+		createEffectTogglesContainer()
+
+		expect(createCanvasContainer.createCanvasContainer).toHaveBeenCalled()
 	})
 })

@@ -27,4 +27,8 @@ describe('mix down contexts', () => {
 		expect(drawImageSpyCalls[4].args[0]).toEqual(4)
 		expect(drawImageSpyCalls[5].args[0]).toEqual(5)
 	})
+
+	it('does not fail if there is no mixed down context', () => {
+		mixDownContexts()
+	})
 })

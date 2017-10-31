@@ -120,6 +120,22 @@ describe('warning about conflicts', () => {
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
 	})
 
+	it('does warn when the settings are different types of data structure', () => {
+		warnAboutConflicts = true
+		settingsPath = to.SettingsPath([ 'colorSettings' ])
+		settingName = to.SettingsStep('colorSet')
+		existingSetting = [ 'a', 'b' ]
+		overridingSetting = 'bna'
+
+		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+
+		// tslint:disable-next-line:max-line-length
+		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `bna`'
+		// tslint:disable-next-line:no-unsafe-any
+		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)
+	})
+
 	it('shows the contents of objects (such as colors) (as opposed to [object Object])', () => {
 		warnAboutConflicts = true
 		settingsPath = to.SettingsPath([ 'colorSettings' ])

@@ -16,7 +16,7 @@ describe('shape', () => {
 	const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([])
 	const stripeIndex: number = 7
 	const shapeColorIndex: number = 45
-	const outlineOptions: OutlineOptions = {}
+	const outlineOptions: OutlineOptions = { stripeStart: to.StripePosition(0), stripeEnd: to.StripePosition(1) }
 
 	let getOutlineSpy: Spy
 

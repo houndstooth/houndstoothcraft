@@ -1,9 +1,9 @@
 {
     "check-coverage": true,
-    "statements": 50,
-    "lines": 50,
-    "branches": 50,
-    "functions": 50,
+    "statements": 100,
+    "lines": 100,
+    "branches": 100,
+    "functions": 100,
     "report-dir": "./test/unit/coverage",
     "require": "ts-node/register",
     "reporter": [ "lcov", "text", "json" ],

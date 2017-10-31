@@ -39,8 +39,10 @@ const mockWindow: Window = {
 
 const consoleWrapper: any = console
 
+/* istanbul ignore next */
 const documentWrapper: any = global.window ? document : mockDocument
 
+/* istanbul ignore next */
 const windowWrapper: any = global.window ? window : mockWindow
 
 export {

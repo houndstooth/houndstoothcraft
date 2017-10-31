@@ -1,3 +1,5 @@
+// tslint:disable:no-any no-unsafe-any
+
 import { state } from '../state'
 import { getSettingOrCreatePath } from '../store'
 import { SettingsFunction, SettingsFunctionObject } from './types'
@@ -7,14 +9,12 @@ const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionOb
 		settingsFunctionObjects.forEach((settingsFunctionObject: SettingsFunctionObject): void => {
 			const { settingsPath, settingName } = settingsFunctionObject
 			const settingsFunction: SettingsFunction<any> = settingsFunctionObject.settingsFunction
-			// tslint:disable-next-line:no-unsafe-any no-any
 			const settings: { [_: string]: any } = getSettingOrCreatePath({
 				settings: state.mainHoundstooth.basePattern,
 				settingsPath,
 			})
-			// tslint:disable-next-line:no-any
 			const previousState: any = settings[ settingName ]
-			// tslint:disable-next-line:no-unsafe-any
+			// tslint:disable-next-line:no-inferred-empty-object-type
 			settings[ settingName ] = settingsFunction(previousState)
 		})
 	}

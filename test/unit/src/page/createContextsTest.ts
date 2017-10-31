@@ -1,5 +1,6 @@
 import Spy = jasmine.Spy
 import { PageElement } from '../../../../src/page'
+import * as createCanvasContainer from '../../../../src/page/createCanvasContainer'
 import * as createContext from '../../../../src/page/createContext'
 import { createContexts } from '../../../../src/page/createContexts'
 import { state } from '../../../../src/state'
@@ -11,12 +12,13 @@ import { buildMockElement } from '../../helpers/buildMockElement'
 describe('create contexts', () => {
 	let canvasContainer: PageElement
 	let createContextSpy: Spy
+	let querySelectorSpy: Spy
 	beforeEach(() => {
 		createContextSpy = spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement()
 		canvasContainer.innerHTML = 'some old canvases'
-		spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
+		querySelectorSpy = spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
 	})
 
 	it('clears the canvas container contents', () => {
@@ -48,5 +50,14 @@ describe('create contexts', () => {
 
 		expect(createContextSpy.calls.count()).toBe(4)
 		expect(state.contexts.length).toBe(4)
+	})
+
+	it('creates the canvas container if it does not already exist', () => {
+		querySelectorSpy.and.returnValue(undefined)
+		spyOn(createCanvasContainer, 'createCanvasContainer').and.returnValue(canvasContainer)
+
+		createContexts()
+
+		expect(createCanvasContainer.createCanvasContainer).toHaveBeenCalled()
 	})
 })

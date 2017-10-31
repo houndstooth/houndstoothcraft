@@ -1,5 +1,5 @@
 import * as canvas from '../../../../src/canvas'
-import { PageElement } from '../../../../src/page'
+import * as page from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import { setSetting } from '../../../../src/store/setSetting'
@@ -7,11 +7,13 @@ import { Effect, State } from '../../../../src/store/types'
 import { resetInterface } from '../../../../src/ui/resetInterface'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
+import Spy = jasmine.Spy
 
 describe('reset interface', () => {
-	const warningsContainer: PageElement = buildMockElement()
+	const warningsContainer: page.PageElement = buildMockElement()
+	let querySelectorSpy: Spy
 	beforeEach(() => {
-		spyOn(windowWrapper.document, 'querySelector').and.returnValue(warningsContainer)
+		querySelectorSpy = spyOn(windowWrapper.document, 'querySelector').and.returnValue(warningsContainer)
 		spyOn(windowWrapper.window, 'clearInterval')
 	})
 
@@ -51,5 +53,15 @@ describe('reset interface', () => {
 		const expectedStore: State = DEFAULT_STATE
 		expectedStore.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 		expect(state).toEqual(expectedStore)
+	})
+
+	it('creates the warnings container if it does not already exist', () => {
+		querySelectorSpy.and.returnValue(undefined)
+		const createWarningsContainerSpy: Spy = spyOn(page, 'createWarningsContainer')
+		createWarningsContainerSpy.and.returnValue(warningsContainer)
+
+		resetInterface()
+
+		expect(createWarningsContainerSpy).toHaveBeenCalled()
 	})
 })

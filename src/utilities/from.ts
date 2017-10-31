@@ -27,7 +27,8 @@ const Unit: (units: Unit) => number =
 const AddressElement: (addressElement: AddressElement) => number =
 	(addressElement: AddressElement): number => addressElement as any
 const SettingsStep: (settingsStep: SettingsStep) => string =
-	(settingsStep: SettingsStep): string => settingsStep as any
+	/* istanbul ignore next */
+	(settingsStep: SettingsStep): string => settingsStep
 
 // First order, plurals
 
@@ -40,7 +41,8 @@ const SettingsStep: (settingsStep: SettingsStep) => string =
 const Address: (address: Array<AddressElement | number> | Address) => number[] =
 	(address: Array<AddressElement | number> | Address): number[] => address as any
 const SettingsPath: (settingPath: Array<SettingsStep | string> | SettingsPath) => string[] =
-	(settingsPath: Array<SettingsStep | string> | SettingsPath): string[] => settingsPath as any
+	/* istanbul ignore next */
+	(settingsPath: Array<SettingsStep | string> | SettingsPath): string[] => settingsPath as SettingsPath
 
 // Second order, singular
 

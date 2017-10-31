@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
 import { warn } from '../ui'
 import { isDefined } from '../utilities/codeUtilities'
@@ -23,7 +23,6 @@ const maybeWarnAboutConflicts: (_: MaybeWarnAboutConflictsParams) => void =
 				settingName,
 				settingsPath,
 			})
-			// tslint:disable-next-line:no-unsafe-any
 			console.warn(warning)
 			warn(warning)
 		}
@@ -36,18 +35,16 @@ const shouldWarnAboutConflicts: (_: ShouldWarnAboutConflictsParams) => boolean =
 const settingsAreEqual: (a: any, b: any) => boolean =
 	(a: any, b: any): boolean => {
 		let settingsEqual: boolean
+		// tslint:disable-next-line:strict-type-predicates
+		if (typeof a !== typeof b) {
+			settingsEqual = false
+		}
+
 		if (typeof a === 'function') {
-			// tslint:disable-next-line:no-unsafe-any
-			settingsEqual = typeof b === 'function' ? a.toString() === b.toString() : false
+			settingsEqual = a.toString() === b.toString()
 		}
 		else if (a instanceof Array) {
-			// tslint:disable:prefer-conditional-expression
-			if (b instanceof Array) {
-				settingsEqual = a.every((aEntry: any, index: number): boolean => aEntry === b[ index ])
-			}
-			else {
-				settingsEqual = false
-			}
+			settingsEqual = a.every((aEntry: any, index: number): boolean => aEntry === b[ index ])
 		}
 		else {
 			settingsEqual = a === b
@@ -69,7 +66,6 @@ const buildWarningMessage: (_: BuildWarningMessageParams) => string =
 const formatSettingForWarning: (setting: any) => string =
 	(setting: any): string => {
 		if (typeof setting === 'function') {
-			// tslint:disable-next-line:no-unsafe-any
 			return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
 		}
 		// tslint:disable-next-line:strict-type-predicates

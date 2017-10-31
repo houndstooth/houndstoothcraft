@@ -1,20 +1,19 @@
 import { buildAnimationFunction } from '../../../../src/animation/buildAnimationFunction'
 import * as exportFrame from '../../../../src/animation/exportFrame'
+import { Frame } from '../../../../src/animation/types'
 import * as canvas from '../../../../src/canvas'
 import { Unit } from '../../../../src/components/types'
 import * as execute from '../../../../src/execute'
+import Spy = jasmine.Spy
+import * as executeLayer from '../../../../src/execute/executeLayer'
+import * as gridAndMaybeLogging from '../../../../src/execute/gridAndMaybeLogging'
 import { SettingsFunctionObject } from '../../../../src/execute/types'
 import { state } from '../../../../src/state'
+import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as from from '../../../../src/utilities/from'
 import * as to from '../../../../src/utilities/to'
 import { NullarySideEffector } from '../../../../src/utilities/types'
-import { Frame } from '../../../../src/animation/types'
-import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import Spy = jasmine.Spy
-import { callFunctionsPerSetting } from '../../../../src/execute/callFunctionsPerSetting'
-import * as executeLayer from '../../../../src/execute/executeLayer'
-import * as gridAndMaybeLogging from '../../../../src/execute/gridAndMaybeLogging'
 
 describe('build animation function returns an animation function', () => {
 	let animationFunction: NullarySideEffector
@@ -59,19 +58,19 @@ describe('build animation function returns an animation function', () => {
 		animationFunction()
 
 		expect(executeLayerSpy.calls.all().length).toBe(4)
-		expect(executeLayerSpy.calls.all()[0].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 0}))
-		expect(executeLayerSpy.calls.all()[1].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 1}))
-		expect(executeLayerSpy.calls.all()[2].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 2}))
-		expect(executeLayerSpy.calls.all()[3].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 3}))
+		expect(executeLayerSpy.calls.all()[0].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 0 }))
+		expect(executeLayerSpy.calls.all()[1].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 1 }))
+		expect(executeLayerSpy.calls.all()[2].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 2 }))
+		expect(executeLayerSpy.calls.all()[3].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 3 }))
 		expect(getFromBaseOrDefaultPattern('tileSize')).toBe(to.Unit(10))
 
 		animationFunction()
 
 		expect(executeLayerSpy.calls.all().length).toBe(8)
-		expect(executeLayerSpy.calls.all()[0].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 0}))
-		expect(executeLayerSpy.calls.all()[1].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 1}))
-		expect(executeLayerSpy.calls.all()[2].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 2}))
-		expect(executeLayerSpy.calls.all()[3].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 3}))
+		expect(executeLayerSpy.calls.all()[0].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 0 }))
+		expect(executeLayerSpy.calls.all()[1].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 1 }))
+		expect(executeLayerSpy.calls.all()[2].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 2 }))
+		expect(executeLayerSpy.calls.all()[3].args[0]).toEqual(jasmine.objectContaining({ currentLayer: 3 }))
 		expect(getFromBaseOrDefaultPattern('tileSize')).toBe(to.Unit(20))
 	})
 

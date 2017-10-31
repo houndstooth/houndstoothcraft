@@ -3,7 +3,7 @@ import { iterator } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
 import { NullarySideEffector } from '../utilities/types'
 import { applyBackgroundColor, applyOpacity } from '../view'
-import { tile } from './tile'
+import { maybeTile } from './maybeTile'
 
 const NEGATIVE_AND_POSITIVE: number = 2
 
@@ -17,14 +17,14 @@ const grid: NullarySideEffector =
 		if (includeNegativeQuadrants) {
 			iterator(gridSize * NEGATIVE_AND_POSITIVE).forEach((x: number): void => {
 				iterator(gridSize * NEGATIVE_AND_POSITIVE).forEach((y: number): void => {
-					tile({ gridAddress: to.Address([ x - gridSize, y - gridSize ]) })
+					maybeTile({ gridAddress: to.Address([ x - gridSize, y - gridSize ]) })
 				})
 			})
 		}
 		else {
 			iterator(gridSize).forEach((x: number): void => {
 				iterator(gridSize).forEach((y: number): void => {
-					tile({ gridAddress: to.Address([ x, y ]) })
+					maybeTile({ gridAddress: to.Address([ x, y ]) })
 				})
 			})
 		}

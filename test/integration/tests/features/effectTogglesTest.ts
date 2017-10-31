@@ -1,25 +1,24 @@
+import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import * as effects from '../../../../effects/index'
-import { to } from '../../../../src'
-import { Unit } from '../../../../src/components'
 import { PageElement } from '../../../../src/page'
+import { DEFAULT_COLOR_SET } from '../../../../src/store/defaults'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
-import { setSetting } from '../../../../src/store/setSetting'
 import { maybeAddEffectToggles } from '../../../../src/ui/maybeAddEffectToggles'
 import { buildMockElement } from '../../../unit/helpers/buildMockElement'
 
-xdescribe('effect toggles', () => {
+describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		maybeAddEffectToggles(Object.values(effects))
-		setSetting('tileSize', to.Unit(50))
-		const effectToggle: PageElement = document.querySelector('input.houndsmorphosis') as HTMLElement || buildMockElement()
+		const effectToggle: PageElement = document.querySelector('input.gongram') as HTMLElement || buildMockElement()
+
+		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(DEFAULT_COLOR_SET)
+
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
+		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(GONGRAM_COLOR_SET)
 
-		const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
-
-		expect(tileSize).toBe(to.Unit(0))
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
-		expect(tileSize).toBe(to.Unit(50))
+		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(DEFAULT_COLOR_SET)
 	})
 })

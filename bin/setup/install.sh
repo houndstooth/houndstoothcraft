@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
-
 if [[ $OSTYPE == darwin* ]] ; then
     if hash brew 2>/dev/null; then
         printf "${Blue}Homebrew found.\n${NC}"
@@ -39,8 +37,30 @@ if [[ $OSTYPE == darwin* ]] ; then
         brew cask install google-chrome
     fi
 else
-    if [[ -e /c/Program\ Files/JetBrains/WebStorm\ 2017.2.4/bin/webstorm ]] ; then printf "Missing Webstorm.\n"; fi
-    if hash cf 2>/dev/null; then printf "Missing Cloud Foundry CLI and Autopilot plugin.\n"; fi
-    if [[ -e /c/Program\ Files/Git/git-bash.exe ]] ; then printf "Missing Git BASH.\n"; fi
-    if [[ -e /c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe ]] ; then printf "Missing Google Chrome.\n"; fi
+    type /c/Program\ Files/JetBrains/WebStorm\ 2017.2.4/bin/webstorm > /dev/null 2>&1
+    if [[ $? -ne 0 ]] ; then
+         printf "${Yellow}Missing Webstorm.${NC}\n"
+    else
+         printf "${Blue}Webstorm found.\n${NC}"
+    fi
+
+    if hash cf > /dev/null 2>&1 ; then
+         printf "${Blue}Cloud Foundry CLI and Autopilot plugin found.${NC}\n"
+    else
+         printf "${Yellow}Missing Cloud Foundry CLI and Autopilot plugin.${NC}\n"
+    fi
+
+    type /c/Program\ Files/Git/git-bash.exe > /dev/null 2>&1
+    if [[ $? -ne 0 ]] ; then
+         printf "${Yellow}Missing Git Bash.${NC}\n"
+    else
+         printf "${Blue}Git Bash found.\n${NC}"
+    fi
+
+    type /c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe > /dev/null 2>&1
+    if [[ $? -ne 0 ]] ; then
+         printf "${Yellow}Missing Google Chrome.${NC}\n"
+    else
+         printf "${Blue}Google Chrome found.\n${NC}"
+    fi
 fi

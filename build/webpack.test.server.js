@@ -1,8 +1,7 @@
 const webpack = require('webpack')
 const webpackTestConfig = require('./webpack.test')
 
-module.exports = {
-	...webpackTestConfig,
+module.exports = Object.assign({}, webpackTestConfig, {
 	entry: './test/integration/autoRefresh/index.ts',
 	watch: true,
 	plugins: [
@@ -13,4 +12,4 @@ module.exports = {
 			'CLOSE_TABS_WATCHER_PORT',
 		])
 	],
-}
+})

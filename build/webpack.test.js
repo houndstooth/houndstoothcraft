@@ -1,7 +1,6 @@
 const webpackCommonConfig = require('./webpack.common')
 
-module.exports = {
-	...webpackCommonConfig,
+module.exports = Object.assign({}, webpackCommonConfig, {
 	module: {
 		loaders: [
 			{
@@ -14,4 +13,4 @@ module.exports = {
 		],
 	},
 	output: { path: __dirname + '/../test/integration/dist', filename: 'bundle.js' },
-}
+})

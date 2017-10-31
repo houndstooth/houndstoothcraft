@@ -1,6 +1,5 @@
 const webpackTestConfig = require('./webpack.test')
 
-module.exports = {
-	...webpackTestConfig,
+module.exports = Object.assign({}, webpackTestConfig, {
 	entry: './test/integration/index.ts',
-}
+})

@@ -1,3 +1,4 @@
+import { TileOriginAndSize } from '../../components/types'
 import * as from from '../../utilities/from'
 import * as to from '../../utilities/to'
 import { Coordinate, Point, PointParams, PointWithKnownPosition } from '../types'
@@ -43,21 +44,21 @@ const pointAlongBottomEdge: Point =
 	}
 
 const pointInTopRightCorner: PointWithKnownPosition =
-	({ tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate =>
+	({ tileOrigin: [ x, y ], tileSize }: TileOriginAndSize): Coordinate =>
 		to.Coordinate([
 			from.Unit(x) + from.Unit(tileSize),
 			from.Unit(y),
 		])
 
 const pointInBottomRightCorner: PointWithKnownPosition =
-	({ tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate =>
+	({ tileOrigin: [ x, y ], tileSize }: TileOriginAndSize): Coordinate =>
 		to.Coordinate([
 			from.Unit(x) + from.Unit(tileSize),
 			from.Unit(y) + from.Unit(tileSize),
 		])
 
 const pointInBottomLeftCorner: PointWithKnownPosition =
-	({ tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate =>
+	({ tileOrigin: [ x, y ], tileSize }: TileOriginAndSize): Coordinate =>
 		to.Coordinate([
 			from.Unit(x),
 			from.Unit(y) + from.Unit(tileSize),

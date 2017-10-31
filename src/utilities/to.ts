@@ -1,4 +1,4 @@
-// tslint:disable:variable-name member-ordering no-any max-file-line-count
+// tslint:disable:variable-name member-ordering no-any no-unsafe-any max-file-line-count
 
 import { Frame } from '../animation'
 import {
@@ -77,7 +77,7 @@ const Dimensions: (dimensions: Array<number | Px>) => Dimensions =
 const SettingsFunctionObjects: (settingsFunctionObjects: CouldBeSettingsFunctionObject) => SettingsFunctionObject =
 	(settingsFunctionObjects: CouldBeSettingsFunctionObject): SettingsFunctionObject =>
 		// tslint:disable-next-line:max-line-length
-		settingsFunctionObjects.map(({ settingName, settingsFunction, settingsPath }: SettingsFunctionObject): SettingsFunctionObject => ({
+		settingsFunctionObjects.map(({ settingName, settingsFunction, settingsPath }: any): SettingsFunctionObject => ({
 			settingName: SettingsStep(settingName),
 			settingsFunction,
 			settingsPath: SettingsPath(settingsPath),

@@ -43,7 +43,7 @@ interface FullSettingsPath {
 	readonly settingsPath: SettingsPath,
 }
 
-type FunctionsOf<T> = { [P in keyof T]: (previous?: T[P]) => T[P] }
+type FunctionsOf<T> = { [P in keyof T]: (previous: T[P]) => T[P] }
 
 interface Layer extends Number {
 	_LayerBrand: any,

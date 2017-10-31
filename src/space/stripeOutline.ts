@@ -2,16 +2,21 @@ import * as from from '../utilities/from'
 import { firstPoint } from './stripe/firstPoint'
 import { lastPoints } from './stripe/lastPoints'
 import { middlePoints } from './stripe/middlePoints'
-import { GetStripeOutline, GetStripeOutlineParams, Outline, OutlineOptions } from './types'
+import { GetOutlineParams, GetStripeOutline, Outline, OutlineOptions } from './types'
 
 const stripeOutline: GetStripeOutline =
-	({ tileOrigin, tileSize, outlineOptions }: GetStripeOutlineParams): Outline => {
+	({ tileOrigin, tileSize, outlineOptions }: GetOutlineParams): Outline => {
+		const outline: Outline = []
+
+		if (!outlineOptions) {
+			return outline
+		}
+
 		const { stripeStart, stripeEnd }: OutlineOptions = outlineOptions
 
 		const stripeStartsInTopLeftHalf: boolean = from.StripePosition(stripeStart) < 1
 		const stripeEndsInBottomRightHalf: boolean = from.StripePosition(stripeEnd) > 1
 
-		const outline: Outline = []
 		firstPoint({ outline, stripeStartsInTopLeftHalf, stripeStart, tileOrigin, tileSize })
 		middlePoints({
 			outline,

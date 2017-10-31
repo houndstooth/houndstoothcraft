@@ -10,11 +10,7 @@ interface GetOutlineParams extends TileOriginAndSize {
 	readonly outlineOptions?: OutlineOptions,
 }
 
-type GetStripeOutline = (_: GetStripeOutlineParams) => Coordinate[]
-
-interface GetStripeOutlineParams extends TileOriginAndSize {
-	readonly outlineOptions: OutlineOptions,
-}
+type GetStripeOutline = (_: GetOutlineParams) => Coordinate[]
 
 type Outline = Coordinate[]
 
@@ -63,7 +59,6 @@ export {
 	Coordinate,
 	Outline,
 	GetStripeOutline,
-	GetStripeOutlineParams,
 	Point,
 	PointParams,
 	PointsParams,

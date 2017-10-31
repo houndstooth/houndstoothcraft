@@ -5,7 +5,6 @@ import { prepareFunctionObjectsPerSetting } from '../../../../src/execute/prepar
 import { deepClone } from '../../../../src/utilities/codeUtilities'
 import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
-import Spy = jasmine.Spy
 
 describe('#prepareFunctionObjectsPerSetting', () => {
 	let actualFunctionObjects: SettingsFunctionObject[]
@@ -13,9 +12,8 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 	let settingsFunctionsSourcePattern: any
 	let settingsFunction: any
 	let secondSettingsFunction: any
-	let errorSpy: Spy
 	beforeEach(() => {
-		errorSpy = spyOn(console, 'error')
+		spyOn(console, 'error')
 		settingsFunction = (p: number): number => p * 2
 		secondSettingsFunction = (p: number): number => p - 1
 		settingsFunctionsSourcePattern = {

@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { Color } from '../render'
-import { deeperPath, getSettingOrCreatePath, SettingsStep } from '../store'
+import { deeperPath, getSettingOrCreatePath } from '../store'
 import { isDefined } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
 import { maybeWarnAboutConflicts } from './maybeWarnAboutConflicts'
@@ -16,7 +16,7 @@ const composePatterns: (_: ComposePatternsParams) => void =
 			warnAboutConflicts = false,
 		}: ComposePatternsParams = params
 
-		Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]: [ SettingsStep, any ]) => {
+		Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]: [ string, any ]) => {
 			if (shouldRecurse({ overridingSetting })) {
 				composePatterns({
 					patternToBeMergedOnto,

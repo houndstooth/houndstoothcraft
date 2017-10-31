@@ -6,7 +6,7 @@ import { composePatterns } from './composePatterns'
 import { ComposeMainHoundstooth, ComposePatternParams } from './types'
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
-	(params: ComposeMainHoundstooth): void => {
+	(params?: ComposeMainHoundstooth): void => {
 		const {
 			houndstoothEffects = [],
 			houndstoothOverrides = {},

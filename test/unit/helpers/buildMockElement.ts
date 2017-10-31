@@ -3,7 +3,7 @@ import { MockElement } from '../../helpers/types'
 import { BuildMockElementParams } from './types'
 
 const buildMockElement: (_?: BuildMockElementParams) => MockElement =
-	(params: BuildMockElementParams): MockElement => {
+	(params?: BuildMockElementParams): MockElement => {
 		const {
 			attributeObject = {},
 			children = [],

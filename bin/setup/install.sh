@@ -39,7 +39,7 @@ if [[ $OSTYPE == darwin* ]] ; then
         brew cask install google-chrome
     fi
 else
-    if [[ -e /c/Program\ Files\ \(x86\)/Sublime\ Text\ 3/subl.exe ]] ; then printf "Missing Sublime.\n"; fi
+    if [[ -e /c/Program\ Files/JetBrains/WebStorm\ 2017.2.4/bin/webstorm ]] ; then printf "Missing Webstorm.\n"; fi
     if hash cf 2>/dev/null; then printf "Missing Cloud Foundry CLI and Autopilot plugin.\n"; fi
     if [[ -e /c/Program\ Files/Git/git-bash.exe ]] ; then printf "Missing Git BASH.\n"; fi
     if [[ -e /c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe ]] ; then printf "Missing Google Chrome.\n"; fi

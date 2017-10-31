@@ -2,12 +2,13 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "lib": [ "es2017", "dom" ],
     "noImplicitReturns": true,
     "strict": true,
     "pretty": true,
     "sourceMap": true,
-    "types": [ "jasmine" ]
+    "types": [ "jasmine" ],
+    "typeRoots": [ "./node_modules/@types" ]
   }
 }

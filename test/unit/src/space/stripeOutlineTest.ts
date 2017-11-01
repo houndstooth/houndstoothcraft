@@ -9,6 +9,13 @@ describe('stripe outline', () => {
 	let stripeStart: StripePosition
 	let stripeEnd: StripePosition
 
+	describe('with no outline options (shouldnt happen but currently struggling with params groupings', () => {
+		it('returns an empty outline', () => {
+			const result: Outline = stripeOutline({ tileOrigin, tileSize })
+			expect(result).toEqual(to.Outline([]))
+		})
+	})
+
 	describe('a stripe that starts at the top left corner', () => {
 		beforeEach(() => stripeStart = to.StripePosition(0))
 

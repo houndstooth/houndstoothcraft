@@ -2,6 +2,7 @@
 
 import { InputElement, LabelElement } from '../page'
 import { Effect } from '../store'
+import { DEFAULT_FONT_SIZE } from '../store/defaults'
 import { document } from '../utilities/windowWrapper'
 import { createCheckbox } from './createCheckbox'
 
@@ -12,7 +13,7 @@ const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
 		label.style.cursor = 'pointer'
 		label.style.padding = '5px'
 		label.style.fontFamily = 'Gilda Display'
-		label.style.fontSize = 12
+		label.style.fontSize = DEFAULT_FONT_SIZE
 
 		const checkbox: InputElement = createCheckbox({ houndstoothEffect })
 		label.appendChild(checkbox)

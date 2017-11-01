@@ -1,8 +1,8 @@
-import { createLogo } from './createLogo'
-import { getFont } from './getFont'
-import { maybeAddEffectToggles } from '../ui/maybeAddEffectToggles'
 import { Effect } from '../store/types'
+import { maybeAddEffectToggles } from '../ui/maybeAddEffectToggles'
+import { createLogo } from './createLogo'
 import { createWarningsContainer } from './createWarningsContainer'
+import { getFont } from './getFont'
 
 const createPage: (effects: Effect[]) => void =
 	(effects: Effect[]): void => {

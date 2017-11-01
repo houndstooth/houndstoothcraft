@@ -4,8 +4,6 @@ set -e
 
 ./bin/setup/profile.sh
 
-./bin/shared/cmd_w_msgs.sh "npm i -g npm" "upgrading npm" "npm upgrade failed." "npm at latest."
-
 ./bin/setup/install.sh
 
 ./bin/shared/cmd_w_msgs.sh "npm i" "updating dependencies" "npm update failed." "All dependencies at latest."

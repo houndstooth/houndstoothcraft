@@ -2,7 +2,6 @@
 
 set -e
 
-./bin/shared/cmd_w_msgs.sh "npm i -g npm" "upgrading npm" "npm upgrade failed." "npm at latest."
 ./bin/shared/cmd_w_msgs.sh "npm update" "updating dependencies" "npm update failed." "All dependencies at latest."
 
 ./bin/shared/cmd_w_msgs.sh "./bin/ship/lint.sh" "linting" "Linting errors detected." "Lint-free."

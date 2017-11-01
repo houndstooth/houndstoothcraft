@@ -1,10 +1,11 @@
 const karmaCommonConfig = require('./karma.common')
 
 module.exports = config => {
-	config.set(Object.assign({}, karmaCommonConfig, {
+	config.set({
+		...karmaCommonConfig,
 		browserNoActivityTimeout: 100000,
 		reportSlowerThan: 300,
 		browsers: [ 'ChromeHeadless' ],
 		singleRun: true,
-	}))
+	})
 }

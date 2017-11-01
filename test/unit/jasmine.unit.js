@@ -1,4 +1,3 @@
-require('core-js')
 const jasmineCommonConfig = require('../jasmine.common.js')
 
 module.exports = Object.assign({}, jasmineCommonConfig, {

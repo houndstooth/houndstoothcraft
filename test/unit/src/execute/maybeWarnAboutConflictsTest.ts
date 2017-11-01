@@ -84,7 +84,7 @@ describe('warning about conflicts', () => {
 		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `(a) => a` was overridden by `(b) => b`'
+		const expectedWarning: string = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` was overridden by `function (b) { return b; }`'
 		// tslint:disable-next-line:no-unsafe-any
 		expect(console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(ui.warn).toHaveBeenCalledWith(expectedWarning)

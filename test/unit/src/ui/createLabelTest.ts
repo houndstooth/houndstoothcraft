@@ -37,15 +37,6 @@ describe('create label', () => {
 		}
 	})
 
-	it('makes it so the labels all appear on separate lines', () => {
-		if (!returnedLabel.style) {
-			fail()
-		}
-		else {
-			expect(returnedLabel.style.display).toBe('block')
-		}
-	})
-
 	it('adds one checkbox to the label', () => {
 		expect(children[ 0 ]).toBe(checkbox as PageElement)
 	})

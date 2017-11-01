@@ -1,8 +1,8 @@
 import { PageElement } from '../../../src/page'
-import { MockBody } from '../../helpers/types'
+import { MockElement } from '../../helpers/types'
 
-const buildMockBody: (_?: { children?: PageElement[] }) => MockBody =
-	({ children = [] }: { children?: PageElement[] } = {}): MockBody => ({
+const buildMockBody: (_?: { children?: PageElement[] }) => MockElement =
+	({ children = [] }: { children?: PageElement[] } = {}): MockElement => ({
 		appendChild: (child: PageElement): number => children.push(child),
 		style: {},
 	})

@@ -1,5 +1,6 @@
 import * as effects from './effects'
-import { executeSelectedHoundstoothEffects, maybeAddEffectToggles } from './src'
+import { executeSelectedHoundstoothEffects } from './src'
+import { createPage } from './src/page/createPage'
 
-maybeAddEffectToggles(Object.values(effects))
+createPage(Object.values(effects))
 executeSelectedHoundstoothEffects()

@@ -10,7 +10,9 @@ const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
 		const label: LabelElement = document.createElement('label')
 
 		label.style.cursor = 'pointer'
-		label.style.display = 'block'
+		label.style.padding = '5px'
+		label.style.fontFamily = 'Gilda Display'
+		label.style.fontSize = 12
 
 		const checkbox: InputElement = createCheckbox({ houndstoothEffect })
 		label.appendChild(checkbox)

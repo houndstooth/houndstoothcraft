@@ -10,6 +10,8 @@ const createEffectTogglesContainer: () => PageElement =
 		const effectTogglesContainer: PageElement = document.createElement('div')
 		effectTogglesContainer.classList.add('effect-toggles-container')
 		effectTogglesContainer.style.padding = '20px'
+		effectTogglesContainer.style.display = 'flex'
+		effectTogglesContainer.style.justifyContent = 'center'
 
 		const canvasContainer: PageElement = document.querySelector('.canvas-container') || createCanvasContainer()
 		insertElementRightAfter(effectTogglesContainer, canvasContainer)

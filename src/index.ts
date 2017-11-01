@@ -24,7 +24,7 @@ import {
 } from './components'
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
-import { Context, Px } from './page'
+import { Context, createPage, Px } from './page'
 import { Color } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinate } from './space'
 import { state } from './state'
@@ -44,6 +44,7 @@ export {
 	maybeAddEffectToggles,
 	state,
 	constants,
+	createPage,
 	Effect,
 	Color,
 	Address,

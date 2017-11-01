@@ -21,13 +21,7 @@ type InputElement = HTMLInputElement | {
 	},
 }
 
-type LabelElement = HTMLLabelElement | {
-	appendChild?: any,
-	style: {
-		cursor?: any,
-		display?: any,
-	},
-} | MockElement
+type LabelElement = HTMLLabelElement | MockElement
 
 type PageElement = HTMLElement | MockElement
 

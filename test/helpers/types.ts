@@ -7,21 +7,9 @@ interface BuildMockContext {
 	readonly toBlobSpy?: Spy,
 }
 
-interface MockBody extends MockElement {
-	appendChild?: any,
-}
-
-interface MockCanvas {
-	classList?: any,
+interface MockCanvas extends MockElement {
 	getContext?: any,
 	height?: any,
-	style: {
-		display?: any,
-		left?: any,
-		position?: any,
-		top?: any,
-		zIndex?: any,
-	},
 	width?: any,
 }
 
@@ -79,12 +67,17 @@ interface MockElement {
 	style: {
 		cursor?: any,
 		display?: any,
+		fontFamily?: any,
+		fontSize?: any,
 		height?: any,
+		justifyContent?: any,
 		left?: any,
+		margin?: any,
 		padding?: any,
 		position?: any,
 		top?: any,
 		width?: any,
+		zIndex?: any,
 	},
 }
 
@@ -95,5 +88,4 @@ export {
 	MockContextCall,
 	MockContextMethod,
 	MockCanvas,
-	MockBody,
 }

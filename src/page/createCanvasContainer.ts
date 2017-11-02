@@ -13,6 +13,7 @@ const createCanvasContainer: () => PageElement =
 		const canvasContainer: HTMLElement = document.createElement('div')
 		canvasContainer.classList.add('canvas-container')
 		canvasContainer.style.margin = 'auto'
+		canvasContainer.style.backgroundColor = '#fff'
 
 		scaleElement({ element: canvasContainer, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 

@@ -1,4 +1,4 @@
-// tslint:disable:no-any no-unsafe-any no-magic-numbers max-line-length
+// tslint:disable:no-any no-unsafe-any no-magic-numbers max-line-length max-file-line-count
 import { Unit } from '../components/types'
 import { Path, Pixel } from '../render'
 import { Coordinate, Outline } from '../space'
@@ -16,12 +16,13 @@ const createLogo: NullarySideEffector =
 		const logo: SVGSVGElement = document.createElementNS(xmlns, 'svg')
 		const width: Px = to.Px(from.Unit(to.Unit(46)) * LOGO_SCALE)
 		const height: Px = to.Px(from.Unit(to.Unit(10)) * LOGO_SCALE)
+		logo.classList.add('logo')
 		logo.style.width = width.toString()
 		logo.style.height = height.toString()
 		logo.style.fill = '#000'
 		logo.style.margin = 'auto'
 		logo.style.display = 'block'
-		logo.style.padding = '5px'
+		logo.style.padding = '10px'
 		document.body.appendChild(logo)
 
 		const hOutline: Outline = to.Outline([ [ 0, 3 ], [ 0, 7 ], [ 1, 6 ], [ 1, 4 ], [ 2, 5 ], [ 3, 4 ], [ 3, 6 ], [ 4, 7 ], [ 4, 3 ], [ 3, 2 ], [ 3, 0 ], [ 2, 1 ], [ 1, 0 ], [ 1, 2 ] ])

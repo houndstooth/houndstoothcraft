@@ -1,4 +1,7 @@
+// tslint:disable:no-unsafe-any
+
 import { Effect } from '../store/types'
+import { document } from '../utilities/windowWrapper'
 import { createAnimationControls } from './createAnimationControls'
 import { createLogo } from './createLogo'
 import { createWarningsContainer } from './createWarningsContainer'
@@ -7,11 +10,14 @@ import { maybeCreateEffectToggles } from './maybeCreateEffectToggles'
 
 const createPage: (effects: Effect[]) => void =
 	(effects: Effect[]): void => {
-		createLogo()
-		getFont()
-		maybeCreateEffectToggles(effects)
-		createWarningsContainer()
-		createAnimationControls()
+		if (!document.querySelector('.logo')) {
+			createLogo()
+			getFont()
+			maybeCreateEffectToggles(effects)
+			createWarningsContainer()
+			createAnimationControls()
+			document.body.style.backgroundColor = '#eee'
+		}
 	}
 
 export { createPage }

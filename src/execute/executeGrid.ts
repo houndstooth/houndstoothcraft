@@ -1,4 +1,4 @@
-import { mixDownContexts } from '../canvas'
+import { mixDownContexts } from '../render'
 import { state } from '../state'
 import { getFromBaseOrDefaultPattern, LayerSettings } from '../store'
 import * as from from '../utilities/from'

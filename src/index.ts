@@ -24,12 +24,11 @@ import {
 } from './components'
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
-import { Context, createPage, Px } from './page'
+import { Context, createPage, maybeCreateEffectToggles, Px } from './page'
 import { Color } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinate } from './space'
 import { state } from './state'
 import { defaults, Effect, getFromBaseOrDefaultPattern, StripeCountContinuumSettings } from './store'
-import { maybeAddEffectToggles } from './ui'
 import * as from from './utilities/from'
 import * as to from './utilities/to'
 
@@ -41,7 +40,7 @@ export {
 	solid,
 	rotateCoordinate,
 	defaults,
-	maybeAddEffectToggles,
+	maybeCreateEffectToggles,
 	state,
 	constants,
 	createPage,

@@ -1,5 +1,5 @@
-import { getCurrentContext } from '../canvas'
 import { Context } from '../page'
+import { getCurrentContext } from '../render'
 import { parseColor } from './parseColor'
 import { Color } from './types'
 

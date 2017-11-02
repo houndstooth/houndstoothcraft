@@ -1,5 +1,5 @@
-import { getCurrentContext } from '../../../../src/canvas/getCurrentContext'
 import { Context } from '../../../../src/page'
+import { getCurrentContext } from '../../../../src/render/getCurrentContext'
 import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 

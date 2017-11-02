@@ -1,5 +1,5 @@
-import { clear } from '../canvas'
 import { callFunctionsPerSetting, executeGrid } from '../execute'
+import { clear } from '../render'
 import { state } from '../state'
 import { AnimationSettings } from '../store'
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'

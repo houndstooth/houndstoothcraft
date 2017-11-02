@@ -1,8 +1,8 @@
 // tslint:disable:no-unsafe-any
 
-import { clear } from '../canvas'
 import { createWarningsContainer } from '../page'
 import { PageElement } from '../page/types'
+import { clear } from '../render'
 import { state } from '../state'
 import { resetState } from '../store'
 import { Effect } from '../store/types'

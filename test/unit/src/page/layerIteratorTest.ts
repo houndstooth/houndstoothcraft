@@ -1,5 +1,5 @@
 import { to } from '../../../../src'
-import { layerIterator } from '../../../../src/canvas/layerIterator'
+import { layerIterator } from '../../../../src/page/layerIterator'
 import { setSetting } from '../../../../src/store/setSetting'
 
 describe('layer iterator', () => {

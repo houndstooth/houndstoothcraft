@@ -2,13 +2,13 @@
 
 import { Effect } from '../store'
 import { document } from '../utilities/windowWrapper'
-import { addEffectToggle } from './addEffectToggle'
+import { createEffectToggle } from './createEffectToggle'
 
-const maybeAddEffectToggles: (effects: Effect[]) => void =
+const maybeCreateEffectToggles: (effects: Effect[]) => void =
 	(effects: Effect[]): void => {
 		if (!document.querySelector('.effect-toggles-container')) {
-			effects.forEach(addEffectToggle)
+			effects.forEach(createEffectToggle)
 		}
 	}
 
-export { maybeAddEffectToggles }
+export { maybeCreateEffectToggles }

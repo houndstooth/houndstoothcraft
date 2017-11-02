@@ -58,6 +58,7 @@ interface MockElement {
 	appendChild?: any,
 	classList?: any,
 	click?: any,
+	disabled?: any,
 	download?: any,
 	href?: any,
 	innerHTML?: any,
@@ -67,6 +68,7 @@ interface MockElement {
 	style: {
 		cursor?: any,
 		display?: any,
+		fill?: any,
 		fontFamily?: any,
 		fontSize?: any,
 		height?: any,

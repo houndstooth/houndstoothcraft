@@ -1,11 +1,12 @@
 // tslint:disable:no-unsafe-any
 
-import { createEffectTogglesContainer, LabelElement, PageElement } from '../page'
 import { Effect } from '../store'
 import { document } from '../utilities/windowWrapper'
+import { createEffectTogglesContainer } from './createEffectTogglesContainer'
 import { createLabel } from './createLabel'
+import { LabelElement, PageElement } from './types'
 
-const addEffectToggle: (houndstoothEffect: Effect) => void =
+const createEffectToggle: (houndstoothEffect: Effect) => void =
 	(houndstoothEffect: Effect): void => {
 		const label: LabelElement = createLabel({ houndstoothEffect })
 
@@ -14,4 +15,4 @@ const addEffectToggle: (houndstoothEffect: Effect) => void =
 		effectTogglesContainer.appendChild(label)
 	}
 
-export { addEffectToggle }
+export { createEffectToggle }

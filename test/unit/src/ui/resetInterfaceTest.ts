@@ -1,5 +1,5 @@
-import * as canvas from '../../../../src/canvas'
 import * as page from '../../../../src/page'
+import * as render from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import { setSetting } from '../../../../src/store/setSetting'
@@ -24,11 +24,11 @@ describe('reset interface', () => {
 	})
 
 	it('clears canvas', () => {
-		spyOn(canvas, 'clear')
+		spyOn(render, 'clear')
 
 		resetInterface()
 
-		expect(canvas.clear).toHaveBeenCalled()
+		expect(render.clear).toHaveBeenCalled()
 	})
 
 	it('clears any active animation', () => {

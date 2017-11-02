@@ -1,4 +1,4 @@
-import { mixDownContexts } from '../../../../src/canvas/mixDownContexts'
+import { mixDownContexts } from '../../../../src/render/mixDownContexts'
 import { state } from '../../../../src/state'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo

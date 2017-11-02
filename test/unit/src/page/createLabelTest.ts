@@ -1,8 +1,8 @@
 import { InputElement, PageElement } from '../../../../src/page'
+import * as createCheckbox from '../../../../src/page/createCheckbox'
+import { createLabel } from '../../../../src/page/createLabel'
 import { LabelElement } from '../../../../src/page/types'
 import { Effect } from '../../../../src/store/types'
-import * as createCheckbox from '../../../../src/ui/createCheckbox'
-import { createLabel } from '../../../../src/ui/createLabel'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 

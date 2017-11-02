@@ -1,9 +1,9 @@
 // tslint:disable:no-unsafe-any
 
-import { InputElement } from '../page'
 import { Effect } from '../store'
+import { buildEffectToggleClickHandler } from '../ui/buildEffectToggleClickHandler'
 import { document } from '../utilities/windowWrapper'
-import { buildEffectToggleClickHandler } from './buildEffectToggleClickHandler'
+import { InputElement } from './types'
 
 const createCheckbox: (_: { houndstoothEffect: Effect }) => InputElement =
 	({ houndstoothEffect }: { houndstoothEffect: Effect }): InputElement => {

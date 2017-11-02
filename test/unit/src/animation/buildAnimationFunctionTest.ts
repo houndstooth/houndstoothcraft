@@ -1,13 +1,13 @@
 import { buildAnimationFunction } from '../../../../src/animation/buildAnimationFunction'
 import * as exportFrame from '../../../../src/animation/exportFrame'
 import { Frame } from '../../../../src/animation/types'
-import * as canvas from '../../../../src/canvas'
 import { Unit } from '../../../../src/components/types'
 import * as execute from '../../../../src/execute'
 import Spy = jasmine.Spy
 import * as executeLayer from '../../../../src/execute/executeLayer'
 import * as gridAndMaybeLogging from '../../../../src/execute/gridAndMaybeLogging'
 import { SettingsFunctionObject } from '../../../../src/execute/types'
+import * as render from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
 import { setSetting } from '../../../../src/store/setSetting'
@@ -32,7 +32,7 @@ describe('build animation function returns an animation function', () => {
 	beforeEach(() => {
 		executeGridSpy = spyOn(execute, 'executeGrid')
 		callFunctionsPerSettingSpy = spyOn(execute, 'callFunctionsPerSetting')
-		spyOn(canvas, 'clear')
+		spyOn(render, 'clear')
 		spyOn(exportFrame, 'exportFrame')
 
 		animationFunction = buildAnimationFunction({
@@ -86,7 +86,7 @@ describe('build animation function returns an animation function', () => {
 		it('clears the canvas by default', () => {
 			animationFunction()
 
-			expect(canvas.clear).toHaveBeenCalled()
+			expect(render.clear).toHaveBeenCalled()
 		})
 
 		it('does not clear the canvas if refreshing the canvas is off', () => {
@@ -94,7 +94,7 @@ describe('build animation function returns an animation function', () => {
 
 			animationFunction()
 
-			expect(canvas.clear).not.toHaveBeenCalled()
+			expect(render.clear).not.toHaveBeenCalled()
 		})
 	})
 

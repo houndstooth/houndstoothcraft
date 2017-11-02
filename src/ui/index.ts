@@ -1,7 +1,9 @@
-import { maybeAddEffectToggles } from './maybeAddEffectToggles'
+import { pauseClickHandler, playClickHandler, rewindClickHandler } from './animationControlHandlers'
 import { warn } from './warn'
 
 export {
-	maybeAddEffectToggles,
 	warn,
+	pauseClickHandler,
+	playClickHandler,
+	rewindClickHandler,
 }

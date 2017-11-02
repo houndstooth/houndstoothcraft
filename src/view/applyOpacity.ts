@@ -1,5 +1,5 @@
-import { getCurrentContext } from '../canvas'
 import { Context } from '../page'
+import { getCurrentContext } from '../render'
 import { getFromBaseOrDefaultPattern } from '../store'
 import { NullarySideEffector } from '../utilities/types'
 

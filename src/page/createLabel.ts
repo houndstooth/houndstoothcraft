@@ -1,10 +1,10 @@
 // tslint:disable:no-unsafe-any
 
-import { InputElement, LabelElement } from '../page'
 import { Effect } from '../store'
 import { DEFAULT_FONT_SIZE } from '../store/defaults'
 import { document } from '../utilities/windowWrapper'
 import { createCheckbox } from './createCheckbox'
+import { InputElement, LabelElement } from './types'
 
 const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
 	({ houndstoothEffect }: { houndstoothEffect: Effect }): LabelElement => {

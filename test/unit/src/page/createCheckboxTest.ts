@@ -1,7 +1,7 @@
 import { InputElement } from '../../../../src/page'
+import { createCheckbox } from '../../../../src/page/createCheckbox'
 import { Effect } from '../../../../src/store/types'
 import * as buildEffectToggleClickHandler from '../../../../src/ui/buildEffectToggleClickHandler'
-import { createCheckbox } from '../../../../src/ui/createCheckbox'
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import * as window from '../../../../src/utilities/windowWrapper'
 import { noop } from '../../../helpers/noop'

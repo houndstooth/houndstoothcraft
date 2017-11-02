@@ -1,4 +1,4 @@
-import { clear } from '../../../../src/canvas/clear'
+import { clear } from '../../../../src/render/clear'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'

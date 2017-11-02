@@ -3,7 +3,7 @@ import Spy = jasmine.Spy
 import * as createCanvasContainer from '../../../../src/page/createCanvasContainer'
 import { createEffectTogglesContainer } from '../../../../src/page/createEffectTogglesContainer'
 import * as insertElementRightAfter from '../../../../src/page/insertElementRightAfter'
-import * as window from '../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('create effect toggles container', () => {
@@ -15,10 +15,10 @@ describe('create effect toggles container', () => {
 	const effectTogglesContainerClassList: string[] = []
 	beforeEach(() => {
 		effectTogglesContainer = buildMockElement({ classList: effectTogglesContainerClassList })
-		spyOn(window.document, 'createElement').and.returnValue(effectTogglesContainer)
+		spyOn(windowWrapper.document, 'createElement').and.returnValue(effectTogglesContainer)
 
 		canvasContainer = buildMockElement()
-		querySelectorSpy = spyOn(window.document, 'querySelector').and.returnValue(canvasContainer)
+		querySelectorSpy = spyOn(windowWrapper.document, 'querySelector').and.returnValue(canvasContainer)
 
 		insertElementRightAfterSpy = spyOn(insertElementRightAfter, 'insertElementRightAfter')
 

@@ -1,9 +1,9 @@
 import Spy = jasmine.Spy
-import * as canvas from '../../../../src/canvas'
 import { executeGrid } from '../../../../src/execute/executeGrid'
 import * as executeLayer from '../../../../src/execute/executeLayer'
 import * as gridAndMaybeLogging from '../../../../src/execute/gridAndMaybeLogging'
 import { Layer, SettingsFunctionObject } from '../../../../src/execute/types'
+import * as render from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
@@ -67,7 +67,7 @@ describe('execute grid', () => {
 	describe('mixing down', () => {
 		beforeEach(() => {
 			spyOn(executeLayer, 'executeLayer')
-			spyOn(canvas, 'mixDownContexts')
+			spyOn(render, 'mixDownContexts')
 		})
 
 		it('can mix down all contexts to one', () => {
@@ -75,13 +75,13 @@ describe('execute grid', () => {
 
 			executeGrid({ layerFunctionObjects })
 
-			expect(canvas.mixDownContexts).toHaveBeenCalled()
+			expect(render.mixDownContexts).toHaveBeenCalled()
 		})
 
 		it('does not bother if not asked', () => {
 			executeGrid({ layerFunctionObjects })
 
-			expect(canvas.mixDownContexts).not.toHaveBeenCalled()
+			expect(render.mixDownContexts).not.toHaveBeenCalled()
 		})
 	})
 })

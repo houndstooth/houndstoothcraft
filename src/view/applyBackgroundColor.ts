@@ -1,8 +1,7 @@
 // tslint:disable:no-unsafe-any
 
-import { getCurrentContext } from '../canvas'
 import { Context, Px } from '../page'
-import { Color, parseColor } from '../render'
+import { Color, getCurrentContext, parseColor } from '../render'
 import { getFromBaseOrDefaultPattern } from '../store'
 import { NullarySideEffector } from '../utilities/types'
 

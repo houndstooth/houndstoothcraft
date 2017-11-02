@@ -3,6 +3,7 @@ import { createEffectTogglesContainer } from './createEffectTogglesContainer'
 import createMixedDownContext from './createMixedDownContext'
 import { createPage } from './createPage'
 import { createWarningsContainer } from './createWarningsContainer'
+import { maybeCreateEffectToggles } from './maybeCreateEffectToggles'
 import { Canvas, Context, DataBlob, Dimensions, InputElement, LabelElement, PageElement, Px } from './types'
 
 export {
@@ -11,6 +12,7 @@ export {
 	createMixedDownContext,
 	createPage,
 	createWarningsContainer,
+	maybeCreateEffectToggles,
 	Canvas,
 	Context,
 	DataBlob,

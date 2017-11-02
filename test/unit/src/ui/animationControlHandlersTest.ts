@@ -9,24 +9,57 @@ import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('animation control handlers', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
+	const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+	const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+	const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+
 	beforeEach(() => {
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'executeSelectedHoundstoothEffects')
+
+		spyOn(windowWrapper.document, 'querySelector').and.callFake((selector: string): PageElement => {
+			switch (selector) {
+				case '.play-button':
+					return playButton
+				case '.pause-button':
+					return pauseButton
+				case '.rewind-button':
+					return rewindButton
+				default:
+					return buildMockElement()
+			}
+		})
 	})
 
 	describe('#playClickHandler', () => {
 		describe('when already animating', () => {
 			beforeEach(() => {
 				state.animating = true
-
-				playClickHandler()
+				playButton.disabled = true
+				pauseButton.disabled = false
 			})
 
 			// tslint:disable-next-line:max-line-length
 			it('stays animating (this situation where you could click the button while it is already animating should never be the case though once disabling works)', () => {
+				playClickHandler()
+
 				expect(state.animating).toBe(true)
 			})
 
+			it('keeps the play button disabled', () => {
+				playClickHandler()
+
+				expect(playButton.disabled).toBe(true)
+			})
+
+			it('keeps the pause button enabled', () => {
+				playClickHandler()
+
+				expect(pauseButton.disabled).toBe(false)
+			})
+
 			it('does not execute the selected houndstooth effects again', () => {
+				playClickHandler()
+
 				expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 			})
 		})
@@ -34,6 +67,8 @@ describe('animation control handlers', () => {
 		describe('when not already animating', () => {
 			beforeEach(() => {
 				state.animating = false
+				playButton.disabled = false
+				pauseButton.disabled = true
 			})
 
 			it('set animating to true', () => {
@@ -43,37 +78,46 @@ describe('animation control handlers', () => {
 			})
 
 			it('disables the play button', () => {
-				const playButton: PageElement = buildMockElement()
-				spyOn(windowWrapper.document, 'querySelector').and.returnValue(playButton)
-				expect(playButton.disabled).toBe(undefined)
-
 				playClickHandler()
 
 				expect(playButton.disabled).toBe(true)
-				expect(playButton.style.fill).toBe('#888')
+			})
+
+			it('enables the pause button', () => {
+				playClickHandler()
+
+				expect(pauseButton.disabled).toBe(false)
 			})
 
 			describe('current frame', () => {
 				describe('when 0', () => {
 					beforeEach(() => {
 						state.currentFrame = to.Frame(0)
-
-						playClickHandler()
 					})
 
 					it('executes the selected houndstooth effects', () => {
+						playClickHandler()
+
 						expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
+					})
+
+					it('enables the rewind button', () => {
+						rewindButton.disabled = true
+
+						playClickHandler()
+
+						expect(rewindButton.disabled).toBe(false)
 					})
 				})
 
 				describe('when not 0 (restarting after a pause)', () => {
 					beforeEach(() => {
 						state.currentFrame = to.Frame(4000)
-
-						playClickHandler()
 					})
 
 					it('does not re-execute the selected houndstooth effects', () => {
+						playClickHandler()
+
 						expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 					})
 				})
@@ -84,10 +128,24 @@ describe('animation control handlers', () => {
 	describe('#pauseClickHandler', () => {
 		it('sets animating to false', () => {
 			state.animating = true
+			playButton.disabled = true
+			pauseButton.disabled = false
 
 			pauseClickHandler()
 
 			expect(state.animating).toBe(false)
+		})
+
+		it('enables the play button', () => {
+			pauseClickHandler()
+
+			expect(playButton.disabled).toBe(false)
+		})
+
+		it('disables the pause button', () => {
+			pauseClickHandler()
+
+			expect(pauseButton.disabled).toBe(true)
 		})
 	})
 
@@ -115,6 +173,26 @@ describe('animation control handlers', () => {
 			rewindClickHandler()
 
 			expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
+		})
+
+		describe('disabling itself', () => {
+			it('does not if animating', () => {
+				rewindButton.disabled = false
+				state.animating = true
+
+				rewindClickHandler()
+
+				expect(rewindButton.disabled).toBe(false)
+			})
+
+			it('does if not animating', () => {
+				rewindButton.disabled = false
+				state.animating = false
+
+				rewindClickHandler()
+
+				expect(rewindButton.disabled).toBe(true)
+			})
 		})
 	})
 })

@@ -1,87 +1,66 @@
-import Spy = jasmine.Spy
+import * as components from '../../../../src/components'
+import { asyncMaybeTile } from '../../../../src/components/asyncMaybeTile'
 import { executeGrid } from '../../../../src/execute/executeGrid'
-import * as executeLayer from '../../../../src/execute/executeLayer'
-import * as gridAndMaybeLogging from '../../../../src/execute/gridAndMaybeLogging'
-import { Layer, SettingsFunctionObject } from '../../../../src/execute/types'
-import * as render from '../../../../src/render'
+import * as gridComplete from '../../../../src/execute/gridComplete'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
-import * as to from '../../../../src/utilities/to'
 
 describe('execute grid', () => {
-	const startLayer: Layer = to.Layer(2)
-	const endLayer: Layer = to.Layer(4)
-	const layerFunctionObjects: SettingsFunctionObject[] = []
+	const gridSize: number = 2
 	beforeEach(() => {
-		setSetting('startLayer', startLayer)
-		setSetting('endLayer', endLayer)
+		// This is false in every other test. Currently only used for testing.
+		// So, we need to turn it off for this test to truly test the subject.
+		state.syncMode = false
+
+		spyOn(gridComplete, 'gridComplete')
+
+		spyOn(components, 'grid')
+		setSetting('gridSettings', { gridSize })
 	})
 
-	// tslint:disable-next-line:max-line-length
-	it('executes a layer for each layer from zero (not the start layer; that\'s just what gets shown, but the processing leading up to it still needs to happen) to the end layer, inclusive', () => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'executeLayer')
+	describe('when animating', () => {
+		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
+			state.animating = true
 
-		executeGrid({ layerFunctionObjects })
+			executeGrid().then().catch()
 
-		expect(executeLayerSpy.calls.all().length).toBe(5)
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			currentLayer: to.Layer(0),
-			endLayer,
-			layerFunctionObjects,
-			startLayer,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			currentLayer: to.Layer(1),
-			endLayer,
-			layerFunctionObjects,
-			startLayer,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			currentLayer: to.Layer(2),
-			endLayer,
-			layerFunctionObjects,
-			startLayer,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			currentLayer: to.Layer(3),
-			endLayer,
-			layerFunctionObjects,
-			startLayer,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			currentLayer: to.Layer(4),
-			endLayer,
-			layerFunctionObjects,
-			startLayer,
+			expect(components.grid).toHaveBeenCalledWith({ gridTile: components.maybeTile })
+			expect(components.grid).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile })
+
+			done()
 		})
 	})
 
-	it('resets the current layer to zero', () => {
-		spyOn(gridAndMaybeLogging, 'gridAndMaybeLogging')
-
-		executeGrid({ layerFunctionObjects })
-
-		expect(state.currentLayer).toBe(to.Layer(0))
-	})
-
-	describe('mixing down', () => {
+	describe('when not animating', () => {
 		beforeEach(() => {
-			spyOn(executeLayer, 'executeLayer')
-			spyOn(render, 'mixDownContexts')
+			state.animating = false
 		})
 
-		it('can mix down all contexts to one', () => {
-			state.mixingDown = true
+		it('resets the count of tiles completed', async (done: DoneFn) => {
+			state.tilesCompleted = 256
 
-			executeGrid({ layerFunctionObjects })
+			executeGrid().then().catch()
 
-			expect(render.mixDownContexts).toHaveBeenCalled()
+			expect(state.tilesCompleted).toBe(0)
+
+			done()
 		})
 
-		it('does not bother if not asked', () => {
-			executeGrid({ layerFunctionObjects })
+		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
+			executeGrid().then().catch()
 
-			expect(render.mixDownContexts).not.toHaveBeenCalled()
+			expect(components.grid).toHaveBeenCalledWith({ gridTile: asyncMaybeTile })
+			expect(components.grid).not.toHaveBeenCalledWith({ gridTile: components.maybeTile })
+
+			done()
+		})
+
+		it('waits for the grid tobe complete', async (done: DoneFn) => {
+			executeGrid().then().catch()
+
+			expect(gridComplete.gridComplete).toHaveBeenCalled()
+
+			done()
 		})
 	})
 })

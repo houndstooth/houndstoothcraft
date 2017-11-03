@@ -1,5 +1,5 @@
 import { Outline } from '../space'
-import { applyView } from '../view'
+import { applyViewForShape } from '../view'
 import { buildFill } from './buildFill'
 import { buildPath } from './buildPath'
 import { fillPath } from './fillPath'
@@ -13,7 +13,7 @@ const fill: (_: { outline: Outline, shapeColor: Color }) => void =
 			return
 		}
 
-		const path: Path = applyView(outline)
+		const path: Path = applyViewForShape(outline)
 		buildPath({ path })
 
 		buildFill({ shapeColor })

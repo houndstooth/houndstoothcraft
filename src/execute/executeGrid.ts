@@ -1,24 +1,21 @@
-import { mixDownContexts } from '../render'
+// tslint:disable:no-unsafe-any
+
+import { grid, maybeTile } from '../components'
+import { asyncMaybeTile } from '../components/asyncMaybeTile'
 import { state } from '../state'
-import { getFromBaseOrDefaultPattern, LayerSettings } from '../store'
-import * as from from '../utilities/from'
-import * as to from '../utilities/to'
-import { executeLayer } from './executeLayer'
-import { SettingsFunctionObject } from './types'
+import { NullarySideEffector, NullaryVoidPromise } from '../utilities/types'
+import { gridComplete } from './gridComplete'
 
-const executeGrid: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
-	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {
-		const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layerSettings')
-
-		for (let currentLayerValue: number = 0; currentLayerValue <= from.Layer(endLayer); currentLayerValue++) {
-			executeLayer({ currentLayer: to.Layer(currentLayerValue), startLayer, endLayer, layerFunctionObjects })
+const executeGrid: NullaryVoidPromise =
+	async (): Promise<void> => {
+		if (state.animating || state.syncMode) {
+			grid({ gridTile: maybeTile })
 		}
-
-		if (state.mixingDown) {
-			mixDownContexts()
+		else {
+			state.tilesCompleted = 0
+			grid({ gridTile: asyncMaybeTile })
+			await new Promise<(resolveGrid: NullarySideEffector) => void>(gridComplete)
 		}
-
-		state.currentLayer = to.Layer(0)
 	}
 
 export { executeGrid }

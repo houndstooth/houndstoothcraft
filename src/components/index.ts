@@ -1,5 +1,6 @@
 import { getStandardTileOriginAndSize } from './getStandardTileOriginAndSize'
 import { grid } from './grid'
+import { maybeTile } from './maybeTile'
 import { perStripe } from './perStripe'
 import { shape } from './shape'
 import { solid } from './solid'
@@ -33,7 +34,6 @@ import {
 } from './types'
 
 export {
-	grid,
 	perStripe,
 	tileCenter,
 	Address,
@@ -64,4 +64,6 @@ export {
 	solid,
 	ExecuteTexture,
 	texture,
+	grid,
+	maybeTile,
 }

@@ -1,19 +1,19 @@
 import { state } from '../state'
-import * as from from '../utilities/from'
-import * as to from '../utilities/to'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
-import { gridAndMaybeLogging } from './gridAndMaybeLogging'
+import { executeGridAndMaybeLogging } from './executeGridAndMaybeLogging'
 import { ExecuteLayerParams } from './types'
 
-const executeLayer: (_: ExecuteLayerParams) => void =
-	({ currentLayer, endLayer, layerFunctionObjects, startLayer }: ExecuteLayerParams): void => {
-		if (currentLayer >= startLayer || 0) {
-			gridAndMaybeLogging()
+const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
+	async ({ layer, endLayer, layerFunctionObjects, startLayer }: ExecuteLayerParams): Promise<void> => {
+		state.currentLayer = layer
+
+		if (layer >= startLayer || 0) {
+			await executeGridAndMaybeLogging()
 		}
-		if (currentLayer < endLayer) {
+
+		if (layer < endLayer) {
 			callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
 		}
-		state.currentLayer = to.Layer(from.Layer(state.currentLayer) + 1)
 	}
 
 export { executeLayer }

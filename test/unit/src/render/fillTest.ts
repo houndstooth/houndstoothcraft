@@ -12,7 +12,7 @@ describe('fill', () => {
 
 	const path: Path = to.Path([])
 	beforeEach(() => {
-		spyOn(view, 'applyView').and.returnValue(path)
+		spyOn(view, 'applyViewForShape').and.returnValue(path)
 	})
 
 	it('returns early if there are no coordinates in the outline', () => {
@@ -20,7 +20,7 @@ describe('fill', () => {
 
 		fill({ shapeColor, outline })
 
-		expect(view.applyView).not.toHaveBeenCalled()
+		expect(view.applyViewForShape).not.toHaveBeenCalled()
 	})
 
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
@@ -28,7 +28,7 @@ describe('fill', () => {
 
 		fill({ shapeColor, outline })
 
-		expect(view.applyView).not.toHaveBeenCalled()
+		expect(view.applyViewForShape).not.toHaveBeenCalled()
 	})
 
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
@@ -36,7 +36,7 @@ describe('fill', () => {
 
 		fill({ shapeColor, outline })
 
-		expect(view.applyView).not.toHaveBeenCalled()
+		expect(view.applyViewForShape).not.toHaveBeenCalled()
 	})
 
 	describe('when there are at least three coordinates in the outline', () => {
@@ -51,7 +51,7 @@ describe('fill', () => {
 		})
 
 		it('adjusts for the view settings', () => {
-			expect(view.applyView).toHaveBeenCalledWith(outline)
+			expect(view.applyViewForShape).toHaveBeenCalledWith(outline)
 		})
 
 		it('builds a path from it ', () => {

@@ -1,6 +1,7 @@
 // tslint:disable:no-unsafe-any
 
-import { DEFAULT_CANVAS_SIZE, DEFAULT_FONT_SIZE } from '../store/defaults'
+import { FONT_SIZE } from '../constants'
+import { DEFAULT_CANVAS_SIZE } from '../store/defaults'
 import { document } from '../utilities/windowWrapper'
 import { createEffectTogglesContainer } from './createEffectTogglesContainer'
 import { insertElementRightAfter } from './insertElementRightAfter'
@@ -15,7 +16,7 @@ const createWarningsContainer: () => PageElement =
 		warningsContainer.style.margin = 'auto'
 		warningsContainer.style.width = DEFAULT_CANVAS_SIZE
 		warningsContainer.style.fontFamily = 'Gilda Display'
-		warningsContainer.style.fontSize = DEFAULT_FONT_SIZE
+		warningsContainer.style.fontSize = FONT_SIZE
 
 		// tslint:disable-next-line:max-line-length
 		const effectTogglesContainer: PageElement = document.querySelector('.effect-toggles-container') || createEffectTogglesContainer()

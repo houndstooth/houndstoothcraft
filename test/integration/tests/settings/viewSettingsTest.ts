@@ -12,7 +12,7 @@ import { standardTileIsColors } from '../../helpers/standardTileIsColors'
 
 describe('.viewSettings', () => {
 	describe('.canvasSize', () => {
-		it('works', () => {
+		it('works', async (done: DoneFn) => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK ]) },
@@ -21,7 +21,7 @@ describe('.viewSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(pixelIsColor(to.Coordinate([ 0, 0 ]), BLACK)).toBe(true)
 			expect(pixelIsColor(to.Coordinate([ 124, 0 ]), BLACK)).toBe(true)
@@ -30,11 +30,13 @@ describe('.viewSettings', () => {
 			expect(pixelIsColor(to.Coordinate([ 125, 0 ]), TRANSPARENT)).toBe(true)
 			expect(pixelIsColor(to.Coordinate([ 0, 125 ]), TRANSPARENT)).toBe(true)
 			expect(pixelIsColor(to.Coordinate([ 125, 125 ]), TRANSPARENT)).toBe(true)
+
+			done()
 		})
 	})
 
 	describe('.zoom', () => {
-		it('works', () => {
+		it('works', async (done: DoneFn) => {
 			const zoom: number = 2
 			const houndstoothOverrides: Effect = {
 				basePattern: {
@@ -47,7 +49,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let baseId: number = -8
 			expect(standardTileIsColors({
@@ -74,12 +76,14 @@ describe('.viewSettings', () => {
 				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 1, from.Unit(zoomedTileSize) * 1 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
+
+			done()
 		})
 	})
 
 	describe('.zoomOnCanvasCenter', () => {
 		// tslint:disable-next-line:max-line-length
-		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', () => {
+		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', async (done: DoneFn) => {
 			const zoom: number = 2
 			const houndstoothOverrides: Effect = {
 				basePattern: {
@@ -95,7 +99,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let baseId: number = -8
 			expect(standardTileIsColors({
@@ -122,11 +126,13 @@ describe('.viewSettings', () => {
 				tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 4, from.Unit(zoomedTileSize) * 4 ]),
 				tileSize: zoomedTileSize,
 			})).toBe(true)
+
+			done()
 		})
 	})
 
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
-		it('is self-explanatory', () => {
+		it('is self-explanatory', async (done: DoneFn) => {
 			const tileSize: Unit = to.Unit(100)
 			const houndstoothOverrides: Effect = {
 				basePattern: {
@@ -137,7 +143,7 @@ describe('.viewSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let baseId: number = -8
 			expect(standardTileIsColors({
@@ -164,11 +170,13 @@ describe('.viewSettings', () => {
 				tileOrigin: to.Coordinate([ 450, 450 ]),
 				tileSize: to.Unit(100),
 			})).toBe(true)
+
+			done()
 		})
 	})
 
 	describe('.rotateViewAboutCanvasCenter', () => {
-		it('rotates the entire grid about the canvas center', () => {
+		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
 			const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 			const houndstoothOverrides: Effect = {
@@ -188,7 +196,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let areaOrigin: Coordinate = to.Coordinate([ 200, 0 ])
 			let id: number = -1
@@ -469,6 +477,8 @@ describe('.viewSettings', () => {
 				sectionAddress: to.Address([ 3, 0 ]),
 				sectionResolution: 4,
 			})).toBe(true)
+
+			done()
 		})
 	})
 })

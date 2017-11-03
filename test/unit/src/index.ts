@@ -3,4 +3,5 @@ import { resetState } from '../../../src/store/resetState'
 
 beforeEach(() => {
 	resetState(state)
+	state.syncMode = true
 })

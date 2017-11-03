@@ -1,21 +1,28 @@
+import Spy = jasmine.Spy
 import { grid } from '../../../../src/components/grid'
-import * as maybeTile from '../../../../src/components/maybeTile'
+import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as view from '../../../../src/view'
-import Spy = jasmine.Spy
 
 describe('grid', () => {
+	let gridTileSpy: Spy
 	const gridSize: number = 2
-	let maybeTileSpy: Spy
 	beforeEach(() => {
-		maybeTileSpy = spyOn(maybeTile, 'maybeTile')
-		setSetting('gridSettings', { gridSize })
+		setSetting('gridSize', gridSize)
+		gridTileSpy = jasmine.createSpy('gridTile')
+		spyOn(view, 'applyViewForGrid')
+	})
+
+	it('applies view for the grid', () => {
+		grid({ gridTile: gridTileSpy })
+
+		expect(view.applyViewForGrid).toHaveBeenCalled()
 	})
 
 	it('uses the given grid size', () => {
-		grid()
+		grid({ gridTile: gridTileSpy })
 
-		expect(maybeTileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
+		expect(gridTileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
 	})
 
 	describe('when negative quadrants are excluded', () => {
@@ -24,13 +31,21 @@ describe('grid', () => {
 		})
 
 		it('only makes tiles with positive addresses', () => {
-			grid()
+			grid({ gridTile: gridTileSpy })
 
-			expect(maybeTileSpy.calls.count()).toEqual(Math.pow(gridSize, 2))
-			expect(maybeTileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
-			expect(maybeTileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
-			expect(maybeTileSpy.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
+			expect(gridTileSpy.calls.count()).toEqual(Math.pow(gridSize, 2))
+			expect(gridTileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
+			expect(gridTileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
+			expect(gridTileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
+			expect(gridTileSpy.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
+		})
+
+		it('sets the tile count on the state correctly', () => {
+			state.tileCount = 0
+
+			grid({ gridTile: gridTileSpy })
+
+			expect(state.tileCount).toBe(Math.pow(gridSize, 2))
 		})
 	})
 
@@ -43,41 +58,33 @@ describe('grid', () => {
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {
 			const quadrantCount: number = 4
 
-			grid()
+			grid({ gridTile: gridTileSpy })
 
-			expect(maybeTileSpy.calls.count()).toEqual(Math.pow(gridSize, 2) * quadrantCount)
-			expect(maybeTileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ -2, -2 ] } ])
-			expect(maybeTileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ -2, -1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ -2, 0 ] } ])
-			expect(maybeTileSpy.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ -2, 1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 4 ].args).toEqual([ { gridAddress: [ -1, -2 ] } ])
-			expect(maybeTileSpy.calls.all()[ 5 ].args).toEqual([ { gridAddress: [ -1, -1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 6 ].args).toEqual([ { gridAddress: [ -1, 0 ] } ])
-			expect(maybeTileSpy.calls.all()[ 7 ].args).toEqual([ { gridAddress: [ -1, 1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 8 ].args).toEqual([ { gridAddress: [ 0, -2 ] } ])
-			expect(maybeTileSpy.calls.all()[ 9 ].args).toEqual([ { gridAddress: [ 0, -1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 10 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
-			expect(maybeTileSpy.calls.all()[ 11 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 12 ].args).toEqual([ { gridAddress: [ 1, -2 ] } ])
-			expect(maybeTileSpy.calls.all()[ 13 ].args).toEqual([ { gridAddress: [ 1, -1 ] } ])
-			expect(maybeTileSpy.calls.all()[ 14 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
-			expect(maybeTileSpy.calls.all()[ 15 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
+			expect(gridTileSpy.calls.count()).toEqual(Math.pow(gridSize, 2) * quadrantCount)
+			expect(gridTileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ -2, -2 ] } ])
+			expect(gridTileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ -2, -1 ] } ])
+			expect(gridTileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ -2, 0 ] } ])
+			expect(gridTileSpy.calls.all()[ 3 ].args).toEqual([ { gridAddress: [ -2, 1 ] } ])
+			expect(gridTileSpy.calls.all()[ 4 ].args).toEqual([ { gridAddress: [ -1, -2 ] } ])
+			expect(gridTileSpy.calls.all()[ 5 ].args).toEqual([ { gridAddress: [ -1, -1 ] } ])
+			expect(gridTileSpy.calls.all()[ 6 ].args).toEqual([ { gridAddress: [ -1, 0 ] } ])
+			expect(gridTileSpy.calls.all()[ 7 ].args).toEqual([ { gridAddress: [ -1, 1 ] } ])
+			expect(gridTileSpy.calls.all()[ 8 ].args).toEqual([ { gridAddress: [ 0, -2 ] } ])
+			expect(gridTileSpy.calls.all()[ 9 ].args).toEqual([ { gridAddress: [ 0, -1 ] } ])
+			expect(gridTileSpy.calls.all()[ 10 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
+			expect(gridTileSpy.calls.all()[ 11 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
+			expect(gridTileSpy.calls.all()[ 12 ].args).toEqual([ { gridAddress: [ 1, -2 ] } ])
+			expect(gridTileSpy.calls.all()[ 13 ].args).toEqual([ { gridAddress: [ 1, -1 ] } ])
+			expect(gridTileSpy.calls.all()[ 14 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
+			expect(gridTileSpy.calls.all()[ 15 ].args).toEqual([ { gridAddress: [ 1, 1 ] } ])
 		})
-	})
 
-	it('applies background color', () => {
-		spyOn(view, 'applyBackgroundColor')
+		it('sets the tile count on the state correctly', () => {
+			state.tileCount = 0
 
-		grid()
+			grid({ gridTile: gridTileSpy })
 
-		expect(view.applyBackgroundColor).toHaveBeenCalled()
-	})
-
-	it('applies opacity', () => {
-		spyOn(view, 'applyOpacity')
-
-		grid()
-
-		expect(view.applyOpacity).toHaveBeenCalled()
+			expect(state.tileCount).toBe(Math.pow(gridSize, 2) * 4)
+		})
 	})
 })

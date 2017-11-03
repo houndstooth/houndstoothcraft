@@ -25,6 +25,7 @@ const mockDocument: Document = {
 interface Window {
 	clearInterval: (p?: any, q?: any) => any,
 	setInterval: (p?: any, q?: any) => any,
+	setTimeout: (p?: any, q?: any) => any,
 	URL: { createObjectURL: (p?: any, q?: any) => any, revokeObjectURL: (p?: any, q?: any) => any },
 }
 
@@ -35,6 +36,7 @@ const mockWindow: Window = {
 	},
 	clearInterval: noop,
 	setInterval: noop,
+	setTimeout: noop,
 }
 
 const consoleWrapper: any = console

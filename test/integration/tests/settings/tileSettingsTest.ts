@@ -14,7 +14,7 @@ import { StandardTileExpectation } from '../../helpers/types'
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
-		it('adjusts the size in pixels of each tile', () => {
+		it('adjusts the size in pixels of each tile', async (done: DoneFn) => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					tileSettings: {
@@ -24,7 +24,7 @@ describe('.tileSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			let baseId: number = -8
 			const tiles: StandardTileExpectation[] = [
@@ -54,10 +54,12 @@ describe('.tileSettings', () => {
 				},
 			]
 			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
+
+			done()
 		})
 
 		describe('when also zooming', () => {
-			it('multiplies the effect of taking up more pixels', () => {
+			it('multiplies the effect of taking up more pixels', async (done: DoneFn) => {
 				const houndstoothOverrides: Effect = {
 					basePattern: {
 						tileSettings: {
@@ -70,7 +72,7 @@ describe('.tileSettings', () => {
 				}
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				let baseId: number = -8
 				const tiles: StandardTileExpectation[] = [
@@ -100,6 +102,8 @@ describe('.tileSettings', () => {
 					},
 				]
 				tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
+
+				done()
 			})
 		})
 	})
@@ -122,10 +126,11 @@ describe('.tileSettings', () => {
 			spyOn(createMixedDownContext, 'default').and.returnValue(buildMockContext())
 		})
 
-		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', () => {
+		// tslint:disable-next-line:max-line-length
+		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', async (done: DoneFn) => {
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(contextCallsOrder.length).toBe(7)
 			expect(contextCallsOrder[ 0 ].method).toBe('beginPath')
@@ -135,9 +140,11 @@ describe('.tileSettings', () => {
 			expect(contextCallsOrder[ 4 ].method).toBe('lineTo')
 			expect(contextCallsOrder[ 5 ].method).toBe('closePath')
 			expect(contextCallsOrder[ 6 ].method).toBe('fill')
+
+			done()
 		})
 
-		it('when set to false, causes the shapes to be rendered separately', () => {
+		it('when set to false, causes the shapes to be rendered separately', async (done: DoneFn) => {
 			houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
@@ -148,7 +155,7 @@ describe('.tileSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			expect(contextCallsOrder.length).toBe(26)
 
@@ -181,6 +188,8 @@ describe('.tileSettings', () => {
 			expect(contextCallsOrder[ 23 ].method).toBe('lineTo')
 			expect(contextCallsOrder[ 24 ].method).toBe('closePath')
 			expect(contextCallsOrder[ 25 ].method).toBe('fill')
+
+			done()
 		})
 	})
 })

@@ -5,9 +5,10 @@ import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import { setSetting } from '../../../../src/store/setSetting'
 import { Effect, State } from '../../../../src/store/types'
 import { resetInterface } from '../../../../src/ui/resetInterface'
+import Spy = jasmine.Spy
+import { NullarySideEffector } from '../../../../src/utilities/types'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
-import Spy = jasmine.Spy
 
 describe('reset interface', () => {
 	const warningsContainer: page.PageElement = buildMockElement()
@@ -32,10 +33,24 @@ describe('reset interface', () => {
 	})
 
 	it('clears any active animation', () => {
+		const interval: NullarySideEffector = (): void => undefined
+		state.interval = interval
+
 		resetInterface()
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.window.clearInterval).toHaveBeenCalledWith(state.interval)
+	})
+
+	it('clears any active rendering progress measurement', () => {
+		const progressInterval: NullarySideEffector = (): void => undefined
+
+		state.progressInterval = progressInterval
+
+		resetInterface()
+
+		// tslint:disable-next-line:no-unsafe-any
+		expect(windowWrapper.window.clearInterval).toHaveBeenCalledWith(state.progressInterval)
 	})
 
 	it('resets the state, except for any selected effects', () => {

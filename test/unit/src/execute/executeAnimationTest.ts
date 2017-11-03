@@ -38,23 +38,23 @@ describe('execute animation', () => {
 		})
 
 		it('calls the animator', () => {
-			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
-			expect(animation.animator).toHaveBeenCalledWith({
+			expect(animation.animator).toHaveBeenCalledWith(jasmine.objectContaining({
 				animationFunction,
 				frameRate,
 				stopConditionFunction,
-			})
+			}))
 		})
 
 		it('initializes the last saved animation frame to the start animation frame', () => {
-			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 			expect(state.lastSavedFrame).toBe(startFrame)
 		})
 
 		it('builds a stop condition function', () => {
-			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 			expect(animation.buildStopConditionFunction).toHaveBeenCalledWith({
 				endFrame,
@@ -62,7 +62,7 @@ describe('execute animation', () => {
 		})
 
 		it('builds an animation function', () => {
-			executeAnimation({ layerFunctionObjects, animationFunctionObjects })
+			executeAnimation({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 			expect(animation.buildAnimationFunction).toHaveBeenCalledWith(
 				jasmine.objectContaining({

@@ -1,7 +1,9 @@
-// tslint:disable:no-any
+// tslint:disable:no-any max-file-line-count
 
+import { PageElement } from '../page/types'
 import { Effect, SettingsPath, SettingsStep } from '../store'
 import { Pattern } from '../store/types'
+import { NullarySideEffector } from '../utilities/types'
 
 interface BuildWarningMessageParams extends FullSettingsPath, SettingOverride {
 }
@@ -32,8 +34,8 @@ interface ExecuteAnimationParams {
 }
 
 interface ExecuteLayerParams {
-	readonly currentLayer: Layer,
 	readonly endLayer: Layer,
+	readonly layer: Layer,
 	readonly layerFunctionObjects: SettingsFunctionObject[],
 	readonly startLayer: Layer,
 }
@@ -78,7 +80,13 @@ interface ShouldWarnAboutConflictsParams extends SettingOverride {
 	readonly warnAboutConflicts: boolean,
 }
 
+interface BuildProgressIntervalFunctionParams {
+	progressBar?: PageElement,
+	resolveGrid: NullarySideEffector
+}
+
 export {
+	BuildProgressIntervalFunctionParams,
 	BuildWarningMessageParams,
 	ComposeMainHoundstooth,
 	ComposePatternParams,

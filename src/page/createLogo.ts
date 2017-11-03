@@ -1,6 +1,7 @@
 // tslint:disable:no-any no-unsafe-any no-magic-numbers max-line-length max-file-line-count
 import { Unit } from '../components/types'
-import { Path, Pixel } from '../render'
+import { PAGE_BACKGROUND_COLOR } from '../constants'
+import { parseColor, Path, Pixel } from '../render'
 import { Coordinate, Outline } from '../space'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
@@ -12,6 +13,21 @@ const LOGO_SCALE: number = 4
 
 const createLogo: NullarySideEffector =
 	(): void => {
+		const logoContainer: HTMLElement = document.createElement('div')
+		logoContainer.style.height = '50'
+		logoContainer.style.position = 'relative'
+		logoContainer.style.display = 'block'
+		document.body.appendChild(logoContainer)
+
+		const loadingScrim: HTMLElement = document.createElement('div')
+		loadingScrim.classList.add('progress-bar')
+		loadingScrim.style.width = '100%'
+		loadingScrim.style.height = '0%'
+		loadingScrim.style.position = 'absolute'
+		loadingScrim.style.display = 'block'
+		loadingScrim.style.backgroundColor = parseColor(PAGE_BACKGROUND_COLOR)
+		logoContainer.appendChild(loadingScrim)
+
 		const xmlns: string = 'http://www.w3.org/2000/svg'
 		const logo: SVGSVGElement = document.createElementNS(xmlns, 'svg')
 		const width: Px = to.Px(from.Unit(to.Unit(46)) * LOGO_SCALE)
@@ -23,7 +39,7 @@ const createLogo: NullarySideEffector =
 		logo.style.margin = 'auto'
 		logo.style.display = 'block'
 		logo.style.padding = '10px'
-		document.body.appendChild(logo)
+		logoContainer.appendChild(logo)
 
 		const hOutline: Outline = to.Outline([ [ 0, 3 ], [ 0, 7 ], [ 1, 6 ], [ 1, 4 ], [ 2, 5 ], [ 3, 4 ], [ 3, 6 ], [ 4, 7 ], [ 4, 3 ], [ 3, 2 ], [ 3, 0 ], [ 2, 1 ], [ 1, 0 ], [ 1, 2 ] ])
 		const oOutline: Outline = to.Outline([ [ 0, 2 ], [ 2, 4 ], [ 4, 2 ], [ 2, 0 ] ])

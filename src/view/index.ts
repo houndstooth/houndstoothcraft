@@ -1,9 +1,11 @@
 import { applyBackgroundColor } from './applyBackgroundColor'
 import { applyOpacity } from './applyOpacity'
-import { applyView } from './applyView'
+import { applyViewForGrid } from './applyViewForGrid'
+import { applyViewForShape } from './applyViewForShape'
 
 export {
 	applyBackgroundColor,
 	applyOpacity,
-	applyView,
+	applyViewForShape,
+	applyViewForGrid,
 }

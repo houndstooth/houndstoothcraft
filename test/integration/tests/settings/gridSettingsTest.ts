@@ -12,7 +12,7 @@ describe('.gridSettings', () => {
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
 	describe('.gridSize', () => {
-		it('changes how many tiles there are', () => {
+		it('changes how many tiles there are', async (done: DoneFn) => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
@@ -28,7 +28,7 @@ describe('.gridSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles: StandardTileExpectation[] = [
 				{
@@ -133,12 +133,14 @@ describe('.gridSettings', () => {
 			]
 
 			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
+
+			done()
 		})
 	})
 
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
-		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', () => {
+		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', async (done: DoneFn) => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: {
@@ -155,7 +157,8 @@ describe('.gridSettings', () => {
 				},
 			}
 			activateTestMarkerCanvas()
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+			await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 			const tiles: StandardTileExpectation[] = [
 				{
@@ -184,6 +187,8 @@ describe('.gridSettings', () => {
 				},
 			]
 			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
+
+			done()
 		})
 	})
 })

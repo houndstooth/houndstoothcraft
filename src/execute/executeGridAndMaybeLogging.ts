@@ -1,18 +1,18 @@
 // tslint:disable:no-unsafe-any
 
-import { grid } from '../components'
+import { executeGrid } from '../execute'
 import { state } from '../state'
 import { State } from '../store'
-import { NullarySideEffector } from '../utilities/types'
+import { NullaryVoidPromise } from '../utilities/types'
 import { console } from '../utilities/windowWrapper'
 
-const gridAndMaybeLogging: NullarySideEffector =
-	(): void => {
+const executeGridAndMaybeLogging: NullaryVoidPromise =
+	async (): Promise<void> => {
 		const { performanceLogging, animating, currentFrame, currentLayer }: State = state
 		if (performanceLogging) {
 			console.time('grid')
 		}
-		grid()
+		await executeGrid()
 		if (performanceLogging) {
 			if (animating) {
 				console.log(`current animation frame / layer: ${currentFrame}/${currentLayer}`)
@@ -24,4 +24,4 @@ const gridAndMaybeLogging: NullarySideEffector =
 		}
 	}
 
-export { gridAndMaybeLogging }
+export { executeGridAndMaybeLogging }

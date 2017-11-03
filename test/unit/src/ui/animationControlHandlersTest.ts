@@ -4,6 +4,7 @@ import { state } from '../../../../src/state'
 import { pauseClickHandler, playClickHandler, rewindClickHandler } from '../../../../src/ui/animationControlHandlers'
 import Spy = jasmine.Spy
 import * as to from '../../../../src/utilities/to'
+import { NullarySideEffector } from '../../../../src/utilities/types'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
@@ -15,6 +16,7 @@ describe('animation control handlers', () => {
 
 	beforeEach(() => {
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'executeSelectedHoundstoothEffects')
+			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		spyOn(windowWrapper.document, 'querySelector').and.callFake((selector: string): PageElement => {
 			switch (selector) {

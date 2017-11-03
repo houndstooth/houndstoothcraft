@@ -8,8 +8,11 @@ interface AnimateParams {
 	refreshCanvas: boolean
 }
 
-interface AnimatorParams extends BuildIntervalFunctionParams {
+interface AnimatorParams {
+	animationFunction: NullarySideEffector,
 	frameRate: number,
+	resolveAnimation: NullarySideEffector,
+	stopConditionFunction: ConditionFunction,
 }
 
 interface BuildAnimationFunctionParams {
@@ -19,6 +22,7 @@ interface BuildAnimationFunctionParams {
 
 interface BuildIntervalFunctionParams {
 	animationFunction: NullarySideEffector,
+	resolveAnimation: NullarySideEffector,
 	stopConditionFunction: ConditionFunction,
 }
 

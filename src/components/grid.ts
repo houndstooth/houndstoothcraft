@@ -1,33 +1,36 @@
+import { state } from '../state'
 import { getFromBaseOrDefaultPattern, GridSettings } from '../store'
 import { iterator } from '../utilities/codeUtilities'
 import * as to from '../utilities/to'
-import { NullarySideEffector } from '../utilities/types'
-import { applyBackgroundColor, applyOpacity } from '../view'
-import { maybeTile } from './maybeTile'
+import { applyViewForGrid } from '../view'
+import { GridAddressFunction } from './types'
 
 const NEGATIVE_AND_POSITIVE: number = 2
+const QUADRANT_COUNT: number = NEGATIVE_AND_POSITIVE * NEGATIVE_AND_POSITIVE
 
-const grid: NullarySideEffector =
-	(): void => {
+const grid: (_: { gridTile: GridAddressFunction }) => void =
+	({ gridTile }: { gridTile: GridAddressFunction }): void => {
+		applyViewForGrid()
+
 		const { includeNegativeQuadrants, gridSize }: GridSettings = getFromBaseOrDefaultPattern('gridSettings')
 
-		applyOpacity()
-		applyBackgroundColor()
+		let adjustedGridSize: number = gridSize
+		let gridOffset: number = 0
+		let tileCount: number = gridSize * gridSize
 
 		if (includeNegativeQuadrants) {
-			iterator(gridSize * NEGATIVE_AND_POSITIVE).forEach((x: number): void => {
-				iterator(gridSize * NEGATIVE_AND_POSITIVE).forEach((y: number): void => {
-					maybeTile({ gridAddress: to.Address([ x - gridSize, y - gridSize ]) })
-				})
-			})
+			adjustedGridSize *= NEGATIVE_AND_POSITIVE
+			gridOffset -= gridSize
+			tileCount *= QUADRANT_COUNT
 		}
-		else {
-			iterator(gridSize).forEach((x: number): void => {
-				iterator(gridSize).forEach((y: number): void => {
-					maybeTile({ gridAddress: to.Address([ x, y ]) })
-				})
+
+		state.tileCount = tileCount
+
+		iterator(adjustedGridSize).forEach((x: number): void => {
+			iterator(adjustedGridSize).forEach((y: number): void => {
+				gridTile({ gridAddress: to.Address([ x + gridOffset, y + gridOffset ]) })
 			})
-		}
+		})
 	}
 
 export { grid }

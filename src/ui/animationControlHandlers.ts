@@ -30,7 +30,7 @@ const playClickHandler: NullarySideEffector =
 					rewindButton.disabled = false
 				}
 
-				executeSelectedHoundstoothEffects()
+				executeSelectedHoundstoothEffects().then().catch()
 			}
 		}
 	}
@@ -65,7 +65,7 @@ const rewindClickHandler: NullarySideEffector =
 			}
 		}
 
-		executeSelectedHoundstoothEffects()
+		executeSelectedHoundstoothEffects().then().catch()
 	}
 
 export {

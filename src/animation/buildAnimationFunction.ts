@@ -1,4 +1,4 @@
-import { callFunctionsPerSetting, executeGrid } from '../execute'
+import { callFunctionsPerSetting, executePattern } from '../execute'
 import { clear } from '../render'
 import { state } from '../state'
 import { AnimationSettings } from '../store'
@@ -7,13 +7,13 @@ import { BasePattern } from '../store/types'
 import { deepClone } from '../utilities/codeUtilities'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
-import { NullarySideEffector } from '../utilities/types'
+import { NullaryVoidPromise } from '../utilities/types'
 import { exportFrame } from './exportFrame'
 import { AnimateParams, BuildAnimationFunctionParams, ConditionFunction, Frame } from './types'
 
-const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullarySideEffector =
-	(params: BuildAnimationFunctionParams): NullarySideEffector =>
-		(): void => {
+const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPromise =
+	(params: BuildAnimationFunctionParams): NullaryVoidPromise =>
+		async (): Promise<void> => {
 			const {
 				animationFunctionObjects,
 				layerFunctionObjects,
@@ -26,7 +26,7 @@ const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullarySideEf
 			}
 
 			if (shouldBeginShowingAnimation(startFrame)) {
-				animate({ layerFunctionObjects, refreshCanvas })
+				await animate({ layerFunctionObjects, refreshCanvas })
 			}
 
 			callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
@@ -39,14 +39,14 @@ const exportingFramesStillNeedsToCatchUp: ConditionFunction =
 const shouldBeginShowingAnimation: (startFrame: Frame) => boolean =
 	(startFrame: Frame): boolean => state.currentFrame >= startFrame
 
-const animate: (_: AnimateParams) => void =
-	({ layerFunctionObjects, refreshCanvas }: AnimateParams): void => {
+const animate: (_: AnimateParams) => Promise<void> =
+	async ({ layerFunctionObjects, refreshCanvas }: AnimateParams): Promise<void> => {
 		if (refreshCanvas) {
 			clear()
 		}
 
 		const preLayerSettings: Partial<BasePattern> = deepClone(state.mainHoundstooth.basePattern)
-		executeGrid({ layerFunctionObjects })
+		await executePattern({ layerFunctionObjects })
 		Object.assign(state.mainHoundstooth.basePattern, preLayerSettings)
 
 		if (state.exportFrames) {

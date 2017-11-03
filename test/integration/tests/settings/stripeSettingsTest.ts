@@ -30,10 +30,10 @@ describe('.stripeSettings', () => {
 				}
 			})
 
-			it('works in standard mode', () => {
+			it('works in standard mode', async (done: DoneFn) => {
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				const tile: StandardTileExpectation = {
 					baseId: 0,
@@ -42,11 +42,13 @@ describe('.stripeSettings', () => {
 					tileSize: areaSize,
 				}
 				expect(standardTileIsColors(tile)).toBe(true)
+
+				done()
 			})
 		})
 
 		describe('.stripeCount', () => {
-			it('changes the number of stripes in striped tiles', () => {
+			it('changes the number of stripes in striped tiles', async (done: DoneFn) => {
 				const houndstoothOverrides: Effect = {
 					basePattern: {
 						gridSettings: { gridSize: 2 },
@@ -58,7 +60,8 @@ describe('.stripeSettings', () => {
 					},
 				}
 				activateTestMarkerCanvas()
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+
+				await executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 				let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])
 				let id: number = -1
@@ -144,6 +147,8 @@ describe('.stripeSettings', () => {
 					sectionAddress: to.Address([ 4, 4 ]),
 					sectionResolution: 5,
 				})).toBe(true)
+
+				done()
 			})
 		})
 	})

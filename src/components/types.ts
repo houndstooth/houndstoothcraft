@@ -47,6 +47,8 @@ interface GridAddressParam {
 	readonly gridAddress: Address,
 }
 
+type GridAddressFunction = (_: GridAddressParam) => void
+
 interface GetShapeColorIndicesWithOffsetParams extends GridAddressParam {
 	readonly addressOffset: Address,
 }
@@ -157,6 +159,7 @@ export {
 	ColorSet,
 	ComponentParams,
 	DefinedTileParams,
+	GridAddressFunction,
 	ExecuteTexture,
 	ExecuteTextureParams,
 	GetShapeColorIndices,

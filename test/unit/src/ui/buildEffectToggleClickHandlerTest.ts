@@ -16,6 +16,7 @@ describe('build effect toggle click handler returns a function which', () => {
 		const resetInterfaceSpy: Spy = spyOn(resetInterface, 'resetInterface')
 
 		const executeSelectedHoundstoothEffectsSpy: Spy = spyOn(execute, 'executeSelectedHoundstoothEffects')
+			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		const checkbox: InputElement = buildMockElement()
 
@@ -69,8 +70,10 @@ describe('build effect toggle click handler returns a function which', () => {
 			spyOn(windowWrapper.document, 'querySelector').and.returnValue(playButton)
 
 			// Do not want to deal with other document related stuff, but need the houndstooth composed.
-			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(() => {
+			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(async () => {
 				composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects })
+
+				return new Promise<NullarySideEffector>((): void => undefined)
 			})
 
 			simulateClick(checkbox, clickHandler)
@@ -79,7 +82,7 @@ describe('build effect toggle click handler returns a function which', () => {
 		})
 
 		it('disables the play button when the composed houndstooth does not have an animations pattern', () => {
-			const effectWithoutAnimations: Effect = { animationsPattern: {  } }
+			const effectWithoutAnimations: Effect = { animationsPattern: {} }
 
 			const checkbox: InputElement = buildMockElement()
 
@@ -93,8 +96,10 @@ describe('build effect toggle click handler returns a function which', () => {
 			spyOn(windowWrapper.document, 'querySelector').and.returnValue(playButton)
 
 			// Do not want to deal with other document related stuff, but need the houndstooth composed.
-			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(() => {
+			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(async () => {
 				composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects })
+
+				return new Promise<NullarySideEffector>((): void => undefined)
 			})
 
 			simulateClick(checkbox, clickHandler)

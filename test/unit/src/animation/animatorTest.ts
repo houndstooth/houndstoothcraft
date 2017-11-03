@@ -10,6 +10,7 @@ describe('animator', () => {
 	let intervalFunction: (p: number) => number
 	const animationFunction: NullarySideEffector = noop
 	const frameRate: number = 3
+	const resolveAnimation: NullarySideEffector = noop
 	const stopConditionFunction: ConditionFunction = (): boolean => false
 	const interval: NullarySideEffector = noop
 	beforeEach(() => {
@@ -17,17 +18,18 @@ describe('animator', () => {
 		intervalFunction = (p: number): number => p * 20
 		spyOn(buildIntervalFunction, 'buildIntervalFunction').and.returnValue(intervalFunction)
 
-		animator({ animationFunction, frameRate, stopConditionFunction })
+		animator({ animationFunction, resolveAnimation, frameRate, stopConditionFunction })
 	})
 
-	it('augments the function to be scheduled with a stop condition so it can cancel itself', () => {
+	it('assembles the animation, resolution, and stop condition functions together', () => {
 		expect(buildIntervalFunction.buildIntervalFunction).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
+			resolveAnimation,
 			stopConditionFunction,
 		}))
 	})
 
-	it('schedules this augmented function to be run at the frame rate', () => {
+	it('schedules this assembled function to be run at the frame rate', () => {
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.setInterval).toHaveBeenCalledWith(intervalFunction, frameRate)
 	})

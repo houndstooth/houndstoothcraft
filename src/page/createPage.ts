@@ -1,6 +1,8 @@
 // tslint:disable:no-unsafe-any
 
-import { Effect } from '../store/types'
+import { PAGE_BACKGROUND_COLOR } from '../constants'
+import { parseColor } from '../render'
+import { Effect } from '../store'
 import { document } from '../utilities/windowWrapper'
 import { createAnimationControls } from './createAnimationControls'
 import { createLogo } from './createLogo'
@@ -16,7 +18,7 @@ const createPage: (effects: Effect[]) => void =
 			maybeCreateEffectToggles(effects)
 			createWarningsContainer()
 			createAnimationControls()
-			document.body.style.backgroundColor = '#eee'
+			document.body.style.backgroundColor = parseColor(PAGE_BACKGROUND_COLOR)
 		}
 	}
 

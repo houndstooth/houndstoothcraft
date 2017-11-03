@@ -1,8 +1,9 @@
-import { Frame } from '../../../src/animation/types'
+import { ConditionFunction, Frame } from '../../../src/animation/types'
 import { Address, Unit } from '../../../src/components'
 import { Layer } from '../../../src/execute/types'
 import { Color } from '../../../src/render'
 import { Coordinate } from '../../../src/space'
+import { NullarySideEffector, NullaryVoidPromise } from '../../../src/utilities/types'
 
 interface DrawPassMarker {
 	readonly coordinateUnderTest: Coordinate,
@@ -78,6 +79,14 @@ interface ThisLayerOnly {
 	readonly startLayer: Layer
 }
 
+interface FakeAnimatorParams {
+	animationFunction: NullaryVoidPromise,
+	resolveAnimation: NullarySideEffector,
+	stopConditionFunction: ConditionFunction
+}
+
+type FakeAnimator = (_: FakeAnimatorParams) => Promise<void>
+
 export {
 	CheckColorProperties,
 	Diagonal,
@@ -94,4 +103,6 @@ export {
 	PixelColorExpectation,
 	ThisFrameOnly,
 	ThisLayerOnly,
+	FakeAnimator,
+	FakeAnimatorParams,
 }

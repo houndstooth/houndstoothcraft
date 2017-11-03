@@ -14,7 +14,7 @@ const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEf
 			const effectFunction: (houndstoothEffect: Effect) => void = checkbox.checked ? addEffect : removeEffect
 			effectFunction(houndstoothEffect)
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects().then().catch()
 
 			dealWithAnimationControls()
 		}

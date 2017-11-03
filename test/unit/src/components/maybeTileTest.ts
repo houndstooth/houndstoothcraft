@@ -3,6 +3,7 @@ import { maybeTile } from '../../../../src/components/maybeTile'
 import * as tile from '../../../../src/components/tile'
 import { Address, Unit } from '../../../../src/components/types'
 import { Coordinate } from '../../../../src/space/types'
+import { state } from '../../../../src/state'
 import * as to from '../../../../src/utilities/to'
 
 describe('maybe tile', () => {
@@ -25,11 +26,15 @@ describe('maybe tile', () => {
 	it('does not call tile if neither origin nor size is got', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue(undefined)
 
+		maybeTile({ gridAddress })
+
 		expect(tile.tile).not.toHaveBeenCalled()
 	})
 
 	it('does not call tile if origin is got but size is not', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin })
+
+		maybeTile({ gridAddress })
 
 		expect(tile.tile).not.toHaveBeenCalled()
 	})
@@ -37,12 +42,16 @@ describe('maybe tile', () => {
 	it('does not call tile if size is got but origin is not', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileSize })
 
+		maybeTile({ gridAddress })
+
 		expect(tile.tile).not.toHaveBeenCalled()
 	})
 
-	it('test', () => {
-		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({  })
+	it('increments the count of tiles completed', () => {
+		state.tilesCompleted = 5
 
-		expect(tile.tile).not.toHaveBeenCalled()
+		maybeTile({ gridAddress })
+
+		expect(state.tilesCompleted).toBe(6)
 	})
 })

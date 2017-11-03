@@ -9,10 +9,10 @@ import { StandardTileExpectation } from '../../helpers/types'
 
 describe('standard houndstooth pattern', () => {
 	// tslint:disable-next-line:max-line-length
-	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', () => {
+	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', async (done: DoneFn) => {
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({
+		await executeSelectedHoundstoothEffects({
 			houndstoothOverrides: {
 				basePattern: {
 					gridSettings: { gridSize: 4 },
@@ -131,5 +131,7 @@ describe('standard houndstooth pattern', () => {
 			.concat(thirdSupertileExpectations)
 			.concat(fourthSupertileExpectations)
 		tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
+
+		done()
 	})
 })

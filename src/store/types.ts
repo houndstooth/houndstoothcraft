@@ -141,13 +141,17 @@ interface State {
 	currentFrame: Frame,
 	currentLayer: Layer,
 	exportFrames: boolean,
-	interval: (() => void) | undefined,
+	interval?: () => void,
 	lastSavedFrame: Frame,
 	readonly mainHoundstooth: Houndstooth,
-	mixedDownContext: Context | undefined,
+	mixedDownContext?: Context,
 	mixingDown: boolean,
 	performanceLogging: boolean,
+	progressInterval?: () => void,
 	selectedHoundstoothEffects: Effect[],
+	syncMode: boolean,
+	tileCount: number,
+	tilesCompleted: number,
 }
 
 type SettingsNamesByType =

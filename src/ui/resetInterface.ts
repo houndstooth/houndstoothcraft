@@ -16,6 +16,7 @@ const resetInterface: NullarySideEffector =
 
 		clear()
 		window.clearInterval(state.interval)
+		window.clearInterval(state.progressInterval)
 
 		const existingEffects: Effect[] = state.selectedHoundstoothEffects.slice()
 		resetState(state)

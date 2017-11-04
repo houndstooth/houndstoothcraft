@@ -1,6 +1,5 @@
 // tslint:disable:no-unsafe-any
 
-import { createWarningsContainer } from '../page'
 import { PageElement } from '../page/types'
 import { clear } from '../render'
 import { state } from '../state'
@@ -11,7 +10,7 @@ import { document, window } from '../utilities/windowWrapper'
 
 const resetInterface: NullarySideEffector =
 	(): void => {
-		const warnings: PageElement = document.querySelector('.warnings-container') || createWarningsContainer()
+		const warnings: PageElement = document.querySelector('.warnings-container')
 		warnings.innerHTML = ''
 
 		clear()

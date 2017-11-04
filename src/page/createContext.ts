@@ -8,7 +8,6 @@ const createContext: (_: { canvasContainer: PageElement }) => Context =
 	({ canvasContainer }: { canvasContainer: PageElement }): Context => {
 		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 		const canvas: Canvas = document.createElement('canvas')
-		canvas.style.position = 'absolute'
 		canvas.width = canvasSize
 		canvas.height = canvasSize
 

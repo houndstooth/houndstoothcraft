@@ -8,10 +8,5 @@
     "require": "ts-node/register",
     "reporter": [ "lcov", "text", "json" ],
     "extension": ".ts",
-    "temp-directory": "./test/unit/coverage/.nyc_output",
-    "exclude": [
-       "src/page/**/*",
-       "test/**/*",
-       "effects/*/test/**/*"
-    ]
+    "temp-directory": "./test/unit/coverage/.nyc_output"
 }

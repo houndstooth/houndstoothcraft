@@ -1,6 +1,6 @@
 import * as effects from './effects'
-import { executeSelectedHoundstoothEffects } from './src'
-import { createPage } from './src/page/createPage'
+import { attachAnimationControlHandlers, createEffectToggles, executeSelectedHoundstoothEffects } from './src'
 
-createPage(Object.values(effects))
+createEffectToggles(Object.values(effects))
+attachAnimationControlHandlers()
 executeSelectedHoundstoothEffects().then().catch()

@@ -27,15 +27,6 @@ describe('create checkbox', () => {
 		expect(returnedCheckbox).toBe(checkbox)
 	})
 
-	it('makes it so your cursor becomes a pointer when you hover over it', () => {
-		if (!returnedCheckbox.style) {
-			fail()
-		}
-		else {
-			expect(returnedCheckbox.style.cursor).toBe('pointer')
-		}
-	})
-
 	it('makes the checkbox using the houndstooth effect', () => {
 		expect(buildEffectToggleClickHandler.buildEffectToggleClickHandler).toHaveBeenCalledWith({
 			checkbox,

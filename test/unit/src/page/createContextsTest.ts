@@ -1,8 +1,8 @@
 import Spy = jasmine.Spy
 import { PageElement } from '../../../../src/page'
-import * as createCanvasContainer from '../../../../src/page/createCanvasContainer'
 import * as createContext from '../../../../src/page/createContext'
 import { createContexts } from '../../../../src/page/createContexts'
+import * as scaleCanvasContainer from '../../../../src/page/scaleCanvasContainer'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
@@ -54,10 +54,10 @@ describe('create contexts', () => {
 
 	it('creates the canvas container if it does not already exist', () => {
 		querySelectorSpy.and.returnValue(undefined)
-		spyOn(createCanvasContainer, 'createCanvasContainer').and.returnValue(canvasContainer)
+		spyOn(scaleCanvasContainer, 'scaleCanvasContainer').and.returnValue(canvasContainer)
 
 		createContexts()
 
-		expect(createCanvasContainer.createCanvasContainer).toHaveBeenCalled()
+		expect(scaleCanvasContainer.scaleCanvasContainer).toHaveBeenCalled()
 	})
 })

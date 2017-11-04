@@ -24,7 +24,7 @@ import {
 } from './components'
 import * as constants from './constants'
 import { executeSelectedHoundstoothEffects } from './execute'
-import { Context, createPage, maybeCreateEffectToggles, Px } from './page'
+import { attachAnimationControlHandlers, Context, createEffectToggles, Px } from './page'
 import { Color } from './render'
 import { Coordinate, Outline, Radian, rotateCoordinate } from './space'
 import { state } from './state'
@@ -40,10 +40,9 @@ export {
 	solid,
 	rotateCoordinate,
 	defaults,
-	maybeCreateEffectToggles,
 	state,
 	constants,
-	createPage,
+	createEffectToggles,
 	Effect,
 	Color,
 	Address,
@@ -69,6 +68,7 @@ export {
 	to,
 	from,
 	getFromBaseOrDefaultPattern,
+	attachAnimationControlHandlers,
 	StripeCountContinuumSettings,
 	ExecuteTexture,
 	GetStripePositions,

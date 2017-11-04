@@ -5,16 +5,14 @@ import { DEFAULT_STATE } from '../../../../src/store/defaults'
 import { setSetting } from '../../../../src/store/setSetting'
 import { Effect, State } from '../../../../src/store/types'
 import { resetInterface } from '../../../../src/ui/resetInterface'
-import Spy = jasmine.Spy
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
 describe('reset interface', () => {
 	const warningsContainer: page.PageElement = buildMockElement()
-	let querySelectorSpy: Spy
 	beforeEach(() => {
-		querySelectorSpy = spyOn(windowWrapper.document, 'querySelector').and.returnValue(warningsContainer)
+		spyOn(windowWrapper.document, 'querySelector').and.returnValue(warningsContainer)
 		spyOn(windowWrapper.window, 'clearInterval')
 	})
 
@@ -68,15 +66,5 @@ describe('reset interface', () => {
 		const expectedStore: State = DEFAULT_STATE
 		expectedStore.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 		expect(state).toEqual(expectedStore)
-	})
-
-	it('creates the warnings container if it does not already exist', () => {
-		querySelectorSpy.and.returnValue(undefined)
-		const createWarningsContainerSpy: Spy = spyOn(page, 'createWarningsContainer')
-		createWarningsContainerSpy.and.returnValue(warningsContainer)
-
-		resetInterface()
-
-		expect(createWarningsContainerSpy).toHaveBeenCalled()
 	})
 })

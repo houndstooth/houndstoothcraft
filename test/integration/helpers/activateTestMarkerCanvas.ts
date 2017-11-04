@@ -1,11 +1,10 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
-import { createCanvasContainer } from '../../../src/page/createCanvasContainer'
+import { scaleCanvasContainer } from '../../../src/page/scaleCanvasContainer'
 import { scaleElement } from '../../../src/page/scaleElement'
 import { Canvas, PageElement, Px } from '../../../src/page/types'
 import { state } from '../../../src/state'
 import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
-import { isEmpty } from '../../../src/utilities/codeUtilities'
 import * as to from '../../../src/utilities/to'
 import { NullarySideEffector } from '../../../src/utilities/types'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
@@ -37,14 +36,13 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		const testCanvasDisplayArea: PageElement = document.querySelector('.test-canvas-display-area') as HTMLElement || {}
 		if (testCanvasDisplayArea.style) {
 			testCanvasDisplayArea.style.display = 'block'
+			scaleElement({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 		}
 
-		scaleElement({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
-
-		let canvasContainer: PageElement = document.querySelector('.canvas-container') as HTMLElement || {}
-		if (isEmpty(canvasContainer)) {
-			canvasContainer = createCanvasContainer()
-		}
+		const canvasContainer: PageElement = document.createElement('div')
+		canvasContainer.classList.add('canvas-container')
+		testCanvasDisplayArea.appendChild(canvasContainer)
+		scaleCanvasContainer()
 
 		prepareCanvasForDisplayInTest(canvasContainer)
 

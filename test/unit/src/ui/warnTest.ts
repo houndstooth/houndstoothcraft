@@ -21,13 +21,4 @@ describe('warn', () => {
 		expect(children[ 0 ].innerHTML).toEqual('watch out!')
 		expect(children[ 1 ].innerHTML).toEqual('my man!')
 	})
-
-	it('creates the warnings container if it does not already exist', () => {
-		spyOn(window.document, 'querySelector').and.returnValue(undefined)
-		spyOn(page, 'createWarningsContainer').and.returnValue(warningsContainer)
-
-		warn('lookin\' good!')
-
-		expect(page.createWarningsContainer).toHaveBeenCalled()
-	})
 })

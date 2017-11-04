@@ -28,15 +28,6 @@ describe('create label', () => {
 		expect(returnedLabel).toBe(label)
 	})
 
-	it('makes it so your cursor becomes a pointer when you hover over it', () => {
-		if (!returnedLabel.style) {
-			fail()
-		}
-		else {
-			expect(returnedLabel.style.cursor).toBe('pointer')
-		}
-	})
-
 	it('adds one checkbox to the label', () => {
 		expect(children[ 0 ]).toBe(checkbox as PageElement)
 	})

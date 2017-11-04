@@ -1,5 +1,3 @@
-// tslint:disable:no-unsafe-any
-
 import * as from from '../utilities/from'
 import { Dimensions, PageElement } from './types'
 

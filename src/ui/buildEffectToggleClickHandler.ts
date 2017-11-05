@@ -1,3 +1,5 @@
+// tslint:disable:no-unsafe-any
+
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
 import { state } from '../state'
@@ -32,10 +34,19 @@ const removeEffect: (houndstoothEffect: Effect) => void =
 
 const dealWithAnimationControls: NullarySideEffector =
 	(): void => {
-		// tslint:disable-next-line:no-unsafe-any
-		const playButton: HTMLButtonElement | undefined = document.querySelector('.play-button') as HTMLButtonElement
+		const playButton: HTMLButtonElement | undefined = document.querySelector('#play-button') as HTMLButtonElement
 		if (playButton) {
 			playButton.disabled = !Object.keys(state.mainHoundstooth.animationsPattern).length
+		}
+
+		const pauseButton: HTMLButtonElement | undefined = document.querySelector('#pause-button') as HTMLButtonElement
+		if (pauseButton) {
+			pauseButton.disabled = true
+		}
+
+		const rewindButton: HTMLButtonElement | undefined = document.querySelector('#rewind-button') as HTMLButtonElement
+		if (rewindButton) {
+			rewindButton.disabled = true
 		}
 	}
 

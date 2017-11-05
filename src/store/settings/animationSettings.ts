@@ -19,7 +19,7 @@ type AnimationSettingsStructure = { readonly [P in keyof AnimationSettings]: any
 type AnimationSettingsFunctions = FunctionsOf<AnimationSettings>
 
 const DEFAULT_END_FRAME: Frame = to.Frame(10000)
-const DEFAULT_FRAME_RATE: number = 1.005
+const DEFAULT_FRAME_RATE: number = 30
 const DEFAULT_REFRESH_CANVAS: boolean = true
 const DEFAULT_START_FRAME: Frame = to.Frame(0)
 

@@ -40,7 +40,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		}
 
 		const canvasContainer: PageElement = document.createElement('div')
-		canvasContainer.classList.add('canvas-container')
+		canvasContainer.setAttribute('id', 'canvas-container')
 		testCanvasDisplayArea.appendChild(canvasContainer)
 		scaleCanvasContainer()
 

@@ -9,12 +9,12 @@ import { buildMockElement } from '../../../unit/helpers/buildMockElement'
 describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		const effectTogglesContainer: HTMLElement = document.createElement('div')
-		effectTogglesContainer.classList.add('effect-toggles-container')
+		effectTogglesContainer.setAttribute('id', 'effect-toggles-container')
 		effectTogglesContainer.style.display = 'none'
 		document.body.appendChild(effectTogglesContainer)
 
 		const warningsContainer: HTMLElement = document.createElement('div')
-		warningsContainer.classList.add('warnings-container')
+		warningsContainer.setAttribute('id', 'warnings-container')
 		warningsContainer.style.display = 'none'
 		document.body.appendChild(warningsContainer)
 

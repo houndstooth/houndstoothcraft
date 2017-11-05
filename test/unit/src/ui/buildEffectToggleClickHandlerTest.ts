@@ -2,12 +2,12 @@ import * as execute from '../../../../src/execute'
 import { composeMainHoundstooth } from '../../../../src/execute/composeMainHoundstooth'
 import { InputElement } from '../../../../src/page'
 import { state } from '../../../../src/state'
-import { Effect, PatternFunctions } from '../../../../src/store/types'
+import { Effect } from '../../../../src/store/types'
 import { buildEffectToggleClickHandler } from '../../../../src/ui/buildEffectToggleClickHandler'
 import * as resetInterface from '../../../../src/ui/resetInterface'
 import { NullarySideEffector } from '../../../../src/utilities/types'
-import * as windowWrapper from '../../../../src/utilities/windowWrapper'
 import { buildMockElement } from '../../helpers/buildMockElement'
+import { mockQuerySelector } from '../../helpers/mockQuerySelector'
 import Spy = jasmine.Spy
 import { SimulateClick } from '../../helpers/types'
 
@@ -54,20 +54,20 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 
 	describe('with respect to animation controls', () => {
-		it('enables the play button when the composed houndstooth has an animations pattern', () => {
-			const animationsPattern: PatternFunctions = { gridSettings: { gridSize: (p: number): number => p } }
-			const effectWithAnimations: Effect = { animationsPattern }
+		let playButton: HTMLButtonElement
+		let pauseButton: HTMLButtonElement
+		let rewindButton: HTMLButtonElement
+		let checkbox: InputElement
 
-			const checkbox: InputElement = buildMockElement()
-
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
-				checkbox,
-				houndstoothEffect: effectWithAnimations,
-			})
-
-			const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-			playButton.disabled = true
-			spyOn(windowWrapper.document, 'querySelector').and.returnValue(playButton)
+		beforeEach(() => {
+			const {
+				playButton: tmpPlayButton,
+				pauseButton: tmpPauseButton,
+				rewindButton: tmpRewindButton,
+			} = mockQuerySelector()
+			playButton = tmpPlayButton as HTMLButtonElement
+			pauseButton = tmpPauseButton as HTMLButtonElement
+			rewindButton = tmpRewindButton as HTMLButtonElement
 
 			// Do not want to deal with other document related stuff, but need the houndstooth composed.
 			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(async () => {
@@ -75,6 +75,21 @@ describe('build effect toggle click handler returns a function which', () => {
 
 				return new Promise<NullarySideEffector>((): void => undefined)
 			})
+
+			checkbox = buildMockElement()
+		})
+
+		it('enables the play button when the composed houndstooth has an animations pattern', () => {
+			const effectWithAnimations: Effect = {
+				animationsPattern: {
+					gridSettings: { gridSize: (p: number): number => p },
+				},
+			}
+			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
+				checkbox,
+				houndstoothEffect: effectWithAnimations,
+			})
+			playButton.disabled = true
 
 			simulateClick(checkbox, clickHandler)
 
@@ -83,28 +98,30 @@ describe('build effect toggle click handler returns a function which', () => {
 
 		it('disables the play button when the composed houndstooth does not have an animations pattern', () => {
 			const effectWithoutAnimations: Effect = { animationsPattern: {} }
+			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
+				checkbox,
+				houndstoothEffect: effectWithoutAnimations,
+			})
+			playButton.disabled = false
 
-			const checkbox: InputElement = buildMockElement()
+			simulateClick(checkbox, clickHandler)
 
+			expect(playButton.disabled).toBe(true)
+		})
+
+		it('always disables the pause and rewind buttons', () => {
+			pauseButton.disabled = false
+			rewindButton.disabled = false
+			const effectWithoutAnimations: Effect = { animationsPattern: {} }
 			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
 				checkbox,
 				houndstoothEffect: effectWithoutAnimations,
 			})
 
-			const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-			playButton.disabled = false
-			spyOn(windowWrapper.document, 'querySelector').and.returnValue(playButton)
-
-			// Do not want to deal with other document related stuff, but need the houndstooth composed.
-			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(async () => {
-				composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects })
-
-				return new Promise<NullarySideEffector>((): void => undefined)
-			})
-
 			simulateClick(checkbox, clickHandler)
 
-			expect(playButton.disabled).toBe(true)
+			expect(pauseButton.disabled).toBe(true)
+			expect(rewindButton.disabled).toBe(true)
 		})
 	})
 })

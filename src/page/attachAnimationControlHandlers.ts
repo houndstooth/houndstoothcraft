@@ -6,13 +6,13 @@ import { document } from '../utilities/windowWrapper'
 
 const attachAnimationControlHandlers: NullarySideEffector =
 	(): void => {
-		const playButton: HTMLButtonElement = document.querySelector('.play-button') as HTMLButtonElement
+		const playButton: HTMLButtonElement = document.querySelector('#play-button') as HTMLButtonElement
 		playButton.onclick = playClickHandler
 
-		const pauseButton: HTMLButtonElement = document.querySelector('.pause-button') as HTMLButtonElement
+		const pauseButton: HTMLButtonElement = document.querySelector('#pause-button') as HTMLButtonElement
 		pauseButton.onclick = pauseClickHandler
 
-		const rewindButton: HTMLButtonElement = document.querySelector('.rewind-button') as HTMLButtonElement
+		const rewindButton: HTMLButtonElement = document.querySelector('#rewind-button') as HTMLButtonElement
 		rewindButton.onclick = rewindClickHandler
 	}
 

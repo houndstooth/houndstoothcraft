@@ -9,7 +9,7 @@ const PROGRESS_UPDATE_RATE: number = 30
 
 const gridComplete: (resolveGrid: NullarySideEffector) => void =
 	(resolveGrid: NullarySideEffector): void => {
-		const progressBar: HTMLElement | undefined = document.querySelector('.progress-bar') as HTMLElement
+		const progressBar: HTMLElement | undefined = document.querySelector('#progress-bar') as HTMLElement
 
 		state.progressInterval = windowWrapper.setInterval(
 			buildProgressIntervalFunction({ progressBar, resolveGrid }),

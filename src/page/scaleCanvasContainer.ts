@@ -10,7 +10,7 @@ const scaleCanvasContainer: () => PageElement =
 	(): PageElement => {
 		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 
-		const canvasContainer: PageElement = document.querySelector('.canvas-container')
+		const canvasContainer: PageElement = document.querySelector('#canvas-container')
 
 		scaleElement({ element: canvasContainer, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 

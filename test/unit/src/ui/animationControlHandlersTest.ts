@@ -1,35 +1,30 @@
 import * as executeSelectedHoundstoothEffects from '../../../../src/execute/executeSelectedHoundstoothEffects'
-import { PageElement } from '../../../../src/page/types'
 import { state } from '../../../../src/state'
 import { pauseClickHandler, playClickHandler, rewindClickHandler } from '../../../../src/ui/animationControlHandlers'
 import Spy = jasmine.Spy
 import * as to from '../../../../src/utilities/to'
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
-import { buildMockElement } from '../../helpers/buildMockElement'
+import { mockQuerySelector } from '../../helpers/mockQuerySelector'
 
 describe('animation control handlers', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
-	const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-	const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-	const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+	let playButton: HTMLButtonElement
+	let pauseButton: HTMLButtonElement
+	let rewindButton: HTMLButtonElement
 
 	beforeEach(() => {
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'executeSelectedHoundstoothEffects')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
-		spyOn(windowWrapper.document, 'querySelector').and.callFake((selector: string): PageElement => {
-			switch (selector) {
-				case '.play-button':
-					return playButton
-				case '.pause-button':
-					return pauseButton
-				case '.rewind-button':
-					return rewindButton
-				default:
-					return buildMockElement()
-			}
-		})
+		const {
+			playButton: tmpPlayButton,
+			pauseButton: tmpPauseButton,
+			rewindButton: tmpRewindButton,
+		} = mockQuerySelector()
+		playButton = tmpPlayButton as HTMLButtonElement
+		pauseButton = tmpPauseButton as HTMLButtonElement
+		rewindButton = tmpRewindButton as HTMLButtonElement
 	})
 
 	describe('#playClickHandler', () => {

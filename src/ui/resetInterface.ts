@@ -10,7 +10,7 @@ import { document, window } from '../utilities/windowWrapper'
 
 const resetInterface: NullarySideEffector =
 	(): void => {
-		const warnings: PageElement = document.querySelector('.warnings-container')
+		const warnings: PageElement = document.querySelector('#warnings-container')
 		warnings.innerHTML = ''
 
 		clear()

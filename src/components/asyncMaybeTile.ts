@@ -15,7 +15,7 @@ const asyncMaybeTile: GridAddressFunction =
 				const percentage: number = Math.ceil(state.tilesCompleted * ONE_HUNDRED_PERCENT / (state.tileCount))
 
 				// tslint:disable-next-line:no-unsafe-any
-				const progressBar: HTMLElement | undefined = document.querySelector('.progress-bar') as HTMLElement
+				const progressBar: HTMLElement | undefined = document.querySelector('#progress-bar') as HTMLElement
 				if (progressBar) {
 					progressBar.style.height = `${ONE_HUNDRED_PERCENT - percentage}%`
 				}

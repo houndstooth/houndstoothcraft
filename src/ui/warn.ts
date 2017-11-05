@@ -8,7 +8,7 @@ const warn: (warningMessage: string) => void =
 		const warning: PageElement = document.createElement('div')
 		warning.innerHTML = warningMessage
 
-		const warningsContainer: PageElement = document.querySelector('.warnings-container')
+		const warningsContainer: PageElement = document.querySelector('#warnings-container')
 
 		warningsContainer.appendChild(warning)
 	}

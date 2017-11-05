@@ -7,6 +7,7 @@ import * as render from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 import * as to from '../../../../src/utilities/to'
+import * as from from '../../../../src/utilities/from'
 
 describe('execute pattern', () => {
 	const startLayer: Layer = to.Layer(2)
@@ -25,31 +26,65 @@ describe('execute pattern', () => {
 
 		expect(executeLayerSpy.calls.all().length).toBe(5)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
-			endLayer,
 			layer: to.Layer(0),
 			layerFunctionObjects,
 			startLayer,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
-			endLayer,
 			layer: to.Layer(1),
 			layerFunctionObjects,
 			startLayer,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
-			endLayer,
 			layer: to.Layer(2),
 			layerFunctionObjects,
 			startLayer,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
-			endLayer,
 			layer: to.Layer(3),
 			layerFunctionObjects,
 			startLayer,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
-			endLayer,
+			layer: to.Layer(4),
+			layerFunctionObjects,
+			startLayer,
+		})
+
+		done()
+	})
+
+	it('stops executing layers if the pattern ref has changed on the state (cancelled)', async (done: DoneFn) => {
+		const executeLayerSpy: Spy = spyOn(executeLayer, 'executeLayer').and.callFake(({ layer }: { layer: Layer }) => {
+			if (from.Layer(layer) === 2) {
+				state.patternRef = Math.random()
+			}
+		})
+
+		await executePattern({ layerFunctionObjects })
+
+		expect(executeLayerSpy.calls.all().length).toBe(3)
+		expect(executeLayerSpy).toHaveBeenCalledWith({
+			layer: to.Layer(0),
+			layerFunctionObjects,
+			startLayer,
+		})
+		expect(executeLayerSpy).toHaveBeenCalledWith({
+			layer: to.Layer(1),
+			layerFunctionObjects,
+			startLayer,
+		})
+		expect(executeLayerSpy).toHaveBeenCalledWith({
+			layer: to.Layer(2),
+			layerFunctionObjects,
+			startLayer,
+		})
+		expect(executeLayerSpy).not.toHaveBeenCalledWith({
+			layer: to.Layer(3),
+			layerFunctionObjects,
+			startLayer,
+		})
+		expect(executeLayerSpy).not.toHaveBeenCalledWith({
 			layer: to.Layer(4),
 			layerFunctionObjects,
 			startLayer,

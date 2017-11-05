@@ -8,6 +8,7 @@ const resetState: (_: State) => void =
 			objectToChange: state,
 			objectWithProperties: DEFAULT_STATE,
 		})
+		state.patternRef = Math.random()
 	}
 
 export { resetState }

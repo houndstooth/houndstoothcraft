@@ -23,7 +23,7 @@ describe('execute layer', () => {
 		const layer: Layer = to.Layer(12)
 		state.currentLayer = to.Layer(11)
 
-		await executeLayer({ layer, endLayer, layerFunctionObjects, startLayer })
+		await executeLayer({ layer, layerFunctionObjects, startLayer })
 
 		expect(state.currentLayer).toBe(to.Layer(12))
 
@@ -35,7 +35,7 @@ describe('execute layer', () => {
 			it('executes', async (done: DoneFn) => {
 				const layer: Layer = to.Layer(12)
 
-				await executeLayer({ layer, endLayer, layerFunctionObjects, startLayer })
+				await executeLayer({ layer, layerFunctionObjects, startLayer })
 
 				expect(executeGridAndMaybeLoggingSpy).toHaveBeenCalled()
 
@@ -47,7 +47,7 @@ describe('execute layer', () => {
 			it('does not execute', async (done: DoneFn) => {
 				const layer: Layer = to.Layer(11)
 
-				await executeLayer({ layer, endLayer, layerFunctionObjects, startLayer })
+				await executeLayer({ layer, layerFunctionObjects, startLayer })
 
 				expect(executeGridAndMaybeLoggingSpy).not.toHaveBeenCalled()
 
@@ -57,27 +57,27 @@ describe('execute layer', () => {
 	})
 
 	describe('calling layer functions for settings', () => {
-		describe('when the current layer is less than the end layer', () => {
-			it('calls them', async (done: DoneFn) => {
-				const layer: Layer = to.Layer(12)
+		describe('when it\'s the first layer', () => {
+			it('does not call them', async (done: DoneFn) => {
+				const layer: Layer = to.Layer(0)
 
-				await executeLayer({ layer, endLayer, layerFunctionObjects, startLayer })
+				await executeLayer({ layer, layerFunctionObjects, startLayer })
 
-				expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
-					settingsFunctionObjects: layerFunctionObjects,
-				})
+				expect(callFunctionsPerSettingSpy).not.toHaveBeenCalled()
 
 				done()
 			})
 		})
 
-		describe('when the current layer is equal to (or greater than?) the end layer', () => {
-			it('does not call them (this one last time)', async (done: DoneFn) => {
-				const layer: Layer = to.Layer(15)
+		describe('any later layer', () => {
+			it('calls them', async (done: DoneFn) => {
+				const layer: Layer = to.Layer(1)
 
-				await executeLayer({ layer, endLayer, layerFunctionObjects, startLayer })
+				await executeLayer({ layer, layerFunctionObjects, startLayer })
 
-				expect(callFunctionsPerSettingSpy).not.toHaveBeenCalled()
+				expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
+					settingsFunctionObjects: layerFunctionObjects,
+				})
 
 				done()
 			})

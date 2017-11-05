@@ -5,7 +5,7 @@ import { buildMockContext } from '../../../helpers/buildMockContext'
 import { buildMockCanvas } from '../../helpers/buildMockCanvas'
 import { buildMockElement } from '../../helpers/buildMockElement'
 
-fdescribe('create context', () => {
+describe('create context', () => {
 	let returnedContext: Context
 	let appendedCanvas: Canvas
 	const context: Context = buildMockContext()

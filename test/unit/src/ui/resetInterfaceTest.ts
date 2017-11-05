@@ -1,9 +1,7 @@
 import * as page from '../../../../src/page'
 import * as render from '../../../../src/render'
 import { state } from '../../../../src/state'
-import { DEFAULT_STATE } from '../../../../src/store/defaults'
-import { setSetting } from '../../../../src/store/setSetting'
-import { Effect, State } from '../../../../src/store/types'
+import { Effect } from '../../../../src/store/types'
 import { resetInterface } from '../../../../src/ui/resetInterface'
 import { NullarySideEffector } from '../../../../src/utilities/types'
 import * as windowWrapper from '../../../../src/utilities/windowWrapper'
@@ -41,14 +39,14 @@ describe('reset interface', () => {
 	})
 
 	it('clears any active rendering progress measurement', () => {
-		const progressInterval: NullarySideEffector = (): void => undefined
+		const gridProgressInterval: NullarySideEffector = (): void => undefined
 
-		state.progressInterval = progressInterval
+		state.gridProgressInterval = gridProgressInterval
 
 		resetInterface()
 
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.window.clearInterval).toHaveBeenCalledWith(state.progressInterval)
+		expect(windowWrapper.window.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
 	})
 
 	it('resets the state, except for any selected effects', () => {
@@ -56,15 +54,12 @@ describe('reset interface', () => {
 			animationsPattern: {},
 			basePattern: {},
 			layersPattern: {},
-			name: '',
+			name: 'fake',
 		}
 		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
-		setSetting('gridSettings', { tileResolution: 42 })
 
 		resetInterface()
 
-		const expectedStore: State = DEFAULT_STATE
-		expectedStore.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
-		expect(state).toEqual(expectedStore)
+		expect(state.selectedHoundstoothEffects[0]).toEqual(fakeHoundstoothEffect)
 	})
 })

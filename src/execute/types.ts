@@ -34,7 +34,6 @@ interface ExecuteAnimationParams {
 }
 
 interface ExecuteLayerParams {
-	readonly endLayer: Layer,
 	readonly layer: Layer,
 	readonly layerFunctionObjects: SettingsFunctionObject[],
 	readonly startLayer: Layer,
@@ -80,13 +79,12 @@ interface ShouldWarnAboutConflictsParams extends SettingOverride {
 	readonly warnAboutConflicts: boolean,
 }
 
-interface BuildProgressIntervalFunctionParams {
+interface BuildGridProgressIntervalFunctionParams {
 	progressBar?: PageElement,
-	resolveGrid: NullarySideEffector
 }
 
 export {
-	BuildProgressIntervalFunctionParams,
+	BuildGridProgressIntervalFunctionParams,
 	BuildWarningMessageParams,
 	ComposeMainHoundstooth,
 	ComposePatternParams,

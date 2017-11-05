@@ -10,8 +10,11 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 	async ({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): Promise<void> => {
 		const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layerSettings')
 
+		const thisPatternRef = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
-			await executeLayer({ layer: to.Layer(layerValue), startLayer, endLayer, layerFunctionObjects })
+			if (thisPatternHasNotBeenCancelled(thisPatternRef)) {
+				await executeLayer({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects })
+			}
 		}
 
 		if (state.mixingDown) {
@@ -20,5 +23,9 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 
 		state.currentLayer = to.Layer(0)
 	}
+
+const thisPatternHasNotBeenCancelled: (patternRef: number) => boolean =
+	(patternRef: number): boolean =>
+		patternRef === state.patternRef
 
 export { executePattern }

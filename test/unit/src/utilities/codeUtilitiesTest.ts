@@ -95,8 +95,8 @@ describe('code utilities', () => {
 			const anImmutableFunction: (p: number) => number = (p: number): number => p * 3
 			const anUndefinedValue: void = undefined
 			const originalArray: any[] = [ 'a', 2, { what: 'ever' } ]
-			const originalDeepObject: { deeperObject: string } = { deeperObject: 'cool beans' }
-			const originalShallowObject: { deepObject: { deeperObject: string } } = { deepObject: originalDeepObject }
+			const originalDeepObject: { deeperSetting: string } = { deeperSetting: 'cool beans' }
+			const originalShallowObject: { deepObject: { deeperSetting: string } } = { deepObject: originalDeepObject }
 			originalObject = {
 				anArray: originalArray,
 				anImmutableFunction,

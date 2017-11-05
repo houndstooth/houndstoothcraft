@@ -4,7 +4,14 @@ import { mockQuerySelector } from '../../helpers/mockQuerySelector'
 
 describe('attach animation control handlers', () => {
 	it('attaches the handlers for the animation controls', () => {
-		const { playButton, pauseButton, rewindButton } = mockQuerySelector()
+		const {
+			playButton: tmpPlayButton,
+			pauseButton: tmpPauseButton,
+			rewindButton: tmpRewindButton,
+		} = mockQuerySelector()
+		const playButton: HTMLButtonElement = tmpPlayButton as HTMLButtonElement
+		const pauseButton: HTMLButtonElement = tmpPauseButton as HTMLButtonElement
+		const rewindButton: HTMLButtonElement = tmpRewindButton as HTMLButtonElement
 
 		attachAnimationControlHandlers()
 

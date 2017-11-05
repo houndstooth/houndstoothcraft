@@ -10,6 +10,7 @@ const createContext: (_: { canvasContainer: PageElement }) => Context =
 		const canvas: Canvas = document.createElement('canvas')
 		canvas.width = canvasSize
 		canvas.height = canvasSize
+		canvas.style.position = 'absolute'
 
 		canvasContainer.appendChild(canvas)
 

@@ -116,8 +116,8 @@ enum _SupertileBrand {}
 type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 
 interface TextureParams extends ComponentParams {
-	readonly tileSize: Unit,
 	readonly executeTexture: ExecuteTexture,
+	readonly tileSize: Unit,
 }
 
 type Tile = (_: TileParams) => void

@@ -3,7 +3,6 @@
 import { PageElement } from '../page/types'
 import { Effect, SettingsPath, SettingsStep } from '../store'
 import { Pattern } from '../store/types'
-import { NullarySideEffector } from '../utilities/types'
 
 interface BuildWarningMessageParams extends FullSettingsPath, SettingOverride {
 }

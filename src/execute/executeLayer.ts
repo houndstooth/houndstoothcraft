@@ -1,8 +1,8 @@
 import { state } from '../state'
+import * as from from '../utilities/from'
 import { callFunctionsPerSetting } from './callFunctionsPerSetting'
 import { executeGridAndMaybeLogging } from './executeGridAndMaybeLogging'
 import { ExecuteLayerParams } from './types'
-import * as from from '../utilities/from'
 
 const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 	async ({ layer, layerFunctionObjects, startLayer }: ExecuteLayerParams): Promise<void> => {

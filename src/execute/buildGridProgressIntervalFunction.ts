@@ -13,9 +13,7 @@ const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionPa
 
 				// tslint:disable-next-line:no-unsafe-any
 				windowWrapper.clearInterval(state.gridProgressInterval)
-				if (state.resolveGrid) {
-					state.resolveGrid()
-				}
+				state.resolveGrid()
 			}
 		}
 

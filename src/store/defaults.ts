@@ -1,8 +1,10 @@
+import { noop } from '../../test/helpers/noop'
 import { Frame } from '../animation'
 import { ColorSet } from '../components/types'
 import { Layer } from '../execute'
 import { Context, Px } from '../page'
 import * as to from '../utilities/to'
+import { NullarySideEffector } from '../utilities/types'
 import {
 	animationSettings,
 	colorSettings,
@@ -14,8 +16,6 @@ import {
 	viewSettings,
 } from './settings'
 import { BasePattern, Effect, Houndstooth, PatternFunctions, State } from './types'
-import { NullarySideEffector } from '../utilities/types'
-import { noop } from '../../test/helpers/noop'
 
 const DEFAULT_BASE_PATTERN: BasePattern = {
 	animationSettings: animationSettings.DEFAULT_ANIMATION_SETTINGS,
@@ -44,13 +44,13 @@ const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
+const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_INTERVAL: undefined = undefined
 const DEFAULT_LAST_SAVED_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
 const DEFAULT_MIXING_DOWN: boolean = false
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
-const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
 const DEFAULT_SYNC_MODE: boolean = false
@@ -63,6 +63,7 @@ const DEFAULT_STATE: State = {
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
+	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	interval: DEFAULT_INTERVAL,
 	lastSavedFrame: DEFAULT_LAST_SAVED_ANIMATION_FRAME,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
@@ -70,7 +71,6 @@ const DEFAULT_STATE: State = {
 	mixingDown: DEFAULT_MIXING_DOWN,
 	patternRef: DEFAULT_PATTERN_REF,
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
-	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	resolveGrid: DEFAULT_RESOLVE_GRID,
 	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 	syncMode: DEFAULT_SYNC_MODE,

@@ -10,7 +10,7 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 	async ({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): Promise<void> => {
 		const { startLayer, endLayer }: LayerSettings = getFromBaseOrDefaultPattern('layerSettings')
 
-		const thisPatternRef = state.patternRef
+		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
 			if (thisPatternHasNotBeenCancelled(thisPatternRef)) {
 				await executeLayer({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects })

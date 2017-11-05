@@ -144,8 +144,8 @@ describe('.gridSettings', () => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: {
-						tileResolution: 1,
 						includeNegativeQuadrants: true,
+						tileResolution: 1,
 					},
 					tileSettings: {
 						tileSize,

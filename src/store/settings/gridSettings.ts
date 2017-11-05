@@ -6,8 +6,8 @@ import { buildSettingsNamesToPathsMap } from '../buildSettingsNamesToPathsMap'
 import { Overwrite, SettingsNamesByTypeBase } from '../types'
 
 interface GridSettings {
-	readonly tileResolution: number,
 	readonly includeNegativeQuadrants: boolean,
+	readonly tileResolution: number,
 	readonly [_: string]: any,
 }
 
@@ -19,8 +19,8 @@ const DEFAULT_TILE_RESOLUTION: number = 16
 const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS: boolean = false
 
 const DEFAULT_GRID_SETTINGS: GridSettings = {
-	tileResolution: DEFAULT_TILE_RESOLUTION,
 	includeNegativeQuadrants: DEFAULT_INCLUDE_NEGATIVE_QUADRANTS,
+	tileResolution: DEFAULT_TILE_RESOLUTION,
 }
 
 type GridSettingsName = 'gridSettings'

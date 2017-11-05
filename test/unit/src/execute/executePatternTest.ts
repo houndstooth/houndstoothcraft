@@ -6,8 +6,8 @@ import { Layer, SettingsFunctionObject } from '../../../../src/execute/types'
 import * as render from '../../../../src/render'
 import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
-import * as to from '../../../../src/utilities/to'
 import * as from from '../../../../src/utilities/from'
+import * as to from '../../../../src/utilities/to'
 
 describe('execute pattern', () => {
 	const startLayer: Layer = to.Layer(2)

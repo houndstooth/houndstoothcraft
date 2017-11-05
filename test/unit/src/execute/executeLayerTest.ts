@@ -7,7 +7,6 @@ import * as to from '../../../../src/utilities/to'
 import Spy = jasmine.Spy
 
 describe('execute layer', () => {
-	const endLayer: Layer = to.Layer(15)
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const startLayer: Layer = to.Layer(12)
 

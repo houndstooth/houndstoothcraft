@@ -23,7 +23,7 @@ describe('.colorSettings', () => {
 						colorSet: to.ColorSet([ YELLOW, BLUE ]),
 					},
 					gridSettings: {
-						gridSize: sufficientTileCountToDemonstrateSetting,
+						tileResolution: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
 						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
@@ -63,7 +63,7 @@ describe('.colorSettings', () => {
 						colorSet: to.ColorSet([ YELLOW, BLUE, CYAN ]),
 					},
 					gridSettings: {
-						gridSize: sufficientTileCountToDemonstrateSetting,
+						tileResolution: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
 						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
@@ -153,7 +153,7 @@ describe('.colorSettings', () => {
 								},
 							},
 							gridSettings: {
-								gridSize: sufficientTileCountToDemonstrateSetting,
+								tileResolution: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
 								canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
@@ -495,7 +495,7 @@ describe('.colorSettings', () => {
 								colorSet: to.ColorSet([ YELLOW, BLUE, CYAN, MAGENTA ]),
 							},
 							gridSettings: {
-								gridSize: sufficientTileCountToDemonstrateSetting,
+								tileResolution: sufficientTileCountToDemonstrateSetting,
 							},
 							viewSettings: {
 								canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
@@ -634,7 +634,7 @@ describe('.colorSettings', () => {
 							},
 						},
 						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
+							tileResolution: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
 							canvasSize: to.Px(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
@@ -713,7 +713,7 @@ describe('.colorSettings', () => {
 							},
 						},
 						gridSettings: {
-							gridSize: sufficientTileCountToDemonstrateSetting,
+							tileResolution: sufficientTileCountToDemonstrateSetting,
 						},
 						viewSettings: {
 							canvasSize: to.Px(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
@@ -770,7 +770,7 @@ describe('.colorSettings', () => {
 						opacity,
 					},
 					gridSettings: {
-						gridSize: sufficientTileCountToDemonstrateSetting,
+						tileResolution: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
 						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
@@ -811,7 +811,7 @@ describe('.colorSettings', () => {
 						colorSet: to.ColorSet([ BLACK, TRANSPARENT ]),
 					},
 					gridSettings: {
-						gridSize: sufficientTileCountToDemonstrateSetting,
+						tileResolution: sufficientTileCountToDemonstrateSetting,
 					},
 					viewSettings: {
 						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),

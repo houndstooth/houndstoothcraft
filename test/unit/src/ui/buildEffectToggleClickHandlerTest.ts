@@ -82,7 +82,7 @@ describe('build effect toggle click handler returns a function which', () => {
 		it('enables the play button when the composed houndstooth has an animations pattern', () => {
 			const effectWithAnimations: Effect = {
 				animationsPattern: {
-					gridSettings: { gridSize: (p: number): number => p },
+					gridSettings: { tileResolution: (p: number): number => p },
 				},
 			}
 			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({

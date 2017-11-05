@@ -6,7 +6,7 @@ import { state } from '../../../../src/state'
 import { setSetting } from '../../../../src/store/setSetting'
 
 describe('execute grid', () => {
-	const gridSize: number = 2
+	const tileResolution: number = 2
 	beforeEach(() => {
 		// This is false in every other test. Currently only used for testing.
 		// So, we need to turn it off for this test to truly test the subject.
@@ -15,7 +15,7 @@ describe('execute grid', () => {
 		spyOn(gridComplete, 'gridComplete')
 
 		spyOn(components, 'grid')
-		setSetting('gridSettings', { gridSize })
+		setSetting('gridSettings', { tileResolution })
 	})
 
 	describe('when animating', () => {

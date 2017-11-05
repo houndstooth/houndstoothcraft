@@ -6,9 +6,9 @@ import * as view from '../../../../src/view'
 
 describe('grid', () => {
 	let gridTileSpy: Spy
-	const gridSize: number = 2
+	const tileResolution: number = 2
 	beforeEach(() => {
-		setSetting('gridSize', gridSize)
+		setSetting('tileResolution', tileResolution)
 		gridTileSpy = jasmine.createSpy('gridTile')
 		spyOn(view, 'applyViewForGrid')
 	})
@@ -22,7 +22,7 @@ describe('grid', () => {
 	it('uses the given grid size', () => {
 		grid({ gridTile: gridTileSpy })
 
-		expect(gridTileSpy.calls.all().length).toBe(Math.pow(gridSize, 2))
+		expect(gridTileSpy.calls.all().length).toBe(Math.pow(tileResolution, 2))
 	})
 
 	describe('when negative quadrants are excluded', () => {
@@ -33,7 +33,7 @@ describe('grid', () => {
 		it('only makes tiles with positive addresses', () => {
 			grid({ gridTile: gridTileSpy })
 
-			expect(gridTileSpy.calls.count()).toEqual(Math.pow(gridSize, 2))
+			expect(gridTileSpy.calls.count()).toEqual(Math.pow(tileResolution, 2))
 			expect(gridTileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ 0, 0 ] } ])
 			expect(gridTileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ 0, 1 ] } ])
 			expect(gridTileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ 1, 0 ] } ])
@@ -45,7 +45,7 @@ describe('grid', () => {
 
 			grid({ gridTile: gridTileSpy })
 
-			expect(state.tileCount).toBe(Math.pow(gridSize, 2))
+			expect(state.tileCount).toBe(Math.pow(tileResolution, 2))
 		})
 	})
 
@@ -60,7 +60,7 @@ describe('grid', () => {
 
 			grid({ gridTile: gridTileSpy })
 
-			expect(gridTileSpy.calls.count()).toEqual(Math.pow(gridSize, 2) * quadrantCount)
+			expect(gridTileSpy.calls.count()).toEqual(Math.pow(tileResolution, 2) * quadrantCount)
 			expect(gridTileSpy.calls.all()[ 0 ].args).toEqual([ { gridAddress: [ -2, -2 ] } ])
 			expect(gridTileSpy.calls.all()[ 1 ].args).toEqual([ { gridAddress: [ -2, -1 ] } ])
 			expect(gridTileSpy.calls.all()[ 2 ].args).toEqual([ { gridAddress: [ -2, 0 ] } ])
@@ -84,7 +84,7 @@ describe('grid', () => {
 
 			grid({ gridTile: gridTileSpy })
 
-			expect(state.tileCount).toBe(Math.pow(gridSize, 2) * 4)
+			expect(state.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
 		})
 	})
 })

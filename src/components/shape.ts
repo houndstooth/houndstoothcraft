@@ -17,7 +17,7 @@ const shape: (_: ShapeParams) => void =
 		const { executeTexture }: TextureSettings = getFromBaseOrDefaultPattern('textureSettings')
 
 		if (executeTexture) {
-			texture({ outline, tileOrigin, tileSize, executeTexture, shapeColorIndex })
+			texture({ outline, tileSize, executeTexture, shapeColorIndex })
 		}
 		else {
 			solid({ outline, shapeColorIndex })

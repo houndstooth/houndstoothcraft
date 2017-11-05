@@ -12,22 +12,22 @@ const grid: (_: { gridTile: GridAddressFunction }) => void =
 	({ gridTile }: { gridTile: GridAddressFunction }): void => {
 		applyViewForGrid()
 
-		const { includeNegativeQuadrants, gridSize }: GridSettings = getFromBaseOrDefaultPattern('gridSettings')
+		const { includeNegativeQuadrants, tileResolution }: GridSettings = getFromBaseOrDefaultPattern('gridSettings')
 
-		let adjustedGridSize: number = gridSize
+		let adjustedTileResolution: number = tileResolution
 		let gridOffset: number = 0
-		let tileCount: number = gridSize * gridSize
+		let tileCount: number = tileResolution * tileResolution
 
 		if (includeNegativeQuadrants) {
-			adjustedGridSize *= NEGATIVE_AND_POSITIVE
-			gridOffset -= gridSize
+			adjustedTileResolution *= NEGATIVE_AND_POSITIVE
+			gridOffset -= tileResolution
 			tileCount *= QUADRANT_COUNT
 		}
 
 		state.tileCount = tileCount
 
-		iterator(adjustedGridSize).forEach((x: number): void => {
-			iterator(adjustedGridSize).forEach((y: number): void => {
+		iterator(adjustedTileResolution).forEach((x: number): void => {
+			iterator(adjustedTileResolution).forEach((y: number): void => {
 				gridTile({ gridAddress: to.Address([ x + gridOffset, y + gridOffset ]) })
 			})
 		})

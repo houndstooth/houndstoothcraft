@@ -15,7 +15,7 @@ describe('standard houndstooth pattern', () => {
 		await executeSelectedHoundstoothEffects({
 			houndstoothOverrides: {
 				basePattern: {
-					gridSettings: { gridSize: 4 },
+					gridSettings: { tileResolution: 4 },
 				},
 			},
 		})

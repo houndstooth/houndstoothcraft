@@ -11,15 +11,15 @@ import { StandardTileExpectation } from '../../helpers/types'
 describe('.gridSettings', () => {
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
 
-	describe('.gridSize', () => {
-		it('changes how many tiles there are', async (done: DoneFn) => {
+	describe('.tileResolution', () => {
+		it('changes how many tiles there are per dimension', async (done: DoneFn) => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ BLACK, WHITE ]),
 					},
 					gridSettings: {
-						gridSize: 3,
+						tileResolution: 3,
 					},
 					viewSettings: {
 						canvasSize: to.Px(200),
@@ -144,7 +144,7 @@ describe('.gridSettings', () => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: {
-						gridSize: 1,
+						tileResolution: 1,
 						includeNegativeQuadrants: true,
 					},
 					tileSettings: {

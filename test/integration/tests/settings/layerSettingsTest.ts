@@ -14,7 +14,7 @@ describe('.layerSettings', () => {
 		const houndstoothOverrides: Effect = {
 			basePattern: {
 				colorSettings: { backgroundColor: YELLOW },
-				gridSettings: { gridSize: 2 },
+				gridSettings: { tileResolution: 2 },
 				layerSettings: { endLayer: to.Layer(1) },
 				viewSettings: { canvasSize: to.Px(100) },
 			},
@@ -45,7 +45,7 @@ describe('.layerSettings', () => {
 		const houndstoothOverrides: Effect = {
 			basePattern: {
 				colorSettings: { backgroundColor: YELLOW },
-				gridSettings: { gridSize: 0 },
+				gridSettings: { tileResolution: 0 },
 				layerSettings: { endLayer: to.Layer(1) },
 				viewSettings: { canvasSize: to.Px(100) },
 			},
@@ -54,7 +54,7 @@ describe('.layerSettings', () => {
 					backgroundColor: (): Color => CYAN,
 					colorSet: (): ColorSet => to.ColorSet([ TRANSPARENT, ERASE ]),
 				},
-				gridSettings: { gridSize: (): number => 2 },
+				gridSettings: { tileResolution: (): number => 2 },
 			},
 		}
 		activateTestMarkerCanvas()

@@ -105,7 +105,6 @@ describe('shape', () => {
 					executeTexture,
 					outline,
 					shapeColorIndex,
-					tileOrigin,
 					tileSize,
 				})
 			})

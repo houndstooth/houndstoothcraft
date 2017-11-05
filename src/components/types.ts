@@ -30,16 +30,17 @@ enum _ColorSetBrand {}
 
 type ColorSet = _ColorSetBrand & Color[]
 
-interface ComponentParams extends TileOriginAndSize, ColorOptions, OutlineAsParam {
+interface ComponentParams extends ColorOptions, OutlineAsParam {
 }
 
 interface DefinedTileParams extends TileOriginAndSize {
-	gridAddress: Address,
+	readonly gridAddress: Address,
 }
 
 type ExecuteTexture = (_: ExecuteTextureParams) => void
 
-interface ExecuteTextureParams extends TileOriginAndSize, ColorOptions {
+interface ExecuteTextureParams extends ColorOptions {
+	readonly tileSize: Unit,
 }
 
 interface GridAddressParam {
@@ -57,10 +58,10 @@ type GetShapeColorIndices = (_: GridAddressParam) => ShapeColorIndex[]
 type GetShapeColorIndicesWithOffset = (_: GetShapeColorIndicesWithOffsetParams) => ShapeColorIndex[]
 
 interface GetStripeArgsParams {
-	args: ShapeArgs,
-	stripeIndex: number,
-	stripePositions: StripePosition[],
-	stripeStart: StripePosition,
+	readonly args: ShapeArgs,
+	readonly stripeIndex: number,
+	readonly stripePositions: StripePosition[],
+	readonly stripeStart: StripePosition,
 }
 
 type GetStripePosition = (_: GetStripePositionParams) => StripePosition
@@ -115,6 +116,7 @@ enum _SupertileBrand {}
 type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 
 interface TextureParams extends ComponentParams {
+	readonly tileSize: Unit,
 	readonly executeTexture: ExecuteTexture,
 }
 

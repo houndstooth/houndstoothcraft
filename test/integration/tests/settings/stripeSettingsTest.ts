@@ -19,7 +19,7 @@ describe('.stripeSettings', () => {
 			beforeEach(() => {
 				houndstoothOverrides = {
 					basePattern: {
-						gridSettings: { gridSize: 1 },
+						gridSettings: { tileResolution: 1 },
 						stripeSettings: {
 							stripePositionSettings: {
 								stripeCountMode: StripeCountMode.GinghamChevronContinuum,
@@ -51,7 +51,7 @@ describe('.stripeSettings', () => {
 			it('changes the number of stripes in striped tiles', async (done: DoneFn) => {
 				const houndstoothOverrides: Effect = {
 					basePattern: {
-						gridSettings: { gridSize: 2 },
+						gridSettings: { tileResolution: 2 },
 						stripeSettings: {
 							stripePositionSettings: {
 								stripeCount: 5,

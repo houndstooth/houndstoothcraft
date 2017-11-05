@@ -118,7 +118,7 @@ describe('.tileSettings', () => {
 			houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
-					gridSettings: { gridSize: 1 },
+					gridSettings: { tileResolution: 1 },
 				},
 			}
 			context = buildMockContext({ contextCallsOrder })
@@ -148,7 +148,7 @@ describe('.tileSettings', () => {
 			houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
-					gridSettings: { gridSize: 1 },
+					gridSettings: { tileResolution: 1 },
 					tileSettings: { collapseSameColoredShapesWithinTile: false },
 				},
 			}

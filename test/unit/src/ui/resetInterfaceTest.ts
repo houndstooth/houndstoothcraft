@@ -59,7 +59,7 @@ describe('reset interface', () => {
 			name: '',
 		}
 		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
-		setSetting('gridSettings', { gridSize: 42 })
+		setSetting('gridSettings', { tileResolution: 42 })
 
 		resetInterface()
 

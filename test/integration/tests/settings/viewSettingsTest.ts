@@ -40,7 +40,7 @@ describe('.viewSettings', () => {
 			const zoom: number = 2
 			const houndstoothOverrides: Effect = {
 				basePattern: {
-					gridSettings: { gridSize: 2 },
+					gridSettings: { tileResolution: 2 },
 					viewSettings: { zoom },
 				},
 			}
@@ -87,7 +87,7 @@ describe('.viewSettings', () => {
 			const zoom: number = 2
 			const houndstoothOverrides: Effect = {
 				basePattern: {
-					gridSettings: { gridSize: 8 },
+					gridSettings: { tileResolution: 8 },
 					viewSettings: {
 						zoom: 2,
 						zoomOnCanvasCenter: true,
@@ -136,7 +136,7 @@ describe('.viewSettings', () => {
 			const tileSize: Unit = to.Unit(100)
 			const houndstoothOverrides: Effect = {
 				basePattern: {
-					gridSettings: { gridSize: 2 },
+					gridSettings: { tileResolution: 2 },
 					tileSettings: { tileSize },
 					viewSettings: { centerViewOnCenterOfTileAtHomeAddress: true },
 				},
@@ -182,7 +182,7 @@ describe('.viewSettings', () => {
 			const houndstoothOverrides: Effect = {
 				basePattern: {
 					gridSettings: {
-						gridSize: 2,
+						tileResolution: 2,
 					},
 					tileSettings: {
 						tileSize: areaSize,

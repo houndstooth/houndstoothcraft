@@ -13,7 +13,7 @@ describe('compose patterns', () => {
 				},
 			},
 			gridSettings: {
-				gridSize: 777,
+				tileResolution: 777,
 			},
 		}
 		const patternToMerge: Pattern = {
@@ -23,7 +23,7 @@ describe('compose patterns', () => {
 				},
 			},
 			gridSettings: {
-				gridSize: 666,
+				tileResolution: 666,
 			},
 		}
 
@@ -37,7 +37,7 @@ describe('compose patterns', () => {
 				},
 			},
 			gridSettings: {
-				gridSize: 666,
+				tileResolution: 666,
 			},
 		}
 		expect(expectedPattern).toEqual(patternToBeMergedOnto)

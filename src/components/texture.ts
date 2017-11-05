@@ -2,10 +2,10 @@ import { resetClip, setClip } from '../render'
 import { TextureParams } from './types'
 
 const texture: (_: TextureParams) => void =
-	({ outline, tileOrigin, tileSize, executeTexture, shapeColorIndex, shapeColorCount }: TextureParams): void => {
+	({ outline, tileOrigin, tileSize, executeTexture, shapeColorIndex }: TextureParams): void => {
 		setClip({ outline })
 
-		executeTexture({ shapeColorIndex, shapeColorCount, tileOrigin, tileSize })
+		executeTexture({ shapeColorIndex, tileOrigin, tileSize })
 
 		resetClip()
 	}

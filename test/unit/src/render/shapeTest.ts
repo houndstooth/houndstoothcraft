@@ -104,7 +104,6 @@ describe('shape', () => {
 				expect(texture.texture).toHaveBeenCalledWith({
 					executeTexture,
 					outline,
-					shapeColorCount: 0,
 					shapeColorIndex,
 					tileOrigin,
 					tileSize,

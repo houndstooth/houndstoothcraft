@@ -10,17 +10,16 @@ describe('texture', () => {
 		spyOn(render, 'setClip')
 		spyOn(render, 'resetClip')
 
-		const shapeColorCount: number = 2
 		const tileOrigin: Coordinate = to.Coordinate([])
 		const tileSize: Unit = to.Unit(11)
 		const shapeColorIndex: ShapeColorIndex = to.ShapeColorIndex(3)
 		const outline: Outline = to.Outline([])
 		const executeTexture: Spy = jasmine.createSpy('executeTexture')
 
-		texture({ outline, executeTexture, shapeColorCount, shapeColorIndex, tileOrigin, tileSize })
+		texture({ outline, executeTexture, shapeColorIndex, tileOrigin, tileSize })
 
 		expect(render.setClip).toHaveBeenCalledWith({ outline })
-		expect(executeTexture).toHaveBeenCalledWith({ shapeColorIndex, shapeColorCount, tileOrigin, tileSize })
+		expect(executeTexture).toHaveBeenCalledWith({ shapeColorIndex, tileOrigin, tileSize })
 		expect(render.resetClip).toHaveBeenCalled()
 	})
 })

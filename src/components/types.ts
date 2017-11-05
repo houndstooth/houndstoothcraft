@@ -23,7 +23,6 @@ enum BaseStripeDiagonal {
 }
 
 interface ColorOptions {
-	readonly shapeColorCount: number,
 	readonly shapeColorIndex: ShapeColorIndex,
 }
 

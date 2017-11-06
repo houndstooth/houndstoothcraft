@@ -4,6 +4,7 @@ import { getFromBaseOrDefaultPattern, LayerSettings } from '../store'
 import * as from from '../utilities/from'
 import * as to from '../utilities/to'
 import { executeLayer } from './executeLayer'
+import { thisPatternHasNotBeenCancelled } from './thisPatternHasNotBeenCanceled'
 import { SettingsFunctionObject } from './types'
 
 const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => Promise<void> =
@@ -13,7 +14,7 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
 			if (thisPatternHasNotBeenCancelled(thisPatternRef)) {
-				await executeLayer({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects })
+				await executeLayer({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
 			}
 		}
 
@@ -23,9 +24,5 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 
 		state.currentLayer = to.Layer(0)
 	}
-
-const thisPatternHasNotBeenCancelled: (patternRef: number) => boolean =
-	(patternRef: number): boolean =>
-		patternRef === state.patternRef
 
 export { executePattern }

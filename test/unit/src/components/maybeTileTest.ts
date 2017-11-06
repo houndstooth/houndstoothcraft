@@ -10,6 +10,7 @@ describe('maybe tile', () => {
 	const gridAddress: Address = to.Address([ 5, 3 ])
 	const tileOrigin: Coordinate = to.Coordinate([ 4, 4 ])
 	const tileSize: Unit = to.Unit(7)
+	const thisPatternRef: number = 99
 
 	beforeEach(() => {
 		spyOn(tile, 'tile')
@@ -18,7 +19,7 @@ describe('maybe tile', () => {
 	it('calls tile if an origin and size are got', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
 
-		maybeTile({ gridAddress })
+		maybeTile({ gridAddress, thisPatternRef })
 
 		expect(tile.tile).toHaveBeenCalledWith({ gridAddress, tileOrigin, tileSize })
 	})
@@ -26,7 +27,7 @@ describe('maybe tile', () => {
 	it('does not call tile if neither origin nor size is got', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue(undefined)
 
-		maybeTile({ gridAddress })
+		maybeTile({ gridAddress, thisPatternRef })
 
 		expect(tile.tile).not.toHaveBeenCalled()
 	})
@@ -34,7 +35,7 @@ describe('maybe tile', () => {
 	it('does not call tile if origin is got but size is not', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin })
 
-		maybeTile({ gridAddress })
+		maybeTile({ gridAddress, thisPatternRef })
 
 		expect(tile.tile).not.toHaveBeenCalled()
 	})
@@ -42,7 +43,7 @@ describe('maybe tile', () => {
 	it('does not call tile if size is got but origin is not', () => {
 		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileSize })
 
-		maybeTile({ gridAddress })
+		maybeTile({ gridAddress, thisPatternRef })
 
 		expect(tile.tile).not.toHaveBeenCalled()
 	})
@@ -50,7 +51,7 @@ describe('maybe tile', () => {
 	it('increments the count of tiles completed', () => {
 		state.tilesCompleted = 5
 
-		maybeTile({ gridAddress })
+		maybeTile({ gridAddress, thisPatternRef })
 
 		expect(state.tilesCompleted).toBe(6)
 	})

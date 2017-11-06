@@ -16,6 +16,7 @@ describe('execute pattern', () => {
 	beforeEach(() => {
 		setSetting('startLayer', startLayer)
 		setSetting('endLayer', endLayer)
+		state.patternRef = 99
 	})
 
 	// tslint:disable-next-line:max-line-length
@@ -29,26 +30,31 @@ describe('execute pattern', () => {
 			layer: to.Layer(0),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(1),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(2),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(3),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(4),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 
 		done()
@@ -68,26 +74,31 @@ describe('execute pattern', () => {
 			layer: to.Layer(0),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(1),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(2),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).not.toHaveBeenCalledWith({
 			layer: to.Layer(3),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).not.toHaveBeenCalledWith({
 			layer: to.Layer(4),
 			layerFunctionObjects,
 			startLayer,
+			thisPatternRef: 99,
 		})
 
 		done()

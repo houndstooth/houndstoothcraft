@@ -5,7 +5,7 @@ import { executeGridAndMaybeLogging } from './executeGridAndMaybeLogging'
 import { ExecuteLayerParams } from './types'
 
 const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
-	async ({ layer, layerFunctionObjects, startLayer }: ExecuteLayerParams): Promise<void> => {
+	async ({ layer, layerFunctionObjects, startLayer, thisPatternRef }: ExecuteLayerParams): Promise<void> => {
 		state.currentLayer = layer
 
 		if (from.Layer(layer) > 0) {
@@ -13,7 +13,7 @@ const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 		}
 
 		if (from.Layer(layer) >= from.Layer(startLayer) || 0) {
-			await executeGridAndMaybeLogging()
+			await executeGridAndMaybeLogging({ thisPatternRef })
 		}
 	}
 

@@ -13,6 +13,7 @@ describe('async maybe tile', () => {
 	let setTimeoutSpy: Spy
 	const gridAddress: Address = to.Address([ 4, 5 ])
 	beforeEach(() => {
+		state.patternRef = 99
 		// tslint:disable-next-line:no-unsafe-any
 		setTimeoutSpy = spyOn(windowWrapper, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
 			fn()
@@ -21,26 +22,47 @@ describe('async maybe tile', () => {
 	})
 
 	it('unblocks the thread by scheduling the tile for the next event loop', () => {
-		asyncMaybeTile({ gridAddress })
+		asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
 
 		expect(setTimeoutSpy.calls.all()[ 0 ].args[ 1 ]).toBe(0)
 	})
 
-	it('calls maybe tile with the same arguments', () => {
-		asyncMaybeTile({ gridAddress })
+	describe('when the pattern the tile was born from has not been canceled', () => {
+		it('calls maybe tile with the same arguments', () => {
+			asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
 
-		expect(maybeTile.maybeTile).toHaveBeenCalledWith({ gridAddress })
+			expect(maybeTile.maybeTile).toHaveBeenCalledWith({ gridAddress, thisPatternRef: 99 })
+		})
+
+		it('updates the progress bar', () => {
+			const progressBar: PageElement = buildMockElement()
+			spyOn(document, 'querySelector').and.returnValue(progressBar)
+			state.tileCount = 200000
+			state.tilesCompleted = 180001
+
+			asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
+
+			expect(progressBar.style.height).toBe('9%')
+		})
 	})
 
-	it('updates the progress bar', () => {
-		state.tileCount = 200000
-		state.tilesCompleted = 180001
+	describe('when the pattern the tile was born from has been canceled', () => {
+		it('does not call maybe tile', () => {
+			asyncMaybeTile({ gridAddress, thisPatternRef: 98 })
 
-		const progressBar: PageElement = buildMockElement()
-		spyOn(document, 'querySelector').and.returnValue(progressBar)
+			expect(maybeTile.maybeTile).not.toHaveBeenCalled()
+		})
 
-		asyncMaybeTile({ gridAddress })
+		it('does not update the progress bar', () => {
+			const progressBar: PageElement = buildMockElement()
+			progressBar.style.height = '10%'
+			spyOn(document, 'querySelector').and.returnValue(progressBar)
+			state.tileCount = 200000
+			state.tilesCompleted = 180001
 
-		expect(progressBar.style.height).toBe('9%')
+			asyncMaybeTile({ gridAddress, thisPatternRef: 98 })
+
+			expect(progressBar.style.height).toBe('10%')
+		})
 	})
 })

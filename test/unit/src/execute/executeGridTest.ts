@@ -7,6 +7,8 @@ import { setSetting } from '../../../../src/store/setSetting'
 
 describe('execute grid', () => {
 	const tileResolution: number = 2
+	const thisPatternRef: number = 99
+
 	beforeEach(() => {
 		// This is false in every other test. Currently only used for testing.
 		// So, we need to turn it off for this test to truly test the subject.
@@ -22,10 +24,10 @@ describe('execute grid', () => {
 		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
 			state.animating = true
 
-			executeGrid().then().catch()
+			executeGrid({ thisPatternRef }).then().catch()
 
-			expect(components.grid).toHaveBeenCalledWith({ gridTile: components.maybeTile })
-			expect(components.grid).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile })
+			expect(components.grid).toHaveBeenCalledWith({ gridTile: components.maybeTile, thisPatternRef })
+			expect(components.grid).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile, thisPatternRef })
 
 			done()
 		})
@@ -39,7 +41,7 @@ describe('execute grid', () => {
 		it('resets the count of tiles completed', async (done: DoneFn) => {
 			state.tilesCompleted = 256
 
-			executeGrid().then().catch()
+			executeGrid({ thisPatternRef }).then().catch()
 
 			expect(state.tilesCompleted).toBe(0)
 
@@ -47,16 +49,16 @@ describe('execute grid', () => {
 		})
 
 		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
-			executeGrid().then().catch()
+			executeGrid({ thisPatternRef }).then().catch()
 
-			expect(components.grid).toHaveBeenCalledWith({ gridTile: asyncMaybeTile })
-			expect(components.grid).not.toHaveBeenCalledWith({ gridTile: components.maybeTile })
+			expect(components.grid).toHaveBeenCalledWith({ gridTile: asyncMaybeTile, thisPatternRef })
+			expect(components.grid).not.toHaveBeenCalledWith({ gridTile: components.maybeTile, thisPatternRef })
 
 			done()
 		})
 
 		it('waits for the grid tobe complete', async (done: DoneFn) => {
-			executeGrid().then().catch()
+			executeGrid({ thisPatternRef }).then().catch()
 
 			expect(gridComplete.gridComplete).toHaveBeenCalled()
 

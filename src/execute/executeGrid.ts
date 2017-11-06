@@ -3,17 +3,17 @@
 import { grid, maybeTile } from '../components'
 import { asyncMaybeTile } from '../components/asyncMaybeTile'
 import { state } from '../state'
-import { NullarySideEffector, NullaryVoidPromise } from '../utilities/types'
+import { NullarySideEffector } from '../utilities/types'
 import { gridComplete } from './gridComplete'
 
-const executeGrid: NullaryVoidPromise =
-	async (): Promise<void> => {
+const executeGrid: (_: { thisPatternRef: number }) => Promise<void> =
+	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
 		if (state.animating || state.syncMode) {
-			grid({ gridTile: maybeTile })
+			grid({ gridTile: maybeTile, thisPatternRef })
 		}
 		else {
 			state.tilesCompleted = 0
-			grid({ gridTile: asyncMaybeTile })
+			grid({ gridTile: asyncMaybeTile, thisPatternRef })
 			await new Promise<(resolveGrid: NullarySideEffector) => void>(gridComplete)
 		}
 	}

@@ -1,10 +1,10 @@
+import { ReferencedGridAddress } from '../execute/types'
 import { state } from '../state'
 import { getTileOriginAndSize } from './getTileOriginAndSize'
 import { tile } from './tile'
-import { Address, GridAddressFunction } from './types'
 
-const maybeTile: GridAddressFunction =
-	({ gridAddress }: { gridAddress: Address }): void => {
+const maybeTile: (_: ReferencedGridAddress) => void =
+	({ gridAddress }: ReferencedGridAddress): void => {
 		/* istanbul ignore next */
 		const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
 

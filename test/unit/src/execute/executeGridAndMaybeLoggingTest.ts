@@ -7,6 +7,8 @@ import * as to from '../../../../src/utilities/to'
 import { console } from '../../../../src/utilities/windowWrapper'
 
 describe('execute grid and maybe logging', () => {
+	const thisPatternRef: number = 99
+
 	beforeEach(() => {
 		state.currentFrame = to.Frame(96)
 		state.currentLayer = to.Layer(54)
@@ -18,9 +20,9 @@ describe('execute grid and maybe logging', () => {
 	})
 
 	it('calls grid', async (done: DoneFn) => {
-		await executeGridAndMaybeLogging()
+		await executeGridAndMaybeLogging({ thisPatternRef })
 
-		expect(execute.executeGrid).toHaveBeenCalled()
+		expect(execute.executeGrid).toHaveBeenCalledWith({ thisPatternRef })
 
 		done()
 	})
@@ -30,7 +32,7 @@ describe('execute grid and maybe logging', () => {
 
 		describe('when not animating', () => {
 			it('logs only the performance of the grid', async (done: DoneFn) => {
-				await executeGridAndMaybeLogging()
+				await executeGridAndMaybeLogging({ thisPatternRef })
 
 				expect(console.time).toHaveBeenCalledWith('grid')
 				expect(console.timeEnd).toHaveBeenCalledWith('grid')
@@ -44,7 +46,7 @@ describe('execute grid and maybe logging', () => {
 			beforeEach(() => state.animating = true)
 
 			it('logs the current animation frame along with the performance measurement', async (done: DoneFn) => {
-				await executeGridAndMaybeLogging()
+				await executeGridAndMaybeLogging({ thisPatternRef })
 
 				expect(console.time).toHaveBeenCalledWith('grid')
 				expect(console.timeEnd).toHaveBeenCalledWith('grid')
@@ -59,7 +61,7 @@ describe('execute grid and maybe logging', () => {
 		beforeEach(() => state.performanceLogging = false)
 
 		it('does not track performance or log it', async (done: DoneFn) => {
-			await executeGridAndMaybeLogging()
+			await executeGridAndMaybeLogging({ thisPatternRef })
 
 			expect(console.time).not.toHaveBeenCalled()
 			expect(console.timeEnd).not.toHaveBeenCalled()

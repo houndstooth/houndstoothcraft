@@ -1,5 +1,6 @@
 // tslint:disable:no-any max-file-line-count
 
+import { GridAddressParam } from '../components/types'
 import { PageElement } from '../page/types'
 import { Effect, SettingsPath, SettingsStep } from '../store'
 import { Pattern } from '../store/types'
@@ -32,10 +33,16 @@ interface ExecuteAnimationParams {
 	readonly layerFunctionObjects: SettingsFunctionObject[]
 }
 
-interface ExecuteLayerParams {
+interface ExecuteLayerParams extends Referenced {
 	readonly layer: Layer,
 	readonly layerFunctionObjects: SettingsFunctionObject[],
 	readonly startLayer: Layer,
+}
+
+interface ReferencedGridAddress extends GridAddressParam, Referenced {}
+
+interface Referenced {
+	thisPatternRef: number
 }
 
 interface FullSettingsPath {
@@ -99,4 +106,5 @@ export {
 	SettingsFunction,
 	SettingsFunctionObject,
 	ShouldWarnAboutConflictsParams,
+	ReferencedGridAddress,
 }

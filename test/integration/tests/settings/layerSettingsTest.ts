@@ -27,18 +27,20 @@ describe('.layerSettings', () => {
 		}
 		activateTestMarkerCanvas()
 
-		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
-		const pixelInCellThatDemonstratesBlending: Coordinate = to.Coordinate([ 75, 25 ])
-		const passed: boolean = pixelIsColorWithMarker({
-			coordinateUnderTest: pixelInCellThatDemonstratesBlending,
-			expectedColor: BLENDED_COLOR,
-			id: 1,
-		})
-		expect(passed).toBe(true)
+		setTimeout(() => {
+			const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
+			const pixelInCellThatDemonstratesBlending: Coordinate = to.Coordinate([ 75, 25 ])
+			const passed: boolean = pixelIsColorWithMarker({
+				coordinateUnderTest: pixelInCellThatDemonstratesBlending,
+				expectedColor: BLENDED_COLOR,
+				id: 1,
+			})
+			expect(passed).toBe(true)
 
-		done()
+			done()
+		},         0)
 	})
 
 	it('erasing makes holes so material from lower layers shows through', async (done: DoneFn) => {
@@ -59,34 +61,36 @@ describe('.layerSettings', () => {
 		}
 		activateTestMarkerCanvas()
 
-		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
-		let baseId: number = -8
-		expect(standardTileIsColors({
-			baseId: baseId += 8,
-			colors: [ YELLOW, CYAN ],
-			tileOrigin: to.Coordinate([ 0 , 0 ]),
-			tileSize: to.Unit(50),
-		})).toBe(true)
-		expect(standardTileIsColors({
-			baseId: baseId += 8,
-			colors: [ YELLOW, YELLOW ],
-			tileOrigin: to.Coordinate([ 50 , 0 ]),
-			tileSize: to.Unit(50),
-		})).toBe(true)
-		expect(standardTileIsColors({
-			baseId: baseId += 8,
-			colors: [ CYAN, CYAN ],
-			tileOrigin: to.Coordinate([ 0 , 50 ]),
-			tileSize: to.Unit(50),
-		})).toBe(true)
-		expect(standardTileIsColors({
-			baseId: baseId += 8,
-			colors: [ CYAN, YELLOW ],
-			tileOrigin: to.Coordinate([ 50 , 50 ]),
-			tileSize: to.Unit(50),
-		})).toBe(true)
+		setTimeout(() => {
+			let baseId: number = -8
+			expect(standardTileIsColors({
+				baseId: baseId += 8,
+				colors: [ YELLOW, CYAN ],
+				tileOrigin: to.Coordinate([ 0, 0 ]),
+				tileSize: to.Unit(50),
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: baseId += 8,
+				colors: [ YELLOW, YELLOW ],
+				tileOrigin: to.Coordinate([ 50, 0 ]),
+				tileSize: to.Unit(50),
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: baseId += 8,
+				colors: [ CYAN, CYAN ],
+				tileOrigin: to.Coordinate([ 0, 50 ]),
+				tileSize: to.Unit(50),
+			})).toBe(true)
+			expect(standardTileIsColors({
+				baseId: baseId += 8,
+				colors: [ CYAN, YELLOW ],
+				tileOrigin: to.Coordinate([ 50, 50 ]),
+				tileSize: to.Unit(50),
+			})).toBe(true)
 
-		done()
+			done()
+		},         0)
 	})
 })

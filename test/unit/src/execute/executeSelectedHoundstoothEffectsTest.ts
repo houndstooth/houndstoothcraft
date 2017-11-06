@@ -8,6 +8,7 @@ import * as prepareFunctionObjectsPerSetting from '../../../../src/execute/prepa
 import * as page from '../../../../src/page'
 import { state } from '../../../../src/state'
 import { Effect } from '../../../../src/store/types'
+import { NullarySideEffector } from '../../../../src/utilities/types'
 
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
@@ -17,92 +18,78 @@ describe('execute selected houndstooth effects', () => {
 	beforeEach(() => {
 		spyOn(page, 'createMixedDownContext').and.returnValue(mixedDownContext)
 		spyOn(page, 'createContexts')
-		spyOn(executePattern, 'executePattern')
-		spyOn(executeAnimation, 'executeAnimation')
+		spyOn(executePattern, 'executePattern').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		spyOn(executeAnimation, 'executeAnimation').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'prepareFunctionObjectsPerSetting')
 		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)
 	})
 
-	it('composes the houndstooth', async (done: DoneFn) => {
+	it('composes the houndstooth', () => {
 		spyOn(composeMainHoundstooth, 'composeMainHoundstooth')
 
 		const houndstoothOverrides: Effect = {}
-		await executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects({ houndstoothOverrides })
 
 		expect(composeMainHoundstooth.composeMainHoundstooth).toHaveBeenCalledWith({
 			houndstoothEffects: state.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
-
-		done()
 	})
 
-	it('prepares layer functions', async (done: DoneFn) => {
-		await executeSelectedHoundstoothEffects()
+	it('prepares layer functions', () => {
+		executeSelectedHoundstoothEffects()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
 		})
-
-		done()
 	})
 
 	describe('setting up for rendering', () => {
-		it('includes the mixed down canvas when both mixing down and exporting', async (done: DoneFn) => {
+		it('includes the mixed down canvas when both mixing down and exporting', () => {
 			state.mixingDown = true
 			state.exportFrames = true
 
-			await executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownContext).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownContext)
-
-			done()
 		})
 
-		it('includes the mixed down canvas when only mixing down', async (done: DoneFn) => {
+		it('includes the mixed down canvas when only mixing down', () => {
 			state.mixingDown = true
 
-			await executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownContext).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownContext)
-
-			done()
 		})
 
-		it('includes the mixed down canvas when only exporting frames', async (done: DoneFn) => {
+		it('includes the mixed down canvas when only exporting frames', () => {
 			state.exportFrames = true
 
-			await executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownContext).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownContext)
-
-			done()
 		})
 
-		it('does not include the mixed down canvas when neither mixing down nor exporting frames', async (done: DoneFn) => {
-			await executeSelectedHoundstoothEffects()
+		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
+			executeSelectedHoundstoothEffects()
 
 			expect(page.createContexts).toHaveBeenCalled()
 			expect(page.createMixedDownContext).not.toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(undefined)
-
-			done()
 		})
 	})
 
 	describe('when animating', () => {
-		beforeEach(async (done: DoneFn) => {
+		beforeEach(() => {
 			state.animating = true
 
-			await executeSelectedHoundstoothEffects()
-
-			done()
+			executeSelectedHoundstoothEffects()
 		})
 
 		it('prepares animation functions', () => {
@@ -124,12 +111,10 @@ describe('execute selected houndstooth effects', () => {
 	})
 
 	describe('when not animating', () => {
-		beforeEach(async (done: DoneFn) => {
+		beforeEach(() => {
 			state.animating = false
 
-			await executeSelectedHoundstoothEffects()
-
-			done()
+			executeSelectedHoundstoothEffects()
 		})
 
 		it('does not prepare animation functions', () => {

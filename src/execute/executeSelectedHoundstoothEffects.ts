@@ -8,8 +8,8 @@ import { executePattern } from './executePattern'
 import { prepareFunctionObjectsPerSetting } from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
 
-const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => Promise<void> =
-	async ({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): Promise<void> => {
+const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
+	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
 		composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
 		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
@@ -18,7 +18,7 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 
 		prepareCanvas()
 
-		await execute({ layerFunctionObjects })
+		execute({ layerFunctionObjects })
 	}
 
 const prepareCanvas: NullarySideEffector =
@@ -32,16 +32,16 @@ const prepareCanvas: NullarySideEffector =
 		}
 	}
 
-const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => Promise<void> =
-	async ({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): Promise<void> => {
+const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
+	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {
 		if (state.animating) {
 			const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
 				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
 			})
-			await executeAnimation({ animationFunctionObjects, layerFunctionObjects })
+			executeAnimation({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
-			await executePattern({ layerFunctionObjects })
+			executePattern({ layerFunctionObjects }).then().catch()
 		}
 	}
 

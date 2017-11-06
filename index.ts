@@ -3,4 +3,4 @@ import { attachAnimationControlHandlers, createEffectToggles, executeSelectedHou
 
 createEffectToggles(Object.values(effects))
 attachAnimationControlHandlers()
-executeSelectedHoundstoothEffects().then().catch()
+executeSelectedHoundstoothEffects()

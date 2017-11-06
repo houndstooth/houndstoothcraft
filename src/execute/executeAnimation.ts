@@ -4,8 +4,9 @@ import { AnimationSettings, getFromBaseOrDefaultPattern } from '../store'
 import { NullarySideEffector, NullaryVoidPromise } from '../utilities/types'
 import { ExecuteAnimationParams } from './types'
 
-const executeAnimation: (_: ExecuteAnimationParams) => Promise<void> =
-	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteAnimationParams): Promise<void> => {
+const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation: NullarySideEffector) => void> =
+	// tslint:disable-next-line:max-line-length
+	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteAnimationParams): Promise<(resolveAnimation: NullarySideEffector) => void> => {
 		const {
 			frameRate,
 			endFrame,
@@ -30,7 +31,7 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<void> =
 				})
 			}
 
-		await new Promise<(resolveAnimation: NullarySideEffector) => void>(animationExecutor)
+		return new Promise<(resolveAnimation: NullarySideEffector) => void>(animationExecutor)
 	}
 
 export { executeAnimation }

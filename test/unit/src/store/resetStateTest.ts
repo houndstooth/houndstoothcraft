@@ -6,13 +6,11 @@ import { deepClone } from '../../../../src/utilities/codeUtilities'
 
 describe('reset state', () => {
 	it('returns the state to defaults, except for changing the pattern ref to a new random number', () => {
-		const newPatternRef: number = 0.42398572398759
-		spyOn(Math, 'random').and.returnValue(newPatternRef)
-
+		state.patternRef = 4
 		resetState(state)
 
 		const expectedState: State = deepClone(DEFAULT_STATE)
-		expectedState.patternRef = newPatternRef
+		expectedState.patternRef = 5
 
 		expect(state).toEqual(expectedState)
 	})

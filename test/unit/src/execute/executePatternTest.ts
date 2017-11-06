@@ -57,7 +57,7 @@ describe('execute pattern', () => {
 	it('stops executing layers if the pattern ref has changed on the state (cancelled)', async (done: DoneFn) => {
 		const executeLayerSpy: Spy = spyOn(executeLayer, 'executeLayer').and.callFake(({ layer }: { layer: Layer }) => {
 			if (from.Layer(layer) === 2) {
-				state.patternRef = Math.random()
+				state.patternRef = state.patternRef + 1
 			}
 		})
 

@@ -4,11 +4,12 @@ import { State } from './types'
 
 const resetState: (_: State) => void =
 	(state: State): void => {
+		const previousPatternRef: number = state.patternRef
 		changeObjectIntoCopy({
 			objectToChange: state,
 			objectWithProperties: DEFAULT_STATE,
 		})
-		state.patternRef = Math.random()
+		state.patternRef = previousPatternRef + 1
 	}
 
 export { resetState }

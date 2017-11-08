@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { noop } from '../../test/helpers/noop'
+import { noop } from './noop'
 
 declare const global: any
 
@@ -48,9 +48,7 @@ const documentWrapper: any = global.window ? document : mockDocument
 const windowWrapper: any = global.window ? window : mockWindow
 
 export {
-	consoleWrapper as console,
-	documentWrapper as document,
-	windowWrapper as window,
+	consoleWrapper,
+	documentWrapper,
+	windowWrapper,
 }
-
-export { windowWrapper }

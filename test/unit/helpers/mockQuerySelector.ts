@@ -1,5 +1,5 @@
-import { PageElement } from '../../../src/page/types'
-import { document } from '../../../src/utilities/windowWrapper'
+import { PageElement } from '../../../src/app/page/types'
+import { documentWrapper } from '../../../src/utilities/windowWrapper'
 import { buildMockElement } from './buildMockElement'
 
 const mockQuerySelector: () => { [_: string]: PageElement } =
@@ -8,7 +8,7 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 		const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 
-		spyOn(document, 'querySelector').and.callFake((selector: string): PageElement => {
+		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): PageElement => {
 			switch (selector) {
 				case '#pause-button':
 					return pauseButton

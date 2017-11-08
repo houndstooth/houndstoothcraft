@@ -1,9 +1,7 @@
 // tslint:disable:no-magic-numbers
 
-import { StripePosition } from './components/types'
-import { Color } from './render'
-import { Radian } from './space'
-import * as to from './utilities/to'
+import { Color, Radian, StripePosition } from './pattern'
+import * as to from './to'
 
 const BLACK: Color = { r: 0, g: 0, b: 0, a: 1 }
 const WHITE: Color = { r: 255, g: 255, b: 255, a: 1 }

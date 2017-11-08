@@ -1,11 +1,11 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { scaleCanvasContainer } from '../../../src/page/scaleCanvasContainer'
-import { scaleElement } from '../../../src/page/scaleElement'
-import { Canvas, PageElement, Px } from '../../../src/page/types'
+import { scaleCanvasContainer } from '../../../src/app/page/scaleCanvasContainer'
+import { scaleElement } from '../../../src/app/page/scaleElement'
+import { Canvas, PageElement, Px } from '../../../src/app/page/types'
+import { getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
 import { state } from '../../../src/state'
-import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
-import * as to from '../../../src/utilities/to'
+import * as to from '../../../src/to'
 import { NullarySideEffector } from '../../../src/utilities/types'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 import { testMarkersClear } from './testMarkersClear'

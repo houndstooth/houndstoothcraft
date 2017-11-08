@@ -1,9 +1,9 @@
+import * as effects from '../../../../effects'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
-import * as effects from '../../../../effects/index'
-import { PageElement } from '../../../../src/page'
-import { createEffectToggles } from '../../../../src/page/createEffectToggles'
-import { DEFAULT_COLOR_SET } from '../../../../src/store/defaults'
-import { getFromBaseOrDefaultPattern } from '../../../../src/store/getFromBaseOrDefaultPattern'
+import { PageElement } from '../../../../src/app/page'
+import { createEffectToggles } from '../../../../src/app/page/createEffectToggles'
+import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { DEFAULT_COLOR_SET } from '../../../../src/defaults'
 import { buildMockElement } from '../../../unit/helpers/buildMockElement'
 
 describe('effect toggles', () => {

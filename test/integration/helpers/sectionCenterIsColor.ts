@@ -1,5 +1,6 @@
-import { from, to } from '../../../src'
-import { Coordinate } from '../../../src/space'
+import * as from from '../../../src/from'
+import { Coordinate } from '../../../src/pattern/stripe'
+import * as to from '../../../src/to'
 import { drawPassMarker } from './drawPassMarker'
 import { pixelIsColor } from './pixelIsColor'
 import { SectionCenterExpectation, SectionCenterParams } from './types'

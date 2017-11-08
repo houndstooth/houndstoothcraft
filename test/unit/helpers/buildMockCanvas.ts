@@ -1,4 +1,4 @@
-import { Context } from '../../../src/page'
+import { Context } from '../../../src/app/page'
 import { buildMockContext } from '../../helpers/buildMockContext'
 import { MockCanvas, MockContext } from '../../helpers/types'
 import { buildMockElement } from './buildMockElement'

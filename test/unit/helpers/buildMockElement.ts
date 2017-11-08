@@ -1,4 +1,4 @@
-import { PageElement } from '../../../src/page'
+import { PageElement } from '../../../src/app/page'
 import { MockElement } from '../../helpers/types'
 import { BuildMockElementParams } from './types'
 

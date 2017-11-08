@@ -1,4 +1,4 @@
-import { InputElement, PageElement } from '../../../src/page/types'
+import { InputElement, PageElement } from '../../../src/app/page/types'
 import Spy = jasmine.Spy
 import { NullarySideEffector } from '../../../src/utilities/types'
 

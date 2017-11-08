@@ -1,4 +1,4 @@
-import { PageElement } from '../../../src/page'
+import { PageElement } from '../../../src/app/page'
 import { MockElement } from '../../helpers/types'
 
 const buildMockBody: (_?: { children?: PageElement[] }) => MockElement =

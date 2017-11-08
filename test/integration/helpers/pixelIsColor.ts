@@ -1,8 +1,8 @@
-import { Canvas } from '../../../src/page'
-import { Color } from '../../../src/render'
-import { parseColor } from '../../../src/render/parseColor'
-import { Coordinate } from '../../../src/space'
-import { console } from '../../../src/utilities/windowWrapper'
+import { Canvas } from '../../../src/app/page'
+import { parseColor } from '../../../src/pattern/color/parseColor'
+import { Color } from '../../../src/pattern/color/types'
+import { Coordinate } from '../../../src/pattern/stripe'
+import { consoleWrapper } from '../../../src/utilities/windowWrapper'
 import { isCloseTo } from '../../helpers/isCloseTo'
 import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'
 import { CheckColorProperties, Key } from './types'
@@ -63,7 +63,7 @@ const checkColorProperties: (_: CheckColorProperties) => boolean =
 
 		if (secondColorPropertyValue && !isCloseTo(firstColorPropertyValue, secondColorPropertyValue)) {
 			// tslint:disable-next-line:no-unsafe-any
-			console.error(`actual color: ${parseColor(actualColor)} / expected color ${parseColor(expectedColor)}`)
+			consoleWrapper.error(`actual color: ${parseColor(actualColor)} / expected color ${parseColor(expectedColor)}`)
 
 			return false
 		}

@@ -1,5 +1,5 @@
-import { Canvas, Context, Px } from '../../../src/page'
-import { getFromBaseOrDefaultPattern } from '../../../src/store/getFromBaseOrDefaultPattern'
+import { Canvas, Context, Px } from '../../../src/app/page'
+import { getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
 import { isEmpty } from '../../../src/utilities/codeUtilities'
 import { NullarySideEffector } from '../../../src/utilities/types'
 import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'

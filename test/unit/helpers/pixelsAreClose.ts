@@ -1,6 +1,6 @@
-import { from } from '../../../src'
-import { Px } from '../../../src/page'
-import { Pixel } from '../../../src/render'
+import { Px } from '../../../src/app/page'
+import { Pixel } from '../../../src/app/render'
+import * as from from '../../../src/from'
 import { isCloseTo } from '../../helpers/isCloseTo'
 
 const pixelsAreClose: (expected: Pixel[], actual: Pixel[]) => boolean =

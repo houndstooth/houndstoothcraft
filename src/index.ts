@@ -1,36 +1,46 @@
-import { standardAnimation } from './animation'
+import {
+	attachAnimationControlHandlers,
+	Context,
+	createEffectToggles,
+	executeSelectedHoundstoothEffects,
+	Px,
+} from './app'
+import * as constants from './constants'
+import * as defaults from './defaults'
 import {
 	Address,
+	AddressElement,
 	AssignmentMode,
+	Color,
 	ColorOptions,
 	ColorSet,
 	ComponentParams,
+	Coordinate,
+	Effect,
 	ExecuteTexture,
 	ExecuteTextureParams,
 	GetStripePosition,
 	GetStripePositions,
+	Outline,
 	perStripe,
+	Radian,
+	rotateCoordinate,
 	ShapeColorIndex,
 	solid,
 	SolidParams,
+	standardAnimation,
 	StripeCountMode,
 	StripePosition,
 	Supertile,
 	tileCenter,
 	TileOriginAndSize,
 	TransformShapeColorIndices,
+	TransformShapeColorIndicesParams,
 	Unit,
 	Weave,
-} from './components'
-import * as constants from './constants'
-import { executeSelectedHoundstoothEffects } from './execute'
-import { attachAnimationControlHandlers, Context, createEffectToggles, Px } from './page'
-import { Color } from './render'
-import { Coordinate, Outline, Radian, rotateCoordinate } from './space'
+} from './pattern'
 import { state } from './state'
-import { defaults, Effect, getFromBaseOrDefaultPattern, StripeCountContinuumSettings } from './store'
-import * as from from './utilities/from'
-import * as to from './utilities/to'
+import { codeUtilities, mathUtilities } from './utilities'
 
 export {
 	standardAnimation,
@@ -43,7 +53,6 @@ export {
 	state,
 	constants,
 	createEffectToggles,
-	Effect,
 	Color,
 	Address,
 	Weave,
@@ -65,12 +74,13 @@ export {
 	Radian,
 	SolidParams,
 	TransformShapeColorIndices,
-	to,
-	from,
-	getFromBaseOrDefaultPattern,
 	attachAnimationControlHandlers,
-	StripeCountContinuumSettings,
+	TransformShapeColorIndicesParams,
 	ExecuteTexture,
 	GetStripePositions,
 	ColorSet,
+	Effect,
+	mathUtilities,
+	codeUtilities,
+	AddressElement,
 }

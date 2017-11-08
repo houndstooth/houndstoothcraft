@@ -1,4 +1,4 @@
-import { Canvas } from '../../../src/page'
+import { Canvas } from '../../../src/app/page'
 
 const createTestMarkersCanvas: () => Canvas =
 	(): Canvas => {

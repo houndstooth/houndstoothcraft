@@ -1,7 +1,7 @@
 // tslint:disable:no-magic-numbers
 
-import { Radian } from '../space'
-import * as from from '../utilities/from'
+import * as from from '../from'
+import { Radian } from '../pattern'
 
 const isOdd: (n: number) => boolean =
 	(n: number): boolean => n % 2 === 1

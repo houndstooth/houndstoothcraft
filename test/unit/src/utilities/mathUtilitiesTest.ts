@@ -1,6 +1,6 @@
-import { Radian } from '../../../../../src/pattern/stripe'
-import * as to from '../../../../../src/to'
-import * as mathUtilities from '../../../../../src/utilities/mathUtilities'
+import { Radian } from '../../../../src/pattern/stripe'
+import * as to from '../../../../src/to'
+import * as mathUtilities from '../../../../src/utilities/mathUtilities'
 
 describe('math utilities', () => {
 	describe('#isOdd', () => {

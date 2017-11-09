@@ -1,8 +1,8 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { Color } from '../../../../../src/pattern/color'
-import * as codeUtilities from '../../../../../src/utilities/codeUtilities'
-import { TestObject } from '../../../helpers/types'
+import { Color } from '../../../../src/pattern/color'
+import * as codeUtilities from '../../../../src/utilities/codeUtilities'
+import { TestObject } from '../../helpers/types'
 
 describe('code utilities', () => {
 	describe('#iterator', () => {

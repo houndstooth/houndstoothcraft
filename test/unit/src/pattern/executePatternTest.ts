@@ -1,14 +1,14 @@
 import Spy = jasmine.Spy
-import * as app from '../../../../../src/app'
-import { SettingsFunctionObject } from '../../../../../src/app/execute/types'
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import * as from from '../../../../../src/from'
-import { executePattern } from '../../../../../src/pattern/executePattern'
-import * as grid from '../../../../../src/pattern/grid'
-import * as layerModule from '../../../../../src/pattern/layer'
-import { Layer } from '../../../../../src/pattern/layer/types'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
+import * as app from '../../../../src/app'
+import { SettingsFunctionObject } from '../../../../src/app/execute/types'
+import { setSetting } from '../../../../src/app/store/setSetting'
+import * as from from '../../../../src/from'
+import { executePattern } from '../../../../src/pattern/executePattern'
+import * as grid from '../../../../src/pattern/grid'
+import * as layerModule from '../../../../src/pattern/layer'
+import { Layer } from '../../../../src/pattern/layer/types'
+import { state } from '../../../../src/state'
+import * as to from '../../../../src/to'
 
 describe('execute pattern', () => {
 	const startLayer: Layer = to.Layer(2)

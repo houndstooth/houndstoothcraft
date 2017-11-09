@@ -1,7 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { codeUtilities } from '../../utilities'
-import { consoleWrapper } from '../../utilities'
+import { codeUtilities, consoleWrapper } from '../../utilities'
 import { settingPath } from '../execute'
 import { BuildWarningMessageParams, MaybeWarnAboutConflictsParams, ShouldWarnAboutConflictsParams } from './types'
 import { warn } from './warn'

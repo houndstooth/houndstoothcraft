@@ -7,6 +7,7 @@ import {
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
+import * as from from './from'
 import {
 	Address,
 	AddressElement,
@@ -40,6 +41,7 @@ import {
 	Weave,
 } from './pattern'
 import { state } from './state'
+import * as to from './to'
 import { codeUtilities, mathUtilities } from './utilities'
 
 export {
@@ -83,4 +85,6 @@ export {
 	mathUtilities,
 	codeUtilities,
 	AddressElement,
+	from,
+	to,
 }

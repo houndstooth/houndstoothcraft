@@ -3,8 +3,8 @@
 import { SettingsFunctionObject } from '../../../../../src/app/execute'
 import { prepareFunctionObjectsPerSetting } from '../../../../../src/app/execute/prepareFunctionObjectsPerSetting'
 import * as to from '../../../../../src/to'
-import { deepClone } from '../../../../../src/utilities/codeUtilities'
 import { consoleWrapper } from '../../../../../src/utilities'
+import { deepClone } from '../../../../../src/utilities/codeUtilities'
 
 describe('#prepareFunctionObjectsPerSetting', () => {
 	let actualFunctionObjects: SettingsFunctionObject[]

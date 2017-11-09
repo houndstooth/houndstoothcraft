@@ -2,9 +2,9 @@ import { setSetting } from '../../../../../src/app/store/setSetting'
 import { buildIntervalFunction } from '../../../../../src/pattern/animation/buildIntervalFunction'
 import { state } from '../../../../../src/state'
 import * as to from '../../../../../src/to'
+import { windowWrapper } from '../../../../../src/utilities'
 import Spy = jasmine.Spy
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { windowWrapper } from '../../../../../src/utilities'
 
 describe('build interval function returns a function which', () => {
 	let intervalFunction: NullarySideEffector

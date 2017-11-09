@@ -3,9 +3,9 @@ import { PageElement } from '../../../../../src/app/page/types'
 import * as buildGridProgressIntervalFunction from '../../../../../src/pattern/grid/buildGridProgressIntervalFunction'
 import { gridComplete } from '../../../../../src/pattern/grid/gridComplete'
 import { state } from '../../../../../src/state'
+import { documentWrapper, windowWrapper } from '../../../../../src/utilities'
 import { noop } from '../../../../../src/utilities/noop'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { documentWrapper, windowWrapper } from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('grid complete', () => {

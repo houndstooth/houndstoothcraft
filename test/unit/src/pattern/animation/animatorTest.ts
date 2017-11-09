@@ -2,9 +2,9 @@ import animator from '../../../../../src/pattern/animation/animator'
 import * as buildIntervalFunction from '../../../../../src/pattern/animation/buildIntervalFunction'
 import { ConditionFunction } from '../../../../../src/pattern/animation/types'
 import { state } from '../../../../../src/state'
+import { windowWrapper } from '../../../../../src/utilities'
 import { noop } from '../../../../../src/utilities/noop'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { windowWrapper } from '../../../../../src/utilities'
 
 describe('animator', () => {
 	let intervalFunction: (p: number) => number

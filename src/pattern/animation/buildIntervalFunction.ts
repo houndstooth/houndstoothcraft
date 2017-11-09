@@ -1,7 +1,6 @@
 import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
-import { windowWrapper } from '../../utilities'
+import { NullarySideEffector, windowWrapper } from '../../utilities'
 import { BuildIntervalFunctionParams, ConditionFunction } from './types'
 
 const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffector =

@@ -2,8 +2,7 @@
 
 import { Effect } from '../../pattern'
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
-import { documentWrapper, windowWrapper } from '../../utilities'
+import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
 import { PageElement } from '../page'
 import { clear } from '../render'
 import { resetState } from '../store'

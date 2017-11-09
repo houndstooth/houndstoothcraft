@@ -3,8 +3,8 @@ import * as render from '../../../../../src/app/render'
 import { resetInterface } from '../../../../../src/app/ui/resetInterface'
 import { Effect } from '../../../../../src/pattern'
 import { state } from '../../../../../src/state'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
 import * as windowWrapper from '../../../../../src/utilities'
+import { NullarySideEffector } from '../../../../../src/utilities/types'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('reset interface', () => {

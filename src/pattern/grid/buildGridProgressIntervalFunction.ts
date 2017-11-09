@@ -1,6 +1,5 @@
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
-import { windowWrapper } from '../../utilities'
+import { NullarySideEffector, windowWrapper } from '../../utilities'
 import { BuildGridProgressIntervalFunctionParams } from './types'
 
 const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionParams) => NullarySideEffector =

@@ -2,9 +2,9 @@ import { InputElement } from '../../../../../src/app/page'
 import { createCheckbox } from '../../../../../src/app/page/createCheckbox'
 import * as ui from '../../../../../src/app/ui'
 import { Effect } from '../../../../../src/pattern'
+import { documentWrapper } from '../../../../../src/utilities'
 import { noop } from '../../../../../src/utilities/noop'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { documentWrapper } from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('create checkbox', () => {

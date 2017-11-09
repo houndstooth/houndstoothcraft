@@ -1,6 +1,5 @@
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
-import { windowWrapper } from '../../utilities'
+import { NullarySideEffector, windowWrapper } from '../../utilities'
 import { buildIntervalFunction } from './buildIntervalFunction'
 import { AnimatorParams } from './types'
 

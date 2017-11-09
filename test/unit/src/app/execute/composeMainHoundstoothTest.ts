@@ -9,7 +9,7 @@ import {
 import Spy = jasmine.Spy
 import { Effect } from '../../../../../src/pattern'
 import { state } from '../../../../../src/state'
-import { consoleWrapper } from '../../../../../src/utilities/windowWrapper'
+import { consoleWrapper } from '../../../../../src/utilities'
 import CallInfo = jasmine.CallInfo
 
 describe('composeMainHoundstooth', () => {

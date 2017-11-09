@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { PageElement } from '../page'
 
 const warn: (warningMessage: string) => void =

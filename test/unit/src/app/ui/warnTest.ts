@@ -1,6 +1,6 @@
 import * as page from '../../../../../src/app/page'
 import { warn } from '../../../../../src/app/ui/warn'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('warn', () => {

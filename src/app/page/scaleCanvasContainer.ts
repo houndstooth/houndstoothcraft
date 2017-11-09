@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import * as to from '../../to'
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { scaleElement } from './scaleElement'
 import { PageElement, Px } from './types'

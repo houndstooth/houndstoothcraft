@@ -3,7 +3,7 @@ import { scaleCanvasContainer } from '../../../../../src/app/page/scaleCanvasCon
 import * as scaleElement from '../../../../../src/app/page/scaleElement'
 import { setSetting } from '../../../../../src/app/store/setSetting'
 import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockBody } from '../../../helpers/buildMockBody'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 

@@ -4,7 +4,7 @@ import * as executeGrid from '../../../../../src/pattern/grid/executeGrid'
 import { executeGridAndMaybeLogging } from '../../../../../src/pattern/grid/executeGridAndMaybeLogging'
 import { state } from '../../../../../src/state'
 import * as to from '../../../../../src/to'
-import { consoleWrapper } from '../../../../../src/utilities/windowWrapper'
+import { consoleWrapper } from '../../../../../src/utilities'
 
 describe('execute grid and maybe logging', () => {
 	const thisPatternRef: number = 99

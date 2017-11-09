@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { Effect } from '../../pattern'
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { createEffectToggle } from './createEffectToggle'
 import { PageElement } from './types'
 

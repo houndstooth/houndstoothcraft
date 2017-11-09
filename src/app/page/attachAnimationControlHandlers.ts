@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { NullarySideEffector } from '../../utilities'
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { animationControlHandlers } from '../ui'
 
 const attachAnimationControlHandlers: NullarySideEffector =

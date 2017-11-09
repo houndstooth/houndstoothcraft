@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { deleteElementIfExists } from './deleteElementIfExists'
 import { Canvas, Context, Px } from './types'

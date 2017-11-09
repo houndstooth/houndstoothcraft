@@ -1,6 +1,6 @@
 import { Canvas, Context, PageElement } from '../../../../../src/app/page'
 import createContext from '../../../../../src/app/page/createContext'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockContext } from '../../../../helpers/buildMockContext'
 import { buildMockCanvas } from '../../../helpers/buildMockCanvas'
 import { buildMockElement } from '../../../helpers/buildMockElement'

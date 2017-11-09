@@ -2,7 +2,7 @@ import { SettingsPath, SettingsStep } from '../../../../../src/app/store/types'
 import { maybeWarnAboutConflicts } from '../../../../../src/app/ui/maybeWarnAboutConflicts'
 import * as warn from '../../../../../src/app/ui/warn'
 import * as to from '../../../../../src/to'
-import { consoleWrapper } from '../../../../../src/utilities/windowWrapper'
+import { consoleWrapper } from '../../../../../src/utilities'
 
 describe('warning about conflicts', () => {
 	let warnAboutConflicts: boolean

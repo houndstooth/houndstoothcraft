@@ -3,7 +3,7 @@
 import { state } from '../../state'
 import * as to from '../../to'
 import { NullarySideEffector } from '../../utilities'
-import { documentWrapper, windowWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper, windowWrapper } from '../../utilities'
 import { executeSelectedHoundstoothEffects } from '../execute'
 
 const playClickHandler: NullarySideEffector =

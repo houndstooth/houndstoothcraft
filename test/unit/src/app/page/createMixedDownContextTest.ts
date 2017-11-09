@@ -3,7 +3,7 @@ import createMixedDownContext from '../../../../../src/app/page/createMixedDownC
 import * as deleteElementIfExists from '../../../../../src/app/page/deleteElementIfExists'
 import { setSetting } from '../../../../../src/app/store/setSetting'
 import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockContext } from '../../../../helpers/buildMockContext'
 import { buildMockBody } from '../../../helpers/buildMockBody'
 import { buildMockCanvas } from '../../../helpers/buildMockCanvas'

@@ -3,7 +3,7 @@
 import { Effect } from '../../pattern'
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
 import { resetInterface } from './resetInterface'

@@ -4,7 +4,7 @@ import { state } from '../../../../../src/state'
 import * as to from '../../../../../src/to'
 import Spy = jasmine.Spy
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { windowWrapper } from '../../../../../src/utilities/windowWrapper'
+import { windowWrapper } from '../../../../../src/utilities'
 
 describe('build interval function returns a function which', () => {
 	let intervalFunction: NullarySideEffector

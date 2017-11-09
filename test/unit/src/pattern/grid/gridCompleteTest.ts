@@ -5,7 +5,7 @@ import { gridComplete } from '../../../../../src/pattern/grid/gridComplete'
 import { state } from '../../../../../src/state'
 import { noop } from '../../../../../src/utilities/noop'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { documentWrapper, windowWrapper } from '../../../../../src/utilities/windowWrapper'
+import { documentWrapper, windowWrapper } from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('grid complete', () => {

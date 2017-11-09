@@ -4,7 +4,7 @@ import { ConditionFunction } from '../../../../../src/pattern/animation/types'
 import { state } from '../../../../../src/state'
 import { noop } from '../../../../../src/utilities/noop'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { windowWrapper } from '../../../../../src/utilities/windowWrapper'
+import { windowWrapper } from '../../../../../src/utilities'
 
 describe('animator', () => {
 	let intervalFunction: (p: number) => number

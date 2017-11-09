@@ -1,6 +1,6 @@
 import { thisPatternHasNotBeenCanceled } from '../../app'
 import { state } from '../../state'
-import { documentWrapper, windowWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper, windowWrapper } from '../../utilities'
 import { ReferencedGridAddress } from '../grid'
 import { maybeTile } from './maybeTile'
 

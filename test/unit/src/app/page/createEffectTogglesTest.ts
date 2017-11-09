@@ -2,7 +2,7 @@ import * as createEffectToggle from '../../../../../src/app/page/createEffectTog
 import Spy = jasmine.Spy
 import { createEffectToggles } from '../../../../../src/app/page/createEffectToggles'
 import { PageElement } from '../../../../../src/app/page/types'
-import { documentWrapper } from '../../../../../src/utilities/windowWrapper'
+import { documentWrapper } from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('create effect toggles', () => {

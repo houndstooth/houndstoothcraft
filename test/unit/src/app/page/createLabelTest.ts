@@ -3,7 +3,7 @@ import * as createCheckbox from '../../../../../src/app/page/createCheckbox'
 import { createLabel } from '../../../../../src/app/page/createLabel'
 import { LabelElement } from '../../../../../src/app/page/types'
 import { Effect } from '../../../../../src/pattern'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('create label', () => {

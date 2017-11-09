@@ -2,7 +2,7 @@ import * as page from '../../../../../src/app/page'
 import { createEffectToggle } from '../../../../../src/app/page/createEffectToggle'
 import * as createLabel from '../../../../../src/app/page/createLabel'
 import { Effect } from '../../../../../src/pattern'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('create effect toggle', () => {

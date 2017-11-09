@@ -1,7 +1,7 @@
 import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from '../../defaults'
 import { Effect } from '../../pattern'
 import { state } from '../../state'
-import { consoleWrapper } from '../../utilities/windowWrapper'
+import { consoleWrapper } from '../../utilities'
 import { combineHoundstoothEffects } from './combineHoundstoothEffects'
 import { composePatterns } from './composePatterns'
 import { ComposeMainHoundstooth, ComposePatternParams } from './types'

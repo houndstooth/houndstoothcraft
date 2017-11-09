@@ -1,5 +1,5 @@
 import { PageElement } from '../../../src/app/page/types'
-import { documentWrapper } from '../../../src/utilities/windowWrapper'
+import { documentWrapper } from '../../../src/utilities'
 import { buildMockElement } from './buildMockElement'
 
 const mockQuerySelector: () => { [_: string]: PageElement } =

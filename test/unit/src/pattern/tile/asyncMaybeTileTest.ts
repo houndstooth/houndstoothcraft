@@ -5,7 +5,7 @@ import * as maybeTile from '../../../../../src/pattern/tile/maybeTile'
 import { state } from '../../../../../src/state'
 import * as to from '../../../../../src/to'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { documentWrapper, windowWrapper } from '../../../../../src/utilities/windowWrapper'
+import { documentWrapper, windowWrapper } from '../../../../../src/utilities'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers/buildMockElement'
 

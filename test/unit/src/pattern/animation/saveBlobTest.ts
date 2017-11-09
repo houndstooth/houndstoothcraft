@@ -3,7 +3,7 @@
 import { DataBlob, PageElement } from '../../../../../src/app/page/types'
 import { saveBlob } from '../../../../../src/pattern/animation/saveBlob'
 import Spy = jasmine.Spy
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('save blob', () => {

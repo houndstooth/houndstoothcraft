@@ -1,7 +1,7 @@
 import Spy = jasmine.Spy
 import { PageElement } from '../../../../../src/app/page'
 import { deleteElementIfExists } from '../../../../../src/app/page/deleteElementIfExists'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('delete element if exists', () => {

@@ -2,7 +2,7 @@
 
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
-import { documentWrapper, windowWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper, windowWrapper } from '../../utilities'
 import { buildGridProgressIntervalFunction } from './buildGridProgressIntervalFunction'
 
 const PROGRESS_UPDATE_RATE: number = 30

@@ -4,7 +4,7 @@ import * as ui from '../../../../../src/app/ui'
 import { Effect } from '../../../../../src/pattern'
 import { noop } from '../../../../../src/utilities/noop'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { documentWrapper } from '../../../../../src/utilities/windowWrapper'
+import { documentWrapper } from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('create checkbox', () => {

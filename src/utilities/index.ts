@@ -6,6 +6,7 @@ import {
 	NullarySideEffector,
 	NullaryVoidPromise,
 } from './types'
+import { consoleWrapper, documentWrapper, windowWrapper } from './windowWrapper'
 
 export {
 	mathUtilities,
@@ -14,4 +15,7 @@ export {
 	NullarySideEffector,
 	NullaryVoidPromise,
 	noop,
+	windowWrapper,
+	documentWrapper,
+	consoleWrapper,
 }

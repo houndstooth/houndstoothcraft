@@ -8,7 +8,7 @@ import { state } from '../../../../../src/state'
 import Spy = jasmine.Spy
 import * as to from '../../../../../src/to'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { mockQuerySelector } from '../../../helpers/mockQuerySelector'
 
 describe('animation control handlers', () => {

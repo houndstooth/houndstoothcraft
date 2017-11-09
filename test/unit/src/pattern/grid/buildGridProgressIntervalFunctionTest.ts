@@ -2,7 +2,7 @@ import { PageElement } from '../../../../../src/app/page/types'
 import { buildGridProgressIntervalFunction } from '../../../../../src/pattern/grid/buildGridProgressIntervalFunction'
 import { state } from '../../../../../src/state'
 import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { windowWrapper } from '../../../../../src/utilities/windowWrapper'
+import { windowWrapper } from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('build progress interval function returns a function which', () => {

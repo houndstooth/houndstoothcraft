@@ -6,7 +6,7 @@ import * as scaleCanvasContainer from '../../../../../src/app/page/scaleCanvasCo
 import { setSetting } from '../../../../../src/app/store/setSetting'
 import { state } from '../../../../../src/state'
 import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities/windowWrapper'
+import * as windowWrapper from '../../../../../src/utilities'
 import { buildMockElement } from '../../../helpers/buildMockElement'
 
 describe('create contexts', () => {

@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { Effect } from '../../pattern/types'
-import { documentWrapper } from '../../utilities/windowWrapper'
+import { documentWrapper } from '../../utilities'
 import { createLabel } from './createLabel'
 import { LabelElement, PageElement } from './types'
 

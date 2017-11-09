@@ -2,7 +2,7 @@
 
 import { state } from '../../state'
 import { State } from '../../types'
-import { consoleWrapper } from '../../utilities/windowWrapper'
+import { consoleWrapper } from '../../utilities'
 import { executeGrid } from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =

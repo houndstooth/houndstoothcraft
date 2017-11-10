@@ -1,5 +1,5 @@
-import { Coordinate, GetOutlineParams, Outline, StripePosition } from '../types'
 import { TileOriginAndSize } from '../../tile'
+import { Coordinate, GetOutlineParams, Outline, StripePosition } from '../types'
 
 type GetStripeOutline = (_: GetOutlineParams) => Coordinate[]
 

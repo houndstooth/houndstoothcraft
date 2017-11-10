@@ -1,7 +1,8 @@
-import * as from from '../../from'
-import * as to from '../../to'
-import { TileOriginAndSize } from '../tile'
-import { Coordinate, Point, PointParams, PointWithKnownPosition } from './types'
+import * as from from '../../../from'
+import * as to from '../../../to'
+import { TileOriginAndSize } from '../../tile'
+import { Point, PointParams, PointWithKnownPosition } from './types'
+import { Coordinate } from '../types'
 
 const pointAlongTopEdge: Point =
 	({ stripePosition, tileOrigin: [ x, y ], tileSize }: PointParams): Coordinate => {

@@ -1,8 +1,9 @@
-import * as from from '../../from'
+import * as from from '../../../from'
 import { firstPoint } from './firstPoint'
 import { lastPoints } from './lastPoints'
 import { middlePoints } from './middlePoints'
-import { GetOutlineParams, GetStripeOutline, Outline, OutlineOptions } from './types'
+import { GetOutlineParams, Outline, OutlineOptions } from '../types'
+import { GetStripeOutline } from './types'
 
 const stripeOutline: GetStripeOutline =
 	({ tileOrigin, tileSize, outlineOptions }: GetOutlineParams): Outline => {

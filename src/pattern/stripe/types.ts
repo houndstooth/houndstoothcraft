@@ -19,36 +19,12 @@ interface GetOutlineParams extends TileOriginAndSize {
 	readonly outlineOptions?: OutlineOptions,
 }
 
-type GetStripeOutline = (_: GetOutlineParams) => Coordinate[]
-
 type Outline = Coordinate[]
 
 interface OutlineOptions {
 	readonly stripeEnd: StripePosition,
 	readonly stripeStart: StripePosition
 }
-
-type Point = (_: PointParams) => Coordinate
-
-interface PointParams extends TileOriginAndSize {
-	readonly stripePosition: StripePosition,
-}
-
-interface PointsParams extends TileOriginAndSize {
-	readonly outline: Outline,
-	readonly stripeEndsInBottomRightHalf?: boolean,
-	readonly stripeStartsInTopLeftHalf?: boolean,
-}
-
-interface PointsParamsPlusStripeEnd extends PointsParams {
-	readonly stripeEnd: StripePosition,
-}
-
-interface PointsParamsPlusStripeStart extends PointsParams {
-	readonly stripeStart: StripePosition,
-}
-
-type PointWithKnownPosition = (_: TileOriginAndSize) => Coordinate
 
 interface Radian extends Number {
 	// tslint:disable-next-line:no-any
@@ -106,13 +82,6 @@ export {
 	OutlineOptions,
 	Coordinate,
 	Outline,
-	GetStripeOutline,
-	Point,
-	PointParams,
-	PointsParams,
-	PointsParamsPlusStripeEnd,
-	PointsParamsPlusStripeStart,
-	PointWithKnownPosition,
 	Radian,
 	RotateCoordinateParams,
 }

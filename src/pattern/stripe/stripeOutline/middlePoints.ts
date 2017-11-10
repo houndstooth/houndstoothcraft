@@ -1,5 +1,5 @@
-import * as constants from '../../constants'
-import * as from from '../../from'
+import * as constants from '../../../constants'
+import * as from from '../../../from'
 import * as stripePoints from './stripePoints'
 import { PointsParamsPlusStripeEnd } from './types'
 

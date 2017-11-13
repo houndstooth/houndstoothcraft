@@ -12,23 +12,24 @@ body {
 #header {
     height: 60px;
     position: relative;
-    display: block;
 }
 
 #logo {
     width: 184px;
     height: 40px;
     fill: rgb(0, 0, 0);
-    display: block;
-    padding: 20px;
+    margin: 20px;
 }
 
 #progress-bar {
     width: 100%;
     height: 100%;
     position: absolute;
-    display: block;
     background-color: rgb(240, 240, 240);
+}
+
+#description {
+    margin: 20px;
 }
 
 #canvas-container {
@@ -39,17 +40,16 @@ body {
 }
 
 #warnings-container {
-    padding: 20px;
-    display: block;
+    margin: 20px;
     font-style: italic;
 }
 
 #effect-toggles-container {
-    padding: 20px;
+    margin: 20px;
 }
 
 #animation-controls-container {
-    padding: 20px;
+    margin: 20px;
 }
 
 #footer {
@@ -80,7 +80,6 @@ input {
 }
 
 button {
-    display: inline-block;
     background: rgb(255, 255, 255);
     border: 3px solid rgb(100, 100, 100);
     box-sizing: border-box;

@@ -42,7 +42,7 @@ describe('async maybe tile', () => {
 
 			asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
 
-			expect(progressBar.style.height).toBe('9%')
+			expect(progressBar.style.width).toBe('9%')
 		})
 	})
 
@@ -55,14 +55,14 @@ describe('async maybe tile', () => {
 
 		it('does not update the progress bar', () => {
 			const progressBar: PageElement = buildMockElement()
-			progressBar.style.height = '10%'
+			progressBar.style.width = '10%'
 			spyOn(documentWrapper, 'querySelector').and.returnValue(progressBar)
 			state.tileCount = 200000
 			state.tilesCompleted = 180001
 
 			asyncMaybeTile({ gridAddress, thisPatternRef: 98 })
 
-			expect(progressBar.style.height).toBe('10%')
+			expect(progressBar.style.width).toBe('10%')
 		})
 	})
 })

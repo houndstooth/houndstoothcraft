@@ -7,7 +7,7 @@ const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionPa
 		(): void => {
 			if (state.tilesCompleted === state.tileCount) {
 				if (progressBar) {
-					progressBar.style.height = '0%'
+					progressBar.style.width = '0%'
 				}
 
 				// tslint:disable-next-line:no-unsafe-any

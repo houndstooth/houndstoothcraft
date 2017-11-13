@@ -40,7 +40,7 @@ describe('build progress interval function returns a function which', () => {
 
 			gridProgressIntervalFunction()
 
-			expect(progressBar.style.height).toBe('0%')
+			expect(progressBar.style.width).toBe('0%')
 		})
 	})
 

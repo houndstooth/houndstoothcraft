@@ -1,6 +1,6 @@
 import * as effects from './effects'
-import { attachAnimationControlHandlers, createEffectToggles, executeSelectedHoundstoothEffects } from './src'
+import { attachControlHandlers, createEffectToggles, executeSelectedHoundstoothEffects } from './src'
 
 createEffectToggles(Object.values(effects))
-attachAnimationControlHandlers()
+attachControlHandlers()
 executeSelectedHoundstoothEffects()

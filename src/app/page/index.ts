@@ -1,4 +1,4 @@
-import { attachAnimationControlHandlers } from './attachAnimationControlHandlers'
+import { attachControlHandlers } from './attachControlHandlers'
 import { createContexts } from './createContexts'
 import { createEffectToggles } from './createEffectToggles'
 import createMixedDownContext from './createMixedDownContext'
@@ -8,7 +8,7 @@ export {
 	createContexts,
 	createMixedDownContext,
 	createEffectToggles,
-	attachAnimationControlHandlers,
+	attachControlHandlers,
 	Canvas,
 	Context,
 	DataBlob,

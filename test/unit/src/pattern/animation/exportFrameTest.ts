@@ -1,5 +1,5 @@
 import { exportFrame } from '../../../../../src/pattern/animation/exportFrame'
-import * as saveFrame from '../../../../../src/pattern/animation/saveFrame'
+import { saveFrame } from '../../../../../src/pattern/animation/saveFrame'
 import { state } from '../../../../../src/state'
 import { buildMockContext } from '../../../../helpers/buildMockContext'
 import Spy = jasmine.Spy
@@ -11,6 +11,6 @@ describe('export frame', () => {
 
 		exportFrame()
 
-		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame.saveFrame)
+		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame)
 	})
 })

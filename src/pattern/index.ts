@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count
 
-import { animationSettings, executeAnimation, Frame, standardAnimation } from './animation'
+import { animationSettings, executeAnimation, exportFrame, Frame, standardAnimation } from './animation'
 import {
 	AssignmentMode,
 	Color,
@@ -109,4 +109,5 @@ export {
 	SetSetting,
 	viewSettings,
 	SettingsNamesByTypeBase,
+	exportFrame,
 }

@@ -7,6 +7,7 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 		const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+		const snapshotButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 
 		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): PageElement => {
 			switch (selector) {
@@ -16,6 +17,8 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 					return playButton
 				case '#rewind-button':
 					return rewindButton
+				case '#snapshot-button':
+					return snapshotButton
 				default:
 					return buildMockElement()
 			}
@@ -25,6 +28,7 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 			pauseButton,
 			playButton,
 			rewindButton,
+			snapshotButton,
 		}
 	}
 

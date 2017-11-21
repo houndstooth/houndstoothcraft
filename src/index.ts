@@ -1,5 +1,5 @@
 import {
-	attachAnimationControlHandlers,
+	attachControlHandlers,
 	Context,
 	createEffectToggles,
 	executeSelectedHoundstoothEffects,
@@ -76,7 +76,7 @@ export {
 	Radian,
 	SolidParams,
 	TransformShapeColorIndices,
-	attachAnimationControlHandlers,
+	attachControlHandlers,
 	TransformShapeColorIndicesParams,
 	ExecuteTexture,
 	GetStripePositions,

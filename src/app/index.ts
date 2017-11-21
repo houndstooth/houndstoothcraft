@@ -6,7 +6,7 @@ import {
 	thisPatternHasNotBeenCanceled,
 } from './execute'
 import {
-	attachAnimationControlHandlers,
+	attachControlHandlers,
 	Context,
 	createEffectToggles,
 	DataBlob,
@@ -20,7 +20,7 @@ import { Overwrite, SettingsPath, SettingsStep } from './store'
 export {
 	thisPatternHasNotBeenCanceled,
 	executeSelectedHoundstoothEffects,
-	attachAnimationControlHandlers,
+	attachControlHandlers,
 	Context,
 	createEffectToggles,
 	Px,

@@ -1,12 +1,9 @@
-import { Context } from './app/page/types'
+import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
-import { Frame } from './pattern/animation/types'
-import { Layer } from './pattern/layer/types'
-import { Effect } from './pattern/types'
+import { Effect, Frame, Layer } from './pattern'
 import * as to from './to'
 import { State } from './types'
-import { noop, NullarySideEffector } from './utilities'
-import { deepClone } from './utilities/codeUtilities'
+import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
 const DEFAULT_CONTEXTS: Context[] = []
@@ -47,6 +44,6 @@ const DEFAULT_STATE: State = {
 	tilesCompleted: DEFAULT_TILES_COMPLETED,
 }
 
-const state: State = deepClone(DEFAULT_STATE)
+const state: State = codeUtilities.deepClone(DEFAULT_STATE)
 
 export { state, DEFAULT_STATE }

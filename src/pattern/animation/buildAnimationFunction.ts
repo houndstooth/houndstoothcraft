@@ -1,4 +1,5 @@
 import { callFunctionsPerSetting, clear } from '../../app'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../../from'
 import { state } from '../../state'

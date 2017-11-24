@@ -1,6 +1,7 @@
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { Context, Px } from '../page'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 
 const clear: NullarySideEffector =

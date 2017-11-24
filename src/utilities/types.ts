@@ -1,4 +1,4 @@
-import { SettingsFunction } from '../app/execute'
+import { SettingsFunction } from '../app'
 
 type NullarySideEffector = () => void
 

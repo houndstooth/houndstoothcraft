@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { Address } from '../grid'
 import { TileOriginAndSize } from './types'

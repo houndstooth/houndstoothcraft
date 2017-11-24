@@ -1,8 +1,6 @@
 // tslint:disable:variable-name no-any
 
-import { Dimensions, Px } from './app/page'
-import { Pixel } from './app/render'
-import { SettingsPath, SettingsStep } from './app/store'
+import { Dimensions, Pixel, Px, SettingsPath, SettingsStep } from './app'
 import {
 	Address,
 	AddressElement,

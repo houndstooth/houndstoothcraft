@@ -1,6 +1,7 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
+// tslint:disable-next-line:no-reaching-imports
 import { buildSettingsNamesToPathsMap } from '../../app/store/buildSettingsNamesToPathsMap'
 import { BLACK, TRANSPARENT } from '../../constants'
 import * as to from '../../to'

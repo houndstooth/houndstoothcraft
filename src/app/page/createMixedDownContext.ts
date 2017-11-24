@@ -1,6 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { documentWrapper } from '../../utilities'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { deleteElementIfExists } from './deleteElementIfExists'
 import { Canvas, Context, Px } from './types'

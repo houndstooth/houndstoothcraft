@@ -2,6 +2,7 @@
 
 import * as to from '../../to'
 import { documentWrapper } from '../../utilities'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { scaleElement } from './scaleElement'
 import { PageElement, Px } from './types'

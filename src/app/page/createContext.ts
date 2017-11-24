@@ -1,6 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { documentWrapper } from '../../utilities'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { Canvas, Context, PageElement, Px } from './types'
 

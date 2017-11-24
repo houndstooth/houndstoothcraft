@@ -5,6 +5,7 @@ import { Layer } from '../../pattern'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import createContext from './createContext'
 import { scaleCanvasContainer } from './scaleCanvasContainer'

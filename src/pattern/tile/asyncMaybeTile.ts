@@ -1,7 +1,7 @@
-import { thisPatternHasNotBeenCanceled } from '../../app'
 import { state } from '../../state'
 import { documentWrapper, windowWrapper } from '../../utilities'
 import { ReferencedGridAddress } from '../grid'
+import { thisPatternHasNotBeenCanceled } from '../layer'
 import { maybeTile } from './maybeTile'
 
 const ONE_HUNDRED_PERCENT: number = 100

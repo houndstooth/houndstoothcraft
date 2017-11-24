@@ -1,4 +1,4 @@
-import { SettingsPath } from '../app/store/types'
+import { SettingsPath } from '../app'
 import { animationSettings } from './animation'
 import { colorSettings } from './color'
 import { gridSettings } from './grid'

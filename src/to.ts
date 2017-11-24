@@ -19,7 +19,7 @@ import {
 	Supertile,
 	Unit,
 } from './pattern'
-import { CouldBeSettingsFunctionObject } from './utilities/types'
+import { CouldBeSettingsFunctionObject } from './utilities'
 
 const Px: (px: number) => Px =
 	(px: number): Px => px as any

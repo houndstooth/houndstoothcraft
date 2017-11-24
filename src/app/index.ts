@@ -2,8 +2,8 @@ import {
 	callFunctionsPerSetting,
 	executeSelectedHoundstoothEffects,
 	FunctionsOf,
+	SettingsFunction,
 	SettingsFunctionObject,
-	thisPatternHasNotBeenCanceled,
 } from './execute'
 import {
 	attachControlHandlers,
@@ -18,7 +18,6 @@ import { clear, fill, getCurrentContext, mixDownContexts, Path, Pixel, resetClip
 import { Overwrite, SettingsPath, SettingsStep } from './store'
 
 export {
-	thisPatternHasNotBeenCanceled,
 	executeSelectedHoundstoothEffects,
 	attachControlHandlers,
 	Context,
@@ -41,4 +40,5 @@ export {
 	SettingsPath,
 	SettingsStep,
 	Dimensions,
+	SettingsFunction,
 }

@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { Effect } from '../../pattern/types'
+import { Effect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
 import { createCheckbox } from './createCheckbox'
 import { InputElement, LabelElement } from './types'

@@ -15,6 +15,7 @@ export class Rule extends Lint.Rules.AbstractRule {
 		optionExamples: [ true ],
 		type: 'functionality',
 		typescriptOnly: false,
+		hasFix: true,
 	}
 
 	public static FAILURE_STRING = 'Do not reach into a module to import its submodules; maybe this module needs to expose this submodule?'
@@ -27,7 +28,10 @@ export class Rule extends Lint.Rules.AbstractRule {
 function walk(ctx: Lint.WalkContext<string[]>) {
 	for (const name of findImports(ctx.sourceFile, ImportKind.All)) {
 		if (isSubmodulePath(name.text)) {
-			ctx.addFailureAtNode(name, Rule.FAILURE_STRING)
+
+			const fix = new Lint.Replacement(name.getStart(), name.getWidth(), fixedSubmodulePath(name.text));
+
+			ctx.addFailureAtNode(name, Rule.FAILURE_STRING, fix)
 		}
 	}
 }
@@ -37,8 +41,27 @@ function isSubmodulePath(path: string): boolean {
 	let badSteps = 0
 	steps.forEach(step => {
 		if (step !== '..' && step !== '.') {
-			badSteps = badSteps + 1
+			badSteps += 1
 		}
 	})
 	return badSteps > 1
+}
+
+function fixedSubmodulePath(path: string): string {
+	const steps = path.split('/')
+	let output = '\''
+	let finished = false
+	steps.forEach((step, index) => {
+		if (finished) {
+			return
+		}
+		if (index > 0) {
+			output += '/'
+		}
+		output += step
+		if (step !== '..' && step !== '.') {
+			finished = true
+		}
+	})
+	return output + '\''
 }

@@ -33,7 +33,8 @@ var Rule = /** @class */ (function (_super) {
         options: {},
         optionExamples: [true],
         type: 'functionality',
-        typescriptOnly: false
+        typescriptOnly: false,
+        hasFix: true
     };
     Rule.FAILURE_STRING = 'Do not reach into a module to import its submodules; maybe this module needs to expose this submodule?';
     return Rule;
@@ -43,7 +44,8 @@ function walk(ctx) {
     for (var _i = 0, _a = tsutils_1.findImports(ctx.sourceFile, 31 /* All */); _i < _a.length; _i++) {
         var name_1 = _a[_i];
         if (isSubmodulePath(name_1.text)) {
-            ctx.addFailureAtNode(name_1, Rule.FAILURE_STRING);
+            var fix = new Lint.Replacement(name_1.getStart(), name_1.getWidth(), fixedSubmodulePath(name_1.text));
+            ctx.addFailureAtNode(name_1, Rule.FAILURE_STRING, fix);
         }
     }
 }
@@ -52,9 +54,27 @@ function isSubmodulePath(path) {
     var badSteps = 0;
     steps.forEach(function (step) {
         if (step !== '..' && step !== '.') {
-            badSteps = badSteps + 1;
+            badSteps += 1;
         }
     });
     return badSteps > 1;
+}
+function fixedSubmodulePath(path) {
+    var steps = path.split('/');
+    var output = '\'';
+    var finished = false;
+    steps.forEach(function (step, index) {
+        if (finished) {
+            return;
+        }
+        if (index > 0) {
+            output += '/';
+        }
+        output += step;
+        if (step !== '..' && step !== '.') {
+            finished = true;
+        }
+    });
+    return output + '\'';
 }
 var templateObject_1, templateObject_2;

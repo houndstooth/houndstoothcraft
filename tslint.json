@@ -3,7 +3,10 @@
     "tslint:all",
     "tslint-eslint-rules"
   ],
-  "rulesDirectory": "./node_modules/tslint-defocus/dist",
+  "rulesDirectory": [
+    "node_modules/tslint-defocus/dist",
+    "lint"
+  ],
   "rules": {
     "no-constant-condition": true,
     "semicolon": false,
@@ -11,9 +14,11 @@
     "prefer-method-signature": false,
     "no-inferrable-types": false,
     "quotemark": [
+      true,
       "single"
     ],
     "indent": [
+      true,
       "tabs"
     ],
     "arrow-parens": [
@@ -35,6 +40,7 @@
     "one-line": false,
     "no-console": false,
     "interface-name": [
+      true,
       "never-prefix"
     ],
     "max-file-line-count": [
@@ -47,6 +53,7 @@
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
     "defocus": true,
-    "no-namespace": false
+    "no-namespace": false,
+    "no-reaching-imports": true
   }
 }

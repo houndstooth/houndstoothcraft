@@ -4,8 +4,8 @@ import { mixDownContexts } from '../render'
 
 const snapshotClickHandler: NullarySideEffector =
 	(): void => {
-		mixDownContexts()
-		exportFrame()
+		mixDownContexts.main()
+		exportFrame.main()
 	}
 
-export { snapshotClickHandler }
+export { snapshotClickHandler as main }

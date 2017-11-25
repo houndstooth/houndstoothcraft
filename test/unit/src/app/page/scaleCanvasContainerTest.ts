@@ -1,11 +1,13 @@
-import { PageElement, Px } from '../../../../../src/app/page'
-import { scaleCanvasContainer } from '../../../../../src/app/page/scaleCanvasContainer'
-import * as scaleElement from '../../../../../src/app/page/scaleElement'
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities'
-import { buildMockBody } from '../../../helpers/buildMockBody'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	documentWrapper,
+	PageElement,
+	Px,
+	scaleCanvasContainer,
+	scaleElement,
+	setSetting,
+	to,
+} from '../../../../../src'
+import { buildMockBody, buildMockElement } from '../../../helpers'
 
 describe('scale canvas container', () => {
 	const canvasContainerClassList: string[] = []
@@ -13,18 +15,18 @@ describe('scale canvas container', () => {
 	let bodyChildren: PageElement[]
 	let returnedCanvasContainer: PageElement
 	beforeEach(() => {
-		setSetting('canvasSize', canvasSize)
+		setSetting.main('canvasSize', canvasSize)
 		bodyChildren = []
 
-		spyOn(scaleElement, 'scaleElement')
+		spyOn(scaleElement, 'main')
 
 		// tslint:disable-next-line:no-unsafe-any
-		windowWrapper.documentWrapper.body = buildMockBody({ children: bodyChildren })
+		documentWrapper.body = buildMockBody({ children: bodyChildren })
 
 		const canvasContainer: PageElement = buildMockElement({ classList: canvasContainerClassList })
-		spyOn(windowWrapper.documentWrapper, 'createElement').and.callFake(() => canvasContainer)
+		spyOn(documentWrapper, 'createElement').and.callFake(() => canvasContainer)
 
-		returnedCanvasContainer = scaleCanvasContainer()
+		returnedCanvasContainer = scaleCanvasContainer.main()
 	})
 
 	it('returns the canvas container it just put on the page', () => {
@@ -33,7 +35,7 @@ describe('scale canvas container', () => {
 	})
 
 	it('sets the canvas container width and height (as style, in px)', () => {
-		expect(scaleElement.scaleElement).toHaveBeenCalledWith({
+		expect(scaleElement.main).toHaveBeenCalledWith({
 			dimensions: [ canvasSize, canvasSize ],
 			element: returnedCanvasContainer,
 		})

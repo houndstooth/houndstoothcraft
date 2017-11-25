@@ -1,6 +1,6 @@
 import * as codeUtilities from './codeUtilities'
 import * as mathUtilities from './mathUtilities'
-import { noop } from './noop'
+import * as noop from './noop'
 import {
 	CouldBeSettingsFunctionObject,
 	NullarySideEffector,

@@ -1,21 +1,25 @@
-import { composeMainHoundstooth } from '../../../../../src/app/execute/composeMainHoundstooth'
-import Spy = jasmine.Spy
+import {
+	composeMainHoundstooth,
+	GetStripePosition,
+	perStripe,
+	setSetting,
+	StripePosition,
+	to,
+} from '../../../../../src'
 import CallInfo = jasmine.CallInfo
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { perStripe } from '../../../../../src/pattern/stripe/perStripe'
-import { GetStripePosition, StripePosition } from '../../../../../src/pattern/stripe/types'
-import * as to from '../../../../../src/to'
 
 describe('per stripe', () => {
-	beforeEach(() => composeMainHoundstooth)
+	beforeEach(() => {
+		composeMainHoundstooth.main()
+	})
 
 	it('uses a stripe count if provided', () => {
-		setSetting('stripeSettings', {
+		setSetting.main('stripeSettings', {
 			stripePositionSettings: {
 				stripeCount: 3,
 			},
 		})
-		const stripePositions: StripePosition[] = perStripe({
+		const stripePositions: StripePosition[] = perStripe.main({
 			getStripePosition: (): StripePosition => to.StripePosition(5),
 		})
 
@@ -23,10 +27,11 @@ describe('per stripe', () => {
 	})
 
 	it('calls the stripe position function once for each stripe', () => {
-		const getStripePositionSpy: Spy = jasmine.createSpy('getStripePosition')
-
-		perStripe({ getStripePosition: getStripePositionSpy })
-
+		// tslint:disable-next-line:no-any
+		const getStripePositionSpy: any = jasmine.createSpy('getStripePosition')
+		// tslint:disable-next-line:no-unsafe-any
+		perStripe.main({ getStripePosition: getStripePositionSpy })
+		// tslint:disable-next-line:no-unsafe-any
 		const spyCalls: CallInfo[] = getStripePositionSpy.calls.all()
 		expect(spyCalls.length).toBe(4)
 		expect(spyCalls[ 0 ].args[ 0 ]).toEqual({ stripeIndex: 0, stripeCount: 4 })
@@ -39,7 +44,7 @@ describe('per stripe', () => {
 		const standardStripePosition: GetStripePosition = ({ stripeIndex, stripeCount }: {
 			stripeCount: number, stripeIndex: number,
 		}): StripePosition => to.StripePosition(stripeIndex / stripeCount)
-		const stripePositions: StripePosition[] = perStripe({ getStripePosition: standardStripePosition })
+		const stripePositions: StripePosition[] = perStripe.main({ getStripePosition: standardStripePosition })
 
 		const expectedStripePositions: StripePosition[] = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 		expect(stripePositions).toEqual(expectedStripePositions)

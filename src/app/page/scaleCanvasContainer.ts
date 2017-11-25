@@ -3,8 +3,8 @@
 import * as to from '../../to'
 import { documentWrapper } from '../../utilities'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
-import { scaleElement } from './scaleElement'
+import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
+import { main as scaleElement } from './scaleElement'
 import { PageElement, Px } from './types'
 
 const scaleCanvasContainer: () => PageElement =
@@ -18,4 +18,4 @@ const scaleCanvasContainer: () => PageElement =
 		return canvasContainer
 	}
 
-export { scaleCanvasContainer }
+export { scaleCanvasContainer as main }

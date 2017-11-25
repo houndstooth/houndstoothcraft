@@ -17,4 +17,4 @@ const saveBlob: (_: { blob: DataBlob, name: string }) => void =
 		windowWrapper.URL.revokeObjectURL(url)
 	}
 
-export { saveBlob }
+export { saveBlob as main }

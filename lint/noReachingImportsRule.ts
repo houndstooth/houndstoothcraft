@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 import * as Lint from 'tslint'
 import { findImports, ImportKind } from 'tsutils'
 import * as ts from 'typescript'

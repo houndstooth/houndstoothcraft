@@ -1,6 +1,5 @@
-import { InputElement, PageElement } from '../../../src/app/page/types'
+import { InputElement, NullarySideEffector, PageElement } from '../../../src'
 import Spy = jasmine.Spy
-import { NullarySideEffector } from '../../../src/utilities/types'
 
 interface BuildMockElementParams {
 	readonly attributeObject?: { [ index: string ]: string },

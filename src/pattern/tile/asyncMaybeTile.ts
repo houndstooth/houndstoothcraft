@@ -2,7 +2,7 @@ import { state } from '../../state'
 import { documentWrapper, windowWrapper } from '../../utilities'
 import { ReferencedGridAddress } from '../grid'
 import { thisPatternHasNotBeenCanceled } from '../layer'
-import { maybeTile } from './maybeTile'
+import { main as maybeTile } from './maybeTile'
 
 const ONE_HUNDRED_PERCENT: number = 100
 
@@ -11,7 +11,7 @@ const asyncMaybeTile: (_: ReferencedGridAddress) => void =
 		// tslint:disable-next-line:no-unsafe-any
 		windowWrapper.setTimeout(
 			() => {
-				if (thisPatternHasNotBeenCanceled(thisPatternRef)) {
+				if (thisPatternHasNotBeenCanceled.main(thisPatternRef)) {
 					maybeTile({ gridAddress, thisPatternRef })
 
 					const percentage: number = Math.ceil(state.tilesCompleted * ONE_HUNDRED_PERCENT / (state.tileCount))
@@ -27,4 +27,4 @@ const asyncMaybeTile: (_: ReferencedGridAddress) => void =
 		)
 	}
 
-export { asyncMaybeTile }
+export { asyncMaybeTile as main }

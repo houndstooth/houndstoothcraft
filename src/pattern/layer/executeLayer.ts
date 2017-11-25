@@ -9,12 +9,12 @@ const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 		state.currentLayer = layer
 
 		if (from.Layer(layer) > 0) {
-			callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
+			callFunctionsPerSetting.main({ settingsFunctionObjects: layerFunctionObjects })
 		}
 
 		if (from.Layer(layer) >= from.Layer(startLayer) || 0) {
-			await executeGridAndMaybeLogging({ thisPatternRef })
+			await executeGridAndMaybeLogging.main({ thisPatternRef })
 		}
 	}
 
-export { executeLayer }
+export { executeLayer as main }

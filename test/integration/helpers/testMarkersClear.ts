@@ -1,6 +1,6 @@
 import { Canvas, codeUtilities, Context, NullarySideEffector, Px } from '../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
 import { buildMockCanvas } from '../../unit'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 

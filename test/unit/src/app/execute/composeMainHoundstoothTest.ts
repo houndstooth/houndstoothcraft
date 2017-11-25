@@ -1,22 +1,26 @@
-import * as combineHoundstoothEffects from '../../../../../src/app/execute/combineHoundstoothEffects'
-import { composeMainHoundstooth } from '../../../../../src/app/execute/composeMainHoundstooth'
-import * as composePatterns from '../../../../../src/app/execute/composePatterns'
 import {
+	combineHoundstoothEffects,
+	composeMainHoundstooth,
+	composePatterns,
+	consoleWrapper,
+	defaults,
+	Effect,
+	state,
+} from '../../../../../src'
+import Spy = jasmine.Spy
+import CallInfo = jasmine.CallInfo
+
+const {
 	DEFAULT_ANIMATIONS_PATTERN,
 	DEFAULT_BASE_PATTERN,
 	DEFAULT_LAYERS_PATTERN,
-} from '../../../../../src/defaults'
-import Spy = jasmine.Spy
-import { Effect } from '../../../../../src/pattern'
-import { state } from '../../../../../src/state'
-import { consoleWrapper } from '../../../../../src/utilities'
-import CallInfo = jasmine.CallInfo
+} = defaults
 
 describe('composeMainHoundstooth', () => {
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		composeMainHoundstooth({ logComposedMainHoundstooth: true })
+		composeMainHoundstooth.main({ logComposedMainHoundstooth: true })
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.log).toHaveBeenCalledWith(state.mainHoundstooth)
@@ -25,7 +29,7 @@ describe('composeMainHoundstooth', () => {
 	it('does not log the houndstooth when logging mode is not on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		composeMainHoundstooth()
+		composeMainHoundstooth.main()
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
@@ -33,13 +37,13 @@ describe('composeMainHoundstooth', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
-		const composePatternsSpy: Spy = spyOn(composePatterns, 'composePatterns')
+		const composePatternsSpy: Spy = spyOn(composePatterns, 'main')
 
 		const combinedHoundstoothEffects: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		spyOn(combineHoundstoothEffects, 'combineHoundstoothEffects').and.returnValue(combinedHoundstoothEffects)
+		spyOn(combineHoundstoothEffects, 'main').and.returnValue(combinedHoundstoothEffects)
 
 		const houndstoothOverrides: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		composeMainHoundstooth({ houndstoothOverrides })
+		composeMainHoundstooth.main({ houndstoothOverrides })
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 

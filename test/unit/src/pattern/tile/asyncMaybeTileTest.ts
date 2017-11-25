@@ -1,13 +1,16 @@
-import { PageElement } from '../../../../../src/app/page/types'
-import { Address } from '../../../../../src/pattern/grid/types'
-import { asyncMaybeTile } from '../../../../../src/pattern/tile/asyncMaybeTile'
-import * as maybeTile from '../../../../../src/pattern/tile/maybeTile'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
-import { documentWrapper, windowWrapper } from '../../../../../src/utilities'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
+import {
+	Address,
+	asyncMaybeTile,
+	documentWrapper,
+	maybeTile,
+	NullarySideEffector,
+	PageElement,
+	state,
+	to,
+	windowWrapper,
+} from '../../../../../src'
 import Spy = jasmine.Spy
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import { buildMockElement } from '../../../helpers'
 
 describe('async maybe tile', () => {
 	let setTimeoutSpy: Spy
@@ -18,20 +21,20 @@ describe('async maybe tile', () => {
 		setTimeoutSpy = spyOn(windowWrapper, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
 			fn()
 		})
-		spyOn(maybeTile, 'maybeTile')
+		spyOn(maybeTile, 'main')
 	})
 
 	it('unblocks the thread by scheduling the tile for the next event loop', () => {
-		asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
+		asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
 
 		expect(setTimeoutSpy.calls.all()[ 0 ].args[ 1 ]).toBe(0)
 	})
 
 	describe('when the pattern the tile was born from has not been canceled', () => {
 		it('calls maybe tile with the same arguments', () => {
-			asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
+			asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
 
-			expect(maybeTile.maybeTile).toHaveBeenCalledWith({ gridAddress, thisPatternRef: 99 })
+			expect(maybeTile.main).toHaveBeenCalledWith({ gridAddress, thisPatternRef: 99 })
 		})
 
 		it('updates the progress bar', () => {
@@ -40,7 +43,7 @@ describe('async maybe tile', () => {
 			state.tileCount = 200000
 			state.tilesCompleted = 180001
 
-			asyncMaybeTile({ gridAddress, thisPatternRef: 99 })
+			asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
 
 			expect(progressBar.style.width).toBe('9%')
 		})
@@ -48,9 +51,9 @@ describe('async maybe tile', () => {
 
 	describe('when the pattern the tile was born from has been canceled', () => {
 		it('does not call maybe tile', () => {
-			asyncMaybeTile({ gridAddress, thisPatternRef: 98 })
+			asyncMaybeTile.main({ gridAddress, thisPatternRef: 98 })
 
-			expect(maybeTile.maybeTile).not.toHaveBeenCalled()
+			expect(maybeTile.main).not.toHaveBeenCalled()
 		})
 
 		it('does not update the progress bar', () => {
@@ -60,7 +63,7 @@ describe('async maybe tile', () => {
 			state.tileCount = 200000
 			state.tilesCompleted = 180001
 
-			asyncMaybeTile({ gridAddress, thisPatternRef: 98 })
+			asyncMaybeTile.main({ gridAddress, thisPatternRef: 98 })
 
 			expect(progressBar.style.width).toBe('10%')
 		})

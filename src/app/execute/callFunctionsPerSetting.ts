@@ -9,7 +9,7 @@ const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionOb
 		settingsFunctionObjects.forEach((settingsFunctionObject: SettingsFunctionObject): void => {
 			const { settingsPath, settingName } = settingsFunctionObject
 			const settingsFunction: SettingsFunction<any> = settingsFunctionObject.settingsFunction
-			const settings: { [_: string]: any } = getSettingOrCreatePath({
+			const settings: { [_: string]: any } = getSettingOrCreatePath.main({
 				settings: state.mainHoundstooth.basePattern,
 				settingsPath,
 			})
@@ -19,4 +19,4 @@ const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionOb
 		})
 	}
 
-export { callFunctionsPerSetting }
+export { callFunctionsPerSetting as main }

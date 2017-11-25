@@ -1,13 +1,10 @@
-import { clear } from '../../../../../src/app/render/clear'
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
+import { clear, setSetting, state, to } from '../../../../../src'
 import Spy = jasmine.Spy
 
 describe('clear', () => {
 	let mixedDownClearRectSpy: Spy
 	beforeEach(() => {
-		setSetting('canvasSize', to.Px(450))
+		setSetting.main('canvasSize', to.Px(450))
 
 		mixedDownClearRectSpy = jasmine.createSpy('mixedDownClearRect')
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }
@@ -19,7 +16,7 @@ describe('clear', () => {
 			clearRectSpy = jasmine.createSpy('clearRect')
 			state.contexts = [ { clearRect: clearRectSpy } ]
 
-			clear()
+			clear.main()
 		})
 
 		it('wipes the default amount of canvas', () => {
@@ -42,7 +39,7 @@ describe('clear', () => {
 				{ clearRect: clearRectSpy3 },
 			]
 
-			clear()
+			clear.main()
 
 			expect(clearRectSpy1).toHaveBeenCalledWith(0, 0, 450, 450)
 			expect(clearRectSpy2).toHaveBeenCalledWith(0, 0, 450, 450)

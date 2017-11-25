@@ -1,7 +1,7 @@
-import { buildSettingsNamesToPathsMap } from '../../../../../src/app/store/buildSettingsNamesToPathsMap'
-import { SettingsPath } from '../../../../../src/app/store/types'
-import * as to from '../../../../../src/to'
-import { ExampleSettings, ExampleSettingsStructure } from '../../../helpers/types'
+import { SettingsPath, to } from '../../../../../src'
+// tslint:disable-next-line:no-reaching-imports
+import { main as buildSettingsNamesToPathsMap } from '../../../../../src/app/store/buildSettingsNamesToPathsMap'
+import { ExampleSettings, ExampleSettingsStructure } from '../../../helpers'
 
 describe('build settings names to paths map', () => {
 	it('maps a setting\'s name to its full path in the settings tree, from the current base', () => {

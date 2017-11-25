@@ -1,7 +1,5 @@
-import { exportFrame } from '../../../../../src/pattern/animation/exportFrame'
-import { saveFrame } from '../../../../../src/pattern/animation/saveFrame'
-import { state } from '../../../../../src/state'
-import { buildMockContext } from '../../../../helpers/buildMockContext'
+import { exportFrame, saveFrame, state } from '../../../../../src'
+import { buildMockContext } from '../../../../helpers'
 import Spy = jasmine.Spy
 
 describe('export frame', () => {
@@ -9,8 +7,8 @@ describe('export frame', () => {
 		const toBlobSpy: Spy = jasmine.createSpy('toBlob')
 		state.mixedDownContext = buildMockContext({ toBlobSpy })
 
-		exportFrame()
+		exportFrame.main()
 
-		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame)
+		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame.main)
 	})
 })

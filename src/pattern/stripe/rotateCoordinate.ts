@@ -11,4 +11,4 @@ const rotateCoordinate: (_: RotateCoordinateParams) => Coordinate =
 			rotation,
 		}))
 
-export { rotateCoordinate }
+export { rotateCoordinate as main }

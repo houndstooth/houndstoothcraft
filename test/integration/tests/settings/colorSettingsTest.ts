@@ -1,6 +1,15 @@
-import { AssignmentMode, Color, constants, Effect, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
+import {
+	AssignmentMode,
+	Color,
+	constants,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	from,
+	to,
+	Unit,
+} from '../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import {
 	activateTestMarkerCanvas,
 	PixelColorExpectation,
@@ -32,7 +41,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				expect(pixelIsColorWithMarker({
@@ -74,7 +83,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -167,7 +176,7 @@ describe('.colorSettings', () => {
 
 					activateTestMarkerCanvas()
 
-					executeSelectedHoundstoothEffects({ houndstoothOverrides })
+					executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -511,7 +520,7 @@ describe('.colorSettings', () => {
 
 					activateTestMarkerCanvas()
 
-					executeSelectedHoundstoothEffects({ houndstoothOverrides })
+					executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -652,7 +661,7 @@ describe('.colorSettings', () => {
 
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -732,7 +741,7 @@ describe('.colorSettings', () => {
 				}
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -791,7 +800,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const partiallySeeThroughBlack: Color = { r: BLACK.r, g: BLACK.g, b: BLACK.b, a: BLACK.a * opacity }
@@ -834,7 +843,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const yellowPixel: PixelColorExpectation = {

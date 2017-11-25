@@ -4,4 +4,4 @@ const thisPatternHasNotBeenCanceled: (patternRef: number) => boolean =
 	(patternRef: number): boolean =>
 		patternRef === state.patternRef
 
-export { thisPatternHasNotBeenCanceled }
+export { thisPatternHasNotBeenCanceled as main }

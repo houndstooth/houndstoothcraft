@@ -2,8 +2,8 @@ import { Effect, executeAnimation, executePattern } from '../../pattern'
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { createContexts, createMixedDownContext } from '../page'
-import { composeMainHoundstooth } from './composeMainHoundstooth'
-import { prepareFunctionObjectsPerSetting } from './prepareFunctionObjectsPerSetting'
+import { main as composeMainHoundstooth } from './composeMainHoundstooth'
+import { main as prepareFunctionObjectsPerSetting } from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
 
 const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
@@ -21,7 +21,7 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 
 const prepareCanvas: NullarySideEffector =
 	(): void => {
-		createContexts()
+		createContexts.main()
 		if (state.exportFrames) {
 			state.mixingDown = true
 		}
@@ -36,11 +36,11 @@ const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
 			const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
 				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
 			})
-			executeAnimation({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+			executeAnimation.main({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
-			executePattern({ layerFunctionObjects }).then().catch()
+			executePattern.main({ layerFunctionObjects }).then().catch()
 		}
 	}
 
-export { executeSelectedHoundstoothEffects }
+export { executeSelectedHoundstoothEffects as main }

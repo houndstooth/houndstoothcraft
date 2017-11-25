@@ -1,35 +1,38 @@
-import { Canvas, Context, PageElement } from '../../../../../src/app/page'
-import createMixedDownContext from '../../../../../src/app/page/createMixedDownContext'
-import * as deleteElementIfExists from '../../../../../src/app/page/deleteElementIfExists'
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities'
-import { buildMockContext } from '../../../../helpers/buildMockContext'
-import { buildMockBody } from '../../../helpers/buildMockBody'
-import { buildMockCanvas } from '../../../helpers/buildMockCanvas'
+import {
+	Canvas,
+	Context,
+	createMixedDownContext,
+	deleteElementIfExists,
+	documentWrapper,
+	PageElement,
+	setSetting,
+	to,
+} from '../../../../../src'
+import { buildMockContext } from '../../../../helpers'
+import { buildMockBody, buildMockCanvas } from '../../../helpers'
 
-describe('create mixed down canvas', () => {
+describe('create mixed down context', () => {
 	let mixedDownCanvas: Canvas
 	const mixedDownContext: Context = buildMockContext()
 	const bodyChildren: PageElement[] = []
 	const mixedDownCanvasClassList: string[] = []
 	let returnedMixedDownContext: Context
 	beforeAll(() => {
-		spyOn(deleteElementIfExists, 'deleteElementIfExists')
+		spyOn(deleteElementIfExists, 'main')
 
 		// tslint:disable-next-line:no-unsafe-any
-		windowWrapper.documentWrapper.body = buildMockBody({ children: bodyChildren })
+		documentWrapper.body = buildMockBody({ children: bodyChildren })
 
 		mixedDownCanvas = buildMockCanvas({ context: mixedDownContext, classList: mixedDownCanvasClassList })
-		spyOn(windowWrapper.documentWrapper, 'createElement').and.returnValue(mixedDownCanvas)
+		spyOn(documentWrapper, 'createElement').and.returnValue(mixedDownCanvas)
 
-		setSetting('canvasSize', to.Px(450))
+		setSetting.main('canvasSize', to.Px(450))
 
-		returnedMixedDownContext = createMixedDownContext()
+		returnedMixedDownContext = createMixedDownContext.default()
 	})
 
 	it('deletes the existing mixed down canvas, if present', () => {
-		expect(deleteElementIfExists.deleteElementIfExists).toHaveBeenCalledWith('.mixed-down-canvas')
+		expect(deleteElementIfExists.main).toHaveBeenCalledWith('.mixed-down-canvas')
 	})
 
 	it('puts the new mixed down canvas on the document body', () => {

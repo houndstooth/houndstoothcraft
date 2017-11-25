@@ -1,41 +1,47 @@
 import Spy = jasmine.Spy
-import { SettingsFunctionObject } from '../../../../../src/app/execute'
-import * as composeMainHoundstooth from '../../../../../src/app/execute/composeMainHoundstooth'
-import { executeSelectedHoundstoothEffects } from '../../../../../src/app/execute/executeSelectedHoundstoothEffects'
-import * as prepareFunctionObjectsPerSetting from '../../../../../src/app/execute/prepareFunctionObjectsPerSetting'
-import * as page from '../../../../../src/app/page'
-import * as pattern from '../../../../../src/pattern'
-import { state } from '../../../../../src/state'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
+import {
+	composeMainHoundstooth,
+	Context,
+	createContexts,
+	createMixedDownContext,
+	Effect,
+	executeAnimation,
+	executePattern,
+	executeSelectedHoundstoothEffects,
+	NullarySideEffector,
+	prepareFunctionObjectsPerSetting,
+	SettingsFunctionObject,
+	state,
+} from '../../../../../src'
 
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
-	const mixedDownContext: page.Context = {}
+	const mixedDownContext: Context = {}
 	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
-		spyOn(page.createMixedDownContext, 'default').and.returnValue(mixedDownContext)
-		spyOn(page, 'createContexts')
-		spyOn(pattern, 'executePattern').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
-		spyOn(pattern, 'executeAnimation').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
-		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'prepareFunctionObjectsPerSetting')
+		spyOn(createMixedDownContext, 'default').and.returnValue(mixedDownContext)
+		spyOn(createContexts, 'main')
+		spyOn(executePattern, 'main').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		spyOn(executeAnimation, 'main').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'main')
 		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)
 	})
 
 	it('composes the houndstooth', () => {
-		spyOn(composeMainHoundstooth, 'composeMainHoundstooth')
+		spyOn(composeMainHoundstooth, 'main')
 
-		const houndstoothOverrides: pattern.Effect = {}
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		const houndstoothOverrides: Effect = {}
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
-		expect(composeMainHoundstooth.composeMainHoundstooth).toHaveBeenCalledWith({
+		expect(composeMainHoundstooth.main).toHaveBeenCalledWith({
 			houndstoothEffects: state.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
 	})
 
 	it('prepares layer functions', () => {
-		executeSelectedHoundstoothEffects()
+		executeSelectedHoundstoothEffects.main()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
@@ -47,38 +53,38 @@ describe('execute selected houndstooth effects', () => {
 			state.mixingDown = true
 			state.exportFrames = true
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 
-			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownContext.default).toHaveBeenCalled()
+			expect(createContexts.main).toHaveBeenCalled()
+			expect(createMixedDownContext.default).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownContext)
 		})
 
 		it('includes the mixed down canvas when only mixing down', () => {
 			state.mixingDown = true
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 
-			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownContext.default).toHaveBeenCalled()
+			expect(createContexts.main).toHaveBeenCalled()
+			expect(createMixedDownContext.default).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownContext)
 		})
 
 		it('includes the mixed down canvas when only exporting frames', () => {
 			state.exportFrames = true
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 
-			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownContext.default).toHaveBeenCalled()
+			expect(createContexts.main).toHaveBeenCalled()
+			expect(createMixedDownContext.default).toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(mixedDownContext)
 		})
 
 		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 
-			expect(page.createContexts).toHaveBeenCalled()
-			expect(page.createMixedDownContext.default).not.toHaveBeenCalled()
+			expect(createContexts.main).toHaveBeenCalled()
+			expect(createMixedDownContext.default).not.toHaveBeenCalled()
 			expect(state.mixedDownContext).toBe(undefined)
 		})
 	})
@@ -87,7 +93,7 @@ describe('execute selected houndstooth effects', () => {
 		beforeEach(() => {
 			state.animating = true
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 		})
 
 		it('prepares animation functions', () => {
@@ -97,14 +103,14 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('executes an animation', () => {
-			expect(pattern.executeAnimation).toHaveBeenCalledWith({
+			expect(executeAnimation.main).toHaveBeenCalledWith({
 				animationFunctionObjects,
 				layerFunctionObjects,
 			})
 		})
 
 		it('does not execute a single grid', () => {
-			expect(pattern.executePattern).not.toHaveBeenCalled()
+			expect(executePattern.main).not.toHaveBeenCalled()
 		})
 	})
 
@@ -112,7 +118,7 @@ describe('execute selected houndstooth effects', () => {
 		beforeEach(() => {
 			state.animating = false
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 		})
 
 		it('does not prepare animation functions', () => {
@@ -120,13 +126,13 @@ describe('execute selected houndstooth effects', () => {
 		})
 
 		it('executes a single grid', () => {
-			expect(pattern.executePattern).toHaveBeenCalledWith({
+			expect(executePattern.main).toHaveBeenCalledWith({
 				layerFunctionObjects,
 			})
 		})
 
 		it('does not execute an animation', () => {
-			expect(pattern.executeAnimation).not.toHaveBeenCalled()
+			expect(executeAnimation.main).not.toHaveBeenCalled()
 		})
 	})
 })

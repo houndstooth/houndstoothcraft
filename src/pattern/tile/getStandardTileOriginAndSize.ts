@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../../from'
 import * as to from '../../to'
 import { Address, Unit } from '../grid'
@@ -16,4 +16,4 @@ const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginA
 		}
 	}
 
-export { getStandardTileOriginAndSize }
+export { getStandardTileOriginAndSize as main }

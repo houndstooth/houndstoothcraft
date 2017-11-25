@@ -1,14 +1,14 @@
 import { applyViewForShape, Outline } from '../../pattern'
-import { buildPath } from './buildPath'
-import { clipPath } from './clipPath'
+import { main as buildPath } from './buildPath'
+import { main as clipPath } from './clipPath'
 import { Path } from './types'
 
 const setClip: (_: { outline: Outline }) => void =
 	({ outline }: { outline: Outline }): void => {
-		const path: Path = applyViewForShape(outline)
+		const path: Path = applyViewForShape.main(outline)
 		buildPath({ path })
 
 		clipPath()
 	}
 
-export { setClip }
+export { setClip as main }

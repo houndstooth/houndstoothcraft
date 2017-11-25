@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { noop } from './noop'
+import { main as noop } from './noop'
 
 declare const global: any
 

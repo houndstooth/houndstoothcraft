@@ -2,8 +2,8 @@
 
 import { codeUtilities, consoleWrapper } from '../../utilities'
 import { settingPath } from '../execute'
+import { warn } from '../ui'
 import { BuildWarningMessageParams, MaybeWarnAboutConflictsParams, ShouldWarnAboutConflictsParams } from './types'
-import { warn } from './warn'
 
 const { isDefined } = codeUtilities
 
@@ -25,7 +25,7 @@ const maybeWarnAboutConflicts: (_: MaybeWarnAboutConflictsParams) => void =
 				settingsPath,
 			})
 			consoleWrapper.warn(warning)
-			warn(warning)
+			warn.main(warning)
 		}
 	}
 
@@ -58,7 +58,7 @@ const buildWarningMessage: (_: BuildWarningMessageParams) => string =
 	({ existingSetting, overridingSetting, settingName, settingsPath }: BuildWarningMessageParams): string => {
 		const formattedExistingSetting: string = formatSettingForWarning(existingSetting)
 		const formattedOverridingSetting: string = formatSettingForWarning(overridingSetting)
-		const fullSettingPath: string = settingPath({ settingsPath, settingName })
+		const fullSettingPath: string = settingPath.main({ settingsPath, settingName })
 
 		// tslint:disable-next-line:max-line-length
 		return `some effects have conflicts on setting \`${fullSettingPath}\`: \`${formattedExistingSetting}\` was overridden by \`${formattedOverridingSetting}\``
@@ -77,4 +77,4 @@ const formatSettingForWarning: (setting: any) => string =
 		return JSON.stringify(setting)
 	}
 
-export { maybeWarnAboutConflicts }
+export { maybeWarnAboutConflicts as main }

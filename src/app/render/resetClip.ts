@@ -2,7 +2,7 @@
 
 import { NullarySideEffector } from '../../utilities'
 import { Context } from '../page'
-import { getCurrentContext } from './getCurrentContext'
+import { main as getCurrentContext } from './getCurrentContext'
 
 const resetClip: NullarySideEffector =
 	(): void => {
@@ -10,4 +10,4 @@ const resetClip: NullarySideEffector =
 		context.restore()
 	}
 
-export { resetClip }
+export { resetClip as main }

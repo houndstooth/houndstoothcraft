@@ -1,10 +1,5 @@
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { buildIntervalFunction } from '../../../../../src/pattern/animation/buildIntervalFunction'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
-import { windowWrapper } from '../../../../../src/utilities'
+import { buildIntervalFunction, NullarySideEffector, setSetting, state, to, windowWrapper } from '../../../../../src'
 import Spy = jasmine.Spy
-import { NullarySideEffector } from '../../../../../src/utilities/types'
 
 describe('build interval function returns a function which', () => {
 	let intervalFunction: NullarySideEffector
@@ -17,7 +12,7 @@ describe('build interval function returns a function which', () => {
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		stopConditionFunctionSpy = jasmine.createSpy('stopConditionFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
-		intervalFunction = buildIntervalFunction({
+		intervalFunction = buildIntervalFunction.main({
 			animationFunction: animationFunctionSpy,
 			resolveAnimation: resolveAnimationSpy,
 			stopConditionFunction: stopConditionFunctionSpy,
@@ -57,7 +52,7 @@ describe('build interval function returns a function which', () => {
 
 	describe('resolving the animation promise', () => {
 		it('resolveAnimations if the end frame is reached', () => {
-			setSetting('endFrame', to.Frame(12))
+			setSetting.main('endFrame', to.Frame(12))
 			state.currentFrame = to.Frame(12)
 
 			intervalFunction()
@@ -66,7 +61,7 @@ describe('build interval function returns a function which', () => {
 		})
 
 		it('does not resolveAnimation if the end frame is not reached', () => {
-			setSetting('endFrame', to.Frame(12))
+			setSetting.main('endFrame', to.Frame(12))
 			state.currentFrame = to.Frame(11)
 
 			intervalFunction()

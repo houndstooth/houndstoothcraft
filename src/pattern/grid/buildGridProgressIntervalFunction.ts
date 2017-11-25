@@ -16,4 +16,4 @@ const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionPa
 			}
 		}
 
-export { buildGridProgressIntervalFunction }
+export { buildGridProgressIntervalFunction as main }

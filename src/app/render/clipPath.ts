@@ -2,7 +2,7 @@
 
 import { NullarySideEffector } from '../../utilities'
 import { Context } from '../page'
-import { getCurrentContext } from './getCurrentContext'
+import { main as getCurrentContext } from './getCurrentContext'
 
 const clipPath: NullarySideEffector =
 	(): void => {
@@ -11,4 +11,4 @@ const clipPath: NullarySideEffector =
 		context.clip()
 	}
 
-export { clipPath }
+export { clipPath as main }

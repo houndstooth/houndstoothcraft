@@ -1,28 +1,30 @@
-import animator from '../../../../../src/pattern/animation/animator'
-import * as buildIntervalFunction from '../../../../../src/pattern/animation/buildIntervalFunction'
-import { ConditionFunction } from '../../../../../src/pattern/animation/types'
-import { state } from '../../../../../src/state'
-import { windowWrapper } from '../../../../../src/utilities'
-import { noop } from '../../../../../src/utilities/noop'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
+import {
+	animator,
+	buildIntervalFunction,
+	ConditionFunction,
+	noop,
+	NullarySideEffector,
+	state,
+	windowWrapper,
+} from '../../../../../src'
 
 describe('animator', () => {
 	let intervalFunction: (p: number) => number
-	const animationFunction: NullarySideEffector = noop
+	const animationFunction: NullarySideEffector = noop.main
 	const frameRate: number = 3
-	const resolveAnimation: NullarySideEffector = noop
+	const resolveAnimation: NullarySideEffector = noop.main
 	const stopConditionFunction: ConditionFunction = (): boolean => false
-	const interval: NullarySideEffector = noop
+	const interval: NullarySideEffector = noop.main
 	beforeEach(() => {
 		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)
 		intervalFunction = (p: number): number => p * 20
-		spyOn(buildIntervalFunction, 'buildIntervalFunction').and.returnValue(intervalFunction)
+		spyOn(buildIntervalFunction, 'main').and.returnValue(intervalFunction)
 
-		animator({ animationFunction, resolveAnimation, frameRate, stopConditionFunction })
+		animator.default({ animationFunction, resolveAnimation, frameRate, stopConditionFunction })
 	})
 
 	it('assembles the animation, resolution, and stop condition functions together', () => {
-		expect(buildIntervalFunction.buildIntervalFunction).toHaveBeenCalledWith(jasmine.objectContaining({
+		expect(buildIntervalFunction.main).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
 			resolveAnimation,
 			stopConditionFunction,

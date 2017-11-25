@@ -1,6 +1,5 @@
-import { Context } from '../../../src/app/page'
-import { buildMockContext } from '../../helpers/buildMockContext'
-import { MockCanvas, MockContext } from '../../helpers/types'
+import { Context } from '../../../src'
+import { buildMockContext, MockCanvas, MockContext } from '../../helpers'
 import { buildMockElement } from './buildMockElement'
 
 const buildMockCanvas: (_?: { classList?: string[], context?: MockContext }) => MockCanvas =

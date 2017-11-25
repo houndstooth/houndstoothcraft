@@ -1,9 +1,6 @@
-import { Canvas, Context, PageElement } from '../../../../../src/app/page'
-import createContext from '../../../../../src/app/page/createContext'
-import * as windowWrapper from '../../../../../src/utilities'
-import { buildMockContext } from '../../../../helpers/buildMockContext'
-import { buildMockCanvas } from '../../../helpers/buildMockCanvas'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import { Canvas, Context, createContext, documentWrapper, PageElement } from '../../../../../src'
+import { buildMockContext } from '../../../../helpers'
+import { buildMockCanvas, buildMockElement } from '../../../helpers'
 
 describe('create context', () => {
 	let returnedContext: Context
@@ -11,12 +8,12 @@ describe('create context', () => {
 	const context: Context = buildMockContext()
 	beforeEach(() => {
 		const canvas: Canvas = buildMockCanvas({ context })
-		spyOn(windowWrapper.documentWrapper, 'createElement').and.returnValue(canvas)
+		spyOn(documentWrapper, 'createElement').and.returnValue(canvas)
 
 		const children: Canvas[] = []
 		const canvasContainer: PageElement = buildMockElement({ children })
 
-		returnedContext = createContext({ canvasContainer })
+		returnedContext = createContext.default({ canvasContainer })
 
 		appendedCanvas = children[0]
 	})

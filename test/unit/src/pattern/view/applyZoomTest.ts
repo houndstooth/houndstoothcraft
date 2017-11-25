@@ -1,8 +1,4 @@
-import { Px } from '../../../../../src/app/page'
-import { Path } from '../../../../../src/app/render'
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { applyZoom } from '../../../../../src/pattern/view/applyZoom'
-import * as to from '../../../../../src/to'
+import { applyZoom, Path, Px, setSetting, to } from '../../../../../src'
 
 describe('apply zoom', () => {
 	const zoom: number = 2
@@ -15,11 +11,11 @@ describe('apply zoom', () => {
 			[ 100, 100 ],
 			[ 50, 100 ],
 		])
-		setSetting('viewSettings', { zoom, canvasSize })
+		setSetting.main('viewSettings', { zoom, canvasSize })
 	})
 
 	it('adjusts the path per the zoom level', () => {
-		expect(applyZoom(path)).toEqual(to.Path([
+		expect(applyZoom.main(path)).toEqual(to.Path([
 			[ 100, 100 ],
 			[ 200, 100 ],
 			[ 200, 200 ],
@@ -29,11 +25,11 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			setSetting('zoomOnCanvasCenter', true)
+			setSetting.main('zoomOnCanvasCenter', true)
 		})
 
 		it('works', () => {
-			expect(applyZoom(path)).toEqual(to.Path([
+			expect(applyZoom.main(path)).toEqual(to.Path([
 				[ 0, 0 ],
 				[ 100, 0 ],
 				[ 100, 100 ],
@@ -43,12 +39,12 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				setSetting('centerViewOnCenterOfTileAtHomeAddress', true)
+				setSetting.main('centerViewOnCenterOfTileAtHomeAddress', true)
 			})
 		})
 
 		it('does not double-up on adjusting for centering the view', () => {
-			expect(applyZoom(path)).toEqual(to.Path([
+			expect(applyZoom.main(path)).toEqual(to.Path([
 				[ 0, 0 ],
 				[ 100, 0 ],
 				[ 100, 100 ],

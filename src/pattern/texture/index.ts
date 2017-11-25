@@ -1,5 +1,6 @@
-import { shape } from './shape'
-import { solid } from './solid'
+import * as shape from './shape'
+import * as solid from './solid'
+import * as texture from './texture'
 import * as textureSettings from './textureSettings'
 import {
 	ComponentParams,
@@ -14,6 +15,7 @@ export {
 	textureSettings,
 	solid,
 	shape,
+	texture,
 	ShapeParams,
 	ComponentParams,
 	ExecuteTexture,

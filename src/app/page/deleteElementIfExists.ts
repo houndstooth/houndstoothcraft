@@ -11,4 +11,4 @@ const deleteElementIfExists: (selector: string) => void =
 		}
 	}
 
-export { deleteElementIfExists }
+export { deleteElementIfExists as main }

@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../../from'
 import { codeUtilities } from '../../utilities'
 import {
@@ -23,4 +23,4 @@ const getBySupertile: GetShapeColorIndicesWithOffset =
 		return codeUtilities.wrappedIndex({ array: supertileColumn, index: y + yOffset })
 	}
 
-export { getBySupertile }
+export { getBySupertile as main }

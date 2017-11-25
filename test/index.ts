@@ -1,3 +1,4 @@
+import { isCloseTo } from './helpers'
 import {
 	activateTestMarkerCanvas,
 	Diagonal,
@@ -28,4 +29,5 @@ export {
 	standardTileIsColors,
 	StandardTileExpectation,
 	pixelIsColorWithMarker,
+	isCloseTo,
 }

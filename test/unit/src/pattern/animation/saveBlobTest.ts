@@ -1,33 +1,31 @@
 // tslint:disable:no-unsafe-any
 
-import { DataBlob, PageElement } from '../../../../../src/app/page/types'
-import { saveBlob } from '../../../../../src/pattern/animation/saveBlob'
+import { DataBlob, documentWrapper, PageElement, saveBlob, windowWrapper } from '../../../../../src'
 import Spy = jasmine.Spy
-import * as windowWrapper from '../../../../../src/utilities'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import { buildMockElement } from '../../../helpers'
 
 describe('save blob', () => {
 	it('creates a download link and clicks it', () => {
-		spyOn(windowWrapper.windowWrapper.URL, 'createObjectURL').and.returnValue('the url')
+		spyOn(windowWrapper.URL, 'createObjectURL').and.returnValue('the url')
 
 		const clickSpy: Spy = jasmine.createSpy('click')
 		const link: PageElement = buildMockElement({ clickSpy })
-		spyOn(windowWrapper.documentWrapper, 'createElement').and.returnValue(link)
+		spyOn(documentWrapper, 'createElement').and.returnValue(link)
 
-		const appendChildSpy: Spy = spyOn(windowWrapper.documentWrapper.body, 'appendChild')
+		const appendChildSpy: Spy = spyOn(documentWrapper.body, 'appendChild')
 
-		spyOn(windowWrapper.windowWrapper.URL, 'revokeObjectURL')
+		spyOn(windowWrapper.URL, 'revokeObjectURL')
 
 		const blob: DataBlob = {}
 		const name: string = 'whatever.png'
-		saveBlob({ blob, name })
+		saveBlob.main({ blob, name })
 
-		expect(windowWrapper.windowWrapper.URL.createObjectURL).toHaveBeenCalledWith(blob)
+		expect(windowWrapper.URL.createObjectURL).toHaveBeenCalledWith(blob)
 		expect(appendChildSpy).toHaveBeenCalledWith(link)
 		expect(link.style).toEqual({ display: 'none' })
 		expect(link.href).toBe('the url')
 		expect(link.download).toBe('whatever.png')
 		expect(clickSpy).toHaveBeenCalled()
-		expect(windowWrapper.windowWrapper.URL.revokeObjectURL).toHaveBeenCalledWith('the url')
+		expect(windowWrapper.URL.revokeObjectURL).toHaveBeenCalledWith('the url')
 	})
 })

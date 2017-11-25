@@ -1,4 +1,4 @@
-import { stripeOutline } from './stripeOutline'
+import * as stripeOutline from './stripeOutline'
 
 export {
 	stripeOutline,

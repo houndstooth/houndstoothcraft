@@ -29,9 +29,9 @@ const playClickHandler: NullarySideEffector =
 					rewindButton.disabled = false
 				}
 
-				executeSelectedHoundstoothEffects()
+				executeSelectedHoundstoothEffects.main()
 			}
 		}
 	}
 
-export { playClickHandler }
+export { playClickHandler as main }

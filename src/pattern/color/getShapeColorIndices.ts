@@ -1,12 +1,12 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
 import { Address, GridAddressParam } from '../grid'
-import { applySwitcheroo } from './applySwitcheroo'
+import { main as applySwitcheroo } from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
-import { getBySupertile } from './getBySupertile'
-import { getByWeave } from './getByWeave'
+import { main as getBySupertile } from './getBySupertile'
+import { main as getByWeave } from './getByWeave'
 import {
 	AssignmentMode,
 	GetShapeColorIndices,
@@ -66,4 +66,4 @@ const getIndices: GetShapeColorIndices =
 		return getter({ gridAddress, addressOffset })
 	}
 
-export { getShapeColorIndices }
+export { getShapeColorIndices as main }

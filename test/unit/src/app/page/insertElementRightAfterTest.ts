@@ -1,7 +1,6 @@
 import Spy = jasmine.Spy
-import { PageElement } from '../../../../../src/app/page'
-import { insertElementRightAfter } from '../../../../../src/app/page/insertElementRightAfter'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import { insertElementRightAfter, PageElement } from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('insert element right after', () => {
 	it('inserts an element right after another one', () => {
@@ -11,7 +10,7 @@ describe('insert element right after', () => {
 		elementRightAfterWhichToInsert.nextSibling = nextSibling
 		const element: PageElement = buildMockElement()
 
-		insertElementRightAfter(element, elementRightAfterWhichToInsert)
+		insertElementRightAfter.main(element, elementRightAfterWhichToInsert)
 
 		expect(parentNodeInsertBeforeSpy).toHaveBeenCalledWith(element, nextSibling)
 	})

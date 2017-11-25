@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../../from'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
@@ -24,4 +24,4 @@ const getByWeave: GetShapeColorIndicesWithOffset =
 		return to.ShapeColorIndices([ rowsIndex, columnsIndex ])
 	}
 
-export { getByWeave }
+export { getByWeave as main }

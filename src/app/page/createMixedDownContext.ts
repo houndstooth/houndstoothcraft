@@ -2,8 +2,8 @@
 
 import { documentWrapper } from '../../utilities'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
-import { deleteElementIfExists } from './deleteElementIfExists'
+import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
+import { main as deleteElementIfExists } from './deleteElementIfExists'
 import { Canvas, Context, Px } from './types'
 
 const createMixedDownContext: () => Context =

@@ -5,17 +5,17 @@ import { state } from '../../state'
 import { documentWrapper, NullarySideEffector } from '../../utilities'
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
-import { resetInterface } from './resetInterface'
+import { resetInterface } from '../ui'
 
 const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEffect: Effect }) => NullarySideEffector =
 	({ checkbox, houndstoothEffect }: { checkbox: InputElement, houndstoothEffect: Effect }): NullarySideEffector =>
 		(): void => {
-			resetInterface()
+			resetInterface.main()
 
 			const effectFunction: (houndstoothEffect: Effect) => void = checkbox.checked ? addEffect : removeEffect
 			effectFunction(houndstoothEffect)
 
-			executeSelectedHoundstoothEffects()
+			executeSelectedHoundstoothEffects.main()
 
 			dealWithAnimationControls()
 		}
@@ -50,4 +50,4 @@ const dealWithAnimationControls: NullarySideEffector =
 		}
 	}
 
-export { buildEffectToggleClickHandler }
+export { buildEffectToggleClickHandler as main }

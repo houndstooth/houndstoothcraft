@@ -1,10 +1,4 @@
-import { Address, Unit } from '../../../../../src/pattern/grid/types'
-import { Coordinate } from '../../../../../src/pattern/stripe/types'
-import * as getTileOriginAndSize from '../../../../../src/pattern/tile/getTileOriginAndSize'
-import { maybeTile } from '../../../../../src/pattern/tile/maybeTile'
-import * as tile from '../../../../../src/pattern/tile/tile'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
+import { Address, Coordinate, getTileOriginAndSize, maybeTile, state, tile, to, Unit } from '../../../../../src'
 
 describe('maybe tile', () => {
 	const gridAddress: Address = to.Address([ 5, 3 ])
@@ -13,45 +7,45 @@ describe('maybe tile', () => {
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
-		spyOn(tile, 'tile')
+		spyOn(tile, 'main')
 	})
 
 	it('calls tile if an origin and size are got', () => {
-		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
+		spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileOrigin, tileSize })
 
-		maybeTile({ gridAddress, thisPatternRef })
+		maybeTile.main({ gridAddress, thisPatternRef })
 
-		expect(tile.tile).toHaveBeenCalledWith({ gridAddress, tileOrigin, tileSize })
+		expect(tile.main).toHaveBeenCalledWith({ gridAddress, tileOrigin, tileSize })
 	})
 
 	it('does not call tile if neither origin nor size is got', () => {
-		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue(undefined)
+		spyOn(getTileOriginAndSize, 'main').and.returnValue(undefined)
 
-		maybeTile({ gridAddress, thisPatternRef })
+		maybeTile.main({ gridAddress, thisPatternRef })
 
-		expect(tile.tile).not.toHaveBeenCalled()
+		expect(tile.main).not.toHaveBeenCalled()
 	})
 
 	it('does not call tile if origin is got but size is not', () => {
-		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin })
+		spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileOrigin })
 
-		maybeTile({ gridAddress, thisPatternRef })
+		maybeTile.main({ gridAddress, thisPatternRef })
 
-		expect(tile.tile).not.toHaveBeenCalled()
+		expect(tile.main).not.toHaveBeenCalled()
 	})
 
 	it('does not call tile if size is got but origin is not', () => {
-		spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileSize })
+		spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileSize })
 
-		maybeTile({ gridAddress, thisPatternRef })
+		maybeTile.main({ gridAddress, thisPatternRef })
 
-		expect(tile.tile).not.toHaveBeenCalled()
+		expect(tile.main).not.toHaveBeenCalled()
 	})
 
 	it('increments the count of tiles completed', () => {
 		state.tilesCompleted = 5
 
-		maybeTile({ gridAddress, thisPatternRef })
+		maybeTile.main({ gridAddress, thisPatternRef })
 
 		expect(state.tilesCompleted).toBe(6)
 	})

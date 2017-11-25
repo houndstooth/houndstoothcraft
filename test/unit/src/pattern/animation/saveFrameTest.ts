@@ -1,20 +1,16 @@
-import { DataBlob } from '../../../../../src/app/page/types'
-import * as saveBlob from '../../../../../src/pattern/animation/saveBlob'
-import { saveFrame } from '../../../../../src/pattern/animation/saveFrame'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
+import { DataBlob, saveBlob, saveFrame, state, to } from '../../../../../src'
 
 describe('save frame', () => {
 	const result: DataBlob = {}
 	beforeEach(() => {
 		state.lastSavedFrame = to.Frame(666)
-		spyOn(saveBlob, 'saveBlob')
+		spyOn(saveBlob, 'main')
 
-		saveFrame(result)
+		saveFrame.main(result)
 	})
 
 	it('saves the frame as a png with the frame number as file name', () => {
-		expect(saveBlob.saveBlob).toHaveBeenCalledWith({ blob: result, name: '666.png' })
+		expect(saveBlob.main).toHaveBeenCalledWith({ blob: result, name: '666.png' })
 	})
 
 	it('increments the last saved frame', () => {

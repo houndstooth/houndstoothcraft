@@ -1,6 +1,6 @@
 import { constants, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
@@ -10,7 +10,7 @@ describe('standard houndstooth pattern', () => {
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', async (done: DoneFn) => {
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({
+		executeSelectedHoundstoothEffects.main({
 			houndstoothOverrides: {
 				basePattern: {
 					gridSettings: { tileResolution: 4 },

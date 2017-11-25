@@ -1,6 +1,6 @@
 import { state } from '../../state'
 import { NullarySideEffector, windowWrapper } from '../../utilities'
-import { buildIntervalFunction } from './buildIntervalFunction'
+import { main as buildIntervalFunction } from './buildIntervalFunction'
 import { AnimatorParams } from './types'
 
 const animator: (_: AnimatorParams) => void =

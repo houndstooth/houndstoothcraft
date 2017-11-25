@@ -1,6 +1,6 @@
 import { constants, Effect, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT, WHITE } = constants
@@ -25,7 +25,7 @@ describe('.gridSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [
@@ -157,7 +157,7 @@ describe('.gridSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [

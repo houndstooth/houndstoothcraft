@@ -1,60 +1,69 @@
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { PERIMETER_SCALAR } from '../../../../../src/constants'
-import * as color from '../../../../../src/pattern/color'
-import { ShapeColorIndex } from '../../../../../src/pattern/color/types'
-import { Address, Unit } from '../../../../../src/pattern/grid/types'
-import * as stripe from '../../../../../src/pattern/stripe'
-import { StripePosition } from '../../../../../src/pattern/stripe/types'
-import * as texture from '../../../../../src/pattern/texture'
-import * as getTileOriginAndSize from '../../../../../src/pattern/tile/getTileOriginAndSize'
-import { tile } from '../../../../../src/pattern/tile/tile'
-import * as to from '../../../../../src/to'
+import {
+	Address,
+	constants,
+	Coordinate,
+	getShapeColorIndices,
+	getStripePositionsForTile,
+	getTileOriginAndSize,
+	isTileUniform,
+	setSetting,
+	shape,
+	ShapeColorIndex,
+	squareOutline,
+	stripeOutline,
+	StripePosition,
+	tile,
+	to,
+	Unit,
+} from '../../../../../src'
+
+const { PERIMETER_SCALAR } = constants
 
 describe('tile', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])
-	const tileOrigin: stripe.Coordinate = to.Coordinate([ 7, 11 ])
+	const tileOrigin: Coordinate = to.Coordinate([ 7, 11 ])
 	const tileSize: Unit = to.Unit(13)
 	let shapeSpy: Spy
 	let getShapeColorIndicesSpy: Spy
 	let isTileUniformSpy: Spy
 	beforeEach(() => {
-		shapeSpy = spyOn(texture, 'shape')
-		spyOn(stripe, 'squareOutline')
-		spyOn(stripe, 'stripeOutline')
-		getShapeColorIndicesSpy = spyOn(color, 'getShapeColorIndices')
-		isTileUniformSpy = spyOn(color, 'isTileUniform')
+		shapeSpy = spyOn(shape, 'main')
+		spyOn(squareOutline, 'main')
+		spyOn(stripeOutline, 'main')
+		getShapeColorIndicesSpy = spyOn(getShapeColorIndices, 'main')
+		isTileUniformSpy = spyOn(isTileUniform, 'main')
 	})
 
 	describe('when the tile is assigned an origin on the canvas', () => {
 		let stripePositionsForTile: StripePosition[]
 		let shapeColorIndices: ShapeColorIndex[]
 		beforeEach(() => {
-			spyOn(getTileOriginAndSize, 'getTileOriginAndSize').and.returnValue({ tileOrigin, tileSize })
+			spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileOrigin, tileSize })
 
 			stripePositionsForTile = to.StripePositions([ 0, 0.5, 1, 1.5 ])
-			spyOn(stripe, 'getStripePositionsForTile').and.returnValue(stripePositionsForTile)
+			spyOn(getStripePositionsForTile, 'main').and.returnValue(stripePositionsForTile)
 
-			setSetting('tileSettings', {})
+			setSetting.main('tileSettings', {})
 
 			shapeColorIndices = []
 			getShapeColorIndicesSpy.and.returnValue(shapeColorIndices)
 		})
 
 		it('gets colors', () => {
-			tile({ gridAddress, tileOrigin, tileSize })
+			tile.main({ gridAddress, tileOrigin, tileSize })
 
-			expect(color.getShapeColorIndices).toHaveBeenCalledWith({ gridAddress })
+			expect(getShapeColorIndices.main).toHaveBeenCalledWith({ gridAddress })
 		})
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				setSetting('collapseSameColoredShapesWithinTile', true)
+				setSetting.main('collapseSameColoredShapesWithinTile', true)
 			})
 
 			it('checks if the tile is uniform', () => {
-				tile({ gridAddress, tileOrigin, tileSize })
+				tile.main({ gridAddress, tileOrigin, tileSize })
 
 				expect(isTileUniformSpy).toHaveBeenCalledWith({ shapeColorIndices })
 			})
@@ -65,16 +74,16 @@ describe('tile', () => {
 				})
 
 				it('does not look for stripe positions', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
-					expect(stripe.getStripePositionsForTile).not.toHaveBeenCalled()
+					expect(getStripePositionsForTile.main).not.toHaveBeenCalled()
 				})
 
 				it('converts the tile into shapes with the correct arguments, and uses square outline', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-						getOutline: stripe.squareOutline,
+						getOutline: squareOutline.main,
 						shapeColorIndices,
 						tileOrigin,
 						tileSize,
@@ -88,22 +97,22 @@ describe('tile', () => {
 				})
 
 				it('looks for stripe positions', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
-					expect(stripe.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
+					expect(getStripePositionsForTile.main).toHaveBeenCalledWith({ gridAddress })
 				})
 
 				it('converts the tile into a number of shapes equal to the number of stripes', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
 					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
 				it('converts the tile into shapes with the correct arguments, and uses the shape outline', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
-						getOutline: stripe.stripeOutline,
+						getOutline: stripeOutline.main,
 						shapeColorIndices,
 						tileOrigin,
 						tileSize,
@@ -111,7 +120,7 @@ describe('tile', () => {
 				})
 
 				it('converts the tile into shapes, each one a stripe, each one knowing its stripe index', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
 					const shapes: CallInfo[] = shapeSpy.calls.all()
 
@@ -122,7 +131,7 @@ describe('tile', () => {
 				})
 
 				it('passes along options that the outline getting function will need', () => {
-					tile({ gridAddress, tileOrigin, tileSize })
+					tile.main({ gridAddress, tileOrigin, tileSize })
 
 					const shapes: CallInfo[] = shapeSpy.calls.all()
 
@@ -156,17 +165,17 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				setSetting('collapseSameColoredShapesWithinTile', false)
+				setSetting.main('collapseSameColoredShapesWithinTile', false)
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {
 				isTileUniformSpy.and.returnValue(true)
 
-				tile({ gridAddress, tileOrigin, tileSize })
+				tile.main({ gridAddress, tileOrigin, tileSize })
 
-				expect(stripe.getStripePositionsForTile).toHaveBeenCalledWith({ gridAddress })
+				expect(getStripePositionsForTile.main).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
-				expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: stripe.stripeOutline }))
+				expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({ getOutline: stripeOutline.main }))
 			})
 		})
 	})

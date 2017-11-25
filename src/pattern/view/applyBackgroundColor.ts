@@ -2,7 +2,7 @@
 
 import { Context, getCurrentContext, Px } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { NullarySideEffector } from '../../utilities'
 import { Color, parseColor } from '../color'
 
@@ -15,9 +15,9 @@ const applyBackgroundColor: NullarySideEffector =
 
 		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
 
-		const context: Context = getCurrentContext()
-		context.fillStyle = parseColor(backgroundColor)
+		const context: Context = getCurrentContext.main()
+		context.fillStyle = parseColor.main(backgroundColor)
 		context.fillRect(0, 0, canvasSize, canvasSize)
 	}
 
-export { applyBackgroundColor }
+export { applyBackgroundColor as main }

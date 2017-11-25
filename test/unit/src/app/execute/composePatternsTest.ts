@@ -1,7 +1,4 @@
-import { composePatterns } from '../../../../../src/app/execute/composePatterns'
-import * as ui from '../../../../../src/app/ui'
-import { Pattern } from '../../../../../src/pattern'
-import { AssignmentMode } from '../../../../../src/pattern/color/types'
+import { AssignmentMode, composePatterns, maybeWarnAboutConflicts, Pattern } from '../../../../../src'
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
@@ -27,7 +24,7 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns({ patternToBeMergedOnto, patternToMerge })
+		composePatterns.main({ patternToBeMergedOnto, patternToMerge })
 
 		const expectedPattern: Pattern = {
 			colorSettings: {
@@ -55,7 +52,7 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns({ patternToBeMergedOnto, patternToMerge })
+		composePatterns.main({ patternToBeMergedOnto, patternToMerge })
 
 		const expectedPattern: Pattern = {
 			colorSettings: {
@@ -66,7 +63,7 @@ describe('compose patterns', () => {
 	})
 
 	it('maybe warns about conflicts', () => {
-		spyOn(ui, 'maybeWarnAboutConflicts')
+		spyOn(maybeWarnAboutConflicts, 'main')
 
 		const patternToBeMergedOnto: Pattern = {
 			colorSettings: {
@@ -79,13 +76,13 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns({ patternToBeMergedOnto, patternToMerge })
+		composePatterns.main({ patternToBeMergedOnto, patternToMerge })
 
-		expect(ui.maybeWarnAboutConflicts).toHaveBeenCalled()
+		expect(maybeWarnAboutConflicts.main).toHaveBeenCalled()
 	})
 
 	it('defaults the pattern to merge to an empty object, so as to not fail', () => {
 		const patternToBeMergedOnto: Pattern = {}
-		composePatterns({ patternToBeMergedOnto })
+		composePatterns.main({ patternToBeMergedOnto })
 	})
 })

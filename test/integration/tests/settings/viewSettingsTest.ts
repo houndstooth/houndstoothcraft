@@ -1,6 +1,6 @@
 import { constants, Coordinate, Effect, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import { activateTestMarkerCanvas, pixelIsColor, sectionCenterIsColor, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
@@ -16,7 +16,7 @@ describe('.viewSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				expect(pixelIsColor(to.Coordinate([ 0, 0 ]), BLACK)).toBe(true)
@@ -46,7 +46,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -98,7 +98,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -144,7 +144,7 @@ describe('.viewSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -199,7 +199,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let areaOrigin: Coordinate = to.Coordinate([ 200, 0 ])

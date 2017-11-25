@@ -1,14 +1,14 @@
 import { callFunctionsPerSetting, clear } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities, NullaryVoidPromise } from '../../utilities'
-import { executePattern } from '../executePattern'
+import { main as executePattern } from '../executePattern'
 import { BasePattern } from '../types'
 import { AnimationSettings } from './animationSettings'
-import { exportFrame } from './exportFrame'
+import { main as exportFrame } from './exportFrame'
 import { AnimateParams, BuildAnimationFunctionParams, ConditionFunction, Frame } from './types'
 
 const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPromise =
@@ -29,7 +29,7 @@ const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPr
 				await animate({ layerFunctionObjects, refreshCanvas })
 			}
 
-			callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
+			callFunctionsPerSetting.main({ settingsFunctionObjects: animationFunctionObjects })
 			state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
 		}
 
@@ -42,7 +42,7 @@ const shouldBeginShowingAnimation: (startFrame: Frame) => boolean =
 const animate: (_: AnimateParams) => Promise<void> =
 	async ({ layerFunctionObjects, refreshCanvas }: AnimateParams): Promise<void> => {
 		if (refreshCanvas) {
-			clear()
+			clear.main()
 		}
 
 		const preLayerSettings: Partial<BasePattern> = codeUtilities.deepClone(state.mainHoundstooth.basePattern)
@@ -54,4 +54,4 @@ const animate: (_: AnimateParams) => Promise<void> =
 		}
 	}
 
-export { buildAnimationFunction }
+export { buildAnimationFunction as main }

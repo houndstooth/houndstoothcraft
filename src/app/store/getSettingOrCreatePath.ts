@@ -16,4 +16,4 @@ const getSettingOrCreatePath: (_: { settings: any, settingsPath: SettingsPath })
 		return childSettings
 	}
 
-export { getSettingOrCreatePath }
+export { getSettingOrCreatePath as main }

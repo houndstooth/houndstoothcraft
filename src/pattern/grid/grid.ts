@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
@@ -12,7 +12,7 @@ const QUADRANT_COUNT: number = NEGATIVE_AND_POSITIVE * NEGATIVE_AND_POSITIVE
 
 const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }) => void =
 	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }): void => {
-		applyViewForGrid()
+		applyViewForGrid.main()
 
 		const { includeNegativeQuadrants, tileResolution }: GridSettings = getFromBaseOrDefaultPattern('gridSettings')
 
@@ -35,4 +35,4 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 		})
 	}
 
-export { grid }
+export { grid as main }

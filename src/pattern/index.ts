@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count
 
-import {
+export {
 	animationSettings,
 	animator,
 	ConditionFunction,
@@ -8,10 +8,16 @@ import {
 	exportFrame,
 	Frame,
 	standardAnimation,
+	buildIntervalFunction,
+	buildAnimationFunction,
+	buildStopConditionFunction,
+	saveFrame,
+	saveBlob,
 } from './animation'
-import {
+export {
 	AssignmentMode,
 	Color,
+	getColor,
 	colorAssignmentSettings,
 	ColorOptions,
 	ColorSet,
@@ -22,12 +28,28 @@ import {
 	TransformShapeColorIndices,
 	TransformShapeColorIndicesParams,
 	Weave,
+	getBySupertile,
+	getByWeave,
+	OffsetAddress,
+	getShapeColorIndices,
+	isTileUniform,
 } from './color'
-import { executePattern } from './executePattern'
-import { Address, AddressElement, Grid, gridSettings, Unit } from './grid'
-import { Layer, layerSettings } from './layer'
-import { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
-import {
+import * as executePattern from './executePattern'
+export {
+	Address,
+	AddressElement,
+	Grid,
+	gridSettings,
+	Unit,
+	grid,
+	executeGridAndMaybeLogging,
+	buildGridProgressIntervalFunction,
+	executeGrid,
+	gridComplete,
+} from './grid'
+export { Layer, layerSettings, executeLayer } from './layer'
+export { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
+export {
 	Coordinate,
 	GetStripePosition,
 	GetStripePositions,
@@ -40,15 +62,32 @@ import {
 	StripePosition,
 	stripePositionSettings,
 	stripeSettings,
+	getStripePositionsForTile,
+	squareOutline,
+	OutlineOptions,
+	stripeOutline,
 } from './stripe'
-import {
-	ComponentParams, ExecuteTexture, ExecuteTextureParams,
+export {
+	ComponentParams,
+	ExecuteTexture,
+	ExecuteTextureParams,
 	solid,
 	SolidParams,
 	textureSettings,
+	texture,
+	shape,
 } from './texture'
-import { tileCenter, TileOriginAndSize, tileSettings } from './tile'
-import {
+export {
+	tileCenter,
+	TileOriginAndSize,
+	tileSettings,
+	asyncMaybeTile,
+	maybeTile,
+	getTileOriginAndSize,
+	GetTileOriginAndSize,
+	tile,
+} from './tile'
+export {
 	BasePattern,
 	Effect,
 	Houndstooth,
@@ -58,66 +97,17 @@ import {
 	SettingsNamesByTypeBase,
 	SettingsNamesToTypesMap,
 } from './types'
-import { applyViewForShape, viewSettings } from './view'
+export {
+	applyViewForShape,
+	viewSettings,
+	applyViewForGrid,
+	applyBackgroundColor,
+	applyOpacity,
+	applyScroll,
+	applyTilt,
+	applyZoom,
+} from './view'
 
 export {
-	standardAnimation,
-	perStripe,
-	tileCenter,
-	solid,
-	Address,
-	Unit,
-	Color,
-	Weave,
-	Supertile,
-	PatternFunctions,
-	BasePattern,
-	ColorOptions,
-	ShapeColorIndex,
-	AssignmentMode,
-	stripeCountContinuumSettings,
-	TransformShapeColorIndices,
-	ColorSet,
-	rotateCoordinate,
-	Outline,
-	StripePosition,
-	GetStripePosition,
-	StripeCountMode,
-	Radian,
-	GetStripePositions,
-	Coordinate,
-	ComponentParams,
-	ExecuteTexture,
-	ExecuteTextureParams,
-	SolidParams,
-	TileOriginAndSize,
-	animationSettings,
 	executePattern,
-	executeAnimation,
-	applyViewForShape,
-	Layer,
-	parseColor,
-	Frame,
-	Houndstooth,
-	TransformShapeColorIndicesParams,
-	Effect,
-	AddressElement,
-	Grid,
-	SettingsNamesToTypesMap,
-	settingsNamesToPathsMap,
-	Pattern,
-	colorSettings,
-	colorAssignmentSettings,
-	gridSettings,
-	layerSettings,
-	stripeSettings,
-	stripePositionSettings,
-	textureSettings,
-	tileSettings,
-	SetSetting,
-	viewSettings,
-	SettingsNamesByTypeBase,
-	exportFrame,
-	ConditionFunction,
-	animator,
 }

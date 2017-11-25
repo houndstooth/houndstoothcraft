@@ -1,6 +1,6 @@
 import { Context, getCurrentContext } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { NullarySideEffector } from '../../utilities'
 
 const applyOpacity: NullarySideEffector =
@@ -10,8 +10,8 @@ const applyOpacity: NullarySideEffector =
 			return
 		}
 
-		const context: Context = getCurrentContext()
+		const context: Context = getCurrentContext.main()
 		context.globalAlpha = opacity
 	}
 
-export { applyOpacity }
+export { applyOpacity as main }

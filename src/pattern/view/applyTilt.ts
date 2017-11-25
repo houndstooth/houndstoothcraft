@@ -1,6 +1,6 @@
 import { Path, Pixel, Px } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { HALF } from '../../constants'
 import * as from from '../../from'
 import * as to from '../../to'
@@ -29,4 +29,4 @@ const tilt: (_: { fixedPoint: Pixel, point: Pixel, rotation: Radian }) => Pixel 
 	({ fixedPoint, point, rotation }: { fixedPoint: Pixel, point: Pixel, rotation: Radian }): Pixel =>
 		to.Pixel(mathUtilities.rotate({ fixedPoint: from.Pixel(fixedPoint), point: from.Pixel(point), rotation }))
 
-export { applyTilt }
+export { applyTilt as main }

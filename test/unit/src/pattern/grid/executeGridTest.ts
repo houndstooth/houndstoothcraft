@@ -1,10 +1,4 @@
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { executeGrid } from '../../../../../src/pattern/grid/executeGrid'
-import * as grid from '../../../../../src/pattern/grid/grid'
-import * as gridComplete from '../../../../../src/pattern/grid/gridComplete'
-import { asyncMaybeTile } from '../../../../../src/pattern/tile/asyncMaybeTile'
-import { maybeTile } from '../../../../../src/pattern/tile/maybeTile'
-import { state } from '../../../../../src/state'
+import { asyncMaybeTile, executeGrid, grid, gridComplete, maybeTile, setSetting, state } from '../../../../../src'
 
 describe('execute grid', () => {
 	const tileResolution: number = 2
@@ -15,20 +9,20 @@ describe('execute grid', () => {
 		// So, we need to turn it off for this test to truly test the subject.
 		state.syncMode = false
 
-		spyOn(gridComplete, 'gridComplete')
+		spyOn(gridComplete, 'main')
 
-		spyOn(grid, 'grid')
-		setSetting('gridSettings', { tileResolution })
+		spyOn(grid, 'main')
+		setSetting.main('gridSettings', { tileResolution })
 	})
 
 	describe('when animating', () => {
 		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
 			state.animating = true
 
-			executeGrid({ thisPatternRef }).then().catch()
+			executeGrid.main({ thisPatternRef }).then().catch()
 
-			expect(grid.grid).toHaveBeenCalledWith({ gridTile: maybeTile, thisPatternRef })
-			expect(grid.grid).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile, thisPatternRef })
+			expect(grid.main).toHaveBeenCalledWith({ gridTile: maybeTile.main, thisPatternRef })
+			expect(grid.main).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile.main, thisPatternRef })
 
 			done()
 		})
@@ -42,7 +36,7 @@ describe('execute grid', () => {
 		it('resets the count of tiles completed', async (done: DoneFn) => {
 			state.tilesCompleted = 256
 
-			executeGrid({ thisPatternRef }).then().catch()
+			executeGrid.main({ thisPatternRef }).then().catch()
 
 			expect(state.tilesCompleted).toBe(0)
 
@@ -50,18 +44,18 @@ describe('execute grid', () => {
 		})
 
 		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
-			executeGrid({ thisPatternRef }).then().catch()
+			executeGrid.main({ thisPatternRef }).then().catch()
 
-			expect(grid.grid).toHaveBeenCalledWith({ gridTile: asyncMaybeTile, thisPatternRef })
-			expect(grid.grid).not.toHaveBeenCalledWith({ gridTile: maybeTile, thisPatternRef })
+			expect(grid.main).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.main, thisPatternRef })
+			expect(grid.main).not.toHaveBeenCalledWith({ gridTile: maybeTile.main, thisPatternRef })
 
 			done()
 		})
 
 		it('waits for the grid tobe complete', async (done: DoneFn) => {
-			executeGrid({ thisPatternRef }).then().catch()
+			executeGrid.main({ thisPatternRef }).then().catch()
 
-			expect(gridComplete.gridComplete).toHaveBeenCalled()
+			expect(gridComplete.main).toHaveBeenCalled()
 
 			done()
 		})

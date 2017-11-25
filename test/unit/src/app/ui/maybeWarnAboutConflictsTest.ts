@@ -1,8 +1,4 @@
-import { SettingsPath, SettingsStep } from '../../../../../src/app/store/types'
-import { maybeWarnAboutConflicts } from '../../../../../src/app/ui/maybeWarnAboutConflicts'
-import * as warn from '../../../../../src/app/ui/warn'
-import * as to from '../../../../../src/to'
-import { consoleWrapper } from '../../../../../src/utilities'
+import { consoleWrapper, maybeWarnAboutConflicts, SettingsPath, SettingsStep, to, warn } from '../../../../../src'
 
 describe('warning about conflicts', () => {
 	let warnAboutConflicts: boolean
@@ -12,7 +8,7 @@ describe('warning about conflicts', () => {
 	let overridingSetting: {}
 	beforeEach(() => {
 		spyOn(consoleWrapper, 'warn')
-		spyOn(warn, 'warn')
+		spyOn(warn, 'main')
 	})
 
 	it('warns when requested and there are conflicts', () => {
@@ -22,13 +18,13 @@ describe('warning about conflicts', () => {
 		existingSetting = 'yoda'
 		overridingSetting = 'luke'
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` was overridden by `luke`'
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(warn.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(warn.main).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('does not warn when not requested', () => {
@@ -38,11 +34,11 @@ describe('warning about conflicts', () => {
 		existingSetting = 'yoda'
 		overridingSetting = 'luke'
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(warn.warn).not.toHaveBeenCalled()
+		expect(warn.main).not.toHaveBeenCalled()
 	})
 
 	it('does not warn when settings are identical', () => {
@@ -52,11 +48,11 @@ describe('warning about conflicts', () => {
 		existingSetting = 'luke'
 		overridingSetting = 'luke'
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(warn.warn).not.toHaveBeenCalled()
+		expect(warn.main).not.toHaveBeenCalled()
 	})
 
 	it('does not warn when the settings are equivalent functions', () => {
@@ -66,11 +62,11 @@ describe('warning about conflicts', () => {
 		existingSetting = (a: number): number => a
 		overridingSetting = (a: number): number => a
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(warn.warn).not.toHaveBeenCalled()
+		expect(warn.main).not.toHaveBeenCalled()
 	})
 
 	it('does warn when the settings are functions that are not equivalent (by stringified comparison)', () => {
@@ -81,13 +77,13 @@ describe('warning about conflicts', () => {
 		overridingSetting = (b: number): number => b
 
 		// tslint:disable-next-line:no-unsafe-any
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` was overridden by `function (b) { return b; }`'
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(warn.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(warn.main).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('does not warn when the settings are equivalent arrays', () => {
@@ -97,11 +93,11 @@ describe('warning about conflicts', () => {
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = [ 'a', 'b' ]
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
-		expect(warn.warn).not.toHaveBeenCalled()
+		expect(warn.main).not.toHaveBeenCalled()
 	})
 
 	it('does warn when the settings are arrays that are not equivalent', () => {
@@ -111,13 +107,13 @@ describe('warning about conflicts', () => {
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = [ 'b', 'a' ]
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `["b","a"]`'
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(warn.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(warn.main).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('does warn when the settings are different types of data structure', () => {
@@ -127,13 +123,13 @@ describe('warning about conflicts', () => {
 		existingSetting = [ 'a', 'b' ]
 		overridingSetting = 'bna'
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.colorSet`: `["a","b"]` was overridden by `bna`'
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(warn.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(warn.main).toHaveBeenCalledWith(expectedWarning)
 	})
 
 	it('shows the contents of objects (such as colors) (as opposed to [object Object])', () => {
@@ -143,12 +139,12 @@ describe('warning about conflicts', () => {
 		existingSetting = { r: 0, g: 5, b: 10, a: 1 }
 		overridingSetting = { a: 0 }
 
-		maybeWarnAboutConflicts({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
+		maybeWarnAboutConflicts.main({ warnAboutConflicts, settingsPath, settingName, existingSetting, overridingSetting })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'some effects have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` was overridden by `{"a":0}`'
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
-		expect(warn.warn).toHaveBeenCalledWith(expectedWarning)
+		expect(warn.main).toHaveBeenCalledWith(expectedWarning)
 	})
 })

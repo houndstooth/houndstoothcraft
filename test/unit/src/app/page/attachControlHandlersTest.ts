@@ -1,9 +1,11 @@
-import { attachControlHandlers } from '../../../../../src/app/page/attachControlHandlers'
-import { pauseClickHandler } from '../../../../../src/app/ui/pauseClickHandler'
-import { playClickHandler } from '../../../../../src/app/ui/playClickHandler'
-import { rewindClickHandler } from '../../../../../src/app/ui/rewindClickHandler'
-import { snapshotClickHandler } from '../../../../../src/app/ui/snapshotClickHandler'
-import { mockQuerySelector } from '../../../helpers/mockQuerySelector'
+import {
+	attachControlHandlers,
+	pauseClickHandler,
+	playClickHandler,
+	rewindClickHandler,
+	snapshotClickHandler,
+} from '../../../../../src'
+import { mockQuerySelector } from '../../../helpers'
 
 describe('attach control handlers', () => {
 	it('attaches the handlers for the controls', () => {
@@ -18,11 +20,11 @@ describe('attach control handlers', () => {
 		const rewindButton: HTMLButtonElement = tmpRewindButton as HTMLButtonElement
 		const snapshotButton: HTMLButtonElement = tmpSnapshotButton as HTMLButtonElement
 
-		attachControlHandlers()
+		attachControlHandlers.main()
 
-		expect(playButton.onclick).toBe(playClickHandler)
-		expect(pauseButton.onclick).toBe(pauseClickHandler)
-		expect(rewindButton.onclick).toBe(rewindClickHandler)
-		expect(snapshotButton.onclick).toBe(snapshotClickHandler)
+		expect(playButton.onclick).toBe(playClickHandler.main)
+		expect(pauseButton.onclick).toBe(pauseClickHandler.main)
+		expect(rewindButton.onclick).toBe(rewindClickHandler.main)
+		expect(snapshotButton.onclick).toBe(snapshotClickHandler.main)
 	})
 })

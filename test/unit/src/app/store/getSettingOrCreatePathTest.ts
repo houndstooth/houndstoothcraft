@@ -1,8 +1,6 @@
 // tslint:disable:no-any
 
-import { getSettingOrCreatePath } from '../../../../../src/app/store/getSettingOrCreatePath'
-import { SettingsPath } from '../../../../../src/app/store/types'
-import * as to from '../../../../../src/to'
+import { getSettingOrCreatePath, SettingsPath, to } from '../../../../../src'
 
 describe('get setting or create path', () => {
 	it('accesses child setting if it exists', () => {
@@ -14,7 +12,7 @@ describe('get setting or create path', () => {
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting: any = getSettingOrCreatePath.main({ settings, settingsPath })
 
 		expect(childSetting).toBe(expectedSetting)
 	})
@@ -23,7 +21,7 @@ describe('get setting or create path', () => {
 		const settings: any = {}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting: any = getSettingOrCreatePath.main({ settings, settingsPath })
 
 		expect(childSetting).toEqual({})
 		expect(settings).toEqual({
@@ -41,7 +39,7 @@ describe('get setting or create path', () => {
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getSettingOrCreatePath({ settings, settingsPath })
+		const childSetting: any = getSettingOrCreatePath.main({ settings, settingsPath })
 
 		expect(childSetting).toBe(0)
 		expect(settings).toEqual({

@@ -1,9 +1,5 @@
-import { Path } from '../../../../../src/app/render'
-import { buildPath } from '../../../../../src/app/render/buildPath'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
-import { buildMockContext } from '../../../../helpers/buildMockContext'
-import { MockContextCall } from '../../../../helpers/types'
+import { buildPath, Path, state, to } from '../../../../../src'
+import { buildMockContext, MockContextCall } from '../../../../helpers'
 
 describe('build path', () => {
 	it('draws the correct path and fills it', () => {
@@ -11,7 +7,7 @@ describe('build path', () => {
 		const contextCallsOrder: MockContextCall[] = []
 		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		buildPath({ path })
+		buildPath.main({ path })
 
 		const expectedContextCallsOrder: MockContextCall[] = [
 			{ method: 'beginPath' },

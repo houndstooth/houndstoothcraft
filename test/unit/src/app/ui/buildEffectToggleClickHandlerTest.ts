@@ -1,28 +1,28 @@
-import * as execute from '../../../../../src/app/execute'
-import { composeMainHoundstooth } from '../../../../../src/app/execute/composeMainHoundstooth'
-import { InputElement } from '../../../../../src/app/page'
-import { buildEffectToggleClickHandler } from '../../../../../src/app/ui/buildEffectToggleClickHandler'
-import * as resetInterface from '../../../../../src/app/ui/resetInterface'
-import { Effect } from '../../../../../src/pattern'
-import { state } from '../../../../../src/state'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { buildMockElement } from '../../../helpers/buildMockElement'
-import { mockQuerySelector } from '../../../helpers/mockQuerySelector'
+import {
+	buildEffectToggleClickHandler,
+	composeMainHoundstooth,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	InputElement,
+	NullarySideEffector,
+	resetInterface,
+	state,
+} from '../../../../../src'
+import { buildMockElement, mockQuerySelector, SimulateClick } from '../../../helpers'
 import Spy = jasmine.Spy
-import { SimulateClick } from '../../../helpers/types'
 
 describe('build effect toggle click handler returns a function which', () => {
 	it('resets the interface, toggles selection of the effect it is for, and executes', () => {
-		const resetInterfaceSpy: Spy = spyOn(resetInterface, 'resetInterface')
+		const resetInterfaceSpy: Spy = spyOn(resetInterface, 'main')
 
-		const executeSelectedHoundstoothEffectsSpy: Spy = spyOn(execute, 'executeSelectedHoundstoothEffects')
+		const executeSelectedHoundstoothEffectsSpy: Spy = spyOn(executeSelectedHoundstoothEffects, 'main')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		const checkbox: InputElement = buildMockElement()
 
 		const houndstoothEffect: Effect = { name: 'mock tooth' }
 
-		const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
+		const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.main({
 			checkbox, houndstoothEffect,
 		})
 
@@ -70,8 +70,8 @@ describe('build effect toggle click handler returns a function which', () => {
 			rewindButton = tmpRewindButton as HTMLButtonElement
 
 			// Do not want to deal with other document related stuff, but need the houndstooth composed.
-			spyOn(execute, 'executeSelectedHoundstoothEffects').and.callFake(async () => {
-				composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects })
+			spyOn(executeSelectedHoundstoothEffects, 'main').and.callFake(async () => {
+				composeMainHoundstooth.main({ houndstoothEffects: state.selectedHoundstoothEffects })
 
 				return new Promise<NullarySideEffector>((): void => undefined)
 			})
@@ -85,7 +85,7 @@ describe('build effect toggle click handler returns a function which', () => {
 					gridSettings: { tileResolution: (p: number): number => p },
 				},
 			}
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
+			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.main({
 				checkbox,
 				houndstoothEffect: effectWithAnimations,
 			})
@@ -98,7 +98,7 @@ describe('build effect toggle click handler returns a function which', () => {
 
 		it('disables the play button when the composed houndstooth does not have an animations pattern', () => {
 			const effectWithoutAnimations: Effect = { animationsPattern: {} }
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
+			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.main({
 				checkbox,
 				houndstoothEffect: effectWithoutAnimations,
 			})
@@ -113,7 +113,7 @@ describe('build effect toggle click handler returns a function which', () => {
 			pauseButton.disabled = false
 			rewindButton.disabled = false
 			const effectWithoutAnimations: Effect = { animationsPattern: {} }
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler({
+			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.main({
 				checkbox,
 				houndstoothEffect: effectWithoutAnimations,
 			})

@@ -1,6 +1,6 @@
 import { mixDownContexts, SettingsFunctionObject } from '../app'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../from'
 import { state } from '../state'
 import * as to from '../to'
@@ -12,16 +12,16 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 
 		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
-			if (thisPatternHasNotBeenCanceled(thisPatternRef)) {
-				await executeLayer({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
+			if (thisPatternHasNotBeenCanceled.main(thisPatternRef)) {
+				await executeLayer.main({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
 			}
 		}
 
 		if (state.mixingDown) {
-			mixDownContexts()
+			mixDownContexts.main()
 		}
 
 		state.currentLayer = to.Layer(0)
 	}
 
-export { executePattern }
+export { executePattern as main }

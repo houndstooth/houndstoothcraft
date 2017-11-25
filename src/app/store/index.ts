@@ -1,6 +1,7 @@
-import { deeperPath } from './deeperPath'
-import { getSettingOrCreatePath } from './getSettingOrCreatePath'
-import { resetState } from './resetState'
+import * as deeperPath from './deeperPath'
+import * as getSettingOrCreatePath from './getSettingOrCreatePath'
+import * as resetState from './resetState'
+import * as setSetting from './setSetting'
 import { Overwrite, SettingsPath, SettingsStep } from './types'
 
 export {
@@ -10,4 +11,5 @@ export {
 	deeperPath,
 	getSettingOrCreatePath,
 	Overwrite,
+	setSetting,
 }

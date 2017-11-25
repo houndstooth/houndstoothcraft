@@ -2,7 +2,7 @@
 
 import { documentWrapper } from '../../utilities'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { Canvas, Context, PageElement, Px } from './types'
 
 const createContext: (_: { canvasContainer: PageElement }) => Context =

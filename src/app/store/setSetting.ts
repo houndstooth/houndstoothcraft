@@ -3,7 +3,7 @@
 import { SetSetting, settingsNamesToPathsMap } from '../../pattern'
 import { state } from '../../state'
 import * as to from '../../to'
-import { getSettingOrCreatePath } from './getSettingOrCreatePath'
+import { main as getSettingOrCreatePath } from './getSettingOrCreatePath'
 import { SettingsPath } from './types'
 
 const setSetting: SetSetting =
@@ -17,4 +17,4 @@ const setSetting: SetSetting =
 		parentSetting[ settingName ] = value
 	}
 
-export { setSetting }
+export { setSetting as main }

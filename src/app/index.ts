@@ -1,14 +1,20 @@
-import {
+export {
 	callFunctionsPerSetting,
+	combineHoundstoothEffects,
+	composeMainHoundstooth,
+	composePatterns,
 	executeSelectedHoundstoothEffects,
 	FunctionsOf,
 	SettingsFunction,
 	SettingsFunctionObject,
+	prepareFunctionObjectsPerSetting,
+	settingPath,
 } from './execute'
-import {
+export {
 	attachControlHandlers,
 	Canvas,
 	Context,
+	createCheckbox,
 	createContext,
 	createEffectToggles,
 	createMixedDownContext,
@@ -19,39 +25,43 @@ import {
 	Px,
 	scaleCanvasContainer,
 	scaleElement,
+	createContexts,
+	createEffectToggle,
+	createLabel,
+	LabelElement,
+	deleteElementIfExists,
+	insertElementRightAfter,
 } from './page'
-import { clear, fill, getCurrentContext, mixDownContexts, Path, Pixel, resetClip, setClip } from './render'
-import { Overwrite, resetState, SettingsPath, SettingsStep } from './store'
-
 export {
-	executeSelectedHoundstoothEffects,
-	attachControlHandlers,
-	Canvas,
-	Context,
-	createEffectToggles,
-	Px,
-	FunctionsOf,
-	Overwrite,
-	mixDownContexts,
 	clear,
-	callFunctionsPerSetting,
-	DataBlob,
-	SettingsFunctionObject,
-	PageElement,
 	fill,
 	getCurrentContext,
-	resetClip,
-	setClip,
+	mixDownContexts,
 	Path,
 	Pixel,
+	resetClip,
+	setClip,
+	buildFill,
+	buildPath,
+	clipPath,
+	fillPath,
+} from './render'
+export {
+	Overwrite,
+	resetState,
 	SettingsPath,
 	SettingsStep,
-	Dimensions,
-	SettingsFunction,
-	scaleCanvasContainer,
-	scaleElement,
-	InputElement,
-	resetState,
-	createContext,
-	createMixedDownContext,
-}
+	setSetting,
+	deeperPath,
+	getSettingOrCreatePath,
+} from './store'
+export {
+	maybeWarnAboutConflicts,
+	pauseClickHandler,
+	playClickHandler,
+	rewindClickHandler,
+	snapshotClickHandler,
+	buildEffectToggleClickHandler,
+	resetInterface,
+	warn,
+} from './ui'

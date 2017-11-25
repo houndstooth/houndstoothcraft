@@ -1,21 +1,24 @@
 import Spy = jasmine.Spy
-import { PageElement } from '../../../../../src/app/page/types'
-import * as buildGridProgressIntervalFunction from '../../../../../src/pattern/grid/buildGridProgressIntervalFunction'
-import { gridComplete } from '../../../../../src/pattern/grid/gridComplete'
-import { state } from '../../../../../src/state'
-import { documentWrapper, windowWrapper } from '../../../../../src/utilities'
-import { noop } from '../../../../../src/utilities/noop'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	buildGridProgressIntervalFunction,
+	documentWrapper,
+	gridComplete,
+	noop,
+	NullarySideEffector,
+	PageElement,
+	state,
+	windowWrapper,
+} from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('grid complete', () => {
-	const fakeGridProgressIntervalFunction: NullarySideEffector = noop
+	const fakeGridProgressIntervalFunction: NullarySideEffector = noop.main
 	const fakeGridProgressIntervalItself: {} = {}
 	let resolveGrid: Spy
 	let buildGridProgressIntervalFunctionSpy: Spy
 	beforeEach(() => {
 		resolveGrid = jasmine.createSpy('resolveGrid')
-		buildGridProgressIntervalFunctionSpy = spyOn(buildGridProgressIntervalFunction, 'buildGridProgressIntervalFunction')
+		buildGridProgressIntervalFunctionSpy = spyOn(buildGridProgressIntervalFunction, 'main')
 		buildGridProgressIntervalFunctionSpy.and.returnValue(fakeGridProgressIntervalFunction)
 
 		spyOn(windowWrapper, 'setInterval').and.callFake((fn: NullarySideEffector) => {
@@ -26,7 +29,7 @@ describe('grid complete', () => {
 	})
 
 	it('schedules a watcher of the rendering progress', () => {
-		gridComplete(resolveGrid)
+		gridComplete.main(resolveGrid)
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.setInterval).toHaveBeenCalledWith(fakeGridProgressIntervalFunction, 30)
@@ -35,7 +38,7 @@ describe('grid complete', () => {
 	it('saves the watcher onto the store so it can be cancelled from elsewhere if necessary', () => {
 		state.gridProgressInterval = undefined
 
-		gridComplete(resolveGrid)
+		gridComplete.main(resolveGrid)
 
 		// tslint:disable-next-line:no-any
 		expect(state.gridProgressInterval).toBe(fakeGridProgressIntervalItself as any)
@@ -45,13 +48,13 @@ describe('grid complete', () => {
 		const progressBar: PageElement = buildMockElement()
 		spyOn(documentWrapper, 'querySelector').and.returnValue(progressBar)
 
-		gridComplete(resolveGrid)
+		gridComplete.main(resolveGrid)
 
 		expect(buildGridProgressIntervalFunctionSpy).toHaveBeenCalledWith({ progressBar })
 	})
 
 	it('saves the grid resolution function onto the store so others can resolve it', () => {
-		gridComplete(resolveGrid)
+		gridComplete.main(resolveGrid)
 
 		expect(state.resolveGrid).toBe(resolveGrid)
 	})

@@ -1,10 +1,10 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { codeUtilities } from '../../utilities'
 import { ShapeColorIndex } from '../color'
 import { Outline } from '../stripe'
-import { solid } from './solid'
-import { texture } from './texture'
+import { main as solid } from './solid'
+import { main as texture } from './texture'
 import { TextureSettings } from './textureSettings'
 import { ShapeParams } from './types'
 
@@ -30,4 +30,4 @@ const shape: (_: ShapeParams) => void =
 		}
 	}
 
-export { shape }
+export { shape as main }

@@ -1,10 +1,5 @@
-import * as app from '../../../../../src/app'
-import * as color from '../../../../../src/pattern/color'
-import { Color, ShapeColorIndex } from '../../../../../src/pattern/color/types'
+import { Color, fill, getColor, Outline, ShapeColorIndex, solid, to } from '../../../../../src'
 import Spy = jasmine.Spy
-import { Outline } from '../../../../../src/pattern/stripe'
-import { solid } from '../../../../../src/pattern/texture/solid'
-import * as to from '../../../../../src/to'
 
 describe('solid', () => {
 	const shapeColorIndex: ShapeColorIndex = to.ShapeColorIndex(8)
@@ -15,27 +10,27 @@ describe('solid', () => {
 
 	let getColorSpy: Spy
 	beforeEach(() => {
-		spyOn(app, 'fill')
-		getColorSpy = spyOn(color, 'getColor').and.returnValue(shapeColor)
+		spyOn(fill, 'main')
+		getColorSpy = spyOn(getColor, 'main').and.returnValue(shapeColor)
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {
-		solid({ outline, shapeColorIndex })
+		solid.main({ outline, shapeColorIndex })
 
-		expect(color.getColor).toHaveBeenCalledWith({ index: shapeColorIndex })
+		expect(getColor.main).toHaveBeenCalledWith({ index: shapeColorIndex })
 	})
 
 	it('when the color is not completely transparent, it renders', () => {
-		solid({ outline, shapeColorIndex })
+		solid.main({ outline, shapeColorIndex })
 
-		expect(app.fill).toHaveBeenCalledWith({ outline, shapeColor })
+		expect(fill.main).toHaveBeenCalledWith({ outline, shapeColor })
 	})
 
 	it('when the color turns out to be completely transparent, it does not render', () => {
 		getColorSpy.and.returnValue(transparentColor)
 
-		solid({ outline, shapeColorIndex })
+		solid.main({ outline, shapeColorIndex })
 
-		expect(app.fill).not.toHaveBeenCalled()
+		expect(fill.main).not.toHaveBeenCalled()
 	})
 })

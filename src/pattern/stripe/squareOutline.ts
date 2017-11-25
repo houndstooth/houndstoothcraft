@@ -28,4 +28,4 @@ const squareOutline: GetOutline =
 		])
 	}
 
-export { squareOutline }
+export { squareOutline as main }

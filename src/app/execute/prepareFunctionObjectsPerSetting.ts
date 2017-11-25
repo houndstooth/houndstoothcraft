@@ -51,7 +51,7 @@ const prepareFunctionObjectForSettingOrMaybeRecurse: (_: PrepareFunctionObjectFo
 			prepareFunctionObjectsPerSetting({
 				settingsFunctionObjects,
 				settingsFunctionsSourcePattern: maybeSettingsFunctionsSourcePattern,
-				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
+				settingsPath: deeperPath.main({ settingsPath, settingName: to.SettingsStep(settingName) }),
 			})
 		}
 	}
@@ -66,4 +66,4 @@ const shouldRecurse: (_: { maybeSettingsFunctionsSourcePattern: Pattern }) => bo
 		return !(maybeSettingsFunctionsSourcePattern instanceof Array)
 	}
 
-export { prepareFunctionObjectsPerSetting }
+export { prepareFunctionObjectsPerSetting as main }

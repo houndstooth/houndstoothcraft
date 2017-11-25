@@ -1,10 +1,12 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { SettingsFunctionObject } from '../../../../../src/app/execute'
-import { prepareFunctionObjectsPerSetting } from '../../../../../src/app/execute/prepareFunctionObjectsPerSetting'
-import * as to from '../../../../../src/to'
-import { consoleWrapper } from '../../../../../src/utilities'
-import { deepClone } from '../../../../../src/utilities/codeUtilities'
+import {
+	codeUtilities,
+	consoleWrapper,
+	prepareFunctionObjectsPerSetting,
+	SettingsFunctionObject,
+	to,
+} from '../../../../../src'
 
 describe('#prepareFunctionObjectsPerSetting', () => {
 	let actualFunctionObjects: SettingsFunctionObject[]
@@ -28,8 +30,8 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 			},
 		}
 
-		expectedSettingsFunctionsSourcePattern = deepClone(settingsFunctionsSourcePattern)
-		actualFunctionObjects = prepareFunctionObjectsPerSetting({ settingsFunctionsSourcePattern })
+		expectedSettingsFunctionsSourcePattern = codeUtilities.deepClone(settingsFunctionsSourcePattern)
+		actualFunctionObjects = prepareFunctionObjectsPerSetting.main({ settingsFunctionsSourcePattern })
 	})
 
 	it('gathers the functions to be applied', () => {

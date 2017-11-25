@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as constants from '../../constants'
 import * as from from '../../from'
 import * as to from '../../to'
@@ -17,4 +17,4 @@ const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition
 			})) * from.StripePosition(constants.PERIMETER_SCALAR))))
 	}
 
-export { perStripe }
+export { perStripe as main }

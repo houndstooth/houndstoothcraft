@@ -1,13 +1,15 @@
 import Spy = jasmine.Spy
-import { PageElement } from '../../../../../src/app/page'
-import * as createContext from '../../../../../src/app/page/createContext'
-import { createContexts } from '../../../../../src/app/page/createContexts'
-import * as scaleCanvasContainer from '../../../../../src/app/page/scaleCanvasContainer'
-import { setSetting } from '../../../../../src/app/store/setSetting'
-import { state } from '../../../../../src/state'
-import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	createContext,
+	createContexts,
+	documentWrapper,
+	PageElement,
+	scaleCanvasContainer,
+	setSetting,
+	state,
+	to,
+} from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('create contexts', () => {
 	let canvasContainer: PageElement
@@ -18,35 +20,35 @@ describe('create contexts', () => {
 
 		canvasContainer = buildMockElement()
 		canvasContainer.innerHTML = 'some old canvases'
-		querySelectorSpy = spyOn(windowWrapper.documentWrapper, 'querySelector').and.returnValue(canvasContainer)
+		querySelectorSpy = spyOn(documentWrapper, 'querySelector').and.returnValue(canvasContainer)
 	})
 
 	it('clears the canvas container contents', () => {
-		createContexts()
+		createContexts.main()
 
 		expect(canvasContainer.innerHTML).toBe('')
 	})
 
 	it('adds contexts to the state for each layer', () => {
-		setSetting('endLayer', to.Layer(5))
+		setSetting.main('endLayer', to.Layer(5))
 		expect(state.contexts.length).toBe(0)
 
-		createContexts()
+		createContexts.main()
 
 		expect(state.contexts.length).toBe(6)
 	})
 
 	it('can reduce the count of contexts in the state, and canvases on the page', () => {
-		setSetting('endLayer', to.Layer(5))
-		createContexts()
+		setSetting.main('endLayer', to.Layer(5))
+		createContexts.main()
 
 		expect(createContextSpy.calls.count()).toBe(6)
 		expect(state.contexts.length).toBe(6)
 
-		setSetting('endLayer', to.Layer(3))
+		setSetting.main('endLayer', to.Layer(3))
 		createContextSpy.calls.reset()
 
-		createContexts()
+		createContexts.main()
 
 		expect(createContextSpy.calls.count()).toBe(4)
 		expect(state.contexts.length).toBe(4)
@@ -54,10 +56,10 @@ describe('create contexts', () => {
 
 	it('creates the canvas container if it does not already exist', () => {
 		querySelectorSpy.and.returnValue(undefined)
-		spyOn(scaleCanvasContainer, 'scaleCanvasContainer').and.returnValue(canvasContainer)
+		spyOn(scaleCanvasContainer, 'main').and.returnValue(canvasContainer)
 
-		createContexts()
+		createContexts.main()
 
-		expect(scaleCanvasContainer.scaleCanvasContainer).toHaveBeenCalled()
+		expect(scaleCanvasContainer.main).toHaveBeenCalled()
 	})
 })

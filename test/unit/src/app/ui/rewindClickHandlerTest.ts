@@ -1,17 +1,19 @@
-import * as execute from '../../../../../src/app/execute'
-import { rewindClickHandler } from '../../../../../src/app/ui/rewindClickHandler'
-import { state } from '../../../../../src/state'
+import {
+	executeSelectedHoundstoothEffects,
+	NullarySideEffector,
+	rewindClickHandler,
+	state,
+	to,
+	windowWrapper,
+} from '../../../../../src'
 import Spy = jasmine.Spy
-import * as to from '../../../../../src/to'
-import * as windowWrapper from '../../../../../src/utilities'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { mockQuerySelector } from '../../../helpers/mockQuerySelector'
+import { mockQuerySelector } from '../../../helpers'
 
 describe('rewind click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
 	let rewindButton: HTMLButtonElement
 	beforeEach(() => {
-		executeSelectedHoundstoothEffectsSpy = spyOn(execute, 'executeSelectedHoundstoothEffects')
+		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'main')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		const { rewindButton: tmpRewindButton } = mockQuerySelector()
@@ -19,26 +21,26 @@ describe('rewind click handler', () => {
 	})
 
 	beforeEach(() => {
-		spyOn(windowWrapper.windowWrapper, 'clearInterval')
+		spyOn(windowWrapper, 'clearInterval')
 	})
 
 	it('clears the interval', () => {
-		rewindClickHandler()
+		rewindClickHandler.main()
 
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
+		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 
 	it('resets the current frame', () => {
 		state.currentFrame = to.Frame(5)
 
-		rewindClickHandler()
+		rewindClickHandler.main()
 
 		expect(state.currentFrame).toBe(to.Frame(0))
 	})
 
 	it('executes the selected houndstooth effects', () => {
-		rewindClickHandler()
+		rewindClickHandler.main()
 
 		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
@@ -48,7 +50,7 @@ describe('rewind click handler', () => {
 			rewindButton.disabled = false
 			state.animating = true
 
-			rewindClickHandler()
+			rewindClickHandler.main()
 
 			expect(rewindButton.disabled).toBe(false)
 		})
@@ -57,7 +59,7 @@ describe('rewind click handler', () => {
 			rewindButton.disabled = false
 			state.animating = false
 
-			rewindClickHandler()
+			rewindClickHandler.main()
 
 			expect(rewindButton.disabled).toBe(true)
 		})

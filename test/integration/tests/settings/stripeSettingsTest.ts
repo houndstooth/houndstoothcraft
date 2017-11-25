@@ -9,7 +9,7 @@ import {
 	Unit,
 } from '../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import {
 	activateTestMarkerCanvas,
 	sectionCenterIsColor,
@@ -42,7 +42,7 @@ describe('.stripeSettings', () => {
 			it('works in standard mode', async (done: DoneFn) => {
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 				setTimeout(() => {
 					const tile: StandardTileExpectation = {
@@ -72,7 +72,7 @@ describe('.stripeSettings', () => {
 				}
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])

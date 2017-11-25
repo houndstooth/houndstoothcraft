@@ -1,6 +1,5 @@
-import { pauseClickHandler } from '../../../../../src/app/ui/pauseClickHandler'
-import { state } from '../../../../../src/state'
-import { mockQuerySelector } from '../../../helpers/mockQuerySelector'
+import { pauseClickHandler, state } from '../../../../../src'
+import { mockQuerySelector } from '../../../helpers'
 
 describe('pause click handler', () => {
 	let playButton: HTMLButtonElement
@@ -20,19 +19,19 @@ describe('pause click handler', () => {
 		playButton.disabled = true
 		pauseButton.disabled = false
 
-		pauseClickHandler()
+		pauseClickHandler.main()
 
 		expect(state.animating).toBe(false)
 	})
 
 	it('enables the play button', () => {
-		pauseClickHandler()
+		pauseClickHandler.main()
 
 		expect(playButton.disabled).toBe(false)
 	})
 
 	it('disables the pause button', () => {
-		pauseClickHandler()
+		pauseClickHandler.main()
 
 		expect(pauseButton.disabled).toBe(true)
 	})

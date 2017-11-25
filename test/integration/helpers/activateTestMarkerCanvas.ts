@@ -11,7 +11,7 @@ import {
 	to,
 } from '../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 import { testMarkersClear } from './testMarkersClear'
 
@@ -41,13 +41,13 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		const testCanvasDisplayArea: PageElement = document.querySelector('.test-canvas-display-area') as HTMLElement || {}
 		if (testCanvasDisplayArea.style) {
 			testCanvasDisplayArea.style.display = 'block'
-			scaleElement({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
+			scaleElement.main({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 		}
 
 		const canvasContainer: PageElement = document.createElement('div')
 		canvasContainer.setAttribute('id', 'canvas-container')
 		testCanvasDisplayArea.appendChild(canvasContainer)
-		scaleCanvasContainer()
+		scaleCanvasContainer.main()
 
 		prepareCanvasForDisplayInTest(canvasContainer)
 

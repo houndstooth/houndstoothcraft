@@ -1,6 +1,6 @@
 import { NullarySideEffector } from '../../utilities'
-import { applyBackgroundColor } from './applyBackgroundColor'
-import { applyOpacity } from './applyOpacity'
+import { main as applyBackgroundColor } from './applyBackgroundColor'
+import { main as applyOpacity } from './applyOpacity'
 
 const applyViewForGrid: NullarySideEffector =
 	(): void => {
@@ -8,4 +8,4 @@ const applyViewForGrid: NullarySideEffector =
 		applyBackgroundColor()
 	}
 
-export { applyViewForGrid }
+export { applyViewForGrid as main }

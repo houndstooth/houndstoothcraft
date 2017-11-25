@@ -5,4 +5,4 @@ import { Context } from '../page'
 const getCurrentContext: () => Context =
 	(): Context => state.contexts[ from.Layer(state.currentLayer) ]
 
-export { getCurrentContext }
+export { getCurrentContext as main }

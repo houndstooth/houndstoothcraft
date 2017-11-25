@@ -1,12 +1,9 @@
-import { state } from '../../../../../src'
-import { buildStopConditionFunction } from '../../../../../src/pattern/animation/buildStopConditionFunction'
-import { ConditionFunction } from '../../../../../src/pattern/animation/types'
-import * as to from '../../../../../src/to'
+import { buildStopConditionFunction, ConditionFunction, state, to } from '../../../../../src'
 
 describe('build stop condition function', () => {
 	// tslint:disable-next-line:max-line-length
 	it('returns a function that evaluates to true once the current animation frame on the state is greater than the requested end animation frame', () => {
-		const stopConditionFunction: ConditionFunction = buildStopConditionFunction({ endFrame: to.Frame(3) })
+		const stopConditionFunction: ConditionFunction = buildStopConditionFunction.main({ endFrame: to.Frame(3) })
 
 		state.currentFrame = to.Frame(0)
 		expect(stopConditionFunction()).toBe(false)

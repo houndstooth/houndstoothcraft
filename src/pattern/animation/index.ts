@@ -1,20 +1,26 @@
 import * as animationSettings from './animationSettings'
 import * as animator from './animator'
-import { buildAnimationFunction } from './buildAnimationFunction'
-import { buildStopConditionFunction } from './buildStopConditionFunction'
-import { executeAnimation } from './executeAnimation'
-import { exportFrame } from './exportFrame'
-import { standardAnimation } from './standardAnimation'
+import * as buildAnimationFunction from './buildAnimationFunction'
+import * as buildIntervalFunction from './buildIntervalFunction'
+import * as buildStopConditionFunction from './buildStopConditionFunction'
+import * as executeAnimation from './executeAnimation'
+import * as exportFrame from './exportFrame'
+import * as saveBlob from './saveBlob'
+import * as saveFrame from './saveFrame'
+import * as standardAnimation from './standardAnimation'
 import { ConditionFunction, Frame } from './types'
 
 export {
 	animator,
-	buildAnimationFunction,
-	buildStopConditionFunction,
 	standardAnimation,
 	Frame,
 	ConditionFunction,
 	executeAnimation,
 	animationSettings,
 	exportFrame,
+	buildAnimationFunction,
+	buildIntervalFunction,
+	buildStopConditionFunction,
+	saveFrame,
+	saveBlob,
 }

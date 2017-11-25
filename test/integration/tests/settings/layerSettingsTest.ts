@@ -21,7 +21,7 @@ describe('.layerSettings', () => {
 		}
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
@@ -55,7 +55,7 @@ describe('.layerSettings', () => {
 		}
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects({ houndstoothOverrides })
+		executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
 
 		setTimeout(() => {
 			let baseId: number = -8

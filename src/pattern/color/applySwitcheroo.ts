@@ -17,4 +17,4 @@ const applySwitcheroo: TransformShapeColorIndices =
 		return shapeColorIndices
 	}
 
-export { applySwitcheroo }
+export { applySwitcheroo as main }

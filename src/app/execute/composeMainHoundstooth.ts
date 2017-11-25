@@ -2,8 +2,8 @@ import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTER
 import { Effect } from '../../pattern'
 import { state } from '../../state'
 import { consoleWrapper } from '../../utilities'
-import { combineHoundstoothEffects } from './combineHoundstoothEffects'
-import { composePatterns } from './composePatterns'
+import { main as combineHoundstoothEffects } from './combineHoundstoothEffects'
+import { main as composePatterns } from './composePatterns'
 import { ComposeMainHoundstooth, ComposePatternParams } from './types'
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
@@ -57,4 +57,4 @@ const composePattern: (_: ComposePatternParams) => void =
 		})
 	}
 
-export { composeMainHoundstooth }
+export { composeMainHoundstooth as main }

@@ -1,26 +1,28 @@
-import { InputElement } from '../../../../../src/app/page'
-import { createCheckbox } from '../../../../../src/app/page/createCheckbox'
-import * as ui from '../../../../../src/app/ui'
-import { Effect } from '../../../../../src/pattern'
-import { documentWrapper } from '../../../../../src/utilities'
-import { noop } from '../../../../../src/utilities/noop'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	buildEffectToggleClickHandler,
+	createCheckbox,
+	documentWrapper,
+	Effect,
+	InputElement,
+	noop,
+	NullarySideEffector,
+} from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('create checkbox', () => {
 	let returnedCheckbox: InputElement
 	let checkbox: InputElement
 	const classList: string[] = []
 	const attributeObject: { type: string } = { type: '' }
-	const clickHandler: NullarySideEffector = noop
+	const clickHandler: NullarySideEffector = noop.main
 	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	beforeAll(() => {
 		checkbox = buildMockElement({ classList, attributeObject }) as InputElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(checkbox)
 
-		spyOn(ui, 'buildEffectToggleClickHandler').and.returnValue(clickHandler)
+		spyOn(buildEffectToggleClickHandler, 'main').and.returnValue(clickHandler)
 
-		returnedCheckbox = createCheckbox({ houndstoothEffect })
+		returnedCheckbox = createCheckbox.main({ houndstoothEffect })
 	})
 
 	it('returns the created label', () => {
@@ -28,7 +30,7 @@ describe('create checkbox', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(ui.buildEffectToggleClickHandler).toHaveBeenCalledWith({
+		expect(buildEffectToggleClickHandler.main).toHaveBeenCalledWith({
 			checkbox,
 			houndstoothEffect,
 		})

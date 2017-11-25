@@ -1,22 +1,20 @@
-import * as render from '../../../../../src/app/render'
-import { snapshotClickHandler } from '../../../../../src/app/ui/snapshotClickHandler'
-import * as pattern from '../../../../../src/pattern'
+import { exportFrame, mixDownContexts, snapshotClickHandler } from '../../../../../src'
 
 describe('snapshot click handler', () => {
 	beforeEach(() => {
-		spyOn(render, 'mixDownContexts')
-		spyOn(pattern, 'exportFrame')
+		spyOn(mixDownContexts, 'main')
+		spyOn(exportFrame, 'main')
 
-		snapshotClickHandler()
+		snapshotClickHandler.main()
 	})
 
 	it('mixes down the canvases', () => {
-		expect(render.mixDownContexts).toHaveBeenCalled()
+		expect(mixDownContexts.main).toHaveBeenCalled()
 	})
 
 	it('exports the current frame', () => {
-		snapshotClickHandler()
+		snapshotClickHandler.main()
 
-		expect(pattern.exportFrame).toHaveBeenCalled()
+		expect(exportFrame.main).toHaveBeenCalled()
 	})
 })

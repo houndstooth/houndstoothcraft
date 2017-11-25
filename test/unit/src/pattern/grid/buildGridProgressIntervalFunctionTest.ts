@@ -1,18 +1,21 @@
-import { PageElement } from '../../../../../src/app/page/types'
-import { buildGridProgressIntervalFunction } from '../../../../../src/pattern/grid/buildGridProgressIntervalFunction'
-import { state } from '../../../../../src/state'
-import { windowWrapper } from '../../../../../src/utilities'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	buildGridProgressIntervalFunction,
+	NullarySideEffector,
+	PageElement,
+	state,
+	windowWrapper,
+} from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('build progress interval function returns a function which', () => {
 	let progressBar: PageElement
 	let gridProgressIntervalFunction: NullarySideEffector
 	beforeEach(() => {
 		progressBar = buildMockElement()
-		gridProgressIntervalFunction = buildGridProgressIntervalFunction({ progressBar })
+		gridProgressIntervalFunction = buildGridProgressIntervalFunction.main({ progressBar })
 		spyOn(state, 'resolveGrid')
 		state.tileCount = 99
+		state.gridProgressInterval = jasmine.createSpy()
 	})
 
 	describe('when the grid is complete', () => {
@@ -32,7 +35,7 @@ describe('build progress interval function returns a function which', () => {
 			gridProgressIntervalFunction()
 
 			// tslint:disable-next-line:no-unsafe-any
-			expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
+			expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval || {})
 		})
 
 		it('resets the progress bar', () => {
@@ -75,7 +78,7 @@ describe('build progress interval function returns a function which', () => {
 
 	it('does not fail when there is no progress bar', () => {
 		state.tilesCompleted = 99
-		gridProgressIntervalFunction = buildGridProgressIntervalFunction({ progressBar: undefined })
+		gridProgressIntervalFunction = buildGridProgressIntervalFunction.main({ progressBar: undefined })
 
 		gridProgressIntervalFunction()
 	})

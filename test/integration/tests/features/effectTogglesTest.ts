@@ -3,7 +3,7 @@ import * as effects from '../../../../effects'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import { colorSettings, createEffectToggles, PageElement } from '../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import { buildMockElement } from '../../../unit'
 
 describe('effect toggles', () => {
@@ -18,7 +18,7 @@ describe('effect toggles', () => {
 		warningsContainer.style.display = 'none'
 		document.body.appendChild(warningsContainer)
 
-		createEffectToggles(Object.values(effects))
+		createEffectToggles.main(Object.values(effects))
 		const effectToggle: PageElement = document.querySelector('input.gongram') as HTMLElement || buildMockElement()
 
 		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)

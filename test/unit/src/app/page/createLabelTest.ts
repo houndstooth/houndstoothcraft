@@ -1,10 +1,13 @@
-import { InputElement, PageElement } from '../../../../../src/app/page'
-import * as createCheckbox from '../../../../../src/app/page/createCheckbox'
-import { createLabel } from '../../../../../src/app/page/createLabel'
-import { LabelElement } from '../../../../../src/app/page/types'
-import { Effect } from '../../../../../src/pattern'
-import * as windowWrapper from '../../../../../src/utilities'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	createCheckbox,
+	createLabel,
+	documentWrapper,
+	Effect,
+	InputElement,
+	LabelElement,
+	PageElement,
+} from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('create label', () => {
 	let returnedLabel: LabelElement
@@ -15,13 +18,13 @@ describe('create label', () => {
 	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	beforeAll(() => {
 		label = buildMockElement({ children })
-		spyOn(windowWrapper.documentWrapper, 'createElement').and.returnValue(label)
+		spyOn(documentWrapper, 'createElement').and.returnValue(label)
 
-		spyOn(windowWrapper.documentWrapper, 'createTextNode').and.returnValue(name)
+		spyOn(documentWrapper, 'createTextNode').and.returnValue(name)
 
-		spyOn(createCheckbox, 'createCheckbox').and.returnValue(checkbox)
+		spyOn(createCheckbox, 'main').and.returnValue(checkbox)
 
-		returnedLabel = createLabel({ houndstoothEffect })
+		returnedLabel = createLabel.main({ houndstoothEffect })
 	})
 
 	it('returns the created label', () => {
@@ -37,11 +40,11 @@ describe('create label', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.createCheckbox).toHaveBeenCalledWith({ houndstoothEffect })
+		expect(createCheckbox.main).toHaveBeenCalledWith({ houndstoothEffect })
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.documentWrapper.createTextNode).toHaveBeenCalledWith('mock tooth')
+		expect(documentWrapper.createTextNode).toHaveBeenCalledWith('mock tooth')
 	})
 })

@@ -54,4 +54,4 @@ const lastPointsWhenStripeDoesNotStartInTopLeftCorner: (_: PointsParamsPlusStrip
 		}
 	}
 
-export { lastPoints }
+export { lastPoints as main }

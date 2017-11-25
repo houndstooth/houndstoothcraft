@@ -2,7 +2,7 @@ import { DataBlob } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
-import { saveBlob } from './saveBlob'
+import { main as saveBlob } from './saveBlob'
 
 const saveFrame: (result: DataBlob) => void =
 	(result: DataBlob): void => {
@@ -10,4 +10,4 @@ const saveFrame: (result: DataBlob) => void =
 		state.lastSavedFrame = to.Frame(from.Frame(state.lastSavedFrame) + 1)
 	}
 
-export { saveFrame }
+export { saveFrame as main }

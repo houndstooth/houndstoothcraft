@@ -1,5 +1,5 @@
-import { PageElement } from '../../../src/app/page'
-import { MockElement } from '../../helpers/types'
+import { PageElement } from '../../../src'
+import { MockElement } from '../../helpers'
 import { BuildMockElementParams } from './types'
 
 const buildMockElement: (_?: BuildMockElementParams) => MockElement =

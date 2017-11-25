@@ -1,9 +1,11 @@
 import * as colorAssignmentSettings from './colorAssignmentSettings'
 import * as colorSettings from './colorSettings'
-import { getColor } from './getColor'
-import { getShapeColorIndices } from './getShapeColorIndices'
-import { isTileUniform } from './isTileUniform'
-import { parseColor } from './parseColor'
+import * as getBySupertile from './getBySupertile'
+import * as getByWeave from './getByWeave'
+import * as getColor from './getColor'
+import * as getShapeColorIndices from './getShapeColorIndices'
+import * as isTileUniform from './isTileUniform'
+import * as parseColor from './parseColor'
 import {
 	AssignmentMode,
 	Color,
@@ -17,6 +19,8 @@ import {
 } from './types'
 
 export {
+	getBySupertile,
+	getByWeave,
 	getColor,
 	parseColor,
 	Color,

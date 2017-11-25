@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { Address } from '../grid'
 import { StripePositionSettings } from './stripePositionSettings'
 import { StripePosition } from './types'
@@ -11,4 +11,4 @@ const getStripePositionsForTile: (_?: { gridAddress?: Address }) => StripePositi
 		return getStripePositions({ gridAddress })
 	}
 
-export { getStripePositionsForTile }
+export { getStripePositionsForTile as main }

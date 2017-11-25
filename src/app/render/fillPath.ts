@@ -2,7 +2,7 @@
 
 import { NullarySideEffector } from '../../utilities'
 import { Context } from '../page'
-import { getCurrentContext } from './getCurrentContext'
+import { main as getCurrentContext } from './getCurrentContext'
 
 const fillPath: NullarySideEffector =
 	(): void => {
@@ -11,4 +11,4 @@ const fillPath: NullarySideEffector =
 		context.fill()
 	}
 
-export { fillPath }
+export { fillPath as main }

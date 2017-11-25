@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import { state } from '../../state'
 import { NullarySideEffector, windowWrapper } from '../../utilities'
 import { BuildIntervalFunctionParams, ConditionFunction } from './types'
@@ -25,4 +25,4 @@ const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffe
 
 const isAnimating: ConditionFunction = (): boolean => state.animating
 
-export { buildIntervalFunction }
+export { buildIntervalFunction as main }

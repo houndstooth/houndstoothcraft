@@ -1,24 +1,22 @@
-import * as applyBackgroundColor from '../../../../../src/pattern/view/applyBackgroundColor'
-import * as applyOpacity from '../../../../../src/pattern/view/applyOpacity'
-import { applyViewForGrid } from '../../../../../src/pattern/view/applyViewForGrid'
+import { applyBackgroundColor, applyOpacity, applyViewForGrid } from '../../../../../src'
 
 describe('apply view for grid', () => {
 	it('applies background color', async (done: DoneFn) => {
-		spyOn(applyBackgroundColor, 'applyBackgroundColor')
+		spyOn(applyBackgroundColor, 'main')
 
-		applyViewForGrid()
+		applyViewForGrid.main()
 
-		expect(applyBackgroundColor.applyBackgroundColor).toHaveBeenCalled()
+		expect(applyBackgroundColor.main).toHaveBeenCalled()
 
 		done()
 	})
 
 	it('applies opacity', async (done: DoneFn) => {
-		spyOn(applyOpacity, 'applyOpacity')
+		spyOn(applyOpacity, 'main')
 
-		applyViewForGrid()
+		applyViewForGrid.main()
 
-		expect(applyOpacity.applyOpacity).toHaveBeenCalled()
+		expect(applyOpacity.main).toHaveBeenCalled()
 
 		done()
 	})

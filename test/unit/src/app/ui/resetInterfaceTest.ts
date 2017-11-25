@@ -1,41 +1,44 @@
-import * as page from '../../../../../src/app/page'
-import * as render from '../../../../../src/app/render'
-import { resetInterface } from '../../../../../src/app/ui/resetInterface'
-import { Effect } from '../../../../../src/pattern'
-import { state } from '../../../../../src/state'
-import * as windowWrapper from '../../../../../src/utilities'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { buildMockElement } from '../../../helpers/buildMockElement'
+import {
+	clear,
+	documentWrapper,
+	Effect,
+	NullarySideEffector,
+	PageElement,
+	resetInterface,
+	state,
+	windowWrapper,
+} from '../../../../../src'
+import { buildMockElement } from '../../../helpers'
 
 describe('reset interface', () => {
-	const warningsContainer: page.PageElement = buildMockElement()
+	const warningsContainer: PageElement = buildMockElement()
 	beforeEach(() => {
-		spyOn(windowWrapper.documentWrapper, 'querySelector').and.returnValue(warningsContainer)
-		spyOn(windowWrapper.windowWrapper, 'clearInterval')
+		spyOn(documentWrapper, 'querySelector').and.returnValue(warningsContainer)
+		spyOn(windowWrapper, 'clearInterval')
 	})
 
 	it('clears warnings', () => {
-		resetInterface()
+		resetInterface.main()
 
 		expect(warningsContainer.innerHTML).toBe('')
 	})
 
 	it('clears canvas', () => {
-		spyOn(render, 'clear')
+		spyOn(clear, 'main')
 
-		resetInterface()
+		resetInterface.main()
 
-		expect(render.clear).toHaveBeenCalled()
+		expect(clear.main).toHaveBeenCalled()
 	})
 
 	it('clears any active animation', () => {
 		const interval: NullarySideEffector = (): void => undefined
 		state.interval = interval
 
-		resetInterface()
+		resetInterface.main()
 
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
+		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
 	})
 
 	it('clears any active rendering progress measurement', () => {
@@ -43,10 +46,10 @@ describe('reset interface', () => {
 
 		state.gridProgressInterval = gridProgressInterval
 
-		resetInterface()
+		resetInterface.main()
 
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
+		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
 	})
 
 	it('resets the state, except for any selected effects', () => {
@@ -58,8 +61,8 @@ describe('reset interface', () => {
 		}
 		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 
-		resetInterface()
+		resetInterface.main()
 
-		expect(state.selectedHoundstoothEffects[0]).toEqual(fakeHoundstoothEffect)
+		expect(state.selectedHoundstoothEffects[ 0 ]).toEqual(fakeHoundstoothEffect)
 	})
 })

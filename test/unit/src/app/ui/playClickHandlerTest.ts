@@ -1,10 +1,6 @@
-import * as execute from '../../../../../src/app/execute'
-import { playClickHandler } from '../../../../../src/app/ui/playClickHandler'
-import { state } from '../../../../../src/state'
+import { executeSelectedHoundstoothEffects, NullarySideEffector, playClickHandler, state, to } from '../../../../../src'
 import Spy = jasmine.Spy
-import * as to from '../../../../../src/to'
-import { NullarySideEffector } from '../../../../../src/utilities/types'
-import { mockQuerySelector } from '../../../helpers/mockQuerySelector'
+import { mockQuerySelector } from '../../../helpers'
 
 describe('play click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
@@ -13,7 +9,7 @@ describe('play click handler', () => {
 	let rewindButton: HTMLButtonElement
 
 	beforeEach(() => {
-		executeSelectedHoundstoothEffectsSpy = spyOn(execute, 'executeSelectedHoundstoothEffects')
+		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'main')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		const {
@@ -35,25 +31,25 @@ describe('play click handler', () => {
 
 		// tslint:disable-next-line:max-line-length
 		it('stays animating (this situation where you could click the button while it is already animating should never be the case though once disabling works)', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(state.animating).toBe(true)
 		})
 
 		it('keeps the play button disabled', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(playButton.disabled).toBe(true)
 		})
 
 		it('keeps the pause button enabled', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(pauseButton.disabled).toBe(false)
 		})
 
 		it('does not execute the selected houndstooth effects again', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 		})
@@ -67,19 +63,19 @@ describe('play click handler', () => {
 		})
 
 		it('set animating to true', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(state.animating).toBe(true)
 		})
 
 		it('disables the play button', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(playButton.disabled).toBe(true)
 		})
 
 		it('enables the pause button', () => {
-			playClickHandler()
+			playClickHandler.main()
 
 			expect(pauseButton.disabled).toBe(false)
 		})
@@ -91,7 +87,7 @@ describe('play click handler', () => {
 				})
 
 				it('executes the selected houndstooth effects', () => {
-					playClickHandler()
+					playClickHandler.main()
 
 					expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 				})
@@ -99,7 +95,7 @@ describe('play click handler', () => {
 				it('enables the rewind button', () => {
 					rewindButton.disabled = true
 
-					playClickHandler()
+					playClickHandler.main()
 
 					expect(rewindButton.disabled).toBe(false)
 				})
@@ -111,7 +107,7 @@ describe('play click handler', () => {
 				})
 
 				it('does not re-execute the selected houndstooth effects', () => {
-					playClickHandler()
+					playClickHandler.main()
 
 					expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
 				})

@@ -18,7 +18,7 @@ const rewindClickHandler: NullarySideEffector =
 			}
 		}
 
-		executeSelectedHoundstoothEffects()
+		executeSelectedHoundstoothEffects.main()
 	}
 
-export { rewindClickHandler }
+export { rewindClickHandler as main }

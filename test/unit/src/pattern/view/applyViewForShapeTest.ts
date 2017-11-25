@@ -1,10 +1,4 @@
-import { Path } from '../../../../../src/app/render'
-import { Outline } from '../../../../../src/pattern/stripe'
-import * as applyScroll from '../../../../../src/pattern/view/applyScroll'
-import * as applyTilt from '../../../../../src/pattern/view/applyTilt'
-import { applyViewForShape } from '../../../../../src/pattern/view/applyViewForShape'
-import * as applyZoom from '../../../../../src/pattern/view/applyZoom'
-import * as to from '../../../../../src/to'
+import { applyScroll, applyTilt, applyViewForShape, applyZoom, Outline, Path, to } from '../../../../../src'
 
 describe('adjusts a shape\'s path for view', () => {
 	it('applies any relevant zoom, scroll, and tilt', () => {
@@ -15,15 +9,15 @@ describe('adjusts a shape\'s path for view', () => {
 		const zoomedAndScrolledPath: Path = to.Path([])
 		const zoomedAndScrolledAndTiltedPath: Path = to.Path([])
 
-		spyOn(applyZoom, 'applyZoom').and.returnValue(zoomedPath)
-		spyOn(applyScroll, 'applyScroll').and.returnValue(zoomedAndScrolledPath)
-		spyOn(applyTilt, 'applyTilt').and.returnValue(zoomedAndScrolledAndTiltedPath)
+		spyOn(applyZoom, 'main').and.returnValue(zoomedPath)
+		spyOn(applyScroll, 'main').and.returnValue(zoomedAndScrolledPath)
+		spyOn(applyTilt, 'main').and.returnValue(zoomedAndScrolledAndTiltedPath)
 
-		const actualPath: Path = applyViewForShape(outline)
+		const actualPath: Path = applyViewForShape.main(outline)
 
-		expect(applyZoom.applyZoom).toHaveBeenCalledWith(path)
-		expect(applyScroll.applyScroll).toHaveBeenCalledWith(zoomedPath)
-		expect(applyTilt.applyTilt).toHaveBeenCalledWith(zoomedAndScrolledPath)
+		expect(applyZoom.main).toHaveBeenCalledWith(path)
+		expect(applyScroll.main).toHaveBeenCalledWith(zoomedPath)
+		expect(applyTilt.main).toHaveBeenCalledWith(zoomedAndScrolledPath)
 		expect(actualPath).toBe(zoomedAndScrolledAndTiltedPath)
 	})
 })

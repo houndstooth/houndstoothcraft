@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { Context } from '../page'
-import { getCurrentContext } from './getCurrentContext'
+import { main as getCurrentContext } from './getCurrentContext'
 import { Path, Pixel } from './types'
 
 const buildPath: (_: { path: Path }) => void =
@@ -12,4 +12,4 @@ const buildPath: (_: { path: Path }) => void =
 		path.slice(1).forEach((pixel: Pixel) => context.lineTo(pixel[ 0 ], pixel[ 1 ]))
 	}
 
-export { buildPath }
+export { buildPath as main }

@@ -10,4 +10,4 @@ const buildSettingsNamesToPathsMap: <T>(_: { basePath: SettingsPath, settings: T
 			{},
 		) as T
 
-export { buildSettingsNamesToPathsMap }
+export { buildSettingsNamesToPathsMap as main }

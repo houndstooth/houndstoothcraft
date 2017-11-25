@@ -1,5 +1,5 @@
 // tslint:disable-next-line:no-reaching-imports
-import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
 import * as from from '../../from'
 import { codeUtilities } from '../../utilities'
 import { Color, ShapeColorIndex } from './types'
@@ -11,4 +11,4 @@ const getColor: (_: { index: ShapeColorIndex }) => Color =
 			index: from.ShapeColorIndex(index),
 		})
 
-export { getColor }
+export { getColor as main }

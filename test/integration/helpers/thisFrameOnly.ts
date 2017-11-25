@@ -1,5 +1,4 @@
-import { Frame } from '../../../src/pattern/animation'
-import { Layer } from '../../../src/pattern/layer'
+import { Frame, Layer } from '../../../src'
 import { ThisFrameOnly, ThisLayerOnly } from './types'
 
 const thisFrameOnly: (frame: Frame) => ThisFrameOnly =

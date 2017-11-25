@@ -1,9 +1,19 @@
 import {
 	attachControlHandlers,
+	Canvas,
+	clear,
 	Context,
+	createContext,
 	createEffectToggles,
+	createMixedDownContext,
 	executeSelectedHoundstoothEffects,
+	InputElement,
+	PageElement,
+	Pixel,
 	Px,
+	resetState,
+	scaleCanvasContainer,
+	scaleElement,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -11,18 +21,24 @@ import * as from from './from'
 import {
 	Address,
 	AddressElement,
+	animator,
 	AssignmentMode,
 	Color,
 	ColorOptions,
 	ColorSet,
+	colorSettings,
 	ComponentParams,
+	ConditionFunction,
 	Coordinate,
 	Effect,
 	ExecuteTexture,
 	ExecuteTextureParams,
+	Frame,
 	GetStripePosition,
 	GetStripePositions,
+	Layer,
 	Outline,
+	parseColor,
 	perStripe,
 	Radian,
 	rotateCoordinate,
@@ -42,7 +58,7 @@ import {
 } from './pattern'
 import { state } from './state'
 import * as to from './to'
-import { codeUtilities, mathUtilities } from './utilities'
+import { codeUtilities, consoleWrapper, documentWrapper, mathUtilities, noop, NullarySideEffector, NullaryVoidPromise } from './utilities'
 
 export {
 	standardAnimation,
@@ -87,4 +103,25 @@ export {
 	AddressElement,
 	from,
 	to,
+	Frame,
+	Layer,
+	Canvas,
+	NullarySideEffector,
+	scaleCanvasContainer,
+	scaleElement,
+	PageElement,
+	parseColor,
+	consoleWrapper,
+	ConditionFunction,
+	NullaryVoidPromise,
+	InputElement,
+	noop,
+	documentWrapper,
+	Pixel,
+	resetState,
+	animator,
+	colorSettings,
+	clear,
+	createContext,
+	createMixedDownContext,
 }

@@ -7,19 +7,26 @@ import {
 } from './execute'
 import {
 	attachControlHandlers,
+	Canvas,
 	Context,
+	createContext,
 	createEffectToggles,
+	createMixedDownContext,
 	DataBlob,
 	Dimensions,
+	InputElement,
 	PageElement,
 	Px,
+	scaleCanvasContainer,
+	scaleElement,
 } from './page'
 import { clear, fill, getCurrentContext, mixDownContexts, Path, Pixel, resetClip, setClip } from './render'
-import { Overwrite, SettingsPath, SettingsStep } from './store'
+import { Overwrite, resetState, SettingsPath, SettingsStep } from './store'
 
 export {
 	executeSelectedHoundstoothEffects,
 	attachControlHandlers,
+	Canvas,
 	Context,
 	createEffectToggles,
 	Px,
@@ -41,4 +48,10 @@ export {
 	SettingsStep,
 	Dimensions,
 	SettingsFunction,
+	scaleCanvasContainer,
+	scaleElement,
+	InputElement,
+	resetState,
+	createContext,
+	createMixedDownContext,
 }

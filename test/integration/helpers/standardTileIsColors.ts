@@ -1,4 +1,4 @@
-import * as to from '../../../src/to'
+import { to } from '../../../src'
 import { sectionCenterIsColor } from './sectionCenterIsColor'
 import { SectionCenterExpectation, StandardTileExpectation } from './types'
 

@@ -1,16 +1,15 @@
-import { AssignmentMode } from '../../../../src'
-import { executeSelectedHoundstoothEffects } from '../../../../src/app/execute/executeSelectedHoundstoothEffects'
+import { AssignmentMode, Color, constants, Effect, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
-import { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } from '../../../../src/constants'
-import * as from from '../../../../src/from'
-import { Color } from '../../../../src/pattern/color/types'
-import { Unit } from '../../../../src/pattern/grid/types'
-import { Effect } from '../../../../src/pattern/types'
-import * as to from '../../../../src/to'
-import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
-import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
-import { standardTileIsColors } from '../../helpers/standardTileIsColors'
-import { PixelColorExpectation, StandardTileExpectation } from '../../helpers/types'
+import {
+	activateTestMarkerCanvas,
+	PixelColorExpectation,
+	pixelIsColorWithMarker,
+	StandardTileExpectation,
+	standardTileIsColors,
+} from '../../helpers'
+
+const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 describe('.colorSettings', () => {
 	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')

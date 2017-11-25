@@ -1,4 +1,4 @@
-import { noop } from '../../src/utilities/noop'
+import { noop } from '../../src'
 import { BuildMockContext, MockContext } from './types'
 
 const buildMockContext: (_?: BuildMockContext) => MockContext =

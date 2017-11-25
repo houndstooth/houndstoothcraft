@@ -5,7 +5,7 @@ import { Context, createMixedDownContext } from '../page'
 const mixDownContexts: NullarySideEffector =
 	(): void => {
 		if (!state.mixingDown) {
-			state.mixedDownContext = createMixedDownContext()
+			state.mixedDownContext = createMixedDownContext.default()
 		}
 		state.contexts.forEach((context: Context): void => {
 			// tslint:disable-next-line:no-unsafe-any no-unused-expression

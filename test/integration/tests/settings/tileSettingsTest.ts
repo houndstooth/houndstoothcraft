@@ -1,16 +1,17 @@
-import { executeSelectedHoundstoothEffects } from '../../../../src/app/execute/executeSelectedHoundstoothEffects'
-import { Context } from '../../../../src/app/page'
-import * as createContext from '../../../../src/app/page/createContext'
-import * as createMixedDownContext from '../../../../src/app/page/createMixedDownContext'
-import { clear } from '../../../../src/app/render/clear'
-import { BLACK, TRANSPARENT } from '../../../../src/constants'
-import { Effect } from '../../../../src/pattern/types'
-import * as to from '../../../../src/to'
-import { buildMockContext } from '../../../helpers/buildMockContext'
-import { MockContextCall } from '../../../helpers/types'
-import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
-import { standardTileIsColors } from '../../helpers/standardTileIsColors'
-import { StandardTileExpectation } from '../../helpers/types'
+import {
+	clear,
+	constants,
+	Context,
+	createContext,
+	createMixedDownContext,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	to,
+} from '../../../../src'
+import { buildMockContext, MockContextCall } from '../../../helpers'
+import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
+
+const { BLACK, TRANSPARENT } = constants
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {

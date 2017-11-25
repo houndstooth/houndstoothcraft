@@ -1,16 +1,23 @@
-import { executeSelectedHoundstoothEffects } from '../../../../src/app/execute/executeSelectedHoundstoothEffects'
+import {
+	constants,
+	Coordinate,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	from,
+	StripeCountMode,
+	to,
+	Unit,
+} from '../../../../src'
+// tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
-import { BLACK, TRANSPARENT } from '../../../../src/constants'
-import * as from from '../../../../src/from'
-import { Unit } from '../../../../src/pattern/grid/types'
-import { Coordinate } from '../../../../src/pattern/stripe'
-import { StripeCountMode } from '../../../../src/pattern/stripe/types'
-import { Effect } from '../../../../src/pattern/types'
-import * as to from '../../../../src/to'
-import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
-import { sectionCenterIsColor } from '../../helpers/sectionCenterIsColor'
-import { standardTileIsColors } from '../../helpers/standardTileIsColors'
-import { StandardTileExpectation } from '../../helpers/types'
+import {
+	activateTestMarkerCanvas,
+	sectionCenterIsColor,
+	StandardTileExpectation,
+	standardTileIsColors,
+} from '../../helpers'
+
+const { BLACK, TRANSPARENT } = constants
 
 describe('.stripeSettings', () => {
 	const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')

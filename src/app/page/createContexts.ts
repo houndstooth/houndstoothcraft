@@ -7,7 +7,7 @@ import * as to from '../../to'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 // tslint:disable-next-line:no-reaching-imports
 import { getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
-import createContext from './createContext'
+import * as createContext from './createContext'
 import { scaleCanvasContainer } from './scaleCanvasContainer'
 import { PageElement } from './types'
 
@@ -16,7 +16,7 @@ const createContexts: NullarySideEffector =
 		const canvasContainer: PageElement = scaleCanvasContainer()
 		canvasContainer.innerHTML = ''
 
-		state.contexts = layerIterator().map(() => createContext({ canvasContainer }))
+		state.contexts = layerIterator().map(() => createContext.default({ canvasContainer }))
 	}
 
 const layerIterator: () => Layer[] =

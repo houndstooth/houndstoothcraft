@@ -1,10 +1,6 @@
-import { Canvas } from '../../../src/app/page'
-import { parseColor } from '../../../src/pattern/color/parseColor'
-import { Color } from '../../../src/pattern/color/types'
-import { Coordinate } from '../../../src/pattern/stripe'
-import { consoleWrapper } from '../../../src/utilities'
-import { isCloseTo } from '../../helpers/isCloseTo'
-import { buildMockCanvas } from '../../unit/helpers/buildMockCanvas'
+import { Canvas, Color, consoleWrapper, Coordinate, parseColor } from '../../../src'
+import { isCloseTo } from '../../helpers'
+import { buildMockCanvas } from '../../unit'
 import { CheckColorProperties, Key } from './types'
 
 const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean =

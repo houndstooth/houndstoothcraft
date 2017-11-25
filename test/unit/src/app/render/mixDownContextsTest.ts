@@ -9,7 +9,7 @@ describe('mix down contexts', () => {
 	const drawImageSpy: Spy = jasmine.createSpy('drawImage')
 	const mixedDownContext: Context = { drawImage: drawImageSpy }
 	beforeEach(() => {
-		spyOn(page, 'createMixedDownContext').and.returnValue(mixedDownContext)
+		spyOn(page.createMixedDownContext, 'default').and.returnValue(mixedDownContext)
 	})
 
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {

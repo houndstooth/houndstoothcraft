@@ -1,9 +1,14 @@
-import { ConditionFunction, Frame } from '../../../src/pattern/animation/types'
-import { Color } from '../../../src/pattern/color/types'
-import { Address, Unit } from '../../../src/pattern/grid/types'
-import { Layer } from '../../../src/pattern/layer/types'
-import { Coordinate } from '../../../src/pattern/stripe'
-import { NullarySideEffector, NullaryVoidPromise } from '../../../src/utilities/types'
+import {
+	Address,
+	Color,
+	ConditionFunction,
+	Coordinate,
+	Frame,
+	Layer,
+	NullarySideEffector,
+	NullaryVoidPromise,
+	Unit,
+} from '../../../src'
 
 interface DrawPassMarker {
 	readonly coordinateUnderTest: Coordinate,

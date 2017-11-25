@@ -1,12 +1,7 @@
-import { executeSelectedHoundstoothEffects } from '../../../../src/app/execute/executeSelectedHoundstoothEffects'
-import { CYAN, ERASE, TRANSPARENT, YELLOW } from '../../../../src/constants'
-import { Color, ColorSet } from '../../../../src/pattern/color/types'
-import { Coordinate } from '../../../../src/pattern/stripe'
-import { Effect } from '../../../../src/pattern/types'
-import * as to from '../../../../src/to'
-import { activateTestMarkerCanvas } from '../../helpers/activateTestMarkerCanvas'
-import { pixelIsColorWithMarker } from '../../helpers/pixelIsColorWithMarker'
-import { standardTileIsColors } from '../../helpers/standardTileIsColors'
+import { Color, ColorSet, constants, Coordinate, Effect, executeSelectedHoundstoothEffects, to } from '../../../../src'
+import { activateTestMarkerCanvas, pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
+
+const { CYAN, ERASE, TRANSPARENT, YELLOW } = constants
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', async (done: DoneFn) => {

@@ -3,7 +3,7 @@ import { getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaul
 import { state } from '../../state'
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
 import { AnimationSettings } from './animationSettings'
-import animator from './animator'
+import * as animator from './animator'
 import { buildAnimationFunction } from './buildAnimationFunction'
 import { buildStopConditionFunction } from './buildStopConditionFunction'
 import { ConditionFunction, ExecuteAnimationParams } from './types'
@@ -27,7 +27,7 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation
 
 		const animationExecutor: (resolveAnimation: NullarySideEffector) => void =
 			(resolveAnimation: NullarySideEffector): void => {
-				animator({
+				animator.default({
 					animationFunction,
 					frameRate,
 					resolveAnimation,

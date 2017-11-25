@@ -55,6 +55,7 @@ export {
 	ColorSettings,
 	ColorSettingsFunctions,
 	DEFAULT_COLOR_SETTINGS,
+	DEFAULT_COLOR_SET,
 	ColorSettingsName,
 	colorSettingsNamesToPathsMap,
 	ColorSettingsNamesByType,

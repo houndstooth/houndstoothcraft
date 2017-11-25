@@ -26,7 +26,7 @@ const prepareCanvas: NullarySideEffector =
 			state.mixingDown = true
 		}
 		if (state.mixingDown) {
-			state.mixedDownContext = createMixedDownContext()
+			state.mixedDownContext = createMixedDownContext.default()
 		}
 	}
 

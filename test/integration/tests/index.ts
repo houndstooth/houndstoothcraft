@@ -1,5 +1,5 @@
-import { resetState } from '../../../src/app/store/resetState'
-import { state } from '../../../src/state'
+import { resetState } from '../../../src'
+import { state } from '../../../src'
 
 beforeEach(() => {
 	resetState(state)

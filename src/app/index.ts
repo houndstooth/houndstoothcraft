@@ -1,4 +1,10 @@
 export {
+	DataBlob,
+	exportCanvas,
+	saveBlob,
+	saveCanvas,
+} from './canvas'
+export {
 	callFunctionsPerSetting,
 	combineHoundstoothEffects,
 	composeMainHoundstooth,
@@ -18,7 +24,6 @@ export {
 	createContext,
 	createEffectToggles,
 	createMixedDownContext,
-	DataBlob,
 	Dimensions,
 	InputElement,
 	PageElement,

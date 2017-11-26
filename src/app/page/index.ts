@@ -10,7 +10,7 @@ import * as deleteElementIfExists from './deleteElementIfExists'
 import * as insertElementRightAfter from './insertElementRightAfter'
 import * as scaleCanvasContainer from './scaleCanvasContainer'
 import * as scaleElement from './scaleElement'
-import { Canvas, Context, DataBlob, Dimensions, InputElement, LabelElement, PageElement, Px } from './types'
+import { Canvas, Context, Dimensions, InputElement, LabelElement, PageElement, Px } from './types'
 
 export {
 	createContext,
@@ -20,7 +20,6 @@ export {
 	attachControlHandlers,
 	Canvas,
 	Context,
-	DataBlob,
 	Dimensions,
 	InputElement,
 	LabelElement,

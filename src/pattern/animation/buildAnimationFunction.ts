@@ -1,4 +1,4 @@
-import { callFunctionsPerSetting, clear, getFromBaseOrDefaultPattern } from '../../app'
+import { callFunctionsPerSetting, clear, getFromBaseOrDefaultPattern, exportCanvas } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
@@ -6,7 +6,6 @@ import { codeUtilities, NullaryVoidPromise } from '../../utilities'
 import { main as executePattern } from '../executePattern'
 import { BasePattern } from '../types'
 import { AnimationSettings } from './animationSettings'
-import { main as exportFrame } from './exportFrame'
 import { AnimateParams, BuildAnimationFunctionParams, ConditionFunction, Frame } from './types'
 
 const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPromise =
@@ -48,7 +47,7 @@ const animate: (_: AnimateParams) => Promise<void> =
 		Object.assign(state.mainHoundstooth.basePattern, preLayerSettings)
 
 		if (state.exportFrames) {
-			exportFrame()
+			exportCanvas.main()
 		}
 	}
 

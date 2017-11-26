@@ -5,14 +5,11 @@ export {
 	animator,
 	ConditionFunction,
 	executeAnimation,
-	exportFrame,
 	Frame,
 	standardAnimation,
 	buildIntervalFunction,
 	buildAnimationFunction,
 	buildStopConditionFunction,
-	saveFrame,
-	saveBlob,
 } from './animation'
 export {
 	AssignmentMode,

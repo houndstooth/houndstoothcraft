@@ -6,8 +6,6 @@ type Canvas = HTMLCanvasElement | MockCanvas
 
 type Context = CanvasRenderingContext2D | MockContext
 
-type DataBlob = Blob | {}
-
 enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
@@ -32,7 +30,6 @@ interface Px extends Number {
 export {
 	Canvas,
 	Context,
-	DataBlob,
 	Dimensions,
 	InputElement,
 	LabelElement,

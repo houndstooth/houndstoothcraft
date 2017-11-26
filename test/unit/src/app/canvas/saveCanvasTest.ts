@@ -1,12 +1,12 @@
-import { DataBlob, saveBlob, saveFrame, state, to } from '../../../../../src'
+import { DataBlob, saveBlob, saveCanvas, state, to } from '../../../../../src'
 
-describe('save frame', () => {
+describe('save canvas', () => {
 	const result: DataBlob = {}
 	beforeEach(() => {
 		state.lastSavedFrame = to.Frame(666)
 		spyOn(saveBlob, 'main')
 
-		saveFrame.main(result)
+		saveCanvas.main(result)
 	})
 
 	it('saves the frame as a png with the frame number as file name', () => {

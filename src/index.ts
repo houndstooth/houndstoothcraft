@@ -55,6 +55,9 @@ export {
 	warn,
 	callFunctionsPerSetting,
 	DataBlob,
+	exportCanvas,
+	saveBlob,
+	saveCanvas,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -101,14 +104,11 @@ export {
 	executeAnimation,
 	applyViewForShape,
 	executeGridAndMaybeLogging,
-	exportFrame,
 	buildIntervalFunction,
 	buildAnimationFunction,
 	grid,
 	executeLayer,
 	buildStopConditionFunction,
-	saveFrame,
-	saveBlob,
 	getBySupertile,
 	getByWeave,
 	getColor,

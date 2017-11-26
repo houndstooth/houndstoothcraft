@@ -1,14 +1,14 @@
-import { exportFrame, saveFrame, state } from '../../../../../src'
+import { exportCanvas, saveCanvas, state } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
 import Spy = jasmine.Spy
 
-describe('export frame', () => {
+describe('export canvas', () => {
 	it('calls toBlob on the mixed down canvas', () => {
 		const toBlobSpy: Spy = jasmine.createSpy('toBlob')
 		state.mixedDownContext = buildMockContext({ toBlobSpy })
 
-		exportFrame.main()
+		exportCanvas.main()
 
-		expect(toBlobSpy).toHaveBeenCalledWith(saveFrame.main)
+		expect(toBlobSpy).toHaveBeenCalledWith(saveCanvas.main)
 	})
 })

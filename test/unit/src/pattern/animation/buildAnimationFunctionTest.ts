@@ -5,7 +5,7 @@ import {
 	executeGridAndMaybeLogging,
 	executeLayer,
 	executePattern,
-	exportFrame,
+	exportCanvas,
 	Frame,
 	from,
 	getFromBaseOrDefaultPattern,
@@ -39,7 +39,7 @@ describe('build animation function returns an animation function', () => {
 		executePatternSpy = spyOn(executePattern, 'main')
 		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'main')
 		spyOn(clear, 'main')
-		spyOn(exportFrame, 'main')
+		spyOn(exportCanvas, 'main')
 
 		animationFunction = buildAnimationFunction.main({
 			animationFunctionObjects,
@@ -144,7 +144,7 @@ describe('build animation function returns an animation function', () => {
 			})
 
 			it('does not export again', () => {
-				expect(exportFrame.main).not.toHaveBeenCalled()
+				expect(exportCanvas.main).not.toHaveBeenCalled()
 			})
 		})
 
@@ -170,7 +170,7 @@ describe('build animation function returns an animation function', () => {
 			})
 
 			it('exports again', () => {
-				expect(exportFrame.main).toHaveBeenCalled()
+				expect(exportCanvas.main).toHaveBeenCalled()
 			})
 		})
 	})

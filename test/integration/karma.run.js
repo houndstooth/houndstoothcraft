@@ -4,7 +4,7 @@ module.exports = config => {
 	config.set({
 		...karmaCommonConfig,
 		browserNoActivityTimeout: 100000,
-		reportSlowerThan: 1234,
+		reportSlowerThan: 1500,
 		browsers: [ 'ChromeHeadless' ],
 		singleRun: true,
 	})

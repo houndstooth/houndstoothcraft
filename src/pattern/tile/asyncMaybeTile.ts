@@ -19,7 +19,7 @@ const asyncMaybeTile: (_: ReferencedGridAddress) => void =
 					// tslint:disable-next-line:no-unsafe-any
 					const progressBar: HTMLElement | undefined = documentWrapper.querySelector('#progress-bar') as HTMLElement
 					if (progressBar) {
-						progressBar.style.width = `${ONE_HUNDRED_PERCENT - percentage}%`
+						progressBar.style.width = `${percentage}%`
 					}
 				}
 			},

@@ -39,7 +39,7 @@ describe('build progress interval function returns a function which', () => {
 		})
 
 		it('resets the progress bar', () => {
-			progressBar.style.height = '99%'
+			progressBar.style.width = '99%'
 
 			gridProgressIntervalFunction()
 
@@ -68,11 +68,11 @@ describe('build progress interval function returns a function which', () => {
 		})
 
 		it('does not reset the progress bar', () => {
-			progressBar.style.height = '99%'
+			progressBar.style.width = '99%'
 
 			gridProgressIntervalFunction()
 
-			expect(progressBar.style.height).toBe('99%')
+			expect(progressBar.style.width).toBe('99%')
 		})
 	})
 

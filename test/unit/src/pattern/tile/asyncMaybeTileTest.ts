@@ -45,7 +45,7 @@ describe('async maybe tile', () => {
 
 			asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
 
-			expect(progressBar.style.width).toBe('9%')
+			expect(progressBar.style.width).toBe('91%')
 		})
 	})
 

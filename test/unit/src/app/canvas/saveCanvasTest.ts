@@ -3,17 +3,60 @@ import { DataBlob, saveBlob, saveCanvas, state, to } from '../../../../../src'
 describe('save canvas', () => {
 	const result: DataBlob = {}
 	beforeEach(() => {
-		state.lastSavedFrame = to.Frame(666)
 		spyOn(saveBlob, 'main')
-
-		saveCanvas.main(result)
 	})
 
-	it('saves the frame as a png with the frame number as file name', () => {
-		expect(saveBlob.main).toHaveBeenCalledWith({ blob: result, name: '666.png' })
+	describe('animating', () => {
+		describe('when exporting frames (and animating)', () => {
+			beforeEach(() => {
+				state.exportFrames = true
+				state.animating = true
+				state.lastSavedFrame = to.Frame(666)
+
+				saveCanvas.main(result)
+			})
+
+			it('saves the frame as a png with the last saved frame number as file name', () => {
+				expect(saveBlob.main).toHaveBeenCalledWith({ blob: result, name: 'houndstooth_animation_frame_666.png' })
+			})
+		})
+
+		describe('when not exporting frames', () => {
+			beforeEach(() => {
+				state.exportFrames = false
+			})
+
+			describe('when the current frame is greater than 0', () => {
+				beforeEach(() => {
+					state.currentFrame = to.Frame(777)
+
+					saveCanvas.main(result)
+				})
+
+				it('saves the frame as a png with the current frame number as file name', () => {
+					expect(saveBlob.main).toHaveBeenCalledWith({ blob: result, name: 'houndstooth_animation_frame_777.png' })
+				})
+			})
+
+			describe('when the current frame is 0', () => {
+				beforeEach(() => {
+					state.currentFrame = to.Frame(0)
+
+					saveCanvas.main(result)
+				})
+
+				it('saves the frame as a png with a generic name', () => {
+					expect(saveBlob.main).toHaveBeenCalledWith({ blob: result, name: 'houndstooth_snapshot.png' })
+				})
+			})
+		})
 	})
 
 	it('increments the last saved frame', () => {
-		expect(state.lastSavedFrame).toBe(to.Frame(667))
+		state.lastSavedFrame = to.Frame(100)
+
+		saveCanvas.main(result)
+
+		expect(state.lastSavedFrame).toBe(to.Frame(101))
 	})
 })

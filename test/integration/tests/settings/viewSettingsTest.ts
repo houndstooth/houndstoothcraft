@@ -1,6 +1,13 @@
-import { constants, Coordinate, Effect, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import {
+	constants,
+	Coordinate,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	from,
+	getFromBaseOrDefaultPattern,
+	to,
+	Unit,
+} from '../../../../src'
 import { activateTestMarkerCanvas, pixelIsColor, sectionCenterIsColor, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
@@ -41,7 +48,7 @@ describe('.viewSettings', () => {
 					viewSettings: { zoom },
 				},
 			}
-			const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+			const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			activateTestMarkerCanvas()
@@ -93,7 +100,7 @@ describe('.viewSettings', () => {
 					},
 				},
 			}
-			const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+			const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			activateTestMarkerCanvas()
@@ -180,7 +187,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
-			const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+			const areaSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 
 			const houndstoothOverrides: Effect = {
 				basePattern: {

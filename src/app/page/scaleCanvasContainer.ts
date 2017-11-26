@@ -2,14 +2,13 @@
 
 import * as to from '../../to'
 import { documentWrapper } from '../../utilities'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../store'
 import { main as scaleElement } from './scaleElement'
 import { PageElement, Px } from './types'
 
 const scaleCanvasContainer: () => PageElement =
 	(): PageElement => {
-		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
+		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
 
 		const canvasContainer: PageElement = documentWrapper.querySelector('#canvas-container')
 

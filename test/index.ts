@@ -1,4 +1,4 @@
-import { isCloseTo } from './helpers'
+import { isCloseTo, MockCanvas, MockContext, MockElement } from './helpers'
 import {
 	activateTestMarkerCanvas,
 	Diagonal,
@@ -30,4 +30,7 @@ export {
 	StandardTileExpectation,
 	pixelIsColorWithMarker,
 	isCloseTo,
+	MockCanvas,
+	MockContext,
+	MockElement,
 }

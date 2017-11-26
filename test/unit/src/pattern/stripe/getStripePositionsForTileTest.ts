@@ -1,13 +1,12 @@
 import {
 	Address,
 	composeMainHoundstooth,
+	getFromBaseOrDefaultPattern,
 	getStripePositionsForTile,
 	StripePosition,
 	stripePositionSettings,
 	to,
 } from '../../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../../src/app/store/getFromBaseOrDefaultPattern'
 import Spy = jasmine.Spy
 
 describe('get stripe positions for tile', () => {
@@ -23,7 +22,7 @@ describe('get stripe positions for tile', () => {
 		const expectedStripePositions: StripePosition[] = []
 		const gridAddress: Address = to.Address([ 3, 5 ])
 		// tslint:disable-next-line:max-line-length
-		const currentStripePositionSettings: stripePositionSettings.StripePositionSettings = getFromBaseOrDefaultPattern('stripePositionSettings')
+		const currentStripePositionSettings: stripePositionSettings.StripePositionSettings = getFromBaseOrDefaultPattern.main('stripePositionSettings')
 		const stripePositionsSpy: Spy = spyOn(currentStripePositionSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)
 

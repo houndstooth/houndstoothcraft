@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import { PERIMETER_SCALAR } from '../../constants'
 import { getShapeColorIndices, isTileUniform, ShapeColorIndex } from '../color'
 import { GetStripeArgsParams, getStripePositionsForTile, squareOutline, stripeOutline, StripePosition } from '../stripe'
@@ -16,7 +15,7 @@ const tile: (_: DefinedTileParams) => void =
 
 const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
 	({ shapeColorIndices }: { shapeColorIndices: ShapeColorIndex[] }): boolean => {
-		const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern('tileSettings')
+		const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern.main('tileSettings')
 
 		return collapseSameColoredShapesWithinTile && isTileUniform.main({ shapeColorIndices })
 	}

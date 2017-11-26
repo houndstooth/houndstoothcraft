@@ -1,6 +1,11 @@
-import { constants, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import {
+	constants,
+	executeSelectedHoundstoothEffects,
+	from,
+	getFromBaseOrDefaultPattern,
+	to,
+	Unit,
+} from '../../../../src'
 import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
@@ -20,7 +25,7 @@ describe('standard houndstooth pattern', () => {
 
 		setTimeout(() => {
 			let baseId: number = -8
-			const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+			const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 			const firstSupertileExpectations: StandardTileExpectation[] = [
 				{
 					baseId: baseId += 8,

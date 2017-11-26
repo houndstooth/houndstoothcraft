@@ -1,6 +1,4 @@
-import { Path, Pixel, Px } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern, Path, Pixel, Px } from '../../app'
 import { HALF } from '../../constants'
 import * as from from '../../from'
 import * as to from '../../to'
@@ -17,7 +15,7 @@ const adjustPixelForZoom: (pixel: Pixel) => Pixel =
 			centerViewOnCenterOfTileAtHomeAddress,
 			zoom,
 			zoomOnCanvasCenter,
-		}: ViewSettings = getFromBaseOrDefaultPattern('viewSettings')
+		}: ViewSettings = getFromBaseOrDefaultPattern.main('viewSettings')
 		const halfCanvasSize: Px = to.Px(from.Px(canvasSize) * HALF)
 		const shouldAdjustForCentering: boolean = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 

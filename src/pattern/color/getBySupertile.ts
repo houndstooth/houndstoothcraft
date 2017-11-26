@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import * as from from '../../from'
 import { codeUtilities } from '../../utilities'
 import {
@@ -11,7 +10,7 @@ import {
 
 const getBySupertile: GetShapeColorIndicesWithOffset =
 	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
-		const supertile: Supertile = getFromBaseOrDefaultPattern('supertile')
+		const supertile: Supertile = getFromBaseOrDefaultPattern.main('supertile')
 		const [ x, y ]: number[] = from.Address(gridAddress)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)
 

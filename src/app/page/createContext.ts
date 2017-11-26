@@ -1,13 +1,12 @@
 // tslint:disable:no-unsafe-any
 
+import { getFromBaseOrDefaultPattern } from '../../app'
 import { documentWrapper } from '../../utilities'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
 import { Canvas, Context, PageElement, Px } from './types'
 
 const createContext: (_: { canvasContainer: PageElement }) => Context =
 	({ canvasContainer }: { canvasContainer: PageElement }): Context => {
-		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
+		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
 		const canvas: Canvas = documentWrapper.createElement('canvas')
 		canvas.width = canvasSize
 		canvas.height = canvasSize

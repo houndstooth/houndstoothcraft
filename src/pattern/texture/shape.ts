@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import { codeUtilities } from '../../utilities'
 import { ShapeColorIndex } from '../color'
 import { Outline } from '../stripe'
@@ -20,7 +19,7 @@ const shape: (_: ShapeParams) => void =
 			index: stripeIndex,
 		})
 
-		const { executeTexture }: TextureSettings = getFromBaseOrDefaultPattern('textureSettings')
+		const { executeTexture }: TextureSettings = getFromBaseOrDefaultPattern.main('textureSettings')
 
 		if (executeTexture) {
 			texture({ outline, tileSize, executeTexture, shapeColorIndex })

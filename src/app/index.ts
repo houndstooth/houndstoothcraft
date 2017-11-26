@@ -54,6 +54,7 @@ export {
 	setSetting,
 	deeperPath,
 	getSettingOrCreatePath,
+	getFromBaseOrDefaultPattern,
 } from './store'
 export {
 	maybeWarnAboutConflicts,

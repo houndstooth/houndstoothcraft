@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import * as from from '../../from'
 import * as to from '../../to'
 import { Address, Unit } from '../grid'
@@ -7,7 +6,7 @@ import { TileOriginAndSize } from './types'
 
 const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize =
 	({ gridAddress }: { gridAddress: Address }): TileOriginAndSize => {
-		const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+		const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 		const [ x, y ]: number[] = from.Address(gridAddress)
 
 		return {

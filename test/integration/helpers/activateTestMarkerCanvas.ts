@@ -2,6 +2,7 @@
 
 import {
 	Canvas,
+	getFromBaseOrDefaultPattern,
 	NullarySideEffector,
 	PageElement,
 	Px,
@@ -10,8 +11,6 @@ import {
 	state,
 	to,
 } from '../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../src/app/store/getFromBaseOrDefaultPattern'
 import { createTestMarkersCanvas } from './createTestMarkersCanvas'
 import { testMarkersClear } from './testMarkersClear'
 
@@ -33,7 +32,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		prepareCanvasForDisplayInTest(testMarkersCanvas)
 		testMarkersCanvas.style.zIndex = '9001'
 
-		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
+		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
 		testMarkersCanvas.width = canvasSize
 		testMarkersCanvas.height = canvasSize
 

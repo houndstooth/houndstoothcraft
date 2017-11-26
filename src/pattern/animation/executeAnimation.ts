@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import { state } from '../../state'
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
 import { AnimationSettings } from './animationSettings'
@@ -15,7 +14,7 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation
 			frameRate,
 			endFrame,
 			startFrame,
-		}: AnimationSettings = getFromBaseOrDefaultPattern('animationSettings')
+		}: AnimationSettings = getFromBaseOrDefaultPattern.main('animationSettings')
 
 		state.lastSavedFrame = startFrame
 

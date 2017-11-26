@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import { state } from '../../state'
 import { NullarySideEffector, windowWrapper } from '../../utilities'
 import { BuildIntervalFunctionParams, ConditionFunction } from './types'
@@ -11,7 +10,7 @@ const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffe
 				return
 			}
 
-			if (state.currentFrame === getFromBaseOrDefaultPattern('endFrame')) {
+			if (state.currentFrame === getFromBaseOrDefaultPattern.main('endFrame')) {
 				resolveAnimation()
 			}
 

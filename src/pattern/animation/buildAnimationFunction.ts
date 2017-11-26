@@ -1,6 +1,4 @@
-import { callFunctionsPerSetting, clear } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { callFunctionsPerSetting, clear, getFromBaseOrDefaultPattern } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
@@ -19,7 +17,7 @@ const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPr
 				layerFunctionObjects,
 			}: BuildAnimationFunctionParams = params
 
-			const { startFrame, refreshCanvas }: AnimationSettings = getFromBaseOrDefaultPattern('animationSettings')
+			const { startFrame, refreshCanvas }: AnimationSettings = getFromBaseOrDefaultPattern.main('animationSettings')
 
 			if (exportingFramesStillNeedsToCatchUp()) {
 				return

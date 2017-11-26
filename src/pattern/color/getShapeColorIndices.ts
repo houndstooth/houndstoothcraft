@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
 import { Address, GridAddressParam } from '../grid'
@@ -29,7 +28,7 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 			flipGrain,
 			switcheroo,
 			transformShapeColorIndices,
-		}: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
+		}: ColorAssignmentSettings = getFromBaseOrDefaultPattern.main('colorAssignmentSettings')
 
 		let maybeAdjustedShapeColorIndices: ShapeColorIndex[] = shapeColorIndices
 		if (flipGrain) {
@@ -56,7 +55,7 @@ const getIndices: GetShapeColorIndices =
 		const {
 			offsetAddress,
 			assignmentMode,
-		}: ColorAssignmentSettings = getFromBaseOrDefaultPattern('colorAssignmentSettings')
+		}: ColorAssignmentSettings = getFromBaseOrDefaultPattern.main('colorAssignmentSettings')
 
 		// tslint:disable-next-line:max-line-length
 		const getter: GetShapeColorIndicesWithOffset = assignmentMode === AssignmentMode.Weave ? getByWeave : getBySupertile

@@ -14,6 +14,7 @@ export {
 	createEffectToggles,
 	createMixedDownContext,
 	executeSelectedHoundstoothEffects,
+	getFromBaseOrDefaultPattern,
 	InputElement,
 	PageElement,
 	Pixel,

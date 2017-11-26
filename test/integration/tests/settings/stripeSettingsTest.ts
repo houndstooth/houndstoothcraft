@@ -4,12 +4,11 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
+	getFromBaseOrDefaultPattern,
 	StripeCountMode,
 	to,
 	Unit,
 } from '../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import {
 	activateTestMarkerCanvas,
 	sectionCenterIsColor,
@@ -20,7 +19,7 @@ import {
 const { BLACK, TRANSPARENT } = constants
 
 describe('.stripeSettings', () => {
-	const areaSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+	const areaSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {

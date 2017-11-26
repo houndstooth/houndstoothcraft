@@ -1,12 +1,18 @@
-import { constants, Effect, executeSelectedHoundstoothEffects, from, to, Unit } from '../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import {
+	constants,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	from,
+	getFromBaseOrDefaultPattern,
+	to,
+	Unit,
+} from '../../../../src'
 import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT, WHITE } = constants
 
 describe('.gridSettings', () => {
-	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+	const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 
 	describe('.tileResolution', () => {
 		it('changes how many tiles there are per dimension', async (done: DoneFn) => {

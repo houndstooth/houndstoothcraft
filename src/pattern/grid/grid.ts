@@ -1,5 +1,4 @@
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../../app'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
@@ -14,7 +13,7 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }): void => {
 		applyViewForGrid.main()
 
-		const { includeNegativeQuadrants, tileResolution }: GridSettings = getFromBaseOrDefaultPattern('gridSettings')
+		const { includeNegativeQuadrants, tileResolution }: GridSettings = getFromBaseOrDefaultPattern.main('gridSettings')
 
 		let adjustedTileResolution: number = tileResolution
 		let gridOffset: number = 0

@@ -1,12 +1,11 @@
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { Context, Px } from '../page'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../store'
 
 const clear: NullarySideEffector =
 	(): void => {
-		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
+		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
 		state.contexts.forEach((context: Context): void => {
 			clearContext({ context, canvasSize })
 		})

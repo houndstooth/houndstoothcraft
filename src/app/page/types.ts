@@ -1,7 +1,6 @@
 // tslint:disable:no-any
 
-// tslint:disable-next-line:no-reaching-imports
-import { MockCanvas, MockContext, MockElement } from '../../../test/helpers/types'
+import { MockCanvas, MockContext, MockElement } from '../../../test'
 
 type Canvas = HTMLCanvasElement | MockCanvas
 

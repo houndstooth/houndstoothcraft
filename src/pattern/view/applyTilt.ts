@@ -1,6 +1,4 @@
-import { Path, Pixel, Px } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../app/store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern, Path, Pixel, Px } from '../../app'
 import { HALF } from '../../constants'
 import * as from from '../../from'
 import * as to from '../../to'
@@ -9,8 +7,8 @@ import { Radian } from '../stripe'
 
 const applyTilt: (path: Path) => Path =
 	(path: Path): Path => {
-		const canvasSize: Px = getFromBaseOrDefaultPattern('canvasSize')
-		const rotateViewAboutCanvasCenter: Radian = getFromBaseOrDefaultPattern('rotateViewAboutCanvasCenter')
+		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
+		const rotateViewAboutCanvasCenter: Radian = getFromBaseOrDefaultPattern.main('rotateViewAboutCanvasCenter')
 
 		if (!rotateViewAboutCanvasCenter) {
 			return path

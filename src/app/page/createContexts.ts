@@ -5,8 +5,7 @@ import { Layer } from '../../pattern'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../store/getFromBaseOrDefaultPattern'
+import { getFromBaseOrDefaultPattern } from '../store'
 import * as createContext from './createContext'
 import { main as scaleCanvasContainer } from './scaleCanvasContainer'
 import { PageElement } from './types'
@@ -21,7 +20,7 @@ const createContexts: NullarySideEffector =
 
 const layerIterator: () => Layer[] =
 	(): Layer[] => {
-		const endLayer: Layer = getFromBaseOrDefaultPattern('endLayer')
+		const endLayer: Layer = getFromBaseOrDefaultPattern.main('endLayer')
 
 		const layerCount: number = from.Layer(endLayer) + 1
 

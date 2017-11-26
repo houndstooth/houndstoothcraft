@@ -5,11 +5,10 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
+	getFromBaseOrDefaultPattern,
 	to,
 	Unit,
 } from '../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
 import {
 	activateTestMarkerCanvas,
 	PixelColorExpectation,
@@ -21,7 +20,7 @@ import {
 const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 describe('.colorSettings', () => {
-	const tileSize: Unit = getFromBaseOrDefaultPattern('tileSize')
+	const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', async (done: DoneFn) => {

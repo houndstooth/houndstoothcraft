@@ -1,9 +1,7 @@
 import * as effects from '../../../../effects'
 // tslint:disable-next-line:no-reaching-imports
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
-import { colorSettings, createEffectToggles, PageElement } from '../../../../src'
-// tslint:disable-next-line:no-reaching-imports
-import { main as getFromBaseOrDefaultPattern } from '../../../../src/app/store/getFromBaseOrDefaultPattern'
+import { colorSettings, createEffectToggles, getFromBaseOrDefaultPattern, PageElement } from '../../../../src'
 import { buildMockElement } from '../../../unit'
 
 describe('effect toggles', () => {
@@ -21,14 +19,14 @@ describe('effect toggles', () => {
 		createEffectToggles.main(Object.values(effects))
 		const effectToggle: PageElement = document.querySelector('input.gongram') as HTMLElement || buildMockElement()
 
-		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+		expect(getFromBaseOrDefaultPattern.main('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
-		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(GONGRAM_COLOR_SET)
+		expect(getFromBaseOrDefaultPattern.main('colorSet')).toEqual(GONGRAM_COLOR_SET)
 
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
-		expect(getFromBaseOrDefaultPattern('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+		expect(getFromBaseOrDefaultPattern.main('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 	})
 })

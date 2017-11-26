@@ -3,6 +3,8 @@ export {
 	exportCanvas,
 	saveBlob,
 	saveCanvas,
+	getCurrentContext,
+	mixDownContexts,
 } from './canvas'
 export {
 	callFunctionsPerSetting,
@@ -40,8 +42,6 @@ export {
 export {
 	clear,
 	fill,
-	getCurrentContext,
-	mixDownContexts,
 	Path,
 	Pixel,
 	resetClip,

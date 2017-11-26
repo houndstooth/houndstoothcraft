@@ -1,4 +1,4 @@
-import { callFunctionsPerSetting, clear, getFromBaseOrDefaultPattern, exportCanvas } from '../../app'
+import { callFunctionsPerSetting, clear, exportCanvas, getFromBaseOrDefaultPattern } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'

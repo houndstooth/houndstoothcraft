@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { DataBlob } from './types'
 import { documentWrapper, windowWrapper } from '../../utilities'
+import { DataBlob } from './types'
 
 const saveBlob: (_: { blob: DataBlob, name: string }) => void =
 	({ blob, name }: { blob: DataBlob, name: string }): void => {

@@ -15,7 +15,7 @@ describe('build progress interval function returns a function which', () => {
 		gridProgressIntervalFunction = buildGridProgressIntervalFunction.main({ progressBar })
 		spyOn(state, 'resolveGrid')
 		state.tileCount = 99
-		state.gridProgressInterval = jasmine.createSpy()
+		state.gridProgressInterval = jasmine.createSpy('gridProgressInterval')
 	})
 
 	describe('when the grid is complete', () => {

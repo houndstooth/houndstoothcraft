@@ -1,21 +1,29 @@
-import { Color, ColorSet, constants, Coordinate, Effect, executeSelectedHoundstoothEffects, to } from '../../../../src'
+import {
+	Color,
+	ColorSet,
+	constants,
+	Coordinate,
+	Effect,
+	executeSelectedHoundstoothEffects,
+	state,
+	to,
+} from '../../../../src'
 import { activateTestMarkerCanvas, pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
 
-const { CYAN, ERASE, TRANSPARENT, YELLOW } = constants
+const { BLACK, CYAN, ERASE, TRANSPARENT, YELLOW } = constants
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', async (done: DoneFn) => {
 		const houndstoothOverrides: Effect = {
 			basePattern: {
-				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { tileResolution: 2 },
 				layerSettings: { endLayer: to.Layer(1) },
 				viewSettings: { canvasSize: to.Px(100) },
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: (): Color => CYAN,
-					opacity: (): number => 0.25,
+					backgroundColor: (): Color => state.currentLayer === to.Layer(0) ? YELLOW : CYAN,
+					opacity: (): number => state.currentLayer === to.Layer(0) ? 1 : 0.25,
 				},
 			},
 		}
@@ -40,15 +48,21 @@ describe('.layerSettings', () => {
 	it('erasing makes holes so material from lower layers shows through', async (done: DoneFn) => {
 		const houndstoothOverrides: Effect = {
 			basePattern: {
-				colorSettings: { backgroundColor: YELLOW },
 				gridSettings: { tileResolution: 0 },
 				layerSettings: { endLayer: to.Layer(1) },
 				viewSettings: { canvasSize: to.Px(100) },
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: (): Color => CYAN,
-					colorSet: (): ColorSet => to.ColorSet([ TRANSPARENT, ERASE ]),
+					backgroundColor: (): Color => state.currentLayer === to.Layer(0) ? YELLOW : CYAN,
+					colorSet: (): ColorSet => {
+						if (state.currentLayer === to.Layer(0)) {
+							return to.ColorSet([ BLACK, TRANSPARENT ])
+						}
+						else {
+							return to.ColorSet([ TRANSPARENT, ERASE ])
+						}
+					},
 				},
 				gridSettings: { tileResolution: (): number => 2 },
 			},

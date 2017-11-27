@@ -15,6 +15,7 @@ const YELLOW: Color = { r: 255, g: 255, b: 0, a: 1 }
 const TRANSPARENT: Color = { a: 0 }
 const ERASE: Color = { a: -1 }
 
+const NO_ROTATION: Radian = to.Radian(0)
 const EIGHTH_OF_CIRCLE_ROTATION: Radian = to.Radian(Math.PI / 4)
 const QUARTER_CIRCLE_ROTATION: Radian = to.Radian(Math.PI / 2)
 
@@ -45,6 +46,7 @@ export {
 	ERASE,
 	EIGHTH_OF_CIRCLE_ROTATION,
 	QUARTER_CIRCLE_ROTATION,
+	NO_ROTATION,
 	PERIMETER_SCALAR,
 	ANIMATION_RATE,
 	SQRT_2,

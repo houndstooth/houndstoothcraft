@@ -8,9 +8,7 @@ const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 	async ({ layer, layerFunctionObjects, startLayer, thisPatternRef }: ExecuteLayerParams): Promise<void> => {
 		state.currentLayer = layer
 
-		if (from.Layer(layer) > 0) {
-			callFunctionsPerSetting.default({ settingsFunctionObjects: layerFunctionObjects })
-		}
+		callFunctionsPerSetting.default({ settingsFunctionObjects: layerFunctionObjects })
 
 		if (from.Layer(layer) >= from.Layer(startLayer) || 0) {
 			await executeGridAndMaybeLogging.default({ thisPatternRef })

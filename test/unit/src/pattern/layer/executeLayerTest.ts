@@ -59,31 +59,15 @@ describe('execute layer', () => {
 		})
 	})
 
-	describe('calling layer functions for settings', () => {
-		describe('when it\'s the first layer', () => {
-			it('does not call them', async (done: DoneFn) => {
-				const layer: Layer = to.Layer(0)
+	it('calls layer functions for settings, even the first layer', async (done: DoneFn) => {
+		const layer: Layer = to.Layer(0)
 
-				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+		await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
 
-				expect(callFunctionsPerSettingSpy).not.toHaveBeenCalled()
-
-				done()
-			})
+		expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
+			settingsFunctionObjects: layerFunctionObjects,
 		})
 
-		describe('any later layer', () => {
-			it('calls them', async (done: DoneFn) => {
-				const layer: Layer = to.Layer(1)
-
-				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
-
-				expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
-					settingsFunctionObjects: layerFunctionObjects,
-				})
-
-				done()
-			})
-		})
+		done()
 	})
 })

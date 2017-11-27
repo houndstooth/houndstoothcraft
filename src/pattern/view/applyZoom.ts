@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern, Path, Pixel, Px } from '../../app'
+import { getSetting, Path, Pixel, Px } from '../../app'
 import { HALF } from '../../constants'
 import * as from from '../../from'
 import * as to from '../../to'
@@ -15,7 +15,7 @@ const adjustPixelForZoom: (pixel: Pixel) => Pixel =
 			centerViewOnCenterOfTileAtHomeAddress,
 			zoom,
 			zoomOnCanvasCenter,
-		}: ViewSettings = getFromBaseOrDefaultPattern.main('viewSettings')
+		}: ViewSettings = getSetting.main('viewSettings')
 		const halfCanvasSize: Px = to.Px(from.Px(canvasSize) * HALF)
 		const shouldAdjustForCentering: boolean = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 

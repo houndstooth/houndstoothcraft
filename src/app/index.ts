@@ -59,7 +59,7 @@ export {
 	setSetting,
 	deeperPath,
 	getPatternSettingOrCreatePath,
-	getFromBaseOrDefaultPattern,
+	getSetting,
 } from './store'
 export {
 	maybeWarnAboutConflicts,

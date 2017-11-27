@@ -8,7 +8,7 @@ import {
 	exportCanvas,
 	Frame,
 	from,
-	getFromBaseOrDefaultPattern,
+	getSetting,
 	NullaryVoidPromise,
 	setSetting,
 	SettingsFunctionObject,
@@ -71,7 +71,7 @@ describe('build animation function returns an animation function', () => {
 		expect(executeLayerSpy.calls.all()[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ layer: 1 }))
 		expect(executeLayerSpy.calls.all()[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ layer: 2 }))
 		expect(executeLayerSpy.calls.all()[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ layer: 3 }))
-		expect(getFromBaseOrDefaultPattern.main('tileSize')).toBe(to.Unit(10))
+		expect(getSetting.main('tileSize')).toBe(to.Unit(10))
 
 		await animationFunction()
 
@@ -80,7 +80,7 @@ describe('build animation function returns an animation function', () => {
 		expect(executeLayerSpy.calls.all()[ 1 ].args[ 0 ]).toEqual(jasmine.objectContaining({ layer: 1 }))
 		expect(executeLayerSpy.calls.all()[ 2 ].args[ 0 ]).toEqual(jasmine.objectContaining({ layer: 2 }))
 		expect(executeLayerSpy.calls.all()[ 3 ].args[ 0 ]).toEqual(jasmine.objectContaining({ layer: 3 }))
-		expect(getFromBaseOrDefaultPattern.main('tileSize')).toBe(to.Unit(20))
+		expect(getSetting.main('tileSize')).toBe(to.Unit(20))
 
 		done()
 	})

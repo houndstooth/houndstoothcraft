@@ -1,11 +1,11 @@
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { Context, Px } from '../page'
-import { getFromBaseOrDefaultPattern } from '../store'
+import { getSetting } from '../store'
 
 const clear: NullarySideEffector =
 	(): void => {
-		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
+		const canvasSize: Px = getSetting.main('canvasSize')
 		state.contexts.forEach((context: Context): void => {
 			clearContext({ context, canvasSize })
 		})

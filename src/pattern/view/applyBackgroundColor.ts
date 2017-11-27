@@ -1,17 +1,17 @@
 // tslint:disable:no-unsafe-any
 
-import { Context, getCurrentContext, getFromBaseOrDefaultPattern, Px } from '../../app'
+import { Context, getCurrentContext, getSetting, Px } from '../../app'
 import { NullarySideEffector } from '../../utilities'
 import { Color, parseColor } from '../color'
 
 const applyBackgroundColor: NullarySideEffector =
 	(): void => {
-		const backgroundColor: Color = getFromBaseOrDefaultPattern.main('backgroundColor')
+		const backgroundColor: Color = getSetting.main('backgroundColor')
 		if (backgroundColor.a === 0) {
 			return
 		}
 
-		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
+		const canvasSize: Px = getSetting.main('canvasSize')
 
 		const context: Context = getCurrentContext.main()
 		context.fillStyle = parseColor.main(backgroundColor)

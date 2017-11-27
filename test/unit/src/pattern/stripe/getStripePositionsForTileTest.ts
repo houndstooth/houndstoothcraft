@@ -1,7 +1,7 @@
 import {
 	Address,
 	composeMainHoundstooth,
-	getFromBaseOrDefaultPattern,
+	getSetting,
 	getStripePositionsForTile,
 	StripePosition,
 	stripePositionSettings,
@@ -21,9 +21,8 @@ describe('get stripe positions for tile', () => {
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions: StripePosition[] = []
 		const gridAddress: Address = to.Address([ 3, 5 ])
-		// tslint:disable-next-line:max-line-length
-		const currentStripePositionSettings: stripePositionSettings.StripePositionSettings = getFromBaseOrDefaultPattern.main('stripePositionSettings')
-		const stripePositionsSpy: Spy = spyOn(currentStripePositionSettings, 'getStripePositions')
+		const currentSettings: stripePositionSettings.StripePositionSettings = getSetting.main('stripePositionSettings')
+		const stripePositionsSpy: Spy = spyOn(currentSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)
 
 		const actualStripePositions: StripePosition[] = getStripePositionsForTile.main({ gridAddress })

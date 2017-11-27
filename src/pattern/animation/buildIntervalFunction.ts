@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern } from '../../app'
+import { getSetting } from '../../app'
 import { state } from '../../state'
 import { NullarySideEffector, windowWrapper } from '../../utilities'
 import { BuildIntervalFunctionParams, ConditionFunction } from './types'
@@ -10,7 +10,7 @@ const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffe
 				return
 			}
 
-			if (state.currentFrame === getFromBaseOrDefaultPattern.main('endFrame')) {
+			if (state.currentFrame === getSetting.main('endFrame')) {
 				resolveAnimation()
 			}
 

@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern, Path, Pixel, Px } from '../../app'
+import { getSetting, Path, Pixel, Px } from '../../app'
 import { HALF } from '../../constants'
 import * as from from '../../from'
 import * as to from '../../to'
@@ -7,7 +7,7 @@ import { Unit } from '../grid'
 const applyScroll: (path: Path) => Path =
 	(path: Path): Path => {
 		// tslint:disable-next-line:max-line-length
-		const centerViewOnCenterOfTileAtHomeAddress: boolean = getFromBaseOrDefaultPattern.main('centerViewOnCenterOfTileAtHomeAddress')
+		const centerViewOnCenterOfTileAtHomeAddress: boolean = getSetting.main('centerViewOnCenterOfTileAtHomeAddress')
 
 		if (!centerViewOnCenterOfTileAtHomeAddress) {
 			return path
@@ -18,10 +18,10 @@ const applyScroll: (path: Path) => Path =
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel =
 	(pixel: Pixel): Pixel => {
-		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
+		const canvasSize: Px = getSetting.main('canvasSize')
 		const canvasCenter: number = from.Px(canvasSize) * HALF
 
-		const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
+		const tileSize: Unit = getSetting.main('tileSize')
 		const halfTileSize: number = from.Unit(tileSize) * HALF
 
 		return to.Pixel([

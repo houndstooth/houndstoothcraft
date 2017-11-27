@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern } from '../../app'
+import { getSetting } from '../../app'
 import { PERIMETER_SCALAR } from '../../constants'
 import { getShapeColorIndices, isTileUniform, ShapeColorIndex } from '../color'
 import { GetStripeArgsParams, getStripePositionsForTile, squareOutline, stripeOutline, StripePosition } from '../stripe'
@@ -15,7 +15,7 @@ const tile: (_: DefinedTileParams) => void =
 
 const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
 	({ shapeColorIndices }: { shapeColorIndices: ShapeColorIndex[] }): boolean => {
-		const { collapseSameColoredShapesWithinTile }: TileSettings = getFromBaseOrDefaultPattern.main('tileSettings')
+		const { collapseSameColoredShapesWithinTile }: TileSettings = getSetting.main('tileSettings')
 
 		return collapseSameColoredShapesWithinTile && isTileUniform.main({ shapeColorIndices })
 	}

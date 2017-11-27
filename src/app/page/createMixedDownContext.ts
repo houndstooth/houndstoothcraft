@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { documentWrapper } from '../../utilities'
-import { getFromBaseOrDefaultPattern } from '../store'
+import { getSetting } from '../store'
 import { main as deleteElementIfExists } from './deleteElementIfExists'
 import { Canvas, Context, Px } from './types'
 
@@ -13,7 +13,7 @@ const createMixedDownContext: () => Context =
 		mixedDownCanvas.classList.add('mixed-down-canvas')
 		documentWrapper.body.appendChild(mixedDownCanvas)
 
-		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
+		const canvasSize: Px = getSetting.main('canvasSize')
 		mixedDownCanvas.width = canvasSize
 		mixedDownCanvas.height = canvasSize
 

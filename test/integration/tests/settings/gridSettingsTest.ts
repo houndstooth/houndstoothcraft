@@ -3,7 +3,7 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
-	getFromBaseOrDefaultPattern,
+	getSetting,
 	to,
 	Unit,
 } from '../../../../src'
@@ -12,7 +12,7 @@ import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors
 const { BLACK, TRANSPARENT, WHITE } = constants
 
 describe('.gridSettings', () => {
-	const tileSize: Unit = getFromBaseOrDefaultPattern.main('tileSize')
+	const tileSize: Unit = getSetting.main('tileSize')
 
 	describe('.tileResolution', () => {
 		it('changes how many tiles there are per dimension', async (done: DoneFn) => {

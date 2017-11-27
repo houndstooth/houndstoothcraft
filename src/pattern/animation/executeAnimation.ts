@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern } from '../../app'
+import { getSetting } from '../../app'
 import { state } from '../../state'
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
 import { AnimationSettings } from './animationSettings'
@@ -14,7 +14,7 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation
 			frameRate,
 			endFrame,
 			startFrame,
-		}: AnimationSettings = getFromBaseOrDefaultPattern.main('animationSettings')
+		}: AnimationSettings = getSetting.main('animationSettings')
 
 		state.lastSavedFrame = startFrame
 

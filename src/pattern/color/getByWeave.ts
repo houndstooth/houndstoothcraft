@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern } from '../../app'
+import { getSetting } from '../../app'
 import * as from from '../../from'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
@@ -6,7 +6,7 @@ import { GetShapeColorIndicesWithOffset, GetShapeColorIndicesWithOffsetParams, S
 
 const getByWeave: GetShapeColorIndicesWithOffset =
 	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
-		const { rows, columns }: Weave = getFromBaseOrDefaultPattern.main('weave')
+		const { rows, columns }: Weave = getSetting.main('weave')
 
 		const [ x, y ]: number[] = from.Address(gridAddress)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)

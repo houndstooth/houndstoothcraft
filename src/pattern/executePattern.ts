@@ -1,4 +1,4 @@
-import { getFromBaseOrDefaultPattern, mixDownContexts, SettingsFunctionObject } from '../app'
+import { getSetting, mixDownContexts, SettingsFunctionObject } from '../app'
 import * as from from '../from'
 import { state } from '../state'
 import * as to from '../to'
@@ -6,7 +6,7 @@ import { executeLayer, layerSettings, thisPatternHasNotBeenCanceled } from './la
 
 const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => Promise<void> =
 	async ({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): Promise<void> => {
-		const { startLayer, endLayer }: layerSettings.LayerSettings = getFromBaseOrDefaultPattern.main('layerSettings')
+		const { startLayer, endLayer }: layerSettings.LayerSettings = getSetting.main('layerSettings')
 
 		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {

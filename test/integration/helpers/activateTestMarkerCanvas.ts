@@ -2,7 +2,7 @@
 
 import {
 	Canvas,
-	getFromBaseOrDefaultPattern,
+	getSetting,
 	NullarySideEffector,
 	PageElement,
 	Px,
@@ -32,7 +32,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		prepareCanvasForDisplayInTest(testMarkersCanvas)
 		testMarkersCanvas.style.zIndex = '9001'
 
-		const canvasSize: Px = getFromBaseOrDefaultPattern.main('canvasSize')
+		const canvasSize: Px = getSetting.main('canvasSize')
 		testMarkersCanvas.width = canvasSize
 		testMarkersCanvas.height = canvasSize
 

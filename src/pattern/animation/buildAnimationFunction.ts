@@ -1,4 +1,4 @@
-import { callFunctionsPerSetting, clear, exportCanvas, getFromBaseOrDefaultPattern } from '../../app'
+import { callFunctionsPerSetting, clear, exportCanvas, getSetting } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
@@ -16,7 +16,7 @@ const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPr
 				layerFunctionObjects,
 			}: BuildAnimationFunctionParams = params
 
-			const { startFrame, refreshCanvas }: AnimationSettings = getFromBaseOrDefaultPattern.main('animationSettings')
+			const { startFrame, refreshCanvas }: AnimationSettings = getSetting.main('animationSettings')
 
 			if (exportingFramesStillNeedsToCatchUp()) {
 				return

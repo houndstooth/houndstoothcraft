@@ -1,6 +1,6 @@
 import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
-import { Effect, Frame, Layer } from './pattern'
+import { Effect, Frame, Layer, Pattern } from './pattern'
 import * as to from './to'
 import { State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
@@ -9,6 +9,7 @@ const DEFAULT_ANIMATING: boolean = false
 const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
+const DEFAULT_CURRENT_PATTERN: Pattern = {}
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_INTERVAL: undefined = undefined
@@ -28,6 +29,7 @@ const DEFAULT_STATE: State = {
 	contexts: DEFAULT_CONTEXTS,
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
+	currentPattern: DEFAULT_CURRENT_PATTERN,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	interval: DEFAULT_INTERVAL,

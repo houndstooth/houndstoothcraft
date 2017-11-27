@@ -3,7 +3,7 @@
 import { Color } from '../../pattern'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
-import { deeperPath, getSettingOrCreatePath } from '../store'
+import { deeperPath, getPatternSettingOrCreatePath } from '../store'
 import { maybeWarnAboutConflicts } from '../ui'
 import { ComposePatternsParams } from './types'
 
@@ -26,8 +26,8 @@ const composePatterns: (_: ComposePatternsParams) => void =
 				})
 			}
 			else {
-				const settingsWithSettingToBeOverridden: { [_: string]: any } = getSettingOrCreatePath.main({
-					settings: patternToBeMergedOnto,
+				const settingsWithSettingToBeOverridden: { [_: string]: any } = getPatternSettingOrCreatePath.main({
+					pattern: patternToBeMergedOnto,
 					settingsPath,
 				})
 

@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { state } from '../../state'
-import { getSettingOrCreatePath } from '../store'
+import { getPatternSettingOrCreatePath } from '../store'
 import { SettingsFunction, SettingsFunctionObject } from './types'
 
 const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void =
@@ -9,8 +9,8 @@ const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionOb
 		settingsFunctionObjects.forEach((settingsFunctionObject: SettingsFunctionObject): void => {
 			const { settingsPath, settingName } = settingsFunctionObject
 			const settingsFunction: SettingsFunction<any> = settingsFunctionObject.settingsFunction
-			const settings: { [_: string]: any } = getSettingOrCreatePath.main({
-				settings: state.mainHoundstooth.basePattern,
+			const settings: { [_: string]: any } = getPatternSettingOrCreatePath.main({
+				pattern: state.mainHoundstooth.basePattern,
 				settingsPath,
 			})
 			const previousState: any = settings[ settingName ]

@@ -3,9 +3,9 @@
 import { codeUtilities } from '../../utilities'
 import { SettingsPath, SettingsStep } from './types'
 
-const getSettingOrCreatePath: (_: { settings: any, settingsPath: SettingsPath }) => any =
-	({ settings, settingsPath }: { settings: any, settingsPath: SettingsPath }): any => {
-		let childSettings: any = settings
+const getPatternSettingOrCreatePath: (_: { pattern: any, settingsPath: SettingsPath }) => any =
+	({ pattern, settingsPath }: { pattern: any, settingsPath: SettingsPath }): any => {
+		let childSettings: any = pattern
 		settingsPath.forEach((settingsStep: SettingsStep): void => {
 			if (!codeUtilities.isDefined(childSettings[ settingsStep ])) {
 				childSettings[ settingsStep ] = {}
@@ -16,4 +16,4 @@ const getSettingOrCreatePath: (_: { settings: any, settingsPath: SettingsPath })
 		return childSettings
 	}
 
-export { getSettingOrCreatePath as main }
+export { getPatternSettingOrCreatePath as main }

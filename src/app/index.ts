@@ -58,7 +58,7 @@ export {
 	SettingsStep,
 	setSetting,
 	deeperPath,
-	getSettingOrCreatePath,
+	getPatternSettingOrCreatePath,
 	getFromBaseOrDefaultPattern,
 } from './store'
 export {

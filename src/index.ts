@@ -50,7 +50,7 @@ export {
 	resetClip,
 	setClip,
 	deeperPath,
-	getSettingOrCreatePath,
+	getPatternSettingOrCreatePath,
 	resetInterface,
 	warn,
 	callFunctionsPerSetting,

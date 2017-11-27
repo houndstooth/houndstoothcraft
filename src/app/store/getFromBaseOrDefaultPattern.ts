@@ -5,7 +5,7 @@ import { settingsNamesToPathsMap, SettingsNamesToTypesMap } from '../../pattern'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
-import { main as getSettingOrCreatePath } from './getSettingOrCreatePath'
+import { main as getPatternSettingOrCreatePath } from './getPatternSettingOrCreatePath'
 import { SettingsPath } from './types'
 
 const getFromBaseOrDefaultPattern: SettingsNamesToTypesMap =
@@ -17,16 +17,16 @@ const getFromBaseOrDefaultPattern: SettingsNamesToTypesMap =
 
 		for (const settingsStep of settingsPath) {
 			if (!codeUtilities.isDefined(childSetting[ settingsStep ])) {
-				return getSettingOrCreatePath({
-					settings: DEFAULT_BASE_PATTERN,
+				return getPatternSettingOrCreatePath({
+					pattern: DEFAULT_BASE_PATTERN,
 					settingsPath,
 				})
 			}
 			childSetting = childSetting[ settingsStep ]
 		}
 
-		return getSettingOrCreatePath({
-			settings: state.mainHoundstooth.basePattern,
+		return getPatternSettingOrCreatePath({
+			pattern: state.mainHoundstooth.basePattern,
 			settingsPath,
 		})
 	}

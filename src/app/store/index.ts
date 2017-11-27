@@ -1,6 +1,6 @@
 import * as deeperPath from './deeperPath'
 import * as getFromBaseOrDefaultPattern from './getFromBaseOrDefaultPattern'
-import * as getSettingOrCreatePath from './getSettingOrCreatePath'
+import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import * as resetState from './resetState'
 import * as setSetting from './setSetting'
 import { Overwrite, SettingsPath, SettingsStep } from './types'
@@ -10,7 +10,7 @@ export {
 	SettingsPath,
 	SettingsStep,
 	deeperPath,
-	getSettingOrCreatePath,
+	getPatternSettingOrCreatePath,
 	getFromBaseOrDefaultPattern,
 	Overwrite,
 	setSetting,

@@ -10,15 +10,15 @@ describe('apply scroll', () => {
 		[ 3, 4 ],
 	])
 	beforeEach(() => {
-		setSetting.main('viewSettings', { zoom, canvasSize })
-		setSetting.main('tileSettings', { tileSize })
+		setSetting.default('viewSettings', { zoom, canvasSize })
+		setSetting.default('tileSettings', { tileSize })
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		setSetting.main('centerViewOnCenterOfTileAtHomeAddress', true)
+		setSetting.default('centerViewOnCenterOfTileAtHomeAddress', true)
 		const halfCanvasSize: number = from.Px(canvasSize) / 2
 		const halfTileSize: number = from.Unit(tileSize) / 2
-		expect(applyScroll.main(path)).toEqual(to.Path([
+		expect(applyScroll.default(path)).toEqual(to.Path([
 			[
 				halfCanvasSize - halfTileSize + 3,
 				halfCanvasSize - halfTileSize + 5,
@@ -36,8 +36,8 @@ describe('apply scroll', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('returns the path unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		setSetting.main('centerViewOnCenterOfTileAtHomeAddress', false)
+		setSetting.default('centerViewOnCenterOfTileAtHomeAddress', false)
 
-		expect(applyScroll.main(path)).toEqual(path)
+		expect(applyScroll.default(path)).toEqual(path)
 	})
 })

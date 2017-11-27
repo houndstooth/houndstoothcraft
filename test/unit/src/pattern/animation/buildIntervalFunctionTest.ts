@@ -12,7 +12,7 @@ describe('build interval function returns a function which', () => {
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		stopConditionFunctionSpy = jasmine.createSpy('stopConditionFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
-		intervalFunction = buildIntervalFunction.main({
+		intervalFunction = buildIntervalFunction.default({
 			animationFunction: animationFunctionSpy,
 			resolveAnimation: resolveAnimationSpy,
 			stopConditionFunction: stopConditionFunctionSpy,
@@ -52,7 +52,7 @@ describe('build interval function returns a function which', () => {
 
 	describe('resolving the animation promise', () => {
 		it('resolveAnimations if the end frame is reached', () => {
-			setSetting.main('endFrame', to.Frame(12))
+			setSetting.default('endFrame', to.Frame(12))
 			state.currentFrame = to.Frame(12)
 
 			intervalFunction()
@@ -61,7 +61,7 @@ describe('build interval function returns a function which', () => {
 		})
 
 		it('does not resolveAnimation if the end frame is not reached', () => {
-			setSetting.main('endFrame', to.Frame(12))
+			setSetting.default('endFrame', to.Frame(12))
 			state.currentFrame = to.Frame(11)
 
 			intervalFunction()

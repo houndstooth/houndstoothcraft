@@ -18,7 +18,7 @@ describe('save blob', () => {
 
 		const blob: DataBlob = {}
 		const name: string = 'whatever.png'
-		saveBlob.main({ blob, name })
+		saveBlob.default({ blob, name })
 
 		expect(windowWrapper.URL.createObjectURL).toHaveBeenCalledWith(blob)
 		expect(appendChildSpy).toHaveBeenCalledWith(link)

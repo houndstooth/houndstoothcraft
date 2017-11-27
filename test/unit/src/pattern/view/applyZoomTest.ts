@@ -11,11 +11,11 @@ describe('apply zoom', () => {
 			[ 100, 100 ],
 			[ 50, 100 ],
 		])
-		setSetting.main('viewSettings', { zoom, canvasSize })
+		setSetting.default('viewSettings', { zoom, canvasSize })
 	})
 
 	it('adjusts the path per the zoom level', () => {
-		expect(applyZoom.main(path)).toEqual(to.Path([
+		expect(applyZoom.default(path)).toEqual(to.Path([
 			[ 100, 100 ],
 			[ 200, 100 ],
 			[ 200, 200 ],
@@ -25,11 +25,11 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			setSetting.main('zoomOnCanvasCenter', true)
+			setSetting.default('zoomOnCanvasCenter', true)
 		})
 
 		it('works', () => {
-			expect(applyZoom.main(path)).toEqual(to.Path([
+			expect(applyZoom.default(path)).toEqual(to.Path([
 				[ 0, 0 ],
 				[ 100, 0 ],
 				[ 100, 100 ],
@@ -39,12 +39,12 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				setSetting.main('centerViewOnCenterOfTileAtHomeAddress', true)
+				setSetting.default('centerViewOnCenterOfTileAtHomeAddress', true)
 			})
 		})
 
 		it('does not double-up on adjusting for centering the view', () => {
-			expect(applyZoom.main(path)).toEqual(to.Path([
+			expect(applyZoom.default(path)).toEqual(to.Path([
 				[ 0, 0 ],
 				[ 100, 0 ],
 				[ 100, 100 ],

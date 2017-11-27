@@ -14,4 +14,4 @@ const tileCenter: (_: TileOriginAndSize) => Coordinate =
 		])
 	}
 
-export { tileCenter as main }
+export default tileCenter

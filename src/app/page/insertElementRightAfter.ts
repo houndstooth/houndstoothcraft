@@ -6,4 +6,4 @@ const insertElementRightAfter: (element: PageElement, elementRightAfterWhichToIn
 	(element: PageElement, elementRightAfterWhichToInsert: PageElement): void =>
 		elementRightAfterWhichToInsert.parentNode.insertBefore(element, elementRightAfterWhichToInsert.nextSibling)
 
-export { insertElementRightAfter as main }
+export default insertElementRightAfter

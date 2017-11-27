@@ -4,4 +4,4 @@ const settingPath: (_: { settingName: SettingsStep, settingsPath: SettingsPath }
 	({ settingName, settingsPath }: { settingName: SettingsStep, settingsPath: SettingsPath }): string =>
 		`${settingsPath.join('.')}.${settingName}`
 
-export { settingPath as main }
+export default settingPath

@@ -11,21 +11,21 @@ import Spy = jasmine.Spy
 
 describe('get stripe positions for tile', () => {
 	beforeEach(() => {
-		composeMainHoundstooth.main()
+		composeMainHoundstooth.default()
 	})
 
 	it('defaults to standard stripes', () => {
-		expect(getStripePositionsForTile.main()).toEqual(to.StripePositions([ 0, 0.5, 1, 1.5 ]))
+		expect(getStripePositionsForTile.default()).toEqual(to.StripePositions([ 0, 0.5, 1, 1.5 ]))
 	})
 
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions: StripePosition[] = []
 		const gridAddress: Address = to.Address([ 3, 5 ])
-		const currentSettings: stripePositionSettings.StripePositionSettings = getSetting.main('stripePositionSettings')
+		const currentSettings: stripePositionSettings.StripePositionSettings = getSetting.default('stripePositionSettings')
 		const stripePositionsSpy: Spy = spyOn(currentSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)
 
-		const actualStripePositions: StripePosition[] = getStripePositionsForTile.main({ gridAddress })
+		const actualStripePositions: StripePosition[] = getStripePositionsForTile.default({ gridAddress })
 
 		expect(stripePositionsSpy).toHaveBeenCalledWith({ gridAddress })
 		expect(actualStripePositions).toBe(expectedStripePositions)

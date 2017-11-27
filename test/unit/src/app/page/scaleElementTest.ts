@@ -6,7 +6,7 @@ describe('set element dimensions', () => {
 		const element: PageElement = buildMockElement()
 		element.style = {}
 
-		scaleElement.main({ element, dimensions: to.Dimensions([ 400, 500 ]) })
+		scaleElement.default({ element, dimensions: to.Dimensions([ 400, 500 ]) })
 
 		expect(element.style.width).toBe('400px')
 		expect(element.style.height).toBe('500px')

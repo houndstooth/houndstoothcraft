@@ -20,4 +20,4 @@ const pauseClickHandler: NullarySideEffector =
 		}
 	}
 
-export { pauseClickHandler as main }
+export default pauseClickHandler

@@ -4,13 +4,13 @@ import Spy = jasmine.Spy
 
 describe('combine houndstooth effects', () => {
 	it('warns about conflicts', () => {
-		const composePatternsSpy: Spy = spyOn(composePatterns, 'main')
+		const composePatternsSpy: Spy = spyOn(composePatterns, 'default')
 
 		const houndstoothEffectOne: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffectTwo: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const houndstoothEffects: Effect[] = [ houndstoothEffectOne, houndstoothEffectTwo ]
 
-		combineHoundstoothEffects.main({ houndstoothEffects })
+		combineHoundstoothEffects.default({ houndstoothEffects })
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 

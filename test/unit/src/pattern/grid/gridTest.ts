@@ -8,30 +8,30 @@ describe('grid', () => {
 	const tileResolution: number = 2
 	const thisPatternRef: number = 99
 	beforeEach(() => {
-		setSetting.main('tileResolution', tileResolution)
+		setSetting.default('tileResolution', tileResolution)
 		gridTileSpy = jasmine.createSpy('gridTile')
-		spyOn(applyViewForGrid, 'main')
+		spyOn(applyViewForGrid, 'default')
 	})
 
 	it('applies view for the grid', () => {
-		grid.main({ gridTile: gridTileSpy, thisPatternRef })
+		grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
-		expect(applyViewForGrid.main).toHaveBeenCalled()
+		expect(applyViewForGrid.default).toHaveBeenCalled()
 	})
 
 	it('uses the given grid size', () => {
-		grid.main({ gridTile: gridTileSpy, thisPatternRef })
+		grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
 		expect(gridTileSpy.calls.all().length).toBe(Math.pow(tileResolution, 2))
 	})
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			setSetting.main('includeNegativeQuadrants', false)
+			setSetting.default('includeNegativeQuadrants', false)
 		})
 
 		it('only makes tiles with positive addresses', () => {
-			grid.main({ gridTile: gridTileSpy, thisPatternRef })
+			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(gridTileSpy.calls.count()).toEqual(Math.pow(tileResolution, 2))
 			expect(gridTileSpy.calls.all()[ 0 ].args[ 0 ].gridAddress).toEqual([ 0, 0 ])
@@ -43,7 +43,7 @@ describe('grid', () => {
 		it('sets the tile count on the state correctly', () => {
 			state.tileCount = 0
 
-			grid.main({ gridTile: gridTileSpy, thisPatternRef })
+			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(state.tileCount).toBe(Math.pow(tileResolution, 2))
 		})
@@ -51,14 +51,14 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			setSetting.main('includeNegativeQuadrants', true)
+			setSetting.default('includeNegativeQuadrants', true)
 		})
 
 		// tslint:disable-next-line:max-line-length
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {
 			const quadrantCount: number = 4
 
-			grid.main({ gridTile: gridTileSpy, thisPatternRef })
+			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(gridTileSpy.calls.count()).toEqual(Math.pow(tileResolution, 2) * quadrantCount)
 			expect(gridTileSpy.calls.all()[ 0 ].args[ 0 ].gridAddress).toEqual([ -2, -2 ])
@@ -82,7 +82,7 @@ describe('grid', () => {
 		it('sets the tile count on the state correctly', () => {
 			state.tileCount = 0
 
-			grid.main({ gridTile: gridTileSpy, thisPatternRef })
+			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(state.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
 		})

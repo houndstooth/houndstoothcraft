@@ -10,27 +10,27 @@ describe('solid', () => {
 
 	let getColorSpy: Spy
 	beforeEach(() => {
-		spyOn(fill, 'main')
-		getColorSpy = spyOn(getColor, 'main').and.returnValue(shapeColor)
+		spyOn(fill, 'default')
+		getColorSpy = spyOn(getColor, 'default').and.returnValue(shapeColor)
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {
-		solid.main({ outline, shapeColorIndex })
+		solid.default({ outline, shapeColorIndex })
 
-		expect(getColor.main).toHaveBeenCalledWith({ index: shapeColorIndex })
+		expect(getColor.default).toHaveBeenCalledWith({ index: shapeColorIndex })
 	})
 
 	it('when the color is not completely transparent, it renders', () => {
-		solid.main({ outline, shapeColorIndex })
+		solid.default({ outline, shapeColorIndex })
 
-		expect(fill.main).toHaveBeenCalledWith({ outline, shapeColor })
+		expect(fill.default).toHaveBeenCalledWith({ outline, shapeColor })
 	})
 
 	it('when the color turns out to be completely transparent, it does not render', () => {
 		getColorSpy.and.returnValue(transparentColor)
 
-		solid.main({ outline, shapeColorIndex })
+		solid.default({ outline, shapeColorIndex })
 
-		expect(fill.main).not.toHaveBeenCalled()
+		expect(fill.default).not.toHaveBeenCalled()
 	})
 })

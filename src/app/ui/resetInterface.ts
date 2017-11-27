@@ -12,14 +12,14 @@ const resetInterface: NullarySideEffector =
 		const warnings: PageElement = documentWrapper.querySelector('#warnings-container')
 		warnings.innerHTML = ''
 
-		clear.main()
+		clear.default()
 		windowWrapper.clearInterval(state.interval)
 		windowWrapper.clearInterval(state.gridProgressInterval)
 		state.resolveGrid()
 
 		const existingEffects: Effect[] = state.selectedHoundstoothEffects.slice()
-		resetState.main(state)
+		resetState.default(state)
 		state.selectedHoundstoothEffects = existingEffects
 	}
 
-export { resetInterface as main }
+export default resetInterface

@@ -6,7 +6,7 @@ describe('fill path', () => {
 		const contextCallsOrder: MockContextCall[] = []
 		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		fillPath.main()
+		fillPath.default()
 
 		const expectedContextCallsOrder: MockContextCall[] = [
 			{ method: 'closePath' },

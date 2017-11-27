@@ -14,9 +14,9 @@ describe('get tile origin and size', () => {
 	const tileSize: Unit = to.Unit(40)
 
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
-		setSetting.main('tileSettings', { tileSize })
+		setSetting.default('tileSettings', { tileSize })
 
-		expect(getTileOriginAndSize.main({ gridAddress: gridAddressForSubject })).toEqual({
+		expect(getTileOriginAndSize.default({ gridAddress: gridAddressForSubject })).toEqual({
 			tileOrigin: to.Coordinate([ from.Unit(tileSize) * 7, from.Unit(tileSize) * 11 ]),
 			tileSize: to.Unit(from.Unit(tileSize)),
 		})
@@ -31,9 +31,9 @@ describe('get tile origin and size', () => {
 				tileSize: to.Unit(from.Unit(tileSize) * from.Unit(tileSize)),
 			}
 		}
-		setSetting.main('getTileOriginAndSize', custom)
+		setSetting.default('getTileOriginAndSize', custom)
 
-		expect(getTileOriginAndSize.main({ gridAddress: gridAddressForSubject })).toEqual({
+		expect(getTileOriginAndSize.default({ gridAddress: gridAddressForSubject })).toEqual({
 			tileOrigin: to.Coordinate([ from.Unit(tileSize) * 11, from.Unit(tileSize) * 7 ]),
 			tileSize: to.Unit(from.Unit(tileSize) * from.Unit(tileSize)),
 		})

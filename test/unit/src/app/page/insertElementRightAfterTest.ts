@@ -10,7 +10,7 @@ describe('insert element right after', () => {
 		elementRightAfterWhichToInsert.nextSibling = nextSibling
 		const element: PageElement = buildMockElement()
 
-		insertElementRightAfter.main(element, elementRightAfterWhichToInsert)
+		insertElementRightAfter.default(element, elementRightAfterWhichToInsert)
 
 		expect(parentNodeInsertBeforeSpy).toHaveBeenCalledWith(element, nextSibling)
 	})

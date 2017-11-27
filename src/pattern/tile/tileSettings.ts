@@ -2,11 +2,11 @@
 
 import { FunctionsOf, Overwrite } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { main as buildSettingsNamesToPathsMap } from '../../app/store/buildSettingsNamesToPathsMap'
+import buildSettingsNamesToPathsMap from '../../app/store/buildSettingsNamesToPathsMap'
 import * as to from '../../to'
 import { Unit } from '../grid'
 import { SettingsNamesByTypeBase } from '../types'
-import { main as getStandardTileOriginAndSize } from './getStandardTileOriginAndSize'
+import getStandardTileOriginAndSize from './getStandardTileOriginAndSize'
 import { GetTileOriginAndSize } from './types'
 
 interface TileSettings {

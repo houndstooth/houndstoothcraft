@@ -13,8 +13,8 @@ describe('warn', () => {
 	it('adds warnings to the warnings container', () => {
 		spyOn(documentWrapper, 'querySelector').and.returnValue(warningsContainer)
 
-		warn.main('watch out!')
-		warn.main('my man!')
+		warn.default('watch out!')
+		warn.default('my man!')
 
 		expect(children[ 0 ].innerHTML).toEqual('watch out!')
 		expect(children[ 1 ].innerHTML).toEqual('my man!')

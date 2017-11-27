@@ -14,15 +14,15 @@ describe('create checkbox', () => {
 	let checkbox: InputElement
 	const classList: string[] = []
 	const attributeObject: { type: string } = { type: '' }
-	const clickHandler: NullarySideEffector = noop.main
+	const clickHandler: NullarySideEffector = noop.default
 	const houndstoothEffect: Effect = { name: 'mock tooth' }
 	beforeAll(() => {
 		checkbox = buildMockElement({ classList, attributeObject }) as InputElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(checkbox)
 
-		spyOn(buildEffectToggleClickHandler, 'main').and.returnValue(clickHandler)
+		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)
 
-		returnedCheckbox = createCheckbox.main({ houndstoothEffect })
+		returnedCheckbox = createCheckbox.default({ houndstoothEffect })
 	})
 
 	it('returns the created label', () => {
@@ -30,7 +30,7 @@ describe('create checkbox', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(buildEffectToggleClickHandler.main).toHaveBeenCalledWith({
+		expect(buildEffectToggleClickHandler.default).toHaveBeenCalledWith({
 			checkbox,
 			houndstoothEffect,
 		})

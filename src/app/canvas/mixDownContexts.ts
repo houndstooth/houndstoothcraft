@@ -13,4 +13,4 @@ const mixDownContexts: NullarySideEffector =
 		})
 	}
 
-export { mixDownContexts as main }
+export default mixDownContexts

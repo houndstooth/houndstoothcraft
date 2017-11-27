@@ -6,7 +6,7 @@ import { GetShapeColorIndicesWithOffset, GetShapeColorIndicesWithOffsetParams, S
 
 const getByWeave: GetShapeColorIndicesWithOffset =
 	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
-		const { rows, columns }: Weave = getSetting.main('weave')
+		const { rows, columns }: Weave = getSetting.default('weave')
 
 		const [ x, y ]: number[] = from.Address(gridAddress)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)
@@ -23,4 +23,4 @@ const getByWeave: GetShapeColorIndicesWithOffset =
 		return to.ShapeColorIndices([ rowsIndex, columnsIndex ])
 	}
 
-export { getByWeave as main }
+export default getByWeave

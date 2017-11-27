@@ -24,7 +24,7 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns.main({ patternToBeMergedOnto, patternToMerge })
+		composePatterns.default({ patternToBeMergedOnto, patternToMerge })
 
 		const expectedPattern: Pattern = {
 			colorSettings: {
@@ -52,7 +52,7 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns.main({ patternToBeMergedOnto, patternToMerge })
+		composePatterns.default({ patternToBeMergedOnto, patternToMerge })
 
 		const expectedPattern: Pattern = {
 			colorSettings: {
@@ -63,7 +63,7 @@ describe('compose patterns', () => {
 	})
 
 	it('maybe warns about conflicts', () => {
-		spyOn(maybeWarnAboutConflicts, 'main')
+		spyOn(maybeWarnAboutConflicts, 'default')
 
 		const patternToBeMergedOnto: Pattern = {
 			colorSettings: {
@@ -76,13 +76,13 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns.main({ patternToBeMergedOnto, patternToMerge })
+		composePatterns.default({ patternToBeMergedOnto, patternToMerge })
 
-		expect(maybeWarnAboutConflicts.main).toHaveBeenCalled()
+		expect(maybeWarnAboutConflicts.default).toHaveBeenCalled()
 	})
 
 	it('defaults the pattern to merge to an empty object, so as to not fail', () => {
 		const patternToBeMergedOnto: Pattern = {}
-		composePatterns.main({ patternToBeMergedOnto })
+		composePatterns.default({ patternToBeMergedOnto })
 	})
 })

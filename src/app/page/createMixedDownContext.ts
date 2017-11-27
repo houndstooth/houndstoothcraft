@@ -2,7 +2,7 @@
 
 import { documentWrapper } from '../../utilities'
 import { getSetting } from '../store'
-import { main as deleteElementIfExists } from './deleteElementIfExists'
+import deleteElementIfExists from './deleteElementIfExists'
 import { Canvas, Context, Px } from './types'
 
 const createMixedDownContext: () => Context =
@@ -13,7 +13,7 @@ const createMixedDownContext: () => Context =
 		mixedDownCanvas.classList.add('mixed-down-canvas')
 		documentWrapper.body.appendChild(mixedDownCanvas)
 
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 		mixedDownCanvas.width = canvasSize
 		mixedDownCanvas.height = canvasSize
 
@@ -22,5 +22,4 @@ const createMixedDownContext: () => Context =
 		return mixedDownCanvas.getContext('2d')
 	}
 
-// tslint:disable-next-line:no-default-export
 export default createMixedDownContext

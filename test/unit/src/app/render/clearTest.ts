@@ -4,7 +4,7 @@ import Spy = jasmine.Spy
 describe('clear', () => {
 	let mixedDownClearRectSpy: Spy
 	beforeEach(() => {
-		setSetting.main('canvasSize', to.Px(450))
+		setSetting.default('canvasSize', to.Px(450))
 
 		mixedDownClearRectSpy = jasmine.createSpy('mixedDownClearRect')
 		state.mixedDownContext = { clearRect: mixedDownClearRectSpy }
@@ -16,7 +16,7 @@ describe('clear', () => {
 			clearRectSpy = jasmine.createSpy('clearRect')
 			state.contexts = [ { clearRect: clearRectSpy } ]
 
-			clear.main()
+			clear.default()
 		})
 
 		it('wipes the default amount of canvas', () => {
@@ -39,7 +39,7 @@ describe('clear', () => {
 				{ clearRect: clearRectSpy3 },
 			]
 
-			clear.main()
+			clear.default()
 
 			expect(clearRectSpy1).toHaveBeenCalledWith(0, 0, 450, 450)
 			expect(clearRectSpy2).toHaveBeenCalledWith(0, 0, 450, 450)

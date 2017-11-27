@@ -1,8 +1,8 @@
 import * as from from '../../../from'
 import { GetOutlineParams, Outline, OutlineOptions } from '../types'
-import { main as firstPoint } from './firstPoint'
-import { main as lastPoints } from './lastPoints'
-import { main as middlePoints } from './middlePoints'
+import firstPoint from './firstPoint'
+import lastPoints from './lastPoints'
+import middlePoints from './middlePoints'
 import { GetStripeOutline } from './types'
 
 const stripeOutline: GetStripeOutline =
@@ -39,4 +39,4 @@ const stripeOutline: GetStripeOutline =
 		return outline
 	}
 
-export { stripeOutline as main }
+export default stripeOutline

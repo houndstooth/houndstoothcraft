@@ -13,4 +13,4 @@ const warn: (warningMessage: string) => void =
 		warningsContainer.appendChild(warning)
 	}
 
-export { warn as main }
+export default warn

@@ -6,6 +6,6 @@ describe('get current context', () => {
 		state.contexts = [ {}, {}, {}, expectedContext, {}, {} ]
 		state.currentLayer = to.Layer(3)
 
-		expect(getCurrentContext.main()).toBe(expectedContext)
+		expect(getCurrentContext.default()).toBe(expectedContext)
 	})
 })

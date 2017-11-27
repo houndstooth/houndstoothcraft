@@ -25,7 +25,7 @@ describe('.tileSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -75,7 +75,7 @@ describe('.tileSettings', () => {
 				}
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -119,7 +119,7 @@ describe('.tileSettings', () => {
 		let contextCallsOrder: MockContextCall[]
 		beforeEach(() => {
 			contextCallsOrder = []
-			clear.main()
+			clear.default()
 			houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
@@ -135,7 +135,7 @@ describe('.tileSettings', () => {
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', async (done: DoneFn) => {
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				expect(contextCallsOrder.length).toBe(7)
@@ -162,7 +162,7 @@ describe('.tileSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				expect(contextCallsOrder.length).toBe(26)

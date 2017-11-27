@@ -9,16 +9,16 @@ describe('execute grid and maybe logging', () => {
 		state.currentFrame = to.Frame(96)
 		state.currentLayer = to.Layer(54)
 
-		spyOn(executeGrid, 'main')
+		spyOn(executeGrid, 'default')
 		spyOn(consoleWrapper, 'time')
 		spyOn(consoleWrapper, 'timeEnd')
 		spyOn(consoleWrapper, 'log')
 	})
 
 	it('calls grid', async (done: DoneFn) => {
-		await executeGridAndMaybeLogging.main({ thisPatternRef })
+		await executeGridAndMaybeLogging.default({ thisPatternRef })
 
-		expect(executeGrid.main).toHaveBeenCalledWith({ thisPatternRef })
+		expect(executeGrid.default).toHaveBeenCalledWith({ thisPatternRef })
 
 		done()
 	})
@@ -28,7 +28,7 @@ describe('execute grid and maybe logging', () => {
 
 		describe('when not animating', () => {
 			it('logs only the performance of the grid', async (done: DoneFn) => {
-				await executeGridAndMaybeLogging.main({ thisPatternRef })
+				await executeGridAndMaybeLogging.default({ thisPatternRef })
 
 				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
 				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
@@ -42,7 +42,7 @@ describe('execute grid and maybe logging', () => {
 			beforeEach(() => state.animating = true)
 
 			it('logs the current animation frame along with the performance measurement', async (done: DoneFn) => {
-				await executeGridAndMaybeLogging.main({ thisPatternRef })
+				await executeGridAndMaybeLogging.default({ thisPatternRef })
 
 				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
 				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
@@ -57,7 +57,7 @@ describe('execute grid and maybe logging', () => {
 		beforeEach(() => state.performanceLogging = false)
 
 		it('does not track performance or log it', async (done: DoneFn) => {
-			await executeGridAndMaybeLogging.main({ thisPatternRef })
+			await executeGridAndMaybeLogging.default({ thisPatternRef })
 
 			expect(consoleWrapper.time).not.toHaveBeenCalled()
 			expect(consoleWrapper.timeEnd).not.toHaveBeenCalled()

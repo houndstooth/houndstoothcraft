@@ -6,8 +6,8 @@ import { Color, ShapeColorIndex } from './types'
 const getColor: (_: { index: ShapeColorIndex }) => Color =
 	({ index }: { index: ShapeColorIndex }): Color =>
 		codeUtilities.wrappedIndex({
-			array: getSetting.main('colorSet'),
+			array: getSetting.default('colorSet'),
 			index: from.ShapeColorIndex(index),
 		})
 
-export { getColor as main }
+export default getColor

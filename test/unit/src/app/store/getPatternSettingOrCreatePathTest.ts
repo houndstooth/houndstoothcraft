@@ -12,7 +12,7 @@ describe('get pattern setting or create path', () => {
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getPatternSettingOrCreatePath.main({ pattern, settingsPath })
+		const childSetting: any = getPatternSettingOrCreatePath.default({ pattern, settingsPath })
 
 		expect(childSetting).toBe(expectedSetting)
 	})
@@ -21,7 +21,7 @@ describe('get pattern setting or create path', () => {
 		const pattern: any = {}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getPatternSettingOrCreatePath.main({ pattern, settingsPath })
+		const childSetting: any = getPatternSettingOrCreatePath.default({ pattern, settingsPath })
 
 		expect(childSetting).toEqual({})
 		expect(pattern).toEqual({
@@ -39,7 +39,7 @@ describe('get pattern setting or create path', () => {
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getPatternSettingOrCreatePath.main({ pattern, settingsPath })
+		const childSetting: any = getPatternSettingOrCreatePath.default({ pattern, settingsPath })
 
 		expect(childSetting).toBe(0)
 		expect(pattern).toEqual({

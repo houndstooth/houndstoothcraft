@@ -19,7 +19,7 @@ describe('mix down contexts', () => {
 			{ canvas: 5 },
 		]
 
-		mixDownContexts.main()
+		mixDownContexts.default()
 
 		const drawImageSpyCalls: CallInfo[] = drawImageSpy.calls.all()
 		expect(drawImageSpyCalls[0].args[0]).toEqual(0)
@@ -32,16 +32,16 @@ describe('mix down contexts', () => {
 
 	it('creates the mixed down canvas if it is not already there', () => {
 		expect(state.mixedDownContext).toBe(undefined)
-		mixDownContexts.main()
+		mixDownContexts.default()
 		expect(state.mixedDownContext).toBe(mixedDownContext)
 	})
 
 	it('does not fail if there is no mixed down context', () => {
-		mixDownContexts.main()
+		mixDownContexts.default()
 	})
 
 	it('does not fail if already mixing down', () => {
 		state.mixingDown = true
-		mixDownContexts.main()
+		mixDownContexts.default()
 	})
 })

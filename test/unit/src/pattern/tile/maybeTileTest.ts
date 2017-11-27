@@ -7,45 +7,45 @@ describe('maybe tile', () => {
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
-		spyOn(tile, 'main')
+		spyOn(tile, 'default')
 	})
 
 	it('calls tile if an origin and size are got', () => {
-		spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileOrigin, tileSize })
+		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin, tileSize })
 
-		maybeTile.main({ gridAddress, thisPatternRef })
+		maybeTile.default({ gridAddress, thisPatternRef })
 
-		expect(tile.main).toHaveBeenCalledWith({ gridAddress, tileOrigin, tileSize })
+		expect(tile.default).toHaveBeenCalledWith({ gridAddress, tileOrigin, tileSize })
 	})
 
 	it('does not call tile if neither origin nor size is got', () => {
-		spyOn(getTileOriginAndSize, 'main').and.returnValue(undefined)
+		spyOn(getTileOriginAndSize, 'default').and.returnValue(undefined)
 
-		maybeTile.main({ gridAddress, thisPatternRef })
+		maybeTile.default({ gridAddress, thisPatternRef })
 
-		expect(tile.main).not.toHaveBeenCalled()
+		expect(tile.default).not.toHaveBeenCalled()
 	})
 
 	it('does not call tile if origin is got but size is not', () => {
-		spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileOrigin })
+		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin })
 
-		maybeTile.main({ gridAddress, thisPatternRef })
+		maybeTile.default({ gridAddress, thisPatternRef })
 
-		expect(tile.main).not.toHaveBeenCalled()
+		expect(tile.default).not.toHaveBeenCalled()
 	})
 
 	it('does not call tile if size is got but origin is not', () => {
-		spyOn(getTileOriginAndSize, 'main').and.returnValue({ tileSize })
+		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileSize })
 
-		maybeTile.main({ gridAddress, thisPatternRef })
+		maybeTile.default({ gridAddress, thisPatternRef })
 
-		expect(tile.main).not.toHaveBeenCalled()
+		expect(tile.default).not.toHaveBeenCalled()
 	})
 
 	it('increments the count of tiles completed', () => {
 		state.tilesCompleted = 5
 
-		maybeTile.main({ gridAddress, thisPatternRef })
+		maybeTile.default({ gridAddress, thisPatternRef })
 
 		expect(state.tilesCompleted).toBe(6)
 	})

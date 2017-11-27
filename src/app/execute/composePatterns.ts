@@ -21,19 +21,19 @@ const composePatterns: (_: ComposePatternsParams) => void =
 				composePatterns({
 					patternToBeMergedOnto,
 					patternToMerge: overridingSetting,
-					settingsPath: deeperPath.main({ settingsPath, settingName: to.SettingsStep(settingName) }),
+					settingsPath: deeperPath.default({ settingsPath, settingName: to.SettingsStep(settingName) }),
 					warnAboutConflicts,
 				})
 			}
 			else {
-				const settingsWithSettingToBeOverridden: { [_: string]: any } = getPatternSettingOrCreatePath.main({
+				const settingsWithSettingToBeOverridden: { [_: string]: any } = getPatternSettingOrCreatePath.default({
 					pattern: patternToBeMergedOnto,
 					settingsPath,
 				})
 
 				const existingSetting: any = settingsWithSettingToBeOverridden[ settingName ]
 
-				maybeWarnAboutConflicts.main({
+				maybeWarnAboutConflicts.default({
 					existingSetting,
 					overridingSetting,
 					settingName: to.SettingsStep(settingName),
@@ -70,4 +70,4 @@ const settingIsNotColor: (setting: any) => boolean =
 		return !(codeUtilities.isDefined(r) || codeUtilities.isDefined(g) || codeUtilities.isDefined(b) || codeUtilities.isDefined(a))
 	}
 
-export { composePatterns as main }
+export default composePatterns

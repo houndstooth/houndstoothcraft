@@ -4,6 +4,6 @@ import { TileOriginAndSize } from './types'
 
 const getTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize | undefined =
 	({ gridAddress }: { gridAddress: Address }): TileOriginAndSize | undefined =>
-		getSetting.main('getTileOriginAndSize')({ gridAddress })
+		getSetting.default('getTileOriginAndSize')({ gridAddress })
 
-export { getTileOriginAndSize as main }
+export default getTileOriginAndSize

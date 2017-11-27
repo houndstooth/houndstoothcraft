@@ -3,8 +3,8 @@ import { Color, getColor, setSetting, to } from '../../../../../src'
 describe('get Color', () => {
 	it('gets the color object from the state, using the passed index', () => {
 		const expectedColor: Color = { a: 1 }
-		setSetting.main('colorSettings', { colorSet: to.ColorSet([ { a: 0 }, expectedColor, { a: 0 } ]) })
+		setSetting.default('colorSettings', { colorSet: to.ColorSet([ { a: 0 }, expectedColor, { a: 0 } ]) })
 
-		expect(getColor.main({ index: to.ShapeColorIndex(7) })).toBe(expectedColor)
+		expect(getColor.default({ index: to.ShapeColorIndex(7) })).toBe(expectedColor)
 	})
 })

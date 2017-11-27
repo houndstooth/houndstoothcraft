@@ -7,7 +7,7 @@ import { GetStripePosition, StripePosition } from './types'
 
 const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition[] =
 	({ getStripePosition }: { getStripePosition: GetStripePosition }): StripePosition[] => {
-		const stripeCount: number = getSetting.main('stripeCount')
+		const stripeCount: number = getSetting.default('stripeCount')
 
 		return to.StripePositions(codeUtilities.iterator(stripeCount).map((stripeIndex: number): StripePosition =>
 			to.StripePosition(from.StripePosition(getStripePosition({
@@ -16,4 +16,4 @@ const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition
 			})) * from.StripePosition(constants.PERIMETER_SCALAR))))
 	}
 
-export { perStripe as main }
+export default perStripe

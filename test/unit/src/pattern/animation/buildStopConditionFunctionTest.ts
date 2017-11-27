@@ -3,7 +3,7 @@ import { buildStopConditionFunction, ConditionFunction, state, to } from '../../
 describe('build stop condition function', () => {
 	// tslint:disable-next-line:max-line-length
 	it('returns a function that evaluates to true once the current animation frame on the state is greater than the requested end animation frame', () => {
-		const stopConditionFunction: ConditionFunction = buildStopConditionFunction.main({ endFrame: to.Frame(3) })
+		const stopConditionFunction: ConditionFunction = buildStopConditionFunction.default({ endFrame: to.Frame(3) })
 
 		state.currentFrame = to.Frame(0)
 		expect(stopConditionFunction()).toBe(false)

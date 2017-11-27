@@ -15,7 +15,7 @@ describe('standard houndstooth pattern', () => {
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', async (done: DoneFn) => {
 		activateTestMarkerCanvas()
 
-		executeSelectedHoundstoothEffects.main({
+		executeSelectedHoundstoothEffects.default({
 			houndstoothOverrides: {
 				basePattern: {
 					gridSettings: { tileResolution: 4 },
@@ -25,7 +25,7 @@ describe('standard houndstooth pattern', () => {
 
 		setTimeout(() => {
 			let baseId: number = -8
-			const tileSize: Unit = getSetting.main('tileSize')
+			const tileSize: Unit = getSetting.default('tileSize')
 			const firstSupertileExpectations: StandardTileExpectation[] = [
 				{
 					baseId: baseId += 8,

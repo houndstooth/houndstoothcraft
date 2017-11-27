@@ -18,15 +18,15 @@ describe('execute layer', () => {
 	let executeGridAndMaybeLoggingSpy: Spy
 
 	beforeEach(() => {
-		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'main')
-		executeGridAndMaybeLoggingSpy = spyOn(executeGridAndMaybeLogging, 'main')
+		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'default')
+		executeGridAndMaybeLoggingSpy = spyOn(executeGridAndMaybeLogging, 'default')
 	})
 
 	it('sets the current layer on the state', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(12)
 		state.currentLayer = to.Layer(11)
 
-		await executeLayer.main({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+		await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
 
 		expect(state.currentLayer).toBe(to.Layer(12))
 
@@ -38,7 +38,7 @@ describe('execute layer', () => {
 			it('executes', async (done: DoneFn) => {
 				const layer: Layer = to.Layer(12)
 
-				await executeLayer.main({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
 
 				expect(executeGridAndMaybeLoggingSpy).toHaveBeenCalledWith({ thisPatternRef })
 
@@ -50,7 +50,7 @@ describe('execute layer', () => {
 			it('does not execute', async (done: DoneFn) => {
 				const layer: Layer = to.Layer(11)
 
-				await executeLayer.main({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
 
 				expect(executeGridAndMaybeLoggingSpy).not.toHaveBeenCalled()
 
@@ -64,7 +64,7 @@ describe('execute layer', () => {
 			it('does not call them', async (done: DoneFn) => {
 				const layer: Layer = to.Layer(0)
 
-				await executeLayer.main({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
 
 				expect(callFunctionsPerSettingSpy).not.toHaveBeenCalled()
 
@@ -76,7 +76,7 @@ describe('execute layer', () => {
 			it('calls them', async (done: DoneFn) => {
 				const layer: Layer = to.Layer(1)
 
-				await executeLayer.main({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
 
 				expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
 					settingsFunctionObjects: layerFunctionObjects,

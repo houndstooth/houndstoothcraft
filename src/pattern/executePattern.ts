@@ -6,20 +6,20 @@ import { executeLayer, layerSettings, thisPatternHasNotBeenCanceled } from './la
 
 const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => Promise<void> =
 	async ({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): Promise<void> => {
-		const { startLayer, endLayer }: layerSettings.LayerSettings = getSetting.main('layerSettings')
+		const { startLayer, endLayer }: layerSettings.LayerSettings = getSetting.default('layerSettings')
 
 		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
-			if (thisPatternHasNotBeenCanceled.main(thisPatternRef)) {
-				await executeLayer.main({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
+			if (thisPatternHasNotBeenCanceled.default(thisPatternRef)) {
+				await executeLayer.default({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
 			}
 		}
 
 		if (state.mixingDown) {
-			mixDownContexts.main()
+			mixDownContexts.default()
 		}
 
 		state.currentLayer = to.Layer(0)
 	}
 
-export { executePattern as main }
+export default executePattern

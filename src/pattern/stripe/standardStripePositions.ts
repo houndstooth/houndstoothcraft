@@ -1,5 +1,5 @@
 import * as to from '../../to'
-import { main as perStripe } from './perStripe'
+import perStripe from './perStripe'
 import { GetStripePosition, GetStripePositionParams, GetStripePositions, StripePosition } from './types'
 
 const standardStripePositions: GetStripePositions =
@@ -9,4 +9,4 @@ const standardStripePosition: GetStripePosition =
 	({ stripeCount, stripeIndex }: GetStripePositionParams): StripePosition =>
 		to.StripePosition(stripeIndex / stripeCount)
 
-export { standardStripePositions as main }
+export default standardStripePositions

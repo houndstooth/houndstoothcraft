@@ -2,7 +2,7 @@
 
 import { Effect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
-import { main as createEffectToggle } from './createEffectToggle'
+import createEffectToggle from './createEffectToggle'
 import { PageElement } from './types'
 
 const createEffectToggles: (effects: Effect[]) => void =
@@ -13,4 +13,4 @@ const createEffectToggles: (effects: Effect[]) => void =
 		effects.forEach(createEffectToggle)
 	}
 
-export { createEffectToggles as main }
+export default createEffectToggles

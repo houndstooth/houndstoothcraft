@@ -10,7 +10,7 @@ const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffe
 				return
 			}
 
-			if (state.currentFrame === getSetting.main('endFrame')) {
+			if (state.currentFrame === getSetting.default('endFrame')) {
 				resolveAnimation()
 			}
 
@@ -24,4 +24,4 @@ const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffe
 
 const isAnimating: ConditionFunction = (): boolean => state.animating
 
-export { buildIntervalFunction as main }
+export default buildIntervalFunction

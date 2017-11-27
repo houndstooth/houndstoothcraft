@@ -5,9 +5,9 @@ import { StripePosition } from './types'
 
 const getStripePositionsForTile: (_?: { gridAddress?: Address }) => StripePosition[] =
 	({ gridAddress }: { gridAddress?: Address } = {}): StripePosition[] => {
-		const { getStripePositions }: StripePositionSettings = getSetting.main('stripePositionSettings')
+		const { getStripePositions }: StripePositionSettings = getSetting.default('stripePositionSettings')
 
 		return getStripePositions({ gridAddress })
 	}
 
-export { getStripePositionsForTile as main }
+export default getStripePositionsForTile

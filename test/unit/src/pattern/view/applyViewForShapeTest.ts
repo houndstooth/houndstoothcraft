@@ -9,15 +9,15 @@ describe('adjusts a shape\'s path for view', () => {
 		const zoomedAndScrolledPath: Path = to.Path([])
 		const zoomedAndScrolledAndTiltedPath: Path = to.Path([])
 
-		spyOn(applyZoom, 'main').and.returnValue(zoomedPath)
-		spyOn(applyScroll, 'main').and.returnValue(zoomedAndScrolledPath)
-		spyOn(applyTilt, 'main').and.returnValue(zoomedAndScrolledAndTiltedPath)
+		spyOn(applyZoom, 'default').and.returnValue(zoomedPath)
+		spyOn(applyScroll, 'default').and.returnValue(zoomedAndScrolledPath)
+		spyOn(applyTilt, 'default').and.returnValue(zoomedAndScrolledAndTiltedPath)
 
-		const actualPath: Path = applyViewForShape.main(outline)
+		const actualPath: Path = applyViewForShape.default(outline)
 
-		expect(applyZoom.main).toHaveBeenCalledWith(path)
-		expect(applyScroll.main).toHaveBeenCalledWith(zoomedPath)
-		expect(applyTilt.main).toHaveBeenCalledWith(zoomedAndScrolledPath)
+		expect(applyZoom.default).toHaveBeenCalledWith(path)
+		expect(applyScroll.default).toHaveBeenCalledWith(zoomedPath)
+		expect(applyTilt.default).toHaveBeenCalledWith(zoomedAndScrolledPath)
 		expect(actualPath).toBe(zoomedAndScrolledAndTiltedPath)
 	})
 })

@@ -9,9 +9,9 @@ describe('create effect toggle', () => {
 
 	beforeAll(() => {
 		spyOn(documentWrapper, 'querySelector').and.returnValue(effectTogglesContainer)
-		spyOn(createLabel, 'main').and.returnValue(label)
+		spyOn(createLabel, 'default').and.returnValue(label)
 
-		createEffectToggle.main(houndstoothEffect)
+		createEffectToggle.default(houndstoothEffect)
 	})
 
 	it('adds a labelled checkbox for the effect to the toggles container', () => {
@@ -19,6 +19,6 @@ describe('create effect toggle', () => {
 	})
 
 	it('creates the label with the houndstooth effect', () => {
-		expect(createLabel.main).toHaveBeenCalledWith({ houndstoothEffect })
+		expect(createLabel.default).toHaveBeenCalledWith({ houndstoothEffect })
 	})
 })

@@ -7,7 +7,7 @@ describe('build path', () => {
 		const contextCallsOrder: MockContextCall[] = []
 		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		buildPath.main({ path })
+		buildPath.default({ path })
 
 		const expectedContextCallsOrder: MockContextCall[] = [
 			{ method: 'beginPath' },

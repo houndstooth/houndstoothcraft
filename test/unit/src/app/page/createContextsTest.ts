@@ -24,31 +24,31 @@ describe('create contexts', () => {
 	})
 
 	it('clears the canvas container contents', () => {
-		createContexts.main()
+		createContexts.default()
 
 		expect(canvasContainer.innerHTML).toBe('')
 	})
 
 	it('adds contexts to the state for each layer', () => {
-		setSetting.main('endLayer', to.Layer(5))
+		setSetting.default('endLayer', to.Layer(5))
 		expect(state.contexts.length).toBe(0)
 
-		createContexts.main()
+		createContexts.default()
 
 		expect(state.contexts.length).toBe(6)
 	})
 
 	it('can reduce the count of contexts in the state, and canvases on the page', () => {
-		setSetting.main('endLayer', to.Layer(5))
-		createContexts.main()
+		setSetting.default('endLayer', to.Layer(5))
+		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(6)
 		expect(state.contexts.length).toBe(6)
 
-		setSetting.main('endLayer', to.Layer(3))
+		setSetting.default('endLayer', to.Layer(3))
 		createContextSpy.calls.reset()
 
-		createContexts.main()
+		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(4)
 		expect(state.contexts.length).toBe(4)
@@ -56,10 +56,10 @@ describe('create contexts', () => {
 
 	it('creates the canvas container if it does not already exist', () => {
 		querySelectorSpy.and.returnValue(undefined)
-		spyOn(scaleCanvasContainer, 'main').and.returnValue(canvasContainer)
+		spyOn(scaleCanvasContainer, 'default').and.returnValue(canvasContainer)
 
-		createContexts.main()
+		createContexts.default()
 
-		expect(scaleCanvasContainer.main).toHaveBeenCalled()
+		expect(scaleCanvasContainer.default).toHaveBeenCalled()
 	})
 })

@@ -20,7 +20,7 @@ describe('composeMainHoundstooth', () => {
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		composeMainHoundstooth.main({ logComposedMainHoundstooth: true })
+		composeMainHoundstooth.default({ logComposedMainHoundstooth: true })
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.log).toHaveBeenCalledWith(state.mainHoundstooth)
@@ -29,7 +29,7 @@ describe('composeMainHoundstooth', () => {
 	it('does not log the houndstooth when logging mode is not on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		composeMainHoundstooth.main()
+		composeMainHoundstooth.default()
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
@@ -37,13 +37,13 @@ describe('composeMainHoundstooth', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
-		const composePatternsSpy: Spy = spyOn(composePatterns, 'main')
+		const composePatternsSpy: Spy = spyOn(composePatterns, 'default')
 
 		const combinedHoundstoothEffects: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		spyOn(combineHoundstoothEffects, 'main').and.returnValue(combinedHoundstoothEffects)
+		spyOn(combineHoundstoothEffects, 'default').and.returnValue(combinedHoundstoothEffects)
 
 		const houndstoothOverrides: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		composeMainHoundstooth.main({ houndstoothOverrides })
+		composeMainHoundstooth.default({ houndstoothOverrides })
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 

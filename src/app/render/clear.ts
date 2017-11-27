@@ -5,7 +5,7 @@ import { getSetting } from '../store'
 
 const clear: NullarySideEffector =
 	(): void => {
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 		state.contexts.forEach((context: Context): void => {
 			clearContext({ context, canvasSize })
 		})
@@ -21,4 +21,4 @@ const clearContext: (_: { canvasSize: Px, context: Context }) => void =
 		// tslint:disable-next-line:no-unsafe-any
 		context.clearRect(0, 0, canvasSize, canvasSize)
 
-export { clear as main }
+export default clear

@@ -51,4 +51,4 @@ const middlePointsWhenStripeDoesNotEndInBottomRightHalf: (_: PointsParamsPlusStr
 		}
 	}
 
-export { middlePoints as main }
+export default middlePoints

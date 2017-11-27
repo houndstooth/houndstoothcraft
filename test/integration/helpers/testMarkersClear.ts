@@ -12,7 +12,7 @@ const testMarkersClear: NullarySideEffector =
 		// tslint:disable-next-line:no-unsafe-any
 		const testMarkersContext: Context = testMarkersCanvas.getContext('2d')
 
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 
 		// tslint:disable-next-line:no-unsafe-any
 		testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)

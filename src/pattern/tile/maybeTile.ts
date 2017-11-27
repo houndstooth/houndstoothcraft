@@ -1,7 +1,7 @@
 import { state } from '../../state'
 import { ReferencedGridAddress } from '../grid'
-import { main as getTileOriginAndSize } from './getTileOriginAndSize'
-import { main as tile } from './tile'
+import getTileOriginAndSize from './getTileOriginAndSize'
+import tile from './tile'
 
 const maybeTile: (_: ReferencedGridAddress) => void =
 	({ gridAddress }: ReferencedGridAddress): void => {
@@ -14,4 +14,4 @@ const maybeTile: (_: ReferencedGridAddress) => void =
 		state.tilesCompleted++
 	}
 
-export { maybeTile as main }
+export default maybeTile

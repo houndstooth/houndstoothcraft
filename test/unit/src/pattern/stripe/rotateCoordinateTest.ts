@@ -6,7 +6,7 @@ describe('rotate coordinate', () => {
 		const fixedCoordinate: Coordinate = to.Coordinate([ 1, 1 ])
 		const rotation: Radian = to.Radian(Math.PI / 2)
 
-		const actualCoordinate: Coordinate = rotateCoordinate.main({ coordinate, fixedCoordinate, rotation })
+		const actualCoordinate: Coordinate = rotateCoordinate.default({ coordinate, fixedCoordinate, rotation })
 
 		const expectedCoordinate: Coordinate = to.Coordinate([ 2, 2 ])
 		expect(actualCoordinate).toEqual(expectedCoordinate)

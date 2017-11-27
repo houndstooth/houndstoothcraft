@@ -19,19 +19,19 @@ describe('pause click handler', () => {
 		playButton.disabled = true
 		pauseButton.disabled = false
 
-		pauseClickHandler.main()
+		pauseClickHandler.default()
 
 		expect(state.animating).toBe(false)
 	})
 
 	it('enables the play button', () => {
-		pauseClickHandler.main()
+		pauseClickHandler.default()
 
 		expect(playButton.disabled).toBe(false)
 	})
 
 	it('disables the pause button', () => {
-		pauseClickHandler.main()
+		pauseClickHandler.default()
 
 		expect(pauseButton.disabled).toBe(true)
 	})

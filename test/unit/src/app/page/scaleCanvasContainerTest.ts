@@ -15,10 +15,10 @@ describe('scale canvas container', () => {
 	let bodyChildren: PageElement[]
 	let returnedCanvasContainer: PageElement
 	beforeEach(() => {
-		setSetting.main('canvasSize', canvasSize)
+		setSetting.default('canvasSize', canvasSize)
 		bodyChildren = []
 
-		spyOn(scaleElement, 'main')
+		spyOn(scaleElement, 'default')
 
 		// tslint:disable-next-line:no-unsafe-any
 		documentWrapper.body = buildMockBody({ children: bodyChildren })
@@ -26,7 +26,7 @@ describe('scale canvas container', () => {
 		const canvasContainer: PageElement = buildMockElement({ classList: canvasContainerClassList })
 		spyOn(documentWrapper, 'createElement').and.callFake(() => canvasContainer)
 
-		returnedCanvasContainer = scaleCanvasContainer.main()
+		returnedCanvasContainer = scaleCanvasContainer.default()
 	})
 
 	it('returns the canvas container it just put on the page', () => {
@@ -35,7 +35,7 @@ describe('scale canvas container', () => {
 	})
 
 	it('sets the canvas container width and height (as style, in px)', () => {
-		expect(scaleElement.main).toHaveBeenCalledWith({
+		expect(scaleElement.default).toHaveBeenCalledWith({
 			dimensions: [ canvasSize, canvasSize ],
 			element: returnedCanvasContainer,
 		})

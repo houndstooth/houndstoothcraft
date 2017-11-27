@@ -2,7 +2,7 @@
 
 import { FunctionsOf, Overwrite, Px } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { main as buildSettingsNamesToPathsMap } from '../../app/store/buildSettingsNamesToPathsMap'
+import buildSettingsNamesToPathsMap from '../../app/store/buildSettingsNamesToPathsMap'
 import * as to from '../../to'
 import { Radian } from '../stripe'
 import { SettingsNamesByTypeBase } from '../types'

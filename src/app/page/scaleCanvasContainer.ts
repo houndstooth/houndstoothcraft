@@ -3,12 +3,12 @@
 import * as to from '../../to'
 import { documentWrapper } from '../../utilities'
 import { getSetting } from '../store'
-import { main as scaleElement } from './scaleElement'
+import scaleElement from './scaleElement'
 import { PageElement, Px } from './types'
 
 const scaleCanvasContainer: () => PageElement =
 	(): PageElement => {
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 
 		const canvasContainer: PageElement = documentWrapper.querySelector('#canvas-container')
 
@@ -17,4 +17,4 @@ const scaleCanvasContainer: () => PageElement =
 		return canvasContainer
 	}
 
-export { scaleCanvasContainer as main }
+export default scaleCanvasContainer

@@ -6,7 +6,7 @@ import { TileOriginAndSize } from './types'
 
 const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize =
 	({ gridAddress }: { gridAddress: Address }): TileOriginAndSize => {
-		const tileSize: Unit = getSetting.main('tileSize')
+		const tileSize: Unit = getSetting.default('tileSize')
 		const [ x, y ]: number[] = from.Address(gridAddress)
 
 		return {
@@ -15,4 +15,4 @@ const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginA
 		}
 	}
 
-export { getStandardTileOriginAndSize as main }
+export default getStandardTileOriginAndSize

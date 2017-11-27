@@ -3,7 +3,7 @@
 import { state } from '../../state'
 import { State } from '../../types'
 import { consoleWrapper } from '../../utilities'
-import { main as executeGrid } from './executeGrid'
+import executeGrid from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
@@ -23,4 +23,4 @@ const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<voi
 		}
 	}
 
-export { executeGridAndMaybeLogging as main }
+export default executeGridAndMaybeLogging

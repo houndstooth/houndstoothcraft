@@ -6,9 +6,9 @@ import { Context } from '../page'
 
 const clipPath: NullarySideEffector =
 	(): void => {
-		const context: Context = getCurrentContext.main()
+		const context: Context = getCurrentContext.default()
 		context.save()
 		context.clip()
 	}
 
-export { clipPath as main }
+export default clipPath

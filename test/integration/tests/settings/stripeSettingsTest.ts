@@ -19,7 +19,7 @@ import {
 const { BLACK, TRANSPARENT } = constants
 
 describe('.stripeSettings', () => {
-	const areaSize: Unit = getSetting.main('tileSize')
+	const areaSize: Unit = getSetting.default('tileSize')
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
@@ -41,7 +41,7 @@ describe('.stripeSettings', () => {
 			it('works in standard mode', async (done: DoneFn) => {
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
 					const tile: StandardTileExpectation = {
@@ -71,7 +71,7 @@ describe('.stripeSettings', () => {
 				}
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])

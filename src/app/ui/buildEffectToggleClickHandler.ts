@@ -10,12 +10,12 @@ import { resetInterface } from '../ui'
 const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEffect: Effect }) => NullarySideEffector =
 	({ checkbox, houndstoothEffect }: { checkbox: InputElement, houndstoothEffect: Effect }): NullarySideEffector =>
 		(): void => {
-			resetInterface.main()
+			resetInterface.default()
 
 			const effectFunction: (houndstoothEffect: Effect) => void = checkbox.checked ? addEffect : removeEffect
 			effectFunction(houndstoothEffect)
 
-			executeSelectedHoundstoothEffects.main()
+			executeSelectedHoundstoothEffects.default()
 
 			dealWithAnimationControls()
 		}
@@ -50,4 +50,4 @@ const dealWithAnimationControls: NullarySideEffector =
 		}
 	}
 
-export { buildEffectToggleClickHandler as main }
+export default buildEffectToggleClickHandler

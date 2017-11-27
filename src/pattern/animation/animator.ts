@@ -1,6 +1,6 @@
 import { state } from '../../state'
 import { NullarySideEffector, windowWrapper } from '../../utilities'
-import { main as buildIntervalFunction } from './buildIntervalFunction'
+import buildIntervalFunction from './buildIntervalFunction'
 import { AnimatorParams } from './types'
 
 const animator: (_: AnimatorParams) => void =
@@ -14,5 +14,4 @@ const animator: (_: AnimatorParams) => void =
 		state.interval = windowWrapper.setInterval(intervalFunction, frameRate)
 	}
 
-// tslint:disable-next-line:no-default-export
 export default animator

@@ -12,13 +12,13 @@ import {
 import { buildMockElement } from '../../../helpers'
 
 describe('grid complete', () => {
-	const fakeGridProgressIntervalFunction: NullarySideEffector = noop.main
+	const fakeGridProgressIntervalFunction: NullarySideEffector = noop.default
 	const fakeGridProgressIntervalItself: {} = {}
 	let resolveGrid: Spy
 	let buildGridProgressIntervalFunctionSpy: Spy
 	beforeEach(() => {
 		resolveGrid = jasmine.createSpy('resolveGrid')
-		buildGridProgressIntervalFunctionSpy = spyOn(buildGridProgressIntervalFunction, 'main')
+		buildGridProgressIntervalFunctionSpy = spyOn(buildGridProgressIntervalFunction, 'default')
 		buildGridProgressIntervalFunctionSpy.and.returnValue(fakeGridProgressIntervalFunction)
 
 		spyOn(windowWrapper, 'setInterval').and.callFake((fn: NullarySideEffector) => {
@@ -29,7 +29,7 @@ describe('grid complete', () => {
 	})
 
 	it('schedules a watcher of the rendering progress', () => {
-		gridComplete.main(resolveGrid)
+		gridComplete.default(resolveGrid)
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.setInterval).toHaveBeenCalledWith(fakeGridProgressIntervalFunction, 30)
@@ -38,7 +38,7 @@ describe('grid complete', () => {
 	it('saves the watcher onto the store so it can be cancelled from elsewhere if necessary', () => {
 		state.gridProgressInterval = undefined
 
-		gridComplete.main(resolveGrid)
+		gridComplete.default(resolveGrid)
 
 		// tslint:disable-next-line:no-any
 		expect(state.gridProgressInterval).toBe(fakeGridProgressIntervalItself as any)
@@ -48,13 +48,13 @@ describe('grid complete', () => {
 		const progressBar: PageElement = buildMockElement()
 		spyOn(documentWrapper, 'querySelector').and.returnValue(progressBar)
 
-		gridComplete.main(resolveGrid)
+		gridComplete.default(resolveGrid)
 
 		expect(buildGridProgressIntervalFunctionSpy).toHaveBeenCalledWith({ progressBar })
 	})
 
 	it('saves the grid resolution function onto the store so others can resolve it', () => {
-		gridComplete.main(resolveGrid)
+		gridComplete.default(resolveGrid)
 
 		expect(state.resolveGrid).toBe(resolveGrid)
 	})

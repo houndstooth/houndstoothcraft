@@ -18,24 +18,24 @@ describe('reset interface', () => {
 	})
 
 	it('clears warnings', () => {
-		resetInterface.main()
+		resetInterface.default()
 
 		expect(warningsContainer.innerHTML).toBe('')
 	})
 
 	it('clears canvas', () => {
-		spyOn(clear, 'main')
+		spyOn(clear, 'default')
 
-		resetInterface.main()
+		resetInterface.default()
 
-		expect(clear.main).toHaveBeenCalled()
+		expect(clear.default).toHaveBeenCalled()
 	})
 
 	it('clears any active animation', () => {
 		const interval: NullarySideEffector = (): void => undefined
 		state.interval = interval
 
-		resetInterface.main()
+		resetInterface.default()
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
@@ -46,7 +46,7 @@ describe('reset interface', () => {
 
 		state.gridProgressInterval = gridProgressInterval
 
-		resetInterface.main()
+		resetInterface.default()
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
@@ -61,7 +61,7 @@ describe('reset interface', () => {
 		}
 		state.selectedHoundstoothEffects.push(fakeHoundstoothEffect)
 
-		resetInterface.main()
+		resetInterface.default()
 
 		expect(state.selectedHoundstoothEffects[ 0 ]).toEqual(fakeHoundstoothEffect)
 	})

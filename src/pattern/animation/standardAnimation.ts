@@ -5,4 +5,4 @@ import { state } from '../../state'
 const standardAnimation: (p: number) => number =
 	(p: number): number => p * Math.pow(constants.ANIMATION_RATE, from.Frame(state.currentFrame))
 
-export { standardAnimation as main }
+export default standardAnimation

@@ -10,13 +10,13 @@ describe('build fill', () => {
 	beforeEach(() => {
 		context = buildMockContext()
 		state.contexts = [ context ]
-		spyOn(parseColor, 'main').and.returnValue(parsedColor)
+		spyOn(parseColor, 'default').and.returnValue(parsedColor)
 
-		buildFill.main({ shapeColor })
+		buildFill.default({ shapeColor })
 	})
 
 	it('parses the shape color and sets the fill style to it', () => {
-		expect(parseColor.main).toHaveBeenCalledWith(shapeColor)
+		expect(parseColor.default).toHaveBeenCalledWith(shapeColor)
 	})
 
 	it('sets the fill style to the parsed color', () => {
@@ -29,7 +29,7 @@ describe('build fill', () => {
 
 	describe('when erasing', () => {
 		it('sets the operation to destination-out', () => {
-			buildFill.main({ shapeColor: ERASE })
+			buildFill.default({ shapeColor: ERASE })
 
 			expect(context.globalCompositeOperation).toEqual('destination-out')
 		})

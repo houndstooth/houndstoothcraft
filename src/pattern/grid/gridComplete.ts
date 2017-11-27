@@ -2,7 +2,7 @@
 
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
-import { main as buildGridProgressIntervalFunction } from './buildGridProgressIntervalFunction'
+import buildGridProgressIntervalFunction from './buildGridProgressIntervalFunction'
 
 const PROGRESS_UPDATE_RATE: number = 30
 
@@ -17,4 +17,4 @@ const gridComplete: (resolveGrid: NullarySideEffector) => void =
 		)
 	}
 
-export { gridComplete as main }
+export default gridComplete

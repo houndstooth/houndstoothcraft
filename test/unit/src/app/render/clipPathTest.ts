@@ -6,7 +6,7 @@ describe('clip path', () => {
 		const contextCallsOrder: MockContextCall[] = []
 		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		clipPath.main()
+		clipPath.default()
 
 		const expectedContextCallsOrder: MockContextCall[] = [
 			{ method: 'save' },

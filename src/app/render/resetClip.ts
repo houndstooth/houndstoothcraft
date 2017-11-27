@@ -6,8 +6,8 @@ import { Context } from '../page'
 
 const resetClip: NullarySideEffector =
 	(): void => {
-		const context: Context = getCurrentContext.main()
+		const context: Context = getCurrentContext.default()
 		context.restore()
 	}
 
-export { resetClip as main }
+export default resetClip

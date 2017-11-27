@@ -5,14 +5,14 @@ describe('apply tilt', () => {
 	const canvasSize: Px = to.Px(200)
 
 	it('rotates the path about the canvas center', () => {
-		setSetting.main('viewSettings', { canvasSize, rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2) })
+		setSetting.default('viewSettings', { canvasSize, rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2) })
 		const path: Path = to.Path([
 			[ 0, 0 ],
 			[ 40, 0 ],
 			[ 0, 40 ],
 		])
 
-		const actualPath: Path = applyTilt.main(path)
+		const actualPath: Path = applyTilt.default(path)
 
 		const expectedPath: Path = to.Path([
 			[ 200, 0 ],
@@ -29,7 +29,7 @@ describe('apply tilt', () => {
 			[ 40, 40 ],
 		])
 
-		const actualPath: Path = applyTilt.main(path)
+		const actualPath: Path = applyTilt.default(path)
 
 		expect(actualPath).toEqual(path)
 		expect(actualPath).toBe(path)

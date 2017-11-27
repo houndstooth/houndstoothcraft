@@ -16,4 +16,4 @@ const getPatternSettingOrCreatePath: (_: { pattern: any, settingsPath: SettingsP
 		return childSettings
 	}
 
-export { getPatternSettingOrCreatePath as main }
+export default getPatternSettingOrCreatePath

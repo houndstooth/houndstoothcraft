@@ -10,7 +10,7 @@ import {
 
 const getBySupertile: GetShapeColorIndicesWithOffset =
 	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
-		const supertile: Supertile = getSetting.main('supertile')
+		const supertile: Supertile = getSetting.default('supertile')
 		const [ x, y ]: number[] = from.Address(gridAddress)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)
 
@@ -22,4 +22,4 @@ const getBySupertile: GetShapeColorIndicesWithOffset =
 		return codeUtilities.wrappedIndex({ array: supertileColumn, index: y + yOffset })
 	}
 
-export { getBySupertile as main }
+export default getBySupertile

@@ -8,22 +8,22 @@ describe('apply opacity', () => {
 	it('has no effect if no opacity level is specified', () => {
 		expect(state.contexts[ 0 ].globalAlpha).toBe(1)
 
-		applyOpacity.main()
+		applyOpacity.default()
 
 		expect(state.contexts[ 0 ].globalAlpha).toBe(1)
 	})
 
 	it('has no effect if no opacity level is 1', () => {
-		setSetting.main('colorSettings', { opacity: 1 })
+		setSetting.default('colorSettings', { opacity: 1 })
 
-		applyOpacity.main()
+		applyOpacity.default()
 
 		expect(state.contexts[ 0 ].globalAlpha).toBe(1)
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
-		setSetting.main('colorSettings', { opacity: 0.4 })
-		applyOpacity.main()
+		setSetting.default('colorSettings', { opacity: 0.4 })
+		applyOpacity.default()
 
 		expect(state.contexts[ 0 ].globalAlpha).toBe(0.4)
 	})

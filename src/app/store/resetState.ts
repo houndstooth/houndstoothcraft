@@ -12,4 +12,4 @@ const resetState: (_: State) => void =
 		state.patternRef = previousPatternRef + 1
 	}
 
-export { resetState as main }
+export default resetState

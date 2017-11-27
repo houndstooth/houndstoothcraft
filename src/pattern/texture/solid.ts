@@ -4,12 +4,12 @@ import { SolidParams } from './types'
 
 const solid: (_: SolidParams) => void =
 	({ outline, shapeColorIndex }: SolidParams): void => {
-		const shapeColor: Color = getColor.main({ index: shapeColorIndex })
+		const shapeColor: Color = getColor.default({ index: shapeColorIndex })
 		if (shapeColor.a === 0) {
 			return
 		}
 
-		fill.main({ outline, shapeColor })
+		fill.default({ outline, shapeColor })
 	}
 
-export { solid as main }
+export default solid

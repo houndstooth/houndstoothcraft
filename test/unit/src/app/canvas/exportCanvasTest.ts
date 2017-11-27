@@ -7,8 +7,8 @@ describe('export canvas', () => {
 		const toBlobSpy: Spy = jasmine.createSpy('toBlob')
 		state.mixedDownContext = buildMockContext({ toBlobSpy })
 
-		exportCanvas.main()
+		exportCanvas.default()
 
-		expect(toBlobSpy).toHaveBeenCalledWith(saveCanvas.main)
+		expect(toBlobSpy).toHaveBeenCalledWith(saveCanvas.default)
 	})
 })

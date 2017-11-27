@@ -5,4 +5,4 @@ const buildStopConditionFunction: (_: { endFrame: Frame }) => ConditionFunction 
 	({ endFrame }: { endFrame: Frame }): ConditionFunction =>
 		(): boolean => state.currentFrame > endFrame
 
-export { buildStopConditionFunction as main }
+export default buildStopConditionFunction

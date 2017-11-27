@@ -13,7 +13,7 @@ describe('rewind click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
 	let rewindButton: HTMLButtonElement
 	beforeEach(() => {
-		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'main')
+		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		const { rewindButton: tmpRewindButton } = mockQuerySelector()
@@ -25,7 +25,7 @@ describe('rewind click handler', () => {
 	})
 
 	it('clears the interval', () => {
-		rewindClickHandler.main()
+		rewindClickHandler.default()
 
 		// tslint:disable-next-line:no-unsafe-any
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
@@ -34,13 +34,13 @@ describe('rewind click handler', () => {
 	it('resets the current frame', () => {
 		state.currentFrame = to.Frame(5)
 
-		rewindClickHandler.main()
+		rewindClickHandler.default()
 
 		expect(state.currentFrame).toBe(to.Frame(0))
 	})
 
 	it('executes the selected houndstooth effects', () => {
-		rewindClickHandler.main()
+		rewindClickHandler.default()
 
 		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
@@ -50,7 +50,7 @@ describe('rewind click handler', () => {
 			rewindButton.disabled = false
 			state.animating = true
 
-			rewindClickHandler.main()
+			rewindClickHandler.default()
 
 			expect(rewindButton.disabled).toBe(false)
 		})
@@ -59,7 +59,7 @@ describe('rewind click handler', () => {
 			rewindButton.disabled = false
 			state.animating = false
 
-			rewindClickHandler.main()
+			rewindClickHandler.default()
 
 			expect(rewindButton.disabled).toBe(true)
 		})

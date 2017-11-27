@@ -5,7 +5,7 @@ import { settingsNamesToPathsMap, SettingsNamesToTypesMap } from '../../pattern'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
-import { main as getPatternSettingOrCreatePath } from './getPatternSettingOrCreatePath'
+import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import { SettingsPath } from './types'
 
 const getSetting: SettingsNamesToTypesMap =
@@ -31,4 +31,4 @@ const getSetting: SettingsNamesToTypesMap =
 		})
 	}
 
-export { getSetting as main }
+export default getSetting

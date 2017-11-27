@@ -2,7 +2,7 @@
 
 import { Effect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
-import { main as createCheckbox } from './createCheckbox'
+import createCheckbox from './createCheckbox'
 import { InputElement, LabelElement } from './types'
 
 const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
@@ -18,4 +18,4 @@ const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
 		return label
 	}
 
-export { createLabel as main }
+export default createLabel

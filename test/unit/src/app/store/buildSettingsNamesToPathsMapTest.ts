@@ -1,6 +1,6 @@
 import { SettingsPath, to } from '../../../../../src'
 // tslint:disable-next-line:no-reaching-imports
-import { main as buildSettingsNamesToPathsMap } from '../../../../../src/app/store/buildSettingsNamesToPathsMap'
+import buildSettingsNamesToPathsMap from '../../../../../src/app/store/buildSettingsNamesToPathsMap'
 import { ExampleSettings, ExampleSettingsStructure } from '../../../helpers'
 
 describe('build settings names to paths map', () => {

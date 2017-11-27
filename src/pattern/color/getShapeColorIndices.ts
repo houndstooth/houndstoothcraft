@@ -2,10 +2,10 @@ import { getSetting } from '../../app'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
 import { Address, GridAddressParam } from '../grid'
-import { main as applySwitcheroo } from './applySwitcheroo'
+import applySwitcheroo from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
-import { main as getBySupertile } from './getBySupertile'
-import { main as getByWeave } from './getByWeave'
+import getBySupertile from './getBySupertile'
+import getByWeave from './getByWeave'
 import {
 	AssignmentMode,
 	GetShapeColorIndices,
@@ -28,7 +28,7 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 			flipGrain,
 			switcheroo,
 			transformShapeColorIndices,
-		}: ColorAssignmentSettings = getSetting.main('colorAssignmentSettings')
+		}: ColorAssignmentSettings = getSetting.default('colorAssignmentSettings')
 
 		let maybeAdjustedShapeColorIndices: ShapeColorIndex[] = shapeColorIndices
 		if (flipGrain) {
@@ -55,7 +55,7 @@ const getIndices: GetShapeColorIndices =
 		const {
 			offsetAddress,
 			assignmentMode,
-		}: ColorAssignmentSettings = getSetting.main('colorAssignmentSettings')
+		}: ColorAssignmentSettings = getSetting.default('colorAssignmentSettings')
 
 		// tslint:disable-next-line:max-line-length
 		const getter: GetShapeColorIndicesWithOffset = assignmentMode === AssignmentMode.Weave ? getByWeave : getBySupertile
@@ -65,4 +65,4 @@ const getIndices: GetShapeColorIndices =
 		return getter({ gridAddress, addressOffset })
 	}
 
-export { getShapeColorIndices as main }
+export default getShapeColorIndices

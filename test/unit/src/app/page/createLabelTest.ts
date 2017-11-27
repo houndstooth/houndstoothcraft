@@ -22,9 +22,9 @@ describe('create label', () => {
 
 		spyOn(documentWrapper, 'createTextNode').and.returnValue(name)
 
-		spyOn(createCheckbox, 'main').and.returnValue(checkbox)
+		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 
-		returnedLabel = createLabel.main({ houndstoothEffect })
+		returnedLabel = createLabel.default({ houndstoothEffect })
 	})
 
 	it('returns the created label', () => {
@@ -40,7 +40,7 @@ describe('create label', () => {
 	})
 
 	it('makes the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.main).toHaveBeenCalledWith({ houndstoothEffect })
+		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect })
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {

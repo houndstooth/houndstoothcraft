@@ -13,6 +13,7 @@
     "type-literal-delimiter": false,
     "prefer-method-signature": false,
     "no-inferrable-types": false,
+    "no-default-export": false,
     "quotemark": [
       true,
       "single"

@@ -9,20 +9,20 @@ describe('execute grid', () => {
 		// So, we need to turn it off for this test to truly test the subject.
 		state.syncMode = false
 
-		spyOn(gridComplete, 'main')
+		spyOn(gridComplete, 'default')
 
-		spyOn(grid, 'main')
-		setSetting.main('gridSettings', { tileResolution })
+		spyOn(grid, 'default')
+		setSetting.default('gridSettings', { tileResolution })
 	})
 
 	describe('when animating', () => {
 		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
 			state.animating = true
 
-			executeGrid.main({ thisPatternRef }).then().catch()
+			executeGrid.default({ thisPatternRef }).then().catch()
 
-			expect(grid.main).toHaveBeenCalledWith({ gridTile: maybeTile.main, thisPatternRef })
-			expect(grid.main).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile.main, thisPatternRef })
+			expect(grid.default).toHaveBeenCalledWith({ gridTile: maybeTile.default, thisPatternRef })
+			expect(grid.default).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, thisPatternRef })
 
 			done()
 		})
@@ -36,7 +36,7 @@ describe('execute grid', () => {
 		it('resets the count of tiles completed', async (done: DoneFn) => {
 			state.tilesCompleted = 256
 
-			executeGrid.main({ thisPatternRef }).then().catch()
+			executeGrid.default({ thisPatternRef }).then().catch()
 
 			expect(state.tilesCompleted).toBe(0)
 
@@ -44,18 +44,18 @@ describe('execute grid', () => {
 		})
 
 		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
-			executeGrid.main({ thisPatternRef }).then().catch()
+			executeGrid.default({ thisPatternRef }).then().catch()
 
-			expect(grid.main).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.main, thisPatternRef })
-			expect(grid.main).not.toHaveBeenCalledWith({ gridTile: maybeTile.main, thisPatternRef })
+			expect(grid.default).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, thisPatternRef })
+			expect(grid.default).not.toHaveBeenCalledWith({ gridTile: maybeTile.default, thisPatternRef })
 
 			done()
 		})
 
 		it('waits for the grid tobe complete', async (done: DoneFn) => {
-			executeGrid.main({ thisPatternRef }).then().catch()
+			executeGrid.default({ thisPatternRef }).then().catch()
 
-			expect(gridComplete.main).toHaveBeenCalled()
+			expect(gridComplete.default).toHaveBeenCalled()
 
 			done()
 		})

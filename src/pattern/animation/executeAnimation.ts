@@ -3,8 +3,8 @@ import { state } from '../../state'
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
 import { AnimationSettings } from './animationSettings'
 import * as animator from './animator'
-import { main as buildAnimationFunction } from './buildAnimationFunction'
-import { main as buildStopConditionFunction } from './buildStopConditionFunction'
+import buildAnimationFunction from './buildAnimationFunction'
+import buildStopConditionFunction from './buildStopConditionFunction'
 import { ConditionFunction, ExecuteAnimationParams } from './types'
 
 const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation: NullarySideEffector) => void> =
@@ -14,7 +14,7 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation
 			frameRate,
 			endFrame,
 			startFrame,
-		}: AnimationSettings = getSetting.main('animationSettings')
+		}: AnimationSettings = getSetting.default('animationSettings')
 
 		state.lastSavedFrame = startFrame
 
@@ -37,4 +37,4 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation
 		return new Promise<(resolveAnimation: NullarySideEffector) => void>(animationExecutor)
 	}
 
-export { executeAnimation as main }
+export default executeAnimation

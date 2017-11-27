@@ -17,16 +17,16 @@ describe('execute pattern', () => {
 	const endLayer: Layer = to.Layer(4)
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
-		setSetting.main('startLayer', startLayer)
-		setSetting.main('endLayer', endLayer)
+		setSetting.default('startLayer', startLayer)
+		setSetting.default('endLayer', endLayer)
 		state.patternRef = 99
 	})
 
 	// tslint:disable-next-line:max-line-length
 	it('executes a layer for each layer from zero (not the start layer; that\'s just what gets shown, but the processing leading up to it still needs to happen) to the end layer, inclusive', async (done: DoneFn) => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'main')
+		const executeLayerSpy: Spy = spyOn(executeLayer, 'default')
 
-		await executePattern.main({ layerFunctionObjects })
+		await executePattern.default({ layerFunctionObjects })
 
 		expect(executeLayerSpy.calls.all().length).toBe(5)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
@@ -64,13 +64,13 @@ describe('execute pattern', () => {
 	})
 
 	it('stops executing layers if the pattern ref has changed on the state (cancelled)', async (done: DoneFn) => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'main').and.callFake(({ layer }: { layer: Layer }) => {
+		const executeLayerSpy: Spy = spyOn(executeLayer, 'default').and.callFake(({ layer }: { layer: Layer }) => {
 			if (from.Layer(layer) === 2) {
 				state.patternRef = state.patternRef + 1
 			}
 		})
 
-		await executePattern.main({ layerFunctionObjects })
+		await executePattern.default({ layerFunctionObjects })
 
 		expect(executeLayerSpy.calls.all().length).toBe(3)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
@@ -108,9 +108,9 @@ describe('execute pattern', () => {
 	})
 
 	it('resets the current layer to zero', async (done: DoneFn) => {
-		spyOn(executeGridAndMaybeLogging, 'main')
+		spyOn(executeGridAndMaybeLogging, 'default')
 
-		await executePattern.main({ layerFunctionObjects })
+		await executePattern.default({ layerFunctionObjects })
 
 		expect(state.currentLayer).toBe(to.Layer(0))
 
@@ -120,8 +120,8 @@ describe('execute pattern', () => {
 	describe('mixing down', () => {
 		let mixDownContextsSpy: Spy
 		beforeEach(() => {
-			spyOn(executeLayer, 'main')
-			mixDownContextsSpy = spyOn(mixDownContexts, 'main')
+			spyOn(executeLayer, 'default')
+			mixDownContextsSpy = spyOn(mixDownContexts, 'default')
 		})
 
 		afterEach(() => {
@@ -131,17 +131,17 @@ describe('execute pattern', () => {
 		it('can mix down all contexts to one', async (done: DoneFn) => {
 			state.mixingDown = true
 
-			await executePattern.main({ layerFunctionObjects })
+			await executePattern.default({ layerFunctionObjects })
 
-			expect(mixDownContexts.main).toHaveBeenCalled()
+			expect(mixDownContexts.default).toHaveBeenCalled()
 
 			done()
 		})
 
 		it('does not bother if not asked', async (done: DoneFn) => {
-			await executePattern.main({ layerFunctionObjects })
+			await executePattern.default({ layerFunctionObjects })
 
-			expect(mixDownContexts.main).not.toHaveBeenCalled()
+			expect(mixDownContexts.default).not.toHaveBeenCalled()
 
 			done()
 		})

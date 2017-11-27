@@ -6,16 +6,16 @@ import { pauseClickHandler, playClickHandler, rewindClickHandler, snapshotClickH
 const attachControlHandlers: NullarySideEffector =
 	(): void => {
 		const playButton: HTMLButtonElement = documentWrapper.querySelector('#play-button') as HTMLButtonElement
-		playButton.onclick = playClickHandler.main
+		playButton.onclick = playClickHandler.default
 
 		const pauseButton: HTMLButtonElement = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
-		pauseButton.onclick = pauseClickHandler.main
+		pauseButton.onclick = pauseClickHandler.default
 
 		const rewindButton: HTMLButtonElement = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
-		rewindButton.onclick = rewindClickHandler.main
+		rewindButton.onclick = rewindClickHandler.default
 
 		const snapshotButton: HTMLButtonElement = documentWrapper.querySelector('#snapshot-button') as HTMLButtonElement
-		snapshotButton.onclick = snapshotClickHandler.main
+		snapshotButton.onclick = snapshotClickHandler.default
 	}
 
-export { attachControlHandlers as main }
+export default attachControlHandlers

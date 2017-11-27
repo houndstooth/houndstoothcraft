@@ -12,7 +12,7 @@ describe('build progress interval function returns a function which', () => {
 	let gridProgressIntervalFunction: NullarySideEffector
 	beforeEach(() => {
 		progressBar = buildMockElement()
-		gridProgressIntervalFunction = buildGridProgressIntervalFunction.main({ progressBar })
+		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar })
 		spyOn(state, 'resolveGrid')
 		state.tileCount = 99
 		state.gridProgressInterval = jasmine.createSpy('gridProgressInterval')
@@ -78,7 +78,7 @@ describe('build progress interval function returns a function which', () => {
 
 	it('does not fail when there is no progress bar', () => {
 		state.tilesCompleted = 99
-		gridProgressIntervalFunction = buildGridProgressIntervalFunction.main({ progressBar: undefined })
+		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar: undefined })
 
 		gridProgressIntervalFunction()
 	})

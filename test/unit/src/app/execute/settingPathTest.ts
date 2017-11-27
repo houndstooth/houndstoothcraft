@@ -5,6 +5,6 @@ describe('setting path', () => {
 		const settingsPath: SettingsPath = to.SettingsPath([ 'a', 'b', 'c' ])
 		const settingName: SettingsStep = to.SettingsStep('d')
 
-		expect(settingPath.main({ settingsPath, settingName })).toBe('a.b.c.d')
+		expect(settingPath.default({ settingsPath, settingName })).toBe('a.b.c.d')
 	})
 })

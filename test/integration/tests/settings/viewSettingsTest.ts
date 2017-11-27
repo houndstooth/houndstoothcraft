@@ -23,7 +23,7 @@ describe('.viewSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				expect(pixelIsColor(to.Coordinate([ 0, 0 ]), BLACK)).toBe(true)
@@ -48,12 +48,12 @@ describe('.viewSettings', () => {
 					viewSettings: { zoom },
 				},
 			}
-			const tileSize: Unit = getSetting.main('tileSize')
+			const tileSize: Unit = getSetting.default('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -100,12 +100,12 @@ describe('.viewSettings', () => {
 					},
 				},
 			}
-			const tileSize: Unit = getSetting.main('tileSize')
+			const tileSize: Unit = getSetting.default('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -151,7 +151,7 @@ describe('.viewSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -187,7 +187,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
-			const areaSize: Unit = getSetting.main('tileSize')
+			const areaSize: Unit = getSetting.default('tileSize')
 
 			const houndstoothOverrides: Effect = {
 				basePattern: {
@@ -206,7 +206,7 @@ describe('.viewSettings', () => {
 
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let areaOrigin: Coordinate = to.Coordinate([ 200, 0 ])

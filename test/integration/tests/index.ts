@@ -1,6 +1,6 @@
 import { resetState, state } from '../../../src'
 
 beforeEach(() => {
-	resetState.main(state)
+	resetState.default(state)
 	state.syncMode = true
 })

@@ -31,7 +31,7 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 		}
 
 		expectedSettingsFunctionsSourcePattern = codeUtilities.deepClone(settingsFunctionsSourcePattern)
-		actualFunctionObjects = prepareFunctionObjectsPerSetting.main({ settingsFunctionsSourcePattern })
+		actualFunctionObjects = prepareFunctionObjectsPerSetting.default({ settingsFunctionsSourcePattern })
 	})
 
 	it('gathers the functions to be applied', () => {

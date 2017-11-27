@@ -32,7 +32,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		prepareCanvasForDisplayInTest(testMarkersCanvas)
 		testMarkersCanvas.style.zIndex = '9001'
 
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 		testMarkersCanvas.width = canvasSize
 		testMarkersCanvas.height = canvasSize
 
@@ -40,13 +40,13 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		const testCanvasDisplayArea: PageElement = document.querySelector('.test-canvas-display-area') as HTMLElement || {}
 		if (testCanvasDisplayArea.style) {
 			testCanvasDisplayArea.style.display = 'block'
-			scaleElement.main({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
+			scaleElement.default({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 		}
 
 		const canvasContainer: PageElement = document.createElement('div')
 		canvasContainer.setAttribute('id', 'canvas-container')
 		testCanvasDisplayArea.appendChild(canvasContainer)
-		scaleCanvasContainer.main()
+		scaleCanvasContainer.default()
 
 		prepareCanvasForDisplayInTest(canvasContainer)
 

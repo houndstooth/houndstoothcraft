@@ -6,7 +6,7 @@ describe('reset clip', () => {
 		const contextCallsOrder: MockContextCall[] = []
 		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
-		resetClip.main()
+		resetClip.default()
 
 		const expectedContextCallsOrder: MockContextCall[] = [ { method: 'restore' } ]
 		expect(contextCallsOrder).toEqual(expectedContextCallsOrder)

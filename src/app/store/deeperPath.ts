@@ -10,4 +10,4 @@ const deeperPath: (_: FullSettingsPath) => SettingsPath =
 		return to.SettingsPath(path)
 	}
 
-export { deeperPath as main }
+export default deeperPath

@@ -4,11 +4,11 @@ import { Context } from '../page'
 
 const buildFill: (_: { shapeColor: Color }) => void =
 	({ shapeColor }: { shapeColor: Color}): void => {
-		const context: Context = getCurrentContext.main()
+		const context: Context = getCurrentContext.default()
 
 		context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
 
-		context.fillStyle = parseColor.main(shapeColor)
+		context.fillStyle = parseColor.default(shapeColor)
 	}
 
-export { buildFill as main }
+export default buildFill

@@ -11,4 +11,4 @@ const firstPoint: (_: PointsParamsPlusStripeStart) => void =
 		}
 	}
 
-export { firstPoint as main }
+export default firstPoint

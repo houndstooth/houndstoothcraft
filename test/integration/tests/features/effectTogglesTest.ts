@@ -16,17 +16,17 @@ describe('effect toggles', () => {
 		warningsContainer.style.display = 'none'
 		document.body.appendChild(warningsContainer)
 
-		createEffectToggles.main(Object.values(effects))
+		createEffectToggles.default(Object.values(effects))
 		const effectToggle: PageElement = document.querySelector('input.gongram') as HTMLElement || buildMockElement()
 
-		expect(getSetting.main('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+		expect(getSetting.default('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
-		expect(getSetting.main('colorSet')).toEqual(GONGRAM_COLOR_SET)
+		expect(getSetting.default('colorSet')).toEqual(GONGRAM_COLOR_SET)
 
 		// tslint:disable-next-line:no-unsafe-any
 		effectToggle.click()
-		expect(getSetting.main('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+		expect(getSetting.default('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 	})
 })

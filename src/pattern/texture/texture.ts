@@ -3,11 +3,11 @@ import { TextureParams } from './types'
 
 const texture: (_: TextureParams) => void =
 	({ outline, tileSize, executeTexture, shapeColorIndex }: TextureParams): void => {
-		setClip.main({ outline })
+		setClip.default({ outline })
 
 		executeTexture({ shapeColorIndex, tileSize })
 
-		resetClip.main()
+		resetClip.default()
 	}
 
-export { texture as main }
+export default texture

@@ -1,5 +1,5 @@
 import { codeUtilities } from '../../utilities'
-import { main as getColor } from './getColor'
+import getColor from './getColor'
 import { Color, ShapeColorIndex } from './types'
 
 const isTileUniform: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
@@ -15,4 +15,4 @@ const isTileUniform: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
 		return true
 	}
 
-export { isTileUniform as main }
+export default isTileUniform

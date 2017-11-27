@@ -2,7 +2,7 @@
 
 import { FunctionsOf, Overwrite } from '../../app'
 // tslint:disable-next-line:no-reaching-imports
-import { main as buildSettingsNamesToPathsMap } from '../../app/store/buildSettingsNamesToPathsMap'
+import buildSettingsNamesToPathsMap from '../../app/store/buildSettingsNamesToPathsMap'
 import * as to from '../../to'
 import { SettingsNamesByTypeBase } from '../types'
 import { Frame } from './types'

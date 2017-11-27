@@ -6,7 +6,7 @@ import { Canvas, Context, PageElement, Px } from './types'
 
 const createContext: (_: { canvasContainer: PageElement }) => Context =
 	({ canvasContainer }: { canvasContainer: PageElement }): Context => {
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 		const canvas: Canvas = documentWrapper.createElement('canvas')
 		canvas.width = canvasSize
 		canvas.height = canvasSize
@@ -17,5 +17,4 @@ const createContext: (_: { canvasContainer: PageElement }) => Context =
 		return canvas.getContext('2d')
 	}
 
-// tslint:disable-next-line:no-default-export
 export default createContext

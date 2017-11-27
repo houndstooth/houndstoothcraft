@@ -2,21 +2,21 @@ import { applyBackgroundColor, applyOpacity, applyViewForGrid } from '../../../.
 
 describe('apply view for grid', () => {
 	it('applies background color', async (done: DoneFn) => {
-		spyOn(applyBackgroundColor, 'main')
+		spyOn(applyBackgroundColor, 'default')
 
-		applyViewForGrid.main()
+		applyViewForGrid.default()
 
-		expect(applyBackgroundColor.main).toHaveBeenCalled()
+		expect(applyBackgroundColor.default).toHaveBeenCalled()
 
 		done()
 	})
 
 	it('applies opacity', async (done: DoneFn) => {
-		spyOn(applyOpacity, 'main')
+		spyOn(applyOpacity, 'default')
 
-		applyViewForGrid.main()
+		applyViewForGrid.default()
 
-		expect(applyOpacity.main).toHaveBeenCalled()
+		expect(applyOpacity.default).toHaveBeenCalled()
 
 		done()
 	})

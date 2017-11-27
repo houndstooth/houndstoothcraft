@@ -3,7 +3,7 @@
 import { SettingsNamesByTypeBase } from '../../pattern'
 import * as to from '../../to'
 import { FunctionsOf } from '../execute'
-import { main as buildSettingsNamesToPathsMap } from './buildSettingsNamesToPathsMap'
+import buildSettingsNamesToPathsMap from './buildSettingsNamesToPathsMap'
 import { Overwrite } from './types'
 
 interface TemplateSettings {

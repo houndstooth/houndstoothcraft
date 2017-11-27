@@ -9,7 +9,7 @@ describe('delete element if exists', () => {
 			const element: PageElement = buildMockElement({ parentNodeRemoveChildSpy })
 			spyOn(documentWrapper, 'querySelector').and.returnValue(element)
 
-			deleteElementIfExists.main('.element')
+			deleteElementIfExists.default('.element')
 
 			// tslint:disable-next-line:no-unsafe-any
 			expect(documentWrapper.querySelector).toHaveBeenCalledWith('.element')
@@ -22,7 +22,7 @@ describe('delete element if exists', () => {
 			spyOn(documentWrapper, 'querySelector').and.returnValue(undefined)
 
 			// tslint:disable-next-line:no-unsafe-any
-			deleteElementIfExists.main('.element')
+			deleteElementIfExists.default('.element')
 
 			// tslint:disable-next-line:no-unsafe-any
 			expect(documentWrapper.querySelector).toHaveBeenCalledWith('.element')

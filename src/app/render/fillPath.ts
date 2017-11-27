@@ -6,9 +6,9 @@ import { Context } from '../page'
 
 const fillPath: NullarySideEffector =
 	(): void => {
-		const context: Context = getCurrentContext.main()
+		const context: Context = getCurrentContext.default()
 		context.closePath()
 		context.fill()
 	}
 
-export { fillPath as main }
+export default fillPath

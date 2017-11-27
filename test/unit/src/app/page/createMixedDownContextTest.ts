@@ -18,7 +18,7 @@ describe('create mixed down context', () => {
 	const mixedDownCanvasClassList: string[] = []
 	let returnedMixedDownContext: Context
 	beforeAll(() => {
-		spyOn(deleteElementIfExists, 'main')
+		spyOn(deleteElementIfExists, 'default')
 
 		// tslint:disable-next-line:no-unsafe-any
 		documentWrapper.body = buildMockBody({ children: bodyChildren })
@@ -26,13 +26,13 @@ describe('create mixed down context', () => {
 		mixedDownCanvas = buildMockCanvas({ context: mixedDownContext, classList: mixedDownCanvasClassList })
 		spyOn(documentWrapper, 'createElement').and.returnValue(mixedDownCanvas)
 
-		setSetting.main('canvasSize', to.Px(450))
+		setSetting.default('canvasSize', to.Px(450))
 
 		returnedMixedDownContext = createMixedDownContext.default()
 	})
 
 	it('deletes the existing mixed down canvas, if present', () => {
-		expect(deleteElementIfExists.main).toHaveBeenCalledWith('.mixed-down-canvas')
+		expect(deleteElementIfExists.default).toHaveBeenCalledWith('.mixed-down-canvas')
 	})
 
 	it('puts the new mixed down canvas on the document body', () => {

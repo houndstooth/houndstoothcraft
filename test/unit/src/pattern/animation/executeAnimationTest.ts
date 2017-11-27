@@ -25,8 +25,8 @@ describe('execute animation', () => {
 
 	beforeEach(() => {
 		spyOn(animator, 'default')
-		spyOn(buildStopConditionFunction, 'main').and.returnValue(stopConditionFunction)
-		spyOn(buildAnimationFunction, 'main').and.returnValue(animationFunction)
+		spyOn(buildStopConditionFunction, 'default').and.returnValue(stopConditionFunction)
+		spyOn(buildAnimationFunction, 'default').and.returnValue(animationFunction)
 	})
 
 	describe('configured', () => {
@@ -39,11 +39,11 @@ describe('execute animation', () => {
 			endFrame = to.Frame(7)
 			refreshCanvas = false
 
-			setSetting.main('animationSettings', { endFrame, frameRate, refreshCanvas, startFrame })
+			setSetting.default('animationSettings', { endFrame, frameRate, refreshCanvas, startFrame })
 		})
 
 		it('calls the animator', () => {
-			executeAnimation.main({ layerFunctionObjects, animationFunctionObjects }).then().catch()
+			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 			expect(animator.default).toHaveBeenCalledWith(jasmine.objectContaining({
 				animationFunction,
@@ -53,23 +53,23 @@ describe('execute animation', () => {
 		})
 
 		it('initializes the last saved animation frame to the start animation frame', () => {
-			executeAnimation.main({ layerFunctionObjects, animationFunctionObjects }).then().catch()
+			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 			expect(state.lastSavedFrame).toBe(startFrame)
 		})
 
 		it('builds a stop condition function', () => {
-			executeAnimation.main({ layerFunctionObjects, animationFunctionObjects }).then().catch()
+			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
-			expect(buildStopConditionFunction.main).toHaveBeenCalledWith({
+			expect(buildStopConditionFunction.default).toHaveBeenCalledWith({
 				endFrame,
 			})
 		})
 
 		it('builds an animation function', () => {
-			executeAnimation.main({ layerFunctionObjects, animationFunctionObjects }).then().catch()
+			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
-			expect(buildAnimationFunction.main).toHaveBeenCalledWith(
+			expect(buildAnimationFunction.default).toHaveBeenCalledWith(
 				jasmine.objectContaining({
 					animationFunctionObjects,
 					layerFunctionObjects,

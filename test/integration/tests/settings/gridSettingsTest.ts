@@ -12,7 +12,7 @@ import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors
 const { BLACK, TRANSPARENT, WHITE } = constants
 
 describe('.gridSettings', () => {
-	const tileSize: Unit = getSetting.main('tileSize')
+	const tileSize: Unit = getSetting.default('tileSize')
 
 	describe('.tileResolution', () => {
 		it('changes how many tiles there are per dimension', async (done: DoneFn) => {
@@ -31,7 +31,7 @@ describe('.gridSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [
@@ -163,7 +163,7 @@ describe('.gridSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [

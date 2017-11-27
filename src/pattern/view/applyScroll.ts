@@ -7,7 +7,7 @@ import { Unit } from '../grid'
 const applyScroll: (path: Path) => Path =
 	(path: Path): Path => {
 		// tslint:disable-next-line:max-line-length
-		const centerViewOnCenterOfTileAtHomeAddress: boolean = getSetting.main('centerViewOnCenterOfTileAtHomeAddress')
+		const centerViewOnCenterOfTileAtHomeAddress: boolean = getSetting.default('centerViewOnCenterOfTileAtHomeAddress')
 
 		if (!centerViewOnCenterOfTileAtHomeAddress) {
 			return path
@@ -18,10 +18,10 @@ const applyScroll: (path: Path) => Path =
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel =
 	(pixel: Pixel): Pixel => {
-		const canvasSize: Px = getSetting.main('canvasSize')
+		const canvasSize: Px = getSetting.default('canvasSize')
 		const canvasCenter: number = from.Px(canvasSize) * HALF
 
-		const tileSize: Unit = getSetting.main('tileSize')
+		const tileSize: Unit = getSetting.default('tileSize')
 		const halfTileSize: number = from.Unit(tileSize) * HALF
 
 		return to.Pixel([
@@ -30,4 +30,4 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel =
 		])
 	}
 
-export { applyScroll as main }
+export default applyScroll

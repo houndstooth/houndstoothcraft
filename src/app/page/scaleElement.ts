@@ -11,4 +11,4 @@ const scaleElement: (_: { dimensions: Dimensions, element: PageElement }) => voi
 const inPx: (px: number) => string =
 	(px: number): string => `${px}px`
 
-export { scaleElement as main }
+export default scaleElement

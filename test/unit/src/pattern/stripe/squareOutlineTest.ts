@@ -5,7 +5,7 @@ describe('square outline', () => {
 	const tileSize: Unit = to.Unit(5)
 
 	it('makes a square in the correct place of the correct size', () => {
-		expect(squareOutline.main({ tileOrigin, tileSize })).toEqual(to.Outline([
+		expect(squareOutline.default({ tileOrigin, tileSize })).toEqual(to.Outline([
 			[ 2, 3 ],
 			[ 7, 3 ],
 			[ 7, 8 ],

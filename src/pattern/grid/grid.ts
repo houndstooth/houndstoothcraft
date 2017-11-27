@@ -11,9 +11,9 @@ const QUADRANT_COUNT: number = NEGATIVE_AND_POSITIVE * NEGATIVE_AND_POSITIVE
 
 const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }) => void =
 	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }): void => {
-		applyViewForGrid.main()
+		applyViewForGrid.default()
 
-		const { includeNegativeQuadrants, tileResolution }: GridSettings = getSetting.main('gridSettings')
+		const { includeNegativeQuadrants, tileResolution }: GridSettings = getSetting.default('gridSettings')
 
 		let adjustedTileResolution: number = tileResolution
 		let gridOffset: number = 0
@@ -34,4 +34,4 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 		})
 	}
 
-export { grid as main }
+export default grid

@@ -21,20 +21,20 @@ describe('async maybe tile', () => {
 		setTimeoutSpy = spyOn(windowWrapper, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
 			fn()
 		})
-		spyOn(maybeTile, 'main')
+		spyOn(maybeTile, 'default')
 	})
 
 	it('unblocks the thread by scheduling the tile for the next event loop', () => {
-		asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
+		asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
 
 		expect(setTimeoutSpy.calls.all()[ 0 ].args[ 1 ]).toBe(0)
 	})
 
 	describe('when the pattern the tile was born from has not been canceled', () => {
 		it('calls maybe tile with the same arguments', () => {
-			asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
+			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
 
-			expect(maybeTile.main).toHaveBeenCalledWith({ gridAddress, thisPatternRef: 99 })
+			expect(maybeTile.default).toHaveBeenCalledWith({ gridAddress, thisPatternRef: 99 })
 		})
 
 		it('updates the progress bar', () => {
@@ -43,7 +43,7 @@ describe('async maybe tile', () => {
 			state.tileCount = 200000
 			state.tilesCompleted = 180001
 
-			asyncMaybeTile.main({ gridAddress, thisPatternRef: 99 })
+			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
 
 			expect(progressBar.style.width).toBe('91%')
 		})
@@ -51,9 +51,9 @@ describe('async maybe tile', () => {
 
 	describe('when the pattern the tile was born from has been canceled', () => {
 		it('does not call maybe tile', () => {
-			asyncMaybeTile.main({ gridAddress, thisPatternRef: 98 })
+			asyncMaybeTile.default({ gridAddress, thisPatternRef: 98 })
 
-			expect(maybeTile.main).not.toHaveBeenCalled()
+			expect(maybeTile.default).not.toHaveBeenCalled()
 		})
 
 		it('does not update the progress bar', () => {
@@ -63,7 +63,7 @@ describe('async maybe tile', () => {
 			state.tileCount = 200000
 			state.tilesCompleted = 180001
 
-			asyncMaybeTile.main({ gridAddress, thisPatternRef: 98 })
+			asyncMaybeTile.default({ gridAddress, thisPatternRef: 98 })
 
 			expect(progressBar.style.width).toBe('10%')
 		})

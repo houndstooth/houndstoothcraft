@@ -2,19 +2,19 @@ import { exportCanvas, mixDownContexts, snapshotClickHandler } from '../../../..
 
 describe('snapshot click handler', () => {
 	beforeEach(() => {
-		spyOn(mixDownContexts, 'main')
-		spyOn(exportCanvas, 'main')
+		spyOn(mixDownContexts, 'default')
+		spyOn(exportCanvas, 'default')
 
-		snapshotClickHandler.main()
+		snapshotClickHandler.default()
 	})
 
 	it('mixes down the canvases', () => {
-		expect(mixDownContexts.main).toHaveBeenCalled()
+		expect(mixDownContexts.default).toHaveBeenCalled()
 	})
 
 	it('exports the current frame', () => {
-		snapshotClickHandler.main()
+		snapshotClickHandler.default()
 
-		expect(exportCanvas.main).toHaveBeenCalled()
+		expect(exportCanvas.default).toHaveBeenCalled()
 	})
 })

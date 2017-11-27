@@ -2,7 +2,7 @@
 
 import { Effect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
-import { main as createLabel } from './createLabel'
+import createLabel from './createLabel'
 import { LabelElement, PageElement } from './types'
 
 const createEffectToggle: (houndstoothEffect: Effect) => void =
@@ -13,4 +13,4 @@ const createEffectToggle: (houndstoothEffect: Effect) => void =
 		effectTogglesContainer.appendChild(label)
 	}
 
-export { createEffectToggle as main }
+export default createEffectToggle

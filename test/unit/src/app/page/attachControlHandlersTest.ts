@@ -20,11 +20,11 @@ describe('attach control handlers', () => {
 		const rewindButton: HTMLButtonElement = tmpRewindButton as HTMLButtonElement
 		const snapshotButton: HTMLButtonElement = tmpSnapshotButton as HTMLButtonElement
 
-		attachControlHandlers.main()
+		attachControlHandlers.default()
 
-		expect(playButton.onclick).toBe(playClickHandler.main)
-		expect(pauseButton.onclick).toBe(pauseClickHandler.main)
-		expect(rewindButton.onclick).toBe(rewindClickHandler.main)
-		expect(snapshotButton.onclick).toBe(snapshotClickHandler.main)
+		expect(playButton.onclick).toBe(playClickHandler.default)
+		expect(pauseButton.onclick).toBe(pauseClickHandler.default)
+		expect(rewindButton.onclick).toBe(rewindClickHandler.default)
+		expect(snapshotButton.onclick).toBe(snapshotClickHandler.default)
 	})
 })

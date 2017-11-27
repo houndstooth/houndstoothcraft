@@ -5,7 +5,7 @@ describe('deeper path', () => {
 		const originalSettingsPath: SettingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 		const settingName: SettingsStep = to.SettingsStep('colorSet')
 
-		const actualDeeperPath: SettingsPath = deeperPath.main({ settingsPath: originalSettingsPath, settingName })
+		const actualDeeperPath: SettingsPath = deeperPath.default({ settingsPath: originalSettingsPath, settingName })
 
 		expect(actualDeeperPath).toEqual(to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings', 'colorSet' ]))
 		expect(originalSettingsPath).toEqual(to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]))

@@ -20,7 +20,7 @@ import {
 const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 describe('.colorSettings', () => {
-	const tileSize: Unit = getSetting.main('tileSize')
+	const tileSize: Unit = getSetting.default('tileSize')
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', async (done: DoneFn) => {
@@ -40,7 +40,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				expect(pixelIsColorWithMarker({
@@ -82,7 +82,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -175,7 +175,7 @@ describe('.colorSettings', () => {
 
 					activateTestMarkerCanvas()
 
-					executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+					executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -519,7 +519,7 @@ describe('.colorSettings', () => {
 
 					activateTestMarkerCanvas()
 
-					executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+					executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -660,7 +660,7 @@ describe('.colorSettings', () => {
 
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -740,7 +740,7 @@ describe('.colorSettings', () => {
 				}
 				activateTestMarkerCanvas()
 
-				executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -799,7 +799,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const partiallySeeThroughBlack: Color = { r: BLACK.r, g: BLACK.g, b: BLACK.b, a: BLACK.a * opacity }
@@ -842,7 +842,7 @@ describe('.colorSettings', () => {
 			}
 			activateTestMarkerCanvas()
 
-			executeSelectedHoundstoothEffects.main({ houndstoothOverrides })
+			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
 				const yellowPixel: PixelColorExpectation = {

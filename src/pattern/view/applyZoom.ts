@@ -15,7 +15,7 @@ const adjustPixelForZoom: (pixel: Pixel) => Pixel =
 			centerViewOnCenterOfTileAtHomeAddress,
 			zoom,
 			zoomOnCanvasCenter,
-		}: ViewSettings = getSetting.main('viewSettings')
+		}: ViewSettings = getSetting.default('viewSettings')
 		const halfCanvasSize: Px = to.Px(from.Px(canvasSize) * HALF)
 		const shouldAdjustForCentering: boolean = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
@@ -40,4 +40,4 @@ const doAdjustment: (_: DoAdjustmentParams) => Pixel =
 		return pixelAdjustedForZoom
 	}
 
-export { applyZoom as main }
+export default applyZoom

@@ -2,9 +2,8 @@ import { callFunctionsPerSetting, clear, exportCanvas, getSetting } from '../../
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
-import { codeUtilities, NullaryVoidPromise } from '../../utilities'
+import { NullaryVoidPromise } from '../../utilities'
 import executePattern from '../executePattern'
-import { BasePattern } from '../types'
 import { AnimationSettings } from './animationSettings'
 import { AnimateParams, BuildAnimationFunctionParams, ConditionFunction, Frame } from './types'
 
@@ -42,9 +41,7 @@ const animate: (_: AnimateParams) => Promise<void> =
 			clear.default()
 		}
 
-		const preLayerSettings: Partial<BasePattern> = codeUtilities.deepClone(state.mainHoundstooth.basePattern)
 		await executePattern({ layerFunctionObjects })
-		Object.assign(state.mainHoundstooth.basePattern, preLayerSettings)
 
 		if (state.exportFrames) {
 			exportCanvas.default()

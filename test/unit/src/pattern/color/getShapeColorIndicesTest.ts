@@ -17,7 +17,7 @@ import {
 
 const { iterator } = codeUtilities
 
-describe('get tile color indices', () => {
+describe('get shape color indices', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
@@ -53,6 +53,7 @@ describe('get tile color indices', () => {
 						from.AddressElement(gridAddressToOffset[ 1 ]) * 2 / 5,
 					])
 			setSetting.default('offsetAddress', offsetAddress)
+			setSetting.default('assignmentMode', AssignmentMode.Weave)
 			const expectedAddressOffset: Address = to.Address([ 1, 2 ])
 
 			getShapeColorIndices.default({ gridAddress })

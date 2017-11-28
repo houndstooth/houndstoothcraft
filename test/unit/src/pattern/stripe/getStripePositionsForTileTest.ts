@@ -1,6 +1,5 @@
 import {
 	Address,
-	composeMainHoundstooth,
 	getSetting,
 	getStripePositionsForTile,
 	StripePosition,
@@ -10,10 +9,6 @@ import {
 import Spy = jasmine.Spy
 
 describe('get stripe positions for tile', () => {
-	beforeEach(() => {
-		composeMainHoundstooth.default()
-	})
-
 	it('defaults to standard stripes', () => {
 		expect(getStripePositionsForTile.default()).toEqual(to.StripePositions([ 0, 0.5, 1, 1.5 ]))
 	})

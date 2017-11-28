@@ -1,21 +1,20 @@
-import { from, standardAnimation, state, to } from '../../../../../src'
+import { standardAnimation, state, to } from '../../../../../src'
+import { isCloseTo } from '../../../../helpers'
+
+const subject: () => number = standardAnimation.default
 
 describe('standard animation', () => {
 	it('multiplies the property by the standard animation rate each frame', () => {
 		state.currentFrame = to.Frame(0)
-		const propertyAtCurrentFrame: number = 4
-		expect(standardAnimation.default(propertyAtCurrentFrame)).toBe(propertyAtCurrentFrame)
+		expect(isCloseTo(subject(), 1)).toBe(true)
 
-		state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
-		let propertyAtNextFrame: number = propertyAtCurrentFrame * 1.000005
-		expect(standardAnimation.default(propertyAtCurrentFrame)).toBe(propertyAtNextFrame)
+		state.currentFrame = to.Frame(1)
+		expect(isCloseTo(subject(), 1.001)).toBe(true)
 
-		state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
-		propertyAtNextFrame = propertyAtCurrentFrame * 1.000005 * 1.000005
-		expect(standardAnimation.default(propertyAtCurrentFrame)).toBe(propertyAtNextFrame)
+		state.currentFrame = to.Frame(2)
+		expect(isCloseTo(subject(), 1.002001)).toBe(true)
 
-		state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
-		propertyAtNextFrame = propertyAtCurrentFrame * 1.000005 * 1.000005 * 1.000005
-		expect(standardAnimation.default(propertyAtCurrentFrame)).toBe(propertyAtNextFrame)
+		state.currentFrame = to.Frame(3)
+		expect(isCloseTo(subject(), 1.003002001)).toBe(true)
 	})
 })

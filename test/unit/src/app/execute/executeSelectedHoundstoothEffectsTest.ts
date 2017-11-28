@@ -48,6 +48,12 @@ describe('execute selected houndstooth effects', () => {
 		})
 	})
 
+	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
+		executeSelectedHoundstoothEffects.default()
+
+		expect(state.currentPattern).toEqual(state.mainHoundstooth.basePattern)
+	})
+
 	describe('setting up for rendering', () => {
 		it('includes the mixed down canvas when both mixing down and exporting', () => {
 			state.mixingDown = true

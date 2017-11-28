@@ -1,6 +1,6 @@
 import { Effect, executeAnimation, executePattern } from '../../pattern'
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
+import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { createContexts, createMixedDownContext } from '../page'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
@@ -10,6 +10,8 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
 		composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
 
+		prepareCurrentPattern()
+
 		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
 			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
 		})
@@ -17,6 +19,11 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 		prepareCanvas()
 
 		execute({ layerFunctionObjects })
+	}
+
+const prepareCurrentPattern: NullarySideEffector =
+	(): void => {
+		state.currentPattern = codeUtilities.deepClone(state.mainHoundstooth.basePattern)
 	}
 
 const prepareCanvas: NullarySideEffector =

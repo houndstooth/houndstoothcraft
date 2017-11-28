@@ -1,5 +1,4 @@
 import {
-	composeMainHoundstooth,
 	GetStripePosition,
 	perStripe,
 	setSetting,
@@ -9,10 +8,6 @@ import {
 import CallInfo = jasmine.CallInfo
 
 describe('per stripe', () => {
-	beforeEach(() => {
-		composeMainHoundstooth.default()
-	})
-
 	it('uses a stripe count if provided', () => {
 		setSetting.default('stripeSettings', {
 			stripePositionSettings: {

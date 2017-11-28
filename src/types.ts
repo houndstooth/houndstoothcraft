@@ -1,12 +1,12 @@
 import { Context } from './app'
-import { Effect, Frame, Houndstooth, Layer, Pattern } from './pattern'
+import { BasePattern, Effect, Frame, Houndstooth, Layer } from './pattern'
 
 interface State {
 	animating: boolean,
 	contexts: Context[],
 	currentFrame: Frame,
 	currentLayer: Layer,
-	currentPattern: Pattern,
+	currentPattern: Partial<BasePattern>,
 	exportFrames: boolean,
 	gridProgressInterval?: () => void,
 	interval?: () => void,

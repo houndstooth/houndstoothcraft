@@ -28,7 +28,7 @@ const SQRT_2: number = Math.sqrt(2)
 const X_INDEX: number = 0
 const Y_INDEX: number = 1
 
-const ANIMATION_RATE: number = 1.000005
+const ANIMATION_RATE: number = 1.001
 
 const FONT_SIZE: number = 12
 const PAGE_BACKGROUND_COLOR: Color = { r: 240, g: 240, b: 240, a: 1 }

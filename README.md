@@ -27,7 +27,6 @@ In short:
 
 - example instances
 	- `HOUNDSTOOTH_DEFAULTS`
-	- `HOUNDSTOOTH_STRUCTURE`
 	- `houndstoothEffects`
 	- `houndstoothOverrides`
 	- `mainHoundstooth`
@@ -40,12 +39,6 @@ A houndstooth consists of a small set of [patterns](#pattern) which, by virtue o
 
 The houndsteeth whose names begin with the word "houndstooth" are understood to be not ready-to-go, but rather layers to be composed into a desired finished houndstooth. Such finished houndsteeth are named to instead end with the word "houndstooth". Think of it this way: the former are *for/of houndstooth*, the latter *are houndstooth*, but both types conform to the same houndstooth structure.
 
-That houndstooth structure, by the way, is captured in the constant `HOUNDSTOOTH_STRUCTURE`, and at this time looks like this: only base, animations, and layers patterns. If you try to add any other sort, you should see the error message:
-
-```
-attempted to compose a houndstooth with an unrecognized pattern
-```
-
 An "effect", such as the cmyktooth effect, is just a type of houndstooth intended to be composed, along with defaults and overrides, into a main houndstooth.
 
 When you compose a houndstooth, you do so by composing each houndstooth effect's animations patterns into a finished animations pattern, each houndstooth effect's layers patterns into a finished layers pattern, and each houndstooth effect's base patterns into a finished base pattern.
@@ -56,17 +49,13 @@ When you compose a houndstooth, you do so by composing each houndstooth effect's
 	- `basePattern`
 	- `animationsPattern`
 	- `layersPattern`
-	- `PATTERN_STRUCTURE`
+	- `currentPattern`
 - contents — all [settings](#setting)
 	- `colorSettings`
 	- `gridSettings`
 	- etc.
 
-A pattern conforms to the `PATTERN_STRUCTURE`, a defined model of all the possible [settings](#setting) and how they nest in each other (all the way down to the leaves). If you try to add any other settings, you should see the error message:
-
-```
-attempted to compose a pattern with an unrecognized setting
-```
+The `mainHoundstooth`'s `basePattern`, `animationsPattern`, and `layersPattern` are drawn on to decide on the `currentPattern` for any given animation and layer frame (including the initial, static render).
 
 ### setting
 

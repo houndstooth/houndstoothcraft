@@ -8,7 +8,7 @@ import gridComplete from './gridComplete'
 
 const executeGrid: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
-		if (state.animating || state.syncMode) {
+		if (state.animating) {
 			grid({ gridTile: maybeTile.default, thisPatternRef })
 		}
 		else {

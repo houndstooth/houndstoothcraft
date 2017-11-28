@@ -20,7 +20,6 @@ const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
-const DEFAULT_SYNC_MODE: boolean = false
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
 
@@ -41,7 +40,6 @@ const DEFAULT_STATE: State = {
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
 	resolveGrid: DEFAULT_RESOLVE_GRID,
 	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
-	syncMode: DEFAULT_SYNC_MODE,
 	tileCount: DEFAULT_TILE_COUNT,
 	tilesCompleted: DEFAULT_TILES_COMPLETED,
 }

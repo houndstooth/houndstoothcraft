@@ -18,7 +18,6 @@ interface State {
 	performanceLogging: boolean,
 	resolveGrid: () => void,
 	selectedHoundstoothEffects: Effect[],
-	syncMode: boolean,
 	tileCount: number,
 	tilesCompleted: number,
 }

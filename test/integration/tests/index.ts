@@ -1,6 +1,7 @@
-import { resetState, state } from '../../../src'
+import { executeGrid, resetState, state } from '../../../src'
+import { syncExecuteGrid } from '../helpers'
 
 beforeEach(() => {
 	resetState.default(state)
-	state.syncMode = true
+	spyOn(executeGrid, 'default').and.callFake(syncExecuteGrid.default)
 })

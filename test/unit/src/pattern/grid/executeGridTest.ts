@@ -5,10 +5,6 @@ describe('execute grid', () => {
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
-		// This is false in every other test. Currently only used for testing.
-		// So, we need to turn it off for this test to truly test the subject.
-		state.syncMode = false
-
 		spyOn(gridComplete, 'default')
 
 		spyOn(grid, 'default')

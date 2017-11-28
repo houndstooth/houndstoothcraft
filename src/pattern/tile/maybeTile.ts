@@ -8,8 +8,9 @@ const maybeTile: (_: ReferencedGridAddress) => void =
 		/* istanbul ignore next */
 		const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
 
-		// tslint:disable:no-unused-expression no-void-expression
-		tileOrigin && tileSize && tile({ gridAddress, tileOrigin, tileSize })
+		if (tileOrigin && tileSize) {
+			tile({ gridAddress, tileOrigin, tileSize })
+		}
 
 		state.tilesCompleted++
 	}

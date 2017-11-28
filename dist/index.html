@@ -10,9 +10,40 @@
     <div>
         <div id="canvas-container"></div>
         <div id="footer">
-            <a href="https://github.com/houndstooth/web-render" target="_blank"><img src="GitHub-Mark-120px-plus.png" ></a>
+            <a href="https://github.com/houndstooth/web-render" target="_blank"><img
+                    src="GitHub-Mark-120px-plus.png"></a>
+
             <a href="https://douglasblumeyer.com" target="_blank"><span>douglasblumeyer.com</span></a>
-            <div id="progress-bar"></div>
+
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+
+            <button id="snapshot-button">
+                <svg>
+                    <path d="M 10 5 L 20 5 L 20 7 L 10 7 Z"></path>
+                    <path d="M 10 8 L 20 8 L 20 10 L 25 10 L 15 15 L 5 10 L 10 10 Z"></path>
+                </svg>
+            </button>
+
+            <button disabled id="play-button">
+                <svg>
+                    <path d="M 10 5 L 20 10 L 10 15 Z"></path>
+                </svg>
+            </button>
+
+            <button disabled id="pause-button">
+                <svg>
+                    <path d="M 5 5 L 13 5 L 13 15 L 5 15 Z"></path>
+                    <path d="M 17 5 L 25 5 L 25 15 L 17 15 Z"></path>
+                </svg>
+            </button>
+
+            <button disabled id="rewind-button">
+                <svg>
+                    <path d="M 25 5 L 15 10 L 15 5 L 5 10 L 15 15 L 15 10 L 25 15 Z"></path>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -33,34 +64,6 @@
 
         <div id="description">
             a place to combine houndstooth effects
-        </div>
-
-        <div id="animation-controls-container">
-            <button id="snapshot-button">
-                <svg>
-                    <path d="M 10 5 L 20 5 L 20 8 L 10 8 Z"></path>
-                    <path d="M 10 11 L 20 11 L 20 15 L 25 15 L 15 25 L 5 15 L 10 15 Z"></path>
-                </svg>
-            </button>
-
-            <button disabled id="play-button">
-                <svg>
-                    <path d="M 10 5 L 20 15 L 10 25 Z"></path>
-                </svg>
-            </button>
-
-            <button disabled id="pause-button">
-                <svg>
-                    <path d="M 5 5 L 13 5 L 13 25 L 5 25 Z"></path>
-                    <path d="M 17 5 L 25 5 25 25 17 25 Z"></path>
-                </svg>
-            </button>
-
-            <button disabled id="rewind-button">
-                <svg>
-                    <path d="M 25 5 L 15 15 L 15 5 L 5 15 L 15 25 L 15 15 L 25 25 Z"></path>
-                </svg>
-            </button>
         </div>
 
         <div id="effect-toggles-container"></div>

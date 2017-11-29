@@ -19,4 +19,4 @@ const buildMockContext: (_?: BuildMockContext) => MockContext =
 			save: (): number => contextCallsOrder.push({ method: 'save' }),
 		})
 
-export { buildMockContext }
+export default buildMockContext

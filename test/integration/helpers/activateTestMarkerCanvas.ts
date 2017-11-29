@@ -11,8 +11,8 @@ import {
 	state,
 	to,
 } from '../../../src'
-import { createTestMarkersCanvas } from './createTestMarkersCanvas'
-import { testMarkersClear } from './testMarkersClear'
+import createTestMarkersCanvas from './createTestMarkersCanvas'
+import testMarkersClear from './testMarkersClear'
 
 const prepareCanvasForDisplayInTest: (canvas: Canvas | PageElement) => void =
 	(canvas: Canvas | PageElement): void => {
@@ -53,4 +53,4 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		state.mixingDown = true
 	}
 
-export { activateTestMarkerCanvas }
+export default activateTestMarkerCanvas

@@ -9,4 +9,4 @@ const isCloseTo: (numberOne: number, numberTwo: number) => boolean =
 		return Math.round(delta * pow) / pow <= maxDelta
 	}
 
-export { isCloseTo }
+export default isCloseTo

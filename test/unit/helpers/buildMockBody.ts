@@ -7,4 +7,4 @@ const buildMockBody: (_?: { children?: PageElement[] }) => MockElement =
 		style: {},
 	})
 
-export { buildMockBody }
+export default buildMockBody

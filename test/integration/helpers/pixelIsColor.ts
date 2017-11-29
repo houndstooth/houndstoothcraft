@@ -70,4 +70,4 @@ const checkColorProperties: (_: CheckColorProperties) => boolean =
 		return true
 	}
 
-export { pixelIsColor }
+export default pixelIsColor

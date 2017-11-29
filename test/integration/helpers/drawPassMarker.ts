@@ -2,7 +2,7 @@
 
 import { Canvas, Context, from } from '../../../src'
 import { buildMockCanvas } from '../../unit'
-import { createTestMarkersCanvas } from './createTestMarkersCanvas'
+import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { DrawPassMarker } from './types'
 
 const drawPassMarker: (_: DrawPassMarker) => void =
@@ -30,4 +30,4 @@ const drawPassMarker: (_: DrawPassMarker) => void =
 		}
 	}
 
-export { drawPassMarker }
+export default drawPassMarker

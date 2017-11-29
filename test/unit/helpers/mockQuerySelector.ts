@@ -1,5 +1,5 @@
 import { documentWrapper, PageElement } from '../../../src'
-import { buildMockElement } from './buildMockElement'
+import buildMockElement from './buildMockElement'
 
 const mockQuerySelector: () => { [_: string]: PageElement } =
 	(): { [_: string]: PageElement } => {
@@ -31,4 +31,4 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 		}
 	}
 
-export { mockQuerySelector }
+export default mockQuerySelector

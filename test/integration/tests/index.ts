@@ -3,5 +3,5 @@ import { syncExecuteGrid } from '../helpers'
 
 beforeEach(() => {
 	resetState.default(state)
-	spyOn(executeGrid, 'default').and.callFake(syncExecuteGrid.default)
+	spyOn(executeGrid, 'default').and.callFake(syncExecuteGrid)
 })

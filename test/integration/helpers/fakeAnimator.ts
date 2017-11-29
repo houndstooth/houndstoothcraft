@@ -8,4 +8,4 @@ const fakeAnimator: FakeAnimator =
 		resolveAnimation()
 	}
 
-export { fakeAnimator }
+export default fakeAnimator

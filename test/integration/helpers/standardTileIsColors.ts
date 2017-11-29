@@ -1,5 +1,5 @@
 import { to } from '../../../src'
-import { sectionCenterIsColor } from './sectionCenterIsColor'
+import sectionCenterIsColor from './sectionCenterIsColor'
 import { SectionCenterExpectation, StandardTileExpectation } from './types'
 
 const standardTileIsColors: (_: StandardTileExpectation) => boolean =
@@ -78,4 +78,4 @@ const standardTileIsColors: (_: StandardTileExpectation) => boolean =
 		return expectations.every(sectionCenterIsColor)
 	}
 
-export { standardTileIsColors }
+export default standardTileIsColors

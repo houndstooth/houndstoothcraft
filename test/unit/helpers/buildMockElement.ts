@@ -29,4 +29,4 @@ const buildMockElement: (_?: BuildMockElementParams) => MockElement =
 		}
 	}
 
-export { buildMockElement }
+export default buildMockElement

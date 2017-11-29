@@ -1,5 +1,5 @@
-import { drawPassMarker } from './drawPassMarker'
-import { pixelIsColor } from './pixelIsColor'
+import drawPassMarker from './drawPassMarker'
+import pixelIsColor from './pixelIsColor'
 import { PixelColorExpectation } from './types'
 
 const pixelIsColorWithMarker: (_: PixelColorExpectation) => boolean =
@@ -10,4 +10,4 @@ const pixelIsColorWithMarker: (_: PixelColorExpectation) => boolean =
 		return passed
 	}
 
-export { pixelIsColorWithMarker }
+export default pixelIsColorWithMarker

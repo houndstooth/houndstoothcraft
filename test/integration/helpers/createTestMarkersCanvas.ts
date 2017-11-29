@@ -16,4 +16,4 @@ const createTestMarkersCanvas: () => Canvas =
 		return testMarkersCanvas
 	}
 
-export { createTestMarkersCanvas }
+export default createTestMarkersCanvas

@@ -1,6 +1,6 @@
 import { Canvas, codeUtilities, Context, getSetting, NullarySideEffector, Px } from '../../../src'
 import { buildMockCanvas } from '../../unit'
-import { createTestMarkersCanvas } from './createTestMarkersCanvas'
+import createTestMarkersCanvas from './createTestMarkersCanvas'
 
 const testMarkersClear: NullarySideEffector =
 	(): void => {
@@ -18,4 +18,4 @@ const testMarkersClear: NullarySideEffector =
 		testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)
 	}
 
-export { testMarkersClear }
+export default testMarkersClear

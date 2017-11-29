@@ -7,4 +7,4 @@ const pixelsAreClose: (expected: Pixel[], actual: Pixel[]) => boolean =
 			pixel.every((px: Px, expectedPixelAddressY: number) =>
 				isCloseTo(from.Px(px), from.Px(expected[ expectedPixelAddressX ][ expectedPixelAddressY ]))))
 
-export { pixelsAreClose }
+export default pixelsAreClose

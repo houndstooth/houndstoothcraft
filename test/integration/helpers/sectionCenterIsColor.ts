@@ -1,6 +1,6 @@
 import { Coordinate, from, to } from '../../../src'
-import { drawPassMarker } from './drawPassMarker'
-import { pixelIsColor } from './pixelIsColor'
+import drawPassMarker from './drawPassMarker'
+import pixelIsColor from './pixelIsColor'
 import { SectionCenterExpectation, SectionCenterParams } from './types'
 
 const sectionCenterIsColor: (_: SectionCenterExpectation) => boolean =
@@ -30,4 +30,4 @@ const sectionCenter: (_: SectionCenterParams) => Coordinate =
 		])
 	}
 
-export { sectionCenterIsColor }
+export default sectionCenterIsColor

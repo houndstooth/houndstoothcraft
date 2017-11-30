@@ -12,13 +12,9 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 
 		prepareCurrentPattern()
 
-		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
-		})
-
 		prepareCanvas()
 
-		execute({ layerFunctionObjects })
+		execute()
 	}
 
 const prepareCurrentPattern: NullarySideEffector =
@@ -31,16 +27,21 @@ const prepareCanvas: NullarySideEffector =
 		createContexts.default()
 	}
 
-const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =
-	({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): void => {
+const execute: NullarySideEffector =
+	(): void => {
+		const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
+			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
+		})
+		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
+			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
+		})
+
 		if (state.animating) {
-			const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
-				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
-			})
 			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
-			executePattern.default({ layerFunctionObjects }).then().catch()
+			// TODO: cover that this is called with animation functions too now
+			executePattern.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 	}
 

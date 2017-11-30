@@ -1,12 +1,8 @@
 import {
 	Address,
 	Color,
-	ConditionFunction,
 	Coordinate,
-	Frame,
 	Layer,
-	NullarySideEffector,
-	NullaryVoidPromise,
 	Unit,
 } from '../../../src'
 
@@ -74,23 +70,10 @@ interface PixelColorExpectation {
 	id: number
 }
 
-interface ThisFrameOnly {
-	readonly endFrame: Frame,
-	readonly startFrame: Frame
-}
-
 interface ThisLayerOnly {
 	readonly endLayer: Layer,
 	readonly startLayer: Layer
 }
-
-interface FakeAnimatorParams {
-	animationFunction: NullaryVoidPromise,
-	resolveAnimation: NullarySideEffector,
-	stopConditionFunction: ConditionFunction
-}
-
-type FakeAnimator = (_: FakeAnimatorParams) => Promise<void>
 
 export {
 	CheckColorProperties,
@@ -106,8 +89,5 @@ export {
 	SectionCenterParams,
 	SectionCenterExpectation,
 	PixelColorExpectation,
-	ThisFrameOnly,
 	ThisLayerOnly,
-	FakeAnimator,
-	FakeAnimatorParams,
 }

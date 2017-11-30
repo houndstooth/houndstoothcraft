@@ -74,17 +74,11 @@ describe('build animation function returns an animation function', () => {
 		})
 
 		it('executes a grid with the layer functions', () => {
-			expect(executePatternSpy).toHaveBeenCalledWith({ layerFunctionObjects })
+			expect(executePatternSpy).toHaveBeenCalledWith({ animationFunctionObjects, layerFunctionObjects })
 		})
 
 		it('increments the current frame', () => {
 			expect(state.currentFrame).toBe(to.Frame(6))
-		})
-
-		it('updates settings for the next frame', () => {
-			expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
-				settingsFunctionObjects: animationFunctionObjects,
-			})
 		})
 
 		describe('exporting frames', () => {
@@ -111,7 +105,6 @@ describe('build animation function returns an animation function', () => {
 			it('does not clear the canvas if refreshing the canvas is off', async (done: DoneFn) => {
 				setSetting.default('refreshCanvas', false)
 				clearContextsSpy.calls.reset()
-				setSetting.default('startFrame', to.Frame(0))
 
 				await animationFunction()
 
@@ -123,19 +116,6 @@ describe('build animation function returns an animation function', () => {
 
 		it('mixes down contexts', () => {
 			expect(mixDownContexts.default).toHaveBeenCalled()
-		})
-	})
-
-	describe('starting to show the animation at a frame besides the first one', () => {
-		it('does not execute the grid if the current frame is less than the start frame', async (done: DoneFn) => {
-			state.currentFrame = to.Frame(5)
-			setSetting.default('startFrame', to.Frame(8))
-
-			await animationFunction()
-
-			expect(executePatternSpy).not.toHaveBeenCalled()
-
-			done()
 		})
 	})
 })

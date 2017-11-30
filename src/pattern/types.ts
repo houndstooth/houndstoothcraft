@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count max-line-length
 
-import { Px } from '../app'
+import { Px, SettingsFunctionObject } from '../app'
 import { animationSettings, Frame } from './animation'
 import {
 	AssignmentMode,
@@ -40,6 +40,11 @@ interface BasePattern {
 }
 
 type Effect = Partial<Houndstooth>
+
+interface ExecuteParams {
+	readonly animationFunctionObjects: SettingsFunctionObject[],
+	readonly layerFunctionObjects: SettingsFunctionObject[]
+}
 
 enum MissingSettingsName {}
 
@@ -168,6 +173,7 @@ interface SettingsNamesByTypeBase {
 export {
 	BasePattern,
 	Effect,
+	ExecuteParams,
 	Houndstooth,
 	PatternFunctions,
 	SettingsNamesByTypeBase,

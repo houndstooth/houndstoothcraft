@@ -6,12 +6,10 @@ import {
 	ExpectedDividedSection,
 	ExpectedSolidSection,
 	ExpectSolidSection,
-	fakeAnimator,
 	pixelIsColorWithMarker,
 	sectionCenterIsColor,
 	StandardTileExpectation,
 	standardTileIsColors,
-	thisFrameOnly,
 	thisLayerOnly,
 } from './integration'
 
@@ -24,8 +22,6 @@ export {
 	ExpectedDividedSection,
 	ExpectedSolidSection,
 	ExpectSolidSection,
-	fakeAnimator,
-	thisFrameOnly,
 	standardTileIsColors,
 	StandardTileExpectation,
 	pixelIsColorWithMarker,

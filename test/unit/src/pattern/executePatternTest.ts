@@ -1,5 +1,6 @@
 import Spy = jasmine.Spy
 import {
+	callFunctionsPerSetting,
 	executeGridAndMaybeLogging,
 	executeLayer,
 	executePattern,
@@ -15,17 +16,31 @@ describe('execute pattern', () => {
 	const startLayer: Layer = to.Layer(2)
 	const endLayer: Layer = to.Layer(4)
 	const layerFunctionObjects: SettingsFunctionObject[] = []
+	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
 		setSetting.default('startLayer', startLayer)
 		setSetting.default('endLayer', endLayer)
 		state.patternRef = 99
 	})
 
+	it('calls the animation functions, to render based on the current frame', async (done: DoneFn) => {
+		spyOn(callFunctionsPerSetting, 'default')
+		spyOn(executeLayer, 'default')
+
+		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
+
+		expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
+			settingsFunctionObjects: animationFunctionObjects,
+		})
+
+		done()
+	})
+
 	// tslint:disable-next-line:max-line-length
 	it('executes a layer for each layer from zero (not the start layer; that\'s just what gets shown, but the processing leading up to it still needs to happen) to the end layer, inclusive', async (done: DoneFn) => {
 		const executeLayerSpy: Spy = spyOn(executeLayer, 'default')
 
-		await executePattern.default({ layerFunctionObjects })
+		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(executeLayerSpy.calls.all().length).toBe(5)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
@@ -69,7 +84,7 @@ describe('execute pattern', () => {
 			}
 		})
 
-		await executePattern.default({ layerFunctionObjects })
+		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(executeLayerSpy.calls.all().length).toBe(3)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
@@ -109,7 +124,7 @@ describe('execute pattern', () => {
 	it('resets the current layer to zero', async (done: DoneFn) => {
 		spyOn(executeGridAndMaybeLogging, 'default')
 
-		await executePattern.default({ layerFunctionObjects })
+		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(state.currentLayer).toBe(to.Layer(0))
 

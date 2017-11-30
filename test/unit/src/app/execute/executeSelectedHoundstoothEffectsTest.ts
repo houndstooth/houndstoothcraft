@@ -44,6 +44,14 @@ describe('execute selected houndstooth effects', () => {
 		})
 	})
 
+	it('prepares animation functions', () => {
+		executeSelectedHoundstoothEffects.default()
+
+		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
+			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
+		})
+	})
+
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
 		executeSelectedHoundstoothEffects.default()
 
@@ -63,12 +71,6 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects.default()
 		})
 
-		it('prepares animation functions', () => {
-			expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-				settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
-			})
-		})
-
 		it('executes an animation', () => {
 			expect(executeAnimation.default).toHaveBeenCalledWith({
 				animationFunctionObjects,
@@ -76,7 +78,7 @@ describe('execute selected houndstooth effects', () => {
 			})
 		})
 
-		it('does not execute a single grid', () => {
+		it('does not execute a single pattern', () => {
 			expect(executePattern.default).not.toHaveBeenCalled()
 		})
 	})
@@ -88,12 +90,9 @@ describe('execute selected houndstooth effects', () => {
 			executeSelectedHoundstoothEffects.default()
 		})
 
-		it('does not prepare animation functions', () => {
-			expect(prepareFunctionObjectsPerSettingSpy.calls.all().length).toBe(1)
-		})
-
-		it('executes a single grid', () => {
+		it('executes a single pattern', () => {
 			expect(executePattern.default).toHaveBeenCalledWith({
+				animationFunctionObjects,
 				layerFunctionObjects,
 			})
 		})

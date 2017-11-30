@@ -1,14 +1,15 @@
 import { getSetting } from '../../app'
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
+import { ExecuteParams } from '../types'
 import { AnimationSettings } from './animationSettings'
 import * as animator from './animator'
 import buildAnimationFunction from './buildAnimationFunction'
 import buildStopConditionFunction from './buildStopConditionFunction'
-import { ConditionFunction, ExecuteAnimationParams } from './types'
+import { ConditionFunction } from './types'
 
-const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation: NullarySideEffector) => void> =
+const executeAnimation: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void> =
 	// tslint:disable-next-line:max-line-length
-	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteAnimationParams): Promise<(resolveAnimation: NullarySideEffector) => void> => {
+	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<(resolveAnimation: NullarySideEffector) => void> => {
 		const {
 			frameRate,
 			endFrame,

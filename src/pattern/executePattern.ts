@@ -1,12 +1,15 @@
-import { getSetting, SettingsFunctionObject } from '../app'
+import { callFunctionsPerSetting, getSetting } from '../app'
 import * as from from '../from'
 import { state } from '../state'
 import * as to from '../to'
 import { executeLayer, layerSettings, thisPatternHasNotBeenCanceled } from './layer'
+import { ExecuteParams } from './types'
 
-const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => Promise<void> =
-	async ({ layerFunctionObjects }: { layerFunctionObjects: SettingsFunctionObject[] }): Promise<void> => {
+const executePattern: (_: ExecuteParams) => Promise<void> =
+	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {
 		const { startLayer, endLayer }: layerSettings.LayerSettings = getSetting.default('layerSettings')
+
+		callFunctionsPerSetting.default({ settingsFunctionObjects: animationFunctionObjects })
 
 		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {

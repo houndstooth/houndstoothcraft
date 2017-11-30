@@ -19,7 +19,6 @@ describe('execute animation', () => {
 
 	let frameRate: number
 	let refreshCanvas: boolean
-	let startFrame: Frame
 	let endFrame: Frame
 
 	beforeEach(() => {
@@ -34,11 +33,10 @@ describe('execute animation', () => {
 			animationFunctionObjects = []
 
 			frameRate = 5
-			startFrame = to.Frame(3)
 			endFrame = to.Frame(7)
 			refreshCanvas = false
 
-			setSetting.default('animationSettings', { endFrame, frameRate, refreshCanvas, startFrame })
+			setSetting.default('animationSettings', { endFrame, frameRate, refreshCanvas })
 		})
 
 		it('calls the animator', () => {

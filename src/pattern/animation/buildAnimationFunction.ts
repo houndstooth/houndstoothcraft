@@ -1,25 +1,25 @@
-import { callFunctionsPerSetting, clear, exportCanvas, getSetting } from '../../app'
+import { callFunctionsPerSetting, clearContexts, exportCanvas, getSetting, mixDownContexts } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
 import { NullaryVoidPromise } from '../../utilities'
 import executePattern from '../executePattern'
 import { AnimationSettings } from './animationSettings'
-import { AnimateParams, BuildAnimationFunctionParams, ConditionFunction, Frame } from './types'
+import { AnimateParams, BuildAnimationFunctionParams, Frame } from './types'
 
 const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPromise =
 	(params: BuildAnimationFunctionParams): NullaryVoidPromise =>
 		async (): Promise<void> => {
+			if (previousGridHasNotFinishedYet()) {
+				return
+			}
+
 			const {
 				animationFunctionObjects,
 				layerFunctionObjects,
 			}: BuildAnimationFunctionParams = params
 
 			const { startFrame, refreshCanvas }: AnimationSettings = getSetting.default('animationSettings')
-
-			if (exportingFramesStillNeedsToCatchUp()) {
-				return
-			}
 
 			if (shouldBeginShowingAnimation(startFrame)) {
 				await animate({ layerFunctionObjects, refreshCanvas })
@@ -29,8 +29,8 @@ const buildAnimationFunction: (_: BuildAnimationFunctionParams) => NullaryVoidPr
 			state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
 		}
 
-const exportingFramesStillNeedsToCatchUp: ConditionFunction =
-	(): boolean => state.exportFrames && state.currentFrame > state.lastSavedFrame
+const previousGridHasNotFinishedYet: () => boolean =
+	(): boolean => state.tilesCompleted > 0
 
 const shouldBeginShowingAnimation: (startFrame: Frame) => boolean =
 	(startFrame: Frame): boolean => state.currentFrame >= startFrame
@@ -38,10 +38,12 @@ const shouldBeginShowingAnimation: (startFrame: Frame) => boolean =
 const animate: (_: AnimateParams) => Promise<void> =
 	async ({ layerFunctionObjects, refreshCanvas }: AnimateParams): Promise<void> => {
 		if (refreshCanvas) {
-			clear.default()
+			clearContexts.default()
 		}
 
 		await executePattern({ layerFunctionObjects })
+
+		mixDownContexts.default()
 
 		if (state.exportFrames) {
 			exportCanvas.default()

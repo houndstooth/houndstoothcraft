@@ -2,26 +2,25 @@ import {
 	Canvas,
 	Context,
 	createMixedDownContext,
-	deleteElementIfExists,
 	documentWrapper,
 	PageElement,
 	setSetting,
 	to,
 } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
-import { buildMockBody, buildMockCanvas } from '../../../helpers'
+import { buildMockCanvas, buildMockElement } from '../../../helpers'
 
 describe('create mixed down context', () => {
 	let mixedDownCanvas: Canvas
 	const mixedDownContext: Context = buildMockContext()
-	const bodyChildren: PageElement[] = []
+	let canvasContainer: PageElement
+	const canvasContainerChildren: PageElement[] = []
 	const mixedDownCanvasClassList: string[] = []
 	let returnedMixedDownContext: Context
 	beforeAll(() => {
-		spyOn(deleteElementIfExists, 'default')
-
 		// tslint:disable-next-line:no-unsafe-any
-		documentWrapper.body = buildMockBody({ children: bodyChildren })
+		canvasContainer = buildMockElement({ children: canvasContainerChildren })
+		spyOn(documentWrapper, 'querySelector').and.returnValue(canvasContainer)
 
 		mixedDownCanvas = buildMockCanvas({ context: mixedDownContext, classList: mixedDownCanvasClassList })
 		spyOn(documentWrapper, 'createElement').and.returnValue(mixedDownCanvas)
@@ -31,12 +30,8 @@ describe('create mixed down context', () => {
 		returnedMixedDownContext = createMixedDownContext.default()
 	})
 
-	it('deletes the existing mixed down canvas, if present', () => {
-		expect(deleteElementIfExists.default).toHaveBeenCalledWith('.mixed-down-canvas')
-	})
-
-	it('puts the new mixed down canvas on the document body', () => {
-		expect(bodyChildren[ 0 ]).toBe(mixedDownCanvas)
+	it('puts the new mixed down canvas in the canvas container', () => {
+		expect(canvasContainerChildren[ 0 ]).toBe(mixedDownCanvas)
 	})
 
 	it('adds a class name to the mixed down canvas', () => {
@@ -45,15 +40,6 @@ describe('create mixed down context', () => {
 
 	it('returns the mixed down canvas\'s context', () => {
 		expect(returnedMixedDownContext).toBe(mixedDownContext)
-	})
-
-	it('does not display the mixed down canvas', () => {
-		if (mixedDownCanvas.style) {
-			expect(mixedDownCanvas.style.display).toBe('none')
-		}
-		else {
-			fail()
-		}
 	})
 
 	it('sets the size of the mixed down canvas', () => {

@@ -3,7 +3,8 @@
 export {
 	attachControlHandlers,
 	Canvas,
-	clear,
+	clearContext,
+	clearContexts,
 	combineHoundstoothEffects,
 	composeMainHoundstooth,
 	composePatterns,
@@ -37,7 +38,6 @@ export {
 	setSetting,
 	createEffectToggle,
 	LabelElement,
-	deleteElementIfExists,
 	insertElementRightAfter,
 	buildFill,
 	Path,

@@ -3,8 +3,8 @@
 import { Effect } from '../../pattern'
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
+import { clearContexts } from '../canvas'
 import { PageElement } from '../page'
-import { clear } from '../render'
 import { resetState } from '../store'
 
 const resetInterface: NullarySideEffector =
@@ -12,7 +12,7 @@ const resetInterface: NullarySideEffector =
 		const warnings: PageElement = documentWrapper.querySelector('#warnings-container')
 		warnings.innerHTML = ''
 
-		clear.default()
+		clearContexts.default()
 		windowWrapper.clearInterval(state.interval)
 		windowWrapper.clearInterval(state.gridProgressInterval)
 		state.resolveGrid()

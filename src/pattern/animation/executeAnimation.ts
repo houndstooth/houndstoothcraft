@@ -1,5 +1,4 @@
 import { getSetting } from '../../app'
-import { state } from '../../state'
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
 import { AnimationSettings } from './animationSettings'
 import * as animator from './animator'
@@ -13,10 +12,7 @@ const executeAnimation: (_: ExecuteAnimationParams) => Promise<(resolveAnimation
 		const {
 			frameRate,
 			endFrame,
-			startFrame,
 		}: AnimationSettings = getSetting.default('animationSettings')
-
-		state.lastSavedFrame = startFrame
 
 		const animationFunction: NullaryVoidPromise = buildAnimationFunction({
 			animationFunctionObjects,

@@ -1,7 +1,7 @@
 import { Effect, executeAnimation, executePattern } from '../../pattern'
 import { state } from '../../state'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
-import { createContexts, createMixedDownContext } from '../page'
+import { createContexts } from '../page'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'
@@ -29,12 +29,6 @@ const prepareCurrentPattern: NullarySideEffector =
 const prepareCanvas: NullarySideEffector =
 	(): void => {
 		createContexts.default()
-		if (state.exportFrames) {
-			state.mixingDown = true
-		}
-		if (state.mixingDown) {
-			state.mixedDownContext = createMixedDownContext.default()
-		}
 	}
 
 const execute: (_: { layerFunctionObjects: SettingsFunctionObject[] }) => void =

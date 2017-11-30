@@ -54,45 +54,10 @@ describe('execute selected houndstooth effects', () => {
 		expect(state.currentPattern).toEqual(state.mainHoundstooth.basePattern)
 	})
 
-	describe('setting up for rendering', () => {
-		it('includes the mixed down canvas when both mixing down and exporting', () => {
-			state.mixingDown = true
-			state.exportFrames = true
+	it('sets up for rendering', () => {
+		executeSelectedHoundstoothEffects.default()
 
-			executeSelectedHoundstoothEffects.default()
-
-			expect(createContexts.default).toHaveBeenCalled()
-			expect(createMixedDownContext.default).toHaveBeenCalled()
-			expect(state.mixedDownContext).toBe(mixedDownContext)
-		})
-
-		it('includes the mixed down canvas when only mixing down', () => {
-			state.mixingDown = true
-
-			executeSelectedHoundstoothEffects.default()
-
-			expect(createContexts.default).toHaveBeenCalled()
-			expect(createMixedDownContext.default).toHaveBeenCalled()
-			expect(state.mixedDownContext).toBe(mixedDownContext)
-		})
-
-		it('includes the mixed down canvas when only exporting frames', () => {
-			state.exportFrames = true
-
-			executeSelectedHoundstoothEffects.default()
-
-			expect(createContexts.default).toHaveBeenCalled()
-			expect(createMixedDownContext.default).toHaveBeenCalled()
-			expect(state.mixedDownContext).toBe(mixedDownContext)
-		})
-
-		it('does not include the mixed down canvas when neither mixing down nor exporting frames', () => {
-			executeSelectedHoundstoothEffects.default()
-
-			expect(createContexts.default).toHaveBeenCalled()
-			expect(createMixedDownContext.default).not.toHaveBeenCalled()
-			expect(state.mixedDownContext).toBe(undefined)
-		})
+		expect(createContexts.default).toHaveBeenCalled()
 	})
 
 	describe('when animating', () => {

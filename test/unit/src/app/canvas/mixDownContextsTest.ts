@@ -1,12 +1,20 @@
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { Context, createMixedDownContext, mixDownContexts, state } from '../../../../../src'
+import { mixDownContexts, setSetting, state, to } from '../../../../../src'
 
 describe('mix down contexts', () => {
 	const drawImageSpy: Spy = jasmine.createSpy('drawImage')
-	const mixedDownContext: Context = { drawImage: drawImageSpy }
+	const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 	beforeEach(() => {
-		spyOn(createMixedDownContext, 'default').and.returnValue(mixedDownContext)
+		state.mixedDownContext = { drawImage: drawImageSpy, clearRect: clearRectSpy }
+	})
+
+	it('clears the mixed down canvas just before rendering', () => {
+		setSetting.default('canvasSize', to.Px(555))
+
+		mixDownContexts.default()
+
+		expect(clearRectSpy).toHaveBeenCalledWith(0, 0, 555, 555)
 	})
 
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {
@@ -28,20 +36,5 @@ describe('mix down contexts', () => {
 		expect(drawImageSpyCalls[3].args[0]).toEqual(3)
 		expect(drawImageSpyCalls[4].args[0]).toEqual(4)
 		expect(drawImageSpyCalls[5].args[0]).toEqual(5)
-	})
-
-	it('creates the mixed down canvas if it is not already there', () => {
-		expect(state.mixedDownContext).toBe(undefined)
-		mixDownContexts.default()
-		expect(state.mixedDownContext).toBe(mixedDownContext)
-	})
-
-	it('does not fail if there is no mixed down context', () => {
-		mixDownContexts.default()
-	})
-
-	it('does not fail if already mixing down', () => {
-		state.mixingDown = true
-		mixDownContexts.default()
 	})
 })

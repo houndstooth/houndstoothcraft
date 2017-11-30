@@ -1,5 +1,5 @@
 import {
-	clear,
+	clearContexts,
 	constants,
 	Context,
 	createContext,
@@ -119,7 +119,7 @@ describe('.tileSettings', () => {
 		let contextCallsOrder: MockContextCall[]
 		beforeEach(() => {
 			contextCallsOrder = []
-			clear.default()
+			clearContexts.default()
 			houndstoothOverrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },

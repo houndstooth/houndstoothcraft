@@ -1,9 +1,14 @@
+import { Frame } from '../../pattern'
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
 import saveCanvas from './saveCanvas'
 
-const exportCanvas: NullarySideEffector =
-	// tslint:disable-next-line:no-unsafe-any
-	(): void => state.mixedDownContext && state.mixedDownContext.canvas.toBlob(saveCanvas)
+const exportCanvas: () => void =
+	(): void => {
+		const currentFrame: Frame = state.currentFrame
+		// tslint:disable-next-line:no-unsafe-any no-unused-expression
+		state.mixedDownContext && state.mixedDownContext.canvas.toBlob((result: Blob): void => {
+			saveCanvas({ result, currentFrame })
+		})
+	}
 
 export default exportCanvas

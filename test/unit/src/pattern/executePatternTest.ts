@@ -5,7 +5,6 @@ import {
 	executePattern,
 	from,
 	Layer,
-	mixDownContexts,
 	setSetting,
 	SettingsFunctionObject,
 	state,
@@ -115,35 +114,5 @@ describe('execute pattern', () => {
 		expect(state.currentLayer).toBe(to.Layer(0))
 
 		done()
-	})
-
-	describe('mixing down', () => {
-		let mixDownContextsSpy: Spy
-		beforeEach(() => {
-			spyOn(executeLayer, 'default')
-			mixDownContextsSpy = spyOn(mixDownContexts, 'default')
-		})
-
-		afterEach(() => {
-			mixDownContextsSpy.calls.reset()
-		})
-
-		it('can mix down all contexts to one', async (done: DoneFn) => {
-			state.mixingDown = true
-
-			await executePattern.default({ layerFunctionObjects })
-
-			expect(mixDownContexts.default).toHaveBeenCalled()
-
-			done()
-		})
-
-		it('does not bother if not asked', async (done: DoneFn) => {
-			await executePattern.default({ layerFunctionObjects })
-
-			expect(mixDownContexts.default).not.toHaveBeenCalled()
-
-			done()
-		})
 	})
 })

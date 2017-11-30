@@ -8,7 +8,6 @@ import {
 	Px,
 	scaleCanvasContainer,
 	scaleElement,
-	state,
 	to,
 } from '../../../src'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
@@ -49,8 +48,6 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		scaleCanvasContainer.default()
 
 		prepareCanvasForDisplayInTest(canvasContainer)
-
-		state.mixingDown = true
 	}
 
 export default activateTestMarkerCanvas

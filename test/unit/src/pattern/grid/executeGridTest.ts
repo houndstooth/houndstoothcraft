@@ -1,59 +1,44 @@
-import { asyncMaybeTile, executeGrid, grid, gridComplete, maybeTile, setSetting, state } from '../../../../../src'
+import {
+	asyncMaybeTile,
+	executeGrid,
+	grid,
+	gridComplete,
+	NullarySideEffector,
+	setSetting,
+	state,
+} from '../../../../../src'
 
 describe('execute grid', () => {
 	const tileResolution: number = 2
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
-		spyOn(gridComplete, 'default')
+		const fakeGridComplete: (resolveGrid: NullarySideEffector) => void =
+			(resolveGrid: NullarySideEffector): void => {
+				state.resolveGrid = resolveGrid
+			}
+		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)
 
 		spyOn(grid, 'default')
 		setSetting.default('gridSettings', { tileResolution })
 	})
 
-	describe('when animating', () => {
-		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
-			state.animating = true
+	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {
+		state.tilesCompleted = 256
 
-			executeGrid.default({ thisPatternRef }).then().catch()
+		executeGrid.default({ thisPatternRef }).then().catch()
+		expect(state.tilesCompleted).toBe(256)
 
-			expect(grid.default).toHaveBeenCalledWith({ gridTile: maybeTile.default, thisPatternRef })
-			expect(grid.default).not.toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, thisPatternRef })
-
+		state.resolveGrid()
+		setTimeout(() => {
+			expect(state.tilesCompleted).toBe(0)
 			done()
-		})
+		},         0)
 	})
 
-	describe('when not animating', () => {
-		beforeEach(() => {
-			state.animating = false
-		})
+	it('calls the grid loop with the tile function and a reference to this pattern', () => {
+		executeGrid.default({ thisPatternRef }).then().catch()
 
-		it('resets the count of tiles completed', async (done: DoneFn) => {
-			state.tilesCompleted = 256
-
-			executeGrid.default({ thisPatternRef }).then().catch()
-
-			expect(state.tilesCompleted).toBe(0)
-
-			done()
-		})
-
-		it('calls grid loop with the synchronous tile function', async (done: DoneFn) => {
-			executeGrid.default({ thisPatternRef }).then().catch()
-
-			expect(grid.default).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, thisPatternRef })
-			expect(grid.default).not.toHaveBeenCalledWith({ gridTile: maybeTile.default, thisPatternRef })
-
-			done()
-		})
-
-		it('waits for the grid tobe complete', async (done: DoneFn) => {
-			executeGrid.default({ thisPatternRef }).then().catch()
-
-			expect(gridComplete.default).toHaveBeenCalled()
-
-			done()
-		})
+		expect(grid.default).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, thisPatternRef })
 	})
 })

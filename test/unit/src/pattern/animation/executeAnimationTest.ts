@@ -7,7 +7,6 @@ import {
 	Frame,
 	setSetting,
 	SettingsFunctionObject,
-	state,
 	to,
 } from '../../../../../src'
 
@@ -50,12 +49,6 @@ describe('execute animation', () => {
 				frameRate,
 				stopConditionFunction,
 			}))
-		})
-
-		it('initializes the last saved animation frame to the start animation frame', () => {
-			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
-
-			expect(state.lastSavedFrame).toBe(startFrame)
 		})
 
 		it('builds a stop condition function', () => {

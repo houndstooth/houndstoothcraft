@@ -1,21 +1,16 @@
 import { DataBlob } from '../'
 import * as from from '../../from'
+import { Frame } from '../../pattern'
 import { state } from '../../state'
-import * as to from '../../to'
 import saveBlob from './saveBlob'
 
-const saveCanvas: (result: DataBlob) => void =
-	(result: DataBlob): void => {
-		let name: string
-		if (state.exportFrames) {
-			name = `houndstooth_animation_frame_${from.Frame(state.lastSavedFrame)}.png`
-		}
-		else {
-			const currentFrame: number = from.Frame(state.currentFrame)
-			name = currentFrame > 0 ? `houndstooth_animation_frame_${currentFrame}.png` : 'houndstooth_snapshot.png'
-		}
+const saveCanvas: (_: { currentFrame: Frame, result: DataBlob }) => void =
+	({ currentFrame, result }: { currentFrame: Frame, result: DataBlob }): void => {
+		const currentFrameValue: number = from.Frame(currentFrame)
+		const name: string = state.exportFrames || currentFrameValue > 0 ?
+			`houndstooth_animation_frame_${currentFrameValue}.png` :
+			'houndstooth_snapshot.png'
 		saveBlob({ blob: result, name })
-		state.lastSavedFrame = to.Frame(from.Frame(state.lastSavedFrame) + 1)
 	}
 
 export default saveCanvas

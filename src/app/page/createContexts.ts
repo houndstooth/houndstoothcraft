@@ -7,6 +7,7 @@ import * as to from '../../to'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { getSetting } from '../store'
 import createContext from './createContext'
+import createMixedDownContext from './createMixedDownContext'
 import scaleCanvasContainer from './scaleCanvasContainer'
 import { PageElement } from './types'
 
@@ -14,6 +15,7 @@ const createContexts: NullarySideEffector =
 	(): void => {
 		const canvasContainer: PageElement = scaleCanvasContainer()
 		canvasContainer.innerHTML = ''
+		state.mixedDownContext = createMixedDownContext()
 
 		state.contexts = layerIterator().map(() => createContext({ canvasContainer }))
 	}

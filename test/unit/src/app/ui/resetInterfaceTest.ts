@@ -1,5 +1,5 @@
 import {
-	clear,
+	clearContexts,
 	documentWrapper,
 	Effect,
 	NullarySideEffector,
@@ -24,11 +24,11 @@ describe('reset interface', () => {
 	})
 
 	it('clears canvas', () => {
-		spyOn(clear, 'default')
+		spyOn(clearContexts, 'default')
 
 		resetInterface.default()
 
-		expect(clear.default).toHaveBeenCalled()
+		expect(clearContexts.default).toHaveBeenCalled()
 	})
 
 	it('clears any active animation', () => {

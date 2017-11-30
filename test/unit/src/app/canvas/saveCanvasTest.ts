@@ -7,17 +7,15 @@ describe('save canvas', () => {
 	})
 
 	describe('animating', () => {
-		describe('when exporting frames (and animating)', () => {
+		describe('when exporting frames', () => {
 			beforeEach(() => {
 				state.exportFrames = true
-				state.animating = true
-				state.lastSavedFrame = to.Frame(666)
 
-				saveCanvas.default(result)
+				saveCanvas.default({ currentFrame: to.Frame(0), result })
 			})
 
-			it('saves the frame as a png with the last saved frame number as file name', () => {
-				expect(saveBlob.default).toHaveBeenCalledWith({ blob: result, name: 'houndstooth_animation_frame_666.png' })
+			it('saves the frame as a png with the last completed frame number as file name', () => {
+				expect(saveBlob.default).toHaveBeenCalledWith({ blob: result, name: 'houndstooth_animation_frame_0.png' })
 			})
 		})
 
@@ -28,9 +26,7 @@ describe('save canvas', () => {
 
 			describe('when the current frame is greater than 0', () => {
 				beforeEach(() => {
-					state.currentFrame = to.Frame(777)
-
-					saveCanvas.default(result)
+					saveCanvas.default({ currentFrame: to.Frame(777), result })
 				})
 
 				it('saves the frame as a png with the current frame number as file name', () => {
@@ -40,9 +36,7 @@ describe('save canvas', () => {
 
 			describe('when the current frame is 0', () => {
 				beforeEach(() => {
-					state.currentFrame = to.Frame(0)
-
-					saveCanvas.default(result)
+					saveCanvas.default({ currentFrame: to.Frame(0), result })
 				})
 
 				it('saves the frame as a png with a generic name', () => {
@@ -50,13 +44,5 @@ describe('save canvas', () => {
 				})
 			})
 		})
-	})
-
-	it('increments the last saved frame', () => {
-		state.lastSavedFrame = to.Frame(100)
-
-		saveCanvas.default(result)
-
-		expect(state.lastSavedFrame).toBe(to.Frame(101))
 	})
 })

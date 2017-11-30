@@ -1,10 +1,10 @@
 import {
 	buildAnimationFunction,
 	callFunctionsPerSetting,
-	clear,
+	clearContexts,
 	executePattern,
 	exportCanvas,
-	Frame,
+	mixDownContexts,
 	NullaryVoidPromise,
 	setSetting,
 	SettingsFunctionObject,
@@ -16,6 +16,7 @@ import Spy = jasmine.Spy
 describe('build animation function returns an animation function', () => {
 	let animationFunction: NullaryVoidPromise
 	let executePatternSpy: Spy
+	let clearContextsSpy: Spy
 
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
@@ -23,111 +24,105 @@ describe('build animation function returns an animation function', () => {
 	beforeEach(() => {
 		executePatternSpy = spyOn(executePattern, 'default')
 		spyOn(callFunctionsPerSetting, 'default')
-		spyOn(clear, 'default')
+		clearContextsSpy = spyOn(clearContexts, 'default')
 		spyOn(exportCanvas, 'default')
-
+		spyOn(mixDownContexts, 'default')
+		state.currentFrame = to.Frame(5)
 		animationFunction = buildAnimationFunction.default({
 			animationFunctionObjects,
 			layerFunctionObjects,
 		})
 	})
 
-	it('executes a grid with the layer functions', async (done: DoneFn) => {
-		await animationFunction()
+	describe('when the current frame has not yet completed', () => {
+		beforeEach(async (done: DoneFn) => {
+			state.tilesCompleted = 255
 
-		expect(executePatternSpy).toHaveBeenCalledWith({ layerFunctionObjects })
-
-		done()
-	})
-
-	it('updates settings for the next frame', async (done: DoneFn) => {
-		await animationFunction()
-
-		expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
-			settingsFunctionObjects: animationFunctionObjects,
-		})
-
-		done()
-	})
-
-	describe('canvas clearing', () => {
-		it('clears the canvas by default', async (done: DoneFn) => {
 			await animationFunction()
-
-			expect(clear.default).toHaveBeenCalled()
 
 			done()
 		})
 
-		it('does not clear the canvas if refreshing the canvas is off', async (done: DoneFn) => {
-			setSetting.default('refreshCanvas', false)
-			setSetting.default('startFrame', to.Frame(0))
+		it('does not execute the grid', () => {
+			expect(executePatternSpy).not.toHaveBeenCalled()
+		})
 
-			await animationFunction()
+		it('does not increment the current frame', () => {
+			expect(state.currentFrame).toBe(to.Frame(5))
+		})
 
-			expect(clear.default).not.toHaveBeenCalled()
+		it('does not update the settings for the next frame', () => {
+			expect(callFunctionsPerSetting.default).not.toHaveBeenCalled()
+		})
 
-			done()
+		it('does not mix down contexts', () => {
+			expect(mixDownContexts.default).not.toHaveBeenCalled()
+		})
+
+		it('does not export a frame', () => {
+			expect(exportCanvas.default).not.toHaveBeenCalled()
 		})
 	})
 
-	describe('frame exporting', () => {
-		const currentFrame: Frame = to.Frame(5)
-		beforeEach(() => {
-			state.exportFrames = true
-			state.currentFrame = currentFrame
+	describe('when the current frame has been completed', () => {
+		beforeEach(async (done: DoneFn) => {
+			state.tilesCompleted = 0
+
+			await animationFunction()
+
+			done()
 		})
 
-		describe('when the current frame has not yet completed exporting', () => {
-			beforeEach(async (done: DoneFn) => {
-				state.lastSavedFrame = to.Frame(4)
+		it('executes a grid with the layer functions', () => {
+			expect(executePatternSpy).toHaveBeenCalledWith({ layerFunctionObjects })
+		})
 
-				await animationFunction()
+		it('increments the current frame', () => {
+			expect(state.currentFrame).toBe(to.Frame(6))
+		})
 
-				done()
+		it('updates settings for the next frame', () => {
+			expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
+				settingsFunctionObjects: animationFunctionObjects,
 			})
+		})
 
-			it('does not execute the grid', () => {
-				expect(executePatternSpy).not.toHaveBeenCalled()
-			})
-
-			it('does not increment the current frame', () => {
-				expect(state.currentFrame).toBe(currentFrame)
-			})
-
-			it('does not update the settings for the next frame', () => {
-				expect(callFunctionsPerSetting.default).not.toHaveBeenCalled()
-			})
-
-			it('does not export again', () => {
+		describe('exporting frames', () => {
+			it('does not export frames by default', () => {
 				expect(exportCanvas.default).not.toHaveBeenCalled()
 			})
-		})
 
-		describe('when the current frame has has already been exported', () => {
-			beforeEach(async (done: DoneFn) => {
-				state.lastSavedFrame = currentFrame
+			it('exports frames if configured to', async (done: DoneFn) => {
+				state.exportFrames = true
 
 				await animationFunction()
 
+				expect(exportCanvas.default).toHaveBeenCalled()
+
 				done()
 			})
+		})
 
-			it('still executes the grid', () => {
-				expect(executePatternSpy).toHaveBeenCalled()
+		describe('canvas clearing', () => {
+			it('clears the canvas by default', () => {
+				expect(clearContextsSpy).toHaveBeenCalled()
 			})
 
-			it('increments the current frame', () => {
-				expect(state.currentFrame).toBe(to.Frame(6))
-			})
+			it('does not clear the canvas if refreshing the canvas is off', async (done: DoneFn) => {
+				setSetting.default('refreshCanvas', false)
+				clearContextsSpy.calls.reset()
+				setSetting.default('startFrame', to.Frame(0))
 
-			it('still updates the settings for the next frame', () => {
-				expect(callFunctionsPerSetting.default).toHaveBeenCalled()
-			})
+				await animationFunction()
 
-			it('exports again', () => {
-				expect(exportCanvas.default).toHaveBeenCalled()
+				expect(clearContextsSpy).not.toHaveBeenCalled()
+
+				done()
 			})
+		})
+
+		it('mixes down contexts', () => {
+			expect(mixDownContexts.default).toHaveBeenCalled()
 		})
 	})
 

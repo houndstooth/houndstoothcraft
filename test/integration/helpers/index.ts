@@ -4,7 +4,7 @@ import pixelIsColor from './pixelIsColor'
 import pixelIsColorWithMarker from './pixelIsColorWithMarker'
 import sectionCenterIsColor from './sectionCenterIsColor'
 import standardTileIsColors from './standardTileIsColors'
-import syncExecuteGrid from './syncExecuteGrid'
+import syncExecuteGridAndMixDownContexts from './syncExecuteGridAndMixDownContexts'
 import { thisFrameOnly, thisLayerOnly } from './thisFrameOnly'
 import {
 	Diagonal,
@@ -32,5 +32,5 @@ export {
 	pixelIsColorWithMarker,
 	PixelColorExpectation,
 	pixelIsColor,
-	syncExecuteGrid,
+	syncExecuteGridAndMixDownContexts,
 }

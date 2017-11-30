@@ -1,5 +1,6 @@
 import { Context } from './app'
 import { BasePattern, Effect, Frame, Houndstooth, Layer } from './pattern'
+import { NullarySideEffector } from './utilities'
 
 interface State {
 	animating: boolean,
@@ -8,15 +9,13 @@ interface State {
 	currentLayer: Layer,
 	currentPattern: Partial<BasePattern>,
 	exportFrames: boolean,
-	gridProgressInterval?: () => void,
-	interval?: () => void,
-	lastSavedFrame: Frame,
+	gridProgressInterval?: NullarySideEffector,
+	interval?: NullarySideEffector,
 	readonly mainHoundstooth: Houndstooth,
 	mixedDownContext?: Context,
-	mixingDown: boolean,
 	patternRef: number,
 	performanceLogging: boolean,
-	resolveGrid: () => void,
+	resolveGrid: NullarySideEffector,
 	selectedHoundstoothEffects: Effect[],
 	tileCount: number,
 	tilesCompleted: number,

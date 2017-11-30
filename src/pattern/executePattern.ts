@@ -1,4 +1,4 @@
-import { getSetting, mixDownContexts, SettingsFunctionObject } from '../app'
+import { getSetting, SettingsFunctionObject } from '../app'
 import * as from from '../from'
 import { state } from '../state'
 import * as to from '../to'
@@ -13,10 +13,6 @@ const executePattern: (_: { layerFunctionObjects: SettingsFunctionObject[] }) =>
 			if (thisPatternHasNotBeenCanceled.default(thisPatternRef)) {
 				await executeLayer.default({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
 			}
-		}
-
-		if (state.mixingDown) {
-			mixDownContexts.default()
 		}
 
 		state.currentLayer = to.Layer(0)

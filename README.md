@@ -21,7 +21,7 @@ In short:
 	- `INITIAL_STATE`
 - contents
 	- `mainHoundstooth` — a [houndstooth](#houndstooth)
-	- other stuff such as `lastSavedFrame`
+	- other stuff such as `currentPattern`, `contexts`, and `tilesCompleted`
 
 ### houndstooth
 

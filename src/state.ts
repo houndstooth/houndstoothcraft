@@ -13,9 +13,7 @@ const DEFAULT_CURRENT_PATTERN: Partial<BasePattern> = {}
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_INTERVAL: undefined = undefined
-const DEFAULT_LAST_SAVED_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
-const DEFAULT_MIXING_DOWN: boolean = false
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
@@ -32,10 +30,8 @@ const DEFAULT_STATE: State = {
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	interval: DEFAULT_INTERVAL,
-	lastSavedFrame: DEFAULT_LAST_SAVED_ANIMATION_FRAME,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	mixedDownContext: DEFAULT_MIXED_DOWN_CANVAS,
-	mixingDown: DEFAULT_MIXING_DOWN,
 	patternRef: DEFAULT_PATTERN_REF,
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
 	resolveGrid: DEFAULT_RESOLVE_GRID,

@@ -1,4 +1,6 @@
 export {
+	clearContext,
+	clearContexts,
 	DataBlob,
 	exportCanvas,
 	saveBlob,
@@ -36,11 +38,9 @@ export {
 	createEffectToggle,
 	createLabel,
 	LabelElement,
-	deleteElementIfExists,
 	insertElementRightAfter,
 } from './page'
 export {
-	clear,
 	fill,
 	Path,
 	Pixel,

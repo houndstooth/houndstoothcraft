@@ -9,7 +9,6 @@ export {
 	standardAnimation,
 	buildIntervalFunction,
 	buildAnimationFunction,
-	buildStopConditionFunction,
 } from './animation'
 export {
 	AssignmentMode,

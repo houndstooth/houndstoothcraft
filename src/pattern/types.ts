@@ -1,7 +1,7 @@
 // tslint:disable:max-file-line-count max-line-length
 
 import { Px, SettingsFunctionObject } from '../app'
-import { animationSettings, Frame } from './animation'
+import { animationSettings } from './animation'
 import {
 	AssignmentMode,
 	Color,
@@ -67,7 +67,6 @@ interface SettingsNamesToTypesMap { // Should these settings ones also be Partia
 	(settingName: SettingsNamesByType['ColorsTypedSettingsNames']): Color[],
 	(settingName: SettingsNamesByType['ColorSetTypedSettingsNames']): ColorSet,
 	(settingName: SettingsNamesByType['ExecuteTextureTypedSettingsNames']): ExecuteTexture,
-	(settingName: SettingsNamesByType['FrameTypedSettingsNames']): Frame,
 	(settingName: SettingsNamesByType['GetStripePositionsTypedSettingsNames']): GetStripePositions,
 	(settingName: SettingsNamesByType['GetTileOriginAndSizeTypedSettingsNames']): GetTileOriginAndSize,
 	(settingName: SettingsNamesByType['LayerTypedSettingsNames']): Layer,
@@ -122,7 +121,6 @@ interface SetSetting {
 	(settingName: SettingsNamesByType['ColorSetTypedSettingsNames'], value: ColorSet): void,
 	(settingName: SettingsNamesByType['ColorsTypedSettingsNames'], value: Color[]): void,
 	(settingName: SettingsNamesByType['ExecuteTextureTypedSettingsNames'], value: ExecuteTexture): void,
-	(settingName: SettingsNamesByType['FrameTypedSettingsNames'], value: Frame): void,
 	(settingName: SettingsNamesByType['GetStripePositionsTypedSettingsNames'], value: GetStripePositions): void,
 	(settingName: SettingsNamesByType['GetTileOriginAndSizeTypedSettingsNames'], value: GetTileOriginAndSize): void,
 	(settingName: SettingsNamesByType['LayerTypedSettingsNames'], value: Layer): void,
@@ -155,7 +153,6 @@ interface SettingsNamesByTypeBase {
 	readonly ColorsTypedSettingsNames: '_',
 	readonly ColorTypedSettingsNames: '_',
 	readonly ExecuteTextureTypedSettingsNames: '_',
-	readonly FrameTypedSettingsNames: '_',
 	readonly GetStripePositionsTypedSettingsNames: '_',
 	readonly GetTileOriginAndSizeTypedSettingsNames: '_',
 	readonly LayerTypedSettingsNames: '_',

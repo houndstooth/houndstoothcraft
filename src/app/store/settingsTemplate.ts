@@ -36,7 +36,6 @@ type TemplateSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	ColorsTypedSettingsNames: '_',
 	ColorTypedSettingsNames: '_',
 	ExecuteTextureTypedSettingsNames: '_',
-	FrameTypedSettingsNames: '_',
 	GetStripePositionsTypedSettingsNames: '_',
 	GetTileOriginAndSizeTypedSettingsNames: '_',
 	LayerTypedSettingsNames: '_',

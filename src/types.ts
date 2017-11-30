@@ -8,6 +8,7 @@ interface State {
 	currentFrame: Frame,
 	currentLayer: Layer,
 	currentPattern: Partial<BasePattern>,
+	endFrame: Frame,
 	exportFrames: boolean,
 	gridProgressInterval?: NullarySideEffector,
 	interval?: NullarySideEffector,

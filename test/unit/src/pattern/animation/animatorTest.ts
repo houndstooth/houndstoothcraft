@@ -1,9 +1,9 @@
 import {
 	animator,
 	buildIntervalFunction,
-	ConditionFunction,
 	noop,
 	NullarySideEffector,
+	setSetting,
 	state,
 	windowWrapper,
 } from '../../../../../src'
@@ -13,21 +13,20 @@ describe('animator', () => {
 	const animationFunction: NullarySideEffector = noop.default
 	const frameRate: number = 3
 	const resolveAnimation: NullarySideEffector = noop.default
-	const stopConditionFunction: ConditionFunction = (): boolean => false
 	const interval: NullarySideEffector = noop.default
 	beforeEach(() => {
+		setSetting.default('frameRate', frameRate)
 		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)
 		intervalFunction = (p: number): number => p * 20
 		spyOn(buildIntervalFunction, 'default').and.returnValue(intervalFunction)
 
-		animator.default({ animationFunction, resolveAnimation, frameRate, stopConditionFunction })
+		animator.default({ animationFunction, resolveAnimation })
 	})
 
 	it('assembles the animation, resolution, and stop condition functions together', () => {
 		expect(buildIntervalFunction.default).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
 			resolveAnimation,
-			stopConditionFunction,
 		}))
 	})
 

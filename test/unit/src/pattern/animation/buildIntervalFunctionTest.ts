@@ -1,72 +1,67 @@
-import { buildIntervalFunction, NullarySideEffector, setSetting, state, to, windowWrapper } from '../../../../../src'
+import { buildIntervalFunction, NullarySideEffector, state, to, windowWrapper } from '../../../../../src'
 import Spy = jasmine.Spy
 
 describe('build interval function returns a function which', () => {
 	let intervalFunction: NullarySideEffector
 	let animationFunctionSpy: Spy
-	let stopConditionFunctionSpy: Spy
 	let resolveAnimationSpy: Spy
 	beforeEach(() => {
 		state.animating = true
 		spyOn(windowWrapper, 'clearInterval')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
-		stopConditionFunctionSpy = jasmine.createSpy('stopConditionFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
 		intervalFunction = buildIntervalFunction.default({
 			animationFunction: animationFunctionSpy,
 			resolveAnimation: resolveAnimationSpy,
-			stopConditionFunction: stopConditionFunctionSpy,
 		})
 	})
 
-	it('calls the animation function it was built from (and does not clear the interval)', () => {
-		stopConditionFunctionSpy.and.returnValue(false)
-
+	it('calls the animation function it was built from', () => {
 		intervalFunction()
 
 		expect(animationFunctionSpy).toHaveBeenCalled()
-		expect(stopConditionFunctionSpy).toHaveBeenCalled()
-		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
 	})
 
-	it('calls clear interval on the current interval if the stop condition is met', () => {
-		stopConditionFunctionSpy.and.returnValue(true)
-
-		intervalFunction()
-
-		expect(animationFunctionSpy).toHaveBeenCalled()
-		expect(stopConditionFunctionSpy).toHaveBeenCalled()
-		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
-	})
-
-	it('does not call the animation or stop condition functions if animation has been paused', () => {
+	it('does not animate when paused', () => {
 		state.animating = false
 
 		intervalFunction()
 
 		expect(animationFunctionSpy).not.toHaveBeenCalled()
-		expect(stopConditionFunctionSpy).not.toHaveBeenCalled()
 	})
 
-	describe('resolving the animation promise', () => {
-		it('resolveAnimations if the end frame is reached', () => {
-			setSetting.default('endFrame', to.Frame(12))
+	describe('coming to an end', () => {
+		it('when end frame is 0, it never ends', () => {
+			state.endFrame = to.Frame(0)
 			state.currentFrame = to.Frame(12)
 
 			intervalFunction()
 
-			expect(resolveAnimationSpy).toHaveBeenCalled()
+			expect(resolveAnimationSpy).not.toHaveBeenCalled()
+			// tslint:disable-next-line:no-unsafe-any
+			expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
 		})
 
-		it('does not resolveAnimation if the end frame is not reached', () => {
-			setSetting.default('endFrame', to.Frame(12))
-			state.currentFrame = to.Frame(11)
+		it('when end frame is nonzero, but current frame is not yet past it, do not end', () => {
+			state.endFrame = to.Frame(15)
+			state.currentFrame = to.Frame(12)
 
 			intervalFunction()
 
 			expect(resolveAnimationSpy).not.toHaveBeenCalled()
+			// tslint:disable-next-line:no-unsafe-any
+			expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
+		})
+
+		it('when end frame is nonzero, and current frame is past it, end', () => {
+			state.endFrame = to.Frame(15)
+			state.currentFrame = to.Frame(16)
+
+			intervalFunction()
+
+			expect(resolveAnimationSpy).toHaveBeenCalled()
+			// tslint:disable-next-line:no-unsafe-any
+			expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
 		})
 	})
 })

@@ -109,7 +109,6 @@ export {
 	buildAnimationFunction,
 	grid,
 	executeLayer,
-	buildStopConditionFunction,
 	getBySupertile,
 	getByWeave,
 	getColor,

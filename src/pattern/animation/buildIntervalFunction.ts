@@ -1,27 +1,24 @@
-import { getSetting } from '../../app'
 import { state } from '../../state'
+import * as to from '../../to'
 import { NullarySideEffector, windowWrapper } from '../../utilities'
-import { BuildIntervalFunctionParams, ConditionFunction } from './types'
+import { AnimationParams, ConditionFunction } from './types'
 
-const buildIntervalFunction: (_: BuildIntervalFunctionParams) => NullarySideEffector =
-	({ animationFunction, stopConditionFunction, resolveAnimation }: BuildIntervalFunctionParams): NullarySideEffector =>
+const buildIntervalFunction: (_: AnimationParams) => NullarySideEffector =
+	({ animationFunction, resolveAnimation }: AnimationParams): NullarySideEffector =>
 		(): void => {
-			if (!isAnimating()) {
+			if (isPaused()) {
 				return
-			}
-
-			if (state.currentFrame === getSetting.default('endFrame')) {
-				resolveAnimation()
 			}
 
 			animationFunction()
 
-			if (stopConditionFunction()) {
+			if (state.endFrame !== to.Frame(0) && state.currentFrame > state.endFrame) {
+				resolveAnimation()
 				// tslint:disable-next-line:no-unsafe-any
 				windowWrapper.clearInterval(state.interval)
 			}
 		}
 
-const isAnimating: ConditionFunction = (): boolean => state.animating
+const isPaused: ConditionFunction = (): boolean => !state.animating
 
 export default buildIntervalFunction

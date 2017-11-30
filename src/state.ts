@@ -10,6 +10,7 @@ const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
 const DEFAULT_CURRENT_PATTERN: Partial<BasePattern> = {}
+const DEFAULT_END_FRAME: Frame = to.Frame(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_INTERVAL: undefined = undefined
@@ -27,6 +28,7 @@ const DEFAULT_STATE: State = {
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
+	endFrame: DEFAULT_END_FRAME,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	interval: DEFAULT_INTERVAL,

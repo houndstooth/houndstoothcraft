@@ -1,8 +1,6 @@
 import {
 	animator,
 	buildAnimationFunction,
-	buildStopConditionFunction,
-	ConditionFunction,
 	executeAnimation,
 	Frame,
 	setSetting,
@@ -11,7 +9,6 @@ import {
 } from '../../../../../src'
 
 describe('execute animation', () => {
-	const stopConditionFunction: ConditionFunction = (): boolean => false
 	const animationFunction: (p: number) => number = (p: number): number => p
 
 	let layerFunctionObjects: SettingsFunctionObject[]
@@ -23,7 +20,6 @@ describe('execute animation', () => {
 
 	beforeEach(() => {
 		spyOn(animator, 'default')
-		spyOn(buildStopConditionFunction, 'default').and.returnValue(stopConditionFunction)
 		spyOn(buildAnimationFunction, 'default').and.returnValue(animationFunction)
 	})
 
@@ -44,17 +40,7 @@ describe('execute animation', () => {
 
 			expect(animator.default).toHaveBeenCalledWith(jasmine.objectContaining({
 				animationFunction,
-				frameRate,
-				stopConditionFunction,
 			}))
-		})
-
-		it('builds a stop condition function', () => {
-			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
-
-			expect(buildStopConditionFunction.default).toHaveBeenCalledWith({
-				endFrame,
-			})
 		})
 
 		it('builds an animation function', () => {

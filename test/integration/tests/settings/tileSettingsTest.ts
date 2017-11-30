@@ -5,10 +5,11 @@ import {
 	createContext,
 	Effect,
 	executeSelectedHoundstoothEffects,
+	mixDownContexts,
 	to,
 } from '../../../../src'
 import { buildMockContext, MockContextCall } from '../../../helpers'
-import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
+import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
 
@@ -22,7 +23,6 @@ describe('.tileSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -72,7 +72,6 @@ describe('.tileSettings', () => {
 						},
 					},
 				}
-				activateTestMarkerCanvas()
 
 				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -127,12 +126,11 @@ describe('.tileSettings', () => {
 			}
 			context = buildMockContext({ contextCallsOrder })
 			spyOn(createContext, 'default').and.returnValue(context)
+			spyOn(mixDownContexts, 'default')
 		})
 
 		// tslint:disable-next-line:max-line-length
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', async (done: DoneFn) => {
-			activateTestMarkerCanvas()
-
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
@@ -157,8 +155,6 @@ describe('.tileSettings', () => {
 					tileSettings: { collapseSameColoredShapesWithinTile: false },
 				},
 			}
-
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 

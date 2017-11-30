@@ -8,7 +8,7 @@ import {
 	to,
 	Unit,
 } from '../../../../src'
-import { activateTestMarkerCanvas, pixelIsColor, sectionCenterIsColor, standardTileIsColors } from '../../helpers'
+import { pixelIsColor, sectionCenterIsColor, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
 
@@ -21,7 +21,6 @@ describe('.viewSettings', () => {
 					viewSettings: { canvasSize: to.Px(125) },
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -50,8 +49,6 @@ describe('.viewSettings', () => {
 			}
 			const tileSize: Unit = getSetting.default('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
-
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -103,8 +100,6 @@ describe('.viewSettings', () => {
 			const tileSize: Unit = getSetting.default('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
-			activateTestMarkerCanvas()
-
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
@@ -149,7 +144,6 @@ describe('.viewSettings', () => {
 					viewSettings: { centerViewOnCenterOfTileAtHomeAddress: true },
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -203,8 +197,6 @@ describe('.viewSettings', () => {
 					},
 				},
 			}
-
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 

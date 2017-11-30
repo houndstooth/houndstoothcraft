@@ -3,18 +3,16 @@ import * as effects from '../../../../effects'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import {
 	colorSettings,
-	createContexts,
 	createEffectToggles,
+	executeLayer,
 	getSetting,
 	PageElement,
-	scaleCanvasContainer,
 } from '../../../../src'
 import { buildMockElement } from '../../../unit'
 
 describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
-		spyOn(createContexts, 'default')
-		spyOn(scaleCanvasContainer, 'default')
+		spyOn(executeLayer, 'default')
 
 		const effectTogglesContainer: HTMLElement = document.createElement('div')
 		effectTogglesContainer.setAttribute('id', 'effect-toggles-container')

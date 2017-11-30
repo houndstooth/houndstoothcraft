@@ -10,7 +10,6 @@ import {
 	Unit,
 } from '../../../../src'
 import {
-	activateTestMarkerCanvas,
 	sectionCenterIsColor,
 	StandardTileExpectation,
 	standardTileIsColors,
@@ -39,8 +38,6 @@ describe('.stripeSettings', () => {
 			})
 
 			it('works in standard mode', async (done: DoneFn) => {
-				activateTestMarkerCanvas()
-
 				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
@@ -69,7 +66,6 @@ describe('.stripeSettings', () => {
 						},
 					},
 				}
-				activateTestMarkerCanvas()
 
 				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 

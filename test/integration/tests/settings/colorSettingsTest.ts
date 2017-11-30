@@ -10,7 +10,6 @@ import {
 	Unit,
 } from '../../../../src'
 import {
-	activateTestMarkerCanvas,
 	PixelColorExpectation,
 	pixelIsColorWithMarker,
 	StandardTileExpectation,
@@ -38,7 +37,6 @@ describe('.colorSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -80,7 +78,6 @@ describe('.colorSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -172,8 +169,6 @@ describe('.colorSettings', () => {
 							},
 						},
 					}
-
-					activateTestMarkerCanvas()
 
 					executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -517,8 +512,6 @@ describe('.colorSettings', () => {
 						},
 					}
 
-					activateTestMarkerCanvas()
-
 					executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 					setTimeout(() => {
@@ -658,8 +651,6 @@ describe('.colorSettings', () => {
 					},
 				}
 
-				activateTestMarkerCanvas()
-
 				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 				setTimeout(() => {
@@ -738,7 +729,6 @@ describe('.colorSettings', () => {
 						},
 					},
 				}
-				activateTestMarkerCanvas()
 
 				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -797,7 +787,6 @@ describe('.colorSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -840,7 +829,6 @@ describe('.colorSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 

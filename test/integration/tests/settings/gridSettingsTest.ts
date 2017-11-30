@@ -7,7 +7,7 @@ import {
 	to,
 	Unit,
 } from '../../../../src'
-import { activateTestMarkerCanvas, StandardTileExpectation, standardTileIsColors } from '../../helpers'
+import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT, WHITE } = constants
 
@@ -29,7 +29,6 @@ describe('.gridSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -161,7 +160,6 @@ describe('.gridSettings', () => {
 					},
 				},
 			}
-			activateTestMarkerCanvas()
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 

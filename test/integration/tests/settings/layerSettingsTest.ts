@@ -8,7 +8,7 @@ import {
 	state,
 	to,
 } from '../../../../src'
-import { activateTestMarkerCanvas, pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
+import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
 
 const { BLACK, CYAN, ERASE, TRANSPARENT, YELLOW } = constants
 
@@ -27,7 +27,6 @@ describe('.layerSettings', () => {
 				},
 			},
 		}
-		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
@@ -67,7 +66,6 @@ describe('.layerSettings', () => {
 				gridSettings: { tileResolution: (): number => 2 },
 			},
 		}
-		activateTestMarkerCanvas()
 
 		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 

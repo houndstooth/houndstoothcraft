@@ -1,4 +1,4 @@
-// tslint:disable:no-any no-unsafe-any
+// tslint:disable:no-any no-unsafe-any max-line-length
 
 import {
 	Canvas,
@@ -6,48 +6,41 @@ import {
 	NullarySideEffector,
 	PageElement,
 	Px,
-	scaleCanvasContainer,
+	resetMixedDownContext,
 	scaleElement,
 	to,
 } from '../../../src'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import testMarkersClear from './testMarkersClear'
 
-const prepareCanvasForDisplayInTest: (canvas: Canvas | PageElement) => void =
-	(canvas: Canvas | PageElement): void => {
-		canvas.style.display = 'block'
-		canvas.style.position = 'absolute'
-		canvas.style.top = '0'
-		canvas.style.left = '0'
-	}
-
 const activateTestMarkerCanvas: NullarySideEffector =
 	(): void => {
 		testMarkersClear()
 
-		// tslint:disable-next-line:max-line-length
-		const testMarkersCanvas: Canvas = document.querySelector('#test-markers-canvas') as HTMLCanvasElement || createTestMarkersCanvas()
-
-		prepareCanvasForDisplayInTest(testMarkersCanvas)
-		testMarkersCanvas.style.zIndex = '9001'
-
 		const canvasSize: Px = getSetting.default('canvasSize')
+
+		const testMarkersCanvas: Canvas = document.querySelector('#test-markers-canvas') as HTMLCanvasElement || createTestMarkersCanvas()
+		testMarkersCanvas.style.position = 'absolute'
+		testMarkersCanvas.style.zIndex = '9001'
 		testMarkersCanvas.width = canvasSize
 		testMarkersCanvas.height = canvasSize
 
-		// tslint:disable-next-line:max-line-length
-		const testCanvasDisplayArea: PageElement = document.querySelector('#test-canvas-display-area') as HTMLElement || {}
+		const testCanvasDisplayArea: PageElement = document.querySelector('#test-canvas-display-area') as HTMLElement || document.createElement('div')
 		if (testCanvasDisplayArea.style) {
 			testCanvasDisplayArea.style.display = 'block'
 			scaleElement.default({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 		}
 
-		const canvasContainer: PageElement = document.createElement('div')
+		const canvasContainer: PageElement = document.querySelector('#canvas-container') as PageElement || document.createElement('div')
 		canvasContainer.setAttribute('id', 'canvas-container')
+		canvasContainer.style.position = 'absolute'
 		testCanvasDisplayArea.appendChild(canvasContainer)
-		scaleCanvasContainer.default()
+		scaleElement.default({ element: canvasContainer, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })
 
-		prepareCanvasForDisplayInTest(canvasContainer)
+		const mixedDownCanvas: Canvas = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || document.createElement('canvas')
+		mixedDownCanvas.setAttribute('id', 'mixed-down-canvas')
+		testCanvasDisplayArea.appendChild(mixedDownCanvas)
+		resetMixedDownContext.default()
 	}
 
 export default activateTestMarkerCanvas

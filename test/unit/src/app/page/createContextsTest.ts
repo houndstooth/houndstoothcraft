@@ -1,9 +1,7 @@
 import Spy = jasmine.Spy
 import {
-	Context,
 	createContext,
 	createContexts,
-	createMixedDownContext,
 	documentWrapper,
 	PageElement,
 	scaleCanvasContainer,
@@ -11,35 +9,24 @@ import {
 	state,
 	to,
 } from '../../../../../src'
-import { buildMockContext } from '../../../../helpers'
 import { buildMockElement } from '../../../helpers'
 
 describe('create contexts', () => {
 	let canvasContainer: PageElement
 	let createContextSpy: Spy
 	let querySelectorSpy: Spy
-	let mixedDownContext: Context
 	beforeEach(() => {
 		createContextSpy = spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement()
 		canvasContainer.innerHTML = 'some old canvases'
 		querySelectorSpy = spyOn(documentWrapper, 'querySelector').and.returnValue(canvasContainer)
-
-		mixedDownContext = buildMockContext()
-		spyOn(createMixedDownContext, 'default').and.returnValue(mixedDownContext)
 	})
 
 	it('clears the canvas container contents', () => {
 		createContexts.default()
 
 		expect(canvasContainer.innerHTML).toBe('')
-	})
-
-	it('adds the mixed down context', () => {
-		createContexts.default()
-
-		expect(state.mixedDownContext).toBe(mixedDownContext)
 	})
 
 	it('adds contexts to the state for each layer', () => {

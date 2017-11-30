@@ -1,9 +1,7 @@
 import Spy = jasmine.Spy
 import {
 	composeMainHoundstooth,
-	Context,
 	createContexts,
-	createMixedDownContext,
 	Effect,
 	executeAnimation,
 	executePattern,
@@ -17,10 +15,8 @@ import {
 describe('execute selected houndstooth effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
-	const mixedDownContext: Context = {}
 	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
-		spyOn(createMixedDownContext, 'default').and.returnValue(mixedDownContext)
 		spyOn(createContexts, 'default')
 		spyOn(executePattern, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 		spyOn(executeAnimation, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))

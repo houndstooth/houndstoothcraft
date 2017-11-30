@@ -26,7 +26,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		testMarkersClear()
 
 		// tslint:disable-next-line:max-line-length
-		const testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement || createTestMarkersCanvas()
+		const testMarkersCanvas: Canvas = document.querySelector('#test-markers-canvas') as HTMLCanvasElement || createTestMarkersCanvas()
 
 		prepareCanvasForDisplayInTest(testMarkersCanvas)
 		testMarkersCanvas.style.zIndex = '9001'
@@ -36,7 +36,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		testMarkersCanvas.height = canvasSize
 
 		// tslint:disable-next-line:max-line-length
-		const testCanvasDisplayArea: PageElement = document.querySelector('.test-canvas-display-area') as HTMLElement || {}
+		const testCanvasDisplayArea: PageElement = document.querySelector('#test-canvas-display-area') as HTMLElement || {}
 		if (testCanvasDisplayArea.style) {
 			testCanvasDisplayArea.style.display = 'block'
 			scaleElement.default({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ canvasSize, canvasSize ]) })

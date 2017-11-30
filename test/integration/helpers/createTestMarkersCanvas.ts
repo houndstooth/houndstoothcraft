@@ -1,16 +1,17 @@
+// tslint:disable:no-unsafe-any
+
 import { Canvas } from '../../../src'
 
 const createTestMarkersCanvas: () => Canvas =
 	(): Canvas => {
-		// tslint:disable:no-any
+		// tslint:disable-next-line:no-any
 		const testCanvasDisplayArea: any = document.createElement('div')
-		// tslint:disable:no-unsafe-any
-		testCanvasDisplayArea.classList.add('test-canvas-display-area')
+		testCanvasDisplayArea.setAttribute('id', 'test-canvas-display-area')
 
 		document.body.insertBefore(testCanvasDisplayArea, document.body.firstChild)
 
 		const testMarkersCanvas: Canvas = document.createElement('canvas')
-		testMarkersCanvas.classList.add('test-markers-canvas')
+		testMarkersCanvas.setAttribute('id', 'test-markers-canvas')
 		testCanvasDisplayArea.appendChild(testMarkersCanvas)
 
 		return testMarkersCanvas

@@ -1,4 +1,5 @@
 import activateTestMarkerCanvas from './activateTestMarkerCanvas'
+import createTestMarkersCanvas from './createTestMarkersCanvas'
 import fakeAnimator from './fakeAnimator'
 import pixelIsColor from './pixelIsColor'
 import pixelIsColorWithMarker from './pixelIsColorWithMarker'
@@ -18,6 +19,7 @@ import {
 
 export {
 	activateTestMarkerCanvas,
+	createTestMarkersCanvas,
 	sectionCenterIsColor,
 	thisLayerOnly,
 	Diagonal,

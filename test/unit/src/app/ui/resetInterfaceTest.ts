@@ -1,20 +1,28 @@
 import {
 	clearContexts,
+	clearMixedDownContext,
+	Context,
 	documentWrapper,
 	Effect,
 	NullarySideEffector,
 	PageElement,
 	resetInterface,
+	resetMixedDownContext,
 	state,
 	windowWrapper,
 } from '../../../../../src'
+import { buildMockContext } from '../../../../helpers'
 import { buildMockElement } from '../../../helpers'
 
 describe('reset interface', () => {
 	const warningsContainer: PageElement = buildMockElement()
+	const mixedDownContext: Context = buildMockContext()
 	beforeEach(() => {
 		spyOn(documentWrapper, 'querySelector').and.returnValue(warningsContainer)
 		spyOn(windowWrapper, 'clearInterval')
+		spyOn(clearMixedDownContext, 'default')
+		spyOn(resetMixedDownContext, 'default').and.callFake(() => state.mixedDownContext = mixedDownContext)
+		spyOn(clearContexts, 'default')
 	})
 
 	it('clears warnings', () => {
@@ -23,12 +31,16 @@ describe('reset interface', () => {
 		expect(warningsContainer.innerHTML).toBe('')
 	})
 
-	it('clears canvas', () => {
-		spyOn(clearContexts, 'default')
-
+	it('clears contexts', () => {
 		resetInterface.default()
 
 		expect(clearContexts.default).toHaveBeenCalled()
+	})
+
+	it('clears the mixed down context', () => {
+		resetInterface.default()
+
+		expect(clearMixedDownContext.default).toHaveBeenCalled()
 	})
 
 	it('clears any active animation', () => {
@@ -52,7 +64,7 @@ describe('reset interface', () => {
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
 	})
 
-	it('resets the state, except for any selected effects', () => {
+	it('resets the state, except for any selected effects and the mixed down context', () => {
 		const fakeHoundstoothEffect: Effect = {
 			animationsPattern: {},
 			basePattern: {},
@@ -64,5 +76,6 @@ describe('reset interface', () => {
 		resetInterface.default()
 
 		expect(state.selectedHoundstoothEffects[ 0 ]).toEqual(fakeHoundstoothEffect)
+		expect(state.mixedDownContext).toEqual(mixedDownContext)
 	})
 })

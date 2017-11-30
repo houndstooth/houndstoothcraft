@@ -1,12 +1,14 @@
 export {
 	clearContext,
 	clearContexts,
+	clearMixedDownContext,
 	DataBlob,
 	exportCanvas,
 	saveBlob,
 	saveCanvas,
 	getCurrentContext,
 	mixDownContexts,
+	resetMixedDownContext,
 } from './canvas'
 export {
 	callFunctionsPerSetting,
@@ -27,7 +29,6 @@ export {
 	createCheckbox,
 	createContext,
 	createEffectToggles,
-	createMixedDownContext,
 	Dimensions,
 	InputElement,
 	PageElement,

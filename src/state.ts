@@ -13,7 +13,7 @@ const DEFAULT_CURRENT_PATTERN: Partial<BasePattern> = {}
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_INTERVAL: undefined = undefined
-const DEFAULT_MIXED_DOWN_CANVAS: undefined = undefined
+const DEFAULT_MIXED_DOWN_CONTEXT: Context = {}
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
@@ -31,7 +31,7 @@ const DEFAULT_STATE: State = {
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	interval: DEFAULT_INTERVAL,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
-	mixedDownContext: DEFAULT_MIXED_DOWN_CANVAS,
+	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
 	patternRef: DEFAULT_PATTERN_REF,
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
 	resolveGrid: DEFAULT_RESOLVE_GRID,

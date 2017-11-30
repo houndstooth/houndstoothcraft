@@ -1,7 +1,14 @@
 import * as effects from '../../../../effects'
 // tslint:disable-next-line:no-reaching-imports
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
-import { colorSettings, createContexts, createEffectToggles, getSetting, PageElement, scaleCanvasContainer } from '../../../../src'
+import {
+	colorSettings,
+	createContexts,
+	createEffectToggles,
+	getSetting,
+	PageElement,
+	scaleCanvasContainer,
+} from '../../../../src'
 import { buildMockElement } from '../../../unit'
 
 describe('effect toggles', () => {

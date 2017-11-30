@@ -5,7 +5,6 @@ import * as createContexts from './createContexts'
 import * as createEffectToggle from './createEffectToggle'
 import * as createEffectToggles from './createEffectToggles'
 import * as createLabel from './createLabel'
-import * as createMixedDownContext from './createMixedDownContext'
 import * as insertElementRightAfter from './insertElementRightAfter'
 import * as scaleCanvasContainer from './scaleCanvasContainer'
 import * as scaleElement from './scaleElement'
@@ -14,7 +13,6 @@ import { Canvas, Context, Dimensions, InputElement, LabelElement, PageElement, P
 export {
 	createContext,
 	createContexts,
-	createMixedDownContext,
 	createEffectToggles,
 	attachControlHandlers,
 	Canvas,

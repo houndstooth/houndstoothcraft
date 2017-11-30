@@ -21,7 +21,7 @@ const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => b
 	}
 
 const pixelColor: (coordinate: Coordinate) => Color = ([ x, y ]: Coordinate): Color => {
-	const mixedDownCanvas: Canvas = document.querySelector('.mixed-down-canvas') as HTMLCanvasElement || buildMockCanvas()
+	const mixedDownCanvas: Canvas = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || buildMockCanvas()
 	// tslint:disable-next-line:no-unsafe-any
 	const pixelData: Uint8ClampedArray = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data
 

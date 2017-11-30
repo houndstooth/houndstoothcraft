@@ -12,7 +12,7 @@ interface State {
 	gridProgressInterval?: NullarySideEffector,
 	interval?: NullarySideEffector,
 	readonly mainHoundstooth: Houndstooth,
-	mixedDownContext?: Context,
+	mixedDownContext: Context,
 	patternRef: number,
 	performanceLogging: boolean,
 	resolveGrid: NullarySideEffector,

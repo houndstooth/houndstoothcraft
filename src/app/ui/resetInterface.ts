@@ -3,7 +3,7 @@
 import { Effect } from '../../pattern'
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
-import { clearContexts } from '../canvas'
+import { clearContexts, clearMixedDownContext, resetMixedDownContext } from '../canvas'
 import { PageElement } from '../page'
 import { resetState } from '../store'
 
@@ -13,12 +13,16 @@ const resetInterface: NullarySideEffector =
 		warnings.innerHTML = ''
 
 		clearContexts.default()
+		clearMixedDownContext.default()
+
 		windowWrapper.clearInterval(state.interval)
 		windowWrapper.clearInterval(state.gridProgressInterval)
 		state.resolveGrid()
 
 		const existingEffects: Effect[] = state.selectedHoundstoothEffects.slice()
 		resetState.default(state)
+
+		resetMixedDownContext.default()
 		state.selectedHoundstoothEffects = existingEffects
 	}
 

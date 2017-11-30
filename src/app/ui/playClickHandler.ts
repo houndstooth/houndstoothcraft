@@ -3,6 +3,7 @@
 import { state } from '../../state'
 import * as to from '../../to'
 import { documentWrapper, NullarySideEffector } from '../../utilities'
+import { mixDownContexts } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
 
 const playClickHandler: NullarySideEffector =
@@ -15,6 +16,8 @@ const playClickHandler: NullarySideEffector =
 
 		if (!state.animating) {
 			state.animating = true
+
+			mixDownContexts.default()
 
 			const pauseButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
 			/* istanbul ignore else */

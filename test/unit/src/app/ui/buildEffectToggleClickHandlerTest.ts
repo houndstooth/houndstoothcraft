@@ -12,9 +12,12 @@ import { buildMockElement, mockQuerySelector, SimulateClick } from '../../../hel
 import Spy = jasmine.Spy
 
 describe('build effect toggle click handler returns a function which', () => {
-	it('resets the interface, toggles selection of the effect it is for, and executes', () => {
-		const resetInterfaceSpy: Spy = spyOn(resetInterface, 'default')
+	let resetInterfaceSpy: Spy
+	beforeEach(() => {
+		resetInterfaceSpy = spyOn(resetInterface, 'default')
+	})
 
+	it('resets the interface, toggles selection of the effect it is for, and executes', () => {
 		const executeSelectedHoundstoothEffectsSpy: Spy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 

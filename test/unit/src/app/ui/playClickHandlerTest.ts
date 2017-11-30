@@ -1,4 +1,11 @@
-import { executeSelectedHoundstoothEffects, NullarySideEffector, playClickHandler, state, to } from '../../../../../src'
+import {
+	executeSelectedHoundstoothEffects,
+	mixDownContexts,
+	NullarySideEffector,
+	playClickHandler,
+	state,
+	to,
+} from '../../../../../src'
 import Spy = jasmine.Spy
 import { mockQuerySelector } from '../../../helpers'
 
@@ -9,6 +16,7 @@ describe('play click handler', () => {
 	let rewindButton: HTMLButtonElement
 
 	beforeEach(() => {
+		spyOn(mixDownContexts, 'default')
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
@@ -27,31 +35,29 @@ describe('play click handler', () => {
 			state.animating = true
 			playButton.disabled = true
 			pauseButton.disabled = false
+
+			playClickHandler.default()
 		})
 
 		// tslint:disable-next-line:max-line-length
 		it('stays animating (this situation where you could click the button while it is already animating should never be the case though once disabling works)', () => {
-			playClickHandler.default()
-
 			expect(state.animating).toBe(true)
 		})
 
 		it('keeps the play button disabled', () => {
-			playClickHandler.default()
-
 			expect(playButton.disabled).toBe(true)
 		})
 
 		it('keeps the pause button enabled', () => {
-			playClickHandler.default()
-
 			expect(pauseButton.disabled).toBe(false)
 		})
 
 		it('does not execute the selected houndstooth effects again', () => {
-			playClickHandler.default()
-
 			expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
+		})
+
+		it('does not mix down the contexts', () => {
+			expect(mixDownContexts.default).not.toHaveBeenCalled()
 		})
 	})
 
@@ -66,6 +72,12 @@ describe('play click handler', () => {
 			playClickHandler.default()
 
 			expect(state.animating).toBe(true)
+		})
+
+		it('mixes down the contexts', () => {
+			playClickHandler.default()
+
+			expect(mixDownContexts.default).toHaveBeenCalled()
 		})
 
 		it('disables the play button', () => {

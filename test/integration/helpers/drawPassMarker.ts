@@ -8,7 +8,7 @@ import { DrawPassMarker } from './types'
 const drawPassMarker: (_: DrawPassMarker) => void =
 	({ coordinateUnderTest, id, passed }: DrawPassMarker): void => {
 		// tslint:disable-next-line:max-line-length
-		let testMarkersCanvas: Canvas = document.querySelector('.test-markers-canvas') as HTMLCanvasElement || buildMockCanvas()
+		let testMarkersCanvas: Canvas = document.querySelector('#test-markers-canvas') as HTMLCanvasElement || buildMockCanvas()
 		if (!testMarkersCanvas) {
 			testMarkersCanvas = createTestMarkersCanvas()
 		}

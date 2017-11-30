@@ -31,6 +31,13 @@ body {
     margin: 20px;
 }
 
+#mixed-down-canvas {
+    width: 800px;
+    height: 800px;
+    position: absolute;
+    top: 8px;
+}
+
 #canvas-container {
     background-color: rgb(255, 255, 255);
 

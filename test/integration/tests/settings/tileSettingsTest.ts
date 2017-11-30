@@ -3,7 +3,6 @@ import {
 	constants,
 	Context,
 	createContext,
-	createMixedDownContext,
 	Effect,
 	executeSelectedHoundstoothEffects,
 	to,
@@ -128,7 +127,6 @@ describe('.tileSettings', () => {
 			}
 			context = buildMockContext({ contextCallsOrder })
 			spyOn(createContext, 'default').and.returnValue(context)
-			spyOn(createMixedDownContext, 'default').and.returnValue(buildMockContext())
 		})
 
 		// tslint:disable-next-line:max-line-length

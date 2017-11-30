@@ -9,7 +9,6 @@ interface Layer extends Number {
 interface ExecuteLayerParams extends Referenced {
 	readonly layer: Layer,
 	readonly layerFunctionObjects: SettingsFunctionObject[],
-	readonly startLayer: Layer,
 }
 
 export {

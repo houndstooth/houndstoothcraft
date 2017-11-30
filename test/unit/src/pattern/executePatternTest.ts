@@ -13,12 +13,10 @@ import {
 } from '../../../../src'
 
 describe('execute pattern', () => {
-	const startLayer: Layer = to.Layer(2)
 	const endLayer: Layer = to.Layer(4)
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
-		setSetting.default('startLayer', startLayer)
 		setSetting.default('endLayer', endLayer)
 		state.patternRef = 99
 	})
@@ -36,8 +34,7 @@ describe('execute pattern', () => {
 		done()
 	})
 
-	// tslint:disable-next-line:max-line-length
-	it('executes a layer for each layer from zero (not the start layer; that\'s just what gets shown, but the processing leading up to it still needs to happen) to the end layer, inclusive', async (done: DoneFn) => {
+	it('executes a layer for each layer from zero to the end layer, inclusive', async (done: DoneFn) => {
 		const executeLayerSpy: Spy = spyOn(executeLayer, 'default')
 
 		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
@@ -46,31 +43,26 @@ describe('execute pattern', () => {
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(0),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(1),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(2),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(3),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(4),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 
@@ -90,31 +82,26 @@ describe('execute pattern', () => {
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(0),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(1),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).toHaveBeenCalledWith({
 			layer: to.Layer(2),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).not.toHaveBeenCalledWith({
 			layer: to.Layer(3),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 		expect(executeLayerSpy).not.toHaveBeenCalledWith({
 			layer: to.Layer(4),
 			layerFunctionObjects,
-			startLayer,
 			thisPatternRef: 99,
 		})
 

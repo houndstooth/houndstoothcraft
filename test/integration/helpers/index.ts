@@ -4,7 +4,6 @@ import pixelIsColorWithMarker from './pixelIsColorWithMarker'
 import sectionCenterIsColor from './sectionCenterIsColor'
 import standardTileIsColors from './standardTileIsColors'
 import syncExecuteGridAndMixDownContexts from './syncExecuteGridAndMixDownContexts'
-import thisLayerOnly from './thisLayerOnly'
 import {
 	Diagonal,
 	ExpectDiagonalDividedSection,
@@ -18,7 +17,6 @@ import {
 export {
 	activateTestMarkerCanvas,
 	sectionCenterIsColor,
-	thisLayerOnly,
 	Diagonal,
 	ExpectDiagonalDividedSection,
 	ExpectedDividedSection,

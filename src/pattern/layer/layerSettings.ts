@@ -9,7 +9,6 @@ import { Layer } from './types'
 
 interface LayerSettings {
 	readonly endLayer: Layer,
-	readonly startLayer: Layer,
 	readonly [_: string]: any,
 }
 
@@ -17,12 +16,10 @@ type LayerSettingsStructure = { readonly [P in keyof LayerSettings]: any }
 
 type LayerSettingsFunctions = FunctionsOf<LayerSettings>
 
-const DEFAULT_START_LAYER: Layer = to.Layer(0)
 const DEFAULT_END_LAYER: Layer = to.Layer(0)
 
 const DEFAULT_LAYER_SETTINGS: LayerSettings = {
 	endLayer: DEFAULT_END_LAYER,
-	startLayer: DEFAULT_START_LAYER,
 }
 
 type LayerSettingsName = 'layerSettings'
@@ -33,7 +30,7 @@ const layerSettingsNamesToPathsMap: LayerSettingsStructure = buildSettingsNamesT
 })
 
 type LayerSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	LayerTypedSettingsNames: 'startLayer' | 'endLayer',
+	LayerTypedSettingsNames: 'endLayer',
 }>
 
 export {

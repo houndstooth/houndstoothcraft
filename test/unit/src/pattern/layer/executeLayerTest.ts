@@ -11,7 +11,6 @@ import Spy = jasmine.Spy
 
 describe('execute layer', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
-	const startLayer: Layer = to.Layer(12)
 	const thisPatternRef: number = 99
 
 	let callFunctionsPerSettingSpy: Spy
@@ -26,43 +25,27 @@ describe('execute layer', () => {
 		const layer: Layer = to.Layer(12)
 		state.currentLayer = to.Layer(11)
 
-		await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
 
 		expect(state.currentLayer).toBe(to.Layer(12))
 
 		done()
 	})
 
-	describe('executing the grid for this layer, and maybe logging', () => {
-		describe('when the current layer is at least the start layer (the first one to be actually rendered)', () => {
-			it('executes', async (done: DoneFn) => {
-				const layer: Layer = to.Layer(12)
+	it('executes the grid for this layer, and maybe logging', async (done: DoneFn) => {
+		const layer: Layer = to.Layer(12)
 
-				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
 
-				expect(executeGridAndMaybeLoggingSpy).toHaveBeenCalledWith({ thisPatternRef })
+		expect(executeGridAndMaybeLoggingSpy).toHaveBeenCalledWith({ thisPatternRef })
 
-				done()
-			})
-		})
-
-		describe('when the current layer is not yet to the start', () => {
-			it('does not execute', async (done: DoneFn) => {
-				const layer: Layer = to.Layer(11)
-
-				await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
-
-				expect(executeGridAndMaybeLoggingSpy).not.toHaveBeenCalled()
-
-				done()
-			})
-		})
+		done()
 	})
 
 	it('calls layer functions for settings, even the first layer', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(0)
 
-		await executeLayer.default({ layer, layerFunctionObjects, startLayer, thisPatternRef })
+		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
 
 		expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionObjects: layerFunctionObjects,

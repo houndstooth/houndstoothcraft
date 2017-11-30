@@ -10,13 +10,11 @@ import {
 	sectionCenterIsColor,
 	StandardTileExpectation,
 	standardTileIsColors,
-	thisLayerOnly,
 } from './integration'
 
 export {
 	activateTestMarkerCanvas,
 	sectionCenterIsColor,
-	thisLayerOnly,
 	Diagonal,
 	ExpectDiagonalDividedSection,
 	ExpectedDividedSection,

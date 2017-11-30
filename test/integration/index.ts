@@ -9,13 +9,11 @@ import {
 	sectionCenterIsColor,
 	StandardTileExpectation,
 	standardTileIsColors,
-	thisLayerOnly,
 } from './helpers'
 
 export {
 	activateTestMarkerCanvas,
 	sectionCenterIsColor,
-	thisLayerOnly,
 	Diagonal,
 	ExpectDiagonalDividedSection,
 	ExpectedDividedSection,

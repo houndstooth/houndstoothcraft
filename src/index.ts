@@ -138,6 +138,7 @@ export {
 	applyScroll,
 	applyTilt,
 	applyZoom,
+	ExecuteLayerParams,
 } from './pattern'
 export { state, DEFAULT_STATE } from './state'
 import * as to from './to'

@@ -2,7 +2,6 @@ import {
 	Address,
 	Color,
 	Coordinate,
-	Layer,
 	Unit,
 } from '../../../src'
 
@@ -70,11 +69,6 @@ interface PixelColorExpectation {
 	id: number
 }
 
-interface ThisLayerOnly {
-	readonly endLayer: Layer,
-	readonly startLayer: Layer
-}
-
 export {
 	CheckColorProperties,
 	Diagonal,
@@ -89,5 +83,4 @@ export {
 	SectionCenterParams,
 	SectionCenterExpectation,
 	PixelColorExpectation,
-	ThisLayerOnly,
 }

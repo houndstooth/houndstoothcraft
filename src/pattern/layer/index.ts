@@ -1,11 +1,12 @@
 import * as executeLayer from './executeLayer'
 import * as layerSettings from './layerSettings'
 import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
-import { Layer } from './types'
+import { ExecuteLayerParams, Layer } from './types'
 
 export {
 	layerSettings,
 	executeLayer,
+	ExecuteLayerParams,
 	Layer,
 	thisPatternHasNotBeenCanceled,
 }

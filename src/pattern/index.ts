@@ -44,7 +44,7 @@ export {
 	executeGrid,
 	gridComplete,
 } from './grid'
-export { Layer, layerSettings, executeLayer } from './layer'
+export { Layer, layerSettings, executeLayer, ExecuteLayerParams } from './layer'
 export { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
 export {
 	Coordinate,

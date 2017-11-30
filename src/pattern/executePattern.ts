@@ -7,14 +7,14 @@ import { ExecuteParams } from './types'
 
 const executePattern: (_: ExecuteParams) => Promise<void> =
 	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {
-		const { startLayer, endLayer }: layerSettings.LayerSettings = getSetting.default('layerSettings')
+		const { endLayer }: layerSettings.LayerSettings = getSetting.default('layerSettings')
 
 		callFunctionsPerSetting.default({ settingsFunctionObjects: animationFunctionObjects })
 
 		const thisPatternRef: number = state.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
 			if (thisPatternHasNotBeenCanceled.default(thisPatternRef)) {
-				await executeLayer.default({ layer: to.Layer(layerValue), startLayer, layerFunctionObjects, thisPatternRef })
+				await executeLayer.default({ layer: to.Layer(layerValue), layerFunctionObjects, thisPatternRef })
 			}
 		}
 

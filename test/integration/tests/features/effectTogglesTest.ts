@@ -1,11 +1,14 @@
 import * as effects from '../../../../effects'
 // tslint:disable-next-line:no-reaching-imports
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
-import { colorSettings, createEffectToggles, getSetting, PageElement } from '../../../../src'
+import { colorSettings, createContexts, createEffectToggles, getSetting, PageElement, scaleCanvasContainer } from '../../../../src'
 import { buildMockElement } from '../../../unit'
 
 describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
+		spyOn(createContexts, 'default')
+		spyOn(scaleCanvasContainer, 'default')
+
 		const effectTogglesContainer: HTMLElement = document.createElement('div')
 		effectTogglesContainer.setAttribute('id', 'effect-toggles-container')
 		effectTogglesContainer.style.display = 'none'

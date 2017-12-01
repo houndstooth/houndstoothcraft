@@ -4,6 +4,8 @@
   "repository": "https://github.com/houndstooth/web-render",
   "license": "MIT",
   "scripts": {
+    "cover": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/cover.sh'",
+    "lint": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/lint.sh'",
     "setup": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/setup.sh'",
     "start": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/start.sh'",
     "ship": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/ship.sh'",

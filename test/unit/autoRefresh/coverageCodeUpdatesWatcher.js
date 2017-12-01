@@ -13,10 +13,10 @@ const runTests = res => {
 		fsTimeout = setTimeout(() => fsTimeout = false, 500)
 
 		if (os.platform() === 'win32') {
-			execSync('sh ./bin/test/unit_tests_and_cover.sh', { stdio: 'inherit', stderr: 'inherit', shell: true })
+			execSync('sh ./bin/cover.sh', { stdio: 'inherit', stderr: 'inherit', shell: true })
 		}
 		else {
-			spawnSync('./bin/test/unit_tests_and_cover.sh', { stdio: 'inherit', stderr: 'inherit' })
+			spawnSync('./bin/cover.sh', { stdio: 'inherit', stderr: 'inherit' })
 		}
 		res.write('data: reload\n\n')
 	}

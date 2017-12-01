@@ -87,6 +87,7 @@ export {
 	Outline,
 	parseColor,
 	perStripe,
+	previousFrameHasFinished,
 	Radian,
 	rotateCoordinate,
 	ShapeColorIndex,
@@ -104,6 +105,7 @@ export {
 	Weave,
 	Pattern,
 	executePattern,
+	thisPatternHasNotBeenCanceled,
 	executeAnimation,
 	applyViewForShape,
 	executeGridAndMaybeLogging,
@@ -140,6 +142,8 @@ export {
 	applyTilt,
 	applyZoom,
 	ExecuteLayerParams,
+	updateProgress,
+	completeLayers,
 } from './pattern'
 export { state, DEFAULT_STATE } from './state'
 import * as to from './to'

@@ -6,6 +6,7 @@ import {
 	exportCanvas,
 	mixDownContexts,
 	NullaryVoidPromise,
+	previousFrameHasFinished,
 	setSetting,
 	SettingsFunctionObject,
 	state,
@@ -38,7 +39,7 @@ describe('build animation function returns an animation function', () => {
 
 	describe('when the current frame has not yet completed', () => {
 		beforeEach(async (done: DoneFn) => {
-			state.tilesCompleted = 255
+			spyOn(previousFrameHasFinished, 'default').and.returnValue(false)
 
 			await animationFunction()
 
@@ -68,7 +69,7 @@ describe('build animation function returns an animation function', () => {
 
 	describe('when the current frame has been completed', () => {
 		beforeEach(async (done: DoneFn) => {
-			state.tilesCompleted = 0
+			spyOn(previousFrameHasFinished, 'default').and.returnValue(true)
 
 			await animationFunction()
 

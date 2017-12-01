@@ -35,6 +35,8 @@ const PAGE_BACKGROUND_COLOR: Color = { r: 240, g: 240, b: 240, a: 1 }
 
 const DECIMAL_RADIX: number = 10
 
+const ONE_HUNDRED_PERCENT: number = 100
+
 export {
 	BLACK,
 	WHITE,
@@ -58,4 +60,5 @@ export {
 	PAGE_BACKGROUND_COLOR,
 	FONT_SIZE,
 	DECIMAL_RADIX,
+	ONE_HUNDRED_PERCENT,
 }

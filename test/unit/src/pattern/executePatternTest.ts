@@ -1,6 +1,7 @@
 import Spy = jasmine.Spy
 import {
 	callFunctionsPerSetting,
+	completeLayers,
 	executeGridAndMaybeLogging,
 	executeLayer,
 	executePattern,
@@ -108,12 +109,13 @@ describe('execute pattern', () => {
 		done()
 	})
 
-	it('resets the current layer to zero', async (done: DoneFn) => {
+	it('completes the layers', async (done: DoneFn) => {
 		spyOn(executeGridAndMaybeLogging, 'default')
+		spyOn(completeLayers, 'default')
 
 		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
 
-		expect(state.currentLayer).toBe(to.Layer(0))
+		expect(completeLayers.default).toHaveBeenCalled()
 
 		done()
 	})

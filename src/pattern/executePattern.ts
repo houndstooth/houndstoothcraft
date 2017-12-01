@@ -2,7 +2,7 @@ import { callFunctionsPerSetting, getSetting } from '../app'
 import * as from from '../from'
 import { state } from '../state'
 import * as to from '../to'
-import { executeLayer, layerSettings, thisPatternHasNotBeenCanceled } from './layer'
+import { completeLayers, executeLayer, layerSettings, thisPatternHasNotBeenCanceled } from './layer'
 import { ExecuteParams } from './types'
 
 const executePattern: (_: ExecuteParams) => Promise<void> =
@@ -18,7 +18,7 @@ const executePattern: (_: ExecuteParams) => Promise<void> =
 			}
 		}
 
-		state.currentLayer = to.Layer(0)
+		completeLayers.default()
 	}
 
 export default executePattern

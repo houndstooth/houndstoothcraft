@@ -5,6 +5,7 @@ import * as tile from './tile'
 import * as tileCenter from './tileCenter'
 import * as tileSettings from './tileSettings'
 import { GetTileOriginAndSize, TileOriginAndSize } from './types'
+import * as updateProgress from './updateProgress'
 
 export {
 	asyncMaybeTile,
@@ -15,4 +16,5 @@ export {
 	getTileOriginAndSize,
 	GetTileOriginAndSize,
 	tile,
+	updateProgress,
 }

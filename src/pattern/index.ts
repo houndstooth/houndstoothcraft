@@ -9,6 +9,7 @@ export {
 	standardAnimation,
 	buildIntervalFunction,
 	buildAnimationFunction,
+	previousFrameHasFinished,
 } from './animation'
 export {
 	AssignmentMode,
@@ -30,7 +31,10 @@ export {
 	getShapeColorIndices,
 	isTileUniform,
 } from './color'
+
 import * as executePattern from './executePattern'
+import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
+
 export {
 	Address,
 	AddressElement,
@@ -43,7 +47,13 @@ export {
 	executeGrid,
 	gridComplete,
 } from './grid'
-export { Layer, layerSettings, executeLayer, ExecuteLayerParams } from './layer'
+export {
+	Layer,
+	layerSettings,
+	executeLayer,
+	ExecuteLayerParams,
+	completeLayers,
+} from './layer'
 export { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
 export {
 	Coordinate,
@@ -82,6 +92,7 @@ export {
 	getTileOriginAndSize,
 	GetTileOriginAndSize,
 	tile,
+	updateProgress,
 } from './tile'
 export {
 	BasePattern,
@@ -106,4 +117,5 @@ export {
 
 export {
 	executePattern,
+	thisPatternHasNotBeenCanceled,
 }

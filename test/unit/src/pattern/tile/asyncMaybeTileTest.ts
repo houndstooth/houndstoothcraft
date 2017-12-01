@@ -1,85 +1,71 @@
 import {
 	Address,
 	asyncMaybeTile,
-	documentWrapper,
 	maybeTile,
 	NullarySideEffector,
-	PageElement,
-	state,
+	thisPatternHasNotBeenCanceled,
 	to,
+	updateProgress,
 	windowWrapper,
 } from '../../../../../src'
 import Spy = jasmine.Spy
-import { buildMockElement, mockQuerySelector } from '../../../helpers'
 
 describe('async maybe tile', () => {
 	let setTimeoutSpy: Spy
+	let thisPatternHasNotBeenCanceledSpy: Spy
 	const gridAddress: Address = to.Address([ 4, 5 ])
+	const thisPatternRef: number = 99
 	beforeEach(() => {
-		state.patternRef = 99
 		// tslint:disable-next-line:no-unsafe-any
 		setTimeoutSpy = spyOn(windowWrapper, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
 			fn()
 		})
 		spyOn(maybeTile, 'default')
+		spyOn(updateProgress, 'default')
+		thisPatternHasNotBeenCanceledSpy = spyOn(thisPatternHasNotBeenCanceled, 'default')
 	})
 
 	it('unblocks the thread by scheduling the tile for the next event loop', () => {
-		asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
+		asyncMaybeTile.default({ gridAddress, thisPatternRef })
 
 		expect(setTimeoutSpy.calls.all()[ 0 ].args[ 1 ]).toBe(0)
 	})
 
+	it('checks that the pattern has not been cancelled', () => {
+		asyncMaybeTile.default({ gridAddress, thisPatternRef })
+
+		expect(thisPatternHasNotBeenCanceledSpy).toHaveBeenCalledWith(99)
+	})
+
 	describe('when the pattern the tile was born from has not been canceled', () => {
+		beforeEach(() => {
+			thisPatternHasNotBeenCanceledSpy.and.returnValue(true)
+
+			asyncMaybeTile.default({ gridAddress, thisPatternRef })
+		})
+
 		it('calls maybe tile with the same arguments', () => {
-			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
-
-			expect(maybeTile.default).toHaveBeenCalledWith({ gridAddress, thisPatternRef: 99 })
+			expect(maybeTile.default).toHaveBeenCalledWith({ gridAddress, thisPatternRef })
 		})
 
-		it('updates the progress bar', () => {
-			const { progressBar: tmpProgressBar } = mockQuerySelector()
-			const progressBar: PageElement = tmpProgressBar
-
-			state.tileCount = 200000
-			state.tilesCompleted = 180001
-
-			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
-
-			expect(progressBar.style.width).toBe('91%')
-		})
-
-		it('updates the progress message', () => {
-			const { progressMessage: tmpProgressMessage } = mockQuerySelector()
-			const progressMessage: PageElement = tmpProgressMessage
-
-			state.currentFrame = to.Frame(909)
-			state.tileCount = 200000
-			state.tilesCompleted = 180001
-
-			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
-
-			expect(progressMessage.textContent).toBe('Rendering frame 909: 91%')
+		it('updates progress', () => {
+			expect(updateProgress.default).toHaveBeenCalled()
 		})
 	})
 
 	describe('when the pattern the tile was born from has been canceled', () => {
-		it('does not call maybe tile', () => {
-			asyncMaybeTile.default({ gridAddress, thisPatternRef: 98 })
+		beforeEach(() => {
+			thisPatternHasNotBeenCanceledSpy.and.returnValue(false)
 
+			asyncMaybeTile.default({ gridAddress, thisPatternRef })
+		})
+
+		it('does not call maybe tile', () => {
 			expect(maybeTile.default).not.toHaveBeenCalled()
 		})
 
-		it('does not update the progress bar', () => {
-			const progressBar: PageElement = buildMockElement()
-			progressBar.style.width = '10%'
-			spyOn(documentWrapper, 'querySelector').and.returnValue(progressBar)
-			state.tileCount = 200000
-			state.tilesCompleted = 180001
-
-			asyncMaybeTile.default({ gridAddress, thisPatternRef: 98 })
-
-			expect(progressBar.style.width).toBe('10%')
+		it('does not update progress', () => {
+			expect(updateProgress.default).not.toHaveBeenCalled()
 		})
 	})
 })

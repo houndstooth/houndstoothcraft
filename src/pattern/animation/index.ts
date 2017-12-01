@@ -3,6 +3,7 @@ import * as animator from './animator'
 import * as buildAnimationFunction from './buildAnimationFunction'
 import * as buildIntervalFunction from './buildIntervalFunction'
 import * as executeAnimation from './executeAnimation'
+import * as previousFrameHasFinished from './previousFrameHasFinished'
 import * as standardAnimation from './standardAnimation'
 import { ConditionFunction, Frame } from './types'
 
@@ -15,4 +16,5 @@ export {
 	animationSettings,
 	buildAnimationFunction,
 	buildIntervalFunction,
+	previousFrameHasFinished,
 }

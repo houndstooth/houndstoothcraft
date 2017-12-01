@@ -4,6 +4,7 @@ import buildMockElement from './buildMockElement'
 const mockQuerySelector: () => { [_: string]: PageElement } =
 	(): { [_: string]: PageElement } => {
 		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement
+		const layersProgressBar: HTMLElement = buildMockElement() as HTMLElement
 		const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const progressBar: HTMLElement = buildMockElement() as HTMLElement
@@ -15,6 +16,8 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 			switch (selector) {
 				case '#frame-input':
 					return frameInput
+				case '#layers-progress-bar':
+					return layersProgressBar
 				case '#pause-button':
 					return pauseButton
 				case '#play-button':
@@ -34,6 +37,7 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 
 		return {
 			frameInput,
+			layersProgressBar,
 			pauseButton,
 			playButton,
 			progressBar,

@@ -85,7 +85,7 @@ describe('build effect toggle click handler returns a function which', () => {
 			checkbox = buildMockElement()
 		})
 
-		it('enables the play button and frame input when the composed houndstooth has an animations pattern', () => {
+		it('enables the play button and frame input when the composed houndstooth has animations', () => {
 			const effectWithAnimations: Effect = {
 				animationsPattern: {
 					gridSettings: { tileResolution: (p: number): number => p },
@@ -104,7 +104,7 @@ describe('build effect toggle click handler returns a function which', () => {
 			expect(frameInput.disabled).toBe(false)
 		})
 
-		it('disables the play button and frame input when the composed houndstooth does not have an animations pattern', () => {
+		it('disables the play button and frame input when the composed houndstooth does not have animations', () => {
 			const effectWithoutAnimations: Effect = { animationsPattern: {} }
 			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.default({
 				checkbox,

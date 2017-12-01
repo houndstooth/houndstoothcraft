@@ -1,11 +1,12 @@
 // tslint:disable:no-unsafe-any
 
-import { Effect } from '../../pattern'
+import { Effect, Frame } from '../../pattern'
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
 import { clearContexts, clearMixedDownContext, resetMixedDownContext } from '../canvas'
 import { PageElement } from '../page'
 import { resetState } from '../store'
+import updateCurrentFrame from './updateCurrentFrame'
 
 const resetInterface: NullarySideEffector =
 	(): void => {
@@ -19,9 +20,11 @@ const resetInterface: NullarySideEffector =
 		windowWrapper.clearInterval(state.gridProgressInterval)
 		state.resolveGrid()
 
+		const existingFrame: Frame = state.currentFrame
 		const existingEffects: Effect[] = state.selectedHoundstoothEffects.slice()
 		resetState.default(state)
 
+		updateCurrentFrame(existingFrame)
 		resetMixedDownContext.default()
 		state.selectedHoundstoothEffects = existingEffects
 	}

@@ -3,12 +3,14 @@
 import { state } from '../../state'
 import * as to from '../../to'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
+import { clearMixedDownContext } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =
 	(): void => {
 		windowWrapper.clearInterval(state.interval)
+		state.interval = undefined
 
 		updateCurrentFrame(to.Frame(0))
 
@@ -18,6 +20,7 @@ const rewindClickHandler: NullarySideEffector =
 			if (rewindButton) {
 				rewindButton.disabled = true
 			}
+			clearMixedDownContext.default()
 		}
 
 		executeSelectedHoundstoothEffects.default()

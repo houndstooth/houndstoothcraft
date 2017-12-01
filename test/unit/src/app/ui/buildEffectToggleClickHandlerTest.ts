@@ -57,6 +57,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 
 	describe('with respect to animation controls', () => {
+		let frameInput: HTMLInputElement
 		let playButton: HTMLButtonElement
 		let pauseButton: HTMLButtonElement
 		let rewindButton: HTMLButtonElement
@@ -64,10 +65,12 @@ describe('build effect toggle click handler returns a function which', () => {
 
 		beforeEach(() => {
 			const {
+				frameInput: tmpFrameInput,
 				playButton: tmpPlayButton,
 				pauseButton: tmpPauseButton,
 				rewindButton: tmpRewindButton,
 			} = mockQuerySelector()
+			frameInput = tmpFrameInput as HTMLInputElement
 			playButton = tmpPlayButton as HTMLButtonElement
 			pauseButton = tmpPauseButton as HTMLButtonElement
 			rewindButton = tmpRewindButton as HTMLButtonElement
@@ -82,7 +85,7 @@ describe('build effect toggle click handler returns a function which', () => {
 			checkbox = buildMockElement()
 		})
 
-		it('enables the play button when the composed houndstooth has an animations pattern', () => {
+		it('enables the play button and frame input when the composed houndstooth has an animations pattern', () => {
 			const effectWithAnimations: Effect = {
 				animationsPattern: {
 					gridSettings: { tileResolution: (p: number): number => p },
@@ -93,23 +96,27 @@ describe('build effect toggle click handler returns a function which', () => {
 				houndstoothEffect: effectWithAnimations,
 			})
 			playButton.disabled = true
+			frameInput.disabled = true
 
 			simulateClick(checkbox, clickHandler)
 
 			expect(playButton.disabled).toBe(false)
+			expect(frameInput.disabled).toBe(false)
 		})
 
-		it('disables the play button when the composed houndstooth does not have an animations pattern', () => {
+		it('disables the play button and frame input when the composed houndstooth does not have an animations pattern', () => {
 			const effectWithoutAnimations: Effect = { animationsPattern: {} }
 			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.default({
 				checkbox,
 				houndstoothEffect: effectWithoutAnimations,
 			})
 			playButton.disabled = false
+			frameInput.disabled = false
 
 			simulateClick(checkbox, clickHandler)
 
 			expect(playButton.disabled).toBe(true)
+			expect(frameInput.disabled).toBe(true)
 		})
 
 		it('always disables the pause and rewind buttons', () => {

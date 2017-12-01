@@ -9,6 +9,7 @@ import {
 	resetInterface,
 	resetMixedDownContext,
 	state,
+	to,
 	windowWrapper,
 } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
@@ -64,7 +65,8 @@ describe('reset interface', () => {
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
 	})
 
-	it('resets the state, except for any selected effects and the mixed down context', () => {
+	it('resets the state, except for selected effects, current frame, and mixed down context', () => {
+		state.currentFrame = to.Frame(8001)
 		const fakeHoundstoothEffect: Effect = {
 			animationsPattern: {},
 			basePattern: {},
@@ -75,6 +77,7 @@ describe('reset interface', () => {
 
 		resetInterface.default()
 
+		expect(state.currentFrame).toBe(to.Frame(8001))
 		expect(state.selectedHoundstoothEffects[ 0 ]).toEqual(fakeHoundstoothEffect)
 		expect(state.mixedDownContext).toEqual(mixedDownContext)
 	})

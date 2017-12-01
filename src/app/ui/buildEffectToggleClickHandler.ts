@@ -1,4 +1,4 @@
-// tslint:disable:no-unsafe-any
+// tslint:disable:no-unsafe-any max-line-length
 
 import { Effect } from '../../pattern'
 import { state } from '../../state'
@@ -33,9 +33,16 @@ const removeEffect: (houndstoothEffect: Effect) => void =
 
 const dealWithAnimationControls: NullarySideEffector =
 	(): void => {
+		const canBeAnimated: boolean = mainHoundstoothHasAnimations()
+
+		const frameInput: HTMLInputElement | undefined = documentWrapper.querySelector('#frame-input') as HTMLInputElement
+		if (frameInput) {
+			frameInput.disabled = canBeAnimated
+		}
+
 		const playButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#play-button') as HTMLButtonElement
 		if (playButton) {
-			playButton.disabled = !Object.keys(state.mainHoundstooth.animationsPattern).length
+			playButton.disabled = canBeAnimated
 		}
 
 		const pauseButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
@@ -43,11 +50,13 @@ const dealWithAnimationControls: NullarySideEffector =
 			pauseButton.disabled = true
 		}
 
-		// tslint:disable-next-line:max-line-length
 		const rewindButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
 		if (rewindButton) {
 			rewindButton.disabled = true
 		}
 	}
+
+const mainHoundstoothHasAnimations: () => boolean =
+	(): boolean => !Object.keys(state.mainHoundstooth.animationsPattern).length
 
 export default buildEffectToggleClickHandler

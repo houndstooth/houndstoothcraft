@@ -1,7 +1,6 @@
 // tslint:disable:no-unsafe-any max-line-length
 
 import { state } from '../../state'
-import * as to from '../../to'
 import { documentWrapper, NullarySideEffector } from '../../utilities'
 import { mixDownContexts } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
@@ -14,27 +13,30 @@ const playClickHandler: NullarySideEffector =
 			playButton.disabled = true
 		}
 
-		if (!state.animating) {
-			state.animating = true
+		const pauseButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
+		/* istanbul ignore else */
+		if (pauseButton) {
+			pauseButton.disabled = false
+		}
 
-			mixDownContexts.default()
+		const rewindButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
+		/* istanbul ignore else */
+		if (rewindButton) {
+			rewindButton.disabled = false
+		}
 
-			const pauseButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
-			/* istanbul ignore else */
-			if (pauseButton) {
-				pauseButton.disabled = false
-			}
+		state.animating = true
 
-			if (state.currentFrame === to.Frame(0)) {
-				const rewindButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
-				/* istanbul ignore else */
-				if (rewindButton) {
-					rewindButton.disabled = false
-				}
+		mixDownContexts.default()
 
-				executeSelectedHoundstoothEffects.default()
-			}
+		console.log('resuming? silence is yes')
+		if (!resumingAnimation()) {
+			console.log('no')
+			executeSelectedHoundstoothEffects.default()
 		}
 	}
+
+const resumingAnimation: () => boolean =
+	(): boolean => !!state.interval
 
 export default playClickHandler

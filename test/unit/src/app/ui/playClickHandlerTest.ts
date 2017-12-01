@@ -1,10 +1,10 @@
 import {
 	executeSelectedHoundstoothEffects,
 	mixDownContexts,
+	noop,
 	NullarySideEffector,
 	playClickHandler,
 	state,
-	to,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import { mockQuerySelector } from '../../../helpers'
@@ -28,102 +28,47 @@ describe('play click handler', () => {
 		playButton = tmpPlayButton as HTMLButtonElement
 		pauseButton = tmpPauseButton as HTMLButtonElement
 		rewindButton = tmpRewindButton as HTMLButtonElement
+
+		state.animating = false
+		playButton.disabled = false
+		pauseButton.disabled = true
+		rewindButton.disabled = true
+
+		playClickHandler.default()
 	})
 
-	describe('when already animating', () => {
-		beforeEach(() => {
-			state.animating = true
-			playButton.disabled = true
-			pauseButton.disabled = false
+	it('disables the play button', () => {
+		expect(playButton.disabled).toBe(true)
+	})
+
+	it('enables the pause button', () => {
+		expect(pauseButton.disabled).toBe(false)
+	})
+
+	it('enables the rewind button', () => {
+		expect(rewindButton.disabled).toBe(false)
+	})
+
+	it('set animating to true', () => {
+		expect(state.animating).toBe(true)
+	})
+
+	it('mixes down the contexts', () => {
+		expect(mixDownContexts.default).toHaveBeenCalled()
+	})
+
+	describe('starting vs resuming', () => {
+		it('executes the selected houndstooth effects when there is no animation running', () => {
+			expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
+		})
+
+		it('does not re-execute the selected houndstooth effects when already running an animation', () => {
+			state.interval = noop.default
+			executeSelectedHoundstoothEffectsSpy.calls.reset()
 
 			playClickHandler.default()
-		})
 
-		// tslint:disable-next-line:max-line-length
-		it('stays animating (this situation where you could click the button while it is already animating should never be the case though once disabling works)', () => {
-			expect(state.animating).toBe(true)
-		})
-
-		it('keeps the play button disabled', () => {
-			expect(playButton.disabled).toBe(true)
-		})
-
-		it('keeps the pause button enabled', () => {
-			expect(pauseButton.disabled).toBe(false)
-		})
-
-		it('does not execute the selected houndstooth effects again', () => {
 			expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
-		})
-
-		it('does not mix down the contexts', () => {
-			expect(mixDownContexts.default).not.toHaveBeenCalled()
-		})
-	})
-
-	describe('when not already animating', () => {
-		beforeEach(() => {
-			state.animating = false
-			playButton.disabled = false
-			pauseButton.disabled = true
-		})
-
-		it('set animating to true', () => {
-			playClickHandler.default()
-
-			expect(state.animating).toBe(true)
-		})
-
-		it('mixes down the contexts', () => {
-			playClickHandler.default()
-
-			expect(mixDownContexts.default).toHaveBeenCalled()
-		})
-
-		it('disables the play button', () => {
-			playClickHandler.default()
-
-			expect(playButton.disabled).toBe(true)
-		})
-
-		it('enables the pause button', () => {
-			playClickHandler.default()
-
-			expect(pauseButton.disabled).toBe(false)
-		})
-
-		describe('current frame', () => {
-			describe('when 0', () => {
-				beforeEach(() => {
-					state.currentFrame = to.Frame(0)
-				})
-
-				it('executes the selected houndstooth effects', () => {
-					playClickHandler.default()
-
-					expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
-				})
-
-				it('enables the rewind button', () => {
-					rewindButton.disabled = true
-
-					playClickHandler.default()
-
-					expect(rewindButton.disabled).toBe(false)
-				})
-			})
-
-			describe('when not 0 (restarting after a pause)', () => {
-				beforeEach(() => {
-					state.currentFrame = to.Frame(4000)
-				})
-
-				it('does not re-execute the selected houndstooth effects', () => {
-					playClickHandler.default()
-
-					expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
-				})
-			})
 		})
 	})
 })

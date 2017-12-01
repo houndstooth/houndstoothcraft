@@ -1,5 +1,7 @@
 import {
+	clearMixedDownContext,
 	executeSelectedHoundstoothEffects,
+	noop,
 	NullarySideEffector,
 	rewindClickHandler,
 	state,
@@ -13,24 +15,25 @@ import { mockQuerySelector } from '../../../helpers'
 describe('rewind click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
 	let rewindButton: HTMLButtonElement
+	const interval: NullarySideEffector = noop.default
 	beforeEach(() => {
+		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
+		spyOn(windowWrapper, 'clearInterval')
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
-
 		const { rewindButton: tmpRewindButton } = mockQuerySelector()
 		rewindButton = tmpRewindButton as HTMLButtonElement
+
+		state.interval = interval
 	})
 
-	beforeEach(() => {
-		spyOn(windowWrapper, 'clearInterval')
-	})
-
-	it('clears the interval', () => {
+	it('clears the interval and removes it from state', () => {
 		rewindClickHandler.default()
 
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
+		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(interval)
+		expect(state.interval).toBe(undefined)
 	})
 
 	it('resets the current frame', () => {
@@ -45,23 +48,25 @@ describe('rewind click handler', () => {
 		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
 	})
 
-	describe('disabling itself', () => {
-		it('does not if animating', () => {
-			rewindButton.disabled = false
-			state.animating = true
-
-			rewindClickHandler.default()
-
-			expect(rewindButton.disabled).toBe(false)
-		})
-
-		it('does if not animating', () => {
-			rewindButton.disabled = false
+	describe('animation paused / still running', () => {
+		it('when paused, it disables itself and clears the mixed down context', () => {
 			state.animating = false
+			rewindButton.disabled = false
 
 			rewindClickHandler.default()
 
 			expect(rewindButton.disabled).toBe(true)
+			expect(clearMixedDownContext.default).toHaveBeenCalled()
+		})
+
+		it('when still running, it does not disable itself or clear the mixed down context', () => {
+			state.animating = true
+			rewindButton.disabled = false
+
+			rewindClickHandler.default()
+
+			expect(rewindButton.disabled).toBe(false)
+			expect(clearMixedDownContext.default).not.toHaveBeenCalled()
 		})
 	})
 })

@@ -93,6 +93,10 @@ input {
     cursor: pointer;
 }
 
+input:disabled {
+    color: rgb(170, 170, 170);
+}
+
 button {
     background: rgb(255, 255, 255);
     border: 3px solid rgb(100, 100, 100);

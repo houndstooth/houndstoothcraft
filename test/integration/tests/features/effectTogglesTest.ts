@@ -7,12 +7,14 @@ import {
 	executeLayer,
 	getSetting,
 	PageElement,
+	updateCurrentFrame,
 } from '../../../../src'
 import { buildMockElement } from '../../../unit'
 
 describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		spyOn(executeLayer, 'default')
+		spyOn(updateCurrentFrame, 'default')
 
 		const effectTogglesContainer: HTMLElement = document.createElement('div')
 		effectTogglesContainer.setAttribute('id', 'effect-toggles-container')

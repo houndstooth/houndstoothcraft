@@ -21,6 +21,12 @@ const asyncMaybeTile: (_: ReferencedGridAddress) => void =
 					if (progressBar) {
 						progressBar.style.width = `${percentage}%`
 					}
+
+					// tslint:disable-next-line:no-unsafe-any max-line-length
+					const progressMessage: HTMLElement | undefined = documentWrapper.querySelector('#progress-message') as HTMLElement
+					if (progressMessage) {
+						progressMessage.textContent = `Rendering frame ${state.currentFrame}: ${percentage}%`
+					}
 				}
 			},
 			0,

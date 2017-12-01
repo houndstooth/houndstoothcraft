@@ -1,7 +1,6 @@
 import Spy = jasmine.Spy
 import {
 	buildGridProgressIntervalFunction,
-	documentWrapper,
 	gridComplete,
 	noop,
 	NullarySideEffector,
@@ -9,7 +8,7 @@ import {
 	state,
 	windowWrapper,
 } from '../../../../../src'
-import { buildMockElement } from '../../../helpers'
+import { mockQuerySelector } from '../../../helpers'
 
 describe('grid complete', () => {
 	const fakeGridProgressIntervalFunction: NullarySideEffector = noop.default
@@ -45,12 +44,13 @@ describe('grid complete', () => {
 	})
 
 	it('builds the progress interval function with this particular progress bar', () => {
-		const progressBar: PageElement = buildMockElement()
-		spyOn(documentWrapper, 'querySelector').and.returnValue(progressBar)
+		const { progressBar: tmpProgressBar, progressMessage: tmpProgressMessage } = mockQuerySelector()
+		const progressBar: PageElement = tmpProgressBar
+		const progressMessage: PageElement = tmpProgressMessage
 
 		gridComplete.default(resolveGrid)
 
-		expect(buildGridProgressIntervalFunctionSpy).toHaveBeenCalledWith({ progressBar })
+		expect(buildGridProgressIntervalFunctionSpy).toHaveBeenCalledWith({ progressBar, progressMessage })
 	})
 
 	it('saves the grid resolution function onto the store so others can resolve it', () => {

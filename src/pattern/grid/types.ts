@@ -15,8 +15,6 @@ interface GridAddressParam {
 	readonly gridAddress: Address,
 }
 
-type GridAddressFunction = (_: GridAddressParam) => void
-
 interface Unit extends Number {
 	// tslint:disable-next-line:no-any
 	_UnitsBrand: any,
@@ -30,6 +28,7 @@ interface Referenced {
 
 interface BuildGridProgressIntervalFunctionParams {
 	progressBar?: PageElement,
+	progressMessage?: PageElement,
 }
 
 export {
@@ -37,7 +36,6 @@ export {
 	AddressElement,
 	Grid,
 	GridAddressParam,
-	GridAddressFunction,
 	ReferencedGridAddress,
 	Referenced,
 	BuildGridProgressIntervalFunctionParams,

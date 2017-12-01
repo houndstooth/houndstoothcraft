@@ -81,6 +81,7 @@ interface MockElement {
 		width?: any,
 		zIndex?: any,
 	},
+	textContent?: any,
 }
 
 export {

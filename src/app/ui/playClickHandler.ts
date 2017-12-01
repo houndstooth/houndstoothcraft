@@ -29,9 +29,7 @@ const playClickHandler: NullarySideEffector =
 
 		mixDownContexts.default()
 
-		console.log('resuming? silence is yes')
 		if (!resumingAnimation()) {
-			console.log('no')
 			executeSelectedHoundstoothEffects.default()
 		}
 	}

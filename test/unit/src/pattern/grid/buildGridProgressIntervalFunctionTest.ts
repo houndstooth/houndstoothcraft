@@ -9,10 +9,12 @@ import { buildMockElement } from '../../../helpers'
 
 describe('build progress interval function returns a function which', () => {
 	let progressBar: PageElement
+	let progressMessage: PageElement
 	let gridProgressIntervalFunction: NullarySideEffector
 	beforeEach(() => {
 		progressBar = buildMockElement()
-		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar })
+		progressMessage = buildMockElement()
+		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar, progressMessage })
 		spyOn(state, 'resolveGrid')
 		state.tileCount = 99
 		state.gridProgressInterval = jasmine.createSpy('gridProgressInterval')
@@ -45,6 +47,14 @@ describe('build progress interval function returns a function which', () => {
 
 			expect(progressBar.style.width).toBe('0%')
 		})
+
+		it('resets the progress message', () => {
+			progressMessage.textContent = 'Rendering frame 777: 99%'
+
+			gridProgressIntervalFunction()
+
+			expect(progressMessage.textContent).toBe('')
+		})
 	})
 
 	describe('when the grid is not yet complete', () => {
@@ -73,6 +83,14 @@ describe('build progress interval function returns a function which', () => {
 			gridProgressIntervalFunction()
 
 			expect(progressBar.style.width).toBe('99%')
+		})
+
+		it('does not reset the progress message', () => {
+			progressMessage.textContent = 'Rendering frame 777: 99%'
+
+			gridProgressIntervalFunction()
+
+			expect(progressMessage.textContent).toBe('Rendering frame 777: 99%')
 		})
 	})
 

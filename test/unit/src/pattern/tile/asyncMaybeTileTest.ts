@@ -10,7 +10,7 @@ import {
 	windowWrapper,
 } from '../../../../../src'
 import Spy = jasmine.Spy
-import { buildMockElement } from '../../../helpers'
+import { buildMockElement, mockQuerySelector } from '../../../helpers'
 
 describe('async maybe tile', () => {
 	let setTimeoutSpy: Spy
@@ -38,14 +38,28 @@ describe('async maybe tile', () => {
 		})
 
 		it('updates the progress bar', () => {
-			const progressBar: PageElement = buildMockElement()
-			spyOn(documentWrapper, 'querySelector').and.returnValue(progressBar)
+			const { progressBar: tmpProgressBar } = mockQuerySelector()
+			const progressBar: PageElement = tmpProgressBar
+
 			state.tileCount = 200000
 			state.tilesCompleted = 180001
 
 			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
 
 			expect(progressBar.style.width).toBe('91%')
+		})
+
+		it('updates the progress message', () => {
+			const { progressMessage: tmpProgressMessage } = mockQuerySelector()
+			const progressMessage: PageElement = tmpProgressMessage
+
+			state.currentFrame = to.Frame(909)
+			state.tileCount = 200000
+			state.tilesCompleted = 180001
+
+			asyncMaybeTile.default({ gridAddress, thisPatternRef: 99 })
+
+			expect(progressMessage.textContent).toBe('Rendering frame 909: 91%')
 		})
 	})
 

@@ -40,7 +40,6 @@ const execute: NullarySideEffector =
 			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
-			// TODO: cover that this is called with animation functions too now
 			executePattern.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 	}

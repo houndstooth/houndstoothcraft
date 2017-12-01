@@ -9,6 +9,7 @@ export {
 	combineHoundstoothEffects,
 	composeMainHoundstooth,
 	composePatterns,
+	frameInputChangeHandler,
 	createLabel,
 	createCheckbox,
 	Context,
@@ -59,6 +60,7 @@ export {
 	exportCanvas,
 	saveBlob,
 	saveCanvas,
+	updateCurrentFrame,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'

@@ -4,11 +4,13 @@ import { state } from '../../state'
 import * as to from '../../to'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
 import { executeSelectedHoundstoothEffects } from '../execute'
+import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =
 	(): void => {
 		windowWrapper.clearInterval(state.interval)
-		state.currentFrame = to.Frame(0)
+
+		updateCurrentFrame(to.Frame(0))
 
 		if (!state.animating) {
 			const rewindButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement

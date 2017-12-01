@@ -4,6 +4,7 @@ import {
 	rewindClickHandler,
 	state,
 	to,
+	updateCurrentFrame,
 	windowWrapper,
 } from '../../../../../src'
 import Spy = jasmine.Spy
@@ -13,6 +14,7 @@ describe('rewind click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
 	let rewindButton: HTMLButtonElement
 	beforeEach(() => {
+		spyOn(updateCurrentFrame, 'default')
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
@@ -32,11 +34,9 @@ describe('rewind click handler', () => {
 	})
 
 	it('resets the current frame', () => {
-		state.currentFrame = to.Frame(5)
-
 		rewindClickHandler.default()
 
-		expect(state.currentFrame).toBe(to.Frame(0))
+		expect(updateCurrentFrame.default).toHaveBeenCalledWith(to.Frame(0))
 	})
 
 	it('executes the selected houndstooth effects', () => {

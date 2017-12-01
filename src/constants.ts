@@ -33,6 +33,8 @@ const ANIMATION_RATE: number = 1.001
 const FONT_SIZE: number = 12
 const PAGE_BACKGROUND_COLOR: Color = { r: 240, g: 240, b: 240, a: 1 }
 
+const DECIMAL_RADIX: number = 10
+
 export {
 	BLACK,
 	WHITE,
@@ -55,4 +57,5 @@ export {
 	HALF,
 	PAGE_BACKGROUND_COLOR,
 	FONT_SIZE,
+	DECIMAL_RADIX,
 }

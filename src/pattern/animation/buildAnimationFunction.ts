@@ -1,4 +1,4 @@
-import { clearContexts, exportCanvas, getSetting, mixDownContexts } from '../../app'
+import { clearContexts, exportCanvas, getSetting, mixDownContexts, updateCurrentFrame } from '../../app'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
@@ -15,7 +15,7 @@ const buildAnimationFunction: (_: ExecuteParams) => NullaryVoidPromise =
 
 			await animate(params)
 
-			state.currentFrame = to.Frame(from.Frame(state.currentFrame) + 1)
+			updateCurrentFrame.default(to.Frame(from.Frame(state.currentFrame) + 1))
 		}
 
 const previousGridHasNotFinishedYet: () => boolean =

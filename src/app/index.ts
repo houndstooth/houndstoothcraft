@@ -63,6 +63,7 @@ export {
 	getSetting,
 } from './store'
 export {
+	frameInputChangeHandler,
 	maybeWarnAboutConflicts,
 	pauseClickHandler,
 	playClickHandler,
@@ -71,4 +72,5 @@ export {
 	buildEffectToggleClickHandler,
 	resetInterface,
 	warn,
+	updateCurrentFrame,
 } from './ui'

@@ -1,10 +1,19 @@
 // tslint:disable:no-unsafe-any
 
 import { documentWrapper, NullarySideEffector } from '../../utilities'
-import { pauseClickHandler, playClickHandler, rewindClickHandler, snapshotClickHandler } from '../ui'
+import {
+	frameInputChangeHandler,
+	pauseClickHandler,
+	playClickHandler,
+	rewindClickHandler,
+	snapshotClickHandler,
+} from '../ui'
 
 const attachControlHandlers: NullarySideEffector =
 	(): void => {
+		const frameInput: HTMLInputElement = documentWrapper.querySelector('#frame-input') as HTMLInputElement
+		frameInput.onchange = frameInputChangeHandler.default
+
 		const playButton: HTMLButtonElement = documentWrapper.querySelector('#play-button') as HTMLButtonElement
 		playButton.onclick = playClickHandler.default
 

@@ -3,6 +3,7 @@ import buildMockElement from './buildMockElement'
 
 const mockQuerySelector: () => { [_: string]: PageElement } =
 	(): { [_: string]: PageElement } => {
+		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement
 		const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
@@ -10,6 +11,8 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 
 		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): PageElement => {
 			switch (selector) {
+				case '#frame-input':
+					return frameInput
 				case '#pause-button':
 					return pauseButton
 				case '#play-button':
@@ -24,6 +27,7 @@ const mockQuerySelector: () => { [_: string]: PageElement } =
 		})
 
 		return {
+			frameInput,
 			pauseButton,
 			playButton,
 			rewindButton,

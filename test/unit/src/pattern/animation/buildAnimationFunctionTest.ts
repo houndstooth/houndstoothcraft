@@ -10,6 +10,7 @@ import {
 	SettingsFunctionObject,
 	state,
 	to,
+	updateCurrentFrame,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 
@@ -24,6 +25,7 @@ describe('build animation function returns an animation function', () => {
 	beforeEach(() => {
 		executePatternSpy = spyOn(executePattern, 'default')
 		spyOn(callFunctionsPerSetting, 'default')
+		spyOn(updateCurrentFrame, 'default')
 		clearContextsSpy = spyOn(clearContexts, 'default')
 		spyOn(exportCanvas, 'default')
 		spyOn(mixDownContexts, 'default')
@@ -48,7 +50,7 @@ describe('build animation function returns an animation function', () => {
 		})
 
 		it('does not increment the current frame', () => {
-			expect(state.currentFrame).toBe(to.Frame(5))
+			expect(updateCurrentFrame.default).not.toHaveBeenCalled()
 		})
 
 		it('does not update the settings for the next frame', () => {
@@ -78,7 +80,7 @@ describe('build animation function returns an animation function', () => {
 		})
 
 		it('increments the current frame', () => {
-			expect(state.currentFrame).toBe(to.Frame(6))
+			expect(updateCurrentFrame.default).toHaveBeenCalledWith(to.Frame(6))
 		})
 
 		describe('exporting frames', () => {

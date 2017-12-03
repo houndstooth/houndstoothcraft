@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { MockCanvas, MockContext, MockElement } from '../../../test'
+import { MockCanvas, MockContext, MockElement, MockInputElement } from '../../../test'
 
 type Canvas = HTMLCanvasElement | MockCanvas
 
@@ -9,15 +9,7 @@ type Context = CanvasRenderingContext2D | MockContext
 enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
-type InputElement = HTMLInputElement | {
-	checked?: any,
-	classList?: any,
-	onclick?: any,
-	setAttribute?: any,
-	style: {
-		cursor?: any,
-	},
-}
+type InputElement = HTMLInputElement | MockInputElement
 
 type LabelElement = HTMLLabelElement | MockElement
 

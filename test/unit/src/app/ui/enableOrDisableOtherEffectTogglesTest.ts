@@ -5,9 +5,9 @@ import {
 	Effect,
 	effectsHaveConflicts,
 	enableOrDisableOtherEffectToggles,
+	InputElement,
 	NamedEffect,
 	NullarySideEffector,
-	PageElement,
 	state,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
@@ -28,9 +28,9 @@ describe('enableOrDisableOtherEffectToggles', () => {
 		const effectsAvailable: Effect[] = [ effectOne, effectTwo ]
 		spyOn(availableEffects, 'get').and.returnValue(effectsAvailable)
 
-		const effectToggleOne: PageElement = buildMockElement()
-		const effectToggleTwo: PageElement = buildMockElement()
-		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): PageElement => {
+		const effectToggleOne: InputElement = buildMockElement()
+		const effectToggleTwo: InputElement = buildMockElement()
+		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): InputElement => {
 			if (selector === '#effect-one') {
 				return effectToggleOne
 			}

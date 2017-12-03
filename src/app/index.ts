@@ -76,6 +76,7 @@ export {
 	warn,
 	updateCurrentFrame,
 	checkSettingForConflict,
+	CheckSettingForConflict,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	PatternsHaveConflictsParams,

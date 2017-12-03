@@ -1,6 +1,6 @@
 import buildMockContext from './buildMockContext'
 import isCloseTo from './isCloseTo'
-import { MockCanvas, MockContext, MockContextCall, MockElement } from './types'
+import { MockCanvas, MockContext, MockContextCall, MockElement, MockInputElement } from './types'
 
 export {
 	isCloseTo,
@@ -8,5 +8,6 @@ export {
 	MockCanvas,
 	MockContext,
 	MockElement,
+	MockInputElement,
 	MockContextCall,
 }

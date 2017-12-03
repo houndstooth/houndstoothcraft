@@ -1,5 +1,6 @@
 import { shouldRecurse } from '../../../../../src'
 
+// tslint:disable-next-line:no-any
 const subject: (_: any) => boolean = shouldRecurse.default
 
 describe('should recurse', () => {

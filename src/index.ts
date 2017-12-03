@@ -25,6 +25,7 @@ export {
 	scaleCanvasContainer,
 	scaleElement,
 	checkSettingForConflict,
+	CheckSettingForConflict,
 	effectsHaveConflicts,
 	SettingsFunctionObject,
 	prepareFunctionObjectsPerSetting,

@@ -13,6 +13,11 @@ interface MockCanvas extends MockElement {
 	width?: any,
 }
 
+interface MockInputElement extends MockElement {
+	checked?: any,
+	onclick?: any,
+}
+
 interface MockContext {
 	arc?: any,
 	beginPath?: any,
@@ -91,4 +96,5 @@ export {
 	MockContextCall,
 	MockContextMethod,
 	MockCanvas,
+	MockInputElement,
 }

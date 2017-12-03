@@ -1,4 +1,4 @@
-import { isCloseTo, MockCanvas, MockContext, MockElement } from './helpers'
+import { isCloseTo, MockCanvas, MockContext, MockElement, MockInputElement } from './helpers'
 import {
 	activateTestMarkerCanvas,
 	Diagonal,
@@ -27,4 +27,5 @@ export {
 	MockCanvas,
 	MockContext,
 	MockElement,
+	MockInputElement,
 }

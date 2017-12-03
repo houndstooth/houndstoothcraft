@@ -1,6 +1,13 @@
-import { checkSettingForConflict, consoleWrapper, SettingsPath, SettingsStep, to } from '../../../../../src'
+import {
+	checkSettingForConflict,
+	CheckSettingForConflict,
+	consoleWrapper,
+	SettingsPath,
+	SettingsStep,
+	to,
+} from '../../../../../src'
 
-const subject = checkSettingForConflict.default
+const subject: (_: CheckSettingForConflict) => boolean = checkSettingForConflict.default
 
 describe('check setting for conflict', () => {
 	let settingsPath: SettingsPath

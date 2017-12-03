@@ -16,20 +16,20 @@ import { buildMockContext } from '../../../../helpers'
 import { buildMockElement } from '../../../helpers'
 
 describe('reset interface', () => {
-	const warningsContainer: PageElement = buildMockElement()
+	const descriptionsContainer: PageElement = buildMockElement()
 	const mixedDownContext: Context = buildMockContext()
 	beforeEach(() => {
-		spyOn(documentWrapper, 'querySelector').and.returnValue(warningsContainer)
+		spyOn(documentWrapper, 'querySelector').and.returnValue(descriptionsContainer)
 		spyOn(windowWrapper, 'clearInterval')
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(resetMixedDownContext, 'default').and.callFake(() => state.mixedDownContext = mixedDownContext)
 		spyOn(clearContexts, 'default')
 	})
 
-	it('clears warnings', () => {
+	it('clears descriptions', () => {
 		resetInterface.default()
 
-		expect(warningsContainer.innerHTML).toBe('')
+		expect(descriptionsContainer.innerHTML).toBe('')
 	})
 
 	it('clears contexts', () => {
@@ -70,6 +70,7 @@ describe('reset interface', () => {
 		const fakeHoundstoothEffect: NamedEffect = {
 			animationsPattern: {},
 			basePattern: {},
+			description: '',
 			layersPattern: {},
 			name: 'fake',
 		}

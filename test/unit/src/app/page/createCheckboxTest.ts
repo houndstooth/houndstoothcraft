@@ -15,7 +15,7 @@ describe('create checkbox', () => {
 
 	const attributeObject: { id: string, name: string, type: string } = { id: '', name: '', type: '' }
 	const clickHandler: NullarySideEffector = noop.default
-	const houndstoothEffect: NamedEffect = { name: 'mock tooth' }
+	const houndstoothEffect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
 		checkbox = buildMockElement({ attributeObject }) as InputElement

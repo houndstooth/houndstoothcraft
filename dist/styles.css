@@ -51,8 +51,16 @@ body {
     height: 800px;
 }
 
-#warnings-container {
+#descriptions-container {
     font-style: italic;
+    flex: 9999;
+    white-space: pre;
+    overflow-y: auto;
+}
+
+#descriptions-container span {
+    display: block;
+    margin-bottom: 30px !important;
 }
 
 #footer {
@@ -64,6 +72,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 830px;
+    width: 500px;
 }
 
 #sidebar div {
@@ -81,7 +96,7 @@ body {
 }
 
 #more-effects-soon-message {
-    margin: 10px;
+    margin: 10px !important;
 }
 
 a {

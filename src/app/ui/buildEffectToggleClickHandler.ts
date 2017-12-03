@@ -8,6 +8,7 @@ import { InputElement } from '../page'
 import { resetInterface } from '../ui'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
+import updateDescriptions from './updateDescriptions'
 
 const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEffect: NamedEffect }) => NullarySideEffector =
 	({ checkbox, houndstoothEffect }: { checkbox: InputElement, houndstoothEffect: NamedEffect }): NullarySideEffector =>
@@ -22,6 +23,8 @@ const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEf
 			enableOrDisableAnimationControls()
 
 			enableOrDisableOtherEffectToggles()
+
+			updateDescriptions()
 		}
 
 const addEffect: (houndstoothEffect: NamedEffect) => void =

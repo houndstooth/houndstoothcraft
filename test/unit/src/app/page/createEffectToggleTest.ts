@@ -17,7 +17,7 @@ describe('create effect toggle', () => {
 	const effectTogglesContainerChildren: PageElement[] = []
 	const effectTogglesContainer: PageElement = buildMockElement({ children: effectTogglesContainerChildren })
 
-	const houndstoothEffect: NamedEffect = { name: 'mock tooth' }
+	const houndstoothEffect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
 		spyOn(documentWrapper, 'createElement').and.returnValue(div)

@@ -15,7 +15,7 @@ describe('create label', () => {
 	const children: LabelElement[] = []
 	const checkbox: InputElement = buildMockElement()
 	const name: PageElement = buildMockElement()
-	const houndstoothEffect: NamedEffect = { name: 'mock tooth' }
+	const houndstoothEffect: NamedEffect = { name: 'mock tooth', description: '' }
 	const attributeObject: { 'for': string } = { for: '' }
 
 	beforeEach(() => {

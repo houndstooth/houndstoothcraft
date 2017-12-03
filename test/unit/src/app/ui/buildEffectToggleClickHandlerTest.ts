@@ -8,6 +8,7 @@ import {
 	NullarySideEffector,
 	resetInterface,
 	state,
+	updateDescriptions,
 } from '../../../../../src'
 import { buildMockElement, SimulateClick } from '../../../helpers'
 
@@ -19,20 +20,21 @@ describe('build effect toggle click handler returns a function which', () => {
 	beforeEach(() => {
 		spyOn(resetInterface, 'default')
 		spyOn(executeSelectedHoundstoothEffects, 'default')
-			// .and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 		spyOn(enableOrDisableAnimationControls, 'default')
 		spyOn(enableOrDisableOtherEffectToggles, 'default')
+		spyOn(updateDescriptions, 'default')
 
 		checkbox = buildMockElement()
-		houndstoothEffect = { name: 'mock tooth' }
+		houndstoothEffect = { name: 'mock tooth', description: '' }
 		subject = buildEffectToggleClickHandler.default({ checkbox, houndstoothEffect })
 
 		expect(resetInterface.default).not.toHaveBeenCalled()
 		expect(executeSelectedHoundstoothEffects.default).not.toHaveBeenCalled()
 		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
 		expect(enableOrDisableOtherEffectToggles.default).not.toHaveBeenCalled()
+		expect(updateDescriptions.default).not.toHaveBeenCalled()
 
-		preExistingHoundstoothEffect = { name: 'preexisting tooth' }
+		preExistingHoundstoothEffect = { name: 'preexisting tooth', description: '' }
 		state.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
 
 		simulateClick(checkbox, subject)
@@ -56,6 +58,10 @@ describe('build effect toggle click handler returns a function which', () => {
 
 	it('enables or disables the other effects, depending on whether the new selection would have conflicts', () => {
 		expect(enableOrDisableOtherEffectToggles.default).toHaveBeenCalled()
+	})
+
+	it('updates the descriptions to include one for each of the new set of selected effects', () => {
+		expect(updateDescriptions.default).toHaveBeenCalled()
 	})
 
 	it('removes the effect if it is already selected', () => {

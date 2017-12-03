@@ -15,10 +15,15 @@ describe('create effect toggles', () => {
 	})
 
 	it('adds an effect toggle for each effect', () => {
-		createEffectToggles.default([ { name: 'effectOne' }, { name: 'effectTwo' } ])
+		createEffectToggles.default([
+			{ name: 'effectOne', description: '' },
+			{ name: 'effectTwo', description: '' },
+		])
 
-		expect(createEffectToggleSpy.calls.all()[ 0 ].args[ 0 ]).toEqual({ name: 'effectOne' })
-		expect(createEffectToggleSpy.calls.all()[ 1 ].args[ 0 ]).toEqual({ name: 'effectTwo' })
+		// tslint:disable-next-line:no-unsafe-any
+		expect(createEffectToggleSpy.calls.all()[ 0 ].args[ 0 ].name).toBe('effectOne')
+		// tslint:disable-next-line:no-unsafe-any
+		expect(createEffectToggleSpy.calls.all()[ 1 ].args[ 0 ].name).toBe('effectTwo')
 	})
 
 	it('clears any existing toggles', () => {

@@ -56,7 +56,7 @@ export {
 	deeperPath,
 	getPatternSettingOrCreatePath,
 	resetInterface,
-	warn,
+	addDescription,
 	callFunctionsPerSetting,
 	DataBlob,
 	exportCanvas,
@@ -69,6 +69,7 @@ export {
 	shouldRecurse,
 	PatternsHaveConflictsParams,
 	patternsHaveConflicts,
+	updateDescriptions,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'

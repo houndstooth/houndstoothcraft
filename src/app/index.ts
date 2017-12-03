@@ -73,7 +73,7 @@ export {
 	snapshotClickHandler,
 	buildEffectToggleClickHandler,
 	resetInterface,
-	warn,
+	addDescription,
 	updateCurrentFrame,
 	checkSettingForConflict,
 	CheckSettingForConflict,
@@ -81,4 +81,5 @@ export {
 	enableOrDisableOtherEffectToggles,
 	PatternsHaveConflictsParams,
 	patternsHaveConflicts,
+	updateDescriptions,
 } from './ui'

@@ -10,8 +10,8 @@ import updateCurrentFrame from './updateCurrentFrame'
 
 const resetInterface: NullarySideEffector =
 	(): void => {
-		const warnings: PageElement = documentWrapper.querySelector('#warnings-container')
-		warnings.innerHTML = ''
+		const descriptions: PageElement = documentWrapper.querySelector('#descriptions-container')
+		descriptions.innerHTML = ''
 
 		clearContexts.default()
 		clearMixedDownContext.default()

@@ -42,6 +42,7 @@ interface BasePattern {
 type Effect = Partial<Houndstooth>
 
 interface NamedEffect extends Effect {
+	readonly description: string,
 	readonly name: string,
 }
 
@@ -89,6 +90,7 @@ interface SettingsNamesToTypesMap { // Should these settings ones also be Partia
 interface Houndstooth {
 	readonly animationsPattern: PatternFunctions,
 	readonly basePattern: Partial<BasePattern>,
+	readonly description: string,
 	readonly layersPattern: PatternFunctions,
 	readonly name: string,
 }

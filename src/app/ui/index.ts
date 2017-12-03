@@ -1,3 +1,4 @@
+import * as addDescription from './addDescription'
 import * as buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 import * as checkSettingForConflict from './checkSettingForConflict'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
@@ -12,10 +13,10 @@ import * as rewindClickHandler from './rewindClickHandler'
 import * as snapshotClickHandler from './snapshotClickHandler'
 import { CheckSettingForConflict, PatternsHaveConflictsParams } from './types'
 import * as updateCurrentFrame from './updateCurrentFrame'
-import * as warn from './warn'
+import * as updateDescriptions from './updateDescriptions'
 
 export {
-	warn,
+	addDescription,
 	frameInputChangeHandler,
 	checkSettingForConflict,
 	CheckSettingForConflict,
@@ -31,4 +32,5 @@ export {
 	snapshotClickHandler,
 	resetInterface,
 	updateCurrentFrame,
+	updateDescriptions,
 }

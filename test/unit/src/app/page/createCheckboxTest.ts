@@ -13,7 +13,7 @@ describe('create checkbox', () => {
 	let returnedCheckbox: InputElement
 	let checkbox: InputElement
 
-	const attributeObject: { id: string, type: string } = { id: '', type: '' }
+	const attributeObject: { id: string, name: string, type: string } = { id: '', name: '', type: '' }
 	const clickHandler: NullarySideEffector = noop.default
 	const houndstoothEffect: NamedEffect = { name: 'mock tooth' }
 
@@ -39,6 +39,10 @@ describe('create checkbox', () => {
 
 	it('sets the id to a kebab-cased version of the houndstooth effect\'s name', () => {
 		expect(attributeObject.id).toBe('mock-tooth')
+	})
+
+	it('sets the name to a kebab-cased version of the houndstooth effect\'s name', () => {
+		expect(attributeObject.name).toBe('mock-tooth')
 	})
 
 	it('assigns a click handler to the checkbox', () => {

@@ -11,6 +11,11 @@ const createEffectToggles: (effects: NamedEffect[]) => void =
 		effectTogglesContainer.innerHTML = ''
 
 		effects.forEach(createEffectToggle)
+
+		const moreEffectsSoonMessage: HTMLTextAreaElement = documentWrapper.createElement('div')
+		moreEffectsSoonMessage.setAttribute('id', 'more-effects-soon-message')
+		moreEffectsSoonMessage.innerHTML = 'more effects coming soon'
+		effectTogglesContainer.appendChild(moreEffectsSoonMessage)
 	}
 
 export default createEffectToggles

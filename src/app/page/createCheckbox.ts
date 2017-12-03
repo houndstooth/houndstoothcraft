@@ -11,7 +11,11 @@ const createCheckbox: (_: { houndstoothEffect: NamedEffect }) => InputElement =
 		const checkbox: InputElement = documentWrapper.createElement('input')
 
 		checkbox.setAttribute('type', 'checkbox')
-		checkbox.setAttribute('id', makeId(houndstoothEffect.name))
+
+		const idAndName: string = makeId(houndstoothEffect.name)
+		checkbox.setAttribute('id', idAndName)
+		checkbox.setAttribute('name', idAndName)
+
 		checkbox.onclick = buildEffectToggleClickHandler.default({ checkbox, houndstoothEffect })
 
 		return checkbox

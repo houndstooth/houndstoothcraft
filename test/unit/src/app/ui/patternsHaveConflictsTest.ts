@@ -1,8 +1,12 @@
-import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
+import { consoleWrapper, Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
 
 const subject: (_: PatternsHaveConflictsParams) => boolean = patternsHaveConflicts.default
 
 describe('patterns have conflicts', () => {
+	beforeEach(() => {
+		spyOn(consoleWrapper, 'warn')
+	})
+
 	it('returns true if any settings conflict between the two patterns', () => {
 		const pattern: Pattern = {
 			colorSettings: {

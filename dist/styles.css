@@ -70,6 +70,12 @@ body {
     margin: 20px;
 }
 
+#effect-toggles-container div {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+
 #sidebar span {
     margin: 5px;
 }
@@ -97,6 +103,10 @@ input {
 }
 
 input:disabled {
+    color: rgb(170, 170, 170);
+}
+
+input:disabled + label {
     color: rgb(170, 170, 170);
 }
 

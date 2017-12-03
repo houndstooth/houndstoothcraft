@@ -4,6 +4,7 @@ import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import {
 	colorSettings,
 	createEffectToggles,
+	enableOrDisableOtherEffectToggles,
 	executeLayer,
 	getSetting,
 	PageElement,
@@ -15,6 +16,7 @@ describe('effect toggles', () => {
 	it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
 		spyOn(executeLayer, 'default')
 		spyOn(updateCurrentFrame, 'default')
+		spyOn(enableOrDisableOtherEffectToggles, 'default')
 
 		const effectTogglesContainer: HTMLElement = document.createElement('div')
 		effectTogglesContainer.setAttribute('id', 'effect-toggles-container')
@@ -27,7 +29,7 @@ describe('effect toggles', () => {
 		document.body.appendChild(warningsContainer)
 
 		createEffectToggles.default(Object.values(effects))
-		const effectToggle: PageElement = document.querySelector('input.gongram') as HTMLElement || buildMockElement()
+		const effectToggle: PageElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
 
 		expect(getSetting.default('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 

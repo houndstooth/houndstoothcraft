@@ -10,7 +10,7 @@ const updateProgress: NullarySideEffector =
 	(): void => {
 		const percentage: number = Math.ceil(state.tilesCompleted * ONE_HUNDRED_PERCENT / (state.tileCount))
 
-		const progressBar: HTMLElement | undefined = documentWrapper.querySelector('#progress-bar') as HTMLElement
+		const progressBar: HTMLElement = documentWrapper.querySelector('#progress-bar') as HTMLElement
 		/* istanbul ignore else */
 		if (progressBar) {
 			progressBar.style.width = `${percentage}%`
@@ -19,7 +19,7 @@ const updateProgress: NullarySideEffector =
 		const endLayerValue: number = from.Layer(getSetting.default('endLayer'))
 		const currentLayerValue: number = from.Layer(state.currentLayer)
 
-		const layersProgressBar: HTMLElement | undefined = documentWrapper.querySelector('#layers-progress-bar') as HTMLElement
+		const layersProgressBar: HTMLElement = documentWrapper.querySelector('#layers-progress-bar') as HTMLElement
 		/* istanbul ignore else */
 		if (progressBar) {
 			const layerCount: number = endLayerValue + 1
@@ -27,7 +27,7 @@ const updateProgress: NullarySideEffector =
 			layersProgressBar.style.width = `${layersPercentage}%`
 		}
 
-		const progressMessage: HTMLElement | undefined = documentWrapper.querySelector('#progress-message') as HTMLElement
+		const progressMessage: HTMLElement = documentWrapper.querySelector('#progress-message') as HTMLElement
 		/* istanbul ignore else */
 		if (progressMessage) {
 			const animationsAndLayersMessages: string[] = []

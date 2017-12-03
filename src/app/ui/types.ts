@@ -1,24 +1,25 @@
 // tslint:disable:no-any
 
+import { Pattern } from '../../pattern'
 import { FullSettingsPath } from '../execute'
+import { SettingsPath } from '../store'
 
-interface BuildWarningMessageParams extends FullSettingsPath, SettingOverride {
+interface CheckSettingForConflict extends FullSettingsPath, SettingConflictCheck {
 }
 
-interface SettingOverride {
-	readonly existingSetting: any,
-	readonly overridingSetting: any,
+interface PatternsHaveConflictsParams {
+	readonly pattern?: Pattern,
+	readonly patternCheckingAgainst?: Pattern,
+	readonly settingsPath?: SettingsPath,
 }
 
-interface ShouldWarnAboutConflictsParams extends SettingOverride {
-	readonly warnAboutConflicts: boolean,
-}
-
-interface MaybeWarnAboutConflictsParams extends FullSettingsPath, ShouldWarnAboutConflictsParams {
+interface SettingConflictCheck {
+	readonly setting: any,
+	readonly settingCheckingForConflict: any,
 }
 
 export {
-	BuildWarningMessageParams,
-	MaybeWarnAboutConflictsParams,
-	ShouldWarnAboutConflictsParams,
+	CheckSettingForConflict,
+	PatternsHaveConflictsParams,
+	SettingConflictCheck,
 }

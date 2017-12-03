@@ -1,16 +1,12 @@
 // tslint:disable:no-unsafe-any
 
-import { Effect } from '../../pattern'
+import { NamedEffect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
-import createCheckbox from './createCheckbox'
-import { InputElement, LabelElement } from './types'
+import { LabelElement } from './types'
 
-const createLabel: (_: { houndstoothEffect: Effect }) => LabelElement =
-	({ houndstoothEffect }: { houndstoothEffect: Effect }): LabelElement => {
+const createLabel: (_: { houndstoothEffect: NamedEffect }) => LabelElement =
+	({ houndstoothEffect }: { houndstoothEffect: NamedEffect }): LabelElement => {
 		const label: LabelElement = documentWrapper.createElement('label')
-
-		const checkbox: InputElement = createCheckbox({ houndstoothEffect })
-		label.appendChild(checkbox)
 
 		const name: HTMLTextAreaElement = documentWrapper.createTextNode(houndstoothEffect.name)
 		label.appendChild(name)

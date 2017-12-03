@@ -3,7 +3,7 @@ import {
 	clearMixedDownContext,
 	Context,
 	documentWrapper,
-	Effect,
+	NamedEffect,
 	NullarySideEffector,
 	PageElement,
 	resetInterface,
@@ -67,7 +67,7 @@ describe('reset interface', () => {
 
 	it('resets the state, except for selected effects, current frame, and mixed down context', () => {
 		state.currentFrame = to.Frame(8001)
-		const fakeHoundstoothEffect: Effect = {
+		const fakeHoundstoothEffect: NamedEffect = {
 			animationsPattern: {},
 			basePattern: {},
 			layersPattern: {},

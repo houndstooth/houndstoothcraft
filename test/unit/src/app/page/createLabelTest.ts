@@ -2,9 +2,9 @@ import {
 	createCheckbox,
 	createLabel,
 	documentWrapper,
-	Effect,
 	InputElement,
 	LabelElement,
+	NamedEffect,
 	PageElement,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
@@ -15,8 +15,9 @@ describe('create label', () => {
 	const children: LabelElement[] = []
 	const checkbox: InputElement = buildMockElement()
 	const name: PageElement = buildMockElement()
-	const houndstoothEffect: Effect = { name: 'mock tooth' }
-	beforeAll(() => {
+	const houndstoothEffect: NamedEffect = { name: 'mock tooth' }
+
+	beforeEach(() => {
 		label = buildMockElement({ children })
 		spyOn(documentWrapper, 'createElement').and.returnValue(label)
 
@@ -31,16 +32,8 @@ describe('create label', () => {
 		expect(returnedLabel).toBe(label)
 	})
 
-	it('adds one checkbox to the label', () => {
-		expect(children[ 0 ]).toBe(checkbox as PageElement)
-	})
-
-	it('adds one name to the label, after the checkbox', () => {
-		expect(children[ 1 ]).toBe(name)
-	})
-
-	it('makes the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect })
+	it('adds a name to the label', () => {
+		expect(children[ 0 ]).toBe(name)
 	})
 
 	it('makes the name using the houndstooth effect\'s name', () => {

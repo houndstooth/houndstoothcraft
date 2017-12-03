@@ -1,138 +1,67 @@
 import {
 	buildEffectToggleClickHandler,
-	composeMainHoundstooth,
-	Effect,
+	enableOrDisableAnimationControls,
+	enableOrDisableOtherEffectToggles,
 	executeSelectedHoundstoothEffects,
 	InputElement,
+	NamedEffect,
 	NullarySideEffector,
 	resetInterface,
 	state,
 } from '../../../../../src'
-import { buildMockElement, mockQuerySelector, SimulateClick } from '../../../helpers'
-import Spy = jasmine.Spy
+import { buildMockElement, SimulateClick } from '../../../helpers'
 
 describe('build effect toggle click handler returns a function which', () => {
-	let resetInterfaceSpy: Spy
+	let subject: NullarySideEffector
+	let checkbox: InputElement
+	let houndstoothEffect: NamedEffect
+	let preExistingHoundstoothEffect: NamedEffect
 	beforeEach(() => {
-		resetInterfaceSpy = spyOn(resetInterface, 'default')
-	})
+		spyOn(resetInterface, 'default')
+		spyOn(executeSelectedHoundstoothEffects, 'default')
+			// .and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		spyOn(enableOrDisableAnimationControls, 'default')
+		spyOn(enableOrDisableOtherEffectToggles, 'default')
 
-	it('resets the interface, toggles selection of the effect it is for, and executes', () => {
-		const executeSelectedHoundstoothEffectsSpy: Spy = spyOn(executeSelectedHoundstoothEffects, 'default')
-			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		checkbox = buildMockElement()
+		houndstoothEffect = { name: 'mock tooth' }
+		subject = buildEffectToggleClickHandler.default({ checkbox, houndstoothEffect })
 
-		const checkbox: InputElement = buildMockElement()
+		expect(resetInterface.default).not.toHaveBeenCalled()
+		expect(executeSelectedHoundstoothEffects.default).not.toHaveBeenCalled()
+		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
+		expect(enableOrDisableOtherEffectToggles.default).not.toHaveBeenCalled()
 
-		const houndstoothEffect: Effect = { name: 'mock tooth' }
-
-		const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.default({
-			checkbox, houndstoothEffect,
-		})
-
-		expect(resetInterfaceSpy).not.toHaveBeenCalled()
-		expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
-
-		const preExistingHoundstoothEffect: Effect = { name: 'preexisting tooth' }
+		preExistingHoundstoothEffect = { name: 'preexisting tooth' }
 		state.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
 
-		simulateClick(checkbox, clickHandler)
-
-		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
-
-		expect(resetInterfaceSpy).toHaveBeenCalled()
-		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
-
-		resetInterfaceSpy.calls.reset()
-		executeSelectedHoundstoothEffectsSpy.calls.reset()
-
-		// To confirm that it preserves the order otherwise when removing an effect:
-		const otherHoundstoothEffect: Effect = { name: 'other tooth' }
-		state.selectedHoundstoothEffects.push(otherHoundstoothEffect)
-
-		simulateClick(checkbox, clickHandler)
-
-		expect(resetInterfaceSpy).toHaveBeenCalled()
-		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, otherHoundstoothEffect ])
-		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
+		simulateClick(checkbox, subject)
 	})
 
-	describe('with respect to animation controls', () => {
-		let frameInput: HTMLInputElement
-		let playButton: HTMLButtonElement
-		let pauseButton: HTMLButtonElement
-		let rewindButton: HTMLButtonElement
-		let checkbox: InputElement
+	it('adds the clicked effect to the selection', () => {
+		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
+	})
 
-		beforeEach(() => {
-			const {
-				frameInput: tmpFrameInput,
-				playButton: tmpPlayButton,
-				pauseButton: tmpPauseButton,
-				rewindButton: tmpRewindButton,
-			} = mockQuerySelector()
-			frameInput = tmpFrameInput as HTMLInputElement
-			playButton = tmpPlayButton as HTMLButtonElement
-			pauseButton = tmpPauseButton as HTMLButtonElement
-			rewindButton = tmpRewindButton as HTMLButtonElement
+	it('resets the interface', () => {
+		expect(resetInterface.default).toHaveBeenCalled()
+	})
 
-			// Do not want to deal with other document related stuff, but need the houndstooth composed.
-			spyOn(executeSelectedHoundstoothEffects, 'default').and.callFake(async () => {
-				composeMainHoundstooth.default({ houndstoothEffects: state.selectedHoundstoothEffects })
+	it('executes the selected houndstooth effects, since the selection has now changed', () => {
+		expect(executeSelectedHoundstoothEffects.default).toHaveBeenCalled()
+	})
 
-				return new Promise<NullarySideEffector>((): void => undefined)
-			})
+	it('enables or disables animation controls depending on whether the new selection has animations', () => {
+		expect(enableOrDisableAnimationControls.default).toHaveBeenCalled()
+	})
 
-			checkbox = buildMockElement()
-		})
+	it('enables or disables the other effects, depending on whether the new selection would have conflicts', () => {
+		expect(enableOrDisableOtherEffectToggles.default).toHaveBeenCalled()
+	})
 
-		it('enables the play button and frame input when the composed houndstooth has animations', () => {
-			const effectWithAnimations: Effect = {
-				animationsPattern: {
-					gridSettings: { tileResolution: (p: number): number => p },
-				},
-			}
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.default({
-				checkbox,
-				houndstoothEffect: effectWithAnimations,
-			})
-			playButton.disabled = true
-			frameInput.disabled = true
+	it('removes the effect if it is already selected', () => {
+		simulateClick(checkbox, subject)
 
-			simulateClick(checkbox, clickHandler)
-
-			expect(playButton.disabled).toBe(false)
-			expect(frameInput.disabled).toBe(false)
-		})
-
-		it('disables the play button and frame input when the composed houndstooth does not have animations', () => {
-			const effectWithoutAnimations: Effect = { animationsPattern: {} }
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.default({
-				checkbox,
-				houndstoothEffect: effectWithoutAnimations,
-			})
-			playButton.disabled = false
-			frameInput.disabled = false
-
-			simulateClick(checkbox, clickHandler)
-
-			expect(playButton.disabled).toBe(true)
-			expect(frameInput.disabled).toBe(true)
-		})
-
-		it('always disables the pause and rewind buttons', () => {
-			pauseButton.disabled = false
-			rewindButton.disabled = false
-			const effectWithoutAnimations: Effect = { animationsPattern: {} }
-			const clickHandler: NullarySideEffector = buildEffectToggleClickHandler.default({
-				checkbox,
-				houndstoothEffect: effectWithoutAnimations,
-			})
-
-			simulateClick(checkbox, clickHandler)
-
-			expect(pauseButton.disabled).toBe(true)
-			expect(rewindButton.disabled).toBe(true)
-		})
+		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect ])
 	})
 })
 

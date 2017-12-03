@@ -7,19 +7,19 @@ import { executeSelectedHoundstoothEffects } from '../execute'
 
 const playClickHandler: NullarySideEffector =
 	(): void => {
-		const playButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#play-button') as HTMLButtonElement
+		const playButton: HTMLButtonElement = documentWrapper.querySelector('#play-button') as HTMLButtonElement
 		/* istanbul ignore else */
 		if (playButton) {
 			playButton.disabled = true
 		}
 
-		const pauseButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
+		const pauseButton: HTMLButtonElement = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
 		/* istanbul ignore else */
 		if (pauseButton) {
 			pauseButton.disabled = false
 		}
 
-		const rewindButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
+		const rewindButton: HTMLButtonElement = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
 		/* istanbul ignore else */
 		if (rewindButton) {
 			rewindButton.disabled = false

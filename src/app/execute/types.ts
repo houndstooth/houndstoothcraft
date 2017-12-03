@@ -1,10 +1,10 @@
 // tslint:disable:no-any max-file-line-count
 
-import { Effect, Pattern } from '../../pattern'
+import { Effect, NamedEffect, Pattern } from '../../pattern'
 import { SettingsPath, SettingsStep } from '../store'
 
 interface ComposeMainHoundstooth {
-	readonly houndstoothEffects?: Effect[],
+	readonly houndstoothEffects?: NamedEffect[],
 	readonly houndstoothOverrides?: Effect,
 	readonly logComposedMainHoundstooth?: boolean,
 }
@@ -18,9 +18,8 @@ interface ComposePatternParams {
 
 interface ComposePatternsParams {
 	readonly patternToBeMergedOnto: Pattern,
-	readonly patternToMerge?: {},
+	readonly patternToMerge?: any,
 	readonly settingsPath?: SettingsPath,
-	readonly warnAboutConflicts?: boolean,
 }
 
 interface FullSettingsPath {
@@ -28,7 +27,7 @@ interface FullSettingsPath {
 	readonly settingsPath: SettingsPath,
 }
 
-type FunctionsOf<T> = { [P in keyof T]: (previous: T[P]) => T[P] }
+type FunctionsOf<T> = { [P in keyof T]: () => T[P] }
 
 interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends FullSettingsPath {
 	readonly maybeSettingsFunctionsSourcePattern: any,

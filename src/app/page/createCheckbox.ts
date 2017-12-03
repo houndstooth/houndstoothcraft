@@ -1,16 +1,17 @@
 // tslint:disable:no-unsafe-any
 
-import { Effect } from '../../pattern'
+import { NamedEffect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
 import { buildEffectToggleClickHandler } from '../ui'
+import makeId from './makeId'
 import { InputElement } from './types'
 
-const createCheckbox: (_: { houndstoothEffect: Effect }) => InputElement =
-	({ houndstoothEffect }: { houndstoothEffect: Effect }): InputElement => {
+const createCheckbox: (_: { houndstoothEffect: NamedEffect }) => InputElement =
+	({ houndstoothEffect }: { houndstoothEffect: NamedEffect }): InputElement => {
 		const checkbox: InputElement = documentWrapper.createElement('input')
 
 		checkbox.setAttribute('type', 'checkbox')
-		checkbox.classList.add(houndstoothEffect.name && houndstoothEffect.name.replace(/ /g, '-'))
+		checkbox.setAttribute('id', makeId(houndstoothEffect.name))
 		checkbox.onclick = buildEffectToggleClickHandler.default({ checkbox, houndstoothEffect })
 
 		return checkbox

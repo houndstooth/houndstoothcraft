@@ -1,6 +1,6 @@
 import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
-import { BasePattern, Effect, Frame, Layer } from './pattern'
+import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
 import { State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
@@ -18,7 +18,7 @@ const DEFAULT_MIXED_DOWN_CONTEXT: Context = {}
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
-const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: Effect[] = []
+const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
 

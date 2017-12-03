@@ -5,7 +5,7 @@ import { documentWrapper, NullarySideEffector } from '../../utilities'
 const completeLayers: NullarySideEffector =
 	(): void => {
 		// tslint:disable-next-line:no-unsafe-any max-line-length
-		const layersProgressBar: HTMLElement | undefined = documentWrapper.querySelector('#layers-progress-bar') as HTMLElement
+		const layersProgressBar: HTMLElement = documentWrapper.querySelector('#layers-progress-bar') as HTMLElement
 		if (layersProgressBar) {
 			layersProgressBar.style.width = '0%'
 		}

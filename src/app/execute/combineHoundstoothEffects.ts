@@ -11,17 +11,14 @@ const combineHoundstoothEffects: (_: { houndstoothEffects: Effect[] }) => Effect
 			composePatterns({
 				patternToBeMergedOnto: basePattern,
 				patternToMerge: houndstoothEffect.basePattern,
-				warnAboutConflicts: true,
 			})
 			composePatterns({
 				patternToBeMergedOnto: layersPattern,
 				patternToMerge: houndstoothEffect.layersPattern,
-				warnAboutConflicts: true,
 			})
 			composePatterns({
 				patternToBeMergedOnto: animationsPattern,
 				patternToMerge: houndstoothEffect.animationsPattern,
-				warnAboutConflicts: true,
 			})
 		})
 

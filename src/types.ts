@@ -1,5 +1,5 @@
 import { Context } from './app'
-import { BasePattern, Effect, Frame, Houndstooth, Layer } from './pattern'
+import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from './pattern'
 import { NullarySideEffector } from './utilities'
 
 interface State {
@@ -17,7 +17,7 @@ interface State {
 	patternRef: number,
 	performanceLogging: boolean,
 	resolveGrid: NullarySideEffector,
-	selectedHoundstoothEffects: Effect[],
+	selectedHoundstoothEffects: NamedEffect[],
 	tileCount: number,
 	tilesCompleted: number,
 }

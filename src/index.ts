@@ -24,7 +24,8 @@ export {
 	resetState,
 	scaleCanvasContainer,
 	scaleElement,
-	maybeWarnAboutConflicts,
+	checkSettingForConflict,
+	effectsHaveConflicts,
 	SettingsFunctionObject,
 	prepareFunctionObjectsPerSetting,
 	createContexts,
@@ -61,6 +62,12 @@ export {
 	saveBlob,
 	saveCanvas,
 	updateCurrentFrame,
+	makeId,
+	enableOrDisableAnimationControls,
+	enableOrDisableOtherEffectToggles,
+	shouldRecurse,
+	PatternsHaveConflictsParams,
+	patternsHaveConflicts,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -84,6 +91,8 @@ export {
 	GetStripePosition,
 	GetStripePositions,
 	Layer,
+	NamedEffect,
+	PatternFunctions,
 	Outline,
 	parseColor,
 	perStripe,
@@ -158,10 +167,12 @@ export {
 	windowWrapper,
 } from './utilities'
 export { State } from './types'
+import * as availableEffects from './availableEffects'
 
 export {
 	to,
 	from,
 	defaults,
 	constants,
+	availableEffects,
 }

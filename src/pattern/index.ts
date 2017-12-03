@@ -98,6 +98,7 @@ export {
 	BasePattern,
 	Effect,
 	Houndstooth,
+	NamedEffect,
 	Pattern,
 	PatternFunctions,
 	SetSetting,

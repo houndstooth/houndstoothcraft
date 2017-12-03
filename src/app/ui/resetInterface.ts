@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { Effect, Frame } from '../../pattern'
+import { Frame, NamedEffect } from '../../pattern'
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
 import { clearContexts, clearMixedDownContext, resetMixedDownContext } from '../canvas'
@@ -21,7 +21,7 @@ const resetInterface: NullarySideEffector =
 		state.resolveGrid()
 
 		const existingFrame: Frame = state.currentFrame
-		const existingEffects: Effect[] = state.selectedHoundstoothEffects.slice()
+		const existingEffects: NamedEffect[] = state.selectedHoundstoothEffects.slice()
 		resetState.default(state)
 
 		updateCurrentFrame(existingFrame)

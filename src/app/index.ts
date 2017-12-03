@@ -40,6 +40,7 @@ export {
 	createLabel,
 	LabelElement,
 	insertElementRightAfter,
+	makeId,
 } from './page'
 export {
 	fill,
@@ -61,10 +62,11 @@ export {
 	deeperPath,
 	getPatternSettingOrCreatePath,
 	getSetting,
+	shouldRecurse,
 } from './store'
 export {
 	frameInputChangeHandler,
-	maybeWarnAboutConflicts,
+	effectsHaveConflicts,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
@@ -73,4 +75,9 @@ export {
 	resetInterface,
 	warn,
 	updateCurrentFrame,
+	checkSettingForConflict,
+	enableOrDisableAnimationControls,
+	enableOrDisableOtherEffectToggles,
+	PatternsHaveConflictsParams,
+	patternsHaveConflicts,
 } from './ui'

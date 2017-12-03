@@ -41,6 +41,10 @@ interface BasePattern {
 
 type Effect = Partial<Houndstooth>
 
+interface NamedEffect extends Effect {
+	readonly name: string,
+}
+
 interface ExecuteParams {
 	readonly animationFunctionObjects: SettingsFunctionObject[],
 	readonly layerFunctionObjects: SettingsFunctionObject[]
@@ -172,6 +176,7 @@ export {
 	Effect,
 	ExecuteParams,
 	Houndstooth,
+	NamedEffect,
 	PatternFunctions,
 	SettingsNamesByTypeBase,
 	SettingsNamesToTypesMap, Pattern, SetSetting,

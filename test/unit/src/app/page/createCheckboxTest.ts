@@ -2,8 +2,8 @@ import {
 	buildEffectToggleClickHandler,
 	createCheckbox,
 	documentWrapper,
-	Effect,
 	InputElement,
+	NamedEffect,
 	noop,
 	NullarySideEffector,
 } from '../../../../../src'
@@ -12,12 +12,13 @@ import { buildMockElement } from '../../../helpers'
 describe('create checkbox', () => {
 	let returnedCheckbox: InputElement
 	let checkbox: InputElement
-	const classList: string[] = []
-	const attributeObject: { type: string } = { type: '' }
+
+	const attributeObject: { id: string, type: string } = { id: '', type: '' }
 	const clickHandler: NullarySideEffector = noop.default
-	const houndstoothEffect: Effect = { name: 'mock tooth' }
-	beforeAll(() => {
-		checkbox = buildMockElement({ classList, attributeObject }) as InputElement
+	const houndstoothEffect: NamedEffect = { name: 'mock tooth' }
+
+	beforeEach(() => {
+		checkbox = buildMockElement({ attributeObject }) as InputElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(checkbox)
 
 		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)
@@ -36,8 +37,8 @@ describe('create checkbox', () => {
 		})
 	})
 
-	it('gives the checkbox a class which is the kebab-cased version of the houndstooth effect\'s name', () => {
-		expect(classList[ 0 ]).toBe('mock-tooth')
+	it('sets the id to a kebab-cased version of the houndstooth effect\'s name', () => {
+		expect(attributeObject.id).toBe('mock-tooth')
 	})
 
 	it('assigns a click handler to the checkbox', () => {

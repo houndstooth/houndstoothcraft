@@ -7,13 +7,13 @@ const pauseClickHandler: NullarySideEffector =
 	(): void => {
 		state.animating = false
 
-		const playButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#play-button') as HTMLButtonElement
+		const playButton: HTMLButtonElement = documentWrapper.querySelector('#play-button') as HTMLButtonElement
 		/* istanbul ignore else */
 		if (playButton) {
 			playButton.disabled = false
 		}
 
-		const pauseButton: HTMLButtonElement | undefined = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
+		const pauseButton: HTMLButtonElement = documentWrapper.querySelector('#pause-button') as HTMLButtonElement
 		/* istanbul ignore else */
 		if (pauseButton) {
 			pauseButton.disabled = true

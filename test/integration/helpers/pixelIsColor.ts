@@ -61,7 +61,6 @@ const checkColorProperties: (_: CheckColorProperties) => boolean =
 			const parsedActualColor: string = parseColor.default(actualColor)
 			const parsedExpectedColor: string = parseColor.default(expectedColor)
 			const error: string = `actual color: ${parsedActualColor} / expected color ${parsedExpectedColor}`
-			// tslint:disable-next-line:no-unsafe-any
 			consoleWrapper.error(error)
 
 			return false

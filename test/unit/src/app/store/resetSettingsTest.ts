@@ -13,7 +13,7 @@ describe('reset state', () => {
 
 	it('returns the main houndstooth to its original state', () => {
 		const houndstoothOverrides: Effect = {
-			basePattern: { colorSettings: { opacity: 0 }}
+			basePattern: { colorSettings: { opacity: 0 } },
 		}
 		composeMainHoundstooth.default({ houndstoothOverrides })
 		// tslint:disable-next-line:max-line-length

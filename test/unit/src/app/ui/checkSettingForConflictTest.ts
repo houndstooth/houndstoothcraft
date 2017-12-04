@@ -28,7 +28,6 @@ describe('check setting for conflict', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` would be overridden by `luke`'
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -41,7 +40,6 @@ describe('check setting for conflict', () => {
 
 		const shouldWarn: boolean = subject({ settingsPath, settingName, setting, settingCheckingForConflict })
 
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
 	})
@@ -54,7 +52,6 @@ describe('check setting for conflict', () => {
 
 		const shouldWarn: boolean = subject({ settingsPath, settingName, setting, settingCheckingForConflict })
 
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
 	})
@@ -70,7 +67,6 @@ describe('check setting for conflict', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` would be overridden by `function (b) { return b; }`'
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -83,7 +79,6 @@ describe('check setting for conflict', () => {
 
 		const shouldWarn: boolean = subject({ settingsPath, settingName, setting, settingCheckingForConflict })
 
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
 	})
@@ -98,7 +93,6 @@ describe('check setting for conflict', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.colorSet`: `["a","b"]` would be overridden by `["b","a"]`'
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -113,7 +107,6 @@ describe('check setting for conflict', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.colorSet`: `["a","b"]` would be overridden by `bna`'
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -128,7 +121,6 @@ describe('check setting for conflict', () => {
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` would be overridden by `{"a":0}`'
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})

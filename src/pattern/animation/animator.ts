@@ -10,7 +10,7 @@ const animator: (_: AnimationParams) => void =
 			animationFunction,
 			resolveAnimation,
 		})
-		// tslint:disable-next-line:no-unsafe-any
+
 		state.interval = windowWrapper.setInterval(intervalFunction, getSetting.default('frameRate'))
 	}
 

@@ -1,4 +1,4 @@
-import { buildIntervalFunction, clearInterval, NullarySideEffector, state, to, windowWrapper } from '../../../../../src'
+import { buildIntervalFunction, clearInterval, NullarySideEffector, state, to } from '../../../../../src'
 import Spy = jasmine.Spy
 
 describe('build interval function returns a function which', () => {

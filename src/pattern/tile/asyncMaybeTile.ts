@@ -6,7 +6,6 @@ import updateProgress from './updateProgress'
 
 const asyncMaybeTile: (_: ReferencedGridAddress) => void =
 	({ gridAddress, thisPatternRef }: ReferencedGridAddress): void => {
-		// tslint:disable-next-line:no-unsafe-any
 		windowWrapper.setTimeout(
 			() => {
 				if (thisPatternHasNotBeenCanceled(thisPatternRef)) {

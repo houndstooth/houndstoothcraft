@@ -1,4 +1,5 @@
 import {
+	clearInterval,
 	clearMixedDownContext,
 	executeSelectedHoundstoothEffects,
 	NullarySideEffector,
@@ -6,7 +7,6 @@ import {
 	state,
 	to,
 	updateCurrentFrame,
-	clearInterval,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import { mockQuerySelector } from '../../../helpers'

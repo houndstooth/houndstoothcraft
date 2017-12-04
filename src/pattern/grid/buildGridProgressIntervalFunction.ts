@@ -1,6 +1,6 @@
+import { clearInterval } from '../../app'
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
-import { clearInterval } from '../../app'
 import { BuildGridProgressIntervalFunctionParams } from './types'
 
 const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionParams) => NullarySideEffector =

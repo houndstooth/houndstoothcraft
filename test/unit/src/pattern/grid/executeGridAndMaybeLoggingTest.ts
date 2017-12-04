@@ -1,5 +1,3 @@
-// tslint:disable:no-unsafe-any
-
 import { consoleWrapper, executeGrid, executeGridAndMaybeLogging, state, to } from '../../../../../src'
 
 describe('execute grid and maybe logging', () => {

@@ -22,7 +22,6 @@ describe('composeMainHoundstooth', () => {
 
 		composeMainHoundstooth.default({ logComposedMainHoundstooth: true })
 
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.log).toHaveBeenCalledWith(state.mainHoundstooth)
 	})
 
@@ -31,7 +30,6 @@ describe('composeMainHoundstooth', () => {
 
 		composeMainHoundstooth.default()
 
-		// tslint:disable-next-line:no-unsafe-any
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
 	})
 

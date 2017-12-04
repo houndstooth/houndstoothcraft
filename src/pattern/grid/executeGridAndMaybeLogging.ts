@@ -1,5 +1,3 @@
-// tslint:disable:no-unsafe-any
-
 import { state } from '../../state'
 import { State } from '../../types'
 import { consoleWrapper } from '../../utilities'

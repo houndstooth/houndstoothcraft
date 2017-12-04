@@ -1,11 +1,10 @@
 // tslint:disable:no-any no-unsafe-any
 
 import noop from './noop'
-import { NullarySideEffector } from './types'
 
 declare const global: any
 
-interface Document {
+interface MockDocument {
 	body: {
 		appendChild?: any,
 	},
@@ -14,7 +13,7 @@ interface Document {
 	querySelector?: any,
 }
 
-const mockDocument: Document = {
+const mockDocument: MockDocument = {
 	body: {
 		appendChild: noop,
 	},
@@ -23,30 +22,34 @@ const mockDocument: Document = {
 	querySelector: noop,
 }
 
-interface Window {
+interface MockWindow {
 	clearInterval: (intervalId: number) => void,
-	setInterval: (fn: any, interval: number) => number,
-	setTimeout: (fn: any, timeout: number) => any,
-	URL: { createObjectURL: (p?: any, q?: any) => any, revokeObjectURL: (p?: any, q?: any) => any },
+	setInterval: (handler: (...args: any[]) => void, interval: number) => number,
+	setTimeout: (handler: (...args: any[]) => void, timeout: number) => number,
+	URL: {
+		createObjectURL: (blob: any) => string,
+		revokeObjectURL: (url: string) => any,
+	},
 }
 
-const mockWindow: Window = {
+/* istanbul ignore next */
+const mockWindow: MockWindow = {
 	URL: {
-		createObjectURL: noop,
+		createObjectURL: (): string => '',
 		revokeObjectURL: noop,
 	},
 	clearInterval: noop,
-	setInterval: () => 0,
-	setTimeout: noop,
+	setInterval: (): number => 0,
+	setTimeout: (): number => 0,
 }
 
-const consoleWrapper: any = console
+const consoleWrapper: Console = console
 
 /* istanbul ignore next */
-const documentWrapper: any = global.window ? document : mockDocument
+const documentWrapper: Document | MockDocument = global.window ? document : mockDocument
 
 /* istanbul ignore next */
-const windowWrapper: any = global.window ? window : mockWindow
+const windowWrapper: Window | MockWindow = global.window ? window : mockWindow
 
 export {
 	consoleWrapper,

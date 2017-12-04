@@ -8,7 +8,6 @@ import * as frameInputChangeHandler from './frameInputChangeHandler'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as pauseClickHandler from './pauseClickHandler'
 import * as playClickHandler from './playClickHandler'
-import * as resetInterface from './resetInterface'
 import * as rewindClickHandler from './rewindClickHandler'
 import * as snapshotClickHandler from './snapshotClickHandler'
 import { CheckSettingForConflict, PatternsHaveConflictsParams } from './types'
@@ -30,7 +29,6 @@ export {
 	playClickHandler,
 	rewindClickHandler,
 	snapshotClickHandler,
-	resetInterface,
 	updateCurrentFrame,
 	updateDescriptions,
 }

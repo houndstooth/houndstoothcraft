@@ -2,18 +2,31 @@
 
 import { NamedEffect } from '../../pattern'
 import { state } from '../../state'
-import { NullarySideEffector } from '../../utilities'
-import { executeSelectedHoundstoothEffects } from '../execute'
-import { InputElement } from '../page'
+import { documentWrapper, NullarySideEffector } from '../../utilities'
+import { clearContexts, clearMixedDownContext } from '../canvas'
+import { cancelPreviousPattern, clearInterval, executeSelectedHoundstoothEffects } from '../execute'
+import { InputElement, PageElement } from '../page'
+import { resetMainHoundstooth } from '../store'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
-import resetInterface from './resetInterface'
 import updateDescriptions from './updateDescriptions'
 
 const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEffect: NamedEffect }) => NullarySideEffector =
 	({ checkbox, houndstoothEffect }: { checkbox: InputElement, houndstoothEffect: NamedEffect }): NullarySideEffector =>
 		(): void => {
-			resetInterface()
+			const descriptions: PageElement = documentWrapper.querySelector('#descriptions-container')
+			descriptions.innerHTML = ''
+
+			clearContexts.default()
+			clearMixedDownContext.default()
+
+			clearInterval.default('animationInterval')
+			clearInterval.default('gridProgressInterval')
+
+			state.resolveGrid()
+
+			cancelPreviousPattern.default()
+			resetMainHoundstooth.default()
 
 			const effectFunction: (houndstoothEffect: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
 			effectFunction(houndstoothEffect)

@@ -6,8 +6,8 @@ import {
 	defaults,
 	documentWrapper,
 	NullarySideEffector,
-	storeMixedDownContext,
 	state,
+	storeMixedDownContext,
 } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
 import { buildMockCanvas } from '../../../helpers'

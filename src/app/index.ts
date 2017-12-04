@@ -74,7 +74,6 @@ export {
 	rewindClickHandler,
 	snapshotClickHandler,
 	buildEffectToggleClickHandler,
-	resetInterface,
 	addDescription,
 	updateCurrentFrame,
 	checkSettingForConflict,

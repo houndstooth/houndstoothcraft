@@ -6,8 +6,8 @@ import {
 	NullarySideEffector,
 	PageElement,
 	Px,
-	storeMixedDownContext,
 	scaleElement,
+	storeMixedDownContext,
 	to,
 } from '../../../src'
 import createTestMarkersCanvas from './createTestMarkersCanvas'

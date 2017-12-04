@@ -55,7 +55,6 @@ export {
 	setClip,
 	deeperPath,
 	getPatternSettingOrCreatePath,
-	resetInterface,
 	addDescription,
 	callFunctionsPerSetting,
 	DataBlob,

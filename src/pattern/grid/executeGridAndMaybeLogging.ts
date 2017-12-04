@@ -1,11 +1,13 @@
 import { state } from '../../state'
-import { State } from '../../types'
+import { ExecuteState, State } from '../../types'
 import { consoleWrapper } from '../../utilities'
 import executeGrid from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
-		const { performanceLogging, animating, currentFrame, currentLayer }: State = state
+		const { execute, animating, currentFrame }: State = state
+		const { currentLayer, performanceLogging }: ExecuteState = execute
+
 		if (performanceLogging) {
 			consoleWrapper.time('grid')
 		}

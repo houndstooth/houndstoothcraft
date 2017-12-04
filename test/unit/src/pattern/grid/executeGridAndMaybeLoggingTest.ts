@@ -5,7 +5,7 @@ describe('execute grid and maybe logging', () => {
 
 	beforeEach(() => {
 		state.currentFrame = to.Frame(96)
-		state.currentLayer = to.Layer(54)
+		state.execute.currentLayer = to.Layer(54)
 
 		spyOn(executeGrid, 'default')
 		spyOn(consoleWrapper, 'time')
@@ -22,7 +22,7 @@ describe('execute grid and maybe logging', () => {
 	})
 
 	describe('when performance logging', () => {
-		beforeEach(() => state.performanceLogging = true)
+		beforeEach(() => state.execute.performanceLogging = true)
 
 		describe('when not animating', () => {
 			it('logs only the performance of the grid', async (done: DoneFn) => {
@@ -52,7 +52,7 @@ describe('execute grid and maybe logging', () => {
 	})
 
 	describe('when not performance logging', () => {
-		beforeEach(() => state.performanceLogging = false)
+		beforeEach(() => state.execute.performanceLogging = false)
 
 		it('does not track performance or log it', async (done: DoneFn) => {
 			await executeGridAndMaybeLogging.default({ thisPatternRef })

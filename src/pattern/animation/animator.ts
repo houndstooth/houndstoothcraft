@@ -11,7 +11,7 @@ const animator: (_: AnimationParams) => void =
 			resolveAnimation,
 		})
 
-		state.animationInterval = windowWrapper.setInterval(intervalFunction, getSetting.default('frameRate'))
+		state.execute.animationInterval = windowWrapper.setInterval(intervalFunction, getSetting.default('frameRate'))
 	}
 
 export default animator

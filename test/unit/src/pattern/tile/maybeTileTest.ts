@@ -43,10 +43,10 @@ describe('maybe tile', () => {
 	})
 
 	it('increments the count of tiles completed', () => {
-		state.tilesCompleted = 5
+		state.execute.tilesCompleted = 5
 
 		maybeTile.default({ gridAddress, thisPatternRef })
 
-		expect(state.tilesCompleted).toBe(6)
+		expect(state.execute.tilesCompleted).toBe(6)
 	})
 })

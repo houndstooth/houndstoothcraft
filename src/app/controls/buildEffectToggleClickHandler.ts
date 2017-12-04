@@ -23,7 +23,7 @@ const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEf
 			clearInterval.default('animationInterval')
 			clearInterval.default('gridProgressInterval')
 
-			state.resolveGrid()
+			state.execute.resolveGrid()
 
 			cancelPreviousPattern.default()
 			resetMainHoundstooth.default()

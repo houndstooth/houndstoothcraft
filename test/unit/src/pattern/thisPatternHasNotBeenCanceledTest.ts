@@ -4,7 +4,7 @@ const subject: (patternRef: number) => boolean = thisPatternHasNotBeenCanceled.d
 
 describe('this pattern has not been canceled', () => {
 	beforeEach(() => {
-		state.patternRef = 45
+		state.execute.patternRef = 45
 	})
 
 	it('is true if the pattern is the same as the one on the state', () => {

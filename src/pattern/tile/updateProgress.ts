@@ -8,7 +8,7 @@ import { documentWrapper, NullarySideEffector } from '../../utilities'
 
 const updateProgress: NullarySideEffector =
 	(): void => {
-		const percentage: number = Math.ceil(state.tilesCompleted * ONE_HUNDRED_PERCENT / (state.tileCount))
+		const percentage: number = Math.ceil(state.execute.tilesCompleted * ONE_HUNDRED_PERCENT / (state.execute.tileCount))
 
 		const progressBar: HTMLElement = documentWrapper.querySelector('#progress-bar') as HTMLElement
 		/* istanbul ignore else */
@@ -17,7 +17,7 @@ const updateProgress: NullarySideEffector =
 		}
 
 		const endLayerValue: number = from.Layer(getSetting.default('endLayer'))
-		const currentLayerValue: number = from.Layer(state.currentLayer)
+		const currentLayerValue: number = from.Layer(state.execute.currentLayer)
 
 		const layersProgressBar: HTMLElement = documentWrapper.querySelector('#layers-progress-bar') as HTMLElement
 		/* istanbul ignore else */

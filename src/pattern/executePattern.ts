@@ -11,7 +11,7 @@ const executePattern: (_: ExecuteParams) => Promise<void> =
 
 		callFunctionsPerSetting.default({ settingsFunctionObjects: animationFunctionObjects })
 
-		const thisPatternRef: number = state.patternRef
+		const thisPatternRef: number = state.execute.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
 			if (thisPatternHasNotBeenCanceled.default(thisPatternRef)) {
 				await executeLayer.default({ layer: to.Layer(layerValue), layerFunctionObjects, thisPatternRef })

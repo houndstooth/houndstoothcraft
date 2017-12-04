@@ -23,11 +23,11 @@ describe('execute layer', () => {
 
 	it('sets the current layer on the state', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(12)
-		state.currentLayer = to.Layer(11)
+		state.execute.currentLayer = to.Layer(11)
 
 		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
 
-		expect(state.currentLayer).toBe(to.Layer(12))
+		expect(state.execute.currentLayer).toBe(to.Layer(12))
 
 		done()
 	})

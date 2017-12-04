@@ -19,7 +19,7 @@ describe('execute pattern', () => {
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
 		setSetting.default('endLayer', endLayer)
-		state.patternRef = 99
+		state.execute.patternRef = 99
 	})
 
 	it('calls the animation functions, to render based on the current frame', async (done: DoneFn) => {
@@ -73,7 +73,7 @@ describe('execute pattern', () => {
 	it('stops executing layers if the pattern ref has changed on the state (cancelled)', async (done: DoneFn) => {
 		const executeLayerSpy: Spy = spyOn(executeLayer, 'default').and.callFake(({ layer }: { layer: Layer }) => {
 			if (from.Layer(layer) === 2) {
-				state.patternRef = state.patternRef + 1
+				state.execute.patternRef = state.execute.patternRef + 1
 			}
 		})
 

@@ -5,7 +5,7 @@ import { ExecuteLayerParams } from './types'
 
 const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 	async ({ layer, layerFunctionObjects, thisPatternRef }: ExecuteLayerParams): Promise<void> => {
-		state.currentLayer = layer
+		state.execute.currentLayer = layer
 
 		callFunctionsPerSetting.default({ settingsFunctionObjects: layerFunctionObjects })
 

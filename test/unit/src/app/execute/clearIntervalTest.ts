@@ -6,7 +6,7 @@ const FAKE_GRID_PROGRESS_INTERVAL: number = 3369
 
 describe('clear interval', () => {
 	beforeEach(() => {
-		state.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL
+		state.execute.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL
 		spyOn(windowWrapper, 'clearInterval')
 
 		subject('gridProgressInterval')
@@ -17,6 +17,6 @@ describe('clear interval', () => {
 	})
 
 	it('sets the state node for this interval to undefined', () => {
-		expect(state.gridProgressInterval).toBe(undefined)
+		expect(state.execute.gridProgressInterval).toBe(undefined)
 	})
 })

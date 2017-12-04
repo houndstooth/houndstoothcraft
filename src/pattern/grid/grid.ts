@@ -25,7 +25,7 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 			tileCount *= QUADRANT_COUNT
 		}
 
-		state.tileCount = tileCount
+		state.execute.tileCount = tileCount
 
 		codeUtilities.iterator(adjustedTileResolution).forEach((x: number): void => {
 			codeUtilities.iterator(adjustedTileResolution).forEach((y: number): void => {

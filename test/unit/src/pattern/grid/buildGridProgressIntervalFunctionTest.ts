@@ -17,19 +17,19 @@ describe('build progress interval function returns a function which', () => {
 		progressBar = buildMockElement()
 		progressMessage = buildMockElement()
 		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar, progressMessage })
-		spyOn(state, 'resolveGrid')
-		state.tileCount = 99
+		spyOn(state.execute, 'resolveGrid')
+		state.execute.tileCount = 99
 	})
 
 	describe('when the grid is complete', () => {
 		beforeEach(() => {
-			state.tilesCompleted = 99
+			state.execute.tilesCompleted = 99
 		})
 
 		it('resolves the promise', () => {
 			gridProgressIntervalFunction()
 
-			expect(state.resolveGrid).toHaveBeenCalled()
+			expect(state.execute.resolveGrid).toHaveBeenCalled()
 		})
 
 		it('clears the progress interval off the settings', () => {
@@ -59,13 +59,13 @@ describe('build progress interval function returns a function which', () => {
 
 	describe('when the grid is not yet complete', () => {
 		beforeEach(() => {
-			state.tilesCompleted = 13
+			state.execute.tilesCompleted = 13
 		})
 
 		it('does not resolve the promise', () => {
 			gridProgressIntervalFunction()
 
-			expect(state.resolveGrid).not.toHaveBeenCalled()
+			expect(state.execute.resolveGrid).not.toHaveBeenCalled()
 		})
 
 		it('does not clear the progress interval off the settings', () => {
@@ -94,7 +94,7 @@ describe('build progress interval function returns a function which', () => {
 	})
 
 	it('does not fail when there is no progress bar', () => {
-		state.tilesCompleted = 99
+		state.execute.tilesCompleted = 99
 		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar: undefined })
 
 		gridProgressIntervalFunction()

@@ -22,8 +22,8 @@ describe('.layerSettings', () => {
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: (): Color => state.currentLayer === to.Layer(0) ? YELLOW : CYAN,
-					opacity: (): number => state.currentLayer === to.Layer(0) ? 1 : 0.25,
+					backgroundColor: (): Color => state.execute.currentLayer === to.Layer(0) ? YELLOW : CYAN,
+					opacity: (): number => state.execute.currentLayer === to.Layer(0) ? 1 : 0.25,
 				},
 			},
 		}
@@ -53,9 +53,9 @@ describe('.layerSettings', () => {
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: (): Color => state.currentLayer === to.Layer(0) ? YELLOW : CYAN,
+					backgroundColor: (): Color => state.execute.currentLayer === to.Layer(0) ? YELLOW : CYAN,
 					colorSet: (): ColorSet => {
-						if (state.currentLayer === to.Layer(0)) {
+						if (state.execute.currentLayer === to.Layer(0)) {
 							return to.ColorSet([ BLACK, TRANSPARENT ])
 						}
 						else {

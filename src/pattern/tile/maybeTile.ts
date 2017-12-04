@@ -12,7 +12,7 @@ const maybeTile: (_: ReferencedGridAddress) => void =
 			tile({ gridAddress, tileOrigin, tileSize })
 		}
 
-		state.tilesCompleted++
+		state.execute.tilesCompleted++
 	}
 
 export default maybeTile

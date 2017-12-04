@@ -6,7 +6,7 @@ import { BuildGridProgressIntervalFunctionParams } from './types'
 const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionParams) => NullarySideEffector =
 	({ progressBar, progressMessage }: BuildGridProgressIntervalFunctionParams): NullarySideEffector =>
 		(): void => {
-			if (state.tilesCompleted === state.tileCount) {
+			if (state.execute.tilesCompleted === state.execute.tileCount) {
 				if (progressBar) {
 					progressBar.style.width = '0%'
 				}
@@ -15,7 +15,7 @@ const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionPa
 				}
 
 				clearInterval.default('gridProgressInterval')
-				state.resolveGrid()
+				state.execute.resolveGrid()
 			}
 		}
 

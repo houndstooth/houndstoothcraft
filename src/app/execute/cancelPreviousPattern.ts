@@ -3,7 +3,7 @@ import { NullarySideEffector } from '../../utilities'
 
 const cancelPreviousPattern: NullarySideEffector =
 	(): void => {
-		state.patternRef = Math.random()
+		state.execute.patternRef = Math.random()
 	}
 
 export default cancelPreviousPattern

@@ -8,6 +8,6 @@ describe('cancel previous pattern', () => {
 
 		subject()
 
-		expect(state.patternRef).toBe(0.4987)
+		expect(state.execute.patternRef).toBe(0.4987)
 	})
 })

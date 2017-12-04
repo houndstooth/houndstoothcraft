@@ -35,6 +35,6 @@ const playClickHandler: NullarySideEffector =
 	}
 
 const resumingAnimation: () => boolean =
-	(): boolean => !!state.animationInterval
+	(): boolean => !!state.execute.animationInterval
 
 export default playClickHandler

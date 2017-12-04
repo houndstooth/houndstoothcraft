@@ -35,12 +35,12 @@ describe('grid complete', () => {
 	})
 
 	it('saves the watcher onto the settings so it can be cancelled from elsewhere if necessary', () => {
-		state.gridProgressInterval = undefined
+		state.execute.gridProgressInterval = undefined
 
 		gridComplete.default(resolveGrid)
 
 		// tslint:disable-next-line:no-any
-		expect(state.gridProgressInterval).toBe(fakeGridProgressIntervalItself as any)
+		expect(state.execute.gridProgressInterval).toBe(fakeGridProgressIntervalItself as any)
 	})
 
 	it('builds the progress interval function with this particular progress bar', () => {
@@ -56,6 +56,6 @@ describe('grid complete', () => {
 	it('saves the grid resolution function onto the settings so others can resolve it', () => {
 		gridComplete.default(resolveGrid)
 
-		expect(state.resolveGrid).toBe(resolveGrid)
+		expect(state.execute.resolveGrid).toBe(resolveGrid)
 	})
 })

@@ -6,7 +6,7 @@ const subject: NullarySideEffector = completeLayers.default
 describe('complete layers', () => {
 	let layersProgressBar: PageElement
 	beforeEach(() => {
-		state.currentLayer = to.Layer(497)
+		state.execute.currentLayer = to.Layer(497)
 		const { layersProgressBar: tmpLayersProgressBar } = mockQuerySelector()
 		layersProgressBar = tmpLayersProgressBar
 
@@ -14,7 +14,7 @@ describe('complete layers', () => {
 	})
 
 	it('resets the current layer to zero', () => {
-		expect(state.currentLayer).toBe(to.Layer(0))
+		expect(state.execute.currentLayer).toBe(to.Layer(0))
 	})
 
 	it('resets the layer progress bar', () => {

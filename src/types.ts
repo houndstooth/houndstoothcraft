@@ -7,21 +7,13 @@ interface CanvasState {
 	mixedDownContext: Context,
 }
 
-interface State {
-	animating: boolean,
+interface ExecuteState {
 	animationInterval?: number,
-	canvas: CanvasState,
-	currentFrame: Frame,
 	currentLayer: Layer,
-	currentPattern: Partial<BasePattern>,
-	endFrame: Frame,
-	exportFrames: boolean,
 	gridProgressInterval?: number,
-	readonly mainHoundstooth: Houndstooth,
 	patternRef: number,
 	performanceLogging: boolean,
 	resolveGrid: NullarySideEffector,
-	selectedHoundstoothEffects: NamedEffect[],
 	tileCount: number,
 	tilesCompleted: number,
 
@@ -29,7 +21,20 @@ interface State {
 	[ _: string ]: any,
 }
 
+interface State {
+	animating: boolean,
+	canvas: CanvasState,
+	currentFrame: Frame,
+	currentPattern: Partial<BasePattern>,
+	endFrame: Frame,
+	execute: ExecuteState,
+	exportFrames: boolean,
+	readonly mainHoundstooth: Houndstooth,
+	selectedHoundstoothEffects: NamedEffect[],
+}
+
 export {
 	CanvasState,
+	ExecuteState,
 	State,
 }

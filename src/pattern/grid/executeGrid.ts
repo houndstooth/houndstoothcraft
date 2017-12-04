@@ -10,7 +10,7 @@ const executeGrid: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
 		grid({ gridTile: asyncMaybeTile.default, thisPatternRef })
 		await new Promise<(resolveGrid: NullarySideEffector) => void>(gridComplete)
-		state.tilesCompleted = 0
+		state.execute.tilesCompleted = 0
 	}
 
 export default executeGrid

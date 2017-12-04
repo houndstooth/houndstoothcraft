@@ -41,11 +41,11 @@ describe('grid', () => {
 		})
 
 		it('sets the tile count on the state correctly', () => {
-			state.tileCount = 0
+			state.execute.tileCount = 0
 
 			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
-			expect(state.tileCount).toBe(Math.pow(tileResolution, 2))
+			expect(state.execute.tileCount).toBe(Math.pow(tileResolution, 2))
 		})
 	})
 
@@ -80,11 +80,11 @@ describe('grid', () => {
 		})
 
 		it('sets the tile count on the state correctly', () => {
-			state.tileCount = 0
+			state.execute.tileCount = 0
 
 			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
-			expect(state.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
+			expect(state.execute.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
 		})
 	})
 })

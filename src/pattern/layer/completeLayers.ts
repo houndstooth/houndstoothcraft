@@ -9,7 +9,7 @@ const completeLayers: NullarySideEffector =
 		if (layersProgressBar) {
 			layersProgressBar.style.width = '0%'
 		}
-		state.currentLayer = to.Layer(0)
+		state.execute.currentLayer = to.Layer(0)
 	}
 
 export default completeLayers

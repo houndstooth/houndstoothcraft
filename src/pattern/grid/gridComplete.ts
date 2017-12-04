@@ -11,8 +11,8 @@ const gridComplete: (resolveGrid: NullarySideEffector) => void =
 		const progressBar: HTMLElement = documentWrapper.querySelector('#progress-bar') as HTMLElement
 		const progressMessage: HTMLElement = documentWrapper.querySelector('#progress-message') as HTMLElement
 
-		state.resolveGrid = resolveGrid
-		state.gridProgressInterval = windowWrapper.setInterval(
+		state.execute.resolveGrid = resolveGrid
+		state.execute.gridProgressInterval = windowWrapper.setInterval(
 			buildGridProgressIntervalFunction({ progressBar, progressMessage }),
 			PROGRESS_UPDATE_RATE,
 		)

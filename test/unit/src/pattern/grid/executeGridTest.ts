@@ -15,7 +15,7 @@ describe('execute grid', () => {
 	beforeEach(() => {
 		const fakeGridComplete: (resolveGrid: NullarySideEffector) => void =
 			(resolveGrid: NullarySideEffector): void => {
-				state.resolveGrid = resolveGrid
+				state.execute.resolveGrid = resolveGrid
 			}
 		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)
 
@@ -24,14 +24,14 @@ describe('execute grid', () => {
 	})
 
 	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {
-		state.tilesCompleted = 256
+		state.execute.tilesCompleted = 256
 
 		executeGrid.default({ thisPatternRef }).then().catch()
-		expect(state.tilesCompleted).toBe(256)
+		expect(state.execute.tilesCompleted).toBe(256)
 
-		state.resolveGrid()
+		state.execute.resolveGrid()
 		setTimeout(() => {
-			expect(state.tilesCompleted).toBe(0)
+			expect(state.execute.tilesCompleted).toBe(0)
 			done()
 		},         0)
 	})

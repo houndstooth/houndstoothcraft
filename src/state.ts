@@ -2,7 +2,7 @@ import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
 import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
-import { CanvasState, State } from './types'
+import { CanvasState, ExecuteState, State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
@@ -27,23 +27,27 @@ const DEFAULT_CANVAS_STATE: CanvasState = {
 	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
 }
 
-const DEFAULT_STATE: State = {
-	animating: DEFAULT_ANIMATING,
+const DEFAULT_EXECUTE_STATE: ExecuteState = {
 	animationInterval: DEFAULT_ANIMATION_INTERVAL,
-	canvas: DEFAULT_CANVAS_STATE,
-	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
-	currentPattern: DEFAULT_CURRENT_PATTERN,
-	endFrame: DEFAULT_END_FRAME,
-	exportFrames: DEFAULT_EXPORT_FRAMES,
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
-	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	patternRef: DEFAULT_PATTERN_REF,
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
 	resolveGrid: DEFAULT_RESOLVE_GRID,
-	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 	tileCount: DEFAULT_TILE_COUNT,
 	tilesCompleted: DEFAULT_TILES_COMPLETED,
+}
+
+const DEFAULT_STATE: State = {
+	animating: DEFAULT_ANIMATING,
+	canvas: DEFAULT_CANVAS_STATE,
+	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
+	currentPattern: DEFAULT_CURRENT_PATTERN,
+	endFrame: DEFAULT_END_FRAME,
+	execute: DEFAULT_EXECUTE_STATE,
+	exportFrames: DEFAULT_EXPORT_FRAMES,
+	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
+	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 }
 
 const state: State = codeUtilities.deepClone(DEFAULT_STATE)

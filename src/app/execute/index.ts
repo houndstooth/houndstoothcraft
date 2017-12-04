@@ -1,4 +1,5 @@
 import * as callFunctionsPerSetting from './callFunctionsPerSetting'
+import * as cancelPreviousPattern from './cancelPreviousPattern'
 import * as clearInterval from './clearInterval'
 import * as combineHoundstoothEffects from './combineHoundstoothEffects'
 import * as composeMainHoundstooth from './composeMainHoundstooth'
@@ -21,4 +22,5 @@ export {
 	composeMainHoundstooth,
 	prepareFunctionObjectsPerSetting,
 	clearInterval,
+	cancelPreviousPattern,
 }

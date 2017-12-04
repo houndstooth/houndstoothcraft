@@ -13,7 +13,7 @@ describe('animator', () => {
 	const animationFunction: NullarySideEffector = noop.default
 	const frameRate: number = 3
 	const resolveAnimation: NullarySideEffector = noop.default
-	const interval: NullarySideEffector = noop.default
+	const interval: number = 34987
 	beforeEach(() => {
 		setSetting.default('frameRate', frameRate)
 		spyOn(windowWrapper, 'setInterval').and.returnValue(interval)

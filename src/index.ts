@@ -21,7 +21,7 @@ export {
 	PageElement,
 	Pixel,
 	Px,
-	resetSettings,
+	resetMainHoundstooth,
 	scaleCanvasContainer,
 	scaleElement,
 	checkSettingForConflict,
@@ -71,6 +71,7 @@ export {
 	patternsHaveConflicts,
 	updateDescriptions,
 	clearInterval,
+	cancelPreviousPattern,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'

@@ -22,6 +22,7 @@ export {
 	prepareFunctionObjectsPerSetting,
 	settingPath,
 	clearInterval,
+	cancelPreviousPattern,
 } from './execute'
 export {
 	attachControlHandlers,
@@ -56,7 +57,7 @@ export {
 } from './render'
 export {
 	Overwrite,
-	resetSettings,
+	resetMainHoundstooth,
 	SettingsPath,
 	SettingsStep,
 	setSetting,

@@ -14,7 +14,7 @@ import { buildMockCanvas } from '../../../helpers'
 
 const subject: NullarySideEffector = storeMixedDownContext.default
 
-describe('store mixed down context', () => {
+describe('settings mixed down context', () => {
 	let mixedDownContext: Context
 	beforeEach(() => {
 		expect(state.mixedDownContext).toEqual({})

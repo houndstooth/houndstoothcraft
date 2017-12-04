@@ -2,7 +2,7 @@
 
 import { Pattern } from '../../pattern'
 import { FullSettingsPath } from '../execute'
-import { SettingsPath } from '../store'
+import { SettingsPath } from '../settings'
 
 interface CheckSettingForConflict extends FullSettingsPath, SettingConflictCheck {
 }

@@ -1,4 +1,4 @@
-import { Context, Px } from '../page'
+import { Context, Px } from '../dom'
 
 const clearContext: (_: { canvasSize: Px, context: Context }) => void =
 	({ canvasSize, context }: { canvasSize: Px, context: Context }): void =>

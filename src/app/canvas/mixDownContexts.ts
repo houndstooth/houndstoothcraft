@@ -1,7 +1,7 @@
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
-import { Context, Px } from '../page'
-import { getSetting } from '../store'
+import { Context, Px } from '../dom'
+import { getSetting } from '../settings'
 import clearContext from './clearContext'
 
 const mixDownContexts: NullarySideEffector =

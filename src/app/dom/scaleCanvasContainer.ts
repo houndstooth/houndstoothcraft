@@ -2,7 +2,7 @@
 
 import * as to from '../../to'
 import { documentWrapper } from '../../utilities'
-import { getSetting } from '../store'
+import { getSetting } from '../settings'
 import scaleElement from './scaleElement'
 import { PageElement, Px } from './types'
 

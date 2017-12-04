@@ -1,6 +1,6 @@
 import { Color, parseColor } from '../../pattern'
 import { getCurrentContext } from '../canvas'
-import { Context } from '../page'
+import { Context } from '../dom'
 
 const buildFill: (_: { shapeColor: Color }) => void =
 	({ shapeColor }: { shapeColor: Color}): void => {

@@ -43,7 +43,7 @@ export {
 	LabelElement,
 	insertElementRightAfter,
 	makeId,
-} from './page'
+} from './dom'
 export {
 	fill,
 	Path,
@@ -65,7 +65,7 @@ export {
 	getPatternSettingOrCreatePath,
 	getSetting,
 	shouldRecurse,
-} from './store'
+} from './settings'
 export {
 	frameInputChangeHandler,
 	effectsHaveConflicts,
@@ -83,4 +83,4 @@ export {
 	PatternsHaveConflictsParams,
 	patternsHaveConflicts,
 	updateDescriptions,
-} from './ui'
+} from './controls'

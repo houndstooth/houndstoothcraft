@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { getCurrentContext } from '../canvas'
-import { Context } from '../page'
+import { Context } from '../dom'
 import { Path, Pixel } from './types'
 
 const buildPath: (_: { path: Path }) => void =

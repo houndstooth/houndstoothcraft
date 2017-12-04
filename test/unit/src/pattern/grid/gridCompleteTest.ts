@@ -34,7 +34,7 @@ describe('grid complete', () => {
 		expect(windowWrapper.setInterval).toHaveBeenCalledWith(fakeGridProgressIntervalFunction, 30)
 	})
 
-	it('saves the watcher onto the store so it can be cancelled from elsewhere if necessary', () => {
+	it('saves the watcher onto the settings so it can be cancelled from elsewhere if necessary', () => {
 		state.gridProgressInterval = undefined
 
 		gridComplete.default(resolveGrid)
@@ -53,7 +53,7 @@ describe('grid complete', () => {
 		expect(buildGridProgressIntervalFunctionSpy).toHaveBeenCalledWith({ progressBar, progressMessage })
 	})
 
-	it('saves the grid resolution function onto the store so others can resolve it', () => {
+	it('saves the grid resolution function onto the settings so others can resolve it', () => {
 		gridComplete.default(resolveGrid)
 
 		expect(state.resolveGrid).toBe(resolveGrid)

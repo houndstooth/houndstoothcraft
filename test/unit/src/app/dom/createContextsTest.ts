@@ -38,7 +38,7 @@ describe('create contexts', () => {
 		expect(state.contexts.length).toBe(6)
 	})
 
-	it('can reduce the count of contexts in the state, and canvases on the page', () => {
+	it('can reduce the count of contexts in the state, and canvases on the dom', () => {
 		setSetting.default('endLayer', to.Layer(5))
 		createContexts.default()
 

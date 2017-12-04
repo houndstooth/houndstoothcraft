@@ -29,7 +29,7 @@ describe('scale canvas container', () => {
 		returnedCanvasContainer = scaleCanvasContainer.default()
 	})
 
-	it('returns the canvas container it just put on the page', () => {
+	it('returns the canvas container it just put on the dom', () => {
 		const canvasContainerAppendedToDocumentBody: PageElement = bodyChildren[ 0 ]
 		expect(returnedCanvasContainer).toBe(canvasContainerAppendedToDocumentBody)
 	})

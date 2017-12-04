@@ -32,7 +32,7 @@ describe('build progress interval function returns a function which', () => {
 			expect(state.resolveGrid).toHaveBeenCalled()
 		})
 
-		it('clears the progress interval off the store', () => {
+		it('clears the progress interval off the settings', () => {
 			spyOn(windowWrapper, 'clearInterval')
 
 			gridProgressIntervalFunction()
@@ -68,7 +68,7 @@ describe('build progress interval function returns a function which', () => {
 			expect(state.resolveGrid).not.toHaveBeenCalled()
 		})
 
-		it('does not clear the progress interval off the store', () => {
+		it('does not clear the progress interval off the settings', () => {
 			spyOn(windowWrapper, 'clearInterval')
 
 			gridProgressIntervalFunction()

@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import * as to from '../../to'
-import { deeperPath, getPatternSettingOrCreatePath, shouldRecurse } from '../store'
+import { deeperPath, getPatternSettingOrCreatePath, shouldRecurse } from '../settings'
 import checkSettingForConflict from './checkSettingForConflict'
 import { PatternsHaveConflictsParams } from './types'
 

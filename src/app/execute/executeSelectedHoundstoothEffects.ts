@@ -1,7 +1,7 @@
 import { Effect, executeAnimation, executePattern } from '../../pattern'
 import { state } from '../../state'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
-import { createContexts } from '../page'
+import { createContexts } from '../dom'
 import composeMainHoundstooth from './composeMainHoundstooth'
 import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import { SettingsFunctionObject } from './types'

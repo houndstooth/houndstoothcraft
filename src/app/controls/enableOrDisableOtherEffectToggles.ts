@@ -4,8 +4,8 @@ import * as availableEffects from '../../availableEffects'
 import { Effect, NamedEffect } from '../../pattern'
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector } from '../../utilities'
+import { InputElement, makeId } from '../dom'
 import { combineHoundstoothEffects } from '../execute'
-import { InputElement, makeId } from '../page'
 import effectsHaveConflicts from './effectsHaveConflicts'
 
 const enableOrDisableOtherEffectToggles: NullarySideEffector =

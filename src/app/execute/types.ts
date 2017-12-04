@@ -1,7 +1,7 @@
 // tslint:disable:no-any max-file-line-count
 
 import { Effect, NamedEffect, Pattern } from '../../pattern'
-import { SettingsPath, SettingsStep } from '../store'
+import { SettingsPath, SettingsStep } from '../settings'
 
 interface ComposeMainHoundstooth {
 	readonly houndstoothEffects?: NamedEffect[],

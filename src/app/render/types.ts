@@ -1,4 +1,4 @@
-import { Px } from '../page'
+import { Px } from '../dom'
 
 enum _PathBrand {}
 type Path = _PathBrand & Pixel[]

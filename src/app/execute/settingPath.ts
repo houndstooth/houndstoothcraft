@@ -1,4 +1,4 @@
-import { SettingsPath, SettingsStep } from '../store'
+import { SettingsPath, SettingsStep } from '../settings'
 
 const settingPath: (_: { settingName: SettingsStep, settingsPath: SettingsPath }) => string =
 	({ settingName, settingsPath }: { settingName: SettingsStep, settingsPath: SettingsPath }): string =>

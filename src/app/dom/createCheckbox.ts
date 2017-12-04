@@ -2,7 +2,7 @@
 
 import { NamedEffect } from '../../pattern'
 import { documentWrapper } from '../../utilities'
-import { buildEffectToggleClickHandler } from '../ui'
+import { buildEffectToggleClickHandler } from '../controls'
 import makeId from './makeId'
 import { InputElement } from './types'
 

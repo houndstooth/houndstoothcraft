@@ -2,7 +2,7 @@
 
 import { Pattern } from '../../pattern'
 import * as to from '../../to'
-import { deeperPath } from '../store'
+import { deeperPath } from '../settings'
 import {
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,

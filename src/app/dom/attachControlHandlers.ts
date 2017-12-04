@@ -7,7 +7,7 @@ import {
 	playClickHandler,
 	rewindClickHandler,
 	snapshotClickHandler,
-} from '../ui'
+} from '../controls'
 
 const attachControlHandlers: NullarySideEffector =
 	(): void => {

@@ -2,7 +2,7 @@
 
 import { NullarySideEffector } from '../../utilities'
 import { getCurrentContext } from '../canvas'
-import { Context } from '../page'
+import { Context } from '../dom'
 
 const clipPath: NullarySideEffector =
 	(): void => {

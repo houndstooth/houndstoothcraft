@@ -2,15 +2,14 @@
 
 import { state } from '../../state'
 import * as to from '../../to'
-import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
+import { documentWrapper, NullarySideEffector } from '../../utilities'
 import { clearMixedDownContext } from '../canvas'
-import { executeSelectedHoundstoothEffects } from '../execute'
+import { clearInterval, executeSelectedHoundstoothEffects } from '../execute'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =
 	(): void => {
-		windowWrapper.clearInterval(state.interval)
-		state.interval = undefined
+		clearInterval.default('interval')
 
 		updateCurrentFrame(to.Frame(0))
 

@@ -1,6 +1,7 @@
 import { state } from '../../state'
 import * as to from '../../to'
-import { NullarySideEffector, windowWrapper } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
+import { clearInterval } from '../../app'
 import { AnimationParams, ConditionFunction } from './types'
 
 const buildIntervalFunction: (_: AnimationParams) => NullarySideEffector =
@@ -14,8 +15,7 @@ const buildIntervalFunction: (_: AnimationParams) => NullarySideEffector =
 
 			if (state.endFrame !== to.Frame(0) && state.currentFrame > state.endFrame) {
 				resolveAnimation()
-				// tslint:disable-next-line:no-unsafe-any
-				windowWrapper.clearInterval(state.interval)
+				clearInterval.default('interval')
 			}
 		}
 

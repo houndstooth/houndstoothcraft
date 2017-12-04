@@ -21,6 +21,7 @@ export {
 	SettingsFunctionObject,
 	prepareFunctionObjectsPerSetting,
 	settingPath,
+	clearInterval,
 } from './execute'
 export {
 	attachControlHandlers,
@@ -55,7 +56,7 @@ export {
 } from './render'
 export {
 	Overwrite,
-	resetState,
+	resetSettings,
 	SettingsPath,
 	SettingsStep,
 	setSetting,

@@ -1,10 +1,11 @@
 // tslint:disable:no-unsafe-any
 
-import { executeGrid, resetState, state } from '../../../src'
+import { executeGrid } from '../../../src'
+import { resetState } from '../../helpers'
 import { activateTestMarkerCanvas, syncExecuteGridAndMixDownContexts } from '../helpers'
 
 beforeEach(() => {
-	resetState.default(state)
+	resetState()
 
 	activateTestMarkerCanvas()
 

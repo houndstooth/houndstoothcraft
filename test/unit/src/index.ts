@@ -1,5 +1,5 @@
-import { resetState, state } from '../../../src'
+import { resetState } from '../../helpers'
 
 beforeEach(() => {
-	resetState.default(state)
+	resetState()
 })

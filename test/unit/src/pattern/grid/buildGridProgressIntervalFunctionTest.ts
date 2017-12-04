@@ -1,5 +1,6 @@
 import {
 	buildGridProgressIntervalFunction,
+	clearInterval,
 	NullarySideEffector,
 	PageElement,
 	state,
@@ -12,12 +13,12 @@ describe('build progress interval function returns a function which', () => {
 	let progressMessage: PageElement
 	let gridProgressIntervalFunction: NullarySideEffector
 	beforeEach(() => {
+		spyOn(clearInterval, 'default')
 		progressBar = buildMockElement()
 		progressMessage = buildMockElement()
 		gridProgressIntervalFunction = buildGridProgressIntervalFunction.default({ progressBar, progressMessage })
 		spyOn(state, 'resolveGrid')
 		state.tileCount = 99
-		state.gridProgressInterval = jasmine.createSpy('gridProgressInterval')
 	})
 
 	describe('when the grid is complete', () => {
@@ -36,8 +37,7 @@ describe('build progress interval function returns a function which', () => {
 
 			gridProgressIntervalFunction()
 
-			// tslint:disable-next-line:no-unsafe-any
-			expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval || {})
+			expect(clearInterval.default).toHaveBeenCalledWith('gridProgressInterval')
 		})
 
 		it('resets the progress bar', () => {
@@ -73,8 +73,7 @@ describe('build progress interval function returns a function which', () => {
 
 			gridProgressIntervalFunction()
 
-			// tslint:disable-next-line:no-unsafe-any
-			expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
+			expect(clearInterval.default).not.toHaveBeenCalled()
 		})
 
 		it('does not reset the progress bar', () => {

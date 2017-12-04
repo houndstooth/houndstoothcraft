@@ -5,9 +5,9 @@ import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { InputElement } from '../page'
-import resetInterface from './resetInterface'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
+import resetInterface from './resetInterface'
 import updateDescriptions from './updateDescriptions'
 
 const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEffect: NamedEffect }) => NullarySideEffector =

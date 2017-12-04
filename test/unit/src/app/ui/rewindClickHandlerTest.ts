@@ -1,13 +1,12 @@
 import {
 	clearMixedDownContext,
 	executeSelectedHoundstoothEffects,
-	noop,
 	NullarySideEffector,
 	rewindClickHandler,
 	state,
 	to,
 	updateCurrentFrame,
-	windowWrapper,
+	clearInterval,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import { mockQuerySelector } from '../../../helpers'
@@ -15,25 +14,21 @@ import { mockQuerySelector } from '../../../helpers'
 describe('rewind click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
 	let rewindButton: HTMLButtonElement
-	const interval: NullarySideEffector = noop.default
+
 	beforeEach(() => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
-		spyOn(windowWrapper, 'clearInterval')
+		spyOn(clearInterval, 'default')
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 		const { rewindButton: tmpRewindButton } = mockQuerySelector()
 		rewindButton = tmpRewindButton as HTMLButtonElement
-
-		state.interval = interval
 	})
 
 	it('clears the interval and removes it from state', () => {
 		rewindClickHandler.default()
 
-		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(interval)
-		expect(state.interval).toBe(undefined)
+		expect(clearInterval.default).toHaveBeenCalledWith('interval')
 	})
 
 	it('resets the current frame', () => {

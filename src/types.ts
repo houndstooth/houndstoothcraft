@@ -10,8 +10,8 @@ interface State {
 	currentPattern: Partial<BasePattern>,
 	endFrame: Frame,
 	exportFrames: boolean,
-	gridProgressInterval?: NullarySideEffector,
-	interval?: NullarySideEffector,
+	gridProgressInterval?: number,
+	interval?: number,
 	readonly mainHoundstooth: Houndstooth,
 	mixedDownContext: Context,
 	patternRef: number,
@@ -20,6 +20,9 @@ interface State {
 	selectedHoundstoothEffects: NamedEffect[],
 	tileCount: number,
 	tilesCompleted: number,
+
+	// tslint:disable-next-line:no-any
+	[ _: string ]: any,
 }
 
 export {

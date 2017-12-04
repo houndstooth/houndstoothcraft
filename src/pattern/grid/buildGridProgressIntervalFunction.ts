@@ -1,5 +1,6 @@
 import { state } from '../../state'
-import { NullarySideEffector, windowWrapper } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
+import { clearInterval } from '../../app'
 import { BuildGridProgressIntervalFunctionParams } from './types'
 
 const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionParams) => NullarySideEffector =
@@ -13,8 +14,7 @@ const buildGridProgressIntervalFunction: (_: BuildGridProgressIntervalFunctionPa
 					progressMessage.textContent = ''
 				}
 
-				// tslint:disable-next-line:no-unsafe-any
-				windowWrapper.clearInterval(state.gridProgressInterval)
+				clearInterval.default('gridProgressInterval')
 				state.resolveGrid()
 			}
 		}

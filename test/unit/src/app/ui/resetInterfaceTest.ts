@@ -1,16 +1,15 @@
 import {
 	clearContexts,
+	clearInterval,
 	clearMixedDownContext,
 	Context,
 	documentWrapper,
 	NamedEffect,
-	NullarySideEffector,
 	PageElement,
 	resetInterface,
 	resetMixedDownContext,
 	state,
 	to,
-	windowWrapper,
 } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
 import { buildMockElement } from '../../../helpers'
@@ -20,10 +19,10 @@ describe('reset interface', () => {
 	const mixedDownContext: Context = buildMockContext()
 	beforeEach(() => {
 		spyOn(documentWrapper, 'querySelector').and.returnValue(descriptionsContainer)
-		spyOn(windowWrapper, 'clearInterval')
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(resetMixedDownContext, 'default').and.callFake(() => state.mixedDownContext = mixedDownContext)
 		spyOn(clearContexts, 'default')
+		spyOn(clearInterval, 'default')
 	})
 
 	it('clears descriptions', () => {
@@ -45,24 +44,15 @@ describe('reset interface', () => {
 	})
 
 	it('clears any active animation', () => {
-		const interval: NullarySideEffector = (): void => undefined
-		state.interval = interval
-
 		resetInterface.default()
 
-		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
+		expect(clearInterval.default).toHaveBeenCalledWith('interval')
 	})
 
 	it('clears any active rendering progress measurement', () => {
-		const gridProgressInterval: NullarySideEffector = (): void => undefined
-
-		state.gridProgressInterval = gridProgressInterval
-
 		resetInterface.default()
 
-		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.gridProgressInterval)
+		expect(clearInterval.default).toHaveBeenCalledWith('gridProgressInterval')
 	})
 
 	it('resets the state, except for selected effects, current frame, and mixed down context', () => {

@@ -2,10 +2,11 @@
 
 import { Frame, NamedEffect } from '../../pattern'
 import { state } from '../../state'
-import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
+import { documentWrapper, NullarySideEffector } from '../../utilities'
 import { clearContexts, clearMixedDownContext, resetMixedDownContext } from '../canvas'
+import { clearInterval } from '../execute'
 import { PageElement } from '../page'
-import { resetState } from '../store'
+import { resetSettings } from '../store'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const resetInterface: NullarySideEffector =
@@ -16,13 +17,14 @@ const resetInterface: NullarySideEffector =
 		clearContexts.default()
 		clearMixedDownContext.default()
 
-		windowWrapper.clearInterval(state.interval)
-		windowWrapper.clearInterval(state.gridProgressInterval)
+		clearInterval.default('interval')
+		clearInterval.default('gridProgressInterval')
+
 		state.resolveGrid()
 
 		const existingFrame: Frame = state.currentFrame
 		const existingEffects: NamedEffect[] = state.selectedHoundstoothEffects.slice()
-		resetState.default(state)
+		resetSettings.default()
 
 		updateCurrentFrame(existingFrame)
 		resetMixedDownContext.default()

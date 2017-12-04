@@ -1,6 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import noop from './noop'
+import { NullarySideEffector } from './types'
 
 declare const global: any
 
@@ -23,9 +24,9 @@ const mockDocument: Document = {
 }
 
 interface Window {
-	clearInterval: (p?: any, q?: any) => any,
-	setInterval: (p?: any, q?: any) => any,
-	setTimeout: (p?: any, q?: any) => any,
+	clearInterval: (intervalId: number) => void,
+	setInterval: (fn: any, interval: number) => number,
+	setTimeout: (fn: any, timeout: number) => any,
 	URL: { createObjectURL: (p?: any, q?: any) => any, revokeObjectURL: (p?: any, q?: any) => any },
 }
 
@@ -35,7 +36,7 @@ const mockWindow: Window = {
 		revokeObjectURL: noop,
 	},
 	clearInterval: noop,
-	setInterval: noop,
+	setInterval: () => 0,
 	setTimeout: noop,
 }
 

@@ -1,4 +1,4 @@
-import { buildIntervalFunction, NullarySideEffector, state, to, windowWrapper } from '../../../../../src'
+import { buildIntervalFunction, clearInterval, NullarySideEffector, state, to, windowWrapper } from '../../../../../src'
 import Spy = jasmine.Spy
 
 describe('build interval function returns a function which', () => {
@@ -7,7 +7,7 @@ describe('build interval function returns a function which', () => {
 	let resolveAnimationSpy: Spy
 	beforeEach(() => {
 		state.animating = true
-		spyOn(windowWrapper, 'clearInterval')
+		spyOn(clearInterval, 'default')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
 		intervalFunction = buildIntervalFunction.default({
@@ -38,8 +38,7 @@ describe('build interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).not.toHaveBeenCalled()
-			// tslint:disable-next-line:no-unsafe-any
-			expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
+			expect(clearInterval.default).not.toHaveBeenCalled()
 		})
 
 		it('when end frame is nonzero, but current frame is not yet past it, do not end', () => {
@@ -49,8 +48,7 @@ describe('build interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).not.toHaveBeenCalled()
-			// tslint:disable-next-line:no-unsafe-any
-			expect(windowWrapper.clearInterval).not.toHaveBeenCalled()
+			expect(clearInterval.default).not.toHaveBeenCalled()
 		})
 
 		it('when end frame is nonzero, and current frame is past it, end', () => {
@@ -60,8 +58,7 @@ describe('build interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).toHaveBeenCalled()
-			// tslint:disable-next-line:no-unsafe-any
-			expect(windowWrapper.clearInterval).toHaveBeenCalledWith(state.interval)
+			expect(clearInterval.default).toHaveBeenCalledWith('interval')
 		})
 	})
 })

@@ -42,7 +42,7 @@ export {
 	createEffectToggle,
 	LabelElement,
 	insertElementRightAfter,
-	resetMixedDownContext,
+	storeMixedDownContext,
 	buildFill,
 	Path,
 	buildPath,

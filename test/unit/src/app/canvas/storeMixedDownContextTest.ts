@@ -6,15 +6,15 @@ import {
 	defaults,
 	documentWrapper,
 	NullarySideEffector,
-	resetMixedDownContext,
+	storeMixedDownContext,
 	state,
 } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
 import { buildMockCanvas } from '../../../helpers'
 
-const subject: NullarySideEffector = resetMixedDownContext.default
+const subject: NullarySideEffector = storeMixedDownContext.default
 
-describe('reset mixed down context', () => {
+describe('store mixed down context', () => {
 	let mixedDownContext: Context
 	beforeEach(() => {
 		expect(state.mixedDownContext).toEqual({})

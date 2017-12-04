@@ -5,13 +5,13 @@ import {
 	createEffectToggles,
 	executeSelectedHoundstoothEffects,
 	NamedEffect,
-	resetMixedDownContext,
+	storeMixedDownContext,
 } from './src'
 
 const allEffects: NamedEffect[] = Object.values(effects)
 
 availableEffects.set(allEffects)
-resetMixedDownContext.default()
+storeMixedDownContext.default()
 createEffectToggles.default(allEffects)
 attachControlHandlers.default()
 executeSelectedHoundstoothEffects.default()

@@ -6,7 +6,7 @@ import {
 	NullarySideEffector,
 	PageElement,
 	Px,
-	resetMixedDownContext,
+	storeMixedDownContext,
 	scaleElement,
 	to,
 } from '../../../src'
@@ -40,7 +40,7 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		const mixedDownCanvas: Canvas = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || document.createElement('canvas')
 		mixedDownCanvas.setAttribute('id', 'mixed-down-canvas')
 		testCanvasDisplayArea.appendChild(mixedDownCanvas)
-		resetMixedDownContext.default()
+		storeMixedDownContext.default()
 	}
 
 export default activateTestMarkerCanvas

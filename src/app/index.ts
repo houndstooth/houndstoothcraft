@@ -8,7 +8,7 @@ export {
 	saveCanvas,
 	getCurrentContext,
 	mixDownContexts,
-	resetMixedDownContext,
+	storeMixedDownContext,
 } from './canvas'
 export {
 	callFunctionsPerSetting,

@@ -30,6 +30,7 @@ interface ExecuteState {
 }
 
 interface SettingsState {
+	availableEffects: NamedEffect[],
 	currentPattern: Partial<BasePattern>,
 	readonly mainHoundstooth: Houndstooth,
 }

@@ -1,16 +1,16 @@
 import * as effects from './effects'
 import {
 	attachControlHandlers,
-	availableEffects,
 	createEffectToggles,
 	executeSelectedHoundstoothEffects,
 	NamedEffect,
+	state,
 	storeMixedDownContext,
 } from './src'
 
 const allEffects: NamedEffect[] = Object.values(effects)
 
-availableEffects.set(allEffects)
+state.settings.availableEffects = allEffects
 storeMixedDownContext.default()
 createEffectToggles.default(allEffects)
 attachControlHandlers.default()

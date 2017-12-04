@@ -6,6 +6,7 @@ import { CanvasState, ControlsState, ExecuteState, SettingsState, State } from '
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
+const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
 const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
@@ -47,6 +48,7 @@ const DEFAULT_EXECUTE_STATE: ExecuteState = {
 }
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
+	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 }

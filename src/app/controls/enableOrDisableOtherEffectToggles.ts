@@ -1,6 +1,5 @@
 // tslint:disable:no-unsafe-any
 
-import * as availableEffects from '../../availableEffects'
 import { Effect, NamedEffect } from '../../pattern'
 import { state } from '../../state'
 import { documentWrapper, NullarySideEffector } from '../../utilities'
@@ -14,7 +13,7 @@ const enableOrDisableOtherEffectToggles: NullarySideEffector =
 			houndstoothEffects: state.controls.selectedHoundstoothEffects,
 		})
 
-		Object.values(availableEffects.get()).forEach((effect: NamedEffect): void => {
+		Object.values(state.settings.availableEffects).forEach((effect: NamedEffect): void => {
 			const id: string = makeId.default(effect.name)
 			const effectToggleToMaybeDisable: InputElement = documentWrapper.querySelector(`#${id}`)
 			effectToggleToMaybeDisable.disabled = effectsHaveConflicts({

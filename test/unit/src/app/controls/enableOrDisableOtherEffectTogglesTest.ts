@@ -1,5 +1,4 @@
 import {
-	availableEffects,
 	combineHoundstoothEffects,
 	documentWrapper,
 	Effect,
@@ -23,10 +22,9 @@ describe('enableOrDisableOtherEffectToggles', () => {
 		const effectsCombined: Effect = { name: 'effects combined' }
 		spyOn(combineHoundstoothEffects, 'default').and.returnValue(effectsCombined)
 
-		const effectOne: Effect = { name: 'effect one' }
-		const effectTwo: Effect = { name: 'effect two' }
-		const effectsAvailable: Effect[] = [ effectOne, effectTwo ]
-		spyOn(availableEffects, 'get').and.returnValue(effectsAvailable)
+		const effectOne: NamedEffect = { name: 'effect one', description: '' }
+		const effectTwo: NamedEffect = { name: 'effect two', description: '' }
+		state.settings.availableEffects = [ effectOne, effectTwo ]
 
 		const effectToggleOne: InputElement = buildMockElement()
 		const effectToggleTwo: InputElement = buildMockElement()

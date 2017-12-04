@@ -170,12 +170,10 @@ export {
 	windowWrapper,
 } from './utilities'
 export { State } from './types'
-import * as availableEffects from './availableEffects'
 
 export {
 	to,
 	from,
 	defaults,
 	constants,
-	availableEffects,
 }

@@ -22,7 +22,7 @@ describe('composeMainHoundstooth', () => {
 
 		composeMainHoundstooth.default({ logComposedMainHoundstooth: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(state.mainHoundstooth)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(state.settings.mainHoundstooth)
 	})
 
 	it('does not log the houndstooth when logging mode is not on', () => {

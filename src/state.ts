@@ -2,7 +2,7 @@ import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
 import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
-import { CanvasState, ExecuteState, State } from './types'
+import { CanvasState, ExecuteState, SettingsState, State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
@@ -38,16 +38,20 @@ const DEFAULT_EXECUTE_STATE: ExecuteState = {
 	tilesCompleted: DEFAULT_TILES_COMPLETED,
 }
 
+const DEFAULT_SETTINGS_STATE: SettingsState = {
+	currentPattern: DEFAULT_CURRENT_PATTERN,
+	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
+}
+
 const DEFAULT_STATE: State = {
 	animating: DEFAULT_ANIMATING,
 	canvas: DEFAULT_CANVAS_STATE,
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
-	currentPattern: DEFAULT_CURRENT_PATTERN,
 	endFrame: DEFAULT_END_FRAME,
 	execute: DEFAULT_EXECUTE_STATE,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
-	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
+	settings: DEFAULT_SETTINGS_STATE,
 }
 
 const state: State = codeUtilities.deepClone(DEFAULT_STATE)

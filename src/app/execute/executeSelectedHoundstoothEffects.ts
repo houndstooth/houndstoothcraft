@@ -19,7 +19,7 @@ const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect })
 
 const prepareCurrentPattern: NullarySideEffector =
 	(): void => {
-		state.currentPattern = codeUtilities.deepClone(state.mainHoundstooth.basePattern)
+		state.settings.currentPattern = codeUtilities.deepClone(state.settings.mainHoundstooth.basePattern)
 	}
 
 const prepareCanvas: NullarySideEffector =
@@ -30,10 +30,10 @@ const prepareCanvas: NullarySideEffector =
 const execute: NullarySideEffector =
 	(): void => {
 		const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
+			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.animationsPattern,
 		})
 		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
+			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.layersPattern,
 		})
 
 		if (state.animating) {

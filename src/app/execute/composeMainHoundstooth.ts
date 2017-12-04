@@ -20,23 +20,23 @@ const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 			patternDefaults: DEFAULT_BASE_PATTERN,
 			patternEffects: combinedHoundstoothEffects.basePattern,
 			patternOverrides: houndstoothOverrides.basePattern,
-			patternToCompose: state.mainHoundstooth.basePattern,
+			patternToCompose: state.settings.mainHoundstooth.basePattern,
 		})
 		composePattern({
 			patternDefaults: DEFAULT_LAYERS_PATTERN,
 			patternEffects: combinedHoundstoothEffects.layersPattern,
 			patternOverrides: houndstoothOverrides.layersPattern,
-			patternToCompose: state.mainHoundstooth.layersPattern,
+			patternToCompose: state.settings.mainHoundstooth.layersPattern,
 		})
 		composePattern({
 			patternDefaults: DEFAULT_ANIMATIONS_PATTERN,
 			patternEffects: combinedHoundstoothEffects.animationsPattern,
 			patternOverrides: houndstoothOverrides.animationsPattern,
-			patternToCompose: state.mainHoundstooth.animationsPattern,
+			patternToCompose: state.settings.mainHoundstooth.animationsPattern,
 		})
 
 		if (logComposedMainHoundstooth) {
-			consoleWrapper.log(state.mainHoundstooth)
+			consoleWrapper.log(state.settings.mainHoundstooth)
 		}
 	}
 

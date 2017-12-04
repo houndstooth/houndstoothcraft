@@ -5,7 +5,7 @@ import { codeUtilities, NullarySideEffector } from '../../utilities'
 const resetMainHoundstooth: NullarySideEffector =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: state.mainHoundstooth,
+			objectToChange: state.settings.mainHoundstooth,
 			objectWithProperties: DEFAULT_HOUNDSTOOTH,
 		})
 	}

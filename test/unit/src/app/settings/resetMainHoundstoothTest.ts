@@ -9,11 +9,11 @@ describe('reset main houndstooth', () => {
 		}
 		composeMainHoundstooth.default({ houndstoothOverrides })
 		// tslint:disable-next-line:max-line-length
-		expect(state.mainHoundstooth.basePattern.colorSettings && state.mainHoundstooth.basePattern.colorSettings.opacity).toBe(0)
+		expect(state.settings.mainHoundstooth.basePattern.colorSettings && state.settings.mainHoundstooth.basePattern.colorSettings.opacity).toBe(0)
 
 		subject()
 
 		// tslint:disable-next-line:max-line-length
-		expect(state.mainHoundstooth.basePattern.colorSettings && state.mainHoundstooth.basePattern.colorSettings.opacity).toBe(1)
+		expect(state.settings.mainHoundstooth.basePattern.colorSettings && state.settings.mainHoundstooth.basePattern.colorSettings.opacity).toBe(1)
 	})
 })

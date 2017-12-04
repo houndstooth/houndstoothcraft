@@ -40,7 +40,7 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.default()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.layersPattern,
+			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.layersPattern,
 		})
 	})
 
@@ -48,14 +48,14 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.default()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionsSourcePattern: state.mainHoundstooth.animationsPattern,
+			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.animationsPattern,
 		})
 	})
 
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
 		executeSelectedHoundstoothEffects.default()
 
-		expect(state.currentPattern).toEqual(state.mainHoundstooth.basePattern)
+		expect(state.settings.currentPattern).toEqual(state.settings.mainHoundstooth.basePattern)
 	})
 
 	it('sets up for rendering', () => {

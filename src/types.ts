@@ -21,20 +21,25 @@ interface ExecuteState {
 	[ _: string ]: any,
 }
 
+interface SettingsState {
+	currentPattern: Partial<BasePattern>,
+	readonly mainHoundstooth: Houndstooth,
+}
+
 interface State {
 	animating: boolean,
 	canvas: CanvasState,
 	currentFrame: Frame,
-	currentPattern: Partial<BasePattern>,
 	endFrame: Frame,
 	execute: ExecuteState,
 	exportFrames: boolean,
-	readonly mainHoundstooth: Houndstooth,
 	selectedHoundstoothEffects: NamedEffect[],
+	settings: SettingsState,
 }
 
 export {
 	CanvasState,
 	ExecuteState,
+	SettingsState,
 	State,
 }

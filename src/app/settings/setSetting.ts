@@ -11,7 +11,7 @@ const setSetting: SetSetting =
 		const baseSettingsPath: SettingsPath = settingsNamesToPathsMap[ settingName ] || to.SettingsPath([])
 
 		const parentSetting: any = getPatternSettingOrCreatePath({
-			pattern: state.currentPattern,
+			pattern: state.settings.currentPattern,
 			settingsPath: baseSettingsPath,
 		})
 		parentSetting[ settingName ] = value

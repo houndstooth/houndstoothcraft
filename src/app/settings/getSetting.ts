@@ -13,7 +13,7 @@ const getSetting: SettingsNamesToTypesMap =
 		const baseSettingsPath: SettingsPath = settingsNamesToPathsMap[ settingName ] || to.SettingsPath([])
 		const settingsPath: SettingsPath = to.SettingsPath(baseSettingsPath.concat([ settingName ]))
 
-		let childSetting: { [ index: string ]: any } = state.currentPattern
+		let childSetting: { [ index: string ]: any } = state.settings.currentPattern
 
 		for (const settingsStep of settingsPath) {
 			if (!codeUtilities.isDefined(childSetting[ settingsStep ])) {
@@ -26,7 +26,7 @@ const getSetting: SettingsNamesToTypesMap =
 		}
 
 		return getPatternSettingOrCreatePath({
-			pattern: state.currentPattern,
+			pattern: state.settings.currentPattern,
 			settingsPath,
 		})
 	}

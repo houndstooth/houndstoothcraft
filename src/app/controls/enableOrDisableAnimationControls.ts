@@ -33,6 +33,6 @@ const enableOrDisableAnimationControls: NullarySideEffector =
 	}
 
 const mainHoundstoothHasAnimations: () => boolean =
-	(): boolean => !Object.keys(state.mainHoundstooth.animationsPattern).length
+	(): boolean => !Object.keys(state.settings.mainHoundstooth.animationsPattern).length
 
 export default enableOrDisableAnimationControls

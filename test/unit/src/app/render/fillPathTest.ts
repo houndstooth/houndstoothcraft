@@ -4,7 +4,7 @@ import { buildMockContext, MockContextCall } from '../../../../helpers'
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		state.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
 		fillPath.default()
 

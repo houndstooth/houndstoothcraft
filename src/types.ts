@@ -2,10 +2,15 @@ import { Context } from './app'
 import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from './pattern'
 import { NullarySideEffector } from './utilities'
 
+interface CanvasState {
+	contexts: Context[],
+	mixedDownContext: Context,
+}
+
 interface State {
 	animating: boolean,
 	animationInterval?: number,
-	contexts: Context[],
+	canvas: CanvasState,
 	currentFrame: Frame,
 	currentLayer: Layer,
 	currentPattern: Partial<BasePattern>,
@@ -13,7 +18,6 @@ interface State {
 	exportFrames: boolean,
 	gridProgressInterval?: number,
 	readonly mainHoundstooth: Houndstooth,
-	mixedDownContext: Context,
 	patternRef: number,
 	performanceLogging: boolean,
 	resolveGrid: NullarySideEffector,
@@ -26,5 +30,6 @@ interface State {
 }
 
 export {
+	CanvasState,
 	State,
 }

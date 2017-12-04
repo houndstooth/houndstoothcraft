@@ -22,7 +22,7 @@ describe('clear contexts', () => {
 		const context1: Context = buildMockContext()
 		const context2: Context = buildMockContext()
 		const context3: Context = buildMockContext()
-		state.contexts = [ context1, context2, context3 ]
+		state.canvas.contexts = [ context1, context2, context3 ]
 
 		subject()
 

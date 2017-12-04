@@ -31,11 +31,11 @@ describe('create contexts', () => {
 
 	it('adds contexts to the state for each layer', () => {
 		setSetting.default('endLayer', to.Layer(5))
-		expect(state.contexts.length).toBe(0)
+		expect(state.canvas.contexts.length).toBe(0)
 
 		createContexts.default()
 
-		expect(state.contexts.length).toBe(6)
+		expect(state.canvas.contexts.length).toBe(6)
 	})
 
 	it('can reduce the count of contexts in the state, and canvases on the dom', () => {
@@ -43,7 +43,7 @@ describe('create contexts', () => {
 		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(6)
-		expect(state.contexts.length).toBe(6)
+		expect(state.canvas.contexts.length).toBe(6)
 
 		setSetting.default('endLayer', to.Layer(3))
 		createContextSpy.calls.reset()
@@ -51,7 +51,7 @@ describe('create contexts', () => {
 		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(4)
-		expect(state.contexts.length).toBe(4)
+		expect(state.canvas.contexts.length).toBe(4)
 	})
 
 	it('creates the canvas container if it does not already exist', () => {

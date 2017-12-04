@@ -9,7 +9,7 @@ describe('build fill', () => {
 	let context: Context
 	beforeEach(() => {
 		context = buildMockContext()
-		state.contexts = [ context ]
+		state.canvas.contexts = [ context ]
 		spyOn(parseColor, 'default').and.returnValue(parsedColor)
 
 		buildFill.default({ shapeColor })

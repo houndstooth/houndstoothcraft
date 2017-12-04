@@ -5,7 +5,7 @@ import clearContext from './clearContext'
 
 const clearMixedDownContext: NullarySideEffector =
 	(): void =>	{
-		clearContext({ canvasSize: getSetting.default('canvasSize'), context: state.mixedDownContext })
+		clearContext({ canvasSize: getSetting.default('canvasSize'), context: state.canvas.mixedDownContext })
 	}
 
 export default clearMixedDownContext

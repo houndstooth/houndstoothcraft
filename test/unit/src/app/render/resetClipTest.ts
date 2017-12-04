@@ -4,7 +4,7 @@ import { buildMockContext, MockContextCall } from '../../../../helpers'
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		state.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		state.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
 		resetClip.default()
 

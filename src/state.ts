@@ -2,7 +2,7 @@ import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
 import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
-import { State } from './types'
+import { CanvasState, State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
@@ -22,10 +22,15 @@ const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
 
+const DEFAULT_CANVAS_STATE: CanvasState = {
+	contexts: DEFAULT_CONTEXTS,
+	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
+}
+
 const DEFAULT_STATE: State = {
 	animating: DEFAULT_ANIMATING,
 	animationInterval: DEFAULT_ANIMATION_INTERVAL,
-	contexts: DEFAULT_CONTEXTS,
+	canvas: DEFAULT_CANVAS_STATE,
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
@@ -33,7 +38,6 @@ const DEFAULT_STATE: State = {
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
-	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
 	patternRef: DEFAULT_PATTERN_REF,
 	performanceLogging: DEFAULT_PERFORMANCE_LOGGING,
 	resolveGrid: DEFAULT_RESOLVE_GRID,

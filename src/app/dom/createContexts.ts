@@ -15,7 +15,7 @@ const createContexts: NullarySideEffector =
 		const canvasContainer: PageElement = scaleCanvasContainer()
 		canvasContainer.innerHTML = ''
 
-		state.contexts = layerIterator().map(() => createContext({ canvasContainer }))
+		state.canvas.contexts = layerIterator().map(() => createContext({ canvasContainer }))
 	}
 
 const layerIterator: () => Layer[] =

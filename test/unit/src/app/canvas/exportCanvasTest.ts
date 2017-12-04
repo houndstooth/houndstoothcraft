@@ -8,7 +8,7 @@ describe('export canvas', () => {
 		const toBlobSpy: Spy = jasmine.createSpy('toBlob').and.callFake((fn: (result: DataBlob) => void): void => {
 			fn(result)
 		})
-		state.mixedDownContext = buildMockContext({ toBlobSpy })
+		state.canvas.mixedDownContext = buildMockContext({ toBlobSpy })
 		spyOn(saveCanvas, 'default')
 		state.currentFrame = to.Frame(987)
 

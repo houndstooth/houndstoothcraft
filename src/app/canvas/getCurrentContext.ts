@@ -3,6 +3,6 @@ import { state } from '../../state'
 import { Context } from '../dom'
 
 const getCurrentContext: () => Context =
-	(): Context => state.contexts[ from.Layer(state.currentLayer) ]
+	(): Context => state.canvas.contexts[ from.Layer(state.currentLayer) ]
 
 export default getCurrentContext

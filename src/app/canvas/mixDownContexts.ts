@@ -7,11 +7,11 @@ import clearContext from './clearContext'
 const mixDownContexts: NullarySideEffector =
 	(): void => {
 		const canvasSize: Px = getSetting.default('canvasSize')
-		clearContext({ canvasSize, context: state.mixedDownContext })
+		clearContext({ canvasSize, context: state.canvas.mixedDownContext })
 
-		state.contexts.forEach((context: Context): void => {
+		state.canvas.contexts.forEach((context: Context): void => {
 			// tslint:disable-next-line:no-unsafe-any
-			state.mixedDownContext.drawImage(context.canvas, 0, 0)
+			state.canvas.mixedDownContext.drawImage(context.canvas, 0, 0)
 		})
 	}
 

@@ -15,7 +15,7 @@ describe('clear mixed down context', () => {
 	it('gets the canvas size and the mixed down canvas, and clears', () => {
 		setSetting.default('canvasSize', to.Px(312))
 		const mixedDownContext: Context = buildMockContext()
-		state.mixedDownContext = mixedDownContext
+		state.canvas.mixedDownContext = mixedDownContext
 		spyOn(clearContext, 'default')
 
 		subject()

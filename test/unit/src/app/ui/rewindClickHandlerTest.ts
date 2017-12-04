@@ -28,7 +28,7 @@ describe('rewind click handler', () => {
 	it('clears the interval and removes it from state', () => {
 		rewindClickHandler.default()
 
-		expect(clearInterval.default).toHaveBeenCalledWith('interval')
+		expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
 	})
 
 	it('resets the current frame', () => {

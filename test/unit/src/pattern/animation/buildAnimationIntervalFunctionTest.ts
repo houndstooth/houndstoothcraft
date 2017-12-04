@@ -1,7 +1,7 @@
-import { buildIntervalFunction, clearInterval, NullarySideEffector, state, to } from '../../../../../src'
+import { buildAnimationIntervalFunction, clearInterval, NullarySideEffector, state, to } from '../../../../../src'
 import Spy = jasmine.Spy
 
-describe('build interval function returns a function which', () => {
+describe('build animation interval function returns a function which', () => {
 	let intervalFunction: NullarySideEffector
 	let animationFunctionSpy: Spy
 	let resolveAnimationSpy: Spy
@@ -10,7 +10,7 @@ describe('build interval function returns a function which', () => {
 		spyOn(clearInterval, 'default')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
-		intervalFunction = buildIntervalFunction.default({
+		intervalFunction = buildAnimationIntervalFunction.default({
 			animationFunction: animationFunctionSpy,
 			resolveAnimation: resolveAnimationSpy,
 		})
@@ -58,7 +58,7 @@ describe('build interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).toHaveBeenCalled()
-			expect(clearInterval.default).toHaveBeenCalledWith('interval')
+			expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
 		})
 	})
 })

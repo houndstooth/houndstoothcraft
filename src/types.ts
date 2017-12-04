@@ -4,6 +4,7 @@ import { NullarySideEffector } from './utilities'
 
 interface State {
 	animating: boolean,
+	animationInterval?: number,
 	contexts: Context[],
 	currentFrame: Frame,
 	currentLayer: Layer,
@@ -11,7 +12,6 @@ interface State {
 	endFrame: Frame,
 	exportFrames: boolean,
 	gridProgressInterval?: number,
-	interval?: number,
 	readonly mainHoundstooth: Houndstooth,
 	mixedDownContext: Context,
 	patternRef: number,

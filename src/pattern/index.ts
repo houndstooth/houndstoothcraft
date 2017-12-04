@@ -7,7 +7,7 @@ export {
 	executeAnimation,
 	Frame,
 	standardAnimation,
-	buildIntervalFunction,
+	buildAnimationIntervalFunction,
 	buildAnimationFunction,
 	previousFrameHasFinished,
 } from './animation'

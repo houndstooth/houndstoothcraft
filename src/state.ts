@@ -13,7 +13,7 @@ const DEFAULT_CURRENT_PATTERN: Partial<BasePattern> = {}
 const DEFAULT_END_FRAME: Frame = to.Frame(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
-const DEFAULT_INTERVAL: undefined = undefined
+const DEFAULT_ANIMATION_INTERVAL: undefined = undefined
 const DEFAULT_MIXED_DOWN_CONTEXT: Context = {}
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
@@ -24,6 +24,7 @@ const DEFAULT_TILES_COMPLETED: number = 0
 
 const DEFAULT_STATE: State = {
 	animating: DEFAULT_ANIMATING,
+	animationInterval: DEFAULT_ANIMATION_INTERVAL,
 	contexts: DEFAULT_CONTEXTS,
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	currentLayer: DEFAULT_CURRENT_LAYER,
@@ -31,7 +32,6 @@ const DEFAULT_STATE: State = {
 	endFrame: DEFAULT_END_FRAME,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	gridProgressInterval: DEFAULT_GRID_PROGRESS_INTERVAL,
-	interval: DEFAULT_INTERVAL,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
 	patternRef: DEFAULT_PATTERN_REF,

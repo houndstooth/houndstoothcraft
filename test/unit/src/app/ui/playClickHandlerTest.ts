@@ -62,7 +62,7 @@ describe('play click handler', () => {
 		})
 
 		it('does not re-execute the selected houndstooth effects when already running an animation', () => {
-			state.interval = 25346
+			state.animationInterval = 25346
 			executeSelectedHoundstoothEffectsSpy.calls.reset()
 
 			playClickHandler.default()

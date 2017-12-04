@@ -122,7 +122,7 @@ export {
 	executeAnimation,
 	applyViewForShape,
 	executeGridAndMaybeLogging,
-	buildIntervalFunction,
+	buildAnimationIntervalFunction,
 	buildAnimationFunction,
 	grid,
 	executeLayer,

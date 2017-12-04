@@ -9,7 +9,7 @@ import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =
 	(): void => {
-		clearInterval.default('interval')
+		clearInterval.default('animationInterval')
 
 		updateCurrentFrame(to.Frame(0))
 

@@ -1,7 +1,7 @@
 import * as animationSettings from './animationSettings'
 import * as animator from './animator'
 import * as buildAnimationFunction from './buildAnimationFunction'
-import * as buildIntervalFunction from './buildIntervalFunction'
+import * as buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
 import * as executeAnimation from './executeAnimation'
 import * as previousFrameHasFinished from './previousFrameHasFinished'
 import * as standardAnimation from './standardAnimation'
@@ -15,6 +15,6 @@ export {
 	executeAnimation,
 	animationSettings,
 	buildAnimationFunction,
-	buildIntervalFunction,
+	buildAnimationIntervalFunction,
 	previousFrameHasFinished,
 }

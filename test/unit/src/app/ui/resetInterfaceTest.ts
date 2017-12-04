@@ -42,7 +42,7 @@ describe('reset interface', () => {
 	})
 
 	it('clears any active animation', () => {
-		expect(clearInterval.default).toHaveBeenCalledWith('interval')
+		expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
 	})
 
 	it('clears any active rendering progress measurement', () => {

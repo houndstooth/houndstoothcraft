@@ -4,7 +4,7 @@ import * as to from '../../to'
 import { NullarySideEffector } from '../../utilities'
 import { AnimationParams, ConditionFunction } from './types'
 
-const buildIntervalFunction: (_: AnimationParams) => NullarySideEffector =
+const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffector =
 	({ animationFunction, resolveAnimation }: AnimationParams): NullarySideEffector =>
 		(): void => {
 			if (isPaused()) {
@@ -15,10 +15,10 @@ const buildIntervalFunction: (_: AnimationParams) => NullarySideEffector =
 
 			if (state.endFrame !== to.Frame(0) && state.currentFrame > state.endFrame) {
 				resolveAnimation()
-				clearInterval.default('interval')
+				clearInterval.default('animationInterval')
 			}
 		}
 
 const isPaused: ConditionFunction = (): boolean => !state.animating
 
-export default buildIntervalFunction
+export default buildAnimationIntervalFunction

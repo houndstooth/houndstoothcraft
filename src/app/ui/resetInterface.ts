@@ -15,7 +15,7 @@ const resetInterface: NullarySideEffector =
 		clearContexts.default()
 		clearMixedDownContext.default()
 
-		clearInterval.default('interval')
+		clearInterval.default('animationInterval')
 		clearInterval.default('gridProgressInterval')
 
 		state.resolveGrid()

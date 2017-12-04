@@ -1,11 +1,12 @@
 import { state } from '../../state'
-import { ExecuteState, State } from '../../types'
+import { ControlsState, ExecuteState, State } from '../../types'
 import { consoleWrapper } from '../../utilities'
 import executeGrid from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
-		const { execute, animating, currentFrame }: State = state
+		const { execute, controls }: State = state
+		const { animating, currentFrame }: ControlsState = controls
 		const { currentLayer, performanceLogging }: ExecuteState = execute
 
 		if (performanceLogging) {

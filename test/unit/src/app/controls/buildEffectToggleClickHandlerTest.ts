@@ -47,13 +47,13 @@ describe('build effect toggle click handler returns a function which', () => {
 		expect(updateDescriptions.default).not.toHaveBeenCalled()
 
 		preExistingHoundstoothEffect = { name: 'preexisting tooth', description: '' }
-		state.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
+		state.controls.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
 
 		simulateClick(checkbox, subject)
 	})
 
 	it('adds the clicked effect to the selection', () => {
-		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
+		expect(state.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
 	})
 
 	it('executes the selected houndstooth effects, since the selection has now changed', () => {
@@ -103,7 +103,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	it('removes the effect if it is already selected', () => {
 		simulateClick(checkbox, subject)
 
-		expect(state.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect ])
+		expect(state.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect ])
 	})
 })
 

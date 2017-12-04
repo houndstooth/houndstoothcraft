@@ -8,7 +8,7 @@ describe('update progress', () => {
 	let layersProgressBar: PageElement
 	let progressMessage: PageElement
 	beforeEach(() => {
-		state.currentFrame = to.Frame(909)
+		state.controls.currentFrame = to.Frame(909)
 		state.execute.tileCount = 200000
 		state.execute.tilesCompleted = 180001
 		const {
@@ -48,7 +48,7 @@ describe('update progress', () => {
 		it('when animating and layering', () => {
 			state.execute.currentLayer = to.Layer(5)
 			setSetting.default('endLayer', to.Layer(9))
-			state.animating = true
+			state.controls.animating = true
 
 			subject()
 
@@ -56,7 +56,7 @@ describe('update progress', () => {
 		})
 
 		it('when only animating', () => {
-			state.animating = true
+			state.controls.animating = true
 
 			subject()
 

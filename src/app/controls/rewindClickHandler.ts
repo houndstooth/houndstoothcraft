@@ -13,7 +13,7 @@ const rewindClickHandler: NullarySideEffector =
 
 		updateCurrentFrame(to.Frame(0))
 
-		if (!state.animating) {
+		if (!state.controls.animating) {
 			const rewindButton: HTMLButtonElement = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
 			/* istanbul ignore else */
 			if (rewindButton) {

@@ -12,7 +12,7 @@ const createContext: (_: { canvasContainer: PageElement }) => Context =
 		canvas.width = canvasSize
 		canvas.height = canvasSize
 		canvas.style.position = 'absolute'
-		canvas.style.display = state.animating ? 'none' : 'block'
+		canvas.style.display = state.controls.animating ? 'none' : 'block'
 
 		canvasContainer.appendChild(canvas)
 

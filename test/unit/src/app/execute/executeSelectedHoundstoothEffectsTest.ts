@@ -31,7 +31,7 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 		expect(composeMainHoundstooth.default).toHaveBeenCalledWith({
-			houndstoothEffects: state.selectedHoundstoothEffects,
+			houndstoothEffects: state.controls.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
 	})
@@ -66,7 +66,7 @@ describe('execute selected houndstooth effects', () => {
 
 	describe('when animating', () => {
 		beforeEach(() => {
-			state.animating = true
+			state.controls.animating = true
 
 			executeSelectedHoundstoothEffects.default()
 		})
@@ -85,7 +85,7 @@ describe('execute selected houndstooth effects', () => {
 
 	describe('when not animating', () => {
 		beforeEach(() => {
-			state.animating = false
+			state.controls.animating = false
 
 			executeSelectedHoundstoothEffects.default()
 		})

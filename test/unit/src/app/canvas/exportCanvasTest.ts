@@ -10,7 +10,7 @@ describe('export canvas', () => {
 		})
 		state.canvas.mixedDownContext = buildMockContext({ toBlobSpy })
 		spyOn(saveCanvas, 'default')
-		state.currentFrame = to.Frame(987)
+		state.controls.currentFrame = to.Frame(987)
 
 		exportCanvas.default()
 

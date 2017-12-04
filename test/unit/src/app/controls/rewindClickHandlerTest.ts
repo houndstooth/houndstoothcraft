@@ -45,7 +45,7 @@ describe('rewind click handler', () => {
 
 	describe('animation paused / still running', () => {
 		it('when paused, it disables itself and clears the mixed down context', () => {
-			state.animating = false
+			state.controls.animating = false
 			rewindButton.disabled = false
 
 			rewindClickHandler.default()
@@ -55,7 +55,7 @@ describe('rewind click handler', () => {
 		})
 
 		it('when still running, it does not disable itself or clear the mixed down context', () => {
-			state.animating = true
+			state.controls.animating = true
 			rewindButton.disabled = false
 
 			rewindClickHandler.default()

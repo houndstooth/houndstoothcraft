@@ -6,7 +6,7 @@ describe('update descriptions', () => {
 	it('adds the description for each of the selected effects', () => {
 		spyOn(addDescription, 'default')
 
-		state.selectedHoundstoothEffects = [
+		state.controls.selectedHoundstoothEffects = [
 			{ name: 'Nu är det Jul igen', description: 'this is fun' },
 			{ name: 'Family Learning Channel', description: 'i am a banana' },
 		]

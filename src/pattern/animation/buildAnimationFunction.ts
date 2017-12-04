@@ -22,11 +22,11 @@ const buildAnimationFunction: (_: ExecuteParams) => NullaryVoidPromise =
 
 			mixDownContexts.default()
 
-			if (state.exportFrames) {
+			if (state.controls.exportFrames) {
 				exportCanvas.default()
 			}
 
-			updateCurrentFrame.default(to.Frame(from.Frame(state.currentFrame) + 1))
+			updateCurrentFrame.default(to.Frame(from.Frame(state.controls.currentFrame) + 1))
 		}
 
 export default buildAnimationFunction

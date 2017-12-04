@@ -5,7 +5,7 @@ import { documentWrapper, NullarySideEffector } from '../../utilities'
 
 const pauseClickHandler: NullarySideEffector =
 	(): void => {
-		state.animating = false
+		state.controls.animating = false
 
 		const playButton: HTMLButtonElement = documentWrapper.querySelector('#play-button') as HTMLButtonElement
 		/* istanbul ignore else */

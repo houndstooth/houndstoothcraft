@@ -3,6 +3,6 @@ import * as from from '../../from'
 import { state } from '../../state'
 
 const standardAnimation: () => number =
-	(): number => Math.pow(constants.ANIMATION_RATE, from.Frame(state.currentFrame))
+	(): number => Math.pow(constants.ANIMATION_RATE, from.Frame(state.controls.currentFrame))
 
 export default standardAnimation

@@ -20,6 +20,6 @@ describe('frame input change handler', () => {
 
 		expect(clearMixedDownContext.default).toHaveBeenCalled()
 		expect(executeSelectedHoundstoothEffects.default).toHaveBeenCalled()
-		expect(state.currentFrame).toBe(to.Frame(99))
+		expect(state.controls.currentFrame).toBe(to.Frame(99))
 	})
 })

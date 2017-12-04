@@ -39,7 +39,7 @@ describe('create context', () => {
 		})
 
 		it('when animating, hides the main canvases', () => {
-			state.animating = true
+			state.controls.animating = true
 
 			createContext.default({ canvasContainer })
 			appendedCanvas = children[0]

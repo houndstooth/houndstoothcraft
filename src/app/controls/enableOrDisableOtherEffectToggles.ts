@@ -11,7 +11,7 @@ import effectsHaveConflicts from './effectsHaveConflicts'
 const enableOrDisableOtherEffectToggles: NullarySideEffector =
 	(): void => {
 		const combinedHoundstoothEffects: Effect = combineHoundstoothEffects.default({
-			houndstoothEffects: state.selectedHoundstoothEffects,
+			houndstoothEffects: state.controls.selectedHoundstoothEffects,
 		})
 
 		Object.values(availableEffects.get()).forEach((effect: NamedEffect): void => {

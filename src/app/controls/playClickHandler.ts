@@ -25,7 +25,7 @@ const playClickHandler: NullarySideEffector =
 			rewindButton.disabled = false
 		}
 
-		state.animating = true
+		state.controls.animating = true
 
 		mixDownContexts.default()
 

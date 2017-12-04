@@ -31,8 +31,8 @@ const updateProgress: NullarySideEffector =
 		/* istanbul ignore else */
 		if (progressMessage) {
 			const animationsAndLayersMessages: string[] = []
-			if (state.animating) {
-				animationsAndLayersMessages.push(` frame ${state.currentFrame}`)
+			if (state.controls.animating) {
+				animationsAndLayersMessages.push(` frame ${state.controls.currentFrame}`)
 			}
 			if (endLayerValue) {
 				animationsAndLayersMessages.push(` layer ${currentLayerValue}/${endLayerValue}`)

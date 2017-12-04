@@ -5,7 +5,7 @@ import { documentWrapper } from '../../utilities'
 
 const updateCurrentFrame: (frame: Frame) => void =
 	(frame: Frame): void => {
-		state.currentFrame = frame
+		state.controls.currentFrame = frame
 
 		// tslint:disable-next-line:no-unsafe-any
 		const frameInput: HTMLInputElement = documentWrapper.querySelector('#frame-input') as HTMLInputElement

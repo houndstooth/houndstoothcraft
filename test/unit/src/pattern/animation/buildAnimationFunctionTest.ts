@@ -30,7 +30,7 @@ describe('build animation function returns an animation function', () => {
 		clearContextsSpy = spyOn(clearContexts, 'default')
 		spyOn(exportCanvas, 'default')
 		spyOn(mixDownContexts, 'default')
-		state.currentFrame = to.Frame(5)
+		state.controls.currentFrame = to.Frame(5)
 		animationFunction = buildAnimationFunction.default({
 			animationFunctionObjects,
 			layerFunctionObjects,
@@ -90,7 +90,7 @@ describe('build animation function returns an animation function', () => {
 			})
 
 			it('exports frames if configured to', async (done: DoneFn) => {
-				state.exportFrames = true
+				state.controls.exportFrames = true
 
 				await animationFunction()
 

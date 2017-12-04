@@ -18,7 +18,7 @@ const subject: NullarySideEffector = enableOrDisableOtherEffectToggles.default
 describe('enableOrDisableOtherEffectToggles', () => {
 	it('checks each available effect for conflicts with the effects the user currently has combined', () => {
 		const effectsSelected: NamedEffect[] = []
-		state.selectedHoundstoothEffects = effectsSelected
+		state.controls.selectedHoundstoothEffects = effectsSelected
 
 		const effectsCombined: Effect = { name: 'effects combined' }
 		spyOn(combineHoundstoothEffects, 'default').and.returnValue(effectsCombined)

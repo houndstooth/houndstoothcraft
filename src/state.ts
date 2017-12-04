@@ -2,7 +2,7 @@ import { Context } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
 import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
-import { CanvasState, ExecuteState, SettingsState, State } from './types'
+import { CanvasState, ControlsState, ExecuteState, SettingsState, State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
@@ -27,6 +27,14 @@ const DEFAULT_CANVAS_STATE: CanvasState = {
 	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
 }
 
+const DEFAULT_CONTROLS_STATE: ControlsState = {
+	animating: DEFAULT_ANIMATING,
+	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
+	endFrame: DEFAULT_END_FRAME,
+	exportFrames: DEFAULT_EXPORT_FRAMES,
+	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
+}
+
 const DEFAULT_EXECUTE_STATE: ExecuteState = {
 	animationInterval: DEFAULT_ANIMATION_INTERVAL,
 	currentLayer: DEFAULT_CURRENT_LAYER,
@@ -44,13 +52,9 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
 }
 
 const DEFAULT_STATE: State = {
-	animating: DEFAULT_ANIMATING,
 	canvas: DEFAULT_CANVAS_STATE,
-	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
-	endFrame: DEFAULT_END_FRAME,
+	controls: DEFAULT_CONTROLS_STATE,
 	execute: DEFAULT_EXECUTE_STATE,
-	exportFrames: DEFAULT_EXPORT_FRAMES,
-	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 	settings: DEFAULT_SETTINGS_STATE,
 }
 

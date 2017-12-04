@@ -13,12 +13,12 @@ const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffecto
 
 			animationFunction()
 
-			if (state.endFrame !== to.Frame(0) && state.currentFrame > state.endFrame) {
+			if (state.controls.endFrame !== to.Frame(0) && state.controls.currentFrame > state.controls.endFrame) {
 				resolveAnimation()
 				clearInterval.default('animationInterval')
 			}
 		}
 
-const isPaused: ConditionFunction = (): boolean => !state.animating
+const isPaused: ConditionFunction = (): boolean => !state.controls.animating
 
 export default buildAnimationIntervalFunction

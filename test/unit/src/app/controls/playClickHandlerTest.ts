@@ -28,7 +28,7 @@ describe('play click handler', () => {
 		pauseButton = tmpPauseButton as HTMLButtonElement
 		rewindButton = tmpRewindButton as HTMLButtonElement
 
-		state.animating = false
+		state.controls.animating = false
 		playButton.disabled = false
 		pauseButton.disabled = true
 		rewindButton.disabled = true
@@ -49,7 +49,7 @@ describe('play click handler', () => {
 	})
 
 	it('set animating to true', () => {
-		expect(state.animating).toBe(true)
+		expect(state.controls.animating).toBe(true)
 	})
 
 	it('mixes down the contexts', () => {

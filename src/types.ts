@@ -7,6 +7,14 @@ interface CanvasState {
 	mixedDownContext: Context,
 }
 
+interface ControlsState {
+	animating: boolean,
+	currentFrame: Frame,
+	endFrame: Frame,
+	exportFrames: boolean,
+	selectedHoundstoothEffects: NamedEffect[],
+}
+
 interface ExecuteState {
 	animationInterval?: number,
 	currentLayer: Layer,
@@ -27,18 +35,15 @@ interface SettingsState {
 }
 
 interface State {
-	animating: boolean,
 	canvas: CanvasState,
-	currentFrame: Frame,
-	endFrame: Frame,
+	controls: ControlsState,
 	execute: ExecuteState,
-	exportFrames: boolean,
-	selectedHoundstoothEffects: NamedEffect[],
 	settings: SettingsState,
 }
 
 export {
 	CanvasState,
+	ControlsState,
 	ExecuteState,
 	SettingsState,
 	State,

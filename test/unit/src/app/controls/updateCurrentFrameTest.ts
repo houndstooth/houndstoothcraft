@@ -13,7 +13,7 @@ describe('update current frame', () => {
 	})
 
 	it('updates the current frame on the state', () => {
-		expect(state.currentFrame).toBe(to.Frame(543))
+		expect(state.controls.currentFrame).toBe(to.Frame(543))
 	})
 
 	it('updates the current frame in the frame input', () => {

@@ -42,12 +42,12 @@ const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEf
 
 const addEffect: (houndstoothEffect: NamedEffect) => void =
 	(houndstoothEffect: NamedEffect): void => {
-		state.selectedHoundstoothEffects.push(houndstoothEffect)
+		state.controls.selectedHoundstoothEffects.push(houndstoothEffect)
 	}
 
 const removeEffect: (houndstoothEffect: NamedEffect) => void =
 	(houndstoothEffect: NamedEffect): void => {
-		state.selectedHoundstoothEffects = state.selectedHoundstoothEffects.filter((selectedHoundstoothEffect: NamedEffect) =>
+		state.controls.selectedHoundstoothEffects = state.controls.selectedHoundstoothEffects.filter((selectedHoundstoothEffect: NamedEffect) =>
 			selectedHoundstoothEffect.name !== houndstoothEffect.name)
 	}
 

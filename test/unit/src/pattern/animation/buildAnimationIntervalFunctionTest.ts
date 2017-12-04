@@ -6,7 +6,7 @@ describe('build animation interval function returns a function which', () => {
 	let animationFunctionSpy: Spy
 	let resolveAnimationSpy: Spy
 	beforeEach(() => {
-		state.animating = true
+		state.controls.animating = true
 		spyOn(clearInterval, 'default')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
@@ -23,7 +23,7 @@ describe('build animation interval function returns a function which', () => {
 	})
 
 	it('does not animate when paused', () => {
-		state.animating = false
+		state.controls.animating = false
 
 		intervalFunction()
 
@@ -32,8 +32,8 @@ describe('build animation interval function returns a function which', () => {
 
 	describe('coming to an end', () => {
 		it('when end frame is 0, it never ends', () => {
-			state.endFrame = to.Frame(0)
-			state.currentFrame = to.Frame(12)
+			state.controls.endFrame = to.Frame(0)
+			state.controls.currentFrame = to.Frame(12)
 
 			intervalFunction()
 
@@ -42,8 +42,8 @@ describe('build animation interval function returns a function which', () => {
 		})
 
 		it('when end frame is nonzero, but current frame is not yet past it, do not end', () => {
-			state.endFrame = to.Frame(15)
-			state.currentFrame = to.Frame(12)
+			state.controls.endFrame = to.Frame(15)
+			state.controls.currentFrame = to.Frame(12)
 
 			intervalFunction()
 
@@ -52,8 +52,8 @@ describe('build animation interval function returns a function which', () => {
 		})
 
 		it('when end frame is nonzero, and current frame is past it, end', () => {
-			state.endFrame = to.Frame(15)
-			state.currentFrame = to.Frame(16)
+			state.controls.endFrame = to.Frame(15)
+			state.controls.currentFrame = to.Frame(16)
 
 			intervalFunction()
 

@@ -4,7 +4,7 @@ describe('execute grid and maybe logging', () => {
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
-		state.currentFrame = to.Frame(96)
+		state.controls.currentFrame = to.Frame(96)
 		state.execute.currentLayer = to.Layer(54)
 
 		spyOn(executeGrid, 'default')
@@ -37,7 +37,7 @@ describe('execute grid and maybe logging', () => {
 		})
 
 		describe('when animating', () => {
-			beforeEach(() => state.animating = true)
+			beforeEach(() => state.controls.animating = true)
 
 			it('logs the current animation frame along with the performance measurement', async (done: DoneFn) => {
 				await executeGridAndMaybeLogging.default({ thisPatternRef })

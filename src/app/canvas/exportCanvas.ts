@@ -4,7 +4,7 @@ import saveCanvas from './saveCanvas'
 
 const exportCanvas: () => void =
 	(): void => {
-		const currentFrame: Frame = state.currentFrame
+		const currentFrame: Frame = state.controls.currentFrame
 		// tslint:disable-next-line:no-unsafe-any
 		state.canvas.mixedDownContext.canvas.toBlob((result: Blob): void => {
 			saveCanvas({ result, currentFrame })

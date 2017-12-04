@@ -9,7 +9,7 @@ describe('save canvas', () => {
 	describe('animating', () => {
 		describe('when exporting frames', () => {
 			beforeEach(() => {
-				state.exportFrames = true
+				state.controls.exportFrames = true
 
 				saveCanvas.default({ currentFrame: to.Frame(0), result })
 			})
@@ -21,7 +21,7 @@ describe('save canvas', () => {
 
 		describe('when not exporting frames', () => {
 			beforeEach(() => {
-				state.exportFrames = false
+				state.controls.exportFrames = false
 			})
 
 			describe('when the current frame is greater than 0', () => {

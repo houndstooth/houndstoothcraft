@@ -8,7 +8,7 @@ import { SettingsFunctionObject } from './types'
 
 const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
 	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
-		composeMainHoundstooth({ houndstoothEffects: state.selectedHoundstoothEffects, houndstoothOverrides })
+		composeMainHoundstooth({ houndstoothEffects: state.controls.selectedHoundstoothEffects, houndstoothOverrides })
 
 		prepareCurrentPattern()
 
@@ -36,7 +36,7 @@ const execute: NullarySideEffector =
 			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.layersPattern,
 		})
 
-		if (state.animating) {
+		if (state.controls.animating) {
 			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {

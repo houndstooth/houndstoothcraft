@@ -1,8 +1,8 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { Pattern } from '../../pattern'
 import * as to from '../../to'
-import { deeperPath } from '../settings'
+import deeperPath from './deeperPath'
+import shouldRecurse from './shouldRecurse'
 import {
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
@@ -47,23 +47,13 @@ const prepareFunctionObjectForSettingOrMaybeRecurse: (_: PrepareFunctionObjectFo
 				settingsPath,
 			})
 		}
-		else if (shouldRecurse({ maybeSettingsFunctionsSourcePattern })) {
+		else if (shouldRecurse(maybeSettingsFunctionsSourcePattern)) {
 			prepareFunctionObjectsPerSetting({
 				settingsFunctionObjects,
 				settingsFunctionsSourcePattern: maybeSettingsFunctionsSourcePattern,
-				settingsPath: deeperPath.default({ settingsPath, settingName: to.SettingsStep(settingName) }),
+				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 			})
 		}
-	}
-
-const shouldRecurse: (_: { maybeSettingsFunctionsSourcePattern: Pattern }) => boolean =
-	({ maybeSettingsFunctionsSourcePattern }: { maybeSettingsFunctionsSourcePattern: Pattern }): boolean => {
-		// tslint:disable-next-line:strict-type-predicates
-		if (typeof maybeSettingsFunctionsSourcePattern !== 'object') {
-			return false
-		}
-
-		return !(maybeSettingsFunctionsSourcePattern instanceof Array)
 	}
 
 export default prepareFunctionObjectsPerSetting

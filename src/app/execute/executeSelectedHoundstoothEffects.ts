@@ -2,13 +2,14 @@ import { Effect, executeAnimation, executePattern } from '../../pattern'
 import { state } from '../../state'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { createContexts } from '../dom'
-import composeMainHoundstooth from './composeMainHoundstooth'
-import prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
-import { SettingsFunctionObject } from './types'
+import { composeMainHoundstooth, prepareFunctionObjectsPerSetting, SettingsFunctionObject } from '../settings'
 
 const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
 	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
-		composeMainHoundstooth({ houndstoothEffects: state.controls.selectedHoundstoothEffects, houndstoothOverrides })
+		composeMainHoundstooth.default({
+			houndstoothEffects: state.controls.selectedHoundstoothEffects,
+			houndstoothOverrides,
+		})
 
 		prepareCurrentPattern()
 
@@ -29,10 +30,10 @@ const prepareCanvas: NullarySideEffector =
 
 const execute: NullarySideEffector =
 	(): void => {
-		const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
+		const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default({
 			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.animationsPattern,
 		})
-		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting({
+		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default({
 			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.layersPattern,
 		})
 

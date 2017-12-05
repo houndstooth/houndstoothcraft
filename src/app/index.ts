@@ -10,19 +10,14 @@ export {
 } from './canvas'
 export {
 	frameInputChangeHandler,
-	effectsHaveConflicts,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
 	snapshotClickHandler,
 	buildEffectToggleClickHandler,
 	updateCurrentFrame,
-	checkSettingForConflict,
-	CheckSettingForConflict,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
-	PatternsHaveConflictsParams,
-	patternsHaveConflicts,
 	updateDescriptions,
 } from './controls'
 export {
@@ -55,15 +50,7 @@ export {
 export {
 	callFunctionsPerSetting,
 	clearInterval,
-	combineHoundstoothEffects,
-	composeMainHoundstooth,
-	composePatterns,
 	executeSelectedHoundstoothEffects,
-	FunctionsOf,
-	SettingsFunction,
-	SettingsFunctionObject,
-	prepareFunctionObjectsPerSetting,
-	settingPath,
 	cancelPreviousPattern,
 } from './execute'
 export {
@@ -90,4 +77,17 @@ export {
 	SettingNamesToPathsMap,
 	buildSettingNamesToPathsMap,
 	BuildSettingNamesToPathsMapParams,
+	CheckSettingForConflict,
+	PatternsHaveConflictsParams,
+	FunctionsOf,
+	SettingsFunction,
+	SettingsFunctionObject,
+	checkSettingForConflict,
+	patternsHaveConflicts,
+	combineHoundstoothEffects,
+	composePatterns,
+	settingPath,
+	composeMainHoundstooth,
+	effectsHaveConflicts,
+	prepareFunctionObjectsPerSetting,
 } from './settings'

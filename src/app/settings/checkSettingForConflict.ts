@@ -2,7 +2,7 @@
 
 import { codeUtilities } from '../../utilities'
 import { consoleWrapper } from '../dom'
-import { settingPath } from '../execute'
+import settingPath from './settingPath'
 import { CheckSettingForConflict, SettingConflictCheck } from './types'
 
 const { isDefined } = codeUtilities
@@ -60,7 +60,7 @@ const buildWarningMessage: (_: CheckSettingForConflict) => string =
 	({ setting, settingCheckingForConflict, settingName, settingsPath }: CheckSettingForConflict): string => {
 		const formattedSetting: string = formatSettingForWarning(setting)
 		const formattedCheckedSetting: string = formatSettingForWarning(settingCheckingForConflict)
-		const fullSettingPath: string = settingPath.default({ settingsPath, settingName })
+		const fullSettingPath: string = settingPath({ settingsPath, settingName })
 
 		// tslint:disable-next-line:max-line-length
 		return `effect would have conflicts on setting \`${fullSettingPath}\`: \`${formattedSetting}\` would be overridden by \`${formattedCheckedSetting}\``

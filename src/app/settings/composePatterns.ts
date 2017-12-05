@@ -1,7 +1,9 @@
 // tslint:disable:no-any no-unsafe-any
 
 import * as to from '../../to'
-import { deeperPath, getPatternSettingOrCreatePath, shouldRecurse } from '../settings'
+import deeperPath from './deeperPath'
+import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
+import shouldRecurse from './shouldRecurse'
 import { ComposePatternsParams } from './types'
 
 const composePatterns: (_: ComposePatternsParams) => void =
@@ -13,15 +15,15 @@ const composePatterns: (_: ComposePatternsParams) => void =
 		}: ComposePatternsParams = params
 
 		Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]: [ string, any ]) => {
-			if (shouldRecurse.default(overridingSetting)) {
+			if (shouldRecurse(overridingSetting)) {
 				composePatterns({
 					patternToBeMergedOnto,
 					patternToMerge: overridingSetting,
-					settingsPath: deeperPath.default({ settingsPath, settingName: to.SettingsStep(settingName) }),
+					settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 				})
 			}
 			else {
-				getPatternSettingOrCreatePath.default({
+				getPatternSettingOrCreatePath({
 					pattern: patternToBeMergedOnto,
 					settingsPath,
 				})[ settingName ] = overridingSetting

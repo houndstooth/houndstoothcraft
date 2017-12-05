@@ -1,6 +1,5 @@
 import * as to from '../../to'
-import { FullSettingsPath } from '../execute'
-import { SettingsPath } from './types'
+import { FullSettingsPath, SettingsPath } from './types'
 
 const deeperPath: (_: FullSettingsPath) => SettingsPath =
 	({ settingName, settingsPath }: FullSettingsPath): SettingsPath => {

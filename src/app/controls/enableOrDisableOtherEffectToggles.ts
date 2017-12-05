@@ -1,8 +1,7 @@
 import { Effect, NamedEffect } from '../../pattern'
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
-import { combineHoundstoothEffects } from '../execute'
-import effectsHaveConflicts from './effectsHaveConflicts'
+import { combineHoundstoothEffects, effectsHaveConflicts } from '../settings'
 
 const enableOrDisableOtherEffectToggles: NullarySideEffector =
 	(): void => {
@@ -11,7 +10,7 @@ const enableOrDisableOtherEffectToggles: NullarySideEffector =
 		})
 
 		Object.values(state.settings.availableEffects).forEach((effect: NamedEffect): void => {
-			state.dom.effectToggles[effect.name].disabled = effectsHaveConflicts({
+			state.dom.effectToggles[effect.name].disabled = effectsHaveConflicts.default({
 				effect,
 				effectCheckingAgainst: combinedHoundstoothEffects,
 			})

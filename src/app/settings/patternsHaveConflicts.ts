@@ -1,8 +1,10 @@
 // tslint:disable:no-any no-unsafe-any
 
 import * as to from '../../to'
-import { deeperPath, getPatternSettingOrCreatePath, shouldRecurse } from '../settings'
 import checkSettingForConflict from './checkSettingForConflict'
+import deeperPath from './deeperPath'
+import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
+import shouldRecurse from './shouldRecurse'
 import { PatternsHaveConflictsParams } from './types'
 
 const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
@@ -16,11 +18,11 @@ const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 		let hasConflicts: boolean = false
 
 		Object.entries(patternCheckingAgainst).forEach(([ settingName, settingCheckingForConflict ]: [ string, any ]) => {
-			if (shouldRecurse.default(settingCheckingForConflict)) {
+			if (shouldRecurse(settingCheckingForConflict)) {
 				const deeperConflicts: boolean = patternsHaveConflicts({
 					pattern,
 					patternCheckingAgainst: settingCheckingForConflict,
-					settingsPath: deeperPath.default({ settingsPath, settingName: to.SettingsStep(settingName) }),
+					settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
 				})
 
 				if (deeperConflicts) {
@@ -28,7 +30,7 @@ const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 				}
 			}
 			else {
-				const settingsWithSettingToBeChecked: { [_: string]: any } = getPatternSettingOrCreatePath.default({
+				const settingsWithSettingToBeChecked: { [_: string]: any } = getPatternSettingOrCreatePath({
 					pattern,
 					settingsPath,
 				})

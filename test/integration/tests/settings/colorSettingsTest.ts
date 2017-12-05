@@ -19,7 +19,10 @@ import {
 const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 describe('.colorSettings', () => {
-	const tileSize: Unit = getSetting.default('tileSize')
+	let tileSize: Unit
+	beforeEach(() => {
+		tileSize = getSetting.default('tileSize')
+	})
 
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', async (done: DoneFn) => {

@@ -1,9 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
-import * as to from '../../to'
 import { SettingsNamesByTypeBase } from '../types'
 
 interface AnimationSettings {
@@ -11,8 +8,6 @@ interface AnimationSettings {
 	readonly refreshCanvas: boolean,
 	readonly [_: string]: any,
 }
-
-type AnimationSettingsStructure = { readonly [P in keyof AnimationSettings]: any }
 
 type AnimationSettingsFunctions = FunctionsOf<AnimationSettings>
 
@@ -26,11 +21,6 @@ const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
 
 type AnimationSettingsName = 'animationSettings'
 
-const animationSettingsNamesToPathsMap: AnimationSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: to.SettingsPath([ 'animationSettings' ]),
-	settings: DEFAULT_ANIMATION_SETTINGS,
-})
-
 type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'refreshCanvas',
 	NumberTypedSettingsNames: 'frameRate',
@@ -41,6 +31,5 @@ export {
 	AnimationSettingsFunctions,
 	DEFAULT_ANIMATION_SETTINGS,
 	AnimationSettingsName,
-	animationSettingsNamesToPathsMap,
 	AnimationSettingsNamesByType,
 }

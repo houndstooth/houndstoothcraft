@@ -1,8 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite, Px } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
 import * as to from '../../to'
 import { Radian } from '../stripe'
 import { SettingsNamesByTypeBase } from '../types'
@@ -15,8 +13,6 @@ interface ViewSettings {
 	readonly zoomOnCanvasCenter: boolean,
 	readonly [_: string]: any,
 }
-
-type ViewSettingsStructure = { readonly [P in keyof ViewSettings]: any }
 
 type ViewSettingsFunctions = FunctionsOf<ViewSettings>
 
@@ -36,11 +32,6 @@ const DEFAULT_VIEW_SETTINGS: ViewSettings = {
 
 type ViewSettingsName = 'viewSettings'
 
-const viewSettingsNamesToPathsMap: ViewSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: to.SettingsPath([ 'viewSettings' ]),
-	settings: DEFAULT_VIEW_SETTINGS,
-})
-
 type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
 	NumberTypedSettingsNames: 'zoom',
@@ -54,6 +45,5 @@ export {
 	DEFAULT_VIEW_SETTINGS,
 	DEFAULT_CANVAS_SIZE,
 	ViewSettingsName,
-	viewSettingsNamesToPathsMap,
 	ViewSettingsNamesByType,
 }

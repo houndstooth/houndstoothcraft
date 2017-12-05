@@ -1,25 +1,26 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { DEFAULT_BASE_PATTERN } from '../../defaults'
-import { settingsNamesToPathsMap, SettingsNamesToTypesMap } from '../../pattern'
+import { SettingsNamesToTypesMap } from '../../pattern'
 import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
+import deeperPath from './deeperPath'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import { SettingsPath } from './types'
 
 const getSetting: SettingsNamesToTypesMap =
 	(settingName: any): any => {
-		const baseSettingsPath: SettingsPath = settingsNamesToPathsMap[ settingName ] || to.SettingsPath([])
-		const settingsPath: SettingsPath = to.SettingsPath(baseSettingsPath.concat([ settingName ]))
+		const settingsPath: SettingsPath = state.settings.settingNamesToPathsMap[ settingName ]
+		const deeperSettingsPath: SettingsPath = deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) })
 
 		let childSetting: { [ index: string ]: any } = state.settings.currentPattern
 
-		for (const settingsStep of settingsPath) {
+		for (const settingsStep of deeperSettingsPath) {
 			if (!codeUtilities.isDefined(childSetting[ settingsStep ])) {
 				return getPatternSettingOrCreatePath({
 					pattern: DEFAULT_BASE_PATTERN,
-					settingsPath,
+					settingsPath: deeperSettingsPath,
 				})
 			}
 			childSetting = childSetting[ settingsStep ]
@@ -27,7 +28,7 @@ const getSetting: SettingsNamesToTypesMap =
 
 		return getPatternSettingOrCreatePath({
 			pattern: state.settings.currentPattern,
-			settingsPath,
+			settingsPath: deeperSettingsPath,
 		})
 	}
 

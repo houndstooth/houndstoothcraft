@@ -18,7 +18,10 @@ import {
 const { BLACK, TRANSPARENT } = constants
 
 describe('.stripeSettings', () => {
-	const areaSize: Unit = getSetting.default('tileSize')
+	let areaSize: Unit
+	beforeEach(() => {
+		areaSize = getSetting.default('tileSize')
+	})
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {

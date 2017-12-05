@@ -72,6 +72,9 @@ export {
 	clearInterval,
 	cancelPreviousPattern,
 	storeDomElements,
+	buildSettingNamesToPathsMap,
+	BuildSettingNamesToPathsMapParams,
+	SettingNamesToPathsMap,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -133,6 +136,7 @@ export {
 	Grid,
 	getShapeColorIndices,
 	isTileUniform,
+	gridProgressIntervalFunction,
 	executeGrid,
 	gridComplete,
 	asyncMaybeTile,
@@ -156,7 +160,6 @@ export {
 	ExecuteLayerParams,
 	updateProgress,
 	completeLayers,
-	gridProgressIntervalFunction,
 } from './pattern'
 export { state, DEFAULT_STATE } from './state'
 import * as to from './to'

@@ -1,9 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
-import * as to from '../../to'
 import { SettingsNamesByTypeBase } from '../types'
 import standardStripePositions from './standardStripePositions'
 import * as stripeCountContinuumSettings from './stripeCountContinuumSettings'
@@ -16,8 +13,6 @@ interface StripePositionSettings {
 	readonly stripeCountMode: StripeCountMode,
 	readonly [_: string]: any,
 }
-
-type StripePositionSettingsStructure = { readonly [P in keyof StripePositionSettings]: any }
 
 type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
 	stripeCountContinuumSettings: stripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
@@ -37,14 +32,6 @@ const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
 
 type StripePositionSettingsName = 'stripePositionSettings'
 
-const stripePositionSettingsNamesToPathsMap: StripePositionSettingsStructure = {
-	...buildSettingsNamesToPathsMap({
-		basePath: to.SettingsPath([ 'stripeSettings', 'stripePositionSettings' ]),
-		settings: DEFAULT_STRIPE_POSITION_SETTINGS,
-	}),
-	...stripeCountContinuumSettings.stripeCountContinuumSettingsNamesToPathsMap,
-}
-
 type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	GetStripePositionsTypedSettingsNames: 'getStripePositions',
 	NumberTypedSettingsNames: 'stripeCount',
@@ -56,6 +43,5 @@ export {
 	StripePositionSettingsFunctions,
 	DEFAULT_STRIPE_POSITION_SETTINGS,
 	StripePositionSettingsName,
-	stripePositionSettingsNamesToPathsMap,
 	StripePositionSettingsNamesByType,
 }

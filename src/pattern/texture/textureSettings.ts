@@ -1,9 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
-import * as to from '../../to'
 import { SettingsNamesByTypeBase } from '../types'
 import { ExecuteTexture } from './types'
 
@@ -11,8 +8,6 @@ interface TextureSettings {
 	readonly executeTexture?: ExecuteTexture,
 	readonly [_: string]: any,
 }
-
-type TextureSettingsStructure = { readonly [P in keyof TextureSettings]: any }
 
 type TextureSettingsFunctions = FunctionsOf<TextureSettings>
 
@@ -24,11 +19,6 @@ const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
 
 type TextureSettingsName = 'textureSettings'
 
-const textureSettingsNamesToPathsMap: TextureSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: to.SettingsPath([ 'textureSettings' ]),
-	settings: DEFAULT_TEXTURE_SETTINGS,
-})
-
 type TextureSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	ExecuteTextureTypedSettingsNames: 'executeTexture',
 }>
@@ -38,6 +28,5 @@ export {
 	TextureSettingsFunctions,
 	DEFAULT_TEXTURE_SETTINGS,
 	TextureSettingsName,
-	textureSettingsNamesToPathsMap,
 	TextureSettingsNamesByType,
 }

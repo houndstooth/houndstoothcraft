@@ -1,8 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
 import * as to from '../../to'
 import { Unit } from '../grid'
 import { SettingsNamesByTypeBase } from '../types'
@@ -15,8 +13,6 @@ interface TileSettings {
 	readonly tileSize: Unit,
 	readonly [_: string]: any,
 }
-
-type TileSettingsStructure = { readonly [P in keyof TileSettings]: any }
 
 type TileSettingsFunctions = FunctionsOf<TileSettings>
 
@@ -32,11 +28,6 @@ const DEFAULT_TILE_SETTINGS: TileSettings = {
 
 type TileSettingsName = 'tileSettings'
 
-const tileSettingsNamesToPathsMap: TileSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: to.SettingsPath([ 'tileSettings' ]),
-	settings: DEFAULT_TILE_SETTINGS,
-})
-
 type TileSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	BooleanTypedSettingsNames: 'collapseSameColoredShapesWithinTile',
 	GetTileOriginAndSizeTypedSettingsNames: 'getTileOriginAndSize',
@@ -48,6 +39,5 @@ export {
 	TileSettingsFunctions,
 	DEFAULT_TILE_SETTINGS,
 	TileSettingsName,
-	tileSettingsNamesToPathsMap,
 	TileSettingsNamesByType,
 }

@@ -12,7 +12,10 @@ import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 const { BLACK, TRANSPARENT, WHITE } = constants
 
 describe('.gridSettings', () => {
-	const tileSize: Unit = getSetting.default('tileSize')
+	let tileSize: Unit
+	beforeEach(() => {
+		tileSize = getSetting.default('tileSize')
+	})
 
 	describe('.tileResolution', () => {
 		it('changes how many tiles there are per dimension', async (done: DoneFn) => {

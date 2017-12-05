@@ -1,17 +1,13 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { SettingsNamesByTypeBase } from '../../pattern'
-import * as to from '../../to'
 import { FunctionsOf } from '../execute'
-import buildSettingsNamesToPathsMap from './buildSettingsNamesToPathsMap'
 import { Overwrite } from './types'
 
 interface TemplateSettings {
 	readonly exampleSetting: string,
 	readonly [_: string]: any,
 }
-
-type TemplateSettingsStructure = { readonly [P in keyof TemplateSettings]: any }
 
 type TemplateSettingsFunctions = FunctionsOf<TemplateSettings>
 
@@ -22,11 +18,6 @@ const DEFAULT_TEMPLATE_SETTINGS: TemplateSettings = {
 }
 
 type TemplateSettingsName = 'templateSettings'
-
-const templateSettingsNamesToPathsMap: TemplateSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: to.SettingsPath([ 'templateSettings' ]),
-	settings: DEFAULT_TEMPLATE_SETTINGS,
-})
 
 type TemplateSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	AssignmentModeTypedSettingsNames: '_',
@@ -55,6 +46,5 @@ export {
 	TemplateSettingsFunctions,
 	DEFAULT_TEMPLATE_SETTINGS,
 	TemplateSettingsName,
-	templateSettingsNamesToPathsMap,
 	TemplateSettingsNamesByType,
 }

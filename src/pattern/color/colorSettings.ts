@@ -1,8 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
 import { BLACK, TRANSPARENT } from '../../constants'
 import * as to from '../../to'
 import { SettingsNamesByTypeBase } from '../types'
@@ -16,8 +14,6 @@ interface ColorSettings {
 	readonly opacity: number,
 	readonly [_: string]: any
 }
-
-type ColorSettingsStructure = { readonly [P in keyof ColorSettings]: any }
 
 type ColorSettingsFunctions = Overwrite<FunctionsOf<ColorSettings>, {
 	colorAssignmentSettings: colorAssignmentSettings.ColorAssignmentSettingsFunctions,
@@ -37,14 +33,6 @@ const DEFAULT_COLOR_SETTINGS: ColorSettings = {
 
 type ColorSettingsName = 'colorSettings'
 
-const colorSettingsNamesToPathsMap: ColorSettingsStructure = {
-	...buildSettingsNamesToPathsMap({
-		basePath: to.SettingsPath([ 'colorSettings' ]),
-		settings: DEFAULT_COLOR_SETTINGS,
-	}),
-	...colorAssignmentSettings.colorAssignmentSettingsNamesToPathsMap,
-}
-
 type ColorSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	ColorSetTypedSettingsNames: 'colorSet',
 	ColorTypedSettingsNames: 'backgroundColor',
@@ -57,6 +45,5 @@ export {
 	DEFAULT_COLOR_SETTINGS,
 	DEFAULT_COLOR_SET,
 	ColorSettingsName,
-	colorSettingsNamesToPathsMap,
 	ColorSettingsNamesByType,
 }

@@ -76,8 +76,6 @@ Define a `DEFAULT_COOL_NEW` value and register it on the `DEFAULT_EXISTING_SETTI
 
 Without this default to be able to fall back on, Houndstooth will not be able to assume it will always get a `coolNew` when it asks for one, and annoying null checking code will ensue. 
     
-Also, this `DEFAULT_...` constant is the opportunity we need to produce the instance of the `ExistingSettings` interface that the `buildSettingsNamesToPathsMap` method needs.
-
 ### type mapping
 
 Make sure Houndstooth is able to tell what type of value it should expect for the `coolNew` setting when it is got or set. 
@@ -118,10 +116,6 @@ Register your new settings module in the `DEFAULT_BASE_PATTERN`.
 
 You probably want to export it from from the `store` module.
 
-### `store/settingsNamesToPathsMap.ts`:
-
-Spread `newSettings`'s `...NamesToPathsMap` onto the master `settingNamesToPathsMap`. Just as the `SettingsNamesToTypesMap` does the work of translating the string 'coolNew' to the `Coolness` type, `settingsNamesToPathsMap` does the work of translating the string 'coolNew' to the `SettingsPath` `[ 'parentModuleOfExistingSettings', 'existingSettings' ]`.
-
 ### `store/types.ts`:
 
 1) Register `newSettings` on the `BasePattern` interface.
@@ -132,11 +126,7 @@ Spread `newSettings`'s `...NamesToPathsMap` onto the master `settingNamesToPaths
 
 ## Adding a whole new settings module that is a submodule of an existing one`
 
-Begin by following the same steps as in [adding a new one at the top level](#adding a new settings module at the top level), but only the ones for the module itself (i.e. do not add to the top-level defaults, names to paths map, or types modules).
-
-### `submoduleOfExistingSettingsNamesToPathsMap`
-
-Make sure that the `basePath` includes steps for each parent module. For example, if `existingSettings` is directly off of the `BasePattern`, and `submoduleOfExistingSettings` is directly off of `existingSettings`, then the `SettingsPath` that should be used as the base path for all settings here should be `[ 'existingSettings', 'submoduleOfExistingSettings' ]`.
+Begin by following the same steps as in [adding a new one at the top level](#adding a new settings module at the top level), but only the ones for the module itself (i.e. do not add to the top-level defaults or types modules).
 
 ### then, in the immediate parent module, `existingSettings`
 
@@ -153,8 +143,6 @@ Make sure that the `basePath` includes steps for each parent module. For example
     You will also have to add `[_: string]: any,` to the anonymous overwriting type to allow these properties to exist.
 
     Of course if the `Overwrite` already exists, you can simply add to it.
-
-5) It will no longer suffice for the `existingSettingsNamesToPathsMap` to merely be the result of a call to `buildSettingsNamesToPathsMap`. It will now have to be expanded into a object which spreads said results along with spreads `submoduleOfExistingSettingsNamesToPathsMap`. This is to let the submodule's names-to-paths-map pass through the parent modules until it reaches the right place in `store/types.ts`. This is the same rationale as step 3. And again, like in step 4, if this is not the first submodule, you can expect to find `existingSettingsNamesToPathsMap` to already be the result of combining spreads.
 
 ## adding a new type
 

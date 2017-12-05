@@ -1,8 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite } from '../../app'
-// tslint:disable-next-line:no-reaching-imports
-import buildSettingsNamesToPathsMap from '../../app/settings/buildSettingsNamesToPathsMap'
 import * as to from '../../to'
 import { SettingsNamesByTypeBase } from '../types'
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from './types'
@@ -17,8 +15,6 @@ interface ColorAssignmentSettings {
 	readonly weave: Weave,
 	readonly [_: string]: any,
 }
-
-type ColorAssignmentSettingsStructure = { readonly [P in keyof ColorAssignmentSettings]: any }
 
 type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettings>
 
@@ -42,11 +38,6 @@ const DEFAULT_COLOR_ASSIGNMENT_SETTINGS: ColorAssignmentSettings = {
 
 type ColorAssignmentSettingsName = 'colorAssignmentSettings'
 
-const colorAssignmentSettingsNamesToPathsMap: ColorAssignmentSettingsStructure = buildSettingsNamesToPathsMap({
-	basePath: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
-	settings: DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
-})
-
 type ColorAssignmentSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 	AssignmentModeTypedSettingsNames: 'assignmentMode',
 	BooleanTypedSettingsNames: 'flipGrain' | 'switcheroo',
@@ -61,6 +52,5 @@ export {
 	ColorAssignmentSettingsFunctions,
 	DEFAULT_COLOR_ASSIGNMENT_SETTINGS,
 	ColorAssignmentSettingsName,
-	colorAssignmentSettingsNamesToPathsMap,
 	ColorAssignmentSettingsNamesByType,
 }

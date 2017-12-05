@@ -1,5 +1,5 @@
 import { buildMockElement } from '../test'
-import { Context, InputElement, PageElement } from './app'
+import { Context, InputElement, PageElement, SettingNamesToPathsMap } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
 import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
@@ -21,6 +21,7 @@ const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
+const DEFAULT_SETTING_NAMES_TO_PATHS_MAP: SettingNamesToPathsMap = {}
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
 const DEFAULT_DESCRIPTIONS_CONTAINER: PageElement = buildMockElement()
@@ -73,6 +74,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
+	settingNamesToPathsMap: DEFAULT_SETTING_NAMES_TO_PATHS_MAP,
 }
 
 const DEFAULT_STATE: State = {

@@ -54,7 +54,6 @@ export {
 	ExecuteLayerParams,
 	completeLayers,
 } from './layer'
-export { settingsNamesToPathsMap } from './settingsNamesToPathsMap'
 export {
 	Coordinate,
 	GetStripePosition,

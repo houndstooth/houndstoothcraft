@@ -66,6 +66,9 @@ export {
 	getPatternSettingOrCreatePath,
 	getSetting,
 	shouldRecurse,
+	SettingNamesToPathsMap,
+	buildSettingNamesToPathsMap,
+	BuildSettingNamesToPathsMapParams,
 } from './settings'
 export {
 	frameInputChangeHandler,

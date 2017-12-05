@@ -11,8 +11,18 @@ enum _SettingsStepBrand {}
 
 type SettingsStep = _SettingsStepBrand & string;
 
+interface SettingNamesToPathsMap { [ index: string ]: SettingsPath }
+
+interface BuildSettingNamesToPathsMapParams {
+	// tslint:disable-next-line:no-any
+	settings?: any,
+	settingsPath?: SettingsPath,
+}
+
 export {
 	SettingsPath,
 	SettingsStep,
+	SettingNamesToPathsMap,
+	BuildSettingNamesToPathsMapParams,
 	Overwrite,
 }

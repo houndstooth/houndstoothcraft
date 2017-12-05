@@ -1,4 +1,4 @@
-import { windowWrapper } from '../../utilities'
+import { windowWrapper } from '../../app'
 import { ReferencedGridAddress } from '../grid'
 import thisPatternHasNotBeenCanceled from '../thisPatternHasNotBeenCanceled'
 import maybeTile from './maybeTile'

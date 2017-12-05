@@ -1,6 +1,6 @@
-import { getSetting } from '../../app'
+import { getSetting, windowWrapper } from '../../app'
 import { state } from '../../state'
-import { NullarySideEffector, windowWrapper } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
 import buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
 import { AnimationParams } from './types'
 

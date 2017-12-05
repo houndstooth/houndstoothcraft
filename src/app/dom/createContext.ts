@@ -2,8 +2,8 @@
 
 import { getSetting } from '../../app'
 import { state } from '../../state'
-import { documentWrapper } from '../../utilities'
 import { Canvas, Context, PageElement, Px } from './types'
+import { documentWrapper } from './windowWrapper'
 
 const createContext: (_: { canvasContainer: PageElement }) => Context =
 	({ canvasContainer }: { canvasContainer: PageElement }): Context => {

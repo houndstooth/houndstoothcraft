@@ -75,6 +75,9 @@ export {
 	buildSettingNamesToPathsMap,
 	BuildSettingNamesToPathsMapParams,
 	SettingNamesToPathsMap,
+	documentWrapper,
+	consoleWrapper,
+	windowWrapper,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -165,13 +168,10 @@ export { state, DEFAULT_STATE } from './state'
 import * as to from './to'
 export {
 	codeUtilities,
-	consoleWrapper,
-	documentWrapper,
 	mathUtilities,
 	noop,
 	NullarySideEffector,
 	NullaryVoidPromise,
-	windowWrapper,
 } from './utilities'
 export { State } from './types'
 

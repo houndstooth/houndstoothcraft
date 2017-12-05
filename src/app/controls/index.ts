@@ -1,4 +1,3 @@
-import * as addDescription from './addDescription'
 import * as buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 import * as checkSettingForConflict from './checkSettingForConflict'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
@@ -15,7 +14,6 @@ import * as updateCurrentFrame from './updateCurrentFrame'
 import * as updateDescriptions from './updateDescriptions'
 
 export {
-	addDescription,
 	frameInputChangeHandler,
 	checkSettingForConflict,
 	CheckSettingForConflict,

@@ -12,6 +12,7 @@ const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
 const DEFAULT_CURRENT_PATTERN: Partial<BasePattern> = {}
+const DEFAULT_EFFECT_TOGGLES: { [_: string ]: InputElement } = {}
 const DEFAULT_END_FRAME: Frame = to.Frame(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
@@ -49,6 +50,7 @@ const DEFAULT_CONTROLS_STATE: ControlsState = {
 
 const DEFAULT_DOM_STATE: DomState = {
 	descriptionsContainer: DEFAULT_DESCRIPTIONS_CONTAINER,
+	effectToggles: DEFAULT_EFFECT_TOGGLES,
 	frameInput: DEFAULT_FRAME_INPUT,
 	layersProgressBar: DEFAULT_LAYERS_PROGRESS_BAR,
 	pauseButton: DEFAULT_PAUSE_BUTTON,

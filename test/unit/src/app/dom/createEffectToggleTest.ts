@@ -5,6 +5,7 @@ import {
 	documentWrapper,
 	NamedEffect,
 	PageElement,
+	state,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
@@ -46,5 +47,9 @@ describe('create effect toggle', () => {
 
 	it('creates the checkbox using the houndstooth effect', () => {
 		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect })
+	})
+
+	it('stores the effect toggle checkbox on the state', () => {
+		expect(state.dom.effectToggles['mock tooth']).toBe(checkbox)
 	})
 })

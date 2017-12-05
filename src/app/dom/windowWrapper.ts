@@ -1,8 +1,8 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { buildMockElement } from '../../test'
-import { PageElement } from '../app'
-import noop from './noop'
+import { PageElement } from '../'
+import { buildMockElement } from '../../../test'
+import { noop } from '../../utilities'
 
 declare const global: any
 
@@ -18,11 +18,11 @@ interface MockDocument {
 /* istanbul ignore next */
 const mockDocument: MockDocument = {
 	body: {
-		appendChild: noop,
+		appendChild: noop.default,
 	},
 	createElement: (_: string): PageElement => buildMockElement(),
-	createTextNode: noop,
-	querySelector: noop,
+	createTextNode: noop.default,
+	querySelector: noop.default,
 }
 
 interface MockWindow {
@@ -39,9 +39,9 @@ interface MockWindow {
 const mockWindow: MockWindow = {
 	URL: {
 		createObjectURL: (): string => '',
-		revokeObjectURL: noop,
+		revokeObjectURL: noop.default,
 	},
-	clearInterval: noop,
+	clearInterval: noop.default,
 	setInterval: (): number => 0,
 	setTimeout: (): number => 0,
 }

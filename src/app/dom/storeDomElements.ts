@@ -1,8 +1,9 @@
 // tslint:disable:no-unsafe-any
 
 import { state } from '../../state'
-import { documentWrapper, NullarySideEffector } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
 import { InputElement, PageElement } from './types'
+import { documentWrapper } from './windowWrapper'
 
 const storeDomElements: NullarySideEffector =
 	(): void => {

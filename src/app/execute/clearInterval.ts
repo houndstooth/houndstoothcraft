@@ -1,5 +1,5 @@
 import { state } from '../../state'
-import { windowWrapper } from '../../utilities'
+import { windowWrapper } from '../dom'
 
 const clearInterval: (_: string) => void =
 	(intervalStateNodeName: string): void => {

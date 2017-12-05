@@ -1,10 +1,10 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../pattern'
-import { documentWrapper } from '../../utilities'
 import { buildEffectToggleClickHandler } from '../controls'
 import makeId from './makeId'
 import { InputElement } from './types'
+import { documentWrapper } from './windowWrapper'
 
 const createCheckbox: (_: { houndstoothEffect: NamedEffect }) => InputElement =
 	({ houndstoothEffect }: { houndstoothEffect: NamedEffect }): InputElement => {

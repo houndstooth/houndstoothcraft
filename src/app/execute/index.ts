@@ -11,6 +11,7 @@ import { FullSettingsPath, FunctionsOf, SettingsFunction, SettingsFunctionObject
 
 export {
 	callFunctionsPerSetting,
+	clearInterval,
 	combineHoundstoothEffects,
 	composePatterns,
 	executeSelectedHoundstoothEffects,
@@ -21,6 +22,5 @@ export {
 	settingPath,
 	composeMainHoundstooth,
 	prepareFunctionObjectsPerSetting,
-	clearInterval,
 	cancelPreviousPattern,
 }

@@ -1,6 +1,6 @@
 import { NamedEffect } from '../../pattern'
 import { state } from '../../state'
-import {  NullarySideEffector } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
 import { clearContexts, clearMixedDownContext } from '../canvas'
 import { cancelPreviousPattern, clearInterval, executeSelectedHoundstoothEffects } from '../execute'
 import { resetMainHoundstooth } from '../settings'

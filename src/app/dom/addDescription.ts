@@ -1,6 +1,6 @@
 import { state } from '../../state'
-import { documentWrapper } from '../../utilities'
-import { PageElement } from '../dom'
+import { PageElement } from './types'
+import { documentWrapper } from './windowWrapper'
 
 const addDescription: (descriptionText: string) => void =
 	(descriptionText: string): void => {

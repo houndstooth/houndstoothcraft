@@ -2,7 +2,8 @@
 
 import { DEFAULT_CANVAS_SIZE } from '../../defaults'
 import { state } from '../../state'
-import { documentWrapper, NullarySideEffector } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
+import { documentWrapper } from './windowWrapper'
 
 const storeMixedDownContext: NullarySideEffector =
 	(): void => {

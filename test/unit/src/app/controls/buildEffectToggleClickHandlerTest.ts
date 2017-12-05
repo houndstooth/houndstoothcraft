@@ -4,14 +4,12 @@ import {
 	clearContexts,
 	clearInterval,
 	clearMixedDownContext,
-	documentWrapper,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	executeSelectedHoundstoothEffects,
 	InputElement,
 	NamedEffect,
 	NullarySideEffector,
-	PageElement,
 	resetMainHoundstooth,
 	state,
 	updateDescriptions,
@@ -23,14 +21,12 @@ describe('build effect toggle click handler returns a function which', () => {
 	let checkbox: InputElement
 	let houndstoothEffect: NamedEffect
 	let preExistingHoundstoothEffect: NamedEffect
-	const descriptionsContainer: PageElement = buildMockElement()
 
 	beforeEach(() => {
 		spyOn(executeSelectedHoundstoothEffects, 'default')
 		spyOn(enableOrDisableAnimationControls, 'default')
 		spyOn(enableOrDisableOtherEffectToggles, 'default')
 		spyOn(updateDescriptions, 'default')
-		spyOn(documentWrapper, 'querySelector').and.returnValue(descriptionsContainer)
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(clearContexts, 'default')
 		spyOn(clearInterval, 'default')
@@ -73,7 +69,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 
 	it('clears descriptions', () => {
-		expect(descriptionsContainer.innerHTML).toBe('')
+		expect(state.dom.descriptionsContainer.innerHTML).toBe('')
 	})
 
 	it('clears contexts', () => {

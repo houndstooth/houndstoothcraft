@@ -1,6 +1,6 @@
+import { consoleWrapper } from '../../app'
 import { state } from '../../state'
 import { ControlsState, ExecuteState, State } from '../../types'
-import { consoleWrapper } from '../../utilities'
 import executeGrid from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =

@@ -1,9 +1,9 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../pattern'
-import { documentWrapper } from '../../utilities'
 import makeId from './makeId'
 import { LabelElement } from './types'
+import { documentWrapper } from './windowWrapper'
 
 const createLabel: (_: { houndstoothEffect: NamedEffect }) => LabelElement =
 	({ houndstoothEffect }: { houndstoothEffect: NamedEffect }): LabelElement => {

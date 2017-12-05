@@ -17,6 +17,7 @@ interface ControlsState {
 
 interface DomState {
 	descriptionsContainer: PageElement,
+	effectToggles: { [_: string ]: InputElement },
 	frameInput: InputElement,
 	layersProgressBar: PageElement,
 	pauseButton: HTMLButtonElement,

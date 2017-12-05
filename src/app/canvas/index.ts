@@ -4,9 +4,7 @@ import * as clearMixedDownContext from './clearMixedDownContext'
 import * as exportCanvas from './exportCanvas'
 import * as getCurrentContext from './getCurrentContext'
 import * as mixDownContexts from './mixDownContexts'
-import * as saveBlob from './saveBlob'
 import * as saveCanvas from './saveCanvas'
-import * as storeMixedDownContext from './storeMixedDownContext'
 import { DataBlob } from './types'
 
 export {
@@ -15,9 +13,7 @@ export {
 	clearMixedDownContext,
 	DataBlob,
 	exportCanvas,
-	saveBlob,
 	saveCanvas,
 	getCurrentContext,
 	mixDownContexts,
-	storeMixedDownContext,
 }

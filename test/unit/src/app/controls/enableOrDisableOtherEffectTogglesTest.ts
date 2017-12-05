@@ -1,10 +1,8 @@
 import {
 	combineHoundstoothEffects,
-	documentWrapper,
 	Effect,
 	effectsHaveConflicts,
 	enableOrDisableOtherEffectToggles,
-	InputElement,
 	NamedEffect,
 	NullarySideEffector,
 	state,
@@ -26,18 +24,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 		const effectTwo: NamedEffect = { name: 'effect two', description: '' }
 		state.settings.availableEffects = [ effectOne, effectTwo ]
 
-		const effectToggleOne: InputElement = buildMockElement()
-		const effectToggleTwo: InputElement = buildMockElement()
-		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): InputElement => {
-			if (selector === '#effect-one') {
-				return effectToggleOne
-			}
-			if (selector === '#effect-two') {
-				return effectToggleTwo
-			}
-
-			return buildMockElement()
-		})
+		state.dom.effectToggles = { 'effect one': buildMockElement(), 'effect two': buildMockElement() }
 
 		const effectsHaveConflictsSpy: Spy = spyOn(effectsHaveConflicts, 'default')
 		effectsHaveConflictsSpy.and.callFake(({ effect }: { effect: Effect }): boolean =>
@@ -54,7 +41,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 			effect: effectTwo,
 			effectCheckingAgainst: effectsCombined,
 		})
-		expect(effectToggleOne.disabled).toBe(true)
-		expect(effectToggleTwo.disabled).toBe(false)
+		expect(state.dom.effectToggles['effect one'].disabled).toBe(true)
+		expect(state.dom.effectToggles['effect two'].disabled).toBe(false)
 	})
 })

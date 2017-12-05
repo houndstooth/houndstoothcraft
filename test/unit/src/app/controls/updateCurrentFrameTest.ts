@@ -1,14 +1,9 @@
-import { documentWrapper, Frame, state, to, updateCurrentFrame } from '../../../../../src'
-import { buildMockElement } from '../../../helpers'
+import { Frame, state, to, updateCurrentFrame } from '../../../../../src'
 
 const subject: (frame: Frame) => void = updateCurrentFrame.default
 
 describe('update current frame', () => {
-	let frameInput: HTMLInputElement
 	beforeEach(() => {
-		frameInput = buildMockElement() as HTMLInputElement
-		spyOn(documentWrapper, 'querySelector').and.returnValue(frameInput)
-
 		subject(to.Frame(543))
 	})
 
@@ -17,6 +12,6 @@ describe('update current frame', () => {
 	})
 
 	it('updates the current frame in the frame input', () => {
-		expect(frameInput.value).toBe('543')
+		expect(state.dom.frameInput.value).toBe('543')
 	})
 })

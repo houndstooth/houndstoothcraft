@@ -43,8 +43,8 @@ export {
 	Unit,
 	grid,
 	executeGridAndMaybeLogging,
-	buildGridProgressIntervalFunction,
 	executeGrid,
+	gridProgressIntervalFunction,
 	gridComplete,
 } from './grid'
 export {

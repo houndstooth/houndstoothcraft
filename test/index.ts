@@ -1,5 +1,11 @@
-import { isCloseTo, MockCanvas, MockContext, MockElement, MockInputElement } from './helpers'
-import {
+export {
+	isCloseTo,
+	MockCanvas,
+	MockContext,
+	MockElement,
+	MockInputElement,
+} from './helpers'
+export {
 	activateTestMarkerCanvas,
 	Diagonal,
 	ExpectDiagonalDividedSection,
@@ -11,21 +17,6 @@ import {
 	StandardTileExpectation,
 	standardTileIsColors,
 } from './integration'
-
 export {
-	activateTestMarkerCanvas,
-	sectionCenterIsColor,
-	Diagonal,
-	ExpectDiagonalDividedSection,
-	ExpectedDividedSection,
-	ExpectedSolidSection,
-	ExpectSolidSection,
-	standardTileIsColors,
-	StandardTileExpectation,
-	pixelIsColorWithMarker,
-	isCloseTo,
-	MockCanvas,
-	MockContext,
-	MockElement,
-	MockInputElement,
-}
+	buildMockElement,
+} from './unit'

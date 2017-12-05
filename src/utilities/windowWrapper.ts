@@ -1,5 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
+import { buildMockElement } from '../../test'
+import { PageElement } from '../app'
 import noop from './noop'
 
 declare const global: any
@@ -8,16 +10,17 @@ interface MockDocument {
 	body: {
 		appendChild?: any,
 	},
-	createElement?: any,
+	createElement: (tagName: string) => PageElement,
 	createTextNode?: any,
 	querySelector?: any,
 }
 
+/* istanbul ignore next */
 const mockDocument: MockDocument = {
 	body: {
 		appendChild: noop,
 	},
-	createElement: noop,
+	createElement: (_: string): PageElement => buildMockElement(),
 	createTextNode: noop,
 	querySelector: noop,
 }

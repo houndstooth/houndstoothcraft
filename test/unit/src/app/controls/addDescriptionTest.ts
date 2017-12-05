@@ -1,19 +1,14 @@
-import { addDescription, documentWrapper, PageElement } from '../../../../../src'
+import { addDescription, documentWrapper, PageElement, state } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: string) => void = addDescription.default
 
 describe('add description', () => {
-	let children: PageElement[]
-	let descriptionsContainer: PageElement
-	beforeEach(() => {
-		children = []
-		descriptionsContainer = buildMockElement({ children })
-		spyOn(documentWrapper, 'createElement').and.callFake(() => ({}))
-	})
-
 	it('adds descriptions to the descriptions container', () => {
-		spyOn(documentWrapper, 'querySelector').and.returnValue(descriptionsContainer)
+		const children: PageElement[] = []
+
+		spyOn(documentWrapper, 'createElement').and.callFake(buildMockElement)
+		state.dom.descriptionsContainer = buildMockElement({ children })
 
 		subject('is great')
 		subject('is grand')

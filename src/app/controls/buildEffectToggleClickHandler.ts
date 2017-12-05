@@ -1,21 +1,18 @@
-// tslint:disable:no-unsafe-any max-line-length
-
 import { NamedEffect } from '../../pattern'
 import { state } from '../../state'
-import { documentWrapper, NullarySideEffector } from '../../utilities'
+import {  NullarySideEffector } from '../../utilities'
 import { clearContexts, clearMixedDownContext } from '../canvas'
-import { InputElement, PageElement } from '../dom'
 import { cancelPreviousPattern, clearInterval, executeSelectedHoundstoothEffects } from '../execute'
 import { resetMainHoundstooth } from '../settings'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
+import { BuildEffectToggleClickHandlerParams } from './types'
 import updateDescriptions from './updateDescriptions'
 
-const buildEffectToggleClickHandler: (_: { checkbox: InputElement, houndstoothEffect: NamedEffect }) => NullarySideEffector =
-	({ checkbox, houndstoothEffect }: { checkbox: InputElement, houndstoothEffect: NamedEffect }): NullarySideEffector =>
+const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) => NullarySideEffector =
+	({ checkbox, houndstoothEffect }: BuildEffectToggleClickHandlerParams): NullarySideEffector =>
 		(): void => {
-			const descriptions: PageElement = documentWrapper.querySelector('#descriptions-container')
-			descriptions.innerHTML = ''
+			state.dom.descriptionsContainer.innerHTML = ''
 
 			clearContexts.default()
 			clearMixedDownContext.default()
@@ -47,6 +44,7 @@ const addEffect: (houndstoothEffect: NamedEffect) => void =
 
 const removeEffect: (houndstoothEffect: NamedEffect) => void =
 	(houndstoothEffect: NamedEffect): void => {
+		// tslint:disable-next-line:max-line-length
 		state.controls.selectedHoundstoothEffects = state.controls.selectedHoundstoothEffects.filter((selectedHoundstoothEffect: NamedEffect) =>
 			selectedHoundstoothEffect.name !== houndstoothEffect.name)
 	}

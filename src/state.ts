@@ -1,8 +1,9 @@
-import { Context } from './app'
+import { buildMockElement } from '../test'
+import { Context, InputElement, PageElement } from './app'
 import { DEFAULT_HOUNDSTOOTH } from './defaults'
 import { BasePattern, Frame, Layer, NamedEffect } from './pattern'
 import * as to from './to'
-import { CanvasState, ControlsState, ExecuteState, SettingsState, State } from './types'
+import { CanvasState, ControlsState, DomState, ExecuteState, SettingsState, State } from './types'
 import { codeUtilities, noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_ANIMATING: boolean = false
@@ -22,6 +23,15 @@ const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
+const DEFAULT_DESCRIPTIONS_CONTAINER: PageElement = buildMockElement()
+const DEFAULT_LAYERS_PROGRESS_BAR: PageElement = buildMockElement()
+const DEFAULT_PROGRESS_MESSAGE: PageElement = buildMockElement()
+const DEFAULT_PROGRESS_BAR: PageElement = buildMockElement()
+const DEFAULT_PLAY_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+const DEFAULT_PAUSE_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+const DEFAULT_REWIND_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+const DEFAULT_SNAPSHOT_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+const DEFAULT_FRAME_INPUT: InputElement = buildMockElement() as InputElement
 
 const DEFAULT_CANVAS_STATE: CanvasState = {
 	contexts: DEFAULT_CONTEXTS,
@@ -34,6 +44,18 @@ const DEFAULT_CONTROLS_STATE: ControlsState = {
 	endFrame: DEFAULT_END_FRAME,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	selectedHoundstoothEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
+}
+
+const DEFAULT_DOM_STATE: DomState = {
+	descriptionsContainer: DEFAULT_DESCRIPTIONS_CONTAINER,
+	frameInput: DEFAULT_FRAME_INPUT,
+	layersProgressBar: DEFAULT_LAYERS_PROGRESS_BAR,
+	pauseButton: DEFAULT_PAUSE_BUTTON,
+	playButton: DEFAULT_PLAY_BUTTON,
+	progressBar: DEFAULT_PROGRESS_BAR,
+	progressMessage: DEFAULT_PROGRESS_MESSAGE,
+	rewindButton: DEFAULT_REWIND_BUTTON,
+	snapshotButton: DEFAULT_SNAPSHOT_BUTTON,
 }
 
 const DEFAULT_EXECUTE_STATE: ExecuteState = {
@@ -56,6 +78,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
 const DEFAULT_STATE: State = {
 	canvas: DEFAULT_CANVAS_STATE,
 	controls: DEFAULT_CONTROLS_STATE,
+	dom: DEFAULT_DOM_STATE,
 	execute: DEFAULT_EXECUTE_STATE,
 	settings: DEFAULT_SETTINGS_STATE,
 }

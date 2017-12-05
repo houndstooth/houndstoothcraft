@@ -1,14 +1,10 @@
-import { completeLayers, NullarySideEffector, PageElement, state, to } from '../../../../../src'
-import { mockQuerySelector } from '../../../helpers'
+import { completeLayers, NullarySideEffector, state, to } from '../../../../../src'
 
 const subject: NullarySideEffector = completeLayers.default
 
 describe('complete layers', () => {
-	let layersProgressBar: PageElement
 	beforeEach(() => {
 		state.execute.currentLayer = to.Layer(497)
-		const { layersProgressBar: tmpLayersProgressBar } = mockQuerySelector()
-		layersProgressBar = tmpLayersProgressBar
 
 		subject()
 	})
@@ -18,6 +14,6 @@ describe('complete layers', () => {
 	})
 
 	it('resets the layer progress bar', () => {
-		expect(layersProgressBar.style.width).toBe('0%')
+		expect(state.dom.layersProgressBar.style.width).toBe('0%')
 	})
 })

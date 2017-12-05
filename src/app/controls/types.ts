@@ -1,8 +1,14 @@
 // tslint:disable:no-any
 
-import { Pattern } from '../../pattern'
+import { NamedEffect, Pattern } from '../../pattern'
+import { InputElement } from '../dom'
 import { FullSettingsPath } from '../execute'
 import { SettingsPath } from '../settings'
+
+interface BuildEffectToggleClickHandlerParams {
+	checkbox: InputElement,
+	houndstoothEffect: NamedEffect
+}
 
 interface CheckSettingForConflict extends FullSettingsPath, SettingConflictCheck {
 }
@@ -19,6 +25,7 @@ interface SettingConflictCheck {
 }
 
 export {
+	BuildEffectToggleClickHandlerParams,
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
 	SettingConflictCheck,

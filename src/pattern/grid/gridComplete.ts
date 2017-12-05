@@ -1,19 +1,14 @@
-// tslint:disable:no-unsafe-any
-
 import { state } from '../../state'
-import { documentWrapper, NullarySideEffector, windowWrapper } from '../../utilities'
-import buildGridProgressIntervalFunction from './buildGridProgressIntervalFunction'
+import { NullarySideEffector, windowWrapper } from '../../utilities'
+import gridProgressIntervalFunction from './gridProgressIntervalFunction'
 
 const PROGRESS_UPDATE_RATE: number = 30
 
 const gridComplete: (resolveGrid: NullarySideEffector) => void =
 	(resolveGrid: NullarySideEffector): void => {
-		const progressBar: HTMLElement = documentWrapper.querySelector('#progress-bar') as HTMLElement
-		const progressMessage: HTMLElement = documentWrapper.querySelector('#progress-message') as HTMLElement
-
 		state.execute.resolveGrid = resolveGrid
 		state.execute.gridProgressInterval = windowWrapper.setInterval(
-			buildGridProgressIntervalFunction({ progressBar, progressMessage }),
+			gridProgressIntervalFunction,
 			PROGRESS_UPDATE_RATE,
 		)
 	}

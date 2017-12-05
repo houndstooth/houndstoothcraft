@@ -7,7 +7,7 @@ const saveBlob: (_: { blob: DataBlob, name: string }) => void =
 	({ blob, name }: { blob: DataBlob, name: string }): void => {
 		const url: string = windowWrapper.URL.createObjectURL(blob)
 
-		const a: HTMLAnchorElement = documentWrapper.createElement('a')
+		const a: HTMLAnchorElement = documentWrapper.createElement('a') as HTMLAnchorElement
 		documentWrapper.body.appendChild(a)
 		a.style.display = 'none'
 		a.href = url

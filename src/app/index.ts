@@ -43,6 +43,7 @@ export {
 	LabelElement,
 	insertElementRightAfter,
 	makeId,
+	storeDomElements,
 } from './dom'
 export {
 	fill,

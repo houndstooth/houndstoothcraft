@@ -9,6 +9,7 @@ import * as insertElementRightAfter from './insertElementRightAfter'
 import * as makeId from './makeId'
 import * as scaleCanvasContainer from './scaleCanvasContainer'
 import * as scaleElement from './scaleElement'
+import * as storeDomElements from './storeDomElements'
 import { Canvas, Context, Dimensions, InputElement, LabelElement, PageElement, Px } from './types'
 
 export {
@@ -30,4 +31,5 @@ export {
 	createEffectToggle,
 	createLabel,
 	insertElementRightAfter,
+	storeDomElements,
 }

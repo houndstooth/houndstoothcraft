@@ -1,8 +1,6 @@
-// tslint:disable:no-unsafe-any max-line-length
-
 import { state } from '../../state'
 import * as to from '../../to'
-import { documentWrapper, NullarySideEffector } from '../../utilities'
+import { NullarySideEffector } from '../../utilities'
 import { clearMixedDownContext } from '../canvas'
 import { clearInterval, executeSelectedHoundstoothEffects } from '../execute'
 import updateCurrentFrame from './updateCurrentFrame'
@@ -14,11 +12,7 @@ const rewindClickHandler: NullarySideEffector =
 		updateCurrentFrame(to.Frame(0))
 
 		if (!state.controls.animating) {
-			const rewindButton: HTMLButtonElement = documentWrapper.querySelector('#rewind-button') as HTMLButtonElement
-			/* istanbul ignore else */
-			if (rewindButton) {
-				rewindButton.disabled = true
-			}
+			state.dom.rewindButton.disabled = true
 			clearMixedDownContext.default()
 		}
 

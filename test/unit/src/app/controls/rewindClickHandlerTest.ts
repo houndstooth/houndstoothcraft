@@ -9,11 +9,9 @@ import {
 	updateCurrentFrame,
 } from '../../../../../src'
 import Spy = jasmine.Spy
-import { mockQuerySelector } from '../../../helpers'
 
 describe('rewind click handler', () => {
 	let executeSelectedHoundstoothEffectsSpy: Spy
-	let rewindButton: HTMLButtonElement
 
 	beforeEach(() => {
 		spyOn(clearMixedDownContext, 'default')
@@ -21,8 +19,6 @@ describe('rewind click handler', () => {
 		spyOn(clearInterval, 'default')
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
-		const { rewindButton: tmpRewindButton } = mockQuerySelector()
-		rewindButton = tmpRewindButton as HTMLButtonElement
 	})
 
 	it('clears the interval and removes it from state', () => {
@@ -46,21 +42,21 @@ describe('rewind click handler', () => {
 	describe('animation paused / still running', () => {
 		it('when paused, it disables itself and clears the mixed down context', () => {
 			state.controls.animating = false
-			rewindButton.disabled = false
+			state.dom.rewindButton.disabled = false
 
 			rewindClickHandler.default()
 
-			expect(rewindButton.disabled).toBe(true)
+			expect(state.dom.rewindButton.disabled).toBe(true)
 			expect(clearMixedDownContext.default).toHaveBeenCalled()
 		})
 
 		it('when still running, it does not disable itself or clear the mixed down context', () => {
 			state.controls.animating = true
-			rewindButton.disabled = false
+			state.dom.rewindButton.disabled = false
 
 			rewindClickHandler.default()
 
-			expect(rewindButton.disabled).toBe(false)
+			expect(state.dom.rewindButton.disabled).toBe(false)
 			expect(clearMixedDownContext.default).not.toHaveBeenCalled()
 		})
 	})

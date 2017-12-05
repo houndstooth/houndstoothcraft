@@ -1,30 +1,18 @@
-import { NullarySideEffector, PageElement, setSetting, state, to, updateProgress } from '../../../../../src'
-import { mockQuerySelector } from '../../../helpers'
+import { NullarySideEffector, setSetting, state, to, updateProgress } from '../../../../../src'
 
 const subject: NullarySideEffector = updateProgress.default
 
 describe('update progress', () => {
-	let progressBar: PageElement
-	let layersProgressBar: PageElement
-	let progressMessage: PageElement
 	beforeEach(() => {
 		state.controls.currentFrame = to.Frame(909)
 		state.execute.tileCount = 200000
 		state.execute.tilesCompleted = 180001
-		const {
-			progressBar: tmpProgressBar,
-			layersProgressBar: tmpLayersProgressBar,
-			progressMessage: tmpProgressMessage,
-		} = mockQuerySelector()
-		progressBar = tmpProgressBar
-		layersProgressBar = tmpLayersProgressBar
-		progressMessage = tmpProgressMessage
 	})
 
 	it('updates the progress bar', () => {
 		subject()
 
-		expect(progressBar.style.width).toBe('91%')
+		expect(state.dom.progressBar.style.width).toBe('91%')
 	})
 
 	describe('layers progress bar', () => {
@@ -34,13 +22,13 @@ describe('update progress', () => {
 
 			subject()
 
-			expect(layersProgressBar.style.width).toBe('59.1%')
+			expect(state.dom.layersProgressBar.style.width).toBe('59.1%')
 		})
 
 		it('when not layering, is the same as the grid progress bar', () => {
 			subject()
 
-			expect(layersProgressBar.style.width).toBe('91%')
+			expect(state.dom.layersProgressBar.style.width).toBe('91%')
 		})
 	})
 
@@ -52,7 +40,7 @@ describe('update progress', () => {
 
 			subject()
 
-			expect(progressMessage.textContent).toBe('Rendering frame 909, layer 5/9: 91%')
+			expect(state.dom.progressMessage.textContent).toBe('Rendering frame 909, layer 5/9: 91%')
 		})
 
 		it('when only animating', () => {
@@ -60,7 +48,7 @@ describe('update progress', () => {
 
 			subject()
 
-			expect(progressMessage.textContent).toBe('Rendering frame 909: 91%')
+			expect(state.dom.progressMessage.textContent).toBe('Rendering frame 909: 91%')
 		})
 
 		it('when only layering', () => {
@@ -69,13 +57,13 @@ describe('update progress', () => {
 
 			subject()
 
-			expect(progressMessage.textContent).toBe('Rendering layer 5/9: 91%')
+			expect(state.dom.progressMessage.textContent).toBe('Rendering layer 5/9: 91%')
 		})
 
 		it('when neither animating nor layering', () => {
 			subject()
 
-			expect(progressMessage.textContent).toBe('Rendering: 91%')
+			expect(state.dom.progressMessage.textContent).toBe('Rendering: 91%')
 		})
 	})
 })

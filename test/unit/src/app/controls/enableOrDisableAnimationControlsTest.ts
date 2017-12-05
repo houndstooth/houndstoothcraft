@@ -3,53 +3,35 @@ import {
 	enableOrDisableAnimationControls,
 	NullarySideEffector,
 	PatternFunctions,
+	state,
 	to,
 	Unit,
 } from '../../../../../src'
-import { mockQuerySelector } from '../../../helpers'
 
 const subject: NullarySideEffector = enableOrDisableAnimationControls.default
 
 describe('enable or disable animation controls', () => {
-	let frameInput: HTMLInputElement
-	let playButton: HTMLButtonElement
-	let pauseButton: HTMLButtonElement
-	let rewindButton: HTMLButtonElement
-
-	beforeEach(() => {
-		const {
-			frameInput: tmpFrameInput,
-			playButton: tmpPlayButton,
-			pauseButton: tmpPauseButton,
-			rewindButton: tmpRewindButton,
-		} = mockQuerySelector()
-		frameInput = tmpFrameInput as HTMLInputElement
-		playButton = tmpPlayButton as HTMLButtonElement
-		pauseButton = tmpPauseButton as HTMLButtonElement
-		rewindButton = tmpRewindButton as HTMLButtonElement
-	})
-
 	describe('when the main houndstooth has animations', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = { tileSettings: { tileSize: (): Unit => to.Unit(0) } }
 			composeMainHoundstooth.default({ houndstoothOverrides: { animationsPattern } })
-			playButton.disabled = true
-			frameInput.disabled = true
-			pauseButton.disabled = false
-			rewindButton.disabled = false
+			state.dom.playButton.disabled = true
+			state.dom.frameInput.disabled = true
+			state.dom.pauseButton.disabled = false
+			state.dom.rewindButton.disabled = false
 
 			subject()
 		})
 
 		it('enables the play button and frame input', () => {
-			expect(playButton.disabled).toBe(false)
-			expect(frameInput.disabled).toBe(false)
+			expect(state.dom.playButton.disabled).toBe(false)
+			expect(state.dom.frameInput.disabled).toBe(false)
 
 		})
 
 		it('disables the pause and rewind button', () => {
-			expect(pauseButton.disabled).toBe(true)
-			expect(rewindButton.disabled).toBe(true)
+			expect(state.dom.pauseButton.disabled).toBe(true)
+			expect(state.dom.rewindButton.disabled).toBe(true)
 		})
 	})
 
@@ -57,19 +39,19 @@ describe('enable or disable animation controls', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = {}
 			composeMainHoundstooth.default({ houndstoothOverrides: { animationsPattern } })
-			playButton.disabled = false
-			frameInput.disabled = false
-			pauseButton.disabled = false
-			rewindButton.disabled = false
+			state.dom.playButton.disabled = false
+			state.dom.frameInput.disabled = false
+			state.dom.pauseButton.disabled = false
+			state.dom.rewindButton.disabled = false
 
 			subject()
 		})
 
 		it('disables all animation controls', () => {
-			expect(playButton.disabled).toBe(true)
-			expect(frameInput.disabled).toBe(true)
-			expect(pauseButton.disabled).toBe(true)
-			expect(rewindButton.disabled).toBe(true)
+			expect(state.dom.playButton.disabled).toBe(true)
+			expect(state.dom.frameInput.disabled).toBe(true)
+			expect(state.dom.pauseButton.disabled).toBe(true)
+			expect(state.dom.rewindButton.disabled).toBe(true)
 		})
 	})
 })

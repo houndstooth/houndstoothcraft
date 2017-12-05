@@ -1,4 +1,4 @@
-import { Context } from './app'
+import { Context, InputElement, PageElement } from './app'
 import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from './pattern'
 import { NullarySideEffector } from './utilities'
 
@@ -13,6 +13,18 @@ interface ControlsState {
 	endFrame: Frame,
 	exportFrames: boolean,
 	selectedHoundstoothEffects: NamedEffect[],
+}
+
+interface DomState {
+	descriptionsContainer: PageElement,
+	frameInput: InputElement,
+	layersProgressBar: PageElement,
+	pauseButton: HTMLButtonElement,
+	playButton: HTMLButtonElement,
+	progressBar: PageElement,
+	progressMessage: PageElement,
+	rewindButton: HTMLButtonElement,
+	snapshotButton: HTMLButtonElement,
 }
 
 interface ExecuteState {
@@ -38,6 +50,7 @@ interface SettingsState {
 interface State {
 	canvas: CanvasState,
 	controls: ControlsState,
+	dom: DomState,
 	execute: ExecuteState,
 	settings: SettingsState,
 }
@@ -45,6 +58,7 @@ interface State {
 export {
 	CanvasState,
 	ControlsState,
+	DomState,
 	ExecuteState,
 	SettingsState,
 	State,

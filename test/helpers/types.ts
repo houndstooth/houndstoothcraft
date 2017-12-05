@@ -15,7 +15,7 @@ interface MockCanvas extends MockElement {
 
 interface MockInputElement extends MockElement {
 	checked?: any,
-	onclick?: any,
+	value?: any,
 }
 
 interface MockContext {
@@ -68,6 +68,8 @@ interface MockElement {
 	href?: any,
 	innerHTML?: any,
 	nextSibling?: any,
+	onchange?: any,
+	onclick?: any,
 	parentNode?: any,
 	setAttribute?: any,
 	style: {

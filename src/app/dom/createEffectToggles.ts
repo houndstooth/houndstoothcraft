@@ -12,7 +12,7 @@ const createEffectToggles: (effects: NamedEffect[]) => void =
 
 		effects.forEach(createEffectToggle)
 
-		const moreEffectsSoonMessage: HTMLTextAreaElement = documentWrapper.createElement('div')
+		const moreEffectsSoonMessage: HTMLTextAreaElement = documentWrapper.createElement('div') as HTMLTextAreaElement
 		moreEffectsSoonMessage.setAttribute('id', 'more-effects-soon-message')
 		moreEffectsSoonMessage.innerHTML = 'more effects coming soon'
 		effectTogglesContainer.appendChild(moreEffectsSoonMessage)

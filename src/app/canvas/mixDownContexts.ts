@@ -1,13 +1,11 @@
 import { NullarySideEffector } from '../../utilities'
-import { Context, Px } from '../dom'
-import { getSetting } from '../settings'
+import { Context } from '../dom'
 import { state } from '../state'
 import clearContext from './clearContext'
 
 const mixDownContexts: NullarySideEffector =
 	(): void => {
-		const canvasSize: Px = getSetting.default('canvasSize')
-		clearContext({ canvasSize, context: state.canvas.mixedDownContext })
+		clearContext(state.canvas.mixedDownContext)
 
 		state.canvas.contexts.forEach((context: Context): void => {
 			// tslint:disable-next-line:no-unsafe-any

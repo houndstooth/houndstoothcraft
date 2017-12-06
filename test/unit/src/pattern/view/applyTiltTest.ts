@@ -1,11 +1,9 @@
-import { applyTilt, Path, Px, setSetting, to } from '../../../../../src'
+import { applyTilt, Path, setSetting, to } from '../../../../../src'
 import { pixelsAreClose } from '../../../helpers'
 
-describe('apply tilt', () => {
-	const canvasSize: Px = to.Px(200)
-
+xdescribe('apply tilt', () => {
 	it('rotates the path about the canvas center', () => {
-		setSetting.default('viewSettings', { canvasSize, rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2) })
+		setSetting.default('rotateViewAboutCanvasCenter', to.Radian(Math.PI / 2))
 		const path: Path = to.Path([
 			[ 0, 0 ],
 			[ 40, 0 ],

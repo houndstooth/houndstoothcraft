@@ -8,36 +8,11 @@ import {
 	to,
 	Unit,
 } from '../../../../src'
-import { pixelIsColor, sectionCenterIsColor, standardTileIsColors } from '../../helpers'
+import { sectionCenterIsColor, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants
 
 describe('.viewSettings', () => {
-	describe('.canvasSize', () => {
-		it('works', async (done: DoneFn) => {
-			const houndstoothOverrides: Effect = {
-				basePattern: {
-					colorSettings: { colorSet: to.ColorSet([ BLACK ]) },
-					viewSettings: { canvasSize: to.Px(125) },
-				},
-			}
-
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
-
-			setTimeout(() => {
-				expect(pixelIsColor(to.Coordinate([ 0, 0 ]), BLACK)).toBe(true)
-				expect(pixelIsColor(to.Coordinate([ 124, 0 ]), BLACK)).toBe(true)
-				expect(pixelIsColor(to.Coordinate([ 0, 124 ]), BLACK)).toBe(true)
-				expect(pixelIsColor(to.Coordinate([ 124, 124 ]), BLACK)).toBe(true)
-				expect(pixelIsColor(to.Coordinate([ 125, 0 ]), TRANSPARENT)).toBe(true)
-				expect(pixelIsColor(to.Coordinate([ 0, 125 ]), TRANSPARENT)).toBe(true)
-				expect(pixelIsColor(to.Coordinate([ 125, 125 ]), TRANSPARENT)).toBe(true)
-
-				done()
-			},         0)
-		})
-	})
-
 	describe('.zoom', () => {
 		it('works', async (done: DoneFn) => {
 			const zoom: number = 2
@@ -179,7 +154,7 @@ describe('.viewSettings', () => {
 		})
 	})
 
-	describe('.rotateViewAboutCanvasCenter', () => {
+	xdescribe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
 			const areaSize: Unit = getSetting.default('tileSize')
 
@@ -192,7 +167,6 @@ describe('.viewSettings', () => {
 						tileSize: areaSize,
 					},
 					viewSettings: {
-						canvasSize: to.Px(300),
 						rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2),
 					},
 				},

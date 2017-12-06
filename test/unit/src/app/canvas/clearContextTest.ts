@@ -1,14 +1,16 @@
-import { clearContext, Context, Px, to } from '../../../../../src'
+import { clearContext, constants, Context } from '../../../../../src'
 import Spy = jasmine.Spy
 
-const subject: (_: { canvasSize: Px, context: Context }) => void = clearContext.default
+const subject: (_: Context) => void = clearContext.default
+
+const { CANVAS_SIZE } = constants
 
 describe('clear context', () => {
 	it('clears a rectangular area which is the exact size of the canvas', () => {
 		const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 
-		subject({ canvasSize: to.Px(450), context: { clearRect: clearRectSpy } })
+		subject({ clearRect: clearRectSpy })
 
-		expect(clearRectSpy).toHaveBeenCalledWith(0, 0, 450, 450)
+		expect(clearRectSpy).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 	})
 })

@@ -1,15 +1,10 @@
 import { NullarySideEffector } from '../../utilities'
-import { Context, Px } from '../dom'
-import { getSetting } from '../settings'
 import { state } from '../state'
 import clearContext from './clearContext'
 
 const clearContexts: NullarySideEffector =
 	(): void => {
-		const canvasSize: Px = getSetting.default('canvasSize')
-		state.canvas.contexts.forEach((context: Context): void => {
-			clearContext({ context, canvasSize })
-		})
+		state.canvas.contexts.forEach(clearContext)
 	}
 
 export default clearContexts

@@ -9,7 +9,6 @@ import {
 	ExecuteState,
 	InputElement,
 	PageElement,
-	Px,
 	SettingNamesToPathsMap,
 	SettingsState,
 	State,
@@ -57,7 +56,6 @@ const DEFAULT_HOUNDSTOOTH: Houndstooth = {
 	name: DEFAULT_NAME,
 }
 
-const DEFAULT_CANVAS_SIZE: Px = viewSettings.DEFAULT_CANVAS_SIZE
 const DEFAULT_COLOR_SET: ColorSet = colorSettings.DEFAULT_COLOR_SETTINGS.colorSet
 
 const DEFAULT_ANIMATING: boolean = false
@@ -144,7 +142,6 @@ const DEFAULT_STATE: State = {
 export {
 	DEFAULT_ANIMATIONS_PATTERN,
 	DEFAULT_BASE_PATTERN,
-	DEFAULT_CANVAS_SIZE,
 	DEFAULT_COLOR_SET,
 	DEFAULT_LAYERS_PATTERN,
 	DEFAULT_HOUNDSTOOTH,

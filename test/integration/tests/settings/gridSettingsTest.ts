@@ -27,9 +27,6 @@ describe('.gridSettings', () => {
 					gridSettings: {
 						tileResolution: 3,
 					},
-					viewSettings: {
-						canvasSize: to.Px(200),
-					},
 				},
 			}
 
@@ -145,7 +142,7 @@ describe('.gridSettings', () => {
 		})
 	})
 
-	describe('.includeNegativeQuadrants', () => {
+	xdescribe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', async (done: DoneFn) => {
 			const houndstoothOverrides: Effect = {
@@ -158,7 +155,6 @@ describe('.gridSettings', () => {
 						tileSize,
 					},
 					viewSettings: {
-						canvasSize: to.Px(300),
 						centerViewOnCenterOfTileAtHomeAddress: true,
 					},
 				},

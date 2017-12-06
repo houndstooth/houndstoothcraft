@@ -1,4 +1,4 @@
-import { Canvas, codeUtilities, Context, getSetting, NullarySideEffector, Px } from '../../../src'
+import { Canvas, codeUtilities, constants, Context, NullarySideEffector } from '../../../src'
 import { buildMockCanvas } from '../../unit'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
@@ -12,10 +12,8 @@ const testMarkersClear: NullarySideEffector =
 		// tslint:disable-next-line:no-unsafe-any
 		const testMarkersContext: Context = testMarkersCanvas.getContext('2d')
 
-		const canvasSize: Px = getSetting.default('canvasSize')
-
 		// tslint:disable-next-line:no-unsafe-any
-		testMarkersContext.clearRect(0, 0, canvasSize, canvasSize)
+		testMarkersContext.clearRect(0, 0, constants.CANVAS_SIZE, constants.CANVAS_SIZE)
 	}
 
 export default testMarkersClear

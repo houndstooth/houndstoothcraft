@@ -18,7 +18,6 @@ describe('.layerSettings', () => {
 			basePattern: {
 				gridSettings: { tileResolution: 2 },
 				layerSettings: { endLayer: to.Layer(1) },
-				viewSettings: { canvasSize: to.Px(100) },
 			},
 			layersPattern: {
 				colorSettings: {
@@ -49,7 +48,6 @@ describe('.layerSettings', () => {
 			basePattern: {
 				gridSettings: { tileResolution: 0 },
 				layerSettings: { endLayer: to.Layer(1) },
-				viewSettings: { canvasSize: to.Px(100) },
 			},
 			layersPattern: {
 				colorSettings: {

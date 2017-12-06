@@ -1,5 +1,5 @@
 import { getSetting, Path, Pixel, Px } from '../../app'
-import { HALF } from '../../constants'
+import { CANVAS_SIZE, HALF } from '../../constants'
 import { from, to } from '../../utilities'
 import { DoAdjustmentParams } from './types'
 import { ViewSettings } from './viewSettings'
@@ -10,12 +10,11 @@ const applyZoom: (path: Path) => Path =
 const adjustPixelForZoom: (pixel: Pixel) => Pixel =
 	(pixel: Pixel): Pixel => {
 		const {
-			canvasSize,
 			centerViewOnCenterOfTileAtHomeAddress,
 			zoom,
 			zoomOnCanvasCenter,
 		}: ViewSettings = getSetting.default('viewSettings')
-		const halfCanvasSize: Px = to.Px(from.Px(canvasSize) * HALF)
+		const halfCanvasSize: Px = to.Px(from.Px(CANVAS_SIZE) * HALF)
 		const shouldAdjustForCentering: boolean = zoomOnCanvasCenter && !centerViewOnCenterOfTileAtHomeAddress
 
 		return doAdjustment({ pixel, shouldAdjustForCentering, halfCanvasSize, zoom })

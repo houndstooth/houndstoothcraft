@@ -1,5 +1,5 @@
-import { getSetting, Path, Pixel, Px } from '../../app'
-import { HALF } from '../../constants'
+import { getSetting, Path, Pixel } from '../../app'
+import { CANVAS_SIZE, HALF } from '../../constants'
 import { from, to } from '../../utilities'
 import { Unit } from '../grid'
 
@@ -17,8 +17,7 @@ const applyScroll: (path: Path) => Path =
 
 const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel =
 	(pixel: Pixel): Pixel => {
-		const canvasSize: Px = getSetting.default('canvasSize')
-		const canvasCenter: number = from.Px(canvasSize) * HALF
+		const canvasCenter: number = from.Px(CANVAS_SIZE) * HALF
 
 		const tileSize: Unit = getSetting.default('tileSize')
 		const halfTileSize: number = from.Unit(tileSize) * HALF

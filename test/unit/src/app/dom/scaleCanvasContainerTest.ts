@@ -1,21 +1,19 @@
 import {
+	constants,
 	documentWrapper,
 	PageElement,
-	Px,
 	scaleCanvasContainer,
 	scaleElement,
-	setSetting,
-	to,
 } from '../../../../../src'
 import { buildMockBody, buildMockElement } from '../../../helpers'
 
+const { CANVAS_SIZE } = constants
+
 describe('scale canvas container', () => {
 	const canvasContainerClassList: string[] = []
-	const canvasSize: Px = to.Px(450)
 	let bodyChildren: PageElement[]
 	let returnedCanvasContainer: PageElement
 	beforeEach(() => {
-		setSetting.default('canvasSize', canvasSize)
 		bodyChildren = []
 
 		spyOn(scaleElement, 'default')
@@ -36,7 +34,7 @@ describe('scale canvas container', () => {
 
 	it('sets the canvas container width and height (as style, in px)', () => {
 		expect(scaleElement.default).toHaveBeenCalledWith({
-			dimensions: [ canvasSize, canvasSize ],
+			dimensions: [ CANVAS_SIZE, CANVAS_SIZE ],
 			element: returnedCanvasContainer,
 		})
 	})

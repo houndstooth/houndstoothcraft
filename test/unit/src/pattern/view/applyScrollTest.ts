@@ -1,22 +1,23 @@
-import { applyScroll, from, Path, Px, setSetting, to, Unit } from '../../../../../src'
+import { applyScroll, constants, from, Path, setSetting, to, Unit } from '../../../../../src'
+
+const { CANVAS_SIZE } = constants
 
 describe('apply scroll', () => {
 	const zoom: number = 10
 	const tileSize: Unit = to.Unit(40)
-	const canvasSize: Px = to.Px(200)
 	const path: Path = to.Path([
 		[ 3, 5 ],
 		[ 4, 5 ],
 		[ 3, 4 ],
 	])
 	beforeEach(() => {
-		setSetting.default('viewSettings', { zoom, canvasSize })
-		setSetting.default('tileSettings', { tileSize })
+		setSetting.default('zoom', zoom)
+		setSetting.default('tileSize', tileSize)
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		setSetting.default('centerViewOnCenterOfTileAtHomeAddress', true)
-		const halfCanvasSize: number = from.Px(canvasSize) / 2
+		const halfCanvasSize: number = from.Px(CANVAS_SIZE) / 2
 		const halfTileSize: number = from.Unit(tileSize) / 2
 		expect(applyScroll.default(path)).toEqual(to.Path([
 			[

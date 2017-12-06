@@ -35,9 +35,6 @@ describe('.colorSettings', () => {
 					gridSettings: {
 						tileResolution: sufficientTileCountToDemonstrateSetting,
 					},
-					viewSettings: {
-						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
-					},
 				},
 			}
 
@@ -75,9 +72,6 @@ describe('.colorSettings', () => {
 					},
 					gridSettings: {
 						tileResolution: sufficientTileCountToDemonstrateSetting,
-					},
-					viewSettings: {
-						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}
@@ -166,9 +160,6 @@ describe('.colorSettings', () => {
 							},
 							gridSettings: {
 								tileResolution: sufficientTileCountToDemonstrateSetting,
-							},
-							viewSettings: {
-								canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 							},
 						},
 					}
@@ -487,7 +478,6 @@ describe('.colorSettings', () => {
 			describe('supertile', () => {
 				// tslint:disable-next-line:max-line-length
 				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', async (done: DoneFn) => {
-					const sufficientTileCountToDemonstrateSetting: number = 4
 					const houndstoothOverrides: Effect = {
 						basePattern: {
 							colorSettings: {
@@ -505,12 +495,6 @@ describe('.colorSettings', () => {
 									]),
 								},
 								colorSet: to.ColorSet([ YELLOW, BLUE, CYAN, MAGENTA ]),
-							},
-							gridSettings: {
-								tileResolution: sufficientTileCountToDemonstrateSetting,
-							},
-							viewSettings: {
-								canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 							},
 						},
 					}
@@ -648,9 +632,6 @@ describe('.colorSettings', () => {
 						gridSettings: {
 							tileResolution: sufficientTileCountToDemonstrateSetting,
 						},
-						viewSettings: {
-							canvasSize: to.Px(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
-						},
 					},
 				}
 
@@ -727,9 +708,6 @@ describe('.colorSettings', () => {
 						gridSettings: {
 							tileResolution: sufficientTileCountToDemonstrateSetting,
 						},
-						viewSettings: {
-							canvasSize: to.Px(sufficientTileCountToDemonstrateSetting * from.Unit(tileSize)),
-						},
 					},
 				}
 
@@ -785,9 +763,6 @@ describe('.colorSettings', () => {
 					gridSettings: {
 						tileResolution: sufficientTileCountToDemonstrateSetting,
 					},
-					viewSettings: {
-						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
-					},
 				},
 			}
 
@@ -826,9 +801,6 @@ describe('.colorSettings', () => {
 					},
 					gridSettings: {
 						tileResolution: sufficientTileCountToDemonstrateSetting,
-					},
-					viewSettings: {
-						canvasSize: to.Px(from.Unit(tileSize) * sufficientTileCountToDemonstrateSetting),
 					},
 				},
 			}

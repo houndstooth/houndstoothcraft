@@ -2,8 +2,8 @@
 
 import {
 	Canvas,
+	constants,
 	Context,
-	defaults,
 	documentWrapper,
 	NullarySideEffector,
 	state,
@@ -32,7 +32,7 @@ describe('settings mixed down context', () => {
 	})
 
 	it('sets the mixed down context\'s width and height to the default canvas size', () => {
-		expect(state.canvas.mixedDownContext.canvas.height).toBe(defaults.DEFAULT_CANVAS_SIZE)
-		expect(state.canvas.mixedDownContext.canvas.width).toBe(defaults.DEFAULT_CANVAS_SIZE)
+		expect(state.canvas.mixedDownContext.canvas.height).toBe(constants.CANVAS_SIZE)
+		expect(state.canvas.mixedDownContext.canvas.width).toBe(constants.CANVAS_SIZE)
 	})
 })

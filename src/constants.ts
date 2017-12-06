@@ -1,5 +1,6 @@
 // tslint:disable:no-magic-numbers
 
+import { Px } from './app'
 import { Color, Radian, StripePosition } from './pattern'
 import { to } from './utilities'
 
@@ -37,6 +38,8 @@ const DECIMAL_RADIX: number = 10
 
 const ONE_HUNDRED_PERCENT: number = 100
 
+const CANVAS_SIZE: Px = to.Px(800)
+
 export {
 	BLACK,
 	WHITE,
@@ -61,4 +64,5 @@ export {
 	FONT_SIZE,
 	DECIMAL_RADIX,
 	ONE_HUNDRED_PERCENT,
+	CANVAS_SIZE,
 }

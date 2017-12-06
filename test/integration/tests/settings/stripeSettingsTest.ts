@@ -35,7 +35,6 @@ describe('.stripeSettings', () => {
 								stripeCountMode: StripeCountMode.GinghamChevronContinuum,
 							},
 						},
-						viewSettings: { canvasSize: to.Px(from.Unit(areaSize)) },
 					},
 				}
 			})

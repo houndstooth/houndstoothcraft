@@ -2,10 +2,7 @@ import {
 	animator,
 	buildAnimationFunction,
 	executeAnimation,
-	Frame,
-	setSetting,
 	SettingsFunctionObject,
-	to,
 } from '../../../../../src'
 
 describe('execute animation', () => {
@@ -14,44 +11,29 @@ describe('execute animation', () => {
 	let layerFunctionObjects: SettingsFunctionObject[]
 	let animationFunctionObjects: SettingsFunctionObject[]
 
-	let frameRate: number
-	let refreshCanvas: boolean
-	let endFrame: Frame
-
 	beforeEach(() => {
 		spyOn(animator, 'default')
 		spyOn(buildAnimationFunction, 'default').and.returnValue(animationFunction)
+		layerFunctionObjects = []
+		animationFunctionObjects = []
 	})
 
-	describe('configured', () => {
-		beforeEach(() => {
-			layerFunctionObjects = []
-			animationFunctionObjects = []
+	it('calls the animator', () => {
+		executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
-			frameRate = 5
-			endFrame = to.Frame(7)
-			refreshCanvas = false
+		expect(animator.default).toHaveBeenCalledWith(jasmine.objectContaining({
+			animationFunction,
+		}))
+	})
 
-			setSetting.default('animationSettings', { endFrame, frameRate, refreshCanvas })
-		})
+	it('builds an animation function', () => {
+		executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
-		it('calls the animator', () => {
-			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
-
-			expect(animator.default).toHaveBeenCalledWith(jasmine.objectContaining({
-				animationFunction,
-			}))
-		})
-
-		it('builds an animation function', () => {
-			executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
-
-			expect(buildAnimationFunction.default).toHaveBeenCalledWith(
-				jasmine.objectContaining({
-					animationFunctionObjects,
-					layerFunctionObjects,
-				}),
-			)
-		})
+		expect(buildAnimationFunction.default).toHaveBeenCalledWith(
+			jasmine.objectContaining({
+				animationFunctionObjects,
+				layerFunctionObjects,
+			}),
+		)
 	})
 })

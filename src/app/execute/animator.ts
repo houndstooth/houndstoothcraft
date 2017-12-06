@@ -1,9 +1,10 @@
 import { NullarySideEffector } from '../../utilities'
 import { windowWrapper } from '../dom'
-import { getSetting } from '../settings'
 import { state } from '../state'
 import buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
 import { AnimationParams } from './types'
+
+const FRAME_RATE: number = 30
 
 const animator: (_: AnimationParams) => void =
 	({ animationFunction, resolveAnimation }: AnimationParams): void => {
@@ -12,7 +13,7 @@ const animator: (_: AnimationParams) => void =
 			resolveAnimation,
 		})
 
-		state.execute.animationInterval = windowWrapper.setInterval(intervalFunction, getSetting.default('frameRate'))
+		state.execute.animationInterval = windowWrapper.setInterval(intervalFunction, FRAME_RATE)
 	}
 
 export default animator

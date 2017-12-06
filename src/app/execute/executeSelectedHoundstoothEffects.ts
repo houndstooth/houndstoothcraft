@@ -1,8 +1,10 @@
-import { Effect, executeAnimation, executePattern } from '../../pattern'
+import { Effect } from '../../pattern'
 import { state } from '../../state'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { createContexts } from '../dom'
 import { composeMainHoundstooth, prepareFunctionObjectsPerSetting, SettingsFunctionObject } from '../settings'
+import executeAnimation from './executeAnimation'
+import executePattern from './executePattern'
 
 const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
 	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
@@ -38,10 +40,10 @@ const execute: NullarySideEffector =
 		})
 
 		if (state.controls.animating) {
-			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+			executeAnimation({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
-			executePattern.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+			executePattern({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 	}
 

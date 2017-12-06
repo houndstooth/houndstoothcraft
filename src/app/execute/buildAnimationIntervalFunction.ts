@@ -1,4 +1,4 @@
-import { clearInterval } from '../../app'
+import { clearInterval } from '../'
 import { state } from '../../state'
 import * as to from '../../to'
 import { NullarySideEffector } from '../../utilities'

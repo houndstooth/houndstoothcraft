@@ -1,4 +1,4 @@
-import { getSetting } from '../../app'
+import { getSetting } from '../'
 import { ONE_HUNDRED_PERCENT } from '../../constants'
 import * as from from '../../from'
 import { state } from '../../state'

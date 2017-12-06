@@ -1,7 +1,7 @@
 import { NullarySideEffector, NullaryVoidPromise } from '../../utilities'
-import { ExecuteParams } from '../types'
 import * as animator from './animator'
 import buildAnimationFunction from './buildAnimationFunction'
+import { ExecuteParams } from './types'
 
 const executeAnimation: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void> =
 	// tslint:disable-next-line:max-line-length

@@ -11,7 +11,7 @@ import {
 	SettingsFunctionObject,
 	state,
 	to,
-} from '../../../../src'
+} from '../../../../../src'
 
 describe('execute pattern', () => {
 	const endLayer: Layer = to.Layer(4)

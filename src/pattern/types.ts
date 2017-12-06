@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count max-line-length
 
-import { Px, SettingsFunctionObject } from '../app'
+import { Px } from '../app'
 import { animationSettings } from './animation'
 import {
 	AssignmentMode,
@@ -44,11 +44,6 @@ type Effect = Partial<Houndstooth>
 interface NamedEffect extends Effect {
 	readonly description: string,
 	readonly name: string,
-}
-
-interface ExecuteParams {
-	readonly animationFunctionObjects: SettingsFunctionObject[],
-	readonly layerFunctionObjects: SettingsFunctionObject[]
 }
 
 enum MissingSettingsName {}
@@ -176,7 +171,6 @@ interface SettingsNamesByTypeBase {
 export {
 	BasePattern,
 	Effect,
-	ExecuteParams,
 	Houndstooth,
 	NamedEffect,
 	PatternFunctions,

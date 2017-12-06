@@ -2,14 +2,8 @@
 
 export {
 	animationSettings,
-	animator,
-	ConditionFunction,
-	executeAnimation,
 	Frame,
 	standardAnimation,
-	buildAnimationIntervalFunction,
-	buildAnimationFunction,
-	previousFrameHasFinished,
 } from './animation'
 export {
 	AssignmentMode,
@@ -31,10 +25,6 @@ export {
 	getShapeColorIndices,
 	isTileUniform,
 } from './color'
-
-import * as executePattern from './executePattern'
-import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
-
 export {
 	Address,
 	AddressElement,
@@ -42,17 +32,12 @@ export {
 	gridSettings,
 	Unit,
 	grid,
-	executeGridAndMaybeLogging,
-	executeGrid,
-	gridProgressIntervalFunction,
-	gridComplete,
+	Referenced,
+	ReferencedGridAddress,
 } from './grid'
 export {
 	Layer,
 	layerSettings,
-	executeLayer,
-	ExecuteLayerParams,
-	completeLayers,
 } from './layer'
 export {
 	Coordinate,
@@ -86,12 +71,10 @@ export {
 	tileCenter,
 	TileOriginAndSize,
 	tileSettings,
-	asyncMaybeTile,
 	maybeTile,
 	getTileOriginAndSize,
 	GetTileOriginAndSize,
 	tile,
-	updateProgress,
 } from './tile'
 export {
 	BasePattern,
@@ -114,8 +97,3 @@ export {
 	applyTilt,
 	applyZoom,
 } from './view'
-
-export {
-	executePattern,
-	thisPatternHasNotBeenCanceled,
-}

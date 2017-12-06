@@ -1,11 +1,11 @@
-import { clearContexts, exportCanvas, getSetting, mixDownContexts, updateCurrentFrame } from '../../app'
+import { clearContexts, exportCanvas, getSetting, mixDownContexts, updateCurrentFrame } from '../'
 import * as from from '../../from'
 import { state } from '../../state'
 import * as to from '../../to'
 import { NullaryVoidPromise } from '../../utilities'
-import executePattern from '../executePattern'
-import { ExecuteParams } from '../types'
+import executePattern from './executePattern'
 import previousFrameHasFinished from './previousFrameHasFinished'
+import { ExecuteParams } from './types'
 
 const buildAnimationFunction: (_: ExecuteParams) => NullaryVoidPromise =
 	(params: ExecuteParams): NullaryVoidPromise =>

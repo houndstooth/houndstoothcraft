@@ -1,4 +1,4 @@
-import { state, thisPatternHasNotBeenCanceled } from '../../../../src'
+import { state, thisPatternHasNotBeenCanceled } from '../../../../../src'
 
 const subject: (patternRef: number) => boolean = thisPatternHasNotBeenCanceled.default
 

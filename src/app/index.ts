@@ -1,3 +1,5 @@
+// tslint:disable:max-file-line-count
+
 export {
 	clearContext,
 	clearContexts,
@@ -52,6 +54,23 @@ export {
 	clearInterval,
 	executeSelectedHoundstoothEffects,
 	cancelPreviousPattern,
+	animator,
+	executeAnimation,
+	buildAnimationIntervalFunction,
+	buildAnimationFunction,
+	previousFrameHasFinished,
+	executeGridAndMaybeLogging,
+	executeGrid,
+	gridComplete,
+	gridProgressIntervalFunction,
+	executeLayer,
+	completeLayers,
+	thisPatternHasNotBeenCanceled,
+	asyncMaybeTile,
+	updateProgress,
+	executePattern,
+	ConditionFunction,
+	ExecuteLayerParams,
 } from './execute'
 export {
 	fill,

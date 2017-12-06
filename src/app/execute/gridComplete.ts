@@ -1,6 +1,6 @@
-import { windowWrapper } from '../../app'
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
+import { windowWrapper } from '../dom'
 import gridProgressIntervalFunction from './gridProgressIntervalFunction'
 
 const PROGRESS_UPDATE_RATE: number = 30

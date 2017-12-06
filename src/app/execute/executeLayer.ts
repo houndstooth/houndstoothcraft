@@ -1,15 +1,15 @@
-import { callFunctionsPerSetting } from '../../app'
 import { state } from '../../state'
-import { executeGridAndMaybeLogging } from '../grid'
+import callFunctionsPerSetting from './callFunctionsPerSetting'
+import executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
 import { ExecuteLayerParams } from './types'
 
 const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 	async ({ layer, layerFunctionObjects, thisPatternRef }: ExecuteLayerParams): Promise<void> => {
 		state.execute.currentLayer = layer
 
-		callFunctionsPerSetting.default({ settingsFunctionObjects: layerFunctionObjects })
+		callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
 
-		await executeGridAndMaybeLogging.default({ thisPatternRef })
+		await executeGridAndMaybeLogging({ thisPatternRef })
 	}
 
 export default executeLayer

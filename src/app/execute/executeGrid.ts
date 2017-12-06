@@ -1,14 +1,14 @@
 // tslint:disable:no-unsafe-any
 
+import { grid } from '../../pattern'
 import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
-import { asyncMaybeTile } from '../tile'
-import grid from './grid'
+import asyncMaybeTile from './asyncMaybeTile'
 import gridComplete from './gridComplete'
 
 const executeGrid: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
-		grid({ gridTile: asyncMaybeTile.default, thisPatternRef })
+		grid.default({ gridTile: asyncMaybeTile, thisPatternRef })
 		await new Promise<(resolveGrid: NullarySideEffector) => void>(gridComplete)
 		state.execute.tilesCompleted = 0
 	}

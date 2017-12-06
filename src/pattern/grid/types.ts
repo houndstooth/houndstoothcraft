@@ -1,5 +1,3 @@
-import { PageElement } from '../../app'
-
 enum _AddressBrand {}
 
 type Address = _AddressBrand & AddressElement[]
@@ -26,11 +24,6 @@ interface Referenced {
 	thisPatternRef: number
 }
 
-interface BuildGridProgressIntervalFunctionParams {
-	progressBar?: PageElement,
-	progressMessage?: PageElement,
-}
-
 export {
 	Address,
 	AddressElement,
@@ -38,6 +31,5 @@ export {
 	GridAddressParam,
 	ReferencedGridAddress,
 	Referenced,
-	BuildGridProgressIntervalFunctionParams,
 	Unit,
 }

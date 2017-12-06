@@ -1,4 +1,4 @@
-import { state } from '../../state'
+import { state } from '../../app'
 import { ReferencedGridAddress } from '../grid'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import tile from './tile'

@@ -1,6 +1,6 @@
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { getSetting } from '../settings'
+import { state } from '../state'
 import clearContext from './clearContext'
 
 const clearMixedDownContext: NullarySideEffector =

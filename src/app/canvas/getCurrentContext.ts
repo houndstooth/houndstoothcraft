@@ -1,6 +1,6 @@
 import * as from from '../../from'
-import { state } from '../../state'
 import { Context } from '../dom'
+import { state } from '../state'
 
 const getCurrentContext: () => Context =
 	(): Context => state.canvas.contexts[ from.Layer(state.execute.currentLayer) ]

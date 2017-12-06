@@ -1,4 +1,4 @@
-import { state } from '../../state'
+import { state } from '../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
 import { ExecuteLayerParams } from './types'

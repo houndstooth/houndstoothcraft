@@ -1,5 +1,4 @@
-import { getSetting } from '../../app'
-import { state } from '../../state'
+import { getSetting, state } from '../../app'
 import * as to from '../../to'
 import { codeUtilities } from '../../utilities'
 import { applyViewForGrid } from '../view'

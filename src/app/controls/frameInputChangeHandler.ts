@@ -1,8 +1,8 @@
 import { DECIMAL_RADIX } from '../../constants'
-import { state } from '../../state'
 import * as to from '../../to'
 import { clearMixedDownContext } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
+import { state } from '../state'
 
 const frameInputChangeHandler: (event: Event) => void =
 	(event: Event): void => {

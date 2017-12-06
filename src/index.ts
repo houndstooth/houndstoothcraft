@@ -95,6 +95,7 @@ export {
 	asyncMaybeTile,
 	ConditionFunction,
 	ExecuteLayerParams,
+	state,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -164,7 +165,6 @@ export {
 	applyTilt,
 	applyZoom,
 } from './pattern'
-export { state, DEFAULT_STATE } from './state'
 import * as to from './to'
 export {
 	codeUtilities,
@@ -173,7 +173,6 @@ export {
 	NullarySideEffector,
 	NullaryVoidPromise,
 } from './utilities'
-export { State } from './types'
 
 export {
 	to,

@@ -1,5 +1,5 @@
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 
 const cancelPreviousPattern: NullarySideEffector =
 	(): void => {

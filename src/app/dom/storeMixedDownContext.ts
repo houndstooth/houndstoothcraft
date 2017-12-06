@@ -1,8 +1,8 @@
 // tslint:disable:no-unsafe-any
 
 import { DEFAULT_CANVAS_SIZE } from '../../defaults'
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 import { documentWrapper } from './windowWrapper'
 
 const storeMixedDownContext: NullarySideEffector =

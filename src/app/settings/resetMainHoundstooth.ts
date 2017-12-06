@@ -1,6 +1,6 @@
 import { DEFAULT_HOUNDSTOOTH } from '../../defaults'
-import { state } from '../../state'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 
 const resetMainHoundstooth: NullarySideEffector =
 	(): void => {

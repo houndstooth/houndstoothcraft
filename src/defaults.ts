@@ -1,7 +1,19 @@
 // tslint:disable:max-file-line-count
 
 import { buildMockElement } from '../test'
-import { Context, InputElement, PageElement, Px, SettingNamesToPathsMap } from './app'
+import {
+	CanvasState,
+	Context,
+	ControlsState,
+	DomState,
+	ExecuteState,
+	InputElement,
+	PageElement,
+	Px,
+	SettingNamesToPathsMap,
+	SettingsState,
+	State,
+} from './app'
 import {
 	animationSettings,
 	BasePattern,
@@ -20,7 +32,6 @@ import {
 	viewSettings,
 } from './pattern'
 import * as to from './to'
-import { CanvasState, ControlsState, DomState, ExecuteState, SettingsState, State } from './types'
 import { noop, NullarySideEffector } from './utilities'
 
 const DEFAULT_BASE_PATTERN: BasePattern = {

@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 import { InputElement, PageElement } from './types'
 import { documentWrapper } from './windowWrapper'
 

@@ -1,6 +1,6 @@
-import { state } from '../../state'
-import { ControlsState, ExecuteState, State } from '../../types'
 import { consoleWrapper } from '../dom'
+import { state } from '../state'
+import { ControlsState, ExecuteState, State } from '../types'
 import executeGrid from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =

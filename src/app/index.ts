@@ -110,3 +110,12 @@ export {
 	effectsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
 } from './settings'
+export { state } from './state'
+export {
+	CanvasState,
+	ControlsState,
+	DomState,
+	ExecuteState,
+	SettingsState,
+	State,
+} from './types'

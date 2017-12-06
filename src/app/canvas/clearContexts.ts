@@ -1,7 +1,7 @@
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { Context, Px } from '../dom'
 import { getSetting } from '../settings'
+import { state } from '../state'
 import clearContext from './clearContext'
 
 const clearContexts: NullarySideEffector =

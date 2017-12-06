@@ -1,8 +1,8 @@
-import { state } from '../../state'
 import * as to from '../../to'
 import { NullarySideEffector } from '../../utilities'
 import { clearMixedDownContext } from '../canvas'
 import { clearInterval, executeSelectedHoundstoothEffects } from '../execute'
+import { state } from '../state'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =

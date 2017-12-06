@@ -1,4 +1,4 @@
-import { state } from '../../state'
+import { state } from '../state'
 import { PageElement } from './types'
 import { documentWrapper } from './windowWrapper'
 

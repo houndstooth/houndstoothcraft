@@ -1,7 +1,7 @@
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { mixDownContexts } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
+import { state } from '../state'
 
 const playClickHandler: NullarySideEffector =
 	(): void => {

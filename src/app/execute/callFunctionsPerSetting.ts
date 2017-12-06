@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { state } from '../../state'
 import { getPatternSettingOrCreatePath, SettingsFunctionObject } from '../settings'
+import { state } from '../state'
 
 const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void =
 	({ settingsFunctionObjects }: { settingsFunctionObjects: SettingsFunctionObject[] }): void => {

@@ -1,6 +1,6 @@
-import { DEFAULT_STATE } from './defaults'
+import { DEFAULT_STATE } from '../defaults'
+import { codeUtilities } from '../utilities'
 import { State } from './types'
-import { codeUtilities } from './utilities'
 
 const state: State = codeUtilities.deepClone(DEFAULT_STATE)
 

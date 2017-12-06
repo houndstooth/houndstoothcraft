@@ -1,7 +1,7 @@
 import { Effect, NamedEffect } from '../../pattern'
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { combineHoundstoothEffects, effectsHaveConflicts } from '../settings'
+import { state } from '../state'
 
 const enableOrDisableOtherEffectToggles: NullarySideEffector =
 	(): void => {

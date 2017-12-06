@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../pattern'
-import { state } from '../../state'
+import { state } from '../state'
 import createCheckbox from './createCheckbox'
 import createLabel from './createLabel'
 import { InputElement, LabelElement, PageElement } from './types'

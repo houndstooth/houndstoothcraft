@@ -1,7 +1,7 @@
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { windowWrapper } from '../dom'
 import { getSetting } from '../settings'
+import { state } from '../state'
 import buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
 import { AnimationParams } from './types'
 

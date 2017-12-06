@@ -1,6 +1,7 @@
-import { Context, InputElement, PageElement, SettingsPath } from './app'
-import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from './pattern'
-import { NullarySideEffector } from './utilities'
+import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from '../pattern'
+import { NullarySideEffector } from '../utilities'
+import { Context, InputElement, PageElement } from './dom'
+import { SettingsPath } from './settings'
 
 interface CanvasState {
 	contexts: Context[],

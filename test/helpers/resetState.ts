@@ -1,10 +1,10 @@
-import { codeUtilities, DEFAULT_STATE, state } from '../../src'
+import { codeUtilities, defaults, state } from '../../src'
 
 const resetState: () => void =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: state,
-			objectWithProperties: DEFAULT_STATE,
+			objectWithProperties: defaults.DEFAULT_STATE,
 		})
 	}
 

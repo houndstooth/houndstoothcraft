@@ -1,6 +1,6 @@
 import * as from from '../../from'
 import { Frame } from '../../pattern'
-import { state } from '../../state'
+import { state } from '../state'
 
 const updateCurrentFrame: (frame: Frame) => void =
 	(frame: Frame): void => {

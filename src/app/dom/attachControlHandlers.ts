@@ -1,4 +1,3 @@
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import {
 	frameInputChangeHandler,
@@ -7,6 +6,7 @@ import {
 	rewindClickHandler,
 	snapshotClickHandler,
 } from '../controls'
+import { state } from '../state'
 
 const attachControlHandlers: NullarySideEffector =
 	(): void => {

@@ -1,8 +1,8 @@
 import { getSetting } from '../'
 import { ONE_HUNDRED_PERCENT } from '../../constants'
 import * as from from '../../from'
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 
 const updateProgress: NullarySideEffector =
 	(): void => {

@@ -1,8 +1,8 @@
 // tslint:disable:no-unsafe-any
 
 import { grid } from '../../pattern'
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 import asyncMaybeTile from './asyncMaybeTile'
 import gridComplete from './gridComplete'
 

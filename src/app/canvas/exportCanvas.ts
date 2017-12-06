@@ -1,5 +1,5 @@
 import { Frame } from '../../pattern'
-import { state } from '../../state'
+import { state } from '../state'
 import saveCanvas from './saveCanvas'
 
 const exportCanvas: () => void =

@@ -1,7 +1,7 @@
 import { NamedEffect } from '../../pattern'
-import { state } from '../../state'
 import { NullarySideEffector } from '../../utilities'
 import { addDescription } from '../dom'
+import { state } from '../state'
 
 const updateDescriptions: NullarySideEffector =
 	(): void => {

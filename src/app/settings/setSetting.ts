@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { SetSetting } from '../../pattern'
-import { state } from '../../state'
+import { state } from '../state'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import { SettingsPath } from './types'
 

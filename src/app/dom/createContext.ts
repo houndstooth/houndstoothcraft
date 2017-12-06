@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { getSetting } from '../../app'
-import { state } from '../../state'
+import { state } from '../state'
 import { Canvas, Context, PageElement, Px } from './types'
 import { documentWrapper } from './windowWrapper'
 

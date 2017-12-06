@@ -1,4 +1,4 @@
-import { state } from '../../state'
+import { state } from '../state'
 
 const thisPatternHasNotBeenCanceled: (patternRef: number) => boolean =
 	(patternRef: number): boolean =>

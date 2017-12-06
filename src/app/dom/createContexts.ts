@@ -2,10 +2,10 @@
 
 import * as from from '../../from'
 import { Layer } from '../../pattern'
-import { state } from '../../state'
 import * as to from '../../to'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { getSetting } from '../settings'
+import { state } from '../state'
 import createContext from './createContext'
 import scaleCanvasContainer from './scaleCanvasContainer'
 import { PageElement } from './types'

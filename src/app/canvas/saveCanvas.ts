@@ -1,8 +1,8 @@
 import { DataBlob } from '../'
 import * as from from '../../from'
 import { Frame } from '../../pattern'
-import { state } from '../../state'
 import { saveBlob } from '../dom'
+import { state } from '../state'
 
 const saveCanvas: (_: { currentFrame: Frame, result: DataBlob }) => void =
 	({ currentFrame, result }: { currentFrame: Frame, result: DataBlob }): void => {

@@ -1,6 +1,6 @@
-import { state } from '../../state'
 import * as to from '../../to'
 import { NullarySideEffector } from '../../utilities'
+import { state } from '../state'
 
 const completeLayers: NullarySideEffector =
 	(): void => {

@@ -99,7 +99,6 @@ export {
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
-import * as from from './from'
 export {
 	Address,
 	AddressElement,
@@ -165,18 +164,17 @@ export {
 	applyTilt,
 	applyZoom,
 } from './pattern'
-import * as to from './to'
 export {
 	codeUtilities,
 	mathUtilities,
 	noop,
 	NullarySideEffector,
 	NullaryVoidPromise,
+	from,
+	to,
 } from './utilities'
 
 export {
-	to,
-	from,
 	defaults,
 	constants,
 }

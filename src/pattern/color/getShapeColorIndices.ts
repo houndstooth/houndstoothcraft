@@ -1,6 +1,5 @@
 import { getSetting } from '../../app'
-import * as to from '../../to'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, to } from '../../utilities'
 import { Address, GridAddressParam } from '../grid'
 import applySwitcheroo from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'

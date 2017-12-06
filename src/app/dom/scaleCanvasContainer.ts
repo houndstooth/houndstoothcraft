@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import * as to from '../../to'
+import { to } from '../../utilities'
 import { getSetting } from '../settings'
 import scaleElement from './scaleElement'
 import { PageElement, Px } from './types'

@@ -1,4 +1,4 @@
-import * as from from '../../from'
+import { from } from '../../utilities'
 import { Dimensions, PageElement } from './types'
 
 const scaleElement: (_: { dimensions: Dimensions, element: PageElement }) => void =

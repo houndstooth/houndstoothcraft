@@ -1,4 +1,4 @@
-import * as from from '../../from'
+import { from } from '../../utilities'
 import { Context } from '../dom'
 import { state } from '../state'
 

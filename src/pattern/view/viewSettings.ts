@@ -1,7 +1,7 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite, Px } from '../../app'
-import * as to from '../../to'
+import { to } from '../../utilities'
 import { Radian } from '../stripe'
 import { SettingsNamesByTypeBase } from '../types'
 

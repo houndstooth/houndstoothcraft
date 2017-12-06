@@ -1,5 +1,4 @@
-import * as from from '../../from'
-import * as to from '../../to'
+import { from, to } from '../../utilities'
 import { TileOriginAndSize } from '../tile'
 import { GetOutline, Outline } from './types'
 

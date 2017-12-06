@@ -1,4 +1,4 @@
-import * as from from '../../from'
+import { from } from '../../utilities'
 import { state } from '../state'
 import { ConditionFunction } from './types'
 

@@ -1,6 +1,6 @@
 import { DataBlob } from '../'
-import * as from from '../../from'
 import { Frame } from '../../pattern'
+import { from } from '../../utilities'
 import { saveBlob } from '../dom'
 import { state } from '../state'
 

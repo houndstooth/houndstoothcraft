@@ -1,7 +1,5 @@
 import { clearContexts, exportCanvas, getSetting, mixDownContexts, updateCurrentFrame } from '../'
-import * as from from '../../from'
-import * as to from '../../to'
-import { NullaryVoidPromise } from '../../utilities'
+import { from, NullaryVoidPromise, to } from '../../utilities'
 import { state } from '../state'
 import executePattern from './executePattern'
 import previousFrameHasFinished from './previousFrameHasFinished'

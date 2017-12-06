@@ -1,8 +1,6 @@
 import { getSetting, Path, Pixel, Px } from '../../app'
 import { HALF } from '../../constants'
-import * as from from '../../from'
-import * as to from '../../to'
-import { mathUtilities } from '../../utilities'
+import { from, mathUtilities, to } from '../../utilities'
 import { Radian } from '../stripe'
 
 const applyTilt: (path: Path) => Path =

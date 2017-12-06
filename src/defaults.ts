@@ -31,8 +31,7 @@ import {
 	tileSettings,
 	viewSettings,
 } from './pattern'
-import * as to from './to'
-import { noop, NullarySideEffector } from './utilities'
+import { noop, NullarySideEffector, to } from './utilities'
 
 const DEFAULT_BASE_PATTERN: BasePattern = {
 	animationSettings: animationSettings.DEFAULT_ANIMATION_SETTINGS,

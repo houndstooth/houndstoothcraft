@@ -1,8 +1,6 @@
 import { getSetting } from '../../app'
 import * as constants from '../../constants'
-import * as from from '../../from'
-import * as to from '../../to'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, from, to } from '../../utilities'
 import { GetStripePosition, StripePosition } from './types'
 
 const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition[] =

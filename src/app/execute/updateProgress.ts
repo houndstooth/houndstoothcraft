@@ -1,7 +1,6 @@
-import { getSetting } from '../'
 import { ONE_HUNDRED_PERCENT } from '../../constants'
-import * as from from '../../from'
-import { NullarySideEffector } from '../../utilities'
+import { from, NullarySideEffector } from '../../utilities'
+import { getSetting } from '../settings'
 import { state } from '../state'
 
 const updateProgress: NullarySideEffector =

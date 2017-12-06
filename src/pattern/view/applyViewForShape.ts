@@ -1,6 +1,5 @@
 import { Path } from '../../app'
-import * as from from '../../from'
-import * as to from '../../to'
+import { from, to } from '../../utilities'
 import { Outline } from '../stripe'
 import applyScroll from './applyScroll'
 import applyTilt from './applyTilt'

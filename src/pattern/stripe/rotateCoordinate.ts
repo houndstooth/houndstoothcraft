@@ -1,6 +1,4 @@
-import * as from from '../../from'
-import * as to from '../../to'
-import { mathUtilities } from '../../utilities'
+import { from, mathUtilities, to } from '../../utilities'
 import { Coordinate, RotateCoordinateParams } from './types'
 
 const rotateCoordinate: (_: RotateCoordinateParams) => Coordinate =

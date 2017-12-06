@@ -1,6 +1,8 @@
 import * as codeUtilities from './codeUtilities'
+import * as from from './from'
 import * as mathUtilities from './mathUtilities'
 import * as noop from './noop'
+import * as to from './to'
 import {
 	CouldBeSettingsFunctionObject,
 	NullarySideEffector,
@@ -14,4 +16,6 @@ export {
 	NullarySideEffector,
 	NullaryVoidPromise,
 	noop,
+	to,
+	from,
 }

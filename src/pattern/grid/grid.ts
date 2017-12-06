@@ -1,6 +1,5 @@
 import { getSetting, state } from '../../app'
-import * as to from '../../to'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, to } from '../../utilities'
 import { applyViewForGrid } from '../view'
 import { GridSettings } from './gridSettings'
 import { ReferencedGridAddress } from './types'

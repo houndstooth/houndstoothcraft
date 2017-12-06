@@ -1,6 +1,5 @@
 import { HALF, X_INDEX, Y_INDEX } from '../../constants'
-import * as from from '../../from'
-import * as to from '../../to'
+import { from, to } from '../../utilities'
 import { Coordinate } from '../stripe'
 import { TileOriginAndSize } from './types'
 

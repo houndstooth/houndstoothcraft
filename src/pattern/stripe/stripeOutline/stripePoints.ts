@@ -1,5 +1,4 @@
-import * as from from '../../../from'
-import * as to from '../../../to'
+import { from, to } from '../../../utilities'
 import { TileOriginAndSize } from '../../tile'
 import { Coordinate } from '../types'
 import { Point, PointParams, PointWithKnownPosition } from './types'

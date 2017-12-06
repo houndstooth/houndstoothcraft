@@ -1,4 +1,4 @@
-import * as from from '../../../from'
+import { from } from '../../../utilities'
 import { GetOutlineParams, Outline, OutlineOptions } from '../types'
 import firstPoint from './firstPoint'
 import lastPoints from './lastPoints'

@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
 import { DEFAULT_BASE_PATTERN } from '../../defaults'
-import * as to from '../../to'
+import { to } from '../../utilities'
 import { state } from '../state'
 import deeperPath from './deeperPath'
 import shouldRecurse from './shouldRecurse'

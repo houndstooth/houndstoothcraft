@@ -1,6 +1,5 @@
-import * as from from '../../from'
 import { layerSettings } from '../../pattern'
-import * as to from '../../to'
+import { from, to } from '../../utilities'
 import { getSetting } from '../settings'
 import { state } from '../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'

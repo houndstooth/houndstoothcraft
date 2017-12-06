@@ -1,5 +1,4 @@
-import * as from from '../../../from'
-import * as to from '../../../to'
+import { from, to } from '../../../utilities'
 import { pointAlongBottomEdge, pointAlongLeftEdge, pointInBottomLeftCorner } from './stripePoints'
 import { PointsParamsPlusStripeStart } from './types'
 

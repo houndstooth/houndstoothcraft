@@ -1,5 +1,5 @@
 import { DECIMAL_RADIX } from '../../constants'
-import * as to from '../../to'
+import { to } from '../../utilities'
 import { clearMixedDownContext } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
 import { state } from '../state'

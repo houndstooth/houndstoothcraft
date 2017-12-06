@@ -1,6 +1,5 @@
 import { getSetting } from '../../app'
-import * as from from '../../from'
-import * as to from '../../to'
+import { from, to } from '../../utilities'
 import { Address, Unit } from '../grid'
 import { TileOriginAndSize } from './types'
 

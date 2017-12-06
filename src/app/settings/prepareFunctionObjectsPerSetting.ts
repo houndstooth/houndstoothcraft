@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import * as to from '../../to'
+import { to } from '../../utilities'
 import deeperPath from './deeperPath'
 import shouldRecurse from './shouldRecurse'
 import {

@@ -1,6 +1,6 @@
 // tslint:disable:variable-name no-any
 
-import { Dimensions, Pixel, Px, SettingsPath, SettingsStep } from './app'
+import { Dimensions, Pixel, Px, SettingsPath, SettingsStep } from '../app'
 import {
 	Address,
 	AddressElement,
@@ -12,7 +12,7 @@ import {
 	ShapeColorIndex,
 	StripePosition,
 	Unit,
-} from './pattern'
+} from '../pattern'
 
 // First order, singular
 

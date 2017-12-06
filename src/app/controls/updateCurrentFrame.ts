@@ -1,5 +1,5 @@
-import * as from from '../../from'
 import { Frame } from '../../pattern'
+import { from } from '../../utilities'
 import { state } from '../state'
 
 const updateCurrentFrame: (frame: Frame) => void =

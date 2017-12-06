@@ -2,7 +2,7 @@
 
 // First order, singular
 
-import { Dimensions, Path, Pixel, Px, SettingsFunctionObject, SettingsPath, SettingsStep } from './app'
+import { Dimensions, Path, Pixel, Px, SettingsFunctionObject, SettingsPath, SettingsStep } from '../app'
 import {
 	Address,
 	AddressElement,
@@ -18,8 +18,8 @@ import {
 	StripePosition,
 	Supertile,
 	Unit,
-} from './pattern'
-import { CouldBeSettingsFunctionObject } from './utilities'
+} from '../pattern'
+import { CouldBeSettingsFunctionObject } from './'
 
 const Px: (px: number) => Px =
 	(px: number): Px => px as any

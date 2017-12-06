@@ -1,6 +1,5 @@
 import { getSetting } from '../../app'
-import * as from from '../../from'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, from } from '../../utilities'
 import { Color, ShapeColorIndex } from './types'
 
 const getColor: (_: { index: ShapeColorIndex }) => Color =

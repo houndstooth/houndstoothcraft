@@ -2,7 +2,7 @@
 
 import { FunctionsOf, Overwrite } from '../../app'
 import { BLACK, TRANSPARENT } from '../../constants'
-import * as to from '../../to'
+import { to } from '../../utilities'
 import { SettingsNamesByTypeBase } from '../types'
 import * as colorAssignmentSettings from './colorAssignmentSettings'
 import { Color, ColorSet } from './types'

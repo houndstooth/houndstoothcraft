@@ -1,5 +1,4 @@
-import * as to from '../../to'
-import { NullarySideEffector } from '../../utilities'
+import { NullarySideEffector, to } from '../../utilities'
 import { clearMixedDownContext } from '../canvas'
 import { clearInterval, executeSelectedHoundstoothEffects } from '../execute'
 import { state } from '../state'

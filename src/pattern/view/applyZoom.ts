@@ -1,7 +1,6 @@
 import { getSetting, Path, Pixel, Px } from '../../app'
 import { HALF } from '../../constants'
-import * as from from '../../from'
-import * as to from '../../to'
+import { from, to } from '../../utilities'
 import { DoAdjustmentParams } from './types'
 import { ViewSettings } from './viewSettings'
 

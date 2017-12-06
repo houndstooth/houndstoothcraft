@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import * as to from '../../to'
+import { to } from '../../utilities'
 import checkSettingForConflict from './checkSettingForConflict'
 import deeperPath from './deeperPath'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'

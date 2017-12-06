@@ -1,7 +1,5 @@
 import { getSetting } from '../../app'
-import * as from from '../../from'
-import * as to from '../../to'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, from, to } from '../../utilities'
 import { GetShapeColorIndicesWithOffset, GetShapeColorIndicesWithOffsetParams, ShapeColorIndex, Weave } from './types'
 
 const getByWeave: GetShapeColorIndicesWithOffset =

@@ -2,8 +2,7 @@
 
 import { DEFAULT_BASE_PATTERN } from '../../defaults'
 import { SettingsNamesToTypesMap } from '../../pattern'
-import * as to from '../../to'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, to } from '../../utilities'
 import { state } from '../state'
 import deeperPath from './deeperPath'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'

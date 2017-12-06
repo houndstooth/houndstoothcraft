@@ -1,9 +1,7 @@
 // tslint:disable:no-unsafe-any
 
-import * as from from '../../from'
 import { Layer } from '../../pattern'
-import * as to from '../../to'
-import { codeUtilities, NullarySideEffector } from '../../utilities'
+import { codeUtilities, from, NullarySideEffector, to } from '../../utilities'
 import { getSetting } from '../settings'
 import { state } from '../state'
 import createContext from './createContext'

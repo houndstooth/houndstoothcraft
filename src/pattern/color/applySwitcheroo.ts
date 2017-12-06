@@ -1,6 +1,4 @@
-import * as from from '../../from'
-import * as to from '../../to'
-import { codeUtilities } from '../../utilities'
+import { codeUtilities, from, to } from '../../utilities'
 import { ShapeColorIndex, TransformShapeColorIndices, TransformShapeColorIndicesParams } from './types'
 
 const SWITCHEROO_SIZE: number = 4

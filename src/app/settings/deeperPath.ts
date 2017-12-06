@@ -1,4 +1,4 @@
-import * as to from '../../to'
+import { to } from '../../utilities'
 import { FullSettingsPath, SettingsPath } from './types'
 
 const deeperPath: (_: FullSettingsPath) => SettingsPath =

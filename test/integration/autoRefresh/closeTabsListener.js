@@ -26,7 +26,7 @@ if (!localStorage.githubTab) {
 
 let prodTab
 if (!localStorage.prodTab) {
-	prodTab = window.open(`https://houndstooth.cfapps.io`, 'prodTab')
+	prodTab = window.open(`http://houndstooth.douglasblumeyer.com`, 'prodTab')
 	localStorage.setItem("prodTab", prodTab)
 }
 

@@ -4,7 +4,7 @@
 
 # Houndstooth web-render
 
-Check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
+Check it out at [http://houndstooth.douglasblumeyer.com](http://houndstooth.douglasblumeyer.com).
 
 ## houndstooth pattern settings hierarchy
 

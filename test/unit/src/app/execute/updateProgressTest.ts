@@ -1,4 +1,5 @@
-import { appState, NullarySideEffector, setSetting, to, updateProgress } from '../../../../../src'
+import { appState, NullarySideEffector, to, updateProgress } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 const subject: NullarySideEffector = updateProgress.default
 
@@ -18,7 +19,7 @@ describe('update progress', () => {
 	describe('layers progress bar', () => {
 		it('when layering, shows the total progress toward all layers done', () => {
 			appState.execute.currentLayer = to.Layer(5)
-			setSetting.default('endLayer', to.Layer(9))
+			setPatternStateForTest('endLayer', to.Layer(9))
 
 			subject()
 
@@ -35,7 +36,7 @@ describe('update progress', () => {
 	describe('progress message', () => {
 		it('when animating and layering', () => {
 			appState.execute.currentLayer = to.Layer(5)
-			setSetting.default('endLayer', to.Layer(9))
+			setPatternStateForTest('endLayer', to.Layer(9))
 			appState.controls.animating = true
 
 			subject()
@@ -53,7 +54,7 @@ describe('update progress', () => {
 
 		it('when only layering', () => {
 			appState.execute.currentLayer = to.Layer(5)
-			setSetting.default('endLayer', to.Layer(9))
+			setPatternStateForTest('endLayer', to.Layer(9))
 
 			subject()
 

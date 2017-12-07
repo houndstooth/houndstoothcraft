@@ -8,12 +8,12 @@ import {
 	getShapeColorIndices,
 	Grid,
 	OffsetAddress,
-	setSetting,
 	ShapeColorIndex,
 	Supertile,
 	to,
 	TransformShapeColorIndices,
 } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 const { iterator } = codeUtilities
 
@@ -22,7 +22,7 @@ describe('get shape color indices', () => {
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('gets by weave when assignment mode is weave', () => {
-			setSetting.default('assignmentMode', AssignmentMode.Weave)
+			setPatternStateForTest('assignmentMode', AssignmentMode.Weave)
 			spyOn(getByWeave, 'default')
 
 			getShapeColorIndices.default({ gridAddress })
@@ -31,7 +31,7 @@ describe('get shape color indices', () => {
 		})
 
 		it('gets by supertile when assignment mode is supertile', () => {
-			setSetting.default('assignmentMode', AssignmentMode.Supertile)
+			setPatternStateForTest('assignmentMode', AssignmentMode.Supertile)
 			spyOn(getBySupertile, 'default')
 
 			getShapeColorIndices.default({ gridAddress })
@@ -52,8 +52,8 @@ describe('get shape color indices', () => {
 						from.AddressElement(gridAddressToOffset[ 0 ]) / 3,
 						from.AddressElement(gridAddressToOffset[ 1 ]) * 2 / 5,
 					])
-			setSetting.default('offsetAddress', offsetAddress)
-			setSetting.default('assignmentMode', AssignmentMode.Weave)
+			setPatternStateForTest('offsetAddress', offsetAddress)
+			setPatternStateForTest('assignmentMode', AssignmentMode.Weave)
 			const expectedAddressOffset: Address = to.Address([ 1, 2 ])
 
 			getShapeColorIndices.default({ gridAddress })
@@ -77,7 +77,7 @@ describe('get shape color indices', () => {
 
 	describe('re-ordering of chosen color indices', () => {
 		it('can flip the grain of the houndstooth (by reversing order)', () => {
-			setSetting.default('colorSettings', {
+			setPatternStateForTest('colorSettings', {
 				colorAssignmentSettings: {
 					assignmentMode: AssignmentMode.Weave,
 					weave: {
@@ -88,14 +88,14 @@ describe('get shape color indices', () => {
 			})
 			const notFlippedResult: ShapeColorIndex[] = getShapeColorIndices.default({ gridAddress })
 
-			setSetting.default('flipGrain', true)
+			setPatternStateForTest('flipGrain', true)
 			const flippedResult: ShapeColorIndex[] = getShapeColorIndices.default({ gridAddress })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})
 
 		it('can turn the grain of the pattern into switcheroo', () => {
-			setSetting.default('colorSettings', {
+			setPatternStateForTest('colorSettings', {
 				colorAssignmentSettings: {
 					assignmentMode: AssignmentMode.Supertile,
 					supertile: to.Supertile([
@@ -140,7 +140,7 @@ describe('get shape color indices', () => {
 					}
 				}
 
-			setSetting.default('colorSettings', {
+			setPatternStateForTest('colorSettings', {
 				colorAssignmentSettings: {
 					assignmentMode: AssignmentMode.Weave,
 					transformShapeColorIndices,

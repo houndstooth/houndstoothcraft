@@ -1,4 +1,5 @@
-import { applyBackgroundColor, appState, constants, setSetting } from '../../../../../src'
+import { applyBackgroundColor, appState, constants } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 import Spy = jasmine.Spy
 
 const { CANVAS_SIZE, CYAN } = constants
@@ -12,7 +13,7 @@ describe('apply background color', () => {
 	})
 
 	it('fills the entire canvas with the color', () => {
-		setSetting.default('colorSettings', { backgroundColor: CYAN })
+		setPatternStateForTest('colorSettings', { backgroundColor: CYAN })
 
 		applyBackgroundColor.default()
 

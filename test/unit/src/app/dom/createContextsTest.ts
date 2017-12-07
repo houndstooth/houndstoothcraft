@@ -6,10 +6,9 @@ import {
 	documentWrapper,
 	PageElement,
 	scaleCanvasContainer,
-	setSetting,
 	to,
 } from '../../../../../src'
-import { buildMockElement } from '../../../helpers'
+import { buildMockElement, setPatternStateForTest } from '../../../helpers'
 
 describe('create contexts', () => {
 	let canvasContainer: PageElement
@@ -30,7 +29,7 @@ describe('create contexts', () => {
 	})
 
 	it('adds contexts to the app state for each layer', () => {
-		setSetting.default('endLayer', to.Layer(5))
+		setPatternStateForTest('endLayer', to.Layer(5))
 		expect(appState.canvas.contexts.length).toBe(0)
 
 		createContexts.default()
@@ -39,13 +38,13 @@ describe('create contexts', () => {
 	})
 
 	it('can reduce the count of contexts on the app state, and canvases on the dom', () => {
-		setSetting.default('endLayer', to.Layer(5))
+		setPatternStateForTest('endLayer', to.Layer(5))
 		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(6)
 		expect(appState.canvas.contexts.length).toBe(6)
 
-		setSetting.default('endLayer', to.Layer(3))
+		setPatternStateForTest('endLayer', to.Layer(3))
 		createContextSpy.calls.reset()
 
 		createContexts.default()

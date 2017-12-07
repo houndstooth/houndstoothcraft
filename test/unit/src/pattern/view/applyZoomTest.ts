@@ -1,4 +1,5 @@
-import { applyZoom, Path, setSetting, to } from '../../../../../src'
+import { applyZoom, Path, to } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('apply zoom', () => {
 	const zoom: number = 2
@@ -10,7 +11,7 @@ describe('apply zoom', () => {
 			[ 100, 100 ],
 			[ 50, 100 ],
 		])
-		setSetting.default('zoom', zoom)
+		setPatternStateForTest('zoom', zoom)
 	})
 
 	it('adjusts the path per the zoom level', () => {
@@ -24,7 +25,7 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			setSetting.default('zoomOnCanvasCenter', true)
+			setPatternStateForTest('zoomOnCanvasCenter', true)
 			path = to.Path([
 				[ 350, 350 ],
 				[ 400, 350 ],
@@ -44,7 +45,7 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				setSetting.default('centerViewOnCenterOfTileAtHomeAddress', true)
+				setPatternStateForTest('centerViewOnCenterOfTileAtHomeAddress', true)
 			})
 		})
 

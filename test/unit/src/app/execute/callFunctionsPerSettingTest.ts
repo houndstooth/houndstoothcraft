@@ -1,19 +1,19 @@
 import {
 	callFunctionsPerSetting,
 	patternState,
-	setSetting,
 	SettingsFunctionObject,
 	to,
 	Unit,
 } from '../../../../../src'
 import Spy = jasmine.Spy
+import { setPatternStateForTest } from '../../../helpers'
 
 const subject: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void = callFunctionsPerSetting.default
 
 describe('call functions per setting', () => {
 	it('updates the current pattern with the result of each settings function', () => {
 		const oldTileSize: Unit = to.Unit(888)
-		setSetting.default('tileSize', oldTileSize)
+		setPatternStateForTest('tileSize', oldTileSize)
 
 		const tileSizeSettingsFunctionSpy: Spy = jasmine.createSpy('tileSizeSettingsFunction')
 		const newTileSize: Unit = to.Unit(999)
@@ -26,7 +26,7 @@ describe('call functions per setting', () => {
 		}
 
 		const oldZoom: number = 42
-		setSetting.default('zoom', oldZoom)
+		setPatternStateForTest('zoom', oldZoom)
 
 		const zoomSettingsFunctionSpy: Spy = jasmine.createSpy('zoomSettingsFunction')
 		const newZoom: number = 45

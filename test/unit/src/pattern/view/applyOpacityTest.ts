@@ -1,4 +1,5 @@
-import { applyOpacity, appState, setSetting } from '../../../../../src'
+import { applyOpacity, appState } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('apply opacity', () => {
 	beforeEach(() => {
@@ -14,7 +15,7 @@ describe('apply opacity', () => {
 	})
 
 	it('has no effect if no opacity level is 1', () => {
-		setSetting.default('colorSettings', { opacity: 1 })
+		setPatternStateForTest('colorSettings', { opacity: 1 })
 
 		applyOpacity.default()
 
@@ -22,7 +23,7 @@ describe('apply opacity', () => {
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
-		setSetting.default('colorSettings', { opacity: 0.4 })
+		setPatternStateForTest('colorSettings', { opacity: 0.4 })
 		applyOpacity.default()
 
 		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(0.4)

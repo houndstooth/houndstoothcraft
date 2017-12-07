@@ -56,6 +56,7 @@ export {
 	squareOutline,
 	OutlineOptions,
 	stripeOutline,
+	BaseStripeDiagonal,
 } from './stripe'
 export {
 	ComponentParams,
@@ -83,9 +84,9 @@ export {
 	NamedEffect,
 	Pattern,
 	PatternFunctions,
-	SetSetting,
 	SettingsNamesByTypeBase,
 	SettingsNamesToTypesMap,
+	SettingsNamesByType,
 } from './types'
 export {
 	applyViewForShape,

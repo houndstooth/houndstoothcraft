@@ -5,8 +5,8 @@ import {
 	grid,
 	gridComplete,
 	NullarySideEffector,
-	setSetting,
 } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('execute grid', () => {
 	const tileResolution: number = 2
@@ -20,7 +20,7 @@ describe('execute grid', () => {
 		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)
 
 		spyOn(grid, 'default')
-		setSetting.default('gridSettings', { tileResolution })
+		setPatternStateForTest('gridSettings', { tileResolution })
 	})
 
 	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {

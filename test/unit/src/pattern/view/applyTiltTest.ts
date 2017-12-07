@@ -1,9 +1,9 @@
-import { applyTilt, Path, setSetting, to } from '../../../../../src'
-import { pixelsAreClose } from '../../../helpers'
+import { applyTilt, Path, to } from '../../../../../src'
+import { pixelsAreClose, setPatternStateForTest } from '../../../helpers'
 
 describe('apply tilt', () => {
 	it('rotates the path about the canvas center', () => {
-		setSetting.default('rotateViewAboutCanvasCenter', to.Radian(Math.PI / 2))
+		setPatternStateForTest('rotateViewAboutCanvasCenter', to.Radian(Math.PI / 2))
 		const path: Path = to.Path([
 			[ 0, 0 ],
 			[ 40, 0 ],

@@ -19,4 +19,5 @@ export {
 } from './integration'
 export {
 	buildMockElement,
+	setPatternStateForTest,
 } from './unit'

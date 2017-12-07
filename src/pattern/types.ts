@@ -50,7 +50,7 @@ interface NamedEffect extends Effect {
 
 enum MissingSettingsName {}
 
-interface SettingsNamesToTypesMap { // Should these settings ones also be Partial, like they are for SetSetting?
+interface SettingsNamesToTypesMap {
 	(settingName: animationSettings.AnimationSettingsName): animationSettings.AnimationSettings,
 	(settingName: colorSettings.ColorSettingsName): colorSettings.ColorSettings,
 	(settingName: colorAssignmentSettings.ColorAssignmentSettingsName): colorAssignmentSettings.ColorAssignmentSettings,
@@ -105,39 +105,6 @@ interface PatternFunctions {
 	readonly viewSettings?: Partial<viewSettings.ViewSettingsFunctions>,
 }
 
-interface SetSetting {
-	(settingName: animationSettings.AnimationSettingsName, value: Partial<animationSettings.AnimationSettings>): void,
-	(settingName: colorSettings.ColorSettingsName, value: Partial<colorSettings.ColorSettings>): void,
-	(settingName: colorAssignmentSettings.ColorAssignmentSettingsName, value: Partial<colorAssignmentSettings.ColorAssignmentSettings>): void,
-	(settingName: gridSettings.GridSettingsName, value: Partial<gridSettings.GridSettings>): void,
-	(settingName: layerSettings.LayerSettingsName, value: Partial<layerSettings.LayerSettings>): void,
-	(settingName: stripeSettings.StripeSettingsName, value: Partial<stripeSettings.StripeSettings>): void,
-	(settingName: stripeCountContinuumSettings.StripeCountContinuumSettingsName, value: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>): void,
-	(settingName: stripePositionSettings.StripePositionSettingsName, value: Partial<stripePositionSettings.StripePositionSettings>): void,
-	(settingName: textureSettings.TextureSettingsName, value: Partial<textureSettings.TextureSettings>): void,
-	(settingName: tileSettings.TileSettingsName, value: Partial<tileSettings.TileSettings>): void,
-	(settingName: viewSettings.ViewSettingsName, value: Partial<viewSettings.ViewSettings>): void,
-	(settingName: SettingsNamesByType['AssignmentModeTypedSettingsNames'], value: AssignmentMode): void,
-	(settingName: SettingsNamesByType['BaseStripeDiagonalTypedSettingsNames'], value: BaseStripeDiagonal): void,
-	(settingName: SettingsNamesByType['BooleanTypedSettingsNames'], value: boolean): void,
-	(settingName: SettingsNamesByType['ColorTypedSettingsNames'], value: Color): void,
-	(settingName: SettingsNamesByType['ColorSetTypedSettingsNames'], value: ColorSet): void,
-	(settingName: SettingsNamesByType['ColorsTypedSettingsNames'], value: Color[]): void,
-	(settingName: SettingsNamesByType['ExecuteTextureTypedSettingsNames'], value: ExecuteTexture): void,
-	(settingName: SettingsNamesByType['GetStripePositionsTypedSettingsNames'], value: GetStripePositions): void,
-	(settingName: SettingsNamesByType['GetTileOriginAndSizeTypedSettingsNames'], value: GetTileOriginAndSize): void,
-	(settingName: SettingsNamesByType['LayerTypedSettingsNames'], value: Layer): void,
-	(settingName: SettingsNamesByType['NumberTypedSettingsNames'], value: number): void,
-	(settingName: SettingsNamesByType['OffsetAddressTypedSettingsNames'], value: OffsetAddress): void,
-	(settingName: SettingsNamesByType['PxTypedSettingsNames'], value: Px): void,
-	(settingName: SettingsNamesByType['RadianTypedSettingsNames'], value: Radian): void,
-	(settingName: SettingsNamesByType['StripeCountModeTypedSettingsNames'], value: StripeCountMode): void,
-	(settingName: SettingsNamesByType['SupertileTypedSettingsNames'], value: Supertile): void,
-	(settingName: SettingsNamesByType['TransformShapeColorIndicesTypedSettingsNames'], value: TransformShapeColorIndices): void,
-	(settingName: SettingsNamesByType['UnitTypedSettingsNames'], value: Unit): void,
-	(settingName: SettingsNamesByType['WeaveTypedSettingsNames'], value: Weave): void,
-}
-
 type SettingsNamesByType =
 	| animationSettings.AnimationSettingsNamesByType
 	| colorSettings.ColorSettingsNamesByType
@@ -178,5 +145,7 @@ export {
 	NamedEffect,
 	PatternFunctions,
 	SettingsNamesByTypeBase,
-	SettingsNamesToTypesMap, Pattern, SetSetting,
+	SettingsNamesToTypesMap,
+	Pattern,
+	SettingsNamesByType,
 }

@@ -1,4 +1,5 @@
-import { ColorSet, isTileUniform, setSetting, ShapeColorIndex, to } from '../../../../../src'
+import { ColorSet, isTileUniform, ShapeColorIndex, to } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('is tile uniform', () => {
 	beforeEach(() => {
@@ -9,7 +10,7 @@ describe('is tile uniform', () => {
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 5, g: 100, b: 50, a: 0.5 },
 		])
-		setSetting.default('colorSettings', { colorSet })
+		setPatternStateForTest('colorSettings', { colorSet })
 	})
 
 	it('returns true if all of the tile color indices point to the same color', () => {

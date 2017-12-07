@@ -84,7 +84,7 @@ Now, it certainly seems possible that one could engineer this situation so that 
 
 So in the meantime, to do so, start by locating the `ExistingSettingsNamesByType` type. You can see that this type is equal to the `SettingsNamesByTypeBase` interface, but with `Overwrite`s for some types. These types are the ones for which `ExistingSettings` includes a setting that has them as their value's type. 
 
-The `SettingsNamesByTypeBase` interface has a property for any type that is used on any Houndstooth setting. Each of these properties is called `...TypedSettingsNames`, because it ultimately becomes a string enumeration of names of settings whose values have the given type. Each one begins as a dummy string, `_`, designed to not match any string one might try to pass as the settings name key to `setSetting` or `getFromBaseOrDefault`. 
+The `SettingsNamesByTypeBase` interface has a property for any type that is used on any Houndstooth setting. Each of these properties is called `...TypedSettingsNames`, because it ultimately becomes a string enumeration of names of settings whose values have the given type. Each one begins as a dummy string, `_`, designed to not match any string one might try to pass as the settings name key to `setPatternStateForTest` or `patternState.get`. 
 
 The `ExistingSettingsNamesByType` is later put into a union with every other settings module's `...SettingsNamesByType`s, and the resultant `SettingsNamesByType` is then used by the `SettingsNamesToTypesMap` to map each setting's name to its value's type.
 
@@ -121,7 +121,7 @@ You probably want to export it from from the `pattern` module.
 1) Register `newSettings` on the `BasePattern` interface.
 2) Add an entry to the `SettingsNamesToTypesMap` to map `NewSettingsName` to `NewSettings`.
 3) Register `newSettings` on the `PatternFunctions` interface.
-4) Add an entry to the `SetSetting` interface, further overloading the signature of methods which implement it such that they can set `NewSettings` onto the `NewSettingsName` key.
+4) Add an entry to the `SetPatternStateForTest` interface, further overloading the signature of methods which implement it such that they can set `NewSettings` onto the `NewSettingsName` key.
 5) Add `NewSettingsNamesByType` to the `SettingsNamesByType` union.
 
 ## Adding a whole new settings module that is a submodule of an existing one`
@@ -152,7 +152,7 @@ If you add a setting and it is the first of its type, lets say `Coolness`, you w
 
 1) Add a `CoolnessTypedSettingsNames` property to the `SettingsNamesByTypeBase` in `pattern/types.ts`.
 2) Add an entry to the `SettingsNamesToTypesMap` to map all `CoolnessTypedSettingsNames` to `Coolness`.
-3) Add an entry to the `SetSetting` interface, further overloading the signature of methods which implement it such that they can set `Coolness`es onto any key in the `CoolnessTypedSettingsNames` union.
+3) Add an entry to the `SetPatternStateForTest` interface, further overloading the signature of methods which implement it such that they can set `Coolness`es onto any key in the `CoolnessTypedSettingsNames` union.
 
 ### `app/settings/settingsTemplate.ts`:
 

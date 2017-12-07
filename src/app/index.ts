@@ -88,7 +88,6 @@ export {
 	resetMainHoundstooth,
 	SettingsPath,
 	SettingsStep,
-	setSetting,
 	deeperPath,
 	getPatternSettingOrCreatePath,
 	shouldRecurse,

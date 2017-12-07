@@ -8,17 +8,17 @@ import {
 	executePattern,
 	from,
 	Layer,
-	setSetting,
 	SettingsFunctionObject,
 	to,
 } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('execute pattern', () => {
 	const endLayer: Layer = to.Layer(4)
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
-		setSetting.default('endLayer', endLayer)
+		setPatternStateForTest('endLayer', endLayer)
 		appState.execute.patternRef = 99
 	})
 

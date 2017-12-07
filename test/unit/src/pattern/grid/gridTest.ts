@@ -1,14 +1,15 @@
 // tslint:disable:no-unsafe-any
 
 import Spy = jasmine.Spy
-import { applyViewForGrid, appState, grid, setSetting } from '../../../../../src'
+import { applyViewForGrid, appState, grid } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('grid', () => {
 	let gridTileSpy: Spy
 	const tileResolution: number = 2
 	const thisPatternRef: number = 99
 	beforeEach(() => {
-		setSetting.default('tileResolution', tileResolution)
+		setPatternStateForTest('tileResolution', tileResolution)
 		gridTileSpy = jasmine.createSpy('gridTile')
 		spyOn(applyViewForGrid, 'default')
 	})
@@ -27,7 +28,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are excluded', () => {
 		beforeEach(() => {
-			setSetting.default('includeNegativeQuadrants', false)
+			setPatternStateForTest('includeNegativeQuadrants', false)
 		})
 
 		it('only makes tiles with positive addresses', () => {
@@ -51,7 +52,7 @@ describe('grid', () => {
 
 	describe('when negative quadrants are included', () => {
 		beforeEach(() => {
-			setSetting.default('includeNegativeQuadrants', true)
+			setPatternStateForTest('includeNegativeQuadrants', true)
 		})
 
 		// tslint:disable-next-line:max-line-length

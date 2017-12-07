@@ -8,12 +8,12 @@ import {
 	mixDownContexts,
 	NullaryVoidPromise,
 	previousFrameHasFinished,
-	setSetting,
 	SettingsFunctionObject,
 	to,
 	updateCurrentFrame,
 } from '../../../../../src'
 import Spy = jasmine.Spy
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('build animation function returns an animation function', () => {
 	let animationFunction: NullaryVoidPromise
@@ -106,7 +106,7 @@ describe('build animation function returns an animation function', () => {
 			})
 
 			it('does not clear the canvas if refreshing the canvas is off', async (done: DoneFn) => {
-				setSetting.default('refreshCanvas', false)
+				setPatternStateForTest('refreshCanvas', false)
 				clearContextsSpy.calls.reset()
 
 				await animationFunction()

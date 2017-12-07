@@ -1,10 +1,11 @@
-import { Address, getByWeave, setSetting, to } from '../../../../../src'
+import { Address, getByWeave, to } from '../../../../../src'
+import { setPatternStateForTest } from '../../../helpers'
 
 describe('get by weave', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])
 
 	it('can use a weave-based assignment scheme', () => {
-		setSetting.default('weave', {
+		setPatternStateForTest('weave', {
 			columns: [ 0, 1 ],
 			rows: [ 0, 0, 3 ],
 		})
@@ -14,7 +15,7 @@ describe('get by weave', () => {
 	})
 
 	it('handles offset', () => {
-		setSetting.default('weave', {
+		setPatternStateForTest('weave', {
 			columns: [ 1, 0 ],
 			rows: [ 0, 3, 0 ],
 		})

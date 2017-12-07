@@ -1,6 +1,6 @@
 import * as buildSettingNamesToPathsMap from './buildSettingNamesToPathsMap'
 import * as checkSettingForConflict from './checkSettingForConflict'
-import * as combineHoundstoothEffects from './combineHoundstoothEffects'
+import * as combineEffects from './combineEffects'
 import * as composeMainHoundstooth from './composeMainHoundstooth'
 import * as composePatterns from './composePatterns'
 import * as deeperPath from './deeperPath'
@@ -24,7 +24,7 @@ export {
 	buildSettingNamesToPathsMap,
 	composeMainHoundstooth,
 	prepareFunctionObjectsPerSetting,
-	combineHoundstoothEffects,
+	combineEffects,
 	composePatterns,
 	settingPath,
 	resetPatternState,

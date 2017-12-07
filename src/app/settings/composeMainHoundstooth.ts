@@ -2,36 +2,36 @@ import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTER
 import { Effect } from '../../pattern'
 import { appState } from '../appState'
 import { consoleWrapper } from '../dom'
-import combineHoundstoothEffects from './combineHoundstoothEffects'
+import combineEffects from './combineEffects'
 import composePatterns from './composePatterns'
 import { ComposeMainHoundstooth, ComposePatternParams } from './types'
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
 	(params?: ComposeMainHoundstooth): void => {
 		const {
-			houndstoothEffects = [],
-			houndstoothOverrides = {},
+			effects = [],
+			overrides = {},
 			logComposedMainHoundstooth = false,
 		}: ComposeMainHoundstooth = params || {}
 
-		const combinedHoundstoothEffects: Effect = combineHoundstoothEffects({ houndstoothEffects })
+		const combinedEffects: Effect = combineEffects({ effects })
 
 		composePattern({
 			patternDefaults: DEFAULT_BASE_PATTERN,
-			patternEffects: combinedHoundstoothEffects.basePattern,
-			patternOverrides: houndstoothOverrides.basePattern,
+			patternEffects: combinedEffects.basePattern,
+			patternOverrides: overrides.basePattern,
 			patternToCompose: appState.settings.mainHoundstooth.basePattern,
 		})
 		composePattern({
 			patternDefaults: DEFAULT_LAYERS_PATTERN,
-			patternEffects: combinedHoundstoothEffects.layersPattern,
-			patternOverrides: houndstoothOverrides.layersPattern,
+			patternEffects: combinedEffects.layersPattern,
+			patternOverrides: overrides.layersPattern,
 			patternToCompose: appState.settings.mainHoundstooth.layersPattern,
 		})
 		composePattern({
 			patternDefaults: DEFAULT_ANIMATIONS_PATTERN,
-			patternEffects: combinedHoundstoothEffects.animationsPattern,
-			patternOverrides: houndstoothOverrides.animationsPattern,
+			patternEffects: combinedEffects.animationsPattern,
+			patternOverrides: overrides.animationsPattern,
 			patternToCompose: appState.settings.mainHoundstooth.animationsPattern,
 		})
 

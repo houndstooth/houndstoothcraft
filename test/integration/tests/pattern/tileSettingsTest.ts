@@ -4,7 +4,7 @@ import {
 	Context,
 	createContext,
 	Effect,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	mixDownContexts,
 	to,
 } from '../../../../src'
@@ -16,7 +16,7 @@ const { BLACK, TRANSPARENT } = constants
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
 		it('adjusts the size in pixels of each tile', async (done: DoneFn) => {
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					tileSettings: {
 						tileSize: to.Unit(30),
@@ -24,7 +24,7 @@ describe('.tileSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -62,7 +62,7 @@ describe('.tileSettings', () => {
 
 		describe('when also zooming', () => {
 			it('multiplies the effect of taking up more pixels', async (done: DoneFn) => {
-				const houndstoothOverrides: Effect = {
+				const overrides: Effect = {
 					basePattern: {
 						tileSettings: {
 							tileSize: to.Unit(30),
@@ -73,7 +73,7 @@ describe('.tileSettings', () => {
 					},
 				}
 
-				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+				executeSelectedEffects.default({ overrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -112,13 +112,13 @@ describe('.tileSettings', () => {
 	})
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
-		let houndstoothOverrides: Effect
+		let overrides: Effect
 		let context: Context
 		let contextCallsOrder: MockContextCall[]
 		beforeEach(() => {
 			contextCallsOrder = []
 			clearContexts.default()
-			houndstoothOverrides = {
+			overrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
 					gridSettings: { tileResolution: 1 },
@@ -131,7 +131,7 @@ describe('.tileSettings', () => {
 
 		// tslint:disable-next-line:max-line-length
 		it('defaults to true, causing tiles whose stripes are the same color to merge into single solid shape', async (done: DoneFn) => {
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				expect(contextCallsOrder.length).toBe(7)
@@ -148,7 +148,7 @@ describe('.tileSettings', () => {
 		})
 
 		it('when set to false, causes the shapes to be rendered separately', async (done: DoneFn) => {
-			houndstoothOverrides = {
+			overrides = {
 				basePattern: {
 					colorSettings: { colorSet: to.ColorSet([ BLACK, BLACK ]) },
 					gridSettings: { tileResolution: 1 },
@@ -156,7 +156,7 @@ describe('.tileSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				expect(contextCallsOrder.length).toBe(26)

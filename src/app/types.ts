@@ -13,7 +13,7 @@ interface ControlsState {
 	currentFrame: Frame,
 	endFrame: Frame,
 	exportFrames: boolean,
-	selectedHoundstoothEffects: NamedEffect[],
+	selectedEffects: NamedEffect[],
 }
 
 interface DomState {

@@ -1,6 +1,6 @@
 import {
 	appState,
-	combineHoundstoothEffects,
+	combineEffects,
 	Effect,
 	effectsHaveConflicts,
 	enableOrDisableOtherEffectToggles,
@@ -15,10 +15,10 @@ const subject: NullarySideEffector = enableOrDisableOtherEffectToggles.default
 describe('enableOrDisableOtherEffectToggles', () => {
 	it('checks each available effect for conflicts with the effects the user currently has combined', () => {
 		const effectsSelected: NamedEffect[] = []
-		appState.controls.selectedHoundstoothEffects = effectsSelected
+		appState.controls.selectedEffects = effectsSelected
 
 		const effectsCombined: Effect = { name: 'effects combined' }
-		spyOn(combineHoundstoothEffects, 'default').and.returnValue(effectsCombined)
+		spyOn(combineEffects, 'default').and.returnValue(effectsCombined)
 
 		const effectOne: NamedEffect = { name: 'effect one', description: '' }
 		const effectTwo: NamedEffect = { name: 'effect two', description: '' }
@@ -32,7 +32,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 
 		subject()
 
-		expect(combineHoundstoothEffects.default).toHaveBeenCalledWith({ houndstoothEffects: effectsSelected })
+		expect(combineEffects.default).toHaveBeenCalledWith({ effects: effectsSelected })
 		expect(effectsHaveConflictsSpy.calls.all()[ 0 ].args[ 0 ]).toEqual({
 			effect: effectOne,
 			effectCheckingAgainst: effectsCombined,

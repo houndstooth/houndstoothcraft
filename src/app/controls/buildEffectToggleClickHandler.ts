@@ -2,7 +2,7 @@ import { NamedEffect } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { clearContexts, clearMixedDownContext } from '../canvas'
-import { cancelPreviousPattern, clearInterval, executeSelectedHoundstoothEffects } from '../execute'
+import { cancelPreviousPattern, clearInterval, executeSelectedEffects } from '../execute'
 import { resetMainHoundstooth } from '../settings'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
@@ -10,7 +10,7 @@ import { BuildEffectToggleClickHandlerParams } from './types'
 import updateDescriptions from './updateDescriptions'
 
 const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) => NullarySideEffector =
-	({ checkbox, houndstoothEffect }: BuildEffectToggleClickHandlerParams): NullarySideEffector =>
+	({ checkbox, effect }: BuildEffectToggleClickHandlerParams): NullarySideEffector =>
 		(): void => {
 			appState.dom.descriptionsContainer.innerHTML = ''
 
@@ -25,10 +25,10 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 			cancelPreviousPattern.default()
 			resetMainHoundstooth.default()
 
-			const effectFunction: (houndstoothEffect: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
-			effectFunction(houndstoothEffect)
+			const effectFunction: (effect: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
+			effectFunction(effect)
 
-			executeSelectedHoundstoothEffects.default()
+			executeSelectedEffects.default()
 
 			enableOrDisableAnimationControls()
 
@@ -37,16 +37,16 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 			updateDescriptions()
 		}
 
-const addEffect: (houndstoothEffect: NamedEffect) => void =
-	(houndstoothEffect: NamedEffect): void => {
-		appState.controls.selectedHoundstoothEffects.push(houndstoothEffect)
+const addEffect: (effect: NamedEffect) => void =
+	(effect: NamedEffect): void => {
+		appState.controls.selectedEffects.push(effect)
 	}
 
-const removeEffect: (houndstoothEffect: NamedEffect) => void =
-	(houndstoothEffect: NamedEffect): void => {
+const removeEffect: (effect: NamedEffect) => void =
+	(effect: NamedEffect): void => {
 		// tslint:disable-next-line:max-line-length
-		appState.controls.selectedHoundstoothEffects = appState.controls.selectedHoundstoothEffects.filter((selectedHoundstoothEffect: NamedEffect) =>
-			selectedHoundstoothEffect.name !== houndstoothEffect.name)
+		appState.controls.selectedEffects = appState.controls.selectedEffects.filter((selectedEffect: NamedEffect) =>
+			selectedEffect.name !== effect.name)
 	}
 
 export default buildEffectToggleClickHandler

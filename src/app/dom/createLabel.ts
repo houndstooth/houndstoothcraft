@@ -5,13 +5,13 @@ import makeId from './makeId'
 import { LabelElement } from './types'
 import { documentWrapper } from './windowWrapper'
 
-const createLabel: (_: { houndstoothEffect: NamedEffect }) => LabelElement =
-	({ houndstoothEffect }: { houndstoothEffect: NamedEffect }): LabelElement => {
+const createLabel: (_: { effect: NamedEffect }) => LabelElement =
+	({ effect }: { effect: NamedEffect }): LabelElement => {
 		const label: LabelElement = documentWrapper.createElement('label')
 
-		const name: HTMLTextAreaElement = documentWrapper.createTextNode(houndstoothEffect.name)
+		const name: HTMLTextAreaElement = documentWrapper.createTextNode(effect.name)
 		label.appendChild(name)
-		label.setAttribute('for', makeId(houndstoothEffect.name))
+		label.setAttribute('for', makeId(effect.name))
 
 		return label
 	}

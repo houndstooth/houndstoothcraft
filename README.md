@@ -17,8 +17,8 @@ In short:
 
 - example instances
 	- `DEFAULT_HOUNDSTOOTH`
-	- `houndstoothEffects`
-	- `houndstoothOverrides`
+	- `effects`
+	- `overrides`
 	- `appState.settings.mainHoundstooth`
 - contents — all [patterns](#pattern)
 	- `basePattern`
@@ -31,7 +31,7 @@ The houndsteeth whose names begin with the word "houndstooth" are understood to 
 
 An "effect", such as the cmyktooth effect, is just a type of houndstooth intended to be composed, along with defaults and overrides, into a main houndstooth.
 
-When you compose a houndstooth, you do so by composing each houndstooth effect's animations patterns into a finished animations pattern, each houndstooth effect's layers patterns into a finished layers pattern, and each houndstooth effect's base patterns into a finished base pattern.
+When you compose a houndstooth, you do so by composing each effect's animations patterns into a finished animations pattern, each effect's layers patterns into a finished layers pattern, and each effect's base patterns into a finished base pattern.
 
 ### pattern
 

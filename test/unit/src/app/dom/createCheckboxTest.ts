@@ -15,7 +15,7 @@ describe('create checkbox', () => {
 
 	const attributeObject: { id: string, name: string, type: string } = { id: '', name: '', type: '' }
 	const clickHandler: NullarySideEffector = noop.default
-	const houndstoothEffect: NamedEffect = { name: 'mock tooth', description: '' }
+	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
 		checkbox = buildMockElement({ attributeObject }) as InputElement
@@ -23,25 +23,25 @@ describe('create checkbox', () => {
 
 		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)
 
-		returnedCheckbox = createCheckbox.default({ houndstoothEffect })
+		returnedCheckbox = createCheckbox.default({ effect })
 	})
 
 	it('returns the created label', () => {
 		expect(returnedCheckbox).toBe(checkbox)
 	})
 
-	it('makes the checkbox using the houndstooth effect', () => {
+	it('makes the checkbox using the effect', () => {
 		expect(buildEffectToggleClickHandler.default).toHaveBeenCalledWith({
 			checkbox,
-			houndstoothEffect,
+			effect,
 		})
 	})
 
-	it('sets the id to a kebab-cased version of the houndstooth effect\'s name', () => {
+	it('sets the id to a kebab-cased version of the effect\'s name', () => {
 		expect(attributeObject.id).toBe('mock-tooth')
 	})
 
-	it('sets the name to a kebab-cased version of the houndstooth effect\'s name', () => {
+	it('sets the name to a kebab-cased version of the effect\'s name', () => {
 		expect(attributeObject.name).toBe('mock-tooth')
 	})
 

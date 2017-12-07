@@ -3,7 +3,7 @@ import {
 	Color,
 	constants,
 	Effect,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	from,
 	patternState,
 	to,
@@ -27,7 +27,7 @@ describe('.colorSettings', () => {
 	describe('.colorSet', () => {
 		it('lets you change the colors of the pattern', async (done: DoneFn) => {
 			const sufficientTileCountToDemonstrateSetting: number = 2
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ YELLOW, BLUE ]),
@@ -38,7 +38,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				expect(pixelIsColorWithMarker({
@@ -59,7 +59,7 @@ describe('.colorSettings', () => {
 		it('works for more than two colors', async (done: DoneFn) => {
 			const sufficientTileCountToDemonstrateSetting: number = 3
 			const simplestWeaveToDemonstrateSetting: number[] = [ 0, 1, 2 ]
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorAssignmentSettings: {
@@ -76,7 +76,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -148,7 +148,7 @@ describe('.colorSettings', () => {
 				// tslint:disable-next-line:max-line-length
 				it('is the simplest way to describe a pattern w/ colors not varied w/in its rows and columns', async (done: DoneFn) => {
 					const sufficientTileCountToDemonstrateSetting: number = 8
-					const houndstoothOverrides: Effect = {
+					const overrides: Effect = {
 						basePattern: {
 							colorSettings: {
 								colorAssignmentSettings: {
@@ -164,7 +164,7 @@ describe('.colorSettings', () => {
 						},
 					}
 
-					executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+					executeSelectedEffects.default({ overrides })
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -478,7 +478,7 @@ describe('.colorSettings', () => {
 			describe('supertile', () => {
 				// tslint:disable-next-line:max-line-length
 				it('assigns colors to tiles of patterns in any arbitrary way, repeating in a supertile of n by n tiles', async (done: DoneFn) => {
-					const houndstoothOverrides: Effect = {
+					const overrides: Effect = {
 						basePattern: {
 							colorSettings: {
 								colorAssignmentSettings: {
@@ -499,7 +499,7 @@ describe('.colorSettings', () => {
 						},
 					}
 
-					executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+					executeSelectedEffects.default({ overrides })
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -622,7 +622,7 @@ describe('.colorSettings', () => {
 		describe('.switcheroo', () => {
 			it('causes the two striped tiles to alternate by diagonal rather than rows/columns', async (done: DoneFn) => {
 				const sufficientTileCountToDemonstrateSetting: number = 8
-				const houndstoothOverrides: Effect = {
+				const overrides: Effect = {
 					basePattern: {
 						colorSettings: {
 							colorAssignmentSettings: {
@@ -635,7 +635,7 @@ describe('.colorSettings', () => {
 					},
 				}
 
-				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+				executeSelectedEffects.default({ overrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -698,7 +698,7 @@ describe('.colorSettings', () => {
 			// tslint:disable-next-line:max-line-length
 			it('rotates the stripes by 180 degrees, in effect (switching the colors if there are only two) reversing the grain of the pattern', async (done: DoneFn) => {
 				const sufficientTileCountToDemonstrateSetting: number = 2
-				const houndstoothOverrides: Effect = {
+				const overrides: Effect = {
 					basePattern: {
 						colorSettings: {
 							colorAssignmentSettings: {
@@ -711,7 +711,7 @@ describe('.colorSettings', () => {
 					},
 				}
 
-				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+				executeSelectedEffects.default({ overrides })
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -754,7 +754,7 @@ describe('.colorSettings', () => {
 		it('affects the alpha of the pixels rendered', async (done: DoneFn) => {
 			const sufficientTileCountToDemonstrateSetting: number = 2
 			const opacity: number = 0.5
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ BLACK, BLUE ]),
@@ -766,7 +766,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				const partiallySeeThroughBlack: Color = { r: BLACK.r, g: BLACK.g, b: BLACK.b, a: BLACK.a * opacity }
@@ -793,7 +793,7 @@ describe('.colorSettings', () => {
 	describe('.backgroundColor', () => {
 		it('paints it yellow', async (done: DoneFn) => {
 			const sufficientTileCountToDemonstrateSetting: number = 2
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					colorSettings: {
 						backgroundColor: YELLOW,
@@ -805,7 +805,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				const yellowPixel: PixelColorExpectation = {

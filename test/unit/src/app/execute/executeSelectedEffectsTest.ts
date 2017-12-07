@@ -6,14 +6,14 @@ import {
 	Effect,
 	executeAnimation,
 	executePattern,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	NullarySideEffector,
 	patternState,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 } from '../../../../../src'
 
-describe('execute selected houndstooth effects', () => {
+describe('execute selected effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	let prepareFunctionObjectsPerSettingSpy: Spy
@@ -28,17 +28,17 @@ describe('execute selected houndstooth effects', () => {
 	it('composes the houndstooth', () => {
 		spyOn(composeMainHoundstooth, 'default')
 
-		const houndstoothOverrides: Effect = {}
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		const overrides: Effect = {}
+		executeSelectedEffects.default({ overrides })
 
 		expect(composeMainHoundstooth.default).toHaveBeenCalledWith({
-			houndstoothEffects: appState.controls.selectedHoundstoothEffects,
-			houndstoothOverrides,
+			effects: appState.controls.selectedEffects,
+			overrides,
 		})
 	})
 
 	it('prepares layer functions', () => {
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
@@ -46,7 +46,7 @@ describe('execute selected houndstooth effects', () => {
 	})
 
 	it('prepares animation functions', () => {
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
@@ -54,13 +54,13 @@ describe('execute selected houndstooth effects', () => {
 	})
 
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		expect(patternState.get()).toEqual(appState.settings.mainHoundstooth.basePattern)
 	})
 
 	it('sets up for rendering', () => {
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 
 		expect(createContexts.default).toHaveBeenCalled()
 	})
@@ -69,7 +69,7 @@ describe('execute selected houndstooth effects', () => {
 		beforeEach(() => {
 			appState.controls.animating = true
 
-			executeSelectedHoundstoothEffects.default()
+			executeSelectedEffects.default()
 		})
 
 		it('executes an animation', () => {
@@ -88,7 +88,7 @@ describe('execute selected houndstooth effects', () => {
 		beforeEach(() => {
 			appState.controls.animating = false
 
-			executeSelectedHoundstoothEffects.default()
+			executeSelectedEffects.default()
 		})
 
 		it('executes a single pattern', () => {

@@ -5,7 +5,7 @@ import {
 	constants,
 	Coordinate,
 	Effect,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	to,
 } from '../../../../src'
 import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
@@ -14,7 +14,7 @@ const { BLACK, CYAN, ERASE, TRANSPARENT, YELLOW } = constants
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', async (done: DoneFn) => {
-		const houndstoothOverrides: Effect = {
+		const overrides: Effect = {
 			basePattern: {
 				gridSettings: { tileResolution: 2 },
 				layerSettings: { endLayer: to.Layer(1) },
@@ -27,7 +27,7 @@ describe('.layerSettings', () => {
 			},
 		}
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedEffects.default({ overrides })
 
 		setTimeout(() => {
 			const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
@@ -44,7 +44,7 @@ describe('.layerSettings', () => {
 	})
 
 	it('erasing makes holes so material from lower layers shows through', async (done: DoneFn) => {
-		const houndstoothOverrides: Effect = {
+		const overrides: Effect = {
 			basePattern: {
 				gridSettings: { tileResolution: 0 },
 				layerSettings: { endLayer: to.Layer(1) },
@@ -65,7 +65,7 @@ describe('.layerSettings', () => {
 			},
 		}
 
-		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+		executeSelectedEffects.default({ overrides })
 
 		setTimeout(() => {
 			let baseId: number = -8

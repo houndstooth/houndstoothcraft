@@ -1,7 +1,7 @@
 import { NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import { clearMixedDownContext } from '../canvas'
-import { clearInterval, executeSelectedHoundstoothEffects } from '../execute'
+import { clearInterval, executeSelectedEffects } from '../execute'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =
@@ -15,7 +15,7 @@ const rewindClickHandler: NullarySideEffector =
 			clearMixedDownContext.default()
 		}
 
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 	}
 
 export default rewindClickHandler

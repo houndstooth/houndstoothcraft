@@ -14,7 +14,7 @@ describe('enable or disable animation controls', () => {
 	describe('when the main houndstooth has animations', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = { tileSettings: { tileSize: (): Unit => to.Unit(0) } }
-			composeMainHoundstooth.default({ houndstoothOverrides: { animationsPattern } })
+			composeMainHoundstooth.default({ overrides: { animationsPattern } })
 			appState.dom.playButton.disabled = true
 			appState.dom.frameInput.disabled = true
 			appState.dom.pauseButton.disabled = false
@@ -38,7 +38,7 @@ describe('enable or disable animation controls', () => {
 	describe('when the houndstooth does not have animations', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = {}
-			composeMainHoundstooth.default({ houndstoothOverrides: { animationsPattern } })
+			composeMainHoundstooth.default({ overrides: { animationsPattern } })
 			appState.dom.playButton.disabled = false
 			appState.dom.frameInput.disabled = false
 			appState.dom.pauseButton.disabled = false

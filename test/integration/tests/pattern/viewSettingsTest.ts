@@ -2,7 +2,7 @@ import {
 	constants,
 	Coordinate,
 	Effect,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	from,
 	patternState,
 	to,
@@ -16,7 +16,7 @@ describe('.viewSettings', () => {
 	describe('.zoom', () => {
 		it('works', async (done: DoneFn) => {
 			const zoom: number = 2
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					gridSettings: { tileResolution: 2 },
 					viewSettings: { zoom },
@@ -25,7 +25,7 @@ describe('.viewSettings', () => {
 			const tileSize: Unit = patternState.get('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -63,7 +63,7 @@ describe('.viewSettings', () => {
 		// tslint:disable-next-line:max-line-length
 		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', async (done: DoneFn) => {
 			const zoom: number = 2
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					gridSettings: { tileResolution: 8 },
 					viewSettings: {
@@ -75,7 +75,7 @@ describe('.viewSettings', () => {
 			const tileSize: Unit = patternState.get('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -112,7 +112,7 @@ describe('.viewSettings', () => {
 	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
 		it('is self-explanatory', async (done: DoneFn) => {
 			const tileSize: Unit = to.Unit(100)
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					gridSettings: { tileResolution: 2 },
 					tileSettings: { tileSize },
@@ -120,7 +120,7 @@ describe('.viewSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -158,7 +158,7 @@ describe('.viewSettings', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
 			const areaSize: Unit = patternState. get('tileSize')
 
-			const houndstoothOverrides: Effect = {
+			const overrides: Effect = {
 				basePattern: {
 					gridSettings: {
 						tileResolution: 2,
@@ -172,7 +172,7 @@ describe('.viewSettings', () => {
 				},
 			}
 
-			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+			executeSelectedEffects.default({ overrides })
 
 			setTimeout(() => {
 				let areaOrigin: Coordinate = to.Coordinate([ 700, 0 ])

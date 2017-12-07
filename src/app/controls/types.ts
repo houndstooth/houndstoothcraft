@@ -5,7 +5,7 @@ import { InputElement } from '../dom'
 
 interface BuildEffectToggleClickHandlerParams {
 	checkbox: InputElement,
-	houndstoothEffect: NamedEffect
+	effect: NamedEffect
 }
 
 export {

@@ -52,7 +52,7 @@ export {
 export {
 	callFunctionsPerSetting,
 	clearInterval,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	cancelPreviousPattern,
 	animator,
 	executeAnimation,
@@ -101,7 +101,7 @@ export {
 	SettingsFunctionObject,
 	checkSettingForConflict,
 	patternsHaveConflicts,
-	combineHoundstoothEffects,
+	combineEffects,
 	composePatterns,
 	settingPath,
 	composeMainHoundstooth,

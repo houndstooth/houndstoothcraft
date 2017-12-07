@@ -4,7 +4,7 @@ import {
 	attachControlHandlers,
 	buildSettingNamesToPathsMap,
 	createEffectToggles,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	NamedEffect,
 	storeDomElements,
 	storeMixedDownContext,
@@ -18,4 +18,4 @@ buildSettingNamesToPathsMap.default()
 storeMixedDownContext.default()
 createEffectToggles.default(allEffects)
 attachControlHandlers.default()
-executeSelectedHoundstoothEffects.default()
+executeSelectedEffects.default()

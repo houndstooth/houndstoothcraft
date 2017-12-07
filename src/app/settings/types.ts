@@ -36,9 +36,9 @@ interface SettingConflictCheck {
 }
 
 interface ComposeMainHoundstooth {
-	readonly houndstoothEffects?: NamedEffect[],
-	readonly houndstoothOverrides?: Effect,
+	readonly effects?: NamedEffect[],
 	readonly logComposedMainHoundstooth?: boolean,
+	readonly overrides?: Effect,
 }
 
 interface ComposePatternParams {

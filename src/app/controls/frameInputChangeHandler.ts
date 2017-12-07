@@ -2,7 +2,7 @@ import { DECIMAL_RADIX } from '../../constants'
 import { to } from '../../utilities'
 import { appState } from '../appState'
 import { clearMixedDownContext } from '../canvas'
-import { executeSelectedHoundstoothEffects } from '../execute'
+import { executeSelectedEffects } from '../execute'
 
 const frameInputChangeHandler: (event: Event) => void =
 	(event: Event): void => {
@@ -10,7 +10,7 @@ const frameInputChangeHandler: (event: Event) => void =
 		appState.controls.currentFrame = to.Frame(parseInt(target.value, DECIMAL_RADIX))
 
 		clearMixedDownContext.default()
-		executeSelectedHoundstoothEffects.default()
+		executeSelectedEffects.default()
 	}
 
 export default frameInputChangeHandler

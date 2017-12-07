@@ -1,6 +1,6 @@
 import {
 	appState,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	mixDownContexts,
 	NullarySideEffector,
 	playClickHandler,
@@ -8,11 +8,11 @@ import {
 import Spy = jasmine.Spy
 
 describe('play click handler', () => {
-	let executeSelectedHoundstoothEffectsSpy: Spy
+	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
 		spyOn(mixDownContexts, 'default')
-		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
+		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
 		appState.controls.animating = false
@@ -44,17 +44,17 @@ describe('play click handler', () => {
 	})
 
 	describe('starting vs resuming', () => {
-		it('executes the selected houndstooth effects when there is no animation running', () => {
-			expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
+		it('executes the selected effects when there is no animation running', () => {
+			expect(executeSelectedEffectsSpy).toHaveBeenCalled()
 		})
 
-		it('does not re-execute the selected houndstooth effects when already running an animation', () => {
+		it('does not re-execute the selected effects when already running an animation', () => {
 			appState.execute.animationInterval = 25346
-			executeSelectedHoundstoothEffectsSpy.calls.reset()
+			executeSelectedEffectsSpy.calls.reset()
 
 			playClickHandler.default()
 
-			expect(executeSelectedHoundstoothEffectsSpy).not.toHaveBeenCalled()
+			expect(executeSelectedEffectsSpy).not.toHaveBeenCalled()
 		})
 	})
 })

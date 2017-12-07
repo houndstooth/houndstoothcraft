@@ -1,7 +1,7 @@
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { mixDownContexts } from '../canvas'
-import { executeSelectedHoundstoothEffects } from '../execute'
+import { executeSelectedEffects } from '../execute'
 
 const playClickHandler: NullarySideEffector =
 	(): void => {
@@ -14,7 +14,7 @@ const playClickHandler: NullarySideEffector =
 		mixDownContexts.default()
 
 		if (!resumingAnimation()) {
-			executeSelectedHoundstoothEffects.default()
+			executeSelectedEffects.default()
 		}
 	}
 

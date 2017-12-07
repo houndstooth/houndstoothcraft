@@ -7,7 +7,7 @@ import {
 	clearMixedDownContext,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	InputElement,
 	NamedEffect,
 	NullarySideEffector,
@@ -19,11 +19,11 @@ import { buildMockElement, SimulateClick } from '../../../helpers'
 describe('build effect toggle click handler returns a function which', () => {
 	let subject: NullarySideEffector
 	let checkbox: InputElement
-	let houndstoothEffect: NamedEffect
-	let preExistingHoundstoothEffect: NamedEffect
+	let effect: NamedEffect
+	let preExistingEffect: NamedEffect
 
 	beforeEach(() => {
-		spyOn(executeSelectedHoundstoothEffects, 'default')
+		spyOn(executeSelectedEffects, 'default')
 		spyOn(enableOrDisableAnimationControls, 'default')
 		spyOn(enableOrDisableOtherEffectToggles, 'default')
 		spyOn(updateDescriptions, 'default')
@@ -34,26 +34,26 @@ describe('build effect toggle click handler returns a function which', () => {
 		spyOn(resetMainHoundstooth, 'default')
 
 		checkbox = buildMockElement()
-		houndstoothEffect = { name: 'mock tooth', description: '' }
-		subject = buildEffectToggleClickHandler.default({ checkbox, houndstoothEffect })
+		effect = { name: 'mock tooth', description: '' }
+		subject = buildEffectToggleClickHandler.default({ checkbox, effect })
 
-		expect(executeSelectedHoundstoothEffects.default).not.toHaveBeenCalled()
+		expect(executeSelectedEffects.default).not.toHaveBeenCalled()
 		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
 		expect(enableOrDisableOtherEffectToggles.default).not.toHaveBeenCalled()
 		expect(updateDescriptions.default).not.toHaveBeenCalled()
 
-		preExistingHoundstoothEffect = { name: 'preexisting tooth', description: '' }
-		appState.controls.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
+		preExistingEffect = { name: 'preexisting tooth', description: '' }
+		appState.controls.selectedEffects = [ preExistingEffect ]
 
 		simulateClick(checkbox, subject)
 	})
 
 	it('adds the clicked effect to the selection', () => {
-		expect(appState.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
+		expect(appState.controls.selectedEffects).toEqual([ preExistingEffect, effect ])
 	})
 
-	it('executes the selected houndstooth effects, since the selection has now changed', () => {
-		expect(executeSelectedHoundstoothEffects.default).toHaveBeenCalled()
+	it('executes the selected effects, since the selection has now changed', () => {
+		expect(executeSelectedEffects.default).toHaveBeenCalled()
 	})
 
 	it('enables or disables animation controls depending on whether the new selection has animations', () => {
@@ -99,7 +99,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	it('removes the effect if it is already selected', () => {
 		simulateClick(checkbox, subject)
 
-		expect(appState.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect ])
+		expect(appState.controls.selectedEffects).toEqual([ preExistingEffect ])
 	})
 })
 

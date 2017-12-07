@@ -2,7 +2,7 @@ import {
 	appState,
 	clearInterval,
 	clearMixedDownContext,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	NullarySideEffector,
 	rewindClickHandler,
 	to,
@@ -11,13 +11,13 @@ import {
 import Spy = jasmine.Spy
 
 describe('rewind click handler', () => {
-	let executeSelectedHoundstoothEffectsSpy: Spy
+	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
 		spyOn(clearInterval, 'default')
-		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
+		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 	})
 
@@ -33,10 +33,10 @@ describe('rewind click handler', () => {
 		expect(updateCurrentFrame.default).toHaveBeenCalledWith(to.Frame(0))
 	})
 
-	it('executes the selected houndstooth effects', () => {
+	it('executes the selected effects', () => {
 		rewindClickHandler.default()
 
-		expect(executeSelectedHoundstoothEffectsSpy).toHaveBeenCalled()
+		expect(executeSelectedEffectsSpy).toHaveBeenCalled()
 	})
 
 	describe('animation paused / still running', () => {

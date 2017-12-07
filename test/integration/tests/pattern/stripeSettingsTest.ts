@@ -2,7 +2,7 @@ import {
 	constants,
 	Coordinate,
 	Effect,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	from,
 	patternState,
 	StripeCountMode,
@@ -25,9 +25,9 @@ describe('.stripeSettings', () => {
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
-			let houndstoothOverrides: Effect
+			let overrides: Effect
 			beforeEach(() => {
-				houndstoothOverrides = {
+				overrides = {
 					basePattern: {
 						gridSettings: { tileResolution: 1 },
 						stripeSettings: {
@@ -40,7 +40,7 @@ describe('.stripeSettings', () => {
 			})
 
 			it('works in standard mode', async (done: DoneFn) => {
-				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+				executeSelectedEffects.default({ overrides })
 
 				setTimeout(() => {
 					const tile: StandardTileExpectation = {
@@ -58,7 +58,7 @@ describe('.stripeSettings', () => {
 
 		describe('.stripeCount', () => {
 			it('changes the number of stripes in striped tiles', async (done: DoneFn) => {
-				const houndstoothOverrides: Effect = {
+				const overrides: Effect = {
 					basePattern: {
 						gridSettings: { tileResolution: 2 },
 						stripeSettings: {
@@ -69,7 +69,7 @@ describe('.stripeSettings', () => {
 					},
 				}
 
-				executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
+				executeSelectedEffects.default({ overrides })
 
 				setTimeout(() => {
 					let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])

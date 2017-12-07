@@ -11,11 +11,11 @@ import {
 import executeAnimation from './executeAnimation'
 import executePattern from './executePattern'
 
-const executeSelectedHoundstoothEffects: (_?: { houndstoothOverrides?: Effect }) => void =
-	({ houndstoothOverrides = {} }: { houndstoothOverrides?: Effect } = {}): void => {
+const executeSelectedEffects: (_?: { overrides?: Effect }) => void =
+	({ overrides = {} }: { overrides?: Effect } = {}): void => {
 		composeMainHoundstooth.default({
-			houndstoothEffects: appState.controls.selectedHoundstoothEffects,
-			houndstoothOverrides,
+			effects: appState.controls.selectedEffects,
+			overrides,
 		})
 
 		resetPatternState.default()
@@ -47,4 +47,4 @@ const execute: NullarySideEffector =
 		}
 	}
 
-export default executeSelectedHoundstoothEffects
+export default executeSelectedEffects

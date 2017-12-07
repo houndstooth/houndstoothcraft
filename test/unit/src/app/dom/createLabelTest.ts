@@ -15,7 +15,7 @@ describe('create label', () => {
 	const children: LabelElement[] = []
 	const checkbox: InputElement = buildMockElement()
 	const name: PageElement = buildMockElement()
-	const houndstoothEffect: NamedEffect = { name: 'mock tooth', description: '' }
+	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 	const attributeObject: { 'for': string } = { for: '' }
 
 	beforeEach(() => {
@@ -26,7 +26,7 @@ describe('create label', () => {
 
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 
-		returnedLabel = createLabel.default({ houndstoothEffect })
+		returnedLabel = createLabel.default({ effect })
 	})
 
 	it('returns the created label', () => {
@@ -41,7 +41,7 @@ describe('create label', () => {
 		expect(attributeObject.for).toBe('mock-tooth')
 	})
 
-	it('makes the name using the houndstooth effect\'s name', () => {
+	it('makes the name using the effect\'s name', () => {
 		// tslint:disable-next-line:no-unsafe-any
 		expect(documentWrapper.createTextNode).toHaveBeenCalledWith('mock tooth')
 	})

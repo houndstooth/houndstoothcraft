@@ -1,28 +1,28 @@
 import { BasePattern, Effect, PatternFunctions } from '../../pattern'
 import composePatterns from './composePatterns'
 
-const combineHoundstoothEffects: (_: { houndstoothEffects: Effect[] }) => Effect =
-	({ houndstoothEffects }: { houndstoothEffects: Effect[] }): Effect => {
+const combineEffects: (_: { effects: Effect[] }) => Effect =
+	({ effects }: { effects: Effect[] }): Effect => {
 		const basePattern: Partial<BasePattern> = {}
 		const layersPattern: PatternFunctions = {}
 		const animationsPattern: PatternFunctions = {}
 
-		houndstoothEffects.forEach((houndstoothEffect: Effect): void => {
+		effects.forEach((effect: Effect): void => {
 			composePatterns({
 				patternToBeMergedOnto: basePattern,
-				patternToMerge: houndstoothEffect.basePattern,
+				patternToMerge: effect.basePattern,
 			})
 			composePatterns({
 				patternToBeMergedOnto: layersPattern,
-				patternToMerge: houndstoothEffect.layersPattern,
+				patternToMerge: effect.layersPattern,
 			})
 			composePatterns({
 				patternToBeMergedOnto: animationsPattern,
-				patternToMerge: houndstoothEffect.animationsPattern,
+				patternToMerge: effect.animationsPattern,
 			})
 		})
 
 		return { basePattern, layersPattern, animationsPattern }
 	}
 
-export default combineHoundstoothEffects
+export default combineEffects

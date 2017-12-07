@@ -1,6 +1,6 @@
 import {
 	appState,
-	combineHoundstoothEffects,
+	combineEffects,
 	composeMainHoundstooth,
 	composePatterns,
 	consoleWrapper,
@@ -37,11 +37,11 @@ describe('composeMainHoundstooth', () => {
 	it('does not warn about conflicts when composing patterns together (though it does warn when combining effects, btw)', () => {
 		const composePatternsSpy: Spy = spyOn(composePatterns, 'default')
 
-		const combinedHoundstoothEffects: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		spyOn(combineHoundstoothEffects, 'default').and.returnValue(combinedHoundstoothEffects)
+		const combinedEffects: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		spyOn(combineEffects, 'default').and.returnValue(combinedEffects)
 
-		const houndstoothOverrides: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		composeMainHoundstooth.default({ houndstoothOverrides })
+		const overrides: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
+		composeMainHoundstooth.default({ overrides })
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 
@@ -50,23 +50,23 @@ describe('composeMainHoundstooth', () => {
 		// tslint:disable:no-unsafe-any
 		expect(composePatternsCalls[ 0 ].args[ 0 ].patternToMerge).toBe(DEFAULT_BASE_PATTERN)
 		expect(composePatternsCalls[ 0 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.basePattern)
+		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(combinedEffects.basePattern)
 		expect(composePatternsCalls[ 1 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 2 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.basePattern)
+		expect(composePatternsCalls[ 2 ].args[ 0 ].patternToMerge).toBe(overrides.basePattern)
 		expect(composePatternsCalls[ 2 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 
 		expect(composePatternsCalls[ 3 ].args[ 0 ].patternToMerge).toBe(DEFAULT_LAYERS_PATTERN)
 		expect(composePatternsCalls[ 3 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.layersPattern)
+		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(combinedEffects.layersPattern)
 		expect(composePatternsCalls[ 4 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.layersPattern)
+		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(overrides.layersPattern)
 		expect(composePatternsCalls[ 5 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 
 		expect(composePatternsCalls[ 6 ].args[ 0 ].patternToMerge).toBe(DEFAULT_ANIMATIONS_PATTERN)
 		expect(composePatternsCalls[ 6 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 7 ].args[ 0 ].patternToMerge).toBe(combinedHoundstoothEffects.animationsPattern)
+		expect(composePatternsCalls[ 7 ].args[ 0 ].patternToMerge).toBe(combinedEffects.animationsPattern)
 		expect(composePatternsCalls[ 7 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
-		expect(composePatternsCalls[ 8 ].args[ 0 ].patternToMerge).toBe(houndstoothOverrides.animationsPattern)
+		expect(composePatternsCalls[ 8 ].args[ 0 ].patternToMerge).toBe(overrides.animationsPattern)
 		expect(composePatternsCalls[ 8 ].args[ 0 ]).not.toEqual(jasmine.objectContaining({ warnAboutConflicts: true }))
 	})
 })

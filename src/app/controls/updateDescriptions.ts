@@ -5,7 +5,7 @@ import { addDescription } from '../dom'
 
 const updateDescriptions: NullarySideEffector =
 	(): void => {
-		appState.controls.selectedHoundstoothEffects.forEach((effect: NamedEffect): void => {
+		appState.controls.selectedEffects.forEach((effect: NamedEffect): void => {
 			addDescription.default(effect.description)
 		})
 	}

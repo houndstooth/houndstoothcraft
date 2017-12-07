@@ -18,7 +18,7 @@ describe('create effect toggle', () => {
 	const effectTogglesContainerChildren: PageElement[] = []
 	const effectTogglesContainer: PageElement = buildMockElement({ children: effectTogglesContainerChildren })
 
-	const houndstoothEffect: NamedEffect = { name: 'mock tooth', description: '' }
+	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
 		spyOn(documentWrapper, 'createElement').and.returnValue(div)
@@ -26,7 +26,7 @@ describe('create effect toggle', () => {
 		spyOn(createLabel, 'default').and.returnValue(label)
 		spyOn(documentWrapper, 'querySelector').and.returnValue(effectTogglesContainer)
 
-		createEffectToggle.default(houndstoothEffect)
+		createEffectToggle.default(effect)
 	})
 
 	it('puts the div in the effect toggles container', () => {
@@ -41,12 +41,12 @@ describe('create effect toggle', () => {
 		expect(divChildren[ 1 ]).toBe(label)
 	})
 
-	it('creates the label with the houndstooth effect', () => {
-		expect(createLabel.default).toHaveBeenCalledWith({ houndstoothEffect })
+	it('creates the label with the effect', () => {
+		expect(createLabel.default).toHaveBeenCalledWith({ effect })
 	})
 
-	it('creates the checkbox using the houndstooth effect', () => {
-		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect })
+	it('creates the checkbox using the effect', () => {
+		expect(createCheckbox.default).toHaveBeenCalledWith({ effect })
 	})
 
 	it('stores the effect toggle checkbox on the app state', () => {

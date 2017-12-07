@@ -11,7 +11,7 @@ import * as executeGrid from './executeGrid'
 import * as executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
 import * as executeLayer from './executeLayer'
 import * as executePattern from './executePattern'
-import * as executeSelectedHoundstoothEffects from './executeSelectedHoundstoothEffects'
+import * as executeSelectedEffects from './executeSelectedEffects'
 import * as gridComplete from './gridComplete'
 import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
 import * as previousFrameHasFinished from './previousFrameHasFinished'
@@ -21,7 +21,7 @@ import * as updateProgress from './updateProgress'
 export {
 	callFunctionsPerSetting,
 	clearInterval,
-	executeSelectedHoundstoothEffects,
+	executeSelectedEffects,
 	cancelPreviousPattern,
 	animator,
 	executeAnimation,

@@ -14,6 +14,7 @@ import * as executePattern from './executePattern'
 import * as executeSelectedEffects from './executeSelectedEffects'
 import * as gridComplete from './gridComplete'
 import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
+import * as incrementTilesCompleted from './incrementTilesCompleted'
 import * as previousFrameHasFinished from './previousFrameHasFinished'
 import * as setTileCount from './setTileCount'
 import * as standardAnimation from './standardAnimation'
@@ -42,6 +43,7 @@ export {
 	executePattern,
 	setTileCount,
 	standardAnimation,
+	incrementTilesCompleted,
 }
 export {
 	ConditionFunction,

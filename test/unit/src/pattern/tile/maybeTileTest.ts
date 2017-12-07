@@ -1,8 +1,8 @@
 import {
 	Address,
-	appState,
 	Coordinate,
 	getTileOriginAndSize,
+	incrementTilesCompleted,
 	maybeTile,
 	ReferencedGridAddress,
 	tile,
@@ -20,6 +20,7 @@ describe('maybe tile', () => {
 
 	beforeEach(() => {
 		spyOn(tile, 'default')
+		spyOn(incrementTilesCompleted, 'default')
 	})
 
 	it('calls tile if an origin and size are got', () => {
@@ -55,10 +56,8 @@ describe('maybe tile', () => {
 	})
 
 	it('increments the count of tiles completed', () => {
-		appState.execute.tilesCompleted = 5
-
 		subject({ gridAddress, thisPatternRef })
 
-		expect(appState.execute.tilesCompleted).toBe(6)
+		expect(incrementTilesCompleted.default).toHaveBeenCalled()
 	})
 })

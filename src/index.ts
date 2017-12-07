@@ -104,6 +104,7 @@ export {
 	FullSettingsPath,
 	PrepareFunctionObjectsParams,
 	setTileCount,
+	incrementTilesCompleted,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'

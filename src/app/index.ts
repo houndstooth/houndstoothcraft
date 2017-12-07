@@ -76,6 +76,7 @@ export {
 	ExecuteParams,
 	setTileCount,
 	standardAnimation,
+	incrementTilesCompleted,
 } from './execute'
 export {
 	fill,

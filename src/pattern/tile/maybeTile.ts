@@ -1,4 +1,4 @@
-import { appState } from '../../app'
+import { incrementTilesCompleted } from '../../app'
 import { ReferencedGridAddress } from '../grid'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import tile from './tile'
@@ -12,7 +12,7 @@ const maybeTile: (_: ReferencedGridAddress) => void =
 			tile({ gridAddress, tileOrigin, tileSize })
 		}
 
-		appState.execute.tilesCompleted++
+		incrementTilesCompleted.default()
 	}
 
 export default maybeTile

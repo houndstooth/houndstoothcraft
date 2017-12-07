@@ -1,6 +1,6 @@
 import { applyZoom, Path, setSetting, to } from '../../../../../src'
 
-xdescribe('apply zoom', () => {
+describe('apply zoom', () => {
 	const zoom: number = 2
 	let path: Path
 	beforeEach(() => {
@@ -25,14 +25,20 @@ xdescribe('apply zoom', () => {
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
 			setSetting.default('zoomOnCanvasCenter', true)
+			path = to.Path([
+				[ 350, 350 ],
+				[ 400, 350 ],
+				[ 400, 400 ],
+				[ 350, 400 ],
+			])
 		})
 
 		it('works', () => {
 			expect(applyZoom.default(path)).toEqual(to.Path([
-				[ 0, 0 ],
-				[ 100, 0 ],
-				[ 100, 100 ],
-				[ 0, 100 ],
+				[ 300, 300 ],
+				[ 400, 300 ],
+				[ 400, 400 ],
+				[ 300, 400 ],
 			]))
 		})
 
@@ -44,10 +50,10 @@ xdescribe('apply zoom', () => {
 
 		it('does not double-up on adjusting for centering the view', () => {
 			expect(applyZoom.default(path)).toEqual(to.Path([
-				[ 0, 0 ],
-				[ 100, 0 ],
-				[ 100, 100 ],
-				[ 0, 100 ],
+				[ 300, 300 ],
+				[ 400, 300 ],
+				[ 400, 400 ],
+				[ 300, 400 ],
 			]))
 		})
 	})

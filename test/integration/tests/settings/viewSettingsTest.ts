@@ -154,7 +154,7 @@ describe('.viewSettings', () => {
 		})
 	})
 
-	xdescribe('.rotateViewAboutCanvasCenter', () => {
+	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
 			const areaSize: Unit = getSetting.default('tileSize')
 
@@ -175,7 +175,7 @@ describe('.viewSettings', () => {
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 			setTimeout(() => {
-				let areaOrigin: Coordinate = to.Coordinate([ 200, 0 ])
+				let areaOrigin: Coordinate = to.Coordinate([ 700, 0 ])
 				let id: number = -1
 
 				expect(sectionCenterIsColor({
@@ -245,7 +245,7 @@ describe('.viewSettings', () => {
 					sectionResolution: 4,
 				})).toBe(true)
 
-				areaOrigin = to.Coordinate([ 250, 0 ])
+				areaOrigin = to.Coordinate([ 750, 0 ])
 
 				expect(sectionCenterIsColor({
 					areaOrigin,
@@ -315,7 +315,7 @@ describe('.viewSettings', () => {
 					sectionResolution: 4,
 				})).toBe(true)
 
-				areaOrigin = to.Coordinate([ 200, 50 ])
+				areaOrigin = to.Coordinate([ 700, 50 ])
 
 				expect(sectionCenterIsColor({
 					areaOrigin,
@@ -385,7 +385,7 @@ describe('.viewSettings', () => {
 					sectionResolution: 4,
 				})).toBe(true)
 
-				areaOrigin = to.Coordinate([ 250, 50 ])
+				areaOrigin = to.Coordinate([ 750, 50 ])
 
 				expect(sectionCenterIsColor({
 					areaOrigin,

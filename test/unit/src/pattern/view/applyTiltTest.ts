@@ -1,7 +1,7 @@
 import { applyTilt, Path, setSetting, to } from '../../../../../src'
 import { pixelsAreClose } from '../../../helpers'
 
-xdescribe('apply tilt', () => {
+describe('apply tilt', () => {
 	it('rotates the path about the canvas center', () => {
 		setSetting.default('rotateViewAboutCanvasCenter', to.Radian(Math.PI / 2))
 		const path: Path = to.Path([
@@ -13,9 +13,9 @@ xdescribe('apply tilt', () => {
 		const actualPath: Path = applyTilt.default(path)
 
 		const expectedPath: Path = to.Path([
-			[ 200, 0 ],
-			[ 200, 40 ],
-			[ 160, 0 ],
+			[ 800, 0 ],
+			[ 800, 40 ],
+			[ 760, 0 ],
 		])
 		expect(pixelsAreClose(expectedPath, actualPath)).toBe(true)
 	})

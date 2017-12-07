@@ -6,7 +6,13 @@ const isCloseTo: (numberOne: number, numberTwo: number) => boolean =
 		const delta: number = Math.abs(numberOne - numberTwo)
 		const maxDelta: number = Math.pow(10, -precision) / 2
 
-		return Math.round(delta * pow) / pow <= maxDelta
+		const result: boolean = Math.round(delta * pow) / pow <= maxDelta
+
+		if (!result) {
+			console.error('expected', numberOne, 'to be close to', numberTwo)
+		}
+
+		return result
 	}
 
 export default isCloseTo

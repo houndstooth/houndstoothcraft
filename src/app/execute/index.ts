@@ -17,6 +17,7 @@ import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
 import * as previousFrameHasFinished from './previousFrameHasFinished'
 import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 import * as updateProgress from './updateProgress'
+import * as setTileCount from './setTileCount'
 
 export {
 	callFunctionsPerSetting,
@@ -38,6 +39,7 @@ export {
 	asyncMaybeTile,
 	updateProgress,
 	executePattern,
+	setTileCount,
 }
 export {
 	ConditionFunction,

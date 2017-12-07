@@ -102,6 +102,7 @@ export {
 	ComposePatternsParams,
 	FullSettingsPath,
 	PrepareFunctionObjectsParams,
+	setTileCount,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'

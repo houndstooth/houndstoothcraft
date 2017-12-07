@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import Spy = jasmine.Spy
-import { applyViewForGrid, appState, grid, ReferencedGridAddress } from '../../../../../src'
+import { applyViewForGrid, grid, ReferencedGridAddress, setTileCount } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 
 const subject: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }) => void = grid.default
@@ -14,6 +14,7 @@ describe('grid', () => {
 		setPatternStateForTest('tileResolution', tileResolution)
 		gridTileSpy = jasmine.createSpy('gridTile')
 		spyOn(applyViewForGrid, 'default')
+		spyOn(setTileCount, 'default')
 	})
 
 	it('applies view for the grid', () => {
@@ -44,11 +45,9 @@ describe('grid', () => {
 		})
 
 		it('sets the tile count on the app state correctly', () => {
-			appState.execute.tileCount = 0
-
 			subject({ gridTile: gridTileSpy, thisPatternRef })
 
-			expect(appState.execute.tileCount).toBe(Math.pow(tileResolution, 2))
+			expect(setTileCount.default).toHaveBeenCalledWith(Math.pow(tileResolution, 2))
 		})
 	})
 
@@ -83,11 +82,9 @@ describe('grid', () => {
 		})
 
 		it('sets the tile count on the app state correctly', () => {
-			appState.execute.tileCount = 0
-
 			subject({ gridTile: gridTileSpy, thisPatternRef })
 
-			expect(appState.execute.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
+			expect(setTileCount.default).toHaveBeenCalledWith(Math.pow(tileResolution, 2) * 4)
 		})
 	})
 })

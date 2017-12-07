@@ -74,6 +74,7 @@ export {
 	ExecuteLayerParams,
 	AnimationParams,
 	ExecuteParams,
+	setTileCount,
 } from './execute'
 export {
 	fill,

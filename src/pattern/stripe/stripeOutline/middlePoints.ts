@@ -1,4 +1,4 @@
-import * as constants from '../../../constants'
+import { PERIMETER_SCALAR } from '../../../constants'
 import { from } from '../../../utilities'
 import * as stripePoints from './stripePoints'
 import { PointsParamsPlusStripeEnd } from './types'
@@ -41,7 +41,7 @@ const middlePointsWhenStripeDoesNotEndInBottomRightHalf: (_: PointsParamsPlusStr
 		}
 
 		// tslint:disable-next-line:max-line-length
-		const stripeEndsInBottomRightCorner: boolean = from.StripePosition(stripeEnd) === from.StripePosition(constants.PERIMETER_SCALAR)
+		const stripeEndsInBottomRightCorner: boolean = from.StripePosition(stripeEnd) === from.StripePosition(PERIMETER_SCALAR)
 		if (stripeEndsInBottomRightCorner) {
 			outline.push(stripePoints.pointInBottomRightCorner({ tileOrigin, tileSize }))
 		}

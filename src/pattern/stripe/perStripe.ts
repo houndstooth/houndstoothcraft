@@ -1,4 +1,4 @@
-import * as constants from '../../constants'
+import { PERIMETER_SCALAR } from '../../constants'
 import { codeUtilities, from, to } from '../../utilities'
 import { get } from '../patternState'
 import { GetStripePosition, StripePosition } from './types'
@@ -11,7 +11,7 @@ const perStripe: (_: { getStripePosition: GetStripePosition }) => StripePosition
 			to.StripePosition(from.StripePosition(getStripePosition({
 				stripeCount,
 				stripeIndex,
-			})) * from.StripePosition(constants.PERIMETER_SCALAR))))
+			})) * from.StripePosition(PERIMETER_SCALAR))))
 	}
 
 export default perStripe

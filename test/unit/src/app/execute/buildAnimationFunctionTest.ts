@@ -10,11 +10,11 @@ import {
 	NullaryVoidPromise,
 	previousFrameHasFinished,
 	SettingsFunctionObject,
+	shouldRefreshCanvas,
 	to,
 	updateCurrentFrame,
 } from '../../../../../src'
 import Spy = jasmine.Spy
-import { setPatternStateForTest } from '../../../helpers'
 
 const subject: (_: ExecuteParams) => NullaryVoidPromise = buildAnimationFunction.default
 
@@ -109,7 +109,7 @@ describe('build animation function returns an animation function', () => {
 			})
 
 			it('does not clear the canvas if refreshing the canvas is off', async (done: DoneFn) => {
-				setPatternStateForTest('refreshCanvas', false)
+				spyOn(shouldRefreshCanvas, 'default').and.returnValue(false)
 				clearContextsSpy.calls.reset()
 
 				await animationFunction()

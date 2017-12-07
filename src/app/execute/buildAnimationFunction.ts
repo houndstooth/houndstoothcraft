@@ -1,4 +1,4 @@
-import { patternState } from '../../pattern'
+import { shouldRefreshCanvas } from '../../pattern'
 import { from, NullaryVoidPromise, to } from '../../utilities'
 import { appState } from '../appState'
 import { clearContexts, exportCanvas, mixDownContexts } from '../canvas'
@@ -14,7 +14,7 @@ const buildAnimationFunction: (_: ExecuteParams) => NullaryVoidPromise =
 				return
 			}
 
-			if (patternState.get('refreshCanvas')) {
+			if (shouldRefreshCanvas.default()) {
 				clearContexts.default()
 			}
 

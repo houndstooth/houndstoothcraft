@@ -190,6 +190,7 @@ export {
 	ShapeParams,
 	TextureParams,
 	DefinedTileParams,
+	shouldRefreshCanvas,
 } from './pattern'
 export {
 	codeUtilities,

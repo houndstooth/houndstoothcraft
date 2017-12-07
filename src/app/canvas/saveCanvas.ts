@@ -1,8 +1,8 @@
-import { DataBlob } from '../'
 import { Frame } from '../../pattern'
 import { from } from '../../utilities'
 import { appState } from '../appState'
 import { saveBlob } from '../dom'
+import { DataBlob } from './types'
 
 const saveCanvas: (_: { currentFrame: Frame, result: DataBlob }) => void =
 	({ currentFrame, result }: { currentFrame: Frame, result: DataBlob }): void => {

@@ -1,8 +1,8 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { PageElement } from '../'
 import { buildMockElement } from '../../../test'
 import { noop } from '../../utilities'
+import { PageElement } from './types'
 
 declare const global: any
 

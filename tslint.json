@@ -55,6 +55,7 @@
     "strict-boolean-expressions": false,
     "defocus": true,
     "no-namespace": false,
-    "no-reaching-imports": true
+    "no-reaching-imports": true,
+    "no-import-paths-without-names": true
   }
 }

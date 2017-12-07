@@ -3,7 +3,6 @@
 export {
 	animationSettings,
 	Frame,
-	standardAnimation,
 	shouldRefreshCanvas,
 } from './animation'
 export {

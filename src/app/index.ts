@@ -75,6 +75,7 @@ export {
 	AnimationParams,
 	ExecuteParams,
 	setTileCount,
+	standardAnimation,
 } from './execute'
 export {
 	fill,

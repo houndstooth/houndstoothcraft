@@ -1,7 +1,6 @@
-import { layerSettings } from '../../pattern'
+import { Layer, patternState } from '../../pattern'
 import { from, to } from '../../utilities'
 import { appState } from '../appState'
-import { getSetting } from '../settings'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import completeLayers from './completeLayers'
 import executeLayer from './executeLayer'
@@ -10,7 +9,7 @@ import { ExecuteParams } from './types'
 
 const executePattern: (_: ExecuteParams) => Promise<void> =
 	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {
-		const { endLayer }: layerSettings.LayerSettings = getSetting.default('layerSettings')
+		const endLayer: Layer = patternState.get('endLayer')
 
 		callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
 

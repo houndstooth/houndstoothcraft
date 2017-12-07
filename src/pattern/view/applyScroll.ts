@@ -1,12 +1,12 @@
-import { getSetting, Path, Pixel } from '../../app'
+import { Path, Pixel } from '../../app'
 import { CANVAS_SIZE, HALF } from '../../constants'
 import { from, to } from '../../utilities'
 import { Unit } from '../grid'
+import { get } from '../patternState'
 
 const applyScroll: (path: Path) => Path =
 	(path: Path): Path => {
-		// tslint:disable-next-line:max-line-length
-		const centerViewOnCenterOfTileAtHomeAddress: boolean = getSetting.default('centerViewOnCenterOfTileAtHomeAddress')
+		const centerViewOnCenterOfTileAtHomeAddress: boolean = get('centerViewOnCenterOfTileAtHomeAddress')
 
 		if (!centerViewOnCenterOfTileAtHomeAddress) {
 			return path
@@ -19,7 +19,7 @@ const applyCenterViewOnCenterOfTileAtHomeAddress: (pixel: Pixel) => Pixel =
 	(pixel: Pixel): Pixel => {
 		const canvasCenter: number = from.Px(CANVAS_SIZE) * HALF
 
-		const tileSize: Unit = getSetting.default('tileSize')
+		const tileSize: Unit = get('tileSize')
 		const halfTileSize: number = from.Unit(tileSize) * HALF
 
 		return to.Pixel([

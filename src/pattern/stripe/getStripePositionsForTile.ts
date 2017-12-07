@@ -1,11 +1,11 @@
-import { getSetting } from '../../app'
 import { Address } from '../grid'
+import { get } from '../patternState'
 import { StripePositionSettings } from './stripePositionSettings'
 import { StripePosition } from './types'
 
 const getStripePositionsForTile: (_?: { gridAddress?: Address }) => StripePosition[] =
 	({ gridAddress }: { gridAddress?: Address } = {}): StripePosition[] => {
-		const { getStripePositions }: StripePositionSettings = getSetting.default('stripePositionSettings')
+		const { getStripePositions }: StripePositionSettings = get('stripePositionSettings')
 
 		return getStripePositions({ gridAddress })
 	}

@@ -1,11 +1,11 @@
-import { getSetting } from '../../app'
 import { from, to } from '../../utilities'
 import { Address, Unit } from '../grid'
+import { get } from '../patternState'
 import { TileOriginAndSize } from './types'
 
 const getStandardTileOriginAndSize: (_: { gridAddress: Address }) => TileOriginAndSize =
 	({ gridAddress }: { gridAddress: Address }): TileOriginAndSize => {
-		const tileSize: Unit = getSetting.default('tileSize')
+		const tileSize: Unit = get('tileSize')
 		const [ x, y ]: number[] = from.Address(gridAddress)
 
 		return {

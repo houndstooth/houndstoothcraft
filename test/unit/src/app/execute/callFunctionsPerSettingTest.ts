@@ -1,6 +1,6 @@
 import {
 	callFunctionsPerSetting,
-	getSetting,
+	patternState,
 	setSetting,
 	SettingsFunctionObject,
 	to,
@@ -45,7 +45,7 @@ describe('call functions per setting', () => {
 			],
 		})
 
-		expect(getSetting.default('tileSize')).toBe(newTileSize)
-		expect(getSetting.default('zoom')).toBe(newZoom)
+		expect(patternState.get('tileSize')).toBe(newTileSize)
+		expect(patternState.get('zoom')).toBe(newZoom)
 	})
 })

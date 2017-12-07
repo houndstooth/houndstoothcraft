@@ -16,7 +16,6 @@ export {
 	createContext,
 	createEffectToggles,
 	executeSelectedHoundstoothEffects,
-	getSetting,
 	InputElement,
 	PageElement,
 	Pixel,

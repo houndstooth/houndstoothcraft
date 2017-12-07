@@ -1,9 +1,10 @@
-import { Context, getCurrentContext, getSetting } from '../../app'
+import { Context, getCurrentContext } from '../../app'
 import { NullarySideEffector } from '../../utilities'
+import { get } from '../patternState'
 
 const applyOpacity: NullarySideEffector =
 	(): void => {
-		const opacity: number = getSetting.default('opacity')
+		const opacity: number = get('opacity')
 		if (!opacity || opacity === 1) {
 			return
 		}

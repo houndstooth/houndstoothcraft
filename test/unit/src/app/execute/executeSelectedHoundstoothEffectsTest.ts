@@ -56,7 +56,7 @@ describe('execute selected houndstooth effects', () => {
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
 		executeSelectedHoundstoothEffects.default()
 
-		expect(patternState).toEqual(appState.settings.mainHoundstooth.basePattern)
+		expect(patternState.patternState).toEqual(appState.settings.mainHoundstooth.basePattern)
 	})
 
 	it('sets up for rendering', () => {

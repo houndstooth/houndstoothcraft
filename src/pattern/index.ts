@@ -97,4 +97,6 @@ export {
 	applyTilt,
 	applyZoom,
 } from './view'
-export { patternState } from './patternState'
+
+import * as patternState from './patternState'
+export { patternState }

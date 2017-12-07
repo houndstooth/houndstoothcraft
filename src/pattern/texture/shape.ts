@@ -1,6 +1,6 @@
-import { getSetting } from '../../app'
 import { codeUtilities } from '../../utilities'
 import { ShapeColorIndex } from '../color'
+import { get } from '../patternState'
 import { Outline } from '../stripe'
 import solid from './solid'
 import texture from './texture'
@@ -19,7 +19,7 @@ const shape: (_: ShapeParams) => void =
 			index: stripeIndex,
 		})
 
-		const { executeTexture }: TextureSettings = getSetting.default('textureSettings')
+		const { executeTexture }: TextureSettings = get('textureSettings')
 
 		if (executeTexture) {
 			texture({ outline, tileSize, executeTexture, shapeColorIndex })

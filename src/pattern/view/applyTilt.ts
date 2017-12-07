@@ -1,11 +1,12 @@
-import { getSetting, Path, Pixel } from '../../app'
+import { Path, Pixel } from '../../app'
 import { CANVAS_SIZE, HALF } from '../../constants'
 import { from, mathUtilities, to } from '../../utilities'
+import { get } from '../patternState'
 import { Radian } from '../stripe'
 
 const applyTilt: (path: Path) => Path =
 	(path: Path): Path => {
-		const rotateViewAboutCanvasCenter: Radian = getSetting.default('rotateViewAboutCanvasCenter')
+		const rotateViewAboutCanvasCenter: Radian = get('rotateViewAboutCanvasCenter')
 
 		if (!rotateViewAboutCanvasCenter) {
 			return path

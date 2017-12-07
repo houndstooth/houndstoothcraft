@@ -1,5 +1,5 @@
-import { getSetting } from '../../app'
 import { codeUtilities, from } from '../../utilities'
+import { get } from '../patternState'
 import {
 	GetShapeColorIndicesWithOffset,
 	GetShapeColorIndicesWithOffsetParams,
@@ -9,7 +9,7 @@ import {
 
 const getBySupertile: GetShapeColorIndicesWithOffset =
 	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
-		const supertile: Supertile = getSetting.default('supertile')
+		const supertile: Supertile = get('supertile')
 		const [ x, y ]: number[] = from.Address(gridAddress)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)
 

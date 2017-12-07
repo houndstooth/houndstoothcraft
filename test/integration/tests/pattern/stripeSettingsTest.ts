@@ -4,7 +4,7 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
-	getSetting,
+	patternState,
 	StripeCountMode,
 	to,
 	Unit,
@@ -20,7 +20,7 @@ const { BLACK, TRANSPARENT } = constants
 describe('.stripeSettings', () => {
 	let areaSize: Unit
 	beforeEach(() => {
-		areaSize = getSetting.default('tileSize')
+		areaSize = patternState.get('tileSize')
 	})
 
 	describe('.stripePositionSettings', () => {

@@ -1,6 +1,8 @@
-import { clearContexts, exportCanvas, getSetting, mixDownContexts, updateCurrentFrame } from '../'
+import { patternState } from '../../pattern'
 import { from, NullaryVoidPromise, to } from '../../utilities'
 import { appState } from '../appState'
+import { clearContexts, exportCanvas, mixDownContexts } from '../canvas'
+import { updateCurrentFrame } from '../controls'
 import executePattern from './executePattern'
 import previousFrameHasFinished from './previousFrameHasFinished'
 import { ExecuteParams } from './types'
@@ -12,7 +14,7 @@ const buildAnimationFunction: (_: ExecuteParams) => NullaryVoidPromise =
 				return
 			}
 
-			if (getSetting.default('refreshCanvas')) {
+			if (patternState.get('refreshCanvas')) {
 				clearContexts.default()
 			}
 

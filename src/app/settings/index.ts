@@ -6,7 +6,6 @@ import * as composePatterns from './composePatterns'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
-import * as getSetting from './getSetting'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
@@ -34,7 +33,6 @@ export {
 	effectsHaveConflicts,
 	deeperPath,
 	getPatternSettingOrCreatePath,
-	getSetting,
 	setSetting,
 	shouldRecurse,
 	buildSettingNamesToPathsMap,

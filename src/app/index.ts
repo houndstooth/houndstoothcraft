@@ -91,7 +91,6 @@ export {
 	setSetting,
 	deeperPath,
 	getPatternSettingOrCreatePath,
-	getSetting,
 	shouldRecurse,
 	SettingNamesToPathsMap,
 	buildSettingNamesToPathsMap,

@@ -4,7 +4,7 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
-	getSetting,
+	patternState,
 	to,
 	Unit,
 } from '../../../../src'
@@ -22,7 +22,7 @@ describe('.viewSettings', () => {
 					viewSettings: { zoom },
 				},
 			}
-			const tileSize: Unit = getSetting.default('tileSize')
+			const tileSize: Unit = patternState.get('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
@@ -72,7 +72,7 @@ describe('.viewSettings', () => {
 					},
 				},
 			}
-			const tileSize: Unit = getSetting.default('tileSize')
+			const tileSize: Unit = patternState.get('tileSize')
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
@@ -156,7 +156,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
-			const areaSize: Unit = getSetting.default('tileSize')
+			const areaSize: Unit = patternState. get('tileSize')
 
 			const houndstoothOverrides: Effect = {
 				basePattern: {

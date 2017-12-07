@@ -3,7 +3,7 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
-	getSetting,
+	patternState,
 	to,
 	Unit,
 } from '../../../../src'
@@ -14,7 +14,7 @@ const { BLACK, TRANSPARENT, WHITE } = constants
 describe('.gridSettings', () => {
 	let tileSize: Unit
 	beforeEach(() => {
-		tileSize = getSetting.default('tileSize')
+		tileSize = patternState.get('tileSize')
 	})
 
 	describe('.tileResolution', () => {

@@ -6,8 +6,8 @@ import {
 	createEffectToggles,
 	enableOrDisableOtherEffectToggles,
 	executeLayer,
-	getSetting,
 	PageElement,
+	patternState,
 	updateCurrentFrame,
 } from '../../../../src'
 import { buildMockElement } from '../../../unit'
@@ -34,16 +34,15 @@ describe('controls', () => {
 			createEffectToggles.default(Object.values(effects))
 			const effectToggle: PageElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
 
-			expect(getSetting.default('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+			expect(patternState.get('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 
 			// tslint:disable-next-line:no-unsafe-any
 			effectToggle.click()
-			expect(getSetting.default('colorSet')).toEqual(GONGRAM_COLOR_SET)
+			expect(patternState.get('colorSet')).toEqual(GONGRAM_COLOR_SET)
 
 			// tslint:disable-next-line:no-unsafe-any
 			effectToggle.click()
-			expect(getSetting.default('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+			expect(patternState.get('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 		})
 	})
 })
-

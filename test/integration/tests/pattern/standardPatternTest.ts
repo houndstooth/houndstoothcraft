@@ -2,7 +2,7 @@ import {
 	constants,
 	executeSelectedHoundstoothEffects,
 	from,
-	getSetting,
+	patternState,
 	to,
 	Unit,
 } from '../../../../src'
@@ -23,7 +23,7 @@ describe('standard houndstooth pattern', () => {
 
 		setTimeout(() => {
 			let baseId: number = -8
-			const tileSize: Unit = getSetting.default('tileSize')
+			const tileSize: Unit = patternState.get('tileSize')
 			const firstSupertileExpectations: StandardTileExpectation[] = [
 				{
 					baseId: baseId += 8,

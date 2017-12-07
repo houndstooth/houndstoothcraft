@@ -5,7 +5,7 @@ import {
 	Effect,
 	executeSelectedHoundstoothEffects,
 	from,
-	getSetting,
+	patternState,
 	to,
 	Unit,
 } from '../../../../src'
@@ -21,7 +21,7 @@ const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 describe('.colorSettings', () => {
 	let tileSize: Unit
 	beforeEach(() => {
-		tileSize = getSetting.default('tileSize')
+		tileSize = patternState.get('tileSize')
 	})
 
 	describe('.colorSet', () => {

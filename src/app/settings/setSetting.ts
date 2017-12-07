@@ -10,7 +10,7 @@ const setSetting: SetSetting =
 		const baseSettingsPath: SettingsPath = appState.settings.settingNamesToPathsMap[ settingName ]
 
 		const parentSetting: any = getPatternSettingOrCreatePath({
-			pattern: patternState,
+			pattern: patternState.patternState,
 			settingsPath: baseSettingsPath,
 		})
 		parentSetting[ settingName ] = value

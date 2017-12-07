@@ -1,6 +1,5 @@
 import { Canvas, Color, consoleWrapper, Coordinate, parseColor } from '../../../src'
-import { isCloseTo } from '../../helpers'
-import { buildMockCanvas } from '../../unit'
+import { buildMockCanvas, isCloseTo } from '../../helpers'
 import { CheckColorProperties, Key, PixelIsColor } from './types'
 
 const pixelIsColor: PixelIsColor =

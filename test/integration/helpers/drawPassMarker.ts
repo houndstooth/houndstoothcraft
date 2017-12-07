@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { Canvas, Context, from } from '../../../src'
-import { buildMockCanvas } from '../../unit'
+import { buildMockCanvas } from '../../helpers'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { DrawPassMarker } from './types'
 

@@ -1,6 +1,6 @@
 import { appState, Canvas, Context, createContext, documentWrapper, PageElement } from '../../../../../src'
-import { buildMockContext } from '../../../../helpers'
-import { buildMockCanvas, buildMockElement } from '../../../helpers'
+import { buildMockCanvas, buildMockContext } from '../../../../helpers'
+import { buildMockElement } from '../../../helpers'
 
 const subject: (_: { canvasContainer: PageElement }) => Context = createContext.default
 

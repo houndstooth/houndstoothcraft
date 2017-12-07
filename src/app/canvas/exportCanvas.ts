@@ -1,8 +1,9 @@
 import { Frame } from '../../pattern'
+import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import saveCanvas from './saveCanvas'
 
-const exportCanvas: () => void =
+const exportCanvas: NullarySideEffector =
 	(): void => {
 		const currentFrame: Frame = appState.controls.currentFrame
 		// tslint:disable-next-line:no-unsafe-any

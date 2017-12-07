@@ -2,6 +2,8 @@ import { appState, Canvas, Context, createContext, documentWrapper, PageElement 
 import { buildMockContext } from '../../../../helpers'
 import { buildMockCanvas, buildMockElement } from '../../../helpers'
 
+const subject: (_: { canvasContainer: PageElement }) => Context = createContext.default
+
 describe('create context', () => {
 	let returnedContext: Context
 	let appendedCanvas: Canvas
@@ -15,7 +17,7 @@ describe('create context', () => {
 		children = []
 		canvasContainer = buildMockElement({ children })
 
-		returnedContext = createContext.default({ canvasContainer })
+		returnedContext = subject({ canvasContainer })
 
 		appendedCanvas = children[0]
 	})
@@ -41,7 +43,7 @@ describe('create context', () => {
 		it('when animating, hides the main canvases', () => {
 			appState.controls.animating = true
 
-			createContext.default({ canvasContainer })
+			subject({ canvasContainer })
 			appendedCanvas = children[0]
 
 			expect(appendedCanvas.style.display).toBe('none')

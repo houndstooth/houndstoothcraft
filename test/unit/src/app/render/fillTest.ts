@@ -1,5 +1,7 @@
 import { applyViewForShape, buildFill, buildPath, Color, fill, fillPath, Outline, Path, to } from '../../../../../src'
 
+const subject: (_: { outline: Outline, shapeColor: Color }) => void = fill.default
+
 describe('fill', () => {
 	const shapeColor: Color = { a: 1 }
 
@@ -11,7 +13,7 @@ describe('fill', () => {
 	it('returns early if there are no coordinates in the outline', () => {
 		const outline: Outline = to.Outline([])
 
-		fill.default({ shapeColor, outline })
+		subject({ shapeColor, outline })
 
 		expect(applyViewForShape.default).not.toHaveBeenCalled()
 	})
@@ -19,7 +21,7 @@ describe('fill', () => {
 	it('returns early if there is only one coordinate in the outline, because a point has no area', () => {
 		const outline: Outline = to.Outline([ [ 0, 1 ] ])
 
-		fill.default({ shapeColor, outline })
+		subject({ shapeColor, outline })
 
 		expect(applyViewForShape.default).not.toHaveBeenCalled()
 	})
@@ -27,7 +29,7 @@ describe('fill', () => {
 	it('returns early if there are only two coordinates in the outline, because a line has no area', () => {
 		const outline: Outline = to.Outline([ [ 0, 1 ], [ 1, 1 ] ])
 
-		fill.default({ shapeColor, outline })
+		subject({ shapeColor, outline })
 
 		expect(applyViewForShape.default).not.toHaveBeenCalled()
 	})
@@ -40,7 +42,7 @@ describe('fill', () => {
 			spyOn(fillPath, 'default')
 			outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 
-			fill.default({ shapeColor, outline })
+			subject({ shapeColor, outline })
 		})
 
 		it('adjusts for the view settings', () => {

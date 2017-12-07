@@ -2,15 +2,18 @@ import {
 	appState,
 	attachControlHandlers,
 	frameInputChangeHandler,
+	NullarySideEffector,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
 	snapshotClickHandler,
 } from '../../../../../src'
 
+const subject: NullarySideEffector = attachControlHandlers.default
+
 describe('attach control handlers', () => {
 	it('attaches the handlers for the controls', () => {
-		attachControlHandlers.default()
+		subject()
 
 		expect(appState.dom.frameInput.onchange).toBe(frameInputChangeHandler.default)
 		expect(appState.dom.playButton.onclick).toBe(playClickHandler.default)

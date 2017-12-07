@@ -42,4 +42,5 @@ export {
 	LabelElement,
 	PageElement,
 	Px,
+	InsertElementRightAfter,
 } from './types'

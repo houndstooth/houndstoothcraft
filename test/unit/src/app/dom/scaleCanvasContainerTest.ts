@@ -7,9 +7,10 @@ import {
 } from '../../../../../src'
 import { buildMockBody, buildMockElement } from '../../../helpers'
 
-const { CANVAS_SIZE } = constants
+const subject: () => PageElement = scaleCanvasContainer.default
 
 describe('scale canvas container', () => {
+	const { CANVAS_SIZE } = constants
 	const canvasContainerClassList: string[] = []
 	let bodyChildren: PageElement[]
 	let returnedCanvasContainer: PageElement
@@ -24,7 +25,7 @@ describe('scale canvas container', () => {
 		const canvasContainer: PageElement = buildMockElement({ classList: canvasContainerClassList })
 		spyOn(documentWrapper, 'createElement').and.callFake(() => canvasContainer)
 
-		returnedCanvasContainer = scaleCanvasContainer.default()
+		returnedCanvasContainer = subject()
 	})
 
 	it('returns the canvas container it just put on the dom', () => {

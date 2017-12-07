@@ -3,6 +3,7 @@ import {
 	buildAnimationFunction,
 	callFunctionsPerSetting,
 	clearContexts,
+	ExecuteParams,
 	executePattern,
 	exportCanvas,
 	mixDownContexts,
@@ -14,6 +15,8 @@ import {
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import { setPatternStateForTest } from '../../../helpers'
+
+const subject: (_: ExecuteParams) => NullaryVoidPromise = buildAnimationFunction.default
 
 describe('build animation function returns an animation function', () => {
 	let animationFunction: NullaryVoidPromise
@@ -31,7 +34,7 @@ describe('build animation function returns an animation function', () => {
 		spyOn(exportCanvas, 'default')
 		spyOn(mixDownContexts, 'default')
 		appState.controls.currentFrame = to.Frame(5)
-		animationFunction = buildAnimationFunction.default({
+		animationFunction = subject({
 			animationFunctionObjects,
 			layerFunctionObjects,
 		})

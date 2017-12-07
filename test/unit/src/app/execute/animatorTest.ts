@@ -1,4 +1,5 @@
 import {
+	AnimationParams,
 	animator,
 	appState,
 	buildAnimationIntervalFunction,
@@ -7,9 +8,10 @@ import {
 	windowWrapper,
 } from '../../../../../src'
 
-const FRAME_RATE: number = 30
+const subject: (_: AnimationParams) => void = animator.default
 
 describe('animator', () => {
+	const FRAME_RATE: number = 30
 	let intervalFunction: (p: number) => number
 	const animationFunction: NullarySideEffector = noop.default
 	const resolveAnimation: NullarySideEffector = noop.default
@@ -19,7 +21,7 @@ describe('animator', () => {
 		intervalFunction = (p: number): number => p * 20
 		spyOn(buildAnimationIntervalFunction, 'default').and.returnValue(intervalFunction)
 
-		animator.default({ animationFunction, resolveAnimation })
+		subject({ animationFunction, resolveAnimation })
 	})
 
 	it('assembles the animation, resolution, and stop condition functions together', () => {

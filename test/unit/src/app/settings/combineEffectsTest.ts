@@ -4,6 +4,8 @@ import { combineEffects, composePatterns, Effect } from '../../../../../src'
 import CallInfo = jasmine.CallInfo
 import Spy = jasmine.Spy
 
+const subject: (_: { effects: Effect[] }) => Effect = combineEffects.default
+
 describe('combine effects', () => {
 	it('composes the base, animations, and layers patterns of every effect', () => {
 		const composePatternsSpy: Spy = spyOn(composePatterns, 'default')
@@ -12,7 +14,7 @@ describe('combine effects', () => {
 		const effectTwo: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
 		const effects: Effect[] = [ effectOne, effectTwo ]
 
-		combineEffects.default({ effects })
+		subject({ effects })
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 

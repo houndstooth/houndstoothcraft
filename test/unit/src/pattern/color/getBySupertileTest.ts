@@ -1,5 +1,7 @@
-import { Address, getBySupertile, ShapeColorIndex, to } from '../../../../../src'
+import { Address, getBySupertile, GetShapeColorIndicesWithOffset, ShapeColorIndex, to } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
+
+const subject: GetShapeColorIndicesWithOffset = getBySupertile.default
 
 describe('get by supertile', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])
@@ -14,7 +16,7 @@ describe('get by supertile', () => {
 			[ [], [] ],
 		]))
 
-		const actualSupertileEntry: ShapeColorIndex[] = getBySupertile.default({ gridAddress, addressOffset })
+		const actualSupertileEntry: ShapeColorIndex[] = subject({ gridAddress, addressOffset })
 		expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 	})
 
@@ -28,7 +30,7 @@ describe('get by supertile', () => {
 			[ [], [] ],
 		]))
 
-		const actualSupertileEntry: ShapeColorIndex[] = getBySupertile.default({ gridAddress, addressOffset })
+		const actualSupertileEntry: ShapeColorIndex[] = subject({ gridAddress, addressOffset })
 		expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 	})
 })

@@ -1,10 +1,11 @@
-import { applyBackgroundColor, appState, constants } from '../../../../../src'
+import { applyBackgroundColor, appState, constants, NullarySideEffector } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 import Spy = jasmine.Spy
 
-const { CANVAS_SIZE, CYAN } = constants
+const subject: NullarySideEffector = applyBackgroundColor.default
 
 describe('apply background color', () => {
+	const { CANVAS_SIZE, CYAN } = constants
 	const defaultFillStyle: string = '#000000'
 	let fillRectSpy: Spy
 	beforeEach(() => {
@@ -15,16 +16,16 @@ describe('apply background color', () => {
 	it('fills the entire canvas with the color', () => {
 		setPatternStateForTest('colorSettings', { backgroundColor: CYAN })
 
-		applyBackgroundColor.default()
+		subject()
 
-		expect(appState.canvas.contexts[0].fillStyle).toBe('rgba(0,255,255,1)')
+		expect(appState.canvas.contexts[ 0 ].fillStyle).toBe('rgba(0,255,255,1)')
 		expect(fillRectSpy).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 	})
 
 	it('returns early when no background color is set', () => {
-		applyBackgroundColor.default()
+		subject()
 
-		expect(appState.canvas.contexts[0].fillStyle).toBe(defaultFillStyle)
+		expect(appState.canvas.contexts[ 0 ].fillStyle).toBe(defaultFillStyle)
 		expect(fillRectSpy).not.toHaveBeenCalled()
 	})
 })

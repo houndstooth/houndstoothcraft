@@ -2,6 +2,7 @@ import {
 	appState,
 	combineEffects,
 	composeMainHoundstooth,
+	ComposeMainHoundstoothParams,
 	composePatterns,
 	consoleWrapper,
 	defaults,
@@ -10,17 +11,19 @@ import {
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 
-const {
-	DEFAULT_ANIMATIONS_PATTERN,
-	DEFAULT_BASE_PATTERN,
-	DEFAULT_LAYERS_PATTERN,
-} = defaults
+const subject: (_?: ComposeMainHoundstoothParams) => void = composeMainHoundstooth.default
 
 describe('composeMainHoundstooth', () => {
+	const {
+		DEFAULT_ANIMATIONS_PATTERN,
+		DEFAULT_BASE_PATTERN,
+		DEFAULT_LAYERS_PATTERN,
+	} = defaults
+
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		composeMainHoundstooth.default({ logComposedMainHoundstooth: true })
+		subject({ logComposedMainHoundstooth: true })
 
 		expect(consoleWrapper.log).toHaveBeenCalledWith(appState.settings.mainHoundstooth)
 	})
@@ -28,7 +31,7 @@ describe('composeMainHoundstooth', () => {
 	it('does not log the houndstooth when logging mode is not on', () => {
 		spyOn(consoleWrapper, 'log')
 
-		composeMainHoundstooth.default()
+		subject()
 
 		expect(consoleWrapper.log).not.toHaveBeenCalled()
 	})
@@ -41,7 +44,7 @@ describe('composeMainHoundstooth', () => {
 		spyOn(combineEffects, 'default').and.returnValue(combinedEffects)
 
 		const overrides: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		composeMainHoundstooth.default({ overrides })
+		subject({ overrides })
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 

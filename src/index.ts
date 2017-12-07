@@ -94,6 +94,14 @@ export {
 	ConditionFunction,
 	ExecuteLayerParams,
 	appState,
+	InsertElementRightAfter,
+	Dimensions,
+	AnimationParams,
+	ExecuteParams,
+	ComposeMainHoundstoothParams,
+	ComposePatternsParams,
+	FullSettingsPath,
+	PrepareFunctionObjectsParams,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -173,6 +181,15 @@ export {
 	textureSettings,
 	tileSettings,
 	viewSettings,
+	ReferencedGridAddress,
+	GetShapeColorIndicesWithOffset,
+	GetShapeColorIndices,
+	GetOutline,
+	RotateCoordinateParams,
+	GetStripeOutline,
+	ShapeParams,
+	TextureParams,
+	DefinedTileParams,
 } from './pattern'
 export {
 	codeUtilities,

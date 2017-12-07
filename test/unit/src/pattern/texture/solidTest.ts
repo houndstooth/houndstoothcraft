@@ -1,5 +1,7 @@
-import { Color, fill, getColor, Outline, ShapeColorIndex, solid, to } from '../../../../../src'
+import { Color, fill, getColor, Outline, ShapeColorIndex, solid, SolidParams, to } from '../../../../../src'
 import Spy = jasmine.Spy
+
+const subject: (_: SolidParams) => void = solid.default
 
 describe('solid', () => {
 	const shapeColorIndex: ShapeColorIndex = to.ShapeColorIndex(8)
@@ -15,13 +17,13 @@ describe('solid', () => {
 	})
 
 	it('gets the color from the pattern\'s color set, using the provided index', () => {
-		solid.default({ outline, shapeColorIndex })
+		subject({ outline, shapeColorIndex })
 
 		expect(getColor.default).toHaveBeenCalledWith({ index: shapeColorIndex })
 	})
 
 	it('when the color is not completely transparent, it renders', () => {
-		solid.default({ outline, shapeColorIndex })
+		subject({ outline, shapeColorIndex })
 
 		expect(fill.default).toHaveBeenCalledWith({ outline, shapeColor })
 	})
@@ -29,7 +31,7 @@ describe('solid', () => {
 	it('when the color turns out to be completely transparent, it does not render', () => {
 		getColorSpy.and.returnValue(transparentColor)
 
-		solid.default({ outline, shapeColorIndex })
+		subject({ outline, shapeColorIndex })
 
 		expect(fill.default).not.toHaveBeenCalled()
 	})

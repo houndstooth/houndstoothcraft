@@ -1,6 +1,8 @@
 import { applyZoom, Path, to } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 
+const subject: (_: Path) => Path = applyZoom.default
+
 describe('apply zoom', () => {
 	const zoom: number = 2
 	let path: Path
@@ -15,7 +17,7 @@ describe('apply zoom', () => {
 	})
 
 	it('adjusts the path per the zoom level', () => {
-		expect(applyZoom.default(path)).toEqual(to.Path([
+		expect(subject(path)).toEqual(to.Path([
 			[ 100, 100 ],
 			[ 200, 100 ],
 			[ 200, 200 ],
@@ -35,7 +37,7 @@ describe('apply zoom', () => {
 		})
 
 		it('works', () => {
-			expect(applyZoom.default(path)).toEqual(to.Path([
+			expect(subject(path)).toEqual(to.Path([
 				[ 300, 300 ],
 				[ 400, 300 ],
 				[ 400, 400 ],
@@ -50,7 +52,7 @@ describe('apply zoom', () => {
 		})
 
 		it('does not double-up on adjusting for centering the view', () => {
-			expect(applyZoom.default(path)).toEqual(to.Path([
+			expect(subject(path)).toEqual(to.Path([
 				[ 300, 300 ],
 				[ 400, 300 ],
 				[ 400, 400 ],

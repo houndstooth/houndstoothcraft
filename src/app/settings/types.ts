@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any max-file-line-count
 
 import { Effect, NamedEffect, Pattern } from '../../pattern'
 
@@ -35,7 +35,7 @@ interface SettingConflictCheck {
 	readonly settingCheckingForConflict: any,
 }
 
-interface ComposeMainHoundstooth {
+interface ComposeMainHoundstoothParams {
 	readonly effects?: NamedEffect[],
 	readonly logComposedMainHoundstooth?: boolean,
 	readonly overrides?: Effect,
@@ -89,7 +89,7 @@ export {
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
 	SettingConflictCheck,
-	ComposeMainHoundstooth,
+	ComposeMainHoundstoothParams,
 	ComposePatternParams,
 	ComposePatternsParams,
 	FullSettingsPath,

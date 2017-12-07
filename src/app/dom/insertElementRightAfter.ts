@@ -1,8 +1,8 @@
 // tslint:disable:no-unsafe-any
 
-import { PageElement } from './types'
+import { InsertElementRightAfter, PageElement } from './types'
 
-const insertElementRightAfter: (element: PageElement, elementRightAfterWhichToInsert: PageElement) => void =
+const insertElementRightAfter: InsertElementRightAfter =
 	(element: PageElement, elementRightAfterWhichToInsert: PageElement): void =>
 		elementRightAfterWhichToInsert.parentNode.insertBefore(element, elementRightAfterWhichToInsert.nextSibling)
 

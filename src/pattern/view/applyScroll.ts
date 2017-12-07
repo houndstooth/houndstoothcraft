@@ -4,7 +4,7 @@ import { from, to } from '../../utilities'
 import { Unit } from '../grid'
 import { get } from '../patternState'
 
-const applyScroll: (path: Path) => Path =
+const applyScroll: (_: Path) => Path =
 	(path: Path): Path => {
 		const centerViewOnCenterOfTileAtHomeAddress: boolean = get('centerViewOnCenterOfTileAtHomeAddress')
 

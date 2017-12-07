@@ -4,6 +4,8 @@ import { DataBlob, documentWrapper, PageElement, saveBlob, windowWrapper } from 
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 
+const subject: (_: { blob: DataBlob, name: string }) => void = saveBlob.default
+
 describe('save blob', () => {
 	it('creates a download link and clicks it', () => {
 		spyOn(windowWrapper.URL, 'createObjectURL').and.returnValue('the url')
@@ -18,7 +20,7 @@ describe('save blob', () => {
 
 		const blob: DataBlob = {}
 		const name: string = 'whatever.png'
-		saveBlob.default({ blob, name })
+		subject({ blob, name })
 
 		expect(windowWrapper.URL.createObjectURL).toHaveBeenCalledWith(blob)
 		expect(appendChildSpy).toHaveBeenCalledWith(link)

@@ -10,6 +10,8 @@ import {
 } from '../../../../../src'
 import Spy = jasmine.Spy
 
+const subject: NullarySideEffector = rewindClickHandler.default
+
 describe('rewind click handler', () => {
 	let executeSelectedEffectsSpy: Spy
 
@@ -22,19 +24,19 @@ describe('rewind click handler', () => {
 	})
 
 	it('clears the interval with the helper which also removes it from the state', () => {
-		rewindClickHandler.default()
+		subject()
 
 		expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
 	})
 
 	it('resets the current frame', () => {
-		rewindClickHandler.default()
+		subject()
 
 		expect(updateCurrentFrame.default).toHaveBeenCalledWith(to.Frame(0))
 	})
 
 	it('executes the selected effects', () => {
-		rewindClickHandler.default()
+		subject()
 
 		expect(executeSelectedEffectsSpy).toHaveBeenCalled()
 	})
@@ -44,7 +46,7 @@ describe('rewind click handler', () => {
 			appState.controls.animating = false
 			appState.dom.rewindButton.disabled = false
 
-			rewindClickHandler.default()
+			subject()
 
 			expect(appState.dom.rewindButton.disabled).toBe(true)
 			expect(clearMixedDownContext.default).toHaveBeenCalled()
@@ -54,7 +56,7 @@ describe('rewind click handler', () => {
 			appState.controls.animating = true
 			appState.dom.rewindButton.disabled = false
 
-			rewindClickHandler.default()
+			subject()
 
 			expect(appState.dom.rewindButton.disabled).toBe(false)
 			expect(clearMixedDownContext.default).not.toHaveBeenCalled()

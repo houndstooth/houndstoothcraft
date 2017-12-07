@@ -7,6 +7,7 @@ import {
 	OutlineOptions,
 	shape,
 	ShapeColorIndex,
+	ShapeParams,
 	solid,
 	texture,
 	to,
@@ -14,6 +15,8 @@ import {
 } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 import Spy = jasmine.Spy
+
+const subject: (_: ShapeParams) => void = shape.default
 
 describe('shape', () => {
 	const tileOrigin: Coordinate = to.Coordinate([ 11, 13 ])
@@ -37,7 +40,7 @@ describe('shape', () => {
 		beforeEach(() => getOutlineSpy.and.returnValue(undefined))
 
 		it('returns early, not rendering', () => {
-			shape.default({
+			subject({
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				shapeColorIndices,
@@ -57,7 +60,7 @@ describe('shape', () => {
 		beforeEach(() => getOutlineSpy.and.returnValue(outline))
 
 		it('gets the outline', () => {
-			shape.default({
+			subject({
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				shapeColorIndices,
@@ -75,7 +78,7 @@ describe('shape', () => {
 
 		// tslint:disable-next-line:max-line-length
 		it('gets the index of the color in the central colorSet, from the array of such indicies for the tile, using the stripe index', () => {
-			shape.default({
+			subject({
 				getOutline: getOutlineSpy,
 				outlineOptions,
 				shapeColorIndices,
@@ -97,7 +100,7 @@ describe('shape', () => {
 			})
 
 			it('passes it to the texture component to be rendered', () => {
-				shape.default({
+				subject({
 					getOutline: getOutlineSpy,
 					outlineOptions,
 					shapeColorIndices,
@@ -117,7 +120,7 @@ describe('shape', () => {
 
 		describe('when an executeTexture method is not supplied', () => {
 			it('passes it to the solid component to be rendered', () => {
-				shape.default({
+				subject({
 					getOutline: getOutlineSpy,
 					outlineOptions,
 					shapeColorIndices,

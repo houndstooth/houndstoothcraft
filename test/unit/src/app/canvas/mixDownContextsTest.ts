@@ -1,10 +1,11 @@
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { appState, constants, mixDownContexts } from '../../../../../src'
+import { appState, constants, mixDownContexts, NullarySideEffector } from '../../../../../src'
 
-const { CANVAS_SIZE } = constants
+const subject: NullarySideEffector = mixDownContexts.default
 
 describe('mix down contexts', () => {
+	const { CANVAS_SIZE } = constants
 	const drawImageSpy: Spy = jasmine.createSpy('drawImage')
 	const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 	beforeEach(() => {
@@ -12,7 +13,7 @@ describe('mix down contexts', () => {
 	})
 
 	it('clears the mixed down canvas just before rendering', () => {
-		mixDownContexts.default()
+		subject()
 
 		expect(clearRectSpy).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 	})
@@ -27,14 +28,14 @@ describe('mix down contexts', () => {
 			{ canvas: 5 },
 		]
 
-		mixDownContexts.default()
+		subject()
 
 		const drawImageSpyCalls: CallInfo[] = drawImageSpy.calls.all()
-		expect(drawImageSpyCalls[0].args[0]).toEqual(0)
-		expect(drawImageSpyCalls[1].args[0]).toEqual(1)
-		expect(drawImageSpyCalls[2].args[0]).toEqual(2)
-		expect(drawImageSpyCalls[3].args[0]).toEqual(3)
-		expect(drawImageSpyCalls[4].args[0]).toEqual(4)
-		expect(drawImageSpyCalls[5].args[0]).toEqual(5)
+		expect(drawImageSpyCalls[ 0 ].args[ 0 ]).toEqual(0)
+		expect(drawImageSpyCalls[ 1 ].args[ 0 ]).toEqual(1)
+		expect(drawImageSpyCalls[ 2 ].args[ 0 ]).toEqual(2)
+		expect(drawImageSpyCalls[ 3 ].args[ 0 ]).toEqual(3)
+		expect(drawImageSpyCalls[ 4 ].args[ 0 ]).toEqual(4)
+		expect(drawImageSpyCalls[ 5 ].args[ 0 ]).toEqual(5)
 	})
 })

@@ -3,12 +3,15 @@ import {
 	asyncMaybeTile,
 	maybeTile,
 	NullarySideEffector,
+	ReferencedGridAddress,
 	thisPatternHasNotBeenCanceled,
 	to,
 	updateProgress,
 	windowWrapper,
 } from '../../../../../src'
 import Spy = jasmine.Spy
+
+const subject: (_: ReferencedGridAddress) => void = asyncMaybeTile.default
 
 describe('async maybe tile', () => {
 	let setTimeoutSpy: Spy
@@ -26,13 +29,13 @@ describe('async maybe tile', () => {
 	})
 
 	it('unblocks the thread by scheduling the tile for the next event loop', () => {
-		asyncMaybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(setTimeoutSpy.calls.all()[ 0 ].args[ 1 ]).toBe(0)
 	})
 
 	it('checks that the pattern has not been cancelled', () => {
-		asyncMaybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(thisPatternHasNotBeenCanceledSpy).toHaveBeenCalledWith(99)
 	})
@@ -41,7 +44,7 @@ describe('async maybe tile', () => {
 		beforeEach(() => {
 			thisPatternHasNotBeenCanceledSpy.and.returnValue(true)
 
-			asyncMaybeTile.default({ gridAddress, thisPatternRef })
+			subject({ gridAddress, thisPatternRef })
 		})
 
 		it('calls maybe tile with the same arguments', () => {
@@ -57,7 +60,7 @@ describe('async maybe tile', () => {
 		beforeEach(() => {
 			thisPatternHasNotBeenCanceledSpy.and.returnValue(false)
 
-			asyncMaybeTile.default({ gridAddress, thisPatternRef })
+			subject({ gridAddress, thisPatternRef })
 		})
 
 		it('does not call maybe tile', () => {

@@ -11,6 +11,8 @@ type Dimensions = _DimensionsBrand & Px[]
 
 type InputElement = HTMLInputElement | MockInputElement
 
+type InsertElementRightAfter = (element: PageElement, elementRightAfterWhichToInsert: PageElement) => void
+
 type LabelElement = HTMLLabelElement | MockElement
 
 type PageElement = HTMLElement | MockElement
@@ -24,6 +26,7 @@ export {
 	Context,
 	Dimensions,
 	InputElement,
+	InsertElementRightAfter,
 	LabelElement,
 	PageElement,
 	Px,

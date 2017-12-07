@@ -28,4 +28,6 @@ export {
 	TransformShapeColorIndices,
 	TransformShapeColorIndicesParams,
 	Weave,
+	GetShapeColorIndicesWithOffset,
+	GetShapeColorIndices,
 } from './types'

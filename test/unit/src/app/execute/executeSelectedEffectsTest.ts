@@ -13,6 +13,8 @@ import {
 	SettingsFunctionObject,
 } from '../../../../../src'
 
+const subject: (_?: { overrides?: Effect }) => void = executeSelectedEffects.default
+
 describe('execute selected effects', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
@@ -29,7 +31,7 @@ describe('execute selected effects', () => {
 		spyOn(composeMainHoundstooth, 'default')
 
 		const overrides: Effect = {}
-		executeSelectedEffects.default({ overrides })
+		subject({ overrides })
 
 		expect(composeMainHoundstooth.default).toHaveBeenCalledWith({
 			effects: appState.controls.selectedEffects,
@@ -38,7 +40,7 @@ describe('execute selected effects', () => {
 	})
 
 	it('prepares layer functions', () => {
-		executeSelectedEffects.default()
+		subject()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
@@ -46,7 +48,7 @@ describe('execute selected effects', () => {
 	})
 
 	it('prepares animation functions', () => {
-		executeSelectedEffects.default()
+		subject()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
@@ -54,13 +56,13 @@ describe('execute selected effects', () => {
 	})
 
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
-		executeSelectedEffects.default()
+		subject()
 
 		expect(patternState.get()).toEqual(appState.settings.mainHoundstooth.basePattern)
 	})
 
 	it('sets up for rendering', () => {
-		executeSelectedEffects.default()
+		subject()
 
 		expect(createContexts.default).toHaveBeenCalled()
 	})
@@ -69,7 +71,7 @@ describe('execute selected effects', () => {
 		beforeEach(() => {
 			appState.controls.animating = true
 
-			executeSelectedEffects.default()
+			subject()
 		})
 
 		it('executes an animation', () => {
@@ -88,7 +90,7 @@ describe('execute selected effects', () => {
 		beforeEach(() => {
 			appState.controls.animating = false
 
-			executeSelectedEffects.default()
+			subject()
 		})
 
 		it('executes a single pattern', () => {

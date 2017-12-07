@@ -40,4 +40,8 @@ export {
 	FunctionsOf,
 	SettingsFunction,
 	SettingsFunctionObject,
+	ComposeMainHoundstoothParams,
+	ComposePatternsParams,
+	FullSettingsPath,
+	PrepareFunctionObjectsParams,
 } from './types'

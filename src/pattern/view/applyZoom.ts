@@ -5,10 +5,10 @@ import { get } from '../patternState'
 import { DoAdjustmentParams } from './types'
 import { ViewSettings } from './viewSettings'
 
-const applyZoom: (path: Path) => Path =
+const applyZoom: (_: Path) => Path =
 	(path: Path): Path => to.Path(path.map(adjustPixelForZoom))
 
-const adjustPixelForZoom: (pixel: Pixel) => Pixel =
+const adjustPixelForZoom: (_: Pixel) => Pixel =
 	(pixel: Pixel): Pixel => {
 		const {
 			centerViewOnCenterOfTileAtHomeAddress,

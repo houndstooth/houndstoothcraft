@@ -9,6 +9,8 @@ import {
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
+const subject: (_: { effect: NamedEffect }) => LabelElement = createLabel.default
+
 describe('create label', () => {
 	let returnedLabel: LabelElement
 	let label: PageElement
@@ -26,7 +28,7 @@ describe('create label', () => {
 
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 
-		returnedLabel = createLabel.default({ effect })
+		returnedLabel = subject({ effect })
 	})
 
 	it('returns the created label', () => {

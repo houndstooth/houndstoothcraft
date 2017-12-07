@@ -9,6 +9,8 @@ import {
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
+const subject: (_: { effect: NamedEffect }) => InputElement = createCheckbox.default
+
 describe('create checkbox', () => {
 	let returnedCheckbox: InputElement
 	let checkbox: InputElement
@@ -23,7 +25,7 @@ describe('create checkbox', () => {
 
 		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)
 
-		returnedCheckbox = createCheckbox.default({ effect })
+		returnedCheckbox = subject({ effect })
 	})
 
 	it('returns the created label', () => {

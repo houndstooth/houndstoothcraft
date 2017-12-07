@@ -42,4 +42,6 @@ export {
 export {
 	ConditionFunction,
 	ExecuteLayerParams,
+	AnimationParams,
+	ExecuteParams,
 } from './types'

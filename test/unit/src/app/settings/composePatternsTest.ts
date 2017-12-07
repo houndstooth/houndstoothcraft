@@ -1,4 +1,6 @@
-import { AssignmentMode, composePatterns, Pattern } from '../../../../../src'
+import { AssignmentMode, composePatterns, ComposePatternsParams, Pattern } from '../../../../../src'
+
+const subject: (_: ComposePatternsParams) => void = composePatterns.default
 
 describe('compose patterns', () => {
 	it('merges one pattern onto the other', () => {
@@ -24,7 +26,7 @@ describe('compose patterns', () => {
 			},
 		}
 
-		composePatterns.default({ patternToBeMergedOnto, patternToMerge })
+		subject({ patternToBeMergedOnto, patternToMerge })
 
 		const expectedPattern: Pattern = {
 			colorSettings: {
@@ -42,6 +44,6 @@ describe('compose patterns', () => {
 
 	it('defaults the pattern to merge to an empty object, so as to not fail', () => {
 		const patternToBeMergedOnto: Pattern = {}
-		composePatterns.default({ patternToBeMergedOnto })
+		subject({ patternToBeMergedOnto })
 	})
 })

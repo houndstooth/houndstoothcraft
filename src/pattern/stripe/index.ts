@@ -3,7 +3,7 @@ import * as perStripe from './perStripe'
 import * as rotateCoordinate from './rotateCoordinate'
 import * as squareOutline from './squareOutline'
 import * as stripeCountContinuumSettings from './stripeCountContinuumSettings'
-import { stripeOutline } from './stripeOutline'
+import { GetStripeOutline, stripeOutline } from './stripeOutline'
 import * as stripePositionSettings from './stripePositionSettings'
 import * as stripeSettings from './stripeSettings'
 
@@ -16,6 +16,7 @@ export {
 	stripeSettings,
 	perStripe,
 	getStripePositionsForTile,
+	GetStripeOutline,
 }
 export {
 	BaseStripeDiagonal,
@@ -31,4 +32,5 @@ export {
 	Radian,
 	StripeCountMode,
 	StripePosition,
+	RotateCoordinateParams,
 } from './types'

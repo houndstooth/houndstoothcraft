@@ -4,7 +4,7 @@ import { from, mathUtilities, to } from '../../utilities'
 import { get } from '../patternState'
 import { Radian } from '../stripe'
 
-const applyTilt: (path: Path) => Path =
+const applyTilt: (_: Path) => Path =
 	(path: Path): Path => {
 		const rotateViewAboutCanvasCenter: Radian = get('rotateViewAboutCanvasCenter')
 

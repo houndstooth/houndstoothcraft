@@ -9,6 +9,8 @@ import {
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
+const subject: (_: NamedEffect) => void = createEffectToggle.default
+
 describe('create effect toggle', () => {
 	const divChildren: PageElement[] = []
 	const div: PageElement = buildMockElement({ children: divChildren })
@@ -26,7 +28,7 @@ describe('create effect toggle', () => {
 		spyOn(createLabel, 'default').and.returnValue(label)
 		spyOn(documentWrapper, 'querySelector').and.returnValue(effectTogglesContainer)
 
-		createEffectToggle.default(effect)
+		subject(effect)
 	})
 
 	it('puts the div in the effect toggles container', () => {

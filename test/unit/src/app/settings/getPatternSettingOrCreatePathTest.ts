@@ -2,6 +2,8 @@
 
 import { getPatternSettingOrCreatePath, SettingsPath, to } from '../../../../../src'
 
+const subject: (_: { pattern: any, settingsPath: SettingsPath }) => any = getPatternSettingOrCreatePath.default
+
 describe('get pattern setting or create path', () => {
 	it('accesses child setting if it exists', () => {
 		const expectedSetting: any = {}
@@ -12,7 +14,7 @@ describe('get pattern setting or create path', () => {
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getPatternSettingOrCreatePath.default({ pattern, settingsPath })
+		const childSetting: any = subject({ pattern, settingsPath })
 
 		expect(childSetting).toBe(expectedSetting)
 	})
@@ -21,7 +23,7 @@ describe('get pattern setting or create path', () => {
 		const pattern: any = {}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getPatternSettingOrCreatePath.default({ pattern, settingsPath })
+		const childSetting: any = subject({ pattern, settingsPath })
 
 		expect(childSetting).toEqual({})
 		expect(pattern).toEqual({
@@ -39,7 +41,7 @@ describe('get pattern setting or create path', () => {
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = getPatternSettingOrCreatePath.default({ pattern, settingsPath })
+		const childSetting: any = subject({ pattern, settingsPath })
 
 		expect(childSetting).toBe(0)
 		expect(pattern).toEqual({

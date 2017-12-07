@@ -4,15 +4,15 @@ import { appState } from '../appState'
 import { consoleWrapper } from '../dom'
 import combineEffects from './combineEffects'
 import composePatterns from './composePatterns'
-import { ComposeMainHoundstooth, ComposePatternParams } from './types'
+import { ComposeMainHoundstoothParams, ComposePatternParams } from './types'
 
-const composeMainHoundstooth: (_?: ComposeMainHoundstooth) => void =
-	(params?: ComposeMainHoundstooth): void => {
+const composeMainHoundstooth: (_?: ComposeMainHoundstoothParams) => void =
+	(params?: ComposeMainHoundstoothParams): void => {
 		const {
 			effects = [],
 			overrides = {},
 			logComposedMainHoundstooth = false,
-		}: ComposeMainHoundstooth = params || {}
+		}: ComposeMainHoundstoothParams = params || {}
 
 		const combinedEffects: Effect = combineEffects({ effects })
 

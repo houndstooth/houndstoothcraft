@@ -1,9 +1,10 @@
 import { applyScroll, constants, from, Path, to, Unit } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 
-const { CANVAS_SIZE } = constants
+const subject: (_: Path) => Path = applyScroll.default
 
 describe('apply scroll', () => {
+	const { CANVAS_SIZE } = constants
 	const zoom: number = 10
 	const tileSize: Unit = to.Unit(40)
 	const path: Path = to.Path([
@@ -20,7 +21,7 @@ describe('apply scroll', () => {
 		setPatternStateForTest('centerViewOnCenterOfTileAtHomeAddress', true)
 		const halfCanvasSize: number = from.Px(CANVAS_SIZE) / 2
 		const halfTileSize: number = from.Unit(tileSize) / 2
-		expect(applyScroll.default(path)).toEqual(to.Path([
+		expect(subject(path)).toEqual(to.Path([
 			[
 				halfCanvasSize - halfTileSize + 3,
 				halfCanvasSize - halfTileSize + 5,
@@ -40,6 +41,6 @@ describe('apply scroll', () => {
 	it('returns the path unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
 		setPatternStateForTest('centerViewOnCenterOfTileAtHomeAddress', false)
 
-		expect(applyScroll.default(path)).toEqual(path)
+		expect(subject(path)).toEqual(path)
 	})
 })

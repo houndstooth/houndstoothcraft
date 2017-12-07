@@ -1,10 +1,12 @@
-import { appState, pauseClickHandler } from '../../../../../src'
+import { appState, NullarySideEffector, pauseClickHandler } from '../../../../../src'
+
+const subject: NullarySideEffector = pauseClickHandler.default
 
 describe('pause click handler', () => {
 	it('sets animating to false', () => {
 		appState.controls.animating = true
 
-		pauseClickHandler.default()
+		subject()
 
 		expect(appState.controls.animating).toBe(false)
 	})
@@ -12,7 +14,7 @@ describe('pause click handler', () => {
 	it('enables the play button', () => {
 		appState.dom.playButton.disabled = true
 
-		pauseClickHandler.default()
+		subject()
 
 		expect(appState.dom.playButton.disabled).toBe(false)
 	})
@@ -20,7 +22,7 @@ describe('pause click handler', () => {
 	it('disables the pause button', () => {
 		appState.dom.pauseButton.disabled = false
 
-		pauseClickHandler.default()
+		subject()
 
 		expect(appState.dom.pauseButton.disabled).toBe(true)
 	})

@@ -24,6 +24,8 @@ export {
 	OffsetAddress,
 	getShapeColorIndices,
 	isTileUniform,
+	GetShapeColorIndicesWithOffset,
+	GetShapeColorIndices,
 } from './color'
 export {
 	Address,
@@ -57,6 +59,9 @@ export {
 	OutlineOptions,
 	stripeOutline,
 	BaseStripeDiagonal,
+	RotateCoordinateParams,
+	GetOutline,
+	GetStripeOutline,
 } from './stripe'
 export {
 	ComponentParams,
@@ -67,6 +72,8 @@ export {
 	textureSettings,
 	texture,
 	shape,
+	ShapeParams,
+	TextureParams,
 } from './texture'
 export {
 	tileCenter,
@@ -76,6 +83,7 @@ export {
 	getTileOriginAndSize,
 	GetTileOriginAndSize,
 	tile,
+	DefinedTileParams,
 } from './tile'
 export {
 	applyViewForShape,

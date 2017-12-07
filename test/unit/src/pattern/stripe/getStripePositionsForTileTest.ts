@@ -8,9 +8,11 @@ import {
 } from '../../../../../src'
 import Spy = jasmine.Spy
 
+const subject: (_?: { gridAddress?: Address }) => StripePosition[] = getStripePositionsForTile.default
+
 describe('get stripe positions for tile', () => {
 	it('defaults to standard stripes', () => {
-		expect(getStripePositionsForTile.default()).toEqual(to.StripePositions([ 0, 0.5, 1, 1.5 ]))
+		expect(subject()).toEqual(to.StripePositions([ 0, 0.5, 1, 1.5 ]))
 	})
 
 	it('uses a stripe position function if provided', () => {
@@ -20,7 +22,7 @@ describe('get stripe positions for tile', () => {
 		const stripePositionsSpy: Spy = spyOn(currentSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)
 
-		const actualStripePositions: StripePosition[] = getStripePositionsForTile.default({ gridAddress })
+		const actualStripePositions: StripePosition[] = subject({ gridAddress })
 
 		expect(stripePositionsSpy).toHaveBeenCalledWith({ gridAddress })
 		expect(actualStripePositions).toBe(expectedStripePositions)

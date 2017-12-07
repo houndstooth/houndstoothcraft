@@ -2,9 +2,8 @@ import { appState, clearInterval, windowWrapper } from '../../../../../src'
 
 const subject: (_: string) => void = clearInterval.default
 
-const FAKE_GRID_PROGRESS_INTERVAL: number = 3369
-
 describe('clear interval', () => {
+	const FAKE_GRID_PROGRESS_INTERVAL: number = 3369
 	beforeEach(() => {
 		appState.execute.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL
 		spyOn(windowWrapper, 'clearInterval')

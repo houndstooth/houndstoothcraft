@@ -14,4 +14,5 @@ export {
 export {
 	GetTileOriginAndSize,
 	TileOriginAndSize,
+	DefinedTileParams,
 } from './types'

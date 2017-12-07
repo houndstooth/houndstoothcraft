@@ -1,8 +1,10 @@
 // tslint:disable:no-unsafe-any
 
 import Spy = jasmine.Spy
-import { applyViewForGrid, appState, grid } from '../../../../../src'
+import { applyViewForGrid, appState, grid, ReferencedGridAddress } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
+
+const subject: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }) => void = grid.default
 
 describe('grid', () => {
 	let gridTileSpy: Spy
@@ -15,13 +17,13 @@ describe('grid', () => {
 	})
 
 	it('applies view for the grid', () => {
-		grid.default({ gridTile: gridTileSpy, thisPatternRef })
+		subject({ gridTile: gridTileSpy, thisPatternRef })
 
 		expect(applyViewForGrid.default).toHaveBeenCalled()
 	})
 
 	it('uses the given grid size', () => {
-		grid.default({ gridTile: gridTileSpy, thisPatternRef })
+		subject({ gridTile: gridTileSpy, thisPatternRef })
 
 		expect(gridTileSpy.calls.all().length).toBe(Math.pow(tileResolution, 2))
 	})
@@ -32,7 +34,7 @@ describe('grid', () => {
 		})
 
 		it('only makes tiles with positive addresses', () => {
-			grid.default({ gridTile: gridTileSpy, thisPatternRef })
+			subject({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(gridTileSpy.calls.count()).toEqual(Math.pow(tileResolution, 2))
 			expect(gridTileSpy.calls.all()[ 0 ].args[ 0 ].gridAddress).toEqual([ 0, 0 ])
@@ -44,7 +46,7 @@ describe('grid', () => {
 		it('sets the tile count on the app state correctly', () => {
 			appState.execute.tileCount = 0
 
-			grid.default({ gridTile: gridTileSpy, thisPatternRef })
+			subject({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(appState.execute.tileCount).toBe(Math.pow(tileResolution, 2))
 		})
@@ -59,7 +61,7 @@ describe('grid', () => {
 		it('makes tiles with positive and negative addresses, the negative ones starting at -1 (whereas the positive ones start at 0)', () => {
 			const quadrantCount: number = 4
 
-			grid.default({ gridTile: gridTileSpy, thisPatternRef })
+			subject({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(gridTileSpy.calls.count()).toEqual(Math.pow(tileResolution, 2) * quadrantCount)
 			expect(gridTileSpy.calls.all()[ 0 ].args[ 0 ].gridAddress).toEqual([ -2, -2 ])
@@ -83,7 +85,7 @@ describe('grid', () => {
 		it('sets the tile count on the app state correctly', () => {
 			appState.execute.tileCount = 0
 
-			grid.default({ gridTile: gridTileSpy, thisPatternRef })
+			subject({ gridTile: gridTileSpy, thisPatternRef })
 
 			expect(appState.execute.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
 		})

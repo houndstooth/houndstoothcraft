@@ -7,6 +7,8 @@ import {
 } from '../../../../../src'
 import Spy = jasmine.Spy
 
+const subject: NullarySideEffector = playClickHandler.default
+
 describe('play click handler', () => {
 	let executeSelectedEffectsSpy: Spy
 
@@ -20,7 +22,7 @@ describe('play click handler', () => {
 		appState.dom.pauseButton.disabled = true
 		appState.dom.rewindButton.disabled = true
 
-		playClickHandler.default()
+		subject()
 	})
 
 	it('disables the play button', () => {
@@ -52,7 +54,7 @@ describe('play click handler', () => {
 			appState.execute.animationInterval = 25346
 			executeSelectedEffectsSpy.calls.reset()
 
-			playClickHandler.default()
+			subject()
 
 			expect(executeSelectedEffectsSpy).not.toHaveBeenCalled()
 		})

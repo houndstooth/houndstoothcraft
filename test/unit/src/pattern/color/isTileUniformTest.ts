@@ -1,6 +1,8 @@
 import { ColorSet, isTileUniform, ShapeColorIndex, to } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 
+const subject: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean = isTileUniform.default
+
 describe('is tile uniform', () => {
 	beforeEach(() => {
 		const colorSet: ColorSet = to.ColorSet([
@@ -15,11 +17,11 @@ describe('is tile uniform', () => {
 
 	it('returns true if all of the tile color indices point to the same color', () => {
 		const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([ 0, 0, 3, 0, 3 ])
-		expect(isTileUniform.default({ shapeColorIndices })).toBe(true)
+		expect(subject({ shapeColorIndices })).toBe(true)
 	})
 
 	it('returns false if any of the tile color indices point to a color that is different', () => {
 		const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([ 0, 0, 1, 0, 1 ])
-		expect(isTileUniform.default({ shapeColorIndices })).toBe(false)
+		expect(subject({ shapeColorIndices })).toBe(false)
 	})
 })

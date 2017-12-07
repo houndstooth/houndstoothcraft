@@ -8,6 +8,8 @@ import {
 } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 
+const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGrid.default
+
 describe('execute grid', () => {
 	const tileResolution: number = 2
 	const thisPatternRef: number = 99
@@ -26,7 +28,7 @@ describe('execute grid', () => {
 	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {
 		appState.execute.tilesCompleted = 256
 
-		executeGrid.default({ thisPatternRef }).then().catch()
+		subject({ thisPatternRef }).then().catch()
 		expect(appState.execute.tilesCompleted).toBe(256)
 
 		appState.execute.resolveGrid()
@@ -37,7 +39,7 @@ describe('execute grid', () => {
 	})
 
 	it('calls the grid loop with the tile function and a reference to this pattern', () => {
-		executeGrid.default({ thisPatternRef }).then().catch()
+		subject({ thisPatternRef }).then().catch()
 
 		expect(grid.default).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, thisPatternRef })
 	})

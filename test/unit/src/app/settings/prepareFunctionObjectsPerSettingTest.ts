@@ -3,12 +3,15 @@
 import {
 	codeUtilities,
 	consoleWrapper,
+	PrepareFunctionObjectsParams,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 	to,
 } from '../../../../../src'
 
-describe('#prepareFunctionObjectsPerSetting', () => {
+const subject: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default
+
+describe('prepare function objects per setting', () => {
 	let actualFunctionObjects: SettingsFunctionObject[]
 	let expectedSettingsFunctionsSourcePattern: any
 	let settingsFunctionsSourcePattern: any
@@ -31,7 +34,7 @@ describe('#prepareFunctionObjectsPerSetting', () => {
 		}
 
 		expectedSettingsFunctionsSourcePattern = codeUtilities.deepClone(settingsFunctionsSourcePattern)
-		actualFunctionObjects = prepareFunctionObjectsPerSetting.default({ settingsFunctionsSourcePattern })
+		actualFunctionObjects = subject({ settingsFunctionsSourcePattern })
 	})
 
 	it('gathers the functions to be applied', () => {

@@ -1,4 +1,16 @@
-import { Address, appState, Coordinate, getTileOriginAndSize, maybeTile, tile, to, Unit } from '../../../../../src'
+import {
+	Address,
+	appState,
+	Coordinate,
+	getTileOriginAndSize,
+	maybeTile,
+	ReferencedGridAddress,
+	tile,
+	to,
+	Unit,
+} from '../../../../../src'
+
+const subject: (_: ReferencedGridAddress) => void = maybeTile.default
 
 describe('maybe tile', () => {
 	const gridAddress: Address = to.Address([ 5, 3 ])
@@ -13,7 +25,7 @@ describe('maybe tile', () => {
 	it('calls tile if an origin and size are got', () => {
 		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin, tileSize })
 
-		maybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(tile.default).toHaveBeenCalledWith({ gridAddress, tileOrigin, tileSize })
 	})
@@ -21,7 +33,7 @@ describe('maybe tile', () => {
 	it('does not call tile if neither origin nor size is got', () => {
 		spyOn(getTileOriginAndSize, 'default').and.returnValue(undefined)
 
-		maybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(tile.default).not.toHaveBeenCalled()
 	})
@@ -29,7 +41,7 @@ describe('maybe tile', () => {
 	it('does not call tile if origin is got but size is not', () => {
 		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin })
 
-		maybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(tile.default).not.toHaveBeenCalled()
 	})
@@ -37,7 +49,7 @@ describe('maybe tile', () => {
 	it('does not call tile if size is got but origin is not', () => {
 		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileSize })
 
-		maybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(tile.default).not.toHaveBeenCalled()
 	})
@@ -45,7 +57,7 @@ describe('maybe tile', () => {
 	it('increments the count of tiles completed', () => {
 		appState.execute.tilesCompleted = 5
 
-		maybeTile.default({ gridAddress, thisPatternRef })
+		subject({ gridAddress, thisPatternRef })
 
 		expect(appState.execute.tilesCompleted).toBe(6)
 	})

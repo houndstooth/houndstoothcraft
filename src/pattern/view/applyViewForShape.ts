@@ -5,7 +5,7 @@ import applyScroll from './applyScroll'
 import applyTilt from './applyTilt'
 import applyZoom from './applyZoom'
 
-const applyViewForShape: (outline: Outline) => Path =
+const applyViewForShape: (_: Outline) => Path =
 	(outline: Outline): Path => {
 		let path: Path = to.Path(from.Outline(outline))
 

@@ -1,5 +1,7 @@
-import { Address, getByWeave, to } from '../../../../../src'
+import { Address, getByWeave, GetShapeColorIndicesWithOffset, to } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
+
+const subject: GetShapeColorIndicesWithOffset = getByWeave.default
 
 describe('get by weave', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])
@@ -11,7 +13,7 @@ describe('get by weave', () => {
 		})
 		const addressOffset: Address = to.Address([ 0, 0 ])
 
-		expect(getByWeave.default({ gridAddress, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
+		expect(subject({ gridAddress, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
 	})
 
 	it('handles offset', () => {
@@ -21,6 +23,6 @@ describe('get by weave', () => {
 		})
 		const addressOffset: Address = to.Address([ 1, 2 ])
 
-		expect(getByWeave.default({ gridAddress, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
+		expect(subject({ gridAddress, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
 	})
 })

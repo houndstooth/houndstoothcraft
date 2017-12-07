@@ -1,4 +1,6 @@
-import { appState, DataBlob, saveBlob, saveCanvas, to } from '../../../../../src'
+import { appState, DataBlob, Frame, saveBlob, saveCanvas, to } from '../../../../../src'
+
+const subject: (_: { currentFrame: Frame, result: DataBlob }) => void = saveCanvas.default
 
 describe('save canvas', () => {
 	const result: DataBlob = {}
@@ -11,7 +13,7 @@ describe('save canvas', () => {
 			beforeEach(() => {
 				appState.controls.exportFrames = true
 
-				saveCanvas.default({ currentFrame: to.Frame(0), result })
+				subject({ currentFrame: to.Frame(0), result })
 			})
 
 			it('saves the frame as a png with the last completed frame number as file name', () => {
@@ -26,7 +28,7 @@ describe('save canvas', () => {
 
 			describe('when the current frame is greater than 0', () => {
 				beforeEach(() => {
-					saveCanvas.default({ currentFrame: to.Frame(777), result })
+					subject({ currentFrame: to.Frame(777), result })
 				})
 
 				it('saves the frame as a png with the current frame number as file name', () => {
@@ -36,7 +38,7 @@ describe('save canvas', () => {
 
 			describe('when the current frame is 0', () => {
 				beforeEach(() => {
-					saveCanvas.default({ currentFrame: to.Frame(0), result })
+					subject({ currentFrame: to.Frame(0), result })
 				})
 
 				it('saves the frame as a png with a generic name', () => {

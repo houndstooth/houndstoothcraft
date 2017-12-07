@@ -4,6 +4,7 @@ import {
 	Address,
 	constants,
 	Coordinate,
+	DefinedTileParams,
 	getShapeColorIndices,
 	getStripePositionsForTile,
 	getTileOriginAndSize,
@@ -19,9 +20,10 @@ import {
 } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
 
-const { PERIMETER_SCALAR } = constants
+const subject: (_: DefinedTileParams) => void = tile.default
 
 describe('tile', () => {
+	const { PERIMETER_SCALAR } = constants
 	const gridAddress: Address = to.Address([ 3, 5 ])
 	const tileOrigin: Coordinate = to.Coordinate([ 7, 11 ])
 	const tileSize: Unit = to.Unit(13)
@@ -52,7 +54,7 @@ describe('tile', () => {
 		})
 
 		it('gets colors', () => {
-			tile.default({ gridAddress, tileOrigin, tileSize })
+			subject({ gridAddress, tileOrigin, tileSize })
 
 			expect(getShapeColorIndices.default).toHaveBeenCalledWith({ gridAddress })
 		})
@@ -63,7 +65,7 @@ describe('tile', () => {
 			})
 
 			it('checks if the tile is uniform', () => {
-				tile.default({ gridAddress, tileOrigin, tileSize })
+				subject({ gridAddress, tileOrigin, tileSize })
 
 				expect(isTileUniformSpy).toHaveBeenCalledWith({ shapeColorIndices })
 			})
@@ -74,13 +76,13 @@ describe('tile', () => {
 				})
 
 				it('does not look for stripe positions', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					expect(getStripePositionsForTile.default).not.toHaveBeenCalled()
 				})
 
 				it('converts the tile into shapes with the correct arguments, and uses square outline', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						getOutline: squareOutline.default,
@@ -97,19 +99,19 @@ describe('tile', () => {
 				})
 
 				it('looks for stripe positions', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					expect(getStripePositionsForTile.default).toHaveBeenCalledWith({ gridAddress })
 				})
 
 				it('converts the tile into a number of shapes equal to the number of stripes', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)
 				})
 
 				it('converts the tile into shapes with the correct arguments, and uses the shape outline', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					expect(shapeSpy).toHaveBeenCalledWith(jasmine.objectContaining({
 						getOutline: stripeOutline.default,
@@ -120,7 +122,7 @@ describe('tile', () => {
 				})
 
 				it('converts the tile into shapes, each one a stripe, each one knowing its stripe index', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					const shapes: CallInfo[] = shapeSpy.calls.all()
 
@@ -131,7 +133,7 @@ describe('tile', () => {
 				})
 
 				it('passes along options that the outline getting function will need', () => {
-					tile.default({ gridAddress, tileOrigin, tileSize })
+					subject({ gridAddress, tileOrigin, tileSize })
 
 					const shapes: CallInfo[] = shapeSpy.calls.all()
 
@@ -171,7 +173,7 @@ describe('tile', () => {
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {
 				isTileUniformSpy.and.returnValue(true)
 
-				tile.default({ gridAddress, tileOrigin, tileSize })
+				subject({ gridAddress, tileOrigin, tileSize })
 
 				expect(getStripePositionsForTile.default).toHaveBeenCalledWith({ gridAddress })
 				expect(shapeSpy.calls.all().length).toEqual(stripePositionsForTile.length)

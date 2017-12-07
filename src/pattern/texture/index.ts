@@ -16,4 +16,5 @@ export {
 	ShapeArgs,
 	ShapeParams,
 	SolidParams,
+	TextureParams,
 } from './types'

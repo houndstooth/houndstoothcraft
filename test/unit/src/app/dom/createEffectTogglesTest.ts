@@ -1,6 +1,8 @@
-import { createEffectToggle, createEffectToggles, documentWrapper, PageElement } from '../../../../../src'
+import { createEffectToggle, createEffectToggles, documentWrapper, NamedEffect, PageElement } from '../../../../../src'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
+
+const subject: (_: NamedEffect[]) => void = createEffectToggles.default
 
 describe('create effect toggles', () => {
 	let createEffectToggleSpy: Spy
@@ -15,7 +17,7 @@ describe('create effect toggles', () => {
 	})
 
 	it('adds an effect toggle for each effect', () => {
-		createEffectToggles.default([
+		subject([
 			{ name: 'effectOne', description: '' },
 			{ name: 'effectTwo', description: '' },
 		])
@@ -27,19 +29,19 @@ describe('create effect toggles', () => {
 	})
 
 	it('clears any existing toggles', () => {
-		createEffectToggles.default([])
+		subject([])
 
 		expect(effectTogglesContainer.innerHTML).toBe('')
 	})
 
 	it('adds a message about more effects coming soon', () => {
-		createEffectToggles.default([])
+		subject([])
 
 		expect(children[0]).toBe(moreEffectsMessage)
 	})
 
 	it('adds an id to that message so that it can be styled', () => {
-		createEffectToggles.default([])
+		subject([])
 
 		expect(attributeObject.id).toBe('more-effects-soon-message')
 	})

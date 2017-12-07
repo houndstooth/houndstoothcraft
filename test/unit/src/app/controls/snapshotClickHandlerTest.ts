@@ -1,11 +1,13 @@
-import { exportCanvas, mixDownContexts, snapshotClickHandler } from '../../../../../src'
+import { exportCanvas, mixDownContexts, NullarySideEffector, snapshotClickHandler } from '../../../../../src'
+
+const subject: NullarySideEffector = snapshotClickHandler.default
 
 describe('snapshot click handler', () => {
 	beforeEach(() => {
 		spyOn(mixDownContexts, 'default')
 		spyOn(exportCanvas, 'default')
 
-		snapshotClickHandler.default()
+		subject()
 	})
 
 	it('mixes down the canvases', () => {
@@ -13,7 +15,7 @@ describe('snapshot click handler', () => {
 	})
 
 	it('exports the current frame', () => {
-		snapshotClickHandler.default()
+		subject()
 
 		expect(exportCanvas.default).toHaveBeenCalled()
 	})

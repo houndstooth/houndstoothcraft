@@ -1,6 +1,6 @@
-import { appState, codeUtilities, defaults, patternState } from '../../src'
+import { appState, codeUtilities, defaults, NullarySideEffector, patternState } from '../../src'
 
-const resetAppAndPatternStates: () => void =
+const resetAppAndPatternStates: NullarySideEffector =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: appState,

@@ -1,4 +1,15 @@
-import { Coordinate, Outline, OutlineOptions, stripeOutline, StripePosition, to, Unit } from '../../../../../src'
+import {
+	Coordinate,
+	GetStripeOutline,
+	Outline,
+	OutlineOptions,
+	stripeOutline,
+	StripePosition,
+	to,
+	Unit,
+} from '../../../../../src'
+
+const subject: GetStripeOutline = stripeOutline.default
 
 describe('stripe outline', () => {
 	const tileOrigin: Coordinate = to.Coordinate([ 0, 0 ])
@@ -8,7 +19,7 @@ describe('stripe outline', () => {
 
 	describe('with no outline options (shouldnt happen but currently struggling with params groupings', () => {
 		it('returns an empty outline', () => {
-			const result: Outline = stripeOutline.default({ tileOrigin, tileSize })
+			const result: Outline = subject({ tileOrigin, tileSize })
 			expect(result).toEqual(to.Outline([]))
 		})
 	})
@@ -21,7 +32,7 @@ describe('stripe outline', () => {
 
 			it('makes a triangle within the top left half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0, 0 ],
 					[ 0.5, 0 ],
@@ -35,7 +46,7 @@ describe('stripe outline', () => {
 
 			it('makes a triangle out of the entire top left half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0, 0 ],
 					[ 1, 0 ],
@@ -49,7 +60,7 @@ describe('stripe outline', () => {
 
 			it('makes a square with a triangle subtracted from the bottom right half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0, 0 ],
 					[ 1, 0 ],
@@ -69,7 +80,7 @@ describe('stripe outline', () => {
 
 			it('makes a trapezoid within the top left half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0.5, 0 ],
 					[ 0.75, 0 ],
@@ -84,7 +95,7 @@ describe('stripe outline', () => {
 
 			it('makes a trapezoid within the top left half, on the edge with the bottom right half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0.5, 0 ],
 					[ 1, 0 ],
@@ -100,7 +111,7 @@ describe('stripe outline', () => {
 			// tslint:disable-next-line:max-line-length
 			it('makes a hexagon with vertices in the bottom left and the top right corners, plus one on each of the square\'s edges', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0.5, 0 ],
 					[ 1, 0 ],
@@ -118,7 +129,7 @@ describe('stripe outline', () => {
 			// tslint:disable-next-line:max-line-length
 			it('makes a pentagon straddling with vertices at the bottom right, bottom left, and top right corners, as well as one on each of the left and top edges', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 0.5, 0 ],
 					[ 1, 0 ],
@@ -138,7 +149,7 @@ describe('stripe outline', () => {
 
 			it('makes a trapezoid within the bottom right half, at the edge of the top left half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 1, 0 ],
 					[ 1, 0.5 ],
@@ -153,7 +164,7 @@ describe('stripe outline', () => {
 
 			it('makes a triangle out of the entire bottom right half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 1, 0 ],
 					[ 1, 1 ],
@@ -171,7 +182,7 @@ describe('stripe outline', () => {
 
 			it('makes a trapezoid within the bottom right half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 1, 0.5 ],
 					[ 1, 0.75 ],
@@ -186,7 +197,7 @@ describe('stripe outline', () => {
 
 			it('makes a triangle within the bottom right half', () => {
 				const outlineOptions: OutlineOptions = { stripeStart, stripeEnd }
-				const result: Outline = stripeOutline.default({ tileOrigin, tileSize, outlineOptions })
+				const result: Outline = subject({ tileOrigin, tileSize, outlineOptions })
 				expect(result).toEqual(to.Outline([
 					[ 1, 0.5 ],
 					[ 1, 1 ],

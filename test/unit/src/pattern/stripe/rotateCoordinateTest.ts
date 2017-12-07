@@ -1,4 +1,6 @@
-import { Coordinate, Radian, rotateCoordinate, to } from '../../../../../src'
+import { Coordinate, Radian, rotateCoordinate, RotateCoordinateParams, to } from '../../../../../src'
+
+const subject: (_: RotateCoordinateParams) => Coordinate = rotateCoordinate.default
 
 describe('rotate coordinate', () => {
 	it('rotates one coordinate about another', () => {
@@ -6,7 +8,7 @@ describe('rotate coordinate', () => {
 		const fixedCoordinate: Coordinate = to.Coordinate([ 1, 1 ])
 		const rotation: Radian = to.Radian(Math.PI / 2)
 
-		const actualCoordinate: Coordinate = rotateCoordinate.default({ coordinate, fixedCoordinate, rotation })
+		const actualCoordinate: Coordinate = subject({ coordinate, fixedCoordinate, rotation })
 
 		const expectedCoordinate: Coordinate = to.Coordinate([ 2, 2 ])
 		expect(actualCoordinate).toEqual(expectedCoordinate)

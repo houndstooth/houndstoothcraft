@@ -48,6 +48,7 @@ export {
 	consoleWrapper,
 	windowWrapper,
 	storeMixedDownContext,
+	InsertElementRightAfter,
 } from './dom'
 export {
 	callFunctionsPerSetting,
@@ -71,6 +72,8 @@ export {
 	executePattern,
 	ConditionFunction,
 	ExecuteLayerParams,
+	AnimationParams,
+	ExecuteParams,
 } from './execute'
 export {
 	fill,
@@ -107,6 +110,10 @@ export {
 	composeMainHoundstooth,
 	effectsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
+	ComposeMainHoundstoothParams,
+	ComposePatternsParams,
+	FullSettingsPath,
+	PrepareFunctionObjectsParams,
 } from './settings'
 export { appState } from './appState'
 export {

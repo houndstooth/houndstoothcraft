@@ -1,10 +1,12 @@
-import { applyBackgroundColor, applyOpacity, applyViewForGrid } from '../../../../../src'
+import { applyBackgroundColor, applyOpacity, applyViewForGrid, NullarySideEffector } from '../../../../../src'
+
+const subject: NullarySideEffector = applyViewForGrid.default
 
 describe('apply view for grid', () => {
 	it('applies background color', async (done: DoneFn) => {
 		spyOn(applyBackgroundColor, 'default')
 
-		applyViewForGrid.default()
+		subject()
 
 		expect(applyBackgroundColor.default).toHaveBeenCalled()
 
@@ -14,7 +16,7 @@ describe('apply view for grid', () => {
 	it('applies opacity', async (done: DoneFn) => {
 		spyOn(applyOpacity, 'default')
 
-		applyViewForGrid.default()
+		subject()
 
 		expect(applyOpacity.default).toHaveBeenCalled()
 

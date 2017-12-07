@@ -2,8 +2,12 @@ import {
 	animator,
 	buildAnimationFunction,
 	executeAnimation,
+	ExecuteParams,
+	NullarySideEffector,
 	SettingsFunctionObject,
 } from '../../../../../src'
+
+const subject: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void> = executeAnimation.default
 
 describe('execute animation', () => {
 	const animationFunction: (p: number) => number = (p: number): number => p
@@ -19,7 +23,7 @@ describe('execute animation', () => {
 	})
 
 	it('calls the animator', () => {
-		executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
+		subject({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 		expect(animator.default).toHaveBeenCalledWith(jasmine.objectContaining({
 			animationFunction,
@@ -27,7 +31,7 @@ describe('execute animation', () => {
 	})
 
 	it('builds an animation function', () => {
-		executeAnimation.default({ layerFunctionObjects, animationFunctionObjects }).then().catch()
+		subject({ layerFunctionObjects, animationFunctionObjects }).then().catch()
 
 		expect(buildAnimationFunction.default).toHaveBeenCalledWith(
 			jasmine.objectContaining({

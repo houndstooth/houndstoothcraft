@@ -3,9 +3,9 @@ import Spy = jasmine.Spy
 
 const subject: (_: Context) => void = clearContext.default
 
-const { CANVAS_SIZE } = constants
-
 describe('clear context', () => {
+	const { CANVAS_SIZE } = constants
+
 	it('clears a rectangular area which is the exact size of the canvas', () => {
 		const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 

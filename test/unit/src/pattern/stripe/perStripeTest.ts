@@ -7,6 +7,8 @@ import {
 import { setPatternStateForTest } from '../../../helpers'
 import CallInfo = jasmine.CallInfo
 
+const subject: (_: { getStripePosition: GetStripePosition }) => StripePosition[] = perStripe.default
+
 describe('per stripe', () => {
 	it('uses a stripe count if provided', () => {
 		setPatternStateForTest('stripeSettings', {
@@ -14,7 +16,7 @@ describe('per stripe', () => {
 				stripeCount: 3,
 			},
 		})
-		const stripePositions: StripePosition[] = perStripe.default({
+		const stripePositions: StripePosition[] = subject({
 			getStripePosition: (): StripePosition => to.StripePosition(5),
 		})
 
@@ -25,7 +27,7 @@ describe('per stripe', () => {
 		// tslint:disable-next-line:no-any
 		const getStripePositionSpy: any = jasmine.createSpy('getStripePosition')
 		// tslint:disable-next-line:no-unsafe-any
-		perStripe.default({ getStripePosition: getStripePositionSpy })
+		subject({ getStripePosition: getStripePositionSpy })
 		// tslint:disable-next-line:no-unsafe-any
 		const spyCalls: CallInfo[] = getStripePositionSpy.calls.all()
 		expect(spyCalls.length).toBe(4)
@@ -39,7 +41,7 @@ describe('per stripe', () => {
 		const standardStripePosition: GetStripePosition = ({ stripeIndex, stripeCount }: {
 			stripeCount: number, stripeIndex: number,
 		}): StripePosition => to.StripePosition(stripeIndex / stripeCount)
-		const stripePositions: StripePosition[] = perStripe.default({ getStripePosition: standardStripePosition })
+		const stripePositions: StripePosition[] = subject({ getStripePosition: standardStripePosition })
 
 		const expectedStripePositions: StripePosition[] = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 		expect(stripePositions).toEqual(expectedStripePositions)

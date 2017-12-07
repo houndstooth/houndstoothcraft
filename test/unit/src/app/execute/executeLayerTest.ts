@@ -3,11 +3,14 @@ import {
 	callFunctionsPerSetting,
 	executeGridAndMaybeLogging,
 	executeLayer,
+	ExecuteLayerParams,
 	Layer,
 	SettingsFunctionObject,
 	to,
 } from '../../../../../src'
 import Spy = jasmine.Spy
+
+const subject: (_: ExecuteLayerParams) => Promise<void> = executeLayer.default
 
 describe('execute layer', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
@@ -25,7 +28,7 @@ describe('execute layer', () => {
 		const layer: Layer = to.Layer(12)
 		appState.execute.currentLayer = to.Layer(11)
 
-		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
+		await subject({ layer, layerFunctionObjects, thisPatternRef })
 
 		expect(appState.execute.currentLayer).toBe(to.Layer(12))
 
@@ -35,7 +38,7 @@ describe('execute layer', () => {
 	it('executes the grid for this layer, and maybe logging', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(12)
 
-		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
+		await subject({ layer, layerFunctionObjects, thisPatternRef })
 
 		expect(executeGridAndMaybeLoggingSpy).toHaveBeenCalledWith({ thisPatternRef })
 
@@ -45,7 +48,7 @@ describe('execute layer', () => {
 	it('calls layer functions for settings, even the first layer', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(0)
 
-		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
+		await subject({ layer, layerFunctionObjects, thisPatternRef })
 
 		expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionObjects: layerFunctionObjects,

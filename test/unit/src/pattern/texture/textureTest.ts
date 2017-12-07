@@ -1,5 +1,7 @@
-import { Outline, resetClip, setClip, ShapeColorIndex, texture, to, Unit } from '../../../../../src'
+import { Outline, resetClip, setClip, ShapeColorIndex, texture, TextureParams, to, Unit } from '../../../../../src'
 import Spy = jasmine.Spy
+
+const subject: (_: TextureParams) => void = texture.default
 
 describe('texture', () => {
 	it('builds a path from the outline, clips the context on it, renders the texture, then resets the clip', () => {
@@ -11,7 +13,7 @@ describe('texture', () => {
 		const outline: Outline = to.Outline([])
 		const executeTexture: Spy = jasmine.createSpy('executeTexture')
 
-		texture.default({ outline, executeTexture, shapeColorIndex, tileSize })
+		subject({ outline, executeTexture, shapeColorIndex, tileSize })
 
 		expect(setClip.default).toHaveBeenCalledWith({ outline })
 		expect(executeTexture).toHaveBeenCalledWith({ shapeColorIndex, tileSize })

@@ -5,6 +5,7 @@ import {
 	completeLayers,
 	executeGridAndMaybeLogging,
 	executeLayer,
+	ExecuteParams,
 	executePattern,
 	from,
 	Layer,
@@ -12,6 +13,8 @@ import {
 	to,
 } from '../../../../../src'
 import { setPatternStateForTest } from '../../../helpers'
+
+const subject: (_: ExecuteParams) => Promise<void> = executePattern.default
 
 describe('execute pattern', () => {
 	const endLayer: Layer = to.Layer(4)
@@ -26,7 +29,7 @@ describe('execute pattern', () => {
 		spyOn(callFunctionsPerSetting, 'default')
 		spyOn(executeLayer, 'default')
 
-		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
+		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
 			settingsFunctionObjects: animationFunctionObjects,
@@ -38,7 +41,7 @@ describe('execute pattern', () => {
 	it('executes a layer for each layer from zero to the end layer, inclusive', async (done: DoneFn) => {
 		const executeLayerSpy: Spy = spyOn(executeLayer, 'default')
 
-		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
+		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(executeLayerSpy.calls.all().length).toBe(5)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
@@ -78,7 +81,7 @@ describe('execute pattern', () => {
 			}
 		})
 
-		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
+		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(executeLayerSpy.calls.all().length).toBe(3)
 		expect(executeLayerSpy).toHaveBeenCalledWith({
@@ -114,7 +117,7 @@ describe('execute pattern', () => {
 		spyOn(executeGridAndMaybeLogging, 'default')
 		spyOn(completeLayers, 'default')
 
-		await executePattern.default({ animationFunctionObjects, layerFunctionObjects })
+		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(completeLayers.default).toHaveBeenCalled()
 

@@ -41,7 +41,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 			effect: effectTwo,
 			effectCheckingAgainst: effectsCombined,
 		})
-		expect(appState.dom.effectToggles['effect one'].disabled).toBe(true)
-		expect(appState.dom.effectToggles['effect two'].disabled).toBe(false)
+		expect(appState.dom.effectToggles[ 'effect one' ].disabled).toBe(true)
+		expect(appState.dom.effectToggles[ 'effect two' ].disabled).toBe(false)
 	})
 })

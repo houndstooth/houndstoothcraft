@@ -2,7 +2,7 @@ import { appState } from '../appState'
 import { PageElement } from './types'
 import { documentWrapper } from './windowWrapper'
 
-const addDescription: (descriptionText: string) => void =
+const addDescription: (_: string) => void =
 	(descriptionText: string): void => {
 		const description: PageElement = documentWrapper.createElement('span')
 		description.innerHTML = descriptionText

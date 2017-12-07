@@ -78,6 +78,8 @@ interface SettingsFunctionObject extends FullSettingsPath {
 	readonly settingsFunction: SettingsFunction<any>,
 }
 
+type SettingsAreEqual = (a: any, b: any) => boolean
+
 export {
 	SettingsPath,
 	SettingsStep,
@@ -96,4 +98,5 @@ export {
 	PrepareFunctionObjectsParams,
 	SettingsFunction,
 	SettingsFunctionObject,
+	SettingsAreEqual,
 }

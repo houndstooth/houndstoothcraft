@@ -1,6 +1,6 @@
 import { appState, Frame, to, updateCurrentFrame } from '../../../../../src'
 
-const subject: (frame: Frame) => void = updateCurrentFrame.default
+const subject: (_: Frame) => void = updateCurrentFrame.default
 
 describe('update current frame', () => {
 	beforeEach(() => {

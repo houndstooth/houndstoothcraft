@@ -1,4 +1,4 @@
-const makeId: (name: string) => string =
+const makeId: (_: string) => string =
 	(name: string): string =>
 		name.replace(/ /g, '-')
 

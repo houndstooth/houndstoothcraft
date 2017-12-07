@@ -1,6 +1,6 @@
 import { appState, thisPatternHasNotBeenCanceled } from '../../../../../src'
 
-const subject: (patternRef: number) => boolean = thisPatternHasNotBeenCanceled.default
+const subject: (_: number) => boolean = thisPatternHasNotBeenCanceled.default
 
 describe('this pattern has not been canceled', () => {
 	beforeEach(() => {

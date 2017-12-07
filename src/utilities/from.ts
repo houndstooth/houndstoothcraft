@@ -16,23 +16,23 @@ import {
 
 // First order, singular
 
-const Px: (px: Px) => number =
+const Px: (_: Px) => number =
 	(px: Px): number => px as any
-const Frame: (frame: Frame) => number =
+const Frame: (_: Frame) => number =
 	(frame: Frame): number => frame as any
-const Layer: (layer: Layer) => number =
+const Layer: (_: Layer) => number =
 	(layer: Layer): number => layer as any
-const Radian: (radian: Radian) => number =
+const Radian: (_: Radian) => number =
 	(radian: Radian): number => radian as any
-const ShapeColorIndex: (shapeColorIndex: ShapeColorIndex) => number =
+const ShapeColorIndex: (_: ShapeColorIndex) => number =
 	(shapeColorIndex: ShapeColorIndex): number => shapeColorIndex as any
-const StripePosition: (stripePosition: StripePosition) => number =
+const StripePosition: (_: StripePosition) => number =
 	(stripePosition: StripePosition): number => stripePosition as any
-const Unit: (units: Unit) => number =
+const Unit: (_: Unit) => number =
 	(units: Unit): number => units as any
-const AddressElement: (addressElement: AddressElement) => number =
+const AddressElement: (_: AddressElement) => number =
 	(addressElement: AddressElement): number => addressElement as any
-const SettingsStep: (settingsStep: SettingsStep) => string =
+const SettingsStep: (_: SettingsStep) => string =
 	/* istanbul ignore next */
 	(settingsStep: SettingsStep): string => settingsStep
 
@@ -44,26 +44,26 @@ const SettingsStep: (settingsStep: SettingsStep) => string =
 // ShapeColorIndices not yet needed
 // StripePositions not yet needed
 // Units not yet needed
-const Address: (address: Array<AddressElement | number> | Address) => number[] =
+const Address: (_: Array<AddressElement | number> | Address) => number[] =
 	(address: Array<AddressElement | number> | Address): number[] => address as any
-const SettingsPath: (settingPath: Array<SettingsStep | string> | SettingsPath) => string[] =
+const SettingsPath: (_: Array<SettingsStep | string> | SettingsPath) => string[] =
 	/* istanbul ignore next */
 	(settingsPath: Array<SettingsStep | string> | SettingsPath): string[] => settingsPath as SettingsPath
 
 // Second order, singular
 
 // Supertile not yet needed
-const Coordinate: (coordinate: Array<Unit | number> | Coordinate) => number[] =
+const Coordinate: (_: Array<Unit | number> | Coordinate) => number[] =
 	(coordinate: Array<Unit | number> | Coordinate): number[] => coordinate as any
 // Color not yet needed
-const Pixel: (pixel: Array<Px | number> | Pixel) => number[] =
+const Pixel: (_: Array<Px | number> | Pixel) => number[] =
 	(pixel: Array<Px | number> | Pixel): number[] => pixel as any
-const Dimensions: (dimensions: Array<Px | number> | Dimensions) => number[] =
+const Dimensions: (_: Array<Px | number> | Dimensions) => number[] =
 	(dimensions: Array<Px | number> | Dimensions): number[] => dimensions as any
 
 // Third order, singular
 
-const Outline: (outline: Array<Coordinate | Array<Unit | number>> | Outline) => number[][] =
+const Outline: (_: Array<Coordinate | Array<Unit | number>> | Outline) => number[][] =
 	(outline: Array<Coordinate | Array<Unit | number>> | Outline): number[][] => outline as any
 // ColorSet not yet needed
 // Path not yet needed

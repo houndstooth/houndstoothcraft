@@ -25,7 +25,7 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 			cancelPreviousPattern.default()
 			resetMainHoundstooth.default()
 
-			const effectFunction: (effect: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
+			const effectFunction: (_: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
 			effectFunction(effect)
 
 			executeSelectedEffects.default()
@@ -37,12 +37,12 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 			updateDescriptions()
 		}
 
-const addEffect: (effect: NamedEffect) => void =
+const addEffect: (_: NamedEffect) => void =
 	(effect: NamedEffect): void => {
 		appState.controls.selectedEffects.push(effect)
 	}
 
-const removeEffect: (effect: NamedEffect) => void =
+const removeEffect: (_: NamedEffect) => void =
 	(effect: NamedEffect): void => {
 		// tslint:disable-next-line:max-line-length
 		appState.controls.selectedEffects = appState.controls.selectedEffects.filter((selectedEffect: NamedEffect) =>

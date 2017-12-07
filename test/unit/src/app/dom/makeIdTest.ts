@@ -1,6 +1,6 @@
 import { makeId } from '../../../../../src'
 
-const subject: (name: string) => string = makeId.default
+const subject: (_: string) => string = makeId.default
 
 describe('make id', () => {
 	it('kebab-cases the string', () => {

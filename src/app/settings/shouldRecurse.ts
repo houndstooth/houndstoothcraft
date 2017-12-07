@@ -3,11 +3,11 @@
 import { Color } from '../../pattern'
 import { codeUtilities } from '../../utilities'
 
-const shouldRecurse: (setting: any) => boolean =
+const shouldRecurse: (_: any) => boolean =
 	(setting: any): boolean =>
 		settingIsNonArrayObject(setting) && settingIsNotColor(setting)
 
-const settingIsNonArrayObject: (setting: any) => boolean =
+const settingIsNonArrayObject: (_: any) => boolean =
 	(setting: any): boolean => {
 		if (!setting) {
 			return false
@@ -19,7 +19,7 @@ const settingIsNonArrayObject: (setting: any) => boolean =
 		return !(setting instanceof Array)
 	}
 
-const settingIsNotColor: (setting: any) => boolean =
+const settingIsNotColor: (_: any) => boolean =
 	(setting: any): boolean => {
 		// tslint:disable-next-line:no-unsafe-any
 		const { r, g, b, a }: Color = setting

@@ -3,7 +3,7 @@
 import { codeUtilities } from '../../utilities'
 import { consoleWrapper } from '../dom'
 import settingPath from './settingPath'
-import { CheckSettingForConflict, SettingConflictCheck } from './types'
+import { CheckSettingForConflict, SettingConflictCheck, SettingsAreEqual } from './types'
 
 const { isDefined } = codeUtilities
 
@@ -35,7 +35,7 @@ const shouldWarnAboutConflict: (_: SettingConflictCheck) => boolean =
 	({ setting, settingCheckingForConflict }: SettingConflictCheck): boolean =>
 		isDefined(setting) && !settingsAreEqual(setting, settingCheckingForConflict)
 
-const settingsAreEqual: (a: any, b: any) => boolean =
+const settingsAreEqual: SettingsAreEqual =
 	(a: any, b: any): boolean => {
 		let settingsEqual: boolean
 		// tslint:disable-next-line:strict-type-predicates

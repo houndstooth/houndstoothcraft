@@ -1,9 +1,9 @@
 import { Canvas, Color, consoleWrapper, Coordinate, parseColor } from '../../../src'
 import { isCloseTo } from '../../helpers'
 import { buildMockCanvas } from '../../unit'
-import { CheckColorProperties, Key } from './types'
+import { CheckColorProperties, Key, PixelIsColor } from './types'
 
-const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean =
+const pixelIsColor: PixelIsColor =
 	(coordinateUnderTest: Coordinate, expectedColor: Color): boolean => {
 		const actualColor: Color = pixelColor(coordinateUnderTest)
 
@@ -20,7 +20,7 @@ const pixelIsColor: (coordinateUnderTest: Coordinate, expectedColor: Color) => b
 		return true
 	}
 
-const pixelColor: (coordinate: Coordinate) => Color = ([ x, y ]: Coordinate): Color => {
+const pixelColor: (_: Coordinate) => Color = ([ x, y ]: Coordinate): Color => {
 	const mixedDownCanvas: Canvas = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || buildMockCanvas()
 	// tslint:disable-next-line:no-unsafe-any
 	const pixelData: Uint8ClampedArray = mixedDownCanvas.getContext('2d').getImageData(x, y, 1, 1).data

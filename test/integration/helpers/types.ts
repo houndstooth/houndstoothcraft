@@ -38,6 +38,8 @@ type Diagonal =
 
 type Key = [ string, number | undefined ]
 
+type PixelIsColor = (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean
+
 interface CheckColorProperties {
 	readonly actualColor: Color,
 	readonly expectedColor: Color,
@@ -79,6 +81,7 @@ export {
 	ExpectDiagonalDividedSection,
 	ExpectSolidSection,
 	Key,
+	PixelIsColor,
 	StandardTileExpectation,
 	SectionCenterParams,
 	SectionCenterExpectation,

@@ -1,16 +1,16 @@
 import { Effect, NamedEffect } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
+import { appState } from '../appState'
 import { combineHoundstoothEffects, effectsHaveConflicts } from '../settings'
-import { state } from '../state'
 
 const enableOrDisableOtherEffectToggles: NullarySideEffector =
 	(): void => {
 		const combinedHoundstoothEffects: Effect = combineHoundstoothEffects.default({
-			houndstoothEffects: state.controls.selectedHoundstoothEffects,
+			houndstoothEffects: appState.controls.selectedHoundstoothEffects,
 		})
 
-		Object.values(state.settings.availableEffects).forEach((effect: NamedEffect): void => {
-			state.dom.effectToggles[effect.name].disabled = effectsHaveConflicts.default({
+		Object.values(appState.settings.availableEffects).forEach((effect: NamedEffect): void => {
+			appState.dom.effectToggles[effect.name].disabled = effectsHaveConflicts.default({
 				effect,
 				effectCheckingAgainst: combinedHoundstoothEffects,
 			})

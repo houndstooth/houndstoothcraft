@@ -1,5 +1,5 @@
 import { NullarySideEffector, to } from '../../utilities'
-import { state } from '../state'
+import { appState } from '../appState'
 import clearInterval from './clearInterval'
 import { AnimationParams, ConditionFunction } from './types'
 
@@ -12,12 +12,12 @@ const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffecto
 
 			animationFunction()
 
-			if (state.controls.endFrame !== to.Frame(0) && state.controls.currentFrame > state.controls.endFrame) {
+			if (appState.controls.endFrame !== to.Frame(0) && appState.controls.currentFrame > appState.controls.endFrame) {
 				resolveAnimation()
 				clearInterval('animationInterval')
 			}
 		}
 
-const isPaused: ConditionFunction = (): boolean => !state.controls.animating
+const isPaused: ConditionFunction = (): boolean => !appState.controls.animating
 
 export default buildAnimationIntervalFunction

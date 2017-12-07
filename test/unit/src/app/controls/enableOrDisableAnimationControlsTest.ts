@@ -1,9 +1,9 @@
 import {
+	appState,
 	composeMainHoundstooth,
 	enableOrDisableAnimationControls,
 	NullarySideEffector,
 	PatternFunctions,
-	state,
 	to,
 	Unit,
 } from '../../../../../src'
@@ -15,23 +15,23 @@ describe('enable or disable animation controls', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = { tileSettings: { tileSize: (): Unit => to.Unit(0) } }
 			composeMainHoundstooth.default({ houndstoothOverrides: { animationsPattern } })
-			state.dom.playButton.disabled = true
-			state.dom.frameInput.disabled = true
-			state.dom.pauseButton.disabled = false
-			state.dom.rewindButton.disabled = false
+			appState.dom.playButton.disabled = true
+			appState.dom.frameInput.disabled = true
+			appState.dom.pauseButton.disabled = false
+			appState.dom.rewindButton.disabled = false
 
 			subject()
 		})
 
 		it('enables the play button and frame input', () => {
-			expect(state.dom.playButton.disabled).toBe(false)
-			expect(state.dom.frameInput.disabled).toBe(false)
+			expect(appState.dom.playButton.disabled).toBe(false)
+			expect(appState.dom.frameInput.disabled).toBe(false)
 
 		})
 
 		it('disables the pause and rewind button', () => {
-			expect(state.dom.pauseButton.disabled).toBe(true)
-			expect(state.dom.rewindButton.disabled).toBe(true)
+			expect(appState.dom.pauseButton.disabled).toBe(true)
+			expect(appState.dom.rewindButton.disabled).toBe(true)
 		})
 	})
 
@@ -39,19 +39,19 @@ describe('enable or disable animation controls', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = {}
 			composeMainHoundstooth.default({ houndstoothOverrides: { animationsPattern } })
-			state.dom.playButton.disabled = false
-			state.dom.frameInput.disabled = false
-			state.dom.pauseButton.disabled = false
-			state.dom.rewindButton.disabled = false
+			appState.dom.playButton.disabled = false
+			appState.dom.frameInput.disabled = false
+			appState.dom.pauseButton.disabled = false
+			appState.dom.rewindButton.disabled = false
 
 			subject()
 		})
 
 		it('disables all animation controls', () => {
-			expect(state.dom.playButton.disabled).toBe(true)
-			expect(state.dom.frameInput.disabled).toBe(true)
-			expect(state.dom.pauseButton.disabled).toBe(true)
-			expect(state.dom.rewindButton.disabled).toBe(true)
+			expect(appState.dom.playButton.disabled).toBe(true)
+			expect(appState.dom.frameInput.disabled).toBe(true)
+			expect(appState.dom.pauseButton.disabled).toBe(true)
+			expect(appState.dom.rewindButton.disabled).toBe(true)
 		})
 	})
 })

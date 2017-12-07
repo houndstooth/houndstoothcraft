@@ -41,16 +41,16 @@ This code base includes two test suites:
     - mocks the DOM as needed without any dependencies
     
 - integration suite
-    - runs in <5 seconds
+    - runs in ~10 seconds
     - uses Karma as the test runner
     - consists of tests of the final renderings, inspecting individual pixels
     - the debug mode HTML page features an attractive reporter, as well as visualizations of the houndsteeth under test
     
 Both use Jasmine as the testing framework along with its mocking and assertion libraries. Both suites are transpiled to ES5 using the same Typescript configuration as the implementation code.
 
-All tests, whether unit or integration, begin with a `beforeEach` which calls `resetState` on the central `state`, giving it a fresh copy from the defaults in `src/store/defaults`.
+All tests, whether unit or integration, begin with a `beforeEach` which calls `resetStates`, to reset both the `appState` and `patternState`.
 
-Run the unit tests in your IDE at `bin/test/unit.sh`. Integration tests are watched in one of your automatically opened browser tabs.
+Integration tests are watched in one of your automatically opened browser tabs. Run the unit tests in your IDE at `bin/test/unit.sh` (coverage report watcher is re-running them too). 
 
 ## cross platform
 
@@ -94,29 +94,29 @@ More realistically, if not a single settings module's `...SettingsNamesByType` o
 
 If `coolNew` is not the first setting in `ExistingSettings` with the `Coolness` type, you should find the key `CoolnessTypedSettingsNames` already in the `ExistingSettingsNamesByType` type. Union `coolNew` with the existing union of strings. For example, if you see  `CoolnessTypedSettingsNames: 'oldSchool'`, change it to `CoolnessTypedSettingsNames: 'oldSchool' | 'coolNew'`.
 
-If `coolNew` is the first setting in `ExistingSettings` with the `Coolness` type, you should expect not to find the key `CoolnessTypedSettingsNames` in the `ExistingSettingsNamesByType` type, and you will have to add it (it can be copied and pasted from the `SettingsNamesByTypeBase` in `stores/types.ts`). 
+If `coolNew` is the first setting in `ExistingSettings` with the `Coolness` type, you should expect not to find the key `CoolnessTypedSettingsNames` in the `ExistingSettingsNamesByType` type, and you will have to add it (it can be copied and pasted from the `SettingsNamesByTypeBase` in `pattern/types.ts`). 
 
 If `coolNew` is not only the first setting in `ExistingSettings` with the `Coolness` type, but the first setting in any settings module with the `Coolness` type, see below for how to [add a new type to the settings infrastructure](#adding a new type).
 
 ## adding a new settings module at the top level
 
-Make a copy of `store/settings/settingsTemplate.ts` and name it `store/settings/newSettings.ts`.
+Make a copy of `app/settings/settingsTemplate.ts` and name it `pattern/mynewthing/mynewthingSettings.ts`.
 
-### `store/settings/newSettings.ts`:
+### `pattern/mynewthing/mynewthingSettings.ts`:
 
 1) String replace `template` with `new`, `Template` with `New`, and `TEMPLATE` with `NEW`. 
 2) The `exampleSetting` is just there to illustrate the pattern to follow. Replace it, following the process as described in the earlier section on [adding a setting to an existing module](#adding a new setting to an existing settings module) for each of `newSettings`'s settings.
 3) Clean up unused `...TypedSettingsNames` in the `...SettingsNamesByType` type.
 
-### `store/defaults.ts`:
+### `defaults.ts`:
 
 Register your new settings module in the `DEFAULT_BASE_PATTERN`.
 
-### `store/index.ts`:
+### `pattern/index.ts`:
 
-You probably want to export it from from the `store` module.
+You probably want to export it from from the `pattern` module.
 
-### `store/types.ts`:
+### `pattern/types.ts`:
 
 1) Register `newSettings` on the `BasePattern` interface.
 2) Add an entry to the `SettingsNamesToTypesMap` to map `NewSettingsName` to `NewSettings`.
@@ -134,11 +134,11 @@ Begin by following the same steps as in [adding a new one at the top level](#add
 
 2) Register `submoduleOfExistingSettings` on the `DEFAULT_EXISTING_SETTINGS` (with the same defaults as are set in `submoduleOfExistingSettings.ts`, of course; you can import them here)
 
-3) Pass the `SubmoduleOfExampleSettingsNamesByType` up through the `ExampleSettingsNamesByType` by unioning `ExampleSettingsNamesByType` with them. Otherwise we'd have to treat this new settings module like a new one directly off the `BasePattern` with respect to registering it in all the places in `store/types.ts`, and that's a whole lot more work than just doing this, and this is cleaner.
+3) Pass the `SubmoduleOfExampleSettingsNamesByType` up through the `ExampleSettingsNamesByType` by unioning `ExampleSettingsNamesByType` with them. Otherwise we'd have to treat this new settings module like a new one directly off the `BasePattern` with respect to registering it in all the places in `pattern/types.ts`, and that's a whole lot more work than just doing this, and this is cleaner.
 
 4) If `submoduleOfExistingSettings` is not the first settings submodule of `existingSettings`, then you should see that `ExistingSettingsFunctions` is already the result of an `Overwrite` lookup type. If `submoduleOfExistingSettings` is indeed the first settings submodule of `existingSettings`, then you will have to set up this `Overwrite`ing.
 
-    This is done because we need the `submoduleOfExistingSettings` property not to be a function of a previous `submoduleOfExistingSettings` state to a new state, but rather a container of functions for each of its properties from their pervious states to new states (the `callFunctionsPerSetting` method recursively crawls the settings tree looking for such functions to call). So, replace the `ExistingSettingsFunctions` with `Overwrite<FunctionsOf<StripePositionSettings>, {`, opening braces for an anonymous type, in which you should add the property `submoduleOfExistingSettings: SubmoduleOfExistingSettingsFunctions`. 
+    This is done because we need the `submoduleOfExistingSettings` property not to be a function of a previous `submoduleOfExistingSettings` state to a new state, but rather a container of functions for each of its properties from their previous states to new states (the `callFunctionsPerSetting` method recursively crawls the settings tree looking for such functions to call). So, replace the `ExistingSettingsFunctions` with `Overwrite<FunctionsOf<StripePositionSettings>, {`, opening braces for an anonymous type, in which you should add the property `submoduleOfExistingSettings: SubmoduleOfExistingSettingsFunctions`. 
 
     You will also have to add `[_: string]: any,` to the anonymous overwriting type to allow these properties to exist.
 
@@ -148,12 +148,12 @@ Begin by following the same steps as in [adding a new one at the top level](#add
 
 If you add a setting and it is the first of its type, lets say `Coolness`, you will need to do a few extra things.
 
-### `store/types.ts`:
+### `pattern/types.ts`:
 
-1) Add a `CoolnessTypedSettingsNames` property to the `SettingsNamesByTypeBase` in `store/types.ts`.
+1) Add a `CoolnessTypedSettingsNames` property to the `SettingsNamesByTypeBase` in `pattern/types.ts`.
 2) Add an entry to the `SettingsNamesToTypesMap` to map all `CoolnessTypedSettingsNames` to `Coolness`.
 3) Add an entry to the `SetSetting` interface, further overloading the signature of methods which implement it such that they can set `Coolness`es onto any key in the `CoolnessTypedSettingsNames` union.
 
-### `store/settings/settingsTemplate.ts`:
+### `app/settings/settingsTemplate.ts`:
 
 Add `CoolnessTypedSettingsNames` to the `TemplateSettingsNamesByType` for the convenience next time you add a new settings module.

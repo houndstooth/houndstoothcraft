@@ -1,12 +1,12 @@
 import { Frame } from '../../pattern'
-import { state } from '../state'
+import { appState } from '../appState'
 import saveCanvas from './saveCanvas'
 
 const exportCanvas: () => void =
 	(): void => {
-		const currentFrame: Frame = state.controls.currentFrame
+		const currentFrame: Frame = appState.controls.currentFrame
 		// tslint:disable-next-line:no-unsafe-any
-		state.canvas.mixedDownContext.canvas.toBlob((result: Blob): void => {
+		appState.canvas.mixedDownContext.canvas.toBlob((result: Blob): void => {
 			saveCanvas({ result, currentFrame })
 		})
 	}

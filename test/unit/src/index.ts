@@ -1,7 +1,7 @@
 import { buildSettingNamesToPathsMap } from '../../../src'
-import { resetState } from '../../helpers'
+import { resetAppAndPatternStates } from '../../helpers'
 
 beforeEach(() => {
-	resetState()
+	resetAppAndPatternStates()
 	buildSettingNamesToPathsMap.default()
 })

@@ -41,6 +41,8 @@ interface BasePattern {
 
 type Effect = Partial<Houndstooth>
 
+type PatternState = Partial<BasePattern>
+
 interface NamedEffect extends Effect {
 	readonly description: string,
 	readonly name: string,
@@ -170,6 +172,7 @@ interface SettingsNamesByTypeBase {
 
 export {
 	BasePattern,
+	PatternState,
 	Effect,
 	Houndstooth,
 	NamedEffect,

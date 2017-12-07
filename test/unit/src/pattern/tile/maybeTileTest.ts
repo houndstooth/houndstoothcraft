@@ -1,4 +1,4 @@
-import { Address, Coordinate, getTileOriginAndSize, maybeTile, state, tile, to, Unit } from '../../../../../src'
+import { Address, appState, Coordinate, getTileOriginAndSize, maybeTile, tile, to, Unit } from '../../../../../src'
 
 describe('maybe tile', () => {
 	const gridAddress: Address = to.Address([ 5, 3 ])
@@ -43,10 +43,10 @@ describe('maybe tile', () => {
 	})
 
 	it('increments the count of tiles completed', () => {
-		state.execute.tilesCompleted = 5
+		appState.execute.tilesCompleted = 5
 
 		maybeTile.default({ gridAddress, thisPatternRef })
 
-		expect(state.execute.tilesCompleted).toBe(6)
+		expect(appState.execute.tilesCompleted).toBe(6)
 	})
 })

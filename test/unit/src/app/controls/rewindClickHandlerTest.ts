@@ -1,10 +1,10 @@
 import {
+	appState,
 	clearInterval,
 	clearMixedDownContext,
 	executeSelectedHoundstoothEffects,
 	NullarySideEffector,
 	rewindClickHandler,
-	state,
 	to,
 	updateCurrentFrame,
 } from '../../../../../src'
@@ -21,7 +21,7 @@ describe('rewind click handler', () => {
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 	})
 
-	it('clears the interval and removes it from state', () => {
+	it('clears the interval with the helper which also removes it from the state', () => {
 		rewindClickHandler.default()
 
 		expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
@@ -41,22 +41,22 @@ describe('rewind click handler', () => {
 
 	describe('animation paused / still running', () => {
 		it('when paused, it disables itself and clears the mixed down context', () => {
-			state.controls.animating = false
-			state.dom.rewindButton.disabled = false
+			appState.controls.animating = false
+			appState.dom.rewindButton.disabled = false
 
 			rewindClickHandler.default()
 
-			expect(state.dom.rewindButton.disabled).toBe(true)
+			expect(appState.dom.rewindButton.disabled).toBe(true)
 			expect(clearMixedDownContext.default).toHaveBeenCalled()
 		})
 
 		it('when still running, it does not disable itself or clear the mixed down context', () => {
-			state.controls.animating = true
-			state.dom.rewindButton.disabled = false
+			appState.controls.animating = true
+			appState.dom.rewindButton.disabled = false
 
 			rewindClickHandler.default()
 
-			expect(state.dom.rewindButton.disabled).toBe(false)
+			expect(appState.dom.rewindButton.disabled).toBe(false)
 			expect(clearMixedDownContext.default).not.toHaveBeenCalled()
 		})
 	})

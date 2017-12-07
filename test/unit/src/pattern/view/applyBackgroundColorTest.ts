@@ -1,4 +1,4 @@
-import { applyBackgroundColor, constants, setSetting, state } from '../../../../../src'
+import { applyBackgroundColor, appState, constants, setSetting } from '../../../../../src'
 import Spy = jasmine.Spy
 
 const { CANVAS_SIZE, CYAN } = constants
@@ -8,7 +8,7 @@ describe('apply background color', () => {
 	let fillRectSpy: Spy
 	beforeEach(() => {
 		fillRectSpy = jasmine.createSpy('fillRect')
-		state.canvas.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
+		appState.canvas.contexts = [ { fillRect: fillRectSpy, fillStyle: defaultFillStyle } ]
 	})
 
 	it('fills the entire canvas with the color', () => {
@@ -16,14 +16,14 @@ describe('apply background color', () => {
 
 		applyBackgroundColor.default()
 
-		expect(state.canvas.contexts[0].fillStyle).toBe('rgba(0,255,255,1)')
+		expect(appState.canvas.contexts[0].fillStyle).toBe('rgba(0,255,255,1)')
 		expect(fillRectSpy).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 	})
 
 	it('returns early when no background color is set', () => {
 		applyBackgroundColor.default()
 
-		expect(state.canvas.contexts[0].fillStyle).toBe(defaultFillStyle)
+		expect(appState.canvas.contexts[0].fillStyle).toBe(defaultFillStyle)
 		expect(fillRectSpy).not.toHaveBeenCalled()
 	})
 })

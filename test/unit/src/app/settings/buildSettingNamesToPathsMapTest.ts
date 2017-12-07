@@ -1,17 +1,17 @@
 import {
+	appState,
 	buildSettingNamesToPathsMap,
 	BuildSettingNamesToPathsMapParams,
 	Pattern,
 	SettingNamesToPathsMap,
-	state,
 	to,
 } from '../../../../../src'
 
 const subject: (_?: BuildSettingNamesToPathsMapParams) => void = buildSettingNamesToPathsMap.default
 
 describe('build settings names to paths map', () => {
-	it('maps each setting\'s name to its full path in the pattern structure, saving onto the store', () => {
-		state.settings.settingNamesToPathsMap = {}
+	it('maps each setting\'s name to its full path in the pattern structure, saving onto the app state', () => {
+		appState.settings.settingNamesToPathsMap = {}
 		const settings: Pattern = {
 			colorSettings: {
 				colorAssignmentSettings: {
@@ -32,6 +32,6 @@ describe('build settings names to paths map', () => {
 			switcheroo: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 			tileResolution: to.SettingsPath([ 'gridSettings' ]),
 		}
-		expect(state.settings.settingNamesToPathsMap).toEqual(expectedSettingNamesToPathsMap)
+		expect(appState.settings.settingNamesToPathsMap).toEqual(expectedSettingNamesToPathsMap)
 	})
 })

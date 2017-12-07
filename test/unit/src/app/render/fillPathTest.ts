@@ -1,10 +1,10 @@
-import { fillPath, state } from '../../../../../src'
+import { appState, fillPath } from '../../../../../src'
 import { buildMockContext, MockContextCall } from '../../../../helpers'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		state.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
 		fillPath.default()
 

@@ -1,4 +1,4 @@
-import { getSetting, state } from '../../app'
+import { appState, getSetting } from '../../app'
 import { codeUtilities, to } from '../../utilities'
 import { applyViewForGrid } from '../view'
 import { GridSettings } from './gridSettings'
@@ -23,7 +23,7 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 			tileCount *= QUADRANT_COUNT
 		}
 
-		state.execute.tileCount = tileCount
+		appState.execute.tileCount = tileCount
 
 		codeUtilities.iterator(adjustedTileResolution).forEach((x: number): void => {
 			codeUtilities.iterator(adjustedTileResolution).forEach((y: number): void => {

@@ -1,11 +1,11 @@
 import {
+	appState,
 	Color,
 	ColorSet,
 	constants,
 	Coordinate,
 	Effect,
 	executeSelectedHoundstoothEffects,
-	state,
 	to,
 } from '../../../../src'
 import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
@@ -21,8 +21,8 @@ describe('.layerSettings', () => {
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: (): Color => state.execute.currentLayer === to.Layer(0) ? YELLOW : CYAN,
-					opacity: (): number => state.execute.currentLayer === to.Layer(0) ? 1 : 0.25,
+					backgroundColor: (): Color => appState.execute.currentLayer === to.Layer(0) ? YELLOW : CYAN,
+					opacity: (): number => appState.execute.currentLayer === to.Layer(0) ? 1 : 0.25,
 				},
 			},
 		}
@@ -51,9 +51,9 @@ describe('.layerSettings', () => {
 			},
 			layersPattern: {
 				colorSettings: {
-					backgroundColor: (): Color => state.execute.currentLayer === to.Layer(0) ? YELLOW : CYAN,
+					backgroundColor: (): Color => appState.execute.currentLayer === to.Layer(0) ? YELLOW : CYAN,
 					colorSet: (): ColorSet => {
-						if (state.execute.currentLayer === to.Layer(0)) {
+						if (appState.execute.currentLayer === to.Layer(0)) {
 							return to.ColorSet([ BLACK, TRANSPARENT ])
 						}
 						else {

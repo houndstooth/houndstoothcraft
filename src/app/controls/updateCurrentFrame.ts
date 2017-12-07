@@ -1,12 +1,12 @@
 import { Frame } from '../../pattern'
 import { from } from '../../utilities'
-import { state } from '../state'
+import { appState } from '../appState'
 
 const updateCurrentFrame: (frame: Frame) => void =
 	(frame: Frame): void => {
-		state.controls.currentFrame = frame
+		appState.controls.currentFrame = frame
 
-		state.dom.frameInput.value = from.Frame(frame).toString()
+		appState.dom.frameInput.value = from.Frame(frame).toString()
 	}
 
 export default updateCurrentFrame

@@ -1,11 +1,11 @@
 import {
+	appState,
 	createCheckbox,
 	createEffectToggle,
 	createLabel,
 	documentWrapper,
 	NamedEffect,
 	PageElement,
-	state,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
@@ -49,7 +49,7 @@ describe('create effect toggle', () => {
 		expect(createCheckbox.default).toHaveBeenCalledWith({ houndstoothEffect })
 	})
 
-	it('stores the effect toggle checkbox on the state', () => {
-		expect(state.dom.effectToggles['mock tooth']).toBe(checkbox)
+	it('stores the effect toggle checkbox on the app state', () => {
+		expect(appState.dom.effectToggles['mock tooth']).toBe(checkbox)
 	})
 })

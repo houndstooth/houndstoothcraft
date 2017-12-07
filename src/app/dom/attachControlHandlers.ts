@@ -1,4 +1,5 @@
 import { NullarySideEffector } from '../../utilities'
+import { appState } from '../appState'
 import {
 	frameInputChangeHandler,
 	pauseClickHandler,
@@ -6,15 +7,14 @@ import {
 	rewindClickHandler,
 	snapshotClickHandler,
 } from '../controls'
-import { state } from '../state'
 
 const attachControlHandlers: NullarySideEffector =
 	(): void => {
-		state.dom.frameInput.onchange = frameInputChangeHandler.default
-		state.dom.playButton.onclick = playClickHandler.default
-		state.dom.pauseButton.onclick = pauseClickHandler.default
-		state.dom.rewindButton.onclick = rewindClickHandler.default
-		state.dom.snapshotButton.onclick = snapshotClickHandler.default
+		appState.dom.frameInput.onchange = frameInputChangeHandler.default
+		appState.dom.playButton.onclick = playClickHandler.default
+		appState.dom.pauseButton.onclick = pauseClickHandler.default
+		appState.dom.rewindButton.onclick = rewindClickHandler.default
+		appState.dom.snapshotButton.onclick = snapshotClickHandler.default
 	}
 
 export default attachControlHandlers

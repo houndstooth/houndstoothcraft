@@ -95,7 +95,7 @@ export {
 	asyncMaybeTile,
 	ConditionFunction,
 	ExecuteLayerParams,
-	state,
+	appState,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -163,6 +163,7 @@ export {
 	applyScroll,
 	applyTilt,
 	applyZoom,
+	patternState,
 } from './pattern'
 export {
 	codeUtilities,

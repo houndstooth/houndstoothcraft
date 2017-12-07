@@ -1,16 +1,16 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { SetSetting } from '../../pattern'
-import { state } from '../state'
+import { patternState, SetSetting } from '../../pattern'
+import { appState } from '../appState'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import { SettingsPath } from './types'
 
 const setSetting: SetSetting =
 	(settingName: any, value: any): void => {
-		const baseSettingsPath: SettingsPath = state.settings.settingNamesToPathsMap[ settingName ]
+		const baseSettingsPath: SettingsPath = appState.settings.settingNamesToPathsMap[ settingName ]
 
 		const parentSetting: any = getPatternSettingOrCreatePath({
-			pattern: state.settings.currentPattern,
+			pattern: patternState,
 			settingsPath: baseSettingsPath,
 		})
 		parentSetting[ settingName ] = value

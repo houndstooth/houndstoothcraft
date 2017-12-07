@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { CANVAS_SIZE } from '../../constants'
-import { state } from '../state'
+import { appState } from '../appState'
 import { Canvas, Context, PageElement } from './types'
 import { documentWrapper } from './windowWrapper'
 
@@ -11,7 +11,7 @@ const createContext: (_: { canvasContainer: PageElement }) => Context =
 		canvas.width = CANVAS_SIZE
 		canvas.height = CANVAS_SIZE
 		canvas.style.position = 'absolute'
-		canvas.style.display = state.controls.animating ? 'none' : 'block'
+		canvas.style.display = appState.controls.animating ? 'none' : 'block'
 
 		canvasContainer.appendChild(canvas)
 

@@ -1,11 +1,11 @@
 import * as effects from './effects'
 import {
+	appState,
 	attachControlHandlers,
 	buildSettingNamesToPathsMap,
 	createEffectToggles,
 	executeSelectedHoundstoothEffects,
 	NamedEffect,
-	state,
 	storeDomElements,
 	storeMixedDownContext,
 } from './src'
@@ -13,7 +13,7 @@ import {
 storeDomElements.default()
 
 const allEffects: NamedEffect[] = Object.values(effects)
-state.settings.availableEffects = allEffects
+appState.settings.availableEffects = allEffects
 buildSettingNamesToPathsMap.default()
 storeMixedDownContext.default()
 createEffectToggles.default(allEffects)

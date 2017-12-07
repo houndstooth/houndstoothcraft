@@ -1,4 +1,4 @@
-import { state } from '../state'
+import { appState } from '../appState'
 import { PageElement } from './types'
 import { documentWrapper } from './windowWrapper'
 
@@ -8,7 +8,7 @@ const addDescription: (descriptionText: string) => void =
 		description.innerHTML = descriptionText
 
 		// tslint:disable-next-line:no-unsafe-any
-		state.dom.descriptionsContainer.appendChild(description)
+		appState.dom.descriptionsContainer.appendChild(description)
 	}
 
 export default addDescription

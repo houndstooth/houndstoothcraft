@@ -1,9 +1,9 @@
 import { NamedEffect } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
+import { appState } from '../appState'
 import { clearContexts, clearMixedDownContext } from '../canvas'
 import { cancelPreviousPattern, clearInterval, executeSelectedHoundstoothEffects } from '../execute'
 import { resetMainHoundstooth } from '../settings'
-import { state } from '../state'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
 import { BuildEffectToggleClickHandlerParams } from './types'
@@ -12,7 +12,7 @@ import updateDescriptions from './updateDescriptions'
 const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) => NullarySideEffector =
 	({ checkbox, houndstoothEffect }: BuildEffectToggleClickHandlerParams): NullarySideEffector =>
 		(): void => {
-			state.dom.descriptionsContainer.innerHTML = ''
+			appState.dom.descriptionsContainer.innerHTML = ''
 
 			clearContexts.default()
 			clearMixedDownContext.default()
@@ -20,7 +20,7 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 			clearInterval.default('animationInterval')
 			clearInterval.default('gridProgressInterval')
 
-			state.execute.resolveGrid()
+			appState.execute.resolveGrid()
 
 			cancelPreviousPattern.default()
 			resetMainHoundstooth.default()
@@ -39,13 +39,13 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 
 const addEffect: (houndstoothEffect: NamedEffect) => void =
 	(houndstoothEffect: NamedEffect): void => {
-		state.controls.selectedHoundstoothEffects.push(houndstoothEffect)
+		appState.controls.selectedHoundstoothEffects.push(houndstoothEffect)
 	}
 
 const removeEffect: (houndstoothEffect: NamedEffect) => void =
 	(houndstoothEffect: NamedEffect): void => {
 		// tslint:disable-next-line:max-line-length
-		state.controls.selectedHoundstoothEffects = state.controls.selectedHoundstoothEffects.filter((selectedHoundstoothEffect: NamedEffect) =>
+		appState.controls.selectedHoundstoothEffects = appState.controls.selectedHoundstoothEffects.filter((selectedHoundstoothEffect: NamedEffect) =>
 			selectedHoundstoothEffect.name !== houndstoothEffect.name)
 	}
 

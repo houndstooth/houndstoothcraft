@@ -1,7 +1,7 @@
 import { layerSettings } from '../../pattern'
 import { from, to } from '../../utilities'
+import { appState } from '../appState'
 import { getSetting } from '../settings'
-import { state } from '../state'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import completeLayers from './completeLayers'
 import executeLayer from './executeLayer'
@@ -14,7 +14,7 @@ const executePattern: (_: ExecuteParams) => Promise<void> =
 
 		callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
 
-		const thisPatternRef: number = state.execute.patternRef
+		const thisPatternRef: number = appState.execute.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
 			if (thisPatternHasNotBeenCanceled(thisPatternRef)) {
 				await executeLayer({ layer: to.Layer(layerValue), layerFunctionObjects, thisPatternRef })

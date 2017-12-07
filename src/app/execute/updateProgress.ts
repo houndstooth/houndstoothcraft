@@ -1,29 +1,30 @@
 import { ONE_HUNDRED_PERCENT } from '../../constants'
 import { from, NullarySideEffector } from '../../utilities'
+import { appState } from '../appState'
 import { getSetting } from '../settings'
-import { state } from '../state'
 
 const updateProgress: NullarySideEffector =
 	(): void => {
-		const percentage: number = Math.ceil(state.execute.tilesCompleted * ONE_HUNDRED_PERCENT / (state.execute.tileCount))
+		const ratio: number = appState.execute.tilesCompleted / appState.execute.tileCount
+		const percentage: number = Math.ceil(ratio * ONE_HUNDRED_PERCENT)
 
-		state.dom.progressBar.style.width = `${percentage}%`
+		appState.dom.progressBar.style.width = `${percentage}%`
 
 		const endLayerValue: number = from.Layer(getSetting.default('endLayer'))
-		const currentLayerValue: number = from.Layer(state.execute.currentLayer)
+		const currentLayerValue: number = from.Layer(appState.execute.currentLayer)
 
 		const layerCount: number = endLayerValue + 1
 		const layersPercentage: number = (percentage + currentLayerValue * ONE_HUNDRED_PERCENT) / layerCount
-		state.dom.layersProgressBar.style.width = `${layersPercentage}%`
+		appState.dom.layersProgressBar.style.width = `${layersPercentage}%`
 
 		const animationsAndLayersMessages: string[] = []
-		if (state.controls.animating) {
-			animationsAndLayersMessages.push(` frame ${state.controls.currentFrame}`)
+		if (appState.controls.animating) {
+			animationsAndLayersMessages.push(` frame ${appState.controls.currentFrame}`)
 		}
 		if (endLayerValue) {
 			animationsAndLayersMessages.push(` layer ${currentLayerValue}/${endLayerValue}`)
 		}
-		state.dom.progressMessage.textContent = `Rendering${animationsAndLayersMessages.join(',')}: ${percentage}%`
+		appState.dom.progressMessage.textContent = `Rendering${animationsAndLayersMessages.join(',')}: ${percentage}%`
 	}
 
 export default updateProgress

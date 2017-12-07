@@ -1,9 +1,9 @@
 import {
 	animator,
+	appState,
 	buildAnimationIntervalFunction,
 	noop,
 	NullarySideEffector,
-	state,
 	windowWrapper,
 } from '../../../../../src'
 
@@ -35,6 +35,6 @@ describe('animator', () => {
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {
-		expect(state.execute.animationInterval).toBe(animationInterval)
+		expect(appState.execute.animationInterval).toBe(animationInterval)
 	})
 })

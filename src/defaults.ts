@@ -2,6 +2,7 @@
 
 import { buildMockElement } from '../test'
 import {
+	AppState,
 	CanvasState,
 	Context,
 	ControlsState,
@@ -11,7 +12,6 @@ import {
 	PageElement,
 	SettingNamesToPathsMap,
 	SettingsState,
-	State,
 } from './app'
 import {
 	animationSettings,
@@ -63,7 +63,6 @@ const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
 const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
-const DEFAULT_CURRENT_PATTERN: Partial<BasePattern> = {}
 const DEFAULT_EFFECT_TOGGLES: { [_: string ]: InputElement } = {}
 const DEFAULT_END_FRAME: Frame = to.Frame(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
@@ -126,12 +125,11 @@ const DEFAULT_EXECUTE_STATE: ExecuteState = {
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
-	currentPattern: DEFAULT_CURRENT_PATTERN,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	settingNamesToPathsMap: DEFAULT_SETTING_NAMES_TO_PATHS_MAP,
 }
 
-const DEFAULT_STATE: State = {
+const DEFAULT_APP_STATE: AppState = {
 	canvas: DEFAULT_CANVAS_STATE,
 	controls: DEFAULT_CONTROLS_STATE,
 	dom: DEFAULT_DOM_STATE,
@@ -145,5 +143,5 @@ export {
 	DEFAULT_COLOR_SET,
 	DEFAULT_LAYERS_PATTERN,
 	DEFAULT_HOUNDSTOOTH,
-	DEFAULT_STATE,
+	DEFAULT_APP_STATE,
 }

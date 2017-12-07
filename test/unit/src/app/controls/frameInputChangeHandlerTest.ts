@@ -1,8 +1,8 @@
 import {
+	appState,
 	clearMixedDownContext,
 	executeSelectedHoundstoothEffects,
 	frameInputChangeHandler,
-	state,
 	to,
 } from '../../../../../src'
 
@@ -20,6 +20,6 @@ describe('frame input change handler', () => {
 
 		expect(clearMixedDownContext.default).toHaveBeenCalled()
 		expect(executeSelectedHoundstoothEffects.default).toHaveBeenCalled()
-		expect(state.controls.currentFrame).toBe(to.Frame(99))
+		expect(appState.controls.currentFrame).toBe(to.Frame(99))
 	})
 })

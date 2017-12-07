@@ -6,30 +6,20 @@
 
 Check it out at [https://houndstooth.cfapps.io](https://houndstooth.cfapps.io).
 
-## state hierarchy
+## houndstooth pattern settings hierarchy
 
 In short:
-- [state](#state)
-    - [houndstooth](#houndstooth)
-        - [pattern](#pattern)
-            - [setting](#setting)
-
-### state
-
-- example instances
-	- `state`
-	- `INITIAL_STATE`
-- contents
-	- `mainHoundstooth` — a [houndstooth](#houndstooth)
-	- other stuff such as `currentPattern`, `contexts`, and `tilesCompleted`
+- [houndstooth](#houndstooth)
+    - [pattern](#pattern)
+        - [setting](#setting)
 
 ### houndstooth
 
 - example instances
-	- `HOUNDSTOOTH_DEFAULTS`
+	- `DEFAULT_HOUNDSTOOTH`
 	- `houndstoothEffects`
 	- `houndstoothOverrides`
-	- `mainHoundstooth`
+	- `appState.settings.mainHoundstooth`
 - contents — all [patterns](#pattern)
 	- `basePattern`
 	- `animationsPattern`
@@ -46,16 +36,16 @@ When you compose a houndstooth, you do so by composing each houndstooth effect's
 ### pattern
 
 - example instances
-	- `basePattern`
-	- `animationsPattern`
-	- `layersPattern`
-	- `currentPattern`
+    - `patternState`
+	- `appState.settings.mainHoundstooth.basePattern`
+	- `appState.settings.mainHoundstooth.animationsPattern`
+	- `appState.settings.mainHoundstooth.layersPattern`
 - contents — all [settings](#setting)
 	- `colorSettings`
 	- `gridSettings`
 	- etc.
 
-The `mainHoundstooth`'s `basePattern`, `animationsPattern`, and `layersPattern` are drawn on to decide on the `currentPattern` for any given animation and layer frame (including the initial, static render).
+The `mainHoundstooth`'s `basePattern`, `animationsPattern`, and `layersPattern` are drawn on to decide on the `patternState` for any given animation and layer frame (including the initial, static render).
 
 ### setting
 
@@ -81,7 +71,22 @@ Note that both an `animationsPattern` pattern and an `animationSettings` setting
 
 Both `layersPattern` and `layerSettings` exist as well, for the same reason.
 
+## app
+
+The `app` module, in contrast to the `pattern` module, has nothing to do with the "fun", "mathy", "designy' part of houndstooth. It's how the app works.
+
+submodules:
+- `controls`: the user interface; handlers for toggling effects and controlling animation
+- `dom`: bindings to HTML methods, references to elements on the page
+- `execute`: shepherds a pattern through, from composition to rendering, managing layers and frames
+- `render`: self-explanatory
+- `settings`: tooling for parsing patterns
+
+Just as the pattern setting submodules map onto the `patternState`, the app submodules map onto an `appState`.
+
 ## execution & component hierarchy
+
+This section straddles both the `app` and `pattern` modules. It uses elements from both.
 
 In short:
 - [animation](#animation)
@@ -92,15 +97,19 @@ In short:
 
 ### animation
 
-When `animating` is false, essentially only a single animation frame is drawn.
+When `state.controls.animating` is false, essentially only a single animation frame is drawn.
 
 Typically:
 - the canvas is cleared in-between each animation frame
 
 Potentially:
-- clearing can be disabled to make some weird effects
+- a pattern can disable clearing to make some weird effects
 
-When `exportFrames` is set to `true`, the next animation frame will not be rendered until the current one has finished saving. This may negatively impact the in-browser experience, but it is a solution if your houndstooth is too computationally expensive to watch at the desired frame rate; simply export the frames and assemble them into a video using a tool such as ImageJ.
+There are a few secret features that are not enabled for users of the website yet:
+
+- When `state.controls.exportFrames` is set to `true`, the app will save a .png for each frame, which can then be assembled into a video using a tool such as ImageJ.
+- When `state.execute.performanceLogging` is set to `true`, you can see in the console how long each grid takes.
+- When `state.controls.endFrame` is set to anything besides 0, animation can reach an end and stop. 
 
 ### layer
 

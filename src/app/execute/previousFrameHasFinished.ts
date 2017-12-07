@@ -1,8 +1,8 @@
 import { from } from '../../utilities'
-import { state } from '../state'
+import { appState } from '../appState'
 import { ConditionFunction } from './types'
 
 const previousFrameHasFinished: ConditionFunction =
-	(): boolean => state.execute.tilesCompleted === 0 && from.Layer(state.execute.currentLayer) === 0
+	(): boolean => appState.execute.tilesCompleted === 0 && from.Layer(appState.execute.currentLayer) === 0
 
 export default previousFrameHasFinished

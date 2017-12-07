@@ -1,6 +1,6 @@
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { constants, mixDownContexts, state } from '../../../../../src'
+import { appState, constants, mixDownContexts } from '../../../../../src'
 
 const { CANVAS_SIZE } = constants
 
@@ -8,7 +8,7 @@ describe('mix down contexts', () => {
 	const drawImageSpy: Spy = jasmine.createSpy('drawImage')
 	const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 	beforeEach(() => {
-		state.canvas.mixedDownContext = { drawImage: drawImageSpy, clearRect: clearRectSpy }
+		appState.canvas.mixedDownContext = { drawImage: drawImageSpy, clearRect: clearRectSpy }
 	})
 
 	it('clears the mixed down canvas just before rendering', () => {
@@ -18,7 +18,7 @@ describe('mix down contexts', () => {
 	})
 
 	it('draws each of the contexts in turn onto the mixedDownContext', () => {
-		state.canvas.contexts = [
+		appState.canvas.contexts = [
 			{ canvas: 0 },
 			{ canvas: 1 },
 			{ canvas: 2 },

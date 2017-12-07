@@ -1,9 +1,9 @@
 import {
+	appState,
 	clearContext,
 	clearContexts,
 	Context,
 	NullarySideEffector,
-	state,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
@@ -17,7 +17,7 @@ describe('clear contexts', () => {
 		const context1: Context = buildMockContext()
 		const context2: Context = buildMockContext()
 		const context3: Context = buildMockContext()
-		state.canvas.contexts = [ context1, context2, context3 ]
+		appState.canvas.contexts = [ context1, context2, context3 ]
 
 		subject()
 

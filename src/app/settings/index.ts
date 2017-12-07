@@ -10,6 +10,7 @@ import * as getSetting from './getSetting'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
+import * as resetPatternState from './resetPatternState'
 import * as setSetting from './setSetting'
 import * as settingPath from './settingPath'
 import * as shouldRecurse from './shouldRecurse'
@@ -42,4 +43,5 @@ export {
 	combineHoundstoothEffects,
 	composePatterns,
 	settingPath,
+	resetPatternState,
 }

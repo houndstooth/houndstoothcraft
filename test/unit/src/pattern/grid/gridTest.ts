@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import Spy = jasmine.Spy
-import { applyViewForGrid, grid, setSetting, state } from '../../../../../src'
+import { applyViewForGrid, appState, grid, setSetting } from '../../../../../src'
 
 describe('grid', () => {
 	let gridTileSpy: Spy
@@ -40,12 +40,12 @@ describe('grid', () => {
 			expect(gridTileSpy.calls.all()[ 3 ].args[ 0 ].gridAddress).toEqual([ 1, 1 ])
 		})
 
-		it('sets the tile count on the state correctly', () => {
-			state.execute.tileCount = 0
+		it('sets the tile count on the app state correctly', () => {
+			appState.execute.tileCount = 0
 
 			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
-			expect(state.execute.tileCount).toBe(Math.pow(tileResolution, 2))
+			expect(appState.execute.tileCount).toBe(Math.pow(tileResolution, 2))
 		})
 	})
 
@@ -79,12 +79,12 @@ describe('grid', () => {
 			expect(gridTileSpy.calls.all()[ 15 ].args[ 0 ].gridAddress).toEqual([ 1, 1 ])
 		})
 
-		it('sets the tile count on the state correctly', () => {
-			state.execute.tileCount = 0
+		it('sets the tile count on the app state correctly', () => {
+			appState.execute.tileCount = 0
 
 			grid.default({ gridTile: gridTileSpy, thisPatternRef })
 
-			expect(state.execute.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
+			expect(appState.execute.tileCount).toBe(Math.pow(tileResolution, 2) * 4)
 		})
 	})
 })

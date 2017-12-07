@@ -1,4 +1,4 @@
-import { addDescription, NullarySideEffector, state, updateDescriptions } from '../../../../../src'
+import { addDescription, appState, NullarySideEffector, updateDescriptions } from '../../../../../src'
 
 const subject: NullarySideEffector = updateDescriptions.default
 
@@ -6,7 +6,7 @@ describe('update descriptions', () => {
 	it('adds the description for each of the selected effects', () => {
 		spyOn(addDescription, 'default')
 
-		state.controls.selectedHoundstoothEffects = [
+		appState.controls.selectedHoundstoothEffects = [
 			{ name: 'Nu är det Jul igen', description: 'this is fun' },
 			{ name: 'Family Learning Channel', description: 'i am a banana' },
 		]

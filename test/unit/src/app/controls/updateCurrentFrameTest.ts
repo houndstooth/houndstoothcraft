@@ -1,4 +1,4 @@
-import { Frame, state, to, updateCurrentFrame } from '../../../../../src'
+import { appState, Frame, to, updateCurrentFrame } from '../../../../../src'
 
 const subject: (frame: Frame) => void = updateCurrentFrame.default
 
@@ -7,11 +7,11 @@ describe('update current frame', () => {
 		subject(to.Frame(543))
 	})
 
-	it('updates the current frame on the state', () => {
-		expect(state.controls.currentFrame).toBe(to.Frame(543))
+	it('updates the current frame on the app state', () => {
+		expect(appState.controls.currentFrame).toBe(to.Frame(543))
 	})
 
 	it('updates the current frame in the frame input', () => {
-		expect(state.dom.frameInput.value).toBe('543')
+		expect(appState.dom.frameInput.value).toBe('543')
 	})
 })

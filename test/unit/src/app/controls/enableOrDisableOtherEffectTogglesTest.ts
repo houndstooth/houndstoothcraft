@@ -1,11 +1,11 @@
 import {
+	appState,
 	combineHoundstoothEffects,
 	Effect,
 	effectsHaveConflicts,
 	enableOrDisableOtherEffectToggles,
 	NamedEffect,
 	NullarySideEffector,
-	state,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 import Spy = jasmine.Spy
@@ -15,16 +15,16 @@ const subject: NullarySideEffector = enableOrDisableOtherEffectToggles.default
 describe('enableOrDisableOtherEffectToggles', () => {
 	it('checks each available effect for conflicts with the effects the user currently has combined', () => {
 		const effectsSelected: NamedEffect[] = []
-		state.controls.selectedHoundstoothEffects = effectsSelected
+		appState.controls.selectedHoundstoothEffects = effectsSelected
 
 		const effectsCombined: Effect = { name: 'effects combined' }
 		spyOn(combineHoundstoothEffects, 'default').and.returnValue(effectsCombined)
 
 		const effectOne: NamedEffect = { name: 'effect one', description: '' }
 		const effectTwo: NamedEffect = { name: 'effect two', description: '' }
-		state.settings.availableEffects = [ effectOne, effectTwo ]
+		appState.settings.availableEffects = [ effectOne, effectTwo ]
 
-		state.dom.effectToggles = { 'effect one': buildMockElement(), 'effect two': buildMockElement() }
+		appState.dom.effectToggles = { 'effect one': buildMockElement(), 'effect two': buildMockElement() }
 
 		const effectsHaveConflictsSpy: Spy = spyOn(effectsHaveConflicts, 'default')
 		effectsHaveConflictsSpy.and.callFake(({ effect }: { effect: Effect }): boolean =>
@@ -41,7 +41,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 			effect: effectTwo,
 			effectCheckingAgainst: effectsCombined,
 		})
-		expect(state.dom.effectToggles['effect one'].disabled).toBe(true)
-		expect(state.dom.effectToggles['effect two'].disabled).toBe(false)
+		expect(appState.dom.effectToggles['effect one'].disabled).toBe(true)
+		expect(appState.dom.effectToggles['effect two'].disabled).toBe(false)
 	})
 })

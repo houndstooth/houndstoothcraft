@@ -1,15 +1,15 @@
 import { NullarySideEffector } from '../../utilities'
+import { appState } from '../appState'
 import { mixDownContexts } from '../canvas'
 import { executeSelectedHoundstoothEffects } from '../execute'
-import { state } from '../state'
 
 const playClickHandler: NullarySideEffector =
 	(): void => {
-		state.dom.playButton.disabled = true
-		state.dom.pauseButton.disabled = false
-		state.dom.rewindButton.disabled = false
+		appState.dom.playButton.disabled = true
+		appState.dom.pauseButton.disabled = false
+		appState.dom.rewindButton.disabled = false
 
-		state.controls.animating = true
+		appState.controls.animating = true
 
 		mixDownContexts.default()
 
@@ -19,6 +19,6 @@ const playClickHandler: NullarySideEffector =
 	}
 
 const resumingAnimation: () => boolean =
-	(): boolean => !!state.execute.animationInterval
+	(): boolean => !!appState.execute.animationInterval
 
 export default playClickHandler

@@ -1,11 +1,11 @@
 import {
+	appState,
 	asyncMaybeTile,
 	executeGrid,
 	grid,
 	gridComplete,
 	NullarySideEffector,
 	setSetting,
-	state,
 } from '../../../../../src'
 
 describe('execute grid', () => {
@@ -15,7 +15,7 @@ describe('execute grid', () => {
 	beforeEach(() => {
 		const fakeGridComplete: (resolveGrid: NullarySideEffector) => void =
 			(resolveGrid: NullarySideEffector): void => {
-				state.execute.resolveGrid = resolveGrid
+				appState.execute.resolveGrid = resolveGrid
 			}
 		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)
 
@@ -24,14 +24,14 @@ describe('execute grid', () => {
 	})
 
 	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {
-		state.execute.tilesCompleted = 256
+		appState.execute.tilesCompleted = 256
 
 		executeGrid.default({ thisPatternRef }).then().catch()
-		expect(state.execute.tilesCompleted).toBe(256)
+		expect(appState.execute.tilesCompleted).toBe(256)
 
-		state.execute.resolveGrid()
+		appState.execute.resolveGrid()
 		setTimeout(() => {
-			expect(state.execute.tilesCompleted).toBe(0)
+			expect(appState.execute.tilesCompleted).toBe(0)
 			done()
 		},         0)
 	})

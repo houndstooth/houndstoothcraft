@@ -1,5 +1,6 @@
 import Spy = jasmine.Spy
 import {
+	appState,
 	composeMainHoundstooth,
 	createContexts,
 	Effect,
@@ -7,9 +8,9 @@ import {
 	executePattern,
 	executeSelectedHoundstoothEffects,
 	NullarySideEffector,
+	patternState,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
-	state,
 } from '../../../../../src'
 
 describe('execute selected houndstooth effects', () => {
@@ -31,7 +32,7 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.default({ houndstoothOverrides })
 
 		expect(composeMainHoundstooth.default).toHaveBeenCalledWith({
-			houndstoothEffects: state.controls.selectedHoundstoothEffects,
+			houndstoothEffects: appState.controls.selectedHoundstoothEffects,
 			houndstoothOverrides,
 		})
 	})
@@ -40,7 +41,7 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.default()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.layersPattern,
+			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
 		})
 	})
 
@@ -48,14 +49,14 @@ describe('execute selected houndstooth effects', () => {
 		executeSelectedHoundstoothEffects.default()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionsSourcePattern: state.settings.mainHoundstooth.animationsPattern,
+			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
 		})
 	})
 
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
 		executeSelectedHoundstoothEffects.default()
 
-		expect(state.settings.currentPattern).toEqual(state.settings.mainHoundstooth.basePattern)
+		expect(patternState).toEqual(appState.settings.mainHoundstooth.basePattern)
 	})
 
 	it('sets up for rendering', () => {
@@ -66,7 +67,7 @@ describe('execute selected houndstooth effects', () => {
 
 	describe('when animating', () => {
 		beforeEach(() => {
-			state.controls.animating = true
+			appState.controls.animating = true
 
 			executeSelectedHoundstoothEffects.default()
 		})
@@ -85,7 +86,7 @@ describe('execute selected houndstooth effects', () => {
 
 	describe('when not animating', () => {
 		beforeEach(() => {
-			state.controls.animating = false
+			appState.controls.animating = false
 
 			executeSelectedHoundstoothEffects.default()
 		})

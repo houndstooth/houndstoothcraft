@@ -1,4 +1,4 @@
-import { cancelPreviousPattern, NullarySideEffector, state } from '../../../../../src'
+import { appState, cancelPreviousPattern, NullarySideEffector } from '../../../../../src'
 
 const subject: NullarySideEffector = cancelPreviousPattern.default
 
@@ -8,6 +8,6 @@ describe('cancel previous pattern', () => {
 
 		subject()
 
-		expect(state.execute.patternRef).toBe(0.4987)
+		expect(appState.execute.patternRef).toBe(0.4987)
 	})
 })

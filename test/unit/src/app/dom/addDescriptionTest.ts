@@ -1,4 +1,4 @@
-import { addDescription, documentWrapper, PageElement, state } from '../../../../../src'
+import { addDescription, appState, documentWrapper, PageElement } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: string) => void = addDescription.default
@@ -8,7 +8,7 @@ describe('add description', () => {
 		const children: PageElement[] = []
 
 		spyOn(documentWrapper, 'createElement').and.callFake(buildMockElement)
-		state.dom.descriptionsContainer = buildMockElement({ children })
+		appState.dom.descriptionsContainer = buildMockElement({ children })
 
 		subject('is great')
 		subject('is grand')

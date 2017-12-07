@@ -1,11 +1,11 @@
 import {
+	appState,
 	combineHoundstoothEffects,
 	composeMainHoundstooth,
 	composePatterns,
 	consoleWrapper,
 	defaults,
 	Effect,
-	state,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
@@ -22,7 +22,7 @@ describe('composeMainHoundstooth', () => {
 
 		composeMainHoundstooth.default({ logComposedMainHoundstooth: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(state.settings.mainHoundstooth)
+		expect(consoleWrapper.log).toHaveBeenCalledWith(appState.settings.mainHoundstooth)
 	})
 
 	it('does not log the houndstooth when logging mode is not on', () => {

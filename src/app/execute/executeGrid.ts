@@ -2,7 +2,7 @@
 
 import { grid } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
-import { state } from '../state'
+import { appState } from '../appState'
 import asyncMaybeTile from './asyncMaybeTile'
 import gridComplete from './gridComplete'
 
@@ -10,7 +10,7 @@ const executeGrid: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
 		grid.default({ gridTile: asyncMaybeTile, thisPatternRef })
 		await new Promise<(resolveGrid: NullarySideEffector) => void>(gridComplete)
-		state.execute.tilesCompleted = 0
+		appState.execute.tilesCompleted = 0
 	}
 
 export default executeGrid

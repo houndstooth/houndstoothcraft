@@ -1,16 +1,16 @@
-import { applyOpacity, setSetting, state } from '../../../../../src'
+import { applyOpacity, appState, setSetting } from '../../../../../src'
 
 describe('apply opacity', () => {
 	beforeEach(() => {
-		state.canvas.contexts = [ { globalAlpha: 1 } ]
+		appState.canvas.contexts = [ { globalAlpha: 1 } ]
 	})
 
 	it('has no effect if no opacity level is specified', () => {
-		expect(state.canvas.contexts[ 0 ].globalAlpha).toBe(1)
+		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(1)
 
 		applyOpacity.default()
 
-		expect(state.canvas.contexts[ 0 ].globalAlpha).toBe(1)
+		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(1)
 	})
 
 	it('has no effect if no opacity level is 1', () => {
@@ -18,13 +18,13 @@ describe('apply opacity', () => {
 
 		applyOpacity.default()
 
-		expect(state.canvas.contexts[ 0 ].globalAlpha).toBe(1)
+		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(1)
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
 		setSetting.default('colorSettings', { opacity: 0.4 })
 		applyOpacity.default()
 
-		expect(state.canvas.contexts[ 0 ].globalAlpha).toBe(0.4)
+		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(0.4)
 	})
 })

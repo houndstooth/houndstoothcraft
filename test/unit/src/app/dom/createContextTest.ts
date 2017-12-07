@@ -1,4 +1,4 @@
-import { Canvas, Context, createContext, documentWrapper, PageElement, state } from '../../../../../src'
+import { appState, Canvas, Context, createContext, documentWrapper, PageElement } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
 import { buildMockCanvas, buildMockElement } from '../../../helpers'
 
@@ -39,7 +39,7 @@ describe('create context', () => {
 		})
 
 		it('when animating, hides the main canvases', () => {
-			state.controls.animating = true
+			appState.controls.animating = true
 
 			createContext.default({ canvasContainer })
 			appendedCanvas = children[0]

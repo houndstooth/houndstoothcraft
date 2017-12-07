@@ -1,4 +1,5 @@
 import {
+	appState,
 	buildEffectToggleClickHandler,
 	cancelPreviousPattern,
 	clearContexts,
@@ -11,7 +12,6 @@ import {
 	NamedEffect,
 	NullarySideEffector,
 	resetMainHoundstooth,
-	state,
 	updateDescriptions,
 } from '../../../../../src'
 import { buildMockElement, SimulateClick } from '../../../helpers'
@@ -43,13 +43,13 @@ describe('build effect toggle click handler returns a function which', () => {
 		expect(updateDescriptions.default).not.toHaveBeenCalled()
 
 		preExistingHoundstoothEffect = { name: 'preexisting tooth', description: '' }
-		state.controls.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
+		appState.controls.selectedHoundstoothEffects = [ preExistingHoundstoothEffect ]
 
 		simulateClick(checkbox, subject)
 	})
 
 	it('adds the clicked effect to the selection', () => {
-		expect(state.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
+		expect(appState.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect, houndstoothEffect ])
 	})
 
 	it('executes the selected houndstooth effects, since the selection has now changed', () => {
@@ -69,7 +69,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 
 	it('clears descriptions', () => {
-		expect(state.dom.descriptionsContainer.innerHTML).toBe('')
+		expect(appState.dom.descriptionsContainer.innerHTML).toBe('')
 	})
 
 	it('clears contexts', () => {
@@ -99,7 +99,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	it('removes the effect if it is already selected', () => {
 		simulateClick(checkbox, subject)
 
-		expect(state.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect ])
+		expect(appState.controls.selectedHoundstoothEffects).toEqual([ preExistingHoundstoothEffect ])
 	})
 })
 

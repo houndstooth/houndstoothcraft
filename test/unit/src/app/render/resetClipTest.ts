@@ -1,10 +1,10 @@
-import { resetClip, state } from '../../../../../src'
+import { appState, resetClip } from '../../../../../src'
 import { buildMockContext, MockContextCall } from '../../../../helpers'
 
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		state.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
 		resetClip.default()
 

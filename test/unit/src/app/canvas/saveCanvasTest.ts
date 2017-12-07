@@ -1,4 +1,4 @@
-import { DataBlob, saveBlob, saveCanvas, state, to } from '../../../../../src'
+import { appState, DataBlob, saveBlob, saveCanvas, to } from '../../../../../src'
 
 describe('save canvas', () => {
 	const result: DataBlob = {}
@@ -9,7 +9,7 @@ describe('save canvas', () => {
 	describe('animating', () => {
 		describe('when exporting frames', () => {
 			beforeEach(() => {
-				state.controls.exportFrames = true
+				appState.controls.exportFrames = true
 
 				saveCanvas.default({ currentFrame: to.Frame(0), result })
 			})
@@ -21,7 +21,7 @@ describe('save canvas', () => {
 
 		describe('when not exporting frames', () => {
 			beforeEach(() => {
-				state.controls.exportFrames = false
+				appState.controls.exportFrames = false
 			})
 
 			describe('when the current frame is greater than 0', () => {

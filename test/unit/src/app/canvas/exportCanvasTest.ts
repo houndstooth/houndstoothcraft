@@ -1,4 +1,4 @@
-import { DataBlob, exportCanvas, saveCanvas, state, to } from '../../../../../src'
+import { appState, DataBlob, exportCanvas, saveCanvas, to } from '../../../../../src'
 import Spy = jasmine.Spy
 import { buildMockContext } from '../../../../helpers'
 
@@ -8,9 +8,9 @@ describe('export canvas', () => {
 		const toBlobSpy: Spy = jasmine.createSpy('toBlob').and.callFake((fn: (result: DataBlob) => void): void => {
 			fn(result)
 		})
-		state.canvas.mixedDownContext = buildMockContext({ toBlobSpy })
+		appState.canvas.mixedDownContext = buildMockContext({ toBlobSpy })
 		spyOn(saveCanvas, 'default')
-		state.controls.currentFrame = to.Frame(987)
+		appState.controls.currentFrame = to.Frame(987)
 
 		exportCanvas.default()
 

@@ -1,11 +1,11 @@
-import { buildPath, Path, state, to } from '../../../../../src'
+import { appState, buildPath, Path, to } from '../../../../../src'
 import { buildMockContext, MockContextCall } from '../../../../helpers'
 
 describe('build path', () => {
 	it('draws the correct path and fills it', () => {
 		const path: Path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 		const contextCallsOrder: MockContextCall[] = []
-		state.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
 		buildPath.default({ path })
 

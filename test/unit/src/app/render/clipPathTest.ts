@@ -1,10 +1,10 @@
-import { clipPath, state } from '../../../../../src'
+import { appState, clipPath } from '../../../../../src'
 import { buildMockContext, MockContextCall } from '../../../../helpers'
 
 describe('clip path', () => {
 	it('saves the context to restore the clip later, then clips the context (w/ the current path)', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		state.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
 
 		clipPath.default()
 

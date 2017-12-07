@@ -1,9 +1,9 @@
 import {
+	appState,
 	executeSelectedHoundstoothEffects,
 	mixDownContexts,
 	NullarySideEffector,
 	playClickHandler,
-	state,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 
@@ -15,28 +15,28 @@ describe('play click handler', () => {
 		executeSelectedHoundstoothEffectsSpy = spyOn(executeSelectedHoundstoothEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
-		state.controls.animating = false
-		state.dom.playButton.disabled = false
-		state.dom.pauseButton.disabled = true
-		state.dom.rewindButton.disabled = true
+		appState.controls.animating = false
+		appState.dom.playButton.disabled = false
+		appState.dom.pauseButton.disabled = true
+		appState.dom.rewindButton.disabled = true
 
 		playClickHandler.default()
 	})
 
 	it('disables the play button', () => {
-		expect(state.dom.playButton.disabled).toBe(true)
+		expect(appState.dom.playButton.disabled).toBe(true)
 	})
 
 	it('enables the pause button', () => {
-		expect(state.dom.pauseButton.disabled).toBe(false)
+		expect(appState.dom.pauseButton.disabled).toBe(false)
 	})
 
 	it('enables the rewind button', () => {
-		expect(state.dom.rewindButton.disabled).toBe(false)
+		expect(appState.dom.rewindButton.disabled).toBe(false)
 	})
 
 	it('set animating to true', () => {
-		expect(state.controls.animating).toBe(true)
+		expect(appState.controls.animating).toBe(true)
 	})
 
 	it('mixes down the contexts', () => {
@@ -49,7 +49,7 @@ describe('play click handler', () => {
 		})
 
 		it('does not re-execute the selected houndstooth effects when already running an animation', () => {
-			state.execute.animationInterval = 25346
+			appState.execute.animationInterval = 25346
 			executeSelectedHoundstoothEffectsSpy.calls.reset()
 
 			playClickHandler.default()

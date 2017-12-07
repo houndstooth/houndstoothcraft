@@ -1,7 +1,7 @@
 import { NullarySideEffector, to } from '../../utilities'
+import { appState } from '../appState'
 import { clearMixedDownContext } from '../canvas'
 import { clearInterval, executeSelectedHoundstoothEffects } from '../execute'
-import { state } from '../state'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =
@@ -10,8 +10,8 @@ const rewindClickHandler: NullarySideEffector =
 
 		updateCurrentFrame(to.Frame(0))
 
-		if (!state.controls.animating) {
-			state.dom.rewindButton.disabled = true
+		if (!appState.controls.animating) {
+			appState.dom.rewindButton.disabled = true
 			clearMixedDownContext.default()
 		}
 

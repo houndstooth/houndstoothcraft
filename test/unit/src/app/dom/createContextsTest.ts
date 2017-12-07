@@ -1,12 +1,12 @@
 import Spy = jasmine.Spy
 import {
+	appState,
 	createContext,
 	createContexts,
 	documentWrapper,
 	PageElement,
 	scaleCanvasContainer,
 	setSetting,
-	state,
 	to,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
@@ -29,21 +29,21 @@ describe('create contexts', () => {
 		expect(canvasContainer.innerHTML).toBe('')
 	})
 
-	it('adds contexts to the state for each layer', () => {
+	it('adds contexts to the app state for each layer', () => {
 		setSetting.default('endLayer', to.Layer(5))
-		expect(state.canvas.contexts.length).toBe(0)
+		expect(appState.canvas.contexts.length).toBe(0)
 
 		createContexts.default()
 
-		expect(state.canvas.contexts.length).toBe(6)
+		expect(appState.canvas.contexts.length).toBe(6)
 	})
 
-	it('can reduce the count of contexts in the state, and canvases on the dom', () => {
+	it('can reduce the count of contexts on the app state, and canvases on the dom', () => {
 		setSetting.default('endLayer', to.Layer(5))
 		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(6)
-		expect(state.canvas.contexts.length).toBe(6)
+		expect(appState.canvas.contexts.length).toBe(6)
 
 		setSetting.default('endLayer', to.Layer(3))
 		createContextSpy.calls.reset()
@@ -51,7 +51,7 @@ describe('create contexts', () => {
 		createContexts.default()
 
 		expect(createContextSpy.calls.count()).toBe(4)
-		expect(state.canvas.contexts.length).toBe(4)
+		expect(appState.canvas.contexts.length).toBe(4)
 	})
 
 	it('creates the canvas container if it does not already exist', () => {

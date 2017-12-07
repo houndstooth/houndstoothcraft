@@ -1,4 +1,5 @@
 import {
+	appState,
 	buildAnimationFunction,
 	callFunctionsPerSetting,
 	clearContexts,
@@ -9,7 +10,6 @@ import {
 	previousFrameHasFinished,
 	setSetting,
 	SettingsFunctionObject,
-	state,
 	to,
 	updateCurrentFrame,
 } from '../../../../../src'
@@ -30,7 +30,7 @@ describe('build animation function returns an animation function', () => {
 		clearContextsSpy = spyOn(clearContexts, 'default')
 		spyOn(exportCanvas, 'default')
 		spyOn(mixDownContexts, 'default')
-		state.controls.currentFrame = to.Frame(5)
+		appState.controls.currentFrame = to.Frame(5)
 		animationFunction = buildAnimationFunction.default({
 			animationFunctionObjects,
 			layerFunctionObjects,
@@ -90,7 +90,7 @@ describe('build animation function returns an animation function', () => {
 			})
 
 			it('exports frames if configured to', async (done: DoneFn) => {
-				state.controls.exportFrames = true
+				appState.controls.exportFrames = true
 
 				await animationFunction()
 

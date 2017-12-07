@@ -2,8 +2,8 @@
 
 import { Layer } from '../../pattern'
 import { codeUtilities, from, NullarySideEffector, to } from '../../utilities'
+import { appState } from '../appState'
 import { getSetting } from '../settings'
-import { state } from '../state'
 import createContext from './createContext'
 import scaleCanvasContainer from './scaleCanvasContainer'
 import { PageElement } from './types'
@@ -13,7 +13,7 @@ const createContexts: NullarySideEffector =
 		const canvasContainer: PageElement = scaleCanvasContainer()
 		canvasContainer.innerHTML = ''
 
-		state.canvas.contexts = layerIterator().map(() => createContext({ canvasContainer }))
+		appState.canvas.contexts = layerIterator().map(() => createContext({ canvasContainer }))
 	}
 
 const layerIterator: () => Layer[] =

@@ -1,10 +1,10 @@
 import {
+	appState,
 	callFunctionsPerSetting,
 	executeGridAndMaybeLogging,
 	executeLayer,
 	Layer,
 	SettingsFunctionObject,
-	state,
 	to,
 } from '../../../../../src'
 import Spy = jasmine.Spy
@@ -21,13 +21,13 @@ describe('execute layer', () => {
 		executeGridAndMaybeLoggingSpy = spyOn(executeGridAndMaybeLogging, 'default')
 	})
 
-	it('sets the current layer on the state', async (done: DoneFn) => {
+	it('sets the current layer on the appState', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(12)
-		state.execute.currentLayer = to.Layer(11)
+		appState.execute.currentLayer = to.Layer(11)
 
 		await executeLayer.default({ layer, layerFunctionObjects, thisPatternRef })
 
-		expect(state.execute.currentLayer).toBe(to.Layer(12))
+		expect(appState.execute.currentLayer).toBe(to.Layer(12))
 
 		done()
 	})

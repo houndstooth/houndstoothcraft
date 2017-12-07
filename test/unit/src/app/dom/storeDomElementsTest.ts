@@ -1,10 +1,10 @@
-import { documentWrapper, NullarySideEffector, PageElement, state, storeDomElements } from '../../../../../src'
+import { appState, documentWrapper, NullarySideEffector, PageElement, storeDomElements } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
 const subject: NullarySideEffector = storeDomElements.default
 
 describe('store dom elements', () => {
-	it('puts references to important components on the page onto the store', () => {
+	it('puts references to important components on the page onto the app state', () => {
 		const descriptionsContainer: HTMLElement = buildMockElement() as HTMLElement
 		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement
 		const layersProgressBar: HTMLElement = buildMockElement() as HTMLElement
@@ -42,14 +42,14 @@ describe('store dom elements', () => {
 
 		subject()
 
-		expect(state.dom.descriptionsContainer).toBe(descriptionsContainer)
-		expect(state.dom.frameInput).toBe(frameInput)
-		expect(state.dom.layersProgressBar).toBe(layersProgressBar)
-		expect(state.dom.pauseButton).toBe(pauseButton)
-		expect(state.dom.playButton).toBe(playButton)
-		expect(state.dom.progressBar).toBe(progressBar)
-		expect(state.dom.progressMessage).toBe(progressMessage)
-		expect(state.dom.rewindButton).toBe(rewindButton)
-		expect(state.dom.snapshotButton).toBe(snapshotButton)
+		expect(appState.dom.descriptionsContainer).toBe(descriptionsContainer)
+		expect(appState.dom.frameInput).toBe(frameInput)
+		expect(appState.dom.layersProgressBar).toBe(layersProgressBar)
+		expect(appState.dom.pauseButton).toBe(pauseButton)
+		expect(appState.dom.playButton).toBe(playButton)
+		expect(appState.dom.progressBar).toBe(progressBar)
+		expect(appState.dom.progressMessage).toBe(progressMessage)
+		expect(appState.dom.rewindButton).toBe(rewindButton)
+		expect(appState.dom.snapshotButton).toBe(snapshotButton)
 	})
 })

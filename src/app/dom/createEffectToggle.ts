@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../pattern'
-import { state } from '../state'
+import { appState } from '../appState'
 import createCheckbox from './createCheckbox'
 import createLabel from './createLabel'
 import { InputElement, LabelElement, PageElement } from './types'
@@ -18,7 +18,7 @@ const createEffectToggle: (houndstoothEffect: NamedEffect) => void =
 
 		const effectTogglesContainer: PageElement = documentWrapper.querySelector('#effect-toggles-container')
 		effectTogglesContainer.appendChild(div)
-		state.dom.effectToggles[houndstoothEffect.name] = checkbox
+		appState.dom.effectToggles[houndstoothEffect.name] = checkbox
 	}
 
 export default createEffectToggle

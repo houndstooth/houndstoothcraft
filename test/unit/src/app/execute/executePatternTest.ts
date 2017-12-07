@@ -1,5 +1,6 @@
 import Spy = jasmine.Spy
 import {
+	appState,
 	callFunctionsPerSetting,
 	completeLayers,
 	executeGridAndMaybeLogging,
@@ -9,7 +10,6 @@ import {
 	Layer,
 	setSetting,
 	SettingsFunctionObject,
-	state,
 	to,
 } from '../../../../../src'
 
@@ -19,7 +19,7 @@ describe('execute pattern', () => {
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
 		setSetting.default('endLayer', endLayer)
-		state.execute.patternRef = 99
+		appState.execute.patternRef = 99
 	})
 
 	it('calls the animation functions, to render based on the current frame', async (done: DoneFn) => {
@@ -70,10 +70,11 @@ describe('execute pattern', () => {
 		done()
 	})
 
-	it('stops executing layers if the pattern ref has changed on the state (cancelled)', async (done: DoneFn) => {
+	// tslint:disable-next-line:max-line-length
+	it('stops executing layers if the pattern ref has changed on the app state (i.e. it has been cancelled)', async (done: DoneFn) => {
 		const executeLayerSpy: Spy = spyOn(executeLayer, 'default').and.callFake(({ layer }: { layer: Layer }) => {
 			if (from.Layer(layer) === 2) {
-				state.execute.patternRef = state.execute.patternRef + 1
+				appState.execute.patternRef = appState.execute.patternRef + 1
 			}
 		})
 

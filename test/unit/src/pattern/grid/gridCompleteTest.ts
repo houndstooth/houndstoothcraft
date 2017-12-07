@@ -1,9 +1,9 @@
 import Spy = jasmine.Spy
 import {
+	appState,
 	gridComplete,
 	gridProgressIntervalFunction,
 	NullarySideEffector,
-	state,
 	windowWrapper,
 } from '../../../../../src'
 
@@ -29,12 +29,12 @@ describe('grid complete', () => {
 	it('saves the watcher onto the settings so it can be cancelled from elsewhere if necessary', () => {
 		gridComplete.default(resolveGrid)
 
-		expect(state.execute.gridProgressInterval).toBe(9275)
+		expect(appState.execute.gridProgressInterval).toBe(9275)
 	})
 
 	it('saves the grid resolution function onto the settings so others can resolve it', () => {
 		gridComplete.default(resolveGrid)
 
-		expect(state.execute.resolveGrid).toBe(resolveGrid)
+		expect(appState.execute.resolveGrid).toBe(resolveGrid)
 	})
 })

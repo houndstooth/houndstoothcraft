@@ -1,4 +1,4 @@
-import { clearInterval, state, windowWrapper } from '../../../../../src'
+import { appState, clearInterval, windowWrapper } from '../../../../../src'
 
 const subject: (_: string) => void = clearInterval.default
 
@@ -6,7 +6,7 @@ const FAKE_GRID_PROGRESS_INTERVAL: number = 3369
 
 describe('clear interval', () => {
 	beforeEach(() => {
-		state.execute.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL
+		appState.execute.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL
 		spyOn(windowWrapper, 'clearInterval')
 
 		subject('gridProgressInterval')
@@ -16,7 +16,7 @@ describe('clear interval', () => {
 		expect(windowWrapper.clearInterval).toHaveBeenCalledWith(FAKE_GRID_PROGRESS_INTERVAL)
 	})
 
-	it('sets the state node for this interval to undefined', () => {
-		expect(state.execute.gridProgressInterval).toBe(undefined)
+	it('sets the appState node for this interval to undefined', () => {
+		expect(appState.execute.gridProgressInterval).toBe(undefined)
 	})
 })

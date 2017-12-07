@@ -2,7 +2,7 @@
 
 import { DEFAULT_BASE_PATTERN } from '../../defaults'
 import { to } from '../../utilities'
-import { state } from '../state'
+import { appState } from '../appState'
 import deeperPath from './deeperPath'
 import shouldRecurse from './shouldRecurse'
 import { BuildSettingNamesToPathsMapParams } from './types'
@@ -15,7 +15,7 @@ const buildSettingNamesToPathsMap: (_?: BuildSettingNamesToPathsMapParams) => vo
 		}: BuildSettingNamesToPathsMapParams = params || {}
 
 		Object.entries(settings).forEach(([ settingName, settingValue ]: [ string, any ]) => {
-			state.settings.settingNamesToPathsMap[ settingName ] = settingsPath
+			appState.settings.settingNamesToPathsMap[ settingName ] = settingsPath
 			if (shouldRecurse(settingValue)) {
 				buildSettingNamesToPathsMap({
 					// tslint:disable-next-line:no-unsafe-any

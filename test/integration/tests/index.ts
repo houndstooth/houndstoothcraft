@@ -1,11 +1,11 @@
 // tslint:disable:no-unsafe-any
 
 import { buildSettingNamesToPathsMap, executeGrid } from '../../../src'
-import { resetState } from '../../helpers'
+import { resetAppAndPatternStates } from '../../helpers'
 import { activateTestMarkerCanvas, syncExecuteGridAndMixDownContexts } from '../helpers'
 
 beforeEach(() => {
-	resetState()
+	resetAppAndPatternStates()
 	buildSettingNamesToPathsMap.default()
 
 	activateTestMarkerCanvas()

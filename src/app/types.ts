@@ -1,4 +1,4 @@
-import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from '../pattern'
+import { Frame, Houndstooth, Layer, NamedEffect } from '../pattern'
 import { NullarySideEffector } from '../utilities'
 import { Context, InputElement, PageElement } from './dom'
 import { SettingsPath } from './settings'
@@ -45,12 +45,11 @@ interface ExecuteState {
 
 interface SettingsState {
 	availableEffects: NamedEffect[],
-	currentPattern: Partial<BasePattern>,
 	readonly mainHoundstooth: Houndstooth,
 	settingNamesToPathsMap: { [ index: string ]: SettingsPath },
 }
 
-interface State {
+interface AppState {
 	canvas: CanvasState,
 	controls: ControlsState,
 	dom: DomState,
@@ -64,5 +63,5 @@ export {
 	DomState,
 	ExecuteState,
 	SettingsState,
-	State,
+	AppState,
 }

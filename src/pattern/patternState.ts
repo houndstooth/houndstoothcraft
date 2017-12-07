@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { appState, deeperPath, getPatternSettingOrCreatePath, SettingsPath } from '../app'
+import { deeperPath, getPatternSettingOrCreatePath, getSettingsPath, SettingsPath } from '../app'
 import { DEFAULT_BASE_PATTERN } from '../defaults'
 import { codeUtilities, to } from '../utilities'
 import { PatternState, SettingsNamesToTypesMap } from './types'
@@ -13,7 +13,7 @@ const get: SettingsNamesToTypesMap =
 			return patternState
 		}
 
-		const settingsPath: SettingsPath = appState.settings.settingNamesToPathsMap[ settingName ]
+		const settingsPath: SettingsPath = getSettingsPath.default({ settingName })
 		const deeperSettingsPath: SettingsPath = deeperPath.default({
 			settingName: to.SettingsStep(settingName),
 			settingsPath,

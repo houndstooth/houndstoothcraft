@@ -6,6 +6,7 @@ import * as composePatterns from './composePatterns'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
+import * as getSettingsPath from './getSettingsPath'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
@@ -28,6 +29,7 @@ export {
 	composePatterns,
 	settingPath,
 	resetPatternState,
+	getSettingsPath,
 }
 export {
 	BuildSettingNamesToPathsMapParams,

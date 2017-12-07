@@ -114,6 +114,7 @@ export {
 	ComposePatternsParams,
 	FullSettingsPath,
 	PrepareFunctionObjectsParams,
+	getSettingsPath,
 } from './settings'
 export { appState } from './appState'
 export {

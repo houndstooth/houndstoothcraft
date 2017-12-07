@@ -1,15 +1,16 @@
 import buildMockContext from './buildMockContext'
 import isCloseTo from './isCloseTo'
 import resetAppAndPatternStates from './resetAppAndPatternStates'
-import { MockCanvas, MockContext, MockContextCall, MockElement, MockInputElement } from './types'
 
 export {
 	isCloseTo,
 	buildMockContext,
 	resetAppAndPatternStates,
+}
+export {
 	MockCanvas,
 	MockContext,
+	MockContextCall,
 	MockElement,
 	MockInputElement,
-	MockContextCall,
-}
+} from './types'

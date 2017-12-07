@@ -5,11 +5,8 @@ import * as fill from './fill'
 import * as fillPath from './fillPath'
 import * as resetClip from './resetClip'
 import * as setClip from './setClip'
-import { Path, Pixel } from './types'
 
 export {
-	Path,
-	Pixel,
 	setClip,
 	resetClip,
 	fill,
@@ -18,3 +15,7 @@ export {
 	buildPath,
 	fillPath,
 }
+export {
+	Path,
+	Pixel,
+} from './types'

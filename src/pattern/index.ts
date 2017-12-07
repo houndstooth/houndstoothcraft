@@ -78,17 +78,6 @@ export {
 	tile,
 } from './tile'
 export {
-	BasePattern,
-	Effect,
-	Houndstooth,
-	NamedEffect,
-	Pattern,
-	PatternFunctions,
-	SettingsNamesByTypeBase,
-	SettingsNamesToTypesMap,
-	SettingsNamesByType,
-} from './types'
-export {
 	applyViewForShape,
 	viewSettings,
 	applyViewForGrid,
@@ -101,3 +90,15 @@ export {
 
 import * as patternState from './patternState'
 export { patternState }
+
+export {
+	BasePattern,
+	Effect,
+	Houndstooth,
+	NamedEffect,
+	Pattern,
+	PatternFunctions,
+	SettingsNamesByTypeBase,
+	SettingsNamesToTypesMap,
+	SettingsNamesByType,
+} from './types'

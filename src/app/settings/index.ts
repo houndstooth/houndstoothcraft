@@ -14,18 +14,6 @@ import * as settingPath from './settingPath'
 import * as shouldRecurse from './shouldRecurse'
 
 export {
-	BuildSettingNamesToPathsMapParams,
-	Overwrite,
-	SettingNamesToPathsMap,
-	SettingsPath,
-	SettingsStep,
-	CheckSettingForConflict,
-	PatternsHaveConflictsParams,
-	FunctionsOf,
-	SettingsFunction,
-	SettingsFunctionObject,
-} from './types'
-export {
 	checkSettingForConflict,
 	patternsHaveConflicts,
 	resetMainHoundstooth,
@@ -41,3 +29,15 @@ export {
 	settingPath,
 	resetPatternState,
 }
+export {
+	BuildSettingNamesToPathsMapParams,
+	Overwrite,
+	SettingNamesToPathsMap,
+	SettingsPath,
+	SettingsStep,
+	CheckSettingForConflict,
+	PatternsHaveConflictsParams,
+	FunctionsOf,
+	SettingsFunction,
+	SettingsFunctionObject,
+} from './types'

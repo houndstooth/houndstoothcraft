@@ -15,7 +15,6 @@ import * as scaleElement from './scaleElement'
 import * as storeDomElements from './storeDomElements'
 import * as storeMixedDownContext from './storeMixedDownContext'
 
-export { Canvas, Context, Dimensions, InputElement, LabelElement, PageElement, Px } from './types'
 export { consoleWrapper, documentWrapper, windowWrapper } from './windowWrapper'
 export {
 	addDescription,
@@ -35,3 +34,12 @@ export {
 	saveBlob,
 	storeMixedDownContext,
 }
+export {
+	Canvas,
+	Context,
+	Dimensions,
+	InputElement,
+	LabelElement,
+	PageElement,
+	Px,
+} from './types'

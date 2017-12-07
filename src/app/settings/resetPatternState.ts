@@ -5,7 +5,7 @@ import { appState } from '../appState'
 const resetPatternState: NullarySideEffector =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: patternState.patternState,
+			objectToChange: patternState.get(),
 			objectWithProperties: appState.settings.mainHoundstooth.basePattern,
 		})
 	}

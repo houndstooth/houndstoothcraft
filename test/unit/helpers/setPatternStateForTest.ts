@@ -8,7 +8,7 @@ const setPatternStateForTest: SetPatternStateForTest =
 		const baseSettingsPath: SettingsPath = appState.settings.settingNamesToPathsMap[ settingName ]
 
 		const parentSetting: any = getPatternSettingOrCreatePath.default({
-			pattern: patternState.patternState,
+			pattern: patternState.get(),
 			settingsPath: baseSettingsPath,
 		})
 		parentSetting[ settingName ] = value

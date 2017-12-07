@@ -9,7 +9,7 @@ const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionOb
 			const { settingsPath, settingsFunction, settingName } = settingsFunctionObject
 
 			getPatternSettingOrCreatePath.default({
-				pattern: patternState.patternState,
+				pattern: patternState.get(),
 				settingsPath,
 			})[ settingName ] = settingsFunction()
 		})

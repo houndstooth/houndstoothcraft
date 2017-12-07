@@ -82,6 +82,7 @@ interface SettingsNamesToTypesMap {
 	(settingName: SettingsNamesByType['UnitTypedSettingsNames']): Unit,
 	(settingName: SettingsNamesByType['WeaveTypedSettingsNames']): Weave,
 	(settingName: {}): MissingSettingsName,
+	(): PatternState,
 }
 
 interface Houndstooth {

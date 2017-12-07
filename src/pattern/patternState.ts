@@ -8,7 +8,11 @@ import { PatternState, SettingsNamesToTypesMap } from './types'
 const patternState: PatternState = {}
 
 const get: SettingsNamesToTypesMap =
-	(settingName: any): any => {
+	(settingName?: any): any => {
+		if (!settingName) {
+			return patternState
+		}
+
 		const settingsPath: SettingsPath = appState.settings.settingNamesToPathsMap[ settingName ]
 		const deeperSettingsPath: SettingsPath = deeperPath.default({
 			settingName: to.SettingsStep(settingName),
@@ -33,4 +37,4 @@ const get: SettingsNamesToTypesMap =
 		})
 	}
 
-export { get, patternState }
+export { get }

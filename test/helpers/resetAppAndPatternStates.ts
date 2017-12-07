@@ -7,7 +7,7 @@ const resetAppAndPatternStates: () => void =
 			objectWithProperties: defaults.DEFAULT_APP_STATE,
 		})
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: patternState.patternState,
+			objectToChange: patternState.get(),
 			objectWithProperties: {},
 		})
 	}

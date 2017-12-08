@@ -1,10 +1,10 @@
 import Spy = jasmine.Spy
 import {
 	appState,
+	globalWrapper,
 	gridComplete,
 	gridProgressIntervalFunction,
 	NullarySideEffector,
-	windowWrapper,
 } from '../../../../../src'
 
 const subject: (_: NullarySideEffector) => void = gridComplete.default
@@ -15,7 +15,7 @@ describe('grid complete', () => {
 	beforeEach(() => {
 		resolveGrid = jasmine.createSpy('resolveGrid')
 
-		spyOn(windowWrapper, 'setInterval').and.callFake((fn: NullarySideEffector) => {
+		spyOn(globalWrapper.window, 'setInterval').and.callFake((fn: NullarySideEffector) => {
 			fn()
 
 			return fakeGridProgressIntervalItself
@@ -25,7 +25,7 @@ describe('grid complete', () => {
 	it('schedules a watcher of the rendering progress', () => {
 		subject(resolveGrid)
 
-		expect(windowWrapper.setInterval).toHaveBeenCalledWith(gridProgressIntervalFunction.default, 30)
+		expect(globalWrapper.window.setInterval).toHaveBeenCalledWith(gridProgressIntervalFunction.default, 30)
 	})
 
 	it('saves the watcher onto the settings so it can be cancelled from elsewhere if necessary', () => {

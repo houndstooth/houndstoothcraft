@@ -1,17 +1,18 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../pattern'
+import { globalWrapper } from '../../utilities'
 import createEffectToggle from './createEffectToggle'
-import { documentWrapper } from './windowWrapper'
 
 const createEffectToggles: (effects: NamedEffect[]) => void =
 	(effects: NamedEffect[]): void => {
-		const effectTogglesContainer: HTMLElement = documentWrapper.querySelector('#effect-toggles-container')
+		// tslint:disable-next-line:max-line-length
+		const effectTogglesContainer: HTMLElement = globalWrapper.document.querySelector('#effect-toggles-container') as HTMLElement
 		effectTogglesContainer.innerHTML = ''
 
 		effects.forEach(createEffectToggle)
 
-		const moreEffectsSoonMessage: HTMLTextAreaElement = documentWrapper.createElement('div') as HTMLTextAreaElement
+		const moreEffectsSoonMessage: HTMLElement = globalWrapper.document.createElement('div') as HTMLElement
 		moreEffectsSoonMessage.setAttribute('id', 'more-effects-soon-message')
 		moreEffectsSoonMessage.innerHTML = 'more effects coming soon'
 		effectTogglesContainer.appendChild(moreEffectsSoonMessage)

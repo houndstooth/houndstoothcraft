@@ -1,9 +1,9 @@
 import {
 	appState,
 	clearInterval,
+	globalWrapper,
 	gridProgressIntervalFunction,
 	NullarySideEffector,
-	windowWrapper,
 } from '../../../../../src'
 
 const subject: NullarySideEffector = gridProgressIntervalFunction.default
@@ -27,7 +27,7 @@ describe('grid progress interval function', () => {
 		})
 
 		it('clears the progress interval off the settings', () => {
-			spyOn(windowWrapper, 'clearInterval')
+			spyOn(globalWrapper.window, 'clearInterval')
 
 			subject()
 
@@ -63,7 +63,7 @@ describe('grid progress interval function', () => {
 		})
 
 		it('does not clear the progress interval off the settings', () => {
-			spyOn(windowWrapper, 'clearInterval')
+			spyOn(globalWrapper.window, 'clearInterval')
 
 			subject()
 

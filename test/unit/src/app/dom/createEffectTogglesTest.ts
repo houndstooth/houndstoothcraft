@@ -1,4 +1,4 @@
-import { createEffectToggle, createEffectToggles, documentWrapper, NamedEffect } from '../../../../../src'
+import { createEffectToggle, createEffectToggles, globalWrapper, NamedEffect } from '../../../../../src'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 
@@ -12,8 +12,8 @@ describe('create effect toggles', () => {
 	const moreEffectsMessage: HTMLElement = buildMockElement({ attributeObject }) as HTMLElement
 	beforeEach(() => {
 		createEffectToggleSpy = spyOn(createEffectToggle, 'default')
-		spyOn(documentWrapper, 'querySelector').and.returnValue(effectTogglesContainer)
-		spyOn(documentWrapper, 'createElement').and.returnValue(moreEffectsMessage)
+		spyOn(globalWrapper.document, 'querySelector').and.returnValue(effectTogglesContainer)
+		spyOn(globalWrapper.document, 'createElement').and.returnValue(moreEffectsMessage)
 	})
 
 	it('adds an effect toggle for each effect', () => {

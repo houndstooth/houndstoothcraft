@@ -3,9 +3,8 @@ import {
 	createCheckbox,
 	createEffectToggle,
 	createLabel,
-	documentWrapper,
+	globalWrapper,
 	NamedEffect,
-	HTMLElement,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
@@ -13,20 +12,22 @@ const subject: (_: NamedEffect) => void = createEffectToggle.default
 
 describe('create effect toggle', () => {
 	const divChildren: HTMLElement[] = []
-	const div: HTMLElement = buildMockElement({ children: divChildren })
-	const checkbox: HTMLElement = buildMockElement()
-	const label: HTMLElement = buildMockElement()
+	const div: HTMLElement = buildMockElement({ children: divChildren }) as HTMLElement
+	const checkbox: HTMLInputElement = buildMockElement() as HTMLInputElement
+	const label: HTMLElement = buildMockElement() as HTMLElement
 
 	const effectTogglesContainerChildren: HTMLElement[] = []
-	const effectTogglesContainer: HTMLElement = buildMockElement({ children: effectTogglesContainerChildren })
+	const effectTogglesContainer: HTMLElement = buildMockElement({
+		children: effectTogglesContainerChildren,
+	}) as HTMLElement
 
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
-		spyOn(documentWrapper, 'createElement').and.returnValue(div)
+		spyOn(globalWrapper.document, 'createElement').and.returnValue(div)
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 		spyOn(createLabel, 'default').and.returnValue(label)
-		spyOn(documentWrapper, 'querySelector').and.returnValue(effectTogglesContainer)
+		spyOn(globalWrapper.document, 'querySelector').and.returnValue(effectTogglesContainer)
 
 		subject(effect)
 	})

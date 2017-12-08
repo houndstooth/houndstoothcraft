@@ -1,15 +1,15 @@
 import buildMockBody from './buildMockBody'
 import buildMockElement from './buildMockElement'
+import mockDom from './mockDom'
 import pixelsAreClose from './pixelsAreClose'
 import setPatternStateForTest from './setPatternStateForTest'
-import mockDomElements from './mockDomElements'
 
 export {
 	buildMockElement,
 	buildMockBody,
 	pixelsAreClose,
 	setPatternStateForTest,
-	mockDomElements,
+	mockDom,
 }
 export {
 	ExampleSettings,

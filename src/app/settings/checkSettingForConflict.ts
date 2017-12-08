@@ -1,7 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { codeUtilities } from '../../utilities'
-import { consoleWrapper } from '../dom'
+import { codeUtilities, globalWrapper } from '../../utilities'
 import settingPath from './settingPath'
 import { CheckSettingForConflict, SettingConflictCheck, SettingsAreEqual } from './types'
 
@@ -23,7 +22,7 @@ const checkSettingForConflict: (_: CheckSettingForConflict) => boolean =
 				settingName,
 				settingsPath,
 			})
-			consoleWrapper.warn(warning)
+			globalWrapper.console.warn(warning)
 
 			return true
 		}

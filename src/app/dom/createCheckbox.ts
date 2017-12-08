@@ -1,13 +1,13 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../pattern'
+import { globalWrapper } from '../../utilities'
 import { buildEffectToggleClickHandler } from '../controls'
 import makeId from './makeId'
-import { documentWrapper } from './windowWrapper'
 
 const createCheckbox: (_: { effect: NamedEffect }) => HTMLInputElement =
 	({ effect }: { effect: NamedEffect }): HTMLInputElement => {
-		const checkbox: HTMLInputElement = documentWrapper.createElement('input') as HTMLInputElement
+		const checkbox: HTMLInputElement = globalWrapper.document.createElement('input')
 
 		checkbox.setAttribute('type', 'checkbox')
 

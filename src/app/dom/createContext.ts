@@ -1,13 +1,12 @@
 // tslint:disable:no-unsafe-any
 
 import { CANVAS_SIZE } from '../../constants'
+import { from, globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { documentWrapper } from './windowWrapper'
-import { from } from '../../utilities'
 
 const createContext: (_: { canvasContainer: HTMLElement }) => CanvasRenderingContext2D =
 	({ canvasContainer }: { canvasContainer: HTMLElement }): CanvasRenderingContext2D => {
-		const canvas: HTMLCanvasElement = documentWrapper.createElement('canvas') as HTMLCanvasElement
+		const canvas: HTMLCanvasElement = globalWrapper.document.createElement('canvas')
 		canvas.width = from.Px(CANVAS_SIZE)
 		canvas.height = from.Px(CANVAS_SIZE)
 		canvas.style.position = 'absolute'

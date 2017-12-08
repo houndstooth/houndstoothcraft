@@ -1,7 +1,6 @@
 import {
 	constants,
-	documentWrapper,
-	HTMLElement,
+	globalWrapper,
 	scaleCanvasContainer,
 	scaleElement,
 } from '../../../../../src'
@@ -20,10 +19,10 @@ describe('scale canvas container', () => {
 		spyOn(scaleElement, 'default')
 
 		// tslint:disable-next-line:no-unsafe-any
-		documentWrapper.body = buildMockBody({ children: bodyChildren })
+		globalWrapper.document.body = buildMockBody({ children: bodyChildren }) as HTMLElement
 
-		const canvasContainer: HTMLElement = buildMockElement({ classList: canvasContainerClassList })
-		spyOn(documentWrapper, 'createElement').and.callFake(() => canvasContainer)
+		const canvasContainer: HTMLElement = buildMockElement({ classList: canvasContainerClassList }) as HTMLElement
+		spyOn(globalWrapper.document, 'createElement').and.callFake(() => canvasContainer)
 
 		returnedCanvasContainer = subject()
 	})

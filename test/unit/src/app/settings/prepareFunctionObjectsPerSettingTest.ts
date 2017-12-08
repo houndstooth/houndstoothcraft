@@ -2,7 +2,7 @@
 
 import {
 	codeUtilities,
-	consoleWrapper,
+	globalWrapper,
 	PrepareFunctionObjectsParams,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
@@ -18,7 +18,7 @@ describe('prepare function objects per setting', () => {
 	let settingsFunction: any
 	let secondSettingsFunction: any
 	beforeEach(() => {
-		spyOn(consoleWrapper, 'error')
+		spyOn(globalWrapper.console, 'error')
 		settingsFunction = (p: number): number => p * 2
 		secondSettingsFunction = (p: number): number => p - 1
 		settingsFunctionsSourcePattern = {

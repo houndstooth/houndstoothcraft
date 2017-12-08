@@ -4,7 +4,7 @@ import {
 	appState,
 	constants,
 	from,
-	documentWrapper,
+	globalWrapper,
 	NullarySideEffector,
 	storeMixedDownContext,
 } from '../../../../../src'
@@ -17,7 +17,7 @@ describe('settings mixed down context', () => {
 	beforeEach(() => {
 		mixedDownContext = buildMockContext() as CanvasRenderingContext2D
 		const mixedDownCanvas: HTMLCanvasElement = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
-		spyOn(documentWrapper, 'querySelector').and.returnValue(mixedDownCanvas)
+		spyOn(globalWrapper.document, 'querySelector').and.returnValue(mixedDownCanvas)
 
 		subject()
 	})

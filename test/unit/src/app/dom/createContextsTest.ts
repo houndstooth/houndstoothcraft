@@ -3,9 +3,8 @@ import {
 	appState,
 	createContext,
 	createContexts,
-	documentWrapper,
+	globalWrapper,
 	NullarySideEffector,
-	HTMLElement,
 	scaleCanvasContainer,
 	to,
 } from '../../../../../src'
@@ -20,9 +19,9 @@ describe('create contexts', () => {
 	beforeEach(() => {
 		createContextSpy = spyOn(createContext, 'default')
 
-		canvasContainer = buildMockElement()
+		canvasContainer = buildMockElement() as HTMLElement
 		canvasContainer.innerHTML = 'some old canvases'
-		querySelectorSpy = spyOn(documentWrapper, 'querySelector').and.returnValue(canvasContainer)
+		querySelectorSpy = spyOn(globalWrapper.document, 'querySelector').and.returnValue(canvasContainer)
 	})
 
 	it('clears the canvas container contents', () => {

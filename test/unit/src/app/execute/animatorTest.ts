@@ -3,9 +3,9 @@ import {
 	animator,
 	appState,
 	buildAnimationIntervalFunction,
+	globalWrapper,
 	noop,
 	NullarySideEffector,
-	windowWrapper,
 } from '../../../../../src'
 
 const subject: (_: AnimationParams) => void = animator.default
@@ -17,7 +17,7 @@ describe('animator', () => {
 	const resolveAnimation: NullarySideEffector = noop.default
 	const animationInterval: number = 34987
 	beforeEach(() => {
-		spyOn(windowWrapper, 'setInterval').and.returnValue(animationInterval)
+		spyOn(globalWrapper.window, 'setInterval').and.returnValue(animationInterval)
 		intervalFunction = (p: number): number => p * 20
 		spyOn(buildAnimationIntervalFunction, 'default').and.returnValue(intervalFunction)
 
@@ -33,7 +33,7 @@ describe('animator', () => {
 
 	it('schedules this assembled function to be run at the frame rate', () => {
 		// tslint:disable-next-line:no-unsafe-any
-		expect(windowWrapper.setInterval).toHaveBeenCalledWith(intervalFunction, FRAME_RATE)
+		expect(globalWrapper.window.setInterval).toHaveBeenCalledWith(intervalFunction, FRAME_RATE)
 	})
 
 	it('saves this interval-repeating function where it can be found to be stopped later', () => {

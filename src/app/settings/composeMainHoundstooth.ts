@@ -1,7 +1,7 @@
 import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from '../../defaults'
 import { Effect } from '../../pattern'
+import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { consoleWrapper } from '../dom'
 import combineEffects from './combineEffects'
 import composePatterns from './composePatterns'
 import { ComposeMainHoundstoothParams, ComposePatternParams } from './types'
@@ -36,7 +36,7 @@ const composeMainHoundstooth: (_?: ComposeMainHoundstoothParams) => void =
 		})
 
 		if (logComposedMainHoundstooth) {
-			consoleWrapper.log(appState.settings.mainHoundstooth)
+			globalWrapper.console.log(appState.settings.mainHoundstooth)
 		}
 	}
 

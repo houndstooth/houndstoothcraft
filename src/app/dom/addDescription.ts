@@ -1,9 +1,9 @@
+import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { documentWrapper } from './windowWrapper'
 
 const addDescription: (_: string) => void =
 	(descriptionText: string): void => {
-		const description: HTMLElement = documentWrapper.createElement('span')
+		const description: HTMLElement = globalWrapper.document.createElement('span')
 		description.innerHTML = descriptionText
 
 		// tslint:disable-next-line:no-unsafe-any

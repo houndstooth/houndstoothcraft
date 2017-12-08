@@ -7,7 +7,6 @@ import * as createContexts from './createContexts'
 import * as createEffectToggle from './createEffectToggle'
 import * as createEffectToggles from './createEffectToggles'
 import * as createLabel from './createLabel'
-import * as insertElementRightAfter from './insertElementRightAfter'
 import * as makeId from './makeId'
 import * as saveBlob from './saveBlob'
 import * as scaleCanvasContainer from './scaleCanvasContainer'
@@ -15,7 +14,6 @@ import * as scaleElement from './scaleElement'
 import * as storeDomElements from './storeDomElements'
 import * as storeMixedDownContext from './storeMixedDownContext'
 
-export { consoleWrapper, documentWrapper, windowWrapper } from './windowWrapper'
 export {
 	addDescription,
 	createContext,
@@ -29,7 +27,6 @@ export {
 	createCheckbox,
 	createEffectToggle,
 	createLabel,
-	insertElementRightAfter,
 	storeDomElements,
 	saveBlob,
 	storeMixedDownContext,
@@ -37,5 +34,4 @@ export {
 export {
 	Dimensions,
 	Px,
-	InsertElementRightAfter,
 } from './types'

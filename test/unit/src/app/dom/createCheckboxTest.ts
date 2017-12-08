@@ -1,8 +1,7 @@
 import {
 	buildEffectToggleClickHandler,
 	createCheckbox,
-	documentWrapper,
-	HTMLInputElement,
+	globalWrapper,
 	NamedEffect,
 	noop,
 	NullarySideEffector,
@@ -21,7 +20,7 @@ describe('create checkbox', () => {
 
 	beforeEach(() => {
 		checkbox = buildMockElement({ attributeObject }) as HTMLInputElement
-		spyOn(documentWrapper, 'createElement').and.returnValue(checkbox)
+		spyOn(globalWrapper.document, 'createElement').and.returnValue(checkbox)
 
 		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)
 

@@ -1,5 +1,5 @@
+import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { consoleWrapper } from '../dom'
 import { AppState, ControlsState, ExecuteState } from '../types'
 import executeGrid from './executeGrid'
 
@@ -10,17 +10,17 @@ const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<voi
 		const { currentLayer, performanceLogging }: ExecuteState = execute
 
 		if (performanceLogging) {
-			consoleWrapper.time('grid')
+			globalWrapper.console.time('grid')
 		}
 		await executeGrid({ thisPatternRef })
 		if (performanceLogging) {
 			if (animating) {
-				consoleWrapper.log(`current animation frame / layer: ${currentFrame}/${currentLayer}`)
+				globalWrapper.console.log(`current animation frame / layer: ${currentFrame}/${currentLayer}`)
 			}
 			else {
-				consoleWrapper.log(`current layer: ${currentLayer}`)
+				globalWrapper.console.log(`current layer: ${currentLayer}`)
 			}
-			consoleWrapper.timeEnd('grid')
+			globalWrapper.console.timeEnd('grid')
 		}
 	}
 

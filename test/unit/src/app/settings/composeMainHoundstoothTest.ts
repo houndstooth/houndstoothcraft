@@ -4,9 +4,9 @@ import {
 	composeMainHoundstooth,
 	ComposeMainHoundstoothParams,
 	composePatterns,
-	consoleWrapper,
 	defaults,
 	Effect,
+	globalWrapper,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
@@ -21,19 +21,19 @@ describe('composeMainHoundstooth', () => {
 	} = defaults
 
 	it('logs the houndstooth when logging mode is on', () => {
-		spyOn(consoleWrapper, 'log')
+		spyOn(globalWrapper.console, 'log')
 
 		subject({ logComposedMainHoundstooth: true })
 
-		expect(consoleWrapper.log).toHaveBeenCalledWith(appState.settings.mainHoundstooth)
+		expect(globalWrapper.console.log).toHaveBeenCalledWith(appState.settings.mainHoundstooth)
 	})
 
 	it('does not log the houndstooth when logging mode is not on', () => {
-		spyOn(consoleWrapper, 'log')
+		spyOn(globalWrapper.console, 'log')
 
 		subject()
 
-		expect(consoleWrapper.log).not.toHaveBeenCalled()
+		expect(globalWrapper.console.log).not.toHaveBeenCalled()
 	})
 
 	// tslint:disable-next-line:max-line-length

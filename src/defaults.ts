@@ -1,4 +1,4 @@
-// tslint:disable:max-file-line-count
+// tslint:disable:max-file-line-count no-object-literal-type-assertion
 
 import {
 	AppState,

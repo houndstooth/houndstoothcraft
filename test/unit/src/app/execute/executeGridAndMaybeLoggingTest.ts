@@ -1,4 +1,4 @@
-import { appState, consoleWrapper, executeGrid, executeGridAndMaybeLogging, to } from '../../../../../src'
+import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../src'
 
 const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGridAndMaybeLogging.default
 
@@ -10,9 +10,9 @@ describe('execute grid and maybe logging', () => {
 		appState.execute.currentLayer = to.Layer(54)
 
 		spyOn(executeGrid, 'default')
-		spyOn(consoleWrapper, 'time')
-		spyOn(consoleWrapper, 'timeEnd')
-		spyOn(consoleWrapper, 'log')
+		spyOn(globalWrapper.console, 'time')
+		spyOn(globalWrapper.console, 'timeEnd')
+		spyOn(globalWrapper.console, 'log')
 	})
 
 	it('calls grid', async (done: DoneFn) => {
@@ -30,9 +30,9 @@ describe('execute grid and maybe logging', () => {
 			it('logs only the performance of the grid', async (done: DoneFn) => {
 				await subject({ thisPatternRef })
 
-				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.log).toHaveBeenCalledWith('current layer: 54')
+				expect(globalWrapper.console.time).toHaveBeenCalledWith('grid')
+				expect(globalWrapper.console.timeEnd).toHaveBeenCalledWith('grid')
+				expect(globalWrapper.console.log).toHaveBeenCalledWith('current layer: 54')
 
 				done()
 			})
@@ -44,9 +44,9 @@ describe('execute grid and maybe logging', () => {
 			it('logs the current animation frame along with the performance measurement', async (done: DoneFn) => {
 				await subject({ thisPatternRef })
 
-				expect(consoleWrapper.time).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.timeEnd).toHaveBeenCalledWith('grid')
-				expect(consoleWrapper.log).toHaveBeenCalledWith('current animation frame / layer: 96/54')
+				expect(globalWrapper.console.time).toHaveBeenCalledWith('grid')
+				expect(globalWrapper.console.timeEnd).toHaveBeenCalledWith('grid')
+				expect(globalWrapper.console.log).toHaveBeenCalledWith('current animation frame / layer: 96/54')
 
 				done()
 			})
@@ -59,9 +59,9 @@ describe('execute grid and maybe logging', () => {
 		it('does not track performance or log it', async (done: DoneFn) => {
 			await subject({ thisPatternRef })
 
-			expect(consoleWrapper.time).not.toHaveBeenCalled()
-			expect(consoleWrapper.timeEnd).not.toHaveBeenCalled()
-			expect(consoleWrapper.log).not.toHaveBeenCalled()
+			expect(globalWrapper.console.time).not.toHaveBeenCalled()
+			expect(globalWrapper.console.timeEnd).not.toHaveBeenCalled()
+			expect(globalWrapper.console.log).not.toHaveBeenCalled()
 
 			done()
 		})

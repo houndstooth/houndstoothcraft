@@ -1,10 +1,10 @@
-import { consoleWrapper, Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
+import { globalWrapper, Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
 
 const subject: (_: PatternsHaveConflictsParams) => boolean = patternsHaveConflicts.default
 
 describe('patterns have conflicts', () => {
 	beforeEach(() => {
-		spyOn(consoleWrapper, 'warn')
+		spyOn(globalWrapper.console, 'warn')
 	})
 
 	it('returns true if any settings conflict between the two patterns', () => {

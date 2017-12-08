@@ -1,7 +1,7 @@
 import {
 	createCheckbox,
 	createLabel,
-	documentWrapper,
+	globalWrapper,
 	NamedEffect,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
@@ -19,13 +19,13 @@ describe('create label', () => {
 
 	beforeEach(() => {
 		label = buildMockElement({ children, attributeObject }) as HTMLLabelElement
-		spyOn(documentWrapper, 'createElement').and.returnValue(label)
+		spyOn(globalWrapper.document, 'createElement').and.returnValue(label)
 
-		spyOn(documentWrapper, 'createTextNode').and.returnValue(name)
+		spyOn(globalWrapper.document, 'createTextNode').and.returnValue(name)
 
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 
-		returnedLabel = subject({ effect }) as HTMLLabelElement
+		returnedLabel = subject({ effect })
 	})
 
 	it('returns the created label', () => {
@@ -42,6 +42,6 @@ describe('create label', () => {
 
 	it('makes the name using the effect\'s name', () => {
 		// tslint:disable-next-line:no-unsafe-any
-		expect(documentWrapper.createTextNode).toHaveBeenCalledWith('mock tooth')
+		expect(globalWrapper.document.createTextNode).toHaveBeenCalledWith('mock tooth')
 	})
 })

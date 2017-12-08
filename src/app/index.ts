@@ -36,14 +36,9 @@ export {
 	createContexts,
 	createEffectToggle,
 	createLabel,
-	insertElementRightAfter,
 	makeId,
 	storeDomElements,
-	documentWrapper,
-	consoleWrapper,
-	windowWrapper,
 	storeMixedDownContext,
-	InsertElementRightAfter,
 } from './dom'
 export {
 	callFunctionsPerSetting,

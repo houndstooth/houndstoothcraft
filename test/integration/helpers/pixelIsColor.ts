@@ -1,4 +1,4 @@
-import { Color, consoleWrapper, Coordinate, from, parseColor } from '../../../src'
+import { Color, Coordinate, from, parseColor } from '../../../src'
 import { buildMockCanvas, isCloseTo } from '../../helpers'
 import { CheckColorProperties, Key, PixelIsColor } from './types'
 
@@ -20,6 +20,7 @@ const pixelIsColor: PixelIsColor =
 	}
 
 const pixelColor: (_: Coordinate) => Color = ([ x, y ]: Coordinate): Color => {
+	// tslint:disable-next-line:max-line-length
 	const mixedDownCanvas: HTMLCanvasElement = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || buildMockCanvas()
 	// tslint:disable-next-line:no-unsafe-any
 	const mixedDownContext: CanvasRenderingContext2D = mixedDownCanvas.getContext('2d') as CanvasRenderingContext2D
@@ -61,7 +62,7 @@ const checkColorProperties: (_: CheckColorProperties) => boolean =
 			const parsedActualColor: string = parseColor.default(actualColor)
 			const parsedExpectedColor: string = parseColor.default(expectedColor)
 			const error: string = `actual color: ${parsedActualColor} / expected color ${parsedExpectedColor}`
-			consoleWrapper.error(error)
+			console.error(error)
 
 			return false
 		}

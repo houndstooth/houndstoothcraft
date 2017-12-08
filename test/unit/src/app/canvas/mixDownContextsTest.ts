@@ -1,7 +1,9 @@
+// tslint:disable:no-unsafe-any
+
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 import { appState, constants, mixDownContexts, NullarySideEffector } from '../../../../../src'
-import buildMockContext from '../../../../helpers/buildMockContext'
+import { buildMockContext } from '../../../../helpers'
 
 const subject: NullarySideEffector = mixDownContexts.default
 
@@ -32,8 +34,8 @@ describe('mix down contexts', () => {
 			context3,
 			context4,
 			context5,
-			context6
-		] as CanvasRenderingContext2D[]
+			context6,
+		]
 
 		subject()
 

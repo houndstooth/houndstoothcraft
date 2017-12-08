@@ -34,7 +34,6 @@ export {
 	snapshotClickHandler,
 	buildEffectToggleClickHandler,
 	createEffectToggle,
-	insertElementRightAfter,
 	storeMixedDownContext,
 	buildFill,
 	Path,
@@ -69,9 +68,6 @@ export {
 	buildSettingNamesToPathsMap,
 	BuildSettingNamesToPathsMapParams,
 	SettingNamesToPathsMap,
-	documentWrapper,
-	consoleWrapper,
-	windowWrapper,
 	updateProgress,
 	completeLayers,
 	animator,
@@ -90,7 +86,6 @@ export {
 	ConditionFunction,
 	ExecuteLayerParams,
 	appState,
-	InsertElementRightAfter,
 	Dimensions,
 	AnimationParams,
 	ExecuteParams,
@@ -194,6 +189,7 @@ export {
 } from './pattern'
 export {
 	codeUtilities,
+	globalWrapper,
 	mathUtilities,
 	noop,
 	NullarySideEffector,

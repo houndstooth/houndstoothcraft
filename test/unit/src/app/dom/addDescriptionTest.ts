@@ -1,4 +1,4 @@
-import { addDescription, appState, documentWrapper } from '../../../../../src'
+import { addDescription, appState, globalWrapper } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: string) => void = addDescription.default
@@ -7,7 +7,7 @@ describe('add description', () => {
 	it('adds descriptions to the descriptions container', () => {
 		const children: HTMLElement[] = []
 
-		spyOn(documentWrapper, 'createElement').and.callFake(buildMockElement)
+		spyOn(globalWrapper.document, 'createElement').and.callFake(buildMockElement)
 		appState.dom.descriptionsContainer = buildMockElement({ children }) as HTMLElement
 
 		subject('is great')

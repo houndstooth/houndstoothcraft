@@ -1,13 +1,13 @@
 import {
 	Address,
 	asyncMaybeTile,
+	globalWrapper,
 	maybeTile,
 	NullarySideEffector,
 	ReferencedGridAddress,
 	thisPatternHasNotBeenCanceled,
 	to,
 	updateProgress,
-	windowWrapper,
 } from '../../../../../src'
 import Spy = jasmine.Spy
 
@@ -20,7 +20,7 @@ describe('async maybe tile', () => {
 	const thisPatternRef: number = 99
 	beforeEach(() => {
 		// tslint:disable-next-line:no-unsafe-any
-		setTimeoutSpy = spyOn(windowWrapper, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
+		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
 			fn()
 		})
 		spyOn(maybeTile, 'default')

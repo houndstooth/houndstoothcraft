@@ -2,10 +2,10 @@
 
 import {
 	constants,
+	from,
 	NullarySideEffector,
 	scaleElement,
 	storeMixedDownContext,
-	from,
 	to,
 } from '../../../src'
 import createTestMarkersCanvas from './createTestMarkersCanvas'

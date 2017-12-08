@@ -40,7 +40,6 @@ export {
 export {
 	Layer,
 	layerSettings,
-	getEndLayer,
 } from './layer'
 export {
 	Coordinate,
@@ -97,8 +96,9 @@ export {
 	applyZoom,
 } from './view'
 
+import * as initializePatternState from './initializePatternState'
 import * as patternState from './patternState'
-export { patternState }
+export { patternState, initializePatternState }
 
 export {
 	BasePattern,

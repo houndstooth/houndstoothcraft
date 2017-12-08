@@ -118,6 +118,7 @@ export {
 	FullSettingsPath,
 	PrepareFunctionObjectsParams,
 	getSettingsPath,
+	initializeCurrentPatternFromBasePattern,
 } from './settings'
 export { appState } from './appState'
 export {

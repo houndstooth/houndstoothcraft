@@ -7,8 +7,8 @@ import {
 	executeAnimation,
 	executePattern,
 	executeSelectedEffects,
+	initializeCurrentPatternFromBasePattern,
 	NullarySideEffector,
-	patternState,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 	to,
@@ -24,6 +24,7 @@ describe('execute selected effects', () => {
 		spyOn(createContexts, 'default')
 		spyOn(executePattern, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 		spyOn(executeAnimation, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		spyOn(initializeCurrentPatternFromBasePattern, 'default').and.callThrough()
 		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'default')
 		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)
 	})
@@ -59,7 +60,7 @@ describe('execute selected effects', () => {
 	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
 		subject()
 
-		expect(patternState.get()).toEqual(appState.settings.mainHoundstooth.basePattern)
+		expect(initializeCurrentPatternFromBasePattern.default).toHaveBeenCalled()
 	})
 
 	it('sets the app state\'s end layer to that of the composed main houndstooth\'s base pattern', () => {

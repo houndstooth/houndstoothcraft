@@ -72,7 +72,7 @@ interface PrepareFunctionObjectsParams {
 	readonly settingsPath?: SettingsPath,
 }
 
-type SettingsFunction<T> = () => T
+type SettingsFunction<T> = (_?: T) => T
 
 interface SettingsFunctionObject extends FullSettingsPath {
 	readonly settingsFunction: SettingsFunction<any>,

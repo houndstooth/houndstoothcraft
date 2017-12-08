@@ -106,6 +106,7 @@ export {
 	setTileCount,
 	incrementTilesCompleted,
 	getSettingsPath,
+	initializeCurrentPatternFromBasePattern,
 } from './app'
 import * as constants from './constants'
 import * as defaults from './defaults'
@@ -194,7 +195,7 @@ export {
 	TextureParams,
 	DefinedTileParams,
 	shouldRefreshCanvas,
-	getEndLayer,
+	initializePatternState,
 } from './pattern'
 export {
 	codeUtilities,

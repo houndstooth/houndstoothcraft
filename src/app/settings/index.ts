@@ -7,10 +7,10 @@ import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import * as getSettingsPath from './getSettingsPath'
+import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
-import * as resetPatternState from './resetPatternState'
 import * as settingPath from './settingPath'
 import * as shouldRecurse from './shouldRecurse'
 
@@ -28,8 +28,8 @@ export {
 	combineEffects,
 	composePatterns,
 	settingPath,
-	resetPatternState,
 	getSettingsPath,
+	initializeCurrentPatternFromBasePattern,
 }
 export {
 	BuildSettingNamesToPathsMapParams,

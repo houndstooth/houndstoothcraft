@@ -4,6 +4,7 @@ import {
 	executeGridAndMaybeLogging,
 	executeLayer,
 	ExecuteLayerParams,
+	initializePatternState,
 	Layer,
 	SettingsFunctionObject,
 	to,
@@ -20,6 +21,7 @@ describe('execute layer', () => {
 	let executeGridAndMaybeLoggingSpy: Spy
 
 	beforeEach(() => {
+		spyOn(initializePatternState, 'default')
 		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'default')
 		executeGridAndMaybeLoggingSpy = spyOn(executeGridAndMaybeLogging, 'default')
 	})
@@ -53,6 +55,16 @@ describe('execute layer', () => {
 		expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
 			settingsFunctionObjects: layerFunctionObjects,
 		})
+
+		done()
+	})
+
+	it('initializes the pattern state from the app state\'s current pattern', async (done: DoneFn) => {
+		const layer: Layer = to.Layer(0)
+
+		await subject({ layer, layerFunctionObjects, thisPatternRef })
+
+		expect(initializePatternState.default).toHaveBeenCalledWith(appState.settings.currentPattern)
 
 		done()
 	})

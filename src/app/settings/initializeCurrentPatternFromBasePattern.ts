@@ -1,13 +1,12 @@
-import { patternState } from '../../pattern'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 
-const resetPatternState: NullarySideEffector =
+const initializeCurrentPatternFromBasePattern: NullarySideEffector =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: patternState.get(),
+			objectToChange: appState.settings.currentPattern,
 			objectWithProperties: appState.settings.mainHoundstooth.basePattern,
 		})
 	}
 
-export default resetPatternState
+export default initializeCurrentPatternFromBasePattern

@@ -1,11 +1,11 @@
-import { Effect, getEndLayer } from '../../pattern'
-import { NullarySideEffector } from '../../utilities'
+import { Effect } from '../../pattern'
+import { NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import { createContexts } from '../dom'
 import {
 	composeMainHoundstooth,
+	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
-	resetPatternState,
 	SettingsFunctionObject,
 } from '../settings'
 import executeAnimation from './executeAnimation'
@@ -18,12 +18,17 @@ const executeSelectedEffects: (_?: { overrides?: Effect }) => void =
 			overrides,
 		})
 
-		resetPatternState.default()
-		appState.controls.endLayer = getEndLayer.default()
+		initializeCurrentPatternFromBasePattern.default()
+		setEndLayer()
 
 		prepareCanvas()
 
 		execute()
+	}
+
+const setEndLayer: NullarySideEffector =
+	(): void => {
+		appState.controls.endLayer = appState.settings.currentPattern.layerSettings.endLayer || to.Layer(0)
 	}
 
 const prepareCanvas: NullarySideEffector =

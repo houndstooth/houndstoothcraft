@@ -1,3 +1,4 @@
+import { initializePatternState } from '../../pattern'
 import { appState } from '../appState'
 import callFunctionsPerSetting from './callFunctionsPerSetting'
 import executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
@@ -8,6 +9,8 @@ const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 		appState.execute.currentLayer = layer
 
 		callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
+
+		initializePatternState.default(appState.settings.currentPattern)
 
 		await executeGridAndMaybeLogging({ thisPatternRef })
 	}

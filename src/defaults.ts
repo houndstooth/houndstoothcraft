@@ -63,6 +63,7 @@ const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
 const DEFAULT_CONTEXTS: Context[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
+const DEFAULT_CURRENT_PATTERN: BasePattern = DEFAULT_BASE_PATTERN
 const DEFAULT_EFFECT_TOGGLES: { [_: string ]: InputElement } = {}
 const DEFAULT_END_FRAME: Frame = to.Frame(0)
 const DEFAULT_END_LAYER: Layer = to.Layer(0)
@@ -127,6 +128,7 @@ const DEFAULT_EXECUTE_STATE: ExecuteState = {
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
+	currentPattern: DEFAULT_CURRENT_PATTERN,
 	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
 	settingNamesToPathsMap: DEFAULT_SETTING_NAMES_TO_PATHS_MAP,
 }

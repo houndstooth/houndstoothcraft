@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { DataBlob, documentWrapper, PageElement, saveBlob, windowWrapper } from '../../../../../src'
+import { DataBlob, documentWrapper, saveBlob, windowWrapper } from '../../../../../src'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 
@@ -11,7 +11,7 @@ describe('save blob', () => {
 		spyOn(windowWrapper.URL, 'createObjectURL').and.returnValue('the url')
 
 		const clickSpy: Spy = jasmine.createSpy('click')
-		const link: PageElement = buildMockElement({ clickSpy })
+		const link: HTMLAnchorElement = buildMockElement({ clickSpy }) as HTMLAnchorElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(link)
 
 		const appendChildSpy: Spy = spyOn(documentWrapper.body, 'appendChild')
@@ -24,7 +24,7 @@ describe('save blob', () => {
 
 		expect(windowWrapper.URL.createObjectURL).toHaveBeenCalledWith(blob)
 		expect(appendChildSpy).toHaveBeenCalledWith(link)
-		expect(link.style).toEqual({ display: 'none' })
+		expect(link.style.display).toBe('none')
 		expect(link.href).toBe('the url')
 		expect(link.download).toBe('whatever.png')
 		expect(clickSpy).toHaveBeenCalled()

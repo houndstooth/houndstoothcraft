@@ -1,15 +1,17 @@
-import { clearContext, constants, Context } from '../../../../../src'
+import { clearContext, constants } from '../../../../../src'
 import Spy = jasmine.Spy
+import buildMockContext from '../../../../helpers/buildMockContext'
 
-const subject: (_: Context) => void = clearContext.default
+const subject: (_: CanvasRenderingContext2D) => void = clearContext.default
 
 describe('clear context', () => {
 	const { CANVAS_SIZE } = constants
 
 	it('clears a rectangular area which is the exact size of the canvas', () => {
 		const clearRectSpy: Spy = jasmine.createSpy('clearRect')
+		const context = buildMockContext({ clearRectSpy }) as CanvasRenderingContext2D
 
-		subject({ clearRect: clearRectSpy })
+		subject(context)
 
 		expect(clearRectSpy).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 	})

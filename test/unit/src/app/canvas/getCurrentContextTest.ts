@@ -1,11 +1,11 @@
-import { appState, Context, getCurrentContext, to } from '../../../../../src'
+import { appState, getCurrentContext, to } from '../../../../../src'
 
-const subject: () => Context = getCurrentContext.default
+const subject: () => CanvasRenderingContext2D = getCurrentContext.default
 
 describe('get current context', () => {
 	it('gets the current context', () => {
-		const expectedContext: Context = {}
-		appState.canvas.contexts = [ {}, {}, {}, expectedContext, {}, {} ]
+		const expectedContext: CanvasRenderingContext2D = {} as CanvasRenderingContext2D
+		appState.canvas.contexts = [ {}, {}, {}, expectedContext, {}, {} ] as CanvasRenderingContext2D[]
 		appState.execute.currentLayer = to.Layer(3)
 
 		expect(subject()).toBe(expectedContext)

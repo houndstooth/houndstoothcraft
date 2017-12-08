@@ -5,20 +5,20 @@ import {
 	createLabel,
 	documentWrapper,
 	NamedEffect,
-	PageElement,
+	HTMLElement,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: NamedEffect) => void = createEffectToggle.default
 
 describe('create effect toggle', () => {
-	const divChildren: PageElement[] = []
-	const div: PageElement = buildMockElement({ children: divChildren })
-	const checkbox: PageElement = buildMockElement()
-	const label: PageElement = buildMockElement()
+	const divChildren: HTMLElement[] = []
+	const div: HTMLElement = buildMockElement({ children: divChildren })
+	const checkbox: HTMLElement = buildMockElement()
+	const label: HTMLElement = buildMockElement()
 
-	const effectTogglesContainerChildren: PageElement[] = []
-	const effectTogglesContainer: PageElement = buildMockElement({ children: effectTogglesContainerChildren })
+	const effectTogglesContainerChildren: HTMLElement[] = []
+	const effectTogglesContainer: HTMLElement = buildMockElement({ children: effectTogglesContainerChildren })
 
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 

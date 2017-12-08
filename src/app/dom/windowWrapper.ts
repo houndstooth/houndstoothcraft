@@ -2,7 +2,6 @@
 
 import { buildMockElement } from '../../../test'
 import { noop } from '../../utilities'
-import { PageElement } from './types'
 
 declare const global: any
 
@@ -10,7 +9,7 @@ interface MockDocument {
 	body: {
 		appendChild?: any,
 	},
-	createElement: (tagName: string) => PageElement,
+	createElement: (tagName: string) => HTMLElement,
 	createTextNode?: any,
 	querySelector?: any,
 }
@@ -20,7 +19,7 @@ const mockDocument: MockDocument = {
 	body: {
 		appendChild: noop.default,
 	},
-	createElement: (_: string): PageElement => buildMockElement(),
+	createElement: (_: string): HTMLElement => ({} as HTMLElement),
 	createTextNode: noop.default,
 	querySelector: noop.default,
 }

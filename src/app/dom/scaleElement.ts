@@ -1,8 +1,8 @@
 import { from } from '../../utilities'
-import { Dimensions, PageElement } from './types'
+import { Dimensions } from './types'
 
-const scaleElement: (_: { dimensions: Dimensions, element: PageElement }) => void =
-	({ dimensions, element }: { dimensions: Dimensions, element: PageElement }): void => {
+const scaleElement: (_: { dimensions: Dimensions, element: HTMLElement }) => void =
+	({ dimensions, element }: { dimensions: Dimensions, element: HTMLElement }): void => {
 		const [ x, y ] = from.Dimensions(dimensions)
 		element.style.width = inPx(x)
 		element.style.height = inPx(y)

@@ -2,12 +2,11 @@
 
 import { NamedEffect } from '../../pattern'
 import createEffectToggle from './createEffectToggle'
-import { PageElement } from './types'
 import { documentWrapper } from './windowWrapper'
 
 const createEffectToggles: (effects: NamedEffect[]) => void =
 	(effects: NamedEffect[]): void => {
-		const effectTogglesContainer: PageElement = documentWrapper.querySelector('#effect-toggles-container')
+		const effectTogglesContainer: HTMLElement = documentWrapper.querySelector('#effect-toggles-container')
 		effectTogglesContainer.innerHTML = ''
 
 		effects.forEach(createEffectToggle)

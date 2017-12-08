@@ -1,8 +1,8 @@
 // tslint:disable:no-unsafe-any
 
-import { Context, getCurrentContext } from '../../app'
+import { getCurrentContext } from '../../app'
 import { CANVAS_SIZE } from '../../constants'
-import { NullarySideEffector } from '../../utilities'
+import { from, NullarySideEffector } from '../../utilities'
 import { Color, parseColor } from '../color'
 import { get } from '../patternState'
 
@@ -13,9 +13,9 @@ const applyBackgroundColor: NullarySideEffector =
 			return
 		}
 
-		const context: Context = getCurrentContext.default()
+		const context: CanvasRenderingContext2D = getCurrentContext.default()
 		context.fillStyle = parseColor.default(backgroundColor)
-		context.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE)
+		context.fillRect(0, 0, from.Px(CANVAS_SIZE), from.Px(CANVAS_SIZE))
 	}
 
 export default applyBackgroundColor

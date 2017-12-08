@@ -24,7 +24,10 @@ describe('enableOrDisableOtherEffectToggles', () => {
 		const effectTwo: NamedEffect = { name: 'effect two', description: '' }
 		appState.settings.availableEffects = [ effectOne, effectTwo ]
 
-		appState.dom.effectToggles = { 'effect one': buildMockElement(), 'effect two': buildMockElement() }
+		appState.dom.effectToggles = {
+			'effect one': buildMockElement() as HTMLInputElement,
+			'effect two': buildMockElement() as HTMLInputElement,
+		}
 
 		const effectsHaveConflictsSpy: Spy = spyOn(effectsHaveConflicts, 'default')
 		effectsHaveConflictsSpy.and.callFake(({ effect }: { effect: Effect }): boolean =>

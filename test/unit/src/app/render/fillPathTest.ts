@@ -6,7 +6,7 @@ const subject: NullarySideEffector = fillPath.default
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ]
+		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
 
 		subject()
 

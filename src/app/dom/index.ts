@@ -35,12 +35,7 @@ export {
 	storeMixedDownContext,
 }
 export {
-	Canvas,
-	Context,
 	Dimensions,
-	InputElement,
-	LabelElement,
-	PageElement,
 	Px,
 	InsertElementRightAfter,
 } from './types'

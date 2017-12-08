@@ -1,15 +1,11 @@
 // tslint:disable:max-file-line-count
 
-import { buildMockElement } from '../test'
 import {
 	AppState,
 	CanvasState,
-	Context,
 	ControlsState,
 	DomState,
 	ExecuteState,
-	InputElement,
-	PageElement,
 	SettingNamesToPathsMap,
 	SettingsState,
 } from './app'
@@ -60,17 +56,17 @@ const DEFAULT_COLOR_SET: ColorSet = colorSettings.DEFAULT_COLOR_SETTINGS.colorSe
 
 const DEFAULT_ANIMATING: boolean = false
 const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
-const DEFAULT_CONTEXTS: Context[] = []
+const DEFAULT_CONTEXTS: CanvasRenderingContext2D[] = []
 const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
 const DEFAULT_CURRENT_PATTERN: BasePattern = DEFAULT_BASE_PATTERN
-const DEFAULT_EFFECT_TOGGLES: { [_: string ]: InputElement } = {}
+const DEFAULT_EFFECT_TOGGLES: { [_: string ]: HTMLInputElement } = {}
 const DEFAULT_END_FRAME: Frame = to.Frame(0)
 const DEFAULT_END_LAYER: Layer = to.Layer(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_ANIMATION_INTERVAL: undefined = undefined
-const DEFAULT_MIXED_DOWN_CONTEXT: Context = {}
+const DEFAULT_MIXED_DOWN_CONTEXT: CanvasRenderingContext2D = {} as CanvasRenderingContext2D
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
 const DEFAULT_RESOLVE_GRID: NullarySideEffector = noop.default
@@ -78,15 +74,15 @@ const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
 const DEFAULT_SETTING_NAMES_TO_PATHS_MAP: SettingNamesToPathsMap = {}
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
-const DEFAULT_DESCRIPTIONS_CONTAINER: PageElement = buildMockElement()
-const DEFAULT_LAYERS_PROGRESS_BAR: PageElement = buildMockElement()
-const DEFAULT_PROGRESS_MESSAGE: PageElement = buildMockElement()
-const DEFAULT_PROGRESS_BAR: PageElement = buildMockElement()
-const DEFAULT_PLAY_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-const DEFAULT_PAUSE_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-const DEFAULT_REWIND_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-const DEFAULT_SNAPSHOT_BUTTON: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-const DEFAULT_FRAME_INPUT: InputElement = buildMockElement() as InputElement
+const DEFAULT_DESCRIPTIONS_CONTAINER: HTMLElement = {} as HTMLElement
+const DEFAULT_LAYERS_PROGRESS_BAR: HTMLElement = {} as HTMLElement
+const DEFAULT_PROGRESS_MESSAGE: HTMLElement = {} as HTMLElement
+const DEFAULT_PROGRESS_BAR: HTMLElement = {} as HTMLElement
+const DEFAULT_PLAY_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
+const DEFAULT_PAUSE_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
+const DEFAULT_REWIND_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
+const DEFAULT_SNAPSHOT_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
+const DEFAULT_FRAME_INPUT: HTMLInputElement = {} as HTMLInputElement
 
 const DEFAULT_CANVAS_STATE: CanvasState = {
 	contexts: DEFAULT_CONTEXTS,

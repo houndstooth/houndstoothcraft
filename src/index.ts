@@ -2,7 +2,6 @@
 
 export {
 	attachControlHandlers,
-	Canvas,
 	clearContext,
 	clearContexts,
 	clearMixedDownContext,
@@ -12,12 +11,9 @@ export {
 	frameInputChangeHandler,
 	createLabel,
 	createCheckbox,
-	Context,
 	createContext,
 	createEffectToggles,
 	executeSelectedEffects,
-	InputElement,
-	PageElement,
 	Pixel,
 	Px,
 	resetMainHoundstooth,
@@ -38,7 +34,6 @@ export {
 	snapshotClickHandler,
 	buildEffectToggleClickHandler,
 	createEffectToggle,
-	LabelElement,
 	insertElementRightAfter,
 	storeMixedDownContext,
 	buildFill,

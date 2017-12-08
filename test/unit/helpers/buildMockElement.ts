@@ -1,4 +1,3 @@
-import { PageElement } from '../../../src'
 import { MockElement } from '../../helpers'
 import { BuildMockElementParams } from './types'
 
@@ -14,7 +13,7 @@ const buildMockElement: (_?: BuildMockElementParams) => MockElement =
 		}: BuildMockElementParams = params || {}
 
 		return {
-			appendChild: (child: PageElement): number => children.push(child),
+			appendChild: (child: HTMLElement): number => children.push(child),
 			classList: {
 				add: (className: string): number => classList.push(className),
 			},

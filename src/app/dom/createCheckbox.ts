@@ -3,12 +3,11 @@
 import { NamedEffect } from '../../pattern'
 import { buildEffectToggleClickHandler } from '../controls'
 import makeId from './makeId'
-import { InputElement } from './types'
 import { documentWrapper } from './windowWrapper'
 
-const createCheckbox: (_: { effect: NamedEffect }) => InputElement =
-	({ effect }: { effect: NamedEffect }): InputElement => {
-		const checkbox: InputElement = documentWrapper.createElement('input')
+const createCheckbox: (_: { effect: NamedEffect }) => HTMLInputElement =
+	({ effect }: { effect: NamedEffect }): HTMLInputElement => {
+		const checkbox: HTMLInputElement = documentWrapper.createElement('input') as HTMLInputElement
 
 		checkbox.setAttribute('type', 'checkbox')
 

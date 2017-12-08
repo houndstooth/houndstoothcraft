@@ -4,6 +4,8 @@ import Spy = jasmine.Spy
 
 interface BuildMockContext {
 	readonly contextCallsOrder?: MockContextCall[],
+	readonly clearRectSpy?: Spy,
+	readonly drawImageSpy?: Spy,
 	readonly fillRectSpy?: Spy,
 	readonly toBlobSpy?: Spy,
 }

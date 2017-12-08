@@ -2,25 +2,25 @@ import {
 	buildEffectToggleClickHandler,
 	createCheckbox,
 	documentWrapper,
-	InputElement,
+	HTMLInputElement,
 	NamedEffect,
 	noop,
 	NullarySideEffector,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: { effect: NamedEffect }) => InputElement = createCheckbox.default
+const subject: (_: { effect: NamedEffect }) => HTMLInputElement = createCheckbox.default
 
 describe('create checkbox', () => {
-	let returnedCheckbox: InputElement
-	let checkbox: InputElement
+	let returnedCheckbox: HTMLInputElement
+	let checkbox: HTMLInputElement
 
 	const attributeObject: { id: string, name: string, type: string } = { id: '', name: '', type: '' }
 	const clickHandler: NullarySideEffector = noop.default
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
-		checkbox = buildMockElement({ attributeObject }) as InputElement
+		checkbox = buildMockElement({ attributeObject }) as HTMLInputElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(checkbox)
 
 		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)

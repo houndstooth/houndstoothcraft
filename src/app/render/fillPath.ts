@@ -2,11 +2,10 @@
 
 import { NullarySideEffector } from '../../utilities'
 import { getCurrentContext } from '../canvas'
-import { Context } from '../dom'
 
 const fillPath: NullarySideEffector =
 	(): void => {
-		const context: Context = getCurrentContext.default()
+		const context: CanvasRenderingContext2D = getCurrentContext.default()
 		context.closePath()
 		context.fill()
 	}

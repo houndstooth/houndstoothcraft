@@ -6,13 +6,12 @@ import {
 	createEffectToggles,
 	enableOrDisableOtherEffectToggles,
 	executeGridAndMaybeLogging,
-	PageElement,
 	patternState,
 	updateCurrentFrame,
 } from '../../../../src'
 import { buildMockElement } from '../../../unit'
 
-describe('controls', () => {
+xdescribe('controls', () => {
 	describe('effect toggles', () => {
 		beforeEach(() => {
 			spyOn(executeGridAndMaybeLogging, 'default')
@@ -32,7 +31,7 @@ describe('controls', () => {
 			document.body.appendChild(effectTogglesContainer)
 
 			createEffectToggles.default(Object.values(effects))
-			const effectToggle: PageElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
+			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
 
 			expect(patternState.get('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
 

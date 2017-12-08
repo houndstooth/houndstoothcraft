@@ -8,7 +8,6 @@ import {
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	executeSelectedEffects,
-	InputElement,
 	NamedEffect,
 	NullarySideEffector,
 	resetMainHoundstooth,
@@ -19,7 +18,7 @@ import { buildMockElement, SimulateClick } from '../../../helpers'
 let subject: NullarySideEffector
 
 describe('build effect toggle click handler returns a function which', () => {
-	let checkbox: InputElement
+	let checkbox: HTMLInputElement
 	let effect: NamedEffect
 	let preExistingEffect: NamedEffect
 
@@ -34,7 +33,7 @@ describe('build effect toggle click handler returns a function which', () => {
 		spyOn(cancelPreviousPattern, 'default')
 		spyOn(resetMainHoundstooth, 'default')
 
-		checkbox = buildMockElement()
+		checkbox = buildMockElement() as HTMLInputElement
 		effect = { name: 'mock tooth', description: '' }
 		subject = buildEffectToggleClickHandler.default({ checkbox, effect })
 
@@ -104,7 +103,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 })
 
-const simulateClick: SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector): void => {
+const simulateClick: SimulateClick = (checkbox: HTMLInputElement, clickHandler: NullarySideEffector): void => {
 	checkbox.checked = !checkbox.checked
 	clickHandler()
 }

@@ -2,33 +2,30 @@ import {
 	createCheckbox,
 	createLabel,
 	documentWrapper,
-	InputElement,
-	LabelElement,
 	NamedEffect,
-	PageElement,
 } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: { effect: NamedEffect }) => LabelElement = createLabel.default
+const subject: (_: { effect: NamedEffect }) => HTMLLabelElement = createLabel.default
 
 describe('create label', () => {
-	let returnedLabel: LabelElement
-	let label: PageElement
-	const children: LabelElement[] = []
-	const checkbox: InputElement = buildMockElement()
-	const name: PageElement = buildMockElement()
+	let returnedLabel: HTMLLabelElement
+	let label: HTMLLabelElement
+	const children: HTMLElement[] = []
+	const checkbox: HTMLInputElement = buildMockElement() as HTMLInputElement
+	const name: HTMLElement = buildMockElement() as HTMLElement
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 	const attributeObject: { 'for': string } = { for: '' }
 
 	beforeEach(() => {
-		label = buildMockElement({ children, attributeObject })
+		label = buildMockElement({ children, attributeObject }) as HTMLLabelElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(label)
 
 		spyOn(documentWrapper, 'createTextNode').and.returnValue(name)
 
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 
-		returnedLabel = subject({ effect })
+		returnedLabel = subject({ effect }) as HTMLLabelElement
 	})
 
 	it('returns the created label', () => {

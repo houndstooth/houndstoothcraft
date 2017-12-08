@@ -2,7 +2,7 @@ import {
 	appState,
 	clearContext,
 	clearMixedDownContext,
-	Context,
+	CanvasRenderingContext2D,
 	NullarySideEffector,
 } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
@@ -11,7 +11,7 @@ const subject: NullarySideEffector = clearMixedDownContext.default
 
 describe('clear mixed down context', () => {
 	it('gets the canvas size and the mixed down canvas, and clears', () => {
-		const mixedDownContext: Context = buildMockContext()
+		const mixedDownContext: CanvasRenderingContext2D = buildMockContext()
 		appState.canvas.mixedDownContext = mixedDownContext
 		spyOn(clearContext, 'default')
 

@@ -2,9 +2,8 @@
 
 import {
 	appState,
-	Canvas,
 	constants,
-	Context,
+	from,
 	documentWrapper,
 	NullarySideEffector,
 	storeMixedDownContext,
@@ -14,12 +13,10 @@ import { buildMockCanvas, buildMockContext } from '../../../../helpers'
 const subject: NullarySideEffector = storeMixedDownContext.default
 
 describe('settings mixed down context', () => {
-	let mixedDownContext: Context
+	let mixedDownContext: CanvasRenderingContext2D
 	beforeEach(() => {
-		expect(appState.canvas.mixedDownContext).toEqual({})
-
-		mixedDownContext = buildMockContext()
-		const mixedDownCanvas: Canvas = buildMockCanvas({ context: mixedDownContext })
+		mixedDownContext = buildMockContext() as CanvasRenderingContext2D
+		const mixedDownCanvas: HTMLCanvasElement = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
 		spyOn(documentWrapper, 'querySelector').and.returnValue(mixedDownCanvas)
 
 		subject()
@@ -31,7 +28,7 @@ describe('settings mixed down context', () => {
 	})
 
 	it('sets the mixed down context\'s width and height to the default canvas size', () => {
-		expect(appState.canvas.mixedDownContext.canvas.height).toBe(constants.CANVAS_SIZE)
-		expect(appState.canvas.mixedDownContext.canvas.width).toBe(constants.CANVAS_SIZE)
+		expect(appState.canvas.mixedDownContext.canvas.height).toBe(from.Px(constants.CANVAS_SIZE))
+		expect(appState.canvas.mixedDownContext.canvas.width).toBe(from.Px(constants.CANVAS_SIZE))
 	})
 })

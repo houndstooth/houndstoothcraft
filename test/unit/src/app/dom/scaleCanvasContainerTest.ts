@@ -1,19 +1,19 @@
 import {
 	constants,
 	documentWrapper,
-	PageElement,
+	HTMLElement,
 	scaleCanvasContainer,
 	scaleElement,
 } from '../../../../../src'
 import { buildMockBody, buildMockElement } from '../../../helpers'
 
-const subject: () => PageElement = scaleCanvasContainer.default
+const subject: () => HTMLElement = scaleCanvasContainer.default
 
 describe('scale canvas container', () => {
 	const { CANVAS_SIZE } = constants
 	const canvasContainerClassList: string[] = []
-	let bodyChildren: PageElement[]
-	let returnedCanvasContainer: PageElement
+	let bodyChildren: HTMLElement[]
+	let returnedCanvasContainer: HTMLElement
 	beforeEach(() => {
 		bodyChildren = []
 
@@ -22,14 +22,14 @@ describe('scale canvas container', () => {
 		// tslint:disable-next-line:no-unsafe-any
 		documentWrapper.body = buildMockBody({ children: bodyChildren })
 
-		const canvasContainer: PageElement = buildMockElement({ classList: canvasContainerClassList })
+		const canvasContainer: HTMLElement = buildMockElement({ classList: canvasContainerClassList })
 		spyOn(documentWrapper, 'createElement').and.callFake(() => canvasContainer)
 
 		returnedCanvasContainer = subject()
 	})
 
 	it('returns the canvas container it just put on the dom', () => {
-		const canvasContainerAppendedToDocumentBody: PageElement = bodyChildren[ 0 ]
+		const canvasContainerAppendedToDocumentBody: HTMLElement = bodyChildren[ 0 ]
 		expect(returnedCanvasContainer).toBe(canvasContainerAppendedToDocumentBody)
 	})
 

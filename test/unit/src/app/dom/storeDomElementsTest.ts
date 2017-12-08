@@ -1,4 +1,4 @@
-import { appState, documentWrapper, NullarySideEffector, PageElement, storeDomElements } from '../../../../../src'
+import { appState, documentWrapper, NullarySideEffector, storeDomElements } from '../../../../../src'
 import { buildMockElement } from '../../../helpers'
 
 const subject: NullarySideEffector = storeDomElements.default
@@ -15,7 +15,7 @@ describe('store dom elements', () => {
 		const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 		const snapshotButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
 
-		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): PageElement => {
+		spyOn(documentWrapper, 'querySelector').and.callFake((selector: string): HTMLElement => {
 			switch (selector) {
 				case '#descriptions-container':
 					return descriptionsContainer
@@ -36,7 +36,7 @@ describe('store dom elements', () => {
 				case '#snapshot-button':
 					return snapshotButton
 				default:
-					return buildMockElement()
+					return buildMockElement() as HTMLElement
 			}
 		})
 

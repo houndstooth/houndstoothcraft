@@ -1,4 +1,4 @@
-import { Context, getCurrentContext } from '../../app'
+import { getCurrentContext } from '../../app'
 import { NullarySideEffector } from '../../utilities'
 import { get } from '../patternState'
 
@@ -9,7 +9,7 @@ const applyOpacity: NullarySideEffector =
 			return
 		}
 
-		const context: Context = getCurrentContext.default()
+		const context: CanvasRenderingContext2D = getCurrentContext.default()
 		context.globalAlpha = opacity
 	}
 

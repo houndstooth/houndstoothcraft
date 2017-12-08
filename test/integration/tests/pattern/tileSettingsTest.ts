@@ -1,7 +1,6 @@
 import {
 	clearContexts,
 	constants,
-	Context,
 	createContext,
 	Effect,
 	executeSelectedEffects,
@@ -113,7 +112,7 @@ describe('.tileSettings', () => {
 
 	describe('.collapseSameColoredShapesWithinTile', () => {
 		let overrides: Effect
-		let context: Context
+		let context: CanvasRenderingContext2D
 		let contextCallsOrder: MockContextCall[]
 		beforeEach(() => {
 			contextCallsOrder = []
@@ -124,7 +123,7 @@ describe('.tileSettings', () => {
 					gridSettings: { tileResolution: 1 },
 				},
 			}
-			context = buildMockContext({ contextCallsOrder })
+			context = buildMockContext({ contextCallsOrder }) as CanvasRenderingContext2D
 			spyOn(createContext, 'default').and.returnValue(context)
 			spyOn(mixDownContexts, 'default')
 		})

@@ -1,17 +1,17 @@
-import { appState, Canvas, Context, createContext, documentWrapper, PageElement } from '../../../../../src'
+import { appState, createContext, documentWrapper, HTMLElement } from '../../../../../src'
 import { buildMockCanvas, buildMockContext } from '../../../../helpers'
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: { canvasContainer: PageElement }) => Context = createContext.default
+const subject: (_: { canvasContainer: HTMLElement }) => CanvasRenderingContext2D = createContext.default
 
 describe('create context', () => {
-	let returnedContext: Context
-	let appendedCanvas: Canvas
-	let canvasContainer: PageElement
-	let children: Canvas[]
-	const context: Context = buildMockContext()
+	let returnedContext: CanvasRenderingContext2D
+	let appendedCanvas: HTMLCanvasElement
+	let canvasContainer: HTMLElement
+	let children: HTMLCanvasElement[]
+	const context: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 	beforeEach(() => {
-		const canvas: Canvas = buildMockCanvas({ context })
+		const canvas: HTMLCanvasElement = buildMockCanvas({ context }) as HTMLCanvasElement
 		spyOn(documentWrapper, 'createElement').and.returnValue(canvas)
 
 		children = []

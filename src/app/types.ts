@@ -1,11 +1,10 @@
 import { BasePattern, Frame, Houndstooth, Layer, NamedEffect } from '../pattern'
 import { NullarySideEffector } from '../utilities'
-import { Context, InputElement, PageElement } from './dom'
 import { SettingsPath } from './settings'
 
 interface CanvasState {
-	contexts: Context[],
-	mixedDownContext: Context,
+	contexts: CanvasRenderingContext2D[],
+	mixedDownContext: CanvasRenderingContext2D,
 }
 
 interface ControlsState {
@@ -18,14 +17,14 @@ interface ControlsState {
 }
 
 interface DomState {
-	descriptionsContainer: PageElement,
-	effectToggles: { [_: string ]: InputElement },
-	frameInput: InputElement,
-	layersProgressBar: PageElement,
+	descriptionsContainer: HTMLElement,
+	effectToggles: { [_: string ]: HTMLInputElement },
+	frameInput: HTMLInputElement,
+	layersProgressBar: HTMLElement,
 	pauseButton: HTMLButtonElement,
 	playButton: HTMLButtonElement,
-	progressBar: PageElement,
-	progressMessage: PageElement,
+	progressBar: HTMLElement,
+	progressMessage: HTMLElement,
 	rewindButton: HTMLButtonElement,
 	snapshotButton: HTMLButtonElement,
 }

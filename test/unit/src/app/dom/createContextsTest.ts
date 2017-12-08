@@ -5,7 +5,7 @@ import {
 	createContexts,
 	documentWrapper,
 	NullarySideEffector,
-	PageElement,
+	HTMLElement,
 	scaleCanvasContainer,
 	to,
 } from '../../../../../src'
@@ -14,7 +14,7 @@ import { buildMockElement } from '../../../helpers'
 const subject: NullarySideEffector = createContexts.default
 
 describe('create contexts', () => {
-	let canvasContainer: PageElement
+	let canvasContainer: HTMLElement
 	let createContextSpy: Spy
 	let querySelectorSpy: Spy
 	beforeEach(() => {

@@ -12,12 +12,10 @@ import {
 	GetStripePositions,
 	GetTileOriginAndSize,
 	gridSettings,
-	InputElement,
 	Layer,
 	layerSettings,
 	NullarySideEffector,
 	OffsetAddress,
-	PageElement,
 	Px,
 	Radian,
 	SettingsNamesByType,
@@ -37,7 +35,7 @@ import Spy = jasmine.Spy
 
 interface BuildMockElementParams {
 	readonly attributeObject?: { [ index: string ]: string },
-	readonly children?: PageElement[],
+	readonly children?: HTMLElement[],
 	readonly classList?: string[],
 	readonly clickSpy?: Spy,
 	readonly parentNodeInsertBeforeSpy?: Spy,
@@ -60,7 +58,7 @@ interface TestObject {
 	bbb?: string,
 }
 
-type SimulateClick = (checkbox: InputElement, clickHandler: NullarySideEffector) => void
+type SimulateClick = (checkbox: HTMLInputElement, clickHandler: NullarySideEffector) => void
 
 interface SetPatternStateForTest {
 	(settingName: animationSettings.AnimationSettingsName, value: Partial<animationSettings.AnimationSettings>): void,

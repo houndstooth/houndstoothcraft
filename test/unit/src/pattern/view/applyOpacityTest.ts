@@ -1,13 +1,13 @@
-import { applyOpacity, Context, getCurrentContext, NullarySideEffector } from '../../../../../src'
+import { applyOpacity, getCurrentContext, NullarySideEffector } from '../../../../../src'
 import { buildMockContext } from '../../../../helpers'
 import { setPatternStateForTest } from '../../../helpers'
 
 const subject: NullarySideEffector = applyOpacity.default
 
 describe('apply opacity', () => {
-	let context: Context
+	let context: CanvasRenderingContext2D
 	beforeEach(() => {
-		context = buildMockContext()
+		context = buildMockContext() as CanvasRenderingContext2D
 		spyOn(getCurrentContext, 'default').and.returnValue(context)
 	})
 

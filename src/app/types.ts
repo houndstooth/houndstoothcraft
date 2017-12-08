@@ -12,6 +12,7 @@ interface ControlsState {
 	animating: boolean,
 	currentFrame: Frame,
 	endFrame: Frame,
+	endLayer: Layer,
 	exportFrames: boolean,
 	selectedEffects: NamedEffect[],
 }

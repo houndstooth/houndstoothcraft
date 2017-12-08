@@ -1,4 +1,4 @@
-import { Effect } from '../../pattern'
+import { Effect, getEndLayer } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { createContexts } from '../dom'
@@ -19,6 +19,7 @@ const executeSelectedEffects: (_?: { overrides?: Effect }) => void =
 		})
 
 		resetPatternState.default()
+		appState.controls.endLayer = getEndLayer.default()
 
 		prepareCanvas()
 

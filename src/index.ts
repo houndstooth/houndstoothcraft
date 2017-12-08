@@ -193,6 +193,7 @@ export {
 	TextureParams,
 	DefinedTileParams,
 	shouldRefreshCanvas,
+	getEndLayer,
 } from './pattern'
 export {
 	codeUtilities,

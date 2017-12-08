@@ -12,7 +12,6 @@ import {
 	SettingsFunctionObject,
 	to,
 } from '../../../../../src'
-import { setPatternStateForTest } from '../../../helpers'
 
 const subject: (_: ExecuteParams) => Promise<void> = executePattern.default
 
@@ -21,7 +20,7 @@ describe('execute pattern', () => {
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
-		setPatternStateForTest('endLayer', endLayer)
+		appState.controls.endLayer = endLayer
 		appState.execute.patternRef = 99
 	})
 

@@ -65,6 +65,7 @@ const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
 const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
 const DEFAULT_EFFECT_TOGGLES: { [_: string ]: InputElement } = {}
 const DEFAULT_END_FRAME: Frame = to.Frame(0)
+const DEFAULT_END_LAYER: Layer = to.Layer(0)
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_ANIMATION_INTERVAL: undefined = undefined
@@ -95,6 +96,7 @@ const DEFAULT_CONTROLS_STATE: ControlsState = {
 	animating: DEFAULT_ANIMATING,
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
 	endFrame: DEFAULT_END_FRAME,
+	endLayer: DEFAULT_END_LAYER,
 	exportFrames: DEFAULT_EXPORT_FRAMES,
 	selectedEffects: DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS,
 }

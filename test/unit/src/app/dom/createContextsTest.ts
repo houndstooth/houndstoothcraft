@@ -9,7 +9,7 @@ import {
 	scaleCanvasContainer,
 	to,
 } from '../../../../../src'
-import { buildMockElement, setPatternStateForTest } from '../../../helpers'
+import { buildMockElement } from '../../../helpers'
 
 const subject: NullarySideEffector = createContexts.default
 
@@ -32,7 +32,7 @@ describe('create contexts', () => {
 	})
 
 	it('adds contexts to the app state for each layer', () => {
-		setPatternStateForTest('endLayer', to.Layer(5))
+		appState.controls.endLayer = to.Layer(5)
 		expect(appState.canvas.contexts.length).toBe(0)
 
 		subject()
@@ -41,13 +41,13 @@ describe('create contexts', () => {
 	})
 
 	it('can reduce the count of contexts on the app state, and canvases on the dom', () => {
-		setPatternStateForTest('endLayer', to.Layer(5))
+		appState.controls.endLayer = to.Layer(5)
 		subject()
 
 		expect(createContextSpy.calls.count()).toBe(6)
 		expect(appState.canvas.contexts.length).toBe(6)
 
-		setPatternStateForTest('endLayer', to.Layer(3))
+		appState.controls.endLayer = to.Layer(3)
 		createContextSpy.calls.reset()
 
 		subject()

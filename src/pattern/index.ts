@@ -40,6 +40,7 @@ export {
 export {
 	Layer,
 	layerSettings,
+	getEndLayer,
 } from './layer'
 export {
 	Coordinate,

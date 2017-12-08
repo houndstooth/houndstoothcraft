@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { Layer, patternState } from '../../pattern'
+import { Layer } from '../../pattern'
 import { codeUtilities, from, NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import createContext from './createContext'
@@ -17,7 +17,7 @@ const createContexts: NullarySideEffector =
 
 const layerIterator: () => Layer[] =
 	(): Layer[] => {
-		const endLayer: Layer = patternState.get('endLayer')
+		const endLayer: Layer = appState.controls.endLayer
 
 		const layerCount: number = from.Layer(endLayer) + 1
 

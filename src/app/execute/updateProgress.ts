@@ -1,5 +1,4 @@
 import { ONE_HUNDRED_PERCENT } from '../../constants'
-import { patternState } from '../../pattern'
 import { from, NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 
@@ -10,7 +9,7 @@ const updateProgress: NullarySideEffector =
 
 		appState.dom.progressBar.style.width = `${percentage}%`
 
-		const endLayerValue: number = from.Layer(patternState.get('endLayer'))
+		const endLayerValue: number = from.Layer(appState.controls.endLayer)
 		const currentLayerValue: number = from.Layer(appState.execute.currentLayer)
 
 		const layerCount: number = endLayerValue + 1

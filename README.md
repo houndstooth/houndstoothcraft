@@ -73,7 +73,7 @@ Both `layersPattern` and `layerSettings` exist as well, for the same reason.
 
 ## app
 
-The `app` module, in contrast to the `pattern` module, has nothing to do with the "fun", "mathy", "designy' part of houndstooth. It's how the app works.
+The `app` module, in contrast to the `pattern` module, has nothing to do with the "fun", "mathy", "designy' part of houndstooth. It's how the app works. In other words, anything you find in the app module should work the same way for any pattern.
 
 submodules:
 - `controls`: the user interface; handlers for toggling effects and controlling animation

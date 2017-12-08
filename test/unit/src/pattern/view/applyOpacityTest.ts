@@ -1,19 +1,22 @@
-import { applyOpacity, appState, NullarySideEffector } from '../../../../../src'
+import { applyOpacity, Context, getCurrentContext, NullarySideEffector } from '../../../../../src'
+import { buildMockContext } from '../../../../helpers'
 import { setPatternStateForTest } from '../../../helpers'
 
 const subject: NullarySideEffector = applyOpacity.default
 
 describe('apply opacity', () => {
+	let context: Context
 	beforeEach(() => {
-		appState.canvas.contexts = [ { globalAlpha: 1 } ]
+		context = buildMockContext()
+		spyOn(getCurrentContext, 'default').and.returnValue(context)
 	})
 
 	it('has no effect if no opacity level is specified', () => {
-		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(1)
+		expect(context.globalAlpha).toBe(1)
 
 		subject()
 
-		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(1)
+		expect(context.globalAlpha).toBe(1)
 	})
 
 	it('has no effect if no opacity level is 1', () => {
@@ -21,13 +24,14 @@ describe('apply opacity', () => {
 
 		subject()
 
-		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(1)
+		expect(context.globalAlpha).toBe(1)
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
 		setPatternStateForTest('colorSettings', { opacity: 0.4 })
+
 		subject()
 
-		expect(appState.canvas.contexts[ 0 ].globalAlpha).toBe(0.4)
+		expect(context.globalAlpha).toBe(0.4)
 	})
 })

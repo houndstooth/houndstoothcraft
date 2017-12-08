@@ -2,7 +2,7 @@ import { noop } from '../../src'
 import { BuildMockContext, MockContext } from './types'
 
 const buildMockContext: (_?: BuildMockContext) => MockContext =
-	({ contextCallsOrder = [], toBlobSpy = undefined }: BuildMockContext = {}): MockContext =>
+	({ contextCallsOrder = [], toBlobSpy, fillRectSpy }: BuildMockContext = {}): MockContext =>
 		({
 			beginPath: (): number => contextCallsOrder.push({ method: 'beginPath' }),
 			canvas: { toBlob: toBlobSpy },
@@ -11,7 +11,9 @@ const buildMockContext: (_?: BuildMockContext) => MockContext =
 			closePath: (): number => contextCallsOrder.push({ method: 'closePath' }),
 			drawImage: noop,
 			fill: (): number => contextCallsOrder.push({ method: 'fill' }),
-			fillStyle: '',
+			fillRect: fillRectSpy,
+			fillStyle: '#000000',
+			globalAlpha: 1,
 			globalCompositeOperation: '',
 			lineTo: (x: number, y: number): number => contextCallsOrder.push({ method: 'lineTo', x, y }),
 			moveTo: (x: number, y: number): number => contextCallsOrder.push({ method: 'moveTo', x, y }),

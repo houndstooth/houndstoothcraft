@@ -6,12 +6,10 @@ import {
 	gridComplete,
 	NullarySideEffector,
 } from '../../../../../src'
-import { setPatternStateForTest } from '../../../helpers'
 
 const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGrid.default
 
 describe('execute grid', () => {
-	const tileResolution: number = 2
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
@@ -22,7 +20,6 @@ describe('execute grid', () => {
 		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)
 
 		spyOn(grid, 'default')
-		setPatternStateForTest('gridSettings', { tileResolution })
 	})
 
 	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {

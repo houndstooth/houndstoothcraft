@@ -62,7 +62,7 @@ const checkColorProperties: (_: CheckColorProperties) => boolean =
 			const parsedActualColor: string = parseColor.default(actualColor)
 			const parsedExpectedColor: string = parseColor.default(expectedColor)
 			const error: string = `actual color: ${parsedActualColor} / expected color ${parsedExpectedColor}`
-			console.error(error)
+			fail(error)
 
 			return false
 		}

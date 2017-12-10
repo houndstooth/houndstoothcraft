@@ -3,10 +3,6 @@ import { globalWrapper, Pattern, patternsHaveConflicts, PatternsHaveConflictsPar
 const subject: (_: PatternsHaveConflictsParams) => boolean = patternsHaveConflicts.default
 
 describe('patterns have conflicts', () => {
-	beforeEach(() => {
-		spyOn(globalWrapper.console, 'warn')
-	})
-
 	it('returns true if any settings conflict between the two patterns', () => {
 		const pattern: Pattern = {
 			colorSettings: {

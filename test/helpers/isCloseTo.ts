@@ -9,7 +9,7 @@ const isCloseTo: (numberOne: number, numberTwo: number) => boolean =
 		const result: boolean = Math.round(delta * pow) / pow <= maxDelta
 
 		if (!result) {
-			console.error('expected', numberOne, 'to be close to', numberTwo)
+			fail(`expected ${numberOne} to be close to ${numberTwo}`)
 		}
 
 		return result

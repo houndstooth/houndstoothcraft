@@ -3,10 +3,6 @@ import { Effect, effectsHaveConflicts, globalWrapper } from '../../../../../src'
 const subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean = effectsHaveConflicts.default
 
 describe('effects have conflicts', () => {
-	beforeEach(() => {
-		spyOn(globalWrapper.console, 'warn')
-	})
-
 	it('returns false if there no conflicts on the animations, layers, and base patterns', () => {
 		const effect: Effect = {
 			animationsPattern: {

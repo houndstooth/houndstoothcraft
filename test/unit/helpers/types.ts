@@ -180,6 +180,51 @@ type MockContextMethod =
 	| 'restore'
 	| 'save'
 
+interface MockConsole {
+	assert: any,
+	clear: any,
+	console: any,
+	count: any,
+	debug: any,
+	dir: any,
+	dirxml: any,
+	exception: any,
+	error: any,
+	group: any,
+	groupCollapsed: any,
+	groupEnd: any,
+	info: any,
+	log: any,
+	msIsIndependentlyComposed: any,
+	profile: any,
+	profileEnd: any,
+	select: any,
+	table: any,
+	time: any,
+	timeEnd: any,
+	trace: any,
+	warn: any,
+}
+
+interface MockDocument {
+	body: {
+		appendChild?: any,
+	},
+	createElement: (tagName: string) => HTMLElement,
+	createTextNode: any,
+	querySelector: any,
+}
+
+interface MockWindow {
+	clearInterval: (intervalId: number) => void,
+	setInterval: (handler: (...args: any[]) => void, interval: number) => number,
+	setTimeout: (handler: (...args: any[]) => void, timeout: number) => number,
+	URL: {
+		createObjectURL: (blob: any) => string,
+		revokeObjectURL: (url: string) => any,
+	},
+}
+
 export {
 	BuildMockContext,
 	MockContext,
@@ -193,4 +238,7 @@ export {
 	SimulateClick,
 	SetPatternSettingForTest,
 	TestObject,
+	MockConsole,
+	MockDocument,
+	MockWindow,
 }

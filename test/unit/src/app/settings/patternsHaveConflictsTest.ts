@@ -1,4 +1,4 @@
-import { globalWrapper, Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
+import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
 
 const subject: (_: PatternsHaveConflictsParams) => boolean = patternsHaveConflicts.default
 

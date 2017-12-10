@@ -1,4 +1,4 @@
-// tslint:disable:max-file-line-count max-line-length
+// tslint:disable:max-file-line-count max-line-length no-any
 
 import {
 	animationSettings,
@@ -188,8 +188,8 @@ interface MockConsole {
 	debug: any,
 	dir: any,
 	dirxml: any,
-	exception: any,
 	error: any,
+	exception: any,
 	group: any,
 	groupCollapsed: any,
 	groupEnd: any,

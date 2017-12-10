@@ -2,7 +2,6 @@
 
 import {
 	codeUtilities,
-	globalWrapper,
 	PrepareFunctionObjectsParams,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,

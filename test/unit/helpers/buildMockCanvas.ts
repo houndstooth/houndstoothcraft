@@ -1,5 +1,5 @@
-import buildMockElement from './buildMockElement'
 import buildMockContext from './buildMockContext'
+import buildMockElement from './buildMockElement'
 import { MockCanvas, MockContext } from './types'
 
 const buildMockCanvas: (_?: { classList?: string[], context?: MockContext }) => MockCanvas =

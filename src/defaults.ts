@@ -69,7 +69,7 @@ const DEFAULT_ANIMATION_INTERVAL: undefined = undefined
 const DEFAULT_MIXED_DOWN_CONTEXT: CanvasRenderingContext2D = {} as CanvasRenderingContext2D
 const DEFAULT_PATTERN_REF: number = 0
 const DEFAULT_PERFORMANCE_LOGGING: boolean = false
-const DEFAULT_RESOLVE_GRID: NullarySideEffector = () => {}
+const DEFAULT_RESOLVE_GRID: NullarySideEffector = (): void => undefined
 const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
 const DEFAULT_SETTING_NAMES_TO_PATHS_MAP: SettingNamesToPathsMap = {}
 const DEFAULT_TILE_COUNT: number = 0

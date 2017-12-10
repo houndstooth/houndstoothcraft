@@ -1,10 +1,10 @@
-import buildMockElement from './buildMockElement'
 import buildMockCanvas from './buildMockCanvas'
 import buildMockContext from './buildMockContext'
+import buildMockElement from './buildMockElement'
 import mockDom from './mockDom'
+import noop from './noop'
 import pixelsAreClose from './pixelsAreClose'
 import setPatternSettingForTest from './setPatternSettingForTest'
-import noop from './noop'
 
 export {
 	buildMockElement,

@@ -1,4 +1,4 @@
-import { Effect, effectsHaveConflicts, globalWrapper } from '../../../../../src'
+import { Effect, effectsHaveConflicts } from '../../../../../src'
 
 const subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean = effectsHaveConflicts.default
 

@@ -4,17 +4,17 @@ import {
 	appState,
 	buildAnimationIntervalFunction,
 	globalWrapper,
-	noop,
 	NullarySideEffector,
 } from '../../../../../src'
+import { noop } from '../../../helpers'
 
 const subject: (_: AnimationParams) => void = animator.default
 
 describe('animator', () => {
 	const FRAME_RATE: number = 30
 	let intervalFunction: (p: number) => number
-	const animationFunction: NullarySideEffector = noop.default
-	const resolveAnimation: NullarySideEffector = noop.default
+	const animationFunction: NullarySideEffector = noop
+	const resolveAnimation: NullarySideEffector = noop
 	const animationInterval: number = 34987
 	beforeEach(() => {
 		spyOn(globalWrapper.window, 'setInterval').and.returnValue(animationInterval)

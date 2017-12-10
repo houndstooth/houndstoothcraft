@@ -1,50 +1,51 @@
 // tslint:disable:no-any
 
-import { appState, globalWrapper, noop, NullarySideEffector } from '../../../src'
+import { appState, globalWrapper, NullarySideEffector } from '../../../src'
 import buildMockElement from './buildMockElement'
+import noop from './noop'
 import { MockConsole, MockDocument, MockWindow } from './types'
 
 const mockConsole: MockConsole = {
-	assert: noop.default,
-	clear: noop.default,
-	console: noop.default,
-	count: noop.default,
-	debug: noop.default,
-	dir: noop.default,
-	dirxml: noop.default,
-	exception: noop.default,
-	error: noop.default,
-	group: noop.default,
-	groupCollapsed: noop.default,
-	groupEnd: noop.default,
-	info: noop.default,
-	log: noop.default,
-	msIsIndependentlyComposed: noop.default,
-	profile: noop.default,
-	profileEnd: noop.default,
-	select: noop.default,
-	table: noop.default,
-	time: noop.default,
-	timeEnd: noop.default,
-	trace: noop.default,
-	warn: noop.default,
+	assert: noop,
+	clear: noop,
+	console: noop,
+	count: noop,
+	debug: noop,
+	dir: noop,
+	dirxml: noop,
+	exception: noop,
+	error: noop,
+	group: noop,
+	groupCollapsed: noop,
+	groupEnd: noop,
+	info: noop,
+	log: noop,
+	msIsIndependentlyComposed: noop,
+	profile: noop,
+	profileEnd: noop,
+	select: noop,
+	table: noop,
+	time: noop,
+	timeEnd: noop,
+	trace: noop,
+	warn: noop,
 }
 
 const mockDocument: MockDocument = {
 	body: {
-		appendChild: noop.default,
+		appendChild: noop,
 	},
 	createElement: (_: string): HTMLElement => buildMockElement() as HTMLElement,
-	createTextNode: noop.default,
-	querySelector: noop.default,
+	createTextNode: noop,
+	querySelector: noop,
 }
 
 const mockWindow: MockWindow = {
 	URL: {
 		createObjectURL: (): string => '',
-		revokeObjectURL: noop.default,
+		revokeObjectURL: noop,
 	},
-	clearInterval: noop.default,
+	clearInterval: noop,
 	setInterval: (): number => 0,
 	setTimeout: (): number => 0,
 }

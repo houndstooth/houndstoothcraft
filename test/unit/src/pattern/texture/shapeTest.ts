@@ -1,7 +1,6 @@
 import {
 	codeUtilities,
 	Coordinate,
-	noop,
 	NullarySideEffector,
 	Outline,
 	OutlineOptions,
@@ -13,7 +12,7 @@ import {
 	to,
 	Unit,
 } from '../../../../../src'
-import { setPatternSettingForTest } from '../../../helpers'
+import { noop, setPatternSettingForTest } from '../../../helpers'
 import Spy = jasmine.Spy
 
 const subject: (_: ShapeParams) => void = shape.default
@@ -94,7 +93,7 @@ describe('shape', () => {
 		})
 
 		describe('when an executeTexture method is supplied', () => {
-			const executeTexture: NullarySideEffector = noop.default
+			const executeTexture: NullarySideEffector = noop
 			beforeEach(() => {
 				setPatternSettingForTest('textureSettings', { executeTexture })
 			})

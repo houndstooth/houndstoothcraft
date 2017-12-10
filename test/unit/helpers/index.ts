@@ -4,6 +4,7 @@ import buildMockContext from './buildMockContext'
 import mockDom from './mockDom'
 import pixelsAreClose from './pixelsAreClose'
 import setPatternSettingForTest from './setPatternSettingForTest'
+import noop from './noop'
 
 export {
 	buildMockElement,
@@ -12,6 +13,7 @@ export {
 	mockDom,
 	buildMockCanvas,
 	buildMockContext,
+	noop,
 }
 export {
 	ExampleSettings,

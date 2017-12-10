@@ -191,7 +191,6 @@ export {
 	codeUtilities,
 	globalWrapper,
 	mathUtilities,
-	noop,
 	NullarySideEffector,
 	NullaryVoidPromise,
 	from,

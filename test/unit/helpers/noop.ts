@@ -1,4 +1,4 @@
-import { NullarySideEffector } from './types'
+import { NullarySideEffector } from '../../../src'
 
 const noop: NullarySideEffector =
 	(): void => undefined

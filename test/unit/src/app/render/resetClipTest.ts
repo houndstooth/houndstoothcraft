@@ -1,5 +1,5 @@
 import { appState, NullarySideEffector, resetClip } from '../../../../../src'
-import { buildMockContext, MockContextCall } from '../../../../helpers'
+import { buildMockContext, MockContextCall } from '../../../helpers'
 
 const subject: NullarySideEffector = resetClip.default
 

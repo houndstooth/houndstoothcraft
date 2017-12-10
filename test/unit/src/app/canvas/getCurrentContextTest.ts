@@ -1,5 +1,5 @@
 import { appState, getCurrentContext, to } from '../../../../../src'
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: () => CanvasRenderingContext2D = getCurrentContext.default
 

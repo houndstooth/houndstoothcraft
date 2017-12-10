@@ -8,7 +8,7 @@ import {
 	NullarySideEffector,
 	storeMixedDownContext,
 } from '../../../../../src'
-import { buildMockCanvas, buildMockContext } from '../../../../helpers'
+import { buildMockCanvas, buildMockContext } from '../../../helpers'
 
 const subject: NullarySideEffector = storeMixedDownContext.default
 

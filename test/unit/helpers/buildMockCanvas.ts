@@ -1,4 +1,4 @@
-import { buildMockElement } from '../unit'
+import buildMockElement from './buildMockElement'
 import buildMockContext from './buildMockContext'
 import { MockCanvas, MockContext } from './types'
 

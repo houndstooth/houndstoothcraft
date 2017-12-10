@@ -1,6 +1,6 @@
 import { appState, DataBlob, exportCanvas, NullarySideEffector, saveCanvas, to } from '../../../../../src'
 import Spy = jasmine.Spy
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: NullarySideEffector = exportCanvas.default
 

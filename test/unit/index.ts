@@ -1,6 +1,7 @@
-import { buildMockElement, setPatternStateForTest } from './helpers'
-
 export {
+	buildMockCanvas,
 	buildMockElement,
 	setPatternStateForTest,
-}
+	MockContext,
+	MockElement,
+} from './helpers'

@@ -3,7 +3,7 @@
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 import { appState, constants, mixDownContexts, NullarySideEffector } from '../../../../../src'
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: NullarySideEffector = mixDownContexts.default
 

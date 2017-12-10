@@ -1,6 +1,6 @@
 import { clearContext, constants } from '../../../../../src'
 import Spy = jasmine.Spy
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: (_: CanvasRenderingContext2D) => void = clearContext.default
 

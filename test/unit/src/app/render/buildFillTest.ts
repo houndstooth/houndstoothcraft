@@ -1,5 +1,5 @@
 import { appState, buildFill, Color, constants, parseColor } from '../../../../../src'
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: (_: { shapeColor: Color }) => void = buildFill.default
 

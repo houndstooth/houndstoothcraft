@@ -1,14 +1,13 @@
 // tslint:disable:no-unsafe-any
 
 import { from } from '../../../src'
-import { buildMockCanvas } from '../../helpers'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { DrawPassMarker } from './types'
 
 const drawPassMarker: (_: DrawPassMarker) => void =
 	({ coordinateUnderTest, id, passed }: DrawPassMarker): void => {
 		// tslint:disable-next-line:max-line-length
-		let testMarkersCanvas: HTMLCanvasElement = document.querySelector('#test-markers-canvas') as HTMLCanvasElement || buildMockCanvas()
+		let testMarkersCanvas: HTMLCanvasElement = document.querySelector('#test-markers-canvas') as HTMLCanvasElement
 		if (!testMarkersCanvas) {
 			testMarkersCanvas = createTestMarkersCanvas()
 		}

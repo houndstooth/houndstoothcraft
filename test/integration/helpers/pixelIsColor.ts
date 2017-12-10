@@ -1,5 +1,5 @@
 import { Color, Coordinate, from, parseColor } from '../../../src'
-import { buildMockCanvas, isCloseTo } from '../../helpers'
+import { isCloseTo } from '../../helpers'
 import { CheckColorProperties, Key, PixelIsColor } from './types'
 
 const pixelIsColor: PixelIsColor =
@@ -21,7 +21,7 @@ const pixelIsColor: PixelIsColor =
 
 const pixelColor: (_: Coordinate) => Color = ([ x, y ]: Coordinate): Color => {
 	// tslint:disable-next-line:max-line-length
-	const mixedDownCanvas: HTMLCanvasElement = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || buildMockCanvas()
+	const mixedDownCanvas: HTMLCanvasElement = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement
 	// tslint:disable-next-line:no-unsafe-any
 	const mixedDownContext: CanvasRenderingContext2D = mixedDownCanvas.getContext('2d') as CanvasRenderingContext2D
 	const pixelData: Uint8ClampedArray = mixedDownContext.getImageData(from.Unit(x), from.Unit(y), 1, 1).data

@@ -4,7 +4,7 @@ import {
 	clearMixedDownContext,
 	NullarySideEffector,
 } from '../../../../../src'
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: NullarySideEffector = clearMixedDownContext.default
 

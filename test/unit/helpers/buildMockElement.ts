@@ -1,5 +1,4 @@
-import { MockElement } from '../../helpers'
-import { BuildMockElementParams } from './types'
+import { BuildMockElementParams, MockElement } from './types'
 
 const buildMockElement: (_?: BuildMockElementParams) => MockElement =
 	(params?: BuildMockElementParams): MockElement => {

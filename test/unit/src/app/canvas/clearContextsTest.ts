@@ -6,7 +6,7 @@ import {
 } from '../../../../../src'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { buildMockContext } from '../../../../helpers'
+import { buildMockContext } from '../../../helpers'
 
 const subject: NullarySideEffector = clearContexts.default
 

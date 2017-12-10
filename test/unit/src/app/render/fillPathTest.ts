@@ -1,5 +1,5 @@
 import { appState, fillPath, NullarySideEffector } from '../../../../../src'
-import { buildMockContext, MockContextCall } from '../../../../helpers'
+import { buildMockContext, MockContextCall } from '../../../helpers'
 
 const subject: NullarySideEffector = fillPath.default
 

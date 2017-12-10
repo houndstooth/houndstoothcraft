@@ -33,15 +33,6 @@ import {
 } from '../../../src'
 import Spy = jasmine.Spy
 
-interface BuildMockElementParams {
-	readonly attributeObject?: { [ index: string ]: string },
-	readonly children?: HTMLElement[],
-	readonly classList?: string[],
-	readonly clickSpy?: Spy,
-	readonly parentNodeInsertBeforeSpy?: Spy,
-	readonly parentNodeRemoveChildSpy?: Spy,
-}
-
 interface ExampleSettings extends ExampleSettingsStructure {
 	settingOne: number,
 	settingTwo: string,
@@ -93,7 +84,109 @@ interface SetPatternStateForTest {
 	(settingName: SettingsNamesByType['WeaveTypedSettingsNames'], value: Weave): void,
 }
 
+interface BuildMockElementParams {
+	readonly attributeObject?: { [ index: string ]: string },
+	readonly children?: HTMLElement[],
+	readonly classList?: string[],
+	readonly clickSpy?: Spy,
+	readonly parentNodeInsertBeforeSpy?: Spy,
+	readonly parentNodeRemoveChildSpy?: Spy,
+}
+
+interface MockElement {
+	appendChild?: any,
+	classList?: any,
+	click?: any,
+	disabled?: any,
+	download?: any,
+	href?: any,
+	innerHTML?: any,
+	nextSibling?: any,
+	onchange?: any,
+	onclick?: any,
+	parentNode?: any,
+	setAttribute?: any,
+	style: {
+		cursor?: any,
+		display?: any,
+		fill?: any,
+		fontFamily?: any,
+		fontSize?: any,
+		height?: any,
+		justifyContent?: any,
+		left?: any,
+		margin?: any,
+		padding?: any,
+		position?: any,
+		top?: any,
+		width?: any,
+		zIndex?: any,
+	},
+	textContent?: any,
+}
+
+interface MockCanvas extends MockElement {
+	getContext?: any,
+	height?: any,
+	width?: any,
+}
+
+interface BuildMockContext {
+	readonly clearRectSpy?: Spy,
+	readonly contextCallsOrder?: MockContextCall[],
+	readonly drawImageSpy?: Spy,
+	readonly fillRectSpy?: Spy,
+	readonly toBlobSpy?: Spy,
+}
+
+interface MockContext {
+	arc?: any,
+	beginPath?: any,
+	canvas?: any,
+	clearRect?: any,
+	clip?: any,
+	closePath?: any,
+	drawImage?: any,
+	fill?: any,
+	fillRect?: any,
+	fillStyle?: any,
+	fillText?: any,
+	font?: any,
+	globalAlpha?: any,
+	globalCompositeOperation?: any,
+	lineTo?: any,
+	moveTo?: any,
+	restore?: any,
+	save?: any,
+	stroke?: any,
+	strokeStyle?: any,
+	toBlob?: any,
+}
+
+interface MockContextCall {
+	method: MockContextMethod,
+	x?: number,
+	y?: number
+}
+
+type MockContextMethod =
+	| 'beginPath'
+	| 'clearRect'
+	| 'clip'
+	| 'closePath'
+	| 'fill'
+	| 'lineTo'
+	| 'moveTo'
+	| 'restore'
+	| 'save'
+
 export {
+	BuildMockContext,
+	MockContext,
+	MockContextCall,
+	MockContextMethod,
+	MockCanvas,
+	MockElement,
 	BuildMockElementParams,
 	ExampleSettings,
 	ExampleSettingsStructure,

@@ -1,6 +1,5 @@
 import { appState, createContext, globalWrapper } from '../../../../../src'
-import { buildMockCanvas, buildMockContext } from '../../../../helpers'
-import { buildMockElement } from '../../../helpers'
+import { buildMockCanvas, buildMockContext, buildMockElement } from '../../../helpers'
 
 const subject: (_: { canvasContainer: HTMLElement }) => CanvasRenderingContext2D = createContext.default
 

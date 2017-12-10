@@ -1,9 +1,5 @@
 export {
 	isCloseTo,
-	MockCanvas,
-	MockContext,
-	MockElement,
-	MockInputElement,
 } from './helpers'
 export {
 	activateTestMarkerCanvas,
@@ -19,5 +15,8 @@ export {
 } from './integration'
 export {
 	buildMockElement,
+	buildMockCanvas,
 	setPatternStateForTest,
+	MockContext,
+	MockElement,
 } from './unit'

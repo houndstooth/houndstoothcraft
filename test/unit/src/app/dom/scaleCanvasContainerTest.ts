@@ -4,7 +4,7 @@ import {
 	scaleCanvasContainer,
 	scaleElement,
 } from '../../../../../src'
-import { buildMockBody, buildMockElement } from '../../../helpers'
+import { buildMockElement } from '../../../helpers'
 
 const subject: () => HTMLElement = scaleCanvasContainer.default
 
@@ -19,7 +19,7 @@ describe('scale canvas container', () => {
 		spyOn(scaleElement, 'default')
 
 		// tslint:disable-next-line:no-unsafe-any
-		globalWrapper.document.body = buildMockBody({ children: bodyChildren }) as HTMLElement
+		globalWrapper.document.body = buildMockElement({ children: bodyChildren }) as HTMLElement
 
 		const canvasContainer: HTMLElement = buildMockElement({ classList: canvasContainerClassList }) as HTMLElement
 		spyOn(globalWrapper.document, 'createElement').and.callFake(() => canvasContainer)

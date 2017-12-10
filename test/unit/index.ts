@@ -1,7 +1,7 @@
 export {
 	buildMockCanvas,
 	buildMockElement,
-	setPatternStateForTest,
+	setPatternSettingForTest,
 	MockContext,
 	MockElement,
 } from './helpers'

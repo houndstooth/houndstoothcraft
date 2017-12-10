@@ -1,5 +1,5 @@
 import { Address, getByWeave, GetShapeColorIndicesWithOffset, to } from '../../../../../src'
-import { setPatternStateForTest } from '../../../helpers'
+import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: GetShapeColorIndicesWithOffset = getByWeave.default
 
@@ -7,7 +7,7 @@ describe('get by weave', () => {
 	const gridAddress: Address = to.Address([ 3, 5 ])
 
 	it('can use a weave-based assignment scheme', () => {
-		setPatternStateForTest('weave', {
+		setPatternSettingForTest('weave', {
 			columns: [ 0, 1 ],
 			rows: [ 0, 0, 3 ],
 		})
@@ -17,7 +17,7 @@ describe('get by weave', () => {
 	})
 
 	it('handles offset', () => {
-		setPatternStateForTest('weave', {
+		setPatternSettingForTest('weave', {
 			columns: [ 1, 0 ],
 			rows: [ 0, 3, 0 ],
 		})

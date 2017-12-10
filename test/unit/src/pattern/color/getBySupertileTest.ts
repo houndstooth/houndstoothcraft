@@ -1,5 +1,5 @@
 import { Address, getBySupertile, GetShapeColorIndicesWithOffset, ShapeColorIndex, to } from '../../../../../src'
-import { setPatternStateForTest } from '../../../helpers'
+import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: GetShapeColorIndicesWithOffset = getBySupertile.default
 
@@ -10,7 +10,7 @@ describe('get by supertile', () => {
 		const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
 		const addressOffset: Address = to.Address([ 0, 0 ])
 
-		setPatternStateForTest('supertile', to.Supertile([
+		setPatternSettingForTest('supertile', to.Supertile([
 			[ [], expectedSupertileEntry ],
 			[ [], [] ],
 			[ [], [] ],
@@ -24,7 +24,7 @@ describe('get by supertile', () => {
 		const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
 		const addressOffset: Address = to.Address([ 1, 1 ])
 
-		setPatternStateForTest('supertile', to.Supertile([
+		setPatternSettingForTest('supertile', to.Supertile([
 			[ [], [] ],
 			[ expectedSupertileEntry, [] ],
 			[ [], [] ],

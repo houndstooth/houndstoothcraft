@@ -3,12 +3,12 @@ import buildMockCanvas from './buildMockCanvas'
 import buildMockContext from './buildMockContext'
 import mockDom from './mockDom'
 import pixelsAreClose from './pixelsAreClose'
-import setPatternStateForTest from './setPatternStateForTest'
+import setPatternSettingForTest from './setPatternSettingForTest'
 
 export {
 	buildMockElement,
 	pixelsAreClose,
-	setPatternStateForTest,
+	setPatternSettingForTest,
 	mockDom,
 	buildMockCanvas,
 	buildMockContext,

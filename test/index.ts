@@ -16,7 +16,7 @@ export {
 export {
 	buildMockElement,
 	buildMockCanvas,
-	setPatternStateForTest,
+	setPatternSettingForTest,
 	MockContext,
 	MockElement,
 } from './unit'

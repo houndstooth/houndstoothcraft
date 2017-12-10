@@ -13,7 +13,7 @@ import {
 	to,
 	Unit,
 } from '../../../../../src'
-import { setPatternStateForTest } from '../../../helpers'
+import { setPatternSettingForTest } from '../../../helpers'
 import Spy = jasmine.Spy
 
 const subject: (_: ShapeParams) => void = shape.default
@@ -96,7 +96,7 @@ describe('shape', () => {
 		describe('when an executeTexture method is supplied', () => {
 			const executeTexture: NullarySideEffector = noop.default
 			beforeEach(() => {
-				setPatternStateForTest('textureSettings', { executeTexture })
+				setPatternSettingForTest('textureSettings', { executeTexture })
 			})
 
 			it('passes it to the texture component to be rendered', () => {

@@ -5,7 +5,7 @@ import {
 	NullarySideEffector,
 } from '../../../../../src'
 import Spy = jasmine.Spy
-import { buildMockContext, setPatternStateForTest } from '../../../helpers'
+import { buildMockContext, setPatternSettingForTest } from '../../../helpers'
 
 const subject: NullarySideEffector = applyBackgroundColor.default
 
@@ -21,7 +21,7 @@ describe('apply background color', () => {
 	})
 
 	it('fills the entire canvas with the color', () => {
-		setPatternStateForTest('colorSettings', { backgroundColor: CYAN })
+		setPatternSettingForTest('colorSettings', { backgroundColor: CYAN })
 
 		subject()
 

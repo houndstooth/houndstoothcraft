@@ -51,7 +51,7 @@ interface TestObject {
 
 type SimulateClick = (checkbox: HTMLInputElement, clickHandler: NullarySideEffector) => void
 
-interface SetPatternStateForTest {
+interface SetPatternSettingForTest {
 	(settingName: animationSettings.AnimationSettingsName, value: Partial<animationSettings.AnimationSettings>): void,
 	(settingName: colorSettings.ColorSettingsName, value: Partial<colorSettings.ColorSettings>): void,
 	(settingName: colorAssignmentSettings.ColorAssignmentSettingsName, value: Partial<colorAssignmentSettings.ColorAssignmentSettings>): void,
@@ -191,6 +191,6 @@ export {
 	ExampleSettings,
 	ExampleSettingsStructure,
 	SimulateClick,
-	SetPatternStateForTest,
+	SetPatternSettingForTest,
 	TestObject,
 }

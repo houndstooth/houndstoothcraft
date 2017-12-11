@@ -6,12 +6,12 @@ import * as isTileUniform from './isTileUniform'
 import * as parseColor from './parseColor'
 
 export {
-	getColor,
-	parseColor,
 	colorAssignmentSettings,
 	colorSettings,
+	getColor,
 	getShapeColorIndices,
 	isTileUniform,
+	parseColor,
 }
 export {
 	AssignmentMode,

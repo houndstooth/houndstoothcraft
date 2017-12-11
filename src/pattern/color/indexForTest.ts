@@ -8,26 +8,24 @@ import * as isTileUniform from './isTileUniform'
 import * as parseColor from './parseColor'
 
 export {
+	colorAssignmentSettings,
+	colorSettings,
 	getBySupertile,
 	getByWeave,
 	getColor,
-	parseColor,
-	colorAssignmentSettings,
-	colorSettings,
 	getShapeColorIndices,
 	isTileUniform,
+	parseColor,
 }
 export {
 	AssignmentMode,
 	Color,
-	ColorOptions,
 	ColorSet,
+	GetShapeColorIndices,
+	GetShapeColorIndicesWithOffset,
 	OffsetAddress,
 	ShapeColorIndex,
 	Supertile,
 	TransformShapeColorIndices,
-	TransformShapeColorIndicesParams,
 	Weave,
-	GetShapeColorIndicesWithOffset,
-	GetShapeColorIndices,
 } from './types'

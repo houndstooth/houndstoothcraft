@@ -7,13 +7,13 @@ import * as resetClip from './resetClip'
 import * as setClip from './setClip'
 
 export {
-	setClip,
-	resetClip,
-	fill,
 	buildFill,
-	clipPath,
 	buildPath,
+	clipPath,
+	fill,
 	fillPath,
+	resetClip,
+	setClip,
 }
 export {
 	Path,

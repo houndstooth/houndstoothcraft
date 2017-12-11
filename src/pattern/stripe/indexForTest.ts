@@ -8,14 +8,15 @@ import * as stripePositionSettings from './stripePositionSettings'
 import * as stripeSettings from './stripeSettings'
 
 export {
+	getStripePositionsForTile,
+	perStripe,
 	rotateCoordinate,
 	squareOutline,
-	stripeOutline,
 	stripeCountContinuumSettings,
+	stripeOutline,
 	stripePositionSettings,
 	stripeSettings,
-	perStripe,
-	getStripePositionsForTile,
+
 	GetStripeOutline,
 }
 export {

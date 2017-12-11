@@ -11,9 +11,9 @@ export {
 	clearContexts,
 	clearMixedDownContext,
 	exportCanvas,
-	saveCanvas,
 	getCurrentContext,
 	mixDownContexts,
+	saveCanvas,
 }
 export {
 	DataBlob,

@@ -5,14 +5,14 @@ import * as tileCenter from './tileCenter'
 import * as tileSettings from './tileSettings'
 
 export {
-	maybeTile,
-	tileSettings,
-	tileCenter,
 	getTileOriginAndSize,
+	maybeTile,
 	tile,
+	tileCenter,
+	tileSettings,
 }
 export {
+	DefinedTileParams,
 	GetTileOriginAndSize,
 	TileOriginAndSize,
-	DefinedTileParams,
 } from './types'

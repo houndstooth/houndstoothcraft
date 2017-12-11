@@ -4,10 +4,10 @@ import * as texture from './texture'
 import * as textureSettings from './textureSettings'
 
 export {
-	textureSettings,
-	solid,
 	shape,
+	solid,
 	texture,
+	textureSettings,
 }
 export {
 	ComponentParams,

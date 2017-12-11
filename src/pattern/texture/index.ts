@@ -3,9 +3,9 @@ import * as solid from './solid'
 import * as textureSettings from './textureSettings'
 
 export {
-	textureSettings,
-	solid,
 	shape,
+	solid,
+	textureSettings,
 }
 export {
 	ComponentParams,

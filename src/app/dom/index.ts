@@ -8,11 +8,11 @@ import * as storeMixedDownContext from './storeMixedDownContext'
 
 export {
 	addDescription,
+	attachControlHandlers,
 	createContexts,
 	createEffectToggles,
-	attachControlHandlers,
-	storeDomElements,
 	saveBlob,
+	storeDomElements,
 	storeMixedDownContext,
 }
 export {

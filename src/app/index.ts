@@ -1,43 +1,48 @@
 export {
 	getCurrentContext,
+
 	CanvasState,
 } from './canvas'
 export {
 	ControlsState,
 } from './controls'
 export {
-	Dimensions,
-	Px,
+	attachControlHandlers,
+	createEffectToggles,
 	storeDomElements,
 	storeMixedDownContext,
-	createEffectToggles,
-	attachControlHandlers,
+
+	Dimensions,
 	DomState,
+	Px,
 } from './dom'
 export {
 	executeSelectedEffects,
+	getCurrentLayer,
+	incrementTilesCompleted,
 	setTileCount,
 	standardAnimation,
-	incrementTilesCompleted,
-	getCurrentLayer,
+
 	ExecuteState,
 } from './execute'
 export {
 	fill,
-	Path,
-	Pixel,
 	resetClip,
 	setClip,
+
+	Path,
+	Pixel,
 } from './render'
 export {
-	SettingsPath,
-	SettingsStep,
+	buildSettingNamesToPathsMap,
 	deeperPath,
 	getPatternSettingOrCreatePath,
-	buildSettingNamesToPathsMap,
+	getSettingsPath,
+
+	SettingsPath,
+	SettingsStep,
 	SettingsFunction,
 	SettingsFunctionObject,
-	getSettingsPath,
 	SettingNamesToPathsMap,
 	SettingsState,
 } from './settings'
@@ -47,3 +52,7 @@ export {
 export {
 	AppState,
 } from './types'
+import * as startUp from './startUp'
+export {
+	startUp,
+}

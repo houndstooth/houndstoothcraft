@@ -10,22 +10,22 @@ import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSe
 import * as resetMainHoundstooth from './resetMainHoundstooth'
 
 export {
-	resetMainHoundstooth,
-	effectsHaveConflicts,
-	deeperPath,
-	getPatternSettingOrCreatePath,
 	buildSettingNamesToPathsMap,
-	composeMainHoundstooth,
-	prepareFunctionObjectsPerSetting,
 	combineEffects,
+	composeMainHoundstooth,
+	deeperPath,
+	effectsHaveConflicts,
+	getPatternSettingOrCreatePath,
 	getSettingsPath,
 	initializeCurrentPatternFromBasePattern,
+	prepareFunctionObjectsPerSetting,
+	resetMainHoundstooth,
 }
 export {
-	SettingsPath,
-	SettingsStep,
+	SettingNamesToPathsMap,
 	SettingsFunction,
 	SettingsFunctionObject,
-	SettingNamesToPathsMap,
+	SettingsPath,
 	SettingsState,
+	SettingsStep,
 } from './types'

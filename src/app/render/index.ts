@@ -3,9 +3,9 @@ import * as resetClip from './resetClip'
 import * as setClip from './setClip'
 
 export {
-	setClip,
-	resetClip,
 	fill,
+	resetClip,
+	setClip,
 }
 export {
 	Path,

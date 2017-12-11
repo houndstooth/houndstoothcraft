@@ -3,7 +3,7 @@ import * as applyViewForShape from './applyViewForShape'
 import * as viewSettings from './viewSettings'
 
 export {
-	applyViewForShape,
 	applyViewForGrid,
+	applyViewForShape,
 	viewSettings,
 }

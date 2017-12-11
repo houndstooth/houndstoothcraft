@@ -10,10 +10,10 @@ import * as updateCurrentFrame from './updateCurrentFrame'
 import * as updateDescriptions from './updateDescriptions'
 
 export {
-	frameInputChangeHandler,
+	buildEffectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
-	buildEffectToggleClickHandler,
+	frameInputChangeHandler,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,

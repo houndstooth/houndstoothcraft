@@ -2,103 +2,115 @@
 
 export {
 	animationSettings,
-	Frame,
 	shouldRefreshCanvas,
+
+	Frame,
 } from './animation/indexForTest'
 export {
+	colorAssignmentSettings,
+	colorSettings,
+	getBySupertile,
+	getByWeave,
+	getColor,
+	getShapeColorIndices,
+	isTileUniform,
+	parseColor,
+
 	AssignmentMode,
 	Color,
-	getColor,
-	colorAssignmentSettings,
-	ColorOptions,
 	ColorSet,
-	colorSettings,
-	parseColor,
+	GetShapeColorIndices,
+	GetShapeColorIndicesWithOffset,
+	OffsetAddress,
 	ShapeColorIndex,
 	Supertile,
 	TransformShapeColorIndices,
-	TransformShapeColorIndicesParams,
 	Weave,
-	getBySupertile,
-	getByWeave,
-	OffsetAddress,
-	getShapeColorIndices,
-	isTileUniform,
-	GetShapeColorIndicesWithOffset,
-	GetShapeColorIndices,
 } from './color/indexForTest'
 export {
-	Address,
-	AddressElement,
-	Grid,
-	gridSettings,
-	Unit,
 	grid,
+	gridSettings,
+
+	Address,
+	Grid,
+	GridAddressParam,
 	Referenced,
 	ReferencedGridAddress,
+	Unit,
 } from './grid/indexForTest'
 export {
-	Layer,
 	layerSettings,
+
+	Layer,
 } from './layer/indexForTest'
 export {
+	getStripePositionsForTile,
+	perStripe,
+	rotateCoordinate,
+	squareOutline,
+	stripeCountContinuumSettings,
+	stripeOutline,
+	stripePositionSettings,
+	stripeSettings,
+
+	BaseStripeDiagonal,
 	Coordinate,
+	GetOutline,
+	GetOutlineParams,
+	GetStripeArgsParams,
+	GetStripeOutline,
 	GetStripePosition,
 	GetStripePositions,
 	Outline,
-	perStripe,
+	OutlineAsParam,
+	OutlineOptions,
 	Radian,
-	rotateCoordinate,
-	stripeCountContinuumSettings,
 	StripeCountMode,
 	StripePosition,
-	stripePositionSettings,
-	stripeSettings,
-	getStripePositionsForTile,
-	squareOutline,
-	OutlineOptions,
-	stripeOutline,
-	BaseStripeDiagonal,
 	RotateCoordinateParams,
-	GetOutline,
-	GetStripeOutline,
 } from './stripe/indexForTest'
 export {
+	shape,
+	solid,
+	texture,
+	textureSettings,
+
 	ComponentParams,
 	ExecuteTexture,
 	ExecuteTextureParams,
-	solid,
-	SolidParams,
-	textureSettings,
-	texture,
-	shape,
+	ShapeArgs,
 	ShapeParams,
+	SolidParams,
 	TextureParams,
 } from './texture/indexForTest'
 export {
-	tileCenter,
-	TileOriginAndSize,
-	tileSettings,
-	maybeTile,
 	getTileOriginAndSize,
-	GetTileOriginAndSize,
+	maybeTile,
 	tile,
+	tileCenter,
+	tileSettings,
+
 	DefinedTileParams,
+	GetTileOriginAndSize,
+	TileOriginAndSize,
 } from './tile/indexForTest'
 export {
-	applyViewForShape,
-	viewSettings,
-	applyViewForGrid,
 	applyBackgroundColor,
 	applyOpacity,
 	applyScroll,
 	applyTilt,
+	applyViewForGrid,
+	applyViewForShape,
 	applyZoom,
+	viewSettings,
 } from './view/indexForTest'
 
 import * as initializePatternState from './initializePatternState'
 import * as patternState from './patternState'
-export { patternState, initializePatternState }
+export {
+	initializePatternState,
+	patternState,
+}
 
 export {
 	BasePattern,
@@ -107,7 +119,7 @@ export {
 	NamedEffect,
 	Pattern,
 	PatternFunctions,
+	SettingsNamesByType,
 	SettingsNamesByTypeBase,
 	SettingsNamesToTypesMap,
-	SettingsNamesByType,
 } from './types'

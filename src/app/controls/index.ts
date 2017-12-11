@@ -7,8 +7,8 @@ import * as snapshotClickHandler from './snapshotClickHandler'
 import * as updateCurrentFrame from './updateCurrentFrame'
 
 export {
-	frameInputChangeHandler,
 	buildEffectToggleClickHandler,
+	frameInputChangeHandler,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,

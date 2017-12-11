@@ -7,13 +7,13 @@ import * as stripePositionSettings from './stripePositionSettings'
 import * as stripeSettings from './stripeSettings'
 
 export {
+	getStripePositionsForTile,
+	perStripe,
 	rotateCoordinate,
 	squareOutline,
 	stripeCountContinuumSettings,
 	stripePositionSettings,
 	stripeSettings,
-	perStripe,
-	getStripePositionsForTile,
 }
 export {
 	BaseStripeDiagonal,

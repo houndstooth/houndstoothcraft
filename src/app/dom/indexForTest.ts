@@ -1,4 +1,3 @@
-import * as clearInterval from '../execute'
 import * as addDescription from './addDescription'
 import * as attachControlHandlers from './attachControlHandlers'
 import * as createCheckbox from './createCheckbox'
@@ -16,19 +15,18 @@ import * as storeMixedDownContext from './storeMixedDownContext'
 
 export {
 	addDescription,
+	attachControlHandlers,
+	createCheckbox,
 	createContext,
 	createContexts,
+	createEffectToggle,
 	createEffectToggles,
-	attachControlHandlers,
-	clearInterval,
+	createLabel,
 	makeId,
+	saveBlob,
 	scaleCanvasContainer,
 	scaleElement,
-	createCheckbox,
-	createEffectToggle,
-	createLabel,
 	storeDomElements,
-	saveBlob,
 	storeMixedDownContext,
 }
 export {

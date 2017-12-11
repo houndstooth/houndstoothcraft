@@ -10,10 +10,10 @@ import * as viewSettings from './viewSettings'
 export {
 	applyBackgroundColor,
 	applyOpacity,
-	applyViewForShape,
-	applyViewForGrid,
-	viewSettings,
 	applyScroll,
 	applyTilt,
+	applyViewForGrid,
+	applyViewForShape,
 	applyZoom,
+	viewSettings,
 }

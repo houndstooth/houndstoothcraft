@@ -1,16 +1,18 @@
 export {
 	animationSettings,
-	Frame,
 	shouldRefreshCanvas,
+
+	Frame,
 } from './animation'
 export {
-	AssignmentMode,
-	Color,
 	colorAssignmentSettings,
-	ColorOptions,
-	ColorSet,
 	colorSettings,
 	parseColor,
+
+	AssignmentMode,
+	Color,
+	ColorOptions,
+	ColorSet,
 	ShapeColorIndex,
 	Supertile,
 	TransformShapeColorIndices,
@@ -18,43 +20,48 @@ export {
 	Weave,
 } from './color'
 export {
+	grid,
+	gridSettings,
+
 	Address,
 	AddressElement,
 	Grid,
-	gridSettings,
 	Unit,
-	grid,
 	Referenced,
 	ReferencedGridAddress,
 } from './grid'
 export {
-	Layer,
 	layerSettings,
+
+	Layer,
 } from './layer'
 export {
+	perStripe,
+	rotateCoordinate,
+	stripeCountContinuumSettings,
+	stripePositionSettings,
+	stripeSettings,
+
 	Coordinate,
 	GetStripePosition,
 	GetStripePositions,
 	Outline,
-	perStripe,
 	Radian,
-	rotateCoordinate,
-	stripeCountContinuumSettings,
 	StripeCountMode,
 	StripePosition,
-	stripePositionSettings,
-	stripeSettings,
 } from './stripe'
 export {
-	ComponentParams,
-	ExecuteTextureParams,
 	solid,
 	textureSettings,
+
+	ComponentParams,
+	ExecuteTextureParams,
 } from './texture'
 export {
-	TileOriginAndSize,
-	tileSettings,
 	maybeTile,
+	tileSettings,
+
+	TileOriginAndSize,
 } from './tile'
 export {
 	applyViewForShape,
@@ -64,18 +71,18 @@ export {
 import * as initializePatternState from './initializePatternState'
 import * as patternState from './patternState'
 export {
-	patternState,
 	initializePatternState,
+	patternState,
 }
 
 export {
 	BasePattern,
 	Effect,
+	FunctionsOf,
 	Houndstooth,
 	NamedEffect,
+	Overwrite,
 	Pattern,
 	PatternFunctions,
-	FunctionsOf,
-	Overwrite,
 	SettingsNamesByTypeBase,
 } from './types'

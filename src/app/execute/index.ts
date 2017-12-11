@@ -7,13 +7,13 @@ import * as setTileCount from './setTileCount'
 import * as standardAnimation from './standardAnimation'
 
 export {
+	cancelPreviousPattern,
 	clearInterval,
 	executeSelectedEffects,
-	cancelPreviousPattern,
+	getCurrentLayer,
+	incrementTilesCompleted,
 	setTileCount,
 	standardAnimation,
-	incrementTilesCompleted,
-	getCurrentLayer,
 }
 export {
 	ExecuteState,

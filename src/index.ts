@@ -1,15 +1,14 @@
 export {
-	standardAnimation,
-	appState,
-	storeDomElements,
-	buildSettingNamesToPathsMap,
-	storeMixedDownContext,
-	createEffectToggles,
-	attachControlHandlers,
-	executeSelectedEffects,
 	getCurrentLayer,
+	standardAnimation,
+	startUp,
 } from './app'
 export {
+	patternState,
+	perStripe,
+	rotateCoordinate,
+	solid,
+
 	Address,
 	AddressElement,
 	AssignmentMode,
@@ -22,11 +21,8 @@ export {
 	GetStripePositions,
 	NamedEffect,
 	Outline,
-	perStripe,
 	Radian,
-	rotateCoordinate,
 	ShapeColorIndex,
-	solid,
 	StripeCountMode,
 	StripePosition,
 	Supertile,
@@ -35,13 +31,11 @@ export {
 	TransformShapeColorIndicesParams,
 	Unit,
 	Weave,
-	patternState,
 } from './pattern'
 export {
 	codeUtilities,
-	globalWrapper,
-	mathUtilities,
 	from,
+	mathUtilities,
 	to,
 } from './utilities'
 

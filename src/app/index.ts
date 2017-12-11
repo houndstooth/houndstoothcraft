@@ -1,6 +1,10 @@
 export {
 	getCurrentContext,
+	CanvasState,
 } from './canvas'
+export {
+	ControlsState,
+} from './controls'
 export {
 	Dimensions,
 	Px,
@@ -8,6 +12,7 @@ export {
 	storeMixedDownContext,
 	createEffectToggles,
 	attachControlHandlers,
+	DomState,
 } from './dom'
 export {
 	executeSelectedEffects,
@@ -15,6 +20,7 @@ export {
 	standardAnimation,
 	incrementTilesCompleted,
 	getCurrentLayer,
+	ExecuteState,
 } from './execute'
 export {
 	fill,
@@ -33,15 +39,11 @@ export {
 	SettingsFunctionObject,
 	getSettingsPath,
 	SettingNamesToPathsMap,
+	SettingsState,
 } from './settings'
 export {
 	appState,
 } from './appState'
 export {
-	CanvasState,
-	ControlsState,
-	DomState,
-	ExecuteState,
-	SettingsState,
 	AppState,
 } from './types'

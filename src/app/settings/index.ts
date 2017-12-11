@@ -27,4 +27,5 @@ export {
 	SettingsFunction,
 	SettingsFunctionObject,
 	SettingNamesToPathsMap,
+	SettingsState,
 } from './types'

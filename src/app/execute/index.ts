@@ -15,3 +15,6 @@ export {
 	incrementTilesCompleted,
 	getCurrentLayer,
 }
+export {
+	ExecuteState,
+} from './types'

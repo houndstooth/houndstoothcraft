@@ -110,10 +110,5 @@ export {
 } from './settings/indexForTest'
 export { appState } from './appState'
 export {
-	CanvasState,
-	ControlsState,
-	DomState,
-	ExecuteState,
-	SettingsState,
 	AppState,
 } from './types'

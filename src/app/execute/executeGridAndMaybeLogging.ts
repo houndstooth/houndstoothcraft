@@ -1,7 +1,9 @@
 import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { AppState, ControlsState, ExecuteState } from '../types'
+import { ControlsState } from '../controls'
+import { AppState } from '../types'
 import executeGrid from './executeGrid'
+import { ExecuteState } from './types'
 
 const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =
 	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {

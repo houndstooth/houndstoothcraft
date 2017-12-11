@@ -15,3 +15,6 @@ export {
 	snapshotClickHandler,
 	updateCurrentFrame,
 }
+export {
+	ControlsState,
+} from './types'

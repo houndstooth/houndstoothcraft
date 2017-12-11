@@ -17,8 +17,23 @@ interface ExecuteLayerParams extends Referenced {
 	readonly layerFunctionObjects: SettingsFunctionObject[],
 }
 
+interface ExecuteState {
+	animationInterval?: number,
+	currentLayer: Layer,
+	gridProgressInterval?: number,
+	patternRef: number,
+	performanceLogging: boolean,
+	resolveGrid: NullarySideEffector,
+	tileCount: number,
+	tilesCompleted: number,
+
+	// tslint:disable-next-line:no-any
+	[ _: string ]: any,
+}
+
 export {
 	AnimationParams,
 	ExecuteParams,
 	ExecuteLayerParams,
+	ExecuteState,
 }

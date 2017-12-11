@@ -1,6 +1,6 @@
 // tslint:disable:no-any max-file-line-count
 
-import { Effect, NamedEffect, Pattern } from '../../pattern'
+import { BasePattern, Effect, Houndstooth, NamedEffect, Pattern } from '../../pattern'
 
 enum _SettingsPathBrand {}
 
@@ -75,6 +75,13 @@ interface SettingsFunctionObject extends FullSettingsPath {
 
 type SettingsAreEqual = (a: any, b: any) => boolean
 
+interface SettingsState {
+	availableEffects: NamedEffect[],
+	currentPattern: BasePattern,
+	readonly mainHoundstooth: Houndstooth,
+	settingNamesToPathsMap: { [ index: string ]: SettingsPath },
+}
+
 export {
 	SettingsPath,
 	SettingsStep,
@@ -92,4 +99,5 @@ export {
 	SettingsFunction,
 	SettingsFunctionObject,
 	SettingsAreEqual,
+	SettingsState,
 }

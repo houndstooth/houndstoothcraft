@@ -12,5 +12,6 @@ export {
 	mixDownContexts,
 }
 export {
+	CanvasState,
 	DataBlob,
 } from './types'

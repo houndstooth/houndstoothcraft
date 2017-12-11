@@ -17,5 +17,6 @@ export {
 }
 export {
 	Dimensions,
+	DomState,
 	Px,
 } from './types'

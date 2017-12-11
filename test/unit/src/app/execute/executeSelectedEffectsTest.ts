@@ -12,7 +12,7 @@ import {
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_?: { overrides?: Effect }) => void = executeSelectedEffects.default
 

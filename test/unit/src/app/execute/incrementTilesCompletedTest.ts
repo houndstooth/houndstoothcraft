@@ -1,4 +1,4 @@
-import { appState, incrementTilesCompleted, NullarySideEffector } from '../../../../../src'
+import { appState, incrementTilesCompleted, NullarySideEffector } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = incrementTilesCompleted.default
 

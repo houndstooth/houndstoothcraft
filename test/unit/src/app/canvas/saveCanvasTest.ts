@@ -1,4 +1,4 @@
-import { appState, DataBlob, Frame, saveBlob, saveCanvas, to } from '../../../../../src'
+import { appState, DataBlob, Frame, saveBlob, saveCanvas, to } from '../../../../../src/indexForTest'
 
 const subject: (_: { currentFrame: Frame, result: DataBlob }) => void = saveCanvas.default
 

@@ -1,4 +1,4 @@
-import { addDescription, appState, globalWrapper } from '../../../../../src'
+import { addDescription, appState, globalWrapper } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: string) => void = addDescription.default

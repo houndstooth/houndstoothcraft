@@ -6,7 +6,7 @@ import {
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default
 

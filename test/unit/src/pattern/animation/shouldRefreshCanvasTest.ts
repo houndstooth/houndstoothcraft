@@ -1,4 +1,4 @@
-import { ConditionFunction, shouldRefreshCanvas } from '../../../../../src'
+import { ConditionFunction, shouldRefreshCanvas } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: ConditionFunction = shouldRefreshCanvas.default

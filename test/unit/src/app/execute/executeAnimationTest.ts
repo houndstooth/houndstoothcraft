@@ -5,7 +5,7 @@ import {
 	ExecuteParams,
 	NullarySideEffector,
 	SettingsFunctionObject,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void> = executeAnimation.default
 

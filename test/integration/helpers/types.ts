@@ -3,7 +3,7 @@ import {
 	Color,
 	Coordinate,
 	Unit,
-} from '../../../src'
+} from '../../../src/indexForTest'
 
 interface DrawPassMarker {
 	readonly coordinateUnderTest: Coordinate,

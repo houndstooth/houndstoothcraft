@@ -1,4 +1,4 @@
-import { Color, parseColor } from '../../../../../src'
+import { Color, parseColor } from '../../../../../src/indexForTest'
 
 const subject: (_: Color) => string = parseColor.default
 

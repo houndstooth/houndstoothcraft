@@ -1,4 +1,4 @@
-import { from, Pixel, Px } from '../../../src'
+import { from, Pixel, Px } from '../../../src/indexForTest'
 import { isCloseTo } from '../../helpers'
 
 const pixelsAreClose: (expected: Pixel[], actual: Pixel[]) => boolean =

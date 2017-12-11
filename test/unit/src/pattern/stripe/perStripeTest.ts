@@ -3,7 +3,7 @@ import {
 	perStripe,
 	StripePosition,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 import CallInfo = jasmine.CallInfo
 

@@ -4,7 +4,7 @@ import {
 	mixDownContexts,
 	NullarySideEffector,
 	playClickHandler,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: NullarySideEffector = playClickHandler.default

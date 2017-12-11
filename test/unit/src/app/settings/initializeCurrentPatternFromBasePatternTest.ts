@@ -4,7 +4,7 @@ import {
 	Effect,
 	initializeCurrentPatternFromBasePattern,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = initializeCurrentPatternFromBasePattern.default
 

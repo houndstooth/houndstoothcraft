@@ -1,4 +1,4 @@
-import { mathUtilities, Radian, to } from '../../../../src'
+import { mathUtilities, Radian, to } from '../../../../src/indexForTest'
 
 describe('math utilities', () => {
 	describe('#isOdd', () => {

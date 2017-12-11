@@ -1,4 +1,4 @@
-import { appState, cancelPreviousPattern, NullarySideEffector } from '../../../../../src'
+import { appState, cancelPreviousPattern, NullarySideEffector } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = cancelPreviousPattern.default
 

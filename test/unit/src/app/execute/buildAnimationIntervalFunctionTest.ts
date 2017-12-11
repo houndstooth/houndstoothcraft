@@ -5,7 +5,7 @@ import {
 	clearInterval,
 	NullarySideEffector,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: AnimationParams) => NullarySideEffector = buildAnimationIntervalFunction.default

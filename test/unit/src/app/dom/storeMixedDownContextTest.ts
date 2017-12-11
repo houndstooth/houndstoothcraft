@@ -7,7 +7,7 @@ import {
 	globalWrapper,
 	NullarySideEffector,
 	storeMixedDownContext,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockCanvas, buildMockContext } from '../../../helpers'
 
 const subject: NullarySideEffector = storeMixedDownContext.default

@@ -3,7 +3,7 @@ import {
 	constants,
 	getCurrentContext,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockContext, setPatternSettingForTest } from '../../../helpers'
 

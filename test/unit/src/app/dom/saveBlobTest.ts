@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { DataBlob, globalWrapper, saveBlob } from '../../../../../src'
+import { DataBlob, globalWrapper, saveBlob } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 

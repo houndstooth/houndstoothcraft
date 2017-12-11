@@ -8,7 +8,7 @@ import {
 	tile,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: ReferencedGridAddress) => void = maybeTile.default
 

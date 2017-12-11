@@ -13,7 +13,7 @@ import {
 	shouldRefreshCanvas,
 	to,
 	updateCurrentFrame,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: ExecuteParams) => NullaryVoidPromise = buildAnimationFunction.default

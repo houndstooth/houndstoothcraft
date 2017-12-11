@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { codeUtilities, Color } from '../../../../src'
+import { codeUtilities, Color } from '../../../../src/indexForTest'
 import { TestObject } from '../../helpers'
 
 describe('code utilities', () => {

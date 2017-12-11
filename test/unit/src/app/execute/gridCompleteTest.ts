@@ -5,7 +5,7 @@ import {
 	gridComplete,
 	gridProgressIntervalFunction,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: NullarySideEffector) => void = gridComplete.default
 

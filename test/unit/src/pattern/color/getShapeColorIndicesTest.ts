@@ -13,7 +13,7 @@ import {
 	Supertile,
 	to,
 	TransformShapeColorIndices,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: GetShapeColorIndices = getShapeColorIndices.default

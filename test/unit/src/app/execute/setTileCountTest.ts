@@ -1,4 +1,4 @@
-import { appState, setTileCount } from '../../../../../src'
+import { appState, setTileCount } from '../../../../../src/indexForTest'
 
 const subject: (_: number) => void = setTileCount.default
 

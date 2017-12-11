@@ -5,7 +5,7 @@ import {
 	SettingsPath,
 	SettingsStep,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: CheckSettingForConflict) => boolean = checkSettingForConflict.default
 

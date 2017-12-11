@@ -1,4 +1,4 @@
-import { appState, buildPath, Path, to } from '../../../../../src'
+import { appState, buildPath, Path, to } from '../../../../../src/indexForTest'
 import { buildMockContext, MockContextCall } from '../../../helpers'
 
 const subject: (_: { path: Path }) => void = buildPath.default

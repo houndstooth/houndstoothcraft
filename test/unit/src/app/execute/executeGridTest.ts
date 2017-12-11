@@ -5,7 +5,7 @@ import {
 	grid,
 	gridComplete,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGrid.default
 

@@ -4,7 +4,7 @@ import {
 	globalWrapper,
 	NamedEffect,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement, noop } from '../../../helpers'
 
 const subject: (_: { effect: NamedEffect }) => HTMLInputElement = createCheckbox.default

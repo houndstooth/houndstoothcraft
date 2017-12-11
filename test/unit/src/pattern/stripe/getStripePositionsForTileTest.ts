@@ -5,7 +5,7 @@ import {
 	StripePosition,
 	stripePositionSettings,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_?: { gridAddress?: Address }) => StripePosition[] = getStripePositionsForTile.default

@@ -1,4 +1,4 @@
-import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src'
+import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src/indexForTest'
 
 const subject: (_: PatternsHaveConflictsParams) => boolean = patternsHaveConflicts.default
 

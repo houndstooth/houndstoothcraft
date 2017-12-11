@@ -1,4 +1,4 @@
-import { appState, NullarySideEffector, pauseClickHandler } from '../../../../../src'
+import { appState, NullarySideEffector, pauseClickHandler } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = pauseClickHandler.default
 

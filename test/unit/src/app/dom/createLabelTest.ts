@@ -3,7 +3,7 @@ import {
 	createLabel,
 	globalWrapper,
 	NamedEffect,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: { effect: NamedEffect }) => HTMLLabelElement = createLabel.default

@@ -1,4 +1,4 @@
-import { Coordinate, tileCenter, TileOriginAndSize, to, Unit } from '../../../../../src'
+import { Coordinate, tileCenter, TileOriginAndSize, to, Unit } from '../../../../../src/indexForTest'
 
 const subject: (_: TileOriginAndSize) => Coordinate = tileCenter.default
 

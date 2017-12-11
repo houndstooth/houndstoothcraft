@@ -1,4 +1,4 @@
-import { applyScroll, constants, from, Path, to, Unit } from '../../../../../src'
+import { applyScroll, constants, from, Path, to, Unit } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: Path) => Path = applyScroll.default

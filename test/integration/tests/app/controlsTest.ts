@@ -8,7 +8,7 @@ import {
 	executeGridAndMaybeLogging,
 	patternState,
 	updateCurrentFrame,
-} from '../../../../src'
+} from '../../../../src/indexForTest'
 import { buildMockElement } from '../../../unit'
 
 xdescribe('controls', () => {

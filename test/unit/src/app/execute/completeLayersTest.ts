@@ -1,4 +1,4 @@
-import { appState, completeLayers, NullarySideEffector, to } from '../../../../../src'
+import { appState, completeLayers, NullarySideEffector, to } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = completeLayers.default
 

@@ -4,7 +4,7 @@ import {
 	executeSelectedEffects,
 	frameInputChangeHandler,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (event: Event) => void = frameInputChangeHandler.default
 

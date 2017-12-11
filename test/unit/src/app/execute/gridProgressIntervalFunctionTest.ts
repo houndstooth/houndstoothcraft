@@ -4,7 +4,7 @@ import {
 	globalWrapper,
 	gridProgressIntervalFunction,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = gridProgressIntervalFunction.default
 

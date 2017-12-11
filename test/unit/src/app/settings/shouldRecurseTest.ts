@@ -1,4 +1,4 @@
-import { shouldRecurse } from '../../../../../src'
+import { shouldRecurse } from '../../../../../src/indexForTest'
 
 // tslint:disable-next-line:no-any
 const subject: (_: any) => boolean = shouldRecurse.default

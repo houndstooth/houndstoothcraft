@@ -1,4 +1,4 @@
-import { Address, getByWeave, GetShapeColorIndicesWithOffset, to } from '../../../../../src'
+import { Address, getByWeave, GetShapeColorIndicesWithOffset, to } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: GetShapeColorIndicesWithOffset = getByWeave.default

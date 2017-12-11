@@ -1,4 +1,4 @@
-import { Effect, effectsHaveConflicts } from '../../../../../src'
+import { Effect, effectsHaveConflicts } from '../../../../../src/indexForTest'
 
 const subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean = effectsHaveConflicts.default
 

@@ -1,4 +1,4 @@
-import { Dimensions, scaleElement, to } from '../../../../../src'
+import { Dimensions, scaleElement, to } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: { dimensions: Dimensions, element: HTMLElement }) => void = scaleElement.default

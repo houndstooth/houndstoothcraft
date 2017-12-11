@@ -5,7 +5,7 @@ import {
 	buildAnimationIntervalFunction,
 	globalWrapper,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { noop } from '../../../helpers'
 
 const subject: (_: AnimationParams) => void = animator.default

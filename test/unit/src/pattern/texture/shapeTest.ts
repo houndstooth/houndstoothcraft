@@ -11,7 +11,7 @@ import {
 	texture,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { noop, setPatternSettingForTest } from '../../../helpers'
 import Spy = jasmine.Spy
 

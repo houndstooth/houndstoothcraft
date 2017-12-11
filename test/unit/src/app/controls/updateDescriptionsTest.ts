@@ -1,4 +1,4 @@
-import { addDescription, appState, NullarySideEffector, updateDescriptions } from '../../../../../src'
+import { addDescription, appState, NullarySideEffector, updateDescriptions } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = updateDescriptions.default
 

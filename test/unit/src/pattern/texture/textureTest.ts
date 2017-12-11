@@ -1,4 +1,4 @@
-import { Outline, resetClip, setClip, ShapeColorIndex, texture, TextureParams, to, Unit } from '../../../../../src'
+import { Outline, resetClip, setClip, ShapeColorIndex, texture, TextureParams, to, Unit } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: TextureParams) => void = texture.default

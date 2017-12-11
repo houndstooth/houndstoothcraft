@@ -7,7 +7,7 @@ import {
 	defaults,
 	Effect,
 	globalWrapper,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 

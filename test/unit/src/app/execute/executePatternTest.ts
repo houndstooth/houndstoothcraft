@@ -11,7 +11,7 @@ import {
 	Layer,
 	SettingsFunctionObject,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_: ExecuteParams) => Promise<void> = executePattern.default
 

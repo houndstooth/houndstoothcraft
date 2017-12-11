@@ -1,4 +1,4 @@
-import { appState, thisPatternHasNotBeenCanceled } from '../../../../../src'
+import { appState, thisPatternHasNotBeenCanceled } from '../../../../../src/indexForTest'
 
 const subject: (_: number) => boolean = thisPatternHasNotBeenCanceled.default
 

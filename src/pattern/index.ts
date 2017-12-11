@@ -1,5 +1,3 @@
-// tslint:disable:max-file-line-count
-
 export {
 	animationSettings,
 	Frame,
@@ -8,7 +6,6 @@ export {
 export {
 	AssignmentMode,
 	Color,
-	getColor,
 	colorAssignmentSettings,
 	ColorOptions,
 	ColorSet,
@@ -19,13 +16,6 @@ export {
 	TransformShapeColorIndices,
 	TransformShapeColorIndicesParams,
 	Weave,
-	getBySupertile,
-	getByWeave,
-	OffsetAddress,
-	getShapeColorIndices,
-	isTileUniform,
-	GetShapeColorIndicesWithOffset,
-	GetShapeColorIndices,
 } from './color'
 export {
 	Address,
@@ -54,51 +44,29 @@ export {
 	StripePosition,
 	stripePositionSettings,
 	stripeSettings,
-	getStripePositionsForTile,
-	squareOutline,
-	OutlineOptions,
-	stripeOutline,
-	BaseStripeDiagonal,
-	RotateCoordinateParams,
-	GetOutline,
-	GetStripeOutline,
 } from './stripe'
 export {
 	ComponentParams,
-	ExecuteTexture,
 	ExecuteTextureParams,
 	solid,
-	SolidParams,
 	textureSettings,
-	texture,
-	shape,
-	ShapeParams,
-	TextureParams,
 } from './texture'
 export {
-	tileCenter,
 	TileOriginAndSize,
 	tileSettings,
 	maybeTile,
-	getTileOriginAndSize,
-	GetTileOriginAndSize,
-	tile,
-	DefinedTileParams,
 } from './tile'
 export {
 	applyViewForShape,
 	viewSettings,
-	applyViewForGrid,
-	applyBackgroundColor,
-	applyOpacity,
-	applyScroll,
-	applyTilt,
-	applyZoom,
 } from './view'
 
 import * as initializePatternState from './initializePatternState'
 import * as patternState from './patternState'
-export { patternState, initializePatternState }
+export {
+	patternState,
+	initializePatternState
+}
 
 export {
 	BasePattern,
@@ -107,7 +75,4 @@ export {
 	NamedEffect,
 	Pattern,
 	PatternFunctions,
-	SettingsNamesByTypeBase,
-	SettingsNamesToTypesMap,
-	SettingsNamesByType,
 } from './types'

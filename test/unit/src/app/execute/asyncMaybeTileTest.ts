@@ -8,7 +8,7 @@ import {
 	thisPatternHasNotBeenCanceled,
 	to,
 	updateProgress,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: ReferencedGridAddress) => void = asyncMaybeTile.default

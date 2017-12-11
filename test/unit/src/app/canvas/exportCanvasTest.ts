@@ -1,4 +1,4 @@
-import { appState, DataBlob, exportCanvas, NullarySideEffector, saveCanvas, to } from '../../../../../src'
+import { appState, DataBlob, exportCanvas, NullarySideEffector, saveCanvas, to } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockContext } from '../../../helpers'
 

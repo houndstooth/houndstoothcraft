@@ -1,4 +1,4 @@
-import { appState, composeMainHoundstooth, Effect, NullarySideEffector, resetMainHoundstooth } from '../../../../../src'
+import { appState, composeMainHoundstooth, Effect, NullarySideEffector, resetMainHoundstooth } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = resetMainHoundstooth.default
 

@@ -8,7 +8,7 @@ import {
 	patternState,
 	to,
 	Unit,
-} from '../../../../src'
+} from '../../../../src/indexForTest'
 import {
 	PixelColorExpectation,
 	pixelIsColorWithMarker,

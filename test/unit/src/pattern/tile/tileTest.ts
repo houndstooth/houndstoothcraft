@@ -17,7 +17,7 @@ import {
 	tile,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: DefinedTileParams) => void = tile.default

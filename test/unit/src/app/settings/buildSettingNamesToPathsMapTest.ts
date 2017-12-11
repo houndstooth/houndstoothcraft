@@ -5,7 +5,7 @@ import {
 	Pattern,
 	SettingNamesToPathsMap,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: (_?: BuildSettingNamesToPathsMapParams) => void = buildSettingNamesToPathsMap.default
 

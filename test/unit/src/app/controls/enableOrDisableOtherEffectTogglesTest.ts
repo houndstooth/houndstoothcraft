@@ -6,7 +6,7 @@ import {
 	enableOrDisableOtherEffectToggles,
 	NamedEffect,
 	NullarySideEffector,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 import Spy = jasmine.Spy
 

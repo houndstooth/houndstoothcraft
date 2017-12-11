@@ -1,4 +1,4 @@
-import { createEffectToggle, createEffectToggles, globalWrapper, NamedEffect } from '../../../../../src'
+import { createEffectToggle, createEffectToggles, globalWrapper, NamedEffect } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 

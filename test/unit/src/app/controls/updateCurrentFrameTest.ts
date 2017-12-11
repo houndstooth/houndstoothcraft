@@ -1,4 +1,4 @@
-import { appState, Frame, to, updateCurrentFrame } from '../../../../../src'
+import { appState, Frame, to, updateCurrentFrame } from '../../../../../src/indexForTest'
 
 const subject: (_: Frame) => void = updateCurrentFrame.default
 

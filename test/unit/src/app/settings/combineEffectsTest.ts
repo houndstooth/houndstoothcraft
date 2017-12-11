@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { combineEffects, composePatterns, Effect } from '../../../../../src'
+import { combineEffects, composePatterns, Effect } from '../../../../../src/indexForTest'
 import CallInfo = jasmine.CallInfo
 import Spy = jasmine.Spy
 

@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { getSettingsPath, SettingsPath, to } from '../../../../../src'
+import { getSettingsPath, SettingsPath, to } from '../../../../../src/indexForTest'
 
 const subject: (_: { settingName: any }) => SettingsPath = getSettingsPath.default
 

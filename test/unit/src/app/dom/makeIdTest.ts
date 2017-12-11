@@ -1,4 +1,4 @@
-import { makeId } from '../../../../../src'
+import { makeId } from '../../../../../src/indexForTest'
 
 const subject: (_: string) => string = makeId.default
 

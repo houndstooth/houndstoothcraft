@@ -7,7 +7,7 @@ import {
 	SettingsFunctionObject,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void = callFunctionsPerSetting.default

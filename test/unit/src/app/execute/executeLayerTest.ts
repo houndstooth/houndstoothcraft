@@ -8,7 +8,7 @@ import {
 	Layer,
 	SettingsFunctionObject,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: ExecuteLayerParams) => Promise<void> = executeLayer.default

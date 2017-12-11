@@ -1,4 +1,4 @@
-import { clearContext, constants } from '../../../../../src'
+import { clearContext, constants } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockContext } from '../../../helpers'
 

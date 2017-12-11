@@ -1,4 +1,4 @@
-import { Coordinate, GetOutline, squareOutline, to, Unit } from '../../../../../src'
+import { Coordinate, GetOutline, squareOutline, to, Unit } from '../../../../../src/indexForTest'
 
 const subject: GetOutline = squareOutline.default
 

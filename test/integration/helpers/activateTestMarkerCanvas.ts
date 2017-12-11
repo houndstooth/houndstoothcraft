@@ -7,7 +7,7 @@ import {
 	scaleElement,
 	storeMixedDownContext,
 	to,
-} from '../../../src'
+} from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import testMarkersClear from './testMarkersClear'
 

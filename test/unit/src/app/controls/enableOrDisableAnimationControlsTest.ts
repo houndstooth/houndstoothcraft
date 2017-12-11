@@ -6,7 +6,7 @@ import {
 	PatternFunctions,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = enableOrDisableAnimationControls.default
 

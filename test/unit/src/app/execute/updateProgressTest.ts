@@ -1,4 +1,4 @@
-import { appState, NullarySideEffector, to, updateProgress } from '../../../../../src'
+import { appState, NullarySideEffector, to, updateProgress } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = updateProgress.default
 

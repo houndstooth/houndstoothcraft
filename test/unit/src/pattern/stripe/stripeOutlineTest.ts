@@ -7,7 +7,7 @@ import {
 	StripePosition,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: GetStripeOutline = stripeOutline.default
 

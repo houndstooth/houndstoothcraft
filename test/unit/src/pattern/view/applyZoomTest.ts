@@ -1,4 +1,4 @@
-import { applyZoom, Path, to } from '../../../../../src'
+import { applyZoom, Path, to } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: Path) => Path = applyZoom.default

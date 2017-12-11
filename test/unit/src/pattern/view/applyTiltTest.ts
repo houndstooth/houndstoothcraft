@@ -1,4 +1,4 @@
-import { applyTilt, Path, to } from '../../../../../src'
+import { applyTilt, Path, to } from '../../../../../src/indexForTest'
 import { pixelsAreClose, setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: Path) => Path  = applyTilt.default

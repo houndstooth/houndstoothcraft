@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { appState, getPatternSettingOrCreatePath, patternState, SettingsPath } from '../../../src'
+import { appState, getPatternSettingOrCreatePath, patternState, SettingsPath } from '../../../src/indexForTest'
 import { SetPatternSettingForTest } from './types'
 
 const setPatternSettingForTest: SetPatternSettingForTest =

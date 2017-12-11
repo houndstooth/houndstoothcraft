@@ -7,7 +7,7 @@ import {
 	Effect,
 	executeSelectedEffects,
 	to,
-} from '../../../../src'
+} from '../../../../src/indexForTest'
 import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
 
 const { BLACK, CYAN, ERASE, TRANSPARENT, YELLOW } = constants

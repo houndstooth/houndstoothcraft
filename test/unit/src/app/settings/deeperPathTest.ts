@@ -1,4 +1,4 @@
-import { deeperPath, FullSettingsPath, SettingsPath, SettingsStep, to } from '../../../../../src'
+import { deeperPath, FullSettingsPath, SettingsPath, SettingsStep, to } from '../../../../../src/indexForTest'
 
 const subject: (_: FullSettingsPath) => SettingsPath = deeperPath.default
 

@@ -1,4 +1,4 @@
-import { Color, fill, getColor, Outline, ShapeColorIndex, solid, SolidParams, to } from '../../../../../src'
+import { Color, fill, getColor, Outline, ShapeColorIndex, solid, SolidParams, to } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 const subject: (_: SolidParams) => void = solid.default

@@ -1,4 +1,4 @@
-import { settingPath, SettingsPath, SettingsStep, to } from '../../../../../src'
+import { settingPath, SettingsPath, SettingsStep, to } from '../../../../../src/indexForTest'
 
 const subject: (_: { settingName: SettingsStep, settingsPath: SettingsPath }) => string = settingPath.default
 

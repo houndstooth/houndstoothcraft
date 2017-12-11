@@ -1,4 +1,4 @@
-import { codeUtilities, constants, from, NullarySideEffector } from '../../../src'
+import { codeUtilities, constants, from, NullarySideEffector } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
 const testMarkersClear: NullarySideEffector =

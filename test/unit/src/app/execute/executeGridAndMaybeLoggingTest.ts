@@ -1,4 +1,4 @@
-import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../src'
+import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../src/indexForTest'
 
 const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGridAndMaybeLogging.default
 

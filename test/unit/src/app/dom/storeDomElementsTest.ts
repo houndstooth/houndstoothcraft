@@ -1,4 +1,4 @@
-import { appState, globalWrapper, NullarySideEffector, storeDomElements } from '../../../../../src'
+import { appState, globalWrapper, NullarySideEffector, storeDomElements } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: NullarySideEffector = storeDomElements.default

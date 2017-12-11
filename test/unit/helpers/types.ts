@@ -30,7 +30,7 @@ import {
 	Unit,
 	viewSettings,
 	Weave,
-} from '../../../src'
+} from '../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 interface ExampleSettings extends ExampleSettingsStructure {

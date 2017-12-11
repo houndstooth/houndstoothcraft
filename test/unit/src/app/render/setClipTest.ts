@@ -1,4 +1,4 @@
-import { applyViewForShape, buildPath, clipPath, Outline, Path, setClip, to } from '../../../../../src'
+import { applyViewForShape, buildPath, clipPath, Outline, Path, setClip, to } from '../../../../../src/indexForTest'
 
 const subject: (_: { outline: Outline }) => void = setClip.default
 

@@ -1,4 +1,4 @@
-import { applyScroll, applyTilt, applyViewForShape, applyZoom, Outline, Path, to } from '../../../../../src'
+import { applyScroll, applyTilt, applyViewForShape, applyZoom, Outline, Path, to } from '../../../../../src/indexForTest'
 
 const subject: (_: Outline) => Path = applyViewForShape.default
 

@@ -6,7 +6,7 @@ import {
 	TileOriginAndSize,
 	to,
 	Unit,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: { gridAddress: Address }) => TileOriginAndSize | undefined = getTileOriginAndSize.default

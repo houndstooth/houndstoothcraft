@@ -7,7 +7,7 @@ import {
 	playClickHandler,
 	rewindClickHandler,
 	snapshotClickHandler,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = attachControlHandlers.default
 

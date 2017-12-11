@@ -1,4 +1,4 @@
-import { AssignmentMode, composePatterns, ComposePatternsParams, Pattern } from '../../../../../src'
+import { AssignmentMode, composePatterns, ComposePatternsParams, Pattern } from '../../../../../src/indexForTest'
 
 const subject: (_: ComposePatternsParams) => void = composePatterns.default
 

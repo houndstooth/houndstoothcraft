@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { appState, grid, maybeTile, mixDownContexts } from '../../../src'
+import { appState, grid, maybeTile, mixDownContexts } from '../../../src/indexForTest'
 
 const syncExecuteGridAndMixDownContexts: (_: { thisPatternRef: number }) => void =
 	({ thisPatternRef }: { thisPatternRef: number }): void => {

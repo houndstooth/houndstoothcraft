@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import Spy = jasmine.Spy
-import { applyViewForGrid, grid, ReferencedGridAddress, setTileCount } from '../../../../../src'
+import { applyViewForGrid, grid, ReferencedGridAddress, setTileCount } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }) => void = grid.default

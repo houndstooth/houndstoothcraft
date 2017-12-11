@@ -1,4 +1,4 @@
-import { constants,	Effect,	executeSelectedEffects,	to } from '../../../../src'
+import { constants, Effect, executeSelectedEffects, to } from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants

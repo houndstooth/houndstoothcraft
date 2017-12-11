@@ -12,7 +12,7 @@ import {
 	NullarySideEffector,
 	resetMainHoundstooth,
 	updateDescriptions,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement, SimulateClick } from '../../../helpers'
 
 let subject: NullarySideEffector

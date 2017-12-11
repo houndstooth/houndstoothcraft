@@ -1,4 +1,4 @@
-import { appState, ConditionFunction, previousFrameHasFinished, to } from '../../../../../src'
+import { appState, ConditionFunction, previousFrameHasFinished, to } from '../../../../../src/indexForTest'
 
 const subject: ConditionFunction = previousFrameHasFinished.default
 

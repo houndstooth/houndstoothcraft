@@ -3,7 +3,7 @@ import {
 	globalWrapper,
 	scaleCanvasContainer,
 	scaleElement,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: () => HTMLElement = scaleCanvasContainer.default

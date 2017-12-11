@@ -7,7 +7,7 @@ import {
 	NullarySideEffector,
 	scaleCanvasContainer,
 	to,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: NullarySideEffector = createContexts.default

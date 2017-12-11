@@ -1,4 +1,4 @@
-import { appState, clearInterval, globalWrapper } from '../../../../../src'
+import { appState, clearInterval, globalWrapper } from '../../../../../src/indexForTest'
 
 const subject: (_: string) => void = clearInterval.default
 

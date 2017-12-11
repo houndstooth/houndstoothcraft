@@ -1,4 +1,4 @@
-import { Color, getColor, ShapeColorIndex, to } from '../../../../../src'
+import { Color, getColor, ShapeColorIndex, to } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: { index: ShapeColorIndex }) => Color = getColor.default

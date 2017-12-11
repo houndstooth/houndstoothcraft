@@ -1,4 +1,4 @@
-import { ColorSet, isTileUniform, ShapeColorIndex, to } from '../../../../../src'
+import { ColorSet, isTileUniform, ShapeColorIndex, to } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean = isTileUniform.default

@@ -1,4 +1,4 @@
-import { appState, clipPath, NullarySideEffector } from '../../../../../src'
+import { appState, clipPath, NullarySideEffector } from '../../../../../src/indexForTest'
 import { buildMockContext, MockContextCall } from '../../../helpers'
 
 const subject: NullarySideEffector = clipPath.default

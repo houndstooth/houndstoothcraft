@@ -1,4 +1,4 @@
-import { applyOpacity, getCurrentContext, NullarySideEffector } from '../../../../../src'
+import { applyOpacity, getCurrentContext, NullarySideEffector } from '../../../../../src/indexForTest'
 import { buildMockContext, setPatternSettingForTest } from '../../../helpers'
 
 const subject: NullarySideEffector = applyOpacity.default

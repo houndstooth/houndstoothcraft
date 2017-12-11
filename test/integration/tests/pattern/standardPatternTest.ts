@@ -5,7 +5,7 @@ import {
 	patternState,
 	to,
 	Unit,
-} from '../../../../src'
+} from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants

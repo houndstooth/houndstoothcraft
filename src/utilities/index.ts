@@ -12,7 +12,6 @@ export {
 	globalWrapper,
 }
 export {
-	CouldBeSettingsFunctionObject,
 	NullarySideEffector,
 	NullaryVoidPromise,
 } from './types'

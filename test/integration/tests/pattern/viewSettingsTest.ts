@@ -7,7 +7,7 @@ import {
 	patternState,
 	to,
 	Unit,
-} from '../../../../src'
+} from '../../../../src/indexForTest'
 import { sectionCenterIsColor, standardTileIsColors } from '../../helpers'
 
 const { BLACK, TRANSPARENT } = constants

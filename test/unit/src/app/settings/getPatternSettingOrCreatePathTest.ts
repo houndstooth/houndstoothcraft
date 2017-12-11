@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { getPatternSettingOrCreatePath, SettingsPath, to } from '../../../../../src'
+import { getPatternSettingOrCreatePath, SettingsPath, to } from '../../../../../src/indexForTest'
 
 const subject: (_: { pattern: any, settingsPath: SettingsPath }) => any = getPatternSettingOrCreatePath.default
 

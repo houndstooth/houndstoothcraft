@@ -1,4 +1,4 @@
-import { appState, codeUtilities, defaults, NullarySideEffector, patternState } from '../../src'
+import { appState, codeUtilities, defaults, NullarySideEffector, patternState } from '../../src/indexForTest'
 
 const resetAppAndPatternStates: NullarySideEffector =
 	(): void => {

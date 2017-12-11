@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { from } from '../../../src'
+import { from } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import { DrawPassMarker } from './types'
 

@@ -1,4 +1,4 @@
-import { Coordinate, Radian, rotateCoordinate, RotateCoordinateParams, to } from '../../../../../src'
+import { Coordinate, Radian, rotateCoordinate, RotateCoordinateParams, to } from '../../../../../src/indexForTest'
 
 const subject: (_: RotateCoordinateParams) => Coordinate = rotateCoordinate.default
 

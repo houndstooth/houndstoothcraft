@@ -5,7 +5,7 @@ import {
 	createLabel,
 	globalWrapper,
 	NamedEffect,
-} from '../../../../../src'
+} from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 const subject: (_: NamedEffect) => void = createEffectToggle.default

@@ -1,4 +1,4 @@
-import { appState, standardAnimation, to } from '../../../../../src'
+import { appState, standardAnimation, to } from '../../../../../src/indexForTest'
 import { isCloseTo } from '../../../../helpers'
 
 const subject: () => number = standardAnimation.default

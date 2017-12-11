@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { appState, globalWrapper, NullarySideEffector } from '../../../src'
+import { appState, globalWrapper, NullarySideEffector } from '../../../src/indexForTest'
 import buildMockElement from './buildMockElement'
 import noop from './noop'
 import { MockConsole, MockDocument, MockWindow } from './types'

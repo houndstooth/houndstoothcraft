@@ -2,7 +2,11 @@
 
 import { buildSettingNamesToPathsMap, executeGrid } from '../../../src/indexForTest'
 import { resetAppAndPatternStates } from '../../helpers'
-import { activateTestMarkerCanvas, syncExecuteGridAndMixDownContexts } from '../helpers'
+import {
+	activateTestMarkerCanvas,
+	stubProblematicNonCanvasUiActivity,
+	syncExecuteGridAndMixDownContexts,
+} from '../helpers'
 
 beforeEach(() => {
 	resetAppAndPatternStates()
@@ -11,4 +15,5 @@ beforeEach(() => {
 	activateTestMarkerCanvas()
 
 	spyOn(executeGrid, 'default').and.callFake(syncExecuteGridAndMixDownContexts)
+	stubProblematicNonCanvasUiActivity()
 })

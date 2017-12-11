@@ -2,6 +2,7 @@ import activateTestMarkerCanvas from './activateTestMarkerCanvas'
 import pixelIsColorWithMarker from './pixelIsColorWithMarker'
 import sectionCenterIsColor from './sectionCenterIsColor'
 import standardTileIsColors from './standardTileIsColors'
+import stubProblematicNonCanvasUiActivity from './stubProblematicNonCanvasUiActivity'
 import syncExecuteGridAndMixDownContexts from './syncExecuteGridAndMixDownContexts'
 
 export {
@@ -10,6 +11,7 @@ export {
 	standardTileIsColors,
 	pixelIsColorWithMarker,
 	syncExecuteGridAndMixDownContexts,
+	stubProblematicNonCanvasUiActivity,
 }
 export {
 	Diagonal,

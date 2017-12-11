@@ -1,7 +1,6 @@
 // tslint:disable:max-file-line-count no-reaching-imports
 
 export {
-	addDescription,
 	animator,
 	appState,
 	asyncMaybeTile,
@@ -27,6 +26,7 @@ export {
 	createCheckbox,
 	createContext,
 	createContexts,
+	createDescription,
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,

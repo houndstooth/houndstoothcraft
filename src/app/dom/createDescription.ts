@@ -1,7 +1,7 @@
 import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
 
-const addDescription: (_: string) => void =
+const createDescription: (_: string) => void =
 	(descriptionText: string): void => {
 		const description: HTMLElement = globalWrapper.document.createElement('span')
 		description.innerHTML = descriptionText
@@ -10,4 +10,4 @@ const addDescription: (_: string) => void =
 		appState.dom.descriptionsContainer.appendChild(description)
 	}
 
-export default addDescription
+export default createDescription

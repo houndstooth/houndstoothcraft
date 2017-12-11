@@ -1,10 +1,10 @@
-import { addDescription, appState, NullarySideEffector, updateDescriptions } from '../../../../../src/indexForTest'
+import { appState, createDescription, NullarySideEffector, updateDescriptions } from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = updateDescriptions.default
 
 describe('update descriptions', () => {
 	it('adds the description for each of the selected effects', () => {
-		spyOn(addDescription, 'default')
+		spyOn(createDescription, 'default')
 
 		appState.controls.selectedEffects = [
 			{ name: 'Nu är det Jul igen', description: 'this is fun' },
@@ -13,7 +13,7 @@ describe('update descriptions', () => {
 
 		subject()
 
-		expect(addDescription.default).toHaveBeenCalledWith('this is fun')
-		expect(addDescription.default).toHaveBeenCalledWith('i am a banana')
+		expect(createDescription.default).toHaveBeenCalledWith('this is fun')
+		expect(createDescription.default).toHaveBeenCalledWith('i am a banana')
 	})
 })

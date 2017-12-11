@@ -24,11 +24,11 @@ export {
 	updateDescriptions,
 } from './controls/indexForTest'
 export {
-	addDescription,
 	attachControlHandlers,
 	createCheckbox,
 	createContext,
 	createContexts,
+	createDescription,
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,

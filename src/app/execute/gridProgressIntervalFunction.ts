@@ -1,6 +1,6 @@
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
-import clearInterval from './clearInterval'
+import clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 
 const gridProgressIntervalFunction: NullarySideEffector =
 	(): void => {
@@ -8,7 +8,7 @@ const gridProgressIntervalFunction: NullarySideEffector =
 			appState.dom.progressBar.style.width = '0%'
 			appState.dom.progressMessage.textContent = ''
 
-			clearInterval('gridProgressInterval')
+			clearIntervalAndRemoveFromState('gridProgressInterval')
 			appState.execute.resolveGrid()
 		}
 	}

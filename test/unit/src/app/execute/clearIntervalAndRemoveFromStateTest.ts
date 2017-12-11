@@ -1,8 +1,8 @@
-import { appState, clearInterval, globalWrapper } from '../../../../../src/indexForTest'
+import { appState, clearIntervalAndRemoveFromState, globalWrapper } from '../../../../../src/indexForTest'
 
-const subject: (_: string) => void = clearInterval.default
+const subject: (_: string) => void = clearIntervalAndRemoveFromState.default
 
-describe('clear interval', () => {
+describe('clear interval and remove from state', () => {
 	const FAKE_GRID_PROGRESS_INTERVAL: number = 3369
 	beforeEach(() => {
 		appState.execute.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL

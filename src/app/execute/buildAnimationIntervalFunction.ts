@@ -1,6 +1,6 @@
 import { ConditionFunction, NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
-import clearInterval from './clearInterval'
+import clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import { AnimationParams } from './types'
 
 const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffector =
@@ -14,7 +14,7 @@ const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffecto
 
 			if (appState.controls.endFrame !== to.Frame(0) && appState.controls.currentFrame > appState.controls.endFrame) {
 				resolveAnimation()
-				clearInterval('animationInterval')
+				clearIntervalAndRemoveFromState('animationInterval')
 			}
 		}
 

@@ -49,7 +49,7 @@ export {
 	buildAnimationIntervalFunction,
 	callFunctionsPerSetting,
 	cancelPreviousPattern,
-	clearInterval,
+	clearIntervalAndRemoveFromState,
 	completeLayers,
 	executeAnimation,
 	executeGrid,

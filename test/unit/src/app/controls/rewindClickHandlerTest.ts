@@ -1,6 +1,6 @@
 import {
 	appState,
-	clearInterval,
+	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	executeSelectedEffects,
 	NullarySideEffector,
@@ -18,7 +18,7 @@ describe('rewind click handler', () => {
 	beforeEach(() => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
-		spyOn(clearInterval, 'default')
+		spyOn(clearIntervalAndRemoveFromState, 'default')
 		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 	})
@@ -26,7 +26,7 @@ describe('rewind click handler', () => {
 	it('clears the interval with the helper which also removes it from the state', () => {
 		subject()
 
-		expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
+		expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('animationInterval')
 	})
 
 	it('resets the current frame', () => {

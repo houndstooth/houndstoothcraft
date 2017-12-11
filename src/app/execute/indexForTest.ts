@@ -4,7 +4,7 @@ import * as buildAnimationFunction from './buildAnimationFunction'
 import * as buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
 import * as callFunctionsPerSetting from './callFunctionsPerSetting'
 import * as cancelPreviousPattern from './cancelPreviousPattern'
-import * as clearInterval from './clearInterval'
+import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import * as completeLayers from './completeLayers'
 import * as executeAnimation from './executeAnimation'
 import * as executeGrid from './executeGrid'
@@ -29,7 +29,7 @@ export {
 	buildAnimationIntervalFunction,
 	callFunctionsPerSetting,
 	cancelPreviousPattern,
-	clearInterval,
+	clearIntervalAndRemoveFromState,
 	completeLayers,
 	executeAnimation,
 	executeGrid,

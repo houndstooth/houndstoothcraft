@@ -2,7 +2,7 @@ import {
 	AnimationParams,
 	appState,
 	buildAnimationIntervalFunction,
-	clearInterval,
+	clearIntervalAndRemoveFromState,
 	NullarySideEffector,
 	to,
 } from '../../../../../src/indexForTest'
@@ -16,7 +16,7 @@ describe('build animation interval function returns a function which', () => {
 	let resolveAnimationSpy: Spy
 	beforeEach(() => {
 		appState.controls.animating = true
-		spyOn(clearInterval, 'default')
+		spyOn(clearIntervalAndRemoveFromState, 'default')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')
 		resolveAnimationSpy = jasmine.createSpy('resolveAnimation')
 
@@ -48,7 +48,7 @@ describe('build animation interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).not.toHaveBeenCalled()
-			expect(clearInterval.default).not.toHaveBeenCalled()
+			expect(clearIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
 		})
 
 		it('when end frame is nonzero, but current frame is not yet past it, do not end', () => {
@@ -58,7 +58,7 @@ describe('build animation interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).not.toHaveBeenCalled()
-			expect(clearInterval.default).not.toHaveBeenCalled()
+			expect(clearIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
 		})
 
 		it('when end frame is nonzero, and current frame is past it, end', () => {
@@ -68,7 +68,7 @@ describe('build animation interval function returns a function which', () => {
 			intervalFunction()
 
 			expect(resolveAnimationSpy).toHaveBeenCalled()
-			expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
+			expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('animationInterval')
 		})
 	})
 })

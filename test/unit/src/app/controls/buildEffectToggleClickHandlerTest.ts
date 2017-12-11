@@ -3,7 +3,7 @@ import {
 	buildEffectToggleClickHandler,
 	cancelPreviousPattern,
 	clearContexts,
-	clearInterval,
+	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
@@ -29,7 +29,7 @@ describe('build effect toggle click handler returns a function which', () => {
 		spyOn(updateDescriptions, 'default')
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(clearContexts, 'default')
-		spyOn(clearInterval, 'default')
+		spyOn(clearIntervalAndRemoveFromState, 'default')
 		spyOn(cancelPreviousPattern, 'default')
 		spyOn(resetMainHoundstooth, 'default')
 
@@ -81,11 +81,11 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 
 	it('clears any active animation', () => {
-		expect(clearInterval.default).toHaveBeenCalledWith('animationInterval')
+		expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('animationInterval')
 	})
 
 	it('clears any active rendering progress measurement', () => {
-		expect(clearInterval.default).toHaveBeenCalledWith('gridProgressInterval')
+		expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('gridProgressInterval')
 	})
 
 	it('resets the main houndstooth', () => {

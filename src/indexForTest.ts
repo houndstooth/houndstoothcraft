@@ -17,7 +17,7 @@ export {
 	checkSettingForConflict,
 	clearContext,
 	clearContexts,
-	clearInterval,
+	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	clipPath,
 	combineEffects,

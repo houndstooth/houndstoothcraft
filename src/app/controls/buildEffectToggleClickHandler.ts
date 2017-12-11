@@ -2,7 +2,7 @@ import { NamedEffect } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { clearContexts, clearMixedDownContext } from '../canvas'
-import { cancelPreviousPattern, clearInterval, executeSelectedEffects } from '../execute'
+import { cancelPreviousPattern, clearIntervalAndRemoveFromState, executeSelectedEffects } from '../execute'
 import { resetMainHoundstooth } from '../settings'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
@@ -17,8 +17,8 @@ const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) =>
 			clearContexts.default()
 			clearMixedDownContext.default()
 
-			clearInterval.default('animationInterval')
-			clearInterval.default('gridProgressInterval')
+			clearIntervalAndRemoveFromState.default('animationInterval')
+			clearIntervalAndRemoveFromState.default('gridProgressInterval')
 
 			appState.execute.resolveGrid()
 

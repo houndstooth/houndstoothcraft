@@ -1,7 +1,6 @@
 import {
 	appState,
-	clearInterval,
-	globalWrapper,
+	clearIntervalAndRemoveFromState,
 	gridProgressIntervalFunction,
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
@@ -10,7 +9,7 @@ const subject: NullarySideEffector = gridProgressIntervalFunction.default
 
 describe('grid progress interval function', () => {
 	beforeEach(() => {
-		spyOn(clearInterval, 'default')
+		spyOn(clearIntervalAndRemoveFromState, 'default')
 		spyOn(appState.execute, 'resolveGrid')
 		appState.execute.tileCount = 99
 	})
@@ -27,11 +26,9 @@ describe('grid progress interval function', () => {
 		})
 
 		it('clears the progress interval off the settings', () => {
-			spyOn(globalWrapper.window, 'clearInterval')
-
 			subject()
 
-			expect(clearInterval.default).toHaveBeenCalledWith('gridProgressInterval')
+			expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('gridProgressInterval')
 		})
 
 		it('resets the progress bar', () => {
@@ -63,11 +60,9 @@ describe('grid progress interval function', () => {
 		})
 
 		it('does not clear the progress interval off the settings', () => {
-			spyOn(globalWrapper.window, 'clearInterval')
-
 			subject()
 
-			expect(clearInterval.default).not.toHaveBeenCalled()
+			expect(clearIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
 		})
 
 		it('does not reset the progress bar', () => {

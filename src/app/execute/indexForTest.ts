@@ -20,6 +20,7 @@ import * as setTileCount from './setTileCount'
 import * as standardAnimation from './standardAnimation'
 import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 import * as updateProgress from './updateProgress'
+import * as getCurrentLayer from './getCurrentLayer'
 
 export {
 	callFunctionsPerSetting,
@@ -44,6 +45,7 @@ export {
 	setTileCount,
 	standardAnimation,
 	incrementTilesCompleted,
+	getCurrentLayer,
 }
 export {
 	ConditionFunction,

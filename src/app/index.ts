@@ -15,6 +15,7 @@ export {
 	standardAnimation,
 	incrementTilesCompleted,
 	ConditionFunction,
+	getCurrentLayer,
 } from './execute'
 export {
 	fill,

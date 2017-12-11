@@ -4,6 +4,7 @@ import * as executeSelectedEffects from './executeSelectedEffects'
 import * as incrementTilesCompleted from './incrementTilesCompleted'
 import * as setTileCount from './setTileCount'
 import * as standardAnimation from './standardAnimation'
+import * as getCurrentLayer from './getCurrentLayer'
 
 export {
 	clearInterval,
@@ -12,6 +13,7 @@ export {
 	setTileCount,
 	standardAnimation,
 	incrementTilesCompleted,
+	getCurrentLayer,
 }
 export {
 	ConditionFunction,

@@ -67,6 +67,7 @@ export {
 	setTileCount,
 	standardAnimation,
 	incrementTilesCompleted,
+	getCurrentLayer,
 } from './execute/indexForTest'
 export {
 	fill,

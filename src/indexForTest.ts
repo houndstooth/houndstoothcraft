@@ -97,6 +97,7 @@ export {
 	incrementTilesCompleted,
 	getSettingsPath,
 	initializeCurrentPatternFromBasePattern,
+	getCurrentLayer,
 } from './app/indexForTest'
 import * as constants from './constants'
 import * as defaults from './defaults'

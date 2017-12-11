@@ -7,6 +7,7 @@ export {
 	createEffectToggles,
 	attachControlHandlers,
 	executeSelectedEffects,
+	getCurrentLayer,
 } from './app'
 export {
 	Address,

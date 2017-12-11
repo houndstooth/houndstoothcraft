@@ -1,18 +1,6 @@
 // tslint:disable:max-file-line-count no-reaching-imports
 
 export {
-	clearContext,
-	clearContexts,
-	clearMixedDownContext,
-	exportCanvas,
-	getCurrentContext,
-	mixDownContexts,
-	saveCanvas,
-	setupMixedDownContext,
-
-	DataBlob,
-} from './canvas/indexForTest'
-export {
 	buildEffectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
@@ -72,12 +60,21 @@ export {
 export {
 	buildFill,
 	buildPath,
+	clearContext,
+	clearContexts,
+	clearMixedDownContext,
 	clipPath,
+	exportCanvas,
 	fill,
 	fillPath,
+	getCurrentContext,
+	mixDownContexts,
 	resetClip,
+	saveCanvas,
 	setClip,
+	setupMixedDownContext,
 
+	DataBlob,
 	Path,
 	Pixel,
 } from './render/indexForTest'

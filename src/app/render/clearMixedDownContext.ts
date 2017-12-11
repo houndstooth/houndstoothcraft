@@ -4,7 +4,7 @@ import clearContext from './clearContext'
 
 const clearMixedDownContext: NullarySideEffector =
 	(): void =>	{
-		clearContext(appState.canvas.mixedDownContext)
+		clearContext(appState.render.mixedDownContext)
 	}
 
 export default clearMixedDownContext

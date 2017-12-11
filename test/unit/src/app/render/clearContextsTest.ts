@@ -16,7 +16,7 @@ describe('clear contexts', () => {
 		const context1: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 		const context2: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 		const context3: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
-		appState.canvas.contexts = [ context1, context2, context3 ]
+		appState.render.contexts = [ context1, context2, context3 ]
 
 		subject()
 

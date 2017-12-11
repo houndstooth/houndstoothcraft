@@ -2,10 +2,10 @@
 
 import {
 	AppState,
-	CanvasState,
 	ControlsState,
 	DomState,
 	ExecuteState,
+	RenderState,
 	SettingNamesToPathsMap,
 	SettingsState,
 } from './app'
@@ -86,11 +86,6 @@ const DEFAULT_REWIND_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
 const DEFAULT_SNAPSHOT_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
 const DEFAULT_FRAME_INPUT: HTMLInputElement = {} as HTMLInputElement
 
-const DEFAULT_CANVAS_STATE: CanvasState = {
-	contexts: DEFAULT_CONTEXTS,
-	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
-}
-
 const DEFAULT_CONTROLS_STATE: ControlsState = {
 	animating: DEFAULT_ANIMATING,
 	currentFrame: DEFAULT_CURRENT_ANIMATION_FRAME,
@@ -126,6 +121,11 @@ const DEFAULT_EXECUTE_STATE: ExecuteState = {
 	tilesCompleted: DEFAULT_TILES_COMPLETED,
 }
 
+const DEFAULT_RENDER_STATE: RenderState = {
+	contexts: DEFAULT_CONTEXTS,
+	mixedDownContext: DEFAULT_MIXED_DOWN_CONTEXT,
+}
+
 const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
@@ -134,10 +134,10 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
 }
 
 const DEFAULT_APP_STATE: AppState = {
-	canvas: DEFAULT_CANVAS_STATE,
 	controls: DEFAULT_CONTROLS_STATE,
 	dom: DEFAULT_DOM_STATE,
 	execute: DEFAULT_EXECUTE_STATE,
+	render: DEFAULT_RENDER_STATE,
 	settings: DEFAULT_SETTINGS_STATE,
 }
 

@@ -10,7 +10,7 @@ describe('build fill', () => {
 	let context: CanvasRenderingContext2D
 	beforeEach(() => {
 		context = buildMockContext() as CanvasRenderingContext2D
-		appState.canvas.contexts = [ context ]
+		appState.render.contexts = [ context ]
 		spyOn(parseColor, 'default').and.returnValue(parsedColor)
 
 		subject({ shapeColor })

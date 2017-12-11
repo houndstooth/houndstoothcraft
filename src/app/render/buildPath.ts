@@ -1,12 +1,12 @@
 // tslint:disable:no-unsafe-any
 
 import { from } from '../../utilities'
-import { getCurrentContext } from '../canvas'
+import getCurrentContext from './getCurrentContext'
 import { Path, Pixel } from './types'
 
 const buildPath: (_: { path: Path }) => void =
 	({ path }: { path: Path }): void => {
-		const context: CanvasRenderingContext2D = getCurrentContext.default()
+		const context: CanvasRenderingContext2D = getCurrentContext()
 		context.beginPath()
 		context.moveTo(from.Px(path[ 0 ][ 0 ]), from.Px(path[ 0 ][ 1 ]))
 		path.slice(1).forEach((pixel: Pixel): void => {

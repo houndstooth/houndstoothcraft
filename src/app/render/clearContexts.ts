@@ -4,7 +4,7 @@ import clearContext from './clearContext'
 
 const clearContexts: NullarySideEffector =
 	(): void => {
-		appState.canvas.contexts.forEach(clearContext)
+		appState.render.contexts.forEach(clearContext)
 	}
 
 export default clearContexts

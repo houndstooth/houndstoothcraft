@@ -1,7 +1,7 @@
 import { NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
-import { clearMixedDownContext } from '../canvas'
 import { clearIntervalAndRemoveFromState, executeSelectedEffects } from '../execute'
+import { clearMixedDownContext } from '../render'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: NullarySideEffector =

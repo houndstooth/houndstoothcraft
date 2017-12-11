@@ -22,11 +22,11 @@ describe('settings mixed down context', () => {
 
 	it('puts the mixed down canvas\'s context onto the app state', () => {
 		// tslint:disable-next-line:no-any
-		expect(appState.canvas.mixedDownContext).toBe(mixedDownContext as any)
+		expect(appState.render.mixedDownContext).toBe(mixedDownContext as any)
 	})
 
 	it('sets the mixed down context\'s width and height to the default canvas size', () => {
-		expect(appState.canvas.mixedDownContext.canvas.height).toBe(from.Px(constants.CANVAS_SIZE))
-		expect(appState.canvas.mixedDownContext.canvas.width).toBe(from.Px(constants.CANVAS_SIZE))
+		expect(appState.render.mixedDownContext.canvas.height).toBe(from.Px(constants.CANVAS_SIZE))
+		expect(appState.render.mixedDownContext.canvas.width).toBe(from.Px(constants.CANVAS_SIZE))
 	})
 })

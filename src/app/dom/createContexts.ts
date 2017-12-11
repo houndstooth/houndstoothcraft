@@ -12,7 +12,7 @@ const createContexts: NullarySideEffector =
 		scaleElement({ element: appState.dom.canvasContainer, dimensions: to.Dimensions([ CANVAS_SIZE, CANVAS_SIZE ]) })
 		appState.dom.canvasContainer.innerHTML = ''
 
-		appState.canvas.contexts = layerIterator().map(createContext)
+		appState.render.contexts = layerIterator().map(createContext)
 	}
 
 const layerIterator: () => Layer[] =

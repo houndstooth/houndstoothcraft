@@ -4,11 +4,11 @@ import clearContext from './clearContext'
 
 const mixDownContexts: NullarySideEffector =
 	(): void => {
-		clearContext(appState.canvas.mixedDownContext)
+		clearContext(appState.render.mixedDownContext)
 
-		appState.canvas.contexts.forEach((context: CanvasRenderingContext2D): void => {
+		appState.render.contexts.forEach((context: CanvasRenderingContext2D): void => {
 			// tslint:disable-next-line:no-unsafe-any
-			appState.canvas.mixedDownContext.drawImage(context.canvas, 0, 0)
+			appState.render.mixedDownContext.drawImage(context.canvas, 0, 0)
 		})
 	}
 

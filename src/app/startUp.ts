@@ -1,8 +1,8 @@
 import { NamedEffect } from '../pattern'
 import { appState } from './appState'
-import { setupMixedDownContext } from './canvas'
 import { attachControlHandlers, createEffectToggles, storeDomElements } from './dom'
 import { executeSelectedEffects } from './execute'
+import { setupMixedDownContext } from './render'
 import { buildSettingNamesToPathsMap } from './settings'
 
 const startUp: (_: NamedEffect[]) => void =

@@ -6,7 +6,7 @@ const subject: NullarySideEffector = clipPath.default
 describe('clip path', () => {
 	it('saves the context to restore the clip later, then clips the context (w/ the current path)', () => {
 		const contextCallsOrder: MockContextCall[] = []
-		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
+		appState.render.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
 
 		subject()
 

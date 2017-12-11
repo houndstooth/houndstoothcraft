@@ -7,7 +7,7 @@ describe('build path', () => {
 	it('draws the correct path and fills it', () => {
 		const path: Path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 		const contextCallsOrder: MockContextCall[] = []
-		appState.canvas.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
+		appState.render.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
 
 		subject({ path })
 

@@ -1,7 +1,7 @@
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
-import { mixDownContexts } from '../canvas'
 import { executeSelectedEffects } from '../execute'
+import { mixDownContexts } from '../render'
 
 const playClickHandler: NullarySideEffector =
 	(): void => {

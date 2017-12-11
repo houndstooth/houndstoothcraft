@@ -29,11 +29,11 @@ describe('create contexts', () => {
 
 	it('adds contexts to the app state for each layer', () => {
 		appState.controls.endLayer = to.Layer(5)
-		expect(appState.canvas.contexts.length).toBe(0)
+		expect(appState.render.contexts.length).toBe(0)
 
 		subject()
 
-		expect(appState.canvas.contexts.length).toBe(6)
+		expect(appState.render.contexts.length).toBe(6)
 	})
 
 	it('can reduce the count of contexts on the app state, and canvases on the dom', () => {
@@ -41,7 +41,7 @@ describe('create contexts', () => {
 		subject()
 
 		expect(createContextSpy.calls.count()).toBe(6)
-		expect(appState.canvas.contexts.length).toBe(6)
+		expect(appState.render.contexts.length).toBe(6)
 
 		appState.controls.endLayer = to.Layer(3)
 		createContextSpy.calls.reset()
@@ -49,6 +49,6 @@ describe('create contexts', () => {
 		subject()
 
 		expect(createContextSpy.calls.count()).toBe(4)
-		expect(appState.canvas.contexts.length).toBe(4)
+		expect(appState.render.contexts.length).toBe(4)
 	})
 })

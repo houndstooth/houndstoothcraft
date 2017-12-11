@@ -1,11 +1,11 @@
 // tslint:disable:no-unsafe-any
 
 import { NullarySideEffector } from '../../utilities'
-import { getCurrentContext } from '../canvas'
+import getCurrentContext from './getCurrentContext'
 
 const clipPath: NullarySideEffector =
 	(): void => {
-		const context: CanvasRenderingContext2D = getCurrentContext.default()
+		const context: CanvasRenderingContext2D = getCurrentContext()
 		context.save()
 		context.clip()
 	}

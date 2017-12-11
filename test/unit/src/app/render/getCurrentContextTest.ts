@@ -6,7 +6,7 @@ const subject: () => CanvasRenderingContext2D = getCurrentContext.default
 describe('get current context', () => {
 	it('gets the current context', () => {
 		const expectedContext: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
-		appState.canvas.contexts = [
+		appState.render.contexts = [
 			buildMockContext() as CanvasRenderingContext2D,
 			buildMockContext() as CanvasRenderingContext2D,
 			buildMockContext() as CanvasRenderingContext2D,

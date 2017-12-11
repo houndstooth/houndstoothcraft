@@ -1,9 +1,4 @@
 export {
-	getCurrentContext,
-
-	CanvasState,
-} from './canvas'
-export {
 	ControlsState,
 } from './controls'
 export {
@@ -25,12 +20,20 @@ export {
 	ExecuteState,
 } from './execute'
 export {
+	clearContexts,
+	clearMixedDownContext,
+	exportCanvas,
 	fill,
+	getCurrentContext,
+	mixDownContexts,
 	resetClip,
 	setClip,
+	setupMixedDownContext,
 
+	DataBlob,
 	Path,
 	Pixel,
+	RenderState,
 } from './render'
 export {
 	buildSettingNamesToPathsMap,

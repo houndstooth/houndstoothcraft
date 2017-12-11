@@ -1,9 +1,9 @@
 import { Color, parseColor } from '../../pattern'
-import { getCurrentContext } from '../canvas'
+import getCurrentContext from './getCurrentContext'
 
 const buildFill: (_: { shapeColor: Color }) => void =
 	({ shapeColor }: { shapeColor: Color}): void => {
-		const context: CanvasRenderingContext2D = getCurrentContext.default()
+		const context: CanvasRenderingContext2D = getCurrentContext()
 
 		context.globalCompositeOperation = shapeColor.a === -1 ? 'destination-out' : 'source-over'
 

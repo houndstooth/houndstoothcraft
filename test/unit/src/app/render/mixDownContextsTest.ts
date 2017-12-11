@@ -12,7 +12,7 @@ describe('mix down contexts', () => {
 	const drawImageSpy: Spy = jasmine.createSpy('drawImage')
 	const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 	beforeEach(() => {
-		appState.canvas.mixedDownContext = buildMockContext({ clearRectSpy, drawImageSpy }) as CanvasRenderingContext2D
+		appState.render.mixedDownContext = buildMockContext({ clearRectSpy, drawImageSpy }) as CanvasRenderingContext2D
 	})
 
 	it('clears the mixed down canvas just before rendering', () => {
@@ -28,7 +28,7 @@ describe('mix down contexts', () => {
 		const context4: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 		const context5: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 		const context6: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
-		appState.canvas.contexts = [
+		appState.render.contexts = [
 			context1,
 			context2,
 			context3,

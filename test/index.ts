@@ -1,5 +1,6 @@
 export {
 	isCloseTo,
+	setAppStateForEffectTests,
 } from './helpers'
 export {
 	activateTestMarkerCanvas,

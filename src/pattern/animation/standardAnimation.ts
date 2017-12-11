@@ -1,8 +1,8 @@
+import { getCurrentFrame } from '../../app'
 import { ANIMATION_RATE } from '../../constants'
 import { from } from '../../utilities'
-import { appState } from '../appState'
 
 const standardAnimation: () => number =
-	(): number => Math.pow(ANIMATION_RATE, from.Frame(appState.controls.currentFrame))
+	(): number => Math.pow(ANIMATION_RATE, from.Frame(getCurrentFrame.default()))
 
 export default standardAnimation

@@ -1,20 +1,23 @@
-import { appState, standardAnimation, to } from '../../../../../src/indexForTest'
+import { getCurrentFrame, standardAnimation, to } from '../../../../../src/indexForTest'
 import { isCloseTo } from '../../../../helpers'
+import Spy = jasmine.Spy
 
 const subject: () => number = standardAnimation.default
 
 describe('standard animation', () => {
 	it('multiplies the property by the standard animation rate each frame', () => {
-		appState.controls.currentFrame = to.Frame(0)
+		const getCurrentFrameSpy: Spy = spyOn(getCurrentFrame, 'default')
+
+		getCurrentFrameSpy.and.returnValue(to.Frame(0))
 		expect(isCloseTo(subject(), 1)).toBe(true)
 
-		appState.controls.currentFrame = to.Frame(1)
+		getCurrentFrameSpy.and.returnValue(to.Frame(1))
 		expect(isCloseTo(subject(), 1.001)).toBe(true)
 
-		appState.controls.currentFrame = to.Frame(2)
+		getCurrentFrameSpy.and.returnValue(to.Frame(2))
 		expect(isCloseTo(subject(), 1.002001)).toBe(true)
 
-		appState.controls.currentFrame = to.Frame(3)
+		getCurrentFrameSpy.and.returnValue(to.Frame(3))
 		expect(isCloseTo(subject(), 1.003002001)).toBe(true)
 	})
 })

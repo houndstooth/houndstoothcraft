@@ -5,6 +5,7 @@ export {
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	frameInputChangeHandler,
+	getCurrentFrame,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
@@ -49,7 +50,6 @@ export {
 	incrementTilesCompleted,
 	previousFrameHasFinished,
 	setTileCount,
-	standardAnimation,
 	thisPatternHasNotBeenCanceled,
 	updateProgress,
 

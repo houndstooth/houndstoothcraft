@@ -1,4 +1,6 @@
 export {
+	getCurrentFrame,
+
 	ControlsState,
 } from './controls'
 export {
@@ -15,7 +17,6 @@ export {
 	getCurrentLayer,
 	incrementTilesCompleted,
 	setTileCount,
-	standardAnimation,
 
 	ExecuteState,
 } from './execute'

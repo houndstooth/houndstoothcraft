@@ -1,6 +1,5 @@
 export {
 	getCurrentLayer,
-	standardAnimation,
 	startUp,
 } from './app'
 export {
@@ -8,6 +7,7 @@ export {
 	perStripe,
 	rotateCoordinate,
 	solid,
+	standardAnimation,
 
 	Address,
 	AddressElement,

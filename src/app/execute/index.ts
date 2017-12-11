@@ -4,7 +4,6 @@ import * as executeSelectedEffects from './executeSelectedEffects'
 import * as getCurrentLayer from './getCurrentLayer'
 import * as incrementTilesCompleted from './incrementTilesCompleted'
 import * as setTileCount from './setTileCount'
-import * as standardAnimation from './standardAnimation'
 
 export {
 	cancelPreviousPattern,
@@ -13,7 +12,6 @@ export {
 	getCurrentLayer,
 	incrementTilesCompleted,
 	setTileCount,
-	standardAnimation,
 }
 export {
 	ExecuteState,

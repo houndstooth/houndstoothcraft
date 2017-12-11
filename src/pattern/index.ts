@@ -1,6 +1,7 @@
 export {
 	animationSettings,
 	shouldRefreshCanvas,
+	standardAnimation,
 
 	Frame,
 } from './animation'

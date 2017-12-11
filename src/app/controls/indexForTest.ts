@@ -2,6 +2,7 @@ import * as buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
 import * as enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import * as enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
 import * as frameInputChangeHandler from './frameInputChangeHandler'
+import * as getCurrentFrame from './getCurrentFrame'
 import * as pauseClickHandler from './pauseClickHandler'
 import * as playClickHandler from './playClickHandler'
 import * as rewindClickHandler from './rewindClickHandler'
@@ -14,6 +15,7 @@ export {
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	frameInputChangeHandler,
+	getCurrentFrame,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,

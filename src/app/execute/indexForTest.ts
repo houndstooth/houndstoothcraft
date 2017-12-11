@@ -18,7 +18,6 @@ import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
 import * as incrementTilesCompleted from './incrementTilesCompleted'
 import * as previousFrameHasFinished from './previousFrameHasFinished'
 import * as setTileCount from './setTileCount'
-import * as standardAnimation from './standardAnimation'
 import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 import * as updateProgress from './updateProgress'
 
@@ -43,7 +42,6 @@ export {
 	incrementTilesCompleted,
 	previousFrameHasFinished,
 	setTileCount,
-	standardAnimation,
 	thisPatternHasNotBeenCanceled,
 	updateProgress,
 }

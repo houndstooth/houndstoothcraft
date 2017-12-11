@@ -1,9 +1,8 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { FunctionsOf, Overwrite } from '../../app'
 import { BLACK, TRANSPARENT } from '../../constants'
 import { to } from '../../utilities'
-import { SettingsNamesByTypeBase } from '../types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
 import * as colorAssignmentSettings from './colorAssignmentSettings'
 import { Color, ColorSet } from './types'
 

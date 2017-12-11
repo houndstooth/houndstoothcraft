@@ -1,9 +1,8 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { FunctionsOf, Overwrite } from '../../app'
 import { to } from '../../utilities'
 import { Unit } from '../grid'
-import { SettingsNamesByTypeBase } from '../types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
 import getStandardTileOriginAndSize from './getStandardTileOriginAndSize'
 import { GetTileOriginAndSize } from './types'
 

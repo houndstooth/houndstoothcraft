@@ -1,8 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { SettingsNamesByTypeBase } from '../../pattern'
-import { FunctionsOf } from '../execute'
-import { Overwrite } from './types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../../pattern'
 
 interface TemplateSettings {
 	readonly exampleSetting: string,

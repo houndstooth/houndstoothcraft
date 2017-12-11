@@ -1,8 +1,7 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { FunctionsOf, Overwrite } from '../../app'
 import { to } from '../../utilities'
-import { SettingsNamesByTypeBase } from '../types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from './types'
 
 interface ColorAssignmentSettings {

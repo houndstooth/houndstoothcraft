@@ -2,9 +2,6 @@
 
 import { Effect, NamedEffect, Pattern } from '../../pattern'
 
-type Diff<T extends string, U extends string> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
-type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U;
-
 enum _SettingsPathBrand {}
 
 type SettingsPath = _SettingsPathBrand & SettingsStep[]
@@ -59,8 +56,6 @@ interface FullSettingsPath {
 	readonly settingsPath: SettingsPath,
 }
 
-type FunctionsOf<T> = { [P in keyof T]: () => T[P] }
-
 interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends FullSettingsPath {
 	readonly maybeSettingsFunctionsSourcePattern: any,
 	readonly settingsFunctionObjects: SettingsFunctionObject[],
@@ -85,7 +80,6 @@ export {
 	SettingsStep,
 	SettingNamesToPathsMap,
 	BuildSettingNamesToPathsMapParams,
-	Overwrite,
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
 	SettingConflictCheck,
@@ -93,7 +87,6 @@ export {
 	ComposePatternParams,
 	ComposePatternsParams,
 	FullSettingsPath,
-	FunctionsOf,
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
 	SettingsFunction,

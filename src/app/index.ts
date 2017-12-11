@@ -32,8 +32,6 @@ export {
 	SettingsFunction,
 	SettingsFunctionObject,
 	getSettingsPath,
-	FunctionsOf,
-	Overwrite,
 	SettingNamesToPathsMap,
 } from './settings'
 export {

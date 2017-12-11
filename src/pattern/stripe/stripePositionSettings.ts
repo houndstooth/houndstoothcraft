@@ -1,7 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { FunctionsOf, Overwrite } from '../../app'
-import { SettingsNamesByTypeBase } from '../types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
 import standardStripePositions from './standardStripePositions'
 import * as stripeCountContinuumSettings from './stripeCountContinuumSettings'
 import { GetStripePositions, StripeCountMode } from './types'

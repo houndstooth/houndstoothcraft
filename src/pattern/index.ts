@@ -75,4 +75,7 @@ export {
 	NamedEffect,
 	Pattern,
 	PatternFunctions,
+	FunctionsOf,
+	Overwrite,
+	SettingsNamesByTypeBase,
 } from './types'

@@ -26,7 +26,5 @@ export {
 	SettingsStep,
 	SettingsFunction,
 	SettingsFunctionObject,
-	FunctionsOf,
-	Overwrite,
 	SettingNamesToPathsMap,
 } from './types'

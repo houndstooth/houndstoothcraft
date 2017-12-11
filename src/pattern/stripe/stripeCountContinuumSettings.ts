@@ -1,7 +1,6 @@
 // tslint:disable:no-magic-numbers max-file-line-count no-any
 
-import { FunctionsOf, Overwrite } from '../../app'
-import { SettingsNamesByTypeBase } from '../types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
 
 interface StripeCountContinuumSettings {
 	readonly deltaStripeCount: number,

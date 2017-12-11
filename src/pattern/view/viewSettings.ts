@@ -1,9 +1,8 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { FunctionsOf, Overwrite } from '../../app'
 import { to } from '../../utilities'
 import { Radian } from '../stripe'
-import { SettingsNamesByTypeBase } from '../types'
+import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
 
 interface ViewSettings {
 	readonly centerViewOnCenterOfTileAtHomeAddress: boolean,

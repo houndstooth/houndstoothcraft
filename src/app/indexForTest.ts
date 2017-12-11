@@ -80,7 +80,6 @@ export {
 	fillPath,
 } from './render/indexForTest'
 export {
-	Overwrite,
 	resetMainHoundstooth,
 	SettingsPath,
 	SettingsStep,
@@ -92,7 +91,6 @@ export {
 	BuildSettingNamesToPathsMapParams,
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
-	FunctionsOf,
 	SettingsFunction,
 	SettingsFunctionObject,
 	checkSettingForConflict,

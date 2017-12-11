@@ -33,13 +33,11 @@ export {
 }
 export {
 	BuildSettingNamesToPathsMapParams,
-	Overwrite,
 	SettingNamesToPathsMap,
 	SettingsPath,
 	SettingsStep,
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
-	FunctionsOf,
 	SettingsFunction,
 	SettingsFunctionObject,
 	ComposeMainHoundstoothParams,

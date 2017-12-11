@@ -8,6 +8,7 @@ interface Px extends Number {
 }
 
 interface DomState {
+	canvasContainer: HTMLElement,
 	descriptionsContainer: HTMLElement,
 	effectToggles: { [_: string ]: HTMLInputElement },
 	frameInput: HTMLInputElement,

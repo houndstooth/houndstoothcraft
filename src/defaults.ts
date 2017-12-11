@@ -74,6 +74,7 @@ const DEFAULT_SELECTED_HOUNDSTOOTH_EFFECTS: NamedEffect[] = []
 const DEFAULT_SETTING_NAMES_TO_PATHS_MAP: SettingNamesToPathsMap = {}
 const DEFAULT_TILE_COUNT: number = 0
 const DEFAULT_TILES_COMPLETED: number = 0
+const DEFAULT_CANVAS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_DESCRIPTIONS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_LAYERS_PROGRESS_BAR: HTMLElement = {} as HTMLElement
 const DEFAULT_PROGRESS_MESSAGE: HTMLElement = {} as HTMLElement
@@ -99,6 +100,7 @@ const DEFAULT_CONTROLS_STATE: ControlsState = {
 }
 
 const DEFAULT_DOM_STATE: DomState = {
+	canvasContainer: DEFAULT_CANVAS_CONTAINER,
 	descriptionsContainer: DEFAULT_DESCRIPTIONS_CONTAINER,
 	effectToggles: DEFAULT_EFFECT_TOGGLES,
 	frameInput: DEFAULT_FRAME_INPUT,

@@ -5,6 +5,7 @@ const subject: NullarySideEffector = storeDomElements.default
 
 describe('store dom elements', () => {
 	it('puts references to important components on the page onto the app state', () => {
+		const canvasContainer: HTMLElement = buildMockElement() as HTMLElement
 		const descriptionsContainer: HTMLElement = buildMockElement() as HTMLElement
 		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement
 		const layersProgressBar: HTMLElement = buildMockElement() as HTMLElement
@@ -17,6 +18,8 @@ describe('store dom elements', () => {
 
 		spyOn(globalWrapper.document, 'querySelector').and.callFake((selector: string): HTMLElement => {
 			switch (selector) {
+				case '#canvas-container':
+					return canvasContainer
 				case '#descriptions-container':
 					return descriptionsContainer
 				case '#frame-input':
@@ -42,6 +45,7 @@ describe('store dom elements', () => {
 
 		subject()
 
+		expect(appState.dom.canvasContainer).toBe(canvasContainer)
 		expect(appState.dom.descriptionsContainer).toBe(descriptionsContainer)
 		expect(appState.dom.frameInput).toBe(frameInput)
 		expect(appState.dom.layersProgressBar).toBe(layersProgressBar)

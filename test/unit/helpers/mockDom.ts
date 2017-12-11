@@ -56,6 +56,7 @@ const mockDom: NullarySideEffector =
 		globalWrapper.document = mockDocument as Document
 		globalWrapper.window = mockWindow as Window
 
+		appState.dom.canvasContainer = buildMockElement() as HTMLElement
 		appState.dom.descriptionsContainer = buildMockElement() as HTMLElement
 		appState.dom.frameInput = buildMockElement() as HTMLInputElement
 		appState.dom.layersProgressBar = buildMockElement() as HTMLElement

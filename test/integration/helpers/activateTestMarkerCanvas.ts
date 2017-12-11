@@ -1,12 +1,11 @@
 // tslint:disable:no-any no-unsafe-any max-line-length
 
 import {
+	appState,
 	constants,
 	from,
 	NullarySideEffector,
-	scaleElement,
 	storeMixedDownContext,
-	to,
 } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import testMarkersClear from './testMarkersClear'
@@ -26,14 +25,17 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		const testCanvasDisplayArea: HTMLElement = document.querySelector('#test-canvas-display-area') as HTMLElement || document.createElement('div')
 		if (testCanvasDisplayArea.style) {
 			testCanvasDisplayArea.style.display = 'block'
-			scaleElement.default({ element: testCanvasDisplayArea, dimensions: to.Dimensions([ CANVAS_SIZE, CANVAS_SIZE ]) })
+			testCanvasDisplayArea.style.width = `${CANVAS_SIZE}px`
+			testCanvasDisplayArea.style.height = `${CANVAS_SIZE}px`
 		}
 
 		const canvasContainer: HTMLElement = document.querySelector('#canvas-container') as HTMLElement || document.createElement('div')
 		canvasContainer.setAttribute('id', 'canvas-container')
 		canvasContainer.style.position = 'absolute'
+		canvasContainer.style.width = `${CANVAS_SIZE}px`
+		canvasContainer.style.height = `${CANVAS_SIZE}px`
 		testCanvasDisplayArea.appendChild(canvasContainer)
-		scaleElement.default({ element: canvasContainer, dimensions: to.Dimensions([ CANVAS_SIZE, CANVAS_SIZE ]) })
+		appState.dom.canvasContainer = canvasContainer
 
 		const mixedDownCanvas: HTMLCanvasElement = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || document.createElement('canvas')
 		mixedDownCanvas.setAttribute('id', 'mixed-down-canvas')

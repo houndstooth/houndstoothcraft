@@ -34,8 +34,6 @@ export {
 	createLabel,
 	makeId,
 	saveBlob,
-	scaleCanvasContainer,
-	scaleElement,
 	storeDomElements,
 	storeMixedDownContext,
 

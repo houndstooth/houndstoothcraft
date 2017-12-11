@@ -64,8 +64,6 @@ export {
 	rewindClickHandler,
 	saveBlob,
 	saveCanvas,
-	scaleCanvasContainer,
-	scaleElement,
 	setClip,
 	setTileCount,
 	settingPath,

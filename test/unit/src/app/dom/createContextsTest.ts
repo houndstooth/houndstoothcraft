@@ -3,9 +3,7 @@ import {
 	appState,
 	createContext,
 	createContexts,
-	globalWrapper,
 	NullarySideEffector,
-	scaleCanvasContainer,
 	to,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
@@ -15,13 +13,12 @@ const subject: NullarySideEffector = createContexts.default
 describe('create contexts', () => {
 	let canvasContainer: HTMLElement
 	let createContextSpy: Spy
-	let querySelectorSpy: Spy
 	beforeEach(() => {
 		createContextSpy = spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement() as HTMLElement
 		canvasContainer.innerHTML = 'some old canvases'
-		querySelectorSpy = spyOn(globalWrapper.document, 'querySelector').and.returnValue(canvasContainer)
+		appState.dom.canvasContainer = canvasContainer
 	})
 
 	it('clears the canvas container contents', () => {
@@ -53,14 +50,5 @@ describe('create contexts', () => {
 
 		expect(createContextSpy.calls.count()).toBe(4)
 		expect(appState.canvas.contexts.length).toBe(4)
-	})
-
-	it('creates the canvas container if it does not already exist', () => {
-		querySelectorSpy.and.returnValue(undefined)
-		spyOn(scaleCanvasContainer, 'default').and.returnValue(canvasContainer)
-
-		subject()
-
-		expect(scaleCanvasContainer.default).toHaveBeenCalled()
 	})
 })

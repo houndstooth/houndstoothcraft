@@ -1,12 +1,12 @@
 import { appState, createContext, globalWrapper } from '../../../../../src/indexForTest'
 import { buildMockCanvas, buildMockContext, buildMockElement } from '../../../helpers'
 
-const subject: (_: { canvasContainer: HTMLElement }) => CanvasRenderingContext2D = createContext.default
+const subject: () => CanvasRenderingContext2D = createContext.default
 
 describe('create context', () => {
 	let returnedContext: CanvasRenderingContext2D
 	let appendedCanvas: HTMLCanvasElement
-	let canvasContainer: HTMLElement
+
 	let children: HTMLCanvasElement[]
 	const context: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 	beforeEach(() => {
@@ -14,9 +14,9 @@ describe('create context', () => {
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(canvas)
 
 		children = []
-		canvasContainer = buildMockElement({ children }) as HTMLElement
+		appState.dom.canvasContainer = buildMockElement({ children }) as HTMLElement
 
-		returnedContext = subject({ canvasContainer })
+		returnedContext = subject()
 
 		appendedCanvas = children[0]
 	})
@@ -42,7 +42,7 @@ describe('create context', () => {
 		it('when animating, hides the main canvases', () => {
 			appState.controls.animating = true
 
-			subject({ canvasContainer })
+			subject()
 			appendedCanvas = children[0]
 
 			expect(appendedCanvas.style.display).toBe('none')

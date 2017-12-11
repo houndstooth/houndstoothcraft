@@ -1,17 +1,19 @@
 // tslint:disable:no-unsafe-any
 
+import { CANVAS_SIZE } from '../../constants'
 import { Layer } from '../../pattern'
 import { codeUtilities, from, NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import createContext from './createContext'
-import scaleCanvasContainer from './scaleCanvasContainer'
+import { Dimensions } from './types'
 
 const createContexts: NullarySideEffector =
 	(): void => {
-		const canvasContainer: HTMLElement = scaleCanvasContainer()
-		canvasContainer.innerHTML = ''
+		console.log('why are you missing?', appState.dom)
+		scaleElement({ element: appState.dom.canvasContainer, dimensions: to.Dimensions([ CANVAS_SIZE, CANVAS_SIZE ]) })
+		appState.dom.canvasContainer.innerHTML = ''
 
-		appState.canvas.contexts = layerIterator().map(() => createContext({ canvasContainer }))
+		appState.canvas.contexts = layerIterator().map(createContext)
 	}
 
 const layerIterator: () => Layer[] =
@@ -22,5 +24,15 @@ const layerIterator: () => Layer[] =
 
 		return to.Layers(codeUtilities.iterator(layerCount))
 	}
+
+const scaleElement: (_: { dimensions: Dimensions, element: HTMLElement }) => void =
+	({ dimensions, element }: { dimensions: Dimensions, element: HTMLElement }): void => {
+		const [ x, y ] = from.Dimensions(dimensions)
+		element.style.width = inPx(x)
+		element.style.height = inPx(y)
+	}
+
+const inPx: (px: number) => string =
+	(px: number): string => `${px}px`
 
 export default createContexts

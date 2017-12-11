@@ -8,8 +8,6 @@ import * as createEffectToggles from './createEffectToggles'
 import * as createLabel from './createLabel'
 import * as makeId from './makeId'
 import * as saveBlob from './saveBlob'
-import * as scaleCanvasContainer from './scaleCanvasContainer'
-import * as scaleElement from './scaleElement'
 import * as storeDomElements from './storeDomElements'
 import * as storeMixedDownContext from './storeMixedDownContext'
 
@@ -24,8 +22,6 @@ export {
 	createLabel,
 	makeId,
 	saveBlob,
-	scaleCanvasContainer,
-	scaleElement,
 	storeDomElements,
 	storeMixedDownContext,
 }

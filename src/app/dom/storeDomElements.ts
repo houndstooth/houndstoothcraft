@@ -5,6 +5,7 @@ import { appState } from '../appState'
 
 const storeDomElements: NullarySideEffector =
 	(): void => {
+		appState.dom.canvasContainer = globalWrapper.document.querySelector('#canvas-container') as HTMLElement
 		appState.dom.descriptionsContainer = globalWrapper.document.querySelector('#descriptions-container') as HTMLElement
 		appState.dom.frameInput = globalWrapper.document.querySelector('#frame-input') as HTMLInputElement
 		appState.dom.layersProgressBar = globalWrapper.document.querySelector('#layers-progress-bar') as HTMLElement

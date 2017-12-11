@@ -48,7 +48,6 @@ export {
 	getCurrentLayer,
 }
 export {
-	ConditionFunction,
 	ExecuteLayerParams,
 	AnimationParams,
 	ExecuteParams,

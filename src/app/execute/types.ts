@@ -2,8 +2,6 @@ import { Layer, Referenced } from '../../pattern'
 import { NullarySideEffector } from '../../utilities'
 import { SettingsFunctionObject } from '../settings'
 
-type ConditionFunction = () => boolean
-
 interface AnimationParams {
 	animationFunction: NullarySideEffector,
 	resolveAnimation: NullarySideEffector,
@@ -20,7 +18,6 @@ interface ExecuteLayerParams extends Referenced {
 }
 
 export {
-	ConditionFunction,
 	AnimationParams,
 	ExecuteParams,
 	ExecuteLayerParams,

@@ -15,6 +15,3 @@ export {
 	incrementTilesCompleted,
 	getCurrentLayer,
 }
-export {
-	ConditionFunction,
-} from './types'

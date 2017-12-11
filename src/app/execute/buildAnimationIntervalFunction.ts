@@ -1,7 +1,7 @@
-import { NullarySideEffector, to } from '../../utilities'
+import { ConditionFunction, NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import clearInterval from './clearInterval'
-import { AnimationParams, ConditionFunction } from './types'
+import { AnimationParams } from './types'
 
 const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffector =
 	({ animationFunction, resolveAnimation }: AnimationParams): NullarySideEffector =>

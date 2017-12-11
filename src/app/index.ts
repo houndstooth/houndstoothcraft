@@ -14,7 +14,6 @@ export {
 	setTileCount,
 	standardAnimation,
 	incrementTilesCompleted,
-	ConditionFunction,
 	getCurrentLayer,
 } from './execute'
 export {

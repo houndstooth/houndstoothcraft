@@ -83,7 +83,6 @@ export {
 	executeGrid,
 	gridComplete,
 	asyncMaybeTile,
-	ConditionFunction,
 	ExecuteLayerParams,
 	appState,
 	Dimensions,
@@ -190,6 +189,7 @@ export {
 } from './pattern/indexForTest'
 export {
 	codeUtilities,
+	ConditionFunction,
 	globalWrapper,
 	mathUtilities,
 	NullarySideEffector,

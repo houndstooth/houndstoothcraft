@@ -12,6 +12,7 @@ export {
 	globalWrapper,
 }
 export {
+	ConditionFunction,
 	CouldBeSettingsFunctionObject,
 	NullarySideEffector,
 	NullaryVoidPromise,

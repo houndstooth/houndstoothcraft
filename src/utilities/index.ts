@@ -12,6 +12,7 @@ export {
 	globalWrapper,
 }
 export {
+	ConditionFunction,
 	NullarySideEffector,
 	NullaryVoidPromise,
 } from './types'

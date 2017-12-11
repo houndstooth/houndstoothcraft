@@ -60,7 +60,6 @@ export {
 	asyncMaybeTile,
 	updateProgress,
 	executePattern,
-	ConditionFunction,
 	ExecuteLayerParams,
 	AnimationParams,
 	ExecuteParams,

@@ -8,23 +8,19 @@ import {
 const subject: NullarySideEffector = applyViewForGrid.default
 
 describe('apply view for grid', () => {
-	it('applies background color', async (done: DoneFn) => {
+	it('applies background color', () => {
 		spyOn(applyBackgroundColor, 'default')
 
 		subject()
 
 		expect(applyBackgroundColor.default).toHaveBeenCalled()
-
-		done()
 	})
 
-	it('applies opacity', async (done: DoneFn) => {
+	it('applies opacity', () => {
 		spyOn(applyOpacity, 'default')
 
 		subject()
 
 		expect(applyOpacity.default).toHaveBeenCalled()
-
-		done()
 	})
 })

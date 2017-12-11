@@ -9,7 +9,6 @@ import * as createLabel from './createLabel'
 import * as makeId from './makeId'
 import * as saveBlob from './saveBlob'
 import * as storeDomElements from './storeDomElements'
-import * as storeMixedDownContext from './storeMixedDownContext'
 
 export {
 	attachControlHandlers,
@@ -23,7 +22,6 @@ export {
 	makeId,
 	saveBlob,
 	storeDomElements,
-	storeMixedDownContext,
 }
 export {
 	Dimensions,

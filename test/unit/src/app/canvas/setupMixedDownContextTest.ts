@@ -4,20 +4,18 @@ import {
 	appState,
 	constants,
 	from,
-	globalWrapper,
 	NullarySideEffector,
-	storeMixedDownContext,
+	setupMixedDownContext,
 } from '../../../../../src/indexForTest'
 import { buildMockCanvas, buildMockContext } from '../../../helpers'
 
-const subject: NullarySideEffector = storeMixedDownContext.default
+const subject: NullarySideEffector = setupMixedDownContext.default
 
 describe('settings mixed down context', () => {
 	let mixedDownContext: CanvasRenderingContext2D
 	beforeEach(() => {
 		mixedDownContext = buildMockContext() as CanvasRenderingContext2D
-		const mixedDownCanvas: HTMLCanvasElement = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
-		spyOn(globalWrapper.document, 'querySelector').and.returnValue(mixedDownCanvas)
+		appState.dom.mixedDownCanvas = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
 
 		subject()
 	})

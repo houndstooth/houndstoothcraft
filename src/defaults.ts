@@ -77,6 +77,7 @@ const DEFAULT_TILES_COMPLETED: number = 0
 const DEFAULT_CANVAS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_DESCRIPTIONS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_LAYERS_PROGRESS_BAR: HTMLElement = {} as HTMLElement
+const DEFAULT_MIXED_DOWN_CANVAS: HTMLCanvasElement = {} as HTMLCanvasElement
 const DEFAULT_PROGRESS_MESSAGE: HTMLElement = {} as HTMLElement
 const DEFAULT_PROGRESS_BAR: HTMLElement = {} as HTMLElement
 const DEFAULT_PLAY_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
@@ -105,6 +106,7 @@ const DEFAULT_DOM_STATE: DomState = {
 	effectToggles: DEFAULT_EFFECT_TOGGLES,
 	frameInput: DEFAULT_FRAME_INPUT,
 	layersProgressBar: DEFAULT_LAYERS_PROGRESS_BAR,
+	mixedDownCanvas: DEFAULT_MIXED_DOWN_CANVAS,
 	pauseButton: DEFAULT_PAUSE_BUTTON,
 	playButton: DEFAULT_PLAY_BUTTON,
 	progressBar: DEFAULT_PROGRESS_BAR,

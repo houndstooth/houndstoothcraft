@@ -8,6 +8,7 @@ export {
 	getCurrentContext,
 	mixDownContexts,
 	saveCanvas,
+	setupMixedDownContext,
 
 	DataBlob,
 } from './canvas/indexForTest'
@@ -35,7 +36,6 @@ export {
 	makeId,
 	saveBlob,
 	storeDomElements,
-	storeMixedDownContext,
 
 	Dimensions,
 	Px,

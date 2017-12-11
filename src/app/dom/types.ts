@@ -13,6 +13,7 @@ interface DomState {
 	effectToggles: { [_: string ]: HTMLInputElement },
 	frameInput: HTMLInputElement,
 	layersProgressBar: HTMLElement,
+	mixedDownCanvas: HTMLCanvasElement,
 	pauseButton: HTMLButtonElement,
 	playButton: HTMLButtonElement,
 	progressBar: HTMLElement,

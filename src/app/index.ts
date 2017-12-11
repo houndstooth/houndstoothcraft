@@ -10,7 +10,6 @@ export {
 	attachControlHandlers,
 	createEffectToggles,
 	storeDomElements,
-	storeMixedDownContext,
 
 	Dimensions,
 	DomState,

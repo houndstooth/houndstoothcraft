@@ -4,7 +4,6 @@ import * as createDescription from './createDescription'
 import * as createEffectToggles from './createEffectToggles'
 import * as saveBlob from './saveBlob'
 import * as storeDomElements from './storeDomElements'
-import * as storeMixedDownContext from './storeMixedDownContext'
 
 export {
 	attachControlHandlers,
@@ -13,7 +12,6 @@ export {
 	createEffectToggles,
 	saveBlob,
 	storeDomElements,
-	storeMixedDownContext,
 }
 export {
 	Dimensions,

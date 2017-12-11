@@ -5,7 +5,7 @@ import {
 	constants,
 	from,
 	NullarySideEffector,
-	storeMixedDownContext,
+	setupMixedDownContext,
 } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import testMarkersClear from './testMarkersClear'
@@ -40,7 +40,8 @@ const activateTestMarkerCanvas: NullarySideEffector =
 		const mixedDownCanvas: HTMLCanvasElement = document.querySelector('#mixed-down-canvas') as HTMLCanvasElement || document.createElement('canvas')
 		mixedDownCanvas.setAttribute('id', 'mixed-down-canvas')
 		testCanvasDisplayArea.appendChild(mixedDownCanvas)
-		storeMixedDownContext.default()
+		appState.dom.mixedDownCanvas = mixedDownCanvas
+		setupMixedDownContext.default()
 	}
 
 export default activateTestMarkerCanvas

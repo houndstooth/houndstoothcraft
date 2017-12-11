@@ -3,6 +3,7 @@ import * as clearMixedDownContext from './clearMixedDownContext'
 import * as exportCanvas from './exportCanvas'
 import * as getCurrentContext from './getCurrentContext'
 import * as mixDownContexts from './mixDownContexts'
+import * as setupMixedDownContext from './setupMixedDownContext'
 
 export {
 	clearContexts,
@@ -10,6 +11,7 @@ export {
 	exportCanvas,
 	getCurrentContext,
 	mixDownContexts,
+	setupMixedDownContext,
 }
 export {
 	CanvasState,

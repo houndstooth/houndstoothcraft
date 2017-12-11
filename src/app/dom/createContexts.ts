@@ -9,7 +9,6 @@ import { Dimensions } from './types'
 
 const createContexts: NullarySideEffector =
 	(): void => {
-		console.log('why are you missing?', appState.dom)
 		scaleElement({ element: appState.dom.canvasContainer, dimensions: to.Dimensions([ CANVAS_SIZE, CANVAS_SIZE ]) })
 		appState.dom.canvasContainer.innerHTML = ''
 

@@ -5,9 +5,9 @@ import {
 	createEffectToggles,
 	executeSelectedEffects,
 	NamedEffect,
+	setupMixedDownContext,
 	startUp,
 	storeDomElements,
-	storeMixedDownContext,
 } from '../../../../src/indexForTest'
 
 const subject: (_: NamedEffect[]) => void = startUp.default
@@ -17,7 +17,7 @@ describe('start up', () => {
 	beforeEach(() => {
 		spyOn(storeDomElements, 'default')
 		spyOn(buildSettingNamesToPathsMap, 'default')
-		spyOn(storeMixedDownContext, 'default')
+		spyOn(setupMixedDownContext, 'default')
 		spyOn(createEffectToggles, 'default')
 		spyOn(attachControlHandlers, 'default')
 		spyOn(executeSelectedEffects, 'default')
@@ -38,8 +38,8 @@ describe('start up', () => {
 		expect(buildSettingNamesToPathsMap.default).toHaveBeenCalled()
 	})
 
-	it('stores the mixed down context onto the app state', () => {
-		expect(storeMixedDownContext.default).toHaveBeenCalled()
+	it('sets up the mixed down context', () => {
+		expect(setupMixedDownContext.default).toHaveBeenCalled()
 	})
 
 	it('creates the effect toggles from all the effects in the effects module', () => {

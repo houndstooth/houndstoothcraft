@@ -1,6 +1,7 @@
 import * as effects from '../../../../effects'
 // tslint:disable-next-line:no-reaching-imports
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
+import { appState } from '../../../../src/app/appState'
 import {
 	colorSettings,
 	createEffectToggles,
@@ -11,7 +12,7 @@ import {
 } from '../../../../src/indexForTest'
 import { buildMockElement } from '../../../unit'
 
-xdescribe('controls', () => {
+describe('controls', () => {
 	describe('effect toggles', () => {
 		beforeEach(() => {
 			spyOn(executeGridAndMaybeLogging, 'default')
@@ -22,6 +23,7 @@ xdescribe('controls', () => {
 			descriptionsContainer.setAttribute('id', 'descriptions-container')
 			descriptionsContainer.style.display = 'none'
 			document.body.appendChild(descriptionsContainer)
+			appState.dom.descriptionsContainer = descriptionsContainer
 		})
 
 		it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {

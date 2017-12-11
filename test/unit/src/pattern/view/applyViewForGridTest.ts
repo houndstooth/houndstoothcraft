@@ -1,4 +1,9 @@
-import { applyBackgroundColor, applyOpacity, applyViewForGrid, NullarySideEffector } from '../../../../../src/indexForTest'
+import {
+	applyBackgroundColor,
+	applyOpacity,
+	applyViewForGrid,
+	NullarySideEffector,
+} from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = applyViewForGrid.default
 

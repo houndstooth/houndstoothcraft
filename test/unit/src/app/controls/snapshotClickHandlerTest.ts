@@ -1,4 +1,9 @@
-import { exportCanvas, mixDownContexts, NullarySideEffector, snapshotClickHandler } from '../../../../../src/indexForTest'
+import {
+	exportCanvas,
+	mixDownContexts,
+	NullarySideEffector,
+	snapshotClickHandler,
+} from '../../../../../src/indexForTest'
 
 const subject: NullarySideEffector = snapshotClickHandler.default
 

@@ -7,6 +7,7 @@
       true,
       1000
     ],
-    "no-magic-numbers": false
+    "no-magic-numbers": false,
+    "no-reaching-imports": false
   }
 }

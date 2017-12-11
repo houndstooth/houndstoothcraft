@@ -65,7 +65,7 @@ import * as initializePatternState from './initializePatternState'
 import * as patternState from './patternState'
 export {
 	patternState,
-	initializePatternState
+	initializePatternState,
 }
 
 export {

@@ -1,4 +1,14 @@
-import { applyViewForShape, buildFill, buildPath, Color, fill, fillPath, Outline, Path, to } from '../../../../../src/indexForTest'
+import {
+	applyViewForShape,
+	buildFill,
+	buildPath,
+	Color,
+	fill,
+	fillPath,
+	Outline,
+	Path,
+	to,
+} from '../../../../../src/indexForTest'
 
 const subject: (_: { outline: Outline, shapeColor: Color }) => void = fill.default
 

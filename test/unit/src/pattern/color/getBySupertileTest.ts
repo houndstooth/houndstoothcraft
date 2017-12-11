@@ -1,4 +1,10 @@
-import { Address, getBySupertile, GetShapeColorIndicesWithOffset, ShapeColorIndex, to } from '../../../../../src/indexForTest'
+import {
+	Address,
+	getBySupertile,
+	GetShapeColorIndicesWithOffset,
+	ShapeColorIndex,
+	to,
+} from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
 const subject: GetShapeColorIndicesWithOffset = getBySupertile.default

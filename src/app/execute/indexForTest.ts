@@ -12,6 +12,7 @@ import * as executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
 import * as executeLayer from './executeLayer'
 import * as executePattern from './executePattern'
 import * as executeSelectedEffects from './executeSelectedEffects'
+import * as getCurrentLayer from './getCurrentLayer'
 import * as gridComplete from './gridComplete'
 import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
 import * as incrementTilesCompleted from './incrementTilesCompleted'
@@ -20,7 +21,6 @@ import * as setTileCount from './setTileCount'
 import * as standardAnimation from './standardAnimation'
 import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 import * as updateProgress from './updateProgress'
-import * as getCurrentLayer from './getCurrentLayer'
 
 export {
 	callFunctionsPerSetting,

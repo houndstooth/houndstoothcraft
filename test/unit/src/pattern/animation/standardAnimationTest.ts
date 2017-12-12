@@ -2,10 +2,9 @@ import { getCurrentFrame, standardAnimation, to } from '../../../../../src/index
 import { isCloseTo } from '../../../../helpers'
 import Spy = jasmine.Spy
 
-const subject: () => number = standardAnimation.default
-
 describe('standard animation', () => {
 	it('multiplies the property by the standard animation rate each frame', () => {
+		const subject: () => number = standardAnimation.default
 		const getCurrentFrameSpy: Spy = spyOn(getCurrentFrame, 'default')
 
 		getCurrentFrameSpy.and.returnValue(to.Frame(0))

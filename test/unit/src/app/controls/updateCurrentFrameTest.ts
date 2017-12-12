@@ -1,9 +1,10 @@
 import { appState, Frame, to, updateCurrentFrame } from '../../../../../src/indexForTest'
 
-const subject: (_: Frame) => void = updateCurrentFrame.default
 
 describe('update current frame', () => {
+	let subject: (_: Frame) => void
 	beforeEach(() => {
+		subject = updateCurrentFrame.default
 		subject(to.Frame(543))
 	})
 

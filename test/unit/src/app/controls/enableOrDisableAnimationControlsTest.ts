@@ -8,9 +8,12 @@ import {
 	Unit,
 } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = enableOrDisableAnimationControls.default
-
 describe('enable or disable animation controls', () => {
+	let subject: NullarySideEffector
+	beforeEach(() => {
+		subject = enableOrDisableAnimationControls.default
+	})
+
 	describe('when the main houndstooth has animations', () => {
 		beforeEach(() => {
 			const animationsPattern: PatternFunctions = { tileSettings: { tileSize: (): Unit => to.Unit(0) } }

@@ -5,7 +5,6 @@ import { SetPatternSettingForTest } from './types'
 
 const setPatternSettingForTest: SetPatternSettingForTest =
 	(settingName: any, value: any): void => {
-		console.log('is it just slightly off or something?', appState.settings.settingNamesToPathsMap)
 		const baseSettingsPath: SettingsPath = appState.settings.settingNamesToPathsMap[ settingName ]
 
 		const parentSetting: any = getPatternSettingOrCreatePath.default({

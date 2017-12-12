@@ -10,10 +10,9 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void = callFunctionsPerSetting.default
-
 describe('call functions per setting', () => {
 	it('updates the current pattern with the result of each settings function', () => {
+		const subject: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void = callFunctionsPerSetting.default
 		const oldTileSize: Unit = to.Unit(888)
 		const tileSizeSettingsFunctionSpy: Spy = jasmine.createSpy('tileSizeSettingsFunction')
 		const newTileSize: Unit = to.Unit(999)

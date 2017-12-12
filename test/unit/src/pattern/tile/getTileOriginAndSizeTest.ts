@@ -9,11 +9,15 @@ import {
 } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: (_: { gridAddress: Address }) => TileOriginAndSize | undefined = getTileOriginAndSize.default
-
 describe('get tile origin and size', () => {
-	const gridAddressForSubject: Address = to.Address([ 7, 11 ])
-	const tileSize: Unit = to.Unit(40)
+	let subject: (_: { gridAddress: Address }) => TileOriginAndSize | undefined
+	let gridAddressForSubject: Address
+	let tileSize: Unit
+	beforeEach(() => {
+		subject = getTileOriginAndSize.default
+		gridAddressForSubject = to.Address([ 7, 11 ])
+		tileSize = to.Unit(40)
+	})
 
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
 		setPatternSettingForTest('tileSettings', { tileSize })

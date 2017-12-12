@@ -1,9 +1,8 @@
 import { deeperPath, FullSettingsPath, SettingsPath, SettingsStep, to } from '../../../../../src/indexForTest'
 
-const subject: (_: FullSettingsPath) => SettingsPath = deeperPath.default
-
 describe('deeper path', () => {
 	it('does not mutate the passed objects path', () => {
+		const subject: (_: FullSettingsPath) => SettingsPath = deeperPath.default
 		const originalSettingsPath: SettingsPath = to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ])
 		const settingName: SettingsStep = to.SettingsStep('colorSet')
 

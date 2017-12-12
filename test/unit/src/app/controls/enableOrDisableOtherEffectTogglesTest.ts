@@ -10,9 +10,12 @@ import {
 import { buildMockElement } from '../../../helpers'
 import Spy = jasmine.Spy
 
-const subject: NullarySideEffector = enableOrDisableOtherEffectToggles.default
-
 describe('enableOrDisableOtherEffectToggles', () => {
+	let subject: NullarySideEffector
+	beforeEach(() => {
+		subject = enableOrDisableOtherEffectToggles.default
+	})
+
 	it('checks each available effect for conflicts with the effects the user currently has combined', () => {
 		const effectsSelected: NamedEffect[] = []
 		appState.controls.selectedEffects = effectsSelected

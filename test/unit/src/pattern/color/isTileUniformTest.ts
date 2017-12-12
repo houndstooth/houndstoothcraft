@@ -1,10 +1,10 @@
 import { ColorSet, isTileUniform, ShapeColorIndex, to } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean = isTileUniform.default
-
 describe('is tile uniform', () => {
+	let subject: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean
 	beforeEach(() => {
+		subject = isTileUniform.default
 		const colorSet: ColorSet = to.ColorSet([
 			{ r: 101, g: 100, b: 50, a: 0.5 },
 			{ r: 2, g: 100, b: 50, a: 0.5 },

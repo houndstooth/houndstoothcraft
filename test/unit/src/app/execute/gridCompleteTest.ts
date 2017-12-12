@@ -7,12 +7,13 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: NullarySideEffector) => void = gridComplete.default
 
 describe('grid complete', () => {
+	let subject: (_: NullarySideEffector) => void
 	const fakeGridProgressIntervalItself: number = 9275
 	let resolveGrid: Spy
 	beforeEach(() => {
+		subject = gridComplete.default
 		resolveGrid = jasmine.createSpy('resolveGrid')
 
 		spyOn(globalWrapper.window, 'setInterval').and.callFake((fn: NullarySideEffector) => {

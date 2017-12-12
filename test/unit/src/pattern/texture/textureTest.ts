@@ -10,10 +10,9 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: TextureParams) => void = texture.default
-
 describe('texture', () => {
 	it('builds a path from the outline, clips the context on it, renders the texture, then resets the clip', () => {
+		const subject: (_: TextureParams) => void = texture.default
 		spyOn(setClip, 'default')
 		spyOn(resetClip, 'default')
 

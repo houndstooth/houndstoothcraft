@@ -1,9 +1,10 @@
 import { appState, thisPatternHasNotBeenCanceled } from '../../../../../src/indexForTest'
 
-const subject: (_: number) => boolean = thisPatternHasNotBeenCanceled.default
 
 describe('this pattern has not been canceled', () => {
+	let subject: (_: number) => boolean
 	beforeEach(() => {
+		subject = thisPatternHasNotBeenCanceled.default
 		appState.execute.patternRef = 45
 	})
 

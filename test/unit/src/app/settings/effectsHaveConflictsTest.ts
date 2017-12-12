@@ -1,8 +1,12 @@
 import { Effect, effectsHaveConflicts } from '../../../../../src/indexForTest'
 
-const subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean = effectsHaveConflicts.default
 
 describe('effects have conflicts', () => {
+	let subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean
+	beforeEach(() => {
+		subject = effectsHaveConflicts.default
+	})
+
 	it('returns false if there no conflicts on the animations, layers, and base patterns', () => {
 		const effect: Effect = {
 			animationsPattern: {

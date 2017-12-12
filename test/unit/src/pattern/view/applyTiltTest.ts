@@ -1,9 +1,12 @@
 import { applyTilt, Path, to } from '../../../../../src/indexForTest'
 import { pixelsAreClose, setPatternSettingForTest } from '../../../helpers'
 
-const subject: (_: Path) => Path  = applyTilt.default
-
 describe('apply tilt', () => {
+	let subject: (_: Path) => Path
+	beforeEach(() => {
+		subject = applyTilt.default
+	})
+
 	it('rotates the path about the canvas center', () => {
 		setPatternSettingForTest('rotateViewAboutCanvasCenter', to.Radian(Math.PI / 2))
 		const path: Path = to.Path([

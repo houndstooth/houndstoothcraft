@@ -1,9 +1,13 @@
 import { appState, createDescription, globalWrapper } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: string) => void = createDescription.default
 
 describe('create description', () => {
+	let subject: (_: string) => void
+	beforeEach(() => {
+		subject = createDescription.default
+	})
+
 	it('creates a new description in the descriptions container', () => {
 		const children: HTMLElement[] = []
 

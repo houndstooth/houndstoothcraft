@@ -13,9 +13,13 @@ import {
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 
-const subject: (_?: ComposeMainHoundstoothParams) => void = composeMainHoundstooth.default
 
 describe('composeMainHoundstooth', () => {
+	let subject: (_?: ComposeMainHoundstoothParams) => void
+	beforeEach(() => {
+		subject = composeMainHoundstooth.default
+	})
+
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(globalWrapper.console, 'log')
 

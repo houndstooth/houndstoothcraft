@@ -8,13 +8,14 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: AnimationParams) => NullarySideEffector = buildAnimationIntervalFunction.default
 
 describe('build animation interval function returns a function which', () => {
+	let subject: (_: AnimationParams) => NullarySideEffector
 	let intervalFunction: NullarySideEffector
 	let animationFunctionSpy: Spy
 	let resolveAnimationSpy: Spy
 	beforeEach(() => {
+		subject = buildAnimationIntervalFunction.default
 		appState.controls.animating = true
 		spyOn(clearIntervalAndRemoveFromState, 'default')
 		animationFunctionSpy = jasmine.createSpy('animationFunction')

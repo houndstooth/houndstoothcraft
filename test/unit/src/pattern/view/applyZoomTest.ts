@@ -1,12 +1,12 @@
 import { applyZoom, Path, to } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: (_: Path) => Path = applyZoom.default
-
 describe('apply zoom', () => {
+	let subject: (_: Path) => Path
 	const zoom: number = 2
 	let path: Path
 	beforeEach(() => {
+		subject = applyZoom.default
 		path = to.Path([
 			[ 50, 50 ],
 			[ 100, 50 ],

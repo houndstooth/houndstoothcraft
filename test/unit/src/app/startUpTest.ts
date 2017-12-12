@@ -10,11 +10,13 @@ import {
 	storeDomElements,
 } from '../../../../src/indexForTest'
 
-const subject: (_: NamedEffect[]) => void = startUp.default
 
 describe('start up', () => {
+	let subject: (_: NamedEffect[]) => void
 	let allEffects: NamedEffect[]
 	beforeEach(() => {
+		subject = startUp.default
+
 		spyOn(storeDomElements, 'default')
 		spyOn(buildSettingNamesToPathsMap, 'default')
 		spyOn(setupMixedDownContext, 'default')

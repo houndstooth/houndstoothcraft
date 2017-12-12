@@ -8,10 +8,10 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: Outline) => Path = applyViewForShape.default
 
 describe('adjusts a shape\'s path for view', () => {
 	it('applies any relevant zoom, scroll, and tilt', () => {
+		const subject: (_: Outline) => Path = applyViewForShape.default
 		const outline: Outline = to.Outline([ [ 3, 4 ], [ 5, 6 ] ])
 		const path: Path = to.Path([ [ 3, 4 ], [ 5, 6 ] ])
 

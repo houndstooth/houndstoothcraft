@@ -9,13 +9,17 @@ import {
 	Unit,
 } from '../../../../../src/indexForTest'
 
-const subject: GetStripeOutline = stripeOutline.default
-
 describe('stripe outline', () => {
-	const tileOrigin: Coordinate = to.Coordinate([ 0, 0 ])
-	const tileSize: Unit = to.Unit(1)
+	let subject: GetStripeOutline
+	let tileOrigin: Coordinate
+	let tileSize: Unit
 	let stripeStart: StripePosition
 	let stripeEnd: StripePosition
+	beforeEach(() => {
+		subject = stripeOutline.default
+		tileOrigin = to.Coordinate([ 0, 0 ])
+		tileSize = to.Unit(1)
+	})
 
 	describe('with no outline options (shouldnt happen but currently struggling with params groupings', () => {
 		it('returns an empty outline', () => {

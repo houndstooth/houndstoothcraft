@@ -13,12 +13,15 @@ import {
 const subject: (_: ReferencedGridAddress) => void = maybeTile.default
 
 describe('maybe tile', () => {
-	const gridAddress: Address = to.Address([ 5, 3 ])
-	const tileOrigin: Coordinate = to.Coordinate([ 4, 4 ])
-	const tileSize: Unit = to.Unit(7)
+	let gridAddress: Address
+	let tileOrigin: Coordinate
+	let tileSize: Unit
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
+		gridAddress = to.Address([ 5, 3 ])
+		tileOrigin = to.Coordinate([ 4, 4 ])
+		tileSize = to.Unit(7)
 		spyOn(tile, 'default')
 		spyOn(incrementTilesCompleted, 'default')
 	})

@@ -9,9 +9,12 @@ import {
 	snapshotClickHandler,
 } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = attachControlHandlers.default
-
 describe('attach control handlers', () => {
+	let subject: NullarySideEffector
+	beforeEach(() => {
+		subject = attachControlHandlers.default
+	})
+
 	it('attaches the handlers for the controls', () => {
 		subject()
 

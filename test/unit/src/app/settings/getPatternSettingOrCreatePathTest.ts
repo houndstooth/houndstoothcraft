@@ -2,9 +2,13 @@
 
 import { getPatternSettingOrCreatePath, SettingsPath, to } from '../../../../../src/indexForTest'
 
-const subject: (_: { pattern: any, settingsPath: SettingsPath }) => any = getPatternSettingOrCreatePath.default
 
 describe('get pattern setting or create path', () => {
+	let subject: (_: { pattern: any, settingsPath: SettingsPath }) => any
+	beforeEach(() => {
+		subject = getPatternSettingOrCreatePath.default
+	})
+
 	it('accesses child setting if it exists', () => {
 		const expectedSetting: any = {}
 		const pattern: any = {

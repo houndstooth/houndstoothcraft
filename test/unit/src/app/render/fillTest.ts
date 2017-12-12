@@ -10,13 +10,14 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: { outline: Outline, shapeColor: Color }) => void = fill.default
-
 describe('fill', () => {
+	let subject: (_: { outline: Outline, shapeColor: Color }) => void
 	const shapeColor: Color = { a: 1 }
 
-	const path: Path = to.Path([])
+	let path: Path
 	beforeEach(() => {
+		subject = fill.default
+		path = to.Path([])
 		spyOn(applyViewForShape, 'default').and.returnValue(path)
 	})
 

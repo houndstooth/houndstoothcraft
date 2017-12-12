@@ -8,10 +8,9 @@ import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 import { buildMockContext } from '../../../helpers'
 
-const subject: NullarySideEffector = clearContexts.default
-
 describe('clear contexts', () => {
 	it('calls clear on each context, with the canvas size', () => {
+		const subject: NullarySideEffector = clearContexts.default
 		const clearContextSpy: Spy = spyOn(clearContext, 'default')
 		const context1: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 		const context2: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D

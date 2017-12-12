@@ -1,8 +1,11 @@
 import { AssignmentMode, composePatterns, ComposePatternsParams, Pattern } from '../../../../../src/indexForTest'
 
-const subject: (_: ComposePatternsParams) => void = composePatterns.default
-
 describe('compose patterns', () => {
+	let subject: (_: ComposePatternsParams) => void
+	beforeEach(() => {
+		subject = composePatterns.default
+	})
+
 	it('merges one pattern onto the other', () => {
 		const patternToBeMergedOnto: Pattern = {
 			colorSettings: {

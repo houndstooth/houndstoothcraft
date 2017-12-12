@@ -10,17 +10,20 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: SolidParams) => void = solid.default
 
 describe('solid', () => {
-	const shapeColorIndex: ShapeColorIndex = to.ShapeColorIndex(8)
-	const outline: Outline = to.Outline([])
+	let subject: (_: SolidParams) => void
+	let shapeColorIndex: ShapeColorIndex
+	let outline: Outline
 
 	const shapeColor: Color = { a: 1 }
 	const transparentColor: Color = { a: 0 }
 
 	let getColorSpy: Spy
 	beforeEach(() => {
+		subject = solid.default
+		outline = to.Outline([])
+		shapeColorIndex = to.ShapeColorIndex(8)
 		spyOn(fill, 'default')
 		getColorSpy = spyOn(getColor, 'default').and.returnValue(shapeColor)
 	})

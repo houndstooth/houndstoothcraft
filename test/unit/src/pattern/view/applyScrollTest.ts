@@ -1,18 +1,22 @@
 import { applyScroll, constants, from, Path, to, Unit } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: (_: Path) => Path = applyScroll.default
 
 describe('apply scroll', () => {
+	let subject: (_: Path) => Path
 	const { CANVAS_SIZE } = constants
 	const zoom: number = 10
-	const tileSize: Unit = to.Unit(40)
-	const path: Path = to.Path([
-		[ 3, 5 ],
-		[ 4, 5 ],
-		[ 3, 4 ],
-	])
+	let tileSize: Unit
+	let path: Path
 	beforeEach(() => {
+		subject = applyScroll.default
+		tileSize = to.Unit(40)
+		path = to.Path([
+			[ 3, 5 ],
+			[ 4, 5 ],
+			[ 3, 4 ],
+		])
+
 		setPatternSettingForTest('zoom', zoom)
 		setPatternSettingForTest('tileSize', tileSize)
 	})

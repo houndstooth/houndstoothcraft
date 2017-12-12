@@ -1,8 +1,11 @@
 import { appState, NullarySideEffector, pauseClickHandler } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = pauseClickHandler.default
-
 describe('pause click handler', () => {
+	let subject: NullarySideEffector
+	beforeEach(() => {
+		subject = pauseClickHandler.default
+	})
+
 	it('sets animating to false', () => {
 		appState.controls.animating = true
 

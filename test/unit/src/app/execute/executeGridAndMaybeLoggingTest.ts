@@ -1,11 +1,12 @@
 import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../src/indexForTest'
 
-const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGridAndMaybeLogging.default
 
 describe('execute grid and maybe logging', () => {
+	let subject: (_: { thisPatternRef: number }) => Promise<void>
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
+		subject = executeGridAndMaybeLogging.default
 		appState.controls.currentFrame = to.Frame(96)
 		appState.execute.currentLayer = to.Layer(54)
 

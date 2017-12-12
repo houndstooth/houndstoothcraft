@@ -1,9 +1,10 @@
 import { appState, completeLayers, NullarySideEffector, to } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = completeLayers.default
 
 describe('complete layers', () => {
+	let subject: NullarySideEffector
 	beforeEach(() => {
+		subject = completeLayers.default
 		appState.execute.currentLayer = to.Layer(497)
 
 		subject()

@@ -1,7 +1,4 @@
-import { appState } from '../../src/app/appState'
-import { Frame } from '../../src/pattern/animation/types'
-import { Layer } from '../../src/pattern/layer/types'
-import { NamedEffect } from '../../src/pattern/types'
+import { appState, Frame, Layer, NamedEffect } from '../../src/indexForTest'
 
 const setCurrentFrame: (_: Frame) => void =
 	(frame: Frame): void => {

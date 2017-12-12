@@ -1,9 +1,9 @@
 import { Coordinate, Radian, rotateCoordinate, RotateCoordinateParams, to } from '../../../../../src/indexForTest'
 
-const subject: (_: RotateCoordinateParams) => Coordinate = rotateCoordinate.default
 
 describe('rotate coordinate', () => {
 	it('rotates one coordinate about another', () => {
+		const subject: (_: RotateCoordinateParams) => Coordinate = rotateCoordinate.default
 		const coordinate: Coordinate = to.Coordinate([ 2, 0 ])
 		const fixedCoordinate: Coordinate = to.Coordinate([ 1, 1 ])
 		const rotation: Radian = to.Radian(Math.PI / 2)

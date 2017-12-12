@@ -15,19 +15,25 @@ import {
 import { noop, setPatternSettingForTest } from '../../../helpers'
 import Spy = jasmine.Spy
 
-const subject: (_: ShapeParams) => void = shape.default
 
 describe('shape', () => {
-	const tileOrigin: Coordinate = to.Coordinate([ 11, 13 ])
-	const tileSize: Unit = to.Unit(45)
-	const shapeColorIndices: ShapeColorIndex[] = to.ShapeColorIndices([])
+	let subject: (_: ShapeParams) => void
+	let tileOrigin: Coordinate
+	let tileSize: Unit
+	let shapeColorIndices: ShapeColorIndex[]
 	const stripeIndex: number = 7
 	const shapeColorIndex: number = 45
-	const outlineOptions: OutlineOptions = { stripeStart: to.StripePosition(0), stripeEnd: to.StripePosition(1) }
+	let outlineOptions: OutlineOptions
 
 	let getOutlineSpy: Spy
 
 	beforeEach(() => {
+		tileOrigin = to.Coordinate([ 11, 13 ])
+		tileSize = to.Unit(45)
+		shapeColorIndices = to.ShapeColorIndices([])
+		outlineOptions = { stripeStart: to.StripePosition(0), stripeEnd: to.StripePosition(1) }
+
+		subject = shape.default
 		getOutlineSpy = jasmine.createSpy('getOutlineSpy')
 
 		spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)

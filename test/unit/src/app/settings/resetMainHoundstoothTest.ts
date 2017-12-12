@@ -6,10 +6,10 @@ import {
 	resetMainHoundstooth,
 } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = resetMainHoundstooth.default
 
 describe('reset main houndstooth', () => {
 	it('returns the main houndstooth to its default state', () => {
+		const subject: NullarySideEffector = resetMainHoundstooth.default
 		const overrides: Effect = {
 			basePattern: { colorSettings: { opacity: 0 } },
 		}

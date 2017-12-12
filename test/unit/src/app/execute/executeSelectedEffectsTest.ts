@@ -14,13 +14,14 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_?: { overrides?: Effect }) => void = executeSelectedEffects.default
 
 describe('execute selected effects', () => {
+	let subject: (_?: { overrides?: Effect }) => void
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
+		subject = executeSelectedEffects.default
 		spyOn(createContexts, 'default')
 		spyOn(executePattern, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 		spyOn(executeAnimation, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))

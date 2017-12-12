@@ -1,10 +1,11 @@
 import { appState, DataBlob, Frame, saveBlob, saveCanvas, to } from '../../../../../src/indexForTest'
 
-const subject: (_: { currentFrame: Frame, result: DataBlob }) => void = saveCanvas.default
 
 describe('save canvas', () => {
+	let subject: (_: { currentFrame: Frame, result: DataBlob }) => void
 	const result: DataBlob = {}
 	beforeEach(() => {
+		subject = saveCanvas.default
 		spyOn(saveBlob, 'default')
 	})
 

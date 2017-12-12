@@ -5,10 +5,11 @@ import {
 	snapshotClickHandler,
 } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = snapshotClickHandler.default
 
 describe('snapshot click handler', () => {
+	let subject: NullarySideEffector
 	beforeEach(() => {
+		subject = snapshotClickHandler.default
 		spyOn(mixDownContexts, 'default')
 		spyOn(exportCanvas, 'default')
 

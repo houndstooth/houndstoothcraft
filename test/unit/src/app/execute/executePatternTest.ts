@@ -13,13 +13,14 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: ExecuteParams) => Promise<void> = executePattern.default
 
 describe('execute pattern', () => {
+	let subject: (_: ExecuteParams) => Promise<void>
 	const endLayer: Layer = to.Layer(4)
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 	beforeEach(() => {
+		subject = executePattern.default
 		appState.controls.endLayer = endLayer
 		appState.execute.patternRef = 99
 	})

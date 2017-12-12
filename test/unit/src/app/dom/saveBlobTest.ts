@@ -4,10 +4,9 @@ import { DataBlob, globalWrapper, saveBlob } from '../../../../../src/indexForTe
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: { blob: DataBlob, name: string }) => void = saveBlob.default
-
 describe('save blob', () => {
 	it('creates a download link and clicks it', () => {
+		const subject: (_: { blob: DataBlob, name: string }) => void = saveBlob.default
 		spyOn(globalWrapper.window.URL, 'createObjectURL').and.returnValue('the url')
 
 		const clickSpy: Spy = jasmine.createSpy('click')

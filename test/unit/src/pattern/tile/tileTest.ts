@@ -20,17 +20,21 @@ import {
 } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: (_: DefinedTileParams) => void = tile.default
-
 describe('tile', () => {
 	const { PERIMETER_SCALAR } = constants
-	const gridAddress: Address = to.Address([ 3, 5 ])
-	const tileOrigin: Coordinate = to.Coordinate([ 7, 11 ])
-	const tileSize: Unit = to.Unit(13)
+	let gridAddress: Address
+	let tileOrigin: Coordinate
+	let tileSize: Unit
 	let shapeSpy: Spy
 	let getShapeColorIndicesSpy: Spy
 	let isTileUniformSpy: Spy
+	let subject: (_: DefinedTileParams) => void
+
 	beforeEach(() => {
+		subject = tile.default
+		gridAddress = to.Address([ 3, 5 ])
+		tileOrigin = to.Coordinate([ 7, 11 ])
+		tileSize = to.Unit(13)
 		shapeSpy = spyOn(shape, 'default')
 		spyOn(squareOutline, 'default')
 		spyOn(stripeOutline, 'default')

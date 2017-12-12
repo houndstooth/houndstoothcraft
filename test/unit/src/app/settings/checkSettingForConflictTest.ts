@@ -7,14 +7,15 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: CheckSettingForConflict) => boolean = checkSettingForConflict.default
 
 describe('check setting for conflict', () => {
+	let subject: (_: CheckSettingForConflict) => boolean
 	let settingsPath: SettingsPath
 	let settingName: SettingsStep
 	let setting: {}
 	let settingCheckingForConflict: {}
 	beforeEach(() => {
+		subject = checkSettingForConflict.default
 		spyOn(globalWrapper.console, 'warn')
 	})
 

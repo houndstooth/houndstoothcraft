@@ -1,8 +1,11 @@
 import { appState, Frame, getCurrentFrame, to } from '../../../../../src/indexForTest'
 
-const subject: () => Frame = getCurrentFrame.default
-
 describe('get current frame', () => {
+	let subject: () => Frame
+	beforeEach(() => {
+		subject = getCurrentFrame.default
+	})
+
 	it('returns the current frame', () => {
 		appState.controls.currentFrame = to.Frame(57)
 

@@ -16,9 +16,9 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: ExecuteParams) => NullaryVoidPromise = buildAnimationFunction.default
 
 describe('build animation function returns an animation function', () => {
+	let subject: (_: ExecuteParams) => NullaryVoidPromise
 	let animationFunction: NullaryVoidPromise
 	let executePatternSpy: Spy
 	let clearContextsSpy: Spy
@@ -27,6 +27,7 @@ describe('build animation function returns an animation function', () => {
 	const animationFunctionObjects: SettingsFunctionObject[] = []
 
 	beforeEach(() => {
+		subject = buildAnimationFunction.default
 		executePatternSpy = spyOn(executePattern, 'default')
 		spyOn(callFunctionsPerSetting, 'default')
 		spyOn(updateCurrentFrame, 'default')

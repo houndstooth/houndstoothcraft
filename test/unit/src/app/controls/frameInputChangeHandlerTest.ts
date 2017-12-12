@@ -6,9 +6,12 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (event: Event) => void = frameInputChangeHandler.default
-
 describe('frame input change handler', () => {
+	let subject: (event: Event) => void
+	beforeEach(() => {
+		subject = frameInputChangeHandler.default
+	})
+
 	it('sets the current frame', () => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeSelectedEffects, 'default')

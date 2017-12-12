@@ -6,9 +6,8 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: { effect: NamedEffect }) => HTMLLabelElement = createLabel.default
-
 describe('create label', () => {
+	let subject: (_: { effect: NamedEffect }) => HTMLLabelElement
 	let returnedLabel: HTMLLabelElement
 	let label: HTMLLabelElement
 	const children: HTMLElement[] = []
@@ -18,6 +17,7 @@ describe('create label', () => {
 	const attributeObject: { 'for': string } = { for: '' }
 
 	beforeEach(() => {
+		subject = createLabel.default
 		label = buildMockElement({ children, attributeObject }) as HTMLLabelElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(label)
 

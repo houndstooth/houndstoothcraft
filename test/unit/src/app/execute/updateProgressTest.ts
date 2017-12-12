@@ -1,9 +1,9 @@
 import { appState, NullarySideEffector, to, updateProgress } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = updateProgress.default
-
 describe('update progress', () => {
+	let subject: NullarySideEffector
 	beforeEach(() => {
+		subject = updateProgress.default
 		appState.controls.currentFrame = to.Frame(909)
 		appState.execute.tileCount = 200000
 		appState.execute.tilesCompleted = 180001

@@ -5,9 +5,12 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = applyViewForGrid.default
-
 describe('apply view for grid', () => {
+	let subject: NullarySideEffector
+	beforeEach(() => {
+		subject = applyViewForGrid.default
+	})
+
 	it('applies background color', () => {
 		spyOn(applyBackgroundColor, 'default')
 

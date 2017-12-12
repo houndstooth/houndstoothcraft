@@ -9,11 +9,11 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockCanvas, buildMockContext } from '../../../helpers'
 
-const subject: NullarySideEffector = setupMixedDownContext.default
-
 describe('settings mixed down context', () => {
+	let subject: NullarySideEffector
 	let mixedDownContext: CanvasRenderingContext2D
 	beforeEach(() => {
+		subject = setupMixedDownContext.default
 		mixedDownContext = buildMockContext() as CanvasRenderingContext2D
 		appState.dom.mixedDownCanvas = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
 

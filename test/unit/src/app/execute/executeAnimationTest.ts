@@ -7,15 +7,16 @@ import {
 	SettingsFunctionObject,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void> = executeAnimation.default
 
 describe('execute animation', () => {
+	let subject: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void>
 	const animationFunction: (p: number) => number = (p: number): number => p
 
 	let layerFunctionObjects: SettingsFunctionObject[]
 	let animationFunctionObjects: SettingsFunctionObject[]
 
 	beforeEach(() => {
+		subject = executeAnimation.default
 		spyOn(animator, 'default')
 		spyOn(buildAnimationFunction, 'default').and.returnValue(animationFunction)
 		layerFunctionObjects = []

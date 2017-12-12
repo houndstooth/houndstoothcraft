@@ -7,12 +7,13 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: NullarySideEffector = playClickHandler.default
 
 describe('play click handler', () => {
+let subject: NullarySideEffector
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
+		subject = playClickHandler.default
 		spyOn(mixDownContexts, 'default')
 		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
 			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))

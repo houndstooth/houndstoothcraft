@@ -7,10 +7,11 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_?: BuildSettingNamesToPathsMapParams) => void = buildSettingNamesToPathsMap.default
 
 describe('build settings names to paths map', () => {
 	it('maps each setting\'s name to its full path in the pattern structure, saving onto the app state', () => {
+		const subject: (_?: BuildSettingNamesToPathsMapParams) => void = buildSettingNamesToPathsMap.default
+
 		appState.settings.settingNamesToPathsMap = {}
 		const settings: Pattern = {
 			colorSettings: {

@@ -5,10 +5,11 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-const subject: NullarySideEffector = gridProgressIntervalFunction.default
 
 describe('grid progress interval function', () => {
+	let subject: NullarySideEffector
 	beforeEach(() => {
+		subject = gridProgressIntervalFunction.default
 		spyOn(clearIntervalAndRemoveFromState, 'default')
 		spyOn(appState.execute, 'resolveGrid')
 		appState.execute.tileCount = 99

@@ -11,14 +11,16 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: ReferencedGridAddress) => void = asyncMaybeTile.default
 
 describe('async maybe tile', () => {
+	let subject: (_: ReferencedGridAddress) => void
 	let setTimeoutSpy: Spy
 	let thisPatternHasNotBeenCanceledSpy: Spy
-	const gridAddress: Address = to.Address([ 4, 5 ])
+	let gridAddress: Address
 	const thisPatternRef: number = 99
 	beforeEach(() => {
+		subject = asyncMaybeTile.default
+		gridAddress = to.Address([ 4, 5 ])
 		// tslint:disable-next-line:no-unsafe-any
 		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
 			fn()

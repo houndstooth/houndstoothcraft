@@ -8,12 +8,13 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-const subject: NullarySideEffector = createContexts.default
 
 describe('create contexts', () => {
+	let subject: NullarySideEffector
 	let canvasContainer: HTMLElement
 	let createContextSpy: Spy
 	beforeEach(() => {
+		subject = createContexts.default
 		createContextSpy = spyOn(createContext, 'default')
 
 		canvasContainer = buildMockElement() as HTMLElement

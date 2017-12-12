@@ -7,12 +7,13 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: { thisPatternRef: number }) => Promise<void> = executeGrid.default
 
 describe('execute grid', () => {
+	let subject: (_: { thisPatternRef: number }) => Promise<void>
 	const thisPatternRef: number = 99
 
 	beforeEach(() => {
+		subject = executeGrid.default
 		const fakeGridComplete: (resolveGrid: NullarySideEffector) => void =
 			(resolveGrid: NullarySideEffector): void => {
 				appState.execute.resolveGrid = resolveGrid

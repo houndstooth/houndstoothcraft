@@ -2,15 +2,17 @@ import { createEffectToggle, createEffectToggles, globalWrapper, NamedEffect } f
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: NamedEffect[]) => void = createEffectToggles.default
-
 describe('create effect toggles', () => {
+	let subject: (_: NamedEffect[]) => void
 	let createEffectToggleSpy: Spy
+	let effectTogglesContainer: HTMLElement
+	let moreEffectsMessage: HTMLElement
 	const children: HTMLElement[] = []
-	const effectTogglesContainer: HTMLElement = buildMockElement({ children }) as HTMLElement
 	const attributeObject: { id: string } = { id: '' }
-	const moreEffectsMessage: HTMLElement = buildMockElement({ attributeObject }) as HTMLElement
 	beforeEach(() => {
+		subject = createEffectToggles.default
+		effectTogglesContainer = buildMockElement({ children }) as HTMLElement
+		moreEffectsMessage = buildMockElement({ attributeObject }) as HTMLElement
 		createEffectToggleSpy = spyOn(createEffectToggle, 'default')
 		spyOn(globalWrapper.document, 'querySelector').and.returnValue(effectTogglesContainer)
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(moreEffectsMessage)

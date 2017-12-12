@@ -1,8 +1,11 @@
 import { appState, ConditionFunction, previousFrameHasFinished, to } from '../../../../../src/indexForTest'
 
-const subject: ConditionFunction = previousFrameHasFinished.default
-
 describe('previous frame has finished', () => {
+	let subject: ConditionFunction
+	beforeEach(() => {
+		subject = previousFrameHasFinished.default
+	})
+
 	it('is true when the grid has no tiles still in progress, and the pattern no layers still in progress', () => {
 		appState.execute.tilesCompleted = 0
 		appState.execute.currentLayer = to.Layer(0)

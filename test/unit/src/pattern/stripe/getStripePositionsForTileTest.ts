@@ -8,9 +8,12 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_?: { gridAddress?: Address }) => StripePosition[] = getStripePositionsForTile.default
-
 describe('get stripe positions for tile', () => {
+	let subject: (_?: { gridAddress?: Address }) => StripePosition[]
+	beforeEach(() => {
+		subject = getStripePositionsForTile.default
+	})
+
 	it('defaults to standard stripes', () => {
 		expect(subject()).toEqual(to.StripePositions([ 0, 0.5, 1, 1.5 ]))
 	})
@@ -18,7 +21,7 @@ describe('get stripe positions for tile', () => {
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions: StripePosition[] = []
 		const gridAddress: Address = to.Address([ 3, 5 ])
-		const currentSettings: stripePositionSettings.StripePositionSettings = patternState.get('stripePositionSettings')
+		const currentSettings: stripePositionSettings.StripePositionSettings = getFromPattern(patternState, 'stripePositionSettings')
 		const stripePositionsSpy: Spy = spyOn(currentSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)
 

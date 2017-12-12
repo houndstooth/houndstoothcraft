@@ -1,10 +1,9 @@
 import { appState, globalWrapper, NullarySideEffector, storeDomElements } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-const subject: NullarySideEffector = storeDomElements.default
-
 describe('store dom elements', () => {
 	it('puts references to important components on the page onto the app state', () => {
+		const subject: NullarySideEffector = storeDomElements.default
 		const canvasContainer: HTMLElement = buildMockElement() as HTMLElement
 		const descriptionsContainer: HTMLElement = buildMockElement() as HTMLElement
 		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement

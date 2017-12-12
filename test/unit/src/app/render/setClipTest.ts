@@ -1,9 +1,9 @@
 import { applyViewForShape, buildPath, clipPath, Outline, Path, setClip, to } from '../../../../../src/indexForTest'
 
-const subject: (_: { outline: Outline }) => void = setClip.default
 
 describe('set clip', () => {
 	it('builds a path from the outline and clips the context on it', () => {
+		const subject: (_: { outline: Outline }) => void = setClip.default
 		const path: Path = to.Path([])
 		spyOn(applyViewForShape, 'default').and.returnValue(path)
 		spyOn(buildPath, 'default')

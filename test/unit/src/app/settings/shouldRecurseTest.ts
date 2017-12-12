@@ -1,9 +1,12 @@
 import { shouldRecurse } from '../../../../../src/indexForTest'
 
-// tslint:disable-next-line:no-any
-const subject: (_: any) => boolean = shouldRecurse.default
-
 describe('should recurse', () => {
+	// tslint:disable-next-line:no-any
+	let subject: (_: any) => boolean
+	beforeEach(() => {
+		subject = shouldRecurse.default
+	})
+
 	it('says you should recurse further if passed a settings object', () => {
 		expect(subject({ tileResolution: 45 })).toBe(true)
 	})

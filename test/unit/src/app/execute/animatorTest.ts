@@ -8,15 +8,16 @@ import {
 } from '../../../../../src/indexForTest'
 import { noop } from '../../../helpers'
 
-const subject: (_: AnimationParams) => void = animator.default
 
 describe('animator', () => {
+	let subject: (_: AnimationParams) => void
 	const FRAME_RATE: number = 30
 	let intervalFunction: (p: number) => number
 	const animationFunction: NullarySideEffector = noop
 	const resolveAnimation: NullarySideEffector = noop
 	const animationInterval: number = 34987
 	beforeEach(() => {
+		subject = animator.default
 		spyOn(globalWrapper.window, 'setInterval').and.returnValue(animationInterval)
 		intervalFunction = (p: number): number => p * 20
 		spyOn(buildAnimationIntervalFunction, 'default').and.returnValue(intervalFunction)

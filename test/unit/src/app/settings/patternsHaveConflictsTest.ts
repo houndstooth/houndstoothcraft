@@ -1,8 +1,11 @@
 import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src/indexForTest'
 
-const subject: (_: PatternsHaveConflictsParams) => boolean = patternsHaveConflicts.default
-
 describe('patterns have conflicts', () => {
+	let subject: (_: PatternsHaveConflictsParams) => boolean
+	beforeEach(() => {
+		subject = patternsHaveConflicts.default
+	})
+
 	it('returns true if any settings conflict between the two patterns', () => {
 		const pattern: Pattern = {
 			colorSettings: {

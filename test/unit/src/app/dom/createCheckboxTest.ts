@@ -7,9 +7,9 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement, noop } from '../../../helpers'
 
-const subject: (_: { effect: NamedEffect }) => HTMLInputElement = createCheckbox.default
 
 describe('create checkbox', () => {
+	let subject: (_: { effect: NamedEffect }) => HTMLInputElement
 	let returnedCheckbox: HTMLInputElement
 	let checkbox: HTMLInputElement
 
@@ -18,6 +18,7 @@ describe('create checkbox', () => {
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
+		subject = createCheckbox.default
 		checkbox = buildMockElement({ attributeObject }) as HTMLInputElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(checkbox)
 

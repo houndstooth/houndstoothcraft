@@ -7,10 +7,13 @@ import {
 } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: GetShapeColorIndicesWithOffset = getBySupertile.default
-
 describe('get by supertile', () => {
-	const gridAddress: Address = to.Address([ 3, 5 ])
+	let subject: GetShapeColorIndicesWithOffset
+	let gridAddress: Address
+	beforeEach(() => {
+		subject = getBySupertile.default
+		gridAddress = to.Address([ 3, 5 ])
+	})
 
 	it('can use a supertile-based assignment scheme', () => {
 		const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])

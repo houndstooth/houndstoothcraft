@@ -8,7 +8,7 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-const subject: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default
+let subject: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[]
 
 describe('prepare function objects per setting', () => {
 	let actualFunctionObjects: SettingsFunctionObject[]
@@ -17,6 +17,7 @@ describe('prepare function objects per setting', () => {
 	let settingsFunction: any
 	let secondSettingsFunction: any
 	beforeEach(() => {
+		subject = prepareFunctionObjectsPerSetting.default
 		settingsFunction = (p: number): number => p * 2
 		secondSettingsFunction = (p: number): number => p - 1
 		settingsFunctionsSourcePattern = {

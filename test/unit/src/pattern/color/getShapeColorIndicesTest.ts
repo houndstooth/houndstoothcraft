@@ -16,11 +16,13 @@ import {
 } from '../../../../../src/indexForTest'
 import { setPatternSettingForTest } from '../../../helpers'
 
-const subject: GetShapeColorIndices = getShapeColorIndices.default
-
 describe('get shape color indices', () => {
-	const { iterator } = codeUtilities
-	const gridAddress: Address = to.Address([ 3, 5 ])
+	let gridAddress: Address
+	let subject: GetShapeColorIndices
+	beforeEach(() => {
+		gridAddress = to.Address([ 3, 5 ])
+		subject = getShapeColorIndices.default
+	})
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('gets by weave when assignment mode is weave', () => {
@@ -109,8 +111,8 @@ describe('get shape color indices', () => {
 					switcheroo: true,
 				},
 			})
-			const addresses: Grid<Address> = iterator(4).map((x: number) =>
-				iterator(4).map((y: number) =>
+			const addresses: Grid<Address> = codeUtilities.iterator(4).map((x: number) =>
+				codeUtilities.iterator(4).map((y: number) =>
 					to.Address([ x, y ])))
 			const setOfShapeColorIndices: Supertile = to.Supertile(addresses.map((col: Address[]) =>
 				col.map((gridAddressToTest: Address) =>
@@ -152,8 +154,8 @@ describe('get shape color indices', () => {
 					},
 				},
 			})
-			const addresses: Grid<Address> = iterator(2).map((x: number) =>
-				iterator(2).map((y: number) =>
+			const addresses: Grid<Address> = codeUtilities.iterator(2).map((x: number) =>
+				codeUtilities.iterator(2).map((y: number) =>
 					to.Address([ x, y ])))
 			const setOfShapeColorIndices: Supertile = to.Supertile(addresses.map((col: Address[]) =>
 				col.map((gridAddressToTest: Address) =>

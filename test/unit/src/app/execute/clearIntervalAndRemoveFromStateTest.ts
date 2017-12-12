@@ -1,10 +1,11 @@
 import { appState, clearIntervalAndRemoveFromState, globalWrapper } from '../../../../../src/indexForTest'
 
-const subject: (_: string) => void = clearIntervalAndRemoveFromState.default
 
 describe('clear interval and remove from state', () => {
+	let subject: (_: string) => void
 	const FAKE_GRID_PROGRESS_INTERVAL: number = 3369
 	beforeEach(() => {
+		subject = clearIntervalAndRemoveFromState.default
 		appState.execute.gridProgressInterval = FAKE_GRID_PROGRESS_INTERVAL
 		spyOn(globalWrapper.window, 'clearInterval')
 

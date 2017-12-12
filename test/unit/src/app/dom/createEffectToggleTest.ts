@@ -8,22 +8,27 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-const subject: (_: NamedEffect) => void = createEffectToggle.default
 
 describe('create effect toggle', () => {
+	let subject: (_: NamedEffect) => void
 	const divChildren: HTMLElement[] = []
-	const div: HTMLElement = buildMockElement({ children: divChildren }) as HTMLElement
-	const checkbox: HTMLInputElement = buildMockElement() as HTMLInputElement
-	const label: HTMLElement = buildMockElement() as HTMLElement
+	let div: HTMLElement
+	let checkbox: HTMLInputElement
+	let label: HTMLElement
 
 	const effectTogglesContainerChildren: HTMLElement[] = []
-	const effectTogglesContainer: HTMLElement = buildMockElement({
-		children: effectTogglesContainerChildren,
-	}) as HTMLElement
+	let effectTogglesContainer: HTMLElement
 
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
+		subject = createEffectToggle.default
+		div = buildMockElement({ children: divChildren }) as HTMLElement
+		checkbox = buildMockElement() as HTMLInputElement
+		label = buildMockElement() as HTMLElement
+		effectTogglesContainer = buildMockElement({
+			children: effectTogglesContainerChildren,
+		}) as HTMLElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(div)
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 		spyOn(createLabel, 'default').and.returnValue(label)

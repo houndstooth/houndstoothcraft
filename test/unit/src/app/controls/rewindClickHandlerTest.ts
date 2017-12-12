@@ -10,12 +10,13 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: NullarySideEffector = rewindClickHandler.default
 
 describe('rewind click handler', () => {
+	let subject: NullarySideEffector
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
+		subject = rewindClickHandler.default
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
 		spyOn(clearIntervalAndRemoveFromState, 'default')

@@ -11,9 +11,9 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-const subject: (_: ExecuteLayerParams) => Promise<void> = executeLayer.default
 
 describe('execute layer', () => {
+	let subject: (_: ExecuteLayerParams) => Promise<void>
 	const layerFunctionObjects: SettingsFunctionObject[] = []
 	const thisPatternRef: number = 99
 
@@ -21,6 +21,7 @@ describe('execute layer', () => {
 	let executeGridAndMaybeLoggingSpy: Spy
 
 	beforeEach(() => {
+		subject = executeLayer.default
 		spyOn(initializePatternState, 'default')
 		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'default')
 		executeGridAndMaybeLoggingSpy = spyOn(executeGridAndMaybeLogging, 'default')

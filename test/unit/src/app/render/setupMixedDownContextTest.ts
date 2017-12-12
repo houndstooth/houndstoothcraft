@@ -2,7 +2,7 @@
 
 import {
 	appState,
-	constants,
+	CANVAS_SIZE,
 	from,
 	NullarySideEffector,
 	setupMixedDownContext,
@@ -26,7 +26,7 @@ describe('settings mixed down context', () => {
 	})
 
 	it('sets the mixed down context\'s width and height to the default canvas size', () => {
-		expect(appState.render.mixedDownContext.canvas.height).toBe(from.Px(constants.CANVAS_SIZE))
-		expect(appState.render.mixedDownContext.canvas.width).toBe(from.Px(constants.CANVAS_SIZE))
+		expect(appState.render.mixedDownContext.canvas.height).toBe(from.Px(CANVAS_SIZE))
+		expect(appState.render.mixedDownContext.canvas.width).toBe(from.Px(CANVAS_SIZE))
 	})
 })

@@ -1,5 +1,5 @@
-import { PERIMETER_SCALAR } from '../../constants'
 import { getShapeColorIndices, isTileUniform, ShapeColorIndex } from '../color'
+import { PERIMETER_SCALAR } from '../constants'
 import { patternState } from '../patternState'
 import { GetStripeArgsParams, getStripePositionsForTile, squareOutline, stripeOutline, StripePosition } from '../stripe'
 import { shape, ShapeArgs, ShapeParams } from '../texture'

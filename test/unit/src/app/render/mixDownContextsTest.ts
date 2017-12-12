@@ -2,7 +2,7 @@
 
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { appState, constants, mixDownContexts, NullarySideEffector } from '../../../../../src/indexForTest'
+import { appState, CANVAS_SIZE, mixDownContexts, NullarySideEffector } from '../../../../../src/indexForTest'
 import { buildMockContext } from '../../../helpers'
 
 describe('mix down contexts', () => {
@@ -15,8 +15,6 @@ describe('mix down contexts', () => {
 	})
 
 	it('clears the mixed down canvas just before rendering', () => {
-		const { CANVAS_SIZE } = constants
-
 		subject()
 
 		expect(clearRectSpy).toHaveBeenCalledWith(0, 0, CANVAS_SIZE, CANVAS_SIZE)

@@ -1,8 +1,7 @@
-import { applyScroll, constants, from, Path, patternState, to, Unit } from '../../../../../src/indexForTest'
+import { applyScroll, CANVAS_SIZE, from, Path, patternState, to, Unit } from '../../../../../src/indexForTest'
 
 describe('apply scroll', () => {
 	let subject: (_: Path) => Path
-	const { CANVAS_SIZE } = constants
 	const zoom: number = 10
 	let tileSize: Unit
 	let path: Path

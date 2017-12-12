@@ -1,6 +1,7 @@
 import { Path, Pixel } from '../../app'
-import { CANVAS_SIZE, HALF } from '../../constants'
+import { CANVAS_SIZE } from '../../constants'
 import { from, to } from '../../utilities'
+import { HALF } from '../constants'
 import { patternState } from '../patternState'
 
 const applyScroll: (_: Path) => Path =

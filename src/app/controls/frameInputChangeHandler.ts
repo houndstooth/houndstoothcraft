@@ -1,8 +1,9 @@
-import { DECIMAL_RADIX } from '../../constants'
 import { to } from '../../utilities'
 import { appState } from '../appState'
 import { executeSelectedEffects } from '../execute'
 import { clearMixedDownContext } from '../render'
+
+const DECIMAL_RADIX: number = 10
 
 const frameInputChangeHandler: (event: Event) => void =
 	(event: Event): void => {

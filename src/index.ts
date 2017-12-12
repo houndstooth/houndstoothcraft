@@ -9,6 +9,18 @@ export {
 	solid,
 	standardAnimation,
 
+	BLACK,
+	BLUE,
+	CYAN,
+	GREEN,
+	HALF,
+	MAGENTA,
+	PERIMETER_SCALAR,
+	RED,
+	TRANSPARENT,
+	WHITE,
+	YELLOW,
+
 	Address,
 	AddressElement,
 	AssignmentMode,
@@ -38,10 +50,10 @@ export {
 	to,
 } from './utilities'
 
-import * as constants from './constants'
 export {
-	constants,
-}
+	CANVAS_SIZE,
+} from './constants'
 export {
+	Layer,
 	NamedEffect,
 } from './types'

@@ -1,16 +1,18 @@
 import {
 	appState,
+	BLACK,
 	Color,
 	ColorSet,
-	constants,
 	Coordinate,
+	CYAN,
 	Effect,
+	ERASE,
 	executeSelectedEffects,
 	to,
+	TRANSPARENT,
+	YELLOW,
 } from '../../../../src/indexForTest'
 import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
-
-const { BLACK, CYAN, ERASE, TRANSPARENT, YELLOW } = constants
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', async (done: DoneFn) => {

@@ -1,9 +1,10 @@
 // tslint:disable:no-any
 
-import { BLACK, TRANSPARENT } from '../../constants'
+import { Color } from '../../types'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
 import { ColorSettings } from './colorSettings'
-import { AssignmentMode, Color, ColorSet, Supertile, Weave } from './types'
+import { BLACK, TRANSPARENT } from './constants'
+import { AssignmentMode, ColorSet, Supertile, Weave } from './types'
 
 const DEFAULT_ASSIGNMENT_MODE: AssignmentMode = AssignmentMode.Weave
 const DEFAULT_FLIP_GRAIN: boolean = false

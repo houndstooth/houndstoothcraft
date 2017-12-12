@@ -20,11 +20,19 @@ describe('enableOrDisableOtherEffectToggles', () => {
 		const effectsSelected: NamedEffect[] = []
 		appState.controls.selectedEffects = effectsSelected
 
-		const effectsCombined: Effect = { name: 'effects combined' }
+		const effectsCombined: Effect = { basePattern: { colorSettings: { opacity: 0.5 } } }
 		spyOn(combineEffects, 'default').and.returnValue(effectsCombined)
 
-		const effectOne: NamedEffect = { name: 'effect one', description: '' }
-		const effectTwo: NamedEffect = { name: 'effect two', description: '' }
+		const effectOne: NamedEffect = {
+			basePattern: { colorSettings: { opacity: 0.33 } },
+			description: '',
+			name: 'effect one',
+		}
+		const effectTwo: NamedEffect = {
+			basePattern: { colorSettings: { opacity: 0.66 } },
+			description: '',
+			name: 'effect two',
+		}
 		appState.settings.availableEffects = [ effectOne, effectTwo ]
 
 		appState.dom.effectToggles = {
@@ -34,7 +42,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 
 		const effectsHaveConflictsSpy: Spy = spyOn(effectsHaveConflicts, 'default')
 		effectsHaveConflictsSpy.and.callFake(({ effect }: { effect: Effect }): boolean =>
-			effect.name === 'effect one')
+			!!(effect.basePattern && effect.basePattern.colorSettings && effect.basePattern.colorSettings.opacity === 0.33))
 
 		subject()
 

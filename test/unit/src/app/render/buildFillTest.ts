@@ -1,9 +1,8 @@
-import { appState, buildFill, Color, constants, parseColor } from '../../../../../src/indexForTest'
+import { appState, buildFill, Color, ERASE, parseColor } from '../../../../../src/indexForTest'
 import { buildMockContext } from '../../../helpers'
 
 describe('build fill', () => {
 	let subject: (_: { shapeColor: Color }) => void
-	const { ERASE } = constants
 	const shapeColor: Color = { a: 1 }
 	const parsedColor: string = '#012345'
 	let context: CanvasRenderingContext2D

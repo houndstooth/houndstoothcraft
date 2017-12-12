@@ -1,6 +1,7 @@
+import { Color } from '../../types'
 import { codeUtilities, from } from '../../utilities'
 import { patternState } from '../patternState'
-import { Color, ShapeColorIndex } from './types'
+import { ShapeColorIndex } from './types'
 
 const getColor: (_: { index: ShapeColorIndex }) => Color =
 	({ index }: { index: ShapeColorIndex }): Color =>

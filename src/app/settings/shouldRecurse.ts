@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { Color } from '../../pattern'
+import { Color } from '../../types'
 import { codeUtilities } from '../../utilities'
 
 const shouldRecurse: (_: any) => boolean =

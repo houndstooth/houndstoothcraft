@@ -1,7 +1,11 @@
-import { constants, Effect, executeSelectedEffects, to } from '../../../../src/indexForTest'
+import {
+	BLACK,
+	Effect,
+	executeSelectedEffects,
+	to,
+	TRANSPARENT,
+} from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
-
-const { BLACK, TRANSPARENT } = constants
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {

@@ -1,4 +1,5 @@
-import { Color, parseColor } from '../../pattern'
+import { parseColor } from '../../pattern'
+import { Color } from '../../types'
 import getCurrentContext from './getCurrentContext'
 
 const buildFill: (_: { shapeColor: Color }) => void =

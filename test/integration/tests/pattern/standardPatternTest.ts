@@ -1,14 +1,13 @@
 import {
-	constants,
+	BLACK,
 	executeSelectedEffects,
 	from,
 	patternState,
 	to,
+	TRANSPARENT,
 	Unit,
 } from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
-
-const { BLACK, TRANSPARENT } = constants
 
 describe('standard houndstooth pattern', () => {
 	// tslint:disable-next-line:max-line-length

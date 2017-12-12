@@ -1,5 +1,6 @@
 import { fill } from '../../app'
-import { Color , getColor } from '../color'
+import { Color } from '../../types'
+import { getColor } from '../color'
 import { SolidParams } from './types'
 
 const solid: (_: SolidParams) => void =

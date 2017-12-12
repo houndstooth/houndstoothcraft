@@ -1,6 +1,7 @@
-import { ONE_HUNDRED_PERCENT } from '../../constants'
 import { from, NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
+
+const ONE_HUNDRED_PERCENT: number = 100
 
 const updateProgress: NullarySideEffector =
 	(): void => {

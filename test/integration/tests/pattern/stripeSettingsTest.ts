@@ -1,5 +1,5 @@
 import {
-	constants,
+	BLACK,
 	Coordinate,
 	Effect,
 	executeSelectedEffects,
@@ -7,6 +7,7 @@ import {
 	patternState,
 	StripeCountMode,
 	to,
+	TRANSPARENT,
 	Unit,
 } from '../../../../src/indexForTest'
 import {
@@ -14,8 +15,6 @@ import {
 	StandardTileExpectation,
 	standardTileIsColors,
 } from '../../helpers'
-
-const { BLACK, TRANSPARENT } = constants
 
 describe('.stripeSettings', () => {
 	let areaSize: Unit

@@ -1,6 +1,7 @@
+import { Color } from '../../types'
 import { codeUtilities } from '../../utilities'
 import getColor from './getColor'
-import { Color, ShapeColorIndex } from './types'
+import { ShapeColorIndex } from './types'
 
 const isTileUniform: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
 	({ shapeColorIndices }: { shapeColorIndices: ShapeColorIndex[] }): boolean => {

@@ -1,7 +1,10 @@
-import { HALF, X_INDEX, Y_INDEX } from '../../constants'
 import { from, to } from '../../utilities'
+import { HALF } from '../constants'
 import { Coordinate } from '../stripe'
 import { TileOriginAndSize } from './types'
+
+const X_INDEX: number = 0
+const Y_INDEX: number = 1
 
 const tileCenter: (_: TileOriginAndSize) => Coordinate =
 	({ tileOrigin, tileSize }: TileOriginAndSize): Coordinate => {

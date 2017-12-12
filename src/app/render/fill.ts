@@ -1,4 +1,5 @@
-import { applyViewForShape, Color, Outline } from '../../pattern'
+import { applyViewForShape, Outline } from '../../pattern'
+import { Color } from '../../types'
 import buildFill from './buildFill'
 import buildPath from './buildPath'
 import fillPath from './fillPath'

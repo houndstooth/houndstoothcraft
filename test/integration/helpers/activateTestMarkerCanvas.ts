@@ -1,19 +1,11 @@
 // tslint:disable:no-any no-unsafe-any max-line-length
 
-import {
-	appState,
-	constants,
-	from,
-	NullarySideEffector,
-	setupMixedDownContext,
-} from '../../../src/indexForTest'
+import { appState, CANVAS_SIZE, from, NullarySideEffector, setupMixedDownContext } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 import testMarkersClear from './testMarkersClear'
 
 const activateTestMarkerCanvas: NullarySideEffector =
 	(): void => {
-		const { CANVAS_SIZE } = constants
-
 		testMarkersClear()
 
 		const testMarkersCanvas: HTMLCanvasElement = document.querySelector('#test-markers-canvas') as HTMLCanvasElement || createTestMarkersCanvas()

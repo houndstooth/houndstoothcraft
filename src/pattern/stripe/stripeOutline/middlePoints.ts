@@ -1,5 +1,5 @@
-import { PERIMETER_SCALAR } from '../../../constants'
 import { from } from '../../../utilities'
+import { PERIMETER_SCALAR } from '../../constants'
 import * as stripePoints from './stripePoints'
 import { PointsParamsPlusStripeEnd } from './types'
 

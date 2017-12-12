@@ -2,7 +2,6 @@ import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 import {
 	Address,
-	constants,
 	Coordinate,
 	DefinedTileParams,
 	getShapeColorIndices,
@@ -10,6 +9,7 @@ import {
 	getTileOriginAndSize,
 	isTileUniform,
 	patternState,
+	PERIMETER_SCALAR,
 	shape,
 	ShapeColorIndex,
 	squareOutline,
@@ -21,7 +21,6 @@ import {
 } from '../../../../../src/indexForTest'
 
 describe('tile', () => {
-	const { PERIMETER_SCALAR } = constants
 	let gridAddress: Address
 	let tileOrigin: Coordinate
 	let tileSize: Unit

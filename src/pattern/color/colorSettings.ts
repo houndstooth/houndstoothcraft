@@ -1,6 +1,7 @@
+import { Color } from '../../types'
 import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
 import { ColorAssignmentSettingsFunctions, ColorAssignmentSettingsSchema } from './colorAssignmentSettings'
-import { Color, ColorSet } from './types'
+import { ColorSet } from './types'
 
 type ColorSettingsSchema<R extends Bool> =
 	Rec<'backgroundColor', Color, R> &

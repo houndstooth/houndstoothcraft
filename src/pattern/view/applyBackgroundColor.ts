@@ -2,8 +2,9 @@
 
 import { getCurrentContext } from '../../app'
 import { CANVAS_SIZE } from '../../constants'
+import { Color } from '../../types'
 import { from, NullarySideEffector } from '../../utilities'
-import { Color, parseColor } from '../color'
+import { parseColor } from '../color'
 import { patternState } from '../patternState'
 
 const applyBackgroundColor: NullarySideEffector =

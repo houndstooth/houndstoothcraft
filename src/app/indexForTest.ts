@@ -74,6 +74,8 @@ export {
 	setClip,
 	setupMixedDownContext,
 
+	ERASE,
+
 	DataBlob,
 	Path,
 	Pixel,

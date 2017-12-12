@@ -80,6 +80,7 @@ export {
 	DEFAULT_APP_STATE,
 	DEFAULT_BASE_PATTERN,
 	DEFAULT_LAYERS_PATTERN,
+	ERASE,
 
 	AnimationParams,
 	CheckSettingForConflict,
@@ -142,12 +143,21 @@ export {
 	tileSettings,
 	viewSettings,
 
+	BLACK,
+	BLUE,
+	CYAN,
+	GREEN,
+	MAGENTA,
+	RED,
+	TRANSPARENT,
+	WHITE,
+	YELLOW,
 	DEFAULT_PATTERN_STATE,
+	PERIMETER_SCALAR,
 
 	Address,
 	AssignmentMode,
 	BaseStripeDiagonal,
-	Color,
 	ColorSet,
 	ComponentParams,
 	Coordinate,
@@ -193,11 +203,11 @@ export {
 	NullaryVoidPromise,
 } from './utilities/indexForTest'
 
-import * as constants from './constants'
 export {
-	constants,
-}
+	CANVAS_SIZE,
+} from './constants'
 export {
+	Color,
 	Effect,
 	Frame,
 	Layer,

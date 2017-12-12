@@ -3,19 +3,18 @@ import * as effects from '../../../../effects'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import {
 	appState,
-	constants,
+	BLACK,
 	createEffectToggles,
 	enableOrDisableOtherEffectToggles,
 	executeGridAndMaybeLogging,
 	patternState,
 	to,
+	TRANSPARENT,
 	updateCurrentFrame,
 } from '../../../../src/indexForTest'
 import { buildMockElement } from '../../../unit'
 
 describe('controls', () => {
-	const { BLACK, TRANSPARENT } = constants
-
 	describe('effect toggles', () => {
 		beforeEach(() => {
 			spyOn(executeGridAndMaybeLogging, 'default')

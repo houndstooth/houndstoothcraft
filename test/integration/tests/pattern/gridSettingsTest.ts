@@ -1,15 +1,15 @@
 import {
-	constants,
+	BLACK,
 	Effect,
 	executeSelectedEffects,
 	from,
 	patternState,
 	to,
+	TRANSPARENT,
 	Unit,
+	WHITE,
 } from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
-
-const { BLACK, TRANSPARENT, WHITE } = constants
 
 describe('.gridSettings', () => {
 	let tileSize: Unit

@@ -6,7 +6,6 @@ import { Dimensions, Path, Pixel, Px, SettingsFunctionObject, SettingsPath, Sett
 import {
 	Address,
 	AddressElement,
-	Color,
 	ColorSet,
 	Coordinate,
 	Grid,
@@ -17,7 +16,7 @@ import {
 	Supertile,
 	Unit,
 } from '../pattern'
-import { Frame, Layer } from '../types'
+import { Color, Frame, Layer } from '../types'
 import { CouldBeSettingsFunctionObject } from './types'
 
 const Px: (_: number) => Px =

@@ -1,16 +1,15 @@
 import {
-	constants,
+	BLACK,
 	Coordinate,
 	Effect,
 	executeSelectedEffects,
 	from,
 	patternState,
 	to,
+	TRANSPARENT,
 	Unit,
 } from '../../../../src/indexForTest'
 import { sectionCenterIsColor, standardTileIsColors } from '../../helpers'
-
-const { BLACK, TRANSPARENT } = constants
 
 describe('.viewSettings', () => {
 	describe('.zoom', () => {

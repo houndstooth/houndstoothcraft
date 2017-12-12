@@ -15,8 +15,17 @@ export {
 	isTileUniform,
 	parseColor,
 
+	BLACK,
+	BLUE,
+	CYAN,
+	GREEN,
+	MAGENTA,
+	RED,
+	TRANSPARENT,
+	WHITE,
+	YELLOW,
+
 	AssignmentMode,
-	Color,
 	ColorSet,
 	GetShapeColorIndices,
 	GetShapeColorIndicesWithOffset,
@@ -113,3 +122,6 @@ export {
 export {
 	PatternFunctions,
 } from './types'
+export {
+	PERIMETER_SCALAR,
+} from './constants'

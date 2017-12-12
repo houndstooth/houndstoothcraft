@@ -1,4 +1,4 @@
-import { codeUtilities, constants, from, NullarySideEffector } from '../../../src/indexForTest'
+import { CANVAS_SIZE, codeUtilities, from, NullarySideEffector } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
 const testMarkersClear: NullarySideEffector =
@@ -14,7 +14,7 @@ const testMarkersClear: NullarySideEffector =
 			const testMarkersContext: CanvasRenderingContext2D = testMarkersCanvas.getContext('2d') as CanvasRenderingContext2D
 
 			// tslint:disable-next-line:no-unsafe-any
-			testMarkersContext.clearRect(0, 0, from.Px(constants.CANVAS_SIZE), from.Px(constants.CANVAS_SIZE))
+			testMarkersContext.clearRect(0, 0, from.Px(CANVAS_SIZE), from.Px(CANVAS_SIZE))
 		}
 	}
 

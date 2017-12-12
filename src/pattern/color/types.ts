@@ -1,14 +1,5 @@
-// tslint:disable:member-ordering
-
+import { Color } from '../../types'
 import { Address, Grid, GridAddressParam } from '../grid'
-
-interface Color {
-	r?: number,
-	g?: number,
-	b?: number,
-	a: number,
-	[index: string]: number | undefined,
-}
 
 enum AssignmentMode {
 	Supertile,
@@ -20,12 +11,7 @@ interface ColorOptions {
 }
 
 enum _ColorSetBrand {}
-
 type ColorSet = _ColorSetBrand & Color[]
-
-export {
-	Color,
-}
 
 interface GetShapeColorIndicesWithOffsetParams extends GridAddressParam {
 	addressOffset: Address,
@@ -36,7 +22,6 @@ type GetShapeColorIndices = (_: GridAddressParam) => ShapeColorIndex[]
 type GetShapeColorIndicesWithOffset = (_: GetShapeColorIndicesWithOffsetParams) => ShapeColorIndex[]
 
 enum _SupertileBrand {}
-
 type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 
 type TransformShapeColorIndices = (_: TransformShapeColorIndicesParams) => ShapeColorIndex[]

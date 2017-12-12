@@ -1,5 +1,5 @@
-import { PERIMETER_SCALAR } from '../../constants'
 import { codeUtilities, from, to } from '../../utilities'
+import { PERIMETER_SCALAR } from '../constants'
 import { patternState } from '../patternState'
 import { GetStripePosition, StripePosition } from './types'
 

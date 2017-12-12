@@ -1,4 +1,14 @@
+// tslint:disable:member-ordering
+
 import { PatternBaseValues, PatternFunctions } from './pattern'
+
+interface Color {
+	r?: number,
+	g?: number,
+	b?: number,
+	a: number,
+	[index: string]: number | undefined,
+}
 
 interface Frame extends Number {
 	// tslint:disable-next-line:no-any
@@ -26,6 +36,7 @@ interface NamedEffect extends Effect {
 type Pattern = PatternBaseValues | PatternFunctions
 
 export {
+	Color,
 	Effect,
 	Frame,
 	Houndstooth,

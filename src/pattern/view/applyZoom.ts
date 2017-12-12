@@ -1,6 +1,7 @@
 import { Path, Pixel, Px } from '../../app'
-import { CANVAS_SIZE, HALF } from '../../constants'
+import { CANVAS_SIZE } from '../../constants'
 import { from, to } from '../../utilities'
+import { HALF } from '../constants'
 import { patternState } from '../patternState'
 import { DoAdjustmentParams } from './types'
 import { ViewSettings } from './viewSettings'

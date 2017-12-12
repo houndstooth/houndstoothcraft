@@ -19,7 +19,6 @@ export {
 }
 export {
 	AssignmentMode,
-	Color,
 	ColorSet,
 	GetShapeColorIndices,
 	GetShapeColorIndicesWithOffset,
@@ -29,3 +28,14 @@ export {
 	TransformShapeColorIndices,
 	Weave,
 } from './types'
+export {
+	BLACK,
+	BLUE,
+	CYAN,
+	GREEN,
+	MAGENTA,
+	RED,
+	TRANSPARENT,
+	WHITE,
+	YELLOW,
+} from './constants'

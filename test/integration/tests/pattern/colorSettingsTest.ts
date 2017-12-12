@@ -1,13 +1,18 @@
 import {
 	AssignmentMode,
+	BLACK,
+	BLUE,
 	Color,
-	constants,
+	CYAN,
 	Effect,
 	executeSelectedEffects,
 	from,
+	MAGENTA,
 	patternState,
 	to,
+	TRANSPARENT,
 	Unit,
+	YELLOW,
 } from '../../../../src/indexForTest'
 import {
 	PixelColorExpectation,
@@ -15,8 +20,6 @@ import {
 	StandardTileExpectation,
 	standardTileIsColors,
 } from '../../helpers'
-
-const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 
 describe('.colorSettings', () => {
 	let tileSize: Unit

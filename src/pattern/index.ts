@@ -5,8 +5,17 @@ export {
 export {
 	parseColor,
 
+	BLACK,
+	BLUE,
+	CYAN,
+	GREEN,
+	MAGENTA,
+	RED,
+	TRANSPARENT,
+	WHITE,
+	YELLOW,
+
 	AssignmentMode,
-	Color,
 	ColorOptions,
 	ColorSet,
 	ShapeColorIndex,
@@ -68,3 +77,7 @@ export {
 export {
 	DEFAULT_PATTERN_STATE,
 } from './defaults'
+export {
+	HALF,
+	PERIMETER_SCALAR,
+} from './constants'

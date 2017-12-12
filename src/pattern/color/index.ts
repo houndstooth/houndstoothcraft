@@ -13,7 +13,6 @@ export {
 }
 export {
 	AssignmentMode,
-	Color,
 	ColorOptions,
 	ColorSet,
 	OffsetAddress,
@@ -26,3 +25,14 @@ export {
 export {
 	DEFAULT_COLOR_SETTINGS,
 } from './defaults'
+export {
+	BLACK,
+	BLUE,
+	CYAN,
+	GREEN,
+	MAGENTA,
+	RED,
+	TRANSPARENT,
+	WHITE,
+	YELLOW,
+} from './constants'

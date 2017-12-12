@@ -36,3 +36,6 @@ export {
 	Path,
 	Pixel,
 } from './types'
+export {
+	ERASE,
+} from './constants'

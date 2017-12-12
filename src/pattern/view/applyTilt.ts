@@ -1,6 +1,7 @@
 import { Path, Pixel } from '../../app'
-import { CANVAS_SIZE, HALF } from '../../constants'
+import { CANVAS_SIZE } from '../../constants'
 import { from, mathUtilities, to } from '../../utilities'
+import { HALF } from '../constants'
 import { patternState } from '../patternState'
 import { Radian } from '../stripe'
 

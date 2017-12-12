@@ -9,9 +9,7 @@ import {
 	Color,
 	ColorSet,
 	Coordinate,
-	Frame,
 	Grid,
-	Layer,
 	Outline,
 	Radian,
 	ShapeColorIndex,
@@ -19,6 +17,7 @@ import {
 	Supertile,
 	Unit,
 } from '../pattern'
+import { Frame, Layer } from '../types'
 import { CouldBeSettingsFunctionObject } from './types'
 
 const Px: (_: number) => Px =

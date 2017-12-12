@@ -1,6 +1,5 @@
 import { appState, DataBlob, Frame, saveBlob, saveCanvas, to } from '../../../../../src/indexForTest'
 
-
 describe('save canvas', () => {
 	let subject: (_: { currentFrame: Frame, result: DataBlob }) => void
 	const result: DataBlob = {}

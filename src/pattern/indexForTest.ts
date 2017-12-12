@@ -4,8 +4,6 @@ export {
 	animationSettings,
 	standardAnimation,
 	shouldRefreshCanvas,
-
-	Frame,
 } from './animation/indexForTest'
 export {
 	colorAssignmentSettings,
@@ -41,8 +39,6 @@ export {
 } from './grid/indexForTest'
 export {
 	layerSettings,
-
-	Layer,
 } from './layer/indexForTest'
 export {
 	getStripePositionsForTile,
@@ -107,20 +103,13 @@ export {
 } from './view/indexForTest'
 
 import * as initializePatternState from './initializePatternState'
-import * as patternState from './patternState'
 export {
 	initializePatternState,
-	patternState,
 }
-
+export { patternState } from './patternState'
 export {
-	BasePattern,
-	Effect,
-	Houndstooth,
-	NamedEffect,
-	Pattern,
-	PatternFunctions,
-	SettingsNamesByType,
-	SettingsNamesByTypeBase,
-	SettingsNamesToTypesMap,
+	DEFAULT_PATTERN_STATE,
+} from './defaults'
+export {
+	PatternFunctions
 } from './types'

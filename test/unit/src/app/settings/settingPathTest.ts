@@ -1,6 +1,5 @@
 import { settingPath, SettingsPath, SettingsStep, to } from '../../../../../src/indexForTest'
 
-
 describe('setting path', () => {
 	it('appends the setting name to the path and joins all by dots', () => {
 		const subject: (_: { settingName: SettingsStep, settingsPath: SettingsPath }) => string = settingPath.default

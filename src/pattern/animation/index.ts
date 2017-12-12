@@ -8,8 +8,5 @@ export {
 	standardAnimation,
 }
 export {
-	Frame,
-} from './types'
-export {
 	DEFAULT_ANIMATION_SETTINGS,
 } from './defaults'

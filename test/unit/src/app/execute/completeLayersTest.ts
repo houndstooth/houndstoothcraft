@@ -1,6 +1,5 @@
 import { appState, completeLayers, NullarySideEffector, to } from '../../../../../src/indexForTest'
 
-
 describe('complete layers', () => {
 	let subject: NullarySideEffector
 	beforeEach(() => {

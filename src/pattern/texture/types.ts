@@ -9,27 +9,27 @@ interface ComponentParams extends ColorOptions, OutlineAsParam {
 type ExecuteTexture = (_: ExecuteTextureParams) => void
 
 interface ExecuteTextureParams extends ColorOptions {
-	readonly tileSize: Unit,
+	tileSize: Unit,
 }
 
 interface ShapeParams extends GetOutlineParams {
-	readonly getOutline: GetOutline,
-	readonly shapeColorIndices: ShapeColorIndex[],
-	readonly stripeIndex?: number,
+	getOutline: GetOutline,
+	shapeColorIndices: ShapeColorIndex[],
+	stripeIndex?: number,
 }
 
 interface SolidParams {
-	readonly outline: Outline,
-	readonly shapeColorIndex: ShapeColorIndex,
+	outline: Outline,
+	shapeColorIndex: ShapeColorIndex,
 }
 
 interface ShapeArgs extends TileOriginAndSize {
-	readonly shapeColorIndices: ShapeColorIndex[],
+	shapeColorIndices: ShapeColorIndex[],
 }
 
 interface TextureParams extends ComponentParams {
-	readonly executeTexture: ExecuteTexture,
-	readonly tileSize: Unit,
+	executeTexture: ExecuteTexture,
+	tileSize: Unit,
 }
 
 export {

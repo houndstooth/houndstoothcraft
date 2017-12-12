@@ -7,7 +7,6 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-
 describe('check setting for conflict', () => {
 	let subject: (_: CheckSettingForConflict) => boolean
 	let settingsPath: SettingsPath

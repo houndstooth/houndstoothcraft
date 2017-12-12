@@ -1,6 +1,6 @@
 import { PERIMETER_SCALAR } from '../../constants'
 import { getShapeColorIndices, isTileUniform, ShapeColorIndex } from '../color'
-import { get } from '../patternState'
+import { patternState } from '../patternState'
 import { GetStripeArgsParams, getStripePositionsForTile, squareOutline, stripeOutline, StripePosition } from '../stripe'
 import { shape, ShapeArgs, ShapeParams } from '../texture'
 import { TileSettings } from './tileSettings'
@@ -15,7 +15,7 @@ const tile: (_: DefinedTileParams) => void =
 
 const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
 	({ shapeColorIndices }: { shapeColorIndices: ShapeColorIndex[] }): boolean => {
-		const { collapseSameColoredShapesWithinTile }: TileSettings = get('tileSettings')
+		const { collapseSameColoredShapesWithinTile }: TileSettings = patternState.tileSettings
 
 		return collapseSameColoredShapesWithinTile && isTileUniform.default({ shapeColorIndices })
 	}

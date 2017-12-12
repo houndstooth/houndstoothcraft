@@ -16,14 +16,14 @@ type Coordinate = _CoordinateBrand & Unit[]
 type GetOutline = (_: GetOutlineParams) => Coordinate[]
 
 interface GetOutlineParams extends TileOriginAndSize {
-	readonly outlineOptions?: OutlineOptions,
+	outlineOptions?: OutlineOptions,
 }
 
 type Outline = Coordinate[]
 
 interface OutlineOptions {
-	readonly stripeEnd: StripePosition,
-	readonly stripeStart: StripePosition
+	stripeEnd: StripePosition,
+	stripeStart: StripePosition
 }
 
 interface Radian extends Number {
@@ -32,27 +32,27 @@ interface Radian extends Number {
 }
 
 interface RotateCoordinateParams {
-	readonly coordinate: Coordinate,
-	readonly fixedCoordinate: Coordinate,
-	readonly rotation: Radian
+	coordinate: Coordinate,
+	fixedCoordinate: Coordinate,
+	rotation: Radian
 }
 
 interface GetStripeArgsParams {
-	readonly args: ShapeArgs,
-	readonly stripeIndex: number,
-	readonly stripePositions: StripePosition[],
-	readonly stripeStart: StripePosition,
+	args: ShapeArgs,
+	stripeIndex: number,
+	stripePositions: StripePosition[],
+	stripeStart: StripePosition,
 }
 
 type GetStripePosition = (_: GetStripePositionParams) => StripePosition
 
 interface GetStripePositionParams {
-	readonly stripeCount: number,
-	readonly stripeIndex: number,
+	stripeCount: number,
+	stripeIndex: number,
 }
 
 interface OutlineAsParam {
-	readonly outline: Outline,
+	outline: Outline,
 }
 
 enum StripeCountMode {

@@ -1,4 +1,4 @@
-import { Layer } from '../../pattern'
+import { Layer } from '../../types'
 import { from, to } from '../../utilities'
 import { appState } from '../appState'
 import callFunctionsPerSetting from './callFunctionsPerSetting'

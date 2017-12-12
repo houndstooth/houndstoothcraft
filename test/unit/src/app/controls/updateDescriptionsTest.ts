@@ -1,6 +1,5 @@
 import { appState, createDescription, NullarySideEffector, updateDescriptions } from '../../../../../src/indexForTest'
 
-
 describe('update descriptions', () => {
 	let subject: NullarySideEffector
 	beforeEach(() => {

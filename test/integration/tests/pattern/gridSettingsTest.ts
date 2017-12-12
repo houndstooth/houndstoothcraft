@@ -14,7 +14,7 @@ const { BLACK, TRANSPARENT, WHITE } = constants
 describe('.gridSettings', () => {
 	let tileSize: Unit
 	beforeEach(() => {
-		tileSize = patternState.get('tileSize')
+		tileSize = patternState.tileSettings.tileSize
 	})
 
 	describe('.tileResolution', () => {

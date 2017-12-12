@@ -1,6 +1,5 @@
 import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../src/indexForTest'
 
-
 describe('execute grid and maybe logging', () => {
 	let subject: (_: { thisPatternRef: number }) => Promise<void>
 	const thisPatternRef: number = 99

@@ -1,4 +1,4 @@
-import { Frame } from '../../pattern'
+import { Frame } from '../../types'
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import saveCanvas from './saveCanvas'

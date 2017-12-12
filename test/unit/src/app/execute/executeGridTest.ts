@@ -7,7 +7,6 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-
 describe('execute grid', () => {
 	let subject: (_: { thisPatternRef: number }) => Promise<void>
 	const thisPatternRef: number = 99

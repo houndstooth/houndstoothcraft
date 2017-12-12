@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { Frame, Layer, NamedEffect } from '../../pattern'
+import { Frame, Layer, NamedEffect } from '../../types'
 
 interface BuildEffectToggleClickHandlerParams {
 	checkbox: HTMLInputElement,

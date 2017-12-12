@@ -7,7 +7,6 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement, noop } from '../../../helpers'
 
-
 describe('create checkbox', () => {
 	let subject: (_: { effect: NamedEffect }) => HTMLInputElement
 	let returnedCheckbox: HTMLInputElement

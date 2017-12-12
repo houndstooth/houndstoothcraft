@@ -7,44 +7,43 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('play click handler', () => {
-let subject: NullarySideEffector
+	let subject: NullarySideEffector
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
-		subject = playClickHandler.default
-		spyOn(mixDownContexts, 'default')
-		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
-			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+			subject = playClickHandler.default
+			spyOn(mixDownContexts, 'default')
+			executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
+				.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
 
-		appState.controls.animating = false
-		appState.dom.playButton.disabled = false
-		appState.dom.pauseButton.disabled = true
-		appState.dom.rewindButton.disabled = true
+			appState.controls.animating = false
+			appState.dom.playButton.disabled = false
+			appState.dom.pauseButton.disabled = true
+			appState.dom.rewindButton.disabled = true
 
-		subject()
-	})
+			subject()
+		})
 
 	it('disables the play button', () => {
-		expect(appState.dom.playButton.disabled).toBe(true)
-	})
+			expect(appState.dom.playButton.disabled).toBe(true)
+		})
 
 	it('enables the pause button', () => {
-		expect(appState.dom.pauseButton.disabled).toBe(false)
-	})
+			expect(appState.dom.pauseButton.disabled).toBe(false)
+		})
 
 	it('enables the rewind button', () => {
-		expect(appState.dom.rewindButton.disabled).toBe(false)
-	})
+			expect(appState.dom.rewindButton.disabled).toBe(false)
+		})
 
 	it('set animating to true', () => {
-		expect(appState.controls.animating).toBe(true)
-	})
+			expect(appState.controls.animating).toBe(true)
+		})
 
 	it('mixes down the contexts', () => {
-		expect(mixDownContexts.default).toHaveBeenCalled()
-	})
+			expect(mixDownContexts.default).toHaveBeenCalled()
+		})
 
 	describe('starting vs resuming', () => {
 		it('executes the selected effects when there is no animation running', () => {

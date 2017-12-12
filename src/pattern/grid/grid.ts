@@ -1,6 +1,6 @@
 import { setTileCount } from '../../app'
 import { codeUtilities, to } from '../../utilities'
-import { get } from '../patternState'
+import { patternState } from '../patternState'
 import { applyViewForGrid } from '../view'
 import { GridSettings } from './gridSettings'
 import { ReferencedGridAddress } from './types'
@@ -12,7 +12,7 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }): void => {
 		applyViewForGrid.default()
 
-		const { includeNegativeQuadrants, tileResolution }: GridSettings = get('gridSettings')
+		const { includeNegativeQuadrants, tileResolution }: GridSettings = patternState.gridSettings
 
 		let adjustedTileResolution: number = tileResolution
 		let gridOffset: number = 0

@@ -21,7 +21,7 @@ const { BLACK, BLUE, CYAN, MAGENTA, TRANSPARENT, YELLOW } = constants
 describe('.colorSettings', () => {
 	let tileSize: Unit
 	beforeEach(() => {
-		tileSize = patternState.get('tileSize')
+		tileSize = patternState.tileSettings.tileSize
 	})
 
 	describe('.colorSet', () => {

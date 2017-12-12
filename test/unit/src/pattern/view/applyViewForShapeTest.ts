@@ -8,7 +8,6 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-
 describe('adjusts a shape\'s path for view', () => {
 	it('applies any relevant zoom, scroll, and tilt', () => {
 		const subject: (_: Outline) => Path = applyViewForShape.default

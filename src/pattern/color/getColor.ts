@@ -1,11 +1,11 @@
 import { codeUtilities, from } from '../../utilities'
-import { get } from '../patternState'
+import { patternState } from '../patternState'
 import { Color, ShapeColorIndex } from './types'
 
 const getColor: (_: { index: ShapeColorIndex }) => Color =
 	({ index }: { index: ShapeColorIndex }): Color =>
 		codeUtilities.wrappedIndex({
-			array: get('colorSet'),
+			array: patternState.colorSettings.colorSet,
 			index: from.ShapeColorIndex(index),
 		})
 

@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { NamedEffect } from '../../pattern'
+import { NamedEffect } from '../../types'
 import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
 import createCheckbox from './createCheckbox'

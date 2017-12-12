@@ -7,7 +7,6 @@ import {
 	SettingsFunctionObject,
 } from '../../../../../src/indexForTest'
 
-
 describe('execute animation', () => {
 	let subject: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void>
 	const animationFunction: (p: number) => number = (p: number): number => p

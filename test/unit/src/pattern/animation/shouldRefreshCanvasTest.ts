@@ -1,14 +1,13 @@
-import { ConditionFunction, shouldRefreshCanvas } from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
-
+import { ConditionFunction, patternState, shouldRefreshCanvas } from '../../../../../src/indexForTest'
 
 describe('should refresh canvas', () => {
 	it('reports if the current pattern asks for the canvas to be refreshed between animation frames', () => {
 		const subject: ConditionFunction = shouldRefreshCanvas.default
-		setPatternSettingForTest('refreshCanvas', false)
+
+		patternState.animationSettings.refreshCanvas = false
 		expect(subject()).toBe(false)
 
-		setPatternSettingForTest('refreshCanvas', true)
+		patternState.animationSettings.refreshCanvas = true
 		expect(subject()).toBe(true)
 	})
 })

@@ -1,7 +1,6 @@
 import { appState, getCurrentContext, to } from '../../../../../src/indexForTest'
 import { buildMockContext } from '../../../helpers'
 
-
 describe('get current context', () => {
 	it('gets the current context', () => {
 		const subject: () => CanvasRenderingContext2D = getCurrentContext.default

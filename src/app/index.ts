@@ -37,16 +37,13 @@ export {
 	RenderState,
 } from './render'
 export {
-	buildSettingNamesToPathsMap,
 	deeperPath,
 	getPatternSettingOrCreatePath,
-	getSettingsPath,
 
 	SettingsPath,
 	SettingsStep,
 	SettingsFunction,
 	SettingsFunctionObject,
-	SettingNamesToPathsMap,
 	SettingsState,
 } from './settings'
 export {

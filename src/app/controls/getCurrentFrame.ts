@@ -1,4 +1,4 @@
-import { Frame } from '../../pattern'
+import { Frame } from '../../types'
 import { appState } from '../appState'
 
 const getCurrentFrame: () => Frame =

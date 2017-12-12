@@ -1,23 +1,14 @@
-// tslint:disable:no-magic-numbers no-any
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+type AnimationSettingsSchema<R extends Bool> =
+	Rec<'refreshCanvas', boolean, R>
 
-interface AnimationSettings {
-	readonly refreshCanvas: boolean,
-	readonly [_: string]: any,
-}
+interface AnimationSettings extends AnimationSettingsSchema<True>{}
 
-type AnimationSettingsFunctions = FunctionsOf<AnimationSettings>
-
-type AnimationSettingsName = 'animationSettings'
-
-type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	BooleanTypedSettingsNames: 'refreshCanvas',
-}>
+type AnimationSettingsFunctions = FunctionsOf<AnimationSettingsSchema<False>>
 
 export {
 	AnimationSettings,
 	AnimationSettingsFunctions,
-	AnimationSettingsName,
-	AnimationSettingsNamesByType,
+	AnimationSettingsSchema,
 }

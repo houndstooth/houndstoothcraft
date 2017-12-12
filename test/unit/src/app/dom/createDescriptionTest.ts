@@ -1,7 +1,6 @@
 import { appState, createDescription, globalWrapper } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-
 describe('create description', () => {
 	let subject: (_: string) => void
 	beforeEach(() => {

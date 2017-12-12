@@ -4,11 +4,11 @@ import { getCurrentContext } from '../../app'
 import { CANVAS_SIZE } from '../../constants'
 import { from, NullarySideEffector } from '../../utilities'
 import { Color, parseColor } from '../color'
-import { get } from '../patternState'
+import { patternState } from '../patternState'
 
 const applyBackgroundColor: NullarySideEffector =
 	(): void => {
-		const backgroundColor: Color = get('backgroundColor')
+		const backgroundColor: Color = patternState.colorSettings.backgroundColor
 		if (backgroundColor.a === 0) {
 			return
 		}

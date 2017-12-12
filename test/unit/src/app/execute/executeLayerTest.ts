@@ -11,7 +11,6 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('execute layer', () => {
 	let subject: (_: ExecuteLayerParams) => Promise<void>
 	const layerFunctionObjects: SettingsFunctionObject[] = []

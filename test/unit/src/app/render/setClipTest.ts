@@ -1,6 +1,5 @@
 import { applyViewForShape, buildPath, clipPath, Outline, Path, setClip, to } from '../../../../../src/indexForTest'
 
-
 describe('set clip', () => {
 	it('builds a path from the outline and clips the context on it', () => {
 		const subject: (_: { outline: Outline }) => void = setClip.default

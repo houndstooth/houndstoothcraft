@@ -1,13 +1,8 @@
 export {
-	animationSettings,
 	shouldRefreshCanvas,
 	standardAnimation,
-
-	Frame,
 } from './animation'
 export {
-	colorAssignmentSettings,
-	colorSettings,
 	parseColor,
 
 	AssignmentMode,
@@ -22,7 +17,6 @@ export {
 } from './color'
 export {
 	grid,
-	gridSettings,
 
 	Address,
 	AddressElement,
@@ -32,16 +26,8 @@ export {
 	ReferencedGridAddress,
 } from './grid'
 export {
-	layerSettings,
-
-	Layer,
-} from './layer'
-export {
 	perStripe,
 	rotateCoordinate,
-	stripeCountContinuumSettings,
-	stripePositionSettings,
-	stripeSettings,
 
 	Coordinate,
 	GetStripePosition,
@@ -53,39 +39,31 @@ export {
 } from './stripe'
 export {
 	solid,
-	textureSettings,
 
 	ComponentParams,
 	ExecuteTextureParams,
 } from './texture'
 export {
 	maybeTile,
-	tileSettings,
 
 	TileOriginAndSize,
 } from './tile'
 export {
 	applyViewForShape,
-	viewSettings,
 } from './view'
 
 import * as initializePatternState from './initializePatternState'
-import * as patternState from './patternState'
 export {
 	initializePatternState,
-	patternState,
 }
+export { patternState } from './patternState'
 
 export {
-	BasePattern,
-	Effect,
 	FunctionsOf,
-	Houndstooth,
-	NamedEffect,
 	Overwrite,
-	Pattern,
+	FullPatternBaseValues,
+	PatternBaseValues,
 	PatternFunctions,
-	SettingsNamesByTypeBase,
 } from './types'
 export {
 	DEFAULT_PATTERN_STATE,

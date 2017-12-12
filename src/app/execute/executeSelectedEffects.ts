@@ -1,4 +1,4 @@
-import { Effect } from '../../pattern'
+import { Effect } from '../../types'
 import { NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import { createContexts } from '../dom'

@@ -1,6 +1,5 @@
 import { Effect, effectsHaveConflicts } from '../../../../../src/indexForTest'
 
-
 describe('effects have conflicts', () => {
 	let subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean
 	beforeEach(() => {

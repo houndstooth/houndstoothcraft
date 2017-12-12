@@ -1,6 +1,4 @@
-import { applyScroll, constants, from, Path, to, Unit } from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
-
+import { applyScroll, constants, from, Path, patternState, to, Unit } from '../../../../../src/indexForTest'
 
 describe('apply scroll', () => {
 	let subject: (_: Path) => Path
@@ -17,12 +15,12 @@ describe('apply scroll', () => {
 			[ 3, 4 ],
 		])
 
-		setPatternSettingForTest('zoom', zoom)
-		setPatternSettingForTest('tileSize', tileSize)
+		patternState.viewSettings.zoom = zoom
+		patternState.tileSettings.tileSize = tileSize
 	})
 
 	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		setPatternSettingForTest('centerViewOnCenterOfTileAtHomeAddress', true)
+		patternState.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 		const halfCanvasSize: number = from.Px(CANVAS_SIZE) / 2
 		const halfTileSize: number = from.Unit(tileSize) / 2
 		expect(subject(path)).toEqual(to.Path([
@@ -43,7 +41,7 @@ describe('apply scroll', () => {
 
 	// tslint:disable-next-line:max-line-length
 	it('returns the path unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		setPatternSettingForTest('centerViewOnCenterOfTileAtHomeAddress', false)
+		patternState.viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
 
 		expect(subject(path)).toEqual(path)
 	})

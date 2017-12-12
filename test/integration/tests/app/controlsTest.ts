@@ -38,15 +38,15 @@ describe('controls', () => {
 			createEffectToggles.default(Object.values(effects))
 			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
 
-			expect(patternState.get('colorSet')).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
+			expect(patternState.colorSettings.colorSet).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
 
 			// tslint:disable-next-line:no-unsafe-any
 			effectToggle.click()
-			expect(patternState.get('colorSet')).toEqual(GONGRAM_COLOR_SET)
+			expect(patternState.colorSettings.colorSet).toEqual(GONGRAM_COLOR_SET)
 
 			// tslint:disable-next-line:no-unsafe-any
 			effectToggle.click()
-			expect(patternState.get('colorSet')).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
+			expect(patternState.colorSettings.colorSet).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
 		})
 	})
 })

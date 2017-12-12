@@ -79,7 +79,6 @@ export {
 	Pixel,
 } from './render/indexForTest'
 export {
-	buildSettingNamesToPathsMap,
 	checkSettingForConflict,
 	combineEffects,
 	composeMainHoundstooth,
@@ -87,7 +86,6 @@ export {
 	deeperPath,
 	effectsHaveConflicts,
 	getPatternSettingOrCreatePath,
-	getSettingsPath,
 	initializeCurrentPatternFromBasePattern,
 	patternsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
@@ -95,14 +93,16 @@ export {
 	settingPath,
 	shouldRecurse,
 
-	BuildSettingNamesToPathsMapParams,
+	DEFAULT_ANIMATIONS_PATTERN,
+	DEFAULT_BASE_PATTERN,
+	DEFAULT_LAYERS_PATTERN,
+
 	CheckSettingForConflict,
 	ComposeMainHoundstoothParams,
 	ComposePatternsParams,
 	FullSettingsPath,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectsParams,
-	SettingNamesToPathsMap,
 	SettingsFunction,
 	SettingsFunctionObject,
 	SettingsPath,
@@ -117,8 +117,5 @@ export {
 	startUp,
 }
 export {
-	DEFAULT_ANIMATIONS_PATTERN,
 	DEFAULT_APP_STATE,
-	DEFAULT_BASE_PATTERN,
-	DEFAULT_LAYERS_PATTERN,
 } from './defaults'

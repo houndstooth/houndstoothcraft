@@ -1,6 +1,5 @@
 import { Coordinate, tileCenter, TileOriginAndSize, to, Unit } from '../../../../../src/indexForTest'
 
-
 describe('tile center', () => {
 	it('finds the center of the tile', () => {
 		const subject: (_: TileOriginAndSize) => Coordinate = tileCenter.default

@@ -1,31 +1,30 @@
-import * as buildSettingNamesToPathsMap from './buildSettingNamesToPathsMap'
 import * as combineEffects from './combineEffects'
 import * as composeMainHoundstooth from './composeMainHoundstooth'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
-import * as getSettingsPath from './getSettingsPath'
 import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
 
 export {
-	buildSettingNamesToPathsMap,
 	combineEffects,
 	composeMainHoundstooth,
 	deeperPath,
 	effectsHaveConflicts,
 	getPatternSettingOrCreatePath,
-	getSettingsPath,
 	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
 }
 export {
-	SettingNamesToPathsMap,
 	SettingsFunction,
 	SettingsFunctionObject,
 	SettingsPath,
 	SettingsState,
 	SettingsStep,
 } from './types'
+export {
+	DEFAULT_SETTINGS_STATE,
+	DEFAULT_BASE_PATTERN,
+} from './defaults'

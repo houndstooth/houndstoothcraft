@@ -1,9 +1,10 @@
-import { BasePattern, Effect, PatternFunctions } from '../../pattern'
+import { PatternBaseValues, PatternFunctions } from '../../pattern'
+import { Effect } from '../../types'
 import composePatterns from './composePatterns'
 
 const combineEffects: (_: { effects: Effect[] }) => Effect =
 	({ effects }: { effects: Effect[] }): Effect => {
-		const basePattern: Partial<BasePattern> = {}
+		const basePattern: PatternBaseValues = {}
 		const layersPattern: PatternFunctions = {}
 		const animationsPattern: PatternFunctions = {}
 

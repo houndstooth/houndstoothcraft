@@ -10,7 +10,6 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('solid', () => {
 	let subject: (_: SolidParams) => void
 	let shapeColorIndex: ShapeColorIndex

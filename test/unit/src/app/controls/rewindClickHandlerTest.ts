@@ -10,7 +10,6 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('rewind click handler', () => {
 	let subject: NullarySideEffector
 	let executeSelectedEffectsSpy: Spy

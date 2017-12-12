@@ -1,33 +1,24 @@
-// tslint:disable:no-magic-numbers no-any
-
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
-import * as stripeCountContinuumSettings from './stripeCountContinuumSettings'
+import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
+import {
+	StripeCountContinuumSettingsFunctions,
+	StripeCountContinuumSettingsSchema,
+} from './stripeCountContinuumSettings'
 import { GetStripePositions, StripeCountMode } from './types'
 
-interface StripePositionSettings {
-	readonly getStripePositions: GetStripePositions,
-	readonly stripeCount: number,
-	readonly stripeCountContinuumSettings: Partial<stripeCountContinuumSettings.StripeCountContinuumSettings>,
-	readonly stripeCountMode: StripeCountMode,
-	readonly [_: string]: any,
-}
+type StripePositionSettingsSchema<R extends Bool> =
+	Rec<'getStripePositions', GetStripePositions, R> &
+	Rec<'stripeCount', number, R> &
+	Rec<'stripeCountContinuumSettings', StripeCountContinuumSettingsSchema<R>, R> &
+	Rec<'stripeCountMode', StripeCountMode, R>
 
-type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSettings>, {
-	stripeCountContinuumSettings: stripeCountContinuumSettings.StripeCountContinuumSettingsFunctions,
-	[_: string]: any,
-}>
+interface StripePositionSettings extends StripePositionSettingsSchema<True>{}
 
-type StripePositionSettingsName = 'stripePositionSettings'
-
-type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	GetStripePositionsTypedSettingsNames: 'getStripePositions',
-	NumberTypedSettingsNames: 'stripeCount',
-	StripeCountModeTypedSettingsNames: 'stripeCountMode',
-}> | stripeCountContinuumSettings.StripeCountContinuumSettingsNamesByType
+type StripePositionSettingsFunctions = Partial<Overwrite<FunctionsOf<StripePositionSettingsSchema<False>>, {
+	stripeCountContinuumSettings: StripeCountContinuumSettingsFunctions,
+}>>
 
 export {
 	StripePositionSettings,
+	StripePositionSettingsSchema,
 	StripePositionSettingsFunctions,
-	StripePositionSettingsName,
-	StripePositionSettingsNamesByType,
 }

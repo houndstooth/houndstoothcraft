@@ -1,9 +1,9 @@
-import { Effect } from '../../pattern'
+import { Effect } from '../../types'
 import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from '../defaults'
 import combineEffects from './combineEffects'
 import composePatterns from './composePatterns'
+import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from './defaults'
 import { ComposeMainHoundstoothParams, ComposePatternParams } from './types'
 
 const composeMainHoundstooth: (_?: ComposeMainHoundstoothParams) => void =

@@ -1,7 +1,6 @@
 import { appState, createContext, globalWrapper } from '../../../../../src/indexForTest'
 import { buildMockCanvas, buildMockContext, buildMockElement } from '../../../helpers'
 
-
 describe('create context', () => {
 	let subject: () => CanvasRenderingContext2D
 	let returnedContext: CanvasRenderingContext2D

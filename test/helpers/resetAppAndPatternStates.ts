@@ -1,14 +1,21 @@
-import { appState, codeUtilities, DEFAULT_APP_STATE, NullarySideEffector, patternState } from '../../src/indexForTest'
+import {
+	appState,
+	codeUtilities,
+	DEFAULT_APP_STATE,
+	DEFAULT_PATTERN_STATE,
+	NullarySideEffector,
+	patternState,
+} from '../../src/indexForTest'
 
 const resetAppAndPatternStates: NullarySideEffector =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: appState,
-			objectWithProperties: DEFAULT_APP_STATE,
+			objectToChange: patternState,
+			objectWithProperties: codeUtilities.deepClone(DEFAULT_PATTERN_STATE),
 		})
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: patternState.get(),
-			objectWithProperties: {},
+			objectToChange: appState,
+			objectWithProperties: codeUtilities.deepClone(DEFAULT_APP_STATE),
 		})
 	}
 

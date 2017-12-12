@@ -15,7 +15,6 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement, SimulateClick } from '../../../helpers'
 
-
 describe('build effect toggle click handler returns a function which', () => {
 	let subject: NullarySideEffector
 	let checkbox: HTMLInputElement

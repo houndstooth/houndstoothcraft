@@ -23,7 +23,7 @@ describe('standard houndstooth pattern', () => {
 
 		setTimeout(() => {
 			let baseId: number = -8
-			const tileSize: Unit = patternState.get('tileSize')
+			const tileSize: Unit = patternState.tileSettings.tileSize
 			const firstSupertileExpectations: StandardTileExpectation[] = [
 				{
 					baseId: baseId += 8,

@@ -9,6 +9,7 @@ import {
 	getStripePositionsForTile,
 	getTileOriginAndSize,
 	isTileUniform,
+	patternState,
 	shape,
 	ShapeColorIndex,
 	squareOutline,
@@ -18,7 +19,6 @@ import {
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
 
 describe('tile', () => {
 	const { PERIMETER_SCALAR } = constants
@@ -51,8 +51,6 @@ describe('tile', () => {
 			stripePositionsForTile = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 			spyOn(getStripePositionsForTile, 'default').and.returnValue(stripePositionsForTile)
 
-			setPatternSettingForTest('tileSettings', {})
-
 			shapeColorIndices = []
 			getShapeColorIndicesSpy.and.returnValue(shapeColorIndices)
 		})
@@ -65,7 +63,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within a tile is enabled', () => {
 			beforeEach(() => {
-				setPatternSettingForTest('collapseSameColoredShapesWithinTile', true)
+				patternState.tileSettings.collapseSameColoredShapesWithinTile = true
 			})
 
 			it('checks if the tile is uniform', () => {
@@ -171,7 +169,7 @@ describe('tile', () => {
 
 		describe('when collapsing same colored shapes within tile is not enabled', () => {
 			beforeEach(() => {
-				setPatternSettingForTest('collapseSameColoredShapesWithinTile', false)
+				patternState.tileSettings.collapseSameColoredShapesWithinTile = false
 			})
 
 			it('always calculates stripes and calls shape once for each one, even if the tile is uniform', () => {

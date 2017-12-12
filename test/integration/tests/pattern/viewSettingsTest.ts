@@ -22,7 +22,7 @@ describe('.viewSettings', () => {
 					viewSettings: { zoom },
 				},
 			}
-			const tileSize: Unit = patternState.get('tileSize')
+			const tileSize: Unit = patternState.tileSettings.tileSize
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			executeSelectedEffects.default({ overrides })
@@ -72,7 +72,7 @@ describe('.viewSettings', () => {
 					},
 				},
 			}
-			const tileSize: Unit = patternState.get('tileSize')
+			const tileSize: Unit = patternState.tileSettings.tileSize
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
 			executeSelectedEffects.default({ overrides })
@@ -156,7 +156,7 @@ describe('.viewSettings', () => {
 
 	describe('.rotateViewAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
-			const areaSize: Unit = patternState. get('tileSize')
+			const areaSize: Unit = patternState.tileSettings.tileSize
 
 			const overrides: Effect = {
 				basePattern: {

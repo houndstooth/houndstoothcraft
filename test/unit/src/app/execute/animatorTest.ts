@@ -8,7 +8,6 @@ import {
 } from '../../../../../src/indexForTest'
 import { noop } from '../../../helpers'
 
-
 describe('animator', () => {
 	let subject: (_: AnimationParams) => void
 	const FRAME_RATE: number = 30

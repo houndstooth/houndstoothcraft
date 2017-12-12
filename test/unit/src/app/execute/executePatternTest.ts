@@ -13,7 +13,6 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-
 describe('execute pattern', () => {
 	let subject: (_: ExecuteParams) => Promise<void>
 	const endLayer: Layer = to.Layer(4)

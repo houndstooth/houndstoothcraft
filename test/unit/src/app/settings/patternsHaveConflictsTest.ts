@@ -22,6 +22,7 @@ describe('patterns have conflicts', () => {
 			colorSettings: {
 				colorAssignmentSettings: {
 					opacity: 0,
+					flipGrain: false,
 				},
 			},
 			gridSettings: {
@@ -45,6 +46,7 @@ describe('patterns have conflicts', () => {
 			colorSettings: {
 				colorAssignmentSettings: {
 					opacity: 1,
+					flipGrain: false,
 				},
 			},
 			gridSettings: {

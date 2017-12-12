@@ -1,29 +1,20 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { Unit } from '../grid'
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 import { GetTileOriginAndSize } from './types'
 
-interface TileSettings {
-	readonly collapseSameColoredShapesWithinTile: boolean,
-	readonly getTileOriginAndSize: GetTileOriginAndSize,
-	readonly tileSize: Unit,
-	readonly [_: string]: any,
-}
+type TileSettingsSchema<R extends Bool> =
+	Rec<'collapseSameColoredShapesWithinTile', boolean, R> &
+	Rec<'getTileOriginAndSize', GetTileOriginAndSize, R> &
+	Rec<'tileSize', Unit, R>
 
-type TileSettingsFunctions = FunctionsOf<TileSettings>
+interface TileSettings extends TileSettingsSchema<True>{}
 
-type TileSettingsName = 'tileSettings'
-
-type TileSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	BooleanTypedSettingsNames: 'collapseSameColoredShapesWithinTile',
-	GetTileOriginAndSizeTypedSettingsNames: 'getTileOriginAndSize',
-	UnitTypedSettingsNames: 'tileSize',
-}>
+type TileSettingsFunctions = FunctionsOf<TileSettingsSchema<False>>
 
 export {
 	TileSettings,
+	TileSettingsSchema,
 	TileSettingsFunctions,
-	TileSettingsName,
-	TileSettingsNamesByType,
 }

@@ -6,21 +6,21 @@ type GetStripeOutline = (_: GetOutlineParams) => Coordinate[]
 type Point = (_: PointParams) => Coordinate
 
 interface PointParams extends TileOriginAndSize {
-	readonly stripePosition: StripePosition,
+	stripePosition: StripePosition,
 }
 
 interface PointsParams extends TileOriginAndSize {
-	readonly outline: Outline,
-	readonly stripeEndsInBottomRightHalf?: boolean,
-	readonly stripeStartsInTopLeftHalf?: boolean,
+	outline: Outline,
+	stripeEndsInBottomRightHalf?: boolean,
+	stripeStartsInTopLeftHalf?: boolean,
 }
 
 interface PointsParamsPlusStripeEnd extends PointsParams {
-	readonly stripeEnd: StripePosition,
+	stripeEnd: StripePosition,
 }
 
 interface PointsParamsPlusStripeStart extends PointsParams {
-	readonly stripeStart: StripePosition,
+	stripeStart: StripePosition,
 }
 
 type PointWithKnownPosition = (_: TileOriginAndSize) => Coordinate

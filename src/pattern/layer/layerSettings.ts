@@ -1,24 +1,15 @@
-// tslint:disable:no-magic-numbers no-any
+import { Layer } from '../../types'
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
-import { Layer } from './types'
+type LayerSettingsSchema<R extends Bool> =
+	Rec<'endLayer', Layer, R>
 
-interface LayerSettings {
-	readonly endLayer: Layer,
-	readonly [_: string]: any,
-}
+interface LayerSettings extends LayerSettingsSchema<True>{}
 
-type LayerSettingsFunctions = FunctionsOf<LayerSettings>
-
-type LayerSettingsName = 'layerSettings'
-
-type LayerSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	LayerTypedSettingsNames: 'endLayer',
-}>
+type LayerSettingsFunctions = FunctionsOf<LayerSettingsSchema<False>>
 
 export {
 	LayerSettings,
+	LayerSettingsSchema,
 	LayerSettingsFunctions,
-	LayerSettingsName,
-	LayerSettingsNamesByType,
 }

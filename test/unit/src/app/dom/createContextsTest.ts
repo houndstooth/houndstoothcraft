@@ -8,7 +8,6 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-
 describe('create contexts', () => {
 	let subject: NullarySideEffector
 	let canvasContainer: HTMLElement

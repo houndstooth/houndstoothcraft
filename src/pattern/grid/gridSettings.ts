@@ -1,25 +1,15 @@
-// tslint:disable:no-magic-numbers no-any
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+type GridSettingsSchema<R extends Bool> =
+	Rec<'includeNegativeQuadrants', boolean, R> &
+	Rec<'tileResolution', number, R>
 
-interface GridSettings {
-	readonly includeNegativeQuadrants: boolean,
-	readonly tileResolution: number,
-	readonly [_: string]: any,
-}
+interface GridSettings extends GridSettingsSchema<True>{}
 
-type GridSettingsFunctions = FunctionsOf<GridSettings>
-
-type GridSettingsName = 'gridSettings'
-
-type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	BooleanTypedSettingsNames: 'includeNegativeQuadrants',
-	NumberTypedSettingsNames: 'tileResolution',
-}>
+type GridSettingsFunctions = FunctionsOf<GridSettingsSchema<False>>
 
 export {
 	GridSettings,
+	GridSettingsSchema,
 	GridSettingsFunctions,
-	GridSettingsName,
-	GridSettingsNamesByType,
 }

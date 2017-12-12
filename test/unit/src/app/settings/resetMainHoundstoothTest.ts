@@ -6,7 +6,6 @@ import {
 	resetMainHoundstooth,
 } from '../../../../../src/indexForTest'
 
-
 describe('reset main houndstooth', () => {
 	it('returns the main houndstooth to its default state', () => {
 		const subject: NullarySideEffector = resetMainHoundstooth.default

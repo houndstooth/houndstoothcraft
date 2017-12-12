@@ -1,29 +1,21 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
-import * as stripePositionSettings from './stripePositionSettings'
+import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
+import { StripePositionSettingsFunctions, StripePositionSettingsSchema } from './stripePositionSettings'
 import { BaseStripeDiagonal } from './types'
 
-interface StripeSettings {
-	readonly baseStripeDiagonal: BaseStripeDiagonal,
-	readonly stripePositionSettings: Partial<stripePositionSettings.StripePositionSettings>,
-	readonly [_: string]: any,
-}
+type StripeSettingsSchema<R extends Bool> =
+	Rec<'baseStripeDiagonal', BaseStripeDiagonal, R> &
+	Rec<'stripePositionSettings', StripePositionSettingsSchema<R>, R>
 
-type StripeSettingsFunctions = Overwrite<FunctionsOf<StripeSettings>, {
-	stripePositionSettings: Partial<stripePositionSettings.StripePositionSettingsFunctions>,
-	[_: string]: any,
-}>
+interface StripeSettings extends StripeSettingsSchema<True>{}
 
-type StripeSettingsName = 'stripeSettings'
-
-type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	BaseStripeDiagonalTypedSettingsNames: 'baseStripeDiagonal',
-}> | stripePositionSettings.StripePositionSettingsNamesByType
+type StripeSettingsFunctions = Partial<Overwrite<FunctionsOf<StripeSettingsSchema<False>>, {
+	stripePositionSettings: StripePositionSettingsFunctions,
+}>>
 
 export {
 	StripeSettings,
+	StripeSettingsSchema,
 	StripeSettingsFunctions,
-	StripeSettingsName,
-	StripeSettingsNamesByType,
 }

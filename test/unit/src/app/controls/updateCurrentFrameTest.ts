@@ -1,6 +1,5 @@
 import { appState, Frame, to, updateCurrentFrame } from '../../../../../src/indexForTest'
 
-
 describe('update current frame', () => {
 	let subject: (_: Frame) => void
 	beforeEach(() => {

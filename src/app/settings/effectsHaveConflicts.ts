@@ -1,4 +1,4 @@
-import { Effect } from '../../pattern'
+import { Effect } from '../../types'
 import patternsHaveConflicts from './patternsHaveConflicts'
 
 const effectsHaveConflicts: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean =

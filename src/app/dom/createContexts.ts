@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { CANVAS_SIZE } from '../../constants'
-import { Layer } from '../../pattern'
+import { Layer } from '../../types'
 import { codeUtilities, from, NullarySideEffector, to } from '../../utilities'
 import { appState } from '../appState'
 import createContext from './createContext'

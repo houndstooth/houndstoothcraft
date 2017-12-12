@@ -4,6 +4,7 @@ import {
 	NullarySideEffector,
 	Outline,
 	OutlineOptions,
+	patternState,
 	shape,
 	ShapeColorIndex,
 	ShapeParams,
@@ -12,9 +13,8 @@ import {
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
-import { noop, setPatternSettingForTest } from '../../../helpers'
+import { noop } from '../../../helpers'
 import Spy = jasmine.Spy
-
 
 describe('shape', () => {
 	let subject: (_: ShapeParams) => void
@@ -101,7 +101,7 @@ describe('shape', () => {
 		describe('when an executeTexture method is supplied', () => {
 			const executeTexture: NullarySideEffector = noop
 			beforeEach(() => {
-				setPatternSettingForTest('textureSettings', { executeTexture })
+				patternState.textureSettings.executeTexture = executeTexture
 			})
 
 			it('passes it to the texture component to be rendered', () => {

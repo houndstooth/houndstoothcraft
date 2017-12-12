@@ -2,7 +2,6 @@ import { appState, DataBlob, exportCanvas, NullarySideEffector, saveCanvas, to }
 import Spy = jasmine.Spy
 import { buildMockContext } from '../../../helpers'
 
-
 describe('export canvas', () => {
 	it('calls toBlob on the mixed down canvas, and saves the result with the current frame number', () => {
 		const subject: NullarySideEffector = exportCanvas.default

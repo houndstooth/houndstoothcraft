@@ -11,7 +11,6 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('async maybe tile', () => {
 	let subject: (_: ReferencedGridAddress) => void
 	let setTimeoutSpy: Spy

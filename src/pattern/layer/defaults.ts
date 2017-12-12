@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
+import { Layer } from '../../types'
 import { LayerSettings } from './layerSettings'
-import { Layer } from './types'
 
 const DEFAULT_END_LAYER: Layer = 0 as any
 

@@ -1,7 +1,6 @@
 import { appState, fillPath, NullarySideEffector } from '../../../../../src/indexForTest'
 import { buildMockContext, MockContextCall } from '../../../helpers'
 
-
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const subject: NullarySideEffector = fillPath.default

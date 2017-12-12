@@ -4,7 +4,6 @@ import { combineEffects, composePatterns, Effect } from '../../../../../src/inde
 import CallInfo = jasmine.CallInfo
 import Spy = jasmine.Spy
 
-
 describe('combine effects', () => {
 	it('composes the base, animations, and layers patterns of every effect', () => {
 		const subject: (_: { effects: Effect[] }) => Effect = combineEffects.default

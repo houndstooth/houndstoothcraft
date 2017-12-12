@@ -5,14 +5,13 @@ import {
 	Address,
 	AddressElement,
 	Coordinate,
-	Frame,
-	Layer,
 	Outline,
 	Radian,
 	ShapeColorIndex,
 	StripePosition,
 	Unit,
 } from '../pattern'
+import { Frame, Layer } from '../types'
 
 // First order, singular
 

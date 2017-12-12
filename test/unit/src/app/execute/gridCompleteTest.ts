@@ -7,7 +7,6 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-
 describe('grid complete', () => {
 	let subject: (_: NullarySideEffector) => void
 	const fakeGridProgressIntervalItself: number = 9275

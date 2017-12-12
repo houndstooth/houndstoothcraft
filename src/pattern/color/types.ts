@@ -3,11 +3,11 @@
 import { Address, Grid, GridAddressParam } from '../grid'
 
 interface Color {
-	readonly r?: number,
-	readonly g?: number,
-	readonly b?: number,
-	readonly a: number,
-	readonly [index: string]: number | undefined,
+	r?: number,
+	g?: number,
+	b?: number,
+	a: number,
+	[index: string]: number | undefined,
 }
 
 enum AssignmentMode {
@@ -16,7 +16,7 @@ enum AssignmentMode {
 }
 
 interface ColorOptions {
-	readonly shapeColorIndex: ShapeColorIndex,
+	shapeColorIndex: ShapeColorIndex,
 }
 
 enum _ColorSetBrand {}
@@ -28,7 +28,7 @@ export {
 }
 
 interface GetShapeColorIndicesWithOffsetParams extends GridAddressParam {
-	readonly addressOffset: Address,
+	addressOffset: Address,
 }
 
 type GetShapeColorIndices = (_: GridAddressParam) => ShapeColorIndex[]
@@ -42,13 +42,13 @@ type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 type TransformShapeColorIndices = (_: TransformShapeColorIndicesParams) => ShapeColorIndex[]
 
 interface TransformShapeColorIndicesParams {
-	readonly gridAddress: Address,
-	readonly shapeColorIndices: ShapeColorIndex[],
+	gridAddress: Address,
+	shapeColorIndices: ShapeColorIndex[],
 }
 
 interface Weave {
-	readonly columns: number[],
-	readonly rows: number[],
+	columns: number[],
+	rows: number[],
 }
 
 interface ShapeColorIndex extends Number {

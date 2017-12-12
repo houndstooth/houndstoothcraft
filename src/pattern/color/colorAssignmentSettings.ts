@@ -1,35 +1,21 @@
-// tslint:disable:no-magic-numbers no-any
-
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from './types'
 
-interface ColorAssignmentSettings {
-	readonly assignmentMode: AssignmentMode,
-	readonly flipGrain: boolean,
-	readonly offsetAddress?: OffsetAddress,
-	readonly supertile: Supertile,
-	readonly switcheroo: boolean,
-	readonly transformShapeColorIndices?: TransformShapeColorIndices,
-	readonly weave: Weave,
-	readonly [_: string]: any,
-}
+type ColorAssignmentSettingsSchema<R extends Bool> =
+	Rec<'assignmentMode', AssignmentMode, R> &
+	Rec<'flipGrain', boolean, R> &
+	Rec<'offsetAddress', OffsetAddress, False> &
+	Rec<'supertile', Supertile, R> &
+	Rec<'switcheroo', boolean, R> &
+	Rec<'transformShapeColorIndices', TransformShapeColorIndices, False> &
+	Rec<'weave', Weave, R>
 
-type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettings>
+interface ColorAssignmentSettings extends ColorAssignmentSettingsSchema<True>{}
 
-type ColorAssignmentSettingsName = 'colorAssignmentSettings'
-
-type ColorAssignmentSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	AssignmentModeTypedSettingsNames: 'assignmentMode',
-	BooleanTypedSettingsNames: 'flipGrain' | 'switcheroo',
-	OffsetAddressTypedSettingsNames: 'offsetAddress',
-	SupertileTypedSettingsNames: 'supertile',
-	TransformShapeColorIndicesTypedSettingsNames: 'transformShapeColorIndices',
-	WeaveTypedSettingsNames: 'weave',
-}>
+type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettingsSchema<False>>
 
 export {
 	ColorAssignmentSettings,
+	ColorAssignmentSettingsSchema,
 	ColorAssignmentSettingsFunctions,
-	ColorAssignmentSettingsName,
-	ColorAssignmentSettingsNamesByType,
 }

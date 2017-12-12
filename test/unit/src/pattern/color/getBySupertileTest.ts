@@ -2,10 +2,10 @@ import {
 	Address,
 	getBySupertile,
 	GetShapeColorIndicesWithOffset,
+	patternState,
 	ShapeColorIndex,
 	to,
 } from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
 
 describe('get by supertile', () => {
 	let subject: GetShapeColorIndicesWithOffset
@@ -19,11 +19,11 @@ describe('get by supertile', () => {
 		const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
 		const addressOffset: Address = to.Address([ 0, 0 ])
 
-		setPatternSettingForTest('supertile', to.Supertile([
+		patternState.colorSettings.colorAssignmentSettings.supertile = to.Supertile([
 			[ [], expectedSupertileEntry ],
 			[ [], [] ],
 			[ [], [] ],
-		]))
+		])
 
 		const actualSupertileEntry: ShapeColorIndex[] = subject({ gridAddress, addressOffset })
 		expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
@@ -33,11 +33,11 @@ describe('get by supertile', () => {
 		const expectedSupertileEntry: ShapeColorIndex[] = to.ShapeColorIndices([ 2, 3, 0, 1 ])
 		const addressOffset: Address = to.Address([ 1, 1 ])
 
-		setPatternSettingForTest('supertile', to.Supertile([
+		patternState.colorSettings.colorAssignmentSettings.supertile = to.Supertile([
 			[ [], [] ],
 			[ expectedSupertileEntry, [] ],
 			[ [], [] ],
-		]))
+		])
 
 		const actualSupertileEntry: ShapeColorIndex[] = subject({ gridAddress, addressOffset })
 		expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))

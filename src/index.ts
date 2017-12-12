@@ -19,7 +19,6 @@ export {
 	ExecuteTextureParams,
 	GetStripePosition,
 	GetStripePositions,
-	NamedEffect,
 	Outline,
 	Radian,
 	ShapeColorIndex,
@@ -43,3 +42,6 @@ import * as constants from './constants'
 export {
 	constants,
 }
+export {
+	NamedEffect,
+} from './types'

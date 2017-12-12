@@ -1,4 +1,4 @@
-import { Effect, NamedEffect } from '../../pattern'
+import { Effect, NamedEffect } from '../../types'
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { combineEffects, effectsHaveConflicts } from '../settings'

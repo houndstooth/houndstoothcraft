@@ -8,7 +8,6 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-
 describe('create effect toggle', () => {
 	let subject: (_: NamedEffect) => void
 	const divChildren: HTMLElement[] = []
@@ -21,11 +20,15 @@ describe('create effect toggle', () => {
 
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
-	beforeEach(() => {
-		subject = createEffectToggle.default
+	beforeAll(() => {
 		div = buildMockElement({ children: divChildren }) as HTMLElement
 		checkbox = buildMockElement() as HTMLInputElement
 		label = buildMockElement() as HTMLElement
+	})
+
+	beforeEach(() => {
+		subject = createEffectToggle.default
+
 		effectTogglesContainer = buildMockElement({
 			children: effectTogglesContainerChildren,
 		}) as HTMLElement

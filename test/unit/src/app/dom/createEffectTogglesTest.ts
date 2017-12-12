@@ -9,10 +9,15 @@ describe('create effect toggles', () => {
 	let moreEffectsMessage: HTMLElement
 	const children: HTMLElement[] = []
 	const attributeObject: { id: string } = { id: '' }
-	beforeEach(() => {
-		subject = createEffectToggles.default
+
+	beforeAll(() => {
 		effectTogglesContainer = buildMockElement({ children }) as HTMLElement
 		moreEffectsMessage = buildMockElement({ attributeObject }) as HTMLElement
+	})
+
+	beforeEach(() => {
+		subject = createEffectToggles.default
+
 		createEffectToggleSpy = spyOn(createEffectToggle, 'default')
 		spyOn(globalWrapper.document, 'querySelector').and.returnValue(effectTogglesContainer)
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(moreEffectsMessage)

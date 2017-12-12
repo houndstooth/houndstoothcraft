@@ -1,6 +1,7 @@
 // tslint:disable:no-any max-file-line-count
 
-import { BasePattern, Effect, Houndstooth, NamedEffect, Pattern } from '../../pattern'
+import { FullPatternBaseValues } from '../../pattern'
+import { Effect, Houndstooth, NamedEffect, Pattern } from '../../types'
 
 enum _SettingsPathBrand {}
 
@@ -10,32 +11,24 @@ enum _SettingsStepBrand {}
 
 type SettingsStep = _SettingsStepBrand & string;
 
-interface SettingNamesToPathsMap { [ index: string ]: SettingsPath }
-
-interface BuildSettingNamesToPathsMapParams {
-	// tslint:disable-next-line:no-any
-	settings?: any,
-	settingsPath?: SettingsPath,
-}
-
 interface CheckSettingForConflict extends FullSettingsPath, SettingConflictCheck {
 }
 
 interface PatternsHaveConflictsParams {
-	readonly pattern?: Pattern,
-	readonly patternCheckingAgainst?: Pattern,
-	readonly settingsPath?: SettingsPath,
+	pattern?: Pattern,
+	patternCheckingAgainst?: Pattern,
+	settingsPath?: SettingsPath,
 }
 
 interface SettingConflictCheck {
-	readonly setting: any,
-	readonly settingCheckingForConflict: any,
+	setting: any,
+	settingCheckingForConflict: any,
 }
 
 interface ComposeMainHoundstoothParams {
-	readonly effects?: NamedEffect[],
-	readonly logComposedMainHoundstooth?: boolean,
-	readonly overrides?: Effect,
+	effects?: NamedEffect[],
+	logComposedMainHoundstooth?: boolean,
+	overrides?: Effect,
 }
 
 interface ComposePatternParams {
@@ -46,47 +39,44 @@ interface ComposePatternParams {
 }
 
 interface ComposePatternsParams {
-	readonly patternToBeMergedOnto: Pattern,
-	readonly patternToMerge?: any,
-	readonly settingsPath?: SettingsPath,
+	patternToBeMergedOnto: Pattern,
+	patternToMerge?: any,
+	settingsPath?: SettingsPath,
 }
 
 interface FullSettingsPath {
-	readonly settingName: SettingsStep,
-	readonly settingsPath: SettingsPath,
+	settingName: SettingsStep,
+	settingsPath: SettingsPath,
 }
 
 interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends FullSettingsPath {
-	readonly maybeSettingsFunctionsSourcePattern: any,
-	readonly settingsFunctionObjects: SettingsFunctionObject[],
+	maybeSettingsFunctionsSourcePattern: any,
+	settingsFunctionObjects: SettingsFunctionObject[],
 }
 
 interface PrepareFunctionObjectsParams {
-	readonly settingsFunctionObjects?: SettingsFunctionObject[],
-	readonly settingsFunctionsSourcePattern: any,
-	readonly settingsPath?: SettingsPath,
+	settingsFunctionObjects?: SettingsFunctionObject[],
+	settingsFunctionsSourcePattern: any,
+	settingsPath?: SettingsPath,
 }
 
 type SettingsFunction<T> = (_?: T) => T
 
 interface SettingsFunctionObject extends FullSettingsPath {
-	readonly settingsFunction: SettingsFunction<any>,
+	settingsFunction: SettingsFunction<any>,
 }
 
 type SettingsAreEqual = (a: any, b: any) => boolean
 
 interface SettingsState {
 	availableEffects: NamedEffect[],
-	currentPattern: BasePattern,
-	readonly mainHoundstooth: Houndstooth,
-	settingNamesToPathsMap: { [ index: string ]: SettingsPath },
+	currentPattern: FullPatternBaseValues,
+	mainHoundstooth: Houndstooth,
 }
 
 export {
 	SettingsPath,
 	SettingsStep,
-	SettingNamesToPathsMap,
-	BuildSettingNamesToPathsMapParams,
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
 	SettingConflictCheck,

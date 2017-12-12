@@ -1,4 +1,3 @@
-import * as buildSettingNamesToPathsMap from './buildSettingNamesToPathsMap'
 import * as checkSettingForConflict from './checkSettingForConflict'
 import * as combineEffects from './combineEffects'
 import * as composeMainHoundstooth from './composeMainHoundstooth'
@@ -6,7 +5,6 @@ import * as composePatterns from './composePatterns'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
-import * as getSettingsPath from './getSettingsPath'
 import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
@@ -15,7 +13,6 @@ import * as settingPath from './settingPath'
 import * as shouldRecurse from './shouldRecurse'
 
 export {
-	buildSettingNamesToPathsMap,
 	checkSettingForConflict,
 	combineEffects,
 	composeMainHoundstooth,
@@ -23,7 +20,6 @@ export {
 	deeperPath,
 	effectsHaveConflicts,
 	getPatternSettingOrCreatePath,
-	getSettingsPath,
 	initializeCurrentPatternFromBasePattern,
 	patternsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
@@ -32,16 +28,19 @@ export {
 	shouldRecurse,
 }
 export {
-	BuildSettingNamesToPathsMapParams,
 	CheckSettingForConflict,
 	ComposeMainHoundstoothParams,
 	ComposePatternsParams,
 	FullSettingsPath,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectsParams,
-	SettingNamesToPathsMap,
 	SettingsFunction,
 	SettingsFunctionObject,
 	SettingsPath,
 	SettingsStep,
 } from './types'
+export {
+	DEFAULT_ANIMATIONS_PATTERN,
+	DEFAULT_BASE_PATTERN,
+	DEFAULT_LAYERS_PATTERN,
+} from './defaults'

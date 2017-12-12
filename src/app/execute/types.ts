@@ -1,4 +1,5 @@
-import { Layer, Referenced } from '../../pattern'
+import { Referenced } from '../../pattern'
+import { Layer } from '../../types'
 import { NullarySideEffector } from '../../utilities'
 import { SettingsFunctionObject } from '../settings'
 
@@ -8,13 +9,13 @@ interface AnimationParams {
 }
 
 interface ExecuteParams {
-	readonly animationFunctionObjects: SettingsFunctionObject[],
-	readonly layerFunctionObjects: SettingsFunctionObject[]
+	animationFunctionObjects: SettingsFunctionObject[],
+	layerFunctionObjects: SettingsFunctionObject[]
 }
 
 interface ExecuteLayerParams extends Referenced {
-	readonly layer: Layer,
-	readonly layerFunctionObjects: SettingsFunctionObject[],
+	layer: Layer,
+	layerFunctionObjects: SettingsFunctionObject[],
 }
 
 interface ExecuteState {

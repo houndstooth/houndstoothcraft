@@ -1,10 +1,4 @@
-import {
-	GetStripePosition,
-	perStripe,
-	StripePosition,
-	to,
-} from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
+import { GetStripePosition, patternState, perStripe, StripePosition, to } from '../../../../../src/indexForTest'
 import CallInfo = jasmine.CallInfo
 
 describe('per stripe', () => {
@@ -14,11 +8,8 @@ describe('per stripe', () => {
 	})
 
 	it('uses a stripe count if provided', () => {
-		setPatternSettingForTest('stripeSettings', {
-			stripePositionSettings: {
-				stripeCount: 3,
-			},
-		})
+		patternState.stripeSettings.stripePositionSettings.stripeCount =  3
+
 		const stripePositions: StripePosition[] = subject({
 			getStripePosition: (): StripePosition => to.StripePosition(5),
 		})

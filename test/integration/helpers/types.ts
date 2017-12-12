@@ -6,23 +6,23 @@ import {
 } from '../../../src/indexForTest'
 
 interface DrawPassMarker {
-	readonly coordinateUnderTest: Coordinate,
-	readonly id: number,
-	readonly passed: boolean,
+	coordinateUnderTest: Coordinate,
+	id: number,
+	passed: boolean,
 }
 
 interface ExpectedSection {
-	readonly areaOrigin: Coordinate,
-	readonly areaSize: Unit,
-	readonly baseId?: number,
+	areaOrigin: Coordinate,
+	areaSize: Unit,
+	baseId?: number,
 }
 
 interface ExpectedDividedSection extends ExpectedSection {
-	readonly colors: [ Color, Color ],
+	colors: [ Color, Color ],
 }
 
 interface ExpectedSolidSection extends ExpectedSection {
-	readonly color: Color,
+	color: Color,
 }
 
 type ExpectDiagonalDividedSection = (_: ExpectedDividedSection) => void
@@ -41,9 +41,9 @@ type Key = [ string, number | undefined ]
 type PixelIsColor = (coordinateUnderTest: Coordinate, expectedColor: Color) => boolean
 
 interface CheckColorProperties {
-	readonly actualColor: Color,
-	readonly expectedColor: Color,
-	readonly i: number,
+	actualColor: Color,
+	expectedColor: Color,
+	i: number,
 }
 
 interface StandardTileExpectation {
@@ -54,15 +54,15 @@ interface StandardTileExpectation {
 }
 
 interface SectionCenterParams {
-	readonly areaOrigin: Coordinate,
-	readonly areaSize: Unit,
-	readonly sectionAddress: Address,
-	readonly sectionResolution: number,
+	areaOrigin: Coordinate,
+	areaSize: Unit,
+	sectionAddress: Address,
+	sectionResolution: number,
 }
 
 interface SectionCenterExpectation extends SectionCenterParams {
-	readonly color: Color,
-	readonly id?: number,
+	color: Color,
+	id?: number,
 }
 
 interface PixelColorExpectation {

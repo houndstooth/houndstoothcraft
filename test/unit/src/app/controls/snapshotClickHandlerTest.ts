@@ -5,7 +5,6 @@ import {
 	snapshotClickHandler,
 } from '../../../../../src/indexForTest'
 
-
 describe('snapshot click handler', () => {
 	let subject: NullarySideEffector
 	beforeEach(() => {

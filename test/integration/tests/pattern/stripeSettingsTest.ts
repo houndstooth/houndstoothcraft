@@ -20,7 +20,7 @@ const { BLACK, TRANSPARENT } = constants
 describe('.stripeSettings', () => {
 	let areaSize: Unit
 	beforeEach(() => {
-		areaSize = patternState.get('tileSize')
+		areaSize = patternState.tileSettings.tileSize
 	})
 
 	describe('.stripePositionSettings', () => {

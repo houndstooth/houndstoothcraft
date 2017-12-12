@@ -16,3 +16,6 @@ export {
 export {
 	ExecuteState,
 } from './types'
+export {
+	DEFAULT_EXECUTE_STATE,
+} from './defaults'

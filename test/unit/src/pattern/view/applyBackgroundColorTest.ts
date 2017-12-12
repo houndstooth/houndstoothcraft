@@ -3,10 +3,10 @@ import {
 	constants,
 	getCurrentContext,
 	NullarySideEffector,
+	patternState,
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
-import { buildMockContext, setPatternSettingForTest } from '../../../helpers'
-
+import { buildMockContext } from '../../../helpers'
 
 describe('apply background color', () => {
 	const { CANVAS_SIZE, CYAN } = constants
@@ -22,7 +22,7 @@ describe('apply background color', () => {
 	})
 
 	it('fills the entire canvas with the color', () => {
-		setPatternSettingForTest('colorSettings', { backgroundColor: CYAN })
+		patternState.colorSettings.backgroundColor = CYAN
 
 		subject()
 

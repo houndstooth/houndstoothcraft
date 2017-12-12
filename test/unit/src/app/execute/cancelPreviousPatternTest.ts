@@ -1,6 +1,5 @@
 import { appState, cancelPreviousPattern, NullarySideEffector } from '../../../../../src/indexForTest'
 
-
 describe('cancel previous pattern', () => {
 	it('sets the pattern ref to a new random number', () => {
 		const subject: NullarySideEffector = cancelPreviousPattern.default

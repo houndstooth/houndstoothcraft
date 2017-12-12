@@ -2,8 +2,6 @@ import * as getStripePositionsForTile from './getStripePositionsForTile'
 import * as perStripe from './perStripe'
 import * as rotateCoordinate from './rotateCoordinate'
 import * as squareOutline from './squareOutline'
-import * as stripeCountContinuumSettings from './stripeCountContinuumSettings'
-import * as stripePositionSettings from './stripePositionSettings'
 import * as stripeSettings from './stripeSettings'
 
 export {
@@ -11,8 +9,6 @@ export {
 	perStripe,
 	rotateCoordinate,
 	squareOutline,
-	stripeCountContinuumSettings,
-	stripePositionSettings,
 	stripeSettings,
 }
 export {

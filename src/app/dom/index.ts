@@ -18,3 +18,6 @@ export {
 	DomState,
 	Px,
 } from './types'
+export {
+	DEFAULT_DOM_STATE,
+} from './defaults'

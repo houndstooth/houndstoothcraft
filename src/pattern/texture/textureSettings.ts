@@ -1,24 +1,15 @@
-// tslint:disable:no-magic-numbers no-any
-
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 import { ExecuteTexture } from './types'
 
-interface TextureSettings {
-	readonly executeTexture?: ExecuteTexture,
-	readonly [_: string]: any,
-}
+type TextureSettingsSchema<R extends Bool> =
+	Rec<'executeTexture', ExecuteTexture, False>
 
-type TextureSettingsFunctions = FunctionsOf<TextureSettings>
+interface TextureSettings extends TextureSettingsSchema<True>{}
 
-type TextureSettingsName = 'textureSettings'
-
-type TextureSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	ExecuteTextureTypedSettingsNames: 'executeTexture',
-}>
+type TextureSettingsFunctions = FunctionsOf<TextureSettingsSchema<False>>
 
 export {
 	TextureSettings,
+	TextureSettingsSchema,
 	TextureSettingsFunctions,
-	TextureSettingsName,
-	TextureSettingsNamesByType,
 }

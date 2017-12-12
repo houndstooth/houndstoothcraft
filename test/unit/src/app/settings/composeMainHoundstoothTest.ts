@@ -13,7 +13,6 @@ import {
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
 
-
 describe('composeMainHoundstooth', () => {
 	let subject: (_?: ComposeMainHoundstoothParams) => void
 	beforeEach(() => {

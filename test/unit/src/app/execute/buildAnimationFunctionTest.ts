@@ -16,7 +16,6 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('build animation function returns an animation function', () => {
 	let subject: (_: ExecuteParams) => NullaryVoidPromise
 	let animationFunction: NullaryVoidPromise

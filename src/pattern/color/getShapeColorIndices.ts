@@ -1,6 +1,6 @@
 import { codeUtilities, to } from '../../utilities'
 import { Address, GridAddressParam } from '../grid'
-import { get } from '../patternState'
+import { patternState } from '../patternState'
 import applySwitcheroo from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
 import getBySupertile from './getBySupertile'
@@ -27,7 +27,7 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 			flipGrain,
 			switcheroo,
 			transformShapeColorIndices,
-		}: ColorAssignmentSettings = get('colorAssignmentSettings')
+		}: ColorAssignmentSettings = patternState.colorSettings.colorAssignmentSettings
 
 		let maybeAdjustedShapeColorIndices: ShapeColorIndex[] = shapeColorIndices
 		if (flipGrain) {
@@ -54,7 +54,7 @@ const getIndices: GetShapeColorIndices =
 		const {
 			offsetAddress,
 			assignmentMode,
-		}: ColorAssignmentSettings = get('colorAssignmentSettings')
+		}: ColorAssignmentSettings = patternState.colorSettings.colorAssignmentSettings
 
 		// tslint:disable-next-line:max-line-length
 		const getter: GetShapeColorIndicesWithOffset = assignmentMode === AssignmentMode.Weave ? getByWeave : getBySupertile

@@ -1,7 +1,6 @@
 import { appState } from '../../../../src/app/appState'
 import {
 	attachControlHandlers,
-	buildSettingNamesToPathsMap,
 	createEffectToggles,
 	executeSelectedEffects,
 	NamedEffect,
@@ -10,7 +9,6 @@ import {
 	storeDomElements,
 } from '../../../../src/indexForTest'
 
-
 describe('start up', () => {
 	let subject: (_: NamedEffect[]) => void
 	let allEffects: NamedEffect[]
@@ -18,7 +16,6 @@ describe('start up', () => {
 		subject = startUp.default
 
 		spyOn(storeDomElements, 'default')
-		spyOn(buildSettingNamesToPathsMap, 'default')
 		spyOn(setupMixedDownContext, 'default')
 		spyOn(createEffectToggles, 'default')
 		spyOn(attachControlHandlers, 'default')
@@ -34,10 +31,6 @@ describe('start up', () => {
 
 	it('sets the available effects from all the effects in the effects module', () => {
 		expect(appState.settings.availableEffects).toBe(allEffects)
-	})
-
-	it('builds the setting name to settings path map', () => {
-		expect(buildSettingNamesToPathsMap.default).toHaveBeenCalled()
 	})
 
 	it('sets up the mixed down context', () => {

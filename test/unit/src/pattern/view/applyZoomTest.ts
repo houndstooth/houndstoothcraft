@@ -1,5 +1,4 @@
-import { applyZoom, Path, to } from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
+import { applyZoom, Path, patternState, to } from '../../../../../src/indexForTest'
 
 describe('apply zoom', () => {
 	let subject: (_: Path) => Path
@@ -13,7 +12,7 @@ describe('apply zoom', () => {
 			[ 100, 100 ],
 			[ 50, 100 ],
 		])
-		setPatternSettingForTest('zoom', zoom)
+		patternState.viewSettings.zoom = zoom
 	})
 
 	it('adjusts the path per the zoom level', () => {
@@ -27,7 +26,7 @@ describe('apply zoom', () => {
 
 	describe('zooming on canvas center (instead of the default, the origin [top left corner])', () => {
 		beforeEach(() => {
-			setPatternSettingForTest('zoomOnCanvasCenter', true)
+			patternState.viewSettings.zoomOnCanvasCenter = true
 			path = to.Path([
 				[ 350, 350 ],
 				[ 400, 350 ],
@@ -47,7 +46,7 @@ describe('apply zoom', () => {
 
 		describe('when the view is already centered', () => {
 			beforeEach(() => {
-				setPatternSettingForTest('centerViewOnCenterOfTileAtHomeAddress', true)
+				patternState.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
 			})
 		})
 

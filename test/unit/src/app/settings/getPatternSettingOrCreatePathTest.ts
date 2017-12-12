@@ -2,7 +2,6 @@
 
 import { getPatternSettingOrCreatePath, SettingsPath, to } from '../../../../../src/indexForTest'
 
-
 describe('get pattern setting or create path', () => {
 	let subject: (_: { pattern: any, settingsPath: SettingsPath }) => any
 	beforeEach(() => {

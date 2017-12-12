@@ -5,16 +5,16 @@ import {
 	from,
 	getBySupertile,
 	getByWeave,
-	getShapeColorIndices,
 	GetShapeColorIndices,
+	getShapeColorIndices,
 	Grid,
 	OffsetAddress,
+	patternState,
 	ShapeColorIndex,
 	Supertile,
 	to,
 	TransformShapeColorIndices,
 } from '../../../../../src/indexForTest'
-import { setPatternSettingForTest } from '../../../helpers'
 
 describe('get shape color indices', () => {
 	let gridAddress: Address
@@ -26,7 +26,7 @@ describe('get shape color indices', () => {
 
 	describe('assignment (of the indices of the colors of the overall pattern that this tile will use)', () => {
 		it('gets by weave when assignment mode is weave', () => {
-			setPatternSettingForTest('assignmentMode', AssignmentMode.Weave)
+			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Weave
 			spyOn(getByWeave, 'default')
 
 			subject({ gridAddress })
@@ -35,7 +35,7 @@ describe('get shape color indices', () => {
 		})
 
 		it('gets by supertile when assignment mode is supertile', () => {
-			setPatternSettingForTest('assignmentMode', AssignmentMode.Supertile)
+			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Supertile
 			spyOn(getBySupertile, 'default')
 
 			subject({ gridAddress })
@@ -56,8 +56,9 @@ describe('get shape color indices', () => {
 						from.AddressElement(gridAddressToOffset[ 0 ]) / 3,
 						from.AddressElement(gridAddressToOffset[ 1 ]) * 2 / 5,
 					])
-			setPatternSettingForTest('offsetAddress', offsetAddress)
-			setPatternSettingForTest('assignmentMode', AssignmentMode.Weave)
+
+			patternState.colorSettings.colorAssignmentSettings.offsetAddress = offsetAddress
+			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Weave
 			const expectedAddressOffset: Address = to.Address([ 1, 2 ])
 
 			subject({ gridAddress })
@@ -81,36 +82,29 @@ describe('get shape color indices', () => {
 
 	describe('re-ordering of chosen color indices', () => {
 		it('can flip the grain of the houndstooth (by reversing order)', () => {
-			setPatternSettingForTest('colorSettings', {
-				colorAssignmentSettings: {
-					assignmentMode: AssignmentMode.Weave,
-					weave: {
-						columns: [ 0, 1 ],
-						rows: [ 1, 0 ],
-					},
-				},
-			})
+			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Weave
+			patternState.colorSettings.colorAssignmentSettings.weave = {
+				columns: [ 0, 1 ],
+				rows: [ 1, 0 ],
+			}
 			const notFlippedResult: ShapeColorIndex[] = subject({ gridAddress })
 
-			setPatternSettingForTest('flipGrain', true)
+			patternState.colorSettings.colorAssignmentSettings.flipGrain = true
 			const flippedResult: ShapeColorIndex[] = subject({ gridAddress })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})
 
 		it('can turn the grain of the pattern into switcheroo', () => {
-			setPatternSettingForTest('colorSettings', {
-				colorAssignmentSettings: {
-					assignmentMode: AssignmentMode.Supertile,
-					supertile: to.Supertile([
-						[ [ 0, 1 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
-						[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 7, 8 ] ],
-						[ [ 8, 9 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
-						[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 15, 16 ] ],
-					]),
-					switcheroo: true,
-				},
-			})
+			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Supertile
+			patternState.colorSettings.colorAssignmentSettings.supertile = to.Supertile([
+				[ [ 0, 1 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
+				[ [ 4, 5 ], [ 5, 6 ], [ 6, 7 ], [ 7, 8 ] ],
+				[ [ 8, 9 ], [ 9, 10 ], [ 10, 11 ], [ 11, 12 ] ],
+				[ [ 12, 13 ], [ 13, 14 ], [ 14, 15 ], [ 15, 16 ] ],
+			])
+			patternState.colorSettings.colorAssignmentSettings.switcheroo = true
+
 			const addresses: Grid<Address> = codeUtilities.iterator(4).map((x: number) =>
 				codeUtilities.iterator(4).map((y: number) =>
 					to.Address([ x, y ])))
@@ -144,16 +138,12 @@ describe('get shape color indices', () => {
 					}
 				}
 
-			setPatternSettingForTest('colorSettings', {
-				colorAssignmentSettings: {
-					assignmentMode: AssignmentMode.Weave,
-					transformShapeColorIndices,
-					weave: {
-						columns: [ 0, 1 ],
-						rows: [ 1, 0 ],
-					},
-				},
-			})
+			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Weave
+			patternState.colorSettings.colorAssignmentSettings.transformShapeColorIndices = transformShapeColorIndices
+			patternState.colorSettings.colorAssignmentSettings.weave = {
+				columns: [ 0, 1 ],
+				rows: [ 1, 0 ],
+			}
 			const addresses: Grid<Address> = codeUtilities.iterator(2).map((x: number) =>
 				codeUtilities.iterator(2).map((y: number) =>
 					to.Address([ x, y ])))

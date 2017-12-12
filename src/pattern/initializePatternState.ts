@@ -1,11 +1,11 @@
 import { codeUtilities } from '../utilities'
-import { get } from './patternState'
-import { BasePattern } from './types'
+import { patternState } from './patternState'
+import { FullPatternBaseValues } from './types'
 
-const initializePatternState: (_: BasePattern) => void =
-	(initialPattern: BasePattern): void => {
+const initializePatternState: (_: FullPatternBaseValues) => void =
+	(initialPattern: FullPatternBaseValues): void => {
 		codeUtilities.changeObjectIntoCopy({
-			objectToChange: get(),
+			objectToChange: patternState,
 			objectWithProperties: initialPattern,
 		})
 	}

@@ -7,6 +7,3 @@ export {
 	shouldRefreshCanvas,
 	standardAnimation,
 }
-export {
-	Frame,
-} from './types'

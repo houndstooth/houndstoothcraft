@@ -25,3 +25,6 @@ export {
 	Pixel,
 	RenderState,
 } from './types'
+export {
+	DEFAULT_RENDER_STATE,
+} from './defaults'

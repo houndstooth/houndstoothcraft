@@ -10,7 +10,7 @@ interface AddressElement extends Number {
 type Grid<T> = T[][]
 
 interface GridAddressParam {
-	readonly gridAddress: Address,
+	gridAddress: Address,
 }
 
 interface Unit extends Number {

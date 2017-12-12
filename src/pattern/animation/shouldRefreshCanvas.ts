@@ -1,6 +1,6 @@
 import { ConditionFunction } from '../../utilities'
-import { get } from '../patternState'
+import { patternState } from '../patternState'
 
-const shouldRefreshCanvas: ConditionFunction = (): boolean => get('refreshCanvas')
+const shouldRefreshCanvas: ConditionFunction = (): boolean => patternState.animationSettings.refreshCanvas
 
 export default shouldRefreshCanvas

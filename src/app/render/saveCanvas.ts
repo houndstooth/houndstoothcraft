@@ -1,4 +1,4 @@
-import { Frame } from '../../pattern'
+import { Frame } from '../../types'
 import { from } from '../../utilities'
 import { appState } from '../appState'
 import { saveBlob } from '../dom'

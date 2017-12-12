@@ -20,3 +20,6 @@ export {
 export {
 	ControlsState,
 } from './types'
+export {
+	DEFAULT_CONTROLS_STATE,
+} from './defaults'

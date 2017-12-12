@@ -1,24 +1,15 @@
-// tslint:disable:no-magic-numbers max-file-line-count no-any
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+type StripeCountContinuumSettingsSchema<R extends Bool> =
+	Rec<'deltaStripeCount', number, R> &
+	Rec<'initialStripeCount', number, R>
 
-interface StripeCountContinuumSettings {
-	readonly deltaStripeCount: number,
-	readonly initialStripeCount: number,
-	readonly [_: string]: any,
-}
+interface StripeCountContinuumSettings extends StripeCountContinuumSettingsSchema<True>{}
 
-type StripeCountContinuumSettingsFunctions = FunctionsOf<StripeCountContinuumSettings>
-
-type StripeCountContinuumSettingsName = 'stripeCountContinuumSettings'
-
-type StripeCountContinuumSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	NumberTypedSettingsNames: 'deltaStripeCount' | 'initialStripeCount',
-}>
+type StripeCountContinuumSettingsFunctions = FunctionsOf<StripeCountContinuumSettingsSchema<False>>
 
 export {
 	StripeCountContinuumSettings,
+	StripeCountContinuumSettingsSchema,
 	StripeCountContinuumSettingsFunctions,
-	StripeCountContinuumSettingsName,
-	StripeCountContinuumSettingsNamesByType,
 }

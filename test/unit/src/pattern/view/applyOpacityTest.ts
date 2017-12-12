@@ -1,6 +1,5 @@
-import { applyOpacity, getCurrentContext, NullarySideEffector } from '../../../../../src/indexForTest'
-import { buildMockContext, setPatternSettingForTest } from '../../../helpers'
-
+import { applyOpacity, getCurrentContext, NullarySideEffector, patternState } from '../../../../../src/indexForTest'
+import { buildMockContext } from '../../../helpers'
 
 describe('apply opacity', () => {
 	let subject: NullarySideEffector
@@ -21,7 +20,7 @@ describe('apply opacity', () => {
 	})
 
 	it('has no effect if no opacity level is 1', () => {
-		setPatternSettingForTest('colorSettings', { opacity: 1 })
+		patternState.colorSettings.opacity = 1
 
 		subject()
 
@@ -29,7 +28,7 @@ describe('apply opacity', () => {
 	})
 
 	it('sets the global alpha of the context with the opacity', () => {
-		setPatternSettingForTest('colorSettings', { opacity: 0.4 })
+		patternState.colorSettings.opacity = 0.4
 
 		subject()
 

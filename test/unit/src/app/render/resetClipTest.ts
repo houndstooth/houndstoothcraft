@@ -1,7 +1,6 @@
 import { appState, NullarySideEffector, resetClip } from '../../../../../src/indexForTest'
 import { buildMockContext, MockContextCall } from '../../../helpers'
 
-
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {
 		const subject: NullarySideEffector = resetClip.default

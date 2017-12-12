@@ -5,7 +5,6 @@ import {
 	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
-
 describe('grid progress interval function', () => {
 	let subject: NullarySideEffector
 	beforeEach(() => {

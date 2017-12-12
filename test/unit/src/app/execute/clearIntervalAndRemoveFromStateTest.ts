@@ -1,6 +1,5 @@
 import { appState, clearIntervalAndRemoveFromState, globalWrapper } from '../../../../../src/indexForTest'
 
-
 describe('clear interval and remove from state', () => {
 	let subject: (_: string) => void
 	const FAKE_GRID_PROGRESS_INTERVAL: number = 3369

@@ -8,7 +8,6 @@ import {
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-
 describe('build animation interval function returns a function which', () => {
 	let subject: (_: AnimationParams) => NullarySideEffector
 	let intervalFunction: NullarySideEffector

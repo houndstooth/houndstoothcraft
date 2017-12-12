@@ -14,7 +14,6 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 
-
 describe('execute selected effects', () => {
 	let subject: (_?: { overrides?: Effect }) => void
 	const layerFunctionObjects: SettingsFunctionObject[] = []

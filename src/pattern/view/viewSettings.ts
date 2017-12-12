@@ -1,30 +1,20 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { Radian } from '../stripe'
-import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
+import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
-interface ViewSettings {
-	readonly centerViewOnCenterOfTileAtHomeAddress: boolean,
-	readonly rotateViewAboutCanvasCenter: Radian,
-	readonly zoom: number,
-	readonly zoomOnCanvasCenter: boolean,
-	readonly [_: string]: any,
-}
+type ViewSettingsSchema<R extends Bool> =
+	Rec<'centerViewOnCenterOfTileAtHomeAddress', boolean, R> &
+	Rec<'rotateViewAboutCanvasCenter', Radian, R> &
+	Rec<'zoom', number, R> &
+	Rec<'zoomOnCanvasCenter', boolean, R>
 
-type ViewSettingsFunctions = FunctionsOf<ViewSettings>
+interface ViewSettings extends ViewSettingsSchema<True>{}
 
-type ViewSettingsName = 'viewSettings'
-
-type ViewSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
-	BooleanTypedSettingsNames: 'centerViewOnCenterOfTileAtHomeAddress' | 'zoomOnCanvasCenter',
-	NumberTypedSettingsNames: 'zoom',
-	PxTypedSettingsNames: 'canvasSize',
-	RadianTypedSettingsNames: 'rotateViewAboutCanvasCenter',
-}>
+type ViewSettingsFunctions = FunctionsOf<ViewSettingsSchema<False>>
 
 export {
 	ViewSettings,
+	ViewSettingsSchema,
 	ViewSettingsFunctions,
-	ViewSettingsName,
-	ViewSettingsNamesByType,
 }

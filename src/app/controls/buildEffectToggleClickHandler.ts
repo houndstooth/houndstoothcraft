@@ -1,4 +1,4 @@
-import { NamedEffect } from '../../pattern'
+import { NamedEffect } from '../../types'
 import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { cancelPreviousPattern, clearIntervalAndRemoveFromState, executeSelectedEffects } from '../execute'

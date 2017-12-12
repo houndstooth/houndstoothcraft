@@ -15,13 +15,6 @@ type StripeSettingsFunctions = Overwrite<FunctionsOf<StripeSettings>, {
 	[_: string]: any,
 }>
 
-const DEFAULT_BASE_STRIPE_DIAGONAL: BaseStripeDiagonal = BaseStripeDiagonal.Minor
-
-const DEFAULT_STRIPE_SETTINGS: StripeSettings = {
-	baseStripeDiagonal: DEFAULT_BASE_STRIPE_DIAGONAL,
-	stripePositionSettings: stripePositionSettings.DEFAULT_STRIPE_POSITION_SETTINGS,
-}
-
 type StripeSettingsName = 'stripeSettings'
 
 type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
@@ -31,7 +24,6 @@ type StripeSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 export {
 	StripeSettings,
 	StripeSettingsFunctions,
-	DEFAULT_STRIPE_SETTINGS,
 	StripeSettingsName,
 	StripeSettingsNamesByType,
 }

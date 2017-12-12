@@ -1,68 +1,44 @@
-// tslint:disable:max-file-line-count no-object-literal-type-assertion
+// tslint:disable:no-object-literal-type-assertion no-any
 
 import {
-	AppState,
-	ControlsState,
-	DomState,
-	ExecuteState,
-	RenderState,
-	SettingNamesToPathsMap,
-	SettingsState,
-} from './app'
-import {
-	animationSettings,
 	BasePattern,
-	ColorSet,
-	colorSettings,
+	DEFAULT_PATTERN_STATE,
 	Frame,
-	gridSettings,
 	Houndstooth,
 	Layer,
-	layerSettings,
 	NamedEffect,
 	PatternFunctions,
-	stripeSettings,
-	textureSettings,
-	tileSettings,
-	viewSettings,
-} from './pattern'
-import { NullarySideEffector, to } from './utilities'
-
-const DEFAULT_BASE_PATTERN: BasePattern = {
-	animationSettings: animationSettings.DEFAULT_ANIMATION_SETTINGS,
-	colorSettings: colorSettings.DEFAULT_COLOR_SETTINGS,
-	gridSettings: gridSettings.DEFAULT_GRID_SETTINGS,
-	layerSettings: layerSettings.DEFAULT_LAYER_SETTINGS,
-	stripeSettings: stripeSettings.DEFAULT_STRIPE_SETTINGS,
-	textureSettings: textureSettings.DEFAULT_TEXTURE_SETTINGS,
-	tileSettings: tileSettings.DEFAULT_TILE_SETTINGS,
-	viewSettings: viewSettings.DEFAULT_VIEW_SETTINGS,
-}
+} from '../pattern'
+import { NullarySideEffector } from '../utilities'
+import { ControlsState } from './controls'
+import { DomState } from './dom'
+import { ExecuteState } from './execute'
+import { RenderState } from './render'
+import { SettingNamesToPathsMap, SettingsState } from './settings'
+import { AppState } from './types'
 
 const DEFAULT_ANIMATIONS_PATTERN: PatternFunctions = {}
 const DEFAULT_DESCRIPTION: string = 'This is what things look like when you don\'t have any effects on. Try adding one.'
 const DEFAULT_LAYERS_PATTERN: PatternFunctions = {}
 const DEFAULT_NAME: string = 'standard'
 
-const DEFAULT_HOUNDSTOOTH: Houndstooth = {
+const DEFAULT_ANIMATING: boolean = false
+const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
+const DEFAULT_CONTEXTS: CanvasRenderingContext2D[] = []
+const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = 0 as any
+const DEFAULT_CURRENT_LAYER: Layer = 0 as any
+const DEFAULT_BASE_PATTERN: BasePattern = DEFAULT_PATTERN_STATE
+const DEFAULT_CURRENT_PATTERN: BasePattern = DEFAULT_PATTERN_STATE
+const DEFAULT_MAIN_HOUNDSTOOTH: Houndstooth = {
 	animationsPattern: DEFAULT_ANIMATIONS_PATTERN,
 	basePattern: DEFAULT_BASE_PATTERN,
 	description: DEFAULT_DESCRIPTION,
 	layersPattern: DEFAULT_LAYERS_PATTERN,
 	name: DEFAULT_NAME,
 }
-
-const DEFAULT_COLOR_SET: ColorSet = colorSettings.DEFAULT_COLOR_SETTINGS.colorSet
-
-const DEFAULT_ANIMATING: boolean = false
-const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
-const DEFAULT_CONTEXTS: CanvasRenderingContext2D[] = []
-const DEFAULT_CURRENT_ANIMATION_FRAME: Frame = to.Frame(0)
-const DEFAULT_CURRENT_LAYER: Layer = to.Layer(0)
-const DEFAULT_CURRENT_PATTERN: BasePattern = DEFAULT_BASE_PATTERN
 const DEFAULT_EFFECT_TOGGLES: { [_: string ]: HTMLInputElement } = {}
-const DEFAULT_END_FRAME: Frame = to.Frame(0)
-const DEFAULT_END_LAYER: Layer = to.Layer(0)
+const DEFAULT_END_FRAME: Frame = 0 as any
+const DEFAULT_END_LAYER: Layer = 0 as any
 const DEFAULT_EXPORT_FRAMES: boolean = false
 const DEFAULT_GRID_PROGRESS_INTERVAL: undefined = undefined
 const DEFAULT_ANIMATION_INTERVAL: undefined = undefined
@@ -129,7 +105,7 @@ const DEFAULT_RENDER_STATE: RenderState = {
 const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
-	mainHoundstooth: DEFAULT_HOUNDSTOOTH,
+	mainHoundstooth: DEFAULT_MAIN_HOUNDSTOOTH,
 	settingNamesToPathsMap: DEFAULT_SETTING_NAMES_TO_PATHS_MAP,
 }
 
@@ -143,9 +119,8 @@ const DEFAULT_APP_STATE: AppState = {
 
 export {
 	DEFAULT_ANIMATIONS_PATTERN,
-	DEFAULT_BASE_PATTERN,
-	DEFAULT_COLOR_SET,
-	DEFAULT_LAYERS_PATTERN,
-	DEFAULT_HOUNDSTOOTH,
 	DEFAULT_APP_STATE,
+	DEFAULT_BASE_PATTERN,
+	DEFAULT_LAYERS_PATTERN,
+	DEFAULT_MAIN_HOUNDSTOOTH,
 }

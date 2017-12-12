@@ -10,12 +10,6 @@ interface TextureSettings {
 
 type TextureSettingsFunctions = FunctionsOf<TextureSettings>
 
-const DEFAULT_EXECUTE_TEXTURE: undefined = undefined
-
-const DEFAULT_TEXTURE_SETTINGS: TextureSettings = {
-	executeTexture: DEFAULT_EXECUTE_TEXTURE,
-}
-
 type TextureSettingsName = 'textureSettings'
 
 type TextureSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
@@ -25,7 +19,6 @@ type TextureSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 export {
 	TextureSettings,
 	TextureSettingsFunctions,
-	DEFAULT_TEXTURE_SETTINGS,
 	TextureSettingsName,
 	TextureSettingsNamesByType,
 }

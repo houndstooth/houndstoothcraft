@@ -1,12 +1,12 @@
-import { DEFAULT_HOUNDSTOOTH } from '../../defaults'
 import { codeUtilities, NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
+import { DEFAULT_MAIN_HOUNDSTOOTH } from '../defaults'
 
 const resetMainHoundstooth: NullarySideEffector =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: appState.settings.mainHoundstooth,
-			objectWithProperties: DEFAULT_HOUNDSTOOTH,
+			objectWithProperties: DEFAULT_MAIN_HOUNDSTOOTH,
 		})
 	}
 

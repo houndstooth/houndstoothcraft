@@ -14,3 +14,6 @@ export {
 	ShapeArgs,
 	ShapeParams,
 } from './types'
+export {
+	DEFAULT_TEXTURE_SETTINGS,
+} from './defaults'

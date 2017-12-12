@@ -6,3 +6,6 @@ export {
 export {
 	Layer,
 } from './types'
+export {
+	DEFAULT_LAYER_SETTINGS,
+} from './defaults'

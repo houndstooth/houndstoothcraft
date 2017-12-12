@@ -110,7 +110,7 @@ Make a copy of `app/settings/settingsTemplate.ts` and name it `pattern/mynewthin
 
 ### `defaults.ts`:
 
-Register your new settings module in the `DEFAULT_BASE_PATTERN`.
+Register your new settings module in the `DEFAULT_PATTERN_STATE`.
 
 ### `pattern/index.ts`:
 

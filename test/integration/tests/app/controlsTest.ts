@@ -1,18 +1,21 @@
 import * as effects from '../../../../effects'
 // tslint:disable-next-line:no-reaching-imports
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
-import { appState } from '../../../../src/app/appState'
 import {
-	colorSettings,
+	appState,
+	constants,
 	createEffectToggles,
 	enableOrDisableOtherEffectToggles,
 	executeGridAndMaybeLogging,
 	patternState,
+	to,
 	updateCurrentFrame,
 } from '../../../../src/indexForTest'
 import { buildMockElement } from '../../../unit'
 
 describe('controls', () => {
+	const { BLACK, TRANSPARENT } = constants
+
 	describe('effect toggles', () => {
 		beforeEach(() => {
 			spyOn(executeGridAndMaybeLogging, 'default')
@@ -35,7 +38,7 @@ describe('controls', () => {
 			createEffectToggles.default(Object.values(effects))
 			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
 
-			expect(patternState.get('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+			expect(patternState.get('colorSet')).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
 
 			// tslint:disable-next-line:no-unsafe-any
 			effectToggle.click()
@@ -43,7 +46,7 @@ describe('controls', () => {
 
 			// tslint:disable-next-line:no-unsafe-any
 			effectToggle.click()
-			expect(patternState.get('colorSet')).toEqual(colorSettings.DEFAULT_COLOR_SET)
+			expect(patternState.get('colorSet')).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
 		})
 	})
 })

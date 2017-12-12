@@ -1,8 +1,8 @@
 // tslint:disable:no-any
 
-import { DEFAULT_BASE_PATTERN } from '../../defaults'
 import { to } from '../../utilities'
 import { appState } from '../appState'
+import { DEFAULT_BASE_PATTERN } from '../defaults'
 import deeperPath from './deeperPath'
 import shouldRecurse from './shouldRecurse'
 import { BuildSettingNamesToPathsMapParams } from './types'

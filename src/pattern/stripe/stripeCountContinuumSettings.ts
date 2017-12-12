@@ -10,14 +10,6 @@ interface StripeCountContinuumSettings {
 
 type StripeCountContinuumSettingsFunctions = FunctionsOf<StripeCountContinuumSettings>
 
-const DEFAULT_DELTA_STRIPE_COUNT: number = 1
-const DEFAULT_INITIAL_STRIPE_COUNT: number = 1
-
-const DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS: StripeCountContinuumSettings = {
-	deltaStripeCount: DEFAULT_DELTA_STRIPE_COUNT,
-	initialStripeCount: DEFAULT_INITIAL_STRIPE_COUNT,
-}
-
 type StripeCountContinuumSettingsName = 'stripeCountContinuumSettings'
 
 type StripeCountContinuumSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
@@ -27,7 +19,6 @@ type StripeCountContinuumSettingsNamesByType = Overwrite<SettingsNamesByTypeBase
 export {
 	StripeCountContinuumSettings,
 	StripeCountContinuumSettingsFunctions,
-	DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
 	StripeCountContinuumSettingsName,
 	StripeCountContinuumSettingsNamesByType,
 }

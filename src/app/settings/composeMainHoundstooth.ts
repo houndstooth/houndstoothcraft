@@ -1,7 +1,7 @@
-import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from '../../defaults'
 import { Effect } from '../../pattern'
 import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
+import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from '../defaults'
 import combineEffects from './combineEffects'
 import composePatterns from './composePatterns'
 import { ComposeMainHoundstoothParams, ComposePatternParams } from './types'

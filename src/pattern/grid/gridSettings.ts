@@ -10,14 +10,6 @@ interface GridSettings {
 
 type GridSettingsFunctions = FunctionsOf<GridSettings>
 
-const DEFAULT_TILE_RESOLUTION: number = 16
-const DEFAULT_INCLUDE_NEGATIVE_QUADRANTS: boolean = false
-
-const DEFAULT_GRID_SETTINGS: GridSettings = {
-	includeNegativeQuadrants: DEFAULT_INCLUDE_NEGATIVE_QUADRANTS,
-	tileResolution: DEFAULT_TILE_RESOLUTION,
-}
-
 type GridSettingsName = 'gridSettings'
 
 type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
@@ -28,7 +20,6 @@ type GridSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 export {
 	GridSettings,
 	GridSettingsFunctions,
-	DEFAULT_GRID_SETTINGS,
 	GridSettingsName,
 	GridSettingsNamesByType,
 }

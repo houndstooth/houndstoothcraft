@@ -4,7 +4,9 @@ import {
 	composeMainHoundstooth,
 	ComposeMainHoundstoothParams,
 	composePatterns,
-	defaults,
+	DEFAULT_ANIMATIONS_PATTERN,
+	DEFAULT_BASE_PATTERN,
+	DEFAULT_LAYERS_PATTERN,
 	Effect,
 	globalWrapper,
 } from '../../../../../src/indexForTest'
@@ -14,12 +16,6 @@ import CallInfo = jasmine.CallInfo
 const subject: (_?: ComposeMainHoundstoothParams) => void = composeMainHoundstooth.default
 
 describe('composeMainHoundstooth', () => {
-	const {
-		DEFAULT_ANIMATIONS_PATTERN,
-		DEFAULT_BASE_PATTERN,
-		DEFAULT_LAYERS_PATTERN,
-	} = defaults
-
 	it('logs the houndstooth when logging mode is on', () => {
 		spyOn(globalWrapper.console, 'log')
 

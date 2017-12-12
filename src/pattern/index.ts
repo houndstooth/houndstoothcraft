@@ -87,3 +87,6 @@ export {
 	PatternFunctions,
 	SettingsNamesByTypeBase,
 } from './types'
+export {
+	DEFAULT_PATTERN_STATE,
+} from './defaults'

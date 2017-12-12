@@ -9,12 +9,6 @@ interface AnimationSettings {
 
 type AnimationSettingsFunctions = FunctionsOf<AnimationSettings>
 
-const DEFAULT_REFRESH_CANVAS: boolean = true
-
-const DEFAULT_ANIMATION_SETTINGS: AnimationSettings = {
-	refreshCanvas: DEFAULT_REFRESH_CANVAS,
-}
-
 type AnimationSettingsName = 'animationSettings'
 
 type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
@@ -24,7 +18,6 @@ type AnimationSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 export {
 	AnimationSettings,
 	AnimationSettingsFunctions,
-	DEFAULT_ANIMATION_SETTINGS,
 	AnimationSettingsName,
 	AnimationSettingsNamesByType,
 }

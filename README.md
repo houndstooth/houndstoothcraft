@@ -16,7 +16,7 @@ In short:
 ### houndstooth
 
 - example instances
-	- `DEFAULT_HOUNDSTOOTH`
+	- `DEFAULT_MAIN_HOUNDSTOOTH`
 	- `effects`
 	- `overrides`
 	- `appState.settings.mainHoundstooth`

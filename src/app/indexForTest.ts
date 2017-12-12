@@ -116,3 +116,9 @@ import * as startUp from './startUp'
 export {
 	startUp,
 }
+export {
+	DEFAULT_ANIMATIONS_PATTERN,
+	DEFAULT_APP_STATE,
+	DEFAULT_BASE_PATTERN,
+	DEFAULT_LAYERS_PATTERN,
+} from './defaults'

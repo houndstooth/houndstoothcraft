@@ -7,3 +7,6 @@ export {
 	applyViewForShape,
 	viewSettings,
 }
+export {
+	DEFAULT_VIEW_SETTINGS,
+} from './defaults'

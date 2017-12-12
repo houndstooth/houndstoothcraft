@@ -1,9 +1,7 @@
 // tslint:disable:no-magic-numbers no-any
 
-import { to } from '../../utilities'
 import { Unit } from '../grid'
 import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
-import getStandardTileOriginAndSize from './getStandardTileOriginAndSize'
 import { GetTileOriginAndSize } from './types'
 
 interface TileSettings {
@@ -14,16 +12,6 @@ interface TileSettings {
 }
 
 type TileSettingsFunctions = FunctionsOf<TileSettings>
-
-const DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE: boolean = true
-const DEFAULT_GET_TILE_ORIGIN_AND_SIZE: GetTileOriginAndSize = getStandardTileOriginAndSize
-const DEFAULT_TILE_SIZE: Unit = to.Unit(50)
-
-const DEFAULT_TILE_SETTINGS: TileSettings = {
-	collapseSameColoredShapesWithinTile: DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE,
-	getTileOriginAndSize: DEFAULT_GET_TILE_ORIGIN_AND_SIZE,
-	tileSize: DEFAULT_TILE_SIZE,
-}
 
 type TileSettingsName = 'tileSettings'
 
@@ -36,7 +24,6 @@ type TileSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 export {
 	TileSettings,
 	TileSettingsFunctions,
-	DEFAULT_TILE_SETTINGS,
 	TileSettingsName,
 	TileSettingsNamesByType,
 }

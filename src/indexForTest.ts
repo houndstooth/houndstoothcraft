@@ -78,6 +78,11 @@ export {
 	updateDescriptions,
 	updateProgress,
 
+	DEFAULT_ANIMATIONS_PATTERN,
+	DEFAULT_APP_STATE,
+	DEFAULT_BASE_PATTERN,
+	DEFAULT_LAYERS_PATTERN,
+
 	AnimationParams,
 	BuildSettingNamesToPathsMapParams,
 	CheckSettingForConflict,
@@ -197,8 +202,6 @@ export {
 } from './utilities/indexForTest'
 
 import * as constants from './constants'
-import * as defaults from './defaults'
 export {
 	constants,
-	defaults,
 }

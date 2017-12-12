@@ -14,3 +14,6 @@ export {
 	ReferencedGridAddress,
 	Unit,
 } from './types'
+export {
+	DEFAULT_GRID_SETTINGS,
+} from './defaults'

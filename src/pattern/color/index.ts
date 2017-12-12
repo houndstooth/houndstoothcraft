@@ -25,3 +25,6 @@ export {
 	TransformShapeColorIndicesParams,
 	Weave,
 } from './types'
+export {
+	DEFAULT_COLOR_SETTINGS,
+} from './defaults'

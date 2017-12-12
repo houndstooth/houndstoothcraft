@@ -1,7 +1,6 @@
 // tslint:disable:no-magic-numbers no-any
 
 import { FunctionsOf, Overwrite, SettingsNamesByTypeBase } from '../types'
-import standardStripePositions from './standardStripePositions'
 import * as stripeCountContinuumSettings from './stripeCountContinuumSettings'
 import { GetStripePositions, StripeCountMode } from './types'
 
@@ -18,17 +17,6 @@ type StripePositionSettingsFunctions = Overwrite<FunctionsOf<StripePositionSetti
 	[_: string]: any,
 }>
 
-const DEFAULT_GET_STRIPE_POSITIONS: GetStripePositions = standardStripePositions
-const DEFAULT_STRIPE_COUNT: number = 4
-const DEFAULT_STRIPE_COUNT_MODE: StripeCountMode = StripeCountMode.Standard
-
-const DEFAULT_STRIPE_POSITION_SETTINGS: StripePositionSettings = {
-	getStripePositions: DEFAULT_GET_STRIPE_POSITIONS,
-	stripeCount: DEFAULT_STRIPE_COUNT,
-	stripeCountContinuumSettings: stripeCountContinuumSettings.DEFAULT_STRIPE_COUNT_CONTINUUM_SETTINGS,
-	stripeCountMode: DEFAULT_STRIPE_COUNT_MODE,
-}
-
 type StripePositionSettingsName = 'stripePositionSettings'
 
 type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
@@ -40,7 +28,6 @@ type StripePositionSettingsNamesByType = Overwrite<SettingsNamesByTypeBase, {
 export {
 	StripePositionSettings,
 	StripePositionSettingsFunctions,
-	DEFAULT_STRIPE_POSITION_SETTINGS,
 	StripePositionSettingsName,
 	StripePositionSettingsNamesByType,
 }

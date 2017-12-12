@@ -32,3 +32,6 @@ export {
 export {
 	stripeOutline,
 } from './stripeOutline'
+export {
+	DEFAULT_STRIPE_SETTINGS,
+} from './defaults'

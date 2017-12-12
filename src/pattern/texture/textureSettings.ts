@@ -1,6 +1,7 @@
 import { Bool, False, FunctionsOf, Rec, True } from '../types'
 import { ExecuteTexture } from './types'
 
+// tslint:disable-next-line:no-unused-variable
 type TextureSettingsSchema<R extends Bool> =
 	Rec<'executeTexture', ExecuteTexture, False>
 

@@ -111,5 +111,5 @@ export {
 	DEFAULT_PATTERN_STATE,
 } from './defaults'
 export {
-	PatternFunctions
+	PatternFunctions,
 } from './types'

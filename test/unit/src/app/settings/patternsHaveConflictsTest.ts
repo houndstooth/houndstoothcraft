@@ -21,8 +21,8 @@ describe('patterns have conflicts', () => {
 		const patternCheckingAgainst: Pattern = {
 			colorSettings: {
 				colorAssignmentSettings: {
-					opacity: 0,
 					flipGrain: false,
+					opacity: 0,
 				},
 			},
 			gridSettings: {
@@ -45,8 +45,8 @@ describe('patterns have conflicts', () => {
 		const patternCheckingAgainst: Pattern = {
 			colorSettings: {
 				colorAssignmentSettings: {
-					opacity: 1,
 					flipGrain: false,
+					opacity: 1,
 				},
 			},
 			gridSettings: {

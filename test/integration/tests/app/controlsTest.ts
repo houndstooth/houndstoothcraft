@@ -33,6 +33,7 @@ describe('controls', () => {
 			effectTogglesContainer.setAttribute('id', 'effect-toggles-container')
 			effectTogglesContainer.style.display = 'none'
 			document.body.appendChild(effectTogglesContainer)
+			appState.dom.effectTogglesContainer = effectTogglesContainer
 
 			createEffectToggles.default(Object.values(effects))
 			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()

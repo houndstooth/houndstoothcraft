@@ -2,20 +2,19 @@
 
 import { NamedEffect } from '../../types'
 import { globalWrapper } from '../../utilities'
+import { appState } from '../appState'
 import createEffectToggle from './createEffectToggle'
 
 const createEffectToggles: (effects: NamedEffect[]) => void =
 	(effects: NamedEffect[]): void => {
-		// tslint:disable-next-line:max-line-length
-		const effectTogglesContainer: HTMLElement = globalWrapper.document.querySelector('#effect-toggles-container') as HTMLElement
-		effectTogglesContainer.innerHTML = ''
+		appState.dom.effectTogglesContainer.innerHTML = ''
 
 		effects.forEach(createEffectToggle)
 
 		const moreEffectsSoonMessage: HTMLElement = globalWrapper.document.createElement('div') as HTMLElement
 		moreEffectsSoonMessage.setAttribute('id', 'more-effects-soon-message')
 		moreEffectsSoonMessage.innerHTML = 'more effects coming soon'
-		effectTogglesContainer.appendChild(moreEffectsSoonMessage)
+		appState.dom.effectTogglesContainer.appendChild(moreEffectsSoonMessage)
 	}
 
 export default createEffectToggles

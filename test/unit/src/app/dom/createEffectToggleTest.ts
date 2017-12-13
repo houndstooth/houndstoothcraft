@@ -35,7 +35,7 @@ describe('create effect toggle', () => {
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(div)
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)
 		spyOn(createLabel, 'default').and.returnValue(label)
-		spyOn(globalWrapper.document, 'querySelector').and.returnValue(effectTogglesContainer)
+		appState.dom.effectTogglesContainer = effectTogglesContainer
 
 		subject(effect)
 	})

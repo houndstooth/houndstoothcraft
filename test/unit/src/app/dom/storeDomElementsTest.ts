@@ -6,6 +6,7 @@ describe('store dom elements', () => {
 		const subject: NullarySideEffector = storeDomElements.default
 		const canvasContainer: HTMLElement = buildMockElement() as HTMLElement
 		const descriptionsContainer: HTMLElement = buildMockElement() as HTMLElement
+		const effectTogglesContainer: HTMLElement = buildMockElement() as HTMLElement
 		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement
 		const layersProgressBar: HTMLElement = buildMockElement() as HTMLElement
 		const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
@@ -21,6 +22,8 @@ describe('store dom elements', () => {
 					return canvasContainer
 				case '#descriptions-container':
 					return descriptionsContainer
+				case '#effect-toggles-container':
+					return effectTogglesContainer
 				case '#frame-input':
 					return frameInput
 				case '#layers-progress-bar':
@@ -46,6 +49,7 @@ describe('store dom elements', () => {
 
 		expect(appState.dom.canvasContainer).toBe(canvasContainer)
 		expect(appState.dom.descriptionsContainer).toBe(descriptionsContainer)
+		expect(appState.dom.effectTogglesContainer).toBe(effectTogglesContainer)
 		expect(appState.dom.frameInput).toBe(frameInput)
 		expect(appState.dom.layersProgressBar).toBe(layersProgressBar)
 		expect(appState.dom.pauseButton).toBe(pauseButton)

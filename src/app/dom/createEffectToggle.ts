@@ -15,9 +15,7 @@ const createEffectToggle: (effect: NamedEffect) => void =
 		const label: HTMLLabelElement = createLabel({ effect })
 		div.appendChild(label)
 
-		// tslint:disable-next-line:max-line-length
-		const effectTogglesContainer: HTMLElement = globalWrapper.document.querySelector('#effect-toggles-container') as HTMLElement
-		effectTogglesContainer.appendChild(div)
+		appState.dom.effectTogglesContainer.appendChild(div)
 		appState.dom.effectToggles[effect.name] = checkbox
 	}
 

@@ -1,3 +1,4 @@
+import { appState } from '../../../../../src/app/appState'
 import { createEffectToggle, createEffectToggles, globalWrapper, NamedEffect } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
@@ -19,7 +20,7 @@ describe('create effect toggles', () => {
 		subject = createEffectToggles.default
 
 		createEffectToggleSpy = spyOn(createEffectToggle, 'default')
-		spyOn(globalWrapper.document, 'querySelector').and.returnValue(effectTogglesContainer)
+		appState.dom.effectTogglesContainer = effectTogglesContainer
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(moreEffectsMessage)
 	})
 

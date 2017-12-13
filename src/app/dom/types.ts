@@ -3,14 +3,11 @@
 enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
-interface Px extends Number {
-	_PxBrand: any,
-}
-
 interface DomState {
 	canvasContainer: HTMLElement,
 	descriptionsContainer: HTMLElement,
 	effectToggles: { [_: string ]: HTMLInputElement },
+	effectTogglesContainer: HTMLElement,
 	frameInput: HTMLInputElement,
 	layersProgressBar: HTMLElement,
 	mixedDownCanvas: HTMLCanvasElement,
@@ -20,6 +17,10 @@ interface DomState {
 	progressMessage: HTMLElement,
 	rewindButton: HTMLButtonElement,
 	snapshotButton: HTMLButtonElement,
+}
+
+interface Px extends Number {
+	_PxBrand: any,
 }
 
 export {

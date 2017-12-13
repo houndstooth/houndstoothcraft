@@ -5,6 +5,7 @@ import { DomState } from './types'
 const DEFAULT_CANVAS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_DESCRIPTIONS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_EFFECT_TOGGLES: { [_: string ]: HTMLInputElement } = {}
+const DEFAULT_EFFECT_TOGGLES_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_FRAME_INPUT: HTMLInputElement = {} as HTMLInputElement
 const DEFAULT_LAYERS_PROGRESS_BAR: HTMLElement = {} as HTMLElement
 const DEFAULT_MIXED_DOWN_CANVAS: HTMLCanvasElement = {} as HTMLCanvasElement
@@ -19,6 +20,7 @@ const DEFAULT_DOM_STATE: DomState = {
 	canvasContainer: DEFAULT_CANVAS_CONTAINER,
 	descriptionsContainer: DEFAULT_DESCRIPTIONS_CONTAINER,
 	effectToggles: DEFAULT_EFFECT_TOGGLES,
+	effectTogglesContainer: DEFAULT_EFFECT_TOGGLES_CONTAINER,
 	frameInput: DEFAULT_FRAME_INPUT,
 	layersProgressBar: DEFAULT_LAYERS_PROGRESS_BAR,
 	mixedDownCanvas: DEFAULT_MIXED_DOWN_CANVAS,

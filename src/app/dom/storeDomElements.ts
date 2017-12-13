@@ -7,6 +7,7 @@ const storeDomElements: NullarySideEffector =
 	(): void => {
 		appState.dom.canvasContainer = globalWrapper.document.querySelector('#canvas-container') as HTMLElement
 		appState.dom.descriptionsContainer = globalWrapper.document.querySelector('#descriptions-container') as HTMLElement
+		appState.dom.effectTogglesContainer = globalWrapper.document.querySelector('#effect-toggles-container') as HTMLElement
 		appState.dom.frameInput = globalWrapper.document.querySelector('#frame-input') as HTMLInputElement
 		appState.dom.layersProgressBar = globalWrapper.document.querySelector('#layers-progress-bar') as HTMLElement
 		appState.dom.mixedDownCanvas = globalWrapper.document.querySelector('#mixed-down-canvas') as HTMLCanvasElement

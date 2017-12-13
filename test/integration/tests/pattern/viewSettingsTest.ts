@@ -153,7 +153,7 @@ describe('.viewSettings', () => {
 		})
 	})
 
-	describe('.rotateViewAboutCanvasCenter', () => {
+	describe('.rotationAboutCanvasCenter', () => {
 		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
 			const areaSize: Unit = patternState.tileSettings.tileSize
 
@@ -166,7 +166,7 @@ describe('.viewSettings', () => {
 						tileSize: areaSize,
 					},
 					viewSettings: {
-						rotateViewAboutCanvasCenter: to.Radian(Math.PI / 2),
+						rotationAboutCanvasCenter: to.Radian(Math.PI / 2),
 					},
 				},
 			}

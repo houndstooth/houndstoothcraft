@@ -5,7 +5,7 @@ import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
 type ViewSettingsSchema<R extends Bool> =
 	Rec<'centerViewOnCenterOfTileAtHomeAddress', boolean, R> &
-	Rec<'rotateViewAboutCanvasCenter', Radian, R> &
+	Rec<'rotationAboutCanvasCenter', Radian, R> &
 	Rec<'zoom', number, R> &
 	Rec<'zoomOnCanvasCenter', boolean, R>
 

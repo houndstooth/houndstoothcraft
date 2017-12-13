@@ -7,9 +7,9 @@ import { Radian } from '../stripe'
 
 const applyTilt: (_: Path) => Path =
 	(path: Path): Path => {
-		const rotateViewAboutCanvasCenter: Radian = patternState.viewSettings.rotateViewAboutCanvasCenter
+		const rotationAboutCanvasCenter: Radian = patternState.viewSettings.rotationAboutCanvasCenter
 
-		if (!rotateViewAboutCanvasCenter) {
+		if (!rotationAboutCanvasCenter) {
 			return path
 		}
 
@@ -18,7 +18,7 @@ const applyTilt: (_: Path) => Path =
 		return to.Path(path.map((pixel: Pixel): Pixel => tilt({
 			fixedPoint: canvasCenter,
 			point: pixel,
-			rotation: rotateViewAboutCanvasCenter,
+			rotation: rotationAboutCanvasCenter,
 		})))
 	}
 

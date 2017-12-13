@@ -8,7 +8,7 @@ describe('apply tilt', () => {
 	})
 
 	it('rotates the path about the canvas center', () => {
-		patternState.viewSettings.rotateViewAboutCanvasCenter = to.Radian(Math.PI / 2)
+		patternState.viewSettings.rotationAboutCanvasCenter = to.Radian(Math.PI / 2)
 		const path: Path = to.Path([
 			[ 0, 0 ],
 			[ 40, 0 ],
@@ -25,7 +25,7 @@ describe('apply tilt', () => {
 		expect(pixelsAreClose(expectedPath, actualPath)).toBe(true)
 	})
 
-	it('does nothing if rotateViewAboutCanvasCenter is undefined or 0', () => {
+	it('does nothing if the rotation about the canvas center is undefined or 0', () => {
 		const path: Path = to.Path([
 			[ 0, 0 ],
 			[ 0, 40 ],

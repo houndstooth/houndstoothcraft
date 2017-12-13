@@ -36,12 +36,6 @@ describe('create effect toggles', () => {
 		expect(createEffectToggleSpy.calls.all()[ 1 ].args[ 0 ].name).toBe('effectTwo')
 	})
 
-	it('clears any existing toggles', () => {
-		subject([])
-
-		expect(effectTogglesContainer.innerHTML).toBe('')
-	})
-
 	it('adds a message about more effects coming soon', () => {
 		subject([])
 

@@ -7,8 +7,6 @@ import createEffectToggle from './createEffectToggle'
 
 const createEffectToggles: (effects: NamedEffect[]) => void =
 	(effects: NamedEffect[]): void => {
-		appState.dom.effectTogglesContainer.innerHTML = ''
-
 		effects.forEach(createEffectToggle)
 
 		const moreEffectsSoonMessage: HTMLElement = globalWrapper.document.createElement('div') as HTMLElement

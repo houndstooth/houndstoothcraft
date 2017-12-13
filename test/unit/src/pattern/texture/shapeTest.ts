@@ -4,15 +4,15 @@ import {
 	Outline,
 	OutlineOptions,
 	patternState,
+	resetClip,
+	setClip,
 	shape,
 	ShapeColorIndex,
 	ShapeParams,
 	solid,
-	texture,
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
-import { noop } from '../../../helpers'
 import Spy = jasmine.Spy
 
 describe('shape', () => {
@@ -36,7 +36,6 @@ describe('shape', () => {
 		getOutlineSpy = jasmine.createSpy('getOutlineSpy')
 
 		spyOn(codeUtilities, 'wrappedIndex').and.returnValue(shapeColorIndex)
-		spyOn(texture, 'default')
 		spyOn(solid, 'default')
 	})
 
@@ -54,7 +53,6 @@ describe('shape', () => {
 			})
 
 			expect(getOutlineSpy).toHaveBeenCalledWith({ tileOrigin, tileSize, outlineOptions })
-			expect(texture.default).not.toHaveBeenCalled()
 			expect(solid.default).not.toHaveBeenCalled()
 		})
 	})
@@ -98,12 +96,16 @@ describe('shape', () => {
 		})
 
 		describe('when an executeTexture method is supplied', () => {
-			const executeTexture: () => void = noop
+			let executeTextureSpy: Spy
 			beforeEach(() => {
-				patternState.textureSettings.executeTexture = executeTexture
+				executeTextureSpy = jasmine.createSpy('executeTexture')
+				patternState.textureSettings.executeTexture = executeTextureSpy
 			})
 
-			it('passes it to the texture component to be rendered', () => {
+			it('calls it, in between setting and resetting the clip', () => {
+				spyOn(setClip, 'default')
+				spyOn(resetClip, 'default')
+
 				subject({
 					getOutline: getOutlineSpy,
 					outlineOptions,
@@ -113,12 +115,9 @@ describe('shape', () => {
 					tileSize,
 				})
 
-				expect(texture.default).toHaveBeenCalledWith({
-					executeTexture,
-					outline,
-					shapeColorIndex,
-					tileSize,
-				})
+				expect(setClip.default).toHaveBeenCalledWith({ outline })
+				expect(executeTextureSpy).toHaveBeenCalledWith({ shapeColorIndex, tileSize })
+				expect(resetClip.default).toHaveBeenCalled()
 			})
 		})
 

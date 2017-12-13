@@ -76,7 +76,6 @@ export {
 export {
 	shape,
 	solid,
-	texture,
 	textureSettings,
 
 	ComponentParams,

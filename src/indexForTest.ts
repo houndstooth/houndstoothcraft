@@ -137,7 +137,6 @@ export {
 	stripeOutline,
 	stripePositionSettings,
 	stripeSettings,
-	texture,
 	textureSettings,
 	tile,
 	tileCenter,

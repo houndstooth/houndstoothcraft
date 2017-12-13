@@ -1,11 +1,11 @@
+import { resetClip, setClip } from '../../app'
 import { codeUtilities } from '../../utilities'
 import { ShapeColorIndex } from '../color'
 import { patternState } from '../patternState'
 import { Outline } from '../stripe'
 import solid from './solid'
-import texture from './texture'
 import { TextureSettings } from './textureSettings'
-import { ShapeParams } from './types'
+import { ShapeParams, TextureParams } from './types'
 
 const shape: (_: ShapeParams) => void =
 	({ tileOrigin, tileSize, shapeColorIndices, stripeIndex, getOutline, outlineOptions }: ShapeParams): void => {
@@ -27,6 +27,15 @@ const shape: (_: ShapeParams) => void =
 		else {
 			solid({ outline, shapeColorIndex })
 		}
+	}
+
+const texture: (_: TextureParams) => void =
+	({ outline, tileSize, executeTexture, shapeColorIndex }: TextureParams): void => {
+		setClip.default({ outline })
+
+		executeTexture({ shapeColorIndex, tileSize })
+
+		resetClip.default()
 	}
 
 export default shape

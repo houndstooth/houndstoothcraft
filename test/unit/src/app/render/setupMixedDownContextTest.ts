@@ -1,14 +1,15 @@
 // tslint:disable:no-unsafe-any
 
 import { appState, CANVAS_SIZE, from, setupMixedDownContext } from '../../../../../src/indexForTest'
-import { buildMockCanvas, buildMockContext } from '../../../helpers'
+import { buildMockCanvas } from '../../../helpers'
 
-describe('settings mixed down context', () => {
+describe('setup mixed down context', () => {
 	let subject: () => void
 	let mixedDownContext: CanvasRenderingContext2D
 	beforeEach(() => {
 		subject = setupMixedDownContext.default
-		mixedDownContext = buildMockContext() as CanvasRenderingContext2D
+		// tslint:disable-next-line:no-object-literal-type-assertion
+		mixedDownContext = {} as CanvasRenderingContext2D
 		appState.dom.mixedDownCanvas = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
 
 		subject()
@@ -19,8 +20,8 @@ describe('settings mixed down context', () => {
 		expect(appState.render.mixedDownContext).toBe(mixedDownContext as any)
 	})
 
-	it('sets the mixed down context\'s width and height to the default canvas size', () => {
-		expect(appState.render.mixedDownContext.canvas.height).toBe(from.Px(CANVAS_SIZE))
-		expect(appState.render.mixedDownContext.canvas.width).toBe(from.Px(CANVAS_SIZE))
+	it('sets the mixed down canvas\'s width and height to the default canvas size', () => {
+		expect(appState.dom.mixedDownCanvas.height).toBe(from.Px(CANVAS_SIZE))
+		expect(appState.dom.mixedDownCanvas.width).toBe(from.Px(CANVAS_SIZE))
 	})
 })

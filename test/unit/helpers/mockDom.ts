@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-object-literal-type-assertion
 
 import { appState, globalWrapper } from '../../../src/indexForTest'
 import buildMockElement from './buildMockElement'
@@ -35,7 +35,7 @@ const mockDocument: MockDocument = {
 	body: {
 		appendChild: noop,
 	},
-	createElement: (_: string): HTMLElement => buildMockElement() as HTMLElement,
+	createElement: (_: string): HTMLElement => ({} as HTMLElement),
 	createTextNode: noop,
 	querySelector: noop,
 }

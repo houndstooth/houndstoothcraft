@@ -1,20 +1,21 @@
+// tslint:disable:no-object-literal-type-assertion
+
 import { appState, globalWrapper, storeDomElements } from '../../../../../src/indexForTest'
-import { buildMockElement } from '../../../helpers'
 
 describe('store dom elements', () => {
 	it('puts references to important components on the page onto the app state', () => {
 		const subject: () => void = storeDomElements.default
-		const canvasContainer: HTMLElement = buildMockElement() as HTMLElement
-		const descriptionsContainer: HTMLElement = buildMockElement() as HTMLElement
-		const effectTogglesContainer: HTMLElement = buildMockElement() as HTMLElement
-		const frameInput: HTMLInputElement = buildMockElement() as HTMLInputElement
-		const layersProgressBar: HTMLElement = buildMockElement() as HTMLElement
-		const pauseButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-		const playButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-		const progressBar: HTMLElement = buildMockElement() as HTMLElement
-		const progressMessage: HTMLElement = buildMockElement() as HTMLElement
-		const rewindButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
-		const snapshotButton: HTMLButtonElement = buildMockElement() as HTMLButtonElement
+		const canvasContainer: HTMLElement = {} as HTMLElement
+		const descriptionsContainer: HTMLElement = {} as HTMLElement
+		const effectTogglesContainer: HTMLElement = {} as HTMLElement
+		const frameInput: HTMLInputElement = {} as HTMLInputElement
+		const layersProgressBar: HTMLElement = {} as HTMLElement
+		const pauseButton: HTMLButtonElement = {} as HTMLButtonElement
+		const playButton: HTMLButtonElement = {} as HTMLButtonElement
+		const progressBar: HTMLElement = {} as HTMLElement
+		const progressMessage: HTMLElement = {} as HTMLElement
+		const rewindButton: HTMLButtonElement = {} as HTMLButtonElement
+		const snapshotButton: HTMLButtonElement = {} as HTMLButtonElement
 
 		spyOn(globalWrapper.document, 'querySelector').and.callFake((selector: string): HTMLElement => {
 			switch (selector) {
@@ -41,7 +42,7 @@ describe('store dom elements', () => {
 				case '#snapshot-button':
 					return snapshotButton
 				default:
-					return buildMockElement() as HTMLElement
+					return {} as HTMLElement
 			}
 		})
 

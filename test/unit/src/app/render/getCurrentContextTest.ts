@@ -1,3 +1,5 @@
+// tslint:disable:no-object-literal-type-assertion
+
 import { appState, getCurrentContext, to } from '../../../../../src/indexForTest'
 import { buildMockContext } from '../../../helpers'
 
@@ -7,12 +9,12 @@ describe('get current context', () => {
 
 		const expectedContext: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
 		appState.render.contexts = [
-			buildMockContext() as CanvasRenderingContext2D,
-			buildMockContext() as CanvasRenderingContext2D,
-			buildMockContext() as CanvasRenderingContext2D,
+			{} as CanvasRenderingContext2D,
+			{} as CanvasRenderingContext2D,
+			{} as CanvasRenderingContext2D,
 			expectedContext,
-			buildMockContext() as CanvasRenderingContext2D,
-			buildMockContext() as CanvasRenderingContext2D,
+			{} as CanvasRenderingContext2D,
+			{} as CanvasRenderingContext2D,
 		]
 		appState.execute.currentLayer = to.Layer(3)
 

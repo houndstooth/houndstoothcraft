@@ -1,3 +1,5 @@
+// tslint:disable:no-object-literal-type-assertion
+
 import {
 	appState,
 	combineEffects,
@@ -6,7 +8,6 @@ import {
 	enableOrDisableOtherEffectToggles,
 	NamedEffect,
 } from '../../../../../src/indexForTest'
-import { buildMockElement } from '../../../helpers'
 import Spy = jasmine.Spy
 
 describe('enableOrDisableOtherEffectToggles', () => {
@@ -38,8 +39,8 @@ describe('enableOrDisableOtherEffectToggles', () => {
 		}
 
 		appState.dom.effectToggles = {
-			'effect-one': buildMockElement() as HTMLInputElement,
-			'effect-two': buildMockElement() as HTMLInputElement,
+			'effect-one': {} as HTMLInputElement,
+			'effect-two': {} as HTMLInputElement,
 		}
 
 		const effectsHaveConflictsSpy: Spy = spyOn(effectsHaveConflicts, 'default')

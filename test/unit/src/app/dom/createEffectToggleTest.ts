@@ -1,3 +1,5 @@
+// tslint:disable:no-object-literal-type-assertion
+
 import {
 	appState,
 	createCheckbox,
@@ -22,8 +24,8 @@ describe('create effect toggle', () => {
 
 	beforeAll(() => {
 		div = buildMockElement({ children: divChildren }) as HTMLElement
-		checkbox = buildMockElement() as HTMLInputElement
-		label = buildMockElement() as HTMLElement
+		checkbox = {} as HTMLInputElement
+		label = {} as HTMLElement
 	})
 
 	beforeEach(() => {

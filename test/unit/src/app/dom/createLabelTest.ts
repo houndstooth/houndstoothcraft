@@ -1,3 +1,5 @@
+// tslint:disable:no-object-literal-type-assertion
+
 import {
 	createCheckbox,
 	createLabel,
@@ -11,8 +13,8 @@ describe('create label', () => {
 	let returnedLabel: HTMLLabelElement
 	let label: HTMLLabelElement
 	const children: HTMLElement[] = []
-	const checkbox: HTMLInputElement = buildMockElement() as HTMLInputElement
-	const name: HTMLElement = buildMockElement() as HTMLElement
+	const checkbox: HTMLInputElement = {} as HTMLInputElement
+	const name: HTMLElement = {} as HTMLElement
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 	const attributeObject: { 'for': string } = { for: '' }
 

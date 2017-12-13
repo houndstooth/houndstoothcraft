@@ -61,6 +61,6 @@ describe('create effect toggle', () => {
 	})
 
 	it('stores the effect toggle checkbox on the app state', () => {
-		expect(appState.dom.effectToggles['mock tooth']).toBe(checkbox)
+		expect(appState.dom.effectToggles['mock-tooth']).toBe(checkbox)
 	})
 })

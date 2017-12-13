@@ -10,6 +10,7 @@ import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
 import * as settingPath from './settingPath'
+import * as setupAvailableEffects from './setupAvailableEffects'
 import * as shouldRecurse from './shouldRecurse'
 
 export {
@@ -25,6 +26,7 @@ export {
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
 	settingPath,
+	setupAvailableEffects,
 	shouldRecurse,
 }
 export {

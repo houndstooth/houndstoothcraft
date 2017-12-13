@@ -17,7 +17,7 @@ describe('frame input change handler', () => {
 		spyOn(executeSelectedEffects, 'default')
 
 		// tslint:disable-next-line:no-any
-		const event: any = { target: { value: 99 }, bubbles: true }
+		const event: any = { target: { value: 99 } }
 		// tslint:disable-next-line:no-unsafe-any
 		subject(event)
 

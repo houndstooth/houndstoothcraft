@@ -5,7 +5,7 @@ import { clearMixedDownContext } from '../render'
 
 const DECIMAL_RADIX: number = 10
 
-const frameInputChangeHandler: (event: Event) => void =
+const frameInputChangeHandler: (_: Event) => void =
 	(event: Event): void => {
 		const target: HTMLInputElement = event.target as HTMLInputElement
 		appState.controls.currentFrame = to.Frame(parseInt(target.value, DECIMAL_RADIX))

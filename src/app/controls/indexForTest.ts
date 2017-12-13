@@ -1,4 +1,4 @@
-import * as buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
+import * as effectToggleClickHandler from './effectToggleClickHandler'
 import * as enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import * as enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
 import * as frameInputChangeHandler from './frameInputChangeHandler'
@@ -11,7 +11,7 @@ import * as updateCurrentFrame from './updateCurrentFrame'
 import * as updateDescriptions from './updateDescriptions'
 
 export {
-	buildEffectToggleClickHandler,
+	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	frameInputChangeHandler,

@@ -18,7 +18,7 @@ interface TestObject {
 	bbb?: string,
 }
 
-type SimulateClick = (checkbox: HTMLInputElement, clickHandler: () => void) => void
+type SimulateClick = (checkbox: HTMLInputElement, clickHandler: (_: Event) => void) => void
 
 interface BuildMockElementParams {
 	attributeObject?: { [ index: string ]: string },

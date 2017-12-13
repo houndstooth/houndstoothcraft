@@ -32,11 +32,14 @@ describe('enableOrDisableOtherEffectToggles', () => {
 			description: '',
 			name: 'effect two',
 		}
-		appState.settings.availableEffects = [ effectOne, effectTwo ]
+		appState.settings.availableEffects = {
+			'effect-one': effectOne,
+			'effect-two': effectTwo,
+		}
 
 		appState.dom.effectToggles = {
-			'effect one': buildMockElement() as HTMLInputElement,
-			'effect two': buildMockElement() as HTMLInputElement,
+			'effect-one': buildMockElement() as HTMLInputElement,
+			'effect-two': buildMockElement() as HTMLInputElement,
 		}
 
 		const effectsHaveConflictsSpy: Spy = spyOn(effectsHaveConflicts, 'default')
@@ -54,7 +57,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 			effect: effectTwo,
 			effectCheckingAgainst: effectsCombined,
 		})
-		expect(appState.dom.effectToggles[ 'effect one' ].disabled).toBe(true)
-		expect(appState.dom.effectToggles[ 'effect two' ].disabled).toBe(false)
+		expect(appState.dom.effectToggles[ 'effect-one' ].disabled).toBe(true)
+		expect(appState.dom.effectToggles[ 'effect-two' ].disabled).toBe(false)
 	})
 })

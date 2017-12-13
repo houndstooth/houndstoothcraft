@@ -1,10 +1,10 @@
 import {
 	appState,
-	buildEffectToggleClickHandler,
 	cancelPreviousPattern,
 	clearContexts,
 	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
+	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	executeSelectedEffects,
@@ -14,8 +14,8 @@ import {
 } from '../../../../../src/indexForTest'
 import { buildMockElement, SimulateClick } from '../../../helpers'
 
-describe('build effect toggle click handler returns a function which', () => {
-	let subject: () => void
+describe('effect toggle click handler', () => {
+	let subject: (_: Event) => void
 	let checkbox: HTMLInputElement
 	let effect: NamedEffect
 	let preExistingEffect: NamedEffect
@@ -32,8 +32,9 @@ describe('build effect toggle click handler returns a function which', () => {
 		spyOn(resetMainHoundstooth, 'default')
 
 		checkbox = buildMockElement() as HTMLInputElement
+		checkbox.name = 'mock-tooth'
 		effect = { name: 'mock tooth', description: '' }
-		subject = buildEffectToggleClickHandler.default({ checkbox, effect })
+		subject = effectToggleClickHandler.default
 
 		expect(executeSelectedEffects.default).not.toHaveBeenCalled()
 		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
@@ -42,6 +43,8 @@ describe('build effect toggle click handler returns a function which', () => {
 
 		preExistingEffect = { name: 'preexisting tooth', description: '' }
 		appState.controls.selectedEffects = [ preExistingEffect ]
+
+		appState.settings.availableEffects = { 'mock-tooth': effect }
 
 		simulateClick(checkbox, subject)
 	})
@@ -101,7 +104,8 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 })
 
-const simulateClick: SimulateClick = (checkbox: HTMLInputElement, clickHandler: () => void): void => {
+const simulateClick: SimulateClick = (checkbox: HTMLInputElement, clickHandler: (_: Event) => void): void => {
 	checkbox.checked = !checkbox.checked
-	clickHandler()
+	// tslint:disable-next-line:no-any
+	clickHandler({ target: checkbox } as any)
 }

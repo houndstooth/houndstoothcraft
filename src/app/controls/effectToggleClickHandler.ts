@@ -5,36 +5,36 @@ import { clearContexts, clearMixedDownContext } from '../render'
 import { resetMainHoundstooth } from '../settings'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
-import { BuildEffectToggleClickHandlerParams } from './types'
 import updateDescriptions from './updateDescriptions'
 
-const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) => () => void =
-	({ checkbox, effect }: BuildEffectToggleClickHandlerParams): () => void =>
-		(): void => {
-			appState.dom.descriptionsContainer.innerHTML = ''
+const effectToggleClickHandler: (_: Event) => void =
+	(event: Event): void => {
+		appState.dom.descriptionsContainer.innerHTML = ''
 
-			clearContexts.default()
-			clearMixedDownContext.default()
+		clearContexts.default()
+		clearMixedDownContext.default()
 
-			clearIntervalAndRemoveFromState.default('animationInterval')
-			clearIntervalAndRemoveFromState.default('gridProgressInterval')
+		clearIntervalAndRemoveFromState.default('animationInterval')
+		clearIntervalAndRemoveFromState.default('gridProgressInterval')
 
-			appState.execute.resolveGrid()
+		appState.execute.resolveGrid()
 
-			cancelPreviousPattern.default()
-			resetMainHoundstooth.default()
+		cancelPreviousPattern.default()
+		resetMainHoundstooth.default()
 
-			const effectFunction: (_: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
-			effectFunction(effect)
+		const checkbox: HTMLInputElement = event.target as HTMLInputElement
+		const effect: NamedEffect = appState.settings.availableEffects[checkbox.name]
+		const effectFunction: (_: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
+		effectFunction(effect)
 
-			executeSelectedEffects.default()
+		executeSelectedEffects.default()
 
-			enableOrDisableAnimationControls()
+		enableOrDisableAnimationControls()
 
-			enableOrDisableOtherEffectToggles()
+		enableOrDisableOtherEffectToggles()
 
-			updateDescriptions()
-		}
+		updateDescriptions()
+	}
 
 const addEffect: (_: NamedEffect) => void =
 	(effect: NamedEffect): void => {
@@ -48,4 +48,4 @@ const removeEffect: (_: NamedEffect) => void =
 			selectedEffect.name !== effect.name)
 	}
 
-export default buildEffectToggleClickHandler
+export default effectToggleClickHandler

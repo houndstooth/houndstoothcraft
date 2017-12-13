@@ -8,8 +8,8 @@ const enableOrDisableOtherEffectToggles: () => void =
 			effects: appState.controls.selectedEffects,
 		})
 
-		Object.values(appState.settings.availableEffects).forEach((effect: NamedEffect): void => {
-			appState.dom.effectToggles[effect.name].disabled = effectsHaveConflicts.default({
+		Object.entries(appState.settings.availableEffects).forEach(([ name, effect ]: [string, NamedEffect]): void => {
+			appState.dom.effectToggles[name].disabled = effectsHaveConflicts.default({
 				effect,
 				effectCheckingAgainst: combinedEffects,
 			})

@@ -1,6 +1,6 @@
 import * as effects from '../../../../effects'
-// tslint:disable-next-line:no-reaching-imports
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
+import { gongramEffect } from '../../../../effects/gongram/effects/gongramEffect'
 import {
 	appState,
 	BLACK,
@@ -34,6 +34,8 @@ describe('controls', () => {
 			effectTogglesContainer.style.display = 'none'
 			document.body.appendChild(effectTogglesContainer)
 			appState.dom.effectTogglesContainer = effectTogglesContainer
+
+			appState.settings.availableEffects = { gongram: gongramEffect }
 
 			createEffectToggles.default(Object.values(effects))
 			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()

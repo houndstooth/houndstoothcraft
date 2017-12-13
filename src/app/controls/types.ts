@@ -2,11 +2,6 @@
 
 import { Frame, Layer, NamedEffect } from '../../types'
 
-interface BuildEffectToggleClickHandlerParams {
-	checkbox: HTMLInputElement,
-	effect: NamedEffect
-}
-
 interface ControlsState {
 	animating: boolean,
 	currentFrame: Frame,
@@ -17,6 +12,5 @@ interface ControlsState {
 }
 
 export {
-	BuildEffectToggleClickHandlerParams,
 	ControlsState,
 }

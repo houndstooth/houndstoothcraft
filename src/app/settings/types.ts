@@ -69,7 +69,7 @@ interface SettingsFunctionObject extends FullSettingsPath {
 type SettingsAreEqual = (a: any, b: any) => boolean
 
 interface SettingsState {
-	availableEffects: NamedEffect[],
+	availableEffects: { [index: string]: NamedEffect },
 	currentPattern: FullPatternBaseValues,
 	mainHoundstooth: Houndstooth,
 }

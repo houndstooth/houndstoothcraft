@@ -1,9 +1,9 @@
-import { appState } from '../../../../src/app/appState'
 import {
 	attachControlHandlers,
 	createEffectToggles,
 	executeSelectedEffects,
 	NamedEffect,
+	setupAvailableEffects,
 	setupMixedDownContext,
 	startUp,
 	storeDomElements,
@@ -16,6 +16,7 @@ describe('start up', () => {
 		subject = startUp.default
 
 		spyOn(storeDomElements, 'default')
+		spyOn(setupAvailableEffects, 'default')
 		spyOn(setupMixedDownContext, 'default')
 		spyOn(createEffectToggles, 'default')
 		spyOn(attachControlHandlers, 'default')
@@ -30,7 +31,7 @@ describe('start up', () => {
 	})
 
 	it('sets the available effects from all the effects in the effects module', () => {
-		expect(appState.settings.availableEffects).toBe(allEffects)
+		expect(setupAvailableEffects.default).toHaveBeenCalledWith(allEffects)
 	})
 
 	it('sets up the mixed down context', () => {

@@ -1,4 +1,4 @@
-import * as buildEffectToggleClickHandler from './buildEffectToggleClickHandler'
+import * as effectToggleClickHandler from './effectToggleClickHandler'
 import * as frameInputChangeHandler from './frameInputChangeHandler'
 import * as getCurrentFrame from './getCurrentFrame'
 import * as pauseClickHandler from './pauseClickHandler'
@@ -8,7 +8,7 @@ import * as snapshotClickHandler from './snapshotClickHandler'
 import * as updateCurrentFrame from './updateCurrentFrame'
 
 export {
-	buildEffectToggleClickHandler,
+	effectToggleClickHandler,
 	frameInputChangeHandler,
 	getCurrentFrame,
 	pauseClickHandler,

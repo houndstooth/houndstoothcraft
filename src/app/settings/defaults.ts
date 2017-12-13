@@ -6,7 +6,7 @@ const DEFAULT_ANIMATIONS_PATTERN: PatternFunctions = {}
 const DEFAULT_BASE_PATTERN: FullPatternBaseValues = DEFAULT_PATTERN_STATE
 const DEFAULT_LAYERS_PATTERN: PatternFunctions = {}
 
-const DEFAULT_AVAILABLE_EFFECTS: NamedEffect[] = []
+const DEFAULT_AVAILABLE_EFFECTS: { [_: string]: NamedEffect } = {}
 const DEFAULT_CURRENT_PATTERN: FullPatternBaseValues = DEFAULT_PATTERN_STATE
 const DEFAULT_MAIN_HOUNDSTOOTH: Houndstooth = {
 	animationsPattern: DEFAULT_ANIMATIONS_PATTERN,

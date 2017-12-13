@@ -1,7 +1,7 @@
 // tslint:disable:max-file-line-count no-reaching-imports
 
 export {
-	buildEffectToggleClickHandler,
+	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	frameInputChangeHandler,
@@ -93,6 +93,7 @@ export {
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
 	settingPath,
+	setupAvailableEffects,
 	shouldRecurse,
 
 	DEFAULT_ANIMATIONS_PATTERN,

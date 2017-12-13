@@ -1,10 +1,10 @@
 import {
-	buildEffectToggleClickHandler,
 	createCheckbox,
+	effectToggleClickHandler,
 	globalWrapper,
 	NamedEffect,
 } from '../../../../../src/indexForTest'
-import { buildMockElement, noop } from '../../../helpers'
+import { buildMockElement } from '../../../helpers'
 
 describe('create checkbox', () => {
 	let subject: (_: { effect: NamedEffect }) => HTMLInputElement
@@ -12,7 +12,6 @@ describe('create checkbox', () => {
 	let checkbox: HTMLInputElement
 
 	const attributeObject: { id: string, name: string, type: string } = { id: '', name: '', type: '' }
-	const clickHandler: () => void = noop
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {
@@ -20,20 +19,11 @@ describe('create checkbox', () => {
 		checkbox = buildMockElement({ attributeObject }) as HTMLInputElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(checkbox)
 
-		spyOn(buildEffectToggleClickHandler, 'default').and.returnValue(clickHandler)
-
 		returnedCheckbox = subject({ effect })
 	})
 
 	it('returns the created label', () => {
 		expect(returnedCheckbox).toBe(checkbox)
-	})
-
-	it('makes the checkbox using the effect', () => {
-		expect(buildEffectToggleClickHandler.default).toHaveBeenCalledWith({
-			checkbox,
-			effect,
-		})
 	})
 
 	it('sets the id to a kebab-cased version of the effect\'s name', () => {
@@ -45,7 +35,7 @@ describe('create checkbox', () => {
 	})
 
 	it('assigns a click handler to the checkbox', () => {
-		expect(returnedCheckbox.onclick).toBe(clickHandler)
+		expect(returnedCheckbox.onclick).toBe(effectToggleClickHandler.default)
 	})
 
 	it('sets the type to checkbox', () => {

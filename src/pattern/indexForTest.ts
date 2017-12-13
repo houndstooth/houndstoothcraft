@@ -98,8 +98,6 @@ export {
 	Unit,
 } from './tile/indexForTest'
 export {
-	applyBackgroundColor,
-	applyOpacity,
 	applyScroll,
 	applyTilt,
 	applyViewForGrid,

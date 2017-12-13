@@ -101,8 +101,6 @@ export {
 } from './app/indexForTest'
 export {
 	animationSettings,
-	applyBackgroundColor,
-	applyOpacity,
 	applyScroll,
 	applyTilt,
 	applyViewForGrid,

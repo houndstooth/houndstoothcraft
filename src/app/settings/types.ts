@@ -2,6 +2,7 @@
 
 import { FullPatternBaseValues } from '../../pattern'
 import { Effect, Houndstooth, NamedEffect, Pattern } from '../../types'
+import { ObjectOf } from '../../utilities'
 
 enum _SettingsPathBrand {}
 
@@ -69,7 +70,7 @@ interface SettingsFunctionObject extends FullSettingsPath {
 type SettingsAreEqual = (a: any, b: any) => boolean
 
 interface SettingsState {
-	availableEffects: { [index: string]: NamedEffect },
+	availableEffects: ObjectOf<NamedEffect>,
 	currentPattern: FullPatternBaseValues,
 	mainHoundstooth: Houndstooth,
 }

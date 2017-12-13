@@ -1,12 +1,14 @@
 // tslint:disable:no-any
 
+import { ObjectOf } from '../../utilities'
+
 enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
 interface DomState {
 	canvasContainer: HTMLElement,
 	descriptionsContainer: HTMLElement,
-	effectToggles: { [_: string ]: HTMLInputElement },
+	effectToggles: ObjectOf<HTMLInputElement>,
 	effectTogglesContainer: HTMLElement,
 	frameInput: HTMLInputElement,
 	layersProgressBar: HTMLElement,

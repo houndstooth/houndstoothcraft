@@ -11,3 +11,6 @@ export {
 	from,
 	globalWrapper,
 }
+export {
+	ObjectOf,
+} from './types'

@@ -197,6 +197,7 @@ export {
 	from,
 	globalWrapper,
 	mathUtilities,
+	ObjectOf,
 	to,
 } from './utilities/indexForTest'
 

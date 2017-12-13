@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { to } from '../../utilities'
+import { ObjectOf, to } from '../../utilities'
 import checkSettingForConflict from './checkSettingForConflict'
 import deeperPath from './deeperPath'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
@@ -30,7 +30,7 @@ const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 				}
 			}
 			else {
-				const settingsWithSettingToBeChecked: { [_: string]: any } = getPatternSettingOrCreatePath({
+				const settingsWithSettingToBeChecked: ObjectOf<any> = getPatternSettingOrCreatePath({
 					pattern,
 					settingsPath,
 				})

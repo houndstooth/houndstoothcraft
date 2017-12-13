@@ -1,5 +1,7 @@
 // tslint:disable:no-any
 
+import { ObjectOf } from './types'
+
 const iterator: (i: number, options?: { oneIndexed: boolean }) => number[] =
 	(i: number, options: { oneIndexed: boolean } = { oneIndexed: false }): number[] => {
 		let iter: number[] = []
@@ -29,8 +31,8 @@ const wrappedIndex: <T>(_: { array: T[], index?: number }) => T =
 		return array[ i ]
 	}
 
-const shallowEqual: <T extends { [_: string]: any }>(a: T, b: T) => boolean =
-	<T extends { [_: string]: any }>(a: T, b: T): boolean => {
+const shallowEqual: <T extends ObjectOf<any>>(a: T, b: T) => boolean =
+	<T extends ObjectOf<any>>(a: T, b: T): boolean => {
 		const sameKeyCount: boolean = Object.keys(a).length === Object.keys(b).length
 
 		return sameKeyCount && Object.entries(a).every(([ key, value ]: [ string, any ]): boolean => value === b[ key ])
@@ -39,10 +41,7 @@ const shallowEqual: <T extends { [_: string]: any }>(a: T, b: T) => boolean =
 const deepClone: <T>(objectToDeepClone: T) => T =
 	<T>(objectToDeepClone: T): T => {
 		const clonedObject: any = {} as any
-		setAllPropertiesOfObjectOnAnother({
-			objectToChange: clonedObject,
-			objectWithProperties: objectToDeepClone,
-		})
+		setAllPropertiesOfObjectOnAnother({ objectToChange: clonedObject, objectWithProperties: objectToDeepClone })
 
 		// tslint:disable:no-unsafe-any
 		return clonedObject
@@ -50,7 +49,7 @@ const deepClone: <T>(objectToDeepClone: T) => T =
 
 const setAllPropertiesOfObjectOnAnother: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
 	// tslint:disable-next-line:max-line-length
-	<T extends { [_: string]: any }>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
+	<T extends ObjectOf<any>>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
 		Object.entries(objectWithProperties).forEach(([ key, value ]: [ string, any ]) => {
 			objectToChange[ key ] = deepCloneMaybeNotObject(value)
 		})
@@ -76,7 +75,7 @@ const isDefined: <T>(property: T) => boolean = <T>(property: T): boolean => type
 
 const changeObjectIntoCopy: <T>(_: { objectToChange: T, objectWithProperties: T }) => void =
 	// tslint:disable-next-line:max-line-length
-	<T extends { [_: string]: any }>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
+	<T extends ObjectOf<any>>({ objectToChange, objectWithProperties }: { objectToChange: T, objectWithProperties: T }): void => {
 		Object.keys(objectToChange).forEach((key: string): boolean => delete objectToChange[ key ])
 		setAllPropertiesOfObjectOnAnother({ objectWithProperties, objectToChange })
 	}

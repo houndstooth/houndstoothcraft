@@ -7,7 +7,8 @@ interface Color {
 	g?: number,
 	b?: number,
 	a: number,
-	[index: string]: number | undefined,
+
+	[_: string]: number | undefined,
 }
 
 interface Frame extends Number {

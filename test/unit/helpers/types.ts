@@ -1,10 +1,12 @@
 // tslint:disable:max-file-line-count max-line-length no-any
 
 import Spy = jasmine.Spy
+import { ObjectOf } from '../../../src/indexForTest'
 
 interface ExampleSettings extends ExampleSettingsStructure {
 	settingOne: number,
 	settingTwo: string,
+
 	[_: string]: number | string,
 }
 
@@ -21,7 +23,7 @@ interface TestObject {
 type SimulateClick = (checkbox: HTMLInputElement, clickHandler: (_: Event) => void) => void
 
 interface BuildMockElementParams {
-	attributeObject?: { [ index: string ]: string },
+	attributeObject?: ObjectOf<string>,
 	children?: HTMLElement[],
 	classList?: string[],
 	clickSpy?: Spy,

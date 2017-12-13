@@ -1,10 +1,11 @@
 // tslint:disable:no-object-literal-type-assertion
 
+import { ObjectOf } from '../../utilities'
 import { DomState } from './types'
 
 const DEFAULT_CANVAS_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_DESCRIPTIONS_CONTAINER: HTMLElement = {} as HTMLElement
-const DEFAULT_EFFECT_TOGGLES: { [_: string ]: HTMLInputElement } = {}
+const DEFAULT_EFFECT_TOGGLES: ObjectOf<HTMLInputElement> = {}
 const DEFAULT_EFFECT_TOGGLES_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_FRAME_INPUT: HTMLInputElement = {} as HTMLInputElement
 const DEFAULT_LAYERS_PROGRESS_BAR: HTMLElement = {} as HTMLElement

@@ -7,6 +7,9 @@ type CouldBeSettingsFunctionObject = Array<{
 	settingsPath: string[],
 }>
 
+interface ObjectOf<T> { [_: string]: T }
+
 export {
+	ObjectOf,
 	CouldBeSettingsFunctionObject,
 }

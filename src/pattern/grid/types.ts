@@ -8,7 +8,7 @@ type Address = _AddressBrand & AddressElement[]
 
 type Grid<T> = T[][]
 
-interface GridAddressParam {
+interface GridAddressAsParam {
 	gridAddress: Address,
 }
 
@@ -16,13 +16,13 @@ interface Referenced {
 	thisPatternRef: number
 }
 
-interface ReferencedGridAddress extends GridAddressParam, Referenced {}
+interface ReferencedGridAddress extends GridAddressAsParam, Referenced {}
 
 export {
 	Address,
 	AddressElement,
 	Grid,
-	GridAddressParam,
+	GridAddressAsParam,
 	Referenced,
 	ReferencedGridAddress,
 }

@@ -1,5 +1,5 @@
 import { codeUtilities, to } from '../../utilities'
-import { Address, GridAddressParam } from '../grid'
+import { Address, GridAddressAsParam } from '../grid'
 import { patternState } from '../patternState'
 import applySwitcheroo from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
@@ -15,7 +15,7 @@ import {
 } from './types'
 
 const getShapeColorIndices: GetShapeColorIndices =
-	({ gridAddress }: GridAddressParam): ShapeColorIndex[] => {
+	({ gridAddress }: GridAddressAsParam): ShapeColorIndex[] => {
 		const shapeColorIndices: ShapeColorIndex[] = getIndices({ gridAddress })
 
 		return maybeAdjustShapeColorIndices({ gridAddress, shapeColorIndices })
@@ -50,7 +50,7 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 	}
 
 const getIndices: GetShapeColorIndices =
-	({ gridAddress }: GridAddressParam): ShapeColorIndex[] => {
+	({ gridAddress }: GridAddressAsParam): ShapeColorIndex[] => {
 		const {
 			offsetAddress,
 			assignmentMode,

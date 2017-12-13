@@ -1,24 +1,18 @@
 // tslint:disable:max-file-line-count
 
 import { ShapeArgs } from '../texture'
-import { TileOriginAndSize, Unit } from '../tile'
+import { Coordinate, Outline, TileOriginAndSize } from '../tile'
 
 enum BaseStripeDiagonal {
 	Minor,
 	Principal,
 }
 
-enum _CoordinateBrand {}
-
-type Coordinate = _CoordinateBrand & Unit[]
-
-type GetOutline = (_: GetOutlineParams) => Coordinate[]
+type GetOutline = (_: GetOutlineParams) => Outline
 
 interface GetOutlineParams extends TileOriginAndSize {
 	outlineOptions?: OutlineOptions,
 }
-
-type Outline = Coordinate[]
 
 interface OutlineOptions {
 	stripeEnd: StripePosition,
@@ -50,10 +44,6 @@ interface GetStripePositionParams {
 	stripeIndex: number,
 }
 
-interface OutlineAsParam {
-	outline: Outline,
-}
-
 enum StripeCountMode {
 	Standard,
 	GinghamChevronContinuum,
@@ -71,7 +61,6 @@ export {
 	BaseStripeDiagonal,
 	GetStripeArgsParams,
 	GetStripePosition,
-	OutlineAsParam,
 	StripeCountMode,
 	GetStripePositions,
 	StripePosition,

@@ -9,7 +9,7 @@ export {
 	Address,
 	AddressElement,
 	Grid,
-	GridAddressParam,
+	GridAddressAsParam,
 	Referenced,
 	ReferencedGridAddress,
 } from './types'

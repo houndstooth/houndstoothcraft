@@ -6,7 +6,9 @@ export {
 	tileSettings,
 }
 export {
+	Coordinate,
 	GetTileOriginAndSize,
+	Outline,
 	TileOriginAndSize,
 	Unit,
 } from './types'

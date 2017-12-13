@@ -8,7 +8,7 @@ export {
 export {
 	Address,
 	Grid,
-	GridAddressParam,
+	GridAddressAsParam,
 	Referenced,
 	ReferencedGridAddress,
 } from './types'

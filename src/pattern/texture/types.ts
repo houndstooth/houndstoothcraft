@@ -1,34 +1,41 @@
 import { ColorOptions, ShapeColorIndex } from '../color'
-import { GetOutline, GetOutlineParams, Outline, OutlineAsParam } from '../stripe'
-import { TileOriginAndSize, Unit } from '../tile'
+import { GetOutline, GetOutlineParams } from '../stripe'
+import { Outline, TileOriginAndSize, Unit } from '../tile'
+
+interface OutlineAsParam {
+	outline: Outline,
+}
+
+interface TileSizeAsParam {
+	tileSize: Unit,
+}
+
+interface ShapeColorIndicesAsParam {
+	shapeColorIndices: ShapeColorIndex[],
+}
 
 interface ComponentParams extends ColorOptions, OutlineAsParam {
 }
 
 type ExecuteTexture = (_: ExecuteTextureParams) => void
 
-interface ExecuteTextureParams extends ColorOptions {
-	tileSize: Unit,
+interface ExecuteTextureParams extends ColorOptions, TileSizeAsParam {
 }
 
-interface ShapeParams extends GetOutlineParams {
+interface ShapeParams extends GetOutlineParams, ShapeColorIndicesAsParam {
 	getOutline: GetOutline,
-	shapeColorIndices: ShapeColorIndex[],
 	stripeIndex?: number,
 }
 
-interface SolidParams {
-	outline: Outline,
+interface SolidParams extends OutlineAsParam {
 	shapeColorIndex: ShapeColorIndex,
 }
 
-interface ShapeArgs extends TileOriginAndSize {
-	shapeColorIndices: ShapeColorIndex[],
+interface ShapeArgs extends TileOriginAndSize, ShapeColorIndicesAsParam {
 }
 
-interface TextureParams extends ComponentParams {
+interface TextureParams extends ComponentParams, TileSizeAsParam {
 	executeTexture: ExecuteTexture,
-	tileSize: Unit,
 }
 
 export {

@@ -1,5 +1,5 @@
 import { Color } from '../../types'
-import { Address, Grid, GridAddressParam } from '../grid'
+import { Address, Grid, GridAddressAsParam } from '../grid'
 
 enum AssignmentMode {
 	Supertile,
@@ -13,11 +13,11 @@ interface ColorOptions {
 enum _ColorSetBrand {}
 type ColorSet = _ColorSetBrand & Color[]
 
-interface GetShapeColorIndicesWithOffsetParams extends GridAddressParam {
+interface GetShapeColorIndicesWithOffsetParams extends GridAddressAsParam {
 	addressOffset: Address,
 }
 
-type GetShapeColorIndices = (_: GridAddressParam) => ShapeColorIndex[]
+type GetShapeColorIndices = (_: GridAddressAsParam) => ShapeColorIndex[]
 
 type GetShapeColorIndicesWithOffset = (_: GetShapeColorIndicesWithOffsetParams) => ShapeColorIndex[]
 

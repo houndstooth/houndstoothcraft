@@ -41,7 +41,7 @@ export {
 
 	Address,
 	Grid,
-	GridAddressParam,
+	GridAddressAsParam,
 	Referenced,
 	ReferencedGridAddress,
 } from './grid/indexForTest'
@@ -67,7 +67,6 @@ export {
 	GetStripePosition,
 	GetStripePositions,
 	Outline,
-	OutlineAsParam,
 	OutlineOptions,
 	Radian,
 	StripeCountMode,

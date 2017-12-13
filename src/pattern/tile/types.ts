@@ -1,11 +1,15 @@
 import { TransformShapeColorIndicesParams } from '../color'
-import { GridAddressParam } from '../grid'
-import { Coordinate } from '../stripe'
+import { GridAddressAsParam } from '../grid'
 
-interface DefinedTileParams extends TileOriginAndSize, GridAddressParam {
+enum _CoordinateBrand {}
+type Coordinate = _CoordinateBrand & Unit[]
+
+interface DefinedTileParams extends TileOriginAndSize, GridAddressAsParam {
 }
 
-type GetTileOriginAndSize = (_: GridAddressParam) => TileOriginAndSize | undefined
+type GetTileOriginAndSize = (_: GridAddressAsParam) => TileOriginAndSize | undefined
+
+type Outline = Coordinate[]
 
 type Tile = (_: TileParams) => void
 
@@ -23,8 +27,10 @@ interface Unit extends Number {
 }
 
 export {
+	Coordinate,
 	DefinedTileParams,
 	GetTileOriginAndSize,
+	Outline,
 	Tile,
 	TileOriginAndSize,
 	TileParams,

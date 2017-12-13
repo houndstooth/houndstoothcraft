@@ -28,7 +28,6 @@ export {
 	GetStripePosition,
 	GetStripePositions,
 	Outline,
-	OutlineAsParam,
 	OutlineOptions,
 	Radian,
 	StripeCountMode,

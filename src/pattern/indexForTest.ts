@@ -90,7 +90,6 @@ export {
 	getTileOriginAndSize,
 	maybeTile,
 	tile,
-	tileCenter,
 	tileSettings,
 
 	DefinedTileParams,

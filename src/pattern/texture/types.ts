@@ -46,4 +46,5 @@ export {
 	SolidParams,
 	ShapeArgs,
 	TextureParams,
+	ShapeColorIndicesAsParam,
 }

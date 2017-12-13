@@ -13,6 +13,7 @@ export {
 	ExecuteTextureParams,
 	ShapeArgs,
 	ShapeParams,
+	ShapeColorIndicesAsParam,
 } from './types'
 export {
 	DEFAULT_TEXTURE_SETTINGS,

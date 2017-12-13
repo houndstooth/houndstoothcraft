@@ -23,7 +23,6 @@ export {
 export {
 	clearContexts,
 	clearMixedDownContext,
-	exportCanvas,
 	fill,
 	getCurrentContext,
 	mixDownContexts,
@@ -31,7 +30,6 @@ export {
 	setClip,
 	setupMixedDownContext,
 
-	DataBlob,
 	Path,
 	Pixel,
 	RenderState,

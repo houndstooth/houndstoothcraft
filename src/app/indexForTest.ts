@@ -23,7 +23,7 @@ export {
 	createEffectToggles,
 	createLabel,
 	makeId,
-	saveBlob,
+	saveBlobThroughAnchor,
 	storeDomElements,
 
 	Dimensions,
@@ -64,7 +64,6 @@ export {
 	clearContexts,
 	clearMixedDownContext,
 	clipPath,
-	exportCanvas,
 	fill,
 	fillPath,
 	getCurrentContext,
@@ -76,7 +75,6 @@ export {
 
 	ERASE,
 
-	DataBlob,
 	Path,
 	Pixel,
 } from './render/indexForTest'

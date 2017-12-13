@@ -2,7 +2,7 @@ import { shouldRefreshCanvas } from '../../pattern'
 import { from, to } from '../../utilities'
 import { appState } from '../appState'
 import { updateCurrentFrame } from '../controls'
-import { clearContexts, exportCanvas, mixDownContexts } from '../render'
+import { clearContexts, mixDownContexts, saveCanvas } from '../render'
 import executePattern from './executePattern'
 import previousFrameHasFinished from './previousFrameHasFinished'
 import { ExecuteParams } from './types'
@@ -23,7 +23,7 @@ const buildAnimationFunction: (_: ExecuteParams) => () => Promise<void> =
 			mixDownContexts.default()
 
 			if (appState.controls.exportFrames) {
-				exportCanvas.default()
+				saveCanvas.default()
 			}
 
 			updateCurrentFrame.default(to.Frame(from.Frame(appState.controls.currentFrame) + 1))

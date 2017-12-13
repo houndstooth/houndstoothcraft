@@ -1,28 +1,26 @@
 // tslint:disable:no-unsafe-any
 
-import { DataBlob, globalWrapper, saveBlob } from '../../../../../src/indexForTest'
+import { globalWrapper, saveBlobThroughAnchor } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../helpers'
 
-describe('save blob', () => {
+describe('save blob through anchor', () => {
 	it('creates a download link and clicks it', () => {
-		const subject: (_: { blob: DataBlob, name: string }) => void = saveBlob.default
+		const subject: (_: { blob: Blob, name: string }) => void = saveBlobThroughAnchor.default
 		spyOn(globalWrapper.window.URL, 'createObjectURL').and.returnValue('the url')
 
 		const clickSpy: Spy = jasmine.createSpy('click')
 		const link: HTMLAnchorElement = buildMockElement({ clickSpy }) as HTMLAnchorElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(link)
 
-		const appendChildSpy: Spy = spyOn(globalWrapper.document.body, 'appendChild')
-
 		spyOn(globalWrapper.window.URL, 'revokeObjectURL')
 
-		const blob: DataBlob = {}
+		// tslint:disable-next-line:no-object-literal-type-assertion
+		const blob: Blob = {} as Blob
 		const name: string = 'whatever.png'
 		subject({ blob, name })
 
 		expect(globalWrapper.window.URL.createObjectURL).toHaveBeenCalledWith(blob)
-		expect(appendChildSpy).toHaveBeenCalledWith(link)
 		expect(link.style.display).toBe('none')
 		expect(link.href).toBe('the url')
 		expect(link.download).toBe('whatever.png')

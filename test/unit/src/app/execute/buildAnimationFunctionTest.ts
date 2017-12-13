@@ -5,9 +5,9 @@ import {
 	clearContexts,
 	ExecuteParams,
 	executePattern,
-	exportCanvas,
 	mixDownContexts,
 	previousFrameHasFinished,
+	saveCanvas,
 	SettingsFunctionObject,
 	shouldRefreshCanvas,
 	to,
@@ -30,7 +30,7 @@ describe('build animation function returns an animation function', () => {
 		spyOn(callFunctionsPerSetting, 'default')
 		spyOn(updateCurrentFrame, 'default')
 		clearContextsSpy = spyOn(clearContexts, 'default')
-		spyOn(exportCanvas, 'default')
+		spyOn(saveCanvas, 'default')
 		spyOn(mixDownContexts, 'default')
 		appState.controls.currentFrame = to.Frame(5)
 		animationFunction = subject({
@@ -65,7 +65,7 @@ describe('build animation function returns an animation function', () => {
 		})
 
 		it('does not export a frame', () => {
-			expect(exportCanvas.default).not.toHaveBeenCalled()
+			expect(saveCanvas.default).not.toHaveBeenCalled()
 		})
 	})
 
@@ -88,7 +88,7 @@ describe('build animation function returns an animation function', () => {
 
 		describe('exporting frames', () => {
 			it('does not export frames by default', () => {
-				expect(exportCanvas.default).not.toHaveBeenCalled()
+				expect(saveCanvas.default).not.toHaveBeenCalled()
 			})
 
 			it('exports frames if configured to', async (done: DoneFn) => {
@@ -96,7 +96,7 @@ describe('build animation function returns an animation function', () => {
 
 				await animationFunction()
 
-				expect(exportCanvas.default).toHaveBeenCalled()
+				expect(saveCanvas.default).toHaveBeenCalled()
 
 				done()
 			})

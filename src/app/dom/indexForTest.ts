@@ -7,7 +7,7 @@ import * as createEffectToggle from './createEffectToggle'
 import * as createEffectToggles from './createEffectToggles'
 import * as createLabel from './createLabel'
 import * as makeId from './makeId'
-import * as saveBlob from './saveBlob'
+import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 import * as storeDomElements from './storeDomElements'
 
 export {
@@ -20,7 +20,7 @@ export {
 	createEffectToggles,
 	createLabel,
 	makeId,
-	saveBlob,
+	saveBlobThroughAnchor,
 	storeDomElements,
 }
 export {

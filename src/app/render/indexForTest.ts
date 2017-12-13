@@ -4,7 +4,6 @@ import * as clearContext from './clearContext'
 import * as clearContexts from './clearContexts'
 import * as clearMixedDownContext from './clearMixedDownContext'
 import * as clipPath from './clipPath'
-import * as exportCanvas from './exportCanvas'
 import * as fill from './fill'
 import * as fillPath from './fillPath'
 import * as getCurrentContext from './getCurrentContext'
@@ -21,7 +20,6 @@ export {
 	clearContexts,
 	clearMixedDownContext,
 	clipPath,
-	exportCanvas,
 	fill,
 	fillPath,
 	getCurrentContext,
@@ -32,7 +30,6 @@ export {
 	setupMixedDownContext,
 }
 export {
-	DataBlob,
 	Path,
 	Pixel,
 } from './types'

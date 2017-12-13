@@ -3,7 +3,7 @@ import * as createContexts from './createContexts'
 import * as createDescription from './createDescription'
 import * as createEffectToggles from './createEffectToggles'
 import * as makeId from './makeId'
-import * as saveBlob from './saveBlob'
+import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 import * as storeDomElements from './storeDomElements'
 
 export {
@@ -12,7 +12,7 @@ export {
 	createDescription,
 	createEffectToggles,
 	makeId,
-	saveBlob,
+	saveBlobThroughAnchor,
 	storeDomElements,
 }
 export {

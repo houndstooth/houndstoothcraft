@@ -1,9 +1,9 @@
-import { exportCanvas, mixDownContexts } from '../render'
+import { mixDownContexts, saveCanvas } from '../render'
 
 const snapshotClickHandler: () => void =
 	(): void => {
 		mixDownContexts.default()
-		exportCanvas.default()
+		saveCanvas.default()
 	}
 
 export default snapshotClickHandler

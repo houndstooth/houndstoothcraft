@@ -1,16 +1,25 @@
-import { Frame } from '../../types'
 import { from } from '../../utilities'
 import { appState } from '../appState'
-import { saveBlob } from '../dom'
-import { DataBlob } from './types'
+import { saveBlobThroughAnchor } from '../dom'
 
-const saveCanvas: (_: { currentFrame: Frame, result: DataBlob }) => void =
-	({ currentFrame, result }: { currentFrame: Frame, result: DataBlob }): void => {
-		const currentFrameValue: number = from.Frame(currentFrame)
+const saveCanvas: () => void =
+	(): void => {
+		// tslint:disable-next-line:no-unsafe-any
+		appState.render.mixedDownContext.canvas.toBlob((result: Blob | null): void => {
+			/* istanbul ignore else */
+			if (result) {
+				saveBlob(result)
+			}
+		})
+	}
+
+const saveBlob: (_: Blob) => void =
+	(result: Blob): void => {
+		const currentFrameValue: number = from.Frame(appState.controls.currentFrame)
 		const name: string = appState.controls.exportFrames || currentFrameValue > 0 ?
 			`houndstooth_animation_frame_${currentFrameValue}.png` :
 			'houndstooth_snapshot.png'
-		saveBlob.default({ blob: result, name })
+		saveBlobThroughAnchor.default({ blob: result, name })
 	}
 
 export default saveCanvas

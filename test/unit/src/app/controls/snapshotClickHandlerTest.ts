@@ -1,15 +1,11 @@
-import {
-	exportCanvas,
-	mixDownContexts,
-	snapshotClickHandler,
-} from '../../../../../src/indexForTest'
+import { mixDownContexts, saveCanvas, snapshotClickHandler } from '../../../../../src/indexForTest'
 
 describe('snapshot click handler', () => {
 	let subject: () => void
 	beforeEach(() => {
 		subject = snapshotClickHandler.default
 		spyOn(mixDownContexts, 'default')
-		spyOn(exportCanvas, 'default')
+		spyOn(saveCanvas, 'default')
 
 		subject()
 	})
@@ -21,6 +17,6 @@ describe('snapshot click handler', () => {
 	it('exports the current frame', () => {
 		subject()
 
-		expect(exportCanvas.default).toHaveBeenCalled()
+		expect(saveCanvas.default).toHaveBeenCalled()
 	})
 })

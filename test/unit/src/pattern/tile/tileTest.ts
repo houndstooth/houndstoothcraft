@@ -5,8 +5,8 @@ import {
 	Coordinate,
 	DefinedTileParams,
 	getShapeColorIndices,
+	getStandardTileOriginAndSize,
 	getStripePositionsForTile,
-	getTileOriginAndSize,
 	isTileUniform,
 	patternState,
 	PERIMETER_SCALAR,
@@ -45,7 +45,7 @@ describe('tile', () => {
 		let stripePositionsForTile: StripePosition[]
 		let shapeColorIndices: ShapeColorIndex[]
 		beforeEach(() => {
-			spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin, tileSize })
+			spyOn(getStandardTileOriginAndSize, 'default').and.returnValue({ tileOrigin, tileSize })
 
 			stripePositionsForTile = to.StripePositions([ 0, 0.5, 1, 1.5 ])
 			spyOn(getStripePositionsForTile, 'default').and.returnValue(stripePositionsForTile)

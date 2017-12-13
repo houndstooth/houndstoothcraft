@@ -1,10 +1,10 @@
-import * as getTileOriginAndSize from './getTileOriginAndSize'
+import * as getStandardTileOriginAndSize from './getStandardTileOriginAndSize'
 import * as maybeTile from './maybeTile'
 import * as tile from './tile'
 import * as tileSettings from './tileSettings'
 
 export {
-	getTileOriginAndSize,
+	getStandardTileOriginAndSize,
 	maybeTile,
 	tile,
 	tileSettings,

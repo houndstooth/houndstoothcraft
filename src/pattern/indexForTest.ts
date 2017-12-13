@@ -87,7 +87,7 @@ export {
 	TextureParams,
 } from './texture/indexForTest'
 export {
-	getTileOriginAndSize,
+	getStandardTileOriginAndSize,
 	maybeTile,
 	tile,
 	tileSettings,

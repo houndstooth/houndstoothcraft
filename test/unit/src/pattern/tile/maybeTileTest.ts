@@ -1,24 +1,28 @@
 import {
 	Address,
 	Coordinate,
-	getTileOriginAndSize,
 	incrementTilesCompleted,
 	maybeTile,
+	patternState,
 	ReferencedAddress,
 	tile,
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
-
-const subject: (_: ReferencedAddress) => void = maybeTile.default
+import Spy = jasmine.Spy
 
 describe('maybe tile', () => {
+	let subject: (_: ReferencedAddress) => void
 	let address: Address
 	let tileOrigin: Coordinate
 	let tileSize: Unit
 	const thisPatternRef: number = 99
+	let getTileOriginAndSizeSpy: Spy
 
 	beforeEach(() => {
+		subject = maybeTile.default
+		getTileOriginAndSizeSpy = jasmine.createSpy('getTileOriginAndSize')
+		patternState.tileSettings.getTileOriginAndSize = getTileOriginAndSizeSpy
 		address = to.Address([ 5, 3 ])
 		tileOrigin = to.Coordinate([ 4, 4 ])
 		tileSize = to.Unit(7)
@@ -27,7 +31,7 @@ describe('maybe tile', () => {
 	})
 
 	it('calls tile if an origin and size are got', () => {
-		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin, tileSize })
+		getTileOriginAndSizeSpy.and.returnValue({ tileOrigin, tileSize })
 
 		subject({ address, thisPatternRef })
 
@@ -35,7 +39,7 @@ describe('maybe tile', () => {
 	})
 
 	it('does not call tile if neither origin nor size is got', () => {
-		spyOn(getTileOriginAndSize, 'default').and.returnValue(undefined)
+		getTileOriginAndSizeSpy.and.returnValue(undefined)
 
 		subject({ address, thisPatternRef })
 
@@ -43,7 +47,7 @@ describe('maybe tile', () => {
 	})
 
 	it('does not call tile if origin is got but size is not', () => {
-		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileOrigin })
+		getTileOriginAndSizeSpy.and.returnValue({ tileOrigin })
 
 		subject({ address, thisPatternRef })
 
@@ -51,7 +55,7 @@ describe('maybe tile', () => {
 	})
 
 	it('does not call tile if size is got but origin is not', () => {
-		spyOn(getTileOriginAndSize, 'default').and.returnValue({ tileSize })
+		getTileOriginAndSizeSpy.and.returnValue({ tileSize })
 
 		subject({ address, thisPatternRef })
 

@@ -39,7 +39,7 @@
       "stroustrup"
     ],
     "one-line": false,
-    "no-console": false,
+    "no-console": true,
     "interface-name": [
       true,
       "never-prefix"

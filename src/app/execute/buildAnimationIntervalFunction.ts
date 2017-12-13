@@ -1,4 +1,4 @@
-import { ConditionFunction, to } from '../../utilities'
+import { to } from '../../utilities'
 import { appState } from '../appState'
 import clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import { AnimationParams } from './types'
@@ -18,6 +18,6 @@ const buildAnimationIntervalFunction: (_: AnimationParams) => () => void =
 			}
 		}
 
-const isPaused: ConditionFunction = (): boolean => !appState.controls.animating
+const isPaused: () => boolean = (): boolean => !appState.controls.animating
 
 export default buildAnimationIntervalFunction

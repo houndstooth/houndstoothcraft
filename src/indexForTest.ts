@@ -198,7 +198,6 @@ export {
 	mathUtilities,
 	to,
 
-	ConditionFunction,
 	NullaryVoidPromise,
 } from './utilities/indexForTest'
 

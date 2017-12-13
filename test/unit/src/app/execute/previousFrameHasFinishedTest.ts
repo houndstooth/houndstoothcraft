@@ -1,7 +1,7 @@
-import { appState, ConditionFunction, previousFrameHasFinished, to } from '../../../../../src/indexForTest'
+import { appState, previousFrameHasFinished, to } from '../../../../../src/indexForTest'
 
 describe('previous frame has finished', () => {
-	let subject: ConditionFunction
+	let subject: () => boolean
 	beforeEach(() => {
 		subject = previousFrameHasFinished.default
 	})

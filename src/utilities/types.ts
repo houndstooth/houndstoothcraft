@@ -1,7 +1,5 @@
 import { SettingsFunction } from '../app'
 
-type ConditionFunction = () => boolean
-
 type NullaryVoidPromise = () => Promise<void>
 
 type CouldBeSettingsFunctionObject = Array<{
@@ -12,7 +10,6 @@ type CouldBeSettingsFunctionObject = Array<{
 }>
 
 export {
-	ConditionFunction,
 	CouldBeSettingsFunctionObject,
 	NullaryVoidPromise,
 }

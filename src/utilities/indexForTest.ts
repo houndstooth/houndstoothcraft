@@ -12,7 +12,6 @@ export {
 	globalWrapper,
 }
 export {
-	ConditionFunction,
 	CouldBeSettingsFunctionObject,
 	NullaryVoidPromise,
 } from './types'

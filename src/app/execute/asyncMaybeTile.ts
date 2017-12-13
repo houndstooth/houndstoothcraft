@@ -1,14 +1,14 @@
-import { maybeTile, ReferencedGridAddress } from '../../pattern'
+import { maybeTile, ReferencedAddress } from '../../pattern'
 import { globalWrapper } from '../../utilities'
 import thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 import updateProgress from './updateProgress'
 
-const asyncMaybeTile: (_: ReferencedGridAddress) => void =
-	({ gridAddress, thisPatternRef }: ReferencedGridAddress): void => {
+const asyncMaybeTile: (_: ReferencedAddress) => void =
+	({ address, thisPatternRef }: ReferencedAddress): void => {
 		globalWrapper.window.setTimeout(
 			() => {
 				if (thisPatternHasNotBeenCanceled(thisPatternRef)) {
-					maybeTile.default({ gridAddress, thisPatternRef })
+					maybeTile.default({ address, thisPatternRef })
 					updateProgress()
 				}
 			},

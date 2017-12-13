@@ -3,13 +3,13 @@ import { codeUtilities, to } from '../../utilities'
 import { patternState } from '../patternState'
 import { applyViewForGrid } from '../view'
 import { GridSettings } from './gridSettings'
-import { ReferencedGridAddress } from './types'
+import { ReferencedAddress } from './types'
 
 const NEGATIVE_AND_POSITIVE: number = 2
 const QUADRANT_COUNT: number = NEGATIVE_AND_POSITIVE * NEGATIVE_AND_POSITIVE
 
-const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }) => void =
-	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: number }): void => {
+const grid: (_: { gridTile: (_: ReferencedAddress) => void, thisPatternRef: number }) => void =
+	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedAddress) => void, thisPatternRef: number }): void => {
 		applyViewForGrid.default()
 
 		const { includeNegativeQuadrants, tileResolution }: GridSettings = patternState.gridSettings
@@ -28,7 +28,7 @@ const grid: (_: { gridTile: (_: ReferencedGridAddress) => void, thisPatternRef: 
 
 		codeUtilities.iterator(adjustedTileResolution).forEach((x: number): void => {
 			codeUtilities.iterator(adjustedTileResolution).forEach((y: number): void => {
-				gridTile({ gridAddress: to.Address([ x + gridOffset, y + gridOffset ]), thisPatternRef })
+				gridTile({ address: to.Address([ x + gridOffset, y + gridOffset ]), thisPatternRef })
 			})
 		})
 	}

@@ -9,7 +9,7 @@ import Spy = jasmine.Spy
 import { StripePositionSettings } from '../../../../../src/pattern/stripe/stripePositionSettings'
 
 describe('get stripe positions for tile', () => {
-	let subject: (_?: { gridAddress?: Address }) => StripePosition[]
+	let subject: (_?: { address?: Address }) => StripePosition[]
 	beforeEach(() => {
 		subject = getStripePositionsForTile.default
 	})
@@ -20,14 +20,14 @@ describe('get stripe positions for tile', () => {
 
 	it('uses a stripe position function if provided', () => {
 		const expectedStripePositions: StripePosition[] = []
-		const gridAddress: Address = to.Address([ 3, 5 ])
+		const address: Address = to.Address([ 3, 5 ])
 		const currentSettings: StripePositionSettings = patternState.stripeSettings.stripePositionSettings
 		const stripePositionsSpy: Spy = spyOn(currentSettings, 'getStripePositions')
 		stripePositionsSpy.and.returnValue(expectedStripePositions)
 
-		const actualStripePositions: StripePosition[] = subject({ gridAddress })
+		const actualStripePositions: StripePosition[] = subject({ address })
 
-		expect(stripePositionsSpy).toHaveBeenCalledWith({ gridAddress })
+		expect(stripePositionsSpy).toHaveBeenCalledWith({ address })
 		expect(actualStripePositions).toBe(expectedStripePositions)
 	})
 })

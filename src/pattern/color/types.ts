@@ -1,5 +1,5 @@
 import { Color } from '../../types'
-import { Address, Grid, GridAddressAsParam } from '../grid'
+import { Address, AddressAsParam, Grid } from '../grid'
 import { ShapeColorIndicesAsParam } from '../texture'
 
 enum AssignmentMode {
@@ -14,11 +14,11 @@ interface ColorOptions {
 enum _ColorSetBrand {}
 type ColorSet = _ColorSetBrand & Color[]
 
-interface GetShapeColorIndicesWithOffsetParams extends GridAddressAsParam {
+interface GetShapeColorIndicesWithOffsetParams extends AddressAsParam {
 	addressOffset: Address,
 }
 
-type GetShapeColorIndices = (_: GridAddressAsParam) => ShapeColorIndex[]
+type GetShapeColorIndices = (_: AddressAsParam) => ShapeColorIndex[]
 
 type GetShapeColorIndicesWithOffset = (_: GetShapeColorIndicesWithOffsetParams) => ShapeColorIndex[]
 
@@ -27,7 +27,7 @@ type Supertile = _SupertileBrand & Grid<ShapeColorIndex[]>
 
 type TransformShapeColorIndices = (_: TransformShapeColorIndicesParams) => ShapeColorIndex[]
 
-interface TransformShapeColorIndicesParams extends GridAddressAsParam, ShapeColorIndicesAsParam {
+interface TransformShapeColorIndicesParams extends AddressAsParam, ShapeColorIndicesAsParam {
 }
 
 interface Weave {
@@ -40,7 +40,7 @@ interface ShapeColorIndex extends Number {
 	_ShapeColorIndexBrand: any,
 }
 
-type OffsetAddress = (_: GridAddressAsParam) => Address
+type OffsetAddress = (_: AddressAsParam) => Address
 
 export {
 	AssignmentMode,

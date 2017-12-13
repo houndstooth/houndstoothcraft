@@ -7,10 +7,10 @@ import { TileSettings } from './tileSettings'
 import { DefinedTileParams, Tile, TileParams } from './types'
 
 const tile: (_: DefinedTileParams) => void =
-	({ gridAddress, tileOrigin, tileSize }: DefinedTileParams): void => {
-		const shapeColorIndices: ShapeColorIndex[] = getShapeColorIndices.default({ gridAddress })
+	({ address, tileOrigin, tileSize }: DefinedTileParams): void => {
+		const shapeColorIndices: ShapeColorIndex[] = getShapeColorIndices.default({ address })
 		const tileFunction: Tile = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile
-		tileFunction({ gridAddress, tileOrigin, tileSize, shapeColorIndices })
+		tileFunction({ address, tileOrigin, tileSize, shapeColorIndices })
 	}
 
 const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =
@@ -21,14 +21,14 @@ const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean 
 	}
 
 const squareTile: Tile =
-	({ gridAddress, ...args }: TileParams): void => {
+	({ address, ...args }: TileParams): void => {
 		const squareArgs: ShapeParams = getSquareArgs({ args })
 		shape.default(squareArgs)
 	}
 
 const stripedTile: Tile =
-	({ gridAddress, ...args }: TileParams): void => {
-		const stripePositions: StripePosition[] = getStripePositionsForTile.default({ gridAddress })
+	({ address, ...args }: TileParams): void => {
+		const stripePositions: StripePosition[] = getStripePositionsForTile.default({ address })
 		stripePositions.forEach((stripeStart: StripePosition, stripeIndex: number): void => {
 			const stripeArgs: ShapeParams = getStripeArgs({ args, stripeStart, stripeIndex, stripePositions })
 			shape.default(stripeArgs)

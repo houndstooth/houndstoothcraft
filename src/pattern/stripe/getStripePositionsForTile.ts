@@ -3,11 +3,11 @@ import { patternState } from '../patternState'
 import { StripePositionSettings } from './stripePositionSettings'
 import { StripePosition } from './types'
 
-const getStripePositionsForTile: (_?: { gridAddress?: Address }) => StripePosition[] =
-	({ gridAddress }: { gridAddress?: Address } = {}): StripePosition[] => {
+const getStripePositionsForTile: (_?: { address?: Address }) => StripePosition[] =
+	({ address }: { address?: Address } = {}): StripePosition[] => {
 		const { getStripePositions }: StripePositionSettings = patternState.stripeSettings.stripePositionSettings
 
-		return getStripePositions({ gridAddress })
+		return getStripePositions({ address })
 	}
 
 export default getStripePositionsForTile

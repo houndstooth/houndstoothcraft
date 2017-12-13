@@ -1,5 +1,5 @@
 import { codeUtilities, to } from '../../utilities'
-import { Address, GridAddressAsParam } from '../grid'
+import { Address, AddressAsParam } from '../grid'
 import { patternState } from '../patternState'
 import applySwitcheroo from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
@@ -15,14 +15,14 @@ import {
 } from './types'
 
 const getShapeColorIndices: GetShapeColorIndices =
-	({ gridAddress }: GridAddressAsParam): ShapeColorIndex[] => {
-		const shapeColorIndices: ShapeColorIndex[] = getIndices({ gridAddress })
+	({ address }: AddressAsParam): ShapeColorIndex[] => {
+		const shapeColorIndices: ShapeColorIndex[] = getIndices({ address })
 
-		return maybeAdjustShapeColorIndices({ gridAddress, shapeColorIndices })
+		return maybeAdjustShapeColorIndices({ address, shapeColorIndices })
 	}
 
 const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
-	({ gridAddress, shapeColorIndices }: TransformShapeColorIndicesParams): ShapeColorIndex[] => {
+	({ address, shapeColorIndices }: TransformShapeColorIndicesParams): ShapeColorIndex[] => {
 		const {
 			flipGrain,
 			switcheroo,
@@ -35,13 +35,13 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 		}
 		if (switcheroo) {
 			maybeAdjustedShapeColorIndices = applySwitcheroo({
-				gridAddress,
+				address,
 				shapeColorIndices: maybeAdjustedShapeColorIndices,
 			})
 		}
 		if (transformShapeColorIndices) {
 			maybeAdjustedShapeColorIndices = transformShapeColorIndices({
-				gridAddress,
+				address,
 				shapeColorIndices: maybeAdjustedShapeColorIndices,
 			})
 		}
@@ -50,7 +50,7 @@ const maybeAdjustShapeColorIndices: TransformShapeColorIndices =
 	}
 
 const getIndices: GetShapeColorIndices =
-	({ gridAddress }: GridAddressAsParam): ShapeColorIndex[] => {
+	({ address }: AddressAsParam): ShapeColorIndex[] => {
 		const {
 			offsetAddress,
 			assignmentMode,
@@ -59,9 +59,9 @@ const getIndices: GetShapeColorIndices =
 		// tslint:disable-next-line:max-line-length
 		const getter: GetShapeColorIndicesWithOffset = assignmentMode === AssignmentMode.Weave ? getByWeave : getBySupertile
 
-		const addressOffset: Address = offsetAddress ? offsetAddress({ gridAddress }) : to.Address([ 0, 0 ])
+		const addressOffset: Address = offsetAddress ? offsetAddress({ address }) : to.Address([ 0, 0 ])
 
-		return getter({ gridAddress, addressOffset })
+		return getter({ address, addressOffset })
 	}
 
 export default getShapeColorIndices

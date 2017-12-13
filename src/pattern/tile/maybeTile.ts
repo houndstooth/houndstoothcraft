@@ -1,15 +1,15 @@
 import { incrementTilesCompleted } from '../../app'
-import { ReferencedGridAddress } from '../grid'
+import { ReferencedAddress } from '../grid'
 import getTileOriginAndSize from './getTileOriginAndSize'
 import tile from './tile'
 
-const maybeTile: (_: ReferencedGridAddress) => void =
-	({ gridAddress }: ReferencedGridAddress): void => {
+const maybeTile: (_: ReferencedAddress) => void =
+	({ address }: ReferencedAddress): void => {
 		/* istanbul ignore next */
-		const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ gridAddress }) || {}
+		const { tileOrigin = undefined, tileSize = undefined } = getTileOriginAndSize({ address }) || {}
 
 		if (tileOrigin && tileSize) {
-			tile({ gridAddress, tileOrigin, tileSize })
+			tile({ address, tileOrigin, tileSize })
 		}
 
 		incrementTilesCompleted.default()

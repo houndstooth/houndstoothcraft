@@ -8,9 +8,9 @@ import {
 } from './types'
 
 const getBySupertile: GetShapeColorIndicesWithOffset =
-	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
+	({ addressOffset, address }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
 		const supertile: Supertile = patternState.colorSettings.colorAssignmentSettings.supertile
-		const [ x, y ]: number[] = from.Address(gridAddress)
+		const [ x, y ]: number[] = from.Address(address)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)
 
 		const supertileColumn: ShapeColorIndex[][] = codeUtilities.wrappedIndex({

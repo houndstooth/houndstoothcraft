@@ -10,7 +10,7 @@ import {
 } from '../../../../../src/indexForTest'
 
 describe('get tile origin and size', () => {
-	let subject: (_: { gridAddress: Address }) => TileOriginAndSize | undefined
+	let subject: (_: { address: Address }) => TileOriginAndSize | undefined
 	let gridAddressForSubject: Address
 	let tileSize: Unit
 	beforeEach(() => {
@@ -22,15 +22,15 @@ describe('get tile origin and size', () => {
 	it('returns the tile size, and scales the grid address by it to get the origin', () => {
 		patternState.tileSettings.tileSize = tileSize
 
-		expect(subject({ gridAddress: gridAddressForSubject })).toEqual({
+		expect(subject({ address: gridAddressForSubject })).toEqual({
 			tileOrigin: to.Coordinate([ from.Unit(tileSize) * 7, from.Unit(tileSize) * 11 ]),
 			tileSize: to.Unit(from.Unit(tileSize)),
 		})
 	})
 
 	it('uses a custom get tile origin and sized unit function if provided', () => {
-		const custom: GetTileOriginAndSize = ({ gridAddress }: { gridAddress: Address }): TileOriginAndSize => {
-			const [ x, y ]: number[] = from.Address(gridAddress)
+		const custom: GetTileOriginAndSize = ({ address }: { address: Address }): TileOriginAndSize => {
+			const [ x, y ]: number[] = from.Address(address)
 
 			return {
 				tileOrigin: to.Coordinate([ y * from.Unit(tileSize), x * from.Unit(tileSize) ]),
@@ -39,7 +39,7 @@ describe('get tile origin and size', () => {
 		}
 		patternState.tileSettings.getTileOriginAndSize = custom
 
-		expect(subject({ gridAddress: gridAddressForSubject })).toEqual({
+		expect(subject({ address: gridAddressForSubject })).toEqual({
 			tileOrigin: to.Coordinate([ from.Unit(tileSize) * 11, from.Unit(tileSize) * 7 ]),
 			tileSize: to.Unit(from.Unit(tileSize) * from.Unit(tileSize)),
 		})

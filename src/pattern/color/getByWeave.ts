@@ -3,10 +3,10 @@ import { patternState } from '../patternState'
 import { GetShapeColorIndicesWithOffset, GetShapeColorIndicesWithOffsetParams, ShapeColorIndex, Weave } from './types'
 
 const getByWeave: GetShapeColorIndicesWithOffset =
-	({ addressOffset, gridAddress }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
+	({ addressOffset, address }: GetShapeColorIndicesWithOffsetParams): ShapeColorIndex[] => {
 		const { rows, columns }: Weave = patternState.colorSettings.colorAssignmentSettings.weave
 
-		const [ x, y ]: number[] = from.Address(gridAddress)
+		const [ x, y ]: number[] = from.Address(address)
 		const [ xOffset, yOffset ]: number[] = from.Address(addressOffset)
 
 		const columnsIndex: ShapeColorIndex = to.ShapeColorIndex(codeUtilities.wrappedIndex({

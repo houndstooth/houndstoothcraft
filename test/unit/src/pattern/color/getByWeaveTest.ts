@@ -1,10 +1,10 @@
 import { Address, getByWeave, GetShapeColorIndicesWithOffset, patternState, to } from '../../../../../src/indexForTest'
 
 describe('get by weave', () => {
-	let gridAddress: Address
+	let address: Address
 	let subject: GetShapeColorIndicesWithOffset
 	beforeEach(() => {
-		gridAddress = to.Address([ 3, 5 ])
+		address = to.Address([ 3, 5 ])
 		subject = getByWeave.default
 	})
 
@@ -15,7 +15,7 @@ describe('get by weave', () => {
 		}
 		const addressOffset: Address = to.Address([ 0, 0 ])
 
-		expect(subject({ gridAddress, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
+		expect(subject({ address, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
 	})
 
 	it('handles offset', () => {
@@ -25,6 +25,6 @@ describe('get by weave', () => {
 		}
 		const addressOffset: Address = to.Address([ 1, 2 ])
 
-		expect(subject({ gridAddress, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
+		expect(subject({ address, addressOffset })).toEqual(to.ShapeColorIndices([ 3, 1 ]))
 	})
 })

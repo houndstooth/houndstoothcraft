@@ -31,7 +31,7 @@ export {
 	AddressElement,
 	Grid,
 	Referenced,
-	ReferencedGridAddress,
+	ReferencedAddress,
 } from './grid'
 export {
 	perStripe,

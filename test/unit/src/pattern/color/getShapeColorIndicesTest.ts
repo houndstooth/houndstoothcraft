@@ -17,10 +17,10 @@ import {
 } from '../../../../../src/indexForTest'
 
 describe('get shape color indices', () => {
-	let gridAddress: Address
+	let address: Address
 	let subject: GetShapeColorIndices
 	beforeEach(() => {
-		gridAddress = to.Address([ 3, 5 ])
+		address = to.Address([ 3, 5 ])
 		subject = getShapeColorIndices.default
 	})
 
@@ -29,18 +29,18 @@ describe('get shape color indices', () => {
 			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Weave
 			spyOn(getByWeave, 'default')
 
-			subject({ gridAddress })
+			subject({ address })
 
-			expect(getByWeave.default).toHaveBeenCalledWith(jasmine.objectContaining({ gridAddress }))
+			expect(getByWeave.default).toHaveBeenCalledWith(jasmine.objectContaining({ address }))
 		})
 
 		it('gets by supertile when assignment mode is supertile', () => {
 			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Supertile
 			spyOn(getBySupertile, 'default')
 
-			subject({ gridAddress })
+			subject({ address })
 
-			expect(getBySupertile.default).toHaveBeenCalledWith(jasmine.objectContaining({ gridAddress }))
+			expect(getBySupertile.default).toHaveBeenCalledWith(jasmine.objectContaining({ address }))
 		})
 	})
 
@@ -51,7 +51,7 @@ describe('get shape color indices', () => {
 
 		it('calculates the offset using the method, if there is one', () => {
 			const offsetAddress: OffsetAddress =
-				({ gridAddress: gridAddressToOffset }: { gridAddress: Address }): Address =>
+				({ address: gridAddressToOffset }: { address: Address }): Address =>
 					to.Address([
 						from.AddressElement(gridAddressToOffset[ 0 ]) / 3,
 						from.AddressElement(gridAddressToOffset[ 1 ]) * 2 / 5,
@@ -61,7 +61,7 @@ describe('get shape color indices', () => {
 			patternState.colorSettings.colorAssignmentSettings.assignmentMode = AssignmentMode.Weave
 			const expectedAddressOffset: Address = to.Address([ 1, 2 ])
 
-			subject({ gridAddress })
+			subject({ address })
 
 			expect(getByWeave.default).toHaveBeenCalledWith(jasmine.objectContaining({
 				addressOffset: expectedAddressOffset,
@@ -72,7 +72,7 @@ describe('get shape color indices', () => {
 		it('defaults to no offset', () => {
 			const expectedAddressOffset: Address = to.Address([ 0, 0 ])
 
-			subject({ gridAddress })
+			subject({ address })
 
 			expect(getByWeave.default).toHaveBeenCalledWith(jasmine.objectContaining({
 				addressOffset: expectedAddressOffset,
@@ -87,10 +87,10 @@ describe('get shape color indices', () => {
 				columns: [ 0, 1 ],
 				rows: [ 1, 0 ],
 			}
-			const notFlippedResult: ShapeColorIndex[] = subject({ gridAddress })
+			const notFlippedResult: ShapeColorIndex[] = subject({ address })
 
 			patternState.colorSettings.colorAssignmentSettings.flipGrain = true
-			const flippedResult: ShapeColorIndex[] = subject({ gridAddress })
+			const flippedResult: ShapeColorIndex[] = subject({ address })
 
 			expect(notFlippedResult.reverse()).toEqual(flippedResult)
 		})
@@ -110,7 +110,7 @@ describe('get shape color indices', () => {
 					to.Address([ x, y ])))
 			const setOfShapeColorIndices: Supertile = to.Supertile(addresses.map((col: Address[]) =>
 				col.map((gridAddressToTest: Address) =>
-					subject({ gridAddress: gridAddressToTest }))))
+					subject({ address: gridAddressToTest }))))
 
 			const expectedSetOfShapeColorIndices: Supertile = to.Supertile([
 				[ [ 1, 0 ], [ 1, 2 ], [ 2, 3 ], [ 3, 4 ] ],
@@ -127,8 +127,8 @@ describe('get shape color indices', () => {
 
 		it('calls an arbitrary transformation, if provided', () => {
 			const transformShapeColorIndices: TransformShapeColorIndices =
-				({ gridAddress: gridAddressToTransform, shapeColorIndices }: {
-					gridAddress: Address, shapeColorIndices: ShapeColorIndex[],
+				({ address: gridAddressToTransform, shapeColorIndices }: {
+					address: Address, shapeColorIndices: ShapeColorIndex[],
 				}): ShapeColorIndex[] => {
 					if (from.AddressElement(gridAddressToTransform[ 0 ]) === 1) {
 						return shapeColorIndices.concat(shapeColorIndices)
@@ -149,7 +149,7 @@ describe('get shape color indices', () => {
 					to.Address([ x, y ])))
 			const setOfShapeColorIndices: Supertile = to.Supertile(addresses.map((col: Address[]) =>
 				col.map((gridAddressToTest: Address) =>
-					subject({ gridAddress: gridAddressToTest }))))
+					subject({ address: gridAddressToTest }))))
 
 			const expectedSetOfShapeColorIndices: Supertile = to.Supertile([
 				[

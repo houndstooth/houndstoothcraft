@@ -177,7 +177,7 @@ export {
 	OutlineOptions,
 	PatternFunctions,
 	Radian,
-	ReferencedGridAddress,
+	ReferencedAddress,
 	RotateCoordinateParams,
 	ShapeColorIndex,
 	ShapeParams,

@@ -127,21 +127,21 @@ Differences between layers and animations:
 
 ### grid
 
-A `grid` represents a tiling of the plane. It creates many `gridAddress`es and calls the [tile](#tile) function on each one.
+A `grid` represents a tiling of the plane. It creates many `address`es and calls the [tile](#tile) function on each one.
 
 Typically:
 - a grid would receive something like "two-dimensional, sixteen by sixteen tiles", meaning it would generate 256 (16^2) addresses: \[ \[ 0, 0 \], \[ 0, 1 \] ... \[ 15, 15 \] \]
 
-`gridAddress` has no units. It does not necessarily have a direct correlation with pixels on the canvas. It is abstract. It is a coordinate system for identifying tiles relative to each other, which of course can be (and is typically) used to position them next to each other on the canvas, but can be purposed otherwise.
+`address` has no units. It does not necessarily have a direct correlation with pixels on the canvas. It is abstract. It is a coordinate system for identifying tiles relative to each other, which of course can be (and is typically) used to position them next to each other on the canvas, but can be purposed otherwise.
 
 An address coordinate [0, 0] is referred to as the "home address" while a pixel coordinate [0, 0] is referred to as the "origin".
 
 ### tile
 
-A tile represents a repeating portion of a pattern. A tile converts a `gridAddress` into `tileOrigin`, `tileSize`, and `shapeColorIndices`.
+A tile represents a repeating portion of a pattern. A tile converts a `address` into `tileOrigin`, `tileSize`, and `shapeColorIndices`.
 
 Typically:
-- `tileOrigin` defaults to multiplying each dimension of the `gridAddress` by the `tileSize`.
+- `tileOrigin` defaults to multiplying each dimension of the `address` by the `tileSize`.
 - `tileSize` also (naturally) defaults to the `tileSize`.
 
 Potentially:

@@ -9,9 +9,9 @@ export {
 	Address,
 	AddressElement,
 	Grid,
-	GridAddressAsParam,
+	AddressAsParam,
 	Referenced,
-	ReferencedGridAddress,
+	ReferencedAddress,
 } from './types'
 export {
 	DEFAULT_GRID_SETTINGS,

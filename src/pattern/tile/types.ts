@@ -1,13 +1,13 @@
 import { TransformShapeColorIndicesParams } from '../color'
-import { GridAddressAsParam } from '../grid'
+import { AddressAsParam } from '../grid'
 
 enum _CoordinateBrand {}
 type Coordinate = _CoordinateBrand & Unit[]
 
-interface DefinedTileParams extends TileOriginAndSize, GridAddressAsParam {
+interface DefinedTileParams extends TileOriginAndSize, AddressAsParam {
 }
 
-type GetTileOriginAndSize = (_: GridAddressAsParam) => TileOriginAndSize | undefined
+type GetTileOriginAndSize = (_: AddressAsParam) => TileOriginAndSize | undefined
 
 type Outline = Coordinate[]
 

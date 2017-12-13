@@ -9,10 +9,10 @@ import {
 
 describe('get by supertile', () => {
 	let subject: GetShapeColorIndicesWithOffset
-	let gridAddress: Address
+	let address: Address
 	beforeEach(() => {
 		subject = getBySupertile.default
-		gridAddress = to.Address([ 3, 5 ])
+		address = to.Address([ 3, 5 ])
 	})
 
 	it('can use a supertile-based assignment scheme', () => {
@@ -25,7 +25,7 @@ describe('get by supertile', () => {
 			[ [], [] ],
 		])
 
-		const actualSupertileEntry: ShapeColorIndex[] = subject({ gridAddress, addressOffset })
+		const actualSupertileEntry: ShapeColorIndex[] = subject({ address, addressOffset })
 		expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 	})
 
@@ -39,7 +39,7 @@ describe('get by supertile', () => {
 			[ [], [] ],
 		])
 
-		const actualSupertileEntry: ShapeColorIndex[] = subject({ gridAddress, addressOffset })
+		const actualSupertileEntry: ShapeColorIndex[] = subject({ address, addressOffset })
 		expect(actualSupertileEntry).toEqual(to.ShapeColorIndices(expectedSupertileEntry))
 	})
 })

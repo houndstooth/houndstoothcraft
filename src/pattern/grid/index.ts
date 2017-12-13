@@ -12,7 +12,6 @@ export {
 	GridAddressParam,
 	Referenced,
 	ReferencedGridAddress,
-	Unit,
 } from './types'
 export {
 	DEFAULT_GRID_SETTINGS,

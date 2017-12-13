@@ -11,5 +11,4 @@ export {
 	GridAddressParam,
 	Referenced,
 	ReferencedGridAddress,
-	Unit,
 } from './types'

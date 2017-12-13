@@ -8,6 +8,7 @@ export {
 export {
 	GetTileOriginAndSize,
 	TileOriginAndSize,
+	Unit,
 } from './types'
 export {
 	DEFAULT_TILE_SETTINGS,

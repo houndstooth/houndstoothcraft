@@ -1,7 +1,6 @@
 import { ColorOptions, ShapeColorIndex } from '../color'
-import { Unit } from '../grid'
 import { GetOutline, GetOutlineParams, Outline, OutlineAsParam } from '../stripe'
-import { TileOriginAndSize } from '../tile'
+import { TileOriginAndSize, Unit } from '../tile'
 
 interface ComponentParams extends ColorOptions, OutlineAsParam {
 }

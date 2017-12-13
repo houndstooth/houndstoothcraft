@@ -30,7 +30,6 @@ export {
 	Address,
 	AddressElement,
 	Grid,
-	Unit,
 	Referenced,
 	ReferencedGridAddress,
 } from './grid'
@@ -56,6 +55,7 @@ export {
 	maybeTile,
 
 	TileOriginAndSize,
+	Unit,
 } from './tile'
 export {
 	applyViewForShape,

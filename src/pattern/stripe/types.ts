@@ -1,8 +1,7 @@
 // tslint:disable:max-file-line-count
 
-import { Unit } from '../grid'
 import { ShapeArgs } from '../texture'
-import { TileOriginAndSize } from '../tile'
+import { TileOriginAndSize, Unit } from '../tile'
 
 enum BaseStripeDiagonal {
 	Minor,

@@ -1,9 +1,8 @@
 // tslint:disable:no-any no-magic-numbers
 
-import { Unit } from '../grid'
 import getStandardTileOriginAndSize from './getStandardTileOriginAndSize'
 import { TileSettings } from './tileSettings'
-import { GetTileOriginAndSize } from './types'
+import { GetTileOriginAndSize, Unit } from './types'
 
 const DEFAULT_COLLAPSE_SAME_COLORED_SHAPES_WITHIN_TILE: boolean = true
 const DEFAULT_GET_TILE_ORIGIN_AND_SIZE: GetTileOriginAndSize = getStandardTileOriginAndSize

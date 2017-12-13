@@ -44,7 +44,6 @@ export {
 	GridAddressParam,
 	Referenced,
 	ReferencedGridAddress,
-	Unit,
 } from './grid/indexForTest'
 export {
 	layerSettings,
@@ -99,6 +98,7 @@ export {
 	DefinedTileParams,
 	GetTileOriginAndSize,
 	TileOriginAndSize,
+	Unit,
 } from './tile/indexForTest'
 export {
 	applyBackgroundColor,

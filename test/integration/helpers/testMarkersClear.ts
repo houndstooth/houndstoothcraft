@@ -1,7 +1,7 @@
-import { CANVAS_SIZE, codeUtilities, from, NullarySideEffector } from '../../../src/indexForTest'
+import { CANVAS_SIZE, codeUtilities, from } from '../../../src/indexForTest'
 import createTestMarkersCanvas from './createTestMarkersCanvas'
 
-const testMarkersClear: NullarySideEffector =
+const testMarkersClear: () => void =
 	(): void => {
 		// tslint:disable-next-line:max-line-length
 		let testMarkersCanvas: HTMLCanvasElement | undefined = document.querySelector('#test-markers-canvas') as HTMLCanvasElement | undefined

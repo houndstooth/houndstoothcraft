@@ -13,6 +13,5 @@ export {
 }
 export {
 	ConditionFunction,
-	NullarySideEffector,
 	NullaryVoidPromise,
 } from './types'

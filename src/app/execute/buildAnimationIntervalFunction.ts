@@ -1,10 +1,10 @@
-import { ConditionFunction, NullarySideEffector, to } from '../../utilities'
+import { ConditionFunction, to } from '../../utilities'
 import { appState } from '../appState'
 import clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import { AnimationParams } from './types'
 
-const buildAnimationIntervalFunction: (_: AnimationParams) => NullarySideEffector =
-	({ animationFunction, resolveAnimation }: AnimationParams): NullarySideEffector =>
+const buildAnimationIntervalFunction: (_: AnimationParams) => () => void =
+	({ animationFunction, resolveAnimation }: AnimationParams): () => void =>
 		(): void => {
 			if (isPaused()) {
 				return

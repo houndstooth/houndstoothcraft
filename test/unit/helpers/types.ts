@@ -1,6 +1,5 @@
 // tslint:disable:max-file-line-count max-line-length no-any
 
-import { NullarySideEffector } from '../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 interface ExampleSettings extends ExampleSettingsStructure {
@@ -19,7 +18,7 @@ interface TestObject {
 	bbb?: string,
 }
 
-type SimulateClick = (checkbox: HTMLInputElement, clickHandler: NullarySideEffector) => void
+type SimulateClick = (checkbox: HTMLInputElement, clickHandler: () => void) => void
 
 interface BuildMockElementParams {
 	attributeObject?: { [ index: string ]: string },

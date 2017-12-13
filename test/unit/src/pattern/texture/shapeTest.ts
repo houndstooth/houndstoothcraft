@@ -1,7 +1,6 @@
 import {
 	codeUtilities,
 	Coordinate,
-	NullarySideEffector,
 	Outline,
 	OutlineOptions,
 	patternState,
@@ -99,7 +98,7 @@ describe('shape', () => {
 		})
 
 		describe('when an executeTexture method is supplied', () => {
-			const executeTexture: NullarySideEffector = noop
+			const executeTexture: () => void = noop
 			beforeEach(() => {
 				patternState.textureSettings.executeTexture = executeTexture
 			})

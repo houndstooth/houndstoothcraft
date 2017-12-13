@@ -1,9 +1,8 @@
 import { Effect, NamedEffect } from '../../types'
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { combineEffects, effectsHaveConflicts } from '../settings'
 
-const enableOrDisableOtherEffectToggles: NullarySideEffector =
+const enableOrDisableOtherEffectToggles: () => void =
 	(): void => {
 		const combinedEffects: Effect = combineEffects.default({
 			effects: appState.controls.selectedEffects,

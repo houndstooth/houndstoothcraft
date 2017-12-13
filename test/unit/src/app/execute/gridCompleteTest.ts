@@ -4,18 +4,17 @@ import {
 	globalWrapper,
 	gridComplete,
 	gridProgressIntervalFunction,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
 describe('grid complete', () => {
-	let subject: (_: NullarySideEffector) => void
+	let subject: (_: () => void) => void
 	const fakeGridProgressIntervalItself: number = 9275
 	let resolveGrid: Spy
 	beforeEach(() => {
 		subject = gridComplete.default
 		resolveGrid = jasmine.createSpy('resolveGrid')
 
-		spyOn(globalWrapper.window, 'setInterval').and.callFake((fn: NullarySideEffector) => {
+		spyOn(globalWrapper.window, 'setInterval').and.callFake((fn: () => void) => {
 			fn()
 
 			return fakeGridProgressIntervalItself

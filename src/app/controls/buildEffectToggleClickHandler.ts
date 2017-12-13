@@ -1,5 +1,4 @@
 import { NamedEffect } from '../../types'
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import { cancelPreviousPattern, clearIntervalAndRemoveFromState, executeSelectedEffects } from '../execute'
 import { clearContexts, clearMixedDownContext } from '../render'
@@ -9,8 +8,8 @@ import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggl
 import { BuildEffectToggleClickHandlerParams } from './types'
 import updateDescriptions from './updateDescriptions'
 
-const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) => NullarySideEffector =
-	({ checkbox, effect }: BuildEffectToggleClickHandlerParams): NullarySideEffector =>
+const buildEffectToggleClickHandler: (_: BuildEffectToggleClickHandlerParams) => () => void =
+	({ checkbox, effect }: BuildEffectToggleClickHandlerParams): () => void =>
 		(): void => {
 			appState.dom.descriptionsContainer.innerHTML = ''
 

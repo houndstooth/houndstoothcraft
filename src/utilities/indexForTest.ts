@@ -14,6 +14,5 @@ export {
 export {
 	ConditionFunction,
 	CouldBeSettingsFunctionObject,
-	NullarySideEffector,
 	NullaryVoidPromise,
 } from './types'

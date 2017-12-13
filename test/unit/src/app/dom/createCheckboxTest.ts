@@ -3,7 +3,6 @@ import {
 	createCheckbox,
 	globalWrapper,
 	NamedEffect,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 import { buildMockElement, noop } from '../../../helpers'
 
@@ -13,7 +12,7 @@ describe('create checkbox', () => {
 	let checkbox: HTMLInputElement
 
 	const attributeObject: { id: string, name: string, type: string } = { id: '', name: '', type: '' }
-	const clickHandler: NullarySideEffector = noop
+	const clickHandler: () => void = noop
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeEach(() => {

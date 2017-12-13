@@ -1,7 +1,7 @@
-import { appState, NullarySideEffector, to, updateProgress } from '../../../../../src/indexForTest'
+import { appState, to, updateProgress } from '../../../../../src/indexForTest'
 
 describe('update progress', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = updateProgress.default
 		appState.controls.currentFrame = to.Frame(909)

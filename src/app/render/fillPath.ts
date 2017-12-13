@@ -1,9 +1,8 @@
 // tslint:disable:no-unsafe-any
 
-import { NullarySideEffector } from '../../utilities'
 import getCurrentContext from './getCurrentContext'
 
-const fillPath: NullarySideEffector =
+const fillPath: () => void =
 	(): void => {
 		const context: CanvasRenderingContext2D = getCurrentContext()
 		context.closePath()

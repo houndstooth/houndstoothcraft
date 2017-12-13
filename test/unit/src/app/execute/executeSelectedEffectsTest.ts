@@ -8,7 +8,6 @@ import {
 	executePattern,
 	executeSelectedEffects,
 	initializeCurrentPatternFromBasePattern,
-	NullarySideEffector,
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 	to,
@@ -22,8 +21,8 @@ describe('execute selected effects', () => {
 	beforeEach(() => {
 		subject = executeSelectedEffects.default
 		spyOn(createContexts, 'default')
-		spyOn(executePattern, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
-		spyOn(executeAnimation, 'default').and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+		spyOn(executePattern, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
+		spyOn(executeAnimation, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
 		spyOn(initializeCurrentPatternFromBasePattern, 'default').and.callThrough()
 		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'default')
 		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)

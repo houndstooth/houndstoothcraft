@@ -4,7 +4,6 @@ import {
 	executeGrid,
 	grid,
 	gridComplete,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
 describe('execute grid', () => {
@@ -13,8 +12,8 @@ describe('execute grid', () => {
 
 	beforeEach(() => {
 		subject = executeGrid.default
-		const fakeGridComplete: (resolveGrid: NullarySideEffector) => void =
-			(resolveGrid: NullarySideEffector): void => {
+		const fakeGridComplete: (resolveGrid: () => void) => void =
+			(resolveGrid: () => void): void => {
 				appState.execute.resolveGrid = resolveGrid
 			}
 		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)

@@ -1,7 +1,7 @@
-import { codeUtilities, NullarySideEffector } from '../../utilities'
+import { codeUtilities } from '../../utilities'
 import { appState } from '../appState'
 
-const initializeCurrentPatternFromBasePattern: NullarySideEffector =
+const initializeCurrentPatternFromBasePattern: () => void =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: appState.settings.currentPattern,

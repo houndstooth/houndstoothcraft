@@ -1,15 +1,9 @@
 import Spy = jasmine.Spy
-import {
-	appState,
-	createContext,
-	createContexts,
-	NullarySideEffector,
-	to,
-} from '../../../../../src/indexForTest'
+import { appState, createContext, createContexts, to } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 describe('create contexts', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	let canvasContainer: HTMLElement
 	let createContextSpy: Spy
 	beforeEach(() => {

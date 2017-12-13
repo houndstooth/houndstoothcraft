@@ -1,7 +1,6 @@
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 
-const pauseClickHandler: NullarySideEffector =
+const pauseClickHandler: () => void =
 	(): void => {
 		appState.controls.animating = false
 		appState.dom.playButton.disabled = false

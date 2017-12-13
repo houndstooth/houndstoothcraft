@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { appState, globalWrapper, NullarySideEffector } from '../../../src/indexForTest'
+import { appState, globalWrapper } from '../../../src/indexForTest'
 import buildMockElement from './buildMockElement'
 import noop from './noop'
 import { MockConsole, MockDocument, MockWindow } from './types'
@@ -50,7 +50,7 @@ const mockWindow: MockWindow = {
 	setTimeout: (): number => 0,
 }
 
-const mockDom: NullarySideEffector =
+const mockDom: () => void =
 	(): void => {
 		globalWrapper.console = mockConsole as Console
 		globalWrapper.document = mockDocument as Document

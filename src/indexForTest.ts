@@ -199,7 +199,6 @@ export {
 	to,
 
 	ConditionFunction,
-	NullarySideEffector,
 	NullaryVoidPromise,
 } from './utilities/indexForTest'
 

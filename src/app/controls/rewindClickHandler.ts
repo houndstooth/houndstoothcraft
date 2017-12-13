@@ -1,10 +1,10 @@
-import { NullarySideEffector, to } from '../../utilities'
+import { to } from '../../utilities'
 import { appState } from '../appState'
 import { clearIntervalAndRemoveFromState, executeSelectedEffects } from '../execute'
 import { clearMixedDownContext } from '../render'
 import updateCurrentFrame from './updateCurrentFrame'
 
-const rewindClickHandler: NullarySideEffector =
+const rewindClickHandler: () => void =
 	(): void => {
 		clearIntervalAndRemoveFromState.default('animationInterval')
 

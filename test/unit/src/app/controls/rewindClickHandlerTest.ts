@@ -3,7 +3,6 @@ import {
 	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	executeSelectedEffects,
-	NullarySideEffector,
 	rewindClickHandler,
 	to,
 	updateCurrentFrame,
@@ -11,7 +10,7 @@ import {
 import Spy = jasmine.Spy
 
 describe('rewind click handler', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
@@ -20,7 +19,7 @@ describe('rewind click handler', () => {
 		spyOn(updateCurrentFrame, 'default')
 		spyOn(clearIntervalAndRemoveFromState, 'default')
 		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
-			.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+			.and.returnValue(new Promise<() => void>((): void => undefined))
 	})
 
 	it('clears the interval with the helper which also removes it from the state', () => {

@@ -1,7 +1,6 @@
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 
-const enableOrDisableAnimationControls: NullarySideEffector =
+const enableOrDisableAnimationControls: () => void =
 	(): void => {
 		const canBeAnimated: boolean = mainHoundstoothHasAnimations()
 

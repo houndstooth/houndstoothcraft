@@ -1,9 +1,9 @@
-import { from, NullarySideEffector } from '../../utilities'
+import { from } from '../../utilities'
 import { appState } from '../appState'
 
 const ONE_HUNDRED_PERCENT: number = 100
 
-const updateProgress: NullarySideEffector =
+const updateProgress: () => void =
 	(): void => {
 		const ratio: number = appState.execute.tilesCompleted / appState.execute.tileCount
 		const percentage: number = Math.ceil(ratio * ONE_HUNDRED_PERCENT)

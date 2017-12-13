@@ -2,7 +2,6 @@ import {
 	appState,
 	attachControlHandlers,
 	frameInputChangeHandler,
-	NullarySideEffector,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
@@ -10,7 +9,7 @@ import {
 } from '../../../../../src/indexForTest'
 
 describe('attach control handlers', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = attachControlHandlers.default
 	})

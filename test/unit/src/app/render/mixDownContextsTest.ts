@@ -2,11 +2,11 @@
 
 import Spy = jasmine.Spy
 import CallInfo = jasmine.CallInfo
-import { appState, CANVAS_SIZE, mixDownContexts, NullarySideEffector } from '../../../../../src/indexForTest'
+import { appState, CANVAS_SIZE, mixDownContexts } from '../../../../../src/indexForTest'
 import { buildMockContext } from '../../../helpers'
 
 describe('mix down contexts', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	const drawImageSpy: Spy = jasmine.createSpy('drawImage')
 	const clearRectSpy: Spy = jasmine.createSpy('clearRect')
 	beforeEach(() => {

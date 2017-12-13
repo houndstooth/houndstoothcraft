@@ -1,16 +1,10 @@
 // tslint:disable:no-unsafe-any
 
-import {
-	appState,
-	CANVAS_SIZE,
-	from,
-	NullarySideEffector,
-	setupMixedDownContext,
-} from '../../../../../src/indexForTest'
+import { appState, CANVAS_SIZE, from, setupMixedDownContext } from '../../../../../src/indexForTest'
 import { buildMockCanvas, buildMockContext } from '../../../helpers'
 
 describe('settings mixed down context', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	let mixedDownContext: CanvasRenderingContext2D
 	beforeEach(() => {
 		subject = setupMixedDownContext.default

@@ -1,12 +1,7 @@
-import {
-	applyBackgroundColor,
-	applyOpacity,
-	applyViewForGrid,
-	NullarySideEffector,
-} from '../../../../../src/indexForTest'
+import { applyBackgroundColor, applyOpacity, applyViewForGrid } from '../../../../../src/indexForTest'
 
 describe('apply view for grid', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = applyViewForGrid.default
 	})

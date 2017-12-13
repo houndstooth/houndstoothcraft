@@ -3,14 +3,13 @@ import {
 	appState,
 	buildAnimationIntervalFunction,
 	clearIntervalAndRemoveFromState,
-	NullarySideEffector,
 	to,
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 describe('build animation interval function returns a function which', () => {
-	let subject: (_: AnimationParams) => NullarySideEffector
-	let intervalFunction: NullarySideEffector
+	let subject: (_: AnimationParams) => () => void
+	let intervalFunction: () => void
 	let animationFunctionSpy: Spy
 	let resolveAnimationSpy: Spy
 	beforeEach(() => {

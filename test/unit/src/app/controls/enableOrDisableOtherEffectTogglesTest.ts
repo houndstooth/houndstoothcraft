@@ -5,13 +5,12 @@ import {
 	effectsHaveConflicts,
 	enableOrDisableOtherEffectToggles,
 	NamedEffect,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 import Spy = jasmine.Spy
 
 describe('enableOrDisableOtherEffectToggles', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = enableOrDisableOtherEffectToggles.default
 	})

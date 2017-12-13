@@ -1,11 +1,10 @@
 import { Referenced } from '../../pattern'
 import { Layer } from '../../types'
-import { NullarySideEffector } from '../../utilities'
 import { SettingsFunctionObject } from '../settings'
 
 interface AnimationParams {
-	animationFunction: NullarySideEffector,
-	resolveAnimation: NullarySideEffector,
+	animationFunction: () => void,
+	resolveAnimation: () => void,
 }
 
 interface ExecuteParams {
@@ -24,7 +23,7 @@ interface ExecuteState {
 	gridProgressInterval?: number,
 	patternRef: number,
 	performanceLogging: boolean,
-	resolveGrid: NullarySideEffector,
+	resolveGrid: () => void,
 	tileCount: number,
 	tilesCompleted: number,
 

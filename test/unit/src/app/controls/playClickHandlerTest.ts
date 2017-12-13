@@ -2,20 +2,19 @@ import {
 	appState,
 	executeSelectedEffects,
 	mixDownContexts,
-	NullarySideEffector,
 	playClickHandler,
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 describe('play click handler', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
 			subject = playClickHandler.default
 			spyOn(mixDownContexts, 'default')
 			executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
-				.and.returnValue(new Promise<NullarySideEffector>((): void => undefined))
+				.and.returnValue(new Promise<() => void>((): void => undefined))
 
 			appState.controls.animating = false
 			appState.dom.playButton.disabled = false

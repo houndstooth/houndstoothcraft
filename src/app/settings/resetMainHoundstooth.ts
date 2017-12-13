@@ -1,8 +1,8 @@
-import { codeUtilities, NullarySideEffector } from '../../utilities'
+import { codeUtilities } from '../../utilities'
 import { appState } from '../appState'
 import { DEFAULT_MAIN_HOUNDSTOOTH } from './defaults'
 
-const resetMainHoundstooth: NullarySideEffector =
+const resetMainHoundstooth: () => void =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: appState.settings.mainHoundstooth,

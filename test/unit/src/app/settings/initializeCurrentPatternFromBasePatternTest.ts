@@ -3,12 +3,11 @@ import {
 	composeMainHoundstooth,
 	Effect,
 	initializeCurrentPatternFromBasePattern,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
 describe('initialize current pattern from base pattern', () => {
 	it('makes the current pattern into a copy of the just-composed main houndstooth\'s base pattern', () => {
-		const subject: NullarySideEffector = initializeCurrentPatternFromBasePattern.default
+		const subject: () => void = initializeCurrentPatternFromBasePattern.default
 		const overrides: Effect = { basePattern: { viewSettings: { zoom: 784 } } }
 		composeMainHoundstooth.default({ overrides })
 

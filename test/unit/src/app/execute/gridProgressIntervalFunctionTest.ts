@@ -2,11 +2,10 @@ import {
 	appState,
 	clearIntervalAndRemoveFromState,
 	gridProgressIntervalFunction,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 
 describe('grid progress interval function', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = gridProgressIntervalFunction.default
 		spyOn(clearIntervalAndRemoveFromState, 'default')

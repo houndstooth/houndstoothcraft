@@ -1,5 +1,5 @@
 import { Effect } from '../../types'
-import { NullarySideEffector, to } from '../../utilities'
+import { to } from '../../utilities'
 import { appState } from '../appState'
 import { createContexts } from '../dom'
 import {
@@ -26,17 +26,17 @@ const executeSelectedEffects: (_?: { overrides?: Effect }) => void =
 		execute()
 	}
 
-const setEndLayer: NullarySideEffector =
+const setEndLayer: () => void =
 	(): void => {
 		appState.controls.endLayer = appState.settings.currentPattern.layerSettings.endLayer || to.Layer(0)
 	}
 
-const prepareCanvas: NullarySideEffector =
+const prepareCanvas: () => void =
 	(): void => {
 		createContexts.default()
 	}
 
-const execute: NullarySideEffector =
+const execute: () => void =
 	(): void => {
 		const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default({
 			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,

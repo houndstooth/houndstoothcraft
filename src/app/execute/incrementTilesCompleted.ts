@@ -1,7 +1,6 @@
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 
-const incrementTilesCompleted: NullarySideEffector =
+const incrementTilesCompleted: () => void =
 	(): void => {
 		appState.execute.tilesCompleted++
 	}

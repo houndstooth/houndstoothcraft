@@ -2,14 +2,13 @@ import {
 	appState,
 	composeMainHoundstooth,
 	enableOrDisableAnimationControls,
-	NullarySideEffector,
 	PatternFunctions,
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
 
 describe('enable or disable animation controls', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = enableOrDisableAnimationControls.default
 	})

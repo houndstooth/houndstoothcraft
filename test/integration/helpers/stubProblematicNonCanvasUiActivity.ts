@@ -1,6 +1,6 @@
-import { completeLayers, NullarySideEffector } from '../../../src/indexForTest'
+import { completeLayers } from '../../../src/indexForTest'
 
-const stubProblematicNonCanvasUiActivity: NullarySideEffector =
+const stubProblematicNonCanvasUiActivity: () => void =
 	(): void => {
 		spyOn(completeLayers, 'default')
 	}

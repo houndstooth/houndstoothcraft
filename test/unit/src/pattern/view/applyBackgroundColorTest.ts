@@ -3,14 +3,13 @@ import {
 	CANVAS_SIZE,
 	CYAN,
 	getCurrentContext,
-	NullarySideEffector,
 	patternState,
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockContext } from '../../../helpers'
 
 describe('apply background color', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	const defaultFillStyle: string = '#000000'
 	let fillRectSpy: Spy
 	let context: CanvasRenderingContext2D

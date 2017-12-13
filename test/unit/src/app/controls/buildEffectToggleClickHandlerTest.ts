@@ -9,14 +9,13 @@ import {
 	enableOrDisableOtherEffectToggles,
 	executeSelectedEffects,
 	NamedEffect,
-	NullarySideEffector,
 	resetMainHoundstooth,
 	updateDescriptions,
 } from '../../../../../src/indexForTest'
 import { buildMockElement, SimulateClick } from '../../../helpers'
 
 describe('build effect toggle click handler returns a function which', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	let checkbox: HTMLInputElement
 	let effect: NamedEffect
 	let preExistingEffect: NamedEffect
@@ -102,7 +101,7 @@ describe('build effect toggle click handler returns a function which', () => {
 	})
 })
 
-const simulateClick: SimulateClick = (checkbox: HTMLInputElement, clickHandler: NullarySideEffector): void => {
+const simulateClick: SimulateClick = (checkbox: HTMLInputElement, clickHandler: () => void): void => {
 	checkbox.checked = !checkbox.checked
 	clickHandler()
 }

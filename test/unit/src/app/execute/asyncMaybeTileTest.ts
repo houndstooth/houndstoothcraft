@@ -3,7 +3,6 @@ import {
 	asyncMaybeTile,
 	globalWrapper,
 	maybeTile,
-	NullarySideEffector,
 	ReferencedGridAddress,
 	thisPatternHasNotBeenCanceled,
 	to,
@@ -21,7 +20,7 @@ describe('async maybe tile', () => {
 		subject = asyncMaybeTile.default
 		gridAddress = to.Address([ 4, 5 ])
 		// tslint:disable-next-line:no-unsafe-any
-		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: NullarySideEffector) => {
+		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: () => void) => {
 			fn()
 		})
 		spyOn(maybeTile, 'default')

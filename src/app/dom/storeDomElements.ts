@@ -1,9 +1,9 @@
 // tslint:disable:no-unsafe-any
 
-import { globalWrapper, NullarySideEffector } from '../../utilities'
+import { globalWrapper } from '../../utilities'
 import { appState } from '../appState'
 
-const storeDomElements: NullarySideEffector =
+const storeDomElements: () => void =
 	(): void => {
 		appState.dom.canvasContainer = globalWrapper.document.querySelector('#canvas-container') as HTMLElement
 		appState.dom.descriptionsContainer = globalWrapper.document.querySelector('#descriptions-container') as HTMLElement

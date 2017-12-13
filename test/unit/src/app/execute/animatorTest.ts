@@ -4,7 +4,6 @@ import {
 	appState,
 	buildAnimationIntervalFunction,
 	globalWrapper,
-	NullarySideEffector,
 } from '../../../../../src/indexForTest'
 import { noop } from '../../../helpers'
 
@@ -12,8 +11,8 @@ describe('animator', () => {
 	let subject: (_: AnimationParams) => void
 	const FRAME_RATE: number = 30
 	let intervalFunction: (p: number) => number
-	const animationFunction: NullarySideEffector = noop
-	const resolveAnimation: NullarySideEffector = noop
+	const animationFunction: () => void = noop
+	const resolveAnimation: () => void = noop
 	const animationInterval: number = 34987
 	beforeEach(() => {
 		subject = animator.default

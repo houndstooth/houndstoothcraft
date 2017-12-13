@@ -1,8 +1,7 @@
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 import clearContext from './clearContext'
 
-const mixDownContexts: NullarySideEffector =
+const mixDownContexts: () => void =
 	(): void => {
 		clearContext(appState.render.mixedDownContext)
 

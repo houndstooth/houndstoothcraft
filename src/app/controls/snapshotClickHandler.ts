@@ -1,7 +1,6 @@
-import { NullarySideEffector } from '../../utilities'
 import { exportCanvas, mixDownContexts } from '../render'
 
-const snapshotClickHandler: NullarySideEffector =
+const snapshotClickHandler: () => void =
 	(): void => {
 		mixDownContexts.default()
 		exportCanvas.default()

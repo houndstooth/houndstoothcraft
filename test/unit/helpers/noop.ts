@@ -1,6 +1,4 @@
-import { NullarySideEffector } from '../../../src/indexForTest'
-
-const noop: NullarySideEffector =
+const noop: () => void =
 	(): void => undefined
 
 export default noop

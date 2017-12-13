@@ -1,7 +1,7 @@
-import { appState, NullarySideEffector, pauseClickHandler } from '../../../../../src/indexForTest'
+import { appState, pauseClickHandler } from '../../../../../src/indexForTest'
 
 describe('pause click handler', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = pauseClickHandler.default
 	})

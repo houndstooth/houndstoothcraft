@@ -1,7 +1,7 @@
-import { NullarySideEffector, to } from '../../utilities'
+import { to } from '../../utilities'
 import { appState } from '../appState'
 
-const completeLayers: NullarySideEffector =
+const completeLayers: () => void =
 	(): void => {
 		appState.dom.layersProgressBar.style.width = '0%'
 		appState.execute.currentLayer = to.Layer(0)

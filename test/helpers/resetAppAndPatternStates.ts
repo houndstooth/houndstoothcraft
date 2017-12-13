@@ -3,11 +3,10 @@ import {
 	codeUtilities,
 	DEFAULT_APP_STATE,
 	DEFAULT_PATTERN_STATE,
-	NullarySideEffector,
 	patternState,
 } from '../../src/indexForTest'
 
-const resetAppAndPatternStates: NullarySideEffector =
+const resetAppAndPatternStates: () => void =
 	(): void => {
 		codeUtilities.changeObjectIntoCopy({
 			objectToChange: patternState,

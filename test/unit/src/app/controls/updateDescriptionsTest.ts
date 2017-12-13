@@ -1,7 +1,7 @@
-import { appState, createDescription, NullarySideEffector, updateDescriptions } from '../../../../../src/indexForTest'
+import { appState, createDescription, updateDescriptions } from '../../../../../src/indexForTest'
 
 describe('update descriptions', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = updateDescriptions.default
 	})

@@ -1,8 +1,8 @@
-import { applyOpacity, getCurrentContext, NullarySideEffector, patternState } from '../../../../../src/indexForTest'
+import { applyOpacity, getCurrentContext, patternState } from '../../../../../src/indexForTest'
 import { buildMockContext } from '../../../helpers'
 
 describe('apply opacity', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	let context: CanvasRenderingContext2D
 	beforeEach(() => {
 		subject = applyOpacity.default

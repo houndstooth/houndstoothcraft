@@ -3,12 +3,11 @@ import {
 	buildAnimationFunction,
 	executeAnimation,
 	ExecuteParams,
-	NullarySideEffector,
 	SettingsFunctionObject,
 } from '../../../../../src/indexForTest'
 
 describe('execute animation', () => {
-	let subject: (_: ExecuteParams) => Promise<(resolveAnimation: NullarySideEffector) => void>
+	let subject: (_: ExecuteParams) => Promise<(resolveAnimation: () => void) => void>
 	const animationFunction: (p: number) => number = (p: number): number => p
 
 	let layerFunctionObjects: SettingsFunctionObject[]

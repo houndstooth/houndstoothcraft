@@ -1,7 +1,6 @@
-import { NullarySideEffector } from '../../utilities'
 import { appState } from '../appState'
 
-const cancelPreviousPattern: NullarySideEffector =
+const cancelPreviousPattern: () => void =
 	(): void => {
 		appState.execute.patternRef = Math.random()
 	}

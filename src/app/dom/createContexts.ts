@@ -2,12 +2,12 @@
 
 import { CANVAS_SIZE } from '../../constants'
 import { Layer } from '../../types'
-import { codeUtilities, from, NullarySideEffector, to } from '../../utilities'
+import { codeUtilities, from, to } from '../../utilities'
 import { appState } from '../appState'
 import createContext from './createContext'
 import { Dimensions } from './types'
 
-const createContexts: NullarySideEffector =
+const createContexts: () => void =
 	(): void => {
 		scaleElement({ element: appState.dom.canvasContainer, dimensions: to.Dimensions([ CANVAS_SIZE, CANVAS_SIZE ]) })
 		appState.dom.canvasContainer.innerHTML = ''

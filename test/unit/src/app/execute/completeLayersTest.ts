@@ -1,7 +1,7 @@
-import { appState, completeLayers, NullarySideEffector, to } from '../../../../../src/indexForTest'
+import { appState, completeLayers, to } from '../../../../../src/indexForTest'
 
 describe('complete layers', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = completeLayers.default
 		appState.execute.currentLayer = to.Layer(497)

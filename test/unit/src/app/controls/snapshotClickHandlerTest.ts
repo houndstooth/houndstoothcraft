@@ -1,12 +1,11 @@
 import {
 	exportCanvas,
 	mixDownContexts,
-	NullarySideEffector,
 	snapshotClickHandler,
 } from '../../../../../src/indexForTest'
 
 describe('snapshot click handler', () => {
-	let subject: NullarySideEffector
+	let subject: () => void
 	beforeEach(() => {
 		subject = snapshotClickHandler.default
 		spyOn(mixDownContexts, 'default')

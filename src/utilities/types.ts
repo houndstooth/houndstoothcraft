@@ -1,7 +1,5 @@
 import { SettingsFunction } from '../app'
 
-type NullaryVoidPromise = () => Promise<void>
-
 type CouldBeSettingsFunctionObject = Array<{
 	settingName: string,
 	// tslint:disable-next-line:no-any
@@ -11,5 +9,4 @@ type CouldBeSettingsFunctionObject = Array<{
 
 export {
 	CouldBeSettingsFunctionObject,
-	NullaryVoidPromise,
 }

@@ -7,7 +7,6 @@ import {
 	executePattern,
 	exportCanvas,
 	mixDownContexts,
-	NullaryVoidPromise,
 	previousFrameHasFinished,
 	SettingsFunctionObject,
 	shouldRefreshCanvas,
@@ -17,8 +16,8 @@ import {
 import Spy = jasmine.Spy
 
 describe('build animation function returns an animation function', () => {
-	let subject: (_: ExecuteParams) => NullaryVoidPromise
-	let animationFunction: NullaryVoidPromise
+	let subject: (_: ExecuteParams) => () => Promise<void>
+	let animationFunction: () => Promise<void>
 	let executePatternSpy: Spy
 	let clearContextsSpy: Spy
 

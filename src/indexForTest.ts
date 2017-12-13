@@ -197,8 +197,6 @@ export {
 	globalWrapper,
 	mathUtilities,
 	to,
-
-	NullaryVoidPromise,
 } from './utilities/indexForTest'
 
 export {

@@ -11,6 +11,3 @@ export {
 	from,
 	globalWrapper,
 }
-export {
-	NullaryVoidPromise,
-} from './types'

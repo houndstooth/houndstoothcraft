@@ -11,7 +11,3 @@ export {
 	from,
 	globalWrapper,
 }
-export {
-	CouldBeSettingsFunctionObject,
-	NullaryVoidPromise,
-} from './types'

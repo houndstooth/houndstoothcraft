@@ -26,12 +26,6 @@ interface SettingConflictCheck {
 	settingCheckingForConflict: any,
 }
 
-interface ComposeMainHoundstoothParams {
-	effects?: NamedEffect[],
-	logComposedMainHoundstooth?: boolean,
-	overrides?: Effect,
-}
-
 interface ComposePatternParams {
 	patternDefaults: Pattern,
 	patternEffects?: Pattern,
@@ -73,6 +67,7 @@ interface SettingsState {
 	availableEffects: ObjectOf<NamedEffect>,
 	currentPattern: FullPatternBaseValues,
 	mainHoundstooth: Houndstooth,
+	overrides: Effect,
 }
 
 export {
@@ -81,7 +76,6 @@ export {
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
 	SettingConflictCheck,
-	ComposeMainHoundstoothParams,
 	ComposePatternParams,
 	ComposePatternsParams,
 	FullSettingsPath,

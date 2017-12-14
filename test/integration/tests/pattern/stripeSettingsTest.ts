@@ -1,7 +1,7 @@
 import {
+	appState,
 	BLACK,
 	Coordinate,
-	Effect,
 	executeSelectedEffects,
 	from,
 	patternState,
@@ -24,9 +24,8 @@ describe('.stripeSettings', () => {
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
-			let overrides: Effect
-			beforeEach(() => {
-				overrides = {
+			it('works in standard mode', async (done: DoneFn) => {
+				appState.settings.overrides = {
 					basePattern: {
 						gridSettings: { tileResolution: 1 },
 						stripeSettings: {
@@ -36,10 +35,8 @@ describe('.stripeSettings', () => {
 						},
 					},
 				}
-			})
 
-			it('works in standard mode', async (done: DoneFn) => {
-				executeSelectedEffects.default({ overrides })
+				executeSelectedEffects.default()
 
 				setTimeout(() => {
 					const tile: StandardTileExpectation = {
@@ -57,7 +54,7 @@ describe('.stripeSettings', () => {
 
 		describe('.stripeCount', () => {
 			it('changes the number of stripes in striped tiles', async (done: DoneFn) => {
-				const overrides: Effect = {
+				appState.settings.overrides = {
 					basePattern: {
 						gridSettings: { tileResolution: 2 },
 						stripeSettings: {
@@ -68,7 +65,7 @@ describe('.stripeSettings', () => {
 					},
 				}
 
-				executeSelectedEffects.default({ overrides })
+				executeSelectedEffects.default()
 
 				setTimeout(() => {
 					let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])

@@ -29,15 +29,11 @@ describe('execute selected effects', () => {
 	})
 
 	it('composes the houndstooth', () => {
-		spyOn(composeMainHoundstooth, 'default').and.callThrough()
+		spyOn(composeMainHoundstooth, 'default')
 
-		const overrides: Effect = { basePattern: { layerSettings: { endLayer: to.Layer(3) } } }
-		subject({ overrides })
+		subject()
 
-		expect(composeMainHoundstooth.default).toHaveBeenCalledWith({
-			effects: appState.controls.selectedEffects,
-			overrides,
-		})
+		expect(composeMainHoundstooth.default).toHaveBeenCalled()
 	})
 
 	it('prepares layer functions', () => {
@@ -63,8 +59,9 @@ describe('execute selected effects', () => {
 	})
 
 	it('sets the app state\'s end layer to that of the composed main houndstooth\'s base pattern', () => {
-		const overrides: Effect = { basePattern: { layerSettings: { endLayer: to.Layer(3) } } }
-		subject({ overrides })
+		appState.settings.overrides = { basePattern: { layerSettings: { endLayer: to.Layer(3) } } }
+
+		subject()
 
 		expect(appState.controls.endLayer).toBe(to.Layer(3))
 	})

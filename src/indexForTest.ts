@@ -28,6 +28,7 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
+	createHoundstoothControls,
 	deeperPath,
 	effectsHaveConflicts,
 	effectToggleClickHandler,
@@ -84,7 +85,6 @@ export {
 
 	AnimationParams,
 	CheckSettingForConflict,
-	ComposeMainHoundstoothParams,
 	ComposePatternsParams,
 	Dimensions,
 	ExecuteLayerParams,

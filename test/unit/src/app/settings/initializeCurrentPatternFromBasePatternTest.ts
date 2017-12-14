@@ -1,15 +1,14 @@
 import {
 	appState,
 	composeMainHoundstooth,
-	Effect,
 	initializeCurrentPatternFromBasePattern,
 } from '../../../../../src/indexForTest'
 
 describe('initialize current pattern from base pattern', () => {
 	it('makes the current pattern into a copy of the just-composed main houndstooth\'s base pattern', () => {
 		const subject: () => void = initializeCurrentPatternFromBasePattern.default
-		const overrides: Effect = { basePattern: { viewSettings: { zoom: 784 } } }
-		composeMainHoundstooth.default({ overrides })
+		appState.settings.overrides = { basePattern: { viewSettings: { zoom: 784 } } }
+		composeMainHoundstooth.default()
 
 		subject()
 

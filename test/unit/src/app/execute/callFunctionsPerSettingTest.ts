@@ -2,7 +2,6 @@ import {
 	appState,
 	callFunctionsPerSetting,
 	composeMainHoundstooth,
-	Effect,
 	initializeCurrentPatternFromBasePattern,
 	SettingsFunctionObject,
 	to,
@@ -33,7 +32,7 @@ describe('call functions per setting', () => {
 			settingsPath: to.SettingsPath([ 'viewSettings' ]),
 		}
 
-		const overrides: Effect = {
+		appState.settings.overrides = {
 			basePattern: {
 				tileSettings: {
 					tileSize: oldTileSize,
@@ -43,7 +42,7 @@ describe('call functions per setting', () => {
 				},
 			},
 		}
-		composeMainHoundstooth.default({ overrides })
+		composeMainHoundstooth.default()
 		initializeCurrentPatternFromBasePattern.default()
 
 		subject({

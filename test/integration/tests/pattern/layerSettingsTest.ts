@@ -5,7 +5,6 @@ import {
 	ColorSet,
 	Coordinate,
 	CYAN,
-	Effect,
 	ERASE,
 	executeSelectedEffects,
 	to,
@@ -16,7 +15,7 @@ import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
 
 describe('.layerSettings', () => {
 	it('blends colors from semi-translucent layers', async (done: DoneFn) => {
-		const overrides: Effect = {
+		appState.settings.overrides = {
 			basePattern: {
 				gridSettings: { tileResolution: 2 },
 				layerSettings: { endLayer: to.Layer(1) },
@@ -29,7 +28,7 @@ describe('.layerSettings', () => {
 			},
 		}
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
@@ -46,7 +45,7 @@ describe('.layerSettings', () => {
 	})
 
 	it('erasing makes holes so material from lower layers shows through', async (done: DoneFn) => {
-		const overrides: Effect = {
+		appState.settings.overrides = {
 			basePattern: {
 				gridSettings: { tileResolution: 0 },
 				layerSettings: { endLayer: to.Layer(1) },
@@ -67,7 +66,7 @@ describe('.layerSettings', () => {
 			},
 		}
 
-		executeSelectedEffects.default({ overrides })
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			let baseId: number = -8

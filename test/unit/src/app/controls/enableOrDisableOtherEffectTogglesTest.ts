@@ -17,9 +17,6 @@ describe('enableOrDisableOtherEffectToggles', () => {
 	})
 
 	it('checks each available effect for conflicts with the effects the user currently has combined', () => {
-		const effectsSelected: NamedEffect[] = []
-		appState.controls.selectedEffects = effectsSelected
-
 		const effectsCombined: Effect = { basePattern: { colorSettings: { opacity: 0.5 } } }
 		spyOn(combineEffects, 'default').and.returnValue(effectsCombined)
 
@@ -49,7 +46,7 @@ describe('enableOrDisableOtherEffectToggles', () => {
 
 		subject()
 
-		expect(combineEffects.default).toHaveBeenCalledWith({ effects: effectsSelected })
+		expect(combineEffects.default).toHaveBeenCalled()
 		expect(effectsHaveConflictsSpy.calls.all()[ 0 ].args[ 0 ]).toEqual({
 			effect: effectOne,
 			effectCheckingAgainst: effectsCombined,

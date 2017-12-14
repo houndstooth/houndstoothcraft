@@ -10,6 +10,7 @@ const DEFAULT_EFFECT_TOGGLES_CONTAINER: HTMLElement = {} as HTMLElement
 const DEFAULT_FRAME_INPUT: HTMLInputElement = {} as HTMLInputElement
 const DEFAULT_LAYERS_PROGRESS_BAR: HTMLElement = {} as HTMLElement
 const DEFAULT_MIXED_DOWN_CANVAS: HTMLCanvasElement = {} as HTMLCanvasElement
+const DEFAULT_HOUNDSTOOTH_CONTROLS: HTMLElement = {} as HTMLElement
 const DEFAULT_PAUSE_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
 const DEFAULT_PLAY_BUTTON: HTMLButtonElement = {} as HTMLButtonElement
 const DEFAULT_PROGRESS_BAR: HTMLElement = {} as HTMLElement
@@ -23,6 +24,7 @@ const DEFAULT_DOM_STATE: DomState = {
 	effectToggles: DEFAULT_EFFECT_TOGGLES,
 	effectTogglesContainer: DEFAULT_EFFECT_TOGGLES_CONTAINER,
 	frameInput: DEFAULT_FRAME_INPUT,
+	houndstoothControls: DEFAULT_HOUNDSTOOTH_CONTROLS,
 	layersProgressBar: DEFAULT_LAYERS_PROGRESS_BAR,
 	mixedDownCanvas: DEFAULT_MIXED_DOWN_CANVAS,
 	pauseButton: DEFAULT_PAUSE_BUTTON,

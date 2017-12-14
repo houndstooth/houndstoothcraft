@@ -53,9 +53,19 @@ body {
 
 #descriptions-container {
     font-style: italic;
-    flex: 9999;
+    flex: 1;
     white-space: pre;
     overflow-y: auto;
+}
+
+#houndstooth-controls {
+    white-space: pre;
+    flex: 1;
+    overflow-y: auto;
+}
+
+#houndstooth-controls div {
+    margin: 0 !important;
 }
 
 #descriptions-container span {
@@ -86,6 +96,7 @@ body {
 }
 
 #effect-toggles-container div {
+    flex: 1;
     margin: 0px;
     display: flex;
     align-items: center;

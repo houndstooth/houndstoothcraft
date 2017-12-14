@@ -1,17 +1,12 @@
-import {
-	appState,
-	composeMainHoundstooth,
-	Effect,
-	resetMainHoundstooth,
-} from '../../../../../src/indexForTest'
+import { appState, composeMainHoundstooth, resetMainHoundstooth } from '../../../../../src/indexForTest'
 
 describe('reset main houndstooth', () => {
 	it('returns the main houndstooth to its default state', () => {
 		const subject: () => void = resetMainHoundstooth.default
-		const overrides: Effect = {
+		appState.settings.overrides = {
 			basePattern: { colorSettings: { opacity: 0 } },
 		}
-		composeMainHoundstooth.default({ overrides })
+		composeMainHoundstooth.default()
 		// tslint:disable-next-line:max-line-length
 		expect(appState.settings.mainHoundstooth.basePattern.colorSettings && appState.settings.mainHoundstooth.basePattern.colorSettings.opacity).toBe(0)
 

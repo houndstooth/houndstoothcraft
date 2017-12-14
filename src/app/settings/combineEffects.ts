@@ -1,14 +1,15 @@
 import { PatternBaseValues, PatternFunctions } from '../../pattern'
 import { Effect } from '../../types'
+import { appState } from '../appState'
 import composePatterns from './composePatterns'
 
-const combineEffects: (_: { effects: Effect[] }) => Effect =
-	({ effects }: { effects: Effect[] }): Effect => {
+const combineEffects: () => Effect =
+	(): Effect => {
 		const basePattern: PatternBaseValues = {}
 		const layersPattern: PatternFunctions = {}
 		const animationsPattern: PatternFunctions = {}
 
-		effects.forEach((effect: Effect): void => {
+		appState.controls.selectedEffects.forEach((effect: Effect): void => {
 			composePatterns({
 				patternToBeMergedOnto: basePattern,
 				patternToMerge: effect.basePattern,

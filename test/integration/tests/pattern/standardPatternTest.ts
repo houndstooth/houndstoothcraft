@@ -1,4 +1,5 @@
 import {
+	appState,
 	BLACK,
 	executeSelectedEffects,
 	from,
@@ -12,13 +13,12 @@ import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 describe('standard houndstooth pattern', () => {
 	// tslint:disable-next-line:max-line-length
 	it('repeats a 2x2 pattern of a solid black, solid white, and two b&w diagonally striped tiles, the striped tiles having four stripes each, and their diagonal stripes being the minor diagonal', async (done: DoneFn) => {
-		executeSelectedEffects.default({
-			overrides: {
-				basePattern: {
-					gridSettings: { tileResolution: 4 },
-				},
+		appState.settings.overrides = {
+			basePattern: {
+				gridSettings: { tileResolution: 4 },
 			},
-		})
+		}
+		executeSelectedEffects.default()
 
 		setTimeout(() => {
 			let baseId: number = -8

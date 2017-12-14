@@ -1,16 +1,10 @@
-import {
-	BLACK,
-	Effect,
-	executeSelectedEffects,
-	to,
-	TRANSPARENT,
-} from '../../../../src/indexForTest'
+import { appState, BLACK, executeSelectedEffects, to, TRANSPARENT } from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
 		it('adjusts the size in pixels of each tile', async (done: DoneFn) => {
-			const overrides: Effect = {
+			appState.settings.overrides = {
 				basePattern: {
 					tileSettings: {
 						tileSize: to.Unit(30),
@@ -18,7 +12,7 @@ describe('.tileSettings', () => {
 				},
 			}
 
-			executeSelectedEffects.default({ overrides })
+			executeSelectedEffects.default()
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -56,7 +50,7 @@ describe('.tileSettings', () => {
 
 		describe('when also zooming', () => {
 			it('multiplies the effect of taking up more pixels', async (done: DoneFn) => {
-				const overrides: Effect = {
+				appState.settings.overrides = {
 					basePattern: {
 						tileSettings: {
 							tileSize: to.Unit(30),
@@ -67,7 +61,7 @@ describe('.tileSettings', () => {
 					},
 				}
 
-				executeSelectedEffects.default({ overrides })
+				executeSelectedEffects.default()
 
 				setTimeout(() => {
 					let baseId: number = -8

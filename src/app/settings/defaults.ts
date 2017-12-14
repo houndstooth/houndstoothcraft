@@ -1,5 +1,9 @@
-import { DEFAULT_PATTERN_STATE, FullPatternBaseValues, PatternFunctions } from '../../pattern'
-import { Houndstooth, NamedEffect } from '../../types'
+import {
+	DEFAULT_PATTERN_STATE,
+	FullPatternBaseValues,
+	PatternFunctions,
+} from '../../pattern'
+import { Effect, Houndstooth, NamedEffect } from '../../types'
 import { ObjectOf } from '../../utilities'
 import { SettingsState } from './types'
 
@@ -14,11 +18,13 @@ const DEFAULT_MAIN_HOUNDSTOOTH: Houndstooth = {
 	basePattern: DEFAULT_BASE_PATTERN,
 	layersPattern: DEFAULT_LAYERS_PATTERN,
 }
+const DEFAULT_OVERRIDES: Effect = {}
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
 	mainHoundstooth: DEFAULT_MAIN_HOUNDSTOOTH,
+	overrides: DEFAULT_OVERRIDES,
 }
 
 export {
@@ -26,5 +32,6 @@ export {
 	DEFAULT_BASE_PATTERN,
 	DEFAULT_LAYERS_PATTERN,
 	DEFAULT_MAIN_HOUNDSTOOTH,
+	DEFAULT_OVERRIDES,
 	DEFAULT_SETTINGS_STATE,
 }

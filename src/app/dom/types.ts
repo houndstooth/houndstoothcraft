@@ -11,6 +11,7 @@ interface DomState {
 	effectToggles: ObjectOf<HTMLInputElement>,
 	effectTogglesContainer: HTMLElement,
 	frameInput: HTMLInputElement,
+	houndstoothControls: HTMLElement,
 	layersProgressBar: HTMLElement,
 	mixedDownCanvas: HTMLCanvasElement,
 	pauseButton: HTMLButtonElement,

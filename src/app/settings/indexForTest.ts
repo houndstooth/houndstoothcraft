@@ -31,7 +31,6 @@ export {
 }
 export {
 	CheckSettingForConflict,
-	ComposeMainHoundstoothParams,
 	ComposePatternsParams,
 	FullSettingsPath,
 	PatternsHaveConflictsParams,

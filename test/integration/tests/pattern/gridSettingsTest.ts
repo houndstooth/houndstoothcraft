@@ -1,6 +1,6 @@
 import {
+	appState,
 	BLACK,
-	Effect,
 	executeSelectedEffects,
 	from,
 	patternState,
@@ -19,7 +19,7 @@ describe('.gridSettings', () => {
 
 	describe('.tileResolution', () => {
 		it('changes how many tiles there are per dimension', async (done: DoneFn) => {
-			const overrides: Effect = {
+			appState.settings.overrides = {
 				basePattern: {
 					colorSettings: {
 						colorSet: to.ColorSet([ BLACK, WHITE ]),
@@ -30,7 +30,7 @@ describe('.gridSettings', () => {
 				},
 			}
 
-			executeSelectedEffects.default({ overrides })
+			executeSelectedEffects.default()
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [
@@ -145,7 +145,7 @@ describe('.gridSettings', () => {
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
 		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', async (done: DoneFn) => {
-			const overrides: Effect = {
+			appState.settings.overrides = {
 				basePattern: {
 					gridSettings: {
 						includeNegativeQuadrants: true,
@@ -160,7 +160,7 @@ describe('.gridSettings', () => {
 				},
 			}
 
-			executeSelectedEffects.default({ overrides })
+			executeSelectedEffects.default()
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [

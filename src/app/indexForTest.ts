@@ -22,6 +22,7 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
+	createHoundstoothControls,
 	makeId,
 	saveBlobThroughAnchor,
 	storeDomElements,
@@ -99,7 +100,6 @@ export {
 	DEFAULT_LAYERS_PATTERN,
 
 	CheckSettingForConflict,
-	ComposeMainHoundstoothParams,
 	ComposePatternsParams,
 	FullSettingsPath,
 	PatternsHaveConflictsParams,

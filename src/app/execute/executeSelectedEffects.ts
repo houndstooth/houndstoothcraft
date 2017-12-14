@@ -1,4 +1,3 @@
-import { Effect } from '../../types'
 import { to } from '../../utilities'
 import { appState } from '../appState'
 import { createContexts } from '../dom'
@@ -11,12 +10,9 @@ import {
 import executeAnimation from './executeAnimation'
 import executePattern from './executePattern'
 
-const executeSelectedEffects: (_?: { overrides?: Effect }) => void =
-	({ overrides = {} }: { overrides?: Effect } = {}): void => {
-		composeMainHoundstooth.default({
-			effects: appState.controls.selectedEffects,
-			overrides,
-		})
+const executeSelectedEffects: () => void =
+	(): void => {
+		composeMainHoundstooth.default()
 
 		initializeCurrentPatternFromBasePattern.default()
 		setEndLayer()

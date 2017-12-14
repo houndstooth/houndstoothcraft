@@ -1,20 +1,32 @@
 // tslint:disable:no-unsafe-any
 
-import { combineEffects, composePatterns, Effect } from '../../../../../src/indexForTest'
+import { appState, combineEffects, composePatterns, Effect, NamedEffect } from '../../../../../src/indexForTest'
 import CallInfo = jasmine.CallInfo
 import Spy = jasmine.Spy
 
 describe('combine effects', () => {
 	it('composes the base, animations, and layers patterns of every effect', () => {
-		const subject: (_: { effects: Effect[] }) => Effect = combineEffects.default
+		const subject: () => Effect = combineEffects.default
 
 		const composePatternsSpy: Spy = spyOn(composePatterns, 'default')
 
-		const effectOne: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		const effectTwo: Effect = { basePattern: {}, animationsPattern: {}, layersPattern: {} }
-		const effects: Effect[] = [ effectOne, effectTwo ]
+		const effectOne: NamedEffect = {
+			animationsPattern: {},
+			basePattern: {},
+			description: '',
+			layersPattern: {},
+			name: '',
+		}
+		const effectTwo: NamedEffect = {
+			animationsPattern: {},
+			basePattern: {},
+			description: '',
+			layersPattern: {},
+			name: '',
+		}
+		appState.controls.selectedEffects = [ effectOne, effectTwo ]
 
-		subject({ effects })
+		subject()
 
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 

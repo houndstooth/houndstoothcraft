@@ -5,6 +5,7 @@ import * as createContexts from './createContexts'
 import * as createDescription from './createDescription'
 import * as createEffectToggle from './createEffectToggle'
 import * as createEffectToggles from './createEffectToggles'
+import * as createHoundstoothControls from './createHoundstoothControls'
 import * as createLabel from './createLabel'
 import * as makeId from './makeId'
 import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
@@ -19,6 +20,7 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
+	createHoundstoothControls,
 	makeId,
 	saveBlobThroughAnchor,
 	storeDomElements,

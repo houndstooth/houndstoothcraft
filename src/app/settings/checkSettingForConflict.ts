@@ -1,6 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { codeUtilities, globalWrapper } from '../../utilities'
+import { formatSetting } from '../dom'
 import settingPath from './settingPath'
 import { CheckSettingForConflict, SettingConflictCheck, SettingsAreEqual } from './types'
 
@@ -57,25 +58,12 @@ const settingsAreEqual: SettingsAreEqual =
 
 const buildWarningMessage: (_: CheckSettingForConflict) => string =
 	({ setting, settingCheckingForConflict, settingName, settingsPath }: CheckSettingForConflict): string => {
-		const formattedSetting: string = formatSettingForWarning(setting)
-		const formattedCheckedSetting: string = formatSettingForWarning(settingCheckingForConflict)
+		const formattedSetting: string = formatSetting.default(setting)
+		const formattedCheckedSetting: string = formatSetting.default(settingCheckingForConflict)
 		const fullSettingPath: string = settingPath({ settingsPath, settingName })
 
 		// tslint:disable-next-line:max-line-length
 		return `effect would have conflicts on setting \`${fullSettingPath}\`: \`${formattedSetting}\` would be overridden by \`${formattedCheckedSetting}\``
-	}
-
-const formatSettingForWarning: (setting: any) => string =
-	(setting: any): string => {
-		if (typeof setting === 'function') {
-			return setting.toString().replace(/\n/g, '').replace(/\t/g, '')
-		}
-		// tslint:disable-next-line:strict-type-predicates
-		else if (typeof setting === 'string') {
-			return setting
-		}
-
-		return JSON.stringify(setting)
 	}
 
 export default checkSettingForConflict

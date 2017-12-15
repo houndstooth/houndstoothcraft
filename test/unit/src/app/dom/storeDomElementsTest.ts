@@ -9,7 +9,7 @@ describe('store dom elements', () => {
 		const descriptionsContainer: HTMLElement = {} as HTMLElement
 		const effectTogglesContainer: HTMLElement = {} as HTMLElement
 		const frameInput: HTMLInputElement = {} as HTMLInputElement
-		const houndstoothControls: HTMLElement = {} as HTMLElement
+		const overridesContainer: HTMLElement = {} as HTMLElement
 		const layersProgressBar: HTMLElement = {} as HTMLElement
 		const pauseButton: HTMLButtonElement = {} as HTMLButtonElement
 		const playButton: HTMLButtonElement = {} as HTMLButtonElement
@@ -28,8 +28,8 @@ describe('store dom elements', () => {
 					return effectTogglesContainer
 				case '#frame-input':
 					return frameInput
-				case '#houndstooth-controls':
-					return houndstoothControls
+				case '#overrides-container':
+					return overridesContainer
 				case '#layers-progress-bar':
 					return layersProgressBar
 				case '#pause-button':
@@ -55,7 +55,7 @@ describe('store dom elements', () => {
 		expect(appState.dom.descriptionsContainer).toBe(descriptionsContainer)
 		expect(appState.dom.effectTogglesContainer).toBe(effectTogglesContainer)
 		expect(appState.dom.frameInput).toBe(frameInput)
-		expect(appState.dom.houndstoothControls).toBe(houndstoothControls)
+		expect(appState.dom.overridesContainer).toBe(overridesContainer)
 		expect(appState.dom.layersProgressBar).toBe(layersProgressBar)
 		expect(appState.dom.pauseButton).toBe(pauseButton)
 		expect(appState.dom.playButton).toBe(playButton)

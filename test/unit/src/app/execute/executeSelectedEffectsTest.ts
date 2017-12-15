@@ -11,6 +11,7 @@ import {
 	prepareFunctionObjectsPerSetting,
 	SettingsFunctionObject,
 	to,
+	updateOverrides,
 } from '../../../../../src/indexForTest'
 
 describe('execute selected effects', () => {
@@ -21,6 +22,7 @@ describe('execute selected effects', () => {
 	beforeEach(() => {
 		subject = executeSelectedEffects.default
 		spyOn(createContexts, 'default')
+		spyOn(updateOverrides, 'default')
 		spyOn(executePattern, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
 		spyOn(executeAnimation, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
 		spyOn(initializeCurrentPatternFromBasePattern, 'default').and.callThrough()
@@ -34,6 +36,12 @@ describe('execute selected effects', () => {
 		subject()
 
 		expect(composeMainHoundstooth.default).toHaveBeenCalled()
+	})
+
+	it('updates the overrides', () => {
+		subject()
+
+		expect(updateOverrides.default).toHaveBeenCalled()
 	})
 
 	it('prepares layer functions', () => {

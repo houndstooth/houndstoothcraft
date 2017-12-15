@@ -1,13 +1,13 @@
 import {
 	attachControlHandlers,
 	createEffectToggles,
-	createHoundstoothControls,
 	executeSelectedEffects,
 	NamedEffect,
 	setupAvailableEffects,
 	setupMixedDownContext,
 	startUp,
 	storeDomElements,
+	updateOverrides,
 } from '../../../../src/indexForTest'
 
 describe('start up', () => {
@@ -19,7 +19,7 @@ describe('start up', () => {
 		spyOn(storeDomElements, 'default')
 		spyOn(setupAvailableEffects, 'default')
 		spyOn(setupMixedDownContext, 'default')
-		spyOn(createHoundstoothControls, 'default')
+		spyOn(updateOverrides, 'default')
 		spyOn(createEffectToggles, 'default')
 		spyOn(attachControlHandlers, 'default')
 		spyOn(executeSelectedEffects, 'default')
@@ -41,7 +41,7 @@ describe('start up', () => {
 	})
 
 	it('sets up the overrides', () => {
-		expect(createHoundstoothControls.default).toHaveBeenCalled()
+		expect(updateOverrides.default).toHaveBeenCalled()
 	})
 
 	it('creates the effect toggles from all the effects in the effects module', () => {

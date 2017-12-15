@@ -1,6 +1,6 @@
 import { to } from '../../utilities'
 import { appState } from '../appState'
-import { createContexts } from '../dom'
+import { createContexts, updateOverrides } from '../dom'
 import {
 	composeMainHoundstooth,
 	initializeCurrentPatternFromBasePattern,
@@ -13,6 +13,7 @@ import executePattern from './executePattern'
 const executeSelectedEffects: () => void =
 	(): void => {
 		composeMainHoundstooth.default()
+		updateOverrides.default()
 
 		initializeCurrentPatternFromBasePattern.default()
 		setEndLayer()

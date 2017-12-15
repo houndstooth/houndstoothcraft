@@ -1,6 +1,7 @@
 import * as effectToggleClickHandler from './effectToggleClickHandler'
 import * as frameInputChangeHandler from './frameInputChangeHandler'
 import * as getCurrentFrame from './getCurrentFrame'
+import * as overrideHandler from './overrideHandler'
 import * as pauseClickHandler from './pauseClickHandler'
 import * as playClickHandler from './playClickHandler'
 import * as rewindClickHandler from './rewindClickHandler'
@@ -11,6 +12,7 @@ export {
 	effectToggleClickHandler,
 	frameInputChangeHandler,
 	getCurrentFrame,
+	overrideHandler,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,

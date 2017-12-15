@@ -9,20 +9,19 @@ describe('get pattern setting or create path', () => {
 	})
 
 	it('accesses child setting if it exists', () => {
-		const expectedSetting: any = {}
 		const pattern: any = {
 			childPathFirstStep: {
-				childPathSecondStep: expectedSetting,
+				childPathSecondStep: 346346,
 			},
 		}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
 		const childSetting: any = subject({ pattern, settingsPath })
 
-		expect(childSetting).toBe(expectedSetting)
+		expect(childSetting).toBe(346346)
 	})
 
-	it('creates the path for this setting and sets it to an empty object if it does not exist', () => {
+	it('creates the path for this setting, i.e. setting it to an empty object if it does not exist', () => {
 		const pattern: any = {}
 		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 

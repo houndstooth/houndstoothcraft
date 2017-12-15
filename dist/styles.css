@@ -58,14 +58,14 @@ body {
     overflow-y: auto;
 }
 
-#houndstooth-controls {
+#overrides-container {
     white-space: pre;
     flex: 1;
     overflow-y: auto;
 }
 
-#houndstooth-controls div {
-    margin: 0 !important;
+#overrides-container details, #overrides-container div {
+    margin: 3px 3px 3px 10px !important;
 }
 
 #descriptions-container span {

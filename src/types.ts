@@ -25,6 +25,8 @@ interface Houndstooth {
 	animationsPattern: PatternFunctions,
 	basePattern: PatternBaseValues,
 	layersPattern: PatternFunctions,
+
+	[_: string]: Pattern | string
 }
 
 type Effect = Partial<Houndstooth>

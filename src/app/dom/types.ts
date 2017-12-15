@@ -1,6 +1,17 @@
 // tslint:disable:no-any
 
 import { ObjectOf } from '../../utilities'
+import { PatternMapFunctionParams, SettingsPath } from '../settings'
+
+interface AppendOverrideNodeParams {
+	options: OverrideOptions,
+	overrideNode: HTMLElement,
+	settingsPath: SettingsPath
+}
+
+interface CreateOverrideParams extends PatternMapFunctionParams {
+	options: OverrideOptions,
+}
 
 enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
@@ -11,9 +22,9 @@ interface DomState {
 	effectToggles: ObjectOf<HTMLInputElement>,
 	effectTogglesContainer: HTMLElement,
 	frameInput: HTMLInputElement,
-	houndstoothControls: HTMLElement,
 	layersProgressBar: HTMLElement,
 	mixedDownCanvas: HTMLCanvasElement,
+	overridesContainer: HTMLElement,
 	pauseButton: HTMLButtonElement,
 	playButton: HTMLButtonElement,
 	progressBar: HTMLElement,
@@ -22,12 +33,21 @@ interface DomState {
 	snapshotButton: HTMLButtonElement,
 }
 
+interface OverrideOptions {
+	grandparents: HTMLElement[],
+	parent: HTMLElement,
+	patternName: string,
+}
+
 interface Px extends Number {
 	_PxBrand: any,
 }
 
 export {
+	AppendOverrideNodeParams,
+	CreateOverrideParams,
 	Dimensions,
 	DomState,
+	OverrideOptions,
 	Px,
 }

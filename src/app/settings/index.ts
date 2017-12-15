@@ -4,6 +4,7 @@ import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
+import * as mapOverPattern from './mapOverPattern'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
 import * as resetMainHoundstooth from './resetMainHoundstooth'
 import * as setupAvailableEffects from './setupAvailableEffects'
@@ -15,11 +16,13 @@ export {
 	effectsHaveConflicts,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
+	mapOverPattern,
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
 	setupAvailableEffects,
 }
 export {
+	PatternMapFunctionParams,
 	SettingsFunction,
 	SettingsFunctionObject,
 	SettingsPath,

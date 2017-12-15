@@ -6,6 +6,7 @@ export {
 	enableOrDisableOtherEffectToggles,
 	frameInputChangeHandler,
 	getCurrentFrame,
+	overrideHandler,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
@@ -14,6 +15,7 @@ export {
 	updateDescriptions,
 } from './controls/indexForTest'
 export {
+	appendOverrideNode,
 	attachControlHandlers,
 	createCheckbox,
 	createContext,
@@ -22,12 +24,18 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
-	createHoundstoothControls,
+	createOverrideLeaf,
+	createOverrideParent,
+	formatSetting,
 	makeId,
 	saveBlobThroughAnchor,
 	storeDomElements,
+	updateOverrides,
 
+	AppendOverrideNodeParams,
+	CreateOverrideParams,
 	Dimensions,
+	OverrideOptions,
 	Px,
 } from './dom/indexForTest'
 export {
@@ -88,6 +96,7 @@ export {
 	effectsHaveConflicts,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
+	mapOverPattern,
 	patternsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
@@ -102,6 +111,7 @@ export {
 	CheckSettingForConflict,
 	ComposePatternsParams,
 	FullSettingsPath,
+	MapOverPatternParams,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectsParams,
 	SettingsFunction,

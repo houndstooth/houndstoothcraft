@@ -70,6 +70,25 @@ interface SettingsState {
 	overrides: Effect,
 }
 
+interface PatternMapFunctionParams {
+	options: any,
+	settingName: string,
+	settingsPath: SettingsPath,
+	settingValue: any,
+}
+
+interface MapOverPatternParams {
+	options?: any,
+	pattern?: Pattern,
+	perLeaf?: (_: PatternMapFunctionParams) => void,
+	perParent?: (_: PatternMapFunctionParams) => void,
+}
+
+interface DeepSettingsMapParams {
+	settings: any,
+	settingsPath: SettingsPath,
+}
+
 export {
 	SettingsPath,
 	SettingsStep,
@@ -85,4 +104,7 @@ export {
 	SettingsFunctionObject,
 	SettingsAreEqual,
 	SettingsState,
+	MapOverPatternParams,
+	DeepSettingsMapParams,
+	PatternMapFunctionParams,
 }

@@ -1,9 +1,8 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../types'
-import { globalWrapper } from '../../utilities'
+import { codeUtilities, globalWrapper } from '../../utilities'
 import { effectToggleClickHandler } from '../controls'
-import makeId from './makeId'
 
 const createCheckbox: (_: { effect: NamedEffect }) => HTMLInputElement =
 	({ effect }: { effect: NamedEffect }): HTMLInputElement => {
@@ -11,7 +10,7 @@ const createCheckbox: (_: { effect: NamedEffect }) => HTMLInputElement =
 
 		checkbox.setAttribute('type', 'checkbox')
 
-		const idAndName: string = makeId(effect.name)
+		const idAndName: string = codeUtilities.idify(effect.name)
 		checkbox.setAttribute('id', idAndName)
 		checkbox.setAttribute('name', idAndName)
 

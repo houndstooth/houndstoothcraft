@@ -224,4 +224,10 @@ describe('code utilities', () => {
 			expect(codeUtilities.isEmpty({ imMrMeeseeks: 'look at me' })).toBe(false)
 		})
 	})
+
+	describe('#idify', () => {
+		it('kebab-cases the string', () => {
+			expect(codeUtilities.idify('mock tooth')).toBe('mock-tooth')
+		})
+	})
 })

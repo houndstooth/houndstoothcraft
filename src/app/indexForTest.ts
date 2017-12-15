@@ -27,7 +27,6 @@ export {
 	createOverrideLeaf,
 	createOverrideParent,
 	formatSetting,
-	makeId,
 	saveBlobThroughAnchor,
 	storeDomElements,
 	updateOverrides,

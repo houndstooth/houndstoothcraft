@@ -3,7 +3,6 @@ import * as createContexts from './createContexts'
 import * as createDescription from './createDescription'
 import * as createEffectToggles from './createEffectToggles'
 import * as formatSetting from './formatSetting'
-import * as makeId from './makeId'
 import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 import * as storeDomElements from './storeDomElements'
 import * as updateOverrides from './updateOverrides'
@@ -15,7 +14,6 @@ export {
 	createEffectToggles,
 	updateOverrides,
 	formatSetting,
-	makeId,
 	saveBlobThroughAnchor,
 	storeDomElements,
 }

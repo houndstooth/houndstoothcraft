@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any max-file-line-count
 
 import { ObjectOf } from './types'
 
@@ -85,6 +85,8 @@ const reversed: <T>(array: T[]) => T[] = <T>(array: T[]): T[] => array.slice().r
 const isEmpty: (object: object) => boolean =
 	(object: object): boolean => Object.keys(object).length === 0 && object.constructor === Object
 
+const idify: (_: string) => string = (name: string): string => name.replace(/ /g, '-')
+
 export {
 	iterator,
 	wrappedIndex,
@@ -95,4 +97,5 @@ export {
 	changeObjectIntoCopy,
 	reversed,
 	isEmpty,
+	idify,
 }

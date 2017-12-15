@@ -1,8 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { NamedEffect } from '../../types'
-import { globalWrapper } from '../../utilities'
-import makeId from './makeId'
+import { codeUtilities, globalWrapper } from '../../utilities'
 
 const createLabel: (_: { effect: NamedEffect }) => HTMLLabelElement =
 	({ effect }: { effect: NamedEffect }): HTMLLabelElement => {
@@ -10,7 +9,7 @@ const createLabel: (_: { effect: NamedEffect }) => HTMLLabelElement =
 
 		const name: Text = globalWrapper.document.createTextNode(effect.name)
 		label.appendChild(name)
-		label.setAttribute('for', makeId(effect.name))
+		label.setAttribute('for', codeUtilities.idify(effect.name))
 
 		return label
 	}

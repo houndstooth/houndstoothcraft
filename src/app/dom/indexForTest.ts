@@ -10,7 +10,6 @@ import * as createLabel from './createLabel'
 import * as createOverrideLeaf from './createOverrideLeaf'
 import * as createOverrideParent from './createOverrideParent'
 import * as formatSetting from './formatSetting'
-import * as makeId from './makeId'
 import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 import * as storeDomElements from './storeDomElements'
 import * as updateOverrides from './updateOverrides'
@@ -29,7 +28,6 @@ export {
 	createOverrideLeaf,
 	createOverrideParent,
 	formatSetting,
-	makeId,
 	saveBlobThroughAnchor,
 	storeDomElements,
 }

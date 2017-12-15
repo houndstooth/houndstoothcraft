@@ -55,7 +55,6 @@ export {
 	overrideHandler,
 	incrementTilesCompleted,
 	initializeCurrentPatternFromBasePattern,
-	makeId,
 	mapOverPattern,
 	mixDownContexts,
 	patternsHaveConflicts,

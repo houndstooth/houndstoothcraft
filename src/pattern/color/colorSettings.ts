@@ -1,6 +1,6 @@
 import { Color } from '../../types'
 import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
-import { ColorAssignmentSettingsFunctions, ColorAssignmentSettingsSchema } from './colorAssignmentSettings'
+import { ColorAssignmentSettingFunctions, ColorAssignmentSettingsSchema } from './colorAssignmentSettings'
 import { ColorSet } from './types'
 
 type ColorSettingsSchema<R extends Bool> =
@@ -11,12 +11,12 @@ type ColorSettingsSchema<R extends Bool> =
 
 interface ColorSettings extends ColorSettingsSchema<True>{}
 
-type ColorSettingsFunctions = Partial<Overwrite<FunctionsOf<ColorSettingsSchema<False>>, {
-	colorAssignmentSettings: ColorAssignmentSettingsFunctions,
+type ColorSettingFunctions = Partial<Overwrite<FunctionsOf<ColorSettingsSchema<False>>, {
+	colorAssignmentSettings: ColorAssignmentSettingFunctions,
 }>>
 
 export {
 	ColorSettings,
 	ColorSettingsSchema,
-	ColorSettingsFunctions,
+	ColorSettingFunctions,
 }

@@ -9,15 +9,15 @@ import {
 	executePattern,
 	from,
 	Layer,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 	to,
 } from '../../../../../src/indexForTest'
 
 describe('execute pattern', () => {
 	let subject: (_: ExecuteParams) => Promise<void>
 	const endLayer: Layer = to.Layer(4)
-	const layerFunctionObjects: SettingsFunctionObject[] = []
-	const animationFunctionObjects: SettingsFunctionObject[] = []
+	const layerFunctionObjects: SettingFunctionObject[] = []
+	const animationFunctionObjects: SettingFunctionObject[] = []
 	beforeEach(() => {
 		subject = executePattern.default
 		appState.controls.endLayer = endLayer
@@ -31,7 +31,7 @@ describe('execute pattern', () => {
 		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
-			settingsFunctionObjects: animationFunctionObjects,
+			settingFunctionObjects: animationFunctionObjects,
 		})
 
 		done()

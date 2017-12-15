@@ -11,22 +11,22 @@ const composePatterns: (_: ComposePatternsParams) => void =
 		const {
 			patternToBeMergedOnto,
 			patternToMerge = {},
-			settingsPath = to.SettingsPath([]),
+			settingPath = to.SettingPath([]),
 		}: ComposePatternsParams = params
 
-		Object.entries(patternToMerge).forEach(([ settingName, overridingSetting ]: [ string, any ]) => {
+		Object.entries(patternToMerge).forEach(([ settingNameString, overridingSetting ]: [ string, any ]) => {
 			if (shouldRecurse(overridingSetting)) {
 				composePatterns({
 					patternToBeMergedOnto,
 					patternToMerge: overridingSetting,
-					settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
+					settingPath: deeperPath({ settingPath, settingName: to.SettingStep(settingNameString) }),
 				})
 			}
 			else {
 				getPatternSettingOrCreatePath({
 					pattern: patternToBeMergedOnto,
-					settingsPath,
-				})[ settingName ] = overridingSetting
+					settingPath,
+				})[ settingNameString ] = overridingSetting
 			}
 		})
 	}

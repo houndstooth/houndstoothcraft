@@ -5,10 +5,10 @@ type AnimationSettingsSchema<R extends Bool> =
 
 interface AnimationSettings extends AnimationSettingsSchema<True>{}
 
-type AnimationSettingsFunctions = FunctionsOf<AnimationSettingsSchema<False>>
+type AnimationSettingFunctions = FunctionsOf<AnimationSettingsSchema<False>>
 
 export {
 	AnimationSettings,
-	AnimationSettingsFunctions,
+	AnimationSettingFunctions,
 	AnimationSettingsSchema,
 }

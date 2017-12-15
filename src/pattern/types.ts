@@ -30,14 +30,14 @@ interface FullPatternBaseValues extends BasePatternSchema<True> {}
 interface PatternBaseValues extends BasePatternSchema<False> {}
 
 type PatternFunctions = Partial<{
-	animationSettings: animationSettings.AnimationSettingsFunctions,
-	colorSettings: colorSettings.ColorSettingsFunctions,
-	gridSettings: gridSettings.GridSettingsFunctions,
-	layerSettings: layerSettings.LayerSettingsFunctions,
-	stripeSettings: stripeSettings.StripeSettingsFunctions,
-	textureSettings: textureSettings.TextureSettingsFunctions,
-	tileSettings: tileSettings.TileSettingsFunctions,
-	viewSettings: viewSettings.ViewSettingsFunctions,
+	animationSettings: animationSettings.AnimationSettingFunctions,
+	colorSettings: colorSettings.ColorSettingFunctions,
+	gridSettings: gridSettings.GridSettingFunctions,
+	layerSettings: layerSettings.LayerSettingFunctions,
+	stripeSettings: stripeSettings.StripeSettingFunctions,
+	textureSettings: textureSettings.TextureSettingFunctions,
+	tileSettings: tileSettings.TileSettingFunctions,
+	viewSettings: viewSettings.ViewSettingFunctions,
 }>
 
 export {

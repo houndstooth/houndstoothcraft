@@ -1,16 +1,16 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { codeUtilities } from '../../utilities'
-import { SettingsPath, SettingsStep } from './types'
+import { SettingPath, SettingStep } from './types'
 
-const getPatternSettingOrCreatePath: (_: { pattern: any, settingsPath: SettingsPath }) => any =
-	({ pattern, settingsPath }: { pattern: any, settingsPath: SettingsPath }): any => {
+const getPatternSettingOrCreatePath: (_: { pattern: any, settingPath: SettingPath }) => any =
+	({ pattern, settingPath }: { pattern: any, settingPath: SettingPath }): any => {
 		let childSettings: any = pattern
-		settingsPath.forEach((settingsStep: SettingsStep): void => {
-			if (!codeUtilities.isDefined(childSettings[ settingsStep ])) {
-				childSettings[ settingsStep ] = {}
+		settingPath.forEach((settingStep: SettingStep): void => {
+			if (!codeUtilities.isDefined(childSettings[ settingStep ])) {
+				childSettings[ settingStep ] = {}
 			}
-			childSettings = childSettings[ settingsStep ]
+			childSettings = childSettings[ settingStep ]
 		})
 
 		return childSettings

@@ -8,7 +8,8 @@ import {
 	globalWrapper,
 	overrideHandler,
 	OverrideOptions,
-	SettingsPath,
+	SettingPath,
+	SettingStep,
 	to,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
@@ -17,18 +18,18 @@ describe('create override leaf', () => {
 	let overrideNode: HTMLElement
 	let overrideName: HTMLElement
 	let overrideInput: HTMLInputElement
-	let settingsPath: SettingsPath
+	let settingPath: SettingPath
 	let children: HTMLElement[]
 	let options: OverrideOptions
-	let settingName: string
+	let settingName: SettingStep
 
 	let subject: (_: CreateOverrideParams) => void
 	beforeEach(() => {
 		subject = createOverrideLeaf.default
 
 		options = { grandparents: [], parent: {} as HTMLElement, patternName: 'layersPattern' }
-		settingsPath = to.SettingsPath([ 'gridSettings' ])
-		settingName = 'tileResolution'
+		settingPath = to.SettingPath([ 'gridSettings' ])
+		settingName = to.SettingStep('tileResolution')
 
 		children = []
 		overrideNode = buildMockElement({ children }) as HTMLElement
@@ -50,14 +51,14 @@ describe('create override leaf', () => {
 
 		spyOn(appendOverrideNode, 'default')
 
-		subject({ options, settingsPath, settingName, settingValue: undefined })
+		subject({ options, settingPath, settingName, settingValue: undefined })
 	})
 
 	it('appends a node into the overrides', () => {
 		expect(appendOverrideNode.default).toHaveBeenCalledWith({
 			options,
 			overrideNode,
-			settingsPath,
+			settingPath,
 		})
 	})
 
@@ -87,7 +88,7 @@ describe('create override leaf', () => {
 				tileResolution: (): number => 45,
 			}
 
-			subject({ options, settingsPath, settingName, settingValue: undefined })
+			subject({ options, settingPath, settingName, settingValue: undefined })
 
 			expect(overrideInput.value).toBe('function () { return 45; }')
 		})
@@ -97,7 +98,7 @@ describe('create override leaf', () => {
 		it('gives the input an undefined value', () => {
 			appState.settings.mainHoundstooth.layersPattern.gridSettings = {}
 
-			subject({ options, settingsPath, settingName, settingValue: undefined })
+			subject({ options, settingPath, settingName, settingValue: undefined })
 
 			expect(overrideInput.value).toBeUndefined()
 		})

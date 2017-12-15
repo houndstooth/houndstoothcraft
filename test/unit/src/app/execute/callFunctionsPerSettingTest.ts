@@ -3,7 +3,7 @@ import {
 	callFunctionsPerSetting,
 	composeMainHoundstooth,
 	initializeCurrentPatternFromBasePattern,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 	to,
 	Unit,
 } from '../../../../../src/indexForTest'
@@ -11,25 +11,25 @@ import Spy = jasmine.Spy
 
 describe('call functions per setting', () => {
 	it('updates the current pattern with the result of each settings function', () => {
-		const subject: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void = callFunctionsPerSetting.default
+		const subject: (_: { settingFunctionObjects: SettingFunctionObject[] }) => void = callFunctionsPerSetting.default
 		const oldTileSize: Unit = to.Unit(888)
-		const tileSizeSettingsFunctionSpy: Spy = jasmine.createSpy('tileSizeSettingsFunction')
+		const tileSizeSettingFunctionSpy: Spy = jasmine.createSpy('tileSizeSettingFunction')
 		const newTileSize: Unit = to.Unit(999)
-		tileSizeSettingsFunctionSpy.and.returnValue(newTileSize)
-		const tileSizeSettingsFunctionObject: SettingsFunctionObject = {
-			settingName: to.SettingsStep('tileSize'),
-			settingsFunction: tileSizeSettingsFunctionSpy,
-			settingsPath: to.SettingsPath([ 'tileSettings' ]),
+		tileSizeSettingFunctionSpy.and.returnValue(newTileSize)
+		const tileSizeSettingFunctionObject: SettingFunctionObject = {
+			settingFunction: tileSizeSettingFunctionSpy,
+			settingName: to.SettingStep('tileSize'),
+			settingPath: to.SettingPath([ 'tileSettings' ]),
 		}
 
 		const oldZoom: number = 42
-		const zoomSettingsFunctionSpy: Spy = jasmine.createSpy('zoomSettingsFunction')
+		const zoomSettingFunctionSpy: Spy = jasmine.createSpy('zoomSettingFunction')
 		const newZoom: number = 45
-		zoomSettingsFunctionSpy.and.returnValue(newZoom)
-		const zoomSettingsFunctionObject: SettingsFunctionObject = {
-			settingName: to.SettingsStep('zoom'),
-			settingsFunction: zoomSettingsFunctionSpy,
-			settingsPath: to.SettingsPath([ 'viewSettings' ]),
+		zoomSettingFunctionSpy.and.returnValue(newZoom)
+		const zoomSettingFunctionObject: SettingFunctionObject = {
+			settingFunction: zoomSettingFunctionSpy,
+			settingName: to.SettingStep('zoom'),
+			settingPath: to.SettingPath([ 'viewSettings' ]),
 		}
 
 		appState.settings.overrides = {
@@ -46,14 +46,14 @@ describe('call functions per setting', () => {
 		initializeCurrentPatternFromBasePattern.default()
 
 		subject({
-			settingsFunctionObjects: [
-				tileSizeSettingsFunctionObject,
-				zoomSettingsFunctionObject,
+			settingFunctionObjects: [
+				tileSizeSettingFunctionObject,
+				zoomSettingFunctionObject,
 			],
 		})
 
-		expect(tileSizeSettingsFunctionSpy).toHaveBeenCalledWith(oldTileSize)
-		expect(zoomSettingsFunctionSpy).toHaveBeenCalledWith(oldZoom)
+		expect(tileSizeSettingFunctionSpy).toHaveBeenCalledWith(oldTileSize)
+		expect(zoomSettingFunctionSpy).toHaveBeenCalledWith(oldZoom)
 
 		expect(appState.settings.currentPattern.tileSettings.tileSize).toBe(newTileSize)
 		expect(appState.settings.currentPattern.viewSettings.zoom).toBe(newZoom)

@@ -8,7 +8,7 @@ import {
 	mixDownContexts,
 	previousFrameHasFinished,
 	saveCanvas,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 	shouldRefreshCanvas,
 	to,
 	updateCurrentFrame,
@@ -21,8 +21,8 @@ describe('build animation function returns an animation function', () => {
 	let executePatternSpy: Spy
 	let clearContextsSpy: Spy
 
-	const layerFunctionObjects: SettingsFunctionObject[] = []
-	const animationFunctionObjects: SettingsFunctionObject[] = []
+	const layerFunctionObjects: SettingFunctionObject[] = []
+	const animationFunctionObjects: SettingFunctionObject[] = []
 
 	beforeEach(() => {
 		subject = buildAnimationFunction.default

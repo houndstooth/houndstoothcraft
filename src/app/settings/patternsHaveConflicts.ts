@@ -5,24 +5,26 @@ import checkSettingForConflict from './checkSettingForConflict'
 import deeperPath from './deeperPath'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import shouldRecurse from './shouldRecurse'
-import { PatternsHaveConflictsParams } from './types'
+import { PatternsHaveConflictsParams, SettingStep } from './types'
 
 const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 	(params: PatternsHaveConflictsParams): boolean => {
 		const {
 			pattern = {},
 			patternCheckingAgainst = {},
-			settingsPath = to.SettingsPath([]),
+			settingPath = to.SettingPath([]),
 		}: PatternsHaveConflictsParams = params
 
 		let hasConflicts: boolean = false
 
-		Object.entries(patternCheckingAgainst).forEach(([ settingName, settingCheckingForConflict ]: [ string, any ]) => {
+		// tslint:disable-next-line:max-line-length
+		Object.entries(patternCheckingAgainst).forEach(([ settingNameString, settingCheckingForConflict ]: [ string, any ]) => {
+			const settingName: SettingStep = to.SettingStep(settingNameString)
 			if (shouldRecurse(settingCheckingForConflict)) {
 				const deeperConflicts: boolean = patternsHaveConflicts({
 					pattern,
 					patternCheckingAgainst: settingCheckingForConflict,
-					settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
+					settingPath: deeperPath({ settingPath, settingName }),
 				})
 
 				if (deeperConflicts) {
@@ -32,16 +34,16 @@ const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 			else {
 				const settingsWithSettingToBeChecked: ObjectOf<any> = getPatternSettingOrCreatePath({
 					pattern,
-					settingsPath,
+					settingPath,
 				})
 
-				const setting: any = settingsWithSettingToBeChecked[ settingName ]
+				const setting: any = settingsWithSettingToBeChecked[ settingNameString ]
 
 				const shallowConflicts: boolean = checkSettingForConflict({
 					setting,
 					settingCheckingForConflict,
-					settingName: to.SettingsStep(settingName),
-					settingsPath,
+					settingName,
+					settingPath,
 				})
 
 				if (shallowConflicts) {

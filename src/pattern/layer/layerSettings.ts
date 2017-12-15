@@ -6,10 +6,10 @@ type LayerSettingsSchema<R extends Bool> =
 
 interface LayerSettings extends LayerSettingsSchema<True>{}
 
-type LayerSettingsFunctions = FunctionsOf<LayerSettingsSchema<False>>
+type LayerSettingFunctions = FunctionsOf<LayerSettingsSchema<False>>
 
 export {
 	LayerSettings,
 	LayerSettingsSchema,
-	LayerSettingsFunctions,
+	LayerSettingFunctions,
 }

@@ -9,15 +9,15 @@ import {
 	executeSelectedEffects,
 	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 	to,
 	updateOverrides,
 } from '../../../../../src/indexForTest'
 
 describe('execute selected effects', () => {
 	let subject: (_?: { overrides?: Effect }) => void
-	const layerFunctionObjects: SettingsFunctionObject[] = []
-	const animationFunctionObjects: SettingsFunctionObject[] = []
+	const layerFunctionObjects: SettingFunctionObject[] = []
+	const animationFunctionObjects: SettingFunctionObject[] = []
 	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
 		subject = executeSelectedEffects.default
@@ -48,7 +48,7 @@ describe('execute selected effects', () => {
 		subject()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
 		})
 	})
 
@@ -56,7 +56,7 @@ describe('execute selected effects', () => {
 		subject()
 
 		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
 		})
 	})
 

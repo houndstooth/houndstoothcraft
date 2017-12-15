@@ -1,9 +1,9 @@
 // tslint:disable:no-any
 
-import { getPatternSettingOrCreatePath, SettingsPath, to } from '../../../../../src/indexForTest'
+import { getPatternSettingOrCreatePath, SettingPath, to } from '../../../../../src/indexForTest'
 
 describe('get pattern setting or create path', () => {
-	let subject: (_: { pattern: any, settingsPath: SettingsPath }) => any
+	let subject: (_: { pattern: any, settingPath: SettingPath }) => any
 	beforeEach(() => {
 		subject = getPatternSettingOrCreatePath.default
 	})
@@ -14,18 +14,18 @@ describe('get pattern setting or create path', () => {
 				childPathSecondStep: 346346,
 			},
 		}
-		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingPath: SettingPath = to.SettingPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = subject({ pattern, settingsPath })
+		const childSetting: any = subject({ pattern, settingPath })
 
 		expect(childSetting).toBe(346346)
 	})
 
 	it('creates the path for this setting, i.e. setting it to an empty object if it does not exist', () => {
 		const pattern: any = {}
-		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingPath: SettingPath = to.SettingPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = subject({ pattern, settingsPath })
+		const childSetting: any = subject({ pattern, settingPath })
 
 		expect(childSetting).toEqual({})
 		expect(pattern).toEqual({
@@ -41,9 +41,9 @@ describe('get pattern setting or create path', () => {
 				childPathSecondStep: 0,
 			},
 		}
-		const settingsPath: SettingsPath = to.SettingsPath([ 'childPathFirstStep', 'childPathSecondStep' ])
+		const settingPath: SettingPath = to.SettingPath([ 'childPathFirstStep', 'childPathSecondStep' ])
 
-		const childSetting: any = subject({ pattern, settingsPath })
+		const childSetting: any = subject({ pattern, settingPath })
 
 		expect(childSetting).toBe(0)
 		expect(pattern).toEqual({

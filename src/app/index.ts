@@ -38,10 +38,10 @@ export {
 	deeperPath,
 	getPatternSettingOrCreatePath,
 
-	SettingsPath,
-	SettingsStep,
-	SettingsFunction,
-	SettingsFunctionObject,
+	SettingPath,
+	SettingStep,
+	SettingFunction,
+	SettingFunctionObject,
 	SettingsState,
 } from './settings'
 export {

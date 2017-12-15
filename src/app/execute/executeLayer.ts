@@ -8,7 +8,7 @@ const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 	async ({ layer, layerFunctionObjects, thisPatternRef }: ExecuteLayerParams): Promise<void> => {
 		appState.execute.currentLayer = layer
 
-		callFunctionsPerSetting({ settingsFunctionObjects: layerFunctionObjects })
+		callFunctionsPerSetting({ settingFunctionObjects: layerFunctionObjects })
 
 		initializePatternState.default(appState.settings.currentPattern)
 

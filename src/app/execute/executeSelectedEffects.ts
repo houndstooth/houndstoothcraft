@@ -5,7 +5,7 @@ import {
 	composeMainHoundstooth,
 	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 } from '../settings'
 import executeAnimation from './executeAnimation'
 import executePattern from './executePattern'
@@ -35,11 +35,11 @@ const prepareCanvas: () => void =
 
 const execute: () => void =
 	(): void => {
-		const animationFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default({
-			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
+		const animationFunctionObjects: SettingFunctionObject[] = prepareFunctionObjectsPerSetting.default({
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
 		})
-		const layerFunctionObjects: SettingsFunctionObject[] = prepareFunctionObjectsPerSetting.default({
-			settingsFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
+		const layerFunctionObjects: SettingFunctionObject[] = prepareFunctionObjectsPerSetting.default({
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
 		})
 
 		if (appState.controls.animating) {

@@ -1,18 +1,20 @@
 // tslint:disable:no-any no-unsafe-any
 
+import { from } from '../../utilities'
 import { appState } from '../appState'
-import { getPatternSettingOrCreatePath, SettingsFunctionObject } from '../settings'
+import { getPatternSettingOrCreatePath, SettingFunctionObject } from '../settings'
 
-const callFunctionsPerSetting: (_: { settingsFunctionObjects: SettingsFunctionObject[] }) => void =
-	({ settingsFunctionObjects }: { settingsFunctionObjects: SettingsFunctionObject[] }): void => {
-		settingsFunctionObjects.forEach((settingsFunctionObject: SettingsFunctionObject): void => {
-			const { settingsPath, settingsFunction, settingName } = settingsFunctionObject
+const callFunctionsPerSetting: (_: { settingFunctionObjects: SettingFunctionObject[] }) => void =
+	({ settingFunctionObjects }: { settingFunctionObjects: SettingFunctionObject[] }): void => {
+		settingFunctionObjects.forEach((settingFunctionObject: SettingFunctionObject): void => {
+			const { settingPath, settingFunction, settingName } = settingFunctionObject
 
 			const settingParent: any = getPatternSettingOrCreatePath.default({
 				pattern: appState.settings.currentPattern,
-				settingsPath,
+				settingPath,
 			})
-			settingParent[ settingName ] = settingsFunction(settingParent[ settingName ])
+			const settingNameString: string = from.SettingStep(settingName)
+			settingParent[ settingNameString ] = settingFunction(settingParent[ settingNameString ])
 		})
 	}
 

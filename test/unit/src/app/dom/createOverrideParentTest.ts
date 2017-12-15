@@ -6,7 +6,8 @@ import {
 	createOverrideParent,
 	globalWrapper,
 	OverrideOptions,
-	SettingsPath,
+	SettingPath,
+	SettingStep,
 	to,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
@@ -14,15 +15,15 @@ import { buildMockElement } from '../../../helpers'
 describe('create override parent', () => {
 	let overrideNode: HTMLElement
 	let overrideName: HTMLElement
-	let settingsPath: SettingsPath
+	let settingPath: SettingPath
 	let children: HTMLElement[]
 	let options: OverrideOptions
 	beforeEach(() => {
 		const subject: (_: CreateOverrideParams) => void = createOverrideParent.default
 
 		options = { grandparents: [], parent: {} as HTMLElement, patternName: '' }
-		settingsPath = to.SettingsPath([])
-		const settingName: string = 'jesusSettings'
+		settingPath = to.SettingPath([])
+		const settingName: SettingStep = to.SettingStep('jesusSettings')
 
 		children = []
 		overrideNode = buildMockElement({ children }) as HTMLElement
@@ -41,14 +42,14 @@ describe('create override parent', () => {
 
 		spyOn(appendOverrideNode, 'default')
 
-		subject({ options, settingsPath, settingName, settingValue: undefined })
+		subject({ options, settingPath, settingName, settingValue: undefined })
 	})
 
 	it('appends a node into the overrides', () => {
 		expect(appendOverrideNode.default).toHaveBeenCalledWith({
 			options,
 			overrideNode,
-			settingsPath,
+			settingPath,
 		})
 	})
 

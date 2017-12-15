@@ -1,12 +1,12 @@
 // tslint:disable:no-any
 
 import { ObjectOf } from '../../utilities'
-import { PatternMapFunctionParams, SettingsPath } from '../settings'
+import { PatternMapFunctionParams, SettingPath } from '../settings'
 
 interface AppendOverrideNodeParams {
 	options: OverrideOptions,
 	overrideNode: HTMLElement,
-	settingsPath: SettingsPath
+	settingPath: SettingPath
 }
 
 interface CreateOverrideParams extends PatternMapFunctionParams {

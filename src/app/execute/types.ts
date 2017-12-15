@@ -1,6 +1,6 @@
 import { Referenced } from '../../pattern'
 import { Layer } from '../../types'
-import { SettingsFunctionObject } from '../settings'
+import { SettingFunctionObject } from '../settings'
 
 interface AnimationParams {
 	animationFunction: () => void,
@@ -8,13 +8,13 @@ interface AnimationParams {
 }
 
 interface ExecuteParams {
-	animationFunctionObjects: SettingsFunctionObject[],
-	layerFunctionObjects: SettingsFunctionObject[]
+	animationFunctionObjects: SettingFunctionObject[],
+	layerFunctionObjects: SettingFunctionObject[]
 }
 
 interface ExecuteLayerParams extends Referenced {
 	layer: Layer,
-	layerFunctionObjects: SettingsFunctionObject[],
+	layerFunctionObjects: SettingFunctionObject[],
 }
 
 interface ExecuteState {

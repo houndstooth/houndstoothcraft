@@ -11,10 +11,10 @@ type ViewSettingsSchema<R extends Bool> =
 
 interface ViewSettings extends ViewSettingsSchema<True>{}
 
-type ViewSettingsFunctions = FunctionsOf<ViewSettingsSchema<False>>
+type ViewSettingFunctions = FunctionsOf<ViewSettingsSchema<False>>
 
 export {
 	ViewSettings,
 	ViewSettingsSchema,
-	ViewSettingsFunctions,
+	ViewSettingFunctions,
 }

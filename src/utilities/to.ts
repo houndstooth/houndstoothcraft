@@ -2,7 +2,7 @@
 
 // First order, singular
 
-import { Dimensions, Path, Pixel, Px, SettingsFunctionObject, SettingsPath, SettingsStep } from '../app'
+import { Dimensions, Path, Pixel, Px, SettingFunctionObject, SettingPath, SettingStep } from '../app'
 import {
 	Address,
 	AddressElement,
@@ -17,7 +17,7 @@ import {
 	Unit,
 } from '../pattern'
 import { Color, Frame, Layer } from '../types'
-import { CouldBeSettingsFunctionObject } from './types'
+import { CouldBeSettingFunctionObject } from './types'
 
 const Px: (_: number) => Px =
 	(px: number): Px => px as any
@@ -36,8 +36,8 @@ const Unit: (_: number) => Unit =
 const AddressElement: (_: number) => AddressElement =
 	/* istanbul ignore next */
 	(addressElement: number): AddressElement => addressElement as any
-const SettingsStep: (_: string) => SettingsStep =
-	(settingsStep: string): SettingsStep => settingsStep as SettingsStep
+const SettingStep: (_: string) => SettingStep =
+	(settingStep: string): SettingStep => settingStep as SettingStep
 
 // First order, plurals
 
@@ -56,8 +56,8 @@ const StripePositions: (_: Array<StripePosition | number>) => StripePosition[] =
 // Units might be confusing because it's also natural to say "in units"; see Coordinate for a type that is Unit[]
 const Address: (_: Array<number | AddressElement>) => Address =
 	(address: Array<number | AddressElement>): Address => address as any
-const SettingsPath: (_: SettingsStep[] | Array<string | SettingsStep>) => SettingsPath =
-	(settingsPath: SettingsStep[] | Array<string | SettingsStep>): SettingsPath => settingsPath as SettingsPath
+const SettingPath: (_: SettingStep[] | Array<string | SettingStep>) => SettingPath =
+	(settingPath: SettingStep[] | Array<string | SettingStep>): SettingPath => settingPath as SettingPath
 
 // Second order, singular
 
@@ -74,13 +74,13 @@ const Dimensions: (_: Array<number | Px>) => Dimensions =
 		dimensions.map((px: number | Px): Px => px as any) as Dimensions
 
 // Second order, plural
-const SettingsFunctionObjects: (_: CouldBeSettingsFunctionObject) => SettingsFunctionObject =
-	(settingsFunctionObjects: CouldBeSettingsFunctionObject): SettingsFunctionObject =>
+const SettingFunctionObjects: (_: CouldBeSettingFunctionObject) => SettingFunctionObject =
+	(settingFunctionObjects: CouldBeSettingFunctionObject): SettingFunctionObject =>
 		// tslint:disable-next-line:max-line-length
-		settingsFunctionObjects.map(({ settingName, settingsFunction, settingsPath }: any): SettingsFunctionObject => ({
-			settingName: SettingsStep(settingName),
-			settingsFunction,
-			settingsPath: SettingsPath(settingsPath),
+		settingFunctionObjects.map(({ settingName, settingFunction, settingPath }: any): SettingFunctionObject => ({
+			settingFunction,
+			settingName: SettingStep(settingName),
+			settingPath: SettingPath(settingPath),
 		})) as any
 
 // Third order, singular
@@ -106,9 +106,9 @@ export {
 	Path,
 	Pixel,
 	Radian,
-	SettingsFunctionObjects,
-	SettingsPath,
-	SettingsStep,
+	SettingFunctionObjects,
+	SettingPath,
+	SettingStep,
 	ShapeColorIndex,
 	ShapeColorIndices,
 	StripePosition,

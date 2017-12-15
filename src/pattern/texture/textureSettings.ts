@@ -7,10 +7,10 @@ type TextureSettingsSchema<R extends Bool> =
 
 interface TextureSettings extends TextureSettingsSchema<True>{}
 
-type TextureSettingsFunctions = FunctionsOf<TextureSettingsSchema<False>>
+type TextureSettingFunctions = FunctionsOf<TextureSettingsSchema<False>>
 
 export {
 	TextureSettings,
 	TextureSettingsSchema,
-	TextureSettingsFunctions,
+	TextureSettingFunctions,
 }

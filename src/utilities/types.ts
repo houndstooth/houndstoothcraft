@@ -1,15 +1,15 @@
-import { SettingsFunction } from '../app'
+import { SettingFunction } from '../app'
 
-type CouldBeSettingsFunctionObject = Array<{
-	settingName: string,
+type CouldBeSettingFunctionObject = Array<{
 	// tslint:disable-next-line:no-any
-	settingsFunction: SettingsFunction<any>,
-	settingsPath: string[],
+	settingFunction: SettingFunction<any>,
+	settingName: string,
+	settingPath: string[],
 }>
 
 interface ObjectOf<T> { [_: string]: T }
 
 export {
 	ObjectOf,
-	CouldBeSettingsFunctionObject,
+	CouldBeSettingFunctionObject,
 }

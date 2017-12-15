@@ -12,10 +12,10 @@ type ColorAssignmentSettingsSchema<R extends Bool> =
 
 interface ColorAssignmentSettings extends ColorAssignmentSettingsSchema<True>{}
 
-type ColorAssignmentSettingsFunctions = FunctionsOf<ColorAssignmentSettingsSchema<False>>
+type ColorAssignmentSettingFunctions = FunctionsOf<ColorAssignmentSettingsSchema<False>>
 
 export {
 	ColorAssignmentSettings,
 	ColorAssignmentSettingsSchema,
-	ColorAssignmentSettingsFunctions,
+	ColorAssignmentSettingFunctions,
 }

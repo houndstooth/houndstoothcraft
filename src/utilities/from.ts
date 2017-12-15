@@ -1,6 +1,6 @@
 // tslint:disable:variable-name no-any
 
-import { Dimensions, Pixel, Px, SettingsPath, SettingsStep } from '../app'
+import { Dimensions, Pixel, Px, SettingPath, SettingStep } from '../app'
 import {
 	Address,
 	AddressElement,
@@ -31,9 +31,9 @@ const Unit: (_: Unit) => number =
 	(units: Unit): number => units as any
 const AddressElement: (_: AddressElement) => number =
 	(addressElement: AddressElement): number => addressElement as any
-const SettingsStep: (_: SettingsStep) => string =
+const SettingStep: (_: SettingStep) => string =
 	/* istanbul ignore next */
-	(settingsStep: SettingsStep): string => settingsStep
+	(settingStep: SettingStep): string => settingStep
 
 // First order, plurals
 
@@ -45,9 +45,9 @@ const SettingsStep: (_: SettingsStep) => string =
 // Units not yet needed
 const Address: (_: Array<AddressElement | number> | Address) => number[] =
 	(address: Array<AddressElement | number> | Address): number[] => address as any
-const SettingsPath: (_: Array<SettingsStep | string> | SettingsPath) => string[] =
+const SettingPath: (_: Array<SettingStep | string> | SettingPath) => string[] =
 	/* istanbul ignore next */
-	(settingsPath: Array<SettingsStep | string> | SettingsPath): string[] => settingsPath as SettingsPath
+	(settingPath: Array<SettingStep | string> | SettingPath): string[] => settingPath as SettingPath
 
 // Second order, singular
 
@@ -78,8 +78,8 @@ export {
 	Outline,
 	Pixel,
 	Radian,
-	SettingsPath,
-	SettingsStep,
+	SettingPath,
+	SettingStep,
 	ShapeColorIndex,
 	StripePosition,
 	Unit,

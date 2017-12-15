@@ -4,21 +4,21 @@ import { FullPatternBaseValues } from '../../pattern'
 import { Effect, Houndstooth, NamedEffect, Pattern } from '../../types'
 import { ObjectOf } from '../../utilities'
 
-enum _SettingsPathBrand {}
+enum _SettingPathBrand {}
 
-type SettingsPath = _SettingsPathBrand & SettingsStep[]
+type SettingPath = _SettingPathBrand & SettingStep[]
 
-enum _SettingsStepBrand {}
+enum _SettingStepBrand {}
 
-type SettingsStep = _SettingsStepBrand & string;
+type SettingStep = _SettingStepBrand & string;
 
-interface CheckSettingForConflict extends FullSettingsPath, SettingConflictCheck {
+interface CheckSettingForConflict extends FullSettingPath, SettingConflictCheck {
 }
 
 interface PatternsHaveConflictsParams {
 	pattern?: Pattern,
 	patternCheckingAgainst?: Pattern,
-	settingsPath?: SettingsPath,
+	settingPath?: SettingPath,
 }
 
 interface SettingConflictCheck {
@@ -36,29 +36,29 @@ interface ComposePatternParams {
 interface ComposePatternsParams {
 	patternToBeMergedOnto: Pattern,
 	patternToMerge?: any,
-	settingsPath?: SettingsPath,
+	settingPath?: SettingPath,
 }
 
-interface FullSettingsPath {
-	settingName: SettingsStep,
-	settingsPath: SettingsPath,
+interface FullSettingPath {
+	settingName: SettingStep,
+	settingPath: SettingPath,
 }
 
-interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends FullSettingsPath {
-	maybeSettingsFunctionsSourcePattern: any,
-	settingsFunctionObjects: SettingsFunctionObject[],
+interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends FullSettingPath {
+	maybeSettingFunctionsSourcePattern: any,
+	settingFunctionObjects: SettingFunctionObject[],
 }
 
 interface PrepareFunctionObjectsParams {
-	settingsFunctionObjects?: SettingsFunctionObject[],
-	settingsFunctionsSourcePattern: any,
-	settingsPath?: SettingsPath,
+	settingFunctionObjects?: SettingFunctionObject[],
+	settingFunctionsSourcePattern: any,
+	settingPath?: SettingPath,
 }
 
-type SettingsFunction<T> = (_?: T) => T
+type SettingFunction<T> = (_?: T) => T
 
-interface SettingsFunctionObject extends FullSettingsPath {
-	settingsFunction: SettingsFunction<any>,
+interface SettingFunctionObject extends FullSettingPath {
+	settingFunction: SettingFunction<any>,
 }
 
 type SettingsAreEqual = (a: any, b: any) => boolean
@@ -70,10 +70,8 @@ interface SettingsState {
 	overrides: Effect,
 }
 
-interface PatternMapFunctionParams {
+interface PatternMapFunctionParams extends FullSettingPath {
 	options: any,
-	settingName: string,
-	settingsPath: SettingsPath,
 	settingValue: any,
 }
 
@@ -85,23 +83,23 @@ interface MapOverPatternParams {
 }
 
 interface DeepSettingsMapParams {
+	settingPath: SettingPath,
 	settings: any,
-	settingsPath: SettingsPath,
 }
 
 export {
-	SettingsPath,
-	SettingsStep,
+	SettingPath,
+	SettingStep,
 	CheckSettingForConflict,
 	PatternsHaveConflictsParams,
 	SettingConflictCheck,
 	ComposePatternParams,
 	ComposePatternsParams,
-	FullSettingsPath,
+	FullSettingPath,
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
-	SettingsFunction,
-	SettingsFunctionObject,
+	SettingFunction,
+	SettingFunctionObject,
 	SettingsAreEqual,
 	SettingsState,
 	MapOverPatternParams,

@@ -6,10 +6,10 @@ type StripeCountContinuumSettingsSchema<R extends Bool> =
 
 interface StripeCountContinuumSettings extends StripeCountContinuumSettingsSchema<True>{}
 
-type StripeCountContinuumSettingsFunctions = FunctionsOf<StripeCountContinuumSettingsSchema<False>>
+type StripeCountContinuumSettingFunctions = FunctionsOf<StripeCountContinuumSettingsSchema<False>>
 
 export {
 	StripeCountContinuumSettings,
 	StripeCountContinuumSettingsSchema,
-	StripeCountContinuumSettingsFunctions,
+	StripeCountContinuumSettingFunctions,
 }

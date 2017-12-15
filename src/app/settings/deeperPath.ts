@@ -1,12 +1,12 @@
 import { to } from '../../utilities'
-import { FullSettingsPath, SettingsPath } from './types'
+import { FullSettingPath, SettingPath } from './types'
 
-const deeperPath: (_: FullSettingsPath) => SettingsPath =
-	({ settingName, settingsPath }: FullSettingsPath): SettingsPath => {
-		const path: SettingsPath = to.SettingsPath(settingsPath.slice())
+const deeperPath: (_: FullSettingPath) => SettingPath =
+	({ settingName, settingPath }: FullSettingPath): SettingPath => {
+		const path: SettingPath = to.SettingPath(settingPath.slice())
 		path.push(settingName)
 
-		return to.SettingsPath(path)
+		return path
 	}
 
 export default deeperPath

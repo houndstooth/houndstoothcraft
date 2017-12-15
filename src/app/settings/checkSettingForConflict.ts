@@ -2,7 +2,7 @@
 
 import { codeUtilities, globalWrapper } from '../../utilities'
 import { formatSetting } from '../dom'
-import settingPath from './settingPath'
+import formatSettingPath from './formatSettingPath'
 import { CheckSettingForConflict, SettingConflictCheck, SettingsAreEqual } from './types'
 
 const { isDefined } = codeUtilities
@@ -13,7 +13,7 @@ const checkSettingForConflict: (_: CheckSettingForConflict) => boolean =
 			setting,
 			settingCheckingForConflict,
 			settingName,
-			settingsPath,
+			settingPath,
 		}: CheckSettingForConflict = params
 
 		if (shouldWarnAboutConflict({ setting, settingCheckingForConflict })) {
@@ -21,7 +21,7 @@ const checkSettingForConflict: (_: CheckSettingForConflict) => boolean =
 				setting,
 				settingCheckingForConflict,
 				settingName,
-				settingsPath,
+				settingPath,
 			})
 			globalWrapper.console.warn(warning)
 
@@ -57,10 +57,10 @@ const settingsAreEqual: SettingsAreEqual =
 	}
 
 const buildWarningMessage: (_: CheckSettingForConflict) => string =
-	({ setting, settingCheckingForConflict, settingName, settingsPath }: CheckSettingForConflict): string => {
+	({ setting, settingCheckingForConflict, settingName, settingPath }: CheckSettingForConflict): string => {
 		const formattedSetting: string = formatSetting.default(setting)
 		const formattedCheckedSetting: string = formatSetting.default(settingCheckingForConflict)
-		const fullSettingPath: string = settingPath({ settingsPath, settingName })
+		const fullSettingPath: string = formatSettingPath({ settingPath, settingName })
 
 		// tslint:disable-next-line:max-line-length
 		return `effect would have conflicts on setting \`${fullSettingPath}\`: \`${formattedSetting}\` would be overridden by \`${formattedCheckedSetting}\``

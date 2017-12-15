@@ -11,7 +11,7 @@ const executePattern: (_: ExecuteParams) => Promise<void> =
 	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {
 		const endLayer: Layer = appState.controls.endLayer
 
-		callFunctionsPerSetting({ settingsFunctionObjects: animationFunctionObjects })
+		callFunctionsPerSetting({ settingFunctionObjects: animationFunctionObjects })
 
 		const thisPatternRef: number = appState.execute.patternRef
 		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {

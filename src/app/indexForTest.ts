@@ -93,13 +93,13 @@ export {
 	composePatterns,
 	deeperPath,
 	effectsHaveConflicts,
+	formatSettingPath,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
 	mapOverPattern,
 	patternsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
-	settingPath,
 	setupAvailableEffects,
 	shouldRecurse,
 
@@ -109,14 +109,14 @@ export {
 
 	CheckSettingForConflict,
 	ComposePatternsParams,
-	FullSettingsPath,
+	FullSettingPath,
 	MapOverPatternParams,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectsParams,
-	SettingsFunction,
-	SettingsFunctionObject,
-	SettingsPath,
-	SettingsStep,
+	SettingFunction,
+	SettingFunctionObject,
+	SettingPath,
+	SettingStep,
 } from './settings/indexForTest'
 export { appState } from './appState'
 export {

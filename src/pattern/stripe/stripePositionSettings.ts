@@ -1,6 +1,6 @@
 import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
 import {
-	StripeCountContinuumSettingsFunctions,
+	StripeCountContinuumSettingFunctions,
 	StripeCountContinuumSettingsSchema,
 } from './stripeCountContinuumSettings'
 import { GetStripePositions, StripeCountMode } from './types'
@@ -13,12 +13,12 @@ type StripePositionSettingsSchema<R extends Bool> =
 
 interface StripePositionSettings extends StripePositionSettingsSchema<True>{}
 
-type StripePositionSettingsFunctions = Partial<Overwrite<FunctionsOf<StripePositionSettingsSchema<False>>, {
-	stripeCountContinuumSettings: StripeCountContinuumSettingsFunctions,
+type StripePositionSettingFunctions = Partial<Overwrite<FunctionsOf<StripePositionSettingsSchema<False>>, {
+	stripeCountContinuumSettings: StripeCountContinuumSettingFunctions,
 }>>
 
 export {
 	StripePositionSettings,
 	StripePositionSettingsSchema,
-	StripePositionSettingsFunctions,
+	StripePositionSettingFunctions,
 }

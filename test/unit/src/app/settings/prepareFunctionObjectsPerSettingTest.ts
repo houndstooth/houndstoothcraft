@@ -4,55 +4,55 @@ import {
 	codeUtilities,
 	PrepareFunctionObjectsParams,
 	prepareFunctionObjectsPerSetting,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 	to,
 } from '../../../../../src/indexForTest'
 
-let subject: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[]
+let subject: (_: PrepareFunctionObjectsParams) => SettingFunctionObject[]
 
 describe('prepare function objects per setting', () => {
-	let actualFunctionObjects: SettingsFunctionObject[]
-	let expectedSettingsFunctionsSourcePattern: any
-	let settingsFunctionsSourcePattern: any
-	let settingsFunction: any
-	let secondSettingsFunction: any
+	let actualFunctionObjects: SettingFunctionObject[]
+	let expectedSettingFunctionsSourcePattern: any
+	let settingFunctionsSourcePattern: any
+	let settingFunction: any
+	let secondSettingFunction: any
 	beforeEach(() => {
 		subject = prepareFunctionObjectsPerSetting.default
-		settingsFunction = (p: number): number => p * 2
-		secondSettingsFunction = (p: number): number => p - 1
-		settingsFunctionsSourcePattern = {
+		settingFunction = (p: number): number => p * 2
+		secondSettingFunction = (p: number): number => p - 1
+		settingFunctionsSourcePattern = {
 			childPathFirstStep: {
 				childPathSecondStep: {
-					childPathFinalStep: settingsFunction,
+					childPathFinalStep: settingFunction,
 				},
 			},
 			secondChildPathFirstStep: {
-				secondChildPathFinalStep: secondSettingsFunction,
+				secondChildPathFinalStep: secondSettingFunction,
 				thingThatShouldNotBe: 'Great Old One',
 			},
 		}
 
-		expectedSettingsFunctionsSourcePattern = codeUtilities.deepClone(settingsFunctionsSourcePattern)
-		actualFunctionObjects = subject({ settingsFunctionsSourcePattern })
+		expectedSettingFunctionsSourcePattern = codeUtilities.deepClone(settingFunctionsSourcePattern)
+		actualFunctionObjects = subject({ settingFunctionsSourcePattern })
 	})
 
 	it('gathers the functions to be applied', () => {
-		const expectedFunctionObjects: SettingsFunctionObject[] = to.SettingsFunctionObjects([
+		const expectedFunctionObjects: SettingFunctionObject[] = to.SettingFunctionObjects([
 			{
+				settingFunction,
 				settingName: 'childPathFinalStep',
-				settingsFunction,
-				settingsPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
+				settingPath: [ 'childPathFirstStep', 'childPathSecondStep' ],
 			},
 			{
+				settingFunction: secondSettingFunction,
 				settingName: 'secondChildPathFinalStep',
-				settingsFunction: secondSettingsFunction,
-				settingsPath: [ 'secondChildPathFirstStep' ],
+				settingPath: [ 'secondChildPathFirstStep' ],
 			},
 		]) as any
 		expect(actualFunctionObjects).toEqual(expectedFunctionObjects)
 	})
 
 	it('does not modify the source pattern', () => {
-		expect(settingsFunctionsSourcePattern).toEqual(expectedSettingsFunctionsSourcePattern)
+		expect(settingFunctionsSourcePattern).toEqual(expectedSettingFunctionsSourcePattern)
 	})
 })

@@ -6,14 +6,14 @@ import {
 	ExecuteLayerParams,
 	initializePatternState,
 	Layer,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 	to,
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 describe('execute layer', () => {
 	let subject: (_: ExecuteLayerParams) => Promise<void>
-	const layerFunctionObjects: SettingsFunctionObject[] = []
+	const layerFunctionObjects: SettingFunctionObject[] = []
 	const thisPatternRef: number = 99
 
 	let callFunctionsPerSettingSpy: Spy
@@ -53,7 +53,7 @@ describe('execute layer', () => {
 		await subject({ layer, layerFunctionObjects, thisPatternRef })
 
 		expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
-			settingsFunctionObjects: layerFunctionObjects,
+			settingFunctionObjects: layerFunctionObjects,
 		})
 
 		done()

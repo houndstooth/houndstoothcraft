@@ -10,10 +10,10 @@ type TileSettingsSchema<R extends Bool> =
 
 interface TileSettings extends TileSettingsSchema<True>{}
 
-type TileSettingsFunctions = FunctionsOf<TileSettingsSchema<False>>
+type TileSettingFunctions = FunctionsOf<TileSettingsSchema<False>>
 
 export {
 	TileSettings,
 	TileSettingsSchema,
-	TileSettingsFunctions,
+	TileSettingFunctions,
 }

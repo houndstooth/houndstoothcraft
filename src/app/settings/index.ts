@@ -23,11 +23,11 @@ export {
 }
 export {
 	PatternMapFunctionParams,
-	SettingsFunction,
-	SettingsFunctionObject,
-	SettingsPath,
+	SettingFunction,
+	SettingFunctionObject,
+	SettingPath,
 	SettingsState,
-	SettingsStep,
+	SettingStep,
 } from './types'
 export {
 	DEFAULT_SETTINGS_STATE,

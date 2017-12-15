@@ -2,7 +2,7 @@ import {
 	appendOverrideNode,
 	AppendOverrideNodeParams,
 	OverrideOptions,
-	SettingsPath,
+	SettingPath,
 	to,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
@@ -42,10 +42,10 @@ describe('append override node', () => {
 
 	describe('when the node is more than a step shallower than the current pointer to where to append', () => {
 		beforeEach(() => {
-			const settingsPath: SettingsPath = to.SettingsPath([
+			const settingPath: SettingPath = to.SettingPath([
 				'another great grandparent',
 			])
-			subject({ options, overrideNode, settingsPath })
+			subject({ options, overrideNode, settingPath })
 		})
 
 		it('pops grandparents off the stack', () => {
@@ -65,11 +65,11 @@ describe('append override node', () => {
 
 	describe('when the node is a step shallower than the current pointer to where to append', () => {
 		beforeEach(() => {
-			const settingsPath: SettingsPath = to.SettingsPath([
+			const settingPath: SettingPath = to.SettingPath([
 				'not another great grandparent',
 				'rather another grandparent',
 			])
-			subject({ options, overrideNode, settingsPath })
+			subject({ options, overrideNode, settingPath })
 		})
 
 		it('leaves the grandparents stack intact', () => {
@@ -90,12 +90,12 @@ describe('append override node', () => {
 
 	describe('when the node is at the same depth as the current pointer to where to append', () => {
 		beforeEach(() => {
-			const settingsPath: SettingsPath = to.SettingsPath([
+			const settingPath: SettingPath = to.SettingPath([
 				'not another great grandparent',
 				'nor another grandparent',
 				'rather another parent',
 			])
-			subject({ options, overrideNode, settingsPath })
+			subject({ options, overrideNode, settingPath })
 		})
 
 		it('pushes the old parent onto the stack of grandparents', () => {
@@ -117,7 +117,7 @@ describe('append override node', () => {
 
 	describe('when the node is deeper than the current pointer to where to append', () => {
 		it('errors', () => {
-			const settingsPath: SettingsPath = to.SettingsPath([
+			const settingPath: SettingPath = to.SettingPath([
 				'not another great grandparent',
 				'nor another grandparent',
 				'nor even another parent',
@@ -125,7 +125,7 @@ describe('append override node', () => {
 			])
 
 			const thrower: () => void = (): void => {
-				subject({ options, overrideNode, settingsPath })
+				subject({ options, overrideNode, settingPath })
 			}
 			expect(thrower).toThrow(new Error('how did you skip a parent?'))
 		})

@@ -6,52 +6,52 @@ import shouldRecurse from './shouldRecurse'
 import {
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
-	SettingsFunctionObject,
+	SettingFunctionObject,
 } from './types'
 
-const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => SettingsFunctionObject[] =
-	(params: PrepareFunctionObjectsParams): SettingsFunctionObject[] => {
+const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => SettingFunctionObject[] =
+	(params: PrepareFunctionObjectsParams): SettingFunctionObject[] => {
 		const {
-			settingsFunctionObjects = [],
-			settingsFunctionsSourcePattern,
-			settingsPath = to.SettingsPath([]),
+			settingFunctionObjects = [],
+			settingFunctionsSourcePattern,
+			settingPath = to.SettingPath([]),
 		}: PrepareFunctionObjectsParams = params
 
-		const settings: Array<[ string, any ]> = Object.entries(settingsFunctionsSourcePattern)
+		const settings: Array<[ string, any ]> = Object.entries(settingFunctionsSourcePattern)
 
-		settings.forEach(([ settingName, maybeSettingsFunctionsSourcePattern ]: [ string, any ]): void => {
+		settings.forEach(([ settingNameString, maybeSettingFunctionsSourcePattern ]: [ string, any ]): void => {
 			prepareFunctionObjectForSettingOrMaybeRecurse({
-				maybeSettingsFunctionsSourcePattern,
-				settingName: to.SettingsStep(settingName),
-				settingsFunctionObjects,
-				settingsPath,
+				maybeSettingFunctionsSourcePattern,
+				settingFunctionObjects,
+				settingName: to.SettingStep(settingNameString),
+				settingPath,
 			})
 		})
 
-		return settingsFunctionObjects
+		return settingFunctionObjects
 	}
 
 const prepareFunctionObjectForSettingOrMaybeRecurse: (_: PrepareFunctionObjectForSettingOrMaybeRecurseParams) => void =
 	(params: PrepareFunctionObjectForSettingOrMaybeRecurseParams): void => {
 		const {
-			maybeSettingsFunctionsSourcePattern,
+			maybeSettingFunctionsSourcePattern,
+			settingFunctionObjects,
 			settingName,
-			settingsFunctionObjects,
-			settingsPath,
+			settingPath,
 		}: PrepareFunctionObjectForSettingOrMaybeRecurseParams = params
 
-		if (typeof maybeSettingsFunctionsSourcePattern === 'function') {
-			settingsFunctionObjects.push({
-				settingName: to.SettingsStep(settingName),
-				settingsFunction: maybeSettingsFunctionsSourcePattern,
-				settingsPath,
+		if (typeof maybeSettingFunctionsSourcePattern === 'function') {
+			settingFunctionObjects.push({
+				settingFunction: maybeSettingFunctionsSourcePattern,
+				settingName,
+				settingPath,
 			})
 		}
-		else if (shouldRecurse(maybeSettingsFunctionsSourcePattern)) {
+		else if (shouldRecurse(maybeSettingFunctionsSourcePattern)) {
 			prepareFunctionObjectsPerSetting({
-				settingsFunctionObjects,
-				settingsFunctionsSourcePattern: maybeSettingsFunctionsSourcePattern,
-				settingsPath: deeperPath({ settingsPath, settingName: to.SettingsStep(settingName) }),
+				settingFunctionObjects,
+				settingFunctionsSourcePattern: maybeSettingFunctionsSourcePattern,
+				settingPath: deeperPath({ settingPath, settingName }),
 			})
 		}
 	}

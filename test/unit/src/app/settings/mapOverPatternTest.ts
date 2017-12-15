@@ -32,39 +32,39 @@ describe('map over pattern', () => {
 		expect(perParentSpy.calls.all().length).toBe(3)
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'animationSettings',
+			settingName: to.SettingStep('animationSettings'),
+			settingPath: to.SettingPath([]),
 			settingValue: { refreshCanvas: true },
-			settingsPath: to.SettingsPath([]),
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'colorSettings',
+			settingName: to.SettingStep('colorSettings'),
+			settingPath: to.SettingPath([]),
 			settingValue: {
 				colorAssignmentSettings: {
 					switcheroo: false,
 				},
 			},
-			settingsPath: to.SettingsPath([]),
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'colorAssignmentSettings',
+			settingName: to.SettingStep('colorAssignmentSettings'),
+			settingPath: to.SettingPath([ 'colorSettings' ]),
 			settingValue: { switcheroo: false },
-			settingsPath: to.SettingsPath([ 'colorSettings' ]),
 		})
 
 		expect(perLeafSpy.calls.all().length).toBe(2)
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'refreshCanvas',
+			settingName: to.SettingStep('refreshCanvas'),
+			settingPath: to.SettingPath([ 'animationSettings' ]),
 			settingValue: true,
-			settingsPath: to.SettingsPath([ 'animationSettings' ]),
 		})
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'switcheroo',
+			settingName: to.SettingStep('switcheroo'),
+			settingPath: to.SettingPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 			settingValue: false,
-			settingsPath: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 		})
 	})
 
@@ -74,25 +74,25 @@ describe('map over pattern', () => {
 		expect(perParentSpy.calls.all().length).toBe(3)
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'animationSettings',
+			settingName: to.SettingStep('animationSettings'),
+			settingPath: to.SettingPath([]),
 			settingValue: { refreshCanvas: true },
-			settingsPath: to.SettingsPath([]),
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'colorSettings',
+			settingName: to.SettingStep('colorSettings'),
+			settingPath: to.SettingPath([]),
 			settingValue: {
 				colorAssignmentSettings: {
 					switcheroo: false,
 				},
 			},
-			settingsPath: to.SettingsPath([]),
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'colorAssignmentSettings',
+			settingName: to.SettingStep('colorAssignmentSettings'),
+			settingPath: to.SettingPath([ 'colorSettings' ]),
 			settingValue: { switcheroo: false },
-			settingsPath: to.SettingsPath([ 'colorSettings' ]),
 		})
 	})
 
@@ -102,15 +102,15 @@ describe('map over pattern', () => {
 		expect(perLeafSpy.calls.all().length).toBe(2)
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'refreshCanvas',
+			settingName: to.SettingStep('refreshCanvas'),
+			settingPath: to.SettingPath([ 'animationSettings' ]),
 			settingValue: true,
-			settingsPath: to.SettingsPath([ 'animationSettings' ]),
 		})
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'switcheroo',
+			settingName: to.SettingStep('switcheroo'),
+			settingPath: to.SettingPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 			settingValue: false,
-			settingsPath: to.SettingsPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 		})
 	})
 
@@ -119,9 +119,9 @@ describe('map over pattern', () => {
 
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
-			settingName: 'colorSettings',
+			settingName: to.SettingStep('colorSettings'),
+			settingPath: to.SettingPath([]),
 			settingValue: DEFAULT_BASE_PATTERN.colorSettings,
-			settingsPath: to.SettingsPath([]),
 		})
 	})
 

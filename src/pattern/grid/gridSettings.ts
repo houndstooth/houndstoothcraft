@@ -6,10 +6,10 @@ type GridSettingsSchema<R extends Bool> =
 
 interface GridSettings extends GridSettingsSchema<True>{}
 
-type GridSettingsFunctions = FunctionsOf<GridSettingsSchema<False>>
+type GridSettingFunctions = FunctionsOf<GridSettingsSchema<False>>
 
 export {
 	GridSettings,
 	GridSettingsSchema,
-	GridSettingsFunctions,
+	GridSettingFunctions,
 }

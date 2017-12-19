@@ -1,7 +1,7 @@
-import { AppendOverrideNodeParams } from './types'
+import { AppendOverrideParams } from './types'
 
-const appendOverrideNode: (_: AppendOverrideNodeParams) => void =
-	({ options, overrideNode, settingPath }: AppendOverrideNodeParams): void => {
+const appendOverride: (_: AppendOverrideParams) => void =
+	({ options, override, settingPath }: AppendOverrideParams): void => {
 		if (settingPath.length === options.grandparents.length) {
 			options.grandparents.push(options.parent)
 		}
@@ -13,8 +13,8 @@ const appendOverrideNode: (_: AppendOverrideNodeParams) => void =
 			throw new Error('how did you skip a parent?')
 		}
 
-		options.parent.appendChild(overrideNode)
-		options.parent = overrideNode
+		options.parent.appendChild(override)
+		options.parent = override
 	}
 
-export default appendOverrideNode
+export default appendOverride

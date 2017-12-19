@@ -2,9 +2,9 @@ import * as checkSettingForConflict from './checkSettingForConflict'
 import * as combineEffects from './combineEffects'
 import * as composeMainHoundstooth from './composeMainHoundstooth'
 import * as composePatterns from './composePatterns'
+import * as concatFullSettingPath from './concatFullSettingPath'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
-import * as formatSettingPath from './formatSettingPath'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
 import * as mapOverPattern from './mapOverPattern'
@@ -15,13 +15,13 @@ import * as setupAvailableEffects from './setupAvailableEffects'
 import * as shouldRecurse from './shouldRecurse'
 
 export {
+	concatFullSettingPath,
 	checkSettingForConflict,
 	combineEffects,
 	composeMainHoundstooth,
 	composePatterns,
 	deeperPath,
 	effectsHaveConflicts,
-	formatSettingPath,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
 	mapOverPattern,
@@ -32,7 +32,7 @@ export {
 	shouldRecurse,
 }
 export {
-	CheckSettingForConflict,
+	CheckSettingForConflictParams,
 	ComposePatternsParams,
 	FullSettingPath,
 	MapOverPatternParams,
@@ -41,6 +41,7 @@ export {
 	SettingFunction,
 	SettingFunctionObject,
 	SettingPath,
+	SettingPathAndName,
 	SettingStep,
 } from './types'
 export {

@@ -6,7 +6,7 @@
 
 Check it out at [http://houndstooth.douglasblumeyer.com](http://houndstooth.douglasblumeyer.com).
 
-## houndstooth pattern settings hierarchy
+## settings hierarchy
 
 In short:
 - [houndstooth](#houndstooth)
@@ -26,8 +26,6 @@ In short:
 	- `layersPattern`
 
 A houndstooth consists of a small set of [patterns](#pattern) which, by virtue of being required to conform to the same structure, are able to interact by mapping onto each other.
-
-The houndsteeth whose names begin with the word "houndstooth" are understood to be not ready-to-go, but rather layers to be composed into a desired finished houndstooth. Such finished houndsteeth are named to instead end with the word "houndstooth". Think of it this way: the former are *for/of houndstooth*, the latter *are houndstooth*, but both types conform to the same houndstooth structure.
 
 An "effect", such as the cmyktooth effect, is just a type of houndstooth intended to be composed, along with defaults and overrides, into a main houndstooth.
 
@@ -65,11 +63,13 @@ The key difference between a [pattern](#pattern) and a setting:
 - settings are focused; they each configure one specific aspect of a pattern, such as its colors, view, or grid. Yes, a specific aspect such as this may have various facets, e.g. the view has `rotationAboutCanvasCenter` and `zoom`, but these are still aspectually related.
 - patterns are heterogenous; they are collections of such focused settings.
 
-For clarity and brevity, avoid referring to instances of patterns and settings by using the words "pattern" or "setting" as modifiers on other generic nouns, e.g. "a settings object", or a "pattern structure". The latter case in particular would undesirably overload the word "structure" to refer to both instances and a class (the all-important `PATTERN_STRUCTURE`). The words "pattern" and "setting" alone, used as nouns, should suffice to refer to instances of patterns and settings. This naming scheme may seem a bit odd in the case of settings, given that the word is plural, but I think in the end we will find that considering e.g. `colorSettings` to be a "setting" itself will cause less headaches than any alternative nomenclature.
+For clarity and brevity, avoid referring to instances of patterns and settings by using the words "pattern" or "setting" as modifiers on other generic nouns, e.g. "a settings object", or a "pattern structure". The words "pattern" and "setting" alone, used as nouns, should suffice to refer to instances of patterns and settings. This naming scheme may seem a bit odd in the case of settings, given that the word is plural, but I think in the end we will find that considering e.g. `colorSettings` to be a "setting" itself will cause less headaches than any alternative nomenclature.
 
-Note that both an `animationsPattern` pattern and an `animationSettings` setting exist. This is not a mistake. The animations pattern consists of functions that map onto a base pattern, following the `PATTERN_STRUCTURE`, to cause their shared parent [houndstooth](#houndstooth) to animate. The animations settings configure that animation with settings including the frame rate. Conceivably, an animations pattern could even animate the animation settings, to e.g. cause the frame rate to slow over time.
+Note that both an `animationsPattern` pattern and an `animationSettings` setting exist. This is not a mistake. The animations pattern consists of functions that map onto a base pattern to cause their shared parent [houndstooth](#houndstooth) to animate. The animations settings configure that animation, e.g. whether the canvas refreshes between frames. Conceivably, an animations pattern could even animate the animation settings.
 
 Both `layersPattern` and `layerSettings` exist as well, for the same reason.
+
+Instances of `houndstooth` and `pattern` are considered to be settings too.
 
 ## app
 

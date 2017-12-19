@@ -1,4 +1,5 @@
 import { Effect } from '../../types'
+import { to } from '../../utilities'
 import patternsHaveConflicts from './patternsHaveConflicts'
 
 const effectsHaveConflicts: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean =
@@ -6,6 +7,7 @@ const effectsHaveConflicts: (_: {effect: Effect, effectCheckingAgainst: Effect }
 		if (patternsHaveConflicts({
 				pattern: effect.animationsPattern,
 				patternCheckingAgainst: effectCheckingAgainst.animationsPattern,
+				patternName: to.SettingStep('animationsPattern'),
 			})) {
 			return true
 		}
@@ -13,6 +15,7 @@ const effectsHaveConflicts: (_: {effect: Effect, effectCheckingAgainst: Effect }
 		if (patternsHaveConflicts({
 				pattern: effect.layersPattern,
 				patternCheckingAgainst: effectCheckingAgainst.layersPattern,
+				patternName: to.SettingStep('layersPattern'),
 			})) {
 			return true
 		}
@@ -20,6 +23,7 @@ const effectsHaveConflicts: (_: {effect: Effect, effectCheckingAgainst: Effect }
 		return patternsHaveConflicts({
 			pattern: effect.basePattern,
 			patternCheckingAgainst: effectCheckingAgainst.basePattern,
+			patternName: to.SettingStep('basePattern'),
 		})
 	}
 

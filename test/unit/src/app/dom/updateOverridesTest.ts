@@ -25,17 +25,20 @@ describe('update overrides', () => {
 
 	it('for each pattern, creates a node for every parent of settings and a node w input for every settings leaf', () => {
 		expect(mapOverPattern.default).toHaveBeenCalledWith({
-			options: { patternName: 'basePattern', parent: children[0], grandparents: [] },
+			options: { parent: children[0], grandparents: [] },
+			patternName: 'basePattern',
 			perLeaf: createOverrideLeaf.default,
 			perParent: createOverrideParent.default,
 		})
 		expect(mapOverPattern.default).toHaveBeenCalledWith({
-			options: { patternName: 'animationsPattern', parent: children[1], grandparents: [] },
+			options: { parent: children[1], grandparents: [] },
+			patternName: 'animationsPattern',
 			perLeaf: createOverrideLeaf.default,
 			perParent: createOverrideParent.default,
 		})
 		expect(mapOverPattern.default).toHaveBeenCalledWith({
-			options: { patternName: 'layersPattern', parent: children[2], grandparents: [] },
+			options: { parent: children[2], grandparents: [] },
+			patternName: 'layersPattern',
 			perLeaf: createOverrideLeaf.default,
 			perParent: createOverrideParent.default,
 		})

@@ -4,7 +4,7 @@ import * as stripePoints from './stripePoints'
 import { PointsParamsPlusStripeEnd } from './types'
 
 const middlePoints: (_: PointsParamsPlusStripeEnd) => void =
-	(params: PointsParamsPlusStripeEnd): void => {
+	(pointsParamsPlusStripeEnd: PointsParamsPlusStripeEnd): void => {
 		const {
 			outline,
 			stripeStartsInTopLeftHalf,
@@ -12,7 +12,7 @@ const middlePoints: (_: PointsParamsPlusStripeEnd) => void =
 			stripeEnd,
 			tileOrigin,
 			tileSize,
-		}: PointsParamsPlusStripeEnd = params
+		}: PointsParamsPlusStripeEnd = pointsParamsPlusStripeEnd
 
 		if (!stripeEndsInBottomRightHalf) {
 			middlePointsWhenStripeEndsInBottomRightHalf({ outline, stripeEnd, tileOrigin, tileSize })

@@ -1,34 +1,34 @@
-import { globalWrapper } from '../../utilities'
+import { from, globalWrapper, to } from '../../utilities'
 import { appState } from '../appState'
-import { mapOverPattern } from '../settings'
+import { mapOverPattern, SettingStep } from '../settings'
 import createOverrideLeaf from './createOverrideLeaf'
 import createOverrideParent from './createOverrideParent'
 
 const updateOverrides: () => void =
 	(): void => {
 		appState.dom.overridesContainer.innerHTML = ''
-		createControlsForPattern('basePattern')
-		createControlsForPattern('animationsPattern')
-		createControlsForPattern('layersPattern')
+		createOverridesForPattern(to.SettingStep('basePattern'))
+		createOverridesForPattern(to.SettingStep('animationsPattern'))
+		createOverridesForPattern(to.SettingStep('layersPattern'))
 	}
 
-const createControlsForPattern: (_: string) => void =
-	(patternName: string): void => {
+const createOverridesForPattern: (_: SettingStep) => void =
+	(patternName: SettingStep): void => {
 		mapOverPattern.default({
 			options: {
 				grandparents: [],
 				parent: createPatternHeader(patternName),
-				patternName,
 			},
+			patternName,
 			perLeaf: createOverrideLeaf,
 			perParent: createOverrideParent,
 		})
 	}
 
-const createPatternHeader: (_: string) => HTMLElement =
-	(patternName: string): HTMLElement => {
+const createPatternHeader: (_: SettingStep) => HTMLElement =
+	(patternName: SettingStep): HTMLElement => {
 		const patternHeader: HTMLElement = globalWrapper.document.createElement('div')
-		patternHeader.innerHTML = patternName
+		patternHeader.innerHTML = from.SettingStep(patternName)
 
 		appState.dom.overridesContainer.appendChild(patternHeader)
 

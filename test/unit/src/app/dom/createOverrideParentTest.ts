@@ -1,63 +1,98 @@
 // tslint:disable:no-object-literal-type-assertion
 
 import {
-	appendOverrideNode,
+	appendOverride,
+	appState,
+	createOverrideNodes,
 	CreateOverrideParams,
 	createOverrideParent,
 	globalWrapper,
 	OverrideOptions,
+	OverrideParentNode,
 	SettingPath,
 	SettingStep,
 	to,
+	toggleOverrideParentOpen,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
 describe('create override parent', () => {
-	let overrideNode: HTMLElement
-	let overrideName: HTMLElement
+	let overrideParent: HTMLDetailsElement
+	let overrideParentName: HTMLElement
+	let patternName: SettingStep
+	let settingName: SettingStep
 	let settingPath: SettingPath
 	let children: HTMLElement[]
 	let options: OverrideOptions
-	beforeEach(() => {
-		const subject: (_: CreateOverrideParams) => void = createOverrideParent.default
 
-		options = { grandparents: [], parent: {} as HTMLElement, patternName: '' }
-		settingPath = to.SettingPath([])
-		const settingName: SettingStep = to.SettingStep('jesusSettings')
+	let subject: (_: CreateOverrideParams) => void
+	beforeEach(() => {
+		subject = createOverrideParent.default
+
+		options = { grandparents: [], parent: {} as HTMLElement }
+		patternName = to.SettingStep('layersPattern')
+		settingPath = to.SettingPath([ 'colorSettings' ])
+		settingName = to.SettingStep('colorAssignmentSettings')
 
 		children = []
-		overrideNode = buildMockElement({ children }) as HTMLElement
-		overrideName = {} as HTMLElement
+		overrideParent = buildMockElement({ children }) as HTMLDetailsElement
+		overrideParentName = {} as HTMLElement
 
 		spyOn(globalWrapper.document, 'createElement').and.callFake((tagName: string): HTMLElement => {
 			switch (tagName) {
 				case 'details':
-					return overrideNode
+					return overrideParent
 				case 'summary':
-					return overrideName
+					return overrideParentName
 				default:
 					return {} as HTMLElement
 			}
 		})
 
-		spyOn(appendOverrideNode, 'default')
+		spyOn(appendOverride, 'default')
 
-		subject({ options, settingPath, settingName, settingValue: undefined })
+		createOverrideNodes.default()
+
+		subject({ options, patternName, settingPath, settingName })
 	})
 
 	it('appends a node into the overrides', () => {
-		expect(appendOverrideNode.default).toHaveBeenCalledWith({
+		expect(appendOverride.default).toHaveBeenCalledWith({
 			options,
-			overrideNode,
+			override: overrideParent,
 			settingPath,
 		})
 	})
 
 	it('creates a details element as the summary', () => {
-		expect(children[0]).toBe(overrideName)
+		expect(children[0]).toBe(overrideParentName)
 	})
 
 	it('the setting\'s name is the summary', () => {
-		expect(overrideName.innerHTML).toBe('jesusSettings')
+		expect(overrideParentName.innerHTML).toBe('colorAssignmentSettings')
+	})
+
+	it('is closed by default', () => {
+		expect(overrideParent.open).toBe(false)
+	})
+
+	it('can be opened', () => {
+		const layersPattern: OverrideParentNode = appState.controls.overrideNodes.children.layersPattern as OverrideParentNode
+		const colorSettings: OverrideParentNode = layersPattern.children.colorSettings as OverrideParentNode
+		// tslint:disable-next-line:max-line-length
+		const colorAssignmentSettings: OverrideParentNode = colorSettings.children.colorAssignmentSettings as OverrideParentNode
+		colorAssignmentSettings.open = true
+
+		subject({ options, patternName, settingPath, settingName })
+
+		expect(overrideParent.open).toBe(true)
+	})
+
+	it('attaches a click handler to the summary', () => {
+		expect(overrideParentName.onclick).toBe(toggleOverrideParentOpen.default)
+	})
+
+	it('gives the summary an id', () => {
+		expect(overrideParentName.id).toBe('layersPattern-colorSettings-colorAssignmentSettings')
 	})
 })

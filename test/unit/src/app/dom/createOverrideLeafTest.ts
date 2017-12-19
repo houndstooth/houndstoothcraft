@@ -1,12 +1,12 @@
 // tslint:disable:no-object-literal-type-assertion
 
 import {
-	appendOverrideNode,
+	appendOverride,
 	appState,
 	createOverrideLeaf,
 	CreateOverrideParams,
 	globalWrapper,
-	overrideHandler,
+	overrideInputChangeHandler,
 	OverrideOptions,
 	SettingPath,
 	SettingStep,
@@ -15,9 +15,10 @@ import {
 import { buildMockElement } from '../../../helpers'
 
 describe('create override leaf', () => {
-	let overrideNode: HTMLElement
-	let overrideName: HTMLElement
-	let overrideInput: HTMLInputElement
+	let overrideLeaf: HTMLElement
+	let overrideLeafName: HTMLElement
+	let overrideLeafInput: HTMLInputElement
+	let patternName: SettingStep
 	let settingPath: SettingPath
 	let children: HTMLElement[]
 	let options: OverrideOptions
@@ -27,59 +28,60 @@ describe('create override leaf', () => {
 	beforeEach(() => {
 		subject = createOverrideLeaf.default
 
-		options = { grandparents: [], parent: {} as HTMLElement, patternName: 'layersPattern' }
+		options = { grandparents: [], parent: {} as HTMLElement }
+		patternName = to.SettingStep('layersPattern')
 		settingPath = to.SettingPath([ 'gridSettings' ])
 		settingName = to.SettingStep('tileResolution')
 
 		children = []
-		overrideNode = buildMockElement({ children }) as HTMLElement
-		overrideName = {} as HTMLElement
-		overrideInput = buildMockElement() as HTMLInputElement
+		overrideLeaf = buildMockElement({ children }) as HTMLElement
+		overrideLeafName = {} as HTMLElement
+		overrideLeafInput = buildMockElement() as HTMLInputElement
 
 		spyOn(globalWrapper.document, 'createElement').and.callFake((tagName: string): HTMLElement => {
 			switch (tagName) {
 				case 'div':
-					return overrideNode
+					return overrideLeaf
 				case 'span':
-					return overrideName
+					return overrideLeafName
 				case 'input':
-					return overrideInput
+					return overrideLeafInput
 				default:
 					return {} as HTMLElement
 			}
 		})
 
-		spyOn(appendOverrideNode, 'default')
+		spyOn(appendOverride, 'default')
 
-		subject({ options, settingPath, settingName, settingValue: undefined })
+		subject({ options, patternName, settingPath, settingName })
 	})
 
 	it('appends a node into the overrides', () => {
-		expect(appendOverrideNode.default).toHaveBeenCalledWith({
+		expect(appendOverride.default).toHaveBeenCalledWith({
 			options,
-			overrideNode,
+			override: overrideLeaf,
 			settingPath,
 		})
 	})
 
 	it('creates a details element as the summary', () => {
-		expect(children[0]).toBe(overrideName)
+		expect(children[0]).toBe(overrideLeafName)
 	})
 
 	it('the setting\'s name is the summary', () => {
-		expect(overrideName.innerHTML).toBe('tileResolution')
+		expect(overrideLeafName.innerHTML).toBe('tileResolution')
 	})
 
 	it('creates an input for you to use to override', () => {
-		expect(children[1]).toBe(overrideInput)
+		expect(children[1]).toBe(overrideLeafInput)
 	})
 
 	it('attaches the override handler to the input', () => {
-		expect(overrideInput.onchange).toBe(overrideHandler.default)
+		expect(overrideLeafInput.onchange).toBe(overrideInputChangeHandler.default)
 	})
 
-	it('gives the input an id which describes its settings path, including the pattern', () => {
-		expect(overrideInput.id).toBe('layersPattern-gridSettings-tileResolution')
+	it('gives the input an id which describes its setting path, including the pattern', () => {
+		expect(overrideLeafInput.id).toBe('layersPattern-gridSettings-tileResolution')
 	})
 
 	describe('when the corresponding value is defined on the main houndstooth', () => {
@@ -88,9 +90,9 @@ describe('create override leaf', () => {
 				tileResolution: (): number => 45,
 			}
 
-			subject({ options, settingPath, settingName, settingValue: undefined })
+			subject({ options, patternName, settingPath, settingName })
 
-			expect(overrideInput.value).toBe('function () { return 45; }')
+			expect(overrideLeafInput.value).toBe('function () { return 45; }')
 		})
 	})
 
@@ -98,9 +100,9 @@ describe('create override leaf', () => {
 		it('gives the input an undefined value', () => {
 			appState.settings.mainHoundstooth.layersPattern.gridSettings = {}
 
-			subject({ options, settingPath, settingName, settingValue: undefined })
+			subject({ options, patternName, settingPath, settingName })
 
-			expect(overrideInput.value).toBeUndefined()
+			expect(overrideLeafInput.value).toBeUndefined()
 		})
 	})
 })

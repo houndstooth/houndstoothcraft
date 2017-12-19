@@ -8,12 +8,13 @@ import shouldRecurse from './shouldRecurse'
 import { PatternsHaveConflictsParams, SettingStep } from './types'
 
 const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
-	(params: PatternsHaveConflictsParams): boolean => {
+	(patternsHaveConflictsParams: PatternsHaveConflictsParams): boolean => {
 		const {
 			pattern = {},
+			patternName,
 			patternCheckingAgainst = {},
 			settingPath = to.SettingPath([]),
-		}: PatternsHaveConflictsParams = params
+		}: PatternsHaveConflictsParams = patternsHaveConflictsParams
 
 		let hasConflicts: boolean = false
 
@@ -24,6 +25,7 @@ const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 				const deeperConflicts: boolean = patternsHaveConflicts({
 					pattern,
 					patternCheckingAgainst: settingCheckingForConflict,
+					patternName,
 					settingPath: deeperPath({ settingPath, settingName }),
 				})
 
@@ -40,6 +42,7 @@ const patternsHaveConflicts: (_: PatternsHaveConflictsParams) => boolean =
 				const setting: any = settingsWithSettingToBeChecked[ settingNameString ]
 
 				const shallowConflicts: boolean = checkSettingForConflict({
+					patternName,
 					setting,
 					settingCheckingForConflict,
 					settingName,

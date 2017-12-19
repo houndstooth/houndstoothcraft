@@ -1,6 +1,6 @@
 import {
 	checkSettingForConflict,
-	CheckSettingForConflict,
+	CheckSettingForConflictParams,
 	globalWrapper,
 	SettingPath,
 	SettingStep,
@@ -8,12 +8,14 @@ import {
 } from '../../../../../src/indexForTest'
 
 describe('check setting for conflict', () => {
-	let subject: (_: CheckSettingForConflict) => boolean
+	let patternName: SettingStep
+	let subject: (_: CheckSettingForConflictParams) => boolean
 	let settingPath: SettingPath
 	let settingName: SettingStep
 	let setting: {}
 	let settingCheckingForConflict: {}
 	beforeEach(() => {
+		patternName = to.SettingStep('layersPattern')
 		subject = checkSettingForConflict.default
 		spyOn(globalWrapper.console, 'warn')
 	})
@@ -24,10 +26,10 @@ describe('check setting for conflict', () => {
 		setting = 'yoda'
 		settingCheckingForConflict = 'luke'
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` would be overridden by `luke`'
+		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` would be overridden by `luke`'
 		expect(globalWrapper.console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -38,7 +40,7 @@ describe('check setting for conflict', () => {
 		setting = 'luke'
 		settingCheckingForConflict = 'luke'
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		expect(globalWrapper.console.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
@@ -50,7 +52,7 @@ describe('check setting for conflict', () => {
 		setting = (a: number): number => a
 		settingCheckingForConflict = (a: number): number => a
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		expect(globalWrapper.console.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
@@ -63,10 +65,10 @@ describe('check setting for conflict', () => {
 		settingCheckingForConflict = (b: number): number => b
 
 		// tslint:disable-next-line:no-unsafe-any
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'effect would have conflicts on setting `tileSettings.getTileOriginAndSize`: `function (a) { return a; }` would be overridden by `function (b) { return b; }`'
+		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.tileSettings.getTileOriginAndSize`: `function (a) { return a; }` would be overridden by `function (b) { return b; }`'
 		expect(globalWrapper.console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -77,7 +79,7 @@ describe('check setting for conflict', () => {
 		setting = [ 'a', 'b' ]
 		settingCheckingForConflict = [ 'a', 'b' ]
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		expect(globalWrapper.console.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
@@ -89,10 +91,10 @@ describe('check setting for conflict', () => {
 		setting = [ 'a', 'b' ]
 		settingCheckingForConflict = [ 'b', 'a' ]
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.colorSet`: `["a","b"]` would be overridden by `["b","a"]`'
+		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.colorSet`: `["a","b"]` would be overridden by `["b","a"]`'
 		expect(globalWrapper.console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -103,10 +105,10 @@ describe('check setting for conflict', () => {
 		setting = [ 'a', 'b' ]
 		settingCheckingForConflict = 'bna'
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.colorSet`: `["a","b"]` would be overridden by `bna`'
+		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.colorSet`: `["a","b"]` would be overridden by `bna`'
 		expect(globalWrapper.console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})
@@ -117,10 +119,10 @@ describe('check setting for conflict', () => {
 		setting = { r: 0, g: 5, b: 10, a: 1 }
 		settingCheckingForConflict = { a: 0 }
 
-		const shouldWarn: boolean = subject({ settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
 
 		// tslint:disable-next-line:max-line-length
-		const expectedWarning: string = 'effect would have conflicts on setting `colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` would be overridden by `{"a":0}`'
+		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` would be overridden by `{"a":0}`'
 		expect(globalWrapper.console.warn).toHaveBeenCalledWith(expectedWarning)
 		expect(shouldWarn).toBe(true)
 	})

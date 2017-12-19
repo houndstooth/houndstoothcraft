@@ -5,7 +5,15 @@ import shouldRecurse from './shouldRecurse'
 import { DeepSettingsMapParams, MapOverPatternParams, SettingStep } from './types'
 
 const mapOverPattern: (_?: MapOverPatternParams) => void =
-	({ options, pattern = DEFAULT_BASE_PATTERN, perParent, perLeaf }: MapOverPatternParams = {}): void => {
+	(mapOverPatternParams: MapOverPatternParams = {}): void => {
+		const {
+			options,
+			pattern = DEFAULT_BASE_PATTERN,
+			patternName = to.SettingStep('basePattern'),
+			perParent,
+			perLeaf,
+		}: MapOverPatternParams = mapOverPatternParams
+
 		const deepSettingsMap: (_: DeepSettingsMapParams) => void =
 			({ settings, settingPath }: DeepSettingsMapParams): void => {
 				// tslint:disable-next-line:no-any
@@ -13,7 +21,7 @@ const mapOverPattern: (_?: MapOverPatternParams) => void =
 					const settingName: SettingStep = to.SettingStep(settingNameString)
 					if (shouldRecurse(settingValue)) {
 						if (perParent) {
-							perParent({ options, settingName, settingValue, settingPath })
+							perParent({ options, patternName, settingName, settingValue, settingPath })
 						}
 						deepSettingsMap({
 							settingPath: deeperPath({ settingName, settingPath }),
@@ -22,7 +30,7 @@ const mapOverPattern: (_?: MapOverPatternParams) => void =
 						})
 					}
 					else if (perLeaf) {
-						perLeaf({ options, settingName, settingPath, settingValue })
+						perLeaf({ options, patternName, settingName, settingPath, settingValue })
 					}
 				})
 			}

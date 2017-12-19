@@ -2,22 +2,24 @@
 
 import { codeUtilities, globalWrapper } from '../../utilities'
 import { formatSetting } from '../dom'
-import formatSettingPath from './formatSettingPath'
-import { CheckSettingForConflict, SettingConflictCheck, SettingsAreEqual } from './types'
+import concatFullSettingPath from './concatFullSettingPath'
+import { CheckSettingForConflictParams, SettingConflictCheck, SettingsAreEqual } from './types'
 
 const { isDefined } = codeUtilities
 
-const checkSettingForConflict: (_: CheckSettingForConflict) => boolean =
-	(params: CheckSettingForConflict): boolean => {
+const checkSettingForConflict: (_: CheckSettingForConflictParams) => boolean =
+	(checkSettingForConflictParams: CheckSettingForConflictParams): boolean => {
 		const {
+			patternName,
 			setting,
 			settingCheckingForConflict,
 			settingName,
 			settingPath,
-		}: CheckSettingForConflict = params
+		}: CheckSettingForConflictParams = checkSettingForConflictParams
 
 		if (shouldWarnAboutConflict({ setting, settingCheckingForConflict })) {
 			const warning: string = buildWarningMessage({
+				patternName,
 				setting,
 				settingCheckingForConflict,
 				settingName,
@@ -56,14 +58,26 @@ const settingsAreEqual: SettingsAreEqual =
 		return settingsEqual
 	}
 
-const buildWarningMessage: (_: CheckSettingForConflict) => string =
-	({ setting, settingCheckingForConflict, settingName, settingPath }: CheckSettingForConflict): string => {
+const buildWarningMessage: (_: CheckSettingForConflictParams) => string =
+	(checkSettingForConflictParams: CheckSettingForConflictParams): string => {
+		const {
+			patternName,
+			setting,
+			settingCheckingForConflict,
+			settingName,
+			settingPath,
+		} = checkSettingForConflictParams
+
 		const formattedSetting: string = formatSetting.default(setting)
 		const formattedCheckedSetting: string = formatSetting.default(settingCheckingForConflict)
-		const fullSettingPath: string = formatSettingPath({ settingPath, settingName })
+		const concatenatedFullSettingsPath: string = concatFullSettingPath({
+			patternName,
+			settingName,
+			settingPath,
+		}).join('.')
 
 		// tslint:disable-next-line:max-line-length
-		return `effect would have conflicts on setting \`${fullSettingPath}\`: \`${formattedSetting}\` would be overridden by \`${formattedCheckedSetting}\``
+		return `effect would have conflicts on setting \`${concatenatedFullSettingsPath}\`: \`${formattedSetting}\` would be overridden by \`${formattedCheckedSetting}\``
 	}
 
 export default checkSettingForConflict

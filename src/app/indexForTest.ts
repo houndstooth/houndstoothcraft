@@ -1,21 +1,28 @@
 // tslint:disable:max-file-line-count no-reaching-imports
 
 export {
+	createOverrideLeafNode,
+	createOverrideNodes,
 	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	frameInputChangeHandler,
 	getCurrentFrame,
-	overrideHandler,
+	getOverrideParentNode,
+	overrideInputChangeHandler,
 	pauseClickHandler,
 	playClickHandler,
 	rewindClickHandler,
 	snapshotClickHandler,
+	toggleOverrideParentOpen,
 	updateCurrentFrame,
 	updateDescriptions,
+
+	OverrideNode,
+	OverrideParentNode,
 } from './controls/indexForTest'
 export {
-	appendOverrideNode,
+	appendOverride,
 	attachControlHandlers,
 	createCheckbox,
 	createContext,
@@ -24,14 +31,16 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
+	createOverrideId,
 	createOverrideLeaf,
 	createOverrideParent,
 	formatSetting,
+	parseOverrideId,
 	saveBlobThroughAnchor,
 	storeDomElements,
 	updateOverrides,
 
-	AppendOverrideNodeParams,
+	AppendOverrideParams,
 	CreateOverrideParams,
 	Dimensions,
 	OverrideOptions,
@@ -87,13 +96,13 @@ export {
 	Pixel,
 } from './render/indexForTest'
 export {
+	concatFullSettingPath,
 	checkSettingForConflict,
 	combineEffects,
 	composeMainHoundstooth,
 	composePatterns,
 	deeperPath,
 	effectsHaveConflicts,
-	formatSettingPath,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
 	mapOverPattern,
@@ -107,7 +116,7 @@ export {
 	DEFAULT_BASE_PATTERN,
 	DEFAULT_LAYERS_PATTERN,
 
-	CheckSettingForConflict,
+	CheckSettingForConflictParams,
 	ComposePatternsParams,
 	FullSettingPath,
 	MapOverPatternParams,
@@ -116,6 +125,7 @@ export {
 	SettingFunction,
 	SettingFunctionObject,
 	SettingPath,
+	SettingPathAndName,
 	SettingStep,
 } from './settings/indexForTest'
 export { appState } from './appState'

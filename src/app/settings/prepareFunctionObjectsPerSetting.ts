@@ -10,12 +10,12 @@ import {
 } from './types'
 
 const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => SettingFunctionObject[] =
-	(params: PrepareFunctionObjectsParams): SettingFunctionObject[] => {
+	(prepareFunctionObjectsParams: PrepareFunctionObjectsParams): SettingFunctionObject[] => {
 		const {
 			settingFunctionObjects = [],
 			settingFunctionsSourcePattern,
 			settingPath = to.SettingPath([]),
-		}: PrepareFunctionObjectsParams = params
+		}: PrepareFunctionObjectsParams = prepareFunctionObjectsParams
 
 		const settings: Array<[ string, any ]> = Object.entries(settingFunctionsSourcePattern)
 
@@ -32,13 +32,13 @@ const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => Set
 	}
 
 const prepareFunctionObjectForSettingOrMaybeRecurse: (_: PrepareFunctionObjectForSettingOrMaybeRecurseParams) => void =
-	(params: PrepareFunctionObjectForSettingOrMaybeRecurseParams): void => {
+	(prepareFunctionObjectForSettingOrMaybeRecurseParams: PrepareFunctionObjectForSettingOrMaybeRecurseParams): void => {
 		const {
 			maybeSettingFunctionsSourcePattern,
 			settingFunctionObjects,
 			settingName,
 			settingPath,
-		}: PrepareFunctionObjectForSettingOrMaybeRecurseParams = params
+		}: PrepareFunctionObjectForSettingOrMaybeRecurseParams = prepareFunctionObjectForSettingOrMaybeRecurseParams
 
 		if (typeof maybeSettingFunctionsSourcePattern === 'function') {
 			settingFunctionObjects.push({

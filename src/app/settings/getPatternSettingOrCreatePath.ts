@@ -5,15 +5,15 @@ import { SettingPath, SettingStep } from './types'
 
 const getPatternSettingOrCreatePath: (_: { pattern: any, settingPath: SettingPath }) => any =
 	({ pattern, settingPath }: { pattern: any, settingPath: SettingPath }): any => {
-		let childSettings: any = pattern
+		let children: any = pattern
 		settingPath.forEach((settingStep: SettingStep): void => {
-			if (!codeUtilities.isDefined(childSettings[ settingStep ])) {
-				childSettings[ settingStep ] = {}
+			if (!codeUtilities.isDefined(children[ settingStep ])) {
+				children[ settingStep ] = {}
 			}
-			childSettings = childSettings[ settingStep ]
+			children = children[ settingStep ]
 		})
 
-		return childSettings
+		return children
 	}
 
 export default getPatternSettingOrCreatePath

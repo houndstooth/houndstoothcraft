@@ -1,36 +1,54 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { codeUtilities, from, globalWrapper, to } from '../../utilities'
+import { codeUtilities, from, globalWrapper } from '../../utilities'
 import { appState } from '../appState'
-import { overrideHandler } from '../controls'
-import { SettingPath, SettingStep } from '../settings'
-import appendOverrideNode from './appendOverrideNode'
+import { overrideInputChangeHandler } from '../controls'
+import { concatFullSettingPath, FullSettingPath, SettingStep } from '../settings'
+import appendOverride from './appendOverride'
+import createOverrideId from './createOverrideId'
 import formatSetting from './formatSetting'
 import { CreateOverrideParams } from './types'
 
 const createOverrideLeaf: (_: CreateOverrideParams) => void =
-	({ settingName, settingPath, options }: CreateOverrideParams): void => {
-		const overrideNode: HTMLElement = globalWrapper.document.createElement('div')
+	({ settingName, settingPath, options, patternName }: CreateOverrideParams): void => {
+		const overrideLeaf: HTMLElement = globalWrapper.document.createElement('div')
 
-		const overrideName: HTMLElement = globalWrapper.document.createElement('span')
-		overrideName.innerHTML = from.SettingStep(settingName)
-		overrideNode.appendChild(overrideName)
+		const overrideLeafName: HTMLElement = createOverrideLeafName(settingName)
+		overrideLeaf.appendChild(overrideLeafName)
 
-		appendOverrideNode({ options, overrideNode, settingPath })
+		const overrideLeafInput: HTMLInputElement = createOverrideLeafInput({ patternName, settingName, settingPath })
+		overrideLeaf.appendChild(overrideLeafInput)
 
-		const overrideInput: HTMLInputElement = globalWrapper.document.createElement('input')
+		appendOverride({ options, override: overrideLeaf, settingPath })
+	}
 
-		let settingValue: any = appState.settings.mainHoundstooth[ options.patternName ]
-		const fullSettingPath: SettingPath = to.SettingPath(settingPath.concat(to.SettingPath([ settingName ])))
-		fullSettingPath.forEach((settingStep: SettingStep): void => {
+const createOverrideLeafName: (_: SettingStep) => HTMLElement =
+	(settingName: SettingStep): HTMLElement => {
+		const overrideLeafName: HTMLElement = globalWrapper.document.createElement('span')
+		overrideLeafName.innerHTML = from.SettingStep(settingName)
+
+		return overrideLeafName
+	}
+
+const createOverrideLeafInput: (_: FullSettingPath) => HTMLInputElement =
+	(fullSettingPath: FullSettingPath): HTMLInputElement => {
+		const overrideLeafInput: HTMLInputElement = globalWrapper.document.createElement('input')
+
+		overrideLeafInput.id = createOverrideId(fullSettingPath)
+		overrideLeafInput.value = createOverrideLeafInputValue(fullSettingPath)
+		overrideLeafInput.onchange = overrideInputChangeHandler.default
+
+		return overrideLeafInput
+	}
+
+const createOverrideLeafInputValue: (_: FullSettingPath) => string =
+	(fullSettingPath: FullSettingPath): string => {
+		let settingValue: any = appState.settings.mainHoundstooth
+		concatFullSettingPath.default(fullSettingPath).forEach((settingStep: SettingStep): void => {
 			settingValue = hasChild(settingValue, settingStep) ? settingValue[ from.SettingStep(settingStep) ] : undefined
 		})
-		overrideInput.value = formatSetting(settingValue)
-		overrideInput.id = [ options.patternName ].concat(from.SettingPath(fullSettingPath)).join('-')
 
-		overrideInput.onchange = overrideHandler.default
-
-		overrideNode.appendChild(overrideInput)
+		return formatSetting(settingValue)
 	}
 
 const hasChild: (_: any, __: SettingStep) => boolean =

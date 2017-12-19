@@ -1,16 +1,16 @@
 // tslint:disable:no-any
 
 import { ObjectOf } from '../../utilities'
-import { PatternMapFunctionParams, SettingPath } from '../settings'
+import { FullSettingPath, SettingPath } from '../settings'
 
-interface AppendOverrideNodeParams {
+interface AppendOverrideParams {
 	options: OverrideOptions,
-	overrideNode: HTMLElement,
+	override: HTMLElement,
 	settingPath: SettingPath
 }
 
-interface CreateOverrideParams extends PatternMapFunctionParams {
-	options: OverrideOptions,
+interface CreateOverrideParams extends FullSettingPath {
+	options: OverrideOptions
 }
 
 enum _DimensionsBrand {}
@@ -36,7 +36,6 @@ interface DomState {
 interface OverrideOptions {
 	grandparents: HTMLElement[],
 	parent: HTMLElement,
-	patternName: string,
 }
 
 interface Px extends Number {
@@ -44,7 +43,7 @@ interface Px extends Number {
 }
 
 export {
-	AppendOverrideNodeParams,
+	AppendOverrideParams,
 	CreateOverrideParams,
 	Dimensions,
 	DomState,

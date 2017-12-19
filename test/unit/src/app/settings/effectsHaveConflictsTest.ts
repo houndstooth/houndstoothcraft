@@ -1,4 +1,4 @@
-import { Effect, effectsHaveConflicts } from '../../../../../src/indexForTest'
+import { Effect, effectsHaveConflicts, patternsHaveConflicts, to } from '../../../../../src/indexForTest'
 
 describe('effects have conflicts', () => {
 	let subject: (_: {effect: Effect, effectCheckingAgainst: Effect }) => boolean
@@ -100,5 +100,61 @@ describe('effects have conflicts', () => {
 		}
 
 		expect(subject({ effect, effectCheckingAgainst })).toBe(true)
+	})
+
+	it('gives the pattern name, so if there are conflicts to warn about, it has it', () => {
+		const effect: Effect = {
+			animationsPattern: {
+				colorSettings: {
+					opacity: (): number => 0.5,
+				},
+			},
+			basePattern: {
+				gridSettings: {
+					includeNegativeQuadrants: true,
+				},
+			},
+			layersPattern: {
+				viewSettings: {
+					zoom: (): number => 5,
+				},
+			},
+		}
+		const effectCheckingAgainst: Effect = {
+			animationsPattern: {
+				colorSettings: {
+					opacity: (): number => 0.5,
+				},
+			},
+			basePattern: {
+				gridSettings: {
+					tileResolution: 4,
+				},
+			},
+			layersPattern: {
+				animationSettings: {
+					refreshCanvas: (): boolean => false,
+				},
+			},
+		}
+		spyOn(patternsHaveConflicts, 'default')
+
+		subject({ effect, effectCheckingAgainst })
+
+		expect(patternsHaveConflicts.default).toHaveBeenCalledWith({
+			pattern: effect.animationsPattern,
+			patternCheckingAgainst: effectCheckingAgainst.animationsPattern,
+			patternName: to.SettingStep('animationsPattern'),
+		})
+		expect(patternsHaveConflicts.default).toHaveBeenCalledWith({
+			pattern: effect.basePattern,
+			patternCheckingAgainst: effectCheckingAgainst.basePattern,
+			patternName: to.SettingStep('basePattern'),
+		})
+		expect(patternsHaveConflicts.default).toHaveBeenCalledWith({
+			pattern: effect.layersPattern,
+			patternCheckingAgainst: effectCheckingAgainst.layersPattern,
+			patternName: to.SettingStep('layersPattern'),
+		})
 	})
 })

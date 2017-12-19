@@ -1,5 +1,6 @@
 import * as combineEffects from './combineEffects'
 import * as composeMainHoundstooth from './composeMainHoundstooth'
+import * as concatFullSettingPath from './concatFullSettingPath'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
@@ -10,6 +11,7 @@ import * as resetMainHoundstooth from './resetMainHoundstooth'
 import * as setupAvailableEffects from './setupAvailableEffects'
 
 export {
+	concatFullSettingPath,
 	combineEffects,
 	composeMainHoundstooth,
 	deeperPath,
@@ -22,7 +24,8 @@ export {
 	setupAvailableEffects,
 }
 export {
-	PatternMapFunctionParams,
+	FullSettingPath,
+	SettingPathAndName,
 	SettingFunction,
 	SettingFunctionObject,
 	SettingPath,

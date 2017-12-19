@@ -8,7 +8,7 @@ import previousFrameHasFinished from './previousFrameHasFinished'
 import { ExecuteParams } from './types'
 
 const buildAnimationFunction: (_: ExecuteParams) => () => Promise<void> =
-	(params: ExecuteParams): () => Promise<void> =>
+	(executeParams: ExecuteParams): () => Promise<void> =>
 		async (): Promise<void> => {
 			if (!previousFrameHasFinished()) {
 				return
@@ -18,7 +18,7 @@ const buildAnimationFunction: (_: ExecuteParams) => () => Promise<void> =
 				clearContexts.default()
 			}
 
-			await executePattern(params)
+			await executePattern(executeParams)
 
 			mixDownContexts.default()
 

@@ -1,6 +1,7 @@
 import {
 	attachControlHandlers,
 	createEffectToggles,
+	createOverrideNodes,
 	executeSelectedEffects,
 	NamedEffect,
 	setupAvailableEffects,
@@ -18,6 +19,7 @@ describe('start up', () => {
 
 		spyOn(storeDomElements, 'default')
 		spyOn(setupAvailableEffects, 'default')
+		spyOn(createOverrideNodes, 'default')
 		spyOn(setupMixedDownContext, 'default')
 		spyOn(updateOverrides, 'default')
 		spyOn(createEffectToggles, 'default')
@@ -34,6 +36,10 @@ describe('start up', () => {
 
 	it('sets the available effects from all the effects in the effects module', () => {
 		expect(setupAvailableEffects.default).toHaveBeenCalledWith(allEffects)
+	})
+
+	it('creates the object describing the ui state of the override controls', () => {
+		expect(createOverrideNodes.default).toHaveBeenCalled()
 	})
 
 	it('sets up the mixed down context', () => {

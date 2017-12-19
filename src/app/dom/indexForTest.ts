@@ -1,4 +1,4 @@
-import * as appendOverrideNode from './appendOverrideNode'
+import * as appendOverride from './appendOverride'
 import * as attachControlHandlers from './attachControlHandlers'
 import * as createCheckbox from './createCheckbox'
 import * as createContext from './createContext'
@@ -7,15 +7,17 @@ import * as createDescription from './createDescription'
 import * as createEffectToggle from './createEffectToggle'
 import * as createEffectToggles from './createEffectToggles'
 import * as createLabel from './createLabel'
+import * as createOverrideId from './createOverrideId'
 import * as createOverrideLeaf from './createOverrideLeaf'
 import * as createOverrideParent from './createOverrideParent'
 import * as formatSetting from './formatSetting'
+import * as parseOverrideId from './parseOverrideId'
 import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 import * as storeDomElements from './storeDomElements'
 import * as updateOverrides from './updateOverrides'
 
 export {
-	appendOverrideNode,
+	appendOverride,
 	attachControlHandlers,
 	createCheckbox,
 	createContext,
@@ -24,6 +26,8 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
+	createOverrideId,
+	parseOverrideId,
 	updateOverrides,
 	createOverrideLeaf,
 	createOverrideParent,
@@ -32,7 +36,7 @@ export {
 	storeDomElements,
 }
 export {
-	AppendOverrideNodeParams,
+	AppendOverrideParams,
 	CreateOverrideParams,
 	Dimensions,
 	OverrideOptions,

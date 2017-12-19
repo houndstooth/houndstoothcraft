@@ -1,11 +1,12 @@
 import Spy = jasmine.Spy
 import { DEFAULT_BASE_PATTERN } from '../../../../../src/app/settings/defaults'
-import { mapOverPattern, MapOverPatternParams, Pattern, to } from '../../../../../src/indexForTest'
+import { mapOverPattern, MapOverPatternParams, Pattern, SettingStep, to } from '../../../../../src/indexForTest'
 
 describe('map over pattern', () => {
 	let subject: (_?: MapOverPatternParams) => void
 	let options: {}
 	let pattern: Pattern
+	let patternName: SettingStep
 	let perLeafSpy: Spy
 	let perParentSpy: Spy
 	beforeEach(() => {
@@ -22,22 +23,25 @@ describe('map over pattern', () => {
 				},
 			},
 		}
+		patternName = to.SettingStep('layersPattern')
 		perLeafSpy = jasmine.createSpy('perLeaf')
 		perParentSpy = jasmine.createSpy('perParent')
 	})
 
 	it('deeply maps over the base pattern, calling functions on parents and leaves, with requested options', () => {
-		subject({ options, pattern, perLeaf: perLeafSpy, perParent: perParentSpy })
+		subject({ options, pattern, patternName, perLeaf: perLeafSpy, perParent: perParentSpy })
 
 		expect(perParentSpy.calls.all().length).toBe(3)
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('animationSettings'),
 			settingPath: to.SettingPath([]),
 			settingValue: { refreshCanvas: true },
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('colorSettings'),
 			settingPath: to.SettingPath([]),
 			settingValue: {
@@ -48,6 +52,7 @@ describe('map over pattern', () => {
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('colorAssignmentSettings'),
 			settingPath: to.SettingPath([ 'colorSettings' ]),
 			settingValue: { switcheroo: false },
@@ -56,12 +61,14 @@ describe('map over pattern', () => {
 		expect(perLeafSpy.calls.all().length).toBe(2)
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('refreshCanvas'),
 			settingPath: to.SettingPath([ 'animationSettings' ]),
 			settingValue: true,
 		})
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('switcheroo'),
 			settingPath: to.SettingPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 			settingValue: false,
@@ -69,17 +76,19 @@ describe('map over pattern', () => {
 	})
 
 	it('supports not providing a function to be called per leaf', () => {
-		subject({ options, pattern, perParent: perParentSpy })
+		subject({ options, pattern, patternName, perParent: perParentSpy })
 
 		expect(perParentSpy.calls.all().length).toBe(3)
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('animationSettings'),
 			settingPath: to.SettingPath([]),
 			settingValue: { refreshCanvas: true },
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('colorSettings'),
 			settingPath: to.SettingPath([]),
 			settingValue: {
@@ -90,6 +99,7 @@ describe('map over pattern', () => {
 		})
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('colorAssignmentSettings'),
 			settingPath: to.SettingPath([ 'colorSettings' ]),
 			settingValue: { switcheroo: false },
@@ -97,17 +107,19 @@ describe('map over pattern', () => {
 	})
 
 	it('supports not providing a function to be called per parent', () => {
-		subject({ options, pattern, perLeaf: perLeafSpy })
+		subject({ options, pattern, patternName, perLeaf: perLeafSpy })
 
 		expect(perLeafSpy.calls.all().length).toBe(2)
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('refreshCanvas'),
 			settingPath: to.SettingPath([ 'animationSettings' ]),
 			settingValue: true,
 		})
 		expect(perLeafSpy).toHaveBeenCalledWith({
 			options,
+			patternName,
 			settingName: to.SettingStep('switcheroo'),
 			settingPath: to.SettingPath([ 'colorSettings', 'colorAssignmentSettings' ]),
 			settingValue: false,
@@ -119,6 +131,7 @@ describe('map over pattern', () => {
 
 		expect(perParentSpy).toHaveBeenCalledWith({
 			options,
+			patternName: 'basePattern',
 			settingName: to.SettingStep('colorSettings'),
 			settingPath: to.SettingPath([]),
 			settingValue: DEFAULT_BASE_PATTERN.colorSettings,

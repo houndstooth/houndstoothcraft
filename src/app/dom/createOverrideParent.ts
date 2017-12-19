@@ -1,16 +1,37 @@
 import { from, globalWrapper } from '../../utilities'
-import appendOverrideNode from './appendOverrideNode'
+import { getOverrideParentNode, OverrideParentNode, toggleOverrideParentOpen } from '../controls'
+import { FullSettingPath } from '../settings'
+import appendOverride from './appendOverride'
+import createOverrideId from './createOverrideId'
 import { CreateOverrideParams } from './types'
 
 const createOverrideParent: (_: CreateOverrideParams) => void =
-	({ settingName, settingPath, options }: CreateOverrideParams): void => {
-		const overrideNode: HTMLElement = globalWrapper.document.createElement('details')
+	({ settingName, settingPath, options, patternName }: CreateOverrideParams): void => {
+		const overrideParent: HTMLDetailsElement = globalWrapper.document.createElement('details') as HTMLDetailsElement
+		overrideParent.open = isOverrideParentOpen({ settingName, settingPath, patternName })
 
-		const overrideName: HTMLElement = globalWrapper.document.createElement('summary')
-		overrideName.innerHTML = from.SettingStep(settingName)
-		overrideNode.appendChild(overrideName)
+		const overrideParentName: HTMLElement = createOverrideParentName({ patternName, settingName, settingPath })
+		overrideParent.appendChild(overrideParentName)
 
-		appendOverrideNode({ options, overrideNode, settingPath })
+		appendOverride({ options, override: overrideParent, settingPath })
+	}
+
+const createOverrideParentName: (_: FullSettingPath) => HTMLElement =
+	({ patternName, settingName, settingPath }: FullSettingPath): HTMLElement => {
+		const overrideParentName: HTMLElement = globalWrapper.document.createElement('summary')
+		overrideParentName.innerHTML = from.SettingStep(settingName)
+		overrideParentName.onclick = toggleOverrideParentOpen.default
+
+		overrideParentName.id = createOverrideId({ patternName, settingName, settingPath })
+
+		return overrideParentName
+	}
+
+const isOverrideParentOpen: (_: FullSettingPath) => boolean =
+	(fullSettingPath: FullSettingPath): boolean => {
+		const overrideParent: OverrideParentNode = getOverrideParentNode.default(fullSettingPath)
+
+		return overrideParent.open
 	}
 
 export default createOverrideParent

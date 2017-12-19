@@ -1,18 +1,18 @@
 import {
-	appendOverrideNode,
-	AppendOverrideNodeParams,
+	appendOverride,
+	AppendOverrideParams,
 	OverrideOptions,
 	SettingPath,
 	to,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
 
-describe('append override node', () => {
+describe('append override', () => {
 	let greatGreatGrandparent: HTMLElement
 	let greatGrandparent: HTMLElement
 	let grandparent: HTMLElement
 	let parent: HTMLElement
-	let overrideNode: HTMLElement
+	let override: HTMLElement
 
 	let options: OverrideOptions
 
@@ -20,7 +20,7 @@ describe('append override node', () => {
 	let grandparentsChildren: HTMLElement[]
 	let parentsChildren: HTMLElement[]
 
-	let subject: (_: AppendOverrideNodeParams) => void
+	let subject: (_: AppendOverrideParams) => void
 	beforeEach(() => {
 		greatGrandparentsChildren = []
 		grandparentsChildren = []
@@ -30,13 +30,12 @@ describe('append override node', () => {
 		greatGrandparent = buildMockElement({ children: greatGrandparentsChildren }) as HTMLElement
 		grandparent = buildMockElement({ children: grandparentsChildren }) as HTMLElement
 		parent = buildMockElement({ children: parentsChildren }) as HTMLElement
-		overrideNode = buildMockElement() as HTMLElement
+		override = buildMockElement() as HTMLElement
 
-		subject = appendOverrideNode.default
+		subject = appendOverride.default
 		options = {
 			grandparents: [ greatGreatGrandparent, greatGrandparent, grandparent ],
 			parent,
-			patternName: '',
 		}
 	})
 
@@ -45,7 +44,7 @@ describe('append override node', () => {
 			const settingPath: SettingPath = to.SettingPath([
 				'another great grandparent',
 			])
-			subject({ options, overrideNode, settingPath })
+			subject({ options, override, settingPath })
 		})
 
 		it('pops grandparents off the stack', () => {
@@ -55,11 +54,11 @@ describe('append override node', () => {
 		})
 
 		it('looks at the top of the grandparent stack to know where to append the passed node', () => {
-			expect(greatGrandparentsChildren[0]).toBe(overrideNode)
+			expect(greatGrandparentsChildren[0]).toBe(override)
 		})
 
 		it('points the parent to the passed node', () => {
-			expect(options.parent).toBe(overrideNode)
+			expect(options.parent).toBe(override)
 		})
 	})
 
@@ -69,7 +68,7 @@ describe('append override node', () => {
 				'not another great grandparent',
 				'rather another grandparent',
 			])
-			subject({ options, overrideNode, settingPath })
+			subject({ options, override, settingPath })
 		})
 
 		it('leaves the grandparents stack intact', () => {
@@ -80,11 +79,11 @@ describe('append override node', () => {
 		})
 
 		it('looks at the top of the grandparent stack to know where to append the passed node', () => {
-			expect(grandparentsChildren[0]).toBe(overrideNode)
+			expect(grandparentsChildren[0]).toBe(override)
 		})
 
 		it('points the parent to the passed node', () => {
-			expect(options.parent).toBe(overrideNode)
+			expect(options.parent).toBe(override)
 		})
 	})
 
@@ -95,7 +94,7 @@ describe('append override node', () => {
 				'nor another grandparent',
 				'rather another parent',
 			])
-			subject({ options, overrideNode, settingPath })
+			subject({ options, override, settingPath })
 		})
 
 		it('pushes the old parent onto the stack of grandparents', () => {
@@ -107,11 +106,11 @@ describe('append override node', () => {
 		})
 
 		it('uses the existing parent to know where to append the passed node', () => {
-			expect(parentsChildren[0]).toBe(overrideNode)
+			expect(parentsChildren[0]).toBe(override)
 		})
 
 		it('points the parent to the passed node', () => {
-			expect(options.parent).toBe(overrideNode)
+			expect(options.parent).toBe(override)
 		})
 	})
 
@@ -125,7 +124,7 @@ describe('append override node', () => {
 			])
 
 			const thrower: () => void = (): void => {
-				subject({ options, overrideNode, settingPath })
+				subject({ options, override, settingPath })
 			}
 			expect(thrower).toThrow(new Error('how did you skip a parent?'))
 		})

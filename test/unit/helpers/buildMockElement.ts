@@ -1,7 +1,7 @@
 import { BuildMockElementParams, MockElement } from './types'
 
 const buildMockElement: (_?: BuildMockElementParams) => MockElement =
-	(params?: BuildMockElementParams): MockElement => {
+	(buildMockElementParams?: BuildMockElementParams): MockElement => {
 		const {
 			attributeObject = {},
 			children = [],
@@ -9,7 +9,7 @@ const buildMockElement: (_?: BuildMockElementParams) => MockElement =
 			clickSpy,
 			parentNodeInsertBeforeSpy,
 			parentNodeRemoveChildSpy,
-		}: BuildMockElementParams = params || {}
+		}: BuildMockElementParams = buildMockElementParams || {}
 
 		return {
 			appendChild: (child: HTMLElement): number => children.push(child),

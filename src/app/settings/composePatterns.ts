@@ -7,12 +7,12 @@ import shouldRecurse from './shouldRecurse'
 import { ComposePatternsParams } from './types'
 
 const composePatterns: (_: ComposePatternsParams) => void =
-	(params: ComposePatternsParams): void => {
+	(composePatternsParams: ComposePatternsParams): void => {
 		const {
 			patternToBeMergedOnto,
 			patternToMerge = {},
 			settingPath = to.SettingPath([]),
-		}: ComposePatternsParams = params
+		}: ComposePatternsParams = composePatternsParams
 
 		Object.entries(patternToMerge).forEach(([ settingNameString, overridingSetting ]: [ string, any ]) => {
 			if (shouldRecurse(overridingSetting)) {

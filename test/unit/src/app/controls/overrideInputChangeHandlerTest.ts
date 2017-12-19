@@ -2,13 +2,13 @@ import {
 	appState,
 	clearMixedDownContext,
 	executeSelectedEffects,
-	overrideHandler,
+	overrideInputChangeHandler,
 } from '../../../../../src/indexForTest'
 
-describe('override handler', () => {
+describe('override input change handler', () => {
 	let subject: (_: Event) => void
 	beforeEach(() => {
-		subject = overrideHandler.default
+		subject = overrideInputChangeHandler.default
 
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeSelectedEffects, 'default')

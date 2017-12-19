@@ -5,19 +5,18 @@ import { Effect, Houndstooth, NamedEffect, Pattern } from '../../types'
 import { ObjectOf } from '../../utilities'
 
 enum _SettingPathBrand {}
-
 type SettingPath = _SettingPathBrand & SettingStep[]
 
 enum _SettingStepBrand {}
-
 type SettingStep = _SettingStepBrand & string;
 
-interface CheckSettingForConflict extends FullSettingPath, SettingConflictCheck {
+interface CheckSettingForConflictParams extends FullSettingPath, SettingConflictCheck {
 }
 
 interface PatternsHaveConflictsParams {
 	pattern?: Pattern,
 	patternCheckingAgainst?: Pattern,
+	patternName: SettingStep,
 	settingPath?: SettingPath,
 }
 
@@ -39,12 +38,16 @@ interface ComposePatternsParams {
 	settingPath?: SettingPath,
 }
 
-interface FullSettingPath {
+interface SettingPathAndName {
 	settingName: SettingStep,
 	settingPath: SettingPath,
 }
 
-interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends FullSettingPath {
+interface FullSettingPath extends SettingPathAndName {
+	patternName: SettingStep,
+}
+
+interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends SettingPathAndName {
 	maybeSettingFunctionsSourcePattern: any,
 	settingFunctionObjects: SettingFunctionObject[],
 }
@@ -57,7 +60,7 @@ interface PrepareFunctionObjectsParams {
 
 type SettingFunction<T> = (_?: T) => T
 
-interface SettingFunctionObject extends FullSettingPath {
+interface SettingFunctionObject extends SettingPathAndName {
 	settingFunction: SettingFunction<any>,
 }
 
@@ -78,6 +81,7 @@ interface PatternMapFunctionParams extends FullSettingPath {
 interface MapOverPatternParams {
 	options?: any,
 	pattern?: Pattern,
+	patternName?: SettingStep,
 	perLeaf?: (_: PatternMapFunctionParams) => void,
 	perParent?: (_: PatternMapFunctionParams) => void,
 }
@@ -88,21 +92,21 @@ interface DeepSettingsMapParams {
 }
 
 export {
-	SettingPath,
-	SettingStep,
-	CheckSettingForConflict,
-	PatternsHaveConflictsParams,
-	SettingConflictCheck,
+	CheckSettingForConflictParams,
 	ComposePatternParams,
 	ComposePatternsParams,
+	DeepSettingsMapParams,
 	FullSettingPath,
+	MapOverPatternParams,
+	PatternsHaveConflictsParams,
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
+	SettingConflictCheck,
 	SettingFunction,
 	SettingFunctionObject,
+	SettingPath,
+	SettingPathAndName,
 	SettingsAreEqual,
 	SettingsState,
-	MapOverPatternParams,
-	DeepSettingsMapParams,
-	PatternMapFunctionParams,
+	SettingStep,
 }

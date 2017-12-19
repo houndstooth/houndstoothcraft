@@ -1,4 +1,4 @@
-import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams } from '../../../../../src/indexForTest'
+import { Pattern, patternsHaveConflicts, PatternsHaveConflictsParams, to } from '../../../../../src/indexForTest'
 
 describe('patterns have conflicts', () => {
 	let subject: (_: PatternsHaveConflictsParams) => boolean
@@ -30,7 +30,7 @@ describe('patterns have conflicts', () => {
 			},
 		}
 
-		expect(subject({ pattern, patternCheckingAgainst })).toBe(true)
+		expect(subject({ pattern, patternName: to.SettingStep(''), patternCheckingAgainst })).toBe(true)
 	})
 
 	it('returns false if the patterns have no conflicting settings', () => {
@@ -54,6 +54,6 @@ describe('patterns have conflicts', () => {
 			},
 		}
 
-		expect(subject({ pattern, patternCheckingAgainst })).toBe(false)
+		expect(subject({ pattern, patternName: to.SettingStep(''), patternCheckingAgainst })).toBe(false)
 	})
 })

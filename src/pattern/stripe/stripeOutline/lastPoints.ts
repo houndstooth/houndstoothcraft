@@ -3,7 +3,7 @@ import { pointAlongBottomEdge, pointAlongLeftEdge, pointInBottomLeftCorner } fro
 import { PointsParamsPlusStripeStart } from './types'
 
 const lastPoints: (_: PointsParamsPlusStripeStart) => void =
-	(params: PointsParamsPlusStripeStart): void => {
+	(pointsParamsPlusStripeStart: PointsParamsPlusStripeStart): void => {
 		const {
 			outline,
 			stripeEndsInBottomRightHalf,
@@ -11,7 +11,7 @@ const lastPoints: (_: PointsParamsPlusStripeStart) => void =
 			stripeStartsInTopLeftHalf,
 			tileOrigin,
 			tileSize,
-		}: PointsParamsPlusStripeStart = params
+		}: PointsParamsPlusStripeStart = pointsParamsPlusStripeStart
 
 		const stripeStartsInTopLeftCorner: boolean = from.StripePosition(stripeStart || to.StripePosition(0)) === 0
 		if (!stripeStartsInTopLeftCorner) {
@@ -30,7 +30,7 @@ const lastPoints: (_: PointsParamsPlusStripeStart) => void =
 	}
 
 const lastPointsWhenStripeDoesNotStartInTopLeftCorner: (_: PointsParamsPlusStripeStart) => void =
-	(params: PointsParamsPlusStripeStart): void => {
+	(pointsParamsPlusStripeStart: PointsParamsPlusStripeStart): void => {
 		const {
 			outline,
 			stripeEndsInBottomRightHalf,
@@ -38,7 +38,7 @@ const lastPointsWhenStripeDoesNotStartInTopLeftCorner: (_: PointsParamsPlusStrip
 			stripeStartsInTopLeftHalf,
 			tileOrigin,
 			tileSize,
-		}: PointsParamsPlusStripeStart = params
+		}: PointsParamsPlusStripeStart = pointsParamsPlusStripeStart
 
 		if (stripeStartsInTopLeftHalf && stripeEndsInBottomRightHalf) {
 			outline.push(pointInBottomLeftCorner({ tileOrigin, tileSize }))

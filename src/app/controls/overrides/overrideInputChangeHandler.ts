@@ -4,7 +4,7 @@ import { Pattern } from '../../../types'
 import { from } from '../../../utilities'
 import { appState } from '../../appState'
 import { parseOverrideId } from '../../dom'
-import { executeSelectedEffects } from '../../execute'
+import { executePattern } from '../../execute'
 import { clearMixedDownContext } from '../../render'
 import { FullSettingPath, getPatternSettingOrCreatePath, SettingStep } from '../../settings'
 import { enableOrDisableAnimationControls } from '../animation'
@@ -19,7 +19,7 @@ const overrideInputChangeHandler: (_: Event) => void =
 
 		updateOverride({ ...fullSettingPath, inputValue })
 		clearMixedDownContext.default()
-		executeSelectedEffects.default()
+		executePattern.default()
 		enableOrDisableAnimationControls.default()
 	}
 

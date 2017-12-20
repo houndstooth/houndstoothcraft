@@ -13,7 +13,7 @@ export {
 	Px,
 } from './dom'
 export {
-	executeSelectedEffects,
+	executePattern,
 	getCurrentLayer,
 	incrementTilesCompleted,
 	setTileCount,

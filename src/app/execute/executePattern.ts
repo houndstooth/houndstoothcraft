@@ -1,26 +1,57 @@
-import { Layer } from '../../types'
-import { from, to } from '../../utilities'
+import { to } from '../../utilities'
 import { appState } from '../appState'
-import callFunctionsPerSetting from './callFunctionsPerSetting'
-import completeLayers from './completeLayers'
-import executeLayer from './executeLayer'
-import thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
-import { ExecuteParams } from './types'
+import { updateOverrideNodes } from '../controls'
+import { createContexts, updateOverrides } from '../dom'
+import {
+	combineEffects,
+	composeMainHoundstooth,
+	initializeCurrentPatternFromBasePattern,
+	prepareFunctionObjectsPerSetting,
+	SettingFunctionObject,
+} from '../settings'
+import executeAnimation from './executeAnimation'
+import executeFrame from './executeFrame'
 
-const executePattern: (_: ExecuteParams) => Promise<void> =
-	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {
-		const endLayer: Layer = appState.controls.endLayer
+const executePattern: () => void =
+	(): void => {
+		combineEffects.default()
+		composeMainHoundstooth.default()
+		updateOverrideNodes.default()
+		updateOverrides.default()
 
-		callFunctionsPerSetting({ settingFunctionObjects: animationFunctionObjects })
+		initializeCurrentPatternFromBasePattern.default()
+		setEndLayer()
 
-		const thisPatternRef: number = appState.execute.patternRef
-		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
-			if (thisPatternHasNotBeenCanceled(thisPatternRef)) {
-				await executeLayer({ layer: to.Layer(layerValue), layerFunctionObjects, thisPatternRef })
-			}
+		prepareCanvas()
+
+		execute()
+	}
+
+const setEndLayer: () => void =
+	(): void => {
+		appState.controls.endLayer = appState.settings.currentPattern.layerSettings.endLayer || to.Layer(0)
+	}
+
+const prepareCanvas: () => void =
+	(): void => {
+		createContexts.default()
+	}
+
+const execute: () => void =
+	(): void => {
+		const animationFunctionObjects: SettingFunctionObject[] = prepareFunctionObjectsPerSetting.default({
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
+		})
+		const layerFunctionObjects: SettingFunctionObject[] = prepareFunctionObjectsPerSetting.default({
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
+		})
+
+		if (appState.controls.animating) {
+			executeAnimation({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
-
-		completeLayers()
+		else {
+			executeFrame({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+		}
 	}
 
 export default executePattern

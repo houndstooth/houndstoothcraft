@@ -16,7 +16,7 @@ describe('maybe tile', () => {
 	let address: Address
 	let tileOrigin: Coordinate
 	let tileSize: Unit
-	const thisPatternRef: number = 99
+	const frameId: number = 99
 	let getTileOriginAndSizeSpy: Spy
 
 	beforeEach(() => {
@@ -33,7 +33,7 @@ describe('maybe tile', () => {
 	it('calls tile if an origin and size are got', () => {
 		getTileOriginAndSizeSpy.and.returnValue({ tileOrigin, tileSize })
 
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
 		expect(tile.default).toHaveBeenCalledWith({ address, tileOrigin, tileSize })
 	})
@@ -41,7 +41,7 @@ describe('maybe tile', () => {
 	it('does not call tile if neither origin nor size is got', () => {
 		getTileOriginAndSizeSpy.and.returnValue(undefined)
 
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
 		expect(tile.default).not.toHaveBeenCalled()
 	})
@@ -49,7 +49,7 @@ describe('maybe tile', () => {
 	it('does not call tile if origin is got but size is not', () => {
 		getTileOriginAndSizeSpy.and.returnValue({ tileOrigin })
 
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
 		expect(tile.default).not.toHaveBeenCalled()
 	})
@@ -57,13 +57,13 @@ describe('maybe tile', () => {
 	it('does not call tile if size is got but origin is not', () => {
 		getTileOriginAndSizeSpy.and.returnValue({ tileSize })
 
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
 		expect(tile.default).not.toHaveBeenCalled()
 	})
 
 	it('increments the count of tiles completed', () => {
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
 		expect(incrementTilesCompleted.default).toHaveBeenCalled()
 	})

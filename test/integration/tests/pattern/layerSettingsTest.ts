@@ -6,7 +6,7 @@ import {
 	Coordinate,
 	CYAN,
 	ERASE,
-	executeSelectedEffects,
+	executePattern,
 	to,
 	TRANSPARENT,
 	YELLOW,
@@ -28,7 +28,7 @@ describe('.layerSettings', () => {
 			},
 		}
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			const BLENDED_COLOR: Color = { r: 192, g: 255, b: 63, a: 1 }
@@ -66,7 +66,7 @@ describe('.layerSettings', () => {
 			},
 		}
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		setTimeout(() => {
 			let baseId: number = -8

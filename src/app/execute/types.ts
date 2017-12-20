@@ -20,8 +20,8 @@ interface ExecuteLayerParams extends Referenced {
 interface ExecuteState {
 	animationInterval?: number,
 	currentLayer: Layer,
+	frameId: number,
 	gridProgressInterval?: number,
-	patternRef: number,
 	performanceLogging: boolean,
 	resolveGrid: () => void,
 	tileCount: number,

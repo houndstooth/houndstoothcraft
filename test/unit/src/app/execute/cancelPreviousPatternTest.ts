@@ -7,6 +7,6 @@ describe('cancel previous pattern', () => {
 
 		subject()
 
-		expect(appState.execute.patternRef).toBe(0.4987)
+		expect(appState.execute.frameId).toBe(0.4987)
 	})
 })

@@ -3,7 +3,7 @@ import { from, to } from '../../utilities'
 import { appState } from '../appState'
 import { updateCurrentFrame } from '../controls'
 import { clearContexts, mixDownContexts, saveCanvas } from '../render'
-import executePattern from './executePattern'
+import executeFrame from './executeFrame'
 import previousFrameHasFinished from './previousFrameHasFinished'
 import { ExecuteParams } from './types'
 
@@ -18,7 +18,7 @@ const buildAnimationFunction: (_: ExecuteParams) => () => Promise<void> =
 				clearContexts.default()
 			}
 
-			await executePattern(executeParams)
+			await executeFrame(executeParams)
 
 			mixDownContexts.default()
 

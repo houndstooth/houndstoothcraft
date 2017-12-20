@@ -1,7 +1,7 @@
 import { NamedEffect } from '../types'
 import { createOverrideNodes } from './controls'
 import { attachControlHandlers, createEffectToggles, storeDomElements, updateOverrides } from './dom'
-import { executeSelectedEffects } from './execute'
+import { executePattern } from './execute'
 import { setupMixedDownContext } from './render'
 import { setupAvailableEffects } from './settings'
 
@@ -14,7 +14,7 @@ const startUp: (_: NamedEffect[]) => void =
 		createEffectToggles.default(allEffects)
 		updateOverrides.default()
 		attachControlHandlers.default()
-		executeSelectedEffects.default()
+		executePattern.default()
 	}
 
 export default startUp

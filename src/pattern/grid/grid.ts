@@ -8,8 +8,8 @@ import { ReferencedAddress } from './types'
 const NEGATIVE_AND_POSITIVE: number = 2
 const QUADRANT_COUNT: number = NEGATIVE_AND_POSITIVE * NEGATIVE_AND_POSITIVE
 
-const grid: (_: { gridTile: (_: ReferencedAddress) => void, thisPatternRef: number }) => void =
-	({ gridTile, thisPatternRef }: { gridTile: (_: ReferencedAddress) => void, thisPatternRef: number }): void => {
+const grid: (_: { frameId: number, gridTile: (_: ReferencedAddress) => void }) => void =
+	({ frameId, gridTile }: { frameId: number, gridTile: (_: ReferencedAddress) => void }): void => {
 		applyViewForGrid.default()
 
 		const { includeNegativeQuadrants, tileResolution }: GridSettings = patternState.gridSettings
@@ -28,7 +28,7 @@ const grid: (_: { gridTile: (_: ReferencedAddress) => void, thisPatternRef: numb
 
 		codeUtilities.iterator(adjustedTileResolution).forEach((x: number): void => {
 			codeUtilities.iterator(adjustedTileResolution).forEach((y: number): void => {
-				gridTile({ address: to.Address([ x + gridOffset, y + gridOffset ]), thisPatternRef })
+				gridTile({ address: to.Address([ x + gridOffset, y + gridOffset ]), frameId })
 			})
 		})
 	}

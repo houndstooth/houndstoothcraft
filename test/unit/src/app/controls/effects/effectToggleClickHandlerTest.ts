@@ -7,7 +7,7 @@ import {
 	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
-	executeSelectedEffects,
+	executePattern,
 	NamedEffect,
 	resetMainHoundstooth,
 	updateDescriptions,
@@ -20,7 +20,7 @@ describe('effect toggle click handler', () => {
 	let effect: NamedEffect
 
 	beforeEach(() => {
-		spyOn(executeSelectedEffects, 'default')
+		spyOn(executePattern, 'default')
 		spyOn(enableOrDisableAnimationControls, 'default')
 		spyOn(enableOrDisableOtherEffectToggles, 'default')
 		spyOn(updateDescriptions, 'default')
@@ -35,7 +35,7 @@ describe('effect toggle click handler', () => {
 		effect = { name: 'mock tooth', description: '' }
 		subject = effectToggleClickHandler.default
 
-		expect(executeSelectedEffects.default).not.toHaveBeenCalled()
+		expect(executePattern.default).not.toHaveBeenCalled()
 		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
 		expect(enableOrDisableOtherEffectToggles.default).not.toHaveBeenCalled()
 		expect(updateDescriptions.default).not.toHaveBeenCalled()
@@ -52,7 +52,7 @@ describe('effect toggle click handler', () => {
 	})
 
 	it('executes the selected effects, since the selection has now changed', () => {
-		expect(executeSelectedEffects.default).toHaveBeenCalled()
+		expect(executePattern.default).toHaveBeenCalled()
 	})
 
 	it('enables or disables animation controls depending on whether the new selection has animations', () => {

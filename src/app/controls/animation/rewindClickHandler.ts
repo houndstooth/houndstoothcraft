@@ -1,6 +1,6 @@
 import { to } from '../../../utilities'
 import { appState } from '../../appState'
-import { clearIntervalAndRemoveFromState, executeSelectedEffects } from '../../execute'
+import { clearIntervalAndRemoveFromState, executePattern } from '../../execute'
 import { clearMixedDownContext } from '../../render'
 import updateCurrentFrame from './updateCurrentFrame'
 
@@ -15,7 +15,7 @@ const rewindClickHandler: () => void =
 			clearMixedDownContext.default()
 		}
 
-		executeSelectedEffects.default()
+		executePattern.default()
 	}
 
 export default rewindClickHandler

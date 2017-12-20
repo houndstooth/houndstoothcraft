@@ -2,7 +2,7 @@ import {
 	appState,
 	clearMixedDownContext,
 	enableOrDisableAnimationControls,
-	executeSelectedEffects,
+	executePattern,
 	overrideClearClickHandler,
 	to,
 } from '../../../../../../src/indexForTest'
@@ -33,7 +33,7 @@ describe('override clear click handler', () => {
 		}
 
 		spyOn(clearMixedDownContext, 'default')
-		spyOn(executeSelectedEffects, 'default')
+		spyOn(executePattern, 'default')
 		spyOn(enableOrDisableAnimationControls, 'default')
 
 		// tslint:disable-next-line:no-unsafe-any
@@ -59,7 +59,7 @@ describe('override clear click handler', () => {
 	})
 
 	it('executes selected houndstooth effects', () => {
-		expect(executeSelectedEffects.default).toHaveBeenCalled()
+		expect(executePattern.default).toHaveBeenCalled()
 	})
 
 	it('enables or disables the animation controls', () => {

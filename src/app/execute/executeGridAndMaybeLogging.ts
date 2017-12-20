@@ -5,8 +5,8 @@ import { AppState } from '../types'
 import executeGrid from './executeGrid'
 import { ExecuteState } from './types'
 
-const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<void> =
-	async ({ thisPatternRef }: { thisPatternRef: number }): Promise<void> => {
+const executeGridAndMaybeLogging: (_: { frameId: number }) => Promise<void> =
+	async ({ frameId }: { frameId: number }): Promise<void> => {
 		const { execute, controls }: AppState = appState
 		const { animating, currentFrame }: ControlsState = controls
 		const { currentLayer, performanceLogging }: ExecuteState = execute
@@ -14,7 +14,7 @@ const executeGridAndMaybeLogging: (_: { thisPatternRef: number }) => Promise<voi
 		if (performanceLogging) {
 			globalWrapper.console.time('grid')
 		}
-		await executeGrid({ thisPatternRef })
+		await executeGrid({ frameId })
 		if (performanceLogging) {
 			if (animating) {
 				globalWrapper.console.log(`current animation frame / layer: ${currentFrame}/${currentLayer}`)

@@ -3,8 +3,8 @@ import {
 	buildAnimationFunction,
 	callFunctionsPerSetting,
 	clearContexts,
+	executeFrame,
 	ExecuteParams,
-	executePattern,
 	mixDownContexts,
 	previousFrameHasFinished,
 	saveCanvas,
@@ -18,7 +18,7 @@ import Spy = jasmine.Spy
 describe('build animation function returns an animation function', () => {
 	let subject: (_: ExecuteParams) => () => Promise<void>
 	let animationFunction: () => Promise<void>
-	let executePatternSpy: Spy
+	let executeFrameSpy: Spy
 	let clearContextsSpy: Spy
 
 	const layerFunctionObjects: SettingFunctionObject[] = []
@@ -26,7 +26,7 @@ describe('build animation function returns an animation function', () => {
 
 	beforeEach(() => {
 		subject = buildAnimationFunction.default
-		executePatternSpy = spyOn(executePattern, 'default')
+		executeFrameSpy = spyOn(executeFrame, 'default')
 		spyOn(callFunctionsPerSetting, 'default')
 		spyOn(updateCurrentFrame, 'default')
 		clearContextsSpy = spyOn(clearContexts, 'default')
@@ -49,7 +49,7 @@ describe('build animation function returns an animation function', () => {
 		})
 
 		it('does not execute the grid', () => {
-			expect(executePatternSpy).not.toHaveBeenCalled()
+			expect(executeFrameSpy).not.toHaveBeenCalled()
 		})
 
 		it('does not increment the current frame', () => {
@@ -79,7 +79,7 @@ describe('build animation function returns an animation function', () => {
 		})
 
 		it('executes a grid with the layer functions', () => {
-			expect(executePatternSpy).toHaveBeenCalledWith({ animationFunctionObjects, layerFunctionObjects })
+			expect(executeFrameSpy).toHaveBeenCalledWith({ animationFunctionObjects, layerFunctionObjects })
 		})
 
 		it('increments the current frame', () => {

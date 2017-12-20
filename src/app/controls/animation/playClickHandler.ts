@@ -1,5 +1,5 @@
 import { appState } from '../../appState'
-import { executeSelectedEffects } from '../../execute'
+import { executePattern } from '../../execute'
 import { mixDownContexts } from '../../render'
 
 const playClickHandler: () => void =
@@ -13,7 +13,7 @@ const playClickHandler: () => void =
 		mixDownContexts.default()
 
 		if (!resumingAnimation()) {
-			executeSelectedEffects.default()
+			executePattern.default()
 		}
 	}
 

@@ -1,8 +1,8 @@
 import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../src/indexForTest'
 
 describe('execute grid and maybe logging', () => {
-	let subject: (_: { thisPatternRef: number }) => Promise<void>
-	const thisPatternRef: number = 99
+	let subject: (_: { frameId: number }) => Promise<void>
+	const frameId: number = 99
 
 	beforeEach(() => {
 		subject = executeGridAndMaybeLogging.default
@@ -16,9 +16,9 @@ describe('execute grid and maybe logging', () => {
 	})
 
 	it('calls grid', async (done: DoneFn) => {
-		await subject({ thisPatternRef })
+		await subject({ frameId })
 
-		expect(executeGrid.default).toHaveBeenCalledWith({ thisPatternRef })
+		expect(executeGrid.default).toHaveBeenCalledWith({ frameId })
 
 		done()
 	})
@@ -28,7 +28,7 @@ describe('execute grid and maybe logging', () => {
 
 		describe('when not animating', () => {
 			it('logs only the performance of the grid', async (done: DoneFn) => {
-				await subject({ thisPatternRef })
+				await subject({ frameId })
 
 				expect(globalWrapper.console.time).toHaveBeenCalledWith('grid')
 				expect(globalWrapper.console.timeEnd).toHaveBeenCalledWith('grid')
@@ -42,7 +42,7 @@ describe('execute grid and maybe logging', () => {
 			beforeEach(() => appState.controls.animating = true)
 
 			it('logs the current animation frame along with the performance measurement', async (done: DoneFn) => {
-				await subject({ thisPatternRef })
+				await subject({ frameId })
 
 				expect(globalWrapper.console.time).toHaveBeenCalledWith('grid')
 				expect(globalWrapper.console.timeEnd).toHaveBeenCalledWith('grid')
@@ -57,7 +57,7 @@ describe('execute grid and maybe logging', () => {
 		beforeEach(() => appState.execute.performanceLogging = false)
 
 		it('does not track performance or log it', async (done: DoneFn) => {
-			await subject({ thisPatternRef })
+			await subject({ frameId })
 
 			expect(globalWrapper.console.time).not.toHaveBeenCalled()
 			expect(globalWrapper.console.timeEnd).not.toHaveBeenCalled()

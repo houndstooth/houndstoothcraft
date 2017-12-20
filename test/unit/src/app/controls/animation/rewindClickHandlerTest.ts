@@ -2,7 +2,7 @@ import {
 	appState,
 	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
-	executeSelectedEffects,
+	executePattern,
 	rewindClickHandler,
 	to,
 	updateCurrentFrame,
@@ -18,7 +18,7 @@ describe('rewind click handler', () => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
 		spyOn(clearIntervalAndRemoveFromState, 'default')
-		executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
+		executeSelectedEffectsSpy = spyOn(executePattern, 'default')
 			.and.returnValue(new Promise<() => void>((): void => undefined))
 	})
 

@@ -2,7 +2,7 @@ import {
 	appState,
 	BLACK,
 	Coordinate,
-	executeSelectedEffects,
+	executePattern,
 	from,
 	patternState,
 	StripeCountMode,
@@ -36,7 +36,7 @@ describe('.stripeSettings', () => {
 					},
 				}
 
-				executeSelectedEffects.default()
+				executePattern.default()
 
 				setTimeout(() => {
 					const tile: StandardTileExpectation = {
@@ -65,7 +65,7 @@ describe('.stripeSettings', () => {
 					},
 				}
 
-				executeSelectedEffects.default()
+				executePattern.default()
 
 				setTimeout(() => {
 					let areaOrigin: Coordinate = to.Coordinate([ from.Unit(areaSize) * 0, from.Unit(areaSize) * 0 ])

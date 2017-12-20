@@ -1,6 +1,6 @@
 import {
 	appState,
-	executeSelectedEffects,
+	executePattern,
 	mixDownContexts,
 	playClickHandler,
 } from '../../../../../../src/indexForTest'
@@ -13,7 +13,7 @@ describe('play click handler', () => {
 	beforeEach(() => {
 			subject = playClickHandler.default
 			spyOn(mixDownContexts, 'default')
-			executeSelectedEffectsSpy = spyOn(executeSelectedEffects, 'default')
+			executeSelectedEffectsSpy = spyOn(executePattern, 'default')
 				.and.returnValue(new Promise<() => void>((): void => undefined))
 
 			appState.controls.animating = false

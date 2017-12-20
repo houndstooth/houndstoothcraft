@@ -7,18 +7,18 @@ import * as cancelPreviousPattern from './cancelPreviousPattern'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import * as completeLayers from './completeLayers'
 import * as executeAnimation from './executeAnimation'
+import * as executeFrame from './executeFrame'
 import * as executeGrid from './executeGrid'
 import * as executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
 import * as executeLayer from './executeLayer'
 import * as executePattern from './executePattern'
-import * as executeSelectedEffects from './executeSelectedEffects'
 import * as getCurrentLayer from './getCurrentLayer'
 import * as gridComplete from './gridComplete'
 import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
 import * as incrementTilesCompleted from './incrementTilesCompleted'
 import * as previousFrameHasFinished from './previousFrameHasFinished'
 import * as setTileCount from './setTileCount'
-import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
+import * as thisFrameHasNotBeenCanceled from './thisFrameHasNotBeenCanceled'
 import * as updateProgress from './updateProgress'
 
 export {
@@ -34,15 +34,15 @@ export {
 	executeGrid,
 	executeGridAndMaybeLogging,
 	executeLayer,
+	executeFrame,
 	executePattern,
-	executeSelectedEffects,
 	getCurrentLayer,
 	gridComplete,
 	gridProgressIntervalFunction,
 	incrementTilesCompleted,
 	previousFrameHasFinished,
 	setTileCount,
-	thisPatternHasNotBeenCanceled,
+	thisFrameHasNotBeenCanceled,
 	updateProgress,
 }
 export {

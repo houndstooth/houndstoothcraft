@@ -1,5 +1,5 @@
 import { appState } from '../../appState'
-import { cancelPreviousPattern, clearIntervalAndRemoveFromState, executeSelectedEffects } from '../../execute'
+import { cancelPreviousPattern, clearIntervalAndRemoveFromState, executePattern } from '../../execute'
 import { clearContexts, clearMixedDownContext } from '../../render'
 import { resetMainHoundstooth } from '../../settings'
 import { enableOrDisableAnimationControls } from '../animation'
@@ -23,7 +23,7 @@ const effectToggleClickHandler: (_: Event) => void =
 
 		addOrRemoveEffect(event)
 
-		executeSelectedEffects.default()
+		executePattern.default()
 
 		enableOrDisableAnimationControls.default()
 

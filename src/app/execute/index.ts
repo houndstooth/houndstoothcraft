@@ -1,6 +1,6 @@
 import * as cancelPreviousPattern from './cancelPreviousPattern'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
-import * as executeSelectedEffects from './executeSelectedEffects'
+import * as executePattern from './executePattern'
 import * as getCurrentLayer from './getCurrentLayer'
 import * as incrementTilesCompleted from './incrementTilesCompleted'
 import * as setTileCount from './setTileCount'
@@ -8,7 +8,7 @@ import * as setTileCount from './setTileCount'
 export {
 	cancelPreviousPattern,
 	clearIntervalAndRemoveFromState,
-	executeSelectedEffects,
+	executePattern,
 	getCurrentLayer,
 	incrementTilesCompleted,
 	setTileCount,

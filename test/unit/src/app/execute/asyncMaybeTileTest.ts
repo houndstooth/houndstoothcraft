@@ -4,7 +4,7 @@ import {
 	globalWrapper,
 	maybeTile,
 	ReferencedAddress,
-	thisPatternHasNotBeenCanceled,
+	thisFrameHasNotBeenCanceled,
 	to,
 	updateProgress,
 } from '../../../../../src/indexForTest'
@@ -13,9 +13,9 @@ import Spy = jasmine.Spy
 describe('async maybe tile', () => {
 	let subject: (_: ReferencedAddress) => void
 	let setTimeoutSpy: Spy
-	let thisPatternHasNotBeenCanceledSpy: Spy
+	let thisFrameHasNotBeenCanceledSpy: Spy
 	let address: Address
-	const thisPatternRef: number = 99
+	const frameId: number = 99
 	beforeEach(() => {
 		subject = asyncMaybeTile.default
 		address = to.Address([ 4, 5 ])
@@ -25,30 +25,30 @@ describe('async maybe tile', () => {
 		})
 		spyOn(maybeTile, 'default')
 		spyOn(updateProgress, 'default')
-		thisPatternHasNotBeenCanceledSpy = spyOn(thisPatternHasNotBeenCanceled, 'default')
+		thisFrameHasNotBeenCanceledSpy = spyOn(thisFrameHasNotBeenCanceled, 'default')
 	})
 
 	it('unblocks the thread by scheduling the tile for the next event loop', () => {
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
 		expect(setTimeoutSpy.calls.all()[ 0 ].args[ 1 ]).toBe(0)
 	})
 
 	it('checks that the pattern has not been cancelled', () => {
-		subject({ address, thisPatternRef })
+		subject({ address, frameId })
 
-		expect(thisPatternHasNotBeenCanceledSpy).toHaveBeenCalledWith(99)
+		expect(thisFrameHasNotBeenCanceledSpy).toHaveBeenCalledWith(99)
 	})
 
 	describe('when the pattern the tile was born from has not been canceled', () => {
 		beforeEach(() => {
-			thisPatternHasNotBeenCanceledSpy.and.returnValue(true)
+			thisFrameHasNotBeenCanceledSpy.and.returnValue(true)
 
-			subject({ address, thisPatternRef })
+			subject({ address, frameId })
 		})
 
 		it('calls maybe tile with the same arguments', () => {
-			expect(maybeTile.default).toHaveBeenCalledWith({ address, thisPatternRef })
+			expect(maybeTile.default).toHaveBeenCalledWith({ address, frameId })
 		})
 
 		it('updates progress', () => {
@@ -58,9 +58,9 @@ describe('async maybe tile', () => {
 
 	describe('when the pattern the tile was born from has been canceled', () => {
 		beforeEach(() => {
-			thisPatternHasNotBeenCanceledSpy.and.returnValue(false)
+			thisFrameHasNotBeenCanceledSpy.and.returnValue(false)
 
-			subject({ address, thisPatternRef })
+			subject({ address, frameId })
 		})
 
 		it('does not call maybe tile', () => {

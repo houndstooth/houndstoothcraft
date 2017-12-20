@@ -1,125 +1,137 @@
 import Spy = jasmine.Spy
 import {
 	appState,
-	callFunctionsPerSetting,
-	completeLayers,
-	executeGridAndMaybeLogging,
-	executeLayer,
-	ExecuteParams,
+	combineEffects,
+	composeMainHoundstooth,
+	createContexts,
+	Effect,
+	executeAnimation,
+	executeFrame,
 	executePattern,
-	from,
-	Layer,
+	initializeCurrentPatternFromBasePattern,
+	prepareFunctionObjectsPerSetting,
 	SettingFunctionObject,
 	to,
+	updateOverrideNodes,
+	updateOverrides,
 } from '../../../../../src/indexForTest'
 
 describe('execute pattern', () => {
-	let subject: (_: ExecuteParams) => Promise<void>
-	const endLayer: Layer = to.Layer(4)
+	let subject: (_?: { overrides?: Effect }) => void
 	const layerFunctionObjects: SettingFunctionObject[] = []
 	const animationFunctionObjects: SettingFunctionObject[] = []
+	let prepareFunctionObjectsPerSettingSpy: Spy
 	beforeEach(() => {
 		subject = executePattern.default
-		appState.controls.endLayer = endLayer
-		appState.execute.patternRef = 99
+		spyOn(createContexts, 'default')
+		spyOn(updateOverrides, 'default')
+		spyOn(updateOverrideNodes, 'default')
+		spyOn(executeFrame, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
+		spyOn(executeAnimation, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
+		spyOn(initializeCurrentPatternFromBasePattern, 'default').and.callThrough()
+		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'default')
+		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)
 	})
 
-	it('calls the animation functions, to render based on the current frame', async (done: DoneFn) => {
-		spyOn(callFunctionsPerSetting, 'default')
-		spyOn(executeLayer, 'default')
+	it('combines the effects', () => {
+		spyOn(combineEffects, 'default')
 
-		await subject({ animationFunctionObjects, layerFunctionObjects })
+		subject()
 
-		expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
-			settingFunctionObjects: animationFunctionObjects,
-		})
-
-		done()
+		expect(combineEffects.default).toHaveBeenCalled()
 	})
 
-	it('executes a layer for each layer from zero to the end layer, inclusive', async (done: DoneFn) => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'default')
+	it('composes the houndstooth', () => {
+		spyOn(composeMainHoundstooth, 'default')
 
-		await subject({ animationFunctionObjects, layerFunctionObjects })
+		subject()
 
-		expect(executeLayerSpy.calls.all().length).toBe(5)
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(0),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(1),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(2),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(3),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(4),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-
-		done()
+		expect(composeMainHoundstooth.default).toHaveBeenCalled()
 	})
 
-	// tslint:disable-next-line:max-line-length
-	it('stops executing layers if the pattern ref has changed on the app state (i.e. it has been cancelled)', async (done: DoneFn) => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'default').and.callFake(({ layer }: { layer: Layer }) => {
-			if (from.Layer(layer) === 2) {
-				appState.execute.patternRef = appState.execute.patternRef + 1
-			}
-		})
+	it('updates the override nodes', () => {
+		subject()
 
-		await subject({ animationFunctionObjects, layerFunctionObjects })
-
-		expect(executeLayerSpy.calls.all().length).toBe(3)
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(0),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(1),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).toHaveBeenCalledWith({
-			layer: to.Layer(2),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).not.toHaveBeenCalledWith({
-			layer: to.Layer(3),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-		expect(executeLayerSpy).not.toHaveBeenCalledWith({
-			layer: to.Layer(4),
-			layerFunctionObjects,
-			thisPatternRef: 99,
-		})
-
-		done()
+		expect(updateOverrideNodes.default).toHaveBeenCalled()
 	})
 
-	it('completes the layers', async (done: DoneFn) => {
-		spyOn(executeGridAndMaybeLogging, 'default')
-		spyOn(completeLayers, 'default')
+	it('updates the overrides', () => {
+		subject()
 
-		await subject({ animationFunctionObjects, layerFunctionObjects })
+		expect(updateOverrides.default).toHaveBeenCalled()
+	})
 
-		expect(completeLayers.default).toHaveBeenCalled()
+	it('prepares layer functions', () => {
+		subject()
 
-		done()
+		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
+		})
+	})
+
+	it('prepares animation functions', () => {
+		subject()
+
+		expect(prepareFunctionObjectsPerSettingSpy).toHaveBeenCalledWith({
+			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
+		})
+	})
+
+	it('initializes the current pattern to the composed main houndstooth\'s base pattern', () => {
+		subject()
+
+		expect(initializeCurrentPatternFromBasePattern.default).toHaveBeenCalled()
+	})
+
+	it('sets the app state\'s end layer to that of the composed main houndstooth\'s base pattern', () => {
+		appState.settings.overrides = { basePattern: { layerSettings: { endLayer: to.Layer(3) } } }
+
+		subject()
+
+		expect(appState.controls.endLayer).toBe(to.Layer(3))
+	})
+
+	it('sets up for rendering', () => {
+		subject()
+
+		expect(createContexts.default).toHaveBeenCalled()
+	})
+
+	describe('when animating', () => {
+		beforeEach(() => {
+			appState.controls.animating = true
+
+			subject()
+		})
+
+		it('executes an animation', () => {
+			expect(executeAnimation.default).toHaveBeenCalledWith({
+				animationFunctionObjects,
+				layerFunctionObjects,
+			})
+		})
+
+		it('does not execute a single pattern', () => {
+			expect(executeFrame.default).not.toHaveBeenCalled()
+		})
+	})
+
+	describe('when not animating', () => {
+		beforeEach(() => {
+			appState.controls.animating = false
+
+			subject()
+		})
+
+		it('executes a single pattern', () => {
+			expect(executeFrame.default).toHaveBeenCalledWith({
+				animationFunctionObjects,
+				layerFunctionObjects,
+			})
+		})
+
+		it('does not execute an animation', () => {
+			expect(executeAnimation.default).not.toHaveBeenCalled()
+		})
 	})
 })

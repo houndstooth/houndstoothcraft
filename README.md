@@ -84,7 +84,7 @@ submodules:
 
 Just as the pattern setting submodules map onto the `patternState`, the app submodules map onto an `appState`.
 
-## execution & component hierarchy
+## execution and component hierarchy
 
 This section straddles both the `app` and `pattern` modules. It uses elements from both.
 

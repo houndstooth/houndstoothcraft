@@ -5,6 +5,7 @@ import {
 	appState,
 	createOverrideLeaf,
 	CreateOverrideParams,
+	getOverrideLeafNode,
 	globalWrapper,
 	overrideInputChangeHandler,
 	OverrideOptions,
@@ -13,6 +14,7 @@ import {
 	to,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
+import Spy = jasmine.Spy
 
 describe('create override leaf', () => {
 	let overrideLeaf: HTMLElement
@@ -23,6 +25,8 @@ describe('create override leaf', () => {
 	let children: HTMLElement[]
 	let options: OverrideOptions
 	let settingName: SettingStep
+
+	let getOverrideLeafNodeSpy: Spy
 
 	let subject: (_: CreateOverrideParams) => void
 	beforeEach(() => {
@@ -52,6 +56,8 @@ describe('create override leaf', () => {
 		})
 
 		spyOn(appendOverride, 'default')
+		getOverrideLeafNodeSpy = spyOn(getOverrideLeafNode, 'default')
+		getOverrideLeafNodeSpy.and.returnValue({ overriding: false })
 
 		subject({ options, patternName, settingPath, settingName })
 	})
@@ -104,5 +110,13 @@ describe('create override leaf', () => {
 
 			expect(overrideLeafInput.value).toBeUndefined()
 		})
+	})
+
+	it('appends an asterisk to the name when it is currently overriding', () => {
+		getOverrideLeafNodeSpy.and.returnValue({ overriding: true })
+
+		subject({ options, patternName, settingPath, settingName })
+
+		expect(overrideLeafName.innerHTML).toBe('tileResolution *')
 	})
 })

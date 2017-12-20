@@ -92,12 +92,15 @@ interface DeepSettingsMapParams {
 	settings: any,
 }
 
+type GetEffectSetting = (_: { concatenatedFullSettingPath: SettingPath, effect: Effect }) => any
+
 export {
 	CheckSettingForConflictParams,
 	ComposePatternParams,
 	ComposePatternsParams,
 	DeepSettingsMapParams,
 	FullSettingPath,
+	GetEffectSetting,
 	MapOverPatternParams,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,

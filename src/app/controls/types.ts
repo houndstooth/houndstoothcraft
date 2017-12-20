@@ -2,6 +2,7 @@
 
 import { Frame, Layer, NamedEffect } from '../../types'
 import { ObjectOf } from '../../utilities'
+import { FullSettingPath } from '../settings'
 
 interface ControlsState {
 	animating: boolean,
@@ -24,9 +25,14 @@ interface OverrideLeafNode {
 
 type OverrideNode = OverrideParentNode | OverrideLeafNode
 
+interface UpdateOverride extends FullSettingPath {
+	inputValue: any
+}
+
 export {
 	OverrideNode,
 	ControlsState,
 	OverrideParentNode,
 	OverrideLeafNode,
+	UpdateOverride,
 }

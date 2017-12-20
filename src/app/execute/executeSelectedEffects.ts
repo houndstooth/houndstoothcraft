@@ -1,5 +1,6 @@
 import { to } from '../../utilities'
 import { appState } from '../appState'
+import { updateOverrideNodes } from '../controls'
 import { createContexts, updateOverrides } from '../dom'
 import {
 	combineEffects,
@@ -15,6 +16,7 @@ const executeSelectedEffects: () => void =
 	(): void => {
 		combineEffects.default()
 		composeMainHoundstooth.default()
+		updateOverrideNodes.default()
 		updateOverrides.default()
 
 		initializeCurrentPatternFromBasePattern.default()

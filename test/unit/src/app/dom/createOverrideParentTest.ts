@@ -7,6 +7,7 @@ import {
 	CreateOverrideParams,
 	createOverrideParent,
 	globalWrapper,
+	isParentOfAnyOverridingChildren,
 	OverrideOptions,
 	OverrideParentNode,
 	SettingPath,
@@ -15,6 +16,7 @@ import {
 	toggleOverrideParentOpen,
 } from '../../../../../src/indexForTest'
 import { buildMockElement } from '../../../helpers'
+import Spy = jasmine.Spy
 
 describe('create override parent', () => {
 	let overrideParent: HTMLDetailsElement
@@ -24,6 +26,8 @@ describe('create override parent', () => {
 	let settingPath: SettingPath
 	let children: HTMLElement[]
 	let options: OverrideOptions
+
+	let isParentOfAnyOverridingChildrenSpy: Spy
 
 	let subject: (_: CreateOverrideParams) => void
 	beforeEach(() => {
@@ -50,6 +54,8 @@ describe('create override parent', () => {
 		})
 
 		spyOn(appendOverride, 'default')
+		isParentOfAnyOverridingChildrenSpy = spyOn(isParentOfAnyOverridingChildren, 'default')
+		isParentOfAnyOverridingChildrenSpy.and.returnValue(false)
 
 		createOverrideNodes.default()
 
@@ -94,5 +100,13 @@ describe('create override parent', () => {
 
 	it('gives the summary an id', () => {
 		expect(overrideParentName.id).toBe('layersPattern-colorSettings-colorAssignmentSettings')
+	})
+
+	it('adds a mark to the name if any of its children are overriding', () => {
+		isParentOfAnyOverridingChildrenSpy.and.returnValue(true)
+
+		subject({ options, patternName, settingPath, settingName })
+
+		expect(overrideParentName.innerHTML).toBe('colorAssignmentSettings *')
 	})
 })

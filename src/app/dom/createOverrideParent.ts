@@ -1,8 +1,14 @@
-import { from, globalWrapper } from '../../utilities'
-import { getOverrideParentNode, OverrideParentNode, toggleOverrideParentOpen } from '../controls'
+import { globalWrapper } from '../../utilities'
+import {
+	getOverrideParentNode,
+	isParentOfAnyOverridingChildren,
+	OverrideParentNode,
+	toggleOverrideParentOpen,
+} from '../controls'
 import { FullSettingPath } from '../settings'
 import appendOverride from './appendOverride'
 import createOverrideId from './createOverrideId'
+import createOverrideText from './createOverrideText'
 import { CreateOverrideParams } from './types'
 
 const createOverrideParent: (_: CreateOverrideParams) => void =
@@ -17,12 +23,12 @@ const createOverrideParent: (_: CreateOverrideParams) => void =
 	}
 
 const createOverrideParentName: (_: FullSettingPath) => HTMLElement =
-	({ patternName, settingName, settingPath }: FullSettingPath): HTMLElement => {
+	(fullSettingPath: FullSettingPath): HTMLElement => {
 		const overrideParentName: HTMLElement = globalWrapper.document.createElement('summary')
-		overrideParentName.innerHTML = from.SettingStep(settingName)
-		overrideParentName.onclick = toggleOverrideParentOpen.default
 
-		overrideParentName.id = createOverrideId({ patternName, settingName, settingPath })
+		overrideParentName.innerHTML = createOverrideText({ ...fullSettingPath, maybeMark })
+		overrideParentName.onclick = toggleOverrideParentOpen.default
+		overrideParentName.id = createOverrideId(fullSettingPath)
 
 		return overrideParentName
 	}
@@ -32,6 +38,13 @@ const isOverrideParentOpen: (_: FullSettingPath) => boolean =
 		const overrideParent: OverrideParentNode = getOverrideParentNode.default(fullSettingPath)
 
 		return overrideParent.open
+	}
+
+const maybeMark: (_: FullSettingPath) => string =
+	(fullSettingPath: FullSettingPath): string => {
+		const overrideParent: OverrideParentNode = getOverrideParentNode.default(fullSettingPath)
+
+		return isParentOfAnyOverridingChildren.default(overrideParent) ? ' *' : ''
 	}
 
 export default createOverrideParent

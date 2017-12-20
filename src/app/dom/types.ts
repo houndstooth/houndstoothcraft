@@ -13,6 +13,10 @@ interface CreateOverrideParams extends FullSettingPath {
 	options: OverrideOptions
 }
 
+interface CreateOverrideTextParams extends FullSettingPath {
+	maybeMark: (_: FullSettingPath) => string,
+}
+
 enum _DimensionsBrand {}
 type Dimensions = _DimensionsBrand & Px[]
 
@@ -45,6 +49,7 @@ interface Px extends Number {
 export {
 	AppendOverrideParams,
 	CreateOverrideParams,
+	CreateOverrideTextParams,
 	Dimensions,
 	DomState,
 	OverrideOptions,

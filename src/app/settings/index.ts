@@ -3,6 +3,7 @@ import * as composeMainHoundstooth from './composeMainHoundstooth'
 import * as concatFullSettingPath from './concatFullSettingPath'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
+import * as getEffectSetting from './getEffectSetting'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
 import * as mapOverPattern from './mapOverPattern'
@@ -16,6 +17,7 @@ export {
 	composeMainHoundstooth,
 	deeperPath,
 	effectsHaveConflicts,
+	getEffectSetting,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
 	mapOverPattern,
@@ -33,6 +35,7 @@ export {
 	SettingStep,
 } from './types'
 export {
+	DEFAULT_MAIN_HOUNDSTOOTH,
 	DEFAULT_SETTINGS_STATE,
 	DEFAULT_BASE_PATTERN,
 } from './defaults'

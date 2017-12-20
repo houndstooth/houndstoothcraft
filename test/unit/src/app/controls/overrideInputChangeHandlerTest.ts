@@ -3,6 +3,8 @@ import {
 	clearMixedDownContext,
 	executeSelectedEffects,
 	overrideInputChangeHandler,
+	to,
+	updateOverrideLeafNode,
 } from '../../../../../src/indexForTest'
 
 describe('override input change handler', () => {
@@ -12,6 +14,7 @@ describe('override input change handler', () => {
 
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeSelectedEffects, 'default')
+		spyOn(updateOverrideLeafNode, 'default')
 
 		// tslint:disable-next-line:no-any
 		const event: any = { target: { id: 'basePattern-colorSettings-opacity', value: '0.3' } }
@@ -37,12 +40,23 @@ describe('override input change handler', () => {
 		expect(executeSelectedEffects.default).toHaveBeenCalled()
 	})
 
+	// tslint:disable-next-line:max-line-length
+	it('also updates the override node, so that when the dom updates, the parents know in time to mark themselves as including overrides or not', () => {
+		expect(updateOverrideLeafNode.default).toHaveBeenCalledWith({
+			patternName: to.SettingStep('basePattern'),
+			settingName: to.SettingStep('opacity'),
+			settingPath: to.SettingPath([ 'colorSettings' ]),
+		})
+	})
+
 	it('handles functions', () => {
 		// tslint:disable-next-line:no-any
-		const functionEvent: any = { target: {
-			id: 'basePattern-colorSettings-opacity',
-			value: 'function (t) { return Math.random() * t > 10; }',
-		}}
+		const functionEvent: any = {
+			target: {
+				id: 'basePattern-colorSettings-opacity',
+				value: 'function (t) { return Math.random() * t > 10; }',
+			},
+		}
 
 		// tslint:disable-next-line:no-unsafe-any
 		subject(functionEvent)
@@ -60,10 +74,12 @@ describe('override input change handler', () => {
 
 	it('handles garbage', () => {
 		// tslint:disable-next-line:no-any
-		const functionEvent: any = { target: {
-			id: 'basePattern-colorSettings-opacity',
-			value: 'function (t) { return Math.random() * t > ',
-		}}
+		const functionEvent: any = {
+			target: {
+				id: 'basePattern-colorSettings-opacity',
+				value: 'function (t) { return Math.random() * t > ',
+			},
+		}
 
 		// tslint:disable-next-line:no-unsafe-any
 		subject(functionEvent)

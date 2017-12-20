@@ -5,6 +5,7 @@ import * as composePatterns from './composePatterns'
 import * as concatFullSettingPath from './concatFullSettingPath'
 import * as deeperPath from './deeperPath'
 import * as effectsHaveConflicts from './effectsHaveConflicts'
+import * as getEffectSetting from './getEffectSetting'
 import * as getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPatternFromBasePattern'
 import * as mapOverPattern from './mapOverPattern'
@@ -22,6 +23,7 @@ export {
 	composePatterns,
 	deeperPath,
 	effectsHaveConflicts,
+	getEffectSetting,
 	getPatternSettingOrCreatePath,
 	initializeCurrentPatternFromBasePattern,
 	mapOverPattern,
@@ -35,6 +37,7 @@ export {
 	CheckSettingForConflictParams,
 	ComposePatternsParams,
 	FullSettingPath,
+	GetEffectSetting,
 	MapOverPatternParams,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectsParams,

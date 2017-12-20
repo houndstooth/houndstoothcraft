@@ -230,4 +230,49 @@ describe('code utilities', () => {
 			expect(codeUtilities.idify('mock tooth')).toBe('mock-tooth')
 		})
 	})
+
+	describe('#deepEqual', () => {
+		it('works', () => {
+			expect(codeUtilities.deepEqual('a', 'a')).toBe(true)
+			expect(codeUtilities.deepEqual('a', 'b')).toBe(false)
+			expect(codeUtilities.deepEqual(2, 2)).toBe(true)
+			expect(codeUtilities.deepEqual(2, 3)).toBe(false)
+			expect(codeUtilities.deepEqual([ 1, 2, 3 ], [ 1, 2, 3 ])).toBe(true)
+			expect(codeUtilities.deepEqual([ 1, 2, 3 ], [ 1, 3, 3 ])).toBe(false)
+			expect(codeUtilities.deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })).toBe(true)
+			expect(codeUtilities.deepEqual({ a: 1, b: 2 }, { a: 2, b: 2 })).toBe(false)
+			expect(codeUtilities.deepEqual({}, {})).toBe(true)
+			expect(codeUtilities.deepEqual(undefined, undefined)).toBe(true)
+			expect(codeUtilities.deepEqual(0, undefined)).toBe(false)
+			expect(codeUtilities.deepEqual(undefined, 0)).toBe(false)
+			expect(codeUtilities.deepEqual('1', 1)).toBe(false)
+			expect(codeUtilities.deepEqual(1, '1')).toBe(false)
+			expect(codeUtilities.deepEqual([ 1, 2, 3 ], '[ 1, 2, 3 ]')).toBe(false)
+			expect(codeUtilities.deepEqual('[ 1, 2, 3 ]', [ 1, 2, 3 ])).toBe(false)
+			expect(codeUtilities.deepEqual({ a: 1, b: 2 }, '{ a: 1, b: 2}')).toBe(false)
+			expect(codeUtilities.deepEqual('{ a: 1, b: 2}', { a: 1, b: 2 })).toBe(false)
+			expect(codeUtilities.deepEqual({ a: 1, b: 2 }, [ { a: 1, b: 2 } ])).toBe(false)
+			expect(codeUtilities.deepEqual([ { a: 1, b: 2 } ], { a: 1, b: 2 })).toBe(false)
+			expect(codeUtilities.deepEqual({ a: [ { b: 1 }, 'c' ], d: '2' }, { a: [ { b: 1 }, 'c' ], d: '2' })).toBe(true)
+			expect(codeUtilities.deepEqual({ a: [ { b: 1 }, 'c' ], d: '2' }, { a: [ { b: 3 }, 'c' ], d: '2' })).toBe(false)
+		})
+	})
+
+	describe('#hasChild', () => {
+		it('reports true if the given thing has the key as a defined property', () => {
+			expect(codeUtilities.hasChild({ bob: '' }, 'bob')).toBe(true)
+		})
+
+		it('reports false if the given thing does not have the key as a property', () => {
+			expect(codeUtilities.hasChild({ bob: '' }, 'boo')).toBe(false)
+		})
+
+		it('reports false if the given thing is undefined', () => {
+			expect(codeUtilities.hasChild(undefined, 'bob')).toBe(false)
+		})
+
+		it('reports false if the given thing is not an object', () => {
+			expect(codeUtilities.hasChild('bob', 'bob')).toBe(false)
+		})
+	})
 })

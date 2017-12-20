@@ -8,23 +8,28 @@ import { executeSelectedEffects } from '../execute'
 import { clearMixedDownContext } from '../render'
 import { FullSettingPath, getPatternSettingOrCreatePath, SettingStep } from '../settings'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
+import { UpdateOverride } from './types'
+import updateOverrideLeafNode from './updateOverrideLeafNode'
 
 const overrideInputChangeHandler: (_: Event) => void =
 	(event: Event): void => {
-		updateCorrespondingOverride(event)
+		const input: HTMLInputElement = event.target as HTMLInputElement
+		const fullSettingPath: FullSettingPath = parseOverrideId.default(input.id)
+		const inputValue: any = parseOverrideInputValue(input.value)
+
+		updateOverride({ ...fullSettingPath, inputValue })
+		updateOverrideLeafNode(fullSettingPath)
 		clearMixedDownContext.default()
 		executeSelectedEffects.default()
 		enableOrDisableAnimationControls()
 	}
 
-const updateCorrespondingOverride: (_: Event) => void =
-	(event: Event): void => {
-		const input: HTMLInputElement = event.target as HTMLInputElement
-		const { patternName, settingName, settingPath }: FullSettingPath = parseOverrideId.default(input.id)
+const updateOverride: (_: UpdateOverride) => void =
+	({ patternName, settingName, settingPath, inputValue }: UpdateOverride): void => {
 		const pattern: Pattern = getOverridePatternOrCreatePath(patternName)
 		const settingParent: any = getPatternSettingOrCreatePath.default({ pattern, settingPath })
 		// tslint:disable-next-line:no-unsafe-any
-		settingParent[ from.SettingStep(settingName) ] = parseOverrideInputValue(input.value)
+		settingParent[ from.SettingStep(settingName) ] = inputValue
 	}
 
 const getOverridePatternOrCreatePath: (_: SettingStep) => Pattern =

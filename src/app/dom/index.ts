@@ -1,24 +1,25 @@
-import * as attachControlHandlers from './attachControlHandlers'
-import * as createContexts from './createContexts'
-import * as createDescription from './createDescription'
-import * as createEffectToggles from './createEffectToggles'
 import * as formatSetting from './formatSetting'
-import * as parseOverrideId from './parseOverrideId'
-import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 import * as storeDomElements from './storeDomElements'
-import * as updateOverrides from './updateOverrides'
 
 export {
-	attachControlHandlers,
-	createContexts,
-	createDescription,
-	createEffectToggles,
-	updateOverrides,
 	formatSetting,
-	parseOverrideId,
-	saveBlobThroughAnchor,
 	storeDomElements,
 }
+export {
+	attachControlHandlers,
+	saveBlobThroughAnchor,
+} from './animation'
+export {
+	createContexts,
+} from './canvas'
+export {
+	createDescription,
+	createEffectToggles,
+} from './effects'
+export {
+	parseOverrideId,
+	updateOverrides,
+} from './overrides'
 export {
 	Dimensions,
 	DomState,

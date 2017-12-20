@@ -19,7 +19,7 @@ interface OverrideParentNode {
 }
 
 interface OverrideLeafNode {
-	overriding: false,
+	overriding: boolean,
 }
 
 type OverrideNode = OverrideParentNode | OverrideLeafNode

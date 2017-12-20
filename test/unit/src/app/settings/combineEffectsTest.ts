@@ -1,43 +1,78 @@
 // tslint:disable:no-unsafe-any
 
-import { appState, combineEffects, composePatterns, Effect, NamedEffect } from '../../../../../src/indexForTest'
-import CallInfo = jasmine.CallInfo
-import Spy = jasmine.Spy
+import { appState, combineEffects, NamedEffect } from '../../../../../src/indexForTest'
 
 describe('combine effects', () => {
-	it('composes the base, animations, and layers patterns of every effect', () => {
-		const subject: () => Effect = combineEffects.default
-
-		const composePatternsSpy: Spy = spyOn(composePatterns, 'default')
+	it('composes the base, animations, and layers patterns of every effect, and saves it on the store', () => {
+		const subject: () => void = combineEffects.default
 
 		const effectOne: NamedEffect = {
-			animationsPattern: {},
-			basePattern: {},
+			animationsPattern: {
+				gridSettings: {
+					tileResolution: (): number => 1,
+				},
+			},
+			basePattern: {
+				viewSettings: {
+					zoom: 1,
+				},
+			},
 			description: '',
-			layersPattern: {},
+			layersPattern: {
+				colorSettings: {
+					opacity: (): number => 1,
+				},
+			},
 			name: '',
 		}
 		const effectTwo: NamedEffect = {
-			animationsPattern: {},
-			basePattern: {},
+			animationsPattern: {
+				viewSettings: {
+					zoom: (): number => 2,
+				},
+			},
+			basePattern: {
+				colorSettings: {
+					opacity: 2,
+				},
+			},
 			description: '',
-			layersPattern: {},
+			layersPattern: {
+				gridSettings: {
+					tileResolution: (): number => 2,
+				},
+			},
 			name: '',
 		}
 		appState.controls.selectedEffects = [ effectOne, effectTwo ]
 
 		subject()
 
-		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
-
-		expect(composePatternsCalls.length).toBe(6)
-
-		expect(composePatternsCalls[ 0 ].args[ 0 ].patternToMerge).toBe(effectOne.basePattern)
-		expect(composePatternsCalls[ 1 ].args[ 0 ].patternToMerge).toBe(effectOne.layersPattern)
-		expect(composePatternsCalls[ 2 ].args[ 0 ].patternToMerge).toBe(effectOne.animationsPattern)
-
-		expect(composePatternsCalls[ 3 ].args[ 0 ].patternToMerge).toBe(effectTwo.basePattern)
-		expect(composePatternsCalls[ 4 ].args[ 0 ].patternToMerge).toBe(effectTwo.layersPattern)
-		expect(composePatternsCalls[ 5 ].args[ 0 ].patternToMerge).toBe(effectTwo.animationsPattern)
+		expect(appState.settings.combinedEffects.toString()).toEqual({
+			animationsPattern: {
+				gridSettings: {
+					tileResolution: (): number => 1,
+				},
+				viewSettings: {
+					zoom: (): number => 2,
+				},
+			},
+			basePattern: {
+				colorSettings: {
+					opacity: 2,
+				},
+				viewSettings: {
+					zoom: 1,
+				},
+			},
+			layersPattern: {
+				colorSettings: {
+					opacity: (): number => 1,
+				},
+				gridSettings: {
+					tileResolution: (): number => 2,
+				},
+			},
+		}.toString())
 	})
 })

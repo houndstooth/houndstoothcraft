@@ -12,6 +12,7 @@ const DEFAULT_BASE_PATTERN: FullPatternBaseValues = DEFAULT_PATTERN_STATE
 const DEFAULT_LAYERS_PATTERN: PatternFunctions = {}
 
 const DEFAULT_AVAILABLE_EFFECTS: ObjectOf<NamedEffect> = {}
+const DEFAULT_COMBINED_EFFECTS: Effect = {}
 const DEFAULT_CURRENT_PATTERN: FullPatternBaseValues = DEFAULT_PATTERN_STATE
 const DEFAULT_MAIN_HOUNDSTOOTH: Houndstooth = {
 	animationsPattern: DEFAULT_ANIMATIONS_PATTERN,
@@ -22,6 +23,7 @@ const DEFAULT_OVERRIDES: Effect = {}
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
 	availableEffects: DEFAULT_AVAILABLE_EFFECTS,
+	combinedEffects: DEFAULT_COMBINED_EFFECTS,
 	currentPattern: DEFAULT_CURRENT_PATTERN,
 	mainHoundstooth: DEFAULT_MAIN_HOUNDSTOOTH,
 	overrides: DEFAULT_OVERRIDES,

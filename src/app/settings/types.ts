@@ -68,6 +68,7 @@ type SettingsAreEqual = (a: any, b: any) => boolean
 
 interface SettingsState {
 	availableEffects: ObjectOf<NamedEffect>,
+	combinedEffects: Effect,
 	currentPattern: FullPatternBaseValues,
 	mainHoundstooth: Houndstooth,
 	overrides: Effect,

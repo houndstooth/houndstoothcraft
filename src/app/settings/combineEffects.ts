@@ -3,8 +3,8 @@ import { Effect } from '../../types'
 import { appState } from '../appState'
 import composePatterns from './composePatterns'
 
-const combineEffects: () => Effect =
-	(): Effect => {
+const combineEffects: () => void =
+	(): void => {
 		const basePattern: PatternBaseValues = {}
 		const layersPattern: PatternFunctions = {}
 		const animationsPattern: PatternFunctions = {}
@@ -24,7 +24,7 @@ const combineEffects: () => Effect =
 			})
 		})
 
-		return { basePattern, layersPattern, animationsPattern }
+		appState.settings.combinedEffects = { basePattern, layersPattern, animationsPattern }
 	}
 
 export default combineEffects

@@ -2,6 +2,7 @@ import { to } from '../../utilities'
 import { appState } from '../appState'
 import { createContexts, updateOverrides } from '../dom'
 import {
+	combineEffects,
 	composeMainHoundstooth,
 	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
@@ -12,6 +13,7 @@ import executePattern from './executePattern'
 
 const executeSelectedEffects: () => void =
 	(): void => {
+		combineEffects.default()
 		composeMainHoundstooth.default()
 		updateOverrides.default()
 

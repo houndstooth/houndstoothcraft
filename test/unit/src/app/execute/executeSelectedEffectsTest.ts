@@ -1,6 +1,7 @@
 import Spy = jasmine.Spy
 import {
 	appState,
+	combineEffects,
 	composeMainHoundstooth,
 	createContexts,
 	Effect,
@@ -28,6 +29,14 @@ describe('execute selected effects', () => {
 		spyOn(initializeCurrentPatternFromBasePattern, 'default').and.callThrough()
 		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'default')
 		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)
+	})
+
+	it('combines the effects', () => {
+		spyOn(combineEffects, 'default')
+
+		subject()
+
+		expect(combineEffects.default).toHaveBeenCalled()
 	})
 
 	it('composes the houndstooth', () => {

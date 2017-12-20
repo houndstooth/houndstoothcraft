@@ -3,6 +3,7 @@
 import {
 	appendOverride,
 	appState,
+	createOverrideClear,
 	createOverrideLeaf,
 	CreateOverrideParams,
 	getOverrideLeafNode,
@@ -20,6 +21,7 @@ describe('create override leaf', () => {
 	let overrideLeaf: HTMLElement
 	let overrideLeafName: HTMLElement
 	let overrideLeafInput: HTMLInputElement
+	let overrideLeafClear: HTMLButtonElement
 	let patternName: SettingStep
 	let settingPath: SettingPath
 	let children: HTMLElement[]
@@ -41,6 +43,7 @@ describe('create override leaf', () => {
 		overrideLeaf = buildMockElement({ children }) as HTMLElement
 		overrideLeafName = {} as HTMLElement
 		overrideLeafInput = buildMockElement() as HTMLInputElement
+		overrideLeafClear = buildMockElement() as HTMLButtonElement
 
 		spyOn(globalWrapper.document, 'createElement').and.callFake((tagName: string): HTMLElement => {
 			switch (tagName) {
@@ -54,6 +57,7 @@ describe('create override leaf', () => {
 					return {} as HTMLElement
 			}
 		})
+		spyOn(createOverrideClear, 'default').and.returnValue(overrideLeafClear)
 
 		spyOn(appendOverride, 'default')
 		getOverrideLeafNodeSpy = spyOn(getOverrideLeafNode, 'default')
@@ -87,7 +91,7 @@ describe('create override leaf', () => {
 	})
 
 	it('gives the input an id which describes its setting path, including the pattern', () => {
-		expect(overrideLeafInput.id).toBe('layersPattern-gridSettings-tileResolution')
+		expect(overrideLeaf.id).toBe('layersPattern-gridSettings-tileResolution')
 	})
 
 	describe('when the corresponding value is defined on the main houndstooth', () => {
@@ -112,11 +116,12 @@ describe('create override leaf', () => {
 		})
 	})
 
-	it('appends an asterisk to the name when it is currently overriding', () => {
+	it('appends an clear button when it is currently overriding', () => {
 		getOverrideLeafNodeSpy.and.returnValue({ overriding: true })
+		children.length = 0
 
 		subject({ options, patternName, settingPath, settingName })
 
-		expect(overrideLeafName.innerHTML).toBe('tileResolution *')
+		expect(children[2]).toBe(overrideLeafClear)
 	})
 })

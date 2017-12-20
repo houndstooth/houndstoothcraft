@@ -1,14 +1,14 @@
-import { globalWrapper } from '../../utilities'
+import { from, globalWrapper } from '../../utilities'
 import {
 	getOverrideParentNode,
 	isParentOfAnyOverridingChildren,
 	OverrideParentNode,
 	toggleOverrideParentOpen,
 } from '../controls'
-import { FullSettingPath } from '../settings'
+import { FullSettingPath, SettingStep } from '../settings'
 import appendOverride from './appendOverride'
+import createOverrideClear from './createOverrideClear'
 import createOverrideId from './createOverrideId'
-import createOverrideText from './createOverrideText'
 import { CreateOverrideParams } from './types'
 
 const createOverrideParent: (_: CreateOverrideParams) => void =
@@ -16,19 +16,37 @@ const createOverrideParent: (_: CreateOverrideParams) => void =
 		const overrideParent: HTMLDetailsElement = globalWrapper.document.createElement('details') as HTMLDetailsElement
 		overrideParent.open = isOverrideParentOpen({ settingName, settingPath, patternName })
 
-		const overrideParentName: HTMLElement = createOverrideParentName({ patternName, settingName, settingPath })
-		overrideParent.appendChild(overrideParentName)
+		const overrideParentSummary: HTMLElement = createOverrideParentSummary({
+			patternName,
+			settingName,
+			settingPath,
+		})
+		overrideParent.appendChild(overrideParentSummary)
 
 		appendOverride({ options, override: overrideParent, settingPath })
 	}
 
-const createOverrideParentName: (_: FullSettingPath) => HTMLElement =
-	(fullSettingPath: FullSettingPath): HTMLElement => {
-		const overrideParentName: HTMLElement = globalWrapper.document.createElement('summary')
+const createOverrideParentSummary: (_: FullSettingPath) => HTMLElement =
+	({ settingName, settingPath, patternName }: FullSettingPath): HTMLElement => {
+		const overrideParentSummary: HTMLElement = globalWrapper.document.createElement('summary')
 
-		overrideParentName.innerHTML = createOverrideText({ ...fullSettingPath, maybeMark })
-		overrideParentName.onclick = toggleOverrideParentOpen.default
-		overrideParentName.id = createOverrideId(fullSettingPath)
+		const overrideParentName: HTMLElement = createOverrideParentName(settingName)
+		overrideParentSummary.appendChild(overrideParentName)
+
+		if (thisOverrideIsActivelyOverriding({ settingName, settingPath, patternName })) {
+			overrideParentSummary.appendChild(createOverrideClear())
+		}
+
+		overrideParentSummary.onclick = toggleOverrideParentOpen.default
+		overrideParentSummary.id = createOverrideId({ settingName, settingPath, patternName })
+
+		return overrideParentSummary
+	}
+
+const createOverrideParentName: (_: SettingStep) => HTMLElement =
+	(settingName: SettingStep): HTMLElement => {
+		const overrideParentName: HTMLElement = globalWrapper.document.createElement('span')
+		overrideParentName.innerHTML = from.SettingStep(settingName)
 
 		return overrideParentName
 	}
@@ -40,7 +58,7 @@ const isOverrideParentOpen: (_: FullSettingPath) => boolean =
 		return overrideParent.open
 	}
 
-const maybeMark: (_: FullSettingPath) => string =
+const thisOverrideIsActivelyOverriding: (_: FullSettingPath) => string =
 	(fullSettingPath: FullSettingPath): string => {
 		const overrideParent: OverrideParentNode = getOverrideParentNode.default(fullSettingPath)
 

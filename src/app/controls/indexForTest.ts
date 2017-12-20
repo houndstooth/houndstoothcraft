@@ -8,6 +8,7 @@ import * as getCurrentFrame from './getCurrentFrame'
 import * as getOverrideLeafNode from './getOverrideLeafNode'
 import * as getOverrideParentNode from './getOverrideParentNode'
 import * as isParentOfAnyOverridingChildren from './isParentOfAnyOverridingChildren'
+import * as overrideClearClickHandler from './overrideClearClickHandler'
 import * as overrideInputChangeHandler from './overrideInputChangeHandler'
 import * as pauseClickHandler from './pauseClickHandler'
 import * as playClickHandler from './playClickHandler'
@@ -30,6 +31,7 @@ export {
 	getOverrideLeafNode,
 	getOverrideParentNode,
 	isParentOfAnyOverridingChildren,
+	overrideClearClickHandler,
 	overrideInputChangeHandler,
 	pauseClickHandler,
 	playClickHandler,

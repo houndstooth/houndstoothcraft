@@ -9,16 +9,15 @@ import { clearMixedDownContext } from '../render'
 import { FullSettingPath, getPatternSettingOrCreatePath, SettingStep } from '../settings'
 import enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
 import { UpdateOverride } from './types'
-import updateOverrideLeafNode from './updateOverrideLeafNode'
 
 const overrideInputChangeHandler: (_: Event) => void =
 	(event: Event): void => {
 		const input: HTMLInputElement = event.target as HTMLInputElement
-		const fullSettingPath: FullSettingPath = parseOverrideId.default(input.id)
+		const overrideLeaf: HTMLElement = input.parentNode as HTMLElement
+		const fullSettingPath: FullSettingPath = parseOverrideId.default(overrideLeaf.id)
 		const inputValue: any = parseOverrideInputValue(input.value)
 
 		updateOverride({ ...fullSettingPath, inputValue })
-		updateOverrideLeafNode(fullSettingPath)
 		clearMixedDownContext.default()
 		executeSelectedEffects.default()
 		enableOrDisableAnimationControls()

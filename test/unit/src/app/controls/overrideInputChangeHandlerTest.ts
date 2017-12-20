@@ -3,7 +3,6 @@ import {
 	clearMixedDownContext,
 	executeSelectedEffects,
 	overrideInputChangeHandler,
-	to,
 	updateOverrideLeafNode,
 } from '../../../../../src/indexForTest'
 
@@ -17,7 +16,7 @@ describe('override input change handler', () => {
 		spyOn(updateOverrideLeafNode, 'default')
 
 		// tslint:disable-next-line:no-any
-		const event: any = { target: { id: 'basePattern-colorSettings-opacity', value: '0.3' } }
+		const event: any = { target: { parentNode: { id: 'basePattern-colorSettings-opacity' }, value: '0.3' } }
 
 		// tslint:disable-next-line:no-unsafe-any
 		subject(event)
@@ -40,20 +39,14 @@ describe('override input change handler', () => {
 		expect(executeSelectedEffects.default).toHaveBeenCalled()
 	})
 
-	// tslint:disable-next-line:max-line-length
-	it('also updates the override node, so that when the dom updates, the parents know in time to mark themselves as including overrides or not', () => {
-		expect(updateOverrideLeafNode.default).toHaveBeenCalledWith({
-			patternName: to.SettingStep('basePattern'),
-			settingName: to.SettingStep('opacity'),
-			settingPath: to.SettingPath([ 'colorSettings' ]),
-		})
-	})
-
 	it('handles functions', () => {
 		// tslint:disable-next-line:no-any
 		const functionEvent: any = {
 			target: {
-				id: 'basePattern-colorSettings-opacity',
+				parentNode: {
+					id: 'basePattern-colorSettings-opacity',
+
+				},
 				value: 'function (t) { return Math.random() * t > 10; }',
 			},
 		}
@@ -76,7 +69,9 @@ describe('override input change handler', () => {
 		// tslint:disable-next-line:no-any
 		const functionEvent: any = {
 			target: {
-				id: 'basePattern-colorSettings-opacity',
+				parentNode: {
+					id: 'basePattern-colorSettings-opacity',
+				},
 				value: 'function (t) { return Math.random() * t > ',
 			},
 		}

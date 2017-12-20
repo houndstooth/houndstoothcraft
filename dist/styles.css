@@ -68,6 +68,27 @@ body {
     margin: 3px 3px 3px 10px !important;
 }
 
+#overrides-container details div, #overrides-container summary {
+    display: flex;
+    align-items: center;
+    height: 18px;
+}
+
+#overrides-container summary {
+    cursor: pointer;
+}
+
+#overrides-container button {
+    border: 1px solid rgb(100, 100, 100);
+    margin: 0 5px;
+    font-size: 10px;
+}
+
+#overrides-container span {
+    margin: 0 5px !important;
+    pointer-events: none;
+}
+
 #descriptions-container span {
     display: block;
     margin-bottom: 30px !important;
@@ -135,7 +156,7 @@ label {
     display: block;
 }
 
-input {
+input[type="checkbox"] {
     cursor: pointer;
 }
 

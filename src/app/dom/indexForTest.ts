@@ -7,10 +7,10 @@ import * as createDescription from './createDescription'
 import * as createEffectToggle from './createEffectToggle'
 import * as createEffectToggles from './createEffectToggles'
 import * as createLabel from './createLabel'
+import * as createOverrideClear from './createOverrideClear'
 import * as createOverrideId from './createOverrideId'
 import * as createOverrideLeaf from './createOverrideLeaf'
 import * as createOverrideParent from './createOverrideParent'
-import * as createOverrideText from './createOverrideText'
 import * as formatSetting from './formatSetting'
 import * as parseOverrideId from './parseOverrideId'
 import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
@@ -28,14 +28,14 @@ export {
 	createEffectToggles,
 	createLabel,
 	createOverrideId,
-	parseOverrideId,
-	updateOverrides,
+	createOverrideClear,
 	createOverrideLeaf,
 	createOverrideParent,
-	createOverrideText,
 	formatSetting,
+	parseOverrideId,
 	saveBlobThroughAnchor,
 	storeDomElements,
+	updateOverrides,
 }
 export {
 	AppendOverrideParams,

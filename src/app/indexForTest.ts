@@ -135,9 +135,9 @@ export {
 	SettingFunction,
 	SettingFunctionObject,
 	SettingPath,
-	SettingPathAndName,
+	DeeperPathParams,
 	SettingStep,
-} from './settings/indexForTest'
+} from './setting/indexForTest'
 export { appState } from './appState'
 export {
 	AppState,

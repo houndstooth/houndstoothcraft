@@ -43,7 +43,7 @@ export {
 	SettingFunction,
 	SettingFunctionObject,
 	SettingsState,
-} from './settings'
+} from './setting'
 export {
 	appState,
 } from './appState'

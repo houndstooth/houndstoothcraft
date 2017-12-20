@@ -8,7 +8,7 @@ import {
 	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
 	SettingFunctionObject,
-} from '../settings'
+} from '../setting'
 import { executeAnimation } from './animation'
 import executeFrame from './executeFrame'
 

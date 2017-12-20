@@ -47,7 +47,7 @@ describe('execute layer', () => {
 		done()
 	})
 
-	it('calls layer functions for settings, even the first layer', async (done: DoneFn) => {
+	it('calls layer functions for setting, even the first layer', async (done: DoneFn) => {
 		const layer: Layer = to.Layer(0)
 
 		await subject({ layer, layerFunctionObjects, frameId })

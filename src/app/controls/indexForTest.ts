@@ -14,7 +14,7 @@ export {
 	effectToggleClickHandler,
 	enableOrDisableOtherEffectToggles,
 	updateDescriptions,
-} from './effects/indexForTest'
+} from './effect/indexForTest'
 export {
 	createOverrideLeafNode,
 	createOverrideNodes,
@@ -30,4 +30,4 @@ export {
 	OverrideLeafNode,
 	OverrideNode,
 	OverrideParentNode,
-} from './overrides/indexForTest'
+} from './override/indexForTest'

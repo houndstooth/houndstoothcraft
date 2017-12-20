@@ -3,7 +3,7 @@ import { createOverrideNodes } from './controls'
 import { attachControlHandlers, createEffectToggles, storeDomElements, updateOverrides } from './dom'
 import { executePattern } from './execute'
 import { setupMixedDownContext } from './render'
-import { setupAvailableEffects } from './settings'
+import { setupAvailableEffects } from './setting'
 
 const startUp: (_: NamedEffect[]) => void =
 	(allEffects: NamedEffect[]): void => {

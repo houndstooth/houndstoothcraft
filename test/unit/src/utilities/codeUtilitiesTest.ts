@@ -108,33 +108,33 @@ describe('code utilities', () => {
 			actualObject = codeUtilities.deepClone(originalObject)
 		})
 
-		it('deep clones settings, including strings', () => {
+		it('deep clones setting, including strings', () => {
 			expect(actualObject.anImmutableString).toBe(originalObject.anImmutableString)
 		})
 
-		it('deep clones settings, including numbers', () => {
+		it('deep clones setting, including numbers', () => {
 			expect(actualObject.anImmutableNumber).toBe(originalObject.anImmutableNumber)
 		})
 
-		it('deep clones settings, including functions', () => {
+		it('deep clones setting, including functions', () => {
 			expect(actualObject.anImmutableFunction).toBe(originalObject.anImmutableFunction)
 		})
 
-		it('deep clones settings, including undefined values', () => {
+		it('deep clones setting, including undefined values', () => {
 			expect(actualObject.anUndefinedValue).toBeUndefined()
 		})
 
-		it('deep clones settings, including arrays', () => {
+		it('deep clones setting, including arrays', () => {
 			expect(actualObject.anArray).not.toBe(originalObject.anArray)
 			expect(actualObject.anArray).toEqual(originalObject.anArray)
 		})
 
-		it('deep clones settings, including shallow settings', () => {
+		it('deep clones setting, including shallow setting', () => {
 			expect(actualObject.shallowObject).not.toBe(originalObject.shallowObject)
 			expect(actualObject.shallowObject).toEqual(originalObject.shallowObject)
 		})
 
-		it('deep clones settings, including deeply nested settings', () => {
+		it('deep clones setting, including deeply nested setting', () => {
 			expect(actualObject.shallowObject.deepObject).not.toBe(originalObject.shallowObject.deepObject)
 			expect(actualObject.shallowObject.deepObject).toEqual(originalObject.shallowObject.deepObject)
 		})

@@ -45,11 +45,11 @@ describe('play click handler', () => {
 		})
 
 	describe('starting vs resuming', () => {
-		it('executes the selected effects when there is no animation running', () => {
+		it('executes the selected effect when there is no animation running', () => {
 			expect(executeSelectedEffectsSpy).toHaveBeenCalled()
 		})
 
-		it('does not re-execute the selected effects when already running an animation', () => {
+		it('does not re-execute the selected effect when already running an animation', () => {
 			appState.execute.animationInterval = 25346
 			executeSelectedEffectsSpy.calls.reset()
 

@@ -15,11 +15,11 @@ export {
 export {
 	createDescription,
 	createEffectToggles,
-} from './effects'
+} from './effect'
 export {
 	parseOverrideId,
 	updateOverrides,
-} from './overrides'
+} from './override'
 export {
 	Dimensions,
 	DomState,

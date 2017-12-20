@@ -3,7 +3,7 @@ import { DEFAULT_CONTROLS_STATE } from './controls/defaults'
 import { DEFAULT_DOM_STATE } from './dom/defaults'
 import { DEFAULT_EXECUTE_STATE } from './execute/defaults'
 import { DEFAULT_RENDER_STATE } from './render/defaults'
-import { DEFAULT_SETTINGS_STATE } from './settings/defaults'
+import { DEFAULT_SETTINGS_STATE } from './setting/defaults'
 import { AppState } from './types'
 
 const DEFAULT_APP_STATE: AppState = {

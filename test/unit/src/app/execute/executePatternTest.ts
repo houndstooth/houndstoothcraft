@@ -33,7 +33,7 @@ describe('execute pattern', () => {
 		prepareFunctionObjectsPerSettingSpy.and.returnValues(layerFunctionObjects, animationFunctionObjects)
 	})
 
-	it('combines the effects', () => {
+	it('combines the effect', () => {
 		spyOn(combineEffects, 'default')
 
 		subject()
@@ -55,7 +55,7 @@ describe('execute pattern', () => {
 		expect(updateOverrideNodes.default).toHaveBeenCalled()
 	})
 
-	it('updates the overrides', () => {
+	it('updates the override', () => {
 		subject()
 
 		expect(updateOverrides.default).toHaveBeenCalled()

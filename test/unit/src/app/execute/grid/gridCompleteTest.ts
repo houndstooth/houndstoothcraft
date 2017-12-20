@@ -27,13 +27,13 @@ describe('grid complete', () => {
 		expect(globalWrapper.window.setInterval).toHaveBeenCalledWith(gridProgressIntervalFunction.default, 30)
 	})
 
-	it('saves the watcher onto the settings so it can be cancelled from elsewhere if necessary', () => {
+	it('saves the watcher onto the setting so it can be cancelled from elsewhere if necessary', () => {
 		subject(resolveGrid)
 
 		expect(appState.execute.gridProgressInterval).toBe(9275)
 	})
 
-	it('saves the grid resolution function onto the settings so others can resolve it', () => {
+	it('saves the grid resolution function onto the setting so others can resolve it', () => {
 		subject(resolveGrid)
 
 		expect(appState.execute.resolveGrid).toBe(resolveGrid)

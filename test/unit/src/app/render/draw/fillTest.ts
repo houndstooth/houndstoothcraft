@@ -56,7 +56,7 @@ describe('fill', () => {
 			subject({ shapeColor, outline })
 		})
 
-		it('adjusts for the view settings', () => {
+		it('adjusts for the view setting', () => {
 			expect(applyViewForShape.default).toHaveBeenCalledWith(outline)
 		})
 

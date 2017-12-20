@@ -28,7 +28,7 @@ describe('controls', () => {
 			appState.dom.descriptionsContainer = descriptionsContainer
 		})
 
-		it('attaches click handlers which cause the settings of the main houndstooth to change based on the effect', () => {
+		it('attaches click handlers which cause the setting of the main houndstooth to change based on the effect', () => {
 			const effectTogglesContainer: HTMLElement = document.createElement('div')
 			effectTogglesContainer.setAttribute('id', 'effect-toggles-container')
 			effectTogglesContainer.style.display = 'none'

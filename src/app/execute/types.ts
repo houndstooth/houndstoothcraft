@@ -1,5 +1,5 @@
 import { Layer } from '../../types'
-import { SettingFunctionObject } from '../settings'
+import { SettingFunctionObject } from '../setting'
 
 interface ExecuteParams {
 	animationFunctionObjects: SettingFunctionObject[],

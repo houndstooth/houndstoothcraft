@@ -24,7 +24,7 @@ describe('grid progress interval function', () => {
 			expect(appState.execute.resolveGrid).toHaveBeenCalled()
 		})
 
-		it('clears the progress interval off the settings', () => {
+		it('clears the progress interval off the setting', () => {
 			subject()
 
 			expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('gridProgressInterval')
@@ -58,7 +58,7 @@ describe('grid progress interval function', () => {
 			expect(appState.execute.resolveGrid).not.toHaveBeenCalled()
 		})
 
-		it('does not clear the progress interval off the settings', () => {
+		it('does not clear the progress interval off the setting', () => {
 			subject()
 
 			expect(clearIntervalAndRemoveFromState.default).not.toHaveBeenCalled()

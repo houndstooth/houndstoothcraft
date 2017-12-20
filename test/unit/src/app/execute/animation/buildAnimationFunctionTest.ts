@@ -56,7 +56,7 @@ describe('build animation function returns an animation function', () => {
 			expect(updateCurrentFrame.default).not.toHaveBeenCalled()
 		})
 
-		it('does not update the settings for the next frame', () => {
+		it('does not update the setting for the next frame', () => {
 			expect(callFunctionsPerSetting.default).not.toHaveBeenCalled()
 		})
 

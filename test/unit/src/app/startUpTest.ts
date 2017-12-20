@@ -34,7 +34,7 @@ describe('start up', () => {
 		expect(storeDomElements.default).toHaveBeenCalled()
 	})
 
-	it('sets the available effects from all the effects in the effects module', () => {
+	it('sets the available effect from all the effect in the effect module', () => {
 		expect(setupAvailableEffects.default).toHaveBeenCalledWith(allEffects)
 	})
 
@@ -46,11 +46,11 @@ describe('start up', () => {
 		expect(setupMixedDownContext.default).toHaveBeenCalled()
 	})
 
-	it('sets up the overrides', () => {
+	it('sets up the override', () => {
 		expect(updateOverrides.default).toHaveBeenCalled()
 	})
 
-	it('creates the effect toggles from all the effects in the effects module', () => {
+	it('creates the effect toggles from all the effect in the effect module', () => {
 		expect(createEffectToggles.default).toHaveBeenCalledWith(allEffects)
 	})
 

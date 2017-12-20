@@ -2,7 +2,7 @@ import { ControlsState } from './controls'
 import { DomState } from './dom'
 import { ExecuteState } from './execute'
 import { RenderState } from './render'
-import { SettingsState } from './settings'
+import { SettingsState } from './setting'
 
 interface AppState {
 	controls: ControlsState,

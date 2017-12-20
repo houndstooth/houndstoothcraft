@@ -124,7 +124,7 @@ export {
 	Px,
 	SettingFunctionObject,
 	SettingPath,
-	SettingPathAndName,
+	DeeperPathParams,
 	SettingStep,
 } from './app/indexForTest'
 export {

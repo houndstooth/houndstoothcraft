@@ -21,7 +21,7 @@ export {
 	createEffectToggle,
 	createEffectToggles,
 	createLabel,
-} from './effects/indexForTest'
+} from './effect/indexForTest'
 export {
 	appendOverride,
 	createOverrideId,
@@ -35,7 +35,7 @@ export {
 	CreateOverrideParams,
 	CreateOverrideTextParams,
 	OverrideOptions,
-} from './overrides/indexForTest'
+} from './override/indexForTest'
 export {
 	Dimensions,
 	Px,

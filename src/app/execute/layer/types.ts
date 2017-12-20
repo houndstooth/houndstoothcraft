@@ -1,6 +1,6 @@
 import { Referenced } from '../../../pattern'
 import { Layer } from '../../../types'
-import { SettingFunctionObject } from '../../settings'
+import { SettingFunctionObject } from '../../setting'
 
 interface ExecuteLayerParams extends Referenced {
 	layer: Layer,

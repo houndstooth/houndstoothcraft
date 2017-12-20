@@ -28,7 +28,7 @@ describe('store dom elements', () => {
 					return effectTogglesContainer
 				case '#frame-input':
 					return frameInput
-				case '#overrides-container':
+				case '#override-container':
 					return overridesContainer
 				case '#layers-progress-bar':
 					return layersProgressBar

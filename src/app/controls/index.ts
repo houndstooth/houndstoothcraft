@@ -9,7 +9,7 @@ export {
 } from './animation'
 export {
 	effectToggleClickHandler,
-} from './effects'
+} from './effect'
 export {
 	createOverrideNodes,
 	getOverrideLeafNode,
@@ -23,7 +23,7 @@ export {
 	OverrideLeafNode,
 	OverrideNode,
 	OverrideParentNode,
-} from './overrides'
+} from './override'
 export {
 	ControlsState,
 } from './types'

@@ -34,7 +34,7 @@ describe('rewind click handler', () => {
 		expect(updateCurrentFrame.default).toHaveBeenCalledWith(to.Frame(0))
 	})
 
-	it('executes the selected effects', () => {
+	it('executes the selected effect', () => {
 		subject()
 
 		expect(executeSelectedEffectsSpy).toHaveBeenCalled()

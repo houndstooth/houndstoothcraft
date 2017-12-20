@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
 import { Frame, Layer } from '../../types'
-import { OverrideParentNode } from './overrides'
+import { OverrideParentNode } from './override'
 
 interface ControlsState {
 	animating: boolean,

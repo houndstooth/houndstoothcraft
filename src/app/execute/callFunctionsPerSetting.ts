@@ -2,7 +2,7 @@
 
 import { from } from '../../utilities'
 import { appState } from '../appState'
-import { getPatternSettingOrCreatePath, SettingFunctionObject } from '../settings'
+import { getPatternSettingOrCreatePath, SettingFunctionObject } from '../setting'
 
 const callFunctionsPerSetting: (_: { settingFunctionObjects: SettingFunctionObject[] }) => void =
 	({ settingFunctionObjects }: { settingFunctionObjects: SettingFunctionObject[] }): void => {

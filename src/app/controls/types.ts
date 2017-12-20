@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { Frame, Layer, NamedEffect } from '../../types'
+import { Frame, Layer } from '../../types'
 import { ObjectOf } from '../../utilities'
 import { FullSettingPath } from '../settings'
 
@@ -11,7 +11,7 @@ interface ControlsState {
 	endLayer: Layer,
 	exportFrames: boolean,
 	overrideNodes: OverrideParentNode,
-	selectedEffects: NamedEffect[],
+	selectedEffects: string[],
 }
 
 interface OverrideParentNode {

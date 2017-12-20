@@ -18,7 +18,6 @@ describe('effect toggle click handler', () => {
 	let subject: (_: Event) => void
 	let checkbox: HTMLInputElement
 	let effect: NamedEffect
-	let preExistingEffect: NamedEffect
 
 	beforeEach(() => {
 		spyOn(executeSelectedEffects, 'default')
@@ -41,8 +40,7 @@ describe('effect toggle click handler', () => {
 		expect(enableOrDisableOtherEffectToggles.default).not.toHaveBeenCalled()
 		expect(updateDescriptions.default).not.toHaveBeenCalled()
 
-		preExistingEffect = { name: 'preexisting tooth', description: '' }
-		appState.controls.selectedEffects = [ preExistingEffect ]
+		appState.controls.selectedEffects = [ 'preexisting-tooth' ]
 
 		appState.settings.availableEffects = { 'mock-tooth': effect }
 
@@ -50,7 +48,7 @@ describe('effect toggle click handler', () => {
 	})
 
 	it('adds the clicked effect to the selection', () => {
-		expect(appState.controls.selectedEffects).toEqual([ preExistingEffect, effect ])
+		expect(appState.controls.selectedEffects).toEqual([ 'preexisting-tooth', 'mock-tooth' ])
 	})
 
 	it('executes the selected effects, since the selection has now changed', () => {
@@ -100,7 +98,7 @@ describe('effect toggle click handler', () => {
 	it('removes the effect if it is already selected', () => {
 		simulateClick(checkbox, subject)
 
-		expect(appState.controls.selectedEffects).toEqual([ preExistingEffect ])
+		expect(appState.controls.selectedEffects).toEqual([ 'preexisting-tooth' ])
 	})
 })
 

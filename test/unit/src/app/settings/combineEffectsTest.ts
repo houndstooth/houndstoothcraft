@@ -23,7 +23,7 @@ describe('combine effects', () => {
 					opacity: (): number => 1,
 				},
 			},
-			name: '',
+			name: 'effectOne',
 		}
 		const effectTwo: NamedEffect = {
 			animationsPattern: {
@@ -42,9 +42,10 @@ describe('combine effects', () => {
 					tileResolution: (): number => 2,
 				},
 			},
-			name: '',
+			name: 'effectTwo',
 		}
-		appState.controls.selectedEffects = [ effectOne, effectTwo ]
+		appState.settings.availableEffects = { effectOne, effectTwo }
+		appState.controls.selectedEffects = [ 'effectOne', 'effectTwo' ]
 
 		subject()
 

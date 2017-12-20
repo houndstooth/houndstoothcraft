@@ -1,5 +1,4 @@
-import { appState, Frame, Layer, NamedEffect } from '../../src/indexForTest'
-import { Effect } from '../../src/types'
+import { appState, Effect, Frame, Layer, NamedEffect, ObjectOf } from '../../src/indexForTest'
 
 const setCurrentFrame: (_: Frame) => void =
 	(frame: Frame): void => {
@@ -11,8 +10,13 @@ const setCurrentLayer: (_: Layer) => void =
 		appState.execute.currentLayer = layer
 	}
 
-const setSelectedEffects: (_: NamedEffect[]) => void =
-	(selectedEffects: NamedEffect[]): void => {
+const setAvailableEffects: (_: ObjectOf<NamedEffect>) => void =
+	(availableEffects: ObjectOf<NamedEffect>): void => {
+		appState.settings.availableEffects = availableEffects
+	}
+
+const setSelectedEffects: (_: string[]) => void =
+	(selectedEffects: string[]): void => {
 		appState.controls.selectedEffects = selectedEffects
 	}
 
@@ -25,5 +29,6 @@ export {
 	setCurrentFrame,
 	setCurrentLayer,
 	setSelectedEffects,
+	setAvailableEffects,
 	setOverrides,
 }

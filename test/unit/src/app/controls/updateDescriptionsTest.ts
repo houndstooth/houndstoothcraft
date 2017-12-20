@@ -9,9 +9,14 @@ describe('update descriptions', () => {
 	it('adds the description for each of the selected effects', () => {
 		spyOn(createDescription, 'default')
 
+		appState.settings.availableEffects = {
+			'Family Learning Channel': { name: 'Family Learning Channel', description: 'i am a banana' },
+			'and now': { name: 'and now', description: 'angry ticks fire out of my nipples' },
+			'everybody dance': { name: 'everybody dance', description: 'this is fun' },
+		}
+
 		appState.controls.selectedEffects = [
-			{ name: 'Nu är det Jul igen', description: 'this is fun' },
-			{ name: 'Family Learning Channel', description: 'i am a banana' },
+			'everybody dance', 'Family Learning Channel',
 		]
 
 		subject()

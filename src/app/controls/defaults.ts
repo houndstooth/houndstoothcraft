@@ -1,6 +1,6 @@
 // tslint:disable:no-any
 
-import { Frame, Layer, NamedEffect } from '../../types'
+import { Frame, Layer } from '../../types'
 import { ControlsState, OverrideParentNode } from './types'
 
 const DEFAULT_OVERRIDE_NODES_ANIMATIONS_PATTERN: OverrideParentNode = { open: false, children: {} }
@@ -20,7 +20,7 @@ const DEFAULT_OVERRIDE_NODES: OverrideParentNode = {
 	},
 	open: true,
 }
-const DEFAULT_SELECTED_EFFECTS: NamedEffect[] = []
+const DEFAULT_SELECTED_EFFECTS: string[] = []
 
 const DEFAULT_CONTROLS_STATE: ControlsState = {
 	animating: DEFAULT_ANIMATING,

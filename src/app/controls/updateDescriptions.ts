@@ -4,7 +4,8 @@ import { createDescription } from '../dom'
 
 const updateDescriptions: () => void =
 	(): void => {
-		appState.controls.selectedEffects.forEach((effect: NamedEffect): void => {
+		appState.controls.selectedEffects.forEach((effectName: string): void => {
+			const effect: NamedEffect = appState.settings.availableEffects[effectName]
 			createDescription.default(effect.description)
 		})
 	}

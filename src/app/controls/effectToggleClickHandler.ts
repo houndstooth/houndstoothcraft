@@ -1,4 +1,3 @@
-import { NamedEffect } from '../../types'
 import { appState } from '../appState'
 import { cancelPreviousPattern, clearIntervalAndRemoveFromState, executeSelectedEffects } from '../execute'
 import { clearContexts, clearMixedDownContext } from '../render'
@@ -22,10 +21,7 @@ const effectToggleClickHandler: (_: Event) => void =
 		cancelPreviousPattern.default()
 		resetMainHoundstooth.default()
 
-		const checkbox: HTMLInputElement = event.target as HTMLInputElement
-		const effect: NamedEffect = appState.settings.availableEffects[checkbox.name]
-		const effectFunction: (_: NamedEffect) => void = checkbox.checked ? addEffect : removeEffect
-		effectFunction(effect)
+		addOrRemoveEffect(event)
 
 		executeSelectedEffects.default()
 
@@ -36,16 +32,16 @@ const effectToggleClickHandler: (_: Event) => void =
 		updateDescriptions()
 	}
 
-const addEffect: (_: NamedEffect) => void =
-	(effect: NamedEffect): void => {
-		appState.controls.selectedEffects.push(effect)
-	}
-
-const removeEffect: (_: NamedEffect) => void =
-	(effect: NamedEffect): void => {
-		// tslint:disable-next-line:max-line-length
-		appState.controls.selectedEffects = appState.controls.selectedEffects.filter((selectedEffect: NamedEffect) =>
-			selectedEffect.name !== effect.name)
+const addOrRemoveEffect: (_: Event) => void =
+	(event: Event): void => {
+		const checkbox: HTMLInputElement = event.target as HTMLInputElement
+		if (checkbox.checked) {
+			appState.controls.selectedEffects.push(checkbox.name)
+		}
+		else {
+			appState.controls.selectedEffects = appState.controls.selectedEffects.filter((selectedEffectName: string) =>
+				selectedEffectName !== checkbox.name)
+		}
 	}
 
 export default effectToggleClickHandler

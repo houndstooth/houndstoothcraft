@@ -9,7 +9,8 @@ const combineEffects: () => void =
 		const layersPattern: PatternFunctions = {}
 		const animationsPattern: PatternFunctions = {}
 
-		appState.controls.selectedEffects.forEach((effect: Effect): void => {
+		appState.controls.selectedEffects.forEach((effectName: string): void => {
+			const effect: Effect = appState.settings.availableEffects[effectName]
 			composePatterns({
 				patternToBeMergedOnto: basePattern,
 				patternToMerge: effect.basePattern,

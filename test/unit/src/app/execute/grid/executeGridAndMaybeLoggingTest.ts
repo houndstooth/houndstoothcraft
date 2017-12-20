@@ -1,4 +1,10 @@
-import { appState, executeGrid, executeGridAndMaybeLogging, globalWrapper, to } from '../../../../../../src/indexForTest'
+import {
+	appState,
+	executeGrid,
+	executeGridAndMaybeLogging,
+	globalWrapper,
+	to,
+} from '../../../../../../src/indexForTest'
 
 describe('execute grid and maybe logging', () => {
 	let subject: (_: { frameId: number }) => Promise<void>

@@ -1,38 +1,26 @@
-import * as buildFill from './buildFill'
-import * as buildPath from './buildPath'
-import * as clearContext from './clearContext'
-import * as clearContexts from './clearContexts'
-import * as clearMixedDownContext from './clearMixedDownContext'
-import * as clipPath from './clipPath'
-import * as fill from './fill'
-import * as fillPath from './fillPath'
-import * as getCurrentContext from './getCurrentContext'
-import * as mixDownContexts from './mixDownContexts'
-import * as resetClip from './resetClip'
-import * as saveCanvas from './saveCanvas'
-import * as setClip from './setClip'
-import * as setupMixedDownContext from './setupMixedDownContext'
+// tslint:disable:no-reaching-imports
 
 export {
-	buildFill,
-	buildPath,
 	clearContext,
 	clearContexts,
 	clearMixedDownContext,
+	getCurrentContext,
+	mixDownContexts,
+	saveCanvas,
+	setupMixedDownContext,
+} from './canvas/indexForTest'
+export {
+	buildFill,
+	buildPath,
 	clipPath,
 	fill,
 	fillPath,
-	getCurrentContext,
-	mixDownContexts,
 	resetClip,
-	saveCanvas,
 	setClip,
-	setupMixedDownContext,
-}
-export {
+
 	Path,
 	Pixel,
-} from './types'
+} from './draw/indexForTest'
 export {
 	ERASE,
 } from './constants'

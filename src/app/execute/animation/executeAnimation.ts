@@ -1,6 +1,6 @@
+import { ExecuteParams } from '../types'
 import animator from './animator'
 import buildAnimationFunction from './buildAnimationFunction'
-import { ExecuteParams } from '../types'
 
 const executeAnimation: (_: ExecuteParams) => Promise<(resolveAnimation: () => void) => void> =
 	// tslint:disable-next-line:max-line-length

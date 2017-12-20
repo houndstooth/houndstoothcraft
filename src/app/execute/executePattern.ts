@@ -9,7 +9,7 @@ import {
 	prepareFunctionObjectsPerSetting,
 	SettingFunctionObject,
 } from '../settings'
-import executeAnimation from './animation/executeAnimation'
+import { executeAnimation } from './animation'
 import executeFrame from './executeFrame'
 
 const executePattern: () => void =
@@ -47,7 +47,7 @@ const execute: () => void =
 		})
 
 		if (appState.controls.animating) {
-			executeAnimation({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
 			executeFrame({ animationFunctionObjects, layerFunctionObjects }).then().catch()

@@ -1,3 +1,5 @@
+// tslint:disable:no-reaching-imports
+
 import * as callFunctionsPerSetting from './callFunctionsPerSetting'
 import * as cancelCurrentFrame from './cancelCurrentFrame'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'

@@ -1,27 +1,20 @@
-import * as clearContexts from './clearContexts'
-import * as clearMixedDownContext from './clearMixedDownContext'
-import * as fill from './fill'
-import * as getCurrentContext from './getCurrentContext'
-import * as mixDownContexts from './mixDownContexts'
-import * as resetClip from './resetClip'
-import * as saveCanvas from './saveCanvas'
-import * as setClip from './setClip'
-import * as setupMixedDownContext from './setupMixedDownContext'
-
 export {
 	clearContexts,
 	clearMixedDownContext,
-	saveCanvas,
-	fill,
 	getCurrentContext,
 	mixDownContexts,
+	saveCanvas,
+	setupMixedDownContext,
+} from './canvas'
+export {
+	fill,
 	resetClip,
 	setClip,
-	setupMixedDownContext,
-}
-export {
+
 	Path,
 	Pixel,
+} from './draw'
+export {
 	RenderState,
 } from './types'
 export {

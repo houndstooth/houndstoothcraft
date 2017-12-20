@@ -2,8 +2,8 @@ import { globalWrapper } from '../../../utilities'
 import { appState } from '../../appState'
 import { ControlsState } from '../../controls'
 import { AppState } from '../../types'
-import executeGrid from './executeGrid'
 import { ExecuteState } from '../types'
+import executeGrid from './executeGrid'
 
 const executeGridAndMaybeLogging: (_: { frameId: number }) => Promise<void> =
 	async ({ frameId }: { frameId: number }): Promise<void> => {

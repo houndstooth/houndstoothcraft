@@ -1,7 +1,8 @@
 // tslint:disable:no-any
 
 import { Frame, Layer } from '../../types'
-import { ControlsState, OverrideParentNode } from './types'
+import { OverrideParentNode } from './overrides'
+import { ControlsState } from './types'
 
 const DEFAULT_OVERRIDE_NODES_ANIMATIONS_PATTERN: OverrideParentNode = { open: false, children: {} }
 const DEFAULT_OVERRIDE_NODES_BASE_PATTERN: OverrideParentNode = { open: true, children: {} }

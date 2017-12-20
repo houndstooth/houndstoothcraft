@@ -1,8 +1,7 @@
 // tslint:disable:no-any
 
 import { Frame, Layer } from '../../types'
-import { ObjectOf } from '../../utilities'
-import { FullSettingPath } from '../settings'
+import { OverrideParentNode } from './overrides'
 
 interface ControlsState {
 	animating: boolean,
@@ -14,25 +13,6 @@ interface ControlsState {
 	selectedEffects: string[],
 }
 
-interface OverrideParentNode {
-	children: ObjectOf<OverrideNode>
-	open: boolean,
-}
-
-interface OverrideLeafNode {
-	overriding: boolean,
-}
-
-type OverrideNode = OverrideParentNode | OverrideLeafNode
-
-interface UpdateOverride extends FullSettingPath {
-	inputValue: any
-}
-
 export {
-	OverrideNode,
 	ControlsState,
-	OverrideParentNode,
-	OverrideLeafNode,
-	UpdateOverride,
 }

@@ -6,7 +6,7 @@ import createOverrideParent from './createOverrideParent'
 
 const updateOverrides: () => void =
 	(): void => {
-		appState.dom.overridesContainer.innerHTML = ''
+		appState.dom.overrideContainer.innerHTML = ''
 		createOverridesForPattern(to.SettingStep('basePattern'))
 		createOverridesForPattern(to.SettingStep('animationsPattern'))
 		createOverridesForPattern(to.SettingStep('layersPattern'))
@@ -30,7 +30,7 @@ const createPatternHeader: (_: SettingStep) => HTMLElement =
 		const patternHeader: HTMLElement = globalWrapper.document.createElement('div')
 		patternHeader.innerHTML = from.SettingStep(patternName)
 
-		appState.dom.overridesContainer.appendChild(patternHeader)
+		appState.dom.overrideContainer.appendChild(patternHeader)
 
 		return patternHeader
 	}

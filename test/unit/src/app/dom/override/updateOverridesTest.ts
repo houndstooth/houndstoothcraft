@@ -14,13 +14,13 @@ describe('update override', () => {
 		children = []
 		subject = updateOverrides.default
 		spyOn(mapOverPattern, 'default')
-		appState.dom.overridesContainer = buildMockElement({ children }) as HTMLElement
+		appState.dom.overrideContainer = buildMockElement({ children }) as HTMLElement
 
 		subject()
 	})
 
 	it('resets the override', () => {
-		expect(appState.dom.overridesContainer.innerHTML).toBe('')
+		expect(appState.dom.overrideContainer.innerHTML).toBe('')
 	})
 
 	it('for each pattern, creates a node for every parent of setting and a node w input for every setting leaf', () => {

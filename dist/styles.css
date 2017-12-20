@@ -58,33 +58,33 @@ body {
     overflow-y: auto;
 }
 
-#overrides-container {
+#override-container {
     white-space: pre;
     flex: 1;
     overflow-y: auto;
 }
 
-#overrides-container details, #overrides-container div {
+#override-container details, #override-container div {
     margin: 3px 3px 3px 10px !important;
 }
 
-#overrides-container details div, #overrides-container summary {
+#override-container details div, #override-container summary {
     display: flex;
     align-items: center;
     height: 18px;
 }
 
-#overrides-container summary {
+#override-container summary {
     cursor: pointer;
 }
 
-#overrides-container button {
+#override-container button {
     border: 1px solid rgb(100, 100, 100);
     margin: 0 5px;
     font-size: 10px;
 }
 
-#overrides-container span {
+#override-container span {
     margin: 0 5px !important;
     pointer-events: none;
 }

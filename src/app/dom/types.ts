@@ -13,7 +13,7 @@ interface DomState {
 	frameInput: HTMLInputElement,
 	layersProgressBar: HTMLElement,
 	mixedDownCanvas: HTMLCanvasElement,
-	overridesContainer: HTMLElement,
+	overrideContainer: HTMLElement,
 	pauseButton: HTMLButtonElement,
 	playButton: HTMLButtonElement,
 	progressBar: HTMLElement,

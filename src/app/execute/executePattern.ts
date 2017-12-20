@@ -9,7 +9,7 @@ import {
 	prepareFunctionObjectsPerSetting,
 	SettingFunctionObject,
 } from '../settings'
-import executeAnimation from './executeAnimation'
+import executeAnimation from './animation/executeAnimation'
 import executeFrame from './executeFrame'
 
 const executePattern: () => void =

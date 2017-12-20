@@ -12,7 +12,7 @@ export {
 	concatFullSettingPath,
 	buildPath,
 	callFunctionsPerSetting,
-	cancelPreviousPattern,
+	cancelCurrentFrame,
 	checkSettingForConflict,
 	clearContext,
 	clearContexts,

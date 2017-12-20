@@ -1,17 +1,18 @@
-import * as cancelPreviousPattern from './cancelPreviousPattern'
+import * as cancelCurrentFrame from './cancelCurrentFrame'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import * as executePattern from './executePattern'
-import * as getCurrentLayer from './getCurrentLayer'
-import * as incrementTilesCompleted from './incrementTilesCompleted'
-import * as setTileCount from './setTileCount'
 
 export {
-	cancelPreviousPattern,
-	clearIntervalAndRemoveFromState,
-	executePattern,
-	getCurrentLayer,
 	incrementTilesCompleted,
 	setTileCount,
+} from './grid'
+export {
+	getCurrentLayer,
+} from './layer'
+export {
+	cancelCurrentFrame,
+	clearIntervalAndRemoveFromState,
+	executePattern,
 }
 export {
 	ExecuteState,

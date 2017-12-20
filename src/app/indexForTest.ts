@@ -60,7 +60,7 @@ export {
 	buildAnimationFunction,
 	buildAnimationIntervalFunction,
 	callFunctionsPerSetting,
-	cancelPreviousPattern,
+	cancelCurrentFrame,
 	clearIntervalAndRemoveFromState,
 	completeLayers,
 	executeAnimation,

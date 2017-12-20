@@ -1,52 +1,44 @@
-import * as animator from './animator'
-import * as asyncMaybeTile from './asyncMaybeTile'
-import * as buildAnimationFunction from './buildAnimationFunction'
-import * as buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
 import * as callFunctionsPerSetting from './callFunctionsPerSetting'
-import * as cancelPreviousPattern from './cancelPreviousPattern'
+import * as cancelCurrentFrame from './cancelCurrentFrame'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
-import * as completeLayers from './completeLayers'
-import * as executeAnimation from './executeAnimation'
 import * as executeFrame from './executeFrame'
-import * as executeGrid from './executeGrid'
-import * as executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
-import * as executeLayer from './executeLayer'
 import * as executePattern from './executePattern'
-import * as getCurrentLayer from './getCurrentLayer'
-import * as gridComplete from './gridComplete'
-import * as gridProgressIntervalFunction from './gridProgressIntervalFunction'
-import * as incrementTilesCompleted from './incrementTilesCompleted'
-import * as previousFrameHasFinished from './previousFrameHasFinished'
-import * as setTileCount from './setTileCount'
 import * as thisFrameHasNotBeenCanceled from './thisFrameHasNotBeenCanceled'
-import * as updateProgress from './updateProgress'
 
 export {
-	animator,
-	asyncMaybeTile,
-	buildAnimationFunction,
-	buildAnimationIntervalFunction,
 	callFunctionsPerSetting,
-	cancelPreviousPattern,
+	cancelCurrentFrame,
 	clearIntervalAndRemoveFromState,
-	completeLayers,
-	executeAnimation,
-	executeGrid,
-	executeGridAndMaybeLogging,
-	executeLayer,
 	executeFrame,
 	executePattern,
-	getCurrentLayer,
+	thisFrameHasNotBeenCanceled,
+}
+export {
+	animator,
+	buildAnimationFunction,
+	buildAnimationIntervalFunction,
+	executeAnimation,
+	previousFrameHasFinished,
+
+	AnimationParams,
+} from './animation/indexForTest'
+export {
+	asyncMaybeTile,
+	executeGrid,
+	executeGridAndMaybeLogging,
 	gridComplete,
 	gridProgressIntervalFunction,
 	incrementTilesCompleted,
-	previousFrameHasFinished,
 	setTileCount,
-	thisFrameHasNotBeenCanceled,
 	updateProgress,
-}
+} from './grid/indexForTest'
 export {
-	AnimationParams,
+	completeLayers,
+	executeLayer,
+	getCurrentLayer,
+
 	ExecuteLayerParams,
+} from './layer/indexForTest'
+export {
 	ExecuteParams,
 } from './types'

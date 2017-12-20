@@ -1,6 +1,6 @@
 import {
 	appState,
-	cancelPreviousPattern,
+	cancelCurrentFrame,
 	clearContexts,
 	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
@@ -27,7 +27,7 @@ describe('effect toggle click handler', () => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(clearContexts, 'default')
 		spyOn(clearIntervalAndRemoveFromState, 'default')
-		spyOn(cancelPreviousPattern, 'default')
+		spyOn(cancelCurrentFrame, 'default')
 		spyOn(resetMainHoundstooth, 'default')
 
 		checkbox = buildMockElement() as HTMLInputElement
@@ -92,7 +92,7 @@ describe('effect toggle click handler', () => {
 	})
 
 	it('cancels the previous pattern', () => {
-		expect(cancelPreviousPattern.default).toHaveBeenCalled()
+		expect(cancelCurrentFrame.default).toHaveBeenCalled()
 	})
 
 	it('removes the effect if it is already selected', () => {

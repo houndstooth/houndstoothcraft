@@ -1,15 +1,11 @@
-import * as animator from './animator'
-import * as buildAnimationFunction from './buildAnimationFunction'
-import * as buildAnimationIntervalFunction from './buildAnimationIntervalFunction'
+import * as animation from './animation'
+import * as clearAnimationIntervalAndRemoveFromState from './clearAnimationIntervalAndRemoveFromState'
 import * as executeAnimation from './executeAnimation'
-import * as previousFrameHasFinished from './previousFrameHasFinished'
 
 export {
-	animator,
-	buildAnimationFunction,
-	buildAnimationIntervalFunction,
+	animation,
+	clearAnimationIntervalAndRemoveFromState,
 	executeAnimation,
-	previousFrameHasFinished,
 }
 export {
 	AnimationParams,

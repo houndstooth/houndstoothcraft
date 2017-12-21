@@ -1,7 +1,9 @@
 import * as cancelCurrentPattern from './cancelCurrentPattern'
-import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
 import * as executeEffect from './executeEffect'
 
+export {
+	clearAnimationIntervalAndRemoveFromState,
+} from './animation'
 export {
 	incrementTilesCompleted,
 	setTileCount,
@@ -11,7 +13,6 @@ export {
 } from './layer'
 export {
 	cancelCurrentPattern,
-	clearIntervalAndRemoveFromState,
 	executeEffect,
 }
 export {

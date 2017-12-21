@@ -1,42 +1,25 @@
-import {
-	appState,
-	asyncMaybeTile,
-	executeGrid,
-	grid,
-	gridComplete,
-} from '../../../../../../src/indexForTest'
+import { appState, asyncMaybeTile, executeGrid, grid } from '../../../../../../src/indexForTest'
 
 describe('execute grid', () => {
 	let subject: (_: { patternId: number }) => Promise<void>
-	const patternId: number = 99
-
+	const patternId: number = 23457
 	beforeEach(() => {
 		subject = executeGrid.default
-		const fakeGridComplete: (resolveGrid: () => void) => void =
-			(resolveGrid: () => void): void => {
-				appState.execute.resolveGrid = resolveGrid
-			}
-		spyOn(gridComplete, 'default').and.callFake(fakeGridComplete)
-
 		spyOn(grid, 'default')
 	})
 
-	it('resets the count of tiles completed after the grid is complete', async (done: DoneFn) => {
-		appState.execute.tilesCompleted = 256
-
-		subject({ patternId }).then().catch()
-		expect(appState.execute.tilesCompleted).toBe(256)
-
-		appState.execute.resolveGrid()
-		setTimeout(() => {
-			expect(appState.execute.tilesCompleted).toBe(0)
-			done()
-		},         0)
-	})
-
-	it('calls the grid loop with the tile function and a reference to this pattern', () => {
+	it('calls grid with the id of the current pattern', () => {
 		subject({ patternId }).then().catch()
 
 		expect(grid.default).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, patternId })
+	})
+
+	// tslint:disable-next-line:max-line-length
+	it('stores the resolve function of a promise on the store where it can be found to be resolved from elsewhere later', () => {
+		const oldResolveGrid: () => void = appState.execute.resolveGrid
+
+		subject({ patternId }).then().catch()
+
+		expect(appState.execute.resolveGrid).not.toEqual(oldResolveGrid)
 	})
 })

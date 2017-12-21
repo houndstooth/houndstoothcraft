@@ -9,9 +9,9 @@ interface ExecuteParams {
 interface ExecuteState {
 	animationInterval?: number,
 	currentLayer: Layer,
-	gridProgressInterval?: number,
 	patternId: number,
 	performanceLogging: boolean,
+	resolveAnimation: () => void,
 	resolveGrid: () => void,
 	tileCount: number,
 	tilesCompleted: number,

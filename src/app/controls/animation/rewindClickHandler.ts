@@ -1,12 +1,12 @@
 import { to } from '../../../utilities'
 import { appState } from '../../appState'
-import { clearIntervalAndRemoveFromState, executeEffect } from '../../execute'
+import { clearAnimationIntervalAndRemoveFromState, executeEffect } from '../../execute'
 import { clearMixedDownContext } from '../../render'
 import updateCurrentFrame from './updateCurrentFrame'
 
 const rewindClickHandler: () => void =
 	(): void => {
-		clearIntervalAndRemoveFromState.default('animationInterval')
+		clearAnimationIntervalAndRemoveFromState.default()
 
 		updateCurrentFrame(to.Frame(0))
 

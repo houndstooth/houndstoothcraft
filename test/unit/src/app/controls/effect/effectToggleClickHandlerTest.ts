@@ -1,8 +1,8 @@
 import {
 	appState,
 	cancelCurrentPattern,
+	clearAnimationIntervalAndRemoveFromState,
 	clearContexts,
-	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
@@ -26,7 +26,7 @@ describe('effect toggle click handler', () => {
 		spyOn(updateDescriptions, 'default')
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(clearContexts, 'default')
-		spyOn(clearIntervalAndRemoveFromState, 'default')
+		spyOn(clearAnimationIntervalAndRemoveFromState, 'default')
 		spyOn(cancelCurrentPattern, 'default')
 		spyOn(resetMainHoundstooth, 'default')
 
@@ -79,12 +79,8 @@ describe('effect toggle click handler', () => {
 		expect(clearMixedDownContext.default).toHaveBeenCalled()
 	})
 
-	it('clears any active animation', () => {
-		expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('animationInterval')
-	})
-
-	it('clears any active rendering progress measurement', () => {
-		expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('gridProgressInterval')
+	it('clears any active animation and removes them from the state', () => {
+		expect(clearAnimationIntervalAndRemoveFromState.default).toHaveBeenCalled()
 	})
 
 	it('resets the main houndstooth', () => {

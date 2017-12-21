@@ -1,6 +1,6 @@
 import {
 	appState,
-	clearIntervalAndRemoveFromState,
+	clearAnimationIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	executeEffect,
 	rewindClickHandler,
@@ -17,15 +17,15 @@ describe('rewind click handler', () => {
 		subject = rewindClickHandler.default
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
-		spyOn(clearIntervalAndRemoveFromState, 'default')
+		spyOn(clearAnimationIntervalAndRemoveFromState, 'default')
 		executeSelectedEffectsSpy = spyOn(executeEffect, 'default')
 			.and.returnValue(new Promise<() => void>((): void => undefined))
 	})
 
-	it('clears the interval with the helper which also removes it from the state', () => {
+	it('clears the animation interval with the helper which also removes it from the state', () => {
 		subject()
 
-		expect(clearIntervalAndRemoveFromState.default).toHaveBeenCalledWith('animationInterval')
+		expect(clearAnimationIntervalAndRemoveFromState.default).toHaveBeenCalled()
 	})
 
 	it('resets the current frame', () => {

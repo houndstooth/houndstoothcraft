@@ -1,5 +1,5 @@
 import { appState } from '../../appState'
-import { cancelCurrentPattern, clearIntervalAndRemoveFromState, executeEffect } from '../../execute'
+import { cancelCurrentPattern, clearAnimationIntervalAndRemoveFromState, executeEffect } from '../../execute'
 import { clearContexts, clearMixedDownContext } from '../../render'
 import { resetMainHoundstooth } from '../../setting'
 import { enableOrDisableAnimationControls } from '../animation'
@@ -13,8 +13,7 @@ const effectToggleClickHandler: (_: Event) => void =
 		clearContexts.default()
 		clearMixedDownContext.default()
 
-		clearIntervalAndRemoveFromState.default('animationInterval')
-		clearIntervalAndRemoveFromState.default('gridProgressInterval')
+		clearAnimationIntervalAndRemoveFromState.default()
 
 		appState.execute.resolveGrid()
 

@@ -5,9 +5,9 @@ import { appState } from '../../appState'
 import asyncMaybeTile from './asyncMaybeTile'
 import gridComplete from './gridComplete'
 
-const executeGrid: (_: { frameId: number }) => Promise<void> =
-	async ({ frameId }: { frameId: number }): Promise<void> => {
-		grid.default({ gridTile: asyncMaybeTile, frameId })
+const executeGrid: (_: { patternId: number }) => Promise<void> =
+	async ({ patternId }: { patternId: number }): Promise<void> => {
+		grid.default({ gridTile: asyncMaybeTile, patternId })
 		await new Promise<(resolveGrid: () => void) => void>(gridComplete)
 		appState.execute.tilesCompleted = 0
 	}

@@ -1,19 +1,19 @@
 // tslint:disable:no-reaching-imports
 
 import * as callFunctionsPerSetting from './callFunctionsPerSetting'
-import * as cancelCurrentFrame from './cancelCurrentFrame'
+import * as cancelCurrentPattern from './cancelCurrentPattern'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
-import * as executeFrame from './executeFrame'
+import * as executeEffect from './executeEffect'
 import * as executePattern from './executePattern'
-import * as thisFrameHasNotBeenCanceled from './thisFrameHasNotBeenCanceled'
+import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 
 export {
 	callFunctionsPerSetting,
-	cancelCurrentFrame,
+	cancelCurrentPattern,
 	clearIntervalAndRemoveFromState,
-	executeFrame,
 	executePattern,
-	thisFrameHasNotBeenCanceled,
+	executeEffect,
+	thisPatternHasNotBeenCanceled,
 }
 export {
 	animator,

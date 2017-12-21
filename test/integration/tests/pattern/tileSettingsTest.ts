@@ -1,4 +1,4 @@
-import { appState, BLACK, executePattern, to, TRANSPARENT } from '../../../../src/indexForTest'
+import { appState, BLACK, executeEffect, to, TRANSPARENT } from '../../../../src/indexForTest'
 import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 describe('.tileSettings', () => {
@@ -12,7 +12,7 @@ describe('.tileSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -61,7 +61,7 @@ describe('.tileSettings', () => {
 					},
 				}
 
-				executePattern.default()
+				executeEffect.default()
 
 				setTimeout(() => {
 					let baseId: number = -8

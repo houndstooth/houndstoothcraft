@@ -1,14 +1,14 @@
 import { maybeTile, ReferencedAddress } from '../../../pattern'
 import { globalWrapper } from '../../../utilities'
-import thisFrameHasNotBeenCanceled from '../thisFrameHasNotBeenCanceled'
+import thisPatternHasNotBeenCanceled from '../thisPatternHasNotBeenCanceled'
 import updateProgress from './updateProgress'
 
 const asyncMaybeTile: (_: ReferencedAddress) => void =
-	({ address, frameId }: ReferencedAddress): void => {
+	({ address, patternId }: ReferencedAddress): void => {
 		globalWrapper.window.setTimeout(
 			() => {
-				if (thisFrameHasNotBeenCanceled(frameId)) {
-					maybeTile.default({ address, frameId })
+				if (thisPatternHasNotBeenCanceled(patternId)) {
+					maybeTile.default({ address, patternId })
 					updateProgress()
 				}
 			},

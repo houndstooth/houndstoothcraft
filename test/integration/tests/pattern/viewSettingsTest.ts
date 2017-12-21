@@ -2,7 +2,7 @@ import {
 	appState,
 	BLACK,
 	Coordinate,
-	executePattern,
+	executeEffect,
 	from,
 	patternState,
 	to,
@@ -24,7 +24,7 @@ describe('.viewSettings', () => {
 			const tileSize: Unit = patternState.tileSettings.tileSize
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -74,7 +74,7 @@ describe('.viewSettings', () => {
 			const tileSize: Unit = patternState.tileSettings.tileSize
 			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -119,7 +119,7 @@ describe('.viewSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -171,7 +171,7 @@ describe('.viewSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				let areaOrigin: Coordinate = to.Coordinate([ 700, 0 ])

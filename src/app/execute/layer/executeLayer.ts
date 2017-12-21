@@ -5,14 +5,14 @@ import { executeGridAndMaybeLogging } from '../grid'
 import { ExecuteLayerParams } from './types'
 
 const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
-	async ({ layer, layerFunctionObjects, frameId }: ExecuteLayerParams): Promise<void> => {
+	async ({ layer, layerFunctionObjects, patternId }: ExecuteLayerParams): Promise<void> => {
 		appState.execute.currentLayer = layer
 
 		callFunctionsPerSetting({ settingFunctionObjects: layerFunctionObjects })
 
 		initializePatternState.default(appState.settings.currentPattern)
 
-		await executeGridAndMaybeLogging.default({ frameId })
+		await executeGridAndMaybeLogging.default({ patternId })
 	}
 
 export default executeLayer

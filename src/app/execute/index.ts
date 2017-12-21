@@ -1,6 +1,6 @@
-import * as cancelCurrentFrame from './cancelCurrentFrame'
+import * as cancelCurrentPattern from './cancelCurrentPattern'
 import * as clearIntervalAndRemoveFromState from './clearIntervalAndRemoveFromState'
-import * as executePattern from './executePattern'
+import * as executeEffect from './executeEffect'
 
 export {
 	incrementTilesCompleted,
@@ -10,9 +10,9 @@ export {
 	getCurrentLayer,
 } from './layer'
 export {
-	cancelCurrentFrame,
+	cancelCurrentPattern,
 	clearIntervalAndRemoveFromState,
-	executePattern,
+	executeEffect,
 }
 export {
 	ExecuteState,

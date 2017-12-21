@@ -1,7 +1,7 @@
 import { ObjectOf, to } from '../../../utilities'
 import { appState } from '../../appState'
 import { parseOverrideId } from '../../dom'
-import { executePattern } from '../../execute'
+import { executeEffect } from '../../execute'
 import { clearMixedDownContext } from '../../render'
 import { FullSettingPath, getEffectSetting } from '../../setting'
 import { enableOrDisableAnimationControls } from '../animation'
@@ -27,7 +27,7 @@ const overrideClearClickHandler: (_: Event) => void =
 		delete parentSettingOfOverrideToClear[ settingName ]
 
 		clearMixedDownContext.default()
-		executePattern.default()
+		executeEffect.default()
 		enableOrDisableAnimationControls.default()
 	}
 

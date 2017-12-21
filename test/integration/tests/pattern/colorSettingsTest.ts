@@ -5,7 +5,7 @@ import {
 	BLUE,
 	Color,
 	CYAN,
-	executePattern,
+	executeEffect,
 	from,
 	MAGENTA,
 	patternState,
@@ -41,7 +41,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				expect(pixelIsColorWithMarker({
@@ -79,7 +79,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				let baseId: number = -8
@@ -167,7 +167,7 @@ describe('.colorSettings', () => {
 						},
 					}
 
-					executePattern.default()
+					executeEffect.default()
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -502,7 +502,7 @@ describe('.colorSettings', () => {
 						},
 					}
 
-					executePattern.default()
+					executeEffect.default()
 
 					setTimeout(() => {
 						let baseId: number = -8
@@ -638,7 +638,7 @@ describe('.colorSettings', () => {
 					},
 				}
 
-				executePattern.default()
+				executeEffect.default()
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -714,7 +714,7 @@ describe('.colorSettings', () => {
 					},
 				}
 
-				executePattern.default()
+				executeEffect.default()
 
 				setTimeout(() => {
 					let baseId: number = -8
@@ -769,7 +769,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				const partiallySeeThroughBlack: Color = { r: BLACK.r, g: BLACK.g, b: BLACK.b, a: BLACK.a * opacity }
@@ -808,7 +808,7 @@ describe('.colorSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				const yellowPixel: PixelColorExpectation = {

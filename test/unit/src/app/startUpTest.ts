@@ -2,7 +2,7 @@ import {
 	attachControlHandlers,
 	createEffectToggles,
 	createOverrideNodes,
-	executePattern,
+	executeEffect,
 	NamedEffect,
 	setupAvailableEffects,
 	setupMixedDownContext,
@@ -24,7 +24,7 @@ describe('start up', () => {
 		spyOn(updateOverrides, 'default')
 		spyOn(createEffectToggles, 'default')
 		spyOn(attachControlHandlers, 'default')
-		spyOn(executePattern, 'default')
+		spyOn(executeEffect, 'default')
 		allEffects = [ { name: 'mock effect', description: '' } ]
 
 		subject(allEffects)
@@ -59,6 +59,6 @@ describe('start up', () => {
 	})
 
 	it('executes the pattern once so the canvas is not blank when the user arrives', () => {
-		expect(executePattern.default).toHaveBeenCalled()
+		expect(executeEffect.default).toHaveBeenCalled()
 	})
 })

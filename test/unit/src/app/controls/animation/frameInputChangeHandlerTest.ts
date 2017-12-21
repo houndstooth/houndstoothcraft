@@ -1,7 +1,7 @@
 import {
 	appState,
 	clearMixedDownContext,
-	executePattern,
+	executeEffect,
 	frameInputChangeHandler,
 	to,
 } from '../../../../../../src/indexForTest'
@@ -14,7 +14,7 @@ describe('frame input change handler', () => {
 
 	it('sets the current frame', () => {
 		spyOn(clearMixedDownContext, 'default')
-		spyOn(executePattern, 'default')
+		spyOn(executeEffect, 'default')
 
 		// tslint:disable-next-line:no-any
 		const event: any = { target: { value: 99 } }
@@ -22,7 +22,7 @@ describe('frame input change handler', () => {
 		subject(event)
 
 		expect(clearMixedDownContext.default).toHaveBeenCalled()
-		expect(executePattern.default).toHaveBeenCalled()
+		expect(executeEffect.default).toHaveBeenCalled()
 		expect(appState.controls.currentFrame).toBe(to.Frame(99))
 	})
 })

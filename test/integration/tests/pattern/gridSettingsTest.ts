@@ -1,7 +1,7 @@
 import {
 	appState,
 	BLACK,
-	executePattern,
+	executeEffect,
 	from,
 	patternState,
 	to,
@@ -30,7 +30,7 @@ describe('.gridSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [
@@ -160,7 +160,7 @@ describe('.gridSettings', () => {
 				},
 			}
 
-			executePattern.default()
+			executeEffect.default()
 
 			setTimeout(() => {
 				const tiles: StandardTileExpectation[] = [

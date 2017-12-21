@@ -1,13 +1,13 @@
 import {
 	appState,
-	cancelCurrentFrame,
+	cancelCurrentPattern,
 	clearContexts,
 	clearIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	effectToggleClickHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
-	executePattern,
+	executeEffect,
 	NamedEffect,
 	resetMainHoundstooth,
 	updateDescriptions,
@@ -20,14 +20,14 @@ describe('effect toggle click handler', () => {
 	let effect: NamedEffect
 
 	beforeEach(() => {
-		spyOn(executePattern, 'default')
+		spyOn(executeEffect, 'default')
 		spyOn(enableOrDisableAnimationControls, 'default')
 		spyOn(enableOrDisableOtherEffectToggles, 'default')
 		spyOn(updateDescriptions, 'default')
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(clearContexts, 'default')
 		spyOn(clearIntervalAndRemoveFromState, 'default')
-		spyOn(cancelCurrentFrame, 'default')
+		spyOn(cancelCurrentPattern, 'default')
 		spyOn(resetMainHoundstooth, 'default')
 
 		checkbox = buildMockElement() as HTMLInputElement
@@ -35,7 +35,7 @@ describe('effect toggle click handler', () => {
 		effect = { name: 'mock tooth', description: '' }
 		subject = effectToggleClickHandler.default
 
-		expect(executePattern.default).not.toHaveBeenCalled()
+		expect(executeEffect.default).not.toHaveBeenCalled()
 		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
 		expect(enableOrDisableOtherEffectToggles.default).not.toHaveBeenCalled()
 		expect(updateDescriptions.default).not.toHaveBeenCalled()
@@ -52,7 +52,7 @@ describe('effect toggle click handler', () => {
 	})
 
 	it('executes the selected effect, since the selection has now changed', () => {
-		expect(executePattern.default).toHaveBeenCalled()
+		expect(executeEffect.default).toHaveBeenCalled()
 	})
 
 	it('enables or disables animation controls depending on whether the new selection has animations', () => {
@@ -92,7 +92,7 @@ describe('effect toggle click handler', () => {
 	})
 
 	it('cancels the previous pattern', () => {
-		expect(cancelCurrentFrame.default).toHaveBeenCalled()
+		expect(cancelCurrentPattern.default).toHaveBeenCalled()
 	})
 
 	it('removes the effect if it is already selected', () => {

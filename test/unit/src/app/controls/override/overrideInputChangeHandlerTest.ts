@@ -1,7 +1,7 @@
 import {
 	appState,
 	clearMixedDownContext,
-	executePattern,
+	executeEffect,
 	overrideInputChangeHandler,
 	updateOverrideLeafNode,
 } from '../../../../../../src/indexForTest'
@@ -12,7 +12,7 @@ describe('override input change handler', () => {
 		subject = overrideInputChangeHandler.default
 
 		spyOn(clearMixedDownContext, 'default')
-		spyOn(executePattern, 'default')
+		spyOn(executeEffect, 'default')
 		spyOn(updateOverrideLeafNode, 'default')
 
 		// tslint:disable-next-line:no-any
@@ -36,7 +36,7 @@ describe('override input change handler', () => {
 	})
 
 	it('executes the selected effect', () => {
-		expect(executePattern.default).toHaveBeenCalled()
+		expect(executeEffect.default).toHaveBeenCalled()
 	})
 
 	it('handles functions', () => {

@@ -1,57 +1,25 @@
-import { to } from '../../utilities'
+import { Layer } from '../../types'
+import { from, to } from '../../utilities'
 import { appState } from '../appState'
-import { updateOverrideNodes } from '../controls'
-import { createContexts, updateOverrides } from '../dom'
-import {
-	combineEffects,
-	composeMainHoundstooth,
-	initializeCurrentPatternFromBasePattern,
-	prepareFunctionObjectsPerSetting,
-	SettingFunctionObject,
-} from '../setting'
-import { executeAnimation } from './animation'
-import executeFrame from './executeFrame'
+import callFunctionsPerSetting from './callFunctionsPerSetting'
+import { completeLayers, executeLayer } from './layer'
+import thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
+import { ExecuteParams } from './types'
 
-const executePattern: () => void =
-	(): void => {
-		combineEffects.default()
-		composeMainHoundstooth.default()
-		updateOverrideNodes.default()
-		updateOverrides.default()
+const executePattern: (_: ExecuteParams) => Promise<void> =
+	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {
+		const endLayer: Layer = appState.controls.endLayer
 
-		initializeCurrentPatternFromBasePattern.default()
-		setEndLayer()
+		callFunctionsPerSetting({ settingFunctionObjects: animationFunctionObjects })
 
-		prepareCanvas()
-
-		execute()
-	}
-
-const setEndLayer: () => void =
-	(): void => {
-		appState.controls.endLayer = appState.settings.currentPattern.layerSettings.endLayer || to.Layer(0)
-	}
-
-const prepareCanvas: () => void =
-	(): void => {
-		createContexts.default()
-	}
-
-const execute: () => void =
-	(): void => {
-		const animationFunctionObjects: SettingFunctionObject[] = prepareFunctionObjectsPerSetting.default({
-			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.animationsPattern,
-		})
-		const layerFunctionObjects: SettingFunctionObject[] = prepareFunctionObjectsPerSetting.default({
-			settingFunctionsSourcePattern: appState.settings.mainHoundstooth.layersPattern,
-		})
-
-		if (appState.controls.animating) {
-			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+		const patternId: number = appState.execute.patternId
+		for (let layerValue: number = 0; layerValue <= from.Layer(endLayer); layerValue++) {
+			if (thisPatternHasNotBeenCanceled(patternId)) {
+				await executeLayer.default({ layer: to.Layer(layerValue), layerFunctionObjects, patternId })
+			}
 		}
-		else {
-			executeFrame({ animationFunctionObjects, layerFunctionObjects }).then().catch()
-		}
+
+		completeLayers.default()
 	}
 
 export default executePattern

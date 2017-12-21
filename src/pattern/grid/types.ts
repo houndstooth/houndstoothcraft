@@ -13,7 +13,7 @@ interface AddressAsParam {
 }
 
 interface Referenced {
-	frameId: number
+	patternId: number
 }
 
 interface ReferencedAddress extends AddressAsParam, Referenced {}

@@ -1,7 +1,7 @@
 import {
 	appState,
 	BLACK,
-	executePattern,
+	executeEffect,
 	from,
 	patternState,
 	to,
@@ -18,7 +18,7 @@ describe('standard houndstooth pattern', () => {
 				gridSettings: { tileResolution: 4 },
 			},
 		}
-		executePattern.default()
+		executeEffect.default()
 
 		setTimeout(() => {
 			let baseId: number = -8

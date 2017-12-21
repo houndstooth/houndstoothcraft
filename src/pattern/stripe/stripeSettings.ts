@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers no-any
+// tslint:disable:no-type-definitions-outside-types-modules
 
 import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
 import { StripePositionSettingFunctions, StripePositionSettingsSchema } from './stripePositionSettings'

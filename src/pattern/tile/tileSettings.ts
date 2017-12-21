@@ -1,4 +1,4 @@
-// tslint:disable:no-magic-numbers no-any
+// tslint:disable:no-type-definitions-outside-types-modules
 
 import { Bool, False, FunctionsOf, Rec, True } from '../types'
 import { GetTileOriginAndSize, Unit } from './types'

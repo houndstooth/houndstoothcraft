@@ -1,3 +1,5 @@
+// tslint:disable:no-type-definitions-outside-types-modules
+
 import { Bool, False, FunctionsOf, Rec, True } from '../types'
 
 type StripeCountContinuumSettingsSchema<R extends Bool> =

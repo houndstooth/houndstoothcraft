@@ -9,7 +9,7 @@ import {
 } from '../../../../../../src/indexForTest'
 
 describe('get override leaf node', () => {
-	it('is just like get override parent node, unfortunately, but have to do some type dancing', () => {
+	it('is just like get override parent node, unfortunately, but have to do some type-dancing', () => {
 		const subject: (_: FullSettingPath) => OverrideLeafNode = getOverrideLeafNode.default
 		const patternName: SettingStep = to.SettingStep('animationsPattern')
 		const settingPath: SettingPath = to.SettingPath([ 'stripeSettings', 'stripePositionSettings' ])

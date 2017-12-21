@@ -38,7 +38,7 @@ describe('create checkbox', () => {
 		expect(returnedCheckbox.onclick).toBe(effectToggleClickHandler.default)
 	})
 
-	it('sets the type to checkbox', () => {
+	it('sets the type-attribute to checkbox', () => {
 		expect(attributeObject.type).toBe('checkbox')
 	})
 })

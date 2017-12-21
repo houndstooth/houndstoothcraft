@@ -1,3 +1,5 @@
+// tslint:disable:no-type-definitions-outside-types-modules
+
 import { Color } from '../../types'
 import { Bool, False, FunctionsOf, Overwrite, Rec, True } from '../types'
 import { ColorAssignmentSettingFunctions, ColorAssignmentSettingsSchema } from './colorAssignmentSettings'

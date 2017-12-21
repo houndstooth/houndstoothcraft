@@ -1,6 +1,12 @@
 import Spy = jasmine.Spy
-import { DEFAULT_BASE_PATTERN } from '../../../../../../src/app/setting/defaults'
-import { mapOverPattern, MapOverPatternParams, Pattern, SettingStep, to } from '../../../../../../src/indexForTest'
+import {
+	DEFAULT_BASE_PATTERN,
+	mapOverPattern,
+	MapOverPatternParams,
+	Pattern,
+	SettingStep,
+	to,
+} from '../../../../../../src/indexForTest'
 
 describe('map over pattern', () => {
 	let subject: (_?: MapOverPatternParams) => void

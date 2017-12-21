@@ -1,5 +1,10 @@
-import { appState } from '../../../../../../src/app/appState'
-import { createEffectToggle, createEffectToggles, globalWrapper, NamedEffect } from '../../../../../../src/indexForTest'
+import {
+	appState,
+	createEffectToggle,
+	createEffectToggles,
+	globalWrapper,
+	NamedEffect,
+} from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 import { buildMockElement } from '../../../../helpers'
 
@@ -39,7 +44,7 @@ describe('create effect toggles', () => {
 	it('adds a message about more effect coming soon', () => {
 		subject([])
 
-		expect(children[0]).toBe(moreEffectsMessage)
+		expect(children[ 0 ]).toBe(moreEffectsMessage)
 	})
 
 	it('adds an id to that message so that it can be styled', () => {

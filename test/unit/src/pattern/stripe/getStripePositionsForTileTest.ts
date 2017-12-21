@@ -3,10 +3,10 @@ import {
 	getStripePositionsForTile,
 	patternState,
 	StripePosition,
+	StripePositionSettings,
 	to,
 } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
-import { StripePositionSettings } from '../../../../../src/pattern/stripe/stripePositionSettings'
 
 describe('get stripe positions for tile', () => {
 	let subject: (_?: { address?: Address }) => StripePosition[]

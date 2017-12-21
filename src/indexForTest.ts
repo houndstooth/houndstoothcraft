@@ -207,6 +207,7 @@ export {
 	SolidParams,
 	StripeCountMode,
 	StripePosition,
+	StripePositionSettings,
 	Supertile,
 	TextureParams,
 	TileOriginAndSize,

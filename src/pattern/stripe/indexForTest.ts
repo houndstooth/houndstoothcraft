@@ -34,3 +34,6 @@ export {
 	StripePosition,
 	RotateCoordinateParams,
 } from './types'
+export {
+	StripePositionSettings,
+} from './stripePositionSettings'

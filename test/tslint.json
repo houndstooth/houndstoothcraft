@@ -8,6 +8,7 @@
       1000
     ],
     "no-magic-numbers": false,
-    "no-reaching-imports": false
+    "no-reaching-imports": false,
+    "only-import-index-for-test-from-src": true
   }
 }

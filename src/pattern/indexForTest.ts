@@ -71,6 +71,7 @@ export {
 	Radian,
 	StripeCountMode,
 	StripePosition,
+	StripePositionSettings,
 	RotateCoordinateParams,
 } from './stripe/indexForTest'
 export {

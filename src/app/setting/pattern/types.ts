@@ -45,15 +45,8 @@ interface PatternsHaveConflictsParams {
 	patternName: SettingStep,
 }
 
-interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends DeeperPathParams {
-	maybeSettingFunctionsSourcePattern: any,
-	settingFunctionObjects: SettingFunctionObject[],
-}
-
 interface PrepareFunctionObjectsParams {
-	settingFunctionObjects?: SettingFunctionObject[],
-	settingFunctionsSourcePattern: any,
-	settingPath?: SettingPath,
+	settingFunctionsSourcePattern: Pattern,
 }
 
 type SettingFunction<T> = (_?: T) => T
@@ -71,7 +64,6 @@ export {
 	MapOverPatternParams,
 	PatternMapFunctionParams,
 	PatternsHaveConflictsParams,
-	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
 	SettingFunction,
 	SettingFunctionObject,

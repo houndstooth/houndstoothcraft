@@ -1,14 +1,14 @@
-import { appState, buildFill, Color, ERASE, parseColor } from '../../../../../../src/indexForTest'
-import { buildMockContext } from '../../../../helpers'
+import { appState, Color, ERASE, parseColor, setupRenderStyle } from '../../../../../../src/indexForTest'
+import { createMockContext } from '../../../../helpers'
 
-describe('build fill', () => {
+describe('setup render style', () => {
 	let subject: (_: { shapeColor: Color }) => void
 	const shapeColor: Color = { a: 1 }
 	const parsedColor: string = '#012345'
 	let context: CanvasRenderingContext2D
 	beforeEach(() => {
-		subject = buildFill.default
-		context = buildMockContext() as CanvasRenderingContext2D
+		subject = setupRenderStyle.default
+		context = createMockContext() as CanvasRenderingContext2D
 		appState.render.contexts = [ context ]
 		spyOn(parseColor, 'default').and.returnValue(parsedColor)
 

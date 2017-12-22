@@ -4,7 +4,7 @@ import {
 	globalWrapper,
 	NamedEffect,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('create checkbox', () => {
 	let subject: (_: { effect: NamedEffect }) => HTMLInputElement
@@ -16,7 +16,7 @@ describe('create checkbox', () => {
 
 	beforeEach(() => {
 		subject = createCheckbox.default
-		checkbox = buildMockElement({ attributeObject }) as HTMLInputElement
+		checkbox = createMockElement({ attributeObject }) as HTMLInputElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(checkbox)
 
 		returnedCheckbox = subject({ effect })

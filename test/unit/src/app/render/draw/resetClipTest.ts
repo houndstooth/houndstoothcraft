@@ -1,11 +1,11 @@
 import { appState, resetClip } from '../../../../../../src/indexForTest'
-import { buildMockContext, MockContextCall } from '../../../../helpers'
+import { createMockContext, MockContextCall } from '../../../../helpers'
 
 describe('reset clip', () => {
 	it('restores the context (with the saved state)', () => {
 		const subject: () => void = resetClip.default
 		const contextCallsOrder: MockContextCall[] = []
-		appState.render.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
+		appState.render.contexts = [ createMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
 
 		subject()
 

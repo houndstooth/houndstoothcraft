@@ -6,7 +6,7 @@ import {
 	NamedEffect,
 } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('create effect toggles', () => {
 	let subject: (_: NamedEffect[]) => void
@@ -17,8 +17,8 @@ describe('create effect toggles', () => {
 	const attributeObject: { id: string } = { id: '' }
 
 	beforeAll(() => {
-		effectTogglesContainer = buildMockElement({ children }) as HTMLElement
-		moreEffectsMessage = buildMockElement({ attributeObject }) as HTMLElement
+		effectTogglesContainer = createMockElement({ children }) as HTMLElement
+		moreEffectsMessage = createMockElement({ attributeObject }) as HTMLElement
 	})
 
 	beforeEach(() => {

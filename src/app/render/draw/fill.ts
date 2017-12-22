@@ -1,8 +1,8 @@
 import { applyViewForShape, Outline } from '../../../pattern'
 import { Color } from '../../../types'
-import buildFill from './buildFill'
-import buildPath from './buildPath'
+import createPath from './createPath'
 import fillPath from './fillPath'
+import setupRenderStyle from './setupRenderStyle'
 import { Path } from './types'
 
 const MINIMUM_POLYGON_COORDINATE_COUNT: number = 3
@@ -14,9 +14,9 @@ const fill: (_: { outline: Outline, shapeColor: Color }) => void =
 		}
 
 		const path: Path = applyViewForShape.default(outline)
-		buildPath({ path })
+		createPath({ path })
 
-		buildFill({ shapeColor })
+		setupRenderStyle({ shapeColor })
 		fillPath()
 	}
 

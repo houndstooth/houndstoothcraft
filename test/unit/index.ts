@@ -1,6 +1,6 @@
 export {
-	buildMockCanvas,
-	buildMockElement,
+	createMockCanvas,
+	createMockElement,
 	MockContext,
 	MockElement,
 } from './helpers'

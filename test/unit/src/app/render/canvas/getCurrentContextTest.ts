@@ -1,13 +1,13 @@
 // tslint:disable:no-object-literal-type-assertion
 
 import { appState, getCurrentContext, to } from '../../../../../../src/indexForTest'
-import { buildMockContext } from '../../../../helpers'
+import { createMockContext } from '../../../../helpers'
 
 describe('get current context', () => {
 	it('gets the current context', () => {
 		const subject: () => CanvasRenderingContext2D = getCurrentContext.default
 
-		const expectedContext: CanvasRenderingContext2D = buildMockContext() as CanvasRenderingContext2D
+		const expectedContext: CanvasRenderingContext2D = createMockContext() as CanvasRenderingContext2D
 		appState.render.contexts = [
 			{} as CanvasRenderingContext2D,
 			{} as CanvasRenderingContext2D,

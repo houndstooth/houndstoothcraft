@@ -6,7 +6,7 @@ import {
 	globalWrapper,
 	NamedEffect,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('create label', () => {
 	let subject: (_: { effect: NamedEffect }) => HTMLLabelElement
@@ -20,7 +20,7 @@ describe('create label', () => {
 
 	beforeEach(() => {
 		subject = createLabel.default
-		label = buildMockElement({ children, attributeObject }) as HTMLLabelElement
+		label = createMockElement({ children, attributeObject }) as HTMLLabelElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(label)
 
 		spyOn(globalWrapper.document, 'createTextNode').and.returnValue(name)

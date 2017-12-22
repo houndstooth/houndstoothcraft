@@ -15,8 +15,8 @@ export {
 	standardTileIsColors,
 } from './integration'
 export {
-	buildMockElement,
-	buildMockCanvas,
+	createMockElement,
+	createMockCanvas,
 	MockContext,
 	MockElement,
 } from './unit'

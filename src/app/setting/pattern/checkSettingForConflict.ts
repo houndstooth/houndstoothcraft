@@ -18,7 +18,7 @@ const checkSettingForConflict: (_: CheckSettingForConflictParams) => boolean =
 		}: CheckSettingForConflictParams = checkSettingForConflictParams
 
 		if (shouldWarnAboutConflict({ setting, settingCheckingForConflict })) {
-			const warning: string = buildWarningMessage({
+			const warning: string = createWarningMessage({
 				patternName,
 				setting,
 				settingCheckingForConflict,
@@ -58,7 +58,7 @@ const settingsAreEqual: SettingsAreEqual =
 		return settingsEqual
 	}
 
-const buildWarningMessage: (_: CheckSettingForConflictParams) => string =
+const createWarningMessage: (_: CheckSettingForConflictParams) => string =
 	(checkSettingForConflictParams: CheckSettingForConflictParams): string => {
 		const {
 			patternName,

@@ -8,7 +8,7 @@ import {
 	globalWrapper,
 	NamedEffect,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('create effect toggle', () => {
 	let subject: (_: NamedEffect) => void
@@ -23,7 +23,7 @@ describe('create effect toggle', () => {
 	const effect: NamedEffect = { name: 'mock tooth', description: '' }
 
 	beforeAll(() => {
-		div = buildMockElement({ children: divChildren }) as HTMLElement
+		div = createMockElement({ children: divChildren }) as HTMLElement
 		checkbox = {} as HTMLInputElement
 		label = {} as HTMLElement
 	})
@@ -31,7 +31,7 @@ describe('create effect toggle', () => {
 	beforeEach(() => {
 		subject = createEffectToggle.default
 
-		effectTogglesContainer = buildMockElement({
+		effectTogglesContainer = createMockElement({
 			children: effectTogglesContainerChildren,
 		}) as HTMLElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(div)

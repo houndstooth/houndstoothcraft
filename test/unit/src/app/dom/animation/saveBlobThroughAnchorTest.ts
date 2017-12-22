@@ -2,7 +2,7 @@
 
 import { globalWrapper, saveBlobThroughAnchor } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('save blob through anchor', () => {
 	it('creates a download link and clicks it', () => {
@@ -10,7 +10,7 @@ describe('save blob through anchor', () => {
 		spyOn(globalWrapper.window.URL, 'createObjectURL').and.returnValue('the url')
 
 		const clickSpy: Spy = jasmine.createSpy('click')
-		const link: HTMLAnchorElement = buildMockElement({ clickSpy }) as HTMLAnchorElement
+		const link: HTMLAnchorElement = createMockElement({ clickSpy }) as HTMLAnchorElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(link)
 
 		spyOn(globalWrapper.window.URL, 'revokeObjectURL')

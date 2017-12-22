@@ -1,8 +1,10 @@
-import { BuildMockContext, MockContext } from './types'
+import { CreateMockContextParams, MockContext } from './types'
 
-const buildMockContext: (_?: BuildMockContext) => MockContext =
-	({ contextCallsOrder = [], toBlobSpy, fillRectSpy, clearRectSpy, drawImageSpy }: BuildMockContext = {}): MockContext =>
-		({
+const createMockContext: (_?: CreateMockContextParams) => MockContext =
+	(createMockContextParams: CreateMockContextParams = {}): MockContext => {
+		const { contextCallsOrder = [], toBlobSpy, fillRectSpy, clearRectSpy, drawImageSpy } = createMockContextParams
+
+		return {
 			beginPath: (): number => contextCallsOrder.push({ method: 'beginPath' }),
 			canvas: { toBlob: toBlobSpy },
 			clearRect: clearRectSpy || ((): number => contextCallsOrder.push({ method: 'clearRect' })),
@@ -18,6 +20,7 @@ const buildMockContext: (_?: BuildMockContext) => MockContext =
 			moveTo: (x: number, y: number): number => contextCallsOrder.push({ method: 'moveTo', x, y }),
 			restore: (): number => contextCallsOrder.push({ method: 'restore' }),
 			save: (): number => contextCallsOrder.push({ method: 'save' }),
-		})
+		}
+	}
 
-export default buildMockContext
+export default createMockContext

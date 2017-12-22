@@ -1,16 +1,16 @@
-import buildMockCanvas from './buildMockCanvas'
-import buildMockContext from './buildMockContext'
-import buildMockElement from './buildMockElement'
+import createMockCanvas from './createMockCanvas'
+import createMockContext from './createMockContext'
+import createMockElement from './createMockElement'
 import mockDom from './mockDom'
 import noop from './noop'
 import pixelsAreClose from './pixelsAreClose'
 
 export {
-	buildMockElement,
+	createMockElement,
 	pixelsAreClose,
 	mockDom,
-	buildMockCanvas,
-	buildMockContext,
+	createMockCanvas,
+	createMockContext,
 	noop,
 }
 export {

@@ -1,6 +1,6 @@
 import { applyViewForGrid, CANVAS_SIZE, CYAN, getCurrentContext, patternState } from '../../../../../src/indexForTest'
 import Spy = jasmine.Spy
-import { buildMockContext } from '../../../helpers'
+import { createMockContext } from '../../../helpers'
 
 describe('apply view for grid', () => {
 	let subject: () => void
@@ -14,7 +14,7 @@ describe('apply view for grid', () => {
 		let context: CanvasRenderingContext2D
 		beforeEach(() => {
 			fillRectSpy = jasmine.createSpy('fillRect')
-			context = buildMockContext({ fillRectSpy }) as CanvasRenderingContext2D
+			context = createMockContext({ fillRectSpy }) as CanvasRenderingContext2D
 			spyOn(getCurrentContext, 'default').and.returnValue(context)
 		})
 
@@ -38,7 +38,7 @@ describe('apply view for grid', () => {
 	describe('applying opacity', () => {
 		let context: CanvasRenderingContext2D
 		beforeEach(() => {
-			context = buildMockContext() as CanvasRenderingContext2D
+			context = createMockContext() as CanvasRenderingContext2D
 			spyOn(getCurrentContext, 'default').and.returnValue(context)
 		})
 

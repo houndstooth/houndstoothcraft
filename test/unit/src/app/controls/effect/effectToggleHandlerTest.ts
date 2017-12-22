@@ -12,7 +12,7 @@ import {
 	resetMainHoundstooth,
 	updateDescriptions,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement, SimulateClick } from '../../../../helpers'
+import { createMockElement, SimulateClick } from '../../../../helpers'
 
 describe('effect toggle handler', () => {
 	let subject: (_: Event) => void
@@ -30,7 +30,7 @@ describe('effect toggle handler', () => {
 		spyOn(cancelCurrentPattern, 'default')
 		spyOn(resetMainHoundstooth, 'default')
 
-		checkbox = buildMockElement() as HTMLInputElement
+		checkbox = createMockElement() as HTMLInputElement
 		checkbox.name = 'mock-tooth'
 		effect = { name: 'mock tooth', description: '' }
 		subject = effectToggleHandler.default

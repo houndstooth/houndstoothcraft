@@ -1,12 +1,12 @@
-import { appState, buildPath, Path, to } from '../../../../../../src/indexForTest'
-import { buildMockContext, MockContextCall } from '../../../../helpers'
+import { appState, createPath, Path, to } from '../../../../../../src/indexForTest'
+import { createMockContext, MockContextCall } from '../../../../helpers'
 
-describe('build path', () => {
+describe('create path', () => {
 	it('draws the correct path and fills it', () => {
-		const subject: (_: { path: Path }) => void = buildPath.default
+		const subject: (_: { path: Path }) => void = createPath.default
 		const path: Path = to.Path([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 		const contextCallsOrder: MockContextCall[] = []
-		appState.render.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
+		appState.render.contexts = [ createMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
 
 		subject({ path })
 

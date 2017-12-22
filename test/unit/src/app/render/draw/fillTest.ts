@@ -1,12 +1,12 @@
 import {
 	applyViewForShape,
-	buildFill,
-	buildPath,
 	Color,
+	createPath,
 	fill,
 	fillPath,
 	Outline,
 	Path,
+	setupRenderStyle,
 	to,
 } from '../../../../../../src/indexForTest'
 
@@ -48,8 +48,8 @@ describe('fill', () => {
 	describe('when there are at least three coordinates in the outline', () => {
 		let outline: Outline
 		beforeEach(() => {
-			spyOn(buildPath, 'default')
-			spyOn(buildFill, 'default')
+			spyOn(createPath, 'default')
+			spyOn(setupRenderStyle, 'default')
 			spyOn(fillPath, 'default')
 			outline = to.Outline([ [ 0, 1 ], [ 1, 1 ], [ 1, 0 ] ])
 
@@ -61,11 +61,11 @@ describe('fill', () => {
 		})
 
 		it('builds a path from it ', () => {
-			expect(buildPath.default).toHaveBeenCalledWith({ path })
+			expect(createPath.default).toHaveBeenCalledWith({ path })
 		})
 
-		it('builds the fill ', () => {
-			expect(buildFill.default).toHaveBeenCalledWith({ shapeColor })
+		it('sets up the render style', () => {
+			expect(setupRenderStyle.default).toHaveBeenCalledWith({ shapeColor })
 		})
 
 		it('fills this path', () => {

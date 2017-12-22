@@ -1,6 +1,6 @@
 import Spy = jasmine.Spy
 import { appState, createContext, createContexts, to } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('create contexts', () => {
 	let subject: () => void
@@ -10,7 +10,7 @@ describe('create contexts', () => {
 		subject = createContexts.default
 		createContextSpy = spyOn(createContext, 'default')
 
-		canvasContainer = buildMockElement() as HTMLElement
+		canvasContainer = createMockElement() as HTMLElement
 		canvasContainer.innerHTML = 'some old canvases'
 		appState.dom.canvasContainer = canvasContainer
 	})

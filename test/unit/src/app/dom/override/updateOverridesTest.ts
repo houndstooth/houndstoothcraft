@@ -5,7 +5,7 @@ import {
 	mapOverPattern,
 	updateOverrides,
 } from '../../../../../../src/indexForTest'
-import buildMockElement from '../../../../helpers/buildMockElement'
+import createMockElement from '../../../../helpers/createMockElement'
 
 describe('update override', () => {
 	let subject: () => void
@@ -14,7 +14,7 @@ describe('update override', () => {
 		children = []
 		subject = updateOverrides.default
 		spyOn(mapOverPattern, 'default')
-		appState.dom.overrideContainer = buildMockElement({ children }) as HTMLElement
+		appState.dom.overrideContainer = createMockElement({ children }) as HTMLElement
 
 		subject()
 	})

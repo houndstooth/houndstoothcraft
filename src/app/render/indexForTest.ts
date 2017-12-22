@@ -10,13 +10,13 @@ export {
 	setupMixedDownContext,
 } from './canvas/indexForTest'
 export {
-	buildFill,
-	buildPath,
+	createPath,
 	clipPath,
 	fill,
 	fillPath,
 	resetClip,
 	setClip,
+	setupRenderStyle,
 
 	Path,
 	Pixel,

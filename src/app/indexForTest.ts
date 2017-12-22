@@ -78,8 +78,7 @@ export {
 	ExecuteParams,
 } from './execute/indexForTest'
 export {
-	buildFill,
-	buildPath,
+	createPath,
 	clearContext,
 	clearContexts,
 	clearMixedDownContext,
@@ -92,6 +91,7 @@ export {
 	saveCanvas,
 	setClip,
 	setupMixedDownContext,
+	setupRenderStyle,
 
 	ERASE,
 

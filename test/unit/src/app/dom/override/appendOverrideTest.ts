@@ -5,7 +5,7 @@ import {
 	SettingPath,
 	to,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('append override', () => {
 	let greatGreatGrandparent: HTMLElement
@@ -26,11 +26,11 @@ describe('append override', () => {
 		grandparentsChildren = []
 		parentsChildren = []
 
-		greatGreatGrandparent = buildMockElement() as HTMLElement
-		greatGrandparent = buildMockElement({ children: greatGrandparentsChildren }) as HTMLElement
-		grandparent = buildMockElement({ children: grandparentsChildren }) as HTMLElement
-		parent = buildMockElement({ children: parentsChildren }) as HTMLElement
-		override = buildMockElement() as HTMLElement
+		greatGreatGrandparent = createMockElement() as HTMLElement
+		greatGrandparent = createMockElement({ children: greatGrandparentsChildren }) as HTMLElement
+		grandparent = createMockElement({ children: grandparentsChildren }) as HTMLElement
+		parent = createMockElement({ children: parentsChildren }) as HTMLElement
+		override = createMockElement() as HTMLElement
 
 		subject = appendOverride.default
 		options = {

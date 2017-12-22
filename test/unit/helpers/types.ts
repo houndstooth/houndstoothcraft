@@ -22,7 +22,7 @@ interface TestObject {
 
 type SimulateClick = (_: HTMLInputElement, __: (_: Event) => void) => void
 
-interface BuildMockElementParams {
+interface CreateMockElementParams {
 	attributeObject?: ObjectOf<string>,
 	children?: HTMLElement[],
 	classList?: string[],
@@ -69,7 +69,7 @@ interface MockCanvas extends MockElement {
 	width?: any,
 }
 
-interface BuildMockContext {
+interface CreateMockContextParams {
 	clearRectSpy?: Spy,
 	contextCallsOrder?: MockContextCall[],
 	drawImageSpy?: Spy,
@@ -164,13 +164,13 @@ interface MockWindow {
 }
 
 export {
-	BuildMockContext,
+	CreateMockContextParams,
 	MockContext,
 	MockContextCall,
 	MockContextMethod,
 	MockCanvas,
 	MockElement,
-	BuildMockElementParams,
+	CreateMockElementParams,
 	ExampleSettings,
 	ExampleSettingsStructure,
 	SimulateClick,

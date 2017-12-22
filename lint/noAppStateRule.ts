@@ -19,7 +19,7 @@ export class Rule extends Lint.Rules.AbstractRule {
 		hasFix: false,
 	}
 
-	public static FAILURE_STRING = 'Do not use app state here. Find or build a getter, or re-evaluate your approach.'
+	public static FAILURE_STRING = 'Do not use app state here. Find or write a getter, or re-evaluate your approach.'
 
 	public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
 		return this.applyWithFunction(sourceFile, walk, this.ruleArguments)

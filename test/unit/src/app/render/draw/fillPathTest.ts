@@ -1,11 +1,11 @@
 import { appState, fillPath } from '../../../../../../src/indexForTest'
-import { buildMockContext, MockContextCall } from '../../../../helpers'
+import { createMockContext, MockContextCall } from '../../../../helpers'
 
 describe('fill path', () => {
 	it('closes the path and fills it', () => {
 		const subject: () => void = fillPath.default
 		const contextCallsOrder: MockContextCall[] = []
-		appState.render.contexts = [ buildMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
+		appState.render.contexts = [ createMockContext({ contextCallsOrder }) ] as CanvasRenderingContext2D[]
 
 		subject()
 

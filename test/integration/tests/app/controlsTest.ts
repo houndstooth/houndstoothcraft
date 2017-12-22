@@ -12,7 +12,7 @@ import {
 	TRANSPARENT,
 	updateCurrentFrame,
 } from '../../../../src/indexForTest'
-import { buildMockElement } from '../../../unit'
+import { createMockElement } from '../../../unit'
 
 describe('controls', () => {
 	describe('effect toggles', () => {
@@ -38,7 +38,7 @@ describe('controls', () => {
 			appState.settings.availableEffects = { gongram: gongramEffect }
 
 			createEffectToggles.default(Object.values(effects))
-			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || buildMockElement()
+			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || createMockElement()
 
 			expect(patternState.colorSettings.colorSet).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
 

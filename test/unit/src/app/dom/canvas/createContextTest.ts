@@ -1,5 +1,5 @@
 import { appState, createContext, globalWrapper } from '../../../../../../src/indexForTest'
-import { buildMockCanvas, buildMockElement } from '../../../../helpers'
+import { createMockCanvas, createMockElement } from '../../../../helpers'
 
 describe('create context', () => {
 	let subject: () => CanvasRenderingContext2D
@@ -11,11 +11,11 @@ describe('create context', () => {
 		// tslint:disable-next-line:no-object-literal-type-assertion
 		context = {} as CanvasRenderingContext2D
 		subject = createContext.default
-		const canvas: HTMLCanvasElement = buildMockCanvas({ context }) as HTMLCanvasElement
+		const canvas: HTMLCanvasElement = createMockCanvas({ context }) as HTMLCanvasElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(canvas)
 
 		children = []
-		appState.dom.canvasContainer = buildMockElement({ children }) as HTMLElement
+		appState.dom.canvasContainer = createMockElement({ children }) as HTMLElement
 
 		returnedContext = subject()
 

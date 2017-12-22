@@ -4,7 +4,7 @@ import { from } from '../../../utilities'
 import { getCurrentContext } from '../canvas'
 import { Path, Pixel } from './types'
 
-const buildPath: (_: { path: Path }) => void =
+const createPath: (_: { path: Path }) => void =
 	({ path }: { path: Path }): void => {
 		const context: CanvasRenderingContext2D = getCurrentContext.default()
 		context.beginPath()
@@ -14,4 +14,4 @@ const buildPath: (_: { path: Path }) => void =
 		})
 	}
 
-export default buildPath
+export default createPath

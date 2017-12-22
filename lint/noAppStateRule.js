@@ -37,7 +37,7 @@ var Rule = /** @class */ (function (_super) {
         typescriptOnly: false,
         hasFix: false
     };
-    Rule.FAILURE_STRING = 'Do not use app state here. Find or build a getter, or re-evaluate your approach.';
+    Rule.FAILURE_STRING = 'Do not use app state here. Find or write a getter, or re-evaluate your approach.';
     return Rule;
 }(Lint.Rules.AbstractRule));
 exports.Rule = Rule;

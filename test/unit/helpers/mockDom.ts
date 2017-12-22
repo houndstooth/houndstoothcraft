@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-object-literal-type-assertion
 
 import { appState, globalWrapper } from '../../../src/indexForTest'
-import buildMockElement from './buildMockElement'
+import createMockElement from './createMockElement'
 import noop from './noop'
 import { MockConsole, MockDocument, MockWindow } from './types'
 
@@ -56,16 +56,16 @@ const mockDom: () => void =
 		globalWrapper.document = mockDocument as Document
 		globalWrapper.window = mockWindow as Window
 
-		appState.dom.canvasContainer = buildMockElement() as HTMLElement
-		appState.dom.descriptionsContainer = buildMockElement() as HTMLElement
-		appState.dom.frameInput = buildMockElement() as HTMLInputElement
-		appState.dom.layersProgressBar = buildMockElement() as HTMLElement
-		appState.dom.pauseButton = buildMockElement() as HTMLButtonElement
-		appState.dom.playButton = buildMockElement() as HTMLButtonElement
-		appState.dom.progressBar = buildMockElement() as HTMLElement
-		appState.dom.progressMessage = buildMockElement() as HTMLElement
-		appState.dom.rewindButton = buildMockElement() as HTMLButtonElement
-		appState.dom.snapshotButton = buildMockElement() as HTMLButtonElement
+		appState.dom.canvasContainer = createMockElement() as HTMLElement
+		appState.dom.descriptionsContainer = createMockElement() as HTMLElement
+		appState.dom.frameInput = createMockElement() as HTMLInputElement
+		appState.dom.layersProgressBar = createMockElement() as HTMLElement
+		appState.dom.pauseButton = createMockElement() as HTMLButtonElement
+		appState.dom.playButton = createMockElement() as HTMLButtonElement
+		appState.dom.progressBar = createMockElement() as HTMLElement
+		appState.dom.progressMessage = createMockElement() as HTMLElement
+		appState.dom.rewindButton = createMockElement() as HTMLButtonElement
+		appState.dom.snapshotButton = createMockElement() as HTMLButtonElement
 	}
 
 export default mockDom

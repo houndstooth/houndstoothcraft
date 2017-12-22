@@ -16,7 +16,7 @@ import {
 	to,
 	toggleOverrideParentOpen,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 import Spy = jasmine.Spy
 
 describe('create override parent', () => {
@@ -44,8 +44,8 @@ describe('create override parent', () => {
 
 		children = []
 		summaryChildren = []
-		overrideParent = buildMockElement({ children }) as HTMLDetailsElement
-		overrideParentSummary = buildMockElement({ children: summaryChildren }) as HTMLElement
+		overrideParent = createMockElement({ children }) as HTMLDetailsElement
+		overrideParentSummary = createMockElement({ children: summaryChildren }) as HTMLElement
 		overrideParentName = {} as HTMLElement
 		overrideParentClear = {} as HTMLButtonElement
 

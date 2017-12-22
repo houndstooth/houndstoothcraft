@@ -1,7 +1,7 @@
 // tslint:disable:no-unsafe-any
 
 import { appState, CANVAS_SIZE, from, setupMixedDownContext } from '../../../../../../src/indexForTest'
-import { buildMockCanvas } from '../../../../helpers'
+import { createMockCanvas } from '../../../../helpers'
 
 describe('setup mixed down context', () => {
 	let subject: () => void
@@ -10,7 +10,7 @@ describe('setup mixed down context', () => {
 		subject = setupMixedDownContext.default
 		// tslint:disable-next-line:no-object-literal-type-assertion
 		mixedDownContext = {} as CanvasRenderingContext2D
-		appState.dom.mixedDownCanvas = buildMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
+		appState.dom.mixedDownCanvas = createMockCanvas({ context: mixedDownContext }) as HTMLCanvasElement
 
 		subject()
 	})

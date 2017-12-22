@@ -1,5 +1,5 @@
 import { appState, createDescription, globalWrapper } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 
 describe('create description', () => {
 	let subject: (_: string) => void
@@ -10,8 +10,8 @@ describe('create description', () => {
 	it('creates a new description in the descriptions container', () => {
 		const children: HTMLElement[] = []
 
-		spyOn(globalWrapper.document, 'createElement').and.callFake(buildMockElement)
-		appState.dom.descriptionsContainer = buildMockElement({ children }) as HTMLElement
+		spyOn(globalWrapper.document, 'createElement').and.callFake(createMockElement)
+		appState.dom.descriptionsContainer = createMockElement({ children }) as HTMLElement
 
 		subject('is great')
 		subject('is grand')

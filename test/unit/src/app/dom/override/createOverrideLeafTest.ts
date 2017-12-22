@@ -14,7 +14,7 @@ import {
 	SettingStep,
 	to,
 } from '../../../../../../src/indexForTest'
-import { buildMockElement } from '../../../../helpers'
+import { createMockElement } from '../../../../helpers'
 import Spy = jasmine.Spy
 
 describe('create override leaf', () => {
@@ -40,10 +40,10 @@ describe('create override leaf', () => {
 		settingName = to.SettingStep('tileResolution')
 
 		children = []
-		overrideLeaf = buildMockElement({ children }) as HTMLElement
+		overrideLeaf = createMockElement({ children }) as HTMLElement
 		overrideLeafName = {} as HTMLElement
-		overrideLeafInput = buildMockElement() as HTMLInputElement
-		overrideLeafClear = buildMockElement() as HTMLButtonElement
+		overrideLeafInput = createMockElement() as HTMLInputElement
+		overrideLeafClear = createMockElement() as HTMLButtonElement
 
 		spyOn(globalWrapper.document, 'createElement').and.callFake((tagName: string): HTMLElement => {
 			switch (tagName) {

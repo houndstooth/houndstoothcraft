@@ -1,6 +1,6 @@
 import { appState, saveBlobThroughAnchor, saveCanvas, to } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
-import { buildMockContext } from '../../../../helpers'
+import { createMockContext } from '../../../../helpers'
 
 describe('save canvas', () => {
 	let subject: () => void
@@ -11,7 +11,7 @@ describe('save canvas', () => {
 		const toBlobSpy: Spy = jasmine.createSpy('toBlob').and.callFake((fn: (result: Blob) => void): void => {
 			fn(result)
 		})
-		appState.render.mixedDownContext = buildMockContext({ toBlobSpy }) as CanvasRenderingContext2D
+		appState.render.mixedDownContext = createMockContext({ toBlobSpy }) as CanvasRenderingContext2D
 		spyOn(saveBlobThroughAnchor, 'default')
 	})
 

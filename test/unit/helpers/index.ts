@@ -1,24 +1,26 @@
 import createMockCanvas from './createMockCanvas'
 import createMockContext from './createMockContext'
 import createMockElement from './createMockElement'
+import createMockEvent from './createMockEvent'
 import mockDom from './mockDom'
 import noop from './noop'
 import pixelsAreClose from './pixelsAreClose'
 
 export {
-	createMockElement,
-	pixelsAreClose,
-	mockDom,
 	createMockCanvas,
 	createMockContext,
+	createMockElement,
+	createMockEvent,
+	mockDom,
 	noop,
+	pixelsAreClose,
 }
 export {
 	ExampleSettings,
 	ExampleSettingsStructure,
+	MockContext,
+	MockContextCall,
+	MockElement,
 	SimulateClick,
 	TestObject,
-	MockContextCall,
-	MockContext,
-	MockElement,
 } from './types'

@@ -5,6 +5,7 @@ import {
 	frameInputHandler,
 	to,
 } from '../../../../../../src/indexForTest'
+import { createMockEvent } from '../../../../helpers'
 
 describe('frame input handler', () => {
 	let subject: (event: Event) => void
@@ -16,9 +17,7 @@ describe('frame input handler', () => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeEffect, 'default')
 
-		// tslint:disable-next-line:no-any
-		const event: any = { target: { value: 99 } }
-		// tslint:disable-next-line:no-unsafe-any
+		const event: Event = createMockEvent({ target: { value: 99 } })
 		subject(event)
 
 		expect(clearMixedDownContext.default).toHaveBeenCalled()

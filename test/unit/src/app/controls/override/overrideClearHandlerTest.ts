@@ -7,6 +7,7 @@ import {
 	to,
 } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
+import { createMockElement, createMockEvent } from '../../../../helpers'
 
 describe('override clear handler', () => {
 	let subject: (_: Event) => void
@@ -14,11 +15,12 @@ describe('override clear handler', () => {
 	beforeEach(() => {
 		subject = overrideClearHandler.default
 
-		// tslint:disable-next-line:no-any
-		const event: any = {
+		const event: Event = createMockEvent({
 			stopPropagation: stopPropagationSpy,
-			target: { parentNode: { id: 'basePattern-colorSettings-colorAssignmentSettings' } },
-		}
+			target: createMockElement({
+				parentNodeId: 'basePattern-colorSettings-colorAssignmentSettings',
+			}) as HTMLElement,
+		})
 
 		appState.settings.overrides = {
 			basePattern: {
@@ -36,7 +38,6 @@ describe('override clear handler', () => {
 		spyOn(executeEffect, 'default')
 		spyOn(enableOrDisableAnimationControls, 'default')
 
-		// tslint:disable-next-line:no-unsafe-any
 		subject(event)
 	})
 

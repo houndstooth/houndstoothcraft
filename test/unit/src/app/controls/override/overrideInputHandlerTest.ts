@@ -5,6 +5,7 @@ import {
 	overrideInputHandler,
 	updateOverrideLeafNode,
 } from '../../../../../../src/indexForTest'
+import { createMockEvent } from '../../../../helpers'
 
 describe('override input handler', () => {
 	let subject: (_: Event) => void
@@ -15,10 +16,13 @@ describe('override input handler', () => {
 		spyOn(executeEffect, 'default')
 		spyOn(updateOverrideLeafNode, 'default')
 
-		// tslint:disable-next-line:no-any
-		const event: any = { target: { parentNode: { id: 'basePattern-colorSettings-opacity' }, value: '0.3' } }
+		const event: Event = createMockEvent({
+			target: {
+				parentNode: { id: 'basePattern-colorSettings-opacity' },
+				value: '0.3',
+			},
+		})
 
-		// tslint:disable-next-line:no-unsafe-any
 		subject(event)
 	})
 
@@ -40,8 +44,7 @@ describe('override input handler', () => {
 	})
 
 	it('handles functions', () => {
-		// tslint:disable-next-line:no-any
-		const functionEvent: any = {
+		const functionEvent: Event = createMockEvent({
 			target: {
 				parentNode: {
 					id: 'basePattern-colorSettings-opacity',
@@ -49,9 +52,8 @@ describe('override input handler', () => {
 				},
 				value: 'function (t) { return Math.random() * t > 10; }',
 			},
-		}
+		})
 
-		// tslint:disable-next-line:no-unsafe-any
 		subject(functionEvent)
 
 		if (appState.settings.overrides.basePattern &&
@@ -66,17 +68,15 @@ describe('override input handler', () => {
 	})
 
 	it('handles garbage', () => {
-		// tslint:disable-next-line:no-any
-		const functionEvent: any = {
+		const functionEvent: Event = createMockEvent({
 			target: {
 				parentNode: {
 					id: 'basePattern-colorSettings-opacity',
 				},
 				value: 'function (t) { return Math.random() * t > ',
 			},
-		}
+		})
 
-		// tslint:disable-next-line:no-unsafe-any
 		subject(functionEvent)
 
 		if (appState.settings.overrides.basePattern && appState.settings.overrides.basePattern.colorSettings) {

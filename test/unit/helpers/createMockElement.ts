@@ -7,6 +7,7 @@ const createMockElement: (_?: CreateMockElementParams) => MockElement =
 			children = [],
 			classList = [],
 			clickSpy,
+			parentNodeId,
 			parentNodeInsertBeforeSpy,
 			parentNodeRemoveChildSpy,
 		}: CreateMockElementParams = createMockElementParams || {}
@@ -19,6 +20,7 @@ const createMockElement: (_?: CreateMockElementParams) => MockElement =
 			click: clickSpy,
 			innerHTML: '',
 			parentNode: {
+				id: parentNodeId,
 				insertBefore: parentNodeInsertBeforeSpy,
 				removeChild: parentNodeRemoveChildSpy,
 			},

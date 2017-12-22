@@ -27,6 +27,7 @@ interface CreateMockElementParams {
 	children?: HTMLElement[],
 	classList?: string[],
 	clickSpy?: Spy,
+	parentNodeId?: string,
 	parentNodeInsertBeforeSpy?: Spy,
 	parentNodeRemoveChildSpy?: Spy,
 }
@@ -67,6 +68,30 @@ interface MockCanvas extends MockElement {
 	getContext?: any,
 	height?: any,
 	width?: any,
+}
+
+interface MockEvent {
+	AT_TARGET: any,
+	bubbles: any,
+	BUBBLING_PHASE: any,
+	cancelable: any,
+	cancelBubble: any,
+	CAPTURING_PHASE: any,
+	currentTarget: any,
+	deepPath: any,
+	defaultPrevented: any,
+	eventPhase: any,
+	initEvent: any,
+	isTrusted: any,
+	preventDefault: any,
+	returnValue: any,
+	scoped: any,
+	srcElement: any,
+	stopImmediatePropagation: any,
+	stopPropagation: any,
+	target: any,
+	timeStamp: any,
+	type: any,
 }
 
 interface CreateMockContextParams {
@@ -170,6 +195,7 @@ export {
 	MockContextMethod,
 	MockCanvas,
 	MockElement,
+	MockEvent,
 	CreateMockElementParams,
 	ExampleSettings,
 	ExampleSettingsStructure,

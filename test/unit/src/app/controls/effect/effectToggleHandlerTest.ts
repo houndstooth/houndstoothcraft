@@ -12,7 +12,7 @@ import {
 	resetMainHoundstooth,
 	updateDescriptions,
 } from '../../../../../../src/indexForTest'
-import { createMockElement, SimulateClick } from '../../../../helpers'
+import { createMockElement, createMockEvent, SimulateClick } from '../../../../helpers'
 
 describe('effect toggle handler', () => {
 	let subject: (_: Event) => void
@@ -100,6 +100,5 @@ describe('effect toggle handler', () => {
 
 const simulateClick: SimulateClick = (checkbox: HTMLInputElement, handler: (_: Event) => void): void => {
 	checkbox.checked = !checkbox.checked
-	// tslint:disable-next-line:no-any
-	handler({ target: checkbox } as any)
+	handler(createMockEvent({ target: checkbox }))
 }

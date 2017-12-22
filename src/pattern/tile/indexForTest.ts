@@ -8,7 +8,6 @@ export {
 	tileSettings,
 }
 export {
-	DefinedTileParams,
 	GetTileOriginAndSize,
 	TileOriginAndSize,
 	Unit,

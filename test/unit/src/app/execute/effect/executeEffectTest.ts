@@ -14,7 +14,7 @@ import {
 	to,
 	updateOverrideNodes,
 	updateOverrides,
-} from '../../../../../src/indexForTest'
+} from '../../../../../../src/indexForTest'
 
 describe('execute effect', () => {
 	let subject: (_?: { overrides?: Effect }) => void

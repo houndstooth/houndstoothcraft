@@ -66,42 +66,4 @@ describe('update progress', () => {
 			expect(appState.dom.progressMessage.textContent).toBe('Rendering: 91%')
 		})
 	})
-
-	describe('resolving grid', () => {
-		beforeEach(() => {
-			spyOn(appState.execute, 'resolveGrid')
-		})
-
-		describe('when the tiles completed are less than the total tiles', () => {
-			it('does nothing', () => {
-				subject()
-
-				expect(appState.execute.resolveGrid).not.toHaveBeenCalled()
-			})
-		})
-
-		describe('when the tiles completed are equal to the total tiles', () => {
-			beforeEach(() => {
-				appState.execute.tilesCompleted = 200000
-
-				subject()
-			})
-
-			it('resolves the grid', () => {
-				expect(appState.execute.resolveGrid).toHaveBeenCalled()
-			})
-
-			it('resets the progress bar', () => {
-				expect(appState.dom.progressBar.style.width).toBe('0%')
-			})
-
-			it('resets the progress message', () => {
-				expect(appState.dom.progressMessage.textContent).toBe('')
-			})
-
-			it('resets the tiles completed', () => {
-				expect(appState.execute.tilesCompleted).toBe(0)
-			})
-		})
-	})
 })

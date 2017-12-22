@@ -6,23 +6,15 @@ interface AddressElement extends Number {
 
 type Address = _AddressBrand & AddressElement[]
 
-type Grid<T> = T[][]
-
 interface AddressAsParam {
 	address: Address,
 }
 
-interface Referenced {
-	patternId: number
-}
-
-interface ReferencedAddress extends AddressAsParam, Referenced {}
+type Grid<T> = T[][]
 
 export {
 	Address,
+	AddressAsParam,
 	AddressElement,
 	Grid,
-	AddressAsParam,
-	Referenced,
-	ReferencedAddress,
 }

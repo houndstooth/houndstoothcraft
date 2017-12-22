@@ -36,14 +36,12 @@ export {
 	Weave,
 } from './color/indexForTest'
 export {
-	grid,
+	getAddresses,
 	gridSettings,
 
 	Address,
 	AddressAsParam,
 	Grid,
-	Referenced,
-	ReferencedAddress,
 } from './grid/indexForTest'
 export {
 	layerSettings,
@@ -92,7 +90,6 @@ export {
 	tile,
 	tileSettings,
 
-	DefinedTileParams,
 	GetTileOriginAndSize,
 	TileOriginAndSize,
 	Unit,

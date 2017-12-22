@@ -1,4 +1,4 @@
-import { appState, cancelCurrentPattern } from '../../../../../src/indexForTest'
+import { appState, cancelCurrentPattern } from '../../../../../../src/indexForTest'
 
 describe('cancel current pattern', () => {
 	it('sets the frame id to a new random number', () => {

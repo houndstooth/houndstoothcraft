@@ -4,9 +4,6 @@ import { AddressAsParam } from '../grid'
 enum _CoordinateBrand {}
 type Coordinate = _CoordinateBrand & Unit[]
 
-interface DefinedTileParams extends TileOriginAndSize, AddressAsParam {
-}
-
 type GetTileOriginAndSize = (_: AddressAsParam) => TileOriginAndSize | undefined
 
 type Outline = Coordinate[]
@@ -28,7 +25,6 @@ interface Unit extends Number {
 
 export {
 	Coordinate,
-	DefinedTileParams,
 	GetTileOriginAndSize,
 	Outline,
 	Tile,

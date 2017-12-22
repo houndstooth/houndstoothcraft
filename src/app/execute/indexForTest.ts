@@ -17,6 +17,7 @@ export {
 } from './effect/indexForTest'
 export {
 	executeGrid,
+	grid,
 } from './grid/indexForTest'
 export {
 	completeLayers,
@@ -29,12 +30,14 @@ export {
 	cancelCurrentPattern,
 	executePattern,
 	thisPatternHasNotBeenCanceled,
+
+	PatternIdAsParam,
 } from './pattern/indexForTest'
 export {
 	executeTile,
-	incrementTilesCompleted,
-	setTileCount,
 	updateProgress,
+
+	ExecuteTileParams,
 } from './tile/indexForTest'
 export {
 	ExecuteParams,

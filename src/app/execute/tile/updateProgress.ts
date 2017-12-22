@@ -13,8 +13,6 @@ const updateProgress: () => void =
 		updateProgressBar({ percentage })
 		updateLayersProgressBar({ percentage, currentLayerValue, endLayerValue })
 		updateProgressMessage({ percentage, currentLayerValue, endLayerValue })
-
-		maybeResolveGrid()
 	}
 
 const calculatePercentage: () => number =
@@ -43,16 +41,6 @@ const updateProgressMessage: (_: UpdateProgressParams) => void =
 			animationsAndLayersMessages.push(` layer ${currentLayerValue}/${endLayerValue}`)
 		}
 		appState.dom.progressMessage.textContent = `Rendering${animationsAndLayersMessages.join(',')}: ${percentage}%`
-	}
-
-const maybeResolveGrid: () => void =
-	(): void => {
-		if (appState.execute.tilesCompleted === appState.execute.tileCount) {
-			appState.execute.resolveGrid()
-			appState.dom.progressBar.style.width = '0%'
-			appState.dom.progressMessage.textContent = ''
-			appState.execute.tilesCompleted = 0
-		}
 	}
 
 export default updateProgress

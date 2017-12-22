@@ -6,7 +6,6 @@ import {
 	Coordinate,
 	getShapeColorIndices,
 	getStripePositionsForTile,
-	incrementTilesCompleted,
 	isTileUniform,
 	patternState,
 	PERIMETER_SCALAR,
@@ -41,7 +40,6 @@ describe('tile', () => {
 		getShapeColorIndicesSpy = spyOn(getShapeColorIndices, 'default')
 		isTileUniformSpy = spyOn(isTileUniform, 'default')
 		getTileOriginAndSizeSpy = spyOn(patternState.tileSettings, 'getTileOriginAndSize')
-		spyOn(incrementTilesCompleted, 'default')
 	})
 
 	it('does not proceed if neither origin nor size is got', () => {
@@ -68,14 +66,6 @@ describe('tile', () => {
 		expect(getShapeColorIndices.default).not.toHaveBeenCalled()
 	})
 
-	it('always increments the count of tiles completed, even if it does not proceed', () => {
-		getTileOriginAndSizeSpy.and.returnValue(undefined)
-
-		subject({ address })
-
-		expect(incrementTilesCompleted.default).toHaveBeenCalled()
-	})
-
 	describe('when the tile is assigned an origin on the canvas', () => {
 		let stripePositionsForTile: StripePosition[]
 		let shapeColorIndices: ShapeColorIndex[]
@@ -87,12 +77,6 @@ describe('tile', () => {
 
 			shapeColorIndices = []
 			getShapeColorIndicesSpy.and.returnValue(shapeColorIndices)
-		})
-
-		it('increments the count of tiles completed', () => {
-			subject({ address })
-
-			expect(incrementTilesCompleted.default).toHaveBeenCalled()
 		})
 
 		it('gets colors', () => {

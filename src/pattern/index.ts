@@ -25,13 +25,12 @@ export {
 	Weave,
 } from './color'
 export {
-	grid,
+	getAddresses,
 
 	Address,
+	AddressAsParam,
 	AddressElement,
 	Grid,
-	Referenced,
-	ReferencedAddress,
 } from './grid'
 export {
 	perStripe,
@@ -58,6 +57,7 @@ export {
 	Unit,
 } from './tile'
 export {
+	applyViewForGrid,
 	applyViewForShape,
 } from './view'
 

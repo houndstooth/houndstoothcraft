@@ -67,14 +67,15 @@ export {
 	executePattern,
 	executeEffect,
 	getCurrentLayer,
-	incrementTilesCompleted,
-	setTileCount,
+	grid,
 	thisPatternHasNotBeenCanceled,
 	updateProgress,
 
 	AnimationParams,
 	ExecuteLayerParams,
 	ExecuteParams,
+	ExecuteTileParams,
+	PatternIdAsParam,
 } from './execute/indexForTest'
 export {
 	createPath,

@@ -7,3 +7,6 @@ export {
 	executePattern,
 	thisPatternHasNotBeenCanceled,
 }
+export {
+	PatternIdAsParam,
+} from './types'

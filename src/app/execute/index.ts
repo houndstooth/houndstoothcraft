@@ -11,8 +11,7 @@ export {
 	cancelCurrentPattern,
 } from './pattern'
 export {
-	incrementTilesCompleted,
-	setTileCount,
+	executeTile,
 } from './tile'
 export {
 	ExecuteState,

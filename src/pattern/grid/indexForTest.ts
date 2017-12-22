@@ -1,14 +1,12 @@
-import * as grid from './grid'
+import * as getAddresses from './getAddresses'
 import * as gridSettings from './gridSettings'
 
 export {
-	grid,
+	getAddresses,
 	gridSettings,
 }
 export {
 	Address,
-	Grid,
 	AddressAsParam,
-	Referenced,
-	ReferencedAddress,
+	Grid,
 } from './types'

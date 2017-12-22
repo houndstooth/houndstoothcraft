@@ -14,9 +14,8 @@ export {
 } from './dom'
 export {
 	executeEffect,
+	executeTile,
 	getCurrentLayer,
-	incrementTilesCompleted,
-	setTileCount,
 
 	ExecuteState,
 } from './execute'

@@ -11,7 +11,7 @@ import {
 	Layer,
 	SettingFunctionObject,
 	to,
-} from '../../../../../src/indexForTest'
+} from '../../../../../../src/indexForTest'
 
 describe('execute pattern', () => {
 	let subject: (_: ExecuteParams) => Promise<void>

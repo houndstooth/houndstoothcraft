@@ -1,10 +1,10 @@
 import { from, to } from '../../utilities'
-import { Address } from '../grid'
+import { AddressAsParam } from '../grid'
 import { patternState } from '../patternState'
 import { TileOriginAndSize, Unit } from './types'
 
-const getStandardTileOriginAndSize: (_: { address: Address }) => TileOriginAndSize =
-	({ address }: { address: Address }): TileOriginAndSize => {
+const getStandardTileOriginAndSize: (_: AddressAsParam) => TileOriginAndSize =
+	({ address }: AddressAsParam): TileOriginAndSize => {
 		const tileSize: Unit = patternState.tileSettings.tileSize
 		const [ x, y ]: number[] = from.Address(address)
 

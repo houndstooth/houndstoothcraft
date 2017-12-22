@@ -1,8 +1,8 @@
-import { Referenced } from '../../../pattern'
 import { Layer } from '../../../types'
 import { SettingFunctionObject } from '../../setting'
+import { PatternIdAsParam } from '../pattern'
 
-interface ExecuteLayerParams extends Referenced {
+interface ExecuteLayerParams extends PatternIdAsParam {
 	layer: Layer,
 	layerFunctionObjects: SettingFunctionObject[],
 }

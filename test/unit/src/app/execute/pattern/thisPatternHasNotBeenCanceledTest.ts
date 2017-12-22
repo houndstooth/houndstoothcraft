@@ -1,4 +1,4 @@
-import { appState, thisPatternHasNotBeenCanceled } from '../../../../../src/indexForTest'
+import { appState, thisPatternHasNotBeenCanceled } from '../../../../../../src/indexForTest'
 
 describe('this pattern has not been canceled', () => {
 	let subject: (_: number) => boolean

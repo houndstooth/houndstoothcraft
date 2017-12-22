@@ -1,17 +1,16 @@
 import activateTestMarkerCanvas from './activateTestMarkerCanvas'
 import pixelIsColorWithMarker from './pixelIsColorWithMarker'
+// tslint:disable-next-line:max-line-length
+import reworkExecutionToFocusOnCanvasOverAnyUserInteractionRelatedMaterial from './reworkExecutionToFocusOnCanvasOverAnyUserInteractionRelatedMaterial'
 import sectionCenterIsColor from './sectionCenterIsColor'
 import standardTileIsColors from './standardTileIsColors'
-import stubProblematicNonCanvasUiActivity from './stubProblematicNonCanvasUiActivity'
-import syncExecuteGridAndMixDownContexts from './syncExecuteGridAndMixDownContexts'
 
 export {
 	activateTestMarkerCanvas,
 	sectionCenterIsColor,
 	standardTileIsColors,
 	pixelIsColorWithMarker,
-	syncExecuteGridAndMixDownContexts,
-	stubProblematicNonCanvasUiActivity,
+	reworkExecutionToFocusOnCanvasOverAnyUserInteractionRelatedMaterial,
 }
 export {
 	Diagonal,

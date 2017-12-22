@@ -1,11 +1,9 @@
 // tslint:disable:no-unsafe-any
 
-import { executeGrid } from '../../../src/indexForTest'
 import { resetAppAndPatternStates } from '../../helpers'
 import {
 	activateTestMarkerCanvas,
-	stubProblematicNonCanvasUiActivity,
-	syncExecuteGridAndMixDownContexts,
+	reworkExecutionToFocusOnCanvasOverAnyUserInteractionRelatedMaterial,
 } from '../helpers'
 
 beforeEach(() => {
@@ -13,6 +11,5 @@ beforeEach(() => {
 
 	activateTestMarkerCanvas()
 
-	spyOn(executeGrid, 'default').and.callFake(syncExecuteGridAndMixDownContexts)
-	stubProblematicNonCanvasUiActivity()
+	reworkExecutionToFocusOnCanvasOverAnyUserInteractionRelatedMaterial()
 })

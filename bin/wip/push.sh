@@ -4,8 +4,8 @@ git submodule foreach git checkout -b wip
 git submodule foreach git add .
 git submodule foreach git commit -m "wip"
 git submodule foreach git push -u origin wip
-git submodule foreach checkout master
-git submodule foreach branch -D wip
+git submodule foreach git checkout master
+git submodule foreach git branch -D wip
 
 git checkout -b wip
 git add .

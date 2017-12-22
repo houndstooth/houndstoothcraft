@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -e
-
 git submodule foreach git checkout -b wip
 git submodule foreach git add .
 git submodule foreach git commit -m "wip"

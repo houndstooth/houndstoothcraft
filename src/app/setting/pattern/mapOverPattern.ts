@@ -1,10 +1,10 @@
 // tslint:disable:no-any
 
-import { to } from '../../../utilities'
+import { Color } from '../../../types'
+import { codeUtilities, to } from '../../../utilities'
 import { DEFAULT_BASE_PATTERN } from '../defaults'
 import { SettingStep } from '../types'
 import deeperPath from './deeperPath'
-import shouldRecurse from './shouldRecurse'
 import { DeepSettingsMapParams, MapOverPatternParams } from './types'
 
 const mapOverPattern: (_?: MapOverPatternParams) => boolean =
@@ -40,6 +40,33 @@ const mapOverPattern: (_?: MapOverPatternParams) => boolean =
 				})
 
 		return deepSettingsMap({ settings: pattern, settingPath: to.SettingPath([]) })
+	}
+
+const shouldRecurse: (_: any) => boolean =
+	(setting: any): boolean =>
+		settingIsNonArrayObject(setting) && settingIsNotColor(setting)
+
+const settingIsNonArrayObject: (_: any) => boolean =
+	(setting: any): boolean => {
+		if (!setting) {
+			return false
+		}
+		if (typeof setting !== 'object') {
+			return false
+		}
+
+		return !(setting instanceof Array)
+	}
+
+const settingIsNotColor: (_: any) => boolean =
+	(setting: any): boolean => {
+		// tslint:disable-next-line:no-unsafe-any
+		const { r, g, b, a }: Color = setting
+
+		return !(codeUtilities.isDefined(r) ||
+			codeUtilities.isDefined(g) ||
+			codeUtilities.isDefined(b) ||
+			codeUtilities.isDefined(a))
 	}
 
 export default mapOverPattern

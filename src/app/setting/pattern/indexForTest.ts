@@ -7,7 +7,6 @@ import * as initializeCurrentPatternFromBasePattern from './initializeCurrentPat
 import * as mapOverPattern from './mapOverPattern'
 import * as patternsHaveConflicts from './patternsHaveConflicts'
 import * as prepareFunctionObjectsPerSetting from './prepareFunctionObjectsPerSetting'
-import * as shouldRecurse from './shouldRecurse'
 
 export {
 	concatFullSettingPath,
@@ -19,7 +18,6 @@ export {
 	mapOverPattern,
 	patternsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
-	shouldRecurse,
 }
 export {
 	CheckSettingForConflictParams,

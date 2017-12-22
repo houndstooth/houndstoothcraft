@@ -1,7 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { PatternMapFunctionParams, PrepareFunctionObjectsParams, SettingFunctionObject } from './types'
 import mapOverPattern from './mapOverPattern'
+import { PatternMapFunctionParams, PrepareFunctionObjectsParams, SettingFunctionObject } from './types'
 
 const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => SettingFunctionObject[] =
 	({ settingFunctionsSourcePattern }: PrepareFunctionObjectsParams): SettingFunctionObject[] => {
@@ -15,14 +15,15 @@ const prepareFunctionObjectsPerSetting: (_: PrepareFunctionObjectsParams) => Set
 		return settingFunctionObjects
 	}
 
-const perLeaf = ({ options, settingValue, settingName, settingPath }: PatternMapFunctionParams) => {
-	if (typeof settingValue === 'function') {
-		options.settingFunctionObjects.push({
-			settingFunction: settingValue,
-			settingName,
-			settingPath,
-		})
+const perLeaf: (_: PatternMapFunctionParams) => void =
+	({ options, settingValue, settingName, settingPath }: PatternMapFunctionParams): void => {
+		if (typeof settingValue === 'function') {
+			options.settingFunctionObjects.push({
+				settingFunction: settingValue,
+				settingName,
+				settingPath,
+			})
+		}
 	}
-}
 
 export default prepareFunctionObjectsPerSetting

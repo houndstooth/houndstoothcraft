@@ -114,7 +114,6 @@ export {
 	prepareFunctionObjectsPerSetting,
 	resetMainHoundstooth,
 	setupAvailableEffects,
-	shouldRecurse,
 
 	DEFAULT_ANIMATIONS_PATTERN,
 	DEFAULT_BASE_PATTERN,

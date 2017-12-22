@@ -20,7 +20,6 @@ export {
 	mapOverPattern,
 	patternsHaveConflicts,
 	prepareFunctionObjectsPerSetting,
-	shouldRecurse,
 
 	CheckSettingForConflictParams,
 	ComposePatternsParams,

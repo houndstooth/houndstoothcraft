@@ -75,7 +75,6 @@ export {
 	setupAvailableEffects,
 	setupMixedDownContext,
 	setupRenderStyle,
-	shouldRecurse,
 	snapshotHandler,
 	startUp,
 	storeDomElements,

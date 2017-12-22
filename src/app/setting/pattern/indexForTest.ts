@@ -27,6 +27,7 @@ export {
 	DeeperPathParams,
 	FullSettingPath,
 	MapOverPatternParams,
+	PatternMapFunctionParams,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectsParams,
 	SettingFunction,

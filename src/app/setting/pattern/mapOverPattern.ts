@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import { to } from '../../../utilities'
 import { DEFAULT_BASE_PATTERN } from '../defaults'
 import { SettingStep } from '../types'
@@ -5,8 +7,8 @@ import deeperPath from './deeperPath'
 import shouldRecurse from './shouldRecurse'
 import { DeepSettingsMapParams, MapOverPatternParams } from './types'
 
-const mapOverPattern: (_?: MapOverPatternParams) => void =
-	(mapOverPatternParams: MapOverPatternParams = {}): void => {
+const mapOverPattern: (_?: MapOverPatternParams) => boolean =
+	(mapOverPatternParams: MapOverPatternParams = {}): boolean => {
 		const {
 			options,
 			pattern = DEFAULT_BASE_PATTERN,
@@ -15,28 +17,29 @@ const mapOverPattern: (_?: MapOverPatternParams) => void =
 			perLeaf,
 		}: MapOverPatternParams = mapOverPatternParams
 
-		const deepSettingsMap: (_: DeepSettingsMapParams) => void =
-			({ settings, settingPath }: DeepSettingsMapParams): void => {
-				// tslint:disable-next-line:no-any
-				Object.entries(settings).forEach(([ settingNameString, settingValue ]: [ string, any ]) => {
+		const deepSettingsMap: (_: DeepSettingsMapParams) => boolean =
+			({ settings, settingPath }: DeepSettingsMapParams): boolean =>
+				Object.entries(settings).some(([ settingNameString, settingValue ]: [ string, any ]): boolean => {
 					const settingName: SettingStep = to.SettingStep(settingNameString)
 					if (shouldRecurse(settingValue)) {
 						if (perParent) {
 							perParent({ options, patternName, settingName, settingValue, settingPath })
 						}
-						deepSettingsMap({
+
+						return deepSettingsMap({
 							settingPath: deeperPath({ settingName, settingPath }),
 							// tslint:disable-next-line:no-unsafe-any
 							settings: settings[ settingNameString ],
 						})
 					}
 					else if (perLeaf) {
-						perLeaf({ options, patternName, settingName, settingPath, settingValue })
+						return !!(perLeaf({ options, patternName, settingName, settingPath, settingValue }))
 					}
-				})
-			}
 
-		deepSettingsMap({ settings: pattern, settingPath: to.SettingPath([]) })
+					return false
+				})
+
+		return deepSettingsMap({ settings: pattern, settingPath: to.SettingPath([]) })
 	}
 
 export default mapOverPattern

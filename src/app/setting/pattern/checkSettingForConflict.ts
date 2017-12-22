@@ -1,30 +1,15 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { codeUtilities, globalWrapper } from '../../../utilities'
+import { codeUtilities, from, globalWrapper } from '../../../utilities'
 import { formatSetting } from '../../dom'
 import concatFullSettingPath from './concatFullSettingPath'
-import { CheckSettingForConflictParams, SettingConflictCheck, SettingsAreEqual } from './types'
-
-const { isDefined } = codeUtilities
+import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
+import { CheckSettingForConflictParams } from './types'
 
 const checkSettingForConflict: (_: CheckSettingForConflictParams) => boolean =
 	(checkSettingForConflictParams: CheckSettingForConflictParams): boolean => {
-		const {
-			patternName,
-			setting,
-			settingCheckingForConflict,
-			settingName,
-			settingPath,
-		}: CheckSettingForConflictParams = checkSettingForConflictParams
-
-		if (shouldWarnAboutConflict({ setting, settingCheckingForConflict })) {
-			const warning: string = createWarningMessage({
-				patternName,
-				setting,
-				settingCheckingForConflict,
-				settingName,
-				settingPath,
-			})
+		if (shouldWarnAboutConflict(checkSettingForConflictParams)) {
+			const warning: string = createWarningMessage(checkSettingForConflictParams)
 			globalWrapper.console.warn(warning)
 
 			return true
@@ -33,11 +18,19 @@ const checkSettingForConflict: (_: CheckSettingForConflictParams) => boolean =
 		return false
 	}
 
-const shouldWarnAboutConflict: (_: SettingConflictCheck) => boolean =
-	({ setting, settingCheckingForConflict }: SettingConflictCheck): boolean =>
-		isDefined(setting) && !settingsAreEqual(setting, settingCheckingForConflict)
+const shouldWarnAboutConflict: (_: CheckSettingForConflictParams) => boolean =
+	({ settingPath, settingName, settingValue, options }: CheckSettingForConflictParams): boolean => {
+		const settingValueCheckingAgainst: any = getPatternSettingOrCreatePath({
+			pattern: options.patternCheckingAgainst,
+			settingPath,
+		})[ from.SettingStep(settingName) ]
 
-const settingsAreEqual: SettingsAreEqual =
+		return codeUtilities.isDefined(settingValue) &&
+			codeUtilities.isDefined(settingValueCheckingAgainst) &&
+			!settingsAreEqual(settingValue, settingValueCheckingAgainst)
+	}
+
+const settingsAreEqual: (_: any, __: any) => boolean =
 	(a: any, b: any): boolean => {
 		let settingsEqual: boolean
 		// tslint:disable-next-line:strict-type-predicates
@@ -49,7 +42,7 @@ const settingsAreEqual: SettingsAreEqual =
 			settingsEqual = a.toString() === b.toString()
 		}
 		else if (a instanceof Array) {
-			settingsEqual = a.every((aEntry: any, index: number): boolean => aEntry === b[ index ])
+			settingsEqual = a.every((aEntry: any, index: number): boolean => settingsAreEqual(aEntry, b[ index ]))
 		}
 		else {
 			settingsEqual = a === b
@@ -59,17 +52,13 @@ const settingsAreEqual: SettingsAreEqual =
 	}
 
 const createWarningMessage: (_: CheckSettingForConflictParams) => string =
-	(checkSettingForConflictParams: CheckSettingForConflictParams): string => {
-		const {
-			patternName,
-			setting,
-			settingCheckingForConflict,
-			settingName,
+	({ patternName, settingValue, options, settingName, settingPath }: CheckSettingForConflictParams): string => {
+		const formattedSetting: string = formatSetting.default(settingValue)
+		const settingValueCheckingAgainst: any = getPatternSettingOrCreatePath({
+			pattern: options.patternCheckingAgainst,
 			settingPath,
-		} = checkSettingForConflictParams
-
-		const formattedSetting: string = formatSetting.default(setting)
-		const formattedCheckedSetting: string = formatSetting.default(settingCheckingForConflict)
+		})[ from.SettingStep(settingName) ]
+		const formattedCheckedSetting: string = formatSetting.default(settingValueCheckingAgainst)
 		const concatenatedFullSettingsPath: string = concatFullSettingPath({
 			patternName,
 			settingName,

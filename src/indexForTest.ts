@@ -112,6 +112,7 @@ export {
 	OverrideParentNode,
 	Path,
 	PatternIdAsParam,
+	PatternMapFunctionParams,
 	PatternsHaveConflictsParams,
 	Pixel,
 	PrepareFunctionObjectsParams,

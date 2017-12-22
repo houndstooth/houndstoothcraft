@@ -3,7 +3,8 @@
 import { Pattern } from '../../../types'
 import { SettingPath, SettingStep } from '../types'
 
-interface CheckSettingForConflictParams extends FullSettingPath, SettingConflictCheck {
+interface CheckSettingForConflictParams extends PatternMapFunctionParams {
+	options: { patternCheckingAgainst: Pattern },
 }
 
 interface ComposePatternsParams {
@@ -29,7 +30,7 @@ interface MapOverPatternParams {
 	options?: any,
 	pattern?: Pattern,
 	patternName?: SettingStep,
-	perLeaf?: (_: PatternMapFunctionParams) => void,
+	perLeaf?: (_: PatternMapFunctionParams) => boolean | void,
 	perParent?: (_: PatternMapFunctionParams) => void,
 }
 
@@ -42,7 +43,6 @@ interface PatternsHaveConflictsParams {
 	pattern?: Pattern,
 	patternCheckingAgainst?: Pattern,
 	patternName: SettingStep,
-	settingPath?: SettingPath,
 }
 
 interface PrepareFunctionObjectForSettingOrMaybeRecurseParams extends DeeperPathParams {
@@ -56,18 +56,11 @@ interface PrepareFunctionObjectsParams {
 	settingPath?: SettingPath,
 }
 
-interface SettingConflictCheck {
-	setting: any,
-	settingCheckingForConflict: any,
-}
-
 type SettingFunction<T> = (_?: T) => T
 
 interface SettingFunctionObject extends DeeperPathParams {
 	settingFunction: SettingFunction<any>,
 }
-
-type SettingsAreEqual = (_: any, __: any) => boolean
 
 export {
 	CheckSettingForConflictParams,
@@ -80,8 +73,6 @@ export {
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,
-	SettingConflictCheck,
 	SettingFunction,
 	SettingFunctionObject,
-	SettingsAreEqual,
 }

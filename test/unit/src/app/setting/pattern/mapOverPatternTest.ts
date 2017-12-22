@@ -4,12 +4,13 @@ import {
 	mapOverPattern,
 	MapOverPatternParams,
 	Pattern,
+	PatternMapFunctionParams,
 	SettingStep,
 	to,
 } from '../../../../../../src/indexForTest'
 
 describe('map over pattern', () => {
-	let subject: (_?: MapOverPatternParams) => void
+	let subject: (_?: MapOverPatternParams) => boolean
 	let options: {}
 	let pattern: Pattern
 	let patternName: SettingStep
@@ -146,5 +147,17 @@ describe('map over pattern', () => {
 
 	it('can be called with no argument', () => {
 		subject()
+	})
+
+	it('returns false if none of the leaf functions return true', () => {
+		perLeafSpy.and.returnValue(false)
+
+		expect(subject({ options, pattern, patternName, perLeaf: perLeafSpy })).toBe(false)
+	})
+
+	it('returns true if any of the leaf functions return true', () => {
+		perLeafSpy.and.callFake(({ settingName }: PatternMapFunctionParams) => settingName === to.SettingStep('switcheroo'))
+
+		expect(subject({ options, pattern, patternName, perLeaf: perLeafSpy })).toBe(true)
 	})
 })

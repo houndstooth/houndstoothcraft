@@ -126,6 +126,7 @@ export {
 	GetEffectSetting,
 	MapOverPatternParams,
 	PatternsHaveConflictsParams,
+	PatternMapFunctionParams,
 	PrepareFunctionObjectsParams,
 	SettingFunction,
 	SettingFunctionObject,

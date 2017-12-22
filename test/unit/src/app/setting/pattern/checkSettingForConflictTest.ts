@@ -1,3 +1,5 @@
+// tslint:disable:no-any no-unsafe-any
+
 import {
 	checkSettingForConflict,
 	CheckSettingForConflictParams,
@@ -12,8 +14,8 @@ describe('check setting for conflict', () => {
 	let subject: (_: CheckSettingForConflictParams) => boolean
 	let settingPath: SettingPath
 	let settingName: SettingStep
-	let setting: {}
-	let settingCheckingForConflict: {}
+	let settingValue: any
+	let options: any
 	beforeEach(() => {
 		patternName = to.SettingStep('layersPattern')
 		subject = checkSettingForConflict.default
@@ -23,10 +25,10 @@ describe('check setting for conflict', () => {
 	it('reports conflicts', () => {
 		settingPath = to.SettingPath([ 'colorSettings', 'colorAssignmentSettings' ])
 		settingName = to.SettingStep('assignmentMode')
-		setting = 'yoda'
-		settingCheckingForConflict = 'luke'
+		settingValue = 'yoda'
+		options = { patternCheckingAgainst: { colorSettings: { colorAssignmentSettings: { assignmentMode: 'luke' } } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.colorAssignmentSettings.assignmentMode`: `yoda` would be overridden by `luke`'
@@ -36,11 +38,11 @@ describe('check setting for conflict', () => {
 
 	it('does not report a conflict when setting are identical', () => {
 		settingPath = to.SettingPath([ 'colorSettings', 'colorAssignmentSettings' ])
-		settingName = to.SettingStep('as signmentMode')
-		setting = 'luke'
-		settingCheckingForConflict = 'luke'
+		settingName = to.SettingStep('assignmentMode')
+		settingValue = 'luke'
+		options = { patternCheckingAgainst: { colorSettings: { colorAssignmentSettings: { assignmentMode: 'luke' } } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		expect(globalWrapper.console.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
@@ -49,10 +51,10 @@ describe('check setting for conflict', () => {
 	it('does not report a conflict when the setting are equivalent functions', () => {
 		settingPath = to.SettingPath([ 'tileSettings' ])
 		settingName = to.SettingStep('getTileOriginAndSize')
-		setting = (a: number): number => a
-		settingCheckingForConflict = (a: number): number => a
+		settingValue = (a: number): number => a
+		options = { patternCheckingAgainst: { tileSettings: { getTileOriginAndSize: (a: number): number => a } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		expect(globalWrapper.console.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
@@ -61,11 +63,11 @@ describe('check setting for conflict', () => {
 	it('reports a conflict when the setting are functions that are not equivalent (by stringified comparison)', () => {
 		settingPath = to.SettingPath([ 'tileSettings' ])
 		settingName = to.SettingStep('getTileOriginAndSize')
-		setting = (a: number): number => a
-		settingCheckingForConflict = (b: number): number => b
+		settingValue = (a: number): number => a
+		options = { patternCheckingAgainst: { tileSettings: { getTileOriginAndSize: (b: number): number => b } } }
 
 		// tslint:disable-next-line:no-unsafe-any
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.tileSettings.getTileOriginAndSize`: `function (a) { return a; }` would be overridden by `function (b) { return b; }`'
@@ -76,10 +78,10 @@ describe('check setting for conflict', () => {
 	it('does not report a conflict when the setting are equivalent arrays', () => {
 		settingPath = to.SettingPath([ 'colorSettings' ])
 		settingName = to.SettingStep('colorSet')
-		setting = [ 'a', 'b' ]
-		settingCheckingForConflict = [ 'a', 'b' ]
+		settingValue = [ 'a', 'b' ]
+		options = { patternCheckingAgainst: { colorSettings: { colorSet: [ 'a', 'b' ] } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		expect(globalWrapper.console.warn).not.toHaveBeenCalled()
 		expect(shouldWarn).toBe(false)
@@ -88,10 +90,10 @@ describe('check setting for conflict', () => {
 	it('reports a conflict when the setting are arrays that are not equivalent', () => {
 		settingPath = to.SettingPath([ 'colorSettings' ])
 		settingName = to.SettingStep('colorSet')
-		setting = [ 'a', 'b' ]
-		settingCheckingForConflict = [ 'b', 'a' ]
+		settingValue = [ 'a', 'b' ]
+		options = { patternCheckingAgainst: { colorSettings: { colorSet: [ 'b', 'a' ] } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.colorSet`: `["a","b"]` would be overridden by `["b","a"]`'
@@ -102,10 +104,10 @@ describe('check setting for conflict', () => {
 	it('reports a conflict when the setting are different types of data structure', () => {
 		settingPath = to.SettingPath([ 'colorSettings' ])
 		settingName = to.SettingStep('colorSet')
-		setting = [ 'a', 'b' ]
-		settingCheckingForConflict = 'bna'
+		settingValue = [ 'a', 'b' ]
+		options = { patternCheckingAgainst: { colorSettings: { colorSet: 'bna' } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.colorSet`: `["a","b"]` would be overridden by `bna`'
@@ -116,10 +118,10 @@ describe('check setting for conflict', () => {
 	it('in the message, shows the contents of objects (such as colors) (as opposed to [object Object])', () => {
 		settingPath = to.SettingPath([ 'colorSettings' ])
 		settingName = to.SettingStep('backgroundColor')
-		setting = { r: 0, g: 5, b: 10, a: 1 }
-		settingCheckingForConflict = { a: 0 }
+		settingValue = { r: 0, g: 5, b: 10, a: 1 }
+		options = { patternCheckingAgainst: { colorSettings: { backgroundColor: { a: 0 } } } }
 
-		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, setting, settingCheckingForConflict })
+		const shouldWarn: boolean = subject({ patternName, settingPath, settingName, settingValue, options })
 
 		// tslint:disable-next-line:max-line-length
 		const expectedWarning: string = 'effect would have conflicts on setting `layersPattern.colorSettings.backgroundColor`: `{"r":0,"g":5,"b":10,"a":1}` would be overridden by `{"a":0}`'

@@ -1,5 +1,5 @@
 import {
-	attachControlHandlers,
+	attachHandlers,
 	createEffectToggles,
 	createOverrideNodes,
 	executeEffect,
@@ -23,7 +23,7 @@ describe('start up', () => {
 		spyOn(setupMixedDownContext, 'default')
 		spyOn(updateOverrides, 'default')
 		spyOn(createEffectToggles, 'default')
-		spyOn(attachControlHandlers, 'default')
+		spyOn(attachHandlers, 'default')
 		spyOn(executeEffect, 'default')
 		allEffects = [ { name: 'mock effect', description: '' } ]
 
@@ -55,7 +55,7 @@ describe('start up', () => {
 	})
 
 	it('attaches handlers to all the controls', () => {
-		expect(attachControlHandlers.default).toHaveBeenCalled()
+		expect(attachHandlers.default).toHaveBeenCalled()
 	})
 
 	it('executes the pattern once so the canvas is not blank when the user arrives', () => {

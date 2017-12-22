@@ -3,18 +3,18 @@ import {
 	clearAnimationIntervalAndRemoveFromState,
 	clearMixedDownContext,
 	executeEffect,
-	rewindClickHandler,
+	rewindHandler,
 	to,
 	updateCurrentFrame,
 } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-describe('rewind click handler', () => {
+describe('rewind handler', () => {
 	let subject: () => void
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
-		subject = rewindClickHandler.default
+		subject = rewindHandler.default
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(updateCurrentFrame, 'default')
 		spyOn(clearAnimationIntervalAndRemoveFromState, 'default')

@@ -2,16 +2,16 @@
 
 export {
 	enableOrDisableAnimationControls,
-	frameInputChangeHandler,
+	frameInputHandler,
 	getCurrentFrame,
-	pauseClickHandler,
-	playClickHandler,
-	rewindClickHandler,
-	snapshotClickHandler,
+	pauseHandler,
+	playHandler,
+	rewindHandler,
+	snapshotHandler,
 	updateCurrentFrame,
 } from './animation/indexForTest'
 export {
-	effectToggleClickHandler,
+	effectToggleHandler,
 	enableOrDisableOtherEffectToggles,
 	updateDescriptions,
 } from './effect/indexForTest'
@@ -21,8 +21,8 @@ export {
 	getOverrideLeafNode,
 	getOverrideParentNode,
 	isParentOfAnyOverridingChildren,
-	overrideClearClickHandler,
-	overrideInputChangeHandler,
+	overrideClearHandler,
+	overrideInputHandler,
 	toggleOverrideParentOpen,
 	updateOverrideLeafNode,
 	updateOverrideNodes,

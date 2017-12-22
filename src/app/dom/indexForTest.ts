@@ -8,7 +8,7 @@ export {
 	storeDomElements,
 }
 export {
-	attachControlHandlers,
+	attachHandlers,
 	saveBlobThroughAnchor,
 } from './animation/indexForTest'
 export {

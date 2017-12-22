@@ -1,10 +1,10 @@
 import { appState } from '../../appState'
 
-const pauseClickHandler: () => void =
+const pauseHandler: () => void =
 	(): void => {
 		appState.controls.animating = false
 		appState.dom.playButton.disabled = false
 		appState.dom.pauseButton.disabled = true
 	}
 
-export default pauseClickHandler
+export default pauseHandler

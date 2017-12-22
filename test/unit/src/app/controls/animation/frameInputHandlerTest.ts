@@ -2,14 +2,14 @@ import {
 	appState,
 	clearMixedDownContext,
 	executeEffect,
-	frameInputChangeHandler,
+	frameInputHandler,
 	to,
 } from '../../../../../../src/indexForTest'
 
-describe('frame input change handler', () => {
+describe('frame input handler', () => {
 	let subject: (event: Event) => void
 	beforeEach(() => {
-		subject = frameInputChangeHandler.default
+		subject = frameInputHandler.default
 	})
 
 	it('sets the current frame', () => {

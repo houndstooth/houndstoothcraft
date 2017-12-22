@@ -2,7 +2,7 @@
 
 import { from, globalWrapper } from '../../../utilities'
 import { appState } from '../../appState'
-import { getOverrideLeafNode, overrideInputChangeHandler } from '../../controls'
+import { getOverrideLeafNode, overrideInputHandler } from '../../controls'
 import { concatFullSettingPath, FullSettingPath, getEffectSetting, SettingStep } from '../../setting'
 import formatSetting from '../formatSetting'
 import appendOverride from './appendOverride'
@@ -43,7 +43,7 @@ const createOverrideLeafInput: (_: FullSettingPath) => HTMLInputElement =
 		const overrideLeafInput: HTMLInputElement = globalWrapper.document.createElement('input')
 
 		overrideLeafInput.value = createOverrideLeafInputValue(fullSettingPath)
-		overrideLeafInput.onchange = overrideInputChangeHandler.default
+		overrideLeafInput.onchange = overrideInputHandler.default
 
 		return overrideLeafInput
 	}

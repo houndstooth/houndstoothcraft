@@ -2,7 +2,7 @@ import { appState } from '../../appState'
 import { executeEffect } from '../../execute'
 import { mixDownContexts } from '../../render'
 
-const playClickHandler: () => void =
+const playHandler: () => void =
 	(): void => {
 		appState.dom.playButton.disabled = true
 		appState.dom.pauseButton.disabled = false
@@ -20,4 +20,4 @@ const playClickHandler: () => void =
 const resumingAnimation: () => boolean =
 	(): boolean => !!appState.execute.animationInterval
 
-export default playClickHandler
+export default playHandler

@@ -1,9 +1,9 @@
-import { appState, pauseClickHandler } from '../../../../../../src/indexForTest'
+import { appState, pauseHandler } from '../../../../../../src/indexForTest'
 
-describe('pause click handler', () => {
+describe('pause handler', () => {
 	let subject: () => void
 	beforeEach(() => {
-		subject = pauseClickHandler.default
+		subject = pauseHandler.default
 	})
 
 	it('sets animating to false', () => {

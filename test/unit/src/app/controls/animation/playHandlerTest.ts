@@ -2,16 +2,16 @@ import {
 	appState,
 	executeEffect,
 	mixDownContexts,
-	playClickHandler,
+	playHandler,
 } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-describe('play click handler', () => {
+describe('play handler', () => {
 	let subject: () => void
 	let executeSelectedEffectsSpy: Spy
 
 	beforeEach(() => {
-			subject = playClickHandler.default
+			subject = playHandler.default
 			spyOn(mixDownContexts, 'default')
 			executeSelectedEffectsSpy = spyOn(executeEffect, 'default')
 				.and.returnValue(new Promise<() => void>((): void => undefined))

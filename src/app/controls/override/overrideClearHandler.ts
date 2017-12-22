@@ -6,7 +6,7 @@ import { clearMixedDownContext } from '../../render'
 import { FullSettingPath, getEffectSetting } from '../../setting'
 import { enableOrDisableAnimationControls } from '../animation'
 
-const overrideClearClickHandler: (_: Event) => void =
+const overrideClearHandler: (_: Event) => void =
 	(event: Event): void => {
 		event.stopPropagation()
 		const overrideClear: HTMLButtonElement = event.target as HTMLButtonElement
@@ -31,4 +31,4 @@ const overrideClearClickHandler: (_: Event) => void =
 		enableOrDisableAnimationControls.default()
 	}
 
-export default overrideClearClickHandler
+export default overrideClearHandler

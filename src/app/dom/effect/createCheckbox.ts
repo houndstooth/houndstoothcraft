@@ -2,7 +2,7 @@
 
 import { NamedEffect } from '../../../types'
 import { codeUtilities, globalWrapper } from '../../../utilities'
-import { effectToggleClickHandler } from '../../controls'
+import { effectToggleHandler } from '../../controls'
 
 const createCheckbox: (_: { effect: NamedEffect }) => HTMLInputElement =
 	({ effect }: { effect: NamedEffect }): HTMLInputElement => {
@@ -14,7 +14,7 @@ const createCheckbox: (_: { effect: NamedEffect }) => HTMLInputElement =
 		checkbox.setAttribute('id', idAndName)
 		checkbox.setAttribute('name', idAndName)
 
-		checkbox.onclick = effectToggleClickHandler.default
+		checkbox.onclick = effectToggleHandler.default
 
 		return checkbox
 	}

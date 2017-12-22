@@ -10,7 +10,7 @@ import { FullSettingPath, getPatternSettingOrCreatePath, SettingStep } from '../
 import { enableOrDisableAnimationControls } from '../animation'
 import { UpdateOverride } from './types'
 
-const overrideInputChangeHandler: (_: Event) => void =
+const overrideInputHandler: (_: Event) => void =
 	(event: Event): void => {
 		const input: HTMLInputElement = event.target as HTMLInputElement
 		const overrideLeaf: HTMLElement = input.parentNode as HTMLElement
@@ -60,4 +60,4 @@ const parseOverrideInputValue: (_: string) => any =
 		return value
 	}
 
-export default overrideInputChangeHandler
+export default overrideInputHandler

@@ -2,14 +2,14 @@ import {
 	appState,
 	clearMixedDownContext,
 	executeEffect,
-	overrideInputChangeHandler,
+	overrideInputHandler,
 	updateOverrideLeafNode,
 } from '../../../../../../src/indexForTest'
 
-describe('override input change handler', () => {
+describe('override input handler', () => {
 	let subject: (_: Event) => void
 	beforeEach(() => {
-		subject = overrideInputChangeHandler.default
+		subject = overrideInputHandler.default
 
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeEffect, 'default')

@@ -108,7 +108,7 @@ describe('create override parent', () => {
 		expect(overrideParent.open).toBe(true)
 	})
 
-	it('attaches a click handler to the summary', () => {
+	it('attaches a handler to the summary', () => {
 		expect(overrideParentSummary.onclick).toBe(toggleOverrideParentOpen.default)
 	})
 

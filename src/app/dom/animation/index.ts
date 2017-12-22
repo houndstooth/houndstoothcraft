@@ -1,7 +1,7 @@
-import * as attachControlHandlers from './attachControlHandlers'
+import * as attachHandlers from './attachHandlers'
 import * as saveBlobThroughAnchor from './saveBlobThroughAnchor'
 
 export {
-	attachControlHandlers,
+	attachHandlers,
 	saveBlobThroughAnchor,
 }

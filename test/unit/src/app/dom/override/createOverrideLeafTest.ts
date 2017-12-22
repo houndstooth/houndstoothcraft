@@ -8,7 +8,7 @@ import {
 	CreateOverrideParams,
 	getOverrideLeafNode,
 	globalWrapper,
-	overrideInputChangeHandler,
+	overrideInputHandler,
 	OverrideOptions,
 	SettingPath,
 	SettingStep,
@@ -87,7 +87,7 @@ describe('create override leaf', () => {
 	})
 
 	it('attaches the override handler to the input', () => {
-		expect(overrideLeafInput.onchange).toBe(overrideInputChangeHandler.default)
+		expect(overrideLeafInput.onchange).toBe(overrideInputHandler.default)
 	})
 
 	it('gives the input an id which describes its setting path, including the pattern', () => {

@@ -4,7 +4,7 @@ export {
 	ControlsState,
 } from './controls'
 export {
-	attachControlHandlers,
+	attachHandlers,
 	createEffectToggles,
 	storeDomElements,
 

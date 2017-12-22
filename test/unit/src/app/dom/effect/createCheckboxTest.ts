@@ -1,6 +1,6 @@
 import {
 	createCheckbox,
-	effectToggleClickHandler,
+	effectToggleHandler,
 	globalWrapper,
 	NamedEffect,
 } from '../../../../../../src/indexForTest'
@@ -34,8 +34,8 @@ describe('create checkbox', () => {
 		expect(attributeObject.name).toBe('mock-tooth')
 	})
 
-	it('assigns a click handler to the checkbox', () => {
-		expect(returnedCheckbox.onclick).toBe(effectToggleClickHandler.default)
+	it('assigns a handler to the checkbox', () => {
+		expect(returnedCheckbox.onclick).toBe(effectToggleHandler.default)
 	})
 
 	it('sets the type-attribute to checkbox', () => {

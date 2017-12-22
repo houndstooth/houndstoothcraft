@@ -3,16 +3,16 @@ import {
 	clearMixedDownContext,
 	enableOrDisableAnimationControls,
 	executeEffect,
-	overrideClearClickHandler,
+	overrideClearHandler,
 	to,
 } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-describe('override clear click handler', () => {
+describe('override clear handler', () => {
 	let subject: (_: Event) => void
 	const stopPropagationSpy: Spy = jasmine.createSpy('stopPropagation')
 	beforeEach(() => {
-		subject = overrideClearClickHandler.default
+		subject = overrideClearHandler.default
 
 		// tslint:disable-next-line:no-any
 		const event: any = {

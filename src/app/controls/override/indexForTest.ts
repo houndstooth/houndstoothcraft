@@ -3,8 +3,8 @@ import * as createOverrideNodes from './createOverrideNodes'
 import * as getOverrideLeafNode from './getOverrideLeafNode'
 import * as getOverrideParentNode from './getOverrideParentNode'
 import * as isParentOfAnyOverridingChildren from './isParentOfAnyOverridingChildren'
-import * as overrideClearClickHandler from './overrideClearClickHandler'
-import * as overrideInputChangeHandler from './overrideInputChangeHandler'
+import * as overrideClearHandler from './overrideClearHandler'
+import * as overrideInputHandler from './overrideInputHandler'
 import * as toggleOverrideParentOpen from './toggleOverrideParentOpen'
 import * as updateOverrideLeafNode from './updateOverrideLeafNode'
 import * as updateOverrideNodes from './updateOverrideNodes'
@@ -15,8 +15,8 @@ export {
 	getOverrideLeafNode,
 	getOverrideParentNode,
 	isParentOfAnyOverridingChildren,
-	overrideClearClickHandler,
-	overrideInputChangeHandler,
+	overrideClearHandler,
+	overrideInputHandler,
 	toggleOverrideParentOpen,
 	updateOverrideLeafNode,
 	updateOverrideNodes,

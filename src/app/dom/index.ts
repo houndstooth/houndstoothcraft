@@ -6,7 +6,7 @@ export {
 	storeDomElements,
 }
 export {
-	attachControlHandlers,
+	attachHandlers,
 	saveBlobThroughAnchor,
 } from './animation'
 export {

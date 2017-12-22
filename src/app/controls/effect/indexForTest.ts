@@ -1,9 +1,9 @@
-import * as effectToggleClickHandler from './effectToggleClickHandler'
+import * as effectToggleHandler from './effectToggleHandler'
 import * as enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
 import * as updateDescriptions from './updateDescriptions'
 
 export {
-	effectToggleClickHandler,
+	effectToggleHandler,
 	enableOrDisableOtherEffectToggles,
 	updateDescriptions,
 }

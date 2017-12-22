@@ -4,7 +4,7 @@ import { clearAnimationIntervalAndRemoveFromState, executeEffect } from '../../e
 import { clearMixedDownContext } from '../../render'
 import updateCurrentFrame from './updateCurrentFrame'
 
-const rewindClickHandler: () => void =
+const rewindHandler: () => void =
 	(): void => {
 		clearAnimationIntervalAndRemoveFromState.default()
 
@@ -18,4 +18,4 @@ const rewindClickHandler: () => void =
 		executeEffect.default()
 	}
 
-export default rewindClickHandler
+export default rewindHandler

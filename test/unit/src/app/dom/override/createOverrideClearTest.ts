@@ -1,4 +1,4 @@
-import { createOverrideClear, overrideClearClickHandler } from '../../../../../../src/indexForTest'
+import { createOverrideClear, overrideClearHandler } from '../../../../../../src/indexForTest'
 
 describe('create override clear', () => {
 	it('makes a button which reads "clear" and which clears the corresponding override upon click', () => {
@@ -6,7 +6,7 @@ describe('create override clear', () => {
 
 		const actualClear: HTMLButtonElement = subject()
 
-		expect(actualClear.onclick).toBe(overrideClearClickHandler.default)
+		expect(actualClear.onclick).toBe(overrideClearHandler.default)
 		expect(actualClear.innerHTML).toBe('clear')
 	})
 })

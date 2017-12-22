@@ -1,22 +1,22 @@
 export {
-	frameInputChangeHandler,
+	frameInputHandler,
 	getCurrentFrame,
-	pauseClickHandler,
-	playClickHandler,
-	rewindClickHandler,
-	snapshotClickHandler,
+	pauseHandler,
+	playHandler,
+	rewindHandler,
+	snapshotHandler,
 	updateCurrentFrame,
 } from './animation'
 export {
-	effectToggleClickHandler,
+	effectToggleHandler,
 } from './effect'
 export {
 	createOverrideNodes,
 	getOverrideLeafNode,
 	getOverrideParentNode,
 	isParentOfAnyOverridingChildren,
-	overrideClearClickHandler,
-	overrideInputChangeHandler,
+	overrideClearHandler,
+	overrideInputHandler,
 	toggleOverrideParentOpen,
 	updateOverrideNodes,
 

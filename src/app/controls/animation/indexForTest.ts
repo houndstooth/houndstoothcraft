@@ -1,19 +1,19 @@
 import * as enableOrDisableAnimationControls from './enableOrDisableAnimationControls'
-import * as frameInputChangeHandler from './frameInputChangeHandler'
+import * as frameInputHandler from './frameInputHandler'
 import * as getCurrentFrame from './getCurrentFrame'
-import * as pauseClickHandler from './pauseClickHandler'
-import * as playClickHandler from './playClickHandler'
-import * as rewindClickHandler from './rewindClickHandler'
-import * as snapshotClickHandler from './snapshotClickHandler'
+import * as pauseHandler from './pauseHandler'
+import * as playHandler from './playHandler'
+import * as rewindHandler from './rewindHandler'
+import * as snapshotHandler from './snapshotHandler'
 import * as updateCurrentFrame from './updateCurrentFrame'
 
 export {
 	enableOrDisableAnimationControls,
-	frameInputChangeHandler,
+	frameInputHandler,
 	getCurrentFrame,
-	pauseClickHandler,
-	playClickHandler,
-	rewindClickHandler,
-	snapshotClickHandler,
+	pauseHandler,
+	playHandler,
+	rewindHandler,
+	snapshotHandler,
 	updateCurrentFrame,
 }

@@ -1,5 +1,5 @@
-import * as effectToggleClickHandler from './effectToggleClickHandler'
+import * as effectToggleHandler from './effectToggleHandler'
 
 export {
-	effectToggleClickHandler,
+	effectToggleHandler,
 }

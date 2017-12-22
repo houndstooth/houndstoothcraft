@@ -1,9 +1,9 @@
-import { mixDownContexts, saveCanvas, snapshotClickHandler } from '../../../../../../src/indexForTest'
+import { mixDownContexts, saveCanvas, snapshotHandler } from '../../../../../../src/indexForTest'
 
-describe('snapshot click handler', () => {
+describe('snapshot handler', () => {
 	let subject: () => void
 	beforeEach(() => {
-		subject = snapshotClickHandler.default
+		subject = snapshotHandler.default
 		spyOn(mixDownContexts, 'default')
 		spyOn(saveCanvas, 'default')
 

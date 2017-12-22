@@ -4,7 +4,7 @@ import {
 	clearAnimationIntervalAndRemoveFromState,
 	clearContexts,
 	clearMixedDownContext,
-	effectToggleClickHandler,
+	effectToggleHandler,
 	enableOrDisableAnimationControls,
 	enableOrDisableOtherEffectToggles,
 	executeEffect,
@@ -14,7 +14,7 @@ import {
 } from '../../../../../../src/indexForTest'
 import { buildMockElement, SimulateClick } from '../../../../helpers'
 
-describe('effect toggle click handler', () => {
+describe('effect toggle handler', () => {
 	let subject: (_: Event) => void
 	let checkbox: HTMLInputElement
 	let effect: NamedEffect
@@ -33,7 +33,7 @@ describe('effect toggle click handler', () => {
 		checkbox = buildMockElement() as HTMLInputElement
 		checkbox.name = 'mock-tooth'
 		effect = { name: 'mock tooth', description: '' }
-		subject = effectToggleClickHandler.default
+		subject = effectToggleHandler.default
 
 		expect(executeEffect.default).not.toHaveBeenCalled()
 		expect(enableOrDisableAnimationControls.default).not.toHaveBeenCalled()
@@ -98,8 +98,8 @@ describe('effect toggle click handler', () => {
 	})
 })
 
-const simulateClick: SimulateClick = (checkbox: HTMLInputElement, clickHandler: (_: Event) => void): void => {
+const simulateClick: SimulateClick = (checkbox: HTMLInputElement, handler: (_: Event) => void): void => {
 	checkbox.checked = !checkbox.checked
 	// tslint:disable-next-line:no-any
-	clickHandler({ target: checkbox } as any)
+	handler({ target: checkbox } as any)
 }

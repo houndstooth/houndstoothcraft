@@ -6,7 +6,7 @@ import { enableOrDisableAnimationControls } from '../animation'
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
 import updateDescriptions from './updateDescriptions'
 
-const effectToggleClickHandler: (_: Event) => void =
+const effectToggleHandler: (_: Event) => void =
 	(event: Event): void => {
 		appState.dom.descriptionsContainer.innerHTML = ''
 
@@ -43,4 +43,4 @@ const addOrRemoveEffect: (_: Event) => void =
 		}
 	}
 
-export default effectToggleClickHandler
+export default effectToggleHandler

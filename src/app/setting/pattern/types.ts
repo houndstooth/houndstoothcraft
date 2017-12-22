@@ -9,7 +9,6 @@ interface CheckSettingForConflictParams extends FullSettingPath, SettingConflict
 interface ComposePatternsParams {
 	patternToBeMergedOnto: Pattern,
 	patternToMerge?: any,
-	settingPath?: SettingPath,
 }
 
 interface DeeperPathParams {
@@ -77,6 +76,7 @@ export {
 	DeepSettingsMapParams,
 	FullSettingPath,
 	MapOverPatternParams,
+	PatternMapFunctionParams,
 	PatternsHaveConflictsParams,
 	PrepareFunctionObjectForSettingOrMaybeRecurseParams,
 	PrepareFunctionObjectsParams,

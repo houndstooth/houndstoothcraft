@@ -1,34 +1,25 @@
 // tslint:disable:no-any no-unsafe-any
 
-import { to } from '../../../utilities'
-import deeperPath from './deeperPath'
+import { from } from '../../../utilities'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
-import shouldRecurse from './shouldRecurse'
-import { ComposePatternsParams } from './types'
+import mapOverPattern from './mapOverPattern'
+import { ComposePatternsParams, PatternMapFunctionParams } from './types'
 
 const composePatterns: (_: ComposePatternsParams) => void =
-	(composePatternsParams: ComposePatternsParams): void => {
-		const {
-			patternToBeMergedOnto,
-			patternToMerge = {},
-			settingPath = to.SettingPath([]),
-		}: ComposePatternsParams = composePatternsParams
-
-		Object.entries(patternToMerge).forEach(([ settingNameString, overridingSetting ]: [ string, any ]) => {
-			if (shouldRecurse(overridingSetting)) {
-				composePatterns({
-					patternToBeMergedOnto,
-					patternToMerge: overridingSetting,
-					settingPath: deeperPath({ settingPath, settingName: to.SettingStep(settingNameString) }),
-				})
-			}
-			else {
-				getPatternSettingOrCreatePath({
-					pattern: patternToBeMergedOnto,
-					settingPath,
-				})[ settingNameString ] = overridingSetting
-			}
+	({ patternToBeMergedOnto, patternToMerge = {} }: ComposePatternsParams): void => {
+		mapOverPattern({
+			options: { patternToBeMergedOnto },
+			pattern: patternToMerge,
+			perLeaf,
 		})
+	}
+
+const perLeaf: (_: PatternMapFunctionParams) => void =
+	({ options, settingPath, settingName, settingValue }: PatternMapFunctionParams): void => {
+		getPatternSettingOrCreatePath({
+			pattern: options.patternToBeMergedOnto,
+			settingPath,
+		})[ from.SettingStep(settingName) ] = settingValue
 	}
 
 export default composePatterns

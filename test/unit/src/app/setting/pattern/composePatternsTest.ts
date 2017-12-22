@@ -1,4 +1,10 @@
-import { AssignmentMode, composePatterns, ComposePatternsParams, Pattern } from '../../../../../../src/indexForTest'
+import {
+	AssignmentMode,
+	composePatterns,
+	ComposePatternsParams,
+	mapOverPattern,
+	Pattern,
+} from '../../../../../../src/indexForTest'
 
 describe('compose patterns', () => {
 	let subject: (_: ComposePatternsParams) => void
@@ -47,6 +53,13 @@ describe('compose patterns', () => {
 
 	it('defaults the pattern to merge to an empty object, so as to not fail', () => {
 		const patternToBeMergedOnto: Pattern = {}
+		spyOn(mapOverPattern, 'default')
 		subject({ patternToBeMergedOnto })
+
+		expect(mapOverPattern.default).toHaveBeenCalledWith({
+			options: { patternToBeMergedOnto: {} },
+			pattern: {},
+			perLeaf: jasmine.any(Function),
+		})
 	})
 })

@@ -2,9 +2,9 @@ import {
 	Address,
 	executeTile,
 	globalWrapper,
-	maybeTile,
 	ReferencedAddress,
 	thisPatternHasNotBeenCanceled,
+	tile,
 	to,
 	updateProgress,
 } from '../../../../../../src/indexForTest'
@@ -23,7 +23,7 @@ describe('execute tile', () => {
 		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: () => void) => {
 			fn()
 		})
-		spyOn(maybeTile, 'default')
+		spyOn(tile, 'default')
 		spyOn(updateProgress, 'default')
 		thisPatternHasNotBeenCanceledSpy = spyOn(thisPatternHasNotBeenCanceled, 'default')
 	})
@@ -47,8 +47,8 @@ describe('execute tile', () => {
 			subject({ address, patternId })
 		})
 
-		it('calls maybe tile with the same arguments', () => {
-			expect(maybeTile.default).toHaveBeenCalledWith({ address, patternId })
+		it('renders a tile', () => {
+			expect(tile.default).toHaveBeenCalledWith({ address })
 		})
 
 		it('updates progress', () => {
@@ -64,7 +64,7 @@ describe('execute tile', () => {
 		})
 
 		it('does not call maybe tile', () => {
-			expect(maybeTile.default).not.toHaveBeenCalled()
+			expect(tile.default).not.toHaveBeenCalled()
 		})
 
 		it('does not update progress', () => {

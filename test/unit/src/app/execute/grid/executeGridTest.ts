@@ -1,4 +1,4 @@
-import { appState, executeTile, executeGrid, grid } from '../../../../../../src/indexForTest'
+import { appState, executeGrid, executeTile, grid } from '../../../../../../src/indexForTest'
 
 describe('execute grid', () => {
 	let subject: (_: { patternId: number }) => Promise<void>

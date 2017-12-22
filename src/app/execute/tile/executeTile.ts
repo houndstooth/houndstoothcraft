@@ -1,14 +1,14 @@
-import { maybeTile, ReferencedAddress } from '../../../pattern'
+import { ReferencedAddress, tile } from '../../../pattern'
 import { globalWrapper } from '../../../utilities'
-import thisPatternHasNotBeenCanceled from '../pattern/thisPatternHasNotBeenCanceled'
+import { thisPatternHasNotBeenCanceled } from '../pattern'
 import updateProgress from './updateProgress'
 
 const executeTile: (_: ReferencedAddress) => void =
 	({ address, patternId }: ReferencedAddress): void => {
 		globalWrapper.window.setTimeout(
 			() => {
-				if (thisPatternHasNotBeenCanceled(patternId)) {
-					maybeTile.default({ address, patternId })
+				if (thisPatternHasNotBeenCanceled.default(patternId)) {
+					tile.default({ address })
 					updateProgress()
 				}
 			},

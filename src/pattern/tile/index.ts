@@ -1,8 +1,8 @@
-import * as maybeTile from './maybeTile'
+import * as tile from './tile'
 import * as tileSettings from './tileSettings'
 
 export {
-	maybeTile,
+	tile,
 	tileSettings,
 }
 export {

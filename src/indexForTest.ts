@@ -141,7 +141,6 @@ export {
 	initializePatternState,
 	isTileUniform,
 	layerSettings,
-	maybeTile,
 	parseColor,
 	patternState,
 	perStripe,
@@ -173,6 +172,7 @@ export {
 	PERIMETER_SCALAR,
 
 	Address,
+	AddressAsParam,
 	AssignmentMode,
 	BaseStripeDiagonal,
 	ColorSet,

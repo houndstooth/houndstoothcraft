@@ -1,6 +1,6 @@
 // tslint:disable:no-unsafe-any
 
-import { appState, grid, maybeTile, mixDownContexts } from '../../../src/indexForTest'
+import { appState, grid, mixDownContexts, tile } from '../../../src/indexForTest'
 
 const syncExecuteGridAndMixDownContexts: (_: { patternId: number }) => void =
 	({ patternId }: { patternId: number }): void => {
@@ -9,7 +9,7 @@ const syncExecuteGridAndMixDownContexts: (_: { patternId: number }) => void =
 				context.canvas.style.display = 'none'
 			}
 		})
-		grid.default({ gridTile: maybeTile.default, patternId })
+		grid.default({ gridTile: tile.default, patternId })
 		mixDownContexts.default()
 	}
 

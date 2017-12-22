@@ -3,7 +3,7 @@ import { from, to } from '../../../utilities'
 import { appState } from '../../appState'
 import { updateCurrentFrame } from '../../controls'
 import { clearContexts, mixDownContexts, saveCanvas } from '../../render'
-import executePattern from '../pattern/executePattern'
+import { executePattern } from '../pattern'
 import { ExecuteParams } from '../types'
 import clearAnimationIntervalAndRemoveFromState from './clearAnimationIntervalAndRemoveFromState'
 
@@ -21,7 +21,7 @@ const animation: (_: ExecuteParams) => Promise<void> =
 			clearContexts.default()
 		}
 
-		await executePattern(executeParams)
+		await executePattern.default(executeParams)
 
 		mixDownContexts.default()
 		if (appState.controls.exportFrames) {

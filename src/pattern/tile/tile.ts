@@ -1,16 +1,30 @@
+import { incrementTilesCompleted } from '../../app'
 import { getShapeColorIndices, isTileUniform, ShapeColorIndex } from '../color'
 import { PERIMETER_SCALAR } from '../constants'
+import { AddressAsParam } from '../grid'
 import { patternState } from '../patternState'
 import { GetStripeArgsParams, getStripePositionsForTile, squareOutline, stripeOutline, StripePosition } from '../stripe'
 import { shape, ShapeArgs, ShapeParams } from '../texture'
 import { TileSettings } from './tileSettings'
-import { DefinedTileParams, Tile, TileParams } from './types'
+import { Tile, TileParams } from './types'
 
-const tile: (_: DefinedTileParams) => void =
-	({ address, tileOrigin, tileSize }: DefinedTileParams): void => {
+const tile: (_: AddressAsParam) => void =
+	({ address }: AddressAsParam): void => {
+		const {
+			tileOrigin = undefined,
+			tileSize = undefined,
+		} = patternState.tileSettings.getTileOriginAndSize({ address }) || {}
+
+		if (!(tileOrigin && tileSize)) {
+			incrementTilesCompleted.default()
+
+			return
+		}
+
 		const shapeColorIndices: ShapeColorIndex[] = getShapeColorIndices.default({ address })
 		const tileFunction: Tile = shouldUseSquare({ shapeColorIndices }) ? squareTile : stripedTile
 		tileFunction({ address, tileOrigin, tileSize, shapeColorIndices })
+		incrementTilesCompleted.default()
 	}
 
 const shouldUseSquare: (_: { shapeColorIndices: ShapeColorIndex[] }) => boolean =

@@ -10,7 +10,7 @@ import {
 	SettingFunctionObject,
 } from '../../setting'
 import { executeAnimation } from '../animation'
-import executePattern from '../pattern/executePattern'
+import { executePattern } from '../pattern'
 
 const executeEffect: () => void =
 	(): void => {
@@ -50,7 +50,7 @@ const execute: () => void =
 			executeAnimation.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 		else {
-			executePattern({ animationFunctionObjects, layerFunctionObjects }).then().catch()
+			executePattern.default({ animationFunctionObjects, layerFunctionObjects }).then().catch()
 		}
 	}
 

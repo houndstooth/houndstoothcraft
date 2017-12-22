@@ -40,8 +40,8 @@ export {
 	gridSettings,
 
 	Address,
-	Grid,
 	AddressAsParam,
+	Grid,
 	Referenced,
 	ReferencedAddress,
 } from './grid/indexForTest'
@@ -89,7 +89,6 @@ export {
 } from './texture/indexForTest'
 export {
 	getStandardTileOriginAndSize,
-	maybeTile,
 	tile,
 	tileSettings,
 

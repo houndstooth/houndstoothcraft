@@ -52,7 +52,7 @@ export {
 	ExecuteTextureParams,
 } from './texture'
 export {
-	maybeTile,
+	tile,
 
 	TileOriginAndSize,
 	Unit,

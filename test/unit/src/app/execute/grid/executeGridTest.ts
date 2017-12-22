@@ -1,4 +1,4 @@
-import { appState, asyncMaybeTile, executeGrid, grid } from '../../../../../../src/indexForTest'
+import { appState, executeTile, executeGrid, grid } from '../../../../../../src/indexForTest'
 
 describe('execute grid', () => {
 	let subject: (_: { patternId: number }) => Promise<void>
@@ -11,7 +11,7 @@ describe('execute grid', () => {
 	it('calls grid with the id of the current pattern', () => {
 		subject({ patternId }).then().catch()
 
-		expect(grid.default).toHaveBeenCalledWith({ gridTile: asyncMaybeTile.default, patternId })
+		expect(grid.default).toHaveBeenCalledWith({ gridTile: executeTile.default, patternId })
 	})
 
 	// tslint:disable-next-line:max-line-length

@@ -56,14 +56,13 @@ export {
 } from './dom/indexForTest'
 export {
 	animation,
-	asyncMaybeTile,
+	executeTile,
 	callFunctionsPerSetting,
 	cancelCurrentPattern,
 	clearAnimationIntervalAndRemoveFromState,
 	completeLayers,
 	executeAnimation,
 	executeGrid,
-	executeGridAndMaybeLogging,
 	executeLayer,
 	executePattern,
 	executeEffect,

@@ -1,20 +1,19 @@
-import * as cancelCurrentPattern from './cancelCurrentPattern'
-import * as executeEffect from './executeEffect'
-
 export {
 	clearAnimationIntervalAndRemoveFromState,
 } from './animation'
 export {
-	incrementTilesCompleted,
-	setTileCount,
-} from './grid'
+	executeEffect,
+} from './effect'
 export {
 	getCurrentLayer,
 } from './layer'
 export {
 	cancelCurrentPattern,
-	executeEffect,
-}
+} from './pattern'
+export {
+	incrementTilesCompleted,
+	setTileCount,
+} from './tile'
 export {
 	ExecuteState,
 } from './types'

@@ -3,7 +3,7 @@ import {
 	appState,
 	callFunctionsPerSetting,
 	completeLayers,
-	executeGridAndMaybeLogging,
+	executeGrid,
 	executeLayer,
 	ExecuteParams,
 	executePattern,
@@ -113,7 +113,7 @@ describe('execute pattern', () => {
 	})
 
 	it('completes the layers', async (done: DoneFn) => {
-		spyOn(executeGridAndMaybeLogging, 'default')
+		spyOn(executeGrid, 'default')
 		spyOn(completeLayers, 'default')
 
 		await subject({ animationFunctionObjects, layerFunctionObjects })

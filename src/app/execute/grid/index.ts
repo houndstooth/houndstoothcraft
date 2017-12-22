@@ -1,9 +1,9 @@
-import * as executeGridAndMaybeLogging from './executeGridAndMaybeLogging'
-import * as incrementTilesCompleted from './incrementTilesCompleted'
-import * as setTileCount from './setTileCount'
+import * as executeGrid from './executeGrid'
+import * as incrementTilesCompleted from '../tile/incrementTilesCompleted'
+import * as setTileCount from '../tile/setTileCount'
 
 export {
-	executeGridAndMaybeLogging,
+	executeGrid,
 	incrementTilesCompleted,
 	setTileCount,
 }

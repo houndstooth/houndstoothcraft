@@ -1,16 +1,16 @@
-import { to } from '../../utilities'
-import { appState } from '../appState'
-import { updateOverrideNodes } from '../controls'
-import { createContexts, updateOverrides } from '../dom'
+import { to } from '../../../utilities'
+import { appState } from '../../appState'
+import { updateOverrideNodes } from '../../controls'
+import { createContexts, updateOverrides } from '../../dom'
 import {
 	combineEffects,
 	composeMainHoundstooth,
 	initializeCurrentPatternFromBasePattern,
 	prepareFunctionObjectsPerSetting,
 	SettingFunctionObject,
-} from '../setting'
-import { executeAnimation } from './animation'
-import executePattern from './executePattern'
+} from '../../setting'
+import { executeAnimation } from '../animation'
+import executePattern from '../pattern/executePattern'
 
 const executeEffect: () => void =
 	(): void => {

@@ -1,6 +1,6 @@
 import {
 	Address,
-	asyncMaybeTile,
+	executeTile,
 	globalWrapper,
 	maybeTile,
 	ReferencedAddress,
@@ -10,14 +10,14 @@ import {
 } from '../../../../../../src/indexForTest'
 import Spy = jasmine.Spy
 
-describe('async maybe tile', () => {
+describe('execute tile', () => {
 	let subject: (_: ReferencedAddress) => void
 	let setTimeoutSpy: Spy
 	let thisPatternHasNotBeenCanceledSpy: Spy
 	let address: Address
 	const patternId: number = 99
 	beforeEach(() => {
-		subject = asyncMaybeTile.default
+		subject = executeTile.default
 		address = to.Address([ 4, 5 ])
 		// tslint:disable-next-line:no-unsafe-any
 		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: () => void) => {

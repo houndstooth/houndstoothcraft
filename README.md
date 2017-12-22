@@ -108,7 +108,6 @@ Potentially:
 There are a few secret features that are not enabled for users of the website yet:
 
 - When `state.controls.exportFrames` is set to `true`, the app will save a .png for each frame, which can then be assembled into a video using a tool such as ImageJ.
-- When `state.execute.performanceLogging` is set to `true`, you can see in the console how long each grid takes.
 - When `state.controls.endFrame` is set to anything besides 0, animation can reach an end and stop. 
 
 ### layer

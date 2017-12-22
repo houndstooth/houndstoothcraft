@@ -10,7 +10,6 @@ interface ExecuteState {
 	animationInterval?: number,
 	currentLayer: Layer,
 	patternId: number,
-	performanceLogging: boolean,
 	resolveAnimation: () => void,
 	resolveGrid: () => void,
 	tileCount: number,

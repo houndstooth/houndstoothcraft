@@ -6,7 +6,6 @@ import {
 	BLACK,
 	createEffectToggles,
 	enableOrDisableOtherEffectToggles,
-	executeGridAndMaybeLogging,
 	patternState,
 	to,
 	TRANSPARENT,
@@ -17,7 +16,6 @@ import { createMockElement } from '../../../unit'
 describe('controls', () => {
 	describe('effect toggles', () => {
 		beforeEach(() => {
-			spyOn(executeGridAndMaybeLogging, 'default')
 			spyOn(updateCurrentFrame, 'default')
 			spyOn(enableOrDisableOtherEffectToggles, 'default')
 

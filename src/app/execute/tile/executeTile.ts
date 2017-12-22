@@ -1,9 +1,9 @@
 import { maybeTile, ReferencedAddress } from '../../../pattern'
 import { globalWrapper } from '../../../utilities'
-import thisPatternHasNotBeenCanceled from '../thisPatternHasNotBeenCanceled'
+import thisPatternHasNotBeenCanceled from '../pattern/thisPatternHasNotBeenCanceled'
 import updateProgress from './updateProgress'
 
-const asyncMaybeTile: (_: ReferencedAddress) => void =
+const executeTile: (_: ReferencedAddress) => void =
 	({ address, patternId }: ReferencedAddress): void => {
 		globalWrapper.window.setTimeout(
 			() => {
@@ -16,4 +16,4 @@ const asyncMaybeTile: (_: ReferencedAddress) => void =
 		)
 	}
 
-export default asyncMaybeTile
+export default executeTile

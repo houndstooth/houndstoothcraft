@@ -1,10 +1,10 @@
 import { grid } from '../../../pattern'
 import { appState } from '../../appState'
-import asyncMaybeTile from './asyncMaybeTile'
+import executeTile from '../tile/executeTile'
 
 const executeGrid: (_: { patternId: number }) => Promise<void> =
 	async ({ patternId }: { patternId: number }): Promise<void> => {
-		grid.default({ gridTile: asyncMaybeTile, patternId })
+		grid.default({ gridTile: executeTile, patternId })
 
 		await new Promise<(_: () => void) => void>(storeResolveGrid)
 	}

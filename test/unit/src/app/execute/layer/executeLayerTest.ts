@@ -1,7 +1,7 @@
 import {
 	appState,
 	callFunctionsPerSetting,
-	executeGridAndMaybeLogging,
+	executeGrid,
 	executeLayer,
 	ExecuteLayerParams,
 	initializePatternState,
@@ -17,13 +17,13 @@ describe('execute layer', () => {
 	const patternId: number = 99
 
 	let callFunctionsPerSettingSpy: Spy
-	let executeGridAndMaybeLoggingSpy: Spy
+	let executeGridSpy: Spy
 
 	beforeEach(() => {
 		subject = executeLayer.default
 		spyOn(initializePatternState, 'default')
 		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'default')
-		executeGridAndMaybeLoggingSpy = spyOn(executeGridAndMaybeLogging, 'default')
+		executeGridSpy = spyOn(executeGrid, 'default')
 	})
 
 	it('sets the current layer on the appState', async (done: DoneFn) => {
@@ -42,7 +42,7 @@ describe('execute layer', () => {
 
 		await subject({ layer, layerFunctionObjects, patternId })
 
-		expect(executeGridAndMaybeLoggingSpy).toHaveBeenCalledWith({ patternId })
+		expect(executeGridSpy).toHaveBeenCalledWith({ patternId })
 
 		done()
 	})

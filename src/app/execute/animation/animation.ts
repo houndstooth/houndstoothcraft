@@ -3,7 +3,7 @@ import { from, to } from '../../../utilities'
 import { appState } from '../../appState'
 import { updateCurrentFrame } from '../../controls'
 import { clearContexts, mixDownContexts, saveCanvas } from '../../render'
-import executePattern from '../executePattern'
+import executePattern from '../pattern/executePattern'
 import { ExecuteParams } from '../types'
 import clearAnimationIntervalAndRemoveFromState from './clearAnimationIntervalAndRemoveFromState'
 

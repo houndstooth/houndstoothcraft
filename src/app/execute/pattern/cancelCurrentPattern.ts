@@ -1,4 +1,4 @@
-import { appState } from '../appState'
+import { appState } from '../../appState'
 
 const cancelCurrentPattern: () => void =
 	(): void => {

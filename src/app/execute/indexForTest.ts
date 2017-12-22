@@ -1,17 +1,9 @@
 // tslint:disable:no-reaching-imports
 
 import * as callFunctionsPerSetting from './callFunctionsPerSetting'
-import * as cancelCurrentPattern from './cancelCurrentPattern'
-import * as executeEffect from './executeEffect'
-import * as executePattern from './executePattern'
-import * as thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
 
 export {
 	callFunctionsPerSetting,
-	cancelCurrentPattern,
-	executePattern,
-	executeEffect,
-	thisPatternHasNotBeenCanceled,
 }
 export {
 	animation,
@@ -21,12 +13,10 @@ export {
 	AnimationParams,
 } from './animation/indexForTest'
 export {
-	asyncMaybeTile,
+	executeEffect,
+} from './effect/indexForTest'
+export {
 	executeGrid,
-	executeGridAndMaybeLogging,
-	incrementTilesCompleted,
-	setTileCount,
-	updateProgress,
 } from './grid/indexForTest'
 export {
 	completeLayers,
@@ -35,6 +25,17 @@ export {
 
 	ExecuteLayerParams,
 } from './layer/indexForTest'
+export {
+	cancelCurrentPattern,
+	executePattern,
+	thisPatternHasNotBeenCanceled,
+} from './pattern/indexForTest'
+export {
+	executeTile,
+	incrementTilesCompleted,
+	setTileCount,
+	updateProgress,
+} from './tile/indexForTest'
 export {
 	ExecuteParams,
 } from './types'

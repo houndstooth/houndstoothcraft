@@ -1,10 +1,10 @@
-import { Layer } from '../../types'
-import { from, to } from '../../utilities'
-import { appState } from '../appState'
-import callFunctionsPerSetting from './callFunctionsPerSetting'
-import { completeLayers, executeLayer } from './layer'
+import { Layer } from '../../../types'
+import { from, to } from '../../../utilities'
+import { appState } from '../../appState'
+import callFunctionsPerSetting from '../callFunctionsPerSetting'
+import { completeLayers, executeLayer } from '../layer'
 import thisPatternHasNotBeenCanceled from './thisPatternHasNotBeenCanceled'
-import { ExecuteParams } from './types'
+import { ExecuteParams } from '../types'
 
 const executePattern: (_: ExecuteParams) => Promise<void> =
 	async ({ animationFunctionObjects, layerFunctionObjects }: ExecuteParams): Promise<void> => {

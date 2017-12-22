@@ -14,7 +14,9 @@
     "push": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/push.sh'",
     "restart": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/restart.sh'",
     "test": "sh ./bin/shared/cross_env_pre_source.sh './bin/test.sh'",
-    "ci": "sh ./bin/shared/cross_env_pre_source.sh './bin/ci.sh'"
+    "ci": "sh ./bin/shared/cross_env_pre_source.sh './bin/ci.sh'",
+    "wip-push": "sh ./bin/shared/cross_env_pre_source.sh './bin/wip/push.sh'",
+    "wip-pull": "sh ./bin/shared/cross_env_pre_source.sh './bin/wip/pull.sh'"
   },
   "devDependencies": {
     "@types/jasmine": "^2.8.2",

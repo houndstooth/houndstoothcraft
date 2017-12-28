@@ -5,7 +5,7 @@ import {
 	frameInputHandler,
 	to,
 } from '../../../../../../src/indexForTest'
-import { createMockEvent } from '../../../../helpers'
+import { createMockEvent, createMockElement } from '../../../../helpers'
 
 describe('frame input handler', () => {
 	let subject: (event: Event) => void
@@ -17,7 +17,7 @@ describe('frame input handler', () => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeEffect, 'default')
 
-		const event: Event = createMockEvent({ target: { value: 99 } })
+		const event: Event = createMockEvent({ target: createMockElement({ value: '99' }) as HTMLInputElement })
 		subject(event)
 
 		expect(clearMixedDownContext.default).toHaveBeenCalled()

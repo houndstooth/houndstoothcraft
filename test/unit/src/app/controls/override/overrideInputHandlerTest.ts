@@ -5,7 +5,7 @@ import {
 	overrideInputHandler,
 	updateOverrideLeafNode,
 } from '../../../../../../src/indexForTest'
-import { createMockEvent } from '../../../../helpers'
+import { createMockElement, createMockEvent } from '../../../../helpers'
 
 describe('override input handler', () => {
 	let subject: (_: Event) => void
@@ -17,10 +17,10 @@ describe('override input handler', () => {
 		spyOn(updateOverrideLeafNode, 'default')
 
 		const event: Event = createMockEvent({
-			target: {
-				parentNode: { id: 'basePattern-colorSettings-opacity' },
+			target: createMockElement({
+				parentNodeId: 'basePattern-colorSettings-opacity',
 				value: '0.3',
-			},
+			}) as HTMLInputElement,
 		})
 
 		subject(event)
@@ -45,13 +45,10 @@ describe('override input handler', () => {
 
 	it('handles functions', () => {
 		const functionEvent: Event = createMockEvent({
-			target: {
-				parentNode: {
-					id: 'basePattern-colorSettings-opacity',
-
-				},
+			target: createMockElement({
+				parentNodeId: 'basePattern-colorSettings-opacity',
 				value: 'function (t) { return Math.random() * t > 10; }',
-			},
+			}) as HTMLInputElement,
 		})
 
 		subject(functionEvent)
@@ -69,12 +66,10 @@ describe('override input handler', () => {
 
 	it('handles garbage', () => {
 		const functionEvent: Event = createMockEvent({
-			target: {
-				parentNode: {
-					id: 'basePattern-colorSettings-opacity',
-				},
+			target: createMockElement({
+				parentNodeId: 'basePattern-colorSettings-opacity',
 				value: 'function (t) { return Math.random() * t > ',
-			},
+			}) as HTMLInputElement,
 		})
 
 		subject(functionEvent)

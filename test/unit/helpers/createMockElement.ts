@@ -7,9 +7,12 @@ const createMockElement: (_?: CreateMockElementParams) => MockElement =
 			children = [],
 			classList = [],
 			clickSpy,
+			id,
 			parentNodeId,
 			parentNodeInsertBeforeSpy,
+			parentNodeOpen,
 			parentNodeRemoveChildSpy,
+			value,
 		}: CreateMockElementParams = createMockElementParams || {}
 
 		return {
@@ -18,14 +21,17 @@ const createMockElement: (_?: CreateMockElementParams) => MockElement =
 				add: (className: string): number => classList.push(className),
 			},
 			click: clickSpy,
+			id,
 			innerHTML: '',
 			parentNode: {
 				id: parentNodeId,
 				insertBefore: parentNodeInsertBeforeSpy,
+				open: parentNodeOpen,
 				removeChild: parentNodeRemoveChildSpy,
 			},
 			setAttribute: (attribute: string, value: string): string => attributeObject[ attribute ] = value,
 			style: {},
+			value,
 		}
 	}
 

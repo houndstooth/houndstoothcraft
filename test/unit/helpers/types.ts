@@ -27,9 +27,12 @@ interface CreateMockElementParams {
 	children?: HTMLElement[],
 	classList?: string[],
 	clickSpy?: Spy,
+	id?: string,
 	parentNodeId?: string,
+	parentNodeOpen?: boolean,
 	parentNodeInsertBeforeSpy?: Spy,
 	parentNodeRemoveChildSpy?: Spy,
+	value?: string,
 }
 
 interface MockElement {
@@ -39,6 +42,7 @@ interface MockElement {
 	disabled?: any,
 	download?: any,
 	href?: any,
+	id?: any,
 	innerHTML?: any,
 	nextSibling?: any,
 	onchange?: any,
@@ -62,6 +66,7 @@ interface MockElement {
 		zIndex?: any,
 	},
 	textContent?: any,
+	value?: any,
 }
 
 interface MockCanvas extends MockElement {

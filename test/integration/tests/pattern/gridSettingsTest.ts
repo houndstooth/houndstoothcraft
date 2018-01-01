@@ -1,6 +1,7 @@
 import {
 	appState,
 	BLACK,
+	CANVAS_SIZE,
 	executeEffect,
 	from,
 	patternState,
@@ -155,7 +156,7 @@ describe('.gridSettings', () => {
 						tileSize,
 					},
 					viewSettings: {
-						centerViewOnCenterOfTileAtHomeAddress: true,
+						scroll: [ to.Px(from.Px(CANVAS_SIZE) / 2), to.Px(from.Px(CANVAS_SIZE) / 2) ],
 					},
 				},
 			}
@@ -167,25 +168,25 @@ describe('.gridSettings', () => {
 					{
 						baseId: 0,
 						colors: [ TRANSPARENT, BLACK ],
-						tileOrigin: to.Coordinate([ 375, 375 ]),
+						tileOrigin: to.Coordinate([ 400, 400 ]),
 						tileSize,
 					},
 					{
 						baseId: 8,
 						colors: [ TRANSPARENT, TRANSPARENT ],
-						tileOrigin: to.Coordinate([ 325, 375 ]),
+						tileOrigin: to.Coordinate([ 350, 400 ]),
 						tileSize,
 					},
 					{
 						baseId: 24,
 						colors: [ BLACK, TRANSPARENT ],
-						tileOrigin: to.Coordinate([ 325, 325 ]),
+						tileOrigin: to.Coordinate([ 350, 350 ]),
 						tileSize,
 					},
 					{
 						baseId: 16,
 						colors: [ BLACK, BLACK ],
-						tileOrigin: to.Coordinate([ 375, 325 ]),
+						tileOrigin: to.Coordinate([ 400, 350 ]),
 						tileSize,
 					},
 				]

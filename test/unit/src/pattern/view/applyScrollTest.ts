@@ -1,47 +1,33 @@
-import { applyScroll, CANVAS_SIZE, from, Path, patternState, to, Unit } from '../../../../../src/indexForTest'
+import { applyScroll, Path, patternState, to } from '../../../../../src/indexForTest'
+import { pixelsAreClose } from '../../../helpers'
 
 describe('apply scroll', () => {
 	let subject: (_: Path) => Path
-	const zoom: number = 10
-	let tileSize: Unit
 	let path: Path
 	beforeEach(() => {
 		subject = applyScroll.default
-		tileSize = to.Unit(40)
 		path = to.Path([
 			[ 3, 5 ],
 			[ 4, 5 ],
 			[ 3, 4 ],
 		])
-
-		patternState.viewSettings.zoom = zoom
-		patternState.tileSettings.tileSize = tileSize
 	})
 
-	it('can center the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		patternState.viewSettings.centerViewOnCenterOfTileAtHomeAddress = true
-		const halfCanvasSize: number = from.Px(CANVAS_SIZE) / 2
-		const halfTileSize: number = from.Unit(tileSize) / 2
-		expect(subject(path)).toEqual(to.Path([
-			[
-				halfCanvasSize - halfTileSize + 3,
-				halfCanvasSize - halfTileSize + 5,
-			],
-			[
-				halfCanvasSize - halfTileSize + 4,
-				halfCanvasSize - halfTileSize + 5,
-			],
-			[
-				halfCanvasSize - halfTileSize + 3,
-				halfCanvasSize - halfTileSize + 4,
-			],
-		]))
+	it('scrolls pixels by the scroll amount', () => {
+		patternState.viewSettings.scroll = [ to.Px(2), to.Px(8) ]
+
+		const actualPath: Path = subject(path)
+		const expectedPath: Path = to.Path([
+			[ 5, 13 ],
+			[ 6, 13 ],
+			[ 5, 12 ],
+		])
+		expect(pixelsAreClose(expectedPath, actualPath)).toBe(true)
 	})
 
-	// tslint:disable-next-line:max-line-length
-	it('returns the path unchanged if not centering the view on the center of the tile at grid address [ 0, 0 ]', () => {
-		patternState.viewSettings.centerViewOnCenterOfTileAtHomeAddress = false
+	it('returns the path unchanged when scroll is the origin', () => {
+		patternState.viewSettings.scroll = [ to.Px(0), to.Px(0) ]
 
-		expect(subject(path)).toEqual(path)
+		expect(subject(path)).toBe(path)
 	})
 })

@@ -1,6 +1,7 @@
 import {
 	appState,
 	BLACK,
+	CANVAS_SIZE,
 	Coordinate,
 	executeEffect,
 	from,
@@ -58,64 +59,14 @@ describe('.viewSettings', () => {
 		})
 	})
 
-	describe('.zoomOnCanvasCenter', () => {
-		// tslint:disable-next-line:max-line-length
-		it('leaves the right and bottom quadrants empty if the grid would take up only the top left before zooming, because instead of growing from the origin in the top left it grows away from the center', async (done: DoneFn) => {
-			const zoom: number = 2
-			appState.settings.overrides = {
-				basePattern: {
-					gridSettings: { tileResolution: 8 },
-					viewSettings: {
-						zoom: 2,
-						zoomOnCanvasCenter: true,
-					},
-				},
-			}
-			const tileSize: Unit = patternState.tileSettings.tileSize
-			const zoomedTileSize: Unit = to.Unit(zoom * from.Unit(tileSize))
-
-			executeEffect.default()
-
-			setTimeout(() => {
-				let baseId: number = -8
-				expect(standardTileIsColors({
-					baseId: baseId += 8,
-					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 3, from.Unit(zoomedTileSize) * 3 ]),
-					tileSize: zoomedTileSize,
-				})).toBe(true)
-				expect(standardTileIsColors({
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 3, from.Unit(zoomedTileSize) * 4 ]),
-					tileSize: zoomedTileSize,
-				})).toBe(true)
-				expect(standardTileIsColors({
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 4, from.Unit(zoomedTileSize) * 3 ]),
-					tileSize: zoomedTileSize,
-				})).toBe(true)
-				expect(standardTileIsColors({
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(zoomedTileSize) * 4, from.Unit(zoomedTileSize) * 4 ]),
-					tileSize: zoomedTileSize,
-				})).toBe(true)
-
-				done()
-			},         0)
-		})
-	})
-
-	describe('.centerViewOnCenterOfTileAtHomeAddress', () => {
+	describe('.scroll', () => {
 		it('is self-explanatory', async (done: DoneFn) => {
 			const tileSize: Unit = to.Unit(100)
 			appState.settings.overrides = {
 				basePattern: {
 					gridSettings: { tileResolution: 2 },
 					tileSettings: { tileSize },
-					viewSettings: { centerViewOnCenterOfTileAtHomeAddress: true },
+					viewSettings: { scroll: [ to.Px(50), to.Px(100) ] },
 				},
 			}
 
@@ -126,25 +77,25 @@ describe('.viewSettings', () => {
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: to.Coordinate([ 350, 350 ]),
+					tileOrigin: to.Coordinate([ 50, 100 ]),
 					tileSize: to.Unit(100),
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ 450, 350 ]),
+					tileOrigin: to.Coordinate([ 150, 100 ]),
 					tileSize: to.Unit(100),
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ 350, 450 ]),
+					tileOrigin: to.Coordinate([ 50, 200 ]),
 					tileSize: to.Unit(100),
 				})).toBe(true)
 				expect(standardTileIsColors({
 					baseId: baseId += 8,
 					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ 450, 450 ]),
+					tileOrigin: to.Coordinate([ 150, 200 ]),
 					tileSize: to.Unit(100),
 				})).toBe(true)
 
@@ -153,8 +104,8 @@ describe('.viewSettings', () => {
 		})
 	})
 
-	describe('.rotationAboutCanvasCenter', () => {
-		it('rotates the entire grid about the canvas center', async (done: DoneFn) => {
+	describe('.tilt', () => {
+		it('rotates the entire grid about the origin', async (done: DoneFn) => {
 			const areaSize: Unit = patternState.tileSettings.tileSize
 
 			appState.settings.overrides = {
@@ -166,7 +117,8 @@ describe('.viewSettings', () => {
 						tileSize: areaSize,
 					},
 					viewSettings: {
-						rotationAboutCanvasCenter: to.Radian(Math.PI / 2),
+						scroll: [ CANVAS_SIZE, to.Px(0) ],
+						tilt: to.Radian(Math.PI / 2),
 					},
 				},
 			}

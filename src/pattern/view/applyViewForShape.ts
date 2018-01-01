@@ -10,8 +10,8 @@ const applyViewForShape: (_: Outline) => Path =
 		let path: Path = to.Path(from.Outline(outline))
 
 		path = applyZoom(path)
-		path = applyScroll(path)
 		path = applyTilt(path)
+		path = applyScroll(path)
 
 		return path
 	}

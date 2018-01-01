@@ -1,25 +1,18 @@
 import { Path, Pixel } from '../../app'
-import { CANVAS_SIZE } from '../../constants'
 import { from, mathUtilities, to } from '../../utilities'
-import { HALF } from '../constants'
 import { patternState } from '../patternState'
 import { Radian } from '../stripe'
 
 const applyTilt: (_: Path) => Path =
 	(path: Path): Path => {
-		const rotationAboutCanvasCenter: Radian = patternState.viewSettings.rotationAboutCanvasCenter
-
-		if (!rotationAboutCanvasCenter) {
+		if (patternState.viewSettings.tilt === to.Radian(0)) {
 			return path
 		}
 
-		const canvasCenterValue: number = from.Px(CANVAS_SIZE) * HALF
-		const canvasCenter: Pixel = to.Pixel([ canvasCenterValue, canvasCenterValue ])
-
 		return to.Path(path.map((pixel: Pixel): Pixel => tilt({
-			fixedPoint: canvasCenter,
+			fixedPoint: to.Pixel([ 0, 0 ]),
 			point: pixel,
-			rotation: rotationAboutCanvasCenter,
+			rotation: patternState.viewSettings.tilt,
 		})))
 	}
 

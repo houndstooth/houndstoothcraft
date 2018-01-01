@@ -17,6 +17,7 @@ export {
 export {
 	createMockElement,
 	createMockCanvas,
+	pixelsAreClose,
 	MockContext,
 	MockElement,
 } from './unit'

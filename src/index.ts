@@ -1,6 +1,9 @@
 export {
 	getCurrentLayer,
 	startUp,
+
+	Pixel,
+	Px,
 } from './app'
 export {
 	patternState,

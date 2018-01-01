@@ -5,7 +5,7 @@ import {
 	frameInputHandler,
 	to,
 } from '../../../../../../src/indexForTest'
-import { createMockEvent, createMockElement } from '../../../../helpers'
+import { createMockElement, createMockEvent } from '../../../../helpers'
 
 describe('frame input handler', () => {
 	let subject: (event: Event) => void

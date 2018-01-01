@@ -1,4 +1,4 @@
-import {
+export {
 	activateTestMarkerCanvas,
 	Diagonal,
 	ExpectDiagonalDividedSection,
@@ -10,16 +10,3 @@ import {
 	StandardTileExpectation,
 	standardTileIsColors,
 } from './helpers'
-
-export {
-	activateTestMarkerCanvas,
-	sectionCenterIsColor,
-	Diagonal,
-	ExpectDiagonalDividedSection,
-	ExpectedDividedSection,
-	ExpectedSolidSection,
-	ExpectSolidSection,
-	standardTileIsColors,
-	StandardTileExpectation,
-	pixelIsColorWithMarker,
-}

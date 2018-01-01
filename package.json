@@ -19,7 +19,7 @@
     "wip-pull": "sh ./bin/shared/cross_env_pre_source.sh './bin/wip/pull.sh'"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.8.2",
+    "@types/jasmine": "^2.8.3",
     "awesome-typescript-loader": "^3.4.1",
     "codecov": "^3.0.0",
     "jasmine": "^2.8.0",

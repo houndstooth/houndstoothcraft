@@ -29,8 +29,8 @@ interface CreateMockElementParams {
 	clickSpy?: Spy,
 	id?: string,
 	parentNodeId?: string,
-	parentNodeOpen?: boolean,
 	parentNodeInsertBeforeSpy?: Spy,
+	parentNodeOpen?: boolean,
 	parentNodeRemoveChildSpy?: Spy,
 	value?: string,
 }

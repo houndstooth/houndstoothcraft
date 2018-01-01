@@ -29,7 +29,7 @@ const createMockElement: (_?: CreateMockElementParams) => MockElement =
 				open: parentNodeOpen,
 				removeChild: parentNodeRemoveChildSpy,
 			},
-			setAttribute: (attribute: string, value: string): string => attributeObject[ attribute ] = value,
+			setAttribute: (attribute: string, val: string): string => attributeObject[ attribute ] = val,
 			style: {},
 			value,
 		}

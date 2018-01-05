@@ -14,5 +14,5 @@ function wip_push {
 
 export -f wip_push
 
-git submodule foreach wip-push
+git submodule foreach wip_push
 wip-push

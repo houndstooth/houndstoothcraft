@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 git submodule foreach "
+    git branch -D wip
     git checkout -b wip
     git add .
     git commit -m 'wip'
@@ -9,6 +10,7 @@ git submodule foreach "
     git branch -D wip
 "
 
+git branch -D wip
 git checkout -b wip
 git add .
 git commit -m 'wip'

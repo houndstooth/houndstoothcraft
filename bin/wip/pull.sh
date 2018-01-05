@@ -2,7 +2,7 @@
 
 set -e
 
-function wip-pull-submodule {
+function wip_pull_submodule {
     git pull origin wip -r
     if [[ "$(git log -1 --pretty=%B)" == 'wip' ]] ; then
         git reset HEAD^
@@ -10,11 +10,11 @@ function wip-pull-submodule {
     fi
 }
 
-export -f wip-pull-submodule
+export -f wip_pull_submodule
 
 git pull origin wip -r
 if [[ $(git log -1 --pretty=%B) == 'wip' ]] ; then
     git reset HEAD^
-    git submodule foreach wip-pull-submodule
+    git submodule foreach wip_pull_submodule
     git push origin --delete wip
 fi

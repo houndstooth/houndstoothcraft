@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-function wip-push {
+function wip_push {
     git branch -D wip
     git checkout -b wip
     git add .
@@ -12,7 +12,7 @@ function wip-push {
     git branch -D wip
 }
 
-export -f wip-push
+export -f wip_push
 
 git submodule foreach wip-push
 wip-push

@@ -10,7 +10,7 @@ CMD="${CMD}"'> /tmp/cmd_output 2>&1 & pid=$!; s="-\|/"; i=0; while kill -0 $pid 
 tmpfile=$(mktemp /tmp/cmd_output 2>&1)
 
 eval "${CMD}"
-if [[ $? -ne 0 ]] ; then
+if [[ $? == 1 ]] ; then
     cat /tmp/cmd_output
     printf "${Red}${ERROR_MESSAGE}${NC}\n"
     exit 1

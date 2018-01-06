@@ -3,7 +3,6 @@ export {
 	setAppStateForEffectTests,
 } from './helpers'
 export {
-	activateTestMarkerCanvas,
 	Diagonal,
 	ExpectDiagonalDividedSection,
 	ExpectedDividedSection,
@@ -18,6 +17,4 @@ export {
 	createMockElement,
 	createMockCanvas,
 	pixelsAreClose,
-	MockContext,
-	MockElement,
 } from './unit'

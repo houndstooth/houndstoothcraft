@@ -1,0 +1,20 @@
+#test-markers-canvas {
+    position: absolute;
+    z-index: 9001;
+}
+
+#test-canvas-display-area {
+    display: block;
+    width: 800px;
+    height: 800px;
+}
+
+#canvas-container {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+}
+
+#canvas-container canvas {
+    display: none;
+}

@@ -4,7 +4,8 @@
 npm-debug*
 node_modules/
 dist/bundle.js
-test/integration/dist/*
+test/integration/dist/bundle.js
+test/integration/dist/close
 .DS_store
 test/unit/coverage/*
 !test/unit/coverage/coverage-final.json

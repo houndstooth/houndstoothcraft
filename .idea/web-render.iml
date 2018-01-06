@@ -5,7 +5,6 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
-      <excludeFolder url="file://$MODULE_DIR$/test/integration/dist" />
       <excludeFolder url="file://$MODULE_DIR$/test/unit/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>

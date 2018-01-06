@@ -1,5 +1,4 @@
 export {
-	activateTestMarkerCanvas,
 	Diagonal,
 	ExpectDiagonalDividedSection,
 	ExpectedDividedSection,

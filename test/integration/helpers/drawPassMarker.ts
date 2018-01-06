@@ -1,17 +1,10 @@
-// tslint:disable:no-unsafe-any
-
 import { from } from '../../../src/indexForTest'
-import createTestMarkersCanvas from './createTestMarkersCanvas'
+import getTestMarkersContext from './getTestMarkersContext'
 import { DrawPassMarker } from './types'
 
 const drawPassMarker: (_: DrawPassMarker) => void =
 	({ coordinateUnderTest, id, passed }: DrawPassMarker): void => {
-		// tslint:disable-next-line:max-line-length
-		let testMarkersCanvas: HTMLCanvasElement = document.querySelector('#test-markers-canvas') as HTMLCanvasElement
-		if (!testMarkersCanvas) {
-			testMarkersCanvas = createTestMarkersCanvas()
-		}
-		const testMarkersContext: CanvasRenderingContext2D = testMarkersCanvas.getContext('2d') as CanvasRenderingContext2D
+		const testMarkersContext: CanvasRenderingContext2D = getTestMarkersContext()
 
 		testMarkersContext.strokeStyle = passed ? 'green' : 'red'
 		testMarkersContext.beginPath()

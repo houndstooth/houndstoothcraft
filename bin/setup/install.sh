@@ -46,7 +46,7 @@ if [[ $OSTYPE == darwin* ]] ; then
     fi
 else
     if hash node 2>/dev/null; then printf "Missing Node.\n"; fi
-    if [[ -e /c/Program\ Files/JetBrains/Webstorm\ 2017.2.4/bin/webstorm64.exe ]] ; then printf "Missing Webstorm.\n"; fi
+    if [[ -e /c/Program\ Files/JetBrains/Webstorm\ 2017.3.2/bin/webstorm64.exe ]] ; then printf "Missing Webstorm.\n"; fi
     if hash cf 2>/dev/null; then printf "Missing Cloud Foundry CLI and Autopilot plugin.\n"; fi
     if [[ -e /c/Program\ Files/Git/git-bash.exe ]] ; then printf "Missing Git BASH.\n"; fi
     if [[ -e /c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe ]] ; then printf "Missing Google Chrome.\n"; fi

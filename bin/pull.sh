@@ -11,5 +11,5 @@ function pull_if_needed {
 export -f pull_if_needed
 
 pull_if_needed
-npm i
+npm i || true
 git submodule foreach pull_if_needed

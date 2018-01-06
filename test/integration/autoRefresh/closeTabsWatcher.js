@@ -11,10 +11,10 @@ http.createServer((req, res) => {
 			'Connection': 'keep-alive',
 		})
 
-		fs.watchFile('test/integration/dist/close', { interval: 100 }, () => {
+		fs.watchFile('test/integration/autoRefresh/close', { interval: 100 }, () => {
 			res.write('event: close\ndata: x\n\n')
 		})
 	}
 }).listen(process.env.CLOSE_TABS_WATCHER_PORT)
 
-process.on('SIGINT', () => fs.unwatchFile('test/integration/dist/close'))
+process.on('SIGINT', () => fs.unwatchFile('test/integration/autoRefresh/close'))

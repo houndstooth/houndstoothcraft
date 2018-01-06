@@ -13,7 +13,7 @@ http.createServer((req, res) => {
 			'Connection': 'keep-alive',
 		})
 
-		fs.watchFile('test/integration/dist/bundle.js', { interval: 100 }, () => {
+		fs.watchFile('test/integration/context/bundle.js', { interval: 100 }, () => {
 			res.write('event: reload\ndata: x\n\n')
 		})
 
@@ -25,6 +25,6 @@ http.createServer((req, res) => {
 }).listen(process.env.INTEGRATION_TEST_CODE_UPDATES_WATCHER_PORT)
 
 process.on('SIGINT', () => {
-	fs.unwatchFile('test/integration/dist/bundle.js')
+	fs.unwatchFile('test/integration/context/bundle.js')
 	srcWatcher && srcWatcher.close()
 })

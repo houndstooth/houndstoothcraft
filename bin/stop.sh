@@ -3,9 +3,8 @@
 set -e
 
 # this file is watched by a server which sends an event to the main tab to trigger it to close the others
-mkdir -p ./test/integration/dist
-touch ./test/integration/dist/close
-cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 > ./test/integration/dist/close
+touch ./test/integration/autoRefresh/close
+cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1 > ./test/integration/autoRefresh/close
 
 if [[ $OSTYPE == darwin* ]] ; then
     declare -a arr=(

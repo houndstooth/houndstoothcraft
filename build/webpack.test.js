@@ -13,5 +13,5 @@ module.exports = {
 			},
 		],
 	},
-	output: { path: __dirname + '/../test/integration/dist', filename: 'bundle.js' },
+	output: { path: __dirname + '/../test/integration/context', filename: 'bundle.js' },
 }

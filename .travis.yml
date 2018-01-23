@@ -17,3 +17,4 @@ addons:
 branches:
   only:
   - master
+sudo: required

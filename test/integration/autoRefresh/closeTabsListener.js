@@ -1,14 +1,14 @@
-const closeTabsEventSource = new EventSource(`http://localhost:${process.env.CLOSE_TABS_WATCHER_PORT}/tabs`)
+const closeTabsEventSource = new EventSource(`http://localhost:${__karma__.config.CLOSE_TABS_WATCHER_PORT}/tabs`)
 
 let devServerTab
 if (!localStorage.devServerTab) {
-	devServerTab = window.open(`http://localhost:${process.env.DEV_SERVER_PORT}`, 'devServer')
+	devServerTab = window.open(`http://localhost:${__karma__.config.DEV_SERVER_PORT}`, 'devServer')
 	localStorage.setItem("devServerTab", devServerTab)
 }
 
 let coverageTab
 if (!localStorage.coverageTab) {
-	coverageTab = window.open(`http://localhost:${process.env.COVERAGE_REPORT_SERVER_PORT}/index.html`, 'coverageTab')
+	coverageTab = window.open(`http://localhost:${__karma__.config.COVERAGE_REPORT_SERVER_PORT}/index.html`, 'coverageTab')
 	localStorage.setItem("coverageTab", coverageTab)
 }
 

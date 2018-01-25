@@ -2,5 +2,5 @@
 
 set -e
 
-webpack --config build/webpack.test.run.js
+webpack --config build/webpack.test.js
 karma start test/integration/karma.run.js

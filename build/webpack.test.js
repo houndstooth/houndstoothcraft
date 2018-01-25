@@ -2,6 +2,7 @@ const webpackCommonConfig = require('./webpack.common')
 
 module.exports = {
 	...webpackCommonConfig,
+	entry: './test/integration/karmaIndex.ts',
 	module: {
 		loaders: [
 			{

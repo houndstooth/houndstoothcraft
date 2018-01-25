@@ -18,3 +18,7 @@
 #canvas-container canvas {
     display: none;
 }
+
+#app {
+    display: none;
+}

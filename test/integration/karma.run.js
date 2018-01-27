@@ -5,7 +5,7 @@ module.exports = config => {
 		...karmaCommonConfig,
 		files: [
 			'testMarkers.js',
-			'context/bundle.js',
+			'dist/bundle.js',
 			'../../dist/app.js',
 		],
 		browserNoActivityTimeout: 100000,

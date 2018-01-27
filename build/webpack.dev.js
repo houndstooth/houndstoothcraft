@@ -3,7 +3,7 @@ const webpackCommonConfig = require('./webpack.common')
 
 module.exports = {
 	...webpackCommonConfig,
-	entry: './dev/index.ts',
+	entry: './build/indexWithHotModules.ts',
 	devtool: 'eval-source-map',
 	plugins: [ new webpack.HotModuleReplacementPlugin() ],
 	devServer: {

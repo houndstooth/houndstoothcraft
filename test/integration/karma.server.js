@@ -12,8 +12,8 @@ module.exports = config => {
 		},
 		files: [
 			'testMarkers.js',
-			'context/bundle.js',
-			'context/styles.css',
+			'dist/bundle.js',
+			'dist/styles.css',
 			'../../dist/app.js',
 			'autoRefresh/closeTabsListener.js',
 			'autoRefresh/integrationTestCodeUpdatesListener.js',

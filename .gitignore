@@ -4,7 +4,7 @@
 npm-debug*
 node_modules/
 dist/bundle.js
-test/integration/context/bundle.js
+test/integration/dist/bundle.js
 test/integration/autoRefresh/close
 .DS_store
 test/unit/coverage/*

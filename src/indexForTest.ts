@@ -77,6 +77,7 @@ export {
 	setupRenderStyle,
 	snapshotHandler,
 	startUp,
+	startUpApp,
 	storeDomElements,
 	thisPatternHasNotBeenCanceled,
 	toggleOverrideParentOpen,

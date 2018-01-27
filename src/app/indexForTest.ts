@@ -138,8 +138,10 @@ export {
 	AppState,
 } from './types'
 import * as startUp from './startUp'
+import * as startUpApp from './startUpApp'
 export {
 	startUp,
+	startUpApp,
 }
 export {
 	DEFAULT_APP_STATE,

@@ -1,18 +1,14 @@
 // tslint:disable:no-unsafe-any
 
 import {
-	attachHandlers,
 	CANVAS_SIZE,
-	createOverrideNodes,
 	executeGrid,
 	executeTile,
 	from,
 	grid,
 	mixDownContexts,
-	setupMixedDownContext,
-	storeDomElements,
+	startUpApp,
 	tile,
-	updateOverrides,
 } from '../../../src/indexForTest'
 import { resetAppAndPatternStates } from '../../helpers'
 import testMarkersClear from '../helpers/testMarkersClear'
@@ -20,11 +16,7 @@ import testMarkersClear from '../helpers/testMarkersClear'
 beforeEach(() => {
 	resetAppAndPatternStates()
 
-	storeDomElements.default()
-	createOverrideNodes.default()
-	setupMixedDownContext.default()
-	updateOverrides.default()
-	attachHandlers.default()
+	startUpApp.default()
 
 	testMarkersClear()
 

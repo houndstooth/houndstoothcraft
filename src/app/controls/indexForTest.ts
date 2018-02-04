@@ -4,10 +4,12 @@ export {
 	enableOrDisableAnimationControls,
 	frameInputHandler,
 	getCurrentFrame,
+	mainHoundstoothHasAnimations,
 	pauseHandler,
 	playHandler,
 	rewindHandler,
 	snapshotHandler,
+	updateAnimatingState,
 	updateCurrentFrame,
 } from './animation/indexForTest'
 export {

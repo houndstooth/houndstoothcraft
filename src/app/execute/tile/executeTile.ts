@@ -1,6 +1,7 @@
 import { tile } from '../../../pattern'
 import { globalWrapper } from '../../../utilities'
 import { appState } from '../../appState'
+import { resolveGrid } from '../grid'
 import { thisPatternHasNotBeenCanceled } from '../pattern'
 import { ExecuteTileParams } from './types'
 import updateProgress from './updateProgress'
@@ -15,6 +16,9 @@ const executeTile: (_: ExecuteTileParams) => void =
 					updateProgress()
 					maybeResolveGrid()
 				}
+				else {
+					resolveGrid.default()
+				}
 			},
 			0,
 		)
@@ -23,10 +27,7 @@ const executeTile: (_: ExecuteTileParams) => void =
 const maybeResolveGrid: () => void =
 	(): void => {
 		if (appState.execute.tilesCompleted === appState.execute.tileCount) {
-			appState.execute.resolveGrid()
-			appState.dom.progressBar.style.width = '0%'
-			appState.dom.progressMessage.textContent = ''
-			appState.execute.tilesCompleted = 0
+			resolveGrid.default()
 		}
 	}
 

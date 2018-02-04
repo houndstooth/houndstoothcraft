@@ -5,6 +5,7 @@ import * as pauseHandler from './pauseHandler'
 import * as playHandler from './playHandler'
 import * as rewindHandler from './rewindHandler'
 import * as snapshotHandler from './snapshotHandler'
+import * as updateAnimatingState from './updateAnimatingState'
 import * as updateCurrentFrame from './updateCurrentFrame'
 
 export {
@@ -15,5 +16,6 @@ export {
 	playHandler,
 	rewindHandler,
 	snapshotHandler,
+	updateAnimatingState,
 	updateCurrentFrame,
 }

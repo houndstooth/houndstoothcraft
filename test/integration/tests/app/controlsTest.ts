@@ -1,33 +1,69 @@
+// tslint:disable:max-line-length
+
 import * as effects from '../../../../effects'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
-import { gongramEffect } from '../../../../effects/gongram/effects/gongramEffect'
 import {
 	appState,
 	BLACK,
 	createEffectToggles,
+	Frame,
+	NamedEffect,
 	patternState,
+	setupAvailableEffects,
 	to,
 	TRANSPARENT,
 } from '../../../../src/indexForTest'
-import { createMockElement } from '../../../unit'
+import { expectStandardPattern } from '../../helpers'
 
 describe('controls', () => {
-	describe('effect toggles', () => {
-		it('attaches handlers which cause the setting of the main houndstooth to change based on the effect', () => {
-			appState.settings.availableEffects = { gongram: gongramEffect }
+	const availableEffects: NamedEffect[] = Object.values(effects)
+	beforeEach(() => {
+		setupAvailableEffects.default(Object.values(availableEffects))
+		createEffectToggles.default(Object.values(availableEffects))
+	})
 
-			createEffectToggles.default(Object.values(effects))
-			const effectToggle: HTMLElement = document.querySelector('input#gongram') as HTMLElement || createMockElement()
-
+	describe('clicking an effect toggle', () => {
+		it('toggles whether its associated effect is applied to the pattern state', () => {
 			expect(patternState.colorSettings.colorSet).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
 
-			// tslint:disable-next-line:no-unsafe-any
-			effectToggle.click()
+			appState.dom.effectToggles.gongram.click()
 			expect(patternState.colorSettings.colorSet).toEqual(GONGRAM_COLOR_SET)
 
-			// tslint:disable-next-line:no-unsafe-any
-			effectToggle.click()
+			appState.dom.effectToggles.gongram.click()
 			expect(patternState.colorSettings.colorSet).toEqual(to.ColorSet([ BLACK, TRANSPARENT ]))
+		})
+
+		it('keeps animating if the selection of effects changes while animation is playing, as long as the new effect selection is still animatable', () => {
+			appState.dom.effectToggles['gingham-chevron-continuum'].click()
+
+			appState.dom.playButton.click()
+			expect(appState.controls.animating).toBe(true)
+
+			appState.dom.effectToggles.gongram.click()
+			expect(appState.controls.animating).toBe(true)
+
+			expect(appState.dom.frameInput.disabled).toBe(false)
+			expect(appState.dom.playButton.disabled).toBe(true)
+			expect(appState.dom.pauseButton.disabled).toBe(false)
+			expect(appState.dom.rewindButton.disabled).toBe(false)
+		})
+
+		it('stops animating if the selection of effects changes while animation is playing to a selection which is not animatable', () => {
+			appState.dom.effectToggles['gingham-chevron-continuum'].click()
+			appState.dom.playButton.click()
+			expect(appState.controls.animating).toBe(true)
+
+			const currentFrame: Frame = appState.controls.currentFrame
+			appState.dom.effectToggles['gingham-chevron-continuum'].click()
+			expect(appState.controls.animating).toBe(false)
+			expect(appState.controls.currentFrame).toBe(currentFrame)
+
+			expect(appState.dom.frameInput.disabled).toBe(true)
+			expect(appState.dom.playButton.disabled).toBe(true)
+			expect(appState.dom.pauseButton.disabled).toBe(true)
+			expect(appState.dom.rewindButton.disabled).toBe(true)
+
+			expectStandardPattern()
 		})
 	})
 })

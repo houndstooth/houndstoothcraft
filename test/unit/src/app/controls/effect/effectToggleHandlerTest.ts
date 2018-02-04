@@ -10,6 +10,7 @@ import {
 	executeEffect,
 	NamedEffect,
 	resetMainHoundstooth,
+	resolveGrid,
 	updateDescriptions,
 } from '../../../../../../src/indexForTest'
 import { createMockElement, createMockEvent, SimulateClick } from '../../../../helpers'
@@ -29,6 +30,7 @@ describe('effect toggle handler', () => {
 		spyOn(clearAnimationIntervalAndRemoveFromState, 'default')
 		spyOn(cancelCurrentPattern, 'default')
 		spyOn(resetMainHoundstooth, 'default')
+		spyOn(resolveGrid, 'default')
 
 		checkbox = createMockElement() as HTMLInputElement
 		checkbox.name = 'mock-tooth'
@@ -89,6 +91,10 @@ describe('effect toggle handler', () => {
 
 	it('cancels the previous pattern', () => {
 		expect(cancelCurrentPattern.default).toHaveBeenCalled()
+	})
+
+	it('resolves the grid', () => {
+		expect(resolveGrid.default).toHaveBeenCalled()
 	})
 
 	it('removes the effect if it is already selected', () => {

@@ -1,14 +1,5 @@
-import {
-	appState,
-	BLACK,
-	executeEffect,
-	from,
-	patternState,
-	to,
-	TRANSPARENT,
-	Unit,
-} from '../../../../src/indexForTest'
-import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
+import { appState, executeEffect } from '../../../../src/indexForTest'
+import { expectStandardPattern } from '../../helpers'
 
 describe('standard houndstooth pattern', () => {
 	// tslint:disable-next-line:max-line-length
@@ -18,121 +9,11 @@ describe('standard houndstooth pattern', () => {
 				gridSettings: { tileResolution: 4 },
 			},
 		}
+
 		executeEffect.default()
 
 		setTimeout(() => {
-			let baseId: number = -8
-			const tileSize: Unit = patternState.tileSettings.tileSize
-			const firstSupertileExpectations: StandardTileExpectation[] = [
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 0 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 1 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 0 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 1 ]),
-					tileSize,
-				},
-			]
-			const secondSupertileExpectations: StandardTileExpectation[] = [
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 0 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 1 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 0 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 1 ]),
-					tileSize,
-				},
-			]
-			const thirdSupertileExpectations: StandardTileExpectation[] = [
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 2 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 0, from.Unit(tileSize) * 3 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 2 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 1, from.Unit(tileSize) * 3 ]),
-					tileSize,
-				},
-			]
-			const fourthSupertileExpectations: StandardTileExpectation[] = [
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 2 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, BLACK ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 2, from.Unit(tileSize) * 3 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ TRANSPARENT, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 2 ]),
-					tileSize,
-				},
-				{
-					baseId: baseId += 8,
-					colors: [ BLACK, TRANSPARENT ],
-					tileOrigin: to.Coordinate([ from.Unit(tileSize) * 3, from.Unit(tileSize) * 3 ]),
-					tileSize,
-				},
-			]
-			const tiles: StandardTileExpectation[] = firstSupertileExpectations
-				.concat(secondSupertileExpectations)
-				.concat(thirdSupertileExpectations)
-				.concat(fourthSupertileExpectations)
-			tiles.forEach((tile: StandardTileExpectation) => expect(standardTileIsColors(tile)).toBe(true))
-
+			expectStandardPattern()
 			done()
 		},         0)
 	})

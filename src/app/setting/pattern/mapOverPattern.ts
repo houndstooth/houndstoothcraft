@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable:no-any no-unsafe-any
 
 import { Color } from '../../../types'
 import { codeUtilities, to } from '../../../utilities'
@@ -28,7 +28,6 @@ const mapOverPattern: (_?: MapOverPatternParams) => boolean =
 
 						return deepSettingsMap({
 							settingPath: deeperPath({ settingName, settingPath }),
-							// tslint:disable-next-line:no-unsafe-any
 							settings: settings[ settingNameString ],
 						})
 					}

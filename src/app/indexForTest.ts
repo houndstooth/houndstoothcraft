@@ -11,6 +11,7 @@ export {
 	getOverrideLeafNode,
 	getOverrideParentNode,
 	isParentOfAnyOverridingChildren,
+	mainHoundstoothHasAnimations,
 	overrideClearHandler,
 	overrideInputHandler,
 	pauseHandler,
@@ -18,6 +19,7 @@ export {
 	rewindHandler,
 	snapshotHandler,
 	toggleOverrideParentOpen,
+	updateAnimatingState,
 	updateCurrentFrame,
 	updateDescriptions,
 	updateOverrideLeafNode,
@@ -68,6 +70,7 @@ export {
 	executeEffect,
 	getCurrentLayer,
 	grid,
+	resolveGrid,
 	thisPatternHasNotBeenCanceled,
 	updateProgress,
 

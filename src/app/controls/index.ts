@@ -5,6 +5,7 @@ export {
 	playHandler,
 	rewindHandler,
 	snapshotHandler,
+	updateAnimatingState,
 	updateCurrentFrame,
 } from './animation'
 export {

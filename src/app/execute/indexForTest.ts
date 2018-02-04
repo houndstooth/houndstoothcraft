@@ -18,6 +18,7 @@ export {
 export {
 	executeGrid,
 	grid,
+	resolveGrid,
 } from './grid/indexForTest'
 export {
 	completeLayers,

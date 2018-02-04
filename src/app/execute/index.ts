@@ -5,6 +5,9 @@ export {
 	executeEffect,
 } from './effect'
 export {
+	resolveGrid,
+} from './grid'
+export {
 	getCurrentLayer,
 } from './layer'
 export {

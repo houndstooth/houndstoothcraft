@@ -4,6 +4,7 @@ import {
 	executeTile,
 	ExecuteTileParams,
 	globalWrapper,
+	resolveGrid,
 	thisPatternHasNotBeenCanceled,
 	tile,
 	to,
@@ -26,7 +27,7 @@ describe('execute tile', () => {
 		})
 		spyOn(tile, 'default')
 		spyOn(updateProgress, 'default')
-		spyOn(appState.execute, 'resolveGrid')
+		spyOn(resolveGrid, 'default')
 		thisPatternHasNotBeenCanceledSpy = spyOn(thisPatternHasNotBeenCanceled, 'default')
 	})
 
@@ -73,7 +74,7 @@ describe('execute tile', () => {
 
 					subject({ address, patternId })
 
-					expect(appState.execute.resolveGrid).not.toHaveBeenCalled()
+					expect(resolveGrid.default).not.toHaveBeenCalled()
 				})
 			})
 
@@ -86,19 +87,7 @@ describe('execute tile', () => {
 				})
 
 				it('resolves the grid', () => {
-					expect(appState.execute.resolveGrid).toHaveBeenCalled()
-				})
-
-				it('resets the progress bar', () => {
-					expect(appState.dom.progressBar.style.width).toBe('0%')
-				})
-
-				it('resets the progress message', () => {
-					expect(appState.dom.progressMessage.textContent).toBe('')
-				})
-
-				it('resets the tiles completed', () => {
-					expect(appState.execute.tilesCompleted).toBe(0)
+					expect(resolveGrid.default).toHaveBeenCalled()
 				})
 			})
 		})
@@ -117,6 +106,10 @@ describe('execute tile', () => {
 
 		it('does not update progress', () => {
 			expect(updateProgress.default).not.toHaveBeenCalled()
+		})
+
+		it('resolves the grid', () => {
+			expect(resolveGrid.default).toHaveBeenCalled()
 		})
 	})
 })

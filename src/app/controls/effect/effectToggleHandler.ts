@@ -1,5 +1,10 @@
 import { appState } from '../../appState'
-import { cancelCurrentPattern, clearAnimationIntervalAndRemoveFromState, executeEffect } from '../../execute'
+import {
+	cancelCurrentPattern,
+	clearAnimationIntervalAndRemoveFromState,
+	executeEffect,
+	resolveGrid,
+} from '../../execute'
 import { clearContexts, clearMixedDownContext } from '../../render'
 import { resetMainHoundstooth } from '../../setting'
 import { enableOrDisableAnimationControls } from '../animation'
@@ -7,7 +12,7 @@ import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggl
 import updateDescriptions from './updateDescriptions'
 
 const effectToggleHandler: (_: Event) => void =
-	(event: Event): void => {
+	(effectToggleClickEvent: Event): void => {
 		appState.dom.descriptionsContainer.innerHTML = ''
 
 		clearContexts.default()
@@ -15,12 +20,12 @@ const effectToggleHandler: (_: Event) => void =
 
 		clearAnimationIntervalAndRemoveFromState.default()
 
-		appState.execute.resolveGrid()
+		resolveGrid.default()
 
 		cancelCurrentPattern.default()
 		resetMainHoundstooth.default()
 
-		addOrRemoveEffect(event)
+		addOrRemoveEffect(effectToggleClickEvent)
 
 		executeEffect.default()
 
@@ -32,8 +37,8 @@ const effectToggleHandler: (_: Event) => void =
 	}
 
 const addOrRemoveEffect: (_: Event) => void =
-	(event: Event): void => {
-		const checkbox: HTMLInputElement = event.target as HTMLInputElement
+	(effectToggleClickEvent: Event): void => {
+		const checkbox: HTMLInputElement = effectToggleClickEvent.target as HTMLInputElement
 		if (checkbox.checked) {
 			appState.controls.selectedEffects.push(checkbox.name)
 		}

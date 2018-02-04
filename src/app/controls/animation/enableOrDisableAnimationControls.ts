@@ -1,16 +1,15 @@
 import { appState } from '../../appState'
+import mainHoundstoothHasAnimations from './mainHoundstoothHasAnimations'
 
 const enableOrDisableAnimationControls: () => void =
 	(): void => {
-		const canBeAnimated: boolean = mainHoundstoothHasAnimations()
+		const animating: boolean = appState.controls.animating
+		const cannotBeAnimated: boolean = !mainHoundstoothHasAnimations()
 
-		appState.dom.frameInput.disabled = canBeAnimated
-		appState.dom.playButton.disabled = canBeAnimated
-		appState.dom.pauseButton.disabled = true
-		appState.dom.rewindButton.disabled = true
+		appState.dom.frameInput.disabled = cannotBeAnimated
+		appState.dom.playButton.disabled = animating || cannotBeAnimated
+		appState.dom.pauseButton.disabled = !animating
+		appState.dom.rewindButton.disabled = !animating
 	}
-
-const mainHoundstoothHasAnimations: () => boolean =
-	(): boolean => !Object.keys(appState.settings.mainHoundstooth.animationsPattern).length
 
 export default enableOrDisableAnimationControls

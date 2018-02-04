@@ -12,6 +12,7 @@ import {
 	prepareFunctionObjectsPerSetting,
 	SettingFunctionObject,
 	to,
+	updateAnimatingState,
 	updateOverrideNodes,
 	updateOverrides,
 } from '../../../../../../src/indexForTest'
@@ -25,6 +26,7 @@ describe('execute effect', () => {
 		subject = executeEffect.default
 		spyOn(createContexts, 'default')
 		spyOn(updateOverrides, 'default')
+		spyOn(updateAnimatingState, 'default')
 		spyOn(updateOverrideNodes, 'default')
 		spyOn(executePattern, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
 		spyOn(executeAnimation, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
@@ -47,6 +49,12 @@ describe('execute effect', () => {
 		subject()
 
 		expect(composeMainHoundstooth.default).toHaveBeenCalled()
+	})
+
+	it('updates the animating state', () => {
+		subject()
+
+		expect(updateAnimatingState.default).toHaveBeenCalled()
 	})
 
 	it('updates the override nodes', () => {

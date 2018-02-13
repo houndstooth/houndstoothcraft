@@ -36,6 +36,7 @@ describe('controls', () => {
 			appState.dom.effectToggles.gongram.click()
 			expect(appState.controls.animating).toBe(true)
 
+			// MAYBE i should use query selector here? because i'm in karma, i want this to be more intergration-y?
 			expect(appState.dom.frameInput.disabled).toBe(false)
 			expect(appState.dom.playButton.disabled).toBe(true)
 			expect(appState.dom.pauseButton.disabled).toBe(false)
@@ -66,6 +67,19 @@ describe('controls', () => {
 
 			appState.dom.effectToggles[ 'harmonitooth' ].click()
 			expect(patternState.stripeSettings.stripePositionSettings.getStripePositions).toBe(getGinghamChevronContinuumStripePositions.default)
+		})
+
+		fit('should select the effect even if there is an override on a setting it specifies', () => {
+			// "[ BLACK, BLACK, TRANSPARENT ]"
+
+			const matchingElement = document.evaluate("//summary[contains(text(),'colorSettings')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue as HTMLElement
+			console.log('matchingElement', matchingElement)
+			// console.log('eh, override nodes??', appState.controls.overrideNodes.children.basePattern)
+			matchingElement && matchingElement.click();
+
+			const nextMatchingElement = document.evaluate("//summary[contains(text(),'colorSet')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue as HTMLElement
+			console.log('nextMatchingElement', nextMatchingElement)
+			nextMatchingElement && nextMatchingElement.click();
 		})
 	})
 })

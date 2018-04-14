@@ -29,9 +29,9 @@ const mockConsole: MockConsole = {
 	table: noop,
 	time: noop,
 	timeEnd: noop,
+	timeStamp: noop,
 	timeline: noop,
 	timelineEnd: noop,
-	timeStamp: noop,
 	trace: noop,
 	warn: noop,
 }

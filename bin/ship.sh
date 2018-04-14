@@ -2,8 +2,6 @@
 
 set -e
 
-./bin/shared/cmd_w_msgs.sh "npm update" "updating dependencies" "npm update failed." "All dependencies at latest."
-
 ./bin/shared/cmd_w_msgs.sh "./bin/lint.sh" "linting" "Linting errors detected." "Lint-free."
 
 ./bin/shared/cmd_w_msgs.sh "TS_NODE_CACHE=false ./bin/test.sh" "testing" "Your tests are not passing locally. Please correct issues before pulling." "Tests passing."

@@ -1,5 +1,4 @@
 ---
 applications:
-- name: houndstooth
-  memory: 64m
+- memory: 64m
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git

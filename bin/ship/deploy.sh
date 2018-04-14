@@ -9,4 +9,4 @@ else
     cf login -a api.run.pivotal.io -o "$PWS_ORG" -s "$PWS_SPACE" -u "$PWS_USERNAME" -p "$PWS_PASSWORD"
 fi
 
-cf zero-downtime-push houndstooth -f manifest.yml
+cf zero-downtime-push houndstoothcraft -f manifest.yml

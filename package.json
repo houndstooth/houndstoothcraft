@@ -1,7 +1,7 @@
 {
-  "name": "web-render",
+  "name": "houndstoothcraft",
   "version": "1.0.0",
-  "repository": "https://github.com/houndstooth/web-render",
+  "repository": "https://github.com/houndstooth/houndstoothcraft",
   "license": "MIT",
   "scripts": {
     "cover": "sh ./bin/shared/cross_env_pre_source.sh 'sh ./bin/cover.sh'",

@@ -20,13 +20,13 @@ if (!localStorage.asanaTab) {
 
 let githubTab
 if (!localStorage.githubTab) {
-	githubTab = window.open(`https://github.com/houndstooth/web-render`, 'githubTab')
+	githubTab = window.open(`https://github.com/houndstooth/houndstoothcraft`, 'githubTab')
 	localStorage.setItem("githubTab", githubTab)
 }
 
 let prodTab
 if (!localStorage.prodTab) {
-	prodTab = window.open(`http://houndstooth.douglasblumeyer.com`, 'prodTab')
+	prodTab = window.open(`http://houndstoothcraft.douglasblumeyer.com`, 'prodTab')
 	localStorage.setItem("prodTab", prodTab)
 }
 

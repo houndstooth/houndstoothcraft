@@ -3,8 +3,8 @@
 Please begin by installing node.
 
 ```
-git clone https://github.com/houndstooth/web-render.git
-cd web-render
+git clone https://github.com/houndstooth/houndstoothcraft.git
+cd houndstoothcraft
 npm run setup
 ```
 
@@ -58,4 +58,4 @@ This project has been developed on both Mac OS and Windows workstations, and all
 
 # the code
 
-See [README.md](https://github.com/houndstooth/web-render/blob/master/README.md).
+See [README.md](https://github.com/houndstooth/houndstoothcraft/blob/master/README.md).

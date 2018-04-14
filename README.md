@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/houndstooth/web-render.svg?branch=master)](https://travis-ci.org/houndstooth/web-render)
-[![devDependency Status](https://david-dm.org/houndstooth/web-render/dev-status.svg)](https://david-dm.org/houndstooth/web-render?type=dev)
-[![codecov.io](https://codecov.io/github/houndstooth/web-render/coverage.svg?branch=master)](https://codecov.io/github/houndstooth/web-render?branch=master)
+[![Build Status](https://travis-ci.org/houndstooth/houndstoothcraft.svg?branch=master)](https://travis-ci.org/houndstooth/houndstoothcraft)
+[![devDependency Status](https://david-dm.org/houndstooth/houndstoothcraft/dev-status.svg)](https://david-dm.org/houndstooth/houndstoothcraft?type=dev)
+[![codecov.io](https://codecov.io/github/houndstooth/houndstoothcraft/coverage.svg?branch=master)](https://codecov.io/github/houndstooth/houndstoothcraft?branch=master)
 
-# Houndstooth web-render
+# Houndstooth houndstoothcraft
 
-Check it out at [http://houndstooth.douglasblumeyer.com](http://houndstooth.douglasblumeyer.com).
+Check it out at [http://houndstoothcraft.douglasblumeyer.com](http://houndstoothcraft.douglasblumeyer.com).
 
 ## settings hierarchy
 
@@ -167,4 +167,4 @@ The final step of shape is to pass on the outline and color to the `solid` rende
 
 # Contributing
 
-See [CONTRIBUTING.md](https://github.com/houndstooth/web-render/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/houndstooth/houndstoothcraft/blob/master/CONTRIBUTING.md).

@@ -1,13 +1,13 @@
 // tslint:disable:max-line-length
 
 import * as effects from '../../../../effects'
+import { getGinghamChevronContinuumStripePositions } from '../../../../effects/gingham-chevron-continuum/pattern'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import {
 	appState, BLACK, createEffectToggles, Frame, NamedEffect, patternState, setupAvailableEffects, to,
 	TRANSPARENT,
 } from '../../../../src/indexForTest'
 import { expectStandardPattern } from '../../helpers'
-import { getGinghamChevronContinuumStripePositions } from '../../../../effects/gingham-chevron-continuum/pattern'
 
 describe('controls', () => {
 	const availableEffects: NamedEffect[] = Object.values(effects)
@@ -64,7 +64,7 @@ describe('controls', () => {
 			appState.dom.effectToggles[ 'gingham-chevron-continuum' ].click()
 			expect(patternState.stripeSettings.stripePositionSettings.getStripePositions).toBe(getGinghamChevronContinuumStripePositions.default)
 
-			appState.dom.effectToggles[ 'harmonitooth' ].click()
+			appState.dom.effectToggles.harmonitooth.click()
 			expect(patternState.stripeSettings.stripePositionSettings.getStripePositions).toBe(getGinghamChevronContinuumStripePositions.default)
 		})
 	})

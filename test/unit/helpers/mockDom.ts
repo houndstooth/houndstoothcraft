@@ -20,6 +20,8 @@ const mockConsole: MockConsole = {
 	groupEnd: noop,
 	info: noop,
 	log: noop,
+	markTimeline: noop,
+	memory: noop,
 	msIsIndependentlyComposed: noop,
 	profile: noop,
 	profileEnd: noop,
@@ -27,6 +29,9 @@ const mockConsole: MockConsole = {
 	table: noop,
 	time: noop,
 	timeEnd: noop,
+	timeline: noop,
+	timelineEnd: noop,
+	timeStamp: noop,
 	trace: noop,
 	warn: noop,
 }

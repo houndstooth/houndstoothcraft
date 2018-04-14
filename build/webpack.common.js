@@ -1,8 +1,10 @@
 module.exports = {
+	mode: 'none',
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.ts$/,
+				exclude: /node_modules/,
 				loader: 'awesome-typescript-loader',
 				query: {
 					configFileName: './build/tsconfig.browser.json',

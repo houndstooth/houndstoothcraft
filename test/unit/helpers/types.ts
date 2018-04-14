@@ -163,6 +163,8 @@ interface MockConsole {
 	groupEnd: any,
 	info: any,
 	log: any,
+	markTimeline: any,
+	memory: any,
 	msIsIndependentlyComposed: any,
 	profile: any,
 	profileEnd: any,
@@ -170,6 +172,9 @@ interface MockConsole {
 	table: any,
 	time: any,
 	timeEnd: any,
+	timeline: any,
+	timelineEnd: any,
+	timeStamp: any,
 	trace: any,
 	warn: any,
 }

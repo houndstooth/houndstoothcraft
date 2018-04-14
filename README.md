@@ -2,7 +2,7 @@
 [![devDependency Status](https://david-dm.org/houndstooth/houndstoothcraft/dev-status.svg)](https://david-dm.org/houndstooth/houndstoothcraft?type=dev)
 [![codecov.io](https://codecov.io/github/houndstooth/houndstoothcraft/coverage.svg?branch=master)](https://codecov.io/github/houndstooth/houndstoothcraft?branch=master)
 
-# Houndstooth houndstoothcraft
+# houndstoothcraft
 
 Check it out at [http://houndstoothcraft.douglasblumeyer.com](http://houndstoothcraft.douglasblumeyer.com).
 

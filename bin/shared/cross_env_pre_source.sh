@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-source ./.env.bat
+. ./.env.bat
 eval "${1}"

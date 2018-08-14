@@ -1,3 +1,5 @@
+.PHONY: test, lint
+
 cover:
 	npm run cover
 

@@ -22,3 +22,6 @@
 [submodule "harmonitooth"]
 	path = effects/harmonitooth
 	url = git@github.com:houndstooth/harmonitooth.git
+[submodule "holestooth"]
+	path = effects/holestooth
+	url = git@github.com:houndstooth/holestooth.git

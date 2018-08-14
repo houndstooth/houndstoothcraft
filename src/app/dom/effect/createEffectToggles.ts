@@ -11,7 +11,7 @@ const createEffectToggles: (effects: NamedEffect[]) => void =
 
 		const moreEffectsSoonMessage: HTMLElement = globalWrapper.document.createElement('div') as HTMLElement
 		moreEffectsSoonMessage.setAttribute('id', 'more-effect-soon-message')
-		moreEffectsSoonMessage.innerHTML = 'more effect coming soon'
+		moreEffectsSoonMessage.innerHTML = 'more effects coming soon'
 		appState.dom.effectTogglesContainer.appendChild(moreEffectsSoonMessage)
 	}
 

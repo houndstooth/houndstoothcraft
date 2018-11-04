@@ -8,6 +8,7 @@
     <mapping directory="$PROJECT_DIR$/effects/ginghoundstootham" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/gongram" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/harmonitooth" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/holestooth" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/houndazzle" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/houndsmorphosis" vcs="Git" />
   </component>

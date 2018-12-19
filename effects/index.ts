@@ -1,5 +1,5 @@
 export { cmyktoothEffect } from './cmyktooth'
-export { ginghamChevronContinuumEffect } from './gingham-chevron-continuum'
+export { ginghamChevronContinuumEffect } from './ginghamChevronContinuum'
 export { gongramEffect } from './gongram'
 export { harmonitoothEffect } from './harmonitooth'
 export { houndazzleEffect } from './houndazzle'

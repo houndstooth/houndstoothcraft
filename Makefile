@@ -1,8 +1,7 @@
-.PHONY: test, lint
-
 cover:
 	npm run cover
 
+.PHONY: lint
 lint:
 	npm run lint
 
@@ -27,6 +26,7 @@ push:
 restart:
 	npm run restart
 
+.PHONY: test
 test:
 	npm t
 

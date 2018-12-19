@@ -7,9 +7,9 @@
 [submodule "ginghoundstootham"]
 	path = effects/ginghoundstootham
 	url = git@github.com:Houndstooth/effect-ginghoundstootham.git
-[submodule "gingham-chevron-continuum"]
-	path = effects/gingham-chevron-continuum
-	url = git@github.com:Houndstooth/effect-gingham-chevron-continuum.git
+[submodule "ginghamChevronContinuum"]
+	path = effects/ginghamChevronContinuum
+	url = git@github.com:Houndstooth/effect-ginghamChevronContinuum.git
 [submodule "gongram"]
 	path = effects/gongram
 	url = git@github.com:Houndstooth/effect-gongram.git

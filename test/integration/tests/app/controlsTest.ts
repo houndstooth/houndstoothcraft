@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 
 import * as effects from '../../../../effects'
-import { getGinghamChevronContinuumStripePositions } from '../../../../effects/gingham-chevron-continuum/pattern'
+import { getGinghamChevronContinuumStripePositions } from '../../../../effects/ginghamChevronContinuum/pattern'
 import { GONGRAM_COLOR_SET } from '../../../../effects/gongram/constants'
 import {
 	appState, BLACK, createEffectToggles, Frame, NamedEffect, patternState, setupAvailableEffects, to,

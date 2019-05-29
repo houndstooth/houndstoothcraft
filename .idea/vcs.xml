@@ -4,7 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/cmyktooth" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/derasterized" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/effects/gingham-chevron-continuum" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/effects/ginghamChevronContinuum" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/ginghoundstootham" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/gongram" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/effects/harmonitooth" vcs="Git" />

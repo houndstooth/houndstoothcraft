@@ -1,6 +1,7 @@
 import { Path } from '../../app'
 import { from, to } from '../../utilities'
 import { Outline } from '../stripe'
+
 import applyScroll from './applyScroll'
 import applyTilt from './applyTilt'
 import applyZoom from './applyZoom'

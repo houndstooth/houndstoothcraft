@@ -2,11 +2,14 @@
 
 set -e
 
-if [[ -z "${PWS_ORG+x}" ]] ; then
-    printf "${Cyan}Please set PWS_ORG, PWS_SPACE, PWS_USERNAME, and PWS_PASSWORD environment variables if you would like to automatically push to a Cloud Foundry.\n${NC}"
-    exit 1
+if [[ $(gcloud config configurations list | grep -m1 houndstoothcraft) ]] ; then
+	echo "The 'houndstoothcraft' configuration already exists."
 else
-    cf login -a api.run.pivotal.io -o "$PWS_ORG" -s "$PWS_SPACE" -u "$PWS_USERNAME" -p "$PWS_PASSWORD"
+	gcloud config configurations create houndstoothcraft
 fi
+gcloud config configurations activate houndstoothcraft
+gcloud config set project houndstoothcraft
+gcloud config set account kingwoodchuckii@gmail.com
+gcloud auth login kingwoodchuckii@gmail.com
 
-cf zero-downtime-push houndstoothcraft -f manifest.yml
+gcloud app deploy -q

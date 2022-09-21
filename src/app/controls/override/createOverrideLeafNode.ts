@@ -1,6 +1,7 @@
 import { from } from '../../../utilities'
 import { appState } from '../../appState'
 import { FullSettingPath, SettingStep } from '../../setting'
+
 import { OverrideParentNode } from './types'
 
 const createOverrideLeafNode: (_: FullSettingPath) => void =

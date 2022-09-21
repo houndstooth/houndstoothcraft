@@ -3,7 +3,7 @@ import { StandardTileExpectation, standardTileIsColors } from '../../helpers'
 
 describe('.tileSettings', () => {
 	describe('.tileSize', () => {
-		it('adjusts the size in pixels of each tile', async (done: DoneFn) => {
+		it('adjusts the size in pixels of each tile', (done: DoneFn) => {
 			appState.settings.overrides = {
 				basePattern: {
 					tileSettings: {
@@ -49,7 +49,7 @@ describe('.tileSettings', () => {
 		})
 
 		describe('when also zooming', () => {
-			it('multiplies the effect of taking up more pixels', async (done: DoneFn) => {
+			it('multiplies the effect of taking up more pixels', (done: DoneFn) => {
 				appState.settings.overrides = {
 					basePattern: {
 						tileSettings: {

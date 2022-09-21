@@ -1,4 +1,5 @@
 import { codeUtilities } from '../utilities'
+
 import { patternState } from './patternState'
 import { FullPatternBaseValues } from './types'
 

@@ -3,6 +3,7 @@ import { globalWrapper } from '../../../utilities'
 import { appState } from '../../appState'
 import { resolveGrid } from '../grid'
 import { thisPatternHasNotBeenCanceled } from '../pattern'
+
 import { ExecuteTileParams } from './types'
 import updateProgress from './updateProgress'
 
@@ -12,7 +13,7 @@ const executeTile: (_: ExecuteTileParams) => void =
 			() => {
 				if (thisPatternHasNotBeenCanceled.default(patternId)) {
 					tile.default({ address })
-					appState.execute.tilesCompleted++
+					appState.execute.tilesCompleted += 1
 					updateProgress()
 					maybeResolveGrid()
 				}
@@ -31,4 +32,4 @@ const maybeResolveGrid: () => void =
 		}
 	}
 
-export default executeTile
+export const wrapper = { executeTile }

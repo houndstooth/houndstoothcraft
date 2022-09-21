@@ -1,4 +1,5 @@
 import { applyViewForShape, Outline } from '../../../pattern'
+
 import clipPath from './clipPath'
 import createPath from './createPath'
 import { Path } from './types'

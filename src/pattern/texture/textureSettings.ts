@@ -1,6 +1,7 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
 import { Bool, False, FunctionsOf, Rec, True } from '../types'
+
 import { ExecuteTexture } from './types'
 
 // tslint:disable-next-line:no-unused-variable

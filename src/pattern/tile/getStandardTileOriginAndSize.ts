@@ -1,6 +1,7 @@
 import { from, to } from '../../utilities'
 import { AddressAsParam } from '../grid'
 import { patternState } from '../patternState'
+
 import { TileOriginAndSize, Unit } from './types'
 
 const getStandardTileOriginAndSize: (_: AddressAsParam) => TileOriginAndSize =

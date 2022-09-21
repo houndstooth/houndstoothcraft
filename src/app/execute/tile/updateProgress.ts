@@ -1,5 +1,6 @@
 import { from } from '../../../utilities'
 import { appState } from '../../appState'
+
 import { UpdateProgressParams } from './types'
 
 const ONE_HUNDRED_PERCENT: number = 100
@@ -35,7 +36,7 @@ const updateProgressMessage: (_: UpdateProgressParams) => void =
 	({ currentLayerValue, endLayerValue, percentage }: UpdateProgressParams): void => {
 		const animationsAndLayersMessages: string[] = []
 		if (appState.controls.animating) {
-			animationsAndLayersMessages.push(` frame ${appState.controls.currentFrame}`)
+			animationsAndLayersMessages.push(` frame ${String(appState.controls.currentFrame)}`)
 		}
 		if (endLayerValue) {
 			animationsAndLayersMessages.push(` layer ${currentLayerValue}/${endLayerValue}`)

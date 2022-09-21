@@ -20,6 +20,7 @@ describe('composeMainHoundstooth', () => {
 
 		subject()
 
+		// @ts-ignore
 		const composePatternsCalls: CallInfo[] = composePatternsSpy.calls.all()
 
 		expect(composePatternsCalls.length).toBe(9)

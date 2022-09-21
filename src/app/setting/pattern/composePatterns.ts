@@ -1,6 +1,7 @@
 // tslint:disable:no-any no-unsafe-any
 
 import { from } from '../../../utilities'
+
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import mapOverPattern from './mapOverPattern'
 import { ComposePatternsParams, PatternMapFunctionParams } from './types'

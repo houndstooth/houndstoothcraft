@@ -1,4 +1,5 @@
 import { from, mathUtilities, to } from '../../utilities'
+
 import { Coordinate, RotateCoordinateParams } from './types'
 
 const rotateCoordinate: (_: RotateCoordinateParams) => Coordinate =

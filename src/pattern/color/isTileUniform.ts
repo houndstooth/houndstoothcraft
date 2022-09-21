@@ -1,5 +1,6 @@
 import { Color } from '../../types'
 import { codeUtilities } from '../../utilities'
+
 import getColor from './getColor'
 import { ShapeColorIndex } from './types'
 

@@ -1,6 +1,7 @@
 // tslint:disable:no-any
 
 import { Color } from '../../types'
+
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
 import { ColorSettings } from './colorSettings'
 import { BLACK, TRANSPARENT } from './constants'

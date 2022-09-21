@@ -23,6 +23,7 @@ describe('create label', () => {
 		label = createMockElement({ children, attributeObject }) as HTMLLabelElement
 		spyOn(globalWrapper.document, 'createElement').and.returnValue(label)
 
+		// @ts-ignore
 		spyOn(globalWrapper.document, 'createTextNode').and.returnValue(name)
 
 		spyOn(createCheckbox, 'default').and.returnValue(checkbox)

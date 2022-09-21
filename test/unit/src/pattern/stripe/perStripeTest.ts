@@ -23,6 +23,7 @@ describe('per stripe', () => {
 		// tslint:disable-next-line:no-unsafe-any
 		subject({ getStripePosition: getStripePositionSpy })
 		// tslint:disable-next-line:no-unsafe-any
+		// @ts-ignore
 		const spyCalls: CallInfo[] = getStripePositionSpy.calls.all()
 		expect(spyCalls.length).toBe(4)
 		expect(spyCalls[ 0 ].args[ 0 ]).toEqual({ stripeIndex: 0, stripeCount: 4 })

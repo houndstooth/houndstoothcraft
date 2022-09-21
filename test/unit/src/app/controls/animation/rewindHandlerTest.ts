@@ -19,6 +19,7 @@ describe('rewind handler', () => {
 		spyOn(updateCurrentFrame, 'default')
 		spyOn(clearAnimationIntervalAndRemoveFromState, 'default')
 		executeSelectedEffectsSpy = spyOn(executeEffect, 'default')
+		// @ts-ignore
 			.and.returnValue(new Promise<() => void>((): void => undefined))
 	})
 

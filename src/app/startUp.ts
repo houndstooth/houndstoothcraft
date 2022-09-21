@@ -1,4 +1,5 @@
 import { NamedEffect } from '../types'
+
 import { createEffectToggles } from './dom'
 import { executeEffect } from './execute'
 import { setupAvailableEffects } from './setting'

@@ -1,5 +1,6 @@
 import { codeUtilities, from } from '../../utilities'
 import { patternState } from '../patternState'
+
 import {
 	GetShapeColorIndicesWithOffset,
 	GetShapeColorIndicesWithOffsetParams,

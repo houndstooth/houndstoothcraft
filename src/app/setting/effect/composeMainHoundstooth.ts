@@ -1,6 +1,7 @@
 import { appState } from '../../appState'
 import { DEFAULT_ANIMATIONS_PATTERN, DEFAULT_BASE_PATTERN, DEFAULT_LAYERS_PATTERN } from '../defaults'
 import { composePatterns } from '../pattern'
+
 import { ComposePatternParams } from './types'
 
 const composeMainHoundstooth: () => void =

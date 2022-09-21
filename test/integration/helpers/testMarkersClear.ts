@@ -1,4 +1,5 @@
 import { CANVAS_SIZE, from } from '../../../src/indexForTest'
+
 import getTestMarkersContext from './getTestMarkersContext'
 
 const testMarkersClear: () => void =

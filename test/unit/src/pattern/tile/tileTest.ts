@@ -150,6 +150,7 @@ describe('tile', () => {
 				it('converts the tile into shapes, each one a stripe, each one knowing its stripe index', () => {
 					subject({ address })
 
+					// @ts-ignore
 					const shapes: CallInfo[] = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({ stripeIndex: 0 }))
@@ -161,6 +162,7 @@ describe('tile', () => {
 				it('passes along options that the outline getting function will need', () => {
 					subject({ address })
 
+					// @ts-ignore
 					const shapes: CallInfo[] = shapeSpy.calls.all()
 
 					expect(shapes[ 0 ].args[ 0 ]).toEqual(jasmine.objectContaining({

@@ -46,7 +46,7 @@ describe('animation', () => {
 			appState.execute.currentLayer = to.Layer(0)
 		})
 
-		it('does nothing', async (done: DoneFn) => {
+		it('does nothing', async () => {
 			await subject({ animationFunctionObjects, layerFunctionObjects })
 
 			expect(clearContexts.default).not.toHaveBeenCalled()
@@ -56,8 +56,6 @@ describe('animation', () => {
 			expect(updateCurrentFrame.default).not.toHaveBeenCalled()
 			expect(clearAnimationIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
 			expect(appState.execute.resolveAnimation).not.toHaveBeenCalled()
-
-			done()
 		})
 	})
 
@@ -69,7 +67,7 @@ describe('animation', () => {
 			appState.execute.currentLayer = to.Layer(3)
 		})
 
-		it('does nothing', async (done: DoneFn) => {
+		it('does nothing', async () => {
 			await subject({ animationFunctionObjects, layerFunctionObjects })
 
 			expect(clearContexts.default).not.toHaveBeenCalled()
@@ -79,8 +77,6 @@ describe('animation', () => {
 			expect(updateCurrentFrame.default).not.toHaveBeenCalled()
 			expect(clearAnimationIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
 			expect(appState.execute.resolveAnimation).not.toHaveBeenCalled()
-
-			done()
 		})
 	})
 
@@ -92,7 +88,7 @@ describe('animation', () => {
 			appState.execute.currentLayer = to.Layer(0)
 		})
 
-		it('does nothing', async (done: DoneFn) => {
+		it('does nothing', async () => {
 			await subject({ animationFunctionObjects, layerFunctionObjects })
 
 			expect(clearContexts.default).not.toHaveBeenCalled()
@@ -102,8 +98,6 @@ describe('animation', () => {
 			expect(updateCurrentFrame.default).not.toHaveBeenCalled()
 			expect(clearAnimationIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
 			expect(appState.execute.resolveAnimation).not.toHaveBeenCalled()
-
-			done()
 		})
 	})
 
@@ -115,77 +109,63 @@ describe('animation', () => {
 		})
 
 		describe('when it should refresh', () => {
-			it('does', async (done: DoneFn) => {
+			it('does', async () => {
 				shouldRefreshCanvasSpy.and.returnValue(true)
 
 				await subject({ animationFunctionObjects, layerFunctionObjects })
 
 				expect(clearContexts.default).toHaveBeenCalled()
-
-				done()
 			})
 		})
 
 		describe('when it should not refresh', () => {
-			it('does not', async (done: DoneFn) => {
+			it('does not', async () => {
 				shouldRefreshCanvasSpy.and.returnValue(false)
 
 				await subject({ animationFunctionObjects, layerFunctionObjects })
 
 				expect(clearContexts.default).not.toHaveBeenCalled()
-
-				done()
 			})
 		})
 
-		it('executes a pattern with the function objects', async (done: DoneFn) => {
+		it('executes a pattern with the function objects', async () => {
 			await subject({ animationFunctionObjects, layerFunctionObjects })
 
 			expect(executePattern.default).toHaveBeenCalledWith({ animationFunctionObjects, layerFunctionObjects })
-
-			done()
 		})
 
-		it('mixes down the contexts', async (done: DoneFn) => {
+		it('mixes down the contexts', async () => {
 			await subject({ animationFunctionObjects, layerFunctionObjects })
 
 			expect(mixDownContexts.default).toHaveBeenCalled()
-
-			done()
 		})
 
 		describe('exporting frames', () => {
-			it('saves canvas if should', async (done: DoneFn) => {
+			it('saves canvas if should', async () => {
 				appState.controls.exportFrames = true
 
 				await subject({ animationFunctionObjects, layerFunctionObjects })
 
 				expect(saveCanvas.default).toHaveBeenCalled()
-
-				done()
 			})
 
-			it('does not if should not', async (done: DoneFn) => {
+			it('does not if should not', async () => {
 				appState.controls.exportFrames = false
 
 				await subject({ animationFunctionObjects, layerFunctionObjects })
 
 				expect(saveCanvas.default).not.toHaveBeenCalled()
-
-				done()
 			})
 		})
 
-		it('updates the current frame', async (done: DoneFn) => {
+		it('updates the current frame', async () => {
 			await subject({ animationFunctionObjects, layerFunctionObjects })
 
 			expect(updateCurrentFrame.default).toHaveBeenCalledWith(to.Frame(45))
-
-			done()
 		})
 
 		describe('maybe resolving the animation', () => {
-			it('does not if the end frame is zero', async (done: DoneFn) => {
+			it('does not if the end frame is zero', async () => {
 				appState.controls.endFrame = to.Frame(0)
 				appState.controls.currentFrame = to.Frame(3)
 
@@ -193,12 +173,10 @@ describe('animation', () => {
 
 				expect(appState.execute.resolveAnimation).not.toHaveBeenCalled()
 				expect(clearAnimationIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
-
-				done()
 			})
 
 			// tslint:disable-next-line:max-line-length
-			it('does not if the end frame is greater than zero and greater than or equal to the current frame', async (done: DoneFn) => {
+			it('does not if the end frame is greater than zero and greater than or equal to the current frame', async () => {
 				appState.controls.endFrame = to.Frame(3)
 				appState.controls.currentFrame = to.Frame(3)
 
@@ -206,11 +184,9 @@ describe('animation', () => {
 
 				expect(appState.execute.resolveAnimation).not.toHaveBeenCalled()
 				expect(clearAnimationIntervalAndRemoveFromState.default).not.toHaveBeenCalled()
-
-				done()
 			})
 
-			it('does if the end frame is greater than zero but less than the current frame', async (done: DoneFn) => {
+			it('does if the end frame is greater than zero but less than the current frame', async () => {
 				appState.controls.endFrame = to.Frame(3)
 				appState.controls.currentFrame = to.Frame(4)
 
@@ -218,8 +194,6 @@ describe('animation', () => {
 
 				expect(appState.execute.resolveAnimation).toHaveBeenCalled()
 				expect(clearAnimationIntervalAndRemoveFromState.default).toHaveBeenCalled()
-
-				done()
 			})
 		})
 	})

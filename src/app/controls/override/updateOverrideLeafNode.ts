@@ -5,6 +5,7 @@ import { appState } from '../../appState'
 import { concatFullSettingPath, FullSettingPath, getEffectSetting, SettingPath } from '../../setting'
 // tslint:disable-next-line:no-reaching-imports
 import { DEFAULT_MAIN_HOUNDSTOOTH } from '../../setting/defaults'
+
 import getOverrideLeafNode from './getOverrideLeafNode'
 import { OverrideLeafNode } from './types'
 

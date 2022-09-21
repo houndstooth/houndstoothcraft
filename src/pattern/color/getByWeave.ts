@@ -1,5 +1,6 @@
 import { codeUtilities, from, to } from '../../utilities'
 import { patternState } from '../patternState'
+
 import { GetShapeColorIndicesWithOffset, GetShapeColorIndicesWithOffsetParams, ShapeColorIndex, Weave } from './types'
 
 const getByWeave: GetShapeColorIndicesWithOffset =

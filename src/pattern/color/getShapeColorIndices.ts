@@ -1,6 +1,7 @@
 import { codeUtilities, to } from '../../utilities'
 import { Address, AddressAsParam } from '../grid'
 import { patternState } from '../patternState'
+
 import applySwitcheroo from './applySwitcheroo'
 import { ColorAssignmentSettings } from './colorAssignmentSettings'
 import getBySupertile from './getBySupertile'

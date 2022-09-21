@@ -5,6 +5,7 @@ import { updateCurrentFrame } from '../../controls'
 import { clearContexts, mixDownContexts, saveCanvas } from '../../render'
 import { executePattern } from '../pattern'
 import { ExecuteParams } from '../types'
+
 import clearAnimationIntervalAndRemoveFromState from './clearAnimationIntervalAndRemoveFromState'
 
 const animation: (_: ExecuteParams) => Promise<void> =

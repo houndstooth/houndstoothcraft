@@ -16,7 +16,7 @@ The `npm start` command serves a development version of the application, as well
 
 During development, run unit tests regularly with `npm test`.
 
-When you have made some commits, run `npm run ship` to share your work. This command will push your code changes to Github and the updated application to Pivotal Web Services. Your deployment will be rejected if your code has not been rebased against the latest changes.
+When you have made some commits, run `npm run ship` to share your work. This command will push your code changes to Github and the updated application to Google Cloud Platform. Your deployment will be rejected if your code has not been rebased against the latest changes.
 Your code must also use the most up-to-date versions of all dependencies, be free of linting errors, pass test coverage thresholds, and of course pass all tests.
 
 `npm run setup` will pull the latest code from each submodule. If you are picking up on a workstation which has been setup recently but does not have the latest code, `npm run pull` is your command. It pulls the parent and all submodules, with rebase in both cases (this project practices single-branch development).

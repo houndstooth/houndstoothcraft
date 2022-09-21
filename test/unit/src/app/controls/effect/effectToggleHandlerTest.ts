@@ -106,5 +106,6 @@ describe('effect toggle handler', () => {
 
 const simulateClick: SimulateClick = (checkbox: HTMLInputElement, handler: (_: Event) => void): void => {
 	checkbox.checked = !checkbox.checked
+	// @ts-ignore
 	handler(createMockEvent({ target: checkbox }))
 }

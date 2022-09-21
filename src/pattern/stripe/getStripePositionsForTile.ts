@@ -1,5 +1,6 @@
 import { Address } from '../grid'
 import { patternState } from '../patternState'
+
 import { StripePositionSettings } from './stripePositionSettings'
 import { StripePosition } from './types'
 

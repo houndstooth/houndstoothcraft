@@ -6,6 +6,7 @@ import {
 	toggleOverrideParentOpen,
 } from '../../controls'
 import { FullSettingPath, SettingStep } from '../../setting'
+
 import appendOverride from './appendOverride'
 import createOverrideClear from './createOverrideClear'
 import createOverrideId from './createOverrideId'
@@ -13,7 +14,7 @@ import { CreateOverrideParams } from './types'
 
 const createOverrideParent: (_: CreateOverrideParams) => void =
 	({ settingName, settingPath, options, patternName }: CreateOverrideParams): void => {
-		const overrideParent: HTMLDetailsElement = globalWrapper.document.createElement('details') as HTMLDetailsElement
+		const overrideParent: HTMLDetailsElement = globalWrapper.document.createElement('details')
 		overrideParent.open = isOverrideParentOpen({ settingName, settingPath, patternName })
 
 		const overrideParentSummary: HTMLElement = createOverrideParentSummary({

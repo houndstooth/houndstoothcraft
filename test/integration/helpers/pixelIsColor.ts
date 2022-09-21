@@ -1,5 +1,6 @@
 import { Color, Coordinate, from, parseColor } from '../../../src/indexForTest'
 import { isCloseTo } from '../../helpers'
+
 import { CheckColorProperties, Key, PixelIsColor } from './types'
 
 const pixelIsColor: PixelIsColor =

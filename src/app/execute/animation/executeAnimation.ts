@@ -1,6 +1,7 @@
 import { globalWrapper } from '../../../utilities'
 import { appState } from '../../appState'
 import { ExecuteParams } from '../types'
+
 import animation from './animation'
 
 const FRAME_RATE: number = 30
@@ -14,6 +15,7 @@ const executeAnimation: (_: ExecuteParams) => Promise<void> =
 			FRAME_RATE,
 		)
 
+		// @ts-ignore
 		await new Promise<(_: () => void) => void>(storeResolveAnimation)
 	}
 

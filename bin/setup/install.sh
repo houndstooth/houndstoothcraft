@@ -21,16 +21,10 @@ if [[ $OSTYPE == darwin* ]] ; then
         brew cask install webstorm
     fi
 
-    if hash cf 2>/dev/null; then
-        printf "Cloud Foundry CLI found.\n"
+    if gcloud cf 2>/dev/null; then
+        printf "Google Cloud Platform CLI found.\n"
     else
-        brew tap cloudfoundry/tap
-        brew install cf-cli
-
-        curl -L $(curl -s https://api.github.com/repos/contraband/autopilot/releases/latest | grep browser_download_url | grep darwin | cut -d '"' -f 4) --output autopilot-darwin
-        chmod +x autopilot-darwin
-        cf install-plugin autopilot-darwin -y
-        rm autopilot-darwin
+        printf "Missing Google Cloud Platform CLI.\n"
     fi
 
     if [[ -e /Applications/iTerm.app/ ]] ; then
@@ -47,7 +41,7 @@ if [[ $OSTYPE == darwin* ]] ; then
 else
     if hash node 2>/dev/null; then printf "Missing Node.\n"; fi
     if [[ -e /c/Program\ Files/JetBrains/Webstorm\ 2017.3.2/bin/webstorm64.exe ]] ; then printf "Missing Webstorm.\n"; fi
-    if hash cf 2>/dev/null; then printf "Missing Cloud Foundry CLI and Autopilot plugin.\n"; fi
+    if hash gcloud 2>/dev/null; then printf "Missing Google Cloud Platform CLI.\n"; fi
     if [[ -e /c/Program\ Files/Git/git-bash.exe ]] ; then printf "Missing Git BASH.\n"; fi
     if [[ -e /c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe ]] ; then printf "Missing Google Chrome.\n"; fi
 fi

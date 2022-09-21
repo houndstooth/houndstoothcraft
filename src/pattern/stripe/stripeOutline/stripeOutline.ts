@@ -1,5 +1,6 @@
 import { from } from '../../../utilities'
 import { GetOutlineParams, Outline, OutlineOptions } from '../types'
+
 import firstPoint from './firstPoint'
 import lastPoints from './lastPoints'
 import middlePoints from './middlePoints'

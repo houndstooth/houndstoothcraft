@@ -10,6 +10,7 @@ describe('create description', () => {
 	it('creates a new description in the descriptions container', () => {
 		const children: HTMLElement[] = []
 
+		// @ts-ignore
 		spyOn(globalWrapper.document, 'createElement').and.callFake(createMockElement)
 		appState.dom.descriptionsContainer = createMockElement({ children }) as HTMLElement
 

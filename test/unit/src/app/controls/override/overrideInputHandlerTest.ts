@@ -16,6 +16,7 @@ describe('override input handler', () => {
 		spyOn(executeEffect, 'default')
 		spyOn(updateOverrideLeafNode, 'default')
 
+		// @ts-ignore
 		const event: Event = createMockEvent({
 			target: createMockElement({
 				parentNodeId: 'basePattern-colorSettings-opacity',
@@ -44,6 +45,7 @@ describe('override input handler', () => {
 	})
 
 	it('handles functions', () => {
+		// @ts-ignore
 		const functionEvent: Event = createMockEvent({
 			target: createMockElement({
 				parentNodeId: 'basePattern-colorSettings-opacity',
@@ -65,6 +67,7 @@ describe('override input handler', () => {
 	})
 
 	it('handles garbage', () => {
+		// @ts-ignore
 		const functionEvent: Event = createMockEvent({
 			target: createMockElement({
 				parentNodeId: 'basePattern-colorSettings-opacity',

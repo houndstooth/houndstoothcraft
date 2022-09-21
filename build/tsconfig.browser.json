@@ -4,11 +4,11 @@
     "module": "esnext"
   },
   "include": [
-    "src/**/*",
-    "effects/**/*"
+    "../src/**/*",
+    "../effects/**/*"
   ],
   "exclude": [
-    "test",
-    "effects/*/test/**/*"
+    "../test",
+    "../effects/*/test/**/*"
   ]
 }

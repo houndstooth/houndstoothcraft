@@ -1,4 +1,5 @@
 import { appState } from '../../appState'
+
 import mainHoundstoothHasAnimations from './mainHoundstoothHasAnimations'
 
 const enableOrDisableAnimationControls: () => void =

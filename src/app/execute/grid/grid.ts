@@ -12,7 +12,7 @@ const grid: (_: PatternIdAsParam) => void =
 
 		addresses.forEach((row: Address[]): void => {
 			row.forEach((address: Address): void => {
-				executeTile.default({ address, patternId })
+				executeTile.wrapper.executeTile({ address, patternId })
 			})
 		})
 	}

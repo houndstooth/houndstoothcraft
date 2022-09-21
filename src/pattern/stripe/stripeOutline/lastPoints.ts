@@ -1,4 +1,5 @@
 import { from, to } from '../../../utilities'
+
 import { pointAlongBottomEdge, pointAlongLeftEdge, pointInBottomLeftCorner } from './stripePoints'
 import { PointsParamsPlusStripeStart } from './types'
 

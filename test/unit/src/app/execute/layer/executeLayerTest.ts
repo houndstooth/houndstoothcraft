@@ -20,34 +20,30 @@ describe('execute layer', () => {
 	let executeGridSpy: Spy
 
 	beforeEach(() => {
-		subject = executeLayer.default
+		subject = executeLayer.wrapper.executeLayer
 		spyOn(initializePatternState, 'default')
 		callFunctionsPerSettingSpy = spyOn(callFunctionsPerSetting, 'default')
-		executeGridSpy = spyOn(executeGrid, 'default')
+		executeGridSpy = spyOn(executeGrid.wrapper, 'executeGrid')
 	})
 
-	it('sets the current layer on the appState', async (done: DoneFn) => {
+	it('sets the current layer on the appState', async () => {
 		const layer: Layer = to.Layer(12)
 		appState.execute.currentLayer = to.Layer(11)
 
 		await subject({ layer, layerFunctionObjects, patternId })
 
 		expect(appState.execute.currentLayer).toBe(to.Layer(12))
-
-		done()
 	})
 
-	it('executes the grid for this layer, and maybe logging', async (done: DoneFn) => {
+	it('executes the grid for this layer, and maybe logging', async () => {
 		const layer: Layer = to.Layer(12)
 
 		await subject({ layer, layerFunctionObjects, patternId })
 
 		expect(executeGridSpy).toHaveBeenCalledWith({ patternId })
-
-		done()
 	})
 
-	it('calls layer functions for setting, even the first layer', async (done: DoneFn) => {
+	it('calls layer functions for setting, even the first layer', async () => {
 		const layer: Layer = to.Layer(0)
 
 		await subject({ layer, layerFunctionObjects, patternId })
@@ -55,17 +51,13 @@ describe('execute layer', () => {
 		expect(callFunctionsPerSettingSpy).toHaveBeenCalledWith({
 			settingFunctionObjects: layerFunctionObjects,
 		})
-
-		done()
 	})
 
-	it('initializes the pattern state from the app state\'s current pattern', async (done: DoneFn) => {
+	it('initializes the pattern state from the app state\'s current pattern', async () => {
 		const layer: Layer = to.Layer(0)
 
 		await subject({ layer, layerFunctionObjects, patternId })
 
 		expect(initializePatternState.default).toHaveBeenCalledWith(appState.settings.currentPattern)
-
-		done()
 	})
 })

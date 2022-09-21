@@ -3,6 +3,7 @@
 import { Effect } from '../../../types'
 import { codeUtilities, from } from '../../../utilities'
 import { SettingPath, SettingStep } from '../types'
+
 import { GetEffectSetting } from './types'
 
 const getEffectSetting: GetEffectSetting =

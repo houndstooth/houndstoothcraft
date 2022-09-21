@@ -4,7 +4,7 @@ describe('execute grid', () => {
 	let subject: (_: { patternId: number }) => Promise<void>
 	const patternId: number = 23457
 	beforeEach(() => {
-		subject = executeGrid.default
+		subject = executeGrid.wrapper.executeGrid
 		spyOn(grid, 'default')
 	})
 

@@ -5,16 +5,16 @@ module.exports = {
 			{
 				test: /\.ts$/,
 				exclude: /node_modules/,
-				loader: 'awesome-typescript-loader',
-				query: {
-					configFileName: './build/tsconfig.browser.json',
+				loader: 'ts-loader',
+				options: {
+					configFile: 'tsconfig.browser.json',
 				},
 			},
 		],
 	},
 	resolve: {
-		extensions: [ ".ts", ".js" ]
+		extensions: [ ".ts", ".js" ],
+		fallback: { fs: false }
 	},
 	output: { path: __dirname + '/../dist', filename: 'bundle.js' },
-	node: { fs: 'empty' },
 }

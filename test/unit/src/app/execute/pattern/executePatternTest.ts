@@ -24,21 +24,19 @@ describe('execute pattern', () => {
 		appState.execute.patternId = 99
 	})
 
-	it('calls the animation functions, to render based on the current frame', async (done: DoneFn) => {
+	it('calls the animation functions, to render based on the current frame', async () => {
 		spyOn(callFunctionsPerSetting, 'default')
-		spyOn(executeLayer, 'default')
+		spyOn(executeLayer.wrapper, 'executeLayer')
 
 		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(callFunctionsPerSetting.default).toHaveBeenCalledWith({
 			settingFunctionObjects: animationFunctionObjects,
 		})
-
-		done()
 	})
 
-	it('executes a layer for each layer from zero to the end layer, inclusive', async (done: DoneFn) => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'default')
+	it('executes a layer for each layer from zero to the end layer, inclusive', async () => {
+		const executeLayerSpy: Spy = spyOn(executeLayer.wrapper, 'executeLayer')
 
 		await subject({ animationFunctionObjects, layerFunctionObjects })
 
@@ -68,13 +66,12 @@ describe('execute pattern', () => {
 			layerFunctionObjects,
 			patternId: 99,
 		})
-
-		done()
 	})
 
 	// tslint:disable-next-line:max-line-length
-	it('stops executing layers if the frame id has changed on the app state (i.e. it has been cancelled)', async (done: DoneFn) => {
-		const executeLayerSpy: Spy = spyOn(executeLayer, 'default').and.callFake(({ layer }: { layer: Layer }) => {
+	it('stops executing layers if the frame id has changed on the app state (i.e. it has been cancelled)', async () => {
+		// @ts-ignore
+		const executeLayerSpy: Spy = spyOn(executeLayer.wrapper, 'executeLayer').and.callFake(({ layer }: { layer: Layer }) => {
 			if (from.Layer(layer) === 2) {
 				appState.execute.patternId = appState.execute.patternId + 1
 			}
@@ -108,18 +105,14 @@ describe('execute pattern', () => {
 			layerFunctionObjects,
 			patternId: 99,
 		})
-
-		done()
 	})
 
-	it('completes the layers', async (done: DoneFn) => {
-		spyOn(executeGrid, 'default')
+	it('completes the layers', async () => {
+		spyOn(executeGrid.wrapper, 'executeGrid')
 		spyOn(completeLayers, 'default')
 
 		await subject({ animationFunctionObjects, layerFunctionObjects })
 
 		expect(completeLayers.default).toHaveBeenCalled()
-
-		done()
 	})
 })

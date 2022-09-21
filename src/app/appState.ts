@@ -1,4 +1,5 @@
 import { codeUtilities } from '../utilities'
+
 import { DEFAULT_APP_STATE } from './defaults'
 import { AppState } from './types'
 

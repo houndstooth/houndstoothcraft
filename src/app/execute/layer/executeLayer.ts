@@ -2,6 +2,7 @@ import { initializePatternState } from '../../../pattern'
 import { appState } from '../../appState'
 import callFunctionsPerSetting from '../callFunctionsPerSetting'
 import { executeGrid } from '../grid'
+
 import { ExecuteLayerParams } from './types'
 
 const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
@@ -12,7 +13,7 @@ const executeLayer: (_: ExecuteLayerParams) => Promise<void> =
 
 		initializePatternState.default(appState.settings.currentPattern)
 
-		await executeGrid.default({ patternId })
+		await executeGrid.wrapper.executeGrid({ patternId })
 	}
 
-export default executeLayer
+export const wrapper = { executeLayer }

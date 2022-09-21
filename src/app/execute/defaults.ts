@@ -1,6 +1,7 @@
 // tslint:disable:no-any
 
 import { Layer } from '../../types'
+
 import { ExecuteState } from './types'
 
 const DEFAULT_ANIMATION_INTERVAL: undefined = undefined

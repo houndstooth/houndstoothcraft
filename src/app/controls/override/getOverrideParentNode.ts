@@ -1,6 +1,7 @@
 import { from } from '../../../utilities'
 import { appState } from '../../appState'
 import { concatFullSettingPath, FullSettingPath, SettingPath, SettingStep } from '../../setting'
+
 import { OverrideParentNode } from './types'
 
 const getOverrideParentNode: (_: FullSettingPath) => OverrideParentNode =

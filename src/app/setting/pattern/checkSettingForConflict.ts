@@ -2,6 +2,7 @@
 
 import { codeUtilities, from, globalWrapper } from '../../../utilities'
 import { formatSetting } from '../../dom'
+
 import concatFullSettingPath from './concatFullSettingPath'
 import getPatternSettingOrCreatePath from './getPatternSettingOrCreatePath'
 import { CheckSettingForConflictParams } from './types'

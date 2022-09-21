@@ -19,9 +19,10 @@ describe('execute tile', () => {
 	let address: Address
 	const patternId: number = 99
 	beforeEach(() => {
-		subject = executeTile.default
+		subject = executeTile.wrapper.executeTile
 		address = to.Address([ 4, 5 ])
 		// tslint:disable-next-line:no-unsafe-any
+		// @ts-ignore
 		setTimeoutSpy = spyOn(globalWrapper.window, 'setTimeout').and.callFake((fn: () => void) => {
 			fn()
 		})

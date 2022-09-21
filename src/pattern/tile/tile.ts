@@ -4,6 +4,7 @@ import { AddressAsParam } from '../grid'
 import { patternState } from '../patternState'
 import { GetStripeArgsParams, getStripePositionsForTile, squareOutline, stripeOutline, StripePosition } from '../stripe'
 import { shape, ShapeArgs, ShapeParams } from '../texture'
+
 import { TileSettings } from './tileSettings'
 import { Tile, TileParams } from './types'
 

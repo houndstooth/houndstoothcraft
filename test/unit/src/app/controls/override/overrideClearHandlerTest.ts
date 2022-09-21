@@ -15,6 +15,7 @@ describe('override clear handler', () => {
 	beforeEach(() => {
 		subject = overrideClearHandler.default
 
+		// @ts-ignore
 		const event: Event = createMockEvent({
 			stopPropagation: stopPropagationSpy,
 			target: createMockElement({

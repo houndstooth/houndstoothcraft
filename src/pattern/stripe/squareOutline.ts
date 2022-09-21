@@ -1,5 +1,6 @@
 import { from, to } from '../../utilities'
 import { TileOriginAndSize } from '../tile'
+
 import { GetOutline, Outline } from './types'
 
 const squareOutline: GetOutline =

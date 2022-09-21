@@ -8,9 +8,9 @@ module.exports = {
 			{
 				test: /\.ts$/,
 				exclude: /node_modules/,
-				loader: 'awesome-typescript-loader',
-				query: {
-					configFileName: './build/tsconfig.test.json',
+				loader: 'ts-loader',
+				options: {
+					configFile: 'build/tsconfig.test.json',
 				},
 			},
 		],

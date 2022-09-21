@@ -1,4 +1,5 @@
 import { codeUtilities, from, to } from '../../utilities'
+
 import { ShapeColorIndex, TransformShapeColorIndices, TransformShapeColorIndicesParams } from './types'
 
 const SWITCHEROO_SIZE: number = 4

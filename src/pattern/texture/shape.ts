@@ -3,6 +3,7 @@ import { codeUtilities } from '../../utilities'
 import { ShapeColorIndex } from '../color'
 import { patternState } from '../patternState'
 import { Outline } from '../stripe'
+
 import solid from './solid'
 import { TextureSettings } from './textureSettings'
 import { ShapeParams, TextureParams } from './types'

@@ -19,6 +19,7 @@ describe('clear contexts', () => {
 
 		subject()
 
+		// @ts-ignore
 		const calls: CallInfo[] = clearContextSpy.calls.all()
 		expect(calls.length).toBe(3)
 		expect(calls[ 0 ].args[ 0 ]).toEqual(context1)

@@ -14,7 +14,7 @@ import { sectionCenterIsColor, standardTileIsColors } from '../../helpers'
 
 describe('.viewSettings', () => {
 	describe('.zoom', () => {
-		it('works', async (done: DoneFn) => {
+		it('works', (done: DoneFn) => {
 			const zoom: number = 2
 			appState.settings.overrides = {
 				basePattern: {
@@ -60,7 +60,7 @@ describe('.viewSettings', () => {
 	})
 
 	describe('.scroll', () => {
-		it('is self-explanatory', async (done: DoneFn) => {
+		it('is self-explanatory', (done: DoneFn) => {
 			const tileSize: Unit = to.Unit(100)
 			appState.settings.overrides = {
 				basePattern: {
@@ -105,7 +105,7 @@ describe('.viewSettings', () => {
 	})
 
 	describe('.tilt', () => {
-		it('rotates the entire grid about the origin', async (done: DoneFn) => {
+		it('rotates the entire grid about the origin', (done: DoneFn) => {
 			const areaSize: Unit = patternState.tileSettings.tileSize
 
 			appState.settings.overrides = {

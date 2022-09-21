@@ -1,4 +1,5 @@
 import { Coordinate, from, to } from '../../../src/indexForTest'
+
 import drawPassMarker from './drawPassMarker'
 import pixelIsColor from './pixelIsColor'
 import { SectionCenterExpectation, SectionCenterParams } from './types'

@@ -2,6 +2,7 @@
 
 import { from } from '../../../utilities'
 import { getCurrentContext } from '../canvas'
+
 import { Path, Pixel } from './types'
 
 const createPath: (_: { path: Path }) => void =

@@ -1,4 +1,5 @@
 import { appState } from '../../appState'
+
 import clearContext from './clearContext'
 
 const clearContexts: () => void =

@@ -19,7 +19,7 @@ describe('.gridSettings', () => {
 	})
 
 	describe('.tileResolution', () => {
-		it('changes how many tiles there are per dimension', async (done: DoneFn) => {
+		it('changes how many tiles there are per dimension', (done: DoneFn) => {
 			appState.settings.overrides = {
 				basePattern: {
 					colorSettings: {
@@ -145,7 +145,7 @@ describe('.gridSettings', () => {
 
 	describe('.includeNegativeQuadrants', () => {
 		// tslint:disable-next-line:max-line-length
-		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', async (done: DoneFn) => {
+		it('quadruples the number of tiles, adding them not only in the positive x positive y quadrant, but negative x positive y, positive x negative y, and negative x negative y', (done: DoneFn) => {
 			appState.settings.overrides = {
 				basePattern: {
 					gridSettings: {

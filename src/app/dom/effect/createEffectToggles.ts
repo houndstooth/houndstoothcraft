@@ -3,6 +3,7 @@
 import { NamedEffect } from '../../../types'
 import { globalWrapper } from '../../../utilities'
 import { appState } from '../../appState'
+
 import createEffectToggle from './createEffectToggle'
 
 const createEffectToggles: (effects: NamedEffect[]) => void =

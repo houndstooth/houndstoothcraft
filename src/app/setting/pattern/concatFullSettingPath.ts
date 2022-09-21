@@ -1,5 +1,6 @@
 import { to } from '../../../utilities'
 import { SettingPath } from '../types'
+
 import { FullSettingPath } from './types'
 
 const concatFullSettingPath: (_: FullSettingPath) => SettingPath =

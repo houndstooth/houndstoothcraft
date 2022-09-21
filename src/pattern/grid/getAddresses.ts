@@ -1,5 +1,6 @@
 import { codeUtilities, to } from '../../utilities'
 import { patternState } from '../patternState'
+
 import { GridSettings } from './gridSettings'
 import { Address, Grid } from './types'
 

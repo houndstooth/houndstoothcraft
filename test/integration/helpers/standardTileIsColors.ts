@@ -1,4 +1,5 @@
 import { to } from '../../../src/indexForTest'
+
 import sectionCenterIsColor from './sectionCenterIsColor'
 import { SectionCenterExpectation, StandardTileExpectation } from './types'
 

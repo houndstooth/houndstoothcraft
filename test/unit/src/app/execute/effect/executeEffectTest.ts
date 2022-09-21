@@ -28,7 +28,9 @@ describe('execute effect', () => {
 		spyOn(updateOverrides, 'default')
 		spyOn(updateAnimatingState, 'default')
 		spyOn(updateOverrideNodes, 'default')
+		// @ts-ignore
 		spyOn(executePattern, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
+		// @ts-ignore
 		spyOn(executeAnimation, 'default').and.returnValue(new Promise<() => void>((): void => undefined))
 		spyOn(initializeCurrentPatternFromBasePattern, 'default').and.callThrough()
 		prepareFunctionObjectsPerSettingSpy = spyOn(prepareFunctionObjectsPerSetting, 'default')

@@ -8,6 +8,7 @@ import { executeEffect } from '../../execute'
 import { clearMixedDownContext } from '../../render'
 import { FullSettingPath, getPatternSettingOrCreatePath, SettingStep } from '../../setting'
 import { enableOrDisableAnimationControls } from '../animation'
+
 import { UpdateOverride } from './types'
 
 const overrideInputHandler: (_: Event) => void =

@@ -1,9 +1,9 @@
 // tslint:disable:no-unsafe-any
 
+import { wrapper as executeGridWrapper } from '../../../src/app/execute/grid/executeGrid'
+import { wrapper as executeTileWrapper } from '../../../src/app/execute/tile/executeTile'
 import {
 	CANVAS_SIZE,
-	executeGrid,
-	executeTile,
 	from,
 	grid,
 	mixDownContexts,
@@ -24,8 +24,10 @@ beforeEach(() => {
 	testMarkersCanvas.width = from.Px(CANVAS_SIZE)
 	testMarkersCanvas.height = from.Px(CANVAS_SIZE)
 
-	spyOn(executeGrid, 'default').and.callFake(fakeGrid)
-	spyOn(executeTile, 'default').and.callFake(tile.default)
+	// @ts-ignore
+	spyOn(executeGridWrapper, 'executeGrid').and.callFake(fakeGrid)
+	// @ts-ignore
+	spyOn(executeTileWrapper, 'executeTile').and.callFake(tile.default)
 })
 
 const fakeGrid: () => void =

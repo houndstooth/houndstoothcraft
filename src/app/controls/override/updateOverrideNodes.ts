@@ -1,5 +1,6 @@
 import { to } from '../../../utilities'
 import { DEFAULT_BASE_PATTERN, mapOverPattern } from '../../setting'
+
 import updateOverrideLeafNode from './updateOverrideLeafNode'
 
 const updateOverrideNodes: () => void =

@@ -14,7 +14,7 @@ import {
 import { pixelIsColorWithMarker, standardTileIsColors } from '../../helpers'
 
 describe('.layerSettings', () => {
-	xit('blends colors from semi-translucent layers', async (done: DoneFn) => {
+	xit('blends colors from semi-translucent layers', (done: DoneFn) => {
 		appState.settings.overrides = {
 			basePattern: {
 				gridSettings: { tileResolution: 2 },
@@ -44,7 +44,7 @@ describe('.layerSettings', () => {
 		},         0)
 	})
 
-	it('erasing makes holes so material from lower layers shows through', async (done: DoneFn) => {
+	it('erasing makes holes so material from lower layers shows through', (done: DoneFn) => {
 		appState.settings.overrides = {
 			basePattern: {
 				gridSettings: { tileResolution: 0 },

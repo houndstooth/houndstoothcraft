@@ -1,6 +1,7 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
 import { Bool, False, FunctionsOf, Rec, True } from '../types'
+
 import { AssignmentMode, OffsetAddress, Supertile, TransformShapeColorIndices, Weave } from './types'
 
 type ColorAssignmentSettingsSchema<R extends Bool> =

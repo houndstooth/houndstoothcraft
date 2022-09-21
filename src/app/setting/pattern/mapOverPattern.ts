@@ -4,6 +4,7 @@ import { Color } from '../../../types'
 import { codeUtilities, to } from '../../../utilities'
 import { DEFAULT_BASE_PATTERN } from '../defaults'
 import { SettingStep } from '../types'
+
 import deeperPath from './deeperPath'
 import { DeepSettingsMapParams, MapOverPatternParams } from './types'
 

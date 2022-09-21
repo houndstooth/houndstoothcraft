@@ -1,4 +1,4 @@
-export JASMINE_CONFIG_PATH=test/unit/jasmine.unit
+export JASMINE_CONFIG_PATH=test/unit/jasmine.unit.js
 
 export DEV_SERVER_PORT=8080
 export INTEGRATION_TEST_SERVER_PORT=9876

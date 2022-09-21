@@ -11,6 +11,7 @@ describe('patterns have conflicts', () => {
 			colorSettings: {
 				colorAssignmentSettings: {
 					opacity: 1,
+		// @ts-ignore
 					switcheroo: true,
 				},
 			},
@@ -21,6 +22,7 @@ describe('patterns have conflicts', () => {
 		const patternCheckingAgainst: Pattern = {
 			colorSettings: {
 				colorAssignmentSettings: {
+		// @ts-ignore
 					flipGrain: false,
 					opacity: 0,
 				},
@@ -38,6 +40,7 @@ describe('patterns have conflicts', () => {
 			colorSettings: {
 				colorAssignmentSettings: {
 					opacity: 1,
+		// @ts-ignore
 					switcheroo: true,
 				},
 			},
@@ -45,6 +48,7 @@ describe('patterns have conflicts', () => {
 		const patternCheckingAgainst: Pattern = {
 			colorSettings: {
 				colorAssignmentSettings: {
+		// @ts-ignore
 					flipGrain: false,
 					opacity: 1,
 				},

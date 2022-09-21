@@ -38,6 +38,7 @@ describe('mix down contexts', () => {
 
 		subject()
 
+		// @ts-ignore
 		const drawImageSpyCalls: CallInfo[] = drawImageSpy.calls.all()
 		expect(drawImageSpyCalls[ 0 ].args[ 0 ]).toEqual(context1.canvas)
 		expect(drawImageSpyCalls[ 1 ].args[ 0 ]).toEqual(context2.canvas)

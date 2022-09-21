@@ -1,6 +1,7 @@
 import { DEFAULT_PATTERN_STATE, FullPatternBaseValues, PatternFunctions } from '../../pattern'
 import { Effect, Houndstooth, NamedEffect } from '../../types'
 import { ObjectOf } from '../../utilities'
+
 import { SettingsState } from './types'
 
 const DEFAULT_ANIMATIONS_PATTERN: PatternFunctions = {}

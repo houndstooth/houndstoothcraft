@@ -24,7 +24,7 @@ describe('.stripeSettings', () => {
 
 	describe('.stripePositionSettings', () => {
 		describe('.stripeCountMode', () => {
-			it('works in standard mode', async (done: DoneFn) => {
+			it('works in standard mode', (done: DoneFn) => {
 				appState.settings.overrides = {
 					basePattern: {
 						gridSettings: { tileResolution: 1 },
@@ -53,7 +53,7 @@ describe('.stripeSettings', () => {
 		})
 
 		describe('.stripeCount', () => {
-			it('changes the number of stripes in striped tiles', async (done: DoneFn) => {
+			it('changes the number of stripes in striped tiles', (done: DoneFn) => {
 				appState.settings.overrides = {
 					basePattern: {
 						gridSettings: { tileResolution: 2 },

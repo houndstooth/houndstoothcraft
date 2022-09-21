@@ -1,6 +1,7 @@
 // tslint:disable:no-object-literal-type-assertion
 
 import { ObjectOf } from '../../utilities'
+
 import { DomState } from './types'
 
 const DEFAULT_CANVAS_CONTAINER: HTMLElement = {} as HTMLElement

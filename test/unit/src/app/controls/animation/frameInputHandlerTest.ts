@@ -17,6 +17,7 @@ describe('frame input handler', () => {
 		spyOn(clearMixedDownContext, 'default')
 		spyOn(executeEffect, 'default')
 
+		// @ts-ignore
 		const event: Event = createMockEvent({ target: createMockElement({ value: '99' }) as HTMLInputElement })
 		subject(event)
 

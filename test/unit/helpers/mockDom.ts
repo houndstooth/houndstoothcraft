@@ -1,6 +1,7 @@
 // tslint:disable:no-any no-object-literal-type-assertion
 
 import { appState, globalWrapper } from '../../../src/indexForTest'
+
 import createMockElement from './createMockElement'
 import noop from './noop'
 import { MockConsole, MockDocument, MockWindow } from './types'
@@ -57,8 +58,11 @@ const mockWindow: MockWindow = {
 
 const mockDom: () => void =
 	(): void => {
+		// @ts-ignore
 		globalWrapper.console = mockConsole as Console
+		// @ts-ignore
 		globalWrapper.document = mockDocument as Document
+		// @ts-ignore
 		globalWrapper.window = mockWindow as Window
 
 		appState.dom.canvasContainer = createMockElement() as HTMLElement

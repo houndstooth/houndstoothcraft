@@ -9,6 +9,7 @@ import { viewSettings } from './view'
 
 type FunctionsOf<T> = { [P in keyof T]: () => T[P] }
 type Diff<T extends string, U extends string> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T]
+// @ts-ignore
 type Overwrite<T, U> = { [P in Diff<keyof T, keyof U>]: T[P] } & U
 type False = '0'
 type True = '1'

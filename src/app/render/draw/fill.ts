@@ -1,5 +1,6 @@
 import { applyViewForShape, Outline } from '../../../pattern'
 import { Color } from '../../../types'
+
 import createPath from './createPath'
 import fillPath from './fillPath'
 import setupRenderStyle from './setupRenderStyle'

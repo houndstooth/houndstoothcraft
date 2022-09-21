@@ -13,7 +13,8 @@ describe('play handler', () => {
 	beforeEach(() => {
 			subject = playHandler.default
 			spyOn(mixDownContexts, 'default')
-			executeSelectedEffectsSpy = spyOn(executeEffect, 'default')
+		 executeSelectedEffectsSpy = spyOn(executeEffect, 'default')
+			// @ts-ignore
 				.and.returnValue(new Promise<() => void>((): void => undefined))
 
 			appState.controls.animating = false

@@ -24,7 +24,7 @@ describe('grid', () => {
 				to.Address([ 1, 1 ]),
 			],
 		])
-		spyOn(executeTile, 'default')
+		spyOn(executeTile.wrapper, 'executeTile')
 		spyOn(applyViewForGrid, 'default')
 
 		subject({ patternId })
@@ -39,9 +39,9 @@ describe('grid', () => {
 	})
 
 	it('executes a tile for each address', () => {
-		expect(executeTile.default).toHaveBeenCalledWith({ address: to.Address([ 0, 0 ]), patternId })
-		expect(executeTile.default).toHaveBeenCalledWith({ address: to.Address([ 1, 0 ]), patternId })
-		expect(executeTile.default).toHaveBeenCalledWith({ address: to.Address([ 0, 1 ]), patternId })
-		expect(executeTile.default).toHaveBeenCalledWith({ address: to.Address([ 1, 1 ]), patternId })
+		expect(executeTile.wrapper.executeTile).toHaveBeenCalledWith({ address: to.Address([ 0, 0 ]), patternId })
+		expect(executeTile.wrapper.executeTile).toHaveBeenCalledWith({ address: to.Address([ 1, 0 ]), patternId })
+		expect(executeTile.wrapper.executeTile).toHaveBeenCalledWith({ address: to.Address([ 0, 1 ]), patternId })
+		expect(executeTile.wrapper.executeTile).toHaveBeenCalledWith({ address: to.Address([ 1, 1 ]), patternId })
 	})
 })

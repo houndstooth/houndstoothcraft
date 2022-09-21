@@ -8,6 +8,7 @@ import {
 import { clearContexts, clearMixedDownContext } from '../../render'
 import { resetMainHoundstooth } from '../../setting'
 import { enableOrDisableAnimationControls } from '../animation'
+
 import enableOrDisableOtherEffectToggles from './enableOrDisableOtherEffectToggles'
 import updateDescriptions from './updateDescriptions'
 

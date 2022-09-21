@@ -6,7 +6,7 @@ set -e
 
 ./bin/setup/install.sh
 
-./bin/shared/cmd_w_msgs.sh "npm i" "updating dependencies" "npm install failed." "All dependencies at latest."
+./bin/shared/cmd_w_msgs.sh "npm i --force" "updating dependencies" "npm install failed." "All dependencies at latest."
 
 ./bin/setup/git.sh
 

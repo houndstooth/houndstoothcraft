@@ -4,6 +4,7 @@ import { globalWrapper } from '../../../utilities'
 
 const saveBlobThroughAnchor: (_: { blob: Blob, name: string }) => void =
 	({ blob, name }: { blob: Blob, name: string }): void => {
+		// @ts-ignore
 		const url: string = globalWrapper.window.URL.createObjectURL(blob)
 
 		const a: HTMLAnchorElement = globalWrapper.document.createElement('a')
@@ -13,6 +14,7 @@ const saveBlobThroughAnchor: (_: { blob: Blob, name: string }) => void =
 		a.download = name
 
 		a.click()
+		// @ts-ignore
 		globalWrapper.window.URL.revokeObjectURL(url)
 	}
 

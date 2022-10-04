@@ -12,6 +12,6 @@ jobs:
         with:
           node-version: 16.x
       - run: npm i --force
-      - run: npx ts-node node_modules/jasmine/bin/jasmine.js
+      - run: JASMINE_CONFIG_PATH=test/unit/jasmine.unit.js npx ts-node node_modules/jasmine/bin/jasmine.js
       - run: npx webpack --config build/webpack.test.js
       - run: npx karma start test/integration/karma.run.js

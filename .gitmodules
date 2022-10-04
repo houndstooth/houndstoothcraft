@@ -21,4 +21,4 @@
 	url = git@github.com:Houndstooth/effect-harmonitooth.git
 [submodule "holestooth"]
 	path = effects/holestooth
-	url = git@github.com:Houndstooth/effect-holestooth.git
+	url = git@github.com:Houndstooth/standalone-holestooth.git

@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/houndstooth/houndstoothcraft.svg?branch=master)](https://travis-ci.org/houndstooth/houndstoothcraft)
-[![devDependency Status](https://david-dm.org/houndstooth/houndstoothcraft/dev-status.svg)](https://david-dm.org/houndstooth/houndstoothcraft?type=dev)
+![test](https://github.com/Houndstooth/houndstoothcraft/actions/workflows/test.yml/badge.svg)
 [![codecov.io](https://codecov.io/github/houndstooth/houndstoothcraft/coverage.svg?branch=master)](https://codecov.io/github/houndstooth/houndstoothcraft?branch=master)
 
 # houndstoothcraft

@@ -4,9 +4,6 @@
 [submodule "houndsmorphosis"]
 	path = effects/houndsmorphosis
 	url = git@github.com:Houndstooth/effect-houndsmorphosis.git
-[submodule "ginghoundstootham"]
-	path = effects/ginghoundstootham
-	url = git@github.com:Houndstooth/effect-ginghoundstootham.git
 [submodule "ginghamChevronContinuum"]
 	path = effects/ginghamChevronContinuum
 	url = git@github.com:Houndstooth/effect-ginghamChevronContinuum.git

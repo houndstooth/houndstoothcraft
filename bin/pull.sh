@@ -3,7 +3,7 @@
 set -e
 
 function pull_if_needed {
-    if [[ $(git rev-list --left-right --count origin/master...@ | cut -f1) != 0 ]] ; then
+    if [[ $(git rev-list --left-right --count origin/main...@ | cut -f1) != 0 ]] ; then
         git pull -r
     fi
 }

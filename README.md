@@ -1,5 +1,5 @@
 ![test](https://github.com/Houndstooth/houndstoothcraft/actions/workflows/test.yml/badge.svg)
-[![codecov.io](https://codecov.io/github/houndstooth/houndstoothcraft/coverage.svg?branch=master)](https://codecov.io/github/houndstooth/houndstoothcraft?branch=master)
+[![codecov.io](https://codecov.io/github/houndstooth/houndstoothcraft/coverage.svg?branch=main)](https://codecov.io/github/houndstooth/houndstoothcraft?branch=master)
 
 # houndstoothcraft
 
@@ -166,4 +166,4 @@ The final step of shape is to pass on the outline and color to the `solid` rende
 
 # Contributing
 
-See [CONTRIBUTING.md](https://github.com/houndstooth/houndstoothcraft/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/houndstooth/houndstoothcraft/blob/main/CONTRIBUTING.md).

@@ -58,4 +58,4 @@ This project has been developed on both Mac OS and Windows workstations, and all
 
 # the code
 
-See [README.md](https://github.com/houndstooth/houndstoothcraft/blob/master/README.md).
+See [README.md](https://github.com/houndstooth/houndstoothcraft/blob/main/README.md).

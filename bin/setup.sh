@@ -2,6 +2,8 @@
 
 set -e
 
+git submodule foreach git checkout main
+
 ./bin/setup/profile.sh
 
 ./bin/setup/install.sh

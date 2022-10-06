@@ -15,13 +15,13 @@ if [[ $OSTYPE == darwin* ]] ; then
         brew install node
     fi
 
-    if hash webstorm 2>/dev/null; then
+    if [[ -e /Applications/WebStorm.app/ ]] ; then
         printf "Webstorm found.\n"
     else
-        brew cask install webstorm
+         brew install webstorm
     fi
 
-    if gcloud cf 2>/dev/null; then
+    if gcloud config configurations list 2>/dev/null; then
         printf "Google Cloud Platform CLI found.\n"
     else
         printf "Missing Google Cloud Platform CLI.\n"
@@ -30,13 +30,13 @@ if [[ $OSTYPE == darwin* ]] ; then
     if [[ -e /Applications/iTerm.app/ ]] ; then
         printf "iTerm2 found.\n"
     else
-        brew cask install iterm2
+        brew install iterm2
     fi
 
     if [[ -e /Applications/Google\ Chrome.app/ ]] ; then
         printf "Google Chrome found.\n"
     else
-        brew cask install google-chrome
+        brew install google-chrome
     fi
 else
     if hash node 2>/dev/null; then printf "Missing Node.\n"; fi

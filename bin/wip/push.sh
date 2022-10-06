@@ -8,7 +8,7 @@ function wip_push {
     if [[ "$(git log -1 --pretty=%B)" == 'wip' ]] ; then
         git push origin wip
     fi
-    git checkout master
+    git checkout main
     git branch -D wip
 }
 
